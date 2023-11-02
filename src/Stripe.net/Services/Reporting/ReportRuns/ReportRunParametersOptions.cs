@@ -60,7 +60,8 @@ namespace Stripe.Reporting
         /// <c>other_adjustment</c>, <c>partial_capture_reversal</c>, <c>payout</c>,
         /// <c>payout_reversal</c>, <c>platform_earning</c>, <c>platform_earning_refund</c>,
         /// <c>refund</c>, <c>refund_failure</c>, <c>risk_reserved_funds</c>, <c>tax</c>,
-        /// <c>topup</c>, <c>topup_reversal</c>, <c>transfer</c>, or <c>transfer_reversal</c>.
+        /// <c>topup</c>, <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_reversal</c>, or
+        /// <c>unreconciled_customer_funds</c>.
         /// </summary>
         [JsonProperty("reporting_category")]
         public string ReportingCategory { get; set; }

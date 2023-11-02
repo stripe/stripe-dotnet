@@ -18,7 +18,7 @@ namespace Stripe
         public string AggregateUsage { get; set; }
 
         /// <summary>
-        /// Filter by billing frequency. Either <c>day</c>, <c>week</c>, <c>month</c> or
+        /// Specifies billing frequency. Either <c>day</c>, <c>week</c>, <c>month</c> or
         /// <c>year</c>.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -21,12 +22,12 @@ namespace Stripe
 
         public virtual Mandate Get(string id, MandateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<Mandate>(HttpMethod.Get, $"/v1/mandates/{id}", options, requestOptions);
         }
 
         public virtual Task<Mandate> GetAsync(string id, MandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Mandate>(HttpMethod.Get, $"/v1/mandates/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

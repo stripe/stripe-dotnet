@@ -6,7 +6,7 @@ namespace Stripe.TestHelpers.Terminal
     using System.Threading.Tasks;
     using Stripe.Terminal;
 
-    public class ReaderService : Service<Reader>
+    public class ReaderService : Service<Stripe.Terminal.Reader>
     {
         public ReaderService()
             : base(null)
@@ -20,14 +20,14 @@ namespace Stripe.TestHelpers.Terminal
 
         public override string BasePath => "/v1/test_helpers/terminal/readers";
 
-        public virtual Reader PresentPaymentMethod(string id, ReaderPresentPaymentMethodOptions options = null, RequestOptions requestOptions = null)
+        public virtual Stripe.Terminal.Reader PresentPaymentMethod(string id, ReaderPresentPaymentMethodOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/present_payment_method", options, requestOptions);
+            return this.Request<Stripe.Terminal.Reader>(HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{id}/present_payment_method", options, requestOptions);
         }
 
-        public virtual Task<Reader> PresentPaymentMethodAsync(string id, ReaderPresentPaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Stripe.Terminal.Reader> PresentPaymentMethodAsync(string id, ReaderPresentPaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/present_payment_method", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Terminal.Reader>(HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{id}/present_payment_method", options, requestOptions, cancellationToken);
         }
     }
 }

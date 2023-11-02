@@ -26,102 +26,102 @@ namespace Stripe
 
         public virtual Order Cancel(string id, OrderCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{id}/cancel", options, requestOptions);
         }
 
         public virtual Task<Order> CancelAsync(string id, OrderCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{id}/cancel", options, requestOptions, cancellationToken);
         }
 
         public virtual Order Create(OrderCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/orders", options, requestOptions);
         }
 
         public virtual Task<Order> CreateAsync(OrderCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders", options, requestOptions, cancellationToken);
         }
 
         public virtual Order Get(string id, OrderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<Order>(HttpMethod.Get, $"/v1/orders/{id}", options, requestOptions);
         }
 
         public virtual Task<Order> GetAsync(string id, OrderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Get, $"/v1/orders/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Order> List(OrderListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<Order>>(HttpMethod.Get, $"/v1/orders", options, requestOptions);
         }
 
         public virtual Task<StripeList<Order>> ListAsync(OrderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Order>>(HttpMethod.Get, $"/v1/orders", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Order> ListAutoPaging(OrderListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<Order>($"/v1/orders", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<Order> ListAutoPagingAsync(OrderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Order>($"/v1/orders", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<LineItem> ListLineItems(string id, OrderListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/orders/{id}/line_items", options, requestOptions);
         }
 
         public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, OrderListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/orders/{id}/line_items", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, OrderListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"{this.InstanceUrl(id)}/line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/orders/{id}/line_items", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, OrderListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"{this.InstanceUrl(id)}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/orders/{id}/line_items", options, requestOptions, cancellationToken);
         }
 
         public virtual Order Reopen(string id, OrderReopenOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/reopen", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{id}/reopen", options, requestOptions);
         }
 
         public virtual Task<Order> ReopenAsync(string id, OrderReopenOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/reopen", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{id}/reopen", options, requestOptions, cancellationToken);
         }
 
         public virtual Order Submit(string id, OrderSubmitOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/submit", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{id}/submit", options, requestOptions);
         }
 
         public virtual Task<Order> SubmitAsync(string id, OrderSubmitOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/submit", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{id}/submit", options, requestOptions, cancellationToken);
         }
 
         public virtual Order Update(string id, OrderUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{id}", options, requestOptions);
         }
 
         public virtual Task<Order> UpdateAsync(string id, OrderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -2,6 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -25,52 +26,52 @@ namespace Stripe.Issuing
 
         public virtual PersonalizationDesign Create(PersonalizationDesignCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<PersonalizationDesign>(HttpMethod.Post, $"/v1/issuing/personalization_designs", options, requestOptions);
         }
 
         public virtual Task<PersonalizationDesign> CreateAsync(PersonalizationDesignCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<PersonalizationDesign>(HttpMethod.Post, $"/v1/issuing/personalization_designs", options, requestOptions, cancellationToken);
         }
 
         public virtual PersonalizationDesign Get(string id, PersonalizationDesignGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<PersonalizationDesign>(HttpMethod.Get, $"/v1/issuing/personalization_designs/{id}", options, requestOptions);
         }
 
         public virtual Task<PersonalizationDesign> GetAsync(string id, PersonalizationDesignGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<PersonalizationDesign>(HttpMethod.Get, $"/v1/issuing/personalization_designs/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<PersonalizationDesign> List(PersonalizationDesignListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<PersonalizationDesign>>(HttpMethod.Get, $"/v1/issuing/personalization_designs", options, requestOptions);
         }
 
         public virtual Task<StripeList<PersonalizationDesign>> ListAsync(PersonalizationDesignListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PersonalizationDesign>>(HttpMethod.Get, $"/v1/issuing/personalization_designs", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<PersonalizationDesign> ListAutoPaging(PersonalizationDesignListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<PersonalizationDesign>($"/v1/issuing/personalization_designs", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<PersonalizationDesign> ListAutoPagingAsync(PersonalizationDesignListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<PersonalizationDesign>($"/v1/issuing/personalization_designs", options, requestOptions, cancellationToken);
         }
 
         public virtual PersonalizationDesign Update(string id, PersonalizationDesignUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request<PersonalizationDesign>(HttpMethod.Post, $"/v1/issuing/personalization_designs/{id}", options, requestOptions);
         }
 
         public virtual Task<PersonalizationDesign> UpdateAsync(string id, PersonalizationDesignUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<PersonalizationDesign>(HttpMethod.Post, $"/v1/issuing/personalization_designs/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

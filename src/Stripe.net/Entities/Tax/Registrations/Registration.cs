@@ -35,7 +35,8 @@ namespace Stripe.Tax
         /// Time at which the registration becomes active. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("active_from")]
-        public long ActiveFrom { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime ActiveFrom { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO

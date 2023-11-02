@@ -9,6 +9,7 @@ namespace Stripe
         /// <summary>
         /// The purchaser's tax exemption status. One of <c>none</c>, <c>exempt</c>, or
         /// <c>reverse</c>.
+        /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
         [JsonProperty("tax_exempt")]
         public string TaxExempt { get; set; }

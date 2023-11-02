@@ -23,32 +23,32 @@ namespace Stripe.Tax
 
         public virtual Calculation Create(CalculationCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<Calculation>(HttpMethod.Post, $"/v1/tax/calculations", options, requestOptions);
         }
 
         public virtual Task<Calculation> CreateAsync(CalculationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<Calculation>(HttpMethod.Post, $"/v1/tax/calculations", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<CalculationLineItem> ListLineItems(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CalculationLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/line_items", options, requestOptions);
+            return this.Request<StripeList<CalculationLineItem>>(HttpMethod.Get, $"/v1/tax/calculations/{id}/line_items", options, requestOptions);
         }
 
         public virtual Task<StripeList<CalculationLineItem>> ListLineItemsAsync(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CalculationLineItem>>(HttpMethod.Get, $"{this.InstanceUrl(id)}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CalculationLineItem>>(HttpMethod.Get, $"/v1/tax/calculations/{id}/line_items", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<CalculationLineItem> ListLineItemsAutoPaging(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<CalculationLineItem>($"{this.InstanceUrl(id)}/line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<CalculationLineItem>($"/v1/tax/calculations/{id}/line_items", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<CalculationLineItem> ListLineItemsAutoPagingAsync(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<CalculationLineItem>($"{this.InstanceUrl(id)}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<CalculationLineItem>($"/v1/tax/calculations/{id}/line_items", options, requestOptions, cancellationToken);
         }
     }
 }

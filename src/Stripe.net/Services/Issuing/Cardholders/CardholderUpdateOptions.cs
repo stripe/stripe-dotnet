@@ -41,10 +41,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The cardholder's phone number. This is required for all cardholders who will be creating
-        /// EU cards. While phone number is optional if the cardholder will not be creating EU
-        /// cards, note that this cardholder will not be eligible for 3DS without a phone number.
-        /// See the <a href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D
-        /// Secure documentation</a> for more details.
+        /// EU cards. See the <a href="https://stripe.com/docs/issuing/3d-secure">3D Secure
+        /// documentation</a> for more details.
         /// </summary>
         [JsonProperty("phone_number")]
         public string PhoneNumber { get; set; }
@@ -54,6 +52,7 @@ namespace Stripe.Issuing
         /// <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>. This changes the language of
         /// the <a href="https://stripe.com/docs/issuing/3d-secure">3D Secure flow</a> and one-time
         /// password messages sent to the cardholder.
+        /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>.
         /// </summary>
         [JsonProperty("preferred_locales")]
         public List<string> PreferredLocales { get; set; }

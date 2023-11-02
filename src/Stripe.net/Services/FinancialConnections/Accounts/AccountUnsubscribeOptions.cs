@@ -8,6 +8,7 @@ namespace Stripe.FinancialConnections
     {
         /// <summary>
         /// The list of account features from which you would like to unsubscribe.
+        /// One of: <c>inferred_balances</c>, or <c>transactions</c>.
         /// </summary>
         [JsonProperty("features")]
         public List<string> Features { get; set; }

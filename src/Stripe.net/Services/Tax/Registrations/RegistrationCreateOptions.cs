@@ -14,7 +14,7 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("active_from")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<long?, RegistrationActiveFrom> ActiveFrom { get; set; }
+        public AnyOf<DateTime?, RegistrationActiveFrom> ActiveFrom { get; set; }
 
         /// <summary>
         /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO

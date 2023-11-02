@@ -46,6 +46,10 @@ namespace Stripe
                 { "charge", typeof(Charge) },
                 { "checkout.session", typeof(Checkout.Session) },
                 { "confirmation_token", typeof(ConfirmationToken) },
+                {
+                    "connect_collection_transfer", typeof(
+                        ConnectCollectionTransfer)
+                },
                 { "country_spec", typeof(CountrySpec) },
                 { "coupon", typeof(Coupon) },
                 { "credit_note", typeof(CreditNote) },
@@ -103,6 +107,7 @@ namespace Stripe
                         Identity.VerificationSession)
                 },
                 { "invoice", typeof(Invoice) },
+                { "invoice_payment", typeof(InvoicePayment) },
                 { "invoiceitem", typeof(InvoiceItem) },
                 { "issuing.authorization", typeof(Issuing.Authorization) },
                 { "issuing.card", typeof(Issuing.Card) },
@@ -136,6 +141,7 @@ namespace Stripe
                 { "payout", typeof(Payout) },
                 { "person", typeof(Person) },
                 { "plan", typeof(Plan) },
+                { "platform_tax_fee", typeof(PlatformTaxFee) },
                 { "price", typeof(Price) },
                 { "product", typeof(Product) },
                 { "promotion_code", typeof(PromotionCode) },
@@ -155,6 +161,7 @@ namespace Stripe
                 { "refund", typeof(Refund) },
                 { "reporting.report_run", typeof(Reporting.ReportRun) },
                 { "reporting.report_type", typeof(Reporting.ReportType) },
+                { "reserve_transaction", typeof(ReserveTransaction) },
                 { "review", typeof(Review) },
                 { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },
                 { "setup_attempt", typeof(SetupAttempt) },
@@ -181,6 +188,7 @@ namespace Stripe
                     "tax.transaction_line_item", typeof(Tax.TransactionLineItem)
                 },
                 { "tax_code", typeof(TaxCode) },
+                { "tax_deducted_at_source", typeof(TaxDeductedAtSource) },
                 { "tax_id", typeof(TaxId) },
                 { "tax_rate", typeof(TaxRate) },
                 { "terminal.configuration", typeof(Terminal.Configuration) },

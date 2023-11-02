@@ -13,6 +13,10 @@ namespace Stripe
         [JsonProperty("converts_to")]
         public List<string> ConvertsTo { get; set; }
 
+        /// <summary>
+        /// Determines the type of trial for this item.
+        /// One of: <c>free</c>, or <c>paid</c>.
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
     }

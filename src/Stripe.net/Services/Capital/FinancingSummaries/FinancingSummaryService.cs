@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Capital
 {
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -26,12 +27,12 @@ namespace Stripe.Capital
 
         public virtual FinancingSummary Get(RequestOptions requestOptions = null)
         {
-            return this.GetEntity(null, null, requestOptions);
+            return this.Request<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions);
         }
 
         public virtual Task<FinancingSummary> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(null, null, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions, cancellationToken);
         }
     }
 }

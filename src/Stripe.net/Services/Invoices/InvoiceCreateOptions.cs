@@ -16,6 +16,13 @@ namespace Stripe
         public List<string> AccountTaxIds { get; set; }
 
         /// <summary>
+        /// List of expected payments and corresponding due dates. Valid only for invoices where
+        /// <c>collection_method=send_invoice</c>.
+        /// </summary>
+        [JsonProperty("amounts_due")]
+        public List<InvoiceAmountsDueOptions> AmountsDue { get; set; }
+
+        /// <summary>
         /// A fee in cents (or local equivalent) that will be applied to the invoice and transferred
         /// to the application owner's Stripe account. The request must be made with an OAuth key or
         /// the Stripe-Account header in order to take an application fee. For more information, see

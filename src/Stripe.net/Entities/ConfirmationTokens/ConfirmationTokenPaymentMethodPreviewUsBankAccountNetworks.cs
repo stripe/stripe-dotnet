@@ -14,6 +14,7 @@ namespace Stripe
 
         /// <summary>
         /// All supported networks.
+        /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
         /// </summary>
         [JsonProperty("supported")]
         public List<string> Supported { get; set; }

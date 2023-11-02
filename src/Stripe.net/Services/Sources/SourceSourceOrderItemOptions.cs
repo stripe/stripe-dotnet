@@ -27,6 +27,9 @@ namespace Stripe
         [JsonProperty("quantity")]
         public long? Quantity { get; set; }
 
+        /// <summary>
+        /// One of: <c>discount</c>, <c>shipping</c>, <c>sku</c>, or <c>tax</c>.
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
     }

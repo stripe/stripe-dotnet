@@ -2,6 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -24,42 +25,42 @@ namespace Stripe.Issuing
 
         public virtual Token Get(string id, TokenGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{id}", options, requestOptions);
         }
 
         public virtual Task<Token> GetAsync(string id, TokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Token> List(TokenListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<Token>>(HttpMethod.Get, $"/v1/issuing/tokens", options, requestOptions);
         }
 
         public virtual Task<StripeList<Token>> ListAsync(TokenListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Token>>(HttpMethod.Get, $"/v1/issuing/tokens", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Token> ListAutoPaging(TokenListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<Token>($"/v1/issuing/tokens", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<Token> ListAutoPagingAsync(TokenListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Token>($"/v1/issuing/tokens", options, requestOptions, cancellationToken);
         }
 
         public virtual Token Update(string id, TokenUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{id}", options, requestOptions);
         }
 
         public virtual Task<Token> UpdateAsync(string id, TokenUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

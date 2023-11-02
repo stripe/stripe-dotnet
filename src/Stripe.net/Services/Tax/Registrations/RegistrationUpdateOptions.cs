@@ -13,7 +13,7 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("active_from")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<long?, RegistrationActiveFrom> ActiveFrom { get; set; }
+        public AnyOf<DateTime?, RegistrationActiveFrom> ActiveFrom { get; set; }
 
         /// <summary>
         /// If set, the registration stops being active at this time. If not set, the registration

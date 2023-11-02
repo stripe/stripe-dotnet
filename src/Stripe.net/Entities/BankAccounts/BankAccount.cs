@@ -84,6 +84,7 @@ namespace Stripe
         /// <summary>
         /// A set of available payout methods for this bank account. Only values from this set
         /// should be passed as the <c>method</c> when creating a payout.
+        /// One of: <c>instant</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("available_payout_methods")]
         public List<string> AvailablePayoutMethods { get; set; }
@@ -201,13 +202,15 @@ namespace Stripe
         /// information to know (e.g., for smaller credit unions), and the validation is not always
         /// run. If customer bank account verification has succeeded, the bank account status will
         /// be <c>verified</c>. If the verification failed for any reason, such as microdeposit
-        /// failure, the status will be <c>verification_failed</c>. If a transfer sent to this bank
-        /// account fails, we'll set the status to <c>errored</c> and will not continue to send
-        /// transfers until the bank details are updated.
+        /// failure, the status will be <c>verification_failed</c>. If a payout sent to this bank
+        /// account fails, we'll set the status to <c>errored</c> and will not continue to send <a
+        /// href="https://stripe.com/docs/payouts#payout-schedule">scheduled payouts</a> until the
+        /// bank details are updated.
         ///
         /// For external accounts, possible values are <c>new</c>, <c>errored</c> and
-        /// <c>verification_failed</c>. If a transfer fails, the status is set to <c>errored</c> and
-        /// transfers are stopped until account details are updated. In India, if we can't <a
+        /// <c>verification_failed</c>. If a payouts fails, the status is set to <c>errored</c> and
+        /// scheduled payouts are stopped until account details are updated. In India, if we can't
+        /// <a
         /// href="https://support.stripe.com/questions/bank-account-ownership-verification">verify
         /// the owner of the bank account</a>, we'll set the status to <c>verification_failed</c>.
         /// Other validations aren't run against external accounts because they're only used for

@@ -34,8 +34,8 @@ namespace Stripe.Issuing
         /// <summary>
         /// Outcome of the decision.
         /// One of: <c>additional_information_requested</c>, <c>application_rejected</c>,
-        /// <c>credit_limit_approved</c>, <c>withdrawn_by_applicant</c>,
-        /// <c>credit_limit_decreased</c>, <c>credit_line_closed</c>, or <c>no_changes</c>.
+        /// <c>credit_limit_approved</c>, <c>credit_limit_decreased</c>, <c>credit_line_closed</c>,
+        /// <c>no_changes</c>, or <c>withdrawn_by_applicant</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

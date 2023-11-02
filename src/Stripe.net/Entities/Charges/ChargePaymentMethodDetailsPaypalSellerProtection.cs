@@ -8,6 +8,7 @@ namespace Stripe
     {
         /// <summary>
         /// An array of conditions that are covered for the transaction, if applicable.
+        /// One of: <c>fraudulent</c>, or <c>product_not_received</c>.
         /// </summary>
         [JsonProperty("dispute_categories")]
         public List<string> DisputeCategories { get; set; }

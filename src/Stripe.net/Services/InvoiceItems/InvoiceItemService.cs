@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -26,62 +27,62 @@ namespace Stripe
 
         public virtual InvoiceItem Create(InvoiceItemCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<InvoiceItem>(HttpMethod.Post, $"/v1/invoiceitems", options, requestOptions);
         }
 
         public virtual Task<InvoiceItem> CreateAsync(InvoiceItemCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<InvoiceItem>(HttpMethod.Post, $"/v1/invoiceitems", options, requestOptions, cancellationToken);
         }
 
         public virtual InvoiceItem Delete(string id, InvoiceItemDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(id, options, requestOptions);
+            return this.Request<InvoiceItem>(HttpMethod.Delete, $"/v1/invoiceitems/{id}", options, requestOptions);
         }
 
         public virtual Task<InvoiceItem> DeleteAsync(string id, InvoiceItemDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<InvoiceItem>(HttpMethod.Delete, $"/v1/invoiceitems/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual InvoiceItem Get(string id, InvoiceItemGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<InvoiceItem>(HttpMethod.Get, $"/v1/invoiceitems/{id}", options, requestOptions);
         }
 
         public virtual Task<InvoiceItem> GetAsync(string id, InvoiceItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<InvoiceItem>(HttpMethod.Get, $"/v1/invoiceitems/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<InvoiceItem> List(InvoiceItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<InvoiceItem>>(HttpMethod.Get, $"/v1/invoiceitems", options, requestOptions);
         }
 
         public virtual Task<StripeList<InvoiceItem>> ListAsync(InvoiceItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InvoiceItem>>(HttpMethod.Get, $"/v1/invoiceitems", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<InvoiceItem> ListAutoPaging(InvoiceItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<InvoiceItem>($"/v1/invoiceitems", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<InvoiceItem> ListAutoPagingAsync(InvoiceItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InvoiceItem>($"/v1/invoiceitems", options, requestOptions, cancellationToken);
         }
 
         public virtual InvoiceItem Update(string id, InvoiceItemUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request<InvoiceItem>(HttpMethod.Post, $"/v1/invoiceitems/{id}", options, requestOptions);
         }
 
         public virtual Task<InvoiceItem> UpdateAsync(string id, InvoiceItemUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<InvoiceItem>(HttpMethod.Post, $"/v1/invoiceitems/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

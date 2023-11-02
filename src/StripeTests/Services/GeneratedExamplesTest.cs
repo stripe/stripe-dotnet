@@ -17,7 +17,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestAccountLinkServiceCreate()
+        public void TestAccountLinksPost()
         {
             var options = new AccountLinkCreateOptions
             {
@@ -31,7 +31,112 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestAccountServiceCreate()
+        public void TestAccountsCapabilitiesGet()
+        {
+            var service = new CapabilityService(this.StripeClient);
+            StripeList<Capability> capabilities = service.List(
+                "acct_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestAccountsCapabilitiesGet2()
+        {
+            var service = new CapabilityService(this.StripeClient);
+            service.Get("acct_xxxxxxxxxxxxx", "card_payments");
+        }
+
+        [Fact]
+        public void TestAccountsCapabilitiesPost()
+        {
+            var options = new CapabilityUpdateOptions { Requested = true };
+            var service = new CapabilityService(this.StripeClient);
+            service.Update("acct_xxxxxxxxxxxxx", "card_payments", options);
+        }
+
+        [Fact]
+        public void TestAccountsDelete()
+        {
+            var service = new AccountService(this.StripeClient);
+            service.Delete("acct_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestAccountsGet()
+        {
+            var options = new AccountListOptions { Limit = 3 };
+            var service = new AccountService(this.StripeClient);
+            StripeList<Account> accounts = service.List(options);
+        }
+
+        [Fact]
+        public void TestAccountsGet2()
+        {
+            var service = new AccountService(this.StripeClient);
+            service.Get("acct_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestAccountsLoginLinksPost()
+        {
+            var service = new LoginLinkService(this.StripeClient);
+            service.Create("acct_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestAccountsPersonsDelete()
+        {
+            var service = new PersonService(this.StripeClient);
+            service.Delete("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestAccountsPersonsGet()
+        {
+            var options = new PersonListOptions { Limit = 3 };
+            var service = new PersonService(this.StripeClient);
+            StripeList<Person> persons = service.List(
+                "acct_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestAccountsPersonsGet2()
+        {
+            var service = new PersonService(this.StripeClient);
+            service.Get("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestAccountsPersonsPost()
+        {
+            var options = new PersonCreateOptions
+            {
+                FirstName = "Jane",
+                LastName = "Diaz",
+            };
+            var service = new PersonService(this.StripeClient);
+            service.Create("acct_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestAccountsPersonsPost2()
+        {
+            var options = new PersonUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new PersonService(this.StripeClient);
+            service.Update(
+                "acct_xxxxxxxxxxxxx",
+                "person_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestAccountsPost()
         {
             var options = new AccountCreateOptions
             {
@@ -55,37 +160,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestAccountServiceDelete()
-        {
-            var service = new AccountService(this.StripeClient);
-            service.Delete("acct_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestAccountServiceList()
-        {
-            var options = new AccountListOptions { Limit = 3 };
-            var service = new AccountService(this.StripeClient);
-            StripeList<Account> accounts = service.List(options);
-        }
-
-        [Fact]
-        public void TestAccountServiceReject()
-        {
-            var options = new AccountRejectOptions { Reason = "fraud" };
-            var service = new AccountService(this.StripeClient);
-            service.Reject("acct_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestAccountServiceRetrieve()
-        {
-            var service = new AccountService(this.StripeClient);
-            service.Get("acct_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestAccountServiceUpdate()
+        public void TestAccountsPost2()
         {
             var options = new AccountUpdateOptions
             {
@@ -99,31 +174,53 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestApplicationFeeRefundServiceCreate()
+        public void TestAccountsRejectPost()
         {
-            var service = new ApplicationFeeRefundService(this.StripeClient);
-            service.Create("fee_xxxxxxxxxxxxx");
+            var options = new AccountRejectOptions { Reason = "fraud" };
+            var service = new AccountService(this.StripeClient);
+            service.Reject("acct_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
-        public void TestApplicationFeeRefundServiceList()
+        public void TestApplicationFeesGet()
+        {
+            var options = new ApplicationFeeListOptions { Limit = 3 };
+            var service = new ApplicationFeeService(this.StripeClient);
+            StripeList<ApplicationFee> applicationFees = service.List(options);
+        }
+
+        [Fact]
+        public void TestApplicationFeesGet2()
+        {
+            var service = new ApplicationFeeService(this.StripeClient);
+            service.Get("fee_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestApplicationFeesRefundsGet()
         {
             var options = new ApplicationFeeRefundListOptions { Limit = 3 };
             var service = new ApplicationFeeRefundService(this.StripeClient);
-            StripeList<ApplicationFeeRefund> applicationfeerefunds = service.List(
-                "fee_xxxxxxxxxxxxx",
-                options);
+            StripeList<ApplicationFeeRefund> applicationFeeRefunds = service
+                .List("fee_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
-        public void TestApplicationFeeRefundServiceRetrieve()
+        public void TestApplicationFeesRefundsGet2()
         {
             var service = new ApplicationFeeRefundService(this.StripeClient);
             service.Get("fee_xxxxxxxxxxxxx", "fr_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestApplicationFeeRefundServiceUpdate()
+        public void TestApplicationFeesRefundsPost()
+        {
+            var service = new ApplicationFeeRefundService(this.StripeClient);
+            service.Create("fee_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestApplicationFeesRefundsPost2()
         {
             var options = new ApplicationFeeRefundUpdateOptions
             {
@@ -137,22 +234,55 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestApplicationFeeServiceList()
+        public void TestAppsSecretsDeletePost()
         {
-            var options = new ApplicationFeeListOptions { Limit = 3 };
-            var service = new ApplicationFeeService(this.StripeClient);
-            StripeList<ApplicationFee> applicationfees = service.List(options);
+            var options = new Stripe.Apps.SecretDeleteWhereOptions
+            {
+                Name = "my-api-key",
+                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
+            };
+            var service = new Stripe.Apps.SecretService(this.StripeClient);
+            service.DeleteWhere(options);
         }
 
         [Fact]
-        public void TestApplicationFeeServiceRetrieve()
+        public void TestAppsSecretsFindGet()
         {
-            var service = new ApplicationFeeService(this.StripeClient);
-            service.Get("fee_xxxxxxxxxxxxx");
+            var options = new Stripe.Apps.SecretFindOptions
+            {
+                Name = "sec_123",
+                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
+            };
+            var service = new Stripe.Apps.SecretService(this.StripeClient);
+            service.Find(options);
         }
 
         [Fact]
-        public void TestAppsSecretServiceCreate()
+        public void TestAppsSecretsGet()
+        {
+            var options = new Stripe.Apps.SecretListOptions
+            {
+                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
+                Limit = 2,
+            };
+            var service = new Stripe.Apps.SecretService(this.StripeClient);
+            StripeList<Stripe.Apps.Secret> secrets = service.List(options);
+        }
+
+        [Fact]
+        public void TestAppsSecretsGet2()
+        {
+            var options = new Stripe.Apps.SecretListOptions
+            {
+                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
+                Limit = 2,
+            };
+            var service = new Stripe.Apps.SecretService(this.StripeClient);
+            StripeList<Stripe.Apps.Secret> secrets = service.List(options);
+        }
+
+        [Fact]
+        public void TestAppsSecretsPost()
         {
             var options = new Stripe.Apps.SecretCreateOptions
             {
@@ -165,7 +295,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestAppsSecretServiceCreate2()
+        public void TestAppsSecretsPost2()
         {
             var options = new Stripe.Apps.SecretCreateOptions
             {
@@ -178,71 +308,44 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestAppsSecretServiceDeleteWhere()
-        {
-            var options = new Stripe.Apps.SecretDeleteWhereOptions
-            {
-                Name = "my-api-key",
-                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
-            };
-            var service = new Stripe.Apps.SecretService(this.StripeClient);
-            service.DeleteWhere(options);
-        }
-
-        [Fact]
-        public void TestAppsSecretServiceFind()
-        {
-            var options = new Stripe.Apps.SecretFindOptions
-            {
-                Name = "sec_123",
-                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
-            };
-            var service = new Stripe.Apps.SecretService(this.StripeClient);
-            service.Find(options);
-        }
-
-        [Fact]
-        public void TestAppsSecretServiceList()
-        {
-            var options = new Stripe.Apps.SecretListOptions
-            {
-                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
-                Limit = 2,
-            };
-            var service = new Stripe.Apps.SecretService(this.StripeClient);
-            StripeList<Stripe.Apps.Secret> secrets = service.List(options);
-        }
-
-        [Fact]
-        public void TestAppsSecretServiceList2()
-        {
-            var options = new Stripe.Apps.SecretListOptions
-            {
-                Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
-                Limit = 2,
-            };
-            var service = new Stripe.Apps.SecretService(this.StripeClient);
-            StripeList<Stripe.Apps.Secret> secrets = service.List(options);
-        }
-
-        [Fact]
-        public void TestBalanceTransactionServiceList()
+        public void TestBalanceTransactionsGet()
         {
             var options = new BalanceTransactionListOptions { Limit = 3 };
             var service = new BalanceTransactionService(this.StripeClient);
-            StripeList<BalanceTransaction> balancetransactions = service.List(
+            StripeList<BalanceTransaction> balanceTransactions = service.List(
                 options);
         }
 
         [Fact]
-        public void TestBalanceTransactionServiceRetrieve()
+        public void TestBalanceTransactionsGet2()
         {
             var service = new BalanceTransactionService(this.StripeClient);
             service.Get("txn_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestBillingPortalConfigurationServiceCreate()
+        public void TestBillingPortalConfigurationsGet()
+        {
+            var options = new Stripe.BillingPortal.ConfigurationListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.BillingPortal.ConfigurationService(
+                this.StripeClient);
+            StripeList<Stripe.BillingPortal.Configuration> configurations = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestBillingPortalConfigurationsGet2()
+        {
+            var service = new Stripe.BillingPortal.ConfigurationService(
+                this.StripeClient);
+            service.Get("bpc_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestBillingPortalConfigurationsPost()
         {
             var options = new Stripe.BillingPortal.ConfigurationCreateOptions
             {
@@ -270,28 +373,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestBillingPortalConfigurationServiceList()
-        {
-            var options = new Stripe.BillingPortal.ConfigurationListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.BillingPortal.ConfigurationService(
-                this.StripeClient);
-            StripeList<Stripe.BillingPortal.Configuration> configurations = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestBillingPortalConfigurationServiceRetrieve()
-        {
-            var service = new Stripe.BillingPortal.ConfigurationService(
-                this.StripeClient);
-            service.Get("bpc_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestBillingPortalConfigurationServiceUpdate()
+        public void TestBillingPortalConfigurationsPost2()
         {
             var options = new Stripe.BillingPortal.ConfigurationUpdateOptions
             {
@@ -307,7 +389,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestBillingPortalSessionServiceCreate()
+        public void TestBillingPortalSessionsPost()
         {
             var options = new Stripe.BillingPortal.SessionCreateOptions
             {
@@ -320,58 +402,29 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCapabilityServiceList()
-        {
-            var service = new CapabilityService(this.StripeClient);
-            StripeList<Capability> capabilities = service.List(
-                "acct_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestCapabilityServiceRetrieve()
-        {
-            var service = new CapabilityService(this.StripeClient);
-            service.Get("acct_xxxxxxxxxxxxx", "card_payments");
-        }
-
-        [Fact]
-        public void TestCapabilityServiceUpdate()
-        {
-            var options = new CapabilityUpdateOptions { Requested = true };
-            var service = new CapabilityService(this.StripeClient);
-            service.Update("acct_xxxxxxxxxxxxx", "card_payments", options);
-        }
-
-        [Fact]
-        public void TestCashBalanceServiceRetrieve()
-        {
-            var service = new CashBalanceService(this.StripeClient);
-            service.Get("cus_123");
-        }
-
-        [Fact]
-        public void TestCashBalanceServiceUpdate()
-        {
-            var options = new CashBalanceUpdateOptions
-            {
-                Settings = new CashBalanceSettingsOptions
-                {
-                    ReconciliationMode = "manual",
-                },
-            };
-            var service = new CashBalanceService(this.StripeClient);
-            service.Update("cus_123", options);
-        }
-
-        [Fact]
-        public void TestChargeServiceCapture()
+        public void TestChargesCapturePost()
         {
             var service = new ChargeService(this.StripeClient);
             service.Capture("ch_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestChargeServiceCreate()
+        public void TestChargesGet()
+        {
+            var options = new ChargeListOptions { Limit = 3 };
+            var service = new ChargeService(this.StripeClient);
+            StripeList<Charge> charges = service.List(options);
+        }
+
+        [Fact]
+        public void TestChargesGet2()
+        {
+            var service = new ChargeService(this.StripeClient);
+            service.Get("ch_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestChargesPost()
         {
             var options = new ChargeCreateOptions
             {
@@ -385,33 +438,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestChargeServiceList()
-        {
-            var options = new ChargeListOptions { Limit = 3 };
-            var service = new ChargeService(this.StripeClient);
-            StripeList<Charge> charges = service.List(options);
-        }
-
-        [Fact]
-        public void TestChargeServiceRetrieve()
-        {
-            var service = new ChargeService(this.StripeClient);
-            service.Get("ch_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestChargeServiceSearch()
-        {
-            var options = new ChargeSearchOptions
-            {
-                Query = "amount>999 AND metadata['order_id']:'6735'",
-            };
-            var service = new ChargeService(this.StripeClient);
-            service.Search(options);
-        }
-
-        [Fact]
-        public void TestChargeServiceUpdate()
+        public void TestChargesPost2()
         {
             var options = new ChargeUpdateOptions
             {
@@ -425,7 +452,55 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCheckoutSessionServiceCreate()
+        public void TestChargesSearchGet()
+        {
+            var options = new ChargeSearchOptions
+            {
+                Query = "amount>999 AND metadata['order_id']:'6735'",
+            };
+            var service = new ChargeService(this.StripeClient);
+            service.Search(options);
+        }
+
+        [Fact]
+        public void TestCheckoutSessionsExpirePost()
+        {
+            var service = new Stripe.Checkout.SessionService(this.StripeClient);
+            service.Expire("sess_xyz");
+        }
+
+        [Fact]
+        public void TestCheckoutSessionsExpirePost2()
+        {
+            var service = new Stripe.Checkout.SessionService(this.StripeClient);
+            service.Expire("cs_test_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCheckoutSessionsGet()
+        {
+            var options = new Stripe.Checkout.SessionListOptions { Limit = 3 };
+            var service = new Stripe.Checkout.SessionService(this.StripeClient);
+            StripeList<Stripe.Checkout.Session> sessions = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestCheckoutSessionsGet2()
+        {
+            var service = new Stripe.Checkout.SessionService(this.StripeClient);
+            service.Get("cs_test_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCheckoutSessionsLineItemsGet()
+        {
+            var service = new Stripe.Checkout.SessionService(this.StripeClient);
+            StripeList<LineItem> lineItems = service.ListLineItems("sess_xyz");
+        }
+
+        [Fact]
+        public void TestCheckoutSessionsPost()
         {
             var options = new Stripe.Checkout.SessionCreateOptions
             {
@@ -465,7 +540,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCheckoutSessionServiceCreate2()
+        public void TestCheckoutSessionsPost2()
         {
             var options = new Stripe.Checkout.SessionCreateOptions
             {
@@ -485,63 +560,48 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCheckoutSessionServiceExpire()
-        {
-            var service = new Stripe.Checkout.SessionService(this.StripeClient);
-            service.Expire("sess_xyz");
-        }
-
-        [Fact]
-        public void TestCheckoutSessionServiceExpire2()
-        {
-            var service = new Stripe.Checkout.SessionService(this.StripeClient);
-            service.Expire("cs_test_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestCheckoutSessionServiceList()
-        {
-            var options = new Stripe.Checkout.SessionListOptions { Limit = 3 };
-            var service = new Stripe.Checkout.SessionService(this.StripeClient);
-            StripeList<Stripe.Checkout.Session> sessions = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestCheckoutSessionServiceListLineItems()
-        {
-            var service = new Stripe.Checkout.SessionService(this.StripeClient);
-            service.ListLineItems("sess_xyz");
-        }
-
-        [Fact]
-        public void TestCheckoutSessionServiceRetrieve()
-        {
-            var service = new Stripe.Checkout.SessionService(this.StripeClient);
-            service.Get("cs_test_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestCountrySpecServiceList()
+        public void TestCountrySpecsGet()
         {
             var options = new CountrySpecListOptions { Limit = 3 };
             var service = new CountrySpecService(this.StripeClient);
-            StripeList<CountrySpec> countryspecs = service.List(options);
+            StripeList<CountrySpec> countrySpecs = service.List(options);
         }
 
         [Fact]
-        public void TestCountrySpecServiceRetrieve()
+        public void TestCountrySpecsGet2()
         {
             var service = new CountrySpecService(this.StripeClient);
             service.Get("US");
         }
 
         [Fact]
-        public void TestCouponServiceCreate()
+        public void TestCouponsDelete()
+        {
+            var service = new CouponService(this.StripeClient);
+            service.Delete("Z4OV52SU");
+        }
+
+        [Fact]
+        public void TestCouponsGet()
+        {
+            var options = new CouponListOptions { Limit = 3 };
+            var service = new CouponService(this.StripeClient);
+            StripeList<Coupon> coupons = service.List(options);
+        }
+
+        [Fact]
+        public void TestCouponsGet2()
+        {
+            var service = new CouponService(this.StripeClient);
+            service.Get("Z4OV52SU");
+        }
+
+        [Fact]
+        public void TestCouponsPost()
         {
             var options = new CouponCreateOptions
             {
-                PercentOff = 25.5m,
+                PercentOff = 25.5M,
                 Duration = "repeating",
                 DurationInMonths = 3,
             };
@@ -550,29 +610,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCouponServiceDelete()
-        {
-            var service = new CouponService(this.StripeClient);
-            service.Delete("Z4OV52SU");
-        }
-
-        [Fact]
-        public void TestCouponServiceList()
-        {
-            var options = new CouponListOptions { Limit = 3 };
-            var service = new CouponService(this.StripeClient);
-            StripeList<Coupon> coupons = service.List(options);
-        }
-
-        [Fact]
-        public void TestCouponServiceRetrieve()
-        {
-            var service = new CouponService(this.StripeClient);
-            service.Get("Z4OV52SU");
-        }
-
-        [Fact]
-        public void TestCouponServiceUpdate()
+        public void TestCouponsPost2()
         {
             var options = new CouponUpdateOptions
             {
@@ -586,7 +624,15 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCreditNoteServiceCreate()
+        public void TestCreditNotesGet()
+        {
+            var options = new CreditNoteListOptions { Limit = 3 };
+            var service = new CreditNoteService(this.StripeClient);
+            StripeList<CreditNote> creditNotes = service.List(options);
+        }
+
+        [Fact]
+        public void TestCreditNotesPost()
         {
             var options = new CreditNoteCreateOptions
             {
@@ -606,15 +652,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCreditNoteServiceList()
-        {
-            var options = new CreditNoteListOptions { Limit = 3 };
-            var service = new CreditNoteService(this.StripeClient);
-            StripeList<CreditNote> creditnotes = service.List(options);
-        }
-
-        [Fact]
-        public void TestCreditNoteServicePreview()
+        public void TestCreditNotesPreviewGet()
         {
             var options = new CreditNotePreviewOptions
             {
@@ -634,14 +672,35 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCreditNoteServiceVoidCreditNote()
+        public void TestCreditNotesVoidPost()
         {
             var service = new CreditNoteService(this.StripeClient);
             service.VoidCreditNote("cn_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestCustomerBalanceTransactionServiceCreate()
+        public void TestCustomersBalanceTransactionsGet()
+        {
+            var options = new CustomerBalanceTransactionListOptions
+            {
+                Limit = 3,
+            };
+            var service = new CustomerBalanceTransactionService(
+                this.StripeClient);
+            StripeList<CustomerBalanceTransaction> customerBalanceTransactions = service
+                .List("cus_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestCustomersBalanceTransactionsGet2()
+        {
+            var service = new CustomerBalanceTransactionService(
+                this.StripeClient);
+            service.Get("cus_xxxxxxxxxxxxx", "cbtxn_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCustomersBalanceTransactionsPost()
         {
             var options = new CustomerBalanceTransactionCreateOptions
             {
@@ -654,29 +713,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCustomerBalanceTransactionServiceList()
-        {
-            var options = new CustomerBalanceTransactionListOptions
-            {
-                Limit = 3,
-            };
-            var service = new CustomerBalanceTransactionService(
-                this.StripeClient);
-            StripeList<CustomerBalanceTransaction> customerbalancetransactions = service.List(
-                "cus_xxxxxxxxxxxxx",
-                options);
-        }
-
-        [Fact]
-        public void TestCustomerBalanceTransactionServiceRetrieve()
-        {
-            var service = new CustomerBalanceTransactionService(
-                this.StripeClient);
-            service.Get("cus_xxxxxxxxxxxxx", "cbtxn_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestCustomerBalanceTransactionServiceUpdate()
+        public void TestCustomersBalanceTransactionsPost2()
         {
             var options = new CustomerBalanceTransactionUpdateOptions
             {
@@ -691,18 +728,35 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCustomerServiceCreate()
+        public void TestCustomersCashBalanceGet()
         {
-            var options = new CustomerCreateOptions
-            {
-                Description = "My First Test Customer (created for API docs at https://www.stripe.com/docs/api)",
-            };
-            var service = new CustomerService(this.StripeClient);
-            service.Create(options);
+            var service = new CashBalanceService(this.StripeClient);
+            service.Get("cus_123");
         }
 
         [Fact]
-        public void TestCustomerServiceCreateFundingInstructions()
+        public void TestCustomersCashBalancePost()
+        {
+            var options = new CashBalanceUpdateOptions
+            {
+                Settings = new CashBalanceSettingsOptions
+                {
+                    ReconciliationMode = "manual",
+                },
+            };
+            var service = new CashBalanceService(this.StripeClient);
+            service.Update("cus_123", options);
+        }
+
+        [Fact]
+        public void TestCustomersDelete()
+        {
+            var service = new CustomerService(this.StripeClient);
+            service.Delete("cus_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCustomersFundingInstructionsPost()
         {
             var options = new CustomerCreateFundingInstructionsOptions
             {
@@ -719,27 +773,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCustomerServiceDelete()
-        {
-            var service = new CustomerService(this.StripeClient);
-            service.Delete("cus_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestCustomerServiceFundCashBalance()
-        {
-            var options = new Stripe.TestHelpers.CustomerFundCashBalanceOptions
-            {
-                Amount = 30,
-                Currency = "eur",
-            };
-            var service = new Stripe.TestHelpers.CustomerService(
-                this.StripeClient);
-            service.FundCashBalance("cus_123", options);
-        }
-
-        [Fact]
-        public void TestCustomerServiceList()
+        public void TestCustomersGet()
         {
             var options = new CustomerListOptions { Limit = 3 };
             var service = new CustomerService(this.StripeClient);
@@ -747,7 +781,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCustomerServiceList2()
+        public void TestCustomersGet2()
         {
             var options = new CustomerListOptions { Limit = 3 };
             var service = new CustomerService(this.StripeClient);
@@ -755,58 +789,49 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestCustomerServiceListPaymentMethods()
-        {
-            var options = new CustomerListPaymentMethodsOptions
-            {
-                Type = "card",
-            };
-            var service = new CustomerService(this.StripeClient);
-            service.ListPaymentMethods("cus_xyz", options);
-        }
-
-        [Fact]
-        public void TestCustomerServiceListPaymentMethods2()
-        {
-            var options = new CustomerListPaymentMethodsOptions
-            {
-                Type = "card",
-            };
-            var service = new CustomerService(this.StripeClient);
-            service.ListPaymentMethods("cus_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestCustomerServiceRetrieve()
+        public void TestCustomersGet3()
         {
             var service = new CustomerService(this.StripeClient);
             service.Get("cus_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestCustomerServiceSearch()
+        public void TestCustomersPaymentMethodsGet()
         {
-            var options = new CustomerSearchOptions
+            var options = new CustomerListPaymentMethodsOptions
             {
-                Query = "name:'fakename' AND metadata['foo']:'bar'",
+                Type = "card",
             };
             var service = new CustomerService(this.StripeClient);
-            service.Search(options);
+            StripeList<PaymentMethod> paymentMethods = service
+                .ListPaymentMethods("cus_xyz", options);
         }
 
         [Fact]
-        public void TestCustomerServiceSearch2()
+        public void TestCustomersPaymentMethodsGet2()
         {
-            var options = new CustomerSearchOptions
+            var options = new CustomerListPaymentMethodsOptions
             {
-                Query = "name:'fakename' AND metadata['foo']:'bar'",
+                Type = "card",
             };
             var service = new CustomerService(this.StripeClient);
-            service.Search(options);
+            StripeList<PaymentMethod> paymentMethods = service
+                .ListPaymentMethods("cus_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
-        public void TestCustomerServiceUpdate()
+        public void TestCustomersPost()
+        {
+            var options = new CustomerCreateOptions
+            {
+                Description = "My First Test Customer (created for API docs at https://www.stripe.com/docs/api)",
+            };
+            var service = new CustomerService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestCustomersPost2()
         {
             var options = new CustomerUpdateOptions
             {
@@ -820,21 +845,72 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestDiscountServiceDeleteSubscriptionDiscount()
+        public void TestCustomersSearchGet()
         {
-            var service = new DiscountService(this.StripeClient);
-            service.DeleteSubscriptionDiscount("sub_xyz");
+            var options = new CustomerSearchOptions
+            {
+                Query = "name:'fakename' AND metadata['foo']:'bar'",
+            };
+            var service = new CustomerService(this.StripeClient);
+            service.Search(options);
         }
 
         [Fact]
-        public void TestDisputeServiceClose()
+        public void TestCustomersSearchGet2()
+        {
+            var options = new CustomerSearchOptions
+            {
+                Query = "name:'fakename' AND metadata['foo']:'bar'",
+            };
+            var service = new CustomerService(this.StripeClient);
+            service.Search(options);
+        }
+
+        [Fact]
+        public void TestCustomersTaxIdsDelete()
+        {
+            var service = new TaxIdService(this.StripeClient);
+            service.Delete("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCustomersTaxIdsGet()
+        {
+            var options = new TaxIdListOptions { Limit = 3 };
+            var service = new TaxIdService(this.StripeClient);
+            StripeList<TaxId> taxIds = service.List(
+                "cus_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestCustomersTaxIdsGet2()
+        {
+            var service = new TaxIdService(this.StripeClient);
+            service.Get("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestCustomersTaxIdsPost()
+        {
+            var options = new TaxIdCreateOptions
+            {
+                Type = "eu_vat",
+                Value = "DE123456789",
+            };
+            var service = new TaxIdService(this.StripeClient);
+            service.Create("cus_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestDisputesClosePost()
         {
             var service = new DisputeService(this.StripeClient);
             service.Close("dp_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestDisputeServiceList()
+        public void TestDisputesGet()
         {
             var options = new DisputeListOptions { Limit = 3 };
             var service = new DisputeService(this.StripeClient);
@@ -842,14 +918,14 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestDisputeServiceRetrieve()
+        public void TestDisputesGet2()
         {
             var service = new DisputeService(this.StripeClient);
             service.Get("dp_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestDisputeServiceUpdate()
+        public void TestDisputesPost()
         {
             var options = new DisputeUpdateOptions
             {
@@ -863,7 +939,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestEventServiceList()
+        public void TestEventsGet()
         {
             var options = new EventListOptions { Limit = 3 };
             var service = new EventService(this.StripeClient);
@@ -871,14 +947,29 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestEventServiceRetrieve()
+        public void TestEventsGet2()
         {
             var service = new EventService(this.StripeClient);
             service.Get("evt_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestFileLinkServiceCreate()
+        public void TestFileLinksGet()
+        {
+            var options = new FileLinkListOptions { Limit = 3 };
+            var service = new FileLinkService(this.StripeClient);
+            StripeList<FileLink> fileLinks = service.List(options);
+        }
+
+        [Fact]
+        public void TestFileLinksGet2()
+        {
+            var service = new FileLinkService(this.StripeClient);
+            service.Get("link_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestFileLinksPost()
         {
             var options = new FileLinkCreateOptions
             {
@@ -889,22 +980,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestFileLinkServiceList()
-        {
-            var options = new FileLinkListOptions { Limit = 3 };
-            var service = new FileLinkService(this.StripeClient);
-            StripeList<FileLink> filelinks = service.List(options);
-        }
-
-        [Fact]
-        public void TestFileLinkServiceRetrieve()
-        {
-            var service = new FileLinkService(this.StripeClient);
-            service.Get("link_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestFileLinkServiceUpdate()
+        public void TestFileLinksPost2()
         {
             var options = new FileLinkUpdateOptions
             {
@@ -918,7 +994,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestFileServiceList()
+        public void TestFilesGet()
         {
             var options = new FileListOptions { Limit = 3 };
             var service = new FileService(this.StripeClient);
@@ -926,14 +1002,27 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestFileServiceRetrieve()
+        public void TestFilesGet2()
         {
             var service = new FileService(this.StripeClient);
             service.Get("file_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestFinancialConnectionsAccountServiceDisconnect()
+        public void TestFilesPost()
+        {
+            var options = new FileCreateOptions
+            {
+                Purpose = "account_requirement",
+                File = new System.IO.MemoryStream(
+                    System.Text.Encoding.UTF8.GetBytes("File contents")),
+            };
+            var service = new FileService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsAccountsDisconnectPost()
         {
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
@@ -941,7 +1030,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestFinancialConnectionsAccountServiceDisconnect2()
+        public void TestFinancialConnectionsAccountsDisconnectPost2()
         {
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
@@ -949,15 +1038,24 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestFinancialConnectionsAccountServiceList()
+        public void TestFinancialConnectionsAccountsGet()
         {
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
-            StripeList<Stripe.FinancialConnections.Account> accounts = service.List();
+            StripeList<Stripe.FinancialConnections.Account> accounts = service
+                .List();
         }
 
         [Fact]
-        public void TestFinancialConnectionsAccountServiceList2()
+        public void TestFinancialConnectionsAccountsGet2()
+        {
+            var service = new Stripe.FinancialConnections.AccountService(
+                this.StripeClient);
+            service.Get("fca_xyz");
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsAccountsGet3()
         {
             var options = new Stripe.FinancialConnections.AccountListOptions
             {
@@ -968,12 +1066,20 @@ namespace StripeTests
             };
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
-            StripeList<Stripe.FinancialConnections.Account> accounts = service.List(
-                options);
+            StripeList<Stripe.FinancialConnections.Account> accounts = service
+                .List(options);
         }
 
         [Fact]
-        public void TestFinancialConnectionsAccountServiceListOwners()
+        public void TestFinancialConnectionsAccountsGet4()
+        {
+            var service = new Stripe.FinancialConnections.AccountService(
+                this.StripeClient);
+            service.Get("fca_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsAccountsOwnersGet()
         {
             var options = new Stripe.FinancialConnections.AccountListOwnersOptions
             {
@@ -981,11 +1087,12 @@ namespace StripeTests
             };
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
-            service.ListOwners("fca_xyz", options);
+            StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
+                .ListOwners("fca_xyz", options);
         }
 
         [Fact]
-        public void TestFinancialConnectionsAccountServiceListOwners2()
+        public void TestFinancialConnectionsAccountsOwnersGet2()
         {
             var options = new Stripe.FinancialConnections.AccountListOwnersOptions
             {
@@ -994,11 +1101,12 @@ namespace StripeTests
             };
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
-            service.ListOwners("fca_xxxxxxxxxxxxx", options);
+            StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
+                .ListOwners("fca_xxxxxxxxxxxxx", options);
         }
 
         [Fact]
-        public void TestFinancialConnectionsAccountServiceRefresh()
+        public void TestFinancialConnectionsAccountsRefreshPost()
         {
             var options = new Stripe.FinancialConnections.AccountRefreshOptions
             {
@@ -1010,23 +1118,23 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestFinancialConnectionsAccountServiceRetrieve()
+        public void TestFinancialConnectionsSessionsGet()
         {
-            var service = new Stripe.FinancialConnections.AccountService(
+            var service = new Stripe.FinancialConnections.SessionService(
                 this.StripeClient);
-            service.Get("fca_xyz");
+            service.Get("fcsess_xyz");
         }
 
         [Fact]
-        public void TestFinancialConnectionsAccountServiceRetrieve2()
+        public void TestFinancialConnectionsSessionsGet2()
         {
-            var service = new Stripe.FinancialConnections.AccountService(
+            var service = new Stripe.FinancialConnections.SessionService(
                 this.StripeClient);
-            service.Get("fca_xxxxxxxxxxxxx");
+            service.Get("fcsess_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestFinancialConnectionsSessionServiceCreate()
+        public void TestFinancialConnectionsSessionsPost()
         {
             var options = new Stripe.FinancialConnections.SessionCreateOptions
             {
@@ -1043,7 +1151,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestFinancialConnectionsSessionServiceCreate2()
+        public void TestFinancialConnectionsSessionsPost2()
         {
             var options = new Stripe.FinancialConnections.SessionCreateOptions
             {
@@ -1064,23 +1172,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestFinancialConnectionsSessionServiceRetrieve()
-        {
-            var service = new Stripe.FinancialConnections.SessionService(
-                this.StripeClient);
-            service.Get("fcsess_xyz");
-        }
-
-        [Fact]
-        public void TestFinancialConnectionsSessionServiceRetrieve2()
-        {
-            var service = new Stripe.FinancialConnections.SessionService(
-                this.StripeClient);
-            service.Get("fcsess_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIdentityVerificationReportServiceList()
+        public void TestIdentityVerificationReportsGet()
         {
             var options = new Stripe.Identity.VerificationReportListOptions
             {
@@ -1088,12 +1180,12 @@ namespace StripeTests
             };
             var service = new Stripe.Identity.VerificationReportService(
                 this.StripeClient);
-            StripeList<Stripe.Identity.VerificationReport> verificationreports = service.List(
-                options);
+            StripeList<Stripe.Identity.VerificationReport> verificationReports = service
+                .List(options);
         }
 
         [Fact]
-        public void TestIdentityVerificationReportServiceRetrieve()
+        public void TestIdentityVerificationReportsGet2()
         {
             var service = new Stripe.Identity.VerificationReportService(
                 this.StripeClient);
@@ -1101,7 +1193,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIdentityVerificationSessionServiceCancel()
+        public void TestIdentityVerificationSessionsCancelPost()
         {
             var service = new Stripe.Identity.VerificationSessionService(
                 this.StripeClient);
@@ -1109,7 +1201,28 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIdentityVerificationSessionServiceCreate()
+        public void TestIdentityVerificationSessionsGet()
+        {
+            var options = new Stripe.Identity.VerificationSessionListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.Identity.VerificationSessionService(
+                this.StripeClient);
+            StripeList<Stripe.Identity.VerificationSession> verificationSessions = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestIdentityVerificationSessionsGet2()
+        {
+            var service = new Stripe.Identity.VerificationSessionService(
+                this.StripeClient);
+            service.Get("vs_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIdentityVerificationSessionsPost()
         {
             var options = new Stripe.Identity.VerificationSessionCreateOptions
             {
@@ -1121,36 +1234,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIdentityVerificationSessionServiceList()
-        {
-            var options = new Stripe.Identity.VerificationSessionListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.Identity.VerificationSessionService(
-                this.StripeClient);
-            StripeList<Stripe.Identity.VerificationSession> verificationsessions = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestIdentityVerificationSessionServiceRedact()
-        {
-            var service = new Stripe.Identity.VerificationSessionService(
-                this.StripeClient);
-            service.Redact("vs_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIdentityVerificationSessionServiceRetrieve()
-        {
-            var service = new Stripe.Identity.VerificationSessionService(
-                this.StripeClient);
-            service.Get("vs_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIdentityVerificationSessionServiceUpdate()
+        public void TestIdentityVerificationSessionsPost2()
         {
             var options = new Stripe.Identity.VerificationSessionUpdateOptions
             {
@@ -1162,7 +1246,37 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestInvoiceItemServiceCreate()
+        public void TestIdentityVerificationSessionsRedactPost()
+        {
+            var service = new Stripe.Identity.VerificationSessionService(
+                this.StripeClient);
+            service.Redact("vs_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestInvoiceitemsDelete()
+        {
+            var service = new InvoiceItemService(this.StripeClient);
+            service.Delete("ii_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestInvoiceitemsGet()
+        {
+            var options = new InvoiceItemListOptions { Limit = 3 };
+            var service = new InvoiceItemService(this.StripeClient);
+            StripeList<InvoiceItem> invoiceItems = service.List(options);
+        }
+
+        [Fact]
+        public void TestInvoiceitemsGet2()
+        {
+            var service = new InvoiceItemService(this.StripeClient);
+            service.Get("ii_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestInvoiceitemsPost()
         {
             var options = new InvoiceItemCreateOptions
             {
@@ -1174,29 +1288,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestInvoiceItemServiceDelete()
-        {
-            var service = new InvoiceItemService(this.StripeClient);
-            service.Delete("ii_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestInvoiceItemServiceList()
-        {
-            var options = new InvoiceItemListOptions { Limit = 3 };
-            var service = new InvoiceItemService(this.StripeClient);
-            StripeList<InvoiceItem> invoiceitems = service.List(options);
-        }
-
-        [Fact]
-        public void TestInvoiceItemServiceRetrieve()
-        {
-            var service = new InvoiceItemService(this.StripeClient);
-            service.Get("ii_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestInvoiceItemServiceUpdate()
+        public void TestInvoiceitemsPost2()
         {
             var options = new InvoiceItemUpdateOptions
             {
@@ -1210,32 +1302,21 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestInvoiceServiceCreate()
-        {
-            var options = new InvoiceCreateOptions
-            {
-                Customer = "cus_xxxxxxxxxxxxx",
-            };
-            var service = new InvoiceService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestInvoiceServiceDelete()
+        public void TestInvoicesDelete()
         {
             var service = new InvoiceService(this.StripeClient);
             service.Delete("in_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestInvoiceServiceFinalizeInvoice()
+        public void TestInvoicesFinalizePost()
         {
             var service = new InvoiceService(this.StripeClient);
             service.FinalizeInvoice("in_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestInvoiceServiceList()
+        public void TestInvoicesGet()
         {
             var options = new InvoiceListOptions { Limit = 3 };
             var service = new InvoiceService(this.StripeClient);
@@ -1243,28 +1324,14 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestInvoiceServiceMarkUncollectible()
-        {
-            var service = new InvoiceService(this.StripeClient);
-            service.MarkUncollectible("in_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestInvoiceServicePay()
-        {
-            var service = new InvoiceService(this.StripeClient);
-            service.Pay("in_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestInvoiceServiceRetrieve()
+        public void TestInvoicesGet2()
         {
             var service = new InvoiceService(this.StripeClient);
             service.Get("in_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestInvoiceServiceRetrieve2()
+        public void TestInvoicesGet3()
         {
             var options = new InvoiceGetOptions
             {
@@ -1275,36 +1342,32 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestInvoiceServiceSearch()
+        public void TestInvoicesMarkUncollectiblePost()
         {
-            var options = new InvoiceSearchOptions
+            var service = new InvoiceService(this.StripeClient);
+            service.MarkUncollectible("in_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestInvoicesPayPost()
+        {
+            var service = new InvoiceService(this.StripeClient);
+            service.Pay("in_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestInvoicesPost()
+        {
+            var options = new InvoiceCreateOptions
             {
-                Query = "total>999 AND metadata['order_id']:'6735'",
+                Customer = "cus_xxxxxxxxxxxxx",
             };
             var service = new InvoiceService(this.StripeClient);
-            service.Search(options);
+            service.Create(options);
         }
 
         [Fact]
-        public void TestInvoiceServiceSendInvoice()
-        {
-            var service = new InvoiceService(this.StripeClient);
-            service.SendInvoice("in_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestInvoiceServiceUpcoming()
-        {
-            var options = new UpcomingInvoiceOptions
-            {
-                Customer = "cus_9utnxg47pWjV1e",
-            };
-            var service = new InvoiceService(this.StripeClient);
-            service.Upcoming(options);
-        }
-
-        [Fact]
-        public void TestInvoiceServiceUpdate()
+        public void TestInvoicesPost2()
         {
             var options = new InvoiceUpdateOptions
             {
@@ -1318,14 +1381,43 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestInvoiceServiceVoidInvoice()
+        public void TestInvoicesSearchGet()
+        {
+            var options = new InvoiceSearchOptions
+            {
+                Query = "total>999 AND metadata['order_id']:'6735'",
+            };
+            var service = new InvoiceService(this.StripeClient);
+            service.Search(options);
+        }
+
+        [Fact]
+        public void TestInvoicesSendPost()
+        {
+            var service = new InvoiceService(this.StripeClient);
+            service.SendInvoice("in_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestInvoicesUpcomingGet()
+        {
+            var options = new UpcomingInvoiceOptions
+            {
+                Customer = "cus_9utnxg47pWjV1e",
+            };
+            var service = new InvoiceService(this.StripeClient);
+            service.Upcoming(options);
+        }
+
+        [Fact]
+        public void TestInvoicesVoidPost()
         {
             var service = new InvoiceService(this.StripeClient);
             service.VoidInvoice("in_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestIssuingAuthorizationServiceApprove()
+        public void TestIssuingAuthorizationsApprovePost()
         {
             var service = new Stripe.Issuing.AuthorizationService(
                 this.StripeClient);
@@ -1333,7 +1425,2028 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingAuthorizationServiceCapture()
+        public void TestIssuingAuthorizationsDeclinePost()
+        {
+            var service = new Stripe.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Decline("iauth_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingAuthorizationsGet()
+        {
+            var options = new Stripe.Issuing.AuthorizationListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.Issuing.AuthorizationService(
+                this.StripeClient);
+            StripeList<Stripe.Issuing.Authorization> authorizations = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestIssuingAuthorizationsGet2()
+        {
+            var service = new Stripe.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Get("iauth_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingAuthorizationsPost()
+        {
+            var options = new Stripe.Issuing.AuthorizationUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new Stripe.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Update("iauth_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestIssuingCardholdersGet()
+        {
+            var options = new Stripe.Issuing.CardholderListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.Issuing.CardholderService(
+                this.StripeClient);
+            StripeList<Stripe.Issuing.Cardholder> cardholders = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestIssuingCardholdersGet2()
+        {
+            var service = new Stripe.Issuing.CardholderService(
+                this.StripeClient);
+            service.Get("ich_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingCardholdersPost()
+        {
+            var options = new Stripe.Issuing.CardholderCreateOptions
+            {
+                Type = "individual",
+                Name = "Jenny Rosen",
+                Email = "jenny.rosen@example.com",
+                PhoneNumber = "+18888675309",
+                Billing = new Stripe.Issuing.CardholderBillingOptions
+                {
+                    Address = new AddressOptions
+                    {
+                        Line1 = "1234 Main Street",
+                        City = "San Francisco",
+                        State = "CA",
+                        Country = "US",
+                        PostalCode = "94111",
+                    },
+                },
+            };
+            var service = new Stripe.Issuing.CardholderService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestIssuingCardholdersPost2()
+        {
+            var options = new Stripe.Issuing.CardholderUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new Stripe.Issuing.CardholderService(
+                this.StripeClient);
+            service.Update("ich_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestIssuingCardsGet()
+        {
+            var options = new Stripe.Issuing.CardListOptions { Limit = 3 };
+            var service = new Stripe.Issuing.CardService(this.StripeClient);
+            StripeList<Stripe.Issuing.Card> cards = service.List(options);
+        }
+
+        [Fact]
+        public void TestIssuingCardsGet2()
+        {
+            var service = new Stripe.Issuing.CardService(this.StripeClient);
+            service.Get("ic_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingCardsPost()
+        {
+            var options = new Stripe.Issuing.CardCreateOptions
+            {
+                Cardholder = "ich_xxxxxxxxxxxxx",
+                Currency = "usd",
+                Type = "virtual",
+            };
+            var service = new Stripe.Issuing.CardService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestIssuingCardsPost2()
+        {
+            var options = new Stripe.Issuing.CardUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new Stripe.Issuing.CardService(this.StripeClient);
+            service.Update("ic_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestIssuingDisputesGet()
+        {
+            var options = new Stripe.Issuing.DisputeListOptions { Limit = 3 };
+            var service = new Stripe.Issuing.DisputeService(this.StripeClient);
+            StripeList<Stripe.Issuing.Dispute> disputes = service.List(options);
+        }
+
+        [Fact]
+        public void TestIssuingDisputesGet2()
+        {
+            var service = new Stripe.Issuing.DisputeService(this.StripeClient);
+            service.Get("idp_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingDisputesPost()
+        {
+            var options = new Stripe.Issuing.DisputeCreateOptions
+            {
+                Transaction = "ipi_xxxxxxxxxxxxx",
+                Evidence = new Stripe.Issuing.DisputeEvidenceOptions
+                {
+                    Reason = "fraudulent",
+                    Fraudulent = new Stripe.Issuing.DisputeEvidenceFraudulentOptions
+                    {
+                        Explanation = "Purchase was unrecognized.",
+                    },
+                },
+            };
+            var service = new Stripe.Issuing.DisputeService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestIssuingDisputesSubmitPost()
+        {
+            var service = new Stripe.Issuing.DisputeService(this.StripeClient);
+            service.Submit("idp_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingTransactionsGet()
+        {
+            var options = new Stripe.Issuing.TransactionListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.Issuing.TransactionService(
+                this.StripeClient);
+            StripeList<Stripe.Issuing.Transaction> transactions = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestIssuingTransactionsGet2()
+        {
+            var service = new Stripe.Issuing.TransactionService(
+                this.StripeClient);
+            service.Get("ipi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestIssuingTransactionsPost()
+        {
+            var options = new Stripe.Issuing.TransactionUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new Stripe.Issuing.TransactionService(
+                this.StripeClient);
+            service.Update("ipi_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestMandatesGet()
+        {
+            var service = new MandateService(this.StripeClient);
+            service.Get("mandate_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPaymentIntentsApplyCustomerBalancePost()
+        {
+            var service = new PaymentIntentService(this.StripeClient);
+            service.ApplyCustomerBalance("pi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPaymentIntentsCancelPost()
+        {
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Cancel("pi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPaymentIntentsCapturePost()
+        {
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Capture("pi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPaymentIntentsConfirmPost()
+        {
+            var options = new PaymentIntentConfirmOptions
+            {
+                PaymentMethod = "pm_card_visa",
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Confirm("pi_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPaymentIntentsGet()
+        {
+            var options = new PaymentIntentListOptions { Limit = 3 };
+            var service = new PaymentIntentService(this.StripeClient);
+            StripeList<PaymentIntent> paymentIntents = service.List(options);
+        }
+
+        [Fact]
+        public void TestPaymentIntentsGet2()
+        {
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Get("pi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPaymentIntentsIncrementAuthorizationPost()
+        {
+            var options = new PaymentIntentIncrementAuthorizationOptions
+            {
+                Amount = 2099,
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.IncrementAuthorization("pi_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPaymentIntentsPost()
+        {
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = 1099,
+                Currency = "eur",
+                AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
+                {
+                    Enabled = true,
+                },
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPaymentIntentsPost2()
+        {
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = 2000,
+                Currency = "usd",
+                AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
+                {
+                    Enabled = true,
+                },
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPaymentIntentsPost3()
+        {
+            var options = new PaymentIntentUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Update("pi_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPaymentIntentsPost4()
+        {
+            var options = new PaymentIntentCreateOptions
+            {
+                Amount = 200,
+                Currency = "usd",
+                PaymentMethodData = new PaymentIntentPaymentMethodDataOptions
+                {
+                    Type = "p24",
+                    P24 = new PaymentIntentPaymentMethodDataP24Options
+                    {
+                        Bank = "blik",
+                    },
+                },
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPaymentIntentsSearchGet()
+        {
+            var options = new PaymentIntentSearchOptions
+            {
+                Query = "status:'succeeded' AND metadata['order_id']:'6735'",
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.Search(options);
+        }
+
+        [Fact]
+        public void TestPaymentIntentsVerifyMicrodepositsPost()
+        {
+            var service = new PaymentIntentService(this.StripeClient);
+            service.VerifyMicrodeposits("pi_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPaymentIntentsVerifyMicrodepositsPost2()
+        {
+            var options = new PaymentIntentVerifyMicrodepositsOptions
+            {
+                Amounts = new List<long?> { 32, 45 },
+            };
+            var service = new PaymentIntentService(this.StripeClient);
+            service.VerifyMicrodeposits("pi_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPaymentLinksGet()
+        {
+            var service = new PaymentLinkService(this.StripeClient);
+            service.Get("pl_xyz");
+        }
+
+        [Fact]
+        public void TestPaymentLinksGet2()
+        {
+            var options = new PaymentLinkListOptions { Limit = 3 };
+            var service = new PaymentLinkService(this.StripeClient);
+            StripeList<PaymentLink> paymentLinks = service.List(options);
+        }
+
+        [Fact]
+        public void TestPaymentLinksGet3()
+        {
+            var service = new PaymentLinkService(this.StripeClient);
+            service.Get("plink_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPaymentLinksLineItemsGet()
+        {
+            var service = new PaymentLinkService(this.StripeClient);
+            StripeList<LineItem> lineItems = service.ListLineItems("pl_xyz");
+        }
+
+        [Fact]
+        public void TestPaymentLinksPost()
+        {
+            var options = new PaymentLinkCreateOptions
+            {
+                LineItems = new List<PaymentLinkLineItemOptions>
+                {
+                    new PaymentLinkLineItemOptions
+                    {
+                        Price = "price_xxxxxxxxxxxxx",
+                        Quantity = 1,
+                    },
+                },
+            };
+            var service = new PaymentLinkService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPaymentLinksPost2()
+        {
+            var options = new PaymentLinkCreateOptions
+            {
+                LineItems = new List<PaymentLinkLineItemOptions>
+                {
+                    new PaymentLinkLineItemOptions
+                    {
+                        Price = "price_xxxxxxxxxxxxx",
+                        Quantity = 1,
+                    },
+                },
+            };
+            var service = new PaymentLinkService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPaymentLinksPost3()
+        {
+            var options = new PaymentLinkUpdateOptions { Active = false };
+            var service = new PaymentLinkService(this.StripeClient);
+            service.Update("plink_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodConfigurationsGet()
+        {
+            var options = new PaymentMethodConfigurationListOptions
+            {
+                Application = "foo",
+            };
+            var service = new PaymentMethodConfigurationService(
+                this.StripeClient);
+            StripeList<PaymentMethodConfiguration> paymentMethodConfigurations = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodConfigurationsGet2()
+        {
+            var service = new PaymentMethodConfigurationService(
+                this.StripeClient);
+            service.Get("foo");
+        }
+
+        [Fact]
+        public void TestPaymentMethodConfigurationsPost()
+        {
+            var options = new PaymentMethodConfigurationCreateOptions
+            {
+                AcssDebit = new PaymentMethodConfigurationAcssDebitOptions
+                {
+                    DisplayPreference = new PaymentMethodConfigurationAcssDebitDisplayPreferenceOptions
+                    {
+                        Preference = "none",
+                    },
+                },
+                Affirm = new PaymentMethodConfigurationAffirmOptions
+                {
+                    DisplayPreference = new PaymentMethodConfigurationAffirmDisplayPreferenceOptions
+                    {
+                        Preference = "none",
+                    },
+                },
+            };
+            var service = new PaymentMethodConfigurationService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodConfigurationsPost2()
+        {
+            var options = new PaymentMethodConfigurationUpdateOptions
+            {
+                AcssDebit = new PaymentMethodConfigurationAcssDebitOptions
+                {
+                    DisplayPreference = new PaymentMethodConfigurationAcssDebitDisplayPreferenceOptions
+                    {
+                        Preference = "on",
+                    },
+                },
+            };
+            var service = new PaymentMethodConfigurationService(
+                this.StripeClient);
+            service.Update("foo", options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodsAttachPost()
+        {
+            var options = new PaymentMethodAttachOptions
+            {
+                Customer = "cus_xxxxxxxxxxxxx",
+            };
+            var service = new PaymentMethodService(this.StripeClient);
+            service.Attach("pm_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodsDetachPost()
+        {
+            var service = new PaymentMethodService(this.StripeClient);
+            service.Detach("pm_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPaymentMethodsGet()
+        {
+            var options = new PaymentMethodListOptions
+            {
+                Customer = "cus_xxxxxxxxxxxxx",
+                Type = "card",
+            };
+            var service = new PaymentMethodService(this.StripeClient);
+            StripeList<PaymentMethod> paymentMethods = service.List(options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodsGet2()
+        {
+            var service = new PaymentMethodService(this.StripeClient);
+            service.Get("pm_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPaymentMethodsPost()
+        {
+            var options = new PaymentMethodCreateOptions
+            {
+                Type = "card",
+                Card = new PaymentMethodCardOptions
+                {
+                    Number = "4242424242424242",
+                    ExpMonth = 8,
+                    ExpYear = 2024,
+                    Cvc = "314",
+                },
+            };
+            var service = new PaymentMethodService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPaymentMethodsPost2()
+        {
+            var options = new PaymentMethodUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new PaymentMethodService(this.StripeClient);
+            service.Update("pm_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPayoutsCancelPost()
+        {
+            var service = new PayoutService(this.StripeClient);
+            service.Cancel("po_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPayoutsGet()
+        {
+            var options = new PayoutListOptions { Limit = 3 };
+            var service = new PayoutService(this.StripeClient);
+            StripeList<Payout> payouts = service.List(options);
+        }
+
+        [Fact]
+        public void TestPayoutsGet2()
+        {
+            var service = new PayoutService(this.StripeClient);
+            service.Get("po_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPayoutsPost()
+        {
+            var options = new PayoutCreateOptions
+            {
+                Amount = 1100,
+                Currency = "usd",
+            };
+            var service = new PayoutService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPayoutsPost2()
+        {
+            var options = new PayoutUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new PayoutService(this.StripeClient);
+            service.Update("po_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPayoutsReversePost()
+        {
+            var service = new PayoutService(this.StripeClient);
+            service.Reverse("po_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPlansDelete()
+        {
+            var service = new PlanService(this.StripeClient);
+            service.Delete("price_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPlansGet()
+        {
+            var options = new PlanListOptions { Limit = 3 };
+            var service = new PlanService(this.StripeClient);
+            StripeList<Plan> plans = service.List(options);
+        }
+
+        [Fact]
+        public void TestPlansGet2()
+        {
+            var service = new PlanService(this.StripeClient);
+            service.Get("price_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPlansPost()
+        {
+            var options = new PlanCreateOptions
+            {
+                Amount = 2000,
+                Currency = "usd",
+                Interval = "month",
+                Product = "prod_xxxxxxxxxxxxx",
+            };
+            var service = new PlanService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPlansPost2()
+        {
+            var options = new PlanCreateOptions
+            {
+                Amount = 2000,
+                Currency = "usd",
+                Interval = "month",
+                Product = new PlanProductOptions { Name = "My product" },
+            };
+            var service = new PlanService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPlansPost3()
+        {
+            var options = new PlanUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new PlanService(this.StripeClient);
+            service.Update("price_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPricesGet()
+        {
+            var options = new PriceListOptions { Limit = 3 };
+            var service = new PriceService(this.StripeClient);
+            StripeList<Price> prices = service.List(options);
+        }
+
+        [Fact]
+        public void TestPricesGet2()
+        {
+            var service = new PriceService(this.StripeClient);
+            service.Get("price_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPricesPost()
+        {
+            var options = new PriceCreateOptions
+            {
+                UnitAmount = 2000,
+                Currency = "usd",
+                CurrencyOptions = new Dictionary<string, PriceCurrencyOptionsOptions>
+                {
+                    {
+                        "uah", new PriceCurrencyOptionsOptions
+                        {
+                            UnitAmount = 5000,
+                        }
+                    },
+                    {
+                        "eur", new PriceCurrencyOptionsOptions
+                        {
+                            UnitAmount = 1800,
+                        }
+                    },
+                },
+                Recurring = new PriceRecurringOptions { Interval = "month" },
+                Product = "prod_xxxxxxxxxxxxx",
+            };
+            var service = new PriceService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPricesPost2()
+        {
+            var options = new PriceCreateOptions
+            {
+                UnitAmount = 2000,
+                Currency = "usd",
+                Recurring = new PriceRecurringOptions { Interval = "month" },
+                Product = "prod_xxxxxxxxxxxxx",
+            };
+            var service = new PriceService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPricesPost3()
+        {
+            var options = new PriceUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new PriceService(this.StripeClient);
+            service.Update("price_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestPricesSearchGet()
+        {
+            var options = new PriceSearchOptions
+            {
+                Query = "active:'true' AND metadata['order_id']:'6735'",
+            };
+            var service = new PriceService(this.StripeClient);
+            service.Search(options);
+        }
+
+        [Fact]
+        public void TestProductsDelete()
+        {
+            var service = new ProductService(this.StripeClient);
+            service.Delete("prod_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestProductsGet()
+        {
+            var options = new ProductListOptions { Limit = 3 };
+            var service = new ProductService(this.StripeClient);
+            StripeList<Product> products = service.List(options);
+        }
+
+        [Fact]
+        public void TestProductsGet2()
+        {
+            var service = new ProductService(this.StripeClient);
+            service.Get("prod_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestProductsPost()
+        {
+            var options = new ProductCreateOptions { Name = "Gold Special" };
+            var service = new ProductService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestProductsPost2()
+        {
+            var options = new ProductUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new ProductService(this.StripeClient);
+            service.Update("prod_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestProductsSearchGet()
+        {
+            var options = new ProductSearchOptions
+            {
+                Query = "active:'true' AND metadata['order_id']:'6735'",
+            };
+            var service = new ProductService(this.StripeClient);
+            service.Search(options);
+        }
+
+        [Fact]
+        public void TestPromotionCodesGet()
+        {
+            var options = new PromotionCodeListOptions { Limit = 3 };
+            var service = new PromotionCodeService(this.StripeClient);
+            StripeList<PromotionCode> promotionCodes = service.List(options);
+        }
+
+        [Fact]
+        public void TestPromotionCodesGet2()
+        {
+            var service = new PromotionCodeService(this.StripeClient);
+            service.Get("promo_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestPromotionCodesPost()
+        {
+            var options = new PromotionCodeCreateOptions
+            {
+                Coupon = "Z4OV52SU",
+            };
+            var service = new PromotionCodeService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestPromotionCodesPost2()
+        {
+            var options = new PromotionCodeUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new PromotionCodeService(this.StripeClient);
+            service.Update("promo_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestQuotesAcceptPost()
+        {
+            var service = new QuoteService(this.StripeClient);
+            service.Accept("qt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestQuotesCancelPost()
+        {
+            var service = new QuoteService(this.StripeClient);
+            service.Cancel("qt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestQuotesFinalizePost()
+        {
+            var service = new QuoteService(this.StripeClient);
+            service.FinalizeQuote("qt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestQuotesGet()
+        {
+            var options = new QuoteListOptions { Limit = 3 };
+            var service = new QuoteService(this.StripeClient);
+            StripeList<Quote> quotes = service.List(options);
+        }
+
+        [Fact]
+        public void TestQuotesGet2()
+        {
+            var service = new QuoteService(this.StripeClient);
+            service.Get("qt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestQuotesLineItemsGet()
+        {
+            var service = new QuoteService(this.StripeClient);
+            StripeList<LineItem> lineItems = service.ListLineItems(
+                "qt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestQuotesPdfGet()
+        {
+            var service = new QuoteService(this.StripeClient);
+            service.Pdf("qt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestQuotesPost()
+        {
+            var options = new QuoteCreateOptions
+            {
+                Customer = "cus_xxxxxxxxxxxxx",
+                LineItems = new List<QuoteLineItemOptions>
+                {
+                    new QuoteLineItemOptions
+                    {
+                        Price = "price_xxxxxxxxxxxxx",
+                        Quantity = 2,
+                    },
+                },
+            };
+            var service = new QuoteService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestQuotesPost2()
+        {
+            var options = new QuoteUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new QuoteService(this.StripeClient);
+            service.Update("qt_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestQuotesPreviewInvoicesLinesGet()
+        {
+            var service = new QuoteService(this.StripeClient);
+            StripeList<InvoiceLineItem> invoiceLineItems = service
+                .ListPreviewInvoiceLines("qt_xyz", "in_xyz");
+        }
+
+        [Fact]
+        public void TestRadarEarlyFraudWarningsGet()
+        {
+            var options = new Stripe.Radar.EarlyFraudWarningListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.Radar.EarlyFraudWarningService(
+                this.StripeClient);
+            StripeList<Stripe.Radar.EarlyFraudWarning> earlyFraudWarnings = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestRadarEarlyFraudWarningsGet2()
+        {
+            var service = new Stripe.Radar.EarlyFraudWarningService(
+                this.StripeClient);
+            service.Get("issfr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestRadarValueListItemsDelete()
+        {
+            var service = new Stripe.Radar.ValueListItemService(
+                this.StripeClient);
+            service.Delete("rsli_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestRadarValueListItemsGet()
+        {
+            var options = new Stripe.Radar.ValueListItemListOptions
+            {
+                Limit = 3,
+                ValueList = "rsl_xxxxxxxxxxxxx",
+            };
+            var service = new Stripe.Radar.ValueListItemService(
+                this.StripeClient);
+            StripeList<Stripe.Radar.ValueListItem> valueListItems = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestRadarValueListItemsGet2()
+        {
+            var service = new Stripe.Radar.ValueListItemService(
+                this.StripeClient);
+            service.Get("rsli_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestRadarValueListItemsPost()
+        {
+            var options = new Stripe.Radar.ValueListItemCreateOptions
+            {
+                ValueList = "rsl_xxxxxxxxxxxxx",
+                Value = "1.2.3.4",
+            };
+            var service = new Stripe.Radar.ValueListItemService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestRadarValueListsDelete()
+        {
+            var service = new Stripe.Radar.ValueListService(this.StripeClient);
+            service.Delete("rsl_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestRadarValueListsGet()
+        {
+            var options = new Stripe.Radar.ValueListListOptions { Limit = 3 };
+            var service = new Stripe.Radar.ValueListService(this.StripeClient);
+            StripeList<Stripe.Radar.ValueList> valueLists = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestRadarValueListsGet2()
+        {
+            var service = new Stripe.Radar.ValueListService(this.StripeClient);
+            service.Get("rsl_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestRadarValueListsPost()
+        {
+            var options = new Stripe.Radar.ValueListCreateOptions
+            {
+                Alias = "custom_ip_xxxxxxxxxxxxx",
+                Name = "Custom IP Blocklist",
+                ItemType = "ip_address",
+            };
+            var service = new Stripe.Radar.ValueListService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestRadarValueListsPost2()
+        {
+            var options = new Stripe.Radar.ValueListUpdateOptions
+            {
+                Name = "Updated IP Block List",
+            };
+            var service = new Stripe.Radar.ValueListService(this.StripeClient);
+            service.Update("rsl_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestRefundsCancelPost()
+        {
+            var service = new RefundService(this.StripeClient);
+            service.Cancel("re_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestRefundsGet()
+        {
+            var options = new RefundListOptions { Limit = 3 };
+            var service = new RefundService(this.StripeClient);
+            StripeList<Refund> refunds = service.List(options);
+        }
+
+        [Fact]
+        public void TestRefundsGet2()
+        {
+            var service = new RefundService(this.StripeClient);
+            service.Get("re_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestRefundsPost()
+        {
+            var options = new RefundCreateOptions
+            {
+                Charge = "ch_xxxxxxxxxxxxx",
+            };
+            var service = new RefundService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestRefundsPost2()
+        {
+            var options = new RefundUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new RefundService(this.StripeClient);
+            service.Update("re_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestReportingReportRunsGet()
+        {
+            var options = new Stripe.Reporting.ReportRunListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.Reporting.ReportRunService(
+                this.StripeClient);
+            StripeList<Stripe.Reporting.ReportRun> reportRuns = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestReportingReportRunsGet2()
+        {
+            var service = new Stripe.Reporting.ReportRunService(
+                this.StripeClient);
+            service.Get("frr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestReportingReportRunsPost()
+        {
+            var options = new Stripe.Reporting.ReportRunCreateOptions
+            {
+                ReportType = "balance.summary.1",
+                Parameters = new Stripe.Reporting.ReportRunParametersOptions
+                {
+                    IntervalStart = DateTimeOffset.FromUnixTimeSeconds(
+                        1522540800)
+                        .UtcDateTime,
+                    IntervalEnd = DateTimeOffset.FromUnixTimeSeconds(1525132800)
+                        .UtcDateTime,
+                },
+            };
+            var service = new Stripe.Reporting.ReportRunService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestReportingReportTypesGet()
+        {
+            var service = new Stripe.Reporting.ReportTypeService(
+                this.StripeClient);
+            StripeList<Stripe.Reporting.ReportType> reportTypes = service
+                .List();
+        }
+
+        [Fact]
+        public void TestReportingReportTypesGet2()
+        {
+            var service = new Stripe.Reporting.ReportTypeService(
+                this.StripeClient);
+            service.Get("balance.summary.1");
+        }
+
+        [Fact]
+        public void TestReviewsApprovePost()
+        {
+            var service = new ReviewService(this.StripeClient);
+            service.Approve("prv_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestReviewsGet()
+        {
+            var options = new ReviewListOptions { Limit = 3 };
+            var service = new ReviewService(this.StripeClient);
+            StripeList<Review> reviews = service.List(options);
+        }
+
+        [Fact]
+        public void TestReviewsGet2()
+        {
+            var service = new ReviewService(this.StripeClient);
+            service.Get("prv_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSetupAttemptsGet()
+        {
+            var options = new SetupAttemptListOptions
+            {
+                Limit = 3,
+                SetupIntent = "si_xyz",
+            };
+            var service = new SetupAttemptService(this.StripeClient);
+            StripeList<SetupAttempt> setupAttempts = service.List(options);
+        }
+
+        [Fact]
+        public void TestSetupIntentsCancelPost()
+        {
+            var service = new SetupIntentService(this.StripeClient);
+            service.Cancel("seti_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSetupIntentsConfirmPost()
+        {
+            var options = new SetupIntentConfirmOptions
+            {
+                PaymentMethod = "pm_card_visa",
+            };
+            var service = new SetupIntentService(this.StripeClient);
+            service.Confirm("seti_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestSetupIntentsGet()
+        {
+            var options = new SetupIntentListOptions { Limit = 3 };
+            var service = new SetupIntentService(this.StripeClient);
+            StripeList<SetupIntent> setupIntents = service.List(options);
+        }
+
+        [Fact]
+        public void TestSetupIntentsGet2()
+        {
+            var service = new SetupIntentService(this.StripeClient);
+            service.Get("seti_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSetupIntentsPost()
+        {
+            var options = new SetupIntentCreateOptions
+            {
+                PaymentMethodTypes = new List<string> { "card" },
+            };
+            var service = new SetupIntentService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestSetupIntentsPost2()
+        {
+            var options = new SetupIntentUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "user_id", "3435453" },
+                },
+            };
+            var service = new SetupIntentService(this.StripeClient);
+            service.Update("seti_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestSetupIntentsVerifyMicrodepositsPost()
+        {
+            var service = new SetupIntentService(this.StripeClient);
+            service.VerifyMicrodeposits("seti_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSetupIntentsVerifyMicrodepositsPost2()
+        {
+            var options = new SetupIntentVerifyMicrodepositsOptions
+            {
+                Amounts = new List<long?> { 32, 45 },
+            };
+            var service = new SetupIntentService(this.StripeClient);
+            service.VerifyMicrodeposits("seti_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestShippingRatesGet()
+        {
+            var service = new ShippingRateService(this.StripeClient);
+            StripeList<ShippingRate> shippingRates = service.List();
+        }
+
+        [Fact]
+        public void TestShippingRatesGet2()
+        {
+            var options = new ShippingRateListOptions { Limit = 3 };
+            var service = new ShippingRateService(this.StripeClient);
+            StripeList<ShippingRate> shippingRates = service.List(options);
+        }
+
+        [Fact]
+        public void TestShippingRatesGet3()
+        {
+            var service = new ShippingRateService(this.StripeClient);
+            service.Get("shr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestShippingRatesPost()
+        {
+            var options = new ShippingRateCreateOptions
+            {
+                DisplayName = "Sample Shipper",
+                FixedAmount = new ShippingRateFixedAmountOptions
+                {
+                    Currency = "usd",
+                    Amount = 400,
+                },
+                Type = "fixed_amount",
+            };
+            var service = new ShippingRateService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestShippingRatesPost2()
+        {
+            var options = new ShippingRateCreateOptions
+            {
+                DisplayName = "Ground shipping",
+                Type = "fixed_amount",
+                FixedAmount = new ShippingRateFixedAmountOptions
+                {
+                    Amount = 500,
+                    Currency = "usd",
+                },
+            };
+            var service = new ShippingRateService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestShippingRatesPost3()
+        {
+            var options = new ShippingRateUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new ShippingRateService(this.StripeClient);
+            service.Update("shr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestSigmaScheduledQueryRunsGet()
+        {
+            var options = new Stripe.Sigma.ScheduledQueryRunListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.Sigma.ScheduledQueryRunService(
+                this.StripeClient);
+            StripeList<Stripe.Sigma.ScheduledQueryRun> scheduledQueryRuns = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestSigmaScheduledQueryRunsGet2()
+        {
+            var service = new Stripe.Sigma.ScheduledQueryRunService(
+                this.StripeClient);
+            service.Get("sqr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSourcesGet()
+        {
+            var service = new SourceService(this.StripeClient);
+            service.Get("src_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSourcesGet2()
+        {
+            var service = new SourceService(this.StripeClient);
+            service.Get("src_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSourcesPost()
+        {
+            var options = new SourceUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new SourceService(this.StripeClient);
+            service.Update("src_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestSubscriptionItemsDelete()
+        {
+            var service = new SubscriptionItemService(this.StripeClient);
+            service.Delete("si_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSubscriptionItemsGet()
+        {
+            var options = new SubscriptionItemListOptions
+            {
+                Subscription = "sub_xxxxxxxxxxxxx",
+            };
+            var service = new SubscriptionItemService(this.StripeClient);
+            StripeList<SubscriptionItem> subscriptionItems = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestSubscriptionItemsGet2()
+        {
+            var service = new SubscriptionItemService(this.StripeClient);
+            service.Get("si_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSubscriptionItemsPost()
+        {
+            var options = new SubscriptionItemCreateOptions
+            {
+                Subscription = "sub_xxxxxxxxxxxxx",
+                Price = "price_xxxxxxxxxxxxx",
+                Quantity = 2,
+            };
+            var service = new SubscriptionItemService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestSubscriptionItemsPost2()
+        {
+            var options = new SubscriptionItemUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new SubscriptionItemService(this.StripeClient);
+            service.Update("si_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestSubscriptionItemsUsageRecordSummariesGet()
+        {
+            var options = new UsageRecordSummaryListOptions { Limit = 3 };
+            var service = new UsageRecordSummaryService(this.StripeClient);
+            StripeList<UsageRecordSummary> usageRecordSummaries = service.List(
+                "si_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestSubscriptionItemsUsageRecordsPost()
+        {
+            var options = new UsageRecordCreateOptions
+            {
+                Quantity = 100,
+                Timestamp = DateTimeOffset.FromUnixTimeSeconds(1571252444)
+                    .UtcDateTime,
+            };
+            var service = new UsageRecordService(this.StripeClient);
+            service.Create("si_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestSubscriptionSchedulesCancelPost()
+        {
+            var service = new SubscriptionScheduleService(this.StripeClient);
+            service.Cancel("sub_sched_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSubscriptionSchedulesGet()
+        {
+            var options = new SubscriptionScheduleListOptions { Limit = 3 };
+            var service = new SubscriptionScheduleService(this.StripeClient);
+            StripeList<SubscriptionSchedule> subscriptionSchedules = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestSubscriptionSchedulesGet2()
+        {
+            var service = new SubscriptionScheduleService(this.StripeClient);
+            service.Get("sub_sched_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSubscriptionSchedulesPost()
+        {
+            var options = new SubscriptionScheduleCreateOptions
+            {
+                Customer = "cus_xxxxxxxxxxxxx",
+                StartDate = DateTimeOffset.FromUnixTimeSeconds(1676070661)
+                    .UtcDateTime,
+                EndBehavior = "release",
+                Phases = new List<SubscriptionSchedulePhaseOptions>
+                {
+                    new SubscriptionSchedulePhaseOptions
+                    {
+                        Items = new List<SubscriptionSchedulePhaseItemOptions>
+                        {
+                            new SubscriptionSchedulePhaseItemOptions
+                            {
+                                Price = "price_xxxxxxxxxxxxx",
+                                Quantity = 1,
+                            },
+                        },
+                        Iterations = 12,
+                    },
+                },
+            };
+            var service = new SubscriptionScheduleService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestSubscriptionSchedulesPost2()
+        {
+            var options = new SubscriptionScheduleUpdateOptions
+            {
+                EndBehavior = "release",
+            };
+            var service = new SubscriptionScheduleService(this.StripeClient);
+            service.Update("sub_sched_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestSubscriptionSchedulesReleasePost()
+        {
+            var service = new SubscriptionScheduleService(this.StripeClient);
+            service.Release("sub_sched_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSubscriptionsDelete()
+        {
+            var service = new SubscriptionService(this.StripeClient);
+            service.Cancel("sub_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSubscriptionsDiscountDelete()
+        {
+            var service = new DiscountService(this.StripeClient);
+            service.DeleteSubscriptionDiscount("sub_xyz");
+        }
+
+        [Fact]
+        public void TestSubscriptionsGet()
+        {
+            var options = new SubscriptionListOptions { Limit = 3 };
+            var service = new SubscriptionService(this.StripeClient);
+            StripeList<Subscription> subscriptions = service.List(options);
+        }
+
+        [Fact]
+        public void TestSubscriptionsGet2()
+        {
+            var service = new SubscriptionService(this.StripeClient);
+            service.Get("sub_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestSubscriptionsPost()
+        {
+            var options = new SubscriptionCreateOptions
+            {
+                Customer = "cus_xxxxxxxxxxxxx",
+                Items = new List<SubscriptionItemOptions>
+                {
+                    new SubscriptionItemOptions
+                    {
+                        Price = "price_xxxxxxxxxxxxx",
+                    },
+                },
+            };
+            var service = new SubscriptionService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestSubscriptionsPost2()
+        {
+            var options = new SubscriptionUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new SubscriptionService(this.StripeClient);
+            service.Update("sub_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestSubscriptionsSearchGet()
+        {
+            var options = new SubscriptionSearchOptions
+            {
+                Query = "status:'active' AND metadata['order_id']:'6735'",
+            };
+            var service = new SubscriptionService(this.StripeClient);
+            service.Search(options);
+        }
+
+        [Fact]
+        public void TestTaxCalculationsLineItemsGet()
+        {
+            var service = new Stripe.Tax.CalculationService(this.StripeClient);
+            StripeList<Stripe.Tax.CalculationLineItem> calculationLineItems = service
+                .ListLineItems("xxx");
+        }
+
+        [Fact]
+        public void TestTaxCalculationsPost()
+        {
+            var options = new Stripe.Tax.CalculationCreateOptions
+            {
+                Currency = "usd",
+                LineItems = new List<Stripe.Tax.CalculationLineItemOptions>
+                {
+                    new Stripe.Tax.CalculationLineItemOptions
+                    {
+                        Amount = 1000,
+                        Reference = "L1",
+                    },
+                },
+                CustomerDetails = new Stripe.Tax.CalculationCustomerDetailsOptions
+                {
+                    Address = new AddressOptions
+                    {
+                        Line1 = "354 Oyster Point Blvd",
+                        City = "South San Francisco",
+                        State = "CA",
+                        PostalCode = "94080",
+                        Country = "US",
+                    },
+                    AddressSource = "shipping",
+                },
+            };
+            var service = new Stripe.Tax.CalculationService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTaxCodesGet()
+        {
+            var options = new TaxCodeListOptions { Limit = 3 };
+            var service = new TaxCodeService(this.StripeClient);
+            StripeList<TaxCode> taxCodes = service.List(options);
+        }
+
+        [Fact]
+        public void TestTaxCodesGet2()
+        {
+            var service = new TaxCodeService(this.StripeClient);
+            service.Get("txcd_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTaxFormsPdfGet()
+        {
+            var service = new Stripe.Tax.FormService(this.StripeClient);
+            service.Pdf("form_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTaxRatesGet()
+        {
+            var options = new TaxRateListOptions { Limit = 3 };
+            var service = new TaxRateService(this.StripeClient);
+            StripeList<TaxRate> taxRates = service.List(options);
+        }
+
+        [Fact]
+        public void TestTaxRatesGet2()
+        {
+            var service = new TaxRateService(this.StripeClient);
+            service.Get("txr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTaxRatesPost()
+        {
+            var options = new TaxRateCreateOptions
+            {
+                DisplayName = "VAT",
+                Description = "VAT Germany",
+                Jurisdiction = "DE",
+                Percentage = 16M,
+                Inclusive = false,
+            };
+            var service = new TaxRateService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTaxRatesPost2()
+        {
+            var options = new TaxRateUpdateOptions { Active = false };
+            var service = new TaxRateService(this.StripeClient);
+            service.Update("txr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTaxTransactionsCreateFromCalculationPost()
+        {
+            var options = new Stripe.Tax.TransactionCreateFromCalculationOptions
+            {
+                Calculation = "xxx",
+                Reference = "yyy",
+            };
+            var service = new Stripe.Tax.TransactionService(this.StripeClient);
+            service.CreateFromCalculation(options);
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsDelete()
+        {
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Delete("uc_123");
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsDelete2()
+        {
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Delete("tmc_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsGet()
+        {
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            StripeList<Stripe.Terminal.Configuration> configurations = service
+                .List();
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsGet2()
+        {
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Get("uc_123");
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsGet3()
+        {
+            var options = new Stripe.Terminal.ConfigurationListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            StripeList<Stripe.Terminal.Configuration> configurations = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsGet4()
+        {
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Get("tmc_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsPost()
+        {
+            var options = new Stripe.Terminal.ConfigurationCreateOptions();
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsPost2()
+        {
+            var options = new Stripe.Terminal.ConfigurationUpdateOptions
+            {
+                Tipping = new Stripe.Terminal.ConfigurationTippingOptions
+                {
+                    Usd = new Stripe.Terminal.ConfigurationTippingUsdOptions
+                    {
+                        FixedAmounts = new List<long?> { 10 },
+                    },
+                },
+            };
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Update("uc_123", options);
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsPost3()
+        {
+            var options = new Stripe.Terminal.ConfigurationCreateOptions
+            {
+                BbposWiseposE = new Stripe.Terminal.ConfigurationBbposWiseposEOptions
+                {
+                    Splashscreen = "file_xxxxxxxxxxxxx",
+                },
+            };
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTerminalConfigurationsPost4()
+        {
+            var options = new Stripe.Terminal.ConfigurationUpdateOptions
+            {
+                BbposWiseposE = new Stripe.Terminal.ConfigurationBbposWiseposEOptions
+                {
+                    Splashscreen = "file_xxxxxxxxxxxxx",
+                },
+            };
+            var service = new Stripe.Terminal.ConfigurationService(
+                this.StripeClient);
+            service.Update("tmc_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTerminalConnectionTokensPost()
+        {
+            var options = new Stripe.Terminal.ConnectionTokenCreateOptions();
+            var service = new Stripe.Terminal.ConnectionTokenService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTerminalLocationsDelete()
+        {
+            var service = new Stripe.Terminal.LocationService(
+                this.StripeClient);
+            service.Delete("tml_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTerminalLocationsGet()
+        {
+            var options = new Stripe.Terminal.LocationListOptions { Limit = 3 };
+            var service = new Stripe.Terminal.LocationService(
+                this.StripeClient);
+            StripeList<Stripe.Terminal.Location> locations = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestTerminalLocationsGet2()
+        {
+            var service = new Stripe.Terminal.LocationService(
+                this.StripeClient);
+            service.Get("tml_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTerminalLocationsPost()
+        {
+            var options = new Stripe.Terminal.LocationCreateOptions
+            {
+                DisplayName = "My First Store",
+                Address = new AddressOptions
+                {
+                    Line1 = "1234 Main Street",
+                    City = "San Francisco",
+                    PostalCode = "94111",
+                    State = "CA",
+                    Country = "US",
+                },
+            };
+            var service = new Stripe.Terminal.LocationService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTerminalLocationsPost2()
+        {
+            var options = new Stripe.Terminal.LocationUpdateOptions
+            {
+                DisplayName = "My First Store",
+            };
+            var service = new Stripe.Terminal.LocationService(
+                this.StripeClient);
+            service.Update("tml_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTerminalReadersCancelActionPost()
+        {
+            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
+            service.CancelAction("tmr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTerminalReadersDelete()
+        {
+            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
+            service.Delete("tmr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTerminalReadersGet()
+        {
+            var options = new Stripe.Terminal.ReaderListOptions { Limit = 3 };
+            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
+            StripeList<Stripe.Terminal.Reader> readers = service.List(options);
+        }
+
+        [Fact]
+        public void TestTerminalReadersGet2()
+        {
+            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
+            service.Get("tmr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTerminalReadersPost()
+        {
+            var options = new Stripe.Terminal.ReaderCreateOptions
+            {
+                RegistrationCode = "puppies-plug-could",
+                Label = "Blue Rabbit",
+                Location = "tml_1234",
+            };
+            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTerminalReadersPost2()
+        {
+            var options = new Stripe.Terminal.ReaderUpdateOptions
+            {
+                Label = "Blue Rabbit",
+            };
+            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
+            service.Update("tmr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTerminalReadersProcessPaymentIntentPost()
+        {
+            var options = new Stripe.Terminal.ReaderProcessPaymentIntentOptions
+            {
+                PaymentIntent = "pi_xxxxxxxxxxxxx",
+            };
+            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
+            service.ProcessPaymentIntent("tmr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTerminalReadersProcessSetupIntentPost()
+        {
+            var options = new Stripe.Terminal.ReaderProcessSetupIntentOptions
+            {
+                SetupIntent = "seti_xxxxxxxxxxxxx",
+                CustomerConsentCollected = true,
+            };
+            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
+            service.ProcessSetupIntent("tmr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTestHelpersCustomersFundCashBalancePost()
+        {
+            var options = new Stripe.TestHelpers.CustomerFundCashBalanceOptions
+            {
+                Amount = 30,
+                Currency = "eur",
+            };
+            var service = new Stripe.TestHelpers.CustomerService(
+                this.StripeClient);
+            service.FundCashBalance("cus_123", options);
+        }
+
+        [Fact]
+        public void TestTestHelpersIssuingAuthorizationsCapturePost()
         {
             var options = new Stripe.TestHelpers.Issuing.AuthorizationCaptureOptions
             {
@@ -1395,7 +3508,28 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingAuthorizationServiceCreate()
+        public void TestTestHelpersIssuingAuthorizationsExpirePost()
+        {
+            var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Expire("example_authorization");
+        }
+
+        [Fact]
+        public void TestTestHelpersIssuingAuthorizationsIncrementPost()
+        {
+            var options = new Stripe.TestHelpers.Issuing.AuthorizationIncrementOptions
+            {
+                IncrementAmount = 50,
+                IsAmountControllable = true,
+            };
+            var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
+                this.StripeClient);
+            service.Increment("example_authorization", options);
+        }
+
+        [Fact]
+        public void TestTestHelpersIssuingAuthorizationsPost()
         {
             var options = new Stripe.TestHelpers.Issuing.AuthorizationCreateOptions
             {
@@ -1439,57 +3573,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingAuthorizationServiceDecline()
-        {
-            var service = new Stripe.Issuing.AuthorizationService(
-                this.StripeClient);
-            service.Decline("iauth_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIssuingAuthorizationServiceExpire()
-        {
-            var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
-                this.StripeClient);
-            service.Expire("example_authorization");
-        }
-
-        [Fact]
-        public void TestIssuingAuthorizationServiceIncrement()
-        {
-            var options = new Stripe.TestHelpers.Issuing.AuthorizationIncrementOptions
-            {
-                IncrementAmount = 50,
-                IsAmountControllable = true,
-            };
-            var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
-                this.StripeClient);
-            service.Increment("example_authorization", options);
-        }
-
-        [Fact]
-        public void TestIssuingAuthorizationServiceList()
-        {
-            var options = new Stripe.Issuing.AuthorizationListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.Issuing.AuthorizationService(
-                this.StripeClient);
-            StripeList<Stripe.Issuing.Authorization> authorizations = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestIssuingAuthorizationServiceRetrieve()
-        {
-            var service = new Stripe.Issuing.AuthorizationService(
-                this.StripeClient);
-            service.Get("iauth_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIssuingAuthorizationServiceReverse()
+        public void TestTestHelpersIssuingAuthorizationsReversePost()
         {
             var options = new Stripe.TestHelpers.Issuing.AuthorizationReverseOptions
             {
@@ -1501,97 +3585,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingAuthorizationServiceUpdate()
-        {
-            var options = new Stripe.Issuing.AuthorizationUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new Stripe.Issuing.AuthorizationService(
-                this.StripeClient);
-            service.Update("iauth_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestIssuingCardholderServiceCreate()
-        {
-            var options = new Stripe.Issuing.CardholderCreateOptions
-            {
-                Type = "individual",
-                Name = "Jenny Rosen",
-                Email = "jenny.rosen@example.com",
-                PhoneNumber = "+18888675309",
-                Billing = new Stripe.Issuing.CardholderBillingOptions
-                {
-                    Address = new AddressOptions
-                    {
-                        Line1 = "1234 Main Street",
-                        City = "San Francisco",
-                        State = "CA",
-                        Country = "US",
-                        PostalCode = "94111",
-                    },
-                },
-            };
-            var service = new Stripe.Issuing.CardholderService(
-                this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestIssuingCardholderServiceList()
-        {
-            var options = new Stripe.Issuing.CardholderListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.Issuing.CardholderService(
-                this.StripeClient);
-            StripeList<Stripe.Issuing.Cardholder> cardholders = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestIssuingCardholderServiceRetrieve()
-        {
-            var service = new Stripe.Issuing.CardholderService(
-                this.StripeClient);
-            service.Get("ich_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIssuingCardholderServiceUpdate()
-        {
-            var options = new Stripe.Issuing.CardholderUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new Stripe.Issuing.CardholderService(
-                this.StripeClient);
-            service.Update("ich_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestIssuingCardServiceCreate()
-        {
-            var options = new Stripe.Issuing.CardCreateOptions
-            {
-                Cardholder = "ich_xxxxxxxxxxxxx",
-                Currency = "usd",
-                Type = "virtual",
-            };
-            var service = new Stripe.Issuing.CardService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestIssuingCardServiceDeliverCard()
+        public void TestTestHelpersIssuingCardsShippingDeliverPost()
         {
             var service = new Stripe.TestHelpers.Issuing.CardService(
                 this.StripeClient);
@@ -1599,7 +3593,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingCardServiceFailCard()
+        public void TestTestHelpersIssuingCardsShippingFailPost()
         {
             var service = new Stripe.TestHelpers.Issuing.CardService(
                 this.StripeClient);
@@ -1607,22 +3601,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingCardServiceList()
-        {
-            var options = new Stripe.Issuing.CardListOptions { Limit = 3 };
-            var service = new Stripe.Issuing.CardService(this.StripeClient);
-            StripeList<Stripe.Issuing.Card> cards = service.List(options);
-        }
-
-        [Fact]
-        public void TestIssuingCardServiceRetrieve()
-        {
-            var service = new Stripe.Issuing.CardService(this.StripeClient);
-            service.Get("ic_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIssuingCardServiceReturnCard()
+        public void TestTestHelpersIssuingCardsShippingReturnPost()
         {
             var service = new Stripe.TestHelpers.Issuing.CardService(
                 this.StripeClient);
@@ -1630,7 +3609,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingCardServiceShipCard()
+        public void TestTestHelpersIssuingCardsShippingShipPost()
         {
             var service = new Stripe.TestHelpers.Issuing.CardService(
                 this.StripeClient);
@@ -1638,62 +3617,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingCardServiceUpdate()
-        {
-            var options = new Stripe.Issuing.CardUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new Stripe.Issuing.CardService(this.StripeClient);
-            service.Update("ic_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestIssuingDisputeServiceCreate()
-        {
-            var options = new Stripe.Issuing.DisputeCreateOptions
-            {
-                Transaction = "ipi_xxxxxxxxxxxxx",
-                Evidence = new Stripe.Issuing.DisputeEvidenceOptions
-                {
-                    Reason = "fraudulent",
-                    Fraudulent = new Stripe.Issuing.DisputeEvidenceFraudulentOptions
-                    {
-                        Explanation = "Purchase was unrecognized.",
-                    },
-                },
-            };
-            var service = new Stripe.Issuing.DisputeService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestIssuingDisputeServiceList()
-        {
-            var options = new Stripe.Issuing.DisputeListOptions { Limit = 3 };
-            var service = new Stripe.Issuing.DisputeService(this.StripeClient);
-            StripeList<Stripe.Issuing.Dispute> disputes = service.List(options);
-        }
-
-        [Fact]
-        public void TestIssuingDisputeServiceRetrieve()
-        {
-            var service = new Stripe.Issuing.DisputeService(this.StripeClient);
-            service.Get("idp_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIssuingDisputeServiceSubmit()
-        {
-            var service = new Stripe.Issuing.DisputeService(this.StripeClient);
-            service.Submit("idp_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIssuingTransactionServiceCreateForceCapture()
+        public void TestTestHelpersIssuingTransactionsCreateForceCapturePost()
         {
             var options = new Stripe.TestHelpers.Issuing.TransactionCreateForceCaptureOptions
             {
@@ -1767,7 +3691,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingTransactionServiceCreateUnlinkedRefund()
+        public void TestTestHelpersIssuingTransactionsCreateUnlinkedRefundPost()
         {
             var options = new Stripe.TestHelpers.Issuing.TransactionCreateUnlinkedRefundOptions
             {
@@ -1841,20 +3765,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingTransactionServiceList()
-        {
-            var options = new Stripe.Issuing.TransactionListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.Issuing.TransactionService(
-                this.StripeClient);
-            StripeList<Stripe.Issuing.Transaction> transactions = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestIssuingTransactionServiceRefund()
+        public void TestTestHelpersIssuingTransactionsRefundPost()
         {
             var options = new Stripe.TestHelpers.Issuing.TransactionRefundOptions
             {
@@ -1866,972 +3777,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestIssuingTransactionServiceRetrieve()
-        {
-            var service = new Stripe.Issuing.TransactionService(
-                this.StripeClient);
-            service.Get("ipi_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestIssuingTransactionServiceUpdate()
-        {
-            var options = new Stripe.Issuing.TransactionUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new Stripe.Issuing.TransactionService(
-                this.StripeClient);
-            service.Update("ipi_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestLoginLinkServiceCreate()
-        {
-            var service = new LoginLinkService(this.StripeClient);
-            service.Create("acct_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestMandateServiceRetrieve()
-        {
-            var service = new MandateService(this.StripeClient);
-            service.Get("mandate_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceApplyCustomerBalance()
-        {
-            var service = new PaymentIntentService(this.StripeClient);
-            service.ApplyCustomerBalance("pi_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceCancel()
-        {
-            var service = new PaymentIntentService(this.StripeClient);
-            service.Cancel("pi_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceCapture()
-        {
-            var service = new PaymentIntentService(this.StripeClient);
-            service.Capture("pi_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceConfirm()
-        {
-            var options = new PaymentIntentConfirmOptions
-            {
-                PaymentMethod = "pm_card_visa",
-            };
-            var service = new PaymentIntentService(this.StripeClient);
-            service.Confirm("pi_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceCreate()
-        {
-            var options = new PaymentIntentCreateOptions
-            {
-                Amount = 1099,
-                Currency = "eur",
-                AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
-                {
-                    Enabled = true,
-                },
-            };
-            var service = new PaymentIntentService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceCreate2()
-        {
-            var options = new PaymentIntentCreateOptions
-            {
-                Amount = 2000,
-                Currency = "usd",
-                AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
-                {
-                    Enabled = true,
-                },
-            };
-            var service = new PaymentIntentService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceCreate3()
-        {
-            var options = new PaymentIntentCreateOptions
-            {
-                Amount = 200,
-                Currency = "usd",
-                PaymentMethodData = new PaymentIntentPaymentMethodDataOptions
-                {
-                    Type = "p24",
-                    P24 = new PaymentIntentPaymentMethodDataP24Options
-                    {
-                        Bank = "blik",
-                    },
-                },
-            };
-            var service = new PaymentIntentService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceIncrementAuthorization()
-        {
-            var options = new PaymentIntentIncrementAuthorizationOptions
-            {
-                Amount = 2099,
-            };
-            var service = new PaymentIntentService(this.StripeClient);
-            service.IncrementAuthorization("pi_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceList()
-        {
-            var options = new PaymentIntentListOptions { Limit = 3 };
-            var service = new PaymentIntentService(this.StripeClient);
-            StripeList<PaymentIntent> paymentintents = service.List(options);
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceRetrieve()
-        {
-            var service = new PaymentIntentService(this.StripeClient);
-            service.Get("pi_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceSearch()
-        {
-            var options = new PaymentIntentSearchOptions
-            {
-                Query = "status:'succeeded' AND metadata['order_id']:'6735'",
-            };
-            var service = new PaymentIntentService(this.StripeClient);
-            service.Search(options);
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceUpdate()
-        {
-            var options = new PaymentIntentUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new PaymentIntentService(this.StripeClient);
-            service.Update("pi_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceVerifyMicrodeposits()
-        {
-            var service = new PaymentIntentService(this.StripeClient);
-            service.VerifyMicrodeposits("pi_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPaymentIntentServiceVerifyMicrodeposits2()
-        {
-            var options = new PaymentIntentVerifyMicrodepositsOptions
-            {
-                Amounts = new List<long?> { 32, 45 },
-            };
-            var service = new PaymentIntentService(this.StripeClient);
-            service.VerifyMicrodeposits("pi_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPaymentLinkServiceCreate()
-        {
-            var options = new PaymentLinkCreateOptions
-            {
-                LineItems = new List<PaymentLinkLineItemOptions>
-                {
-                    new PaymentLinkLineItemOptions
-                    {
-                        Price = "price_xxxxxxxxxxxxx",
-                        Quantity = 1,
-                    },
-                },
-            };
-            var service = new PaymentLinkService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPaymentLinkServiceCreate2()
-        {
-            var options = new PaymentLinkCreateOptions
-            {
-                LineItems = new List<PaymentLinkLineItemOptions>
-                {
-                    new PaymentLinkLineItemOptions
-                    {
-                        Price = "price_xxxxxxxxxxxxx",
-                        Quantity = 1,
-                    },
-                },
-            };
-            var service = new PaymentLinkService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPaymentLinkServiceList()
-        {
-            var options = new PaymentLinkListOptions { Limit = 3 };
-            var service = new PaymentLinkService(this.StripeClient);
-            StripeList<PaymentLink> paymentlinks = service.List(options);
-        }
-
-        [Fact]
-        public void TestPaymentLinkServiceListLineItems()
-        {
-            var service = new PaymentLinkService(this.StripeClient);
-            service.ListLineItems("pl_xyz");
-        }
-
-        [Fact]
-        public void TestPaymentLinkServiceRetrieve()
-        {
-            var service = new PaymentLinkService(this.StripeClient);
-            service.Get("pl_xyz");
-        }
-
-        [Fact]
-        public void TestPaymentLinkServiceRetrieve2()
-        {
-            var service = new PaymentLinkService(this.StripeClient);
-            service.Get("plink_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPaymentLinkServiceUpdate()
-        {
-            var options = new PaymentLinkUpdateOptions { Active = false };
-            var service = new PaymentLinkService(this.StripeClient);
-            service.Update("plink_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPaymentMethodConfigurationServiceCreate()
-        {
-            var options = new PaymentMethodConfigurationCreateOptions
-            {
-                AcssDebit = new PaymentMethodConfigurationAcssDebitOptions
-                {
-                    DisplayPreference = new PaymentMethodConfigurationAcssDebitDisplayPreferenceOptions
-                    {
-                        Preference = "none",
-                    },
-                },
-                Affirm = new PaymentMethodConfigurationAffirmOptions
-                {
-                    DisplayPreference = new PaymentMethodConfigurationAffirmDisplayPreferenceOptions
-                    {
-                        Preference = "none",
-                    },
-                },
-            };
-            var service = new PaymentMethodConfigurationService(
-                this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPaymentMethodConfigurationServiceList()
-        {
-            var options = new PaymentMethodConfigurationListOptions
-            {
-                Application = "foo",
-            };
-            var service = new PaymentMethodConfigurationService(
-                this.StripeClient);
-            StripeList<PaymentMethodConfiguration> paymentmethodconfigurations = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestPaymentMethodConfigurationServiceRetrieve()
-        {
-            var service = new PaymentMethodConfigurationService(
-                this.StripeClient);
-            service.Get("foo");
-        }
-
-        [Fact]
-        public void TestPaymentMethodConfigurationServiceUpdate()
-        {
-            var options = new PaymentMethodConfigurationUpdateOptions
-            {
-                AcssDebit = new PaymentMethodConfigurationAcssDebitOptions
-                {
-                    DisplayPreference = new PaymentMethodConfigurationAcssDebitDisplayPreferenceOptions
-                    {
-                        Preference = "on",
-                    },
-                },
-            };
-            var service = new PaymentMethodConfigurationService(
-                this.StripeClient);
-            service.Update("foo", options);
-        }
-
-        [Fact]
-        public void TestPaymentMethodServiceAttach()
-        {
-            var options = new PaymentMethodAttachOptions
-            {
-                Customer = "cus_xxxxxxxxxxxxx",
-            };
-            var service = new PaymentMethodService(this.StripeClient);
-            service.Attach("pm_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPaymentMethodServiceCreate()
-        {
-            var options = new PaymentMethodCreateOptions
-            {
-                Type = "card",
-                Card = new PaymentMethodCardOptions
-                {
-                    Number = "4242424242424242",
-                    ExpMonth = 8,
-                    ExpYear = 2024,
-                    Cvc = "314",
-                },
-            };
-            var service = new PaymentMethodService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPaymentMethodServiceDetach()
-        {
-            var service = new PaymentMethodService(this.StripeClient);
-            service.Detach("pm_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPaymentMethodServiceList()
-        {
-            var options = new PaymentMethodListOptions
-            {
-                Customer = "cus_xxxxxxxxxxxxx",
-                Type = "card",
-            };
-            var service = new PaymentMethodService(this.StripeClient);
-            StripeList<PaymentMethod> paymentmethods = service.List(options);
-        }
-
-        [Fact]
-        public void TestPaymentMethodServiceRetrieve()
-        {
-            var service = new PaymentMethodService(this.StripeClient);
-            service.Get("pm_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPaymentMethodServiceUpdate()
-        {
-            var options = new PaymentMethodUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new PaymentMethodService(this.StripeClient);
-            service.Update("pm_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPayoutServiceCancel()
-        {
-            var service = new PayoutService(this.StripeClient);
-            service.Cancel("po_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPayoutServiceCreate()
-        {
-            var options = new PayoutCreateOptions
-            {
-                Amount = 1100,
-                Currency = "usd",
-            };
-            var service = new PayoutService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPayoutServiceList()
-        {
-            var options = new PayoutListOptions { Limit = 3 };
-            var service = new PayoutService(this.StripeClient);
-            StripeList<Payout> payouts = service.List(options);
-        }
-
-        [Fact]
-        public void TestPayoutServiceRetrieve()
-        {
-            var service = new PayoutService(this.StripeClient);
-            service.Get("po_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPayoutServiceReverse()
-        {
-            var service = new PayoutService(this.StripeClient);
-            service.Reverse("po_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPayoutServiceUpdate()
-        {
-            var options = new PayoutUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new PayoutService(this.StripeClient);
-            service.Update("po_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPersonServiceCreate()
-        {
-            var options = new PersonCreateOptions
-            {
-                FirstName = "Jane",
-                LastName = "Diaz",
-            };
-            var service = new PersonService(this.StripeClient);
-            service.Create("acct_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPersonServiceDelete()
-        {
-            var service = new PersonService(this.StripeClient);
-            service.Delete("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPersonServiceList()
-        {
-            var options = new PersonListOptions { Limit = 3 };
-            var service = new PersonService(this.StripeClient);
-            StripeList<Person> persons = service.List(
-                "acct_xxxxxxxxxxxxx",
-                options);
-        }
-
-        [Fact]
-        public void TestPersonServiceRetrieve()
-        {
-            var service = new PersonService(this.StripeClient);
-            service.Get("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPersonServiceUpdate()
-        {
-            var options = new PersonUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new PersonService(this.StripeClient);
-            service.Update(
-                "acct_xxxxxxxxxxxxx",
-                "person_xxxxxxxxxxxxx",
-                options);
-        }
-
-        [Fact]
-        public void TestPlanServiceCreate()
-        {
-            var options = new PlanCreateOptions
-            {
-                Amount = 2000,
-                Currency = "usd",
-                Interval = "month",
-                Product = "prod_xxxxxxxxxxxxx",
-            };
-            var service = new PlanService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPlanServiceCreate2()
-        {
-            var options = new PlanCreateOptions
-            {
-                Amount = 2000,
-                Currency = "usd",
-                Interval = "month",
-                Product = new PlanProductOptions { Name = "My product" },
-            };
-            var service = new PlanService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPlanServiceDelete()
-        {
-            var service = new PlanService(this.StripeClient);
-            service.Delete("price_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPlanServiceList()
-        {
-            var options = new PlanListOptions { Limit = 3 };
-            var service = new PlanService(this.StripeClient);
-            StripeList<Plan> plans = service.List(options);
-        }
-
-        [Fact]
-        public void TestPlanServiceRetrieve()
-        {
-            var service = new PlanService(this.StripeClient);
-            service.Get("price_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPlanServiceUpdate()
-        {
-            var options = new PlanUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new PlanService(this.StripeClient);
-            service.Update("price_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPriceServiceCreate()
-        {
-            var options = new PriceCreateOptions
-            {
-                UnitAmount = 2000,
-                Currency = "usd",
-                CurrencyOptions = new Dictionary<string, PriceCurrencyOptionsOptions>
-                {
-                    {
-                        "uah", new PriceCurrencyOptionsOptions
-                        {
-                            UnitAmount = 5000,
-                        }
-                    },
-                    {
-                        "eur", new PriceCurrencyOptionsOptions
-                        {
-                            UnitAmount = 1800,
-                        }
-                    },
-                },
-                Recurring = new PriceRecurringOptions { Interval = "month" },
-                Product = "prod_xxxxxxxxxxxxx",
-            };
-            var service = new PriceService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPriceServiceCreate2()
-        {
-            var options = new PriceCreateOptions
-            {
-                UnitAmount = 2000,
-                Currency = "usd",
-                Recurring = new PriceRecurringOptions { Interval = "month" },
-                Product = "prod_xxxxxxxxxxxxx",
-            };
-            var service = new PriceService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPriceServiceList()
-        {
-            var options = new PriceListOptions { Limit = 3 };
-            var service = new PriceService(this.StripeClient);
-            StripeList<Price> prices = service.List(options);
-        }
-
-        [Fact]
-        public void TestPriceServiceRetrieve()
-        {
-            var service = new PriceService(this.StripeClient);
-            service.Get("price_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPriceServiceSearch()
-        {
-            var options = new PriceSearchOptions
-            {
-                Query = "active:'true' AND metadata['order_id']:'6735'",
-            };
-            var service = new PriceService(this.StripeClient);
-            service.Search(options);
-        }
-
-        [Fact]
-        public void TestPriceServiceUpdate()
-        {
-            var options = new PriceUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new PriceService(this.StripeClient);
-            service.Update("price_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestProductServiceCreate()
-        {
-            var options = new ProductCreateOptions { Name = "Gold Special" };
-            var service = new ProductService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestProductServiceDelete()
-        {
-            var service = new ProductService(this.StripeClient);
-            service.Delete("prod_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestProductServiceList()
-        {
-            var options = new ProductListOptions { Limit = 3 };
-            var service = new ProductService(this.StripeClient);
-            StripeList<Product> products = service.List(options);
-        }
-
-        [Fact]
-        public void TestProductServiceRetrieve()
-        {
-            var service = new ProductService(this.StripeClient);
-            service.Get("prod_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestProductServiceSearch()
-        {
-            var options = new ProductSearchOptions
-            {
-                Query = "active:'true' AND metadata['order_id']:'6735'",
-            };
-            var service = new ProductService(this.StripeClient);
-            service.Search(options);
-        }
-
-        [Fact]
-        public void TestProductServiceUpdate()
-        {
-            var options = new ProductUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new ProductService(this.StripeClient);
-            service.Update("prod_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestPromotionCodeServiceCreate()
-        {
-            var options = new PromotionCodeCreateOptions
-            {
-                Coupon = "Z4OV52SU",
-            };
-            var service = new PromotionCodeService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestPromotionCodeServiceList()
-        {
-            var options = new PromotionCodeListOptions { Limit = 3 };
-            var service = new PromotionCodeService(this.StripeClient);
-            StripeList<PromotionCode> promotioncodes = service.List(options);
-        }
-
-        [Fact]
-        public void TestPromotionCodeServiceRetrieve()
-        {
-            var service = new PromotionCodeService(this.StripeClient);
-            service.Get("promo_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestPromotionCodeServiceUpdate()
-        {
-            var options = new PromotionCodeUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new PromotionCodeService(this.StripeClient);
-            service.Update("promo_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestQuoteServiceAccept()
-        {
-            var service = new QuoteService(this.StripeClient);
-            service.Accept("qt_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestQuoteServiceCancel()
-        {
-            var service = new QuoteService(this.StripeClient);
-            service.Cancel("qt_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestQuoteServiceCreate()
-        {
-            var options = new QuoteCreateOptions
-            {
-                Customer = "cus_xxxxxxxxxxxxx",
-                LineItems = new List<QuoteLineItemOptions>
-                {
-                    new QuoteLineItemOptions
-                    {
-                        Price = "price_xxxxxxxxxxxxx",
-                        Quantity = 2,
-                    },
-                },
-            };
-            var service = new QuoteService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestQuoteServiceFinalizeQuote()
-        {
-            var service = new QuoteService(this.StripeClient);
-            service.FinalizeQuote("qt_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestQuoteServiceList()
-        {
-            var options = new QuoteListOptions { Limit = 3 };
-            var service = new QuoteService(this.StripeClient);
-            StripeList<Quote> quotes = service.List(options);
-        }
-
-        [Fact]
-        public void TestQuoteServiceListLineItems()
-        {
-            var service = new QuoteService(this.StripeClient);
-            service.ListLineItems("qt_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestQuoteServiceListPreviewInvoiceLines()
-        {
-            var service = new QuoteService(this.StripeClient);
-            service.ListPreviewInvoiceLines("qt_xyz", "in_xyz");
-        }
-
-        [Fact]
-        public void TestQuoteServicePdf()
-        {
-            var service = new QuoteService(this.StripeClient);
-            service.Pdf("qt_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestQuoteServiceRetrieve()
-        {
-            var service = new QuoteService(this.StripeClient);
-            service.Get("qt_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestQuoteServiceUpdate()
-        {
-            var options = new QuoteUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new QuoteService(this.StripeClient);
-            service.Update("qt_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestRadarEarlyFraudWarningServiceList()
-        {
-            var options = new Stripe.Radar.EarlyFraudWarningListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.Radar.EarlyFraudWarningService(
-                this.StripeClient);
-            StripeList<Stripe.Radar.EarlyFraudWarning> earlyfraudwarnings = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestRadarEarlyFraudWarningServiceRetrieve()
-        {
-            var service = new Stripe.Radar.EarlyFraudWarningService(
-                this.StripeClient);
-            service.Get("issfr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestRadarValueListItemServiceCreate()
-        {
-            var options = new Stripe.Radar.ValueListItemCreateOptions
-            {
-                ValueList = "rsl_xxxxxxxxxxxxx",
-                Value = "1.2.3.4",
-            };
-            var service = new Stripe.Radar.ValueListItemService(
-                this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestRadarValueListItemServiceDelete()
-        {
-            var service = new Stripe.Radar.ValueListItemService(
-                this.StripeClient);
-            service.Delete("rsli_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestRadarValueListItemServiceList()
-        {
-            var options = new Stripe.Radar.ValueListItemListOptions
-            {
-                Limit = 3,
-                ValueList = "rsl_xxxxxxxxxxxxx",
-            };
-            var service = new Stripe.Radar.ValueListItemService(
-                this.StripeClient);
-            StripeList<Stripe.Radar.ValueListItem> valuelistitems = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestRadarValueListItemServiceRetrieve()
-        {
-            var service = new Stripe.Radar.ValueListItemService(
-                this.StripeClient);
-            service.Get("rsli_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestRadarValueListServiceCreate()
-        {
-            var options = new Stripe.Radar.ValueListCreateOptions
-            {
-                Alias = "custom_ip_xxxxxxxxxxxxx",
-                Name = "Custom IP Blocklist",
-                ItemType = "ip_address",
-            };
-            var service = new Stripe.Radar.ValueListService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestRadarValueListServiceDelete()
-        {
-            var service = new Stripe.Radar.ValueListService(this.StripeClient);
-            service.Delete("rsl_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestRadarValueListServiceList()
-        {
-            var options = new Stripe.Radar.ValueListListOptions { Limit = 3 };
-            var service = new Stripe.Radar.ValueListService(this.StripeClient);
-            StripeList<Stripe.Radar.ValueList> valuelists = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestRadarValueListServiceRetrieve()
-        {
-            var service = new Stripe.Radar.ValueListService(this.StripeClient);
-            service.Get("rsl_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestRadarValueListServiceUpdate()
-        {
-            var options = new Stripe.Radar.ValueListUpdateOptions
-            {
-                Name = "Updated IP Block List",
-            };
-            var service = new Stripe.Radar.ValueListService(this.StripeClient);
-            service.Update("rsl_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestRefundServiceCancel()
-        {
-            var service = new RefundService(this.StripeClient);
-            service.Cancel("re_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestRefundServiceCreate()
-        {
-            var options = new RefundCreateOptions
-            {
-                Charge = "ch_xxxxxxxxxxxxx",
-            };
-            var service = new RefundService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestRefundServiceExpire()
+        public void TestTestHelpersRefundsExpirePost()
         {
             var service = new Stripe.TestHelpers.RefundService(
                 this.StripeClient);
@@ -2839,871 +3785,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestRefundServiceList()
-        {
-            var options = new RefundListOptions { Limit = 3 };
-            var service = new RefundService(this.StripeClient);
-            StripeList<Refund> refunds = service.List(options);
-        }
-
-        [Fact]
-        public void TestRefundServiceRetrieve()
-        {
-            var service = new RefundService(this.StripeClient);
-            service.Get("re_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestRefundServiceUpdate()
-        {
-            var options = new RefundUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new RefundService(this.StripeClient);
-            service.Update("re_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestReportingReportRunServiceCreate()
-        {
-            var options = new Stripe.Reporting.ReportRunCreateOptions
-            {
-                ReportType = "balance.summary.1",
-                Parameters = new Stripe.Reporting.ReportRunParametersOptions
-                {
-                    IntervalStart = DateTimeOffset.FromUnixTimeSeconds(
-                        1522540800)
-                        .UtcDateTime,
-                    IntervalEnd = DateTimeOffset.FromUnixTimeSeconds(1525132800)
-                        .UtcDateTime,
-                },
-            };
-            var service = new Stripe.Reporting.ReportRunService(
-                this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestReportingReportRunServiceList()
-        {
-            var options = new Stripe.Reporting.ReportRunListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.Reporting.ReportRunService(
-                this.StripeClient);
-            StripeList<Stripe.Reporting.ReportRun> reportruns = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestReportingReportRunServiceRetrieve()
-        {
-            var service = new Stripe.Reporting.ReportRunService(
-                this.StripeClient);
-            service.Get("frr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestReportingReportTypeServiceList()
-        {
-            var service = new Stripe.Reporting.ReportTypeService(
-                this.StripeClient);
-            StripeList<Stripe.Reporting.ReportType> reporttypes = service.List();
-        }
-
-        [Fact]
-        public void TestReportingReportTypeServiceRetrieve()
-        {
-            var service = new Stripe.Reporting.ReportTypeService(
-                this.StripeClient);
-            service.Get("balance.summary.1");
-        }
-
-        [Fact]
-        public void TestReviewServiceApprove()
-        {
-            var service = new ReviewService(this.StripeClient);
-            service.Approve("prv_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestReviewServiceList()
-        {
-            var options = new ReviewListOptions { Limit = 3 };
-            var service = new ReviewService(this.StripeClient);
-            StripeList<Review> reviews = service.List(options);
-        }
-
-        [Fact]
-        public void TestReviewServiceRetrieve()
-        {
-            var service = new ReviewService(this.StripeClient);
-            service.Get("prv_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSetupAttemptServiceList()
-        {
-            var options = new SetupAttemptListOptions
-            {
-                Limit = 3,
-                SetupIntent = "si_xyz",
-            };
-            var service = new SetupAttemptService(this.StripeClient);
-            StripeList<SetupAttempt> setupattempts = service.List(options);
-        }
-
-        [Fact]
-        public void TestSetupIntentServiceCancel()
-        {
-            var service = new SetupIntentService(this.StripeClient);
-            service.Cancel("seti_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSetupIntentServiceConfirm()
-        {
-            var options = new SetupIntentConfirmOptions
-            {
-                PaymentMethod = "pm_card_visa",
-            };
-            var service = new SetupIntentService(this.StripeClient);
-            service.Confirm("seti_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestSetupIntentServiceCreate()
-        {
-            var options = new SetupIntentCreateOptions
-            {
-                PaymentMethodTypes = new List<string> { "card" },
-            };
-            var service = new SetupIntentService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestSetupIntentServiceList()
-        {
-            var options = new SetupIntentListOptions { Limit = 3 };
-            var service = new SetupIntentService(this.StripeClient);
-            StripeList<SetupIntent> setupintents = service.List(options);
-        }
-
-        [Fact]
-        public void TestSetupIntentServiceRetrieve()
-        {
-            var service = new SetupIntentService(this.StripeClient);
-            service.Get("seti_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSetupIntentServiceUpdate()
-        {
-            var options = new SetupIntentUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "user_id", "3435453" },
-                },
-            };
-            var service = new SetupIntentService(this.StripeClient);
-            service.Update("seti_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestSetupIntentServiceVerifyMicrodeposits()
-        {
-            var service = new SetupIntentService(this.StripeClient);
-            service.VerifyMicrodeposits("seti_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSetupIntentServiceVerifyMicrodeposits2()
-        {
-            var options = new SetupIntentVerifyMicrodepositsOptions
-            {
-                Amounts = new List<long?> { 32, 45 },
-            };
-            var service = new SetupIntentService(this.StripeClient);
-            service.VerifyMicrodeposits("seti_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestShippingRateServiceCreate()
-        {
-            var options = new ShippingRateCreateOptions
-            {
-                DisplayName = "Sample Shipper",
-                FixedAmount = new ShippingRateFixedAmountOptions
-                {
-                    Currency = "usd",
-                    Amount = 400,
-                },
-                Type = "fixed_amount",
-            };
-            var service = new ShippingRateService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestShippingRateServiceCreate2()
-        {
-            var options = new ShippingRateCreateOptions
-            {
-                DisplayName = "Ground shipping",
-                Type = "fixed_amount",
-                FixedAmount = new ShippingRateFixedAmountOptions
-                {
-                    Amount = 500,
-                    Currency = "usd",
-                },
-            };
-            var service = new ShippingRateService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestShippingRateServiceList()
-        {
-            var service = new ShippingRateService(this.StripeClient);
-            StripeList<ShippingRate> shippingrates = service.List();
-        }
-
-        [Fact]
-        public void TestShippingRateServiceList2()
-        {
-            var options = new ShippingRateListOptions { Limit = 3 };
-            var service = new ShippingRateService(this.StripeClient);
-            StripeList<ShippingRate> shippingrates = service.List(options);
-        }
-
-        [Fact]
-        public void TestShippingRateServiceRetrieve()
-        {
-            var service = new ShippingRateService(this.StripeClient);
-            service.Get("shr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestShippingRateServiceUpdate()
-        {
-            var options = new ShippingRateUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new ShippingRateService(this.StripeClient);
-            service.Update("shr_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestSigmaScheduledQueryRunServiceList()
-        {
-            var options = new Stripe.Sigma.ScheduledQueryRunListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.Sigma.ScheduledQueryRunService(
-                this.StripeClient);
-            StripeList<Stripe.Sigma.ScheduledQueryRun> scheduledqueryruns = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestSigmaScheduledQueryRunServiceRetrieve()
-        {
-            var service = new Stripe.Sigma.ScheduledQueryRunService(
-                this.StripeClient);
-            service.Get("sqr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSourceServiceRetrieve()
-        {
-            var service = new SourceService(this.StripeClient);
-            service.Get("src_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSourceServiceRetrieve2()
-        {
-            var service = new SourceService(this.StripeClient);
-            service.Get("src_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSourceServiceUpdate()
-        {
-            var options = new SourceUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new SourceService(this.StripeClient);
-            service.Update("src_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestSubscriptionItemServiceCreate()
-        {
-            var options = new SubscriptionItemCreateOptions
-            {
-                Subscription = "sub_xxxxxxxxxxxxx",
-                Price = "price_xxxxxxxxxxxxx",
-                Quantity = 2,
-            };
-            var service = new SubscriptionItemService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestSubscriptionItemServiceDelete()
-        {
-            var service = new SubscriptionItemService(this.StripeClient);
-            service.Delete("si_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSubscriptionItemServiceList()
-        {
-            var options = new SubscriptionItemListOptions
-            {
-                Subscription = "sub_xxxxxxxxxxxxx",
-            };
-            var service = new SubscriptionItemService(this.StripeClient);
-            StripeList<SubscriptionItem> subscriptionitems = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestSubscriptionItemServiceRetrieve()
-        {
-            var service = new SubscriptionItemService(this.StripeClient);
-            service.Get("si_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSubscriptionItemServiceUpdate()
-        {
-            var options = new SubscriptionItemUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new SubscriptionItemService(this.StripeClient);
-            service.Update("si_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestSubscriptionScheduleServiceCancel()
-        {
-            var service = new SubscriptionScheduleService(this.StripeClient);
-            service.Cancel("sub_sched_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSubscriptionScheduleServiceList()
-        {
-            var options = new SubscriptionScheduleListOptions { Limit = 3 };
-            var service = new SubscriptionScheduleService(this.StripeClient);
-            StripeList<SubscriptionSchedule> subscriptionschedules = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestSubscriptionScheduleServiceRelease()
-        {
-            var service = new SubscriptionScheduleService(this.StripeClient);
-            service.Release("sub_sched_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSubscriptionScheduleServiceRetrieve()
-        {
-            var service = new SubscriptionScheduleService(this.StripeClient);
-            service.Get("sub_sched_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSubscriptionScheduleServiceUpdate()
-        {
-            var options = new SubscriptionScheduleUpdateOptions
-            {
-                EndBehavior = "release",
-            };
-            var service = new SubscriptionScheduleService(this.StripeClient);
-            service.Update("sub_sched_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestSubscriptionServiceCancel()
-        {
-            var service = new SubscriptionService(this.StripeClient);
-            service.Cancel("sub_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSubscriptionServiceCreate()
-        {
-            var options = new SubscriptionCreateOptions
-            {
-                Customer = "cus_xxxxxxxxxxxxx",
-                Items = new List<SubscriptionItemOptions>
-                {
-                    new SubscriptionItemOptions
-                    {
-                        Price = "price_xxxxxxxxxxxxx",
-                    },
-                },
-            };
-            var service = new SubscriptionService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestSubscriptionServiceList()
-        {
-            var options = new SubscriptionListOptions { Limit = 3 };
-            var service = new SubscriptionService(this.StripeClient);
-            StripeList<Subscription> subscriptions = service.List(options);
-        }
-
-        [Fact]
-        public void TestSubscriptionServiceRetrieve()
-        {
-            var service = new SubscriptionService(this.StripeClient);
-            service.Get("sub_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSubscriptionServiceSearch()
-        {
-            var options = new SubscriptionSearchOptions
-            {
-                Query = "status:'active' AND metadata['order_id']:'6735'",
-            };
-            var service = new SubscriptionService(this.StripeClient);
-            service.Search(options);
-        }
-
-        [Fact]
-        public void TestSubscriptionServiceUpdate()
-        {
-            var options = new SubscriptionUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new SubscriptionService(this.StripeClient);
-            service.Update("sub_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestTaxCalculationServiceCreate()
-        {
-            var options = new Stripe.Tax.CalculationCreateOptions
-            {
-                Currency = "usd",
-                LineItems = new List<Stripe.Tax.CalculationLineItemOptions>
-                {
-                    new Stripe.Tax.CalculationLineItemOptions
-                    {
-                        Amount = 1000,
-                        Reference = "L1",
-                    },
-                },
-                CustomerDetails = new Stripe.Tax.CalculationCustomerDetailsOptions
-                {
-                    Address = new AddressOptions
-                    {
-                        Line1 = "354 Oyster Point Blvd",
-                        City = "South San Francisco",
-                        State = "CA",
-                        PostalCode = "94080",
-                        Country = "US",
-                    },
-                    AddressSource = "shipping",
-                },
-            };
-            var service = new Stripe.Tax.CalculationService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestTaxCalculationServiceListLineItems()
-        {
-            var service = new Stripe.Tax.CalculationService(this.StripeClient);
-            service.ListLineItems("xxx");
-        }
-
-        [Fact]
-        public void TestTaxCodeServiceList()
-        {
-            var options = new TaxCodeListOptions { Limit = 3 };
-            var service = new TaxCodeService(this.StripeClient);
-            StripeList<TaxCode> taxcodes = service.List(options);
-        }
-
-        [Fact]
-        public void TestTaxCodeServiceRetrieve()
-        {
-            var service = new TaxCodeService(this.StripeClient);
-            service.Get("txcd_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTaxFormServicePdf()
-        {
-            var service = new Stripe.Tax.FormService(this.StripeClient);
-            service.Pdf("form_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTaxIdServiceCreate()
-        {
-            var options = new TaxIdCreateOptions
-            {
-                Type = "eu_vat",
-                Value = "DE123456789",
-            };
-            var service = new TaxIdService(this.StripeClient);
-            service.Create("cus_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestTaxIdServiceDelete()
-        {
-            var service = new TaxIdService(this.StripeClient);
-            service.Delete("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTaxIdServiceList()
-        {
-            var options = new TaxIdListOptions { Limit = 3 };
-            var service = new TaxIdService(this.StripeClient);
-            StripeList<TaxId> taxids = service.List(
-                "cus_xxxxxxxxxxxxx",
-                options);
-        }
-
-        [Fact]
-        public void TestTaxIdServiceRetrieve()
-        {
-            var service = new TaxIdService(this.StripeClient);
-            service.Get("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTaxRateServiceCreate()
-        {
-            var options = new TaxRateCreateOptions
-            {
-                DisplayName = "VAT",
-                Description = "VAT Germany",
-                Jurisdiction = "DE",
-                Percentage = 16m,
-                Inclusive = false,
-            };
-            var service = new TaxRateService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestTaxRateServiceList()
-        {
-            var options = new TaxRateListOptions { Limit = 3 };
-            var service = new TaxRateService(this.StripeClient);
-            StripeList<TaxRate> taxrates = service.List(options);
-        }
-
-        [Fact]
-        public void TestTaxRateServiceRetrieve()
-        {
-            var service = new TaxRateService(this.StripeClient);
-            service.Get("txr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTaxRateServiceUpdate()
-        {
-            var options = new TaxRateUpdateOptions { Active = false };
-            var service = new TaxRateService(this.StripeClient);
-            service.Update("txr_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestTaxTransactionServiceCreateFromCalculation()
-        {
-            var options = new Stripe.Tax.TransactionCreateFromCalculationOptions
-            {
-                Calculation = "xxx",
-                Reference = "yyy",
-            };
-            var service = new Stripe.Tax.TransactionService(this.StripeClient);
-            service.CreateFromCalculation(options);
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceCreate()
-        {
-            var options = new Stripe.Terminal.ConfigurationCreateOptions();
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceCreate2()
-        {
-            var options = new Stripe.Terminal.ConfigurationCreateOptions
-            {
-                BbposWiseposE = new Stripe.Terminal.ConfigurationBbposWiseposEOptions
-                {
-                    Splashscreen = "file_xxxxxxxxxxxxx",
-                },
-            };
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceDelete()
-        {
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            service.Delete("uc_123");
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceDelete2()
-        {
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            service.Delete("tmc_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceList()
-        {
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            StripeList<Stripe.Terminal.Configuration> configurations = service.List();
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceList2()
-        {
-            var options = new Stripe.Terminal.ConfigurationListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            StripeList<Stripe.Terminal.Configuration> configurations = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceRetrieve()
-        {
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            service.Get("uc_123");
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceRetrieve2()
-        {
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            service.Get("tmc_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceUpdate()
-        {
-            var options = new Stripe.Terminal.ConfigurationUpdateOptions
-            {
-                Tipping = new Stripe.Terminal.ConfigurationTippingOptions
-                {
-                    Usd = new Stripe.Terminal.ConfigurationTippingUsdOptions
-                    {
-                        FixedAmounts = new List<long?> { 10 },
-                    },
-                },
-            };
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            service.Update("uc_123", options);
-        }
-
-        [Fact]
-        public void TestTerminalConfigurationServiceUpdate2()
-        {
-            var options = new Stripe.Terminal.ConfigurationUpdateOptions
-            {
-                BbposWiseposE = new Stripe.Terminal.ConfigurationBbposWiseposEOptions
-                {
-                    Splashscreen = "file_xxxxxxxxxxxxx",
-                },
-            };
-            var service = new Stripe.Terminal.ConfigurationService(
-                this.StripeClient);
-            service.Update("tmc_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestTerminalLocationServiceCreate()
-        {
-            var options = new Stripe.Terminal.LocationCreateOptions
-            {
-                DisplayName = "My First Store",
-                Address = new AddressOptions
-                {
-                    Line1 = "1234 Main Street",
-                    City = "San Francisco",
-                    PostalCode = "94111",
-                    State = "CA",
-                    Country = "US",
-                },
-            };
-            var service = new Stripe.Terminal.LocationService(
-                this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestTerminalLocationServiceDelete()
-        {
-            var service = new Stripe.Terminal.LocationService(
-                this.StripeClient);
-            service.Delete("tml_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTerminalLocationServiceList()
-        {
-            var options = new Stripe.Terminal.LocationListOptions { Limit = 3 };
-            var service = new Stripe.Terminal.LocationService(
-                this.StripeClient);
-            StripeList<Stripe.Terminal.Location> locations = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestTerminalLocationServiceRetrieve()
-        {
-            var service = new Stripe.Terminal.LocationService(
-                this.StripeClient);
-            service.Get("tml_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTerminalLocationServiceUpdate()
-        {
-            var options = new Stripe.Terminal.LocationUpdateOptions
-            {
-                DisplayName = "My First Store",
-            };
-            var service = new Stripe.Terminal.LocationService(
-                this.StripeClient);
-            service.Update("tml_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestTerminalReaderServiceCancelAction()
-        {
-            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
-            service.CancelAction("tmr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTerminalReaderServiceCreate()
-        {
-            var options = new Stripe.Terminal.ReaderCreateOptions
-            {
-                RegistrationCode = "puppies-plug-could",
-                Label = "Blue Rabbit",
-                Location = "tml_1234",
-            };
-            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestTerminalReaderServiceDelete()
-        {
-            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
-            service.Delete("tmr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTerminalReaderServiceList()
-        {
-            var options = new Stripe.Terminal.ReaderListOptions { Limit = 3 };
-            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
-            StripeList<Stripe.Terminal.Reader> readers = service.List(options);
-        }
-
-        [Fact]
-        public void TestTerminalReaderServiceProcessPaymentIntent()
-        {
-            var options = new Stripe.Terminal.ReaderProcessPaymentIntentOptions
-            {
-                PaymentIntent = "pi_xxxxxxxxxxxxx",
-            };
-            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
-            service.ProcessPaymentIntent("tmr_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestTerminalReaderServiceProcessSetupIntent()
-        {
-            var options = new Stripe.Terminal.ReaderProcessSetupIntentOptions
-            {
-                SetupIntent = "seti_xxxxxxxxxxxxx",
-                CustomerConsentCollected = true,
-            };
-            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
-            service.ProcessSetupIntent("tmr_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestTerminalReaderServiceRetrieve()
-        {
-            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
-            service.Get("tmr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTerminalReaderServiceUpdate()
-        {
-            var options = new Stripe.Terminal.ReaderUpdateOptions
-            {
-                Label = "Blue Rabbit",
-            };
-            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
-            service.Update("tmr_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestTestHelpersTestClockServiceAdvance()
+        public void TestTestHelpersTestClocksAdvancePost()
         {
             var options = new Stripe.TestHelpers.TestClockAdvanceOptions
             {
@@ -3716,7 +3798,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTestHelpersTestClockServiceAdvance2()
+        public void TestTestHelpersTestClocksAdvancePost2()
         {
             var options = new Stripe.TestHelpers.TestClockAdvanceOptions
             {
@@ -3729,7 +3811,61 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTestHelpersTestClockServiceCreate()
+        public void TestTestHelpersTestClocksDelete()
+        {
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            service.Delete("clock_xyz");
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClocksDelete2()
+        {
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            service.Delete("clock_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClocksGet()
+        {
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            StripeList<Stripe.TestHelpers.TestClock> testClocks = service
+                .List();
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClocksGet2()
+        {
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            service.Get("clock_xyz");
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClocksGet3()
+        {
+            var options = new Stripe.TestHelpers.TestClockListOptions
+            {
+                Limit = 3,
+            };
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            StripeList<Stripe.TestHelpers.TestClock> testClocks = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClocksGet4()
+        {
+            var service = new Stripe.TestHelpers.TestClockService(
+                this.StripeClient);
+            service.Get("clock_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTestHelpersTestClocksPost()
         {
             var options = new Stripe.TestHelpers.TestClockCreateOptions
             {
@@ -3743,7 +3879,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTestHelpersTestClockServiceCreate2()
+        public void TestTestHelpersTestClocksPost2()
         {
             var options = new Stripe.TestHelpers.TestClockCreateOptions
             {
@@ -3756,74 +3892,224 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTestHelpersTestClockServiceDelete()
+        public void TestTestHelpersTreasuryInboundTransfersFailPost()
         {
-            var service = new Stripe.TestHelpers.TestClockService(
-                this.StripeClient);
-            service.Delete("clock_xyz");
-        }
-
-        [Fact]
-        public void TestTestHelpersTestClockServiceDelete2()
-        {
-            var service = new Stripe.TestHelpers.TestClockService(
-                this.StripeClient);
-            service.Delete("clock_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTestHelpersTestClockServiceList()
-        {
-            var service = new Stripe.TestHelpers.TestClockService(
-                this.StripeClient);
-            StripeList<Stripe.TestHelpers.TestClock> testclocks = service.List();
-        }
-
-        [Fact]
-        public void TestTestHelpersTestClockServiceList2()
-        {
-            var options = new Stripe.TestHelpers.TestClockListOptions
+            var options = new Stripe.TestHelpers.Treasury.InboundTransferFailOptions
             {
-                Limit = 3,
+                FailureDetails = new Stripe.TestHelpers.Treasury.InboundTransferFailureDetailsOptions
+                {
+                    Code = "account_closed",
+                },
             };
-            var service = new Stripe.TestHelpers.TestClockService(
+            var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
                 this.StripeClient);
-            StripeList<Stripe.TestHelpers.TestClock> testclocks = service.List(
-                options);
+            service.Fail("ibt_123", options);
         }
 
         [Fact]
-        public void TestTestHelpersTestClockServiceRetrieve()
+        public void TestTestHelpersTreasuryInboundTransfersReturnPost()
         {
-            var service = new Stripe.TestHelpers.TestClockService(
+            var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
                 this.StripeClient);
-            service.Get("clock_xyz");
+            service.ReturnInboundTransfer("ibt_123");
         }
 
         [Fact]
-        public void TestTestHelpersTestClockServiceRetrieve2()
+        public void TestTestHelpersTreasuryInboundTransfersSucceedPost()
         {
-            var service = new Stripe.TestHelpers.TestClockService(
+            var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
                 this.StripeClient);
-            service.Get("clock_xxxxxxxxxxxxx");
+            service.Succeed("ibt_123");
         }
 
         [Fact]
-        public void TestTokenServiceRetrieve()
+        public void TestTestHelpersTreasuryOutboundTransfersFailPost()
+        {
+            var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
+                this.StripeClient);
+            service.Fail("obt_123");
+        }
+
+        [Fact]
+        public void TestTestHelpersTreasuryOutboundTransfersPostPost()
+        {
+            var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
+                this.StripeClient);
+            service.Post("obt_123");
+        }
+
+        [Fact]
+        public void TestTestHelpersTreasuryOutboundTransfersReturnPost()
+        {
+            var options = new Stripe.TestHelpers.Treasury.OutboundTransferReturnOutboundTransferOptions
+            {
+                ReturnedDetails = new Stripe.TestHelpers.Treasury.OutboundTransferReturnedDetailsOptions
+                {
+                    Code = "account_closed",
+                },
+            };
+            var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
+                this.StripeClient);
+            service.ReturnOutboundTransfer("obt_123", options);
+        }
+
+        [Fact]
+        public void TestTestHelpersTreasuryReceivedCreditsPost()
+        {
+            var options = new Stripe.TestHelpers.Treasury.ReceivedCreditCreateOptions
+            {
+                FinancialAccount = "fa_123",
+                Network = "ach",
+                Amount = 1234,
+                Currency = "usd",
+            };
+            var service = new Stripe.TestHelpers.Treasury.ReceivedCreditService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTestHelpersTreasuryReceivedDebitsPost()
+        {
+            var options = new Stripe.TestHelpers.Treasury.ReceivedDebitCreateOptions
+            {
+                FinancialAccount = "fa_123",
+                Network = "ach",
+                Amount = 1234,
+                Currency = "usd",
+            };
+            var service = new Stripe.TestHelpers.Treasury.ReceivedDebitService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensGet()
         {
             var service = new TokenService(this.StripeClient);
             service.Get("tok_xxxx");
         }
 
         [Fact]
-        public void TestTopupServiceCancel()
+        public void TestTokensPost()
+        {
+            var options = new TokenCreateOptions
+            {
+                Card = new TokenCardOptions
+                {
+                    Number = "4242424242424242",
+                    ExpMonth = "5",
+                    ExpYear = "2023",
+                    Cvc = "314",
+                },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost2()
+        {
+            var options = new TokenCreateOptions
+            {
+                BankAccount = new TokenBankAccountOptions
+                {
+                    Country = "US",
+                    Currency = "usd",
+                    AccountHolderName = "Jenny Rosen",
+                    AccountHolderType = "individual",
+                    RoutingNumber = "110000000",
+                    AccountNumber = "000123456789",
+                },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost3()
+        {
+            var options = new TokenCreateOptions
+            {
+                Pii = new TokenPiiOptions { IdNumber = "000000000" },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost4()
+        {
+            var options = new TokenCreateOptions
+            {
+                Account = new TokenAccountOptions
+                {
+                    Individual = new TokenAccountIndividualOptions
+                    {
+                        FirstName = "Jane",
+                        LastName = "Doe",
+                    },
+                    TosShownAndAccepted = true,
+                },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost5()
+        {
+            var options = new TokenCreateOptions
+            {
+                Person = new TokenPersonOptions
+                {
+                    FirstName = "Jane",
+                    LastName = "Doe",
+                    Relationship = new TokenPersonRelationshipOptions
+                    {
+                        Owner = true,
+                    },
+                },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTokensPost6()
+        {
+            var options = new TokenCreateOptions
+            {
+                CvcUpdate = new TokenCvcUpdateOptions { Cvc = "123" },
+            };
+            var service = new TokenService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTopupsCancelPost()
         {
             var service = new TopupService(this.StripeClient);
             service.Cancel("tu_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestTopupServiceCreate()
+        public void TestTopupsGet()
+        {
+            var options = new TopupListOptions { Limit = 3 };
+            var service = new TopupService(this.StripeClient);
+            StripeList<Topup> topups = service.List(options);
+        }
+
+        [Fact]
+        public void TestTopupsGet2()
+        {
+            var service = new TopupService(this.StripeClient);
+            service.Get("tu_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTopupsPost()
         {
             var options = new TopupCreateOptions
             {
@@ -3837,22 +4123,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTopupServiceList()
-        {
-            var options = new TopupListOptions { Limit = 3 };
-            var service = new TopupService(this.StripeClient);
-            StripeList<Topup> topups = service.List(options);
-        }
-
-        [Fact]
-        public void TestTopupServiceRetrieve()
-        {
-            var service = new TopupService(this.StripeClient);
-            service.Get("tu_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTopupServiceUpdate()
+        public void TestTopupsPost2()
         {
             var options = new TopupUpdateOptions
             {
@@ -3866,46 +4137,22 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTransferReversalServiceCreate()
+        public void TestTransfersGet()
         {
-            var options = new TransferReversalCreateOptions { Amount = 100 };
-            var service = new TransferReversalService(this.StripeClient);
-            service.Create("tr_xxxxxxxxxxxxx", options);
+            var options = new TransferListOptions { Limit = 3 };
+            var service = new TransferService(this.StripeClient);
+            StripeList<Transfer> transfers = service.List(options);
         }
 
         [Fact]
-        public void TestTransferReversalServiceList()
+        public void TestTransfersGet2()
         {
-            var options = new TransferReversalListOptions { Limit = 3 };
-            var service = new TransferReversalService(this.StripeClient);
-            StripeList<TransferReversal> transferreversals = service.List(
-                "tr_xxxxxxxxxxxxx",
-                options);
+            var service = new TransferService(this.StripeClient);
+            service.Get("tr_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestTransferReversalServiceRetrieve()
-        {
-            var service = new TransferReversalService(this.StripeClient);
-            service.Get("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTransferReversalServiceUpdate()
-        {
-            var options = new TransferReversalUpdateOptions
-            {
-                Metadata = new Dictionary<string, string>
-                {
-                    { "order_id", "6735" },
-                },
-            };
-            var service = new TransferReversalService(this.StripeClient);
-            service.Update("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx", options);
-        }
-
-        [Fact]
-        public void TestTransferServiceCreate()
+        public void TestTransfersPost()
         {
             var options = new TransferCreateOptions
             {
@@ -3919,22 +4166,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTransferServiceList()
-        {
-            var options = new TransferListOptions { Limit = 3 };
-            var service = new TransferService(this.StripeClient);
-            StripeList<Transfer> transfers = service.List(options);
-        }
-
-        [Fact]
-        public void TestTransferServiceRetrieve()
-        {
-            var service = new TransferService(this.StripeClient);
-            service.Get("tr_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTransferServiceUpdate()
+        public void TestTransfersPost2()
         {
             var options = new TransferUpdateOptions
             {
@@ -3948,7 +4180,68 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryCreditReversalServiceCreate()
+        public void TestTransfersReversalsGet()
+        {
+            var options = new TransferReversalListOptions { Limit = 3 };
+            var service = new TransferReversalService(this.StripeClient);
+            StripeList<TransferReversal> transferReversals = service.List(
+                "tr_xxxxxxxxxxxxx",
+                options);
+        }
+
+        [Fact]
+        public void TestTransfersReversalsGet2()
+        {
+            var service = new TransferReversalService(this.StripeClient);
+            service.Get("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTransfersReversalsPost()
+        {
+            var options = new TransferReversalCreateOptions { Amount = 100 };
+            var service = new TransferReversalService(this.StripeClient);
+            service.Create("tr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTransfersReversalsPost2()
+        {
+            var options = new TransferReversalUpdateOptions
+            {
+                Metadata = new Dictionary<string, string>
+                {
+                    { "order_id", "6735" },
+                },
+            };
+            var service = new TransferReversalService(this.StripeClient);
+            service.Update("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTreasuryCreditReversalsGet()
+        {
+            var options = new Stripe.Treasury.CreditReversalListOptions
+            {
+                FinancialAccount = "fa_xxxxxxxxxxxxx",
+                Limit = 3,
+            };
+            var service = new Stripe.Treasury.CreditReversalService(
+                this.StripeClient);
+            StripeList<Stripe.Treasury.CreditReversal> creditReversals = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestTreasuryCreditReversalsGet2()
+        {
+            var service = new Stripe.Treasury.CreditReversalService(
+                this.StripeClient);
+            service.Get("credrev_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTreasuryCreditReversalsPost()
         {
             var options = new Stripe.Treasury.CreditReversalCreateOptions
             {
@@ -3960,29 +4253,29 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryCreditReversalServiceList()
+        public void TestTreasuryDebitReversalsGet()
         {
-            var options = new Stripe.Treasury.CreditReversalListOptions
+            var options = new Stripe.Treasury.DebitReversalListOptions
             {
                 FinancialAccount = "fa_xxxxxxxxxxxxx",
                 Limit = 3,
             };
-            var service = new Stripe.Treasury.CreditReversalService(
+            var service = new Stripe.Treasury.DebitReversalService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.CreditReversal> creditreversals = service.List(
-                options);
+            StripeList<Stripe.Treasury.DebitReversal> debitReversals = service
+                .List(options);
         }
 
         [Fact]
-        public void TestTreasuryCreditReversalServiceRetrieve()
+        public void TestTreasuryDebitReversalsGet2()
         {
-            var service = new Stripe.Treasury.CreditReversalService(
+            var service = new Stripe.Treasury.DebitReversalService(
                 this.StripeClient);
-            service.Get("credrev_xxxxxxxxxxxxx");
+            service.Get("debrev_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestTreasuryDebitReversalServiceCreate()
+        public void TestTreasuryDebitReversalsPost()
         {
             var options = new Stripe.Treasury.DebitReversalCreateOptions
             {
@@ -3994,29 +4287,36 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryDebitReversalServiceList()
+        public void TestTreasuryFinancialAccountsFeaturesGet()
         {
-            var options = new Stripe.Treasury.DebitReversalListOptions
+            var service = new Stripe.Treasury.FinancialAccountService(
+                this.StripeClient);
+            service.RetrieveFeatures("fa_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTreasuryFinancialAccountsGet()
+        {
+            var options = new Stripe.Treasury.FinancialAccountListOptions
             {
-                FinancialAccount = "fa_xxxxxxxxxxxxx",
                 Limit = 3,
             };
-            var service = new Stripe.Treasury.DebitReversalService(
+            var service = new Stripe.Treasury.FinancialAccountService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.DebitReversal> debitreversals = service.List(
-                options);
+            StripeList<Stripe.Treasury.FinancialAccount> financialAccounts = service
+                .List(options);
         }
 
         [Fact]
-        public void TestTreasuryDebitReversalServiceRetrieve()
+        public void TestTreasuryFinancialAccountsGet2()
         {
-            var service = new Stripe.Treasury.DebitReversalService(
+            var service = new Stripe.Treasury.FinancialAccountService(
                 this.StripeClient);
-            service.Get("debrev_xxxxxxxxxxxxx");
+            service.Get("fa_xxxxxxxxxxxxx");
         }
 
         [Fact]
-        public void TestTreasuryFinancialAccountServiceCreate()
+        public void TestTreasuryFinancialAccountsPost()
         {
             var options = new Stripe.Treasury.FinancialAccountCreateOptions
             {
@@ -4029,36 +4329,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryFinancialAccountServiceList()
-        {
-            var options = new Stripe.Treasury.FinancialAccountListOptions
-            {
-                Limit = 3,
-            };
-            var service = new Stripe.Treasury.FinancialAccountService(
-                this.StripeClient);
-            StripeList<Stripe.Treasury.FinancialAccount> financialaccounts = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestTreasuryFinancialAccountServiceRetrieve()
-        {
-            var service = new Stripe.Treasury.FinancialAccountService(
-                this.StripeClient);
-            service.Get("fa_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTreasuryFinancialAccountServiceRetrieveFeatures()
-        {
-            var service = new Stripe.Treasury.FinancialAccountService(
-                this.StripeClient);
-            service.RetrieveFeatures("fa_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTreasuryFinancialAccountServiceUpdate()
+        public void TestTreasuryFinancialAccountsPost2()
         {
             var options = new Stripe.Treasury.FinancialAccountUpdateOptions
             {
@@ -4073,7 +4344,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryInboundTransferServiceCancel()
+        public void TestTreasuryInboundTransfersCancelPost()
         {
             var service = new Stripe.Treasury.InboundTransferService(
                 this.StripeClient);
@@ -4081,7 +4352,29 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryInboundTransferServiceCreate()
+        public void TestTreasuryInboundTransfersGet()
+        {
+            var options = new Stripe.Treasury.InboundTransferListOptions
+            {
+                FinancialAccount = "fa_xxxxxxxxxxxxx",
+                Limit = 3,
+            };
+            var service = new Stripe.Treasury.InboundTransferService(
+                this.StripeClient);
+            StripeList<Stripe.Treasury.InboundTransfer> inboundTransfers = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestTreasuryInboundTransfersGet2()
+        {
+            var service = new Stripe.Treasury.InboundTransferService(
+                this.StripeClient);
+            service.Get("ibt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTreasuryInboundTransfersPost()
         {
             var options = new Stripe.Treasury.InboundTransferCreateOptions
             {
@@ -4097,60 +4390,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryInboundTransferServiceFail()
-        {
-            var options = new Stripe.TestHelpers.Treasury.InboundTransferFailOptions
-            {
-                FailureDetails = new Stripe.TestHelpers.Treasury.InboundTransferFailureDetailsOptions
-                {
-                    Code = "account_closed",
-                },
-            };
-            var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
-                this.StripeClient);
-            service.Fail("ibt_123", options);
-        }
-
-        [Fact]
-        public void TestTreasuryInboundTransferServiceList()
-        {
-            var options = new Stripe.Treasury.InboundTransferListOptions
-            {
-                FinancialAccount = "fa_xxxxxxxxxxxxx",
-                Limit = 3,
-            };
-            var service = new Stripe.Treasury.InboundTransferService(
-                this.StripeClient);
-            StripeList<Stripe.Treasury.InboundTransfer> inboundtransfers = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestTreasuryInboundTransferServiceRetrieve()
-        {
-            var service = new Stripe.Treasury.InboundTransferService(
-                this.StripeClient);
-            service.Get("ibt_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTreasuryInboundTransferServiceReturnInboundTransfer()
-        {
-            var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
-                this.StripeClient);
-            service.ReturnInboundTransfer("ibt_123");
-        }
-
-        [Fact]
-        public void TestTreasuryInboundTransferServiceSucceed()
-        {
-            var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
-                this.StripeClient);
-            service.Succeed("ibt_123");
-        }
-
-        [Fact]
-        public void TestTreasuryOutboundPaymentServiceCancel()
+        public void TestTreasuryOutboundPaymentsCancelPost()
         {
             var service = new Stripe.Treasury.OutboundPaymentService(
                 this.StripeClient);
@@ -4158,7 +4398,29 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryOutboundPaymentServiceCreate()
+        public void TestTreasuryOutboundPaymentsGet()
+        {
+            var options = new Stripe.Treasury.OutboundPaymentListOptions
+            {
+                FinancialAccount = "fa_xxxxxxxxxxxxx",
+                Limit = 3,
+            };
+            var service = new Stripe.Treasury.OutboundPaymentService(
+                this.StripeClient);
+            StripeList<Stripe.Treasury.OutboundPayment> outboundPayments = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestTreasuryOutboundPaymentsGet2()
+        {
+            var service = new Stripe.Treasury.OutboundPaymentService(
+                this.StripeClient);
+            service.Get("bot_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTreasuryOutboundPaymentsPost()
         {
             var options = new Stripe.Treasury.OutboundPaymentCreateOptions
             {
@@ -4175,29 +4437,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryOutboundPaymentServiceList()
-        {
-            var options = new Stripe.Treasury.OutboundPaymentListOptions
-            {
-                FinancialAccount = "fa_xxxxxxxxxxxxx",
-                Limit = 3,
-            };
-            var service = new Stripe.Treasury.OutboundPaymentService(
-                this.StripeClient);
-            StripeList<Stripe.Treasury.OutboundPayment> outboundpayments = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestTreasuryOutboundPaymentServiceRetrieve()
-        {
-            var service = new Stripe.Treasury.OutboundPaymentService(
-                this.StripeClient);
-            service.Get("bot_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTreasuryOutboundTransferServiceCancel()
+        public void TestTreasuryOutboundTransfersCancelPost()
         {
             var service = new Stripe.Treasury.OutboundTransferService(
                 this.StripeClient);
@@ -4205,7 +4445,29 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryOutboundTransferServiceCreate()
+        public void TestTreasuryOutboundTransfersGet()
+        {
+            var options = new Stripe.Treasury.OutboundTransferListOptions
+            {
+                FinancialAccount = "fa_xxxxxxxxxxxxx",
+                Limit = 3,
+            };
+            var service = new Stripe.Treasury.OutboundTransferService(
+                this.StripeClient);
+            StripeList<Stripe.Treasury.OutboundTransfer> outboundTransfers = service
+                .List(options);
+        }
+
+        [Fact]
+        public void TestTreasuryOutboundTransfersGet2()
+        {
+            var service = new Stripe.Treasury.OutboundTransferService(
+                this.StripeClient);
+            service.Get("obt_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTreasuryOutboundTransfersPost()
         {
             var options = new Stripe.Treasury.OutboundTransferCreateOptions
             {
@@ -4221,75 +4483,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryOutboundTransferServiceFail()
-        {
-            var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
-                this.StripeClient);
-            service.Fail("obt_123");
-        }
-
-        [Fact]
-        public void TestTreasuryOutboundTransferServiceList()
-        {
-            var options = new Stripe.Treasury.OutboundTransferListOptions
-            {
-                FinancialAccount = "fa_xxxxxxxxxxxxx",
-                Limit = 3,
-            };
-            var service = new Stripe.Treasury.OutboundTransferService(
-                this.StripeClient);
-            StripeList<Stripe.Treasury.OutboundTransfer> outboundtransfers = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestTreasuryOutboundTransferServicePost()
-        {
-            var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
-                this.StripeClient);
-            service.Post("obt_123");
-        }
-
-        [Fact]
-        public void TestTreasuryOutboundTransferServiceRetrieve()
-        {
-            var service = new Stripe.Treasury.OutboundTransferService(
-                this.StripeClient);
-            service.Get("obt_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestTreasuryOutboundTransferServiceReturnOutboundTransfer()
-        {
-            var options = new Stripe.TestHelpers.Treasury.OutboundTransferReturnOutboundTransferOptions
-            {
-                ReturnedDetails = new Stripe.TestHelpers.Treasury.OutboundTransferReturnedDetailsOptions
-                {
-                    Code = "account_closed",
-                },
-            };
-            var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
-                this.StripeClient);
-            service.ReturnOutboundTransfer("obt_123", options);
-        }
-
-        [Fact]
-        public void TestTreasuryReceivedCreditServiceCreate()
-        {
-            var options = new Stripe.TestHelpers.Treasury.ReceivedCreditCreateOptions
-            {
-                FinancialAccount = "fa_123",
-                Network = "ach",
-                Amount = 1234,
-                Currency = "usd",
-            };
-            var service = new Stripe.TestHelpers.Treasury.ReceivedCreditService(
-                this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestTreasuryReceivedCreditServiceList()
+        public void TestTreasuryReceivedCreditsGet()
         {
             var options = new Stripe.Treasury.ReceivedCreditListOptions
             {
@@ -4298,12 +4492,12 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.ReceivedCreditService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.ReceivedCredit> receivedcredits = service.List(
-                options);
+            StripeList<Stripe.Treasury.ReceivedCredit> receivedCredits = service
+                .List(options);
         }
 
         [Fact]
-        public void TestTreasuryReceivedCreditServiceRetrieve()
+        public void TestTreasuryReceivedCreditsGet2()
         {
             var service = new Stripe.Treasury.ReceivedCreditService(
                 this.StripeClient);
@@ -4311,22 +4505,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryReceivedDebitServiceCreate()
-        {
-            var options = new Stripe.TestHelpers.Treasury.ReceivedDebitCreateOptions
-            {
-                FinancialAccount = "fa_123",
-                Network = "ach",
-                Amount = 1234,
-                Currency = "usd",
-            };
-            var service = new Stripe.TestHelpers.Treasury.ReceivedDebitService(
-                this.StripeClient);
-            service.Create(options);
-        }
-
-        [Fact]
-        public void TestTreasuryReceivedDebitServiceList()
+        public void TestTreasuryReceivedDebitsGet()
         {
             var options = new Stripe.Treasury.ReceivedDebitListOptions
             {
@@ -4335,12 +4514,12 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.ReceivedDebitService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.ReceivedDebit> receiveddebits = service.List(
-                options);
+            StripeList<Stripe.Treasury.ReceivedDebit> receivedDebits = service
+                .List(options);
         }
 
         [Fact]
-        public void TestTreasuryReceivedDebitServiceRetrieve()
+        public void TestTreasuryReceivedDebitsGet2()
         {
             var service = new Stripe.Treasury.ReceivedDebitService(
                 this.StripeClient);
@@ -4348,7 +4527,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryTransactionEntryServiceList()
+        public void TestTreasuryTransactionEntriesGet()
         {
             var options = new Stripe.Treasury.TransactionEntryListOptions
             {
@@ -4357,12 +4536,12 @@ namespace StripeTests
             };
             var service = new Stripe.Treasury.TransactionEntryService(
                 this.StripeClient);
-            StripeList<Stripe.Treasury.TransactionEntry> transactionentries = service.List(
-                options);
+            StripeList<Stripe.Treasury.TransactionEntry> transactionEntries = service
+                .List(options);
         }
 
         [Fact]
-        public void TestTreasuryTransactionEntryServiceRetrieve()
+        public void TestTreasuryTransactionEntriesGet2()
         {
             var service = new Stripe.Treasury.TransactionEntryService(
                 this.StripeClient);
@@ -4370,7 +4549,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryTransactionServiceList()
+        public void TestTreasuryTransactionsGet()
         {
             var options = new Stripe.Treasury.TransactionListOptions
             {
@@ -4384,7 +4563,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTreasuryTransactionServiceRetrieve()
+        public void TestTreasuryTransactionsGet2()
         {
             var service = new Stripe.Treasury.TransactionService(
                 this.StripeClient);
@@ -4392,17 +4571,30 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestUsageRecordSummaryServiceList()
+        public void TestWebhookEndpointsDelete()
         {
-            var options = new UsageRecordSummaryListOptions { Limit = 3 };
-            var service = new UsageRecordSummaryService(this.StripeClient);
-            StripeList<UsageRecordSummary> usagerecordsummaries = service.List(
-                "si_xxxxxxxxxxxxx",
+            var service = new WebhookEndpointService(this.StripeClient);
+            service.Delete("we_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestWebhookEndpointsGet()
+        {
+            var options = new WebhookEndpointListOptions { Limit = 3 };
+            var service = new WebhookEndpointService(this.StripeClient);
+            StripeList<WebhookEndpoint> webhookEndpoints = service.List(
                 options);
         }
 
         [Fact]
-        public void TestWebhookEndpointServiceCreate()
+        public void TestWebhookEndpointsGet2()
+        {
+            var service = new WebhookEndpointService(this.StripeClient);
+            service.Get("we_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestWebhookEndpointsPost()
         {
             var options = new WebhookEndpointCreateOptions
             {
@@ -4418,30 +4610,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestWebhookEndpointServiceDelete()
-        {
-            var service = new WebhookEndpointService(this.StripeClient);
-            service.Delete("we_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestWebhookEndpointServiceList()
-        {
-            var options = new WebhookEndpointListOptions { Limit = 3 };
-            var service = new WebhookEndpointService(this.StripeClient);
-            StripeList<WebhookEndpoint> webhookendpoints = service.List(
-                options);
-        }
-
-        [Fact]
-        public void TestWebhookEndpointServiceRetrieve()
-        {
-            var service = new WebhookEndpointService(this.StripeClient);
-            service.Get("we_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestWebhookEndpointServiceUpdate()
+        public void TestWebhookEndpointsPost2()
         {
             var options = new WebhookEndpointUpdateOptions
             {

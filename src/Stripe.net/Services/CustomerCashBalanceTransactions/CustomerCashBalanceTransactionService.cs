@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -23,32 +24,32 @@ namespace Stripe
 
         public virtual CustomerCashBalanceTransaction Get(string parentId, string id, CustomerCashBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(parentId, id, options, requestOptions);
+            return this.Request<CustomerCashBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance_transactions/{id}", options, requestOptions);
         }
 
         public virtual Task<CustomerCashBalanceTransaction> GetAsync(string parentId, string id, CustomerCashBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerCashBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance_transactions/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<CustomerCashBalanceTransaction> List(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(parentId, options, requestOptions);
+            return this.Request<StripeList<CustomerCashBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance_transactions", options, requestOptions);
         }
 
         public virtual Task<StripeList<CustomerCashBalanceTransaction>> ListAsync(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAsync(parentId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CustomerCashBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance_transactions", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<CustomerCashBalanceTransaction> ListAutoPaging(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(parentId, options, requestOptions);
+            return this.ListRequestAutoPaging<CustomerCashBalanceTransaction>($"/v1/customers/{parentId}/cash_balance_transactions", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<CustomerCashBalanceTransaction> ListAutoPagingAsync(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAutoPagingAsync(parentId, options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<CustomerCashBalanceTransaction>($"/v1/customers/{parentId}/cash_balance_transactions", options, requestOptions, cancellationToken);
         }
     }
 }
