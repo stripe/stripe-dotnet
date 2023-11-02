@@ -114,7 +114,8 @@ namespace Stripe
         /// learn more about these types.
         /// One of: <c>adjusted_for_overdraft</c>, <c>applied_to_payment</c>, <c>funded</c>,
         /// <c>funding_reversed</c>, <c>refunded_from_payment</c>, <c>return_canceled</c>,
-        /// <c>return_initiated</c>, or <c>unapplied_from_payment</c>.
+        /// <c>return_initiated</c>, <c>transferred_to_balance</c>, or
+        /// <c>unapplied_from_payment</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

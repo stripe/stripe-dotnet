@@ -174,6 +174,12 @@ namespace Stripe
         public AccountCapabilitiesPromptpayPaymentsOptions PromptpayPayments { get; set; }
 
         /// <summary>
+        /// The revolut_pay_payments capability.
+        /// </summary>
+        [JsonProperty("revolut_pay_payments")]
+        public AccountCapabilitiesRevolutPayPaymentsOptions RevolutPayPayments { get; set; }
+
+        /// <summary>
         /// The sepa_debit_payments capability.
         /// </summary>
         [JsonProperty("sepa_debit_payments")]

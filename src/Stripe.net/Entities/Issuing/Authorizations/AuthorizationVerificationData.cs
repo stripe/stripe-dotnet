@@ -22,6 +22,12 @@ namespace Stripe.Issuing
         public string AddressPostalCodeCheck { get; set; }
 
         /// <summary>
+        /// The exemption applied to this authorization.
+        /// </summary>
+        [JsonProperty("authentication_exemption")]
+        public AuthorizationVerificationDataAuthenticationExemption AuthenticationExemption { get; set; }
+
+        /// <summary>
         /// Whether the cardholder provided a CVC and if it matched Stripe’s record.
         /// One of: <c>match</c>, <c>mismatch</c>, or <c>not_provided</c>.
         /// </summary>
@@ -41,5 +47,11 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("postal_code")]
         public string PostalCode { get; set; }
+
+        /// <summary>
+        /// 3D Secure details.
+        /// </summary>
+        [JsonProperty("three_d_secure")]
+        public AuthorizationVerificationDataThreeDSecure ThreeDSecure { get; set; }
     }
 }

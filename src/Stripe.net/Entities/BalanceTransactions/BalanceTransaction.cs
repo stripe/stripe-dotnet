@@ -153,11 +153,12 @@ namespace Stripe
         /// <c>obligation_outbound</c>, <c>obligation_reversal_inbound</c>,
         /// <c>obligation_reversal_outbound</c>, <c>obligation_payout</c>,
         /// <c>obligation_payout_failure</c>, <c>payment</c>, <c>payment_failure_refund</c>,
-        /// <c>payment_refund</c>, <c>payment_reversal</c>, <c>payout</c>, <c>payout_cancel</c>,
-        /// <c>payout_failure</c>, <c>refund</c>, <c>refund_failure</c>, <c>reserve_transaction</c>,
-        /// <c>reserved_funds</c>, <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>tax_fee</c>,
-        /// <c>topup</c>, <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>,
-        /// <c>transfer_failure</c>, or <c>transfer_refund</c>. Learn more about <a
+        /// <c>payment_refund</c>, <c>payment_reversal</c>, <c>payment_unreconciled</c>,
+        /// <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>, <c>refund</c>,
+        /// <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
+        /// <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>,
+        /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>,
+        /// or <c>transfer_refund</c>. Learn more about <a
         /// href="https://stripe.com/docs/reports/balance-transaction-types">balance transaction
         /// types and what they represent</a>. To classify transactions for accounting purposes,
         /// consider <c>reporting_category</c> instead.
@@ -169,8 +170,8 @@ namespace Stripe
         /// <c>obligation_outbound</c>, <c>obligation_payout</c>, <c>obligation_payout_failure</c>,
         /// <c>obligation_reversal_inbound</c>, <c>obligation_reversal_outbound</c>, <c>payment</c>,
         /// <c>payment_failure_refund</c>, <c>payment_refund</c>, <c>payment_reversal</c>,
-        /// <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>, <c>refund</c>,
-        /// <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
+        /// <c>payment_unreconciled</c>, <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>,
+        /// <c>refund</c>, <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
         /// <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>,
         /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>,
         /// or <c>transfer_refund</c>.

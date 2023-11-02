@@ -200,5 +200,11 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         [JsonProperty("terminal_id")]
         public string TerminalId { get; set; }
+
+        /// <summary>
+        /// URL provided by the merchant on a 3DS request.
+        /// </summary>
+        [JsonProperty("url")]
+        public string Url { get; set; }
     }
 }
