@@ -2,6 +2,7 @@
 namespace Stripe.Issuing
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -25,52 +26,52 @@ namespace Stripe.Issuing
 
         public virtual Cardholder Create(CardholderCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<Cardholder>(HttpMethod.Post, $"/v1/issuing/cardholders", options, requestOptions);
         }
 
         public virtual Task<Cardholder> CreateAsync(CardholderCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<Cardholder>(HttpMethod.Post, $"/v1/issuing/cardholders", options, requestOptions, cancellationToken);
         }
 
         public virtual Cardholder Get(string id, CardholderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<Cardholder>(HttpMethod.Get, $"/v1/issuing/cardholders/{id}", options, requestOptions);
         }
 
         public virtual Task<Cardholder> GetAsync(string id, CardholderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Cardholder>(HttpMethod.Get, $"/v1/issuing/cardholders/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Cardholder> List(CardholderListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<Cardholder>>(HttpMethod.Get, $"/v1/issuing/cardholders", options, requestOptions);
         }
 
         public virtual Task<StripeList<Cardholder>> ListAsync(CardholderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Cardholder>>(HttpMethod.Get, $"/v1/issuing/cardholders", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Cardholder> ListAutoPaging(CardholderListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<Cardholder>($"/v1/issuing/cardholders", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<Cardholder> ListAutoPagingAsync(CardholderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Cardholder>($"/v1/issuing/cardholders", options, requestOptions, cancellationToken);
         }
 
         public virtual Cardholder Update(string id, CardholderUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request<Cardholder>(HttpMethod.Post, $"/v1/issuing/cardholders/{id}", options, requestOptions);
         }
 
         public virtual Task<Cardholder> UpdateAsync(string id, CardholderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Cardholder>(HttpMethod.Post, $"/v1/issuing/cardholders/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

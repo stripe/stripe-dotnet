@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -21,12 +22,12 @@ namespace Stripe
 
         public virtual AccountLink Create(AccountLinkCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<AccountLink>(HttpMethod.Post, $"/v1/account_links", options, requestOptions);
         }
 
         public virtual Task<AccountLink> CreateAsync(AccountLinkCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountLink>(HttpMethod.Post, $"/v1/account_links", options, requestOptions, cancellationToken);
         }
     }
 }

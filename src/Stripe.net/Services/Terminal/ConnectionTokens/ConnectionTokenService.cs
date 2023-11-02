@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -21,12 +22,12 @@ namespace Stripe.Terminal
 
         public virtual ConnectionToken Create(ConnectionTokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<ConnectionToken>(HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions);
         }
 
         public virtual Task<ConnectionToken> CreateAsync(ConnectionTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<ConnectionToken>(HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions, cancellationToken);
         }
     }
 }

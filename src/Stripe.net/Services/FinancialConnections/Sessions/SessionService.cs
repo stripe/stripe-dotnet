@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.FinancialConnections
 {
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -22,22 +23,22 @@ namespace Stripe.FinancialConnections
 
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<Session>(HttpMethod.Post, $"/v1/financial_connections/sessions", options, requestOptions);
         }
 
         public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/financial_connections/sessions", options, requestOptions, cancellationToken);
         }
 
         public virtual Session Get(string id, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<Session>(HttpMethod.Get, $"/v1/financial_connections/sessions/{id}", options, requestOptions);
         }
 
         public virtual Task<Session> GetAsync(string id, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Session>(HttpMethod.Get, $"/v1/financial_connections/sessions/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

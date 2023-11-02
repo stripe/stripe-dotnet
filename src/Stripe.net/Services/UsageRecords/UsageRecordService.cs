@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -21,12 +22,12 @@ namespace Stripe
 
         public virtual UsageRecord Create(string parentId, UsageRecordCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.CreateNestedEntity(parentId, options, requestOptions);
+            return this.Request<UsageRecord>(HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions);
         }
 
         public virtual Task<UsageRecord> CreateAsync(string parentId, UsageRecordCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateNestedEntityAsync(parentId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<UsageRecord>(HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions, cancellationToken);
         }
     }
 }

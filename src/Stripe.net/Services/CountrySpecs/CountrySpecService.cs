@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -23,32 +24,32 @@ namespace Stripe
 
         public virtual CountrySpec Get(string id, CountrySpecGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<CountrySpec>(HttpMethod.Get, $"/v1/country_specs/{id}", options, requestOptions);
         }
 
         public virtual Task<CountrySpec> GetAsync(string id, CountrySpecGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<CountrySpec>(HttpMethod.Get, $"/v1/country_specs/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<CountrySpec> List(CountrySpecListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<CountrySpec>>(HttpMethod.Get, $"/v1/country_specs", options, requestOptions);
         }
 
         public virtual Task<StripeList<CountrySpec>> ListAsync(CountrySpecListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CountrySpec>>(HttpMethod.Get, $"/v1/country_specs", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<CountrySpec> ListAutoPaging(CountrySpecListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<CountrySpec>($"/v1/country_specs", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<CountrySpec> ListAutoPagingAsync(CountrySpecListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<CountrySpec>($"/v1/country_specs", options, requestOptions, cancellationToken);
         }
     }
 }

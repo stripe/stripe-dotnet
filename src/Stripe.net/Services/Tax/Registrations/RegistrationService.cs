@@ -2,6 +2,7 @@
 namespace Stripe.Tax
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -24,42 +25,42 @@ namespace Stripe.Tax
 
         public virtual Registration Create(RegistrationCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<Registration>(HttpMethod.Post, $"/v1/tax/registrations", options, requestOptions);
         }
 
         public virtual Task<Registration> CreateAsync(RegistrationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<Registration>(HttpMethod.Post, $"/v1/tax/registrations", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Registration> List(RegistrationListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<Registration>>(HttpMethod.Get, $"/v1/tax/registrations", options, requestOptions);
         }
 
         public virtual Task<StripeList<Registration>> ListAsync(RegistrationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Registration>>(HttpMethod.Get, $"/v1/tax/registrations", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Registration> ListAutoPaging(RegistrationListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<Registration>($"/v1/tax/registrations", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<Registration> ListAutoPagingAsync(RegistrationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Registration>($"/v1/tax/registrations", options, requestOptions, cancellationToken);
         }
 
         public virtual Registration Update(string id, RegistrationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request<Registration>(HttpMethod.Post, $"/v1/tax/registrations/{id}", options, requestOptions);
         }
 
         public virtual Task<Registration> UpdateAsync(string id, RegistrationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Registration>(HttpMethod.Post, $"/v1/tax/registrations/{id}", options, requestOptions, cancellationToken);
         }
     }
 }
