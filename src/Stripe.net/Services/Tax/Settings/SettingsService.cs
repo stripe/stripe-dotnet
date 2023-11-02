@@ -36,12 +36,12 @@ namespace Stripe.Tax
 
         public virtual Settings Update(SettingsUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(null, null, requestOptions);
+            return this.UpdateEntity(null, options, requestOptions);
         }
 
         public virtual Task<Settings> UpdateAsync(SettingsUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(null, null, requestOptions, cancellationToken);
+            return this.UpdateEntityAsync(null, options, requestOptions, cancellationToken);
         }
     }
 }
