@@ -26,62 +26,62 @@ namespace Stripe
 
         public virtual Refund Cancel(string id, RefundCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions);
+            return this.Request<Refund>(HttpMethod.Post, $"/v1/refunds/{id}/cancel", options, requestOptions);
         }
 
         public virtual Task<Refund> CancelAsync(string id, RefundCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(HttpMethod.Post, $"/v1/refunds/{id}/cancel", options, requestOptions, cancellationToken);
         }
 
         public virtual Refund Create(RefundCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<Refund>(HttpMethod.Post, $"/v1/refunds", options, requestOptions);
         }
 
         public virtual Task<Refund> CreateAsync(RefundCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(HttpMethod.Post, $"/v1/refunds", options, requestOptions, cancellationToken);
         }
 
         public virtual Refund Get(string id, RefundGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<Refund>(HttpMethod.Get, $"/v1/refunds/{id}", options, requestOptions);
         }
 
         public virtual Task<Refund> GetAsync(string id, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(HttpMethod.Get, $"/v1/refunds/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Refund> List(RefundListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<Refund>>(HttpMethod.Get, $"/v1/refunds", options, requestOptions);
         }
 
         public virtual Task<StripeList<Refund>> ListAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Refund>>(HttpMethod.Get, $"/v1/refunds", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Refund> ListAutoPaging(RefundListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<Refund>($"/v1/refunds", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<Refund> ListAutoPagingAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Refund>($"/v1/refunds", options, requestOptions, cancellationToken);
         }
 
         public virtual Refund Update(string id, RefundUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request<Refund>(HttpMethod.Post, $"/v1/refunds/{id}", options, requestOptions);
         }
 
         public virtual Task<Refund> UpdateAsync(string id, RefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(HttpMethod.Post, $"/v1/refunds/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

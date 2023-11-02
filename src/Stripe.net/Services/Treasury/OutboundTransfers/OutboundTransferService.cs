@@ -25,52 +25,52 @@ namespace Stripe.Treasury
 
         public virtual OutboundTransfer Cancel(string id, OutboundTransferCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions);
+            return this.Request<OutboundTransfer>(HttpMethod.Post, $"/v1/treasury/outbound_transfers/{id}/cancel", options, requestOptions);
         }
 
         public virtual Task<OutboundTransfer> CancelAsync(string id, OutboundTransferCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<OutboundTransfer>(HttpMethod.Post, $"/v1/treasury/outbound_transfers/{id}/cancel", options, requestOptions, cancellationToken);
         }
 
         public virtual OutboundTransfer Create(OutboundTransferCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<OutboundTransfer>(HttpMethod.Post, $"/v1/treasury/outbound_transfers", options, requestOptions);
         }
 
         public virtual Task<OutboundTransfer> CreateAsync(OutboundTransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<OutboundTransfer>(HttpMethod.Post, $"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
         }
 
         public virtual OutboundTransfer Get(string id, OutboundTransferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<OutboundTransfer>(HttpMethod.Get, $"/v1/treasury/outbound_transfers/{id}", options, requestOptions);
         }
 
         public virtual Task<OutboundTransfer> GetAsync(string id, OutboundTransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<OutboundTransfer>(HttpMethod.Get, $"/v1/treasury/outbound_transfers/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<OutboundTransfer> List(OutboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<OutboundTransfer>>(HttpMethod.Get, $"/v1/treasury/outbound_transfers", options, requestOptions);
         }
 
         public virtual Task<StripeList<OutboundTransfer>> ListAsync(OutboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<OutboundTransfer>>(HttpMethod.Get, $"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<OutboundTransfer> ListAutoPaging(OutboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<OutboundTransfer>($"/v1/treasury/outbound_transfers", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<OutboundTransfer> ListAutoPagingAsync(OutboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<OutboundTransfer>($"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
         }
     }
 }

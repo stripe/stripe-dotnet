@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -26,62 +27,62 @@ namespace Stripe
 
         public virtual Coupon Create(CouponCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<Coupon>(HttpMethod.Post, $"/v1/coupons", options, requestOptions);
         }
 
         public virtual Task<Coupon> CreateAsync(CouponCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<Coupon>(HttpMethod.Post, $"/v1/coupons", options, requestOptions, cancellationToken);
         }
 
         public virtual Coupon Delete(string id, CouponDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(id, options, requestOptions);
+            return this.Request<Coupon>(HttpMethod.Delete, $"/v1/coupons/{id}", options, requestOptions);
         }
 
         public virtual Task<Coupon> DeleteAsync(string id, CouponDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Coupon>(HttpMethod.Delete, $"/v1/coupons/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual Coupon Get(string id, CouponGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<Coupon>(HttpMethod.Get, $"/v1/coupons/{id}", options, requestOptions);
         }
 
         public virtual Task<Coupon> GetAsync(string id, CouponGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Coupon>(HttpMethod.Get, $"/v1/coupons/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Coupon> List(CouponListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<Coupon>>(HttpMethod.Get, $"/v1/coupons", options, requestOptions);
         }
 
         public virtual Task<StripeList<Coupon>> ListAsync(CouponListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Coupon>>(HttpMethod.Get, $"/v1/coupons", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Coupon> ListAutoPaging(CouponListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<Coupon>($"/v1/coupons", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<Coupon> ListAutoPagingAsync(CouponListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Coupon>($"/v1/coupons", options, requestOptions, cancellationToken);
         }
 
         public virtual Coupon Update(string id, CouponUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request<Coupon>(HttpMethod.Post, $"/v1/coupons/{id}", options, requestOptions);
         }
 
         public virtual Task<Coupon> UpdateAsync(string id, CouponUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Coupon>(HttpMethod.Post, $"/v1/coupons/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

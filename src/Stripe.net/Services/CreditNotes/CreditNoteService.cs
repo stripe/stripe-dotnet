@@ -11,6 +11,7 @@ namespace Stripe
         IRetrievable<CreditNote, CreditNoteGetOptions>,
         IUpdatable<CreditNote, CreditNoteUpdateOptions>
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         public CreditNoteService()
             : base(null)
         {
@@ -132,5 +133,6 @@ namespace Stripe
         {
             return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/void", options, requestOptions, cancellationToken);
         }
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }

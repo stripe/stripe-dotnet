@@ -26,72 +26,72 @@ namespace Stripe
 
         public virtual PaymentMethod Attach(string id, PaymentMethodAttachOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/attach", options, requestOptions);
+            return this.Request<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}/attach", options, requestOptions);
         }
 
         public virtual Task<PaymentMethod> AttachAsync(string id, PaymentMethodAttachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/attach", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}/attach", options, requestOptions, cancellationToken);
         }
 
         public virtual PaymentMethod Create(PaymentMethodCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods", options, requestOptions);
         }
 
         public virtual Task<PaymentMethod> CreateAsync(PaymentMethodCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods", options, requestOptions, cancellationToken);
         }
 
         public virtual PaymentMethod Detach(string id, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/detach", options, requestOptions);
+            return this.Request<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}/detach", options, requestOptions);
         }
 
         public virtual Task<PaymentMethod> DetachAsync(string id, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/detach", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}/detach", options, requestOptions, cancellationToken);
         }
 
         public virtual PaymentMethod Get(string id, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<PaymentMethod>(HttpMethod.Get, $"/v1/payment_methods/{id}", options, requestOptions);
         }
 
         public virtual Task<PaymentMethod> GetAsync(string id, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethod>(HttpMethod.Get, $"/v1/payment_methods/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<PaymentMethod> List(PaymentMethodListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/payment_methods", options, requestOptions);
         }
 
         public virtual Task<StripeList<PaymentMethod>> ListAsync(PaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/payment_methods", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<PaymentMethod> ListAutoPaging(PaymentMethodListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<PaymentMethod>($"/v1/payment_methods", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<PaymentMethod> ListAutoPagingAsync(PaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<PaymentMethod>($"/v1/payment_methods", options, requestOptions, cancellationToken);
         }
 
         public virtual PaymentMethod Update(string id, PaymentMethodUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}", options, requestOptions);
         }
 
         public virtual Task<PaymentMethod> UpdateAsync(string id, PaymentMethodUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

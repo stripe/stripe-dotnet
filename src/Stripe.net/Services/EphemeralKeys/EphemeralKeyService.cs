@@ -7,6 +7,7 @@ namespace Stripe
         ICreatable<EphemeralKey, EphemeralKeyCreateOptions>,
         IDeletable<EphemeralKey, EphemeralKeyDeleteOptions>
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         public EphemeralKeyService()
             : base(null)
         {
@@ -53,5 +54,6 @@ namespace Stripe
         {
             return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
         }
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
