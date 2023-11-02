@@ -77,12 +77,13 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// ID of an existing Customer, if one exists. In <c>payment</c> mode, the customer’s most
-        /// recent card payment method will be used to prefill the email, name, card details, and
-        /// billing address on the Checkout page. In <c>subscription</c> mode, the customer’s <a
+        /// recently saved card payment method will be used to prefill the email, name, card
+        /// details, and billing address on the Checkout page. In <c>subscription</c> mode, the
+        /// customer’s <a
         /// href="https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method">default
-        /// payment method</a> will be used if it’s a card, and otherwise the most recent card will
-        /// be used. A valid billing address, billing name and billing email are required on the
-        /// payment method for Checkout to prefill the customer's card details.
+        /// payment method</a> will be used if it’s a card, otherwise the most recently saved card
+        /// will be used. A valid billing address, billing name and billing email are required on
+        /// the payment method for Checkout to prefill the customer's card details.
         ///
         /// If the Customer already has a valid <a
         /// href="https://stripe.com/docs/api/customers/object#customer_object-email">email</a> set,
