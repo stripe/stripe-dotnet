@@ -22,32 +22,32 @@ namespace Stripe.TestHelpers.Treasury
 
         public virtual Stripe.Treasury.OutboundTransfer Fail(string id, OutboundTransferFailOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/fail", options, requestOptions);
+            return this.Request<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/fail", options, requestOptions);
         }
 
         public virtual Task<Stripe.Treasury.OutboundTransfer> FailAsync(string id, OutboundTransferFailOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/fail", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/fail", options, requestOptions, cancellationToken);
         }
 
         public virtual Stripe.Treasury.OutboundTransfer Post(string id, OutboundTransferPostOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/post", options, requestOptions);
+            return this.Request<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/post", options, requestOptions);
         }
 
         public virtual Task<Stripe.Treasury.OutboundTransfer> PostAsync(string id, OutboundTransferPostOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/post", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/post", options, requestOptions, cancellationToken);
         }
 
         public virtual Stripe.Treasury.OutboundTransfer ReturnOutboundTransfer(string id, OutboundTransferReturnOutboundTransferOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(id)}/return", options, requestOptions);
+            return this.Request<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/return", options, requestOptions);
         }
 
         public virtual Task<Stripe.Treasury.OutboundTransfer> ReturnOutboundTransferAsync(string id, OutboundTransferReturnOutboundTransferOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(id)}/return", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/return", options, requestOptions, cancellationToken);
         }
     }
 }

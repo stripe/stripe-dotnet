@@ -2,6 +2,7 @@
 namespace Stripe.Sigma
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -23,32 +24,32 @@ namespace Stripe.Sigma
 
         public virtual ScheduledQueryRun Get(string id, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<ScheduledQueryRun>(HttpMethod.Get, $"/v1/sigma/scheduled_query_runs/{id}", options, requestOptions);
         }
 
         public virtual Task<ScheduledQueryRun> GetAsync(string id, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<ScheduledQueryRun>(HttpMethod.Get, $"/v1/sigma/scheduled_query_runs/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<ScheduledQueryRun> List(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<ScheduledQueryRun>>(HttpMethod.Get, $"/v1/sigma/scheduled_query_runs", options, requestOptions);
         }
 
         public virtual Task<StripeList<ScheduledQueryRun>> ListAsync(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ScheduledQueryRun>>(HttpMethod.Get, $"/v1/sigma/scheduled_query_runs", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<ScheduledQueryRun> ListAutoPaging(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<ScheduledQueryRun>($"/v1/sigma/scheduled_query_runs", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<ScheduledQueryRun> ListAutoPagingAsync(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<ScheduledQueryRun>($"/v1/sigma/scheduled_query_runs", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -2,6 +2,7 @@
 namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -22,22 +23,22 @@ namespace Stripe.FinancialConnections
 
         public virtual StripeList<Transaction> List(TransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<Transaction>>(HttpMethod.Get, $"/v1/financial_connections/transactions", options, requestOptions);
         }
 
         public virtual Task<StripeList<Transaction>> ListAsync(TransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Transaction>>(HttpMethod.Get, $"/v1/financial_connections/transactions", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<Transaction> ListAutoPaging(TransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<Transaction>($"/v1/financial_connections/transactions", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<Transaction> ListAutoPagingAsync(TransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Transaction>($"/v1/financial_connections/transactions", options, requestOptions, cancellationToken);
         }
     }
 }

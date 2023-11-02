@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -22,22 +23,22 @@ namespace Stripe
 
         public virtual StripeList<QuotePreviewSubscriptionSchedule> List(string parentId, QuotePreviewSubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(parentId, options, requestOptions);
+            return this.Request<StripeList<QuotePreviewSubscriptionSchedule>>(HttpMethod.Get, $"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions);
         }
 
         public virtual Task<StripeList<QuotePreviewSubscriptionSchedule>> ListAsync(string parentId, QuotePreviewSubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAsync(parentId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<QuotePreviewSubscriptionSchedule>>(HttpMethod.Get, $"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<QuotePreviewSubscriptionSchedule> ListAutoPaging(string parentId, QuotePreviewSubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(parentId, options, requestOptions);
+            return this.ListRequestAutoPaging<QuotePreviewSubscriptionSchedule>($"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<QuotePreviewSubscriptionSchedule> ListAutoPagingAsync(string parentId, QuotePreviewSubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAutoPagingAsync(parentId, options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<QuotePreviewSubscriptionSchedule>($"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions, cancellationToken);
         }
     }
 }

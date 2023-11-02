@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -22,22 +23,22 @@ namespace Stripe
 
         public virtual StripeList<SetupAttempt> List(SetupAttemptListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<SetupAttempt>>(HttpMethod.Get, $"/v1/setup_attempts", options, requestOptions);
         }
 
         public virtual Task<StripeList<SetupAttempt>> ListAsync(SetupAttemptListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<SetupAttempt>>(HttpMethod.Get, $"/v1/setup_attempts", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<SetupAttempt> ListAutoPaging(SetupAttemptListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<SetupAttempt>($"/v1/setup_attempts", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<SetupAttempt> ListAutoPagingAsync(SetupAttemptListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<SetupAttempt>($"/v1/setup_attempts", options, requestOptions, cancellationToken);
         }
     }
 }

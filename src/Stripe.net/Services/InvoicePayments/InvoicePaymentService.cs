@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -23,32 +24,32 @@ namespace Stripe
 
         public virtual InvoicePayment Get(string parentId, string id, InvoicePaymentGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(parentId, id, options, requestOptions);
+            return this.Request<InvoicePayment>(HttpMethod.Get, $"/v1/invoices/{parentId}/payments/{id}", options, requestOptions);
         }
 
         public virtual Task<InvoicePayment> GetAsync(string parentId, string id, InvoicePaymentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<InvoicePayment>(HttpMethod.Get, $"/v1/invoices/{parentId}/payments/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<InvoicePayment> List(string parentId, InvoicePaymentListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(parentId, options, requestOptions);
+            return this.Request<StripeList<InvoicePayment>>(HttpMethod.Get, $"/v1/invoices/{parentId}/payments", options, requestOptions);
         }
 
         public virtual Task<StripeList<InvoicePayment>> ListAsync(string parentId, InvoicePaymentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAsync(parentId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InvoicePayment>>(HttpMethod.Get, $"/v1/invoices/{parentId}/payments", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<InvoicePayment> ListAutoPaging(string parentId, InvoicePaymentListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(parentId, options, requestOptions);
+            return this.ListRequestAutoPaging<InvoicePayment>($"/v1/invoices/{parentId}/payments", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<InvoicePayment> ListAutoPagingAsync(string parentId, InvoicePaymentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAutoPagingAsync(parentId, options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InvoicePayment>($"/v1/invoices/{parentId}/payments", options, requestOptions, cancellationToken);
         }
     }
 }

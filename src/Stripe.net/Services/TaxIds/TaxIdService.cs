@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -25,52 +26,52 @@ namespace Stripe
 
         public virtual TaxId Create(string parentId, TaxIdCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.CreateNestedEntity(parentId, options, requestOptions);
+            return this.Request<TaxId>(HttpMethod.Post, $"/v1/customers/{parentId}/tax_ids", options, requestOptions);
         }
 
         public virtual Task<TaxId> CreateAsync(string parentId, TaxIdCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateNestedEntityAsync(parentId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxId>(HttpMethod.Post, $"/v1/customers/{parentId}/tax_ids", options, requestOptions, cancellationToken);
         }
 
         public virtual TaxId Delete(string parentId, string id, TaxIdDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteNestedEntity(parentId, id, options, requestOptions);
+            return this.Request<TaxId>(HttpMethod.Delete, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions);
         }
 
         public virtual Task<TaxId> DeleteAsync(string parentId, string id, TaxIdDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxId>(HttpMethod.Delete, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual TaxId Get(string parentId, string id, TaxIdGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(parentId, id, options, requestOptions);
+            return this.Request<TaxId>(HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions);
         }
 
         public virtual Task<TaxId> GetAsync(string parentId, string id, TaxIdGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxId>(HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<TaxId> List(string parentId, TaxIdListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(parentId, options, requestOptions);
+            return this.Request<StripeList<TaxId>>(HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids", options, requestOptions);
         }
 
         public virtual Task<StripeList<TaxId>> ListAsync(string parentId, TaxIdListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAsync(parentId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<TaxId>>(HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<TaxId> ListAutoPaging(string parentId, TaxIdListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(parentId, options, requestOptions);
+            return this.ListRequestAutoPaging<TaxId>($"/v1/customers/{parentId}/tax_ids", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<TaxId> ListAutoPagingAsync(string parentId, TaxIdListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAutoPagingAsync(parentId, options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<TaxId>($"/v1/customers/{parentId}/tax_ids", options, requestOptions, cancellationToken);
         }
     }
 }

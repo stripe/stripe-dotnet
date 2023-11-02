@@ -2,6 +2,7 @@
 namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -22,22 +23,22 @@ namespace Stripe.FinancialConnections
 
         public virtual StripeList<AccountInferredBalance> List(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(parentId, options, requestOptions);
+            return this.Request<StripeList<AccountInferredBalance>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{parentId}/inferred_balances", options, requestOptions);
         }
 
         public virtual Task<StripeList<AccountInferredBalance>> ListAsync(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAsync(parentId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<AccountInferredBalance>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{parentId}/inferred_balances", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<AccountInferredBalance> ListAutoPaging(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(parentId, options, requestOptions);
+            return this.ListRequestAutoPaging<AccountInferredBalance>($"/v1/financial_connections/accounts/{parentId}/inferred_balances", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<AccountInferredBalance> ListAutoPagingAsync(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAutoPagingAsync(parentId, options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<AccountInferredBalance>($"/v1/financial_connections/accounts/{parentId}/inferred_balances", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -21,22 +22,22 @@ namespace Stripe
 
         public virtual CashBalance Get(string parentId, CashBalanceGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(parentId, null, options, requestOptions);
+            return this.Request<CashBalance>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance", options, requestOptions);
         }
 
         public virtual Task<CashBalance> GetAsync(string parentId, CashBalanceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetNestedEntityAsync(parentId, null, options, requestOptions, cancellationToken);
+            return this.RequestAsync<CashBalance>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance", options, requestOptions, cancellationToken);
         }
 
         public virtual CashBalance Update(string parentId, CashBalanceUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateNestedEntity(parentId, null, options, requestOptions);
+            return this.Request<CashBalance>(HttpMethod.Post, $"/v1/customers/{parentId}/cash_balance", options, requestOptions);
         }
 
         public virtual Task<CashBalance> UpdateAsync(string parentId, CashBalanceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateNestedEntityAsync(parentId, null, options, requestOptions, cancellationToken);
+            return this.RequestAsync<CashBalance>(HttpMethod.Post, $"/v1/customers/{parentId}/cash_balance", options, requestOptions, cancellationToken);
         }
 
         protected override string InstanceUrl(string parentId, string id)
