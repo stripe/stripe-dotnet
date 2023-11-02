@@ -7,6 +7,7 @@ namespace Stripe
     public class SourceTransactionService : ServiceNested<SourceTransaction>,
         INestedListable<SourceTransaction, SourceTransactionsListOptions>
     {
+#pragma warning disable CS0618 // Type or member is obsolete
         public SourceTransactionService()
             : base(null)
         {
@@ -38,5 +39,6 @@ namespace Stripe
         {
             return this.ListNestedEntitiesAutoPagingAsync(sourceId, options, requestOptions, cancellationToken);
         }
+#pragma warning restore CS0618 // Type or member is obsolete
     }
 }

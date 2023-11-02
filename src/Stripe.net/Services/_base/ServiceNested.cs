@@ -20,6 +20,7 @@ namespace Stripe
         {
         }
 
+        [Obsolete("Use the `Request` method instead.")]
         protected TEntityReturned CreateNestedEntity(
             string parentId,
             BaseOptions options,
@@ -32,6 +33,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<TEntityReturned> CreateNestedEntityAsync(
             string parentId,
             BaseOptions options,
@@ -46,6 +48,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `Request` method instead.")]
         protected TEntityReturned DeleteNestedEntity(
             string parentId,
             string id,
@@ -59,6 +62,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<TEntityReturned> DeleteNestedEntityAsync(
             string parentId,
             string id,
@@ -74,6 +78,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `Request` method instead.")]
         protected TEntityReturned GetNestedEntity(
             string parentId,
             string id,
@@ -87,6 +92,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<TEntityReturned> GetNestedEntityAsync(
             string parentId,
             string id,
@@ -102,6 +108,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected StripeList<TEntityReturned> ListNestedEntities(
             string parentId,
             ListOptions options,
@@ -114,6 +121,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<StripeList<TEntityReturned>> ListNestedEntitiesAsync(
             string parentId,
             ListOptions options,
@@ -128,6 +136,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `ListRequestAutoPaging` method instead.")]
         protected IEnumerable<TEntityReturned> ListNestedEntitiesAutoPaging(
             string parentId,
             ListOptions options,
@@ -139,6 +148,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `ListRequestAutoPagingAsync` method instead.")]
         protected IAsyncEnumerable<TEntityReturned> ListNestedEntitiesAutoPagingAsync(
             string parentId,
             ListOptions options,
@@ -152,6 +162,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `Request` method instead.")]
         protected TEntityReturned UpdateNestedEntity(
             string parentId,
             string id,
@@ -165,6 +176,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<TEntityReturned> UpdateNestedEntityAsync(
             string parentId,
             string id,

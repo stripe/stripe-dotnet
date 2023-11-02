@@ -56,6 +56,7 @@ namespace Stripe
             set => this.client = value;
         }
 
+        [Obsolete("Use the `Request` method instead.")]
         protected TEntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
         {
             return this.Request(
@@ -65,6 +66,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<TEntityReturned> CreateEntityAsync(
             BaseOptions options,
             RequestOptions requestOptions,
@@ -78,6 +80,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `Request` method instead.")]
         protected TEntityReturned DeleteEntity(
             string id,
             BaseOptions options,
@@ -90,6 +93,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<TEntityReturned> DeleteEntityAsync(
             string id,
             BaseOptions options,
@@ -104,6 +108,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `Request` method instead.")]
         protected TEntityReturned GetEntity(
             string id,
             BaseOptions options,
@@ -116,6 +121,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<TEntityReturned> GetEntityAsync(
             string id,
             BaseOptions options,
@@ -130,6 +136,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `Request` method instead.")]
         protected StripeList<TEntityReturned> ListEntities(
             ListOptions options,
             RequestOptions requestOptions)
@@ -141,6 +148,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<StripeList<TEntityReturned>> ListEntitiesAsync(
             ListOptions options,
             RequestOptions requestOptions,
@@ -154,6 +162,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `ListRequestAutoPaging` method instead.")]
         protected IEnumerable<TEntityReturned> ListEntitiesAutoPaging(
             ListOptions options,
             RequestOptions requestOptions)
@@ -164,6 +173,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `ListRequestAutoPagingAsync` method instead.")]
         protected IAsyncEnumerable<TEntityReturned> ListEntitiesAutoPagingAsync(
             ListOptions options,
             RequestOptions requestOptions,
@@ -176,6 +186,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("Use the `Request` method instead.")]
         protected TEntityReturned UpdateEntity(
             string id,
             BaseOptions options,
@@ -188,6 +199,7 @@ namespace Stripe
                 requestOptions);
         }
 
+        [Obsolete("Use the `RequestAsync` method instead.")]
         protected Task<TEntityReturned> UpdateEntityAsync(
             string id,
             BaseOptions options,
@@ -582,13 +594,6 @@ namespace Stripe
             }
 
             return $"{this.ClassUrl()}/{WebUtility.UrlEncode(id)}";
-        }
-
-        private static bool IsStripeList<T>()
-        {
-            var typeInfo = typeof(T).GetTypeInfo();
-            return typeInfo.IsGenericType
-                && typeInfo.GetGenericTypeDefinition() == typeof(StripeList<>);
         }
     }
 }
