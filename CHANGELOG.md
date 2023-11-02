@@ -1,5 +1,19 @@
 # Changelog
 
+## 43.2.0-beta.1 - 2023-11-02
+* [#2788](https://github.com/stripe/stripe-dotnet/pull/2788) Update generated code for beta
+  * Add support for `AttachPaymentIntent` method on resource `Invoice`
+  * Add support for `RevolutPay` on `ConfirmationTokenPaymentMethodPreview`
+  * Add support for `Refunds` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesOptions`, `CreditNotePreviewOptions`, and `CreditNote`
+  * Add support for `PostPaymentAmount` and `PrePaymentAmount` on `CreditNote`
+  * Add support for `ScheduleDetails` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+  * Add support for `AmountsDue` on `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+  * Add support for `Payments` on `Invoice`
+  * Add support for `Created` on `IssuingPersonalizationDesign`
+  * Add support for `EndingBefore`, `Limit`, and `StartingAfter` on `Tax.RegistrationListOptions`
+  * Change type of `TaxRegistrationActiveFromOptions` and `TaxRegistrationExpiresAtOptions` to `literal('now') | DateTime`
+  * Change type of `TaxRegistrationActiveFrom`, `TaxRegistrationCreated`, `TaxRegistrationExpiresAtOptions`, and `TaxRegistrationExpiresAt` from `longInteger` to `DateTime`
+
 ## 43.1.0-beta.2 - 2023-10-26
 * [#2784](https://github.com/stripe/stripe-dotnet/pull/2784) Update generated code for beta
   * Add support for new resource `Margin`
