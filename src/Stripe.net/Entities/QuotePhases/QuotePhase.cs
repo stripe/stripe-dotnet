@@ -11,7 +11,7 @@ namespace Stripe
     /// A quote phase describes the line items, coupons, and trialing status of a subscription
     /// for a predefined time period.
     /// </summary>
-    public class QuotePhase : StripeEntity<QuotePhase>, IHasId, IHasObject
+    public class QuotePhase : StripeEntity<QuotePhase>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -146,6 +146,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("line_items")]
         public StripeList<LineItem> LineItems { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will
+        /// declaratively set metadata on the subscription schedule's phases when the quote is
+        /// accepted.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// If the quote will prorate when transitioning to this phase. Possible values are

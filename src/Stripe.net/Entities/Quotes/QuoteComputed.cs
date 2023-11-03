@@ -8,6 +8,13 @@ namespace Stripe
     public class QuoteComputed : StripeEntity<QuoteComputed>
     {
         /// <summary>
+        /// Details of the most recent reestimate of the quote's preview schedules and upcoming
+        /// invoices, including the status of Stripe's calculation.
+        /// </summary>
+        [JsonProperty("last_reestimation_details")]
+        public QuoteComputedLastReestimationDetails LastReestimationDetails { get; set; }
+
+        /// <summary>
         /// The definitive totals and line items the customer will be charged on a recurring basis.
         /// Takes into account the line items with recurring prices and discounts with
         /// <c>duration=forever</c> coupons only. Defaults to <c>null</c> if no inputted line items

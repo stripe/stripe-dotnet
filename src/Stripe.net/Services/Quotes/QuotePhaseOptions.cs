@@ -6,7 +6,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class QuotePhaseOptions : INestedOptions
+    public class QuotePhaseOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// When specified as <c>reset</c>, the subscription will always start a new billing period
@@ -74,6 +74,16 @@ namespace Stripe
         /// </summary>
         [JsonProperty("line_items")]
         public List<QuotePhaseLineItemOptions> LineItems { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will
+        /// declaratively set metadata on the subscription schedule's phases when the quote is
+        /// accepted. After a quote has been finalized, this field can be updated by specifying an
+        /// identical set of quote phases to what was on the quote originally, excluding changes in
+        /// metadata and phases that are now in the past.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// If the update changes the current phase, indicates whether the changes should be
