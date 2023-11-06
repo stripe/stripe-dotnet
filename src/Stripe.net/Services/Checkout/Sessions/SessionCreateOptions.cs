@@ -334,9 +334,9 @@ namespace Stripe.Checkout
         public SessionSubscriptionDataOptions SubscriptionData { get; set; }
 
         /// <summary>
-        /// The URL to which Stripe should send customers when payment or setup is complete. If
-        /// you’d like to use information from the successful Checkout Session on your page, read
-        /// the guide on <a
+        /// The URL to which Stripe should send customers when payment or setup is complete. This
+        /// parameter is not allowed if ui_mode is <c>embedded</c>. If you’d like to use information
+        /// from the successful Checkout Session on your page, read the guide on <a
         /// href="https://stripe.com/docs/payments/checkout/custom-success-page">customizing your
         /// success page</a>.
         /// </summary>
