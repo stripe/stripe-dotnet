@@ -61,7 +61,7 @@ namespace StripeTests
                             ExpYear = 2030,
                         },
                     },
-                    want = "source[object]=card&source[exp_month]=1&source[exp_year]=2030&source[number]=4242424242424242",
+                    want = "source[exp_month]=1&source[exp_year]=2030&source[number]=4242424242424242&source[object]=card",
                 },
 
                 // Source is a null CardCreateNestedOptions
