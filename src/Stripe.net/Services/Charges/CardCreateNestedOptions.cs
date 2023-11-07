@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class AccountCardOptions : INestedOptions, IHasMetadata, IHasObject
+    public class CardCreateNestedOptions : INestedOptions, IHasMetadata, IHasObject
     {
         [JsonProperty("address_city")]
         public string AddressCity { get; set; }
@@ -29,9 +29,6 @@ namespace Stripe
 
         [JsonProperty("cvc")]
         public string Cvc { get; set; }
-
-        [JsonProperty("default_for_currency")]
-        public bool? DefaultForCurrency { get; set; }
 
         [JsonProperty("exp_month")]
         public long? ExpMonth { get; set; }
