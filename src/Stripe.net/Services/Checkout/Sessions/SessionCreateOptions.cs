@@ -57,7 +57,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
-        /// currency</a>.
+        /// currency</a>. Required in <c>setup</c> mode when <c>payment_method_types</c> is not set.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -244,10 +244,11 @@ namespace Stripe.Checkout
         /// A list of the types of payment methods (e.g., <c>card</c>) this Checkout Session can
         /// accept.
         ///
-        /// In <c>payment</c> and <c>subscription</c> mode, you can omit this attribute to manage
-        /// your payment methods from the <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>. It is
-        /// required in <c>setup</c> mode.
+        /// You can omit this attribute to manage your payment methods from the <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>. See
+        /// <a
+        /// href="https://stripe.com/docs/payments/payment-methods/integration-options#using-dynamic-payment-methods">Dynamic
+        /// Payment Methods</a> for more details.
         ///
         /// Read more about the supported payment methods and their requirements in our <a
         /// href="https://stripe.com/docs/payments/checkout/payment-methods">payment method details
