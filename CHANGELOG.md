@@ -1,5 +1,10 @@
 # Changelog
 
+## 43.2.0 - 2023-11-09
+* [#2793](https://github.com/stripe/stripe-dotnet/pull/2793) Update generated code
+  * Add support for `Metadata` on `QuoteSubscriptionDataOptions` and `QuoteSubscriptionData`
+* [#2794](https://github.com/stripe/stripe-dotnet/pull/2794) Generate CardCreateNestedOptions
+
 ## 43.2.0-beta.1 - 2023-11-02
 * [#2788](https://github.com/stripe/stripe-dotnet/pull/2788) Update generated code for beta
   * Add support for `AttachPaymentIntent` method on resource `Invoice`
