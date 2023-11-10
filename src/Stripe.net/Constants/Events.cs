@@ -890,7 +890,7 @@ namespace Stripe
         public const string PromotionCodeUpdated = "promotion_code.updated";
 
         /// <summary>
-        /// Occurs whenever a quote fails during the acceptance flow.
+        /// Occurs whenever a quote acceptance fails.
         /// </summary>
         public const string QuoteAcceptFailed = "quote.accept_failed";
 
@@ -923,6 +923,11 @@ namespace Stripe
         /// Occurs whenever a quote is finalized.
         /// </summary>
         public const string QuoteFinalized = "quote.finalized";
+
+        /// <summary>
+        /// Occurs whenever a quote reestimate fails.
+        /// </summary>
+        public const string QuoteReestimateFailed = "quote.reestimate_failed";
 
         /// <summary>
         /// Occurs whenever an async job to compute preview subscription schedules/upcoming invoices

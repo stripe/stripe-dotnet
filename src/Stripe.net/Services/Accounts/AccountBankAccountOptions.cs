@@ -3,11 +3,8 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class AccountBankAccountOptions : INestedOptions
+    public class AccountBankAccountOptions : INestedOptions, IHasObject
     {
-        [JsonProperty("object")]
-        internal string Object => "bank_account";
-
         /// <summary>
         /// The name of the person or business that owns the bank account.This field is required
         /// when attaching the bank account to a <c>Customer</c> object.
@@ -42,6 +39,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        [JsonProperty("object")]
+        public string Object { get; set; } = "bank_account";
 
         /// <summary>
         /// The routing number, sort code, or other country-appropriateinstitution number for the

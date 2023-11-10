@@ -2,10 +2,11 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class QuoteSubscriptionDataOptions : INestedOptions
+    public class QuoteSubscriptionDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// Describes the period to bill for upon accepting the quote.
@@ -73,6 +74,18 @@ namespace Stripe
         /// </summary>
         [JsonProperty("from_subscription")]
         public string FromSubscription { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will set
+        /// metadata on the subscription or subscription schedule when the quote is accepted. If a
+        /// recurring price is included in <c>line_items</c>, this field will be passed to the
+        /// resulting subscription's <c>metadata</c> field. If
+        /// <c>subscription_data.effective_date</c> is used, this field will be passed to the
+        /// resulting subscription schedule's <c>phases.metadata</c> field. Unlike object-level
+        /// metadata, this field is declarative. Updates will clear prior values.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// If specified, the invoicing for the given billing cycle iterations will be processed
