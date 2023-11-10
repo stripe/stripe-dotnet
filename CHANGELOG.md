@@ -1,5 +1,10 @@
 # Changelog
 
+## 43.3.0-beta.1 - 2023-11-10
+* [#2792](https://github.com/stripe/stripe-dotnet/pull/2792) Update generated code for beta
+  * Add support for `Metadata` on `QuotePhase` and `QuotePhasesOptions`
+  * Add support for `LastReestimationDetails` on `QuoteComputed`
+
 ## 43.2.0 - 2023-11-09
 * [#2793](https://github.com/stripe/stripe-dotnet/pull/2793) Update generated code
   * Add support for `Metadata` on `QuoteSubscriptionDataOptions` and `QuoteSubscriptionData`
