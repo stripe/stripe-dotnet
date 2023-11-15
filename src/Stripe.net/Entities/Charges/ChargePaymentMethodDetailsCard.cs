@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ChargePaymentMethodDetailsCard : StripeEntity<ChargePaymentMethodDetailsCard>
     {
@@ -17,6 +19,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }
+
+        /// <summary>
+        /// When using manual capture, a future timestamp at which the charge will be automatically
+        /// refunded if uncaptured.
+        /// </summary>
+        [JsonProperty("capture_before")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime CaptureBefore { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Check results by Card networks on Card address and CVC at time of payment.
