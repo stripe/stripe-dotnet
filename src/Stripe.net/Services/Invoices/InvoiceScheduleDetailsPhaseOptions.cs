@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -115,7 +116,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("end_date")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<long?, InvoiceScheduleDetailsPhaseEndDate> EndDate { get; set; }
+        public AnyOf<DateTime?, InvoiceScheduleDetailsPhaseEndDate> EndDate { get; set; }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
@@ -185,7 +186,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("start_date")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<long?, InvoiceScheduleDetailsPhaseStartDate> StartDate { get; set; }
+        public AnyOf<DateTime?, InvoiceScheduleDetailsPhaseStartDate> StartDate { get; set; }
 
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the associated
@@ -214,7 +215,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<long?, InvoiceScheduleDetailsPhaseTrialEnd> TrialEnd { get; set; }
+        public AnyOf<DateTime?, InvoiceScheduleDetailsPhaseTrialEnd> TrialEnd { get; set; }
 
         /// <summary>
         /// Settings related to subscription trials.
