@@ -250,6 +250,12 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Details about the transaction, such as processing dates, set by the card network.
+        /// </summary>
+        [JsonProperty("network_data")]
+        public TransactionNetworkData NetworkData { get; set; }
+
+        /// <summary>
         /// Additional purchase information that is optionally provided by the merchant.
         /// </summary>
         [JsonProperty("purchase_details")]
