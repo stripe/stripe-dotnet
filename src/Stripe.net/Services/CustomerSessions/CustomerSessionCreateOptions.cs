@@ -6,12 +6,6 @@ namespace Stripe
     public class CustomerSessionCreateOptions : BaseOptions
     {
         /// <summary>
-        /// Configuration for each component.
-        /// </summary>
-        [JsonProperty("components")]
-        public CustomerSessionComponentsOptions Components { get; set; }
-
-        /// <summary>
         /// The ID of an existing customer for which to create the customer session.
         /// </summary>
         [JsonProperty("customer")]

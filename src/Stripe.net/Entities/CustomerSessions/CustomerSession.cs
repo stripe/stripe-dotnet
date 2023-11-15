@@ -28,12 +28,6 @@ namespace Stripe
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
 
-        /// <summary>
-        /// Configuration for the components supported by this customer session.
-        /// </summary>
-        [JsonProperty("components")]
-        public CustomerSessionComponents Components { get; set; }
-
         #region Expandable Customer
 
         /// <summary>
