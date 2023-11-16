@@ -6,6 +6,12 @@ namespace Stripe
     public class AccountSettingsOptions : INestedOptions
     {
         /// <summary>
+        /// Settings specific to Bacs Direct Debit payments.
+        /// </summary>
+        [JsonProperty("bacs_debit_payments")]
+        public AccountSettingsBacsDebitPaymentsOptions BacsDebitPayments { get; set; }
+
+        /// <summary>
         /// Settings used to apply the account's branding to email receipts, invoices, Checkout, and
         /// other products.
         /// </summary>
