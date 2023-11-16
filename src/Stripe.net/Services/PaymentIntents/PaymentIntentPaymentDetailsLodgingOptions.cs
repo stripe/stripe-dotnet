@@ -21,6 +21,12 @@ namespace Stripe
         public long? Adults { get; set; }
 
         /// <summary>
+        /// Affiliate details for this purchase.
+        /// </summary>
+        [JsonProperty("affiliate")]
+        public PaymentIntentPaymentDetailsLodgingAffiliateOptions Affiliate { get; set; }
+
+        /// <summary>
         /// The booking number associated with the lodging reservation.
         /// </summary>
         [JsonProperty("booking_number")]
@@ -60,6 +66,12 @@ namespace Stripe
         public long? DailyRoomRateAmount { get; set; }
 
         /// <summary>
+        /// Delivery details for this purchase.
+        /// </summary>
+        [JsonProperty("delivery")]
+        public PaymentIntentPaymentDetailsLodgingDeliveryOptions Delivery { get; set; }
+
+        /// <summary>
         /// List of additional charges being billed.
         /// One of: <c>gift_shop</c>, <c>laundry</c>, <c>mini_bar</c>, <c>other</c>,
         /// <c>restaurant</c>, or <c>telephone</c>.
@@ -85,6 +97,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("no_show")]
         public bool? NoShow { get; set; }
+
+        /// <summary>
+        /// The details of the passengers in the travel reservation.
+        /// </summary>
+        [JsonProperty("passengers")]
+        public List<PaymentIntentPaymentDetailsLodgingPassengerOptions> Passengers { get; set; }
 
         /// <summary>
         /// The phone number of the lodging location.

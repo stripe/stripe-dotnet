@@ -7,6 +7,12 @@ namespace Stripe
     public class ChargePaymentDetailsFlightOptions : INestedOptions
     {
         /// <summary>
+        /// Affiliate details for this purchase.
+        /// </summary>
+        [JsonProperty("affiliate")]
+        public ChargePaymentDetailsFlightAffiliateOptions Affiliate { get; set; }
+
+        /// <summary>
         /// The agency number (i.e. International Air Transport Association (IATA) agency number) of
         /// the travel agency that made the booking.
         /// </summary>
@@ -21,10 +27,22 @@ namespace Stripe
         public string Carrier { get; set; }
 
         /// <summary>
+        /// Delivery details for this purchase.
+        /// </summary>
+        [JsonProperty("delivery")]
+        public ChargePaymentDetailsFlightDeliveryOptions Delivery { get; set; }
+
+        /// <summary>
         /// The name of the person or entity on the reservation.
         /// </summary>
         [JsonProperty("passenger_name")]
         public string PassengerName { get; set; }
+
+        /// <summary>
+        /// The details of the passengers in the travel reservation.
+        /// </summary>
+        [JsonProperty("passengers")]
+        public List<ChargePaymentDetailsFlightPassengerOptions> Passengers { get; set; }
 
         /// <summary>
         /// The individual flight segments associated with the trip.
