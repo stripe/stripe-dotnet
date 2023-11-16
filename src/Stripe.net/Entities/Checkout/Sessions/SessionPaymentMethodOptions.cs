@@ -71,6 +71,9 @@ namespace Stripe.Checkout
         [JsonProperty("paynow")]
         public SessionPaymentMethodOptionsPaynow Paynow { get; set; }
 
+        [JsonProperty("paypal")]
+        public SessionPaymentMethodOptionsPaypal Paypal { get; set; }
+
         [JsonProperty("pix")]
         public SessionPaymentMethodOptionsPix Pix { get; set; }
 
