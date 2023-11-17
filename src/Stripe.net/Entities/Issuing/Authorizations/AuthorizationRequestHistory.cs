@@ -86,9 +86,9 @@ namespace Stripe.Issuing
         public string Reason { get; set; }
 
         /// <summary>
-        /// If approve/decline decision is directly responsed to the webhook with json payload and
-        /// if the response is invalid (e.g., parsing errors), we surface the detailed message via
-        /// this field.
+        /// If the <c>request_history.reason</c> is <c>webhook_error</c> because the direct webhook
+        /// response is invalid (for example, parsing errors or missing parameters), we surface a
+        /// more detailed error message via this field.
         /// </summary>
         [JsonProperty("reason_message")]
         public string ReasonMessage { get; set; }
