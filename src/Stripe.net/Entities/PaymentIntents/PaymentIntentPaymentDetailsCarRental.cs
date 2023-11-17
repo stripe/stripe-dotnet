@@ -8,6 +8,9 @@ namespace Stripe
 
     public class PaymentIntentPaymentDetailsCarRental : StripeEntity<PaymentIntentPaymentDetailsCarRental>
     {
+        [JsonProperty("affiliate")]
+        public PaymentIntentPaymentDetailsCarRentalAffiliate Affiliate { get; set; }
+
         /// <summary>
         /// The booking number associated with the car rental.
         /// </summary>
@@ -49,6 +52,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("days_rented")]
         public long DaysRented { get; set; }
+
+        [JsonProperty("delivery")]
+        public PaymentIntentPaymentDetailsCarRentalDelivery Delivery { get; set; }
+
+        /// <summary>
+        /// The details of the drivers associated with the trip.
+        /// </summary>
+        [JsonProperty("drivers")]
+        public List<PaymentIntentPaymentDetailsCarRentalDriver> Drivers { get; set; }
 
         /// <summary>
         /// List of additional charges being billed.

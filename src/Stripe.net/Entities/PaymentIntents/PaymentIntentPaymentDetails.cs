@@ -7,5 +7,11 @@ namespace Stripe
     {
         [JsonProperty("car_rental")]
         public PaymentIntentPaymentDetailsCarRental CarRental { get; set; }
+
+        [JsonProperty("event_details")]
+        public PaymentIntentPaymentDetailsEventDetails EventDetails { get; set; }
+
+        [JsonProperty("subscription")]
+        public PaymentIntentPaymentDetailsSubscription Subscription { get; set; }
     }
 }

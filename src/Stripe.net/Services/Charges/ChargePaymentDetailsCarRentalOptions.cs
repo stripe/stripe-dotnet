@@ -9,6 +9,12 @@ namespace Stripe
     public class ChargePaymentDetailsCarRentalOptions : INestedOptions
     {
         /// <summary>
+        /// Affiliate details for this purchase.
+        /// </summary>
+        [JsonProperty("affiliate")]
+        public ChargePaymentDetailsCarRentalAffiliateOptions Affiliate { get; set; }
+
+        /// <summary>
         /// The booking number associated with the car rental.
         /// </summary>
         [JsonProperty("booking_number")]
@@ -49,6 +55,18 @@ namespace Stripe
         /// </summary>
         [JsonProperty("days_rented")]
         public long? DaysRented { get; set; }
+
+        /// <summary>
+        /// Delivery details for this purchase.
+        /// </summary>
+        [JsonProperty("delivery")]
+        public ChargePaymentDetailsCarRentalDeliveryOptions Delivery { get; set; }
+
+        /// <summary>
+        /// The details of the passengers in the travel reservation.
+        /// </summary>
+        [JsonProperty("drivers")]
+        public List<ChargePaymentDetailsCarRentalDriverOptions> Drivers { get; set; }
 
         /// <summary>
         /// List of additional charges being billed.

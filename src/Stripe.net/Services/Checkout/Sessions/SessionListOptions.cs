@@ -30,6 +30,13 @@ namespace Stripe.Checkout
         public string PaymentLink { get; set; }
 
         /// <summary>
+        /// Only return the Checkout Sessions matching the given status.
+        /// One of: <c>complete</c>, <c>expired</c>, or <c>open</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        /// <summary>
         /// Only return the Checkout Session for the subscription specified.
         /// </summary>
         [JsonProperty("subscription")]

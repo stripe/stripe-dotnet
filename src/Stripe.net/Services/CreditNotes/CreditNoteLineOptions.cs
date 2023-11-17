@@ -33,8 +33,15 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         /// <summary>
+        /// A list of up to 10 tax amounts for the credit note line item. Cannot be mixed with
+        /// <c>tax_rates</c>.
+        /// </summary>
+        [JsonProperty("tax_amounts")]
+        public List<CreditNoteLineTaxAmountOptions> TaxAmounts { get; set; }
+
+        /// <summary>
         /// The tax rates which apply to the credit note line item. Only valid when the <c>type</c>
-        /// is <c>custom_line_item</c>.
+        /// is <c>custom_line_item</c> and cannot be mixed with <c>tax_amounts</c>.
         /// </summary>
         [JsonProperty("tax_rates")]
         public List<string> TaxRates { get; set; }

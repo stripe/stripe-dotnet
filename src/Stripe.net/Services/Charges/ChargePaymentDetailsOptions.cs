@@ -12,6 +12,12 @@ namespace Stripe
         public ChargePaymentDetailsCarRentalOptions CarRental { get; set; }
 
         /// <summary>
+        /// Event details for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("event_details")]
+        public ChargePaymentDetailsEventDetailsOptions EventDetails { get; set; }
+
+        /// <summary>
         /// Flight reservation details for this PaymentIntent.
         /// </summary>
         [JsonProperty("flight")]
@@ -22,5 +28,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("lodging")]
         public ChargePaymentDetailsLodgingOptions Lodging { get; set; }
+
+        /// <summary>
+        /// Subscription details for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("subscription")]
+        public ChargePaymentDetailsSubscriptionOptions Subscription { get; set; }
     }
 }
