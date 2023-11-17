@@ -1,5 +1,15 @@
 # Changelog
 
+## 43.3.0 - 2023-11-16
+* [#2796](https://github.com/stripe/stripe-dotnet/pull/2796) Update generated code
+  * Add support for `BacsDebitPayments` on `AccountSettingsOptions`
+  * Add support for `ServiceUserNumber` on `AccountSettingsBacsDebitPayments`
+  * Add support for `CaptureBefore` on `ChargePaymentMethodDetailsCard`
+  * Add support for `Status` on `Checkout.SessionListOptions`
+  * Add support for `Paypal` on `CheckoutSessionPaymentMethodOptions`
+  * Add support for `TaxAmounts` on `CreditNoteLinesOptions`
+  * Add support for `NetworkData` on `IssuingTransaction`
+
 ## 43.2.0 - 2023-11-09
 * [#2793](https://github.com/stripe/stripe-dotnet/pull/2793) Update generated code
   * Add support for `Metadata` on `QuoteSubscriptionDataOptions` and `QuoteSubscriptionData`
