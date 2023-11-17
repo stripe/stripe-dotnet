@@ -1,5 +1,16 @@
 # Changelog
 
+## 43.4.0-beta.1 - 2023-11-16
+* [#2795](https://github.com/stripe/stripe-dotnet/pull/2795) Update generated code for beta
+  * Add support for `IssuingCard` and `IssuingCardsList` on `AccountSessionComponentsOptions`
+  * Add support for `EventDetails` and `Subscription` on `ChargePaymentDetailsOptions`, `PaymentIntentPaymentDetailsOptions`, and `PaymentIntentPaymentDetails`
+  * Add support for `Affiliate` and `Delivery` on `ChargePaymentDetailsCarRentalOptions`, `ChargePaymentDetailsFlightOptions`, `ChargePaymentDetailsLodgingOptions`, `PaymentIntentPaymentDetailsCarRentalOptions`, `PaymentIntentPaymentDetailsCarRental`, `PaymentIntentPaymentDetailsFlightOptions`, and `PaymentIntentPaymentDetailsLodgingOptions`
+  * Add support for `Drivers` on `ChargePaymentDetailsCarRentalOptions`, `PaymentIntentPaymentDetailsCarRentalOptions`, and `PaymentIntentPaymentDetailsCarRental`
+  * Add support for `Passengers` on `ChargePaymentDetailsFlightOptions`, `ChargePaymentDetailsLodgingOptions`, `PaymentIntentPaymentDetailsFlightOptions`, and `PaymentIntentPaymentDetailsLodgingOptions`
+  * Add support for `Created` on `CustomerSession`
+  * Change type of `Timestamp` property from `long` to `DateTime` on `InvoiceInvoiceItemDiscountDiscountEndOptions`, `InvoiceScheduleDetailsAmendmentAmendmentEndOptions`, `InvoiceScheduleDetailsAmendmentAmendmentStartOptions`, `InvoiceScheduleDetailsAmendmentItemActionAddDiscountDiscountEndOptions`, `InvoiceScheduleDetailsAmendmentItemActionSetDiscountDiscountEndOptions`, `InvoiceScheduleDetailsPhaseAddInvoiceItemDiscountDiscountEndOptions`, `InvoiceScheduleDetailsPhaseDiscountDiscountEndOptions`, `InvoiceScheduleDetailsPhaseItemDiscountDiscountEndOptions`,`InvoiceScheduleDetailsPrebillingBillUntilOptions`, and `InvoiceSubscriptionItemDiscountDiscountEndOptions`
+  * Change `long` to `DateTime` in `AnyOf` type for `EndDate`, `StartDate`, and `TrialEnd` on `InvoiceScheduleDetailsPhaseOptions`
+
 ## 43.3.0 - 2023-11-16
 * [#2796](https://github.com/stripe/stripe-dotnet/pull/2796) Update generated code
   * Add support for `BacsDebitPayments` on `AccountSettingsOptions`
