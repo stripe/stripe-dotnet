@@ -74,6 +74,13 @@ namespace Stripe.Issuing
         public string MerchantCurrency { get; set; }
 
         /// <summary>
+        /// The card network's estimate of the likelihood that an authorization is fraudulent. Takes
+        /// on values between 1 and 99.
+        /// </summary>
+        [JsonProperty("network_risk_score")]
+        public long? NetworkRiskScore { get; set; }
+
+        /// <summary>
         /// When an authorization is approved or declined by you or by Stripe, this field provides
         /// additional detail on the reason for the outcome.
         /// One of: <c>account_disabled</c>, <c>card_active</c>, <c>card_inactive</c>,
@@ -92,5 +99,13 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("reason_message")]
         public string ReasonMessage { get; set; }
+
+        /// <summary>
+        /// Time when the card network received an authorization request from the acquirer in UTC.
+        /// Referred to by networks as transmission time.
+        /// </summary>
+        [JsonProperty("requested_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? RequestedAt { get; set; }
     }
 }
