@@ -151,5 +151,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
         public string StatementDescriptorSuffixKanji { get; set; }
+
+        /// <summary>
+        /// If 3D Secure authentication was performed with a third-party provider, the
+        /// authentication details to use for this payment.
+        /// </summary>
+        [JsonProperty("three_d_secure")]
+        public PaymentIntentPaymentMethodOptionsCardThreeDSecureOptions ThreeDSecure { get; set; }
     }
 }
