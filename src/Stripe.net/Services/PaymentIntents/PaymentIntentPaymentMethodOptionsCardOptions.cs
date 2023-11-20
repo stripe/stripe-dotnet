@@ -158,5 +158,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_details")]
         public PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions StatementDetails { get; set; }
+
+        /// <summary>
+        /// If 3D Secure authentication was performed with a third-party provider, the
+        /// authentication details to use for this payment.
+        /// </summary>
+        [JsonProperty("three_d_secure")]
+        public PaymentIntentPaymentMethodOptionsCardThreeDSecureOptions ThreeDSecure { get; set; }
     }
 }

@@ -13,6 +13,28 @@ namespace Stripe
         public string AuthenticationFlow { get; set; }
 
         /// <summary>
+        /// The Electronic Commerce Indicator (ECI). A protocol-level field indicating what degree
+        /// of authentication was performed.
+        /// One of: <c>01</c>, <c>02</c>, <c>05</c>, <c>06</c>, or <c>07</c>.
+        /// </summary>
+        [JsonProperty("electronic_commerce_indicator")]
+        public string ElectronicCommerceIndicator { get; set; }
+
+        /// <summary>
+        /// The exemption requested via 3DS and accepted by the issuer at authentication time.
+        /// One of: <c>low_risk</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("exemption_indicator")]
+        public string ExemptionIndicator { get; set; }
+
+        /// <summary>
+        /// Whether Stripe requested the value of <c>exemption_indicator</c> in the transaction.
+        /// This will depend on the outcome of Stripe's internal risk assessment.
+        /// </summary>
+        [JsonProperty("exemption_indicator_applied")]
+        public bool ExemptionIndicatorApplied { get; set; }
+
+        /// <summary>
         /// Indicates the outcome of 3D Secure authentication.
         /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>exempted</c>,
         /// <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
@@ -28,6 +50,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("result_reason")]
         public string ResultReason { get; set; }
+
+        /// <summary>
+        /// The 3D Secure 1 XID or 3D Secure 2 Directory Server Transaction ID (dsTransId) for this
+        /// payment.
+        /// </summary>
+        [JsonProperty("transaction_id")]
+        public string TransactionId { get; set; }
 
         /// <summary>
         /// The version of 3D Secure that was used.
