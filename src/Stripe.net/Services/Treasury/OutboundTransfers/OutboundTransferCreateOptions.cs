@@ -55,8 +55,8 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Statement descriptor to be shown on the receiving end of an OutboundTransfer. Maximum 10
-        /// characters for <c>ach</c> transfers or 140 characters for <c>wire</c> transfers. The
-        /// default value is <c>transfer</c>.
+        /// characters for <c>ach</c> transfers or 140 characters for <c>us_domestic_wire</c>
+        /// transfers. The default value is "transfer".
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
