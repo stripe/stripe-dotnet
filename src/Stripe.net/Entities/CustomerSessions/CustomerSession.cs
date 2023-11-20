@@ -29,6 +29,12 @@ namespace Stripe
         public string ClientSecret { get; set; }
 
         /// <summary>
+        /// Configuration for the components supported by this customer session.
+        /// </summary>
+        [JsonProperty("components")]
+        public CustomerSessionComponents Components { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
