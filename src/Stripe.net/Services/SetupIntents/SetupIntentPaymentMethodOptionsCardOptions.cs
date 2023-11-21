@@ -43,5 +43,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("request_three_d_secure")]
         public string RequestThreeDSecure { get; set; }
+
+        /// <summary>
+        /// If 3D Secure authentication was performed with a third-party provider, the
+        /// authentication details to use for this setup.
+        /// </summary>
+        [JsonProperty("three_d_secure")]
+        public SetupIntentPaymentMethodOptionsCardThreeDSecureOptions ThreeDSecure { get; set; }
     }
 }

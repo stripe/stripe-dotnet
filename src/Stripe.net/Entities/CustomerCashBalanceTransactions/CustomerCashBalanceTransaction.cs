@@ -108,6 +108,9 @@ namespace Stripe
         [JsonProperty("refunded_from_payment")]
         public CustomerCashBalanceTransactionRefundedFromPayment RefundedFromPayment { get; set; }
 
+        [JsonProperty("transferred_to_balance")]
+        public CustomerCashBalanceTransactionTransferredToBalance TransferredToBalance { get; set; }
+
         /// <summary>
         /// The type of the cash balance transaction. New types may be added in future. See <a
         /// href="https://stripe.com/docs/payments/customer-balance#types">Customer Balance</a> to

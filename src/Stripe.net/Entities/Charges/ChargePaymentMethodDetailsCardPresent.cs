@@ -136,6 +136,12 @@ namespace Stripe
         public string Network { get; set; }
 
         /// <summary>
+        /// Details about payments collected offline.
+        /// </summary>
+        [JsonProperty("offline")]
+        public ChargePaymentMethodDetailsCardPresentOffline Offline { get; set; }
+
+        /// <summary>
         /// Defines whether the authorized amount can be over-captured or not.
         /// </summary>
         [JsonProperty("overcapture_supported")]
