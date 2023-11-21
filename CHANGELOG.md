@@ -1,5 +1,17 @@
 # Changelog
 
+## 43.4.0 - 2023-11-21
+* [#2797](https://github.com/stripe/stripe-dotnet/pull/2797) Update generated code
+  * Add support for `ElectronicCommerceIndicator` on `ChargePaymentMethodDetailsCardThreeDSecure` and `SetupAttemptPaymentMethodDetailsCardThreeDSecure`
+  * Add support for `ExemptionIndicatorApplied` and `ExemptionIndicator` on `ChargePaymentMethodDetailsCardThreeDSecure`
+  * Add support for `TransactionId` on `ChargePaymentMethodDetailsCardThreeDSecure`, `IssuingAuthorizationNetworkData`, `IssuingTransactionNetworkData`, and `SetupAttemptPaymentMethodDetailsCardThreeDSecure`
+  * Add support for `Offline` on `ChargePaymentMethodDetailsCardPresent`
+  * Add support for `SystemTraceAuditNumber` on `IssuingAuthorizationNetworkData`
+  * Add support for `NetworkRiskScore` on `IssuingAuthorizationPendingRequest` and `IssuingAuthorizationRequestHistory`
+  * Add support for `RequestedAt` on `IssuingAuthorizationRequestHistory`
+  * Add support for `AuthorizationCode` on `IssuingTransactionNetworkData`
+  * Add support for `ThreeDSecure` on `PaymentIntentPaymentMethodOptionsCardOptions` and `SetupIntentPaymentMethodOptionsCardOptions`
+
 ## 43.3.0 - 2023-11-16
 * [#2796](https://github.com/stripe/stripe-dotnet/pull/2796) Update generated code
   * Add support for `BacsDebitPayments` on `AccountSettingsOptions`
