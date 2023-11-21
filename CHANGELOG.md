@@ -1,5 +1,10 @@
 # Changelog
 
+## 43.5.0-beta.1 - 2023-11-21
+* [#2798](https://github.com/stripe/stripe-dotnet/pull/2798) Update generated code for beta
+  * Rename `Receipient` to `Recipient` beneath `PaymentDetails` on `Charge` and `PaymentIntent` APIs.
+  * Add support for `Components` on `CustomerSessionCreateOptions` and `CustomerSession`
+
 ## 43.4.0 - 2023-11-21
 * [#2797](https://github.com/stripe/stripe-dotnet/pull/2797) Update generated code
   * Add support for `ElectronicCommerceIndicator` on `ChargePaymentMethodDetailsCardThreeDSecure` and `SetupAttemptPaymentMethodDetailsCardThreeDSecure`
