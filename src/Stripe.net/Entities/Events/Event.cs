@@ -25,8 +25,8 @@ namespace Stripe
     /// have a separate <a href="http://en.wikipedia.org/wiki/Webhook">webhooks</a> system for
     /// sending the <c>Event</c> objects directly to an endpoint on your server. You can manage
     /// webhooks in your <a href="https://dashboard.stripe.com/account/webhooks">account
-    /// settings</a>. Learn how to [listen for events] (/docs/webhooks) so that your integration
-    /// can automatically trigger reactions.
+    /// settings</a>. Learn how to <a href="https://stripe.com/docs/webhooks">listen for
+    /// events</a> so that your integration can automatically trigger reactions.
     ///
     /// When using <a href="https://stripe.com/docs/connect">Connect</a>, you can also receive
     /// event notifications that occur in connected accounts. For these events, there's an

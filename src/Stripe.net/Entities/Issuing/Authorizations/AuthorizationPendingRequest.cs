@@ -52,5 +52,12 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("merchant_currency")]
         public string MerchantCurrency { get; set; }
+
+        /// <summary>
+        /// The card network's estimate of the likelihood that an authorization is fraudulent. Takes
+        /// on values between 1 and 99.
+        /// </summary>
+        [JsonProperty("network_risk_score")]
+        public long? NetworkRiskScore { get; set; }
     }
 }

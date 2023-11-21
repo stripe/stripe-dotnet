@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentIntentPaymentDetailsLodgingDeliveryReceipientOptions : INestedOptions
+    public class PaymentIntentPaymentDetailsEventDetailsDeliveryRecipient : StripeEntity<PaymentIntentPaymentDetailsEventDetailsDeliveryRecipient>
     {
         /// <summary>
         /// The email of the recipient the ticket is delivered to.

@@ -257,10 +257,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Status of the refund. For credit card refunds, this can be <c>pending</c>,
-        /// <c>succeeded</c>, or <c>failed</c>. For other types of refunds, it can be
-        /// <c>pending</c>, <c>requires_action</c>, <c>succeeded</c>, <c>failed</c>, or
-        /// <c>canceled</c>. Learn more about <a
+        /// Status of the refund. This can be <c>pending</c>, <c>requires_action</c>,
+        /// <c>succeeded</c>, <c>failed</c>, or <c>canceled</c>. Learn more about <a
         /// href="https://stripe.com/docs/refunds#failed-refunds">failed refunds</a>.
         /// </summary>
         [JsonProperty("status")]

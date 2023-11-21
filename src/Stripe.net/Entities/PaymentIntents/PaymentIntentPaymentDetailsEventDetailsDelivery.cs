@@ -12,7 +12,7 @@ namespace Stripe
         [JsonProperty("mode")]
         public string Mode { get; set; }
 
-        [JsonProperty("receipient")]
-        public PaymentIntentPaymentDetailsEventDetailsDeliveryReceipient Receipient { get; set; }
+        [JsonProperty("recipient")]
+        public PaymentIntentPaymentDetailsEventDetailsDeliveryRecipient Recipient { get; set; }
     }
 }

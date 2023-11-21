@@ -15,7 +15,7 @@ namespace Stripe
         /// <summary>
         /// Details of the recipient.
         /// </summary>
-        [JsonProperty("receipient")]
-        public PaymentIntentPaymentDetailsFlightDeliveryReceipientOptions Receipient { get; set; }
+        [JsonProperty("recipient")]
+        public PaymentIntentPaymentDetailsFlightDeliveryRecipientOptions Recipient { get; set; }
     }
 }
