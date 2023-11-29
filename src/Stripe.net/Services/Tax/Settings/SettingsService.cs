@@ -35,6 +35,16 @@ namespace Stripe.Tax
             return this.RequestAsync<Settings>(HttpMethod.Get, $"/v1/tax/settings", null, requestOptions, cancellationToken);
         }
 
+        public virtual Settings Get(SettingsGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Settings>(HttpMethod.Get, $"/v1/tax/settings", options, requestOptions);
+        }
+
+        public virtual Task<Settings> GetAsync(SettingsGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Settings>(HttpMethod.Get, $"/v1/tax/settings", options, requestOptions, cancellationToken);
+        }
+
         public virtual Settings Update(SettingsUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Settings>(HttpMethod.Post, $"/v1/tax/settings", options, requestOptions);

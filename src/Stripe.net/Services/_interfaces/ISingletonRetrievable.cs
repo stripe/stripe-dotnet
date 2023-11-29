@@ -3,6 +3,8 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
+    // TODO (MAJOR): Accept a TOptions generic and use it to define method overloads
+    // that allow passing in options.
     public interface ISingletonRetrievable<TEntity>
         where TEntity : IStripeEntity
     {
