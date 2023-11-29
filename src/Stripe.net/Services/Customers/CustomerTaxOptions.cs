@@ -13,5 +13,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("ip_address")]
         public string IpAddress { get; set; }
+
+        /// <summary>
+        /// A flag that indicates whether Stripe should validate the customer tax location.
+        /// One of: <c>deferred</c>, or <c>immediately</c>.
+        /// </summary>
+        [JsonProperty("validate_location")]
+        public string ValidateLocation { get; set; }
     }
 }
