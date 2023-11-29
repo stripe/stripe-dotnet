@@ -112,7 +112,7 @@ namespace Stripe.Climate
         /// The year this order is expected to be delivered.
         /// </summary>
         [JsonProperty("expected_delivery_year")]
-        public long? ExpectedDeliveryYear { get; set; }
+        public long ExpectedDeliveryYear { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
