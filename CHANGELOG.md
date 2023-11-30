@@ -1,5 +1,13 @@
 # Changelog
 
+## 43.5.0 - 2023-11-30
+* [#2801](https://github.com/stripe/stripe-dotnet/pull/2801) Update generated code
+  * Add support for new resources `Climate.Order`, `Climate.Product`, and `Climate.Supplier`
+  * Add support for `Cancel`, `Create`, `Get`, `List`, and `Update` methods on resource `Order`
+  * Add support for `Get` and `List` methods on resources `Product` and `Supplier`
+  * Add support for `Created` on `Checkout.SessionListOptions`
+  * Add support for `ValidateLocation` on `CustomerTaxOptions`
+
 ## 43.4.0 - 2023-11-21
 * [#2797](https://github.com/stripe/stripe-dotnet/pull/2797) Update generated code
   * Add support for `ElectronicCommerceIndicator` on `ChargePaymentMethodDetailsCardThreeDSecure` and `SetupAttemptPaymentMethodDetailsCardThreeDSecure`
