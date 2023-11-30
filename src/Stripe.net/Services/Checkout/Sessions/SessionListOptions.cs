@@ -3,7 +3,7 @@ namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
 
-    public class SessionListOptions : ListOptions
+    public class SessionListOptions : ListOptionsWithCreated
     {
         /// <summary>
         /// Only return the Checkout Sessions for the Customer specified.

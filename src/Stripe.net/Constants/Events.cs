@@ -178,6 +178,41 @@ namespace Stripe
         public const string CheckoutSessionExpired = "checkout.session.expired";
 
         /// <summary>
+        /// Occurs when a Climate order is canceled.
+        /// </summary>
+        public const string ClimateOrderCanceled = "climate.order.canceled";
+
+        /// <summary>
+        /// Occurs when a Climate order is created.
+        /// </summary>
+        public const string ClimateOrderCreated = "climate.order.created";
+
+        /// <summary>
+        /// Occurs when a Climate order is delayed.
+        /// </summary>
+        public const string ClimateOrderDelayed = "climate.order.delayed";
+
+        /// <summary>
+        /// Occurs when a Climate order is delivered.
+        /// </summary>
+        public const string ClimateOrderDelivered = "climate.order.delivered";
+
+        /// <summary>
+        /// Occurs when a Climate order's product is substituted for another.
+        /// </summary>
+        public const string ClimateOrderProductSubstituted = "climate.order.product_substituted";
+
+        /// <summary>
+        /// Occurs when a Climate product is created.
+        /// </summary>
+        public const string ClimateProductCreated = "climate.product.created";
+
+        /// <summary>
+        /// Occurs when a Climate product is updated.
+        /// </summary>
+        public const string ClimateProductPricingUpdated = "climate.product.pricing_updated";
+
+        /// <summary>
         /// Occurs whenever a coupon is created.
         /// </summary>
         public const string CouponCreated = "coupon.created";
