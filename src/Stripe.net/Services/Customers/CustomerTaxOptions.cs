@@ -15,7 +15,8 @@ namespace Stripe
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// A flag that indicates whether Stripe should validate the customer tax location.
+        /// A flag that indicates when Stripe should validate the customer tax location. Defaults to
+        /// <c>deferred</c>.
         /// One of: <c>deferred</c>, or <c>immediately</c>.
         /// </summary>
         [JsonProperty("validate_location")]
