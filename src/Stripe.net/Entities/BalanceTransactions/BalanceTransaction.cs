@@ -147,7 +147,8 @@ namespace Stripe
         /// <summary>
         /// Transaction type: <c>adjustment</c>, <c>advance</c>, <c>advance_funding</c>,
         /// <c>anticipation_repayment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
-        /// <c>charge</c>, <c>connect_collection_transfer</c>, <c>contribution</c>,
+        /// <c>charge</c>, <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
+        /// <c>connect_collection_transfer</c>, <c>contribution</c>,
         /// <c>issuing_authorization_hold</c>, <c>issuing_authorization_release</c>,
         /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>obligation_inbound</c>,
         /// <c>obligation_outbound</c>, <c>obligation_reversal_inbound</c>,
@@ -164,7 +165,8 @@ namespace Stripe
         /// consider <c>reporting_category</c> instead.
         /// One of: <c>adjustment</c>, <c>advance</c>, <c>advance_funding</c>,
         /// <c>anticipation_repayment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
-        /// <c>charge</c>, <c>connect_collection_transfer</c>, <c>contribution</c>,
+        /// <c>charge</c>, <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
+        /// <c>connect_collection_transfer</c>, <c>contribution</c>,
         /// <c>issuing_authorization_hold</c>, <c>issuing_authorization_release</c>,
         /// <c>issuing_dispute</c>, <c>issuing_transaction</c>, <c>obligation_inbound</c>,
         /// <c>obligation_outbound</c>, <c>obligation_payout</c>, <c>obligation_payout_failure</c>,
