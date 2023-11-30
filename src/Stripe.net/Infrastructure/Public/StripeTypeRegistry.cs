@@ -35,6 +35,9 @@ namespace Stripe
                 { "cash_balance", typeof(CashBalance) },
                 { "charge", typeof(Charge) },
                 { "checkout.session", typeof(Checkout.Session) },
+                { "climate.order", typeof(Climate.Order) },
+                { "climate.product", typeof(Climate.Product) },
+                { "climate.supplier", typeof(Climate.Supplier) },
                 {
                     "connect_collection_transfer", typeof(
                         ConnectCollectionTransfer)
