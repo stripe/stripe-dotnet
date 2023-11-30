@@ -1,5 +1,8 @@
 # Changelog
 
+## 43.6.0-beta.1 - 2023-11-30
+* [#2802](https://github.com/stripe/stripe-dotnet/pull/2802) Update generated code for beta
+
 ## 43.5.0-beta.1 - 2023-11-21
 * [#2798](https://github.com/stripe/stripe-dotnet/pull/2798) Update generated code for beta
   * Rename `Receipient` to `Recipient` beneath `PaymentDetails` on `Charge` and `PaymentIntent` APIs.
