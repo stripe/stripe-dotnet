@@ -134,6 +134,13 @@ namespace Stripe
         public string CustomerCreation { get; set; }
 
         /// <summary>
+        /// The custom message to be displayed to a customer when a payment link is no longer
+        /// active.
+        /// </summary>
+        [JsonProperty("inactive_message")]
+        public string InactiveMessage { get; set; }
+
+        /// <summary>
         /// Configuration for creating invoice for payment mode payment links.
         /// </summary>
         [JsonProperty("invoice_creation")]
@@ -225,6 +232,12 @@ namespace Stripe
 
         [JsonProperty("phone_number_collection")]
         public PaymentLinkPhoneNumberCollection PhoneNumberCollection { get; set; }
+
+        /// <summary>
+        /// Settings that restrict the usage of a payment link.
+        /// </summary>
+        [JsonProperty("restrictions")]
+        public PaymentLinkRestrictions Restrictions { get; set; }
 
         /// <summary>
         /// Configuration for collecting the customer's shipping address.

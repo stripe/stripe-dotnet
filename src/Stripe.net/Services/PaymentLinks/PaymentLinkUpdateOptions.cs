@@ -61,6 +61,13 @@ namespace Stripe
         public string CustomerCreation { get; set; }
 
         /// <summary>
+        /// The custom message to be displayed to a customer when a payment link is no longer
+        /// active.
+        /// </summary>
+        [JsonProperty("inactive_message")]
+        public string InactiveMessage { get; set; }
+
+        /// <summary>
         /// Generate a post-purchase Invoice for one-time payments.
         /// </summary>
         [JsonProperty("invoice_creation")]
@@ -122,6 +129,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
+
+        /// <summary>
+        /// Settings that restrict the usage of a payment link.
+        /// </summary>
+        [JsonProperty("restrictions")]
+        public PaymentLinkRestrictionsOptions Restrictions { get; set; }
 
         /// <summary>
         /// Configuration for collecting the customer's shipping address.
