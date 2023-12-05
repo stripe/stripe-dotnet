@@ -7,5 +7,14 @@ namespace Stripe
     {
         [JsonProperty("account_onboarding")]
         public AccountSessionComponentsAccountOnboarding AccountOnboarding { get; set; }
+
+        [JsonProperty("payment_details")]
+        public AccountSessionComponentsPaymentDetails PaymentDetails { get; set; }
+
+        [JsonProperty("payments")]
+        public AccountSessionComponentsPayments Payments { get; set; }
+
+        [JsonProperty("payouts")]
+        public AccountSessionComponentsPayouts Payouts { get; set; }
     }
 }
