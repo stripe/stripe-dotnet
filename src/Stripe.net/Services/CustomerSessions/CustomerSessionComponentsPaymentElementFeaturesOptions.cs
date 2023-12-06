@@ -6,21 +6,28 @@ namespace Stripe
     public class CustomerSessionComponentsPaymentElementFeaturesOptions : INestedOptions
     {
         /// <summary>
-        /// Whether the payment element supports detaching a payment method.
+        /// Controls whether the Payment Element allows the removal of a saved payment method.
         /// One of: <c>auto</c>, or <c>never</c>.
         /// </summary>
-        [JsonProperty("payment_method_detach")]
-        public string PaymentMethodDetach { get; set; }
+        [JsonProperty("payment_method_remove")]
+        public string PaymentMethodRemove { get; set; }
 
         /// <summary>
-        /// Whether the payment element supports setting a payment method as the customer's default.
+        /// Controls whether the Payment Element offers to save a new payment method.
         /// One of: <c>auto</c>, or <c>never</c>.
         /// </summary>
-        [JsonProperty("payment_method_set_as_customer_default")]
-        public string PaymentMethodSetAsCustomerDefault { get; set; }
+        [JsonProperty("payment_method_save")]
+        public string PaymentMethodSave { get; set; }
 
         /// <summary>
-        /// Whether the payment element supports updating a payment method.
+        /// Controls whether the Payment Element offers to set a payment method as the default.
+        /// One of: <c>auto</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("payment_method_set_as_default")]
+        public string PaymentMethodSetAsDefault { get; set; }
+
+        /// <summary>
+        /// Controls whether the Payment Element allows the updating of a saved payment method.
         /// One of: <c>auto</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("payment_method_update")]

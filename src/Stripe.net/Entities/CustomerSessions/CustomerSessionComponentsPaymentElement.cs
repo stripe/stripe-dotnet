@@ -12,7 +12,7 @@ namespace Stripe
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// This hash contains the features the Payment Element supports.
+        /// This hash defines whether the payment element supports certain features.
         /// </summary>
         [JsonProperty("features")]
         public CustomerSessionComponentsPaymentElementFeatures Features { get; set; }
