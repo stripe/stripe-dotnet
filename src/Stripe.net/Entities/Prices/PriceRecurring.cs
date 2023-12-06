@@ -6,12 +6,8 @@ namespace Stripe
     public class PriceRecurring : StripeEntity<PriceRecurring>
     {
         /// <summary>
-        /// Specifies a usage aggregation strategy for prices of <c>usage_type=metered</c>. Allowed
-        /// values are <c>sum</c> for summing up all usage during a period,
-        /// <c>last_during_period</c> for using the last usage record reported within a period,
-        /// <c>last_ever</c> for using the last usage record ever (across period bounds) or
-        /// <c>max</c> which uses the usage record with the maximum reported usage during a period.
-        /// Defaults to <c>sum</c>.
+        /// Specifies a usage aggregation strategy for prices of <c>usage_type=metered</c>. Defaults
+        /// to <c>sum</c>.
         /// One of: <c>last_during_period</c>, <c>last_ever</c>, <c>max</c>, or <c>sum</c>.
         /// </summary>
         [JsonProperty("aggregate_usage")]
