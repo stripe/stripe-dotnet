@@ -70,5 +70,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }
+
+        /// <summary>
+        /// A string that identifies the resulting payment as part of a group. See the
+        /// PaymentIntents <a
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">use case for
+        /// connected accounts</a> for details.
+        /// </summary>
+        [JsonProperty("transfer_group")]
+        public string TransferGroup { get; set; }
     }
 }
