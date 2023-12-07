@@ -1,5 +1,13 @@
 # Changelog
 
+## 43.6.0 - 2023-12-07
+* [#2805](https://github.com/stripe/stripe-dotnet/pull/2805) Update generated code
+  * Add support for `PaymentDetails`, `Payments`, and `Payouts` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
+  * Add support for `Features` on `AccountSessionComponentsAccountOnboardingOptions` and `AccountSessionComponentsAccountOnboarding`
+  * Add support for `InactiveMessage` and `Restrictions` on `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  * Add support for `TransferGroup` on `PaymentLinkPaymentIntentDataOptions` and `PaymentLinkPaymentIntentData`
+  * Add support for `TrialSettings` on `PaymentLinkSubscriptionDataOptions` and `PaymentLinkSubscriptionData`
+
 ## 43.5.0 - 2023-11-30
 * [#2801](https://github.com/stripe/stripe-dotnet/pull/2801) Update generated code
   * Add support for new resources `Climate.Order`, `Climate.Product`, and `Climate.Supplier`
