@@ -42,6 +42,8 @@ namespace Stripe
             this.AuthorizationHeader = BuildAuthorizationHeader(client, requestOptions);
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions);
+
+            this.Usage = requestOptions?.Usage;
         }
 
         /// <summary>The HTTP method for the request (GET, POST or DELETE).</summary>
@@ -69,6 +71,8 @@ namespace Stripe
         /// </summary>
         /// <remarks>This getter creates a new instance every time it is called.</remarks>
         public HttpContent Content => BuildContent(this.Method, this.options);
+
+        internal List<string> Usage { get; }
 
         /// <summary>Returns a string that represents the <see cref="StripeRequest"/>.</summary>
         /// <returns>A string that represents the <see cref="StripeRequest"/>.</returns>

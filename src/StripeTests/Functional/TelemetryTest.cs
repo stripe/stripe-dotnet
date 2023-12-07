@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
@@ -50,7 +51,8 @@ namespace StripeTests
                         TelemetryHeaderMatcher(
                             m.Headers,
                             (s) => s == "req_1",
-                            (d) => d >= 15)),
+                            (d) => d >= 15,
+                            (_) => true)),
                     ItExpr.IsAny<CancellationToken>());
 
             this.MockHttpClientFixture.MockHandler.Protected()
@@ -61,7 +63,40 @@ namespace StripeTests
                         TelemetryHeaderMatcher(
                             m.Headers,
                             (s) => s == "req_2",
-                            (d) => d >= 30)),
+                            (d) => d >= 30,
+                            (_) => true)),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public void TelemetryIncludesUsage()
+        {
+            this.MockHttpClientFixture.Reset();
+            var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
+            fakeServer.Delay = TimeSpan.FromMilliseconds(20);
+
+            var service = new TestService(this.StripeClient);
+            service.MakeRequestWithUsage(new RequestOptions());
+            service.MakeRequestWithUsage(new RequestOptions());
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        !m.Headers.Contains("X-Stripe-Client-Telemetry")),
+                    ItExpr.IsAny<CancellationToken>());
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        TelemetryHeaderMatcher(
+                            m.Headers,
+                            (_) => true,
+                            (_) => true,
+                            (t) => t != null && t.Count == 2 && t.Contains("llama") && t.Contains("bufo"))),
                     ItExpr.IsAny<CancellationToken>());
         }
 
@@ -96,7 +131,8 @@ namespace StripeTests
                         TelemetryHeaderMatcher(
                             m.Headers,
                             (s) => s == "req_1",
-                            (d) => d >= 15)),
+                            (d) => d >= 15,
+                            (_) => true)),
                     ItExpr.IsAny<CancellationToken>());
 
             this.MockHttpClientFixture.MockHandler.Protected()
@@ -107,7 +143,8 @@ namespace StripeTests
                         TelemetryHeaderMatcher(
                             m.Headers,
                             (s) => s == "req_2",
-                            (d) => d >= 15)),
+                            (d) => d >= 15,
+                            (_) => true)),
                     ItExpr.IsAny<CancellationToken>());
         }
 
@@ -142,7 +179,8 @@ namespace StripeTests
         private static bool TelemetryHeaderMatcher(
             HttpHeaders headers,
             Func<string, bool> requestIdMatcher,
-            Func<long, bool> durationMatcher)
+            Func<long, bool> durationMatcher,
+            Func<List<string>, bool> usageMatcher)
         {
             if (!headers.Contains("X-Stripe-Client-Telemetry"))
             {
@@ -154,8 +192,36 @@ namespace StripeTests
             var deserialized = JToken.Parse(payload);
             var requestId = (string)deserialized["last_request_metrics"]["request_id"];
             var duration = (long)deserialized["last_request_metrics"]["request_duration_ms"];
+            var usageRaw = deserialized["last_request_metrics"]["usage"];
 
-            return requestIdMatcher(requestId) && durationMatcher(duration);
+            List<string> usage = null;
+            if (usageRaw != null)
+            {
+                usage = usageRaw.Select(x => (string)x).ToList();
+            }
+
+            return requestIdMatcher(requestId) && durationMatcher(duration) && usageMatcher(usage);
+        }
+
+        private class TestEntity : StripeEntity<TestEntity>
+        {
+        }
+
+        private class TestService : Service<TestEntity>
+        {
+            public TestService(IStripeClient client)
+                : base(client)
+            {
+            }
+
+            public override string BasePath => "/v1/test";
+
+            public virtual void MakeRequestWithUsage(RequestOptions requestOptions)
+            {
+                RequestOptions ro = requestOptions.Clone();
+                ro.Usage = new List<string> { "llama", "bufo" };
+                this.Request<TestEntity>(HttpMethod.Get, $"/v1/customers/cus_xyz", null, ro);
+            }
         }
 
         private class FakeServer

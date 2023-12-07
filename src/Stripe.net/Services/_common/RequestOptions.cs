@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
 
     public class RequestOptions
     {
@@ -38,6 +39,13 @@ namespace Stripe
         /// is only used for creating ephemeral keys, which require a specific API version.
         /// </remarks>
         internal string StripeVersion { get; set; }
+
+        /// <summary>Tracked behaviors.</summary>
+        /// <remarks>
+        /// This is an internal property for use only by the Stripe.net library.
+        /// Its interface is unstable and subject to change or removal.
+        /// </remarks>
+        internal List<string> Usage { get; set; }
 
         internal RequestOptions Clone()
         {

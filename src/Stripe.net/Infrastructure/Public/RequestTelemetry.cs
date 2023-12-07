@@ -47,7 +47,8 @@ namespace Stripe
         /// </summary>
         /// <param name="response">The HTTP response message.</param>
         /// <param name="duration">The request duration.</param>
-        public void MaybeEnqueueMetrics(HttpResponseMessage response, TimeSpan duration)
+        /// <param name="usage">Tracked behaviors.</param>
+        public void MaybeEnqueueMetrics(HttpResponseMessage response, TimeSpan duration, List<string> usage = null)
         {
             if (!response.Headers.Contains("Request-Id"))
             {
@@ -67,6 +68,11 @@ namespace Stripe
                 RequestDurationMs = (long)duration.TotalMilliseconds,
             };
 
+            if (usage != null && usage.Count > 0)
+            {
+                metrics.Usage = usage;
+            }
+
             this.prevRequestMetrics.Enqueue(metrics);
         }
 
@@ -83,6 +89,9 @@ namespace Stripe
 
             [JsonProperty("request_duration_ms")]
             public long RequestDurationMs { get; set; }
+
+            [JsonProperty("usage")]
+            public List<string> Usage { get; set; }
         }
     }
 }
