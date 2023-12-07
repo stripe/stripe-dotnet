@@ -12,18 +12,6 @@ namespace Stripe
         public AccountSessionComponentsAccountOnboardingOptions AccountOnboarding { get; set; }
 
         /// <summary>
-        /// Configuration for the issuing card component.
-        /// </summary>
-        [JsonProperty("issuing_card")]
-        public AccountSessionComponentsIssuingCardOptions IssuingCard { get; set; }
-
-        /// <summary>
-        /// Configuration for the issuing cards list component.
-        /// </summary>
-        [JsonProperty("issuing_cards_list")]
-        public AccountSessionComponentsIssuingCardsListOptions IssuingCardsList { get; set; }
-
-        /// <summary>
         /// Configuration for the payment details embedded component.
         /// </summary>
         [JsonProperty("payment_details")]
