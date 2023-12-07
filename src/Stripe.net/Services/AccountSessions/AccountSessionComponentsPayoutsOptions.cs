@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class AccountSessionComponentsAccountOnboardingOptions : INestedOptions
+    public class AccountSessionComponentsPayoutsOptions : INestedOptions
     {
         /// <summary>
         /// Whether the embedded component is enabled.
@@ -15,6 +15,6 @@ namespace Stripe
         /// The list of features enabled in the embedded component.
         /// </summary>
         [JsonProperty("features")]
-        public AccountSessionComponentsAccountOnboardingFeaturesOptions Features { get; set; }
+        public AccountSessionComponentsPayoutsFeaturesOptions Features { get; set; }
     }
 }
