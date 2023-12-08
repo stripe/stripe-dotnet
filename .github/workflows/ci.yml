@@ -97,8 +97,8 @@ jobs:
           name: nuget
           path: nuget/
 
-  backcompat:
-    name: Backwards compatibility check
+  compat:
+    name: Compat
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
@@ -107,7 +107,7 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Run backcompat check
-      run: dotnet pack src/Stripe.net  -p:RunBaselineCheck=true
+      run: dotnet pack src/Stripe.net -p:RunBaselineCheck=true
 
   publish:
     name: Publish
