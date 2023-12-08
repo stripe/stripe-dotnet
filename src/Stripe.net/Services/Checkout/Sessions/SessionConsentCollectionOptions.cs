@@ -6,6 +6,13 @@ namespace Stripe.Checkout
     public class SessionConsentCollectionOptions : INestedOptions
     {
         /// <summary>
+        /// Determines the display of payment method reuse agreement text in the UI. If set to
+        /// <c>hidden</c>, it will hide legal text related to the reuse of a payment method.
+        /// </summary>
+        [JsonProperty("payment_method_reuse_agreement")]
+        public SessionConsentCollectionPaymentMethodReuseAgreementOptions PaymentMethodReuseAgreement { get; set; }
+
+        /// <summary>
         /// If set to <c>auto</c>, enables the collection of customer consent for promotional
         /// communications. The Checkout Session will determine whether to display an option to opt
         /// into promotional communication from the merchant depending on the customer's locale.
