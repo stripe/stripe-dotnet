@@ -1,5 +1,12 @@
 # Changelog
 
+## 43.7.0-beta.1 - 2023-12-08
+* [#2806](https://github.com/stripe/stripe-dotnet/pull/2806) Update generated code for beta
+  * Add support for `Get` method on resource `FinancialConnections.Transaction`
+  * Remove support for `IssuingCard` and `IssuingCardsList` on `AccountSessionComponentsOptions`
+  * Add support for `PaymentMethodRemove`, `PaymentMethodSave`, and `PaymentMethodSetAsDefault` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`
+  * Remove support for `PaymentMethodDetach` and `PaymentMethodSetAsCustomerDefault` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`
+
 ## 43.6.0 - 2023-12-07
 * [#2805](https://github.com/stripe/stripe-dotnet/pull/2805) Update generated code
   * Add support for `PaymentDetails`, `Payments`, and `Payouts` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
