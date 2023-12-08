@@ -5,7 +5,7 @@
     <LangVersion>8</LangVersion>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
-    <NoWarn>NU1903</NoWarn>
+    <NuGetAudit>false</NuGetAudit>
   </PropertyGroup>
 
   <ItemGroup>

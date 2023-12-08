@@ -20,7 +20,7 @@
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
     <EnablePackageValidation>true</EnablePackageValidation>
     <PackageValidationBaselineVersion Condition="'$(RunBaselineCheck)' == 'true'">$(Version)</PackageValidationBaselineVersion>
-    <NoWarn>NU1903</NoWarn>
+    <NuGetAudit>false</NuGetAudit>
   </PropertyGroup>
 
   <ItemGroup>
