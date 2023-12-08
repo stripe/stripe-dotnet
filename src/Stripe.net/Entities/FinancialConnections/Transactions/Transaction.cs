@@ -74,7 +74,7 @@ namespace Stripe.FinancialConnections
         public DateTime TransactedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The transaction_refresh object that last updated or created this transaction.
+        /// The token of the transaction refresh that last updated or created this transaction.
         /// </summary>
         [JsonProperty("transaction_refresh")]
         public string TransactionRefresh { get; set; }

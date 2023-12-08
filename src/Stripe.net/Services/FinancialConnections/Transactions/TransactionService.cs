@@ -7,7 +7,8 @@ namespace Stripe.FinancialConnections
     using System.Threading.Tasks;
 
     public class TransactionService : Service<Transaction>,
-        IListable<Transaction, TransactionListOptions>
+        IListable<Transaction, TransactionListOptions>,
+        IRetrievable<Transaction, TransactionGetOptions>
     {
         public TransactionService()
             : base(null)
@@ -20,6 +21,16 @@ namespace Stripe.FinancialConnections
         }
 
         public override string BasePath => "/v1/financial_connections/transactions";
+
+        public virtual Transaction Get(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Transaction>(HttpMethod.Get, $"/v1/financial_connections/transactions/{id}", options, requestOptions);
+        }
+
+        public virtual Task<Transaction> GetAsync(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Transaction>(HttpMethod.Get, $"/v1/financial_connections/transactions/{id}", options, requestOptions, cancellationToken);
+        }
 
         public virtual StripeList<Transaction> List(TransactionListOptions options = null, RequestOptions requestOptions = null)
         {

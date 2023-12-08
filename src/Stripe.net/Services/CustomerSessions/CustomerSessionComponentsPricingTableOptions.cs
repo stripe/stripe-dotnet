@@ -6,7 +6,7 @@ namespace Stripe
     public class CustomerSessionComponentsPricingTableOptions : INestedOptions
     {
         /// <summary>
-        /// Whether pricing table is enabled.
+        /// Whether the pricing table is enabled.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
