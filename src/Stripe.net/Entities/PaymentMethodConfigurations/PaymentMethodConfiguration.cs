@@ -113,9 +113,6 @@ namespace Stripe
         [JsonProperty("grabpay")]
         public PaymentMethodConfigurationGrabpay Grabpay { get; set; }
 
-        [JsonProperty("id_bank_transfer")]
-        public PaymentMethodConfigurationIdBankTransfer IdBankTransfer { get; set; }
-
         [JsonProperty("ideal")]
         public PaymentMethodConfigurationIdeal Ideal { get; set; }
 
@@ -145,17 +142,11 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
-        [JsonProperty("multibanco")]
-        public PaymentMethodConfigurationMultibanco Multibanco { get; set; }
-
         /// <summary>
         /// The configuration's name.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
-
-        [JsonProperty("netbanking")]
-        public PaymentMethodConfigurationNetbanking Netbanking { get; set; }
 
         [JsonProperty("oxxo")]
         public PaymentMethodConfigurationOxxo Oxxo { get; set; }
@@ -168,9 +159,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("parent")]
         public string Parent { get; set; }
-
-        [JsonProperty("pay_by_bank")]
-        public PaymentMethodConfigurationPayByBank PayByBank { get; set; }
 
         [JsonProperty("paynow")]
         public PaymentMethodConfigurationPaynow Paynow { get; set; }
@@ -186,9 +174,6 @@ namespace Stripe
 
         [JsonProperty("sofort")]
         public PaymentMethodConfigurationSofort Sofort { get; set; }
-
-        [JsonProperty("upi")]
-        public PaymentMethodConfigurationUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         public PaymentMethodConfigurationUsBankAccount UsBankAccount { get; set; }
