@@ -18,6 +18,9 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <DebugType>embedded</DebugType>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <NoWarn>NU1903</NoWarn>
+    <PackageValidationBaselineVersion Condition="'$(RunBaselineCheck)' == 'true'">$(Version)</PackageValidationBaselineVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -73,4 +76,5 @@
     <None Include="..\..\LICENSE" Pack="true" PackagePath="" />
     <None Include="icon.png" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
+
 </Project>
