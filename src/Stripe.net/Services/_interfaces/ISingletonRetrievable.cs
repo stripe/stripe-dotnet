@@ -3,11 +3,6 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-<<<<<<< Updated upstream
-    // TODO (MAJOR): Accept a TOptions generic and use it to define methods
-    // that accept options parameters.
-=======
->>>>>>> Stashed changes
     public interface ISingletonRetrievable<TEntity>
         where TEntity : IStripeEntity
     {
