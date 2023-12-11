@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class AccountSessionComponentsAccountOnboarding : StripeEntity<AccountSessionComponentsAccountOnboarding>
+    public class AccountSessionComponentsPayouts : StripeEntity<AccountSessionComponentsPayouts>
     {
         /// <summary>
         /// Whether the embedded component is enabled.
@@ -12,6 +12,6 @@ namespace Stripe
         public bool Enabled { get; set; }
 
         [JsonProperty("features")]
-        public AccountSessionComponentsAccountOnboardingFeatures Features { get; set; }
+        public AccountSessionComponentsPayoutsFeatures Features { get; set; }
     }
 }

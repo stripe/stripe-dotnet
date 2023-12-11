@@ -37,6 +37,7 @@ namespace Stripe
         /// <c>obligation_outbound</c>, <c>obligation_reversal_inbound</c>,
         /// <c>obligation_reversal_outbound</c>, <c>obligation_payout</c>,
         /// <c>obligation_payout_failure</c>, <c>payment</c>, <c>payment_failure_refund</c>,
+        /// <c>payment_network_reserve_hold</c>, <c>payment_network_reserve_release</c>,
         /// <c>payment_refund</c>, <c>payment_reversal</c>, <c>payment_unreconciled</c>,
         /// <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>, <c>refund</c>,
         /// <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
