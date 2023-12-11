@@ -34,5 +34,15 @@ namespace Stripe
         {
             return this.RequestAsync<Balance>(HttpMethod.Get, $"/v1/balance", null, requestOptions, cancellationToken);
         }
+
+        public virtual Balance Get(BalanceGetOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<Balance>(HttpMethod.Get, $"/v1/balance", options, requestOptions);
+        }
+
+        public virtual Task<Balance> GetAsync(BalanceGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Balance>(HttpMethod.Get, $"/v1/balance", options, requestOptions, cancellationToken);
+        }
     }
 }
