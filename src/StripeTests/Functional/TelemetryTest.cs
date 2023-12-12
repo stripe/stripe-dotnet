@@ -73,7 +73,6 @@ namespace StripeTests
         {
             this.MockHttpClientFixture.Reset();
             var fakeServer = FakeServer.ForMockHandler(this.MockHttpClientFixture.MockHandler);
-            fakeServer.Delay = TimeSpan.FromMilliseconds(20);
 
             var service = new TestService(this.StripeClient);
             service.MakeRequestWithUsage(new RequestOptions());
