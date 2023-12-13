@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- https://learn.microsoft.com/en-us/dotnet/fundamentals/package-validation/diagnostic-ids -->
+<Suppressions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.RequestTelemetry.MaybeEnqueueMetrics(System.Net.Http.HttpResponseMessage,System.TimeSpan)</Target>
+    <Left>lib/net461/Stripe.net.dll</Left>
+    <Right>lib/net461/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.RequestTelemetry.MaybeEnqueueMetrics(System.Net.Http.HttpResponseMessage,System.TimeSpan)</Target>
+    <Left>lib/net5.0/Stripe.net.dll</Left>
+    <Right>lib/net5.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.RequestTelemetry.MaybeEnqueueMetrics(System.Net.Http.HttpResponseMessage,System.TimeSpan)</Target>
+    <Left>lib/net6.0/Stripe.net.dll</Left>
+    <Right>lib/net6.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.RequestTelemetry.MaybeEnqueueMetrics(System.Net.Http.HttpResponseMessage,System.TimeSpan)</Target>
+    <Left>lib/netcoreapp3.1/Stripe.net.dll</Left>
+    <Right>lib/netcoreapp3.1/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+  <Suppression>
+    <DiagnosticId>CP0002</DiagnosticId>
+    <Target>M:Stripe.RequestTelemetry.MaybeEnqueueMetrics(System.Net.Http.HttpResponseMessage,System.TimeSpan)</Target>
+    <Left>lib/netstandard2.0/Stripe.net.dll</Left>
+    <Right>lib/netstandard2.0/Stripe.net.dll</Right>
+    <IsBaselineSuppression>true</IsBaselineSuppression>
+  </Suppression>
+</Suppressions>
