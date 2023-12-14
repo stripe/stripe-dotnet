@@ -18,12 +18,12 @@ namespace Stripe.Tax
         {
         }
 
+        public override string BasePath => "/v1/tax/settings";
+
         protected override string InstanceUrl(string id)
         {
             return this.ClassUrl();
         }
-
-        public override string BasePath => "/v1/tax/settings";
 
         public virtual Settings Get(RequestOptions requestOptions = null)
         {
