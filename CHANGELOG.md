@@ -1,5 +1,14 @@
 # Changelog
 
+## 43.7.0 - 2023-12-14
+* [#2813](https://github.com/stripe/stripe-dotnet/pull/2813) Update generated code
+  * Add support for `PaymentMethodReuseAgreement` on `CheckoutSessionConsentCollectionOptions`, `CheckoutSessionConsentCollection`, `PaymentLinkConsentCollectionOptions`, and `PaymentLinkConsentCollection`
+  * Add support for `AfterSubmit` on `CheckoutSessionCustomTextOptions`, `CheckoutSessionCustomText`, `PaymentLinkCustomTextOptions`, and `PaymentLinkCustomText`
+  * Add support for `Created` on `Radar.EarlyFraudWarningListOptions`
+* [#2804](https://github.com/stripe/stripe-dotnet/pull/2804) Support passing in options to singleton retrieve methods
+  * Add support for passing request parameters to `Get` on `Balance` and `Tax.Settings`.
+* [#2809](https://github.com/stripe/stripe-dotnet/pull/2809) Add backcompat check
+
 ## 43.6.0 - 2023-12-07
 * [#2805](https://github.com/stripe/stripe-dotnet/pull/2805) Update generated code
   * Add support for `PaymentDetails`, `Payments`, and `Payouts` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
