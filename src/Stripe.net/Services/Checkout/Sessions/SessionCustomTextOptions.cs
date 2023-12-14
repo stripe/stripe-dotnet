@@ -6,6 +6,12 @@ namespace Stripe.Checkout
     public class SessionCustomTextOptions : INestedOptions
     {
         /// <summary>
+        /// Custom text that should be displayed after the payment confirmation button.
+        /// </summary>
+        [JsonProperty("after_submit")]
+        public SessionCustomTextAfterSubmitOptions AfterSubmit { get; set; }
+
+        /// <summary>
         /// Custom text that should be displayed alongside shipping address collection.
         /// </summary>
         [JsonProperty("shipping_address")]

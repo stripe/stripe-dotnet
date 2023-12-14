@@ -6,6 +6,12 @@ namespace Stripe
     public class PaymentLinkConsentCollection : StripeEntity<PaymentLinkConsentCollection>
     {
         /// <summary>
+        /// Settings related to the payment method reuse text shown in the Checkout UI.
+        /// </summary>
+        [JsonProperty("payment_method_reuse_agreement")]
+        public PaymentLinkConsentCollectionPaymentMethodReuseAgreement PaymentMethodReuseAgreement { get; set; }
+
+        /// <summary>
         /// If set to <c>auto</c>, enables the collection of customer consent for promotional
         /// communications.
         /// One of: <c>auto</c>, or <c>none</c>.
