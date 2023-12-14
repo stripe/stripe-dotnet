@@ -18,12 +18,12 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/v1/balance";
-
         protected override string InstanceUrl(string id)
         {
             return this.ClassUrl();
         }
+
+        public override string BasePath => "/v1/balance";
 
         public virtual Balance Get(RequestOptions requestOptions = null)
         {

@@ -3,7 +3,7 @@ namespace Stripe.Radar
 {
     using Newtonsoft.Json;
 
-    public class EarlyFraudWarningListOptions : ListOptions
+    public class EarlyFraudWarningListOptions : ListOptionsWithCreated
     {
         /// <summary>
         /// Only return early fraud warnings for the charge specified by this charge ID.
