@@ -18,12 +18,12 @@ namespace Stripe.Capital
         {
         }
 
+        public override string BasePath => "/v1/capital/financing_summary";
+
         protected override string InstanceUrl(string id)
         {
             return this.ClassUrl();
         }
-
-        public override string BasePath => "/v1/capital/financing_summary";
 
         public virtual FinancingSummary Get(RequestOptions requestOptions = null)
         {
