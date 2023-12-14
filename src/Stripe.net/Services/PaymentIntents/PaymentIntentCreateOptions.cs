@@ -57,6 +57,8 @@ namespace Stripe
         public bool? Confirm { get; set; }
 
         /// <summary>
+        /// Describes whether we can confirm this PaymentIntent automatically, or if it requires
+        /// customer action to confirm the payment.
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("confirmation_method")]
