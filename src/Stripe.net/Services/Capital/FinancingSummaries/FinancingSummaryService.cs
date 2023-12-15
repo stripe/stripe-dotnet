@@ -34,5 +34,15 @@ namespace Stripe.Capital
         {
             return this.RequestAsync<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions, cancellationToken);
         }
+
+        public virtual FinancingSummary Get(FinancingSummaryGetOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions);
+        }
+
+        public virtual Task<FinancingSummary> GetAsync(FinancingSummaryGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions, cancellationToken);
+        }
     }
 }

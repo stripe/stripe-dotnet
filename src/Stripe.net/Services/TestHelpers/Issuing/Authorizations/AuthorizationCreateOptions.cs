@@ -7,7 +7,7 @@ namespace Stripe.TestHelpers.Issuing
     {
         /// <summary>
         /// The total amount to attempt to authorize. This amount is in the provided currency, or
-        /// defaults to the cards currency, and in the <a
+        /// defaults to the card's currency, and in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
