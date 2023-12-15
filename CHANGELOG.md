@@ -1,5 +1,12 @@
 # Changelog
 
+## 43.8.0-beta.1 - 2023-12-14
+* [#2810](https://github.com/stripe/stripe-dotnet/pull/2810) Update generated code for beta
+  * Add support for `PreviewMode` and `SubscriptionDetails` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+  * Remove support for `SubscriptionTrialFromPlan` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+  * Add support for `BillingBehavior`, `EndBehavior`, and `ProrationBehavior` on `InvoiceScheduleDetailsOptions`
+* [#2811](https://github.com/stripe/stripe-dotnet/pull/2811) Merge master -> beta
+
 ## 43.7.0 - 2023-12-14
 * [#2813](https://github.com/stripe/stripe-dotnet/pull/2813) Update generated code
   * Add support for `PaymentMethodReuseAgreement` on `CheckoutSessionConsentCollectionOptions`, `CheckoutSessionConsentCollection`, `PaymentLinkConsentCollectionOptions`, and `PaymentLinkConsentCollection`
