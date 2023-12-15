@@ -116,6 +116,9 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        [JsonProperty("destination_details")]
+        public RefundDestinationDetails DestinationDetails { get; set; }
+
         #region Expandable FailureBalanceTransaction
 
         /// <summary>
