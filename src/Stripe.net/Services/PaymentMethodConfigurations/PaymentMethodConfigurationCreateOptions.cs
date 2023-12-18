@@ -284,6 +284,15 @@ namespace Stripe
         public PaymentMethodConfigurationPromptpayOptions Promptpay { get; set; }
 
         /// <summary>
+        /// Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment
+        /// method. Revolut Pay uses the customer’s stored balance or cards to fund the payment, and
+        /// offers the option for non-Revolut customers to save their details after their first
+        /// purchase.
+        /// </summary>
+        [JsonProperty("revolut_pay")]
+        public PaymentMethodConfigurationRevolutPayOptions RevolutPay { get; set; }
+
+        /// <summary>
         /// The <a href="https://en.wikipedia.org/wiki/Single_Euro_Payments_Area">Single Euro
         /// Payments Area (SEPA)</a> is an initiative of the European Union to simplify payments
         /// within and across member countries. SEPA established and enforced banking standards to
