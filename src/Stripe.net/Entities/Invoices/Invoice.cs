@@ -590,10 +590,6 @@ namespace Stripe
         [JsonProperty("invoice_pdf")]
         public string InvoicePdf { get; set; }
 
-        /// <summary>
-        /// The connected account that issues the invoice. The invoice is presented with the
-        /// branding and support information of the specified account.
-        /// </summary>
         [JsonProperty("issuer")]
         public InvoiceIssuer Issuer { get; set; }
 
