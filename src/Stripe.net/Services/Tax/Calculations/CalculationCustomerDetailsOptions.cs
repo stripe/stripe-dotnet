@@ -26,7 +26,9 @@ namespace Stripe.Tax
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// The customer's tax IDs.
+        /// The customer's tax IDs. Stripe Tax might consider a transaction with applicable tax IDs
+        /// to be B2B, which might affect the tax calculation result. Stripe Tax doesn't validate
+        /// tax IDs for correctness.
         /// </summary>
         [JsonProperty("tax_ids")]
         public List<CalculationCustomerDetailsTaxIdOptions> TaxIds { get; set; }
