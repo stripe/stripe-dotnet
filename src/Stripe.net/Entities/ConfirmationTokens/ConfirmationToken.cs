@@ -9,6 +9,10 @@ namespace Stripe
     /// ConfirmationTokens help transport client side data collected by Stripe JS over to your
     /// server for confirming a PaymentIntent or SetupIntent. If the confirmation is successful,
     /// values present on the ConfirmationToken are written onto the Intent.
+    ///
+    /// To learn more or request access, visit the related guided: <a
+    /// href="https://stripe.com/docs/payments/finalize-payments-on-the-server-confirmation-tokens">Finalize
+    /// payments on the server using Confirmation Tokens</a>.
     /// </summary>
     public class ConfirmationToken : StripeEntity<ConfirmationToken>, IHasId, IHasObject
     {
