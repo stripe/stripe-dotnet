@@ -276,9 +276,6 @@ namespace Stripe
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
-        /// <summary>
-        /// All invoices will be billed using the specified settings.
-        /// </summary>
         [JsonProperty("invoice_settings")]
         public QuoteInvoiceSettings InvoiceSettings { get; set; }
 
