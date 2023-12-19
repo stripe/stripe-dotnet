@@ -16,6 +16,14 @@ namespace Stripe.FinancialConnections
         public DateTime LastAttemptedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Time at which the next balance refresh can be initiated. This value will be <c>null</c>
+        /// when <c>status</c> is <c>pending</c>. Measured in seconds since the Unix epoch.
+        /// </summary>
+        [JsonProperty("next_refresh_available_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? NextRefreshAvailableAt { get; set; }
+
+        /// <summary>
         /// The status of the last refresh attempt.
         /// One of: <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
         /// </summary>
