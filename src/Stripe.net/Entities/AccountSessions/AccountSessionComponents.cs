@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("account_onboarding")]
         public AccountSessionComponentsAccountOnboarding AccountOnboarding { get; set; }
 
+        [JsonProperty("capital_financing_promotion")]
+        public AccountSessionComponentsCapitalFinancingPromotion CapitalFinancingPromotion { get; set; }
+
         [JsonProperty("payment_details")]
         public AccountSessionComponentsPaymentDetails PaymentDetails { get; set; }
 
