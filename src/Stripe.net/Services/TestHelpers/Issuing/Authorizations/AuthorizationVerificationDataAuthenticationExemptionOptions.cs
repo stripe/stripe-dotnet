@@ -15,7 +15,8 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// The specific exemption claimed for this authorization.
-        /// One of: <c>low_value_transaction</c>, or <c>transaction_risk_analysis</c>.
+        /// One of: <c>low_value_transaction</c>, <c>transaction_risk_analysis</c>, or
+        /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
