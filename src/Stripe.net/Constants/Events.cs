@@ -397,6 +397,12 @@ namespace Stripe
         public const string FinancialConnectionsAccountRefreshedBalance = "financial_connections.account.refreshed_balance";
 
         /// <summary>
+        /// Occurs when an Account’s <c>transaction_refresh</c> status transitions from
+        /// <c>pending</c> to either <c>succeeded</c> or <c>failed</c>.
+        /// </summary>
+        public const string FinancialConnectionsAccountRefreshedTransactions = "financial_connections.account.refreshed_transactions";
+
+        /// <summary>
         /// Occurs whenever a VerificationSession is canceled.
         /// </summary>
         public const string IdentityVerificationSessionCanceled = "identity.verification_session.canceled";

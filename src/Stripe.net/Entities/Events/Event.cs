@@ -134,6 +134,7 @@ namespace Stripe
         /// <c>financial_connections.account.disconnected</c>,
         /// <c>financial_connections.account.reactivated</c>,
         /// <c>financial_connections.account.refreshed_balance</c>,
+        /// <c>financial_connections.account.refreshed_transactions</c>,
         /// <c>identity.verification_session.canceled</c>,
         /// <c>identity.verification_session.created</c>,
         /// <c>identity.verification_session.processing</c>,

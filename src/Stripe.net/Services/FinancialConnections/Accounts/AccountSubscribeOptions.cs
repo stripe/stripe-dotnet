@@ -4,11 +4,10 @@ namespace Stripe.FinancialConnections
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class AccountRefreshOptions : BaseOptions
+    public class AccountSubscribeOptions : BaseOptions
     {
         /// <summary>
-        /// The list of account features that you would like to refresh.
-        /// One of: <c>balance</c>, <c>ownership</c>, or <c>transactions</c>.
+        /// The list of account features to which you would like to subscribe.`.
         /// </summary>
         [JsonProperty("features")]
         public List<string> Features { get; set; }

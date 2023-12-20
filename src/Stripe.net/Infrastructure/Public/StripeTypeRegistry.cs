@@ -78,6 +78,10 @@ namespace Stripe
                     "financial_connections.session", typeof(
                         FinancialConnections.Session)
                 },
+                {
+                    "financial_connections.transaction", typeof(
+                        FinancialConnections.Transaction)
+                },
                 { "funding_instructions", typeof(FundingInstructions) },
                 {
                     "identity.verification_report", typeof(

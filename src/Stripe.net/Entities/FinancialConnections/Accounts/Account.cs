@@ -151,6 +151,12 @@ namespace Stripe.FinancialConnections
         public string Subcategory { get; set; }
 
         /// <summary>
+        /// The list of data refresh subscriptions requested on this account.
+        /// </summary>
+        [JsonProperty("subscriptions")]
+        public List<string> Subscriptions { get; set; }
+
+        /// <summary>
         /// The <a
         /// href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod
         /// type</a>(s) that can be created from this account.
@@ -158,5 +164,11 @@ namespace Stripe.FinancialConnections
         /// </summary>
         [JsonProperty("supported_payment_method_types")]
         public List<string> SupportedPaymentMethodTypes { get; set; }
+
+        /// <summary>
+        /// The state of the most recent attempt to refresh the account transactions.
+        /// </summary>
+        [JsonProperty("transaction_refresh")]
+        public AccountTransactionRefresh TransactionRefresh { get; set; }
     }
 }
