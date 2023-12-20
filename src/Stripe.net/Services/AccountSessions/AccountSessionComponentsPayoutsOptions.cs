@@ -16,8 +16,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("features")]
         public AccountSessionComponentsPayoutsFeaturesOptions Features { get; set; }
-
-        [JsonProperty("features")]
-        public AccountSessionComponentsPayoutsFeaturesOptions Features { get; set; }
     }
 }
