@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("financial_connections")]
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections FinancialConnections { get; set; }
 
+        [JsonProperty("mandate_options")]
+        public PaymentIntentPaymentMethodOptionsUsBankAccountMandateOptions MandateOptions { get; set; }
+
         /// <summary>
         /// Preferred transaction settlement speed.
         /// One of: <c>fastest</c>, or <c>standard</c>.
