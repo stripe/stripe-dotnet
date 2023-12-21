@@ -1118,6 +1118,30 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestFinancialConnectionsAccountsSubscribePost()
+        {
+            var options = new Stripe.FinancialConnections.AccountSubscribeOptions
+            {
+                Features = new List<string> { "transactions" },
+            };
+            var service = new Stripe.FinancialConnections.AccountService(
+                this.StripeClient);
+            service.Subscribe("fa_123", options);
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsAccountsUnsubscribePost()
+        {
+            var options = new Stripe.FinancialConnections.AccountUnsubscribeOptions
+            {
+                Features = new List<string> { "transactions" },
+            };
+            var service = new Stripe.FinancialConnections.AccountService(
+                this.StripeClient);
+            service.Unsubscribe("fa_123", options);
+        }
+
+        [Fact]
         public void TestFinancialConnectionsSessionsGet()
         {
             var service = new Stripe.FinancialConnections.SessionService(
@@ -1169,6 +1193,27 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.SessionService(
                 this.StripeClient);
             service.Create(options);
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsTransactionsGet()
+        {
+            var service = new Stripe.FinancialConnections.TransactionService(
+                this.StripeClient);
+            service.Get("tr_123");
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsTransactionsGet2()
+        {
+            var options = new Stripe.FinancialConnections.TransactionListOptions
+            {
+                Account = "fca_xyz",
+            };
+            var service = new Stripe.FinancialConnections.TransactionService(
+                this.StripeClient);
+            StripeList<Stripe.FinancialConnections.Transaction> transactions = service
+                .List(options);
         }
 
         [Fact]
@@ -3149,6 +3194,70 @@ namespace StripeTests
             var options = new TaxRateUpdateOptions { Active = false };
             var service = new TaxRateService(this.StripeClient);
             service.Update("txr_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTaxRegistrationsGet()
+        {
+            var options = new Stripe.Tax.RegistrationListOptions
+            {
+                Status = "all",
+            };
+            var service = new Stripe.Tax.RegistrationService(this.StripeClient);
+            StripeList<Stripe.Tax.Registration> registrations = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestTaxRegistrationsPost()
+        {
+            var options = new Stripe.Tax.RegistrationCreateOptions
+            {
+                Country = "IE",
+                CountryOptions = new Stripe.Tax.RegistrationCountryOptionsOptions
+                {
+                    Ie = new Stripe.Tax.RegistrationCountryOptionsIeOptions
+                    {
+                        Type = "oss_union",
+                    },
+                },
+                ActiveFrom = Stripe.Tax.RegistrationActiveFrom.Now,
+            };
+            var service = new Stripe.Tax.RegistrationService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTaxRegistrationsPost2()
+        {
+            var options = new Stripe.Tax.RegistrationUpdateOptions
+            {
+                ExpiresAt = Stripe.Tax.RegistrationExpiresAt.Now,
+            };
+            var service = new Stripe.Tax.RegistrationService(this.StripeClient);
+            service.Update("taxreg_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
+        public void TestTaxSettingsGet()
+        {
+            var options = new Stripe.Tax.SettingsGetOptions();
+            var service = new Stripe.Tax.SettingsService(this.StripeClient);
+            service.Get(options);
+        }
+
+        [Fact]
+        public void TestTaxSettingsPost()
+        {
+            var options = new Stripe.Tax.SettingsUpdateOptions
+            {
+                Defaults = new Stripe.Tax.SettingsDefaultsOptions
+                {
+                    TaxCode = "txcd_10000000",
+                },
+            };
+            var service = new Stripe.Tax.SettingsService(this.StripeClient);
+            service.Update(options);
         }
 
         [Fact]

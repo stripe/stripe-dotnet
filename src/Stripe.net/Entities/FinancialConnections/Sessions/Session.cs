@@ -60,7 +60,7 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// Data features requested to be retrieved upon account creation.
-        /// One of: <c>balances</c>, or <c>ownership</c>.
+        /// One of: <c>balances</c>, <c>ownership</c>, or <c>transactions</c>.
         /// </summary>
         [JsonProperty("prefetch")]
         public List<string> Prefetch { get; set; }

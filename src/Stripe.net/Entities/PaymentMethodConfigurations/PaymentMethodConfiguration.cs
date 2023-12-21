@@ -181,6 +181,9 @@ namespace Stripe
         [JsonProperty("promptpay")]
         public PaymentMethodConfigurationPromptpay Promptpay { get; set; }
 
+        [JsonProperty("revolut_pay")]
+        public PaymentMethodConfigurationRevolutPay RevolutPay { get; set; }
+
         [JsonProperty("sepa_debit")]
         public PaymentMethodConfigurationSepaDebit SepaDebit { get; set; }
 
