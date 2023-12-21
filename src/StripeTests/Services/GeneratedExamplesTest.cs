@@ -3152,6 +3152,28 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTaxSettingsGet()
+        {
+            var options = new Stripe.Tax.SettingsGetOptions();
+            var service = new Stripe.Tax.SettingsService(this.StripeClient);
+            service.Get(options);
+        }
+
+        [Fact]
+        public void TestTaxSettingsPost()
+        {
+            var options = new Stripe.Tax.SettingsUpdateOptions
+            {
+                Defaults = new Stripe.Tax.SettingsDefaultsOptions
+                {
+                    TaxCode = "txcd_10000000",
+                },
+            };
+            var service = new Stripe.Tax.SettingsService(this.StripeClient);
+            service.Update(options);
+        }
+
+        [Fact]
         public void TestTaxTransactionsCreateFromCalculationPost()
         {
             var options = new Stripe.Tax.TransactionCreateFromCalculationOptions
