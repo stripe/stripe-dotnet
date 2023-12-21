@@ -1118,6 +1118,30 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestFinancialConnectionsAccountsSubscribePost()
+        {
+            var options = new Stripe.FinancialConnections.AccountSubscribeOptions
+            {
+                Features = new List<string> { "transactions" },
+            };
+            var service = new Stripe.FinancialConnections.AccountService(
+                this.StripeClient);
+            service.Subscribe("fa_123", options);
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsAccountsUnsubscribePost()
+        {
+            var options = new Stripe.FinancialConnections.AccountUnsubscribeOptions
+            {
+                Features = new List<string> { "transactions" },
+            };
+            var service = new Stripe.FinancialConnections.AccountService(
+                this.StripeClient);
+            service.Unsubscribe("fa_123", options);
+        }
+
+        [Fact]
         public void TestFinancialConnectionsSessionsGet()
         {
             var service = new Stripe.FinancialConnections.SessionService(
@@ -1169,6 +1193,27 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.SessionService(
                 this.StripeClient);
             service.Create(options);
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsTransactionsGet()
+        {
+            var service = new Stripe.FinancialConnections.TransactionService(
+                this.StripeClient);
+            service.Get("tr_123");
+        }
+
+        [Fact]
+        public void TestFinancialConnectionsTransactionsGet2()
+        {
+            var options = new Stripe.FinancialConnections.TransactionListOptions
+            {
+                Account = "fca_xyz",
+            };
+            var service = new Stripe.FinancialConnections.TransactionService(
+                this.StripeClient);
+            StripeList<Stripe.FinancialConnections.Transaction> transactions = service
+                .List(options);
         }
 
         [Fact]
