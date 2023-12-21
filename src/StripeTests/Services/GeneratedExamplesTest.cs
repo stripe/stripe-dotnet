@@ -3167,6 +3167,48 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTaxRegistrationsGet()
+        {
+            var options = new Stripe.Tax.RegistrationListOptions
+            {
+                Status = "all",
+            };
+            var service = new Stripe.Tax.RegistrationService(this.StripeClient);
+            StripeList<Stripe.Tax.Registration> registrations = service.List(
+                options);
+        }
+
+        [Fact]
+        public void TestTaxRegistrationsPost()
+        {
+            var options = new Stripe.Tax.RegistrationCreateOptions
+            {
+                Country = "IE",
+                CountryOptions = new Stripe.Tax.RegistrationCountryOptionsOptions
+                {
+                    Ie = new Stripe.Tax.RegistrationCountryOptionsIeOptions
+                    {
+                        Type = "oss_union",
+                    },
+                },
+                ActiveFrom = Stripe.Tax.RegistrationActiveFrom.Now,
+            };
+            var service = new Stripe.Tax.RegistrationService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestTaxRegistrationsPost2()
+        {
+            var options = new Stripe.Tax.RegistrationUpdateOptions
+            {
+                ExpiresAt = Stripe.Tax.RegistrationExpiresAt.Now,
+            };
+            var service = new Stripe.Tax.RegistrationService(this.StripeClient);
+            service.Update("taxreg_xxxxxxxxxxxxx", options);
+        }
+
+        [Fact]
         public void TestTaxSettingsGet()
         {
             var options = new Stripe.Tax.SettingsGetOptions();
