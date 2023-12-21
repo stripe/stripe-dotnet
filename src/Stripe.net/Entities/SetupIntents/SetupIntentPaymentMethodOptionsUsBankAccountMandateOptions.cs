@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class MandatePaymentMethodDetailsUsBankAccount : StripeEntity<MandatePaymentMethodDetailsUsBankAccount>
+    public class SetupIntentPaymentMethodOptionsUsBankAccountMandateOptions : StripeEntity<SetupIntentPaymentMethodOptionsUsBankAccountMandateOptions>
     {
         /// <summary>
         /// Mandate collection method.

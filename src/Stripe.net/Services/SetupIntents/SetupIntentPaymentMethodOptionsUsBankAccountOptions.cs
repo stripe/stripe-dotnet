@@ -12,6 +12,12 @@ namespace Stripe
         public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions FinancialConnections { get; set; }
 
         /// <summary>
+        /// Additional fields for Mandate creation.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+        public SetupIntentPaymentMethodOptionsUsBankAccountMandateOptionsOptions MandateOptions { get; set; }
+
+        /// <summary>
         /// Additional fields for network related functions.
         /// </summary>
         [JsonProperty("networks")]
