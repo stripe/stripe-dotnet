@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("account_onboarding")]
         public AccountSessionComponentsAccountOnboardingOptions AccountOnboarding { get; set; }
 
+        [JsonProperty("capital_financing_promotion")]
+        public AccountSessionComponentsCapitalFinancingPromotionOptions CapitalFinancingPromotion { get; set; }
+
         /// <summary>
         /// Configuration for the payment details embedded component.
         /// </summary>

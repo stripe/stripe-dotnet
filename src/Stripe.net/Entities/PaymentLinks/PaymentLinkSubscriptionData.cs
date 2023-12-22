@@ -14,9 +14,6 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        /// <summary>
-        /// All invoices will be billed using the specified settings.
-        /// </summary>
         [JsonProperty("invoice_settings")]
         public PaymentLinkSubscriptionDataInvoiceSettings InvoiceSettings { get; set; }
 

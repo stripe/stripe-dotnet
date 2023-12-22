@@ -85,6 +85,12 @@ namespace Stripe.Tax
         public TransactionReversal Reversal { get; set; }
 
         /// <summary>
+        /// The details of the ship from location, such as the address.
+        /// </summary>
+        [JsonProperty("ship_from_details")]
+        public TransactionShipFromDetails ShipFromDetails { get; set; }
+
+        /// <summary>
         /// The shipping cost details for the transaction.
         /// </summary>
         [JsonProperty("shipping_cost")]

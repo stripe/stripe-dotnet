@@ -10,4 +10,4 @@ ci-test:
 	dotnet test src/StripeTests/StripeTests.csproj -c Debug
 
 test:
-	dotnet test -f net7.0 src/StripeTests/StripeTests.csproj -c Debug
+	dotnet test -f net8.0 src/StripeTests/StripeTests.csproj -c Debug
