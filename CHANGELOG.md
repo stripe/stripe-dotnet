@@ -1,5 +1,21 @@
 # Changelog
 
+## 43.8.0 - 2023-12-22
+* [#2818](https://github.com/stripe/stripe-dotnet/pull/2818) Update generated code
+  * Add support for `CollectionMethod` on `MandatePaymentMethodDetailsUsBankAccount`
+  * Add support for `MandateOptions` on `PaymentIntentPaymentMethodOptionsUsBankAccountOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccount`, `SetupIntentPaymentMethodOptionsUsBankAccountOptions`, and `SetupIntentPaymentMethodOptionsUsBankAccount`
+* [#2814](https://github.com/stripe/stripe-dotnet/pull/2814) Update generated code
+  * Add support for new resource `FinancialConnections.Transaction`
+  * Add support for `Get` and `List` methods on resource `Transaction`
+  * Add support for `Subscribe` and `Unsubscribe` methods on resource `FinancialConnections.Account`
+  * Add support for `Features` on `AccountSessionComponentsPayoutsOptions`
+  * Add support for `EditPayoutSchedule`, `InstantPayouts`, and `StandardPayouts` on `AccountSessionComponentsPayoutsFeatures`
+  * Change type of `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchOptions`, `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetch`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetch`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetch`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchOptions`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetch`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetchOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsPrefetch` from `literal('balances')` to `enum('balances'|'transactions')`
+  * Add support for `Subscriptions` and `TransactionRefresh` on `FinancialConnectionsAccount`
+  * Add support for `NextRefreshAvailableAt` on `FinancialConnectionsAccountBalanceRefresh`
+  * Add support for `RevolutPay` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `DestinationDetails` on `Refund`
+
 ## 43.8.0-beta.1 - 2023-12-14
 * [#2810](https://github.com/stripe/stripe-dotnet/pull/2810) Update generated code for beta
   * Add support for `PreviewMode` and `SubscriptionDetails` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
