@@ -1,5 +1,11 @@
 # Changelog
 
+## 43.9.0-beta.1 - 2023-12-22
+* [#2815](https://github.com/stripe/stripe-dotnet/pull/2815) Update generated code for beta
+  * Add support for `CapitalFinancingPromotion` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
+  * Change type of `PaymentLinkSubscriptionDataInvoiceSettings` from `nullable(PaymentLinksResourceSubscriptionDataInvoiceSettings)` to `PaymentLinksResourceSubscriptionDataInvoiceSettings`
+  * Add support for `ShipFromDetails` on `Tax.CalculationCreateOptions`, `TaxCalculation`, and `TaxTransaction`
+
 ## 43.8.0 - 2023-12-22
 * [#2818](https://github.com/stripe/stripe-dotnet/pull/2818) Update generated code
   * Add support for `CollectionMethod` on `MandatePaymentMethodDetailsUsBankAccount`
