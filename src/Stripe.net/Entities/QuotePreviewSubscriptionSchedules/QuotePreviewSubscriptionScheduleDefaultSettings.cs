@@ -87,9 +87,6 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
-        /// <summary>
-        /// The subscription schedule's default invoice settings.
-        /// </summary>
         [JsonProperty("invoice_settings")]
         public QuotePreviewSubscriptionScheduleDefaultSettingsInvoiceSettings InvoiceSettings { get; set; }
 
