@@ -1,5 +1,10 @@
 # Changelog
 
+## 43.10.0-beta.1 - 2024-01-04
+* [#2821](https://github.com/stripe/stripe-dotnet/pull/2821) Update generated code for beta
+  * Updated stable APIs to the latest version
+
+
 ## 43.9.0 - 2024-01-04
 * [#2822](https://github.com/stripe/stripe-dotnet/pull/2822) Update generated code
   * Add support for `Get` method on resource `Tax.Registration`
