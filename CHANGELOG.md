@@ -1,5 +1,9 @@
 # Changelog
 
+## 43.9.0 - 2024-01-04
+* [#2822](https://github.com/stripe/stripe-dotnet/pull/2822) Update generated code
+  * Add support for `Get` method on resource `Tax.Registration`
+
 ## 43.8.0 - 2023-12-22
 * [#2818](https://github.com/stripe/stripe-dotnet/pull/2818) Update generated code
   * Add support for `CollectionMethod` on `MandatePaymentMethodDetailsUsBankAccount`
