@@ -213,12 +213,16 @@ namespace StripeTests
             {
             }
 
+            // Real usage should mirror this and use a static readonly list, instead of creating
+            // a new list every time.
+            public static readonly List<string> testUsage = new List<string> { "llama", "bufo" };
+
             public override string BasePath => "/v1/test";
 
             public virtual void MakeRequestWithUsage(RequestOptions requestOptions)
             {
                 RequestOptions ro = requestOptions.Clone();
-                ro.Usage = new List<string> { "llama", "bufo" };
+                ro.Usage = testUsage;
                 this.Request<TestEntity>(HttpMethod.Get, $"/v1/customers/cus_xyz", null, ro);
             }
         }
