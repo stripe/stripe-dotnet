@@ -43,11 +43,11 @@ namespace Stripe
         public DateTime? BackdateStartDate { get; set; }
 
         /// <summary>
-        /// A future timestamp to anchor the subscription's <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a>. This is
-        /// used to determine the date of the first full invoice, and, for plans with <c>month</c>
-        /// or <c>year</c> intervals, the day of the month for subsequent invoices. The timestamp is
-        /// in UTC format.
+        /// A future timestamp in UTC format to anchor the subscription's <a
+        /// href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a>. The anchor
+        /// is the reference point that aligns future billing cycle dates. It sets the day of week
+        /// for <c>week</c> intervals, the day of month for <c>month</c> and <c>year</c> intervals,
+        /// and the month of year for <c>year</c> intervals.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
