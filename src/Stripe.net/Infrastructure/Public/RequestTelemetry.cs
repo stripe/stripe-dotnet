@@ -47,6 +47,17 @@ namespace Stripe
         /// </summary>
         /// <param name="response">The HTTP response message.</param>
         /// <param name="duration">The request duration.</param>
+        public void MaybeEnqueueMetrics(HttpResponseMessage response, TimeSpan duration)
+        {
+            this.MaybeEnqueueMetrics(response, duration, null);
+        }
+
+        /// <summary>
+        /// If telemetry is enabled and the queue is not full, then enqueue a new metrics item;
+        /// otherwise, do nothing.
+        /// </summary>
+        /// <param name="response">The HTTP response message.</param>
+        /// <param name="duration">The request duration.</param>
         /// <param name="usage">Tracked behaviors.</param>
         public void MaybeEnqueueMetrics(HttpResponseMessage response, TimeSpan duration, List<string> usage = null)
         {
