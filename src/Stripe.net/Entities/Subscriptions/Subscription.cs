@@ -70,9 +70,11 @@ namespace Stripe
         public SubscriptionAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
-        /// Determines the date of the first full invoice, and, for plans with <c>month</c> or
-        /// <c>year</c> intervals, the day of the month for subsequent invoices. The timestamp is in
-        /// UTC format.
+        /// The reference point that aligns future <a
+        /// href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a> dates. It
+        /// sets the day of week for <c>week</c> intervals, the day of month for <c>month</c> and
+        /// <c>year</c> intervals, and the month of year for <c>year</c> intervals. The timestamp is
+        /// in UTC format.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

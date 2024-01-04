@@ -1,5 +1,9 @@
 # Changelog
 
+## 43.9.0 - 2024-01-04
+* [#2822](https://github.com/stripe/stripe-dotnet/pull/2822) Update generated code
+  * Add support for `Get` method on resource `Tax.Registration`
+
 ## 43.9.0-beta.1 - 2023-12-22
 * [#2815](https://github.com/stripe/stripe-dotnet/pull/2815) Update generated code for beta
   * Add support for `CapitalFinancingPromotion` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
