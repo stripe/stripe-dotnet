@@ -243,7 +243,7 @@ namespace Stripe
 
             if (this.EnableTelemetry)
             {
-                this.requestTelemetry.MaybeEnqueueMetrics(response, duration);
+                this.requestTelemetry.MaybeEnqueueMetrics(response, duration, request.Usage);
             }
 
             return (response, retry);
