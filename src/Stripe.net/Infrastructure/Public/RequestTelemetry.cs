@@ -59,7 +59,7 @@ namespace Stripe
         /// <param name="response">The HTTP response message.</param>
         /// <param name="duration">The request duration.</param>
         /// <param name="usage">Tracked behaviors.</param>
-        public void MaybeEnqueueMetrics(HttpResponseMessage response, TimeSpan duration, List<string> usage = null)
+        public void MaybeEnqueueMetrics(HttpResponseMessage response, TimeSpan duration, List<string> usage)
         {
             if (!response.Headers.Contains("Request-Id"))
             {
