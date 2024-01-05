@@ -78,6 +78,8 @@ namespace Stripe
             this.apiMode = requestOptions is RawRequestOptions rawRequestOptions ? rawRequestOptions.ApiMode : ApiMode.Standard;
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions, this.apiMode);
+
+            this.Usage = requestOptions?.Usage;
         }
 
         /// <summary>The HTTP method for the request (GET, POST or DELETE).</summary>
@@ -122,6 +124,8 @@ namespace Stripe
         {
             return new StripeRequest(client, method, path, content, requestOptions);
         }
+
+        internal List<string> Usage { get; }
 
         /// <summary>Returns a string that represents the <see cref="StripeRequest"/>.</summary>
         /// <returns>A string that represents the <see cref="StripeRequest"/>.</returns>
