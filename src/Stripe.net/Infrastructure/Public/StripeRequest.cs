@@ -108,6 +108,8 @@ namespace Stripe
         /// <remarks>This getter creates a new instance every time it is called.</remarks>
         public HttpContent Content => this.BuildContent();
 
+        internal List<string> Usage { get; }
+
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
         /// <param name="client">The client creating the request.</param>
         /// <param name="method">The HTTP method.</param>
@@ -124,8 +126,6 @@ namespace Stripe
         {
             return new StripeRequest(client, method, path, content, requestOptions);
         }
-
-        internal List<string> Usage { get; }
 
         /// <summary>Returns a string that represents the <see cref="StripeRequest"/>.</summary>
         /// <returns>A string that represents the <see cref="StripeRequest"/>.</returns>
