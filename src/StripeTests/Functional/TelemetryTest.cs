@@ -208,6 +208,10 @@ namespace StripeTests
 
         private class TestService : Service<TestEntity>
         {
+            // Real usage should mirror this and use a static readonly list, instead of creating
+            // a new list every time.
+            private static readonly List<string> TestUsage = new List<string> { "llama", "bufo" };
+
             public TestService(IStripeClient client)
                 : base(client)
             {
@@ -218,7 +222,7 @@ namespace StripeTests
             public virtual void MakeRequestWithUsage(RequestOptions requestOptions)
             {
                 RequestOptions ro = requestOptions.Clone();
-                ro.Usage = new List<string> { "llama", "bufo" };
+                ro.Usage = TestUsage;
                 this.Request<TestEntity>(HttpMethod.Get, $"/v1/customers/cus_xyz", null, ro);
             }
         }
