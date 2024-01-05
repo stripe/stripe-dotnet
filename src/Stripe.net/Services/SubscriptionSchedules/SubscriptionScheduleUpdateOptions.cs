@@ -10,7 +10,7 @@ namespace Stripe
         /// Configures when the subscription schedule generates prorations for phase transitions.
         /// Possible values are <c>prorate_on_next_phase</c> or <c>prorate_up_front</c> with the
         /// default being <c>prorate_on_next_phase</c>. <c>prorate_on_next_phase</c> will apply
-        /// phase changes and generate prorations at transition time.<c>prorate_up_front</c> will
+        /// phase changes and generate prorations at transition time. <c>prorate_up_front</c> will
         /// bill for all phases within the current billing cycle up front.
         /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
         /// </summary>
@@ -27,7 +27,7 @@ namespace Stripe
         /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
         /// values are <c>release</c> or <c>cancel</c> with the default being <c>release</c>.
         /// <c>release</c> will end the subscription schedule and keep the underlying subscription
-        /// running.<c>cancel</c> will end the subscription schedule and cancel the underlying
+        /// running. <c>cancel</c> will end the subscription schedule and cancel the underlying
         /// subscription.
         /// One of: <c>cancel</c>, <c>none</c>, <c>release</c>, or <c>renew</c>.
         /// </summary>
