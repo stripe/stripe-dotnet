@@ -47,6 +47,8 @@ namespace Stripe
             this.apiMode = requestOptions is RawRequestOptions rawRequestOptions ? rawRequestOptions.ApiMode : ApiMode.Standard;
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions, this.apiMode);
+
+            this.Usage = requestOptions?.Usage;
         }
 
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
