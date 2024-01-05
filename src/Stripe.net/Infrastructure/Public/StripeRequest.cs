@@ -47,6 +47,8 @@ namespace Stripe
             this.apiMode = requestOptions is RawRequestOptions rawRequestOptions ? rawRequestOptions.ApiMode : ApiMode.Standard;
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions, this.apiMode);
+
+            this.Usage = requestOptions?.Usage;
         }
 
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
@@ -78,6 +80,8 @@ namespace Stripe
             this.apiMode = requestOptions is RawRequestOptions rawRequestOptions ? rawRequestOptions.ApiMode : ApiMode.Standard;
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions, this.apiMode);
+
+            this.Usage = requestOptions?.Usage;
         }
 
         /// <summary>The HTTP method for the request (GET, POST or DELETE).</summary>
@@ -105,6 +109,8 @@ namespace Stripe
         /// </summary>
         /// <remarks>This getter creates a new instance every time it is called.</remarks>
         public HttpContent Content => this.BuildContent();
+
+        internal List<string> Usage { get; }
 
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
         /// <param name="client">The client creating the request.</param>

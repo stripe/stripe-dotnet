@@ -252,6 +252,18 @@ This information is passed along when the library makes calls to the Stripe
 API. Note that while `Name` is always required, `Url` and `Version` are
 optional.
 
+### Telemetry
+
+By default, the library sends telemetry to Stripe regarding request latency and feature usage. These
+numbers help Stripe improve the overall latency of its API for all users, and
+improve popular features.
+
+You can disable this behavior if you prefer:
+
+```c#
+StripeConfiguration.EnableTelemetry = false;
+```
+
 ### Beta SDKs
 
 Stripe has features in the beta phase that can be accessed via the beta version of this package.
