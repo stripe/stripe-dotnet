@@ -99,6 +99,12 @@ namespace Stripe
         public bool? NoShow { get; set; }
 
         /// <summary>
+        /// The number of rooms on the booking.
+        /// </summary>
+        [JsonProperty("number_of_rooms")]
+        public long? NumberOfRooms { get; set; }
+
+        /// <summary>
         /// The details of the passengers in the travel reservation.
         /// </summary>
         [JsonProperty("passengers")]
@@ -109,6 +115,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("property_phone_number")]
         public string PropertyPhoneNumber { get; set; }
+
+        /// <summary>
+        /// The room class for this purchase.
+        /// </summary>
+        [JsonProperty("room_class")]
+        public string RoomClass { get; set; }
 
         /// <summary>
         /// The number of room nights.
