@@ -24,7 +24,7 @@ namespace Stripe
         public SetupIntentPaymentMethodOptionsUsBankAccountNetworksOptions Networks { get; set; }
 
         /// <summary>
-        /// Verification method for the intent.
+        /// Bank account verification method.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
         [JsonProperty("verification_method")]
