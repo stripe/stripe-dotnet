@@ -57,11 +57,11 @@ namespace Stripe.Reporting
         /// <c>financing_paydown_reversal</c>, <c>financing_payout</c>,
         /// <c>financing_payout_reversal</c>, <c>issuing_authorization_hold</c>,
         /// <c>issuing_authorization_release</c>, <c>issuing_dispute</c>,
-        /// <c>issuing_transaction</c>, <c>network_cost</c>, <c>obligation</c>,
-        /// <c>other_adjustment</c>, <c>partial_capture_reversal</c>, <c>payout</c>,
-        /// <c>payout_reversal</c>, <c>platform_earning</c>, <c>platform_earning_refund</c>,
-        /// <c>refund</c>, <c>refund_failure</c>, <c>risk_reserved_funds</c>, <c>tax</c>,
-        /// <c>topup</c>, <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_reversal</c>, or
+        /// <c>issuing_transaction</c>, <c>network_cost</c>, <c>other_adjustment</c>,
+        /// <c>partial_capture_reversal</c>, <c>payout</c>, <c>payout_reversal</c>,
+        /// <c>platform_earning</c>, <c>platform_earning_refund</c>, <c>refund</c>,
+        /// <c>refund_failure</c>, <c>risk_reserved_funds</c>, <c>tax</c>, <c>topup</c>,
+        /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_reversal</c>, or
         /// <c>unreconciled_customer_funds</c>.
         /// </summary>
         [JsonProperty("reporting_category")]
