@@ -6,6 +6,12 @@ namespace Stripe
     public class CustomerSessionComponentsOptions : INestedOptions
     {
         /// <summary>
+        /// Configuration for buy button.
+        /// </summary>
+        [JsonProperty("buy_button")]
+        public CustomerSessionComponentsBuyButtonOptions BuyButton { get; set; }
+
+        /// <summary>
         /// Configuration for the payment element.
         /// </summary>
         [JsonProperty("payment_element")]
