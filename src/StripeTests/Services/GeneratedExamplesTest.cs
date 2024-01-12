@@ -679,6 +679,24 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCustomerSessionsPost()
+        {
+            var options = new CustomerSessionCreateOptions
+            {
+                Customer = "cus_123",
+                Components = new CustomerSessionComponentsOptions
+                {
+                    BuyButton = new CustomerSessionComponentsBuyButtonOptions
+                    {
+                        Enabled = true,
+                    },
+                },
+            };
+            var service = new CustomerSessionService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestCustomersBalanceTransactionsGet()
         {
             var options = new CustomerBalanceTransactionListOptions
