@@ -1,5 +1,11 @@
 # Changelog
 
+## 43.11.0-beta.1 - 2024-01-12
+* [#2828](https://github.com/stripe/stripe-dotnet/pull/2828) Update generated code for beta
+  * Add support for `Amount` on `ChargePaymentDetailsFlightSegmentsOptions` and `PaymentIntentPaymentDetailsFlightSegmentsOptions`
+  * Add support for `NumberOfRooms` and `RoomClass` on `ChargePaymentDetailsLodgingOptions` and `PaymentIntentPaymentDetailsLodgingOptions`
+  * Add support for `BuyButton` on `CustomerSessionComponentsOptions` and `CustomerSessionComponents`
+
 ## 43.10.0 - 2024-01-12
 * [#2827](https://github.com/stripe/stripe-dotnet/pull/2827) Update generated code
   * Add support for new resource `CustomerSession`
