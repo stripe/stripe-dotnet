@@ -54,6 +54,14 @@ namespace Stripe
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Mutually exclusive with billing_cycle_anchor and only valid with monthly and yearly
+        /// price intervals. When provided, the billing_cycle_anchor is set to the next occurence of
+        /// the day_of_month at the hour, minute, and second UTC.
+        /// </summary>
+        [JsonProperty("billing_cycle_anchor_config")]
+        public SubscriptionBillingCycleAnchorConfigOptions BillingCycleAnchorConfig { get; set; }
+
+        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>

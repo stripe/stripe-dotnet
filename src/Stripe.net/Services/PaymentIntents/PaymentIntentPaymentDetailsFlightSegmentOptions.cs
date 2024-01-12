@@ -8,6 +8,12 @@ namespace Stripe
     public class PaymentIntentPaymentDetailsFlightSegmentOptions : INestedOptions
     {
         /// <summary>
+        /// The flight segment amount.
+        /// </summary>
+        [JsonProperty("amount")]
+        public long? Amount { get; set; }
+
+        /// <summary>
         /// The International Air Transport Association (IATA) airport code for the arrival airport.
         /// </summary>
         [JsonProperty("arrival_airport")]

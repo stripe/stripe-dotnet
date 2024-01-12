@@ -1,9 +1,19 @@
 # Changelog
 
+## 43.10.0 - 2024-01-12
+* [#2827](https://github.com/stripe/stripe-dotnet/pull/2827) Update generated code
+  * Add support for new resource `CustomerSession`
+  * Add support for `Create` method on resource `CustomerSession`
+  * Remove support for `Expand` on `BankAccountDeleteOptions` and `CardDeleteOptions`
+  * Add support for `AccountType`, `DefaultForCurrency`, and `Documents` on `BankAccountUpdateOptions` and `CardUpdateOptions`
+  * Remove support for `Owner` on `BankAccountUpdateOptions` and `CardUpdateOptions`
+  * Change type of `BankAccountAccountHolderTypeOptions` and `CardAccountHolderTypeOptions` from `enum('company'|'individual')` to `emptyStringable(enum('company'|'individual'))`
+  * Add support for `BillingCycleAnchorConfig` on `SubscriptionCreateOptions` and `Subscription`
+* [#2807](https://github.com/stripe/stripe-dotnet/pull/2807) Add 'Usage' to RequestTelemetry
+
 ## 43.10.0-beta.1 - 2024-01-04
 * [#2821](https://github.com/stripe/stripe-dotnet/pull/2821) Update generated code for beta
   * Updated stable APIs to the latest version
-
 
 ## 43.9.0 - 2024-01-04
 * [#2822](https://github.com/stripe/stripe-dotnet/pull/2822) Update generated code

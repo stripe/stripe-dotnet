@@ -81,6 +81,12 @@ namespace Stripe
         public DateTime BillingCycleAnchor { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The fixed values used to calculate the <c>billing_cycle_anchor</c>.
+        /// </summary>
+        [JsonProperty("billing_cycle_anchor_config")]
+        public SubscriptionBillingCycleAnchorConfig BillingCycleAnchorConfig { get; set; }
+
+        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period.
         /// </summary>
