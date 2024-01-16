@@ -15,6 +15,14 @@ namespace Stripe
         public bool Enabled { get; set; }
 
         /// <summary>
+        /// The account that's liable for tax. If set, the business address and tax registrations
+        /// required to perform the tax calculation are loaded from this account. The tax
+        /// transaction is returned in the report of the connected account.
+        /// </summary>
+        [JsonProperty("liability")]
+        public InvoiceAutomaticTaxLiability Liability { get; set; }
+
+        /// <summary>
         /// The status of the most recent automated tax calculation for this invoice.
         /// One of: <c>complete</c>, <c>failed</c>, or <c>requires_location_inputs</c>.
         /// </summary>
