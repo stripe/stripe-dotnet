@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Net;
     using System.Net.Http;
@@ -15,6 +16,8 @@ namespace Stripe
     /// </summary>
     public class StripeClient : IStripeClient
     {
+        internal static readonly List<string> RawRequestUsage = new List<string> { "raw_request" };
+
         /// <summary>Initializes a new instance of the <see cref="StripeClient"/> class.</summary>
         /// <param name="apiKey">The API key used by the client to make requests.</param>
         /// <param name="clientId">The client ID used by the client in OAuth requests.</param>
@@ -185,6 +188,8 @@ namespace Stripe
                 throw new InvalidOperationException("content is not allowed for non-POST requests.");
             }
 
+            requestOptions = requestOptions.Clone();
+            requestOptions.Usage = RawRequestUsage;
             var request = StripeRequest.CreateWithStringContent(this, method, path, content, requestOptions);
 
             var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken)
