@@ -188,7 +188,15 @@ namespace Stripe
                 throw new InvalidOperationException("content is not allowed for non-POST requests.");
             }
 
-            requestOptions = requestOptions.Clone();
+            if (requestOptions == null)
+            {
+                requestOptions = new RawRequestOptions();
+            }
+            else
+            {
+                requestOptions = requestOptions.Clone();
+            }
+
             requestOptions.Usage = RawRequestUsage;
             var request = StripeRequest.CreateWithStringContent(this, method, path, content, requestOptions);
 
