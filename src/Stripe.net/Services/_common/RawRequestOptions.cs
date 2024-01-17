@@ -18,4 +18,21 @@ namespace Stripe
             return (RawRequestOptions)this.MemberwiseClone();
         }
     }
+
+    #pragma warning disable SA1402 // FileMayOnlyContainASingleType
+    internal static class RawRequestOptionsExtensions
+    {
+        internal static RawRequestOptions WithUsage(this RawRequestOptions options, List<string> usage)
+        {
+            if (options == null)
+            {
+                return new RawRequestOptions() { Usage = usage };
+            }
+
+            var clone = options.Clone();
+            clone.Usage = usage;
+            return clone;
+        }
+    }
+    #pragma warning restore SA1402 // FileMayOnlyContainASingleType
 }
