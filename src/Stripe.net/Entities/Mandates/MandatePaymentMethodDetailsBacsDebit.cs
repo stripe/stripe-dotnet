@@ -20,6 +20,15 @@ namespace Stripe
         public string Reference { get; set; }
 
         /// <summary>
+        /// When the mandate is revoked on the Bacs network this field displays the reason for the
+        /// revocation.
+        /// One of: <c>account_closed</c>, <c>bank_account_restricted</c>,
+        /// <c>bank_ownership_changed</c>, <c>could_not_process</c>, or <c>debit_not_authorized</c>.
+        /// </summary>
+        [JsonProperty("revocation_reason")]
+        public string RevocationReason { get; set; }
+
+        /// <summary>
         /// The URL that will contain the mandate that the customer has signed.
         /// </summary>
         [JsonProperty("url")]
