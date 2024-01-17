@@ -98,6 +98,9 @@ namespace Stripe
         [JsonProperty("cashapp")]
         public PaymentMethodConfigurationCashapp Cashapp { get; set; }
 
+        [JsonProperty("customer_balance")]
+        public PaymentMethodConfigurationCustomerBalance CustomerBalance { get; set; }
+
         [JsonProperty("eps")]
         public PaymentMethodConfigurationEps Eps { get; set; }
 
