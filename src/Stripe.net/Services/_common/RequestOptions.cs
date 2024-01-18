@@ -53,7 +53,7 @@ namespace Stripe
         }
     }
 
-    #pragma warning disable SA1402 // FileMayOnlyContainASingleType
+#pragma warning disable SA1402 // FileMayOnlyContainASingleType
     internal static class RequestOptionsExtensions
     {
         internal static T WithUsage<T>(this T options, List<string> usage)
@@ -69,5 +69,5 @@ namespace Stripe
             return clone;
         }
     }
-    #pragma warning restore SA1402 // FileMayOnlyContainASingleType
+#pragma warning restore SA1402 // FileMayOnlyContainASingleType
 }
