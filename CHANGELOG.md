@@ -1,5 +1,14 @@
 # Changelog
 
+## 43.11.0 - 2024-01-18
+* [#2831](https://github.com/stripe/stripe-dotnet/pull/2831) Update generated code
+  * Add support for `Issuer` on `InvoiceCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `InvoiceUpdateOptions`, and `Invoice`
+  * Add support for `Liability` on `InvoiceAutomaticTaxOptions`, `InvoiceAutomaticTax`, `SubscriptionAutomaticTaxOptions`, and `SubscriptionAutomaticTax`
+  * Add support for `Pin` on `Issuing.CardCreateOptions`
+  * Add support for `RevocationReason` on `MandatePaymentMethodDetailsBacsDebit`
+  * Add support for `CustomerBalance` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `InvoiceSettings` on `SubscriptionCreateOptions` and `SubscriptionUpdateOptions`
+
 ## 43.11.0-beta.1 - 2024-01-12
 * [#2828](https://github.com/stripe/stripe-dotnet/pull/2828) Update generated code for beta
   * Add support for `Amount` on `ChargePaymentDetailsFlightSegmentsOptions` and `PaymentIntentPaymentDetailsFlightSegmentsOptions`
