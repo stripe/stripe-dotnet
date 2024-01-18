@@ -38,6 +38,12 @@ namespace Stripe.Issuing
         public string PersonalizationDesign { get; set; }
 
         /// <summary>
+        /// The desired PIN for this card.
+        /// </summary>
+        [JsonProperty("pin")]
+        public CardPinOptions Pin { get; set; }
+
+        /// <summary>
         /// The card this is meant to be a replacement for (if any).
         /// </summary>
         [JsonProperty("replacement_for")]
