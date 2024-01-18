@@ -135,6 +135,15 @@ namespace Stripe
         public PaymentMethodConfigurationCashappOptions Cashapp { get; set; }
 
         /// <summary>
+        /// Uses a customer’s <a href="https://stripe.com/docs/payments/customer-balance">cash
+        /// balance</a> for the payment. The cash balance can be funded via a bank transfer. Check
+        /// this <a href="https://stripe.com/docs/payments/bank-transfers">page</a> for more
+        /// details.
+        /// </summary>
+        [JsonProperty("customer_balance")]
+        public PaymentMethodConfigurationCustomerBalanceOptions CustomerBalance { get; set; }
+
+        /// <summary>
         /// EPS is an Austria-based payment method that allows customers to complete transactions
         /// online using their bank credentials. EPS is supported by all Austrian banks and is
         /// accepted by over 80% of Austrian online retailers. Check this <a

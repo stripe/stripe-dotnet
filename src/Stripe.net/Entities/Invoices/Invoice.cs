@@ -551,6 +551,9 @@ namespace Stripe
         [JsonProperty("invoice_pdf")]
         public string InvoicePdf { get; set; }
 
+        [JsonProperty("issuer")]
+        public InvoiceIssuer Issuer { get; set; }
+
         /// <summary>
         /// The error encountered during the previous attempt to finalize the invoice. This field is
         /// cleared when the invoice is successfully finalized.
