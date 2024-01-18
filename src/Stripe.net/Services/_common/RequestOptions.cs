@@ -52,4 +52,22 @@ namespace Stripe
             return (RequestOptions)this.MemberwiseClone();
         }
     }
+
+    #pragma warning disable SA1402 // FileMayOnlyContainASingleType
+    internal static class RequestOptionsExtensions
+    {
+        internal static T WithUsage<T>(this T options, List<string> usage)
+            where T : RequestOptions, new()
+        {
+            if (options == null)
+            {
+                return new T() { Usage = usage };
+            }
+
+            var clone = (T)options.Clone();
+            clone.Usage = usage;
+            return clone;
+        }
+    }
+    #pragma warning restore SA1402 // FileMayOnlyContainASingleType
 }

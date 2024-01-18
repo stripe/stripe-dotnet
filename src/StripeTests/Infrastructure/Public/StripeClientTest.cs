@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Net;
@@ -196,6 +197,20 @@ namespace StripeTests
             Assert.Equal("{\"id\": \"ch_123\"}", rawresponse.Content);
             Assert.Equal("application/x-www-form-urlencoded; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
             Assert.Equal("foo=bar", await lastRequest.Content.ReadAsStringAsync());
+        }
+
+        [Fact]
+        public async Task RawRequestAsync_Telemetry()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{}");
+            this.httpClient.Response = response;
+
+            var rawresponse = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v1/charges",
+                "foo=bar");
+            var lastRequest = this.httpClient.LastRequest;
+            Assert.Equal(new List<string> { "raw_request" }, lastRequest.Usage);
         }
 
         [Fact]
