@@ -107,7 +107,7 @@ namespace Stripe
         /// <summary>
         /// The category identifying the legal structure of the company or legal entity. See <a
         /// href="https://stripe.com/docs/connect/identity-verification#business-structure">Business
-        /// structure</a> for more details.
+        /// structure</a> for more details. Pass an empty string to unset this value.
         /// One of: <c>free_zone_establishment</c>, <c>free_zone_llc</c>,
         /// <c>government_instrumentality</c>, <c>governmental_unit</c>,
         /// <c>incorporated_non_profit</c>, <c>incorporated_partnership</c>,
