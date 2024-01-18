@@ -1,5 +1,12 @@
 # Changelog
 
+## 43.12.0-beta.1 - 2024-01-18
+* [#2835](https://github.com/stripe/stripe-dotnet/pull/2835) Update generated code for beta
+  Release specs are identical.
+* [#2833](https://github.com/stripe/stripe-dotnet/pull/2833) Update generated code for beta
+
+* [#2830](https://github.com/stripe/stripe-dotnet/pull/2830) Beta: report RawRequest usage
+
 ## 43.11.0 - 2024-01-18
 * [#2831](https://github.com/stripe/stripe-dotnet/pull/2831) Update generated code
   * Add support for `Issuer` on `InvoiceCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `InvoiceUpdateOptions`, and `Invoice`
