@@ -12,5 +12,10 @@ namespace Stripe
 
         /// <summary>Gets or sets the value or Stripe-Context request header.</summary>
         public string StripeContext { get; set; }
+
+        internal new RawRequestOptions Clone()
+        {
+            return (RawRequestOptions)this.MemberwiseClone();
+        }
     }
 }
