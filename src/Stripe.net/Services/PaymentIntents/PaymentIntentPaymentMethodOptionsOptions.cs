@@ -202,7 +202,7 @@ namespace Stripe
 
         /// <summary>
         /// If this is a <c>revolut_pay</c> PaymentMethod, this sub-hash contains details about the
-        /// Demo Pay payment method options.
+        /// Revolut Pay payment method options.
         /// </summary>
         [JsonProperty("revolut_pay")]
         public PaymentIntentPaymentMethodOptionsRevolutPayOptions RevolutPay { get; set; }
