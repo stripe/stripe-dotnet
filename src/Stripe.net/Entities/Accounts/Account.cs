@@ -14,10 +14,9 @@ namespace Stripe
     /// For Custom accounts, the properties below are always returned. For other accounts, some
     /// properties are returned until that account has started to go through Connect Onboarding.
     /// Once you create an <a href="https://stripe.com/docs/api/account_links">Account Link</a>
-    /// for a Standard or Express account, some parameters are no longer returned. These are
-    /// marked as <strong>Custom Only</strong> or <strong>Custom and Express</strong> below.
-    /// Learn about the differences <a href="https://stripe.com/docs/connect/accounts">between
-    /// accounts</a>.
+    /// or <a href="https://stripe.com/docs/api/account_sessions">Account Session</a>, some
+    /// properties are only returned for Custom accounts. Learn about the differences <a
+    /// href="https://stripe.com/docs/connect/accounts">between accounts</a>.
     /// </summary>
     public class Account : StripeEntity<Account>, IHasId, IHasMetadata, IHasObject, IPaymentSource
     {
@@ -40,7 +39,10 @@ namespace Stripe
         public AccountBusinessProfile BusinessProfile { get; set; }
 
         /// <summary>
-        /// The business type.
+        /// The business type. Once you create an <a
+        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
+        /// is only returned for Custom accounts.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>
@@ -105,6 +107,8 @@ namespace Stripe
 
         /// <summary>
         /// External accounts (bank accounts and debit cards) currently attached to this account.
+        /// External accounts are only returned for requests where <c>controller[is_controller]</c>
+        /// is true.
         /// </summary>
         [JsonProperty("external_accounts")]
         public StripeList<IExternalAccount> ExternalAccounts { get; set; }
