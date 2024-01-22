@@ -17,7 +17,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/3d-secure#manual-three-ds">manually requesting 3D
         /// Secure</a> for more information on how this configuration interacts with Radar and our
         /// SCA Engine.
-        /// One of: <c>any</c>, or <c>automatic</c>.
+        /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
         public string RequestThreeDSecure { get; set; }
