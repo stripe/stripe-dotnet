@@ -16,5 +16,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discount")]
         public string Discount { get; set; }
+
+        /// <summary>
+        /// The ID of a promotion code to remove from the <c>discounts</c> array.
+        /// </summary>
+        [JsonProperty("promotion_code")]
+        public string PromotionCode { get; set; }
     }
 }
