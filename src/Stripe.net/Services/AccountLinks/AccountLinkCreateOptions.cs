@@ -12,12 +12,18 @@ namespace Stripe
         public string Account { get; set; }
 
         /// <summary>
-        /// Which information the platform needs to collect from the user. One of
-        /// <c>currently_due</c> or <c>eventually_due</c>. Default is <c>currently_due</c>.
+        /// The collect parameter is deprecated. Use <c>collection_options</c> instead.
         /// One of: <c>currently_due</c>, or <c>eventually_due</c>.
         /// </summary>
         [JsonProperty("collect")]
         public string Collect { get; set; }
+
+        /// <summary>
+        /// Specifies the requirements that Stripe collects from connected accounts in the Connect
+        /// Onboarding flow.
+        /// </summary>
+        [JsonProperty("collection_options")]
+        public AccountLinkCollectionOptionsOptions CollectionOptions { get; set; }
 
         /// <summary>
         /// The URL the user will be redirected to if the account link is expired, has been
