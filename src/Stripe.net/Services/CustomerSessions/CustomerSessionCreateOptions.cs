@@ -6,7 +6,7 @@ namespace Stripe
     public class CustomerSessionCreateOptions : BaseOptions
     {
         /// <summary>
-        /// Configuration for each component. 1 component must be enabled.
+        /// Configuration for each component. Exactly 1 component must be enabled.
         /// </summary>
         [JsonProperty("components")]
         public CustomerSessionComponentsOptions Components { get; set; }
