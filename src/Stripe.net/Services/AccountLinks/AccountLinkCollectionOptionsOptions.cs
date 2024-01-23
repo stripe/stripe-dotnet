@@ -16,7 +16,8 @@ namespace Stripe
         public string Fields { get; set; }
 
         /// <summary>
-        /// Options for collecting future_requirements in Connect Onboarding.
+        /// Specifies whether the platform collects future_requirements in addition to requirements
+        /// in Connect Onboarding. The default value is <c>omit</c>.
         /// One of: <c>include</c>, or <c>omit</c>.
         /// </summary>
         [JsonProperty("future_requirements")]
