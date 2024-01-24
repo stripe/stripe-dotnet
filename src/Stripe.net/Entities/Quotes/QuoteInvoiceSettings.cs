@@ -12,5 +12,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("days_until_due")]
         public long? DaysUntilDue { get; set; }
+
+        [JsonProperty("issuer")]
+        public QuoteInvoiceSettingsIssuer Issuer { get; set; }
     }
 }
