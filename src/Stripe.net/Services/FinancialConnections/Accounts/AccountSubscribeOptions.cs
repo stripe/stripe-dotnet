@@ -7,8 +7,8 @@ namespace Stripe.FinancialConnections
     public class AccountSubscribeOptions : BaseOptions
     {
         /// <summary>
-        /// The list of account features to which you would like to subscribe.<c>.  One of:
-        /// </c>inferred_balances<c>, or </c>transactions`.
+        /// The list of account features to which you would like to subscribe.
+        /// One of: <c>inferred_balances</c>, or <c>transactions</c>.
         /// </summary>
         [JsonProperty("features")]
         public List<string> Features { get; set; }
