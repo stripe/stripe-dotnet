@@ -47,8 +47,8 @@ namespace Stripe
 
         /// <summary>
         /// Request ability to <a
-        /// href="https://stripe.com/docs/payments/incremental-authorization">increment</a> for this
-        /// PaymentIntent.
+        /// href="https://stripe.com/docs/payments/incremental-authorization">increment the
+        /// authorization</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_incremental_authorization")]
