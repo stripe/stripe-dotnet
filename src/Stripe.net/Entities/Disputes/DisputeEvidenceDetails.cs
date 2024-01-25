@@ -16,6 +16,9 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? DueBy { get; set; }
 
+        [JsonProperty("enhanced_eligibility")]
+        public DisputeEvidenceDetailsEnhancedEligibility EnhancedEligibility { get; set; }
+
         /// <summary>
         /// Whether evidence has been staged for this dispute.
         /// </summary>
