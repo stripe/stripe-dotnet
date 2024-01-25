@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("description")]
         public string Description { get; set; }
 
+        [JsonProperty("invoice_settings")]
+        public PaymentLinkSubscriptionDataInvoiceSettings InvoiceSettings { get; set; }
+
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will set
         /// metadata on <a href="https://stripe.com/docs/api/subscriptions">Subscriptions</a>

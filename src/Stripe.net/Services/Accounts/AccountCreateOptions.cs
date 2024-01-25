@@ -21,7 +21,10 @@ namespace Stripe
         public AccountBusinessProfileOptions BusinessProfile { get; set; }
 
         /// <summary>
-        /// The business type.
+        /// The business type. Once you create an <a
+        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
+        /// can only be updated for Custom accounts.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>
@@ -39,7 +42,10 @@ namespace Stripe
 
         /// <summary>
         /// Information about the company or business. This field is available for any
-        /// <c>business_type</c>.
+        /// <c>business_type</c>. Once you create an <a
+        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
+        /// can only be updated for Custom accounts.
         /// </summary>
         [JsonProperty("company")]
         public AccountCompanyOptions Company { get; set; }
@@ -90,7 +96,11 @@ namespace Stripe
         /// exists. To add additional external accounts without replacing the existing default for
         /// the currency, use the <a
         /// href="https://stripe.com/docs/api#account_create_bank_account">bank account</a> or <a
-        /// href="https://stripe.com/docs/api#account_create_card">card creation</a> APIs.
+        /// href="https://stripe.com/docs/api#account_create_card">card creation</a>
+        /// APIs.&lt;br&gt;&lt;br&gt;Once you create an <a
+        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
+        /// can only be updated for Custom accounts.
         /// </summary>
         [JsonProperty("external_account")]
         [JsonConverter(typeof(AnyOfConverter))]
@@ -98,7 +108,10 @@ namespace Stripe
 
         /// <summary>
         /// Information about the person represented by the account. This field is null unless
-        /// <c>business_type</c> is set to <c>individual</c>.
+        /// <c>business_type</c> is set to <c>individual</c>. Once you create an <a
+        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
+        /// can only be updated for Custom accounts.
         /// </summary>
         [JsonProperty("individual")]
         public AccountIndividualOptions Individual { get; set; }
@@ -121,7 +134,7 @@ namespace Stripe
         /// <summary>
         /// Details on the account's acceptance of the <a
         /// href="https://stripe.com/docs/connect/updating-accounts#tos-acceptance">Stripe Services
-        /// Agreement</a>.
+        /// Agreement</a> This property can only be updated for Custom accounts.
         /// </summary>
         [JsonProperty("tos_acceptance")]
         public AccountTosAcceptanceOptions TosAcceptance { get; set; }
