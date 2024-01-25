@@ -62,7 +62,7 @@ namespace Stripe
         /// List of invoice items to add or update in the upcoming invoice preview.
         /// </summary>
         [JsonProperty("invoice_items")]
-        public List<InvoiceInvoiceItemOptions> InvoiceItems { get; set; }
+        public List<InvoiceUpcomingInvoiceItemOptions> InvoiceItems { get; set; }
 
         /// <summary>
         /// The connected account that issues the invoice. The invoice is presented with the
