@@ -1,5 +1,22 @@
 # Changelog
 
+## 43.12.0 - 2024-01-25
+* [#2837](https://github.com/stripe/stripe-dotnet/pull/2837) Update generated code
+  * Add support for `AnnualRevenue` and `EstimatedWorkerCount` on `AccountBusinessProfileOptions` and `AccountBusinessProfile`
+  * Add support for `CollectionOptions` on `AccountLinkCreateOptions`
+  * Add support for `Liability` on `CheckoutSessionAutomaticTaxOptions`, `CheckoutSessionAutomaticTax`, `PaymentLinkAutomaticTaxOptions`, `PaymentLinkAutomaticTax`, `QuoteAutomaticTaxOptions`, `QuoteAutomaticTax`, `SubscriptionScheduleDefaultSettingsAutomaticTaxOptions`, `SubscriptionScheduleDefaultSettingsAutomaticTax`, `SubscriptionSchedulePhasesAutomaticTaxOptions`, and `SubscriptionSchedulePhasesAutomaticTax`
+  * Add support for `Issuer` on `CheckoutSessionInvoiceCreationInvoiceDataOptions`, `CheckoutSessionInvoiceCreationInvoiceData`, `PaymentLinkInvoiceCreationInvoiceDataOptions`, `PaymentLinkInvoiceCreationInvoiceData`, `QuoteInvoiceSettingsOptions`, `QuoteInvoiceSettings`, `SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions`, `SubscriptionScheduleDefaultSettingsInvoiceSettings`, `SubscriptionSchedulePhasesInvoiceSettingsOptions`, and `SubscriptionSchedulePhasesInvoiceSettings`
+  * Add support for `InvoiceSettings` on `CheckoutSessionSubscriptionDataOptions`, `PaymentLinkSubscriptionDataOptions`, and `PaymentLinkSubscriptionData`
+  * Add support for `PromotionCode` on `InvoiceDiscountsOptions` and `InvoiceInvoiceItemsDiscountsOptions`
+  * Add support for `AccountType` on `PaymentMethodUsBankAccountOptions`
+* [#2831](https://github.com/stripe/stripe-dotnet/pull/2831) Update generated code
+  * Add support for `Issuer` on `InvoiceCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `InvoiceUpdateOptions`, and `Invoice`
+  * Add support for `Liability` on `InvoiceAutomaticTaxOptions`, `InvoiceAutomaticTax`, `SubscriptionAutomaticTaxOptions`, and `SubscriptionAutomaticTax`
+  * Add support for `Pin` on `Issuing.CardCreateOptions`
+  * Add support for `RevocationReason` on `MandatePaymentMethodDetailsBacsDebit`
+  * Add support for `CustomerBalance` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `InvoiceSettings` on `SubscriptionCreateOptions` and `SubscriptionUpdateOptions`
+
 ## 43.11.0 - 2024-01-18
 * [#2831](https://github.com/stripe/stripe-dotnet/pull/2831) Update generated code
   * Add support for `Issuer` on `InvoiceCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `InvoiceUpdateOptions`, and `Invoice`
