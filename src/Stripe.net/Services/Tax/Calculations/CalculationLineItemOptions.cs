@@ -6,9 +6,10 @@ namespace Stripe.Tax
     public class CalculationLineItemOptions : INestedOptions
     {
         /// <summary>
-        /// A positive integer in cents representing the line item's total price. If
-        /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes are
-        /// calculated on top of this amount.
+        /// A positive integer in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>
+        /// representing the line item's total price. If <c>tax_behavior=inclusive</c>, then this
+        /// amount includes taxes. Otherwise, taxes are calculated on top of this amount.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

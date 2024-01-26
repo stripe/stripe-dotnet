@@ -19,14 +19,17 @@ namespace Stripe.Tax
         public string Object { get; set; }
 
         /// <summary>
-        /// The line item amount in integer cents. If <c>tax_behavior=inclusive</c>, then this
-        /// amount includes taxes. Otherwise, taxes were calculated on top of this amount.
+        /// The line item amount in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. If
+        /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes were
+        /// calculated on top of this amount.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// The amount of tax calculated for this line item, in integer cents.
+        /// The amount of tax calculated for this line item, in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
         public long AmountTax { get; set; }

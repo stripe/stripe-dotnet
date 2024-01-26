@@ -6,7 +6,8 @@ namespace Stripe.Tax
     public class CalculationLineItemTaxBreakdown : StripeEntity<CalculationLineItemTaxBreakdown>
     {
         /// <summary>
-        /// The amount of tax, in integer cents.
+        /// The amount of tax, in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
@@ -42,7 +43,8 @@ namespace Stripe.Tax
         public string TaxabilityReason { get; set; }
 
         /// <summary>
-        /// The amount on which tax is calculated, in integer cents.
+        /// The amount on which tax is calculated, in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("taxable_amount")]
         public long TaxableAmount { get; set; }
