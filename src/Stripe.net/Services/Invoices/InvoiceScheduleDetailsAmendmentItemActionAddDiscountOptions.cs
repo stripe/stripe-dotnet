@@ -22,5 +22,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discount_end")]
         public InvoiceScheduleDetailsAmendmentItemActionAddDiscountDiscountEndOptions DiscountEnd { get; set; }
+
+        /// <summary>
+        /// ID of the promotion code to create a new discount for.
+        /// </summary>
+        [JsonProperty("promotion_code")]
+        public string PromotionCode { get; set; }
     }
 }

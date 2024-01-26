@@ -7,13 +7,17 @@ namespace Stripe.Tax
     public class TransactionLineItemOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
-        /// The amount to reverse, in negative integer cents.
+        /// The amount to reverse, in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> in
+        /// negative.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }
 
         /// <summary>
-        /// The amount of tax to reverse, in negative integer cents.
+        /// The amount of tax to reverse, in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> in
+        /// negative.
         /// </summary>
         [JsonProperty("amount_tax")]
         public long? AmountTax { get; set; }

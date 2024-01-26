@@ -29,5 +29,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("index")]
         public long? Index { get; set; }
+
+        /// <summary>
+        /// The promotion code to redeem.
+        /// </summary>
+        [JsonProperty("promotion_code")]
+        public string PromotionCode { get; set; }
     }
 }

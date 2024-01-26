@@ -39,6 +39,14 @@ namespace Stripe.Capital
         public string Account { get; set; }
 
         /// <summary>
+        /// The time at which this financing offer was charged off, if applicable. Given in seconds
+        /// since unix epoch.
+        /// </summary>
+        [JsonProperty("charged_off_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime ChargedOffAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// Time at which the offer was created. Given in seconds since unix epoch.
         /// </summary>
         [JsonProperty("created")]

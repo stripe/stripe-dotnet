@@ -73,5 +73,36 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discount_end")]
         public QuoteLineActionRemoveDiscountDiscountEnd DiscountEnd { get; set; }
+
+        #region Expandable PromotionCode
+
+        /// <summary>
+        /// (ID of the PromotionCode)
+        /// ID of the promotion code to create a new discount for.
+        /// </summary>
+        [JsonIgnore]
+        public string PromotionCodeId
+        {
+            get => this.InternalPromotionCode?.Id;
+            set => this.InternalPromotionCode = SetExpandableFieldId(value, this.InternalPromotionCode);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the promotion code to create a new discount for.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PromotionCode PromotionCode
+        {
+            get => this.InternalPromotionCode?.ExpandedObject;
+            set => this.InternalPromotionCode = SetExpandableFieldObject(value, this.InternalPromotionCode);
+        }
+
+        [JsonProperty("promotion_code")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
+        internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
+        #endregion
     }
 }

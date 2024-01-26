@@ -7,14 +7,17 @@ namespace Stripe.Tax
     public class TransactionShippingCost : StripeEntity<TransactionShippingCost>
     {
         /// <summary>
-        /// The shipping amount in integer cents. If <c>tax_behavior=inclusive</c>, then this amount
-        /// includes taxes. Otherwise, taxes were calculated on top of this amount.
+        /// The shipping amount in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. If
+        /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes were
+        /// calculated on top of this amount.
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
         /// <summary>
-        /// The amount of tax calculated for shipping, in integer cents.
+        /// The amount of tax calculated for shipping, in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
         public long AmountTax { get; set; }
