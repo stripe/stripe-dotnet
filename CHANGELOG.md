@@ -1,5 +1,14 @@
 # Changelog
 
+## 43.13.0-beta.1 - 2024-01-26
+* [#2836](https://github.com/stripe/stripe-dotnet/pull/2836) Update generated code for beta
+  * Add support for `CreatePreview` method on resource `Invoice`
+  * Add support for `ChargedOffAt` on `CapitalFinancingOffer`
+  * Add support for `EnhancedEvidence` on `DisputeEvidenceOptions` and `DisputeEvidence`
+  * Add support for `EnhancedEligibilityTypes` on `Dispute`
+  * Add support for `EnhancedEligibility` on `DisputeEvidenceDetails`
+  * Add support for `PromotionCode` on `InvoiceScheduleDetailsAmendmentsDiscountActionsAddOptions`, `InvoiceScheduleDetailsAmendmentsDiscountActionsRemoveOptions`, `InvoiceScheduleDetailsAmendmentsDiscountActionsSetOptions`, `InvoiceScheduleDetailsAmendmentsItemActionsAddDiscountsOptions`, `InvoiceScheduleDetailsAmendmentsItemActionsSetDiscountsOptions`, `InvoiceScheduleDetailsPhasesAddInvoiceItemsDiscountsOptions`, `InvoiceScheduleDetailsPhasesDiscountsOptions`, `InvoiceScheduleDetailsPhasesItemsDiscountsOptions`, `InvoiceSubscriptionDetailsItemsDiscountsOptions`, `InvoiceSubscriptionItemsDiscountsOptions`, `QuoteLineActionsAddDiscount`, `QuoteLineActionsAddItemDiscounts`, `QuoteLineActionsRemoveDiscount`, `QuoteLineActionsSetDiscounts`, `QuoteLineActionsSetItemsDiscounts`, `QuoteLinesActionsAddItemDiscountsOptions`, `QuoteLinesActionsRemoveDiscountOptions`, `QuoteLinesActionsSetDiscountsOptions`, `QuoteLinesActionsSetItemsDiscountsOptions`, `QuotePhasesDiscountsOptions`, `SubscriptionAddInvoiceItemsDiscountsOptions`, `SubscriptionDiscountsOptions`, `SubscriptionItemDiscountsOptions`, `SubscriptionItemsDiscountsOptions`, `SubscriptionScheduleAmendmentsDiscountActionsAddOptions`, `SubscriptionScheduleAmendmentsDiscountActionsRemoveOptions`, `SubscriptionScheduleAmendmentsDiscountActionsSetOptions`, `SubscriptionScheduleAmendmentsItemActionsAddDiscountsOptions`, `SubscriptionScheduleAmendmentsItemActionsSetDiscountsOptions`, `SubscriptionSchedulePhasesAddInvoiceItemsDiscountsOptions`, `SubscriptionSchedulePhasesAddInvoiceItemsDiscounts`, `SubscriptionSchedulePhasesDiscountsOptions`, `SubscriptionSchedulePhasesDiscounts`, `SubscriptionSchedulePhasesItemsDiscountsOptions`, and `SubscriptionSchedulePhasesItemsDiscounts`
+
 ## 43.12.0 - 2024-01-25
 * [#2837](https://github.com/stripe/stripe-dotnet/pull/2837) Update generated code
   * Add support for `AnnualRevenue` and `EstimatedWorkerCount` on `AccountBusinessProfileOptions` and `AccountBusinessProfile`
