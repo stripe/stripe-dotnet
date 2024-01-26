@@ -42,7 +42,7 @@ namespace StripeTests
             Assert.Equal("balance_transaction", topup.BalanceTransaction.Object);
 
             Assert.NotNull(topup.Source);
-            Assert.Equal("ach_debit", topup.Source.Type);
+            Assert.Equal("ach_credit_transfer", topup.Source.Type);
             Assert.Equal("source", topup.Source.Object);
         }
     }
