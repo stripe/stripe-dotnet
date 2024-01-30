@@ -35,6 +35,7 @@ namespace Stripe
     /// We only guarantee access to events through the <a
     /// href="https://stripe.com/docs/api#retrieve_event">Retrieve Event API</a> for 30 days.
     /// </summary>
+    [JsonConverter(typeof(EventConverter))]
     public class Event : StripeEntity<Event>, IHasId, IHasObject
     {
         /// <summary>
