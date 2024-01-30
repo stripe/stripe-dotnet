@@ -13,7 +13,8 @@ namespace Stripe
         public List<string> Available { get; set; }
 
         /// <summary>
-        /// The preferred network for the card.
+        /// The preferred network for the card. Will contain invalid_preference if requested network
+        /// is not valid for the card.
         /// </summary>
         [JsonProperty("preferred")]
         public string Preferred { get; set; }
