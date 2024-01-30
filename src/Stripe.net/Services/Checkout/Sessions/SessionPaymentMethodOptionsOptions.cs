@@ -168,6 +168,12 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsSofortOptions Sofort { get; set; }
 
         /// <summary>
+        /// contains details about the Swish payment method options.
+        /// </summary>
+        [JsonProperty("swish")]
+        public SessionPaymentMethodOptionsSwishOptions Swish { get; set; }
+
+        /// <summary>
         /// contains details about the Us Bank Account payment method options.
         /// </summary>
         [JsonProperty("us_bank_account")]
