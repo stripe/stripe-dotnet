@@ -38,6 +38,9 @@ namespace Stripe
         [JsonProperty("redirect_to_url")]
         public PaymentIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 
+        [JsonProperty("swish_handle_redirect_or_display_qr_code")]
+        public PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCode SwishHandleRedirectOrDisplayQrCode { get; set; }
+
         /// <summary>
         /// Type of the next action to perform, one of <c>redirect_to_url</c>,
         /// <c>use_stripe_sdk</c>, <c>alipay_handle_redirect</c>, <c>oxxo_display_details</c>, or
