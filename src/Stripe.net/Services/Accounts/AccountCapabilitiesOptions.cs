@@ -198,6 +198,12 @@ namespace Stripe
         public AccountCapabilitiesSofortPaymentsOptions SofortPayments { get; set; }
 
         /// <summary>
+        /// The swish_payments capability.
+        /// </summary>
+        [JsonProperty("swish_payments")]
+        public AccountCapabilitiesSwishPaymentsOptions SwishPayments { get; set; }
+
+        /// <summary>
         /// The tax_reporting_us_1099_k capability.
         /// </summary>
         [JsonProperty("tax_reporting_us_1099_k")]

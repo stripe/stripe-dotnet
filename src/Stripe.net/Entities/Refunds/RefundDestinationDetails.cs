@@ -74,6 +74,9 @@ namespace Stripe
         [JsonProperty("sofort")]
         public RefundDestinationDetailsSofort Sofort { get; set; }
 
+        [JsonProperty("swish")]
+        public RefundDestinationDetailsSwish Swish { get; set; }
+
         [JsonProperty("th_bank_transfer")]
         public RefundDestinationDetailsThBankTransfer ThBankTransfer { get; set; }
 
