@@ -222,6 +222,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsSofortOptions Sofort { get; set; }
 
         /// <summary>
+        /// If this is a <c>Swish</c> PaymentMethod, this sub-hash contains details about the Swish
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("swish")]
+        public PaymentIntentPaymentMethodOptionsSwishOptions Swish { get; set; }
+
+        /// <summary>
         /// If this is a <c>us_bank_account</c> PaymentMethod, this sub-hash contains details about
         /// the US bank account payment method options.
         /// </summary>

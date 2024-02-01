@@ -119,6 +119,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// The networking status of the reader.
+        /// One of: <c>offline</c>, or <c>online</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
