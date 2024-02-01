@@ -31,6 +31,12 @@ namespace Stripe
         public AccountSettingsCardPaymentsOptions CardPayments { get; set; }
 
         /// <summary>
+        /// Settings specific to the account's use of Invoices.
+        /// </summary>
+        [JsonProperty("invoices")]
+        public AccountSettingsInvoicesOptions Invoices { get; set; }
+
+        /// <summary>
         /// Settings that apply across payment methods for charging on the account.
         /// </summary>
         [JsonProperty("payments")]
