@@ -261,6 +261,14 @@ namespace Stripe
         public string SofortPayments { get; set; }
 
         /// <summary>
+        /// The status of the Swish capability of the account, or whether the account can directly
+        /// process Swish payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("swish_payments")]
+        public string SwishPayments { get; set; }
+
+        /// <summary>
         /// The status of the tax reporting 1099-K (US) capability of the account.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>

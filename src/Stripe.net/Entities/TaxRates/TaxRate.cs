@@ -88,6 +88,15 @@ namespace Stripe
         public string Jurisdiction { get; set; }
 
         /// <summary>
+        /// The level of the jurisdiction that imposes this tax rate. Will be <c>null</c> for
+        /// manually defined tax rates.
+        /// One of: <c>city</c>, <c>country</c>, <c>county</c>, <c>district</c>, <c>multiple</c>, or
+        /// <c>state</c>.
+        /// </summary>
+        [JsonProperty("jurisdiction_level")]
+        public string JurisdictionLevel { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

@@ -1,5 +1,13 @@
 # Changelog
 
+## 43.13.0 - 2024-02-01
+* [#2840](https://github.com/stripe/stripe-dotnet/pull/2840) Update generated code
+  * Add support for `SwishPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Relationship` on `AccountIndividualOptions` and `TokenAccountIndividualOptions`
+  * Add support for `Swish` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, `RefundDestinationDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `SwishHandleRedirectOrDisplayQrCode` on `PaymentIntentNextAction`
+  * Add support for `JurisdictionLevel` on `TaxRate`
+
 ## 43.13.0-beta.1 - 2024-01-26
 * [#2836](https://github.com/stripe/stripe-dotnet/pull/2836) Update generated code for beta
   * Add support for `CreatePreview` method on resource `Invoice`

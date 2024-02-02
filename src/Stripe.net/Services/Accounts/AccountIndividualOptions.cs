@@ -142,6 +142,12 @@ namespace Stripe
         public AddressOptions RegisteredAddress { get; set; }
 
         /// <summary>
+        /// Describes the person’s relationship to the account.
+        /// </summary>
+        [JsonProperty("relationship")]
+        public AccountIndividualRelationshipOptions Relationship { get; set; }
+
+        /// <summary>
         /// The last four digits of the individual's Social Security Number (U.S. only).
         /// </summary>
         [JsonProperty("ssn_last_4")]

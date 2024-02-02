@@ -20,6 +20,9 @@ namespace Stripe
         [JsonProperty("dashboard")]
         public AccountSettingsDashboard Dashboard { get; set; }
 
+        [JsonProperty("invoices")]
+        public AccountSettingsInvoices Invoices { get; set; }
+
         [JsonProperty("payments")]
         public AccountSettingsPayments Payments { get; set; }
 

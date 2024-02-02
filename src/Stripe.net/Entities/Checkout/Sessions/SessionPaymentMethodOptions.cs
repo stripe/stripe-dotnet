@@ -86,6 +86,9 @@ namespace Stripe.Checkout
         [JsonProperty("sofort")]
         public SessionPaymentMethodOptionsSofort Sofort { get; set; }
 
+        [JsonProperty("swish")]
+        public SessionPaymentMethodOptionsSwish Swish { get; set; }
+
         [JsonProperty("us_bank_account")]
         public SessionPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
     }
