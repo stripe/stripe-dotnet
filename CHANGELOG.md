@@ -1,5 +1,14 @@
 # Changelog
 
+## 43.14.0-beta.1 - 2024-02-01
+* [#2841](https://github.com/stripe/stripe-dotnet/pull/2841) Update generated code for beta
+  * Add support for new resources `Entitlements.Event` and `Entitlements.Feature`
+  * Add support for `Create` method on resource `Event`
+  * Add support for `Create` and `List` methods on resource `Feature`
+  * Add support for `Swish` on `ConfirmationTokenPaymentMethodPreview`
+  * Add support for `AccountTaxIds` on `InvoiceScheduleDetailsPhasesInvoiceSettingsOptions`
+  * Add support for `Feature` on `ProductFeaturesOptions` and `ProductFeatures`
+
 ## 43.13.0 - 2024-02-01
 * [#2840](https://github.com/stripe/stripe-dotnet/pull/2840) Update generated code
   * Add support for `SwishPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
