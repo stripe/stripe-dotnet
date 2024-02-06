@@ -86,6 +86,13 @@ namespace Stripe
         public string RequestThreeDSecure { get; set; }
 
         /// <summary>
+        /// When enabled, using a card that is attached to a customer will require the CVC to be
+        /// provided again (i.e. using the cvc_token parameter).
+        /// </summary>
+        [JsonProperty("require_cvc_recollection")]
+        public bool RequireCvcRecollection { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
