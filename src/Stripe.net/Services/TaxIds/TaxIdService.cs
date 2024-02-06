@@ -22,7 +22,7 @@ namespace Stripe
         {
         }
 
-        public override string BasePath => "/v1/tax_ids";
+        public override string BasePath => "/v1/customers/{PARENT_ID}/tax_ids";
 
         public virtual TaxId Create(string parentId, TaxIdCreateOptions options = null, RequestOptions requestOptions = null)
         {
