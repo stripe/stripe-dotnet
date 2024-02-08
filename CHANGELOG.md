@@ -1,5 +1,9 @@
 # Changelog
 
+## 43.15.0-beta.1 - 2024-02-08
+* [#2844](https://github.com/stripe/stripe-dotnet/pull/2844) Update generated code for beta
+  * Add support for `PaymentMethodOptions` on `ConfirmationToken`
+
 ## 43.14.0-beta.1 - 2024-02-01
 * [#2841](https://github.com/stripe/stripe-dotnet/pull/2841) Update generated code for beta
   * Add support for new resources `Entitlements.Event` and `Entitlements.Feature`
