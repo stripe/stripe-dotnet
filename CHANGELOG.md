@@ -1,5 +1,12 @@
 # Changelog
 
+## 43.14.0 - 2024-02-08
+* [#2843](https://github.com/stripe/stripe-dotnet/pull/2843) Update generated code
+  * Add support for `Invoices` on `AccountSettingsOptions` and `AccountSettings`
+  * Add support for `SetupFutureUsage` on `PaymentIntentPaymentMethodOptionsBlikOptions` and `PaymentIntentPaymentMethodOptionsBlik`
+  * Add support for `RequireCvcRecollection` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
+  * Add support for `AccountTaxIds` on `SubscriptionInvoiceSettingsOptions`, `SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions`, `SubscriptionScheduleDefaultSettingsInvoiceSettings`, `SubscriptionSchedulePhasesInvoiceSettingsOptions`, and `SubscriptionSchedulePhasesInvoiceSettings`
+
 ## 43.13.0 - 2024-02-01
 * [#2840](https://github.com/stripe/stripe-dotnet/pull/2840) Update generated code
   * Add support for `SwishPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
