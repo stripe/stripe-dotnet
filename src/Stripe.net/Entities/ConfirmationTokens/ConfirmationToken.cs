@@ -96,6 +96,12 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// Payment-method-specific configuration for this ConfirmationToken.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        public ConfirmationTokenPaymentMethodOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// Payment details collected by the Payment Element, used to create a PaymentMethod when a
         /// PaymentIntent or SetupIntent is confirmed with this ConfirmationToken.
         /// </summary>

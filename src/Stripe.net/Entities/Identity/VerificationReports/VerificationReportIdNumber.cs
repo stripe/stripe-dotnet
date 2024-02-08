@@ -24,7 +24,8 @@ namespace Stripe.Identity
         public string FirstName { get; set; }
 
         /// <summary>
-        /// ID number.
+        /// ID number. When <c>id_number_type</c> is <c>us_ssn</c>, only the last 4 digits are
+        /// present.
         /// </summary>
         [JsonProperty("id_number")]
         public string IdNumber { get; set; }
