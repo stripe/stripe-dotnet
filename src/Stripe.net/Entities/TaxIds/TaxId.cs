@@ -86,6 +86,12 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// The account or customer the tax ID belongs to.
+        /// </summary>
+        [JsonProperty("owner")]
+        public TaxIdOwner Owner { get; set; }
+
+        /// <summary>
         /// Type of the tax ID, one of <c>ad_nrt</c>, <c>ae_trn</c>, <c>ar_cuit</c>, <c>au_abn</c>,
         /// <c>au_arn</c>, <c>bg_uic</c>, <c>bo_tin</c>, <c>br_cnpj</c>, <c>br_cpf</c>,
         /// <c>ca_bn</c>, <c>ca_gst_hst</c>, <c>ca_pst_bc</c>, <c>ca_pst_mb</c>, <c>ca_pst_sk</c>,
