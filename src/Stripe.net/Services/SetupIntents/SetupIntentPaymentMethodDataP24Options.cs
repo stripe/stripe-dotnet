@@ -13,7 +13,8 @@ namespace Stripe
         /// <c>etransfer_pocztowy24</c>, <c>getin_bank</c>, <c>ideabank</c>, <c>ing</c>,
         /// <c>inteligo</c>, <c>mbank_mtransfer</c>, <c>nest_przelew</c>, <c>noble_pay</c>,
         /// <c>pbac_z_ipko</c>, <c>plus_bank</c>, <c>santander_przelew24</c>,
-        /// <c>tmobile_usbugi_bankowe</c>, <c>toyota_bank</c>, or <c>volkswagen_bank</c>.
+        /// <c>tmobile_usbugi_bankowe</c>, <c>toyota_bank</c>, <c>velobank</c>, or
+        /// <c>volkswagen_bank</c>.
         /// </summary>
         [JsonProperty("bank")]
         public string Bank { get; set; }
