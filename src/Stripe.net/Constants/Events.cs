@@ -397,6 +397,12 @@ namespace Stripe
         public const string FinancialConnectionsAccountRefreshedBalance = "financial_connections.account.refreshed_balance";
 
         /// <summary>
+        /// Occurs when an Account’s <c>ownership_refresh</c> status transitions from <c>pending</c>
+        /// to either <c>succeeded</c> or <c>failed</c>.
+        /// </summary>
+        public const string FinancialConnectionsAccountRefreshedOwnership = "financial_connections.account.refreshed_ownership";
+
+        /// <summary>
         /// Occurs when an Account’s <c>transaction_refresh</c> status transitions from
         /// <c>pending</c> to either <c>succeeded</c> or <c>failed</c>.
         /// </summary>
