@@ -7,10 +7,16 @@ namespace Stripe
     {
         /// <summary>
         /// The URL to the hosted Swish instructions page, which allows customers to view the QR
-        /// code or redirect to the Swish mobile app.
+        /// code.
         /// </summary>
         [JsonProperty("hosted_instructions_url")]
         public string HostedInstructionsUrl { get; set; }
+
+        /// <summary>
+        /// The url for mobile redirect based auth.
+        /// </summary>
+        [JsonProperty("mobile_auth_url")]
+        public string MobileAuthUrl { get; set; }
 
         [JsonProperty("qr_code")]
         public PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCodeQrCode QrCode { get; set; }
