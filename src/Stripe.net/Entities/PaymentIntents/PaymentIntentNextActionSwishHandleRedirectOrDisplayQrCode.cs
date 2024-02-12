@@ -13,7 +13,8 @@ namespace Stripe
         public string HostedInstructionsUrl { get; set; }
 
         /// <summary>
-        /// The url for mobile redirect based auth.
+        /// The url for mobile redirect based auth (for internal use only and not typically
+        /// available in standard API requests).
         /// </summary>
         [JsonProperty("mobile_auth_url")]
         public string MobileAuthUrl { get; set; }
