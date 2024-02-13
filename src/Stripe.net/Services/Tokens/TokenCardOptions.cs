@@ -74,6 +74,12 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
+        /// Contains information about card networks used to process the payment.
+        /// </summary>
+        [JsonProperty("networks")]
+        public TokenCardNetworksOptions Networks { get; set; }
+
+        /// <summary>
         /// The card number, as a string without any separators.
         /// </summary>
         [JsonProperty("number")]
