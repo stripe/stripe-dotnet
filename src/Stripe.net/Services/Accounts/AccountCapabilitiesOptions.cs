@@ -174,6 +174,12 @@ namespace Stripe
         public AccountCapabilitiesPaypalPaymentsOptions PaypalPayments { get; set; }
 
         /// <summary>
+        /// The payto_payments capability.
+        /// </summary>
+        [JsonProperty("payto_payments")]
+        public AccountCapabilitiesPaytoPaymentsOptions PaytoPayments { get; set; }
+
+        /// <summary>
         /// The promptpay_payments capability.
         /// </summary>
         [JsonProperty("promptpay_payments")]

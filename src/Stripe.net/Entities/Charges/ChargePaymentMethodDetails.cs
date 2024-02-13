@@ -92,6 +92,9 @@ namespace Stripe
         [JsonProperty("paypal")]
         public ChargePaymentMethodDetailsPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public ChargePaymentMethodDetailsPayto Payto { get; set; }
+
         [JsonProperty("pix")]
         public ChargePaymentMethodDetailsPix Pix { get; set; }
 

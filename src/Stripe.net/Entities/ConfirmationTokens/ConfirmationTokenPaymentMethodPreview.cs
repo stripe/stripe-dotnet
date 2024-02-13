@@ -86,6 +86,9 @@ namespace Stripe
         [JsonProperty("paypal")]
         public ConfirmationTokenPaymentMethodPreviewPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public ConfirmationTokenPaymentMethodPreviewPayto Payto { get; set; }
+
         [JsonProperty("pix")]
         public ConfirmationTokenPaymentMethodPreviewPix Pix { get; set; }
 
@@ -113,8 +116,9 @@ namespace Stripe
         /// <c>card</c>, <c>card_present</c>, <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>,
         /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>,
         /// <c>klarna</c>, <c>konbini</c>, <c>link</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>,
-        /// <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
+        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
