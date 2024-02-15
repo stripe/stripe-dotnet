@@ -275,6 +275,9 @@ namespace Stripe
         [JsonProperty("name")]
         public string Name { get; set; }
 
+        [JsonProperty("networks")]
+        public CardNetworks Networks { get; set; }
+
         /// <summary>
         /// For external accounts that are cards, possible values are <c>new</c> and <c>errored</c>.
         /// If a payout fails, the status is set to <c>errored</c> and <a
