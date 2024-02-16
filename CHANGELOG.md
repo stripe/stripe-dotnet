@@ -1,5 +1,15 @@
 # Changelog
 
+## 43.16.0-beta.1 - 2024-02-16
+* [#2846](https://github.com/stripe/stripe-dotnet/pull/2846) Update generated code for beta
+  * Add support for `DecrementAuthorization` method on resource `PaymentIntent`
+  * Add support for `PaytoPayments` and `TwintPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Payto` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodPreview`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+  * Add support for `Twint` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `DecrementalAuthorization` on `ChargePaymentMethodDetailsCard`
+  * Add support for `DisplayBrand` on `ConfirmationTokenPaymentMethodPreviewCard`
+  * Add support for `RequestDecrementalAuthorization` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
+
 ## 43.15.0 - 2024-02-15
 * [#2847](https://github.com/stripe/stripe-dotnet/pull/2847) Update generated code
   * Add support for `Networks` on `Card`, `PaymentMethodCardOptions`, and `TokenCardOptions`
