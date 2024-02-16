@@ -191,6 +191,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// If this is a <c>payto</c> PaymentMethod, this hash contains details about the PayTo
+        /// payment method.
+        /// </summary>
+        [JsonProperty("payto")]
+        public PaymentIntentPaymentMethodDataPaytoOptions Payto { get; set; }
+
+        /// <summary>
         /// If this is a <c>pix</c> PaymentMethod, this hash contains details about the Pix payment
         /// method.
         /// </summary>
@@ -241,6 +248,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataSwishOptions Swish { get; set; }
 
         /// <summary>
+        /// If this is a Twint PaymentMethod, this hash contains details about the Twint payment
+        /// method.
+        /// </summary>
+        [JsonProperty("twint")]
+        public PaymentIntentPaymentMethodDataTwintOptions Twint { get; set; }
+
+        /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
@@ -248,8 +262,8 @@ namespace Stripe
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>blik</c>, <c>boleto</c>,
         /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
         /// <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>, <c>oxxo</c>,
-        /// <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>,
-        /// <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
         /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]

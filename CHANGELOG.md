@@ -1,8 +1,21 @@
 # Changelog
 
+## 43.15.0 - 2024-02-15
+* [#2847](https://github.com/stripe/stripe-dotnet/pull/2847) Update generated code
+  * Add support for `Networks` on `Card`, `PaymentMethodCardOptions`, and `TokenCardOptions`
+  * Add support for `DisplayBrand` on `PaymentMethodCard`
+* [#2849](https://github.com/stripe/stripe-dotnet/pull/2849) Add README to NuGet package
+
 ## 43.15.0-beta.1 - 2024-02-08
 * [#2844](https://github.com/stripe/stripe-dotnet/pull/2844) Update generated code for beta
   * Add support for `PaymentMethodOptions` on `ConfirmationToken`
+
+## 43.14.0 - 2024-02-08
+* [#2843](https://github.com/stripe/stripe-dotnet/pull/2843) Update generated code
+  * Add support for `Invoices` on `AccountSettingsOptions` and `AccountSettings`
+  * Add support for `SetupFutureUsage` on `PaymentIntentPaymentMethodOptionsBlikOptions` and `PaymentIntentPaymentMethodOptionsBlik`
+  * Add support for `RequireCvcRecollection` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
+  * Add support for `AccountTaxIds` on `SubscriptionInvoiceSettingsOptions`, `SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions`, `SubscriptionScheduleDefaultSettingsInvoiceSettings`, `SubscriptionSchedulePhasesInvoiceSettingsOptions`, and `SubscriptionSchedulePhasesInvoiceSettings`
 
 ## 43.14.0-beta.1 - 2024-02-01
 * [#2841](https://github.com/stripe/stripe-dotnet/pull/2841) Update generated code for beta

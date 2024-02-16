@@ -174,6 +174,12 @@ namespace Stripe
         public AccountCapabilitiesPaypalPaymentsOptions PaypalPayments { get; set; }
 
         /// <summary>
+        /// The payto_payments capability.
+        /// </summary>
+        [JsonProperty("payto_payments")]
+        public AccountCapabilitiesPaytoPaymentsOptions PaytoPayments { get; set; }
+
+        /// <summary>
         /// The promptpay_payments capability.
         /// </summary>
         [JsonProperty("promptpay_payments")]
@@ -226,6 +232,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("treasury")]
         public AccountCapabilitiesTreasuryOptions Treasury { get; set; }
+
+        /// <summary>
+        /// The twint_payments capability.
+        /// </summary>
+        [JsonProperty("twint_payments")]
+        public AccountCapabilitiesTwintPaymentsOptions TwintPayments { get; set; }
 
         /// <summary>
         /// The us_bank_account_ach_payments capability.

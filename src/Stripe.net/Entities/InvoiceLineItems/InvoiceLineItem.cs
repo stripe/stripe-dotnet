@@ -91,6 +91,12 @@ namespace Stripe
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
+        /// <summary>
+        /// The ID of the invoice that contains this line item.
+        /// </summary>
+        [JsonProperty("invoice")]
+        public string Invoice { get; set; }
+
         #region Expandable InvoiceItem
 
         /// <summary>

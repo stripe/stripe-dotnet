@@ -41,6 +41,9 @@ namespace Stripe
         [JsonProperty("country")]
         public string Country { get; set; }
 
+        [JsonProperty("decremental_authorization")]
+        public ChargePaymentMethodDetailsCardDecrementalAuthorization DecrementalAuthorization { get; set; }
+
         /// <summary>
         /// A high-level description of the type of cards issued in this range. (For internal use
         /// only and not typically available in standard API requests.).

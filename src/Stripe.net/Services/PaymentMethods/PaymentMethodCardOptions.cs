@@ -24,6 +24,12 @@ namespace Stripe
         public long? ExpYear { get; set; }
 
         /// <summary>
+        /// Contains information about card networks used to process the payment.
+        /// </summary>
+        [JsonProperty("networks")]
+        public PaymentMethodCardNetworksOptions Networks { get; set; }
+
+        /// <summary>
         /// The card number, as a string without any separators.
         /// </summary>
         [JsonProperty("number")]

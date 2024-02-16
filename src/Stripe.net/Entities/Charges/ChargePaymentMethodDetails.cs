@@ -92,6 +92,9 @@ namespace Stripe
         [JsonProperty("paypal")]
         public ChargePaymentMethodDetailsPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public ChargePaymentMethodDetailsPayto Payto { get; set; }
+
         [JsonProperty("pix")]
         public ChargePaymentMethodDetailsPix Pix { get; set; }
 
@@ -112,6 +115,9 @@ namespace Stripe
 
         [JsonProperty("swish")]
         public ChargePaymentMethodDetailsSwish Swish { get; set; }
+
+        [JsonProperty("twint")]
+        public ChargePaymentMethodDetailsTwint Twint { get; set; }
 
         /// <summary>
         /// The type of transaction-specific details of the payment method used in the payment, one

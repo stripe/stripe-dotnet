@@ -33,6 +33,16 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The brand to use when displaying the card, this accounts for customer's brand choice on
+        /// dual-branded cards. Can be <c>american_express</c>, <c>cartes_bancaires</c>,
+        /// <c>diners_club</c>, <c>discover</c>, <c>eftpos_australia</c>, <c>interac</c>,
+        /// <c>jcb</c>, <c>mastercard</c>, <c>union_pay</c>, <c>visa</c>, or <c>other</c> and may
+        /// contain more values in the future.
+        /// </summary>
+        [JsonProperty("display_brand")]
+        public string DisplayBrand { get; set; }
+
+        /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]

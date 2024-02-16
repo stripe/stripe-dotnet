@@ -75,6 +75,16 @@ namespace Stripe
             return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents", options, requestOptions, cancellationToken);
         }
 
+        public virtual PaymentIntent DecrementAuthorization(string id, PaymentIntentDecrementAuthorizationOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/decrement_authorization", options, requestOptions);
+        }
+
+        public virtual Task<PaymentIntent> DecrementAuthorizationAsync(string id, PaymentIntentDecrementAuthorizationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/decrement_authorization", options, requestOptions, cancellationToken);
+        }
+
         public virtual PaymentIntent Get(string id, PaymentIntentGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Get, $"/v1/payment_intents/{id}", options, requestOptions);

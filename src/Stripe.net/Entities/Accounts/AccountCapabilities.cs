@@ -229,6 +229,14 @@ namespace Stripe
         public string PaypalPayments { get; set; }
 
         /// <summary>
+        /// The status of the PayTo capability of the account, or whether the account can directly
+        /// process PayTo charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("payto_payments")]
+        public string PaytoPayments { get; set; }
+
+        /// <summary>
         /// The status of the promptpay payments capability of the account, or whether the account
         /// can directly process promptpay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -296,6 +304,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("treasury")]
         public string Treasury { get; set; }
+
+        /// <summary>
+        /// The status of the Twint capability of the account, or whether the account can directly
+        /// process Twint charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("twint_payments")]
+        public string TwintPayments { get; set; }
 
         /// <summary>
         /// The status of the US bank account ACH payments capability of the account, or whether the
