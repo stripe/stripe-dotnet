@@ -1,10 +1,19 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class SessionListOptions : ListOptionsWithCreated
     {
+        /// <summary>
+        /// Only return the Checkout Sessions that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// Only return the Checkout Sessions for the Customer specified.
         /// </summary>

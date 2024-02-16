@@ -1,10 +1,16 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class InvoiceItemListOptions : ListOptionsWithCreated
     {
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// The identifier of the customer whose invoice items to return. If none is provided, all
         /// invoice items will be returned.

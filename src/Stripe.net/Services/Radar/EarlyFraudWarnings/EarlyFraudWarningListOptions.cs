@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Radar
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class EarlyFraudWarningListOptions : ListOptionsWithCreated
     {
@@ -10,6 +12,13 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("charge")]
         public string Charge { get; set; }
+
+        /// <summary>
+        /// Only return early fraud warnings that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// Only return early fraud warnings for charges that were created by the PaymentIntent

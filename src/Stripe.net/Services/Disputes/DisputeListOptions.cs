@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class DisputeListOptions : ListOptionsWithCreated
     {
@@ -10,6 +12,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("charge")]
         public string Charge { get; set; }
+
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// Only return disputes associated to the PaymentIntent specified by this PaymentIntent ID.

@@ -22,6 +22,13 @@ namespace Stripe
         public AnyOf<DateTime?, DateRangeOptions> CompletedAt { get; set; }
 
         /// <summary>
+        /// Only return subscription schedules that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
+        /// <summary>
         /// Only return subscription schedules for the given customer.
         /// </summary>
         [JsonProperty("customer")]

@@ -1,10 +1,16 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ChargeListOptions : ListOptionsWithCreated
     {
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// Only return charges for the customer specified by this customer ID.
         /// </summary>

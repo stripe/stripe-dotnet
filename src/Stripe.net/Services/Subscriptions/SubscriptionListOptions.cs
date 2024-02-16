@@ -21,6 +21,10 @@ namespace Stripe
         [JsonProperty("collection_method")]
         public string CollectionMethod { get; set; }
 
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodEnd { get; set; }

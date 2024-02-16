@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ProductListOptions : ListOptionsWithCreated
     {
@@ -12,6 +14,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; }
+
+        /// <summary>
+        /// Only return products that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// Only return products with the given IDs. Cannot be used with <a

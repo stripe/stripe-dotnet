@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Radar
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ValueListListOptions : ListOptionsWithCreated
     {
@@ -16,5 +18,9 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("contains")]
         public string Contains { get; set; }
+
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
     }
 }

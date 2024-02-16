@@ -4,6 +4,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    [Obsolete("Created is defined inline in all child classes. This will be removed in the next major version.")]
     public class ListOptionsWithCreated : ListOptions
     {
         /// <summary>

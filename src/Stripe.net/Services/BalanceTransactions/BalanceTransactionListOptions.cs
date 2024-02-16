@@ -1,10 +1,16 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class BalanceTransactionListOptions : ListOptionsWithCreated
     {
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// Only return transactions in a certain currency. Three-letter <a
         /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in

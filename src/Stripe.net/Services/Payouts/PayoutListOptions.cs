@@ -11,6 +11,10 @@ namespace Stripe
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> ArrivalDate { get; set; }
 
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// The ID of an external account - only return payouts sent to this external account.
         /// </summary>

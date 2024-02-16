@@ -1,11 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class EventListOptions : ListOptionsWithCreated
     {
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// Filter events by whether all webhooks were successfully delivered. If false, events
         /// which are still pending or have failed all delivery attempts to a webhook endpoint will

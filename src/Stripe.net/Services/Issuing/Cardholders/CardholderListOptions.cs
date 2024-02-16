@@ -1,10 +1,19 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CardholderListOptions : ListOptionsWithCreated
     {
+        /// <summary>
+        /// Only return cardholders that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// Only return cardholders that have the given email address.
         /// </summary>

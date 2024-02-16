@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Issuing
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CardListOptions : ListOptionsWithCreated
     {
@@ -10,6 +12,13 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("cardholder")]
         public string Cardholder { get; set; }
+
+        /// <summary>
+        /// Only return cards that were issued during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// Only return cards that have the given expiration month.

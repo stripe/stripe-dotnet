@@ -1,10 +1,16 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CustomerListOptions : ListOptionsWithCreated
     {
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// A case-sensitive filter on the list based on the customer's <c>email</c> field. The
         /// value must be a string.

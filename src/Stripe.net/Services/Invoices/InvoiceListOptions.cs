@@ -15,6 +15,10 @@ namespace Stripe
         [JsonProperty("collection_method")]
         public string CollectionMethod { get; set; }
 
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// Only return invoices for the customer specified by this customer ID.
         /// </summary>

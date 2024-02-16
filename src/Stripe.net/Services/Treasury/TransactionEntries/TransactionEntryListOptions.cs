@@ -7,6 +7,10 @@ namespace Stripe.Treasury
 
     public class TransactionEntryListOptions : ListOptionsWithCreated
     {
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> EffectiveAt { get; set; }
