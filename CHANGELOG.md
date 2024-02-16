@@ -1,5 +1,11 @@
 # Changelog
 
+## 43.15.0 - 2024-02-15
+* [#2847](https://github.com/stripe/stripe-dotnet/pull/2847) Update generated code
+  * Add support for `Networks` on `Card`, `PaymentMethodCardOptions`, and `TokenCardOptions`
+  * Add support for `DisplayBrand` on `PaymentMethodCard`
+* [#2849](https://github.com/stripe/stripe-dotnet/pull/2849) Add README to NuGet package
+
 ## 43.15.0-beta.1 - 2024-02-08
 * [#2844](https://github.com/stripe/stripe-dotnet/pull/2844) Update generated code for beta
   * Add support for `PaymentMethodOptions` on `ConfirmationToken`
