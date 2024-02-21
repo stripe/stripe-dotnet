@@ -177,12 +177,9 @@ namespace Stripe
         public InvoicePaymentSettingsOptions PaymentSettings { get; set; }
 
         /// <summary>
-        /// How to handle pending invoice items on invoice creation. One of <c>include</c> or
-        /// <c>exclude</c>. <c>include</c> will include any pending invoice items, and will create
-        /// an empty draft invoice if no pending invoice items exist. <c>exclude</c> will always
-        /// create an empty invoice draft regardless if there are pending invoice items or not.
-        /// Defaults to <c>exclude</c> if the parameter is omitted.
-        /// One of: <c>exclude</c>, <c>include</c>, or <c>include_and_require</c>.
+        /// How to handle pending invoice items on invoice creation. Defaults to <c>exclude</c> if
+        /// the parameter is omitted.
+        /// One of: <c>exclude</c>, or <c>include</c>.
         /// </summary>
         [JsonProperty("pending_invoice_items_behavior")]
         public string PendingInvoiceItemsBehavior { get; set; }
