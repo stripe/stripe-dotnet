@@ -179,7 +179,7 @@ namespace Stripe
         /// <summary>
         /// How to handle pending invoice items on invoice creation. Defaults to <c>exclude</c> if
         /// the parameter is omitted.
-        /// One of: <c>exclude</c>, or <c>include</c>.
+        /// One of: <c>exclude</c>, <c>include</c>, or <c>include_and_require</c>.
         /// </summary>
         [JsonProperty("pending_invoice_items_behavior")]
         public string PendingInvoiceItemsBehavior { get; set; }
