@@ -28,7 +28,8 @@ namespace Stripe.BillingPortal
 
         /// <summary>
         /// Determines how to handle prorations resulting from subscription updates. Valid values
-        /// are <c>none</c>, <c>create_prorations</c>, and <c>always_invoice</c>.
+        /// are <c>none</c>, <c>create_prorations</c>, and <c>always_invoice</c>. Defaults to a
+        /// value of <c>none</c> if you don't set it during creation.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
