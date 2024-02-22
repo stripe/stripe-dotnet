@@ -1,5 +1,10 @@
 # Changelog
 
+## 43.16.0 - 2024-02-22
+* [#2850](https://github.com/stripe/stripe-dotnet/pull/2850) Update generated code
+  * Add support for `ClientReferenceId` on `Identity.VerificationReportListOptions`, `Identity.VerificationSessionCreateOptions`, `Identity.VerificationSessionListOptions`, `IdentityVerificationReport`, and `IdentityVerificationSession`
+  * Add support for `Created` on `Treasury.OutboundPaymentListOptions`
+
 ## 43.16.0-beta.1 - 2024-02-16
 * [#2846](https://github.com/stripe/stripe-dotnet/pull/2846) Update generated code for beta
   * Add support for `DecrementAuthorization` method on resource `PaymentIntent`
