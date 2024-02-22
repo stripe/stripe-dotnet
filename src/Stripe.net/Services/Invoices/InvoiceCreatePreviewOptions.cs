@@ -186,8 +186,8 @@ namespace Stripe
 
         /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>
-        /// when the billing cycle changes (e.g., when switching plans, resetting
+        /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when the
+        /// billing cycle changes (e.g., when switching plans, resetting
         /// <c>billing_cycle_anchor=now</c>, or starting a trial), or if an item's <c>quantity</c>
         /// changes. The default value is <c>create_prorations</c>. This field has been deprecated
         /// and will be removed in a future API version. Use

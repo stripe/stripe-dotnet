@@ -3,7 +3,7 @@ namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
 
-    public class OutboundPaymentListOptions : ListOptions
+    public class OutboundPaymentListOptions : ListOptionsWithCreated
     {
         /// <summary>
         /// Only return OutboundPayments sent to this customer.

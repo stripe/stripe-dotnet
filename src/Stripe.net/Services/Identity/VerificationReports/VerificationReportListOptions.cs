@@ -6,6 +6,13 @@ namespace Stripe.Identity
     public class VerificationReportListOptions : ListOptionsWithCreated
     {
         /// <summary>
+        /// A string to reference this user. This can be a customer ID, a session ID, or similar,
+        /// and can be used to reconcile this verification with your internal systems.
+        /// </summary>
+        [JsonProperty("client_reference_id")]
+        public string ClientReferenceId { get; set; }
+
+        /// <summary>
         /// Only return VerificationReports of this type.
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>

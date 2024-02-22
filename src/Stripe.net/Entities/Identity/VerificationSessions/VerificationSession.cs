@@ -37,6 +37,13 @@ namespace Stripe.Identity
         public string Object { get; set; }
 
         /// <summary>
+        /// A string to reference this user. This can be a customer ID, a session ID, or similar,
+        /// and can be used to reconcile this verification with your internal systems.
+        /// </summary>
+        [JsonProperty("client_reference_id")]
+        public string ClientReferenceId { get; set; }
+
+        /// <summary>
         /// The short-lived client secret used by Stripe.js to <a
         /// href="https://stripe.com/docs/js/identity/modal">show a verification modal</a> inside
         /// your app. This client secret expires after 24 hours and can only be used once. Don’t
