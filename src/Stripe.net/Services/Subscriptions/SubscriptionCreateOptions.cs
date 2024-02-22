@@ -258,8 +258,8 @@ namespace Stripe
 
         /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>
-        /// resulting from the <c>billing_cycle_anchor</c>. If no value is passed, the default is
+        /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> resulting
+        /// from the <c>billing_cycle_anchor</c>. If no value is passed, the default is
         /// <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>

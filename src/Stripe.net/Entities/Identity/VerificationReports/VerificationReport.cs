@@ -38,6 +38,13 @@ namespace Stripe.Identity
         public string Object { get; set; }
 
         /// <summary>
+        /// A string to reference this user. This can be a customer ID, a session ID, or similar,
+        /// and can be used to reconcile this verification with your internal systems.
+        /// </summary>
+        [JsonProperty("client_reference_id")]
+        public string ClientReferenceId { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]

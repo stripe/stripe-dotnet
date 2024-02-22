@@ -32,7 +32,8 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// Type of the fee, one of: <c>application_fee</c>, <c>stripe_fee</c> or <c>tax</c>.
+        /// Type of the fee, one of: <c>application_fee</c>, <c>payment_method_passthrough_fee</c>,
+        /// <c>stripe_fee</c> or <c>tax</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
