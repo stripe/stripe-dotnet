@@ -6,6 +6,13 @@ namespace Stripe.Identity
     public class VerificationSessionListOptions : ListOptionsWithCreated
     {
         /// <summary>
+        /// A string to reference this user. This can be a customer ID, a session ID, or similar,
+        /// and can be used to reconcile this verification with your internal systems.
+        /// </summary>
+        [JsonProperty("client_reference_id")]
+        public string ClientReferenceId { get; set; }
+
+        /// <summary>
         /// Only return VerificationSessions with this status. <a
         /// href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle
         /// of sessions</a>.
