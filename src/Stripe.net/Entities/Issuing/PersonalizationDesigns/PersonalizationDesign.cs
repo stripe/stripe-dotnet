@@ -71,6 +71,13 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// A lookup key used to retrieve personalization designs dynamically from a static string.
         /// This may be up to 200 characters.
         /// </summary>
