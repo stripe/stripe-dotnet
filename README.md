@@ -279,13 +279,13 @@ dotnet add package Stripe.net --version 40.3.0-beta.1
 
 We highly recommend keeping an eye on when the beta feature you are interested in goes from beta to stable so that you can move from using a beta version of the SDK to the stable version.
 
-If your beta feature requires a `Stripe-Version` header to be sent, use the `StripeConfiguration.ApiVersion` property to set it:
+If your beta feature requires a `Stripe-Version` header to be sent, set the `StripeConfiguration.ApiVersion` property with the `StripeConfiguration.AddBetaVersion` function:
 
 > **Note**
-> The `ApiVersion` can only be set in beta versions of the library. 
+> The `ApiVersion` can only be set in beta versions of the library.
 
 ```csharp
-StripeConfiguration.ApiVersion += "; feature_beta=v3";
+StripeConfiguration.AddBetaVersion("feature_beta", "v3");
 ```
 
 ## Support
