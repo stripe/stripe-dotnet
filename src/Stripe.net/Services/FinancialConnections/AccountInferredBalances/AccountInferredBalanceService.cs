@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.FinancialConnections
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -19,6 +20,7 @@ namespace Stripe.FinancialConnections
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/financial_connections/accounts/{PARENT_ID}/inferred_balances";
 
         public virtual StripeList<AccountInferredBalance> List(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null)

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Climate
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -22,6 +23,7 @@ namespace Stripe.Climate
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/climate/orders";
 
         public virtual Order Cancel(string id, OrderCancelOptions options = null, RequestOptions requestOptions = null)

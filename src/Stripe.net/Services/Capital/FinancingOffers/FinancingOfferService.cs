@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Capital
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -20,6 +21,7 @@ namespace Stripe.Capital
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/capital/financing_offers";
 
         public virtual FinancingOffer Get(string id, FinancingOfferGetOptions options = null, RequestOptions requestOptions = null)

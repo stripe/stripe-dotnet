@@ -192,6 +192,7 @@ namespace Stripe
                 cancellationToken);
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         protected virtual string ClassUrl(string parentId)
         {
             if (string.IsNullOrWhiteSpace(parentId))
@@ -204,6 +205,7 @@ namespace Stripe
             return this.BasePath.Replace("{PARENT_ID}", parentId);
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         protected virtual string InstanceUrl(string parentId, string id)
         {
             if (string.IsNullOrWhiteSpace(parentId))

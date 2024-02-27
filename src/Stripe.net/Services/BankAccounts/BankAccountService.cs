@@ -24,6 +24,7 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/customers/{PARENT_ID}/sources";
 
         public virtual BankAccount Create(string parentId, BankAccountCreateOptions options, RequestOptions requestOptions = null)

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/subscription_items/{PARENT_ID}/usage_records";
 
         public virtual UsageRecord Create(string parentId, UsageRecordCreateOptions options = null, RequestOptions requestOptions = null)

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.GiftCards
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -22,6 +23,7 @@ namespace Stripe.GiftCards
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/gift_cards/transactions";
 
         public virtual Transaction Cancel(string id, TransactionCancelOptions options = null, RequestOptions requestOptions = null)
