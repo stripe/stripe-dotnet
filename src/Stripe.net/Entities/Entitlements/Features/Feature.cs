@@ -40,18 +40,5 @@ namespace Stripe.Entitlements
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
-
-        /// <summary>
-        /// Contains information about type=quantity features. This is required when type=quantity.
-        /// </summary>
-        [JsonProperty("quantity")]
-        public FeatureQuantity Quantity { get; set; }
-
-        /// <summary>
-        /// The type of feature.
-        /// One of: <c>quantity</c>, or <c>switch</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
     }
 }

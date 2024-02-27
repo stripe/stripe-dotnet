@@ -38,19 +38,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("lookup_key")]
         public string LookupKey { get; set; }
-
-        /// <summary>
-        /// Contains information about entitlements relating to features with type=quantity.
-        /// Required when the feature has type=quantity.
-        /// </summary>
-        [JsonProperty("quantity")]
-        public CustomerEntitlementQuantity Quantity { get; set; }
-
-        /// <summary>
-        /// The type of feature.
-        /// One of: <c>quantity</c>, or <c>switch</c>.
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; set; }
     }
 }
