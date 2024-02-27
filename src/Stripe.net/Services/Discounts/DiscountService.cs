@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -16,6 +17,7 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => null;
 
         public virtual Discount DeleteCustomerDiscount(string customerId, RequestOptions requestOptions = null)

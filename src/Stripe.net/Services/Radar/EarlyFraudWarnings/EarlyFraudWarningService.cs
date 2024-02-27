@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Radar
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -20,6 +21,7 @@ namespace Stripe.Radar
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/radar/early_fraud_warnings";
 
         public virtual EarlyFraudWarning Get(string id, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null)

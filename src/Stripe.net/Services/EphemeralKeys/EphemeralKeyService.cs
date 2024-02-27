@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -18,6 +19,7 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/ephemeral_keys";
 
         public virtual EphemeralKey Create(EphemeralKeyCreateOptions options, RequestOptions requestOptions = null)

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.TestHelpers.Treasury
 {
+    using System;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Stripe.TestHelpers.Treasury
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/test_helpers/treasury/outbound_transfers";
 
         public virtual Stripe.Treasury.OutboundTransfer Fail(string id, OutboundTransferFailOptions options = null, RequestOptions requestOptions = null)
