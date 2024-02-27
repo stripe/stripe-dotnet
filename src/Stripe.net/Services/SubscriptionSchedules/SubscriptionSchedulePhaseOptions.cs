@@ -62,7 +62,9 @@ namespace Stripe
         public string CollectionMethod { get; set; }
 
         /// <summary>
-        /// The identifier of the coupon to apply to this phase of the subscription schedule.
+        /// The identifier of the coupon to apply to this phase of the subscription schedule. This
+        /// field has been deprecated and will be removed in a future API version. Use
+        /// <c>discounts</c> instead.
         /// </summary>
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
