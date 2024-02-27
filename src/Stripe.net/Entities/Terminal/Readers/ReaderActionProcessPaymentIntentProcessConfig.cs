@@ -6,6 +6,12 @@ namespace Stripe.Terminal
     public class ReaderActionProcessPaymentIntentProcessConfig : StripeEntity<ReaderActionProcessPaymentIntentProcessConfig>
     {
         /// <summary>
+        /// Enable customer initiated cancellation when processing this payment.
+        /// </summary>
+        [JsonProperty("enable_customer_cancellation")]
+        public bool EnableCustomerCancellation { get; set; }
+
+        /// <summary>
         /// Override showing a tipping selection screen on this transaction.
         /// </summary>
         [JsonProperty("skip_tipping")]

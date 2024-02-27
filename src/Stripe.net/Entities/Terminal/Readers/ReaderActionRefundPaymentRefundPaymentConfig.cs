@@ -3,10 +3,10 @@ namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
 
-    public class ReaderActionProcessSetupIntentProcessConfig : StripeEntity<ReaderActionProcessSetupIntentProcessConfig>
+    public class ReaderActionRefundPaymentRefundPaymentConfig : StripeEntity<ReaderActionRefundPaymentRefundPaymentConfig>
     {
         /// <summary>
-        /// Enable customer initiated cancellation when processing this SetupIntent.
+        /// Enable customer initiated cancellation when refunding this payment.
         /// </summary>
         [JsonProperty("enable_customer_cancellation")]
         public bool EnableCustomerCancellation { get; set; }
