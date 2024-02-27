@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
+    using System;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -18,6 +19,7 @@ namespace Stripe.Terminal
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/terminal/connection_tokens";
 
         public virtual ConnectionToken Create(ConnectionTokenCreateOptions options, RequestOptions requestOptions = null)

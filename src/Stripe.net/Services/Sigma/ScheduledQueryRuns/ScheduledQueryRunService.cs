@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Sigma
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -20,6 +21,7 @@ namespace Stripe.Sigma
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/sigma/scheduled_query_runs";
 
         public virtual ScheduledQueryRun Get(string id, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null)

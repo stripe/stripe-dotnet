@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -21,6 +22,7 @@ namespace Stripe.Treasury
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/treasury/outbound_transfers";
 
         public virtual OutboundTransfer Cancel(string id, OutboundTransferCancelOptions options = null, RequestOptions requestOptions = null)

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.TestHelpers
 {
+    using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
@@ -22,6 +23,7 @@ namespace Stripe.TestHelpers
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/test_helpers/test_clocks";
 
         public virtual TestClock Advance(string id, TestClockAdvanceOptions options = null, RequestOptions requestOptions = null)
