@@ -208,9 +208,9 @@ namespace Stripe
         /// bank details are updated.
         ///
         /// For external accounts, possible values are <c>new</c>, <c>errored</c> and
-        /// <c>verification_failed</c>. If a payouts fails, the status is set to <c>errored</c> and
-        /// scheduled payouts are stopped until account details are updated. In US and India, if we
-        /// can't <a
+        /// <c>verification_failed</c>. If a payout fails, the status is set to <c>errored</c> and
+        /// scheduled payouts are stopped until account details are updated. In the US and India, if
+        /// we can't <a
         /// href="https://support.stripe.com/questions/bank-account-ownership-verification">verify
         /// the owner of the bank account</a>, we'll set the status to <c>verification_failed</c>.
         /// Other validations aren't run against external accounts because they're only used for
