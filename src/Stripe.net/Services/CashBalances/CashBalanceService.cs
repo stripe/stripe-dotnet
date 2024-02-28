@@ -41,6 +41,7 @@ namespace Stripe
             return this.RequestAsync<CashBalance>(HttpMethod.Post, $"/v1/customers/{parentId}/cash_balance", options, requestOptions, cancellationToken);
         }
 
+        [Obsolete("This method is deprecated and will be removed in a future release")]
         protected override string InstanceUrl(string parentId, string id)
         {
             if (string.IsNullOrWhiteSpace(parentId))
