@@ -37,6 +37,7 @@ namespace Stripe
             this.client = client;
         }
 
+        [Obsolete("Please use the `Request` or `RequestAsync` method providing the full path.")]
         public abstract string BasePath { get; }
 
         public virtual string BaseUrl => this.Client.ApiBase;
@@ -579,11 +580,13 @@ namespace Stripe
             return requestOptions;
         }
 
+        [Obsolete("Please use the `Request` or `RequestAsync` method providing the full path.")]
         protected virtual string ClassUrl()
         {
             return this.BasePath;
         }
 
+        [Obsolete("Please use the `Request` or `RequestAsync` method providing the full path.")]
         protected virtual string InstanceUrl(string id)
         {
             if (string.IsNullOrWhiteSpace(id))

@@ -20,6 +20,7 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/oauth/token";
 
         public override string BaseUrl => this.Client.ConnectBase;
