@@ -237,6 +237,19 @@ namespace Stripe
             ApiKey = newApiKey;
         }
 
+        /// <summary>Add beta version to ApiVersion.</summary>
+        /// <param name="betaName">Name of beta.</param>
+        /// <param name="betaVersion">Desired beta version.</param>
+        public static void AddBetaVersion(string betaName, string betaVersion)
+        {
+            if (ApiVersion.Contains($"; {betaName}="))
+            {
+                throw new Exception($"Stripe version header {ApiVersion} already contains entry for beta {betaName}");
+            }
+
+            ApiVersion = $"{ApiVersion}; {betaName}={betaVersion}";
+        }
+
         private static StripeClient BuildDefaultStripeClient()
         {
             if (ApiKey != null && ApiKey.Length == 0)

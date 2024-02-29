@@ -93,5 +93,17 @@ namespace StripeTests
                 StripeConfiguration.ApiKey = origApiKey;
             }
         }
+
+        [Fact]
+        public void StripeClient_Getter_ShouldAllowBetaVersionsToBeAddedOnceOnly()
+        {
+            StripeConfiguration.ApiVersion = "2024-02-26";
+
+            StripeConfiguration.AddBetaVersion("feature_beta", "v3");
+            Assert.Equal("2024-02-26; feature_beta=v3", StripeConfiguration.ApiVersion);
+
+            var exception = Record.Exception(() => StripeConfiguration.AddBetaVersion("feature_beta", "v2"));
+            Assert.NotNull(exception);
+        }
     }
 }
