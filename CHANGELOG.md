@@ -9,9 +9,18 @@
   * Add support for `EnableCustomerCancellation` on `TerminalReaderActionCollectPaymentMethodCollectConfig` and `TerminalReaderCollectConfigOptions`
 * [#2855](https://github.com/stripe/stripe-dotnet/pull/2855) Add helper to add beta version
 
+## 43.17.0 - 2024-02-29
+* [#2854](https://github.com/stripe/stripe-dotnet/pull/2854) Update generated code
+  * Add support for `Number` on `InvoiceCreateOptions` and `InvoiceUpdateOptions`
+  * Add support for `EnableCustomerCancellation` on `TerminalReaderActionProcessPaymentIntentProcessConfig`, `TerminalReaderActionProcessSetupIntentProcessConfig`, and `TerminalReaderProcessConfigOptions`
+  * Add support for `RefundPaymentConfig` on `Terminal.ReaderRefundPaymentOptions` and `TerminalReaderActionRefundPayment`
+  * Add support for `PaymentMethod` on `TokenBankAccountOptions`
+* [#2858](https://github.com/stripe/stripe-dotnet/pull/2858) Update README to use AddBetaVersion
+* [#2859](https://github.com/stripe/stripe-dotnet/pull/2859) Use make CI test
+* [#2856](https://github.com/stripe/stripe-dotnet/pull/2856) Obsolete BasePath, InstanceUrl, and ClassUrl
+
 ## 43.17.0-beta.1 - 2024-02-22
 * [#2851](https://github.com/stripe/stripe-dotnet/pull/2851) Update generated code for beta
-
 
 ## 43.16.0 - 2024-02-22
 * [#2850](https://github.com/stripe/stripe-dotnet/pull/2850) Update generated code
