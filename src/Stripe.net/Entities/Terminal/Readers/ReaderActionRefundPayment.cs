@@ -132,6 +132,12 @@ namespace Stripe.Terminal
         public bool RefundApplicationFee { get; set; }
 
         /// <summary>
+        /// Represents a per-transaction override of a reader configuration.
+        /// </summary>
+        [JsonProperty("refund_payment_config")]
+        public ReaderActionRefundPaymentRefundPaymentConfig RefundPaymentConfig { get; set; }
+
+        /// <summary>
         /// Boolean indicating whether the transfer should be reversed when refunding this charge.
         /// The transfer will be reversed proportionally to the amount being refunded (either the
         /// entire or partial amount). A transfer can be reversed only by the application that

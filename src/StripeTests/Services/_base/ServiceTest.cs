@@ -182,6 +182,7 @@ namespace StripeTests
             {
             }
 
+            [Obsolete("This member is deprecated and will be removed in a future release")]
             public override string BasePath => "/v1/test_entities";
 
             public virtual TestEntity Get(string id, BaseOptions options = null, RequestOptions requestOptions = null)

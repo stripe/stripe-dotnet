@@ -6,7 +6,7 @@ namespace Stripe
     public class TokenBankAccountOptions : INestedOptions
     {
         /// <summary>
-        /// The name of the person or business that owns the bank account.This field is required
+        /// The name of the person or business that owns the bank account. This field is required
         /// when attaching the bank account to a <c>Customer</c> object.
         /// </summary>
         [JsonProperty("account_holder_name")]
@@ -47,6 +47,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// The ID of a Payment Method with a <c>type</c> of <c>us_bank_account</c>. The Payment
+        /// Method's bank account information will be copied and returned as a Bank Account Token.
+        /// This parameter is exclusive with respect to all other parameters in the
+        /// <c>bank_account</c> hash. You must include the top-level <c>customer</c> parameter if
+        /// the Payment Method is attached to a <c>Customer</c> object. If the Payment Method is not
+        /// attached to a <c>Customer</c> object, it will be consumed and cannot be used again. You
+        /// may not use Payment Methods which were created by a Setup Intent with
+        /// <c>attach_to_self=true</c>.
+        /// </summary>
+        [JsonProperty("payment_method")]
+        public string PaymentMethod { get; set; }
 
         /// <summary>
         /// The routing number, sort code, or other country-appropriateinstitution number for the

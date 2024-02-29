@@ -6,6 +6,12 @@ namespace Stripe.Terminal
     public class ReaderProcessConfigOptions : INestedOptions
     {
         /// <summary>
+        /// Enables cancel button on transaction screens.
+        /// </summary>
+        [JsonProperty("enable_customer_cancellation")]
+        public bool? EnableCustomerCancellation { get; set; }
+
+        /// <summary>
         /// Override showing a tipping selection screen on this transaction.
         /// </summary>
         [JsonProperty("skip_tipping")]

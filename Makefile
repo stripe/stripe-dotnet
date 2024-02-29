@@ -7,7 +7,10 @@ codegen-format:
 	dotnet format src/Stripe.net/Stripe.net.csproj
 
 ci-test:
-	dotnet test src/StripeTests/StripeTests.csproj -c Debug
+	dotnet test --no-build src/StripeTests/StripeTests.csproj -c Release
+
+ci-test-debug:
+	dotnet test --no-build src/StripeTests/StripeTests.csproj -c Debug
 
 test:
 	dotnet test -f net8.0 src/StripeTests/StripeTests.csproj -c Debug

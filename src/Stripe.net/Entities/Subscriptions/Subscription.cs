@@ -308,7 +308,8 @@ namespace Stripe
         /// <summary>
         /// Describes the current discount applied to this subscription, if there is one. When
         /// billing, a discount applied to a subscription overrides a discount applied on a
-        /// customer-wide basis.
+        /// customer-wide basis. This field has been deprecated and will be removed in a future API
+        /// version. Use <c>discounts</c> instead.
         /// </summary>
         [JsonProperty("discount")]
         public Discount Discount { get; set; }

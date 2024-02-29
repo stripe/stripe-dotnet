@@ -66,7 +66,8 @@ namespace Stripe.Checkout
         public SessionAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
-        /// Describes whether Checkout should collect the customer's billing address.
+        /// Describes whether Checkout should collect the customer's billing address. Defaults to
+        /// <c>auto</c>.
         /// One of: <c>auto</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("billing_address_collection")]
@@ -185,7 +186,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The customer details including the customer's tax exempt status and the customer's tax
-        /// IDs. Only the customer's email is present on Sessions in <c>setup</c> mode.
+        /// IDs. Customer's address details are not present on Sessions in <c>setup</c> mode.
         /// </summary>
         [JsonProperty("customer_details")]
         public SessionCustomerDetails CustomerDetails { get; set; }
@@ -347,7 +348,8 @@ namespace Stripe.Checkout
         #endregion
 
         /// <summary>
-        /// Configure whether a Checkout Session should collect a payment method.
+        /// Configure whether a Checkout Session should collect a payment method. Defaults to
+        /// <c>always</c>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
         [JsonProperty("payment_method_collection")]
@@ -393,10 +395,9 @@ namespace Stripe.Checkout
         public string RecoveredFrom { get; set; }
 
         /// <summary>
-        /// Applies to Checkout Sessions with <c>ui_mode: embedded</c>. By default, Stripe will
-        /// always redirect to your return_url after a successful confirmation. If you set
-        /// <c>redirect_on_completion: 'if_required'</c>, then we will only redirect if your user
-        /// chooses a redirect-based payment method.
+        /// This parameter applies to <c>ui_mode: embedded</c>. Learn more about the <a
+        /// href="https://stripe.com/docs/payments/checkout/custom-redirect-behavior">redirect
+        /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("redirect_on_completion")]
@@ -533,7 +534,7 @@ namespace Stripe.Checkout
         public SessionTotalDetails TotalDetails { get; set; }
 
         /// <summary>
-        /// The UI mode of the Session. Can be <c>hosted</c> (default) or <c>embedded</c>.
+        /// The UI mode of the Session. Defaults to <c>hosted</c>.
         /// One of: <c>embedded</c>, or <c>hosted</c>.
         /// </summary>
         [JsonProperty("ui_mode")]

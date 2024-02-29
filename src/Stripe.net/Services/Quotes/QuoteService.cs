@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using System.Net.Http;
@@ -23,6 +24,7 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/quotes";
 
         public virtual Quote Accept(string id, QuoteAcceptOptions options = null, RequestOptions requestOptions = null)
