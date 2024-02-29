@@ -28,7 +28,8 @@ namespace Stripe.Checkout
         public SessionAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
-        /// Specify whether Checkout should collect the customer's billing address.
+        /// Specify whether Checkout should collect the customer's billing address. Defaults to
+        /// <c>auto</c>.
         /// One of: <c>auto</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("billing_address_collection")]
@@ -217,7 +218,7 @@ namespace Stripe.Checkout
         /// the session is 0. This may occur if the Checkout Session includes a free trial or a
         /// discount.
         ///
-        /// Can only be set in <c>subscription</c> mode.
+        /// Can only be set in <c>subscription</c> mode. Defaults to <c>always</c>.
         ///
         /// If you'd like information on how to collect a payment method outside of Checkout, read
         /// the guide on configuring <a
@@ -280,10 +281,9 @@ namespace Stripe.Checkout
         public SessionPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
 
         /// <summary>
-        /// This parameter applies to <c>ui_mode: embedded</c>. By default, Stripe will always
-        /// redirect to your return_url after a successful confirmation. If you set
-        /// <c>redirect_on_completion: 'if_required'</c>, then we will only redirect if your user
-        /// chooses a redirect-based payment method.
+        /// This parameter applies to <c>ui_mode: embedded</c>. Learn more about the <a
+        /// href="https://stripe.com/docs/payments/checkout/custom-redirect-behavior">redirect
+        /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("redirect_on_completion")]
@@ -351,7 +351,7 @@ namespace Stripe.Checkout
         public SessionTaxIdCollectionOptions TaxIdCollection { get; set; }
 
         /// <summary>
-        /// <c>ui_mode</c> can be <c>hosted</c> or <c>embedded</c>. The default is <c>hosted</c>.
+        /// The UI mode of the Session. Defaults to <c>hosted</c>.
         /// One of: <c>embedded</c>, or <c>hosted</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
