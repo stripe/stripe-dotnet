@@ -1,5 +1,14 @@
 # Changelog
 
+## 43.18.0-beta.1 - 2024-02-29
+* [#2853](https://github.com/stripe/stripe-dotnet/pull/2853) Update generated code for beta
+  * Remove support for resource `Entitlements.Event`
+  * Remove support for `Quantity` and `Type` on `Entitlements.FeatureCreateOptions` and `EntitlementsFeature`
+  * Add support for `Livemode` on `IssuingPersonalizationDesign`
+  * Add support for `ApplicationFeeAmount`, `Description`, `Metadata`, and `TransferData` on `PaymentIntentDecrementAuthorizationOptions`
+  * Add support for `EnableCustomerCancellation` on `TerminalReaderActionCollectPaymentMethodCollectConfig` and `TerminalReaderCollectConfigOptions`
+* [#2855](https://github.com/stripe/stripe-dotnet/pull/2855) Add helper to add beta version
+
 ## 43.17.0-beta.1 - 2024-02-22
 * [#2851](https://github.com/stripe/stripe-dotnet/pull/2851) Update generated code for beta
 
