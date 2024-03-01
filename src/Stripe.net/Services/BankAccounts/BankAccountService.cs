@@ -13,7 +13,6 @@ namespace Stripe
         INestedRetrievable<BankAccount, BankAccountGetOptions>,
         INestedUpdatable<BankAccount, BankAccountUpdateOptions>
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         public BankAccountService()
             : base(null)
         {
@@ -96,6 +95,5 @@ namespace Stripe
         {
             return this.RequestAsync(HttpMethod.Post, $"/v1/customers/{parentId}/sources/{id}/verify", options, requestOptions, cancellationToken);
         }
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 }

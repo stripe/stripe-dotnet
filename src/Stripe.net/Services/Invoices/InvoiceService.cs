@@ -13,7 +13,6 @@ namespace Stripe
         IRetrievable<Invoice, InvoiceGetOptions>,
         IUpdatable<Invoice, InvoiceUpdateOptions>
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         public InvoiceService()
             : base(null)
         {
@@ -206,6 +205,5 @@ namespace Stripe
         {
             return this.RequestAsync(HttpMethod.Post, $"/v1/invoices/{id}/void", options, requestOptions, cancellationToken);
         }
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 }

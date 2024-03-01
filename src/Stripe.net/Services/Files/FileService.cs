@@ -11,7 +11,6 @@ namespace Stripe
         IListable<File, FileListOptions>,
         IRetrievable<File, FileGetOptions>
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         public FileService()
             : base(null)
         {
@@ -82,6 +81,5 @@ namespace Stripe
 
             return requestOptions;
         }
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
