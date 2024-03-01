@@ -7,6 +7,9 @@ namespace Stripe
 
     public class PayoutListOptions : ListOptionsWithCreated
     {
+        /// <summary>
+        /// Only return payouts that are expected to arrive during the given date interval.
+        /// </summary>
         [JsonProperty("arrival_date")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> ArrivalDate { get; set; }
