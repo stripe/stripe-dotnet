@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -27,43 +28,43 @@ namespace Stripe
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
             requestOptions = this.SetupRequestOptionsForFilesRequest(requestOptions);
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<File>(HttpMethod.Post, $"/v1/files", options, requestOptions);
         }
 
         public virtual Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             requestOptions = this.SetupRequestOptionsForFilesRequest(requestOptions);
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<File>(HttpMethod.Post, $"/v1/files", options, requestOptions, cancellationToken);
         }
 
         public virtual File Get(string id, FileGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<File>(HttpMethod.Get, $"/v1/files/{id}", options, requestOptions);
         }
 
         public virtual Task<File> GetAsync(string id, FileGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<File>(HttpMethod.Get, $"/v1/files/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<File> List(FileListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntities(options, requestOptions);
+            return this.Request<StripeList<File>>(HttpMethod.Get, $"/v1/files", options, requestOptions);
         }
 
         public virtual Task<StripeList<File>> ListAsync(FileListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<File>>(HttpMethod.Get, $"/v1/files", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<File> ListAutoPaging(FileListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListEntitiesAutoPaging(options, requestOptions);
+            return this.ListRequestAutoPaging<File>($"/v1/files", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<File> ListAutoPagingAsync(FileListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<File>($"/v1/files", options, requestOptions, cancellationToken);
         }
 
         private RequestOptions SetupRequestOptionsForFilesRequest(RequestOptions requestOptions)

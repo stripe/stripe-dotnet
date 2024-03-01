@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -24,22 +25,22 @@ namespace Stripe
 
         public virtual StripeList<SourceTransaction> List(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(sourceId, options, requestOptions);
+            return this.Request<StripeList<SourceTransaction>>(HttpMethod.Get, $"/v1/sources/{sourceId}/source_transactions", options, requestOptions);
         }
 
         public virtual Task<StripeList<SourceTransaction>> ListAsync(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAsync(sourceId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<SourceTransaction>>(HttpMethod.Get, $"/v1/sources/{sourceId}/source_transactions", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<SourceTransaction> ListAutoPaging(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(sourceId, options, requestOptions);
+            return this.ListRequestAutoPaging<SourceTransaction>($"/v1/sources/{sourceId}/source_transactions", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<SourceTransaction> ListAutoPagingAsync(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAutoPagingAsync(sourceId, options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<SourceTransaction>($"/v1/sources/{sourceId}/source_transactions", options, requestOptions, cancellationToken);
         }
 #pragma warning restore CS0618 // Type or member is obsolete
     }
