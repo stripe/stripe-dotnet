@@ -40,8 +40,9 @@ namespace Stripe
 
         /// <summary>
         /// Select a way to pass in <c>ends_at</c>.
-        /// One of: <c>discount_end</c>, <c>duration</c>, <c>quote_acceptance_date</c>,
-        /// <c>schedule_end</c>, <c>timestamp</c>, or <c>upcoming_invoice</c>.
+        /// One of: <c>billing_period_end</c>, <c>discount_end</c>, <c>duration</c>,
+        /// <c>quote_acceptance_date</c>, <c>schedule_end</c>, <c>timestamp</c>, or
+        /// <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
