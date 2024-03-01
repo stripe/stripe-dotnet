@@ -3177,6 +3177,39 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTaxIdsDelete()
+        {
+            var service = new TaxIdService(this.StripeClient);
+            service.Delete("taxid_123");
+        }
+
+        [Fact]
+        public void TestTaxIdsGet()
+        {
+            var service = new TaxIdService(this.StripeClient);
+            StripeList<TaxId> taxIds = service.List();
+        }
+
+        [Fact]
+        public void TestTaxIdsGet2()
+        {
+            var service = new TaxIdService(this.StripeClient);
+            service.Get("taxid_123");
+        }
+
+        [Fact]
+        public void TestTaxIdsPost()
+        {
+            var options = new TaxIdCreateOptions
+            {
+                Type = "eu_vat",
+                Value = "123",
+            };
+            var service = new TaxIdService(this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
         public void TestTaxRatesGet()
         {
             var options = new TaxRateListOptions { Limit = 3 };
