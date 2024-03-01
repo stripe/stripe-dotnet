@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -8,7 +9,6 @@ namespace Stripe
         ICreatable<EphemeralKey, EphemeralKeyCreateOptions>,
         IDeletable<EphemeralKey, EphemeralKeyDeleteOptions>
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         public EphemeralKeyService()
             : base(null)
         {
@@ -34,7 +34,7 @@ namespace Stripe
             requestOptions = requestOptions ?? new RequestOptions();
             requestOptions.StripeVersion = options.StripeVersion;
 
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<EphemeralKey>(HttpMethod.Post, $"/v1/ephemeral_keys", options, requestOptions);
         }
 
         public virtual Task<EphemeralKey> CreateAsync(EphemeralKeyCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
@@ -44,18 +44,17 @@ namespace Stripe
             requestOptions = requestOptions ?? new RequestOptions();
             requestOptions.StripeVersion = options.StripeVersion;
 
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<EphemeralKey>(HttpMethod.Post, $"/v1/ephemeral_keys", options, requestOptions, cancellationToken);
         }
 
         public virtual EphemeralKey Delete(string id, EphemeralKeyDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteEntity(id, options, requestOptions);
+            return this.Request<EphemeralKey>(HttpMethod.Delete, $"/v1/ephemeral_keys/{id}", options, requestOptions);
         }
 
         public virtual Task<EphemeralKey> DeleteAsync(string id, EphemeralKeyDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<EphemeralKey>(HttpMethod.Delete, $"/v1/ephemeral_keys/{id}", options, requestOptions, cancellationToken);
         }
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
