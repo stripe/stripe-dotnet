@@ -282,7 +282,7 @@ We highly recommend keeping an eye on when the beta feature you are interested i
 If your beta feature requires a `Stripe-Version` header to be sent, use the `StripeConfiguration.ApiVersion` property to set it:
 
 > **Note**
-> The `ApiVersion` can only be set in beta versions of the library. 
+> The `ApiVersion` can only be set in beta versions of the library.
 
 ```csharp
 StripeConfiguration.ApiVersion += "; feature_beta=v3";
@@ -307,19 +307,19 @@ stripe-mock
 Run all tests from the `src/StripeTests` directory:
 
 ```sh
-dotnet test
+dotnet test src
 ```
 
 Run some tests, filtering by name:
 
 ```sh
-dotnet test --filter FullyQualifiedName~InvoiceServiceTest
+dotnet test src --filter FullyQualifiedName~InvoiceServiceTest
 ```
 
 Run tests for a single target framework:
 
 ```sh
-dotnet test --framework netcoreapp2.1
+dotnet test src --framework net8.0
 ```
 
 The library uses [`dotnet-format`][dotnet-format] for code formatting. Code
