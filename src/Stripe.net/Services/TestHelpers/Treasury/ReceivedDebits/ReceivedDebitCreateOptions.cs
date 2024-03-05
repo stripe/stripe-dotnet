@@ -38,7 +38,10 @@ namespace Stripe.TestHelpers.Treasury
         public ReceivedDebitInitiatingPaymentMethodDetailsOptions InitiatingPaymentMethodDetails { get; set; }
 
         /// <summary>
-        /// The rails used for the object.
+        /// Specifies the network rails to be used. If not set, will default to the PaymentMethod's
+        /// preferred network. See the <a
+        /// href="https://stripe.com/docs/treasury/money-movement/timelines">docs</a> to learn more
+        /// about money movement timelines for each network type.
         /// </summary>
         [JsonProperty("network")]
         public string Network { get; set; }
