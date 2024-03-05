@@ -48,10 +48,10 @@ namespace Stripe
         /// <summary>
         /// Set to <c>true</c> to attempt to <a
         /// href="https://stripe.com/docs/api/payment_intents/confirm">confirm this
-        /// PaymentIntent</a> this PaymentIntent immediately. This parameter defaults to
-        /// <c>false</c>. When creating and confirming a PaymentIntent at the same time, you can
-        /// also provide the parameters available in the <a
-        /// href="https://stripe.com/docs/api/payment_intents/confirm">Confirm API</a>.
+        /// PaymentIntent</a> immediately. This parameter defaults to <c>false</c>. When creating
+        /// and confirming a PaymentIntent at the same time, you can also provide the parameters
+        /// available in the <a href="https://stripe.com/docs/api/payment_intents/confirm">Confirm
+        /// API</a>.
         /// </summary>
         [JsonProperty("confirm")]
         public bool? Confirm { get; set; }
