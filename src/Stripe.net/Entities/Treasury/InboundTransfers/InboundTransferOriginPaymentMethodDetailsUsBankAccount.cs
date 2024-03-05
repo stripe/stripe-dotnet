@@ -39,7 +39,9 @@ namespace Stripe.Treasury
         public string Last4 { get; set; }
 
         /// <summary>
-        /// The US bank account network used to debit funds.
+        /// The network rails used. See the <a
+        /// href="https://stripe.com/docs/treasury/money-movement/timelines">docs</a> to learn more
+        /// about money movement timelines for each network type.
         /// </summary>
         [JsonProperty("network")]
         public string Network { get; set; }
