@@ -13,7 +13,6 @@ namespace Stripe
         INestedRetrievable<BankAccount, BankAccountGetOptions>,
         INestedUpdatable<BankAccount, BankAccountUpdateOptions>
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         public BankAccountService()
             : base(null)
         {
@@ -29,73 +28,72 @@ namespace Stripe
 
         public virtual BankAccount Create(string parentId, BankAccountCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateNestedEntity(parentId, options, requestOptions);
+            return this.Request<BankAccount>(HttpMethod.Post, $"/v1/customers/{parentId}/sources", options, requestOptions);
         }
 
         public virtual Task<BankAccount> CreateAsync(string parentId, BankAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateNestedEntityAsync(parentId, options, requestOptions, cancellationToken);
+            return this.RequestAsync<BankAccount>(HttpMethod.Post, $"/v1/customers/{parentId}/sources", options, requestOptions, cancellationToken);
         }
 
         public virtual BankAccount Delete(string parentId, string id, BankAccountDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.DeleteNestedEntity(parentId, id, options, requestOptions);
+            return this.Request<BankAccount>(HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions);
         }
 
         public virtual Task<BankAccount> DeleteAsync(string parentId, string id, BankAccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.DeleteNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<BankAccount>(HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual BankAccount Get(string parentId, string id, BankAccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetNestedEntity(parentId, id, options, requestOptions);
+            return this.Request<BankAccount>(HttpMethod.Get, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions);
         }
 
         public virtual Task<BankAccount> GetAsync(string parentId, string id, BankAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<BankAccount>(HttpMethod.Get, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<BankAccount> List(string parentId, BankAccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntities(parentId, options ?? new BankAccountListOptions(), requestOptions);
+            return this.Request<StripeList<BankAccount>>(HttpMethod.Get, $"/v1/customers/{parentId}/sources", options ?? new BankAccountListOptions(), requestOptions);
         }
 
         public virtual Task<StripeList<BankAccount>> ListAsync(string parentId, BankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAsync(parentId, options ?? new BankAccountListOptions(), requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<BankAccount>>(HttpMethod.Get, $"/v1/customers/{parentId}/sources", options ?? new BankAccountListOptions(), requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<BankAccount> ListAutoPaging(string parentId, BankAccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListNestedEntitiesAutoPaging(parentId, options ?? new BankAccountListOptions(), requestOptions);
+            return this.ListRequestAutoPaging<BankAccount>($"/v1/customers/{parentId}/sources", options ?? new BankAccountListOptions(), requestOptions);
         }
 
         public virtual IAsyncEnumerable<BankAccount> ListAutoPagingAsync(string parentId, BankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListNestedEntitiesAutoPagingAsync(parentId, options ?? new BankAccountListOptions(), requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<BankAccount>($"/v1/customers/{parentId}/sources", options ?? new BankAccountListOptions(), requestOptions, cancellationToken);
         }
 
         public virtual BankAccount Update(string parentId, string id, BankAccountUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateNestedEntity(parentId, id, options, requestOptions);
+            return this.Request<BankAccount>(HttpMethod.Post, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions);
         }
 
         public virtual Task<BankAccount> UpdateAsync(string parentId, string id, BankAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateNestedEntityAsync(parentId, id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<BankAccount>(HttpMethod.Post, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual BankAccount Verify(string parentId, string id, BankAccountVerifyOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"{this.InstanceUrl(parentId, id)}/verify", options, requestOptions);
+            return this.Request(HttpMethod.Post, $"/v1/customers/{parentId}/sources/{id}/verify", options, requestOptions);
         }
 
         public virtual Task<BankAccount> VerifyAsync(string parentId, string id, BankAccountVerifyOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"{this.InstanceUrl(parentId, id)}/verify", options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"/v1/customers/{parentId}/sources/{id}/verify", options, requestOptions, cancellationToken);
         }
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 }

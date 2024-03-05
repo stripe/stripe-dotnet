@@ -12,7 +12,6 @@ namespace Stripe
         IUpdatable<Source, SourceUpdateOptions>,
         INestedListable<Source, SourceListOptions>
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         public SourceService()
             : base(null)
         {
@@ -38,12 +37,12 @@ namespace Stripe
 
         public virtual Source Create(SourceCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<Source>(HttpMethod.Post, $"/v1/sources", options, requestOptions);
         }
 
         public virtual Task<Source> CreateAsync(SourceCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(HttpMethod.Post, $"/v1/sources", options, requestOptions, cancellationToken);
         }
 
         public virtual Source Detach(string parentId, string id, SourceDetachOptions options = null, RequestOptions requestOptions = null)
@@ -58,12 +57,12 @@ namespace Stripe
 
         public virtual Source Get(string id, SourceGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.GetEntity(id, options, requestOptions);
+            return this.Request<Source>(HttpMethod.Get, $"/v1/sources/{id}", options, requestOptions);
         }
 
         public virtual Task<Source> GetAsync(string id, SourceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.GetEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(HttpMethod.Get, $"/v1/sources/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Source> List(string parentId, SourceListOptions options = null, RequestOptions requestOptions = null)
@@ -88,23 +87,22 @@ namespace Stripe
 
         public virtual Source Update(string id, SourceUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.UpdateEntity(id, options, requestOptions);
+            return this.Request(HttpMethod.Post, $"/v1/sources/{id}", options, requestOptions);
         }
 
         public virtual Task<Source> UpdateAsync(string id, SourceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.UpdateEntityAsync(id, options, requestOptions, cancellationToken);
+            return this.RequestAsync(HttpMethod.Post, $"/v1/sources/{id}", options, requestOptions, cancellationToken);
         }
 
         public virtual Source Verify(string id, SourceVerifyOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Source>(HttpMethod.Post, $"{this.InstanceUrl(id)}/verify", options, requestOptions);
+            return this.Request<Source>(HttpMethod.Post, $"/v1/sources/{id}/verify", options, requestOptions);
         }
 
         public virtual Task<Source> VerifyAsync(string id, SourceVerifyOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Source>(HttpMethod.Post, $"{this.InstanceUrl(id)}/verify", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(HttpMethod.Post, $"/v1/sources/{id}/verify", options, requestOptions, cancellationToken);
         }
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 }

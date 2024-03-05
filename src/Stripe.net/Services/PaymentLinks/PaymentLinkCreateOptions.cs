@@ -42,7 +42,7 @@ namespace Stripe
         public PaymentLinkAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
-        /// Configuration for collecting the customer's billing address.
+        /// Configuration for collecting the customer's billing address. Defaults to <c>auto</c>.
         /// One of: <c>auto</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("billing_address_collection")]
@@ -135,7 +135,7 @@ namespace Stripe
         /// the session is 0.This may occur if the Checkout Session includes a free trial or a
         /// discount.
         ///
-        /// Can only be set in <c>subscription</c> mode.
+        /// Can only be set in <c>subscription</c> mode. Defaults to <c>always</c>.
         ///
         /// If you'd like information on how to collect a payment method outside of Checkout, read
         /// the guide on <a href="https://stripe.com/docs/payments/checkout/free-trials">configuring

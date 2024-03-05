@@ -96,7 +96,7 @@ namespace Stripe
         public PaymentLinkAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
-        /// Configuration for collecting the customer's billing address.
+        /// Configuration for collecting the customer's billing address. Defaults to <c>auto</c>.
         /// One of: <c>auto</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("billing_address_collection")]
@@ -209,7 +209,8 @@ namespace Stripe
         public PaymentLinkPaymentIntentData PaymentIntentData { get; set; }
 
         /// <summary>
-        /// Configuration for collecting a payment method during checkout.
+        /// Configuration for collecting a payment method during checkout. Defaults to
+        /// <c>always</c>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
         [JsonProperty("payment_method_collection")]

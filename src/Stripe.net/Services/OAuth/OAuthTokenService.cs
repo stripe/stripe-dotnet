@@ -9,7 +9,6 @@ namespace Stripe
     public class OAuthTokenService : Service<OAuthToken>,
         ICreatable<OAuthToken, OAuthTokenCreateOptions>
     {
-#pragma warning disable CS0618 // Type or member is obsolete
         public OAuthTokenService()
             : base(null)
         {
@@ -42,13 +41,13 @@ namespace Stripe
         public virtual OAuthToken Create(OAuthTokenCreateOptions options, RequestOptions requestOptions = null)
         {
             options = this.SetupOAuthTokenCreateOptions(options);
-            return this.CreateEntity(options, requestOptions);
+            return this.Request<OAuthToken>(HttpMethod.Post, "/oauth/token", options, requestOptions);
         }
 
         public virtual Task<OAuthToken> CreateAsync(OAuthTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             options = this.SetupOAuthTokenCreateOptions(options);
-            return this.CreateEntityAsync(options, requestOptions, cancellationToken);
+            return this.RequestAsync<OAuthToken>(HttpMethod.Post, "/oauth/token", options, requestOptions, cancellationToken);
         }
 
         public virtual OAuthDeauthorize Deauthorize(OAuthDeauthorizeOptions options, RequestOptions requestOptions = null)
@@ -110,6 +109,5 @@ namespace Stripe
 
             return options;
         }
-#pragma warning restore CS0618 // Type or member is obsolete
     }
 }
