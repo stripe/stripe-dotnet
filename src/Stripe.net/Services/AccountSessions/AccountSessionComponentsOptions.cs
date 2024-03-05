@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("capital_financing_promotion")]
         public AccountSessionComponentsCapitalFinancingPromotionOptions CapitalFinancingPromotion { get; set; }
 
+        [JsonProperty("documents")]
+        public AccountSessionComponentsDocumentsOptions Documents { get; set; }
+
         /// <summary>
         /// Configuration for the payment details embedded component.
         /// </summary>
