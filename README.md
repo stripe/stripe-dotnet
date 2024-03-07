@@ -294,6 +294,8 @@ New features and bug fixes are released on the latest major version of the Strip
 
 ## Development
 
+.NET 8 is required to build and test Stripe.net SDK, you can install it from [get.dot.net](https://get.dot.net/).
+
 The test suite depends on [stripe-mock][stripe-mock], so make sure to fetch
 and run it from a background terminal
 ([stripe-mock's README][stripe-mock-usage] also contains instructions for
@@ -307,19 +309,19 @@ stripe-mock
 Run all tests from the `src/StripeTests` directory:
 
 ```sh
-dotnet test
+dotnet test src
 ```
 
 Run some tests, filtering by name:
 
 ```sh
-dotnet test --filter FullyQualifiedName~InvoiceServiceTest
+dotnet test src --filter FullyQualifiedName~InvoiceServiceTest
 ```
 
 Run tests for a single target framework:
 
 ```sh
-dotnet test --framework netcoreapp2.1
+dotnet test src --framework net8.0
 ```
 
 The library uses [`dotnet-format`][dotnet-format] for code formatting. Code
