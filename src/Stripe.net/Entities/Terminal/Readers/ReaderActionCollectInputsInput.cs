@@ -5,9 +5,15 @@ namespace Stripe.Terminal
 
     public class ReaderActionCollectInputsInput : StripeEntity<ReaderActionCollectInputsInput>
     {
+        /// <summary>
+        /// Default text of input being collected.
+        /// </summary>
         [JsonProperty("custom_text")]
         public ReaderActionCollectInputsInputCustomText CustomText { get; set; }
 
+        /// <summary>
+        /// Indicate that this input is required, disabling the skip button.
+        /// </summary>
         [JsonProperty("required")]
         public bool? Required { get; set; }
 
@@ -23,11 +29,14 @@ namespace Stripe.Terminal
         [JsonProperty("signature")]
         public ReaderActionCollectInputsInputSignature Signature { get; set; }
 
+        /// <summary>
+        /// Indicate that this input was skipped by the user.
+        /// </summary>
         [JsonProperty("skipped")]
         public bool Skipped { get; set; }
 
         /// <summary>
-        /// Which supported input type will be collected.
+        /// Type of input being collected.
         /// One of: <c>email</c>, <c>numeric</c>, <c>phone</c>, <c>selection</c>, <c>signature</c>,
         /// or <c>text</c>.
         /// </summary>

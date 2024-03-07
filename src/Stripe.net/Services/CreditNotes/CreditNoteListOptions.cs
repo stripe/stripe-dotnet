@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class CreditNoteListOptions : ListOptions
+    public class CreditNoteListOptions : ListOptionsWithCreated
     {
         /// <summary>
         /// Only return credit notes for the customer specified by this customer ID.
