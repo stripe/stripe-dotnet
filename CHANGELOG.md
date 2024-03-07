@@ -1,5 +1,14 @@
 # Changelog
 
+## 43.18.0 - 2024-03-07
+* [#2863](https://github.com/stripe/stripe-dotnet/pull/2863) Update generated code
+  * Add support for `Documents` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
+  * Add support for `RequestThreeDSecure` on `CheckoutSessionPaymentMethodOptionsCardOptions` and `CheckoutSessionPaymentMethodOptionsCard`
+  * Add support for `Created` on `CreditNoteListOptions`
+  * Add support for `SepaDebit` on `InvoicePaymentSettingsPaymentMethodOptionsOptions` and `InvoicePaymentSettingsPaymentMethodOptions`
+* [#2864](https://github.com/stripe/stripe-dotnet/pull/2864) Update development section of readme
+* [#2862](https://github.com/stripe/stripe-dotnet/pull/2862) Explicitly define paths in manually maintained services
+
 ## 43.17.0 - 2024-02-29
 * [#2854](https://github.com/stripe/stripe-dotnet/pull/2854) Update generated code
   * Add support for `Number` on `InvoiceCreateOptions` and `InvoiceUpdateOptions`
