@@ -123,6 +123,37 @@ namespace Stripe.Issuing
         [JsonProperty("number")]
         public string Number { get; set; }
 
+        #region Expandable PersonalizationDesign
+
+        /// <summary>
+        /// (ID of the PersonalizationDesign)
+        /// The personalization design object belonging to this card.
+        /// </summary>
+        [JsonIgnore]
+        public string PersonalizationDesignId
+        {
+            get => this.InternalPersonalizationDesign?.Id;
+            set => this.InternalPersonalizationDesign = SetExpandableFieldId(value, this.InternalPersonalizationDesign);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The personalization design object belonging to this card.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PersonalizationDesign PersonalizationDesign
+        {
+            get => this.InternalPersonalizationDesign?.ExpandedObject;
+            set => this.InternalPersonalizationDesign = SetExpandableFieldObject(value, this.InternalPersonalizationDesign);
+        }
+
+        [JsonProperty("personalization_design")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PersonalizationDesign>))]
+        internal ExpandableField<PersonalizationDesign> InternalPersonalizationDesign { get; set; }
+        #endregion
+
         #region Expandable ReplacedBy
 
         /// <summary>

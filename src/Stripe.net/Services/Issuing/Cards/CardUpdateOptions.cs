@@ -22,6 +22,9 @@ namespace Stripe.Issuing
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("personalization_design")]
+        public string PersonalizationDesign { get; set; }
+
         /// <summary>
         /// The desired new PIN for this card.
         /// </summary>

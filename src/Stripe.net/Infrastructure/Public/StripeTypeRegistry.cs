@@ -98,6 +98,11 @@ namespace Stripe
                 { "issuing.card", typeof(Issuing.Card) },
                 { "issuing.cardholder", typeof(Issuing.Cardholder) },
                 { "issuing.dispute", typeof(Issuing.Dispute) },
+                {
+                    "issuing.personalization_design", typeof(
+                        Issuing.PersonalizationDesign)
+                },
+                { "issuing.physical_bundle", typeof(Issuing.PhysicalBundle) },
                 { "issuing.token", typeof(Issuing.Token) },
                 { "issuing.transaction", typeof(Issuing.Transaction) },
                 { "item", typeof(LineItem) },
