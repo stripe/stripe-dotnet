@@ -767,6 +767,19 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCustomersCashBalanceTransactionsGet()
+        {
+            var options = new CustomerCashBalanceTransactionListOptions
+            {
+                Limit = 3,
+            };
+            var service = new CustomerCashBalanceTransactionService(
+                this.StripeClient);
+            StripeList<CustomerCashBalanceTransaction> customerCashBalanceTransactions = service
+                .List("cus_123", options);
+        }
+
+        [Fact]
         public void TestCustomersDelete()
         {
             var service = new CustomerService(this.StripeClient);
