@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("account_onboarding")]
         public AccountSessionComponentsAccountOnboardingOptions AccountOnboarding { get; set; }
 
+        /// <summary>
+        /// Configuration for the documents embedded component.
+        /// </summary>
         [JsonProperty("documents")]
         public AccountSessionComponentsDocumentsOptions Documents { get; set; }
 
