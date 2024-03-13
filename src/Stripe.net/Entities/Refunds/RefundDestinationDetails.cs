@@ -53,6 +53,9 @@ namespace Stripe
         [JsonProperty("klarna")]
         public RefundDestinationDetailsKlarna Klarna { get; set; }
 
+        [JsonProperty("multibanco")]
+        public RefundDestinationDetailsMultibanco Multibanco { get; set; }
+
         [JsonProperty("mx_bank_transfer")]
         public RefundDestinationDetailsMxBankTransfer MxBankTransfer { get; set; }
 

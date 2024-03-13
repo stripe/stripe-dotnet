@@ -71,6 +71,9 @@ namespace Stripe
         [JsonProperty("link")]
         public PaymentIntentPaymentMethodOptionsLink Link { get; set; }
 
+        [JsonProperty("multibanco")]
+        public PaymentIntentPaymentMethodOptionsMultibanco Multibanco { get; set; }
+
         [JsonProperty("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }
 
