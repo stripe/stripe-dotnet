@@ -1690,6 +1690,61 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestIssuingPersonalizationDesignsGet()
+        {
+            var service = new Stripe.Issuing.PersonalizationDesignService(
+                this.StripeClient);
+            StripeList<Stripe.Issuing.PersonalizationDesign> personalizationDesigns = service
+                .List();
+        }
+
+        [Fact]
+        public void TestIssuingPersonalizationDesignsGet2()
+        {
+            var service = new Stripe.Issuing.PersonalizationDesignService(
+                this.StripeClient);
+            service.Get("pd_xyz");
+        }
+
+        [Fact]
+        public void TestIssuingPersonalizationDesignsPost()
+        {
+            var options = new Stripe.Issuing.PersonalizationDesignCreateOptions
+            {
+                PhysicalBundle = "pb_xyz",
+            };
+            var service = new Stripe.Issuing.PersonalizationDesignService(
+                this.StripeClient);
+            service.Create(options);
+        }
+
+        [Fact]
+        public void TestIssuingPersonalizationDesignsPost2()
+        {
+            var options = new Stripe.Issuing.PersonalizationDesignUpdateOptions();
+            var service = new Stripe.Issuing.PersonalizationDesignService(
+                this.StripeClient);
+            service.Update("pd_xyz", options);
+        }
+
+        [Fact]
+        public void TestIssuingPhysicalBundlesGet()
+        {
+            var service = new Stripe.Issuing.PhysicalBundleService(
+                this.StripeClient);
+            StripeList<Stripe.Issuing.PhysicalBundle> physicalBundles = service
+                .List();
+        }
+
+        [Fact]
+        public void TestIssuingPhysicalBundlesGet2()
+        {
+            var service = new Stripe.Issuing.PhysicalBundleService(
+                this.StripeClient);
+            service.Get("pb_xyz");
+        }
+
+        [Fact]
         public void TestIssuingTransactionsGet()
         {
             var options = new Stripe.Issuing.TransactionListOptions
@@ -3787,6 +3842,37 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.CardService(
                 this.StripeClient);
             service.ShipCard("card_123");
+        }
+
+        [Fact]
+        public void TestTestHelpersIssuingPersonalizationDesignsActivatePost()
+        {
+            var service = new Stripe.TestHelpers.Issuing.PersonalizationDesignService(
+                this.StripeClient);
+            service.Activate("pd_xyz");
+        }
+
+        [Fact]
+        public void TestTestHelpersIssuingPersonalizationDesignsDeactivatePost()
+        {
+            var service = new Stripe.TestHelpers.Issuing.PersonalizationDesignService(
+                this.StripeClient);
+            service.Deactivate("pd_xyz");
+        }
+
+        [Fact]
+        public void TestTestHelpersIssuingPersonalizationDesignsRejectPost()
+        {
+            var options = new Stripe.TestHelpers.Issuing.PersonalizationDesignRejectOptions
+            {
+                RejectionReasons = new Stripe.TestHelpers.Issuing.PersonalizationDesignRejectionReasonsOptions
+                {
+                    CardLogo = new List<string> { "geographic_location" },
+                },
+            };
+            var service = new Stripe.TestHelpers.Issuing.PersonalizationDesignService(
+                this.StripeClient);
+            service.Reject("pd_xyz", options);
         }
 
         [Fact]
