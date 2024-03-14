@@ -1,5 +1,17 @@
 # Changelog
 
+## 43.20.0-beta.1 - 2024-03-14
+* [#2866](https://github.com/stripe/stripe-dotnet/pull/2866) Update generated code for beta
+  * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
+  * Add support for `Create`, `Deactivate`, `Get`, `List`, `Reactivate`, and `Update` methods on resource `Meter`
+  * Add support for `Create` method on resources `MeterEventAdjustment` and `MeterEvent`
+  * Add support for `Create` test helper method on resource `ConfirmationToken`
+  * Add support for `AddLines`, `RemoveLines`, and `UpdateLines` methods on resource `Invoice`
+  * Add support for `Multibanco` on `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `RefundDestinationDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `SecondLine` on `IssuingPhysicalBundleFeatures`
+  * Add support for `MultibancoDisplayDetails` on `PaymentIntentNextAction`
+  * Add support for `Meter` on `PlanCreateOptions`, `Plan`, `PriceRecurringOptions`, and `PriceRecurring`
+
 ## 43.19.0 - 2024-03-14
 * [#2865](https://github.com/stripe/stripe-dotnet/pull/2865) Update generated code
   * Add support for new resources `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
