@@ -1,5 +1,14 @@
 # Changelog
 
+## 43.19.0 - 2024-03-14
+* [#2865](https://github.com/stripe/stripe-dotnet/pull/2865) Update generated code
+  * Add support for new resources `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `PersonalizationDesign`
+  * Add support for `Get` and `List` methods on resource `PhysicalBundle`
+  * Add support for `PersonalizationDesign` on `Issuing.CardCreateOptions`, `Issuing.CardListOptions`, `Issuing.CardUpdateOptions`, and `IssuingCard`
+  * Change type of `SubscriptionApplicationFeePercentOptions` from `number` to `emptyStringable(number)`
+  * Add support for `SepaDebit` on `SubscriptionPaymentSettingsPaymentMethodOptionsOptions` and `SubscriptionPaymentSettingsPaymentMethodOptions`
+
 ## 43.18.0 - 2024-03-07
 * [#2863](https://github.com/stripe/stripe-dotnet/pull/2863) Update generated code
   * Add support for `Documents` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
