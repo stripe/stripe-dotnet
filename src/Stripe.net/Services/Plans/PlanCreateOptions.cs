@@ -94,6 +94,12 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The meter tracking the usage of a metered price.
+        /// </summary>
+        [JsonProperty("meter")]
+        public string Meter { get; set; }
+
+        /// <summary>
         /// A brief description of the plan, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]

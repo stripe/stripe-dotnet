@@ -1,8 +1,25 @@
 # Changelog
 
+## 43.19.0 - 2024-03-14
+* [#2865](https://github.com/stripe/stripe-dotnet/pull/2865) Update generated code
+  * Add support for new resources `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `PersonalizationDesign`
+  * Add support for `Get` and `List` methods on resource `PhysicalBundle`
+  * Add support for `PersonalizationDesign` on `Issuing.CardCreateOptions`, `Issuing.CardListOptions`, `Issuing.CardUpdateOptions`, and `IssuingCard`
+  * Change type of `SubscriptionApplicationFeePercentOptions` from `number` to `emptyStringable(number)`
+  * Add support for `SepaDebit` on `SubscriptionPaymentSettingsPaymentMethodOptionsOptions` and `SubscriptionPaymentSettingsPaymentMethodOptions`
+
 ## 43.19.0-beta.1 - 2024-03-07
 * [#2861](https://github.com/stripe/stripe-dotnet/pull/2861) Update generated code for beta
 
+## 43.18.0 - 2024-03-07
+* [#2863](https://github.com/stripe/stripe-dotnet/pull/2863) Update generated code
+  * Add support for `Documents` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
+  * Add support for `RequestThreeDSecure` on `CheckoutSessionPaymentMethodOptionsCardOptions` and `CheckoutSessionPaymentMethodOptionsCard`
+  * Add support for `Created` on `CreditNoteListOptions`
+  * Add support for `SepaDebit` on `InvoicePaymentSettingsPaymentMethodOptionsOptions` and `InvoicePaymentSettingsPaymentMethodOptions`
+* [#2864](https://github.com/stripe/stripe-dotnet/pull/2864) Update development section of readme
+* [#2862](https://github.com/stripe/stripe-dotnet/pull/2862) Explicitly define paths in manually maintained services
 
 ## 43.18.0-beta.1 - 2024-02-29
 * [#2853](https://github.com/stripe/stripe-dotnet/pull/2853) Update generated code for beta

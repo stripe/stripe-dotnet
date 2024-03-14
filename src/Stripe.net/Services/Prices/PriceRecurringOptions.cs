@@ -30,6 +30,12 @@ namespace Stripe
         public long? IntervalCount { get; set; }
 
         /// <summary>
+        /// The meter tracking the usage of a metered price.
+        /// </summary>
+        [JsonProperty("meter")]
+        public string Meter { get; set; }
+
+        /// <summary>
         /// Default number of trial days when subscribing a customer to this price using <a
         /// href="https://stripe.com/docs/api#create_subscription-trial_from_plan"><c>trial_from_plan=true</c></a>.
         /// </summary>

@@ -41,6 +41,13 @@ namespace Stripe
         public SubscriptionPaymentSettingsPaymentMethodOptionsKonbini Konbini { get; set; }
 
         /// <summary>
+        /// This sub-hash contains details about the SEPA Direct Debit payment method options to
+        /// pass to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("sepa_debit")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the ACH direct debit payment method options to pass
         /// to invoices created by the subscription.
         /// </summary>

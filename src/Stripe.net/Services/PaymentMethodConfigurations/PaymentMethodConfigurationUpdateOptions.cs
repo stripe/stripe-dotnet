@@ -243,6 +243,14 @@ namespace Stripe
         public PaymentMethodConfigurationLinkOptions Link { get; set; }
 
         /// <summary>
+        /// Stripe users in Europe and the United States can accept Multibanco payments from
+        /// customers in Portugal using <a href="https://stripe.com/docs/sources">Sources</a>—a
+        /// single integration path for creating payments using any supported method.
+        /// </summary>
+        [JsonProperty("multibanco")]
+        public PaymentMethodConfigurationMultibancoOptions Multibanco { get; set; }
+
+        /// <summary>
         /// Configuration name.
         /// </summary>
         [JsonProperty("name")]

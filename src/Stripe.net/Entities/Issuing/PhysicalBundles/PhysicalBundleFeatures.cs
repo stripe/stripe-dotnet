@@ -19,5 +19,12 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("carrier_text")]
         public string CarrierText { get; set; }
+
+        /// <summary>
+        /// The policy for how to use a second line on a card with this physical bundle.
+        /// One of: <c>optional</c>, <c>required</c>, or <c>unsupported</c>.
+        /// </summary>
+        [JsonProperty("second_line")]
+        public string SecondLine { get; set; }
     }
 }
