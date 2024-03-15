@@ -24,31 +24,61 @@ namespace Stripe
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/tax_codes";
 
+        /// <summary>
+        /// <p>Retrieves the details of an existing tax code. Supply the unique tax code ID and
+        /// Stripe will return the corresponding tax code information.</p>.
+        ///
+        /// </summary>m
         public virtual TaxCode Get(string id, TaxCodeGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<TaxCode>(HttpMethod.Get, $"/v1/tax_codes/{id}", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>Retrieves the details of an existing tax code. Supply the unique tax code ID and
+        /// Stripe will return the corresponding tax code information.</p>.
+        ///
+        /// </summary>m
         public virtual Task<TaxCode> GetAsync(string id, TaxCodeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<TaxCode>(HttpMethod.Get, $"/v1/tax_codes/{id}", options, requestOptions, cancellationToken);
         }
 
+        /// <summary>
+        /// <p>A list of <a href="https://stripe.com/docs/tax/tax-categories">all tax codes
+        /// available</a> to add to Products in order to allow specific tax calculations.</p>.
+        ///
+        /// </summary>m
         public virtual StripeList<TaxCode> List(TaxCodeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<TaxCode>>(HttpMethod.Get, $"/v1/tax_codes", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>A list of <a href="https://stripe.com/docs/tax/tax-categories">all tax codes
+        /// available</a> to add to Products in order to allow specific tax calculations.</p>.
+        ///
+        /// </summary>m
         public virtual Task<StripeList<TaxCode>> ListAsync(TaxCodeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<TaxCode>>(HttpMethod.Get, $"/v1/tax_codes", options, requestOptions, cancellationToken);
         }
 
+        /// <summary>
+        /// <p>A list of <a href="https://stripe.com/docs/tax/tax-categories">all tax codes
+        /// available</a> to add to Products in order to allow specific tax calculations.</p>.
+        ///
+        /// </summary>m
         public virtual IEnumerable<TaxCode> ListAutoPaging(TaxCodeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<TaxCode>($"/v1/tax_codes", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>A list of <a href="https://stripe.com/docs/tax/tax-categories">all tax codes
+        /// available</a> to add to Products in order to allow specific tax calculations.</p>.
+        ///
+        /// </summary>m
         public virtual IAsyncEnumerable<TaxCode> ListAutoPagingAsync(TaxCodeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<TaxCode>($"/v1/tax_codes", options, requestOptions, cancellationToken);

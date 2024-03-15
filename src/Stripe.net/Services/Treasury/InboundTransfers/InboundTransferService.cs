@@ -25,51 +25,91 @@ namespace Stripe.Treasury
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/treasury/inbound_transfers";
 
+        /// <summary>
+        /// <p>Cancels an InboundTransfer.</p>.
+        ///
+        /// </summary>m
         public virtual InboundTransfer Cancel(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>Cancels an InboundTransfer.</p>.
+        ///
+        /// </summary>m
         public virtual Task<InboundTransfer> CancelAsync(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions, cancellationToken);
         }
 
+        /// <summary>
+        /// <p>Creates an InboundTransfer.</p>.
+        ///
+        /// </summary>m
         public virtual InboundTransfer Create(InboundTransferCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>Creates an InboundTransfer.</p>.
+        ///
+        /// </summary>m
         public virtual Task<InboundTransfer> CreateAsync(InboundTransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
         }
 
+        /// <summary>
+        /// <p>Retrieves the details of an existing InboundTransfer.</p>.
+        ///
+        /// </summary>m
         public virtual InboundTransfer Get(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<InboundTransfer>(HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>Retrieves the details of an existing InboundTransfer.</p>.
+        ///
+        /// </summary>m
         public virtual Task<InboundTransfer> GetAsync(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<InboundTransfer>(HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions, cancellationToken);
         }
 
+        /// <summary>
+        /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
+        ///
+        /// </summary>m
         public virtual StripeList<InboundTransfer> List(InboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<InboundTransfer>>(HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
+        ///
+        /// </summary>m
         public virtual Task<StripeList<InboundTransfer>> ListAsync(InboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<InboundTransfer>>(HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
         }
 
+        /// <summary>
+        /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
+        ///
+        /// </summary>m
         public virtual IEnumerable<InboundTransfer> ListAutoPaging(InboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
+        ///
+        /// </summary>m
         public virtual IAsyncEnumerable<InboundTransfer> ListAutoPagingAsync(InboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);

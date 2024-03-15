@@ -91,13 +91,13 @@ namespace Stripe
         /// <a href="https://stripe.com/docs/js">Stripe.js</a>, or a dictionary, as documented in
         /// the <c>external_account</c> parameter for <a
         /// href="https://stripe.com/docs/api#account_create_bank_account">bank account</a>
-        /// creation. &lt;br&gt;&lt;br&gt;By default, providing an external account sets it as the
-        /// new default external account for its currency, and deletes the old default if one
-        /// exists. To add additional external accounts without replacing the existing default for
-        /// the currency, use the <a
-        /// href="https://stripe.com/docs/api#account_create_bank_account">bank account</a> or <a
-        /// href="https://stripe.com/docs/api#account_create_card">card creation</a> APIs. After you
-        /// create an <a href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
+        /// creation. <br/><br/>By default, providing an external account sets it as the new default
+        /// external account for its currency, and deletes the old default if one exists. To add
+        /// additional external accounts without replacing the existing default for the currency,
+        /// use the <a href="https://stripe.com/docs/api#account_create_bank_account">bank
+        /// account</a> or <a href="https://stripe.com/docs/api#account_create_card">card
+        /// creation</a> APIs. After you create an <a
+        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
         /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
         /// can only be updated for Custom accounts.
         /// </summary>
