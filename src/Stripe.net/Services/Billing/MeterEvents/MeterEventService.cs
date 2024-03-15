@@ -22,11 +22,17 @@ namespace Stripe.Billing
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/billing/meter_events";
 
+        /// <summary>
+        /// <p>Creates a billing meter event</p>.
+        /// </summary>
         public virtual MeterEvent Create(MeterEventCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<MeterEvent>(HttpMethod.Post, $"/v1/billing/meter_events", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>Creates a billing meter event</p>.
+        /// </summary>
         public virtual Task<MeterEvent> CreateAsync(MeterEventCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<MeterEvent>(HttpMethod.Post, $"/v1/billing/meter_events", options, requestOptions, cancellationToken);

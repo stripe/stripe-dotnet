@@ -81,8 +81,8 @@ namespace Stripe
         /// <summary>
         /// Boolean indicating whether the transfer should be reversed when refunding this charge.
         /// The transfer will be reversed proportionally to the amount being refunded (either the
-        /// entire or partial amount).&lt;br&gt;&lt;br&gt;A transfer can be reversed only by the
-        /// application that created the charge.
+        /// entire or partial amount).<br/><br/>A transfer can be reversed only by the application
+        /// that created the charge.
         /// </summary>
         [JsonProperty("reverse_transfer")]
         public bool? ReverseTransfer { get; set; }
