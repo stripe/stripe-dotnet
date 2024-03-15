@@ -235,12 +235,7 @@ namespace Stripe
         public virtual Stream Pdf(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null)
         {
             requestOptions ??= new RequestOptions();
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions = requestOptions.Clone();
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
+            requestOptions.BaseUrl ??= this.Client.FilesBase;
             return this.RequestStreaming(HttpMethod.Get, $"/v1/quotes/{id}/pdf", options, requestOptions);
         }
 
@@ -250,12 +245,7 @@ namespace Stripe
         public virtual Task<Stream> PdfAsync(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             requestOptions ??= new RequestOptions();
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions = requestOptions.Clone();
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
+            requestOptions.BaseUrl ??= this.Client.FilesBase;
             return this.RequestStreamingAsync(HttpMethod.Get, $"/v1/quotes/{id}/pdf", options, requestOptions, cancellationToken);
         }
 
