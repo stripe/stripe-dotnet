@@ -43,8 +43,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/plans/object#plan_object-billing_scheme">per-unit
         /// pricing</a>. For finer granularity, you can configure metered billing to have a <a
         /// href="https://stripe.com/docs/billing/subscriptions/tiers">tiered pricing</a> model.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual UsageRecord Create(string parentId, UsageRecordCreateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<UsageRecord>(HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions);
@@ -71,8 +70,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/plans/object#plan_object-billing_scheme">per-unit
         /// pricing</a>. For finer granularity, you can configure metered billing to have a <a
         /// href="https://stripe.com/docs/billing/subscriptions/tiers">tiered pricing</a> model.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<UsageRecord> CreateAsync(string parentId, UsageRecordCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<UsageRecord>(HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions, cancellationToken);

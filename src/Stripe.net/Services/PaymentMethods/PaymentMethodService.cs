@@ -44,8 +44,7 @@ namespace Stripe
         /// <p>To use this PaymentMethod as the default for invoice or subscription payments, set <a
         /// href="https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method"><c>invoice_settings.default_payment_method</c></a>,
         /// on the Customer to the PaymentMethod’s ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentMethod Attach(string id, PaymentMethodAttachOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}/attach", options, requestOptions);
@@ -69,8 +68,7 @@ namespace Stripe
         /// <p>To use this PaymentMethod as the default for invoice or subscription payments, set <a
         /// href="https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method"><c>invoice_settings.default_payment_method</c></a>,
         /// on the Customer to the PaymentMethod’s ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentMethod> AttachAsync(string id, PaymentMethodAttachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}/attach", options, requestOptions, cancellationToken);
@@ -86,8 +84,7 @@ namespace Stripe
         /// accept a payment immediately or the <a
         /// href="https://stripe.com/docs/payments/save-and-reuse">SetupIntent</a> API to collect
         /// payment method details ahead of a future payment.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentMethod Create(PaymentMethodCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods", options, requestOptions);
@@ -103,8 +100,7 @@ namespace Stripe
         /// accept a payment immediately or the <a
         /// href="https://stripe.com/docs/payments/save-and-reuse">SetupIntent</a> API to collect
         /// payment method details ahead of a future payment.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentMethod> CreateAsync(PaymentMethodCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods", options, requestOptions, cancellationToken);
@@ -113,8 +109,7 @@ namespace Stripe
         /// <summary>
         /// <p>Detaches a PaymentMethod object from a Customer. After a PaymentMethod is detached,
         /// it can no longer be used for a payment or re-attached to a Customer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentMethod Detach(string id, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}/detach", options, requestOptions);
@@ -123,8 +118,7 @@ namespace Stripe
         /// <summary>
         /// <p>Detaches a PaymentMethod object from a Customer. After a PaymentMethod is detached,
         /// it can no longer be used for a payment or re-attached to a Customer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentMethod> DetachAsync(string id, PaymentMethodDetachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}/detach", options, requestOptions, cancellationToken);
@@ -135,8 +129,7 @@ namespace Stripe
         /// method attached to a Customer, you should use <a
         /// href="https://stripe.com/docs/api/payment_methods/customer">Retrieve a Customer’s
         /// PaymentMethods</a></p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentMethod Get(string id, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentMethod>(HttpMethod.Get, $"/v1/payment_methods/{id}", options, requestOptions);
@@ -147,8 +140,7 @@ namespace Stripe
         /// method attached to a Customer, you should use <a
         /// href="https://stripe.com/docs/api/payment_methods/customer">Retrieve a Customer’s
         /// PaymentMethods</a></p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentMethod> GetAsync(string id, PaymentMethodGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentMethod>(HttpMethod.Get, $"/v1/payment_methods/{id}", options, requestOptions, cancellationToken);
@@ -159,8 +151,7 @@ namespace Stripe
         /// PaymentMethods attached to a Customer for payments, you should use the <a
         /// href="https://stripe.com/docs/api/payment_methods/customer_list">List a Customer’s
         /// PaymentMethods</a> API instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<PaymentMethod> List(PaymentMethodListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/payment_methods", options, requestOptions);
@@ -171,8 +162,7 @@ namespace Stripe
         /// PaymentMethods attached to a Customer for payments, you should use the <a
         /// href="https://stripe.com/docs/api/payment_methods/customer_list">List a Customer’s
         /// PaymentMethods</a> API instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<PaymentMethod>> ListAsync(PaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/payment_methods", options, requestOptions, cancellationToken);
@@ -183,8 +173,7 @@ namespace Stripe
         /// PaymentMethods attached to a Customer for payments, you should use the <a
         /// href="https://stripe.com/docs/api/payment_methods/customer_list">List a Customer’s
         /// PaymentMethods</a> API instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<PaymentMethod> ListAutoPaging(PaymentMethodListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<PaymentMethod>($"/v1/payment_methods", options, requestOptions);
@@ -195,8 +184,7 @@ namespace Stripe
         /// PaymentMethods attached to a Customer for payments, you should use the <a
         /// href="https://stripe.com/docs/api/payment_methods/customer_list">List a Customer’s
         /// PaymentMethods</a> API instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<PaymentMethod> ListAutoPagingAsync(PaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<PaymentMethod>($"/v1/payment_methods", options, requestOptions, cancellationToken);
@@ -205,8 +193,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates a PaymentMethod object. A PaymentMethod must be attached a customer to be
         /// updated.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentMethod Update(string id, PaymentMethodUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}", options, requestOptions);
@@ -215,8 +202,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates a PaymentMethod object. A PaymentMethod must be attached a customer to be
         /// updated.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentMethod> UpdateAsync(string id, PaymentMethodUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentMethod>(HttpMethod.Post, $"/v1/payment_methods/{id}", options, requestOptions, cancellationToken);

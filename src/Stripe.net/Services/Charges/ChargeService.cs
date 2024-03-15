@@ -38,8 +38,7 @@ namespace Stripe
         /// <p>Don’t use this method to capture a PaymentIntent-initiated charge. Use <a
         /// href="https://stripe.com/docs/api/payment_intents/capture">Capture a
         /// PaymentIntent</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Charge Capture(string id, ChargeCaptureOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Charge>(HttpMethod.Post, $"/v1/charges/{id}/capture", options, requestOptions);
@@ -56,8 +55,7 @@ namespace Stripe
         /// <p>Don’t use this method to capture a PaymentIntent-initiated charge. Use <a
         /// href="https://stripe.com/docs/api/payment_intents/capture">Capture a
         /// PaymentIntent</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Charge> CaptureAsync(string id, ChargeCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Charge>(HttpMethod.Post, $"/v1/charges/{id}/capture", options, requestOptions, cancellationToken);
@@ -68,8 +66,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/payment_intents">Payment Intents API</a> to initiate a
         /// new payment instead. Confirmation of the PaymentIntent creates the <c>Charge</c> object
         /// used to request payment.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Charge Create(ChargeCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Charge>(HttpMethod.Post, $"/v1/charges", options, requestOptions);
@@ -80,8 +77,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/payment_intents">Payment Intents API</a> to initiate a
         /// new payment instead. Confirmation of the PaymentIntent creates the <c>Charge</c> object
         /// used to request payment.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Charge> CreateAsync(ChargeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Charge>(HttpMethod.Post, $"/v1/charges", options, requestOptions, cancellationToken);
@@ -92,8 +88,7 @@ namespace Stripe
         /// charge ID that was returned from your previous request, and Stripe will return the
         /// corresponding charge information. The same information is returned when creating or
         /// refunding the charge.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Charge Get(string id, ChargeGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Charge>(HttpMethod.Get, $"/v1/charges/{id}", options, requestOptions);
@@ -104,8 +99,7 @@ namespace Stripe
         /// charge ID that was returned from your previous request, and Stripe will return the
         /// corresponding charge information. The same information is returned when creating or
         /// refunding the charge.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Charge> GetAsync(string id, ChargeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Charge>(HttpMethod.Get, $"/v1/charges/{id}", options, requestOptions, cancellationToken);
@@ -114,8 +108,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of charges you’ve previously created. The charges are returned in
         /// sorted order, with the most recent charges appearing first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Charge> List(ChargeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Charge>>(HttpMethod.Get, $"/v1/charges", options, requestOptions);
@@ -124,8 +117,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of charges you’ve previously created. The charges are returned in
         /// sorted order, with the most recent charges appearing first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Charge>> ListAsync(ChargeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Charge>>(HttpMethod.Get, $"/v1/charges", options, requestOptions, cancellationToken);
@@ -134,8 +126,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of charges you’ve previously created. The charges are returned in
         /// sorted order, with the most recent charges appearing first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Charge> ListAutoPaging(ChargeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Charge>($"/v1/charges", options, requestOptions);
@@ -144,8 +135,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of charges you’ve previously created. The charges are returned in
         /// sorted order, with the most recent charges appearing first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Charge> ListAutoPagingAsync(ChargeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Charge>($"/v1/charges", options, requestOptions, cancellationToken);
@@ -158,8 +148,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeSearchResult<Charge> Search(ChargeSearchOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeSearchResult<Charge>>(HttpMethod.Get, $"/v1/charges/search", options, requestOptions);
@@ -172,8 +161,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeSearchResult<Charge>> SearchAsync(ChargeSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeSearchResult<Charge>>(HttpMethod.Get, $"/v1/charges/search", options, requestOptions, cancellationToken);
@@ -186,8 +174,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Charge> SearchAutoPaging(ChargeSearchOptions options = null, RequestOptions requestOptions = null)
         {
             return this.SearchRequestAutoPaging<Charge>($"/v1/charges/search", options, requestOptions);
@@ -200,8 +187,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Charge> SearchAutoPagingAsync(ChargeSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.SearchRequestAutoPagingAsync<Charge>($"/v1/charges/search", options, requestOptions, cancellationToken);
@@ -210,8 +196,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates the specified charge by setting the values of the parameters passed. Any
         /// parameters not provided will be left unchanged.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Charge Update(string id, ChargeUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Charge>(HttpMethod.Post, $"/v1/charges/{id}", options, requestOptions);
@@ -220,8 +205,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates the specified charge by setting the values of the parameters passed. Any
         /// parameters not provided will be left unchanged.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Charge> UpdateAsync(string id, ChargeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Charge>(HttpMethod.Post, $"/v1/charges/{id}", options, requestOptions, cancellationToken);

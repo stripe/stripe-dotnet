@@ -44,8 +44,7 @@ namespace Stripe
         /// automatic collection of the invoices manually after subscription cancellation to have us
         /// proceed. Or, you could check for unpaid invoices before allowing the customer to cancel
         /// the subscription at all.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Subscription Cancel(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions);
@@ -68,8 +67,7 @@ namespace Stripe
         /// automatic collection of the invoices manually after subscription cancellation to have us
         /// proceed. Or, you could check for unpaid invoices before allowing the customer to cancel
         /// the subscription at all.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Subscription> CancelAsync(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
@@ -88,8 +86,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/subscription-schedules#managing">subscription
         /// schedules</a> instead. Schedules provide the flexibility to model more complex billing
         /// configurations that change over time.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Subscription Create(SubscriptionCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions", options, requestOptions);
@@ -108,8 +105,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/subscriptions/subscription-schedules#managing">subscription
         /// schedules</a> instead. Schedules provide the flexibility to model more complex billing
         /// configurations that change over time.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Subscription> CreateAsync(SubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions", options, requestOptions, cancellationToken);
@@ -117,8 +113,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the subscription with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Subscription Get(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions);
@@ -126,8 +121,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the subscription with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Subscription> GetAsync(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
@@ -136,8 +130,7 @@ namespace Stripe
         /// <summary>
         /// <p>By default, returns a list of subscriptions that have not been canceled. In order to
         /// list canceled subscriptions, specify <c>status=canceled</c>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Subscription> List(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Subscription>>(HttpMethod.Get, $"/v1/subscriptions", options, requestOptions);
@@ -146,8 +139,7 @@ namespace Stripe
         /// <summary>
         /// <p>By default, returns a list of subscriptions that have not been canceled. In order to
         /// list canceled subscriptions, specify <c>status=canceled</c>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Subscription>> ListAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Subscription>>(HttpMethod.Get, $"/v1/subscriptions", options, requestOptions, cancellationToken);
@@ -156,8 +148,7 @@ namespace Stripe
         /// <summary>
         /// <p>By default, returns a list of subscriptions that have not been canceled. In order to
         /// list canceled subscriptions, specify <c>status=canceled</c>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Subscription> ListAutoPaging(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Subscription>($"/v1/subscriptions", options, requestOptions);
@@ -166,8 +157,7 @@ namespace Stripe
         /// <summary>
         /// <p>By default, returns a list of subscriptions that have not been canceled. In order to
         /// list canceled subscriptions, specify <c>status=canceled</c>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Subscription> ListAutoPagingAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Subscription>($"/v1/subscriptions", options, requestOptions, cancellationToken);
@@ -180,8 +170,7 @@ namespace Stripe
         /// subscription will become <c>active</c>, and if payment fails the subscription will be
         /// <c>past_due</c>. The resumption invoice will void automatically if not paid by the
         /// expiration date.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Subscription Resume(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions);
@@ -194,8 +183,7 @@ namespace Stripe
         /// subscription will become <c>active</c>, and if payment fails the subscription will be
         /// <c>past_due</c>. The resumption invoice will void automatically if not paid by the
         /// expiration date.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Subscription> ResumeAsync(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions, cancellationToken);
@@ -208,8 +196,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeSearchResult<Subscription> Search(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeSearchResult<Subscription>>(HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions);
@@ -222,8 +209,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeSearchResult<Subscription>> SearchAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeSearchResult<Subscription>>(HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions, cancellationToken);
@@ -236,8 +222,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Subscription> SearchAutoPaging(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null)
         {
             return this.SearchRequestAutoPaging<Subscription>($"/v1/subscriptions/search", options, requestOptions);
@@ -250,8 +235,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Subscription> SearchAutoPagingAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.SearchRequestAutoPagingAsync<Subscription>($"/v1/subscriptions/search", options, requestOptions, cancellationToken);
@@ -302,8 +286,7 @@ namespace Stripe
         /// frequently changing quantity, consider integrating <a
         /// href="https://stripe.com/docs/billing/subscriptions/usage-based">usage-based billing</a>
         /// instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Subscription Update(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions);
@@ -354,8 +337,7 @@ namespace Stripe
         /// frequently changing quantity, consider integrating <a
         /// href="https://stripe.com/docs/billing/subscriptions/usage-based">usage-based billing</a>
         /// instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Subscription> UpdateAsync(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);

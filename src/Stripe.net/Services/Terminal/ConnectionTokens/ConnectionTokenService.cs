@@ -26,8 +26,7 @@ namespace Stripe.Terminal
         /// <p>To connect to a reader the Stripe Terminal SDK needs to retrieve a short-lived
         /// connection token from Stripe, proxied through your server. On your backend, add an
         /// endpoint that creates and returns a connection token.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual ConnectionToken Create(ConnectionTokenCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<ConnectionToken>(HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions);
@@ -37,8 +36,7 @@ namespace Stripe.Terminal
         /// <p>To connect to a reader the Stripe Terminal SDK needs to retrieve a short-lived
         /// connection token from Stripe, proxied through your server. On your backend, add an
         /// endpoint that creates and returns a connection token.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<ConnectionToken> CreateAsync(ConnectionTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<ConnectionToken>(HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions, cancellationToken);

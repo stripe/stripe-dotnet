@@ -29,8 +29,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// <p>Creates a new FinancialAccount. For now, each connected account can only have one
         /// FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual FinancialAccount Create(FinancialAccountCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<FinancialAccount>(HttpMethod.Post, $"/v1/treasury/financial_accounts", options, requestOptions);
@@ -39,8 +38,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// <p>Creates a new FinancialAccount. For now, each connected account can only have one
         /// FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<FinancialAccount> CreateAsync(FinancialAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<FinancialAccount>(HttpMethod.Post, $"/v1/treasury/financial_accounts", options, requestOptions, cancellationToken);
@@ -48,8 +46,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves the details of a FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual FinancialAccount Get(string id, FinancialAccountGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<FinancialAccount>(HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}", options, requestOptions);
@@ -57,8 +54,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves the details of a FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<FinancialAccount> GetAsync(string id, FinancialAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<FinancialAccount>(HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}", options, requestOptions, cancellationToken);
@@ -66,8 +62,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Returns a list of FinancialAccounts.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<FinancialAccount> List(FinancialAccountListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<FinancialAccount>>(HttpMethod.Get, $"/v1/treasury/financial_accounts", options, requestOptions);
@@ -75,8 +70,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Returns a list of FinancialAccounts.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<FinancialAccount>> ListAsync(FinancialAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<FinancialAccount>>(HttpMethod.Get, $"/v1/treasury/financial_accounts", options, requestOptions, cancellationToken);
@@ -84,8 +78,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Returns a list of FinancialAccounts.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<FinancialAccount> ListAutoPaging(FinancialAccountListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<FinancialAccount>($"/v1/treasury/financial_accounts", options, requestOptions);
@@ -93,8 +86,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Returns a list of FinancialAccounts.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<FinancialAccount> ListAutoPagingAsync(FinancialAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<FinancialAccount>($"/v1/treasury/financial_accounts", options, requestOptions, cancellationToken);
@@ -102,8 +94,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves Features information associated with the FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual FinancialAccountFeatures RetrieveFeatures(string id, FinancialAccountRetrieveFeaturesOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<FinancialAccountFeatures>(HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions);
@@ -111,8 +102,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves Features information associated with the FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<FinancialAccountFeatures> RetrieveFeaturesAsync(string id, FinancialAccountRetrieveFeaturesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<FinancialAccountFeatures>(HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions, cancellationToken);
@@ -120,8 +110,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Updates the details of a FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual FinancialAccount Update(string id, FinancialAccountUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<FinancialAccount>(HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}", options, requestOptions);
@@ -129,8 +118,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Updates the details of a FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<FinancialAccount> UpdateAsync(string id, FinancialAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<FinancialAccount>(HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}", options, requestOptions, cancellationToken);
@@ -138,8 +126,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Updates the Features associated with a FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual FinancialAccountFeatures UpdateFeatures(string id, FinancialAccountUpdateFeaturesOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<FinancialAccountFeatures>(HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions);
@@ -147,8 +134,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Updates the Features associated with a FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<FinancialAccountFeatures> UpdateFeaturesAsync(string id, FinancialAccountUpdateFeaturesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<FinancialAccountFeatures>(HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions, cancellationToken);

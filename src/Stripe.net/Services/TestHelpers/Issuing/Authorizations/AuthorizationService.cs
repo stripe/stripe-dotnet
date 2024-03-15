@@ -24,8 +24,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Capture a test-mode authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Stripe.Issuing.Authorization Capture(string id, AuthorizationCaptureOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations/{id}/capture", options, requestOptions);
@@ -33,8 +32,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Capture a test-mode authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Stripe.Issuing.Authorization> CaptureAsync(string id, AuthorizationCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations/{id}/capture", options, requestOptions, cancellationToken);
@@ -42,8 +40,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Create a test-mode authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Stripe.Issuing.Authorization Create(AuthorizationCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations", options, requestOptions);
@@ -51,8 +48,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Create a test-mode authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Stripe.Issuing.Authorization> CreateAsync(AuthorizationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations", options, requestOptions, cancellationToken);
@@ -60,8 +56,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Expire a test-mode Authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Stripe.Issuing.Authorization Expire(string id, AuthorizationExpireOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations/{id}/expire", options, requestOptions);
@@ -69,8 +64,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Expire a test-mode Authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Stripe.Issuing.Authorization> ExpireAsync(string id, AuthorizationExpireOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations/{id}/expire", options, requestOptions, cancellationToken);
@@ -78,8 +72,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Increment a test-mode Authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Stripe.Issuing.Authorization Increment(string id, AuthorizationIncrementOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations/{id}/increment", options, requestOptions);
@@ -87,8 +80,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Increment a test-mode Authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Stripe.Issuing.Authorization> IncrementAsync(string id, AuthorizationIncrementOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations/{id}/increment", options, requestOptions, cancellationToken);
@@ -96,8 +88,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Reverse a test-mode Authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Stripe.Issuing.Authorization Reverse(string id, AuthorizationReverseOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations/{id}/reverse", options, requestOptions);
@@ -105,8 +96,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Reverse a test-mode Authorization.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Stripe.Issuing.Authorization> ReverseAsync(string id, AuthorizationReverseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Stripe.Issuing.Authorization>(HttpMethod.Post, $"/v1/test_helpers/issuing/authorizations/{id}/reverse", options, requestOptions, cancellationToken);

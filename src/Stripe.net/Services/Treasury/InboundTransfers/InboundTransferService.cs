@@ -27,8 +27,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Cancels an InboundTransfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual InboundTransfer Cancel(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions);
@@ -36,8 +35,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Cancels an InboundTransfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<InboundTransfer> CancelAsync(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions, cancellationToken);
@@ -45,8 +43,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Creates an InboundTransfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual InboundTransfer Create(InboundTransferCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions);
@@ -54,8 +51,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Creates an InboundTransfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<InboundTransfer> CreateAsync(InboundTransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
@@ -63,8 +59,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves the details of an existing InboundTransfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual InboundTransfer Get(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<InboundTransfer>(HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions);
@@ -72,8 +67,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves the details of an existing InboundTransfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<InboundTransfer> GetAsync(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<InboundTransfer>(HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions, cancellationToken);
@@ -81,8 +75,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<InboundTransfer> List(InboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<InboundTransfer>>(HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions);
@@ -90,8 +83,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<InboundTransfer>> ListAsync(InboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<InboundTransfer>>(HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
@@ -99,8 +91,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<InboundTransfer> ListAutoPaging(InboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions);
@@ -108,8 +99,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Returns a list of InboundTransfers sent from the specified FinancialAccount.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<InboundTransfer> ListAutoPagingAsync(InboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);

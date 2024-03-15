@@ -26,8 +26,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves a TransactionEntry object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual TransactionEntry Get(string id, TransactionEntryGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<TransactionEntry>(HttpMethod.Get, $"/v1/treasury/transaction_entries/{id}", options, requestOptions);
@@ -35,8 +34,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves a TransactionEntry object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<TransactionEntry> GetAsync(string id, TransactionEntryGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<TransactionEntry>(HttpMethod.Get, $"/v1/treasury/transaction_entries/{id}", options, requestOptions, cancellationToken);
@@ -44,8 +42,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves a list of TransactionEntry objects.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<TransactionEntry> List(TransactionEntryListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<TransactionEntry>>(HttpMethod.Get, $"/v1/treasury/transaction_entries", options, requestOptions);
@@ -53,8 +50,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves a list of TransactionEntry objects.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<TransactionEntry>> ListAsync(TransactionEntryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<TransactionEntry>>(HttpMethod.Get, $"/v1/treasury/transaction_entries", options, requestOptions, cancellationToken);
@@ -62,8 +58,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves a list of TransactionEntry objects.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<TransactionEntry> ListAutoPaging(TransactionEntryListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<TransactionEntry>($"/v1/treasury/transaction_entries", options, requestOptions);
@@ -71,8 +66,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// <p>Retrieves a list of TransactionEntry objects.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<TransactionEntry> ListAutoPagingAsync(TransactionEntryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<TransactionEntry>($"/v1/treasury/transaction_entries", options, requestOptions, cancellationToken);

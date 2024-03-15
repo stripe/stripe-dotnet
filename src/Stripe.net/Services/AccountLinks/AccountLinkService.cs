@@ -26,8 +26,7 @@ namespace Stripe
         /// <p>Creates an AccountLink object that includes a single-use Stripe URL that the platform
         /// can redirect their user to in order to take them through the Connect Onboarding
         /// flow.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual AccountLink Create(AccountLinkCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<AccountLink>(HttpMethod.Post, $"/v1/account_links", options, requestOptions);
@@ -37,8 +36,7 @@ namespace Stripe
         /// <p>Creates an AccountLink object that includes a single-use Stripe URL that the platform
         /// can redirect their user to in order to take them through the Connect Onboarding
         /// flow.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<AccountLink> CreateAsync(AccountLinkCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<AccountLink>(HttpMethod.Post, $"/v1/account_links", options, requestOptions, cancellationToken);

@@ -36,8 +36,7 @@ namespace Stripe
         /// webhook endpoints in the <a
         /// href="https://dashboard.stripe.com/account/webhooks">webhooks settings</a> section of
         /// the Dashboard.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual WebhookEndpoint Create(WebhookEndpointCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<WebhookEndpoint>(HttpMethod.Post, $"/v1/webhook_endpoints", options, requestOptions);
@@ -52,8 +51,7 @@ namespace Stripe
         /// webhook endpoints in the <a
         /// href="https://dashboard.stripe.com/account/webhooks">webhooks settings</a> section of
         /// the Dashboard.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<WebhookEndpoint> CreateAsync(WebhookEndpointCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<WebhookEndpoint>(HttpMethod.Post, $"/v1/webhook_endpoints", options, requestOptions, cancellationToken);
@@ -63,8 +61,7 @@ namespace Stripe
         /// <p>You can also delete webhook endpoints via the <a
         /// href="https://dashboard.stripe.com/account/webhooks">webhook endpoint management</a>
         /// page of the Stripe dashboard.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual WebhookEndpoint Delete(string id, WebhookEndpointDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<WebhookEndpoint>(HttpMethod.Delete, $"/v1/webhook_endpoints/{id}", options, requestOptions);
@@ -74,8 +71,7 @@ namespace Stripe
         /// <p>You can also delete webhook endpoints via the <a
         /// href="https://dashboard.stripe.com/account/webhooks">webhook endpoint management</a>
         /// page of the Stripe dashboard.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<WebhookEndpoint> DeleteAsync(string id, WebhookEndpointDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<WebhookEndpoint>(HttpMethod.Delete, $"/v1/webhook_endpoints/{id}", options, requestOptions, cancellationToken);
@@ -83,8 +79,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the webhook endpoint with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual WebhookEndpoint Get(string id, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<WebhookEndpoint>(HttpMethod.Get, $"/v1/webhook_endpoints/{id}", options, requestOptions);
@@ -92,8 +87,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the webhook endpoint with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<WebhookEndpoint> GetAsync(string id, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<WebhookEndpoint>(HttpMethod.Get, $"/v1/webhook_endpoints/{id}", options, requestOptions, cancellationToken);
@@ -101,8 +95,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your webhook endpoints.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<WebhookEndpoint> List(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<WebhookEndpoint>>(HttpMethod.Get, $"/v1/webhook_endpoints", options, requestOptions);
@@ -110,8 +103,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your webhook endpoints.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<WebhookEndpoint>> ListAsync(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<WebhookEndpoint>>(HttpMethod.Get, $"/v1/webhook_endpoints", options, requestOptions, cancellationToken);
@@ -119,8 +111,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your webhook endpoints.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<WebhookEndpoint> ListAutoPaging(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<WebhookEndpoint>($"/v1/webhook_endpoints", options, requestOptions);
@@ -128,8 +119,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your webhook endpoints.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<WebhookEndpoint> ListAutoPagingAsync(WebhookEndpointListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<WebhookEndpoint>($"/v1/webhook_endpoints", options, requestOptions, cancellationToken);
@@ -138,8 +128,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates the webhook endpoint. You may edit the <c>url</c>, the list of
         /// <c>enabled_events</c>, and the status of your endpoint.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual WebhookEndpoint Update(string id, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<WebhookEndpoint>(HttpMethod.Post, $"/v1/webhook_endpoints/{id}", options, requestOptions);
@@ -148,8 +137,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates the webhook endpoint. You may edit the <c>url</c>, the list of
         /// <c>enabled_events</c>, and the status of your endpoint.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<WebhookEndpoint> UpdateAsync(string id, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<WebhookEndpoint>(HttpMethod.Post, $"/v1/webhook_endpoints/{id}", options, requestOptions, cancellationToken);

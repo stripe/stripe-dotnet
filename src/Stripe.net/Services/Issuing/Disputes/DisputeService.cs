@@ -32,8 +32,7 @@ namespace Stripe.Issuing
         /// evidence is present during submission. Refer to <a
         /// href="https://stripe.com/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute
         /// reasons and evidence</a> for more details about evidence requirements.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Dispute Create(DisputeCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes", options, requestOptions);
@@ -45,8 +44,7 @@ namespace Stripe.Issuing
         /// evidence is present during submission. Refer to <a
         /// href="https://stripe.com/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute
         /// reasons and evidence</a> for more details about evidence requirements.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Dispute> CreateAsync(DisputeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes", options, requestOptions, cancellationToken);
@@ -54,8 +52,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// <p>Retrieves an Issuing <c>Dispute</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Dispute Get(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Dispute>(HttpMethod.Get, $"/v1/issuing/disputes/{id}", options, requestOptions);
@@ -63,8 +60,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// <p>Retrieves an Issuing <c>Dispute</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Dispute> GetAsync(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Dispute>(HttpMethod.Get, $"/v1/issuing/disputes/{id}", options, requestOptions, cancellationToken);
@@ -74,8 +70,7 @@ namespace Stripe.Issuing
         /// <p>Returns a list of Issuing <c>Dispute</c> objects. The objects are sorted in
         /// descending order by creation date, with the most recently created object appearing
         /// first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Dispute> List(DisputeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Dispute>>(HttpMethod.Get, $"/v1/issuing/disputes", options, requestOptions);
@@ -85,8 +80,7 @@ namespace Stripe.Issuing
         /// <p>Returns a list of Issuing <c>Dispute</c> objects. The objects are sorted in
         /// descending order by creation date, with the most recently created object appearing
         /// first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Dispute>>(HttpMethod.Get, $"/v1/issuing/disputes", options, requestOptions, cancellationToken);
@@ -96,8 +90,7 @@ namespace Stripe.Issuing
         /// <p>Returns a list of Issuing <c>Dispute</c> objects. The objects are sorted in
         /// descending order by creation date, with the most recently created object appearing
         /// first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Dispute> ListAutoPaging(DisputeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Dispute>($"/v1/issuing/disputes", options, requestOptions);
@@ -107,8 +100,7 @@ namespace Stripe.Issuing
         /// <p>Returns a list of Issuing <c>Dispute</c> objects. The objects are sorted in
         /// descending order by creation date, with the most recently created object appearing
         /// first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Dispute> ListAutoPagingAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Dispute>($"/v1/issuing/disputes", options, requestOptions, cancellationToken);
@@ -119,8 +111,7 @@ namespace Stripe.Issuing
         /// evidence fields required for the dispute’s reason are present. For more details, see <a
         /// href="https://stripe.com/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute
         /// reasons and evidence</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Dispute Submit(string id, DisputeSubmitOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes/{id}/submit", options, requestOptions);
@@ -131,8 +122,7 @@ namespace Stripe.Issuing
         /// evidence fields required for the dispute’s reason are present. For more details, see <a
         /// href="https://stripe.com/docs/issuing/purchases/disputes#dispute-reasons-and-evidence">Dispute
         /// reasons and evidence</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Dispute> SubmitAsync(string id, DisputeSubmitOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes/{id}/submit", options, requestOptions, cancellationToken);
@@ -142,8 +132,7 @@ namespace Stripe.Issuing
         /// <p>Updates the specified Issuing <c>Dispute</c> object by setting the values of the
         /// parameters passed. Any parameters not provided will be left unchanged. Properties on the
         /// <c>evidence</c> object can be unset by passing in an empty string.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Dispute Update(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes/{id}", options, requestOptions);
@@ -153,8 +142,7 @@ namespace Stripe.Issuing
         /// <p>Updates the specified Issuing <c>Dispute</c> object by setting the values of the
         /// parameters passed. Any parameters not provided will be left unchanged. Properties on the
         /// <c>evidence</c> object can be unset by passing in an empty string.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Dispute> UpdateAsync(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes/{id}", options, requestOptions, cancellationToken);

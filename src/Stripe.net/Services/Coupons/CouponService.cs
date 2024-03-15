@@ -40,8 +40,7 @@ namespace Stripe
         /// <amount>200</amount> is applied to it and an invoice with a subtotal of
         /// <currency>300</currency> will have a final total of <currency>100</currency> if a coupon
         /// with an <c>amount_off</c> of <amount>200</amount> is applied to it.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Coupon Create(CouponCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Coupon>(HttpMethod.Post, $"/v1/coupons", options, requestOptions);
@@ -60,8 +59,7 @@ namespace Stripe
         /// <amount>200</amount> is applied to it and an invoice with a subtotal of
         /// <currency>300</currency> will have a final total of <currency>100</currency> if a coupon
         /// with an <c>amount_off</c> of <amount>200</amount> is applied to it.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Coupon> CreateAsync(CouponCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Coupon>(HttpMethod.Post, $"/v1/coupons", options, requestOptions, cancellationToken);
@@ -72,8 +70,7 @@ namespace Stripe
         /// management</a> page of the Stripe dashboard. However, deleting a coupon does not affect
         /// any customers who have already applied the coupon; it means that new customers can’t
         /// redeem the coupon. You can also delete coupons via the API.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Coupon Delete(string id, CouponDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Coupon>(HttpMethod.Delete, $"/v1/coupons/{id}", options, requestOptions);
@@ -84,8 +81,7 @@ namespace Stripe
         /// management</a> page of the Stripe dashboard. However, deleting a coupon does not affect
         /// any customers who have already applied the coupon; it means that new customers can’t
         /// redeem the coupon. You can also delete coupons via the API.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Coupon> DeleteAsync(string id, CouponDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Coupon>(HttpMethod.Delete, $"/v1/coupons/{id}", options, requestOptions, cancellationToken);
@@ -93,8 +89,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the coupon with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Coupon Get(string id, CouponGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Coupon>(HttpMethod.Get, $"/v1/coupons/{id}", options, requestOptions);
@@ -102,8 +97,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the coupon with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Coupon> GetAsync(string id, CouponGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Coupon>(HttpMethod.Get, $"/v1/coupons/{id}", options, requestOptions, cancellationToken);
@@ -111,8 +105,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your coupons.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Coupon> List(CouponListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Coupon>>(HttpMethod.Get, $"/v1/coupons", options, requestOptions);
@@ -120,8 +113,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your coupons.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Coupon>> ListAsync(CouponListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Coupon>>(HttpMethod.Get, $"/v1/coupons", options, requestOptions, cancellationToken);
@@ -129,8 +121,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your coupons.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Coupon> ListAutoPaging(CouponListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Coupon>($"/v1/coupons", options, requestOptions);
@@ -138,8 +129,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your coupons.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Coupon> ListAutoPagingAsync(CouponListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Coupon>($"/v1/coupons", options, requestOptions, cancellationToken);
@@ -148,8 +138,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates the metadata of a coupon. Other coupon details (currency, duration,
         /// amount_off) are, by design, not editable.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Coupon Update(string id, CouponUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Coupon>(HttpMethod.Post, $"/v1/coupons/{id}", options, requestOptions);
@@ -158,8 +147,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates the metadata of a coupon. Other coupon details (currency, duration,
         /// amount_off) are, by design, not editable.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Coupon> UpdateAsync(string id, CouponUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Coupon>(HttpMethod.Post, $"/v1/coupons/{id}", options, requestOptions, cancellationToken);

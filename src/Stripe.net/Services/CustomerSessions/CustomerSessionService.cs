@@ -26,8 +26,7 @@ namespace Stripe
         /// <p>Creates a customer session object that includes a single-use client secret that you
         /// can use on your front-end to grant client-side API access for certain customer
         /// resources.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual CustomerSession Create(CustomerSessionCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<CustomerSession>(HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions);
@@ -37,8 +36,7 @@ namespace Stripe
         /// <p>Creates a customer session object that includes a single-use client secret that you
         /// can use on your front-end to grant client-side API access for certain customer
         /// resources.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<CustomerSession> CreateAsync(CustomerSessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<CustomerSession>(HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions, cancellationToken);

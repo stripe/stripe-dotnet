@@ -33,8 +33,7 @@ namespace Stripe
         /// make the request. For a sample request, see <a
         /// href="https://stripe.com/docs/connect/account-balances#accounting-for-negative-balances">Accounting
         /// for negative balances</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Balance Get(RequestOptions requestOptions = null)
         {
             return this.Request<Balance>(HttpMethod.Get, $"/v1/balance", null, requestOptions);
@@ -45,8 +44,7 @@ namespace Stripe
         /// make the request. For a sample request, see <a
         /// href="https://stripe.com/docs/connect/account-balances#accounting-for-negative-balances">Accounting
         /// for negative balances</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Balance> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Balance>(HttpMethod.Get, $"/v1/balance", null, requestOptions, cancellationToken);
@@ -57,8 +55,7 @@ namespace Stripe
         /// make the request. For a sample request, see <a
         /// href="https://stripe.com/docs/connect/account-balances#accounting-for-negative-balances">Accounting
         /// for negative balances</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Balance Get(BalanceGetOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Balance>(HttpMethod.Get, $"/v1/balance", options, requestOptions);
@@ -69,8 +66,7 @@ namespace Stripe
         /// make the request. For a sample request, see <a
         /// href="https://stripe.com/docs/connect/account-balances#accounting-for-negative-balances">Accounting
         /// for negative balances</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Balance> GetAsync(BalanceGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Balance>(HttpMethod.Get, $"/v1/balance", options, requestOptions, cancellationToken);

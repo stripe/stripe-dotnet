@@ -25,8 +25,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Calculates tax based on input and returns a Tax <c>Calculation</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Calculation Create(CalculationCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Calculation>(HttpMethod.Post, $"/v1/tax/calculations", options, requestOptions);
@@ -34,8 +33,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Calculates tax based on input and returns a Tax <c>Calculation</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Calculation> CreateAsync(CalculationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Calculation>(HttpMethod.Post, $"/v1/tax/calculations", options, requestOptions, cancellationToken);
@@ -43,8 +41,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Retrieves the line items of a persisted tax calculation as a collection.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<CalculationLineItem> ListLineItems(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<CalculationLineItem>>(HttpMethod.Get, $"/v1/tax/calculations/{id}/line_items", options, requestOptions);
@@ -52,8 +49,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Retrieves the line items of a persisted tax calculation as a collection.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<CalculationLineItem>> ListLineItemsAsync(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<CalculationLineItem>>(HttpMethod.Get, $"/v1/tax/calculations/{id}/line_items", options, requestOptions, cancellationToken);
@@ -61,8 +57,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Retrieves the line items of a persisted tax calculation as a collection.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<CalculationLineItem> ListLineItemsAutoPaging(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<CalculationLineItem>($"/v1/tax/calculations/{id}/line_items", options, requestOptions);
@@ -70,8 +65,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <p>Retrieves the line items of a persisted tax calculation as a collection.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<CalculationLineItem> ListLineItemsAutoPagingAsync(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<CalculationLineItem>($"/v1/tax/calculations/{id}/line_items", options, requestOptions, cancellationToken);

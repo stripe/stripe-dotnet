@@ -24,8 +24,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves a Mandate object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Mandate Get(string id, MandateGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Mandate>(HttpMethod.Get, $"/v1/mandates/{id}", options, requestOptions);
@@ -33,8 +32,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves a Mandate object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Mandate> GetAsync(string id, MandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Mandate>(HttpMethod.Get, $"/v1/mandates/{id}", options, requestOptions, cancellationToken);

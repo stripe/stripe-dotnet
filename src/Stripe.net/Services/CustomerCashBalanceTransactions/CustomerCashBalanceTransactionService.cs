@@ -27,8 +27,7 @@ namespace Stripe
         /// <summary>
         /// <p>Retrieves a specific cash balance transaction, which updated the customer’s <a
         /// href="https://stripe.com/docs/payments/customer-balance">cash balance</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual CustomerCashBalanceTransaction Get(string parentId, string id, CustomerCashBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<CustomerCashBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance_transactions/{id}", options, requestOptions);
@@ -37,8 +36,7 @@ namespace Stripe
         /// <summary>
         /// <p>Retrieves a specific cash balance transaction, which updated the customer’s <a
         /// href="https://stripe.com/docs/payments/customer-balance">cash balance</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<CustomerCashBalanceTransaction> GetAsync(string parentId, string id, CustomerCashBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<CustomerCashBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance_transactions/{id}", options, requestOptions, cancellationToken);
@@ -47,8 +45,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of transactions that modified the customer’s <a
         /// href="https://stripe.com/docs/payments/customer-balance">cash balance</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<CustomerCashBalanceTransaction> List(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<CustomerCashBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance_transactions", options, requestOptions);
@@ -57,8 +54,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of transactions that modified the customer’s <a
         /// href="https://stripe.com/docs/payments/customer-balance">cash balance</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<CustomerCashBalanceTransaction>> ListAsync(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<CustomerCashBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance_transactions", options, requestOptions, cancellationToken);
@@ -67,8 +63,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of transactions that modified the customer’s <a
         /// href="https://stripe.com/docs/payments/customer-balance">cash balance</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<CustomerCashBalanceTransaction> ListAutoPaging(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<CustomerCashBalanceTransaction>($"/v1/customers/{parentId}/cash_balance_transactions", options, requestOptions);
@@ -77,8 +72,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of transactions that modified the customer’s <a
         /// href="https://stripe.com/docs/payments/customer-balance">cash balance</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<CustomerCashBalanceTransaction> ListAutoPagingAsync(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<CustomerCashBalanceTransaction>($"/v1/customers/{parentId}/cash_balance_transactions", options, requestOptions, cancellationToken);

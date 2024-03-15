@@ -35,8 +35,7 @@ namespace Stripe
         /// <p>Once entirely reversed, a transfer can’t be reversed again. This method will return
         /// an error when called on an already-reversed transfer, or when trying to reverse more
         /// money than is left on a transfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual TransferReversal Create(string parentId, TransferReversalCreateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<TransferReversal>(HttpMethod.Post, $"/v1/transfers/{parentId}/reversals", options, requestOptions);
@@ -51,8 +50,7 @@ namespace Stripe
         /// <p>Once entirely reversed, a transfer can’t be reversed again. This method will return
         /// an error when called on an already-reversed transfer, or when trying to reverse more
         /// money than is left on a transfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<TransferReversal> CreateAsync(string parentId, TransferReversalCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<TransferReversal>(HttpMethod.Post, $"/v1/transfers/{parentId}/reversals", options, requestOptions, cancellationToken);
@@ -62,8 +60,7 @@ namespace Stripe
         /// <p>By default, you can see the 10 most recent reversals stored directly on the transfer
         /// object, but you can also retrieve details about a specific reversal stored on the
         /// transfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual TransferReversal Get(string parentId, string id, TransferReversalGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<TransferReversal>(HttpMethod.Get, $"/v1/transfers/{parentId}/reversals/{id}", options, requestOptions);
@@ -73,8 +70,7 @@ namespace Stripe
         /// <p>By default, you can see the 10 most recent reversals stored directly on the transfer
         /// object, but you can also retrieve details about a specific reversal stored on the
         /// transfer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<TransferReversal> GetAsync(string parentId, string id, TransferReversalGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<TransferReversal>(HttpMethod.Get, $"/v1/transfers/{parentId}/reversals/{id}", options, requestOptions, cancellationToken);
@@ -85,8 +81,7 @@ namespace Stripe
         /// 10 most recent reversals are always available by default on the transfer object. If you
         /// need more than those 10, you can use this API method and the <c>limit</c> and
         /// <c>starting_after</c> parameters to page through additional reversals.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<TransferReversal> List(string parentId, TransferReversalListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<TransferReversal>>(HttpMethod.Get, $"/v1/transfers/{parentId}/reversals", options, requestOptions);
@@ -97,8 +92,7 @@ namespace Stripe
         /// 10 most recent reversals are always available by default on the transfer object. If you
         /// need more than those 10, you can use this API method and the <c>limit</c> and
         /// <c>starting_after</c> parameters to page through additional reversals.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<TransferReversal>> ListAsync(string parentId, TransferReversalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<TransferReversal>>(HttpMethod.Get, $"/v1/transfers/{parentId}/reversals", options, requestOptions, cancellationToken);
@@ -109,8 +103,7 @@ namespace Stripe
         /// 10 most recent reversals are always available by default on the transfer object. If you
         /// need more than those 10, you can use this API method and the <c>limit</c> and
         /// <c>starting_after</c> parameters to page through additional reversals.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<TransferReversal> ListAutoPaging(string parentId, TransferReversalListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<TransferReversal>($"/v1/transfers/{parentId}/reversals", options, requestOptions);
@@ -121,8 +114,7 @@ namespace Stripe
         /// 10 most recent reversals are always available by default on the transfer object. If you
         /// need more than those 10, you can use this API method and the <c>limit</c> and
         /// <c>starting_after</c> parameters to page through additional reversals.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<TransferReversal> ListAutoPagingAsync(string parentId, TransferReversalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<TransferReversal>($"/v1/transfers/{parentId}/reversals", options, requestOptions, cancellationToken);
@@ -133,8 +125,7 @@ namespace Stripe
         /// parameters not provided will be left unchanged.</p>.
         ///
         /// <p>This request only accepts metadata and description as arguments.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual TransferReversal Update(string parentId, string id, TransferReversalUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<TransferReversal>(HttpMethod.Post, $"/v1/transfers/{parentId}/reversals/{id}", options, requestOptions);
@@ -145,8 +136,7 @@ namespace Stripe
         /// parameters not provided will be left unchanged.</p>.
         ///
         /// <p>This request only accepts metadata and description as arguments.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<TransferReversal> UpdateAsync(string parentId, string id, TransferReversalUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<TransferReversal>(HttpMethod.Post, $"/v1/transfers/{parentId}/reversals/{id}", options, requestOptions, cancellationToken);

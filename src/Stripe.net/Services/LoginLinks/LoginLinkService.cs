@@ -29,8 +29,7 @@ namespace Stripe
         /// <p><strong>You may only create login links for <a
         /// href="https://stripe.com/docs/connect/express-accounts">Express accounts</a> connected
         /// to your platform</strong>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual LoginLink Create(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<LoginLink>(HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions);
@@ -43,8 +42,7 @@ namespace Stripe
         /// <p><strong>You may only create login links for <a
         /// href="https://stripe.com/docs/connect/express-accounts">Express accounts</a> connected
         /// to your platform</strong>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<LoginLink> CreateAsync(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<LoginLink>(HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions, cancellationToken);

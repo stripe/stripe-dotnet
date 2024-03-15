@@ -27,8 +27,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// <p>Retrieves an Issuing <c>Token</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Token Get(string id, TokenGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{id}", options, requestOptions);
@@ -36,8 +35,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// <p>Retrieves an Issuing <c>Token</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Token> GetAsync(string id, TokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{id}", options, requestOptions, cancellationToken);
@@ -45,8 +43,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// <p>Lists all Issuing <c>Token</c> objects for a given card.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Token> List(TokenListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Token>>(HttpMethod.Get, $"/v1/issuing/tokens", options, requestOptions);
@@ -54,8 +51,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// <p>Lists all Issuing <c>Token</c> objects for a given card.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Token>> ListAsync(TokenListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Token>>(HttpMethod.Get, $"/v1/issuing/tokens", options, requestOptions, cancellationToken);
@@ -63,8 +59,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// <p>Lists all Issuing <c>Token</c> objects for a given card.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Token> ListAutoPaging(TokenListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Token>($"/v1/issuing/tokens", options, requestOptions);
@@ -72,8 +67,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// <p>Lists all Issuing <c>Token</c> objects for a given card.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Token> ListAutoPagingAsync(TokenListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Token>($"/v1/issuing/tokens", options, requestOptions, cancellationToken);
@@ -82,8 +76,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// <p>Attempts to update the specified Issuing <c>Token</c> object to the status
         /// specified.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Token Update(string id, TokenUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{id}", options, requestOptions);
@@ -92,8 +85,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// <p>Attempts to update the specified Issuing <c>Token</c> object to the status
         /// specified.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Token> UpdateAsync(string id, TokenUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{id}", options, requestOptions, cancellationToken);

@@ -30,8 +30,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Creates a new customer object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Customer Create(CustomerCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Customer>(HttpMethod.Post, $"/v1/customers", options, requestOptions);
@@ -39,8 +38,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Creates a new customer object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Customer> CreateAsync(CustomerCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Customer>(HttpMethod.Post, $"/v1/customers", options, requestOptions, cancellationToken);
@@ -52,8 +50,7 @@ namespace Stripe
         /// instructions have already been created for a given customer, the same funding
         /// instructions will be retrieved. In other words, we will return the same funding
         /// instructions each time.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual FundingInstructions CreateFundingInstructions(string id, CustomerCreateFundingInstructionsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<FundingInstructions>(HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions);
@@ -65,8 +62,7 @@ namespace Stripe
         /// instructions have already been created for a given customer, the same funding
         /// instructions will be retrieved. In other words, we will return the same funding
         /// instructions each time.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<FundingInstructions> CreateFundingInstructionsAsync(string id, CustomerCreateFundingInstructionsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<FundingInstructions>(HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions, cancellationToken);
@@ -75,8 +71,7 @@ namespace Stripe
         /// <summary>
         /// <p>Permanently deletes a customer. It cannot be undone. Also immediately cancels any
         /// active subscriptions on the customer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Customer Delete(string id, CustomerDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Customer>(HttpMethod.Delete, $"/v1/customers/{id}", options, requestOptions);
@@ -85,8 +80,7 @@ namespace Stripe
         /// <summary>
         /// <p>Permanently deletes a customer. It cannot be undone. Also immediately cancels any
         /// active subscriptions on the customer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Customer> DeleteAsync(string id, CustomerDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Customer>(HttpMethod.Delete, $"/v1/customers/{id}", options, requestOptions, cancellationToken);
@@ -94,8 +88,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves a Customer object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Customer Get(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Customer>(HttpMethod.Get, $"/v1/customers/{id}", options, requestOptions);
@@ -103,8 +96,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves a Customer object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Customer> GetAsync(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Customer>(HttpMethod.Get, $"/v1/customers/{id}", options, requestOptions, cancellationToken);
@@ -113,8 +105,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of your customers. The customers are returned sorted by creation date,
         /// with the most recent customers appearing first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Customer> List(CustomerListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Customer>>(HttpMethod.Get, $"/v1/customers", options, requestOptions);
@@ -123,8 +114,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of your customers. The customers are returned sorted by creation date,
         /// with the most recent customers appearing first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Customer>> ListAsync(CustomerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Customer>>(HttpMethod.Get, $"/v1/customers", options, requestOptions, cancellationToken);
@@ -133,8 +123,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of your customers. The customers are returned sorted by creation date,
         /// with the most recent customers appearing first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Customer> ListAutoPaging(CustomerListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Customer>($"/v1/customers", options, requestOptions);
@@ -143,8 +132,7 @@ namespace Stripe
         /// <summary>
         /// <p>Returns a list of your customers. The customers are returned sorted by creation date,
         /// with the most recent customers appearing first.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Customer> ListAutoPagingAsync(CustomerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Customer>($"/v1/customers", options, requestOptions, cancellationToken);
@@ -152,8 +140,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of PaymentMethods for a given Customer</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<PaymentMethod> ListPaymentMethods(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions);
@@ -161,8 +148,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of PaymentMethods for a given Customer</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<PaymentMethod>> ListPaymentMethodsAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions, cancellationToken);
@@ -170,8 +156,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of PaymentMethods for a given Customer</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<PaymentMethod> ListPaymentMethodsAutoPaging(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions);
@@ -179,8 +164,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of PaymentMethods for a given Customer</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<PaymentMethod> ListPaymentMethodsAutoPagingAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions, cancellationToken);
@@ -188,8 +172,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves a PaymentMethod object for a given Customer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentMethod RetrievePaymentMethod(string parentId, string id, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentMethod>(HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions);
@@ -197,8 +180,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves a PaymentMethod object for a given Customer.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentMethod> RetrievePaymentMethodAsync(string parentId, string id, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentMethod>(HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions, cancellationToken);
@@ -211,8 +193,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeSearchResult<Customer> Search(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeSearchResult<Customer>>(HttpMethod.Get, $"/v1/customers/search", options, requestOptions);
@@ -225,8 +206,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeSearchResult<Customer>> SearchAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeSearchResult<Customer>>(HttpMethod.Get, $"/v1/customers/search", options, requestOptions, cancellationToken);
@@ -239,8 +219,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Customer> SearchAutoPaging(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
         {
             return this.SearchRequestAutoPaging<Customer>($"/v1/customers/search", options, requestOptions);
@@ -253,8 +232,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Customer> SearchAutoPagingAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.SearchRequestAutoPagingAsync<Customer>($"/v1/customers/search", options, requestOptions, cancellationToken);
@@ -273,8 +251,7 @@ namespace Stripe
         /// <strong>default_source</strong> for a customer will not trigger this behavior.</p>.
         ///
         /// <p>This request accepts mostly the same arguments as the customer creation call.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Customer Update(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Customer>(HttpMethod.Post, $"/v1/customers/{id}", options, requestOptions);
@@ -293,8 +270,7 @@ namespace Stripe
         /// <strong>default_source</strong> for a customer will not trigger this behavior.</p>.
         ///
         /// <p>This request accepts mostly the same arguments as the customer creation call.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Customer> UpdateAsync(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Customer>(HttpMethod.Post, $"/v1/customers/{id}", options, requestOptions, cancellationToken);

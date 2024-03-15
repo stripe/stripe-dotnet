@@ -25,8 +25,7 @@ namespace Stripe
         /// <summary>
         /// <p>Creates a AccountSession object that includes a single-use token that the platform
         /// can use on their front-end to grant client-side API access.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual AccountSession Create(AccountSessionCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<AccountSession>(HttpMethod.Post, $"/v1/account_sessions", options, requestOptions);
@@ -35,8 +34,7 @@ namespace Stripe
         /// <summary>
         /// <p>Creates a AccountSession object that includes a single-use token that the platform
         /// can use on their front-end to grant client-side API access.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<AccountSession> CreateAsync(AccountSessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<AccountSession>(HttpMethod.Post, $"/v1/account_sessions", options, requestOptions, cancellationToken);

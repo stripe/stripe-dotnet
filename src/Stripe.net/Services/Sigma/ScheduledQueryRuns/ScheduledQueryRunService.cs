@@ -26,8 +26,7 @@ namespace Stripe.Sigma
 
         /// <summary>
         /// <p>Retrieves the details of an scheduled query run.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual ScheduledQueryRun Get(string id, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<ScheduledQueryRun>(HttpMethod.Get, $"/v1/sigma/scheduled_query_runs/{id}", options, requestOptions);
@@ -35,8 +34,7 @@ namespace Stripe.Sigma
 
         /// <summary>
         /// <p>Retrieves the details of an scheduled query run.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<ScheduledQueryRun> GetAsync(string id, ScheduledQueryRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<ScheduledQueryRun>(HttpMethod.Get, $"/v1/sigma/scheduled_query_runs/{id}", options, requestOptions, cancellationToken);
@@ -44,8 +42,7 @@ namespace Stripe.Sigma
 
         /// <summary>
         /// <p>Returns a list of scheduled query runs.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<ScheduledQueryRun> List(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<ScheduledQueryRun>>(HttpMethod.Get, $"/v1/sigma/scheduled_query_runs", options, requestOptions);
@@ -53,8 +50,7 @@ namespace Stripe.Sigma
 
         /// <summary>
         /// <p>Returns a list of scheduled query runs.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<ScheduledQueryRun>> ListAsync(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<ScheduledQueryRun>>(HttpMethod.Get, $"/v1/sigma/scheduled_query_runs", options, requestOptions, cancellationToken);
@@ -62,8 +58,7 @@ namespace Stripe.Sigma
 
         /// <summary>
         /// <p>Returns a list of scheduled query runs.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<ScheduledQueryRun> ListAutoPaging(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<ScheduledQueryRun>($"/v1/sigma/scheduled_query_runs", options, requestOptions);
@@ -71,8 +66,7 @@ namespace Stripe.Sigma
 
         /// <summary>
         /// <p>Returns a list of scheduled query runs.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<ScheduledQueryRun> ListAutoPagingAsync(ScheduledQueryRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<ScheduledQueryRun>($"/v1/sigma/scheduled_query_runs", options, requestOptions, cancellationToken);

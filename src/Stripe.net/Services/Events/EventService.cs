@@ -27,8 +27,7 @@ namespace Stripe
         /// <summary>
         /// <p>Retrieves the details of an event. Supply the unique identifier of the event, which
         /// you might have received in a webhook.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Event Get(string id, EventGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Event>(HttpMethod.Get, $"/v1/events/{id}", options, requestOptions);
@@ -37,8 +36,7 @@ namespace Stripe
         /// <summary>
         /// <p>Retrieves the details of an event. Supply the unique identifier of the event, which
         /// you might have received in a webhook.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Event> GetAsync(string id, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Event>(HttpMethod.Get, $"/v1/events/{id}", options, requestOptions, cancellationToken);
@@ -50,8 +48,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Event>>(HttpMethod.Get, $"/v1/events", options, requestOptions);
@@ -63,8 +60,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Event>> ListAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Event>>(HttpMethod.Get, $"/v1/events", options, requestOptions, cancellationToken);
@@ -76,8 +72,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Event> ListAutoPaging(EventListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Event>($"/v1/events", options, requestOptions);
@@ -89,8 +84,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Event> ListAutoPagingAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Event>($"/v1/events", options, requestOptions, cancellationToken);

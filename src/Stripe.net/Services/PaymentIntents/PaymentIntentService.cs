@@ -30,8 +30,7 @@ namespace Stripe
         /// <summary>
         /// <p>Manually reconcile the remaining amount for a <c>customer_balance</c>
         /// PaymentIntent.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentIntent ApplyCustomerBalance(string id, PaymentIntentApplyCustomerBalanceOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/apply_customer_balance", options, requestOptions);
@@ -40,8 +39,7 @@ namespace Stripe
         /// <summary>
         /// <p>Manually reconcile the remaining amount for a <c>customer_balance</c>
         /// PaymentIntent.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentIntent> ApplyCustomerBalanceAsync(string id, PaymentIntentApplyCustomerBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/apply_customer_balance", options, requestOptions, cancellationToken);
@@ -61,8 +59,7 @@ namespace Stripe
         /// <p>You can’t cancel the PaymentIntent for a Checkout Session. <a
         /// href="https://stripe.com/docs/api/checkout/sessions/expire">Expire the Checkout
         /// Session</a> instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentIntent Cancel(string id, PaymentIntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/cancel", options, requestOptions);
@@ -82,8 +79,7 @@ namespace Stripe
         /// <p>You can’t cancel the PaymentIntent for a Checkout Session. <a
         /// href="https://stripe.com/docs/api/checkout/sessions/expire">Expire the Checkout
         /// Session</a> instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentIntent> CancelAsync(string id, PaymentIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/cancel", options, requestOptions, cancellationToken);
@@ -98,8 +94,7 @@ namespace Stripe
         ///
         /// <p>Learn more about <a href="https://stripe.com/docs/payments/capture-later">separate
         /// authorization and capture</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentIntent Capture(string id, PaymentIntentCaptureOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/capture", options, requestOptions);
@@ -114,8 +109,7 @@ namespace Stripe
         ///
         /// <p>Learn more about <a href="https://stripe.com/docs/payments/capture-later">separate
         /// authorization and capture</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentIntent> CaptureAsync(string id, PaymentIntentCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/capture", options, requestOptions, cancellationToken);
@@ -141,8 +135,7 @@ namespace Stripe
         /// for the payment, the PaymentIntent will return to the <c>requires_confirmation</c> state
         /// after those actions are completed. Your server needs to then explicitly re-confirm the
         /// PaymentIntent to initiate the next payment attempt.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentIntent Confirm(string id, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/confirm", options, requestOptions);
@@ -168,8 +161,7 @@ namespace Stripe
         /// for the payment, the PaymentIntent will return to the <c>requires_confirmation</c> state
         /// after those actions are completed. Your server needs to then explicitly re-confirm the
         /// PaymentIntent to initiate the next payment attempt.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentIntent> ConfirmAsync(string id, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/confirm", options, requestOptions, cancellationToken);
@@ -187,8 +179,7 @@ namespace Stripe
         /// confirming the PaymentIntent in the same call. You can use any parameters available in
         /// the <a href="https://stripe.com/docs/api/payment_intents/confirm">confirm API</a> when
         /// you supply <c>confirm=true</c>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentIntent Create(PaymentIntentCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents", options, requestOptions);
@@ -206,8 +197,7 @@ namespace Stripe
         /// confirming the PaymentIntent in the same call. You can use any parameters available in
         /// the <a href="https://stripe.com/docs/api/payment_intents/confirm">confirm API</a> when
         /// you supply <c>confirm=true</c>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentIntent> CreateAsync(PaymentIntentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents", options, requestOptions, cancellationToken);
@@ -223,8 +213,7 @@ namespace Stripe
         /// properties. Refer to the <a
         /// href="https://stripe.com/docs/api#payment_intent_object">payment intent</a> object
         /// reference for more details.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentIntent Get(string id, PaymentIntentGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Get, $"/v1/payment_intents/{id}", options, requestOptions);
@@ -240,8 +229,7 @@ namespace Stripe
         /// properties. Refer to the <a
         /// href="https://stripe.com/docs/api#payment_intent_object">payment intent</a> object
         /// reference for more details.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentIntent> GetAsync(string id, PaymentIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentIntent>(HttpMethod.Get, $"/v1/payment_intents/{id}", options, requestOptions, cancellationToken);
@@ -274,8 +262,7 @@ namespace Stripe
         /// <p>Learn more about <a
         /// href="https://stripe.com/docs/terminal/features/incremental-authorizations">incremental
         /// authorizations</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentIntent IncrementAuthorization(string id, PaymentIntentIncrementAuthorizationOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/increment_authorization", options, requestOptions);
@@ -308,8 +295,7 @@ namespace Stripe
         /// <p>Learn more about <a
         /// href="https://stripe.com/docs/terminal/features/incremental-authorizations">incremental
         /// authorizations</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentIntent> IncrementAuthorizationAsync(string id, PaymentIntentIncrementAuthorizationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/increment_authorization", options, requestOptions, cancellationToken);
@@ -317,8 +303,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of PaymentIntents.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<PaymentIntent> List(PaymentIntentListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<PaymentIntent>>(HttpMethod.Get, $"/v1/payment_intents", options, requestOptions);
@@ -326,8 +311,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of PaymentIntents.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<PaymentIntent>> ListAsync(PaymentIntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<PaymentIntent>>(HttpMethod.Get, $"/v1/payment_intents", options, requestOptions, cancellationToken);
@@ -335,8 +319,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of PaymentIntents.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<PaymentIntent> ListAutoPaging(PaymentIntentListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<PaymentIntent>($"/v1/payment_intents", options, requestOptions);
@@ -344,8 +327,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of PaymentIntents.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<PaymentIntent> ListAutoPagingAsync(PaymentIntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<PaymentIntent>($"/v1/payment_intents", options, requestOptions, cancellationToken);
@@ -358,8 +340,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeSearchResult<PaymentIntent> Search(PaymentIntentSearchOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeSearchResult<PaymentIntent>>(HttpMethod.Get, $"/v1/payment_intents/search", options, requestOptions);
@@ -372,8 +353,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeSearchResult<PaymentIntent>> SearchAsync(PaymentIntentSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeSearchResult<PaymentIntent>>(HttpMethod.Get, $"/v1/payment_intents/search", options, requestOptions, cancellationToken);
@@ -386,8 +366,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<PaymentIntent> SearchAutoPaging(PaymentIntentSearchOptions options = null, RequestOptions requestOptions = null)
         {
             return this.SearchRequestAutoPaging<PaymentIntent>($"/v1/payment_intents/search", options, requestOptions);
@@ -400,8 +379,7 @@ namespace Stripe
         /// normal operating conditions, data is searchable in less than a minute. Occasionally,
         /// propagation of new or updated data can be up to an hour behind during outages. Search
         /// functionality is not available to merchants in India.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<PaymentIntent> SearchAutoPagingAsync(PaymentIntentSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.SearchRequestAutoPagingAsync<PaymentIntent>($"/v1/payment_intents/search", options, requestOptions, cancellationToken);
@@ -415,8 +393,7 @@ namespace Stripe
         /// the PaymentIntent again. If you prefer to update and confirm at the same time, we
         /// recommend updating properties through the <a
         /// href="https://stripe.com/docs/api/payment_intents/confirm">confirm API</a> instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentIntent Update(string id, PaymentIntentUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}", options, requestOptions);
@@ -430,8 +407,7 @@ namespace Stripe
         /// the PaymentIntent again. If you prefer to update and confirm at the same time, we
         /// recommend updating properties through the <a
         /// href="https://stripe.com/docs/api/payment_intents/confirm">confirm API</a> instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentIntent> UpdateAsync(string id, PaymentIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}", options, requestOptions, cancellationToken);
@@ -439,8 +415,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Verifies microdeposits on a PaymentIntent object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentIntent VerifyMicrodeposits(string id, PaymentIntentVerifyMicrodepositsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/verify_microdeposits", options, requestOptions);
@@ -448,8 +423,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Verifies microdeposits on a PaymentIntent object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentIntent> VerifyMicrodepositsAsync(string id, PaymentIntentVerifyMicrodepositsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/verify_microdeposits", options, requestOptions, cancellationToken);

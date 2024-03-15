@@ -24,8 +24,7 @@ namespace Stripe.BillingPortal
 
         /// <summary>
         /// <p>Creates a session of the customer portal.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Session>(HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions);
@@ -33,8 +32,7 @@ namespace Stripe.BillingPortal
 
         /// <summary>
         /// <p>Creates a session of the customer portal.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions, cancellationToken);

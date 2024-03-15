@@ -29,8 +29,7 @@ namespace Stripe
         /// <summary>
         /// <p>A promotion code points to a coupon. You can optionally restrict the code to a
         /// specific customer, redemption limit, and expiration date.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PromotionCode Create(PromotionCodeCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes", options, requestOptions);
@@ -39,8 +38,7 @@ namespace Stripe
         /// <summary>
         /// <p>A promotion code points to a coupon. You can optionally restrict the code to a
         /// specific customer, redemption limit, and expiration date.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PromotionCode> CreateAsync(PromotionCodeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes", options, requestOptions, cancellationToken);
@@ -51,8 +49,7 @@ namespace Stripe
         /// by the customer-facing <c>code</c> use <a
         /// href="https://stripe.com/docs/api/promotion_codes/list">list</a> with the desired
         /// <c>code</c>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PromotionCode Get(string id, PromotionCodeGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PromotionCode>(HttpMethod.Get, $"/v1/promotion_codes/{id}", options, requestOptions);
@@ -63,8 +60,7 @@ namespace Stripe
         /// by the customer-facing <c>code</c> use <a
         /// href="https://stripe.com/docs/api/promotion_codes/list">list</a> with the desired
         /// <c>code</c>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PromotionCode> GetAsync(string id, PromotionCodeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PromotionCode>(HttpMethod.Get, $"/v1/promotion_codes/{id}", options, requestOptions, cancellationToken);
@@ -72,8 +68,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your promotion codes.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<PromotionCode> List(PromotionCodeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<PromotionCode>>(HttpMethod.Get, $"/v1/promotion_codes", options, requestOptions);
@@ -81,8 +76,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your promotion codes.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<PromotionCode>> ListAsync(PromotionCodeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<PromotionCode>>(HttpMethod.Get, $"/v1/promotion_codes", options, requestOptions, cancellationToken);
@@ -90,8 +84,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your promotion codes.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<PromotionCode> ListAutoPaging(PromotionCodeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<PromotionCode>($"/v1/promotion_codes", options, requestOptions);
@@ -99,8 +92,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your promotion codes.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<PromotionCode> ListAutoPagingAsync(PromotionCodeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<PromotionCode>($"/v1/promotion_codes", options, requestOptions, cancellationToken);
@@ -109,8 +101,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates the specified promotion code by setting the values of the parameters passed.
         /// Most fields are, by design, not editable.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PromotionCode Update(string id, PromotionCodeUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes/{id}", options, requestOptions);
@@ -119,8 +110,7 @@ namespace Stripe
         /// <summary>
         /// <p>Updates the specified promotion code by setting the values of the parameters passed.
         /// Most fields are, by design, not editable.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PromotionCode> UpdateAsync(string id, PromotionCodeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes/{id}", options, requestOptions, cancellationToken);

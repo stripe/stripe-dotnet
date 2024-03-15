@@ -38,8 +38,7 @@ namespace Stripe
         /// information</a> when creating the account. Connect Onboarding won’t ask for the
         /// prefilled information during account onboarding. You can prefill any information on the
         /// account.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Account Create(AccountCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Account>(HttpMethod.Post, $"/v1/accounts", options, requestOptions);
@@ -56,8 +55,7 @@ namespace Stripe
         /// information</a> when creating the account. Connect Onboarding won’t ask for the
         /// prefilled information during account onboarding. You can prefill any information on the
         /// account.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Account> CreateAsync(AccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/accounts", options, requestOptions, cancellationToken);
@@ -74,8 +72,7 @@ namespace Stripe
         /// <p>If you want to delete your own account, use the <a
         /// href="https://dashboard.stripe.com/settings/account">account information tab in your
         /// account settings</a> instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Account Delete(string id, AccountDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Account>(HttpMethod.Delete, $"/v1/accounts/{id}", options, requestOptions);
@@ -92,8 +89,7 @@ namespace Stripe
         /// <p>If you want to delete your own account, use the <a
         /// href="https://dashboard.stripe.com/settings/account">account information tab in your
         /// account settings</a> instead.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Account> DeleteAsync(string id, AccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Account>(HttpMethod.Delete, $"/v1/accounts/{id}", options, requestOptions, cancellationToken);
@@ -101,8 +97,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the details of an account.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Account Get(string id, AccountGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Account>(HttpMethod.Get, $"/v1/accounts/{id}", options, requestOptions);
@@ -110,8 +105,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the details of an account.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Account> GetAsync(string id, AccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Account>(HttpMethod.Get, $"/v1/accounts/{id}", options, requestOptions, cancellationToken);
@@ -121,8 +115,7 @@ namespace Stripe
         /// <p>Returns a list of accounts connected to your platform via <a
         /// href="https://stripe.com/docs/connect">Connect</a>. If you’re not a platform, the list
         /// is empty.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Account>>(HttpMethod.Get, $"/v1/accounts", options, requestOptions);
@@ -132,8 +125,7 @@ namespace Stripe
         /// <p>Returns a list of accounts connected to your platform via <a
         /// href="https://stripe.com/docs/connect">Connect</a>. If you’re not a platform, the list
         /// is empty.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Account>> ListAsync(AccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Account>>(HttpMethod.Get, $"/v1/accounts", options, requestOptions, cancellationToken);
@@ -143,8 +135,7 @@ namespace Stripe
         /// <p>Returns a list of accounts connected to your platform via <a
         /// href="https://stripe.com/docs/connect">Connect</a>. If you’re not a platform, the list
         /// is empty.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Account> ListAutoPaging(AccountListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Account>($"/v1/accounts", options, requestOptions);
@@ -154,8 +145,7 @@ namespace Stripe
         /// <p>Returns a list of accounts connected to your platform via <a
         /// href="https://stripe.com/docs/connect">Connect</a>. If you’re not a platform, the list
         /// is empty.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Account> ListAutoPagingAsync(AccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Account>($"/v1/accounts", options, requestOptions, cancellationToken);
@@ -167,8 +157,7 @@ namespace Stripe
         ///
         /// <p>Test-mode Custom and Express accounts can be rejected at any time. Accounts created
         /// using live-mode keys may only be rejected once all balances are zero.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Account Reject(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Account>(HttpMethod.Post, $"/v1/accounts/{id}/reject", options, requestOptions);
@@ -180,8 +169,7 @@ namespace Stripe
         ///
         /// <p>Test-mode Custom and Express accounts can be rejected at any time. Accounts created
         /// using live-mode keys may only be rejected once all balances are zero.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Account> RejectAsync(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/accounts/{id}/reject", options, requestOptions, cancellationToken);
@@ -203,8 +191,7 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/account">Dashboard</a>. Refer to our <a
         /// href="https://stripe.com/docs/connect/updating-accounts">Connect</a> documentation to
         /// learn more about updating accounts.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Account Update(string id, AccountUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Account>(HttpMethod.Post, $"/v1/accounts/{id}", options, requestOptions);
@@ -226,8 +213,7 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/account">Dashboard</a>. Refer to our <a
         /// href="https://stripe.com/docs/connect/updating-accounts">Connect</a> documentation to
         /// learn more about updating accounts.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Account> UpdateAsync(string id, AccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/accounts/{id}", options, requestOptions, cancellationToken);

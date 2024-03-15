@@ -33,8 +33,7 @@ namespace Stripe
         /// represents the most current usage period that hasn’t ended yet. Since new usage records
         /// can still be added, the returned summary information for the subscription item’s ID
         /// should be seen as unstable until the subscription billing period ends.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<UsageRecordSummary> List(string parentId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<UsageRecordSummary>>(HttpMethod.Get, $"/v1/subscription_items/{parentId}/usage_record_summaries", options, requestOptions);
@@ -50,8 +49,7 @@ namespace Stripe
         /// represents the most current usage period that hasn’t ended yet. Since new usage records
         /// can still be added, the returned summary information for the subscription item’s ID
         /// should be seen as unstable until the subscription billing period ends.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<UsageRecordSummary>> ListAsync(string parentId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<UsageRecordSummary>>(HttpMethod.Get, $"/v1/subscription_items/{parentId}/usage_record_summaries", options, requestOptions, cancellationToken);
@@ -67,8 +65,7 @@ namespace Stripe
         /// represents the most current usage period that hasn’t ended yet. Since new usage records
         /// can still be added, the returned summary information for the subscription item’s ID
         /// should be seen as unstable until the subscription billing period ends.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<UsageRecordSummary> ListAutoPaging(string parentId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<UsageRecordSummary>($"/v1/subscription_items/{parentId}/usage_record_summaries", options, requestOptions);
@@ -84,8 +81,7 @@ namespace Stripe
         /// represents the most current usage period that hasn’t ended yet. Since new usage records
         /// can still be added, the returned summary information for the subscription item’s ID
         /// should be seen as unstable until the subscription billing period ends.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<UsageRecordSummary> ListAutoPagingAsync(string parentId, UsageRecordSummaryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<UsageRecordSummary>($"/v1/subscription_items/{parentId}/usage_record_summaries", options, requestOptions, cancellationToken);

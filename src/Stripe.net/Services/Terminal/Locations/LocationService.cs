@@ -31,8 +31,7 @@ namespace Stripe.Terminal
         /// <p>Creates a new <c>Location</c> object. For further details, including which address
         /// fields are required in each country, see the <a
         /// href="https://stripe.com/docs/terminal/fleet/locations">Manage locations</a> guide.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Location Create(LocationCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Location>(HttpMethod.Post, $"/v1/terminal/locations", options, requestOptions);
@@ -42,8 +41,7 @@ namespace Stripe.Terminal
         /// <p>Creates a new <c>Location</c> object. For further details, including which address
         /// fields are required in each country, see the <a
         /// href="https://stripe.com/docs/terminal/fleet/locations">Manage locations</a> guide.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Location> CreateAsync(LocationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Location>(HttpMethod.Post, $"/v1/terminal/locations", options, requestOptions, cancellationToken);
@@ -51,8 +49,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Deletes a <c>Location</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Location Delete(string id, LocationDeleteOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Location>(HttpMethod.Delete, $"/v1/terminal/locations/{id}", options, requestOptions);
@@ -60,8 +57,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Deletes a <c>Location</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Location> DeleteAsync(string id, LocationDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Location>(HttpMethod.Delete, $"/v1/terminal/locations/{id}", options, requestOptions, cancellationToken);
@@ -69,8 +65,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Retrieves a <c>Location</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Location Get(string id, LocationGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Location>(HttpMethod.Get, $"/v1/terminal/locations/{id}", options, requestOptions);
@@ -78,8 +73,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Retrieves a <c>Location</c> object.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Location> GetAsync(string id, LocationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Location>(HttpMethod.Get, $"/v1/terminal/locations/{id}", options, requestOptions, cancellationToken);
@@ -87,8 +81,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Returns a list of <c>Location</c> objects.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Location> List(LocationListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Location>>(HttpMethod.Get, $"/v1/terminal/locations", options, requestOptions);
@@ -96,8 +89,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Returns a list of <c>Location</c> objects.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Location>> ListAsync(LocationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Location>>(HttpMethod.Get, $"/v1/terminal/locations", options, requestOptions, cancellationToken);
@@ -105,8 +97,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Returns a list of <c>Location</c> objects.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Location> ListAutoPaging(LocationListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Location>($"/v1/terminal/locations", options, requestOptions);
@@ -114,8 +105,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Returns a list of <c>Location</c> objects.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Location> ListAutoPagingAsync(LocationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Location>($"/v1/terminal/locations", options, requestOptions, cancellationToken);
@@ -124,8 +114,7 @@ namespace Stripe.Terminal
         /// <summary>
         /// <p>Updates a <c>Location</c> object by setting the values of the parameters passed. Any
         /// parameters not provided will be left unchanged.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Location Update(string id, LocationUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Location>(HttpMethod.Post, $"/v1/terminal/locations/{id}", options, requestOptions);
@@ -134,8 +123,7 @@ namespace Stripe.Terminal
         /// <summary>
         /// <p>Updates a <c>Location</c> object by setting the values of the parameters passed. Any
         /// parameters not provided will be left unchanged.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Location> UpdateAsync(string id, LocationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Location>(HttpMethod.Post, $"/v1/terminal/locations/{id}", options, requestOptions, cancellationToken);

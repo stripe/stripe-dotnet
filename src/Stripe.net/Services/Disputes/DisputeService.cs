@@ -31,8 +31,7 @@ namespace Stripe
         ///
         /// <p>The status of the dispute will change from <c>needs_response</c> to <c>lost</c>.
         /// <em>Closing a dispute is irreversible</em>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Dispute Close(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Dispute>(HttpMethod.Post, $"/v1/disputes/{id}/close", options, requestOptions);
@@ -44,8 +43,7 @@ namespace Stripe
         ///
         /// <p>The status of the dispute will change from <c>needs_response</c> to <c>lost</c>.
         /// <em>Closing a dispute is irreversible</em>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Dispute> CloseAsync(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/disputes/{id}/close", options, requestOptions, cancellationToken);
@@ -53,8 +51,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the dispute with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Dispute Get(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Dispute>(HttpMethod.Get, $"/v1/disputes/{id}", options, requestOptions);
@@ -62,8 +59,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the dispute with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Dispute> GetAsync(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Dispute>(HttpMethod.Get, $"/v1/disputes/{id}", options, requestOptions, cancellationToken);
@@ -71,8 +67,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your disputes.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<Dispute> List(DisputeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<Dispute>>(HttpMethod.Get, $"/v1/disputes", options, requestOptions);
@@ -80,8 +75,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your disputes.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Dispute>>(HttpMethod.Get, $"/v1/disputes", options, requestOptions, cancellationToken);
@@ -89,8 +83,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your disputes.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<Dispute> ListAutoPaging(DisputeListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<Dispute>($"/v1/disputes", options, requestOptions);
@@ -98,8 +91,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your disputes.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<Dispute> ListAutoPagingAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Dispute>($"/v1/disputes", options, requestOptions, cancellationToken);
@@ -114,8 +106,7 @@ namespace Stripe
         /// <p>Depending on your dispute type, different evidence fields will give you a better
         /// chance of winning your dispute. To figure out which evidence fields to provide, see our
         /// <a href="https://stripe.com/docs/disputes/categories">guide to dispute types</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Dispute Update(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Dispute>(HttpMethod.Post, $"/v1/disputes/{id}", options, requestOptions);
@@ -130,8 +121,7 @@ namespace Stripe
         /// <p>Depending on your dispute type, different evidence fields will give you a better
         /// chance of winning your dispute. To figure out which evidence fields to provide, see our
         /// <a href="https://stripe.com/docs/disputes/categories">guide to dispute types</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Dispute> UpdateAsync(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/disputes/{id}", options, requestOptions, cancellationToken);

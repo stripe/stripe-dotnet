@@ -28,8 +28,7 @@ namespace Stripe
         /// token with any API method in place of a bank account dictionary. You can only use this
         /// token once. To do so, attach it to a <a
         /// href="https://stripe.com/docs/api#accounts">Custom account</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Token Create(TokenCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<Token>(HttpMethod.Post, $"/v1/tokens", options, requestOptions);
@@ -40,8 +39,7 @@ namespace Stripe
         /// token with any API method in place of a bank account dictionary. You can only use this
         /// token once. To do so, attach it to a <a
         /// href="https://stripe.com/docs/api#accounts">Custom account</a>.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Token> CreateAsync(TokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Token>(HttpMethod.Post, $"/v1/tokens", options, requestOptions, cancellationToken);
@@ -49,8 +47,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the token with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Token Get(string id, TokenGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<Token>(HttpMethod.Get, $"/v1/tokens/{id}", options, requestOptions);
@@ -58,8 +55,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieves the token with the given ID.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<Token> GetAsync(string id, TokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/tokens/{id}", options, requestOptions, cancellationToken);

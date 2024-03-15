@@ -26,8 +26,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a Country Spec for a given Country code.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual CountrySpec Get(string id, CountrySpecGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<CountrySpec>(HttpMethod.Get, $"/v1/country_specs/{id}", options, requestOptions);
@@ -35,8 +34,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a Country Spec for a given Country code.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<CountrySpec> GetAsync(string id, CountrySpecGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<CountrySpec>(HttpMethod.Get, $"/v1/country_specs/{id}", options, requestOptions, cancellationToken);
@@ -44,8 +42,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Lists all Country Spec objects available in the API.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<CountrySpec> List(CountrySpecListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<CountrySpec>>(HttpMethod.Get, $"/v1/country_specs", options, requestOptions);
@@ -53,8 +50,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Lists all Country Spec objects available in the API.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<CountrySpec>> ListAsync(CountrySpecListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<CountrySpec>>(HttpMethod.Get, $"/v1/country_specs", options, requestOptions, cancellationToken);
@@ -62,8 +58,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Lists all Country Spec objects available in the API.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<CountrySpec> ListAutoPaging(CountrySpecListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<CountrySpec>($"/v1/country_specs", options, requestOptions);
@@ -71,8 +66,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Lists all Country Spec objects available in the API.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<CountrySpec> ListAutoPagingAsync(CountrySpecListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<CountrySpec>($"/v1/country_specs", options, requestOptions, cancellationToken);

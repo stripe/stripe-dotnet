@@ -26,8 +26,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// <p>Retrieves an existing VerificationReport</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual VerificationReport Get(string id, VerificationReportGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<VerificationReport>(HttpMethod.Get, $"/v1/identity/verification_reports/{id}", options, requestOptions);
@@ -35,8 +34,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// <p>Retrieves an existing VerificationReport</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<VerificationReport> GetAsync(string id, VerificationReportGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<VerificationReport>(HttpMethod.Get, $"/v1/identity/verification_reports/{id}", options, requestOptions, cancellationToken);
@@ -44,8 +42,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// <p>List all verification reports.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<VerificationReport> List(VerificationReportListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<VerificationReport>>(HttpMethod.Get, $"/v1/identity/verification_reports", options, requestOptions);
@@ -53,8 +50,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// <p>List all verification reports.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<VerificationReport>> ListAsync(VerificationReportListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<VerificationReport>>(HttpMethod.Get, $"/v1/identity/verification_reports", options, requestOptions, cancellationToken);
@@ -62,8 +58,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// <p>List all verification reports.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<VerificationReport> ListAutoPaging(VerificationReportListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<VerificationReport>($"/v1/identity/verification_reports", options, requestOptions);
@@ -71,8 +66,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// <p>List all verification reports.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<VerificationReport> ListAutoPagingAsync(VerificationReportListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<VerificationReport>($"/v1/identity/verification_reports", options, requestOptions, cancellationToken);

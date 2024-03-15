@@ -28,8 +28,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Creates a payment link.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentLink Create(PaymentLinkCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentLink>(HttpMethod.Post, $"/v1/payment_links", options, requestOptions);
@@ -37,8 +36,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Creates a payment link.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentLink> CreateAsync(PaymentLinkCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentLink>(HttpMethod.Post, $"/v1/payment_links", options, requestOptions, cancellationToken);
@@ -46,8 +44,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieve a payment link.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentLink Get(string id, PaymentLinkGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentLink>(HttpMethod.Get, $"/v1/payment_links/{id}", options, requestOptions);
@@ -55,8 +52,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Retrieve a payment link.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentLink> GetAsync(string id, PaymentLinkGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentLink>(HttpMethod.Get, $"/v1/payment_links/{id}", options, requestOptions, cancellationToken);
@@ -64,8 +60,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your payment links.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<PaymentLink> List(PaymentLinkListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<PaymentLink>>(HttpMethod.Get, $"/v1/payment_links", options, requestOptions);
@@ -73,8 +68,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your payment links.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<PaymentLink>> ListAsync(PaymentLinkListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<PaymentLink>>(HttpMethod.Get, $"/v1/payment_links", options, requestOptions, cancellationToken);
@@ -82,8 +76,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your payment links.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<PaymentLink> ListAutoPaging(PaymentLinkListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<PaymentLink>($"/v1/payment_links", options, requestOptions);
@@ -91,8 +84,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Returns a list of your payment links.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<PaymentLink> ListAutoPagingAsync(PaymentLinkListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<PaymentLink>($"/v1/payment_links", options, requestOptions, cancellationToken);
@@ -102,8 +94,7 @@ namespace Stripe
         /// <p>When retrieving a payment link, there is an includable <strong>line_items</strong>
         /// property containing the first handful of those items. There is also a URL where you can
         /// retrieve the full (paginated) list of line items.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual StripeList<LineItem> ListLineItems(string id, PaymentLinkListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/payment_links/{id}/line_items", options, requestOptions);
@@ -113,8 +104,7 @@ namespace Stripe
         /// <p>When retrieving a payment link, there is an includable <strong>line_items</strong>
         /// property containing the first handful of those items. There is also a URL where you can
         /// retrieve the full (paginated) list of line items.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, PaymentLinkListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/payment_links/{id}/line_items", options, requestOptions, cancellationToken);
@@ -124,8 +114,7 @@ namespace Stripe
         /// <p>When retrieving a payment link, there is an includable <strong>line_items</strong>
         /// property containing the first handful of those items. There is also a URL where you can
         /// retrieve the full (paginated) list of line items.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, PaymentLinkListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<LineItem>($"/v1/payment_links/{id}/line_items", options, requestOptions);
@@ -135,8 +124,7 @@ namespace Stripe
         /// <p>When retrieving a payment link, there is an includable <strong>line_items</strong>
         /// property containing the first handful of those items. There is also a URL where you can
         /// retrieve the full (paginated) list of line items.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, PaymentLinkListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<LineItem>($"/v1/payment_links/{id}/line_items", options, requestOptions, cancellationToken);
@@ -144,8 +132,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Updates a payment link.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual PaymentLink Update(string id, PaymentLinkUpdateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentLink>(HttpMethod.Post, $"/v1/payment_links/{id}", options, requestOptions);
@@ -153,8 +140,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Updates a payment link.</p>.
-        ///
-        /// </summary>m
+        /// </summary>
         public virtual Task<PaymentLink> UpdateAsync(string id, PaymentLinkUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentLink>(HttpMethod.Post, $"/v1/payment_links/{id}", options, requestOptions, cancellationToken);
