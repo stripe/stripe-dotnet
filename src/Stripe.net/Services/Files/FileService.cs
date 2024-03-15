@@ -1,3 +1,4 @@
+// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
@@ -26,13 +27,25 @@ namespace Stripe
 
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
-            requestOptions = this.SetupRequestOptionsForFilesRequest(requestOptions);
+            requestOptions ??= new RequestOptions();
+            if (requestOptions.BaseUrl == null)
+            {
+                requestOptions = requestOptions.Clone();
+                requestOptions.BaseUrl = this.Client.FilesBase;
+            }
+
             return this.Request<File>(HttpMethod.Post, $"/v1/files", options, requestOptions);
         }
 
         public virtual Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            requestOptions = this.SetupRequestOptionsForFilesRequest(requestOptions);
+            requestOptions ??= new RequestOptions();
+            if (requestOptions.BaseUrl == null)
+            {
+                requestOptions = requestOptions.Clone();
+                requestOptions.BaseUrl = this.Client.FilesBase;
+            }
+
             return this.RequestAsync<File>(HttpMethod.Post, $"/v1/files", options, requestOptions, cancellationToken);
         }
 
@@ -64,22 +77,6 @@ namespace Stripe
         public virtual IAsyncEnumerable<File> ListAutoPagingAsync(FileListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<File>($"/v1/files", options, requestOptions, cancellationToken);
-        }
-
-        private RequestOptions SetupRequestOptionsForFilesRequest(RequestOptions requestOptions)
-        {
-            if (requestOptions == null)
-            {
-                requestOptions = new RequestOptions();
-            }
-
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions = requestOptions.Clone();
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
-            return requestOptions;
         }
     }
 }

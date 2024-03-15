@@ -1,3 +1,4 @@
+// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
@@ -11,6 +12,7 @@ namespace Stripe
         IDeletable<Invoice, InvoiceDeleteOptions>,
         IListable<Invoice, InvoiceListOptions>,
         IRetrievable<Invoice, InvoiceGetOptions>,
+        ISearchable<Invoice, InvoiceSearchOptions>,
         IUpdatable<Invoice, InvoiceUpdateOptions>
     {
         public InvoiceService()
@@ -48,12 +50,12 @@ namespace Stripe
 
         public virtual Invoice FinalizeInvoice(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"/v1/invoices/{id}/finalize", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/finalize", options, requestOptions);
         }
 
         public virtual Task<Invoice> FinalizeInvoiceAsync(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"/v1/invoices/{id}/finalize", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/finalize", options, requestOptions, cancellationToken);
         }
 
         public virtual Invoice Get(string id, InvoiceGetOptions options = null, RequestOptions requestOptions = null)
@@ -128,22 +130,22 @@ namespace Stripe
 
         public virtual Invoice MarkUncollectible(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"/v1/invoices/{id}/mark_uncollectible", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/mark_uncollectible", options, requestOptions);
         }
 
         public virtual Task<Invoice> MarkUncollectibleAsync(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"/v1/invoices/{id}/mark_uncollectible", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/mark_uncollectible", options, requestOptions, cancellationToken);
         }
 
         public virtual Invoice Pay(string id, InvoicePayOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"/v1/invoices/{id}/pay", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/pay", options, requestOptions);
         }
 
         public virtual Task<Invoice> PayAsync(string id, InvoicePayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"/v1/invoices/{id}/pay", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/pay", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeSearchResult<Invoice> Search(InvoiceSearchOptions options = null, RequestOptions requestOptions = null)
@@ -168,22 +170,22 @@ namespace Stripe
 
         public virtual Invoice SendInvoice(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"/v1/invoices/{id}/send", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/send", options, requestOptions);
         }
 
         public virtual Task<Invoice> SendInvoiceAsync(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"/v1/invoices/{id}/send", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/send", options, requestOptions, cancellationToken);
         }
 
         public virtual Invoice Upcoming(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Get, $"/v1/invoices/upcoming", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Get, $"/v1/invoices/upcoming", options, requestOptions);
         }
 
         public virtual Task<Invoice> UpcomingAsync(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Get, $"/v1/invoices/upcoming", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Get, $"/v1/invoices/upcoming", options, requestOptions, cancellationToken);
         }
 
         public virtual Invoice Update(string id, InvoiceUpdateOptions options, RequestOptions requestOptions = null)
@@ -198,12 +200,12 @@ namespace Stripe
 
         public virtual Invoice VoidInvoice(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Post, $"/v1/invoices/{id}/void", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/void", options, requestOptions);
         }
 
         public virtual Task<Invoice> VoidInvoiceAsync(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Post, $"/v1/invoices/{id}/void", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/void", options, requestOptions, cancellationToken);
         }
     }
 }
