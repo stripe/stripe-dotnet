@@ -87,7 +87,12 @@ namespace Stripe.Tax
         public virtual Stream Pdf(string id, FormPdfOptions options = null, RequestOptions requestOptions = null)
         {
             requestOptions ??= new RequestOptions();
-            requestOptions.BaseUrl ??= this.Client.FilesBase;
+            if (requestOptions.BaseUrl == null)
+            {
+                requestOptions = requestOptions.Clone();
+                requestOptions.BaseUrl = this.Client.FilesBase;
+            }
+
             return this.RequestStreaming(HttpMethod.Get, $"/v1/tax/forms/{id}/pdf", options, requestOptions);
         }
 
@@ -97,7 +102,12 @@ namespace Stripe.Tax
         public virtual Task<Stream> PdfAsync(string id, FormPdfOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             requestOptions ??= new RequestOptions();
-            requestOptions.BaseUrl ??= this.Client.FilesBase;
+            if (requestOptions.BaseUrl == null)
+            {
+                requestOptions = requestOptions.Clone();
+                requestOptions.BaseUrl = this.Client.FilesBase;
+            }
+
             return this.RequestStreamingAsync(HttpMethod.Get, $"/v1/tax/forms/{id}/pdf", options, requestOptions, cancellationToken);
         }
     }
