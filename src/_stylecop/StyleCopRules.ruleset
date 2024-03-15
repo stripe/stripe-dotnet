@@ -21,10 +21,16 @@
       CS1591: Missing XML comment for publicly visible type or member 'Type_or_Member'
       SA1600: ElementsMustBeDocumented
       SA1623: PropertySummaryDocumentationMustMatchAccessors
+      SA1611: The documentation for parameter '...' is missing
+      SA1616: Element return value documentation should have text
+      SA1615: Element return value should be documented
       Documentation related warnings. We should fix those in the future.
     -->
     <Rule Id="CS1591" Action="None" />
     <Rule Id="SA1600" Action="None" />
     <Rule Id="SA1623" Action="None" />
+    <Rule Id="SA1611" Action="None" />
+    <Rule Id="SA1615" Action="None" />
+    <Rule Id="SA1616" Action="None" />
   </Rules>
 </RuleSet>
