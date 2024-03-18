@@ -139,5 +139,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("shipping")]
         public ConfirmationTokenShipping Shipping { get; set; }
+
+        /// <summary>
+        /// Indicates whether the Stripe SDK is used to handle confirmation flow. Defaults to
+        /// <c>true</c> on ConfirmationToken.
+        /// </summary>
+        [JsonProperty("use_stripe_sdk")]
+        public bool UseStripeSdk { get; set; }
     }
 }
