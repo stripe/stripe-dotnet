@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<PaymentLink, PaymentLinkUpdateOptions>
     {
         public PaymentLinkService()
-            : base(null)
         {
         }
 

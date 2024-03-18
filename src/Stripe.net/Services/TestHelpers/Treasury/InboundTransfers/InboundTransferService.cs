@@ -10,7 +10,6 @@ namespace Stripe.TestHelpers.Treasury
     public class InboundTransferService : Service<Stripe.Treasury.InboundTransfer>
     {
         public InboundTransferService()
-            : base(null)
         {
         }
 

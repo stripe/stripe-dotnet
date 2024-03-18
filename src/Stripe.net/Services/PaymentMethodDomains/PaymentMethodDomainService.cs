@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<PaymentMethodDomain, PaymentMethodDomainUpdateOptions>
     {
         public PaymentMethodDomainService()
-            : base(null)
         {
         }
 

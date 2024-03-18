@@ -12,7 +12,6 @@ namespace Stripe
         INestedRetrievable<CustomerCashBalanceTransaction, CustomerCashBalanceTransactionGetOptions>
     {
         public CustomerCashBalanceTransactionService()
-            : base(null)
         {
         }
 

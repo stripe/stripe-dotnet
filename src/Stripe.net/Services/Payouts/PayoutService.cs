@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<Payout, PayoutUpdateOptions>
     {
         public PayoutService()
-            : base(null)
         {
         }
 

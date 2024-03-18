@@ -14,7 +14,6 @@ namespace Stripe
         INestedUpdatable<TransferReversal, TransferReversalUpdateOptions>
     {
         public TransferReversalService()
-            : base(null)
         {
         }
 

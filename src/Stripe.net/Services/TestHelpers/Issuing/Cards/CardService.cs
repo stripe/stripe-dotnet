@@ -10,7 +10,6 @@ namespace Stripe.TestHelpers.Issuing
     public class CardService : Service<Stripe.Issuing.Card>
     {
         public CardService()
-            : base(null)
         {
         }
 

@@ -16,7 +16,6 @@ namespace Stripe
         IUpdatable<Invoice, InvoiceUpdateOptions>
     {
         public InvoiceService()
-            : base(null)
         {
         }
 

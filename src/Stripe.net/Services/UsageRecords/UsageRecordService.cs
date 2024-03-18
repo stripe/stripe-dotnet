@@ -10,7 +10,6 @@ namespace Stripe
         INestedCreatable<UsageRecord, UsageRecordCreateOptions>
     {
         public UsageRecordService()
-            : base(null)
         {
         }
 

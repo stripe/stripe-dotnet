@@ -14,7 +14,6 @@ namespace Stripe.Issuing
         IUpdatable<Cardholder, CardholderUpdateOptions>
     {
         public CardholderService()
-            : base(null)
         {
         }
 

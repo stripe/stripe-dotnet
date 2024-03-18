@@ -14,7 +14,6 @@ namespace Stripe.Radar
         IRetrievable<ValueListItem, ValueListItemGetOptions>
     {
         public ValueListItemService()
-            : base(null)
         {
         }
 

@@ -10,7 +10,6 @@ namespace Stripe
         ISingletonRetrievable<Balance>
     {
         public BalanceService()
-            : base(null)
         {
         }
 

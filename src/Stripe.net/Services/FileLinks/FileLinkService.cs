@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<FileLink, FileLinkUpdateOptions>
     {
         public FileLinkService()
-            : base(null)
         {
         }
 

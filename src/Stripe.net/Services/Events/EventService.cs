@@ -12,7 +12,6 @@ namespace Stripe
         IRetrievable<Event, EventGetOptions>
     {
         public EventService()
-            : base(null)
         {
         }
 
