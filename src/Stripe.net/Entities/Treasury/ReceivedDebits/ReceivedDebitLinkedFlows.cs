@@ -31,5 +31,12 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("issuing_transaction")]
         public string IssuingTransaction { get; set; }
+
+        /// <summary>
+        /// Set if the ReceivedDebit was created due to a <a
+        /// href="https://stripe.com/docs/api#payouts">Payout</a> object.
+        /// </summary>
+        [JsonProperty("payout")]
+        public string Payout { get; set; }
     }
 }
