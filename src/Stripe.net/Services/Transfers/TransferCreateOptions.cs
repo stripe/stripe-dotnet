@@ -25,9 +25,9 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// The ID of a connected Stripe account. &lt;a
-        /// href="/docs/connect/separate-charges-and-transfers"&gt;See the Connect
-        /// documentation&lt;/a&gt; for details.
+        /// The ID of a connected Stripe account. <a
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">See the Connect
+        /// documentation</a> for details.
         /// </summary>
         [JsonProperty("destination")]
         public string Destination { get; set; }

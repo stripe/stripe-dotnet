@@ -10,7 +10,6 @@ namespace Stripe.Billing
         ICreatable<MeterEventAdjustment, MeterEventAdjustmentCreateOptions>
     {
         public MeterEventAdjustmentService()
-            : base(null)
         {
         }
 
@@ -22,11 +21,17 @@ namespace Stripe.Billing
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/billing/meter_event_adjustments";
 
+        /// <summary>
+        /// <p>Creates a billing meter event adjustment</p>.
+        /// </summary>
         public virtual MeterEventAdjustment Create(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null)
         {
             return this.Request<MeterEventAdjustment>(HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions);
         }
 
+        /// <summary>
+        /// <p>Creates a billing meter event adjustment</p>.
+        /// </summary>
         public virtual Task<MeterEventAdjustment> CreateAsync(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<MeterEventAdjustment>(HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions, cancellationToken);
