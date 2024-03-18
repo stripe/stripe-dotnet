@@ -12,6 +12,12 @@ namespace Stripe.Terminal
         public ConfigurationBbposWiseposEOptions BbposWiseposE { get; set; }
 
         /// <summary>
+        /// Name of the configuration.
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
+        /// <summary>
         /// Configurations for collecting transactions offline.
         /// </summary>
         [JsonProperty("offline")]
