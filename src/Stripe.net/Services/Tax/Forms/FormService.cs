@@ -13,7 +13,6 @@ namespace Stripe.Tax
         IRetrievable<Form, FormGetOptions>
     {
         public FormService()
-            : base(null)
         {
         }
 

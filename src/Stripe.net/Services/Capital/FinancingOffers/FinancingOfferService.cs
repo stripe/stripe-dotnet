@@ -12,7 +12,6 @@ namespace Stripe.Capital
         IRetrievable<FinancingOffer, FinancingOfferGetOptions>
     {
         public FinancingOfferService()
-            : base(null)
         {
         }
 

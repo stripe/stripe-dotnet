@@ -11,7 +11,6 @@ namespace Stripe
         INestedListable<QuotePreviewInvoice, QuotePreviewInvoiceListOptions>
     {
         public QuotePreviewInvoiceService()
-            : base(null)
         {
         }
 

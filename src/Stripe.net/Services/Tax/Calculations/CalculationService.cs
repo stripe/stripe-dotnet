@@ -11,7 +11,6 @@ namespace Stripe.Tax
         ICreatable<Calculation, CalculationCreateOptions>
     {
         public CalculationService()
-            : base(null)
         {
         }
 

@@ -12,7 +12,6 @@ namespace Stripe
         INestedRetrievable<InvoicePayment, InvoicePaymentGetOptions>
     {
         public InvoicePaymentService()
-            : base(null)
         {
         }
 

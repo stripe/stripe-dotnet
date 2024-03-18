@@ -12,7 +12,6 @@ namespace Stripe.Radar
         IRetrievable<EarlyFraudWarning, EarlyFraudWarningGetOptions>
     {
         public EarlyFraudWarningService()
-            : base(null)
         {
         }
 

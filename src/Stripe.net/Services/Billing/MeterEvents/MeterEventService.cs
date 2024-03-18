@@ -10,7 +10,6 @@ namespace Stripe.Billing
         ICreatable<MeterEvent, MeterEventCreateOptions>
     {
         public MeterEventService()
-            : base(null)
         {
         }
 

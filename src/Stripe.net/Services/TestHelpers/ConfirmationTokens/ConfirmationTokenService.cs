@@ -9,7 +9,6 @@ namespace Stripe.TestHelpers
     public class ConfirmationTokenService : Service<ConfirmationToken>
     {
         public ConfirmationTokenService()
-            : base(null)
         {
         }
 

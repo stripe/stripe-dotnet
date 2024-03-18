@@ -11,7 +11,6 @@ namespace Stripe
         INestedListable<QuotePreviewSubscriptionSchedule, QuotePreviewSubscriptionScheduleListOptions>
     {
         public QuotePreviewSubscriptionScheduleService()
-            : base(null)
         {
         }
 

@@ -9,7 +9,6 @@ namespace Stripe
     public class CustomerEntitlementSummaryService : ServiceNested<CustomerEntitlementSummary>
     {
         public CustomerEntitlementSummaryService()
-            : base(null)
         {
         }
 

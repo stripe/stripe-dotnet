@@ -13,7 +13,6 @@ namespace Stripe
         IRetrievable<File, FileGetOptions>
     {
         public FileService()
-            : base(null)
         {
         }
 

@@ -10,7 +10,6 @@ namespace Stripe.Capital
         ISingletonRetrievable<FinancingSummary>
     {
         public FinancingSummaryService()
-            : base(null)
         {
         }
 

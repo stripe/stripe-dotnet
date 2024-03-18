@@ -11,7 +11,6 @@ namespace Stripe
         INestedListable<UsageRecordSummary, UsageRecordSummaryListOptions>
     {
         public UsageRecordSummaryService()
-            : base(null)
         {
         }
 

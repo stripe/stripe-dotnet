@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<Order, OrderUpdateOptions>
     {
         public OrderService()
-            : base(null)
         {
         }
 

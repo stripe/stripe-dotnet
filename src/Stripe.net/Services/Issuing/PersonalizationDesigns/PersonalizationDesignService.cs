@@ -14,7 +14,6 @@ namespace Stripe.Issuing
         IUpdatable<PersonalizationDesign, PersonalizationDesignUpdateOptions>
     {
         public PersonalizationDesignService()
-            : base(null)
         {
         }
 

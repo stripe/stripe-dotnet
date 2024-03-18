@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<PromotionCode, PromotionCodeUpdateOptions>
     {
         public PromotionCodeService()
-            : base(null)
         {
         }
 

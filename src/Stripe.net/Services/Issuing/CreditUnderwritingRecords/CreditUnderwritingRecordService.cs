@@ -12,7 +12,6 @@ namespace Stripe.Issuing
         IRetrievable<CreditUnderwritingRecord, CreditUnderwritingRecordGetOptions>
     {
         public CreditUnderwritingRecordService()
-            : base(null)
         {
         }
 

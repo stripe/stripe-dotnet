@@ -15,7 +15,6 @@ namespace Stripe
         IUpdatable<Plan, PlanUpdateOptions>
     {
         public PlanService()
-            : base(null)
         {
         }
 

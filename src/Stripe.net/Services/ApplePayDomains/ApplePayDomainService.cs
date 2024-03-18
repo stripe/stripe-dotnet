@@ -14,7 +14,6 @@ namespace Stripe
         IRetrievable<ApplePayDomain, ApplePayDomainGetOptions>
     {
         public ApplePayDomainService()
-            : base(null)
         {
         }
 

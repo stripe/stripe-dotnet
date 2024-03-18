@@ -13,7 +13,6 @@ namespace Stripe
         IUpdatable<AccountNotice, AccountNoticeUpdateOptions>
     {
         public AccountNoticeService()
-            : base(null)
         {
         }
 

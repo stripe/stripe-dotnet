@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<ShippingRate, ShippingRateUpdateOptions>
     {
         public ShippingRateService()
-            : base(null)
         {
         }
 

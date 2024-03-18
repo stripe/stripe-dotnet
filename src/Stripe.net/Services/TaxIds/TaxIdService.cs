@@ -14,7 +14,6 @@ namespace Stripe
         INestedRetrievable<TaxId, TaxIdGetOptions>
     {
         public TaxIdService()
-            : base(null)
         {
         }
 

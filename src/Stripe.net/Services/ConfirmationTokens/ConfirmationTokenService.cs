@@ -10,7 +10,6 @@ namespace Stripe
         IRetrievable<ConfirmationToken, ConfirmationTokenGetOptions>
     {
         public ConfirmationTokenService()
-            : base(null)
         {
         }
 

@@ -15,7 +15,6 @@ namespace Stripe.Terminal
         IUpdatable<Reader, ReaderUpdateOptions>
     {
         public ReaderService()
-            : base(null)
         {
         }
 

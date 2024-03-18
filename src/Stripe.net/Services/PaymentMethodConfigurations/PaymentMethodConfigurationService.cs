@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<PaymentMethodConfiguration, PaymentMethodConfigurationUpdateOptions>
     {
         public PaymentMethodConfigurationService()
-            : base(null)
         {
         }
 

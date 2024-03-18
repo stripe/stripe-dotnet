@@ -14,7 +14,6 @@ namespace Stripe.TestHelpers
         IRetrievable<TestClock, TestClockGetOptions>
     {
         public TestClockService()
-            : base(null)
         {
         }
 

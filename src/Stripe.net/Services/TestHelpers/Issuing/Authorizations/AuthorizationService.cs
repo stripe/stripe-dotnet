@@ -10,7 +10,6 @@ namespace Stripe.TestHelpers.Issuing
     public class AuthorizationService : Service<Stripe.Issuing.Authorization>
     {
         public AuthorizationService()
-            : base(null)
         {
         }
 

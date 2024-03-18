@@ -15,7 +15,6 @@ namespace Stripe
         IUpdatable<Account, AccountUpdateOptions>
     {
         public AccountService()
-            : base(null)
         {
         }
 

@@ -12,7 +12,6 @@ namespace Stripe.Entitlements
         IListable<Feature, FeatureListOptions>
     {
         public FeatureService()
-            : base(null)
         {
         }
 

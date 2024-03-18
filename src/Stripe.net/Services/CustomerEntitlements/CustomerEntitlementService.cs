@@ -11,7 +11,6 @@ namespace Stripe
         INestedListable<CustomerEntitlement, CustomerEntitlementListOptions>
     {
         public CustomerEntitlementService()
-            : base(null)
         {
         }
 

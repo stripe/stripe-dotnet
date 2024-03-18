@@ -12,7 +12,6 @@ namespace Stripe.Climate
         IRetrievable<Product, ProductGetOptions>
     {
         public ProductService()
-            : base(null)
         {
         }
 

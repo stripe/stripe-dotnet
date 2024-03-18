@@ -14,7 +14,6 @@ namespace Stripe.BillingPortal
         IUpdatable<Configuration, ConfigurationUpdateOptions>
     {
         public ConfigurationService()
-            : base(null)
         {
         }
 

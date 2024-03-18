@@ -11,7 +11,6 @@ namespace Stripe.FinancialConnections
         INestedListable<AccountInferredBalance, AccountInferredBalanceListOptions>
     {
         public AccountInferredBalanceService()
-            : base(null)
         {
         }
 

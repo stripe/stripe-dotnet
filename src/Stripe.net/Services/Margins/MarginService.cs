@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<Margin, MarginUpdateOptions>
     {
         public MarginService()
-            : base(null)
         {
         }
 

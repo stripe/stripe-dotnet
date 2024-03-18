@@ -12,7 +12,6 @@ namespace Stripe
         IRetrievable<QuotePhase, QuotePhaseGetOptions>
     {
         public QuotePhaseService()
-            : base(null)
         {
         }
 

@@ -11,7 +11,6 @@ namespace Stripe.Billing
         INestedListable<MeterEventSummary, MeterEventSummaryListOptions>
     {
         public MeterEventSummaryService()
-            : base(null)
         {
         }
 

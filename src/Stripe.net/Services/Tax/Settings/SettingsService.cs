@@ -10,7 +10,6 @@ namespace Stripe.Tax
         ISingletonRetrievable<Settings>
     {
         public SettingsService()
-            : base(null)
         {
         }
 

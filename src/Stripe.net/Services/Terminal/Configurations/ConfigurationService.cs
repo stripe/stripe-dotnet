@@ -15,7 +15,6 @@ namespace Stripe.Terminal
         IUpdatable<Configuration, ConfigurationUpdateOptions>
     {
         public ConfigurationService()
-            : base(null)
         {
         }
 

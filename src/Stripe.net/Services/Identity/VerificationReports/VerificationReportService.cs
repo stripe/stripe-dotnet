@@ -12,7 +12,6 @@ namespace Stripe.Identity
         IRetrievable<VerificationReport, VerificationReportGetOptions>
     {
         public VerificationReportService()
-            : base(null)
         {
         }
 

@@ -14,7 +14,6 @@ namespace Stripe.Billing
         IUpdatable<Meter, MeterUpdateOptions>
     {
         public MeterService()
-            : base(null)
         {
         }
 
