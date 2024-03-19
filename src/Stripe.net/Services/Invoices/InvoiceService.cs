@@ -15,8 +15,6 @@ namespace Stripe
         ISearchable<Invoice, InvoiceSearchOptions>,
         IUpdatable<Invoice, InvoiceUpdateOptions>
     {
-        private InvoicePaymentService payments;
-
         public InvoiceService()
         {
         }
@@ -25,9 +23,6 @@ namespace Stripe
             : base(client)
         {
         }
-
-        public InvoicePaymentService Payments => this.payments ??= new InvoicePaymentService(
-            this.Requestor);
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/invoices";

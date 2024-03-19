@@ -14,9 +14,6 @@ namespace Stripe
         IRetrievable<Quote, QuoteGetOptions>,
         IUpdatable<Quote, QuoteUpdateOptions>
     {
-        private QuotePreviewInvoiceService previewInvoices;
-        private QuotePreviewSubscriptionScheduleService previewSubscriptionSchedules;
-
         public QuoteService()
         {
         }
@@ -25,12 +22,6 @@ namespace Stripe
             : base(client)
         {
         }
-
-        public QuotePreviewInvoiceService PreviewInvoices => this.previewInvoices ??= new QuotePreviewInvoiceService(
-            this.Requestor);
-
-        public QuotePreviewSubscriptionScheduleService PreviewSubscriptionSchedules => this.previewSubscriptionSchedules ??= new QuotePreviewSubscriptionScheduleService(
-            this.Requestor);
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/quotes";

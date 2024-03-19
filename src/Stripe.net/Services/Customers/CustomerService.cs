@@ -15,13 +15,6 @@ namespace Stripe
         ISearchable<Customer, CustomerSearchOptions>,
         IUpdatable<Customer, CustomerUpdateOptions>
     {
-        private CashBalanceService cashBalance;
-        private CustomerBalanceTransactionService balanceTransactions;
-        private CustomerCashBalanceTransactionService cashBalanceTransactions;
-        private CustomerEntitlementService entitlements;
-        private CustomerEntitlementSummaryService entitlementSummary;
-        private TaxIdService taxIds;
-
         public CustomerService()
         {
         }
@@ -30,24 +23,6 @@ namespace Stripe
             : base(client)
         {
         }
-
-        public CashBalanceService CashBalance => this.cashBalance ??= new CashBalanceService(
-            this.Requestor);
-
-        public CustomerBalanceTransactionService BalanceTransactions => this.balanceTransactions ??= new CustomerBalanceTransactionService(
-            this.Requestor);
-
-        public CustomerCashBalanceTransactionService CashBalanceTransactions => this.cashBalanceTransactions ??= new CustomerCashBalanceTransactionService(
-            this.Requestor);
-
-        public CustomerEntitlementService Entitlements => this.entitlements ??= new CustomerEntitlementService(
-            this.Requestor);
-
-        public CustomerEntitlementSummaryService EntitlementSummary => this.entitlementSummary ??= new CustomerEntitlementSummaryService(
-            this.Requestor);
-
-        public TaxIdService TaxIds => this.taxIds ??= new TaxIdService(
-            this.Requestor);
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/customers";

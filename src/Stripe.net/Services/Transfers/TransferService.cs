@@ -13,8 +13,6 @@ namespace Stripe
         IRetrievable<Transfer, TransferGetOptions>,
         IUpdatable<Transfer, TransferUpdateOptions>
     {
-        private TransferReversalService reversals;
-
         public TransferService()
         {
         }
@@ -23,9 +21,6 @@ namespace Stripe
             : base(client)
         {
         }
-
-        public TransferReversalService Reversals => this.reversals ??= new TransferReversalService(
-            this.Requestor);
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/transfers";

@@ -11,8 +11,6 @@ namespace Stripe.FinancialConnections
         IListable<Account, AccountListOptions>,
         IRetrievable<Account, AccountGetOptions>
     {
-        private AccountInferredBalanceService inferredBalances;
-
         public AccountService()
         {
         }
@@ -21,9 +19,6 @@ namespace Stripe.FinancialConnections
             : base(client)
         {
         }
-
-        public AccountInferredBalanceService InferredBalances => this.inferredBalances ??= new AccountInferredBalanceService(
-            this.Requestor);
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/financial_connections/accounts";
