@@ -14,6 +14,9 @@ namespace Stripe
         IRetrievable<SubscriptionItem, SubscriptionItemGetOptions>,
         IUpdatable<SubscriptionItem, SubscriptionItemUpdateOptions>
     {
+        private UsageRecordService usageRecords;
+        private UsageRecordSummaryService usageRecordSummaries;
+
         public SubscriptionItemService()
         {
         }
@@ -22,6 +25,12 @@ namespace Stripe
             : base(client)
         {
         }
+
+        public UsageRecordService UsageRecords => this.usageRecords ??= new UsageRecordService(
+            this.Requestor);
+
+        public UsageRecordSummaryService UsageRecordSummaries => this.usageRecordSummaries ??= new UsageRecordSummaryService(
+            this.Requestor);
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/subscription_items";

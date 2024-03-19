@@ -14,6 +14,11 @@ namespace Stripe
         IRetrievable<Account, AccountGetOptions>,
         IUpdatable<Account, AccountUpdateOptions>
     {
+        private CapabilityService capabilities;
+        private ExternalAccountService externalAccounts;
+        private LoginLinkService loginLinks;
+        private PersonService persons;
+
         public AccountService()
         {
         }
@@ -22,6 +27,18 @@ namespace Stripe
             : base(client)
         {
         }
+
+        public CapabilityService Capabilities => this.capabilities ??= new CapabilityService(
+            this.Requestor);
+
+        public ExternalAccountService ExternalAccounts => this.externalAccounts ??= new ExternalAccountService(
+            this.Requestor);
+
+        public LoginLinkService LoginLinks => this.loginLinks ??= new LoginLinkService(
+            this.Requestor);
+
+        public PersonService Persons => this.persons ??= new PersonService(
+            this.Requestor);
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/accounts";

@@ -123,7 +123,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription_billing_cycle_anchor")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<DateTime?, SubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
+        public AnyOf<DateTime?, InvoiceSubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
 
         /// <summary>
         /// A timestamp at which the subscription should cancel. If set to a date before the current
@@ -242,6 +242,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription_trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<DateTime?, SubscriptionTrialEnd> SubscriptionTrialEnd { get; set; }
+        public AnyOf<DateTime?, InvoiceSubscriptionTrialEnd> SubscriptionTrialEnd { get; set; }
     }
 }

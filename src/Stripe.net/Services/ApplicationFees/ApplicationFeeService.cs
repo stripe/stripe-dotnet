@@ -11,6 +11,8 @@ namespace Stripe
         IListable<ApplicationFee, ApplicationFeeListOptions>,
         IRetrievable<ApplicationFee, ApplicationFeeGetOptions>
     {
+        private ApplicationFeeRefundService refunds;
+
         public ApplicationFeeService()
         {
         }
@@ -19,6 +21,9 @@ namespace Stripe
             : base(client)
         {
         }
+
+        public ApplicationFeeRefundService Refunds => this.refunds ??= new ApplicationFeeRefundService(
+            this.Requestor);
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/application_fees";

@@ -13,6 +13,8 @@ namespace Stripe.Billing
         IRetrievable<Meter, MeterGetOptions>,
         IUpdatable<Meter, MeterUpdateOptions>
     {
+        private MeterEventSummaryService eventSummaries;
+
         public MeterService()
         {
         }
@@ -21,6 +23,9 @@ namespace Stripe.Billing
             : base(client)
         {
         }
+
+        public MeterEventSummaryService EventSummaries => this.eventSummaries ??= new MeterEventSummaryService(
+            this.Requestor);
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/billing/meters";
