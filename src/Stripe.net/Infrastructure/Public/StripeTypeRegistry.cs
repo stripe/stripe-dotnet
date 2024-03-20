@@ -114,6 +114,7 @@ namespace Stripe
                     "financial_connections.transaction", typeof(
                         FinancialConnections.Transaction)
                 },
+                { "forwarding.request", typeof(Forwarding.Request) },
                 { "funding_instructions", typeof(FundingInstructions) },
                 { "gift_cards.card", typeof(GiftCards.Card) },
                 { "gift_cards.transaction", typeof(GiftCards.Transaction) },
