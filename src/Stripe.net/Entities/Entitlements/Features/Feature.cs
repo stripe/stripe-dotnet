@@ -23,6 +23,13 @@ namespace Stripe.Entitlements
         public string Object { get; set; }
 
         /// <summary>
+        /// Inactive features cannot be attached to new products and will not be returned from the
+        /// features list endpoint.
+        /// </summary>
+        [JsonProperty("active")]
+        public bool Active { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
