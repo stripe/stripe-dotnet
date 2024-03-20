@@ -23,9 +23,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/payment_intents";
-
         /// <summary>
         /// <p>Manually reconcile the remaining amount for a <c>customer_balance</c>
         /// PaymentIntent.</p>.

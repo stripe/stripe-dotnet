@@ -18,9 +18,6 @@ namespace Stripe.TestHelpers.Issuing
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/test_helpers/issuing/cards";
-
         /// <summary>
         /// <p>Updates the shipping status of the specified Issuing <c>Card</c> object to
         /// <c>delivered</c>.</p>.

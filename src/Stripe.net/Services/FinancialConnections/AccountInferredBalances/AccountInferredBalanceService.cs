@@ -19,9 +19,6 @@ namespace Stripe.FinancialConnections
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/financial_connections/accounts/{PARENT_ID}/inferred_balances";
-
         /// <summary>
         /// <p>Lists the recorded inferred balances for a Financial Connections <c>Account</c>.</p>.
         /// </summary>

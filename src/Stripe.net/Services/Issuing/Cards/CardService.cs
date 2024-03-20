@@ -22,9 +22,6 @@ namespace Stripe.Issuing
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/issuing/cards";
-
         /// <summary>
         /// <p>Creates an Issuing <c>Card</c> object.</p>.
         /// </summary>

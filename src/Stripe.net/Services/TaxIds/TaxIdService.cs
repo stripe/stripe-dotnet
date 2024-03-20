@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/tax_ids";
-
         /// <summary>
         /// <p>Creates a new <c>tax_id</c> object for a customer.</p>.
         /// </summary>

@@ -21,9 +21,6 @@ namespace Stripe.Checkout
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/checkout/sessions";
-
         /// <summary>
         /// <p>Creates a Session object.</p>.
         /// </summary>

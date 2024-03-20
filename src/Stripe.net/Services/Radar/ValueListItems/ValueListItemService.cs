@@ -22,9 +22,6 @@ namespace Stripe.Radar
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/radar/value_list_items";
-
         /// <summary>
         /// <p>Creates a new <c>ValueListItem</c> object, which is added to the specified parent
         /// value list.</p>.

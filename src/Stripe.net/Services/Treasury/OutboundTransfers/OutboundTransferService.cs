@@ -21,9 +21,6 @@ namespace Stripe.Treasury
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/treasury/outbound_transfers";
-
         /// <summary>
         /// <p>An OutboundTransfer can be canceled if the funds have not yet been paid out.</p>.
         /// </summary>

@@ -8,11 +8,6 @@ namespace Stripe
     {
         #region Expandable Feature
 
-        /// <summary>
-        /// (ID of the Entitlements.Feature)
-        /// The ID of the <a href="docs/api/entitlements/feature">Feature</a> object. This property
-        /// is mutually-exclusive with <c>name</c>; either one must be specified, but not both.
-        /// </summary>
         [JsonIgnore]
         public string FeatureId
         {
@@ -20,13 +15,6 @@ namespace Stripe
             set => this.InternalFeature = SetExpandableFieldId(value, this.InternalFeature);
         }
 
-        /// <summary>
-        /// (Expanded)
-        /// The ID of the <a href="docs/api/entitlements/feature">Feature</a> object. This property
-        /// is mutually-exclusive with <c>name</c>; either one must be specified, but not both.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
         [JsonIgnore]
         public Entitlements.Feature Feature
         {
@@ -40,7 +28,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The feature's name. Up to 80 characters long.
+        /// The marketing feature name. Up to 80 characters long.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

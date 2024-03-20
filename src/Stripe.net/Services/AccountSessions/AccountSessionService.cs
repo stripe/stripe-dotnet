@@ -18,9 +18,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/account_sessions";
-
         /// <summary>
         /// <p>Creates a AccountSession object that includes a single-use token that the platform
         /// can use on their front-end to grant client-side API access.</p>.

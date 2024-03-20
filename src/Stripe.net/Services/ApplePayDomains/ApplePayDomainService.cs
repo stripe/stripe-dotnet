@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/apple_pay/domains";
-
         /// <summary>
         /// <p>Create an apple pay domain.</p>.
         /// </summary>

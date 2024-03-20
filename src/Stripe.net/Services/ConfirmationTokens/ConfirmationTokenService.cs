@@ -18,9 +18,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/confirmation_tokens";
-
         /// <summary>
         /// <p>Retrieves an existing ConfirmationToken object</p>.
         /// </summary>

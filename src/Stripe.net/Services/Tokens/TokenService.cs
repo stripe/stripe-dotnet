@@ -19,9 +19,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/tokens";
-
         /// <summary>
         /// <p>Creates a single-use token that represents a bank account’s details. You can use this
         /// token with any API method in place of a bank account dictionary. You can only use this

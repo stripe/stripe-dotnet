@@ -18,15 +18,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/balance";
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        protected override string InstanceUrl(string id)
-        {
-            return this.ClassUrl();
-        }
-
         /// <summary>
         /// <p>Retrieves the current account balance, based on the authentication that was used to
         /// make the request. For a sample request, see <a

@@ -21,9 +21,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/accounts/{PARENT_ID}/capabilities";
-
         /// <summary>
         /// <p>Retrieves information about the specified Account Capability.</p>.
         /// </summary>

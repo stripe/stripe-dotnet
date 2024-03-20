@@ -17,9 +17,6 @@ namespace Stripe.TestHelpers
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/test_helpers/customers";
-
         /// <summary>
         /// <p>Create an incoming testmode bank transfer</p>.
         /// </summary>

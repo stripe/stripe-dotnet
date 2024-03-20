@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/setup_intents";
-
         /// <summary>
         /// <p>You can cancel a SetupIntent object when it’s in one of these statuses:
         /// <c>requires_payment_method</c>, <c>requires_confirmation</c>, or <c>requires_action</c>.

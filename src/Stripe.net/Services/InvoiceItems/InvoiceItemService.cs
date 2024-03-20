@@ -23,9 +23,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/invoiceitems";
-
         /// <summary>
         /// <p>Creates an item to be added to a draft invoice (up to 250 items per invoice). If no
         /// invoice is specified, the item will be on the next invoice created for the customer

@@ -21,9 +21,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/files";
-
         /// <summary>
         /// <p>To upload a file to Stripe, you need to send a request of type
         /// <c>multipart/form-data</c>. Include the file you want to upload in the request, and the

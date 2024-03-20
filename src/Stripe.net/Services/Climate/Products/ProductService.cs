@@ -20,9 +20,6 @@ namespace Stripe.Climate
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/climate/products";
-
         /// <summary>
         /// <p>Retrieves the details of a Climate product with the given ID.</p>.
         /// </summary>

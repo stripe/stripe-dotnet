@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/topups";
-
         /// <summary>
         /// <p>Cancels a top-up. Only pending top-ups can be canceled.</p>.
         /// </summary>

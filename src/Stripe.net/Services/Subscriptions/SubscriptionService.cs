@@ -23,9 +23,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/subscriptions";
-
         /// <summary>
         /// <p>Cancels a customer’s subscription immediately. The customer will not be charged again
         /// for the subscription.</p>.

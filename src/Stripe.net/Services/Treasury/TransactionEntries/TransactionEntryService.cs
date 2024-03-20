@@ -20,9 +20,6 @@ namespace Stripe.Treasury
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/treasury/transaction_entries";
-
         /// <summary>
         /// <p>Retrieves a TransactionEntry object.</p>.
         /// </summary>

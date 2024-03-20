@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/promotion_codes";
-
         /// <summary>
         /// <p>A promotion code points to a coupon. You can optionally restrict the code to a
         /// specific customer, redemption limit, and expiration date.</p>.

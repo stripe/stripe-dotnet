@@ -18,9 +18,6 @@ namespace Stripe.BillingPortal
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/billing_portal/sessions";
-
         /// <summary>
         /// <p>Creates a session of the customer portal.</p>.
         /// </summary>

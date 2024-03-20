@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/application_fees/{PARENT_ID}/refunds";
-
         /// <summary>
         /// <p>Refunds an application fee that has previously been collected but not yet refunded.
         /// Funds will be refunded to the Stripe account from which the fee was originally

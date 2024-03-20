@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/transfers";
-
         /// <summary>
         /// <p>To send funds from your Stripe account to a connected account, you create a new
         /// transfer object. Your <a href="https://stripe.com/docs/api#balance">Stripe balance</a>

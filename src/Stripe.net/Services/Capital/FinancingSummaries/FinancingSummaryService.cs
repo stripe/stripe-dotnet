@@ -18,15 +18,6 @@ namespace Stripe.Capital
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/capital/financing_summary";
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        protected override string InstanceUrl(string id)
-        {
-            return this.ClassUrl();
-        }
-
         /// <summary>
         /// <p>Retrieve the financing state for the account that was authenticated in the
         /// request.</p>.

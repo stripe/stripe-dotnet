@@ -22,9 +22,6 @@ namespace Stripe.TestHelpers
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/test_helpers/test_clocks";
-
         /// <summary>
         /// <p>Starts advancing a test clock to a specified time in the future. Advancement is done
         /// when status changes to <c>Ready</c>.</p>.

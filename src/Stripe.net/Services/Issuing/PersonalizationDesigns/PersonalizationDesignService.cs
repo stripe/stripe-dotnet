@@ -22,9 +22,6 @@ namespace Stripe.Issuing
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/issuing/personalization_designs";
-
         /// <summary>
         /// <p>Creates a personalization design object.</p>.
         /// </summary>

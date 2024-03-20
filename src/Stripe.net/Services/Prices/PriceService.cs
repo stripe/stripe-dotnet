@@ -23,9 +23,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/prices";
-
         /// <summary>
         /// <p>Creates a new price for an existing product. The price can be recurring or
         /// one-time.</p>.

@@ -21,9 +21,6 @@ namespace Stripe.Treasury
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/treasury/credit_reversals";
-
         /// <summary>
         /// <p>Reverses a ReceivedCredit and creates a CreditReversal object.</p>.
         /// </summary>

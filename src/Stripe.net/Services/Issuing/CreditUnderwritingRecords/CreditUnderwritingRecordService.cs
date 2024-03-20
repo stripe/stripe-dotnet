@@ -20,9 +20,6 @@ namespace Stripe.Issuing
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/issuing/credit_underwriting_records";
-
         /// <summary>
         /// <p>Update a <c>CreditUnderwritingRecord</c> object to correct mistakes.</p>.
         /// </summary>

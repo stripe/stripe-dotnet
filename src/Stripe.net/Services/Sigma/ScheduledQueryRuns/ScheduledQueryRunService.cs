@@ -20,9 +20,6 @@ namespace Stripe.Sigma
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/sigma/scheduled_query_runs";
-
         /// <summary>
         /// <p>Retrieves the details of an scheduled query run.</p>.
         /// </summary>

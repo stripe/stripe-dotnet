@@ -18,9 +18,6 @@ namespace Stripe.TestHelpers.Terminal
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/test_helpers/terminal/readers";
-
         /// <summary>
         /// <p>Presents a payment method on a simulated reader. Can be used to simulate accepting a
         /// payment, saving a card or refunding a transaction.</p>.

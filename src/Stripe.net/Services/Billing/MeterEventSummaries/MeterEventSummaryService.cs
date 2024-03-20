@@ -19,9 +19,6 @@ namespace Stripe.Billing
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/billing/meters/{PARENT_ID}/event_summaries";
-
         /// <summary>
         /// <p>Retrieve a list of billing meter event summaries.</p>.
         /// </summary>

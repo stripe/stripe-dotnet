@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/orders";
-
         /// <summary>
         /// <p>Cancels the order as well as the payment intent if one is attached.</p>.
         /// </summary>

@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/payouts";
-
         /// <summary>
         /// <p>You can cancel a previously created payout if its status is <c>pending</c>. Stripe
         /// refunds the funds to your available balance. You can’t cancel automatic Stripe

@@ -22,9 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/shipping_rates";
-
         /// <summary>
         /// <p>Creates a new shipping rate object.</p>.
         /// </summary>

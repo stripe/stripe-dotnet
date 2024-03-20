@@ -20,9 +20,6 @@ namespace Stripe.Treasury
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/treasury/transactions";
-
         /// <summary>
         /// <p>Retrieves the details of an existing Transaction.</p>.
         /// </summary>

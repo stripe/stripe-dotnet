@@ -19,9 +19,6 @@ namespace Stripe.FinancialConnections
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/financial_connections/sessions";
-
         /// <summary>
         /// <p>To launch the Financial Connections authorization flow, create a <c>Session</c>. The
         /// session’s <c>client_secret</c> can be used to launch the flow using Stripe.js.</p>.
