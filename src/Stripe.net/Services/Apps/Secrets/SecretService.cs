@@ -20,6 +20,9 @@ namespace Stripe.Apps
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/apps/secrets";
+
         /// <summary>
         /// <p>Create or replace a secret in the secret store.</p>.
         /// </summary>

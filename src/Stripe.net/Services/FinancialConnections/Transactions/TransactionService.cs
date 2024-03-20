@@ -20,6 +20,9 @@ namespace Stripe.FinancialConnections
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/financial_connections/transactions";
+
         /// <summary>
         /// <p>Retrieves the details of a Financial Connections <c>Transaction</c></p>.
         /// </summary>

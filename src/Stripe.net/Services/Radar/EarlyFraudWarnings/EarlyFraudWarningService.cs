@@ -20,6 +20,9 @@ namespace Stripe.Radar
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/radar/early_fraud_warnings";
+
         /// <summary>
         /// <p>Retrieves the details of an early fraud warning that has previously been created.
         /// </p>.

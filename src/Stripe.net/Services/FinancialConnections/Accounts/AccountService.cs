@@ -20,6 +20,9 @@ namespace Stripe.FinancialConnections
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/financial_connections/accounts";
+
         /// <summary>
         /// <p>Disables your access to a Financial Connections <c>Account</c>. You will no longer be
         /// able to access data associated with the account (e.g. balances, transactions).</p>.

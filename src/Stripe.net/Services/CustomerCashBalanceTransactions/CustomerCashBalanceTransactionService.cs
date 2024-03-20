@@ -20,6 +20,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/customers/{PARENT_ID}/cash_balance_transactions";
+
         /// <summary>
         /// <p>Retrieves a specific cash balance transaction, which updated the customer’s <a
         /// href="https://stripe.com/docs/payments/customer-balance">cash balance</a>.</p>.

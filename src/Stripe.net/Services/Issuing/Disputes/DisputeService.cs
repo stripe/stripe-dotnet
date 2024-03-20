@@ -22,6 +22,9 @@ namespace Stripe.Issuing
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/issuing/disputes";
+
         /// <summary>
         /// <p>Creates an Issuing <c>Dispute</c> object. Individual pieces of evidence within the
         /// <c>evidence</c> object are optional at this point. Stripe only validates that required

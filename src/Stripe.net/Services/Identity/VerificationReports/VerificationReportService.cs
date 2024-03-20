@@ -20,6 +20,9 @@ namespace Stripe.Identity
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/identity/verification_reports";
+
         /// <summary>
         /// <p>Retrieves an existing VerificationReport</p>.
         /// </summary>

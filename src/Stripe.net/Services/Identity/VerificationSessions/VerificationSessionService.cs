@@ -22,6 +22,9 @@ namespace Stripe.Identity
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/identity/verification_sessions";
+
         /// <summary>
         /// <p>A VerificationSession object can be canceled when it is in <c>requires_input</c> <a
         /// href="https://stripe.com/docs/identity/how-sessions-work">status</a>.</p>.

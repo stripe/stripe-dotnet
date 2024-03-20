@@ -20,6 +20,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/application_fees";
+
         /// <summary>
         /// <p>Retrieves the details of an application fee that your account has collected. The same
         /// information is returned when refunding the application fee.</p>.

@@ -18,6 +18,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/accounts/{PARENT_ID}/login_links";
+
         /// <summary>
         /// <p>Creates a single-use login link for an Express account to access their Stripe
         /// dashboard.</p>.

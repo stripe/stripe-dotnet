@@ -21,6 +21,9 @@ namespace Stripe.Reporting
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/reporting/report_runs";
+
         /// <summary>
         /// <p>Creates a new object and begin running the report. (Certain report types require a <a
         /// href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.)</p>.

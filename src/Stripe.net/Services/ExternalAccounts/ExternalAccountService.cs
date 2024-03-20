@@ -23,6 +23,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/accounts/{PARENT_ID}/external_accounts";
+
         /// <summary>
         /// <p>Create an external account for a given account.</p>.
         /// </summary>

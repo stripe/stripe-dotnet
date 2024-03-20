@@ -23,6 +23,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/subscription_items";
+
         /// <summary>
         /// <p>Adds a new item to an existing subscription. No existing items will be changed or
         /// replaced.</p>.

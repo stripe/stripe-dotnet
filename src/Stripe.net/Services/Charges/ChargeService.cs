@@ -23,6 +23,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/charges";
+
         /// <summary>
         /// <p>Capture the payment of an existing, uncaptured charge that was created with the
         /// <c>capture</c> option set to false.</p>.

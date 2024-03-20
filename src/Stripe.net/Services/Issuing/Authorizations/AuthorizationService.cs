@@ -21,6 +21,9 @@ namespace Stripe.Issuing
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/issuing/authorizations";
+
         /// <summary>
         /// <p>[Deprecated] Approves a pending Issuing <c>Authorization</c> object. This request
         /// should be made within the timeout window of the <a

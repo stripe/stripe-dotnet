@@ -20,6 +20,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/tax_codes";
+
         /// <summary>
         /// <p>Retrieves the details of an existing tax code. Supply the unique tax code ID and
         /// Stripe will return the corresponding tax code information.</p>.

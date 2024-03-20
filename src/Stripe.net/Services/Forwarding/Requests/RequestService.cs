@@ -21,6 +21,9 @@ namespace Stripe.Forwarding
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/forwarding/requests";
+
         /// <summary>
         /// <p>Creates a ForwardingRequest object.</p>.
         /// </summary>

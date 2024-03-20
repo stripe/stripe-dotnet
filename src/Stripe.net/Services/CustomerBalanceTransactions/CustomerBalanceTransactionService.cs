@@ -22,6 +22,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/customers/{PARENT_ID}/balance_transactions";
+
         /// <summary>
         /// <p>Creates an immutable transaction that updates the customer’s credit <a
         /// href="https://stripe.com/docs/billing/customer/balance">balance</a>.</p>.

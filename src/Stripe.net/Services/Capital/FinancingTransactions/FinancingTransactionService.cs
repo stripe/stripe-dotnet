@@ -20,6 +20,9 @@ namespace Stripe.Capital
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/capital/financing_transactions";
+
         /// <summary>
         /// <p>Retrieves a financing transaction for a financing offer.</p>.
         /// </summary>

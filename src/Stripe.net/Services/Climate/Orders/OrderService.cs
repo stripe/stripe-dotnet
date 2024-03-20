@@ -22,6 +22,9 @@ namespace Stripe.Climate
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/climate/orders";
+
         /// <summary>
         /// <p>Cancels a Climate order. You can cancel an order within 30 days of creation. Stripe
         /// refunds the reservation <c>amount_subtotal</c>, but not the <c>amount_fees</c> for

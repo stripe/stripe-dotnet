@@ -21,6 +21,9 @@ namespace Stripe.Issuing
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/issuing/transactions";
+
         /// <summary>
         /// <p>Retrieves an Issuing <c>Transaction</c> object.</p>.
         /// </summary>

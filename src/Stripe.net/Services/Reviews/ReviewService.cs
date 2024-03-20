@@ -20,6 +20,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/reviews";
+
         /// <summary>
         /// <p>Approves a <c>Review</c> object, closing it and removing it from the list of
         /// reviews.</p>.

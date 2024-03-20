@@ -22,6 +22,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/file_links";
+
         /// <summary>
         /// <p>Creates a new file link object.</p>.
         /// </summary>

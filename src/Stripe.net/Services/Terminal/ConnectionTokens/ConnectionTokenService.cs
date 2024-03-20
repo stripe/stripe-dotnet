@@ -18,6 +18,9 @@ namespace Stripe.Terminal
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/terminal/connection_tokens";
+
         /// <summary>
         /// <p>To connect to a reader the Stripe Terminal SDK needs to retrieve a short-lived
         /// connection token from Stripe, proxied through your server. On your backend, add an

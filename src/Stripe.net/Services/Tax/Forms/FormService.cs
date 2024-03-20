@@ -21,6 +21,9 @@ namespace Stripe.Tax
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/tax/forms";
+
         /// <summary>
         /// <p>Retrieves the details of a tax form that has previously been created. Supply the
         /// unique tax form ID that was returned from your previous request, and Stripe will return

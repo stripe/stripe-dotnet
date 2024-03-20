@@ -18,6 +18,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/subscription_items/{PARENT_ID}/usage_records";
+
         /// <summary>
         /// <p>Creates a usage record for a specified subscription item and date, and fills it with
         /// a quantity.</p>.

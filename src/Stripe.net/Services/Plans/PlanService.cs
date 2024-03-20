@@ -23,6 +23,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/plans";
+
         /// <summary>
         /// <p>You can now model subscriptions more flexibly using the <a
         /// href="https://stripe.com/docs/api#prices">Prices API</a>. It replaces the Plans API and

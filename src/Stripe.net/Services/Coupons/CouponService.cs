@@ -23,6 +23,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/coupons";
+
         /// <summary>
         /// <p>You can create coupons easily via the <a
         /// href="https://dashboard.stripe.com/coupons">coupon management</a> page of the Stripe

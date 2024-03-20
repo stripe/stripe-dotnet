@@ -22,6 +22,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/billing/margins";
+
         /// <summary>
         /// <p>Create a margin object to be used with invoices, invoice items, and invoice line
         /// items for a customer to represent a partner discount.A margin has a <c>percent_off</c>

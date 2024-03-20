@@ -23,6 +23,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/webhook_endpoints";
+
         /// <summary>
         /// <p>A webhook endpoint must have a <c>url</c> and a list of <c>enabled_events</c>. You
         /// may optionally specify the Boolean <c>connect</c> parameter. If set to true, then a

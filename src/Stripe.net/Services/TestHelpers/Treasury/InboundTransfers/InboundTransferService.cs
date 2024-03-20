@@ -18,6 +18,9 @@ namespace Stripe.TestHelpers.Treasury
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/test_helpers/treasury/inbound_transfers";
+
         /// <summary>
         /// <p>Transitions a test mode created InboundTransfer to the <c>failed</c> status. The
         /// InboundTransfer must already be in the <c>processing</c> state.</p>.

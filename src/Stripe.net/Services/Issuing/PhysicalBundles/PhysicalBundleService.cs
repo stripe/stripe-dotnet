@@ -20,6 +20,9 @@ namespace Stripe.Issuing
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/issuing/physical_bundles";
+
         /// <summary>
         /// <p>Retrieves a physical bundle object.</p>.
         /// </summary>

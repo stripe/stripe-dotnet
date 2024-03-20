@@ -23,6 +23,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/accounts";
+
         /// <summary>
         /// <p>With <a href="https://stripe.com/docs/connect">Connect</a>, you can create Stripe
         /// accounts for your users. To do this, you’ll first need to <a

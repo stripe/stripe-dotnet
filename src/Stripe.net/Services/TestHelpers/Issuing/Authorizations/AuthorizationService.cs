@@ -18,6 +18,9 @@ namespace Stripe.TestHelpers.Issuing
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/test_helpers/issuing/authorizations";
+
         /// <summary>
         /// <p>Capture a test-mode authorization.</p>.
         /// </summary>

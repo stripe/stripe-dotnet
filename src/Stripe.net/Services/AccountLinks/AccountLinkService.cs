@@ -18,6 +18,9 @@ namespace Stripe
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/account_links";
+
         /// <summary>
         /// <p>Creates an AccountLink object that includes a single-use Stripe URL that the platform
         /// can redirect their user to in order to take them through the Connect Onboarding

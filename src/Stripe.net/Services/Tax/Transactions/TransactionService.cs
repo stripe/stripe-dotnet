@@ -19,6 +19,9 @@ namespace Stripe.Tax
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/tax/transactions";
+
         /// <summary>
         /// <p>Creates a Tax <c>Transaction</c> from a calculation.</p>.
         /// </summary>

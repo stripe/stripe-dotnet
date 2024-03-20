@@ -17,6 +17,9 @@ namespace Stripe.TestHelpers
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/test_helpers/confirmation_tokens";
+
         /// <summary>
         /// <p>Creates a test mode Confirmation Token server side for your integration tests.</p>.
         /// </summary>

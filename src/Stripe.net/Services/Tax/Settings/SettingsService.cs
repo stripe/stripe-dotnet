@@ -18,6 +18,15 @@ namespace Stripe.Tax
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/tax/settings";
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        protected override string InstanceUrl(string id)
+        {
+            return this.ClassUrl();
+        }
+
         /// <summary>
         /// <p>Retrieves Tax <c>Settings</c> for a merchant.</p>.
         /// </summary>

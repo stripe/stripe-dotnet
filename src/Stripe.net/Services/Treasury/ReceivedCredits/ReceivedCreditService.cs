@@ -20,6 +20,9 @@ namespace Stripe.Treasury
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/treasury/received_credits";
+
         /// <summary>
         /// <p>Retrieves the details of an existing ReceivedCredit by passing the unique
         /// ReceivedCredit ID from the ReceivedCredit list.</p>.

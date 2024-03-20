@@ -22,6 +22,9 @@ namespace Stripe.Treasury
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/treasury/financial_accounts";
+
         /// <summary>
         /// <p>Creates a new FinancialAccount. For now, each connected account can only have one
         /// FinancialAccount.</p>.
