@@ -15,7 +15,6 @@ namespace Stripe
         IUpdatable<Quote, QuoteUpdateOptions>
     {
         public QuoteService()
-            : base(null)
         {
         }
 

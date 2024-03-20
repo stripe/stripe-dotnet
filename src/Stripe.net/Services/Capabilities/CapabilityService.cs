@@ -13,7 +13,6 @@ namespace Stripe
         INestedUpdatable<Capability, CapabilityUpdateOptions>
     {
         public CapabilityService()
-            : base(null)
         {
         }
 

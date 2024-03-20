@@ -15,7 +15,6 @@ namespace Stripe
         IUpdatable<Charge, ChargeUpdateOptions>
     {
         public ChargeService()
-            : base(null)
         {
         }
 

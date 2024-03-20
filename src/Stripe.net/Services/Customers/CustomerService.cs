@@ -16,7 +16,6 @@ namespace Stripe
         IUpdatable<Customer, CustomerUpdateOptions>
     {
         public CustomerService()
-            : base(null)
         {
         }
 

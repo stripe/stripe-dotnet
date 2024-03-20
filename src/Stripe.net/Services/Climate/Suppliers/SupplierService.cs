@@ -12,7 +12,6 @@ namespace Stripe.Climate
         IRetrievable<Supplier, SupplierGetOptions>
     {
         public SupplierService()
-            : base(null)
         {
         }
 

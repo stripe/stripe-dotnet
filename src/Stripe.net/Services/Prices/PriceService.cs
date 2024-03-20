@@ -15,7 +15,6 @@ namespace Stripe
         IUpdatable<Price, PriceUpdateOptions>
     {
         public PriceService()
-            : base(null)
         {
         }
 

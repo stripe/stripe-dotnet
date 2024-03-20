@@ -14,7 +14,6 @@ namespace Stripe
         INestedUpdatable<ApplicationFeeRefund, ApplicationFeeRefundUpdateOptions>
     {
         public ApplicationFeeRefundService()
-            : base(null)
         {
         }
 

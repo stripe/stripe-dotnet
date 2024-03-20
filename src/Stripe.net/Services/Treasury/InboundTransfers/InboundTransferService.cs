@@ -13,7 +13,6 @@ namespace Stripe.Treasury
         IRetrievable<InboundTransfer, InboundTransferGetOptions>
     {
         public InboundTransferService()
-            : base(null)
         {
         }
 

@@ -11,7 +11,6 @@ namespace Stripe
         IListable<SetupAttempt, SetupAttemptListOptions>
     {
         public SetupAttemptService()
-            : base(null)
         {
         }
 

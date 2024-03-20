@@ -14,7 +14,6 @@ namespace Stripe
         INestedUpdatable<CustomerBalanceTransaction, CustomerBalanceTransactionUpdateOptions>
     {
         public CustomerBalanceTransactionService()
-            : base(null)
         {
         }
 

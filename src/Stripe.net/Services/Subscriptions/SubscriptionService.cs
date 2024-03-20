@@ -15,7 +15,6 @@ namespace Stripe
         IUpdatable<Subscription, SubscriptionUpdateOptions>
     {
         public SubscriptionService()
-            : base(null)
         {
         }
 

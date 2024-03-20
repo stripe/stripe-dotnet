@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<Topup, TopupUpdateOptions>
     {
         public TopupService()
-            : base(null)
         {
         }
 

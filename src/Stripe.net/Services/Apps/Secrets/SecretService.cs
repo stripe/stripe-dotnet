@@ -12,7 +12,6 @@ namespace Stripe.Apps
         IListable<Secret, SecretListOptions>
     {
         public SecretService()
-            : base(null)
         {
         }
 

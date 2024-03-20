@@ -34,6 +34,16 @@ namespace Stripe
         public bool? Confirm { get; set; }
 
         /// <summary>
+        /// ID of the ConfirmationToken used to confirm this SetupIntent.
+        ///
+        /// If the provided ConfirmationToken contains properties that are also being provided in
+        /// this request, such as <c>payment_method</c>, then the values in this request will take
+        /// precedence.
+        /// </summary>
+        [JsonProperty("confirmation_token")]
+        public string ConfirmationToken { get; set; }
+
+        /// <summary>
         /// ID of the Customer this SetupIntent belongs to, if one exists.
         ///
         /// If present, the SetupIntent's payment method will be attached to the Customer on

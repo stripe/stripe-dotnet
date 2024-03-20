@@ -13,7 +13,6 @@ namespace Stripe.Treasury
         IRetrievable<DebitReversal, DebitReversalGetOptions>
     {
         public DebitReversalService()
-            : base(null)
         {
         }
 

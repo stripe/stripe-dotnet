@@ -12,7 +12,6 @@ namespace Stripe.Sigma
         IRetrievable<ScheduledQueryRun, ScheduledQueryRunGetOptions>
     {
         public ScheduledQueryRunService()
-            : base(null)
         {
         }
 

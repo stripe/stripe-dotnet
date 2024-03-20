@@ -11,7 +11,6 @@ namespace Stripe.Tax
         IRetrievable<Transaction, TransactionGetOptions>
     {
         public TransactionService()
-            : base(null)
         {
         }
 

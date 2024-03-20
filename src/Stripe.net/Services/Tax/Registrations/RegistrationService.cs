@@ -14,7 +14,6 @@ namespace Stripe.Tax
         IUpdatable<Registration, RegistrationUpdateOptions>
     {
         public RegistrationService()
-            : base(null)
         {
         }
 

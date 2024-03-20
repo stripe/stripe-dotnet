@@ -28,7 +28,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// A list of up to 15 features for this product. These are displayed in <a
+        /// A list of up to 15 marketing features for this product. These are displayed in <a
         /// href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
         /// </summary>
         [JsonProperty("features")]

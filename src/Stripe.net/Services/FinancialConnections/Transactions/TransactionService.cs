@@ -12,7 +12,6 @@ namespace Stripe.FinancialConnections
         IRetrievable<Transaction, TransactionGetOptions>
     {
         public TransactionService()
-            : base(null)
         {
         }
 

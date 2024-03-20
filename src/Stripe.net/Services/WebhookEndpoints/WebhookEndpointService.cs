@@ -15,7 +15,6 @@ namespace Stripe
         IUpdatable<WebhookEndpoint, WebhookEndpointUpdateOptions>
     {
         public WebhookEndpointService()
-            : base(null)
         {
         }
 

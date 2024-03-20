@@ -11,7 +11,6 @@ namespace Stripe.FinancialConnections
         IRetrievable<Session, SessionGetOptions>
     {
         public SessionService()
-            : base(null)
         {
         }
 

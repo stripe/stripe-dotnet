@@ -10,7 +10,6 @@ namespace Stripe
         ICreatable<AccountLink, AccountLinkCreateOptions>
     {
         public AccountLinkService()
-            : base(null)
         {
         }
 

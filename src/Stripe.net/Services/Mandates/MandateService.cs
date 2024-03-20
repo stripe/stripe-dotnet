@@ -10,7 +10,6 @@ namespace Stripe
         IRetrievable<Mandate, MandateGetOptions>
     {
         public MandateService()
-            : base(null)
         {
         }
 

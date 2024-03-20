@@ -12,7 +12,6 @@ namespace Stripe.FinancialConnections
         IRetrievable<Account, AccountGetOptions>
     {
         public AccountService()
-            : base(null)
         {
         }
 

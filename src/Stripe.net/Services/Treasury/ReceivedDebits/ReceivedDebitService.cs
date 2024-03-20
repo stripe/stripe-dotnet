@@ -12,7 +12,6 @@ namespace Stripe.Treasury
         IRetrievable<ReceivedDebit, ReceivedDebitGetOptions>
     {
         public ReceivedDebitService()
-            : base(null)
         {
         }
 
