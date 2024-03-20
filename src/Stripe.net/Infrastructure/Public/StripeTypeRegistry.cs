@@ -38,6 +38,7 @@ namespace Stripe
                 { "climate.order", typeof(Climate.Order) },
                 { "climate.product", typeof(Climate.Product) },
                 { "climate.supplier", typeof(Climate.Supplier) },
+                { "confirmation_token", typeof(ConfirmationToken) },
                 {
                     "connect_collection_transfer", typeof(
                         ConnectCollectionTransfer)
