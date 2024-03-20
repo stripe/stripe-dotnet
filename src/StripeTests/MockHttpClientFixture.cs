@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -38,7 +39,8 @@ namespace StripeTests
         /// </summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The HTTP path.</param>
-        public void AssertRequest(HttpMethod method, string path)
+        /// <param name="path">The HTTP query.</param>
+        public void AssertRequest(HttpMethod method, string path, string query = null)
         {
             this.MockHandler.Protected()
                 .Verify(
@@ -46,7 +48,8 @@ namespace StripeTests
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
                         m.Method == method &&
-                        m.RequestUri.AbsolutePath == path),
+                        m.RequestUri.AbsolutePath == path &&
+                        QueryEquivalent(query, m.RequestUri.Query)),
                     ItExpr.IsAny<CancellationToken>());
         }
 
@@ -73,6 +76,17 @@ namespace StripeTests
                         (query == null || m.RequestUri.Query == query)),
                     ItExpr.IsAny<CancellationToken>())
                 .Returns(Task.FromResult(responseMessage));
+        }
+
+        private static bool QueryEquivalent(string expected, string actual)
+        {
+            var expectedParts = (expected ?? string.Empty).TrimStart('?').Split('&');
+            var actualParts = (actual ?? string.Empty).TrimStart('?').Split('&');
+
+            Array.Sort(expectedParts);
+            Array.Sort(actualParts);
+
+            return expectedParts.SequenceEqual(actualParts);
         }
     }
 }
