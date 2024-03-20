@@ -64,37 +64,6 @@ namespace Stripe
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }
 
-        #region Expandable PaymentMethod
-
-        /// <summary>
-        /// (ID of the PaymentMethod)
-        /// ID of an existing PaymentMethod.
-        /// </summary>
-        [JsonIgnore]
-        public string PaymentMethodId
-        {
-            get => this.InternalPaymentMethod?.Id;
-            set => this.InternalPaymentMethod = SetExpandableFieldId(value, this.InternalPaymentMethod);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// ID of an existing PaymentMethod.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public PaymentMethod PaymentMethod
-        {
-            get => this.InternalPaymentMethod?.ExpandedObject;
-            set => this.InternalPaymentMethod = SetExpandableFieldObject(value, this.InternalPaymentMethod);
-        }
-
-        [JsonProperty("payment_method")]
-        [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
-        internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
-        #endregion
-
         /// <summary>
         /// Payment-method-specific configuration for this ConfirmationToken.
         /// </summary>
