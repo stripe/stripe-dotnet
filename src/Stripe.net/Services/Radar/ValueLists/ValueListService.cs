@@ -31,7 +31,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueList Create(ValueListCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueList>(HttpMethod.Post, $"/v1/radar/value_lists", options, requestOptions);
+            return this.Request<ValueList>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_lists", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueList> CreateAsync(ValueListCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueList>(HttpMethod.Post, $"/v1/radar/value_lists", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueList>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_lists", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueList Delete(string id, ValueListDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueList>(HttpMethod.Delete, $"/v1/radar/value_lists/{id}", options, requestOptions);
+            return this.Request<ValueList>(BaseAddress.Api, HttpMethod.Delete, $"/v1/radar/value_lists/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueList> DeleteAsync(string id, ValueListDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueList>(HttpMethod.Delete, $"/v1/radar/value_lists/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueList>(BaseAddress.Api, HttpMethod.Delete, $"/v1/radar/value_lists/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueList Get(string id, ValueListGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueList>(HttpMethod.Get, $"/v1/radar/value_lists/{id}", options, requestOptions);
+            return this.Request<ValueList>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_lists/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueList> GetAsync(string id, ValueListGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueList>(HttpMethod.Get, $"/v1/radar/value_lists/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueList>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_lists/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual StripeList<ValueList> List(ValueListListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ValueList>>(HttpMethod.Get, $"/v1/radar/value_lists", options, requestOptions);
+            return this.Request<StripeList<ValueList>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_lists", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<StripeList<ValueList>> ListAsync(ValueListListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ValueList>>(HttpMethod.Get, $"/v1/radar/value_lists", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ValueList>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_lists", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual IEnumerable<ValueList> ListAutoPaging(ValueListListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<ValueList>($"/v1/radar/value_lists", options, requestOptions);
+            return this.ListRequestAutoPaging<ValueList>($"/v1/radar/value_lists", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual IAsyncEnumerable<ValueList> ListAutoPagingAsync(ValueListListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<ValueList>($"/v1/radar/value_lists", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<ValueList>($"/v1/radar/value_lists", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueList Update(string id, ValueListUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueList>(HttpMethod.Post, $"/v1/radar/value_lists/{id}", options, requestOptions);
+            return this.Request<ValueList>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_lists/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueList> UpdateAsync(string id, ValueListUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueList>(HttpMethod.Post, $"/v1/radar/value_lists/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueList>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_lists/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

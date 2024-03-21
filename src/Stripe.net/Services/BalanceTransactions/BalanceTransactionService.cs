@@ -30,7 +30,7 @@ namespace Stripe
         /// </summary>
         public virtual BalanceTransaction Get(string id, BalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<BalanceTransaction>(HttpMethod.Get, $"/v1/balance_transactions/{id}", options, requestOptions);
+            return this.Request<BalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance_transactions/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<BalanceTransaction> GetAsync(string id, BalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<BalanceTransaction>(HttpMethod.Get, $"/v1/balance_transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<BalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance_transactions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<BalanceTransaction> List(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<BalanceTransaction>>(HttpMethod.Get, $"/v1/balance_transactions", options, requestOptions);
+            return this.Request<StripeList<BalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance_transactions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<BalanceTransaction>> ListAsync(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<BalanceTransaction>>(HttpMethod.Get, $"/v1/balance_transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<BalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance_transactions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<BalanceTransaction> ListAutoPaging(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<BalanceTransaction>($"/v1/balance_transactions", options, requestOptions);
+            return this.ListRequestAutoPaging<BalanceTransaction>($"/v1/balance_transactions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<BalanceTransaction> ListAutoPagingAsync(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<BalanceTransaction>($"/v1/balance_transactions", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<BalanceTransaction>($"/v1/balance_transactions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

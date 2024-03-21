@@ -31,7 +31,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual FinancialAccount Create(FinancialAccountCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancialAccount>(HttpMethod.Post, $"/v1/treasury/financial_accounts", options, requestOptions);
+            return this.Request<FinancialAccount>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/financial_accounts", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<FinancialAccount> CreateAsync(FinancialAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancialAccount>(HttpMethod.Post, $"/v1/treasury/financial_accounts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancialAccount>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/financial_accounts", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual FinancialAccount Get(string id, FinancialAccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancialAccount>(HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}", options, requestOptions);
+            return this.Request<FinancialAccount>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<FinancialAccount> GetAsync(string id, FinancialAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancialAccount>(HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancialAccount>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<FinancialAccount> List(FinancialAccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<FinancialAccount>>(HttpMethod.Get, $"/v1/treasury/financial_accounts", options, requestOptions);
+            return this.Request<StripeList<FinancialAccount>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<FinancialAccount>> ListAsync(FinancialAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<FinancialAccount>>(HttpMethod.Get, $"/v1/treasury/financial_accounts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<FinancialAccount>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IEnumerable<FinancialAccount> ListAutoPaging(FinancialAccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<FinancialAccount>($"/v1/treasury/financial_accounts", options, requestOptions);
+            return this.ListRequestAutoPaging<FinancialAccount>($"/v1/treasury/financial_accounts", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IAsyncEnumerable<FinancialAccount> ListAutoPagingAsync(FinancialAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<FinancialAccount>($"/v1/treasury/financial_accounts", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<FinancialAccount>($"/v1/treasury/financial_accounts", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual FinancialAccountFeatures RetrieveFeatures(string id, FinancialAccountRetrieveFeaturesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancialAccountFeatures>(HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions);
+            return this.Request<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<FinancialAccountFeatures> RetrieveFeaturesAsync(string id, FinancialAccountRetrieveFeaturesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancialAccountFeatures>(HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual FinancialAccount Update(string id, FinancialAccountUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancialAccount>(HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}", options, requestOptions);
+            return this.Request<FinancialAccount>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<FinancialAccount> UpdateAsync(string id, FinancialAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancialAccount>(HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancialAccount>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual FinancialAccountFeatures UpdateFeatures(string id, FinancialAccountUpdateFeaturesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancialAccountFeatures>(HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions);
+            return this.Request<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<FinancialAccountFeatures> UpdateFeaturesAsync(string id, FinancialAccountUpdateFeaturesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancialAccountFeatures>(HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

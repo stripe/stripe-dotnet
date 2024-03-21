@@ -46,7 +46,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Cancel(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> CancelAsync(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Create(SubscriptionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> CreateAsync(SubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Get(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> GetAsync(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Subscription> List(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Subscription>>(HttpMethod.Get, $"/v1/subscriptions", options, requestOptions);
+            return this.Request<StripeList<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Subscription>> ListAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Subscription>>(HttpMethod.Get, $"/v1/subscriptions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Subscription> ListAutoPaging(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Subscription>($"/v1/subscriptions", options, requestOptions);
+            return this.ListRequestAutoPaging<Subscription>($"/v1/subscriptions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Subscription> ListAutoPagingAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Subscription>($"/v1/subscriptions", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Subscription>($"/v1/subscriptions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -172,7 +172,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Resume(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> ResumeAsync(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -198,7 +198,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeSearchResult<Subscription> Search(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeSearchResult<Subscription>>(HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions);
+            return this.Request<StripeSearchResult<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -211,7 +211,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeSearchResult<Subscription>> SearchAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeSearchResult<Subscription>>(HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeSearchResult<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Subscription> SearchAutoPaging(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.SearchRequestAutoPaging<Subscription>($"/v1/subscriptions/search", options, requestOptions);
+            return this.SearchRequestAutoPaging<Subscription>($"/v1/subscriptions/search", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -237,7 +237,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Subscription> SearchAutoPagingAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.SearchRequestAutoPagingAsync<Subscription>($"/v1/subscriptions/search", options, requestOptions, cancellationToken);
+            return this.SearchRequestAutoPagingAsync<Subscription>($"/v1/subscriptions/search", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -288,7 +288,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Update(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -339,7 +339,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> UpdateAsync(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

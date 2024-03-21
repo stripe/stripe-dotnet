@@ -29,7 +29,7 @@ namespace Stripe
         /// </summary>
         public virtual Event Get(string id, EventGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Event>(HttpMethod.Get, $"/v1/events/{id}", options, requestOptions);
+            return this.Request<Event>(BaseAddress.Api, HttpMethod.Get, $"/v1/events/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Event> GetAsync(string id, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Event>(HttpMethod.Get, $"/v1/events/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Event>(BaseAddress.Api, HttpMethod.Get, $"/v1/events/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Event>>(HttpMethod.Get, $"/v1/events", options, requestOptions);
+            return this.Request<StripeList<Event>>(BaseAddress.Api, HttpMethod.Get, $"/v1/events", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Event>> ListAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Event>>(HttpMethod.Get, $"/v1/events", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Event>>(BaseAddress.Api, HttpMethod.Get, $"/v1/events", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Event> ListAutoPaging(EventListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Event>($"/v1/events", options, requestOptions);
+            return this.ListRequestAutoPaging<Event>($"/v1/events", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Event> ListAutoPagingAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Event>($"/v1/events", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Event>($"/v1/events", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

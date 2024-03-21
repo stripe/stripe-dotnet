@@ -29,7 +29,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual InboundTransfer Cancel(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions);
+            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<InboundTransfer> CancelAsync(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual InboundTransfer Create(InboundTransferCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions);
+            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<InboundTransfer> CreateAsync(InboundTransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual InboundTransfer Get(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<InboundTransfer>(HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions);
+            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<InboundTransfer> GetAsync(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InboundTransfer>(HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<InboundTransfer> List(InboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<InboundTransfer>>(HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions);
+            return this.Request<StripeList<InboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<InboundTransfer>> ListAsync(InboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<InboundTransfer>>(HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IEnumerable<InboundTransfer> ListAutoPaging(InboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions);
+            return this.ListRequestAutoPaging<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IAsyncEnumerable<InboundTransfer> ListAutoPagingAsync(InboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InboundTransfer>($"/v1/treasury/inbound_transfers", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

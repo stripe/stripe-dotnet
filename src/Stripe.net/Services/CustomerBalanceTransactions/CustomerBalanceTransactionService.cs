@@ -31,7 +31,7 @@ namespace Stripe
         /// </summary>
         public virtual CustomerBalanceTransaction Create(string parentId, CustomerBalanceTransactionCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerBalanceTransaction>(HttpMethod.Post, $"/v1/customers/{parentId}/balance_transactions", options, requestOptions);
+            return this.Request<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/balance_transactions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CustomerBalanceTransaction> CreateAsync(string parentId, CustomerBalanceTransactionCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerBalanceTransaction>(HttpMethod.Post, $"/v1/customers/{parentId}/balance_transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/balance_transactions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Stripe
         /// </summary>
         public virtual CustomerBalanceTransaction Get(string parentId, string id, CustomerBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{parentId}/balance_transactions/{id}", options, requestOptions);
+            return this.Request<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/balance_transactions/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CustomerBalanceTransaction> GetAsync(string parentId, string id, CustomerBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{parentId}/balance_transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/balance_transactions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<CustomerBalanceTransaction> List(string parentId, CustomerBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CustomerBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{parentId}/balance_transactions", options, requestOptions);
+            return this.Request<StripeList<CustomerBalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/balance_transactions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<CustomerBalanceTransaction>> ListAsync(string parentId, CustomerBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CustomerBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{parentId}/balance_transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CustomerBalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/balance_transactions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<CustomerBalanceTransaction> ListAutoPaging(string parentId, CustomerBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<CustomerBalanceTransaction>($"/v1/customers/{parentId}/balance_transactions", options, requestOptions);
+            return this.ListRequestAutoPaging<CustomerBalanceTransaction>($"/v1/customers/{parentId}/balance_transactions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<CustomerBalanceTransaction> ListAutoPagingAsync(string parentId, CustomerBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<CustomerBalanceTransaction>($"/v1/customers/{parentId}/balance_transactions", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<CustomerBalanceTransaction>($"/v1/customers/{parentId}/balance_transactions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Stripe
         /// </summary>
         public virtual CustomerBalanceTransaction Update(string parentId, string id, CustomerBalanceTransactionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerBalanceTransaction>(HttpMethod.Post, $"/v1/customers/{parentId}/balance_transactions/{id}", options, requestOptions);
+            return this.Request<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/balance_transactions/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CustomerBalanceTransaction> UpdateAsync(string parentId, string id, CustomerBalanceTransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerBalanceTransaction>(HttpMethod.Post, $"/v1/customers/{parentId}/balance_transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/balance_transactions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

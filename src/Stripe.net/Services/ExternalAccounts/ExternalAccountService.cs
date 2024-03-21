@@ -31,7 +31,7 @@ namespace Stripe
         /// </summary>
         public virtual IExternalAccount Create(string parentId, ExternalAccountCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<IExternalAccount>(HttpMethod.Post, $"/v1/accounts/{parentId}/external_accounts", options, requestOptions);
+            return this.Request<IExternalAccount>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{parentId}/external_accounts", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<IExternalAccount> CreateAsync(string parentId, ExternalAccountCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<IExternalAccount>(HttpMethod.Post, $"/v1/accounts/{parentId}/external_accounts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<IExternalAccount>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{parentId}/external_accounts", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual IExternalAccount Delete(string parentId, string id, ExternalAccountDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<IExternalAccount>(HttpMethod.Delete, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions);
+            return this.Request<IExternalAccount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<IExternalAccount> DeleteAsync(string parentId, string id, ExternalAccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<IExternalAccount>(HttpMethod.Delete, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<IExternalAccount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe
         /// </summary>
         public virtual IExternalAccount Get(string parentId, string id, ExternalAccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<IExternalAccount>(HttpMethod.Get, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions);
+            return this.Request<IExternalAccount>(BaseAddress.Api, HttpMethod.Get, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -71,7 +71,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<IExternalAccount> GetAsync(string parentId, string id, ExternalAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<IExternalAccount>(HttpMethod.Get, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<IExternalAccount>(BaseAddress.Api, HttpMethod.Get, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -79,7 +79,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<IExternalAccount> List(string parentId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<IExternalAccount>>(HttpMethod.Get, $"/v1/accounts/{parentId}/external_accounts", options, requestOptions);
+            return this.Request<StripeList<IExternalAccount>>(BaseAddress.Api, HttpMethod.Get, $"/v1/accounts/{parentId}/external_accounts", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<IExternalAccount>> ListAsync(string parentId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<IExternalAccount>>(HttpMethod.Get, $"/v1/accounts/{parentId}/external_accounts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<IExternalAccount>>(BaseAddress.Api, HttpMethod.Get, $"/v1/accounts/{parentId}/external_accounts", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<IExternalAccount> ListAutoPaging(string parentId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<IExternalAccount>($"/v1/accounts/{parentId}/external_accounts", options, requestOptions);
+            return this.ListRequestAutoPaging<IExternalAccount>($"/v1/accounts/{parentId}/external_accounts", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<IExternalAccount> ListAutoPagingAsync(string parentId, ExternalAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<IExternalAccount>($"/v1/accounts/{parentId}/external_accounts", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<IExternalAccount>($"/v1/accounts/{parentId}/external_accounts", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Stripe
         /// </summary>
         public virtual IExternalAccount Update(string parentId, string id, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<IExternalAccount>(HttpMethod.Post, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions);
+            return this.Request<IExternalAccount>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<IExternalAccount> UpdateAsync(string parentId, string id, ExternalAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<IExternalAccount>(HttpMethod.Post, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<IExternalAccount>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{parentId}/external_accounts/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

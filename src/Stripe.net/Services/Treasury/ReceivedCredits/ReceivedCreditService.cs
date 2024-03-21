@@ -29,7 +29,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual ReceivedCredit Get(string id, ReceivedCreditGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ReceivedCredit>(HttpMethod.Get, $"/v1/treasury/received_credits/{id}", options, requestOptions);
+            return this.Request<ReceivedCredit>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_credits/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<ReceivedCredit> GetAsync(string id, ReceivedCreditGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ReceivedCredit>(HttpMethod.Get, $"/v1/treasury/received_credits/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ReceivedCredit>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_credits/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<ReceivedCredit> List(ReceivedCreditListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ReceivedCredit>>(HttpMethod.Get, $"/v1/treasury/received_credits", options, requestOptions);
+            return this.Request<StripeList<ReceivedCredit>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_credits", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<ReceivedCredit>> ListAsync(ReceivedCreditListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ReceivedCredit>>(HttpMethod.Get, $"/v1/treasury/received_credits", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ReceivedCredit>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_credits", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IEnumerable<ReceivedCredit> ListAutoPaging(ReceivedCreditListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<ReceivedCredit>($"/v1/treasury/received_credits", options, requestOptions);
+            return this.ListRequestAutoPaging<ReceivedCredit>($"/v1/treasury/received_credits", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IAsyncEnumerable<ReceivedCredit> ListAutoPagingAsync(ReceivedCreditListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<ReceivedCredit>($"/v1/treasury/received_credits", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<ReceivedCredit>($"/v1/treasury/received_credits", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

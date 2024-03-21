@@ -27,7 +27,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.InboundTransfer Fail(string id, InboundTransferFailOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/fail", options, requestOptions);
+            return this.Request<Stripe.Treasury.InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/fail", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.InboundTransfer> FailAsync(string id, InboundTransferFailOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/fail", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/fail", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.InboundTransfer ReturnInboundTransfer(string id, InboundTransferReturnInboundTransferOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/return", options, requestOptions);
+            return this.Request<Stripe.Treasury.InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/return", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.InboundTransfer> ReturnInboundTransferAsync(string id, InboundTransferReturnInboundTransferOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/return", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/return", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.InboundTransfer Succeed(string id, InboundTransferSucceedOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/succeed", options, requestOptions);
+            return this.Request<Stripe.Treasury.InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/succeed", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.InboundTransfer> SucceedAsync(string id, InboundTransferSucceedOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/succeed", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/succeed", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual ConnectionToken Create(ConnectionTokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ConnectionToken>(HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions);
+            return this.Request<ConnectionToken>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<ConnectionToken> CreateAsync(ConnectionTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ConnectionToken>(HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ConnectionToken>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

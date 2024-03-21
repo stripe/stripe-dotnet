@@ -32,7 +32,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Settings Get(RequestOptions requestOptions = null)
         {
-            return this.Request<Settings>(HttpMethod.Get, $"/v1/tax/settings", null, requestOptions);
+            return this.Request<Settings>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/settings", null, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Settings> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Settings>(HttpMethod.Get, $"/v1/tax/settings", null, requestOptions, cancellationToken);
+            return this.RequestAsync<Settings>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/settings", null, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Settings Get(SettingsGetOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Settings>(HttpMethod.Get, $"/v1/tax/settings", options, requestOptions);
+            return this.Request<Settings>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/settings", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Settings> GetAsync(SettingsGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Settings>(HttpMethod.Get, $"/v1/tax/settings", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Settings>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/settings", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Settings Update(SettingsUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Settings>(HttpMethod.Post, $"/v1/tax/settings", options, requestOptions);
+            return this.Request<Settings>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/settings", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Settings> UpdateAsync(SettingsUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Settings>(HttpMethod.Post, $"/v1/tax/settings", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Settings>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/settings", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

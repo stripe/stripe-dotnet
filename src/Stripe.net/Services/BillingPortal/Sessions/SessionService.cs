@@ -26,7 +26,7 @@ namespace Stripe.BillingPortal
         /// </summary>
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions);
+            return this.Request<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe.BillingPortal
         /// </summary>
         public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }
