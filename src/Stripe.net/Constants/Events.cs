@@ -328,11 +328,6 @@ namespace Stripe
         public const string CustomerDiscountUpdated = "customer.discount.updated";
 
         /// <summary>
-        /// Occurs whenever a customer's entitlements change.
-        /// </summary>
-        public const string CustomerEntitlementSummaryUpdated = "customer.entitlement_summary.updated";
-
-        /// <summary>
         /// Occurs whenever a new source is created for a customer.
         /// </summary>
         public const string CustomerSourceCreated = "customer.source.created";
@@ -443,6 +438,11 @@ namespace Stripe
         /// Occurs whenever any property of a customer changes.
         /// </summary>
         public const string CustomerUpdated = "customer.updated";
+
+        /// <summary>
+        /// Occurs whenever a customer's entitlements change.
+        /// </summary>
+        public const string EntitlementsActiveEntitlementSummaryUpdated = "entitlements.active_entitlement_summary.updated";
 
         /// <summary>
         /// Occurs whenever a new Stripe-generated file is available for your account.
