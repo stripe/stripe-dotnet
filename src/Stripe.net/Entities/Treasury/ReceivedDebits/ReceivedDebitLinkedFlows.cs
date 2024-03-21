@@ -33,6 +33,13 @@ namespace Stripe.Treasury
         public string IssuingTransaction { get; set; }
 
         /// <summary>
+        /// Set if the ReceivedDebit was created due to a <a
+        /// href="https://stripe.com/docs/api#payouts">Payout</a> object.
+        /// </summary>
+        [JsonProperty("payout")]
+        public string Payout { get; set; }
+
+        /// <summary>
         /// The ReceivedCredit that Capital withheld from.
         /// </summary>
         [JsonProperty("received_credit_capital_withholding")]

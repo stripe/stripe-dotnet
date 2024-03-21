@@ -6,7 +6,10 @@ namespace Stripe
     public class QuoteLineSetPauseCollection : StripeEntity<QuoteLineSetPauseCollection>
     {
         /// <summary>
-        /// If specified, payment collection for this subscription will be paused.
+        /// If specified, payment collection for this subscription will be paused. Note that the
+        /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
+        /// more about <a href="https://stripe.com/billing/subscriptions/pause-payment">pausing
+        /// collection</a>.
         /// </summary>
         [JsonProperty("set")]
         public QuoteLineSetPauseCollectionSet Set { get; set; }

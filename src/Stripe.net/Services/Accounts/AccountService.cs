@@ -220,12 +220,12 @@ namespace Stripe
 
         public virtual Account GetSelf(RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Get, "/v1/account", null, requestOptions);
+            return this.Request<Account>(HttpMethod.Get, "/v1/account", null, requestOptions);
         }
 
         public virtual Task<Account> GetSelfAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Get, "/v1/account", null, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(HttpMethod.Get, "/v1/account", null, requestOptions, cancellationToken);
         }
     }
 }

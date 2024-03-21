@@ -197,6 +197,14 @@ namespace Stripe
         public string LinkPayments { get; set; }
 
         /// <summary>
+        /// The status of the MobilepPay capability of the account, or whether the account can
+        /// directly process MobilePay charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("mobilepay_payments")]
+        public string MobilepayPayments { get; set; }
+
+        /// <summary>
         /// The status of the OXXO payments capability of the account, or whether the account can
         /// directly process OXXO charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

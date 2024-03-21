@@ -163,6 +163,13 @@ namespace Stripe.TestHelpers
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// If this is a <c>mobilepay</c> PaymentMethod, this hash contains details about the
+        /// MobilePay payment method.
+        /// </summary>
+        [JsonProperty("mobilepay")]
+        public ConfirmationTokenPaymentMethodDataMobilepayOptions Mobilepay { get; set; }
+
+        /// <summary>
         /// If this is a <c>multibanco</c> PaymentMethod, this hash contains details about the
         /// Multibanco payment method.
         /// </summary>
@@ -269,9 +276,10 @@ namespace Stripe.TestHelpers
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>blik</c>, <c>boleto</c>,
         /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
         /// <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>,
-        /// <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>,
-        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>,
-        /// <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>,
+        /// <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
+        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

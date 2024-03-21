@@ -447,7 +447,10 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// If specified, payment collection for this subscription will be paused.
+        /// If specified, payment collection for this subscription will be paused. Note that the
+        /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
+        /// more about <a href="https://stripe.com/billing/subscriptions/pause-payment">pausing
+        /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
         public SubscriptionPauseCollection PauseCollection { get; set; }
@@ -562,17 +565,25 @@ namespace Stripe
 
         /// <summary>
         /// Possible values are <c>incomplete</c>, <c>incomplete_expired</c>, <c>trialing</c>,
-        /// <c>active</c>, <c>past_due</c>, <c>canceled</c>, or <c>unpaid</c>.
+        /// <c>active</c>, <c>past_due</c>, <c>canceled</c>, <c>unpaid</c>, or <c>paused</c>.
         ///
         /// For <c>collection_method=charge_automatically</c> a subscription moves into
-        /// <c>incomplete</c> if the initial payment attempt fails. A subscription in this state can
-        /// only have metadata and default_source updated. Once the first invoice is paid, the
-        /// subscription moves into an <c>active</c> state. If the first invoice is not paid within
+        /// <c>incomplete</c> if the initial payment attempt fails. A subscription in this status
+        /// can only have metadata and default_source updated. Once the first invoice is paid, the
+        /// subscription moves into an <c>active</c> status. If the first invoice is not paid within
         /// 23 hours, the subscription transitions to <c>incomplete_expired</c>. This is a terminal
-        /// state, the open invoice will be voided and no further invoices will be generated.
+        /// status, the open invoice will be voided and no further invoices will be generated.
         ///
         /// A subscription that is currently in a trial period is <c>trialing</c> and moves to
         /// <c>active</c> when the trial period is over.
+        ///
+        /// A subscription can only enter a <c>paused</c> status <a
+        /// href="https://stripe.com/billing/subscriptions/trials#create-free-trials-without-payment">when
+        /// a trial ends without a payment method</a>. A <c>paused</c> subscription doesn't generate
+        /// invoices and can be resumed after your customer adds their payment method. The
+        /// <c>paused</c> status is different from <a
+        /// href="https://stripe.com/billing/subscriptions/pause-payment">pausing collection</a>,
+        /// which still generates invoices.
         ///
         /// If subscription <c>collection_method=charge_automatically</c>, it becomes
         /// <c>past_due</c> when payment is required but cannot be paid (due to failed payment or

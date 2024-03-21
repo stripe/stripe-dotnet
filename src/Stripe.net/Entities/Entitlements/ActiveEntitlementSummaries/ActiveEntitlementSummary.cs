@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Entitlements
 {
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A summary of a customer's entitlements.
+    /// A summary of a customer's active entitlements.
     /// </summary>
-    public class CustomerEntitlementSummary : StripeEntity<CustomerEntitlementSummary>, IHasObject
+    public class ActiveEntitlementSummary : StripeEntity<ActiveEntitlementSummary>, IHasObject
     {
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
@@ -24,7 +24,7 @@ namespace Stripe
         /// The list of entitlements this customer has.
         /// </summary>
         [JsonProperty("entitlements")]
-        public StripeList<CustomerEntitlement> Entitlements { get; set; }
+        public StripeList<ActiveEntitlement> Entitlements { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

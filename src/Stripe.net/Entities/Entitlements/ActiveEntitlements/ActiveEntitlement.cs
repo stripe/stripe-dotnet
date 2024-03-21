@@ -1,12 +1,12 @@
 // File generated from our OpenAPI spec
-namespace Stripe
+namespace Stripe.Entitlements
 {
     using Newtonsoft.Json;
 
     /// <summary>
-    /// A entitlement for a customer describes access to a feature.
+    /// An active entitlement describes access to a feature for a customer.
     /// </summary>
-    public class CustomerEntitlement : StripeEntity<CustomerEntitlement>, IHasId, IHasObject
+    public class ActiveEntitlement : StripeEntity<ActiveEntitlement>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
