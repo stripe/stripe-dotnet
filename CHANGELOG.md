@@ -1,5 +1,17 @@
 # Changelog
 
+## 43.21.0-beta.1 - 2024-03-21
+* [#2875](https://github.com/stripe/stripe-dotnet/pull/2875) Update generated code for beta
+  * Add support for new resources `Entitlements.ActiveEntitlementSummary` and `Entitlements.ActiveEntitlement`
+  * Add support for `List` method on resource `ActiveEntitlement`
+  * Add support for `Mobilepay` on `ConfirmationTokenPaymentMethodDataOptions` and `ConfirmationTokenPaymentMethodPreview`
+  * Add support for `UseStripeSdk` on `ConfirmationToken`
+  * Remove support for `PaymentMethod` on `ConfirmationToken`
+  * Add support for `Metadata` on `Entitlements.FeatureCreateOptions` and `EntitlementsFeature`
+  * Add support for `Active` on `EntitlementsFeature`
+* [#2870](https://github.com/stripe/stripe-dotnet/pull/2870) Update generated code for beta
+  Release specs are identical.
+
 ## 43.20.0-beta.1 - 2024-03-14
 * [#2866](https://github.com/stripe/stripe-dotnet/pull/2866) Update generated code for beta
   * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
