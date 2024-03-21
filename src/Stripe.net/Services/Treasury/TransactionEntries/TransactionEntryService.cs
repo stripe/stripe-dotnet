@@ -28,7 +28,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual TransactionEntry Get(string id, TransactionEntryGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TransactionEntry>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/transaction_entries/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<TransactionEntry>(HttpMethod.Get, $"/v1/treasury/transaction_entries/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<TransactionEntry> GetAsync(string id, TransactionEntryGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TransactionEntry>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/transaction_entries/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<TransactionEntry>(HttpMethod.Get, $"/v1/treasury/transaction_entries/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<TransactionEntry> List(TransactionEntryListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<TransactionEntry>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/transaction_entries", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<TransactionEntry>>(HttpMethod.Get, $"/v1/treasury/transaction_entries", options, requestOptions);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<TransactionEntry>> ListAsync(TransactionEntryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<TransactionEntry>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/transaction_entries", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<TransactionEntry>>(HttpMethod.Get, $"/v1/treasury/transaction_entries", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IEnumerable<TransactionEntry> ListAutoPaging(TransactionEntryListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<TransactionEntry>($"/v1/treasury/transaction_entries", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<TransactionEntry>($"/v1/treasury/transaction_entries", options, requestOptions);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IAsyncEnumerable<TransactionEntry> ListAutoPagingAsync(TransactionEntryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<TransactionEntry>($"/v1/treasury/transaction_entries", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<TransactionEntry>($"/v1/treasury/transaction_entries", options, requestOptions, cancellationToken);
         }
     }
 }

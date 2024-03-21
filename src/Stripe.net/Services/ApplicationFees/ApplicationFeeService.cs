@@ -29,7 +29,7 @@ namespace Stripe
         /// </summary>
         public virtual ApplicationFee Get(string id, ApplicationFeeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplicationFee>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<ApplicationFee>(HttpMethod.Get, $"/v1/application_fees/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplicationFee> GetAsync(string id, ApplicationFeeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplicationFee>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<ApplicationFee>(HttpMethod.Get, $"/v1/application_fees/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<ApplicationFee> List(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ApplicationFee>>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<ApplicationFee>>(HttpMethod.Get, $"/v1/application_fees", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<ApplicationFee>> ListAsync(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ApplicationFee>>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<ApplicationFee>>(HttpMethod.Get, $"/v1/application_fees", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<ApplicationFee> ListAutoPaging(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<ApplicationFee>($"/v1/application_fees", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<ApplicationFee>($"/v1/application_fees", options, requestOptions);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<ApplicationFee> ListAutoPagingAsync(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<ApplicationFee>($"/v1/application_fees", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<ApplicationFee>($"/v1/application_fees", options, requestOptions, cancellationToken);
         }
     }
 }

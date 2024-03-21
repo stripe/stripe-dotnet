@@ -28,7 +28,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual CreditUnderwritingRecord Correct(string id, CreditUnderwritingRecordCorrectOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/correct", options, requestOptions, ApiMode.V1);
+            return this.Request<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/correct", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<CreditUnderwritingRecord> CorrectAsync(string id, CreditUnderwritingRecordCorrectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/correct", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/correct", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual CreditUnderwritingRecord CreateFromApplication(CreditUnderwritingRecordCreateFromApplicationOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/create_from_application", options, requestOptions, ApiMode.V1);
+            return this.Request<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/create_from_application", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<CreditUnderwritingRecord> CreateFromApplicationAsync(CreditUnderwritingRecordCreateFromApplicationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/create_from_application", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/create_from_application", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual CreditUnderwritingRecord CreateFromProactiveReview(CreditUnderwritingRecordCreateFromProactiveReviewOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/create_from_proactive_review", options, requestOptions, ApiMode.V1);
+            return this.Request<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/create_from_proactive_review", options, requestOptions);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<CreditUnderwritingRecord> CreateFromProactiveReviewAsync(CreditUnderwritingRecordCreateFromProactiveReviewOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/create_from_proactive_review", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/create_from_proactive_review", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual CreditUnderwritingRecord Get(string id, CreditUnderwritingRecordGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/credit_underwriting_records/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<CreditUnderwritingRecord>(HttpMethod.Get, $"/v1/issuing/credit_underwriting_records/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<CreditUnderwritingRecord> GetAsync(string id, CreditUnderwritingRecordGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/credit_underwriting_records/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Get, $"/v1/issuing/credit_underwriting_records/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual StripeList<CreditUnderwritingRecord> List(CreditUnderwritingRecordListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CreditUnderwritingRecord>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/credit_underwriting_records", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<CreditUnderwritingRecord>>(HttpMethod.Get, $"/v1/issuing/credit_underwriting_records", options, requestOptions);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<StripeList<CreditUnderwritingRecord>> ListAsync(CreditUnderwritingRecordListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CreditUnderwritingRecord>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/credit_underwriting_records", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<CreditUnderwritingRecord>>(HttpMethod.Get, $"/v1/issuing/credit_underwriting_records", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual IEnumerable<CreditUnderwritingRecord> ListAutoPaging(CreditUnderwritingRecordListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<CreditUnderwritingRecord>($"/v1/issuing/credit_underwriting_records", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<CreditUnderwritingRecord>($"/v1/issuing/credit_underwriting_records", options, requestOptions);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual IAsyncEnumerable<CreditUnderwritingRecord> ListAutoPagingAsync(CreditUnderwritingRecordListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<CreditUnderwritingRecord>($"/v1/issuing/credit_underwriting_records", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<CreditUnderwritingRecord>($"/v1/issuing/credit_underwriting_records", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual CreditUnderwritingRecord ReportDecision(string id, CreditUnderwritingRecordReportDecisionOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/report_decision", options, requestOptions, ApiMode.V1);
+            return this.Request<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/report_decision", options, requestOptions);
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<CreditUnderwritingRecord> ReportDecisionAsync(string id, CreditUnderwritingRecordReportDecisionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditUnderwritingRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/report_decision", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/report_decision", options, requestOptions, cancellationToken);
         }
     }
 }

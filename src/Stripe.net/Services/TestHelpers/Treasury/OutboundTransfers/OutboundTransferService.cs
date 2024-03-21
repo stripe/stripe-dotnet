@@ -27,7 +27,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.OutboundTransfer Fail(string id, OutboundTransferFailOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/fail", options, requestOptions, ApiMode.V1);
+            return this.Request<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/fail", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.OutboundTransfer> FailAsync(string id, OutboundTransferFailOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/fail", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/fail", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.OutboundTransfer Post(string id, OutboundTransferPostOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/post", options, requestOptions, ApiMode.V1);
+            return this.Request<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/post", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.OutboundTransfer> PostAsync(string id, OutboundTransferPostOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/post", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/post", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.OutboundTransfer ReturnOutboundTransfer(string id, OutboundTransferReturnOutboundTransferOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/return", options, requestOptions, ApiMode.V1);
+            return this.Request<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/return", options, requestOptions);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.OutboundTransfer> ReturnOutboundTransferAsync(string id, OutboundTransferReturnOutboundTransferOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/return", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/return", options, requestOptions, cancellationToken);
         }
     }
 }

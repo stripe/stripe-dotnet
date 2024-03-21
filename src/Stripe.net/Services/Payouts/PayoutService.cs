@@ -32,7 +32,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Cancel(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{id}/cancel", options, requestOptions, ApiMode.V1);
+            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{id}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> CancelAsync(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{id}/cancel", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{id}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Create(PayoutCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts", options, requestOptions, ApiMode.V1);
+            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts", options, requestOptions);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> CreateAsync(PayoutCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Get(string id, PayoutGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Payout>(HttpMethod.Get, $"/v1/payouts/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> GetAsync(string id, PayoutGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Payout>(HttpMethod.Get, $"/v1/payouts/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Payout> List(PayoutListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Payout>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<Payout>>(HttpMethod.Get, $"/v1/payouts", options, requestOptions);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Payout>> ListAsync(PayoutListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Payout>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<Payout>>(HttpMethod.Get, $"/v1/payouts", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Payout> ListAutoPaging(PayoutListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Payout>($"/v1/payouts", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<Payout>($"/v1/payouts", options, requestOptions);
         }
 
         /// <summary>
@@ -138,7 +138,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Payout> ListAutoPagingAsync(PayoutListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Payout>($"/v1/payouts", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Payout>($"/v1/payouts", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Reverse(string id, PayoutReverseOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{id}/reverse", options, requestOptions, ApiMode.V1);
+            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{id}/reverse", options, requestOptions);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> ReverseAsync(string id, PayoutReverseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{id}/reverse", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{id}/reverse", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Update(string id, PayoutUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> UpdateAsync(string id, PayoutUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

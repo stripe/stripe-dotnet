@@ -26,7 +26,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual MeterEventAdjustment Create(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<MeterEventAdjustment>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions, ApiMode.V1);
+            return this.Request<MeterEventAdjustment>(HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<MeterEventAdjustment> CreateAsync(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<MeterEventAdjustment>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<MeterEventAdjustment>(HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions, cancellationToken);
         }
     }
 }

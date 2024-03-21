@@ -31,7 +31,7 @@ namespace Stripe
         /// </summary>
         public virtual LoginLink Create(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<LoginLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions, ApiMode.V1);
+            return this.Request<LoginLink>(HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<LoginLink> CreateAsync(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<LoginLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<LoginLink>(HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions, cancellationToken);
         }
     }
 }

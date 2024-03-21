@@ -27,7 +27,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<QuotePreviewInvoice> List(string parentId, QuotePreviewInvoiceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<QuotePreviewInvoice>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{parentId}/preview_invoices", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<QuotePreviewInvoice>>(HttpMethod.Get, $"/v1/quotes/{parentId}/preview_invoices", options, requestOptions);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<QuotePreviewInvoice>> ListAsync(string parentId, QuotePreviewInvoiceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<QuotePreviewInvoice>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{parentId}/preview_invoices", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<QuotePreviewInvoice>>(HttpMethod.Get, $"/v1/quotes/{parentId}/preview_invoices", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<QuotePreviewInvoice> ListAutoPaging(string parentId, QuotePreviewInvoiceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<QuotePreviewInvoice>($"/v1/quotes/{parentId}/preview_invoices", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<QuotePreviewInvoice>($"/v1/quotes/{parentId}/preview_invoices", options, requestOptions);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<QuotePreviewInvoice> ListAutoPagingAsync(string parentId, QuotePreviewInvoiceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<QuotePreviewInvoice>($"/v1/quotes/{parentId}/preview_invoices", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<QuotePreviewInvoice>($"/v1/quotes/{parentId}/preview_invoices", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual CustomerCashBalanceTransaction FundCashBalance(string id, CustomerFundCashBalanceOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerCashBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/customers/{id}/fund_cash_balance", options, requestOptions, ApiMode.V1);
+            return this.Request<CustomerCashBalanceTransaction>(HttpMethod.Post, $"/v1/test_helpers/customers/{id}/fund_cash_balance", options, requestOptions);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Task<CustomerCashBalanceTransaction> FundCashBalanceAsync(string id, CustomerFundCashBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerCashBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/customers/{id}/fund_cash_balance", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<CustomerCashBalanceTransaction>(HttpMethod.Post, $"/v1/test_helpers/customers/{id}/fund_cash_balance", options, requestOptions, cancellationToken);
         }
     }
 }

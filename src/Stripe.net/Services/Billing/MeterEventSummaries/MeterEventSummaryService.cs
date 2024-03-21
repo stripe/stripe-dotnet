@@ -27,7 +27,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual StripeList<MeterEventSummary> List(string parentId, MeterEventSummaryListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<MeterEventSummary>>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/meters/{parentId}/event_summaries", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<MeterEventSummary>>(HttpMethod.Get, $"/v1/billing/meters/{parentId}/event_summaries", options, requestOptions);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<StripeList<MeterEventSummary>> ListAsync(string parentId, MeterEventSummaryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<MeterEventSummary>>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/meters/{parentId}/event_summaries", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<MeterEventSummary>>(HttpMethod.Get, $"/v1/billing/meters/{parentId}/event_summaries", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual IEnumerable<MeterEventSummary> ListAutoPaging(string parentId, MeterEventSummaryListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<MeterEventSummary>($"/v1/billing/meters/{parentId}/event_summaries", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<MeterEventSummary>($"/v1/billing/meters/{parentId}/event_summaries", options, requestOptions);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual IAsyncEnumerable<MeterEventSummary> ListAutoPagingAsync(string parentId, MeterEventSummaryListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<MeterEventSummary>($"/v1/billing/meters/{parentId}/event_summaries", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<MeterEventSummary>($"/v1/billing/meters/{parentId}/event_summaries", options, requestOptions, cancellationToken);
         }
     }
 }

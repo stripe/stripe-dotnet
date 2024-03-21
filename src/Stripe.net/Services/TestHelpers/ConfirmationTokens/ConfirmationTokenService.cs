@@ -25,7 +25,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual ConfirmationToken Create(ConfirmationTokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ConfirmationToken>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/confirmation_tokens", options, requestOptions, ApiMode.V1);
+            return this.Request<ConfirmationToken>(HttpMethod.Post, $"/v1/test_helpers/confirmation_tokens", options, requestOptions);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Task<ConfirmationToken> CreateAsync(ConfirmationTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ConfirmationToken>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/confirmation_tokens", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<ConfirmationToken>(HttpMethod.Post, $"/v1/test_helpers/confirmation_tokens", options, requestOptions, cancellationToken);
         }
     }
 }

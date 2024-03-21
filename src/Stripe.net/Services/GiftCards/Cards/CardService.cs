@@ -30,7 +30,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Card Create(CardCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/gift_cards/cards", options, requestOptions, ApiMode.V1);
+            return this.Request<Card>(HttpMethod.Post, $"/v1/gift_cards/cards", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Task<Card> CreateAsync(CardCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/gift_cards/cards", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Card>(HttpMethod.Post, $"/v1/gift_cards/cards", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Card Get(string id, CardGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/gift_cards/cards/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Card>(HttpMethod.Get, $"/v1/gift_cards/cards/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Task<Card> GetAsync(string id, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/gift_cards/cards/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Card>(HttpMethod.Get, $"/v1/gift_cards/cards/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -62,7 +62,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual StripeList<Card> List(CardListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Card>>(BaseAddress.Api, HttpMethod.Get, $"/v1/gift_cards/cards", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<Card>>(HttpMethod.Get, $"/v1/gift_cards/cards", options, requestOptions);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Task<StripeList<Card>> ListAsync(CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Card>>(BaseAddress.Api, HttpMethod.Get, $"/v1/gift_cards/cards", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<Card>>(HttpMethod.Get, $"/v1/gift_cards/cards", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual IEnumerable<Card> ListAutoPaging(CardListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Card>($"/v1/gift_cards/cards", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<Card>($"/v1/gift_cards/cards", options, requestOptions);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual IAsyncEnumerable<Card> ListAutoPagingAsync(CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Card>($"/v1/gift_cards/cards", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Card>($"/v1/gift_cards/cards", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Card Update(string id, CardUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/gift_cards/cards/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Card>(HttpMethod.Post, $"/v1/gift_cards/cards/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Task<Card> UpdateAsync(string id, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/gift_cards/cards/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Card>(HttpMethod.Post, $"/v1/gift_cards/cards/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Card Validate(CardValidateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/gift_cards/cards/validate", options, requestOptions, ApiMode.V1);
+            return this.Request<Card>(HttpMethod.Post, $"/v1/gift_cards/cards/validate", options, requestOptions);
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Task<Card> ValidateAsync(CardValidateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/gift_cards/cards/validate", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Card>(HttpMethod.Post, $"/v1/gift_cards/cards/validate", options, requestOptions, cancellationToken);
         }
     }
 }

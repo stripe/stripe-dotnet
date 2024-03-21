@@ -30,7 +30,7 @@ namespace Stripe
         /// </summary>
         public virtual Token Create(TokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Token>(BaseAddress.Api, HttpMethod.Post, $"/v1/tokens", options, requestOptions, ApiMode.V1);
+            return this.Request<Token>(HttpMethod.Post, $"/v1/tokens", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Token> CreateAsync(TokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Token>(BaseAddress.Api, HttpMethod.Post, $"/v1/tokens", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Post, $"/v1/tokens", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Stripe
         /// </summary>
         public virtual Token Get(string id, TokenGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Token>(BaseAddress.Api, HttpMethod.Get, $"/v1/tokens/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Token>(HttpMethod.Get, $"/v1/tokens/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Token> GetAsync(string id, TokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Token>(BaseAddress.Api, HttpMethod.Get, $"/v1/tokens/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/tokens/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

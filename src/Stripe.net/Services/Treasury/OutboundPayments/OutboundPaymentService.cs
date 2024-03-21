@@ -29,7 +29,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual OutboundPayment Cancel(string id, OutboundPaymentCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<OutboundPayment>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_payments/{id}/cancel", options, requestOptions, ApiMode.V1);
+            return this.Request<OutboundPayment>(HttpMethod.Post, $"/v1/treasury/outbound_payments/{id}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<OutboundPayment> CancelAsync(string id, OutboundPaymentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<OutboundPayment>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_payments/{id}/cancel", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<OutboundPayment>(HttpMethod.Post, $"/v1/treasury/outbound_payments/{id}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual OutboundPayment Create(OutboundPaymentCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<OutboundPayment>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_payments", options, requestOptions, ApiMode.V1);
+            return this.Request<OutboundPayment>(HttpMethod.Post, $"/v1/treasury/outbound_payments", options, requestOptions);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<OutboundPayment> CreateAsync(OutboundPaymentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<OutboundPayment>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_payments", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<OutboundPayment>(HttpMethod.Post, $"/v1/treasury/outbound_payments", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual OutboundPayment Get(string id, OutboundPaymentGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<OutboundPayment>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_payments/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<OutboundPayment>(HttpMethod.Get, $"/v1/treasury/outbound_payments/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<OutboundPayment> GetAsync(string id, OutboundPaymentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<OutboundPayment>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_payments/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<OutboundPayment>(HttpMethod.Get, $"/v1/treasury/outbound_payments/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<OutboundPayment> List(OutboundPaymentListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<OutboundPayment>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_payments", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<OutboundPayment>>(HttpMethod.Get, $"/v1/treasury/outbound_payments", options, requestOptions);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<OutboundPayment>> ListAsync(OutboundPaymentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<OutboundPayment>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_payments", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<OutboundPayment>>(HttpMethod.Get, $"/v1/treasury/outbound_payments", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IEnumerable<OutboundPayment> ListAutoPaging(OutboundPaymentListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<OutboundPayment>($"/v1/treasury/outbound_payments", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<OutboundPayment>($"/v1/treasury/outbound_payments", options, requestOptions);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IAsyncEnumerable<OutboundPayment> ListAutoPagingAsync(OutboundPaymentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<OutboundPayment>($"/v1/treasury/outbound_payments", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<OutboundPayment>($"/v1/treasury/outbound_payments", options, requestOptions, cancellationToken);
         }
     }
 }

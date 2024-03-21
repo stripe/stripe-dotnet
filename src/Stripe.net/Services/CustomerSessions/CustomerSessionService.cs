@@ -28,7 +28,7 @@ namespace Stripe
         /// </summary>
         public virtual CustomerSession Create(CustomerSessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions, ApiMode.V1);
+            return this.Request<CustomerSession>(HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CustomerSession> CreateAsync(CustomerSessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<CustomerSession>(HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions, cancellationToken);
         }
     }
 }

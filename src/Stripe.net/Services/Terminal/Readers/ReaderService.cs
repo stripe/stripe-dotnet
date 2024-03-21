@@ -31,7 +31,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader CancelAction(string id, ReaderCancelActionOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/cancel_action", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/cancel_action", options, requestOptions);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> CancelActionAsync(string id, ReaderCancelActionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/cancel_action", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/cancel_action", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader CollectInputs(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/collect_inputs", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/collect_inputs", options, requestOptions);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> CollectInputsAsync(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/collect_inputs", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/collect_inputs", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader CollectPaymentMethod(string id, ReaderCollectPaymentMethodOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/collect_payment_method", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/collect_payment_method", options, requestOptions);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> CollectPaymentMethodAsync(string id, ReaderCollectPaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/collect_payment_method", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/collect_payment_method", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader ConfirmPaymentIntent(string id, ReaderConfirmPaymentIntentOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/confirm_payment_intent", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/confirm_payment_intent", options, requestOptions);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> ConfirmPaymentIntentAsync(string id, ReaderConfirmPaymentIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/confirm_payment_intent", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/confirm_payment_intent", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -97,7 +97,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader Create(ReaderCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers", options, requestOptions);
         }
 
         /// <summary>
@@ -105,7 +105,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> CreateAsync(ReaderCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader Delete(string id, ReaderDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Delete, $"/v1/terminal/readers/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Delete, $"/v1/terminal/readers/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> DeleteAsync(string id, ReaderDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Delete, $"/v1/terminal/readers/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Delete, $"/v1/terminal/readers/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader Get(string id, ReaderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Get, $"/v1/terminal/readers/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Get, $"/v1/terminal/readers/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> GetAsync(string id, ReaderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Get, $"/v1/terminal/readers/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Get, $"/v1/terminal/readers/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -145,7 +145,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual StripeList<Reader> List(ReaderListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Reader>>(BaseAddress.Api, HttpMethod.Get, $"/v1/terminal/readers", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<Reader>>(HttpMethod.Get, $"/v1/terminal/readers", options, requestOptions);
         }
 
         /// <summary>
@@ -153,7 +153,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<StripeList<Reader>> ListAsync(ReaderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Reader>>(BaseAddress.Api, HttpMethod.Get, $"/v1/terminal/readers", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<Reader>>(HttpMethod.Get, $"/v1/terminal/readers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual IEnumerable<Reader> ListAutoPaging(ReaderListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Reader>($"/v1/terminal/readers", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<Reader>($"/v1/terminal/readers", options, requestOptions);
         }
 
         /// <summary>
@@ -169,7 +169,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual IAsyncEnumerable<Reader> ListAutoPagingAsync(ReaderListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Reader>($"/v1/terminal/readers", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Reader>($"/v1/terminal/readers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader ProcessPaymentIntent(string id, ReaderProcessPaymentIntentOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/process_payment_intent", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/process_payment_intent", options, requestOptions);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> ProcessPaymentIntentAsync(string id, ReaderProcessPaymentIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/process_payment_intent", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/process_payment_intent", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -193,7 +193,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader ProcessSetupIntent(string id, ReaderProcessSetupIntentOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/process_setup_intent", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/process_setup_intent", options, requestOptions);
         }
 
         /// <summary>
@@ -201,7 +201,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> ProcessSetupIntentAsync(string id, ReaderProcessSetupIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/process_setup_intent", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/process_setup_intent", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader RefundPayment(string id, ReaderRefundPaymentOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/refund_payment", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/refund_payment", options, requestOptions);
         }
 
         /// <summary>
@@ -217,7 +217,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> RefundPaymentAsync(string id, ReaderRefundPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/refund_payment", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/refund_payment", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader SetReaderDisplay(string id, ReaderSetReaderDisplayOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/set_reader_display", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/set_reader_display", options, requestOptions);
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> SetReaderDisplayAsync(string id, ReaderSetReaderDisplayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}/set_reader_display", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}/set_reader_display", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -242,7 +242,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Reader Update(string id, ReaderUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Reader> UpdateAsync(string id, ReaderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Reader>(HttpMethod.Post, $"/v1/terminal/readers/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

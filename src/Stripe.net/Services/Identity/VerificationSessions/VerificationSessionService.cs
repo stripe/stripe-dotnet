@@ -34,7 +34,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual VerificationSession Cancel(string id, VerificationSessionCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<VerificationSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/identity/verification_sessions/{id}/cancel", options, requestOptions, ApiMode.V1);
+            return this.Request<VerificationSession>(HttpMethod.Post, $"/v1/identity/verification_sessions/{id}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual Task<VerificationSession> CancelAsync(string id, VerificationSessionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<VerificationSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/identity/verification_sessions/{id}/cancel", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<VerificationSession>(HttpMethod.Post, $"/v1/identity/verification_sessions/{id}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual VerificationSession Create(VerificationSessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<VerificationSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/identity/verification_sessions", options, requestOptions, ApiMode.V1);
+            return this.Request<VerificationSession>(HttpMethod.Post, $"/v1/identity/verification_sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual Task<VerificationSession> CreateAsync(VerificationSessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<VerificationSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/identity/verification_sessions", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<VerificationSession>(HttpMethod.Post, $"/v1/identity/verification_sessions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual VerificationSession Get(string id, VerificationSessionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<VerificationSession>(BaseAddress.Api, HttpMethod.Get, $"/v1/identity/verification_sessions/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<VerificationSession>(HttpMethod.Get, $"/v1/identity/verification_sessions/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual Task<VerificationSession> GetAsync(string id, VerificationSessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<VerificationSession>(BaseAddress.Api, HttpMethod.Get, $"/v1/identity/verification_sessions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<VerificationSession>(HttpMethod.Get, $"/v1/identity/verification_sessions/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +112,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual StripeList<VerificationSession> List(VerificationSessionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<VerificationSession>>(BaseAddress.Api, HttpMethod.Get, $"/v1/identity/verification_sessions", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<VerificationSession>>(HttpMethod.Get, $"/v1/identity/verification_sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual Task<StripeList<VerificationSession>> ListAsync(VerificationSessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<VerificationSession>>(BaseAddress.Api, HttpMethod.Get, $"/v1/identity/verification_sessions", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<VerificationSession>>(HttpMethod.Get, $"/v1/identity/verification_sessions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -128,7 +128,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual IEnumerable<VerificationSession> ListAutoPaging(VerificationSessionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<VerificationSession>($"/v1/identity/verification_sessions", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<VerificationSession>($"/v1/identity/verification_sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -136,7 +136,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual IAsyncEnumerable<VerificationSession> ListAutoPagingAsync(VerificationSessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<VerificationSession>($"/v1/identity/verification_sessions", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<VerificationSession>($"/v1/identity/verification_sessions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual VerificationSession Redact(string id, VerificationSessionRedactOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<VerificationSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/identity/verification_sessions/{id}/redact", options, requestOptions, ApiMode.V1);
+            return this.Request<VerificationSession>(HttpMethod.Post, $"/v1/identity/verification_sessions/{id}/redact", options, requestOptions);
         }
 
         /// <summary>
@@ -192,7 +192,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual Task<VerificationSession> RedactAsync(string id, VerificationSessionRedactOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<VerificationSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/identity/verification_sessions/{id}/redact", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<VerificationSession>(HttpMethod.Post, $"/v1/identity/verification_sessions/{id}/redact", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual VerificationSession Update(string id, VerificationSessionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<VerificationSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/identity/verification_sessions/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<VerificationSession>(HttpMethod.Post, $"/v1/identity/verification_sessions/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -214,7 +214,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual Task<VerificationSession> UpdateAsync(string id, VerificationSessionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<VerificationSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/identity/verification_sessions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<VerificationSession>(HttpMethod.Post, $"/v1/identity/verification_sessions/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

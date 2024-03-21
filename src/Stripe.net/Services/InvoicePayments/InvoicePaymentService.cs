@@ -28,7 +28,7 @@ namespace Stripe
         /// </summary>
         public virtual InvoicePayment Get(string parentId, string id, InvoicePaymentGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<InvoicePayment>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{parentId}/payments/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<InvoicePayment>(HttpMethod.Get, $"/v1/invoices/{parentId}/payments/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<InvoicePayment> GetAsync(string parentId, string id, InvoicePaymentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InvoicePayment>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{parentId}/payments/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<InvoicePayment>(HttpMethod.Get, $"/v1/invoices/{parentId}/payments/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<InvoicePayment> List(string parentId, InvoicePaymentListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<InvoicePayment>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{parentId}/payments", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<InvoicePayment>>(HttpMethod.Get, $"/v1/invoices/{parentId}/payments", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<InvoicePayment>> ListAsync(string parentId, InvoicePaymentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<InvoicePayment>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{parentId}/payments", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<InvoicePayment>>(HttpMethod.Get, $"/v1/invoices/{parentId}/payments", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<InvoicePayment> ListAutoPaging(string parentId, InvoicePaymentListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<InvoicePayment>($"/v1/invoices/{parentId}/payments", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<InvoicePayment>($"/v1/invoices/{parentId}/payments", options, requestOptions);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<InvoicePayment> ListAutoPagingAsync(string parentId, InvoicePaymentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<InvoicePayment>($"/v1/invoices/{parentId}/payments", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InvoicePayment>($"/v1/invoices/{parentId}/payments", options, requestOptions, cancellationToken);
         }
     }
 }

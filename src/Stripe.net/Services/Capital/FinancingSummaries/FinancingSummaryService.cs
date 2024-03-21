@@ -33,7 +33,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual FinancingSummary Get(RequestOptions requestOptions = null)
         {
-            return this.Request<FinancingSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions, ApiMode.V1);
+            return this.Request<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<FinancingSummary> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancingSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual FinancingSummary Get(FinancingSummaryGetOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancingSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions, ApiMode.V1);
+            return this.Request<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<FinancingSummary> GetAsync(FinancingSummaryGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancingSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions, cancellationToken);
         }
     }
 }
