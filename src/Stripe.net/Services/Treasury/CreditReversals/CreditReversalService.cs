@@ -29,7 +29,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual CreditReversal Create(CreditReversalCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditReversal>(HttpMethod.Post, $"/v1/treasury/credit_reversals", options, requestOptions);
+            return this.Request<CreditReversal>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/credit_reversals", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<CreditReversal> CreateAsync(CreditReversalCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditReversal>(HttpMethod.Post, $"/v1/treasury/credit_reversals", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditReversal>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/credit_reversals", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual CreditReversal Get(string id, CreditReversalGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditReversal>(HttpMethod.Get, $"/v1/treasury/credit_reversals/{id}", options, requestOptions);
+            return this.Request<CreditReversal>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/credit_reversals/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<CreditReversal> GetAsync(string id, CreditReversalGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditReversal>(HttpMethod.Get, $"/v1/treasury/credit_reversals/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditReversal>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/credit_reversals/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<CreditReversal> List(CreditReversalListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CreditReversal>>(HttpMethod.Get, $"/v1/treasury/credit_reversals", options, requestOptions);
+            return this.Request<StripeList<CreditReversal>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/credit_reversals", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<CreditReversal>> ListAsync(CreditReversalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CreditReversal>>(HttpMethod.Get, $"/v1/treasury/credit_reversals", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CreditReversal>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/credit_reversals", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IEnumerable<CreditReversal> ListAutoPaging(CreditReversalListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<CreditReversal>($"/v1/treasury/credit_reversals", options, requestOptions);
+            return this.ListRequestAutoPaging<CreditReversal>($"/v1/treasury/credit_reversals", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual IAsyncEnumerable<CreditReversal> ListAutoPagingAsync(CreditReversalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<CreditReversal>($"/v1/treasury/credit_reversals", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<CreditReversal>($"/v1/treasury/credit_reversals", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

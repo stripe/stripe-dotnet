@@ -26,7 +26,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Stripe.Issuing.Transaction CreateForceCapture(TransactionCreateForceCaptureOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_force_capture", options, requestOptions);
+            return this.Request<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_force_capture", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Task<Stripe.Issuing.Transaction> CreateForceCaptureAsync(TransactionCreateForceCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_force_capture", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_force_capture", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Stripe.Issuing.Transaction CreateUnlinkedRefund(TransactionCreateUnlinkedRefundOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_unlinked_refund", options, requestOptions);
+            return this.Request<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_unlinked_refund", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Task<Stripe.Issuing.Transaction> CreateUnlinkedRefundAsync(TransactionCreateUnlinkedRefundOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_unlinked_refund", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/create_unlinked_refund", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Stripe.Issuing.Transaction Refund(string id, TransactionRefundOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{id}/refund", options, requestOptions);
+            return this.Request<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{id}/refund", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Task<Stripe.Issuing.Transaction> RefundAsync(string id, TransactionRefundOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{id}/refund", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Issuing.Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{id}/refund", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

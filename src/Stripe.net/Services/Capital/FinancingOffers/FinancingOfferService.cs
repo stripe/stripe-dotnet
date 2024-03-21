@@ -28,7 +28,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual FinancingOffer Get(string id, FinancingOfferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancingOffer>(HttpMethod.Get, $"/v1/capital/financing_offers/{id}", options, requestOptions);
+            return this.Request<FinancingOffer>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_offers/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<FinancingOffer> GetAsync(string id, FinancingOfferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancingOffer>(HttpMethod.Get, $"/v1/capital/financing_offers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancingOffer>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_offers/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual StripeList<FinancingOffer> List(FinancingOfferListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<FinancingOffer>>(HttpMethod.Get, $"/v1/capital/financing_offers", options, requestOptions);
+            return this.Request<StripeList<FinancingOffer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_offers", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<StripeList<FinancingOffer>> ListAsync(FinancingOfferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<FinancingOffer>>(HttpMethod.Get, $"/v1/capital/financing_offers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<FinancingOffer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_offers", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual IEnumerable<FinancingOffer> ListAutoPaging(FinancingOfferListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<FinancingOffer>($"/v1/capital/financing_offers", options, requestOptions);
+            return this.ListRequestAutoPaging<FinancingOffer>($"/v1/capital/financing_offers", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual IAsyncEnumerable<FinancingOffer> ListAutoPagingAsync(FinancingOfferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<FinancingOffer>($"/v1/capital/financing_offers", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<FinancingOffer>($"/v1/capital/financing_offers", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual FinancingOffer MarkDelivered(string id, FinancingOfferMarkDeliveredOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancingOffer>(HttpMethod.Post, $"/v1/capital/financing_offers/{id}/mark_delivered", options, requestOptions);
+            return this.Request<FinancingOffer>(BaseAddress.Api, HttpMethod.Post, $"/v1/capital/financing_offers/{id}/mark_delivered", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<FinancingOffer> MarkDeliveredAsync(string id, FinancingOfferMarkDeliveredOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancingOffer>(HttpMethod.Post, $"/v1/capital/financing_offers/{id}/mark_delivered", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancingOffer>(BaseAddress.Api, HttpMethod.Post, $"/v1/capital/financing_offers/{id}/mark_delivered", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

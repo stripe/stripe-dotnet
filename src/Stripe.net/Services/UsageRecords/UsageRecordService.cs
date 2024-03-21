@@ -45,7 +45,7 @@ namespace Stripe
         /// </summary>
         public virtual UsageRecord Create(string parentId, UsageRecordCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<UsageRecord>(HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions);
+            return this.Request<UsageRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<UsageRecord> CreateAsync(string parentId, UsageRecordCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<UsageRecord>(HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions, cancellationToken);
+            return this.RequestAsync<UsageRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

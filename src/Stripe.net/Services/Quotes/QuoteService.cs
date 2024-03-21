@@ -31,7 +31,7 @@ namespace Stripe
         /// </summary>
         public virtual Quote Accept(string id, QuoteAcceptOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/accept", options, requestOptions);
+            return this.Request<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/accept", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Quote> AcceptAsync(string id, QuoteAcceptOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/accept", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/accept", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual Quote Cancel(string id, QuoteCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/cancel", options, requestOptions);
+            return this.Request<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/cancel", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Quote> CancelAsync(string id, QuoteCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/cancel", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Stripe
         /// </summary>
         public virtual Quote Create(QuoteCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Quote>(HttpMethod.Post, $"/v1/quotes", options, requestOptions);
+            return this.Request<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Quote> CreateAsync(QuoteCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Quote>(HttpMethod.Post, $"/v1/quotes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Stripe
         /// </summary>
         public virtual Quote FinalizeQuote(string id, QuoteFinalizeOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/finalize", options, requestOptions);
+            return this.Request<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/finalize", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Quote> FinalizeQuoteAsync(string id, QuoteFinalizeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/finalize", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/finalize", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace Stripe
         /// </summary>
         public virtual Quote Get(string id, QuoteGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Quote>(HttpMethod.Get, $"/v1/quotes/{id}", options, requestOptions);
+            return this.Request<Quote>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -109,7 +109,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Quote> GetAsync(string id, QuoteGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Quote>(HttpMethod.Get, $"/v1/quotes/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Quote>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Quote> List(QuoteListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Quote>>(HttpMethod.Get, $"/v1/quotes", options, requestOptions);
+            return this.Request<StripeList<Quote>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Quote>> ListAsync(QuoteListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Quote>>(HttpMethod.Get, $"/v1/quotes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Quote>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Quote> ListAutoPaging(QuoteListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Quote>($"/v1/quotes", options, requestOptions);
+            return this.ListRequestAutoPaging<Quote>($"/v1/quotes", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Quote> ListAutoPagingAsync(QuoteListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Quote>($"/v1/quotes", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Quote>($"/v1/quotes", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<LineItem> ListComputedUpfrontLineItems(string id, QuoteListComputedUpfrontLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -163,7 +163,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<LineItem>> ListComputedUpfrontLineItemsAsync(string id, QuoteListComputedUpfrontLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<LineItem> ListComputedUpfrontLineItemsAutoPaging(string id, QuoteListComputedUpfrontLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<LineItem> ListComputedUpfrontLineItemsAutoPagingAsync(string id, QuoteListComputedUpfrontLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<LineItem> ListLineItems(string id, QuoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/quotes/{id}/line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/line_items", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -205,7 +205,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, QuoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/quotes/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/line_items", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -215,7 +215,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, QuoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/quotes/{id}/line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/quotes/{id}/line_items", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -225,7 +225,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, QuoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quotes/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quotes/{id}/line_items", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<QuoteLine> ListLines(string id, QuoteListLinesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<QuoteLine>>(HttpMethod.Get, $"/v1/quotes/{id}/lines", options, requestOptions);
+            return this.Request<StripeList<QuoteLine>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/lines", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -245,7 +245,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<QuoteLine>> ListLinesAsync(string id, QuoteListLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<QuoteLine>>(HttpMethod.Get, $"/v1/quotes/{id}/lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<QuoteLine>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/lines", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -255,7 +255,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<QuoteLine> ListLinesAutoPaging(string id, QuoteListLinesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<QuoteLine>($"/v1/quotes/{id}/lines", options, requestOptions);
+            return this.ListRequestAutoPaging<QuoteLine>($"/v1/quotes/{id}/lines", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -265,7 +265,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<QuoteLine> ListLinesAutoPagingAsync(string id, QuoteListLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<QuoteLine>($"/v1/quotes/{id}/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<QuoteLine>($"/v1/quotes/{id}/lines", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -273,7 +273,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<InvoiceLineItem> ListPreviewInvoiceLines(string parentId, string id, QuoteListPreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"/v1/quotes/{parentId}/preview_invoices/{id}/lines", options, requestOptions);
+            return this.Request<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{parentId}/preview_invoices/{id}/lines", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -281,7 +281,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<InvoiceLineItem>> ListPreviewInvoiceLinesAsync(string parentId, string id, QuoteListPreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"/v1/quotes/{parentId}/preview_invoices/{id}/lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{parentId}/preview_invoices/{id}/lines", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -289,7 +289,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<InvoiceLineItem> ListPreviewInvoiceLinesAutoPaging(string parentId, string id, QuoteListPreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/quotes/{parentId}/preview_invoices/{id}/lines", options, requestOptions);
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/quotes/{parentId}/preview_invoices/{id}/lines", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -297,7 +297,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<InvoiceLineItem> ListPreviewInvoiceLinesAutoPagingAsync(string parentId, string id, QuoteListPreviewInvoiceLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/quotes/{parentId}/preview_invoices/{id}/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/quotes/{parentId}/preview_invoices/{id}/lines", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -305,7 +305,7 @@ namespace Stripe
         /// </summary>
         public virtual Quote MarkDraft(string id, QuoteMarkDraftOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/mark_draft", options, requestOptions);
+            return this.Request<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/mark_draft", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -313,7 +313,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Quote> MarkDraftAsync(string id, QuoteMarkDraftOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/mark_draft", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/mark_draft", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -321,7 +321,7 @@ namespace Stripe
         /// </summary>
         public virtual Quote MarkStale(string id, QuoteMarkStaleOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/mark_stale", options, requestOptions);
+            return this.Request<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/mark_stale", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -329,7 +329,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Quote> MarkStaleAsync(string id, QuoteMarkStaleOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/mark_stale", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/mark_stale", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -337,14 +337,7 @@ namespace Stripe
         /// </summary>
         public virtual Stream Pdf(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null)
         {
-            requestOptions ??= new RequestOptions();
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions = requestOptions.Clone();
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
-            return this.RequestStreaming(HttpMethod.Get, $"/v1/quotes/{id}/pdf", options, requestOptions);
+            return this.RequestStreaming(BaseAddress.Files, HttpMethod.Get, $"/v1/quotes/{id}/pdf", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -352,14 +345,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Stream> PdfAsync(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            requestOptions ??= new RequestOptions();
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions = requestOptions.Clone();
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
-            return this.RequestStreamingAsync(HttpMethod.Get, $"/v1/quotes/{id}/pdf", options, requestOptions, cancellationToken);
+            return this.RequestStreamingAsync(BaseAddress.Files, HttpMethod.Get, $"/v1/quotes/{id}/pdf", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -367,7 +353,7 @@ namespace Stripe
         /// </summary>
         public virtual Quote Reestimate(string id, QuoteReestimateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/reestimate", options, requestOptions);
+            return this.Request<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/reestimate", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -375,7 +361,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Quote> ReestimateAsync(string id, QuoteReestimateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Quote>(HttpMethod.Post, $"/v1/quotes/{id}/reestimate", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}/reestimate", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -383,7 +369,7 @@ namespace Stripe
         /// </summary>
         public virtual Quote Update(string id, QuoteUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Quote>(HttpMethod.Post, $"/v1/quotes/{id}", options, requestOptions);
+            return this.Request<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -391,7 +377,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Quote> UpdateAsync(string id, QuoteUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Quote>(HttpMethod.Post, $"/v1/quotes/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Quote>(BaseAddress.Api, HttpMethod.Post, $"/v1/quotes/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

@@ -27,7 +27,7 @@ namespace Stripe
         /// </summary>
         public virtual AccountSession Create(AccountSessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountSession>(HttpMethod.Post, $"/v1/account_sessions", options, requestOptions);
+            return this.Request<AccountSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_sessions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<AccountSession> CreateAsync(AccountSessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountSession>(HttpMethod.Post, $"/v1/account_sessions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_sessions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

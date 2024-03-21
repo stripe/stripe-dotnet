@@ -31,7 +31,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueListItem Create(ValueListItemCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueListItem>(HttpMethod.Post, $"/v1/radar/value_list_items", options, requestOptions);
+            return this.Request<ValueListItem>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_list_items", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueListItem> CreateAsync(ValueListItemCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueListItem>(HttpMethod.Post, $"/v1/radar/value_list_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueListItem>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_list_items", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueListItem Delete(string id, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueListItem>(HttpMethod.Delete, $"/v1/radar/value_list_items/{id}", options, requestOptions);
+            return this.Request<ValueListItem>(BaseAddress.Api, HttpMethod.Delete, $"/v1/radar/value_list_items/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueListItem> DeleteAsync(string id, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueListItem>(HttpMethod.Delete, $"/v1/radar/value_list_items/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueListItem>(BaseAddress.Api, HttpMethod.Delete, $"/v1/radar/value_list_items/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueListItem Get(string id, ValueListItemGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueListItem>(HttpMethod.Get, $"/v1/radar/value_list_items/{id}", options, requestOptions);
+            return this.Request<ValueListItem>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_list_items/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueListItem> GetAsync(string id, ValueListItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueListItem>(HttpMethod.Get, $"/v1/radar/value_list_items/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueListItem>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_list_items/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual StripeList<ValueListItem> List(ValueListItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ValueListItem>>(HttpMethod.Get, $"/v1/radar/value_list_items", options, requestOptions);
+            return this.Request<StripeList<ValueListItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_list_items", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<StripeList<ValueListItem>> ListAsync(ValueListItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ValueListItem>>(HttpMethod.Get, $"/v1/radar/value_list_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ValueListItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_list_items", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual IEnumerable<ValueListItem> ListAutoPaging(ValueListItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<ValueListItem>($"/v1/radar/value_list_items", options, requestOptions);
+            return this.ListRequestAutoPaging<ValueListItem>($"/v1/radar/value_list_items", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -108,7 +108,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual IAsyncEnumerable<ValueListItem> ListAutoPagingAsync(ValueListItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<ValueListItem>($"/v1/radar/value_list_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<ValueListItem>($"/v1/radar/value_list_items", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

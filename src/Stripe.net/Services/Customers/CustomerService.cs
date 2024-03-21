@@ -32,7 +32,7 @@ namespace Stripe
         /// </summary>
         public virtual Customer Create(CustomerCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Customer>(HttpMethod.Post, $"/v1/customers", options, requestOptions);
+            return this.Request<Customer>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Customer> CreateAsync(CustomerCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Customer>(HttpMethod.Post, $"/v1/customers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Stripe
         /// </summary>
         public virtual FundingInstructions CreateFundingInstructions(string id, CustomerCreateFundingInstructionsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FundingInstructions>(HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions);
+            return this.Request<FundingInstructions>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<FundingInstructions> CreateFundingInstructionsAsync(string id, CustomerCreateFundingInstructionsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FundingInstructions>(HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FundingInstructions>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -73,7 +73,7 @@ namespace Stripe
         /// </summary>
         public virtual Customer Delete(string id, CustomerDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Customer>(HttpMethod.Delete, $"/v1/customers/{id}", options, requestOptions);
+            return this.Request<Customer>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -82,7 +82,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Customer> DeleteAsync(string id, CustomerDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Customer>(HttpMethod.Delete, $"/v1/customers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Stripe
         /// </summary>
         public virtual Customer Get(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Customer>(HttpMethod.Get, $"/v1/customers/{id}", options, requestOptions);
+            return this.Request<Customer>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Customer> GetAsync(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Customer>(HttpMethod.Get, $"/v1/customers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Customer> List(CustomerListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Customer>>(HttpMethod.Get, $"/v1/customers", options, requestOptions);
+            return this.Request<StripeList<Customer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Customer>> ListAsync(CustomerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Customer>>(HttpMethod.Get, $"/v1/customers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Customer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Customer> ListAutoPaging(CustomerListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Customer>($"/v1/customers", options, requestOptions);
+            return this.ListRequestAutoPaging<Customer>($"/v1/customers", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Customer> ListAutoPagingAsync(CustomerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Customer>($"/v1/customers", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Customer>($"/v1/customers", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<PaymentMethod> ListPaymentMethods(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions);
+            return this.Request<StripeList<PaymentMethod>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -150,7 +150,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<PaymentMethod>> ListPaymentMethodsAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PaymentMethod>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<PaymentMethod> ListPaymentMethodsAutoPaging(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions);
+            return this.ListRequestAutoPaging<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<PaymentMethod> ListPaymentMethodsAutoPagingAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentMethod RetrievePaymentMethod(string parentId, string id, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethod>(HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions);
+            return this.Request<PaymentMethod>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -182,7 +182,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentMethod> RetrievePaymentMethodAsync(string parentId, string id, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethod>(HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethod>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -195,7 +195,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeSearchResult<Customer> Search(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeSearchResult<Customer>>(HttpMethod.Get, $"/v1/customers/search", options, requestOptions);
+            return this.Request<StripeSearchResult<Customer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/search", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeSearchResult<Customer>> SearchAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeSearchResult<Customer>>(HttpMethod.Get, $"/v1/customers/search", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeSearchResult<Customer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/search", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Customer> SearchAutoPaging(CustomerSearchOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.SearchRequestAutoPaging<Customer>($"/v1/customers/search", options, requestOptions);
+            return this.SearchRequestAutoPaging<Customer>($"/v1/customers/search", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Customer> SearchAutoPagingAsync(CustomerSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.SearchRequestAutoPagingAsync<Customer>($"/v1/customers/search", options, requestOptions, cancellationToken);
+            return this.SearchRequestAutoPagingAsync<Customer>($"/v1/customers/search", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace Stripe
         /// </summary>
         public virtual Customer Update(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Customer>(HttpMethod.Post, $"/v1/customers/{id}", options, requestOptions);
+            return this.Request<Customer>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{id}", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -272,7 +272,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Customer> UpdateAsync(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Customer>(HttpMethod.Post, $"/v1/customers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

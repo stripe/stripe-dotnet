@@ -27,7 +27,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual StripeList<ActiveEntitlement> List(ActiveEntitlementListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ActiveEntitlement>>(HttpMethod.Get, $"/v1/entitlements/active_entitlements", options, requestOptions);
+            return this.Request<StripeList<ActiveEntitlement>>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/active_entitlements", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Task<StripeList<ActiveEntitlement>> ListAsync(ActiveEntitlementListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ActiveEntitlement>>(HttpMethod.Get, $"/v1/entitlements/active_entitlements", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ActiveEntitlement>>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/active_entitlements", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual IEnumerable<ActiveEntitlement> ListAutoPaging(ActiveEntitlementListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<ActiveEntitlement>($"/v1/entitlements/active_entitlements", options, requestOptions);
+            return this.ListRequestAutoPaging<ActiveEntitlement>($"/v1/entitlements/active_entitlements", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual IAsyncEnumerable<ActiveEntitlement> ListAutoPagingAsync(ActiveEntitlementListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<ActiveEntitlement>($"/v1/entitlements/active_entitlements", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<ActiveEntitlement>($"/v1/entitlements/active_entitlements", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

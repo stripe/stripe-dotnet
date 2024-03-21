@@ -25,7 +25,7 @@ namespace Stripe
         /// </summary>
         public virtual CashBalance Get(string parentId, CashBalanceGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CashBalance>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance", options, requestOptions);
+            return this.Request<CashBalance>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -33,7 +33,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CashBalance> GetAsync(string parentId, CashBalanceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CashBalance>(HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CashBalance>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/cash_balance", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual CashBalance Update(string parentId, CashBalanceUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CashBalance>(HttpMethod.Post, $"/v1/customers/{parentId}/cash_balance", options, requestOptions);
+            return this.Request<CashBalance>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/cash_balance", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CashBalance> UpdateAsync(string parentId, CashBalanceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CashBalance>(HttpMethod.Post, $"/v1/customers/{parentId}/cash_balance", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CashBalance>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/cash_balance", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         [Obsolete("This method is deprecated and will be removed in a future release")]

@@ -28,7 +28,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual Secret Create(SecretCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Secret>(HttpMethod.Post, $"/v1/apps/secrets", options, requestOptions);
+            return this.Request<Secret>(BaseAddress.Api, HttpMethod.Post, $"/v1/apps/secrets", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual Task<Secret> CreateAsync(SecretCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Secret>(HttpMethod.Post, $"/v1/apps/secrets", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Secret>(BaseAddress.Api, HttpMethod.Post, $"/v1/apps/secrets", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual Secret DeleteWhere(SecretDeleteWhereOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Secret>(HttpMethod.Post, $"/v1/apps/secrets/delete", options, requestOptions);
+            return this.Request<Secret>(BaseAddress.Api, HttpMethod.Post, $"/v1/apps/secrets/delete", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual Task<Secret> DeleteWhereAsync(SecretDeleteWhereOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Secret>(HttpMethod.Post, $"/v1/apps/secrets/delete", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Secret>(BaseAddress.Api, HttpMethod.Post, $"/v1/apps/secrets/delete", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual Secret Find(SecretFindOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Secret>(HttpMethod.Get, $"/v1/apps/secrets/find", options, requestOptions);
+            return this.Request<Secret>(BaseAddress.Api, HttpMethod.Get, $"/v1/apps/secrets/find", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual Task<Secret> FindAsync(SecretFindOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Secret>(HttpMethod.Get, $"/v1/apps/secrets/find", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Secret>(BaseAddress.Api, HttpMethod.Get, $"/v1/apps/secrets/find", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual StripeList<Secret> List(SecretListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Secret>>(HttpMethod.Get, $"/v1/apps/secrets", options, requestOptions);
+            return this.Request<StripeList<Secret>>(BaseAddress.Api, HttpMethod.Get, $"/v1/apps/secrets", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual Task<StripeList<Secret>> ListAsync(SecretListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Secret>>(HttpMethod.Get, $"/v1/apps/secrets", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Secret>>(BaseAddress.Api, HttpMethod.Get, $"/v1/apps/secrets", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual IEnumerable<Secret> ListAutoPaging(SecretListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Secret>($"/v1/apps/secrets", options, requestOptions);
+            return this.ListRequestAutoPaging<Secret>($"/v1/apps/secrets", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -100,7 +100,7 @@ namespace Stripe.Apps
         /// </summary>
         public virtual IAsyncEnumerable<Secret> ListAutoPagingAsync(SecretListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Secret>($"/v1/apps/secrets", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Secret>($"/v1/apps/secrets", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

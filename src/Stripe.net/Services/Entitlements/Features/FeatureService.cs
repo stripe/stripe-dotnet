@@ -28,7 +28,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Feature Create(FeatureCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Feature>(HttpMethod.Post, $"/v1/entitlements/features", options, requestOptions);
+            return this.Request<Feature>(BaseAddress.Api, HttpMethod.Post, $"/v1/entitlements/features", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Task<Feature> CreateAsync(FeatureCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Feature>(HttpMethod.Post, $"/v1/entitlements/features", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Feature>(BaseAddress.Api, HttpMethod.Post, $"/v1/entitlements/features", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual StripeList<Feature> List(FeatureListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Feature>>(HttpMethod.Get, $"/v1/entitlements/features", options, requestOptions);
+            return this.Request<StripeList<Feature>>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/features", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Task<StripeList<Feature>> ListAsync(FeatureListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Feature>>(HttpMethod.Get, $"/v1/entitlements/features", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Feature>>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/features", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual IEnumerable<Feature> ListAutoPaging(FeatureListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Feature>($"/v1/entitlements/features", options, requestOptions);
+            return this.ListRequestAutoPaging<Feature>($"/v1/entitlements/features", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual IAsyncEnumerable<Feature> ListAutoPagingAsync(FeatureListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Feature>($"/v1/entitlements/features", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Feature>($"/v1/entitlements/features", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

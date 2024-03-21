@@ -27,7 +27,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<QuotePreviewSubscriptionSchedule> List(string parentId, QuotePreviewSubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<QuotePreviewSubscriptionSchedule>>(HttpMethod.Get, $"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions);
+            return this.Request<StripeList<QuotePreviewSubscriptionSchedule>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<QuotePreviewSubscriptionSchedule>> ListAsync(string parentId, QuotePreviewSubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<QuotePreviewSubscriptionSchedule>>(HttpMethod.Get, $"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<QuotePreviewSubscriptionSchedule>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions, ApiMode.V1, cancellationToken);
         }
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<QuotePreviewSubscriptionSchedule> ListAutoPaging(string parentId, QuotePreviewSubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<QuotePreviewSubscriptionSchedule>($"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions);
+            return this.ListRequestAutoPaging<QuotePreviewSubscriptionSchedule>($"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<QuotePreviewSubscriptionSchedule> ListAutoPagingAsync(string parentId, QuotePreviewSubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<QuotePreviewSubscriptionSchedule>($"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<QuotePreviewSubscriptionSchedule>($"/v1/quotes/{parentId}/preview_subscription_schedules", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }

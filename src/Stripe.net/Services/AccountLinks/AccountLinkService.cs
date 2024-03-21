@@ -28,7 +28,7 @@ namespace Stripe
         /// </summary>
         public virtual AccountLink Create(AccountLinkCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountLink>(HttpMethod.Post, $"/v1/account_links", options, requestOptions);
+            return this.Request<AccountLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_links", options, requestOptions, ApiMode.V1);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<AccountLink> CreateAsync(AccountLinkCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountLink>(HttpMethod.Post, $"/v1/account_links", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_links", options, requestOptions, ApiMode.V1, cancellationToken);
         }
     }
 }
