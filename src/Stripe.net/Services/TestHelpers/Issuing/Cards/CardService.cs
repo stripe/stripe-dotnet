@@ -27,7 +27,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Stripe.Issuing.Card DeliverCard(string id, CardDeliverCardOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/deliver", options, requestOptions, ApiMode.V1);
+            return this.Request<Stripe.Issuing.Card>(HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/deliver", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Task<Stripe.Issuing.Card> DeliverCardAsync(string id, CardDeliverCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/deliver", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Stripe.Issuing.Card>(HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/deliver", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Stripe.Issuing.Card FailCard(string id, CardFailCardOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/fail", options, requestOptions, ApiMode.V1);
+            return this.Request<Stripe.Issuing.Card>(HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/fail", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Task<Stripe.Issuing.Card> FailCardAsync(string id, CardFailCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/fail", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Stripe.Issuing.Card>(HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/fail", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Stripe.Issuing.Card ReturnCard(string id, CardReturnCardOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/return", options, requestOptions, ApiMode.V1);
+            return this.Request<Stripe.Issuing.Card>(HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/return", options, requestOptions);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Task<Stripe.Issuing.Card> ReturnCardAsync(string id, CardReturnCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/return", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Stripe.Issuing.Card>(HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/return", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Stripe.Issuing.Card ShipCard(string id, CardShipCardOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/ship", options, requestOptions, ApiMode.V1);
+            return this.Request<Stripe.Issuing.Card>(HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/ship", options, requestOptions);
         }
 
         /// <summary>
@@ -90,7 +90,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Task<Stripe.Issuing.Card> ShipCardAsync(string id, CardShipCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/ship", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Stripe.Issuing.Card>(HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{id}/shipping/ship", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual PhysicalBundle Get(string id, PhysicalBundleGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PhysicalBundle>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/physical_bundles/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<PhysicalBundle>(HttpMethod.Get, $"/v1/issuing/physical_bundles/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<PhysicalBundle> GetAsync(string id, PhysicalBundleGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PhysicalBundle>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/physical_bundles/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<PhysicalBundle>(HttpMethod.Get, $"/v1/issuing/physical_bundles/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual StripeList<PhysicalBundle> List(PhysicalBundleListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<PhysicalBundle>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/physical_bundles", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<PhysicalBundle>>(HttpMethod.Get, $"/v1/issuing/physical_bundles", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<StripeList<PhysicalBundle>> ListAsync(PhysicalBundleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<PhysicalBundle>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/physical_bundles", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<PhysicalBundle>>(HttpMethod.Get, $"/v1/issuing/physical_bundles", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual IEnumerable<PhysicalBundle> ListAutoPaging(PhysicalBundleListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<PhysicalBundle>($"/v1/issuing/physical_bundles", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<PhysicalBundle>($"/v1/issuing/physical_bundles", options, requestOptions);
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual IAsyncEnumerable<PhysicalBundle> ListAutoPagingAsync(PhysicalBundleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<PhysicalBundle>($"/v1/issuing/physical_bundles", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<PhysicalBundle>($"/v1/issuing/physical_bundles", options, requestOptions, cancellationToken);
         }
     }
 }

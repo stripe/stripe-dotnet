@@ -29,7 +29,7 @@ namespace Stripe
         /// </summary>
         public virtual Review Approve(string id, ReviewApproveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Review>(BaseAddress.Api, HttpMethod.Post, $"/v1/reviews/{id}/approve", options, requestOptions, ApiMode.V1);
+            return this.Request<Review>(HttpMethod.Post, $"/v1/reviews/{id}/approve", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +38,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Review> ApproveAsync(string id, ReviewApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Review>(BaseAddress.Api, HttpMethod.Post, $"/v1/reviews/{id}/approve", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Review>(HttpMethod.Post, $"/v1/reviews/{id}/approve", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Stripe
         /// </summary>
         public virtual Review Get(string id, ReviewGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Review>(BaseAddress.Api, HttpMethod.Get, $"/v1/reviews/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Review>(HttpMethod.Get, $"/v1/reviews/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Review> GetAsync(string id, ReviewGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Review>(BaseAddress.Api, HttpMethod.Get, $"/v1/reviews/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Review>(HttpMethod.Get, $"/v1/reviews/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Review> List(ReviewListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Review>>(BaseAddress.Api, HttpMethod.Get, $"/v1/reviews", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<Review>>(HttpMethod.Get, $"/v1/reviews", options, requestOptions);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Review>> ListAsync(ReviewListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Review>>(BaseAddress.Api, HttpMethod.Get, $"/v1/reviews", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<Review>>(HttpMethod.Get, $"/v1/reviews", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Review> ListAutoPaging(ReviewListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Review>($"/v1/reviews", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<Review>($"/v1/reviews", options, requestOptions);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Review> ListAutoPagingAsync(ReviewListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Review>($"/v1/reviews", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Review>($"/v1/reviews", options, requestOptions, cancellationToken);
         }
     }
 }

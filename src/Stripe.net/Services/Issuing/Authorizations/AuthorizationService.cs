@@ -35,7 +35,7 @@ namespace Stripe.Issuing
         [Obsolete("This method is deprecated, please refer to the description for details.")]
         public virtual Authorization Approve(string id, AuthorizationApproveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Authorization>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/authorizations/{id}/approve", options, requestOptions, ApiMode.V1);
+            return this.Request<Authorization>(HttpMethod.Post, $"/v1/issuing/authorizations/{id}/approve", options, requestOptions);
         }
 
         /// <summary>
@@ -49,7 +49,7 @@ namespace Stripe.Issuing
         [Obsolete("This method is deprecated, please refer to the description for details.")]
         public virtual Task<Authorization> ApproveAsync(string id, AuthorizationApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Authorization>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/authorizations/{id}/approve", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Authorization>(HttpMethod.Post, $"/v1/issuing/authorizations/{id}/approve", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +63,7 @@ namespace Stripe.Issuing
         [Obsolete("This method is deprecated, please refer to the description for details.")]
         public virtual Authorization Decline(string id, AuthorizationDeclineOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Authorization>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/authorizations/{id}/decline", options, requestOptions, ApiMode.V1);
+            return this.Request<Authorization>(HttpMethod.Post, $"/v1/issuing/authorizations/{id}/decline", options, requestOptions);
         }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Stripe.Issuing
         [Obsolete("This method is deprecated, please refer to the description for details.")]
         public virtual Task<Authorization> DeclineAsync(string id, AuthorizationDeclineOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Authorization>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/authorizations/{id}/decline", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Authorization>(HttpMethod.Post, $"/v1/issuing/authorizations/{id}/decline", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -85,7 +85,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Authorization Get(string id, AuthorizationGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Authorization>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/authorizations/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Authorization>(HttpMethod.Get, $"/v1/issuing/authorizations/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Authorization> GetAsync(string id, AuthorizationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Authorization>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/authorizations/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Authorization>(HttpMethod.Get, $"/v1/issuing/authorizations/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -103,7 +103,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual StripeList<Authorization> List(AuthorizationListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Authorization>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/authorizations", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<Authorization>>(HttpMethod.Get, $"/v1/issuing/authorizations", options, requestOptions);
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<StripeList<Authorization>> ListAsync(AuthorizationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Authorization>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/authorizations", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<Authorization>>(HttpMethod.Get, $"/v1/issuing/authorizations", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual IEnumerable<Authorization> ListAutoPaging(AuthorizationListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Authorization>($"/v1/issuing/authorizations", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<Authorization>($"/v1/issuing/authorizations", options, requestOptions);
         }
 
         /// <summary>
@@ -133,7 +133,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual IAsyncEnumerable<Authorization> ListAutoPagingAsync(AuthorizationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Authorization>($"/v1/issuing/authorizations", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Authorization>($"/v1/issuing/authorizations", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Authorization Update(string id, AuthorizationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Authorization>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/authorizations/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Authorization>(HttpMethod.Post, $"/v1/issuing/authorizations/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -151,7 +151,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Authorization> UpdateAsync(string id, AuthorizationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Authorization>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/authorizations/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Authorization>(HttpMethod.Post, $"/v1/issuing/authorizations/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

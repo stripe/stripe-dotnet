@@ -27,7 +27,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.ReceivedDebit Create(ReceivedDebitCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.ReceivedDebit>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/received_debits", options, requestOptions, ApiMode.V1);
+            return this.Request<Stripe.Treasury.ReceivedDebit>(HttpMethod.Post, $"/v1/test_helpers/treasury/received_debits", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.ReceivedDebit> CreateAsync(ReceivedDebitCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.ReceivedDebit>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/received_debits", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.ReceivedDebit>(HttpMethod.Post, $"/v1/test_helpers/treasury/received_debits", options, requestOptions, cancellationToken);
         }
     }
 }

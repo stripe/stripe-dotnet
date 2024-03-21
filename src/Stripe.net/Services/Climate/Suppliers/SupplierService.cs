@@ -28,7 +28,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Supplier Get(string id, SupplierGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Supplier>(BaseAddress.Api, HttpMethod.Get, $"/v1/climate/suppliers/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Supplier>(HttpMethod.Get, $"/v1/climate/suppliers/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Task<Supplier> GetAsync(string id, SupplierGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Supplier>(BaseAddress.Api, HttpMethod.Get, $"/v1/climate/suppliers/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Supplier>(HttpMethod.Get, $"/v1/climate/suppliers/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual StripeList<Supplier> List(SupplierListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Supplier>>(BaseAddress.Api, HttpMethod.Get, $"/v1/climate/suppliers", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<Supplier>>(HttpMethod.Get, $"/v1/climate/suppliers", options, requestOptions);
         }
 
         /// <summary>
@@ -52,7 +52,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Task<StripeList<Supplier>> ListAsync(SupplierListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Supplier>>(BaseAddress.Api, HttpMethod.Get, $"/v1/climate/suppliers", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<Supplier>>(HttpMethod.Get, $"/v1/climate/suppliers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual IEnumerable<Supplier> ListAutoPaging(SupplierListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Supplier>($"/v1/climate/suppliers", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<Supplier>($"/v1/climate/suppliers", options, requestOptions);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual IAsyncEnumerable<Supplier> ListAutoPagingAsync(SupplierListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Supplier>($"/v1/climate/suppliers", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Supplier>($"/v1/climate/suppliers", options, requestOptions, cancellationToken);
         }
     }
 }

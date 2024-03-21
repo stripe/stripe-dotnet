@@ -26,7 +26,7 @@ namespace Stripe
         /// </summary>
         public virtual ConfirmationToken Get(string id, ConfirmationTokenGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ConfirmationToken>(BaseAddress.Api, HttpMethod.Get, $"/v1/confirmation_tokens/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<ConfirmationToken>(HttpMethod.Get, $"/v1/confirmation_tokens/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ConfirmationToken> GetAsync(string id, ConfirmationTokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ConfirmationToken>(BaseAddress.Api, HttpMethod.Get, $"/v1/confirmation_tokens/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<ConfirmationToken>(HttpMethod.Get, $"/v1/confirmation_tokens/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

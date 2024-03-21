@@ -32,7 +32,7 @@ namespace Stripe
         /// </summary>
         public virtual Product Create(ProductCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Product>(BaseAddress.Api, HttpMethod.Post, $"/v1/products", options, requestOptions, ApiMode.V1);
+            return this.Request<Product>(HttpMethod.Post, $"/v1/products", options, requestOptions);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Product> CreateAsync(ProductCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Product>(BaseAddress.Api, HttpMethod.Post, $"/v1/products", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Product>(HttpMethod.Post, $"/v1/products", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe
         /// </summary>
         public virtual Product Delete(string id, ProductDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Product>(BaseAddress.Api, HttpMethod.Delete, $"/v1/products/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Product>(HttpMethod.Delete, $"/v1/products/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Product> DeleteAsync(string id, ProductDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Product>(BaseAddress.Api, HttpMethod.Delete, $"/v1/products/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Product>(HttpMethod.Delete, $"/v1/products/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Stripe
         /// </summary>
         public virtual Product Get(string id, ProductGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Product>(BaseAddress.Api, HttpMethod.Get, $"/v1/products/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Product>(HttpMethod.Get, $"/v1/products/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -80,7 +80,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Product> GetAsync(string id, ProductGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Product>(BaseAddress.Api, HttpMethod.Get, $"/v1/products/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Product>(HttpMethod.Get, $"/v1/products/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Product> List(ProductListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Product>>(BaseAddress.Api, HttpMethod.Get, $"/v1/products", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<Product>>(HttpMethod.Get, $"/v1/products", options, requestOptions);
         }
 
         /// <summary>
@@ -98,7 +98,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Product>> ListAsync(ProductListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Product>>(BaseAddress.Api, HttpMethod.Get, $"/v1/products", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<Product>>(HttpMethod.Get, $"/v1/products", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Product> ListAutoPaging(ProductListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Product>($"/v1/products", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<Product>($"/v1/products", options, requestOptions);
         }
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Product> ListAutoPagingAsync(ProductListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Product>($"/v1/products", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Product>($"/v1/products", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -129,7 +129,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeSearchResult<Product> Search(ProductSearchOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeSearchResult<Product>>(BaseAddress.Api, HttpMethod.Get, $"/v1/products/search", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeSearchResult<Product>>(HttpMethod.Get, $"/v1/products/search", options, requestOptions);
         }
 
         /// <summary>
@@ -142,7 +142,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeSearchResult<Product>> SearchAsync(ProductSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeSearchResult<Product>>(BaseAddress.Api, HttpMethod.Get, $"/v1/products/search", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeSearchResult<Product>>(HttpMethod.Get, $"/v1/products/search", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<Product> SearchAutoPaging(ProductSearchOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.SearchRequestAutoPaging<Product>($"/v1/products/search", options, requestOptions, ApiMode.V1);
+            return this.SearchRequestAutoPaging<Product>($"/v1/products/search", options, requestOptions);
         }
 
         /// <summary>
@@ -168,7 +168,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<Product> SearchAutoPagingAsync(ProductSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.SearchRequestAutoPagingAsync<Product>($"/v1/products/search", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.SearchRequestAutoPagingAsync<Product>($"/v1/products/search", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -177,7 +177,7 @@ namespace Stripe
         /// </summary>
         public virtual Product Update(string id, ProductUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Product>(BaseAddress.Api, HttpMethod.Post, $"/v1/products/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Product>(HttpMethod.Post, $"/v1/products/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -186,7 +186,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Product> UpdateAsync(string id, ProductUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Product>(BaseAddress.Api, HttpMethod.Post, $"/v1/products/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Product>(HttpMethod.Post, $"/v1/products/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

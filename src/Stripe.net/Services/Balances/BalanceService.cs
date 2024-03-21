@@ -35,7 +35,7 @@ namespace Stripe
         /// </summary>
         public virtual Balance Get(RequestOptions requestOptions = null)
         {
-            return this.Request<Balance>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance", null, requestOptions, ApiMode.V1);
+            return this.Request<Balance>(HttpMethod.Get, $"/v1/balance", null, requestOptions);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Balance> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Balance>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance", null, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Balance>(HttpMethod.Get, $"/v1/balance", null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -57,7 +57,7 @@ namespace Stripe
         /// </summary>
         public virtual Balance Get(BalanceGetOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Balance>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance", options, requestOptions, ApiMode.V1);
+            return this.Request<Balance>(HttpMethod.Get, $"/v1/balance", options, requestOptions);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Balance> GetAsync(BalanceGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Balance>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Balance>(HttpMethod.Get, $"/v1/balance", options, requestOptions, cancellationToken);
         }
     }
 }

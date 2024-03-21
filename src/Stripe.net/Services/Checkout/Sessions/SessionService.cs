@@ -29,7 +29,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions", options, requestOptions, ApiMode.V1);
+            return this.Request<Session>(HttpMethod.Post, $"/v1/checkout/sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/checkout/sessions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Session Expire(string id, SessionExpireOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions/{id}/expire", options, requestOptions, ApiMode.V1);
+            return this.Request<Session>(HttpMethod.Post, $"/v1/checkout/sessions/{id}/expire", options, requestOptions);
         }
 
         /// <summary>
@@ -59,7 +59,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Task<Session> ExpireAsync(string id, SessionExpireOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions/{id}/expire", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/checkout/sessions/{id}/expire", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Session Get(string id, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Session>(HttpMethod.Get, $"/v1/checkout/sessions/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Task<Session> GetAsync(string id, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Session>(HttpMethod.Get, $"/v1/checkout/sessions/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual StripeList<Session> List(SessionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Session>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<Session>>(HttpMethod.Get, $"/v1/checkout/sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -91,7 +91,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Task<StripeList<Session>> ListAsync(SessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Session>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<Session>>(HttpMethod.Get, $"/v1/checkout/sessions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -99,7 +99,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual IEnumerable<Session> ListAutoPaging(SessionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<Session>($"/v1/checkout/sessions", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<Session>($"/v1/checkout/sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual IAsyncEnumerable<Session> ListAutoPagingAsync(SessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<Session>($"/v1/checkout/sessions", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<Session>($"/v1/checkout/sessions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -117,7 +117,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual StripeList<LineItem> ListLineItems(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{id}/line_items", options, requestOptions, ApiMode.V1);
+            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/checkout/sessions/{id}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{id}/line_items", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/checkout/sessions/{id}/line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -137,7 +137,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/checkout/sessions/{id}/line_items", options, requestOptions, ApiMode.V1);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/checkout/sessions/{id}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/checkout/sessions/{id}/line_items", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/checkout/sessions/{id}/line_items", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -28,7 +28,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/sessions", options, requestOptions, ApiMode.V1);
+            return this.Request<Session>(HttpMethod.Post, $"/v1/financial_connections/sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/sessions", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/financial_connections/sessions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Session Get(string id, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/sessions/{id}", options, requestOptions, ApiMode.V1);
+            return this.Request<Session>(HttpMethod.Get, $"/v1/financial_connections/sessions/{id}", options, requestOptions);
         }
 
         /// <summary>
@@ -53,7 +53,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<Session> GetAsync(string id, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/sessions/{id}", options, requestOptions, ApiMode.V1, cancellationToken);
+            return this.RequestAsync<Session>(HttpMethod.Get, $"/v1/financial_connections/sessions/{id}", options, requestOptions, cancellationToken);
         }
     }
 }
