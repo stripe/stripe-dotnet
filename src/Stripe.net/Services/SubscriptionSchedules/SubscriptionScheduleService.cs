@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<SubscriptionSchedule, SubscriptionScheduleUpdateOptions>
     {
         public SubscriptionScheduleService()
-            : base(null)
         {
         }
 

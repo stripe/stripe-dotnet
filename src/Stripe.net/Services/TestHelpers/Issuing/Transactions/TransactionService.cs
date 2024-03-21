@@ -10,7 +10,6 @@ namespace Stripe.TestHelpers.Issuing
     public class TransactionService : Service<Stripe.Issuing.Transaction>
     {
         public TransactionService()
-            : base(null)
         {
         }
 

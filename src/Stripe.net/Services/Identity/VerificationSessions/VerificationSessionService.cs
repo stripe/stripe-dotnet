@@ -14,7 +14,6 @@ namespace Stripe.Identity
         IUpdatable<VerificationSession, VerificationSessionUpdateOptions>
     {
         public VerificationSessionService()
-            : base(null)
         {
         }
 

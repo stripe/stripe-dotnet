@@ -10,7 +10,6 @@ namespace Stripe.TestHelpers.Issuing
     public class PersonalizationDesignService : Service<Stripe.Issuing.PersonalizationDesign>
     {
         public PersonalizationDesignService()
-            : base(null)
         {
         }
 

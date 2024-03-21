@@ -12,7 +12,6 @@ namespace Stripe
         IRetrievable<Review, ReviewGetOptions>
     {
         public ReviewService()
-            : base(null)
         {
         }
 

@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<Refund, RefundUpdateOptions>
     {
         public RefundService()
-            : base(null)
         {
         }
 

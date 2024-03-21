@@ -13,7 +13,6 @@ namespace Stripe.Issuing
         IUpdatable<Authorization, AuthorizationUpdateOptions>
     {
         public AuthorizationService()
-            : base(null)
         {
         }
 

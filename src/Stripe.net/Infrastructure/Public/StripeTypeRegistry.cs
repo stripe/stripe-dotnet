@@ -38,6 +38,7 @@ namespace Stripe
                 { "climate.order", typeof(Climate.Order) },
                 { "climate.product", typeof(Climate.Product) },
                 { "climate.supplier", typeof(Climate.Supplier) },
+                { "confirmation_token", typeof(ConfirmationToken) },
                 {
                     "connect_collection_transfer", typeof(
                         ConnectCollectionTransfer)
@@ -83,6 +84,7 @@ namespace Stripe
                     "financial_connections.transaction", typeof(
                         FinancialConnections.Transaction)
                 },
+                { "forwarding.request", typeof(Forwarding.Request) },
                 { "funding_instructions", typeof(FundingInstructions) },
                 {
                     "identity.verification_report", typeof(

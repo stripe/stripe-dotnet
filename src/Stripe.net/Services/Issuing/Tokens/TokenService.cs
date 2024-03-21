@@ -13,7 +13,6 @@ namespace Stripe.Issuing
         IUpdatable<Token, TokenUpdateOptions>
     {
         public TokenService()
-            : base(null)
         {
         }
 

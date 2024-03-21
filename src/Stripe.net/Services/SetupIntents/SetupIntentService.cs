@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<SetupIntent, SetupIntentUpdateOptions>
     {
         public SetupIntentService()
-            : base(null)
         {
         }
 

@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<TaxRate, TaxRateUpdateOptions>
     {
         public TaxRateService()
-            : base(null)
         {
         }
 

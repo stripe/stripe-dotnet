@@ -9,7 +9,6 @@ namespace Stripe.TestHelpers
     public class CustomerService : Service<Customer>
     {
         public CustomerService()
-            : base(null)
         {
         }
 

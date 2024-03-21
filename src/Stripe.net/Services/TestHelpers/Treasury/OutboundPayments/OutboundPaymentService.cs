@@ -10,7 +10,6 @@ namespace Stripe.TestHelpers.Treasury
     public class OutboundPaymentService : Service<Stripe.Treasury.OutboundPayment>
     {
         public OutboundPaymentService()
-            : base(null)
         {
         }
 

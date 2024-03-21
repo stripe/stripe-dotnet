@@ -10,7 +10,6 @@ namespace Stripe.TestHelpers.Terminal
     public class ReaderService : Service<Stripe.Terminal.Reader>
     {
         public ReaderService()
-            : base(null)
         {
         }
 

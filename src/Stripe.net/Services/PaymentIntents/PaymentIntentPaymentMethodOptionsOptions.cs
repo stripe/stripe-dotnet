@@ -159,6 +159,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsLinkOptions Link { get; set; }
 
         /// <summary>
+        /// If this is a <c>MobilePay</c> PaymentMethod, this sub-hash contains details about the
+        /// MobilePay payment method options.
+        /// </summary>
+        [JsonProperty("mobilepay")]
+        public PaymentIntentPaymentMethodOptionsMobilepayOptions Mobilepay { get; set; }
+
+        /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO
         /// payment method options.
         /// </summary>
