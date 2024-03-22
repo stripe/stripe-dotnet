@@ -1,16 +1,21 @@
 namespace StripeTests
 {
     using System;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Text.RegularExpressions;
     using System.Threading;
     using System.Threading.Tasks;
+    using System.Web;
     using Moq;
     using Moq.Protected;
     using Stripe;
 
     public class MockHttpClientFixture
     {
+        private static readonly Regex QueryNormalizationRegex = new Regex(@"\[\d+\]");
+
         public MockHttpClientFixture()
         {
             this.MockHandler = new Mock<HttpClientHandler>
@@ -38,7 +43,8 @@ namespace StripeTests
         /// </summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The HTTP path.</param>
-        public void AssertRequest(HttpMethod method, string path)
+        /// <param name="query">The HTTP query.</param>
+        public void AssertRequest(HttpMethod method, string path, string query = null)
         {
             this.MockHandler.Protected()
                 .Verify(
@@ -46,7 +52,8 @@ namespace StripeTests
                     Times.Once(),
                     ItExpr.Is<HttpRequestMessage>(m =>
                         m.Method == method &&
-                        m.RequestUri.AbsolutePath == path),
+                        m.RequestUri.AbsolutePath == path &&
+                        QueryEquivalent(query, m.RequestUri.Query)),
                     ItExpr.IsAny<CancellationToken>());
         }
 
@@ -73,6 +80,29 @@ namespace StripeTests
                         (query == null || m.RequestUri.Query == query)),
                     ItExpr.IsAny<CancellationToken>())
                 .Returns(Task.FromResult(responseMessage));
+        }
+
+        private static bool QueryEquivalent(string expected, string actual)
+        {
+            static string[] Normalize(string query)
+            {
+                var decoded = WebUtility.UrlDecode(query ?? string.Empty);
+
+                // Expected query strings use non-numbered array format (e.g. `expand[]=`)
+                // while the actual query string uses numbered array format (e.g. `expand[0]=`).
+                decoded = QueryNormalizationRegex.Replace(decoded, "[]");
+
+                var parts = decoded.TrimStart('?').Split('&');
+                Array.Sort(parts);
+                return parts;
+            }
+
+            if (expected == null)
+            {
+                return true;
+            }
+
+            return Normalize(expected).SequenceEqual(Normalize(actual));
         }
     }
 }

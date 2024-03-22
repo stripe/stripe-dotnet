@@ -11,8 +11,10 @@ namespace StripeTests
 
     public class GeneratedExamplesTest : BaseStripeTest
     {
-        public GeneratedExamplesTest(StripeMockFixture stripeMockFixture)
-            : base(stripeMockFixture)
+        public GeneratedExamplesTest(
+            StripeMockFixture stripeMockFixture,
+            MockHttpClientFixture mockHttpClientFixture)
+            : base(stripeMockFixture, mockHttpClientFixture)
         {
         }
 
@@ -28,6 +30,7 @@ namespace StripeTests
             };
             var service = new AccountLinkService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/account_links");
         }
 
         [Fact]
@@ -36,6 +39,9 @@ namespace StripeTests
             var service = new CapabilityService(this.StripeClient);
             StripeList<Capability> capabilities = service.List(
                 "acct_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/capabilities");
         }
 
         [Fact]
@@ -43,6 +49,9 @@ namespace StripeTests
         {
             var service = new CapabilityService(this.StripeClient);
             service.Get("acct_xxxxxxxxxxxxx", "card_payments");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/capabilities/card_payments");
         }
 
         [Fact]
@@ -51,6 +60,9 @@ namespace StripeTests
             var options = new CapabilityUpdateOptions { Requested = true };
             var service = new CapabilityService(this.StripeClient);
             service.Update("acct_xxxxxxxxxxxxx", "card_payments", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/capabilities/card_payments");
         }
 
         [Fact]
@@ -58,6 +70,9 @@ namespace StripeTests
         {
             var service = new AccountService(this.StripeClient);
             service.Delete("acct_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/accounts/acct_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -66,6 +81,7 @@ namespace StripeTests
             var options = new AccountListOptions { Limit = 3 };
             var service = new AccountService(this.StripeClient);
             StripeList<Account> accounts = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/accounts", "limit=3");
         }
 
         [Fact]
@@ -73,6 +89,9 @@ namespace StripeTests
         {
             var service = new AccountService(this.StripeClient);
             service.Get("acct_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/accounts/acct_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -80,6 +99,9 @@ namespace StripeTests
         {
             var service = new LoginLinkService(this.StripeClient);
             service.Create("acct_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/login_links");
         }
 
         [Fact]
@@ -87,6 +109,9 @@ namespace StripeTests
         {
             var service = new PersonService(this.StripeClient);
             service.Delete("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/persons/person_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -97,6 +122,10 @@ namespace StripeTests
             StripeList<Person> persons = service.List(
                 "acct_xxxxxxxxxxxxx",
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/persons",
+                "limit=3");
         }
 
         [Fact]
@@ -104,6 +133,9 @@ namespace StripeTests
         {
             var service = new PersonService(this.StripeClient);
             service.Get("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/persons/person_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -116,6 +148,9 @@ namespace StripeTests
             };
             var service = new PersonService(this.StripeClient);
             service.Create("acct_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/persons");
         }
 
         [Fact]
@@ -133,6 +168,9 @@ namespace StripeTests
                 "acct_xxxxxxxxxxxxx",
                 "person_xxxxxxxxxxxxx",
                 options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/persons/person_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -157,6 +195,7 @@ namespace StripeTests
             };
             var service = new AccountService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/accounts");
         }
 
         [Fact]
@@ -171,6 +210,9 @@ namespace StripeTests
             };
             var service = new AccountService(this.StripeClient);
             service.Update("acct_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/accounts/acct_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -179,6 +221,9 @@ namespace StripeTests
             var options = new AccountRejectOptions { Reason = "fraud" };
             var service = new AccountService(this.StripeClient);
             service.Reject("acct_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/accounts/acct_xxxxxxxxxxxxx/reject");
         }
 
         [Fact]
@@ -187,6 +232,10 @@ namespace StripeTests
             var options = new ApplicationFeeListOptions { Limit = 3 };
             var service = new ApplicationFeeService(this.StripeClient);
             StripeList<ApplicationFee> applicationFees = service.List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/application_fees",
+                "limit=3");
         }
 
         [Fact]
@@ -194,6 +243,9 @@ namespace StripeTests
         {
             var service = new ApplicationFeeService(this.StripeClient);
             service.Get("fee_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/application_fees/fee_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -203,6 +255,10 @@ namespace StripeTests
             var service = new ApplicationFeeRefundService(this.StripeClient);
             StripeList<ApplicationFeeRefund> applicationFeeRefunds = service
                 .List("fee_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/application_fees/fee_xxxxxxxxxxxxx/refunds",
+                "limit=3");
         }
 
         [Fact]
@@ -210,6 +266,9 @@ namespace StripeTests
         {
             var service = new ApplicationFeeRefundService(this.StripeClient);
             service.Get("fee_xxxxxxxxxxxxx", "fr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/application_fees/fee_xxxxxxxxxxxxx/refunds/fr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -217,6 +276,9 @@ namespace StripeTests
         {
             var service = new ApplicationFeeRefundService(this.StripeClient);
             service.Create("fee_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/application_fees/fee_xxxxxxxxxxxxx/refunds");
         }
 
         [Fact]
@@ -231,6 +293,9 @@ namespace StripeTests
             };
             var service = new ApplicationFeeRefundService(this.StripeClient);
             service.Update("fee_xxxxxxxxxxxxx", "fr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/application_fees/fee_xxxxxxxxxxxxx/refunds/fr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -243,6 +308,7 @@ namespace StripeTests
             };
             var service = new Stripe.Apps.SecretService(this.StripeClient);
             service.DeleteWhere(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/apps/secrets/delete");
         }
 
         [Fact]
@@ -255,6 +321,10 @@ namespace StripeTests
             };
             var service = new Stripe.Apps.SecretService(this.StripeClient);
             service.Find(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/apps/secrets/find",
+                "name=sec_123&scope[type]=account");
         }
 
         [Fact]
@@ -267,6 +337,10 @@ namespace StripeTests
             };
             var service = new Stripe.Apps.SecretService(this.StripeClient);
             StripeList<Stripe.Apps.Secret> secrets = service.List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/apps/secrets",
+                "scope[type]=account&limit=2");
         }
 
         [Fact]
@@ -279,6 +353,10 @@ namespace StripeTests
             };
             var service = new Stripe.Apps.SecretService(this.StripeClient);
             StripeList<Stripe.Apps.Secret> secrets = service.List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/apps/secrets",
+                "scope[type]=account&limit=2");
         }
 
         [Fact]
@@ -292,6 +370,7 @@ namespace StripeTests
             };
             var service = new Stripe.Apps.SecretService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/apps/secrets");
         }
 
         [Fact]
@@ -305,6 +384,7 @@ namespace StripeTests
             };
             var service = new Stripe.Apps.SecretService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/apps/secrets");
         }
 
         [Fact]
@@ -314,6 +394,10 @@ namespace StripeTests
             var service = new BalanceTransactionService(this.StripeClient);
             StripeList<BalanceTransaction> balanceTransactions = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/balance_transactions",
+                "limit=3");
         }
 
         [Fact]
@@ -321,6 +405,9 @@ namespace StripeTests
         {
             var service = new BalanceTransactionService(this.StripeClient);
             service.Get("txn_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/balance_transactions/txn_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -334,6 +421,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.BillingPortal.Configuration> configurations = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/billing_portal/configurations",
+                "limit=3");
         }
 
         [Fact]
@@ -342,6 +433,9 @@ namespace StripeTests
             var service = new Stripe.BillingPortal.ConfigurationService(
                 this.StripeClient);
             service.Get("bpc_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/billing_portal/configurations/bpc_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -370,6 +464,9 @@ namespace StripeTests
             var service = new Stripe.BillingPortal.ConfigurationService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/billing_portal/configurations");
         }
 
         [Fact]
@@ -386,6 +483,9 @@ namespace StripeTests
             var service = new Stripe.BillingPortal.ConfigurationService(
                 this.StripeClient);
             service.Update("bpc_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/billing_portal/configurations/bpc_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -399,6 +499,7 @@ namespace StripeTests
             var service = new Stripe.BillingPortal.SessionService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/billing_portal/sessions");
         }
 
         [Fact]
@@ -406,6 +507,9 @@ namespace StripeTests
         {
             var service = new ChargeService(this.StripeClient);
             service.Capture("ch_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/charges/ch_xxxxxxxxxxxxx/capture");
         }
 
         [Fact]
@@ -414,6 +518,7 @@ namespace StripeTests
             var options = new ChargeListOptions { Limit = 3 };
             var service = new ChargeService(this.StripeClient);
             StripeList<Charge> charges = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/charges", "limit=3");
         }
 
         [Fact]
@@ -421,6 +526,7 @@ namespace StripeTests
         {
             var service = new ChargeService(this.StripeClient);
             service.Get("ch_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/charges/ch_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -435,6 +541,7 @@ namespace StripeTests
             };
             var service = new ChargeService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/charges");
         }
 
         [Fact]
@@ -449,6 +556,7 @@ namespace StripeTests
             };
             var service = new ChargeService(this.StripeClient);
             service.Update("ch_xxxxxxxxxxxxx", options);
+            this.AssertRequest(HttpMethod.Post, "/v1/charges/ch_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -460,6 +568,10 @@ namespace StripeTests
             };
             var service = new ChargeService(this.StripeClient);
             service.Search(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/charges/search",
+                "query=amount%3E999%20AND%20metadata%5B%27order_id%27%5D%3A%276735%27");
         }
 
         [Fact]
@@ -467,6 +579,9 @@ namespace StripeTests
         {
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
             service.Expire("sess_xyz");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/checkout/sessions/sess_xyz/expire");
         }
 
         [Fact]
@@ -474,6 +589,9 @@ namespace StripeTests
         {
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
             service.Expire("cs_test_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/checkout/sessions/cs_test_xxxxxxxxxxxxx/expire");
         }
 
         [Fact]
@@ -483,6 +601,10 @@ namespace StripeTests
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
             StripeList<Stripe.Checkout.Session> sessions = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/checkout/sessions",
+                "limit=3");
         }
 
         [Fact]
@@ -490,6 +612,9 @@ namespace StripeTests
         {
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
             service.Get("cs_test_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/checkout/sessions/cs_test_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -497,6 +622,9 @@ namespace StripeTests
         {
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
             StripeList<LineItem> lineItems = service.ListLineItems("sess_xyz");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/checkout/sessions/sess_xyz/line_items");
         }
 
         [Fact]
@@ -537,6 +665,7 @@ namespace StripeTests
             };
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/checkout/sessions");
         }
 
         [Fact]
@@ -557,6 +686,7 @@ namespace StripeTests
             };
             var service = new Stripe.Checkout.SessionService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/checkout/sessions");
         }
 
         [Fact]
@@ -565,6 +695,7 @@ namespace StripeTests
             var options = new CountrySpecListOptions { Limit = 3 };
             var service = new CountrySpecService(this.StripeClient);
             StripeList<CountrySpec> countrySpecs = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/country_specs", "limit=3");
         }
 
         [Fact]
@@ -572,6 +703,7 @@ namespace StripeTests
         {
             var service = new CountrySpecService(this.StripeClient);
             service.Get("US");
+            this.AssertRequest(HttpMethod.Get, "/v1/country_specs/US");
         }
 
         [Fact]
@@ -579,6 +711,7 @@ namespace StripeTests
         {
             var service = new CouponService(this.StripeClient);
             service.Delete("Z4OV52SU");
+            this.AssertRequest(HttpMethod.Delete, "/v1/coupons/Z4OV52SU");
         }
 
         [Fact]
@@ -587,6 +720,7 @@ namespace StripeTests
             var options = new CouponListOptions { Limit = 3 };
             var service = new CouponService(this.StripeClient);
             StripeList<Coupon> coupons = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/coupons", "limit=3");
         }
 
         [Fact]
@@ -594,6 +728,7 @@ namespace StripeTests
         {
             var service = new CouponService(this.StripeClient);
             service.Get("Z4OV52SU");
+            this.AssertRequest(HttpMethod.Get, "/v1/coupons/Z4OV52SU");
         }
 
         [Fact]
@@ -607,6 +742,7 @@ namespace StripeTests
             };
             var service = new CouponService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/coupons");
         }
 
         [Fact]
@@ -621,6 +757,7 @@ namespace StripeTests
             };
             var service = new CouponService(this.StripeClient);
             service.Update("Z4OV52SU", options);
+            this.AssertRequest(HttpMethod.Post, "/v1/coupons/Z4OV52SU");
         }
 
         [Fact]
@@ -629,6 +766,7 @@ namespace StripeTests
             var options = new CreditNoteListOptions { Limit = 3 };
             var service = new CreditNoteService(this.StripeClient);
             StripeList<CreditNote> creditNotes = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/credit_notes", "limit=3");
         }
 
         [Fact]
@@ -649,6 +787,7 @@ namespace StripeTests
             };
             var service = new CreditNoteService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/credit_notes");
         }
 
         [Fact]
@@ -669,6 +808,10 @@ namespace StripeTests
             };
             var service = new CreditNoteService(this.StripeClient);
             service.Preview(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/credit_notes/preview",
+                "invoice=in_xxxxxxxxxxxxx&lines[0][type]=invoice_line_item&lines[0][invoice_line_item]=il_xxxxxxxxxxxxx&lines[0][quantity]=1");
         }
 
         [Fact]
@@ -676,6 +819,9 @@ namespace StripeTests
         {
             var service = new CreditNoteService(this.StripeClient);
             service.VoidCreditNote("cn_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/credit_notes/cn_xxxxxxxxxxxxx/void");
         }
 
         [Fact]
@@ -694,6 +840,7 @@ namespace StripeTests
             };
             var service = new CustomerSessionService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/customer_sessions");
         }
 
         [Fact]
@@ -707,6 +854,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<CustomerBalanceTransaction> customerBalanceTransactions = service
                 .List("cus_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_xxxxxxxxxxxxx/balance_transactions",
+                "limit=3");
         }
 
         [Fact]
@@ -715,6 +866,9 @@ namespace StripeTests
             var service = new CustomerBalanceTransactionService(
                 this.StripeClient);
             service.Get("cus_xxxxxxxxxxxxx", "cbtxn_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_xxxxxxxxxxxxx/balance_transactions/cbtxn_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -728,6 +882,9 @@ namespace StripeTests
             var service = new CustomerBalanceTransactionService(
                 this.StripeClient);
             service.Create("cus_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/customers/cus_xxxxxxxxxxxxx/balance_transactions");
         }
 
         [Fact]
@@ -743,6 +900,9 @@ namespace StripeTests
             var service = new CustomerBalanceTransactionService(
                 this.StripeClient);
             service.Update("cus_xxxxxxxxxxxxx", "cbtxn_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/customers/cus_xxxxxxxxxxxxx/balance_transactions/cbtxn_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -750,6 +910,9 @@ namespace StripeTests
         {
             var service = new CashBalanceService(this.StripeClient);
             service.Get("cus_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_123/cash_balance");
         }
 
         [Fact]
@@ -764,6 +927,9 @@ namespace StripeTests
             };
             var service = new CashBalanceService(this.StripeClient);
             service.Update("cus_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/customers/cus_123/cash_balance");
         }
 
         [Fact]
@@ -777,6 +943,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<CustomerCashBalanceTransaction> customerCashBalanceTransactions = service
                 .List("cus_123", options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_123/cash_balance_transactions",
+                "limit=3");
         }
 
         [Fact]
@@ -784,6 +954,9 @@ namespace StripeTests
         {
             var service = new CustomerService(this.StripeClient);
             service.Delete("cus_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/customers/cus_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -801,6 +974,9 @@ namespace StripeTests
             };
             var service = new CustomerService(this.StripeClient);
             service.CreateFundingInstructions("cus_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/customers/cus_123/funding_instructions");
         }
 
         [Fact]
@@ -809,6 +985,7 @@ namespace StripeTests
             var options = new CustomerListOptions { Limit = 3 };
             var service = new CustomerService(this.StripeClient);
             StripeList<Customer> customers = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/customers", "limit=3");
         }
 
         [Fact]
@@ -817,6 +994,7 @@ namespace StripeTests
             var options = new CustomerListOptions { Limit = 3 };
             var service = new CustomerService(this.StripeClient);
             StripeList<Customer> customers = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/customers", "limit=3");
         }
 
         [Fact]
@@ -824,6 +1002,9 @@ namespace StripeTests
         {
             var service = new CustomerService(this.StripeClient);
             service.Get("cus_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -836,6 +1017,10 @@ namespace StripeTests
             var service = new CustomerService(this.StripeClient);
             StripeList<PaymentMethod> paymentMethods = service
                 .ListPaymentMethods("cus_xyz", options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_xyz/payment_methods",
+                "type=card");
         }
 
         [Fact]
@@ -848,6 +1033,10 @@ namespace StripeTests
             var service = new CustomerService(this.StripeClient);
             StripeList<PaymentMethod> paymentMethods = service
                 .ListPaymentMethods("cus_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_xxxxxxxxxxxxx/payment_methods",
+                "type=card");
         }
 
         [Fact]
@@ -859,6 +1048,7 @@ namespace StripeTests
             };
             var service = new CustomerService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/customers");
         }
 
         [Fact]
@@ -873,6 +1063,9 @@ namespace StripeTests
             };
             var service = new CustomerService(this.StripeClient);
             service.Update("cus_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/customers/cus_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -884,6 +1077,10 @@ namespace StripeTests
             };
             var service = new CustomerService(this.StripeClient);
             service.Search(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/search",
+                "query=name%3A%27fakename%27%20AND%20metadata%5B%27foo%27%5D%3A%27bar%27");
         }
 
         [Fact]
@@ -895,6 +1092,10 @@ namespace StripeTests
             };
             var service = new CustomerService(this.StripeClient);
             service.Search(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/search",
+                "query=name%3A%27fakename%27%20AND%20metadata%5B%27foo%27%5D%3A%27bar%27");
         }
 
         [Fact]
@@ -902,6 +1103,9 @@ namespace StripeTests
         {
             var service = new TaxIdService(this.StripeClient);
             service.Delete("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/customers/cus_xxxxxxxxxxxxx/tax_ids/txi_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -912,6 +1116,10 @@ namespace StripeTests
             StripeList<TaxId> taxIds = service.List(
                 "cus_xxxxxxxxxxxxx",
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_xxxxxxxxxxxxx/tax_ids",
+                "limit=3");
         }
 
         [Fact]
@@ -919,6 +1127,9 @@ namespace StripeTests
         {
             var service = new TaxIdService(this.StripeClient);
             service.Get("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/customers/cus_xxxxxxxxxxxxx/tax_ids/txi_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -931,6 +1142,9 @@ namespace StripeTests
             };
             var service = new TaxIdService(this.StripeClient);
             service.Create("cus_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/customers/cus_xxxxxxxxxxxxx/tax_ids");
         }
 
         [Fact]
@@ -938,6 +1152,9 @@ namespace StripeTests
         {
             var service = new DisputeService(this.StripeClient);
             service.Close("dp_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/disputes/dp_xxxxxxxxxxxxx/close");
         }
 
         [Fact]
@@ -946,6 +1163,7 @@ namespace StripeTests
             var options = new DisputeListOptions { Limit = 3 };
             var service = new DisputeService(this.StripeClient);
             StripeList<Dispute> disputes = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/disputes", "limit=3");
         }
 
         [Fact]
@@ -953,6 +1171,7 @@ namespace StripeTests
         {
             var service = new DisputeService(this.StripeClient);
             service.Get("dp_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/disputes/dp_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -967,6 +1186,9 @@ namespace StripeTests
             };
             var service = new DisputeService(this.StripeClient);
             service.Update("dp_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/disputes/dp_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -975,6 +1197,7 @@ namespace StripeTests
             var options = new EventListOptions { Limit = 3 };
             var service = new EventService(this.StripeClient);
             StripeList<Event> events = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/events", "limit=3");
         }
 
         [Fact]
@@ -982,6 +1205,7 @@ namespace StripeTests
         {
             var service = new EventService(this.StripeClient);
             service.Get("evt_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/events/evt_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -990,6 +1214,7 @@ namespace StripeTests
             var options = new FileLinkListOptions { Limit = 3 };
             var service = new FileLinkService(this.StripeClient);
             StripeList<FileLink> fileLinks = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/file_links", "limit=3");
         }
 
         [Fact]
@@ -997,6 +1222,9 @@ namespace StripeTests
         {
             var service = new FileLinkService(this.StripeClient);
             service.Get("link_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/file_links/link_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1008,6 +1236,7 @@ namespace StripeTests
             };
             var service = new FileLinkService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/file_links");
         }
 
         [Fact]
@@ -1022,6 +1251,9 @@ namespace StripeTests
             };
             var service = new FileLinkService(this.StripeClient);
             service.Update("link_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/file_links/link_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1030,6 +1262,7 @@ namespace StripeTests
             var options = new FileListOptions { Limit = 3 };
             var service = new FileService(this.StripeClient);
             StripeList<File> files = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/files", "limit=3");
         }
 
         [Fact]
@@ -1037,6 +1270,7 @@ namespace StripeTests
         {
             var service = new FileService(this.StripeClient);
             service.Get("file_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/files/file_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1050,6 +1284,7 @@ namespace StripeTests
             };
             var service = new FileService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/files");
         }
 
         [Fact]
@@ -1058,6 +1293,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
             service.Disconnect("fca_xyz");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/financial_connections/accounts/fca_xyz/disconnect");
         }
 
         [Fact]
@@ -1066,6 +1304,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
             service.Disconnect("fca_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/financial_connections/accounts/fca_xxxxxxxxxxxxx/disconnect");
         }
 
         [Fact]
@@ -1075,6 +1316,9 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.FinancialConnections.Account> accounts = service
                 .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/accounts");
         }
 
         [Fact]
@@ -1083,6 +1327,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
             service.Get("fca_xyz");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/accounts/fca_xyz");
         }
 
         [Fact]
@@ -1099,6 +1346,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.FinancialConnections.Account> accounts = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/accounts",
+                "account_holder[customer]=cus_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1107,6 +1358,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
             service.Get("fca_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/accounts/fca_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1120,6 +1374,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
                 .ListOwners("fca_xyz", options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/accounts/fca_xyz/owners",
+                "ownership=fcaowns_xyz");
         }
 
         [Fact]
@@ -1134,6 +1392,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
                 .ListOwners("fca_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/accounts/fca_xxxxxxxxxxxxx/owners",
+                "limit=3&ownership=fcaowns_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1146,6 +1408,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
             service.Refresh("fca_xyz", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/financial_connections/accounts/fca_xyz/refresh");
         }
 
         [Fact]
@@ -1158,6 +1423,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
             service.Subscribe("fa_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/financial_connections/accounts/fa_123/subscribe");
         }
 
         [Fact]
@@ -1170,6 +1438,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.AccountService(
                 this.StripeClient);
             service.Unsubscribe("fa_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/financial_connections/accounts/fa_123/unsubscribe");
         }
 
         [Fact]
@@ -1178,6 +1449,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.SessionService(
                 this.StripeClient);
             service.Get("fcsess_xyz");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/sessions/fcsess_xyz");
         }
 
         [Fact]
@@ -1186,6 +1460,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.SessionService(
                 this.StripeClient);
             service.Get("fcsess_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/sessions/fcsess_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1203,6 +1480,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.SessionService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/financial_connections/sessions");
         }
 
         [Fact]
@@ -1224,6 +1504,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.SessionService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/financial_connections/sessions");
         }
 
         [Fact]
@@ -1232,6 +1515,9 @@ namespace StripeTests
             var service = new Stripe.FinancialConnections.TransactionService(
                 this.StripeClient);
             service.Get("tr_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/transactions/tr_123");
         }
 
         [Fact]
@@ -1245,6 +1531,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.FinancialConnections.Transaction> transactions = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/financial_connections/transactions",
+                "account=fca_xyz");
         }
 
         [Fact]
@@ -1258,6 +1548,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Identity.VerificationReport> verificationReports = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/identity/verification_reports",
+                "limit=3");
         }
 
         [Fact]
@@ -1266,6 +1560,9 @@ namespace StripeTests
             var service = new Stripe.Identity.VerificationReportService(
                 this.StripeClient);
             service.Get("vr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/identity/verification_reports/vr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1274,6 +1571,9 @@ namespace StripeTests
             var service = new Stripe.Identity.VerificationSessionService(
                 this.StripeClient);
             service.Cancel("vs_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/identity/verification_sessions/vs_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -1287,6 +1587,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Identity.VerificationSession> verificationSessions = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/identity/verification_sessions",
+                "limit=3");
         }
 
         [Fact]
@@ -1295,6 +1599,9 @@ namespace StripeTests
             var service = new Stripe.Identity.VerificationSessionService(
                 this.StripeClient);
             service.Get("vs_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/identity/verification_sessions/vs_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1307,6 +1614,9 @@ namespace StripeTests
             var service = new Stripe.Identity.VerificationSessionService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/identity/verification_sessions");
         }
 
         [Fact]
@@ -1319,6 +1629,9 @@ namespace StripeTests
             var service = new Stripe.Identity.VerificationSessionService(
                 this.StripeClient);
             service.Update("vs_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/identity/verification_sessions/vs_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1327,6 +1640,9 @@ namespace StripeTests
             var service = new Stripe.Identity.VerificationSessionService(
                 this.StripeClient);
             service.Redact("vs_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/identity/verification_sessions/vs_xxxxxxxxxxxxx/redact");
         }
 
         [Fact]
@@ -1334,6 +1650,9 @@ namespace StripeTests
         {
             var service = new InvoiceItemService(this.StripeClient);
             service.Delete("ii_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/invoiceitems/ii_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1342,6 +1661,7 @@ namespace StripeTests
             var options = new InvoiceItemListOptions { Limit = 3 };
             var service = new InvoiceItemService(this.StripeClient);
             StripeList<InvoiceItem> invoiceItems = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoiceitems", "limit=3");
         }
 
         [Fact]
@@ -1349,6 +1669,9 @@ namespace StripeTests
         {
             var service = new InvoiceItemService(this.StripeClient);
             service.Get("ii_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/invoiceitems/ii_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1361,6 +1684,7 @@ namespace StripeTests
             };
             var service = new InvoiceItemService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoiceitems");
         }
 
         [Fact]
@@ -1375,6 +1699,9 @@ namespace StripeTests
             };
             var service = new InvoiceItemService(this.StripeClient);
             service.Update("ii_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/invoiceitems/ii_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1382,6 +1709,9 @@ namespace StripeTests
         {
             var service = new InvoiceService(this.StripeClient);
             service.Delete("in_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/invoices/in_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1389,6 +1719,9 @@ namespace StripeTests
         {
             var service = new InvoiceService(this.StripeClient);
             service.FinalizeInvoice("in_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/invoices/in_xxxxxxxxxxxxx/finalize");
         }
 
         [Fact]
@@ -1397,6 +1730,7 @@ namespace StripeTests
             var options = new InvoiceListOptions { Limit = 3 };
             var service = new InvoiceService(this.StripeClient);
             StripeList<Invoice> invoices = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices", "limit=3");
         }
 
         [Fact]
@@ -1404,6 +1738,7 @@ namespace StripeTests
         {
             var service = new InvoiceService(this.StripeClient);
             service.Get("in_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/invoices/in_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1415,6 +1750,10 @@ namespace StripeTests
             };
             var service = new InvoiceService(this.StripeClient);
             service.Get("in_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/invoices/in_xxxxxxxxxxxxx",
+                "expand[]=customer");
         }
 
         [Fact]
@@ -1422,6 +1761,9 @@ namespace StripeTests
         {
             var service = new InvoiceService(this.StripeClient);
             service.MarkUncollectible("in_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/invoices/in_xxxxxxxxxxxxx/mark_uncollectible");
         }
 
         [Fact]
@@ -1429,6 +1771,9 @@ namespace StripeTests
         {
             var service = new InvoiceService(this.StripeClient);
             service.Pay("in_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/invoices/in_xxxxxxxxxxxxx/pay");
         }
 
         [Fact]
@@ -1440,6 +1785,7 @@ namespace StripeTests
             };
             var service = new InvoiceService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/invoices");
         }
 
         [Fact]
@@ -1454,6 +1800,9 @@ namespace StripeTests
             };
             var service = new InvoiceService(this.StripeClient);
             service.Update("in_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/invoices/in_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1465,6 +1814,10 @@ namespace StripeTests
             };
             var service = new InvoiceService(this.StripeClient);
             service.Search(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/invoices/search",
+                "query=total%3E999%20AND%20metadata%5B%27order_id%27%5D%3A%276735%27");
         }
 
         [Fact]
@@ -1472,6 +1825,9 @@ namespace StripeTests
         {
             var service = new InvoiceService(this.StripeClient);
             service.SendInvoice("in_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/invoices/in_xxxxxxxxxxxxx/send");
         }
 
         [Fact]
@@ -1483,6 +1839,10 @@ namespace StripeTests
             };
             var service = new InvoiceService(this.StripeClient);
             service.Upcoming(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/invoices/upcoming",
+                "customer=cus_9utnxg47pWjV1e");
         }
 
         [Fact]
@@ -1490,6 +1850,9 @@ namespace StripeTests
         {
             var service = new InvoiceService(this.StripeClient);
             service.VoidInvoice("in_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/invoices/in_xxxxxxxxxxxxx/void");
         }
 
         [Fact]
@@ -1498,6 +1861,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Approve("iauth_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/issuing/authorizations/iauth_xxxxxxxxxxxxx/approve");
         }
 
         [Fact]
@@ -1506,6 +1872,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Decline("iauth_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/issuing/authorizations/iauth_xxxxxxxxxxxxx/decline");
         }
 
         [Fact]
@@ -1519,6 +1888,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Issuing.Authorization> authorizations = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/authorizations",
+                "limit=3");
         }
 
         [Fact]
@@ -1527,6 +1900,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Get("iauth_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/authorizations/iauth_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1542,6 +1918,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Update("iauth_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/issuing/authorizations/iauth_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1555,6 +1934,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Issuing.Cardholder> cardholders = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/cardholders",
+                "limit=3");
         }
 
         [Fact]
@@ -1563,6 +1946,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.CardholderService(
                 this.StripeClient);
             service.Get("ich_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/cardholders/ich_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1589,6 +1975,7 @@ namespace StripeTests
             var service = new Stripe.Issuing.CardholderService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/cardholders");
         }
 
         [Fact]
@@ -1604,6 +1991,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.CardholderService(
                 this.StripeClient);
             service.Update("ich_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/issuing/cardholders/ich_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1612,6 +2002,7 @@ namespace StripeTests
             var options = new Stripe.Issuing.CardListOptions { Limit = 3 };
             var service = new Stripe.Issuing.CardService(this.StripeClient);
             StripeList<Stripe.Issuing.Card> cards = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/cards", "limit=3");
         }
 
         [Fact]
@@ -1619,6 +2010,9 @@ namespace StripeTests
         {
             var service = new Stripe.Issuing.CardService(this.StripeClient);
             service.Get("ic_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/cards/ic_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1632,6 +2026,7 @@ namespace StripeTests
             };
             var service = new Stripe.Issuing.CardService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/cards");
         }
 
         [Fact]
@@ -1646,6 +2041,9 @@ namespace StripeTests
             };
             var service = new Stripe.Issuing.CardService(this.StripeClient);
             service.Update("ic_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/issuing/cards/ic_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1654,6 +2052,10 @@ namespace StripeTests
             var options = new Stripe.Issuing.DisputeListOptions { Limit = 3 };
             var service = new Stripe.Issuing.DisputeService(this.StripeClient);
             StripeList<Stripe.Issuing.Dispute> disputes = service.List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/disputes",
+                "limit=3");
         }
 
         [Fact]
@@ -1661,6 +2063,9 @@ namespace StripeTests
         {
             var service = new Stripe.Issuing.DisputeService(this.StripeClient);
             service.Get("idp_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/disputes/idp_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1680,6 +2085,7 @@ namespace StripeTests
             };
             var service = new Stripe.Issuing.DisputeService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/issuing/disputes");
         }
 
         [Fact]
@@ -1687,6 +2093,9 @@ namespace StripeTests
         {
             var service = new Stripe.Issuing.DisputeService(this.StripeClient);
             service.Submit("idp_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/issuing/disputes/idp_xxxxxxxxxxxxx/submit");
         }
 
         [Fact]
@@ -1696,6 +2105,9 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Issuing.PersonalizationDesign> personalizationDesigns = service
                 .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/personalization_designs");
         }
 
         [Fact]
@@ -1704,6 +2116,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.PersonalizationDesignService(
                 this.StripeClient);
             service.Get("pd_xyz");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/personalization_designs/pd_xyz");
         }
 
         [Fact]
@@ -1716,6 +2131,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.PersonalizationDesignService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/issuing/personalization_designs");
         }
 
         [Fact]
@@ -1725,6 +2143,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.PersonalizationDesignService(
                 this.StripeClient);
             service.Update("pd_xyz", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/issuing/personalization_designs/pd_xyz");
         }
 
         [Fact]
@@ -1734,6 +2155,7 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Issuing.PhysicalBundle> physicalBundles = service
                 .List();
+            this.AssertRequest(HttpMethod.Get, "/v1/issuing/physical_bundles");
         }
 
         [Fact]
@@ -1742,6 +2164,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.PhysicalBundleService(
                 this.StripeClient);
             service.Get("pb_xyz");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/physical_bundles/pb_xyz");
         }
 
         [Fact]
@@ -1755,6 +2180,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Issuing.Transaction> transactions = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/transactions",
+                "limit=3");
         }
 
         [Fact]
@@ -1763,6 +2192,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.TransactionService(
                 this.StripeClient);
             service.Get("ipi_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/issuing/transactions/ipi_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1778,6 +2210,9 @@ namespace StripeTests
             var service = new Stripe.Issuing.TransactionService(
                 this.StripeClient);
             service.Update("ipi_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/issuing/transactions/ipi_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1785,6 +2220,9 @@ namespace StripeTests
         {
             var service = new MandateService(this.StripeClient);
             service.Get("mandate_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/mandates/mandate_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1792,6 +2230,9 @@ namespace StripeTests
         {
             var service = new PaymentIntentService(this.StripeClient);
             service.ApplyCustomerBalance("pi_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_intents/pi_xxxxxxxxxxxxx/apply_customer_balance");
         }
 
         [Fact]
@@ -1799,6 +2240,9 @@ namespace StripeTests
         {
             var service = new PaymentIntentService(this.StripeClient);
             service.Cancel("pi_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_intents/pi_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -1806,6 +2250,9 @@ namespace StripeTests
         {
             var service = new PaymentIntentService(this.StripeClient);
             service.Capture("pi_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_intents/pi_xxxxxxxxxxxxx/capture");
         }
 
         [Fact]
@@ -1817,6 +2264,9 @@ namespace StripeTests
             };
             var service = new PaymentIntentService(this.StripeClient);
             service.Confirm("pi_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_intents/pi_xxxxxxxxxxxxx/confirm");
         }
 
         [Fact]
@@ -1825,6 +2275,10 @@ namespace StripeTests
             var options = new PaymentIntentListOptions { Limit = 3 };
             var service = new PaymentIntentService(this.StripeClient);
             StripeList<PaymentIntent> paymentIntents = service.List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/payment_intents",
+                "limit=3");
         }
 
         [Fact]
@@ -1832,6 +2286,9 @@ namespace StripeTests
         {
             var service = new PaymentIntentService(this.StripeClient);
             service.Get("pi_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/payment_intents/pi_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1843,6 +2300,9 @@ namespace StripeTests
             };
             var service = new PaymentIntentService(this.StripeClient);
             service.IncrementAuthorization("pi_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_intents/pi_xxxxxxxxxxxxx/increment_authorization");
         }
 
         [Fact]
@@ -1859,6 +2319,7 @@ namespace StripeTests
             };
             var service = new PaymentIntentService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents");
         }
 
         [Fact]
@@ -1875,6 +2336,7 @@ namespace StripeTests
             };
             var service = new PaymentIntentService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents");
         }
 
         [Fact]
@@ -1889,6 +2351,9 @@ namespace StripeTests
             };
             var service = new PaymentIntentService(this.StripeClient);
             service.Update("pi_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_intents/pi_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1909,6 +2374,7 @@ namespace StripeTests
             };
             var service = new PaymentIntentService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_intents");
         }
 
         [Fact]
@@ -1920,6 +2386,10 @@ namespace StripeTests
             };
             var service = new PaymentIntentService(this.StripeClient);
             service.Search(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/payment_intents/search",
+                "query=status%3A%27succeeded%27%20AND%20metadata%5B%27order_id%27%5D%3A%276735%27");
         }
 
         [Fact]
@@ -1927,6 +2397,9 @@ namespace StripeTests
         {
             var service = new PaymentIntentService(this.StripeClient);
             service.VerifyMicrodeposits("pi_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_intents/pi_xxxxxxxxxxxxx/verify_microdeposits");
         }
 
         [Fact]
@@ -1938,6 +2411,9 @@ namespace StripeTests
             };
             var service = new PaymentIntentService(this.StripeClient);
             service.VerifyMicrodeposits("pi_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_intents/pi_xxxxxxxxxxxxx/verify_microdeposits");
         }
 
         [Fact]
@@ -1945,6 +2421,7 @@ namespace StripeTests
         {
             var service = new PaymentLinkService(this.StripeClient);
             service.Get("pl_xyz");
+            this.AssertRequest(HttpMethod.Get, "/v1/payment_links/pl_xyz");
         }
 
         [Fact]
@@ -1953,6 +2430,7 @@ namespace StripeTests
             var options = new PaymentLinkListOptions { Limit = 3 };
             var service = new PaymentLinkService(this.StripeClient);
             StripeList<PaymentLink> paymentLinks = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/payment_links", "limit=3");
         }
 
         [Fact]
@@ -1960,6 +2438,9 @@ namespace StripeTests
         {
             var service = new PaymentLinkService(this.StripeClient);
             service.Get("plink_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/payment_links/plink_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -1967,6 +2448,9 @@ namespace StripeTests
         {
             var service = new PaymentLinkService(this.StripeClient);
             StripeList<LineItem> lineItems = service.ListLineItems("pl_xyz");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/payment_links/pl_xyz/line_items");
         }
 
         [Fact]
@@ -1985,6 +2469,7 @@ namespace StripeTests
             };
             var service = new PaymentLinkService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_links");
         }
 
         [Fact]
@@ -2003,6 +2488,7 @@ namespace StripeTests
             };
             var service = new PaymentLinkService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_links");
         }
 
         [Fact]
@@ -2011,6 +2497,9 @@ namespace StripeTests
             var options = new PaymentLinkUpdateOptions { Active = false };
             var service = new PaymentLinkService(this.StripeClient);
             service.Update("plink_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_links/plink_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2024,6 +2513,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<PaymentMethodConfiguration> paymentMethodConfigurations = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/payment_method_configurations",
+                "application=foo");
         }
 
         [Fact]
@@ -2032,6 +2525,9 @@ namespace StripeTests
             var service = new PaymentMethodConfigurationService(
                 this.StripeClient);
             service.Get("foo");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/payment_method_configurations/foo");
         }
 
         [Fact]
@@ -2057,6 +2553,9 @@ namespace StripeTests
             var service = new PaymentMethodConfigurationService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_method_configurations");
         }
 
         [Fact]
@@ -2075,6 +2574,9 @@ namespace StripeTests
             var service = new PaymentMethodConfigurationService(
                 this.StripeClient);
             service.Update("foo", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_method_configurations/foo");
         }
 
         [Fact]
@@ -2086,6 +2588,9 @@ namespace StripeTests
             };
             var service = new PaymentMethodService(this.StripeClient);
             service.Attach("pm_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_methods/pm_xxxxxxxxxxxxx/attach");
         }
 
         [Fact]
@@ -2093,6 +2598,9 @@ namespace StripeTests
         {
             var service = new PaymentMethodService(this.StripeClient);
             service.Detach("pm_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_methods/pm_xxxxxxxxxxxxx/detach");
         }
 
         [Fact]
@@ -2105,6 +2613,10 @@ namespace StripeTests
             };
             var service = new PaymentMethodService(this.StripeClient);
             StripeList<PaymentMethod> paymentMethods = service.List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/payment_methods",
+                "customer=cus_xxxxxxxxxxxxx&type=card");
         }
 
         [Fact]
@@ -2112,6 +2624,9 @@ namespace StripeTests
         {
             var service = new PaymentMethodService(this.StripeClient);
             service.Get("pm_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/payment_methods/pm_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2130,6 +2645,7 @@ namespace StripeTests
             };
             var service = new PaymentMethodService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/payment_methods");
         }
 
         [Fact]
@@ -2144,6 +2660,9 @@ namespace StripeTests
             };
             var service = new PaymentMethodService(this.StripeClient);
             service.Update("pm_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payment_methods/pm_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2151,6 +2670,9 @@ namespace StripeTests
         {
             var service = new PayoutService(this.StripeClient);
             service.Cancel("po_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payouts/po_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -2159,6 +2681,7 @@ namespace StripeTests
             var options = new PayoutListOptions { Limit = 3 };
             var service = new PayoutService(this.StripeClient);
             StripeList<Payout> payouts = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/payouts", "limit=3");
         }
 
         [Fact]
@@ -2166,6 +2689,7 @@ namespace StripeTests
         {
             var service = new PayoutService(this.StripeClient);
             service.Get("po_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/payouts/po_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2178,6 +2702,7 @@ namespace StripeTests
             };
             var service = new PayoutService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts");
         }
 
         [Fact]
@@ -2192,6 +2717,7 @@ namespace StripeTests
             };
             var service = new PayoutService(this.StripeClient);
             service.Update("po_xxxxxxxxxxxxx", options);
+            this.AssertRequest(HttpMethod.Post, "/v1/payouts/po_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2199,6 +2725,9 @@ namespace StripeTests
         {
             var service = new PayoutService(this.StripeClient);
             service.Reverse("po_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/payouts/po_xxxxxxxxxxxxx/reverse");
         }
 
         [Fact]
@@ -2206,6 +2735,9 @@ namespace StripeTests
         {
             var service = new PlanService(this.StripeClient);
             service.Delete("price_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/plans/price_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2214,6 +2746,7 @@ namespace StripeTests
             var options = new PlanListOptions { Limit = 3 };
             var service = new PlanService(this.StripeClient);
             StripeList<Plan> plans = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/plans", "limit=3");
         }
 
         [Fact]
@@ -2221,6 +2754,7 @@ namespace StripeTests
         {
             var service = new PlanService(this.StripeClient);
             service.Get("price_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/plans/price_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2235,6 +2769,7 @@ namespace StripeTests
             };
             var service = new PlanService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/plans");
         }
 
         [Fact]
@@ -2249,6 +2784,7 @@ namespace StripeTests
             };
             var service = new PlanService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/plans");
         }
 
         [Fact]
@@ -2263,6 +2799,9 @@ namespace StripeTests
             };
             var service = new PlanService(this.StripeClient);
             service.Update("price_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/plans/price_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2271,6 +2810,7 @@ namespace StripeTests
             var options = new PriceListOptions { Limit = 3 };
             var service = new PriceService(this.StripeClient);
             StripeList<Price> prices = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/prices", "limit=3");
         }
 
         [Fact]
@@ -2278,6 +2818,9 @@ namespace StripeTests
         {
             var service = new PriceService(this.StripeClient);
             service.Get("price_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/prices/price_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2307,6 +2850,7 @@ namespace StripeTests
             };
             var service = new PriceService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/prices");
         }
 
         [Fact]
@@ -2321,6 +2865,7 @@ namespace StripeTests
             };
             var service = new PriceService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/prices");
         }
 
         [Fact]
@@ -2335,6 +2880,9 @@ namespace StripeTests
             };
             var service = new PriceService(this.StripeClient);
             service.Update("price_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/prices/price_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2346,6 +2894,10 @@ namespace StripeTests
             };
             var service = new PriceService(this.StripeClient);
             service.Search(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/prices/search",
+                "query=active%3A%27true%27%20AND%20metadata%5B%27order_id%27%5D%3A%276735%27");
         }
 
         [Fact]
@@ -2353,6 +2905,9 @@ namespace StripeTests
         {
             var service = new ProductService(this.StripeClient);
             service.Delete("prod_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/products/prod_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2361,6 +2916,7 @@ namespace StripeTests
             var options = new ProductListOptions { Limit = 3 };
             var service = new ProductService(this.StripeClient);
             StripeList<Product> products = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/products", "limit=3");
         }
 
         [Fact]
@@ -2368,6 +2924,9 @@ namespace StripeTests
         {
             var service = new ProductService(this.StripeClient);
             service.Get("prod_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/products/prod_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2376,6 +2935,7 @@ namespace StripeTests
             var options = new ProductCreateOptions { Name = "Gold Special" };
             var service = new ProductService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/products");
         }
 
         [Fact]
@@ -2390,6 +2950,9 @@ namespace StripeTests
             };
             var service = new ProductService(this.StripeClient);
             service.Update("prod_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/products/prod_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2401,6 +2964,10 @@ namespace StripeTests
             };
             var service = new ProductService(this.StripeClient);
             service.Search(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/products/search",
+                "query=active%3A%27true%27%20AND%20metadata%5B%27order_id%27%5D%3A%276735%27");
         }
 
         [Fact]
@@ -2409,6 +2976,10 @@ namespace StripeTests
             var options = new PromotionCodeListOptions { Limit = 3 };
             var service = new PromotionCodeService(this.StripeClient);
             StripeList<PromotionCode> promotionCodes = service.List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/promotion_codes",
+                "limit=3");
         }
 
         [Fact]
@@ -2416,6 +2987,9 @@ namespace StripeTests
         {
             var service = new PromotionCodeService(this.StripeClient);
             service.Get("promo_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/promotion_codes/promo_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2427,6 +3001,7 @@ namespace StripeTests
             };
             var service = new PromotionCodeService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/promotion_codes");
         }
 
         [Fact]
@@ -2441,6 +3016,9 @@ namespace StripeTests
             };
             var service = new PromotionCodeService(this.StripeClient);
             service.Update("promo_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/promotion_codes/promo_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2448,6 +3026,9 @@ namespace StripeTests
         {
             var service = new QuoteService(this.StripeClient);
             service.Accept("qt_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/quotes/qt_xxxxxxxxxxxxx/accept");
         }
 
         [Fact]
@@ -2455,6 +3036,9 @@ namespace StripeTests
         {
             var service = new QuoteService(this.StripeClient);
             service.Cancel("qt_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/quotes/qt_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -2462,6 +3046,9 @@ namespace StripeTests
         {
             var service = new QuoteService(this.StripeClient);
             service.FinalizeQuote("qt_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/quotes/qt_xxxxxxxxxxxxx/finalize");
         }
 
         [Fact]
@@ -2470,6 +3057,7 @@ namespace StripeTests
             var options = new QuoteListOptions { Limit = 3 };
             var service = new QuoteService(this.StripeClient);
             StripeList<Quote> quotes = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/quotes", "limit=3");
         }
 
         [Fact]
@@ -2477,6 +3065,7 @@ namespace StripeTests
         {
             var service = new QuoteService(this.StripeClient);
             service.Get("qt_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2485,6 +3074,9 @@ namespace StripeTests
             var service = new QuoteService(this.StripeClient);
             StripeList<LineItem> lineItems = service.ListLineItems(
                 "qt_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/quotes/qt_xxxxxxxxxxxxx/line_items");
         }
 
         [Fact]
@@ -2492,6 +3084,9 @@ namespace StripeTests
         {
             var service = new QuoteService(this.StripeClient);
             service.Pdf("qt_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/quotes/qt_xxxxxxxxxxxxx/pdf");
         }
 
         [Fact]
@@ -2511,6 +3106,7 @@ namespace StripeTests
             };
             var service = new QuoteService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/quotes");
         }
 
         [Fact]
@@ -2525,6 +3121,7 @@ namespace StripeTests
             };
             var service = new QuoteService(this.StripeClient);
             service.Update("qt_xxxxxxxxxxxxx", options);
+            this.AssertRequest(HttpMethod.Post, "/v1/quotes/qt_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2538,6 +3135,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Radar.EarlyFraudWarning> earlyFraudWarnings = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/radar/early_fraud_warnings",
+                "limit=3");
         }
 
         [Fact]
@@ -2546,6 +3147,9 @@ namespace StripeTests
             var service = new Stripe.Radar.EarlyFraudWarningService(
                 this.StripeClient);
             service.Get("issfr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/radar/early_fraud_warnings/issfr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2554,6 +3158,9 @@ namespace StripeTests
             var service = new Stripe.Radar.ValueListItemService(
                 this.StripeClient);
             service.Delete("rsli_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/radar/value_list_items/rsli_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2568,6 +3175,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Radar.ValueListItem> valueListItems = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/radar/value_list_items",
+                "limit=3&value_list=rsl_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2576,6 +3187,9 @@ namespace StripeTests
             var service = new Stripe.Radar.ValueListItemService(
                 this.StripeClient);
             service.Get("rsli_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/radar/value_list_items/rsli_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2589,6 +3203,7 @@ namespace StripeTests
             var service = new Stripe.Radar.ValueListItemService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/radar/value_list_items");
         }
 
         [Fact]
@@ -2596,6 +3211,9 @@ namespace StripeTests
         {
             var service = new Stripe.Radar.ValueListService(this.StripeClient);
             service.Delete("rsl_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/radar/value_lists/rsl_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2605,6 +3223,10 @@ namespace StripeTests
             var service = new Stripe.Radar.ValueListService(this.StripeClient);
             StripeList<Stripe.Radar.ValueList> valueLists = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/radar/value_lists",
+                "limit=3");
         }
 
         [Fact]
@@ -2612,6 +3234,9 @@ namespace StripeTests
         {
             var service = new Stripe.Radar.ValueListService(this.StripeClient);
             service.Get("rsl_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/radar/value_lists/rsl_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2625,6 +3250,7 @@ namespace StripeTests
             };
             var service = new Stripe.Radar.ValueListService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/radar/value_lists");
         }
 
         [Fact]
@@ -2636,6 +3262,9 @@ namespace StripeTests
             };
             var service = new Stripe.Radar.ValueListService(this.StripeClient);
             service.Update("rsl_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/radar/value_lists/rsl_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2643,6 +3272,9 @@ namespace StripeTests
         {
             var service = new RefundService(this.StripeClient);
             service.Cancel("re_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/refunds/re_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -2651,6 +3283,7 @@ namespace StripeTests
             var options = new RefundListOptions { Limit = 3 };
             var service = new RefundService(this.StripeClient);
             StripeList<Refund> refunds = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/refunds", "limit=3");
         }
 
         [Fact]
@@ -2658,6 +3291,7 @@ namespace StripeTests
         {
             var service = new RefundService(this.StripeClient);
             service.Get("re_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/refunds/re_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2669,6 +3303,7 @@ namespace StripeTests
             };
             var service = new RefundService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/refunds");
         }
 
         [Fact]
@@ -2683,6 +3318,7 @@ namespace StripeTests
             };
             var service = new RefundService(this.StripeClient);
             service.Update("re_xxxxxxxxxxxxx", options);
+            this.AssertRequest(HttpMethod.Post, "/v1/refunds/re_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2696,6 +3332,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Reporting.ReportRun> reportRuns = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/reporting/report_runs",
+                "limit=3");
         }
 
         [Fact]
@@ -2704,6 +3344,9 @@ namespace StripeTests
             var service = new Stripe.Reporting.ReportRunService(
                 this.StripeClient);
             service.Get("frr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/reporting/report_runs/frr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2724,6 +3367,7 @@ namespace StripeTests
             var service = new Stripe.Reporting.ReportRunService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/reporting/report_runs");
         }
 
         [Fact]
@@ -2733,6 +3377,7 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Reporting.ReportType> reportTypes = service
                 .List();
+            this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_types");
         }
 
         [Fact]
@@ -2741,6 +3386,9 @@ namespace StripeTests
             var service = new Stripe.Reporting.ReportTypeService(
                 this.StripeClient);
             service.Get("balance.summary.1");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/reporting/report_types/balance.summary.1");
         }
 
         [Fact]
@@ -2748,6 +3396,9 @@ namespace StripeTests
         {
             var service = new ReviewService(this.StripeClient);
             service.Approve("prv_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/reviews/prv_xxxxxxxxxxxxx/approve");
         }
 
         [Fact]
@@ -2756,6 +3407,7 @@ namespace StripeTests
             var options = new ReviewListOptions { Limit = 3 };
             var service = new ReviewService(this.StripeClient);
             StripeList<Review> reviews = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/reviews", "limit=3");
         }
 
         [Fact]
@@ -2763,6 +3415,7 @@ namespace StripeTests
         {
             var service = new ReviewService(this.StripeClient);
             service.Get("prv_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/reviews/prv_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2775,6 +3428,10 @@ namespace StripeTests
             };
             var service = new SetupAttemptService(this.StripeClient);
             StripeList<SetupAttempt> setupAttempts = service.List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/setup_attempts",
+                "limit=3&setup_intent=si_xyz");
         }
 
         [Fact]
@@ -2782,6 +3439,9 @@ namespace StripeTests
         {
             var service = new SetupIntentService(this.StripeClient);
             service.Cancel("seti_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/setup_intents/seti_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -2793,6 +3453,9 @@ namespace StripeTests
             };
             var service = new SetupIntentService(this.StripeClient);
             service.Confirm("seti_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/setup_intents/seti_xxxxxxxxxxxxx/confirm");
         }
 
         [Fact]
@@ -2801,6 +3464,7 @@ namespace StripeTests
             var options = new SetupIntentListOptions { Limit = 3 };
             var service = new SetupIntentService(this.StripeClient);
             StripeList<SetupIntent> setupIntents = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/setup_intents", "limit=3");
         }
 
         [Fact]
@@ -2808,6 +3472,9 @@ namespace StripeTests
         {
             var service = new SetupIntentService(this.StripeClient);
             service.Get("seti_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/setup_intents/seti_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2819,6 +3486,7 @@ namespace StripeTests
             };
             var service = new SetupIntentService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/setup_intents");
         }
 
         [Fact]
@@ -2833,6 +3501,9 @@ namespace StripeTests
             };
             var service = new SetupIntentService(this.StripeClient);
             service.Update("seti_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/setup_intents/seti_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2840,6 +3511,9 @@ namespace StripeTests
         {
             var service = new SetupIntentService(this.StripeClient);
             service.VerifyMicrodeposits("seti_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/setup_intents/seti_xxxxxxxxxxxxx/verify_microdeposits");
         }
 
         [Fact]
@@ -2851,6 +3525,9 @@ namespace StripeTests
             };
             var service = new SetupIntentService(this.StripeClient);
             service.VerifyMicrodeposits("seti_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/setup_intents/seti_xxxxxxxxxxxxx/verify_microdeposits");
         }
 
         [Fact]
@@ -2858,6 +3535,7 @@ namespace StripeTests
         {
             var service = new ShippingRateService(this.StripeClient);
             StripeList<ShippingRate> shippingRates = service.List();
+            this.AssertRequest(HttpMethod.Get, "/v1/shipping_rates");
         }
 
         [Fact]
@@ -2866,6 +3544,7 @@ namespace StripeTests
             var options = new ShippingRateListOptions { Limit = 3 };
             var service = new ShippingRateService(this.StripeClient);
             StripeList<ShippingRate> shippingRates = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/shipping_rates", "limit=3");
         }
 
         [Fact]
@@ -2873,6 +3552,9 @@ namespace StripeTests
         {
             var service = new ShippingRateService(this.StripeClient);
             service.Get("shr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/shipping_rates/shr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2890,6 +3572,7 @@ namespace StripeTests
             };
             var service = new ShippingRateService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/shipping_rates");
         }
 
         [Fact]
@@ -2907,6 +3590,7 @@ namespace StripeTests
             };
             var service = new ShippingRateService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/shipping_rates");
         }
 
         [Fact]
@@ -2921,6 +3605,9 @@ namespace StripeTests
             };
             var service = new ShippingRateService(this.StripeClient);
             service.Update("shr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/shipping_rates/shr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2934,6 +3621,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Sigma.ScheduledQueryRun> scheduledQueryRuns = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/sigma/scheduled_query_runs",
+                "limit=3");
         }
 
         [Fact]
@@ -2942,6 +3633,9 @@ namespace StripeTests
             var service = new Stripe.Sigma.ScheduledQueryRunService(
                 this.StripeClient);
             service.Get("sqr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/sigma/scheduled_query_runs/sqr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2949,6 +3643,7 @@ namespace StripeTests
         {
             var service = new SourceService(this.StripeClient);
             service.Get("src_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/sources/src_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2956,6 +3651,7 @@ namespace StripeTests
         {
             var service = new SourceService(this.StripeClient);
             service.Get("src_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/sources/src_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2970,6 +3666,9 @@ namespace StripeTests
             };
             var service = new SourceService(this.StripeClient);
             service.Update("src_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/sources/src_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2977,6 +3676,9 @@ namespace StripeTests
         {
             var service = new SubscriptionItemService(this.StripeClient);
             service.Delete("si_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/subscription_items/si_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2989,6 +3691,10 @@ namespace StripeTests
             var service = new SubscriptionItemService(this.StripeClient);
             StripeList<SubscriptionItem> subscriptionItems = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/subscription_items",
+                "subscription=sub_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -2996,6 +3702,9 @@ namespace StripeTests
         {
             var service = new SubscriptionItemService(this.StripeClient);
             service.Get("si_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/subscription_items/si_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3009,6 +3718,7 @@ namespace StripeTests
             };
             var service = new SubscriptionItemService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/subscription_items");
         }
 
         [Fact]
@@ -3023,6 +3733,9 @@ namespace StripeTests
             };
             var service = new SubscriptionItemService(this.StripeClient);
             service.Update("si_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/subscription_items/si_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3033,6 +3746,10 @@ namespace StripeTests
             StripeList<UsageRecordSummary> usageRecordSummaries = service.List(
                 "si_xxxxxxxxxxxxx",
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/subscription_items/si_xxxxxxxxxxxxx/usage_record_summaries",
+                "limit=3");
         }
 
         [Fact]
@@ -3046,6 +3763,9 @@ namespace StripeTests
             };
             var service = new UsageRecordService(this.StripeClient);
             service.Create("si_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/subscription_items/si_xxxxxxxxxxxxx/usage_records");
         }
 
         [Fact]
@@ -3053,6 +3773,9 @@ namespace StripeTests
         {
             var service = new SubscriptionScheduleService(this.StripeClient);
             service.Cancel("sub_sched_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/subscription_schedules/sub_sched_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -3062,6 +3785,10 @@ namespace StripeTests
             var service = new SubscriptionScheduleService(this.StripeClient);
             StripeList<SubscriptionSchedule> subscriptionSchedules = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/subscription_schedules",
+                "limit=3");
         }
 
         [Fact]
@@ -3069,6 +3796,9 @@ namespace StripeTests
         {
             var service = new SubscriptionScheduleService(this.StripeClient);
             service.Get("sub_sched_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/subscription_schedules/sub_sched_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3098,6 +3828,7 @@ namespace StripeTests
             };
             var service = new SubscriptionScheduleService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/subscription_schedules");
         }
 
         [Fact]
@@ -3109,6 +3840,9 @@ namespace StripeTests
             };
             var service = new SubscriptionScheduleService(this.StripeClient);
             service.Update("sub_sched_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/subscription_schedules/sub_sched_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3116,6 +3850,9 @@ namespace StripeTests
         {
             var service = new SubscriptionScheduleService(this.StripeClient);
             service.Release("sub_sched_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/subscription_schedules/sub_sched_xxxxxxxxxxxxx/release");
         }
 
         [Fact]
@@ -3123,6 +3860,9 @@ namespace StripeTests
         {
             var service = new SubscriptionService(this.StripeClient);
             service.Cancel("sub_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/subscriptions/sub_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3130,6 +3870,9 @@ namespace StripeTests
         {
             var service = new DiscountService(this.StripeClient);
             service.DeleteSubscriptionDiscount("sub_xyz");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/subscriptions/sub_xyz/discount");
         }
 
         [Fact]
@@ -3138,6 +3881,7 @@ namespace StripeTests
             var options = new SubscriptionListOptions { Limit = 3 };
             var service = new SubscriptionService(this.StripeClient);
             StripeList<Subscription> subscriptions = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/subscriptions", "limit=3");
         }
 
         [Fact]
@@ -3145,6 +3889,9 @@ namespace StripeTests
         {
             var service = new SubscriptionService(this.StripeClient);
             service.Get("sub_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/subscriptions/sub_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3163,6 +3910,7 @@ namespace StripeTests
             };
             var service = new SubscriptionService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/subscriptions");
         }
 
         [Fact]
@@ -3177,6 +3925,9 @@ namespace StripeTests
             };
             var service = new SubscriptionService(this.StripeClient);
             service.Update("sub_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/subscriptions/sub_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3188,6 +3939,10 @@ namespace StripeTests
             };
             var service = new SubscriptionService(this.StripeClient);
             service.Search(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/subscriptions/search",
+                "query=status%3A%27active%27%20AND%20metadata%5B%27order_id%27%5D%3A%276735%27");
         }
 
         [Fact]
@@ -3196,6 +3951,9 @@ namespace StripeTests
             var service = new Stripe.Tax.CalculationService(this.StripeClient);
             StripeList<Stripe.Tax.CalculationLineItem> calculationLineItems = service
                 .ListLineItems("xxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/tax/calculations/xxx/line_items");
         }
 
         [Fact]
@@ -3227,6 +3985,7 @@ namespace StripeTests
             };
             var service = new Stripe.Tax.CalculationService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tax/calculations");
         }
 
         [Fact]
@@ -3235,6 +3994,7 @@ namespace StripeTests
             var options = new TaxCodeListOptions { Limit = 3 };
             var service = new TaxCodeService(this.StripeClient);
             StripeList<TaxCode> taxCodes = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/tax_codes", "limit=3");
         }
 
         [Fact]
@@ -3242,6 +4002,9 @@ namespace StripeTests
         {
             var service = new TaxCodeService(this.StripeClient);
             service.Get("txcd_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/tax_codes/txcd_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3249,6 +4012,7 @@ namespace StripeTests
         {
             var service = new TaxIdService(this.StripeClient);
             service.Delete("taxid_123");
+            this.AssertRequest(HttpMethod.Delete, "/v1/tax_ids/taxid_123");
         }
 
         [Fact]
@@ -3256,6 +4020,7 @@ namespace StripeTests
         {
             var service = new TaxIdService(this.StripeClient);
             StripeList<TaxId> taxIds = service.List();
+            this.AssertRequest(HttpMethod.Get, "/v1/tax_ids");
         }
 
         [Fact]
@@ -3263,6 +4028,7 @@ namespace StripeTests
         {
             var service = new TaxIdService(this.StripeClient);
             service.Get("taxid_123");
+            this.AssertRequest(HttpMethod.Get, "/v1/tax_ids/taxid_123");
         }
 
         [Fact]
@@ -3275,6 +4041,7 @@ namespace StripeTests
             };
             var service = new TaxIdService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tax_ids");
         }
 
         [Fact]
@@ -3283,6 +4050,7 @@ namespace StripeTests
             var options = new TaxRateListOptions { Limit = 3 };
             var service = new TaxRateService(this.StripeClient);
             StripeList<TaxRate> taxRates = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/tax_rates", "limit=3");
         }
 
         [Fact]
@@ -3290,6 +4058,9 @@ namespace StripeTests
         {
             var service = new TaxRateService(this.StripeClient);
             service.Get("txr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/tax_rates/txr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3305,6 +4076,7 @@ namespace StripeTests
             };
             var service = new TaxRateService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tax_rates");
         }
 
         [Fact]
@@ -3313,6 +4085,9 @@ namespace StripeTests
             var options = new TaxRateUpdateOptions { Active = false };
             var service = new TaxRateService(this.StripeClient);
             service.Update("txr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/tax_rates/txr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3325,6 +4100,10 @@ namespace StripeTests
             var service = new Stripe.Tax.RegistrationService(this.StripeClient);
             StripeList<Stripe.Tax.Registration> registrations = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/tax/registrations",
+                "status=all");
         }
 
         [Fact]
@@ -3344,6 +4123,7 @@ namespace StripeTests
             };
             var service = new Stripe.Tax.RegistrationService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tax/registrations");
         }
 
         [Fact]
@@ -3355,6 +4135,9 @@ namespace StripeTests
             };
             var service = new Stripe.Tax.RegistrationService(this.StripeClient);
             service.Update("taxreg_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/tax/registrations/taxreg_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3363,6 +4146,7 @@ namespace StripeTests
             var options = new Stripe.Tax.SettingsGetOptions();
             var service = new Stripe.Tax.SettingsService(this.StripeClient);
             service.Get(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/tax/settings");
         }
 
         [Fact]
@@ -3377,6 +4161,7 @@ namespace StripeTests
             };
             var service = new Stripe.Tax.SettingsService(this.StripeClient);
             service.Update(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tax/settings");
         }
 
         [Fact]
@@ -3389,6 +4174,9 @@ namespace StripeTests
             };
             var service = new Stripe.Tax.TransactionService(this.StripeClient);
             service.CreateFromCalculation(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/tax/transactions/create_from_calculation");
         }
 
         [Fact]
@@ -3397,6 +4185,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
             service.Delete("uc_123");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/terminal/configurations/uc_123");
         }
 
         [Fact]
@@ -3405,6 +4196,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
             service.Delete("tmc_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/terminal/configurations/tmc_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3414,6 +4208,7 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Terminal.Configuration> configurations = service
                 .List();
+            this.AssertRequest(HttpMethod.Get, "/v1/terminal/configurations");
         }
 
         [Fact]
@@ -3422,6 +4217,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
             service.Get("uc_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/terminal/configurations/uc_123");
         }
 
         [Fact]
@@ -3435,6 +4233,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Terminal.Configuration> configurations = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/terminal/configurations",
+                "limit=3");
         }
 
         [Fact]
@@ -3443,6 +4245,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
             service.Get("tmc_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/terminal/configurations/tmc_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3452,6 +4257,7 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/terminal/configurations");
         }
 
         [Fact]
@@ -3470,6 +4276,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
             service.Update("uc_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/terminal/configurations/uc_123");
         }
 
         [Fact]
@@ -3485,6 +4294,7 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/terminal/configurations");
         }
 
         [Fact]
@@ -3500,6 +4310,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConfigurationService(
                 this.StripeClient);
             service.Update("tmc_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/terminal/configurations/tmc_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3509,6 +4322,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.ConnectionTokenService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/terminal/connection_tokens");
         }
 
         [Fact]
@@ -3517,6 +4333,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.LocationService(
                 this.StripeClient);
             service.Delete("tml_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/terminal/locations/tml_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3527,6 +4346,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Terminal.Location> locations = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/terminal/locations",
+                "limit=3");
         }
 
         [Fact]
@@ -3535,6 +4358,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.LocationService(
                 this.StripeClient);
             service.Get("tml_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/terminal/locations/tml_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3555,6 +4381,7 @@ namespace StripeTests
             var service = new Stripe.Terminal.LocationService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/terminal/locations");
         }
 
         [Fact]
@@ -3567,6 +4394,9 @@ namespace StripeTests
             var service = new Stripe.Terminal.LocationService(
                 this.StripeClient);
             service.Update("tml_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/terminal/locations/tml_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3574,6 +4404,9 @@ namespace StripeTests
         {
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             service.CancelAction("tmr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/terminal/readers/tmr_xxxxxxxxxxxxx/cancel_action");
         }
 
         [Fact]
@@ -3581,6 +4414,9 @@ namespace StripeTests
         {
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             service.Delete("tmr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/terminal/readers/tmr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3589,6 +4425,10 @@ namespace StripeTests
             var options = new Stripe.Terminal.ReaderListOptions { Limit = 3 };
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             StripeList<Stripe.Terminal.Reader> readers = service.List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/terminal/readers",
+                "limit=3");
         }
 
         [Fact]
@@ -3596,6 +4436,9 @@ namespace StripeTests
         {
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             service.Get("tmr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/terminal/readers/tmr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3609,6 +4452,7 @@ namespace StripeTests
             };
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/terminal/readers");
         }
 
         [Fact]
@@ -3620,6 +4464,9 @@ namespace StripeTests
             };
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             service.Update("tmr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/terminal/readers/tmr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -3631,6 +4478,9 @@ namespace StripeTests
             };
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             service.ProcessPaymentIntent("tmr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/terminal/readers/tmr_xxxxxxxxxxxxx/process_payment_intent");
         }
 
         [Fact]
@@ -3643,6 +4493,9 @@ namespace StripeTests
             };
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             service.ProcessSetupIntent("tmr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/terminal/readers/tmr_xxxxxxxxxxxxx/process_setup_intent");
         }
 
         [Fact]
@@ -3656,6 +4509,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.CustomerService(
                 this.StripeClient);
             service.FundCashBalance("cus_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/customers/cus_123/fund_cash_balance");
         }
 
         [Fact]
@@ -3718,6 +4574,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Capture("example_authorization", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/authorizations/example_authorization/capture");
         }
 
         [Fact]
@@ -3726,6 +4585,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Expire("example_authorization");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/authorizations/example_authorization/expire");
         }
 
         [Fact]
@@ -3739,6 +4601,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Increment("example_authorization", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/authorizations/example_authorization/increment");
         }
 
         [Fact]
@@ -3783,6 +4648,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/authorizations");
         }
 
         [Fact]
@@ -3795,6 +4663,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Reverse("example_authorization", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/authorizations/example_authorization/reverse");
         }
 
         [Fact]
@@ -3803,6 +4674,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.CardService(
                 this.StripeClient);
             service.DeliverCard("card_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/cards/card_123/shipping/deliver");
         }
 
         [Fact]
@@ -3811,6 +4685,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.CardService(
                 this.StripeClient);
             service.FailCard("card_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/cards/card_123/shipping/fail");
         }
 
         [Fact]
@@ -3819,6 +4696,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.CardService(
                 this.StripeClient);
             service.ReturnCard("card_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/cards/card_123/shipping/return");
         }
 
         [Fact]
@@ -3827,6 +4707,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.CardService(
                 this.StripeClient);
             service.ShipCard("card_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/cards/card_123/shipping/ship");
         }
 
         [Fact]
@@ -3835,6 +4718,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.PersonalizationDesignService(
                 this.StripeClient);
             service.Activate("pd_xyz");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/personalization_designs/pd_xyz/activate");
         }
 
         [Fact]
@@ -3843,6 +4729,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.PersonalizationDesignService(
                 this.StripeClient);
             service.Deactivate("pd_xyz");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/personalization_designs/pd_xyz/deactivate");
         }
 
         [Fact]
@@ -3858,6 +4747,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.PersonalizationDesignService(
                 this.StripeClient);
             service.Reject("pd_xyz", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/personalization_designs/pd_xyz/reject");
         }
 
         [Fact]
@@ -3932,6 +4824,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.TransactionService(
                 this.StripeClient);
             service.CreateForceCapture(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/transactions/create_force_capture");
         }
 
         [Fact]
@@ -4006,6 +4901,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.TransactionService(
                 this.StripeClient);
             service.CreateUnlinkedRefund(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/transactions/create_unlinked_refund");
         }
 
         [Fact]
@@ -4018,6 +4916,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Issuing.TransactionService(
                 this.StripeClient);
             service.Refund("example_transaction", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/issuing/transactions/example_transaction/refund");
         }
 
         [Fact]
@@ -4026,6 +4927,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.RefundService(
                 this.StripeClient);
             service.Expire("re_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/refunds/re_123/expire");
         }
 
         [Fact]
@@ -4039,6 +4943,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
             service.Advance("clock_xyz", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/test_clocks/clock_xyz/advance");
         }
 
         [Fact]
@@ -4052,6 +4959,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
             service.Advance("clock_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/test_clocks/clock_xxxxxxxxxxxxx/advance");
         }
 
         [Fact]
@@ -4060,6 +4970,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
             service.Delete("clock_xyz");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/test_helpers/test_clocks/clock_xyz");
         }
 
         [Fact]
@@ -4068,6 +4981,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
             service.Delete("clock_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/test_helpers/test_clocks/clock_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4077,6 +4993,7 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.TestHelpers.TestClock> testClocks = service
                 .List();
+            this.AssertRequest(HttpMethod.Get, "/v1/test_helpers/test_clocks");
         }
 
         [Fact]
@@ -4085,6 +5002,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
             service.Get("clock_xyz");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/test_helpers/test_clocks/clock_xyz");
         }
 
         [Fact]
@@ -4098,6 +5018,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.TestHelpers.TestClock> testClocks = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/test_helpers/test_clocks",
+                "limit=3");
         }
 
         [Fact]
@@ -4106,6 +5030,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
             service.Get("clock_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/test_helpers/test_clocks/clock_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4120,6 +5047,7 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/test_helpers/test_clocks");
         }
 
         [Fact]
@@ -4133,6 +5061,7 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.TestClockService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/test_helpers/test_clocks");
         }
 
         [Fact]
@@ -4148,6 +5077,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
                 this.StripeClient);
             service.Fail("ibt_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/treasury/inbound_transfers/ibt_123/fail");
         }
 
         [Fact]
@@ -4156,6 +5088,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
                 this.StripeClient);
             service.ReturnInboundTransfer("ibt_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/treasury/inbound_transfers/ibt_123/return");
         }
 
         [Fact]
@@ -4164,6 +5099,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Treasury.InboundTransferService(
                 this.StripeClient);
             service.Succeed("ibt_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/treasury/inbound_transfers/ibt_123/succeed");
         }
 
         [Fact]
@@ -4172,6 +5110,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
                 this.StripeClient);
             service.Fail("obt_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/treasury/outbound_transfers/obt_123/fail");
         }
 
         [Fact]
@@ -4180,6 +5121,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
                 this.StripeClient);
             service.Post("obt_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/treasury/outbound_transfers/obt_123/post");
         }
 
         [Fact]
@@ -4195,6 +5139,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Treasury.OutboundTransferService(
                 this.StripeClient);
             service.ReturnOutboundTransfer("obt_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/treasury/outbound_transfers/obt_123/return");
         }
 
         [Fact]
@@ -4210,6 +5157,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Treasury.ReceivedCreditService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/treasury/received_credits");
         }
 
         [Fact]
@@ -4225,6 +5175,9 @@ namespace StripeTests
             var service = new Stripe.TestHelpers.Treasury.ReceivedDebitService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/test_helpers/treasury/received_debits");
         }
 
         [Fact]
@@ -4232,6 +5185,7 @@ namespace StripeTests
         {
             var service = new TokenService(this.StripeClient);
             service.Get("tok_xxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/tokens/tok_xxxx");
         }
 
         [Fact]
@@ -4249,6 +5203,7 @@ namespace StripeTests
             };
             var service = new TokenService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
 
         [Fact]
@@ -4268,6 +5223,7 @@ namespace StripeTests
             };
             var service = new TokenService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
 
         [Fact]
@@ -4279,6 +5235,7 @@ namespace StripeTests
             };
             var service = new TokenService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
 
         [Fact]
@@ -4298,6 +5255,7 @@ namespace StripeTests
             };
             var service = new TokenService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
 
         [Fact]
@@ -4317,6 +5275,7 @@ namespace StripeTests
             };
             var service = new TokenService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
 
         [Fact]
@@ -4328,6 +5287,7 @@ namespace StripeTests
             };
             var service = new TokenService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
 
         [Fact]
@@ -4335,6 +5295,9 @@ namespace StripeTests
         {
             var service = new TopupService(this.StripeClient);
             service.Cancel("tu_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/topups/tu_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -4343,6 +5306,7 @@ namespace StripeTests
             var options = new TopupListOptions { Limit = 3 };
             var service = new TopupService(this.StripeClient);
             StripeList<Topup> topups = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/topups", "limit=3");
         }
 
         [Fact]
@@ -4350,6 +5314,7 @@ namespace StripeTests
         {
             var service = new TopupService(this.StripeClient);
             service.Get("tu_xxxxxxxxxxxxx");
+            this.AssertRequest(HttpMethod.Get, "/v1/topups/tu_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4364,6 +5329,7 @@ namespace StripeTests
             };
             var service = new TopupService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/topups");
         }
 
         [Fact]
@@ -4378,6 +5344,7 @@ namespace StripeTests
             };
             var service = new TopupService(this.StripeClient);
             service.Update("tu_xxxxxxxxxxxxx", options);
+            this.AssertRequest(HttpMethod.Post, "/v1/topups/tu_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4386,6 +5353,7 @@ namespace StripeTests
             var options = new TransferListOptions { Limit = 3 };
             var service = new TransferService(this.StripeClient);
             StripeList<Transfer> transfers = service.List(options);
+            this.AssertRequest(HttpMethod.Get, "/v1/transfers", "limit=3");
         }
 
         [Fact]
@@ -4393,6 +5361,9 @@ namespace StripeTests
         {
             var service = new TransferService(this.StripeClient);
             service.Get("tr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/transfers/tr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4407,6 +5378,7 @@ namespace StripeTests
             };
             var service = new TransferService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/transfers");
         }
 
         [Fact]
@@ -4421,6 +5393,9 @@ namespace StripeTests
             };
             var service = new TransferService(this.StripeClient);
             service.Update("tr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/transfers/tr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4431,6 +5406,10 @@ namespace StripeTests
             StripeList<TransferReversal> transferReversals = service.List(
                 "tr_xxxxxxxxxxxxx",
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/transfers/tr_xxxxxxxxxxxxx/reversals",
+                "limit=3");
         }
 
         [Fact]
@@ -4438,6 +5417,9 @@ namespace StripeTests
         {
             var service = new TransferReversalService(this.StripeClient);
             service.Get("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/transfers/tr_xxxxxxxxxxxxx/reversals/trr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4446,6 +5428,9 @@ namespace StripeTests
             var options = new TransferReversalCreateOptions { Amount = 100 };
             var service = new TransferReversalService(this.StripeClient);
             service.Create("tr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/transfers/tr_xxxxxxxxxxxxx/reversals");
         }
 
         [Fact]
@@ -4460,6 +5445,9 @@ namespace StripeTests
             };
             var service = new TransferReversalService(this.StripeClient);
             service.Update("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/transfers/tr_xxxxxxxxxxxxx/reversals/trr_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4474,6 +5462,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.CreditReversal> creditReversals = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/credit_reversals",
+                "financial_account=fa_xxxxxxxxxxxxx&limit=3");
         }
 
         [Fact]
@@ -4482,6 +5474,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.CreditReversalService(
                 this.StripeClient);
             service.Get("credrev_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/credit_reversals/credrev_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4494,6 +5489,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.CreditReversalService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/treasury/credit_reversals");
         }
 
         [Fact]
@@ -4508,6 +5506,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.DebitReversal> debitReversals = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/debit_reversals",
+                "financial_account=fa_xxxxxxxxxxxxx&limit=3");
         }
 
         [Fact]
@@ -4516,6 +5518,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.DebitReversalService(
                 this.StripeClient);
             service.Get("debrev_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/debit_reversals/debrev_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4528,6 +5533,7 @@ namespace StripeTests
             var service = new Stripe.Treasury.DebitReversalService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/treasury/debit_reversals");
         }
 
         [Fact]
@@ -4536,6 +5542,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.FinancialAccountService(
                 this.StripeClient);
             service.RetrieveFeatures("fa_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/financial_accounts/fa_xxxxxxxxxxxxx/features");
         }
 
         [Fact]
@@ -4549,6 +5558,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.FinancialAccount> financialAccounts = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/financial_accounts",
+                "limit=3");
         }
 
         [Fact]
@@ -4557,6 +5570,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.FinancialAccountService(
                 this.StripeClient);
             service.Get("fa_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/financial_accounts/fa_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4570,6 +5586,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.FinancialAccountService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/treasury/financial_accounts");
         }
 
         [Fact]
@@ -4585,6 +5604,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.FinancialAccountService(
                 this.StripeClient);
             service.Update("fa_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/treasury/financial_accounts/fa_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4593,6 +5615,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.InboundTransferService(
                 this.StripeClient);
             service.Cancel("ibt_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/treasury/inbound_transfers/ibt_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -4607,6 +5632,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.InboundTransfer> inboundTransfers = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/inbound_transfers",
+                "financial_account=fa_xxxxxxxxxxxxx&limit=3");
         }
 
         [Fact]
@@ -4615,6 +5644,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.InboundTransferService(
                 this.StripeClient);
             service.Get("ibt_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/inbound_transfers/ibt_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4631,6 +5663,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.InboundTransferService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/treasury/inbound_transfers");
         }
 
         [Fact]
@@ -4639,6 +5674,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.OutboundPaymentService(
                 this.StripeClient);
             service.Cancel("bot_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/treasury/outbound_payments/bot_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -4653,6 +5691,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.OutboundPayment> outboundPayments = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/outbound_payments",
+                "financial_account=fa_xxxxxxxxxxxxx&limit=3");
         }
 
         [Fact]
@@ -4661,6 +5703,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.OutboundPaymentService(
                 this.StripeClient);
             service.Get("bot_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/outbound_payments/bot_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4678,6 +5723,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.OutboundPaymentService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/treasury/outbound_payments");
         }
 
         [Fact]
@@ -4686,6 +5734,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.OutboundTransferService(
                 this.StripeClient);
             service.Cancel("obt_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/treasury/outbound_transfers/obt_xxxxxxxxxxxxx/cancel");
         }
 
         [Fact]
@@ -4700,6 +5751,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.OutboundTransfer> outboundTransfers = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/outbound_transfers",
+                "financial_account=fa_xxxxxxxxxxxxx&limit=3");
         }
 
         [Fact]
@@ -4708,6 +5763,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.OutboundTransferService(
                 this.StripeClient);
             service.Get("obt_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/outbound_transfers/obt_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4724,6 +5782,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.OutboundTransferService(
                 this.StripeClient);
             service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/treasury/outbound_transfers");
         }
 
         [Fact]
@@ -4738,6 +5799,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.ReceivedCredit> receivedCredits = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/received_credits",
+                "financial_account=fa_xxxxxxxxxxxxx&limit=3");
         }
 
         [Fact]
@@ -4746,6 +5811,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.ReceivedCreditService(
                 this.StripeClient);
             service.Get("rc_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/received_credits/rc_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4760,6 +5828,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.ReceivedDebit> receivedDebits = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/received_debits",
+                "financial_account=fa_xxxxxxxxxxxxx&limit=3");
         }
 
         [Fact]
@@ -4768,6 +5840,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.ReceivedDebitService(
                 this.StripeClient);
             service.Get("rd_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/received_debits/rd_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4782,6 +5857,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.TransactionEntry> transactionEntries = service
                 .List(options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/transaction_entries",
+                "financial_account=fa_xxxxxxxxxxxxx&limit=3");
         }
 
         [Fact]
@@ -4790,6 +5869,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.TransactionEntryService(
                 this.StripeClient);
             service.Get("trxne_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/transaction_entries/trxne_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4804,6 +5886,10 @@ namespace StripeTests
                 this.StripeClient);
             StripeList<Stripe.Treasury.Transaction> transactions = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/transactions",
+                "financial_account=fa_xxxxxxxxxxxxx&limit=3");
         }
 
         [Fact]
@@ -4812,6 +5898,9 @@ namespace StripeTests
             var service = new Stripe.Treasury.TransactionService(
                 this.StripeClient);
             service.Get("trxn_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/treasury/transactions/trxn_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4819,6 +5908,9 @@ namespace StripeTests
         {
             var service = new WebhookEndpointService(this.StripeClient);
             service.Delete("we_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v1/webhook_endpoints/we_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4828,6 +5920,10 @@ namespace StripeTests
             var service = new WebhookEndpointService(this.StripeClient);
             StripeList<WebhookEndpoint> webhookEndpoints = service.List(
                 options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/webhook_endpoints",
+                "limit=3");
         }
 
         [Fact]
@@ -4835,6 +5931,9 @@ namespace StripeTests
         {
             var service = new WebhookEndpointService(this.StripeClient);
             service.Get("we_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/webhook_endpoints/we_xxxxxxxxxxxxx");
         }
 
         [Fact]
@@ -4851,6 +5950,7 @@ namespace StripeTests
             };
             var service = new WebhookEndpointService(this.StripeClient);
             service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/webhook_endpoints");
         }
 
         [Fact]
@@ -4862,6 +5962,9 @@ namespace StripeTests
             };
             var service = new WebhookEndpointService(this.StripeClient);
             service.Update("we_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/webhook_endpoints/we_xxxxxxxxxxxxx");
         }
     }
 }

@@ -127,7 +127,8 @@ namespace StripeTests
         /// </summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The HTTP path.</param>
-        protected void AssertRequest(HttpMethod method, string path)
+        /// <param name="query">The HTTP query.</param>
+        protected void AssertRequest(HttpMethod method, string path, string query = null)
         {
             if (this.MockHttpClientFixture == null)
             {
@@ -138,7 +139,7 @@ namespace StripeTests
                     + "base constructor.");
             }
 
-            this.MockHttpClientFixture.AssertRequest(method, path);
+            this.MockHttpClientFixture.AssertRequest(method, path, query);
         }
 
         /// <summary>
