@@ -64,7 +64,8 @@ namespace Stripe.Issuing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The hashed ID derived from the device ID from the card network associated with the token.
+        /// The hashed ID derived from the device ID from the card network associated with the
+        /// token.
         /// </summary>
         [JsonProperty("device_fingerprint")]
         public string DeviceFingerprint { get; set; }
