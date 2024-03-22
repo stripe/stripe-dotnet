@@ -10,7 +10,6 @@ namespace Stripe.BillingPortal
         ICreatable<Session, SessionCreateOptions>
     {
         public SessionService()
-            : base(null)
         {
         }
 

@@ -13,7 +13,6 @@ namespace Stripe.Checkout
         IRetrievable<Session, SessionGetOptions>
     {
         public SessionService()
-            : base(null)
         {
         }
 

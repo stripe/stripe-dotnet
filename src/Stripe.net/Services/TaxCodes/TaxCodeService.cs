@@ -12,7 +12,6 @@ namespace Stripe
         IRetrievable<TaxCode, TaxCodeGetOptions>
     {
         public TaxCodeService()
-            : base(null)
         {
         }
 

@@ -13,7 +13,6 @@ namespace Stripe.Reporting
         IRetrievable<ReportRun, ReportRunGetOptions>
     {
         public ReportRunService()
-            : base(null)
         {
         }
 

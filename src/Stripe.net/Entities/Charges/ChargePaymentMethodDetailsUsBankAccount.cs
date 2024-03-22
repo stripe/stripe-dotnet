@@ -39,6 +39,12 @@ namespace Stripe
         public string Last4 { get; set; }
 
         /// <summary>
+        /// Reference number to locate ACH payments with customer's bank.
+        /// </summary>
+        [JsonProperty("payment_reference")]
+        public string PaymentReference { get; set; }
+
+        /// <summary>
         /// Routing number of the bank account.
         /// </summary>
         [JsonProperty("routing_number")]

@@ -14,7 +14,6 @@ namespace Stripe.Issuing
         IUpdatable<Dispute, DisputeUpdateOptions>
     {
         public DisputeService()
-            : base(null)
         {
         }
 

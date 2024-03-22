@@ -12,7 +12,6 @@ namespace Stripe
         IRetrievable<ApplicationFee, ApplicationFeeGetOptions>
     {
         public ApplicationFeeService()
-            : base(null)
         {
         }
 

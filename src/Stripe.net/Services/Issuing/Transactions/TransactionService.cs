@@ -13,7 +13,6 @@ namespace Stripe.Issuing
         IUpdatable<Transaction, TransactionUpdateOptions>
     {
         public TransactionService()
-            : base(null)
         {
         }
 

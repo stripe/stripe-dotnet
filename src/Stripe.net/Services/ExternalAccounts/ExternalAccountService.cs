@@ -15,7 +15,6 @@ namespace Stripe
         INestedUpdatable<IExternalAccount, ExternalAccountUpdateOptions>
     {
         public ExternalAccountService()
-            : base(null)
         {
         }
 

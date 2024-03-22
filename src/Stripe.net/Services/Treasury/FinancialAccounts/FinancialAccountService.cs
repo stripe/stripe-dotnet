@@ -14,7 +14,6 @@ namespace Stripe.Treasury
         IUpdatable<FinancialAccount, FinancialAccountUpdateOptions>
     {
         public FinancialAccountService()
-            : base(null)
         {
         }
 

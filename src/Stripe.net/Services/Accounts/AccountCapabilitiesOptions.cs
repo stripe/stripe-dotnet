@@ -150,6 +150,12 @@ namespace Stripe
         public AccountCapabilitiesLinkPaymentsOptions LinkPayments { get; set; }
 
         /// <summary>
+        /// The mobilepay_payments capability.
+        /// </summary>
+        [JsonProperty("mobilepay_payments")]
+        public AccountCapabilitiesMobilepayPaymentsOptions MobilepayPayments { get; set; }
+
+        /// <summary>
         /// The oxxo_payments capability.
         /// </summary>
         [JsonProperty("oxxo_payments")]

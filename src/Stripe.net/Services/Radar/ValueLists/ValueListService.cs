@@ -15,7 +15,6 @@ namespace Stripe.Radar
         IUpdatable<ValueList, ValueListUpdateOptions>
     {
         public ValueListService()
-            : base(null)
         {
         }
 

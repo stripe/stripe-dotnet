@@ -12,7 +12,6 @@ namespace Stripe.Treasury
         IRetrievable<TransactionEntry, TransactionEntryGetOptions>
     {
         public TransactionEntryService()
-            : base(null)
         {
         }
 

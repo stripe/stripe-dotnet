@@ -12,7 +12,6 @@ namespace Stripe
         IRetrievable<BalanceTransaction, BalanceTransactionGetOptions>
     {
         public BalanceTransactionService()
-            : base(null)
         {
         }
 

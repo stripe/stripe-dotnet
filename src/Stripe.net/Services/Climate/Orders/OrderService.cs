@@ -14,7 +14,6 @@ namespace Stripe.Climate
         IUpdatable<Order, OrderUpdateOptions>
     {
         public OrderService()
-            : base(null)
         {
         }
 

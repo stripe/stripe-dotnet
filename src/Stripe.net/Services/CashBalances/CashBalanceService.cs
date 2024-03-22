@@ -9,7 +9,6 @@ namespace Stripe
     public class CashBalanceService : ServiceNested<CashBalance>
     {
         public CashBalanceService()
-            : base(null)
         {
         }
 
