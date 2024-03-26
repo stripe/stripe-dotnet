@@ -9,7 +9,6 @@ namespace Stripe.TestHelpers
     public class RefundService : Service<Refund>
     {
         public RefundService()
-            : base(null)
         {
         }
 

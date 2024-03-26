@@ -12,7 +12,6 @@ namespace Stripe.Reporting
         IRetrievable<ReportType, ReportTypeGetOptions>
     {
         public ReportTypeService()
-            : base(null)
         {
         }
 

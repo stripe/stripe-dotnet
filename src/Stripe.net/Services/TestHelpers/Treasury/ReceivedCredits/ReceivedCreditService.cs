@@ -10,7 +10,6 @@ namespace Stripe.TestHelpers.Treasury
     public class ReceivedCreditService : Service<Stripe.Treasury.ReceivedCredit>
     {
         public ReceivedCreditService()
-            : base(null)
         {
         }
 

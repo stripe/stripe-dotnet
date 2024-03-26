@@ -12,7 +12,6 @@ namespace Stripe.Issuing
         IRetrievable<PhysicalBundle, PhysicalBundleGetOptions>
     {
         public PhysicalBundleService()
-            : base(null)
         {
         }
 

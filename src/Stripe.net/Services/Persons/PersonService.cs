@@ -15,7 +15,6 @@ namespace Stripe
         INestedUpdatable<Person, PersonUpdateOptions>
     {
         public PersonService()
-            : base(null)
         {
         }
 

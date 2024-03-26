@@ -10,7 +10,6 @@ namespace Stripe.Terminal
         ICreatable<ConnectionToken, ConnectionTokenCreateOptions>
     {
         public ConnectionTokenService()
-            : base(null)
         {
         }
 

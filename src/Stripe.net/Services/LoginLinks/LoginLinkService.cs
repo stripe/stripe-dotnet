@@ -10,7 +10,6 @@ namespace Stripe
         INestedCreatable<LoginLink, LoginLinkCreateOptions>
     {
         public LoginLinkService()
-            : base(null)
         {
         }
 

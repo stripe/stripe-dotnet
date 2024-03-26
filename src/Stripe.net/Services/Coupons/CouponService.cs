@@ -15,7 +15,6 @@ namespace Stripe
         IUpdatable<Coupon, CouponUpdateOptions>
     {
         public CouponService()
-            : base(null)
         {
         }
 

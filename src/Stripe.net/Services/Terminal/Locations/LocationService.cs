@@ -15,7 +15,6 @@ namespace Stripe.Terminal
         IUpdatable<Location, LocationUpdateOptions>
     {
         public LocationService()
-            : base(null)
         {
         }
 

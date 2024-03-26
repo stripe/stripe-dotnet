@@ -11,7 +11,6 @@ namespace Stripe
         IRetrievable<Token, TokenGetOptions>
     {
         public TokenService()
-            : base(null)
         {
         }
 

@@ -10,7 +10,6 @@ namespace Stripe
         ICreatable<AccountSession, AccountSessionCreateOptions>
     {
         public AccountSessionService()
-            : base(null)
         {
         }
 

@@ -14,7 +14,6 @@ namespace Stripe
         IUpdatable<Transfer, TransferUpdateOptions>
     {
         public TransferService()
-            : base(null)
         {
         }
 

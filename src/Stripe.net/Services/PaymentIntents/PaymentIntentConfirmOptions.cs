@@ -17,6 +17,16 @@ namespace Stripe
         public string ClientSecret { get; set; }
 
         /// <summary>
+        /// ID of the ConfirmationToken used to confirm this PaymentIntent.
+        ///
+        /// If the provided ConfirmationToken contains properties that are also being provided in
+        /// this request, such as <c>payment_method</c>, then the values in this request will take
+        /// precedence.
+        /// </summary>
+        [JsonProperty("confirmation_token")]
+        public string ConfirmationToken { get; set; }
+
+        /// <summary>
         /// Set to <c>true</c> to fail the payment attempt if the PaymentIntent transitions into
         /// <c>requires_action</c>. This parameter is intended for simpler integrations that do not
         /// handle customer actions, like <a

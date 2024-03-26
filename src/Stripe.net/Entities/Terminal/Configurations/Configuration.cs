@@ -43,6 +43,12 @@ namespace Stripe.Terminal
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        /// <summary>
+        /// String indicating the name of the Configuration object, set by the user.
+        /// </summary>
+        [JsonProperty("name")]
+        public string Name { get; set; }
+
         [JsonProperty("offline")]
         public ConfigurationOffline Offline { get; set; }
 

@@ -13,7 +13,6 @@ namespace Stripe
         IUpdatable<Dispute, DisputeUpdateOptions>
     {
         public DisputeService()
-            : base(null)
         {
         }
 

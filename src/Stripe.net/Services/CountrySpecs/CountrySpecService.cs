@@ -12,7 +12,6 @@ namespace Stripe
         IRetrievable<CountrySpec, CountrySpecGetOptions>
     {
         public CountrySpecService()
-            : base(null)
         {
         }
 
