@@ -164,10 +164,7 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.failed</c>, <c>treasury.outbound_transfer.posted</c>,
         /// <c>treasury.outbound_transfer.returned</c>, <c>treasury.received_credit.created</c>,
         /// <c>treasury.received_credit.failed</c>, <c>treasury.received_credit.succeeded</c>,
-        /// <c>treasury.received_debit.created</c>, <c>invoiceitem.updated</c>,
-        /// <c>order.created</c>, <c>recipient.created</c>, <c>recipient.deleted</c>,
-        /// <c>recipient.updated</c>, <c>sku.created</c>, <c>sku.deleted</c>, <c>sku.updated</c>, or
-        /// <c>ping</c>.
+        /// <c>treasury.received_debit.created</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("enabled_events")]
         public List<string> EnabledEvents { get; set; }
