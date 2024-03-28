@@ -1,5 +1,10 @@
 # Changelog
 
+## 43.22.0-beta.1 - 2024-03-28
+* [#2878](https://github.com/stripe/stripe-dotnet/pull/2878) Update generated code for beta
+  * Add support for `FinancialAccountTransactions`, `FinancialAccount`, `IssuingCard`, and `IssuingCardsList` on `AccountSessionComponentsOptions`
+  * Remove support for `SubscriptionBillingCycleAnchor`, `SubscriptionCancelAtPeriodEnd`, `SubscriptionCancelAt`, `SubscriptionCancelNow`, `SubscriptionDefaultTaxRates`, `SubscriptionItems`, `SubscriptionPrebilling`, `SubscriptionProrationBehavior`, `SubscriptionProrationDate`, `SubscriptionResumeAt`, `SubscriptionStartDate`, and `SubscriptionTrialEnd` on `InvoiceCreatePreviewOptions`
+
 ## 43.21.0 - 2024-03-28
 * [#2877](https://github.com/stripe/stripe-dotnet/pull/2877) Update generated code
   * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
