@@ -14,6 +14,12 @@ namespace Stripe
         public string Interval { get; set; }
 
         /// <summary>
+        /// Filter by the price's meter.
+        /// </summary>
+        [JsonProperty("meter")]
+        public string Meter { get; set; }
+
+        /// <summary>
         /// Filter by the usage type for this price. Can be either <c>metered</c> or
         /// <c>licensed</c>.
         /// One of: <c>licensed</c>, or <c>metered</c>.

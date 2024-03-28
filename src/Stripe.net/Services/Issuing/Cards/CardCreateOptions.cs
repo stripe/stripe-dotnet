@@ -58,6 +58,12 @@ namespace Stripe.Issuing
         public string ReplacementReason { get; set; }
 
         /// <summary>
+        /// The second line to print on the card.
+        /// </summary>
+        [JsonProperty("second_line")]
+        public string SecondLine { get; set; }
+
+        /// <summary>
         /// The address where the card will be shipped.
         /// </summary>
         [JsonProperty("shipping")]
