@@ -33,7 +33,7 @@ namespace Stripe
         /// has pushed to the receiver.
         /// </summary>
         [JsonProperty("amount")]
-        public long? Amount { get; set; }
+        public long Amount { get; set; }
 
         [JsonProperty("chf_credit_transfer")]
         public SourceTransactionChfCreditTransfer ChfCreditTransfer { get; set; }
@@ -52,10 +52,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
-
-        [Obsolete("This property will be removed in the next major version")]
-        [JsonProperty("customer_data")]
-        public string CustomerData { get; set; }
 
         [JsonProperty("gbp_credit_transfer")]
         public SourceTransactionGbpCreditTransfer GbpCreditTransfer { get; set; }
