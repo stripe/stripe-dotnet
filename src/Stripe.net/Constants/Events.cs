@@ -1,8 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using System;
-
     public static class Events
     {
         /// <summary>
@@ -524,13 +522,6 @@ namespace Stripe
         public const string InvoiceItemDeleted = "invoiceitem.deleted";
 
         /// <summary>
-        /// The "invoiceitem.updated" event is deprecated and will be removed in the next major
-        /// version.
-        /// </summary>
-        [Obsolete("This event is deprecated and going to be removed")]
-        public const string InvoiceItemUpdated = "invoiceitem.updated";
-
-        /// <summary>
         /// Occurs whenever an authorization is created.
         /// </summary>
         public const string IssuingAuthorizationCreated = "issuing_authorization.created";
@@ -616,12 +607,6 @@ namespace Stripe
         /// Occurs whenever a Mandate is updated.
         /// </summary>
         public const string MandateUpdated = "mandate.updated";
-
-        /// <summary>
-        /// The "order.created" event is deprecated and will be removed in the next major version.
-        /// </summary>
-        [Obsolete("This event is deprecated and going to be removed")]
-        public const string OrderCreated = "order.created";
 
         /// <summary>
         /// Occurs when a PaymentIntent has funds to be captured. Check the <c>amount_capturable</c>
@@ -839,27 +824,6 @@ namespace Stripe
         public const string RadarEarlyFraudWarningUpdated = "radar.early_fraud_warning.updated";
 
         /// <summary>
-        /// The "recipient.created" event is deprecated and will be removed in the next major
-        /// version.
-        /// </summary>
-        [Obsolete("This event is deprecated and going to be removed")]
-        public const string RecipientCreated = "recipient.created";
-
-        /// <summary>
-        /// The "recipient.deleted" event is deprecated and will be removed in the next major
-        /// version.
-        /// </summary>
-        [Obsolete("This event is deprecated and going to be removed")]
-        public const string RecipientDeleted = "recipient.deleted";
-
-        /// <summary>
-        /// The "recipient.updated" event is deprecated and will be removed in the next major
-        /// version.
-        /// </summary>
-        [Obsolete("This event is deprecated and going to be removed")]
-        public const string RecipientUpdated = "recipient.updated";
-
-        /// <summary>
         /// Occurs whenever a refund from a customer's cash balance is created.
         /// </summary>
         public const string RefundCreated = "refund.created";
@@ -925,24 +889,6 @@ namespace Stripe
         /// Occurs whenever a Sigma scheduled query run finishes.
         /// </summary>
         public const string SigmaScheduledQueryRunCreated = "sigma.scheduled_query_run.created";
-
-        /// <summary>
-        /// The "sku.created" event is deprecated and will be removed in the next major version.
-        /// </summary>
-        [Obsolete("This event is deprecated and going to be removed")]
-        public const string SkuCreated = "sku.created";
-
-        /// <summary>
-        /// The "sku.deleted" event is deprecated and will be removed in the next major version.
-        /// </summary>
-        [Obsolete("This event is deprecated and going to be removed")]
-        public const string SkuDeleted = "sku.deleted";
-
-        /// <summary>
-        /// The "sku.updated" event is deprecated and will be removed in the next major version.
-        /// </summary>
-        [Obsolete("This event is deprecated and going to be removed")]
-        public const string SkuUpdated = "sku.updated";
 
         /// <summary>
         /// Occurs whenever a source is canceled.

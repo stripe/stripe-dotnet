@@ -175,8 +175,7 @@ namespace Stripe
         /// <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
         /// <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>,
         /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>,
-        /// <c>transfer_refund</c>, <c>obligation_inbound</c>, <c>obligation_payout</c>,
-        /// <c>obligation_payout_failure</c>, or <c>obligation_reversal_outbound</c>.
+        /// or <c>transfer_refund</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

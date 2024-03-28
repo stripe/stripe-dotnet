@@ -48,8 +48,8 @@ namespace Stripe.Climate
 
         /// <summary>
         /// The scientific pathway used for carbon removal.
-        /// One of: <c>biomass_carbon_removal_and_storage</c>, <c>direct_air_capture</c>,
-        /// <c>enhanced_weathering</c>, or <c>various</c>.
+        /// One of: <c>biomass_carbon_removal_and_storage</c>, <c>direct_air_capture</c>, or
+        /// <c>enhanced_weathering</c>.
         /// </summary>
         [JsonProperty("removal_pathway")]
         public string RemovalPathway { get; set; }
