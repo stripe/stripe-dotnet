@@ -51,7 +51,7 @@ namespace Stripe
         public AccountCompanyOptions Company { get; set; }
 
         /// <summary>
-        /// The configuration of the account when <c>type</c> is not provided.
+        /// A hash of configuration describing the account controller's attributes.
         /// </summary>
         [JsonProperty("controller")]
         public AccountControllerOptions Controller { get; set; }

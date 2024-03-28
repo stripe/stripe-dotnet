@@ -30,6 +30,14 @@ namespace Stripe
         public string AfterpayClearpayPayments { get; set; }
 
         /// <summary>
+        /// The status of the AmazonPay capability of the account, or whether the account can
+        /// directly process AmazonPay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("amazon_pay_payments")]
+        public string AmazonPayPayments { get; set; }
+
+        /// <summary>
         /// The status of the BECS Direct Debit (AU) payments capability of the account, or whether
         /// the account can directly process BECS Direct Debit (AU) charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

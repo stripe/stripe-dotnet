@@ -23,6 +23,9 @@ namespace Stripe.Forwarding
     ///
     /// Forwarding Requests are synchronous requests that return a response or time out
     /// according to Stripe’s limits.
+    ///
+    /// Related guide: <a href="https://docs.stripe.com/payments/forwarding">Forward card
+    /// details to third-party API endpoints</a>.
     /// </summary>
     public class Request : StripeEntity<Request>, IHasId, IHasObject
     {

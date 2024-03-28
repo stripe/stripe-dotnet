@@ -583,7 +583,7 @@ namespace Stripe
         /// invoices and can be resumed after your customer adds their payment method. The
         /// <c>paused</c> status is different from <a
         /// href="https://stripe.com/billing/subscriptions/pause-payment">pausing collection</a>,
-        /// which still generates invoices.
+        /// which still generates invoices and leaves the subscription's status unchanged.
         ///
         /// If subscription <c>collection_method=charge_automatically</c>, it becomes
         /// <c>past_due</c> when payment is required but cannot be paid (due to failed payment or

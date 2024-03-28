@@ -1,5 +1,17 @@
 # Changelog
 
+## 43.21.0 - 2024-03-28
+* [#2877](https://github.com/stripe/stripe-dotnet/pull/2877) Update generated code
+  * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
+  * Add support for `Create`, `Deactivate`, `Get`, `List`, `Reactivate`, and `Update` methods on resource `Meter`
+  * Add support for `Create` method on resources `MeterEventAdjustment` and `MeterEvent`
+  * Add support for `AmazonPayPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `DestinationOnBehalfOfChargeManagement` on `AccountSessionComponentsPaymentDetailsFeaturesOptions`, `AccountSessionComponentsPaymentDetailsFeatures`, `AccountSessionComponentsPaymentsFeaturesOptions`, and `AccountSessionComponentsPaymentsFeatures`
+  * Add support for `Mandate` on `ChargePaymentMethodDetailsUsBankAccount`, `TreasuryInboundTransferOriginPaymentMethodDetailsUsBankAccount`, `TreasuryOutboundPaymentDestinationPaymentMethodDetailsUsBankAccount`, and `TreasuryOutboundTransferDestinationPaymentMethodDetailsUsBankAccount`
+  * Add support for `SecondLine` on `Issuing.CardCreateOptions`
+  * Add support for `Meter` on `PlanCreateOptions`, `Plan`, `PriceRecurringOptions`, and `PriceRecurring`
+* [#2876](https://github.com/stripe/stripe-dotnet/pull/2876) Generate assertions in generated tests
+
 ## 43.21.0-beta.1 - 2024-03-21
 * [#2875](https://github.com/stripe/stripe-dotnet/pull/2875) Update generated code for beta
   * Add support for new resources `Entitlements.ActiveEntitlementSummary` and `Entitlements.ActiveEntitlement`
@@ -11,6 +23,20 @@
   * Add support for `Active` on `EntitlementsFeature`
 * [#2870](https://github.com/stripe/stripe-dotnet/pull/2870) Update generated code for beta
   Release specs are identical.
+
+## 43.20.0 - 2024-03-21
+* [#2874](https://github.com/stripe/stripe-dotnet/pull/2874) Update generated code
+  * Add support for new resources `ConfirmationToken` and `Forwarding.Request`
+  * Add support for `Get` method on resource `ConfirmationToken`
+  * Add support for `Create`, `Get`, and `List` methods on resource `Request`
+  * Add support for `MobilepayPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Mobilepay` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `PaymentReference` on `ChargePaymentMethodDetailsUsBankAccount`
+  * Add support for `ConfirmationToken` on `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `SetupIntentConfirmOptions`, and `SetupIntentCreateOptions`
+  * Add support for `Name` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `TerminalConfiguration`
+  * Add support for `Payout` on `TreasuryReceivedDebitLinkedFlows`
+* [#2868](https://github.com/stripe/stripe-dotnet/pull/2868) Autogenerate more files
+* [#2869](https://github.com/stripe/stripe-dotnet/pull/2869) Add obsolete attributes to deprecated APIs and doc comments to methods
 
 ## 43.20.0-beta.1 - 2024-03-14
 * [#2866](https://github.com/stripe/stripe-dotnet/pull/2866) Update generated code for beta

@@ -636,6 +636,13 @@ namespace Stripe
         /// similar to <a href="https://stripe.com/docs/api#delete_invoice">deletion</a>, however it
         /// only applies to finalized invoices and maintains a papertrail where the invoice can
         /// still be found.</p>.
+        ///
+        /// <p>Consult with local regulations to determine whether and how an invoice might be
+        /// amended, canceled, or voided in the jurisdiction you’re doing business in. You might
+        /// need to <a href="https://stripe.com/docs/api#create_invoice">issue another invoice</a>
+        /// or <a href="https://stripe.com/docs/api#create_credit_note">credit note</a> instead.
+        /// Stripe recommends that you consult with your legal counsel for advice specific to your
+        /// business.</p>.
         /// </summary>
         public virtual Invoice VoidInvoice(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null)
         {
@@ -647,6 +654,13 @@ namespace Stripe
         /// similar to <a href="https://stripe.com/docs/api#delete_invoice">deletion</a>, however it
         /// only applies to finalized invoices and maintains a papertrail where the invoice can
         /// still be found.</p>.
+        ///
+        /// <p>Consult with local regulations to determine whether and how an invoice might be
+        /// amended, canceled, or voided in the jurisdiction you’re doing business in. You might
+        /// need to <a href="https://stripe.com/docs/api#create_invoice">issue another invoice</a>
+        /// or <a href="https://stripe.com/docs/api#create_credit_note">credit note</a> instead.
+        /// Stripe recommends that you consult with your legal counsel for advice specific to your
+        /// business.</p>.
         /// </summary>
         public virtual Task<Invoice> VoidInvoiceAsync(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
