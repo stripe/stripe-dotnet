@@ -117,12 +117,11 @@ namespace Stripe
         ///
         /// <p>You can preview the effects of updating a subscription, including a preview of what
         /// proration will take place. To ensure that the actual proration is calculated exactly the
-        /// same as the previewed proration, you should pass a <c>proration_date</c> parameter when
-        /// doing the actual subscription update. The value passed in should be the same as the
-        /// <c>subscription_proration_date</c> returned on the upcoming invoice resource. The
-        /// recommended way to get only the prorations being previewed is to consider only proration
-        /// line items where <c>period[start]</c> is equal to the <c>subscription_proration_date</c>
-        /// on the upcoming invoice resource.</p>.
+        /// same as the previewed proration, you should pass the
+        /// <c>subscription_details.proration_date</c> parameter when doing the actual subscription
+        /// update. The recommended way to get only the prorations being previewed is to consider
+        /// only proration line items where <c>period[start]</c> is equal to the
+        /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
         /// </summary>
         public virtual Invoice CreatePreview(InvoiceCreatePreviewOptions options = null, RequestOptions requestOptions = null)
         {
@@ -143,12 +142,11 @@ namespace Stripe
         ///
         /// <p>You can preview the effects of updating a subscription, including a preview of what
         /// proration will take place. To ensure that the actual proration is calculated exactly the
-        /// same as the previewed proration, you should pass a <c>proration_date</c> parameter when
-        /// doing the actual subscription update. The value passed in should be the same as the
-        /// <c>subscription_proration_date</c> returned on the upcoming invoice resource. The
-        /// recommended way to get only the prorations being previewed is to consider only proration
-        /// line items where <c>period[start]</c> is equal to the <c>subscription_proration_date</c>
-        /// on the upcoming invoice resource.</p>.
+        /// same as the previewed proration, you should pass the
+        /// <c>subscription_details.proration_date</c> parameter when doing the actual subscription
+        /// update. The recommended way to get only the prorations being previewed is to consider
+        /// only proration line items where <c>period[start]</c> is equal to the
+        /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
         /// </summary>
         public virtual Task<Invoice> CreatePreviewAsync(InvoiceCreatePreviewOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -545,12 +543,11 @@ namespace Stripe
         ///
         /// <p>You can preview the effects of updating a subscription, including a preview of what
         /// proration will take place. To ensure that the actual proration is calculated exactly the
-        /// same as the previewed proration, you should pass a <c>proration_date</c> parameter when
-        /// doing the actual subscription update. The value passed in should be the same as the
-        /// <c>subscription_proration_date</c> returned on the upcoming invoice resource. The
-        /// recommended way to get only the prorations being previewed is to consider only proration
-        /// line items where <c>period[start]</c> is equal to the <c>subscription_proration_date</c>
-        /// on the upcoming invoice resource.</p>.
+        /// same as the previewed proration, you should pass the <c>subscription_proration_date</c>
+        /// parameter when doing the actual subscription update. The recommended way to get only the
+        /// prorations being previewed is to consider only proration line items where
+        /// <c>period[start]</c> is equal to the <c>subscription_proration_date</c> value passed in
+        /// the request.</p>.
         /// </summary>
         public virtual Invoice Upcoming(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null)
         {
@@ -571,12 +568,11 @@ namespace Stripe
         ///
         /// <p>You can preview the effects of updating a subscription, including a preview of what
         /// proration will take place. To ensure that the actual proration is calculated exactly the
-        /// same as the previewed proration, you should pass a <c>proration_date</c> parameter when
-        /// doing the actual subscription update. The value passed in should be the same as the
-        /// <c>subscription_proration_date</c> returned on the upcoming invoice resource. The
-        /// recommended way to get only the prorations being previewed is to consider only proration
-        /// line items where <c>period[start]</c> is equal to the <c>subscription_proration_date</c>
-        /// on the upcoming invoice resource.</p>.
+        /// same as the previewed proration, you should pass the <c>subscription_proration_date</c>
+        /// parameter when doing the actual subscription update. The recommended way to get only the
+        /// prorations being previewed is to consider only proration line items where
+        /// <c>period[start]</c> is equal to the <c>subscription_proration_date</c> value passed in
+        /// the request.</p>.
         /// </summary>
         public virtual Task<Invoice> UpcomingAsync(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
