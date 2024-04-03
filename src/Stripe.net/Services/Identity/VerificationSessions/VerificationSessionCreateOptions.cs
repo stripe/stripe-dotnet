@@ -29,6 +29,12 @@ namespace Stripe.Identity
         public VerificationSessionOptionsOptions Options { get; set; }
 
         /// <summary>
+        /// Details provided about the user being verified. These details may be shown to the user.
+        /// </summary>
+        [JsonProperty("provided_details")]
+        public VerificationSessionProvidedDetailsOptions ProvidedDetails { get; set; }
+
+        /// <summary>
         /// The URL that the user will be redirected to upon completing the verification flow.
         /// </summary>
         [JsonProperty("return_url")]
@@ -41,5 +47,11 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// The ID of a Verification Flow from the Dashboard.
+        /// </summary>
+        [JsonProperty("verification_flow")]
+        public string VerificationFlow { get; set; }
     }
 }
