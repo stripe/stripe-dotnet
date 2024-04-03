@@ -127,6 +127,12 @@ namespace Stripe.Identity
         public VerificationSessionOptions Options { get; set; }
 
         /// <summary>
+        /// Details provided about the user being verified. These details may be shown to the user.
+        /// </summary>
+        [JsonProperty("provided_details")]
+        public VerificationSessionProvidedDetails ProvidedDetails { get; set; }
+
+        /// <summary>
         /// Redaction status of this VerificationSession. If the VerificationSession is not
         /// redacted, this field will be null.
         /// </summary>
@@ -145,7 +151,7 @@ namespace Stripe.Identity
         /// <summary>
         /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
         /// check</a> to be performed.
-        /// One of: <c>document</c>, or <c>id_number</c>.
+        /// One of: <c>document</c>, <c>id_number</c>, or <c>verification_flow</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
@@ -160,6 +166,12 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }
+
+        /// <summary>
+        /// The configuration token of a Verification Flow from the dashboard.
+        /// </summary>
+        [JsonProperty("verification_flow")]
+        public string VerificationFlow { get; set; }
 
         /// <summary>
         /// The user’s verified data.
