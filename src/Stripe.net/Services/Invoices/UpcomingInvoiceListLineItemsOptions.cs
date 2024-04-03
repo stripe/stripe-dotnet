@@ -15,11 +15,9 @@ namespace Stripe
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
-        /// The code of the coupon to apply. If <c>subscription</c> or <c>subscription_items</c> is
-        /// provided, the invoice returned will preview updating or creating a subscription with
-        /// that coupon. Otherwise, it will preview applying that coupon to the customer for the
-        /// next upcoming invoice from among the customer's subscriptions. The invoice can be
-        /// previewed without a coupon by passing this value as an empty string.
+        /// The ID of the coupon to apply to this phase of the subscription schedule. This field has
+        /// been deprecated and will be removed in a future API version. Use <c>discounts</c>
+        /// instead.
         /// </summary>
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
@@ -49,11 +47,9 @@ namespace Stripe
 
         /// <summary>
         /// The coupons to redeem into discounts for the invoice preview. If not specified, inherits
-        /// the discount from the customer or subscription. This only works for coupons directly
-        /// applied to the invoice. To apply a coupon to a subscription, you must use the
-        /// <c>coupon</c> parameter instead. Pass an empty string to avoid inheriting any discounts.
-        /// To preview the upcoming invoice for a subscription that hasn't been created, use
-        /// <c>coupon</c> instead.
+        /// the discount from the customer or subscription. This works for both coupons directly
+        /// applied to an invoice and coupons applied to a subscription. Pass an empty string to
+        /// avoid inheriting any discounts.
         /// </summary>
         [JsonProperty("discounts")]
         public List<InvoiceDiscountOptions> Discounts { get; set; }

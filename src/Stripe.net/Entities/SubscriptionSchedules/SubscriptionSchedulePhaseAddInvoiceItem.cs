@@ -7,6 +7,12 @@ namespace Stripe
 
     public class SubscriptionSchedulePhaseAddInvoiceItem : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItem>
     {
+        /// <summary>
+        /// The stackable discounts that will be applied to the item.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseAddInvoiceItemDiscount> Discounts { get; set; }
+
         #region Expandable Price
 
         /// <summary>
