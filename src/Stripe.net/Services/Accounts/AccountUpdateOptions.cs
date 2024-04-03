@@ -112,6 +112,14 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// A hash to configure risk controls on the account. Please see <a
+        /// href="https://stripe.com/docs/connect/pausing-payments-or-payouts-on-connected-accounts">this
+        /// page for more details</a>.
+        /// </summary>
+        [JsonProperty("risk_controls")]
+        public AccountRiskControlsOptions RiskControls { get; set; }
+
+        /// <summary>
         /// Options for customizing how the account functions within Stripe.
         /// </summary>
         [JsonProperty("settings")]
