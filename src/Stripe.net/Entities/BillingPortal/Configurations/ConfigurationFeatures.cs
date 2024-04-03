@@ -19,5 +19,8 @@ namespace Stripe.BillingPortal
 
         [JsonProperty("subscription_update")]
         public ConfigurationFeaturesSubscriptionUpdate SubscriptionUpdate { get; set; }
+
+        [JsonProperty("subscription_pause")]
+        public ConfigurationFeaturesSubscriptionPause SubscriptionPause { get; set; }
     }
 }
