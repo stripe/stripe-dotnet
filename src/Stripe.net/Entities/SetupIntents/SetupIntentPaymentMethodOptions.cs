@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("card")]
         public SetupIntentPaymentMethodOptionsCard Card { get; set; }
 
+        [JsonProperty("card_present")]
+        public SetupIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
+
         [JsonProperty("link")]
         public SetupIntentPaymentMethodOptionsLink Link { get; set; }
 

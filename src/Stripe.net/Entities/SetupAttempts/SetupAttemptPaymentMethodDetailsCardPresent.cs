@@ -36,5 +36,11 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
         internal ExpandableField<PaymentMethod> InternalGeneratedCard { get; set; }
         #endregion
+
+        /// <summary>
+        /// Details about payments collected offline.
+        /// </summary>
+        [JsonProperty("offline")]
+        public SetupAttemptPaymentMethodDetailsCardPresentOffline Offline { get; set; }
     }
 }
