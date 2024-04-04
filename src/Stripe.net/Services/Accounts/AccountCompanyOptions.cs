@@ -26,7 +26,7 @@ namespace Stripe
         /// <summary>
         /// Whether the company's directors have been provided. Set this Boolean to <c>true</c>
         /// after creating all the company's directors with <a
-        /// href="https://stripe.com/docs/api/persons">the Persons API</a> for accounts with a
+        /// href="https://docs.stripe.com/api/persons">the Persons API</a> for accounts with a
         /// <c>relationship.director</c> requirement. This value is not automatically set to
         /// <c>true</c> after creating directors, so it needs to be updated to indicate all
         /// directors have been provided.
@@ -37,7 +37,7 @@ namespace Stripe
         /// <summary>
         /// Whether the company's executives have been provided. Set this Boolean to <c>true</c>
         /// after creating all the company's executives with <a
-        /// href="https://stripe.com/docs/api/persons">the Persons API</a> for accounts with a
+        /// href="https://docs.stripe.com/api/persons">the Persons API</a> for accounts with a
         /// <c>relationship.executive</c> requirement.
         /// </summary>
         [JsonProperty("executives_provided")]
@@ -76,7 +76,7 @@ namespace Stripe
 
         /// <summary>
         /// Whether the company's owners have been provided. Set this Boolean to <c>true</c> after
-        /// creating all the company's owners with <a href="https://stripe.com/docs/api/persons">the
+        /// creating all the company's owners with <a href="https://docs.stripe.com/api/persons">the
         /// Persons API</a> for accounts with a <c>relationship.owner</c> requirement.
         /// </summary>
         [JsonProperty("owners_provided")]
@@ -106,7 +106,7 @@ namespace Stripe
 
         /// <summary>
         /// The category identifying the legal structure of the company or legal entity. See <a
-        /// href="https://stripe.com/docs/connect/identity-verification#business-structure">Business
+        /// href="https://docs.stripe.com/connect/identity-verification#business-structure">Business
         /// structure</a> for more details. Pass an empty string to unset this value.
         /// One of: <c>free_zone_establishment</c>, <c>free_zone_llc</c>,
         /// <c>government_instrumentality</c>, <c>governmental_unit</c>,

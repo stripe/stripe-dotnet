@@ -27,7 +27,7 @@ namespace Stripe
 
         /// <summary>
         /// Whether the user described by the data in the token has been shown <a
-        /// href="https://stripe.com/docs/connect/account-tokens#stripe-connected-account-agreement">the
+        /// href="https://docs.stripe.com/connect/account-tokens#stripe-connected-account-agreement">the
         /// Stripe Connected Account Agreement</a>. When creating an account token to create a new
         /// Connect account, this value must be <c>true</c>.
         /// </summary>

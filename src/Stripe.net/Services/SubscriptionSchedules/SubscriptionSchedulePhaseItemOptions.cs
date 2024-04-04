@@ -15,6 +15,12 @@ namespace Stripe
         public SubscriptionSchedulePhaseItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
+        /// The coupons to redeem into discounts for the subscription item.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseItemDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to a configuration item. Metadata on a configuration item will update the
         /// underlying subscription item's <c>metadata</c> when the phase is entered, adding new

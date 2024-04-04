@@ -18,6 +18,12 @@ namespace Stripe.Identity
         public VerificationSessionVerifiedOutputsDob Dob { get; set; }
 
         /// <summary>
+        /// The user's verified email address.
+        /// </summary>
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        /// <summary>
         /// The user's verified first name.
         /// </summary>
         [JsonProperty("first_name")]
@@ -41,5 +47,11 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("last_name")]
         public string LastName { get; set; }
+
+        /// <summary>
+        /// The user's verified phone number.
+        /// </summary>
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
     }
 }

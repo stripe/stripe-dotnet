@@ -62,7 +62,9 @@ namespace Stripe
         public string CollectionMethod { get; set; }
 
         /// <summary>
-        /// The identifier of the coupon to apply to this phase of the subscription schedule.
+        /// The ID of the coupon to apply to this phase of the subscription schedule. This field has
+        /// been deprecated and will be removed in a future API version. Use <c>discounts</c>
+        /// instead.
         /// </summary>
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
@@ -101,6 +103,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// The coupons to redeem into discounts for the schedule phase. If not specified, inherits
+        /// the discount from the subscription's customer. Pass an empty string to avoid inheriting
+        /// any discounts.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// The date at which this phase of the subscription schedule ends. If set,
