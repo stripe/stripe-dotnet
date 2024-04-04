@@ -1,5 +1,11 @@
 # Changelog
 
+## 43.23.0-beta.1 - 2024-04-04
+* [#2882](https://github.com/stripe/stripe-dotnet/pull/2882) Update generated code for beta
+  * Add support for `Update` method on resource `Entitlements.Feature`
+  * Add support for `RiskControls` on `AccountCreateOptions`, `AccountUpdateOptions`, and `Account`
+  * Add support for `PromotionCode` on `InvoiceLinesDiscountsOptions`, `QuoteLineItemsDiscountsOptions`, `QuoteLinesActionsAddDiscountOptions`, and `QuotePhasesLineItemsDiscountsOptions`
+
 ## 43.22.0-beta.1 - 2024-03-28
 * [#2878](https://github.com/stripe/stripe-dotnet/pull/2878) Update generated code for beta
   * Add support for `FinancialAccountTransactions`, `FinancialAccount`, `IssuingCard`, and `IssuingCardsList` on `AccountSessionComponentsOptions`
