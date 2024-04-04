@@ -6,13 +6,13 @@ namespace Stripe
     public class PaymentLinkInvoiceCreationInvoiceDataCustomFieldOptions : INestedOptions
     {
         /// <summary>
-        /// The name of the custom field. This may be up to 30 characters.
+        /// The name of the custom field. This may be up to 40 characters.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// The value of the custom field. This may be up to 30 characters.
+        /// The value of the custom field. This may be up to 140 characters.
         /// </summary>
         [JsonProperty("value")]
         public string Value { get; set; }

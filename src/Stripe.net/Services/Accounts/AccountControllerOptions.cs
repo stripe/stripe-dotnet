@@ -6,7 +6,7 @@ namespace Stripe
     public class AccountControllerOptions : INestedOptions
     {
         /// <summary>
-        /// The documentation for the application hash.
+        /// A hash of configuration describing the Connect application that controls the account.
         /// </summary>
         [JsonProperty("application")]
         public AccountControllerApplicationOptions Application { get; set; }

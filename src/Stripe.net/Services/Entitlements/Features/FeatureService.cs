@@ -9,7 +9,8 @@ namespace Stripe.Entitlements
 
     public class FeatureService : Service<Feature>,
         ICreatable<Feature, FeatureCreateOptions>,
-        IListable<Feature, FeatureListOptions>
+        IListable<Feature, FeatureListOptions>,
+        IUpdatable<Feature, FeatureUpdateOptions>
     {
         public FeatureService()
         {
@@ -69,6 +70,22 @@ namespace Stripe.Entitlements
         public virtual IAsyncEnumerable<Feature> ListAutoPagingAsync(FeatureListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<Feature>($"/v1/entitlements/features", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Update a feature’s metadata or permanently deactivate it.</p>.
+        /// </summary>
+        public virtual Feature Update(string id, FeatureUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<Feature>(HttpMethod.Post, $"/v1/entitlements/features/{id}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Update a feature’s metadata or permanently deactivate it.</p>.
+        /// </summary>
+        public virtual Task<Feature> UpdateAsync(string id, FeatureUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Feature>(HttpMethod.Post, $"/v1/entitlements/features/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

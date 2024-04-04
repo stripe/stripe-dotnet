@@ -22,6 +22,12 @@ namespace Stripe.Identity
         public VerificationSessionOptionsOptions Options { get; set; }
 
         /// <summary>
+        /// Details provided about the user being verified. These details may be shown to the user.
+        /// </summary>
+        [JsonProperty("provided_details")]
+        public VerificationSessionProvidedDetailsOptions ProvidedDetails { get; set; }
+
+        /// <summary>
         /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
         /// check</a> to be performed.
         /// One of: <c>document</c>, or <c>id_number</c>.

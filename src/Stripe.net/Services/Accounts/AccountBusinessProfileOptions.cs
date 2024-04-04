@@ -19,7 +19,7 @@ namespace Stripe
         public long? EstimatedWorkerCount { get; set; }
 
         /// <summary>
-        /// <a href="https://stripe.com/docs/connect/setting-mcc">The merchant category code for the
+        /// <a href="https://docs.stripe.com/connect/setting-mcc">The merchant category code for the
         /// account</a>. MCCs are used to classify businesses based on the goods or services they
         /// provide.
         /// </summary>

@@ -7,7 +7,7 @@ namespace Stripe
     {
         /// <summary>
         /// A non-negative integer representing the amount in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

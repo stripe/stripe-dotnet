@@ -161,6 +161,15 @@ namespace Stripe.Issuing
         public List<string> AllowedCategories { get; set; }
 
         /// <summary>
+        /// Array of strings containing representing countries from which authorizations will be
+        /// allowed. Authorizations from merchants in all other countries will be declined. Country
+        /// codes should be ISO 3166 alpha-2 country codes (e.g. <c>US</c>). Cannot be set with
+        /// <c>blocked_merchant_countries</c>. Provide an empty value to unset this control.
+        /// </summary>
+        [JsonProperty("allowed_merchant_countries")]
+        public List<string> AllowedMerchantCountries { get; set; }
+
+        /// <summary>
         /// Array of strings containing <a
         /// href="https://stripe.com/docs/api#issuing_authorization_object-merchant_data-category">categories</a>
         /// of authorizations to decline. All other categories will be allowed. Cannot be set with
@@ -313,6 +322,15 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("blocked_categories")]
         public List<string> BlockedCategories { get; set; }
+
+        /// <summary>
+        /// Array of strings containing representing countries from which authorizations will be
+        /// declined. Country codes should be ISO 3166 alpha-2 country codes (e.g. <c>US</c>).
+        /// Cannot be set with <c>allowed_merchant_countries</c>. Provide an empty value to unset
+        /// this control.
+        /// </summary>
+        [JsonProperty("blocked_merchant_countries")]
+        public List<string> BlockedMerchantCountries { get; set; }
 
         /// <summary>
         /// Limit spending with amount-based rules that apply across this cardholder's cards.

@@ -30,9 +30,9 @@ namespace Stripe
         public bool? Discountable { get; set; }
 
         /// <summary>
-        /// The coupons &amp; existing discounts which apply to the invoice item or invoice line
-        /// item. Item discounts are applied before invoice discounts. Pass an empty string to
-        /// remove previously-defined discounts.
+        /// The coupons, promotion codes &amp; existing discounts which apply to the invoice item or
+        /// invoice line item. Item discounts are applied before invoice discounts. Pass an empty
+        /// string to remove previously-defined discounts.
         /// </summary>
         [JsonProperty("discounts")]
         public List<InvoiceItemDiscountOptions> Discounts { get; set; }
