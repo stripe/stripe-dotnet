@@ -21,6 +21,13 @@ namespace Stripe
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
+        /// The URL for the hosted Multibanco voucher page, which allows customers to view a
+        /// Multibanco voucher.
+        /// </summary>
+        [JsonProperty("hosted_voucher_url")]
+        public string HostedVoucherUrl { get; set; }
+
+        /// <summary>
         /// Reference number associated with this Multibanco payment.
         /// </summary>
         [JsonProperty("reference")]
