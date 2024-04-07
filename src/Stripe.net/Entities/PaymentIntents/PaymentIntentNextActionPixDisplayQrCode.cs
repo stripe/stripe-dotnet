@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class PaymentIntentNextActionPixDisplayQrCode : StripeEntity<PaymentIntentNextActionPixDisplayQrCode>
     {
@@ -16,7 +18,8 @@ namespace Stripe
         /// The date (unix timestamp) when the PIX expires.
         /// </summary>
         [JsonProperty("expires_at")]
-        public long ExpiresAt { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The URL to the hosted pix instructions page, which allows customers to view the pix QR
