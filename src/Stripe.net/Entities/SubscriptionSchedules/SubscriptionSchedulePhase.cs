@@ -145,6 +145,13 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The stackable discounts that will be applied to the subscription on this phase.
+        /// Subscription item discounts are applied before subscription discounts.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseDiscount> Discounts { get; set; }
+
+        /// <summary>
         /// The end of this phase of the subscription schedule.
         /// </summary>
         [JsonProperty("end_date")]

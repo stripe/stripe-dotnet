@@ -43,7 +43,8 @@ namespace Stripe
         public bool? Discountable { get; set; }
 
         /// <summary>
-        /// The coupons to redeem into discounts for the invoice item or invoice line item.
+        /// The coupons and promotion codes to redeem into discounts for the invoice item or invoice
+        /// line item.
         /// </summary>
         [JsonProperty("discounts")]
         public List<InvoiceItemDiscountOptions> Discounts { get; set; }

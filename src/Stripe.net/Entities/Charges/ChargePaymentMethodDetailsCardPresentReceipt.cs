@@ -37,7 +37,9 @@ namespace Stripe
         public string AuthorizationResponseCode { get; set; }
 
         /// <summary>
-        /// How the cardholder verified ownership of the card.
+        /// Describes the method used by the cardholder to verify ownership of the card. One of the
+        /// following: <c>approval</c>, <c>failure</c>, <c>none</c>, <c>offline_pin</c>,
+        /// <c>offline_pin_and_signature</c>, <c>online_pin</c>, or <c>signature</c>.
         /// </summary>
         [JsonProperty("cardholder_verification_method")]
         public string CardholderVerificationMethod { get; set; }

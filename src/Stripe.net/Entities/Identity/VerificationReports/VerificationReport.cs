@@ -58,6 +58,12 @@ namespace Stripe.Identity
         public VerificationReportDocument Document { get; set; }
 
         /// <summary>
+        /// Result from a email check.
+        /// </summary>
+        [JsonProperty("email")]
+        public VerificationReportEmail Email { get; set; }
+
+        /// <summary>
         /// Result from an id_number check.
         /// </summary>
         [JsonProperty("id_number")]
@@ -74,6 +80,12 @@ namespace Stripe.Identity
         public VerificationReportOptions Options { get; set; }
 
         /// <summary>
+        /// Result from a phone check.
+        /// </summary>
+        [JsonProperty("phone")]
+        public VerificationReportPhone Phone { get; set; }
+
+        /// <summary>
         /// Result from a selfie check.
         /// </summary>
         [JsonProperty("selfie")]
@@ -81,10 +93,16 @@ namespace Stripe.Identity
 
         /// <summary>
         /// Type of report.
-        /// One of: <c>document</c>, or <c>id_number</c>.
+        /// One of: <c>document</c>, <c>id_number</c>, or <c>verification_flow</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
+
+        /// <summary>
+        /// The configuration token of a Verification Flow from the dashboard.
+        /// </summary>
+        [JsonProperty("verification_flow")]
+        public string VerificationFlow { get; set; }
 
         /// <summary>
         /// ID of the VerificationSession that created this report.

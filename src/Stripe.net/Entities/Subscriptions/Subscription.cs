@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -307,10 +308,43 @@ namespace Stripe
         /// <summary>
         /// Describes the current discount applied to this subscription, if there is one. When
         /// billing, a discount applied to a subscription overrides a discount applied on a
-        /// customer-wide basis.
+        /// customer-wide basis. This field has been deprecated and will be removed in a future API
+        /// version. Use <c>discounts</c> instead.
         /// </summary>
         [JsonProperty("discount")]
         public Discount Discount { get; set; }
+
+        #region Expandable Discounts
+
+        /// <summary>
+        /// (IDs of the Discounts)
+        /// The discounts applied to the subscription. Subscription item discounts are applied
+        /// before subscription discounts. Use <c>expand[]=discounts</c> to expand each discount.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> DiscountIds
+        {
+            get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayIds<Discount>(value);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The discounts applied to the subscription. Subscription item discounts are applied
+        /// before subscription discounts. Use <c>expand[]=discounts</c> to expand each discount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public List<Discount> Discounts
+        {
+            get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
+        #endregion
 
         /// <summary>
         /// If the subscription has ended, the date the subscription ended.
@@ -543,7 +577,7 @@ namespace Stripe
         /// invoices and can be resumed after your customer adds their payment method. The
         /// <c>paused</c> status is different from <a
         /// href="https://stripe.com/billing/subscriptions/pause-payment">pausing collection</a>,
-        /// which still generates invoices.
+        /// which still generates invoices and leaves the subscription's status unchanged.
         ///
         /// If subscription <c>collection_method=charge_automatically</c>, it becomes
         /// <c>past_due</c> when payment is required but cannot be paid (due to failed payment or

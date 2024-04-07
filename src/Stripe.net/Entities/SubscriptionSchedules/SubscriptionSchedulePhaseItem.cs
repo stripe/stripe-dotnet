@@ -15,6 +15,13 @@ namespace Stripe
         public SubscriptionSchedulePhaseItemBillingThresholds BillingThresholds { get; set; }
 
         /// <summary>
+        /// The discounts applied to the subscription item. Subscription item discounts are applied
+        /// before subscription discounts. Use <c>expand[]=discounts</c> to expand each discount.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionSchedulePhaseItemDiscount> Discounts { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an item. Metadata on this item will update the underlying subscription item's
         /// <c>metadata</c> when the phase is entered.

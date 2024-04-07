@@ -98,7 +98,8 @@ namespace Stripe
 
         /// <summary>
         /// The ID of the coupon to apply to this subscription. A coupon applied to a subscription
-        /// will only affect invoices created for that particular subscription.
+        /// will only affect invoices created for that particular subscription. This field has been
+        /// deprecated and will be removed in a future API version. Use <c>discounts</c> instead.
         /// </summary>
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
@@ -162,6 +163,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; }
+
+        /// <summary>
+        /// The coupons to redeem into discounts for the subscription. If not specified or empty,
+        /// inherits the discount from the subscription's customer.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SubscriptionDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
@@ -250,8 +258,10 @@ namespace Stripe
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
         /// <summary>
-        /// The API ID of a promotion code to apply to this subscription. A promotion code applied
-        /// to a subscription will only affect invoices created for that particular subscription.
+        /// The ID of a promotion code to apply to this subscription. A promotion code applied to a
+        /// subscription will only affect invoices created for that particular subscription. This
+        /// field has been deprecated and will be removed in a future API version. Use
+        /// <c>discounts</c> instead.
         /// </summary>
         [JsonProperty("promotion_code")]
         public string PromotionCode { get; set; }
