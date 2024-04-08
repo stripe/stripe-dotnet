@@ -1,7 +1,9 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class AccountSettingsTreasuryTosAcceptance : StripeEntity<AccountSettingsTreasuryTosAcceptance>
     {
@@ -10,7 +12,8 @@ namespace Stripe
         /// agreement.
         /// </summary>
         [JsonProperty("date")]
-        public long? Date { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? Date { get; set; }
 
         /// <summary>
         /// The IP address from which the account representative accepted the service agreement.
