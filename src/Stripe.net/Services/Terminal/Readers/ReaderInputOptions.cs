@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class ReaderInputOptions : INestedOptions
@@ -24,8 +25,15 @@ namespace Stripe.Terminal
         public ReaderInputSelectionOptions Selection { get; set; }
 
         /// <summary>
+        /// List of toggles to be displayed and customization for the toggles.
+        /// </summary>
+        [JsonProperty("toggles")]
+        public List<ReaderInputToggleOptions> Toggles { get; set; }
+
+        /// <summary>
         /// The type of input to collect.
-        /// One of: <c>selection</c>, or <c>signature</c>.
+        /// One of: <c>email</c>, <c>numeric</c>, <c>phone</c>, <c>selection</c>, <c>signature</c>,
+        /// or <c>text</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
