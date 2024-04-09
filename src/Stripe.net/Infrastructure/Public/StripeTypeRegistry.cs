@@ -69,6 +69,11 @@ namespace Stripe
                 { "customer_session", typeof(CustomerSession) },
                 { "discount", typeof(Discount) },
                 { "dispute", typeof(Dispute) },
+                {
+                    "entitlements.active_entitlement", typeof(
+                        Entitlements.ActiveEntitlement)
+                },
+                { "entitlements.feature", typeof(Entitlements.Feature) },
                 { "ephemeral_key", typeof(EphemeralKey) },
                 { "event", typeof(Event) },
                 { "fee_refund", typeof(ApplicationFeeRefund) },
