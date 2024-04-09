@@ -5,9 +5,6 @@ namespace Stripe
 
     public class ProductFeatureOptions : INestedOptions
     {
-        [JsonProperty("feature")]
-        public string Feature { get; set; }
-
         /// <summary>
         /// The marketing feature name. Up to 80 characters long.
         /// </summary>

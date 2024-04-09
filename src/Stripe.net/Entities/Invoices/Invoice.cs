@@ -836,14 +836,6 @@ namespace Stripe
         public InvoiceRendering Rendering { get; set; }
 
         /// <summary>
-        /// This is a legacy field that will be removed soon. For details about
-        /// <c>rendering_options</c>, refer to <c>rendering</c> instead. Options for invoice PDF
-        /// rendering.
-        /// </summary>
-        [JsonProperty("rendering_options")]
-        public InvoiceRenderingOptions RenderingOptions { get; set; }
-
-        /// <summary>
         /// The details of the cost of shipping, including the ShippingRate applied on the invoice.
         /// </summary>
         [JsonProperty("shipping_cost")]

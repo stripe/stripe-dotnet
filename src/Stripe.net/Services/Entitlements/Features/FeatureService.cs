@@ -10,6 +10,7 @@ namespace Stripe.Entitlements
     public class FeatureService : Service<Feature>,
         ICreatable<Feature, FeatureCreateOptions>,
         IListable<Feature, FeatureListOptions>,
+        IRetrievable<Feature, FeatureGetOptions>,
         IUpdatable<Feature, FeatureUpdateOptions>
     {
         public FeatureService()
@@ -38,6 +39,22 @@ namespace Stripe.Entitlements
         public virtual Task<Feature> CreateAsync(FeatureCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Feature>(HttpMethod.Post, $"/v1/entitlements/features", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Retrieves a feature</p>.
+        /// </summary>
+        public virtual Feature Get(string id, FeatureGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Feature>(HttpMethod.Get, $"/v1/entitlements/features/{id}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Retrieves a feature</p>.
+        /// </summary>
+        public virtual Task<Feature> GetAsync(string id, FeatureGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Feature>(HttpMethod.Get, $"/v1/entitlements/features/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

@@ -8,7 +8,8 @@ namespace Stripe.Entitlements
     using System.Threading.Tasks;
 
     public class ActiveEntitlementService : Service<ActiveEntitlement>,
-        IListable<ActiveEntitlement, ActiveEntitlementListOptions>
+        IListable<ActiveEntitlement, ActiveEntitlementListOptions>,
+        IRetrievable<ActiveEntitlement, ActiveEntitlementGetOptions>
     {
         public ActiveEntitlementService()
         {
@@ -21,6 +22,22 @@ namespace Stripe.Entitlements
 
         [Obsolete("This member is deprecated and will be removed in a future release")]
         public override string BasePath => "/v1/entitlements/active_entitlements";
+
+        /// <summary>
+        /// <p>Retrieve an active entitlement</p>.
+        /// </summary>
+        public virtual ActiveEntitlement Get(string id, ActiveEntitlementGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<ActiveEntitlement>(HttpMethod.Get, $"/v1/entitlements/active_entitlements/{id}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Retrieve an active entitlement</p>.
+        /// </summary>
+        public virtual Task<ActiveEntitlement> GetAsync(string id, ActiveEntitlementGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<ActiveEntitlement>(HttpMethod.Get, $"/v1/entitlements/active_entitlements/{id}", options, requestOptions, cancellationToken);
+        }
 
         /// <summary>
         /// <p>Retrieve a list of active entitlements for a customer</p>.
