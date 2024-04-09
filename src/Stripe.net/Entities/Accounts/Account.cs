@@ -161,7 +161,7 @@ namespace Stripe
 
         /// <summary>
         /// The Stripe account type. Can be <c>standard</c>, <c>express</c>, or <c>custom</c>.
-        /// One of: <c>custom</c>, <c>express</c>, or <c>standard</c>.
+        /// One of: <c>custom</c>, <c>express</c>, <c>none</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
