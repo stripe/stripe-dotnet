@@ -7,6 +7,8 @@ namespace Stripe
 
         public const string Express = "express";
 
+        public const string None = "none";
+
         public const string Standard = "standard";
     }
 }

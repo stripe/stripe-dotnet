@@ -12,6 +12,12 @@ namespace Stripe.Billing
         public MeterEventAdjustmentCancelOptions Cancel { get; set; }
 
         /// <summary>
+        /// The name of the meter event. Corresponds with the <c>event_name</c> field on a meter.
+        /// </summary>
+        [JsonProperty("event_name")]
+        public string EventName { get; set; }
+
+        /// <summary>
         /// Specifies whether to cancel a single event or a range of events for a time period.
         /// </summary>
         [JsonProperty("type")]

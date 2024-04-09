@@ -3,11 +3,10 @@ namespace Stripe.Billing
 {
     using Newtonsoft.Json;
 
-    public class MeterEventAdjustmentCancelOptions : INestedOptions
+    public class MeterEventAdjustmentCancel : StripeEntity<MeterEventAdjustmentCancel>
     {
         /// <summary>
-        /// Unique identifier for the event. You can only cancel events within 24 hours of Stripe
-        /// receiving them.
+        /// Unique identifier for the event.
         /// </summary>
         [JsonProperty("identifier")]
         public string Identifier { get; set; }
