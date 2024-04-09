@@ -1,5 +1,15 @@
 # Changelog
 
+## 43.23.0 - 2024-04-09
+* [#2887](https://github.com/stripe/stripe-dotnet/pull/2887) Update generated code
+  * Add support for new resources `Entitlements.ActiveEntitlement` and `Entitlements.Feature`
+  * Add support for `Get` and `List` methods on resource `ActiveEntitlement`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `Feature`
+  * Add support for `Controller` on `AccountCreateOptions`
+  * Add support for `Fees`, `Losses`, `RequirementCollection`, and `StripeDashboard` on `AccountController`
+  * Add support for `EventName` on `Billing.MeterEventAdjustmentCreateOptions` and `BillingMeterEventAdjustment`
+  * Add support for `Cancel` and `Type` on `BillingMeterEventAdjustment`
+
 ## 43.23.0-beta.1 - 2024-04-04
 * [#2882](https://github.com/stripe/stripe-dotnet/pull/2882) Update generated code for beta
   * Add support for `Update` method on resource `Entitlements.Feature`
