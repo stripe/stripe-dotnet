@@ -186,7 +186,7 @@ namespace Stripe
         /// customer-facing surfaces such as PDF and Hosted Invoice Page.
         /// </summary>
         [JsonProperty("rendering")]
-        public InvoiceRenderingOptionsOptions Rendering { get; set; }
+        public InvoiceRenderingOptions Rendering { get; set; }
 
         /// <summary>
         /// Settings for the cost of shipping for this invoice.
