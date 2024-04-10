@@ -28,18 +28,18 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// A list of up to 15 marketing features for this product. These are displayed in <a
-        /// href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
-        /// </summary>
-        [JsonProperty("features")]
-        public List<ProductFeatureOptions> Features { get; set; }
-
-        /// <summary>
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the
         /// customer.
         /// </summary>
         [JsonProperty("images")]
         public List<string> Images { get; set; }
+
+        /// <summary>
+        /// A list of up to 15 marketing features for this product. These are displayed in <a
+        /// href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
+        /// </summary>
+        [JsonProperty("marketing_features")]
+        public List<ProductMarketingFeatureOptions> MarketingFeatures { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
