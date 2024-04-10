@@ -340,5 +340,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("wechat_pay")]
         public PaymentMethodConfigurationWechatPayOptions WechatPay { get; set; }
+
+        /// <summary>
+        /// Zip gives your customers a way to split purchases over a series of payments. Check this
+        /// <a href="https://stripe.com/docs/payments/zip">page</a> for more details like country
+        /// availability.
+        /// </summary>
+        [JsonProperty("zip")]
+        public PaymentMethodConfigurationZipOptions Zip { get; set; }
     }
 }

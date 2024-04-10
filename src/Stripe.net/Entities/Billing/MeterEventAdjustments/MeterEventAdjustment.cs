@@ -14,6 +14,15 @@ namespace Stripe.Billing
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("cancel")]
+        public MeterEventAdjustmentCancel Cancel { get; set; }
+
+        /// <summary>
+        /// The name of the meter event. Corresponds with the <c>event_name</c> field on a meter.
+        /// </summary>
+        [JsonProperty("event_name")]
+        public string EventName { get; set; }
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
@@ -27,5 +36,11 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Specifies whether to cancel a single event or a range of events for a time period.
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }

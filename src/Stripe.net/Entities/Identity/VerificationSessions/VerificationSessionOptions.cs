@@ -8,7 +8,13 @@ namespace Stripe.Identity
         [JsonProperty("document")]
         public VerificationSessionOptionsDocument Document { get; set; }
 
+        [JsonProperty("email")]
+        public VerificationSessionOptionsEmail Email { get; set; }
+
         [JsonProperty("id_number")]
         public VerificationSessionOptionsIdNumber IdNumber { get; set; }
+
+        [JsonProperty("phone")]
+        public VerificationSessionOptionsPhone Phone { get; set; }
     }
 }

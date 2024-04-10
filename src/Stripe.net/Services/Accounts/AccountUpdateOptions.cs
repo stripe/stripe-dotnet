@@ -22,8 +22,8 @@ namespace Stripe
 
         /// <summary>
         /// The business type. Once you create an <a
-        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
-        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
+        /// href="https://docs.stripe.com/api/account_links">Account Link</a> or <a
+        /// href="https://docs.stripe.com/api/account_sessions">Account Session</a>, this property
         /// can only be updated for Custom accounts.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
@@ -43,8 +43,8 @@ namespace Stripe
         /// <summary>
         /// Information about the company or business. This field is available for any
         /// <c>business_type</c>. Once you create an <a
-        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
-        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
+        /// href="https://docs.stripe.com/api/account_links">Account Link</a> or <a
+        /// href="https://docs.stripe.com/api/account_sessions">Account Session</a>, this property
         /// can only be updated for Custom accounts.
         /// </summary>
         [JsonProperty("company")]
@@ -52,7 +52,7 @@ namespace Stripe
 
         /// <summary>
         /// Three-letter ISO currency code representing the default currency for the account. This
-        /// must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the
+        /// must be a currency that <a href="https://docs.stripe.com/payouts">Stripe supports in the
         /// account's country</a>.
         /// </summary>
         [JsonProperty("default_currency")]
@@ -73,19 +73,19 @@ namespace Stripe
 
         /// <summary>
         /// A card or bank account to attach to the account for receiving <a
-        /// href="https://stripe.com/docs/connect/bank-debit-card-payouts">payouts</a> (you won’t be
+        /// href="https://docs.stripe.com/connect/bank-debit-card-payouts">payouts</a> (you won’t be
         /// able to use it for top-ups). You can provide either a token, like the ones returned by
-        /// <a href="https://stripe.com/docs/js">Stripe.js</a>, or a dictionary, as documented in
+        /// <a href="https://docs.stripe.com/js">Stripe.js</a>, or a dictionary, as documented in
         /// the <c>external_account</c> parameter for <a
-        /// href="https://stripe.com/docs/api#account_create_bank_account">bank account</a>
+        /// href="https://docs.stripe.com/api#account_create_bank_account">bank account</a>
         /// creation. <br/><br/>By default, providing an external account sets it as the new default
         /// external account for its currency, and deletes the old default if one exists. To add
         /// additional external accounts without replacing the existing default for the currency,
-        /// use the <a href="https://stripe.com/docs/api#account_create_bank_account">bank
-        /// account</a> or <a href="https://stripe.com/docs/api#account_create_card">card
+        /// use the <a href="https://docs.stripe.com/api#account_create_bank_account">bank
+        /// account</a> or <a href="https://docs.stripe.com/api#account_create_card">card
         /// creation</a> APIs. After you create an <a
-        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
-        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
+        /// href="https://docs.stripe.com/api/account_links">Account Link</a> or <a
+        /// href="https://docs.stripe.com/api/account_sessions">Account Session</a>, this property
         /// can only be updated for Custom accounts.
         /// </summary>
         [JsonProperty("external_account")]
@@ -95,8 +95,8 @@ namespace Stripe
         /// <summary>
         /// Information about the person represented by the account. This field is null unless
         /// <c>business_type</c> is set to <c>individual</c>. Once you create an <a
-        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
-        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
+        /// href="https://docs.stripe.com/api/account_links">Account Link</a> or <a
+        /// href="https://docs.stripe.com/api/account_sessions">Account Session</a>, this property
         /// can only be updated for Custom accounts.
         /// </summary>
         [JsonProperty("individual")]
@@ -119,7 +119,7 @@ namespace Stripe
 
         /// <summary>
         /// Details on the account's acceptance of the <a
-        /// href="https://stripe.com/docs/connect/updating-accounts#tos-acceptance">Stripe Services
+        /// href="https://docs.stripe.com/connect/updating-accounts#tos-acceptance">Stripe Services
         /// Agreement</a> This property can only be updated for Custom accounts.
         /// </summary>
         [JsonProperty("tos_acceptance")]

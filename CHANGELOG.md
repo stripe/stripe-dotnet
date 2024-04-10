@@ -1,5 +1,29 @@
 # Changelog
 
+## 43.23.0 - 2024-04-09
+* [#2887](https://github.com/stripe/stripe-dotnet/pull/2887) Update generated code
+  * Add support for new resources `Entitlements.ActiveEntitlement` and `Entitlements.Feature`
+  * Add support for `Get` and `List` methods on resource `ActiveEntitlement`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `Feature`
+  * Add support for `Controller` on `AccountCreateOptions`
+  * Add support for `Fees`, `Losses`, `RequirementCollection`, and `StripeDashboard` on `AccountController`
+  * Add support for `EventName` on `Billing.MeterEventAdjustmentCreateOptions` and `BillingMeterEventAdjustment`
+  * Add support for `Cancel` and `Type` on `BillingMeterEventAdjustment`
+
+## 43.22.0 - 2024-04-04
+* [#2881](https://github.com/stripe/stripe-dotnet/pull/2881) Update generated code
+  * Change type of `CheckoutSessionPaymentMethodOptionsSwishReferenceOptions` from `emptyable(string)` to `string`
+  * Add support for `SubscriptionItem` on `Discount`
+  * Add support for `Email` and `Phone` on `IdentityVerificationReport`, `IdentityVerificationSessionOptionsOptions`, `IdentityVerificationSessionOptions`, and `IdentityVerificationSessionVerifiedOutputs`
+  * Add support for `VerificationFlow` on `Identity.VerificationSessionCreateOptions`, `IdentityVerificationReport`, and `IdentityVerificationSession`
+  * Add support for `ProvidedDetails` on `Identity.VerificationSessionCreateOptions`, `Identity.VerificationSessionUpdateOptions`, and `IdentityVerificationSession`
+  * Add support for `PromotionCode` on `InvoiceDiscountsOptions`, `InvoiceItemDiscountsOptions`, and `QuoteDiscountsOptions`
+  * Add support for `Discounts` on `InvoiceSubscriptionItemsOptions`, `QuoteLineItemsOptions`, `SubscriptionAddInvoiceItemsOptions`, `SubscriptionCreateOptions`, `SubscriptionItemCreateOptions`, `SubscriptionItemUpdateOptions`, `SubscriptionItem`, `SubscriptionItemsOptions`, `SubscriptionSchedulePhasesAddInvoiceItemsOptions`, `SubscriptionSchedulePhasesAddInvoiceItems`, `SubscriptionSchedulePhasesItemsOptions`, `SubscriptionSchedulePhasesItems`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, `SubscriptionUpdateOptions`, and `Subscription`
+  * Add support for `AllowedMerchantCountries` and `BlockedMerchantCountries` on `IssuingCardSpendingControlsOptions`, `IssuingCardSpendingControls`, `IssuingCardholderSpendingControlsOptions`, and `IssuingCardholderSpendingControls`
+  * Add support for `Zip` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `Offline` on `SetupAttemptPaymentMethodDetailsCardPresent`
+  * Add support for `CardPresent` on `SetupIntentPaymentMethodOptionsOptions` and `SetupIntentPaymentMethodOptions`
+
 ## 43.21.0 - 2024-03-28
 * [#2877](https://github.com/stripe/stripe-dotnet/pull/2877) Update generated code
   * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`

@@ -16,5 +16,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discount")]
         public string Discount { get; set; }
+
+        /// <summary>
+        /// ID of the promotion code to create a new discount for.
+        /// </summary>
+        [JsonProperty("promotion_code")]
+        public string PromotionCode { get; set; }
     }
 }
