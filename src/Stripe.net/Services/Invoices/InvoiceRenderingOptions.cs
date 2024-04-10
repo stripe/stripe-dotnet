@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class InvoiceRenderingOptionsOptions : INestedOptions
+    public class InvoiceRenderingOptions : INestedOptions
     {
         /// <summary>
         /// How line-item prices and amounts will be displayed with respect to tax on invoice PDFs.

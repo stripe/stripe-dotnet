@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class ProductFeatureOptions : INestedOptions
+    public class ProductMarketingFeatureOptions : INestedOptions
     {
         /// <summary>
         /// The marketing feature name. Up to 80 characters long.
