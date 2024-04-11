@@ -1,5 +1,13 @@
 # Changelog
 
+## 44.1.0 - 2024-04-11
+* [#2889](https://github.com/stripe/stripe-dotnet/pull/2889) Update generated code
+  * Add support for `AccountManagement` and `NotificationBanner` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
+  * Add support for `ExternalAccountCollection` on `AccountSessionComponentsAccountOnboardingFeaturesOptions` and `AccountSessionComponentsAccountOnboardingFeatures`
+  * Change type of `BillingMeterEventAdjustmentCancel` from `BillingMeterResourceBillingMeterEventAdjustmentCancel` to `nullable(BillingMeterResourceBillingMeterEventAdjustmentCancel)`
+  * Add support for `AmazonPay` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `RefundDestinationDetails`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+  * Add support for `NextRefreshAvailableAt` on `FinancialConnectionsAccountOwnershipRefresh`
+
 ## 44.0.0 - 2024-04-10
 * [#2884](https://github.com/stripe/stripe-dotnet/pull/2884) 
   
