@@ -96,13 +96,6 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// A list of up to 15 marketing features for this product. These are displayed in <a
-        /// href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
-        /// </summary>
-        [JsonProperty("features")]
-        public List<ProductFeature> Features { get; set; }
-
-        /// <summary>
         /// A list of up to 8 URLs of images for this product, meant to be displayable to the
         /// customer.
         /// </summary>
@@ -115,6 +108,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// A list of up to 15 marketing features for this product. These are displayed in <a
+        /// href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
+        /// </summary>
+        [JsonProperty("marketing_features")]
+        public List<ProductMarketingFeature> MarketingFeatures { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
