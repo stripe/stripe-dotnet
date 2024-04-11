@@ -8,8 +8,8 @@ namespace Stripe.Billing
     /// <summary>
     /// A billing meter is a resource that allows you to track usage of a particular event. For
     /// example, you might create a billing meter to track the number of API calls made by a
-    /// particular user. You can then use the billing meter to charge the user for the number of
-    /// API calls they make.
+    /// particular user. You can then attach the billing meter to a price and attach the price
+    /// to a subscription to charge the user for the number of API calls they make.
     /// </summary>
     public class Meter : StripeEntity<Meter>, IHasId, IHasObject
     {
