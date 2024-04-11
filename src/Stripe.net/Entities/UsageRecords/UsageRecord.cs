@@ -11,6 +11,10 @@ namespace Stripe
     ///
     /// Related guide: <a
     /// href="https://stripe.com/docs/billing/subscriptions/metered-billing">Metered billing</a>.
+    ///
+    /// This is our legacy usage-based billing API. See the <a
+    /// href="https://docs.stripe.com/billing/subscriptions/usage-based">updated usage-based
+    /// billing docs</a>.
     /// </summary>
     public class UsageRecord : StripeEntity<UsageRecord>, IHasId, IHasObject
     {

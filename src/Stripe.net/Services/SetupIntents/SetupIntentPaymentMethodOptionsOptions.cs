@@ -13,6 +13,13 @@ namespace Stripe
         public SetupIntentPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
+        /// If this is a <c>amazon_pay</c> SetupIntent, this sub-hash contains details about the
+        /// AmazonPay payment method options.
+        /// </summary>
+        [JsonProperty("amazon_pay")]
+        public SetupIntentPaymentMethodOptionsAmazonPayOptions AmazonPay { get; set; }
+
+        /// <summary>
         /// Configuration for any card setup attempted on this SetupIntent.
         /// </summary>
         [JsonProperty("card")]

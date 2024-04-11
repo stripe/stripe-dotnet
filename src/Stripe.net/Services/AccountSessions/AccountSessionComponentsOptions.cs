@@ -6,6 +6,12 @@ namespace Stripe
     public class AccountSessionComponentsOptions : INestedOptions
     {
         /// <summary>
+        /// Configuration for the account management embedded component.
+        /// </summary>
+        [JsonProperty("account_management")]
+        public AccountSessionComponentsAccountManagementOptions AccountManagement { get; set; }
+
+        /// <summary>
         /// Configuration for the account onboarding embedded component.
         /// </summary>
         [JsonProperty("account_onboarding")]
@@ -16,6 +22,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("documents")]
         public AccountSessionComponentsDocumentsOptions Documents { get; set; }
+
+        /// <summary>
+        /// Configuration for the notification banner embedded component.
+        /// </summary>
+        [JsonProperty("notification_banner")]
+        public AccountSessionComponentsNotificationBannerOptions NotificationBanner { get; set; }
 
         /// <summary>
         /// Configuration for the payment details embedded component.

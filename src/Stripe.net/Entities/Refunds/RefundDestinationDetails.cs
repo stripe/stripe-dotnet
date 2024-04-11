@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("alipay")]
         public RefundDestinationDetailsAlipay Alipay { get; set; }
 
+        [JsonProperty("amazon_pay")]
+        public RefundDestinationDetailsAmazonPay AmazonPay { get; set; }
+
         [JsonProperty("au_bank_transfer")]
         public RefundDestinationDetailsAuBankTransfer AuBankTransfer { get; set; }
 
