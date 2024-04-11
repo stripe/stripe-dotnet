@@ -65,6 +65,9 @@ namespace Stripe
         [JsonProperty("alipay")]
         public PaymentMethodConfigurationAlipay Alipay { get; set; }
 
+        [JsonProperty("amazon_pay")]
+        public PaymentMethodConfigurationAmazonPay AmazonPay { get; set; }
+
         [JsonProperty("apple_pay")]
         public PaymentMethodConfigurationApplePay ApplePay { get; set; }
 
