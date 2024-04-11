@@ -17,6 +17,9 @@ namespace Stripe.Checkout
         [JsonProperty("alipay")]
         public SessionPaymentMethodOptionsAlipay Alipay { get; set; }
 
+        [JsonProperty("amazon_pay")]
+        public SessionPaymentMethodOptionsAmazonPay AmazonPay { get; set; }
+
         [JsonProperty("au_becs_debit")]
         public SessionPaymentMethodOptionsAuBecsDebit AuBecsDebit { get; set; }
 
