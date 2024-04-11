@@ -314,7 +314,7 @@ and run it from a background terminal
 installing via Homebrew and other methods):
 
 ```sh
-go get -u github.com/stripe/stripe-mock
+go install github.com/stripe/stripe-mock@latest
 stripe-mock
 ```
 
