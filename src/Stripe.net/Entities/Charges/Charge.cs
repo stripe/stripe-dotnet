@@ -89,7 +89,7 @@ namespace Stripe
         /// <summary>
         /// (ID of the ApplicationFee)
         /// The application fee (if any) for the charge. <a
-        /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">See the Connect
+        /// href="https://stripe.com/docs/connect/direct-charges#collect-fees">See the Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonIgnore]
@@ -102,7 +102,7 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The application fee (if any) for the charge. <a
-        /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">See the Connect
+        /// href="https://stripe.com/docs/connect/direct-charges#collect-fees">See the Connect
         /// documentation</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -121,7 +121,7 @@ namespace Stripe
 
         /// <summary>
         /// The amount of the application fee (if any) requested for the charge. <a
-        /// href="https://stripe.com/docs/connect/direct-charges#collecting-fees">See the Connect
+        /// href="https://stripe.com/docs/connect/direct-charges#collect-fees">See the Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("application_fee_amount")]
