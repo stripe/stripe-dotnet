@@ -1,5 +1,13 @@
 # Changelog
 
+## 44.2.0-beta.1 - 2024-04-11
+* [#2886](https://github.com/stripe/stripe-dotnet/pull/2886) Update generated code for beta
+  * Add support for `Get` method on resources `Entitlements.ActiveEntitlement` and `Entitlements.Feature`
+  * Add support for `Fees`, `Losses`, `RequirementCollection`, and `StripeDashboard` on `AccountControllerOptions`
+  * Add support for `HostedVoucherUrl` on `PaymentIntentNextActionMultibancoDisplayDetails`
+  * Add support for `Toggles` on `TerminalReaderActionCollectInputsInputs` and `TerminalReaderInputsOptions`
+  * Add support for `Email`, `Numeric`, `Phone`, and `Text` on `TerminalReaderActionCollectInputsInputs`
+
 ## 44.1.0 - 2024-04-11
 * [#2889](https://github.com/stripe/stripe-dotnet/pull/2889) Update generated code
   * Add support for `AccountManagement` and `NotificationBanner` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
