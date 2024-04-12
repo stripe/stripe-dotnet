@@ -5,6 +5,9 @@ namespace Stripe
 
     public class AccountSessionComponents : StripeEntity<AccountSessionComponents>
     {
+        [JsonProperty("account_management")]
+        public AccountSessionComponentsAccountManagement AccountManagement { get; set; }
+
         [JsonProperty("account_onboarding")]
         public AccountSessionComponentsAccountOnboarding AccountOnboarding { get; set; }
 
@@ -13,6 +16,9 @@ namespace Stripe
 
         [JsonProperty("documents")]
         public AccountSessionComponentsDocuments Documents { get; set; }
+
+        [JsonProperty("notification_banner")]
+        public AccountSessionComponentsNotificationBanner NotificationBanner { get; set; }
 
         [JsonProperty("payment_details")]
         public AccountSessionComponentsPaymentDetails PaymentDetails { get; set; }

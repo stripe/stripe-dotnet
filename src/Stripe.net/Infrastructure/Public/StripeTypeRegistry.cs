@@ -167,6 +167,7 @@ namespace Stripe
                 { "platform_tax_fee", typeof(PlatformTaxFee) },
                 { "price", typeof(Price) },
                 { "product", typeof(Product) },
+                { "product_feature", typeof(ProductFeature) },
                 { "promotion_code", typeof(PromotionCode) },
                 { "quote", typeof(Quote) },
                 { "quote_line", typeof(QuoteLine) },

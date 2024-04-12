@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentMethodConfigurationUpiDisplayPreference : StripeEntity<PaymentMethodConfigurationUpiDisplayPreference>
+    public class PaymentMethodConfigurationAmazonPayDisplayPreference : StripeEntity<PaymentMethodConfigurationAmazonPayDisplayPreference>
     {
         /// <summary>
         /// For child configs, whether or not the account's preference will be observed. If

@@ -3,7 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class PaymentMethodConfigurationNetbanking : StripeEntity<PaymentMethodConfigurationNetbanking>
+    public class PaymentMethodConfigurationAmazonPay : StripeEntity<PaymentMethodConfigurationAmazonPay>
     {
         /// <summary>
         /// Whether this payment method may be offered at checkout. True if
@@ -13,6 +13,6 @@ namespace Stripe
         public bool Available { get; set; }
 
         [JsonProperty("display_preference")]
-        public PaymentMethodConfigurationNetbankingDisplayPreference DisplayPreference { get; set; }
+        public PaymentMethodConfigurationAmazonPayDisplayPreference DisplayPreference { get; set; }
     }
 }

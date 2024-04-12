@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class CalculationCreateOptions : BaseOptions
     {
@@ -51,6 +53,7 @@ namespace Stripe.Tax
         /// past, and up to 48 hours in the future.
         /// </summary>
         [JsonProperty("tax_date")]
-        public long? TaxDate { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? TaxDate { get; set; }
     }
 }

@@ -17,6 +17,9 @@ namespace Stripe
         [JsonProperty("alipay")]
         public PaymentIntentPaymentMethodOptionsAlipay Alipay { get; set; }
 
+        [JsonProperty("amazon_pay")]
+        public PaymentIntentPaymentMethodOptionsAmazonPay AmazonPay { get; set; }
+
         [JsonProperty("au_becs_debit")]
         public PaymentIntentPaymentMethodOptionsAuBecsDebit AuBecsDebit { get; set; }
 

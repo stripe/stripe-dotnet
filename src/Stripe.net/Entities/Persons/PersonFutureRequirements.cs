@@ -48,9 +48,12 @@ namespace Stripe
         public List<string> PastDue { get; set; }
 
         /// <summary>
-        /// Fields that may become required depending on the results of verification or review. Will
-        /// be an empty array unless an asynchronous verification is pending. If verification fails,
-        /// these fields move to <c>eventually_due</c> or <c>currently_due</c>.
+        /// Fields that might become required depending on the results of verification or review.
+        /// It's an empty array unless an asynchronous verification is pending. If verification
+        /// fails, these fields move to <c>eventually_due</c> or <c>currently_due</c>. Fields might
+        /// appear in <c>eventually_due</c> or <c>currently_due</c> and in
+        /// <c>pending_verification</c> if verification fails but another verification is still
+        /// pending.
         /// </summary>
         [JsonProperty("pending_verification")]
         public List<string> PendingVerification { get; set; }

@@ -33,7 +33,8 @@ namespace Stripe
         /// <c>2019-02-11</c>, <c>2019-02-19</c>, <c>2019-03-14</c>, <c>2019-05-16</c>,
         /// <c>2019-08-14</c>, <c>2019-09-09</c>, <c>2019-10-08</c>, <c>2019-10-17</c>,
         /// <c>2019-11-05</c>, <c>2019-12-03</c>, <c>2020-03-02</c>, <c>2020-08-27</c>,
-        /// <c>2022-08-01</c>, <c>2022-11-15</c>, <c>2023-08-16</c>, or <c>2023-10-16</c>.
+        /// <c>2022-08-01</c>, <c>2022-11-15</c>, <c>2023-08-16</c>, <c>2023-10-16</c>, or
+        /// <c>2024-04-10</c>.
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; set; }
@@ -182,10 +183,7 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.failed</c>, <c>treasury.outbound_transfer.posted</c>,
         /// <c>treasury.outbound_transfer.returned</c>, <c>treasury.received_credit.created</c>,
         /// <c>treasury.received_credit.failed</c>, <c>treasury.received_credit.succeeded</c>,
-        /// <c>treasury.received_debit.created</c>, <c>invoiceitem.updated</c>,
-        /// <c>order.created</c>, <c>recipient.created</c>, <c>recipient.deleted</c>,
-        /// <c>recipient.updated</c>, <c>sku.created</c>, <c>sku.deleted</c>, <c>sku.updated</c>, or
-        /// <c>ping</c>.
+        /// <c>treasury.received_debit.created</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("enabled_events")]
         public List<string> EnabledEvents { get; set; }

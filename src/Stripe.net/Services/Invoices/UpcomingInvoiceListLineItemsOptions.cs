@@ -180,10 +180,6 @@ namespace Stripe
         [JsonProperty("subscription_prebilling")]
         public InvoiceSubscriptionPrebillingOptions SubscriptionPrebilling { get; set; }
 
-        [Obsolete("Use SubscriptionProrationBehavior instead.")]
-        [JsonProperty("subscription_prorate")]
-        public bool? SubscriptionProrate { get; set; }
-
         /// <summary>
         /// Determines how to handle <a
         /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when the

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class ReaderActionCollectInputsInput : StripeEntity<ReaderActionCollectInputsInput>
@@ -10,6 +11,24 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("custom_text")]
         public ReaderActionCollectInputsInputCustomText CustomText { get; set; }
+
+        /// <summary>
+        /// Information about a email being collected using a reader.
+        /// </summary>
+        [JsonProperty("email")]
+        public ReaderActionCollectInputsInputEmail Email { get; set; }
+
+        /// <summary>
+        /// Information about a number being collected using a reader.
+        /// </summary>
+        [JsonProperty("numeric")]
+        public ReaderActionCollectInputsInputNumeric Numeric { get; set; }
+
+        /// <summary>
+        /// Information about a phone number being collected using a reader.
+        /// </summary>
+        [JsonProperty("phone")]
+        public ReaderActionCollectInputsInputPhone Phone { get; set; }
 
         /// <summary>
         /// Indicate that this input is required, disabling the skip button.
@@ -34,6 +53,18 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("skipped")]
         public bool Skipped { get; set; }
+
+        /// <summary>
+        /// Information about text being collected using a reader.
+        /// </summary>
+        [JsonProperty("text")]
+        public ReaderActionCollectInputsInputText Text { get; set; }
+
+        /// <summary>
+        /// List of toggles being collected. Values are present if collection is complete.
+        /// </summary>
+        [JsonProperty("toggles")]
+        public List<ReaderActionCollectInputsInputToggle> Toggles { get; set; }
 
         /// <summary>
         /// Type of input being collected.

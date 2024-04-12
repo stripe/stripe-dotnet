@@ -43,6 +43,13 @@ namespace Stripe
         public PaymentMethodConfigurationAlipayOptions Alipay { get; set; }
 
         /// <summary>
+        /// Amazon Pay is a wallet payment method that lets your customers check out the same way as
+        /// on Amazon.
+        /// </summary>
+        [JsonProperty("amazon_pay")]
+        public PaymentMethodConfigurationAmazonPayOptions AmazonPay { get; set; }
+
+        /// <summary>
         /// Stripe users can accept <a href="https://stripe.com/payments/apple-pay">Apple Pay</a> in
         /// iOS applications in iOS 9 and later, and on the web in Safari starting with iOS 10 or
         /// macOS Sierra. There are no additional fees to process Apple Pay payments, and the <a

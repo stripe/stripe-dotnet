@@ -3,11 +3,8 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
-    public class ProductFeatureOptions : INestedOptions
+    public class ProductMarketingFeature : StripeEntity<ProductMarketingFeature>
     {
-        [JsonProperty("feature")]
-        public string Feature { get; set; }
-
         /// <summary>
         /// The marketing feature name. Up to 80 characters long.
         /// </summary>

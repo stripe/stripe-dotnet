@@ -204,7 +204,7 @@ namespace Stripe
         /// <summary>
         /// How to handle pending invoice items on invoice creation. Defaults to <c>exclude</c> if
         /// the parameter is omitted.
-        /// One of: <c>exclude</c>, <c>include</c>, or <c>include_and_require</c>.
+        /// One of: <c>exclude</c>, or <c>include</c>.
         /// </summary>
         [JsonProperty("pending_invoice_items_behavior")]
         public string PendingInvoiceItemsBehavior { get; set; }
@@ -214,15 +214,7 @@ namespace Stripe
         /// customer-facing surfaces such as PDF and Hosted Invoice Page.
         /// </summary>
         [JsonProperty("rendering")]
-        public InvoiceRenderingOptionsOptions Rendering { get; set; }
-
-        /// <summary>
-        /// This is a legacy field that will be removed soon. For details about
-        /// <c>rendering_options</c>, refer to <c>rendering</c> instead. Options for invoice PDF
-        /// rendering.
-        /// </summary>
-        [JsonProperty("rendering_options")]
-        public InvoiceRenderingOptionsOptions RenderingOptions { get; set; }
+        public InvoiceRenderingOptions Rendering { get; set; }
 
         /// <summary>
         /// Settings for the cost of shipping for this invoice.
