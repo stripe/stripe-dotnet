@@ -18,6 +18,12 @@ namespace Stripe
         public AccountSessionComponentsAccountOnboardingOptions AccountOnboarding { get; set; }
 
         /// <summary>
+        /// Configuration for the balances embedded component.
+        /// </summary>
+        [JsonProperty("balances")]
+        public AccountSessionComponentsBalancesOptions Balances { get; set; }
+
+        /// <summary>
         /// Configuration for the documents embedded component.
         /// </summary>
         [JsonProperty("documents")]
@@ -46,5 +52,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payouts")]
         public AccountSessionComponentsPayoutsOptions Payouts { get; set; }
+
+        /// <summary>
+        /// Configuration for the payouts list embedded component.
+        /// </summary>
+        [JsonProperty("payouts_list")]
+        public AccountSessionComponentsPayoutsListOptions PayoutsList { get; set; }
     }
 }

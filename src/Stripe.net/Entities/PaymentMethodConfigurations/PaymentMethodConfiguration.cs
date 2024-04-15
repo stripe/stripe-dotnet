@@ -184,6 +184,9 @@ namespace Stripe
         [JsonProperty("sofort")]
         public PaymentMethodConfigurationSofort Sofort { get; set; }
 
+        [JsonProperty("swish")]
+        public PaymentMethodConfigurationSwish Swish { get; set; }
+
         [JsonProperty("us_bank_account")]
         public PaymentMethodConfigurationUsBankAccount UsBankAccount { get; set; }
 

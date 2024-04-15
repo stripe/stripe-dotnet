@@ -30,7 +30,8 @@ namespace Stripe.Billing
         public Dictionary<string, string> Payload { get; set; }
 
         /// <summary>
-        /// The time of the event. Measured in seconds since the Unix epoch.
+        /// The time of the event. Measured in seconds since the Unix epoch. Defaults to current
+        /// timestamp if not specified.
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
