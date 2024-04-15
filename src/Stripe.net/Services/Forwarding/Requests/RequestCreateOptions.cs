@@ -7,13 +7,6 @@ namespace Stripe.Forwarding
     public class RequestCreateOptions : BaseOptions
     {
         /// <summary>
-        /// The Forwarding Config used when making the forwarded request. The config specifes the
-        /// HTTP method, merchant credentials, connection settings, and supported destination URLs.
-        /// </summary>
-        [JsonProperty("config")]
-        public string Config { get; set; }
-
-        /// <summary>
         /// The PaymentMethod to insert into the forwarded request. Forwarding previously consumed
         /// PaymentMethods is allowed.
         /// </summary>
