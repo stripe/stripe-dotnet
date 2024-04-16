@@ -1,5 +1,14 @@
 # Changelog
 
+## 44.2.0 - 2024-04-16
+* [#2891](https://github.com/stripe/stripe-dotnet/pull/2891) Update generated code
+  * Add support for new resource `Entitlements.ActiveEntitlementSummary`
+  * Add support for `Balances` and `PayoutsList` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
+  * Remove support for `Config` on `Forwarding.RequestCreateOptions` and `ForwardingRequest`. This field is no longer used by the Forwarding Request API.
+  * Add support for `CaptureMethod` on `PaymentIntentPaymentMethodOptionsRevolutPayOptions` and `PaymentIntentPaymentMethodOptionsRevolutPay`
+  * Add support for `Swish` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+* [#2892](https://github.com/stripe/stripe-dotnet/pull/2892) Add sections to StripeTypeRegistry
+
 ## 44.1.0 - 2024-04-11
 * [#2889](https://github.com/stripe/stripe-dotnet/pull/2889) Update generated code
   * Add support for `AccountManagement` and `NotificationBanner` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
