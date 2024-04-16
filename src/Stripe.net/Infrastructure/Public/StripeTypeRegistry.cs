@@ -52,6 +52,10 @@ namespace Stripe
                 { "discount", typeof(Discount) },
                 { "dispute", typeof(Dispute) },
                 { "entitlements.active_entitlement", typeof(Entitlements.ActiveEntitlement) },
+                {
+                    "entitlements.active_entitlement_summary", typeof(
+                    Entitlements.ActiveEntitlementSummary)
+                },
                 { "entitlements.feature", typeof(Entitlements.Feature) },
                 { "ephemeral_key", typeof(EphemeralKey) },
                 { "event", typeof(Event) },

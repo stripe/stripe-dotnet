@@ -362,6 +362,11 @@ namespace Stripe
         public const string CustomerUpdated = "customer.updated";
 
         /// <summary>
+        /// Occurs whenever a customer's entitlements change.
+        /// </summary>
+        public const string EntitlementsActiveEntitlementSummaryUpdated = "entitlements.active_entitlement_summary.updated";
+
+        /// <summary>
         /// Occurs whenever a new Stripe-generated file is available for your account.
         /// </summary>
         public const string FileCreated = "file.created";

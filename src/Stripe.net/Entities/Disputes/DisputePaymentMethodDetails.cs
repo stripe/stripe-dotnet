@@ -5,9 +5,6 @@ namespace Stripe
 
     public class DisputePaymentMethodDetails : StripeEntity<DisputePaymentMethodDetails>
     {
-        /// <summary>
-        /// Card specific dispute details.
-        /// </summary>
         [JsonProperty("card")]
         public DisputePaymentMethodDetailsCard Card { get; set; }
 
