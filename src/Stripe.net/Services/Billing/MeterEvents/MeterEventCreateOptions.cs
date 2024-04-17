@@ -23,8 +23,11 @@ namespace Stripe.Billing
         public string Identifier { get; set; }
 
         /// <summary>
-        /// The payload of the event. This must contain a field with the event's numerical value and
-        /// a field to map the event to a customer.
+        /// The payload of the event. This must contain the fields corresponding to a meter's
+        /// <c>customer_mapping.event_payload_key</c> (default is <c>stripe_customer_id</c>) and
+        /// <c>value_settings.event_payload_key</c> (default is <c>value</c>). Read more about the
+        /// <a
+        /// href="https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage#payload-key-overrides">payload</a>.
         /// </summary>
         [JsonProperty("payload")]
         public Dictionary<string, string> Payload { get; set; }

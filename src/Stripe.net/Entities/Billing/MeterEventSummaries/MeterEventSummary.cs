@@ -25,14 +25,15 @@ namespace Stripe.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// Aggregated value of all the events within start_time (inclusive) and end_time
-        /// (inclusive). The aggregation strategy is defined on meter via `default_aggregation``.
+        /// Aggregated value of all the events within <c>start_time</c> (inclusive) and
+        /// <c>end_time</c> (inclusive). The aggregation strategy is defined on meter via
+        /// <c>default_aggregation</c>.
         /// </summary>
         [JsonProperty("aggregated_value")]
         public decimal AggregatedValue { get; set; }
 
         /// <summary>
-        /// End timestamp for this usage summary (inclusive).
+        /// End timestamp for this event summary (inclusive).
         /// </summary>
         [JsonProperty("end_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -46,13 +47,13 @@ namespace Stripe.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The meter associated with this usage summary.
+        /// The meter associated with this event summary.
         /// </summary>
         [JsonProperty("meter")]
         public string Meter { get; set; }
 
         /// <summary>
-        /// Start timestamp for this usage summary (inclusive).
+        /// Start timestamp for this event summary (inclusive).
         /// </summary>
         [JsonProperty("start_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
