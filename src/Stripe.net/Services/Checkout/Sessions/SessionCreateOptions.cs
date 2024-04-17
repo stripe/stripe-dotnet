@@ -236,6 +236,13 @@ namespace Stripe.Checkout
         public string PaymentMethodConfiguration { get; set; }
 
         /// <summary>
+        /// This parameter allows you to set some attributes on the payment method created during a
+        /// Checkout session.
+        /// </summary>
+        [JsonProperty("payment_method_data")]
+        public SessionPaymentMethodDataOptions PaymentMethodData { get; set; }
+
+        /// <summary>
         /// Payment-method-specific configuration.
         /// </summary>
         [JsonProperty("payment_method_options")]
@@ -296,6 +303,13 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// Controls saved payment method settings for the session. Only available in <c>payment</c>
+        /// and <c>subscription</c> mode.
+        /// </summary>
+        [JsonProperty("saved_payment_method_options")]
+        public SessionSavedPaymentMethodOptionsOptions SavedPaymentMethodOptions { get; set; }
 
         /// <summary>
         /// A subset of parameters to be passed to SetupIntent creation for Checkout Sessions in
