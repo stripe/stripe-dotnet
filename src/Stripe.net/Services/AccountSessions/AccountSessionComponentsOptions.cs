@@ -27,6 +27,12 @@ namespace Stripe
         public AccountSessionComponentsCapitalFinancingPromotionOptions CapitalFinancingPromotion { get; set; }
 
         /// <summary>
+        /// Configuration for the capital overview embedded component.
+        /// </summary>
+        [JsonProperty("capital_overview")]
+        public AccountSessionComponentsCapitalOverviewOptions CapitalOverview { get; set; }
+
+        /// <summary>
         /// Configuration for the documents embedded component.
         /// </summary>
         [JsonProperty("documents")]
