@@ -411,6 +411,13 @@ namespace Stripe.Checkout
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
 
+        /// <summary>
+        /// Controls saved payment method settings for the session. Only available in <c>payment</c>
+        /// and <c>subscription</c> mode.
+        /// </summary>
+        [JsonProperty("saved_payment_method_options")]
+        public SessionSavedPaymentMethodOptions SavedPaymentMethodOptions { get; set; }
+
         #region Expandable SetupIntent
 
         /// <summary>
