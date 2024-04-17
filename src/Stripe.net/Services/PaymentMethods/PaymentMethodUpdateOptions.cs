@@ -7,6 +7,16 @@ namespace Stripe
     public class PaymentMethodUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// This field indicates whether this payment method can be shown again to its customer in a
+        /// checkout flow. Stripe products such as Checkout and Elements use this field to determine
+        /// whether a payment method can be shown as a saved payment method in a checkout flow. The
+        /// field defaults to <c>unspecified</c>.
+        /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("allow_redisplay")]
+        public string AllowRedisplay { get; set; }
+
+        /// <summary>
         /// Billing information associated with the PaymentMethod that may be used or required by
         /// particular types of payment methods.
         /// </summary>
