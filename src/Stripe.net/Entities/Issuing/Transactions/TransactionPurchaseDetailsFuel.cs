@@ -13,7 +13,8 @@ namespace Stripe.Issuing
         public string Type { get; set; }
 
         /// <summary>
-        /// The units for <c>volume_decimal</c>. One of <c>us_gallon</c> or <c>liter</c>.
+        /// The units for <c>volume_decimal</c>. One of <c>liter</c>, <c>us_gallon</c>, or
+        /// <c>other</c>.
         /// </summary>
         [JsonProperty("unit")]
         public string Unit { get; set; }
