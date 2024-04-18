@@ -52,6 +52,56 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>At any time, you can preview the upcoming invoice for a customer. This will show you
+        /// all the charges that are pending, including subscription renewal charges, invoice item
+        /// charges, etc. It will also show you any discounts that are applicable to the
+        /// invoice.</p>.
+        ///
+        /// <p>Note that when you are viewing an upcoming invoice, you are simply viewing a preview
+        /// – the invoice has not yet been created. As such, the upcoming invoice will not show up
+        /// in invoice listing calls, and you cannot use the API to pay or edit the invoice. If you
+        /// want to change the amount that your customer will be billed, you can add, remove, or
+        /// update pending invoice items, or update the customer’s discount.</p>.
+        ///
+        /// <p>You can preview the effects of updating a subscription, including a preview of what
+        /// proration will take place. To ensure that the actual proration is calculated exactly the
+        /// same as the previewed proration, you should pass the
+        /// <c>subscription_details.proration_date</c> parameter when doing the actual subscription
+        /// update. The recommended way to get only the prorations being previewed is to consider
+        /// only proration line items where <c>period[start]</c> is equal to the
+        /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
+        /// </summary>
+        public virtual Invoice CreatePreview(InvoiceCreatePreviewOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/create_preview", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>At any time, you can preview the upcoming invoice for a customer. This will show you
+        /// all the charges that are pending, including subscription renewal charges, invoice item
+        /// charges, etc. It will also show you any discounts that are applicable to the
+        /// invoice.</p>.
+        ///
+        /// <p>Note that when you are viewing an upcoming invoice, you are simply viewing a preview
+        /// – the invoice has not yet been created. As such, the upcoming invoice will not show up
+        /// in invoice listing calls, and you cannot use the API to pay or edit the invoice. If you
+        /// want to change the amount that your customer will be billed, you can add, remove, or
+        /// update pending invoice items, or update the customer’s discount.</p>.
+        ///
+        /// <p>You can preview the effects of updating a subscription, including a preview of what
+        /// proration will take place. To ensure that the actual proration is calculated exactly the
+        /// same as the previewed proration, you should pass the
+        /// <c>subscription_details.proration_date</c> parameter when doing the actual subscription
+        /// update. The recommended way to get only the prorations being previewed is to consider
+        /// only proration line items where <c>period[start]</c> is equal to the
+        /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
+        /// </summary>
+        public virtual Task<Invoice> CreatePreviewAsync(InvoiceCreatePreviewOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/create_preview", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Permanently deletes a one-off invoice draft. This cannot be undone. Attempts to
         /// delete invoices that are no longer in a draft state will fail; once an invoice has been
         /// finalized or if an invoice is for a subscription, it must be <a
