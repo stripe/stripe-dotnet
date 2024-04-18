@@ -1,5 +1,11 @@
 # Changelog
 
+## 44.4.0-beta.1 - 2024-04-18
+* [#2893](https://github.com/stripe/stripe-dotnet/pull/2893) Update generated code for beta
+  * Add support for `CapitalOverview`, `TaxRegistrations`, and `TaxSettings` on `AccountSessionComponentsOptions`
+  * Add support for `ExternalAccountCollection` on `AccountSessionComponentsFinancialAccountFeaturesOptions`
+  * Add support for `SubscriptionTrialFromPlan` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+
 ## 44.2.0 - 2024-04-16
 * [#2891](https://github.com/stripe/stripe-dotnet/pull/2891) Update generated code
   * Add support for new resource `Entitlements.ActiveEntitlementSummary`
