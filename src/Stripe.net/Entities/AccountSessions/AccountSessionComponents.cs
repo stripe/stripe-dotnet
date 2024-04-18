@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("account_onboarding")]
         public AccountSessionComponentsAccountOnboarding AccountOnboarding { get; set; }
 
+        [JsonProperty("balances")]
+        public AccountSessionComponentsBalances Balances { get; set; }
+
         [JsonProperty("capital_financing_promotion")]
         public AccountSessionComponentsCapitalFinancingPromotion CapitalFinancingPromotion { get; set; }
 
@@ -28,5 +31,8 @@ namespace Stripe
 
         [JsonProperty("payouts")]
         public AccountSessionComponentsPayouts Payouts { get; set; }
+
+        [JsonProperty("payouts_list")]
+        public AccountSessionComponentsPayoutsList PayoutsList { get; set; }
     }
 }

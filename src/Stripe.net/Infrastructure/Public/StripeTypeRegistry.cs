@@ -34,14 +34,8 @@ namespace Stripe
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
                 { "capital.financing_offer", typeof(Capital.FinancingOffer) },
-                {
-                    "capital.financing_summary", typeof(
-                        Capital.FinancingSummary)
-                },
-                {
-                    "capital.financing_transaction", typeof(
-                        Capital.FinancingTransaction)
-                },
+                { "capital.financing_summary", typeof(Capital.FinancingSummary) },
+                { "capital.financing_transaction", typeof(Capital.FinancingTransaction) },
                 { "card", typeof(Card) },
                 { "cash_balance", typeof(CashBalance) },
                 { "charge", typeof(Charge) },
@@ -61,13 +55,10 @@ namespace Stripe
                 { "customer_session", typeof(CustomerSession) },
                 { "discount", typeof(Discount) },
                 { "dispute", typeof(Dispute) },
-                {
-                    "entitlements.active_entitlement", typeof(
-                        Entitlements.ActiveEntitlement)
-                },
+                { "entitlements.active_entitlement", typeof(Entitlements.ActiveEntitlement) },
                 {
                     "entitlements.active_entitlement_summary", typeof(
-                        Entitlements.ActiveEntitlementSummary)
+                    Entitlements.ActiveEntitlementSummary)
                 },
                 { "entitlements.feature", typeof(Entitlements.Feature) },
                 { "ephemeral_key", typeof(EphemeralKey) },
@@ -78,7 +69,7 @@ namespace Stripe
                 { "financial_connections.account", typeof(FinancialConnections.Account) },
                 {
                     "financial_connections.account_inferred_balance", typeof(
-                        FinancialConnections.AccountInferredBalance)
+                    FinancialConnections.AccountInferredBalance)
                 },
                 {
                     "financial_connections.account_owner", typeof(
@@ -97,14 +88,8 @@ namespace Stripe
                 { "funding_instructions", typeof(FundingInstructions) },
                 { "gift_cards.card", typeof(GiftCards.Card) },
                 { "gift_cards.transaction", typeof(GiftCards.Transaction) },
-                {
-                    "identity.verification_report", typeof(
-                        Identity.VerificationReport)
-                },
-                {
-                    "identity.verification_session", typeof(
-                        Identity.VerificationSession)
-                },
+                { "identity.verification_report", typeof(Identity.VerificationReport) },
+                { "identity.verification_session", typeof(Identity.VerificationSession) },
                 { "invoice", typeof(Invoice) },
                 { "invoice_payment", typeof(InvoicePayment) },
                 { "invoiceitem", typeof(InvoiceItem) },
@@ -113,7 +98,7 @@ namespace Stripe
                 { "issuing.cardholder", typeof(Issuing.Cardholder) },
                 {
                     "issuing.credit_underwriting_record", typeof(
-                        Issuing.CreditUnderwritingRecord)
+                    Issuing.CreditUnderwritingRecord)
                 },
                 { "issuing.dispute", typeof(Issuing.Dispute) },
                 { "issuing.personalization_design", typeof(Issuing.PersonalizationDesign) },
@@ -145,11 +130,9 @@ namespace Stripe
                 { "quote_preview_invoice", typeof(QuotePreviewInvoice) },
                 {
                     "quote_preview_subscription_schedule", typeof(
-                        QuotePreviewSubscriptionSchedule)
+                    QuotePreviewSubscriptionSchedule)
                 },
-                {
-                    "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning)
-                },
+                { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
                 { "radar.value_list", typeof(Radar.ValueList) },
                 { "radar.value_list_item", typeof(Radar.ValueListItem) },
                 { "refund", typeof(Refund) },
@@ -168,9 +151,7 @@ namespace Stripe
                 { "subscription_item", typeof(SubscriptionItem) },
                 { "subscription_schedule", typeof(SubscriptionSchedule) },
                 { "tax.calculation", typeof(Tax.Calculation) },
-                {
-                    "tax.calculation_line_item", typeof(Tax.CalculationLineItem)
-                },
+                { "tax.calculation_line_item", typeof(Tax.CalculationLineItem) },
                 { "tax.form", typeof(Tax.Form) },
                 { "tax.registration", typeof(Tax.Registration) },
                 { "tax.settings", typeof(Tax.Settings) },

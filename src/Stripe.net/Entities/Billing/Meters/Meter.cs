@@ -45,14 +45,14 @@ namespace Stripe.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// The name of the usage event to record usage for. Corresponds with the <c>event_name</c>
-        /// field on usage events.
+        /// The name of the meter event to record usage for. Corresponds with the <c>event_name</c>
+        /// field on meter events.
         /// </summary>
         [JsonProperty("event_name")]
         public string EventName { get; set; }
 
         /// <summary>
-        /// The time window to pre-aggregate usage events for, if any.
+        /// The time window to pre-aggregate meter events for, if any.
         /// One of: <c>day</c>, or <c>hour</c>.
         /// </summary>
         [JsonProperty("event_time_window")]

@@ -17,8 +17,20 @@ namespace Stripe
         [JsonProperty("account_onboarding")]
         public AccountSessionComponentsAccountOnboardingOptions AccountOnboarding { get; set; }
 
+        /// <summary>
+        /// Configuration for the balances embedded component.
+        /// </summary>
+        [JsonProperty("balances")]
+        public AccountSessionComponentsBalancesOptions Balances { get; set; }
+
         [JsonProperty("capital_financing_promotion")]
         public AccountSessionComponentsCapitalFinancingPromotionOptions CapitalFinancingPromotion { get; set; }
+
+        /// <summary>
+        /// Configuration for the capital overview embedded component.
+        /// </summary>
+        [JsonProperty("capital_overview")]
+        public AccountSessionComponentsCapitalOverviewOptions CapitalOverview { get; set; }
 
         /// <summary>
         /// Configuration for the documents embedded component.
@@ -73,5 +85,23 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payouts")]
         public AccountSessionComponentsPayoutsOptions Payouts { get; set; }
+
+        /// <summary>
+        /// Configuration for the payouts list embedded component.
+        /// </summary>
+        [JsonProperty("payouts_list")]
+        public AccountSessionComponentsPayoutsListOptions PayoutsList { get; set; }
+
+        /// <summary>
+        /// Configuration for the tax registrations embedded component.
+        /// </summary>
+        [JsonProperty("tax_registrations")]
+        public AccountSessionComponentsTaxRegistrationsOptions TaxRegistrations { get; set; }
+
+        /// <summary>
+        /// Configuration for the tax settings embedded component.
+        /// </summary>
+        [JsonProperty("tax_settings")]
+        public AccountSessionComponentsTaxSettingsOptions TaxSettings { get; set; }
     }
 }
