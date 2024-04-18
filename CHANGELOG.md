@@ -1,5 +1,14 @@
 # Changelog
 
+## 44.3.0 - 2024-04-18
+* [#2894](https://github.com/stripe/stripe-dotnet/pull/2894) Update generated code
+  * Add support for `CreatePreview` method on resource `Invoice`
+  * Add support for `PaymentMethodData` on `Checkout.SessionCreateOptions`
+  * Add support for `SavedPaymentMethodOptions` on `Checkout.SessionCreateOptions` and `CheckoutSession`
+  * Add support for `Mobilepay` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+  * Add support for `AllowRedisplay` on `ConfirmationTokenPaymentMethodDataOptions`, `CustomerListPaymentMethodsOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `ScheduleDetails` and `SubscriptionDetails` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+
 ## 44.2.0 - 2024-04-16
 * [#2891](https://github.com/stripe/stripe-dotnet/pull/2891) Update generated code
   * Add support for new resource `Entitlements.ActiveEntitlementSummary`
