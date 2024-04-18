@@ -235,5 +235,16 @@ namespace Stripe
         [JsonProperty("subscription_trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionTrialEnd> SubscriptionTrialEnd { get; set; }
+
+        /// <summary>
+        /// Indicates if a plan's <c>trial_period_days</c> should be applied to the subscription.
+        /// Setting <c>subscription_trial_end</c> per subscription is preferred, and this defaults
+        /// to <c>false</c>. Setting this flag to <c>true</c> together with
+        /// <c>subscription_trial_end</c> is not allowed. See <a
+        /// href="https://stripe.com/docs/billing/subscriptions/trials">Using trial periods on
+        /// subscriptions</a> to learn more.
+        /// </summary>
+        [JsonProperty("subscription_trial_from_plan")]
+        public bool? SubscriptionTrialFromPlan { get; set; }
     }
 }
