@@ -42,14 +42,16 @@ namespace Stripe.Identity
 
         /// <summary>
         /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
-        /// check</a> to be performed.
+        /// check</a> to be performed. You must provide a <c>type</c> if not passing
+        /// <c>verification_flow</c>.
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// The ID of a Verification Flow from the Dashboard.
+        /// The ID of a Verification Flow from the Dashboard. See
+        /// https://docs.stripe.com/identity/verification-flows.
         /// </summary>
         [JsonProperty("verification_flow")]
         public string VerificationFlow { get; set; }
