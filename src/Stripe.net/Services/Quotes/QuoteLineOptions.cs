@@ -27,6 +27,15 @@ namespace Stripe
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// A point-in-time operation that cancels an existing subscription schedule at the line's
+        /// starts_at timestamp. Currently only compatible with <c>quote_acceptance_date</c> for
+        /// <c>starts_at</c>. When using cancel_subscription_schedule, the subscription schedule on
+        /// the quote remains unalterable, except for metadata modifications.
+        /// </summary>
+        [JsonProperty("cancel_subscription_schedule")]
+        public QuoteLineCancelSubscriptionScheduleOptions CancelSubscriptionSchedule { get; set; }
+
+        /// <summary>
         /// Details to identify the end of the time range modified by the proposed change. If not
         /// supplied, the quote line is considered a point-in-time operation that only affects the
         /// exact timestamp at <c>starts_at</c>, and a restricted set of attributes is supported on
