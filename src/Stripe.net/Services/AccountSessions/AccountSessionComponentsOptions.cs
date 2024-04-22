@@ -75,6 +75,12 @@ namespace Stripe
         public AccountSessionComponentsPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
+        /// Configuration for the payment method settings embedded component.
+        /// </summary>
+        [JsonProperty("payment_method_settings")]
+        public AccountSessionComponentsPaymentMethodSettingsOptions PaymentMethodSettings { get; set; }
+
+        /// <summary>
         /// Configuration for the payments embedded component.
         /// </summary>
         [JsonProperty("payments")]
