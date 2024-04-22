@@ -22,12 +22,12 @@ namespace Stripe
         public override string BasePath => "/v1/accounts/{PARENT_ID}/login_links";
 
         /// <summary>
-        /// <p>Creates a single-use login link for an Express account to access their Stripe
-        /// dashboard.</p>.
+        /// <p>Creates a single-use login link for a connected account to access the Express
+        /// Dashboard.</p>.
         ///
-        /// <p><strong>You may only create login links for <a
-        /// href="https://stripe.com/docs/connect/express-accounts">Express accounts</a> connected
-        /// to your platform</strong>.</p>.
+        /// <p><strong>You can only create login links for accounts that use the <a
+        /// href="https://stripe.com/connect/express-dashboard">Express Dashboard</a> and are
+        /// connected to your platform</strong>.</p>.
         /// </summary>
         public virtual LoginLink Create(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
         {
@@ -35,12 +35,12 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Creates a single-use login link for an Express account to access their Stripe
-        /// dashboard.</p>.
+        /// <p>Creates a single-use login link for a connected account to access the Express
+        /// Dashboard.</p>.
         ///
-        /// <p><strong>You may only create login links for <a
-        /// href="https://stripe.com/docs/connect/express-accounts">Express accounts</a> connected
-        /// to your platform</strong>.</p>.
+        /// <p><strong>You can only create login links for accounts that use the <a
+        /// href="https://stripe.com/connect/express-dashboard">Express Dashboard</a> and are
+        /// connected to your platform</strong>.</p>.
         /// </summary>
         public virtual Task<LoginLink> CreateAsync(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
