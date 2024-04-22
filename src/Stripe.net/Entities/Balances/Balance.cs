@@ -36,9 +36,10 @@ namespace Stripe
         public List<BalanceAmount> Available { get; set; }
 
         /// <summary>
-        /// Funds held due to negative balances on connected Custom accounts. You can find the
-        /// connect reserve balance for each currency and payment type in the <c>source_types</c>
-        /// property.
+        /// Funds held due to negative balances on connected accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts. You can find the connect reserve
+        /// balance for each currency and payment type in the <c>source_types</c> property.
         /// </summary>
         [JsonProperty("connect_reserved")]
         public List<BalanceAmount> ConnectReserved { get; set; }

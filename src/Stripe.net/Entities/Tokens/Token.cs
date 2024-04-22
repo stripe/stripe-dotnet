@@ -21,8 +21,8 @@ namespace Stripe
     ///
     /// You can't store or use tokens more than once. To store card or bank account information
     /// for later use, create <a href="https://stripe.com/docs/api#customers">Customer</a>
-    /// objects or <a href="https://stripe.com/docs/api#external_accounts">Custom accounts</a>.
-    /// <a href="https://stripe.com/docs/radar">Radar</a>, our integrated solution for automatic
+    /// objects or <a href="https://stripe.com/api#external_accounts">External accounts</a>. <a
+    /// href="https://stripe.com/docs/radar">Radar</a>, our integrated solution for automatic
     /// fraud protection, performs best with integrations that use client-side tokenization.
     /// </summary>
     public class Token : StripeEntity<Token>, IHasId, IHasObject
@@ -42,13 +42,15 @@ namespace Stripe
         /// <summary>
         /// These bank accounts are payment methods on <c>Customer</c> objects.
         ///
-        /// On the other hand <a href="https://stripe.com/docs/api#external_accounts">External
-        /// Accounts</a> are transfer destinations on <c>Account</c> objects for <a
-        /// href="https://stripe.com/docs/connect/custom-accounts">Custom accounts</a>. They can be
-        /// bank accounts or debit cards as well, and are documented in the links above.
+        /// On the other hand <a href="https://stripe.com/api#external_accounts">External
+        /// Accounts</a> are transfer destinations on <c>Account</c> objects for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes <a
+        /// href="https://stripe.com/connect/custom-accounts">Custom accounts</a>. They can be bank
+        /// accounts or debit cards as well, and are documented in the links above.
         ///
-        /// Related guide: <a href="https://stripe.com/docs/payments/bank-debits-transfers">Bank
-        /// debits and transfers</a>.
+        /// Related guide: <a href="https://stripe.com/payments/bank-debits-transfers">Bank debits
+        /// and transfers</a>.
         /// </summary>
         [JsonProperty("bank_account")]
         public BankAccount BankAccount { get; set; }
