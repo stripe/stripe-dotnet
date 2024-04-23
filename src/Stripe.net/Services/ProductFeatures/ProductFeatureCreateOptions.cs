@@ -6,8 +6,8 @@ namespace Stripe
     public class ProductFeatureCreateOptions : BaseOptions
     {
         /// <summary>
-        /// The ID of the <a href="docs/api/entitlements/feature">Feature</a> object attached to
-        /// this product.
+        /// The ID of the <a href="https://stripe.com/docs/api/entitlements/feature">Feature</a>
+        /// object attached to this product.
         /// </summary>
         [JsonProperty("entitlement_feature")]
         public string EntitlementFeature { get; set; }
