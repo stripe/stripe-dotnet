@@ -10,8 +10,8 @@ namespace Stripe
 
         /// <summary>
         /// The trigger name of the automation that triggered this action. Please visit <a
-        /// href="https://stripe.com/docs/billing/revenue-recovery/automations#choose-a-trigger">Revenue
-        /// and retention automations</a> for all possible trigger names.
+        /// href="https://stripe.com/docs/billing/automations#choose-a-trigger">Revenue and
+        /// retention automations</a> for all possible trigger names.
         /// </summary>
         [JsonProperty("trigger")]
         public string Trigger { get; set; }

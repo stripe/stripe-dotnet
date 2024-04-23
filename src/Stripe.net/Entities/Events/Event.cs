@@ -90,8 +90,7 @@ namespace Stripe
         /// <summary>
         /// Information about the action that causes the event. Only present when the event is
         /// triggered by an API request or an <a
-        /// href="https://stripe.com/docs/billing/revenue-recovery/automations">Automation</a>
-        /// action.
+        /// href="https://stripe.com/docs/billing/automations">Automation</a> action.
         /// </summary>
         [JsonProperty("reason")]
         public EventReason Reason { get; set; }
