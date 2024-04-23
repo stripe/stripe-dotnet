@@ -30,7 +30,8 @@ namespace Stripe
         /// A point-in-time operation that cancels an existing subscription schedule at the line's
         /// starts_at timestamp. Currently only compatible with <c>quote_acceptance_date</c> for
         /// <c>starts_at</c>. When using cancel_subscription_schedule, the subscription schedule on
-        /// the quote remains unalterable, except for metadata modifications.
+        /// the quote remains unalterable, except for modifications to the metadata,
+        /// collection_method or invoice_settings.
         /// </summary>
         [JsonProperty("cancel_subscription_schedule")]
         public QuoteLineCancelSubscriptionScheduleOptions CancelSubscriptionSchedule { get; set; }
