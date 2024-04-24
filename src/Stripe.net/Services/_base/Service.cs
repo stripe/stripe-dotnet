@@ -327,7 +327,7 @@ namespace Stripe
                 options,
                 requestOptions);
 
-            options = options?.Clone() ?? new ListOptions();
+            options = ((ListOptions)options?.Clone()) ?? new ListOptions();
             bool iterateBackward = false;
 
             // Backward iterating activates if we have an `EndingBefore`
@@ -485,7 +485,7 @@ namespace Stripe
                 options,
                 requestOptions);
 
-            options = options?.Clone() ?? new SearchOptions();
+            options = ((SearchOptions)options?.Clone()) ?? new SearchOptions();
 
             while (true)
             {
