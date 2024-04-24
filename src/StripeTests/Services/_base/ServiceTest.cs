@@ -87,13 +87,16 @@ namespace StripeTests
                 "?page=page2&query=my+query");
 
             var service = new TestService(this.StripeClient);
+            var options = new SearchOptions() { Query = "my query" };
 
             HashSet<string> ids = new HashSet<string>();
-            foreach (var testEntity in service.SearchAutoPaging(new SearchOptions() { Query = "my query" }))
+            foreach (var testEntity in service.SearchAutoPaging(options))
             {
                 Assert.NotNull(testEntity);
                 ids.Add(testEntity.Id);
             }
+
+            Assert.Null(options.Page);
 
             Assert.Equal(4, ids.Count);
             Assert.Equal(4, ids.Count);
@@ -118,12 +121,15 @@ namespace StripeTests
 
             var service = new TestService(this.StripeClient);
 
+            var options = new SearchOptions() { Query = "my query" };
             HashSet<string> ids = new HashSet<string>();
-            await foreach (var testEntity in service.SearchAutoPagingAsync(new SearchOptions() { Query = "my query" }))
+            await foreach (var testEntity in service.SearchAutoPagingAsync(options))
             {
                 Assert.NotNull(testEntity);
                 ids.Add(testEntity.Id);
             }
+
+            Assert.Null(options.Page);
 
             Assert.Equal(4, ids.Count);
         }
