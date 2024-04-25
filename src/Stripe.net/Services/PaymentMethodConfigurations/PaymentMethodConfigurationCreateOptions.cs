@@ -244,6 +244,17 @@ namespace Stripe
         public PaymentMethodConfigurationLinkOptions Link { get; set; }
 
         /// <summary>
+        /// MobilePay is a <a
+        /// href="https://stripe.com/docs/payments/payment-methods#usage">single-use</a> card wallet
+        /// payment method used in Denmark and Finland. It allows customers to <a
+        /// href="https://stripe.com/docs/payments/payment-methods#customer-actions">authenticate
+        /// and approve</a> payments using the MobilePay app. Check this <a
+        /// href="https://stripe.com/docs/payments/mobilepay">page</a> for more details.
+        /// </summary>
+        [JsonProperty("mobilepay")]
+        public PaymentMethodConfigurationMobilepayOptions Mobilepay { get; set; }
+
+        /// <summary>
         /// Stripe users in Europe and the United States can accept Multibanco payments from
         /// customers in Portugal using <a href="https://stripe.com/docs/sources">Sources</a>—a
         /// single integration path for creating payments using any supported method.
