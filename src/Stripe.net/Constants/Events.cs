@@ -538,7 +538,8 @@ namespace Stripe
         public const string InvoiceCreated = "invoice.created";
 
         /// <summary>
-        /// Occurs whenever a draft invoice is deleted.
+        /// Occurs whenever a draft invoice is deleted. Note: This event is not sent for <a
+        /// href="https://docs.stripe.com/api/invoices/create_preview">invoice previews</a>.
         /// </summary>
         public const string InvoiceDeleted = "invoice.deleted";
 
