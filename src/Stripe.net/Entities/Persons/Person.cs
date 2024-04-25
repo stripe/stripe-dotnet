@@ -9,15 +9,16 @@ namespace Stripe
     /// <summary>
     /// This is an object representing a person associated with a Stripe account.
     ///
-    /// A platform cannot access a Standard or Express account's persons after the account
-    /// starts onboarding, such as after generating an account link for the account. See the <a
-    /// href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a> or <a
-    /// href="https://stripe.com/docs/connect/express-accounts">Express onboarding
-    /// documentation</a> for information about platform prefilling and account onboarding
-    /// steps.
+    /// A platform cannot access a person for an account where <a
+    /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a>
+    /// is <c>stripe</c>, which includes Standard and Express accounts, after creating an
+    /// Account Link or Account Session to start Connect onboarding.
     ///
-    /// Related guide: <a
-    /// href="https://stripe.com/docs/connect/handling-api-verification#person-information">Handling
+    /// See the <a href="https://stripe.com/connect/standard-accounts">Standard onboarding</a>
+    /// or <a href="https://stripe.com/connect/express-accounts">Express onboarding</a>
+    /// documentation for information about prefilling information and account onboarding steps.
+    /// Learn more about <a
+    /// href="https://stripe.com/connect/handling-api-verification#person-information">handling
     /// identity verification with the API</a>.
     /// </summary>
     public class Person : StripeEntity<Person>, IHasId, IHasMetadata, IHasObject

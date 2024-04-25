@@ -32,7 +32,10 @@ namespace Stripe
         /// <summary>
         /// (ID of the Account)
         /// The account this card belongs to. This attribute will not be in the card object if the
-        /// card belongs to a customer or recipient instead.
+        /// card belongs to a customer or recipient instead. This property is only available for
+        /// accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonIgnore]
         public string AccountId
@@ -44,7 +47,10 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The account this card belongs to. This attribute will not be in the card object if the
-        /// card belongs to a customer or recipient instead.
+        /// card belongs to a customer or recipient instead. This property is only available for
+        /// accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -136,7 +142,10 @@ namespace Stripe
         /// <summary>
         /// Three-letter <a href="https://stripe.com/docs/payouts">ISO code for currency</a>. Only
         /// applicable on accounts (not customers or recipients). The card can be used as a transfer
-        /// destination for funds in this currency.
+        /// destination for funds in this currency. This property is only available for accounts
+        /// where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -186,7 +195,10 @@ namespace Stripe
         public string CvcCheck { get; set; }
 
         /// <summary>
-        /// Whether this card is the default external account for its currency.
+        /// Whether this card is the default external account for its currency. This property is
+        /// only available for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }

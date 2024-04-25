@@ -7,7 +7,9 @@ namespace Stripe
     {
         /// <summary>
         /// A value indicating the responsible payer of a bundle of Stripe fees for pricing-control
-        /// eligible products on this account.
+        /// eligible products on this account. Learn more about <a
+        /// href="https://docs.stripe.com/connect/direct-charges-fee-payer-behavior">fee behavior on
+        /// connected accounts</a>.
         /// One of: <c>account</c>, <c>application</c>, <c>application_custom</c>, or
         /// <c>application_express</c>.
         /// </summary>

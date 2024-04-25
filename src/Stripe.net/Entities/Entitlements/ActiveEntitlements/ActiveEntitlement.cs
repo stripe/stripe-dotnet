@@ -2,6 +2,7 @@
 namespace Stripe.Entitlements
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     /// <summary>
     /// An active entitlement describes access to a feature for a customer.
@@ -20,11 +21,38 @@ namespace Stripe.Entitlements
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        #region Expandable Feature
+
         /// <summary>
-        /// The feature that the customer is entitled to.
+        /// (ID of the Feature)
+        /// The <a href="https://stripe.com/docs/api/entitlements/feature">Feature</a> that the
+        /// customer is entitled to.
         /// </summary>
+        [JsonIgnore]
+        public string FeatureId
+        {
+            get => this.InternalFeature?.Id;
+            set => this.InternalFeature = SetExpandableFieldId(value, this.InternalFeature);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The <a href="https://stripe.com/docs/api/entitlements/feature">Feature</a> that the
+        /// customer is entitled to.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Feature Feature
+        {
+            get => this.InternalFeature?.ExpandedObject;
+            set => this.InternalFeature = SetExpandableFieldObject(value, this.InternalFeature);
+        }
+
         [JsonProperty("feature")]
-        public string Feature { get; set; }
+        [JsonConverter(typeof(ExpandableFieldConverter<Feature>))]
+        internal ExpandableField<Feature> InternalFeature { get; set; }
+        #endregion
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

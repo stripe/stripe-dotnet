@@ -148,6 +148,9 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("mobilepay")]
+        public PaymentMethodConfigurationMobilepay Mobilepay { get; set; }
+
         /// <summary>
         /// The configuration's name.
         /// </summary>

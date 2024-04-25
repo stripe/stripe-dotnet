@@ -61,12 +61,16 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>With <a href="https://stripe.com/docs/connect">Connect</a>, you can delete accounts
-        /// you manage.</p>.
+        /// <p>With <a href="https://stripe.com/connect">Connect</a>, you can delete accounts you
+        /// manage.</p>.
         ///
-        /// <p>Accounts created using test-mode keys can be deleted at any time. Standard accounts
-        /// created using live-mode keys cannot be deleted. Custom or Express accounts created using
-        /// live-mode keys can only be deleted once all balances are zero.</p>.
+        /// <p>Test-mode accounts can be deleted at any time.</p>.
+        ///
+        /// <p>Live-mode accounts where Stripe is responsible for negative account balances cannot
+        /// be deleted, which includes Standard accounts. Live-mode accounts where your platform is
+        /// liable for negative account balances, which includes Custom and Express accounts, can be
+        /// deleted when all <a href="https://stripe.com/api/balance/balanace_object">balances</a>
+        /// are zero.</p>.
         ///
         /// <p>If you want to delete your own account, use the <a
         /// href="https://dashboard.stripe.com/settings/account">account information tab in your
@@ -78,12 +82,16 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>With <a href="https://stripe.com/docs/connect">Connect</a>, you can delete accounts
-        /// you manage.</p>.
+        /// <p>With <a href="https://stripe.com/connect">Connect</a>, you can delete accounts you
+        /// manage.</p>.
         ///
-        /// <p>Accounts created using test-mode keys can be deleted at any time. Standard accounts
-        /// created using live-mode keys cannot be deleted. Custom or Express accounts created using
-        /// live-mode keys can only be deleted once all balances are zero.</p>.
+        /// <p>Test-mode accounts can be deleted at any time.</p>.
+        ///
+        /// <p>Live-mode accounts where Stripe is responsible for negative account balances cannot
+        /// be deleted, which includes Standard accounts. Live-mode accounts where your platform is
+        /// liable for negative account balances, which includes Custom and Express accounts, can be
+        /// deleted when all <a href="https://stripe.com/api/balance/balanace_object">balances</a>
+        /// are zero.</p>.
         ///
         /// <p>If you want to delete your own account, use the <a
         /// href="https://dashboard.stripe.com/settings/account">account information tab in your
@@ -151,11 +159,13 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>With <a href="https://stripe.com/docs/connect">Connect</a>, you may flag accounts as
-        /// suspicious.</p>.
+        /// <p>With <a href="https://stripe.com/connect">Connect</a>, you can reject accounts that
+        /// you have flagged as suspicious.</p>.
         ///
-        /// <p>Test-mode Custom and Express accounts can be rejected at any time. Accounts created
-        /// using live-mode keys may only be rejected once all balances are zero.</p>.
+        /// <p>Only accounts where your platform is liable for negative account balances, which
+        /// includes Custom and Express accounts, can be rejected. Test-mode accounts can be
+        /// rejected at any time. Live-mode accounts can only be rejected after all balances are
+        /// zero.</p>.
         /// </summary>
         public virtual Account Reject(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null)
         {
@@ -163,11 +173,13 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>With <a href="https://stripe.com/docs/connect">Connect</a>, you may flag accounts as
-        /// suspicious.</p>.
+        /// <p>With <a href="https://stripe.com/connect">Connect</a>, you can reject accounts that
+        /// you have flagged as suspicious.</p>.
         ///
-        /// <p>Test-mode Custom and Express accounts can be rejected at any time. Accounts created
-        /// using live-mode keys may only be rejected once all balances are zero.</p>.
+        /// <p>Only accounts where your platform is liable for negative account balances, which
+        /// includes Custom and Express accounts, can be rejected. Test-mode accounts can be
+        /// rejected at any time. Live-mode accounts can only be rejected after all balances are
+        /// zero.</p>.
         /// </summary>
         public virtual Task<Account> RejectAsync(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -175,16 +187,21 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Updates a <a href="https://stripe.com/docs/connect/accounts">connected account</a> by
+        /// <p>Updates a <a href="https://stripe.com/connect/accounts">connected account</a> by
         /// setting the values of the parameters passed. Any parameters not provided are left
         /// unchanged.</p>.
         ///
-        /// <p>For Custom accounts, you can update any information on the account. For other
-        /// accounts, you can update all information until that account has started to go through
-        /// Connect Onboarding. Once you create an <a
-        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
-        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, some properties
-        /// can only be changed or updated for Custom accounts.</p>.
+        /// <p>For accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts, you can update any information on
+        /// the account.</p>.
+        ///
+        /// <p>For accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>, which includes Standard and Express accounts, you can update all
+        /// information until you create an <a href="https://stripe.com/api/account_links">Account
+        /// Link</a> or <a href="https://stripe.com/api/account_sessions">Account Session</a> to
+        /// start Connect onboarding, after which some properties can no longer be updated.</p>.
         ///
         /// <p>To update your own account, use the <a
         /// href="https://dashboard.stripe.com/settings/account">Dashboard</a>. Refer to our <a
@@ -197,16 +214,21 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Updates a <a href="https://stripe.com/docs/connect/accounts">connected account</a> by
+        /// <p>Updates a <a href="https://stripe.com/connect/accounts">connected account</a> by
         /// setting the values of the parameters passed. Any parameters not provided are left
         /// unchanged.</p>.
         ///
-        /// <p>For Custom accounts, you can update any information on the account. For other
-        /// accounts, you can update all information until that account has started to go through
-        /// Connect Onboarding. Once you create an <a
-        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
-        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, some properties
-        /// can only be changed or updated for Custom accounts.</p>.
+        /// <p>For accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts, you can update any information on
+        /// the account.</p>.
+        ///
+        /// <p>For accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>, which includes Standard and Express accounts, you can update all
+        /// information until you create an <a href="https://stripe.com/api/account_links">Account
+        /// Link</a> or <a href="https://stripe.com/api/account_sessions">Account Session</a> to
+        /// start Connect onboarding, after which some properties can no longer be updated.</p>.
         ///
         /// <p>To update your own account, use the <a
         /// href="https://dashboard.stripe.com/settings/account">Dashboard</a>. Refer to our <a

@@ -22,9 +22,11 @@ namespace Stripe
 
         /// <summary>
         /// The business type. Once you create an <a
-        /// href="https://docs.stripe.com/api/account_links">Account Link</a> or <a
-        /// href="https://docs.stripe.com/api/account_sessions">Account Session</a>, this property
-        /// can only be updated for Custom accounts.
+        /// href="https://stripe.com/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/api/account_sessions">Account Session</a>, this property can
+        /// only be updated for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>
@@ -33,9 +35,13 @@ namespace Stripe
 
         /// <summary>
         /// Each key of the dictionary represents a capability, and each capability maps to its
-        /// settings (e.g. whether it has been requested or not). Each capability will be inactive
-        /// until you have provided its specific requirements and Stripe has verified them. An
-        /// account may have some of its requested capabilities be active and some be inactive.
+        /// settings (for example, whether it has been requested or not). Each capability is
+        /// inactive until you have provided its specific requirements and Stripe has verified them.
+        /// An account might have some of its requested capabilities be active and some be inactive.
+        ///
+        /// Required when <a
+        /// href="https://stripe.com/api/accounts/create#create_account-controller-dashboard-type">account.controller.stripe_dashboard.type</a>
+        /// is <c>none</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("capabilities")]
         public AccountCapabilitiesOptions Capabilities { get; set; }
@@ -43,9 +49,11 @@ namespace Stripe
         /// <summary>
         /// Information about the company or business. This field is available for any
         /// <c>business_type</c>. Once you create an <a
-        /// href="https://docs.stripe.com/api/account_links">Account Link</a> or <a
-        /// href="https://docs.stripe.com/api/account_sessions">Account Session</a>, this property
-        /// can only be updated for Custom accounts.
+        /// href="https://stripe.com/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/api/account_sessions">Account Session</a>, this property can
+        /// only be updated for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("company")]
         public AccountCompanyOptions Company { get; set; }
@@ -66,27 +74,31 @@ namespace Stripe
 
         /// <summary>
         /// The email address of the account holder. This is only to make the account easier to
-        /// identify to you. Stripe only emails Custom accounts with your consent.
+        /// identify to you. If <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts, Stripe doesn't email the account
+        /// without your consent.
         /// </summary>
         [JsonProperty("email")]
         public string Email { get; set; }
 
         /// <summary>
         /// A card or bank account to attach to the account for receiving <a
-        /// href="https://docs.stripe.com/connect/bank-debit-card-payouts">payouts</a> (you won’t be
-        /// able to use it for top-ups). You can provide either a token, like the ones returned by
-        /// <a href="https://docs.stripe.com/js">Stripe.js</a>, or a dictionary, as documented in
-        /// the <c>external_account</c> parameter for <a
-        /// href="https://docs.stripe.com/api#account_create_bank_account">bank account</a>
-        /// creation. <br/><br/>By default, providing an external account sets it as the new default
-        /// external account for its currency, and deletes the old default if one exists. To add
-        /// additional external accounts without replacing the existing default for the currency,
-        /// use the <a href="https://docs.stripe.com/api#account_create_bank_account">bank
-        /// account</a> or <a href="https://docs.stripe.com/api#account_create_card">card
-        /// creation</a> APIs. After you create an <a
-        /// href="https://docs.stripe.com/api/account_links">Account Link</a> or <a
-        /// href="https://docs.stripe.com/api/account_sessions">Account Session</a>, this property
-        /// can only be updated for Custom accounts.
+        /// href="https://stripe.com/connect/bank-debit-card-payouts">payouts</a> (you won’t be able
+        /// to use it for top-ups). You can provide either a token, like the ones returned by <a
+        /// href="https://stripe.com/js">Stripe.js</a>, or a dictionary, as documented in the
+        /// <c>external_account</c> parameter for <a
+        /// href="https://stripe.com/api#account_create_bank_account">bank account</a> creation.
+        /// <br/><br/>By default, providing an external account sets it as the new default external
+        /// account for its currency, and deletes the old default if one exists. To add additional
+        /// external accounts without replacing the existing default for the currency, use the <a
+        /// href="https://stripe.com/api#account_create_bank_account">bank account</a> or <a
+        /// href="https://stripe.com/api#account_create_card">card creation</a> APIs. After you
+        /// create an <a href="https://stripe.com/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/api/account_sessions">Account Session</a>, this property can
+        /// only be updated for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("external_account")]
         [JsonConverter(typeof(AnyOfConverter))]
@@ -95,9 +107,11 @@ namespace Stripe
         /// <summary>
         /// Information about the person represented by the account. This field is null unless
         /// <c>business_type</c> is set to <c>individual</c>. Once you create an <a
-        /// href="https://docs.stripe.com/api/account_links">Account Link</a> or <a
-        /// href="https://docs.stripe.com/api/account_sessions">Account Session</a>, this property
-        /// can only be updated for Custom accounts.
+        /// href="https://stripe.com/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/api/account_sessions">Account Session</a>, this property can
+        /// only be updated for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("individual")]
         public AccountIndividualOptions Individual { get; set; }
@@ -119,8 +133,10 @@ namespace Stripe
 
         /// <summary>
         /// Details on the account's acceptance of the <a
-        /// href="https://docs.stripe.com/connect/updating-accounts#tos-acceptance">Stripe Services
-        /// Agreement</a> This property can only be updated for Custom accounts.
+        /// href="https://stripe.com/connect/updating-accounts#tos-acceptance">Stripe Services
+        /// Agreement</a>. This property can only be updated for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("tos_acceptance")]
         public AccountTosAcceptanceOptions TosAcceptance { get; set; }

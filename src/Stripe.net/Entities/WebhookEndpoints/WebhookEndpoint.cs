@@ -7,7 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// You can configure <a href="https://stripe.com/docs/webhooks/">webhook endpoints</a> via
+    /// You can configure <a href="https://docs.stripe.com/webhooks/">webhook endpoints</a> via
     /// the API to be notified about events that happen in your Stripe account or connected
     /// accounts.
     ///
@@ -15,7 +15,7 @@ namespace Stripe
     /// dashboard</a>, which provides a user interface for registering and testing your webhook
     /// endpoints.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/webhooks/configure">Setting up
+    /// Related guide: <a href="https://docs.stripe.com/webhooks/configure">Setting up
     /// webhooks</a>.
     /// </summary>
     public class WebhookEndpoint : StripeEntity<WebhookEndpoint>, IHasId, IHasMetadata, IHasObject
@@ -87,7 +87,7 @@ namespace Stripe
 
         /// <summary>
         /// The endpoint's secret, used to generate <a
-        /// href="https://stripe.com/docs/webhooks/signatures">webhook signatures</a>. Only returned
+        /// href="https://docs.stripe.com/webhooks/signatures">webhook signatures</a>. Only returned
         /// at creation.
         /// </summary>
         [JsonProperty("secret")]

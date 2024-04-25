@@ -44,7 +44,7 @@ namespace Stripe
         /// <summary>
         /// <p>List events, going back up to 30 days. Each event data is rendered according to
         /// Stripe API version at its creation time, specified in <a
-        /// href="https://stripe.com/docs/api/events/object">event object</a> <c>api_version</c>
+        /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
         /// </summary>
@@ -56,7 +56,7 @@ namespace Stripe
         /// <summary>
         /// <p>List events, going back up to 30 days. Each event data is rendered according to
         /// Stripe API version at its creation time, specified in <a
-        /// href="https://stripe.com/docs/api/events/object">event object</a> <c>api_version</c>
+        /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
         /// </summary>
@@ -68,7 +68,7 @@ namespace Stripe
         /// <summary>
         /// <p>List events, going back up to 30 days. Each event data is rendered according to
         /// Stripe API version at its creation time, specified in <a
-        /// href="https://stripe.com/docs/api/events/object">event object</a> <c>api_version</c>
+        /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
         /// </summary>
@@ -80,7 +80,7 @@ namespace Stripe
         /// <summary>
         /// <p>List events, going back up to 30 days. Each event data is rendered according to
         /// Stripe API version at its creation time, specified in <a
-        /// href="https://stripe.com/docs/api/events/object">event object</a> <c>api_version</c>
+        /// href="https://docs.stripe.com/api/events/object">event object</a> <c>api_version</c>
         /// attribute (not according to your current Stripe API version or <c>Stripe-Version</c>
         /// header).</p>.
         /// </summary>

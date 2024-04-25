@@ -104,7 +104,7 @@ namespace Stripe
         /// <summary>
         /// Occurs when funds are reinstated to your account after a dispute is closed. This
         /// includes <a
-        /// href="https://stripe.com/docs/disputes#disputes-on-partially-refunded-payments">partially
+        /// href="https://docs.stripe.com/disputes#disputes-on-partially-refunded-payments">partially
         /// refunded payments</a>.
         /// </summary>
         public const string ChargeDisputeFundsReinstated = "charge.dispute.funds_reinstated";
@@ -303,7 +303,7 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a customer's subscription is paused. Only applies when subscriptions
         /// enter <c>status=paused</c>, not when <a
-        /// href="https://stripe.com/docs/billing/subscriptions/pause">payment collection</a> is
+        /// href="https://docs.stripe.com/billing/subscriptions/pause">payment collection</a> is
         /// paused.
         /// </summary>
         public const string CustomerSubscriptionPaused = "customer.subscription.paused";
@@ -323,8 +323,8 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a customer's subscription is no longer paused. Only applies when a
         /// <c>status=paused</c> subscription is <a
-        /// href="https://stripe.com/docs/api/subscriptions/resume">resumed</a>, not when <a
-        /// href="https://stripe.com/docs/billing/subscriptions/pause">payment collection</a> is
+        /// href="https://docs.stripe.com/api/subscriptions/resume">resumed</a>, not when <a
+        /// href="https://docs.stripe.com/billing/subscriptions/pause">payment collection</a> is
         /// resumed.
         /// </summary>
         public const string CustomerSubscriptionResumed = "customer.subscription.resumed";
@@ -444,19 +444,20 @@ namespace Stripe
         /// <summary>
         /// Occurs whenever a new invoice is created. To learn how webhooks can be used with this
         /// event, and how they can affect it, see <a
-        /// href="https://stripe.com/docs/subscriptions/webhooks">Using Webhooks with
+        /// href="https://docs.stripe.com/subscriptions/webhooks">Using Webhooks with
         /// Subscriptions</a>.
         /// </summary>
         public const string InvoiceCreated = "invoice.created";
 
         /// <summary>
-        /// Occurs whenever a draft invoice is deleted.
+        /// Occurs whenever a draft invoice is deleted. Note: This event is not sent for <a
+        /// href="https://docs.stripe.com/api/invoices/create_preview">invoice previews</a>.
         /// </summary>
         public const string InvoiceDeleted = "invoice.deleted";
 
         /// <summary>
         /// Occurs whenever a draft invoice cannot be finalized. See the invoice’s <a
-        /// href="https://stripe.com/docs/api/invoices/object#invoice_object-last_finalization_error">last
+        /// href="https://docs.stripe.com/api/invoices/object#invoice_object-last_finalization_error">last
         /// finalization error</a> for details.
         /// </summary>
         public const string InvoiceFinalizationFailed = "invoice.finalization_failed";
@@ -533,7 +534,7 @@ namespace Stripe
 
         /// <summary>
         /// Represents a synchronous request for authorization, see <a
-        /// href="https://stripe.com/docs/issuing/purchases/authorizations#authorization-handling">Using
+        /// href="https://docs.stripe.com/issuing/purchases/authorizations#authorization-handling">Using
         /// your integration to handle authorization requests</a>.
         /// </summary>
         public const string IssuingAuthorizationRequest = "issuing_authorization.request";
@@ -617,7 +618,7 @@ namespace Stripe
         /// Occurs when a PaymentIntent has funds to be captured. Check the <c>amount_capturable</c>
         /// property on the PaymentIntent to determine the amount that can be captured. You may
         /// capture the PaymentIntent with an <c>amount_to_capture</c> value up to the specified
-        /// amount. <a href="https://stripe.com/docs/api/payment_intents/capture">Learn more about
+        /// amount. <a href="https://docs.stripe.com/api/payment_intents/capture">Learn more about
         /// capturing PaymentIntents.</a>.
         /// </summary>
         public const string PaymentIntentAmountCapturableUpdated = "payment_intent.amount_capturable_updated";
@@ -686,7 +687,7 @@ namespace Stripe
 
         /// <summary>
         /// Occurs whenever a payment method is updated via the <a
-        /// href="https://stripe.com/docs/api/payment_methods/update">PaymentMethod update API</a>.
+        /// href="https://docs.stripe.com/api/payment_methods/update">PaymentMethod update API</a>.
         /// </summary>
         public const string PaymentMethodUpdated = "payment_method.updated";
 
