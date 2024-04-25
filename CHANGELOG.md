@@ -1,5 +1,10 @@
 # Changelog
 
+## 44.5.0-beta.1 - 2024-04-25
+* [#2896](https://github.com/stripe/stripe-dotnet/pull/2896) Update generated code for beta
+  * Add support for `PaymentMethodSettings` on `AccountSessionComponentsOptions`
+  * Add support for `CancelSubscriptionSchedule` on `QuoteLine` and `QuoteLinesOptions`
+
 ## 44.4.0-beta.1 - 2024-04-18
 * [#2893](https://github.com/stripe/stripe-dotnet/pull/2893) Update generated code for beta
   * Add support for `CapitalOverview`, `TaxRegistrations`, and `TaxSettings` on `AccountSessionComponentsOptions`
