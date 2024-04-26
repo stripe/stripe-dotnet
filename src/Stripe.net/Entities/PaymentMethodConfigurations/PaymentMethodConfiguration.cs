@@ -25,6 +25,10 @@ namespace Stripe
     /// href="https://dashboard.stripe.com/settings/payment_methods/connected_accounts">managed
     /// in the dashboard</a> and are not available in this API.
     ///
+    /// <strong>Note:</strong> The ability to turn off cards is in limited preview. Please <a
+    /// href="https://support.stripe.com/contact">contact us</a> if you require this
+    /// functionality.
+    ///
     /// Related guides: - <a
     /// href="https://stripe.com/docs/connect/payment-method-configurations">Payment Method
     /// Configurations API</a> - <a
