@@ -36,7 +36,7 @@ namespace Stripe.Tax
         public List<CalculationLineItemOptions> LineItems { get; set; }
 
         /// <summary>
-        /// Details about the address from which the goods are being shippped.
+        /// Details about the address from which the goods are being shipped.
         /// </summary>
         [JsonProperty("ship_from_details")]
         public CalculationShipFromDetailsOptions ShipFromDetails { get; set; }

@@ -5,6 +5,15 @@
   * Add support for `PaymentMethodSettings` on `AccountSessionComponentsOptions`
   * Add support for `CancelSubscriptionSchedule` on `QuoteLine` and `QuoteLinesOptions`
 
+## 44.4.0 - 2024-04-25
+* [#2897](https://github.com/stripe/stripe-dotnet/pull/2897) Update generated code
+  * Add support for `SetupFutureUsage` on `CheckoutSessionPaymentMethodOptionsAmazonPay`, `CheckoutSessionPaymentMethodOptionsRevolutPay`, `PaymentIntentPaymentMethodOptionsAmazonPay`, and `PaymentIntentPaymentMethodOptionsRevolutPay`
+  * Change type of `EntitlementsActiveEntitlementFeature` from `string` to `expandable($Entitlements.Feature)`
+  * Remove support for inadvertently released identity verification features `Email` and `Phone` on `IdentityVerificationSessionOptionsOptions`
+  * Add support for `AmazonPay` and `RevolutPay` on `MandatePaymentMethodDetails` and `SetupAttemptPaymentMethodDetails`
+  * Add support for `EndingBefore`, `Limit`, and `StartingAfter` on `PaymentMethodConfigurationListOptions`
+  * Add support for `Mobilepay` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+
 ## 44.4.0-beta.1 - 2024-04-18
 * [#2893](https://github.com/stripe/stripe-dotnet/pull/2893) Update generated code for beta
   * Add support for `CapitalOverview`, `TaxRegistrations`, and `TaxSettings` on `AccountSessionComponentsOptions`
