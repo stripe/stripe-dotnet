@@ -36,6 +36,12 @@ namespace Stripe.Tax
         public List<CalculationLineItemOptions> LineItems { get; set; }
 
         /// <summary>
+        /// Details about the address from which the goods are being shipped.
+        /// </summary>
+        [JsonProperty("ship_from_details")]
+        public CalculationShipFromDetailsOptions ShipFromDetails { get; set; }
+
+        /// <summary>
         /// Shipping cost details to be used for the calculation.
         /// </summary>
         [JsonProperty("shipping_cost")]
