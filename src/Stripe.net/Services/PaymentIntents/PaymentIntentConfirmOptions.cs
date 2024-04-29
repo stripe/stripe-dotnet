@@ -104,13 +104,6 @@ namespace Stripe
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
-        /// The list of payment method types (e.g. card) that this PaymentIntent is allowed to use.
-        /// If this is not provided, defaults to ["card"].
-        /// </summary>
-        [JsonProperty("payment_method_types")]
-        public List<string> PaymentMethodTypes { get; set; }
-
-        /// <summary>
         /// Options to configure Radar. Learn more about <a
         /// href="https://stripe.com/docs/radar/radar-session">Radar Sessions</a>.
         /// </summary>
