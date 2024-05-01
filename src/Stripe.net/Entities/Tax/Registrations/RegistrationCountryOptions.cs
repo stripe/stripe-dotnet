@@ -20,6 +20,9 @@ namespace Stripe.Tax
         [JsonProperty("bg")]
         public RegistrationCountryOptionsBg Bg { get; set; }
 
+        [JsonProperty("bh")]
+        public RegistrationCountryOptionsBh Bh { get; set; }
+
         [JsonProperty("ca")]
         public RegistrationCountryOptionsCa Ca { get; set; }
 
@@ -47,6 +50,9 @@ namespace Stripe.Tax
         [JsonProperty("ee")]
         public RegistrationCountryOptionsEe Ee { get; set; }
 
+        [JsonProperty("eg")]
+        public RegistrationCountryOptionsEg Eg { get; set; }
+
         [JsonProperty("es")]
         public RegistrationCountryOptionsEs Es { get; set; }
 
@@ -58,6 +64,9 @@ namespace Stripe.Tax
 
         [JsonProperty("gb")]
         public RegistrationCountryOptionsGb Gb { get; set; }
+
+        [JsonProperty("ge")]
+        public RegistrationCountryOptionsGe Ge { get; set; }
 
         [JsonProperty("gr")]
         public RegistrationCountryOptionsGr Gr { get; set; }
@@ -83,8 +92,14 @@ namespace Stripe.Tax
         [JsonProperty("jp")]
         public RegistrationCountryOptionsJp Jp { get; set; }
 
+        [JsonProperty("ke")]
+        public RegistrationCountryOptionsKe Ke { get; set; }
+
         [JsonProperty("kr")]
         public RegistrationCountryOptionsKr Kr { get; set; }
+
+        [JsonProperty("kz")]
+        public RegistrationCountryOptionsKz Kz { get; set; }
 
         [JsonProperty("lt")]
         public RegistrationCountryOptionsLt Lt { get; set; }
@@ -104,6 +119,9 @@ namespace Stripe.Tax
         [JsonProperty("my")]
         public RegistrationCountryOptionsMy My { get; set; }
 
+        [JsonProperty("ng")]
+        public RegistrationCountryOptionsNg Ng { get; set; }
+
         [JsonProperty("nl")]
         public RegistrationCountryOptionsNl Nl { get; set; }
 
@@ -112,6 +130,9 @@ namespace Stripe.Tax
 
         [JsonProperty("nz")]
         public RegistrationCountryOptionsNz Nz { get; set; }
+
+        [JsonProperty("om")]
+        public RegistrationCountryOptionsOm Om { get; set; }
 
         [JsonProperty("pl")]
         public RegistrationCountryOptionsPl Pl { get; set; }

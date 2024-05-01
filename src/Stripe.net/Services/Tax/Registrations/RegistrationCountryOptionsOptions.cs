@@ -36,6 +36,12 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsBgOptions Bg { get; set; }
 
         /// <summary>
+        /// Options for the registration in BH.
+        /// </summary>
+        [JsonProperty("bh")]
+        public RegistrationCountryOptionsBhOptions Bh { get; set; }
+
+        /// <summary>
         /// Options for the registration in CA.
         /// </summary>
         [JsonProperty("ca")]
@@ -90,6 +96,12 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsEeOptions Ee { get; set; }
 
         /// <summary>
+        /// Options for the registration in EG.
+        /// </summary>
+        [JsonProperty("eg")]
+        public RegistrationCountryOptionsEgOptions Eg { get; set; }
+
+        /// <summary>
         /// Options for the registration in ES.
         /// </summary>
         [JsonProperty("es")]
@@ -112,6 +124,12 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("gb")]
         public RegistrationCountryOptionsGbOptions Gb { get; set; }
+
+        /// <summary>
+        /// Options for the registration in GE.
+        /// </summary>
+        [JsonProperty("ge")]
+        public RegistrationCountryOptionsGeOptions Ge { get; set; }
 
         /// <summary>
         /// Options for the registration in GR.
@@ -162,10 +180,22 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsJpOptions Jp { get; set; }
 
         /// <summary>
+        /// Options for the registration in KE.
+        /// </summary>
+        [JsonProperty("ke")]
+        public RegistrationCountryOptionsKeOptions Ke { get; set; }
+
+        /// <summary>
         /// Options for the registration in KR.
         /// </summary>
         [JsonProperty("kr")]
         public RegistrationCountryOptionsKrOptions Kr { get; set; }
+
+        /// <summary>
+        /// Options for the registration in KZ.
+        /// </summary>
+        [JsonProperty("kz")]
+        public RegistrationCountryOptionsKzOptions Kz { get; set; }
 
         /// <summary>
         /// Options for the registration in LT.
@@ -204,6 +234,12 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsMyOptions My { get; set; }
 
         /// <summary>
+        /// Options for the registration in NG.
+        /// </summary>
+        [JsonProperty("ng")]
+        public RegistrationCountryOptionsNgOptions Ng { get; set; }
+
+        /// <summary>
         /// Options for the registration in NL.
         /// </summary>
         [JsonProperty("nl")]
@@ -220,6 +256,12 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("nz")]
         public RegistrationCountryOptionsNzOptions Nz { get; set; }
+
+        /// <summary>
+        /// Options for the registration in OM.
+        /// </summary>
+        [JsonProperty("om")]
+        public RegistrationCountryOptionsOmOptions Om { get; set; }
 
         /// <summary>
         /// Options for the registration in PL.
