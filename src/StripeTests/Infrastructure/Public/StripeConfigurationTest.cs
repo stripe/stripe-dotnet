@@ -96,6 +96,7 @@ namespace StripeTests
             finally
             {
                 StripeConfiguration.ApiKey = origApiKey;
+                StripeConfiguration.ClientId = origClientId;
             }
         }
 
