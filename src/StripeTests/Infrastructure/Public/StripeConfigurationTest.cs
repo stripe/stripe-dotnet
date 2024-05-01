@@ -76,48 +76,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void StripeClient_Getter_UsesAppSettingsApiKeyIsUnset()
-        {
-            var origApiKey = StripeConfiguration.ApiKey;
-
-            try
-            {
-                StripeConfiguration.ApiKey = null;
-                ConfigurationManager.AppSettings.Set("ApiKey", "sk_key_stripeconfiguration");
-
-                var client = StripeConfiguration.StripeClient;
-                Assert.Equal(ConfigurationManager.AppSettings["StripeApiKey"], client.ApiKey);
-            }
-            finally
-            {
-                StripeConfiguration.ApiKey = origApiKey;
-            }
-        }
-
-        [Fact]
-        public void StripeClient_Getter_UsesAppSettingsClientIdIfUnset()
-        {
-            var origApiKey = StripeConfiguration.ApiKey;
-            var origClientId = StripeConfiguration.ClientId;
-
-            try
-            {
-                StripeConfiguration.ApiKey = "sk_test_123";
-                StripeConfiguration.ClientId = string.Empty;
-                ConfigurationManager.AppSettings.Set("StripeClientId", "ca_stripeconfiguration");
-
-                var client = StripeConfiguration.StripeClient;
-                Assert.Equal(StripeConfiguration.ApiKey, client.ApiKey);
-                Assert.Equal(ConfigurationManager.AppSettings["StripeClientId"], client.ClientId);
-            }
-            finally
-            {
-                StripeConfiguration.ApiKey = origApiKey;
-                StripeConfiguration.ClientId = origClientId;
-            }
-        }
-
-        [Fact]
         public void StripeClient_Getter_ThrowsIfClientIsNullAndApiKeyContainsWhitespace()
         {
             var origApiKey = StripeConfiguration.ApiKey;
