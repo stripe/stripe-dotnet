@@ -75,7 +75,26 @@ namespace StripeTests
         }
 
         [Fact]
-        public void StripeClient_Getter_ThrowsIfClientIsNullAndClientIdIsEmpty()
+        public void StripeClient_Getter_UsesAppSettingsApiKeyIsUnset()
+        {
+            var origApiKey = StripeConfiguration.ApiKey;
+
+            try
+            {
+                StripeConfiguration.ApiKey = null;
+                System.Configuration.ConfigurationManager.AppSettings["ApiKey"] = "sk_key_stripeconfiguration";
+
+                var client = StripeConfiguration.StripeClient;
+                Assert.Equal(System.Configuration.ConfigurationManager.AppSettings["StripeApiKey"], client.ApiKey);
+            }
+            finally
+            {
+                StripeConfiguration.ApiKey = origApiKey;
+            }
+        }
+
+        [Fact]
+        public void StripeClient_Getter_UsesAppSettingsClientIdIfUnset()
         {
             var origApiKey = StripeConfiguration.ApiKey;
             var origClientId = StripeConfiguration.ClientId;
@@ -86,10 +105,7 @@ namespace StripeTests
                 StripeConfiguration.ClientId = string.Empty;
                 System.Configuration.ConfigurationManager.AppSettings["StripeClientId"] = "ca_stripeconfiguration";
 
-                StripeConfiguration.StripeClient = null;
-
                 var client = StripeConfiguration.StripeClient;
-                Assert.NotNull(client);
                 Assert.Equal(StripeConfiguration.ApiKey, client.ApiKey);
                 Assert.Equal(System.Configuration.ConfigurationManager.AppSettings["StripeClientId"], client.ClientId);
             }
