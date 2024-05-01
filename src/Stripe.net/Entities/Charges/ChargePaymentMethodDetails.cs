@@ -107,6 +107,9 @@ namespace Stripe
         [JsonProperty("promptpay")]
         public ChargePaymentMethodDetailsPromptpay Promptpay { get; set; }
 
+        [JsonProperty("rechnung")]
+        public ChargePaymentMethodDetailsRechnung Rechnung { get; set; }
+
         [JsonProperty("revolut_pay")]
         public ChargePaymentMethodDetailsRevolutPay RevolutPay { get; set; }
 

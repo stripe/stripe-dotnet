@@ -251,6 +251,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
+        /// If this is a Rechnung PaymentMethod, this hash contains details about the Rechnung
+        /// payment method.
+        /// </summary>
+        [JsonProperty("rechnung")]
+        public PaymentIntentPaymentMethodDataRechnungOptions Rechnung { get; set; }
+
+        /// <summary>
         /// If this is a <c>Revolut Pay</c> PaymentMethod, this hash contains details about the
         /// Revolut Pay payment method.
         /// </summary>
@@ -295,8 +302,8 @@ namespace Stripe
         /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>,
         /// <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
-        /// <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>rechnung</c>, <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

@@ -229,6 +229,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsPromptpayOptions Promptpay { get; set; }
 
         /// <summary>
+        /// If this is a <c>Rechnung</c> PaymentMethod, this sub-hash contains details about the
+        /// Rechnung payment method options.
+        /// </summary>
+        [JsonProperty("rechnung")]
+        public PaymentIntentPaymentMethodOptionsRechnungOptions Rechnung { get; set; }
+
+        /// <summary>
         /// If this is a <c>revolut_pay</c> PaymentMethod, this sub-hash contains details about the
         /// Revolut Pay payment method options.
         /// </summary>

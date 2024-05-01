@@ -261,6 +261,14 @@ namespace Stripe
         public string PromptpayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Rechnung capability of the account, or whether the account can
+        /// directly process Rechnung payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("rechnung_payments")]
+        public string RechnungPayments { get; set; }
+
+        /// <summary>
         /// The status of the RevolutPay capability of the account, or whether the account can
         /// directly process RevolutPay payments.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
