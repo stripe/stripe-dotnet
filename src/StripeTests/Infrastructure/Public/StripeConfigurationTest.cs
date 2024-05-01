@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System;
+    using System.Configuration;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -82,10 +83,10 @@ namespace StripeTests
             try
             {
                 StripeConfiguration.ApiKey = null;
-                System.Configuration.ConfigurationManager.AppSettings["ApiKey"] = "sk_key_stripeconfiguration";
+                ConfigurationManager.AppSettings.Set("ApiKey", "sk_key_stripeconfiguration");
 
                 var client = StripeConfiguration.StripeClient;
-                Assert.Equal(System.Configuration.ConfigurationManager.AppSettings["StripeApiKey"], client.ApiKey);
+                Assert.Equal(ConfigurationManager.AppSettings["StripeApiKey"], client.ApiKey);
             }
             finally
             {
@@ -103,11 +104,11 @@ namespace StripeTests
             {
                 StripeConfiguration.ApiKey = "sk_test_123";
                 StripeConfiguration.ClientId = string.Empty;
-                System.Configuration.ConfigurationManager.AppSettings["StripeClientId"] = "ca_stripeconfiguration";
+                ConfigurationManager.AppSettings.Set("StripeClientId", "ca_stripeconfiguration");
 
                 var client = StripeConfiguration.StripeClient;
                 Assert.Equal(StripeConfiguration.ApiKey, client.ApiKey);
-                Assert.Equal(System.Configuration.ConfigurationManager.AppSettings["StripeClientId"], client.ClientId);
+                Assert.Equal(ConfigurationManager.AppSettings["StripeClientId"], client.ClientId);
             }
             finally
             {
