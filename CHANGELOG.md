@@ -1,5 +1,11 @@
 # Changelog
 
+## 44.6.0-beta.1 - 2024-05-02
+* [#2901](https://github.com/stripe/stripe-dotnet/pull/2901) Update generated code for beta
+  * Add support for `RechnungPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Rechnung` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Multibanco` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+
 ## 44.5.0-beta.1 - 2024-04-25
 * [#2896](https://github.com/stripe/stripe-dotnet/pull/2896) Update generated code for beta
   * Add support for `PaymentMethodSettings` on `AccountSessionComponentsOptions`
