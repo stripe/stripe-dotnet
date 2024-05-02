@@ -70,7 +70,7 @@ namespace Stripe
         {
             get
             {
-                if (string.IsNullOrEmpty(apiKey) &&
+                if (string.IsNullOrEmpty(clientId) &&
                     !string.IsNullOrEmpty(ConfigurationManager.AppSettings["StripeClientId"]))
                 {
                     clientId = ConfigurationManager.AppSettings["StripeClientId"];
