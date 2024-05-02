@@ -104,6 +104,9 @@ namespace Stripe
         [JsonProperty("promptpay")]
         public ConfirmationTokenPaymentMethodPreviewPromptpay Promptpay { get; set; }
 
+        [JsonProperty("rechnung")]
+        public ConfirmationTokenPaymentMethodPreviewRechnung Rechnung { get; set; }
+
         [JsonProperty("revolut_pay")]
         public ConfirmationTokenPaymentMethodPreviewRevolutPay RevolutPay { get; set; }
 
@@ -129,9 +132,9 @@ namespace Stripe
         /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
         /// <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>,
         /// <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>,
-        /// <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>rechnung</c>,
+        /// <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

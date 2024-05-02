@@ -121,7 +121,11 @@ namespace Stripe
         /// <c>subscription_details.proration_date</c> parameter when doing the actual subscription
         /// update. The recommended way to get only the prorations being previewed is to consider
         /// only proration line items where <c>period[start]</c> is equal to the
-        /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
+        /// <c>subscription_details.proration_date</c> value passed in the request. </p>.
+        ///
+        /// <p>Note: Currency conversion calculations use the latest exchange rates. Exchange rates
+        /// may vary between the time of the preview and the time of the actual invoice creation. <a
+        /// href="https://docs.stripe.com/currencies/conversions">Learn more</a></p>.
         /// </summary>
         public virtual Invoice CreatePreview(InvoiceCreatePreviewOptions options = null, RequestOptions requestOptions = null)
         {
@@ -146,7 +150,11 @@ namespace Stripe
         /// <c>subscription_details.proration_date</c> parameter when doing the actual subscription
         /// update. The recommended way to get only the prorations being previewed is to consider
         /// only proration line items where <c>period[start]</c> is equal to the
-        /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
+        /// <c>subscription_details.proration_date</c> value passed in the request. </p>.
+        ///
+        /// <p>Note: Currency conversion calculations use the latest exchange rates. Exchange rates
+        /// may vary between the time of the preview and the time of the actual invoice creation. <a
+        /// href="https://docs.stripe.com/currencies/conversions">Learn more</a></p>.
         /// </summary>
         public virtual Task<Invoice> CreatePreviewAsync(InvoiceCreatePreviewOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -548,6 +556,10 @@ namespace Stripe
         /// update. The recommended way to get only the prorations being previewed is to consider
         /// only proration line items where <c>period[start]</c> is equal to the
         /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
+        ///
+        /// <p>Note: Currency conversion calculations use the latest exchange rates. Exchange rates
+        /// may vary between the time of the preview and the time of the actual invoice creation. <a
+        /// href="https://docs.stripe.com/currencies/conversions">Learn more</a></p>.
         /// </summary>
         public virtual Invoice Upcoming(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null)
         {
@@ -573,6 +585,10 @@ namespace Stripe
         /// update. The recommended way to get only the prorations being previewed is to consider
         /// only proration line items where <c>period[start]</c> is equal to the
         /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
+        ///
+        /// <p>Note: Currency conversion calculations use the latest exchange rates. Exchange rates
+        /// may vary between the time of the preview and the time of the actual invoice creation. <a
+        /// href="https://docs.stripe.com/currencies/conversions">Learn more</a></p>.
         /// </summary>
         public virtual Task<Invoice> UpcomingAsync(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

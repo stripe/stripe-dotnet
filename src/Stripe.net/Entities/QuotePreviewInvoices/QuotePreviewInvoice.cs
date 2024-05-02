@@ -678,14 +678,20 @@ namespace Stripe
         public StripeList<InvoicePayment> Payments { get; set; }
 
         /// <summary>
-        /// End of the usage period during which invoice items were added to this invoice.
+        /// End of the usage period during which invoice items were added to this invoice. This
+        /// looks back one period for a subscription invoice. Use the <a
+        /// href="https://stripe.com/api/invoices/line_item#invoice_line_item_object-period">line
+        /// item period</a> to get the service period for each price.
         /// </summary>
         [JsonProperty("period_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime PeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Start of the usage period during which invoice items were added to this invoice.
+        /// Start of the usage period during which invoice items were added to this invoice. This
+        /// looks back one period for a subscription invoice. Use the <a
+        /// href="https://stripe.com/api/invoices/line_item#invoice_line_item_object-period">line
+        /// item period</a> to get the service period for each price.
         /// </summary>
         [JsonProperty("period_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
