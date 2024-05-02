@@ -71,6 +71,12 @@ namespace Stripe.Tax
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// The details of the ship from location, such as the address.
+        /// </summary>
+        [JsonProperty("ship_from_details")]
+        public CalculationShipFromDetails ShipFromDetails { get; set; }
+
+        /// <summary>
         /// The shipping cost details for the calculation.
         /// </summary>
         [JsonProperty("shipping_cost")]
