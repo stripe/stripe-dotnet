@@ -74,5 +74,25 @@ namespace Stripe.TestHelpers.Treasury
         {
             return this.RequestAsync<Stripe.Treasury.OutboundPayment>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_payments/{id}/return", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// <p>Updates a test mode created OutboundPayment with tracking details. The
+        /// OutboundPayment must not be cancelable, and cannot be in the <c>canceled</c> or
+        /// <c>failed</c> states.</p>.
+        /// </summary>
+        public virtual Stripe.Treasury.OutboundPayment Update(string id, OutboundPaymentUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<Stripe.Treasury.OutboundPayment>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_payments/{id}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Updates a test mode created OutboundPayment with tracking details. The
+        /// OutboundPayment must not be cancelable, and cannot be in the <c>canceled</c> or
+        /// <c>failed</c> states.</p>.
+        /// </summary>
+        public virtual Task<Stripe.Treasury.OutboundPayment> UpdateAsync(string id, OutboundPaymentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Stripe.Treasury.OutboundPayment>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_payments/{id}", options, requestOptions, cancellationToken);
+        }
     }
 }
