@@ -258,6 +258,14 @@ namespace Stripe
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
         /// <summary>
+        /// How to handle a customer's pending invoice items if an invoice will be generated.
+        /// Defaults to <c>include</c> if the parameter is omitted.
+        /// One of: <c>exclude</c>, or <c>include</c>.
+        /// </summary>
+        [JsonProperty("pending_invoice_items_behavior")]
+        public string PendingInvoiceItemsBehavior { get; set; }
+
+        /// <summary>
         /// If specified, the invoicing for the given billing cycle iterations will be processed
         /// now.
         /// </summary>
