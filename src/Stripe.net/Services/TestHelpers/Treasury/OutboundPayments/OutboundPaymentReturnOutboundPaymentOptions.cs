@@ -6,7 +6,7 @@ namespace Stripe.TestHelpers.Treasury
     public class OutboundPaymentReturnOutboundPaymentOptions : BaseOptions
     {
         /// <summary>
-        /// Optional hash to set the the return code.
+        /// Optional hash to set the return code.
         /// </summary>
         [JsonProperty("returned_details")]
         public OutboundPaymentReturnedDetailsOptions ReturnedDetails { get; set; }
