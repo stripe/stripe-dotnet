@@ -14,7 +14,7 @@ namespace Stripe.Capital
         public long AdvanceAmount { get; set; }
 
         /// <summary>
-        /// The time at which the funds were paid out the the Connected account's Stripe balance.
+        /// The time at which the funds were paid out to the connected account's Stripe balance.
         /// Given in milliseconds since unix epoch.
         /// </summary>
         [JsonProperty("advance_paid_out_at")]

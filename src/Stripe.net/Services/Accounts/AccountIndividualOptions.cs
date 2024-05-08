@@ -13,13 +13,13 @@ namespace Stripe
         public AddressOptions Address { get; set; }
 
         /// <summary>
-        /// The Kana variation of the the individual's primary address (Japan only).
+        /// The Kana variation of the individual's primary address (Japan only).
         /// </summary>
         [JsonProperty("address_kana")]
         public AddressJapanOptions AddressKana { get; set; }
 
         /// <summary>
-        /// The Kanji variation of the the individual's primary address (Japan only).
+        /// The Kanji variation of the individual's primary address (Japan only).
         /// </summary>
         [JsonProperty("address_kanji")]
         public AddressJapanOptions AddressKanji { get; set; }
@@ -43,7 +43,7 @@ namespace Stripe
         public string FirstName { get; set; }
 
         /// <summary>
-        /// The Kana variation of the the individual's first name (Japan only).
+        /// The Kana variation of the individual's first name (Japan only).
         /// </summary>
         [JsonProperty("first_name_kana")]
         public string FirstNameKana { get; set; }
