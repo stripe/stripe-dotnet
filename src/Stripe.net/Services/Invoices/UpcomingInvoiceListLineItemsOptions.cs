@@ -77,6 +77,14 @@ namespace Stripe
         public string OnBehalfOf { get; set; }
 
         /// <summary>
+        /// Customizes the types of values to include when calculating the invoice. Defaults to
+        /// <c>next</c> if unspecified.
+        /// One of: <c>next</c>, or <c>recurring</c>.
+        /// </summary>
+        [JsonProperty("preview_mode")]
+        public string PreviewMode { get; set; }
+
+        /// <summary>
         /// The identifier of the schedule whose upcoming invoice you'd like to retrieve. Cannot be
         /// used with subscription or subscription fields.
         /// </summary>
