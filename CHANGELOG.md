@@ -1,5 +1,10 @@
 # Changelog
 
+## 44.7.0-beta.1 - 2024-05-09
+* [#2905](https://github.com/stripe/stripe-dotnet/pull/2905) Update generated code for beta
+  * No new beta features. Merging changes from the main branch.
+
+
 ## 44.6.0-beta.1 - 2024-05-02
 * [#2901](https://github.com/stripe/stripe-dotnet/pull/2901) Update generated code for beta
   * Add support for `RechnungPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
