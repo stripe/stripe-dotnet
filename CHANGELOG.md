@@ -6,6 +6,16 @@
   * Add support for `Rechnung` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
   * Add support for `Multibanco` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
 
+## 44.5.0 - 2024-05-02
+* [#2900](https://github.com/stripe/stripe-dotnet/pull/2900) Update generated code
+  * Add support for `Paypal` on `DisputePaymentMethodDetails`
+  * Change type of `DisputePaymentMethodDetailsType` from `literal('card')` to `enum('card'|'paypal')`
+  * Add support for `PaymentMethodTypes` on `PaymentIntentConfirmOptions`
+  * Add support for `ShipFromDetails` on `Tax.CalculationCreateOptions`, `TaxCalculation`, and `TaxTransaction`
+  * Add support for `Bh`, `Eg`, `Ge`, `Ke`, `Kz`, `Ng`, and `Om` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+* [#2904](https://github.com/stripe/stripe-dotnet/pull/2904) Add config for dotnet8.0
+* [#2903](https://github.com/stripe/stripe-dotnet/pull/2903) Fix clientId getter
+
 ## 44.5.0-beta.1 - 2024-04-25
 * [#2896](https://github.com/stripe/stripe-dotnet/pull/2896) Update generated code for beta
   * Add support for `PaymentMethodSettings` on `AccountSessionComponentsOptions`

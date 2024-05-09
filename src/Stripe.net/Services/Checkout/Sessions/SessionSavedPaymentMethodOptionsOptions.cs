@@ -16,6 +16,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Enable customers to choose if they wish to save their payment method for future use.
+        /// Disabled by default.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("payment_method_save")]

@@ -101,7 +101,10 @@ namespace Stripe
 
         /// <summary>
         /// Whether account details have been submitted. Accounts with Stripe Dashboard access,
-        /// which includes Standard accounts, cannot receive payouts before this is true.
+        /// which includes Standard accounts, cannot receive payouts before this is true. Accounts
+        /// where this is false should be directed to <a
+        /// href="https://stripe.com/connect/onboarding">an onboarding flow</a> to finish submitting
+        /// account details.
         /// </summary>
         [JsonProperty("details_submitted")]
         public bool DetailsSubmitted { get; set; }

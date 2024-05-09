@@ -226,13 +226,16 @@ namespace Stripe
         /// <c>treasury.outbound_payment.canceled</c>, <c>treasury.outbound_payment.created</c>,
         /// <c>treasury.outbound_payment.expected_arrival_date_updated</c>,
         /// <c>treasury.outbound_payment.failed</c>, <c>treasury.outbound_payment.posted</c>,
-        /// <c>treasury.outbound_payment.returned</c>, <c>treasury.outbound_transfer.canceled</c>,
-        /// <c>treasury.outbound_transfer.created</c>,
+        /// <c>treasury.outbound_payment.returned</c>,
+        /// <c>treasury.outbound_payment.tracking_details_updated</c>,
+        /// <c>treasury.outbound_transfer.canceled</c>, <c>treasury.outbound_transfer.created</c>,
         /// <c>treasury.outbound_transfer.expected_arrival_date_updated</c>,
         /// <c>treasury.outbound_transfer.failed</c>, <c>treasury.outbound_transfer.posted</c>,
-        /// <c>treasury.outbound_transfer.returned</c>, <c>treasury.received_credit.created</c>,
-        /// <c>treasury.received_credit.failed</c>, <c>treasury.received_credit.succeeded</c>,
-        /// <c>treasury.received_debit.created</c>, or <c>ping</c>.
+        /// <c>treasury.outbound_transfer.returned</c>,
+        /// <c>treasury.outbound_transfer.tracking_details_updated</c>,
+        /// <c>treasury.received_credit.created</c>, <c>treasury.received_credit.failed</c>,
+        /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>, or
+        /// <c>ping</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
