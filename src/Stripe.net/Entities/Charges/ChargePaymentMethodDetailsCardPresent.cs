@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -146,6 +147,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("overcapture_supported")]
         public bool OvercaptureSupported { get; set; }
+
+        /// <summary>
+        /// EMV tag 5F2D. Preferred languages specified by the integrated circuit chip.
+        /// </summary>
+        [JsonProperty("preferred_locales")]
+        public List<string> PreferredLocales { get; set; }
 
         /// <summary>
         /// How card details were read in this transaction.
