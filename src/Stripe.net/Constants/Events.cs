@@ -1150,6 +1150,11 @@ namespace Stripe
         public const string TreasuryOutboundPaymentReturned = "treasury.outbound_payment.returned";
 
         /// <summary>
+        /// Occurs whenever tracking_details on an OutboundPayment is updated.
+        /// </summary>
+        public const string TreasuryOutboundPaymentTrackingDetailsUpdated = "treasury.outbound_payment.tracking_details_updated";
+
+        /// <summary>
         /// Occurs whenever an OutboundTransfer is canceled.
         /// </summary>
         public const string TreasuryOutboundTransferCanceled = "treasury.outbound_transfer.canceled";
@@ -1178,6 +1183,11 @@ namespace Stripe
         /// Occurs whenever an OutboundTransfer is returned.
         /// </summary>
         public const string TreasuryOutboundTransferReturned = "treasury.outbound_transfer.returned";
+
+        /// <summary>
+        /// Occurs whenever tracking_details on an OutboundTransfer is updated.
+        /// </summary>
+        public const string TreasuryOutboundTransferTrackingDetailsUpdated = "treasury.outbound_transfer.tracking_details_updated";
 
         /// <summary>
         /// Occurs whenever a received_credit is created as a result of funds being pushed by

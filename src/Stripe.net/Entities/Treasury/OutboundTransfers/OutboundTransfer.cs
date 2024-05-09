@@ -138,6 +138,12 @@ namespace Stripe.Treasury
         [JsonProperty("status_transitions")]
         public OutboundTransferStatusTransitions StatusTransitions { get; set; }
 
+        /// <summary>
+        /// Details about network-specific tracking information if available.
+        /// </summary>
+        [JsonProperty("tracking_details")]
+        public OutboundTransferTrackingDetails TrackingDetails { get; set; }
+
         #region Expandable Transaction
 
         /// <summary>

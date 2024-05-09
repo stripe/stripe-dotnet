@@ -74,5 +74,25 @@ namespace Stripe.TestHelpers.Treasury
         {
             return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}/return", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// <p>Updates a test mode created OutboundTransfer with tracking details. The
+        /// OutboundTransfer must not be cancelable, and cannot be in the <c>canceled</c> or
+        /// <c>failed</c> states.</p>.
+        /// </summary>
+        public virtual Stripe.Treasury.OutboundTransfer Update(string id, OutboundTransferUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Updates a test mode created OutboundTransfer with tracking details. The
+        /// OutboundTransfer must not be cancelable, and cannot be in the <c>canceled</c> or
+        /// <c>failed</c> states.</p>.
+        /// </summary>
+        public virtual Task<Stripe.Treasury.OutboundTransfer> UpdateAsync(string id, OutboundTransferUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Stripe.Treasury.OutboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/outbound_transfers/{id}", options, requestOptions, cancellationToken);
+        }
     }
 }
