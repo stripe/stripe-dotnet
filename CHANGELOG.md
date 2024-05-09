@@ -1,5 +1,9 @@
 # Changelog
 
+## 44.7.0 - 2024-05-09
+* [#2907](https://github.com/stripe/stripe-dotnet/pull/2907) Update generated code
+  * Remove support for `PendingInvoiceItemsBehavior` on `SubscriptionCreateOptions` that was prematurely added in the previous release on the same day
+
 ## 44.7.0-beta.1 - 2024-05-09
 * [#2905](https://github.com/stripe/stripe-dotnet/pull/2905) Update generated code for beta
   * No new beta features. Merging changes from the main branch.
