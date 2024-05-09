@@ -258,14 +258,6 @@ namespace Stripe
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
         /// <summary>
-        /// How to handle a customer's pending invoice items if an invoice will be generated.
-        /// Defaults to <c>include</c> if the parameter is omitted.
-        /// One of: <c>exclude</c>, or <c>include</c>.
-        /// </summary>
-        [JsonProperty("pending_invoice_items_behavior")]
-        public string PendingInvoiceItemsBehavior { get; set; }
-
-        /// <summary>
         /// The ID of a promotion code to apply to this subscription. A promotion code applied to a
         /// subscription will only affect invoices created for that particular subscription. This
         /// field has been deprecated and will be removed in a future API version. Use
