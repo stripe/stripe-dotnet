@@ -1,5 +1,10 @@
 # Changelog
 
+## 44.7.0 - 2024-05-09
+* [#2907](https://github.com/stripe/stripe-dotnet/pull/2907) Update generated code
+  * Remove support for `PendingInvoiceItemsBehavior` on `SubscriptionCreateOptions` that was prematurely added in the previous release on the same day
+  
+
 ## 44.6.0 - 2024-05-09
 * [#2906](https://github.com/stripe/stripe-dotnet/pull/2906) Update generated code
   * Add support for `Update` test helper method on resources `Treasury.OutboundPayment` and `Treasury.OutboundTransfer`
