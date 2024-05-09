@@ -1,5 +1,13 @@
 # Changelog
 
+## 44.6.0 - 2024-05-09
+* [#2906](https://github.com/stripe/stripe-dotnet/pull/2906) Update generated code
+  * Add support for `Update` test helper method on resources `Treasury.OutboundPayment` and `Treasury.OutboundTransfer`
+  * Add support for `AllowRedisplay` on `ConfirmationTokenPaymentMethodPreview` and `PaymentMethod`
+  * Change type of `EntitlementsFeatureMetadataOptions` from `map(string: string)` to `emptyable(map(string: string))`
+  * Add support for `PreviewMode` on `InvoiceCreatePreviewOptions`, `InvoiceUpcomingLinesOptions`, and `InvoiceUpcomingOptions`
+  * Add support for `TrackingDetails` on `TreasuryOutboundPayment` and `TreasuryOutboundTransfer`
+
 ## 44.5.0 - 2024-05-02
 * [#2900](https://github.com/stripe/stripe-dotnet/pull/2900) Update generated code
   * Add support for `Paypal` on `DisputePaymentMethodDetails`
