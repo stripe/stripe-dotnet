@@ -5,6 +5,9 @@ namespace Stripe
 
     public class AccountRiskControlsPayouts : StripeEntity<AccountRiskControlsPayouts>
     {
+        /// <summary>
+        /// Whether a pause of the risk control has been requested.
+        /// </summary>
         [JsonProperty("pause_requested")]
         public bool PauseRequested { get; set; }
     }
