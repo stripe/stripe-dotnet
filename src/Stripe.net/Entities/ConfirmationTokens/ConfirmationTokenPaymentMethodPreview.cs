@@ -84,6 +84,9 @@ namespace Stripe
         [JsonProperty("konbini")]
         public ConfirmationTokenPaymentMethodPreviewKonbini Konbini { get; set; }
 
+        [JsonProperty("kr_market")]
+        public ConfirmationTokenPaymentMethodPreviewKrMarket KrMarket { get; set; }
+
         [JsonProperty("link")]
         public ConfirmationTokenPaymentMethodPreviewLink Link { get; set; }
 
@@ -128,10 +131,10 @@ namespace Stripe
         /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
         /// <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>card_present</c>, <c>cashapp</c>,
         /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
-        /// <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>,
-        /// <c>mobilepay</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>,
-        /// <c>promptpay</c>, <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_market</c>,
+        /// <c>link</c>, <c>mobilepay</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>,
+        /// <c>swish</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
