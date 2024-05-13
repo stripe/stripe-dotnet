@@ -71,9 +71,6 @@ namespace Stripe
         [JsonProperty("konbini")]
         public PaymentIntentPaymentMethodOptionsKonbini Konbini { get; set; }
 
-        [JsonProperty("kr_market")]
-        public PaymentIntentPaymentMethodOptionsKrMarket KrMarket { get; set; }
-
         [JsonProperty("link")]
         public PaymentIntentPaymentMethodOptionsLink Link { get; set; }
 

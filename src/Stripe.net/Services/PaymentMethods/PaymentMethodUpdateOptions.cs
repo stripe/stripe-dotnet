@@ -30,13 +30,6 @@ namespace Stripe
         public PaymentMethodCardOptions Card { get; set; }
 
         /// <summary>
-        /// If this is a KrMarket PaymentMethod, this hash contains details about the KrMarket
-        /// payment method.
-        /// </summary>
-        [JsonProperty("kr_market")]
-        public PaymentMethodKrMarketOptions KrMarket { get; set; }
-
-        /// <summary>
         /// If this is an <c>Link</c> PaymentMethod, this hash contains details about the Link
         /// payment method.
         /// </summary>

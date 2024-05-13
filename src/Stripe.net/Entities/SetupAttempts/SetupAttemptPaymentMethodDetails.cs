@@ -38,9 +38,6 @@ namespace Stripe
         [JsonProperty("klarna")]
         public SetupAttemptPaymentMethodDetailsKlarna Klarna { get; set; }
 
-        [JsonProperty("kr_market")]
-        public SetupAttemptPaymentMethodDetailsKrMarket KrMarket { get; set; }
-
         [JsonProperty("link")]
         public SetupAttemptPaymentMethodDetailsLink Link { get; set; }
 

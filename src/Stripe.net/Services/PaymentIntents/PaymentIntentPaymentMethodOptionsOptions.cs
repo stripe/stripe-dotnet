@@ -159,13 +159,6 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
 
         /// <summary>
-        /// If this is a <c>kr_market</c> PaymentMethod, this sub-hash contains details about the KR
-        /// Market payment method options.
-        /// </summary>
-        [JsonProperty("kr_market")]
-        public PaymentIntentPaymentMethodOptionsKrMarketOptions KrMarket { get; set; }
-
-        /// <summary>
         /// If this is a <c>link</c> PaymentMethod, this sub-hash contains details about the Link
         /// payment method options.
         /// </summary>
