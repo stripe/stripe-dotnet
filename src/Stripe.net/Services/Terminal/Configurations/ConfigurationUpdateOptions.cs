@@ -24,6 +24,12 @@ namespace Stripe.Terminal
         public ConfigurationOfflineOptions Offline { get; set; }
 
         /// <summary>
+        /// An object containing device type specific settings for Stripe S700 readers.
+        /// </summary>
+        [JsonProperty("stripe_s700")]
+        public ConfigurationStripeS700Options StripeS700 { get; set; }
+
+        /// <summary>
         /// Tipping configurations for readers supporting on-reader tips.
         /// </summary>
         [JsonProperty("tipping")]
