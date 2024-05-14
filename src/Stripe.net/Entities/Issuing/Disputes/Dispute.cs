@@ -67,6 +67,26 @@ namespace Stripe.Issuing
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// The enum that describes the dispute loss outcome. If the dispute is not lost, this field
+        /// will be absent. New enum values may be added in the future, so be sure to handle unknown
+        /// values.
+        /// One of: <c>cardholder_authentication_issuer_liability</c>,
+        /// <c>eci5_token_transaction_with_tavv</c>, <c>excess_disputes_in_timeframe</c>,
+        /// <c>has_not_met_the_minimum_dispute_amount_requirements</c>,
+        /// <c>invalid_duplicate_dispute</c>, <c>invalid_incorrect_amount_dispute</c>,
+        /// <c>invalid_no_authorization</c>, <c>invalid_use_of_disputes</c>,
+        /// <c>merchandise_delivered_or_shipped</c>, <c>merchandise_or_service_as_described</c>,
+        /// <c>not_cancelled</c>, <c>other</c>, <c>refund_issued</c>,
+        /// <c>submitted_beyond_allowable_time_limit</c>, <c>transaction_3ds_required</c>,
+        /// <c>transaction_approved_after_prior_fraud_dispute</c>, <c>transaction_authorized</c>,
+        /// <c>transaction_electronically_read</c>,
+        /// <c>transaction_qualifies_for_visa_easy_payment_service</c>, or
+        /// <c>transaction_unattended</c>.
+        /// </summary>
+        [JsonProperty("loss_reason")]
+        public string LossReason { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
