@@ -23,5 +23,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("request_incremental_authorization_support")]
         public bool? RequestIncrementalAuthorizationSupport { get; set; }
+
+        /// <summary>
+        /// Network routing priority on co-branded EMV cards supporting domestic debit and
+        /// international card schemes.
+        /// </summary>
+        [JsonProperty("routing")]
+        public PaymentIntentPaymentMethodOptionsCardPresentRoutingOptions Routing { get; set; }
     }
 }
