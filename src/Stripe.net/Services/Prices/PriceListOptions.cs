@@ -20,7 +20,8 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
-        /// Only return the price with these lookup_keys, if any exist.
+        /// Only return the price with these lookup_keys, if any exist. You can specify up to 10
+        /// lookup_keys.
         /// </summary>
         [JsonProperty("lookup_keys")]
         public List<string> LookupKeys { get; set; }
