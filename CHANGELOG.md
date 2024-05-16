@@ -1,5 +1,18 @@
 # Changelog
 
+## 44.8.0 - 2024-05-16
+* [#2909](https://github.com/stripe/stripe-dotnet/pull/2909) Update generated code
+  * Add support for `FeeSource` on `ApplicationFee`
+  * Add support for `NetAvailable` on `BalanceInstantAvailable`
+  * Add support for `PreferredLocales` on `ChargePaymentMethodDetailsCardPresent`, `ConfirmationTokenPaymentMethodPreviewCardPresent`, and `PaymentMethodCardPresent`
+  * Add support for `Klarna` on `DisputePaymentMethodDetails`
+  * Add support for `Archived` and `LookupKey` on `Entitlements.FeatureListOptions`
+  * Add support for `NoValidAuthorization` on `IssuingDisputeEvidenceOptions` and `IssuingDisputeEvidence`
+  * Add support for `LossReason` on `IssuingDispute`
+  * Add support for `Routing` on `PaymentIntentPaymentMethodOptionsCardPresentOptions` and `PaymentIntentPaymentMethodOptionsCardPresent`
+  * Add support for `ApplicationFeeAmount` and `ApplicationFee` on `Payout`
+  * Add support for `StripeS700` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `TerminalConfiguration`
+
 ## 44.7.0 - 2024-05-09
 * [#2907](https://github.com/stripe/stripe-dotnet/pull/2907) Update generated code
   * Remove support for `PendingInvoiceItemsBehavior` on `SubscriptionCreateOptions` that was prematurely added in the previous release on the same day
