@@ -83,7 +83,7 @@ namespace Stripe
         /// This may be up to 22 characters. The statement description may not include <c>&lt;</c>,
         /// <c>&gt;</c>, <c>\</c>, <c>"</c>, <c>'</c> characters, and will appear on your customer's
         /// statement in capital letters. Non-ASCII characters are automatically stripped. It must
-        /// contain at least one letter.
+        /// contain at least one letter. Only used for subscription payments.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }

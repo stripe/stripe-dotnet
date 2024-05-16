@@ -30,6 +30,12 @@ namespace Stripe.Issuing
         public DisputeEvidenceMerchandiseNotAsDescribedOptions MerchandiseNotAsDescribed { get; set; }
 
         /// <summary>
+        /// Evidence provided when <c>reason</c> is 'no_valid_authorization'.
+        /// </summary>
+        [JsonProperty("no_valid_authorization")]
+        public DisputeEvidenceNoValidAuthorizationOptions NoValidAuthorization { get; set; }
+
+        /// <summary>
         /// Evidence provided when <c>reason</c> is 'not_received'.
         /// </summary>
         [JsonProperty("not_received")]
@@ -45,8 +51,8 @@ namespace Stripe.Issuing
         /// The reason for filing the dispute. The evidence should be submitted in the field of the
         /// same name.
         /// One of: <c>canceled</c>, <c>duplicate</c>, <c>fraudulent</c>,
-        /// <c>merchandise_not_as_described</c>, <c>not_received</c>, <c>other</c>, or
-        /// <c>service_not_as_described</c>.
+        /// <c>merchandise_not_as_described</c>, <c>no_valid_authorization</c>, <c>not_received</c>,
+        /// <c>other</c>, or <c>service_not_as_described</c>.
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }

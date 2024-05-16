@@ -7,8 +7,9 @@ namespace Stripe.Checkout
     public class SessionSavedPaymentMethodOptions : StripeEntity<SessionSavedPaymentMethodOptions>
     {
         /// <summary>
-        /// Controls which payment methods are eligible to be redisplayed to returning customers.
-        /// Corresponds to <c>allow_redisplay</c> on the payment method.
+        /// Uses the <c>allow_redisplay</c> value of each saved payment method to filter the set
+        /// presented to a returning customer. By default, only saved payment methods with
+        /// ’allow_redisplay: ‘always’ are shown in Checkout.
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("allow_redisplay_filters")]

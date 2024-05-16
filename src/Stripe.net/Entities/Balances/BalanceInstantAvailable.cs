@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class BalanceInstantAvailable : StripeEntity<BalanceInstantAvailable>
@@ -18,6 +19,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Breakdown of balance by destination.
+        /// </summary>
+        [JsonProperty("net_available")]
+        public List<BalanceInstantAvailableNetAvailable> NetAvailable { get; set; }
 
         [JsonProperty("source_types")]
         public BalanceInstantAvailableSourceTypes SourceTypes { get; set; }

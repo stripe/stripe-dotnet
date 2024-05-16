@@ -174,6 +174,13 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
+        /// Polymorphic source of the application fee. Includes the ID of the object the application
+        /// fee was created from.
+        /// </summary>
+        [JsonProperty("fee_source")]
+        public ApplicationFeeFeeSource FeeSource { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
