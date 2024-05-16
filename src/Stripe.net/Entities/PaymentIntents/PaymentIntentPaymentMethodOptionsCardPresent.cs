@@ -23,5 +23,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("request_incremental_authorization_support")]
         public bool? RequestIncrementalAuthorizationSupport { get; set; }
+
+        [JsonProperty("routing")]
+        public PaymentIntentPaymentMethodOptionsCardPresentRouting Routing { get; set; }
     }
 }

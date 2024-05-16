@@ -52,6 +52,9 @@ namespace Stripe.Terminal
         [JsonProperty("offline")]
         public ConfigurationOffline Offline { get; set; }
 
+        [JsonProperty("stripe_s700")]
+        public ConfigurationStripeS700 StripeS700 { get; set; }
+
         [JsonProperty("tipping")]
         public ConfigurationTipping Tipping { get; set; }
 

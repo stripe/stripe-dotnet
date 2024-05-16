@@ -1,9 +1,20 @@
 # Changelog
 
+## 44.7.0 - 2024-05-09
+* [#2907](https://github.com/stripe/stripe-dotnet/pull/2907) Update generated code
+  * Remove support for `PendingInvoiceItemsBehavior` on `SubscriptionCreateOptions` that was prematurely added in the previous release on the same day
+
 ## 44.7.0-beta.1 - 2024-05-09
 * [#2905](https://github.com/stripe/stripe-dotnet/pull/2905) Update generated code for beta
   * No new beta features. Merging changes from the main branch.
 
+## 44.6.0 - 2024-05-09
+* [#2906](https://github.com/stripe/stripe-dotnet/pull/2906) Update generated code
+  * Add support for `Update` test helper method on resources `Treasury.OutboundPayment` and `Treasury.OutboundTransfer`
+  * Add support for `AllowRedisplay` on `ConfirmationTokenPaymentMethodPreview` and `PaymentMethod`
+  * Change type of `EntitlementsFeatureMetadataOptions` from `map(string: string)` to `emptyable(map(string: string))`
+  * Add support for `PreviewMode` on `InvoiceCreatePreviewOptions`, `InvoiceUpcomingLinesOptions`, and `InvoiceUpcomingOptions`
+  * Add support for `TrackingDetails` on `TreasuryOutboundPayment` and `TreasuryOutboundTransfer`
 
 ## 44.6.0-beta.1 - 2024-05-02
 * [#2901](https://github.com/stripe/stripe-dotnet/pull/2901) Update generated code for beta
