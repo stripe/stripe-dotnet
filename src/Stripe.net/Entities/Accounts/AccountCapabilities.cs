@@ -205,7 +205,7 @@ namespace Stripe
         public string LinkPayments { get; set; }
 
         /// <summary>
-        /// The status of the MobilepPay capability of the account, or whether the account can
+        /// The status of the MobilePay capability of the account, or whether the account can
         /// directly process MobilePay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
