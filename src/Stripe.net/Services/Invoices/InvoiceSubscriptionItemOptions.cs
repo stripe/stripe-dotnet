@@ -55,15 +55,16 @@ namespace Stripe
         public string Plan { get; set; }
 
         /// <summary>
-        /// The ID of the price object. When changing a subscription item's price, <c>quantity</c>
-        /// is set to 1 unless a <c>quantity</c> parameter is provided.
+        /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required. When
+        /// changing a subscription item's price, <c>quantity</c> is set to 1 unless a
+        /// <c>quantity</c> parameter is provided.
         /// </summary>
         [JsonProperty("price")]
         public string Price { get; set; }
 
         /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
-        /// object inline.
+        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
         public InvoiceSubscriptionItemPriceDataOptions PriceData { get; set; }
