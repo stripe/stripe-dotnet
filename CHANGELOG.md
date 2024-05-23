@@ -1,5 +1,10 @@
 # Changelog
 
+## 44.9.0 - 2024-05-23
+* [#2913](https://github.com/stripe/stripe-dotnet/pull/2913) Update generated code
+  * Add support for `ExternalAccountCollection` on `AccountSessionComponentsBalancesFeaturesOptions`, `AccountSessionComponentsBalancesFeatures`, `AccountSessionComponentsPayoutsFeaturesOptions`, and `AccountSessionComponentsPayoutsFeatures`
+  * Add support for `PaymentMethodRemove` on `CheckoutSessionSavedPaymentMethodOptions`
+
 ## 44.8.0 - 2024-05-16
 * [#2909](https://github.com/stripe/stripe-dotnet/pull/2909) Update generated code
   * Add support for `FeeSource` on `ApplicationFee`
