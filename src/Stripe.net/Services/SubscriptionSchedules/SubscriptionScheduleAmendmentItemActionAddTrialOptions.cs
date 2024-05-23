@@ -8,7 +8,7 @@ namespace Stripe
     {
         /// <summary>
         /// List of price IDs which, if present on the subscription following a paid trial,
-        /// constitute opting-in to the paid trial.
+        /// constitute opting-in to the paid trial. Currently only supports at most 1 price ID.
         /// </summary>
         [JsonProperty("converts_to")]
         public List<string> ConvertsTo { get; set; }
