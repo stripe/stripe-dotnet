@@ -13,14 +13,14 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseAddInvoiceItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
-        /// The ID of the price object.
+        /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
         public string Price { get; set; }
 
         /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
-        /// object inline.
+        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
         public SubscriptionSchedulePhaseAddInvoiceItemPriceDataOptions PriceData { get; set; }
