@@ -19,9 +19,9 @@ namespace Stripe
         /// <c>fi-FI</c>, <c>sv-FI</c>, <c>en-FI</c>, <c>en-GB</c>, <c>en-IE</c>, <c>it-IT</c>,
         /// <c>en-IT</c>, <c>nl-NL</c>, <c>en-NL</c>, <c>nb-NO</c>, <c>en-NO</c>, <c>sv-SE</c>,
         /// <c>en-SE</c>, <c>en-US</c>, <c>es-US</c>, <c>fr-FR</c>, <c>en-FR</c>, <c>cs-CZ</c>,
-        /// <c>en-CZ</c>, <c>el-GR</c>, <c>en-GR</c>, <c>en-AU</c>, <c>en-NZ</c>, <c>en-CA</c>,
-        /// <c>fr-CA</c>, <c>pl-PL</c>, <c>en-PL</c>, <c>pt-PT</c>, <c>en-PT</c>, <c>de-CH</c>,
-        /// <c>fr-CH</c>, <c>it-CH</c>, or <c>en-CH</c>.
+        /// <c>en-CZ</c>, <c>ro-RO</c>, <c>en-RO</c>, <c>el-GR</c>, <c>en-GR</c>, <c>en-AU</c>,
+        /// <c>en-NZ</c>, <c>en-CA</c>, <c>fr-CA</c>, <c>pl-PL</c>, <c>en-PL</c>, <c>pt-PT</c>,
+        /// <c>en-PT</c>, <c>de-CH</c>, <c>fr-CH</c>, <c>it-CH</c>, or <c>en-CH</c>.
         /// </summary>
         [JsonProperty("preferred_locale")]
         public string PreferredLocale { get; set; }
