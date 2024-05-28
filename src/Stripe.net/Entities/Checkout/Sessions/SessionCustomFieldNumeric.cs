@@ -6,6 +6,12 @@ namespace Stripe.Checkout
     public class SessionCustomFieldNumeric : StripeEntity<SessionCustomFieldNumeric>
     {
         /// <summary>
+        /// The value that will pre-fill the field on the payment page.
+        /// </summary>
+        [JsonProperty("default_value")]
+        public string DefaultValue { get; set; }
+
+        /// <summary>
         /// The maximum character length constraint for the customer's input.
         /// </summary>
         [JsonProperty("maximum_length")]
