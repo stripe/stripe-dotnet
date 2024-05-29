@@ -5,7 +5,6 @@ namespace Stripe
 
     public class InvoiceTaxAmount : StripeEntity<InvoiceTaxAmount>
     {
-
         /// <summary>
         /// The amount, in cents (or local equivalent), of the tax.
         /// </summary>
@@ -66,6 +65,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("taxable_amount")]
         public long? TaxableAmount { get; set; }
-
     }
 }
