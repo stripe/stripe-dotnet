@@ -1,5 +1,12 @@
 # Changelog
 
+## 44.10.0 - 2024-05-30
+* [#2916](https://github.com/stripe/stripe-dotnet/pull/2916) Update generated code
+  * Add support for `DefaultValue` on `CheckoutSessionCustomFieldsDropdownOptions`, `CheckoutSessionCustomFieldsDropdown`, `CheckoutSessionCustomFieldsNumericOptions`, `CheckoutSessionCustomFieldsNumeric`, `CheckoutSessionCustomFieldsTextOptions`, and `CheckoutSessionCustomFieldsText`
+  * Add support for `GeneratedFrom` on `ConfirmationTokenPaymentMethodPreviewCard` and `PaymentMethodCard`
+* [#2919](https://github.com/stripe/stripe-dotnet/pull/2919) Add missing information for InvoiceTaxAmount
+  * Add missing information for `TaxableAmount` and `TaxabilityReason` on `InvoiceTaxAmount`. Fixes [#2918](https://github.com/stripe/stripe-dotnet/issues/2918)
+
 ## 44.9.0 - 2024-05-23
 * [#2913](https://github.com/stripe/stripe-dotnet/pull/2913) Update generated code
   * Add support for `ExternalAccountCollection` on `AccountSessionComponentsBalancesFeaturesOptions`, `AccountSessionComponentsBalancesFeatures`, `AccountSessionComponentsPayoutsFeaturesOptions`, and `AccountSessionComponentsPayoutsFeatures`
