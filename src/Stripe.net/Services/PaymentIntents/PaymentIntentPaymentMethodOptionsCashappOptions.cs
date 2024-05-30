@@ -6,13 +6,14 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCashappOptions : INestedOptions
     {
         /// <summary>
-        /// Controls when the funds will be captured from the customer's account.
+        /// Controls when the funds are captured from the customer's account.
         ///
-        /// If provided, this parameter will override the top level behavior of
-        /// <c>capture_method</c> when finalizing the payment with this payment method type.
+        /// If provided, this parameter overrides the behavior of the top-level <a
+        /// href="https://stripe.com/api/payment_intents/update#update_payment_intent-capture_method">capture_method</a>
+        /// for this payment method type when finalizing the payment with this payment method type.
         ///
         /// If <c>capture_method</c> is already set on the PaymentIntent, providing an empty value
-        /// for this parameter will unset the stored value for this payment method type.
+        /// for this parameter unsets the stored value for this payment method type.
         /// </summary>
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }

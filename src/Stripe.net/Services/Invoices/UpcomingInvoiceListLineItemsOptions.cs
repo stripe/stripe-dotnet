@@ -100,10 +100,10 @@ namespace Stripe
 
         /// <summary>
         /// The identifier of the subscription for which you'd like to retrieve the upcoming
-        /// invoice. If not provided, but a <c>subscription_items</c> is provided, you will preview
-        /// creating a subscription with those items. If neither <c>subscription</c> nor
-        /// <c>subscription_items</c> is provided, you will retrieve the next upcoming invoice from
-        /// among the customer's subscriptions.
+        /// invoice. If not provided, but a <c>subscription_details.items</c> is provided, you will
+        /// preview creating a subscription with those items. If neither <c>subscription</c> nor
+        /// <c>subscription_details.items</c> is provided, you will retrieve the next upcoming
+        /// invoice from among the customer's subscriptions.
         /// </summary>
         [JsonProperty("subscription")]
         public string Subscription { get; set; }

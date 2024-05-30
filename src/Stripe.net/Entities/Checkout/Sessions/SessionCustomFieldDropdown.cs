@@ -7,6 +7,12 @@ namespace Stripe.Checkout
     public class SessionCustomFieldDropdown : StripeEntity<SessionCustomFieldDropdown>
     {
         /// <summary>
+        /// The value that will pre-fill on the payment page.
+        /// </summary>
+        [JsonProperty("default_value")]
+        public string DefaultValue { get; set; }
+
+        /// <summary>
         /// The options available for the customer to select. Up to 200 options allowed.
         /// </summary>
         [JsonProperty("options")]
