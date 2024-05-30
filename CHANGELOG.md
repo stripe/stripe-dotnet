@@ -1,5 +1,9 @@
 # Changelog
 
+## 44.11.0-beta.1 - 2024-05-30
+* [#2915](https://github.com/stripe/stripe-dotnet/pull/2915) Update generated code for beta
+  * Keeping up with the changes from version 44.11.0
+
 ## 44.10.0-beta.1 - 2024-05-23
 * [#2912](https://github.com/stripe/stripe-dotnet/pull/2912) Update generated code for beta
 
