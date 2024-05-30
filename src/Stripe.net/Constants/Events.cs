@@ -590,6 +590,28 @@ namespace Stripe
         public const string IssuingDisputeUpdated = "issuing_dispute.updated";
 
         /// <summary>
+        /// Occurs whenever a personalization design is activated following the activation of the
+        /// physical bundle that belongs to it.
+        /// </summary>
+        public const string IssuingPersonalizationDesignActivated = "issuing_personalization_design.activated";
+
+        /// <summary>
+        /// Occurs whenever a personalization design is deactivated following the deactivation of
+        /// the physical bundle that belongs to it.
+        /// </summary>
+        public const string IssuingPersonalizationDesignDeactivated = "issuing_personalization_design.deactivated";
+
+        /// <summary>
+        /// Occurs whenever a personalization design is rejected by design review.
+        /// </summary>
+        public const string IssuingPersonalizationDesignRejected = "issuing_personalization_design.rejected";
+
+        /// <summary>
+        /// Occurs whenever a personalization design is updated.
+        /// </summary>
+        public const string IssuingPersonalizationDesignUpdated = "issuing_personalization_design.updated";
+
+        /// <summary>
         /// Occurs whenever an issuing digital wallet token is created.
         /// </summary>
         public const string IssuingTokenCreated = "issuing_token.created";
