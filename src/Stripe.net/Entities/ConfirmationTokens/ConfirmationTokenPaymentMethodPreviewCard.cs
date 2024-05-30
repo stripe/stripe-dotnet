@@ -74,6 +74,12 @@ namespace Stripe
         public string Funding { get; set; }
 
         /// <summary>
+        /// Details of the original PaymentMethod that created this object.
+        /// </summary>
+        [JsonProperty("generated_from")]
+        public ConfirmationTokenPaymentMethodPreviewCardGeneratedFrom GeneratedFrom { get; set; }
+
+        /// <summary>
         /// Issuer identification number of the card. (For internal use only and not typically
         /// available in standard API requests.).
         /// </summary>
