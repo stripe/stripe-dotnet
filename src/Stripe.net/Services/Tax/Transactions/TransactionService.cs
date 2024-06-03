@@ -23,7 +23,8 @@ namespace Stripe.Tax
         public override string BasePath => "/v1/tax/transactions";
 
         /// <summary>
-        /// <p>Creates a Tax <c>Transaction</c> from a calculation.</p>.
+        /// <p>Creates a Tax Transaction from a calculation, if that calculation hasn’t expired.
+        /// Calculations expire after 90 days.</p>.
         /// </summary>
         public virtual Transaction CreateFromCalculation(TransactionCreateFromCalculationOptions options = null, RequestOptions requestOptions = null)
         {
@@ -31,7 +32,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Creates a Tax <c>Transaction</c> from a calculation.</p>.
+        /// <p>Creates a Tax Transaction from a calculation, if that calculation hasn’t expired.
+        /// Calculations expire after 90 days.</p>.
         /// </summary>
         public virtual Task<Transaction> CreateFromCalculationAsync(TransactionCreateFromCalculationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
