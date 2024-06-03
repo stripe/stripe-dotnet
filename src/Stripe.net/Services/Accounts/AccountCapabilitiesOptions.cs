@@ -102,6 +102,12 @@ namespace Stripe
         public AccountCapabilitiesFpxPaymentsOptions FpxPayments { get; set; }
 
         /// <summary>
+        /// The gb_bank_transfer_payments capability.
+        /// </summary>
+        [JsonProperty("gb_bank_transfer_payments")]
+        public AccountCapabilitiesGbBankTransferPaymentsOptions GbBankTransferPayments { get; set; }
+
+        /// <summary>
         /// The giropay_payments capability.
         /// </summary>
         [JsonProperty("giropay_payments")]
@@ -132,6 +138,12 @@ namespace Stripe
         public AccountCapabilitiesJcbPaymentsOptions JcbPayments { get; set; }
 
         /// <summary>
+        /// The jp_bank_transfer_payments capability.
+        /// </summary>
+        [JsonProperty("jp_bank_transfer_payments")]
+        public AccountCapabilitiesJpBankTransferPaymentsOptions JpBankTransferPayments { get; set; }
+
+        /// <summary>
         /// The klarna_payments capability.
         /// </summary>
         [JsonProperty("klarna_payments")]
@@ -160,6 +172,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("mobilepay_payments")]
         public AccountCapabilitiesMobilepayPaymentsOptions MobilepayPayments { get; set; }
+
+        /// <summary>
+        /// The mx_bank_transfer_payments capability.
+        /// </summary>
+        [JsonProperty("mx_bank_transfer_payments")]
+        public AccountCapabilitiesMxBankTransferPaymentsOptions MxBankTransferPayments { get; set; }
 
         /// <summary>
         /// The oxxo_payments capability.
@@ -208,6 +226,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("revolut_pay_payments")]
         public AccountCapabilitiesRevolutPayPaymentsOptions RevolutPayPayments { get; set; }
+
+        /// <summary>
+        /// The sepa_bank_transfer_payments capability.
+        /// </summary>
+        [JsonProperty("sepa_bank_transfer_payments")]
+        public AccountCapabilitiesSepaBankTransferPaymentsOptions SepaBankTransferPayments { get; set; }
 
         /// <summary>
         /// The sepa_debit_payments capability.
@@ -262,6 +286,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("us_bank_account_ach_payments")]
         public AccountCapabilitiesUsBankAccountAchPaymentsOptions UsBankAccountAchPayments { get; set; }
+
+        /// <summary>
+        /// The us_bank_transfer_payments capability.
+        /// </summary>
+        [JsonProperty("us_bank_transfer_payments")]
+        public AccountCapabilitiesUsBankTransferPaymentsOptions UsBankTransferPayments { get; set; }
 
         /// <summary>
         /// The zip_payments capability.

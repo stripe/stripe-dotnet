@@ -134,6 +134,14 @@ namespace Stripe
         public string FpxPayments { get; set; }
 
         /// <summary>
+        /// The status of the GB customer_balance payments (GBP currency) capability of the account,
+        /// or whether the account can directly process GB customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("gb_bank_transfer_payments")]
+        public string GbBankTransferPayments { get; set; }
+
+        /// <summary>
         /// The status of the giropay payments capability of the account, or whether the account can
         /// directly process giropay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -174,6 +182,14 @@ namespace Stripe
         public string JcbPayments { get; set; }
 
         /// <summary>
+        /// The status of the Japanese customer_balance payments (JPY currency) capability of the
+        /// account, or whether the account can directly process Japanese customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("jp_bank_transfer_payments")]
+        public string JpBankTransferPayments { get; set; }
+
+        /// <summary>
         /// The status of the Klarna payments capability of the account, or whether the account can
         /// directly process Klarna charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -211,6 +227,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("mobilepay_payments")]
         public string MobilepayPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Mexican customer_balance payments (MXN currency) capability of the
+        /// account, or whether the account can directly process Mexican customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("mx_bank_transfer_payments")]
+        public string MxBankTransferPayments { get; set; }
 
         /// <summary>
         /// The status of the OXXO payments capability of the account, or whether the account can
@@ -275,6 +299,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("revolut_pay_payments")]
         public string RevolutPayPayments { get; set; }
+
+        /// <summary>
+        /// The status of the SEPA customer_balance payments (EUR currency) capability of the
+        /// account, or whether the account can directly process SEPA customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("sepa_bank_transfer_payments")]
+        public string SepaBankTransferPayments { get; set; }
 
         /// <summary>
         /// The status of the SEPA Direct Debits payments capability of the account, or whether the
@@ -344,6 +376,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("us_bank_account_ach_payments")]
         public string UsBankAccountAchPayments { get; set; }
+
+        /// <summary>
+        /// The status of the US customer_balance payments (USD currency) capability of the account,
+        /// or whether the account can directly process US customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("us_bank_transfer_payments")]
+        public string UsBankTransferPayments { get; set; }
 
         /// <summary>
         /// The status of the Zip capability of the account, or whether the account can directly
