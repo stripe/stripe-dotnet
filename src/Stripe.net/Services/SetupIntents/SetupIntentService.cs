@@ -31,7 +31,9 @@ namespace Stripe
         /// </p>.
         ///
         /// <p>After you cancel it, setup is abandoned and any operations on the SetupIntent fail
-        /// with an error.</p>.
+        /// with an error. You can’t cancel the SetupIntent for a Checkout Session. <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">Expire the Checkout
+        /// Session</a> instead.</p>.
         /// </summary>
         public virtual SetupIntent Cancel(string id, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
@@ -44,7 +46,9 @@ namespace Stripe
         /// </p>.
         ///
         /// <p>After you cancel it, setup is abandoned and any operations on the SetupIntent fail
-        /// with an error.</p>.
+        /// with an error. You can’t cancel the SetupIntent for a Checkout Session. <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">Expire the Checkout
+        /// Session</a> instead.</p>.
         /// </summary>
         public virtual Task<SetupIntent> CancelAsync(string id, SetupIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
