@@ -1,5 +1,9 @@
 # Changelog
 
+## 44.12.0-beta.1 - 2024-06-06
+* [#2920](https://github.com/stripe/stripe-dotnet/pull/2920) Update generated code for beta
+  * Add support for `Twint` on `PaymentIntentPaymentMethodOptionsOptions` and `PaymentIntentPaymentMethodOptions`
+
 ## 44.11.0-beta.1 - 2024-05-30
 * [#2915](https://github.com/stripe/stripe-dotnet/pull/2915) Update generated code for beta
   * Keeping up with the changes from version 44.11.0
