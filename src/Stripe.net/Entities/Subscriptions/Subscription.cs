@@ -353,6 +353,9 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EndedAt { get; set; }
 
+        [JsonProperty("invoice_settings")]
+        public SubscriptionInvoiceSettings InvoiceSettings { get; set; }
+
         /// <summary>
         /// List of subscription items, each with an attached price.
         /// </summary>
