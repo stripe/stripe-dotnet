@@ -1,5 +1,9 @@
 # Changelog
 
+## 44.11.0 - 2024-06-06
+* [#2921](https://github.com/stripe/stripe-dotnet/pull/2921) Update generated code
+  * Add support for `GbBankTransferPayments`, `JpBankTransferPayments`, `MxBankTransferPayments`, `SepaBankTransferPayments`, and `UsBankTransferPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+
 ## 44.10.0 - 2024-05-30
 * [#2916](https://github.com/stripe/stripe-dotnet/pull/2916) Update generated code
   * Add support for `DefaultValue` on `CheckoutSessionCustomFieldsDropdownOptions`, `CheckoutSessionCustomFieldsDropdown`, `CheckoutSessionCustomFieldsNumericOptions`, `CheckoutSessionCustomFieldsNumeric`, `CheckoutSessionCustomFieldsTextOptions`, and `CheckoutSessionCustomFieldsText`
