@@ -289,7 +289,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (ID of the PaymentIntent)
-        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode.
+        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode. You can't
+        /// confirm or cancel the PaymentIntent for a Checkout Session. To cancel, <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a> instead.
         /// </summary>
         [JsonIgnore]
         public string PaymentIntentId
@@ -300,7 +303,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode.
+        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode. You can't
+        /// confirm or cancel the PaymentIntent for a Checkout Session. To cancel, <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a> instead.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -422,7 +428,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (ID of the SetupIntent)
-        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode.
+        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode. You can't confirm
+        /// or cancel the SetupIntent for a Checkout Session. To cancel, <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a> instead.
         /// </summary>
         [JsonIgnore]
         public string SetupIntentId
@@ -433,7 +442,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode.
+        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode. You can't confirm
+        /// or cancel the SetupIntent for a Checkout Session. To cancel, <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a> instead.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
