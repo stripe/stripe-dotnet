@@ -26,7 +26,7 @@ namespace Stripe.Climate
         public override string BasePath => "/v1/climate/orders";
 
         /// <summary>
-        /// <p>Cancels a Climate order. You can cancel an order within 30 days of creation. Stripe
+        /// <p>Cancels a Climate order. You can cancel an order within 24 hours of creation. Stripe
         /// refunds the reservation <c>amount_subtotal</c>, but not the <c>amount_fees</c> for
         /// user-triggered cancellations. Frontier might cancel reservations if suppliers fail to
         /// deliver. If Frontier cancels the reservation, Stripe provides 90 days advance notice and
@@ -38,7 +38,7 @@ namespace Stripe.Climate
         }
 
         /// <summary>
-        /// <p>Cancels a Climate order. You can cancel an order within 30 days of creation. Stripe
+        /// <p>Cancels a Climate order. You can cancel an order within 24 hours of creation. Stripe
         /// refunds the reservation <c>amount_subtotal</c>, but not the <c>amount_fees</c> for
         /// user-triggered cancellations. Frontier might cancel reservations if suppliers fail to
         /// deliver. If Frontier cancels the reservation, Stripe provides 90 days advance notice and

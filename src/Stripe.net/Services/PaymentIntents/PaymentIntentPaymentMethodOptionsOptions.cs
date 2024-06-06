@@ -264,6 +264,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsSwishOptions Swish { get; set; }
 
         /// <summary>
+        /// If this is a <c>twint</c> PaymentMethod, this sub-hash contains details about the TWINT
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("twint")]
+        public PaymentIntentPaymentMethodOptionsTwintOptions Twint { get; set; }
+
+        /// <summary>
         /// If this is a <c>us_bank_account</c> PaymentMethod, this sub-hash contains details about
         /// the US bank account payment method options.
         /// </summary>

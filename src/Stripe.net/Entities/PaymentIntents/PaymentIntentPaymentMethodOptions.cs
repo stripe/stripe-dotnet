@@ -116,6 +116,9 @@ namespace Stripe
         [JsonProperty("swish")]
         public PaymentIntentPaymentMethodOptionsSwish Swish { get; set; }
 
+        [JsonProperty("twint")]
+        public PaymentIntentPaymentMethodOptionsTwint Twint { get; set; }
+
         [JsonProperty("us_bank_account")]
         public PaymentIntentPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
 
