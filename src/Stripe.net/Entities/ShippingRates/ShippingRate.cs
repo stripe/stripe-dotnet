@@ -113,8 +113,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The type of calculation to use on the shipping rate. Can only be <c>fixed_amount</c> for
-        /// now.
+        /// The type of calculation to use on the shipping rate.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
