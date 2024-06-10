@@ -13,14 +13,14 @@ namespace Stripe
 
         /// <summary>
         /// Will generate a final invoice that invoices for any un-invoiced metered usage and
-        /// new/pending proration invoice items.
+        /// new/pending proration invoice items. Defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("invoice_now")]
         public bool? InvoiceNow { get; set; }
 
         /// <summary>
         /// Will generate a proration invoice item that credits remaining unused time until the
-        /// subscription period end.
+        /// subscription period end. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("prorate")]
         public bool? Prorate { get; set; }
