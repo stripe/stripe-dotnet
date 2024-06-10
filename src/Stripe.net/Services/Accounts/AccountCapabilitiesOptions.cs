@@ -174,6 +174,12 @@ namespace Stripe
         public AccountCapabilitiesMobilepayPaymentsOptions MobilepayPayments { get; set; }
 
         /// <summary>
+        /// The multibanco_payments capability.
+        /// </summary>
+        [JsonProperty("multibanco_payments")]
+        public AccountCapabilitiesMultibancoPaymentsOptions MultibancoPayments { get; set; }
+
+        /// <summary>
         /// The mx_bank_transfer_payments capability.
         /// </summary>
         [JsonProperty("mx_bank_transfer_payments")]
