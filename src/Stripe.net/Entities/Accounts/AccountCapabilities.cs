@@ -229,6 +229,14 @@ namespace Stripe
         public string MobilepayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Multibanco payments capability of the account, or whether the account
+        /// can directly process Multibanco charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("multibanco_payments")]
+        public string MultibancoPayments { get; set; }
+
+        /// <summary>
         /// The status of the Mexican customer_balance payments (MXN currency) capability of the
         /// account, or whether the account can directly process Mexican customer_balance charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
