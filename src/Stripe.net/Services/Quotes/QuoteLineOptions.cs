@@ -19,8 +19,12 @@ namespace Stripe
         public QuoteLineAppliesToOptions AppliesTo { get; set; }
 
         /// <summary>
-        /// For a point-in-time operation, this attribute lets you set or update whether the
-        /// subscription's billing cycle anchor is reset at the <c>starts_at</c> timestamp.
+        /// For point-in-time quote lines (having no <c>ends_at</c> timestamp), this attribute lets
+        /// you set or remove whether the subscription's billing cycle anchor is reset at the Quote
+        /// Line <c>starts_at</c> timestamp.For time-span based quote lines (having both
+        /// <c>starts_at</c> and <c>ends_at</c>), the only valid value is <c>automatic</c>, which
+        /// removes any previously configured billing cycle anchor resets during the window of time
+        /// spanning the quote line.
         /// One of: <c>automatic</c>, or <c>line_starts_at</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
