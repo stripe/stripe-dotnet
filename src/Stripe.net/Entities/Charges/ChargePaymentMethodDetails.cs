@@ -119,6 +119,9 @@ namespace Stripe
         [JsonProperty("swish")]
         public ChargePaymentMethodDetailsSwish Swish { get; set; }
 
+        [JsonProperty("twint")]
+        public ChargePaymentMethodDetailsTwint Twint { get; set; }
+
         /// <summary>
         /// The type of transaction-specific details of the payment method used in the payment, one
         /// of <c>ach_credit_transfer</c>, <c>ach_debit</c>, <c>acss_debit</c>, <c>alipay</c>,

@@ -296,6 +296,13 @@ namespace Stripe
         public PaymentMethodSwishOptions Swish { get; set; }
 
         /// <summary>
+        /// If this is a TWINT PaymentMethod, this hash contains details about the TWINT payment
+        /// method.
+        /// </summary>
+        [JsonProperty("twint")]
+        public PaymentMethodTwintOptions Twint { get; set; }
+
+        /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
@@ -305,7 +312,7 @@ namespace Stripe
         /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>,
         /// <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>,
-        /// <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
         /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]

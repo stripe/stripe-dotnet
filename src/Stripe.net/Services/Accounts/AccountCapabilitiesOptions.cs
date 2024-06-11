@@ -264,6 +264,12 @@ namespace Stripe
         public AccountCapabilitiesTreasuryOptions Treasury { get; set; }
 
         /// <summary>
+        /// The twint_payments capability.
+        /// </summary>
+        [JsonProperty("twint_payments")]
+        public AccountCapabilitiesTwintPaymentsOptions TwintPayments { get; set; }
+
+        /// <summary>
         /// The us_bank_account_ach_payments capability.
         /// </summary>
         [JsonProperty("us_bank_account_ach_payments")]

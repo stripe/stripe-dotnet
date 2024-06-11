@@ -346,6 +346,14 @@ namespace Stripe
         public string Treasury { get; set; }
 
         /// <summary>
+        /// The status of the TWINT capability of the account, or whether the account can directly
+        /// process TWINT charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("twint_payments")]
+        public string TwintPayments { get; set; }
+
+        /// <summary>
         /// The status of the US bank account ACH payments capability of the account, or whether the
         /// account can directly process US bank account charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
