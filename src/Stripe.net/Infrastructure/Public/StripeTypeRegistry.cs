@@ -119,6 +119,7 @@ namespace Stripe
                 { "payout", typeof(Payout) },
                 { "person", typeof(Person) },
                 { "plan", typeof(Plan) },
+                { "platform_tax_fee", typeof(PlatformTaxFee) },
                 { "price", typeof(Price) },
                 { "product", typeof(Product) },
                 { "product_feature", typeof(ProductFeature) },
