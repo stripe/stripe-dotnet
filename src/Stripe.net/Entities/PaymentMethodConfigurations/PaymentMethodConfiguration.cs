@@ -151,6 +151,9 @@ namespace Stripe
         [JsonProperty("mobilepay")]
         public PaymentMethodConfigurationMobilepay Mobilepay { get; set; }
 
+        [JsonProperty("multibanco")]
+        public PaymentMethodConfigurationMultibanco Multibanco { get; set; }
+
         /// <summary>
         /// The configuration's name.
         /// </summary>

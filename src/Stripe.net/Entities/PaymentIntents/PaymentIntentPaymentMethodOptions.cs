@@ -77,6 +77,9 @@ namespace Stripe
         [JsonProperty("mobilepay")]
         public PaymentIntentPaymentMethodOptionsMobilepay Mobilepay { get; set; }
 
+        [JsonProperty("multibanco")]
+        public PaymentIntentPaymentMethodOptionsMultibanco Multibanco { get; set; }
+
         [JsonProperty("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }
 
@@ -106,6 +109,9 @@ namespace Stripe
 
         [JsonProperty("swish")]
         public PaymentIntentPaymentMethodOptionsSwish Swish { get; set; }
+
+        [JsonProperty("twint")]
+        public PaymentIntentPaymentMethodOptionsTwint Twint { get; set; }
 
         [JsonProperty("us_bank_account")]
         public PaymentIntentPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }

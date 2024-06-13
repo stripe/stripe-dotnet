@@ -68,6 +68,9 @@ namespace Stripe.Checkout
         [JsonProperty("mobilepay")]
         public SessionPaymentMethodOptionsMobilepay Mobilepay { get; set; }
 
+        [JsonProperty("multibanco")]
+        public SessionPaymentMethodOptionsMultibanco Multibanco { get; set; }
+
         [JsonProperty("oxxo")]
         public SessionPaymentMethodOptionsOxxo Oxxo { get; set; }
 
