@@ -1,5 +1,8 @@
 # Changelog
 
+## 44.13.0-beta.1 - 2024-06-13
+* [#2923](https://github.com/stripe/stripe-dotnet/pull/2923) Syncing changes from 44.12.0 release
+
 ## 44.12.0 - 2024-06-13
 * [#2922](https://github.com/stripe/stripe-dotnet/pull/2922) Update generated code
   * Add support for `MultibancoPayments` and `TwintPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
