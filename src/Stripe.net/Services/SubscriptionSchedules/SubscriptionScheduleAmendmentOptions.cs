@@ -22,8 +22,12 @@ namespace Stripe
         public SubscriptionScheduleAmendmentAmendmentStartOptions AmendmentStart { get; set; }
 
         /// <summary>
-        /// For a point-in-time amendment, this attribute lets you set or update whether the
-        /// subscription's billing cycle anchor is reset at the <c>amendment_start</c> timestamp.
+        /// For point-in-time amendments (having no <c>amendment_end</c>), this attribute lets you
+        /// set or remove whether the subscription's billing cycle anchor is reset at the
+        /// <c>amendment_start</c> timestamp.For time-span based amendments (having both
+        /// <c>amendment_start</c> and <c>amendment_end</c>), the only value valid is
+        /// <c>automatic</c>, which removes any previously configured billing cycle anchor resets
+        /// scheduled to occur during the window of time spanned by the amendment.
         /// One of: <c>amendment_start</c>, or <c>automatic</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]

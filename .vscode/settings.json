@@ -1,20 +1,21 @@
 {
+  // Show the repo name in the top window bar.
+  "window.title": "${rootName}${separator}${activeEditorMedium}",
+
   "editor.renderWhitespace": "all",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
-  "window.title": "${rootName}${separator}${activeEditorMedium}",
+
   "[csharp]": {
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,
-    "editor.rulers": [
-      100
-    ],
-    "editor.tabSize": 4,
+    "editor.rulers": [100],
+    "editor.tabSize": 4
   },
   "[json]": {
     "editor.detectIndentation": false,
     "editor.insertSpaces": true,
-    "editor.tabSize": 2,
-  },
+    "editor.tabSize": 2
+  }
 }
