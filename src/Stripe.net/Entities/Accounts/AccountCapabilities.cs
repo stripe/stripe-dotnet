@@ -229,6 +229,14 @@ namespace Stripe
         public string MobilepayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Multibanco payments capability of the account, or whether the account
+        /// can directly process Multibanco charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("multibanco_payments")]
+        public string MultibancoPayments { get; set; }
+
+        /// <summary>
         /// The status of the Mexican customer_balance payments (MXN currency) capability of the
         /// account, or whether the account can directly process Mexican customer_balance charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -336,6 +344,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("treasury")]
         public string Treasury { get; set; }
+
+        /// <summary>
+        /// The status of the TWINT capability of the account, or whether the account can directly
+        /// process TWINT charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("twint_payments")]
+        public string TwintPayments { get; set; }
 
         /// <summary>
         /// The status of the US bank account ACH payments capability of the account, or whether the

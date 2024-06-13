@@ -174,6 +174,12 @@ namespace Stripe
         public AccountCapabilitiesMobilepayPaymentsOptions MobilepayPayments { get; set; }
 
         /// <summary>
+        /// The multibanco_payments capability.
+        /// </summary>
+        [JsonProperty("multibanco_payments")]
+        public AccountCapabilitiesMultibancoPaymentsOptions MultibancoPayments { get; set; }
+
+        /// <summary>
         /// The mx_bank_transfer_payments capability.
         /// </summary>
         [JsonProperty("mx_bank_transfer_payments")]
@@ -256,6 +262,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("treasury")]
         public AccountCapabilitiesTreasuryOptions Treasury { get; set; }
+
+        /// <summary>
+        /// The twint_payments capability.
+        /// </summary>
+        [JsonProperty("twint_payments")]
+        public AccountCapabilitiesTwintPaymentsOptions TwintPayments { get; set; }
 
         /// <summary>
         /// The us_bank_account_ach_payments capability.

@@ -173,6 +173,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsMobilepayOptions Mobilepay { get; set; }
 
         /// <summary>
+        /// If this is a <c>multibanco</c> PaymentMethod, this sub-hash contains details about the
+        /// Multibanco payment method options.
+        /// </summary>
+        [JsonProperty("multibanco")]
+        public PaymentIntentPaymentMethodOptionsMultibancoOptions Multibanco { get; set; }
+
+        /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO
         /// payment method options.
         /// </summary>
@@ -241,6 +248,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("swish")]
         public PaymentIntentPaymentMethodOptionsSwishOptions Swish { get; set; }
+
+        /// <summary>
+        /// If this is a <c>twint</c> PaymentMethod, this sub-hash contains details about the TWINT
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("twint")]
+        public PaymentIntentPaymentMethodOptionsTwintOptions Twint { get; set; }
 
         /// <summary>
         /// If this is a <c>us_bank_account</c> PaymentMethod, this sub-hash contains details about
