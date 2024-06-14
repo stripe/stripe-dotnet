@@ -11,7 +11,7 @@ namespace Stripe
         /// the response includes them in the <c>requirements</c> arrays.
         ///
         /// If a capability isn't permanent, you can remove it from the account by passing false.
-        /// Most capabilities are permanent after they've been requested. Attempting to remove a
+        /// Some capabilities are permanent after they've been requested. Attempting to remove a
         /// permanent capability returns an error.
         /// </summary>
         [JsonProperty("requested")]
