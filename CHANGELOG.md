@@ -1,5 +1,13 @@
 # Changelog
 
+## 44.12.0 - 2024-06-13
+* [#2922](https://github.com/stripe/stripe-dotnet/pull/2922) Update generated code
+  * Add support for `MultibancoPayments` and `TwintPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Twint` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Multibanco` on `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `RefundDestinationDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `MultibancoDisplayDetails` on `PaymentIntentNextAction`
+  * Add support for `InvoiceSettings` on `Subscription`
+
 ## 44.11.0 - 2024-06-06
 * [#2921](https://github.com/stripe/stripe-dotnet/pull/2921) Update generated code
   * Add support for `GbBankTransferPayments`, `JpBankTransferPayments`, `MxBankTransferPayments`, `SepaBankTransferPayments`, and `UsBankTransferPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
