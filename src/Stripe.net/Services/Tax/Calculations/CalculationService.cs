@@ -39,7 +39,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Retrieves the line items of a persisted tax calculation as a collection.</p>.
+        /// <p>Retrieves the line items of a tax calculation as a collection, if the calculation
+        /// hasn’t expired.</p>.
         /// </summary>
         public virtual StripeList<CalculationLineItem> ListLineItems(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
@@ -47,7 +48,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Retrieves the line items of a persisted tax calculation as a collection.</p>.
+        /// <p>Retrieves the line items of a tax calculation as a collection, if the calculation
+        /// hasn’t expired.</p>.
         /// </summary>
         public virtual Task<StripeList<CalculationLineItem>> ListLineItemsAsync(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -55,7 +57,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Retrieves the line items of a persisted tax calculation as a collection.</p>.
+        /// <p>Retrieves the line items of a tax calculation as a collection, if the calculation
+        /// hasn’t expired.</p>.
         /// </summary>
         public virtual IEnumerable<CalculationLineItem> ListLineItemsAutoPaging(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
@@ -63,7 +66,8 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Retrieves the line items of a persisted tax calculation as a collection.</p>.
+        /// <p>Retrieves the line items of a tax calculation as a collection, if the calculation
+        /// hasn’t expired.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<CalculationLineItem> ListLineItemsAutoPagingAsync(string id, CalculationListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
