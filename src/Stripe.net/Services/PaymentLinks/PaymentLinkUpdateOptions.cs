@@ -148,5 +148,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription_data")]
         public PaymentLinkSubscriptionDataOptions SubscriptionData { get; set; }
+
+        /// <summary>
+        /// Controls tax ID collection during checkout.
+        /// </summary>
+        [JsonProperty("tax_id_collection")]
+        public PaymentLinkTaxIdCollectionOptions TaxIdCollection { get; set; }
     }
 }
