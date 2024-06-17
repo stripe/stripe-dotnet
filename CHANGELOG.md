@@ -1,5 +1,9 @@
 # Changelog
 
+## 44.13.0 - 2024-06-17
+* [#2927](https://github.com/stripe/stripe-dotnet/pull/2927) Update generated code
+  * Add support for `TaxIdCollection` on `PaymentLinkUpdateOptions`
+
 ## 44.12.0 - 2024-06-13
 * [#2922](https://github.com/stripe/stripe-dotnet/pull/2922) Update generated code
   * Add support for `MultibancoPayments` and `TwintPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
