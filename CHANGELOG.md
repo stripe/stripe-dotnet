@@ -1,5 +1,9 @@
 # Changelog
 
+## 44.13.0 - 2024-06-17
+* [#2927](https://github.com/stripe/stripe-dotnet/pull/2927) Update generated code
+  * Add support for `TaxIdCollection` on `PaymentLinkUpdateOptions`
+
 ## 44.13.0-beta.1 - 2024-06-13
 * [#2923](https://github.com/stripe/stripe-dotnet/pull/2923) Syncing changes from 44.12.0 release
 
