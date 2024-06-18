@@ -6,6 +6,13 @@ namespace Stripe.TestHelpers.Issuing
     public class TransactionPurchaseDetailsFuelOptions : INestedOptions
     {
         /// <summary>
+        /// The quantity of <c>unit</c>s of fuel that was dispensed, represented as a decimal string
+        /// with at most 12 decimal places.
+        /// </summary>
+        [JsonProperty("quantity_decimal")]
+        public decimal? QuantityDecimal { get; set; }
+
+        /// <summary>
         /// The type of fuel that was purchased. One of <c>diesel</c>, <c>unleaded_plus</c>,
         /// <c>unleaded_regular</c>, <c>unleaded_super</c>, or <c>other</c>.
         /// One of: <c>diesel</c>, <c>other</c>, <c>unleaded_plus</c>, <c>unleaded_regular</c>, or
@@ -15,7 +22,7 @@ namespace Stripe.TestHelpers.Issuing
         public string Type { get; set; }
 
         /// <summary>
-        /// The units for <c>volume_decimal</c>. One of <c>liter</c>, <c>us_gallon</c>, or
+        /// The units for <c>quantity_decimal</c>. One of <c>liter</c>, <c>us_gallon</c>, or
         /// <c>other</c>.
         /// One of: <c>liter</c>, <c>other</c>, or <c>us_gallon</c>.
         /// </summary>
@@ -28,12 +35,5 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         [JsonProperty("unit_cost_decimal")]
         public decimal? UnitCostDecimal { get; set; }
-
-        /// <summary>
-        /// The volume of the fuel that was pumped, represented as a decimal string with at most 12
-        /// decimal places.
-        /// </summary>
-        [JsonProperty("volume_decimal")]
-        public decimal? VolumeDecimal { get; set; }
     }
 }
