@@ -4571,6 +4571,7 @@ namespace StripeTests
                         Type = "diesel",
                         Unit = "liter",
                         UnitCostDecimal = 3.5M,
+                        QuantityDecimal = 10M,
                     },
                     Lodging = new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsLodgingOptions
                     {
@@ -4592,9 +4593,6 @@ namespace StripeTests
                     Reference = "foo",
                 },
             };
-            options.AddExtraParam(
-                "purchase_details[fuel][volume_decimal]",
-                "10");
             var service = new Stripe.TestHelpers.Issuing.AuthorizationService(
                 this.StripeClient);
             service.Capture("example_authorization", options);
@@ -4823,6 +4821,7 @@ namespace StripeTests
                         Type = "diesel",
                         Unit = "liter",
                         UnitCostDecimal = 3.5M,
+                        QuantityDecimal = 10M,
                     },
                     Lodging = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsLodgingOptions
                     {
@@ -4844,9 +4843,6 @@ namespace StripeTests
                     Reference = "foo",
                 },
             };
-            options.AddExtraParam(
-                "purchase_details[fuel][volume_decimal]",
-                "10");
             var service = new Stripe.TestHelpers.Issuing.TransactionService(
                 this.StripeClient);
             service.CreateForceCapture(options);
@@ -4902,6 +4898,7 @@ namespace StripeTests
                         Type = "diesel",
                         Unit = "liter",
                         UnitCostDecimal = 3.5M,
+                        QuantityDecimal = 10M,
                     },
                     Lodging = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsLodgingOptions
                     {
@@ -4923,9 +4920,6 @@ namespace StripeTests
                     Reference = "foo",
                 },
             };
-            options.AddExtraParam(
-                "purchase_details[fuel][volume_decimal]",
-                "10");
             var service = new Stripe.TestHelpers.Issuing.TransactionService(
                 this.StripeClient);
             service.CreateUnlinkedRefund(options);
