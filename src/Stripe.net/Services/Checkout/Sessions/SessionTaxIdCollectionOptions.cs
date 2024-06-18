@@ -6,7 +6,7 @@ namespace Stripe.Checkout
     public class SessionTaxIdCollectionOptions : INestedOptions
     {
         /// <summary>
-        /// Set to true to enable Tax ID collection.
+        /// Enable tax ID collection during checkout. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
