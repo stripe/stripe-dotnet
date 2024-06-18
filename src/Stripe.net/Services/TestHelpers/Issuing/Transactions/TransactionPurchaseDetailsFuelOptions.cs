@@ -22,9 +22,11 @@ namespace Stripe.TestHelpers.Issuing
         public string Type { get; set; }
 
         /// <summary>
-        /// The units for <c>quantity_decimal</c>. One of <c>liter</c>, <c>us_gallon</c>, or
-        /// <c>other</c>.
-        /// One of: <c>liter</c>, <c>other</c>, or <c>us_gallon</c>.
+        /// The units for <c>quantity_decimal</c>. One of <c>charging_minute</c>,
+        /// <c>imperial_gallon</c>, <c>kilogram</c>, <c>kilowatt_hour</c>, <c>liter</c>,
+        /// <c>pound</c>, <c>us_gallon</c>, or <c>other</c>.
+        /// One of: <c>charging_minute</c>, <c>imperial_gallon</c>, <c>kilogram</c>,
+        /// <c>kilowatt_hour</c>, <c>liter</c>, <c>other</c>, <c>pound</c>, or <c>us_gallon</c>.
         /// </summary>
         [JsonProperty("unit")]
         public string Unit { get; set; }
