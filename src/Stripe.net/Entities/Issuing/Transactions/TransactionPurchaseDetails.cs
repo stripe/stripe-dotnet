@@ -7,6 +7,12 @@ namespace Stripe.Issuing
     public class TransactionPurchaseDetails : StripeEntity<TransactionPurchaseDetails>
     {
         /// <summary>
+        /// Fleet-specific information for transactions using Fleet cards.
+        /// </summary>
+        [JsonProperty("fleet")]
+        public TransactionPurchaseDetailsFleet Fleet { get; set; }
+
+        /// <summary>
         /// Information about the flight that was purchased with this transaction.
         /// </summary>
         [JsonProperty("flight")]
