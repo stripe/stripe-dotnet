@@ -23,7 +23,7 @@ namespace Stripe.Tax
         public override string BasePath => "/v1/tax/calculations";
 
         /// <summary>
-        /// <p>Calculates tax based on input and returns a Tax <c>Calculation</c> object.</p>.
+        /// <p>Calculates tax based on the input and returns a Tax <c>Calculation</c> object.</p>.
         /// </summary>
         public virtual Calculation Create(CalculationCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -31,7 +31,7 @@ namespace Stripe.Tax
         }
 
         /// <summary>
-        /// <p>Calculates tax based on input and returns a Tax <c>Calculation</c> object.</p>.
+        /// <p>Calculates tax based on the input and returns a Tax <c>Calculation</c> object.</p>.
         /// </summary>
         public virtual Task<Calculation> CreateAsync(CalculationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
