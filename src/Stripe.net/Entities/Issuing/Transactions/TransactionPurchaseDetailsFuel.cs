@@ -6,6 +6,13 @@ namespace Stripe.Issuing
     public class TransactionPurchaseDetailsFuel : StripeEntity<TransactionPurchaseDetailsFuel>
     {
         /// <summary>
+        /// <a href="https://www.conexxus.org/conexxus-payment-system-product-codes">Conexxus
+        /// Payment System Product Code</a> identifying the primary fuel product purchased.
+        /// </summary>
+        [JsonProperty("industry_product_code")]
+        public string IndustryProductCode { get; set; }
+
+        /// <summary>
         /// The quantity of <c>unit</c>s of fuel that was dispensed, represented as a decimal string
         /// with at most 12 decimal places.
         /// </summary>

@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec
-namespace Stripe.TestHelpers.Issuing
+namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
 
-    public class TransactionPurchaseDetailsFuelOptions : INestedOptions
+    public class AuthorizationFuel : StripeEntity<AuthorizationFuel>
     {
         /// <summary>
         /// <a href="https://www.conexxus.org/conexxus-payment-system-product-codes">Conexxus
@@ -20,8 +20,7 @@ namespace Stripe.TestHelpers.Issuing
         public decimal? QuantityDecimal { get; set; }
 
         /// <summary>
-        /// The type of fuel that was purchased. One of <c>diesel</c>, <c>unleaded_plus</c>,
-        /// <c>unleaded_regular</c>, <c>unleaded_super</c>, or <c>other</c>.
+        /// The type of fuel that was purchased.
         /// One of: <c>diesel</c>, <c>other</c>, <c>unleaded_plus</c>, <c>unleaded_regular</c>, or
         /// <c>unleaded_super</c>.
         /// </summary>
@@ -29,9 +28,7 @@ namespace Stripe.TestHelpers.Issuing
         public string Type { get; set; }
 
         /// <summary>
-        /// The units for <c>quantity_decimal</c>. One of <c>charging_minute</c>,
-        /// <c>imperial_gallon</c>, <c>kilogram</c>, <c>kilowatt_hour</c>, <c>liter</c>,
-        /// <c>pound</c>, <c>us_gallon</c>, or <c>other</c>.
+        /// The units for <c>quantity_decimal</c>.
         /// One of: <c>charging_minute</c>, <c>imperial_gallon</c>, <c>kilogram</c>,
         /// <c>kilowatt_hour</c>, <c>liter</c>, <c>other</c>, <c>pound</c>, or <c>us_gallon</c>.
         /// </summary>

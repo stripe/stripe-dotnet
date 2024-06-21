@@ -3,7 +3,7 @@ namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
 
-    public class TransactionPurchaseDetailsFuelOptions : INestedOptions
+    public class AuthorizationFuelOptions : INestedOptions
     {
         /// <summary>
         /// <a href="https://www.conexxus.org/conexxus-payment-system-product-codes">Conexxus
