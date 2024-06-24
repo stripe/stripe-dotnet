@@ -83,11 +83,13 @@ namespace Stripe.Issuing
         /// <summary>
         /// When an authorization is approved or declined by you or by Stripe, this field provides
         /// additional detail on the reason for the outcome.
-        /// One of: <c>account_disabled</c>, <c>card_active</c>, <c>card_inactive</c>,
+        /// One of: <c>account_disabled</c>, <c>card_active</c>, <c>card_canceled</c>,
+        /// <c>card_expired</c>, <c>card_inactive</c>, <c>cardholder_blocked</c>,
         /// <c>cardholder_inactive</c>, <c>cardholder_verification_required</c>,
-        /// <c>insufficient_funds</c>, <c>not_allowed</c>, <c>spending_controls</c>,
-        /// <c>suspected_fraud</c>, <c>verification_failed</c>, <c>webhook_approved</c>,
-        /// <c>webhook_declined</c>, <c>webhook_error</c>, or <c>webhook_timeout</c>.
+        /// <c>insecure_authorization_method</c>, <c>insufficient_funds</c>, <c>not_allowed</c>,
+        /// <c>pin_blocked</c>, <c>spending_controls</c>, <c>suspected_fraud</c>,
+        /// <c>verification_failed</c>, <c>webhook_approved</c>, <c>webhook_declined</c>,
+        /// <c>webhook_error</c>, or <c>webhook_timeout</c>.
         /// </summary>
         [JsonProperty("reason")]
         public string Reason { get; set; }

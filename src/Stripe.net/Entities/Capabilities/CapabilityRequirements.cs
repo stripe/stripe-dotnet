@@ -33,23 +33,13 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// If the capability is disabled, this string describes why. <a
+        /// Description of why the capability is disabled. <a
         /// href="https://stripe.com/docs/connect/handling-api-verification">Learn more about
-        /// handling verification issues</a>. Can be <c>requirements.fields_needed</c>,
-        /// <c>pending.onboarding</c>, <c>pending.review</c>, <c>rejected.other</c>,
-        /// <c>platform_paused</c>, <c>rejected.inactivty</c>, or
-        /// <c>rejected.unsupported_business</c>.
-        ///
-        /// <c>rejected.unsupported_business</c> means that the account's business is not supported
-        /// by the capability. For example, payment methods may restrict the businesses they support
-        /// in their terms of service, such as in <a
-        /// href="https://stripe.com/afterpay-clearpay/legal#restricted-businesses">Afterpay
-        /// Clearpay's terms of service</a>.
-        ///
-        /// <c>rejected.inactivity</c> means that the capability has been paused for inactivity.
-        /// This disabled reason currently only applies to the Issuing capability. See <a
-        /// href="https://support.stripe.com/questions/issuing-managing-inactive-connect-accounts">Issuing:
-        /// Managing Inactive Connects</a> for more details.
+        /// handling verification issues</a>.
+        /// One of: <c>other</c>, <c>paused.inactivity</c>, <c>pending.onboarding</c>,
+        /// <c>pending.review</c>, <c>platform_disabled</c>, <c>platform_paused</c>,
+        /// <c>rejected.inactivity</c>, <c>rejected.other</c>, <c>rejected.unsupported_business</c>,
+        /// or <c>requirements.fields_needed</c>.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }
