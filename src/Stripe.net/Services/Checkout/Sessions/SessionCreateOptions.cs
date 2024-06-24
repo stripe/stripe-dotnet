@@ -360,7 +360,7 @@ namespace Stripe.Checkout
         public string SuccessUrl { get; set; }
 
         /// <summary>
-        /// Controls tax ID collection settings for the session.
+        /// Controls tax ID collection during checkout.
         /// </summary>
         [JsonProperty("tax_id_collection")]
         public SessionTaxIdCollectionOptions TaxIdCollection { get; set; }

@@ -122,6 +122,20 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
+        /// Fleet-specific information for authorizations using Fleet cards.
+        /// </summary>
+        [JsonProperty("fleet")]
+        public AuthorizationFleet Fleet { get; set; }
+
+        /// <summary>
+        /// Information about fuel that was purchased with this transaction. Typically this
+        /// information is received from the merchant after the authorization has been approved and
+        /// the fuel dispensed.
+        /// </summary>
+        [JsonProperty("fuel")]
+        public AuthorizationFuel Fuel { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

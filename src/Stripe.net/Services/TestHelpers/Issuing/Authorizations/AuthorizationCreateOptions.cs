@@ -45,6 +45,18 @@ namespace Stripe.TestHelpers.Issuing
         public string Currency { get; set; }
 
         /// <summary>
+        /// Fleet-specific information for authorizations using Fleet cards.
+        /// </summary>
+        [JsonProperty("fleet")]
+        public AuthorizationFleetOptions Fleet { get; set; }
+
+        /// <summary>
+        /// Information about fuel that was purchased with this transaction.
+        /// </summary>
+        [JsonProperty("fuel")]
+        public AuthorizationFuelOptions Fuel { get; set; }
+
+        /// <summary>
         /// If set <c>true</c>, you may provide <a
         /// href="https://stripe.com/docs/api/issuing/authorizations/approve#approve_issuing_authorization-amount">amount</a>
         /// to control how much to hold for the authorization.
