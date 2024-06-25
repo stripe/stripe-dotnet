@@ -34,8 +34,8 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// This is typed as a string for consistency with <c>requirements.disabled_reason</c>, but
-        /// it safe to assume <c>future_requirements.disabled_reason</c> is empty because fields in
+        /// This is typed as an enum for consistency with <c>requirements.disabled_reason</c>, but
+        /// it safe to assume <c>future_requirements.disabled_reason</c> is null because fields in
         /// <c>future_requirements</c> will never disable the account.
         /// One of: <c>other</c>, <c>paused.inactivity</c>, <c>pending.onboarding</c>,
         /// <c>pending.review</c>, <c>platform_disabled</c>, <c>platform_paused</c>,
