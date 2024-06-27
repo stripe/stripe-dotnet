@@ -1,5 +1,12 @@
 # Changelog
 
+## 45.1.0 - 2024-06-27
+* [#2931](https://github.com/stripe/stripe-dotnet/pull/2931) Update generated code
+  * Add support for `Filters` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnections`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`
+  * Add support for `EmailType` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesOptions`, and `CreditNotePreviewOptions`
+  * Add support for `AccountSubcategories` on `FinancialConnectionsSessionFiltersOptions` and `FinancialConnectionsSessionFilters`
+  * Add support for `RebootWindow` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `TerminalConfiguration`
+
 ## 45.0.0 - 2024-06-24
 * [#2929](https://github.com/stripe/stripe-dotnet/pull/2929) Update generated code
   
