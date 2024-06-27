@@ -19,6 +19,11 @@ namespace Stripe
         public IDictionary<string, object> ExtraParams { get; set; }
             = new Dictionary<string, object>();
 
+        internal BaseOptions Clone()
+        {
+            return (BaseOptions)this.MemberwiseClone();
+        }
+
         /// <summary>
         /// Adds an <c>expand</c> value to the request, to request expansion of a specific
         /// field in the response. When requesting expansions in a list request, don't forget
