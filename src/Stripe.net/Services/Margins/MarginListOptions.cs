@@ -6,8 +6,8 @@ namespace Stripe
     public class MarginListOptions : ListOptions
     {
         /// <summary>
-        /// Only return margins that are active or inactive, i.e., pass false to list all inactive
-        /// margins.
+        /// Only return margins that are active or inactive. For example, pass <c>true</c> to only
+        /// list active margins.
         /// </summary>
         [JsonProperty("active")]
         public bool? Active { get; set; }
