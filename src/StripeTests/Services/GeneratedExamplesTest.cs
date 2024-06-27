@@ -4571,7 +4571,7 @@ namespace StripeTests
                         Type = "diesel",
                         Unit = "liter",
                         UnitCostDecimal = 3.5M,
-                        VolumeDecimal = 10M,
+                        QuantityDecimal = 10M,
                     },
                     Lodging = new Stripe.TestHelpers.Issuing.AuthorizationPurchaseDetailsLodgingOptions
                     {
@@ -4821,7 +4821,7 @@ namespace StripeTests
                         Type = "diesel",
                         Unit = "liter",
                         UnitCostDecimal = 3.5M,
-                        VolumeDecimal = 10M,
+                        QuantityDecimal = 10M,
                     },
                     Lodging = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsLodgingOptions
                     {
@@ -4898,7 +4898,7 @@ namespace StripeTests
                         Type = "diesel",
                         Unit = "liter",
                         UnitCostDecimal = 3.5M,
-                        VolumeDecimal = 10M,
+                        QuantityDecimal = 10M,
                     },
                     Lodging = new Stripe.TestHelpers.Issuing.TransactionPurchaseDetailsLodgingOptions
                     {

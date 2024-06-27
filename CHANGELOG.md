@@ -1,5 +1,35 @@
 # Changelog
 
+## 45.1.0 - 2024-06-27
+* [#2931](https://github.com/stripe/stripe-dotnet/pull/2931) Update generated code
+  * Add support for `Filters` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnections`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`
+  * Add support for `EmailType` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesOptions`, and `CreditNotePreviewOptions`
+  * Add support for `AccountSubcategories` on `FinancialConnectionsSessionFiltersOptions` and `FinancialConnectionsSessionFilters`
+  * Add support for `RebootWindow` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `TerminalConfiguration`
+
+## 45.0.0 - 2024-06-24
+* [#2929](https://github.com/stripe/stripe-dotnet/pull/2929) Update generated code
+  
+  This release changes the pinned API version to 2024-06-20. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2024-06-20) and carefully review the API changes before upgrading.
+  
+  ### ⚠️ Breaking changes
+  
+    * Remove the unused resource `PlatformTaxFee`
+    * Rename `VolumeDecimal` to `QuantityDecimal` on `IssuingAuthorizationPurchaseDetailsFuelOptions`, `IssuingTransactionPurchaseDetailsFuelOptions`, and `IssuingTransactionPurchaseDetailsFuel`
+  
+  ### Additions
+  
+  * Add support for `FinalizeAmount` test helper method on resource `Issuing.Authorization`
+  * Add support for new values `platform_disabled`, `paused.inactivity` and `other` on enums `CapabilityRequirements.DisabledReason` and `CapabilityFutureRequirements.DisabledReason` 
+  * Add support for `Fleet` on `Issuing.TestHelpersAuthorizationCreateOptions`, `IssuingAuthorizationPurchaseDetailsOptions`, `IssuingAuthorization`, `IssuingTransactionPurchaseDetailsOptions`, and `IssuingTransactionPurchaseDetails`
+  * Add support for `Fuel` on `Issuing.TestHelpersAuthorizationCreateOptions` and `IssuingAuthorization`
+  * Add support for `IndustryProductCode` and `QuantityDecimal` on `IssuingAuthorizationPurchaseDetailsFuelOptions`, `IssuingTransactionPurchaseDetailsFuelOptions`, and `IssuingTransactionPurchaseDetailsFuel`
+  
+
+## 44.13.0 - 2024-06-17
+* [#2927](https://github.com/stripe/stripe-dotnet/pull/2927) Update generated code
+  * Add support for `TaxIdCollection` on `PaymentLinkUpdateOptions`
+
 ## 44.13.0-beta.1 - 2024-06-13
 * [#2923](https://github.com/stripe/stripe-dotnet/pull/2923) Syncing changes from 44.12.0 release
 

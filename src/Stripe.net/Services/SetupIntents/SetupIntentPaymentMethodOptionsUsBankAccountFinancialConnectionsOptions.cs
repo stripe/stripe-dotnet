@@ -7,6 +7,13 @@ namespace Stripe
     public class SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions : INestedOptions
     {
         /// <summary>
+        /// Provide filters for the linked accounts that the customer can select for the payment
+        /// method.
+        /// </summary>
+        [JsonProperty("filters")]
+        public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions Filters { get; set; }
+
+        /// <summary>
         /// Customize manual entry behavior.
         /// </summary>
         [JsonProperty("manual_entry")]

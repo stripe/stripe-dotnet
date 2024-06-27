@@ -7,6 +7,12 @@ namespace Stripe.TestHelpers.Issuing
     public class TransactionPurchaseDetailsOptions : INestedOptions
     {
         /// <summary>
+        /// Fleet-specific information for transactions using Fleet cards.
+        /// </summary>
+        [JsonProperty("fleet")]
+        public TransactionPurchaseDetailsFleetOptions Fleet { get; set; }
+
+        /// <summary>
         /// Information about the flight that was purchased with this transaction.
         /// </summary>
         [JsonProperty("flight")]

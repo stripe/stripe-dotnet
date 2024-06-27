@@ -17,7 +17,7 @@ namespace Stripe
         /// ID of the product this price belongs to.
         ///
         /// Use this to implement a variable-pricing model in your integration. This is required if
-        /// <c>product_data</c> is not specifed.
+        /// <c>product_data</c> is not specified.
         /// </summary>
         [JsonProperty("product")]
         public string Product { get; set; }
