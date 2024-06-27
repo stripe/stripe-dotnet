@@ -6,6 +6,9 @@ namespace Stripe.Checkout
 
     public class SessionPaymentMethodOptionsUsBankAccountFinancialConnections : StripeEntity<SessionPaymentMethodOptionsUsBankAccountFinancialConnections>
     {
+        [JsonProperty("filters")]
+        public SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters Filters { get; set; }
+
         /// <summary>
         /// The list of permissions to request. The <c>payment_method</c> permission must be
         /// included.
