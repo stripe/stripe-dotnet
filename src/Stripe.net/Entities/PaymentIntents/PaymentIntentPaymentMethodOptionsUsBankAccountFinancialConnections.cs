@@ -6,6 +6,9 @@ namespace Stripe
 
     public class PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections : StripeEntity<PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections>
     {
+        [JsonProperty("filters")]
+        public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters Filters { get; set; }
+
         [JsonProperty("manual_entry")]
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsManualEntry ManualEntry { get; set; }
 

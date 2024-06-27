@@ -6,6 +6,9 @@ namespace Stripe
 
     public class QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections : StripeEntity<QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections>
     {
+        [JsonProperty("filters")]
+        public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters Filters { get; set; }
+
         /// <summary>
         /// The list of permissions to request. The <c>payment_method</c> permission must be
         /// included.
