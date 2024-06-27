@@ -52,6 +52,9 @@ namespace Stripe.Terminal
         [JsonProperty("offline")]
         public ConfigurationOffline Offline { get; set; }
 
+        [JsonProperty("reboot_window")]
+        public ConfigurationRebootWindow RebootWindow { get; set; }
+
         [JsonProperty("stripe_s700")]
         public ConfigurationStripeS700 StripeS700 { get; set; }
 

@@ -6,6 +6,9 @@ namespace Stripe
 
     public class SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections : StripeEntity<SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections>
     {
+        [JsonProperty("filters")]
+        public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters Filters { get; set; }
+
         /// <summary>
         /// The list of permissions to request. The <c>payment_method</c> permission must be
         /// included.
