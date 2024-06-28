@@ -6,13 +6,13 @@ namespace Stripe
     public class CustomerSessionComponentsPaymentElement : StripeEntity<CustomerSessionComponentsPaymentElement>
     {
         /// <summary>
-        /// Whether the payment element is enabled.
+        /// Whether the Payment Element is enabled.
         /// </summary>
         [JsonProperty("enabled")]
         public bool Enabled { get; set; }
 
         /// <summary>
-        /// This hash defines whether the payment element supports certain features.
+        /// This hash defines whether the Payment Element supports certain features.
         /// </summary>
         [JsonProperty("features")]
         public CustomerSessionComponentsPaymentElementFeatures Features { get; set; }
