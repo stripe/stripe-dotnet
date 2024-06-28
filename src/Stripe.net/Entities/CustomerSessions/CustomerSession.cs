@@ -6,8 +6,8 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A customer session allows you to grant client access to Stripe's frontend SDKs (like
-    /// StripeJs) control over a customer.
+    /// A Customer Session allows you to grant Stripe's frontend SDKs (like Stripe.js)
+    /// client-side access control over a Customer.
     /// </summary>
     public class CustomerSession : StripeEntity<CustomerSession>, IHasObject
     {
@@ -18,7 +18,7 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The client secret of this customer session. Used on the client to set up secure access
+        /// The client secret of this Customer Session. Used on the client to set up secure access
         /// to the given <c>customer</c>.
         ///
         /// The client secret can be used to provide access to <c>customer</c> from your frontend.
@@ -29,7 +29,7 @@ namespace Stripe
         public string ClientSecret { get; set; }
 
         /// <summary>
-        /// Configuration for the components supported by this customer session.
+        /// Configuration for the components supported by this Customer Session.
         /// </summary>
         [JsonProperty("components")]
         public CustomerSessionComponents Components { get; set; }
@@ -45,7 +45,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Customer)
-        /// The customer the customer session was created for.
+        /// The Customer the Customer Session was created for.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -56,7 +56,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The customer the customer session was created for.
+        /// The Customer the Customer Session was created for.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -73,7 +73,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The timestamp at which this customer session will expire.
+        /// The timestamp at which this Customer Session will expire.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
