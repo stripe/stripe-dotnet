@@ -12,7 +12,7 @@ namespace Stripe
         public CustomerSessionComponentsOptions Components { get; set; }
 
         /// <summary>
-        /// The ID of an existing customer for which to create the customer session.
+        /// The ID of an existing customer for which to create the Customer Session.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
