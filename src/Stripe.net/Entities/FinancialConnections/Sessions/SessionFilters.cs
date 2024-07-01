@@ -21,5 +21,11 @@ namespace Stripe.FinancialConnections
         /// </summary>
         [JsonProperty("countries")]
         public List<string> Countries { get; set; }
+
+        /// <summary>
+        /// Stripe ID of the institution with which the customer should be directed to log in.
+        /// </summary>
+        [JsonProperty("institution")]
+        public string Institution { get; set; }
     }
 }
