@@ -12,7 +12,7 @@ namespace Stripe
         public CustomerSessionComponentsBuyButtonOptions BuyButton { get; set; }
 
         /// <summary>
-        /// Configuration for the payment element.
+        /// Configuration for the Payment Element.
         /// </summary>
         [JsonProperty("payment_element")]
         public CustomerSessionComponentsPaymentElementOptions PaymentElement { get; set; }
