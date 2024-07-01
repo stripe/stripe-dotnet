@@ -35,6 +35,20 @@ namespace Stripe
         public string PaymentMethodSave { get; set; }
 
         /// <summary>
+        /// When using PaymentIntents and the customer checks the save checkbox, this field
+        /// determines the <a
+        /// href="https://docs.stripe.com/api/payment_intents/object#payment_intent_object-setup_future_usage"><c>setup_future_usage</c></a>
+        /// value used to confirm the PaymentIntent.
+        ///
+        /// When using SetupIntents, directly configure the <a
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-usage"><c>usage</c></a>
+        /// value on SetupIntent creation.
+        /// One of: <c>off_session</c>, or <c>on_session</c>.
+        /// </summary>
+        [JsonProperty("payment_method_save_usage")]
+        public string PaymentMethodSaveUsage { get; set; }
+
+        /// <summary>
         /// Controls whether the Payment Element displays the option to update a saved payment
         /// method. This parameter defaults to <c>disabled</c>.
         /// One of: <c>disabled</c>, or <c>enabled</c>.
