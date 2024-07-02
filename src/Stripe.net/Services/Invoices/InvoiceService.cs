@@ -28,6 +28,24 @@ namespace Stripe
         public override string BasePath => "/v1/invoices";
 
         /// <summary>
+        /// <p>Adds multiple line items to an invoice. This is only possible when an invoice is
+        /// still a draft.</p>.
+        /// </summary>
+        public virtual Invoice AddLines(string id, InvoiceAddLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/add_lines", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Adds multiple line items to an invoice. This is only possible when an invoice is
+        /// still a draft.</p>.
+        /// </summary>
+        public virtual Task<Invoice> AddLinesAsync(string id, InvoiceAddLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/add_lines", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>This endpoint creates a draft invoice for a given customer. The invoice remains a
         /// draft until you <a href="https://stripe.com/docs/api#finalize_invoice">finalize</a> the
         /// invoice, which allows you to <a href="https://stripe.com/docs/api#pay_invoice">pay</a>
@@ -330,6 +348,24 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Removes multiple line items from an invoice. This is only possible when an invoice is
+        /// still a draft.</p>.
+        /// </summary>
+        public virtual Invoice RemoveLines(string id, InvoiceRemoveLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/remove_lines", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Removes multiple line items from an invoice. This is only possible when an invoice is
+        /// still a draft.</p>.
+        /// </summary>
+        public virtual Task<Invoice> RemoveLinesAsync(string id, InvoiceRemoveLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/remove_lines", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Search for invoices you’ve previously created using Stripe’s <a
         /// href="https://stripe.com/docs/search#search-query-language">Search Query Language</a>.
         /// Don’t use search in read-after-write flows where strict consistency is necessary. Under
@@ -497,6 +533,24 @@ namespace Stripe
         public virtual Task<Invoice> UpdateAsync(string id, InvoiceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Updates multiple line items on an invoice. This is only possible when an invoice is
+        /// still a draft.</p>.
+        /// </summary>
+        public virtual Invoice UpdateLines(string id, InvoiceUpdateLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/update_lines", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Updates multiple line items on an invoice. This is only possible when an invoice is
+        /// still a draft.</p>.
+        /// </summary>
+        public virtual Task<Invoice> UpdateLinesAsync(string id, InvoiceUpdateLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/update_lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
