@@ -47,13 +47,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_method_save_usage")]
         public string PaymentMethodSaveUsage { get; set; }
-
-        /// <summary>
-        /// Controls whether the Payment Element displays the option to update a saved payment
-        /// method. This parameter defaults to <c>disabled</c>.
-        /// One of: <c>disabled</c>, or <c>enabled</c>.
-        /// </summary>
-        [JsonProperty("payment_method_update")]
-        public string PaymentMethodUpdate { get; set; }
     }
 }
