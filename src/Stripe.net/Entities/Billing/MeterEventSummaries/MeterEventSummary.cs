@@ -33,7 +33,8 @@ namespace Stripe.Billing
         public decimal AggregatedValue { get; set; }
 
         /// <summary>
-        /// End timestamp for this event summary (inclusive).
+        /// End timestamp for this event summary (exclusive). Must be aligned with minute
+        /// boundaries.
         /// </summary>
         [JsonProperty("end_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -53,7 +54,8 @@ namespace Stripe.Billing
         public string Meter { get; set; }
 
         /// <summary>
-        /// Start timestamp for this event summary (inclusive).
+        /// Start timestamp for this event summary (inclusive). Must be aligned with minute
+        /// boundaries.
         /// </summary>
         [JsonProperty("start_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
