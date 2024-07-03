@@ -190,7 +190,9 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
-        /// The suffix of the customer's next invoice number (for example, 0001).
+        /// The suffix of the customer's next invoice number (for example, 0001). When the account
+        /// uses account level sequencing, this parameter is ignored in API requests and the field
+        /// omitted in API responses.
         /// </summary>
         [JsonProperty("next_invoice_sequence")]
         public long NextInvoiceSequence { get; set; }
