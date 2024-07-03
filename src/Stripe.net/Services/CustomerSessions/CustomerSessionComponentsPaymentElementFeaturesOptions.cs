@@ -1,10 +1,40 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class CustomerSessionComponentsPaymentElementFeaturesOptions : INestedOptions
     {
+        /// <summary>
+        /// A list of <a
+        /// href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-allow_redisplay"><c>allow_redisplay</c></a>
+        /// values that controls which saved payment methods the Payment Element displays by
+        /// filtering to only show payment methods with an <c>allow_redisplay</c> value that is
+        /// present in this list.
+        ///
+        /// If not specified, defaults to ["always"]. In order to display all saved payment methods,
+        /// specify ["always", "limited", "unspecified"].
+        /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("payment_method_allow_redisplay_filters")]
+        public List<string> PaymentMethodAllowRedisplayFilters { get; set; }
+
+        /// <summary>
+        /// Controls whether or not the Payment Element shows saved payment methods. This parameter
+        /// defaults to <c>disabled</c>.
+        /// One of: <c>disabled</c>, or <c>enabled</c>.
+        /// </summary>
+        [JsonProperty("payment_method_redisplay")]
+        public string PaymentMethodRedisplay { get; set; }
+
+        /// <summary>
+        /// Determines the max number of saved payment methods for the Payment Element to display.
+        /// This parameter defaults to <c>10</c>.
+        /// </summary>
+        [JsonProperty("payment_method_redisplay_limit")]
+        public long? PaymentMethodRedisplayLimit { get; set; }
+
         /// <summary>
         /// Controls whether the Payment Element displays the option to remove a saved payment
         /// method. This parameter defaults to <c>disabled</c>.
