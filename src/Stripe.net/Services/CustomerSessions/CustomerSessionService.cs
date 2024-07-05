@@ -22,7 +22,7 @@ namespace Stripe
         public override string BasePath => "/v1/customer_sessions";
 
         /// <summary>
-        /// <p>Creates a customer session object that includes a single-use client secret that you
+        /// <p>Creates a Customer Session object that includes a single-use client secret that you
         /// can use on your front-end to grant client-side API access for certain customer
         /// resources.</p>.
         /// </summary>
@@ -32,7 +32,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Creates a customer session object that includes a single-use client secret that you
+        /// <p>Creates a Customer Session object that includes a single-use client secret that you
         /// can use on your front-end to grant client-side API access for certain customer
         /// resources.</p>.
         /// </summary>

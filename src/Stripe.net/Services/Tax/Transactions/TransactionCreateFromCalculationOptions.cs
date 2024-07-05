@@ -1,8 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class TransactionCreateFromCalculationOptions : BaseOptions, IHasMetadata
     {
@@ -20,6 +22,16 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The Unix timestamp representing when the tax liability is assumed or reduced, which
+        /// determines the liability posting period and handling in tax liability reports. The
+        /// timestamp must fall within the <c>tax_date</c> and the current time, unless the
+        /// <c>tax_date</c> is scheduled in advance. Defaults to the current time.
+        /// </summary>
+        [JsonProperty("posted_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? PostedAt { get; set; }
 
         /// <summary>
         /// A custom order or sale identifier, such as 'myOrder_123'. Must be unique across all

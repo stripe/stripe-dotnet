@@ -14,14 +14,16 @@ namespace Stripe.Billing
         public string Customer { get; set; }
 
         /// <summary>
-        /// The timestamp from when to stop aggregating meter events (exclusive).
+        /// The timestamp from when to stop aggregating meter events (exclusive). Must be aligned
+        /// with minute boundaries.
         /// </summary>
         [JsonProperty("end_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EndTime { get; set; }
 
         /// <summary>
-        /// The timestamp from when to start aggregating meter events (inclusive).
+        /// The timestamp from when to start aggregating meter events (inclusive). Must be aligned
+        /// with minute boundaries.
         /// </summary>
         [JsonProperty("start_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
