@@ -13,5 +13,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("account_subcategories")]
         public List<string> AccountSubcategories { get; set; }
+
+        /// <summary>
+        /// ID of the institution to use to filter for selectable accounts.
+        /// </summary>
+        [JsonProperty("institution")]
+        public string Institution { get; set; }
     }
 }

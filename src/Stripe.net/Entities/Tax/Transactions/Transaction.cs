@@ -73,6 +73,13 @@ namespace Stripe.Tax
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The Unix timestamp representing when the tax liability is assumed or reduced.
+        /// </summary>
+        [JsonProperty("posted_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime PostedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// A custom unique identifier, such as 'myOrder_123'.
         /// </summary>
         [JsonProperty("reference")]

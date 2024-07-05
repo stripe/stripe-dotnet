@@ -158,7 +158,7 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// The list of data refresh subscriptions requested on this account.
-        /// One of: <c>inferred_balances</c>, or <c>transactions</c>.
+        /// One of: <c>balance</c>, <c>inferred_balances</c>, or <c>transactions</c>.
         /// </summary>
         [JsonProperty("subscriptions")]
         public List<string> Subscriptions { get; set; }

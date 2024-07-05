@@ -12,7 +12,7 @@ namespace Stripe
         public CustomerSessionComponentsBuyButton BuyButton { get; set; }
 
         /// <summary>
-        /// This hash contains whether the payment element is enabled and the features it supports.
+        /// This hash contains whether the Payment Element is enabled and the features it supports.
         /// </summary>
         [JsonProperty("payment_element")]
         public CustomerSessionComponentsPaymentElement PaymentElement { get; set; }
