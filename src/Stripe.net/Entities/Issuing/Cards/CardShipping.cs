@@ -11,6 +11,12 @@ namespace Stripe.Issuing
         public Address Address { get; set; }
 
         /// <summary>
+        /// Address validation details for the shipment.
+        /// </summary>
+        [JsonProperty("address_validation")]
+        public CardShippingAddressValidation AddressValidation { get; set; }
+
+        /// <summary>
         /// The delivery company that shipped a card.
         /// One of: <c>dhl</c>, <c>fedex</c>, <c>royal_mail</c>, or <c>usps</c>.
         /// </summary>
