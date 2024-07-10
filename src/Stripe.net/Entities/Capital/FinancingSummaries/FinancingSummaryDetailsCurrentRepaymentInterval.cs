@@ -9,8 +9,8 @@ namespace Stripe.Capital
     {
         /// <summary>
         /// The time at which the minimum payment amount will be due. If not met through
-        /// withholding, the Connected account's linked bank account will be debited. Given in
-        /// seconds since unix epoch.
+        /// withholding, the Connected account's linked bank account or account balance will be
+        /// debited. Given in seconds since unix epoch.
         /// </summary>
         [JsonProperty("due_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
