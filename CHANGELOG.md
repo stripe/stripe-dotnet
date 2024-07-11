@@ -1,5 +1,12 @@
 # Changelog
 
+## 45.3.0 - 2024-07-11
+* [#2939](https://github.com/stripe/stripe-dotnet/pull/2939) Update generated code
+  * Add support for `PaymentMethodOptions` on `ConfirmationToken`
+  * Add support for `PaymentElement` on `CustomerSessionComponentsOptions` and `CustomerSessionComponents`
+  * Add support for `AddressValidation` on `IssuingCardShippingOptions` and `IssuingCardShipping`
+  * Add support for `Shipping` on `Issuing.CardUpdateOptions`
+
 ## 45.2.0 - 2024-07-05
 * [#2932](https://github.com/stripe/stripe-dotnet/pull/2932) Update generated code
   * Add support for `AddLines`, `RemoveLines`, and `UpdateLines` methods on resource `Invoice`
