@@ -1,5 +1,12 @@
 # Changelog
 
+## 45.3.0 - 2024-07-11
+* [#2939](https://github.com/stripe/stripe-dotnet/pull/2939) Update generated code
+  * Add support for `PaymentMethodOptions` on `ConfirmationToken`
+  * Add support for `PaymentElement` on `CustomerSessionComponentsOptions` and `CustomerSessionComponents`
+  * Add support for `AddressValidation` on `IssuingCardShippingOptions` and `IssuingCardShipping`
+  * Add support for `Shipping` on `Issuing.CardUpdateOptions`
+
 ## 45.3.0-beta.1 - 2024-07-05
 * [#2933](https://github.com/stripe/stripe-dotnet/pull/2933) Update generated code for beta
   * ⚠️ Remove support for `PaymentMethodUpdate` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`. Users are expected to completely migrate from using `payment_method_update`.
