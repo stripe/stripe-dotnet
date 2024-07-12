@@ -10,7 +10,7 @@ namespace Stripe
     /// Stripe Elements use registered payment method domains to control where certain payment
     /// methods are shown.
     ///
-    /// Related guides: <a
+    /// Related guide: <a
     /// href="https://stripe.com/docs/payments/payment-methods/pmd-registration">Payment method
     /// domains</a>.
     /// </summary>
