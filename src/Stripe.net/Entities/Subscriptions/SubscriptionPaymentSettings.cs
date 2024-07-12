@@ -32,8 +32,8 @@ namespace Stripe
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
-        /// Either <c>off</c>, or <c>on_subscription</c>. With <c>on_subscription</c> Stripe updates
-        /// <c>subscription.default_payment_method</c> when a subscription payment succeeds.
+        /// Configure whether Stripe updates <c>subscription.default_payment_method</c> when payment
+        /// succeeds. Defaults to <c>off</c>.
         /// One of: <c>off</c>, or <c>on_subscription</c>.
         /// </summary>
         [JsonProperty("save_default_payment_method")]
