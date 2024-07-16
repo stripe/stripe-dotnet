@@ -26,6 +26,12 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("async_workflows")]
+        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
+
+        /// <summary>
         /// Defaults to <c>true</c>. When capturing a PaymentIntent, setting <c>final_capture</c> to
         /// <c>false</c> notifies Stripe to not release the remaining uncaptured funds to make sure
         /// that they're captured in future requests. You can only use this setting when <a

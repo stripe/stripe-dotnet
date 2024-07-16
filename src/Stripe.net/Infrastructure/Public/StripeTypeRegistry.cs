@@ -153,6 +153,7 @@ namespace Stripe
                 { "subscription", typeof(Subscription) },
                 { "subscription_item", typeof(SubscriptionItem) },
                 { "subscription_schedule", typeof(SubscriptionSchedule) },
+                { "tax.association", typeof(Tax.Association) },
                 { "tax.calculation", typeof(Tax.Calculation) },
                 { "tax.calculation_line_item", typeof(Tax.CalculationLineItem) },
                 { "tax.form", typeof(Tax.Form) },

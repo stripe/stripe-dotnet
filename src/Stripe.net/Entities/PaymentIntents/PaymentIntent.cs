@@ -104,6 +104,9 @@ namespace Stripe
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
+        [JsonProperty("async_workflows")]
+        public PaymentIntentAsyncWorkflows AsyncWorkflows { get; set; }
+
         /// <summary>
         /// Settings to configure compatible payment methods from the <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
