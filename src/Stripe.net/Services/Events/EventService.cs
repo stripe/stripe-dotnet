@@ -24,8 +24,8 @@ namespace Stripe
         public override string BasePath => "/v1/events";
 
         /// <summary>
-        /// <p>Retrieves the details of an event. Supply the unique identifier of the event, which
-        /// you might have received in a webhook.</p>.
+        /// <p>Retrieves the details of an event if it was created in the last 30 days. Supply the
+        /// unique identifier of the event, which you might have received in a webhook.</p>.
         /// </summary>
         public virtual Event Get(string id, EventGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -33,8 +33,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Retrieves the details of an event. Supply the unique identifier of the event, which
-        /// you might have received in a webhook.</p>.
+        /// <p>Retrieves the details of an event if it was created in the last 30 days. Supply the
+        /// unique identifier of the event, which you might have received in a webhook.</p>.
         /// </summary>
         public virtual Task<Event> GetAsync(string id, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
