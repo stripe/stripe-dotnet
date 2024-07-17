@@ -675,6 +675,11 @@ namespace Stripe
         public const string IssuingDisputeFundsReinstated = "issuing_dispute.funds_reinstated";
 
         /// <summary>
+        /// Occurs whenever funds are deducted from your account for an Issuing dispute.
+        /// </summary>
+        public const string IssuingDisputeFundsRescinded = "issuing_dispute.funds_rescinded";
+
+        /// <summary>
         /// Occurs whenever a dispute is submitted.
         /// </summary>
         public const string IssuingDisputeSubmitted = "issuing_dispute.submitted";
