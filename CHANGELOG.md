@@ -1,5 +1,9 @@
 # Changelog
 
+## 45.4.0 - 2024-07-18
+* [#2940](https://github.com/stripe/stripe-dotnet/pull/2940) Update generated code
+  * Add support for `Customer` on `ConfirmationTokenPaymentMethodPreview`
+
 ## 45.3.0 - 2024-07-11
 * [#2939](https://github.com/stripe/stripe-dotnet/pull/2939) Update generated code
   * Add support for `PaymentMethodOptions` on `ConfirmationToken`
