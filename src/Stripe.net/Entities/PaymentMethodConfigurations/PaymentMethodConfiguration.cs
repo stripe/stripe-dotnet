@@ -178,6 +178,9 @@ namespace Stripe
         [JsonProperty("paypal")]
         public PaymentMethodConfigurationPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public PaymentMethodConfigurationPayto Payto { get; set; }
+
         [JsonProperty("promptpay")]
         public PaymentMethodConfigurationPromptpay Promptpay { get; set; }
 
