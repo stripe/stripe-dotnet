@@ -11,8 +11,8 @@ namespace Stripe
         /// <c>minimum</c>, representing the lowest available value for the account country. Default
         /// is <c>minimum</c>. The <c>delay_days</c> parameter remains at the last configured value
         /// if <c>interval</c> is <c>manual</c>. <a
-        /// href="https://docs.stripe.com/connect/manage-payout-schedule">Learn more about
-        /// controlling payout delay days</a>.
+        /// href="https://stripe.com/connect/manage-payout-schedule">Learn more about controlling
+        /// payout delay days</a>.
         /// </summary>
         [JsonProperty("delay_days")]
         [JsonConverter(typeof(AnyOfConverter))]
