@@ -368,6 +368,14 @@ namespace Stripe
         public PaymentMethodConfigurationSwishOptions Swish { get; set; }
 
         /// <summary>
+        /// Twint is a payment method popular in Switzerland. It allows customers to pay using their
+        /// mobile phone. Check this <a href="https://docs.stripe.com/payments/twint">page</a> for
+        /// more details.
+        /// </summary>
+        [JsonProperty("twint")]
+        public PaymentMethodConfigurationTwintOptions Twint { get; set; }
+
+        /// <summary>
         /// Stripe users in the United States can accept ACH direct debit payments from customers
         /// with a US bank account using the Automated Clearing House (ACH) payments system operated
         /// by Nacha. Check this <a href="https://stripe.com/docs/payments/ach-debit">page</a> for
