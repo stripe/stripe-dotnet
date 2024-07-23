@@ -7,6 +7,14 @@ namespace Stripe.Treasury
     public class FinancialAccountUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// The display name for the FinancialAccount. Use this field to customize the names of the
+        /// FinancialAccounts for your connected accounts. Unlike the <c>nickname</c> field,
+        /// <c>display_name</c> is not internal metadata and will be exposed to connected accounts.
+        /// </summary>
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
+        /// <summary>
         /// Encodes whether a FinancialAccount has access to a particular feature, with a status
         /// enum and associated <c>status_details</c>. Stripe or the platform may control features
         /// via the requested field.
