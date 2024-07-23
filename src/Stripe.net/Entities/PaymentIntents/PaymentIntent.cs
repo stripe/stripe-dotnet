@@ -270,7 +270,9 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Charge)
-        /// The latest charge created by this PaymentIntent.
+        /// ID of the latest <a href="https://stripe.com/docs/api/charges">Charge object</a> created
+        /// by this PaymentIntent. This property is <c>null</c> until PaymentIntent confirmation is
+        /// attempted.
         /// </summary>
         [JsonIgnore]
         public string LatestChargeId
@@ -281,7 +283,9 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The latest charge created by this PaymentIntent.
+        /// ID of the latest <a href="https://stripe.com/docs/api/charges">Charge object</a> created
+        /// by this PaymentIntent. This property is <c>null</c> until PaymentIntent confirmation is
+        /// attempted.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
