@@ -14,6 +14,13 @@ namespace Stripe
         public string Brand { get; set; }
 
         /// <summary>
+        /// The <a href="https://stripe.com/docs/card-product-codes">product code</a> that
+        /// identifies the specific program or product associated with a card.
+        /// </summary>
+        [JsonProperty("brand_product")]
+        public string BrandProduct { get; set; }
+
+        /// <summary>
         /// The cardholder name as read from the card, in <a
         /// href="https://en.wikipedia.org/wiki/ISO/IEC_7813">ISO 7813</a> format. May include
         /// alphanumeric characters, special characters and first/last name separator (<c>/</c>). In
