@@ -77,6 +77,9 @@ namespace Stripe
         /// might add new reasons in the future, so we recommend an internal warning when you
         /// receive an unknown reason.
         /// One of: <c>issuing.account_closed_for_inactivity</c>,
+        /// <c>issuing.account_closed_for_not_providing_business_model_clarification</c>,
+        /// <c>issuing.account_closed_for_not_providing_url_clarification</c>,
+        /// <c>issuing.account_closed_for_not_providing_use_case_clarification</c>,
         /// <c>issuing.account_closed_for_terms_of_service_violation</c>,
         /// <c>issuing.application_rejected_for_failure_to_verify</c>,
         /// <c>issuing.credit_application_rejected</c>,
