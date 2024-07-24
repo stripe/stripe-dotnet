@@ -17,6 +17,9 @@ namespace Stripe.Tax
         {
         }
 
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/tax/associations";
+
         /// <summary>
         /// <p>Finds a tax association object by PaymentIntent id.</p>.
         /// </summary>
