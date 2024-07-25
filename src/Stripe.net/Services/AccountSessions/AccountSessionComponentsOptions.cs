@@ -58,5 +58,17 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payouts_list")]
         public AccountSessionComponentsPayoutsListOptions PayoutsList { get; set; }
+
+        /// <summary>
+        /// Configuration for the tax registrations embedded component.
+        /// </summary>
+        [JsonProperty("tax_registrations")]
+        public AccountSessionComponentsTaxRegistrationsOptions TaxRegistrations { get; set; }
+
+        /// <summary>
+        /// Configuration for the tax settings embedded component.
+        /// </summary>
+        [JsonProperty("tax_settings")]
+        public AccountSessionComponentsTaxSettingsOptions TaxSettings { get; set; }
     }
 }
