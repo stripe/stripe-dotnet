@@ -35,7 +35,8 @@ namespace Stripe.FinancialConnections
         public DateTime AsOf { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The balances owed to (or by) the account holder.
+        /// The balances owed to (or by) the account holder, before subtracting any outbound pending
+        /// transactions or adding any inbound pending transactions.
         ///
         /// Each key is a three-letter <a
         /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in
