@@ -34,5 +34,11 @@ namespace Stripe
 
         [JsonProperty("payouts_list")]
         public AccountSessionComponentsPayoutsList PayoutsList { get; set; }
+
+        [JsonProperty("tax_registrations")]
+        public AccountSessionComponentsTaxRegistrations TaxRegistrations { get; set; }
+
+        [JsonProperty("tax_settings")]
+        public AccountSessionComponentsTaxSettings TaxSettings { get; set; }
     }
 }
