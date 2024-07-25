@@ -84,6 +84,11 @@ namespace Stripe
         public const string BillingPortalSessionCreated = "billing_portal.session.created";
 
         /// <summary>
+        /// Occurs whenever your custom alert threshold is met.
+        /// </summary>
+        public const string BillingAlertTriggered = "billing.alert.triggered";
+
+        /// <summary>
         /// Occurs whenever a capability has new requirements or a new status.
         /// </summary>
         public const string CapabilityUpdated = "capability.updated";

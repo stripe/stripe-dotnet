@@ -26,6 +26,8 @@ namespace Stripe
                 { "balance", typeof(Balance) },
                 { "balance_transaction", typeof(BalanceTransaction) },
                 { "bank_account", typeof(BankAccount) },
+                { "billing.alert", typeof(Billing.Alert) },
+                { "billing.alert_triggered", typeof(Billing.AlertTriggered) },
                 { "billing.meter", typeof(Billing.Meter) },
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
