@@ -27,7 +27,7 @@ namespace Stripe
         /// <c>account.updated</c>, <c>account_notice.created</c>, <c>account_notice.updated</c>,
         /// <c>application_fee.created</c>, <c>application_fee.refund.updated</c>,
         /// <c>application_fee.refunded</c>, <c>balance.available</c>,
-        /// <c>billing_portal.configuration.created</c>,
+        /// <c>billing.alert.triggered</c>, <c>billing_portal.configuration.created</c>,
         /// <c>billing_portal.configuration.updated</c>, <c>billing_portal.session.created</c>,
         /// <c>capability.updated</c>, <c>capital.financing_offer.accepted</c>,
         /// <c>capital.financing_offer.canceled</c>, <c>capital.financing_offer.created</c>,
