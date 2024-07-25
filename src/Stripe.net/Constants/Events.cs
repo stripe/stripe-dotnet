@@ -84,6 +84,11 @@ namespace Stripe
         public const string BillingPortalSessionCreated = "billing_portal.session.created";
 
         /// <summary>
+        /// Occurs whenever your custom alert threshold is met.
+        /// </summary>
+        public const string BillingAlertTriggered = "billing.alert.triggered";
+
+        /// <summary>
         /// Occurs whenever a capability has new requirements or a new status.
         /// </summary>
         public const string CapabilityUpdated = "capability.updated";
@@ -563,6 +568,12 @@ namespace Stripe
         public const string InvoiceMarkedUncollectible = "invoice.marked_uncollectible";
 
         /// <summary>
+        /// Occurs X number of days after an invoice becomes due—where X is determined by
+        /// Automations.
+        /// </summary>
+        public const string InvoiceOverdue = "invoice.overdue";
+
+        /// <summary>
         /// Occurs whenever an invoice payment attempt succeeds or an invoice is marked as paid
         /// out-of-band.
         /// </summary>
@@ -611,6 +622,12 @@ namespace Stripe
         /// Occurs whenever an invoice is voided.
         /// </summary>
         public const string InvoiceVoided = "invoice.voided";
+
+        /// <summary>
+        /// Occurs X number of days before an invoice becomes due—where X is determined by
+        /// Automations.
+        /// </summary>
+        public const string InvoiceWillBeDue = "invoice.will_be_due";
 
         /// <summary>
         /// Occurs whenever an invoice item is created.
@@ -673,6 +690,11 @@ namespace Stripe
         /// Occurs whenever funds are reinstated to your account for an Issuing dispute.
         /// </summary>
         public const string IssuingDisputeFundsReinstated = "issuing_dispute.funds_reinstated";
+
+        /// <summary>
+        /// Occurs whenever funds are deducted from your account for an Issuing dispute.
+        /// </summary>
+        public const string IssuingDisputeFundsRescinded = "issuing_dispute.funds_rescinded";
 
         /// <summary>
         /// Occurs whenever a dispute is submitted.

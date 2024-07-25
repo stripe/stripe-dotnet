@@ -18,9 +18,7 @@ namespace Stripe.BillingPortal
     /// customer does not visit the URL. Create sessions on-demand when customers intend to
     /// manage their subscriptions and billing details.
     ///
-    /// Learn more in the <a
-    /// href="https://stripe.com/docs/billing/subscriptions/integrating-customer-portal">integration
-    /// guide</a>.
+    /// Related guide: <a href="https://stripe.com/customer-management">Customer management</a>.
     /// </summary>
     public class Session : StripeEntity<Session>, IHasId, IHasObject
     {

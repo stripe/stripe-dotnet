@@ -31,6 +31,12 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("async_workflows")]
+        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
+
+        /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>

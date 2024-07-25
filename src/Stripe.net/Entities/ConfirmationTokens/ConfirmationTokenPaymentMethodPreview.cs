@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 
     public class ConfirmationTokenPaymentMethodPreview : StripeEntity<ConfirmationTokenPaymentMethodPreview>
     {
@@ -56,6 +57,39 @@ namespace Stripe
 
         [JsonProperty("cashapp")]
         public ConfirmationTokenPaymentMethodPreviewCashapp Cashapp { get; set; }
+
+        #region Expandable Customer
+
+        /// <summary>
+        /// (ID of the Customer)
+        /// The ID of the Customer to which this PaymentMethod is saved. This will not be set when
+        /// the PaymentMethod has not been saved to a Customer.
+        /// </summary>
+        [JsonIgnore]
+        public string CustomerId
+        {
+            get => this.InternalCustomer?.Id;
+            set => this.InternalCustomer = SetExpandableFieldId(value, this.InternalCustomer);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the Customer to which this PaymentMethod is saved. This will not be set when
+        /// the PaymentMethod has not been saved to a Customer.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Customer Customer
+        {
+            get => this.InternalCustomer?.ExpandedObject;
+            set => this.InternalCustomer = SetExpandableFieldObject(value, this.InternalCustomer);
+        }
+
+        [JsonProperty("customer")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+        internal ExpandableField<Customer> InternalCustomer { get; set; }
+        #endregion
 
         [JsonProperty("customer_balance")]
         public ConfirmationTokenPaymentMethodPreviewCustomerBalance CustomerBalance { get; set; }

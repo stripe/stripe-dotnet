@@ -24,16 +24,16 @@ namespace Stripe
         /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
         /// <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>,
         /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>konbini</c>, <c>link</c>,
-        /// <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>promptpay</c>, <c>revolut_pay</c>,
-        /// <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
-        /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
+        /// <c>multibanco</c>, <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>promptpay</c>,
+        /// <c>revolut_pay</c>, <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>,
+        /// <c>swish</c>, <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
-        /// Either <c>off</c>, or <c>on_subscription</c>. With <c>on_subscription</c> Stripe updates
-        /// <c>subscription.default_payment_method</c> when a subscription payment succeeds.
+        /// Configure whether Stripe updates <c>subscription.default_payment_method</c> when payment
+        /// succeeds. Defaults to <c>off</c>.
         /// One of: <c>off</c>, or <c>on_subscription</c>.
         /// </summary>
         [JsonProperty("save_default_payment_method")]

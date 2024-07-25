@@ -800,10 +800,6 @@ namespace Stripe
 
         #region Expandable Subscription
 
-        /// <summary>
-        /// (ID of the Subscription)
-        /// The subscription that this invoice was prepared for, if any.
-        /// </summary>
         [JsonIgnore]
         public string SubscriptionId
         {
@@ -811,12 +807,6 @@ namespace Stripe
             set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
         }
 
-        /// <summary>
-        /// (Expanded)
-        /// The subscription that this invoice was prepared for, if any.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
         [JsonIgnore]
         public Subscription Subscription
         {

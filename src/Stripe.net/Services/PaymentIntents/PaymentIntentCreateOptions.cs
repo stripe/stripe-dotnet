@@ -31,6 +31,12 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("async_workflows")]
+        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
+
+        /// <summary>
         /// When you enable this parameter, this PaymentIntent accepts payment methods that you
         /// enable in the Dashboard and that are compatible with this PaymentIntent's other
         /// parameters.

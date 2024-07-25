@@ -47,39 +47,6 @@ namespace Stripe
         [JsonProperty("amount_requested")]
         public long AmountRequested { get; set; }
 
-        #region Expandable Charge
-
-        /// <summary>
-        /// (ID of the Charge)
-        /// ID of the successful charge for this payment. This field is null when the payment is
-        /// <c>open</c> or <c>canceled</c>.
-        /// </summary>
-        [JsonIgnore]
-        public string ChargeId
-        {
-            get => this.InternalCharge?.Id;
-            set => this.InternalCharge = SetExpandableFieldId(value, this.InternalCharge);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// ID of the successful charge for this payment. This field is null when the payment is
-        /// <c>open</c> or <c>canceled</c>.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public Charge Charge
-        {
-            get => this.InternalCharge?.ExpandedObject;
-            set => this.InternalCharge = SetExpandableFieldObject(value, this.InternalCharge);
-        }
-
-        [JsonProperty("charge")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
-        internal ExpandableField<Charge> InternalCharge { get; set; }
-        #endregion
-
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
@@ -141,38 +108,8 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
-        #region Expandable PaymentIntent
-
-        /// <summary>
-        /// (ID of the PaymentIntent)
-        /// ID of the PaymentIntent associated with this payment. Note: This property is only
-        /// populated for invoices finalized on or after March 15th, 2019.
-        /// </summary>
-        [JsonIgnore]
-        public string PaymentIntentId
-        {
-            get => this.InternalPaymentIntent?.Id;
-            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// ID of the PaymentIntent associated with this payment. Note: This property is only
-        /// populated for invoices finalized on or after March 15th, 2019.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-        public PaymentIntent PaymentIntent
-        {
-            get => this.InternalPaymentIntent?.ExpandedObject;
-            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
-        }
-
-        [JsonProperty("payment_intent")]
-        [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
-        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
-        #endregion
+        [JsonProperty("payment")]
+        public InvoicePaymentPayment Payment { get; set; }
 
         /// <summary>
         /// The status of the payment, one of <c>open</c>, <c>paid</c>, or <c>canceled</c>.

@@ -146,7 +146,7 @@ namespace Stripe
 
         /// <summary>
         /// A hash to configure risk controls on the account. Please see <a
-        /// href="https://docs.stripe.com/connect/pausing-payments-or-payouts-on-connected-accounts">this
+        /// href="https://stripe.com/connect/pausing-payments-or-payouts-on-connected-accounts">this
         /// page for more details</a>.
         /// </summary>
         [JsonProperty("risk_controls")]

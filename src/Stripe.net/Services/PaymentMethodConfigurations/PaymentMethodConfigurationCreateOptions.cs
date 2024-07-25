@@ -311,6 +311,15 @@ namespace Stripe
         public PaymentMethodConfigurationPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// PayTo is a <a href="https://docs.stripe.com/payments/real-time">real-time</a> payment
+        /// method that enables customers in Australia to pay by providing their bank account
+        /// details. Customers must accept a mandate authorizing you to debit their account. Check
+        /// this <a href="https://docs.stripe.com/payments/payto">page</a> for more details.
+        /// </summary>
+        [JsonProperty("payto")]
+        public PaymentMethodConfigurationPaytoOptions Payto { get; set; }
+
+        /// <summary>
         /// PromptPay is a Thailand-based payment method that allows customers to make a payment
         /// using their preferred app from participating banks. Check this <a
         /// href="https://stripe.com/docs/payments/promptpay">page</a> for more details.
@@ -357,6 +366,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("swish")]
         public PaymentMethodConfigurationSwishOptions Swish { get; set; }
+
+        /// <summary>
+        /// Twint is a payment method popular in Switzerland. It allows customers to pay using their
+        /// mobile phone. Check this <a href="https://docs.stripe.com/payments/twint">page</a> for
+        /// more details.
+        /// </summary>
+        [JsonProperty("twint")]
+        public PaymentMethodConfigurationTwintOptions Twint { get; set; }
 
         /// <summary>
         /// Stripe users in the United States can accept ACH direct debit payments from customers

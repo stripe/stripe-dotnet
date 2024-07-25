@@ -5,8 +5,8 @@ namespace Stripe.FinancialConnections
     using Newtonsoft.Json;
 
     /// <summary>
-    /// An institution represents a banking institution which may be available for an end user
-    /// to select in the Financial Connections authentication flow.
+    /// An institution represents a financial institution to which an end user can connect using
+    /// the Financial Connections authentication flow.
     /// </summary>
     public class Institution : StripeEntity<Institution>, IHasId, IHasObject
     {
@@ -39,7 +39,9 @@ namespace Stripe.FinancialConnections
         public string Name { get; set; }
 
         /// <summary>
-        /// A list of routing numbers which are known to correspond to this institution.
+        /// A list of routing numbers which are known to correspond to this institution. Due to the
+        /// many to many relationship between institutions and routing numbers, this list may not be
+        /// comprehensive and routing numbers may also be shared between institutions.
         /// </summary>
         [JsonProperty("routing_numbers")]
         public List<string> RoutingNumbers { get; set; }
@@ -52,7 +54,9 @@ namespace Stripe.FinancialConnections
         public string Status { get; set; }
 
         /// <summary>
-        /// The URL for this institution's website.
+        /// A URL corresponding to this institution. This URL is also displayed in the
+        /// authentication flow to help end users confirm that they are authenticating with the
+        /// right institution.
         /// </summary>
         [JsonProperty("url")]
         public string Url { get; set; }

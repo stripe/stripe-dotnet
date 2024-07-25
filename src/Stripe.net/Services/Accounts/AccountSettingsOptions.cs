@@ -19,6 +19,12 @@ namespace Stripe
         public AccountSettingsBrandingOptions Branding { get; set; }
 
         /// <summary>
+        /// Settings specific to the account's use of the Capital product.
+        /// </summary>
+        [JsonProperty("capital")]
+        public AccountSettingsCapitalOptions Capital { get; set; }
+
+        /// <summary>
         /// Settings specific to the account's use of the Card Issuing product.
         /// </summary>
         [JsonProperty("card_issuing")]

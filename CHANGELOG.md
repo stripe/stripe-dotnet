@@ -1,5 +1,29 @@
 # Changelog
 
+## 45.5.0 - 2024-07-25
+* [#2943](https://github.com/stripe/stripe-dotnet/pull/2943) Update generated code
+  * Add support for `TaxRegistrations` and `TaxSettings` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
+* [#2942](https://github.com/stripe/stripe-dotnet/pull/2942) Update generated code
+  * Add support for `Update` method on resource `Checkout.Session`
+  * Add support for `TransactionId` on `ChargePaymentMethodDetailsAffirm`
+  * Add support for `BuyerId` on `ChargePaymentMethodDetailsBlik`
+  * Add support for `AuthorizationCode` on `ChargePaymentMethodDetailsCard`
+  * Add support for `BrandProduct` on `ChargePaymentMethodDetailsCardPresent`, `ConfirmationTokenPaymentMethodPreviewCardGeneratedFromPaymentMethodDetailsCardPresent`, `ConfirmationTokenPaymentMethodPreviewCardPresent`, `PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresent`, and `PaymentMethodCardPresent`
+  * Add support for `NetworkTransactionId` on `ChargePaymentMethodDetailsCardPresent`, `ChargePaymentMethodDetailsInteracPresent`, `ConfirmationTokenPaymentMethodPreviewCardGeneratedFromPaymentMethodDetailsCardPresent`, and `PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresent`
+  * Add support for `CaseType` on `DisputePaymentMethodDetailsCard`
+  * Add support for `Twint` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+
+## 45.4.0 - 2024-07-18
+* [#2940](https://github.com/stripe/stripe-dotnet/pull/2940) Update generated code
+  * Add support for `Customer` on `ConfirmationTokenPaymentMethodPreview`
+
+## 45.3.0 - 2024-07-11
+* [#2939](https://github.com/stripe/stripe-dotnet/pull/2939) Update generated code
+  * Add support for `PaymentMethodOptions` on `ConfirmationToken`
+  * Add support for `PaymentElement` on `CustomerSessionComponentsOptions` and `CustomerSessionComponents`
+  * Add support for `AddressValidation` on `IssuingCardShippingOptions` and `IssuingCardShipping`
+  * Add support for `Shipping` on `Issuing.CardUpdateOptions`
+
 ## 45.3.0-beta.1 - 2024-07-05
 * [#2933](https://github.com/stripe/stripe-dotnet/pull/2933) Update generated code for beta
   * ⚠️ Remove support for `PaymentMethodUpdate` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`. Users are expected to completely migrate from using `payment_method_update`.
@@ -7,6 +31,11 @@
   * Add support for `Get` and `List` methods on resource `Institution`
   * Add support for `Institution` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`, `FinancialConnectionsSessionFiltersOptions`, `FinancialConnectionsSessionFilters`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`
   * Add support for `PaymentMethodAllowRedisplayFilters`, `PaymentMethodRedisplayLimit`, `PaymentMethodRedisplay`, and `PaymentMethodSaveUsage` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`
+
+## 45.2.0 - 2024-07-05
+* [#2932](https://github.com/stripe/stripe-dotnet/pull/2932) Update generated code
+  * Add support for `AddLines`, `RemoveLines`, and `UpdateLines` methods on resource `Invoice`
+  * Add support for `PostedAt` on `Tax.TransactionCreateFromCalculationOptions` and `TaxTransaction`
 
 ## 45.2.0-beta.1 - 2024-06-27
 * [#2928](https://github.com/stripe/stripe-dotnet/pull/2928) Update generated code for beta
@@ -36,7 +65,6 @@
   * Add support for `Fleet` on `Issuing.TestHelpersAuthorizationCreateOptions`, `IssuingAuthorizationPurchaseDetailsOptions`, `IssuingAuthorization`, `IssuingTransactionPurchaseDetailsOptions`, and `IssuingTransactionPurchaseDetails`
   * Add support for `Fuel` on `Issuing.TestHelpersAuthorizationCreateOptions` and `IssuingAuthorization`
   * Add support for `IndustryProductCode` and `QuantityDecimal` on `IssuingAuthorizationPurchaseDetailsFuelOptions`, `IssuingTransactionPurchaseDetailsFuelOptions`, and `IssuingTransactionPurchaseDetailsFuel`
-  
 
 ## 44.13.0 - 2024-06-17
 * [#2927](https://github.com/stripe/stripe-dotnet/pull/2927) Update generated code
