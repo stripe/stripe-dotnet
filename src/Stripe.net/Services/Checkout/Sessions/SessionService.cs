@@ -10,7 +10,8 @@ namespace Stripe.Checkout
     public class SessionService : Service<Session>,
         ICreatable<Session, SessionCreateOptions>,
         IListable<Session, SessionListOptions>,
-        IRetrievable<Session, SessionGetOptions>
+        IRetrievable<Session, SessionGetOptions>,
+        IUpdatable<Session, SessionUpdateOptions>
     {
         public SessionService()
         {
@@ -148,6 +149,22 @@ namespace Stripe.Checkout
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<LineItem>($"/v1/checkout/sessions/{id}/line_items", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Updates a Session object.</p>.
+        /// </summary>
+        public virtual Session Update(string id, SessionUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<Session>(HttpMethod.Post, $"/v1/checkout/sessions/{id}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Updates a Session object.</p>.
+        /// </summary>
+        public virtual Task<Session> UpdateAsync(string id, SessionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/checkout/sessions/{id}", options, requestOptions, cancellationToken);
         }
     }
 }

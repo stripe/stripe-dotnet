@@ -8,7 +8,7 @@ namespace Stripe
         /// <summary>
         /// A Boolean indicating whether Stripe should try to reclaim negative balances from an
         /// attached bank account. For details, see <a
-        /// href="https://docs.stripe.com/connect/account-balances">Understanding Connect Account
+        /// href="https://stripe.com/connect/account-balances">Understanding Connect Account
         /// Balances</a>.
         /// </summary>
         [JsonProperty("debit_negative_balances")]
@@ -17,8 +17,8 @@ namespace Stripe
         /// <summary>
         /// Details on when funds from charges are available, and when they are paid out to an
         /// external account. For details, see our <a
-        /// href="https://docs.stripe.com/connect/bank-transfers#payout-information">Setting Bank
-        /// and Debit Card Payouts</a> documentation.
+        /// href="https://stripe.com/connect/bank-transfers#payout-information">Setting Bank and
+        /// Debit Card Payouts</a> documentation.
         /// </summary>
         [JsonProperty("schedule")]
         public AccountSettingsPayoutsScheduleOptions Schedule { get; set; }

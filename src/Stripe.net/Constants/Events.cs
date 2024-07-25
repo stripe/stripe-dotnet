@@ -475,6 +475,12 @@ namespace Stripe
         public const string InvoiceMarkedUncollectible = "invoice.marked_uncollectible";
 
         /// <summary>
+        /// Occurs X number of days after an invoice becomes due—where X is determined by
+        /// Automations.
+        /// </summary>
+        public const string InvoiceOverdue = "invoice.overdue";
+
+        /// <summary>
         /// Occurs whenever an invoice payment attempt succeeds or an invoice is marked as paid
         /// out-of-band.
         /// </summary>
@@ -518,6 +524,12 @@ namespace Stripe
         /// Occurs whenever an invoice is voided.
         /// </summary>
         public const string InvoiceVoided = "invoice.voided";
+
+        /// <summary>
+        /// Occurs X number of days before an invoice becomes due—where X is determined by
+        /// Automations.
+        /// </summary>
+        public const string InvoiceWillBeDue = "invoice.will_be_due";
 
         /// <summary>
         /// Occurs whenever an invoice item is created.

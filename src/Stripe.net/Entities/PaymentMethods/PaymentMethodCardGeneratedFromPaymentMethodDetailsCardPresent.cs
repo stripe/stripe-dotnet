@@ -22,6 +22,13 @@ namespace Stripe
         public string Brand { get; set; }
 
         /// <summary>
+        /// The <a href="https://stripe.com/docs/card-product-codes">product code</a> that
+        /// identifies the specific program or product associated with a card.
+        /// </summary>
+        [JsonProperty("brand_product")]
+        public string BrandProduct { get; set; }
+
+        /// <summary>
         /// When using manual capture, a future timestamp after which the charge will be
         /// automatically refunded if uncaptured.
         /// </summary>
@@ -135,6 +142,17 @@ namespace Stripe
         /// </summary>
         [JsonProperty("network")]
         public string Network { get; set; }
+
+        /// <summary>
+        /// This is used by the financial networks to identify a transaction. Visa calls this the
+        /// Transaction ID, Mastercard calls this the Trace ID, and American Express calls this the
+        /// Acquirer Reference Data. The first three digits of the Trace ID is the Financial Network
+        /// Code, the next 6 digits is the Banknet Reference Number, and the last 4 digits represent
+        /// the date (MM/DD). This field will be available for successful Visa, Mastercard, or
+        /// American Express transactions and always null for other card brands.
+        /// </summary>
+        [JsonProperty("network_transaction_id")]
+        public string NetworkTransactionId { get; set; }
 
         /// <summary>
         /// Details about payments collected offline.

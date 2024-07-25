@@ -27,7 +27,8 @@ namespace Stripe.Tax
         public string Object { get; set; }
 
         /// <summary>
-        /// Total after taxes.
+        /// Total amount after taxes in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_total")]
         public long AmountTotal { get; set; }
