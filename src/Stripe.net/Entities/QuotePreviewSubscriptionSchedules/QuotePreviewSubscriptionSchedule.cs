@@ -141,6 +141,12 @@ namespace Stripe
         public string EndBehavior { get; set; }
 
         /// <summary>
+        /// Details of the most recent price migration that failed for the subscription schedule.
+        /// </summary>
+        [JsonProperty("last_price_migration_error")]
+        public QuotePreviewSubscriptionScheduleLastPriceMigrationError LastPriceMigrationError { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

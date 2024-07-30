@@ -362,6 +362,12 @@ namespace Stripe
         [JsonProperty("items")]
         public StripeList<SubscriptionItem> Items { get; set; }
 
+        /// <summary>
+        /// Details of the most recent price migration that failed for the subscription.
+        /// </summary>
+        [JsonProperty("last_price_migration_error")]
+        public SubscriptionLastPriceMigrationError LastPriceMigrationError { get; set; }
+
         #region Expandable LatestInvoice
 
         /// <summary>

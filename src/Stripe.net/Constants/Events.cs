@@ -404,6 +404,11 @@ namespace Stripe
         public const string CustomerSubscriptionPendingUpdateExpired = "customer.subscription.pending_update_expired";
 
         /// <summary>
+        /// Occurs whenever a price migration failed to transition prices on a subscription.
+        /// </summary>
+        public const string CustomerSubscriptionPriceMigrationFailed = "customer.subscription.price_migration_failed";
+
+        /// <summary>
         /// Occurs whenever a customer's subscription is no longer paused. Only applies when a
         /// <c>status=paused</c> subscription is <a
         /// href="https://docs.stripe.com/api/subscriptions/resume">resumed</a>, not when <a
@@ -1127,6 +1132,12 @@ namespace Stripe
         /// Occurs 7 days before a subscription schedule will expire.
         /// </summary>
         public const string SubscriptionScheduleExpiring = "subscription_schedule.expiring";
+
+        /// <summary>
+        /// Occurs whenever a price migration failed to transition prices on a subscription
+        /// schedule.
+        /// </summary>
+        public const string SubscriptionSchedulePriceMigrationFailed = "subscription_schedule.price_migration_failed";
 
         /// <summary>
         /// Occurs whenever a new subscription schedule is released.
