@@ -58,7 +58,7 @@ namespace Stripe
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to
-        /// this SetupIntent.
+        /// this SetupIntent. To unset this field to null, pass in an empty string.
         /// </summary>
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }
