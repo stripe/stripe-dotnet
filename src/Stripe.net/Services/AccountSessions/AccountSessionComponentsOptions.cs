@@ -18,6 +18,18 @@ namespace Stripe
         public AccountSessionComponentsAccountOnboardingOptions AccountOnboarding { get; set; }
 
         /// <summary>
+        /// Configuration for the app install component.
+        /// </summary>
+        [JsonProperty("app_install")]
+        public AccountSessionComponentsAppInstallOptions AppInstall { get; set; }
+
+        /// <summary>
+        /// Configuration for the app viewport component.
+        /// </summary>
+        [JsonProperty("app_viewport")]
+        public AccountSessionComponentsAppViewportOptions AppViewport { get; set; }
+
+        /// <summary>
         /// Configuration for the balances embedded component.
         /// </summary>
         [JsonProperty("balances")]

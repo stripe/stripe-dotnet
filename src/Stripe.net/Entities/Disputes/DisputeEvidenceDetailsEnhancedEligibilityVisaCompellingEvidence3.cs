@@ -7,15 +7,6 @@ namespace Stripe
     public class DisputeEvidenceDetailsEnhancedEligibilityVisaCompellingEvidence3 : StripeEntity<DisputeEvidenceDetailsEnhancedEligibilityVisaCompellingEvidence3>
     {
         /// <summary>
-        /// Rejection reason for evidence submitted as Visa Compelling Evidence 3.0 to Visa and
-        /// rejected by Visa.
-        /// One of: <c>fraudulent_prior_transaction</c>, <c>other</c>, or
-        /// <c>visa_internal_error</c>.
-        /// </summary>
-        [JsonProperty("partner_rejected_details")]
-        public string PartnerRejectedDetails { get; set; }
-
-        /// <summary>
         /// List of actions required to qualify dispute for Visa Compelling Evidence 3.0 evidence
         /// submission.
         /// One of: <c>missing_customer_identifiers</c>,
