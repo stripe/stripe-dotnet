@@ -46,6 +46,52 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Attaches a PaymentIntent or an Out of Band Payment to the invoice, adding it to the
+        /// list of <c>payments</c>.</p>.
+        ///
+        /// <p>For Out of Band Payment, the payment is credited to the invoice immediately,
+        /// increasing the <c>amount_paid</c> of the invoice and subsequently transitioning the
+        /// status of the invoice to <c>paid</c> if necessary.</p>.
+        ///
+        /// <p>For the PaymentIntent, when the PaymentIntent’s status changes to <c>succeeded</c>,
+        /// the payment is credited to the invoice, increasing its <c>amount_paid</c>. When the
+        /// invoice is fully paid, the invoice’s status becomes <c>paid</c>.</p>.
+        ///
+        /// <p>If the PaymentIntent’s status is already <c>succeeded</c> when it’s attached, it’s
+        /// credited to the invoice immediately.</p>.
+        ///
+        /// <p>See: <a href="https://stripe.com/docs/invoicing/payments/create">Create an invoice
+        /// payment</a> to learn more.</p>.
+        /// </summary>
+        public virtual Invoice AttachPayment(string id, InvoiceAttachPaymentOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/attach_payment", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Attaches a PaymentIntent or an Out of Band Payment to the invoice, adding it to the
+        /// list of <c>payments</c>.</p>.
+        ///
+        /// <p>For Out of Band Payment, the payment is credited to the invoice immediately,
+        /// increasing the <c>amount_paid</c> of the invoice and subsequently transitioning the
+        /// status of the invoice to <c>paid</c> if necessary.</p>.
+        ///
+        /// <p>For the PaymentIntent, when the PaymentIntent’s status changes to <c>succeeded</c>,
+        /// the payment is credited to the invoice, increasing its <c>amount_paid</c>. When the
+        /// invoice is fully paid, the invoice’s status becomes <c>paid</c>.</p>.
+        ///
+        /// <p>If the PaymentIntent’s status is already <c>succeeded</c> when it’s attached, it’s
+        /// credited to the invoice immediately.</p>.
+        ///
+        /// <p>See: <a href="https://stripe.com/docs/invoicing/payments/create">Create an invoice
+        /// payment</a> to learn more.</p>.
+        /// </summary>
+        public virtual Task<Invoice> AttachPaymentAsync(string id, InvoiceAttachPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/attach_payment", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Attaches a PaymentIntent to the invoice, adding it to the list of <c>payments</c>.
         /// When the PaymentIntent’s status changes to <c>succeeded</c>, the payment is credited to
         /// the invoice, increasing its <c>amount_paid</c>. When the invoice is fully paid, the
