@@ -1,5 +1,10 @@
 # Changelog
 
+## 45.6.0 - 2024-08-01
+* [#2944](https://github.com/stripe/stripe-dotnet/pull/2944) Update generated code
+  * Add support for new resources `Billing.AlertTriggered` and `Billing.Alert`
+  * ⚠️ Remove support for `AuthorizationCode` on `ChargePaymentMethodDetailsCard`. This was accidentally released last week.
+
 ## 45.5.0 - 2024-07-25
 * [#2943](https://github.com/stripe/stripe-dotnet/pull/2943) Update generated code
   * Add support for `TaxRegistrations` and `TaxSettings` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
