@@ -1,5 +1,13 @@
 # Changelog
 
+## 45.7.0-beta.1 - 2024-08-01
+* [#2945](https://github.com/stripe/stripe-dotnet/pull/2945) Update generated code for beta
+  * Add support for `AttachPayment` method on resource `Invoice`
+  * Add support for `AppInstall` and `AppViewport` on `AccountSessionComponentsOptions`
+  * Remove support for `PartnerRejectedDetails` on `DisputeEvidenceDetailsEnhancedEligibilityVisaCompellingEvidence3`
+  * Add support for `LinesInvalid` on `QuoteStatusDetailsStaleLastReason`
+  * Add support for `LastPriceMigrationError` on `SubscriptionSchedule` and `Subscription`
+
 ## 45.6.0-beta.1 - 2024-07-25
 * [#2938](https://github.com/stripe/stripe-dotnet/pull/2938) Update generated code for beta
   ⚠️ `InvoicePayment.Charge` and `InvoicePayment.PaymentIntent` were removed in favor of `InvoicePaymentPayment`, which encapsulates both. The Charge and PaymentIntent fields are now found at `InvoicePaymentPayment.Charge` `InvoicePaymentPayment.PaymentIntent`
