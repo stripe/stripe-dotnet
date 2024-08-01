@@ -7,8 +7,9 @@ namespace Stripe.FinancialConnections
     public class AccountBalanceCash : StripeEntity<AccountBalanceCash>
     {
         /// <summary>
-        /// The funds available to the account holder. Typically this is the current balance less
-        /// any holds.
+        /// The funds available to the account holder. Typically this is the current balance after
+        /// subtracting any outbound pending transactions and adding any inbound pending
+        /// transactions.
         ///
         /// Each key is a three-letter <a
         /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in

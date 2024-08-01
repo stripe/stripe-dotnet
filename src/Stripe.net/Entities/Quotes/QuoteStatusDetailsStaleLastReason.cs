@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class QuoteStatusDetailsStaleLastReason : StripeEntity<QuoteStatusDetailsStaleLastReason>
@@ -10,6 +11,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("line_invalid")]
         public string LineInvalid { get; set; }
+
+        /// <summary>
+        /// The IDs of the lines that are invalid if the stale reason type is <c>lines_invalid</c>.
+        /// </summary>
+        [JsonProperty("lines_invalid")]
+        public List<QuoteStatusDetailsStaleLastReasonLinesInvalid> LinesInvalid { get; set; }
 
         /// <summary>
         /// The user supplied mark stale reason.
@@ -50,8 +57,8 @@ namespace Stripe
         /// <summary>
         /// The reason the quote was marked as stale.
         /// One of: <c>accept_failed_validations</c>, <c>bill_on_acceptance_invalid</c>,
-        /// <c>line_invalid</c>, <c>marked_stale</c>, <c>subscription_canceled</c>,
-        /// <c>subscription_changed</c>, <c>subscription_expired</c>,
+        /// <c>line_invalid</c>, <c>lines_invalid</c>, <c>marked_stale</c>,
+        /// <c>subscription_canceled</c>, <c>subscription_changed</c>, <c>subscription_expired</c>,
         /// <c>subscription_schedule_canceled</c>, <c>subscription_schedule_changed</c>, or
         /// <c>subscription_schedule_released</c>.
         /// </summary>

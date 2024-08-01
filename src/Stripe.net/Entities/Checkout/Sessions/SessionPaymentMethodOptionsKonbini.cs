@@ -26,6 +26,10 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer
         /// after the transaction completes.
         ///
+        /// If the payment method is <c>card_present</c> and isn't a digital wallet, then a <a
+        /// href="https://docs.corp.stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card is created and attached to the Customer instead.
+        ///
         /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
         /// optimize your payment flow and comply with regional legislation and network rules, such
         /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
