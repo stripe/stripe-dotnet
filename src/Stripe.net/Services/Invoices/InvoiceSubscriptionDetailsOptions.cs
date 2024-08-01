@@ -30,8 +30,8 @@ namespace Stripe
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
-        /// Boolean indicating whether this subscription should cancel at the end of the current
-        /// period.
+        /// Indicate whether this subscription should cancel at the end of the current period
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
         public bool? CancelAtPeriodEnd { get; set; }

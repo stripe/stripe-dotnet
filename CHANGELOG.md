@@ -8,6 +8,11 @@
   * Add support for `LinesInvalid` on `QuoteStatusDetailsStaleLastReason`
   * Add support for `LastPriceMigrationError` on `SubscriptionSchedule` and `Subscription`
 
+## 45.6.0 - 2024-08-01
+* [#2944](https://github.com/stripe/stripe-dotnet/pull/2944) Update generated code
+  * Add support for new resources `Billing.AlertTriggered` and `Billing.Alert`
+  * ⚠️ Remove support for `AuthorizationCode` on `ChargePaymentMethodDetailsCard`. This was accidentally released last week.
+
 ## 45.6.0-beta.1 - 2024-07-25
 * [#2938](https://github.com/stripe/stripe-dotnet/pull/2938) Update generated code for beta
   ⚠️ `InvoicePayment.Charge` and `InvoicePayment.PaymentIntent` were removed in favor of `InvoicePaymentPayment`, which encapsulates both. The Charge and PaymentIntent fields are now found at `InvoicePaymentPayment.Charge` `InvoicePaymentPayment.PaymentIntent`
