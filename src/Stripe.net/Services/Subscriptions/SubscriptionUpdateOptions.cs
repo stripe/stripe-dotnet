@@ -169,6 +169,7 @@ namespace Stripe
 
         /// <summary>
         /// Indicates if a customer is on or off-session while an invoice payment is attempted.
+        /// Defaults to <c>false</c> (on-session).
         /// </summary>
         [JsonProperty("off_session")]
         public bool? OffSession { get; set; }
