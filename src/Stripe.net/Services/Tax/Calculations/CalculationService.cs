@@ -8,7 +8,8 @@ namespace Stripe.Tax
     using System.Threading.Tasks;
 
     public class CalculationService : Service<Calculation>,
-        ICreatable<Calculation, CalculationCreateOptions>
+        ICreatable<Calculation, CalculationCreateOptions>,
+        IRetrievable<Calculation, CalculationGetOptions>
     {
         public CalculationService()
         {
@@ -36,6 +37,22 @@ namespace Stripe.Tax
         public virtual Task<Calculation> CreateAsync(CalculationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Calculation>(HttpMethod.Post, $"/v1/tax/calculations", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Retrieves a Tax <c>Calculation</c> object, if the calculation hasn’t expired.</p>.
+        /// </summary>
+        public virtual Calculation Get(string id, CalculationGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Calculation>(HttpMethod.Get, $"/v1/tax/calculations/{id}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Retrieves a Tax <c>Calculation</c> object, if the calculation hasn’t expired.</p>.
+        /// </summary>
+        public virtual Task<Calculation> GetAsync(string id, CalculationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Calculation>(HttpMethod.Get, $"/v1/tax/calculations/{id}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
