@@ -259,7 +259,7 @@ namespace Stripe
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
         /// <summary>
-        /// The ID of a promotion code to apply to this subscription. A promotion code applied to a
+        /// The promotion code to apply to this subscription. A promotion code applied to a
         /// subscription will only affect invoices created for that particular subscription. This
         /// field has been deprecated and will be removed in a future API version. Use
         /// <c>discounts</c> instead.
