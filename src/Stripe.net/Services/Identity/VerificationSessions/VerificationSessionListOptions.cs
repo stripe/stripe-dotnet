@@ -12,6 +12,9 @@ namespace Stripe.Identity
         [JsonProperty("client_reference_id")]
         public string ClientReferenceId { get; set; }
 
+        [JsonProperty("related_customer")]
+        public string RelatedCustomer { get; set; }
+
         /// <summary>
         /// Only return VerificationSessions with this status. <a
         /// href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle
