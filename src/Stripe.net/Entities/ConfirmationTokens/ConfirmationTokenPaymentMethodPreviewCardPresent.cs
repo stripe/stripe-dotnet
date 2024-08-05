@@ -103,6 +103,12 @@ namespace Stripe
         public ConfirmationTokenPaymentMethodPreviewCardPresentNetworks Networks { get; set; }
 
         /// <summary>
+        /// Details about payment methods collected offline.
+        /// </summary>
+        [JsonProperty("offline")]
+        public ConfirmationTokenPaymentMethodPreviewCardPresentOffline Offline { get; set; }
+
+        /// <summary>
         /// EMV tag 5F2D. Preferred languages specified by the integrated circuit chip.
         /// </summary>
         [JsonProperty("preferred_locales")]
