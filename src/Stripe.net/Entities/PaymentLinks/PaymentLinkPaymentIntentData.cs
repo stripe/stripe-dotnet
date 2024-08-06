@@ -36,17 +36,16 @@ namespace Stripe
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
-        /// Extra information about the payment. This will appear on your customer's statement when
-        /// this payment succeeds in creating a charge.
+        /// For a non-card payment, information about the charge that appears on the customer's
+        /// statement when this payment succeeds in creating a charge.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
-        /// on the account to form the complete statement descriptor. Maximum 22 characters for the
-        /// concatenated descriptor.
+        /// For a card payment, information about the charge that appears on the customer's
+        /// statement when this payment succeeds in creating a charge. Concatenated with the
+        /// account's statement descriptor prefix to form the complete statement descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }
