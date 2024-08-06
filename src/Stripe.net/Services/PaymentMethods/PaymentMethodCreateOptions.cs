@@ -275,8 +275,8 @@ namespace Stripe
         public PaymentMethodRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
-        /// If this is a Rechnung PaymentMethod, this hash contains details about the Rechnung
-        /// payment method.
+        /// If this is a <c>rechnung</c> PaymentMethod, this hash contains details about the
+        /// Rechnung payment method.
         /// </summary>
         [JsonProperty("rechnung")]
         public PaymentMethodRechnungOptions Rechnung { get; set; }
