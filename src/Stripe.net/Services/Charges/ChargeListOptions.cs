@@ -19,7 +19,7 @@ namespace Stripe
         public string PaymentIntent { get; set; }
 
         /// <summary>
-        /// Only return charges for this transfer group.
+        /// Only return charges for this transfer group, limited to 100.
         /// </summary>
         [JsonProperty("transfer_group")]
         public string TransferGroup { get; set; }
