@@ -28,7 +28,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// The array of paths to active Features in the Features hash.
         /// One of: <c>card_issuing</c>, <c>deposit_insurance</c>, <c>financial_addresses.aba</c>,
-        /// <c>finanical_addresses.aba.forwarding</c>, <c>inbound_transfers.ach</c>,
+        /// <c>financial_addresses.aba.forwarding</c>, <c>inbound_transfers.ach</c>,
         /// <c>intra_stripe_flows</c>, <c>outbound_payments.ach</c>,
         /// <c>outbound_payments.us_domestic_wire</c>, <c>outbound_transfers.ach</c>,
         /// <c>outbound_transfers.us_domestic_wire</c>, or <c>remote_deposit_capture</c>.
@@ -88,7 +88,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// The array of paths to pending Features in the Features hash.
         /// One of: <c>card_issuing</c>, <c>deposit_insurance</c>, <c>financial_addresses.aba</c>,
-        /// <c>finanical_addresses.aba.forwarding</c>, <c>inbound_transfers.ach</c>,
+        /// <c>financial_addresses.aba.forwarding</c>, <c>inbound_transfers.ach</c>,
         /// <c>intra_stripe_flows</c>, <c>outbound_payments.ach</c>,
         /// <c>outbound_payments.us_domestic_wire</c>, <c>outbound_transfers.ach</c>,
         /// <c>outbound_transfers.us_domestic_wire</c>, or <c>remote_deposit_capture</c>.
@@ -105,7 +105,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// The array of paths to restricted Features in the Features hash.
         /// One of: <c>card_issuing</c>, <c>deposit_insurance</c>, <c>financial_addresses.aba</c>,
-        /// <c>finanical_addresses.aba.forwarding</c>, <c>inbound_transfers.ach</c>,
+        /// <c>financial_addresses.aba.forwarding</c>, <c>inbound_transfers.ach</c>,
         /// <c>intra_stripe_flows</c>, <c>outbound_payments.ach</c>,
         /// <c>outbound_payments.us_domestic_wire</c>, <c>outbound_transfers.ach</c>,
         /// <c>outbound_transfers.us_domestic_wire</c>, or <c>remote_deposit_capture</c>.
