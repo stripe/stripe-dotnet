@@ -140,6 +140,12 @@ namespace Stripe.Identity
         public VerificationSessionRedaction Redaction { get; set; }
 
         /// <summary>
+        /// Token referencing a Customer resource.
+        /// </summary>
+        [JsonProperty("related_customer")]
+        public string RelatedCustomer { get; set; }
+
+        /// <summary>
         /// Status of this VerificationSession. <a
         /// href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle
         /// of sessions</a>.

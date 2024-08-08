@@ -126,8 +126,8 @@ namespace Stripe
 
         /// <summary>
         /// Card brand. Can be <c>American Express</c>, <c>Diners Club</c>, <c>Discover</c>,
-        /// <c>Eftpos Australia</c>, <c>JCB</c>, <c>MasterCard</c>, <c>UnionPay</c>, <c>Visa</c>, or
-        /// <c>Unknown</c>.
+        /// <c>Eftpos Australia</c>, <c>Girocard</c>, <c>JCB</c>, <c>MasterCard</c>,
+        /// <c>UnionPay</c>, <c>Visa</c>, or <c>Unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }
@@ -140,10 +140,11 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
-        /// Three-letter <a href="https://stripe.com/docs/payouts">ISO code for currency</a>. Only
-        /// applicable on accounts (not customers or recipients). The card can be used as a transfer
-        /// destination for funds in this currency. This property is only available for accounts
-        /// where <a
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO code for
+        /// currency</a> in lowercase. Must be a <a
+        /// href="https://docs.stripe.com/currencies">supported currency</a>. Only applicable on
+        /// accounts (not customers or recipients). The card can be used as a transfer destination
+        /// for funds in this currency. This property is only available for accounts where <a
         /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
         /// is <c>application</c>, which includes Custom accounts.
         /// </summary>

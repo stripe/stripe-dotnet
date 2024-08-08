@@ -120,7 +120,8 @@ namespace Stripe.Terminal
         public string SerialNumber { get; set; }
 
         /// <summary>
-        /// The networking status of the reader.
+        /// The networking status of the reader. We do not recommend using this field in flows that
+        /// may block taking payments.
         /// One of: <c>offline</c>, or <c>online</c>.
         /// </summary>
         [JsonProperty("status")]

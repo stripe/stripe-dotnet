@@ -133,8 +133,9 @@ namespace Stripe
         public DateTime? SubscriptionCancelAt { get; set; }
 
         /// <summary>
-        /// Boolean indicating whether this subscription should cancel at the end of the current
-        /// period. This field has been deprecated and will be removed in a future API version. Use
+        /// Indicate whether this subscription should cancel at the end of the current period
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>. This field has been deprecated
+        /// and will be removed in a future API version. Use
         /// <c>subscription_details.cancel_at_period_end</c> instead.
         /// </summary>
         [JsonProperty("subscription_cancel_at_period_end")]
