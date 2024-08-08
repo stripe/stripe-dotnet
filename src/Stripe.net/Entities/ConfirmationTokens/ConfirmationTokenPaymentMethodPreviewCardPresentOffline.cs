@@ -13,5 +13,11 @@ namespace Stripe
         [JsonProperty("stored_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? StoredAt { get; set; }
+
+        /// <summary>
+        /// The method used to process this payment method offline. Only deferred is allowed.
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; set; }
     }
 }
