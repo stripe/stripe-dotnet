@@ -5,6 +5,9 @@ namespace Stripe
 
     public class PersonAdditionalTosAcceptances : StripeEntity<PersonAdditionalTosAcceptances>
     {
+        /// <summary>
+        /// Details on the legal guardian's acceptance of the main Stripe service agreement.
+        /// </summary>
         [JsonProperty("account")]
         public PersonAdditionalTosAcceptancesAccount Account { get; set; }
     }
