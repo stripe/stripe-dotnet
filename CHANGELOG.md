@@ -1,5 +1,13 @@
 # Changelog
 
+## 45.7.0 - 2024-08-08
+* [#2946](https://github.com/stripe/stripe-dotnet/pull/2946) Update generated code
+  * Add support for `Activate`, `Archive`, `Create`, `Deactivate`, `Get`, and `List` methods on resource `Billing.Alert`
+  * Add support for `Get` method on resource `Tax.Calculation`
+  * Add support for `Type` on `ChargePaymentMethodDetailsCardPresentOffline`, `ConfirmationTokenPaymentMethodPreviewCardGeneratedFromPaymentMethodDetailsCardPresentOffline`, `PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresentOffline`, and `SetupAttemptPaymentMethodDetailsCardPresentOffline`
+  * Add support for `Offline` on `ConfirmationTokenPaymentMethodPreviewCardPresent` and `PaymentMethodCardPresent`
+  * Add support for `RelatedCustomer` on `Identity.VerificationSessionCreateOptions`, `Identity.VerificationSessionListOptions`, and `IdentityVerificationSession`
+
 ## 45.7.0-beta.1 - 2024-08-01
 * [#2945](https://github.com/stripe/stripe-dotnet/pull/2945) Update generated code for beta
   * Add support for `AttachPayment` method on resource `Invoice`
