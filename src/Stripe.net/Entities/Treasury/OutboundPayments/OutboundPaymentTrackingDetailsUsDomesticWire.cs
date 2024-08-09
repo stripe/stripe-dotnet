@@ -6,6 +6,13 @@ namespace Stripe.Treasury
     public class OutboundPaymentTrackingDetailsUsDomesticWire : StripeEntity<OutboundPaymentTrackingDetailsUsDomesticWire>
     {
         /// <summary>
+        /// CHIPS System Sequence Number (SSN) of the OutboundPayment for payments sent over the
+        /// <c>us_domestic_wire</c> network.
+        /// </summary>
+        [JsonProperty("chips")]
+        public string Chips { get; set; }
+
+        /// <summary>
         /// IMAD of the OutboundPayment for payments sent over the <c>us_domestic_wire</c> network.
         /// </summary>
         [JsonProperty("imad")]
