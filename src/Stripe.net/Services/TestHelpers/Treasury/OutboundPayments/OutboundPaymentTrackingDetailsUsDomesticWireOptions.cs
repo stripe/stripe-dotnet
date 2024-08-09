@@ -6,6 +6,13 @@ namespace Stripe.TestHelpers.Treasury
     public class OutboundPaymentTrackingDetailsUsDomesticWireOptions : INestedOptions
     {
         /// <summary>
+        /// CHIPS System Sequence Number (SSN) for funds sent over the <c>us_domestic_wire</c>
+        /// network.
+        /// </summary>
+        [JsonProperty("chips")]
+        public string Chips { get; set; }
+
+        /// <summary>
         /// IMAD for funds sent over the <c>us_domestic_wire</c> network.
         /// </summary>
         [JsonProperty("imad")]
