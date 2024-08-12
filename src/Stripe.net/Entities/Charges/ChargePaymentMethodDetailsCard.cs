@@ -14,6 +14,12 @@ namespace Stripe
         public long? AmountAuthorized { get; set; }
 
         /// <summary>
+        /// Authorization code on the charge.
+        /// </summary>
+        [JsonProperty("authorization_code")]
+        public string AuthorizationCode { get; set; }
+
+        /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
         /// <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
         /// </summary>
