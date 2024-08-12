@@ -1,5 +1,11 @@
 # Changelog
 
+## 45.8.0-beta.1 - 2024-08-12
+* [#2947](https://github.com/stripe/stripe-dotnet/pull/2947) Update generated code for beta
+  * Add support for `CapitalFinancingApplication` and `CapitalFinancing` on `AccountSessionComponents`
+  * Add support for `Payto` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+  * ⚠️  Remove support for `RiskCorrelationId` on `PaymentIntentPaymentMethodOptionsRechnungOptions` and `PaymentIntentPaymentMethodOptionsRechnung`
+
 ## 45.7.0 - 2024-08-08
 * [#2946](https://github.com/stripe/stripe-dotnet/pull/2946) Update generated code
   * Add support for `Activate`, `Archive`, `Create`, `Deactivate`, `Get`, and `List` methods on resource `Billing.Alert`
