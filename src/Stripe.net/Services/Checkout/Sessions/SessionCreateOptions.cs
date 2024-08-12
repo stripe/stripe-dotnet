@@ -37,7 +37,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// If set, Checkout displays a back button and customers will be directed to this URL if
-        /// they decide to cancel payment and return to your website.
+        /// they decide to cancel payment and return to your website. This parameter is not allowed
+        /// if ui_mode is <c>embedded</c> or <c>custom</c>.
         /// </summary>
         [JsonProperty("cancel_url")]
         public string CancelUrl { get; set; }
@@ -270,7 +271,7 @@ namespace Stripe.Checkout
         /// <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>customer_balance</c>,
         /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>,
-        /// <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
         /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
@@ -299,8 +300,9 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The URL to redirect your customer back to after they authenticate or cancel their
-        /// payment on the payment method's app or site. This parameter is required if ui_mode is
-        /// <c>embedded</c> and redirect-based payment methods are enabled on the session.
+        /// payment on the payment method's app or site. This parameter is required if
+        /// <c>ui_mode</c> is <c>embedded</c> or <c>custom</c> and redirect-based payment methods
+        /// are enabled on the session.
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
@@ -351,9 +353,9 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The URL to which Stripe should send customers when payment or setup is complete. This
-        /// parameter is not allowed if ui_mode is <c>embedded</c>. If you’d like to use information
-        /// from the successful Checkout Session on your page, read the guide on <a
-        /// href="https://stripe.com/docs/payments/checkout/custom-success-page">customizing your
+        /// parameter is not allowed if ui_mode is <c>embedded</c> or <c>custom</c>. If you'd like
+        /// to use information from the successful Checkout Session on your page, read the guide on
+        /// <a href="https://stripe.com/docs/payments/checkout/custom-success-page">customizing your
         /// success page</a>.
         /// </summary>
         [JsonProperty("success_url")]
@@ -367,7 +369,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>hosted</c>.
-        /// One of: <c>embedded</c>, or <c>hosted</c>.
+        /// One of: <c>custom</c>, <c>embedded</c>, or <c>hosted</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
         public string UiMode { get; set; }

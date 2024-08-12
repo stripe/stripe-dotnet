@@ -11,6 +11,9 @@ namespace Stripe
         [JsonProperty("amazon_pay")]
         public SetupIntentPaymentMethodOptionsAmazonPay AmazonPay { get; set; }
 
+        [JsonProperty("bacs_debit")]
+        public SetupIntentPaymentMethodOptionsBacsDebit BacsDebit { get; set; }
+
         [JsonProperty("card")]
         public SetupIntentPaymentMethodOptionsCard Card { get; set; }
 

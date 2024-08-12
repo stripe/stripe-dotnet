@@ -101,10 +101,8 @@ namespace Stripe
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
-        /// If the subscription has been canceled with the <c>at_period_end</c> flag set to
-        /// <c>true</c>, <c>cancel_at_period_end</c> on the subscription will be true. You can use
-        /// this attribute to determine whether a subscription that has a status of active is
-        /// scheduled to be canceled at the end of the current period.
+        /// Whether this subscription will (if <c>status=active</c>) or did (if
+        /// <c>status=canceled</c>) cancel at the end of the current billing period.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
         public bool CancelAtPeriodEnd { get; set; }

@@ -1,5 +1,13 @@
 # Changelog
 
+## 45.7.0 - 2024-08-08
+* [#2946](https://github.com/stripe/stripe-dotnet/pull/2946) Update generated code
+  * Add support for `Activate`, `Archive`, `Create`, `Deactivate`, `Get`, and `List` methods on resource `Billing.Alert`
+  * Add support for `Get` method on resource `Tax.Calculation`
+  * Add support for `Type` on `ChargePaymentMethodDetailsCardPresentOffline`, `ConfirmationTokenPaymentMethodPreviewCardGeneratedFromPaymentMethodDetailsCardPresentOffline`, `PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresentOffline`, and `SetupAttemptPaymentMethodDetailsCardPresentOffline`
+  * Add support for `Offline` on `ConfirmationTokenPaymentMethodPreviewCardPresent` and `PaymentMethodCardPresent`
+  * Add support for `RelatedCustomer` on `Identity.VerificationSessionCreateOptions`, `Identity.VerificationSessionListOptions`, and `IdentityVerificationSession`
+
 ## 45.7.0-beta.1 - 2024-08-01
 * [#2945](https://github.com/stripe/stripe-dotnet/pull/2945) Update generated code for beta
   * Add support for `AttachPayment` method on resource `Invoice`
@@ -7,6 +15,11 @@
   * Remove support for `PartnerRejectedDetails` on `DisputeEvidenceDetailsEnhancedEligibilityVisaCompellingEvidence3`
   * Add support for `LinesInvalid` on `QuoteStatusDetailsStaleLastReason`
   * Add support for `LastPriceMigrationError` on `SubscriptionSchedule` and `Subscription`
+
+## 45.6.0 - 2024-08-01
+* [#2944](https://github.com/stripe/stripe-dotnet/pull/2944) Update generated code
+  * Add support for new resources `Billing.AlertTriggered` and `Billing.Alert`
+  * ⚠️ Remove support for `AuthorizationCode` on `ChargePaymentMethodDetailsCard`. This was accidentally released last week.
 
 ## 45.6.0-beta.1 - 2024-07-25
 * [#2938](https://github.com/stripe/stripe-dotnet/pull/2938) Update generated code for beta

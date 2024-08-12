@@ -79,8 +79,8 @@ namespace Stripe
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
-        /// Boolean indicating whether this subscription should cancel at the end of the current
-        /// period.
+        /// Indicate whether this subscription should cancel at the end of the current period
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
         public bool? CancelAtPeriodEnd { get; set; }
@@ -266,7 +266,7 @@ namespace Stripe
         public SubscriptionPrebillingOptions Prebilling { get; set; }
 
         /// <summary>
-        /// The ID of a promotion code to apply to this subscription. A promotion code applied to a
+        /// The promotion code to apply to this subscription. A promotion code applied to a
         /// subscription will only affect invoices created for that particular subscription. This
         /// field has been deprecated and will be removed in a future API version. Use
         /// <c>discounts</c> instead.

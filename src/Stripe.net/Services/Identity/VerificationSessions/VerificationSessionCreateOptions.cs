@@ -35,6 +35,12 @@ namespace Stripe.Identity
         public VerificationSessionProvidedDetailsOptions ProvidedDetails { get; set; }
 
         /// <summary>
+        /// Token referencing a Customer resource.
+        /// </summary>
+        [JsonProperty("related_customer")]
+        public string RelatedCustomer { get; set; }
+
+        /// <summary>
         /// The URL that the user will be redirected to upon completing the verification flow.
         /// </summary>
         [JsonProperty("return_url")]

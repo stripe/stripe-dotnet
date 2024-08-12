@@ -13,7 +13,9 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
-        /// 3-letter <a href="https://stripe.com/docs/payouts">ISO code for currency</a>.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO code for
+        /// currency</a> in lowercase. Must be a <a
+        /// href="https://docs.stripe.com/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
