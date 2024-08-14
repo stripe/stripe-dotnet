@@ -10,7 +10,7 @@ namespace Stripe
         /// href="https://support.stripe.com/questions/bank-account-ownership-verification">Bank
         /// account ownership verification</a> requirement. Must be a document associated with the
         /// bank account that displays the last 4 digits of the account number, either a statement
-        /// or a voided check.
+        /// or a check.
         /// </summary>
         [JsonProperty("bank_account_ownership_verification")]
         public BankAccountDocumentsBankAccountOwnershipVerificationOptions BankAccountOwnershipVerification { get; set; }
