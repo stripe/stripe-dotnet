@@ -1,5 +1,12 @@
 # Changelog
 
+## 45.9.0-beta.1 - 2024-08-15
+* [#2951](https://github.com/stripe/stripe-dotnet/pull/2951) Update generated code for beta
+  * Add support for `CapitalFinancingApplication` and `CapitalFinancing` on `AccountSessionComponentsOptions`
+  * Add support for `Permissions` on `Checkout.SessionCreateOptions` and `CheckoutSession`
+  * Add support for `CollectedInformation` on `Checkout.SessionUpdateOptions` and `CheckoutSession`
+  * Add support for `ShippingOptions` on `Checkout.SessionUpdateOptions`
+
 ## 45.8.0-beta.1 - 2024-08-12
 * [#2947](https://github.com/stripe/stripe-dotnet/pull/2947) Update generated code for beta
   * Add support for `CapitalFinancingApplication` and `CapitalFinancing` on `AccountSessionComponents`
