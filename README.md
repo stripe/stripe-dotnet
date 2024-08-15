@@ -271,8 +271,10 @@ We would love for you to try these and share feedback with us before these featu
 To install a beta version of Stripe.net use the version parameter with `dotnet add package` command:
 
 ```
-dotnet add package Stripe.net --version 40.3.0-beta.1
+dotnet add package Stripe.net --version <beta version>
 ```
+
+Beta versions are appended with `-beta.X` such as `45.0.0-beta.1`. Make sure to choose the version that includes support for the beta you are interested in!
 
 > **Note**
 > There can be breaking changes between beta versions. Therefore we recommend pinning the package version to a specific beta version in your project file. This way you can install the same version each time without breaking changes unless you are intentionally looking for the latest beta version.
