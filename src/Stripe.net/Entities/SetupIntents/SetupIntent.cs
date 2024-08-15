@@ -314,7 +314,7 @@ namespace Stripe
         /// (ID of the PaymentMethod)
         /// ID of the payment method used with this SetupIntent. If the payment method is
         /// <c>card_present</c> and isn't a digital wallet, then the <a
-        /// href="https://docs.corp.stripe.com/api/setup_attempts/object#setup_attempt_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// href="https://docs.stripe.com/api/setup_attempts/object#setup_attempt_object-payment_method_details-card_present-generated_card">generated_card</a>
         /// associated with the <c>latest_attempt</c> is attached to the Customer instead.
         /// </summary>
         [JsonIgnore]
@@ -328,7 +328,7 @@ namespace Stripe
         /// (Expanded)
         /// ID of the payment method used with this SetupIntent. If the payment method is
         /// <c>card_present</c> and isn't a digital wallet, then the <a
-        /// href="https://docs.corp.stripe.com/api/setup_attempts/object#setup_attempt_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// href="https://docs.stripe.com/api/setup_attempts/object#setup_attempt_object-payment_method_details-card_present-generated_card">generated_card</a>
         /// associated with the <c>latest_attempt</c> is attached to the Customer instead.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.

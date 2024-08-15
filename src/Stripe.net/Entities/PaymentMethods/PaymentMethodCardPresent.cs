@@ -121,5 +121,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("read_method")]
         public string ReadMethod { get; set; }
+
+        [JsonProperty("wallet")]
+        public PaymentMethodCardPresentWallet Wallet { get; set; }
     }
 }
