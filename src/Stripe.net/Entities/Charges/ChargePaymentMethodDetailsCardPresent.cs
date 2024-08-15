@@ -186,5 +186,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("receipt")]
         public ChargePaymentMethodDetailsCardPresentReceipt Receipt { get; set; }
+
+        [JsonProperty("wallet")]
+        public ChargePaymentMethodDetailsCardPresentWallet Wallet { get; set; }
     }
 }

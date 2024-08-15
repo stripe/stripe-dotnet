@@ -96,6 +96,12 @@ namespace Stripe.Checkout
         public string ClientSecret { get; set; }
 
         /// <summary>
+        /// Information about the customer collected within the Checkout Session.
+        /// </summary>
+        [JsonProperty("collected_information")]
+        public SessionCollectedInformation CollectedInformation { get; set; }
+
+        /// <summary>
         /// Results of <c>consent_collection</c> for this session.
         /// </summary>
         [JsonProperty("consent")]
@@ -394,6 +400,16 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("payment_status")]
         public string PaymentStatus { get; set; }
+
+        /// <summary>
+        /// This property is used to set up permissions for various actions (e.g., update) on the
+        /// CheckoutSession object.
+        ///
+        /// For specific permissions, please refer to their dedicated subsections, such as
+        /// <c>permissions.update.shipping_details</c>.
+        /// </summary>
+        [JsonProperty("permissions")]
+        public SessionPermissions Permissions { get; set; }
 
         [JsonProperty("phone_number_collection")]
         public SessionPhoneNumberCollection PhoneNumberCollection { get; set; }

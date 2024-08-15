@@ -279,6 +279,16 @@ namespace Stripe.Checkout
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
+        /// This property is used to set up permissions for various actions (e.g., update) on the
+        /// CheckoutSession object.
+        ///
+        /// For specific permissions, please refer to their dedicated subsections, such as
+        /// <c>permissions.update.shipping_details</c>.
+        /// </summary>
+        [JsonProperty("permissions")]
+        public SessionPermissionsOptions Permissions { get; set; }
+
+        /// <summary>
         /// Controls phone number collection settings for the session.
         ///
         /// We recommend that you review your privacy policy and check with your legal contacts

@@ -7,7 +7,8 @@ namespace Stripe
     public class PersonUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Details on the legal guardian's acceptance of the required Stripe agreements.
+        /// Details on the legal guardian's or authorizer's acceptance of the required Stripe
+        /// agreements.
         /// </summary>
         [JsonProperty("additional_tos_acceptances")]
         public PersonAdditionalTosAcceptancesOptions AdditionalTosAcceptances { get; set; }
