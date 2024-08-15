@@ -334,7 +334,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Download the PDF for a finalized quote. Explanation for special handling can be found
-        /// <a href="https://docs.corp.stripe.com/quotes/overview#quote_pdf">here</a></p>.
+        /// <a href="https://docs.stripe.com/quotes/overview#quote_pdf">here</a></p>.
         /// </summary>
         public virtual Stream Pdf(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null)
         {
@@ -350,7 +350,7 @@ namespace Stripe
 
         /// <summary>
         /// <p>Download the PDF for a finalized quote. Explanation for special handling can be found
-        /// <a href="https://docs.corp.stripe.com/quotes/overview#quote_pdf">here</a></p>.
+        /// <a href="https://docs.stripe.com/quotes/overview#quote_pdf">here</a></p>.
         /// </summary>
         public virtual Task<Stream> PdfAsync(string id, QuotePdfOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

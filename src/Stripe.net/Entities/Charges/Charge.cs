@@ -530,7 +530,7 @@ namespace Stripe
         /// <summary>
         /// (ID of the Transfer)
         /// The transfer ID which created this charge. Only present if the charge came from another
-        /// Stripe account. <a href="https://stripe.com/docs/connect/destination-charges">See the
+        /// Stripe account. <a href="https://docs.stripe.com/connect/destination-charges">See the
         /// Connect documentation</a> for details.
         /// </summary>
         [JsonIgnore]
@@ -543,7 +543,7 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The transfer ID which created this charge. Only present if the charge came from another
-        /// Stripe account. <a href="https://stripe.com/docs/connect/destination-charges">See the
+        /// Stripe account. <a href="https://docs.stripe.com/connect/destination-charges">See the
         /// Connect documentation</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -572,7 +572,7 @@ namespace Stripe
 
         /// <summary>
         /// Provides information about a card charge. Concatenated to the account's <a
-        /// href="https://docs.corp.stripe.com/get-started/account/statement-descriptors#static">statement
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement
         /// descriptor prefix</a> to form the complete statement descriptor that appears on the
         /// customer's statement. If the account has no prefix value, the suffix is concatenated to
         /// the account's statement descriptor.
