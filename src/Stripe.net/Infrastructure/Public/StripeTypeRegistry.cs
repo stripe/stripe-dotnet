@@ -107,6 +107,10 @@ namespace Stripe
                     Issuing.CreditUnderwritingRecord)
                 },
                 { "issuing.dispute", typeof(Issuing.Dispute) },
+                {
+                    "issuing.dispute_settlement_detail", typeof(
+                    Issuing.DisputeSettlementDetail)
+                },
                 { "issuing.personalization_design", typeof(Issuing.PersonalizationDesign) },
                 { "issuing.physical_bundle", typeof(Issuing.PhysicalBundle) },
                 { "issuing.token", typeof(Issuing.Token) },
