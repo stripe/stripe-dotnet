@@ -171,6 +171,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataLinkOptions Link { get; set; }
 
         /// <summary>
+        /// If this is a MB WAY PaymentMethod, this hash contains details about the MB WAY payment
+        /// method.
+        /// </summary>
+        [JsonProperty("mb_way")]
+        public PaymentIntentPaymentMethodDataMbWayOptions MbWay { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
@@ -300,8 +307,8 @@ namespace Stripe
         /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
         /// <c>blik</c>, <c>boleto</c>, <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>,
         /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>,
+        /// <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>rechnung</c>, <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
         /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>

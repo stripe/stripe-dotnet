@@ -168,6 +168,12 @@ namespace Stripe
         public AccountCapabilitiesLinkPaymentsOptions LinkPayments { get; set; }
 
         /// <summary>
+        /// The mb_way_payments capability.
+        /// </summary>
+        [JsonProperty("mb_way_payments")]
+        public AccountCapabilitiesMbWayPaymentsOptions MbWayPayments { get; set; }
+
+        /// <summary>
         /// The mobilepay_payments capability.
         /// </summary>
         [JsonProperty("mobilepay_payments")]
