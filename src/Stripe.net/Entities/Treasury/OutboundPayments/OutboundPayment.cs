@@ -7,7 +7,9 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// Use OutboundPayments to send funds to another party's external bank account or <a
+    /// Use <a
+    /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a>
+    /// to send funds to another party's external bank account or <a
     /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>. To send
     /// money to an account belonging to the same user, use an <a
     /// href="https://stripe.com/docs/api#outbound_transfers">OutboundTransfer</a>.
@@ -15,6 +17,10 @@ namespace Stripe.Treasury
     /// Simulate OutboundPayment state changes with the
     /// <c>/v1/test_helpers/treasury/outbound_payments</c> endpoints. These methods can only be
     /// called on test mode objects.
+    ///
+    /// Related guide: <a
+    /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">Moving
+    /// money with Treasury using OutboundPayment objects</a>.
     /// </summary>
     public class OutboundPayment : StripeEntity<OutboundPayment>, IHasId, IHasMetadata, IHasObject
     {
