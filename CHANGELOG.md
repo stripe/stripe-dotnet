@@ -1,5 +1,12 @@
 # Changelog
 
+## 45.9.0-beta.2 - 2024-08-22
+* [#2953](https://github.com/stripe/stripe-dotnet/pull/2953) Update generated code for beta
+  * Add support for `MbWayPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `MbWay` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Remove support for `Phases` on `QuoteCreateOptions` and `QuoteUpdateOptions`
+  * Remove support for `FromSchedule` on `QuoteSubscriptionDataOptions`
+
 ## 45.9.0-beta.1 - 2024-08-15
 * [#2951](https://github.com/stripe/stripe-dotnet/pull/2951) Update generated code for beta
   * Add support for `CapitalFinancingApplication` and `CapitalFinancing` on `AccountSessionComponentsOptions`
