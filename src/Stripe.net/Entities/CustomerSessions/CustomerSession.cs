@@ -8,6 +8,14 @@ namespace Stripe
     /// <summary>
     /// A Customer Session allows you to grant Stripe's frontend SDKs (like Stripe.js)
     /// client-side access control over a Customer.
+    ///
+    /// Related guides: <a
+    /// href="https://stripe.com/payments/accept-a-payment-deferred?platform=web&amp;type=payment#save-payment-methods">Customer
+    /// Session with the Payment Element</a>, <a
+    /// href="https://stripe.com/payments/checkout/pricing-table#customer-session">Customer
+    /// Session with the Pricing Table</a>, <a
+    /// href="https://stripe.com/payment-links/buy-button#pass-an-existing-customer">Customer
+    /// Session with the Buy Button</a>.
     /// </summary>
     public class CustomerSession : StripeEntity<CustomerSession>, IHasObject
     {

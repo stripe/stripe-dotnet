@@ -60,14 +60,6 @@ namespace Stripe
         public string EndBehavior { get; set; }
 
         /// <summary>
-        /// The id of a subscription schedule the quote will update. The quote will inherit the
-        /// state of the subscription schedule, such as <c>phases</c>. Cannot be combined with other
-        /// parameters.
-        /// </summary>
-        [JsonProperty("from_schedule")]
-        public string FromSchedule { get; set; }
-
-        /// <summary>
         /// The id of a subscription that the quote will update. By default, the quote will contain
         /// the state of the subscription (such as line items, collection method and billing
         /// thresholds) unless overridden.

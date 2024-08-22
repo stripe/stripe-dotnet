@@ -74,6 +74,9 @@ namespace Stripe
         [JsonProperty("link")]
         public PaymentIntentPaymentMethodOptionsLink Link { get; set; }
 
+        [JsonProperty("mb_way")]
+        public PaymentIntentPaymentMethodOptionsMbWay MbWay { get; set; }
+
         [JsonProperty("mobilepay")]
         public PaymentIntentPaymentMethodOptionsMobilepay Mobilepay { get; set; }
 

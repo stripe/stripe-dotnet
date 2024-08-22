@@ -135,10 +135,13 @@ namespace Stripe
         public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
         /// <summary>
-        /// For a non-card charge, text that appears on the customer's statement as the <a
-        /// href="https://docs.stripe.com/get-started/account/statement-descriptors">statement
-        /// descriptor</a>. This value overrides the account's default statement descriptor. For a
-        /// card charge, this value is ignored unless you don't specify a
+        /// For a non-card charge, text that appears on the customer's statement as the statement
+        /// descriptor. This value overrides the account's default statement descriptor. For
+        /// information about requirements, including the 22-character limit, see <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors">the Statement
+        /// Descriptor docs</a>.
+        ///
+        /// For a card charge, this value is ignored unless you don't specify a
         /// <c>statement_descriptor_suffix</c>, in which case this value is used as the suffix.
         /// </summary>
         [JsonProperty("statement_descriptor")]

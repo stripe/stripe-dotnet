@@ -7,6 +7,15 @@
   * Add support for `CollectedInformation` on `Checkout.SessionUpdateOptions` and `CheckoutSession`
   * Add support for `ShippingOptions` on `Checkout.SessionUpdateOptions`
 
+## 45.8.0 - 2024-08-15
+* [#2949](https://github.com/stripe/stripe-dotnet/pull/2949) Update generated code
+  * Add support for `AuthorizationCode` on `ChargePaymentMethodDetailsCard`
+  * Add support for `Wallet` on `ChargePaymentMethodDetailsCardPresent`, `ConfirmationTokenPaymentMethodPreviewCardGeneratedFromPaymentMethodDetailsCardPresent`, `ConfirmationTokenPaymentMethodPreviewCardPresent`, `PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresent`, and `PaymentMethodCardPresent`
+  * Add support for `MandateOptions` on `PaymentIntentPaymentMethodOptionsBacsDebitOptions` and `PaymentIntentPaymentMethodOptionsBacsDebit`
+  * Add support for `BacsDebit` on `SetupIntentPaymentMethodOptionsOptions` and `SetupIntentPaymentMethodOptions`
+  * Add support for `Chips` on `TreasuryOutboundPaymentTrackingDetailsUsDomesticWireOptions`, `TreasuryOutboundPaymentTrackingDetailsUsDomesticWire`, `TreasuryOutboundTransferTrackingDetailsUsDomesticWireOptions`, and `TreasuryOutboundTransferTrackingDetailsUsDomesticWire`
+* [#2950](https://github.com/stripe/stripe-dotnet/pull/2950) Update beta readme to not use a concrete version
+
 ## 45.8.0-beta.1 - 2024-08-12
 * [#2947](https://github.com/stripe/stripe-dotnet/pull/2947) Update generated code for beta
   * Add support for `CapitalFinancingApplication` and `CapitalFinancing` on `AccountSessionComponents`

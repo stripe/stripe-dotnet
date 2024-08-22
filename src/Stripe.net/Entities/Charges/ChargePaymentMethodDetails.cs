@@ -80,6 +80,9 @@ namespace Stripe
         [JsonProperty("link")]
         public ChargePaymentMethodDetailsLink Link { get; set; }
 
+        [JsonProperty("mb_way")]
+        public ChargePaymentMethodDetailsMbWay MbWay { get; set; }
+
         [JsonProperty("mobilepay")]
         public ChargePaymentMethodDetailsMobilepay Mobilepay { get; set; }
 

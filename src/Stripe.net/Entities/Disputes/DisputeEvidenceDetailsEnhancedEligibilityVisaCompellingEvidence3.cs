@@ -19,8 +19,7 @@ namespace Stripe
 
         /// <summary>
         /// Visa Compelling Evidence 3.0 eligibility status.
-        /// One of: <c>accepted</c>, <c>not_qualified</c>, <c>partner_rejected</c>,
-        /// <c>qualified</c>, <c>requires_action</c>, or <c>submitted</c>.
+        /// One of: <c>not_qualified</c>, <c>qualified</c>, or <c>requires_action</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
