@@ -1,5 +1,9 @@
 # Changelog
 
+## 45.10.0-beta.1 - 2024-08-23
+* [#2954](https://github.com/stripe/stripe-dotnet/pull/2954) Update generated code for beta
+  * Add support for `Email` and `Phone` on `CheckoutSessionCollectedInformation`
+
 ## 45.9.0-beta.2 - 2024-08-22
 * [#2953](https://github.com/stripe/stripe-dotnet/pull/2953) Update generated code for beta
   * Add support for `MbWayPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
