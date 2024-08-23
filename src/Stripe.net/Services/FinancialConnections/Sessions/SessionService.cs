@@ -2,6 +2,7 @@
 namespace Stripe.FinancialConnections
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -45,7 +46,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Session Get(string id, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(HttpMethod.Get, $"/v1/financial_connections/sessions/{id}", options, requestOptions);
+            return this.Request<Session>(HttpMethod.Get, $"/v1/financial_connections/sessions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<Session> GetAsync(string id, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(HttpMethod.Get, $"/v1/financial_connections/sessions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Session>(HttpMethod.Get, $"/v1/financial_connections/sessions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -3,6 +3,7 @@ namespace Stripe.Billing
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Alert Activate(string id, AlertActivateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{id}/activate", options, requestOptions);
+            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/activate", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Alert> ActivateAsync(string id, AlertActivateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{id}/activate", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/activate", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Alert Archive(string id, AlertArchiveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{id}/archive", options, requestOptions);
+            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/archive", options, requestOptions);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Alert> ArchiveAsync(string id, AlertArchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{id}/archive", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/archive", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Alert Deactivate(string id, AlertDeactivateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{id}/deactivate", options, requestOptions);
+            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/deactivate", options, requestOptions);
         }
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Alert> DeactivateAsync(string id, AlertDeactivateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{id}/deactivate", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/deactivate", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Alert Get(string id, AlertGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Alert>(HttpMethod.Get, $"/v1/billing/alerts/{id}", options, requestOptions);
+            return this.Request<Alert>(HttpMethod.Get, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Alert> GetAsync(string id, AlertGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Alert>(HttpMethod.Get, $"/v1/billing/alerts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Alert>(HttpMethod.Get, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

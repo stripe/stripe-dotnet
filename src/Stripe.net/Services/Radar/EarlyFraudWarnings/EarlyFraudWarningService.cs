@@ -3,6 +3,7 @@ namespace Stripe.Radar
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual EarlyFraudWarning Get(string id, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<EarlyFraudWarning>(HttpMethod.Get, $"/v1/radar/early_fraud_warnings/{id}", options, requestOptions);
+            return this.Request<EarlyFraudWarning>(HttpMethod.Get, $"/v1/radar/early_fraud_warnings/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<EarlyFraudWarning> GetAsync(string id, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<EarlyFraudWarning>(HttpMethod.Get, $"/v1/radar/early_fraud_warnings/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<EarlyFraudWarning>(HttpMethod.Get, $"/v1/radar/early_fraud_warnings/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

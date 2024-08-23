@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace Stripe
         /// </summary>
         public virtual Topup Cancel(string id, TopupCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Topup>(HttpMethod.Post, $"/v1/topups/{id}/cancel", options, requestOptions);
+            return this.Request<Topup>(HttpMethod.Post, $"/v1/topups/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Topup> CancelAsync(string id, TopupCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Topup>(HttpMethod.Post, $"/v1/topups/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Topup>(HttpMethod.Post, $"/v1/topups/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace Stripe
         /// </summary>
         public virtual Topup Get(string id, TopupGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Topup>(HttpMethod.Get, $"/v1/topups/{id}", options, requestOptions);
+            return this.Request<Topup>(HttpMethod.Get, $"/v1/topups/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Topup> GetAsync(string id, TopupGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Topup>(HttpMethod.Get, $"/v1/topups/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Topup>(HttpMethod.Get, $"/v1/topups/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Stripe
         /// </summary>
         public virtual Topup Update(string id, TopupUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Topup>(HttpMethod.Post, $"/v1/topups/{id}", options, requestOptions);
+            return this.Request<Topup>(HttpMethod.Post, $"/v1/topups/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -124,7 +125,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Topup> UpdateAsync(string id, TopupUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Topup>(HttpMethod.Post, $"/v1/topups/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Topup>(HttpMethod.Post, $"/v1/topups/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

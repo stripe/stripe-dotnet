@@ -3,6 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual PhysicalBundle Get(string id, PhysicalBundleGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PhysicalBundle>(HttpMethod.Get, $"/v1/issuing/physical_bundles/{id}", options, requestOptions);
+            return this.Request<PhysicalBundle>(HttpMethod.Get, $"/v1/issuing/physical_bundles/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<PhysicalBundle> GetAsync(string id, PhysicalBundleGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PhysicalBundle>(HttpMethod.Get, $"/v1/issuing/physical_bundles/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PhysicalBundle>(HttpMethod.Get, $"/v1/issuing/physical_bundles/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

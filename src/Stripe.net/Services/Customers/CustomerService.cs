@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -52,7 +53,7 @@ namespace Stripe
         /// </summary>
         public virtual FundingInstructions CreateFundingInstructions(string id, CustomerCreateFundingInstructionsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FundingInstructions>(HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions);
+            return this.Request<FundingInstructions>(HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(id)}/funding_instructions", options, requestOptions);
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<FundingInstructions> CreateFundingInstructionsAsync(string id, CustomerCreateFundingInstructionsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FundingInstructions>(HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FundingInstructions>(HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(id)}/funding_instructions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Stripe
         /// </summary>
         public virtual Customer Delete(string id, CustomerDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Customer>(HttpMethod.Delete, $"/v1/customers/{id}", options, requestOptions);
+            return this.Request<Customer>(HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Customer> DeleteAsync(string id, CustomerDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Customer>(HttpMethod.Delete, $"/v1/customers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace Stripe
         /// </summary>
         public virtual Customer Get(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Customer>(HttpMethod.Get, $"/v1/customers/{id}", options, requestOptions);
+            return this.Request<Customer>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Customer> GetAsync(string id, CustomerGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Customer>(HttpMethod.Get, $"/v1/customers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -142,7 +143,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<PaymentMethod> ListPaymentMethods(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions);
+            return this.Request<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(id)}/payment_methods", options, requestOptions);
         }
 
         /// <summary>
@@ -150,7 +151,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<PaymentMethod>> ListPaymentMethodsAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PaymentMethod>>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(id)}/payment_methods", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -158,7 +159,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<PaymentMethod> ListPaymentMethodsAutoPaging(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions);
+            return this.ListRequestAutoPaging<PaymentMethod>($"/v1/customers/{WebUtility.UrlEncode(id)}/payment_methods", options, requestOptions);
         }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<PaymentMethod> ListPaymentMethodsAutoPagingAsync(string id, CustomerListPaymentMethodsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<PaymentMethod>($"/v1/customers/{WebUtility.UrlEncode(id)}/payment_methods", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -174,7 +175,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentMethod RetrievePaymentMethod(string parentId, string id, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethod>(HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions);
+            return this.Request<PaymentMethod>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/payment_methods/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -182,7 +183,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentMethod> RetrievePaymentMethodAsync(string parentId, string id, CustomerRetrievePaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethod>(HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethod>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/payment_methods/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -253,7 +254,7 @@ namespace Stripe
         /// </summary>
         public virtual Customer Update(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Customer>(HttpMethod.Post, $"/v1/customers/{id}", options, requestOptions);
+            return this.Request<Customer>(HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -272,7 +273,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Customer> UpdateAsync(string id, CustomerUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Customer>(HttpMethod.Post, $"/v1/customers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Customer>(HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

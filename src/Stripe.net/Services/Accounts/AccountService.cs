@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -78,7 +79,7 @@ namespace Stripe
         /// </summary>
         public virtual Account Delete(string id, AccountDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Account>(HttpMethod.Delete, $"/v1/accounts/{id}", options, requestOptions);
+            return this.Request<Account>(HttpMethod.Delete, $"/v1/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -99,7 +100,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Account> DeleteAsync(string id, AccountDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Account>(HttpMethod.Delete, $"/v1/accounts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(HttpMethod.Delete, $"/v1/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace Stripe
         /// </summary>
         public virtual Account Get(string id, AccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Account>(HttpMethod.Get, $"/v1/accounts/{id}", options, requestOptions);
+            return this.Request<Account>(HttpMethod.Get, $"/v1/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Account> GetAsync(string id, AccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Account>(HttpMethod.Get, $"/v1/accounts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(HttpMethod.Get, $"/v1/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -169,7 +170,7 @@ namespace Stripe
         /// </summary>
         public virtual Account Reject(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Account>(HttpMethod.Post, $"/v1/accounts/{id}/reject", options, requestOptions);
+            return this.Request<Account>(HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(id)}/reject", options, requestOptions);
         }
 
         /// <summary>
@@ -183,7 +184,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Account> RejectAsync(string id, AccountRejectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/accounts/{id}/reject", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(id)}/reject", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -210,7 +211,7 @@ namespace Stripe
         /// </summary>
         public virtual Account Update(string id, AccountUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Account>(HttpMethod.Post, $"/v1/accounts/{id}", options, requestOptions);
+            return this.Request<Account>(HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -237,7 +238,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Account> UpdateAsync(string id, AccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/accounts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         public virtual Account GetSelf(RequestOptions requestOptions = null)

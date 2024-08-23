@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe
         /// </summary>
         public virtual Event Get(string id, EventGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Event>(HttpMethod.Get, $"/v1/events/{id}", options, requestOptions);
+            return this.Request<Event>(HttpMethod.Get, $"/v1/events/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Event> GetAsync(string id, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Event>(HttpMethod.Get, $"/v1/events/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Event>(HttpMethod.Get, $"/v1/events/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

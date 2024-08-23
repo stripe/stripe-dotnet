@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -49,7 +50,7 @@ namespace Stripe
         /// </summary>
         public virtual Price Get(string id, PriceGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Price>(HttpMethod.Get, $"/v1/prices/{id}", options, requestOptions);
+            return this.Request<Price>(HttpMethod.Get, $"/v1/prices/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Price> GetAsync(string id, PriceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Price>(HttpMethod.Get, $"/v1/prices/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Price>(HttpMethod.Get, $"/v1/prices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -158,7 +159,7 @@ namespace Stripe
         /// </summary>
         public virtual Price Update(string id, PriceUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Price>(HttpMethod.Post, $"/v1/prices/{id}", options, requestOptions);
+            return this.Request<Price>(HttpMethod.Post, $"/v1/prices/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -167,7 +168,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Price> UpdateAsync(string id, PriceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Price>(HttpMethod.Post, $"/v1/prices/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Price>(HttpMethod.Post, $"/v1/prices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

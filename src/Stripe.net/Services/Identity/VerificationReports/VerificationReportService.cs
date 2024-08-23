@@ -3,6 +3,7 @@ namespace Stripe.Identity
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual VerificationReport Get(string id, VerificationReportGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<VerificationReport>(HttpMethod.Get, $"/v1/identity/verification_reports/{id}", options, requestOptions);
+            return this.Request<VerificationReport>(HttpMethod.Get, $"/v1/identity/verification_reports/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Stripe.Identity
         /// </summary>
         public virtual Task<VerificationReport> GetAsync(string id, VerificationReportGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<VerificationReport>(HttpMethod.Get, $"/v1/identity/verification_reports/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<VerificationReport>(HttpMethod.Get, $"/v1/identity/verification_reports/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
