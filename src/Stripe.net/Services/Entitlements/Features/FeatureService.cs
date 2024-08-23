@@ -3,6 +3,7 @@ namespace Stripe.Entitlements
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Feature Get(string id, FeatureGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Feature>(HttpMethod.Get, $"/v1/entitlements/features/{id}", options, requestOptions);
+            return this.Request<Feature>(HttpMethod.Get, $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Task<Feature> GetAsync(string id, FeatureGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Feature>(HttpMethod.Get, $"/v1/entitlements/features/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Feature>(HttpMethod.Get, $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Feature Update(string id, FeatureUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Feature>(HttpMethod.Post, $"/v1/entitlements/features/{id}", options, requestOptions);
+            return this.Request<Feature>(HttpMethod.Post, $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Task<Feature> UpdateAsync(string id, FeatureUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Feature>(HttpMethod.Post, $"/v1/entitlements/features/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Feature>(HttpMethod.Post, $"/v1/entitlements/features/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

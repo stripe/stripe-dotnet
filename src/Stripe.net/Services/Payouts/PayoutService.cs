@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Cancel(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{id}/cancel", options, requestOptions);
+            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> CancelAsync(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Get(string id, PayoutGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(HttpMethod.Get, $"/v1/payouts/{id}", options, requestOptions);
+            return this.Request<Payout>(HttpMethod.Get, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> GetAsync(string id, PayoutGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(HttpMethod.Get, $"/v1/payouts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(HttpMethod.Get, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -152,7 +153,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Reverse(string id, PayoutReverseOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{id}/reverse", options, requestOptions);
+            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse", options, requestOptions);
         }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> ReverseAsync(string id, PayoutReverseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{id}/reverse", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -176,7 +177,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Update(string id, PayoutUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{id}", options, requestOptions);
+            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -186,7 +187,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> UpdateAsync(string id, PayoutUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

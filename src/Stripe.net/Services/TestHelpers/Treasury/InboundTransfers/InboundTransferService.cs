@@ -2,6 +2,7 @@
 namespace Stripe.TestHelpers.Treasury
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.InboundTransfer Fail(string id, InboundTransferFailOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/fail", options, requestOptions);
+            return this.Request<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/fail", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.InboundTransfer> FailAsync(string id, InboundTransferFailOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/fail", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/fail", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.InboundTransfer ReturnInboundTransfer(string id, InboundTransferReturnInboundTransferOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/return", options, requestOptions);
+            return this.Request<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/return", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.InboundTransfer> ReturnInboundTransferAsync(string id, InboundTransferReturnInboundTransferOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/return", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/return", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +66,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.InboundTransfer Succeed(string id, InboundTransferSucceedOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/succeed", options, requestOptions);
+            return this.Request<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/succeed", options, requestOptions);
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.InboundTransfer> SucceedAsync(string id, InboundTransferSucceedOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{id}/succeed", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.InboundTransfer>(HttpMethod.Post, $"/v1/test_helpers/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/succeed", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -3,6 +3,7 @@ namespace Stripe.Reporting
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual ReportType Get(string id, ReportTypeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ReportType>(HttpMethod.Get, $"/v1/reporting/report_types/{id}", options, requestOptions);
+            return this.Request<ReportType>(HttpMethod.Get, $"/v1/reporting/report_types/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual Task<ReportType> GetAsync(string id, ReportTypeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ReportType>(HttpMethod.Get, $"/v1/reporting/report_types/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ReportType>(HttpMethod.Get, $"/v1/reporting/report_types/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

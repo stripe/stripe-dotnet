@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -33,7 +34,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice AddLines(string id, InvoiceAddLinesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/add_lines", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/add_lines", options, requestOptions);
         }
 
         /// <summary>
@@ -42,7 +43,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> AddLinesAsync(string id, InvoiceAddLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/add_lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/add_lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -135,7 +136,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice Delete(string id, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Delete, $"/v1/invoices/{id}", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Delete, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -146,7 +147,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> DeleteAsync(string id, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Delete, $"/v1/invoices/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Delete, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -156,7 +157,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice FinalizeInvoice(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/finalize", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/finalize", options, requestOptions);
         }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> FinalizeInvoiceAsync(string id, InvoiceFinalizeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/finalize", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/finalize", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -174,7 +175,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice Get(string id, InvoiceGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Get, $"/v1/invoices/{id}", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -182,7 +183,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> GetAsync(string id, InvoiceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Get, $"/v1/invoices/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -232,7 +233,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<InvoiceLineItem> ListLineItems(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"/v1/invoices/{id}/lines", options, requestOptions);
+            return this.Request<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions);
         }
 
         /// <summary>
@@ -242,7 +243,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<InvoiceLineItem>> ListLineItemsAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"/v1/invoices/{id}/lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -252,7 +253,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<InvoiceLineItem> ListLineItemsAutoPaging(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/invoices/{id}/lines", options, requestOptions);
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions);
         }
 
         /// <summary>
@@ -262,7 +263,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<InvoiceLineItem> ListLineItemsAutoPagingAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/invoices/{id}/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -311,7 +312,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice MarkUncollectible(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/mark_uncollectible", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/mark_uncollectible", options, requestOptions);
         }
 
         /// <summary>
@@ -320,7 +321,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> MarkUncollectibleAsync(string id, InvoiceMarkUncollectibleOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/mark_uncollectible", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/mark_uncollectible", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -332,7 +333,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice Pay(string id, InvoicePayOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/pay", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/pay", options, requestOptions);
         }
 
         /// <summary>
@@ -344,7 +345,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> PayAsync(string id, InvoicePayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/pay", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/pay", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -353,7 +354,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice RemoveLines(string id, InvoiceRemoveLinesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/remove_lines", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/remove_lines", options, requestOptions);
         }
 
         /// <summary>
@@ -362,7 +363,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> RemoveLinesAsync(string id, InvoiceRemoveLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/remove_lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/remove_lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -429,7 +430,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice SendInvoice(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/send", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/send", options, requestOptions);
         }
 
         /// <summary>
@@ -444,7 +445,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> SendInvoiceAsync(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/send", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/send", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -517,7 +518,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice Update(string id, InvoiceUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -532,7 +533,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> UpdateAsync(string id, InvoiceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -541,7 +542,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice UpdateLines(string id, InvoiceUpdateLinesOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/update_lines", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/update_lines", options, requestOptions);
         }
 
         /// <summary>
@@ -550,7 +551,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> UpdateLinesAsync(string id, InvoiceUpdateLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/update_lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/update_lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -568,7 +569,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice VoidInvoice(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/void", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/void", options, requestOptions);
         }
 
         /// <summary>
@@ -586,7 +587,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> VoidInvoiceAsync(string id, InvoiceVoidOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{id}/void", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/void", options, requestOptions, cancellationToken);
         }
     }
 }

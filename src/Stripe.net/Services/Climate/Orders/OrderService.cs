@@ -3,6 +3,7 @@ namespace Stripe.Climate
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -34,7 +35,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Order Cancel(string id, OrderCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Order>(HttpMethod.Post, $"/v1/climate/orders/{id}/cancel", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/climate/orders/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Task<Order> CancelAsync(string id, OrderCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/climate/orders/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/climate/orders/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Order Get(string id, OrderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Order>(HttpMethod.Get, $"/v1/climate/orders/{id}", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Get, $"/v1/climate/orders/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Task<Order> GetAsync(string id, OrderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Order>(HttpMethod.Get, $"/v1/climate/orders/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Get, $"/v1/climate/orders/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Order Update(string id, OrderUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Order>(HttpMethod.Post, $"/v1/climate/orders/{id}", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/climate/orders/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -134,7 +135,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Task<Order> UpdateAsync(string id, OrderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/climate/orders/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/climate/orders/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

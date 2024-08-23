@@ -3,6 +3,7 @@ namespace Stripe.Treasury
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual CreditReversal Get(string id, CreditReversalGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditReversal>(HttpMethod.Get, $"/v1/treasury/credit_reversals/{id}", options, requestOptions);
+            return this.Request<CreditReversal>(HttpMethod.Get, $"/v1/treasury/credit_reversals/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<CreditReversal> GetAsync(string id, CreditReversalGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditReversal>(HttpMethod.Get, $"/v1/treasury/credit_reversals/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditReversal>(HttpMethod.Get, $"/v1/treasury/credit_reversals/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

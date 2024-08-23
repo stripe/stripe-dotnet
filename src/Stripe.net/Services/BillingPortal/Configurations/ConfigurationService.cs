@@ -3,6 +3,7 @@ namespace Stripe.BillingPortal
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -49,7 +50,7 @@ namespace Stripe.BillingPortal
         /// </summary>
         public virtual Configuration Get(string id, ConfigurationGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Configuration>(HttpMethod.Get, $"/v1/billing_portal/configurations/{id}", options, requestOptions);
+            return this.Request<Configuration>(HttpMethod.Get, $"/v1/billing_portal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace Stripe.BillingPortal
         /// </summary>
         public virtual Task<Configuration> GetAsync(string id, ConfigurationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Configuration>(HttpMethod.Get, $"/v1/billing_portal/configurations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Configuration>(HttpMethod.Get, $"/v1/billing_portal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace Stripe.BillingPortal
         /// </summary>
         public virtual Configuration Update(string id, ConfigurationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Configuration>(HttpMethod.Post, $"/v1/billing_portal/configurations/{id}", options, requestOptions);
+            return this.Request<Configuration>(HttpMethod.Post, $"/v1/billing_portal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace Stripe.BillingPortal
         /// </summary>
         public virtual Task<Configuration> UpdateAsync(string id, ConfigurationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Configuration>(HttpMethod.Post, $"/v1/billing_portal/configurations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Configuration>(HttpMethod.Post, $"/v1/billing_portal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

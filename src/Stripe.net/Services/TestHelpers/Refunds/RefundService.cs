@@ -2,6 +2,7 @@
 namespace Stripe.TestHelpers
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Refund Expire(string id, RefundExpireOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Refund>(HttpMethod.Post, $"/v1/test_helpers/refunds/{id}/expire", options, requestOptions);
+            return this.Request<Refund>(HttpMethod.Post, $"/v1/test_helpers/refunds/{WebUtility.UrlEncode(id)}/expire", options, requestOptions);
         }
 
         /// <summary>
@@ -33,7 +34,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Task<Refund> ExpireAsync(string id, RefundExpireOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Refund>(HttpMethod.Post, $"/v1/test_helpers/refunds/{id}/expire", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(HttpMethod.Post, $"/v1/test_helpers/refunds/{WebUtility.UrlEncode(id)}/expire", options, requestOptions, cancellationToken);
         }
     }
 }

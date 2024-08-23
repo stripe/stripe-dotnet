@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual ShippingRate Get(string id, ShippingRateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ShippingRate>(HttpMethod.Get, $"/v1/shipping_rates/{id}", options, requestOptions);
+            return this.Request<ShippingRate>(HttpMethod.Get, $"/v1/shipping_rates/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ShippingRate> GetAsync(string id, ShippingRateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ShippingRate>(HttpMethod.Get, $"/v1/shipping_rates/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ShippingRate>(HttpMethod.Get, $"/v1/shipping_rates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace Stripe
         /// </summary>
         public virtual ShippingRate Update(string id, ShippingRateUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ShippingRate>(HttpMethod.Post, $"/v1/shipping_rates/{id}", options, requestOptions);
+            return this.Request<ShippingRate>(HttpMethod.Post, $"/v1/shipping_rates/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ShippingRate> UpdateAsync(string id, ShippingRateUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ShippingRate>(HttpMethod.Post, $"/v1/shipping_rates/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ShippingRate>(HttpMethod.Post, $"/v1/shipping_rates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

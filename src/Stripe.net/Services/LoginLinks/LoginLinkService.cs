@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace Stripe
         /// </summary>
         public virtual LoginLink Create(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<LoginLink>(HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions);
+            return this.Request<LoginLink>(HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(parentId)}/login_links", options, requestOptions);
         }
 
         /// <summary>
@@ -44,7 +45,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<LoginLink> CreateAsync(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<LoginLink>(HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions, cancellationToken);
+            return this.RequestAsync<LoginLink>(HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(parentId)}/login_links", options, requestOptions, cancellationToken);
         }
     }
 }

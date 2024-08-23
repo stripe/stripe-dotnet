@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace Stripe
         /// </summary>
         public virtual PromotionCode Get(string id, PromotionCodeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PromotionCode>(HttpMethod.Get, $"/v1/promotion_codes/{id}", options, requestOptions);
+            return this.Request<PromotionCode>(HttpMethod.Get, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PromotionCode> GetAsync(string id, PromotionCodeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PromotionCode>(HttpMethod.Get, $"/v1/promotion_codes/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PromotionCode>(HttpMethod.Get, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace Stripe
         /// </summary>
         public virtual PromotionCode Update(string id, PromotionCodeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes/{id}", options, requestOptions);
+            return this.Request<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -112,7 +113,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PromotionCode> UpdateAsync(string id, PromotionCodeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

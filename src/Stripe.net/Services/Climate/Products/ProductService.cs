@@ -3,6 +3,7 @@ namespace Stripe.Climate
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Product Get(string id, ProductGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Product>(HttpMethod.Get, $"/v1/climate/products/{id}", options, requestOptions);
+            return this.Request<Product>(HttpMethod.Get, $"/v1/climate/products/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Task<Product> GetAsync(string id, ProductGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Product>(HttpMethod.Get, $"/v1/climate/products/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Product>(HttpMethod.Get, $"/v1/climate/products/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

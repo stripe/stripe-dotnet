@@ -3,6 +3,7 @@ namespace Stripe.Treasury
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual ReceivedCredit Get(string id, ReceivedCreditGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ReceivedCredit>(HttpMethod.Get, $"/v1/treasury/received_credits/{id}", options, requestOptions);
+            return this.Request<ReceivedCredit>(HttpMethod.Get, $"/v1/treasury/received_credits/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<ReceivedCredit> GetAsync(string id, ReceivedCreditGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ReceivedCredit>(HttpMethod.Get, $"/v1/treasury/received_credits/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ReceivedCredit>(HttpMethod.Get, $"/v1/treasury/received_credits/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

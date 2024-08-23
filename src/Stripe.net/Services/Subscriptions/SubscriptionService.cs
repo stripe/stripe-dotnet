@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Cancel(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions);
+            return this.Request<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> CancelAsync(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Get(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions);
+            return this.Request<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -123,7 +124,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> GetAsync(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -172,7 +173,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Resume(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions);
+            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/resume", options, requestOptions);
         }
 
         /// <summary>
@@ -185,7 +186,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> ResumeAsync(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/resume", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -292,7 +293,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Update(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions);
+            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -347,7 +348,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> UpdateAsync(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

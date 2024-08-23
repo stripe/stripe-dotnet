@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual ApplePayDomain Delete(string id, ApplePayDomainDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplePayDomain>(HttpMethod.Delete, $"/v1/apple_pay/domains/{id}", options, requestOptions);
+            return this.Request<ApplePayDomain>(HttpMethod.Delete, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplePayDomain> DeleteAsync(string id, ApplePayDomainDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplePayDomain>(HttpMethod.Delete, $"/v1/apple_pay/domains/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApplePayDomain>(HttpMethod.Delete, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace Stripe
         /// </summary>
         public virtual ApplePayDomain Get(string id, ApplePayDomainGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplePayDomain>(HttpMethod.Get, $"/v1/apple_pay/domains/{id}", options, requestOptions);
+            return this.Request<ApplePayDomain>(HttpMethod.Get, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplePayDomain> GetAsync(string id, ApplePayDomainGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplePayDomain>(HttpMethod.Get, $"/v1/apple_pay/domains/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApplePayDomain>(HttpMethod.Get, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

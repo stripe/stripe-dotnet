@@ -3,6 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual PersonalizationDesign Get(string id, PersonalizationDesignGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PersonalizationDesign>(HttpMethod.Get, $"/v1/issuing/personalization_designs/{id}", options, requestOptions);
+            return this.Request<PersonalizationDesign>(HttpMethod.Get, $"/v1/issuing/personalization_designs/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<PersonalizationDesign> GetAsync(string id, PersonalizationDesignGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PersonalizationDesign>(HttpMethod.Get, $"/v1/issuing/personalization_designs/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PersonalizationDesign>(HttpMethod.Get, $"/v1/issuing/personalization_designs/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual PersonalizationDesign Update(string id, PersonalizationDesignUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<PersonalizationDesign>(HttpMethod.Post, $"/v1/issuing/personalization_designs/{id}", options, requestOptions);
+            return this.Request<PersonalizationDesign>(HttpMethod.Post, $"/v1/issuing/personalization_designs/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<PersonalizationDesign> UpdateAsync(string id, PersonalizationDesignUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PersonalizationDesign>(HttpMethod.Post, $"/v1/issuing/personalization_designs/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PersonalizationDesign>(HttpMethod.Post, $"/v1/issuing/personalization_designs/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

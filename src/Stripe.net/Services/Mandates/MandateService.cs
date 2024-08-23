@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace Stripe
         /// </summary>
         public virtual Mandate Get(string id, MandateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Mandate>(HttpMethod.Get, $"/v1/mandates/{id}", options, requestOptions);
+            return this.Request<Mandate>(HttpMethod.Get, $"/v1/mandates/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -34,7 +35,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Mandate> GetAsync(string id, MandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Mandate>(HttpMethod.Get, $"/v1/mandates/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Mandate>(HttpMethod.Get, $"/v1/mandates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

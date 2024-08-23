@@ -3,6 +3,7 @@ namespace Stripe.Entitlements
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual ActiveEntitlement Get(string id, ActiveEntitlementGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ActiveEntitlement>(HttpMethod.Get, $"/v1/entitlements/active_entitlements/{id}", options, requestOptions);
+            return this.Request<ActiveEntitlement>(HttpMethod.Get, $"/v1/entitlements/active_entitlements/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Task<ActiveEntitlement> GetAsync(string id, ActiveEntitlementGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ActiveEntitlement>(HttpMethod.Get, $"/v1/entitlements/active_entitlements/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ActiveEntitlement>(HttpMethod.Get, $"/v1/entitlements/active_entitlements/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

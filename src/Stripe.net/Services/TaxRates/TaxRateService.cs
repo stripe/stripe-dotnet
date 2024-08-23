@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual TaxRate Get(string id, TaxRateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TaxRate>(HttpMethod.Get, $"/v1/tax_rates/{id}", options, requestOptions);
+            return this.Request<TaxRate>(HttpMethod.Get, $"/v1/tax_rates/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<TaxRate> GetAsync(string id, TaxRateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TaxRate>(HttpMethod.Get, $"/v1/tax_rates/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxRate>(HttpMethod.Get, $"/v1/tax_rates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace Stripe
         /// </summary>
         public virtual TaxRate Update(string id, TaxRateUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<TaxRate>(HttpMethod.Post, $"/v1/tax_rates/{id}", options, requestOptions);
+            return this.Request<TaxRate>(HttpMethod.Post, $"/v1/tax_rates/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<TaxRate> UpdateAsync(string id, TaxRateUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TaxRate>(HttpMethod.Post, $"/v1/tax_rates/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxRate>(HttpMethod.Post, $"/v1/tax_rates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

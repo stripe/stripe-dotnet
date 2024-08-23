@@ -250,6 +250,7 @@ namespace Stripe
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
+            Console.WriteLine("calling " + path);
             return this.RequestAsync<T>(method, path, options, requestOptions)
                 .ConfigureAwait(false).GetAwaiter().GetResult();
         }

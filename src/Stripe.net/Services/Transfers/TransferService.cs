@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -54,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Transfer Get(string id, TransferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Transfer>(HttpMethod.Get, $"/v1/transfers/{id}", options, requestOptions);
+            return this.Request<Transfer>(HttpMethod.Get, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Transfer> GetAsync(string id, TransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transfer>(HttpMethod.Get, $"/v1/transfers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transfer>(HttpMethod.Get, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -111,7 +112,7 @@ namespace Stripe
         /// </summary>
         public virtual Transfer Update(string id, TransferUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Transfer>(HttpMethod.Post, $"/v1/transfers/{id}", options, requestOptions);
+            return this.Request<Transfer>(HttpMethod.Post, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -122,7 +123,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Transfer> UpdateAsync(string id, TransferUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transfer>(HttpMethod.Post, $"/v1/transfers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transfer>(HttpMethod.Post, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

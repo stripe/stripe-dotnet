@@ -2,6 +2,7 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -58,7 +59,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Stripe.Issuing.Transaction Refund(string id, TransactionRefundOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{id}/refund", options, requestOptions);
+            return this.Request<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{WebUtility.UrlEncode(id)}/refund", options, requestOptions);
         }
 
         /// <summary>
@@ -66,7 +67,7 @@ namespace Stripe.TestHelpers.Issuing
         /// </summary>
         public virtual Task<Stripe.Issuing.Transaction> RefundAsync(string id, TransactionRefundOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{id}/refund", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Issuing.Transaction>(HttpMethod.Post, $"/v1/test_helpers/issuing/transactions/{WebUtility.UrlEncode(id)}/refund", options, requestOptions, cancellationToken);
         }
     }
 }
