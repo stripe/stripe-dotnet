@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe
         /// </summary>
         public virtual Review Approve(string id, ReviewApproveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Review>(HttpMethod.Post, $"/v1/reviews/{id}/approve", options, requestOptions);
+            return this.Request<Review>(HttpMethod.Post, $"/v1/reviews/{WebUtility.UrlEncode(id)}/approve", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Review> ApproveAsync(string id, ReviewApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Review>(HttpMethod.Post, $"/v1/reviews/{id}/approve", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Review>(HttpMethod.Post, $"/v1/reviews/{WebUtility.UrlEncode(id)}/approve", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual Review Get(string id, ReviewGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Review>(HttpMethod.Get, $"/v1/reviews/{id}", options, requestOptions);
+            return this.Request<Review>(HttpMethod.Get, $"/v1/reviews/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Review> GetAsync(string id, ReviewGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Review>(HttpMethod.Get, $"/v1/reviews/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Review>(HttpMethod.Get, $"/v1/reviews/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentMethodConfiguration Get(string id, PaymentMethodConfigurationGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethodConfiguration>(HttpMethod.Get, $"/v1/payment_method_configurations/{id}", options, requestOptions);
+            return this.Request<PaymentMethodConfiguration>(HttpMethod.Get, $"/v1/payment_method_configurations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentMethodConfiguration> GetAsync(string id, PaymentMethodConfigurationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethodConfiguration>(HttpMethod.Get, $"/v1/payment_method_configurations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethodConfiguration>(HttpMethod.Get, $"/v1/payment_method_configurations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentMethodConfiguration Update(string id, PaymentMethodConfigurationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethodConfiguration>(HttpMethod.Post, $"/v1/payment_method_configurations/{id}", options, requestOptions);
+            return this.Request<PaymentMethodConfiguration>(HttpMethod.Post, $"/v1/payment_method_configurations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentMethodConfiguration> UpdateAsync(string id, PaymentMethodConfigurationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethodConfiguration>(HttpMethod.Post, $"/v1/payment_method_configurations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethodConfiguration>(HttpMethod.Post, $"/v1/payment_method_configurations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

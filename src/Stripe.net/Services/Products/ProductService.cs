@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -50,7 +51,7 @@ namespace Stripe
         /// </summary>
         public virtual Product Delete(string id, ProductDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Product>(HttpMethod.Delete, $"/v1/products/{id}", options, requestOptions);
+            return this.Request<Product>(HttpMethod.Delete, $"/v1/products/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Product> DeleteAsync(string id, ProductDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Product>(HttpMethod.Delete, $"/v1/products/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Product>(HttpMethod.Delete, $"/v1/products/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace Stripe
         /// </summary>
         public virtual Product Get(string id, ProductGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Product>(HttpMethod.Get, $"/v1/products/{id}", options, requestOptions);
+            return this.Request<Product>(HttpMethod.Get, $"/v1/products/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -80,7 +81,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Product> GetAsync(string id, ProductGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Product>(HttpMethod.Get, $"/v1/products/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Product>(HttpMethod.Get, $"/v1/products/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -177,7 +178,7 @@ namespace Stripe
         /// </summary>
         public virtual Product Update(string id, ProductUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Product>(HttpMethod.Post, $"/v1/products/{id}", options, requestOptions);
+            return this.Request<Product>(HttpMethod.Post, $"/v1/products/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -186,7 +187,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Product> UpdateAsync(string id, ProductUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Product>(HttpMethod.Post, $"/v1/products/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Product>(HttpMethod.Post, $"/v1/products/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

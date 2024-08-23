@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -63,7 +64,7 @@ namespace Stripe
         /// </summary>
         public virtual WebhookEndpoint Delete(string id, WebhookEndpointDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<WebhookEndpoint>(HttpMethod.Delete, $"/v1/webhook_endpoints/{id}", options, requestOptions);
+            return this.Request<WebhookEndpoint>(HttpMethod.Delete, $"/v1/webhook_endpoints/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<WebhookEndpoint> DeleteAsync(string id, WebhookEndpointDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<WebhookEndpoint>(HttpMethod.Delete, $"/v1/webhook_endpoints/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<WebhookEndpoint>(HttpMethod.Delete, $"/v1/webhook_endpoints/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace Stripe
         /// </summary>
         public virtual WebhookEndpoint Get(string id, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<WebhookEndpoint>(HttpMethod.Get, $"/v1/webhook_endpoints/{id}", options, requestOptions);
+            return this.Request<WebhookEndpoint>(HttpMethod.Get, $"/v1/webhook_endpoints/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -89,7 +90,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<WebhookEndpoint> GetAsync(string id, WebhookEndpointGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<WebhookEndpoint>(HttpMethod.Get, $"/v1/webhook_endpoints/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<WebhookEndpoint>(HttpMethod.Get, $"/v1/webhook_endpoints/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -130,7 +131,7 @@ namespace Stripe
         /// </summary>
         public virtual WebhookEndpoint Update(string id, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<WebhookEndpoint>(HttpMethod.Post, $"/v1/webhook_endpoints/{id}", options, requestOptions);
+            return this.Request<WebhookEndpoint>(HttpMethod.Post, $"/v1/webhook_endpoints/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -139,7 +140,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<WebhookEndpoint> UpdateAsync(string id, WebhookEndpointUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<WebhookEndpoint>(HttpMethod.Post, $"/v1/webhook_endpoints/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<WebhookEndpoint>(HttpMethod.Post, $"/v1/webhook_endpoints/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

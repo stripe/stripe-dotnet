@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent ApplyCustomerBalance(string id, PaymentIntentApplyCustomerBalanceOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/apply_customer_balance", options, requestOptions);
+            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/apply_customer_balance", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> ApplyCustomerBalanceAsync(string id, PaymentIntentApplyCustomerBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/apply_customer_balance", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/apply_customer_balance", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent Cancel(string id, PaymentIntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/cancel", options, requestOptions);
+            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> CancelAsync(string id, PaymentIntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent Capture(string id, PaymentIntentCaptureOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/capture", options, requestOptions);
+            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/capture", options, requestOptions);
         }
 
         /// <summary>
@@ -111,7 +112,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> CaptureAsync(string id, PaymentIntentCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/capture", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/capture", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -137,7 +138,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent Confirm(string id, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/confirm", options, requestOptions);
+            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions);
         }
 
         /// <summary>
@@ -163,7 +164,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> ConfirmAsync(string id, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/confirm", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -223,7 +224,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent DecrementAuthorization(string id, PaymentIntentDecrementAuthorizationOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/decrement_authorization", options, requestOptions);
+            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/decrement_authorization", options, requestOptions);
         }
 
         /// <summary>
@@ -247,7 +248,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> DecrementAuthorizationAsync(string id, PaymentIntentDecrementAuthorizationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/decrement_authorization", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/decrement_authorization", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -263,7 +264,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent Get(string id, PaymentIntentGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Get, $"/v1/payment_intents/{id}", options, requestOptions);
+            return this.Request<PaymentIntent>(HttpMethod.Get, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -279,7 +280,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> GetAsync(string id, PaymentIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Get, $"/v1/payment_intents/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Get, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -312,7 +313,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent IncrementAuthorization(string id, PaymentIntentIncrementAuthorizationOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/increment_authorization", options, requestOptions);
+            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/increment_authorization", options, requestOptions);
         }
 
         /// <summary>
@@ -345,7 +346,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> IncrementAuthorizationAsync(string id, PaymentIntentIncrementAuthorizationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/increment_authorization", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/increment_authorization", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -443,7 +444,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent Update(string id, PaymentIntentUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}", options, requestOptions);
+            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -457,7 +458,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> UpdateAsync(string id, PaymentIntentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -465,7 +466,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent VerifyMicrodeposits(string id, PaymentIntentVerifyMicrodepositsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/verify_microdeposits", options, requestOptions);
+            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/verify_microdeposits", options, requestOptions);
         }
 
         /// <summary>
@@ -473,7 +474,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> VerifyMicrodepositsAsync(string id, PaymentIntentVerifyMicrodepositsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{id}/verify_microdeposits", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/verify_microdeposits", options, requestOptions, cancellationToken);
         }
     }
 }

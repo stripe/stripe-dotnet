@@ -3,6 +3,7 @@ namespace Stripe.Terminal
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -47,7 +48,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Configuration Delete(string id, ConfigurationDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Configuration>(HttpMethod.Delete, $"/v1/terminal/configurations/{id}", options, requestOptions);
+            return this.Request<Configuration>(HttpMethod.Delete, $"/v1/terminal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Configuration> DeleteAsync(string id, ConfigurationDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Configuration>(HttpMethod.Delete, $"/v1/terminal/configurations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Configuration>(HttpMethod.Delete, $"/v1/terminal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Configuration Get(string id, ConfigurationGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Configuration>(HttpMethod.Get, $"/v1/terminal/configurations/{id}", options, requestOptions);
+            return this.Request<Configuration>(HttpMethod.Get, $"/v1/terminal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -71,7 +72,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Configuration> GetAsync(string id, ConfigurationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Configuration>(HttpMethod.Get, $"/v1/terminal/configurations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Configuration>(HttpMethod.Get, $"/v1/terminal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -111,7 +112,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Configuration Update(string id, ConfigurationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Configuration>(HttpMethod.Post, $"/v1/terminal/configurations/{id}", options, requestOptions);
+            return this.Request<Configuration>(HttpMethod.Post, $"/v1/terminal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -119,7 +120,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<Configuration> UpdateAsync(string id, ConfigurationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Configuration>(HttpMethod.Post, $"/v1/terminal/configurations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Configuration>(HttpMethod.Post, $"/v1/terminal/configurations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

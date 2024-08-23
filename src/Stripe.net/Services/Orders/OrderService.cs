@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace Stripe
         /// </summary>
         public virtual Order Cancel(string id, OrderCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{id}/cancel", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Order> CancelAsync(string id, OrderCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace Stripe
         /// </summary>
         public virtual Order Get(string id, OrderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Order>(HttpMethod.Get, $"/v1/orders/{id}", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Get, $"/v1/orders/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Order> GetAsync(string id, OrderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Order>(HttpMethod.Get, $"/v1/orders/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Get, $"/v1/orders/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -120,7 +121,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<LineItem> ListLineItems(string id, OrderListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/orders/{id}/line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/orders/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -130,7 +131,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, OrderListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/orders/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/orders/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -140,7 +141,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, OrderListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/orders/{id}/line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/orders/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -150,7 +151,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, OrderListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/orders/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/orders/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -158,7 +159,7 @@ namespace Stripe
         /// </summary>
         public virtual Order Reopen(string id, OrderReopenOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{id}/reopen", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{WebUtility.UrlEncode(id)}/reopen", options, requestOptions);
         }
 
         /// <summary>
@@ -166,7 +167,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Order> ReopenAsync(string id, OrderReopenOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{id}/reopen", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{WebUtility.UrlEncode(id)}/reopen", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -178,7 +179,7 @@ namespace Stripe
         /// </summary>
         public virtual Order Submit(string id, OrderSubmitOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{id}/submit", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{WebUtility.UrlEncode(id)}/submit", options, requestOptions);
         }
 
         /// <summary>
@@ -190,7 +191,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Order> SubmitAsync(string id, OrderSubmitOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{id}/submit", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{WebUtility.UrlEncode(id)}/submit", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -199,7 +200,7 @@ namespace Stripe
         /// </summary>
         public virtual Order Update(string id, OrderUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{id}", options, requestOptions);
+            return this.Request<Order>(HttpMethod.Post, $"/v1/orders/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -208,7 +209,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Order> UpdateAsync(string id, OrderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Order>(HttpMethod.Post, $"/v1/orders/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

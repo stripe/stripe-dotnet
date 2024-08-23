@@ -4,6 +4,7 @@ namespace Stripe.Tax
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Form Get(string id, FormGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Form>(HttpMethod.Get, $"/v1/tax/forms/{id}", options, requestOptions);
+            return this.Request<Form>(HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Form> GetAsync(string id, FormGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Form>(HttpMethod.Get, $"/v1/tax/forms/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Form>(HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -92,7 +93,7 @@ namespace Stripe.Tax
                 requestOptions.BaseUrl = this.Client.FilesBase;
             }
 
-            return this.RequestStreaming(HttpMethod.Get, $"/v1/tax/forms/{id}/pdf", options, requestOptions);
+            return this.RequestStreaming(HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}/pdf", options, requestOptions);
         }
 
         /// <summary>
@@ -107,7 +108,7 @@ namespace Stripe.Tax
                 requestOptions.BaseUrl = this.Client.FilesBase;
             }
 
-            return this.RequestStreamingAsync(HttpMethod.Get, $"/v1/tax/forms/{id}/pdf", options, requestOptions, cancellationToken);
+            return this.RequestStreamingAsync(HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}/pdf", options, requestOptions, cancellationToken);
         }
     }
 }

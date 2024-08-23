@@ -3,6 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual CreditUnderwritingRecord Correct(string id, CreditUnderwritingRecordCorrectOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/correct", options, requestOptions);
+            return this.Request<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{WebUtility.UrlEncode(id)}/correct", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<CreditUnderwritingRecord> CorrectAsync(string id, CreditUnderwritingRecordCorrectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/correct", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{WebUtility.UrlEncode(id)}/correct", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -80,7 +81,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual CreditUnderwritingRecord Get(string id, CreditUnderwritingRecordGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditUnderwritingRecord>(HttpMethod.Get, $"/v1/issuing/credit_underwriting_records/{id}", options, requestOptions);
+            return this.Request<CreditUnderwritingRecord>(HttpMethod.Get, $"/v1/issuing/credit_underwriting_records/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<CreditUnderwritingRecord> GetAsync(string id, CreditUnderwritingRecordGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Get, $"/v1/issuing/credit_underwriting_records/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Get, $"/v1/issuing/credit_underwriting_records/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -137,7 +138,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual CreditUnderwritingRecord ReportDecision(string id, CreditUnderwritingRecordReportDecisionOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/report_decision", options, requestOptions);
+            return this.Request<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{WebUtility.UrlEncode(id)}/report_decision", options, requestOptions);
         }
 
         /// <summary>
@@ -146,7 +147,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<CreditUnderwritingRecord> ReportDecisionAsync(string id, CreditUnderwritingRecordReportDecisionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{id}/report_decision", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditUnderwritingRecord>(HttpMethod.Post, $"/v1/issuing/credit_underwriting_records/{WebUtility.UrlEncode(id)}/report_decision", options, requestOptions, cancellationToken);
         }
     }
 }

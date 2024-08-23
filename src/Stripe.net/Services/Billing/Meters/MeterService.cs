@@ -3,6 +3,7 @@ namespace Stripe.Billing
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Meter Deactivate(string id, MeterDeactivateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Meter>(HttpMethod.Post, $"/v1/billing/meters/{id}/deactivate", options, requestOptions);
+            return this.Request<Meter>(HttpMethod.Post, $"/v1/billing/meters/{WebUtility.UrlEncode(id)}/deactivate", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Meter> DeactivateAsync(string id, MeterDeactivateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Meter>(HttpMethod.Post, $"/v1/billing/meters/{id}/deactivate", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Meter>(HttpMethod.Post, $"/v1/billing/meters/{WebUtility.UrlEncode(id)}/deactivate", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Meter Get(string id, MeterGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Meter>(HttpMethod.Get, $"/v1/billing/meters/{id}", options, requestOptions);
+            return this.Request<Meter>(HttpMethod.Get, $"/v1/billing/meters/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -70,7 +71,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Meter> GetAsync(string id, MeterGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Meter>(HttpMethod.Get, $"/v1/billing/meters/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Meter>(HttpMethod.Get, $"/v1/billing/meters/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -110,7 +111,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Meter Reactivate(string id, MeterReactivateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Meter>(HttpMethod.Post, $"/v1/billing/meters/{id}/reactivate", options, requestOptions);
+            return this.Request<Meter>(HttpMethod.Post, $"/v1/billing/meters/{WebUtility.UrlEncode(id)}/reactivate", options, requestOptions);
         }
 
         /// <summary>
@@ -118,7 +119,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Meter> ReactivateAsync(string id, MeterReactivateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Meter>(HttpMethod.Post, $"/v1/billing/meters/{id}/reactivate", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Meter>(HttpMethod.Post, $"/v1/billing/meters/{WebUtility.UrlEncode(id)}/reactivate", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Meter Update(string id, MeterUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Meter>(HttpMethod.Post, $"/v1/billing/meters/{id}", options, requestOptions);
+            return this.Request<Meter>(HttpMethod.Post, $"/v1/billing/meters/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -134,7 +135,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Meter> UpdateAsync(string id, MeterUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Meter>(HttpMethod.Post, $"/v1/billing/meters/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Meter>(HttpMethod.Post, $"/v1/billing/meters/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe
         /// </summary>
         public virtual AccountNotice Get(string id, AccountNoticeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountNotice>(HttpMethod.Get, $"/v1/account_notices/{id}", options, requestOptions);
+            return this.Request<AccountNotice>(HttpMethod.Get, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<AccountNotice> GetAsync(string id, AccountNoticeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountNotice>(HttpMethod.Get, $"/v1/account_notices/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountNotice>(HttpMethod.Get, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -85,7 +86,7 @@ namespace Stripe
         /// </summary>
         public virtual AccountNotice Update(string id, AccountNoticeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountNotice>(HttpMethod.Post, $"/v1/account_notices/{id}", options, requestOptions);
+            return this.Request<AccountNotice>(HttpMethod.Post, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<AccountNotice> UpdateAsync(string id, AccountNoticeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountNotice>(HttpMethod.Post, $"/v1/account_notices/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountNotice>(HttpMethod.Post, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

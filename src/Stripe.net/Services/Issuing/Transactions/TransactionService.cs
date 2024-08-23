@@ -3,6 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Transaction Get(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Transaction>(HttpMethod.Get, $"/v1/issuing/transactions/{id}", options, requestOptions);
+            return this.Request<Transaction>(HttpMethod.Get, $"/v1/issuing/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Transaction> GetAsync(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transaction>(HttpMethod.Get, $"/v1/issuing/transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transaction>(HttpMethod.Get, $"/v1/issuing/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Transaction Update(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Transaction>(HttpMethod.Post, $"/v1/issuing/transactions/{id}", options, requestOptions);
+            return this.Request<Transaction>(HttpMethod.Post, $"/v1/issuing/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Transaction> UpdateAsync(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transaction>(HttpMethod.Post, $"/v1/issuing/transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transaction>(HttpMethod.Post, $"/v1/issuing/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

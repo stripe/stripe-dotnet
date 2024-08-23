@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual FileLink Get(string id, FileLinkGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FileLink>(HttpMethod.Get, $"/v1/file_links/{id}", options, requestOptions);
+            return this.Request<FileLink>(HttpMethod.Get, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<FileLink> GetAsync(string id, FileLinkGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FileLink>(HttpMethod.Get, $"/v1/file_links/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FileLink>(HttpMethod.Get, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace Stripe
         /// </summary>
         public virtual FileLink Update(string id, FileLinkUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<FileLink>(HttpMethod.Post, $"/v1/file_links/{id}", options, requestOptions);
+            return this.Request<FileLink>(HttpMethod.Post, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -102,7 +103,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<FileLink> UpdateAsync(string id, FileLinkUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FileLink>(HttpMethod.Post, $"/v1/file_links/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FileLink>(HttpMethod.Post, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }
