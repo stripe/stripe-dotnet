@@ -1,5 +1,9 @@
 # Changelog
 
+## 45.9.0 - 2024-08-23
+* [#2955](https://github.com/stripe/stripe-dotnet/pull/2955) urlencode ids in url paths
+  - id strings passed to service methods (like `PaymentMethodService.Get("...")`) are now correctly URL Encoded. This is an important update if you pass user inupt into any of those methods
+
 ## 45.8.0 - 2024-08-15
 * [#2949](https://github.com/stripe/stripe-dotnet/pull/2949) Update generated code
   * Add support for `AuthorizationCode` on `ChargePaymentMethodDetailsCard`
