@@ -6,6 +6,18 @@ namespace Stripe.Checkout
     public class SessionCollectedInformation : StripeEntity<SessionCollectedInformation>
     {
         /// <summary>
+        /// Customer’s email for this Checkout Session.
+        /// </summary>
+        [JsonProperty("email")]
+        public string Email { get; set; }
+
+        /// <summary>
+        /// Customer’s phone number for this Checkout Session.
+        /// </summary>
+        [JsonProperty("phone")]
+        public string Phone { get; set; }
+
+        /// <summary>
         /// Shipping information for this Checkout Session.
         /// </summary>
         [JsonProperty("shipping_details")]
