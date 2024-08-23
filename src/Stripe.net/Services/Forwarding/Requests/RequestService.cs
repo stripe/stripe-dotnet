@@ -3,6 +3,7 @@ namespace Stripe.Forwarding
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -45,7 +46,7 @@ namespace Stripe.Forwarding
         /// </summary>
         public virtual Request Get(string id, RequestGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Request>(HttpMethod.Get, $"/v1/forwarding/requests/{id}", options, requestOptions);
+            return this.Request<Request>(HttpMethod.Get, $"/v1/forwarding/requests/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Stripe.Forwarding
         /// </summary>
         public virtual Task<Request> GetAsync(string id, RequestGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Request>(HttpMethod.Get, $"/v1/forwarding/requests/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Request>(HttpMethod.Get, $"/v1/forwarding/requests/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

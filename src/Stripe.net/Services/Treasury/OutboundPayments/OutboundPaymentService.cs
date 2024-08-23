@@ -3,6 +3,7 @@ namespace Stripe.Treasury
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual OutboundPayment Cancel(string id, OutboundPaymentCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<OutboundPayment>(HttpMethod.Post, $"/v1/treasury/outbound_payments/{id}/cancel", options, requestOptions);
+            return this.Request<OutboundPayment>(HttpMethod.Post, $"/v1/treasury/outbound_payments/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<OutboundPayment> CancelAsync(string id, OutboundPaymentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<OutboundPayment>(HttpMethod.Post, $"/v1/treasury/outbound_payments/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<OutboundPayment>(HttpMethod.Post, $"/v1/treasury/outbound_payments/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual OutboundPayment Get(string id, OutboundPaymentGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<OutboundPayment>(HttpMethod.Get, $"/v1/treasury/outbound_payments/{id}", options, requestOptions);
+            return this.Request<OutboundPayment>(HttpMethod.Get, $"/v1/treasury/outbound_payments/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<OutboundPayment> GetAsync(string id, OutboundPaymentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<OutboundPayment>(HttpMethod.Get, $"/v1/treasury/outbound_payments/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<OutboundPayment>(HttpMethod.Get, $"/v1/treasury/outbound_payments/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

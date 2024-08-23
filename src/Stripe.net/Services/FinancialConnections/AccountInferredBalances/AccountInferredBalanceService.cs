@@ -3,6 +3,7 @@ namespace Stripe.FinancialConnections
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -27,7 +28,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual StripeList<AccountInferredBalance> List(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<AccountInferredBalance>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{parentId}/inferred_balances", options, requestOptions);
+            return this.Request<StripeList<AccountInferredBalance>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(parentId)}/inferred_balances", options, requestOptions);
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<StripeList<AccountInferredBalance>> ListAsync(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<AccountInferredBalance>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{parentId}/inferred_balances", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<AccountInferredBalance>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(parentId)}/inferred_balances", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual IEnumerable<AccountInferredBalance> ListAutoPaging(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<AccountInferredBalance>($"/v1/financial_connections/accounts/{parentId}/inferred_balances", options, requestOptions);
+            return this.ListRequestAutoPaging<AccountInferredBalance>($"/v1/financial_connections/accounts/{WebUtility.UrlEncode(parentId)}/inferred_balances", options, requestOptions);
         }
 
         /// <summary>
@@ -51,7 +52,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual IAsyncEnumerable<AccountInferredBalance> ListAutoPagingAsync(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<AccountInferredBalance>($"/v1/financial_connections/accounts/{parentId}/inferred_balances", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<AccountInferredBalance>($"/v1/financial_connections/accounts/{WebUtility.UrlEncode(parentId)}/inferred_balances", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -72,7 +73,7 @@ namespace Stripe
         /// </summary>
         public virtual File Get(string id, FileGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<File>(HttpMethod.Get, $"/v1/files/{id}", options, requestOptions);
+            return this.Request<File>(HttpMethod.Get, $"/v1/files/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<File> GetAsync(string id, FileGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<File>(HttpMethod.Get, $"/v1/files/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<File>(HttpMethod.Get, $"/v1/files/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

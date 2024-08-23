@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Stripe
         /// </summary>
         public virtual QuotePhase Get(string id, QuotePhaseGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<QuotePhase>(HttpMethod.Get, $"/v1/quote_phases/{id}", options, requestOptions);
+            return this.Request<QuotePhase>(HttpMethod.Get, $"/v1/quote_phases/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<QuotePhase> GetAsync(string id, QuotePhaseGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<QuotePhase>(HttpMethod.Get, $"/v1/quote_phases/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<QuotePhase>(HttpMethod.Get, $"/v1/quote_phases/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<LineItem> ListLineItems(string id, QuotePhaseListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/quote_phases/{id}/line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/quote_phases/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, QuotePhaseListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/quote_phases/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/quote_phases/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -98,7 +99,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, QuotePhaseListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/quote_phases/{id}/line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/quote_phases/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -108,7 +109,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, QuotePhaseListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quote_phases/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quote_phases/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
     }
 }

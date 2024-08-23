@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe
         /// </summary>
         public virtual TaxCode Get(string id, TaxCodeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TaxCode>(HttpMethod.Get, $"/v1/tax_codes/{id}", options, requestOptions);
+            return this.Request<TaxCode>(HttpMethod.Get, $"/v1/tax_codes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<TaxCode> GetAsync(string id, TaxCodeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TaxCode>(HttpMethod.Get, $"/v1/tax_codes/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxCode>(HttpMethod.Get, $"/v1/tax_codes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

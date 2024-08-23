@@ -3,6 +3,7 @@ namespace Stripe.Radar
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -48,7 +49,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueListItem Delete(string id, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueListItem>(HttpMethod.Delete, $"/v1/radar/value_list_items/{id}", options, requestOptions);
+            return this.Request<ValueListItem>(HttpMethod.Delete, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueListItem> DeleteAsync(string id, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueListItem>(HttpMethod.Delete, $"/v1/radar/value_list_items/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueListItem>(HttpMethod.Delete, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueListItem Get(string id, ValueListItemGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueListItem>(HttpMethod.Get, $"/v1/radar/value_list_items/{id}", options, requestOptions);
+            return this.Request<ValueListItem>(HttpMethod.Get, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -72,7 +73,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueListItem> GetAsync(string id, ValueListItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueListItem>(HttpMethod.Get, $"/v1/radar/value_list_items/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueListItem>(HttpMethod.Get, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

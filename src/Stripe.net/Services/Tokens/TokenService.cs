@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -53,7 +54,7 @@ namespace Stripe
         /// </summary>
         public virtual Token Get(string id, TokenGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Token>(HttpMethod.Get, $"/v1/tokens/{id}", options, requestOptions);
+            return this.Request<Token>(HttpMethod.Get, $"/v1/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -61,7 +62,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Token> GetAsync(string id, TokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/tokens/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

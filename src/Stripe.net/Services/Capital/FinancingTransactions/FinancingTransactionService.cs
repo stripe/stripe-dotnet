@@ -3,6 +3,7 @@ namespace Stripe.Capital
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual FinancingTransaction Get(string id, FinancingTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancingTransaction>(HttpMethod.Get, $"/v1/capital/financing_transactions/{id}", options, requestOptions);
+            return this.Request<FinancingTransaction>(HttpMethod.Get, $"/v1/capital/financing_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<FinancingTransaction> GetAsync(string id, FinancingTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancingTransaction>(HttpMethod.Get, $"/v1/capital/financing_transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancingTransaction>(HttpMethod.Get, $"/v1/capital/financing_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

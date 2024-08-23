@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentLink Get(string id, PaymentLinkGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentLink>(HttpMethod.Get, $"/v1/payment_links/{id}", options, requestOptions);
+            return this.Request<PaymentLink>(HttpMethod.Get, $"/v1/payment_links/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentLink> GetAsync(string id, PaymentLinkGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentLink>(HttpMethod.Get, $"/v1/payment_links/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentLink>(HttpMethod.Get, $"/v1/payment_links/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<LineItem> ListLineItems(string id, PaymentLinkListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/payment_links/{id}/line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/payment_links/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -106,7 +107,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, PaymentLinkListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/payment_links/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/payment_links/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, PaymentLinkListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/payment_links/{id}/line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/payment_links/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, PaymentLinkListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/payment_links/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/payment_links/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -134,7 +135,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentLink Update(string id, PaymentLinkUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentLink>(HttpMethod.Post, $"/v1/payment_links/{id}", options, requestOptions);
+            return this.Request<PaymentLink>(HttpMethod.Post, $"/v1/payment_links/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -142,7 +143,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentLink> UpdateAsync(string id, PaymentLinkUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentLink>(HttpMethod.Post, $"/v1/payment_links/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentLink>(HttpMethod.Post, $"/v1/payment_links/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

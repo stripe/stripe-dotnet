@@ -3,6 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Token Get(string id, TokenGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{id}", options, requestOptions);
+            return this.Request<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +38,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Token> GetAsync(string id, TokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Token Update(string id, TokenUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{id}", options, requestOptions);
+            return this.Request<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -87,7 +88,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Token> UpdateAsync(string id, TokenUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

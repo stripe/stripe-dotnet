@@ -3,6 +3,7 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Cardholder Get(string id, CardholderGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Cardholder>(HttpMethod.Get, $"/v1/issuing/cardholders/{id}", options, requestOptions);
+            return this.Request<Cardholder>(HttpMethod.Get, $"/v1/issuing/cardholders/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Cardholder> GetAsync(string id, CardholderGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Cardholder>(HttpMethod.Get, $"/v1/issuing/cardholders/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Cardholder>(HttpMethod.Get, $"/v1/issuing/cardholders/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -103,7 +104,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Cardholder Update(string id, CardholderUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Cardholder>(HttpMethod.Post, $"/v1/issuing/cardholders/{id}", options, requestOptions);
+            return this.Request<Cardholder>(HttpMethod.Post, $"/v1/issuing/cardholders/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -112,7 +113,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Cardholder> UpdateAsync(string id, CardholderUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Cardholder>(HttpMethod.Post, $"/v1/issuing/cardholders/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Cardholder>(HttpMethod.Post, $"/v1/issuing/cardholders/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -40,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual Charge Capture(string id, ChargeCaptureOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Charge>(HttpMethod.Post, $"/v1/charges/{id}/capture", options, requestOptions);
+            return this.Request<Charge>(HttpMethod.Post, $"/v1/charges/{WebUtility.UrlEncode(id)}/capture", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Charge> CaptureAsync(string id, ChargeCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Charge>(HttpMethod.Post, $"/v1/charges/{id}/capture", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Charge>(HttpMethod.Post, $"/v1/charges/{WebUtility.UrlEncode(id)}/capture", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace Stripe
         /// </summary>
         public virtual Charge Get(string id, ChargeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Charge>(HttpMethod.Get, $"/v1/charges/{id}", options, requestOptions);
+            return this.Request<Charge>(HttpMethod.Get, $"/v1/charges/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -101,7 +102,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Charge> GetAsync(string id, ChargeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Charge>(HttpMethod.Get, $"/v1/charges/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Charge>(HttpMethod.Get, $"/v1/charges/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -198,7 +199,7 @@ namespace Stripe
         /// </summary>
         public virtual Charge Update(string id, ChargeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Charge>(HttpMethod.Post, $"/v1/charges/{id}", options, requestOptions);
+            return this.Request<Charge>(HttpMethod.Post, $"/v1/charges/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -207,7 +208,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Charge> UpdateAsync(string id, ChargeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Charge>(HttpMethod.Post, $"/v1/charges/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Charge>(HttpMethod.Post, $"/v1/charges/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

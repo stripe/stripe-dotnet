@@ -3,6 +3,7 @@ namespace Stripe.Capital
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -28,7 +29,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual FinancingOffer Get(string id, FinancingOfferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancingOffer>(HttpMethod.Get, $"/v1/capital/financing_offers/{id}", options, requestOptions);
+            return this.Request<FinancingOffer>(HttpMethod.Get, $"/v1/capital/financing_offers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<FinancingOffer> GetAsync(string id, FinancingOfferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancingOffer>(HttpMethod.Get, $"/v1/capital/financing_offers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancingOffer>(HttpMethod.Get, $"/v1/capital/financing_offers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +82,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual FinancingOffer MarkDelivered(string id, FinancingOfferMarkDeliveredOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancingOffer>(HttpMethod.Post, $"/v1/capital/financing_offers/{id}/mark_delivered", options, requestOptions);
+            return this.Request<FinancingOffer>(HttpMethod.Post, $"/v1/capital/financing_offers/{WebUtility.UrlEncode(id)}/mark_delivered", options, requestOptions);
         }
 
         /// <summary>
@@ -90,7 +91,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<FinancingOffer> MarkDeliveredAsync(string id, FinancingOfferMarkDeliveredOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancingOffer>(HttpMethod.Post, $"/v1/capital/financing_offers/{id}/mark_delivered", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancingOffer>(HttpMethod.Post, $"/v1/capital/financing_offers/{WebUtility.UrlEncode(id)}/mark_delivered", options, requestOptions, cancellationToken);
         }
     }
 }

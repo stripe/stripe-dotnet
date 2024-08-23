@@ -3,6 +3,7 @@ namespace Stripe.GiftCards
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Transaction Cancel(string id, TransactionCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{id}/cancel", options, requestOptions);
+            return this.Request<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Task<Transaction> CancelAsync(string id, TransactionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +47,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Transaction Confirm(string id, TransactionConfirmOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{id}/confirm", options, requestOptions);
+            return this.Request<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Task<Transaction> ConfirmAsync(string id, TransactionConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{id}/confirm", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -78,7 +79,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Transaction Get(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Transaction>(HttpMethod.Get, $"/v1/gift_cards/transactions/{id}", options, requestOptions);
+            return this.Request<Transaction>(HttpMethod.Get, $"/v1/gift_cards/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Task<Transaction> GetAsync(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transaction>(HttpMethod.Get, $"/v1/gift_cards/transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transaction>(HttpMethod.Get, $"/v1/gift_cards/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Transaction Update(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{id}", options, requestOptions);
+            return this.Request<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -134,7 +135,7 @@ namespace Stripe.GiftCards
         /// </summary>
         public virtual Task<Transaction> UpdateAsync(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transaction>(HttpMethod.Post, $"/v1/gift_cards/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

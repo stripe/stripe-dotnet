@@ -3,6 +3,7 @@ namespace Stripe.Tax
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -46,7 +47,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Registration Get(string id, RegistrationGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Registration>(HttpMethod.Get, $"/v1/tax/registrations/{id}", options, requestOptions);
+            return this.Request<Registration>(HttpMethod.Get, $"/v1/tax/registrations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +55,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Registration> GetAsync(string id, RegistrationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Registration>(HttpMethod.Get, $"/v1/tax/registrations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Registration>(HttpMethod.Get, $"/v1/tax/registrations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -97,7 +98,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Registration Update(string id, RegistrationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Registration>(HttpMethod.Post, $"/v1/tax/registrations/{id}", options, requestOptions);
+            return this.Request<Registration>(HttpMethod.Post, $"/v1/tax/registrations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -108,7 +109,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Registration> UpdateAsync(string id, RegistrationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Registration>(HttpMethod.Post, $"/v1/tax/registrations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Registration>(HttpMethod.Post, $"/v1/tax/registrations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }
