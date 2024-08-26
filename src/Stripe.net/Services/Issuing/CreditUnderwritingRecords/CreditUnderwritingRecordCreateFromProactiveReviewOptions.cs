@@ -37,6 +37,15 @@ namespace Stripe.Issuing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// File containing regulatory reporting data for the decision. Required if you are subject
+        /// to this <a
+        /// href="https://docs.stripe.com/issuing/credit/report-required-regulatory-data-for-credit-decisions">reporting
+        /// requirement</a>.
+        /// </summary>
+        [JsonProperty("regulatory_reporting_file")]
+        public string RegulatoryReportingFile { get; set; }
+
+        /// <summary>
         /// If an exception to the usual underwriting criteria was made for this decision, details
         /// about the exception must be provided. Exceptions should only be granted in rare
         /// circumstances, in consultation with Stripe Compliance.
