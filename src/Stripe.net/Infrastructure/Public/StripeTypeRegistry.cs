@@ -29,6 +29,7 @@ namespace Stripe
                 { "billing.alert", typeof(Billing.Alert) },
                 { "billing.alert_triggered", typeof(Billing.AlertTriggered) },
                 { "billing.meter", typeof(Billing.Meter) },
+                { "billing.meter_error_report", typeof(Billing.MeterErrorReport) },
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
                 { "billing.meter_event_summary", typeof(Billing.MeterEventSummary) },
