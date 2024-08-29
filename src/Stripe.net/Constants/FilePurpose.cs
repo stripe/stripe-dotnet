@@ -23,6 +23,8 @@ namespace Stripe
 
         public const string IdentityDocumentDownloadable = "identity_document_downloadable";
 
+        public const string IssuingRegulatoryReporting = "issuing_regulatory_reporting";
+
         public const string PciDocument = "pci_document";
 
         public const string Selfie = "selfie";
