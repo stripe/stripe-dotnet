@@ -1,5 +1,10 @@
 # Changelog
 
+## 45.10.0 - 2024-08-29
+* [#2957](https://github.com/stripe/stripe-dotnet/pull/2957) Generate SDK for OpenAPI spec version 1230
+  * Add support for `StatusDetails` on `TestHelpersTestClock`
+  * Added new const `IssuingRegulatoryReporting` with value `issuing_regulatory_reporting` to be used as a FilePurpose
+
 ## 45.10.0-beta.1 - 2024-08-23
 * [#2954](https://github.com/stripe/stripe-dotnet/pull/2954) Update generated code for beta
   * Add support for `Email` and `Phone` on `CheckoutSessionCollectedInformation`
