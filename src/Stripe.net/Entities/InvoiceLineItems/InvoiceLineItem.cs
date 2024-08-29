@@ -6,6 +6,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Invoice Line Items represent the individual lines within an <a
+    /// href="https://stripe.com/docs/api/invoices">invoice</a> and only exist within the
+    /// context of an invoice.
+    ///
+    /// Each line item is backed by either an <a
+    /// href="https://stripe.com/docs/api/invoiceitems">invoice item</a> or a <a
+    /// href="https://stripe.com/docs/api/subscription_items">subscription item</a>.
+    /// </summary>
     public class InvoiceLineItem : StripeEntity<InvoiceLineItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
