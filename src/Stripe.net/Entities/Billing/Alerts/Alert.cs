@@ -24,6 +24,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// Defines the type of the alert.
+        /// One of: <c>spend_threshold</c>, or <c>usage_threshold</c>.
         /// </summary>
         [JsonProperty("alert_type")]
         public string AlertType { get; set; }
@@ -41,6 +42,14 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Encapsulates configuration of the spend to monitoring spend on a <a
+        /// href="https://stripe.com/docs/api/subscriptions/object">Subscription</a> or <a
+        /// href="https://stripe.com/docs/api/subscription_items/object">Subscription item</a>.
+        /// </summary>
+        [JsonProperty("spend_threshold_config")]
+        public AlertSpendThresholdConfig SpendThresholdConfig { get; set; }
 
         /// <summary>
         /// Status of the alert. This can be active, inactive or archived.
