@@ -301,7 +301,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// This parameter applies to <c>ui_mode: embedded</c>. Learn more about the <a
-        /// href="https://stripe.com/docs/payments/checkout/custom-redirect-behavior">redirect
+        /// href="https://stripe.com/docs/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
         /// </summary>
