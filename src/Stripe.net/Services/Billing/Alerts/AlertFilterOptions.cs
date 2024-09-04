@@ -10,5 +10,17 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
+
+        /// <summary>
+        /// Limit the scope of this rated usage alert to this subscription.
+        /// </summary>
+        [JsonProperty("subscription")]
+        public string Subscription { get; set; }
+
+        /// <summary>
+        /// Limit the scope of this rated usage alert to this subscription item.
+        /// </summary>
+        [JsonProperty("subscription_item")]
+        public string SubscriptionItem { get; set; }
     }
 }
