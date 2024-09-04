@@ -7,7 +7,6 @@ namespace Stripe.Billing
     {
         /// <summary>
         /// Filter results to only include this type of alert.
-        /// One of: <c>spend_threshold</c>, or <c>usage_threshold</c>.
         /// </summary>
         [JsonProperty("alert_type")]
         public string AlertType { get; set; }
