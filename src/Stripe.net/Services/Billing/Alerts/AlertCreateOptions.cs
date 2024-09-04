@@ -7,7 +7,6 @@ namespace Stripe.Billing
     {
         /// <summary>
         /// The type of alert to create.
-        /// One of: <c>spend_threshold</c>, or <c>usage_threshold</c>.
         /// </summary>
         [JsonProperty("alert_type")]
         public string AlertType { get; set; }
@@ -17,12 +16,6 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("filter")]
         public AlertFilterOptions Filter { get; set; }
-
-        /// <summary>
-        /// The configuration of the spend threshold.
-        /// </summary>
-        [JsonProperty("spend_threshold_config")]
-        public AlertSpendThresholdConfigOptions SpendThresholdConfig { get; set; }
 
         /// <summary>
         /// The title of the alert.
