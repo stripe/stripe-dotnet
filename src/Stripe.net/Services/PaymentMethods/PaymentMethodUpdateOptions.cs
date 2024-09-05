@@ -53,13 +53,6 @@ namespace Stripe
         public PaymentMethodPaytoOptions Payto { get; set; }
 
         /// <summary>
-        /// If this is a <c>rechnung</c> PaymentMethod, this hash contains details about the
-        /// Rechnung payment method.
-        /// </summary>
-        [JsonProperty("rechnung")]
-        public PaymentMethodRechnungOptions Rechnung { get; set; }
-
-        /// <summary>
         /// If this is an <c>us_bank_account</c> PaymentMethod, this hash contains details about the
         /// US bank account payment method.
         /// </summary>

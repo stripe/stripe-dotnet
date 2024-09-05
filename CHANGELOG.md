@@ -1,8 +1,17 @@
 # Changelog
 
+## 45.10.0 - 2024-08-29
+* [#2957](https://github.com/stripe/stripe-dotnet/pull/2957) Generate SDK for OpenAPI spec version 1230
+  * Add support for `StatusDetails` on `TestHelpersTestClock`
+  * Added new const `IssuingRegulatoryReporting` with value `issuing_regulatory_reporting` to be used as a FilePurpose
+
 ## 45.10.0-beta.1 - 2024-08-23
 * [#2954](https://github.com/stripe/stripe-dotnet/pull/2954) Update generated code for beta
   * Add support for `Email` and `Phone` on `CheckoutSessionCollectedInformation`
+
+## 45.9.0 - 2024-08-23
+* [#2955](https://github.com/stripe/stripe-dotnet/pull/2955) urlencode ids in url paths
+  - id strings passed to service methods (like `PaymentMethodService.Get("...")`) are now correctly URL Encoded. This is an important update if you pass user inupt into any of those methods
 
 ## 45.9.0-beta.2 - 2024-08-22
 * [#2953](https://github.com/stripe/stripe-dotnet/pull/2953) Update generated code for beta

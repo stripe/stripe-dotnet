@@ -89,6 +89,11 @@ namespace Stripe
         public const string BillingAlertTriggered = "billing.alert.triggered";
 
         /// <summary>
+        /// Notifies of errors on a billing meter.
+        /// </summary>
+        public const string BillingMeterErrorReportTriggered = "billing.meter_error_report.triggered";
+
+        /// <summary>
         /// Occurs whenever a capability has new requirements or a new status.
         /// </summary>
         public const string CapabilityUpdated = "capability.updated";

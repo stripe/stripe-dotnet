@@ -53,7 +53,7 @@ namespace Stripe
         public List<InvoiceDiscountOptions> Discounts { get; set; }
 
         /// <summary>
-        /// List of invoice items to add or update in the upcoming invoice preview.
+        /// List of invoice items to add or update in the upcoming invoice preview (up to 250).
         /// </summary>
         [JsonProperty("invoice_items")]
         public List<InvoiceUpcomingInvoiceItemOptions> InvoiceItems { get; set; }
