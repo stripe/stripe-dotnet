@@ -1,5 +1,9 @@
 # Changelog
 
+## 45.11.0 - 2024-09-05
+* [#2952](https://github.com/stripe/stripe-dotnet/pull/2952) Update generated code
+  * Add support for `SubscriptionItem` and `Subscription` on `BillingAlertFilterOptions`
+
 ## 45.10.0 - 2024-08-29
 * [#2957](https://github.com/stripe/stripe-dotnet/pull/2957) Generate SDK for OpenAPI spec version 1230
   * Add support for `StatusDetails` on `TestHelpersTestClock`
