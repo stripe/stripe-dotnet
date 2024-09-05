@@ -1,5 +1,14 @@
 # Changelog
 
+## 45.12.0-beta.1 - 2024-09-05
+* [#2956](https://github.com/stripe/stripe-dotnet/pull/2956) Update generated code for beta
+  * Add support for new resources `Billing.MeterErrorReport` and `Terminal.ReaderCollectedData`
+  * Add support for `Get` method on resource `ReaderCollectedData`
+  * Add support for `Recipients` on `AccountSessionComponentsOptions`
+  * Add support for `BusinessName` and `TaxIds` on `CheckoutSessionCollectedInformation`
+  * Add support for `RegulatoryReportingFile` on `Issuing.CreditUnderwritingRecordCorrectOptions`, `Issuing.CreditUnderwritingRecordCreateFromProactiveReviewOptions`, `Issuing.CreditUnderwritingRecordReportDecisionOptions`, and `IssuingCreditUnderwritingRecord`
+  * Remove support for `Rechnung` on `PaymentMethodUpdateOptions`
+
 ## 45.10.0 - 2024-08-29
 * [#2957](https://github.com/stripe/stripe-dotnet/pull/2957) Generate SDK for OpenAPI spec version 1230
   * Add support for `StatusDetails` on `TestHelpersTestClock`
