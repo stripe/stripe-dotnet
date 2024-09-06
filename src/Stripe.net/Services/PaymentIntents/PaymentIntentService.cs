@@ -134,7 +134,10 @@ namespace Stripe
         /// all payment attempts must be initiated using a secret key. If any actions are required
         /// for the payment, the PaymentIntent will return to the <c>requires_confirmation</c> state
         /// after those actions are completed. Your server needs to then explicitly re-confirm the
-        /// PaymentIntent to initiate the next payment attempt.</p>.
+        /// PaymentIntent to initiate the next payment attempt. There is a variable upper limit on
+        /// how many times a PaymentIntent can be confirmed. After this limit is reached, any
+        /// further calls to this endpoint will transition the PaymentIntent to the <c>canceled</c>
+        /// state.</p>.
         /// </summary>
         public virtual PaymentIntent Confirm(string id, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null)
         {
@@ -160,7 +163,10 @@ namespace Stripe
         /// all payment attempts must be initiated using a secret key. If any actions are required
         /// for the payment, the PaymentIntent will return to the <c>requires_confirmation</c> state
         /// after those actions are completed. Your server needs to then explicitly re-confirm the
-        /// PaymentIntent to initiate the next payment attempt.</p>.
+        /// PaymentIntent to initiate the next payment attempt. There is a variable upper limit on
+        /// how many times a PaymentIntent can be confirmed. After this limit is reached, any
+        /// further calls to this endpoint will transition the PaymentIntent to the <c>canceled</c>
+        /// state.</p>.
         /// </summary>
         public virtual Task<PaymentIntent> ConfirmAsync(string id, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
