@@ -21,10 +21,17 @@ namespace Stripe
         [JsonProperty("collection_method")]
         public string CollectionMethod { get; set; }
 
+        /// <summary>
+        /// Only return subscriptions whose current_period_end falls within the given date interval.
+        /// </summary>
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodEnd { get; set; }
 
+        /// <summary>
+        /// Only return subscriptions whose current_period_start falls within the given date
+        /// interval.
+        /// </summary>
         [JsonProperty("current_period_start")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodStart { get; set; }
