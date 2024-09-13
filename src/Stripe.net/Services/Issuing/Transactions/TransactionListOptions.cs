@@ -18,12 +18,6 @@ namespace Stripe.Issuing
         public string Cardholder { get; set; }
 
         /// <summary>
-        /// Only return transactions that are associated with the given settlement.
-        /// </summary>
-        [JsonProperty("settlement")]
-        public string Settlement { get; set; }
-
-        /// <summary>
         /// Only return transactions that have the given type. One of <c>capture</c> or
         /// <c>refund</c>.
         /// One of: <c>capture</c>, or <c>refund</c>.

@@ -10,11 +10,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("enabled")]
         public bool Enabled { get; set; }
-
-        /// <summary>
-        /// One of: <c>if_supported</c>, or <c>never</c>.
-        /// </summary>
-        [JsonProperty("required")]
-        public string Required { get; set; }
     }
 }

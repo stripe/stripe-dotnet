@@ -1,11 +1,24 @@
 # Changelog
 
+## 45.13.0 - 2024-09-13
+* [#2962](https://github.com/stripe/stripe-dotnet/pull/2962) Update generated code
+  * Add support for new resource `InvoiceRenderingTemplate`
+  * Add support for `Archive`, `Get`, `List`, and `Unarchive` methods on resource `InvoiceRenderingTemplate`
+  * Add support for `Required` on `CheckoutSessionTaxIdCollectionOptions`, `CheckoutSessionTaxIdCollection`, `PaymentLinkTaxIdCollectionOptions`, and `PaymentLinkTaxIdCollection`
+  * Add support for `Template` on `CustomerInvoiceSettingsRenderingOptionsOptions`, `CustomerInvoiceSettingsRenderingOptions`, `InvoiceRenderingOptions`, and `InvoiceRendering`
+  * Add support for `TemplateVersion` on `InvoiceRenderingOptions` and `InvoiceRendering`
+
 ## 45.13.0-beta.1 - 2024-09-13
 * [#2961](https://github.com/stripe/stripe-dotnet/pull/2961) Update generated code for beta
   * Add support for new resources `Issuing.DisputeSettlementDetail` and `Issuing.Settlement`
   * Add support for `Get` and `List` methods on resource `DisputeSettlementDetail`
   * Remove support for `List` method on resource `QuotePhase`
   * Add support for `Settlement` on `Issuing.TransactionListOptions` and `IssuingTransaction`
+
+## 45.12.0 - 2024-09-13
+* [#2965](https://github.com/stripe/stripe-dotnet/pull/2965) Stop using deprecated versions of actions
+* [#2968](https://github.com/stripe/stripe-dotnet/pull/2968) Update upload artifact version in GH actions
+* [#2963](https://github.com/stripe/stripe-dotnet/pull/2963) Add .editorconfig file with minimal change to align with StypeCopAnalyzer
 
 ## 45.12.0-beta.1 - 2024-09-05
 * [#2956](https://github.com/stripe/stripe-dotnet/pull/2956) Update generated code for beta

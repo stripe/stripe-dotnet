@@ -261,27 +261,6 @@ namespace Stripe.Issuing
         [JsonProperty("purchase_details")]
         public TransactionPurchaseDetails PurchaseDetails { get; set; }
 
-        #region Expandable Settlement
-
-        [JsonIgnore]
-        public string SettlementId
-        {
-            get => this.InternalSettlement?.Id;
-            set => this.InternalSettlement = SetExpandableFieldId(value, this.InternalSettlement);
-        }
-
-        [JsonIgnore]
-        public Settlement Settlement
-        {
-            get => this.InternalSettlement?.ExpandedObject;
-            set => this.InternalSettlement = SetExpandableFieldObject(value, this.InternalSettlement);
-        }
-
-        [JsonProperty("settlement")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Settlement>))]
-        internal ExpandableField<Settlement> InternalSettlement { get; set; }
-        #endregion
-
         #region Expandable Token
 
         /// <summary>
