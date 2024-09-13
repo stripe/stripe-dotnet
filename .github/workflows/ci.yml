@@ -93,7 +93,7 @@ jobs:
       - name: Pack
         run: dotnet pack src/Stripe.net -c Release --no-build --output nuget
       - name: 'Upload Artifact'
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: nuget
           path: nuget/
