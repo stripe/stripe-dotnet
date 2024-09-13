@@ -19,7 +19,7 @@ namespace Stripe.Terminal
         public string ConfigurationOverrides { get; set; }
 
         /// <summary>
-        /// A name for the location. Maximum length is 1000 characters.
+        /// A name for the location.
         /// </summary>
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
