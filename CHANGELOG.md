@@ -1,5 +1,12 @@
 # Changelog
 
+## 45.13.0-beta.1 - 2024-09-13
+* [#2961](https://github.com/stripe/stripe-dotnet/pull/2961) Update generated code for beta
+  * Add support for new resources `Issuing.DisputeSettlementDetail` and `Issuing.Settlement`
+  * Add support for `Get` and `List` methods on resource `DisputeSettlementDetail`
+  * Remove support for `List` method on resource `QuotePhase`
+  * Add support for `Settlement` on `Issuing.TransactionListOptions` and `IssuingTransaction`
+
 ## 45.12.0-beta.1 - 2024-09-05
 * [#2956](https://github.com/stripe/stripe-dotnet/pull/2956) Update generated code for beta
   * Add support for new resources `Billing.MeterErrorReport` and `Terminal.ReaderCollectedData`
