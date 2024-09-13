@@ -15,5 +15,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount_tax_display")]
         public string AmountTaxDisplay { get; set; }
+
+        /// <summary>
+        /// ID of the invoice rendering template to use for future invoices.
+        /// </summary>
+        [JsonProperty("template")]
+        public string Template { get; set; }
     }
 }

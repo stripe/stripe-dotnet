@@ -64,7 +64,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// The discounts applied to the quote. You can only set up to one discount.
+        /// The discounts applied to the quote.
         /// </summary>
         [JsonProperty("discounts")]
         public List<QuoteDiscountOptions> Discounts { get; set; }
