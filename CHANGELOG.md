@@ -1,5 +1,10 @@
 # Changelog
 
+## 45.12.0 - 2024-09-13
+* [#2965](https://github.com/stripe/stripe-dotnet/pull/2965) Stop using deprecated versions of actions
+* [#2968](https://github.com/stripe/stripe-dotnet/pull/2968) Update upload artifact version in GH actions
+* [#2963](https://github.com/stripe/stripe-dotnet/pull/2963) Add .editorconfig file with minimal change to align with StypeCopAnalyzer
+
 ## 45.11.0 - 2024-09-05
 * [#2952](https://github.com/stripe/stripe-dotnet/pull/2952) Update generated code
   * Add support for `SubscriptionItem` and `Subscription` on `BillingAlertFilterOptions`
