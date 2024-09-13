@@ -99,6 +99,7 @@ namespace Stripe
                 { "identity.verification_session", typeof(Identity.VerificationSession) },
                 { "invoice", typeof(Invoice) },
                 { "invoice_payment", typeof(InvoicePayment) },
+                { "invoice_rendering_template", typeof(InvoiceRenderingTemplate) },
                 { "invoiceitem", typeof(InvoiceItem) },
                 { "issuing.authorization", typeof(Issuing.Authorization) },
                 { "issuing.card", typeof(Issuing.Card) },
@@ -108,8 +109,13 @@ namespace Stripe
                     Issuing.CreditUnderwritingRecord)
                 },
                 { "issuing.dispute", typeof(Issuing.Dispute) },
+                {
+                    "issuing.dispute_settlement_detail", typeof(
+                    Issuing.DisputeSettlementDetail)
+                },
                 { "issuing.personalization_design", typeof(Issuing.PersonalizationDesign) },
                 { "issuing.physical_bundle", typeof(Issuing.PhysicalBundle) },
+                { "issuing.settlement", typeof(Issuing.Settlement) },
                 { "issuing.token", typeof(Issuing.Token) },
                 { "issuing.transaction", typeof(Issuing.Transaction) },
                 { "item", typeof(LineItem) },

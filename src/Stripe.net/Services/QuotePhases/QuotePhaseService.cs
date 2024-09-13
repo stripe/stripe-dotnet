@@ -9,7 +9,6 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public class QuotePhaseService : Service<QuotePhase>,
-        IListable<QuotePhase, QuotePhaseListOptions>,
         IRetrievable<QuotePhase, QuotePhaseGetOptions>
     {
         public QuotePhaseService()
@@ -38,38 +37,6 @@ namespace Stripe
         public virtual Task<QuotePhase> GetAsync(string id, QuotePhaseGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<QuotePhase>(HttpMethod.Get, $"/v1/quote_phases/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Returns a list of quote phases.</p>.
-        /// </summary>
-        public virtual StripeList<QuotePhase> List(QuotePhaseListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<QuotePhase>>(HttpMethod.Get, $"/v1/quote_phases", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Returns a list of quote phases.</p>.
-        /// </summary>
-        public virtual Task<StripeList<QuotePhase>> ListAsync(QuotePhaseListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeList<QuotePhase>>(HttpMethod.Get, $"/v1/quote_phases", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Returns a list of quote phases.</p>.
-        /// </summary>
-        public virtual IEnumerable<QuotePhase> ListAutoPaging(QuotePhaseListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<QuotePhase>($"/v1/quote_phases", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Returns a list of quote phases.</p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<QuotePhase> ListAutoPagingAsync(QuotePhaseListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<QuotePhase>($"/v1/quote_phases", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
