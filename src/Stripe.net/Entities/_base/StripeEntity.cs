@@ -13,6 +13,13 @@ namespace Stripe
     [JsonConverter(typeof(StripeEntityConverter))]
     public abstract class StripeEntity : IStripeEntity
     {
+        private readonly IJsonSerializer jsonSerializer;
+
+        protected StripeEntity(IJsonSerializer jsonSerializer)
+        {
+            this.jsonSerializer = jsonSerializer;
+        }
+
         /// <summary>
         /// Gets the raw <see cref="JObject">JObject</see> exposed by the Newtonsoft.Json library.
         /// This can be used to access properties that are not directly exposed by Stripe's .NET
@@ -75,10 +82,7 @@ namespace Stripe
         /// <returns>An indented JSON string represensation of the object.</returns>
         public string ToJson()
         {
-            return JsonUtils.SerializeObject(
-                this,
-                Formatting.Indented,
-                StripeConfiguration.SerializerSettings);
+            return this.jsonSerializer.SerializeObject(this);
         }
 
         /// <summary>
@@ -176,6 +180,11 @@ namespace Stripe
     public abstract class StripeEntity<T> : StripeEntity
         where T : StripeEntity<T>
     {
+        protected StripeEntity(IJsonSerializer jsonSerializer)
+            : base(jsonSerializer)
+        {
+        }
+
         /// <summary>Deserializes the JSON to a Stripe object type.</summary>
         /// <param name="value">The object to deserialize.</param>
         /// <returns>The deserialized Stripe object from the JSON string.</returns>

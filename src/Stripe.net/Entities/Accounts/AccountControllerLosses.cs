@@ -1,7 +1,10 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
+#if USE_SYSTEM_TEXT_JSON
+    using System.Text.Json.Serialization;
+#else
     using Newtonsoft.Json;
+#endif
 
     public class AccountControllerLosses : StripeEntity<AccountControllerLosses>
     {
@@ -10,7 +13,11 @@ namespace Stripe
         /// payments.
         /// One of: <c>application</c>, or <c>stripe</c>.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("payments")]
+#else
         [JsonProperty("payments")]
+#endif
         public string Payments { get; set; }
     }
 }

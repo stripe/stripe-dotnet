@@ -1,9 +1,12 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+#if USE_SYSTEM_TEXT_JSON
+    using System.Text.Json.Serialization;
+#else
     using Newtonsoft.Json;
+#endif
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -29,19 +32,31 @@ namespace Stripe
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("id")]
+#else
         [JsonProperty("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("object")]
+#else
         [JsonProperty("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Business information about the account.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("business_profile")]
+#else
         [JsonProperty("business_profile")]
+#endif
         public AccountBusinessProfile BusinessProfile { get; set; }
 
         /// <summary>
@@ -54,35 +69,64 @@ namespace Stripe
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("business_type")]
+#else
         [JsonProperty("business_type")]
+#endif
         public string BusinessType { get; set; }
 
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("capabilities")]
+#else
         [JsonProperty("capabilities")]
+#endif
         public AccountCapabilities Capabilities { get; set; }
 
         /// <summary>
         /// Whether the account can create live charges.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("charges_enabled")]
+#else
         [JsonProperty("charges_enabled")]
+#endif
         public bool ChargesEnabled { get; set; }
 
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("company")]
+#else
         [JsonProperty("company")]
+#endif
         public AccountCompany Company { get; set; }
 
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("controller")]
+#else
         [JsonProperty("controller")]
+#endif
         public AccountController Controller { get; set; }
 
         /// <summary>
         /// The account's country.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("country")]
+#else
         [JsonProperty("country")]
+#endif
         public string Country { get; set; }
 
         /// <summary>
         /// Time at which the account was connected. Measured in seconds since the Unix epoch.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("created")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#else
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -90,13 +134,21 @@ namespace Stripe
         /// must be a currency that <a href="https://stripe.com/docs/payouts">Stripe supports in the
         /// account's country</a>.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("default_currency")]
+#else
         [JsonProperty("default_currency")]
+#endif
         public string DefaultCurrency { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("deleted")]
+#else
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+#endif
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -106,14 +158,22 @@ namespace Stripe
         /// href="https://stripe.com/connect/onboarding">an onboarding flow</a> to finish submitting
         /// account details.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("details_submitted")]
+#else
         [JsonProperty("details_submitted")]
+#endif
         public bool DetailsSubmitted { get; set; }
 
         /// <summary>
         /// An email address associated with the account. It's not used for authentication and
         /// Stripe doesn't market to this field without explicit approval from the platform.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("email")]
+#else
         [JsonProperty("email")]
+#endif
         public string Email { get; set; }
 
         /// <summary>
@@ -121,10 +181,18 @@ namespace Stripe
         /// External accounts are only returned for requests where <c>controller[is_controller]</c>
         /// is true.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("external_accounts")]
+#else
         [JsonProperty("external_accounts")]
+#endif
         public StripeList<IExternalAccount> ExternalAccounts { get; set; }
 
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("future_requirements")]
+#else
         [JsonProperty("future_requirements")]
+#endif
         public AccountFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
@@ -142,7 +210,11 @@ namespace Stripe
         /// href="https://stripe.com/connect/handling-api-verification#person-information">handling
         /// identity verification with the API</a>.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("individual")]
+#else
         [JsonProperty("individual")]
+#endif
         public Person Individual { get; set; }
 
         /// <summary>
@@ -150,25 +222,45 @@ namespace Stripe
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("metadata")]
+#else
         [JsonProperty("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Whether Stripe can send payouts to this account.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("payouts_enabled")]
+#else
         [JsonProperty("payouts_enabled")]
+#endif
         public bool PayoutsEnabled { get; set; }
 
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("requirements")]
+#else
         [JsonProperty("requirements")]
+#endif
         public AccountRequirements Requirements { get; set; }
 
         /// <summary>
         /// Options for customizing how the account functions within Stripe.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("settings")]
+#else
         [JsonProperty("settings")]
+#endif
         public AccountSettings Settings { get; set; }
 
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("tos_acceptance")]
+#else
         [JsonProperty("tos_acceptance")]
+#endif
         public AccountTosAcceptance TosAcceptance { get; set; }
 
         /// <summary>
@@ -176,7 +268,11 @@ namespace Stripe
         /// <c>none</c>.
         /// One of: <c>custom</c>, <c>express</c>, <c>none</c>, or <c>standard</c>.
         /// </summary>
+#if USE_SYSTEM_TEXT_JSON
+        [JsonPropertyName("type")]
+#else
         [JsonProperty("type")]
+#endif
         public string Type { get; set; }
     }
 }
