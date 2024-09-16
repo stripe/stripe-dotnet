@@ -6,6 +6,12 @@ namespace Stripe
     public class ChargePaymentMethodDetailsKlarna : StripeEntity<ChargePaymentMethodDetailsKlarna>
     {
         /// <summary>
+        /// The payer details for this transaction.
+        /// </summary>
+        [JsonProperty("payer_details")]
+        public ChargePaymentMethodDetailsKlarnaPayerDetails PayerDetails { get; set; }
+
+        /// <summary>
         /// The Klarna payment method used for this transaction. Can be one of <c>pay_later</c>,
         /// <c>pay_now</c>, <c>pay_with_financing</c>, or <c>pay_in_installments</c>.
         /// </summary>
