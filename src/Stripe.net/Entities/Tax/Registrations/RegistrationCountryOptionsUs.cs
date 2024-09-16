@@ -18,6 +18,9 @@ namespace Stripe.Tax
         [JsonProperty("state")]
         public string State { get; set; }
 
+        [JsonProperty("state_sales_tax")]
+        public RegistrationCountryOptionsUsStateSalesTax StateSalesTax { get; set; }
+
         /// <summary>
         /// Type of registration in the US.
         /// One of: <c>local_amusement_tax</c>, <c>local_lease_tax</c>,

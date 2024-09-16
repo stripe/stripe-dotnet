@@ -687,6 +687,16 @@ namespace Stripe
         public const string IssuingCardholderUpdated = "issuing_cardholder.updated";
 
         /// <summary>
+        /// Emitted when the DisputeSettlementDetail object is created.
+        /// </summary>
+        public const string IssuingDisputeSettlementDetailCreated = "issuing_dispute_settlement_detail.created";
+
+        /// <summary>
+        /// Emitted when the DisputeSettlementDetail object is updated.
+        /// </summary>
+        public const string IssuingDisputeSettlementDetailUpdated = "issuing_dispute_settlement_detail.updated";
+
+        /// <summary>
         /// Occurs whenever a dispute is won, lost or expired.
         /// </summary>
         public const string IssuingDisputeClosed = "issuing_dispute.closed";
@@ -737,6 +747,16 @@ namespace Stripe
         /// Occurs whenever a personalization design is updated.
         /// </summary>
         public const string IssuingPersonalizationDesignUpdated = "issuing_personalization_design.updated";
+
+        /// <summary>
+        /// Occurs whenever an issuing settlement is created.
+        /// </summary>
+        public const string IssuingSettlementCreated = "issuing_settlement.created";
+
+        /// <summary>
+        /// Occurs whenever an issuing settlement is updated.
+        /// </summary>
+        public const string IssuingSettlementUpdated = "issuing_settlement.updated";
 
         /// <summary>
         /// Occurs whenever an issuing digital wallet token is created.
