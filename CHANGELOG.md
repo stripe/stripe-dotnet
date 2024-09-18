@@ -1,5 +1,11 @@
 # Changelog
 
+## 45.15.0-beta.1 - 2024-09-18
+* [#2973](https://github.com/stripe/stripe-dotnet/pull/2973) Update generated code for beta
+  * Remove support for resource `QuotePhase`
+  * Remove support for `Get` and `ListLineItems` methods on resource `QuotePhase`
+  * Add support for `SendMoney` and `TransferBalance` on `AccountSessionComponentsFinancialAccountFeaturesOptions`
+
 ## 45.14.0 - 2024-09-18
 * [#2969](https://github.com/stripe/stripe-dotnet/pull/2969) Update generated code
   * Add support for `PayerDetails` on `ChargePaymentMethodDetailsKlarna`
