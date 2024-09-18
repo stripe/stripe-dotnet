@@ -16,5 +16,17 @@ namespace Stripe
         /// </summary>
         [JsonProperty("money_movement")]
         public bool? MoneyMovement { get; set; }
+
+        /// <summary>
+        /// Whether to allow sending money.
+        /// </summary>
+        [JsonProperty("send_money")]
+        public bool? SendMoney { get; set; }
+
+        /// <summary>
+        /// Whether to allow transferring balance.
+        /// </summary>
+        [JsonProperty("transfer_balance")]
+        public bool? TransferBalance { get; set; }
     }
 }

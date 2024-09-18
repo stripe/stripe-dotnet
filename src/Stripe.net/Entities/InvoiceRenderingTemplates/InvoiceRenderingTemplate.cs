@@ -6,6 +6,11 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Invoice Rendering Templates are used to configure how invoices are rendered on surfaces
+    /// like the PDF. Invoice Rendering Templates can be created from within the Dashboard, and
+    /// they can be used over the API when creating invoices.
+    /// </summary>
     public class InvoiceRenderingTemplate : StripeEntity<InvoiceRenderingTemplate>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

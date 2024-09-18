@@ -64,8 +64,9 @@ namespace Stripe
         /// <c>verification_failed_residential_address</c>, <c>verification_failed_tax_id_match</c>,
         /// <c>verification_failed_tax_id_not_issued</c>, <c>verification_missing_directors</c>,
         /// <c>verification_missing_executives</c>, <c>verification_missing_owners</c>,
-        /// <c>verification_requires_additional_memorandum_of_associations</c>, or
-        /// <c>verification_requires_additional_proof_of_registration</c>.
+        /// <c>verification_requires_additional_memorandum_of_associations</c>,
+        /// <c>verification_requires_additional_proof_of_registration</c>, or
+        /// <c>verification_supportability</c>.
         /// </summary>
         [JsonProperty("code")]
         public string Code { get; set; }
