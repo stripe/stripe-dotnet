@@ -207,6 +207,16 @@ namespace Stripe
         public QuotePreviewInvoiceAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
+        /// The time when this invoice is currently scheduled to be automatically finalized. The
+        /// field will be <c>null</c> if the invoice is not scheduled to finalize in the future. If
+        /// the invoice is not in the draft state, this field will always be <c>null</c> - see
+        /// <c>finalized_at</c> for the time when an already-finalized invoice was finalized.
+        /// </summary>
+        [JsonProperty("automatically_finalizes_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? AutomaticallyFinalizesAt { get; set; }
+
+        /// <summary>
         /// Indicates the reason why the invoice was created.
         ///
         /// * <c>manual</c>: Unrelated to a subscription, for example, created via the invoice
