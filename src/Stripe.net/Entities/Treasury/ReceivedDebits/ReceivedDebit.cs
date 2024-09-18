@@ -54,8 +54,8 @@ namespace Stripe.Treasury
         /// <summary>
         /// Reason for the failure. A ReceivedDebit might fail because the FinancialAccount doesn't
         /// have sufficient funds, is closed, or is frozen.
-        /// One of: <c>account_closed</c>, <c>account_frozen</c>, <c>insufficient_funds</c>, or
-        /// <c>other</c>.
+        /// One of: <c>account_closed</c>, <c>account_frozen</c>, <c>insufficient_funds</c>,
+        /// <c>international_transaction</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }
