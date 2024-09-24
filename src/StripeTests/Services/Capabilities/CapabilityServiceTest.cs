@@ -12,23 +12,23 @@ namespace StripeTests
         private const string AccountId = "acct_123";
         private const string CapabilityId = "acap_123";
 
-        private readonly CapabilityService service;
-        private readonly CapabilityUpdateOptions updateOptions;
-        private readonly CapabilityListOptions listOptions;
+        private readonly AccountCapabilityService service;
+        private readonly AccountCapabilityUpdateOptions updateOptions;
+        private readonly AccountCapabilityListOptions listOptions;
 
         public CapabilityServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new CapabilityService(this.StripeClient);
+            this.service = new AccountCapabilityService(this.StripeClient);
 
-            this.updateOptions = new CapabilityUpdateOptions
+            this.updateOptions = new AccountCapabilityUpdateOptions
             {
                 Requested = true,
             };
 
-            this.listOptions = new CapabilityListOptions
+            this.listOptions = new AccountCapabilityListOptions
             {
             };
         }

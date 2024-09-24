@@ -1,16 +1,20 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
-    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
+    [Obsolete("Use AccountLoginLinkService instead.")]
     public class LoginLinkService : ServiceNested<LoginLink>,
         INestedCreatable<LoginLink, LoginLinkCreateOptions>
     {
         public LoginLinkService()
+        {
+        }
+
+        internal LoginLinkService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -19,33 +23,30 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/accounts/{PARENT_ID}/login_links";
-
         /// <summary>
-        /// <p>Creates a single-use login link for a connected account to access the Express
-        /// Dashboard.</p>.
+        /// <p>Creates a single-use login link for an Express account to access their Stripe
+        /// dashboard.</p>.
         ///
-        /// <p><strong>You can only create login links for accounts that use the <a
-        /// href="https://stripe.com/connect/express-dashboard">Express Dashboard</a> and are
-        /// connected to your platform</strong>.</p>.
+        /// <p><strong>You may only create login links for <a
+        /// href="https://stripe.com/docs/connect/express-accounts">Express accounts</a> connected
+        /// to your platform</strong>.</p>.
         /// </summary>
         public virtual LoginLink Create(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<LoginLink>(HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(parentId)}/login_links", options, requestOptions);
+            return this.Request<LoginLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions);
         }
 
         /// <summary>
-        /// <p>Creates a single-use login link for a connected account to access the Express
-        /// Dashboard.</p>.
+        /// <p>Creates a single-use login link for an Express account to access their Stripe
+        /// dashboard.</p>.
         ///
-        /// <p><strong>You can only create login links for accounts that use the <a
-        /// href="https://stripe.com/connect/express-dashboard">Express Dashboard</a> and are
-        /// connected to your platform</strong>.</p>.
+        /// <p><strong>You may only create login links for <a
+        /// href="https://stripe.com/docs/connect/express-accounts">Express accounts</a> connected
+        /// to your platform</strong>.</p>.
         /// </summary>
         public virtual Task<LoginLink> CreateAsync(string parentId, LoginLinkCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<LoginLink>(HttpMethod.Post, $"/v1/accounts/{WebUtility.UrlEncode(parentId)}/login_links", options, requestOptions, cancellationToken);
+            return this.RequestAsync<LoginLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/accounts/{parentId}/login_links", options, requestOptions, cancellationToken);
         }
     }
 }

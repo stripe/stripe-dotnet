@@ -12,35 +12,35 @@ namespace StripeTests
         private const string AccountId = "acct_123";
         private const string PersonId = "person_123";
 
-        private readonly PersonService service;
-        private readonly PersonCreateOptions createOptions;
-        private readonly PersonUpdateOptions updateOptions;
-        private readonly PersonListOptions listOptions;
+        private readonly AccountPersonService service;
+        private readonly AccountPersonCreateOptions createOptions;
+        private readonly AccountPersonUpdateOptions updateOptions;
+        private readonly AccountPersonListOptions listOptions;
 
         public PersonServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new PersonService(this.StripeClient);
+            this.service = new AccountPersonService(this.StripeClient);
 
-            this.createOptions = new PersonCreateOptions
+            this.createOptions = new AccountPersonCreateOptions
             {
                 FirstName = "John",
-                Relationship = new PersonRelationshipOptions
+                Relationship = new AccountPersonRelationshipOptions
                 {
                     Owner = true,
                     PercentOwnership = 30.5m,
                     Representative = true,
                 },
-                Verification = new PersonVerificationOptions
+                Verification = new AccountPersonVerificationOptions
                 {
-                    AdditionalDocument = new PersonVerificationAdditionalDocumentOptions
+                    AdditionalDocument = new AccountPersonVerificationAdditionalDocumentOptions
                     {
                         Back = "file_abc",
                         Front = "file_def",
                     },
-                    Document = new PersonVerificationDocumentOptions
+                    Document = new AccountPersonVerificationDocumentOptions
                     {
                         Back = "file_123",
                         Front = "file_345",
@@ -48,10 +48,10 @@ namespace StripeTests
                 },
             };
 
-            this.updateOptions = new PersonUpdateOptions
+            this.updateOptions = new AccountPersonUpdateOptions
             {
                 FirstName = "John",
-                Relationship = new PersonRelationshipOptions
+                Relationship = new AccountPersonRelationshipOptions
                 {
                     Owner = true,
                     PercentOwnership = 30.5m,
@@ -59,10 +59,10 @@ namespace StripeTests
                 },
             };
 
-            this.listOptions = new PersonListOptions
+            this.listOptions = new AccountPersonListOptions
             {
                 Limit = 1,
-                Relationship = new PersonRelationshipListOptions
+                Relationship = new AccountPersonRelationshipOptions
                 {
                     Director = true,
                 },

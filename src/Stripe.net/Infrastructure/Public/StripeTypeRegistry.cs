@@ -83,7 +83,6 @@ namespace Stripe
                 { "identity.verification_report", typeof(Identity.VerificationReport) },
                 { "identity.verification_session", typeof(Identity.VerificationSession) },
                 { "invoice", typeof(Invoice) },
-                { "invoice_rendering_template", typeof(InvoiceRenderingTemplate) },
                 { "invoiceitem", typeof(InvoiceItem) },
                 { "issuing.authorization", typeof(Issuing.Authorization) },
                 { "issuing.card", typeof(Issuing.Card) },
@@ -168,6 +167,87 @@ namespace Stripe
                 // ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
 
+        internal static readonly IReadOnlyDictionary<string, Type> V2ObjectsToTypes = new ReadOnlyDictionary<string, Type>(
+            new Dictionary<string, Type>
+            {
+                // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
+                { "account", typeof(V2.Account) },
+                { "account_link", typeof(V2.AccountLink) },
+                { "adjustment", typeof(V2.Adjustment) },
+                { "event", typeof(ThinEvent) },
+                { "event_destination", typeof(V2.EventDestination) },
+                { "financial_account", typeof(V2.FinancialAccount) },
+                { "financial_account.balance", typeof(V2.FinancialAccountBalance) },
+                { "financial_address", typeof(V2.FinancialAddress) },
+                {
+                    "financial_address_credit_simulation", typeof(
+                    V2.FinancialAddressCreditSimulation)
+                },
+                {
+                    "financial_address_generated_microdeposits", typeof(
+                    V2.FinancialAddressGeneratedMicrodeposits)
+                },
+                { "inbound_transfer", typeof(V2.InboundTransfer) },
+                { "outbound_payment", typeof(V2.OutboundPayment) },
+                { "outbound_transfer", typeof(V2.OutboundTransfer) },
+                { "payment_methods.card", typeof(V2.PaymentMethods.Card) },
+                { "payment_methods.gb_bank_account", typeof(V2.PaymentMethods.GbBankAccount) },
+                {
+                    "payment_methods.outbound_destination", typeof(
+                    V2.PaymentMethods.OutboundDestination)
+                },
+                { "payment_methods.us_bank_account", typeof(V2.PaymentMethods.UsBankAccount) },
+                { "received_credit", typeof(V2.ReceivedCredit) },
+                { "received_debit", typeof(V2.ReceivedDebit) },
+                { "transaction", typeof(V2.Transaction) },
+                { "transaction_entry", typeof(V2.TransactionEntry) },
+
+                // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
+            });
+
+        internal static readonly IReadOnlyDictionary<string, Type> V2TypesToEventTypes = new ReadOnlyDictionary<string, Type>(
+            new Dictionary<string, Type>
+            {
+                // ThinTypesToEventTypes: The beginning of the section generated from our OpenAPI spec
+                {
+                    "account.configuration_recipient_data.account_link_completed", typeof(
+                    V2.AccountConfigurationRecipientDataAccountLinkCompletedEvent)
+                },
+                {
+                    "account.configuration_recipient_data.feature_status_updated", typeof(
+                    V2.AccountConfigurationRecipientDataFeatureStatusUpdatedEvent)
+                },
+                { "account.requirements.updated", typeof(V2.AccountRequirementsUpdatedEvent) },
+                {
+                    "financial_account.balance.opened", typeof(
+                    V2.FinancialAccountBalanceOpenedEvent)
+                },
+                { "financial_account.created", typeof(V2.FinancialAccountCreatedEvent) },
+                { "financial_address.activated", typeof(V2.FinancialAddressActivatedEvent) },
+                { "financial_address.failed", typeof(V2.FinancialAddressFailedEvent) },
+                {
+                    "inbound_transfer.bank_debit_succeeded", typeof(
+                    V2.InboundTransferBankDebitSucceededEvent)
+                },
+                { "event_destination.ping", typeof(V2.EventDestinationPingEvent) },
+                { "outbound_payment.canceled", typeof(V2.OutboundPaymentCanceledEvent) },
+                { "outbound_payment.created", typeof(V2.OutboundPaymentCreatedEvent) },
+                { "outbound_payment.failed", typeof(V2.OutboundPaymentFailedEvent) },
+                { "outbound_payment.posted", typeof(V2.OutboundPaymentPostedEvent) },
+                { "outbound_payment.returned", typeof(V2.OutboundPaymentReturnedEvent) },
+                { "outbound_transfer.canceled", typeof(V2.OutboundTransferCanceledEvent) },
+                { "outbound_transfer.created", typeof(V2.OutboundTransferCreatedEvent) },
+                { "outbound_transfer.failed", typeof(V2.OutboundTransferFailedEvent) },
+                { "outbound_transfer.posted", typeof(V2.OutboundTransferPostedEvent) },
+                { "outbound_transfer.returned", typeof(V2.OutboundTransferReturnedEvent) },
+                { "received_credit.available", typeof(V2.ReceivedCreditAvailableEvent) },
+                { "received_credit.failed", typeof(V2.ReceivedCreditFailedEvent) },
+                { "received_credit.returned", typeof(V2.ReceivedCreditReturnedEvent) },
+                { "received_credit.succeeded", typeof(V2.ReceivedCreditSucceededEvent) },
+
+                // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
+            });
+
         /// <summary>
         /// Returns the concrete type to use, given a potential type and the value of the `object`
         /// key in a JSON payload.
@@ -197,6 +277,17 @@ namespace Stripe
             }
 
             return null;
+        }
+
+        public static Type GetConcreteThinEventType(string typeValue)
+        {
+            Type concreteType = null;
+            if (!string.IsNullOrEmpty(typeValue))
+            {
+                V2TypesToEventTypes.TryGetValue(typeValue, out concreteType);
+            }
+
+            return concreteType;
         }
     }
 }

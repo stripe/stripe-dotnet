@@ -1,8 +1,9 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
 
+    [Obsolete("Use AccountExternalAccountListOptions instead.")]
     public class ExternalAccountListOptions : ListOptions, IHasObject
     {
         /// <summary>

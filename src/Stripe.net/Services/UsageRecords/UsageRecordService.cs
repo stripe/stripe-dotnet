@@ -1,12 +1,11 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
-    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
+    [Obsolete("Use SubscriptionItemUsageRecordService instead.")]
     public class UsageRecordService : ServiceNested<UsageRecord>,
         INestedCreatable<UsageRecord, UsageRecordCreateOptions>
     {
@@ -14,13 +13,15 @@ namespace Stripe
         {
         }
 
+        internal UsageRecordService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public UsageRecordService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/subscription_items/{PARENT_ID}/usage_records";
 
         /// <summary>
         /// <p>Creates a usage record for a specified subscription item and date, and fills it with
@@ -46,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual UsageRecord Create(string parentId, UsageRecordCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<UsageRecord>(HttpMethod.Post, $"/v1/subscription_items/{WebUtility.UrlEncode(parentId)}/usage_records", options, requestOptions);
+            return this.Request<UsageRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions);
         }
 
         /// <summary>
@@ -73,7 +74,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<UsageRecord> CreateAsync(string parentId, UsageRecordCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<UsageRecord>(HttpMethod.Post, $"/v1/subscription_items/{WebUtility.UrlEncode(parentId)}/usage_records", options, requestOptions, cancellationToken);
+            return this.RequestAsync<UsageRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_items/{parentId}/usage_records", options, requestOptions, cancellationToken);
         }
     }
 }

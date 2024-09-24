@@ -1,307 +1,133 @@
 namespace StripeTests
 {
-    using System;
-    using System.IO;
-    using System.Net;
+    using System.Linq;
     using System.Net.Http;
-    using System.Text;
     using System.Threading;
     using System.Threading.Tasks;
+    using Moq;
+    using Moq.Protected;
     using Stripe;
+    using StripeTests.V2;
     using Xunit;
 
     public class StripeClientTest : BaseStripeTest
     {
-        private readonly DummyHttpClient httpClient;
-        private readonly StripeClient stripeClient;
-        private readonly BaseOptions options;
-        private readonly RequestOptions requestOptions;
+        private StripeClient stripeClient;
 
-        public StripeClientTest()
+        public StripeClientTest(StripeMockFixture stripeMockFixture, MockHttpClientFixture mockHttpClient)
+            : base(stripeMockFixture, mockHttpClient)
         {
-            this.httpClient = new DummyHttpClient();
-            this.stripeClient = new StripeClient(
-                "sk_test_123",
-                httpClient: this.httpClient);
-            this.options = new ChargeCreateOptions
-            {
-                Amount = 123,
-                Currency = "usd",
-                Source = "tok_visa",
-            };
-            this.requestOptions = new RequestOptions();
+            this.stripeClient = this.StripeClient as StripeClient;
         }
 
         [Fact]
-        public void Ctor_DoesNotThrowsIfApiKeyIsNull()
+        public async Task RawRequestAsync_Json()
         {
-            var client = new StripeClient(null);
-            Assert.NotNull(client);
-            Assert.Null(client.ApiKey);
-        }
+            // Stub a request as stripe-mock does not support v2
+            this.MockHttpClientFixture.StubRequest(
+                    HttpMethod.Post,
+                    "/v2/financial_accounts",
+                    System.Net.HttpStatusCode.OK,
+                    "{\"id\": \"fa_123\",\"object\":\"financial_account\"}");
 
-        [Fact]
-        public void Ctor_ThrowsIfApiKeyIsEmpty()
-        {
-            var exception = Assert.Throws<ArgumentException>(() => new StripeClient(string.Empty));
-            Assert.Contains("API key cannot be the empty string.", exception.Message);
-        }
-
-        [Fact]
-        public void Ctor_ThrowsIfApiKeyContainsWhitespace()
-        {
-            var exception = Assert.Throws<ArgumentException>(() => new StripeClient("sk_test_123\n"));
-            Assert.Contains("API key cannot contain whitespace.", exception.Message);
-        }
-
-        [Fact]
-        public async Task RequestAsync_OkResponse()
-        {
-            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
-            this.httpClient.Response = response;
-
-            var charge = await this.stripeClient.RequestAsync<Charge>(
+            var rawResponse = await this.stripeClient.RawRequestAsync(
                 HttpMethod.Post,
-                "/v1/charges",
-                this.options,
-                this.requestOptions);
+                "/v2/financial_accounts",
+                "{\"description\":\"hello\"}",
+                new RawRequestOptions
+                {
+                    AdditionalHeaders =
+                    {
+                        { "foo", "bar" },
+                    },
+                    ApiMode = ApiMode.V2,
+                });
 
-            Assert.NotNull(charge);
-            Assert.Equal("ch_123", charge.Id);
-            Assert.Equal(response, charge.StripeResponse);
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                        "SendAsync",
+                        Times.Once(),
+                        ItExpr.Is<HttpRequestMessage>(m =>
+                            m.Headers.GetValues("Stripe-Version").First() == ApiVersion.CurrentPreview &&
+                            m.Headers.GetValues("foo").First() == "bar"),
+                        ItExpr.IsAny<CancellationToken>());
+
+            var fa = this.stripeClient.Deserialize<Stripe.V2.FinancialAccount>(rawResponse.Content);
+            Assert.Equal("fa_123", fa.Id);
         }
 
         [Fact]
-        public async Task RequestAsync_OkResponse_InvalidJson()
+        public void ConstructThinEvent()
         {
-            var response = new StripeResponse(HttpStatusCode.OK, null, "this isn't JSON");
-            this.httpClient.Response = response;
+            string payload = @"{
+                ""object"": ""event"",
+                ""type"": ""unknown"",
+                ""data"": {},
+                ""relatedObject"": {
+                    ""id"": ""acct_123"",
+                    ""type"": ""account"",
+                    ""url"": ""/v2/accounts""
+                }
+            }";
+            var evt = this.stripeClient.ParseThinEvent(
+                payload,
+                V2.EventTest.GenerateSigHeader(payload),
+                V2.EventTest.WebhookSecret);
 
-            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
-                await this.stripeClient.RequestAsync<Charge>(
-                    HttpMethod.Post,
-                    "/v1/charges",
-                    this.options,
-                    this.requestOptions));
-
-            Assert.NotNull(exception);
-            Assert.Equal(HttpStatusCode.OK, exception.HttpStatusCode);
-            Assert.Equal("Invalid response object from API: \"this isn't JSON\"", exception.Message);
-            Assert.Equal(response, exception.StripeResponse);
+            Assert.NotNull(evt);
         }
 
         [Fact]
-        public async Task RequestAsync_ApiError()
+        public void ConstructSnapshotEvent()
         {
-            var response = new StripeResponse(
-                HttpStatusCode.PaymentRequired,
-                null,
-                "{\"error\": {\"type\": \"card_error\"}}");
-            this.httpClient.Response = response;
+            var json = GetResourceAsString("event_test_signature.json");
+            var eventUtilityEvent = EventUtility.ConstructEvent(
+                json,
+                V2.EventTest.GenerateSigHeader(json),
+                V2.EventTest.WebhookSecret,
+                throwOnApiVersionMismatch: false);
+            var stripeClientParsedEvent = this.stripeClient.ParseSnapshotEvent(
+                json,
+                V2.EventTest.GenerateSigHeader(json),
+                V2.EventTest.WebhookSecret);
 
-            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
-                await this.stripeClient.RequestAsync<Charge>(
-                    HttpMethod.Post,
-                    "/v1/charges",
-                    this.options,
-                    this.requestOptions));
-
-            Assert.NotNull(exception);
-            Assert.Equal(HttpStatusCode.PaymentRequired, exception.HttpStatusCode);
-            Assert.Equal("card_error", exception.StripeError.Type);
-            Assert.Equal(response, exception.StripeResponse);
+            Assert.NotNull(stripeClientParsedEvent);
+            Assert.Equal("acct_123", eventUtilityEvent.Account);
+            Assert.Equal("req_123", eventUtilityEvent.Request.Id);
+            Assert.Equal("idempotency-key-123", eventUtilityEvent.Request.IdempotencyKey);
+            Assert.Equal("acct_123", stripeClientParsedEvent.Account);
+            Assert.Equal("req_123", stripeClientParsedEvent.Request.Id);
+            Assert.Equal("idempotency-key-123", stripeClientParsedEvent.Request.IdempotencyKey);
         }
 
         [Fact]
-        public async Task RequestAsync_OAuthError()
+        public async Task RawRequestAsync_Form()
         {
-            var response = new StripeResponse(
-                HttpStatusCode.BadRequest,
-                null,
-                "{\"error\": \"invalid_request\"}");
-            this.httpClient.Response = response;
-
-            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
-                await this.stripeClient.RequestAsync<OAuthToken>(
-                    HttpMethod.Post,
-                    "/oauth/token",
-                    this.options,
-                    this.requestOptions));
-
-            Assert.NotNull(exception);
-            Assert.Equal(HttpStatusCode.BadRequest, exception.HttpStatusCode);
-            Assert.Equal("invalid_request", exception.StripeError.Error);
-            Assert.Equal(response, exception.StripeResponse);
-        }
-
-        [Fact]
-        public async Task RequestAsync_Error_InvalidJson()
-        {
-            var response = new StripeResponse(
-                HttpStatusCode.InternalServerError,
-                null,
-                "this isn't JSON");
-            this.httpClient.Response = response;
-
-            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
-                await this.stripeClient.RequestAsync<Charge>(
-                    HttpMethod.Post,
-                    "/v1/charges",
-                    this.options,
-                    this.requestOptions));
-
-            Assert.NotNull(exception);
-            Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
-            Assert.Equal("Invalid response object from API: \"this isn't JSON\"", exception.Message);
-            Assert.Equal(response, exception.StripeResponse);
-        }
-
-        [Fact]
-        public async Task RequestAsync_Error_InvalidErrorObject()
-        {
-            var response = new StripeResponse(
-                HttpStatusCode.InternalServerError,
-                null,
-                "{}");
-            this.httpClient.Response = response;
-
-            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
-                await this.stripeClient.RequestAsync<Charge>(
-                    HttpMethod.Post,
-                    "/v1/charges",
-                    this.options,
-                    this.requestOptions));
-
-            Assert.NotNull(exception);
-            Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
-            Assert.Equal("Invalid response object from API: \"{}\"", exception.Message);
-            Assert.Equal(response, exception.StripeResponse);
-        }
-
-        [Fact]
-        public async Task RequestStreamingAsync_OkResponse_InvalidJson()
-        {
-            var streamedResponse = new StripeStreamedResponse(
-                HttpStatusCode.OK,
-                null,
-                StringToStream("this isn't JSON"));
-            this.httpClient.StreamedResponse = streamedResponse;
-
-            var stream = await this.stripeClient.RequestStreamingAsync(
+            // Don't stub, we can use stripe-mock
+            var rawResponse = await this.stripeClient.RawRequestAsync(
                 HttpMethod.Post,
-                "/v1/charges",
-                this.options,
-                this.requestOptions);
-
-            Assert.NotNull(stream);
-            Assert.Equal("this isn't JSON", StreamToString(stream));
-        }
-
-        [Fact]
-        public async Task RequestStreamingAsync_ApiError()
-        {
-            var streamedResponse = new StripeStreamedResponse(
-                HttpStatusCode.PaymentRequired,
-                null,
-                StringToStream("{\"error\": {\"type\": \"card_error\"}}"));
-            this.httpClient.StreamedResponse = streamedResponse;
-
-            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
-                await this.stripeClient.RequestStreamingAsync(
-                    HttpMethod.Post,
-                    "/v1/charges",
-                    this.options,
-                    this.requestOptions));
-
-            Assert.NotNull(exception);
-            Assert.Equal(HttpStatusCode.PaymentRequired, exception.HttpStatusCode);
-            Assert.Equal("card_error", exception.StripeError.Type);
-            Assert.Equal(await streamedResponse.ToStripeResponseAsync(), exception.StripeResponse);
-        }
-
-        [Fact]
-        public async Task RequestStreamingAsync_OAuthError()
-        {
-            var streamedResponse = new StripeStreamedResponse(
-                HttpStatusCode.BadRequest,
-                null,
-                StringToStream("{\"error\": \"invalid_request\"}"));
-            this.httpClient.StreamedResponse = streamedResponse;
-
-            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
-                await this.stripeClient.RequestStreamingAsync(
-                    HttpMethod.Post,
-                    "/oauth/token",
-                    this.options,
-                    this.requestOptions));
-
-            Assert.NotNull(exception);
-            Assert.Equal(HttpStatusCode.BadRequest, exception.HttpStatusCode);
-            Assert.Equal("invalid_request", exception.StripeError.Error);
-            Assert.Equal(await streamedResponse.ToStripeResponseAsync(), exception.StripeResponse);
-        }
-
-        [Fact]
-        public async Task RequestStreamingAsync_Error_InvalidErrorObject()
-        {
-            var streamedResponse = new StripeStreamedResponse(
-                HttpStatusCode.InternalServerError,
-                null,
-                StringToStream("{}"));
-            this.httpClient.StreamedResponse = streamedResponse;
-
-            var exception = await Assert.ThrowsAsync<StripeException>(async () =>
-                await this.stripeClient.RequestStreamingAsync(
-                    HttpMethod.Post,
-                    "/v1/charges",
-                    this.options,
-                    this.requestOptions));
-
-            Assert.NotNull(exception);
-            Assert.Equal(HttpStatusCode.InternalServerError, exception.HttpStatusCode);
-            Assert.Equal("Invalid response object from API: \"{}\"", exception.Message);
-            Assert.Equal(await streamedResponse.ToStripeResponseAsync(), exception.StripeResponse);
-        }
-
-        private static Stream StringToStream(string content)
-        {
-            return new MemoryStream(Encoding.UTF8.GetBytes(content));
-        }
-
-        private static string StreamToString(Stream stream)
-        {
-            return new StreamReader(stream, Encoding.UTF8).ReadToEnd();
-        }
-
-        private class DummyHttpClient : IHttpClient
-        {
-            public StripeResponse Response { get; set; }
-
-            public StripeStreamedResponse StreamedResponse { get; set; }
-
-            public Task<StripeResponse> MakeRequestAsync(
-                StripeRequest request,
-                CancellationToken cancellationToken = default)
-            {
-                if (this.Response == null)
+                "/v1/customers",
+                "description=hello",
+                new RawRequestOptions
                 {
-                    throw new StripeTestException("Response is null");
-                }
+                    AdditionalHeaders =
+                    {
+                        { "foo", "bar" },
+                    },
+                    ApiMode = ApiMode.V1,
+                });
 
-                return Task.FromResult<StripeResponse>(this.Response);
-            }
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                        "SendAsync",
+                        Times.Once(),
+                        ItExpr.Is<HttpRequestMessage>(m =>
+                            m.Headers.GetValues("Stripe-Version").First() == ApiVersion.Current &&
+                            m.Headers.GetValues("foo").First() == "bar"),
+                        ItExpr.IsAny<CancellationToken>());
 
-            public Task<StripeStreamedResponse> MakeStreamingRequestAsync(
-                StripeRequest request,
-                CancellationToken cancellationToken = default)
-            {
-                if (this.StreamedResponse == null)
-                {
-                    throw new StripeTestException("StreamedResponse is null");
-                }
-
-                return Task.FromResult(this.StreamedResponse);
-            }
+            var cus = this.stripeClient.Deserialize<Stripe.Customer>(rawResponse.Content);
+            Assert.Equal("customer", cus.Object);
         }
     }
 }

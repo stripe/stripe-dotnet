@@ -1,9 +1,10 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    [Obsolete("Use AccountPersonDocumentsCompanyAuthorizationOptions instead.")]
     public class PersonDocumentsCompanyAuthorizationOptions : INestedOptions
     {
         /// <summary>

@@ -1,6 +1,8 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
+
+    [Obsolete("Use AccountExternalAccountGetOptions instead.")]
     public class ExternalAccountGetOptions : BaseOptions
     {
     }

@@ -1,8 +1,9 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using Newtonsoft.Json;
 
+    [Obsolete("Use AccountPersonRelationshipOptions instead.")]
     public class PersonRelationshipOptions : INestedOptions
     {
         /// <summary>

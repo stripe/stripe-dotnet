@@ -13,24 +13,24 @@ namespace StripeTests
         private const string AccountId = "acct_123";
         private const string ExternalAccountId = "ba_123";
 
-        private readonly ExternalAccountService service;
-        private readonly ExternalAccountCreateOptions createOptions;
-        private readonly ExternalAccountUpdateOptions updateOptions;
-        private readonly ExternalAccountListOptions listOptions;
+        private readonly AccountExternalAccountService service;
+        private readonly AccountExternalAccountCreateOptions createOptions;
+        private readonly AccountExternalAccountUpdateOptions updateOptions;
+        private readonly AccountExternalAccountListOptions listOptions;
 
         public ExternalAccountServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new ExternalAccountService(this.StripeClient);
+            this.service = new AccountExternalAccountService(this.StripeClient);
 
-            this.createOptions = new ExternalAccountCreateOptions
+            this.createOptions = new AccountExternalAccountCreateOptions
             {
                 ExternalAccount = "btok_123",
             };
 
-            this.updateOptions = new ExternalAccountUpdateOptions
+            this.updateOptions = new AccountExternalAccountUpdateOptions
             {
                 Metadata = new Dictionary<string, string>
                 {
@@ -39,7 +39,7 @@ namespace StripeTests
                 Name = "Jenny Rosen",
             };
 
-            this.listOptions = new ExternalAccountListOptions
+            this.listOptions = new AccountExternalAccountListOptions
             {
                 Limit = 1,
             };

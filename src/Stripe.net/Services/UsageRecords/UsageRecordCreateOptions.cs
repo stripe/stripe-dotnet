@@ -1,10 +1,10 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    [Obsolete("Use SubscriptionItemUsageRecordCreateOptions instead.")]
     public class UsageRecordCreateOptions : BaseOptions
     {
         /// <summary>
@@ -32,7 +32,7 @@ namespace Stripe
         /// Default is <c>"now"</c> if a value is not provided.
         /// </summary>
         [JsonProperty("timestamp")]
-        [JsonConverter(typeof(AnyOfConverter))]
-        public AnyOf<DateTime?, UsageRecordTimestamp> Timestamp { get; set; }
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? Timestamp { get; set; }
     }
 }

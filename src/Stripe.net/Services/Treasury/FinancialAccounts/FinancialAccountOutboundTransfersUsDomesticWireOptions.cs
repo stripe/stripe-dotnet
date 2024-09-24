@@ -1,8 +1,9 @@
-// File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
+    using System;
     using Newtonsoft.Json;
 
+    [Obsolete("Use FinancialAccountFeaturesOutboundTransfersUsDomesticWireOptions instead.")]
     public class FinancialAccountOutboundTransfersUsDomesticWireOptions : INestedOptions
     {
         /// <summary>

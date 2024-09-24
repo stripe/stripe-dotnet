@@ -1,10 +1,10 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    [Obsolete("Use AccountPersonAdditionalTosAcceptancesAccountOptions instead.")]
     public class PersonAdditionalTosAcceptancesAccountOptions : INestedOptions
     {
         /// <summary>

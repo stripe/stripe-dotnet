@@ -1,8 +1,9 @@
-// File generated from our OpenAPI spec
 namespace Stripe.Treasury
 {
+    using System;
     using Newtonsoft.Json;
 
+    [Obsolete("Use FinancialAccountFeaturesDepositInsuranceOptions instead.")]
     public class FinancialAccountDepositInsuranceOptions : INestedOptions
     {
         /// <summary>

@@ -18,20 +18,22 @@ namespace Stripe.Issuing
         {
         }
 
+        internal CardService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public CardService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/issuing/cards";
 
         /// <summary>
         /// <p>Creates an Issuing <c>Card</c> object.</p>.
         /// </summary>
         public virtual Card Create(CardCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(HttpMethod.Post, $"/v1/issuing/cards", options, requestOptions);
+            return this.Request<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/cards", options, requestOptions);
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Card> CreateAsync(CardCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(HttpMethod.Post, $"/v1/issuing/cards", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/cards", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Card Get(string id, CardGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(HttpMethod.Get, $"/v1/issuing/cards/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/cards/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -55,7 +57,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Card> GetAsync(string id, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(HttpMethod.Get, $"/v1/issuing/cards/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/cards/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +66,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual StripeList<Card> List(CardListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Card>>(HttpMethod.Get, $"/v1/issuing/cards", options, requestOptions);
+            return this.Request<StripeList<Card>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/cards", options, requestOptions);
         }
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<StripeList<Card>> ListAsync(CardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Card>>(HttpMethod.Get, $"/v1/issuing/cards", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Card>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/cards", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -100,7 +102,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Card Update(string id, CardUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(HttpMethod.Post, $"/v1/issuing/cards/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/cards/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -109,7 +111,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Card> UpdateAsync(string id, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(HttpMethod.Post, $"/v1/issuing/cards/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/cards/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

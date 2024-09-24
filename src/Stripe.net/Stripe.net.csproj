@@ -2,13 +2,13 @@
 
   <PropertyGroup>
     <Description>Stripe.net is a sync/async .NET 4.6.1+ client, and a portable class library for the Stripe API.  (Official Library)</Description>
-    <Version>45.14.0</Version>
+    <Version>0.9.0</Version>
     <LangVersion>8</LangVersion>
     <Authors>Stripe, Jayme Davis</Authors>
     <TargetFrameworks>net5.0;net6.0;netcoreapp3.1;netstandard2.0;net461</TargetFrameworks>
     <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/stripe/stripe-dotnet</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/stripe/stripe-dotnet-next</PackageProjectUrl>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <SignAssembly>True</SignAssembly>
@@ -22,6 +22,9 @@
     <PackageValidationBaselineVersion Condition="'$(RunBaselineCheck)' == 'true'">$(Version)</PackageValidationBaselineVersion>
     <NuGetAudit>false</NuGetAudit>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <!-- Workaround JetBrains Rider bug https://youtrack.jetbrains.com/issue/RIDER-103207/Cannot-suppress-vulnerable-package-errors -->
+    <NoWarn>NU1901;NU1902;NU1903;NU1904</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

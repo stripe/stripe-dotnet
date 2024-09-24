@@ -4,6 +4,8 @@ namespace StripeTests
     using System.Linq;
     using System.Net;
     using System.Net.Http;
+    using System.Threading;
+    using System.Threading.Tasks;
     using Stripe;
 
     public class StripeMockFixture : IDisposable
@@ -33,22 +35,20 @@ namespace StripeTests
         }
 
         /// <summary>
-        /// Creates and returns a new instance of <see cref="StripeClient"/> suitable for use with
+        /// Creates and returns a new instance of <see cref="ApiRequestor"/> suitable for use with
         /// stripe-mock.
         /// </summary>
-        /// <param name="httpClient">
-        /// The <see cref="IHttpClient"/> client to use. If <c>null</c>, an HTTP client will be
+        /// <param name="innerHandler">
+        /// The <see cref="HttpClient"/> client to use. If <c>null</c>, an HTTP client will be
         /// created with default parameters.
         /// </param>
-        /// <returns>The new <see cref="StripeClient"/> instance.</returns>
-        public StripeClient BuildStripeClient(IHttpClient httpClient = null)
+        /// <returns>The new <see cref="ApiRequestor"/> instance.</returns>
+        internal ApiRequestor BuildApiRequestor(HttpClientHandler innerHandler = null)
         {
-            return new StripeClient(
+            return new LiveApiRequestor(
                 "sk_test_123",
                 "ca_123",
-                httpClient: httpClient,
-                apiBase: $"http://localhost:{this.port}",
-                filesBase: $"http://localhost:{this.port}");
+                httpClient: new SystemNetHttpClient(new ForwardingHttpClient(innerHandler, this.port)));
         }
 
         /// <summary>
@@ -142,6 +142,24 @@ namespace StripeTests
                         + $"version to run this test suite is {MockMinimumVersion}. Please see its "
                         + "repository for upgrade instructions.");
                 }
+            }
+        }
+
+        private class ForwardingHttpClient : HttpClient
+        {
+            private readonly string port;
+
+            public ForwardingHttpClient(HttpClientHandler innerHandler, string port)
+                : base(innerHandler ?? new HttpClientHandler())
+            {
+                this.port = port;
+            }
+
+            public override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+            {
+                request.Properties.Add("OriginalHost", request.RequestUri.Host);
+                request.RequestUri = new Uri($"http://localhost:{this.port}{request.RequestUri!.PathAndQuery}");
+                return base.SendAsync(request, cancellationToken);
             }
         }
     }

@@ -61,6 +61,32 @@ namespace StripeTests.Infrastructure.TestData
         [JsonProperty("string_enum")]
         public TestStringEnum StringEnum { get; set; }
 
+        [JsonIgnore]
+        public bool EmptyEmptyStringable
+        {
+            get => this.InternalEmptyStringable?.Empty ?? false;
+            set
+            {
+                this.InternalEmptyStringable ??= new Emptyable<Nested>();
+                this.InternalEmptyStringable.Empty = value;
+            }
+        }
+
+        [JsonIgnore]
+        public Nested EmptyStringable
+        {
+            get => this.InternalEmptyStringable?.Value;
+            set
+            {
+                this.InternalEmptyStringable ??= new Emptyable<Nested>();
+                this.InternalEmptyStringable.Value = value;
+            }
+        }
+
+        [JsonProperty("empty_stringable")]
+        [JsonConverter(typeof(EmptyableConverter<Nested>))]
+        internal Emptyable<Nested> InternalEmptyStringable { get; set; }
+
         public class TestStringEnum : StringEnum
         {
             public static readonly TestStringEnum Foo = new TestStringEnum("foo");
@@ -69,6 +95,12 @@ namespace StripeTests.Infrastructure.TestData
                 : base(value)
             {
             }
+        }
+
+        public class Nested
+        {
+            [JsonProperty("bool")]
+            public bool? Bool { get; set; }
         }
     }
 }

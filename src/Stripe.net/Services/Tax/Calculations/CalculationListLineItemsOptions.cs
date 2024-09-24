@@ -1,6 +1,8 @@
-// File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using System;
+
+    [Obsolete("Use CalculationLineItemListOptions instead.")]
     public class CalculationListLineItemsOptions : ListOptions
     {
     }

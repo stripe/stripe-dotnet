@@ -10,17 +10,17 @@ namespace StripeTests
 
     public class UsageRecordServiceTest : BaseStripeTest
     {
-        private readonly UsageRecordService service;
-        private readonly UsageRecordCreateOptions createOptions;
+        private readonly SubscriptionItemUsageRecordService service;
+        private readonly SubscriptionItemUsageRecordCreateOptions createOptions;
 
         public UsageRecordServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new UsageRecordService(this.StripeClient);
+            this.service = new SubscriptionItemUsageRecordService(this.StripeClient);
 
-            this.createOptions = new UsageRecordCreateOptions
+            this.createOptions = new SubscriptionItemUsageRecordCreateOptions
             {
                 Quantity = 10,
                 Timestamp = DateTime.Now,

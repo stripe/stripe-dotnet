@@ -1,6 +1,8 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
+
+    [Obsolete("Use CustomerCashBalanceGetOptions instead.")]
     public class CashBalanceGetOptions : BaseOptions
     {
     }

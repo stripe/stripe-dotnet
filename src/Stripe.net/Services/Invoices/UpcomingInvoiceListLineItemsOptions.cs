@@ -1,4 +1,3 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
@@ -6,6 +5,7 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    [Obsolete("Use InvoiceUpcomingLinesListOptions instead.")]
     public class UpcomingInvoiceListLineItemsOptions : ListOptions
     {
         /// <summary>
@@ -15,9 +15,11 @@ namespace Stripe
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
-        /// The ID of the coupon to apply to this phase of the subscription schedule. This field has
-        /// been deprecated and will be removed in a future API version. Use <c>discounts</c>
-        /// instead.
+        /// The code of the coupon to apply. If <c>subscription</c> or <c>subscription_items</c> is
+        /// provided, the invoice returned will preview updating or creating a subscription with
+        /// that coupon. Otherwise, it will preview applying that coupon to the customer for the
+        /// next upcoming invoice from among the customer's subscriptions. The invoice can be
+        /// previewed without a coupon by passing this value as an empty string.
         /// </summary>
         [JsonProperty("coupon")]
         public string Coupon { get; set; }
@@ -47,15 +49,17 @@ namespace Stripe
 
         /// <summary>
         /// The coupons to redeem into discounts for the invoice preview. If not specified, inherits
-        /// the discount from the subscription or customer. This works for both coupons directly
-        /// applied to an invoice and coupons applied to a subscription. Pass an empty string to
-        /// avoid inheriting any discounts.
+        /// the discount from the customer or subscription. This only works for coupons directly
+        /// applied to the invoice. To apply a coupon to a subscription, you must use the
+        /// <c>coupon</c> parameter instead. Pass an empty string to avoid inheriting any discounts.
+        /// To preview the upcoming invoice for a subscription that hasn't been created, use
+        /// <c>coupon</c> instead.
         /// </summary>
         [JsonProperty("discounts")]
         public List<InvoiceDiscountOptions> Discounts { get; set; }
 
         /// <summary>
-        /// List of invoice items to add or update in the upcoming invoice preview (up to 250).
+        /// List of invoice items to add or update in the upcoming invoice preview.
         /// </summary>
         [JsonProperty("invoice_items")]
         public List<InvoiceUpcomingInvoiceItemOptions> InvoiceItems { get; set; }
@@ -100,10 +104,10 @@ namespace Stripe
 
         /// <summary>
         /// The identifier of the subscription for which you'd like to retrieve the upcoming
-        /// invoice. If not provided, but a <c>subscription_details.items</c> is provided, you will
-        /// preview creating a subscription with those items. If neither <c>subscription</c> nor
-        /// <c>subscription_details.items</c> is provided, you will retrieve the next upcoming
-        /// invoice from among the customer's subscriptions.
+        /// invoice. If not provided, but a <c>subscription_items</c> is provided, you will preview
+        /// creating a subscription with those items. If neither <c>subscription</c> nor
+        /// <c>subscription_items</c> is provided, you will retrieve the next upcoming invoice from
+        /// among the customer's subscriptions.
         /// </summary>
         [JsonProperty("subscription")]
         public string Subscription { get; set; }
@@ -113,9 +117,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a>. This is
         /// used to determine the date of the first full invoice, and, for plans with <c>month</c>
         /// or <c>year</c> intervals, the day of the month for subsequent invoices. For existing
-        /// subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>. This field
-        /// has been deprecated and will be removed in a future API version. Use
-        /// <c>subscription_details.billing_cycle_anchor</c> instead.
+        /// subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("subscription_billing_cycle_anchor")]
         [JsonConverter(typeof(AnyOfConverter))]
@@ -125,26 +127,21 @@ namespace Stripe
         /// A timestamp at which the subscription should cancel. If set to a date before the current
         /// period ends, this will cause a proration if prorations have been enabled using
         /// <c>proration_behavior</c>. If set during a future period, this will always cause a
-        /// proration for that period. This field has been deprecated and will be removed in a
-        /// future API version. Use <c>subscription_details.cancel_at</c> instead.
+        /// proration for that period.
         /// </summary>
         [JsonProperty("subscription_cancel_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? SubscriptionCancelAt { get; set; }
 
         /// <summary>
-        /// Indicate whether this subscription should cancel at the end of the current period
-        /// (<c>current_period_end</c>). Defaults to <c>false</c>. This field has been deprecated
-        /// and will be removed in a future API version. Use
-        /// <c>subscription_details.cancel_at_period_end</c> instead.
+        /// Boolean indicating whether this subscription should cancel at the end of the current
+        /// period.
         /// </summary>
         [JsonProperty("subscription_cancel_at_period_end")]
         public bool? SubscriptionCancelAtPeriodEnd { get; set; }
 
         /// <summary>
-        /// This simulates the subscription being canceled or expired immediately. This field has
-        /// been deprecated and will be removed in a future API version. Use
-        /// <c>subscription_details.cancel_now</c> instead.
+        /// This simulates the subscription being canceled or expired immediately.
         /// </summary>
         [JsonProperty("subscription_cancel_now")]
         public bool? SubscriptionCancelNow { get; set; }
@@ -152,8 +149,7 @@ namespace Stripe
         /// <summary>
         /// If provided, the invoice returned will preview updating or creating a subscription with
         /// these default tax rates. The default tax rates will apply to any line item that does not
-        /// have <c>tax_rates</c> set. This field has been deprecated and will be removed in a
-        /// future API version. Use <c>subscription_details.default_tax_rates</c> instead.
+        /// have <c>tax_rates</c> set.
         /// </summary>
         [JsonProperty("subscription_default_tax_rates")]
         public List<string> SubscriptionDefaultTaxRates { get; set; }
@@ -166,21 +162,21 @@ namespace Stripe
         public InvoiceSubscriptionDetailsOptions SubscriptionDetails { get; set; }
 
         /// <summary>
-        /// A list of up to 20 subscription items, each with an attached price. This field has been
-        /// deprecated and will be removed in a future API version. Use
-        /// <c>subscription_details.items</c> instead.
+        /// A list of up to 20 subscription items, each with an attached price.
         /// </summary>
         [JsonProperty("subscription_items")]
         public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
+
+        [Obsolete("Use SubscriptionProrationBehavior instead.")]
+        [JsonProperty("subscription_prorate")]
+        public bool? SubscriptionProrate { get; set; }
 
         /// <summary>
         /// Determines how to handle <a
         /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when the
         /// billing cycle changes (e.g., when switching plans, resetting
         /// <c>billing_cycle_anchor=now</c>, or starting a trial), or if an item's <c>quantity</c>
-        /// changes. The default value is <c>create_prorations</c>. This field has been deprecated
-        /// and will be removed in a future API version. Use
-        /// <c>subscription_details.proration_behavior</c> instead.
+        /// changes. The default value is <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("subscription_proration_behavior")]
@@ -193,9 +189,7 @@ namespace Stripe
         /// subscription period and within the current phase of the schedule backing this
         /// subscription, if the schedule exists. If set, <c>subscription</c>, and one of
         /// <c>subscription_items</c>, or <c>subscription_trial_end</c> are required. Also,
-        /// <c>subscription_proration_behavior</c> cannot be set to 'none'. This field has been
-        /// deprecated and will be removed in a future API version. Use
-        /// <c>subscription_details.proration_date</c> instead.
+        /// <c>subscription_proration_behavior</c> cannot be set to 'none'.
         /// </summary>
         [JsonProperty("subscription_proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -203,17 +197,13 @@ namespace Stripe
 
         /// <summary>
         /// For paused subscriptions, setting <c>subscription_resume_at</c> to <c>now</c> will
-        /// preview the invoice that will be generated if the subscription is resumed. This field
-        /// has been deprecated and will be removed in a future API version. Use
-        /// <c>subscription_details.resume_at</c> instead.
+        /// preview the invoice that will be generated if the subscription is resumed.
         /// </summary>
         [JsonProperty("subscription_resume_at")]
         public string SubscriptionResumeAt { get; set; }
 
         /// <summary>
-        /// Date a subscription is intended to start (can be future or past). This field has been
-        /// deprecated and will be removed in a future API version. Use
-        /// <c>subscription_details.start_date</c> instead.
+        /// Date a subscription is intended to start (can be future or past).
         /// </summary>
         [JsonProperty("subscription_start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -222,8 +212,7 @@ namespace Stripe
         /// <summary>
         /// If provided, the invoice returned will preview updating or creating a subscription with
         /// that trial end. If set, one of <c>subscription_items</c> or <c>subscription</c> is
-        /// required. This field has been deprecated and will be removed in a future API version.
-        /// Use <c>subscription_details.trial_end</c> instead.
+        /// required.
         /// </summary>
         [JsonProperty("subscription_trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]

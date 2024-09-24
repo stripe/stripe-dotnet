@@ -20,7 +20,7 @@ namespace StripeTests
 
             Assert.Equal(
                 "individual[first_name]=first+name&individual[last_name]=last+name",
-                FormEncoder.CreateQueryString(options));
+                ContentEncoder.CreateQueryString(options));
         }
     }
 }

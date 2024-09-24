@@ -1,6 +1,8 @@
-// File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System;
+
+    [Obsolete("Use SessionLineItemListOptions instead.")]
     public class SessionListLineItemsOptions : ListOptions
     {
     }

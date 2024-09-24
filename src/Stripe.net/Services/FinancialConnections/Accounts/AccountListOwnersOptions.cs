@@ -1,8 +1,9 @@
-// File generated from our OpenAPI spec
 namespace Stripe.FinancialConnections
 {
+    using System;
     using Newtonsoft.Json;
 
+    [Obsolete("Use AccountOwnerListOptions instead.")]
     public class AccountListOwnersOptions : ListOptions
     {
         /// <summary>

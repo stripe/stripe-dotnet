@@ -47,7 +47,10 @@ namespace StripeTests
 
                     Type expectedConverterType = null;
                     Type[] expectedGenericTypeArguments = null;
-                    if (propType == typeof(DateTime))
+
+                    // In V1 DateTime properties require a UnixDateTimeConverter, in V2
+                    // datetime conversion is handled by Newtonsoft.Json
+                    if (propType == typeof(DateTime) && !stripeClass.Namespace.Contains("V2") && !stripeClass.Name.Equals("ThinEvent"))
                     {
                         expectedConverterType = typeof(UnixDateTimeConverter);
                     }

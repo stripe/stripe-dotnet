@@ -1,10 +1,11 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    [Obsolete("Use AccountExternalAccountCreateOptions instead.")]
     public class ExternalAccountCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>

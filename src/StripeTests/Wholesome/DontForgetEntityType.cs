@@ -35,6 +35,16 @@ namespace StripeTests
                     continue;
                 }
 
+                if (baseType == typeof(Stripe.ThinEvent))
+                {
+                    continue;
+                }
+
+                if (baseType == typeof(Stripe.StripeError))
+                {
+                    continue;
+                }
+
                 if (!baseType.GetTypeInfo().IsGenericType ||
                     baseType.GetGenericTypeDefinition() != typeof(StripeEntity<>))
                 {
