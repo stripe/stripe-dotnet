@@ -5,6 +5,9 @@ namespace Stripe
 
     public class DisputePaymentMethodDetails : StripeEntity<DisputePaymentMethodDetails>
     {
+        [JsonProperty("amazon_pay")]
+        public DisputePaymentMethodDetailsAmazonPay AmazonPay { get; set; }
+
         [JsonProperty("card")]
         public DisputePaymentMethodDetailsCard Card { get; set; }
 
@@ -16,7 +19,7 @@ namespace Stripe
 
         /// <summary>
         /// Payment method type.
-        /// One of: <c>card</c>, <c>klarna</c>, or <c>paypal</c>.
+        /// One of: <c>amazon_pay</c>, <c>card</c>, <c>klarna</c>, or <c>paypal</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

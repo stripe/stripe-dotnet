@@ -1,5 +1,12 @@
 # Changelog
 
+## 45.14.0 - 2024-09-18
+* [#2969](https://github.com/stripe/stripe-dotnet/pull/2969) Update generated code
+  * Add support for `PayerDetails` on `ChargePaymentMethodDetailsKlarna`
+  * Add support for `AmazonPay` on `DisputePaymentMethodDetails`
+  * Add support for `AutomaticallyFinalizesAt` on `Invoice`
+  * Add support for `StateSalesTax` on `TaxRegistrationCountryOptionsUsOptions` and `TaxRegistrationCountryOptionsUs`
+
 ## 45.13.0 - 2024-09-13
 * [#2962](https://github.com/stripe/stripe-dotnet/pull/2962) Update generated code
   * Add support for new resource `InvoiceRenderingTemplate`
