@@ -47,6 +47,10 @@ namespace Stripe
             switch (type)
             {
                 // The beginning of the section generated from our OpenAPI spec
+                case "temporary_session_expired":
+                    ret = Stripe.V2.TemporarySessionExpiredException.Parse(httpStatusCode, body);
+                    break;
+
                 case "financial_account_not_open":
                     ret = Stripe.V2.FinancialAccountNotOpenException.Parse(httpStatusCode, body);
                     break;

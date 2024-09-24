@@ -30,7 +30,7 @@ namespace StripeTests
                 Type = "account_onboarding",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.AccountLinks;
+            var service = client.V1.AccountLinks;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/account_links");
         }
@@ -39,7 +39,7 @@ namespace StripeTests
         public void TestAccountsCapabilitiesGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts.Capabilities;
+            var service = client.V1.Accounts.Capabilities;
             StripeList<Capability> capabilities = service.List(
                 "acct_xxxxxxxxxxxxx");
             this.AssertRequest(
@@ -51,7 +51,7 @@ namespace StripeTests
         public void TestAccountsCapabilitiesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts.Capabilities;
+            var service = client.V1.Accounts.Capabilities;
             service.Get("acct_xxxxxxxxxxxxx", "card_payments");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -66,7 +66,7 @@ namespace StripeTests
                 Requested = true,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts.Capabilities;
+            var service = client.V1.Accounts.Capabilities;
             service.Update("acct_xxxxxxxxxxxxx", "card_payments", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -77,7 +77,7 @@ namespace StripeTests
         public void TestAccountsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts;
+            var service = client.V1.Accounts;
             service.Delete("acct_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -89,7 +89,7 @@ namespace StripeTests
         {
             var options = new AccountListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts;
+            var service = client.V1.Accounts;
             StripeList<Account> accounts = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/accounts", "limit=3");
         }
@@ -98,7 +98,7 @@ namespace StripeTests
         public void TestAccountsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts;
+            var service = client.V1.Accounts;
             service.Get("acct_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -109,7 +109,7 @@ namespace StripeTests
         public void TestAccountsLoginLinksPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts.LoginLinks;
+            var service = client.V1.Accounts.LoginLinks;
             service.Create("acct_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -120,7 +120,7 @@ namespace StripeTests
         public void TestAccountsPersonsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts.Persons;
+            var service = client.V1.Accounts.Persons;
             service.Delete("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -132,7 +132,7 @@ namespace StripeTests
         {
             var options = new AccountPersonListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts.Persons;
+            var service = client.V1.Accounts.Persons;
             StripeList<Person> persons = service.List(
                 "acct_xxxxxxxxxxxxx",
                 options);
@@ -146,7 +146,7 @@ namespace StripeTests
         public void TestAccountsPersonsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts.Persons;
+            var service = client.V1.Accounts.Persons;
             service.Get("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -162,7 +162,7 @@ namespace StripeTests
                 LastName = "Diaz",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts.Persons;
+            var service = client.V1.Accounts.Persons;
             service.Create("acct_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -180,7 +180,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts.Persons;
+            var service = client.V1.Accounts.Persons;
             service.Update(
                 "acct_xxxxxxxxxxxxx",
                 "person_xxxxxxxxxxxxx",
@@ -211,7 +211,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts;
+            var service = client.V1.Accounts;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/accounts");
         }
@@ -227,7 +227,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts;
+            var service = client.V1.Accounts;
             service.Update("acct_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -239,7 +239,7 @@ namespace StripeTests
         {
             var options = new AccountRejectOptions { Reason = "fraud" };
             var client = new StripeClient(this.Requestor);
-            var service = client.Accounts;
+            var service = client.V1.Accounts;
             service.Reject("acct_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -251,7 +251,7 @@ namespace StripeTests
         {
             var options = new ApplicationFeeListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.ApplicationFees;
+            var service = client.V1.ApplicationFees;
             StripeList<ApplicationFee> applicationFees = service.List(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -263,7 +263,7 @@ namespace StripeTests
         public void TestApplicationFeesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.ApplicationFees;
+            var service = client.V1.ApplicationFees;
             service.Get("fee_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -275,7 +275,7 @@ namespace StripeTests
         {
             var options = new ApplicationFeeRefundListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.ApplicationFees.Refunds;
+            var service = client.V1.ApplicationFees.Refunds;
             StripeList<ApplicationFeeRefund> applicationFeeRefunds = service
                 .List("fee_xxxxxxxxxxxxx", options);
             this.AssertRequest(
@@ -288,7 +288,7 @@ namespace StripeTests
         public void TestApplicationFeesRefundsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.ApplicationFees.Refunds;
+            var service = client.V1.ApplicationFees.Refunds;
             service.Get("fee_xxxxxxxxxxxxx", "fr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -299,7 +299,7 @@ namespace StripeTests
         public void TestApplicationFeesRefundsPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.ApplicationFees.Refunds;
+            var service = client.V1.ApplicationFees.Refunds;
             service.Create("fee_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -317,7 +317,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.ApplicationFees.Refunds;
+            var service = client.V1.ApplicationFees.Refunds;
             service.Update("fee_xxxxxxxxxxxxx", "fr_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -333,7 +333,7 @@ namespace StripeTests
                 Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Apps.Secrets;
+            var service = client.V1.Apps.Secrets;
             service.DeleteWhere(options);
             this.AssertRequest(HttpMethod.Post, "/v1/apps/secrets/delete");
         }
@@ -347,7 +347,7 @@ namespace StripeTests
                 Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Apps.Secrets;
+            var service = client.V1.Apps.Secrets;
             service.Find(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -364,7 +364,7 @@ namespace StripeTests
                 Limit = 2,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Apps.Secrets;
+            var service = client.V1.Apps.Secrets;
             StripeList<Stripe.Apps.Secret> secrets = service.List(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -381,7 +381,7 @@ namespace StripeTests
                 Limit = 2,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Apps.Secrets;
+            var service = client.V1.Apps.Secrets;
             StripeList<Stripe.Apps.Secret> secrets = service.List(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -399,7 +399,7 @@ namespace StripeTests
                 Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Apps.Secrets;
+            var service = client.V1.Apps.Secrets;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/apps/secrets");
         }
@@ -414,7 +414,7 @@ namespace StripeTests
                 Scope = new Stripe.Apps.SecretScopeOptions { Type = "account" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Apps.Secrets;
+            var service = client.V1.Apps.Secrets;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/apps/secrets");
         }
@@ -424,7 +424,7 @@ namespace StripeTests
         {
             var options = new BalanceTransactionListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.BalanceTransactions;
+            var service = client.V1.BalanceTransactions;
             StripeList<BalanceTransaction> balanceTransactions = service.List(
                 options);
             this.AssertRequest(
@@ -437,7 +437,7 @@ namespace StripeTests
         public void TestBalanceTransactionsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.BalanceTransactions;
+            var service = client.V1.BalanceTransactions;
             service.Get("txn_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -452,7 +452,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.BillingPortal.Configurations;
+            var service = client.V1.BillingPortal.Configurations;
             StripeList<Stripe.BillingPortal.Configuration> configurations = service
                 .List(options);
             this.AssertRequest(
@@ -465,7 +465,7 @@ namespace StripeTests
         public void TestBillingPortalConfigurationsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.BillingPortal.Configurations;
+            var service = client.V1.BillingPortal.Configurations;
             service.Get("bpc_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -496,7 +496,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.BillingPortal.Configurations;
+            var service = client.V1.BillingPortal.Configurations;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -515,7 +515,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.BillingPortal.Configurations;
+            var service = client.V1.BillingPortal.Configurations;
             service.Update("bpc_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -531,7 +531,7 @@ namespace StripeTests
                 ReturnUrl = "https://example.com/account",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.BillingPortal.Sessions;
+            var service = client.V1.BillingPortal.Sessions;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/billing_portal/sessions");
         }
@@ -540,7 +540,7 @@ namespace StripeTests
         public void TestChargesCapturePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Charges;
+            var service = client.V1.Charges;
             service.Capture("ch_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -552,7 +552,7 @@ namespace StripeTests
         {
             var options = new ChargeListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Charges;
+            var service = client.V1.Charges;
             StripeList<Charge> charges = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/charges", "limit=3");
         }
@@ -561,7 +561,7 @@ namespace StripeTests
         public void TestChargesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Charges;
+            var service = client.V1.Charges;
             service.Get("ch_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/charges/ch_xxxxxxxxxxxxx");
         }
@@ -577,7 +577,7 @@ namespace StripeTests
                 Description = "My First Test Charge (created for API docs at https://www.stripe.com/docs/api)",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Charges;
+            var service = client.V1.Charges;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/charges");
         }
@@ -593,7 +593,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Charges;
+            var service = client.V1.Charges;
             service.Update("ch_xxxxxxxxxxxxx", options);
             this.AssertRequest(HttpMethod.Post, "/v1/charges/ch_xxxxxxxxxxxxx");
         }
@@ -606,7 +606,7 @@ namespace StripeTests
                 Query = "amount>999 AND metadata['order_id']:'6735'",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Charges;
+            var service = client.V1.Charges;
             service.Search(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -618,7 +618,7 @@ namespace StripeTests
         public void TestCheckoutSessionsExpirePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Checkout.Sessions;
+            var service = client.V1.Checkout.Sessions;
             service.Expire("sess_xyz");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -629,7 +629,7 @@ namespace StripeTests
         public void TestCheckoutSessionsExpirePost2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Checkout.Sessions;
+            var service = client.V1.Checkout.Sessions;
             service.Expire("cs_test_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -641,7 +641,7 @@ namespace StripeTests
         {
             var options = new Stripe.Checkout.SessionListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Checkout.Sessions;
+            var service = client.V1.Checkout.Sessions;
             StripeList<Stripe.Checkout.Session> sessions = service.List(
                 options);
             this.AssertRequest(
@@ -654,7 +654,7 @@ namespace StripeTests
         public void TestCheckoutSessionsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Checkout.Sessions;
+            var service = client.V1.Checkout.Sessions;
             service.Get("cs_test_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -665,7 +665,7 @@ namespace StripeTests
         public void TestCheckoutSessionsLineItemsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Checkout.Sessions.LineItems;
+            var service = client.V1.Checkout.Sessions.LineItems;
             StripeList<LineItem> lineItems = service.List("sess_xyz");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -709,7 +709,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Checkout.Sessions;
+            var service = client.V1.Checkout.Sessions;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/checkout/sessions");
         }
@@ -731,7 +731,7 @@ namespace StripeTests
                 Mode = "payment",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Checkout.Sessions;
+            var service = client.V1.Checkout.Sessions;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/checkout/sessions");
         }
@@ -741,7 +741,7 @@ namespace StripeTests
         {
             var options = new CountrySpecListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.CountrySpecs;
+            var service = client.V1.CountrySpecs;
             StripeList<CountrySpec> countrySpecs = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/country_specs", "limit=3");
         }
@@ -750,7 +750,7 @@ namespace StripeTests
         public void TestCountrySpecsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.CountrySpecs;
+            var service = client.V1.CountrySpecs;
             service.Get("US");
             this.AssertRequest(HttpMethod.Get, "/v1/country_specs/US");
         }
@@ -759,7 +759,7 @@ namespace StripeTests
         public void TestCouponsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Coupons;
+            var service = client.V1.Coupons;
             service.Delete("Z4OV52SU");
             this.AssertRequest(HttpMethod.Delete, "/v1/coupons/Z4OV52SU");
         }
@@ -769,7 +769,7 @@ namespace StripeTests
         {
             var options = new CouponListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Coupons;
+            var service = client.V1.Coupons;
             StripeList<Coupon> coupons = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/coupons", "limit=3");
         }
@@ -778,7 +778,7 @@ namespace StripeTests
         public void TestCouponsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Coupons;
+            var service = client.V1.Coupons;
             service.Get("Z4OV52SU");
             this.AssertRequest(HttpMethod.Get, "/v1/coupons/Z4OV52SU");
         }
@@ -793,7 +793,7 @@ namespace StripeTests
                 DurationInMonths = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Coupons;
+            var service = client.V1.Coupons;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/coupons");
         }
@@ -809,7 +809,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Coupons;
+            var service = client.V1.Coupons;
             service.Update("Z4OV52SU", options);
             this.AssertRequest(HttpMethod.Post, "/v1/coupons/Z4OV52SU");
         }
@@ -819,7 +819,7 @@ namespace StripeTests
         {
             var options = new CreditNoteListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.CreditNotes;
+            var service = client.V1.CreditNotes;
             StripeList<CreditNote> creditNotes = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/credit_notes", "limit=3");
         }
@@ -841,7 +841,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.CreditNotes;
+            var service = client.V1.CreditNotes;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/credit_notes");
         }
@@ -863,7 +863,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.CreditNotes;
+            var service = client.V1.CreditNotes;
             service.Preview(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -875,7 +875,7 @@ namespace StripeTests
         public void TestCreditNotesVoidPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.CreditNotes;
+            var service = client.V1.CreditNotes;
             service.VoidCreditNote("cn_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -897,7 +897,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.CustomerSessions;
+            var service = client.V1.CustomerSessions;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/customer_sessions");
         }
@@ -910,7 +910,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.BalanceTransactions;
+            var service = client.V1.Customers.BalanceTransactions;
             StripeList<CustomerBalanceTransaction> customerBalanceTransactions = service
                 .List("cus_xxxxxxxxxxxxx", options);
             this.AssertRequest(
@@ -923,7 +923,7 @@ namespace StripeTests
         public void TestCustomersBalanceTransactionsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.BalanceTransactions;
+            var service = client.V1.Customers.BalanceTransactions;
             service.Get("cus_xxxxxxxxxxxxx", "cbtxn_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -939,7 +939,7 @@ namespace StripeTests
                 Currency = "usd",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.BalanceTransactions;
+            var service = client.V1.Customers.BalanceTransactions;
             service.Create("cus_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -957,7 +957,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.BalanceTransactions;
+            var service = client.V1.Customers.BalanceTransactions;
             service.Update("cus_xxxxxxxxxxxxx", "cbtxn_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -968,7 +968,7 @@ namespace StripeTests
         public void TestCustomersCashBalanceGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.CashBalance;
+            var service = client.V1.Customers.CashBalance;
             service.Get("cus_123");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -986,7 +986,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.CashBalance;
+            var service = client.V1.Customers.CashBalance;
             service.Update("cus_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1001,7 +1001,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.CashBalanceTransactions;
+            var service = client.V1.Customers.CashBalanceTransactions;
             StripeList<CustomerCashBalanceTransaction> customerCashBalanceTransactions = service
                 .List("cus_123", options);
             this.AssertRequest(
@@ -1014,7 +1014,7 @@ namespace StripeTests
         public void TestCustomersDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers;
+            var service = client.V1.Customers;
             service.Delete("cus_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -1035,7 +1035,7 @@ namespace StripeTests
                 FundingType = "bank_transfer",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.FundingInstructions;
+            var service = client.V1.Customers.FundingInstructions;
             service.Create("cus_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1047,7 +1047,7 @@ namespace StripeTests
         {
             var options = new CustomerListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers;
+            var service = client.V1.Customers;
             StripeList<Customer> customers = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/customers", "limit=3");
         }
@@ -1057,7 +1057,7 @@ namespace StripeTests
         {
             var options = new CustomerListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers;
+            var service = client.V1.Customers;
             StripeList<Customer> customers = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/customers", "limit=3");
         }
@@ -1066,7 +1066,7 @@ namespace StripeTests
         public void TestCustomersGet3()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers;
+            var service = client.V1.Customers;
             service.Get("cus_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1081,7 +1081,7 @@ namespace StripeTests
                 Type = "card",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.PaymentMethods;
+            var service = client.V1.Customers.PaymentMethods;
             StripeList<PaymentMethod> paymentMethods = service.List(
                 "cus_xyz",
                 options);
@@ -1099,7 +1099,7 @@ namespace StripeTests
                 Type = "card",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.PaymentMethods;
+            var service = client.V1.Customers.PaymentMethods;
             StripeList<PaymentMethod> paymentMethods = service.List(
                 "cus_xxxxxxxxxxxxx",
                 options);
@@ -1117,7 +1117,7 @@ namespace StripeTests
                 Description = "My First Test Customer (created for API docs at https://www.stripe.com/docs/api)",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers;
+            var service = client.V1.Customers;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/customers");
         }
@@ -1133,7 +1133,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers;
+            var service = client.V1.Customers;
             service.Update("cus_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1148,7 +1148,7 @@ namespace StripeTests
                 Query = "name:'fakename' AND metadata['foo']:'bar'",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers;
+            var service = client.V1.Customers;
             service.Search(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1164,7 +1164,7 @@ namespace StripeTests
                 Query = "name:'fakename' AND metadata['foo']:'bar'",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers;
+            var service = client.V1.Customers;
             service.Search(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1176,7 +1176,7 @@ namespace StripeTests
         public void TestCustomersTaxIdsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.TaxIds;
+            var service = client.V1.Customers.TaxIds;
             service.Delete("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -1188,7 +1188,7 @@ namespace StripeTests
         {
             var options = new CustomerTaxIdListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.TaxIds;
+            var service = client.V1.Customers.TaxIds;
             StripeList<TaxId> taxIds = service.List(
                 "cus_xxxxxxxxxxxxx",
                 options);
@@ -1202,7 +1202,7 @@ namespace StripeTests
         public void TestCustomersTaxIdsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.TaxIds;
+            var service = client.V1.Customers.TaxIds;
             service.Get("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1218,7 +1218,7 @@ namespace StripeTests
                 Value = "DE123456789",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Customers.TaxIds;
+            var service = client.V1.Customers.TaxIds;
             service.Create("cus_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1229,7 +1229,7 @@ namespace StripeTests
         public void TestDisputesClosePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Disputes;
+            var service = client.V1.Disputes;
             service.Close("dp_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1241,7 +1241,7 @@ namespace StripeTests
         {
             var options = new DisputeListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Disputes;
+            var service = client.V1.Disputes;
             StripeList<Dispute> disputes = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/disputes", "limit=3");
         }
@@ -1250,7 +1250,7 @@ namespace StripeTests
         public void TestDisputesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Disputes;
+            var service = client.V1.Disputes;
             service.Get("dp_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/disputes/dp_xxxxxxxxxxxxx");
         }
@@ -1266,7 +1266,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Disputes;
+            var service = client.V1.Disputes;
             service.Update("dp_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1278,7 +1278,7 @@ namespace StripeTests
         {
             var options = new EventListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Events;
+            var service = client.V1.Events;
             StripeList<Event> events = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/events", "limit=3");
         }
@@ -1287,7 +1287,7 @@ namespace StripeTests
         public void TestEventsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Events;
+            var service = client.V1.Events;
             service.Get("evt_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/events/evt_xxxxxxxxxxxxx");
         }
@@ -1297,7 +1297,7 @@ namespace StripeTests
         {
             var options = new FileLinkListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.FileLinks;
+            var service = client.V1.FileLinks;
             StripeList<FileLink> fileLinks = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/file_links", "limit=3");
         }
@@ -1306,7 +1306,7 @@ namespace StripeTests
         public void TestFileLinksGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.FileLinks;
+            var service = client.V1.FileLinks;
             service.Get("link_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1321,7 +1321,7 @@ namespace StripeTests
                 File = "file_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FileLinks;
+            var service = client.V1.FileLinks;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/file_links");
         }
@@ -1337,7 +1337,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FileLinks;
+            var service = client.V1.FileLinks;
             service.Update("link_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1349,7 +1349,7 @@ namespace StripeTests
         {
             var options = new FileListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Files;
+            var service = client.V1.Files;
             StripeList<File> files = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/files", "limit=3");
         }
@@ -1358,7 +1358,7 @@ namespace StripeTests
         public void TestFilesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Files;
+            var service = client.V1.Files;
             service.Get("file_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/files/file_xxxxxxxxxxxxx");
         }
@@ -1373,7 +1373,7 @@ namespace StripeTests
                     System.Text.Encoding.UTF8.GetBytes("File contents")),
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Files;
+            var service = client.V1.Files;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/files");
         }
@@ -1382,7 +1382,7 @@ namespace StripeTests
         public void TestFinancialConnectionsAccountsDisconnectPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts;
+            var service = client.V1.FinancialConnections.Accounts;
             service.Disconnect("fca_xyz");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1393,7 +1393,7 @@ namespace StripeTests
         public void TestFinancialConnectionsAccountsDisconnectPost2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts;
+            var service = client.V1.FinancialConnections.Accounts;
             service.Disconnect("fca_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1404,7 +1404,7 @@ namespace StripeTests
         public void TestFinancialConnectionsAccountsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts;
+            var service = client.V1.FinancialConnections.Accounts;
             StripeList<Stripe.FinancialConnections.Account> accounts = service
                 .List();
             this.AssertRequest(
@@ -1416,7 +1416,7 @@ namespace StripeTests
         public void TestFinancialConnectionsAccountsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts;
+            var service = client.V1.FinancialConnections.Accounts;
             service.Get("fca_xyz");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1434,7 +1434,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts;
+            var service = client.V1.FinancialConnections.Accounts;
             StripeList<Stripe.FinancialConnections.Account> accounts = service
                 .List(options);
             this.AssertRequest(
@@ -1447,7 +1447,7 @@ namespace StripeTests
         public void TestFinancialConnectionsAccountsGet4()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts;
+            var service = client.V1.FinancialConnections.Accounts;
             service.Get("fca_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1462,7 +1462,7 @@ namespace StripeTests
                 Ownership = "fcaowns_xyz",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts.Owners;
+            var service = client.V1.FinancialConnections.Accounts.Owners;
             StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
                 .List("fca_xyz", options);
             this.AssertRequest(
@@ -1480,7 +1480,7 @@ namespace StripeTests
                 Ownership = "fcaowns_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts.Owners;
+            var service = client.V1.FinancialConnections.Accounts.Owners;
             StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
                 .List("fca_xxxxxxxxxxxxx", options);
             this.AssertRequest(
@@ -1497,7 +1497,7 @@ namespace StripeTests
                 Features = new List<string> { "balance" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts;
+            var service = client.V1.FinancialConnections.Accounts;
             service.Refresh("fca_xyz", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1512,7 +1512,7 @@ namespace StripeTests
                 Features = new List<string> { "transactions" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts;
+            var service = client.V1.FinancialConnections.Accounts;
             service.Subscribe("fa_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1527,7 +1527,7 @@ namespace StripeTests
                 Features = new List<string> { "transactions" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Accounts;
+            var service = client.V1.FinancialConnections.Accounts;
             service.Unsubscribe("fa_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1538,7 +1538,7 @@ namespace StripeTests
         public void TestFinancialConnectionsSessionsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Sessions;
+            var service = client.V1.FinancialConnections.Sessions;
             service.Get("fcsess_xyz");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1549,7 +1549,7 @@ namespace StripeTests
         public void TestFinancialConnectionsSessionsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Sessions;
+            var service = client.V1.FinancialConnections.Sessions;
             service.Get("fcsess_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1569,7 +1569,7 @@ namespace StripeTests
                 Permissions = new List<string> { "balances" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Sessions;
+            var service = client.V1.FinancialConnections.Sessions;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1593,7 +1593,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Sessions;
+            var service = client.V1.FinancialConnections.Sessions;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1604,7 +1604,7 @@ namespace StripeTests
         public void TestFinancialConnectionsTransactionsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Transactions;
+            var service = client.V1.FinancialConnections.Transactions;
             service.Get("tr_123");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1619,7 +1619,7 @@ namespace StripeTests
                 Account = "fca_xyz",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.FinancialConnections.Transactions;
+            var service = client.V1.FinancialConnections.Transactions;
             StripeList<Stripe.FinancialConnections.Transaction> transactions = service
                 .List(options);
             this.AssertRequest(
@@ -1636,7 +1636,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Identity.VerificationReports;
+            var service = client.V1.Identity.VerificationReports;
             StripeList<Stripe.Identity.VerificationReport> verificationReports = service
                 .List(options);
             this.AssertRequest(
@@ -1649,7 +1649,7 @@ namespace StripeTests
         public void TestIdentityVerificationReportsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Identity.VerificationReports;
+            var service = client.V1.Identity.VerificationReports;
             service.Get("vr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1660,7 +1660,7 @@ namespace StripeTests
         public void TestIdentityVerificationSessionsCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Identity.VerificationSessions;
+            var service = client.V1.Identity.VerificationSessions;
             service.Cancel("vs_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1675,7 +1675,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Identity.VerificationSessions;
+            var service = client.V1.Identity.VerificationSessions;
             StripeList<Stripe.Identity.VerificationSession> verificationSessions = service
                 .List(options);
             this.AssertRequest(
@@ -1688,7 +1688,7 @@ namespace StripeTests
         public void TestIdentityVerificationSessionsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Identity.VerificationSessions;
+            var service = client.V1.Identity.VerificationSessions;
             service.Get("vs_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1703,7 +1703,7 @@ namespace StripeTests
                 Type = "document",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Identity.VerificationSessions;
+            var service = client.V1.Identity.VerificationSessions;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1718,7 +1718,7 @@ namespace StripeTests
                 Type = "id_number",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Identity.VerificationSessions;
+            var service = client.V1.Identity.VerificationSessions;
             service.Update("vs_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1729,7 +1729,7 @@ namespace StripeTests
         public void TestIdentityVerificationSessionsRedactPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Identity.VerificationSessions;
+            var service = client.V1.Identity.VerificationSessions;
             service.Redact("vs_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1740,7 +1740,7 @@ namespace StripeTests
         public void TestInvoiceitemsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.InvoiceItems;
+            var service = client.V1.InvoiceItems;
             service.Delete("ii_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -1752,7 +1752,7 @@ namespace StripeTests
         {
             var options = new InvoiceItemListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.InvoiceItems;
+            var service = client.V1.InvoiceItems;
             StripeList<InvoiceItem> invoiceItems = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/invoiceitems", "limit=3");
         }
@@ -1761,7 +1761,7 @@ namespace StripeTests
         public void TestInvoiceitemsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.InvoiceItems;
+            var service = client.V1.InvoiceItems;
             service.Get("ii_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1777,7 +1777,7 @@ namespace StripeTests
                 Price = "price_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.InvoiceItems;
+            var service = client.V1.InvoiceItems;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/invoiceitems");
         }
@@ -1793,7 +1793,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.InvoiceItems;
+            var service = client.V1.InvoiceItems;
             service.Update("ii_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1804,7 +1804,7 @@ namespace StripeTests
         public void TestInvoicesDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.Delete("in_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -1815,7 +1815,7 @@ namespace StripeTests
         public void TestInvoicesFinalizePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.FinalizeInvoice("in_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1827,7 +1827,7 @@ namespace StripeTests
         {
             var options = new InvoiceListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             StripeList<Invoice> invoices = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/invoices", "limit=3");
         }
@@ -1836,7 +1836,7 @@ namespace StripeTests
         public void TestInvoicesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.Get("in_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/invoices/in_xxxxxxxxxxxxx");
         }
@@ -1849,7 +1849,7 @@ namespace StripeTests
                 Expand = new List<string> { "customer" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.Get("in_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1861,7 +1861,7 @@ namespace StripeTests
         public void TestInvoicesMarkUncollectiblePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.MarkUncollectible("in_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1872,7 +1872,7 @@ namespace StripeTests
         public void TestInvoicesPayPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.Pay("in_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1887,7 +1887,7 @@ namespace StripeTests
                 Customer = "cus_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/invoices");
         }
@@ -1903,7 +1903,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.Update("in_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1918,7 +1918,7 @@ namespace StripeTests
                 Query = "total>999 AND metadata['order_id']:'6735'",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.Search(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1930,7 +1930,7 @@ namespace StripeTests
         public void TestInvoicesSendPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.SendInvoice("in_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1945,7 +1945,7 @@ namespace StripeTests
                 Customer = "cus_9utnxg47pWjV1e",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.Upcoming(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1957,7 +1957,7 @@ namespace StripeTests
         public void TestInvoicesVoidPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Invoices;
+            var service = client.V1.Invoices;
             service.VoidInvoice("in_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1968,7 +1968,7 @@ namespace StripeTests
         public void TestIssuingAuthorizationsApprovePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Authorizations;
+            var service = client.V1.Issuing.Authorizations;
             service.Approve("iauth_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1979,7 +1979,7 @@ namespace StripeTests
         public void TestIssuingAuthorizationsDeclinePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Authorizations;
+            var service = client.V1.Issuing.Authorizations;
             service.Decline("iauth_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1994,7 +1994,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Authorizations;
+            var service = client.V1.Issuing.Authorizations;
             StripeList<Stripe.Issuing.Authorization> authorizations = service
                 .List(options);
             this.AssertRequest(
@@ -2007,7 +2007,7 @@ namespace StripeTests
         public void TestIssuingAuthorizationsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Authorizations;
+            var service = client.V1.Issuing.Authorizations;
             service.Get("iauth_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2025,7 +2025,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Authorizations;
+            var service = client.V1.Issuing.Authorizations;
             service.Update("iauth_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2040,7 +2040,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Cardholders;
+            var service = client.V1.Issuing.Cardholders;
             StripeList<Stripe.Issuing.Cardholder> cardholders = service.List(
                 options);
             this.AssertRequest(
@@ -2053,7 +2053,7 @@ namespace StripeTests
         public void TestIssuingCardholdersGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Cardholders;
+            var service = client.V1.Issuing.Cardholders;
             service.Get("ich_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2082,7 +2082,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Cardholders;
+            var service = client.V1.Issuing.Cardholders;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/issuing/cardholders");
         }
@@ -2098,7 +2098,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Cardholders;
+            var service = client.V1.Issuing.Cardholders;
             service.Update("ich_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2110,7 +2110,7 @@ namespace StripeTests
         {
             var options = new Stripe.Issuing.CardListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Cards;
+            var service = client.V1.Issuing.Cards;
             StripeList<Stripe.Issuing.Card> cards = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/issuing/cards", "limit=3");
         }
@@ -2119,7 +2119,7 @@ namespace StripeTests
         public void TestIssuingCardsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Cards;
+            var service = client.V1.Issuing.Cards;
             service.Get("ic_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2136,7 +2136,7 @@ namespace StripeTests
                 Type = "virtual",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Cards;
+            var service = client.V1.Issuing.Cards;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/issuing/cards");
         }
@@ -2152,7 +2152,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Cards;
+            var service = client.V1.Issuing.Cards;
             service.Update("ic_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2164,7 +2164,7 @@ namespace StripeTests
         {
             var options = new Stripe.Issuing.DisputeListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Disputes;
+            var service = client.V1.Issuing.Disputes;
             StripeList<Stripe.Issuing.Dispute> disputes = service.List(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2176,7 +2176,7 @@ namespace StripeTests
         public void TestIssuingDisputesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Disputes;
+            var service = client.V1.Issuing.Disputes;
             service.Get("idp_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2199,7 +2199,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Disputes;
+            var service = client.V1.Issuing.Disputes;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/issuing/disputes");
         }
@@ -2208,7 +2208,7 @@ namespace StripeTests
         public void TestIssuingDisputesSubmitPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Disputes;
+            var service = client.V1.Issuing.Disputes;
             service.Submit("idp_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2219,7 +2219,7 @@ namespace StripeTests
         public void TestIssuingPersonalizationDesignsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.PersonalizationDesigns;
+            var service = client.V1.Issuing.PersonalizationDesigns;
             StripeList<Stripe.Issuing.PersonalizationDesign> personalizationDesigns = service
                 .List();
             this.AssertRequest(
@@ -2231,7 +2231,7 @@ namespace StripeTests
         public void TestIssuingPersonalizationDesignsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.PersonalizationDesigns;
+            var service = client.V1.Issuing.PersonalizationDesigns;
             service.Get("pd_xyz");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2246,7 +2246,7 @@ namespace StripeTests
                 PhysicalBundle = "pb_xyz",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.PersonalizationDesigns;
+            var service = client.V1.Issuing.PersonalizationDesigns;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2258,7 +2258,7 @@ namespace StripeTests
         {
             var options = new Stripe.Issuing.PersonalizationDesignUpdateOptions();
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.PersonalizationDesigns;
+            var service = client.V1.Issuing.PersonalizationDesigns;
             service.Update("pd_xyz", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2269,7 +2269,7 @@ namespace StripeTests
         public void TestIssuingPhysicalBundlesGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.PhysicalBundles;
+            var service = client.V1.Issuing.PhysicalBundles;
             StripeList<Stripe.Issuing.PhysicalBundle> physicalBundles = service
                 .List();
             this.AssertRequest(HttpMethod.Get, "/v1/issuing/physical_bundles");
@@ -2279,7 +2279,7 @@ namespace StripeTests
         public void TestIssuingPhysicalBundlesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.PhysicalBundles;
+            var service = client.V1.Issuing.PhysicalBundles;
             service.Get("pb_xyz");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2294,7 +2294,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Transactions;
+            var service = client.V1.Issuing.Transactions;
             StripeList<Stripe.Issuing.Transaction> transactions = service.List(
                 options);
             this.AssertRequest(
@@ -2307,7 +2307,7 @@ namespace StripeTests
         public void TestIssuingTransactionsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Transactions;
+            var service = client.V1.Issuing.Transactions;
             service.Get("ipi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2325,7 +2325,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Issuing.Transactions;
+            var service = client.V1.Issuing.Transactions;
             service.Update("ipi_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2336,7 +2336,7 @@ namespace StripeTests
         public void TestMandatesGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Mandates;
+            var service = client.V1.Mandates;
             service.Get("mandate_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2347,7 +2347,7 @@ namespace StripeTests
         public void TestPaymentIntentsApplyCustomerBalancePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.ApplyCustomerBalance("pi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2358,7 +2358,7 @@ namespace StripeTests
         public void TestPaymentIntentsCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.Cancel("pi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2369,7 +2369,7 @@ namespace StripeTests
         public void TestPaymentIntentsCapturePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.Capture("pi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2384,7 +2384,7 @@ namespace StripeTests
                 PaymentMethod = "pm_card_visa",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.Confirm("pi_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2396,7 +2396,7 @@ namespace StripeTests
         {
             var options = new PaymentIntentListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             StripeList<PaymentIntent> paymentIntents = service.List(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2408,7 +2408,7 @@ namespace StripeTests
         public void TestPaymentIntentsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.Get("pi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2423,7 +2423,7 @@ namespace StripeTests
                 Amount = 2099,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.IncrementAuthorization("pi_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2443,7 +2443,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/payment_intents");
         }
@@ -2461,7 +2461,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/payment_intents");
         }
@@ -2477,7 +2477,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.Update("pi_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2501,7 +2501,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/payment_intents");
         }
@@ -2514,7 +2514,7 @@ namespace StripeTests
                 Query = "status:'succeeded' AND metadata['order_id']:'6735'",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.Search(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2526,7 +2526,7 @@ namespace StripeTests
         public void TestPaymentIntentsVerifyMicrodepositsPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.VerifyMicrodeposits("pi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2541,7 +2541,7 @@ namespace StripeTests
                 Amounts = new List<long?> { 32, 45 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentIntents;
+            var service = client.V1.PaymentIntents;
             service.VerifyMicrodeposits("pi_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2552,7 +2552,7 @@ namespace StripeTests
         public void TestPaymentLinksGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentLinks;
+            var service = client.V1.PaymentLinks;
             service.Get("pl_xyz");
             this.AssertRequest(HttpMethod.Get, "/v1/payment_links/pl_xyz");
         }
@@ -2562,7 +2562,7 @@ namespace StripeTests
         {
             var options = new PaymentLinkListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentLinks;
+            var service = client.V1.PaymentLinks;
             StripeList<PaymentLink> paymentLinks = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/payment_links", "limit=3");
         }
@@ -2571,7 +2571,7 @@ namespace StripeTests
         public void TestPaymentLinksGet3()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentLinks;
+            var service = client.V1.PaymentLinks;
             service.Get("plink_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2582,7 +2582,7 @@ namespace StripeTests
         public void TestPaymentLinksLineItemsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentLinks.LineItems;
+            var service = client.V1.PaymentLinks.LineItems;
             StripeList<LineItem> lineItems = service.List("pl_xyz");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2604,7 +2604,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentLinks;
+            var service = client.V1.PaymentLinks;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/payment_links");
         }
@@ -2624,7 +2624,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentLinks;
+            var service = client.V1.PaymentLinks;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/payment_links");
         }
@@ -2634,7 +2634,7 @@ namespace StripeTests
         {
             var options = new PaymentLinkUpdateOptions { Active = false };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentLinks;
+            var service = client.V1.PaymentLinks;
             service.Update("plink_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2649,7 +2649,7 @@ namespace StripeTests
                 Application = "foo",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethodConfigurations;
+            var service = client.V1.PaymentMethodConfigurations;
             StripeList<PaymentMethodConfiguration> paymentMethodConfigurations = service
                 .List(options);
             this.AssertRequest(
@@ -2662,7 +2662,7 @@ namespace StripeTests
         public void TestPaymentMethodConfigurationsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethodConfigurations;
+            var service = client.V1.PaymentMethodConfigurations;
             service.Get("foo");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2690,7 +2690,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethodConfigurations;
+            var service = client.V1.PaymentMethodConfigurations;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2711,7 +2711,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethodConfigurations;
+            var service = client.V1.PaymentMethodConfigurations;
             service.Update("foo", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2726,7 +2726,7 @@ namespace StripeTests
                 Customer = "cus_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethods;
+            var service = client.V1.PaymentMethods;
             service.Attach("pm_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2737,7 +2737,7 @@ namespace StripeTests
         public void TestPaymentMethodsDetachPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethods;
+            var service = client.V1.PaymentMethods;
             service.Detach("pm_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2753,7 +2753,7 @@ namespace StripeTests
                 Type = "card",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethods;
+            var service = client.V1.PaymentMethods;
             StripeList<PaymentMethod> paymentMethods = service.List(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2765,7 +2765,7 @@ namespace StripeTests
         public void TestPaymentMethodsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethods;
+            var service = client.V1.PaymentMethods;
             service.Get("pm_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -2787,7 +2787,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethods;
+            var service = client.V1.PaymentMethods;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/payment_methods");
         }
@@ -2803,7 +2803,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PaymentMethods;
+            var service = client.V1.PaymentMethods;
             service.Update("pm_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2814,7 +2814,7 @@ namespace StripeTests
         public void TestPayoutsCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Payouts;
+            var service = client.V1.Payouts;
             service.Cancel("po_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2826,7 +2826,7 @@ namespace StripeTests
         {
             var options = new PayoutListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Payouts;
+            var service = client.V1.Payouts;
             StripeList<Payout> payouts = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/payouts", "limit=3");
         }
@@ -2835,7 +2835,7 @@ namespace StripeTests
         public void TestPayoutsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Payouts;
+            var service = client.V1.Payouts;
             service.Get("po_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/payouts/po_xxxxxxxxxxxxx");
         }
@@ -2849,7 +2849,7 @@ namespace StripeTests
                 Currency = "usd",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Payouts;
+            var service = client.V1.Payouts;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/payouts");
         }
@@ -2865,7 +2865,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Payouts;
+            var service = client.V1.Payouts;
             service.Update("po_xxxxxxxxxxxxx", options);
             this.AssertRequest(HttpMethod.Post, "/v1/payouts/po_xxxxxxxxxxxxx");
         }
@@ -2874,7 +2874,7 @@ namespace StripeTests
         public void TestPayoutsReversePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Payouts;
+            var service = client.V1.Payouts;
             service.Reverse("po_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2885,7 +2885,7 @@ namespace StripeTests
         public void TestPlansDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Plans;
+            var service = client.V1.Plans;
             service.Delete("price_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -2897,7 +2897,7 @@ namespace StripeTests
         {
             var options = new PlanListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Plans;
+            var service = client.V1.Plans;
             StripeList<Plan> plans = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/plans", "limit=3");
         }
@@ -2906,7 +2906,7 @@ namespace StripeTests
         public void TestPlansGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Plans;
+            var service = client.V1.Plans;
             service.Get("price_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/plans/price_xxxxxxxxxxxxx");
         }
@@ -2922,7 +2922,7 @@ namespace StripeTests
                 Product = "prod_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Plans;
+            var service = client.V1.Plans;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/plans");
         }
@@ -2938,7 +2938,7 @@ namespace StripeTests
                 Product = new PlanProductOptions { Name = "My product" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Plans;
+            var service = client.V1.Plans;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/plans");
         }
@@ -2954,7 +2954,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Plans;
+            var service = client.V1.Plans;
             service.Update("price_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -2966,7 +2966,7 @@ namespace StripeTests
         {
             var options = new PriceListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Prices;
+            var service = client.V1.Prices;
             StripeList<Price> prices = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/prices", "limit=3");
         }
@@ -2975,7 +2975,7 @@ namespace StripeTests
         public void TestPricesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Prices;
+            var service = client.V1.Prices;
             service.Get("price_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3008,7 +3008,7 @@ namespace StripeTests
                 Product = "prod_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Prices;
+            var service = client.V1.Prices;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/prices");
         }
@@ -3024,7 +3024,7 @@ namespace StripeTests
                 Product = "prod_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Prices;
+            var service = client.V1.Prices;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/prices");
         }
@@ -3040,7 +3040,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Prices;
+            var service = client.V1.Prices;
             service.Update("price_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3055,7 +3055,7 @@ namespace StripeTests
                 Query = "active:'true' AND metadata['order_id']:'6735'",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Prices;
+            var service = client.V1.Prices;
             service.Search(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3067,7 +3067,7 @@ namespace StripeTests
         public void TestProductsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Products;
+            var service = client.V1.Products;
             service.Delete("prod_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -3079,7 +3079,7 @@ namespace StripeTests
         {
             var options = new ProductListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Products;
+            var service = client.V1.Products;
             StripeList<Product> products = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/products", "limit=3");
         }
@@ -3088,7 +3088,7 @@ namespace StripeTests
         public void TestProductsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Products;
+            var service = client.V1.Products;
             service.Get("prod_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3100,7 +3100,7 @@ namespace StripeTests
         {
             var options = new ProductCreateOptions { Name = "Gold Special" };
             var client = new StripeClient(this.Requestor);
-            var service = client.Products;
+            var service = client.V1.Products;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/products");
         }
@@ -3116,7 +3116,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Products;
+            var service = client.V1.Products;
             service.Update("prod_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3131,7 +3131,7 @@ namespace StripeTests
                 Query = "active:'true' AND metadata['order_id']:'6735'",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Products;
+            var service = client.V1.Products;
             service.Search(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3144,7 +3144,7 @@ namespace StripeTests
         {
             var options = new PromotionCodeListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.PromotionCodes;
+            var service = client.V1.PromotionCodes;
             StripeList<PromotionCode> promotionCodes = service.List(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3156,7 +3156,7 @@ namespace StripeTests
         public void TestPromotionCodesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.PromotionCodes;
+            var service = client.V1.PromotionCodes;
             service.Get("promo_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3171,7 +3171,7 @@ namespace StripeTests
                 Coupon = "Z4OV52SU",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PromotionCodes;
+            var service = client.V1.PromotionCodes;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/promotion_codes");
         }
@@ -3187,7 +3187,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.PromotionCodes;
+            var service = client.V1.PromotionCodes;
             service.Update("promo_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3198,7 +3198,7 @@ namespace StripeTests
         public void TestQuotesAcceptPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Quotes;
+            var service = client.V1.Quotes;
             service.Accept("qt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3209,7 +3209,7 @@ namespace StripeTests
         public void TestQuotesCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Quotes;
+            var service = client.V1.Quotes;
             service.Cancel("qt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3220,7 +3220,7 @@ namespace StripeTests
         public void TestQuotesFinalizePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Quotes;
+            var service = client.V1.Quotes;
             service.FinalizeQuote("qt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3232,7 +3232,7 @@ namespace StripeTests
         {
             var options = new QuoteListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Quotes;
+            var service = client.V1.Quotes;
             StripeList<Quote> quotes = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/quotes", "limit=3");
         }
@@ -3241,7 +3241,7 @@ namespace StripeTests
         public void TestQuotesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Quotes;
+            var service = client.V1.Quotes;
             service.Get("qt_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_xxxxxxxxxxxxx");
         }
@@ -3250,7 +3250,7 @@ namespace StripeTests
         public void TestQuotesLineItemsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Quotes.LineItems;
+            var service = client.V1.Quotes.LineItems;
             StripeList<LineItem> lineItems = service.List("qt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3261,7 +3261,7 @@ namespace StripeTests
         public void TestQuotesPdfGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Quotes;
+            var service = client.V1.Quotes;
             service.Pdf("qt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3284,7 +3284,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Quotes;
+            var service = client.V1.Quotes;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/quotes");
         }
@@ -3300,7 +3300,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Quotes;
+            var service = client.V1.Quotes;
             service.Update("qt_xxxxxxxxxxxxx", options);
             this.AssertRequest(HttpMethod.Post, "/v1/quotes/qt_xxxxxxxxxxxxx");
         }
@@ -3313,7 +3313,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.EarlyFraudWarnings;
+            var service = client.V1.Radar.EarlyFraudWarnings;
             StripeList<Stripe.Radar.EarlyFraudWarning> earlyFraudWarnings = service
                 .List(options);
             this.AssertRequest(
@@ -3326,7 +3326,7 @@ namespace StripeTests
         public void TestRadarEarlyFraudWarningsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.EarlyFraudWarnings;
+            var service = client.V1.Radar.EarlyFraudWarnings;
             service.Get("issfr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3337,7 +3337,7 @@ namespace StripeTests
         public void TestRadarValueListItemsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.ValueListItems;
+            var service = client.V1.Radar.ValueListItems;
             service.Delete("rsli_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -3353,7 +3353,7 @@ namespace StripeTests
                 ValueList = "rsl_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.ValueListItems;
+            var service = client.V1.Radar.ValueListItems;
             StripeList<Stripe.Radar.ValueListItem> valueListItems = service
                 .List(options);
             this.AssertRequest(
@@ -3366,7 +3366,7 @@ namespace StripeTests
         public void TestRadarValueListItemsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.ValueListItems;
+            var service = client.V1.Radar.ValueListItems;
             service.Get("rsli_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3382,7 +3382,7 @@ namespace StripeTests
                 Value = "1.2.3.4",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.ValueListItems;
+            var service = client.V1.Radar.ValueListItems;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/radar/value_list_items");
         }
@@ -3391,7 +3391,7 @@ namespace StripeTests
         public void TestRadarValueListsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.ValueLists;
+            var service = client.V1.Radar.ValueLists;
             service.Delete("rsl_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -3403,7 +3403,7 @@ namespace StripeTests
         {
             var options = new Stripe.Radar.ValueListListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.ValueLists;
+            var service = client.V1.Radar.ValueLists;
             StripeList<Stripe.Radar.ValueList> valueLists = service.List(
                 options);
             this.AssertRequest(
@@ -3416,7 +3416,7 @@ namespace StripeTests
         public void TestRadarValueListsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.ValueLists;
+            var service = client.V1.Radar.ValueLists;
             service.Get("rsl_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3433,7 +3433,7 @@ namespace StripeTests
                 ItemType = "ip_address",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.ValueLists;
+            var service = client.V1.Radar.ValueLists;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/radar/value_lists");
         }
@@ -3446,7 +3446,7 @@ namespace StripeTests
                 Name = "Updated IP Block List",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Radar.ValueLists;
+            var service = client.V1.Radar.ValueLists;
             service.Update("rsl_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3457,7 +3457,7 @@ namespace StripeTests
         public void TestRefundsCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Refunds;
+            var service = client.V1.Refunds;
             service.Cancel("re_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3469,7 +3469,7 @@ namespace StripeTests
         {
             var options = new RefundListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Refunds;
+            var service = client.V1.Refunds;
             StripeList<Refund> refunds = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/refunds", "limit=3");
         }
@@ -3478,7 +3478,7 @@ namespace StripeTests
         public void TestRefundsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Refunds;
+            var service = client.V1.Refunds;
             service.Get("re_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/refunds/re_xxxxxxxxxxxxx");
         }
@@ -3491,7 +3491,7 @@ namespace StripeTests
                 Charge = "ch_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Refunds;
+            var service = client.V1.Refunds;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/refunds");
         }
@@ -3507,7 +3507,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Refunds;
+            var service = client.V1.Refunds;
             service.Update("re_xxxxxxxxxxxxx", options);
             this.AssertRequest(HttpMethod.Post, "/v1/refunds/re_xxxxxxxxxxxxx");
         }
@@ -3520,7 +3520,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Reporting.ReportRuns;
+            var service = client.V1.Reporting.ReportRuns;
             StripeList<Stripe.Reporting.ReportRun> reportRuns = service.List(
                 options);
             this.AssertRequest(
@@ -3533,7 +3533,7 @@ namespace StripeTests
         public void TestReportingReportRunsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Reporting.ReportRuns;
+            var service = client.V1.Reporting.ReportRuns;
             service.Get("frr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3556,7 +3556,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Reporting.ReportRuns;
+            var service = client.V1.Reporting.ReportRuns;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/reporting/report_runs");
         }
@@ -3565,7 +3565,7 @@ namespace StripeTests
         public void TestReportingReportTypesGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Reporting.ReportTypes;
+            var service = client.V1.Reporting.ReportTypes;
             StripeList<Stripe.Reporting.ReportType> reportTypes = service
                 .List();
             this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_types");
@@ -3575,7 +3575,7 @@ namespace StripeTests
         public void TestReportingReportTypesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Reporting.ReportTypes;
+            var service = client.V1.Reporting.ReportTypes;
             service.Get("balance.summary.1");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3586,7 +3586,7 @@ namespace StripeTests
         public void TestReviewsApprovePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Reviews;
+            var service = client.V1.Reviews;
             service.Approve("prv_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3598,7 +3598,7 @@ namespace StripeTests
         {
             var options = new ReviewListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Reviews;
+            var service = client.V1.Reviews;
             StripeList<Review> reviews = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/reviews", "limit=3");
         }
@@ -3607,7 +3607,7 @@ namespace StripeTests
         public void TestReviewsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Reviews;
+            var service = client.V1.Reviews;
             service.Get("prv_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/reviews/prv_xxxxxxxxxxxxx");
         }
@@ -3621,7 +3621,7 @@ namespace StripeTests
                 SetupIntent = "si_xyz",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SetupAttempts;
+            var service = client.V1.SetupAttempts;
             StripeList<SetupAttempt> setupAttempts = service.List(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3633,7 +3633,7 @@ namespace StripeTests
         public void TestSetupIntentsCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.SetupIntents;
+            var service = client.V1.SetupIntents;
             service.Cancel("seti_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3648,7 +3648,7 @@ namespace StripeTests
                 PaymentMethod = "pm_card_visa",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SetupIntents;
+            var service = client.V1.SetupIntents;
             service.Confirm("seti_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3660,7 +3660,7 @@ namespace StripeTests
         {
             var options = new SetupIntentListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.SetupIntents;
+            var service = client.V1.SetupIntents;
             StripeList<SetupIntent> setupIntents = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/setup_intents", "limit=3");
         }
@@ -3669,7 +3669,7 @@ namespace StripeTests
         public void TestSetupIntentsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.SetupIntents;
+            var service = client.V1.SetupIntents;
             service.Get("seti_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3684,7 +3684,7 @@ namespace StripeTests
                 PaymentMethodTypes = new List<string> { "card" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SetupIntents;
+            var service = client.V1.SetupIntents;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/setup_intents");
         }
@@ -3700,7 +3700,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SetupIntents;
+            var service = client.V1.SetupIntents;
             service.Update("seti_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3711,7 +3711,7 @@ namespace StripeTests
         public void TestSetupIntentsVerifyMicrodepositsPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.SetupIntents;
+            var service = client.V1.SetupIntents;
             service.VerifyMicrodeposits("seti_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3726,7 +3726,7 @@ namespace StripeTests
                 Amounts = new List<long?> { 32, 45 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SetupIntents;
+            var service = client.V1.SetupIntents;
             service.VerifyMicrodeposits("seti_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3737,7 +3737,7 @@ namespace StripeTests
         public void TestShippingRatesGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.ShippingRates;
+            var service = client.V1.ShippingRates;
             StripeList<ShippingRate> shippingRates = service.List();
             this.AssertRequest(HttpMethod.Get, "/v1/shipping_rates");
         }
@@ -3747,7 +3747,7 @@ namespace StripeTests
         {
             var options = new ShippingRateListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.ShippingRates;
+            var service = client.V1.ShippingRates;
             StripeList<ShippingRate> shippingRates = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/shipping_rates", "limit=3");
         }
@@ -3756,7 +3756,7 @@ namespace StripeTests
         public void TestShippingRatesGet3()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.ShippingRates;
+            var service = client.V1.ShippingRates;
             service.Get("shr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3777,7 +3777,7 @@ namespace StripeTests
                 Type = "fixed_amount",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.ShippingRates;
+            var service = client.V1.ShippingRates;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/shipping_rates");
         }
@@ -3796,7 +3796,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.ShippingRates;
+            var service = client.V1.ShippingRates;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/shipping_rates");
         }
@@ -3812,7 +3812,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.ShippingRates;
+            var service = client.V1.ShippingRates;
             service.Update("shr_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3827,7 +3827,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Sigma.ScheduledQueryRuns;
+            var service = client.V1.Sigma.ScheduledQueryRuns;
             StripeList<Stripe.Sigma.ScheduledQueryRun> scheduledQueryRuns = service
                 .List(options);
             this.AssertRequest(
@@ -3840,7 +3840,7 @@ namespace StripeTests
         public void TestSigmaScheduledQueryRunsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Sigma.ScheduledQueryRuns;
+            var service = client.V1.Sigma.ScheduledQueryRuns;
             service.Get("sqr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3851,7 +3851,7 @@ namespace StripeTests
         public void TestSourcesGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Sources;
+            var service = client.V1.Sources;
             service.Get("src_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/sources/src_xxxxxxxxxxxxx");
         }
@@ -3860,7 +3860,7 @@ namespace StripeTests
         public void TestSourcesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Sources;
+            var service = client.V1.Sources;
             service.Get("src_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/sources/src_xxxxxxxxxxxxx");
         }
@@ -3876,7 +3876,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Sources;
+            var service = client.V1.Sources;
             service.Update("src_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3887,7 +3887,7 @@ namespace StripeTests
         public void TestSubscriptionItemsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionItems;
+            var service = client.V1.SubscriptionItems;
             service.Delete("si_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -3902,7 +3902,7 @@ namespace StripeTests
                 Subscription = "sub_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionItems;
+            var service = client.V1.SubscriptionItems;
             StripeList<SubscriptionItem> subscriptionItems = service.List(
                 options);
             this.AssertRequest(
@@ -3915,7 +3915,7 @@ namespace StripeTests
         public void TestSubscriptionItemsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionItems;
+            var service = client.V1.SubscriptionItems;
             service.Get("si_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -3932,7 +3932,7 @@ namespace StripeTests
                 Quantity = 2,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionItems;
+            var service = client.V1.SubscriptionItems;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/subscription_items");
         }
@@ -3948,7 +3948,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionItems;
+            var service = client.V1.SubscriptionItems;
             service.Update("si_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3963,7 +3963,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionItems.UsageRecordSummaries;
+            var service = client.V1.SubscriptionItems.UsageRecordSummaries;
             StripeList<UsageRecordSummary> usageRecordSummaries = service.List(
                 "si_xxxxxxxxxxxxx",
                 options);
@@ -3983,7 +3983,7 @@ namespace StripeTests
                     .UtcDateTime,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionItems.UsageRecords;
+            var service = client.V1.SubscriptionItems.UsageRecords;
             service.Create("si_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -3994,7 +3994,7 @@ namespace StripeTests
         public void TestSubscriptionSchedulesCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionSchedules;
+            var service = client.V1.SubscriptionSchedules;
             service.Cancel("sub_sched_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4006,7 +4006,7 @@ namespace StripeTests
         {
             var options = new SubscriptionScheduleListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionSchedules;
+            var service = client.V1.SubscriptionSchedules;
             StripeList<SubscriptionSchedule> subscriptionSchedules = service
                 .List(options);
             this.AssertRequest(
@@ -4019,7 +4019,7 @@ namespace StripeTests
         public void TestSubscriptionSchedulesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionSchedules;
+            var service = client.V1.SubscriptionSchedules;
             service.Get("sub_sched_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4052,7 +4052,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionSchedules;
+            var service = client.V1.SubscriptionSchedules;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/subscription_schedules");
         }
@@ -4065,7 +4065,7 @@ namespace StripeTests
                 EndBehavior = "release",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionSchedules;
+            var service = client.V1.SubscriptionSchedules;
             service.Update("sub_sched_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4076,7 +4076,7 @@ namespace StripeTests
         public void TestSubscriptionSchedulesReleasePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.SubscriptionSchedules;
+            var service = client.V1.SubscriptionSchedules;
             service.Release("sub_sched_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4087,7 +4087,7 @@ namespace StripeTests
         public void TestSubscriptionsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Subscriptions;
+            var service = client.V1.Subscriptions;
             service.Cancel("sub_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -4098,7 +4098,7 @@ namespace StripeTests
         public void TestSubscriptionsDiscountDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Subscriptions;
+            var service = client.V1.Subscriptions;
             service.DeleteDiscount("sub_xyz");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -4110,7 +4110,7 @@ namespace StripeTests
         {
             var options = new SubscriptionListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Subscriptions;
+            var service = client.V1.Subscriptions;
             StripeList<Subscription> subscriptions = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/subscriptions", "limit=3");
         }
@@ -4119,7 +4119,7 @@ namespace StripeTests
         public void TestSubscriptionsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Subscriptions;
+            var service = client.V1.Subscriptions;
             service.Get("sub_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4141,7 +4141,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Subscriptions;
+            var service = client.V1.Subscriptions;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/subscriptions");
         }
@@ -4157,7 +4157,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Subscriptions;
+            var service = client.V1.Subscriptions;
             service.Update("sub_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4172,7 +4172,7 @@ namespace StripeTests
                 Query = "status:'active' AND metadata['order_id']:'6735'",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Subscriptions;
+            var service = client.V1.Subscriptions;
             service.Search(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4184,7 +4184,7 @@ namespace StripeTests
         public void TestTaxCalculationsLineItemsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Tax.Calculations.LineItems;
+            var service = client.V1.Tax.Calculations.LineItems;
             StripeList<Stripe.Tax.CalculationLineItem> calculationLineItems = service
                 .List("xxx");
             this.AssertRequest(
@@ -4220,7 +4220,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tax.Calculations;
+            var service = client.V1.Tax.Calculations;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tax/calculations");
         }
@@ -4230,7 +4230,7 @@ namespace StripeTests
         {
             var options = new TaxCodeListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxCodes;
+            var service = client.V1.TaxCodes;
             StripeList<TaxCode> taxCodes = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/tax_codes", "limit=3");
         }
@@ -4239,7 +4239,7 @@ namespace StripeTests
         public void TestTaxCodesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxCodes;
+            var service = client.V1.TaxCodes;
             service.Get("txcd_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4250,7 +4250,7 @@ namespace StripeTests
         public void TestTaxIdsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxIds;
+            var service = client.V1.TaxIds;
             service.Delete("taxid_123");
             this.AssertRequest(HttpMethod.Delete, "/v1/tax_ids/taxid_123");
         }
@@ -4259,7 +4259,7 @@ namespace StripeTests
         public void TestTaxIdsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxIds;
+            var service = client.V1.TaxIds;
             StripeList<TaxId> taxIds = service.List();
             this.AssertRequest(HttpMethod.Get, "/v1/tax_ids");
         }
@@ -4268,7 +4268,7 @@ namespace StripeTests
         public void TestTaxIdsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxIds;
+            var service = client.V1.TaxIds;
             service.Get("taxid_123");
             this.AssertRequest(HttpMethod.Get, "/v1/tax_ids/taxid_123");
         }
@@ -4282,7 +4282,7 @@ namespace StripeTests
                 Value = "123",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxIds;
+            var service = client.V1.TaxIds;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tax_ids");
         }
@@ -4292,7 +4292,7 @@ namespace StripeTests
         {
             var options = new TaxRateListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxRates;
+            var service = client.V1.TaxRates;
             StripeList<TaxRate> taxRates = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/tax_rates", "limit=3");
         }
@@ -4301,7 +4301,7 @@ namespace StripeTests
         public void TestTaxRatesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxRates;
+            var service = client.V1.TaxRates;
             service.Get("txr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4320,7 +4320,7 @@ namespace StripeTests
                 Inclusive = false,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxRates;
+            var service = client.V1.TaxRates;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tax_rates");
         }
@@ -4330,7 +4330,7 @@ namespace StripeTests
         {
             var options = new TaxRateUpdateOptions { Active = false };
             var client = new StripeClient(this.Requestor);
-            var service = client.TaxRates;
+            var service = client.V1.TaxRates;
             service.Update("txr_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4345,7 +4345,7 @@ namespace StripeTests
                 Status = "all",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tax.Registrations;
+            var service = client.V1.Tax.Registrations;
             StripeList<Stripe.Tax.Registration> registrations = service.List(
                 options);
             this.AssertRequest(
@@ -4370,7 +4370,7 @@ namespace StripeTests
                 ActiveFrom = Stripe.Tax.RegistrationActiveFrom.Now,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tax.Registrations;
+            var service = client.V1.Tax.Registrations;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tax/registrations");
         }
@@ -4383,7 +4383,7 @@ namespace StripeTests
                 ExpiresAt = Stripe.Tax.RegistrationExpiresAt.Now,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tax.Registrations;
+            var service = client.V1.Tax.Registrations;
             service.Update("taxreg_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4395,7 +4395,7 @@ namespace StripeTests
         {
             var options = new Stripe.Tax.SettingsGetOptions();
             var client = new StripeClient(this.Requestor);
-            var service = client.Tax.Settings;
+            var service = client.V1.Tax.Settings;
             service.Get(options);
             this.AssertRequest(HttpMethod.Get, "/v1/tax/settings");
         }
@@ -4411,7 +4411,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tax.Settings;
+            var service = client.V1.Tax.Settings;
             service.Update(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tax/settings");
         }
@@ -4425,7 +4425,7 @@ namespace StripeTests
                 Reference = "yyy",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tax.Transactions;
+            var service = client.V1.Tax.Transactions;
             service.CreateFromCalculation(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4436,7 +4436,7 @@ namespace StripeTests
         public void TestTerminalConfigurationsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             service.Delete("uc_123");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -4447,7 +4447,7 @@ namespace StripeTests
         public void TestTerminalConfigurationsDelete2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             service.Delete("tmc_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -4458,7 +4458,7 @@ namespace StripeTests
         public void TestTerminalConfigurationsGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             StripeList<Stripe.Terminal.Configuration> configurations = service
                 .List();
             this.AssertRequest(HttpMethod.Get, "/v1/terminal/configurations");
@@ -4468,7 +4468,7 @@ namespace StripeTests
         public void TestTerminalConfigurationsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             service.Get("uc_123");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4483,7 +4483,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             StripeList<Stripe.Terminal.Configuration> configurations = service
                 .List(options);
             this.AssertRequest(
@@ -4496,7 +4496,7 @@ namespace StripeTests
         public void TestTerminalConfigurationsGet4()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             service.Get("tmc_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4508,7 +4508,7 @@ namespace StripeTests
         {
             var options = new Stripe.Terminal.ConfigurationCreateOptions();
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/terminal/configurations");
         }
@@ -4527,7 +4527,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             service.Update("uc_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4545,7 +4545,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/terminal/configurations");
         }
@@ -4561,7 +4561,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Configurations;
+            var service = client.V1.Terminal.Configurations;
             service.Update("tmc_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4573,7 +4573,7 @@ namespace StripeTests
         {
             var options = new Stripe.Terminal.ConnectionTokenCreateOptions();
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.ConnectionTokens;
+            var service = client.V1.Terminal.ConnectionTokens;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4584,7 +4584,7 @@ namespace StripeTests
         public void TestTerminalLocationsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Locations;
+            var service = client.V1.Terminal.Locations;
             service.Delete("tml_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -4596,7 +4596,7 @@ namespace StripeTests
         {
             var options = new Stripe.Terminal.LocationListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Locations;
+            var service = client.V1.Terminal.Locations;
             StripeList<Stripe.Terminal.Location> locations = service.List(
                 options);
             this.AssertRequest(
@@ -4609,7 +4609,7 @@ namespace StripeTests
         public void TestTerminalLocationsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Locations;
+            var service = client.V1.Terminal.Locations;
             service.Get("tml_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4632,7 +4632,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Locations;
+            var service = client.V1.Terminal.Locations;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/terminal/locations");
         }
@@ -4645,7 +4645,7 @@ namespace StripeTests
                 DisplayName = "My First Store",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Locations;
+            var service = client.V1.Terminal.Locations;
             service.Update("tml_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4656,7 +4656,7 @@ namespace StripeTests
         public void TestTerminalReadersCancelActionPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Readers;
+            var service = client.V1.Terminal.Readers;
             service.CancelAction("tmr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4667,7 +4667,7 @@ namespace StripeTests
         public void TestTerminalReadersDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Readers;
+            var service = client.V1.Terminal.Readers;
             service.Delete("tmr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -4679,7 +4679,7 @@ namespace StripeTests
         {
             var options = new Stripe.Terminal.ReaderListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Readers;
+            var service = client.V1.Terminal.Readers;
             StripeList<Stripe.Terminal.Reader> readers = service.List(options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4691,7 +4691,7 @@ namespace StripeTests
         public void TestTerminalReadersGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Readers;
+            var service = client.V1.Terminal.Readers;
             service.Get("tmr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -4708,7 +4708,7 @@ namespace StripeTests
                 Location = "tml_1234",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Readers;
+            var service = client.V1.Terminal.Readers;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/terminal/readers");
         }
@@ -4721,7 +4721,7 @@ namespace StripeTests
                 Label = "Blue Rabbit",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Readers;
+            var service = client.V1.Terminal.Readers;
             service.Update("tmr_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4736,7 +4736,7 @@ namespace StripeTests
                 PaymentIntent = "pi_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Readers;
+            var service = client.V1.Terminal.Readers;
             service.ProcessPaymentIntent("tmr_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4752,7 +4752,7 @@ namespace StripeTests
                 CustomerConsentCollected = true,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Terminal.Readers;
+            var service = client.V1.Terminal.Readers;
             service.ProcessSetupIntent("tmr_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4768,7 +4768,7 @@ namespace StripeTests
                 Currency = "eur",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Customers;
+            var service = client.V1.TestHelpers.Customers;
             service.FundCashBalance("cus_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4833,7 +4833,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Authorizations;
+            var service = client.V1.TestHelpers.Issuing.Authorizations;
             service.Capture("example_authorization", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4844,7 +4844,7 @@ namespace StripeTests
         public void TestTestHelpersIssuingAuthorizationsExpirePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Authorizations;
+            var service = client.V1.TestHelpers.Issuing.Authorizations;
             service.Expire("example_authorization");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4860,7 +4860,7 @@ namespace StripeTests
                 IsAmountControllable = true,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Authorizations;
+            var service = client.V1.TestHelpers.Issuing.Authorizations;
             service.Increment("example_authorization", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4907,7 +4907,7 @@ namespace StripeTests
                 Wallet = "apple_pay",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Authorizations;
+            var service = client.V1.TestHelpers.Issuing.Authorizations;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4922,7 +4922,7 @@ namespace StripeTests
                 ReverseAmount = 20,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Authorizations;
+            var service = client.V1.TestHelpers.Issuing.Authorizations;
             service.Reverse("example_authorization", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4933,7 +4933,7 @@ namespace StripeTests
         public void TestTestHelpersIssuingCardsShippingDeliverPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Cards;
+            var service = client.V1.TestHelpers.Issuing.Cards;
             service.DeliverCard("card_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4944,7 +4944,7 @@ namespace StripeTests
         public void TestTestHelpersIssuingCardsShippingFailPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Cards;
+            var service = client.V1.TestHelpers.Issuing.Cards;
             service.FailCard("card_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4955,7 +4955,7 @@ namespace StripeTests
         public void TestTestHelpersIssuingCardsShippingReturnPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Cards;
+            var service = client.V1.TestHelpers.Issuing.Cards;
             service.ReturnCard("card_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4966,7 +4966,7 @@ namespace StripeTests
         public void TestTestHelpersIssuingCardsShippingShipPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Cards;
+            var service = client.V1.TestHelpers.Issuing.Cards;
             service.ShipCard("card_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4977,7 +4977,7 @@ namespace StripeTests
         public void TestTestHelpersIssuingPersonalizationDesignsActivatePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.PersonalizationDesigns;
+            var service = client.V1.TestHelpers.Issuing.PersonalizationDesigns;
             service.Activate("pd_xyz");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -4988,7 +4988,7 @@ namespace StripeTests
         public void TestTestHelpersIssuingPersonalizationDesignsDeactivatePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.PersonalizationDesigns;
+            var service = client.V1.TestHelpers.Issuing.PersonalizationDesigns;
             service.Deactivate("pd_xyz");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5006,7 +5006,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.PersonalizationDesigns;
+            var service = client.V1.TestHelpers.Issuing.PersonalizationDesigns;
             service.Reject("pd_xyz", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5083,7 +5083,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Transactions;
+            var service = client.V1.TestHelpers.Issuing.Transactions;
             service.CreateForceCapture(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5160,7 +5160,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Transactions;
+            var service = client.V1.TestHelpers.Issuing.Transactions;
             service.CreateUnlinkedRefund(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5175,7 +5175,7 @@ namespace StripeTests
                 RefundAmount = 50,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Issuing.Transactions;
+            var service = client.V1.TestHelpers.Issuing.Transactions;
             service.Refund("example_transaction", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5186,7 +5186,7 @@ namespace StripeTests
         public void TestTestHelpersRefundsExpirePost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Refunds;
+            var service = client.V1.TestHelpers.Refunds;
             service.Expire("re_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5202,7 +5202,7 @@ namespace StripeTests
                     .UtcDateTime,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             service.Advance("clock_xyz", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5218,7 +5218,7 @@ namespace StripeTests
                     .UtcDateTime,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             service.Advance("clock_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5229,7 +5229,7 @@ namespace StripeTests
         public void TestTestHelpersTestClocksDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             service.Delete("clock_xyz");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -5240,7 +5240,7 @@ namespace StripeTests
         public void TestTestHelpersTestClocksDelete2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             service.Delete("clock_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -5251,7 +5251,7 @@ namespace StripeTests
         public void TestTestHelpersTestClocksGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             StripeList<Stripe.TestHelpers.TestClock> testClocks = service
                 .List();
             this.AssertRequest(HttpMethod.Get, "/v1/test_helpers/test_clocks");
@@ -5261,7 +5261,7 @@ namespace StripeTests
         public void TestTestHelpersTestClocksGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             service.Get("clock_xyz");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -5276,7 +5276,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             StripeList<Stripe.TestHelpers.TestClock> testClocks = service.List(
                 options);
             this.AssertRequest(
@@ -5289,7 +5289,7 @@ namespace StripeTests
         public void TestTestHelpersTestClocksGet4()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             service.Get("clock_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -5306,7 +5306,7 @@ namespace StripeTests
                 Name = "cogsworth",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/test_helpers/test_clocks");
         }
@@ -5320,7 +5320,7 @@ namespace StripeTests
                     .UtcDateTime,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.TestClocks;
+            var service = client.V1.TestHelpers.TestClocks;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/test_helpers/test_clocks");
         }
@@ -5336,7 +5336,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Treasury.InboundTransfers;
+            var service = client.V1.TestHelpers.Treasury.InboundTransfers;
             service.Fail("ibt_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5347,7 +5347,7 @@ namespace StripeTests
         public void TestTestHelpersTreasuryInboundTransfersReturnPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Treasury.InboundTransfers;
+            var service = client.V1.TestHelpers.Treasury.InboundTransfers;
             service.ReturnInboundTransfer("ibt_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5358,7 +5358,7 @@ namespace StripeTests
         public void TestTestHelpersTreasuryInboundTransfersSucceedPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Treasury.InboundTransfers;
+            var service = client.V1.TestHelpers.Treasury.InboundTransfers;
             service.Succeed("ibt_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5369,7 +5369,7 @@ namespace StripeTests
         public void TestTestHelpersTreasuryOutboundTransfersFailPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Treasury.OutboundTransfers;
+            var service = client.V1.TestHelpers.Treasury.OutboundTransfers;
             service.Fail("obt_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5380,7 +5380,7 @@ namespace StripeTests
         public void TestTestHelpersTreasuryOutboundTransfersPostPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Treasury.OutboundTransfers;
+            var service = client.V1.TestHelpers.Treasury.OutboundTransfers;
             service.Post("obt_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5398,7 +5398,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Treasury.OutboundTransfers;
+            var service = client.V1.TestHelpers.Treasury.OutboundTransfers;
             service.ReturnOutboundTransfer("obt_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5416,7 +5416,7 @@ namespace StripeTests
                 Currency = "usd",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Treasury.ReceivedCredits;
+            var service = client.V1.TestHelpers.Treasury.ReceivedCredits;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5434,7 +5434,7 @@ namespace StripeTests
                 Currency = "usd",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.TestHelpers.Treasury.ReceivedDebits;
+            var service = client.V1.TestHelpers.Treasury.ReceivedDebits;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5445,7 +5445,7 @@ namespace StripeTests
         public void TestTokensGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Tokens;
+            var service = client.V1.Tokens;
             service.Get("tok_xxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/tokens/tok_xxxx");
         }
@@ -5464,7 +5464,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tokens;
+            var service = client.V1.Tokens;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
@@ -5485,7 +5485,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tokens;
+            var service = client.V1.Tokens;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
@@ -5498,7 +5498,7 @@ namespace StripeTests
                 Pii = new TokenPiiOptions { IdNumber = "000000000" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tokens;
+            var service = client.V1.Tokens;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
@@ -5519,7 +5519,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tokens;
+            var service = client.V1.Tokens;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
@@ -5540,7 +5540,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tokens;
+            var service = client.V1.Tokens;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
@@ -5553,7 +5553,7 @@ namespace StripeTests
                 CvcUpdate = new TokenCvcUpdateOptions { Cvc = "123" },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Tokens;
+            var service = client.V1.Tokens;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/tokens");
         }
@@ -5562,7 +5562,7 @@ namespace StripeTests
         public void TestTopupsCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Topups;
+            var service = client.V1.Topups;
             service.Cancel("tu_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5574,7 +5574,7 @@ namespace StripeTests
         {
             var options = new TopupListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Topups;
+            var service = client.V1.Topups;
             StripeList<Topup> topups = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/topups", "limit=3");
         }
@@ -5583,7 +5583,7 @@ namespace StripeTests
         public void TestTopupsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Topups;
+            var service = client.V1.Topups;
             service.Get("tu_xxxxxxxxxxxxx");
             this.AssertRequest(HttpMethod.Get, "/v1/topups/tu_xxxxxxxxxxxxx");
         }
@@ -5599,7 +5599,7 @@ namespace StripeTests
                 StatementDescriptor = "Top-up",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Topups;
+            var service = client.V1.Topups;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/topups");
         }
@@ -5615,7 +5615,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Topups;
+            var service = client.V1.Topups;
             service.Update("tu_xxxxxxxxxxxxx", options);
             this.AssertRequest(HttpMethod.Post, "/v1/topups/tu_xxxxxxxxxxxxx");
         }
@@ -5625,7 +5625,7 @@ namespace StripeTests
         {
             var options = new TransferListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Transfers;
+            var service = client.V1.Transfers;
             StripeList<Transfer> transfers = service.List(options);
             this.AssertRequest(HttpMethod.Get, "/v1/transfers", "limit=3");
         }
@@ -5634,7 +5634,7 @@ namespace StripeTests
         public void TestTransfersGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Transfers;
+            var service = client.V1.Transfers;
             service.Get("tr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -5652,7 +5652,7 @@ namespace StripeTests
                 TransferGroup = "ORDER_95",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Transfers;
+            var service = client.V1.Transfers;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/transfers");
         }
@@ -5668,7 +5668,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Transfers;
+            var service = client.V1.Transfers;
             service.Update("tr_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5680,7 +5680,7 @@ namespace StripeTests
         {
             var options = new TransferReversalListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Transfers.Reversals;
+            var service = client.V1.Transfers.Reversals;
             StripeList<TransferReversal> transferReversals = service.List(
                 "tr_xxxxxxxxxxxxx",
                 options);
@@ -5694,7 +5694,7 @@ namespace StripeTests
         public void TestTransfersReversalsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Transfers.Reversals;
+            var service = client.V1.Transfers.Reversals;
             service.Get("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -5706,7 +5706,7 @@ namespace StripeTests
         {
             var options = new TransferReversalCreateOptions { Amount = 100 };
             var client = new StripeClient(this.Requestor);
-            var service = client.Transfers.Reversals;
+            var service = client.V1.Transfers.Reversals;
             service.Create("tr_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5724,7 +5724,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Transfers.Reversals;
+            var service = client.V1.Transfers.Reversals;
             service.Update("tr_xxxxxxxxxxxxx", "trr_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5740,7 +5740,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.CreditReversals;
+            var service = client.V1.Treasury.CreditReversals;
             StripeList<Stripe.Treasury.CreditReversal> creditReversals = service
                 .List(options);
             this.AssertRequest(
@@ -5753,7 +5753,7 @@ namespace StripeTests
         public void TestTreasuryCreditReversalsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.CreditReversals;
+            var service = client.V1.Treasury.CreditReversals;
             service.Get("credrev_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -5768,7 +5768,7 @@ namespace StripeTests
                 ReceivedCredit = "rc_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.CreditReversals;
+            var service = client.V1.Treasury.CreditReversals;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5784,7 +5784,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.DebitReversals;
+            var service = client.V1.Treasury.DebitReversals;
             StripeList<Stripe.Treasury.DebitReversal> debitReversals = service
                 .List(options);
             this.AssertRequest(
@@ -5797,7 +5797,7 @@ namespace StripeTests
         public void TestTreasuryDebitReversalsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.DebitReversals;
+            var service = client.V1.Treasury.DebitReversals;
             service.Get("debrev_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -5812,7 +5812,7 @@ namespace StripeTests
                 ReceivedDebit = "rd_xxxxxxxxxxxxx",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.DebitReversals;
+            var service = client.V1.Treasury.DebitReversals;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/treasury/debit_reversals");
         }
@@ -5821,7 +5821,7 @@ namespace StripeTests
         public void TestTreasuryFinancialAccountsFeaturesGet()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.FinancialAccounts.Features;
+            var service = client.V1.Treasury.FinancialAccounts.Features;
             service.Get("fa_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -5836,7 +5836,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.FinancialAccounts;
+            var service = client.V1.Treasury.FinancialAccounts;
             StripeList<Stripe.Treasury.FinancialAccount> financialAccounts = service
                 .List(options);
             this.AssertRequest(
@@ -5849,7 +5849,7 @@ namespace StripeTests
         public void TestTreasuryFinancialAccountsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.FinancialAccounts;
+            var service = client.V1.Treasury.FinancialAccounts;
             service.Get("fa_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -5865,7 +5865,7 @@ namespace StripeTests
                 Features = new Stripe.Treasury.FinancialAccountFeaturesOptions(),
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.FinancialAccounts;
+            var service = client.V1.Treasury.FinancialAccounts;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5883,7 +5883,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.FinancialAccounts;
+            var service = client.V1.Treasury.FinancialAccounts;
             service.Update("fa_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5894,7 +5894,7 @@ namespace StripeTests
         public void TestTreasuryInboundTransfersCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.InboundTransfers;
+            var service = client.V1.Treasury.InboundTransfers;
             service.Cancel("ibt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5910,7 +5910,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.InboundTransfers;
+            var service = client.V1.Treasury.InboundTransfers;
             StripeList<Stripe.Treasury.InboundTransfer> inboundTransfers = service
                 .List(options);
             this.AssertRequest(
@@ -5923,7 +5923,7 @@ namespace StripeTests
         public void TestTreasuryInboundTransfersGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.InboundTransfers;
+            var service = client.V1.Treasury.InboundTransfers;
             service.Get("ibt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -5942,7 +5942,7 @@ namespace StripeTests
                 Description = "InboundTransfer from my bank account",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.InboundTransfers;
+            var service = client.V1.Treasury.InboundTransfers;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5953,7 +5953,7 @@ namespace StripeTests
         public void TestTreasuryOutboundPaymentsCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.OutboundPayments;
+            var service = client.V1.Treasury.OutboundPayments;
             service.Cancel("bot_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -5969,7 +5969,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.OutboundPayments;
+            var service = client.V1.Treasury.OutboundPayments;
             StripeList<Stripe.Treasury.OutboundPayment> outboundPayments = service
                 .List(options);
             this.AssertRequest(
@@ -5982,7 +5982,7 @@ namespace StripeTests
         public void TestTreasuryOutboundPaymentsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.OutboundPayments;
+            var service = client.V1.Treasury.OutboundPayments;
             service.Get("bot_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -6002,7 +6002,7 @@ namespace StripeTests
                 Description = "OutboundPayment to a 3rd party",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.OutboundPayments;
+            var service = client.V1.Treasury.OutboundPayments;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -6013,7 +6013,7 @@ namespace StripeTests
         public void TestTreasuryOutboundTransfersCancelPost()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.OutboundTransfers;
+            var service = client.V1.Treasury.OutboundTransfers;
             service.Cancel("obt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -6029,7 +6029,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.OutboundTransfers;
+            var service = client.V1.Treasury.OutboundTransfers;
             StripeList<Stripe.Treasury.OutboundTransfer> outboundTransfers = service
                 .List(options);
             this.AssertRequest(
@@ -6042,7 +6042,7 @@ namespace StripeTests
         public void TestTreasuryOutboundTransfersGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.OutboundTransfers;
+            var service = client.V1.Treasury.OutboundTransfers;
             service.Get("obt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -6061,7 +6061,7 @@ namespace StripeTests
                 Description = "OutboundTransfer to my external bank account",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.OutboundTransfers;
+            var service = client.V1.Treasury.OutboundTransfers;
             service.Create(options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -6077,7 +6077,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.ReceivedCredits;
+            var service = client.V1.Treasury.ReceivedCredits;
             StripeList<Stripe.Treasury.ReceivedCredit> receivedCredits = service
                 .List(options);
             this.AssertRequest(
@@ -6090,7 +6090,7 @@ namespace StripeTests
         public void TestTreasuryReceivedCreditsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.ReceivedCredits;
+            var service = client.V1.Treasury.ReceivedCredits;
             service.Get("rc_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -6106,7 +6106,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.ReceivedDebits;
+            var service = client.V1.Treasury.ReceivedDebits;
             StripeList<Stripe.Treasury.ReceivedDebit> receivedDebits = service
                 .List(options);
             this.AssertRequest(
@@ -6119,7 +6119,7 @@ namespace StripeTests
         public void TestTreasuryReceivedDebitsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.ReceivedDebits;
+            var service = client.V1.Treasury.ReceivedDebits;
             service.Get("rd_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -6135,7 +6135,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.TransactionEntries;
+            var service = client.V1.Treasury.TransactionEntries;
             StripeList<Stripe.Treasury.TransactionEntry> transactionEntries = service
                 .List(options);
             this.AssertRequest(
@@ -6148,7 +6148,7 @@ namespace StripeTests
         public void TestTreasuryTransactionEntriesGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.TransactionEntries;
+            var service = client.V1.Treasury.TransactionEntries;
             service.Get("trxne_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -6164,7 +6164,7 @@ namespace StripeTests
                 Limit = 3,
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.Transactions;
+            var service = client.V1.Treasury.Transactions;
             StripeList<Stripe.Treasury.Transaction> transactions = service.List(
                 options);
             this.AssertRequest(
@@ -6177,7 +6177,7 @@ namespace StripeTests
         public void TestTreasuryTransactionsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.Treasury.Transactions;
+            var service = client.V1.Treasury.Transactions;
             service.Get("trxn_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -6188,7 +6188,7 @@ namespace StripeTests
         public void TestWebhookEndpointsDelete()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.WebhookEndpoints;
+            var service = client.V1.WebhookEndpoints;
             service.Delete("we_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -6200,7 +6200,7 @@ namespace StripeTests
         {
             var options = new WebhookEndpointListOptions { Limit = 3 };
             var client = new StripeClient(this.Requestor);
-            var service = client.WebhookEndpoints;
+            var service = client.V1.WebhookEndpoints;
             StripeList<WebhookEndpoint> webhookEndpoints = service.List(
                 options);
             this.AssertRequest(
@@ -6213,7 +6213,7 @@ namespace StripeTests
         public void TestWebhookEndpointsGet2()
         {
             var client = new StripeClient(this.Requestor);
-            var service = client.WebhookEndpoints;
+            var service = client.V1.WebhookEndpoints;
             service.Get("we_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -6233,7 +6233,7 @@ namespace StripeTests
                 },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.WebhookEndpoints;
+            var service = client.V1.WebhookEndpoints;
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/webhook_endpoints");
         }
@@ -6246,7 +6246,7 @@ namespace StripeTests
                 Url = "https://example.com/new_endpoint",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.WebhookEndpoints;
+            var service = client.V1.WebhookEndpoints;
             service.Update("we_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,

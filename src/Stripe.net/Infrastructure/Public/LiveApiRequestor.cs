@@ -16,33 +16,31 @@ namespace Stripe
     {
         internal static readonly List<string> RawRequestUsage = new List<string> { "raw_request" };
         private JsonSerializerSettings jsonSerializerSettings;
+        private StripeClientOptions clientOptions;
 
-        public LiveApiRequestor(
-            string apiKey = null,
-            string clientId = null,
-            IHttpClient httpClient = null,
-            string apiBase = null,
-            string connectBase = null,
-            string filesBase = null,
-            string eventsBase = null)
+        public LiveApiRequestor(StripeClientOptions options)
         {
-            if (apiKey != null && apiKey.Length == 0)
+            // Clone the object passed in, or use an empty option object if it is null
+            options = options?.Clone() ?? new StripeClientOptions();
+
+            if (options.ApiKey != null && options.ApiKey.Length == 0)
             {
-                throw new ArgumentException("API key cannot be the empty string.", nameof(apiKey));
+                throw new ArgumentException("API key cannot be the empty string.", nameof(options.ApiKey));
             }
 
-            if (apiKey != null && StringUtils.ContainsWhitespace(apiKey))
+            if (options.ApiKey != null && StringUtils.ContainsWhitespace(options.ApiKey))
             {
-                throw new ArgumentException("API key cannot contain whitespace.", nameof(apiKey));
+                throw new ArgumentException("API key cannot contain whitespace.", nameof(options.ApiKey));
             }
 
-            this.ApiKey = apiKey;
-            this.ClientId = clientId;
-            this.HttpClient = httpClient ?? BuildDefaultHttpClient();
-            this.ApiBase = apiBase ?? DefaultApiBase;
-            this.ConnectBase = connectBase ?? DefaultConnectBase;
-            this.FilesBase = filesBase ?? DefaultFilesBase;
-            this.EventsBase = eventsBase ?? DefaultEventsBase;
+            this.clientOptions = options;
+            this.ApiKey = options.ApiKey;
+            this.ClientId = options.ClientId;
+            this.HttpClient = options.HttpClient ?? BuildDefaultHttpClient();
+            this.ApiBase = options.ApiBase ?? DefaultApiBase;
+            this.ConnectBase = options.ConnectBase ?? DefaultConnectBase;
+            this.FilesBase = options.FilesBase ?? DefaultFilesBase;
+            this.MeterEventsBase = options.MeterEventsBase ?? DefaultMeterEventsBase;
             this.jsonSerializerSettings = StripeConfiguration.DefaultSerializerSettings(this);
         }
 
@@ -55,8 +53,8 @@ namespace Stripe
         /// <summary>Default base URL for Stripe's Files API.</summary>
         public static string DefaultFilesBase => "https://files.stripe.com";
 
-        /// <summary>Default base URL for Stripe's Events API.</summary>
-        public static string DefaultEventsBase => "https://events.stripe.com";
+        /// <summary>Default base URL for Stripe's Meter Events API.</summary>
+        public static string DefaultMeterEventsBase => "https://meter-events.stripe.com";
 
         /// <summary>Gets the base URL for Stripe's API.</summary>
         /// <value>The base URL for Stripe's API.</value>
@@ -78,9 +76,9 @@ namespace Stripe
         /// <value>The base URL for Stripe's Files API.</value>
         public override string FilesBase { get; }
 
-        /// <summary>Gets the base URL for Stripe's Events API.</summary>
-        /// <value>The base URL for Stripe's Events API.</value>
-        public override string EventsBase { get; }
+        /// <summary>Gets the base URL for Stripe's Meter Events API.</summary>
+        /// <value>The base URL for Stripe's Meter Events API.</value>
+        public override string MeterEventsBase { get; }
 
         /// <summary>Gets the <see cref="IHttpClient"/> used to send HTTP requests.</summary>
         /// <value>The <see cref="IHttpClient"/> used to send HTTP requests.</value>
@@ -105,22 +103,7 @@ namespace Stripe
             CancellationToken cancellationToken = default)
         {
             var apiMode = ApiModeUtils.GetApiMode(path);
-            var uri = StripeRequest.BuildUri(
-                this.GetBaseUrl(baseAddress),
-                method,
-                path,
-                options,
-                apiMode);
-
-            var request = new StripeRequest(
-                method,
-                uri,
-                requestOptions?.ApiKey ?? this.ApiKey,
-                options,
-                null,
-                requestOptions,
-                apiMode);
-
+            var request = this.MakeStripeRequest(baseAddress, method, path, options, requestOptions, apiMode);
             var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken)
                 .ConfigureAwait(false);
 
@@ -136,22 +119,7 @@ namespace Stripe
             CancellationToken cancellationToken = default)
         {
             var apiMode = ApiModeUtils.GetApiMode(path);
-            var uri = StripeRequest.BuildUri(
-                this.GetBaseUrl(baseAddress),
-                method,
-                path,
-                options,
-                apiMode);
-
-            var request = new StripeRequest(
-                method,
-                uri,
-                requestOptions?.ApiKey ?? this.ApiKey,
-                options,
-                null,
-                requestOptions,
-                apiMode);
-
+            var request = this.MakeStripeRequest(baseAddress, method, path, options, requestOptions, apiMode);
             var response = await this.HttpClient.MakeStreamingRequestAsync(request, cancellationToken)
                 .ConfigureAwait(false);
 
@@ -239,6 +207,31 @@ namespace Stripe
             };
         }
 
+        // Note: BaseOptions options really means query params here
+        private StripeRequest MakeStripeRequest(
+            BaseAddress baseAddress,
+            HttpMethod method,
+            string path,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            ApiMode apiMode)
+        {
+            var uri = StripeRequest.BuildUri(
+                this.GetBaseUrl(baseAddress),
+                method,
+                path,
+                options,
+                apiMode);
+
+            return new StripeRequest(
+                method,
+                uri,
+                requestOptions.WithClientOptions(this.clientOptions),
+                options,
+                null,
+                apiMode);
+        }
+
         private T ProcessResponse<T>(StripeResponse response, ApiMode apiMode)
             where T : IStripeEntity
         {
@@ -277,8 +270,8 @@ namespace Stripe
                     return this.FilesBase;
                 case BaseAddress.Connect:
                     return this.ConnectBase;
-                case BaseAddress.Events:
-                    return this.EventsBase;
+                case BaseAddress.MeterEvents:
+                    return this.MeterEventsBase;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(baseAddress), baseAddress, null);
             }
@@ -332,7 +325,7 @@ namespace Stripe
                 null,
                 apiMode);
 
-            var request = StripeRequest.CreateWithStringContent(this.ApiKey, method, uri, content, requestOptions, apiMode);
+            var request = StripeRequest.CreateWithStringContent(method, uri, content, requestOptions.WithClientOptions(this.clientOptions), apiMode);
 
             var response = await this.HttpClient.MakeRequestAsync(request, cancellationToken)
                     .ConfigureAwait(false);

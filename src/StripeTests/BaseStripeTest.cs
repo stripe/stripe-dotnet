@@ -88,9 +88,11 @@ namespace StripeTests
                 // Set up StripeClient with the mock HTTP client
                 var httpClient = new SystemNetHttpClient(
                     new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-                var requestor = new LiveApiRequestor(
-                    "sk_test_123",
-                    httpClient: httpClient);
+                var requestor = new LiveApiRequestor(new StripeClientOptions
+                {
+                    ApiKey = "sk_test_123",
+                    HttpClient = httpClient,
+                });
                 this.StripeClient = new StripeClient(requestor);
                 this.Requestor = requestor;
 
@@ -100,7 +102,7 @@ namespace StripeTests
             else
             {
                 // Use the default StripeClient
-                var requestor = new LiveApiRequestor("sk_test_123");
+                var requestor = new LiveApiRequestor(new StripeClientOptions { ApiKey = "sk_test_123" });
                 this.StripeClient = new StripeClient(requestor);
                 this.Requestor = requestor;
             }

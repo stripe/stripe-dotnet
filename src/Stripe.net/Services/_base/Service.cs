@@ -242,8 +242,6 @@ namespace Stripe
                 options,
                 requestOptions);
 
-            options = options?.Clone() ?? new BaseOptions();
-
             while (true)
             {
                 foreach (var item in page)
@@ -260,18 +258,17 @@ namespace Stripe
                     yield return item;
                 }
 
-                if (page.NextPage == null)
+                if (page.NextPageUrl == null)
                 {
                     break;
                 }
 
-                this.SetNextPage(options, page.NextPage);
-
+                // no options (params) needed for nextPageUrl calls
                 page = this.Request<Stripe.V2.StripeList<T>>(
                     BaseAddress.Api,
                     HttpMethod.Get,
-                    url,
-                    options,
+                    page.NextPageUrl,
+                    new BaseOptions(),
                     requestOptions);
             }
         }
@@ -291,8 +288,6 @@ namespace Stripe
                 options,
                 requestOptions,
                 cancellationToken);
-
-            options = options ?? new BaseOptions();
 
             while (true)
             {
@@ -314,17 +309,17 @@ namespace Stripe
                     yield return item;
                 }
 
-                if (page.NextPage == null)
+                if (page.NextPageUrl == null)
                 {
                     break;
                 }
 
-                this.SetNextPage(options, page.NextPage);
+                // no options (params) needed for nextPageUrl calls
                 page = await this.RequestAsync<Stripe.V2.StripeList<T>>(
                     BaseAddress.Api,
                     HttpMethod.Get,
-                    url,
-                    options,
+                    page.NextPageUrl,
+                    new BaseOptions(),
                     requestOptions,
                     cancellationToken);
             }

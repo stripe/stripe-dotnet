@@ -30,9 +30,9 @@ namespace Stripe
         /// <value>The base URL for Stripe's Files API.</value>
         string FilesBase { get; }
 
-        /// <summary>Gets the base URL for Stripe's Events API.</summary>
-        /// <value>The base URL for Stripe's Events API.</value>
-        string EventsBase { get; }
+        /// <summary>Gets the base URL for Stripe's Meter Events API.</summary>
+        /// <value>The base URL for Stripe's Meter Events API.</value>
+        string MeterEventsBase { get; }
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
         /// <typeparam name="T">Type of the Stripe entity returned by the API.</typeparam>

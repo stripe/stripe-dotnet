@@ -18,8 +18,8 @@ namespace Stripe
         Connect,
 
         /// <summary>
-        /// Send the request to the events host, for example, events.stripe.com.
+        /// Send the request to the meter events host, for example, meter-events.stripe.com.
         /// </summary>
-        Events,
+        MeterEvents,
     }
 }

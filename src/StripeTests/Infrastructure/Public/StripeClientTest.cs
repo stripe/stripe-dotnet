@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Linq;
     using System.Net.Http;
     using System.Threading;
@@ -18,6 +19,56 @@ namespace StripeTests
             : base(stripeMockFixture, mockHttpClient)
         {
             this.stripeClient = this.StripeClient as StripeClient;
+        }
+
+        [Fact]
+        public void Ctr_StripeClientOptions()
+        {
+            var options = new StripeClientOptions
+            {
+                ApiKey = "ak_123",
+                ClientId = "ci_456",
+                ApiBase = "localhost:8086",
+                ConnectBase = "localhost:8087",
+                MeterEventsBase = "localhost:6502",
+                FilesBase = "localhost:555",
+                HttpClient = new TestHttpClient(),
+            };
+
+            // This test is designed to ensure StripeClient properly consumes all options.  If any are
+            // missing, this will fail which means we added a new option but did not add it to the
+            // test.
+            foreach (var pinfo in options.GetType().GetProperties())
+            {
+                Assert.NotNull(pinfo.GetValue(options));
+            }
+
+            var client = new StripeClient(options);
+
+            Assert.Equal(options.ApiKey, client.ApiKey);
+            Assert.Equal(options.ClientId, client.ClientId);
+            Assert.Equal(options.ApiBase, client.ApiBase);
+            Assert.Equal(options.ConnectBase, client.ConnectBase);
+            Assert.Equal(options.MeterEventsBase, client.MeterEventsBase);
+            Assert.Equal(options.FilesBase, client.FilesBase);
+            Assert.Equal(options.HttpClient, client.HttpClient);
+        }
+
+        [Fact]
+        public void Ctr_StripeClientOptions_ChangesAfterConstruction()
+        {
+            var options = new StripeClientOptions
+            {
+                ApiKey = "ak_123",
+            };
+
+            var client = new StripeClient(options);
+
+            Assert.Equal(options.ApiKey, client.ApiKey);
+            var goodApiKey = options.ApiKey;
+            options.ApiKey = "wrong_key_456";
+            Assert.NotEqual(options.ApiKey, client.ApiKey);
+            Assert.Equal(goodApiKey, client.ApiKey);
         }
 
         [Fact]
@@ -128,6 +179,20 @@ namespace StripeTests
 
             var cus = this.stripeClient.Deserialize<Stripe.Customer>(rawResponse.Content);
             Assert.Equal("customer", cus.Object);
+        }
+
+        // NOTE: This doesn't need to do anything except be a type we can instantiate
+        private class TestHttpClient : IHttpClient
+        {
+            public Task<StripeResponse> MakeRequestAsync(StripeRequest request, CancellationToken cancellationToken = default)
+            {
+                throw new System.NotImplementedException();
+            }
+
+            public Task<StripeStreamedResponse> MakeStreamingRequestAsync(StripeRequest request, CancellationToken cancellationToken = default)
+            {
+                throw new System.NotImplementedException();
+            }
         }
     }
 }

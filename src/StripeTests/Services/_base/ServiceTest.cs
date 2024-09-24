@@ -108,7 +108,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/test_entities",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page"": null}",
+                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page_url"": null}",
                 query: "?foo=bar");
 
             var service = new TestService(this.StripeClient);
@@ -133,22 +133,20 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/test_entities",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page"": ""page2""}",
+                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page_url"": ""/v2/test_entities/page1""}",
                 query: "?foo=bar");
 
             this.StubRequest(
                 HttpMethod.Get,
-                "/v2/test_entities",
+                "/v2/test_entities/page1",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page"": ""page3""}",
-                "?foo=bar&page=page2");
+                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page_url"": ""/v2/test_entities/page2""}");
 
             this.StubRequest(
                 HttpMethod.Get,
-                "/v2/test_entities",
+                "/v2/test_entities/page2",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""5""}, {""id"": ""6""}],""next_page"": null}",
-                "?foo=bar&page=page3");
+                @"{""data"": [{""id"": ""5""}, {""id"": ""6""}],""next_page_url"": null}");
 
             var service = new TestService(this.StripeClient);
 
@@ -171,15 +169,14 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/test_entities",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page"": ""page2"", ""has_more"": true}",
+                @"{""data"": [{""id"": ""1""}, {""id"": ""2""}],""next_page_url"": ""/v2/test_entities/page1""}",
                 query: "?foo=bar");
 
             this.StubRequest(
                 HttpMethod.Get,
-                "/v2/test_entities",
+                "/v2/test_entities/page1",
                 (HttpStatusCode)200,
-                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page"": null, ""has_more"": false}",
-                "?foo=bar&page=page2");
+                @"{""data"": [{""id"": ""3""}, {""id"": ""4""}],""next_page_url"": null}");
 
             var service = new TestService(this.StripeClient);
 
@@ -207,7 +204,7 @@ namespace StripeTests
 
             public string FilesBase { get; }
 
-            public string EventsBase { get; }
+            public string MeterEventsBase { get; }
 
             public BaseOptions LastOptions { get; protected set; }
 

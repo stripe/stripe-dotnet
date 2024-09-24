@@ -83,6 +83,7 @@ namespace Stripe
                 { "identity.verification_report", typeof(Identity.VerificationReport) },
                 { "identity.verification_session", typeof(Identity.VerificationSession) },
                 { "invoice", typeof(Invoice) },
+                { "invoice_rendering_template", typeof(InvoiceRenderingTemplate) },
                 { "invoiceitem", typeof(InvoiceItem) },
                 { "issuing.authorization", typeof(Issuing.Authorization) },
                 { "issuing.card", typeof(Issuing.Card) },
@@ -174,7 +175,13 @@ namespace Stripe
                 { "account", typeof(V2.Account) },
                 { "account_link", typeof(V2.AccountLink) },
                 { "adjustment", typeof(V2.Adjustment) },
-                { "event", typeof(ThinEvent) },
+                {
+                    "billing.meter_event_adjustment_v2", typeof(
+                    V2.Billing.MeterEventAdjustmentV2)
+                },
+                { "billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
+                { "billing.meter_event_v2", typeof(V2.Billing.MeterEventV2) },
+                { "event", typeof(V2.Event) },
                 { "event_destination", typeof(V2.EventDestination) },
                 { "financial_account", typeof(V2.FinancialAccount) },
                 { "financial_account.balance", typeof(V2.FinancialAccountBalance) },
@@ -210,40 +217,57 @@ namespace Stripe
             {
                 // ThinTypesToEventTypes: The beginning of the section generated from our OpenAPI spec
                 {
+                    "v1.billing.meter.error_report_triggered", typeof(
+                    Events.V1BillingMeterErrorReportTriggeredEvent)
+                },
+                {
+                    "v1.billing.meter.no_meter_found", typeof(
+                    Events.V1BillingMeterNoMeterFoundEvent)
+                },
+                {
                     "account.configuration_recipient_data.account_link_completed", typeof(
-                    V2.AccountConfigurationRecipientDataAccountLinkCompletedEvent)
+                    Events.AccountConfigurationRecipientDataAccountLinkCompletedEvent)
                 },
                 {
                     "account.configuration_recipient_data.feature_status_updated", typeof(
-                    V2.AccountConfigurationRecipientDataFeatureStatusUpdatedEvent)
+                    Events.AccountConfigurationRecipientDataFeatureStatusUpdatedEvent)
                 },
-                { "account.requirements.updated", typeof(V2.AccountRequirementsUpdatedEvent) },
+                {
+                    "account.requirements.updated", typeof(
+                    Events.AccountRequirementsUpdatedEvent)
+                },
                 {
                     "financial_account.balance.opened", typeof(
-                    V2.FinancialAccountBalanceOpenedEvent)
+                    Events.FinancialAccountBalanceOpenedEvent)
                 },
-                { "financial_account.created", typeof(V2.FinancialAccountCreatedEvent) },
-                { "financial_address.activated", typeof(V2.FinancialAddressActivatedEvent) },
-                { "financial_address.failed", typeof(V2.FinancialAddressFailedEvent) },
+                { "financial_account.created", typeof(Events.FinancialAccountCreatedEvent) },
+                {
+                    "financial_address.activated", typeof(
+                    Events.FinancialAddressActivatedEvent)
+                },
+                { "financial_address.failed", typeof(Events.FinancialAddressFailedEvent) },
                 {
                     "inbound_transfer.bank_debit_succeeded", typeof(
-                    V2.InboundTransferBankDebitSucceededEvent)
+                    Events.InboundTransferBankDebitSucceededEvent)
                 },
-                { "event_destination.ping", typeof(V2.EventDestinationPingEvent) },
-                { "outbound_payment.canceled", typeof(V2.OutboundPaymentCanceledEvent) },
-                { "outbound_payment.created", typeof(V2.OutboundPaymentCreatedEvent) },
-                { "outbound_payment.failed", typeof(V2.OutboundPaymentFailedEvent) },
-                { "outbound_payment.posted", typeof(V2.OutboundPaymentPostedEvent) },
-                { "outbound_payment.returned", typeof(V2.OutboundPaymentReturnedEvent) },
-                { "outbound_transfer.canceled", typeof(V2.OutboundTransferCanceledEvent) },
-                { "outbound_transfer.created", typeof(V2.OutboundTransferCreatedEvent) },
-                { "outbound_transfer.failed", typeof(V2.OutboundTransferFailedEvent) },
-                { "outbound_transfer.posted", typeof(V2.OutboundTransferPostedEvent) },
-                { "outbound_transfer.returned", typeof(V2.OutboundTransferReturnedEvent) },
-                { "received_credit.available", typeof(V2.ReceivedCreditAvailableEvent) },
-                { "received_credit.failed", typeof(V2.ReceivedCreditFailedEvent) },
-                { "received_credit.returned", typeof(V2.ReceivedCreditReturnedEvent) },
-                { "received_credit.succeeded", typeof(V2.ReceivedCreditSucceededEvent) },
+                {
+                    "v2.core.event_destination.ping", typeof(
+                    Events.V2CoreEventDestinationPingEvent)
+                },
+                { "outbound_payment.canceled", typeof(Events.OutboundPaymentCanceledEvent) },
+                { "outbound_payment.created", typeof(Events.OutboundPaymentCreatedEvent) },
+                { "outbound_payment.failed", typeof(Events.OutboundPaymentFailedEvent) },
+                { "outbound_payment.posted", typeof(Events.OutboundPaymentPostedEvent) },
+                { "outbound_payment.returned", typeof(Events.OutboundPaymentReturnedEvent) },
+                { "outbound_transfer.canceled", typeof(Events.OutboundTransferCanceledEvent) },
+                { "outbound_transfer.created", typeof(Events.OutboundTransferCreatedEvent) },
+                { "outbound_transfer.failed", typeof(Events.OutboundTransferFailedEvent) },
+                { "outbound_transfer.posted", typeof(Events.OutboundTransferPostedEvent) },
+                { "outbound_transfer.returned", typeof(Events.OutboundTransferReturnedEvent) },
+                { "received_credit.available", typeof(Events.ReceivedCreditAvailableEvent) },
+                { "received_credit.failed", typeof(Events.ReceivedCreditFailedEvent) },
+                { "received_credit.returned", typeof(Events.ReceivedCreditReturnedEvent) },
+                { "received_credit.succeeded", typeof(Events.ReceivedCreditSucceededEvent) },
 
                 // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
             });

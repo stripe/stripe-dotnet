@@ -35,7 +35,7 @@ namespace StripeTests
                     continue;
                 }
 
-                if (baseType == typeof(Stripe.ThinEvent))
+                if (baseType == typeof(Stripe.V2.Event))
                 {
                     continue;
                 }

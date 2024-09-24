@@ -98,10 +98,9 @@ namespace StripeTests
                     "/post",
                     new TestOptions { String = "string!" },
                     ApiMode.V2),
-                this.stripeClient.ApiKey,
+                new RequestOptions() { ApiKey = this.stripeClient.ApiKey },
                 new TestOptions { String = "string!" },
                 null,
-                new RequestOptions(),
                 ApiMode.V2);
 
             Assert.Equal(HttpMethod.Post, request.Method);
@@ -131,10 +130,9 @@ namespace StripeTests
                     "/delete",
                     new TestOptions { String = "string!" },
                     ApiMode.V2),
-                this.stripeClient.ApiKey,
+                new RequestOptions() { ApiKey = this.stripeClient.ApiKey },
                 new BaseOptions(),
                 null,
-                new RequestOptions(),
                 ApiMode.V2);
 
             Assert.Equal(HttpMethod.Delete, request.Method);
@@ -185,9 +183,54 @@ namespace StripeTests
         }
 
         [Fact]
+        public void Ctor_RequestOptionsIgnoresNullAccount()
+        {
+            var requestOptions = new RequestOptions
+            {
+                ApiKey = "sk_override",
+                IdempotencyKey = "idempotency_key",
+                StripeAccount = null,
+                StripeVersion = "2012-12-21",
+                StripeContext = "ctx_123",
+            };
+            var request = new StripeRequest(
+                this.stripeClient,
+                HttpMethod.Get,
+                "/get",
+                null,
+                requestOptions);
+
+            Assert.False(request.StripeHeaders.ContainsKey("Stripe-Account"));
+        }
+
+        [Fact]
         public void Ctor_ThrowsIfApiKeyIsNull()
         {
-            var client = new StripeClient(null);
+            var client = new StripeClient(apiKey: null);
+            var requestOptions = new RequestOptions();
+
+            var exception = Assert.Throws<StripeException>(() =>
+                new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions));
+
+            Assert.Contains("No API key provided.", exception.Message);
+        }
+
+        [Fact]
+        public void Ctor_ThrowsIfClientOptionsIsNull()
+        {
+            var client = new StripeClient(options: null);
+            var requestOptions = new RequestOptions();
+
+            var exception = Assert.Throws<StripeException>(() =>
+                new StripeRequest(client, HttpMethod.Get, "/get", null, requestOptions));
+
+            Assert.Contains("No API key provided.", exception.Message);
+        }
+
+        [Fact]
+        public void Ctor_ThrowsIfClientOptionsApiKeyIsNull()
+        {
+            var client = new StripeClient(new StripeClientOptions { ApiKey = null });
             var requestOptions = new RequestOptions();
 
             var exception = Assert.Throws<StripeException>(() =>

@@ -22,9 +22,9 @@ namespace Stripe
         /// <value>The base URL for Stripe's OAuth API.</value>
         public virtual string ConnectBase { get; }
 
-        /// <summary>Gets the base URL for Stripe's Events API.</summary>
-        /// <value>The base URL for Stripe's Events API.</value>
-        public virtual string EventsBase { get; }
+        /// <summary>Gets the base URL for Stripe's Meter Events API.</summary>
+        /// <value>The base URL for Stripe's Meter Events API.</value>
+        public virtual string MeterEventsBase { get; }
 
         /// <summary>Gets the API key used by the client to send requests.</summary>
         /// <value>The API key used by the client to send requests.</value>

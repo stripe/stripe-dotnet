@@ -3,7 +3,6 @@ namespace Stripe.V2
     using System.Collections;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     [JsonObject]
     public class StripeList<T> : StripeEntity<StripeList<T>>, IEnumerable<T>
@@ -17,14 +16,14 @@ namespace Stripe.V2
         /// <summary>
         /// The URL for accessing this list.
         /// </summary>
-        [JsonProperty("next_page")]
-        public string NextPage { get; set; }
+        [JsonProperty("next_page_url")]
+        public string NextPageUrl { get; set; }
 
         /// <summary>
         /// The URL for accessing this list.
         /// </summary>
-        [JsonProperty("previous_page")]
-        public string PreviousPage { get; set; }
+        [JsonProperty("previous_page_url")]
+        public string PreviousPageUrl { get; set; }
 
         public IEnumerator<T> GetEnumerator()
         {

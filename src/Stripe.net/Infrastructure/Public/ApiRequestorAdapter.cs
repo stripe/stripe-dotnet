@@ -25,7 +25,7 @@ namespace Stripe
 
         public override string FilesBase => this.client.FilesBase;
 
-        public override string EventsBase => this.client.EventsBase;
+        public override string MeterEventsBase => this.client.MeterEventsBase;
 
         internal static ApiRequestor Adapt(IStripeClient client)
         {

@@ -51,7 +51,6 @@ namespace Stripe
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
         /// <param name="method">The HTTP method.</param>
         /// <param name="uri">The full URI of the request.</param>
-        /// <param name="apiKey">The api key for the request.</param>
         /// <param name="options">The parameters of the request.</param>
         /// <param name="content">The string content of the request.</param>
         /// <param name="requestOptions">The special modifiers of the request.</param>
@@ -59,10 +58,9 @@ namespace Stripe
         internal StripeRequest(
             HttpMethod method,
             Uri uri,
-            string apiKey,
+            RequestOptions requestOptions,
             BaseOptions options,
             string content,
-            RequestOptions requestOptions,
             ApiMode apiMode)
         {
             this.options = options;
@@ -73,7 +71,7 @@ namespace Stripe
 
             this.Uri = uri;
 
-            this.AuthorizationHeader = BuildAuthorizationHeader(apiKey, requestOptions);
+            this.AuthorizationHeader = BuildAuthorizationHeader(requestOptions.ApiKey, requestOptions);
 
             this.StripeHeaders = BuildStripeHeaders(method, requestOptions, this.ApiMode);
 
@@ -111,7 +109,6 @@ namespace Stripe
         internal List<string> Usage { get; }
 
         /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
-        /// <param name="apiKey">The apiKey for the request.</param>
         /// <param name="method">The HTTP method.</param>
         /// <param name="uri">The Uri of the request.</param>
         /// <param name="content">The body the request.</param>
@@ -119,14 +116,13 @@ namespace Stripe
         /// <param name="apiMode">The API mode of the request.</param>
         /// <returns>Returns a new instance of the <see cref="StripeRequest"/> class.</returns>
         internal static StripeRequest CreateWithStringContent(
-            string apiKey,
             HttpMethod method,
             Uri uri,
             string content,
             RequestOptions requestOptions,
             ApiMode apiMode)
         {
-            return new StripeRequest(method, uri, apiKey, null, content, requestOptions, apiMode);
+            return new StripeRequest(method, uri, requestOptions, null, content, apiMode);
         }
 
         /// <summary>Returns a string that represents the <see cref="StripeRequest"/>.</summary>

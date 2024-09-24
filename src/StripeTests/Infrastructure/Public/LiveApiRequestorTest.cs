@@ -24,9 +24,11 @@ namespace StripeTests
         public LiveApiRequestorTest()
         {
             this.httpClient = new DummyHttpClient();
-            this.apiRequestor = new LiveApiRequestor(
-                "sk_test_123",
-                httpClient: this.httpClient);
+            this.apiRequestor = new LiveApiRequestor(new StripeClientOptions
+            {
+                ApiKey = "sk_test_123",
+                HttpClient = this.httpClient,
+            });
             this.options = new ChargeCreateOptions
             {
                 Amount = 123,
@@ -47,14 +49,14 @@ namespace StripeTests
         [Fact]
         public void Ctor_ThrowsIfApiKeyIsEmpty()
         {
-            var exception = Assert.Throws<ArgumentException>(() => new LiveApiRequestor(string.Empty));
+            var exception = Assert.Throws<ArgumentException>(() => new LiveApiRequestor(new StripeClientOptions { ApiKey = string.Empty }));
             Assert.Contains("API key cannot be the empty string.", exception.Message);
         }
 
         [Fact]
         public void Ctor_ThrowsIfApiKeyContainsWhitespace()
         {
-            var exception = Assert.Throws<ArgumentException>(() => new LiveApiRequestor("sk_test_123\n"));
+            var exception = Assert.Throws<ArgumentException>(() => new LiveApiRequestor(new StripeClientOptions { ApiKey = "sk_test_123\n" }));
             Assert.Contains("API key cannot contain whitespace.", exception.Message);
         }
 
@@ -74,6 +76,50 @@ namespace StripeTests
             Assert.NotNull(charge);
             Assert.Equal("ch_123", charge.Id);
             Assert.Equal(response, charge.StripeResponse);
+        }
+
+        [Fact]
+        public async Task RequestAsync_OkResponse_StripeAccount_RequestOptions()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var testRequestOptions = new RequestOptions
+            {
+                StripeAccount = "acct_456",
+            };
+
+            var charge = await this.apiRequestor.RequestAsync<Charge>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                "/v1/charges",
+                this.options,
+                testRequestOptions);
+
+            Assert.NotNull(charge);
+            Assert.Equal("acct_456", this.httpClient.LastRequest.StripeHeaders["Stripe-Account"]);
+        }
+
+        [Fact]
+        public async Task RequestAsync_OkResponse_StripeContext_RequestOptions()
+        {
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"ch_123\"}");
+            this.httpClient.Response = response;
+
+            var testRequestOptions = new RequestOptions
+            {
+                StripeContext = "ctx_123",
+            };
+
+            var charge = await this.apiRequestor.RequestAsync<Charge>(
+                BaseAddress.Api,
+                HttpMethod.Post,
+                "/v1/charges",
+                this.options,
+                testRequestOptions);
+
+            Assert.NotNull(charge);
+            Assert.Equal("ctx_123", this.httpClient.LastRequest.StripeHeaders["Stripe-Context"]);
         }
 
         [Fact]

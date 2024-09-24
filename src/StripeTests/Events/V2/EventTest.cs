@@ -35,11 +35,13 @@ namespace StripeTests.V2
                   }
               }";
 
+        // Note: yes the event type says v1; this is a v2 style event with a v1 event
+        // payload that does not have a related object
         private static string v2KnownEventNoRelatedObjectPayload =
             @"{
                 ""id"": ""evt_234"",
                 ""object"": ""event"",
-                ""type"": ""financial_account.balance.opened"",
+                ""type"": ""v1.billing.meter.no_meter_found"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
               }";
 
@@ -49,6 +51,7 @@ namespace StripeTests.V2
                 ""object"": ""event"",
                 ""type"": ""financial_account.balance.opened"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
+                ""context"": ""context 123"",
                 ""related_object"": {
                   ""id"": ""fa_123"",
                   ""type"": ""financial_account"",
@@ -107,15 +110,64 @@ namespace StripeTests.V2
             return header;
         }
 
-        private Stripe.ThinEvent ParseSignedEvent(string payload)
+        /// <summary>
+        /// Parse a ThinEvent object.  This uses StripeClient.ParseThinEvent to
+        /// parse a BasePushedThinEventNameTBD and then uses the EventService
+        /// to retrieve the ThinEvent.
+        /// </summary>
+        /// <param name="payload">The json payload to parse.</param>
+        /// <returns>A ThinEvent derived class.</returns>
+        private Stripe.V2.Event DoParseSignedEvent(string payload)
         {
-            return this.stripeClient.ParseThinEvent(payload, GenerateSigHeader(payload), WebhookSecret);
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    Content = new StringContent(payload),
+                });
+
+            var bte = this.stripeClient.ParseThinEvent(payload, GenerateSigHeader(payload), WebhookSecret);
+
+            // Check to make sure this parsed the payload correctly
+            Assert.NotNull(bte.Id);
+            var v2EventService = new Stripe.V2.Core.EventService(this.stripeClient);
+            return v2EventService.Get(bte.Id);
+        }
+
+        [Fact]
+        public void ParseThinEventWithoutRelatedObject()
+        {
+            var baseThinEvent = this.stripeClient.ParseThinEvent(v2KnownEventNoRelatedObjectPayload, GenerateSigHeader(v2KnownEventNoRelatedObjectPayload), WebhookSecret);
+            Assert.NotNull(baseThinEvent);
+            Assert.Equal("evt_234", baseThinEvent.Id);
+            Assert.Equal("v1.billing.meter.no_meter_found", baseThinEvent.Type);
+            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), baseThinEvent.Created);
+            Assert.Null(baseThinEvent.Context);
+            Assert.Null(baseThinEvent.RelatedObject);
+        }
+
+        [Fact]
+        public void ParseThinEventWithRelatedObject()
+        {
+            var baseThinEvent = this.stripeClient.ParseThinEvent(v2KnownEventPayload, GenerateSigHeader(v2KnownEventPayload), WebhookSecret);
+            Assert.NotNull(baseThinEvent);
+            Assert.Equal("evt_234", baseThinEvent.Id);
+            Assert.Equal("financial_account.balance.opened", baseThinEvent.Type);
+            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), baseThinEvent.Created);
+            Assert.Equal("context 123", baseThinEvent.Context);
+            Assert.NotNull(baseThinEvent.RelatedObject);
+            Assert.Equal("fa_123", baseThinEvent.RelatedObject.Id);
+            Assert.Equal("financial_account", baseThinEvent.RelatedObject.Type);
+            Assert.Equal("/v2/financial_accounts/fa_123", baseThinEvent.RelatedObject.Url);
         }
 
         [Fact]
         public void ParseUnknownEvent()
         {
-            var stripeEvent = this.ParseSignedEvent(v2UnknownEventPayload);
+            var stripeEvent = this.DoParseSignedEvent(v2UnknownEventPayload);
             Assert.NotNull(stripeEvent);
             Assert.Equal("evt_234", stripeEvent.Id);
             Assert.Equal("event", stripeEvent.Object);
@@ -135,7 +187,7 @@ namespace StripeTests.V2
         [Fact]
         public void ParseUnknownEventDirectly()
         {
-            var stripeEvent = JsonUtils.DeserializeObject<Stripe.ThinEvent>(v2UnknownEventPayload);
+            var stripeEvent = JsonUtils.DeserializeObject<Stripe.V2.Event>(v2UnknownEventPayload);
             Assert.NotNull(stripeEvent);
             Assert.Equal("evt_234", stripeEvent.Id);
             Assert.Equal("event", stripeEvent.Object);
@@ -147,50 +199,20 @@ namespace StripeTests.V2
         [Fact]
         public void ParseKnownEvent()
         {
-            var stripeEvent = this.ParseSignedEvent(v2KnownEventPayload);
+            var stripeEvent = this.DoParseSignedEvent(v2KnownEventPayload);
             Assert.NotNull(stripeEvent);
-            Assert.True(stripeEvent is Stripe.V2.FinancialAccountBalanceOpenedEvent);
+            Assert.True(stripeEvent is Stripe.Events.FinancialAccountBalanceOpenedEvent);
             Assert.Equal(this.stripeClient.Requestor, stripeEvent.Requestor);
         }
 
         [Fact]
-        public void FetchData()
+        public void ParseEventData()
         {
-            var parsed = this.ParseSignedEvent(v2KnownEventPayload);
-            Assert.True(this.ParseSignedEvent(v2KnownEventPayload) is Stripe.V2.FinancialAccountBalanceOpenedEvent);
-            var stripeEvent = this.ParseSignedEvent(v2KnownEventPayload) as Stripe.V2.FinancialAccountBalanceOpenedEvent;
+            var parsed = this.DoParseSignedEvent(v2KnownEventPayload);
+            Assert.True(this.DoParseSignedEvent(v2KnownEventPayload) is Stripe.Events.FinancialAccountBalanceOpenedEvent);
+            var stripeEvent = parsed as Stripe.Events.FinancialAccountBalanceOpenedEvent;
 
-            this.MockHttpClientFixture.MockHandler.Protected()
-                .Setup<Task<HttpResponseMessage>>(
-                    "SendAsync",
-                    ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(new HttpResponseMessage
-                {
-                    Content = new StringContent(v2KnownEventWithDataPayload),
-                });
-            var eventData = stripeEvent.FetchData();
-
-            // TODO: There is nothing on event data to test. Once more events are supported, update test
-        }
-
-        [Fact]
-        public async void FetchDataAsync()
-        {
-            var parsed = this.ParseSignedEvent(v2KnownEventPayload);
-            Assert.True(this.ParseSignedEvent(v2KnownEventPayload) is Stripe.V2.FinancialAccountBalanceOpenedEvent);
-            var stripeEvent = this.ParseSignedEvent(v2KnownEventPayload) as Stripe.V2.FinancialAccountBalanceOpenedEvent;
-
-            this.MockHttpClientFixture.MockHandler.Protected()
-                .Setup<Task<HttpResponseMessage>>(
-                    "SendAsync",
-                    ItExpr.IsAny<HttpRequestMessage>(),
-                    ItExpr.IsAny<CancellationToken>())
-                .ReturnsAsync(new HttpResponseMessage
-                {
-                    Content = new StringContent(v2KnownEventWithDataPayload),
-                });
-            var eventData = await stripeEvent.FetchDataAsync();
+            var eventData = stripeEvent.Data;
 
             // TODO: There is nothing on event data to test. Once more events are supported, update test
         }
@@ -198,9 +220,9 @@ namespace StripeTests.V2
         [Fact]
         public void FetchRelatedObject()
         {
-            var parsed = this.ParseSignedEvent(v2KnownEventPayload);
-            Assert.True(parsed is Stripe.V2.FinancialAccountBalanceOpenedEvent);
-            var stripeEvent = this.ParseSignedEvent(v2KnownEventPayload) as Stripe.V2.FinancialAccountBalanceOpenedEvent;
+            var parsed = this.DoParseSignedEvent(v2KnownEventPayload);
+            Assert.True(parsed is Stripe.Events.FinancialAccountBalanceOpenedEvent);
+            var stripeEvent = this.DoParseSignedEvent(v2KnownEventPayload) as Stripe.Events.FinancialAccountBalanceOpenedEvent;
 
             var relatedObjectPayload = @"
             {
@@ -216,7 +238,7 @@ namespace StripeTests.V2
                 {
                     Content = new StringContent(relatedObjectPayload),
                 });
-            var relatedObject = stripeEvent.FetchObject();
+            var relatedObject = stripeEvent.FetchRelatedObject();
             Assert.Equal("fa_123", relatedObject.Id);
             Assert.Equal("financial_account", relatedObject.Object);
         }
@@ -224,20 +246,22 @@ namespace StripeTests.V2
         [Fact]
         public void FetchObjectNoRelatedObject()
         {
-            var parsed = this.ParseSignedEvent(v2KnownEventNoRelatedObjectPayload);
-            Assert.True(parsed is Stripe.V2.FinancialAccountBalanceOpenedEvent);
-            var stripeEvent = this.ParseSignedEvent(v2KnownEventNoRelatedObjectPayload) as Stripe.V2.FinancialAccountBalanceOpenedEvent;
+            var parsed = this.DoParseSignedEvent(v2KnownEventNoRelatedObjectPayload);
+            Assert.True(parsed is Stripe.Events.V1BillingMeterNoMeterFoundEvent);
+            var stripeEvent = this.DoParseSignedEvent(v2KnownEventNoRelatedObjectPayload) as Stripe.Events.V1BillingMeterNoMeterFoundEvent;
 
-            var relatedObject = stripeEvent.FetchObject();
-            Assert.Null(relatedObject);
+            var eventType = typeof(Stripe.Events.V1BillingMeterNoMeterFoundEvent);
+            Assert.Null(eventType.GetMethod("FetchRelatedObject"));
+            Assert.Null(eventType.GetMethod("FetchRelatedObjectAsync"));
+            Assert.Null(eventType.GetProperty("RelatedObject"));
         }
 
         [Fact]
         public async void FetchRelatedObjectAsync()
         {
-            var parsed = this.ParseSignedEvent(v2KnownEventPayload);
-            Assert.True(parsed is Stripe.V2.FinancialAccountBalanceOpenedEvent);
-            var stripeEvent = this.ParseSignedEvent(v2KnownEventPayload) as Stripe.V2.FinancialAccountBalanceOpenedEvent;
+            var parsed = this.DoParseSignedEvent(v2KnownEventPayload);
+            Assert.True(parsed is Stripe.Events.FinancialAccountBalanceOpenedEvent);
+            var stripeEvent = this.DoParseSignedEvent(v2KnownEventPayload) as Stripe.Events.FinancialAccountBalanceOpenedEvent;
 
             var relatedObjectPayload = @"
             {
@@ -253,7 +277,7 @@ namespace StripeTests.V2
                 {
                     Content = new StringContent(relatedObjectPayload),
                 });
-            var relatedObject = await stripeEvent.FetchObjectAsync();
+            var relatedObject = await stripeEvent.FetchRelatedObjectAsync();
             Assert.Equal("fa_123", relatedObject.Id);
             Assert.Equal("financial_account", relatedObject.Object);
         }
@@ -271,7 +295,7 @@ namespace StripeTests.V2
                     Content = new StringContent(v2KnownEventWithDataPayload),
                 });
 
-            var v2EventService = new Stripe.V2.ThinEventService(this.stripeClient);
+            var v2EventService = new Stripe.V2.Core.EventService(this.stripeClient);
             var v2Event = await v2EventService.GetAsync("evt_234");
             Assert.Equal(this.stripeClient.Requestor, v2Event.Requestor);
         }

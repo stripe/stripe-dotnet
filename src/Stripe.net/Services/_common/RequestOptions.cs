@@ -59,6 +59,21 @@ namespace Stripe
 #pragma warning disable SA1402 // FileMayOnlyContainASingleType
     internal static class RequestOptionsExtensions
     {
+        // TODO: some way to enforce this stays up-to-date if new fields are added
+        // to requestorOptions or requestOptions?
+        internal static T WithClientOptions<T>(this T requestOptions, StripeClientOptions clientOptions)
+            where T : RequestOptions, new()
+        {
+            T clone = (T)requestOptions?.Clone() ?? new T();
+
+            if (string.IsNullOrEmpty(clone.ApiKey))
+            {
+                clone.ApiKey = clientOptions.ApiKey;
+            }
+
+            return clone;
+        }
+
         internal static T WithUsage<T>(this T options, List<string> usage)
             where T : RequestOptions, new()
         {
