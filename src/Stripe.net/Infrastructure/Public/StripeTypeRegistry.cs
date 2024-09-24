@@ -172,9 +172,6 @@ namespace Stripe
             new Dictionary<string, Type>
             {
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
-                { "account", typeof(V2.Account) },
-                { "account_link", typeof(V2.AccountLink) },
-                { "adjustment", typeof(V2.Adjustment) },
                 {
                     "billing.meter_event_adjustment_v2", typeof(
                     V2.Billing.MeterEventAdjustmentV2)
@@ -183,31 +180,6 @@ namespace Stripe
                 { "billing.meter_event_v2", typeof(V2.Billing.MeterEventV2) },
                 { "event", typeof(V2.Event) },
                 { "event_destination", typeof(V2.EventDestination) },
-                { "financial_account", typeof(V2.FinancialAccount) },
-                { "financial_account.balance", typeof(V2.FinancialAccountBalance) },
-                { "financial_address", typeof(V2.FinancialAddress) },
-                {
-                    "financial_address_credit_simulation", typeof(
-                    V2.FinancialAddressCreditSimulation)
-                },
-                {
-                    "financial_address_generated_microdeposits", typeof(
-                    V2.FinancialAddressGeneratedMicrodeposits)
-                },
-                { "inbound_transfer", typeof(V2.InboundTransfer) },
-                { "outbound_payment", typeof(V2.OutboundPayment) },
-                { "outbound_transfer", typeof(V2.OutboundTransfer) },
-                { "payment_methods.card", typeof(V2.PaymentMethods.Card) },
-                { "payment_methods.gb_bank_account", typeof(V2.PaymentMethods.GbBankAccount) },
-                {
-                    "payment_methods.outbound_destination", typeof(
-                    V2.PaymentMethods.OutboundDestination)
-                },
-                { "payment_methods.us_bank_account", typeof(V2.PaymentMethods.UsBankAccount) },
-                { "received_credit", typeof(V2.ReceivedCredit) },
-                { "received_debit", typeof(V2.ReceivedDebit) },
-                { "transaction", typeof(V2.Transaction) },
-                { "transaction_entry", typeof(V2.TransactionEntry) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -225,49 +197,9 @@ namespace Stripe
                     Events.V1BillingMeterNoMeterFoundEvent)
                 },
                 {
-                    "account.configuration_recipient_data.account_link_completed", typeof(
-                    Events.AccountConfigurationRecipientDataAccountLinkCompletedEvent)
-                },
-                {
-                    "account.configuration_recipient_data.feature_status_updated", typeof(
-                    Events.AccountConfigurationRecipientDataFeatureStatusUpdatedEvent)
-                },
-                {
-                    "account.requirements.updated", typeof(
-                    Events.AccountRequirementsUpdatedEvent)
-                },
-                {
-                    "financial_account.balance.opened", typeof(
-                    Events.FinancialAccountBalanceOpenedEvent)
-                },
-                { "financial_account.created", typeof(Events.FinancialAccountCreatedEvent) },
-                {
-                    "financial_address.activated", typeof(
-                    Events.FinancialAddressActivatedEvent)
-                },
-                { "financial_address.failed", typeof(Events.FinancialAddressFailedEvent) },
-                {
-                    "inbound_transfer.bank_debit_succeeded", typeof(
-                    Events.InboundTransferBankDebitSucceededEvent)
-                },
-                {
                     "v2.core.event_destination.ping", typeof(
                     Events.V2CoreEventDestinationPingEvent)
                 },
-                { "outbound_payment.canceled", typeof(Events.OutboundPaymentCanceledEvent) },
-                { "outbound_payment.created", typeof(Events.OutboundPaymentCreatedEvent) },
-                { "outbound_payment.failed", typeof(Events.OutboundPaymentFailedEvent) },
-                { "outbound_payment.posted", typeof(Events.OutboundPaymentPostedEvent) },
-                { "outbound_payment.returned", typeof(Events.OutboundPaymentReturnedEvent) },
-                { "outbound_transfer.canceled", typeof(Events.OutboundTransferCanceledEvent) },
-                { "outbound_transfer.created", typeof(Events.OutboundTransferCreatedEvent) },
-                { "outbound_transfer.failed", typeof(Events.OutboundTransferFailedEvent) },
-                { "outbound_transfer.posted", typeof(Events.OutboundTransferPostedEvent) },
-                { "outbound_transfer.returned", typeof(Events.OutboundTransferReturnedEvent) },
-                { "received_credit.available", typeof(Events.ReceivedCreditAvailableEvent) },
-                { "received_credit.failed", typeof(Events.ReceivedCreditFailedEvent) },
-                { "received_credit.returned", typeof(Events.ReceivedCreditReturnedEvent) },
-                { "received_credit.succeeded", typeof(Events.ReceivedCreditSucceededEvent) },
 
                 // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
             });
