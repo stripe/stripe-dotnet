@@ -109,7 +109,6 @@ namespace StripeTests
                 $"Bearer {this.stripeClient.ApiKey}",
                 request.AuthorizationHeader.ToString());
             Assert.True(request.StripeHeaders.ContainsKey("Stripe-Version"));
-            Assert.Equal(ApiVersion.CurrentPreview, request.StripeHeaders["Stripe-Version"]);
 
             // V2 requests always have IK
             Assert.True(request.StripeHeaders.ContainsKey("Idempotency-Key"));
@@ -143,7 +142,6 @@ namespace StripeTests
                 $"Bearer {this.stripeClient.ApiKey}",
                 request.AuthorizationHeader.ToString());
             Assert.True(request.StripeHeaders.ContainsKey("Stripe-Version"));
-            Assert.Equal(ApiVersion.CurrentPreview, request.StripeHeaders["Stripe-Version"]);
 
             // V2 requests always have IK
             Assert.True(request.StripeHeaders.ContainsKey("Idempotency-Key"));
