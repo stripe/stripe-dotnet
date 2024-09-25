@@ -11,8 +11,12 @@
 
         public static async Task Main(string[] args)
         {
-            Console.WriteLine("Hello World");
-            //await MeterEventExample.Run();
+            // To create an example, clone NewExample.cs, implement the example
+            // copy this line and replace the class name with your new class.
+            // await NewExample.Run();
+            // e.g.
+            // await MeterEventExample.Run();
+            // then build the project and run bin/Debug/net8.0/Examples
         }
     }
 }
