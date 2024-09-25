@@ -1,11 +1,19 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Billing
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AlertUsageThresholdConfig : StripeEntity<AlertUsageThresholdConfig>
+    public class AlertUsageThreshold : StripeEntity<AlertUsageThreshold>
     {
+        /// <summary>
+        /// The filters allow limiting the scope of this usage alert. You can only specify up to one
+        /// filter at this time.
+        /// </summary>
+        [JsonProperty("filters")]
+        public List<AlertUsageThresholdFilter> Filters { get; set; }
+
         /// <summary>
         /// The value at which this alert will trigger.
         /// </summary>

@@ -28,18 +28,19 @@ namespace Stripe
         public override string BasePath => "/v1/subscriptions";
 
         /// <summary>
-        /// <p>Cancels a customer’s subscription immediately. The customer will not be charged again
-        /// for the subscription.</p>.
+        /// <p>Cancels a customer’s subscription immediately. The customer won’t be charged again
+        /// for the subscription. After it’s canceled, you can no longer update the subscription or
+        /// its <a href="https://stripe.com/metadata">metadata</a>.</p>.
         ///
-        /// <p>Note, however, that any pending invoice items that you’ve created will still be
-        /// charged for at the end of the period, unless manually <a
+        /// <p>Any pending invoice items that you’ve created are still charged at the end of the
+        /// period, unless manually <a
         /// href="https://stripe.com/docs/api#delete_invoiceitem">deleted</a>. If you’ve set the
-        /// subscription to cancel at the end of the period, any pending prorations will also be
-        /// left in place and collected at the end of the period. But if the subscription is set to
-        /// cancel immediately, pending prorations will be removed.</p>.
+        /// subscription to cancel at the end of the period, any pending prorations are also left in
+        /// place and collected at the end of the period. But if the subscription is set to cancel
+        /// immediately, pending prorations are removed.</p>.
         ///
-        /// <p>By default, upon subscription cancellation, Stripe will stop automatic collection of
-        /// all finalized invoices for the customer. This is intended to prevent unexpected payment
+        /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
+        /// finalized invoices for the customer. This is intended to prevent unexpected payment
         /// attempts after the customer has canceled a subscription. However, you can resume
         /// automatic collection of the invoices manually after subscription cancellation to have us
         /// proceed. Or, you could check for unpaid invoices before allowing the customer to cancel
@@ -51,18 +52,19 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Cancels a customer’s subscription immediately. The customer will not be charged again
-        /// for the subscription.</p>.
+        /// <p>Cancels a customer’s subscription immediately. The customer won’t be charged again
+        /// for the subscription. After it’s canceled, you can no longer update the subscription or
+        /// its <a href="https://stripe.com/metadata">metadata</a>.</p>.
         ///
-        /// <p>Note, however, that any pending invoice items that you’ve created will still be
-        /// charged for at the end of the period, unless manually <a
+        /// <p>Any pending invoice items that you’ve created are still charged at the end of the
+        /// period, unless manually <a
         /// href="https://stripe.com/docs/api#delete_invoiceitem">deleted</a>. If you’ve set the
-        /// subscription to cancel at the end of the period, any pending prorations will also be
-        /// left in place and collected at the end of the period. But if the subscription is set to
-        /// cancel immediately, pending prorations will be removed.</p>.
+        /// subscription to cancel at the end of the period, any pending prorations are also left in
+        /// place and collected at the end of the period. But if the subscription is set to cancel
+        /// immediately, pending prorations are removed.</p>.
         ///
-        /// <p>By default, upon subscription cancellation, Stripe will stop automatic collection of
-        /// all finalized invoices for the customer. This is intended to prevent unexpected payment
+        /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
+        /// finalized invoices for the customer. This is intended to prevent unexpected payment
         /// attempts after the customer has canceled a subscription. However, you can resume
         /// automatic collection of the invoices manually after subscription cancellation to have us
         /// proceed. Or, you could check for unpaid invoices before allowing the customer to cancel
