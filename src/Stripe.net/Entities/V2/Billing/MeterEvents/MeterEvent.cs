@@ -8,7 +8,7 @@ namespace Stripe.V2.Billing
     /// <summary>
     /// Fix me empty_doc_string.
     /// </summary>
-    public class MeterEventV2 : StripeEntity<MeterEventV2>, IHasObject
+    public class MeterEvent : StripeEntity<MeterEvent>, IHasObject
     {
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value of

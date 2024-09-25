@@ -19,19 +19,23 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Creates a meter event. Validates the event synchronously.
+        /// Creates a meter event. Events are validated synchronously, but are processed
+        /// asynchronously. Supports up to 1,000 events per second in livemode. For higher
+        /// rate-limits, please use meter event streams instead.
         /// </summary>
-        public virtual MeterEventV2 Create(MeterEventCreateOptions options, RequestOptions requestOptions = null)
+        public virtual MeterEvent Create(MeterEventCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<MeterEventV2>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/meter_events", options, requestOptions);
+            return this.Request<MeterEvent>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/meter_events", options, requestOptions);
         }
 
         /// <summary>
-        /// Creates a meter event. Validates the event synchronously.
+        /// Creates a meter event. Events are validated synchronously, but are processed
+        /// asynchronously. Supports up to 1,000 events per second in livemode. For higher
+        /// rate-limits, please use meter event streams instead.
         /// </summary>
-        public virtual Task<MeterEventV2> CreateAsync(MeterEventCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<MeterEvent> CreateAsync(MeterEventCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<MeterEventV2>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/meter_events", options, requestOptions, cancellationToken);
+            return this.RequestAsync<MeterEvent>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/meter_events", options, requestOptions, cancellationToken);
         }
     }
 }
