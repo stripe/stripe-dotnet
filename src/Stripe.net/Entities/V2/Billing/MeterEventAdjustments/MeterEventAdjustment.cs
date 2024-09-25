@@ -4,7 +4,7 @@ namespace Stripe.V2.Billing
     using System;
     using Newtonsoft.Json;
 
-    public class MeterEventAdjustmentV2 : StripeEntity<MeterEventAdjustmentV2>, IHasId, IHasObject
+    public class MeterEventAdjustment : StripeEntity<MeterEventAdjustment>, IHasId, IHasObject
     {
         /// <summary>
         /// The unique id of this meter event adjustment.
@@ -23,7 +23,7 @@ namespace Stripe.V2.Billing
         /// Specifies which event to cancel.
         /// </summary>
         [JsonProperty("cancel")]
-        public MeterEventAdjustmentV2Cancel Cancel { get; set; }
+        public MeterEventAdjustmentCancel Cancel { get; set; }
 
         /// <summary>
         /// The time the adjustment was created.
@@ -45,15 +45,15 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The meter event adjustment’s status.
+        /// Open Enum. The meter event adjustment’s status.
         /// One of: <c>complete</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
 
         /// <summary>
-        /// Specifies whether to cancel a single event or a range of events for a time period. Time
-        /// period cancellation is not supported yet.
+        /// Open Enum. Specifies whether to cancel a single event or a range of events for a time
+        /// period. Time period cancellation is not supported yet.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

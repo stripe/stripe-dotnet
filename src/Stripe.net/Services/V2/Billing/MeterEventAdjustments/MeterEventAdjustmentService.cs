@@ -21,17 +21,17 @@ namespace Stripe.V2.Billing
         /// <summary>
         /// Creates a meter event adjustment to cancel a previously sent meter event.
         /// </summary>
-        public virtual MeterEventAdjustmentV2 Create(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null)
+        public virtual MeterEventAdjustment Create(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<MeterEventAdjustmentV2>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/meter_event_adjustments", options, requestOptions);
+            return this.Request<MeterEventAdjustment>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/meter_event_adjustments", options, requestOptions);
         }
 
         /// <summary>
         /// Creates a meter event adjustment to cancel a previously sent meter event.
         /// </summary>
-        public virtual Task<MeterEventAdjustmentV2> CreateAsync(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<MeterEventAdjustment> CreateAsync(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<MeterEventAdjustmentV2>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/meter_event_adjustments", options, requestOptions, cancellationToken);
+            return this.RequestAsync<MeterEventAdjustment>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/meter_event_adjustments", options, requestOptions, cancellationToken);
         }
     }
 }

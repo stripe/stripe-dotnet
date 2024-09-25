@@ -172,12 +172,9 @@ namespace Stripe
             new Dictionary<string, Type>
             {
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
+                { "billing.meter_event", typeof(V2.Billing.MeterEvent) },
+                { "billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
-                { "v2.billing.meter_event", typeof(V2.Billing.MeterEventV2) },
-                {
-                    "v2.billing.meter_event_adjustment", typeof(
-                    V2.Billing.MeterEventAdjustmentV2)
-                },
                 { "v2.core.event", typeof(V2.Event) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
