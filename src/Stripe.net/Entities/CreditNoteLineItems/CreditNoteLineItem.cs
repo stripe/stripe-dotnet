@@ -67,6 +67,9 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("pretax_credit_amounts")]
+        public List<CreditNoteLineItemPretaxCreditAmount> PretaxCreditAmounts { get; set; }
+
         /// <summary>
         /// The number of units of product being credited.
         /// </summary>

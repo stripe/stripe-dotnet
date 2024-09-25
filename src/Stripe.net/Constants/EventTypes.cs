@@ -1,7 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    public static class Events
+    /// <summary>
+    /// This class used to be called Events.
+    /// </summary>
+    public static class EventTypes
     {
         /// <summary>
         /// Occurs whenever a user authorizes an application. Sent to the related application only.
