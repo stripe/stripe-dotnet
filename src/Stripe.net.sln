@@ -1,4 +1,4 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.4
 MinimumVisualStudioVersion = 10.0.40219.1
@@ -20,6 +20,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Stripe.net", "Stripe.net\St
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StripeTests", "StripeTests\StripeTests.csproj", "{75F3AA23-C708-4408-AFD0-D7FA354E031B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Examples", "Examples\Examples.csproj", "{EF1FBE46-76A7-471C-A1EE-229F689A6BB7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{75F3AA23-C708-4408-AFD0-D7FA354E031B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{75F3AA23-C708-4408-AFD0-D7FA354E031B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75F3AA23-C708-4408-AFD0-D7FA354E031B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF1FBE46-76A7-471C-A1EE-229F689A6BB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF1FBE46-76A7-471C-A1EE-229F689A6BB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF1FBE46-76A7-471C-A1EE-229F689A6BB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF1FBE46-76A7-471C-A1EE-229F689A6BB7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
