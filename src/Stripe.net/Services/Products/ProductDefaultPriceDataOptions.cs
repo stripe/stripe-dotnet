@@ -23,6 +23,13 @@ namespace Stripe
         public Dictionary<string, ProductDefaultPriceDataCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
+        /// When set, provides configuration for the amount to be adjusted by the customer during
+        /// Checkout Sessions and Payment Links.
+        /// </summary>
+        [JsonProperty("custom_unit_amount")]
+        public ProductDefaultPriceDataCustomUnitAmountOptions CustomUnitAmount { get; set; }
+
+        /// <summary>
         /// The recurring components of a price such as <c>interval</c> and <c>interval_count</c>.
         /// </summary>
         [JsonProperty("recurring")]
@@ -42,7 +49,8 @@ namespace Stripe
 
         /// <summary>
         /// A positive integer in cents (or local equivalent) (or 0 for a free price) representing
-        /// how much to charge. One of <c>unit_amount</c> or <c>unit_amount_decimal</c> is required.
+        /// how much to charge. One of <c>unit_amount</c>, <c>unit_amount_decimal</c>, or
+        /// <c>custom_unit_amount</c> is required.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }

@@ -166,6 +166,9 @@ namespace Stripe
         [JsonProperty("plan")]
         public Plan Plan { get; set; }
 
+        [JsonProperty("pretax_credit_amounts")]
+        public List<InvoiceLineItemPretaxCreditAmount> PretaxCreditAmounts { get; set; }
+
         /// <summary>
         /// The price of the line item.
         /// </summary>

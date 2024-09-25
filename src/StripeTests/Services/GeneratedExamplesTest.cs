@@ -4516,7 +4516,7 @@ namespace StripeTests
             var options = new Stripe.Terminal.ReaderProcessSetupIntentOptions
             {
                 SetupIntent = "seti_xxxxxxxxxxxxx",
-                CustomerConsentCollected = true,
+                AllowRedisplay = "always",
             };
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             service.ProcessSetupIntent("tmr_xxxxxxxxxxxxx", options);
