@@ -15,7 +15,7 @@ namespace Stripe.Infrastructure
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
-            throw new NotSupportedException("ThinEventConverter should only be used while deserializing.");
+            throw new NotSupportedException("V2EventConverter should only be used while deserializing.");
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)

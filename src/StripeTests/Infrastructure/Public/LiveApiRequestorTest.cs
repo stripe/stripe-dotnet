@@ -12,6 +12,7 @@ namespace StripeTests
     using Newtonsoft.Json;
     using Stripe;
     using Stripe.V2;
+    using Stripe.V2.Billing;
     using Xunit;
 
     public class LiveApiRequestorTest : BaseStripeTest
@@ -239,61 +240,62 @@ namespace StripeTests
             var body = @"
                 {
                   ""error"": {
-                    ""type"": ""insufficient_funds"",
-                    ""code"": ""outbound_payment_insufficient_funds"",
-                    ""message"": ""we require more minerals""
+                    ""type"": ""temporary_session_expired"",
+                    ""code"": ""billing_meter_event_session_expired"",
+                    ""message"": ""your session is expired""
                   }
                 }
             ";
             var response = new StripeResponse(HttpStatusCode.BadRequest, null, body);
             this.httpClient.Response = response;
 
-            var exception = await Assert.ThrowsAsync<InsufficientFundsException>(async () =>
-                await this.apiRequestor.RequestAsync<OutboundPayment>(
+            var exception = await Assert.ThrowsAsync<TemporarySessionExpiredException>(async () =>
+                await this.apiRequestor.RequestAsync<EmptyStripeEntity>(
                     BaseAddress.Api,
                     HttpMethod.Post,
-                    "/v2/outbound_payments",
+                    "/v2/meter_event_stream",
                     this.options,
                     this.requestOptions));
 
             Assert.NotNull(exception);
             Assert.Equal(HttpStatusCode.BadRequest, exception.HttpStatusCode);
-            Assert.Equal("we require more minerals", exception.Message);
+            Assert.Equal("your session is expired", exception.Message);
             Assert.Equal(response, exception.StripeResponse);
         }
 
-        [Fact]
-        public async Task RequestAsync_V2_Error_With_Field()
-        {
-            var body = @"
+        /* TODO(jar) this test is not relevant for now, but it will be when we re-enable these resources
+                [Fact]
+                public async Task RequestAsync_V2_Error_With_Field()
                 {
-                  ""error"": {
-                    ""type"": ""invalid_payment_method"",
-                    ""code"": ""invalid_payment_method"",
-                    ""message"": ""Republic credits are no good out here, I need something more real"",
-                    ""invalid_param"": ""currency""
-                  }
+                    var body = @"
+                        {
+                          ""error"": {
+                            ""type"": ""invalid_payment_method"",
+                            ""code"": ""invalid_payment_method"",
+                            ""message"": ""Republic credits are no good out here, I need something more real"",
+                            ""invalid_param"": ""currency""
+                          }
+                        }
+                    ";
+                    var response = new StripeResponse(HttpStatusCode.BadRequest, null, body);
+                    this.httpClient.Response = response;
+
+                    var exception = await Assert.ThrowsAsync<InvalidPaymentMethodException>(async () =>
+                        await this.apiRequestor.RequestAsync<Stripe.V2.PaymentMethods.UsBankAccount>(
+                            BaseAddress.Api,
+                            HttpMethod.Post,
+                            "/v2/payment_methods/us_bank_accounts",
+                            this.options,
+                            this.requestOptions));
+
+                    Assert.NotNull(exception);
+                    Assert.Equal(HttpStatusCode.BadRequest, exception.HttpStatusCode);
+                    Assert.Equal("Republic credits are no good out here, I need something more real", exception.Message);
+                    Assert.Equal(response, exception.StripeResponse);
+                    Assert.Equal("currency", exception.InvalidParam);
+                    Assert.Equal("currency", (exception.StripeError as InvalidPaymentMethodError).InvalidParam);
                 }
-            ";
-            var response = new StripeResponse(HttpStatusCode.BadRequest, null, body);
-            this.httpClient.Response = response;
-
-            var exception = await Assert.ThrowsAsync<InvalidPaymentMethodException>(async () =>
-                await this.apiRequestor.RequestAsync<Stripe.V2.PaymentMethods.UsBankAccount>(
-                    BaseAddress.Api,
-                    HttpMethod.Post,
-                    "/v2/payment_methods/us_bank_accounts",
-                    this.options,
-                    this.requestOptions));
-
-            Assert.NotNull(exception);
-            Assert.Equal(HttpStatusCode.BadRequest, exception.HttpStatusCode);
-            Assert.Equal("Republic credits are no good out here, I need something more real", exception.Message);
-            Assert.Equal(response, exception.StripeResponse);
-            Assert.Equal("currency", exception.InvalidParam);
-            Assert.Equal("currency", (exception.StripeError as InvalidPaymentMethodError).InvalidParam);
-        }
-
+        */
         [Fact]
         public async Task RequestStreamingAsync_OkResponse_InvalidJson()
         {
@@ -399,14 +401,13 @@ namespace StripeTests
             var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"fa_123\"}");
             this.httpClient.Response = response;
 
-            var options = new Stripe.V2.AccountCreateOptions
+            var options = new Stripe.V2.Billing.MeterEventSessionCreateOptions
             {
-                Email = "jenny.rosen@example.com",
             };
-            var rawresponse = await this.apiRequestor.RequestAsync<Stripe.V2.FinancialAccount>(
+            var rawresponse = await this.apiRequestor.RequestAsync<Stripe.V2.Billing.MeterEventSession>(
                 BaseAddress.Api,
                 HttpMethod.Post,
-                "/v2/accounts",
+                "/v2/meter_event_session",
                 options,
                 this.requestOptions);
 
@@ -414,7 +415,7 @@ namespace StripeTests
 
             Assert.Equal("application/json; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
             Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
-            Assert.Equal("{\"email\":\"jenny.rosen@example.com\"}", await lastRequest.Content.ReadAsStringAsync());
+            Assert.Equal("{}", await lastRequest.Content.ReadAsStringAsync());
         }
 
         [Fact]

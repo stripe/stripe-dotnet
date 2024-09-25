@@ -49,13 +49,13 @@ namespace StripeTests.V2
             @"{
                 ""id"": ""evt_234"",
                 ""object"": ""event"",
-                ""type"": ""financial_account.balance.opened"",
+                ""type"": ""v1.billing.meter.error_report_triggered"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
                 ""context"": ""context 123"",
                 ""related_object"": {
-                  ""id"": ""fa_123"",
-                  ""type"": ""financial_account"",
-                  ""url"": ""/v2/financial_accounts/fa_123"",
+                  ""id"": ""me_123"",
+                  ""type"": ""billing.meter"",
+                  ""url"": ""/v1/billing/meters/me_123"",
                   ""stripe_context"": ""acct_123""
                 }
               }";
@@ -64,17 +64,35 @@ namespace StripeTests.V2
             @"{
                   ""id"": ""evt_234"",
                   ""object"": ""event"",
-                  ""type"": ""financial_account.balance.opened"",
+                  ""type"": ""v1.billing.meter.error_report_triggered"",
                   ""created"": ""2022-02-15T00:27:45.330Z"",
+                  ""context"": ""context 123"",
                   ""related_object"": {
-                    ""id"": ""fa_123"",
-                    ""type"": ""financial_account"",
-                    ""url"": ""/v2/financial_accounts/fa_123"",
+                    ""id"": ""me_123"",
+                    ""type"": ""billing.meter"",
+                    ""url"": ""/v1/billing/meters/me_123"",
                     ""stripe_context"": ""acct_123""
                   },
                   ""data"": {
-                    ""containing_compartment_id"": ""bar"",
-                    ""id"": ""foo""
+                    ""id"": ""foo"",
+                    ""developer_message_summary"": ""bar"",
+                    ""reason"": {
+                      ""error_count"": 1,
+                      ""error_types"": [
+                        {
+                          ""code"": ""meter_event_invalid_value"",
+                          ""error_count"": 1,
+                          ""sample_errors"": [
+                            {
+                              ""error_message"": ""choose a better value"",
+                              ""request"": {
+                                  ""identifier"": ""a""
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
                   }
                 }";
 
@@ -155,13 +173,13 @@ namespace StripeTests.V2
             var baseThinEvent = this.stripeClient.ParseThinEvent(v2KnownEventPayload, GenerateSigHeader(v2KnownEventPayload), WebhookSecret);
             Assert.NotNull(baseThinEvent);
             Assert.Equal("evt_234", baseThinEvent.Id);
-            Assert.Equal("financial_account.balance.opened", baseThinEvent.Type);
+            Assert.Equal("v1.billing.meter.error_report_triggered", baseThinEvent.Type);
             Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), baseThinEvent.Created);
             Assert.Equal("context 123", baseThinEvent.Context);
             Assert.NotNull(baseThinEvent.RelatedObject);
-            Assert.Equal("fa_123", baseThinEvent.RelatedObject.Id);
-            Assert.Equal("financial_account", baseThinEvent.RelatedObject.Type);
-            Assert.Equal("/v2/financial_accounts/fa_123", baseThinEvent.RelatedObject.Url);
+            Assert.Equal("me_123", baseThinEvent.RelatedObject.Id);
+            Assert.Equal("billing.meter", baseThinEvent.RelatedObject.Type);
+            Assert.Equal("/v1/billing/meters/me_123", baseThinEvent.RelatedObject.Url);
         }
 
         [Fact]
@@ -201,16 +219,16 @@ namespace StripeTests.V2
         {
             var stripeEvent = this.DoParseSignedEvent(v2KnownEventPayload);
             Assert.NotNull(stripeEvent);
-            Assert.True(stripeEvent is Stripe.Events.FinancialAccountBalanceOpenedEvent);
+            Assert.True(stripeEvent is Stripe.Events.V1BillingMeterErrorReportTriggeredEvent);
             Assert.Equal(this.stripeClient.Requestor, stripeEvent.Requestor);
         }
 
         [Fact]
         public void ParseEventData()
         {
-            var parsed = this.DoParseSignedEvent(v2KnownEventPayload);
-            Assert.True(this.DoParseSignedEvent(v2KnownEventPayload) is Stripe.Events.FinancialAccountBalanceOpenedEvent);
-            var stripeEvent = parsed as Stripe.Events.FinancialAccountBalanceOpenedEvent;
+            var parsed = this.DoParseSignedEvent(v2KnownEventPayloadWithData);
+            Assert.True(this.DoParseSignedEvent(v2KnownEventPayloadWithData) is Stripe.Events.V1BillingMeterErrorReportTriggeredEvent);
+            var stripeEvent = parsed as Stripe.Events.V1BillingMeterErrorReportTriggeredEvent;
 
             var eventData = stripeEvent.Data;
 
@@ -221,8 +239,8 @@ namespace StripeTests.V2
         public void FetchRelatedObject()
         {
             var parsed = this.DoParseSignedEvent(v2KnownEventPayload);
-            Assert.True(parsed is Stripe.Events.FinancialAccountBalanceOpenedEvent);
-            var stripeEvent = this.DoParseSignedEvent(v2KnownEventPayload) as Stripe.Events.FinancialAccountBalanceOpenedEvent;
+            Assert.True(parsed is Stripe.Events.V1BillingMeterErrorReportTriggeredEvent);
+            var stripeEvent = this.DoParseSignedEvent(v2KnownEventPayload) as Stripe.Events.V1BillingMeterErrorReportTriggeredEvent;
 
             var relatedObjectPayload = @"
             {
@@ -260,8 +278,8 @@ namespace StripeTests.V2
         public async void FetchRelatedObjectAsync()
         {
             var parsed = this.DoParseSignedEvent(v2KnownEventPayload);
-            Assert.True(parsed is Stripe.Events.FinancialAccountBalanceOpenedEvent);
-            var stripeEvent = this.DoParseSignedEvent(v2KnownEventPayload) as Stripe.Events.FinancialAccountBalanceOpenedEvent;
+            Assert.True(parsed is Stripe.Events.V1BillingMeterErrorReportTriggeredEvent);
+            var stripeEvent = this.DoParseSignedEvent(v2KnownEventPayload) as Stripe.Events.V1BillingMeterErrorReportTriggeredEvent;
 
             var relatedObjectPayload = @"
             {
