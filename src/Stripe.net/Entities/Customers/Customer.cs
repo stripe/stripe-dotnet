@@ -7,10 +7,11 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// This object represents a customer of your business. Use it to <a
-    /// href="https://stripe.com/docs/invoicing/customer">create recurring charges</a>, <a
-    /// href="https://stripe.com/docs/payments/save-during-payment">save payment</a> and contact
-    /// information, and track payments that belong to the same customer.
+    /// This object represents a customer of your business. Use it to create recurring charges
+    /// and track payments that belong to the same customer.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/payments/save-during-payment">Save a
+    /// card during payment</a>.
     /// </summary>
     public class Customer : StripeEntity<Customer>, IHasId, IHasMetadata, IHasObject
     {

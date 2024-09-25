@@ -12,6 +12,12 @@ namespace Stripe.Billing
         public string AlertType { get; set; }
 
         /// <summary>
+        /// Filters to limit the scope of an alert.
+        /// </summary>
+        [JsonProperty("filter")]
+        public AlertFilterOptions Filter { get; set; }
+
+        /// <summary>
         /// The title of the alert.
         /// </summary>
         [JsonProperty("title")]
@@ -20,7 +26,7 @@ namespace Stripe.Billing
         /// <summary>
         /// The configuration of the usage threshold.
         /// </summary>
-        [JsonProperty("usage_threshold")]
-        public AlertUsageThresholdOptions UsageThreshold { get; set; }
+        [JsonProperty("usage_threshold_config")]
+        public AlertUsageThresholdConfigOptions UsageThresholdConfig { get; set; }
     }
 }

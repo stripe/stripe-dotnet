@@ -4,7 +4,7 @@ namespace Stripe.Billing
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class AlertUsageThresholdFilter : StripeEntity<AlertUsageThresholdFilter>
+    public class AlertFilter : StripeEntity<AlertFilter>
     {
         #region Expandable Customer
 
@@ -36,8 +36,5 @@ namespace Stripe.Billing
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
-
-        [JsonProperty("type")]
-        public string Type { get; set; }
     }
 }
