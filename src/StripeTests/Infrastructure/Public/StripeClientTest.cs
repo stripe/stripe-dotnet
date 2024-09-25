@@ -77,14 +77,14 @@ namespace StripeTests
             // Stub a request as stripe-mock does not support v2
             this.MockHttpClientFixture.StubRequest(
                     HttpMethod.Post,
-                    "/v1/billing/meters",
+                    "/v2/billing/meter_event_session",
                     System.Net.HttpStatusCode.OK,
-                    "{\"id\": \"me_123\",\"object\":\"billing.meter\"}");
+                    "{\"id\": \"mes_123\",\"object\":\"billing.meter_event_session\"}");
 
             var rawResponse = await this.stripeClient.RawRequestAsync(
                 HttpMethod.Post,
-                "/v1/billing/meters",
-                "{\"description\":\"hello\"}",
+                "/v2/billing/meter_event_session",
+                "{}",
                 new RawRequestOptions
                 {
                     AdditionalHeaders =
@@ -98,12 +98,12 @@ namespace StripeTests
                         "SendAsync",
                         Times.Once(),
                         ItExpr.Is<HttpRequestMessage>(m =>
-                            m.Headers.GetValues("Stripe-Version").First() == ApiVersion.CurrentPreview &&
+                            m.Headers.GetValues("Stripe-Version").First() == ApiVersion.Current &&
                             m.Headers.GetValues("foo").First() == "bar"),
                         ItExpr.IsAny<CancellationToken>());
 
-            var fa = this.stripeClient.Deserialize<Stripe.Billing.Meter>(rawResponse.Content);
-            Assert.Equal("me_123", fa.Id);
+            var obj = this.stripeClient.Deserialize<Stripe.V2.Billing.MeterEventSession>(rawResponse.Content);
+            Assert.Equal("mes_123", obj.Id);
         }
 
         [Fact]

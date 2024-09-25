@@ -74,7 +74,6 @@ namespace StripeTests.V2
                     ""stripe_context"": ""acct_123""
                   },
                   ""data"": {
-                    ""id"": ""foo"",
                     ""developer_message_summary"": ""bar"",
                     ""reason"": {
                       ""error_count"": 1,
@@ -84,7 +83,7 @@ namespace StripeTests.V2
                           ""error_count"": 1,
                           ""sample_errors"": [
                             {
-                              ""error_message"": ""choose a better value"",
+                              ""error_message"": ""choose better"",
                               ""request"": {
                                   ""identifier"": ""a""
                               }
@@ -226,13 +225,23 @@ namespace StripeTests.V2
         [Fact]
         public void ParseEventData()
         {
-            var parsed = this.DoParseSignedEvent(v2KnownEventPayloadWithData);
-            Assert.True(this.DoParseSignedEvent(v2KnownEventPayloadWithData) is Stripe.Events.V1BillingMeterErrorReportTriggeredEvent);
+            var parsed = this.DoParseSignedEvent(v2KnownEventWithDataPayload);
+            Assert.True(parsed is Stripe.Events.V1BillingMeterErrorReportTriggeredEvent);
             var stripeEvent = parsed as Stripe.Events.V1BillingMeterErrorReportTriggeredEvent;
 
             var eventData = stripeEvent.Data;
+            Assert.NotNull(eventData);
 
-            // TODO: There is nothing on event data to test. Once more events are supported, update test
+#pragma warning disable xUnit2013 // Do not use equality check to check for collection size.
+            Assert.Equal("bar", eventData.DeveloperMessageSummary);
+            Assert.Equal(1, eventData.Reason.ErrorCount);
+            Assert.Equal(1, eventData.Reason.ErrorTypes.Count);
+            Assert.Equal("meter_event_invalid_value", eventData.Reason.ErrorTypes[0].Code);
+            Assert.Equal(1, eventData.Reason.ErrorTypes[0].ErrorCount);
+            Assert.Equal(1, eventData.Reason.ErrorTypes[0].SampleErrors.Count);
+            Assert.Equal("choose better", eventData.Reason.ErrorTypes[0].SampleErrors[0].ErrorMessage);
+            Assert.Equal("a", eventData.Reason.ErrorTypes[0].SampleErrors[0].Request.Identifier);
+#pragma warning restore xUnit2013 // Do not use equality check to check for collection size.
         }
 
         [Fact]
