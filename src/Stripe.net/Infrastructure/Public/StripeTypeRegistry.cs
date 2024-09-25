@@ -172,14 +172,13 @@ namespace Stripe
             new Dictionary<string, Type>
             {
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
+                { "billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
+                { "v2.billing.meter_event", typeof(V2.Billing.MeterEventV2) },
                 {
-                    "billing.meter_event_adjustment_v2", typeof(
+                    "v2.billing.meter_event_adjustment", typeof(
                     V2.Billing.MeterEventAdjustmentV2)
                 },
-                { "billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
-                { "billing.meter_event_v2", typeof(V2.Billing.MeterEventV2) },
-                { "event", typeof(V2.Event) },
-                { "event_destination", typeof(V2.EventDestination) },
+                { "v2.core.event", typeof(V2.Event) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -195,10 +194,6 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
-                },
-                {
-                    "v2.core.event_destination.ping", typeof(
-                    Events.V2CoreEventDestinationPingEvent)
                 },
 
                 // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
