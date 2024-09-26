@@ -183,12 +183,9 @@ namespace Stripe
             RequestOptions requestOptions,
             ApiMode apiMode)
         {
-            string defaultVersion =
-                apiMode == ApiMode.V1 ? StripeConfiguration.ApiVersion : ApiVersion.CurrentPreview;
-
             var stripeHeaders = new Dictionary<string, string>
             {
-                { "Stripe-Version", requestOptions?.StripeVersion ?? defaultVersion },
+                { "Stripe-Version", requestOptions?.StripeVersion ?? StripeConfiguration.ApiVersion },
             };
 
             if (!string.IsNullOrEmpty(requestOptions?.StripeAccount))

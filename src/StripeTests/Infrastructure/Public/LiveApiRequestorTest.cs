@@ -396,7 +396,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public async Task RequestAsync_V2_ApiVersion()
+        public async Task RequestAsync_V2_ContentType()
         {
             var response = new StripeResponse(HttpStatusCode.OK, null, "{\"id\": \"fa_123\"}");
             this.httpClient.Response = response;
@@ -414,7 +414,6 @@ namespace StripeTests
             var lastRequest = this.httpClient.LastRequest;
 
             Assert.Equal("application/json; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
-            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
             Assert.Equal("{}", await lastRequest.Content.ReadAsStringAsync());
         }
 
@@ -493,7 +492,6 @@ namespace StripeTests
             Assert.Equal(content, rawResponse.Content);
             Assert.Equal("application/json; charset=utf-8", lastRequest.Content.Headers.GetValues("Content-Type").First());
             Assert.Equal("{\"foo\":\"bar\"}", await lastRequest.Content.ReadAsStringAsync());
-            Assert.Equal(ApiVersion.CurrentPreview, lastRequest.StripeHeaders["Stripe-Version"]);
             Assert.Equal("bar", lastRequest.StripeHeaders["foo"]);
         }
 
