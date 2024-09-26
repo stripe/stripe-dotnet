@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <DefaultItemExcludes>$(DefaultItemExcludes);Web\**\*.cs</DefaultItemExcludes>
+    <DefaultItemExcludes>$(DefaultItemExcludes);V2/StripeWebhookHandler.cs</DefaultItemExcludes>
   </PropertyGroup>
 
   <ItemGroup>
