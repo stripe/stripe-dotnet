@@ -17,7 +17,10 @@ namespace Stripe
         private readonly BaseOptions options;
         private readonly string content;
 
-        /// <summary>Initializes a new instance of the <see cref="StripeRequest"/> class.</summary>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="StripeRequest"/> class.
+        /// This cannot be used to make requests to V2 APIs. Instead, use <see cref="StripeClient"/>.
+        /// </summary>
         /// <param name="client">The client creating the request.</param>
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The path of the request.</param>

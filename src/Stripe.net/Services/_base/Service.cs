@@ -151,14 +151,6 @@ namespace Stripe
 #endif
         }
 
-        private void SetNextPage(BaseOptions options, string nextPage)
-        {
-            // Must remove page before adding it, or else Add may
-            // throw a System.ArgumentException
-            options.ExtraParams.Remove("page");
-            options.ExtraParams.Add("page", nextPage);
-        }
-
 #if NET461
         internal IEnumerable<T> V1ListRequestAutoPagingSync<T>(
             string url,
