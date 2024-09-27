@@ -8,6 +8,9 @@ namespace Stripe
     public class BillingService : Service
     {
         private Billing.AlertService alerts;
+        private Billing.CreditBalanceSummaryService creditBalanceSummary;
+        private Billing.CreditBalanceTransactionService creditBalanceTransactions;
+        private Billing.CreditGrantService creditGrants;
         private Billing.MeterService meters;
         private Billing.MeterEventService meterEvents;
         private Billing.MeterEventAdjustmentService meterEventAdjustments;
@@ -23,6 +26,15 @@ namespace Stripe
         }
 
         public virtual Billing.AlertService Alerts => this.alerts ??= new Billing.AlertService(
+            this.Requestor);
+
+        public virtual Billing.CreditBalanceSummaryService CreditBalanceSummary => this.creditBalanceSummary ??= new Billing.CreditBalanceSummaryService(
+            this.Requestor);
+
+        public virtual Billing.CreditBalanceTransactionService CreditBalanceTransactions => this.creditBalanceTransactions ??= new Billing.CreditBalanceTransactionService(
+            this.Requestor);
+
+        public virtual Billing.CreditGrantService CreditGrants => this.creditGrants ??= new Billing.CreditGrantService(
             this.Requestor);
 
         public virtual Billing.MeterService Meters => this.meters ??= new Billing.MeterService(
