@@ -5,7 +5,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class V1Service : Service
+    public class V1Services : Service
     {
         private AccountService accounts;
         private AccountLinkService accountLinks;
@@ -77,12 +77,12 @@ namespace Stripe
         private TreasuryService treasury;
         private WebhookEndpointService webhookEndpoints;
 
-        internal V1Service(ApiRequestor requestor)
+        internal V1Services(ApiRequestor requestor)
             : base(requestor)
         {
         }
 
-        internal V1Service(IStripeClient client)
+        internal V1Services(IStripeClient client)
             : base(client)
         {
         }

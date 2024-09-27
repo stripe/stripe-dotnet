@@ -16,8 +16,8 @@ namespace Stripe
         private JsonSerializerSettings jsonSerializerSettings;
 
         // Fields: The beginning of the section generated from our OpenAPI spec
-        private V1Service v1;
-        private V2Service v2;
+        private V1Services v1;
+        private V2Services v2;
 
         // Fields: The end of the section generated from our OpenAPI spec
         internal StripeClient(ApiRequestor requestor)
@@ -118,9 +118,9 @@ namespace Stripe
         public IHttpClient HttpClient => this.Requestor?.HttpClient;
 
         // Properties: The beginning of the section generated from our OpenAPI spec
-        public virtual V1Service V1 => this.v1 ??= new V1Service(this.Requestor);
+        public virtual V1Services V1 => this.v1 ??= new V1Services(this.Requestor);
 
-        public virtual V2Service V2 => this.v2 ??= new V2Service(this.Requestor);
+        public virtual V2Services V2 => this.v2 ??= new V2Services(this.Requestor);
 
         // Properties: The end of the section generated from our OpenAPI spec
 

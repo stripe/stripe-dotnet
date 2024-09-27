@@ -5,17 +5,17 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class V2Service : Service
+    public class V2Services : Service
     {
         private V2.BillingService billing;
         private V2.CoreService core;
 
-        internal V2Service(ApiRequestor requestor)
+        internal V2Services(ApiRequestor requestor)
             : base(requestor)
         {
         }
 
-        internal V2Service(IStripeClient client)
+        internal V2Services(IStripeClient client)
             : base(client)
         {
         }
