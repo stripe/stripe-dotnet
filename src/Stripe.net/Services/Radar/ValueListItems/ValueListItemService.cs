@@ -18,13 +18,15 @@ namespace Stripe.Radar
         {
         }
 
+        internal ValueListItemService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public ValueListItemService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/radar/value_list_items";
 
         /// <summary>
         /// <p>Creates a new <c>ValueListItem</c> object, which is added to the specified parent
@@ -32,7 +34,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueListItem Create(ValueListItemCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueListItem>(HttpMethod.Post, $"/v1/radar/value_list_items", options, requestOptions);
+            return this.Request<ValueListItem>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_list_items", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +43,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueListItem> CreateAsync(ValueListItemCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueListItem>(HttpMethod.Post, $"/v1/radar/value_list_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueListItem>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_list_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -49,7 +51,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueListItem Delete(string id, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueListItem>(HttpMethod.Delete, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ValueListItem>(BaseAddress.Api, HttpMethod.Delete, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueListItem> DeleteAsync(string id, ValueListItemDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueListItem>(HttpMethod.Delete, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueListItem>(BaseAddress.Api, HttpMethod.Delete, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +67,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueListItem Get(string id, ValueListItemGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueListItem>(HttpMethod.Get, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ValueListItem>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueListItem> GetAsync(string id, ValueListItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueListItem>(HttpMethod.Get, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueListItem>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_list_items/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -82,7 +84,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual StripeList<ValueListItem> List(ValueListItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ValueListItem>>(HttpMethod.Get, $"/v1/radar/value_list_items", options, requestOptions);
+            return this.Request<StripeList<ValueListItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_list_items", options, requestOptions);
         }
 
         /// <summary>
@@ -91,7 +93,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<StripeList<ValueListItem>> ListAsync(ValueListItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ValueListItem>>(HttpMethod.Get, $"/v1/radar/value_list_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ValueListItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_list_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

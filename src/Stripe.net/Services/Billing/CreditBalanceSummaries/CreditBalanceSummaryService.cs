@@ -13,18 +13,14 @@ namespace Stripe.Billing
         {
         }
 
-        public CreditBalanceSummaryService(IStripeClient client)
-            : base(client)
+        internal CreditBalanceSummaryService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/billing/credit_balance_summary";
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        protected override string InstanceUrl(string id)
+        public CreditBalanceSummaryService(IStripeClient client)
+            : base(client)
         {
-            return this.ClassUrl();
         }
 
         /// <summary>
@@ -32,7 +28,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual CreditBalanceSummary Get(RequestOptions requestOptions = null)
         {
-            return this.Request<CreditBalanceSummary>(HttpMethod.Get, $"/v1/billing/credit_balance_summary", null, requestOptions);
+            return this.Request<CreditBalanceSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_balance_summary", null, requestOptions);
         }
 
         /// <summary>
@@ -40,7 +36,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<CreditBalanceSummary> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditBalanceSummary>(HttpMethod.Get, $"/v1/billing/credit_balance_summary", null, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditBalanceSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_balance_summary", null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +44,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual CreditBalanceSummary Get(CreditBalanceSummaryGetOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditBalanceSummary>(HttpMethod.Get, $"/v1/billing/credit_balance_summary", options, requestOptions);
+            return this.Request<CreditBalanceSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_balance_summary", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +52,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<CreditBalanceSummary> GetAsync(CreditBalanceSummaryGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditBalanceSummary>(HttpMethod.Get, $"/v1/billing/credit_balance_summary", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditBalanceSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_balance_summary", options, requestOptions, cancellationToken);
         }
     }
 }

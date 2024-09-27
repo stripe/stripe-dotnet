@@ -14,20 +14,22 @@ namespace Stripe
         {
         }
 
+        internal ConfirmationTokenService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public ConfirmationTokenService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/confirmation_tokens";
 
         /// <summary>
         /// <p>Retrieves an existing ConfirmationToken object</p>.
         /// </summary>
         public virtual ConfirmationToken Get(string id, ConfirmationTokenGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ConfirmationToken>(HttpMethod.Get, $"/v1/confirmation_tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ConfirmationToken>(BaseAddress.Api, HttpMethod.Get, $"/v1/confirmation_tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -35,7 +37,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ConfirmationToken> GetAsync(string id, ConfirmationTokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ConfirmationToken>(HttpMethod.Get, $"/v1/confirmation_tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ConfirmationToken>(BaseAddress.Api, HttpMethod.Get, $"/v1/confirmation_tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

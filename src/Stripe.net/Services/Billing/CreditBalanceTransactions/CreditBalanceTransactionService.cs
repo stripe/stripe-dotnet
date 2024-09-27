@@ -16,20 +16,22 @@ namespace Stripe.Billing
         {
         }
 
+        internal CreditBalanceTransactionService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public CreditBalanceTransactionService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/billing/credit_balance_transactions";
 
         /// <summary>
         /// <p>Retrieves a credit balance transaction</p>.
         /// </summary>
         public virtual CreditBalanceTransaction Get(string id, CreditBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditBalanceTransaction>(HttpMethod.Get, $"/v1/billing/credit_balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<CreditBalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<CreditBalanceTransaction> GetAsync(string id, CreditBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditBalanceTransaction>(HttpMethod.Get, $"/v1/billing/credit_balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditBalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +47,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual StripeList<CreditBalanceTransaction> List(CreditBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CreditBalanceTransaction>>(HttpMethod.Get, $"/v1/billing/credit_balance_transactions", options, requestOptions);
+            return this.Request<StripeList<CreditBalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_balance_transactions", options, requestOptions);
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<StripeList<CreditBalanceTransaction>> ListAsync(CreditBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CreditBalanceTransaction>>(HttpMethod.Get, $"/v1/billing/credit_balance_transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CreditBalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_balance_transactions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

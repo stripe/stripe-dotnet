@@ -18,20 +18,22 @@ namespace Stripe.Billing
         {
         }
 
+        internal CreditGrantService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public CreditGrantService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/billing/credit_grants";
 
         /// <summary>
         /// <p>Creates a credit grant</p>.
         /// </summary>
         public virtual CreditGrant Create(CreditGrantCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditGrant>(HttpMethod.Post, $"/v1/billing/credit_grants", options, requestOptions);
+            return this.Request<CreditGrant>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/credit_grants", options, requestOptions);
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<CreditGrant> CreateAsync(CreditGrantCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditGrant>(HttpMethod.Post, $"/v1/billing/credit_grants", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditGrant>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/credit_grants", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual CreditGrant Expire(string id, CreditGrantExpireOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditGrant>(HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}/expire", options, requestOptions);
+            return this.Request<CreditGrant>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}/expire", options, requestOptions);
         }
 
         /// <summary>
@@ -55,7 +57,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<CreditGrant> ExpireAsync(string id, CreditGrantExpireOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditGrant>(HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}/expire", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditGrant>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}/expire", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual CreditGrant Get(string id, CreditGrantGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditGrant>(HttpMethod.Get, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<CreditGrant>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -71,7 +73,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<CreditGrant> GetAsync(string id, CreditGrantGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditGrant>(HttpMethod.Get, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditGrant>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual StripeList<CreditGrant> List(CreditGrantListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CreditGrant>>(HttpMethod.Get, $"/v1/billing/credit_grants", options, requestOptions);
+            return this.Request<StripeList<CreditGrant>>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_grants", options, requestOptions);
         }
 
         /// <summary>
@@ -87,7 +89,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<StripeList<CreditGrant>> ListAsync(CreditGrantListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CreditGrant>>(HttpMethod.Get, $"/v1/billing/credit_grants", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CreditGrant>>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/credit_grants", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -111,7 +113,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual CreditGrant Update(string id, CreditGrantUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditGrant>(HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<CreditGrant>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -119,7 +121,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<CreditGrant> UpdateAsync(string id, CreditGrantUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditGrant>(HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditGrant>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -127,7 +129,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual CreditGrant VoidGrant(string id, CreditGrantVoidGrantOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditGrant>(HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}/void", options, requestOptions);
+            return this.Request<CreditGrant>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}/void", options, requestOptions);
         }
 
         /// <summary>
@@ -135,7 +137,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<CreditGrant> VoidGrantAsync(string id, CreditGrantVoidGrantOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditGrant>(HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}/void", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditGrant>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/credit_grants/{WebUtility.UrlEncode(id)}/void", options, requestOptions, cancellationToken);
         }
     }
 }

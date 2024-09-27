@@ -16,13 +16,15 @@ namespace Stripe
         {
         }
 
+        internal EventService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public EventService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/events";
 
         /// <summary>
         /// <p>Retrieves the details of an event if it was created in the last 30 days. Supply the
@@ -30,7 +32,7 @@ namespace Stripe
         /// </summary>
         public virtual Event Get(string id, EventGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Event>(HttpMethod.Get, $"/v1/events/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Event>(BaseAddress.Api, HttpMethod.Get, $"/v1/events/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Event> GetAsync(string id, EventGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Event>(HttpMethod.Get, $"/v1/events/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Event>(BaseAddress.Api, HttpMethod.Get, $"/v1/events/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -51,7 +53,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Event>>(HttpMethod.Get, $"/v1/events", options, requestOptions);
+            return this.Request<StripeList<Event>>(BaseAddress.Api, HttpMethod.Get, $"/v1/events", options, requestOptions);
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Event>> ListAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Event>>(HttpMethod.Get, $"/v1/events", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Event>>(BaseAddress.Api, HttpMethod.Get, $"/v1/events", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
