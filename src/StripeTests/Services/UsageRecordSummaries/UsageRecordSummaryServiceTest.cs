@@ -10,17 +10,17 @@ namespace StripeTests
     public class UsageRecordSummaryServiceTest : BaseStripeTest
     {
         private const string SubscriptionItemId = "si_123";
-        private readonly UsageRecordSummaryService service;
-        private readonly UsageRecordSummaryListOptions listOptions;
+        private readonly SubscriptionItemUsageRecordSummaryService service;
+        private readonly SubscriptionItemUsageRecordSummaryListOptions listOptions;
 
         public UsageRecordSummaryServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new UsageRecordSummaryService(this.StripeClient);
+            this.service = new SubscriptionItemUsageRecordSummaryService(this.StripeClient);
 
-            this.listOptions = new UsageRecordSummaryListOptions
+            this.listOptions = new SubscriptionItemUsageRecordSummaryListOptions
             {
                 Limit = 1,
             };

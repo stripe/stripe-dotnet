@@ -55,8 +55,6 @@ namespace Stripe
 
         private string stripeClientUserAgentString;
 
-        private string userAgentString;
-
         static SystemNetHttpClient()
         {
             // Enable support for TLS 1.2, as Stripe's API requires it. This should only be
@@ -96,7 +94,6 @@ namespace Stripe
             this.EnableTelemetry = enableTelemetry;
 
             this.stripeClientUserAgentString = this.BuildStripeClientUserAgentString();
-            this.userAgentString = this.BuildUserAgentString();
         }
 
         /// <summary>Default timespan before the request times out.</summary>
@@ -298,9 +295,9 @@ namespace Stripe
             return JsonUtils.SerializeObject(values, Formatting.None);
         }
 
-        private string BuildUserAgentString()
+        private string BuildUserAgentString(ApiMode apiMode)
         {
-            var userAgent = $"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}";
+            var userAgent = $"Stripe/{apiMode} .NetBindings/{StripeConfiguration.StripeNetVersion}";
 
             if (this.appInfo != null)
             {
@@ -367,7 +364,7 @@ namespace Stripe
             var requestMessage = new System.Net.Http.HttpRequestMessage(request.Method, request.Uri);
 
             // Standard headers
-            requestMessage.Headers.TryAddWithoutValidation("User-Agent", this.userAgentString);
+            requestMessage.Headers.TryAddWithoutValidation("User-Agent", this.BuildUserAgentString(request.ApiMode));
             requestMessage.Headers.Authorization = request.AuthorizationHeader;
 
             // Custom headers

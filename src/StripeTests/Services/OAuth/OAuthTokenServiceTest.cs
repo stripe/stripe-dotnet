@@ -107,7 +107,7 @@ namespace StripeTests
             this.StubRequest(HttpMethod.Post, "/oauth/token", HttpStatusCode.OK, json);
 
             var oauthToken = this.service.Create(this.createOptions);
-            this.AssertRequest(HttpMethod.Post, "/oauth/token");
+            this.AssertRequest(HttpMethod.Post, "/oauth/token", host: "connect.stripe.com");
             Assert.NotNull(oauthToken);
             Assert.Equal("acct_test_token", oauthToken.StripeUserId);
         }
@@ -134,7 +134,7 @@ namespace StripeTests
             this.StubRequest(HttpMethod.Post, "/oauth/token", HttpStatusCode.OK, json);
 
             var oauthToken = await this.service.CreateAsync(this.createOptions);
-            this.AssertRequest(HttpMethod.Post, "/oauth/token");
+            this.AssertRequest(HttpMethod.Post, "/oauth/token", host: "connect.stripe.com");
             Assert.NotNull(oauthToken);
             Assert.Equal("sk_test_access_token", oauthToken.AccessToken);
         }
@@ -147,7 +147,7 @@ namespace StripeTests
             this.StubRequest(HttpMethod.Post, "/oauth/deauthorize", HttpStatusCode.OK, json);
 
             var deauth = this.service.Deauthorize(this.deauthorizeOptions);
-            this.AssertRequest(HttpMethod.Post, "/oauth/deauthorize");
+            this.AssertRequest(HttpMethod.Post, "/oauth/deauthorize", host: "connect.stripe.com");
             Assert.NotNull(deauth);
             Assert.Equal(AccountId, deauth.StripeUserId);
         }
@@ -174,7 +174,7 @@ namespace StripeTests
             this.StubRequest(HttpMethod.Post, "/oauth/deauthorize", HttpStatusCode.OK, json);
 
             var deauth = await this.service.DeauthorizeAsync(this.deauthorizeOptions);
-            this.AssertRequest(HttpMethod.Post, "/oauth/deauthorize");
+            this.AssertRequest(HttpMethod.Post, "/oauth/deauthorize", host: "connect.stripe.com");
             Assert.NotNull(deauth);
             Assert.Equal(AccountId, deauth.StripeUserId);
         }
