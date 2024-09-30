@@ -11,6 +11,9 @@ namespace Stripe.V2.Core
         [JsonProperty("object_id")]
         public string ObjectId { get; set; }
 
+        /// <summary>
+        /// The requested page number.
+        /// </summary>
         [JsonProperty("page")]
         public string Page { get; set; }
     }
