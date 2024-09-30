@@ -19,7 +19,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
         public OAuthTokenService(IStripeClient client)
             : base(client)
         {

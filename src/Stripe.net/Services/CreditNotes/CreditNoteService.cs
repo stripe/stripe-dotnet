@@ -22,7 +22,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated. Access this service directly via the client with client.V1.CreditNotes")]
         public CreditNoteService(IStripeClient client)
             : base(client)
         {

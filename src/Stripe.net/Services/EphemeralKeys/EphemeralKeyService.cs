@@ -19,7 +19,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated. Access this service directly via the client with client.V1.EphemeralKeys")]
         public EphemeralKeyService(IStripeClient client)
             : base(client)
         {
