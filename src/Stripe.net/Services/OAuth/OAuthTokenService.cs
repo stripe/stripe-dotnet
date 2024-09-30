@@ -19,7 +19,7 @@ namespace Stripe
         {
         }
 
-        [Obsolete("Please use the constructor that accepts an `ApiRequestor` instead.")]
+        [Obsolete("This member is deprecated and will be removed in a future release")]
         public OAuthTokenService(IStripeClient client)
             : base(client)
         {

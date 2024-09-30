@@ -23,7 +23,7 @@ namespace Stripe
         {
         }
 
-        [Obsolete("Please use the constructor that accepts an `ApiRequestor` instead.")]
+        [Obsolete("This member is deprecated. Access this service directly via the client with client.V1.Cards")]
         public CardService(IStripeClient client)
             : base(client)
         {

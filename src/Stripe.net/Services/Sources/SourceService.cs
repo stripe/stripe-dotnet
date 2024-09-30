@@ -22,7 +22,7 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated. Avoid constructing directly and instead access through the root StripeClient")]
+        [Obsolete("This member is deprecated. Access this service directly via the client with client.V1.Sources")]
         public SourceService(IStripeClient client)
             : base(client)
         {
