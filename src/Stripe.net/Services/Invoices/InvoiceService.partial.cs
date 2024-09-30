@@ -95,5 +95,32 @@ namespace Stripe
         {
             return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/invoices/upcoming/lines", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// <p>Updates an invoice’s line item. Some fields, such as <c>tax_amounts</c>, only live on
+        /// the invoice line item, so they can only be updated through this endpoint. Other fields,
+        /// such as <c>amount</c>, live on both the invoice item and the invoice line item, so
+        /// updates on this endpoint will propagate to the invoice item as well. Updating an
+        /// invoice’s line item is only possible before the invoice is finalized.</p>.
+        /// </summary>
+        [Obsolete("Use InvoiceLineItemService.Update instead.")]
+        public virtual InvoiceLineItem UpdateLines(string parentId, string id, InvoiceUpdateInvoiceLineItemsOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<InvoiceLineItem>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(parentId)}/lines/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Updates an invoice’s line item. Some fields, such as <c>tax_amounts</c>, only live on
+        /// the invoice line item, so they can only be updated through this endpoint. Other fields,
+        /// such as <c>amount</c>, live on both the invoice item and the invoice line item, so
+        /// updates on this endpoint will propagate to the invoice item as well. Updating an
+        /// invoice’s line item is only possible before the invoice is finalized.</p>.
+        /// </summary>
+        [Obsolete("Use InvoiceLineItemService.UpdateAsync instead.")]
+        public virtual Task<InvoiceLineItem> UpdateLinesAsync(string parentId, string id, InvoiceUpdateInvoiceLineItemsOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<InvoiceLineItem>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(parentId)}/lines/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
+
     }
 }

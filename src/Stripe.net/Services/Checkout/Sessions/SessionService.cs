@@ -120,46 +120,6 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// <p>When retrieving a Checkout Session, there is an includable
-        /// <strong>line_items</strong> property containing the first handful of those items. There
-        /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual StripeList<LineItem> List(string id, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", null, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>When retrieving a Checkout Session, there is an includable
-        /// <strong>line_items</strong> property containing the first handful of those items. There
-        /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual Task<StripeList<LineItem>> ListAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", null, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>When retrieving a Checkout Session, there is an includable
-        /// <strong>line_items</strong> property containing the first handful of those items. There
-        /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual IEnumerable<LineItem> ListAutoPaging(string id, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", null, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>When retrieving a Checkout Session, there is an includable
-        /// <strong>line_items</strong> property containing the first handful of those items. There
-        /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<LineItem> ListAutoPagingAsync(string id, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", null, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
         /// <p>Updates a Session object.</p>.
         /// </summary>
         public virtual Session Update(string id, SessionUpdateOptions options, RequestOptions requestOptions = null)

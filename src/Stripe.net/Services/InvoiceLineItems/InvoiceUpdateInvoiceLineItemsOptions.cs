@@ -1,9 +1,9 @@
-// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    [Obsolete("Use InvoiceLineItemUpdateOptions instead.")]
     public class InvoiceUpdateInvoiceLineItemsOptions : BaseOptions, IHasMetadata
     {
         /// <summary>

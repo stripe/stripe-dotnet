@@ -6,7 +6,7 @@ namespace Stripe.V2
     public class EventReason : StripeEntity<EventReason>
     {
         /// <summary>
-        /// Open Enum. Event reason type.
+        /// Event reason type.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
