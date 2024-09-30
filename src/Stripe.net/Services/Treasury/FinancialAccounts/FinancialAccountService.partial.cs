@@ -10,7 +10,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// <p>Retrieves Features information associated with the FinancialAccount.</p>.
         /// </summary>
-        [Obsolete("Use FinancialAccountFeaturesService.Retrieve instead.")]
+        [Obsolete("Use FinancialAccountFeaturesService.Get instead.")]
         public virtual FinancialAccountFeatures RetrieveFeatures(string id, FinancialAccountFeaturesGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions);
@@ -19,7 +19,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// <p>Retrieves Features information associated with the FinancialAccount.</p>.
         /// </summary>
-        [Obsolete("Use FinancialAccountFeaturesService.RetrieveAsync instead.")]
+        [Obsolete("Use FinancialAccountFeaturesService.GetAsync instead.")]
         public virtual Task<FinancialAccountFeatures> RetrieveFeaturesAsync(string id, FinancialAccountFeaturesGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<FinancialAccountFeatures>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/financial_accounts/{id}/features", options, requestOptions, cancellationToken);

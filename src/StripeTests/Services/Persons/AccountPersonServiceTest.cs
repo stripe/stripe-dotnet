@@ -7,7 +7,7 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class PersonServiceTest : BaseStripeTest
+    public class AccountPersonServiceTest : BaseStripeTest
     {
         private const string AccountId = "acct_123";
         private const string PersonId = "person_123";
@@ -17,7 +17,7 @@ namespace StripeTests
         private readonly AccountPersonUpdateOptions updateOptions;
         private readonly AccountPersonListOptions listOptions;
 
-        public PersonServiceTest(
+        public AccountPersonServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)

@@ -7,13 +7,13 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class UsageRecordSummaryServiceTest : BaseStripeTest
+    public class SubscriptionItemUsageRecordSummaryServiceTest : BaseStripeTest
     {
         private const string SubscriptionItemId = "si_123";
         private readonly SubscriptionItemUsageRecordSummaryService service;
         private readonly SubscriptionItemUsageRecordSummaryListOptions listOptions;
 
-        public UsageRecordSummaryServiceTest(
+        public SubscriptionItemUsageRecordSummaryServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)

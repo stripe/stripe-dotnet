@@ -17,7 +17,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
         public DiscountService(IStripeClient client)
             : base(client)
         {

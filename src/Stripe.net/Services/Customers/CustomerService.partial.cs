@@ -73,7 +73,7 @@ namespace Stripe
         /// <summary>
         /// <p>Retrieves a PaymentMethod object for a given Customer.</p>.
         /// </summary>
-        [Obsolete("Use CustomerPaymentMethodService.Retrieve instead.")]
+        [Obsolete("Use CustomerPaymentMethodService.Get instead.")]
         public virtual PaymentMethod RetrievePaymentMethod(string parentId, string id, CustomerPaymentMethodGetOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<PaymentMethod>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions);
@@ -82,7 +82,7 @@ namespace Stripe
         /// <summary>
         /// <p>Retrieves a PaymentMethod object for a given Customer.</p>.
         /// </summary>
-        [Obsolete("Use CustomerPaymentMethodService.RetrieveAsync instead.")]
+        [Obsolete("Use CustomerPaymentMethodService.GetAsync instead.")]
         public virtual Task<PaymentMethod> RetrievePaymentMethodAsync(string parentId, string id, CustomerPaymentMethodGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<PaymentMethod>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions, cancellationToken);

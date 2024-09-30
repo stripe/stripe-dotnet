@@ -8,7 +8,7 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class ExternalAccountServiceTest : BaseStripeTest
+    public class AccountExternalAccountServiceTest : BaseStripeTest
     {
         private const string AccountId = "acct_123";
         private const string ExternalAccountId = "ba_123";
@@ -18,7 +18,7 @@ namespace StripeTests
         private readonly AccountExternalAccountUpdateOptions updateOptions;
         private readonly AccountExternalAccountListOptions listOptions;
 
-        public ExternalAccountServiceTest(
+        public AccountExternalAccountServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)

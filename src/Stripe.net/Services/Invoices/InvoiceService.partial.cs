@@ -58,7 +58,7 @@ namespace Stripe
         /// containing the total count of line items and the first handful of those items. There is
         /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
-        [Obsolete("Use InvoiceLineItemService.ListUpcomingLineItems instead.")]
+        [Obsolete("Use InvoiceUpcomingLinesService.List instead.")]
         public virtual StripeList<InvoiceLineItem> ListUpcomingLineItems(InvoiceUpcomingLinesListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.Request<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/upcoming/lines", options, requestOptions);
@@ -69,7 +69,7 @@ namespace Stripe
         /// containing the total count of line items and the first handful of those items. There is
         /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
-        [Obsolete("Use InvoiceLineItemService.ListUpcomingLineItemsAsync instead.")]
+        [Obsolete("Use InvoiceUpcomingLinesService.ListAsync instead.")]
         public virtual Task<StripeList<InvoiceLineItem>> ListUpcomingLineItemsAsync(InvoiceUpcomingLinesListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/upcoming/lines", options, requestOptions, cancellationToken);
@@ -80,7 +80,7 @@ namespace Stripe
         /// containing the total count of line items and the first handful of those items. There is
         /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
-        [Obsolete("Use InvoiceLineItemService.ListUpcomingLineItemsAutoPaging instead.")]
+        [Obsolete("Use InvoiceUpcomingLinesService.ListAutoPaging instead.")]
         public virtual IEnumerable<InvoiceLineItem> ListUpcomingLineItemsAutoPaging(InvoiceUpcomingLinesListOptions options = null, RequestOptions requestOptions = null)
         {
             return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/invoices/upcoming/lines", options, requestOptions);
@@ -91,7 +91,7 @@ namespace Stripe
         /// containing the total count of line items and the first handful of those items. There is
         /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
         /// </summary>
-        [Obsolete("Use InvoiceLineItemService.ListUpcomingLineItemsAutoPagingAsync instead.")]
+        [Obsolete("Use InvoiceUpcomingLinesService.ListAutoPagingAsync instead.")]
         public virtual IAsyncEnumerable<InvoiceLineItem> ListUpcomingLineItemsAutoPagingAsync(InvoiceUpcomingLinesListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/invoices/upcoming/lines", options, requestOptions, cancellationToken);

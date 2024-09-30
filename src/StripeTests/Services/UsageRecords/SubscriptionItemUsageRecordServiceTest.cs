@@ -8,12 +8,12 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class UsageRecordServiceTest : BaseStripeTest
+    public class SubscriptionItemUsageRecordServiceTest : BaseStripeTest
     {
         private readonly SubscriptionItemUsageRecordService service;
         private readonly SubscriptionItemUsageRecordCreateOptions createOptions;
 
-        public UsageRecordServiceTest(
+        public SubscriptionItemUsageRecordServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)

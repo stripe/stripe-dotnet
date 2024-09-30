@@ -23,7 +23,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("Please use the constructor that accepts an `ApiRequestor` instead.")]
         public BankAccountService(IStripeClient client)
             : base(client)
         {
