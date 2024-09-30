@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -121,6 +122,5 @@ namespace Stripe
         {
             return this.RequestAsync<InvoiceLineItem>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(parentId)}/lines/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
-
     }
 }
