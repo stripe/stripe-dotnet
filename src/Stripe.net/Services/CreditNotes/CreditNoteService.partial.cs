@@ -12,7 +12,6 @@ namespace Stripe
         IRetrievable<CreditNote, CreditNoteGetOptions>,
         IUpdatable<CreditNote, CreditNoteUpdateOptions>
     {
-
         [Obsolete("Use CreditNotePreviewLinesService.List instead.")]
         public virtual StripeList<CreditNoteLineItem> ListPreviewLineItems(CreditNoteListPreviewLineItemsOptions options = null, RequestOptions requestOptions = null)
         {

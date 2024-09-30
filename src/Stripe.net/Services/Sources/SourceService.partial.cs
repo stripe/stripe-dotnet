@@ -59,6 +59,5 @@ namespace Stripe
         {
             return this.ListRequestAutoPagingAsync<Source>($"/v1/customers/{parentId}/sources", options ?? new SourceListOptions(), requestOptions, cancellationToken);
         }
-
     }
 }

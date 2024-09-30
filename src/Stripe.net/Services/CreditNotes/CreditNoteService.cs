@@ -12,7 +12,6 @@ namespace Stripe
         IRetrievable<CreditNote, CreditNoteGetOptions>,
         IUpdatable<CreditNote, CreditNoteUpdateOptions>
     {
-
         private CreditNotePreviewLinesService previewLines;
 
         public CreditNoteService()
