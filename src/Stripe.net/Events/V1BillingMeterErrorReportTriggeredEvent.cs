@@ -5,7 +5,7 @@ namespace Stripe.Events
     using Newtonsoft.Json;
 
     /// <summary>
-    /// This event occurs when an async usage event error report is generated.
+    /// This event occurs when there are invalid async usage events for a given meter.
     /// </summary>
     public class V1BillingMeterErrorReportTriggeredEvent : V2.Event
     {
