@@ -7,7 +7,7 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class CapabilityServiceTest : BaseStripeTest
+    public class AccountCapabilityServiceTest : BaseStripeTest
     {
         private const string AccountId = "acct_123";
         private const string CapabilityId = "acap_123";
@@ -16,7 +16,7 @@ namespace StripeTests
         private readonly AccountCapabilityUpdateOptions updateOptions;
         private readonly AccountCapabilityListOptions listOptions;
 
-        public CapabilityServiceTest(
+        public AccountCapabilityServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)

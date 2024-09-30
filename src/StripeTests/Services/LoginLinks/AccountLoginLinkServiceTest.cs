@@ -7,14 +7,14 @@ namespace StripeTests
     using Stripe;
     using Xunit;
 
-    public class LoginLinkServiceTest : BaseStripeTest
+    public class AccountLoginLinkServiceTest : BaseStripeTest
     {
         private const string AccountId = "acct_123";
 
         private readonly AccountLoginLinkService service;
         private readonly AccountLoginLinkCreateOptions createOptions;
 
-        public LoginLinkServiceTest(
+        public AccountLoginLinkServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
