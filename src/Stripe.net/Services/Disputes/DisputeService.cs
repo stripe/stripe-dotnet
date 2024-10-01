@@ -17,13 +17,15 @@ namespace Stripe
         {
         }
 
+        internal DisputeService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public DisputeService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/disputes";
 
         /// <summary>
         /// <p>Closing the dispute for a charge indicates that you do not have any evidence to
@@ -34,7 +36,7 @@ namespace Stripe
         /// </summary>
         public virtual Dispute Close(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Dispute>(HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}/close", options, requestOptions);
+            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}/close", options, requestOptions);
         }
 
         /// <summary>
@@ -46,7 +48,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Dispute> CloseAsync(string id, DisputeCloseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}/close", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}/close", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -54,7 +56,7 @@ namespace Stripe
         /// </summary>
         public virtual Dispute Get(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Dispute>(HttpMethod.Get, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Get, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -62,7 +64,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Dispute> GetAsync(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Dispute>(HttpMethod.Get, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Get, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +72,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Dispute> List(DisputeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Dispute>>(HttpMethod.Get, $"/v1/disputes", options, requestOptions);
+            return this.Request<StripeList<Dispute>>(BaseAddress.Api, HttpMethod.Get, $"/v1/disputes", options, requestOptions);
         }
 
         /// <summary>
@@ -78,7 +80,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Dispute>>(HttpMethod.Get, $"/v1/disputes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Dispute>>(BaseAddress.Api, HttpMethod.Get, $"/v1/disputes", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -109,7 +111,7 @@ namespace Stripe
         /// </summary>
         public virtual Dispute Update(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Dispute>(HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -124,7 +126,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Dispute> UpdateAsync(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

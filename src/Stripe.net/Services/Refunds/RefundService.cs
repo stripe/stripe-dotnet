@@ -18,13 +18,15 @@ namespace Stripe
         {
         }
 
+        internal RefundService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public RefundService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/refunds";
 
         /// <summary>
         /// <p>Cancels a refund with a status of <c>requires_action</c>.</p>.
@@ -34,7 +36,7 @@ namespace Stripe
         /// </summary>
         public virtual Refund Cancel(string id, RefundCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Refund>(HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
+            return this.Request<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -45,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Refund> CancelAsync(string id, RefundCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Refund>(HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +67,7 @@ namespace Stripe
         /// </summary>
         public virtual Refund Create(RefundCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Refund>(HttpMethod.Post, $"/v1/refunds", options, requestOptions);
+            return this.Request<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds", options, requestOptions);
         }
 
         /// <summary>
@@ -85,7 +87,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Refund> CreateAsync(RefundCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Refund>(HttpMethod.Post, $"/v1/refunds", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -93,7 +95,7 @@ namespace Stripe
         /// </summary>
         public virtual Refund Get(string id, RefundGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Refund>(HttpMethod.Get, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Refund>(BaseAddress.Api, HttpMethod.Get, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -101,7 +103,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Refund> GetAsync(string id, RefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Refund>(HttpMethod.Get, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(BaseAddress.Api, HttpMethod.Get, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -111,7 +113,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Refund> List(RefundListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Refund>>(HttpMethod.Get, $"/v1/refunds", options, requestOptions);
+            return this.Request<StripeList<Refund>>(BaseAddress.Api, HttpMethod.Get, $"/v1/refunds", options, requestOptions);
         }
 
         /// <summary>
@@ -121,7 +123,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Refund>> ListAsync(RefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Refund>>(HttpMethod.Get, $"/v1/refunds", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Refund>>(BaseAddress.Api, HttpMethod.Get, $"/v1/refunds", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -152,7 +154,7 @@ namespace Stripe
         /// </summary>
         public virtual Refund Update(string id, RefundUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Refund>(HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -163,7 +165,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Refund> UpdateAsync(string id, RefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Refund>(HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Refund>(BaseAddress.Api, HttpMethod.Post, $"/v1/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }
