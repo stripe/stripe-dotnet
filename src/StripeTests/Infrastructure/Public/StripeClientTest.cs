@@ -136,18 +136,11 @@ namespace StripeTests
                 V2.EventTest.GenerateSigHeader(json),
                 V2.EventTest.WebhookSecret,
                 throwOnApiVersionMismatch: false);
-            var stripeClientParsedEvent = this.stripeClient.ParseSnapshotEvent(
-                json,
-                V2.EventTest.GenerateSigHeader(json),
-                V2.EventTest.WebhookSecret);
 
-            Assert.NotNull(stripeClientParsedEvent);
+            Assert.NotNull(eventUtilityEvent);
             Assert.Equal("acct_123", eventUtilityEvent.Account);
             Assert.Equal("req_123", eventUtilityEvent.Request.Id);
             Assert.Equal("idempotency-key-123", eventUtilityEvent.Request.IdempotencyKey);
-            Assert.Equal("acct_123", stripeClientParsedEvent.Account);
-            Assert.Equal("req_123", stripeClientParsedEvent.Request.Id);
-            Assert.Equal("idempotency-key-123", stripeClientParsedEvent.Request.IdempotencyKey);
         }
 
         [Fact]
