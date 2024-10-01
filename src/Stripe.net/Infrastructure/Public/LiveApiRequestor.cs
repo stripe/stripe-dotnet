@@ -282,17 +282,15 @@ namespace Stripe
         /// <param name="path">The path of the request.</param>
         /// <param name="content">The body of the request.</param>
         /// <param name="requestOptions">The special modifiers of the request.</param>
-        /// <param name="cancellationToken">The cancellation token to cancel operation.</param>
         /// <returns>The response as a StripeResponse.</returns>
         /// <exception cref="StripeException">Thrown if the request fails.</exception>
         public override StripeResponse RawRequest(
             HttpMethod method,
             string path,
             string content = null,
-            RawRequestOptions requestOptions = null,
-            CancellationToken cancellationToken = default)
+            RawRequestOptions requestOptions = null)
         {
-            return this.RawRequestAsync(method, path, content, requestOptions, cancellationToken)
+            return this.RawRequestAsync(method, path, content, requestOptions)
                 .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 

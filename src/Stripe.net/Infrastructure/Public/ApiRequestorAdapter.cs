@@ -63,8 +63,7 @@ namespace Stripe
             HttpMethod method,
             string path,
             string content = null,
-            RawRequestOptions requestOptions = null,
-            CancellationToken cancellationToken = default)
+            RawRequestOptions requestOptions = null)
         {
             throw new System.NotImplementedException("RawRequest is unimplemented for this ApiRequestor");
         }

@@ -69,8 +69,7 @@ namespace Stripe
             HttpMethod method,
             string path,
             string content = null,
-            RawRequestOptions requestOptions = null,
-            CancellationToken cancellationToken = default);
+            RawRequestOptions requestOptions = null);
 
         public abstract Task<StripeResponse> RawRequestAsync(
             HttpMethod method,
