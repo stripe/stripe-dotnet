@@ -1,6 +1,6 @@
 # Changelog
 
-## 45.15.0 - 2024-10-01
+## 46.0.0 - 2024-10-01
 
 * [#2980](https://github.com/stripe/stripe-dotnet/pull/2980) Support for APIs in the new API version 2024-09-30.acacia
   
