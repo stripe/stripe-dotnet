@@ -11,7 +11,7 @@ namespace StripeTests
         {
             var options = new CardListOptions();
 
-            Assert.Equal("object=card", FormEncoder.CreateQueryString(options));
+            Assert.Equal("object=card", ContentEncoder.CreateQueryString(options));
         }
     }
 }

@@ -14,7 +14,14 @@ namespace Stripe
         IRetrievable<Transfer, TransferGetOptions>,
         IUpdatable<Transfer, TransferUpdateOptions>
     {
+        private TransferReversalService reversals;
+
         public TransferService()
+        {
+        }
+
+        internal TransferService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -23,8 +30,8 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/transfers";
+        public virtual TransferReversalService Reversals => this.reversals ??= new TransferReversalService(
+            this.Requestor);
 
         /// <summary>
         /// <p>To send funds from your Stripe account to a connected account, you create a new
@@ -34,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual Transfer Create(TransferCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Transfer>(HttpMethod.Post, $"/v1/transfers", options, requestOptions);
+            return this.Request<Transfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/transfers", options, requestOptions);
         }
 
         /// <summary>
@@ -45,7 +52,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Transfer> CreateAsync(TransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transfer>(HttpMethod.Post, $"/v1/transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/transfers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -55,7 +62,7 @@ namespace Stripe
         /// </summary>
         public virtual Transfer Get(string id, TransferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Transfer>(HttpMethod.Get, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Transfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -65,7 +72,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Transfer> GetAsync(string id, TransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transfer>(HttpMethod.Get, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -74,7 +81,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Transfer> List(TransferListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Transfer>>(HttpMethod.Get, $"/v1/transfers", options, requestOptions);
+            return this.Request<StripeList<Transfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/transfers", options, requestOptions);
         }
 
         /// <summary>
@@ -83,7 +90,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Transfer>> ListAsync(TransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Transfer>>(HttpMethod.Get, $"/v1/transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Transfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/transfers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -112,7 +119,7 @@ namespace Stripe
         /// </summary>
         public virtual Transfer Update(string id, TransferUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Transfer>(HttpMethod.Post, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Transfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -123,7 +130,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Transfer> UpdateAsync(string id, TransferUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transfer>(HttpMethod.Post, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

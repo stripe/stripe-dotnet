@@ -3,44 +3,43 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using System.IO;
-    using System.Net;
     using System.Net.Http;
-    using System.Reflection;
     using System.Runtime.CompilerServices;
     using System.Threading;
     using System.Threading.Tasks;
     using Stripe.Infrastructure;
 
-    /// <summary>Abstract base class for all services.</summary>
-    /// <typeparam name="TEntityReturned">
-    /// The type of <see cref="IStripeEntity"/> that this service returns.
-    /// </typeparam>
-    public abstract class Service<TEntityReturned>
-        where TEntityReturned : IStripeEntity
+    public abstract class Service
     {
         private IStripeClient client;
+        private ApiRequestor requestor;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Service{EntityReturned}"/> class.
+        /// Initializes a new instance of the <see cref="Service"/> class.
         /// </summary>
         protected Service()
         {
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Service{EntityReturned}"/> class with a
+        /// Initializes a new instance of the <see cref="Service"/> class with a
+        /// custom <see cref="ApiRequestor"/>.
+        /// </summary>
+        /// <param name="requestor">The requestor used by the service to send requests.</param>
+        internal Service(ApiRequestor requestor)
+        {
+            this.requestor = requestor;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Service"/> class with a
         /// custom <see cref="IStripeClient"/>.
         /// </summary>
         /// <param name="client">The client used by the service to send requests.</param>
         protected Service(IStripeClient client)
+            : this(ApiRequestorAdapter.Adapt(client))
         {
-            this.client = client;
         }
-
-        [Obsolete("Please use the `Request` or `RequestAsync` method providing the full path.")]
-        public abstract string BasePath { get; }
-
-        public virtual string BaseUrl => this.Client.ApiBase;
 
         /// <summary>
         /// Gets or sets the client used by this service to send requests. If no client was set when the
@@ -51,220 +50,46 @@ namespace Stripe
         /// Setting the client at runtime may not be thread-safe.
         /// If you wish to use a custom client, it is recommended that you pass it to the service's constructor and not change it during the service's lifetime.
         /// </remarks>
+        [Obsolete("This member will be removed in a future version")]
+        [System.ComponentModel.EditorBrowsable(System.ComponentModel.EditorBrowsableState.Never)]
         public IStripeClient Client
         {
             get => this.client ?? StripeConfiguration.StripeClient;
             set => this.client = value;
         }
 
-        [Obsolete("Use the `Request` method instead.")]
-        protected TEntityReturned CreateEntity(BaseOptions options, RequestOptions requestOptions)
+        internal ApiRequestor Requestor
         {
-            return this.Request(
-                HttpMethod.Post,
-                this.ClassUrl(),
-                options,
-                requestOptions);
+#pragma warning disable CS0618 // Type or member is obsolete
+            get => this.requestor ?? new ApiRequestorAdapter(this.Client);
+#pragma warning restore CS0618 // Type or member is obsolete
         }
 
-        [Obsolete("Use the `RequestAsync` method instead.")]
-        protected Task<TEntityReturned> CreateEntityAsync(
-            BaseOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken)
-        {
-            return this.RequestAsync(
-                HttpMethod.Post,
-                this.ClassUrl(),
-                options,
-                requestOptions,
-                cancellationToken);
-        }
-
-        [Obsolete("Use the `Request` method instead.")]
-        protected TEntityReturned DeleteEntity(
-            string id,
-            BaseOptions options,
-            RequestOptions requestOptions)
-        {
-            return this.Request(
-                HttpMethod.Delete,
-                this.InstanceUrl(id),
-                options,
-                requestOptions);
-        }
-
-        [Obsolete("Use the `RequestAsync` method instead.")]
-        protected Task<TEntityReturned> DeleteEntityAsync(
-            string id,
-            BaseOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken)
-        {
-            return this.RequestAsync(
-                HttpMethod.Delete,
-                this.InstanceUrl(id),
-                options,
-                requestOptions,
-                cancellationToken);
-        }
-
-        [Obsolete("Use the `Request` method instead.")]
-        protected TEntityReturned GetEntity(
-            string id,
-            BaseOptions options,
-            RequestOptions requestOptions)
-        {
-            return this.Request(
-                HttpMethod.Get,
-                this.InstanceUrl(id),
-                options,
-                requestOptions);
-        }
-
-        [Obsolete("Use the `RequestAsync` method instead.")]
-        protected Task<TEntityReturned> GetEntityAsync(
-            string id,
-            BaseOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken)
-        {
-            return this.RequestAsync(
-                HttpMethod.Get,
-                this.InstanceUrl(id),
-                options,
-                requestOptions,
-                cancellationToken);
-        }
-
-        [Obsolete("Use the `Request` method instead.")]
-        protected StripeList<TEntityReturned> ListEntities(
-            ListOptions options,
-            RequestOptions requestOptions)
-        {
-            return this.Request<StripeList<TEntityReturned>>(
-                HttpMethod.Get,
-                this.ClassUrl(),
-                options,
-                requestOptions);
-        }
-
-        [Obsolete("Use the `RequestAsync` method instead.")]
-        protected Task<StripeList<TEntityReturned>> ListEntitiesAsync(
-            ListOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken)
-        {
-            return this.RequestAsync<StripeList<TEntityReturned>>(
-                HttpMethod.Get,
-                this.ClassUrl(),
-                options,
-                requestOptions,
-                cancellationToken);
-        }
-
-        [Obsolete("Use the `ListRequestAutoPaging` method instead.")]
-        protected IEnumerable<TEntityReturned> ListEntitiesAutoPaging(
-            ListOptions options,
-            RequestOptions requestOptions)
-        {
-            return this.ListRequestAutoPaging<TEntityReturned>(
-                this.ClassUrl(),
-                options,
-                requestOptions);
-        }
-
-        [Obsolete("Use the `ListRequestAutoPagingAsync` method instead.")]
-        protected IAsyncEnumerable<TEntityReturned> ListEntitiesAutoPagingAsync(
-            ListOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken)
-        {
-            return this.ListRequestAutoPagingAsync<TEntityReturned>(
-                this.ClassUrl(),
-                options,
-                requestOptions,
-                cancellationToken);
-        }
-
-        [Obsolete("Use the `Request` method instead.")]
-        protected TEntityReturned UpdateEntity(
-            string id,
-            BaseOptions options,
-            RequestOptions requestOptions)
-        {
-            return this.Request(
-                HttpMethod.Post,
-                this.InstanceUrl(id),
-                options,
-                requestOptions);
-        }
-
-        [Obsolete("Use the `RequestAsync` method instead.")]
-        protected Task<TEntityReturned> UpdateEntityAsync(
-            string id,
-            BaseOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken)
-        {
-            return this.RequestAsync(
-                HttpMethod.Post,
-                this.InstanceUrl(id),
-                options,
-                requestOptions,
-                cancellationToken);
-        }
-
-        protected TEntityReturned Request(
-            HttpMethod method,
-            string path,
-            BaseOptions options,
-            RequestOptions requestOptions)
-        {
-            return this.Request<TEntityReturned>(
-                method,
-                path,
-                options,
-                requestOptions);
-        }
-
-        protected Task<TEntityReturned> RequestAsync(
-            HttpMethod method,
-            string path,
-            BaseOptions options,
-            RequestOptions requestOptions,
-            CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<TEntityReturned>(
-                method,
-                path,
-                options,
-                requestOptions,
-                cancellationToken);
-        }
-
-        protected T Request<T>(
+        internal T Request<T>(
+            BaseAddress baseAddress,
             HttpMethod method,
             string path,
             BaseOptions options,
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
-            return this.RequestAsync<T>(method, path, options, requestOptions)
+            return this.RequestAsync<T>(baseAddress, method, path, options, requestOptions)
                 .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
-        protected Stream RequestStreaming(
+        internal Stream RequestStreaming(
+            BaseAddress baseAddress,
             HttpMethod method,
             string path,
             BaseOptions options,
             RequestOptions requestOptions)
         {
-            return this.RequestStreamingAsync(method, path, options, requestOptions)
+            return this.RequestStreamingAsync(baseAddress, method, path, options, requestOptions)
                 .ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
-        protected async Task<T> RequestAsync<T>(
+        internal async Task<T> RequestAsync<T>(
+            BaseAddress baseAddress,
             HttpMethod method,
             string path,
             BaseOptions options,
@@ -272,8 +97,8 @@ namespace Stripe
             CancellationToken cancellationToken = default)
             where T : IStripeEntity
         {
-            requestOptions = this.SetupRequestOptions(requestOptions);
-            return await this.Client.RequestAsync<T>(
+            return await this.Requestor.RequestAsync<T>(
+                baseAddress,
                 method,
                 path,
                 options,
@@ -281,15 +106,16 @@ namespace Stripe
                 cancellationToken).ConfigureAwait(false);
         }
 
-        protected async Task<Stream> RequestStreamingAsync(
+        internal async Task<Stream> RequestStreamingAsync(
+            BaseAddress baseAddress,
             HttpMethod method,
             string path,
             BaseOptions options,
             RequestOptions requestOptions,
             CancellationToken cancellationToken = default)
         {
-            requestOptions = this.SetupRequestOptions(requestOptions);
-            var stream = await this.Client.RequestStreamingAsync(
+            var stream = await this.Requestor.RequestStreamingAsync(
+                    baseAddress,
                     method,
                     path,
                     options,
@@ -299,29 +125,43 @@ namespace Stripe
             return stream;
         }
 
-        protected IEnumerable<T> ListRequestAutoPaging<T>(
+        internal IEnumerable<T> ListRequestAutoPaging<T>(
             string url,
-            ListOptions options,
+            BaseOptions options,
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
+            var apiMode = ApiModeUtils.GetApiMode(url);
 #if NET461
+            if (apiMode == ApiMode.V2)
+            {
+                return
+                    this.V2ListRequestAutoPagingSync<T>(url, options, requestOptions);
+            }
+
             return
-                this.ListRequestAutoPagingSync<T>(url, options, requestOptions);
+                this.V1ListRequestAutoPagingSync<T>(url, options as ListOptions, requestOptions);
 #else
+            if (apiMode == ApiMode.V2)
+            {
+                return AsyncUtils.ToEnumerable(
+                    this.V2ListRequestAutoPagingAsync<T>(url, options, requestOptions));
+            }
+
             return AsyncUtils.ToEnumerable(
-                this.ListRequestAutoPagingAsync<T>(url, options, requestOptions));
+                this.V1ListRequestAutoPagingAsync<T>(url, options as ListOptions, requestOptions));
 #endif
         }
 
 #if NET461
-        protected IEnumerable<T> ListRequestAutoPagingSync<T>(
+        internal IEnumerable<T> V1ListRequestAutoPagingSync<T>(
             string url,
             ListOptions options,
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
             var page = this.Request<StripeList<T>>(
+                BaseAddress.Api,
                 HttpMethod.Get,
                 url,
                 options,
@@ -375,6 +215,7 @@ namespace Stripe
                 }
 
                 page = this.Request<StripeList<T>>(
+                    BaseAddress.Api,
                     HttpMethod.Get,
                     url,
                     options,
@@ -382,8 +223,129 @@ namespace Stripe
             }
         }
 
+        internal IEnumerable<T> V2ListRequestAutoPagingSync<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions)
+            where T : IStripeEntity
+        {
+            var page = this.Request<Stripe.V2.StripeList<T>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                url,
+                options,
+                requestOptions);
+
+            while (true)
+            {
+                foreach (var item in page)
+                {
+                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
+                    // which returns `null` for objects it doesn't know how to decode.
+                    // When auto-paginating, we simply ignore these null elements but still return
+                    // other elements.
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
+                    yield return item;
+                }
+
+                if (page.NextPageUrl == null)
+                {
+                    break;
+                }
+
+                // no options (params) needed for nextPageUrl calls
+                page = this.Request<Stripe.V2.StripeList<T>>(
+                    BaseAddress.Api,
+                    HttpMethod.Get,
+                    page.NextPageUrl,
+                    new BaseOptions(),
+                    requestOptions);
+            }
+        }
+
 #endif
-        protected async IAsyncEnumerable<T> ListRequestAutoPagingAsync<T>(
+        internal async IAsyncEnumerable<T> V2ListRequestAutoPagingAsync<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            [EnumeratorCancellation] CancellationToken cancellationToken = default)
+            where T : IStripeEntity
+        {
+            var page = await this.RequestAsync<Stripe.V2.StripeList<T>>(
+                BaseAddress.Api,
+                HttpMethod.Get,
+                url,
+                options,
+                requestOptions,
+                cancellationToken);
+
+            while (true)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+
+                foreach (var item in page)
+                {
+                    cancellationToken.ThrowIfCancellationRequested();
+
+                    // Elements in `StripeList` instances are decoded by `StripeObjectConverter`,
+                    // which returns `null` for objects it doesn't know how to decode.
+                    // When auto-paginating, we simply ignore these null elements but still return
+                    // other elements.
+                    if (item == null)
+                    {
+                        continue;
+                    }
+
+                    yield return item;
+                }
+
+                if (page.NextPageUrl == null)
+                {
+                    break;
+                }
+
+                // no options (params) needed for nextPageUrl calls
+                page = await this.RequestAsync<Stripe.V2.StripeList<T>>(
+                    BaseAddress.Api,
+                    HttpMethod.Get,
+                    page.NextPageUrl,
+                    new BaseOptions(),
+                    requestOptions,
+                    cancellationToken);
+            }
+        }
+
+        internal IAsyncEnumerable<T> ListRequestAutoPagingAsync<T>(
+            string url,
+            BaseOptions options,
+            RequestOptions requestOptions,
+            CancellationToken cancellationToken = default)
+            where T : IStripeEntity
+        {
+            var apiMode = ApiModeUtils.GetApiMode(url);
+            if (apiMode == ApiMode.V2)
+            {
+                return this.V2ListRequestAutoPagingAsync<T>(
+                    url,
+                    options,
+                    requestOptions,
+                    cancellationToken);
+            }
+            else
+            {
+                return this.V1ListRequestAutoPagingAsync<T>(
+                    url,
+                    options as ListOptions,
+                    requestOptions,
+                    cancellationToken);
+            }
+        }
+
+        internal async IAsyncEnumerable<T> V1ListRequestAutoPagingAsync<T>(
             string url,
             ListOptions options,
             RequestOptions requestOptions,
@@ -391,6 +353,7 @@ namespace Stripe
             where T : IStripeEntity
         {
             var page = await this.RequestAsync<StripeList<T>>(
+                BaseAddress.Api,
                 HttpMethod.Get,
                 url,
                 options,
@@ -449,6 +412,7 @@ namespace Stripe
                 }
 
                 page = await this.RequestAsync<StripeList<T>>(
+                    BaseAddress.Api,
                     HttpMethod.Get,
                     url,
                     options,
@@ -457,7 +421,7 @@ namespace Stripe
             }
         }
 
-        protected IEnumerable<T> SearchRequestAutoPaging<T>(
+        internal IEnumerable<T> SearchRequestAutoPaging<T>(
             string url,
             SearchOptions options,
             RequestOptions requestOptions)
@@ -480,6 +444,7 @@ namespace Stripe
             where T : IStripeEntity
         {
             var page = this.Request<StripeSearchResult<T>>(
+                BaseAddress.Api,
                 HttpMethod.Get,
                 url,
                 options,
@@ -511,6 +476,7 @@ namespace Stripe
                 options.Page = page.NextPage;
 
                 page = this.Request<StripeSearchResult<T>>(
+                    BaseAddress.Api,
                     HttpMethod.Get,
                     url,
                     options,
@@ -519,7 +485,7 @@ namespace Stripe
 }
 
 #endif
-        protected async IAsyncEnumerable<T> SearchRequestAutoPagingAsync<T>(
+        internal async IAsyncEnumerable<T> SearchRequestAutoPagingAsync<T>(
             string url,
             SearchOptions options,
             RequestOptions requestOptions,
@@ -527,6 +493,7 @@ namespace Stripe
             where T : IStripeEntity
         {
             var page = await this.RequestAsync<StripeSearchResult<T>>(
+                BaseAddress.Api,
                 HttpMethod.Get,
                 url,
                 options,
@@ -560,43 +527,13 @@ namespace Stripe
                 options.Page = page.NextPage;
 
                 page = await this.RequestAsync<StripeSearchResult<T>>(
+                    BaseAddress.Api,
                     HttpMethod.Get,
                     url,
                     options,
                     requestOptions,
                     cancellationToken);
             }
-        }
-
-        protected RequestOptions SetupRequestOptions(RequestOptions requestOptions)
-        {
-            if (requestOptions == null)
-            {
-                requestOptions = new RequestOptions();
-            }
-
-            requestOptions.BaseUrl = requestOptions.BaseUrl ?? this.BaseUrl;
-
-            return requestOptions;
-        }
-
-        [Obsolete("Please use the `Request` or `RequestAsync` method providing the full path.")]
-        protected virtual string ClassUrl()
-        {
-            return this.BasePath;
-        }
-
-        [Obsolete("Please use the `Request` or `RequestAsync` method providing the full path.")]
-        protected virtual string InstanceUrl(string id)
-        {
-            if (string.IsNullOrWhiteSpace(id))
-            {
-                throw new ArgumentException(
-                    "The resource ID cannot be null or whitespace.",
-                    nameof(id));
-            }
-
-            return $"{this.ClassUrl()}/{WebUtility.UrlEncode(id)}";
         }
     }
 }

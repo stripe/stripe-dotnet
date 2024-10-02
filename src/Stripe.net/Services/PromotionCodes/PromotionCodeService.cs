@@ -18,13 +18,15 @@ namespace Stripe
         {
         }
 
+        internal PromotionCodeService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public PromotionCodeService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/promotion_codes";
 
         /// <summary>
         /// <p>A promotion code points to a coupon. You can optionally restrict the code to a
@@ -32,7 +34,7 @@ namespace Stripe
         /// </summary>
         public virtual PromotionCode Create(PromotionCodeCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes", options, requestOptions);
+            return this.Request<PromotionCode>(BaseAddress.Api, HttpMethod.Post, $"/v1/promotion_codes", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +43,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PromotionCode> CreateAsync(PromotionCodeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PromotionCode>(BaseAddress.Api, HttpMethod.Post, $"/v1/promotion_codes", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -52,7 +54,7 @@ namespace Stripe
         /// </summary>
         public virtual PromotionCode Get(string id, PromotionCodeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PromotionCode>(HttpMethod.Get, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<PromotionCode>(BaseAddress.Api, HttpMethod.Get, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PromotionCode> GetAsync(string id, PromotionCodeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PromotionCode>(HttpMethod.Get, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PromotionCode>(BaseAddress.Api, HttpMethod.Get, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -71,7 +73,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<PromotionCode> List(PromotionCodeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<PromotionCode>>(HttpMethod.Get, $"/v1/promotion_codes", options, requestOptions);
+            return this.Request<StripeList<PromotionCode>>(BaseAddress.Api, HttpMethod.Get, $"/v1/promotion_codes", options, requestOptions);
         }
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<PromotionCode>> ListAsync(PromotionCodeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<PromotionCode>>(HttpMethod.Get, $"/v1/promotion_codes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PromotionCode>>(BaseAddress.Api, HttpMethod.Get, $"/v1/promotion_codes", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -104,7 +106,7 @@ namespace Stripe
         /// </summary>
         public virtual PromotionCode Update(string id, PromotionCodeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<PromotionCode>(BaseAddress.Api, HttpMethod.Post, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -113,7 +115,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PromotionCode> UpdateAsync(string id, PromotionCodeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PromotionCode>(HttpMethod.Post, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PromotionCode>(BaseAddress.Api, HttpMethod.Post, $"/v1/promotion_codes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

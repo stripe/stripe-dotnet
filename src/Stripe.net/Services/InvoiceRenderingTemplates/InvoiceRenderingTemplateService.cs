@@ -16,13 +16,15 @@ namespace Stripe
         {
         }
 
+        internal InvoiceRenderingTemplateService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public InvoiceRenderingTemplateService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/invoice_rendering_templates";
 
         /// <summary>
         /// <p>Updates the status of an invoice rendering template to ‘archived’ so no new Stripe
@@ -32,7 +34,7 @@ namespace Stripe
         /// </summary>
         public virtual InvoiceRenderingTemplate Archive(string id, InvoiceRenderingTemplateArchiveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<InvoiceRenderingTemplate>(HttpMethod.Post, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}/archive", options, requestOptions);
+            return this.Request<InvoiceRenderingTemplate>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}/archive", options, requestOptions);
         }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<InvoiceRenderingTemplate> ArchiveAsync(string id, InvoiceRenderingTemplateArchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InvoiceRenderingTemplate>(HttpMethod.Post, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}/archive", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InvoiceRenderingTemplate>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}/archive", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual InvoiceRenderingTemplate Get(string id, InvoiceRenderingTemplateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<InvoiceRenderingTemplate>(HttpMethod.Get, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<InvoiceRenderingTemplate>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<InvoiceRenderingTemplate> GetAsync(string id, InvoiceRenderingTemplateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InvoiceRenderingTemplate>(HttpMethod.Get, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InvoiceRenderingTemplate>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -72,7 +74,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<InvoiceRenderingTemplate> List(InvoiceRenderingTemplateListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<InvoiceRenderingTemplate>>(HttpMethod.Get, $"/v1/invoice_rendering_templates", options, requestOptions);
+            return this.Request<StripeList<InvoiceRenderingTemplate>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoice_rendering_templates", options, requestOptions);
         }
 
         /// <summary>
@@ -81,7 +83,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<InvoiceRenderingTemplate>> ListAsync(InvoiceRenderingTemplateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<InvoiceRenderingTemplate>>(HttpMethod.Get, $"/v1/invoice_rendering_templates", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InvoiceRenderingTemplate>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoice_rendering_templates", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -108,7 +110,7 @@ namespace Stripe
         /// </summary>
         public virtual InvoiceRenderingTemplate Unarchive(string id, InvoiceRenderingTemplateUnarchiveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<InvoiceRenderingTemplate>(HttpMethod.Post, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}/unarchive", options, requestOptions);
+            return this.Request<InvoiceRenderingTemplate>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}/unarchive", options, requestOptions);
         }
 
         /// <summary>
@@ -117,7 +119,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<InvoiceRenderingTemplate> UnarchiveAsync(string id, InvoiceRenderingTemplateUnarchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InvoiceRenderingTemplate>(HttpMethod.Post, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}/unarchive", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InvoiceRenderingTemplate>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoice_rendering_templates/{WebUtility.UrlEncode(id)}/unarchive", options, requestOptions, cancellationToken);
         }
     }
 }

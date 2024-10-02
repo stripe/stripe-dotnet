@@ -31,7 +31,7 @@ namespace Stripe.Infrastructure.FormEncoding
                 throw new ArgumentNullException(nameof(nameValueCollection));
             }
 
-            return Encoding.UTF8.GetBytes(FormEncoder.CreateQueryString(nameValueCollection));
+            return Encoding.UTF8.GetBytes(ContentEncoder.CreateQueryString(nameValueCollection));
         }
     }
 }
