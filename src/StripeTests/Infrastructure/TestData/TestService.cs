@@ -6,8 +6,11 @@ namespace StripeTests.Infrastructure.TestData
     public class TestService : Service<Charge>
     {
         public TestService()
-            : base()
+            : base(null)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/charges";
     }
 }

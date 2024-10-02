@@ -16,22 +16,20 @@ namespace Stripe.Issuing
         {
         }
 
-        internal PhysicalBundleService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public PhysicalBundleService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/issuing/physical_bundles";
 
         /// <summary>
         /// <p>Retrieves a physical bundle object.</p>.
         /// </summary>
         public virtual PhysicalBundle Get(string id, PhysicalBundleGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PhysicalBundle>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/physical_bundles/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<PhysicalBundle>(HttpMethod.Get, $"/v1/issuing/physical_bundles/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -39,7 +37,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<PhysicalBundle> GetAsync(string id, PhysicalBundleGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PhysicalBundle>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/physical_bundles/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PhysicalBundle>(HttpMethod.Get, $"/v1/issuing/physical_bundles/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +46,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual StripeList<PhysicalBundle> List(PhysicalBundleListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<PhysicalBundle>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/physical_bundles", options, requestOptions);
+            return this.Request<StripeList<PhysicalBundle>>(HttpMethod.Get, $"/v1/issuing/physical_bundles", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +55,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<StripeList<PhysicalBundle>> ListAsync(PhysicalBundleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<PhysicalBundle>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/physical_bundles", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PhysicalBundle>>(HttpMethod.Get, $"/v1/issuing/physical_bundles", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

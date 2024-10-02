@@ -18,15 +18,13 @@ namespace Stripe
         {
         }
 
-        internal SubscriptionScheduleService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public SubscriptionScheduleService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/subscription_schedules";
 
         /// <summary>
         /// <p>Amends an existing subscription schedule.</p>.
@@ -51,7 +49,7 @@ namespace Stripe
         /// </summary>
         public virtual SubscriptionSchedule Cancel(string id, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
+            return this.Request<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<SubscriptionSchedule> CancelAsync(string id, SubscriptionScheduleCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace Stripe
         /// </summary>
         public virtual SubscriptionSchedule Create(SubscriptionScheduleCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules", options, requestOptions);
+            return this.Request<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules", options, requestOptions);
         }
 
         /// <summary>
@@ -79,7 +77,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<SubscriptionSchedule> CreateAsync(SubscriptionScheduleCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -89,7 +87,7 @@ namespace Stripe
         /// </summary>
         public virtual SubscriptionSchedule Get(string id, SubscriptionScheduleGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<SubscriptionSchedule>(HttpMethod.Get, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -99,7 +97,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<SubscriptionSchedule> GetAsync(string id, SubscriptionScheduleGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SubscriptionSchedule>(HttpMethod.Get, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -107,7 +105,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<SubscriptionSchedule> List(SubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<SubscriptionSchedule>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscription_schedules", options, requestOptions);
+            return this.Request<StripeList<SubscriptionSchedule>>(HttpMethod.Get, $"/v1/subscription_schedules", options, requestOptions);
         }
 
         /// <summary>
@@ -115,7 +113,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<SubscriptionSchedule>> ListAsync(SubscriptionScheduleListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<SubscriptionSchedule>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscription_schedules", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<SubscriptionSchedule>>(HttpMethod.Get, $"/v1/subscription_schedules", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -144,7 +142,7 @@ namespace Stripe
         /// </summary>
         public virtual SubscriptionSchedule Release(string id, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/release", options, requestOptions);
+            return this.Request<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/release", options, requestOptions);
         }
 
         /// <summary>
@@ -157,7 +155,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<SubscriptionSchedule> ReleaseAsync(string id, SubscriptionScheduleReleaseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/release", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/release", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -165,7 +163,7 @@ namespace Stripe
         /// </summary>
         public virtual SubscriptionSchedule Update(string id, SubscriptionScheduleUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -173,7 +171,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<SubscriptionSchedule> UpdateAsync(string id, SubscriptionScheduleUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

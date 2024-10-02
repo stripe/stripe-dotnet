@@ -87,7 +87,7 @@ namespace StripeTests
 
             foreach (var testCase in testCases)
             {
-                Assert.Equal(testCase.want, ContentEncoder.CreateQueryString(testCase.data));
+                Assert.Equal(testCase.want, FormEncoder.CreateQueryString(testCase.data));
             }
         }
     }

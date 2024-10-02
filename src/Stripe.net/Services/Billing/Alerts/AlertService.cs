@@ -17,22 +17,20 @@ namespace Stripe.Billing
         {
         }
 
-        internal AlertService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public AlertService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/billing/alerts";
 
         /// <summary>
         /// <p>Reactivates this alert, allowing it to trigger again.</p>.
         /// </summary>
         public virtual Alert Activate(string id, AlertActivateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Alert>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/activate", options, requestOptions);
+            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/activate", options, requestOptions);
         }
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Alert> ActivateAsync(string id, AlertActivateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Alert>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/activate", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/activate", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -49,7 +47,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Alert Archive(string id, AlertArchiveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Alert>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/archive", options, requestOptions);
+            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/archive", options, requestOptions);
         }
 
         /// <summary>
@@ -58,7 +56,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Alert> ArchiveAsync(string id, AlertArchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Alert>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/archive", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/archive", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -66,7 +64,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Alert Create(AlertCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Alert>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/alerts", options, requestOptions);
+            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts", options, requestOptions);
         }
 
         /// <summary>
@@ -74,7 +72,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Alert> CreateAsync(AlertCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Alert>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/alerts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -82,7 +80,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Alert Deactivate(string id, AlertDeactivateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Alert>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/deactivate", options, requestOptions);
+            return this.Request<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/deactivate", options, requestOptions);
         }
 
         /// <summary>
@@ -90,7 +88,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Alert> DeactivateAsync(string id, AlertDeactivateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Alert>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/deactivate", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Alert>(HttpMethod.Post, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}/deactivate", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -98,7 +96,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Alert Get(string id, AlertGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Alert>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Alert>(HttpMethod.Get, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -106,7 +104,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<Alert> GetAsync(string id, AlertGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Alert>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Alert>(HttpMethod.Get, $"/v1/billing/alerts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +112,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual StripeList<Alert> List(AlertListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Alert>>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/alerts", options, requestOptions);
+            return this.Request<StripeList<Alert>>(HttpMethod.Get, $"/v1/billing/alerts", options, requestOptions);
         }
 
         /// <summary>
@@ -122,7 +120,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<StripeList<Alert>> ListAsync(AlertListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Alert>>(BaseAddress.Api, HttpMethod.Get, $"/v1/billing/alerts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Alert>>(HttpMethod.Get, $"/v1/billing/alerts", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

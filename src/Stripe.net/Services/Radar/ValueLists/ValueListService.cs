@@ -19,22 +19,20 @@ namespace Stripe.Radar
         {
         }
 
-        internal ValueListService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public ValueListService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/radar/value_lists";
 
         /// <summary>
         /// <p>Creates a new <c>ValueList</c> object, which can then be referenced in rules.</p>.
         /// </summary>
         public virtual ValueList Create(ValueListCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueList>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_lists", options, requestOptions);
+            return this.Request<ValueList>(HttpMethod.Post, $"/v1/radar/value_lists", options, requestOptions);
         }
 
         /// <summary>
@@ -42,7 +40,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueList> CreateAsync(ValueListCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueList>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_lists", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueList>(HttpMethod.Post, $"/v1/radar/value_lists", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -51,7 +49,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueList Delete(string id, ValueListDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueList>(BaseAddress.Api, HttpMethod.Delete, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ValueList>(HttpMethod.Delete, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -60,7 +58,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueList> DeleteAsync(string id, ValueListDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueList>(BaseAddress.Api, HttpMethod.Delete, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueList>(HttpMethod.Delete, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +66,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueList Get(string id, ValueListGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueList>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ValueList>(HttpMethod.Get, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -76,7 +74,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueList> GetAsync(string id, ValueListGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueList>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueList>(HttpMethod.Get, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -85,7 +83,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual StripeList<ValueList> List(ValueListListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ValueList>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_lists", options, requestOptions);
+            return this.Request<StripeList<ValueList>>(HttpMethod.Get, $"/v1/radar/value_lists", options, requestOptions);
         }
 
         /// <summary>
@@ -94,7 +92,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<StripeList<ValueList>> ListAsync(ValueListListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ValueList>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/value_lists", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ValueList>>(HttpMethod.Get, $"/v1/radar/value_lists", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -122,7 +120,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual ValueList Update(string id, ValueListUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ValueList>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ValueList>(HttpMethod.Post, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -132,7 +130,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<ValueList> UpdateAsync(string id, ValueListUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ValueList>(BaseAddress.Api, HttpMethod.Post, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ValueList>(HttpMethod.Post, $"/v1/radar/value_lists/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

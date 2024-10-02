@@ -15,7 +15,7 @@ namespace Stripe
         internal static readonly UTF8Encoding SafeUTF8
             = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
-        public const int DefaultTimeTolerance = 300;
+        private const int DefaultTimeTolerance = 300;
 
         /// <summary>
         /// Parses a JSON string from a Stripe webhook into a <see cref="Event"/> object.

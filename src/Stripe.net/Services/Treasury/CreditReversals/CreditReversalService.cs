@@ -17,22 +17,20 @@ namespace Stripe.Treasury
         {
         }
 
-        internal CreditReversalService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public CreditReversalService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/treasury/credit_reversals";
 
         /// <summary>
         /// <p>Reverses a ReceivedCredit and creates a CreditReversal object.</p>.
         /// </summary>
         public virtual CreditReversal Create(CreditReversalCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditReversal>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/credit_reversals", options, requestOptions);
+            return this.Request<CreditReversal>(HttpMethod.Post, $"/v1/treasury/credit_reversals", options, requestOptions);
         }
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<CreditReversal> CreateAsync(CreditReversalCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditReversal>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/credit_reversals", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditReversal>(HttpMethod.Post, $"/v1/treasury/credit_reversals", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -50,7 +48,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual CreditReversal Get(string id, CreditReversalGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditReversal>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/credit_reversals/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<CreditReversal>(HttpMethod.Get, $"/v1/treasury/credit_reversals/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -60,7 +58,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<CreditReversal> GetAsync(string id, CreditReversalGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditReversal>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/credit_reversals/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditReversal>(HttpMethod.Get, $"/v1/treasury/credit_reversals/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +66,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<CreditReversal> List(CreditReversalListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CreditReversal>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/credit_reversals", options, requestOptions);
+            return this.Request<StripeList<CreditReversal>>(HttpMethod.Get, $"/v1/treasury/credit_reversals", options, requestOptions);
         }
 
         /// <summary>
@@ -76,7 +74,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<CreditReversal>> ListAsync(CreditReversalListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CreditReversal>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/credit_reversals", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CreditReversal>>(HttpMethod.Get, $"/v1/treasury/credit_reversals", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

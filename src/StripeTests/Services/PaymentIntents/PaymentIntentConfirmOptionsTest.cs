@@ -14,7 +14,7 @@ namespace StripeTests
                 OffSession = true,
             };
 
-            Assert.Equal("off_session=True", ContentEncoder.CreateQueryString(options_bool));
+            Assert.Equal("off_session=True", FormEncoder.CreateQueryString(options_bool));
         }
     }
 }

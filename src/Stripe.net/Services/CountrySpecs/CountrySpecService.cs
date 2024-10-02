@@ -16,22 +16,20 @@ namespace Stripe
         {
         }
 
-        internal CountrySpecService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public CountrySpecService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/country_specs";
 
         /// <summary>
         /// <p>Returns a Country Spec for a given Country code.</p>.
         /// </summary>
         public virtual CountrySpec Get(string id, CountrySpecGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CountrySpec>(BaseAddress.Api, HttpMethod.Get, $"/v1/country_specs/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<CountrySpec>(HttpMethod.Get, $"/v1/country_specs/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -39,7 +37,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CountrySpec> GetAsync(string id, CountrySpecGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CountrySpec>(BaseAddress.Api, HttpMethod.Get, $"/v1/country_specs/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CountrySpec>(HttpMethod.Get, $"/v1/country_specs/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +45,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<CountrySpec> List(CountrySpecListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CountrySpec>>(BaseAddress.Api, HttpMethod.Get, $"/v1/country_specs", options, requestOptions);
+            return this.Request<StripeList<CountrySpec>>(HttpMethod.Get, $"/v1/country_specs", options, requestOptions);
         }
 
         /// <summary>
@@ -55,7 +53,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<CountrySpec>> ListAsync(CountrySpecListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CountrySpec>>(BaseAddress.Api, HttpMethod.Get, $"/v1/country_specs", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CountrySpec>>(HttpMethod.Get, $"/v1/country_specs", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

@@ -35,7 +35,8 @@ namespace Stripe.Tax
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The status of the Tax <c>Settings</c>.
+        /// The <c>active</c> status indicates you have all required settings to calculate tax. A
+        /// status can transition out of <c>active</c> when new required settings are introduced.
         /// One of: <c>active</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]

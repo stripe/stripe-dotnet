@@ -15,15 +15,13 @@ namespace Stripe
         {
         }
 
-        internal TokenService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public TokenService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/tokens";
 
         /// <summary>
         /// <p>Creates a single-use token that represents a bank account’s details. You can use this
@@ -35,7 +33,7 @@ namespace Stripe
         /// </summary>
         public virtual Token Create(TokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Token>(BaseAddress.Api, HttpMethod.Post, $"/v1/tokens", options, requestOptions);
+            return this.Request<Token>(HttpMethod.Post, $"/v1/tokens", options, requestOptions);
         }
 
         /// <summary>
@@ -48,7 +46,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Token> CreateAsync(TokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Token>(BaseAddress.Api, HttpMethod.Post, $"/v1/tokens", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Post, $"/v1/tokens", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -56,7 +54,7 @@ namespace Stripe
         /// </summary>
         public virtual Token Get(string id, TokenGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Token>(BaseAddress.Api, HttpMethod.Get, $"/v1/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Token>(HttpMethod.Get, $"/v1/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -64,7 +62,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Token> GetAsync(string id, TokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Token>(BaseAddress.Api, HttpMethod.Get, $"/v1/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

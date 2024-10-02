@@ -13,15 +13,13 @@ namespace Stripe.TestHelpers.Treasury
         {
         }
 
-        internal ReceivedCreditService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public ReceivedCreditService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/test_helpers/treasury/received_credits";
 
         /// <summary>
         /// <p>Use this endpoint to simulate a test mode ReceivedCredit initiated by a third party.
@@ -29,7 +27,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Stripe.Treasury.ReceivedCredit Create(ReceivedCreditCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Stripe.Treasury.ReceivedCredit>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/received_credits", options, requestOptions);
+            return this.Request<Stripe.Treasury.ReceivedCredit>(HttpMethod.Post, $"/v1/test_helpers/treasury/received_credits", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +36,7 @@ namespace Stripe.TestHelpers.Treasury
         /// </summary>
         public virtual Task<Stripe.Treasury.ReceivedCredit> CreateAsync(ReceivedCreditCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Stripe.Treasury.ReceivedCredit>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/treasury/received_credits", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Stripe.Treasury.ReceivedCredit>(HttpMethod.Post, $"/v1/test_helpers/treasury/received_credits", options, requestOptions, cancellationToken);
         }
     }
 }

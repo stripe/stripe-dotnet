@@ -18,22 +18,20 @@ namespace Stripe
         {
         }
 
-        internal ApplePayDomainService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public ApplePayDomainService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/apple_pay/domains";
 
         /// <summary>
         /// <p>Create an apple pay domain.</p>.
         /// </summary>
         public virtual ApplePayDomain Create(ApplePayDomainCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplePayDomain>(BaseAddress.Api, HttpMethod.Post, $"/v1/apple_pay/domains", options, requestOptions);
+            return this.Request<ApplePayDomain>(HttpMethod.Post, $"/v1/apple_pay/domains", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplePayDomain> CreateAsync(ApplePayDomainCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplePayDomain>(BaseAddress.Api, HttpMethod.Post, $"/v1/apple_pay/domains", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApplePayDomain>(HttpMethod.Post, $"/v1/apple_pay/domains", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -49,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual ApplePayDomain Delete(string id, ApplePayDomainDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplePayDomain>(BaseAddress.Api, HttpMethod.Delete, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ApplePayDomain>(HttpMethod.Delete, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplePayDomain> DeleteAsync(string id, ApplePayDomainDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplePayDomain>(BaseAddress.Api, HttpMethod.Delete, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApplePayDomain>(HttpMethod.Delete, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +63,7 @@ namespace Stripe
         /// </summary>
         public virtual ApplePayDomain Get(string id, ApplePayDomainGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplePayDomain>(BaseAddress.Api, HttpMethod.Get, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ApplePayDomain>(HttpMethod.Get, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -73,7 +71,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplePayDomain> GetAsync(string id, ApplePayDomainGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplePayDomain>(BaseAddress.Api, HttpMethod.Get, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApplePayDomain>(HttpMethod.Get, $"/v1/apple_pay/domains/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +79,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<ApplePayDomain> List(ApplePayDomainListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ApplePayDomain>>(BaseAddress.Api, HttpMethod.Get, $"/v1/apple_pay/domains", options, requestOptions);
+            return this.Request<StripeList<ApplePayDomain>>(HttpMethod.Get, $"/v1/apple_pay/domains", options, requestOptions);
         }
 
         /// <summary>
@@ -89,7 +87,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<ApplePayDomain>> ListAsync(ApplePayDomainListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ApplePayDomain>>(BaseAddress.Api, HttpMethod.Get, $"/v1/apple_pay/domains", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ApplePayDomain>>(HttpMethod.Get, $"/v1/apple_pay/domains", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

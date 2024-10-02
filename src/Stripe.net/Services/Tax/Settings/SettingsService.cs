@@ -13,14 +13,18 @@ namespace Stripe.Tax
         {
         }
 
-        internal SettingsService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public SettingsService(IStripeClient client)
             : base(client)
         {
+        }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/tax/settings";
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        protected override string InstanceUrl(string id)
+        {
+            return this.ClassUrl();
         }
 
         /// <summary>
@@ -28,7 +32,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Settings Get(RequestOptions requestOptions = null)
         {
-            return this.Request<Settings>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/settings", null, requestOptions);
+            return this.Request<Settings>(HttpMethod.Get, $"/v1/tax/settings", null, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +40,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Settings> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Settings>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/settings", null, requestOptions, cancellationToken);
+            return this.RequestAsync<Settings>(HttpMethod.Get, $"/v1/tax/settings", null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -44,7 +48,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Settings Get(SettingsGetOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Settings>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/settings", options, requestOptions);
+            return this.Request<Settings>(HttpMethod.Get, $"/v1/tax/settings", options, requestOptions);
         }
 
         /// <summary>
@@ -52,7 +56,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Settings> GetAsync(SettingsGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Settings>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/settings", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Settings>(HttpMethod.Get, $"/v1/tax/settings", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -61,7 +65,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Settings Update(SettingsUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Settings>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/settings", options, requestOptions);
+            return this.Request<Settings>(HttpMethod.Post, $"/v1/tax/settings", options, requestOptions);
         }
 
         /// <summary>
@@ -70,7 +74,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Settings> UpdateAsync(SettingsUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Settings>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/settings", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Settings>(HttpMethod.Post, $"/v1/tax/settings", options, requestOptions, cancellationToken);
         }
     }
 }

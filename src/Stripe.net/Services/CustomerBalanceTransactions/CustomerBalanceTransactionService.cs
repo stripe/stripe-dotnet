@@ -18,15 +18,13 @@ namespace Stripe
         {
         }
 
-        internal CustomerBalanceTransactionService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public CustomerBalanceTransactionService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/customers/{PARENT_ID}/balance_transactions";
 
         /// <summary>
         /// <p>Creates an immutable transaction that updates the customer’s credit <a
@@ -34,7 +32,7 @@ namespace Stripe
         /// </summary>
         public virtual CustomerBalanceTransaction Create(string parentId, CustomerBalanceTransactionCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions", options, requestOptions);
+            return this.Request<CustomerBalanceTransaction>(HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions", options, requestOptions);
         }
 
         /// <summary>
@@ -43,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CustomerBalanceTransaction> CreateAsync(string parentId, CustomerBalanceTransactionCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerBalanceTransaction>(HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -52,7 +50,7 @@ namespace Stripe
         /// </summary>
         public virtual CustomerBalanceTransaction Get(string parentId, string id, CustomerBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<CustomerBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -61,7 +59,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CustomerBalanceTransaction> GetAsync(string parentId, string id, CustomerBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -70,7 +68,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<CustomerBalanceTransaction> List(string parentId, CustomerBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CustomerBalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions", options, requestOptions);
+            return this.Request<StripeList<CustomerBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions", options, requestOptions);
         }
 
         /// <summary>
@@ -79,7 +77,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<CustomerBalanceTransaction>> ListAsync(string parentId, CustomerBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CustomerBalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CustomerBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -106,7 +104,7 @@ namespace Stripe
         /// </summary>
         public virtual CustomerBalanceTransaction Update(string parentId, string id, CustomerBalanceTransactionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<CustomerBalanceTransaction>(HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -115,7 +113,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CustomerBalanceTransaction> UpdateAsync(string parentId, string id, CustomerBalanceTransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerBalanceTransaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerBalanceTransaction>(HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

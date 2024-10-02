@@ -14,22 +14,20 @@ namespace Stripe
         {
         }
 
-        internal MandateService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public MandateService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/mandates";
 
         /// <summary>
         /// <p>Retrieves a Mandate object.</p>.
         /// </summary>
         public virtual Mandate Get(string id, MandateGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Mandate>(BaseAddress.Api, HttpMethod.Get, $"/v1/mandates/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Mandate>(HttpMethod.Get, $"/v1/mandates/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +35,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Mandate> GetAsync(string id, MandateGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Mandate>(BaseAddress.Api, HttpMethod.Get, $"/v1/mandates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Mandate>(HttpMethod.Get, $"/v1/mandates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

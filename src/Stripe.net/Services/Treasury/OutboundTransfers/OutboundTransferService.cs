@@ -17,22 +17,20 @@ namespace Stripe.Treasury
         {
         }
 
-        internal OutboundTransferService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public OutboundTransferService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/treasury/outbound_transfers";
 
         /// <summary>
         /// <p>An OutboundTransfer can be canceled if the funds have not yet been paid out.</p>.
         /// </summary>
         public virtual OutboundTransfer Cancel(string id, OutboundTransferCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
+            return this.Request<OutboundTransfer>(HttpMethod.Post, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<OutboundTransfer> CancelAsync(string id, OutboundTransferCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<OutboundTransfer>(HttpMethod.Post, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +46,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual OutboundTransfer Create(OutboundTransferCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_transfers", options, requestOptions);
+            return this.Request<OutboundTransfer>(HttpMethod.Post, $"/v1/treasury/outbound_transfers", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +54,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<OutboundTransfer> CreateAsync(OutboundTransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<OutboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<OutboundTransfer>(HttpMethod.Post, $"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -66,7 +64,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual OutboundTransfer Get(string id, OutboundTransferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<OutboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<OutboundTransfer>(HttpMethod.Get, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -76,7 +74,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<OutboundTransfer> GetAsync(string id, OutboundTransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<OutboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<OutboundTransfer>(HttpMethod.Get, $"/v1/treasury/outbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -84,7 +82,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<OutboundTransfer> List(OutboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<OutboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_transfers", options, requestOptions);
+            return this.Request<StripeList<OutboundTransfer>>(HttpMethod.Get, $"/v1/treasury/outbound_transfers", options, requestOptions);
         }
 
         /// <summary>
@@ -92,7 +90,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<OutboundTransfer>> ListAsync(OutboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<OutboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<OutboundTransfer>>(HttpMethod.Get, $"/v1/treasury/outbound_transfers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

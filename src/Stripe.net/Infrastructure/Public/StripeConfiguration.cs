@@ -4,7 +4,6 @@ namespace Stripe
     using System.Collections.Generic;
     using System.Configuration;
     using System.Reflection;
-    using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -214,19 +213,8 @@ namespace Stripe
         /// <returns>A <see cref="Newtonsoft.Json.JsonSerializerSettings"/> instance.</returns>
         public static JsonSerializerSettings DefaultSerializerSettings()
         {
-            return DefaultSerializerSettings(null);
-        }
-
-        /// <summary>
-        /// Returns a new instance of <see cref="Newtonsoft.Json.JsonSerializerSettings"/> with
-        /// the default settings used by Stripe.net.
-        /// </summary>
-        /// <returns>A <see cref="Newtonsoft.Json.JsonSerializerSettings"/> instance.</returns>
-        internal static JsonSerializerSettings DefaultSerializerSettings(ApiRequestor requestor)
-        {
             return new JsonSerializerSettings
             {
-                Context = new StreamingContext(StreamingContextStates.All, new DeserializationContext { Requestor = requestor }),
                 Converters = new List<JsonConverter>
                 {
                     new StripeObjectConverter(),

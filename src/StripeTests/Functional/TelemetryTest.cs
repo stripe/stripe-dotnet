@@ -217,11 +217,14 @@ namespace StripeTests
             {
             }
 
+            [Obsolete("This member is deprecated and will be removed in a future release")]
+            public override string BasePath => "/v1/test";
+
             public virtual void MakeRequestWithUsage(RequestOptions requestOptions)
             {
                 RequestOptions ro = requestOptions.Clone();
                 ro.Usage = TestUsage;
-                this.Request<TestEntity>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/cus_xyz", null, ro);
+                this.Request<TestEntity>(HttpMethod.Get, $"/v1/customers/cus_xyz", null, ro);
             }
         }
 

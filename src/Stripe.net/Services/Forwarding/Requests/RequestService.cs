@@ -17,22 +17,20 @@ namespace Stripe.Forwarding
         {
         }
 
-        internal RequestService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public RequestService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/forwarding/requests";
 
         /// <summary>
         /// <p>Creates a ForwardingRequest object.</p>.
         /// </summary>
         public virtual Request Create(RequestCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Request>(BaseAddress.Api, HttpMethod.Post, $"/v1/forwarding/requests", options, requestOptions);
+            return this.Request<Request>(HttpMethod.Post, $"/v1/forwarding/requests", options, requestOptions);
         }
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace Stripe.Forwarding
         /// </summary>
         public virtual Task<Request> CreateAsync(RequestCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Request>(BaseAddress.Api, HttpMethod.Post, $"/v1/forwarding/requests", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Request>(HttpMethod.Post, $"/v1/forwarding/requests", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +46,7 @@ namespace Stripe.Forwarding
         /// </summary>
         public virtual Request Get(string id, RequestGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Request>(BaseAddress.Api, HttpMethod.Get, $"/v1/forwarding/requests/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Request>(HttpMethod.Get, $"/v1/forwarding/requests/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +54,7 @@ namespace Stripe.Forwarding
         /// </summary>
         public virtual Task<Request> GetAsync(string id, RequestGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Request>(BaseAddress.Api, HttpMethod.Get, $"/v1/forwarding/requests/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Request>(HttpMethod.Get, $"/v1/forwarding/requests/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +62,7 @@ namespace Stripe.Forwarding
         /// </summary>
         public virtual StripeList<Request> List(RequestListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Request>>(BaseAddress.Api, HttpMethod.Get, $"/v1/forwarding/requests", options, requestOptions);
+            return this.Request<StripeList<Request>>(HttpMethod.Get, $"/v1/forwarding/requests", options, requestOptions);
         }
 
         /// <summary>
@@ -72,7 +70,7 @@ namespace Stripe.Forwarding
         /// </summary>
         public virtual Task<StripeList<Request>> ListAsync(RequestListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Request>>(BaseAddress.Api, HttpMethod.Get, $"/v1/forwarding/requests", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Request>>(HttpMethod.Get, $"/v1/forwarding/requests", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

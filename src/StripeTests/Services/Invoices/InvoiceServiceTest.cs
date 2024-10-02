@@ -17,9 +17,9 @@ namespace StripeTests
         private readonly InvoiceUpdateOptions updateOptions;
         private readonly InvoicePayOptions payOptions;
         private readonly InvoiceListOptions listOptions;
-        private readonly InvoiceLineItemListOptions lineItemListOptions;
+        private readonly InvoiceListLineItemsOptions listLineItemsOptions;
         private readonly UpcomingInvoiceOptions upcomingOptions;
-        private readonly InvoiceUpcomingLinesListOptions upcomingListLineItemsOptions;
+        private readonly UpcomingInvoiceListLineItemsOptions upcomingListLineItemsOptions;
         private readonly InvoiceFinalizeOptions finalizeOptions;
         private readonly InvoiceMarkUncollectibleOptions markUncollectibleOptions;
         private readonly InvoiceSendOptions sendOptions;
@@ -56,7 +56,7 @@ namespace StripeTests
                 Limit = 1,
             };
 
-            this.lineItemListOptions = new InvoiceLineItemListOptions
+            this.listLineItemsOptions = new InvoiceListLineItemsOptions
             {
                 Limit = 1,
             };
@@ -67,7 +67,7 @@ namespace StripeTests
                 Subscription = "sub_123",
             };
 
-            this.upcomingListLineItemsOptions = new InvoiceUpcomingLinesListOptions()
+            this.upcomingListLineItemsOptions = new UpcomingInvoiceListLineItemsOptions
             {
                 Limit = 1,
                 Customer = "cus_123",
@@ -204,7 +204,7 @@ namespace StripeTests
         [Fact]
         public void ListLineItems()
         {
-            var lineItems = this.service.LineItems.List(InvoiceId, this.lineItemListOptions);
+            var lineItems = this.service.ListLineItems(InvoiceId, this.listLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/invoices/in_123/lines");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -215,7 +215,7 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAsync()
         {
-            var lineItems = await this.service.LineItems.ListAsync(InvoiceId, this.lineItemListOptions);
+            var lineItems = await this.service.ListLineItemsAsync(InvoiceId, this.listLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/invoices/in_123/lines");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -226,7 +226,7 @@ namespace StripeTests
         [Fact]
         public void ListLineItemsAutoPaging()
         {
-            var lineItem = this.service.LineItems.ListAutoPaging(InvoiceId, this.lineItemListOptions).First();
+            var lineItem = this.service.ListLineItemsAutoPaging(InvoiceId, this.listLineItemsOptions).First();
             Assert.NotNull(lineItem);
             Assert.Equal("line_item", lineItem.Object);
         }
@@ -234,7 +234,7 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAutoPagingAsync()
         {
-            var lineItem = await this.service.LineItems.ListAutoPagingAsync(InvoiceId, this.lineItemListOptions).FirstAsync();
+            var lineItem = await this.service.ListLineItemsAutoPagingAsync(InvoiceId, this.listLineItemsOptions).FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("line_item", lineItem.Object);
         }
@@ -242,7 +242,7 @@ namespace StripeTests
         [Fact]
         public void ListUpcomingLineItems()
         {
-            var lineItems = this.service.UpcomingLines.List(this.upcomingListLineItemsOptions);
+            var lineItems = this.service.ListUpcomingLineItems(this.upcomingListLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming/lines");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -253,7 +253,7 @@ namespace StripeTests
         [Fact]
         public async Task ListUpcomingLineItemsAsync()
         {
-            var lineItems = await this.service.UpcomingLines.ListAsync(this.upcomingListLineItemsOptions);
+            var lineItems = await this.service.ListUpcomingLineItemsAsync(this.upcomingListLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming/lines");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -264,7 +264,7 @@ namespace StripeTests
         [Fact]
         public void ListUpcomingLineItemsAutoPaging()
         {
-            var lineItem = this.service.UpcomingLines.ListAutoPaging(this.upcomingListLineItemsOptions).First();
+            var lineItem = this.service.ListUpcomingLineItemsAutoPaging(this.upcomingListLineItemsOptions).First();
             Assert.NotNull(lineItem);
             Assert.Equal("line_item", lineItem.Object);
         }
@@ -272,7 +272,7 @@ namespace StripeTests
         [Fact]
         public async Task ListUpcomingLineItemsAutoPagingAsync()
         {
-            var lineItem = await this.service.UpcomingLines.ListAutoPagingAsync(this.upcomingListLineItemsOptions).FirstAsync();
+            var lineItem = await this.service.ListUpcomingLineItemsAutoPagingAsync(this.upcomingListLineItemsOptions).FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("line_item", lineItem.Object);
         }

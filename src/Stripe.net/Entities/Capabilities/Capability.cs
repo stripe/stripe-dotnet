@@ -76,7 +76,8 @@ namespace Stripe
         public CapabilityRequirements Requirements { get; set; }
 
         /// <summary>
-        /// The status of the capability.
+        /// The status of the capability. Can be <c>active</c>, <c>inactive</c>, <c>pending</c>, or
+        /// <c>unrequested</c>.
         /// One of: <c>active</c>, <c>disabled</c>, <c>inactive</c>, <c>pending</c>, or
         /// <c>unrequested</c>.
         /// </summary>

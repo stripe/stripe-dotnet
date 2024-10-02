@@ -54,8 +54,7 @@ namespace Stripe.Treasury
         /// <summary>
         /// Reason for the failure. A ReceivedCredit might fail because the receiving
         /// FinancialAccount is closed or frozen.
-        /// One of: <c>account_closed</c>, <c>account_frozen</c>, <c>international_transaction</c>,
-        /// or <c>other</c>.
+        /// One of: <c>account_closed</c>, <c>account_frozen</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("failure_code")]
         public string FailureCode { get; set; }

@@ -1017,9 +1017,6 @@ namespace Stripe
         [JsonProperty("total_excluding_tax")]
         public long? TotalExcludingTax { get; set; }
 
-        [JsonProperty("total_pretax_credit_amounts")]
-        public List<InvoiceTotalPretaxCreditAmount> TotalPretaxCreditAmounts { get; set; }
-
         /// <summary>
         /// The aggregate amounts calculated per margin across all line items.
         /// </summary>

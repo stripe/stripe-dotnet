@@ -16,22 +16,20 @@ namespace Stripe.FinancialConnections
         {
         }
 
-        internal TransactionService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public TransactionService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/financial_connections/transactions";
 
         /// <summary>
         /// <p>Retrieves the details of a Financial Connections <c>Transaction</c></p>.
         /// </summary>
         public virtual Transaction Get(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Transaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Transaction>(HttpMethod.Get, $"/v1/financial_connections/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -39,7 +37,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<Transaction> GetAsync(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transaction>(HttpMethod.Get, $"/v1/financial_connections/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +45,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual StripeList<Transaction> List(TransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Transaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/transactions", options, requestOptions);
+            return this.Request<StripeList<Transaction>>(HttpMethod.Get, $"/v1/financial_connections/transactions", options, requestOptions);
         }
 
         /// <summary>
@@ -55,7 +53,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<StripeList<Transaction>> ListAsync(TransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Transaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Transaction>>(HttpMethod.Get, $"/v1/financial_connections/transactions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

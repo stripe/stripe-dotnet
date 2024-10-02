@@ -13,22 +13,20 @@ namespace Stripe.Billing
         {
         }
 
-        internal MeterEventService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public MeterEventService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/billing/meter_events";
 
         /// <summary>
         /// <p>Creates a billing meter event</p>.
         /// </summary>
         public virtual MeterEvent Create(MeterEventCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<MeterEvent>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/meter_events", options, requestOptions);
+            return this.Request<MeterEvent>(HttpMethod.Post, $"/v1/billing/meter_events", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +34,7 @@ namespace Stripe.Billing
         /// </summary>
         public virtual Task<MeterEvent> CreateAsync(MeterEventCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<MeterEvent>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/meter_events", options, requestOptions, cancellationToken);
+            return this.RequestAsync<MeterEvent>(HttpMethod.Post, $"/v1/billing/meter_events", options, requestOptions, cancellationToken);
         }
     }
 }

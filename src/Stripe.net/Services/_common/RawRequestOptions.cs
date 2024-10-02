@@ -10,6 +10,9 @@ namespace Stripe
         /// <summary>Gets or sets additional headers for the request.</summary>
         public Dictionary<string, string> AdditionalHeaders { get; set; } = new Dictionary<string, string>();
 
+        /// <summary>Gets or sets the value or Stripe-Context request header.</summary>
+        public string StripeContext { get; set; }
+
         internal new RawRequestOptions Clone()
         {
             return (RawRequestOptions)this.MemberwiseClone();

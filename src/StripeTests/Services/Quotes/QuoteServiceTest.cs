@@ -22,8 +22,8 @@ namespace StripeTests
         private readonly QuoteAcceptOptions acceptOptions;
         private readonly QuoteCancelOptions cancelOptions;
         private readonly QuoteFinalizeOptions finalizeOptions;
-        private readonly QuoteLineItemListOptions listLineItemsOptions;
-        private readonly QuoteComputedUpfrontLineItemsListOptions listComputedUpfrontLineItemsOptions;
+        private readonly QuoteListLineItemsOptions listLineItemsOptions;
+        private readonly QuoteListComputedUpfrontLineItemsOptions listComputedUpfrontLineItemsOptions;
         private readonly QuotePdfOptions pdfOptions;
 
         public QuoteServiceTest(
@@ -79,12 +79,12 @@ namespace StripeTests
             {
             };
 
-            this.listLineItemsOptions = new QuoteLineItemListOptions
+            this.listLineItemsOptions = new QuoteListLineItemsOptions
             {
                 Limit = 1,
             };
 
-            this.listComputedUpfrontLineItemsOptions = new QuoteComputedUpfrontLineItemsListOptions
+            this.listComputedUpfrontLineItemsOptions = new QuoteListComputedUpfrontLineItemsOptions
             {
                 Limit = 1,
             };
@@ -225,7 +225,7 @@ namespace StripeTests
         [Fact]
         public void ListLineItems()
         {
-            var lineItems = this.service.LineItems.List(QuoteId, this.listLineItemsOptions);
+            var lineItems = this.service.ListLineItems(QuoteId, this.listLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_123/line_items");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -236,7 +236,7 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAsync()
         {
-            var lineItems = await this.service.LineItems.ListAsync(QuoteId, this.listLineItemsOptions);
+            var lineItems = await this.service.ListLineItemsAsync(QuoteId, this.listLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_123/line_items");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -247,7 +247,7 @@ namespace StripeTests
         [Fact]
         public void ListLineItemsAutoPaging()
         {
-            var lineItem = this.service.LineItems.ListAutoPaging(QuoteId, this.listLineItemsOptions).First();
+            var lineItem = this.service.ListLineItemsAutoPaging(QuoteId, this.listLineItemsOptions).First();
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }
@@ -255,7 +255,7 @@ namespace StripeTests
         [Fact]
         public async Task ListLineItemsAutoPagingAsync()
         {
-            var lineItem = await this.service.LineItems.ListAutoPagingAsync(QuoteId, this.listLineItemsOptions).FirstAsync();
+            var lineItem = await this.service.ListLineItemsAutoPagingAsync(QuoteId, this.listLineItemsOptions).FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }
@@ -263,7 +263,7 @@ namespace StripeTests
         [Fact]
         public void ListComputedUpfrontLineItems()
         {
-            var lineItems = this.service.ComputedUpfrontLineItems.List(QuoteId, this.listComputedUpfrontLineItemsOptions);
+            var lineItems = this.service.ListComputedUpfrontLineItems(QuoteId, this.listComputedUpfrontLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_123/computed_upfront_line_items");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -274,7 +274,7 @@ namespace StripeTests
         [Fact]
         public async Task ListComputedUpfrontLineItemsAsync()
         {
-            var lineItems = await this.service.ComputedUpfrontLineItems.ListAsync(QuoteId, this.listComputedUpfrontLineItemsOptions);
+            var lineItems = await this.service.ListComputedUpfrontLineItemsAsync(QuoteId, this.listComputedUpfrontLineItemsOptions);
             this.AssertRequest(HttpMethod.Get, "/v1/quotes/qt_123/computed_upfront_line_items");
             Assert.NotNull(lineItems);
             Assert.Equal("list", lineItems.Object);
@@ -285,7 +285,7 @@ namespace StripeTests
         [Fact]
         public void ListComputedUpfrontLineItemsAutoPaging()
         {
-            var lineItem = this.service.ComputedUpfrontLineItems.ListAutoPaging(QuoteId, this.listComputedUpfrontLineItemsOptions).First();
+            var lineItem = this.service.ListComputedUpfrontLineItemsAutoPaging(QuoteId, this.listComputedUpfrontLineItemsOptions).First();
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }
@@ -293,7 +293,7 @@ namespace StripeTests
         [Fact]
         public async Task ListComputedUpfrontLineItemsAutoPagingAsync()
         {
-            var lineItem = await this.service.ComputedUpfrontLineItems.ListAutoPagingAsync(QuoteId, this.listComputedUpfrontLineItemsOptions).FirstAsync();
+            var lineItem = await this.service.ListComputedUpfrontLineItemsAutoPagingAsync(QuoteId, this.listComputedUpfrontLineItemsOptions).FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("item", lineItem.Object);
         }

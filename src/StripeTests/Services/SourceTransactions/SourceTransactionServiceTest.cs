@@ -12,7 +12,7 @@ namespace StripeTests
         private const string SourceId = "src_123";
 
         private readonly SourceTransactionService service;
-        private readonly SourceTransactionListOptions listOptions;
+        private readonly SourceTransactionsListOptions listOptions;
 
         public SourceTransactionServiceTest(
             StripeMockFixture stripeMockFixture,
@@ -21,7 +21,7 @@ namespace StripeTests
         {
             this.service = new SourceTransactionService(this.StripeClient);
 
-            this.listOptions = new SourceTransactionListOptions
+            this.listOptions = new SourceTransactionsListOptions
             {
                 Limit = 1,
             };

@@ -60,7 +60,8 @@ namespace StripeTests
             var requestOptions = new RequestOptions();
 
             var file = this.service.Create(this.createOptions, requestOptions);
-            this.AssertRequest(HttpMethod.Post, "/v1/files", host: "files.stripe.com");
+            this.AssertRequest(HttpMethod.Post, "/v1/files");
+            Assert.Null(requestOptions.BaseUrl);
             Assert.NotNull(file);
             Assert.Equal("file", file.Object);
         }

@@ -6,7 +6,8 @@ namespace Stripe.Checkout
     public class SessionLineItemAdjustableQuantityOptions : INestedOptions
     {
         /// <summary>
-        /// Set to true if the quantity can be adjusted to any non-negative integer.
+        /// Set to true if the quantity can be adjusted to any non-negative integer. By default
+        /// customers will be able to remove the line item by setting the quantity to 0.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }

@@ -5,7 +5,6 @@ namespace Stripe.Infrastructure
     using System.IO;
     using System.Text;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
 
     internal static class JsonUtils
     {
@@ -26,13 +25,6 @@ namespace Stripe.Infrastructure
         /// <returns>The deserialized object from the JSON string.</returns>
         public static T DeserializeObject<T>(
             string value,
-            JsonSerializerSettings settings = null)
-        {
-            return (T)DeserializeObject(value, typeof(T), settings);
-        }
-
-        internal static T DeserializeObject<T>(
-            JToken value,
             JsonSerializerSettings settings = null)
         {
             return (T)DeserializeObject(value, typeof(T), settings);
@@ -64,21 +56,6 @@ namespace Stripe.Infrastructure
             {
                 return jsonSerializer.Deserialize(reader, type);
             }
-        }
-
-        internal static object DeserializeObject(
-            JToken value,
-            Type type,
-            JsonSerializerSettings settings = null)
-        {
-            if (value == null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
-            JsonSerializer jsonSerializer = JsonSerializer.Create(settings ?? DefaultSerializerSettings);
-
-            return jsonSerializer.Deserialize(value.CreateReader(), type);
         }
 
         /// <summary>

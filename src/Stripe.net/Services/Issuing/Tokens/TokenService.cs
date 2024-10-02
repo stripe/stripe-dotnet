@@ -17,22 +17,20 @@ namespace Stripe.Issuing
         {
         }
 
-        internal TokenService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public TokenService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/issuing/tokens";
 
         /// <summary>
         /// <p>Retrieves an Issuing <c>Token</c> object.</p>.
         /// </summary>
         public virtual Token Get(string id, TokenGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Token>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -40,7 +38,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Token> GetAsync(string id, TokenGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Token>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Get, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +46,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual StripeList<Token> List(TokenListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Token>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/tokens", options, requestOptions);
+            return this.Request<StripeList<Token>>(HttpMethod.Get, $"/v1/issuing/tokens", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +54,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<StripeList<Token>> ListAsync(TokenListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Token>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/tokens", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Token>>(HttpMethod.Get, $"/v1/issuing/tokens", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -81,7 +79,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Token Update(string id, TokenUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Token>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -90,7 +88,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Token> UpdateAsync(string id, TokenUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Token>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Token>(HttpMethod.Post, $"/v1/issuing/tokens/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

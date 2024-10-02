@@ -29,6 +29,13 @@ namespace Stripe.Billing
         public string AlertType { get; set; }
 
         /// <summary>
+        /// Limits the scope of the alert to a specific <a
+        /// href="https://stripe.com/docs/api/customers">customer</a>.
+        /// </summary>
+        [JsonProperty("filter")]
+        public AlertFilter Filter { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -52,7 +59,7 @@ namespace Stripe.Billing
         /// Encapsulates configuration of the alert to monitor usage on a specific <a
         /// href="https://stripe.com/docs/api/billing/meter">Billing Meter</a>.
         /// </summary>
-        [JsonProperty("usage_threshold")]
-        public AlertUsageThreshold UsageThreshold { get; set; }
+        [JsonProperty("usage_threshold_config")]
+        public AlertUsageThresholdConfig UsageThresholdConfig { get; set; }
     }
 }

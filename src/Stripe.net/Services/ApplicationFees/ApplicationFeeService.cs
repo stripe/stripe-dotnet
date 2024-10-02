@@ -12,14 +12,7 @@ namespace Stripe
         IListable<ApplicationFee, ApplicationFeeListOptions>,
         IRetrievable<ApplicationFee, ApplicationFeeGetOptions>
     {
-        private ApplicationFeeRefundService refunds;
-
         public ApplicationFeeService()
-        {
-        }
-
-        internal ApplicationFeeService(ApiRequestor requestor)
-            : base(requestor)
         {
         }
 
@@ -28,8 +21,8 @@ namespace Stripe
         {
         }
 
-        public virtual ApplicationFeeRefundService Refunds => this.refunds ??= new ApplicationFeeRefundService(
-            this.Requestor);
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/application_fees";
 
         /// <summary>
         /// <p>Retrieves the details of an application fee that your account has collected. The same
@@ -37,7 +30,7 @@ namespace Stripe
         /// </summary>
         public virtual ApplicationFee Get(string id, ApplicationFeeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplicationFee>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ApplicationFee>(HttpMethod.Get, $"/v1/application_fees/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -46,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplicationFee> GetAsync(string id, ApplicationFeeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplicationFee>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApplicationFee>(HttpMethod.Get, $"/v1/application_fees/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -55,7 +48,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<ApplicationFee> List(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ApplicationFee>>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees", options, requestOptions);
+            return this.Request<StripeList<ApplicationFee>>(HttpMethod.Get, $"/v1/application_fees", options, requestOptions);
         }
 
         /// <summary>
@@ -64,7 +57,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<ApplicationFee>> ListAsync(ApplicationFeeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ApplicationFee>>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ApplicationFee>>(HttpMethod.Get, $"/v1/application_fees", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

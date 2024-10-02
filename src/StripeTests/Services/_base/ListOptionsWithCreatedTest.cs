@@ -15,7 +15,7 @@ namespace StripeTests
                 Created = null,
             };
 
-            Assert.Equal(string.Empty, ContentEncoder.CreateQueryString(options));
+            Assert.Equal(string.Empty, FormEncoder.CreateQueryString(options));
         }
 
         [Fact]
@@ -26,7 +26,7 @@ namespace StripeTests
                 Created = DateTime.Parse("Fri, 13 Feb 2009 23:31:30Z"),
             };
 
-            Assert.Equal("created=1234567890", ContentEncoder.CreateQueryString(options));
+            Assert.Equal("created=1234567890", FormEncoder.CreateQueryString(options));
         }
 
         [Fact]
@@ -37,7 +37,7 @@ namespace StripeTests
                 Created = (DateTime?)null,
             };
 
-            Assert.Equal(string.Empty, ContentEncoder.CreateQueryString(options));
+            Assert.Equal(string.Empty, FormEncoder.CreateQueryString(options));
         }
 
         [Fact]
@@ -54,7 +54,7 @@ namespace StripeTests
 
             Assert.Equal(
                 "created[gte]=1234567890&created[lt]=2345678901",
-                ContentEncoder.CreateQueryString(options));
+                FormEncoder.CreateQueryString(options));
         }
     }
 }

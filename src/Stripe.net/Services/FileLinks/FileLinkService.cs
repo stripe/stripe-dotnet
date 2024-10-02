@@ -18,22 +18,20 @@ namespace Stripe
         {
         }
 
-        internal FileLinkService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public FileLinkService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/file_links";
 
         /// <summary>
         /// <p>Creates a new file link object.</p>.
         /// </summary>
         public virtual FileLink Create(FileLinkCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<FileLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/file_links", options, requestOptions);
+            return this.Request<FileLink>(HttpMethod.Post, $"/v1/file_links", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +39,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<FileLink> CreateAsync(FileLinkCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FileLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/file_links", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FileLink>(HttpMethod.Post, $"/v1/file_links", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -49,7 +47,7 @@ namespace Stripe
         /// </summary>
         public virtual FileLink Get(string id, FileLinkGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FileLink>(BaseAddress.Api, HttpMethod.Get, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<FileLink>(HttpMethod.Get, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<FileLink> GetAsync(string id, FileLinkGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FileLink>(BaseAddress.Api, HttpMethod.Get, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FileLink>(HttpMethod.Get, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -65,7 +63,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<FileLink> List(FileLinkListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<FileLink>>(BaseAddress.Api, HttpMethod.Get, $"/v1/file_links", options, requestOptions);
+            return this.Request<StripeList<FileLink>>(HttpMethod.Get, $"/v1/file_links", options, requestOptions);
         }
 
         /// <summary>
@@ -73,7 +71,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<FileLink>> ListAsync(FileLinkListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<FileLink>>(BaseAddress.Api, HttpMethod.Get, $"/v1/file_links", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<FileLink>>(HttpMethod.Get, $"/v1/file_links", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -97,7 +95,7 @@ namespace Stripe
         /// </summary>
         public virtual FileLink Update(string id, FileLinkUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<FileLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<FileLink>(HttpMethod.Post, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -105,7 +103,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<FileLink> UpdateAsync(string id, FileLinkUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FileLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FileLink>(HttpMethod.Post, $"/v1/file_links/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

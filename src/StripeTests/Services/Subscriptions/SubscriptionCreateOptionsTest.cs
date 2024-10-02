@@ -33,7 +33,7 @@ namespace StripeTests
                 "customer=cus_123&" +
                 "items[0][plan]=plan_123&items[0][quantity]=2&" +
                 "items[1][plan]=plan_124&items[1][quantity]=3",
-                ContentEncoder.CreateQueryString(options));
+                FormEncoder.CreateQueryString(options));
         }
 
         [Fact]
@@ -44,7 +44,7 @@ namespace StripeTests
                 TrialEnd = DateTime.Parse("Fri, 13 Feb 2009 23:31:30Z"),
             };
 
-            Assert.Equal("trial_end=1234567890", ContentEncoder.CreateQueryString(options));
+            Assert.Equal("trial_end=1234567890", FormEncoder.CreateQueryString(options));
         }
 
         [Fact]
@@ -55,7 +55,7 @@ namespace StripeTests
                 TrialEnd = SubscriptionTrialEnd.Now,
             };
 
-            Assert.Equal("trial_end=now", ContentEncoder.CreateQueryString(options));
+            Assert.Equal("trial_end=now", FormEncoder.CreateQueryString(options));
         }
     }
 }

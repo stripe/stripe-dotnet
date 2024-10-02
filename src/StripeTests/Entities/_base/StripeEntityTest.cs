@@ -1,8 +1,5 @@
 namespace StripeTests
 {
-    using System;
-    using System.Globalization;
-
     using Newtonsoft.Json;
     using Stripe;
     using Stripe.Infrastructure;
@@ -85,17 +82,6 @@ namespace StripeTests
 
             var expectedJson = "{\n  \"integer\": 234,\n  \"string\": \"String!\",\n  \"nested\": null\n}";
             Assert.Equal(expectedJson, json);
-        }
-
-        [Fact]
-        public void FromJson_V2_DateTime()
-        {
-            var json = "{\"v2_datetime\": \"2022-09-18T13:22:18.123Z\"}";
-
-            var o = StripeEntity.FromJson<V2TestEntity>(json);
-
-            Assert.NotNull(o);
-            Assert.Equal(DateTime.Parse("2022-09-18T13:22:18.123Z", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal | DateTimeStyles.AdjustToUniversal), o.V2DateTime);
         }
 
         [Fact]
@@ -206,12 +192,6 @@ namespace StripeTests
             [JsonProperty("nested")]
             [JsonConverter(typeof(ExpandableFieldConverter<TestNestedEntity>))]
             internal ExpandableField<TestNestedEntity> InternalNested { get; set; }
-        }
-
-        private class V2TestEntity : StripeEntity<TestEntity>
-        {
-            [JsonProperty("v2_datetime")]
-            public DateTime? V2DateTime { get; set; }
         }
 
         private class TestNestedEntity : StripeEntity<TestNestedEntity>, IHasId

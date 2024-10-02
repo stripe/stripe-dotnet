@@ -14,7 +14,7 @@ namespace StripeTests
             {
                 new
                 {
-                    options = new InvoiceUpcomingLinesListOptions()
+                    options = new UpcomingInvoiceListLineItemsOptions
                     {
                         SubscriptionBillingCycleAnchor = DateTime.Parse("Fri, 13 Feb 2009 23:31:30Z"),
                     },
@@ -22,7 +22,7 @@ namespace StripeTests
                 },
                 new
                 {
-                    options = new InvoiceUpcomingLinesListOptions
+                    options = new UpcomingInvoiceListLineItemsOptions
                     {
                         SubscriptionBillingCycleAnchor = SubscriptionBillingCycleAnchor.Now,
                     },
@@ -30,7 +30,7 @@ namespace StripeTests
                 },
                 new
                 {
-                    options = new InvoiceUpcomingLinesListOptions
+                    options = new UpcomingInvoiceListLineItemsOptions
                     {
                         SubscriptionBillingCycleAnchor = SubscriptionBillingCycleAnchor.Unchanged,
                     },
@@ -38,7 +38,7 @@ namespace StripeTests
                 },
                 new
                 {
-                    options = new InvoiceUpcomingLinesListOptions
+                    options = new UpcomingInvoiceListLineItemsOptions
                     {
                         SubscriptionTrialEnd = DateTime.Parse("Fri, 13 Feb 2009 23:31:30Z"),
                     },
@@ -46,7 +46,7 @@ namespace StripeTests
                 },
                 new
                 {
-                    options = new InvoiceUpcomingLinesListOptions
+                    options = new UpcomingInvoiceListLineItemsOptions
                     {
                         SubscriptionTrialEnd = SubscriptionTrialEnd.Now,
                     },
@@ -56,7 +56,7 @@ namespace StripeTests
 
             foreach (var testCase in testCases)
             {
-                Assert.Equal(testCase.want, ContentEncoder.CreateQueryString(testCase.options));
+                Assert.Equal(testCase.want, FormEncoder.CreateQueryString(testCase.options));
             }
         }
     }

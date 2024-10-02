@@ -13,22 +13,20 @@ namespace Stripe.BillingPortal
         {
         }
 
-        internal SessionService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public SessionService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/billing_portal/sessions";
 
         /// <summary>
         /// <p>Creates a session of the customer portal.</p>.
         /// </summary>
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions);
+            return this.Request<Session>(HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +34,7 @@ namespace Stripe.BillingPortal
         /// </summary>
         public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/billing_portal/sessions", options, requestOptions, cancellationToken);
         }
     }
 }
