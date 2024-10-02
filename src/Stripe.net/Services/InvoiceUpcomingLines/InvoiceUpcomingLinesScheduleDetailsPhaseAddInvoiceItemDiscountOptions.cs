@@ -18,12 +18,6 @@ namespace Stripe
         public string Discount { get; set; }
 
         /// <summary>
-        /// Details to determine how long the discount should be applied for.
-        /// </summary>
-        [JsonProperty("discount_end")]
-        public InvoiceUpcomingLinesScheduleDetailsPhaseAddInvoiceItemDiscountDiscountEndOptions DiscountEnd { get; set; }
-
-        /// <summary>
         /// ID of the promotion code to create a new discount for.
         /// </summary>
         [JsonProperty("promotion_code")]

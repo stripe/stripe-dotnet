@@ -12,7 +12,6 @@ namespace Stripe.FinancialConnections
         IListable<Account, AccountListOptions>,
         IRetrievable<Account, AccountGetOptions>
     {
-        private AccountInferredBalanceService inferredBalances;
         private AccountOwnerService owners;
 
         public AccountService()
@@ -28,9 +27,6 @@ namespace Stripe.FinancialConnections
             : base(client)
         {
         }
-
-        public virtual AccountInferredBalanceService InferredBalances => this.inferredBalances ??= new AccountInferredBalanceService(
-            this.Requestor);
 
         public virtual AccountOwnerService Owners => this.owners ??= new AccountOwnerService(
             this.Requestor);

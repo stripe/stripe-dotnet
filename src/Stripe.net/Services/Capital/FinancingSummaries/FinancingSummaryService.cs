@@ -13,14 +13,18 @@ namespace Stripe.Capital
         {
         }
 
-        internal FinancingSummaryService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public FinancingSummaryService(IStripeClient client)
             : base(client)
         {
+        }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/capital/financing_summary";
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        protected override string InstanceUrl(string id)
+        {
+            return this.ClassUrl();
         }
 
         /// <summary>
@@ -29,7 +33,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual FinancingSummary Get(RequestOptions requestOptions = null)
         {
-            return this.Request<FinancingSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions);
+            return this.Request<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +42,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<FinancingSummary> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancingSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", null, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +51,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual FinancingSummary Get(FinancingSummaryGetOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<FinancingSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions);
+            return this.Request<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +60,7 @@ namespace Stripe.Capital
         /// </summary>
         public virtual Task<FinancingSummary> GetAsync(FinancingSummaryGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FinancingSummary>(BaseAddress.Api, HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FinancingSummary>(HttpMethod.Get, $"/v1/capital/financing_summary", options, requestOptions, cancellationToken);
         }
     }
 }

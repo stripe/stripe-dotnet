@@ -8,7 +8,6 @@ namespace Stripe
     public class FinancialConnectionsService : Service
     {
         private FinancialConnections.AccountService accounts;
-        private FinancialConnections.InstitutionService institutions;
         private FinancialConnections.SessionService sessions;
         private FinancialConnections.TransactionService transactions;
 
@@ -23,9 +22,6 @@ namespace Stripe
         }
 
         public virtual FinancialConnections.AccountService Accounts => this.accounts ??= new FinancialConnections.AccountService(
-            this.Requestor);
-
-        public virtual FinancialConnections.InstitutionService Institutions => this.institutions ??= new FinancialConnections.InstitutionService(
             this.Requestor);
 
         public virtual FinancialConnections.SessionService Sessions => this.sessions ??= new FinancialConnections.SessionService(

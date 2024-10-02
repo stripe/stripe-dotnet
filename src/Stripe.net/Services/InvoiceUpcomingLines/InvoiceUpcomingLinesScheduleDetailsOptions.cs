@@ -7,23 +7,6 @@ namespace Stripe
     public class InvoiceUpcomingLinesScheduleDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// Changes to apply to the phases of the subscription schedule, in the order provided.
-        /// </summary>
-        [JsonProperty("amendments")]
-        public List<InvoiceUpcomingLinesScheduleDetailsAmendmentOptions> Amendments { get; set; }
-
-        /// <summary>
-        /// Configures when the subscription schedule generates prorations for phase transitions.
-        /// Possible values are <c>prorate_on_next_phase</c> or <c>prorate_up_front</c> with the
-        /// default being <c>prorate_on_next_phase</c>. <c>prorate_on_next_phase</c> will apply
-        /// phase changes and generate prorations at transition time. <c>prorate_up_front</c> will
-        /// bill for all phases within the current billing cycle up front.
-        /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
-        /// </summary>
-        [JsonProperty("billing_behavior")]
-        public string BillingBehavior { get; set; }
-
-        /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
         /// values are <c>release</c> or <c>cancel</c> with the default being <c>release</c>.
         /// <c>release</c> will end the subscription schedule and keep the underlying subscription
@@ -41,12 +24,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("phases")]
         public List<InvoiceUpcomingLinesScheduleDetailsPhaseOptions> Phases { get; set; }
-
-        /// <summary>
-        /// Provide any time periods to bill in advance.
-        /// </summary>
-        [JsonProperty("prebilling")]
-        public List<InvoiceUpcomingLinesScheduleDetailsPrebillingOptions> Prebilling { get; set; }
 
         /// <summary>
         /// In cases where the <c>schedule_details</c> params update the currently active phase,

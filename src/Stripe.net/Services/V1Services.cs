@@ -9,7 +9,6 @@ namespace Stripe
     {
         private AccountService accounts;
         private AccountLinkService accountLinks;
-        private AccountNoticeService accountNotices;
         private AccountSessionService accountSessions;
         private ApplePayDomainService applePayDomains;
         private ApplicationFeeService applicationFees;
@@ -19,7 +18,6 @@ namespace Stripe
         private BankAccountService bankAccounts;
         private BillingService billing;
         private BillingPortalService billingPortal;
-        private CapitalService capital;
         private CardService cards;
         private ChargeService charges;
         private CheckoutService checkout;
@@ -39,15 +37,12 @@ namespace Stripe
         private FileLinkService fileLinks;
         private FinancialConnectionsService financialConnections;
         private ForwardingService forwarding;
-        private GiftCardsService giftCards;
         private IdentityService identity;
         private InvoiceService invoices;
         private InvoiceRenderingTemplateService invoiceRenderingTemplates;
         private InvoiceItemService invoiceItems;
         private IssuingService issuing;
         private MandateService mandates;
-        private MarginService margins;
-        private OrderService orders;
         private PaymentIntentService paymentIntents;
         private PaymentLinkService paymentLinks;
         private PaymentMethodService paymentMethods;
@@ -98,9 +93,6 @@ namespace Stripe
         public virtual AccountLinkService AccountLinks => this.accountLinks ??= new AccountLinkService(
             this.Requestor);
 
-        public virtual AccountNoticeService AccountNotices => this.accountNotices ??= new AccountNoticeService(
-            this.Requestor);
-
         public virtual AccountSessionService AccountSessions => this.accountSessions ??= new AccountSessionService(
             this.Requestor);
 
@@ -126,9 +118,6 @@ namespace Stripe
             this.Requestor);
 
         public virtual BillingPortalService BillingPortal => this.billingPortal ??= new BillingPortalService(
-            this.Requestor);
-
-        public virtual CapitalService Capital => this.capital ??= new CapitalService(
             this.Requestor);
 
         public virtual CardService Cards => this.cards ??= new CardService(
@@ -188,9 +177,6 @@ namespace Stripe
         public virtual ForwardingService Forwarding => this.forwarding ??= new ForwardingService(
             this.Requestor);
 
-        public virtual GiftCardsService GiftCards => this.giftCards ??= new GiftCardsService(
-            this.Requestor);
-
         public virtual IdentityService Identity => this.identity ??= new IdentityService(
             this.Requestor);
 
@@ -207,12 +193,6 @@ namespace Stripe
             this.Requestor);
 
         public virtual MandateService Mandates => this.mandates ??= new MandateService(
-            this.Requestor);
-
-        public virtual MarginService Margins => this.margins ??= new MarginService(
-            this.Requestor);
-
-        public virtual OrderService Orders => this.orders ??= new OrderService(
             this.Requestor);
 
         public virtual PaymentIntentService PaymentIntents => this.paymentIntents ??= new PaymentIntentService(

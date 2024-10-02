@@ -107,7 +107,7 @@ namespace Stripe
 
         /// <summary>
         /// Type of the pretax credit amount referenced.
-        /// One of: <c>credit_balance_transaction</c>, <c>discount</c>, or <c>margin</c>.
+        /// One of: <c>credit_balance_transaction</c>, or <c>discount</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

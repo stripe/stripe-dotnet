@@ -16,7 +16,6 @@ namespace Stripe
         ISearchable<Invoice, InvoiceSearchOptions>,
         IUpdatable<Invoice, InvoiceUpdateOptions>
     {
-        private InvoicePaymentService payments;
         private InvoiceLineItemService lineItems;
         private InvoiceUpcomingLinesService upcomingLines;
 
@@ -33,9 +32,6 @@ namespace Stripe
             : base(client)
         {
         }
-
-        public virtual InvoicePaymentService Payments => this.payments ??= new InvoicePaymentService(
-            this.Requestor);
 
         public virtual InvoiceLineItemService LineItems => this.lineItems ??= new InvoiceLineItemService(
             this.Requestor);
@@ -81,7 +77,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice AttachPayment(string id, InvoiceAttachPaymentOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment", options, requestOptions);
         }
 
         /// <summary>
@@ -104,7 +100,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> AttachPaymentAsync(string id, InvoiceAttachPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -121,7 +117,7 @@ namespace Stripe
         /// </summary>
         public virtual Invoice AttachPaymentIntent(string id, InvoiceAttachPaymentIntentOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment_intent", options, requestOptions);
+            return this.Request<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment_intent", options, requestOptions);
         }
 
         /// <summary>
@@ -138,7 +134,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Invoice> AttachPaymentIntentAsync(string id, InvoiceAttachPaymentIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment_intent", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Invoice>(HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment_intent", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -279,6 +275,22 @@ namespace Stripe
         public virtual Task<Invoice> GetAsync(string id, InvoiceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Retrieves the invoice payment with the given ID.</p>.
+        /// </summary>
+        public virtual InvoicePayment Get(string parentId, string id, InvoiceGetInvoicePaymentsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<InvoicePayment>(HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(parentId)}/payments/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Retrieves the invoice payment with the given ID.</p>.
+        /// </summary>
+        public virtual Task<InvoicePayment> GetAsync(string parentId, string id, InvoiceGetInvoicePaymentsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<InvoicePayment>(HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(parentId)}/payments/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

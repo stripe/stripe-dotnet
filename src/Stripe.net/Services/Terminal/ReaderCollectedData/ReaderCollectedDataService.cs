@@ -14,22 +14,20 @@ namespace Stripe.Terminal
         {
         }
 
-        internal ReaderCollectedDataService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public ReaderCollectedDataService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/terminal/reader_collected_data";
 
         /// <summary>
         /// <p>Retrieve data collected using Reader hardware.</p>.
         /// </summary>
         public virtual ReaderCollectedData Get(string id, ReaderCollectedDataGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ReaderCollectedData>(BaseAddress.Api, HttpMethod.Get, $"/v1/terminal/reader_collected_data/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ReaderCollectedData>(HttpMethod.Get, $"/v1/terminal/reader_collected_data/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +35,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<ReaderCollectedData> GetAsync(string id, ReaderCollectedDataGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ReaderCollectedData>(BaseAddress.Api, HttpMethod.Get, $"/v1/terminal/reader_collected_data/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ReaderCollectedData>(HttpMethod.Get, $"/v1/terminal/reader_collected_data/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

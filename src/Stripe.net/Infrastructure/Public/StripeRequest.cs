@@ -186,9 +186,12 @@ namespace Stripe
             RequestOptions requestOptions,
             ApiMode apiMode)
         {
+            string defaultVersion =
+                apiMode == ApiMode.Standard ? StripeConfiguration.ApiVersion : ApiVersion.CurrentPreview;
+
             var stripeHeaders = new Dictionary<string, string>
             {
-                { "Stripe-Version", requestOptions?.StripeVersion ?? StripeConfiguration.ApiVersion },
+                { "Stripe-Version", requestOptions?.StripeVersion ?? defaultVersion },
             };
 
             if (!string.IsNullOrEmpty(requestOptions?.StripeAccount))
@@ -223,7 +226,7 @@ namespace Stripe
 
         internal static HttpContent BuildContent(HttpMethod method, BaseOptions options, string content, ApiMode apiMode)
         {
-            if (method != HttpMethod.Post)
+            if (this.Method != HttpMethod.Post)
             {
                 return null;
             }

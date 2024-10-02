@@ -56,6 +56,37 @@ namespace Stripe
         [JsonProperty("end_behavior")]
         public string EndBehavior { get; set; }
 
+        #region Expandable FromSchedule
+
+        /// <summary>
+        /// (ID of the SubscriptionSchedule)
+        /// The id of the subscription schedule that will be updated when the quote is accepted.
+        /// </summary>
+        [JsonIgnore]
+        public string FromScheduleId
+        {
+            get => this.InternalFromSchedule?.Id;
+            set => this.InternalFromSchedule = SetExpandableFieldId(value, this.InternalFromSchedule);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The id of the subscription schedule that will be updated when the quote is accepted.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public SubscriptionSchedule FromSchedule
+        {
+            get => this.InternalFromSchedule?.ExpandedObject;
+            set => this.InternalFromSchedule = SetExpandableFieldObject(value, this.InternalFromSchedule);
+        }
+
+        [JsonProperty("from_schedule")]
+        [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionSchedule>))]
+        internal ExpandableField<SubscriptionSchedule> InternalFromSchedule { get; set; }
+        #endregion
+
         #region Expandable FromSubscription
 
         /// <summary>

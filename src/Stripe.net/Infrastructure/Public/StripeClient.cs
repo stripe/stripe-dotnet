@@ -1,12 +1,14 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+    using Stripe.Services;
 
     /// <summary>
     /// A Stripe client, used to issue requests to Stripe's API and deserialize responses.

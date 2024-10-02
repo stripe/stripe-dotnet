@@ -15,22 +15,20 @@ namespace Stripe.FinancialConnections
         {
         }
 
-        internal AccountInferredBalanceService(ApiRequestor requestor)
-            : base(requestor)
-        {
-        }
-
         public AccountInferredBalanceService(IStripeClient client)
             : base(client)
         {
         }
+
+        [Obsolete("This member is deprecated and will be removed in a future release")]
+        public override string BasePath => "/v1/financial_connections/accounts/{PARENT_ID}/inferred_balances";
 
         /// <summary>
         /// <p>Lists the recorded inferred balances for a Financial Connections <c>Account</c>.</p>.
         /// </summary>
         public virtual StripeList<AccountInferredBalance> List(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<AccountInferredBalance>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(parentId)}/inferred_balances", options, requestOptions);
+            return this.Request<StripeList<AccountInferredBalance>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(parentId)}/inferred_balances", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +36,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<StripeList<AccountInferredBalance>> ListAsync(string parentId, AccountInferredBalanceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<AccountInferredBalance>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(parentId)}/inferred_balances", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<AccountInferredBalance>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(parentId)}/inferred_balances", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
