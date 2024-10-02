@@ -33,7 +33,7 @@ namespace Stripe
         /// </summary>
         public virtual SubscriptionSchedule Amend(string id, SubscriptionScheduleAmendOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/amend", options, requestOptions);
+            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/amend", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<SubscriptionSchedule> AmendAsync(string id, SubscriptionScheduleAmendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<SubscriptionSchedule>(HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/amend", options, requestOptions, cancellationToken);
+            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/amend", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

@@ -11,6 +11,7 @@ namespace Stripe
         private Terminal.ConnectionTokenService connectionTokens;
         private Terminal.LocationService locations;
         private Terminal.ReaderService readers;
+        private Terminal.ReaderCollectedDataService readerCollectedData;
 
         internal TerminalService(ApiRequestor requestor)
             : base(requestor)
@@ -32,6 +33,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual Terminal.ReaderService Readers => this.readers ??= new Terminal.ReaderService(
+            this.Requestor);
+
+        public virtual Terminal.ReaderCollectedDataService ReaderCollectedData => this.readerCollectedData ??= new Terminal.ReaderCollectedDataService(
             this.Requestor);
     }
 }

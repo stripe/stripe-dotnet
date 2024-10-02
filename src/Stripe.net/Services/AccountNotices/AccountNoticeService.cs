@@ -17,20 +17,22 @@ namespace Stripe
         {
         }
 
+        internal AccountNoticeService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public AccountNoticeService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/account_notices";
 
         /// <summary>
         /// <p>Retrieves an <c>AccountNotice</c> object.</p>.
         /// </summary>
         public virtual AccountNotice Get(string id, AccountNoticeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountNotice>(HttpMethod.Get, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<AccountNotice>(BaseAddress.Api, HttpMethod.Get, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<AccountNotice> GetAsync(string id, AccountNoticeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountNotice>(HttpMethod.Get, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountNotice>(BaseAddress.Api, HttpMethod.Get, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +50,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<AccountNotice> List(AccountNoticeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<AccountNotice>>(HttpMethod.Get, $"/v1/account_notices", options, requestOptions);
+            return this.Request<StripeList<AccountNotice>>(BaseAddress.Api, HttpMethod.Get, $"/v1/account_notices", options, requestOptions);
         }
 
         /// <summary>
@@ -58,7 +60,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<AccountNotice>> ListAsync(AccountNoticeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<AccountNotice>>(HttpMethod.Get, $"/v1/account_notices", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<AccountNotice>>(BaseAddress.Api, HttpMethod.Get, $"/v1/account_notices", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -86,7 +88,7 @@ namespace Stripe
         /// </summary>
         public virtual AccountNotice Update(string id, AccountNoticeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountNotice>(HttpMethod.Post, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<AccountNotice>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -94,7 +96,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<AccountNotice> UpdateAsync(string id, AccountNoticeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountNotice>(HttpMethod.Post, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountNotice>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_notices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

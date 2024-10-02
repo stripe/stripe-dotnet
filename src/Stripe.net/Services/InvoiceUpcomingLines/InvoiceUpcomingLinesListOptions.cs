@@ -179,7 +179,7 @@ namespace Stripe
         /// <c>subscription_details.prebilling</c> instead.
         /// </summary>
         [JsonProperty("subscription_prebilling")]
-        public InvoiceSubscriptionPrebillingOptions SubscriptionPrebilling { get; set; }
+        public InvoiceUpcomingLinesSubscriptionPrebillingOptions SubscriptionPrebilling { get; set; }
 
         /// <summary>
         /// Determines how to handle <a

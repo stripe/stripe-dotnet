@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    public class InvoiceGetInvoicePaymentsOptions : BaseOptions
+    public class QuoteLineListOptions : ListOptions
     {
     }
 }

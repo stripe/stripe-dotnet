@@ -38,6 +38,13 @@ namespace Stripe
         public List<InvoiceLineItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
+        /// The IDs of the margins to apply to the line item. When set, the <c>default_margins</c>
+        /// on the invoice do not apply to this line item.
+        /// </summary>
+        [JsonProperty("margins")]
+        public List<string> Margins { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to

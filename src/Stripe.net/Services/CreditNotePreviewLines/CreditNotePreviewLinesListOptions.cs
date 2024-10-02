@@ -96,6 +96,12 @@ namespace Stripe
         public long? RefundAmount { get; set; }
 
         /// <summary>
+        /// Refunds to link to this credit note.
+        /// </summary>
+        [JsonProperty("refunds")]
+        public List<CreditNotePreviewLinesRefundOptions> Refunds { get; set; }
+
+        /// <summary>
         /// When shipping_cost contains the shipping_rate from the invoice, the shipping_cost is
         /// included in the credit note.
         /// </summary>

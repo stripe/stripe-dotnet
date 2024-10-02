@@ -10,7 +10,9 @@ namespace Stripe
         private Issuing.AuthorizationService authorizations;
         private Issuing.CardService cards;
         private Issuing.CardholderService cardholders;
+        private Issuing.CreditUnderwritingRecordService creditUnderwritingRecords;
         private Issuing.DisputeService disputes;
+        private Issuing.DisputeSettlementDetailService disputeSettlementDetails;
         private Issuing.PersonalizationDesignService personalizationDesigns;
         private Issuing.PhysicalBundleService physicalBundles;
         private Issuing.TokenService tokens;
@@ -35,7 +37,13 @@ namespace Stripe
         public virtual Issuing.CardholderService Cardholders => this.cardholders ??= new Issuing.CardholderService(
             this.Requestor);
 
+        public virtual Issuing.CreditUnderwritingRecordService CreditUnderwritingRecords => this.creditUnderwritingRecords ??= new Issuing.CreditUnderwritingRecordService(
+            this.Requestor);
+
         public virtual Issuing.DisputeService Disputes => this.disputes ??= new Issuing.DisputeService(
+            this.Requestor);
+
+        public virtual Issuing.DisputeSettlementDetailService DisputeSettlementDetails => this.disputeSettlementDetails ??= new Issuing.DisputeSettlementDetailService(
             this.Requestor);
 
         public virtual Issuing.PersonalizationDesignService PersonalizationDesigns => this.personalizationDesigns ??= new Issuing.PersonalizationDesignService(

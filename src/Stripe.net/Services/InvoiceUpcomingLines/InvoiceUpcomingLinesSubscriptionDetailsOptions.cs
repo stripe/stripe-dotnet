@@ -57,6 +57,12 @@ namespace Stripe
         public List<InvoiceUpcomingLinesSubscriptionDetailsItemOptions> Items { get; set; }
 
         /// <summary>
+        /// The pre-billing to apply to the subscription as a preview.
+        /// </summary>
+        [JsonProperty("prebilling")]
+        public InvoiceUpcomingLinesSubscriptionDetailsPrebillingOptions Prebilling { get; set; }
+
+        /// <summary>
         /// Determines how to handle <a
         /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when the
         /// billing cycle changes (e.g., when switching plans, resetting

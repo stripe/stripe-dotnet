@@ -232,7 +232,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentIntent DecrementAuthorization(string id, PaymentIntentDecrementAuthorizationOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/decrement_authorization", options, requestOptions);
+            return this.Request<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/decrement_authorization", options, requestOptions);
         }
 
         /// <summary>
@@ -256,7 +256,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentIntent> DecrementAuthorizationAsync(string id, PaymentIntentDecrementAuthorizationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentIntent>(HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/decrement_authorization", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/decrement_authorization", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

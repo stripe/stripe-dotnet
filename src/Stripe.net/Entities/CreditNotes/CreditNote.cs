@@ -215,6 +215,12 @@ namespace Stripe
         [JsonProperty("pdf")]
         public string Pdf { get; set; }
 
+        [JsonProperty("post_payment_amount")]
+        public long PostPaymentAmount { get; set; }
+
+        [JsonProperty("pre_payment_amount")]
+        public long PrePaymentAmount { get; set; }
+
         [JsonProperty("pretax_credit_amounts")]
         public List<CreditNotePretaxCreditAmount> PretaxCreditAmounts { get; set; }
 

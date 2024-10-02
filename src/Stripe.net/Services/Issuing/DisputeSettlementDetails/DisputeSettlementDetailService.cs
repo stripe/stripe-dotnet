@@ -16,20 +16,22 @@ namespace Stripe.Issuing
         {
         }
 
+        internal DisputeSettlementDetailService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public DisputeSettlementDetailService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/issuing/dispute_settlement_details";
 
         /// <summary>
         /// <p>Retrieves an Issuing <c>DisputeSettlementDetail</c> object.</p>.
         /// </summary>
         public virtual DisputeSettlementDetail Get(string id, DisputeSettlementDetailGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<DisputeSettlementDetail>(HttpMethod.Get, $"/v1/issuing/dispute_settlement_details/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<DisputeSettlementDetail>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/dispute_settlement_details/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<DisputeSettlementDetail> GetAsync(string id, DisputeSettlementDetailGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<DisputeSettlementDetail>(HttpMethod.Get, $"/v1/issuing/dispute_settlement_details/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<DisputeSettlementDetail>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/dispute_settlement_details/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual StripeList<DisputeSettlementDetail> List(DisputeSettlementDetailListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<DisputeSettlementDetail>>(HttpMethod.Get, $"/v1/issuing/dispute_settlement_details", options, requestOptions);
+            return this.Request<StripeList<DisputeSettlementDetail>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/dispute_settlement_details", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<StripeList<DisputeSettlementDetail>> ListAsync(DisputeSettlementDetailListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<DisputeSettlementDetail>>(HttpMethod.Get, $"/v1/issuing/dispute_settlement_details", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<DisputeSettlementDetail>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/dispute_settlement_details", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
