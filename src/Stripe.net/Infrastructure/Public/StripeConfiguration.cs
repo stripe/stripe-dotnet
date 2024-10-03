@@ -217,6 +217,7 @@ namespace Stripe
                 // Disable the warning (applies to net8.0).
 #pragma warning disable SYSLIB0050
                 Context = new StreamingContext(StreamingContextStates.All, new DeserializationContext { Requestor = requestor }),
+
                 // Re-enable the warning.
 #pragma warning restore SYSLIB0050
                 Converters = new List<JsonConverter>
