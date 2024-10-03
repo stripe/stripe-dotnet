@@ -23,6 +23,7 @@ namespace StripeTests.V2
                   ""object"": ""event"",
                   ""type"": ""this.event.doesnt.exist"",
                   ""created"": ""2022-02-15T00:27:45.330Z"",
+                  ""livemode"": true,
                   ""related_object"": {
                     ""id"": ""fa_123"",
                     ""type"": ""financial_account"",
@@ -43,6 +44,7 @@ namespace StripeTests.V2
                 ""object"": ""event"",
                 ""type"": ""v1.billing.meter.no_meter_found"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
+                ""livemode"": true,
               }";
 
         private static string v2KnownEventPayload =
@@ -52,6 +54,7 @@ namespace StripeTests.V2
                 ""type"": ""v1.billing.meter.error_report_triggered"",
                 ""created"": ""2022-02-15T00:27:45.330Z"",
                 ""context"": ""context 123"",
+                ""livemode"": true,
                 ""related_object"": {
                   ""id"": ""me_123"",
                   ""type"": ""billing.meter"",
@@ -67,6 +70,7 @@ namespace StripeTests.V2
                   ""type"": ""v1.billing.meter.error_report_triggered"",
                   ""created"": ""2022-02-15T00:27:45.330Z"",
                   ""context"": ""context 123"",
+                  ""livemode"": true,
                   ""related_object"": {
                     ""id"": ""me_123"",
                     ""type"": ""billing.meter"",
@@ -94,6 +98,31 @@ namespace StripeTests.V2
                     }
                   }
                 }";
+
+        private static string v2KnownEventLivemodeFalsePayload =
+            @"{
+                ""id"": ""evt_234"",
+                ""object"": ""event"",
+                ""type"": ""v1.billing.meter.no_meter_found"",
+                ""created"": ""2022-02-15T00:27:45.330Z"",
+                ""livemode"": false,
+              }";
+
+        private static string v2KnownEventWithReasonPayload =
+            @"{
+                ""id"": ""evt_234"",
+                ""object"": ""event"",
+                ""type"": ""v1.billing.meter.no_meter_found"",
+                ""created"": ""2022-02-15T00:27:45.330Z"",
+                ""livemode"": true,
+                ""reason"": {
+                    ""type"": ""a.b.c"",
+                    ""request"": {
+                        ""id"": ""r_123"",
+                        ""idempotency_key"": ""key""
+                    }
+                }
+              }";
 
         private StripeClient stripeClient;
 
@@ -162,6 +191,7 @@ namespace StripeTests.V2
             Assert.Equal("evt_234", baseThinEvent.Id);
             Assert.Equal("v1.billing.meter.no_meter_found", baseThinEvent.Type);
             Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), baseThinEvent.Created);
+            Assert.True(baseThinEvent.Livemode);
             Assert.Null(baseThinEvent.Context);
             Assert.Null(baseThinEvent.RelatedObject);
         }
@@ -174,6 +204,7 @@ namespace StripeTests.V2
             Assert.Equal("evt_234", baseThinEvent.Id);
             Assert.Equal("v1.billing.meter.error_report_triggered", baseThinEvent.Type);
             Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), baseThinEvent.Created);
+            Assert.True(baseThinEvent.Livemode);
             Assert.Equal("context 123", baseThinEvent.Context);
             Assert.NotNull(baseThinEvent.RelatedObject);
             Assert.Equal("me_123", baseThinEvent.RelatedObject.Id);
@@ -191,6 +222,36 @@ namespace StripeTests.V2
             Assert.Equal("this.event.doesnt.exist", stripeEvent.Type);
             Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), stripeEvent.Created);
             Assert.Equal(this.stripeClient.Requestor, stripeEvent.Requestor);
+        }
+
+        [Fact]
+        public void ParseThinEventWithLivemodeFalse()
+        {
+            var baseThinEvent = this.stripeClient.ParseThinEvent(v2KnownEventLivemodeFalsePayload, GenerateSigHeader(v2KnownEventLivemodeFalsePayload), WebhookSecret);
+            Assert.NotNull(baseThinEvent);
+            Assert.Equal("evt_234", baseThinEvent.Id);
+            Assert.Equal("v1.billing.meter.no_meter_found", baseThinEvent.Type);
+            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), baseThinEvent.Created);
+            Assert.False(baseThinEvent.Livemode);
+            Assert.Null(baseThinEvent.Context);
+            Assert.Null(baseThinEvent.RelatedObject);
+        }
+
+        [Fact]
+        public void ParseThinEventWithReason()
+        {
+            var baseThinEvent = this.stripeClient.ParseThinEvent(v2KnownEventWithReasonPayload, GenerateSigHeader(v2KnownEventWithReasonPayload), WebhookSecret);
+            Assert.NotNull(baseThinEvent);
+            Assert.Equal("evt_234", baseThinEvent.Id);
+            Assert.Equal("v1.billing.meter.no_meter_found", baseThinEvent.Type);
+            Assert.Equal(new DateTime(2022, 2, 15, 0, 27, 45, 330, DateTimeKind.Utc), baseThinEvent.Created);
+            Assert.True(baseThinEvent.Livemode);
+            Assert.Null(baseThinEvent.Context);
+            Assert.Null(baseThinEvent.RelatedObject);
+            Assert.NotNull(baseThinEvent.Reason);
+            Assert.Equal("a.b.c", baseThinEvent.Reason.Type);
+            Assert.Equal("r_123", baseThinEvent.Reason.Request.Id);
+            Assert.Equal("key", baseThinEvent.Reason.Request.IdempotencyKey);
         }
 
         [Fact]
