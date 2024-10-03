@@ -16,20 +16,22 @@ namespace Stripe.Entitlements
         {
         }
 
+        internal ActiveEntitlementService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public ActiveEntitlementService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/entitlements/active_entitlements";
 
         /// <summary>
         /// <p>Retrieve an active entitlement</p>.
         /// </summary>
         public virtual ActiveEntitlement Get(string id, ActiveEntitlementGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ActiveEntitlement>(HttpMethod.Get, $"/v1/entitlements/active_entitlements/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<ActiveEntitlement>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/active_entitlements/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +39,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Task<ActiveEntitlement> GetAsync(string id, ActiveEntitlementGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ActiveEntitlement>(HttpMethod.Get, $"/v1/entitlements/active_entitlements/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ActiveEntitlement>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/active_entitlements/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +47,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual StripeList<ActiveEntitlement> List(ActiveEntitlementListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ActiveEntitlement>>(HttpMethod.Get, $"/v1/entitlements/active_entitlements", options, requestOptions);
+            return this.Request<StripeList<ActiveEntitlement>>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/active_entitlements", options, requestOptions);
         }
 
         /// <summary>
@@ -53,7 +55,7 @@ namespace Stripe.Entitlements
         /// </summary>
         public virtual Task<StripeList<ActiveEntitlement>> ListAsync(ActiveEntitlementListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ActiveEntitlement>>(HttpMethod.Get, $"/v1/entitlements/active_entitlements", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ActiveEntitlement>>(BaseAddress.Api, HttpMethod.Get, $"/v1/entitlements/active_entitlements", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

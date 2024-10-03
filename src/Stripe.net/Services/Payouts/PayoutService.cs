@@ -18,13 +18,15 @@ namespace Stripe
         {
         }
 
+        internal PayoutService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public PayoutService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/payouts";
 
         /// <summary>
         /// <p>You can cancel a previously created payout if its status is <c>pending</c>. Stripe
@@ -33,7 +35,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Cancel(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
+            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -43,7 +45,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> CancelAsync(string id, PayoutCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -61,7 +63,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Create(PayoutCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts", options, requestOptions);
+            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts", options, requestOptions);
         }
 
         /// <summary>
@@ -79,7 +81,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> CreateAsync(PayoutCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -89,7 +91,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Get(string id, PayoutGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(HttpMethod.Get, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -99,7 +101,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> GetAsync(string id, PayoutGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(HttpMethod.Get, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -109,7 +111,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Payout> List(PayoutListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Payout>>(HttpMethod.Get, $"/v1/payouts", options, requestOptions);
+            return this.Request<StripeList<Payout>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts", options, requestOptions);
         }
 
         /// <summary>
@@ -119,7 +121,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Payout>> ListAsync(PayoutListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Payout>>(HttpMethod.Get, $"/v1/payouts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Payout>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payouts", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -153,7 +155,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Reverse(string id, PayoutReverseOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse", options, requestOptions);
+            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse", options, requestOptions);
         }
 
         /// <summary>
@@ -167,7 +169,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> ReverseAsync(string id, PayoutReverseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}/reverse", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -177,7 +179,7 @@ namespace Stripe
         /// </summary>
         public virtual Payout Update(string id, PayoutUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -187,7 +189,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Payout> UpdateAsync(string id, PayoutUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Payout>(HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Payout>(BaseAddress.Api, HttpMethod.Post, $"/v1/payouts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

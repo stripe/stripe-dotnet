@@ -16,13 +16,15 @@ namespace Stripe
         {
         }
 
+        internal CustomerCashBalanceTransactionService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public CustomerCashBalanceTransactionService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/customers/{PARENT_ID}/cash_balance_transactions";
 
         /// <summary>
         /// <p>Retrieves a specific cash balance transaction, which updated the customer’s <a
@@ -30,7 +32,7 @@ namespace Stripe
         /// </summary>
         public virtual CustomerCashBalanceTransaction Get(string parentId, string id, CustomerCashBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerCashBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/cash_balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<CustomerCashBalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/cash_balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -39,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CustomerCashBalanceTransaction> GetAsync(string parentId, string id, CustomerCashBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerCashBalanceTransaction>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/cash_balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerCashBalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/cash_balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +50,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<CustomerCashBalanceTransaction> List(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CustomerCashBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/cash_balance_transactions", options, requestOptions);
+            return this.Request<StripeList<CustomerCashBalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/cash_balance_transactions", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +59,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<CustomerCashBalanceTransaction>> ListAsync(string parentId, CustomerCashBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CustomerCashBalanceTransaction>>(HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/cash_balance_transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CustomerCashBalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/cash_balance_transactions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

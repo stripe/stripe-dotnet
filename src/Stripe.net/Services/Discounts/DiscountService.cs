@@ -8,7 +8,12 @@ namespace Stripe
     public class DiscountService : Service<Discount>
     {
         public DiscountService()
-            : base(null)
+            : base()
+        {
+        }
+
+        internal DiscountService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -17,27 +22,24 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => null;
-
         public virtual Discount DeleteCustomerDiscount(string customerId, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Delete, $"/v1/customers/{customerId}/discount", null, requestOptions);
+            return this.Request<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{customerId}/discount", null, requestOptions);
         }
 
         public virtual Task<Discount> DeleteCustomerDiscountAsync(string customerId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Delete, $"/v1/customers/{customerId}/discount", null, requestOptions, cancellationToken);
+            return this.RequestAsync<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{customerId}/discount", null, requestOptions, cancellationToken);
         }
 
         public virtual Discount DeleteSubscriptionDiscount(string subscriptionId, RequestOptions requestOptions = null)
         {
-            return this.Request(HttpMethod.Delete, $"/v1/subscriptions/{subscriptionId}/discount", null, requestOptions);
+            return this.Request<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{subscriptionId}/discount", null, requestOptions);
         }
 
         public virtual Task<Discount> DeleteSubscriptionDiscountAsync(string subscriptionId, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync(HttpMethod.Delete, $"/v1/subscriptions/{subscriptionId}/discount", null, requestOptions, cancellationToken);
+            return this.RequestAsync<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{subscriptionId}/discount", null, requestOptions, cancellationToken);
         }
     }
 }

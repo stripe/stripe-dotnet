@@ -129,6 +129,12 @@ namespace Stripe
         public AccountSessionComponentsRecipientsOptions Recipients { get; set; }
 
         /// <summary>
+        /// Configuration for the reporting chart embedded component.
+        /// </summary>
+        [JsonProperty("reporting_chart")]
+        public AccountSessionComponentsReportingChartOptions ReportingChart { get; set; }
+
+        /// <summary>
         /// Configuration for the tax registrations embedded component.
         /// </summary>
         [JsonProperty("tax_registrations")]

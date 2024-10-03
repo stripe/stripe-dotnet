@@ -69,10 +69,9 @@ namespace StripeTests
             if ((this.StripeMockFixture != null) && (this.MockHttpClientFixture != null))
             {
                 // Set up StripeClient to use stripe-mock with the mock HTTP client
-                var httpClient = new SystemNetHttpClient(
-                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-                this.StripeClient = this.StripeMockFixture.BuildStripeClient(
-                    httpClient: httpClient);
+                var requestor = this.StripeMockFixture.BuildApiRequestor(this.MockHttpClientFixture.MockHandler.Object);
+                this.StripeClient = new StripeClient(requestor);
+                this.Requestor = requestor;
 
                 // Reset the mock before each test
                 this.MockHttpClientFixture.Reset();
@@ -80,16 +79,22 @@ namespace StripeTests
             else if (this.StripeMockFixture != null)
             {
                 // Set up StripeClient to use stripe-mock
-                this.StripeClient = this.StripeMockFixture.BuildStripeClient();
+                var requestor = this.StripeMockFixture.BuildApiRequestor();
+                this.StripeClient = new StripeClient(requestor);
+                this.Requestor = requestor;
             }
             else if (this.MockHttpClientFixture != null)
             {
                 // Set up StripeClient with the mock HTTP client
                 var httpClient = new SystemNetHttpClient(
                     new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
-                this.StripeClient = new StripeClient(
-                    "sk_test_123",
-                    httpClient: httpClient);
+                var requestor = new LiveApiRequestor(new StripeClientOptions
+                {
+                    ApiKey = "sk_test_123",
+                    HttpClient = httpClient,
+                });
+                this.StripeClient = new StripeClient(requestor);
+                this.Requestor = requestor;
 
                 // Reset the mock before each test
                 this.MockHttpClientFixture.Reset();
@@ -97,11 +102,15 @@ namespace StripeTests
             else
             {
                 // Use the default StripeClient
-                this.StripeClient = new StripeClient("sk_test_123");
+                var requestor = new LiveApiRequestor(new StripeClientOptions { ApiKey = "sk_test_123" });
+                this.StripeClient = new StripeClient(requestor);
+                this.Requestor = requestor;
             }
         }
 
         protected IStripeClient StripeClient { get; }
+
+        internal ApiRequestor Requestor { get; }
 
         protected MockHttpClientFixture MockHttpClientFixture { get; }
 
@@ -128,7 +137,8 @@ namespace StripeTests
         /// <param name="method">The HTTP method.</param>
         /// <param name="path">The HTTP path.</param>
         /// <param name="query">The HTTP query.</param>
-        protected void AssertRequest(HttpMethod method, string path, string query = null)
+        /// <param name="host">The HTTP host.</param>
+        protected void AssertRequest(HttpMethod method, string path, string query = null, string host = null)
         {
             if (this.MockHttpClientFixture == null)
             {
@@ -139,7 +149,7 @@ namespace StripeTests
                     + "base constructor.");
             }
 
-            this.MockHttpClientFixture.AssertRequest(method, path, query);
+            this.MockHttpClientFixture.AssertRequest(method, path, query, host);
         }
 
         /// <summary>

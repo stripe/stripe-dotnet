@@ -1,8 +1,7 @@
 ﻿namespace Stripe.Infrastructure
 {
     using System;
-    using System.IO;
-    using System.Runtime.Serialization;
+    using System.Reflection;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
 

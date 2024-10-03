@@ -18,13 +18,15 @@ namespace Stripe.Issuing
         {
         }
 
+        internal DisputeService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public DisputeService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/issuing/disputes";
 
         /// <summary>
         /// <p>Creates an Issuing <c>Dispute</c> object. Individual pieces of evidence within the
@@ -35,7 +37,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Dispute Create(DisputeCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes", options, requestOptions);
+            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/disputes", options, requestOptions);
         }
 
         /// <summary>
@@ -47,7 +49,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Dispute> CreateAsync(DisputeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/disputes", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -55,7 +57,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Dispute Get(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Dispute>(HttpMethod.Get, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Dispute> GetAsync(string id, DisputeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Dispute>(HttpMethod.Get, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual StripeList<Dispute> List(DisputeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Dispute>>(HttpMethod.Get, $"/v1/issuing/disputes", options, requestOptions);
+            return this.Request<StripeList<Dispute>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/disputes", options, requestOptions);
         }
 
         /// <summary>
@@ -83,7 +85,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<StripeList<Dispute>> ListAsync(DisputeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Dispute>>(HttpMethod.Get, $"/v1/issuing/disputes", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Dispute>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/disputes", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -114,7 +116,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Dispute Submit(string id, DisputeSubmitOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}/submit", options, requestOptions);
+            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}/submit", options, requestOptions);
         }
 
         /// <summary>
@@ -125,7 +127,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Dispute> SubmitAsync(string id, DisputeSubmitOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}/submit", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}/submit", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -135,7 +137,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Dispute Update(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -145,7 +147,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Dispute> UpdateAsync(string id, DisputeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Dispute>(HttpMethod.Post, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Dispute>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/disputes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }
