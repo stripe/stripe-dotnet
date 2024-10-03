@@ -221,6 +221,9 @@ namespace Stripe
         [JsonProperty("pre_payment_amount")]
         public long PrePaymentAmount { get; set; }
 
+        [JsonProperty("pretax_credit_amounts")]
+        public List<CreditNotePretaxCreditAmount> PretaxCreditAmounts { get; set; }
+
         /// <summary>
         /// Reason for issuing this credit note, one of <c>duplicate</c>, <c>fraudulent</c>,
         /// <c>order_change</c>, or <c>product_unsatisfactory</c>.

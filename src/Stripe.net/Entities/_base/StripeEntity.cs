@@ -51,6 +51,23 @@ namespace Stripe
             return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
         }
 
+        /// <summary>Deserializes the JSON to the specified Stripe object type.</summary>
+        /// <typeparam name="T">The type of the Stripe object to deserialize to.</typeparam>
+        /// <param name="value">The object to deserialize.</param>
+        /// <param name="settings">The settings to use for deserialization.</param>
+        /// <returns>The deserialized Stripe object from the JSON string.</returns>
+        internal static T FromJson<T>(string value, JsonSerializerSettings settings)
+            where T : IStripeEntity
+        {
+            return JsonUtils.DeserializeObject<T>(value, settings);
+        }
+
+        internal static T FromJson<T>(JToken value)
+            where T : IStripeEntity
+        {
+            return JsonUtils.DeserializeObject<T>(value, StripeConfiguration.SerializerSettings);
+        }
+
         internal void SetRawJObject(JObject rawJObject)
         {
             this.RawJObject = rawJObject;

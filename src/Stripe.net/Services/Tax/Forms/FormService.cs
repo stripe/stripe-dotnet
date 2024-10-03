@@ -17,13 +17,15 @@ namespace Stripe.Tax
         {
         }
 
+        internal FormService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public FormService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/tax/forms";
 
         /// <summary>
         /// <p>Retrieves the details of a tax form that has previously been created. Supply the
@@ -32,7 +34,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Form Get(string id, FormGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Form>(HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<Form>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -42,7 +44,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Form> GetAsync(string id, FormGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Form>(HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Form>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -51,7 +53,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual StripeList<Form> List(FormListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Form>>(HttpMethod.Get, $"/v1/tax/forms", options, requestOptions);
+            return this.Request<StripeList<Form>>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/forms", options, requestOptions);
         }
 
         /// <summary>
@@ -60,7 +62,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<StripeList<Form>> ListAsync(FormListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Form>>(HttpMethod.Get, $"/v1/tax/forms", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Form>>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/forms", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -86,14 +88,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Stream Pdf(string id, FormPdfOptions options = null, RequestOptions requestOptions = null)
         {
-            requestOptions ??= new RequestOptions();
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions = requestOptions.Clone();
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
-            return this.RequestStreaming(HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}/pdf", options, requestOptions);
+            return this.RequestStreaming(BaseAddress.Files, HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}/pdf", options, requestOptions);
         }
 
         /// <summary>
@@ -101,14 +96,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Stream> PdfAsync(string id, FormPdfOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            requestOptions ??= new RequestOptions();
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions = requestOptions.Clone();
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
-            return this.RequestStreamingAsync(HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}/pdf", options, requestOptions, cancellationToken);
+            return this.RequestStreamingAsync(BaseAddress.Files, HttpMethod.Get, $"/v1/tax/forms/{WebUtility.UrlEncode(id)}/pdf", options, requestOptions, cancellationToken);
         }
     }
 }
