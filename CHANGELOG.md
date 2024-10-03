@@ -1,5 +1,11 @@
 # Changelog
 
+## 46.2.0-beta.1 - 2024-10-03
+* [#2991](https://github.com/stripe/stripe-dotnet/pull/2991) Updates beta branch with changes in master and update generated code
+  * Add support for `ReportingChart` on `AccountSessionComponentsOptions`
+  * Remove support for `FromSchedule` on `QuoteSubscriptionData`
+  * Add support for `AllowRedisplay` on `TerminalReaderCollectConfigOptions`  
+
 ## 46.1.0 - 2024-10-03
 * [#2995](https://github.com/stripe/stripe-dotnet/pull/2995) Update the class for `ThinEvent` to include `Livemode ` and `Reason`
 * [#2992](https://github.com/stripe/stripe-dotnet/pull/2992) Remove special case Newtonsoft v12 for .net8.0
