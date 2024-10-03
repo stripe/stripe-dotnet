@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
+    using Stripe.V2;
 
     /// <summary>
     /// A pushed thin event.  Use this the Id with the <see cref="Stripe.V2.Core.EventService"/>
@@ -34,6 +35,12 @@ namespace Stripe
         public bool Livemode { get; internal set; }
 
 #nullable enable
+        /// <summary>
+        /// [Optional] Reason for the event.
+        /// </summary>
+        [JsonProperty("reason")]
+        public EventReason? Reason { get; internal set; }
+
         /// <summary>
         /// [Optional] Authentication context needed to fetch the event or related object.
         /// </summary>
