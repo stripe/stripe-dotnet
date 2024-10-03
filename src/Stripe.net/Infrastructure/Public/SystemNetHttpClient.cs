@@ -28,9 +28,13 @@ namespace Stripe
 #if NET5_0
             "net5.0"
 #elif NET6_0
-             "net6.0"
+            "net6.0"
+#elif NET7_0
+            "net7.0"
+#elif NET8_0
+            "net8.0"
 #elif NETCOREAPP3_1
-             "netcoreapp3.1"
+            "netcoreapp3.1"
 #elif NETSTANDARD2_0
             "netstandard2.0"
 #elif NET461
