@@ -27,6 +27,12 @@ namespace Stripe
         [JsonProperty("created")]
         public DateTime Created { get; internal set; }
 
+        /// <summary>
+        /// Livemode indicates if the event is from a production(true) or test(false) account.
+        /// </summary>
+        [JsonProperty("livemode")]
+        public bool Livemode { get; internal set; }
+
 #nullable enable
         /// <summary>
         /// [Optional] Authentication context needed to fetch the event or related object.
