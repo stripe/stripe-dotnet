@@ -1,5 +1,11 @@
 # Changelog
 
+## 46.1.0 - 2024-10-03
+* [#2995](https://github.com/stripe/stripe-dotnet/pull/2995) Update the class for `ThinEvent` to include `Livemode ` and `Reason`
+* [#2992](https://github.com/stripe/stripe-dotnet/pull/2992) Remove special case Newtonsoft v12 for .net8.0
+* [#2993](https://github.com/stripe/stripe-dotnet/pull/2993) Update generated code
+  * Remove the support for resource `Margin` that was accidentally made public in the last release
+
 ## 46.0.0 - 2024-10-01
 
 * [#2980](https://github.com/stripe/stripe-dotnet/pull/2980) Support for APIs in the new API version 2024-09-30.acacia
