@@ -13,6 +13,12 @@ namespace Stripe
         public string CaptureMethod { get; set; }
 
         /// <summary>
+        /// The line items purchased by the customer.
+        /// </summary>
+        [JsonProperty("line_items")]
+        public List<PaymentIntentPaymentMethodOptionsPaypalLineItemOptions> LineItems { get; set; }
+
+        /// <summary>
         /// <a href="https://stripe.com/docs/payments/paypal/supported-locales">Preferred locale</a>
         /// of the PayPal checkout page that the customer is redirected to.
         /// One of: <c>cs-CZ</c>, <c>da-DK</c>, <c>de-AT</c>, <c>de-DE</c>, <c>de-LU</c>,

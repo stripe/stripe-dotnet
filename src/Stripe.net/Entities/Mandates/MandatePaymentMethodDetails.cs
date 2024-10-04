@@ -23,6 +23,9 @@ namespace Stripe
         [JsonProperty("cashapp")]
         public MandatePaymentMethodDetailsCashapp Cashapp { get; set; }
 
+        [JsonProperty("kr_card")]
+        public MandatePaymentMethodDetailsKrCard KrCard { get; set; }
+
         [JsonProperty("link")]
         public MandatePaymentMethodDetailsLink Link { get; set; }
 

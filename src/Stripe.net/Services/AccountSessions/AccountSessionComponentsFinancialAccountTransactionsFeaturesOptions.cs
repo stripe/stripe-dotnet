@@ -6,7 +6,7 @@ namespace Stripe
     public class AccountSessionComponentsFinancialAccountTransactionsFeaturesOptions : INestedOptions
     {
         /// <summary>
-        /// Whether to allow card spend dispute features.
+        /// Whether to allow card spend dispute management features.
         /// </summary>
         [JsonProperty("card_spend_dispute_management")]
         public bool? CardSpendDisputeManagement { get; set; }

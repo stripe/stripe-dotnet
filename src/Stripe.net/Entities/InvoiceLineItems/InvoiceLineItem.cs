@@ -206,6 +206,10 @@ namespace Stripe
         [JsonProperty("plan")]
         public Plan Plan { get; set; }
 
+        /// <summary>
+        /// Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this
+        /// line item.
+        /// </summary>
         [JsonProperty("pretax_credit_amounts")]
         public List<InvoiceLineItemPretaxCreditAmount> PretaxCreditAmounts { get; set; }
 

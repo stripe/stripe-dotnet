@@ -61,7 +61,7 @@ namespace Stripe
         public AccountCapabilities Capabilities { get; set; }
 
         /// <summary>
-        /// Whether the account can create live charges.
+        /// Whether the account can process charges.
         /// </summary>
         [JsonProperty("charges_enabled")]
         public bool ChargesEnabled { get; set; }
@@ -154,7 +154,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Whether Stripe can send payouts to this account.
+        /// Whether the funds in this account can be paid out.
         /// </summary>
         [JsonProperty("payouts_enabled")]
         public bool PayoutsEnabled { get; set; }
