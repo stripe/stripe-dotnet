@@ -3,6 +3,10 @@ namespace Stripe
 {
     using Newtonsoft.Json;
 
+    /// <summary>
+    /// A usage record summary represents an aggregated view of how much usage was accrued for a
+    /// subscription item within a subscription billing period.
+    /// </summary>
     public class UsageRecordSummary : StripeEntity<UsageRecordSummary>, IHasId, IHasObject
     {
         /// <summary>
