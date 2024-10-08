@@ -23,6 +23,9 @@ namespace Stripe.Tax
         [JsonProperty("bh")]
         public RegistrationCountryOptionsBh Bh { get; set; }
 
+        [JsonProperty("by")]
+        public RegistrationCountryOptionsBy By { get; set; }
+
         [JsonProperty("ca")]
         public RegistrationCountryOptionsCa Ca { get; set; }
 
@@ -35,6 +38,9 @@ namespace Stripe.Tax
         [JsonProperty("co")]
         public RegistrationCountryOptionsCo Co { get; set; }
 
+        [JsonProperty("cr")]
+        public RegistrationCountryOptionsCr Cr { get; set; }
+
         [JsonProperty("cy")]
         public RegistrationCountryOptionsCy Cy { get; set; }
 
@@ -46,6 +52,9 @@ namespace Stripe.Tax
 
         [JsonProperty("dk")]
         public RegistrationCountryOptionsDk Dk { get; set; }
+
+        [JsonProperty("ec")]
+        public RegistrationCountryOptionsEc Ec { get; set; }
 
         [JsonProperty("ee")]
         public RegistrationCountryOptionsEe Ee { get; set; }
@@ -110,6 +119,12 @@ namespace Stripe.Tax
         [JsonProperty("lv")]
         public RegistrationCountryOptionsLv Lv { get; set; }
 
+        [JsonProperty("ma")]
+        public RegistrationCountryOptionsMa Ma { get; set; }
+
+        [JsonProperty("md")]
+        public RegistrationCountryOptionsMd Md { get; set; }
+
         [JsonProperty("mt")]
         public RegistrationCountryOptionsMt Mt { get; set; }
 
@@ -143,6 +158,12 @@ namespace Stripe.Tax
         [JsonProperty("ro")]
         public RegistrationCountryOptionsRo Ro { get; set; }
 
+        [JsonProperty("rs")]
+        public RegistrationCountryOptionsRs Rs { get; set; }
+
+        [JsonProperty("ru")]
+        public RegistrationCountryOptionsRu Ru { get; set; }
+
         [JsonProperty("sa")]
         public RegistrationCountryOptionsSa Sa { get; set; }
 
@@ -164,8 +185,14 @@ namespace Stripe.Tax
         [JsonProperty("tr")]
         public RegistrationCountryOptionsTr Tr { get; set; }
 
+        [JsonProperty("tz")]
+        public RegistrationCountryOptionsTz Tz { get; set; }
+
         [JsonProperty("us")]
         public RegistrationCountryOptionsUs Us { get; set; }
+
+        [JsonProperty("uz")]
+        public RegistrationCountryOptionsUz Uz { get; set; }
 
         [JsonProperty("vn")]
         public RegistrationCountryOptionsVn Vn { get; set; }

@@ -4,7 +4,7 @@
 * [#2991](https://github.com/stripe/stripe-dotnet/pull/2991) Updates beta branch with changes in master and update generated code
   * Add support for `ReportingChart` on `AccountSessionComponentsOptions`
   * Remove support for `FromSchedule` on `QuoteSubscriptionData`
-  * Add support for `AllowRedisplay` on `TerminalReaderCollectConfigOptions`  
+  * Add support for `AllowRedisplay` on `TerminalReaderCollectConfigOptions`
 
 ## 46.1.0 - 2024-10-03
 * [#2995](https://github.com/stripe/stripe-dotnet/pull/2995) Update the class for `ThinEvent` to include `Livemode ` and `Reason`
@@ -3914,3 +3914,4 @@ List of backwards incompatible changes:
 * [#1019](https://github.com/stripe/stripe-dotnet#1019) Add `StripeChargeCaptureOptions` and use it for charge capture
 * [#1022](https://github.com/stripe/stripe-dotnet#1022) Add support for SKUs
 * [#1025](https://github.com/stripe/stripe-dotnet#1025) Add `Discountable` for `StripeInvoiceLineItem`
+

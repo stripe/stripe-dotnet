@@ -35,8 +35,14 @@ namespace Stripe
         [JsonProperty("ideal")]
         public SetupAttemptPaymentMethodDetailsIdeal Ideal { get; set; }
 
+        [JsonProperty("kakao_pay")]
+        public SetupAttemptPaymentMethodDetailsKakaoPay KakaoPay { get; set; }
+
         [JsonProperty("klarna")]
         public SetupAttemptPaymentMethodDetailsKlarna Klarna { get; set; }
+
+        [JsonProperty("kr_card")]
+        public SetupAttemptPaymentMethodDetailsKrCard KrCard { get; set; }
 
         [JsonProperty("link")]
         public SetupAttemptPaymentMethodDetailsLink Link { get; set; }

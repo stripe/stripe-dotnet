@@ -75,6 +75,15 @@ namespace Stripe
         public decimal? EffectivePercentage { get; set; }
 
         /// <summary>
+        /// The amount of the tax rate when the <c>rate_type</c> is <c>flat_amount</c>. Tax rates
+        /// with <c>rate_type</c> <c>percentage</c> can vary based on the transaction, resulting in
+        /// this field being <c>null</c>. This field exposes the amount and currency of the flat tax
+        /// rate.
+        /// </summary>
+        [JsonProperty("flat_amount")]
+        public TaxRateFlatAmount FlatAmount { get; set; }
+
+        /// <summary>
         /// This specifies if the tax rate is inclusive or exclusive.
         /// </summary>
         [JsonProperty("inclusive")]
@@ -119,6 +128,14 @@ namespace Stripe
         public decimal Percentage { get; set; }
 
         /// <summary>
+        /// Indicates the type of tax rate applied to the taxable amount. This value can be
+        /// <c>null</c> when no tax applies to the location.
+        /// One of: <c>flat_amount</c>, or <c>percentage</c>.
+        /// </summary>
+        [JsonProperty("rate_type")]
+        public string RateType { get; set; }
+
+        /// <summary>
         /// <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US">ISO 3166-2 subdivision code</a>,
         /// without country prefix. For example, "NY" for New York, United States.
         /// </summary>
@@ -128,8 +145,8 @@ namespace Stripe
         /// <summary>
         /// The high-level tax type, such as <c>vat</c> or <c>sales_tax</c>.
         /// One of: <c>amusement_tax</c>, <c>communications_tax</c>, <c>gst</c>, <c>hst</c>,
-        /// <c>igst</c>, <c>jct</c>, <c>lease_tax</c>, <c>pst</c>, <c>qst</c>, <c>rst</c>,
-        /// <c>sales_tax</c>, or <c>vat</c>.
+        /// <c>igst</c>, <c>jct</c>, <c>lease_tax</c>, <c>pst</c>, <c>qst</c>,
+        /// <c>retail_delivery_fee</c>, <c>rst</c>, <c>sales_tax</c>, or <c>vat</c>.
         /// </summary>
         [JsonProperty("tax_type")]
         public string TaxType { get; set; }

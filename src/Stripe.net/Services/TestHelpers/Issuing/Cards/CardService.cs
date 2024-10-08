@@ -95,5 +95,25 @@ namespace Stripe.TestHelpers.Issuing
         {
             return this.RequestAsync<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{WebUtility.UrlEncode(id)}/shipping/ship", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// <p>Updates the shipping status of the specified Issuing <c>Card</c> object to
+        /// <c>submitted</c>. This method is only available with Stripe Version ‘2024-09-30.acacia’
+        /// or above.</p>.
+        /// </summary>
+        public virtual Stripe.Issuing.Card SubmitCard(string id, CardSubmitCardOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{WebUtility.UrlEncode(id)}/shipping/submit", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Updates the shipping status of the specified Issuing <c>Card</c> object to
+        /// <c>submitted</c>. This method is only available with Stripe Version ‘2024-09-30.acacia’
+        /// or above.</p>.
+        /// </summary>
+        public virtual Task<Stripe.Issuing.Card> SubmitCardAsync(string id, CardSubmitCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Stripe.Issuing.Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/issuing/cards/{WebUtility.UrlEncode(id)}/shipping/submit", options, requestOptions, cancellationToken);
+        }
     }
 }

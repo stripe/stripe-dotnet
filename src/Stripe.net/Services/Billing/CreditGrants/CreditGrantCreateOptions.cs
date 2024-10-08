@@ -28,7 +28,7 @@ namespace Stripe.Billing
         public string Category { get; set; }
 
         /// <summary>
-        /// Id of the customer to whom the credit should be granted.
+        /// ID of the customer to whom the credit should be granted.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
@@ -56,7 +56,7 @@ namespace Stripe.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A descriptive name shown in dashboard and on invoices.
+        /// A descriptive name shown in dashboard.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

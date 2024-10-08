@@ -47,7 +47,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (ID of the Customer)
-        /// Id of the customer to whom the credit was granted.
+        /// ID of the customer to whom the credit was granted.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -58,7 +58,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (Expanded)
-        /// Id of the customer to whom the credit was granted.
+        /// ID of the customer to whom the credit was granted.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -104,7 +104,7 @@ namespace Stripe.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A descriptive name shown in dashboard and on invoices.
+        /// A descriptive name shown in dashboard.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }

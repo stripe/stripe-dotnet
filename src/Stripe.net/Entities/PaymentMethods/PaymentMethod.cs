@@ -143,11 +143,17 @@ namespace Stripe
         [JsonProperty("interac_present")]
         public PaymentMethodInteracPresent InteracPresent { get; set; }
 
+        [JsonProperty("kakao_pay")]
+        public PaymentMethodKakaoPay KakaoPay { get; set; }
+
         [JsonProperty("klarna")]
         public PaymentMethodKlarna Klarna { get; set; }
 
         [JsonProperty("konbini")]
         public PaymentMethodKonbini Konbini { get; set; }
+
+        [JsonProperty("kr_card")]
+        public PaymentMethodKrCard KrCard { get; set; }
 
         [JsonProperty("link")]
         public PaymentMethodLink Link { get; set; }
@@ -176,11 +182,17 @@ namespace Stripe
         [JsonProperty("multibanco")]
         public PaymentMethodMultibanco Multibanco { get; set; }
 
+        [JsonProperty("naver_pay")]
+        public PaymentMethodNaverPay NaverPay { get; set; }
+
         [JsonProperty("oxxo")]
         public PaymentMethodOxxo Oxxo { get; set; }
 
         [JsonProperty("p24")]
         public PaymentMethodP24 P24 { get; set; }
+
+        [JsonProperty("payco")]
+        public PaymentMethodPayco Payco { get; set; }
 
         [JsonProperty("paynow")]
         public PaymentMethodPaynow Paynow { get; set; }
@@ -211,6 +223,9 @@ namespace Stripe
         [JsonProperty("revolut_pay")]
         public PaymentMethodRevolutPay RevolutPay { get; set; }
 
+        [JsonProperty("samsung_pay")]
+        public PaymentMethodSamsungPay SamsungPay { get; set; }
+
         [JsonProperty("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 
@@ -231,11 +246,12 @@ namespace Stripe
         /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
         /// <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>card_present</c>, <c>cashapp</c>,
         /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
-        /// <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>,
-        /// <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
-        /// <c>rechnung</c>, <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
+        /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
+        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>rechnung</c>, <c>revolut_pay</c>,
+        /// <c>samsung_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

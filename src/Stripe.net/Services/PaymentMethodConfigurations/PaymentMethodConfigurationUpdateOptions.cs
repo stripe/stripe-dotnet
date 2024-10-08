@@ -378,8 +378,8 @@ namespace Stripe
         /// <summary>
         /// Stripe users in the United States can accept ACH direct debit payments from customers
         /// with a US bank account using the Automated Clearing House (ACH) payments system operated
-        /// by Nacha. Check this <a href="https://stripe.com/docs/payments/ach-debit">page</a> for
-        /// more details.
+        /// by Nacha. Check this <a
+        /// href="https://stripe.com/docs/payments/ach-direct-debit">page</a> for more details.
         /// </summary>
         [JsonProperty("us_bank_account")]
         public PaymentMethodConfigurationUsBankAccountOptions UsBankAccount { get; set; }

@@ -61,7 +61,7 @@ namespace Stripe
         public List<string> FullNameAliases { get; set; }
 
         /// <summary>
-        /// The individual's gender (International regulations require either "male" or "female").
+        /// The individual's gender.
         /// </summary>
         [JsonProperty("gender")]
         public string Gender { get; set; }

@@ -13,6 +13,12 @@ namespace Stripe
         public string CaptureMethod { get; set; }
 
         /// <summary>
+        /// The line items purchased by the customer.
+        /// </summary>
+        [JsonProperty("line_items")]
+        public List<OrderPaymentSettingsPaymentMethodOptionsPaypalLineItem> LineItems { get; set; }
+
+        /// <summary>
         /// Preferred locale of the PayPal checkout page that the customer is redirected to.
         /// </summary>
         [JsonProperty("preferred_locale")]
