@@ -128,6 +128,12 @@ namespace Stripe
         public AccountFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
+        /// The groups associated with the account.
+        /// </summary>
+        [JsonProperty("groups")]
+        public AccountGroups Groups { get; set; }
+
+        /// <summary>
         /// This is an object representing a person associated with a Stripe account.
         ///
         /// A platform cannot access a person for an account where <a
