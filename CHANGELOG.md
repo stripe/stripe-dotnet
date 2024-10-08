@@ -1,6 +1,6 @@
 # Changelog
 
-## 46.2.0-beta.2 - 2024-10-08
+## 46.2.0-beta.3 - 2024-10-08
 * [#2975](https://github.com/stripe/stripe-dotnet/pull/2975) Update generated code for beta
   * Add support for `SubmitCard` test helper method on resource `Issuing.Card`
   * Add support for `Groups` on `AccountCreateOptions`, `AccountUpdateOptions`, and `Account`
