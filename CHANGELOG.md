@@ -1,5 +1,9 @@
 # Changelog
 
+## 46.2.0 - 2024-10-09
+* [#3002](https://github.com/stripe/stripe-dotnet/pull/3002) Add ConfigureAwait calls to async calls that are awaited
+  * Fixes issue [#2998](https://github.com/stripe/stripe-dotnet/issues/2998) that was introduced in v46
+
 ## 46.1.0 - 2024-10-03
 * [#2995](https://github.com/stripe/stripe-dotnet/pull/2995) Update the class for `ThinEvent` to include `Livemode ` and `Reason`
 * [#2992](https://github.com/stripe/stripe-dotnet/pull/2992) Remove special case Newtonsoft v12 for .net8.0
