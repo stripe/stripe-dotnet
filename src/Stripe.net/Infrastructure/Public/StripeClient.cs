@@ -151,7 +151,7 @@ namespace Stripe
             CancellationToken cancellationToken = default)
             where T : IStripeEntity
         {
-            return await this.Requestor.RequestAsync<T>(BaseAddress.Api, method, path, options, requestOptions, cancellationToken);
+            return await this.Requestor.RequestAsync<T>(BaseAddress.Api, method, path, options, requestOptions, cancellationToken).ConfigureAwait(false);
         }
 
         /// <inheritdoc/>
@@ -162,7 +162,7 @@ namespace Stripe
             RequestOptions requestOptions,
             CancellationToken cancellationToken = default)
         {
-            return await this.Requestor.RequestStreamingAsync(BaseAddress.Api, method, path, options, requestOptions, cancellationToken);
+            return await this.Requestor.RequestStreamingAsync(BaseAddress.Api, method, path, options, requestOptions, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>Sends a request to Stripe's API as a synchronous operation.</summary>
@@ -196,7 +196,7 @@ namespace Stripe
             RawRequestOptions requestOptions = null,
             CancellationToken cancellationToken = default)
         {
-            return await this.Requestor.RawRequestAsync(method, path, content, requestOptions, cancellationToken);
+            return await this.Requestor.RawRequestAsync(method, path, content, requestOptions, cancellationToken).ConfigureAwait(false);
         }
 
         /// <summary>

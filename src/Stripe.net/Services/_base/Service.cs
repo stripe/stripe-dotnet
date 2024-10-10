@@ -281,7 +281,7 @@ namespace Stripe
                 url,
                 options,
                 requestOptions,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
 
             while (true)
             {
@@ -315,7 +315,7 @@ namespace Stripe
                     page.NextPageUrl,
                     new BaseOptions(),
                     requestOptions,
-                    cancellationToken);
+                    cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -358,7 +358,7 @@ namespace Stripe
                 url,
                 options,
                 requestOptions,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
 
             options = options ?? new ListOptions();
             bool iterateBackward = false;
@@ -417,7 +417,7 @@ namespace Stripe
                     url,
                     options,
                     requestOptions,
-                    cancellationToken);
+                    cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -498,7 +498,7 @@ namespace Stripe
                 url,
                 options,
                 requestOptions,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
 
             options = options ?? new SearchOptions();
 
@@ -532,7 +532,7 @@ namespace Stripe
                     url,
                     options,
                     requestOptions,
-                    cancellationToken);
+                    cancellationToken).ConfigureAwait(false);
             }
         }
     }
