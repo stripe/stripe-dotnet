@@ -1,5 +1,9 @@
 # Changelog
 
+## 46.2.0 - 2024-10-09
+* [#3002](https://github.com/stripe/stripe-dotnet/pull/3002) Add ConfigureAwait calls to async calls that are awaited
+  * Fixes issue [#2998](https://github.com/stripe/stripe-dotnet/issues/2998) that was introduced in v46
+
 ## 46.2.0-beta.3 - 2024-10-08
 * [#2975](https://github.com/stripe/stripe-dotnet/pull/2975) Update generated code for beta
   * Add support for `SubmitCard` test helper method on resource `Issuing.Card`
