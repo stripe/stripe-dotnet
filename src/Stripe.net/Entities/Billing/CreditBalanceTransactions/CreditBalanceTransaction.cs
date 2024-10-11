@@ -31,7 +31,8 @@ namespace Stripe.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Credit details for this balance transaction. Only present if type is <c>credit</c>.
+        /// Credit details for this credit balance transaction. Only present if type is
+        /// <c>credit</c>.
         /// </summary>
         [JsonProperty("credit")]
         public CreditBalanceTransactionCredit Credit { get; set; }
@@ -40,7 +41,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (ID of the CreditGrant)
-        /// The credit grant associated with this balance transaction.
+        /// The credit grant associated with this credit balance transaction.
         /// </summary>
         [JsonIgnore]
         public string CreditGrantId
@@ -51,7 +52,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (Expanded)
-        /// The credit grant associated with this balance transaction.
+        /// The credit grant associated with this credit balance transaction.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -68,13 +69,13 @@ namespace Stripe.Billing
         #endregion
 
         /// <summary>
-        /// Debit details for this balance transaction. Only present if type is <c>debit</c>.
+        /// Debit details for this credit balance transaction. Only present if type is <c>debit</c>.
         /// </summary>
         [JsonProperty("debit")]
         public CreditBalanceTransactionDebit Debit { get; set; }
 
         /// <summary>
-        /// The effective time of this balance transaction.
+        /// The effective time of this credit balance transaction.
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -119,7 +120,7 @@ namespace Stripe.Billing
         #endregion
 
         /// <summary>
-        /// The type of balance transaction (credit or debit).
+        /// The type of credit balance transaction (credit or debit).
         /// One of: <c>credit</c>, or <c>debit</c>.
         /// </summary>
         [JsonProperty("type")]

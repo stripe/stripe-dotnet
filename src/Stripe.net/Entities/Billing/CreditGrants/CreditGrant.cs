@@ -7,7 +7,7 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A credit grant is a resource that records a grant of some credit to a customer.
+    /// A credit grant is a resource that records a grant of billing credits to a customer.
     /// </summary>
     public class CreditGrant : StripeEntity<CreditGrant>, IHasId, IHasMetadata, IHasObject
     {
@@ -47,7 +47,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (ID of the Customer)
-        /// ID of the customer to whom the credit was granted.
+        /// ID of the customer to whom the billing credits are granted.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -58,7 +58,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (Expanded)
-        /// ID of the customer to whom the credit was granted.
+        /// ID of the customer to whom the billing credits are granted.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -75,14 +75,16 @@ namespace Stripe.Billing
         #endregion
 
         /// <summary>
-        /// The time when the credit becomes effective i.e when it is eligible to be used.
+        /// The time when the billing credits become effective i.e when they are eligible to be
+        /// used.
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EffectiveAt { get; set; }
 
         /// <summary>
-        /// The time when the credit will expire. If not present, the credit will never expire.
+        /// The time when the billing credits will expire. If not present, the billing credits will
+        /// never expire.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
