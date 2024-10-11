@@ -1,4 +1,3 @@
-#pragma warning disable SA1649 // File name should match first type name
 #pragma warning disable SA1101 // Prefix local calls with this
 
 using System;
@@ -8,14 +7,23 @@ using Microsoft.AspNetCore.Mvc;
 using Stripe;
 using Stripe.Events;
 
+/// <summary>
+/// Receive and process thin events like the v1.billing.meter.error_report_triggered event.
+///
+/// In this example, we:
+///   - use parseThinEvent to parse the received thin event webhook body
+///   - call StripeClient.v2.core.events.retrieve to retrieve the full event object
+///   - if it is a V1BillingMeterErrorReportTriggeredEvent event type, call fetchRelatedObject
+///     to retrieve the Billing Meter object associated with the event.
+/// </summary>
 [Route("api/[controller]")]
 [ApiController]
-public class WebhookController : ControllerBase
+public class ThinEventWebhookHandler : ControllerBase
 {
     private readonly StripeClient _client;
     private readonly string _webhookSecret;
 
-    public WebhookController()
+    public ThinEventWebhookHandler()
     {
         var apiKey = Environment.GetEnvironmentVariable("STRIPE_API_KEY");
         _client = new StripeClient(apiKey);

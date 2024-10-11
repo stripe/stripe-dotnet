@@ -44,6 +44,22 @@ namespace Stripe.Treasury
         }
 
         /// <summary>
+        /// <p>Confirm an InboundTransfer.</p>.
+        /// </summary>
+        public virtual InboundTransfer Confirm(string id, InboundTransferConfirmOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Confirm an InboundTransfer.</p>.
+        /// </summary>
+        public virtual Task<InboundTransfer> ConfirmAsync(string id, InboundTransferConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/confirm", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Creates an InboundTransfer.</p>.
         /// </summary>
         public virtual InboundTransfer Create(InboundTransferCreateOptions options, RequestOptions requestOptions = null)
