@@ -16,7 +16,7 @@ namespace Stripe.Tax
         /// filter, the list includes all current and future tax form types. If your integration
         /// expects only one type of tax form in the response, make sure to provide a type value in
         /// the request.
-        /// One of: <c>us_1099_k</c>, <c>us_1099_misc</c>, or <c>us_1099_nec</c>.
+        /// One of: <c>ca_mrdp</c>, <c>us_1099_k</c>, <c>us_1099_misc</c>, or <c>us_1099_nec</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

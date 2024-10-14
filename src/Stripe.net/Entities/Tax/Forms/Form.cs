@@ -85,7 +85,7 @@ namespace Stripe.Tax
         /// <summary>
         /// The type of the tax form. An additional hash is included on the tax form with a name
         /// matching this value. It contains additional information specific to the tax form type.
-        /// One of: <c>us_1099_k</c>, <c>us_1099_misc</c>, or <c>us_1099_nec</c>.
+        /// One of: <c>ca_mrdp</c>, <c>us_1099_k</c>, <c>us_1099_misc</c>, or <c>us_1099_nec</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
