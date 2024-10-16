@@ -23,6 +23,9 @@ namespace Stripe
         [JsonProperty("alipay")]
         public ChargePaymentMethodDetailsAlipay Alipay { get; set; }
 
+        [JsonProperty("alma")]
+        public ChargePaymentMethodDetailsAlma Alma { get; set; }
+
         [JsonProperty("amazon_pay")]
         public ChargePaymentMethodDetailsAmazonPay AmazonPay { get; set; }
 

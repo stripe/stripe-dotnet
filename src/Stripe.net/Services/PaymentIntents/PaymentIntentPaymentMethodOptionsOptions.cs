@@ -34,6 +34,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsAlipayOptions Alipay { get; set; }
 
         /// <summary>
+        /// If this is a <c>alma</c> PaymentMethod, this sub-hash contains details about the Alma
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("alma")]
+        public PaymentIntentPaymentMethodOptionsAlmaOptions Alma { get; set; }
+
+        /// <summary>
         /// If this is a <c>amazon_pay</c> PaymentMethod, this sub-hash contains details about the
         /// Amazon Pay payment method options.
         /// </summary>

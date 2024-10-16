@@ -45,6 +45,13 @@ namespace Stripe.TestHelpers
         public string AllowRedisplay { get; set; }
 
         /// <summary>
+        /// If this is a Alma PaymentMethod, this hash contains details about the Alma payment
+        /// method.
+        /// </summary>
+        [JsonProperty("alma")]
+        public ConfirmationTokenPaymentMethodDataAlmaOptions Alma { get; set; }
+
+        /// <summary>
         /// If this is a AmazonPay PaymentMethod, this hash contains details about the AmazonPay
         /// payment method.
         /// </summary>
@@ -339,9 +346,9 @@ namespace Stripe.TestHelpers
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>blik</c>, <c>boleto</c>, <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>,
-        /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>cashapp</c>, <c>customer_balance</c>,
+        /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
         /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>,
         /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>,
         /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
