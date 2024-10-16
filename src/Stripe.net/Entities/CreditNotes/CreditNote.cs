@@ -221,6 +221,9 @@ namespace Stripe
         [JsonProperty("pre_payment_amount")]
         public long PrePaymentAmount { get; set; }
 
+        /// <summary>
+        /// The pretax credit amounts (ex: discount, credit grants, etc) for all line items.
+        /// </summary>
         [JsonProperty("pretax_credit_amounts")]
         public List<CreditNotePretaxCreditAmount> PretaxCreditAmounts { get; set; }
 

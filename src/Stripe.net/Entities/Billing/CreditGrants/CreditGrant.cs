@@ -7,7 +7,12 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A credit grant is a resource that records a grant of billing credits to a customer.
+    /// A credit grant is an API resource that documents the allocation of some billing credits
+    /// to a customer.
+    ///
+    /// Related guide: <a
+    /// href="https://docs.stripe.com/billing/subscriptions/usage-based/billing-credits">Billing
+    /// credits</a> end.
     /// </summary>
     public class CreditGrant : StripeEntity<CreditGrant>, IHasId, IHasMetadata, IHasObject
     {
@@ -30,7 +35,8 @@ namespace Stripe.Billing
         public CreditGrantApplicabilityConfig ApplicabilityConfig { get; set; }
 
         /// <summary>
-        /// The category of this credit grant.
+        /// The category of this credit grant. This is for tracking purposes and will not be
+        /// displayed to the customer.
         /// One of: <c>paid</c>, or <c>promotional</c>.
         /// </summary>
         [JsonProperty("category")]
