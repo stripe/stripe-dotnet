@@ -38,6 +38,9 @@ namespace Stripe.Terminal
         [JsonProperty("nzd")]
         public ConfigurationTippingNzd Nzd { get; set; }
 
+        [JsonProperty("pln")]
+        public ConfigurationTippingPln Pln { get; set; }
+
         [JsonProperty("sek")]
         public ConfigurationTippingSek Sek { get; set; }
 

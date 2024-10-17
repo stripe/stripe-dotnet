@@ -67,6 +67,9 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        /// <summary>
+        /// The pretax credit amounts (ex: discount, credit grants, etc) for this line item.
+        /// </summary>
         [JsonProperty("pretax_credit_amounts")]
         public List<CreditNoteLineItemPretaxCreditAmount> PretaxCreditAmounts { get; set; }
 

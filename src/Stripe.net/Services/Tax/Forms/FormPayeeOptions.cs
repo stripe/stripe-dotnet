@@ -12,7 +12,14 @@ namespace Stripe.Tax
         public string Account { get; set; }
 
         /// <summary>
-        /// Specifies the payee type. Always <c>account</c>.
+        /// The external reference to the payee whose forms will be retrieved.
+        /// </summary>
+        [JsonProperty("external_reference")]
+        public string ExternalReference { get; set; }
+
+        /// <summary>
+        /// Specifies the payee type. Either <c>account</c> or <c>external_reference</c>.
+        /// One of: <c>account</c>, or <c>external_reference</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

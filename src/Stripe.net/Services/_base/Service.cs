@@ -61,7 +61,7 @@ namespace Stripe
         internal ApiRequestor Requestor
         {
 #pragma warning disable CS0618 // Type or member is obsolete
-            get => this.requestor ?? new ApiRequestorAdapter(this.Client);
+            get => this.requestor ?? ApiRequestorAdapter.Adapt(this.Client);
 #pragma warning restore CS0618 // Type or member is obsolete
         }
 

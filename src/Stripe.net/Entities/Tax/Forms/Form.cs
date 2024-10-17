@@ -27,6 +27,12 @@ namespace Stripe.Tax
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("au_serr")]
+        public FormAuSerr AuSerr { get; set; }
+
+        [JsonProperty("ca_mrdp")]
+        public FormCaMrdp CaMrdp { get; set; }
+
         #region Expandable CorrectedBy
 
         /// <summary>
@@ -65,12 +71,18 @@ namespace Stripe.Tax
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
+        [JsonProperty("eu_dac7")]
+        public FormEuDac7 EuDac7 { get; set; }
+
         /// <summary>
         /// A list of tax filing statuses. Note that a filing status will only be included if the
         /// form has been filed directly with the jurisdiction’s tax authority.
         /// </summary>
         [JsonProperty("filing_statuses")]
         public List<FormFilingStatus> FilingStatuses { get; set; }
+
+        [JsonProperty("gb_mrdp")]
+        public FormGbMrdp GbMrdp { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -79,13 +91,17 @@ namespace Stripe.Tax
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("nz_mrdp")]
+        public FormNzMrdp NzMrdp { get; set; }
+
         [JsonProperty("payee")]
         public FormPayee Payee { get; set; }
 
         /// <summary>
         /// The type of the tax form. An additional hash is included on the tax form with a name
         /// matching this value. It contains additional information specific to the tax form type.
-        /// One of: <c>us_1099_k</c>, <c>us_1099_misc</c>, or <c>us_1099_nec</c>.
+        /// One of: <c>au_serr</c>, <c>ca_mrdp</c>, <c>eu_dac7</c>, <c>gb_mrdp</c>, <c>nz_mrdp</c>,
+        /// <c>us_1099_k</c>, <c>us_1099_misc</c>, or <c>us_1099_nec</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

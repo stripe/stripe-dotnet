@@ -217,7 +217,7 @@ namespace Stripe
             ApiMode apiMode)
         {
             var uri = StripeRequest.BuildUri(
-                this.GetBaseUrl(baseAddress),
+                requestOptions?.BaseUrl ?? this.GetBaseUrl(baseAddress),
                 method,
                 path,
                 options,
@@ -258,23 +258,6 @@ namespace Stripe
             obj.StripeResponse = response;
 
             return obj;
-        }
-
-        private string GetBaseUrl(BaseAddress baseAddress)
-        {
-            switch (baseAddress)
-            {
-                case BaseAddress.Api:
-                    return this.ApiBase;
-                case BaseAddress.Files:
-                    return this.FilesBase;
-                case BaseAddress.Connect:
-                    return this.ConnectBase;
-                case BaseAddress.MeterEvents:
-                    return this.MeterEventsBase;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(baseAddress), baseAddress, null);
-            }
         }
 
         /// <summary>Sends a request to Stripe's API as a synchronous operation.</summary>

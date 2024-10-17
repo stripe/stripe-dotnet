@@ -28,6 +28,9 @@ namespace Stripe
         [JsonProperty("allow_redisplay")]
         public string AllowRedisplay { get; set; }
 
+        [JsonProperty("alma")]
+        public ConfirmationTokenPaymentMethodPreviewAlma Alma { get; set; }
+
         [JsonProperty("amazon_pay")]
         public ConfirmationTokenPaymentMethodPreviewAmazonPay AmazonPay { get; set; }
 
@@ -103,6 +106,9 @@ namespace Stripe
         [JsonProperty("giropay")]
         public ConfirmationTokenPaymentMethodPreviewGiropay Giropay { get; set; }
 
+        [JsonProperty("gopay")]
+        public ConfirmationTokenPaymentMethodPreviewGopay Gopay { get; set; }
+
         [JsonProperty("grabpay")]
         public ConfirmationTokenPaymentMethodPreviewGrabpay Grabpay { get; set; }
 
@@ -163,6 +169,9 @@ namespace Stripe
         [JsonProperty("promptpay")]
         public ConfirmationTokenPaymentMethodPreviewPromptpay Promptpay { get; set; }
 
+        [JsonProperty("qris")]
+        public ConfirmationTokenPaymentMethodPreviewQris Qris { get; set; }
+
         [JsonProperty("rechnung")]
         public ConfirmationTokenPaymentMethodPreviewRechnung Rechnung { get; set; }
 
@@ -174,6 +183,9 @@ namespace Stripe
 
         [JsonProperty("sepa_debit")]
         public ConfirmationTokenPaymentMethodPreviewSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("shopeepay")]
+        public ConfirmationTokenPaymentMethodPreviewShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
         public ConfirmationTokenPaymentMethodPreviewSofort Sofort { get; set; }
@@ -189,15 +201,16 @@ namespace Stripe
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>card_present</c>, <c>cashapp</c>,
-        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
-        /// <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
-        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
-        /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>rechnung</c>, <c>revolut_pay</c>,
-        /// <c>samsung_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>card_present</c>,
+        /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
+        /// <c>gopay</c>, <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>,
+        /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>,
+        /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>,
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
+        /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

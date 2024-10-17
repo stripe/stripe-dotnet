@@ -28,21 +28,22 @@ namespace Stripe.Billing
         public string Category { get; set; }
 
         /// <summary>
-        /// ID of the customer to whom the credit should be granted.
+        /// ID of the customer to whom the billing credits should be granted.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
         /// <summary>
-        /// The time when the credit becomes effective i.e when it is eligible to be used. Defaults
-        /// to the current timestamp if not specified.
+        /// The time when the billing credits become effective i.e when they are eligible to be
+        /// used. Defaults to the current timestamp if not specified.
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EffectiveAt { get; set; }
 
         /// <summary>
-        /// The time when the credit will expire. If not specified, the credit will never expire.
+        /// The time when the billing credits will expire. If not specified, the billing credits
+        /// will never expire.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

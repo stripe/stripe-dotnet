@@ -112,6 +112,28 @@ namespace StripeTests
             Assert.Equal("acct_test_token", oauthToken.StripeUserId);
         }
 
+        // Tests the "Old" way of instantiating the service and calling Create
+        // to make sure we maintain backwards compatibility
+        [Fact]
+        public void Create_Legacy()
+        {
+            // stripe-mock doesn't support OAuth endpoints, so stub the request
+            var json = GetResourceAsString("oauth_fixtures.token_response.json");
+            this.StubRequest(HttpMethod.Post, "/oauth/token", HttpStatusCode.OK, json);
+
+            StripeConfiguration.ApiKey = "sk_test_123";
+            StripeConfiguration.StripeClient = new StripeClient(
+                "sk_test_123",
+                httpClient: new SystemNetHttpClient(
+                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object)));
+
+            var service = new OAuthTokenService();
+            var oauthToken = service.Create(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/oauth/token", host: "connect.stripe.com");
+            Assert.NotNull(oauthToken);
+            Assert.Equal("acct_test_token", oauthToken.StripeUserId);
+        }
+
         [Fact]
         public void Create_Error()
         {
@@ -137,6 +159,28 @@ namespace StripeTests
             this.AssertRequest(HttpMethod.Post, "/oauth/token", host: "connect.stripe.com");
             Assert.NotNull(oauthToken);
             Assert.Equal("sk_test_access_token", oauthToken.AccessToken);
+        }
+
+        // Tests the "Old" way of instantiating the service and calling Create
+        // to make sure we maintain backwards compatibility
+        [Fact]
+        public async Task CreateAsync_Legacy()
+        {
+            // stripe-mock doesn't support OAuth endpoints, so stub the request
+            var json = GetResourceAsString("oauth_fixtures.token_response.json");
+            this.StubRequest(HttpMethod.Post, "/oauth/token", HttpStatusCode.OK, json);
+
+            StripeConfiguration.ApiKey = "sk_test_123";
+            StripeConfiguration.StripeClient = new StripeClient(
+                "sk_test_123",
+                httpClient: new SystemNetHttpClient(
+                    new HttpClient(this.MockHttpClientFixture.MockHandler.Object)));
+
+            var service = new OAuthTokenService();
+            var oauthToken = await service.CreateAsync(this.createOptions);
+            this.AssertRequest(HttpMethod.Post, "/oauth/token", host: "connect.stripe.com");
+            Assert.NotNull(oauthToken);
+            Assert.Equal("acct_test_token", oauthToken.StripeUserId);
         }
 
         [Fact]
