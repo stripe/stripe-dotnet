@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.IO;
     using System.Net.Http;
     using System.Threading;
@@ -37,6 +38,23 @@ namespace Stripe
         /// <summary>Gets the <see cref="IHttpClient"/> used to send HTTP requests.</summary>
         /// <value>The <see cref="IHttpClient"/> used to send HTTP requests.</value>
         public virtual IHttpClient HttpClient { get; }
+
+        internal string GetBaseUrl(BaseAddress baseAddress)
+        {
+            switch (baseAddress)
+            {
+                case BaseAddress.Api:
+                    return this.ApiBase;
+                case BaseAddress.Files:
+                    return this.FilesBase;
+                case BaseAddress.Connect:
+                    return this.ConnectBase;
+                case BaseAddress.MeterEvents:
+                    return this.MeterEventsBase;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(baseAddress), baseAddress, null);
+            }
+        }
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
         /// <typeparam name="T">Type of the Stripe entity returned by the API.</typeparam>

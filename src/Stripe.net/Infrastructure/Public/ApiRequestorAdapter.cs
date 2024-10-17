@@ -1,5 +1,6 @@
 namespace Stripe
 {
+    using System;
     using System.IO;
     using System.Net.Http;
     using System.Threading;
@@ -45,6 +46,12 @@ namespace Stripe
             RequestOptions requestOptions,
             CancellationToken cancellationToken = default)
         {
+            if (baseAddress != BaseAddress.Api)
+            {
+                requestOptions ??= new RequestOptions();
+                requestOptions.BaseUrl = this.GetBaseUrl(baseAddress);
+            }
+
             return this.client.RequestAsync<T>(method, path, options, requestOptions, cancellationToken);
         }
 
