@@ -24,6 +24,12 @@ namespace Stripe
         public AccountCapabilitiesAfterpayClearpayPaymentsOptions AfterpayClearpayPayments { get; set; }
 
         /// <summary>
+        /// The alma_payments capability.
+        /// </summary>
+        [JsonProperty("alma_payments")]
+        public AccountCapabilitiesAlmaPaymentsOptions AlmaPayments { get; set; }
+
+        /// <summary>
         /// The amazon_pay_payments capability.
         /// </summary>
         [JsonProperty("amazon_pay_payments")]

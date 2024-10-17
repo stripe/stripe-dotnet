@@ -30,6 +30,14 @@ namespace Stripe
         public string AfterpayClearpayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Alma capability of the account, or whether the account can directly
+        /// process Alma payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("alma_payments")]
+        public string AlmaPayments { get; set; }
+
+        /// <summary>
         /// The status of the AmazonPay capability of the account, or whether the account can
         /// directly process AmazonPay payments.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
