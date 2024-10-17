@@ -59,6 +59,9 @@ namespace Stripe
         [JsonProperty("giropay")]
         public PaymentIntentPaymentMethodOptionsGiropay Giropay { get; set; }
 
+        [JsonProperty("gopay")]
+        public PaymentIntentPaymentMethodOptionsGopay Gopay { get; set; }
+
         [JsonProperty("grabpay")]
         public PaymentIntentPaymentMethodOptionsGrabpay Grabpay { get; set; }
 
@@ -119,6 +122,9 @@ namespace Stripe
         [JsonProperty("promptpay")]
         public PaymentIntentPaymentMethodOptionsPromptpay Promptpay { get; set; }
 
+        [JsonProperty("qris")]
+        public PaymentIntentPaymentMethodOptionsQris Qris { get; set; }
+
         [JsonProperty("rechnung")]
         public PaymentIntentPaymentMethodOptionsRechnung Rechnung { get; set; }
 
@@ -130,6 +136,9 @@ namespace Stripe
 
         [JsonProperty("sepa_debit")]
         public PaymentIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("shopeepay")]
+        public PaymentIntentPaymentMethodOptionsShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
         public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }

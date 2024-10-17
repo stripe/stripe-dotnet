@@ -131,6 +131,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsGiropayOptions Giropay { get; set; }
 
         /// <summary>
+        /// If this is a <c>gopay</c> PaymentMethod, this sub-hash contains details about the GoPay
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("gopay")]
+        public PaymentIntentPaymentMethodOptionsGopayOptions Gopay { get; set; }
+
+        /// <summary>
         /// If this is a <c>grabpay</c> PaymentMethod, this sub-hash contains details about the
         /// Grabpay payment method options.
         /// </summary>
@@ -271,6 +278,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsPromptpayOptions Promptpay { get; set; }
 
         /// <summary>
+        /// If this is a <c>qris</c> PaymentMethod, this sub-hash contains details about the QRIS
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("qris")]
+        public PaymentIntentPaymentMethodOptionsQrisOptions Qris { get; set; }
+
+        /// <summary>
         /// If this is a <c>rechnung</c> PaymentMethod, this sub-hash contains details about the
         /// Rechnung payment method options.
         /// </summary>
@@ -297,6 +311,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sepa_debit")]
         public PaymentIntentPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
+
+        /// <summary>
+        /// If this is a <c>shopeepay</c> PaymentMethod, this sub-hash contains details about the
+        /// ShopeePay payment method options.
+        /// </summary>
+        [JsonProperty("shopeepay")]
+        public PaymentIntentPaymentMethodOptionsShopeepayOptions Shopeepay { get; set; }
 
         /// <summary>
         /// If this is a <c>sofort</c> PaymentMethod, this sub-hash contains details about the

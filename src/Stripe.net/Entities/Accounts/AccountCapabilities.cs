@@ -150,6 +150,14 @@ namespace Stripe
         public string GiropayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Gopay capability of the account, or whether the account can directly
+        /// process Gopay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("gopay_payments")]
+        public string GopayPayments { get; set; }
+
+        /// <summary>
         /// The status of the GrabPay payments capability of the account, or whether the account can
         /// directly process GrabPay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -333,6 +341,14 @@ namespace Stripe
         public string PromptpayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Qris capability of the account, or whether the account can directly
+        /// process Qris payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("qris_payments")]
+        public string QrisPayments { get; set; }
+
+        /// <summary>
         /// The status of the Rechnung capability of the account, or whether the account can
         /// directly process Rechnung payments.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -371,6 +387,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sepa_debit_payments")]
         public string SepaDebitPayments { get; set; }
+
+        /// <summary>
+        /// The status of the ShopeePay capability of the account, or whether the account can
+        /// directly process ShopeePay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("shopeepay_payments")]
+        public string ShopeepayPayments { get; set; }
 
         /// <summary>
         /// The status of the Sofort payments capability of the account, or whether the account can

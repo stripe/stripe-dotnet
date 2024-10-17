@@ -114,6 +114,12 @@ namespace Stripe
         public AccountCapabilitiesGiropayPaymentsOptions GiropayPayments { get; set; }
 
         /// <summary>
+        /// The gopay_payments capability.
+        /// </summary>
+        [JsonProperty("gopay_payments")]
+        public AccountCapabilitiesGopayPaymentsOptions GopayPayments { get; set; }
+
+        /// <summary>
         /// The grabpay_payments capability.
         /// </summary>
         [JsonProperty("grabpay_payments")]
@@ -252,6 +258,12 @@ namespace Stripe
         public AccountCapabilitiesPromptpayPaymentsOptions PromptpayPayments { get; set; }
 
         /// <summary>
+        /// The qris_payments capability.
+        /// </summary>
+        [JsonProperty("qris_payments")]
+        public AccountCapabilitiesQrisPaymentsOptions QrisPayments { get; set; }
+
+        /// <summary>
         /// The rechnung_payments capability.
         /// </summary>
         [JsonProperty("rechnung_payments")]
@@ -280,6 +292,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sepa_debit_payments")]
         public AccountCapabilitiesSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
+
+        /// <summary>
+        /// The shopeepay_payments capability.
+        /// </summary>
+        [JsonProperty("shopeepay_payments")]
+        public AccountCapabilitiesShopeepayPaymentsOptions ShopeepayPayments { get; set; }
 
         /// <summary>
         /// The sofort_payments capability.
