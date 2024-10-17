@@ -27,6 +27,12 @@ namespace Stripe.Tax
         [JsonProperty("object")]
         public string Object { get; set; }
 
+        [JsonProperty("au_serr")]
+        public FormAuSerr AuSerr { get; set; }
+
+        [JsonProperty("ca_mrdp")]
+        public FormCaMrdp CaMrdp { get; set; }
+
         #region Expandable CorrectedBy
 
         /// <summary>
@@ -65,6 +71,9 @@ namespace Stripe.Tax
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
+        [JsonProperty("eu_dac7")]
+        public FormEuDac7 EuDac7 { get; set; }
+
         /// <summary>
         /// A list of tax filing statuses. Note that a filing status will only be included if the
         /// form has been filed directly with the jurisdiction’s tax authority.
@@ -72,12 +81,18 @@ namespace Stripe.Tax
         [JsonProperty("filing_statuses")]
         public List<FormFilingStatus> FilingStatuses { get; set; }
 
+        [JsonProperty("gb_mrdp")]
+        public FormGbMrdp GbMrdp { get; set; }
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
+
+        [JsonProperty("nz_mrdp")]
+        public FormNzMrdp NzMrdp { get; set; }
 
         [JsonProperty("payee")]
         public FormPayee Payee { get; set; }
