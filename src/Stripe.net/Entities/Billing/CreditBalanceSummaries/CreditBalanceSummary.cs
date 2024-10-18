@@ -6,7 +6,7 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// Indicates the credit balance for credits granted to a customer.
+    /// Indicates the billing credit balance for billing credits granted to a customer.
     /// </summary>
     public class CreditBalanceSummary : StripeEntity<CreditBalanceSummary>, IHasObject
     {
@@ -17,8 +17,8 @@ namespace Stripe.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// The credit balances. One entry per credit grant currency. If a customer only has credit
-        /// grants in a single currency, then this will have a single balance entry.
+        /// The billing credit balances. One entry per credit grant currency. If a customer only has
+        /// credit grants in a single currency, then this will have a single balance entry.
         /// </summary>
         [JsonProperty("balances")]
         public List<CreditBalanceSummaryBalance> Balances { get; set; }

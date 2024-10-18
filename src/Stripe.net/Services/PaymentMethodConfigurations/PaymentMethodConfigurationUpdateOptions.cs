@@ -49,6 +49,13 @@ namespace Stripe
         public PaymentMethodConfigurationAlipayOptions Alipay { get; set; }
 
         /// <summary>
+        /// Alma is a Buy Now, Pay Later payment method that offers customers the ability to pay in
+        /// 2, 3, or 4 installments.
+        /// </summary>
+        [JsonProperty("alma")]
+        public PaymentMethodConfigurationAlmaOptions Alma { get; set; }
+
+        /// <summary>
         /// Amazon Pay is a wallet payment method that lets your customers check out the same way as
         /// on Amazon.
         /// </summary>

@@ -7,7 +7,8 @@ namespace Stripe.Billing
     {
         /// <summary>
         /// The price type to which credit grants can apply to. We currently only support
-        /// <c>metered</c> price type.
+        /// <c>metered</c> price type. This refers to prices that have a <a
+        /// href="https://docs.stripe.com/api/billing/meter">Billing Meter</a> attached to them.
         /// </summary>
         [JsonProperty("price_type")]
         public string PriceType { get; set; }

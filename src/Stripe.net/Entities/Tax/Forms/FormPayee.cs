@@ -38,7 +38,14 @@ namespace Stripe.Tax
         #endregion
 
         /// <summary>
-        /// Always <c>account</c>.
+        /// The external reference to this payee.
+        /// </summary>
+        [JsonProperty("external_reference")]
+        public string ExternalReference { get; set; }
+
+        /// <summary>
+        /// Either <c>account</c> or <c>external_reference</c>.
+        /// One of: <c>account</c>, or <c>external_reference</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

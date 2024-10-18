@@ -8,10 +8,9 @@ namespace Stripe
     public class SubscriptionResumeOptions : BaseOptions
     {
         /// <summary>
-        /// Either <c>now</c> or <c>unchanged</c>. Setting the value to <c>now</c> resets the
-        /// subscription's billing cycle anchor to the current time (in UTC). Setting the value to
-        /// <c>unchanged</c> advances the subscription's billing cycle anchor to the period that
-        /// surrounds the current time. For more information, see the billing cycle <a
+        /// The billing cycle anchor that applies when the subscription is resumed. Either
+        /// <c>now</c> or <c>unchanged</c>. The default is <c>now</c>. For more information, see the
+        /// billing cycle <a
         /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>now</c>, or <c>unchanged</c>.
         /// </summary>

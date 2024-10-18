@@ -98,8 +98,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Updates the shipping status of the specified Issuing <c>Card</c> object to
-        /// <c>submitted</c>. This method is only available with Stripe Version ‘2024-09-30.acacia’
-        /// or above.</p>.
+        /// <c>submitted</c>. This method requires Stripe Version ‘2024-09-30.acacia’ or later.</p>.
         /// </summary>
         public virtual Stripe.Issuing.Card SubmitCard(string id, CardSubmitCardOptions options = null, RequestOptions requestOptions = null)
         {
@@ -108,8 +107,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// <p>Updates the shipping status of the specified Issuing <c>Card</c> object to
-        /// <c>submitted</c>. This method is only available with Stripe Version ‘2024-09-30.acacia’
-        /// or above.</p>.
+        /// <c>submitted</c>. This method requires Stripe Version ‘2024-09-30.acacia’ or later.</p>.
         /// </summary>
         public virtual Task<Stripe.Issuing.Card> SubmitCardAsync(string id, CardSubmitCardOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
