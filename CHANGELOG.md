@@ -1,5 +1,14 @@
 # Changelog
 
+## 46.2.1 - 2024-10-18
+* [#3008](https://github.com/stripe/stripe-dotnet/pull/3008) update object tags for meter-related classes
+  
+  - fixes a bug where the `object` property of the `MeterEvent`, `MeterEventAdjustment`, and `MeterEventSession` didn't match the server.
+* [#3007](https://github.com/stripe/stripe-dotnet/pull/3007) Fixes ApiRequestorAdapter requests with BaseAddress other than Api
+  - fixes bug where OAuthTokenService created without an explicit StripeClient accesses the wrong base url
+  
+* [#3003](https://github.com/stripe/stripe-dotnet/pull/3003) Cleaned up examples and added documentation
+
 ## 46.2.0 - 2024-10-09
 * [#3002](https://github.com/stripe/stripe-dotnet/pull/3002) Add ConfigureAwait calls to async calls that are awaited
   * Fixes issue [#2998](https://github.com/stripe/stripe-dotnet/issues/2998) that was introduced in v46
