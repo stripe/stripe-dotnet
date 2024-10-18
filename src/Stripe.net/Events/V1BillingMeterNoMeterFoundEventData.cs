@@ -1,69 +1,8 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Events
 {
-
-/* Unmerged change from project 'Stripe.net(net6.0)'
-Before:
-    using System.Threading.Tasks;
-    using System;
-    using Newtonsoft.Json;
-After:
-    using System;
-    using System.Json;
-*/
-
-/* Unmerged change from project 'Stripe.net(net7.0)'
-Before:
-    using System.Threading.Tasks;
-    using System;
-    using Newtonsoft.Json;
-After:
-    using System;
-    using System.Json;
-*/
-
-/* Unmerged change from project 'Stripe.net(net8.0)'
-Before:
-    using System.Threading.Tasks;
-    using System;
-    using Newtonsoft.Json;
-After:
-    using System;
-    using System.Json;
-*/
-
-/* Unmerged change from project 'Stripe.net(netcoreapp3.1)'
-Before:
-    using System.Threading.Tasks;
-    using System;
-    using Newtonsoft.Json;
-After:
-    using System;
-    using System.Json;
-*/
-
-/* Unmerged change from project 'Stripe.net(netstandard2.0)'
-Before:
-    using System.Threading.Tasks;
-    using System;
-    using Newtonsoft.Json;
-After:
-    using System;
-    using System.Json;
-*/
-
-/* Unmerged change from project 'Stripe.net(net461)'
-Before:
-    using System.Threading.Tasks;
-    using System;
-    using Newtonsoft.Json;
-After:
-    using System;
-    using System.Json;
-*/
     using System;
     using System.Threading.Tasks;
-    using Newtonsoft.Threading.Tasks;
     using Newtonsoft.Json;
 
     public class V1BillingMeterNoMeterFoundEventData : StripeEntity<V1BillingMeterNoMeterFoundEventData>
