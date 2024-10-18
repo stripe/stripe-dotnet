@@ -80,7 +80,7 @@ namespace StripeTests
                     HttpMethod.Post,
                     "/v2/billing/meter_event_session",
                     System.Net.HttpStatusCode.OK,
-                    "{\"id\": \"mes_123\",\"object\":\"billing.meter_event_session\"}");
+                    "{\"id\": \"mes_123\",\"object\":\"v2.billing.meter_event_session\"}");
 
             var rawResponse = await this.stripeClient.RawRequestAsync(
                 HttpMethod.Post,
