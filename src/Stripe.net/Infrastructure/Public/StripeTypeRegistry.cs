@@ -103,7 +103,6 @@ namespace Stripe
                 { "line_item", typeof(InvoiceLineItem) },
                 { "login_link", typeof(LoginLink) },
                 { "mandate", typeof(Mandate) },
-                { "margin", typeof(Margin) },
                 { "payment_intent", typeof(PaymentIntent) },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
@@ -188,6 +187,22 @@ namespace Stripe
                 { "v2.core.event", typeof(V2.Event) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
+            });
+
+        internal static readonly IReadOnlyDictionary<string, Type> V2TypesToEventTypes = new ReadOnlyDictionary<string, Type>(
+            new Dictionary<string, Type>
+            {
+                // ThinTypesToEventTypes: The beginning of the section generated from our OpenAPI spec
+                {
+                    "v1.billing.meter.error_report_triggered", typeof(
+                    Events.V1BillingMeterErrorReportTriggeredEvent)
+                },
+                {
+                    "v1.billing.meter.no_meter_found", typeof(
+                    Events.V1BillingMeterNoMeterFoundEvent)
+                },
+
+                // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
             });
 
         internal static readonly IReadOnlyDictionary<string, Type> V2TypesToEventTypes = new ReadOnlyDictionary<string, Type>(

@@ -13,7 +13,7 @@ namespace Stripe
 
         /// <summary>
         /// Will generate a final invoice that invoices for any un-invoiced metered usage and
-        /// new/pending proration invoice items. Defaults to <c>true</c>.
+        /// new/pending proration invoice items. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("invoice_now")]
         public bool? InvoiceNow { get; set; }

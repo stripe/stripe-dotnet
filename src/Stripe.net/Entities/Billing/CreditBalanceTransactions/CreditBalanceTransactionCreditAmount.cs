@@ -12,7 +12,7 @@ namespace Stripe.Billing
         public CreditBalanceTransactionCreditAmountMonetary Monetary { get; set; }
 
         /// <summary>
-        /// The type of this amount. We currently only support <c>monetary</c> credits.
+        /// The type of this amount. We currently only support <c>monetary</c> billing credits.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

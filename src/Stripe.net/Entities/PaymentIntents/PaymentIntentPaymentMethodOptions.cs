@@ -17,6 +17,9 @@ namespace Stripe
         [JsonProperty("alipay")]
         public PaymentIntentPaymentMethodOptionsAlipay Alipay { get; set; }
 
+        [JsonProperty("alma")]
+        public PaymentIntentPaymentMethodOptionsAlma Alma { get; set; }
+
         [JsonProperty("amazon_pay")]
         public PaymentIntentPaymentMethodOptionsAmazonPay AmazonPay { get; set; }
 
@@ -65,11 +68,17 @@ namespace Stripe
         [JsonProperty("interac_present")]
         public PaymentIntentPaymentMethodOptionsInteracPresent InteracPresent { get; set; }
 
+        [JsonProperty("kakao_pay")]
+        public PaymentIntentPaymentMethodOptionsKakaoPay KakaoPay { get; set; }
+
         [JsonProperty("klarna")]
         public PaymentIntentPaymentMethodOptionsKlarna Klarna { get; set; }
 
         [JsonProperty("konbini")]
         public PaymentIntentPaymentMethodOptionsKonbini Konbini { get; set; }
+
+        [JsonProperty("kr_card")]
+        public PaymentIntentPaymentMethodOptionsKrCard KrCard { get; set; }
 
         [JsonProperty("link")]
         public PaymentIntentPaymentMethodOptionsLink Link { get; set; }
@@ -80,11 +89,17 @@ namespace Stripe
         [JsonProperty("multibanco")]
         public PaymentIntentPaymentMethodOptionsMultibanco Multibanco { get; set; }
 
+        [JsonProperty("naver_pay")]
+        public PaymentIntentPaymentMethodOptionsNaverPay NaverPay { get; set; }
+
         [JsonProperty("oxxo")]
         public PaymentIntentPaymentMethodOptionsOxxo Oxxo { get; set; }
 
         [JsonProperty("p24")]
         public PaymentIntentPaymentMethodOptionsP24 P24 { get; set; }
+
+        [JsonProperty("payco")]
+        public PaymentIntentPaymentMethodOptionsPayco Payco { get; set; }
 
         [JsonProperty("paynow")]
         public PaymentIntentPaymentMethodOptionsPaynow Paynow { get; set; }
@@ -100,6 +115,9 @@ namespace Stripe
 
         [JsonProperty("revolut_pay")]
         public PaymentIntentPaymentMethodOptionsRevolutPay RevolutPay { get; set; }
+
+        [JsonProperty("samsung_pay")]
+        public PaymentIntentPaymentMethodOptionsSamsungPay SamsungPay { get; set; }
 
         [JsonProperty("sepa_debit")]
         public PaymentIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
