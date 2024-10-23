@@ -777,6 +777,11 @@ namespace Stripe
         public const string IssuingTransactionCreated = "issuing_transaction.created";
 
         /// <summary>
+        /// Occurs whenever an issuing transaction is updated with receipt data.
+        /// </summary>
+        public const string IssuingTransactionPurchaseDetailsReceiptUpdated = "issuing_transaction.purchase_details_receipt_updated";
+
+        /// <summary>
         /// Occurs whenever an issuing transaction is updated.
         /// </summary>
         public const string IssuingTransactionUpdated = "issuing_transaction.updated";

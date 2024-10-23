@@ -34,6 +34,13 @@ namespace Stripe
         public SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
 
         /// <summary>
+        /// This sub-hash contains details about the Indonesia bank transfer payment method options
+        /// to pass to invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("id_bank_transfer")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsIdBankTransfer IdBankTransfer { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the Konbini payment method options to pass to
         /// invoices created by the subscription.
         /// </summary>

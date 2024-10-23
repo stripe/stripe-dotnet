@@ -203,6 +203,13 @@ namespace Stripe
         public PaymentMethodConfigurationGrabpayOptions Grabpay { get; set; }
 
         /// <summary>
+        /// Stripe users in Indonesia can receive bank transfers from customers in Indonesia. Bank
+        /// transfers are a popular B2C and B2B payment method in Indonesia.
+        /// </summary>
+        [JsonProperty("id_bank_transfer")]
+        public PaymentMethodConfigurationIdBankTransferOptions IdBankTransfer { get; set; }
+
+        /// <summary>
         /// iDEAL is a Netherlands-based payment method that allows customers to complete
         /// transactions online using their bank credentials. All major Dutch banks are members of
         /// Currence, the scheme that operates iDEAL, making it the most popular online payment
