@@ -56,11 +56,17 @@ namespace Stripe.Checkout
         [JsonProperty("ideal")]
         public SessionPaymentMethodOptionsIdeal Ideal { get; set; }
 
+        [JsonProperty("kakao_pay")]
+        public SessionPaymentMethodOptionsKakaoPay KakaoPay { get; set; }
+
         [JsonProperty("klarna")]
         public SessionPaymentMethodOptionsKlarna Klarna { get; set; }
 
         [JsonProperty("konbini")]
         public SessionPaymentMethodOptionsKonbini Konbini { get; set; }
+
+        [JsonProperty("kr_card")]
+        public SessionPaymentMethodOptionsKrCard KrCard { get; set; }
 
         [JsonProperty("link")]
         public SessionPaymentMethodOptionsLink Link { get; set; }
@@ -71,11 +77,17 @@ namespace Stripe.Checkout
         [JsonProperty("multibanco")]
         public SessionPaymentMethodOptionsMultibanco Multibanco { get; set; }
 
+        [JsonProperty("naver_pay")]
+        public SessionPaymentMethodOptionsNaverPay NaverPay { get; set; }
+
         [JsonProperty("oxxo")]
         public SessionPaymentMethodOptionsOxxo Oxxo { get; set; }
 
         [JsonProperty("p24")]
         public SessionPaymentMethodOptionsP24 P24 { get; set; }
+
+        [JsonProperty("payco")]
+        public SessionPaymentMethodOptionsPayco Payco { get; set; }
 
         [JsonProperty("paynow")]
         public SessionPaymentMethodOptionsPaynow Paynow { get; set; }
@@ -88,6 +100,9 @@ namespace Stripe.Checkout
 
         [JsonProperty("revolut_pay")]
         public SessionPaymentMethodOptionsRevolutPay RevolutPay { get; set; }
+
+        [JsonProperty("samsung_pay")]
+        public SessionPaymentMethodOptionsSamsungPay SamsungPay { get; set; }
 
         [JsonProperty("sepa_debit")]
         public SessionPaymentMethodOptionsSepaDebit SepaDebit { get; set; }

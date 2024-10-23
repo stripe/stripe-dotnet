@@ -40,6 +40,15 @@ namespace Stripe
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
+        /// The time when this invoice should be scheduled to finalize. The invoice will be
+        /// finalized at this time if it is still in draft state. To turn off automatic
+        /// finalization, set <c>auto_advance</c> to false.
+        /// </summary>
+        [JsonProperty("automatically_finalizes_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? AutomaticallyFinalizesAt { get; set; }
+
+        /// <summary>
         /// Either <c>charge_automatically</c> or <c>send_invoice</c>. This field can be updated
         /// only on <c>draft</c> invoices.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.

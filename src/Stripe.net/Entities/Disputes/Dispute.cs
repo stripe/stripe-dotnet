@@ -87,6 +87,12 @@ namespace Stripe
         [JsonProperty("currency")]
         public string Currency { get; set; }
 
+        /// <summary>
+        /// List of eligibility types that are included in <c>enhanced_evidence</c>.
+        /// </summary>
+        [JsonProperty("enhanced_eligibility_types")]
+        public List<string> EnhancedEligibilityTypes { get; set; }
+
         [JsonProperty("evidence")]
         public DisputeEvidence Evidence { get; set; }
 
