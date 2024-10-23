@@ -442,6 +442,22 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Trigger an external action on a PaymentIntent.</p>.
+        /// </summary>
+        public virtual PaymentIntent TriggerAction(string id, PaymentIntentTriggerActionOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/test/payment_intents/{WebUtility.UrlEncode(id)}/trigger_action", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Trigger an external action on a PaymentIntent.</p>.
+        /// </summary>
+        public virtual Task<PaymentIntent> TriggerActionAsync(string id, PaymentIntentTriggerActionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/test/payment_intents/{WebUtility.UrlEncode(id)}/trigger_action", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Updates properties on a PaymentIntent object without confirming.</p>.
         ///
         /// <p>Depending on which properties you update, you might need to confirm the PaymentIntent

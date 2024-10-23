@@ -183,6 +183,7 @@ namespace Stripe
         /// <c>issuing_personalization_design.updated</c>, <c>issuing_settlement.created</c>,
         /// <c>issuing_settlement.updated</c>, <c>issuing_token.created</c>,
         /// <c>issuing_token.updated</c>, <c>issuing_transaction.created</c>,
+        /// <c>issuing_transaction.purchase_details_receipt_updated</c>,
         /// <c>issuing_transaction.updated</c>, <c>mandate.updated</c>,
         /// <c>payment_intent.amount_capturable_updated</c>, <c>payment_intent.canceled</c>,
         /// <c>payment_intent.created</c>, <c>payment_intent.partially_funded</c>,

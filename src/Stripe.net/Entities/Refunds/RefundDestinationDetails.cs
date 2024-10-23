@@ -53,6 +53,9 @@ namespace Stripe
         [JsonProperty("grabpay")]
         public RefundDestinationDetailsGrabpay Grabpay { get; set; }
 
+        [JsonProperty("id_bank_transfer")]
+        public RefundDestinationDetailsIdBankTransfer IdBankTransfer { get; set; }
+
         [JsonProperty("jp_bank_transfer")]
         public RefundDestinationDetailsJpBankTransfer JpBankTransfer { get; set; }
 

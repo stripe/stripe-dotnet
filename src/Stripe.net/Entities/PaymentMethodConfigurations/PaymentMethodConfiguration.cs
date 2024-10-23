@@ -119,8 +119,14 @@ namespace Stripe
         [JsonProperty("google_pay")]
         public PaymentMethodConfigurationGooglePay GooglePay { get; set; }
 
+        [JsonProperty("gopay")]
+        public PaymentMethodConfigurationGopay Gopay { get; set; }
+
         [JsonProperty("grabpay")]
         public PaymentMethodConfigurationGrabpay Grabpay { get; set; }
+
+        [JsonProperty("id_bank_transfer")]
+        public PaymentMethodConfigurationIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
         public PaymentMethodConfigurationIdeal Ideal { get; set; }
@@ -187,11 +193,17 @@ namespace Stripe
         [JsonProperty("promptpay")]
         public PaymentMethodConfigurationPromptpay Promptpay { get; set; }
 
+        [JsonProperty("qris")]
+        public PaymentMethodConfigurationQris Qris { get; set; }
+
         [JsonProperty("revolut_pay")]
         public PaymentMethodConfigurationRevolutPay RevolutPay { get; set; }
 
         [JsonProperty("sepa_debit")]
         public PaymentMethodConfigurationSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("shopeepay")]
+        public PaymentMethodConfigurationShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
         public PaymentMethodConfigurationSofort Sofort { get; set; }

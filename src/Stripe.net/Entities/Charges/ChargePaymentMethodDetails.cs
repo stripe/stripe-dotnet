@@ -71,6 +71,9 @@ namespace Stripe
         [JsonProperty("grabpay")]
         public ChargePaymentMethodDetailsGrabpay Grabpay { get; set; }
 
+        [JsonProperty("id_bank_transfer")]
+        public ChargePaymentMethodDetailsIdBankTransfer IdBankTransfer { get; set; }
+
         [JsonProperty("ideal")]
         public ChargePaymentMethodDetailsIdeal Ideal { get; set; }
 

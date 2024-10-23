@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("bacs_debit_payments")]
         public AccountSettingsBacsDebitPayments BacsDebitPayments { get; set; }
 
+        [JsonProperty("bank_bca_onboarding")]
+        public AccountSettingsBankBcaOnboarding BankBcaOnboarding { get; set; }
+
         [JsonProperty("branding")]
         public AccountSettingsBranding Branding { get; set; }
 

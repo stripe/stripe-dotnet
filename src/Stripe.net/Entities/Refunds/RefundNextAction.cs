@@ -5,9 +5,6 @@ namespace Stripe
 
     public class RefundNextAction : StripeEntity<RefundNextAction>
     {
-        /// <summary>
-        /// Contains the refund details.
-        /// </summary>
         [JsonProperty("display_details")]
         public RefundNextActionDisplayDetails DisplayDetails { get; set; }
 

@@ -145,6 +145,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsGrabpayOptions Grabpay { get; set; }
 
         /// <summary>
+        /// If this is a <c>id_bank_transfer</c> PaymentMethod, this sub-hash contains details about
+        /// the Indonesia Bank Transfer payment method options.
+        /// </summary>
+        [JsonProperty("id_bank_transfer")]
+        public PaymentIntentPaymentMethodOptionsIdBankTransferOptions IdBankTransfer { get; set; }
+
+        /// <summary>
         /// If this is a <c>ideal</c> PaymentMethod, this sub-hash contains details about the Ideal
         /// payment method options.
         /// </summary>

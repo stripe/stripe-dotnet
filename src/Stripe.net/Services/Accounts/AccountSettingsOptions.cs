@@ -12,6 +12,12 @@ namespace Stripe
         public AccountSettingsBacsDebitPaymentsOptions BacsDebitPayments { get; set; }
 
         /// <summary>
+        /// Settings specific to bank BCA onboarding for Indonesia bank transfers payments method.
+        /// </summary>
+        [JsonProperty("bank_bca_onboarding")]
+        public AccountSettingsBankBcaOnboardingOptions BankBcaOnboarding { get; set; }
+
+        /// <summary>
         /// Settings used to apply the account's branding to email receipts, invoices, Checkout, and
         /// other products.
         /// </summary>
