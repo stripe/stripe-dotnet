@@ -22,7 +22,7 @@ namespace Stripe
             // If the event api version is from before we started adding
             // a release train, there's no way its compatible with this
             // version
-            if (eventApiVersion.IndexOf(".") < 0)
+            if (!eventApiVersion.Contains("."))
             {
                 return false;
             }
