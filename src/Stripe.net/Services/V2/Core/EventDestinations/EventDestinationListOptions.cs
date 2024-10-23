@@ -1,15 +1,17 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Core
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class EventListOptions : ListOptions
+    public class EventDestinationListOptions : ListOptions
     {
         /// <summary>
-        /// Primary object ID used to retrieve related events.
+        /// Additional fields to include in the response. Currently supports
+        /// <c>webhook_endpoint.url</c>.
         /// </summary>
-        [JsonProperty("object_id")]
-        public string ObjectId { get; set; }
+        [JsonProperty("include")]
+        public List<string> Include { get; set; }
 
         /// <summary>
         /// The requested page.
