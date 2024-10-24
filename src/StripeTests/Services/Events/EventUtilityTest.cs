@@ -83,39 +83,18 @@ namespace StripeTests
         public void AcceptsExpectedApiVersion()
         {
             var evt = Event.FromJson(this.json);
-            evt.ApiVersion = StripeConfiguration.TrimmedApiVersion;
+            evt.ApiVersion = ApiVersion.Current;
             var serialized = evt.ToJson();
 
             evt = EventUtility.ParseEvent(serialized);
-            Assert.Equal(StripeConfiguration.TrimmedApiVersion, evt.ApiVersion);
-        }
-
-        [Fact]
-        public void AcceptsExpectedApiVersionWhenConfiguredWithBeta()
-        {
-            string oldVersion = StripeConfiguration.ApiVersion;
-            try
-            {
-                StripeConfiguration.ApiVersion = "2022-08-02; feature_in_beta=v3";
-
-                var evt = Event.FromJson(this.json);
-                evt.ApiVersion = "2022-08-02";
-                var serialized = evt.ToJson();
-
-                evt = EventUtility.ParseEvent(serialized);
-                Assert.Equal("2022-08-02", evt.ApiVersion);
-            }
-            finally
-            {
-                StripeConfiguration.ApiVersion = oldVersion;
-            }
+            Assert.Equal(ApiVersion.Current, evt.ApiVersion);
         }
 
         [Fact]
         public void AcceptsNewApiVersionInExpectedReleaseTrain()
         {
             var evt = Event.FromJson(this.json);
-            var expectedReleaseTrain = StripeConfiguration.ApiVersion.Split('.')[1];
+            var expectedReleaseTrain = StripeConfiguration.TrimmedApiVersion.Split('.')[1];
             evt.ApiVersion = "2999-10-10." + expectedReleaseTrain;
             var serialized = evt.ToJson();
 

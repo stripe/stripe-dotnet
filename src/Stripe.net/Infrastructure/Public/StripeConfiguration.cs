@@ -38,7 +38,7 @@ namespace Stripe
         public static string ApiVersion
         {
             get => apiVersion;
-            set
+            private set
             {
                 apiVersion = value;
                 TrimmedApiVersion = StringUtils.TrimApiVersion(value);
