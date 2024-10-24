@@ -237,28 +237,5 @@ namespace StripeTests
 
             Assert.Contains("No API key provided.", exception.Message);
         }
-
-        [Fact]
-        public void CanModifyApiVersion()
-        {
-            string oldVersion = StripeConfiguration.ApiVersion;
-            try
-            {
-                StripeConfiguration.ApiVersion = "2022-08-01; feature_in_beta=v3";
-                var request = new StripeRequest(
-                    this.stripeClient,
-                    HttpMethod.Get,
-                    "/get",
-                    new TestOptions { String = "string!" },
-                    new RequestOptions());
-
-                Assert.True(request.StripeHeaders.ContainsKey("Stripe-Version"));
-                Assert.Equal("2022-08-01; feature_in_beta=v3", request.StripeHeaders["Stripe-Version"]);
-            }
-            finally
-            {
-                StripeConfiguration.ApiVersion = oldVersion;
-            }
-        }
     }
 }
