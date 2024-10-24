@@ -24,6 +24,12 @@ namespace Stripe
         public AccountCapabilitiesAfterpayClearpayPaymentsOptions AfterpayClearpayPayments { get; set; }
 
         /// <summary>
+        /// The alma_payments capability.
+        /// </summary>
+        [JsonProperty("alma_payments")]
+        public AccountCapabilitiesAlmaPaymentsOptions AlmaPayments { get; set; }
+
+        /// <summary>
         /// The amazon_pay_payments capability.
         /// </summary>
         [JsonProperty("amazon_pay_payments")]
@@ -144,6 +150,12 @@ namespace Stripe
         public AccountCapabilitiesJpBankTransferPaymentsOptions JpBankTransferPayments { get; set; }
 
         /// <summary>
+        /// The kakao_pay_payments capability.
+        /// </summary>
+        [JsonProperty("kakao_pay_payments")]
+        public AccountCapabilitiesKakaoPayPaymentsOptions KakaoPayPayments { get; set; }
+
+        /// <summary>
         /// The klarna_payments capability.
         /// </summary>
         [JsonProperty("klarna_payments")]
@@ -154,6 +166,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("konbini_payments")]
         public AccountCapabilitiesKonbiniPaymentsOptions KonbiniPayments { get; set; }
+
+        /// <summary>
+        /// The kr_card_payments capability.
+        /// </summary>
+        [JsonProperty("kr_card_payments")]
+        public AccountCapabilitiesKrCardPaymentsOptions KrCardPayments { get; set; }
 
         /// <summary>
         /// The legacy_payments capability.
@@ -186,6 +204,12 @@ namespace Stripe
         public AccountCapabilitiesMxBankTransferPaymentsOptions MxBankTransferPayments { get; set; }
 
         /// <summary>
+        /// The naver_pay_payments capability.
+        /// </summary>
+        [JsonProperty("naver_pay_payments")]
+        public AccountCapabilitiesNaverPayPaymentsOptions NaverPayPayments { get; set; }
+
+        /// <summary>
         /// The oxxo_payments capability.
         /// </summary>
         [JsonProperty("oxxo_payments")]
@@ -196,6 +220,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("p24_payments")]
         public AccountCapabilitiesP24PaymentsOptions P24Payments { get; set; }
+
+        /// <summary>
+        /// The payco_payments capability.
+        /// </summary>
+        [JsonProperty("payco_payments")]
+        public AccountCapabilitiesPaycoPaymentsOptions PaycoPayments { get; set; }
 
         /// <summary>
         /// The paynow_payments capability.
@@ -214,6 +244,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("revolut_pay_payments")]
         public AccountCapabilitiesRevolutPayPaymentsOptions RevolutPayPayments { get; set; }
+
+        /// <summary>
+        /// The samsung_pay_payments capability.
+        /// </summary>
+        [JsonProperty("samsung_pay_payments")]
+        public AccountCapabilitiesSamsungPayPaymentsOptions SamsungPayPayments { get; set; }
 
         /// <summary>
         /// The sepa_bank_transfer_payments capability.

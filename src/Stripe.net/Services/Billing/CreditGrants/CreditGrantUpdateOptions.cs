@@ -9,8 +9,8 @@ namespace Stripe.Billing
     public class CreditGrantUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The time when the credit created by this credit grant will expire. If set to empty, the
-        /// credit will never expire.
+        /// The time when the billing credits created by this credit grant will expire. If set to
+        /// empty, the billing credits will never expire.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

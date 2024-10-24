@@ -10,6 +10,9 @@ namespace Stripe.Billing
     /// example, you might create a billing meter to track the number of API calls made by a
     /// particular user. You can then attach the billing meter to a price and attach the price
     /// to a subscription to charge the user for the number of API calls they make.
+    ///
+    /// Related guide: <a href="https://docs.stripe.com/billing/subscriptions/usage-based">Usage
+    /// based billing</a>.
     /// </summary>
     public class Meter : StripeEntity<Meter>, IHasId, IHasObject
     {

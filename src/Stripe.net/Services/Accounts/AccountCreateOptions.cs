@@ -124,6 +124,13 @@ namespace Stripe
         public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount { get; set; }
 
         /// <summary>
+        /// A hash of account group type to tokens. These are account groups this account should be
+        /// added to.
+        /// </summary>
+        [JsonProperty("groups")]
+        public AccountGroupsOptions Groups { get; set; }
+
+        /// <summary>
         /// Information about the person represented by the account. This field is null unless
         /// <c>business_type</c> is set to <c>individual</c>. Once you create an <a
         /// href="https://stripe.com/api/account_links">Account Link</a> or <a

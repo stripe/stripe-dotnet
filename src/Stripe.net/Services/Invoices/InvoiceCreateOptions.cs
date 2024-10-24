@@ -41,6 +41,14 @@ namespace Stripe
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
+        /// The time when this invoice should be scheduled to finalize. The invoice will be
+        /// finalized at this time if it is still in draft state.
+        /// </summary>
+        [JsonProperty("automatically_finalizes_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? AutomaticallyFinalizesAt { get; set; }
+
+        /// <summary>
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
         /// Stripe will attempt to pay this invoice using the default source attached to the
         /// customer. When sending an invoice, Stripe will email this invoice to the customer with

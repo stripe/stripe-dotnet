@@ -34,5 +34,8 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("proration_behavior")]
         public string ProrationBehavior { get; set; }
+
+        [JsonProperty("schedule_at_period_end")]
+        public ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEnd ScheduleAtPeriodEnd { get; set; }
     }
 }

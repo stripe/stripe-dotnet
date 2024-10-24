@@ -58,7 +58,7 @@ namespace Stripe.Issuing
         public string ReplacementReason { get; set; }
 
         /// <summary>
-        /// The second line to print on the card.
+        /// The second line to print on the card. Max length: 24 characters.
         /// </summary>
         [JsonProperty("second_line")]
         public string SecondLine { get; set; }

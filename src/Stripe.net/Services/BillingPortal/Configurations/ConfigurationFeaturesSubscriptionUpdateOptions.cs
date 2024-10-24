@@ -33,5 +33,12 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("proration_behavior")]
         public string ProrationBehavior { get; set; }
+
+        /// <summary>
+        /// Setting to control when an update should be scheduled at the end of the period instead
+        /// of applying immediately.
+        /// </summary>
+        [JsonProperty("schedule_at_period_end")]
+        public ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEndOptions ScheduleAtPeriodEnd { get; set; }
     }
 }

@@ -10,7 +10,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (ID of the Invoice)
-        /// The invoice to which the credits were applied.
+        /// The invoice to which the billing credits were applied.
         /// </summary>
         [JsonIgnore]
         public string InvoiceId
@@ -21,7 +21,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (Expanded)
-        /// The invoice to which the credits were applied.
+        /// The invoice to which the billing credits were applied.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -38,7 +38,7 @@ namespace Stripe.Billing
         #endregion
 
         /// <summary>
-        /// The invoice line item to which the credits were applied.
+        /// The invoice line item to which the billing credits were applied.
         /// </summary>
         [JsonProperty("invoice_line_item")]
         public string InvoiceLineItem { get; set; }

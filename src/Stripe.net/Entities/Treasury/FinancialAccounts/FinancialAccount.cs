@@ -114,7 +114,7 @@ namespace Stripe.Treasury
         public List<string> RestrictedFeatures { get; set; }
 
         /// <summary>
-        /// The enum specifying what state the account is in.
+        /// Status of this FinancialAccount.
         /// One of: <c>closed</c>, or <c>open</c>.
         /// </summary>
         [JsonProperty("status")]

@@ -115,7 +115,7 @@ namespace Stripe
         public PersonFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
-        /// The person's gender (International regulations require either "male" or "female").
+        /// The person's gender.
         /// </summary>
         [JsonProperty("gender")]
         public string Gender { get; set; }

@@ -34,6 +34,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsAlipayOptions Alipay { get; set; }
 
         /// <summary>
+        /// If this is a <c>alma</c> PaymentMethod, this sub-hash contains details about the Alma
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("alma")]
+        public PaymentIntentPaymentMethodOptionsAlmaOptions Alma { get; set; }
+
+        /// <summary>
         /// If this is a <c>amazon_pay</c> PaymentMethod, this sub-hash contains details about the
         /// Amazon Pay payment method options.
         /// </summary>
@@ -145,6 +152,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsInteracPresentOptions InteracPresent { get; set; }
 
         /// <summary>
+        /// If this is a <c>kakao_pay</c> PaymentMethod, this sub-hash contains details about the
+        /// Kakao Pay payment method options.
+        /// </summary>
+        [JsonProperty("kakao_pay")]
+        public PaymentIntentPaymentMethodOptionsKakaoPayOptions KakaoPay { get; set; }
+
+        /// <summary>
         /// If this is a <c>klarna</c> PaymentMethod, this sub-hash contains details about the
         /// Klarna payment method options.
         /// </summary>
@@ -157,6 +171,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("konbini")]
         public PaymentIntentPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
+
+        /// <summary>
+        /// If this is a <c>kr_card</c> PaymentMethod, this sub-hash contains details about the KR
+        /// Card payment method options.
+        /// </summary>
+        [JsonProperty("kr_card")]
+        public PaymentIntentPaymentMethodOptionsKrCardOptions KrCard { get; set; }
 
         /// <summary>
         /// If this is a <c>link</c> PaymentMethod, this sub-hash contains details about the Link
@@ -180,6 +201,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsMultibancoOptions Multibanco { get; set; }
 
         /// <summary>
+        /// If this is a <c>naver_pay</c> PaymentMethod, this sub-hash contains details about the
+        /// Naver Pay payment method options.
+        /// </summary>
+        [JsonProperty("naver_pay")]
+        public PaymentIntentPaymentMethodOptionsNaverPayOptions NaverPay { get; set; }
+
+        /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO
         /// payment method options.
         /// </summary>
@@ -192,6 +220,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("p24")]
         public PaymentIntentPaymentMethodOptionsP24Options P24 { get; set; }
+
+        /// <summary>
+        /// If this is a <c>payco</c> PaymentMethod, this sub-hash contains details about the PAYCO
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("payco")]
+        public PaymentIntentPaymentMethodOptionsPaycoOptions Payco { get; set; }
 
         /// <summary>
         /// If this is a <c>paynow</c> PaymentMethod, this sub-hash contains details about the
@@ -227,6 +262,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("revolut_pay")]
         public PaymentIntentPaymentMethodOptionsRevolutPayOptions RevolutPay { get; set; }
+
+        /// <summary>
+        /// If this is a <c>samsung_pay</c> PaymentMethod, this sub-hash contains details about the
+        /// Samsung Pay payment method options.
+        /// </summary>
+        [JsonProperty("samsung_pay")]
+        public PaymentIntentPaymentMethodOptionsSamsungPayOptions SamsungPay { get; set; }
 
         /// <summary>
         /// If this is a <c>sepa_debit</c> PaymentIntent, this sub-hash contains details about the

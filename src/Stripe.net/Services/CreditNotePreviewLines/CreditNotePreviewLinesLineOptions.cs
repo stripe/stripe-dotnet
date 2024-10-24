@@ -8,6 +8,8 @@ namespace Stripe
     {
         /// <summary>
         /// The line item amount to credit. Only valid when <c>type</c> is <c>invoice_line_item</c>.
+        /// If invoice is set up with <c>automatic_tax[enabled]=true</c>, this amount is tax
+        /// exclusive.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; }

@@ -30,6 +30,14 @@ namespace Stripe
         public string AfterpayClearpayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Alma capability of the account, or whether the account can directly
+        /// process Alma payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("alma_payments")]
+        public string AlmaPayments { get; set; }
+
+        /// <summary>
         /// The status of the AmazonPay capability of the account, or whether the account can
         /// directly process AmazonPay payments.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -190,6 +198,14 @@ namespace Stripe
         public string JpBankTransferPayments { get; set; }
 
         /// <summary>
+        /// The status of the KakaoPay capability of the account, or whether the account can
+        /// directly process KakaoPay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("kakao_pay_payments")]
+        public string KakaoPayPayments { get; set; }
+
+        /// <summary>
         /// The status of the Klarna payments capability of the account, or whether the account can
         /// directly process Klarna charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -204,6 +220,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("konbini_payments")]
         public string KonbiniPayments { get; set; }
+
+        /// <summary>
+        /// The status of the KrCard capability of the account, or whether the account can directly
+        /// process KrCard payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("kr_card_payments")]
+        public string KrCardPayments { get; set; }
 
         /// <summary>
         /// The status of the legacy payments capability of the account.
@@ -245,6 +269,14 @@ namespace Stripe
         public string MxBankTransferPayments { get; set; }
 
         /// <summary>
+        /// The status of the NaverPay capability of the account, or whether the account can
+        /// directly process NaverPay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("naver_pay_payments")]
+        public string NaverPayPayments { get; set; }
+
+        /// <summary>
         /// The status of the OXXO payments capability of the account, or whether the account can
         /// directly process OXXO charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -259,6 +291,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("p24_payments")]
         public string P24Payments { get; set; }
+
+        /// <summary>
+        /// The status of the Payco capability of the account, or whether the account can directly
+        /// process Payco payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("payco_payments")]
+        public string PaycoPayments { get; set; }
 
         /// <summary>
         /// The status of the paynow payments capability of the account, or whether the account can
@@ -283,6 +323,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("revolut_pay_payments")]
         public string RevolutPayPayments { get; set; }
+
+        /// <summary>
+        /// The status of the SamsungPay capability of the account, or whether the account can
+        /// directly process SamsungPay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("samsung_pay_payments")]
+        public string SamsungPayPayments { get; set; }
 
         /// <summary>
         /// The status of the SEPA customer_balance payments (EUR currency) capability of the

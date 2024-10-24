@@ -98,6 +98,12 @@ namespace Stripe
         public string DuplicateChargeId { get; set; }
 
         /// <summary>
+        /// Additional evidence for qualifying evidence programs.
+        /// </summary>
+        [JsonProperty("enhanced_evidence")]
+        public DisputeEvidenceEnhancedEvidenceOptions EnhancedEvidence { get; set; }
+
+        /// <summary>
         /// A description of the product or service that was sold. Has a maximum character count of
         /// 20,000.
         /// </summary>

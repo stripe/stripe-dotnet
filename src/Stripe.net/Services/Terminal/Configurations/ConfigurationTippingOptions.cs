@@ -72,6 +72,12 @@ namespace Stripe.Terminal
         public ConfigurationTippingNzdOptions Nzd { get; set; }
 
         /// <summary>
+        /// Tipping configuration for PLN.
+        /// </summary>
+        [JsonProperty("pln")]
+        public ConfigurationTippingPlnOptions Pln { get; set; }
+
+        /// <summary>
         /// Tipping configuration for SEK.
         /// </summary>
         [JsonProperty("sek")]

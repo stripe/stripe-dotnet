@@ -205,6 +205,9 @@ namespace Stripe
         [JsonProperty("duplicate_charge_id")]
         public string DuplicateChargeId { get; set; }
 
+        [JsonProperty("enhanced_evidence")]
+        public DisputeEvidenceEnhancedEvidence EnhancedEvidence { get; set; }
+
         /// <summary>
         /// A description of the product or service that was sold.
         /// </summary>

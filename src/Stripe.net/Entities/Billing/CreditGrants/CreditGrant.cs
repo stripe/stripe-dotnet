@@ -7,7 +7,12 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A credit grant is a resource that records a grant of some credit to a customer.
+    /// A credit grant is an API resource that documents the allocation of some billing credits
+    /// to a customer.
+    ///
+    /// Related guide: <a
+    /// href="https://docs.stripe.com/billing/subscriptions/usage-based/billing-credits">Billing
+    /// credits</a> end.
     /// </summary>
     public class CreditGrant : StripeEntity<CreditGrant>, IHasId, IHasMetadata, IHasObject
     {
@@ -30,7 +35,8 @@ namespace Stripe.Billing
         public CreditGrantApplicabilityConfig ApplicabilityConfig { get; set; }
 
         /// <summary>
-        /// The category of this credit grant.
+        /// The category of this credit grant. This is for tracking purposes and will not be
+        /// displayed to the customer.
         /// One of: <c>paid</c>, or <c>promotional</c>.
         /// </summary>
         [JsonProperty("category")]
@@ -47,7 +53,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (ID of the Customer)
-        /// Id of the customer to whom the credit was granted.
+        /// ID of the customer to whom the billing credits are granted.
         /// </summary>
         [JsonIgnore]
         public string CustomerId
@@ -58,7 +64,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (Expanded)
-        /// Id of the customer to whom the credit was granted.
+        /// ID of the customer to whom the billing credits are granted.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -75,14 +81,16 @@ namespace Stripe.Billing
         #endregion
 
         /// <summary>
-        /// The time when the credit becomes effective i.e when it is eligible to be used.
+        /// The time when the billing credits become effective i.e when they are eligible to be
+        /// used.
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EffectiveAt { get; set; }
 
         /// <summary>
-        /// The time when the credit will expire. If not present, the credit will never expire.
+        /// The time when the billing credits will expire. If not present, the billing credits will
+        /// never expire.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -104,7 +112,7 @@ namespace Stripe.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A descriptive name shown in dashboard and on invoices.
+        /// A descriptive name shown in dashboard.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
