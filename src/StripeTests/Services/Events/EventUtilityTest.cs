@@ -112,12 +112,37 @@ namespace StripeTests
         }
 
         [Fact]
-        public void ThrowsOnApiVersionMismatch()
+        public void AcceptsNewApiVersionInExpectedReleaseTrain()
+        {
+            var evt = Event.FromJson(this.json);
+            var expectedReleaseTrain = StripeConfiguration.ApiVersion.Split('.')[1];
+            evt.ApiVersion = "2999-10-10." + expectedReleaseTrain;
+            var serialized = evt.ToJson();
+
+            evt = EventUtility.ParseEvent(serialized);
+            Assert.EndsWith($".{expectedReleaseTrain}", evt.ApiVersion);
+        }
+
+        [Fact]
+        public void ThrowsOnLegacyApiVersionMismatch()
         {
             var exception = Assert.Throws<StripeException>(() =>
                 EventUtility.ParseEvent(this.json));
 
             Assert.Contains("Received event with API version 2017-05-25", exception.Message);
+        }
+
+        [Fact]
+        public void ThrowsOnReleaseTrainMismatch()
+        {
+            var evt = Event.FromJson(this.json);
+            evt.ApiVersion = "2999-10-10.the_larch";
+            var serialized = evt.ToJson();
+
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ParseEvent(serialized));
+
+            Assert.Contains("Received event with API version 2999-10-10.the_larch", exception.Message);
         }
 
         [Fact]
