@@ -61,7 +61,7 @@ namespace Stripe
         internal ApiRequestor Requestor
         {
 #pragma warning disable CS0618 // Type or member is obsolete
-            get => this.requestor ?? new ApiRequestorAdapter(this.Client);
+            get => this.requestor ?? ApiRequestorAdapter.Adapt(this.Client);
 #pragma warning restore CS0618 // Type or member is obsolete
         }
 
@@ -281,7 +281,7 @@ namespace Stripe
                 url,
                 options,
                 requestOptions,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
 
             while (true)
             {
@@ -315,7 +315,7 @@ namespace Stripe
                     page.NextPageUrl,
                     new BaseOptions(),
                     requestOptions,
-                    cancellationToken);
+                    cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -358,7 +358,7 @@ namespace Stripe
                 url,
                 options,
                 requestOptions,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
 
             options = options ?? new ListOptions();
             bool iterateBackward = false;
@@ -417,7 +417,7 @@ namespace Stripe
                     url,
                     options,
                     requestOptions,
-                    cancellationToken);
+                    cancellationToken).ConfigureAwait(false);
             }
         }
 
@@ -498,7 +498,7 @@ namespace Stripe
                 url,
                 options,
                 requestOptions,
-                cancellationToken);
+                cancellationToken).ConfigureAwait(false);
 
             options = options ?? new SearchOptions();
 
@@ -532,7 +532,7 @@ namespace Stripe
                     url,
                     options,
                     requestOptions,
-                    cancellationToken);
+                    cancellationToken).ConfigureAwait(false);
             }
         }
     }
