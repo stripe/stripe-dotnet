@@ -27,7 +27,7 @@ namespace Stripe
 
         static StripeConfiguration()
         {
-            StripeNetVersion = new AssemblyName(typeof(StripeConfiguration).GetTypeInfo().Assembly.FullName).Version.ToString(3);
+            StripeNetVersion = Stripe.Version.Current;
         }
 
         /// <summary>API version used by Stripe.net.</summary>
