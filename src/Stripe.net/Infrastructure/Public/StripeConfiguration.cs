@@ -24,7 +24,6 @@ namespace Stripe
         private static int maxNetworkRetries = SystemNetHttpClient.DefaultMaxNumberRetries;
 
         private static IStripeClient stripeClient;
-        private static string apiVersion;
 
         static StripeConfiguration()
         {
@@ -32,17 +31,11 @@ namespace Stripe
             ApiVersion = Stripe.ApiVersion.Current;
         }
 
-        internal static string TrimmedApiVersion { get; private set; }
-
         /// <summary>API version used by Stripe.net.</summary>
         public static string ApiVersion
         {
-            get => apiVersion;
-            set
-            {
-                apiVersion = value;
-                TrimmedApiVersion = StringUtils.TrimApiVersion(value);
-            }
+            get;
+            private set;
         }
 
         /// <summary>Gets or sets the API key.</summary>

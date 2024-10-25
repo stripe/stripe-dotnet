@@ -83,41 +83,45 @@ namespace StripeTests
         public void AcceptsExpectedApiVersion()
         {
             var evt = Event.FromJson(this.json);
-            evt.ApiVersion = StripeConfiguration.TrimmedApiVersion;
+            evt.ApiVersion = ApiVersion.Current;
             var serialized = evt.ToJson();
 
             evt = EventUtility.ParseEvent(serialized);
-            Assert.Equal(StripeConfiguration.TrimmedApiVersion, evt.ApiVersion);
+            Assert.Equal(ApiVersion.Current, evt.ApiVersion);
         }
 
         [Fact]
-        public void AcceptsExpectedApiVersionWhenConfiguredWithBeta()
+        public void AcceptsNewApiVersionInExpectedReleaseTrain()
         {
-            string oldVersion = StripeConfiguration.ApiVersion;
-            try
-            {
-                StripeConfiguration.ApiVersion = "2022-08-02; feature_in_beta=v3";
+            var evt = Event.FromJson(this.json);
+            var expectedReleaseTrain = ApiVersion.Current.Split('.')[1];
+            evt.ApiVersion = "2999-10-10." + expectedReleaseTrain;
+            var serialized = evt.ToJson();
 
-                var evt = Event.FromJson(this.json);
-                evt.ApiVersion = "2022-08-02";
-                var serialized = evt.ToJson();
-
-                evt = EventUtility.ParseEvent(serialized);
-                Assert.Equal("2022-08-02", evt.ApiVersion);
-            }
-            finally
-            {
-                StripeConfiguration.ApiVersion = oldVersion;
-            }
+            evt = EventUtility.ParseEvent(serialized);
+            Assert.EndsWith($".{expectedReleaseTrain}", evt.ApiVersion);
         }
 
         [Fact]
-        public void ThrowsOnApiVersionMismatch()
+        public void ThrowsOnLegacyApiVersionMismatch()
         {
             var exception = Assert.Throws<StripeException>(() =>
                 EventUtility.ParseEvent(this.json));
 
             Assert.Contains("Received event with API version 2017-05-25", exception.Message);
+        }
+
+        [Fact]
+        public void ThrowsOnReleaseTrainMismatch()
+        {
+            var evt = Event.FromJson(this.json);
+            evt.ApiVersion = "2999-10-10.the_larch";
+            var serialized = evt.ToJson();
+
+            var exception = Assert.Throws<StripeException>(() =>
+                EventUtility.ParseEvent(serialized));
+
+            Assert.Contains("Received event with API version 2999-10-10.the_larch", exception.Message);
         }
 
         [Fact]
