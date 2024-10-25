@@ -94,7 +94,7 @@ namespace StripeTests
         public void AcceptsNewApiVersionInExpectedReleaseTrain()
         {
             var evt = Event.FromJson(this.json);
-            var expectedReleaseTrain = StripeConfiguration.TrimmedApiVersion.Split('.')[1];
+            var expectedReleaseTrain = ApiVersion.Current.Split('.')[1];
             evt.ApiVersion = "2999-10-10." + expectedReleaseTrain;
             var serialized = evt.ToJson();
 
