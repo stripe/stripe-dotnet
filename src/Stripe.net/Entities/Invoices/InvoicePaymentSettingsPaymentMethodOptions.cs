@@ -34,6 +34,13 @@ namespace Stripe
         public InvoicePaymentSettingsPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
 
         /// <summary>
+        /// If paying by <c>id_bank_transfer</c>, this sub-hash contains details about the Indonesia
+        /// bank transfer payment method options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("id_bank_transfer")]
+        public InvoicePaymentSettingsPaymentMethodOptionsIdBankTransfer IdBankTransfer { get; set; }
+
+        /// <summary>
         /// If paying by <c>konbini</c>, this sub-hash contains details about the Konbini payment
         /// method options to pass to the invoice’s PaymentIntent.
         /// </summary>

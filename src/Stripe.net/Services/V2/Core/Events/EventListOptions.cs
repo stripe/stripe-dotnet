@@ -12,7 +12,7 @@ namespace Stripe.V2.Core
         public string ObjectId { get; set; }
 
         /// <summary>
-        /// The requested page number.
+        /// The requested page.
         /// </summary>
         [JsonProperty("page")]
         public string Page { get; set; }
