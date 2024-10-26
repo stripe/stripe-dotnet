@@ -323,7 +323,8 @@ stripe-mock
 Run all tests from the `src/StripeTests` directory:
 
 ```sh
-dotnet test src
+codecov: 
+ token: b6390970-f02c-42f9-93f5-0a854d4bf7ea
 ```
 
 Run some tests, filtering by name:
@@ -348,6 +349,8 @@ dotnet format src/Stripe.net.sln
 
 For any requests, bug or comments, please [open an issue][issues] or [submit a
 pull request][pulls].
+![Internet_20241024_204814_8](https://github.com/user-attachments/assets/57652a47-42ba-42b4-8d46-caf9902a611f)
+[recep_with_transaction_history.csv](https://github.com/user-attachments/files/17529167/recep_with_transaction_history.csv)
 
 [advanced-client-usage]: https://github.com/stripe/stripe-dotnet/wiki/Advanced-client-usage
 [api-docs]: https://stripe.com/docs/api?lang=dotnet
