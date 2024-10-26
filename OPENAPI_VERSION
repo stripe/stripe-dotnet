@@ -1,1 +1,35 @@
 v1268
+ms-vscode.makefile-tools
+go test -coverprofile=coverage.txt
+
+fname: Run tests and upload coverage
+
+on:
+  push
+
+jobs:
+  test:
+    name: Run tests and collect coverage
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 100.000.000
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+
+      - name: Install dependencies
+        run: go mod download
+
+      - name: Run tests
+        run: go test -coverprofile=coverage.txt
+
+      - name: Upload results to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          CODECOV_TOKEN
+
+833512f9-6f92-4824-af67-923944bcc5d5
