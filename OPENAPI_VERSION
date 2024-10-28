@@ -50,3 +50,65 @@ jobs:
     # Bir bağımlılık dosyasının yolunu belirtmek için kullanılır: package-lock.json, yarn.lock, vb. Birden fazla bağımlılığı önbelleğe almak için joker karakterleri veya dosya adları listesini destekler.
     önbellek-bağımlılık-yolu: # isteğe bağlı
 
+[
+    {
+        "txid": "e706e730dc0ce230d57e89fbdfee21efe2f815c0797895a90fe7824a3ae6d4e8",
+        "fee": 825,
+        "vsize": 164,
+        "value": 551232
+    },
+    {
+        "txid": "7826d86c4153e95c186f47a2f6ede72a22c742b8865918d49fb809583ea7c54d",
+        "fee": 338,
+        "vsize": 142,
+        "value": 10536
+    },
+    {
+        "txid": "e6dc8fe7da5cdd9b347bfdb130830ce6e8a151f9bc7c6ece23313565724849af",
+        "fee": 700,
+        "vsize": 348,
+        "value": 6934
+    },
+    {
+        "txid": "88f02df71a89a74de2f46e79467359861d1acff04ff9c6daaef09fe31ef2c276",
+        "fee": 320,
+        "vsize": 128,
+        "value": 650
+    },
+    {
+        "txid": "e1fc66d9914a81e515fe1a320c95711f50cfdc01ba24158f83b4ba54acf67add",
+        "fee": 288,
+        "vsize": 137,
+        "value": 618
+    },
+    {
+        "txid": "e63ed3d66942ef2542b8a9b238431e0c4375659ea9400e2e0c71570e6869c35a",
+        "fee": 465,
+        "vsize": 208,
+        "value": 920674
+    },
+    {
+        "txid": "f46ad6e7a5540da7c3d139540b3405f21f0731d0adfe675ba2e3e0f611707684",
+        "fee": 20526,
+        "vsize": 6829,
+        "value": 1463784
+    },
+    {
+        "txid": "bf7b5e8469b4bac4d15a2f3cfb2194e25890a54f398467763c652137ee48b9bc",
+        "fee": 4108,
+        "vsize": 313,
+        "value": 816007
+    },
+    {
+        "txid": "69c9d652058ced0d1647e90f7c036abece2c8d637a0acb0a40ed53c4d65e9afd",
+        "fee": 304,
+        "vsize": 151,
+        "value": 850
+    },
+    {
+        "txid": "66179d401920960822f8bf1c3809f66b1b8d97c43317e8f492b81429b0b2d2a6",
+        "fee": 6760,
+        "vsize": 517,
+        "value": 132235
+    }
+]
