@@ -93,8 +93,6 @@ namespace StripeTests
                 StripeConfiguration.ApiKey = origApiKey;
             }
         }
-
-        [Fact]
         public void StripeClient_Getter_ShouldAllowBetaVersionsToBeAddedOnceOnly()
         {
             StripeConfiguration.AddBetaVersion("feature_beta", "v3");
@@ -102,6 +100,15 @@ namespace StripeTests
 
             var exception = Record.Exception(() => StripeConfiguration.AddBetaVersion("feature_beta", "v2"));
             Assert.NotNull(exception);
+        }
+
+        public void StripeClient_Getter_ShouldAllowSecondBetaVersionsToBeAdded()
+        {
+            StripeConfiguration.AddBetaVersion("feature_beta", "v3");
+            Assert.Equal(ApiVersion.Current + "; feature_beta=v3", StripeConfiguration.ApiVersion);
+
+            StripeConfiguration.AddBetaVersion("next_feature_beta", "v4");
+            Assert.Equal(ApiVersion.Current + "; feature_beta=v3; next_feature_beta=v4", StripeConfiguration.ApiVersion);
         }
     }
 }
