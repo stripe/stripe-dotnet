@@ -34,7 +34,8 @@ namespace Stripe
         /// <c>2019-08-14</c>, <c>2019-09-09</c>, <c>2019-10-08</c>, <c>2019-10-17</c>,
         /// <c>2019-11-05</c>, <c>2019-12-03</c>, <c>2020-03-02</c>, <c>2020-08-27</c>,
         /// <c>2022-08-01</c>, <c>2022-11-15</c>, <c>2023-08-16</c>, <c>2023-10-16</c>,
-        /// <c>2024-04-10</c>, <c>2024-06-20</c>, or <c>2024-09-30.acacia</c>.
+        /// <c>2024-04-10</c>, <c>2024-06-20</c>, <c>2024-09-30.acacia</c>, or
+        /// <c>2024-10-28.acacia</c>.
         /// </summary>
         [JsonProperty("api_version")]
         public string ApiVersion { get; set; }
@@ -134,6 +135,7 @@ namespace Stripe
         /// <c>issuing_personalization_design.updated</c>, <c>issuing_settlement.created</c>,
         /// <c>issuing_settlement.updated</c>, <c>issuing_token.created</c>,
         /// <c>issuing_token.updated</c>, <c>issuing_transaction.created</c>,
+        /// <c>issuing_transaction.purchase_details_receipt_updated</c>,
         /// <c>issuing_transaction.updated</c>, <c>mandate.updated</c>,
         /// <c>payment_intent.amount_capturable_updated</c>, <c>payment_intent.canceled</c>,
         /// <c>payment_intent.created</c>, <c>payment_intent.partially_funded</c>,

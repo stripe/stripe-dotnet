@@ -125,6 +125,9 @@ namespace Stripe
         [JsonProperty("payouts_list")]
         public AccountSessionComponentsPayoutsListOptions PayoutsList { get; set; }
 
+        /// <summary>
+        /// Configuration for the recipients component.
+        /// </summary>
         [JsonProperty("recipients")]
         public AccountSessionComponentsRecipientsOptions Recipients { get; set; }
 
