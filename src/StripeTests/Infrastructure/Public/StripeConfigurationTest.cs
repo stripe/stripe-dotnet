@@ -93,6 +93,8 @@ namespace StripeTests
                 StripeConfiguration.ApiKey = origApiKey;
             }
         }
+
+        [Fact]
         public void StripeClient_Getter_ShouldAllowBetaVersionsToBeAddedOnceOnly()
         {
             StripeConfiguration.AddBetaVersion("feature_beta", "v3");
@@ -102,6 +104,7 @@ namespace StripeTests
             Assert.NotNull(exception);
         }
 
+        [Fact]
         public void StripeClient_Getter_ShouldAllowSecondBetaVersionsToBeAdded()
         {
             StripeConfiguration.AddBetaVersion("feature_beta", "v3");
