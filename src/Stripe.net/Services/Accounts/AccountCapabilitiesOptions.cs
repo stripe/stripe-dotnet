@@ -132,6 +132,18 @@ namespace Stripe
         public AccountCapabilitiesGrabpayPaymentsOptions GrabpayPayments { get; set; }
 
         /// <summary>
+        /// The id_bank_transfer_payments capability.
+        /// </summary>
+        [JsonProperty("id_bank_transfer_payments")]
+        public AccountCapabilitiesIdBankTransferPaymentsOptions IdBankTransferPayments { get; set; }
+
+        /// <summary>
+        /// The id_bank_transfer_payments_bca capability.
+        /// </summary>
+        [JsonProperty("id_bank_transfer_payments_bca")]
+        public AccountCapabilitiesIdBankTransferPaymentsBcaOptions IdBankTransferPaymentsBca { get; set; }
+
+        /// <summary>
         /// The ideal_payments capability.
         /// </summary>
         [JsonProperty("ideal_payments")]

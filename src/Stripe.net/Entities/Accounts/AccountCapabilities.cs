@@ -174,6 +174,21 @@ namespace Stripe
         public string GrabpayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Indonesia Bank Transfer payments capability of the account, or whether
+        /// the account can directly process Indonesia Bank Transfer charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("id_bank_transfer_payments")]
+        public string IdBankTransferPayments { get; set; }
+
+        /// <summary>
+        /// The status of Bank BCA onboarding of the account.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("id_bank_transfer_payments_bca")]
+        public string IdBankTransferPaymentsBca { get; set; }
+
+        /// <summary>
         /// The status of the iDEAL payments capability of the account, or whether the account can
         /// directly process iDEAL charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
