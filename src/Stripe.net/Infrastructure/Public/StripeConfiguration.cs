@@ -260,6 +260,11 @@ namespace Stripe
             ApiVersion = $"{ApiVersion}; {betaName}={betaVersion}";
         }
 
+        internal static void ClearBetaVersion()
+        {
+            ApiVersion = Stripe.ApiVersion.Current;
+        }
+
         private static StripeClient BuildDefaultStripeClient()
         {
             if (ApiKey != null && ApiKey.Length == 0)

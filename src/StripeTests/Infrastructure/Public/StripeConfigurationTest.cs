@@ -97,6 +97,7 @@ namespace StripeTests
         [Fact]
         public void StripeClient_Getter_ShouldAllowBetaVersionsToBeAddedOnceOnly()
         {
+            StripeConfiguration.ClearBetaVersion();
             StripeConfiguration.AddBetaVersion("feature_beta", "v3");
             Assert.Equal(ApiVersion.Current + "; feature_beta=v3", StripeConfiguration.ApiVersion);
 
@@ -107,6 +108,7 @@ namespace StripeTests
         [Fact]
         public void StripeClient_Getter_ShouldAllowSecondBetaVersionsToBeAdded()
         {
+            StripeConfiguration.ClearBetaVersion();
             StripeConfiguration.AddBetaVersion("feature_beta", "v3");
             Assert.Equal(ApiVersion.Current + "; feature_beta=v3", StripeConfiguration.ApiVersion);
 
