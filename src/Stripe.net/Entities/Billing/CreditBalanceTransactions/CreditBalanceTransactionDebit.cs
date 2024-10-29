@@ -9,8 +9,8 @@ namespace Stripe.Billing
         public CreditBalanceTransactionDebitAmount Amount { get; set; }
 
         /// <summary>
-        /// Details of how the credits were applied to an invoice. Only present if <c>type</c> is
-        /// <c>credits_applied</c>.
+        /// Details of how the billing credits were applied to an invoice. Only present if
+        /// <c>type</c> is <c>credits_applied</c>.
         /// </summary>
         [JsonProperty("credits_applied")]
         public CreditBalanceTransactionDebitCreditsApplied CreditsApplied { get; set; }

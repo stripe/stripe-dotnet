@@ -25,8 +25,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Creates a single-use login link for a connected account to access the Express
-        /// Dashboard.</p>.
+        /// <p>Creates a login link for a connected account to access the Express Dashboard.</p>.
         ///
         /// <p><strong>You can only create login links for accounts that use the <a
         /// href="https://stripe.com/connect/express-dashboard">Express Dashboard</a> and are
@@ -38,8 +37,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Creates a single-use login link for a connected account to access the Express
-        /// Dashboard.</p>.
+        /// <p>Creates a login link for a connected account to access the Express Dashboard.</p>.
         ///
         /// <p><strong>You can only create login links for accounts that use the <a
         /// href="https://stripe.com/connect/express-dashboard">Express Dashboard</a> and are
