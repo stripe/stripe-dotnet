@@ -2,6 +2,7 @@
 update-version:
 	@echo "$(VERSION)" > VERSION
 	@perl -pi -e 's|<Version>[.\-\d\w]+</Version>|<Version>$(VERSION)</Version>|' src/Stripe.net/Stripe.net.csproj
+	@perl -pi -e 's|Current = "[.\-\d\w]+";|Current = "$(VERSION)";|' src/Stripe.net/Constants/Version.cs
 
 codegen-format:
 	TargetFramework=net5.0 dotnet format src/Stripe.net/Stripe.net.csproj --severity warn

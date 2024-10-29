@@ -110,8 +110,8 @@ namespace StripeTests
         /// <returns>-1 if a &gt; b, 1 if a &lt; b, 0 if a == b.</returns>
         private static int CompareVersions(string a, string b)
         {
-            var version1 = new Version(a);
-            var version2 = new Version(b);
+            var version1 = new System.Version(a);
+            var version2 = new System.Version(b);
             return version2.CompareTo(version1);
         }
 
