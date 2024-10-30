@@ -6,18 +6,16 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoicePaymentPaymentOutOfBandPayment : StripeEntity<InvoicePaymentPaymentOutOfBandPayment>, IHasMetadata
+    public class InvoicePaymentRecordDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
-        /// Amount paid on this out of band payment, in cents (or local equivalent).
+        /// The amount that was paid out of band.
         /// </summary>
         [JsonProperty("amount")]
-        public long Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
-        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
-        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
-        /// currency</a>.
+        /// The currency that was paid out of band.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -25,7 +23,8 @@ namespace Stripe
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
-        /// object in a structured format.
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }

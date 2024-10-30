@@ -150,7 +150,7 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsMultibancoOptions Multibanco { get; set; }
 
         /// <summary>
-        /// contains details about the Kakao Pay payment method options.
+        /// contains details about the Naver Pay payment method options.
         /// </summary>
         [JsonProperty("naver_pay")]
         public SessionPaymentMethodOptionsNaverPayOptions NaverPay { get; set; }

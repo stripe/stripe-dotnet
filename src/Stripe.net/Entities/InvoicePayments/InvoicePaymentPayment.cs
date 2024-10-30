@@ -37,9 +37,6 @@ namespace Stripe
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
-        [JsonProperty("out_of_band_payment")]
-        public InvoicePaymentPaymentOutOfBandPayment OutOfBandPayment { get; set; }
-
         #region Expandable PaymentIntent
 
         /// <summary>
@@ -75,9 +72,43 @@ namespace Stripe
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
+        #region Expandable PaymentRecord
+
+        /// <summary>
+        /// (ID of the PaymentRecord)
+        /// ID of the PaymentRecord associated with this payment when <c>type</c> is
+        /// <c>payment_record</c>.
+        /// </summary>
+        [JsonIgnore]
+        public string PaymentRecordId
+        {
+            get => this.InternalPaymentRecord?.Id;
+            set => this.InternalPaymentRecord = SetExpandableFieldId(value, this.InternalPaymentRecord);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the PaymentRecord associated with this payment when <c>type</c> is
+        /// <c>payment_record</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PaymentRecord PaymentRecord
+        {
+            get => this.InternalPaymentRecord?.ExpandedObject;
+            set => this.InternalPaymentRecord = SetExpandableFieldObject(value, this.InternalPaymentRecord);
+        }
+
+        [JsonProperty("payment_record")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentRecord>))]
+        internal ExpandableField<PaymentRecord> InternalPaymentRecord { get; set; }
+        #endregion
+
         /// <summary>
         /// Type of payment object associated with this invoice payment.
-        /// One of: <c>charge</c>, <c>out_of_band_payment</c>, or <c>payment_intent</c>.
+        /// One of: <c>charge</c>, <c>out_of_band_payment</c>, <c>payment_intent</c>, or
+        /// <c>payment_record</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

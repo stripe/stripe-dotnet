@@ -13,15 +13,21 @@ namespace Stripe
         public long? AmountRequested { get; set; }
 
         /// <summary>
-        /// The out of band payment to attach to the invoice.
-        /// </summary>
-        [JsonProperty("out_of_band_payment")]
-        public InvoiceOutOfBandPaymentOptions OutOfBandPayment { get; set; }
-
-        /// <summary>
         /// The ID of the PaymentIntent to attach to the invoice.
         /// </summary>
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }
+
+        /// <summary>
+        /// The ID of the PaymentRecord to detach from the invoice.
+        /// </summary>
+        [JsonProperty("payment_record")]
+        public string PaymentRecord { get; set; }
+
+        /// <summary>
+        /// The PaymentRecord data for attaching an out of band payment to the invoice.
+        /// </summary>
+        [JsonProperty("payment_record_data")]
+        public InvoicePaymentRecordDataOptions PaymentRecordData { get; set; }
     }
 }

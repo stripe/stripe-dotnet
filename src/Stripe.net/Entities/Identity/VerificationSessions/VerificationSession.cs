@@ -174,7 +174,7 @@ namespace Stripe.Identity
         public string Url { get; set; }
 
         /// <summary>
-        /// The configuration token of a Verification Flow from the dashboard.
+        /// The configuration token of a verification flow from the dashboard.
         /// </summary>
         [JsonProperty("verification_flow")]
         public string VerificationFlow { get; set; }

@@ -598,6 +598,12 @@ namespace Stripe
         public const string InvoicePaymentActionRequired = "invoice.payment_action_required";
 
         /// <summary>
+        /// Occurs when an invoice requires a payment using a payment method that cannot be
+        /// processed by Stripe.
+        /// </summary>
+        public const string InvoicePaymentAttemptRequired = "invoice.payment_attempt_required";
+
+        /// <summary>
         /// Occurs whenever an invoice payment attempt fails, due either to a declined payment or to
         /// the lack of a stored payment method.
         /// </summary>
@@ -728,6 +734,11 @@ namespace Stripe
         /// Occurs whenever a dispute is updated.
         /// </summary>
         public const string IssuingDisputeUpdated = "issuing_dispute.updated";
+
+        /// <summary>
+        /// Occurs whenever funds are deducted from your account for fraud dispute loss liability.
+        /// </summary>
+        public const string IssuingFraudLiabilityDebitCreated = "issuing_fraud_liability_debit.created";
 
         /// <summary>
         /// Occurs whenever a personalization design is activated following the activation of the
