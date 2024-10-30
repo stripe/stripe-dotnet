@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -44,12 +45,12 @@ namespace Stripe
 
         public virtual CreditNote Get(string id, CreditNoteGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditNote>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/{id}", options, requestOptions);
+            return this.Request<CreditNote>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         public virtual Task<CreditNote> GetAsync(string id, CreditNoteGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditNote>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditNote>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<CreditNote> List(CreditNoteListOptions options = null, RequestOptions requestOptions = null)
@@ -74,22 +75,22 @@ namespace Stripe
 
         public virtual StripeList<CreditNoteLineItem> ListLineItems(string id, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<CreditNoteLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/{id}/lines", options, requestOptions);
+            return this.Request<StripeList<CreditNoteLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/{WebUtility.UrlEncode(id)}/lines", options, requestOptions);
         }
 
         public virtual Task<StripeList<CreditNoteLineItem>> ListLineItemsAsync(string id, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<CreditNoteLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/{id}/lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<CreditNoteLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/credit_notes/{WebUtility.UrlEncode(id)}/lines", options, requestOptions, cancellationToken);
         }
 
         public virtual IEnumerable<CreditNoteLineItem> ListLineItemsAutoPaging(string id, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<CreditNoteLineItem>($"/v1/credit_notes/{id}/lines", options, requestOptions);
+            return this.ListRequestAutoPaging<CreditNoteLineItem>($"/v1/credit_notes/{WebUtility.UrlEncode(id)}/lines", options, requestOptions);
         }
 
         public virtual IAsyncEnumerable<CreditNoteLineItem> ListLineItemsAutoPagingAsync(string id, CreditNoteListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<CreditNoteLineItem>($"/v1/credit_notes/{id}/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<CreditNoteLineItem>($"/v1/credit_notes/{WebUtility.UrlEncode(id)}/lines", options, requestOptions, cancellationToken);
         }
 
         public virtual CreditNote Preview(CreditNotePreviewOptions options, RequestOptions requestOptions = null)
@@ -104,22 +105,22 @@ namespace Stripe
 
         public virtual CreditNote Update(string id, CreditNoteUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditNote>(BaseAddress.Api, HttpMethod.Post, $"/v1/credit_notes/{id}", options, requestOptions);
+            return this.Request<CreditNote>(BaseAddress.Api, HttpMethod.Post, $"/v1/credit_notes/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         public virtual Task<CreditNote> UpdateAsync(string id, CreditNoteUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditNote>(BaseAddress.Api, HttpMethod.Post, $"/v1/credit_notes/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditNote>(BaseAddress.Api, HttpMethod.Post, $"/v1/credit_notes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         public virtual CreditNote VoidCreditNote(string id, CreditNoteVoidOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<CreditNote>(BaseAddress.Api, HttpMethod.Post, $"/v1/credit_notes/{id}/void", options, requestOptions);
+            return this.Request<CreditNote>(BaseAddress.Api, HttpMethod.Post, $"/v1/credit_notes/{WebUtility.UrlEncode(id)}/void", options, requestOptions);
         }
 
         public virtual Task<CreditNote> VoidCreditNoteAsync(string id, CreditNoteVoidOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CreditNote>(BaseAddress.Api, HttpMethod.Post, $"/v1/credit_notes/{id}/void", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CreditNote>(BaseAddress.Api, HttpMethod.Post, $"/v1/credit_notes/{WebUtility.UrlEncode(id)}/void", options, requestOptions, cancellationToken);
         }
     }
 }

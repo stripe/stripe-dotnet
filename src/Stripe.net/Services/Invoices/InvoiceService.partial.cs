@@ -17,7 +17,7 @@ namespace Stripe
         [Obsolete("Use InvoiceLineItemService.List instead.")]
         public virtual StripeList<InvoiceLineItem> ListLineItems(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{id}/lines", options, requestOptions);
+            return this.Request<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Stripe
         [Obsolete("Use InvoiceLineItemService.ListAsync instead.")]
         public virtual Task<StripeList<InvoiceLineItem>> ListLineItemsAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{id}/lines", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Stripe
         [Obsolete("Use InvoiceLineItemService.ListAutoPaging instead.")]
         public virtual IEnumerable<InvoiceLineItem> ListLineItemsAutoPaging(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/invoices/{id}/lines", options, requestOptions);
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions);
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Stripe
         [Obsolete("Use InvoiceLineItemService.ListAutoPagingAsync instead.")]
         public virtual IAsyncEnumerable<InvoiceLineItem> ListLineItemsAutoPagingAsync(string id, InvoiceListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/invoices/{id}/lines", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/invoices/{WebUtility.UrlEncode(id)}/lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

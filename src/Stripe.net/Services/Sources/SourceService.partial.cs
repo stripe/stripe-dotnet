@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -27,13 +28,13 @@ namespace Stripe
         [Obsolete("Use CustomerPaymentSourceService.Delete instead.")]
         public virtual Source Detach(string parentId, string id, SourceDetachOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Source>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{id}", null, requestOptions);
+            return this.Request<Source>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{WebUtility.UrlEncode(id)}", null, requestOptions);
         }
 
         [Obsolete("Use CustomerPaymentSourceService.DeleteAsync instead.")]
         public virtual Task<Source> DetachAsync(string parentId, string id, SourceDetachOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Source>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{id}", null, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{WebUtility.UrlEncode(id)}", null, requestOptions, cancellationToken);
         }
 
         [Obsolete("Use CustomerPaymentSourceService.List instead.")]

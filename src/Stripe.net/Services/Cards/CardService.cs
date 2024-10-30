@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -40,22 +41,22 @@ namespace Stripe
 
         public virtual Card Delete(string parentId, string id, CardDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions);
+            return this.Request<Card>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         public virtual Task<Card> DeleteAsync(string parentId, string id, CardDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         public virtual Card Get(string parentId, string id, CardGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions);
+            return this.Request<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         public virtual Task<Card> GetAsync(string parentId, string id, CardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         public virtual StripeList<Card> List(string parentId, CardListOptions options = null, RequestOptions requestOptions = null)
@@ -80,12 +81,12 @@ namespace Stripe
 
         public virtual Card Update(string parentId, string id, CardUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions);
+            return this.Request<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         public virtual Task<Card> UpdateAsync(string parentId, string id, CardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/sources/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Card>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/sources/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

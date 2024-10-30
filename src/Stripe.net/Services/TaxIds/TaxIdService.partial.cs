@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -32,7 +33,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.Delete instead.")]
         public virtual TaxId Delete(string parentId, string id, TaxIdDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions);
+            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/tax_ids/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.DeleteAsync instead.")]
         public virtual Task<TaxId> DeleteAsync(string parentId, string id, TaxIdDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/tax_ids/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.Get instead.")]
         public virtual TaxId Get(string parentId, string id, TaxIdGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions);
+            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.GetAsync instead.")]
         public virtual Task<TaxId> GetAsync(string parentId, string id, TaxIdGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
