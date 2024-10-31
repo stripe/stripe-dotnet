@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -39,32 +40,32 @@ namespace Stripe
 
         public virtual Source Get(string id, SourceGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Source>(BaseAddress.Api, HttpMethod.Get, $"/v1/sources/{id}", options, requestOptions);
+            return this.Request<Source>(BaseAddress.Api, HttpMethod.Get, $"/v1/sources/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         public virtual Task<Source> GetAsync(string id, SourceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Source>(BaseAddress.Api, HttpMethod.Get, $"/v1/sources/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(BaseAddress.Api, HttpMethod.Get, $"/v1/sources/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         public virtual Source Update(string id, SourceUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Source>(BaseAddress.Api, HttpMethod.Post, $"/v1/sources/{id}", options, requestOptions);
+            return this.Request<Source>(BaseAddress.Api, HttpMethod.Post, $"/v1/sources/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         public virtual Task<Source> UpdateAsync(string id, SourceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Source>(BaseAddress.Api, HttpMethod.Post, $"/v1/sources/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(BaseAddress.Api, HttpMethod.Post, $"/v1/sources/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         public virtual Source Verify(string id, SourceVerifyOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Source>(BaseAddress.Api, HttpMethod.Post, $"/v1/sources/{id}/verify", options, requestOptions);
+            return this.Request<Source>(BaseAddress.Api, HttpMethod.Post, $"/v1/sources/{WebUtility.UrlEncode(id)}/verify", options, requestOptions);
         }
 
         public virtual Task<Source> VerifyAsync(string id, SourceVerifyOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Source>(BaseAddress.Api, HttpMethod.Post, $"/v1/sources/{id}/verify", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Source>(BaseAddress.Api, HttpMethod.Post, $"/v1/sources/{WebUtility.UrlEncode(id)}/verify", options, requestOptions, cancellationToken);
         }
     }
 }

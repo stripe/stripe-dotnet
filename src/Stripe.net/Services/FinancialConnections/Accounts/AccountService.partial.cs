@@ -2,6 +2,7 @@ namespace Stripe.FinancialConnections
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Stripe.FinancialConnections
         [Obsolete("Use AccountOwnerService.List instead.")]
         public virtual StripeList<AccountOwner> ListOwners(string id, AccountOwnerListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<AccountOwner>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{id}/owners", options, requestOptions);
+            return this.Request<StripeList<AccountOwner>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners", options, requestOptions);
         }
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace Stripe.FinancialConnections
         [Obsolete("Use AccountOwnerService.ListASync instead.")]
         public virtual Task<StripeList<AccountOwner>> ListOwnersAsync(string id, AccountOwnerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<AccountOwner>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{id}/owners", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<AccountOwner>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace Stripe.FinancialConnections
         [Obsolete("Use AccountOwnerService.ListAutoPaging instead.")]
         public virtual IEnumerable<AccountOwner> ListOwnersAutoPaging(string id, AccountOwnerListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<AccountOwner>($"/v1/financial_connections/accounts/{id}/owners", options, requestOptions);
+            return this.ListRequestAutoPaging<AccountOwner>($"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Stripe.FinancialConnections
         [Obsolete("Use AccountOwnerService.ListAutoPagingAsync instead.")]
         public virtual IAsyncEnumerable<AccountOwner> ListOwnersAutoPagingAsync(string id, AccountOwnerListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<AccountOwner>($"/v1/financial_connections/accounts/{id}/owners", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<AccountOwner>($"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/owners", options, requestOptions, cancellationToken);
         }
     }
 }
