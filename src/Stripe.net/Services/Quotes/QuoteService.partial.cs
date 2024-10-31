@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -17,7 +18,7 @@ namespace Stripe
         [Obsolete("Use QuoteComputedUpfrontLineItemService.List instead.")]
         public virtual StripeList<LineItem> ListComputedUpfrontLineItems(string id, QuoteComputedUpfrontLineItemsListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{WebUtility.UrlEncode(id)}/computed_upfront_line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -29,7 +30,7 @@ namespace Stripe
         [Obsolete("Use QuoteComputedUpfrontLineItemService.ListAsync instead.")]
         public virtual Task<StripeList<LineItem>> ListComputedUpfrontLineItemsAsync(string id, QuoteComputedUpfrontLineItemsListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{WebUtility.UrlEncode(id)}/computed_upfront_line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Stripe
         [Obsolete("Use QuoteComputedUpfrontLineItemService.ListAutoPaging instead.")]
         public virtual IEnumerable<LineItem> ListComputedUpfrontLineItemsAutoPaging(string id, QuoteComputedUpfrontLineItemsListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/quotes/{WebUtility.UrlEncode(id)}/computed_upfront_line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -53,7 +54,7 @@ namespace Stripe
         [Obsolete("Use QuoteComputedUpfrontLineItemService.ListAutoPagingAsync instead.")]
         public virtual IAsyncEnumerable<LineItem> ListComputedUpfrontLineItemsAutoPagingAsync(string id, QuoteComputedUpfrontLineItemsListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quotes/{id}/computed_upfront_line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quotes/{WebUtility.UrlEncode(id)}/computed_upfront_line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +65,7 @@ namespace Stripe
         [Obsolete("Use QuoteLineItem.List instead.")]
         public virtual StripeList<LineItem> ListLineItems(string id, QuoteLineItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -75,7 +76,7 @@ namespace Stripe
         [Obsolete("Use QuoteLineItem.ListAsync instead.")]
         public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, QuoteLineItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/quotes/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace Stripe
         [Obsolete("Use QuoteLineItem.ListAutoPaging instead.")]
         public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, QuoteLineItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/quotes/{id}/line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/quotes/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -97,7 +98,7 @@ namespace Stripe
         [Obsolete("Use QuoteLineItem.ListAutoPagingAsync instead.")]
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, QuoteLineItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quotes/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/quotes/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.Create instead.")]
         public virtual TaxId Create(string parentId, TaxIdCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/tax_ids", options, requestOptions);
+            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids", options, requestOptions);
         }
 
         /// <summary>
@@ -23,7 +24,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.CreateAsync instead.")]
         public virtual Task<TaxId> CreateAsync(string parentId, TaxIdCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{parentId}/tax_ids", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -32,7 +33,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.Delete instead.")]
         public virtual TaxId Delete(string parentId, string id, TaxIdDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions);
+            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -41,7 +42,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.DeleteAsync instead.")]
         public virtual Task<TaxId> DeleteAsync(string parentId, string id, TaxIdDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Delete, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -50,7 +51,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.Get instead.")]
         public virtual TaxId Get(string parentId, string id, TaxIdGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions);
+            return this.Request<TaxId>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -59,7 +60,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.GetAsync instead.")]
         public virtual Task<TaxId> GetAsync(string parentId, string id, TaxIdGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TaxId>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.List instead.")]
         public virtual StripeList<TaxId> List(string parentId, TaxIdListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<TaxId>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids", options, requestOptions);
+            return this.Request<StripeList<TaxId>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids", options, requestOptions);
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.ListAsync instead.")]
         public virtual Task<StripeList<TaxId>> ListAsync(string parentId, TaxIdListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<TaxId>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/tax_ids", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<TaxId>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -86,7 +87,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.ListAutoPaging instead.")]
         public virtual IEnumerable<TaxId> ListAutoPaging(string parentId, TaxIdListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<TaxId>($"/v1/customers/{parentId}/tax_ids", options, requestOptions);
+            return this.ListRequestAutoPaging<TaxId>($"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids", options, requestOptions);
         }
 
         /// <summary>
@@ -95,7 +96,7 @@ namespace Stripe
         [Obsolete("Use CustomerTaxIdService.ListAutoPagingAsync instead.")]
         public virtual IAsyncEnumerable<TaxId> ListAutoPagingAsync(string parentId, TaxIdListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<TaxId>($"/v1/customers/{parentId}/tax_ids", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<TaxId>($"/v1/customers/{WebUtility.UrlEncode(parentId)}/tax_ids", options, requestOptions, cancellationToken);
         }
     }
 }

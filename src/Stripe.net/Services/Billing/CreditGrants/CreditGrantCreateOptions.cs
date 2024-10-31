@@ -28,14 +28,14 @@ namespace Stripe.Billing
         public string Category { get; set; }
 
         /// <summary>
-        /// ID of the customer to whom the billing credits should be granted.
+        /// ID of the customer to receive the billing credits.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
 
         /// <summary>
-        /// The time when the billing credits become effective i.e when they are eligible to be
-        /// used. Defaults to the current timestamp if not specified.
+        /// The time when the billing credits become effective—when they're eligible for use.
+        /// Defaults to the current timestamp if not specified.
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -43,7 +43,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// The time when the billing credits will expire. If not specified, the billing credits
-        /// will never expire.
+        /// don't expire.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -51,13 +51,14 @@ namespace Stripe.Billing
 
         /// <summary>
         /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object (ex: cost basis) in a structured format.
+        /// additional information about the object (for example, cost basis) in a structured
+        /// format.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// A descriptive name shown in dashboard.
+        /// A descriptive name shown in the Dashboard.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
