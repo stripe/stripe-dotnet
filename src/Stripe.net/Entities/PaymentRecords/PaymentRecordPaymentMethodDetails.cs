@@ -24,7 +24,7 @@ namespace Stripe
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The type of payment method used for this payment attempt.
+        /// The type of Payment Method used for this payment attempt.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

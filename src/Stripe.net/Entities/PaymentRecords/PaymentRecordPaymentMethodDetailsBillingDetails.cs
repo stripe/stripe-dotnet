@@ -6,7 +6,7 @@ namespace Stripe
     public class PaymentRecordPaymentMethodDetailsBillingDetails : StripeEntity<PaymentRecordPaymentMethodDetailsBillingDetails>
     {
         /// <summary>
-        /// Address data.
+        /// A representation of a physical address.
         /// </summary>
         [JsonProperty("address")]
         public PaymentRecordPaymentMethodDetailsBillingDetailsAddress Address { get; set; }

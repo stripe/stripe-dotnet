@@ -6,7 +6,7 @@ namespace Stripe
     public class PaymentRecordCustomerDetails : StripeEntity<PaymentRecordCustomerDetails>
     {
         /// <summary>
-        /// ID of the Stripe customer for this payment.
+        /// ID of the Stripe Customer associated with this payment.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }

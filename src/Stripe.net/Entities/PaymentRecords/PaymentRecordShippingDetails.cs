@@ -6,19 +6,19 @@ namespace Stripe
     public class PaymentRecordShippingDetails : StripeEntity<PaymentRecordShippingDetails>
     {
         /// <summary>
-        /// Address data.
+        /// A representation of a physical address.
         /// </summary>
         [JsonProperty("address")]
         public PaymentRecordShippingDetailsAddress Address { get; set; }
 
         /// <summary>
-        /// The recipient's name.
+        /// The shipping recipient's name.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
 
         /// <summary>
-        /// The recipient's phone number.
+        /// The shipping recipient's phone number.
         /// </summary>
         [JsonProperty("phone")]
         public string Phone { get; set; }

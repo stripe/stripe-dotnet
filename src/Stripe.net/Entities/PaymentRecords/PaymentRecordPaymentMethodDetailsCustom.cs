@@ -13,7 +13,7 @@ namespace Stripe
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// The Custom Payment Method Type associated with this payment.
+        /// The custom payment method type associated with this payment.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

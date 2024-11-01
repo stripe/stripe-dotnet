@@ -7,7 +7,11 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A PaymentRecord represents a payment that happened on or off Stripe.
+    /// A Payment Record is a resource that allows you to represent payments that occur on- or
+    /// off-Stripe. For example, you can create a Payment Record to model a payment made on a
+    /// different payment processor, in order to mark an Invoice as paid and a Subscription as
+    /// active. Payment Records consist of one or more Payment Attempt Records, which represent
+    /// individual attempts made on a payment network.
     /// </summary>
     public class PaymentRecord : StripeEntity<PaymentRecord>, IHasId, IHasMetadata, IHasObject
     {
@@ -24,31 +28,31 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Amount object.
+        /// A representation of an amount of money, consisting of an amount and a currency.
         /// </summary>
         [JsonProperty("amount_canceled")]
         public PaymentRecordAmountCanceled AmountCanceled { get; set; }
 
         /// <summary>
-        /// Amount object.
+        /// A representation of an amount of money, consisting of an amount and a currency.
         /// </summary>
         [JsonProperty("amount_failed")]
         public PaymentRecordAmountFailed AmountFailed { get; set; }
 
         /// <summary>
-        /// Amount object.
+        /// A representation of an amount of money, consisting of an amount and a currency.
         /// </summary>
         [JsonProperty("amount_guaranteed")]
         public PaymentRecordAmountGuaranteed AmountGuaranteed { get; set; }
 
         /// <summary>
-        /// Amount object.
+        /// A representation of an amount of money, consisting of an amount and a currency.
         /// </summary>
         [JsonProperty("amount_refunded")]
         public PaymentRecordAmountRefunded AmountRefunded { get; set; }
 
         /// <summary>
-        /// Amount object.
+        /// A representation of an amount of money, consisting of an amount and a currency.
         /// </summary>
         [JsonProperty("amount_requested")]
         public PaymentRecordAmountRequested AmountRequested { get; set; }
@@ -67,7 +71,7 @@ namespace Stripe
         public PaymentRecordCustomerDetails CustomerDetails { get; set; }
 
         /// <summary>
-        /// Whether the customer was present during the transaction.
+        /// Indicates whether the customer was present in your checkout flow during this payment.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("customer_presence")]
@@ -80,7 +84,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// ID of the latest PaymentAttemptRecord attached to this PaymentRecord.
+        /// ID of the latest Payment Attempt Record attached to this Payment Record.
         /// </summary>
         [JsonProperty("latest_payment_attempt_record")]
         public string LatestPaymentAttemptRecord { get; set; }
@@ -101,13 +105,14 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Information about the method used to make this payment.
+        /// Information about the Payment Method debited for this payment.
         /// </summary>
         [JsonProperty("payment_method_details")]
         public PaymentRecordPaymentMethodDetails PaymentMethodDetails { get; set; }
 
         /// <summary>
-        /// An opaque string for manual reconciliation of this payment, for example a check number.
+        /// An opaque string for manual reconciliation of this payment, for example a check number
+        /// or a payment processor ID.
         /// </summary>
         [JsonProperty("payment_reference")]
         public string PaymentReference { get; set; }
