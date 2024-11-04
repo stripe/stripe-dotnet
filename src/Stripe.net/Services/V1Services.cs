@@ -48,11 +48,13 @@ namespace Stripe
         private MandateService mandates;
         private MarginService margins;
         private OrderService orders;
+        private PaymentAttemptRecordService paymentAttemptRecords;
         private PaymentIntentService paymentIntents;
         private PaymentLinkService paymentLinks;
         private PaymentMethodService paymentMethods;
         private PaymentMethodConfigurationService paymentMethodConfigurations;
         private PaymentMethodDomainService paymentMethodDomains;
+        private PaymentRecordService paymentRecords;
         private PayoutService payouts;
         private PlanService plans;
         private PriceService prices;
@@ -215,6 +217,9 @@ namespace Stripe
         public virtual OrderService Orders => this.orders ??= new OrderService(
             this.Requestor);
 
+        public virtual PaymentAttemptRecordService PaymentAttemptRecords => this.paymentAttemptRecords ??= new PaymentAttemptRecordService(
+            this.Requestor);
+
         public virtual PaymentIntentService PaymentIntents => this.paymentIntents ??= new PaymentIntentService(
             this.Requestor);
 
@@ -228,6 +233,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual PaymentMethodDomainService PaymentMethodDomains => this.paymentMethodDomains ??= new PaymentMethodDomainService(
+            this.Requestor);
+
+        public virtual PaymentRecordService PaymentRecords => this.paymentRecords ??= new PaymentRecordService(
             this.Requestor);
 
         public virtual PayoutService Payouts => this.payouts ??= new PayoutService(
