@@ -2,6 +2,7 @@ namespace Stripe.Checkout
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Stripe.Checkout
         [Obsolete("Use SessionLineItemService.List instead.")]
         public virtual StripeList<LineItem> ListLineItems(string id, SessionLineItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{id}/line_items", options, requestOptions);
+            return this.Request<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -27,7 +28,7 @@ namespace Stripe.Checkout
         [Obsolete("Use SessionLineItemService.ListAsync instead.")]
         public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, SessionLineItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<LineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -38,7 +39,7 @@ namespace Stripe.Checkout
         [Obsolete("Use SessionLineItemService.ListAutoPaging instead.")]
         public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, SessionLineItemListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/checkout/sessions/{id}/line_items", options, requestOptions);
+            return this.ListRequestAutoPaging<LineItem>($"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions);
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace Stripe.Checkout
         [Obsolete("Use SessionLineItemService.ListAutoPagingAsync instead.")]
         public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, SessionLineItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/checkout/sessions/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/line_items", options, requestOptions, cancellationToken);
         }
     }
 }

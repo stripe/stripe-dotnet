@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -51,12 +52,12 @@ namespace Stripe
 
         public virtual EphemeralKey Delete(string id, EphemeralKeyDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<EphemeralKey>(BaseAddress.Api, HttpMethod.Delete, $"/v1/ephemeral_keys/{id}", options, requestOptions);
+            return this.Request<EphemeralKey>(BaseAddress.Api, HttpMethod.Delete, $"/v1/ephemeral_keys/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         public virtual Task<EphemeralKey> DeleteAsync(string id, EphemeralKeyDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<EphemeralKey>(BaseAddress.Api, HttpMethod.Delete, $"/v1/ephemeral_keys/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<EphemeralKey>(BaseAddress.Api, HttpMethod.Delete, $"/v1/ephemeral_keys/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

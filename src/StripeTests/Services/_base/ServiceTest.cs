@@ -261,7 +261,7 @@ namespace StripeTests
 
             public virtual TestEntity Get(string id, BaseOptions options = null, RequestOptions requestOptions = null)
             {
-                return this.Request<TestEntity>(BaseAddress.Api, HttpMethod.Get, $"/v1/test_entities/{id}", options, requestOptions);
+                return this.Request<TestEntity>(BaseAddress.Api, HttpMethod.Get, $"/v1/test_entities/{WebUtility.UrlEncode(id)}", options, requestOptions);
             }
 
             public virtual StripeSearchResult<TestEntity> Search(SearchOptions options = null, RequestOptions requestOptions = null)
