@@ -185,7 +185,9 @@ namespace Stripe
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The ID of the payment method configuration to use with this PaymentIntent.
+        /// The ID of the <a
+        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// configuration</a> to use with this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
         public string PaymentMethodConfiguration { get; set; }
@@ -207,9 +209,9 @@ namespace Stripe
 
         /// <summary>
         /// The list of payment method types (for example, a card) that this PaymentIntent can use.
-        /// If you don't provide this, it defaults to ["card"]. Use <c>automatic_payment_methods</c>
-        /// to manage payment methods from the <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
+        /// If you don't provide this, Stripe will dynamically show relevant payment methods from
+        /// your <a href="https://dashboard.stripe.com/settings/payment_methods">payment method
+        /// settings</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }

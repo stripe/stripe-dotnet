@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -18,7 +19,7 @@ namespace Stripe
         [Obsolete("Use CustomerFundingInstructionsService.CreateAsync instead.")]
         public virtual FundingInstructions CreateFundingInstructions(string id, CustomerFundingInstructionsCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<FundingInstructions>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions);
+            return this.Request<FundingInstructions>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(id)}/funding_instructions", options, requestOptions);
         }
 
         /// <summary>
@@ -31,7 +32,7 @@ namespace Stripe
         [Obsolete("Use CustomerFundingInstructionsService.CreateAsync instead.")]
         public virtual Task<FundingInstructions> CreateFundingInstructionsAsync(string id, CustomerFundingInstructionsCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<FundingInstructions>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{id}/funding_instructions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<FundingInstructions>(BaseAddress.Api, HttpMethod.Post, $"/v1/customers/{WebUtility.UrlEncode(id)}/funding_instructions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace Stripe
         [Obsolete("Use CustomerPaymentMethodService.List instead.")]
         public virtual StripeList<PaymentMethod> ListPaymentMethods(string id, CustomerPaymentMethodListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<PaymentMethod>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions);
+            return this.Request<StripeList<PaymentMethod>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(id)}/payment_methods", options, requestOptions);
         }
 
         /// <summary>
@@ -49,7 +50,7 @@ namespace Stripe
         [Obsolete("Use CustomerPaymentMethodService.ListAsync instead.")]
         public virtual Task<StripeList<PaymentMethod>> ListPaymentMethodsAsync(string id, CustomerPaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<PaymentMethod>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{id}/payment_methods", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PaymentMethod>>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(id)}/payment_methods", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -58,7 +59,7 @@ namespace Stripe
         [Obsolete("Use CustomerPaymentMethodService.ListAutoPaging instead.")]
         public virtual IEnumerable<PaymentMethod> ListPaymentMethodsAutoPaging(string id, CustomerPaymentMethodListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions);
+            return this.ListRequestAutoPaging<PaymentMethod>($"/v1/customers/{WebUtility.UrlEncode(id)}/payment_methods", options, requestOptions);
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace Stripe
         [Obsolete("Use CustomerPaymentMethodService.ListAutoPagingAsync instead.")]
         public virtual IAsyncEnumerable<PaymentMethod> ListPaymentMethodsAutoPagingAsync(string id, CustomerPaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<PaymentMethod>($"/v1/customers/{id}/payment_methods", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<PaymentMethod>($"/v1/customers/{WebUtility.UrlEncode(id)}/payment_methods", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -76,7 +77,7 @@ namespace Stripe
         [Obsolete("Use CustomerPaymentMethodService.Get instead.")]
         public virtual PaymentMethod RetrievePaymentMethod(string parentId, string id, CustomerPaymentMethodGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethod>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions);
+            return this.Request<PaymentMethod>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/payment_methods/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -85,7 +86,7 @@ namespace Stripe
         [Obsolete("Use CustomerPaymentMethodService.GetAsync instead.")]
         public virtual Task<PaymentMethod> RetrievePaymentMethodAsync(string parentId, string id, CustomerPaymentMethodGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethod>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{parentId}/payment_methods/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethod>(BaseAddress.Api, HttpMethod.Get, $"/v1/customers/{WebUtility.UrlEncode(parentId)}/payment_methods/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

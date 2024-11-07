@@ -117,6 +117,13 @@ namespace Stripe
         public long AmountDue { get; set; }
 
         /// <summary>
+        /// Amount that was overpaid on the invoice. Overpayments are debited to the customer's
+        /// credit balance.
+        /// </summary>
+        [JsonProperty("amount_overpaid")]
+        public long AmountOverpaid { get; set; }
+
+        /// <summary>
         /// The amount, in cents (or local equivalent), that was paid.
         /// </summary>
         [JsonProperty("amount_paid")]

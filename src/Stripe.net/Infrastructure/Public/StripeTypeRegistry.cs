@@ -119,6 +119,7 @@ namespace Stripe
                     "issuing.dispute_settlement_detail", typeof(
                     Issuing.DisputeSettlementDetail)
                 },
+                { "issuing.fraud_liability_debit", typeof(Issuing.FraudLiabilityDebit) },
                 { "issuing.personalization_design", typeof(Issuing.PersonalizationDesign) },
                 { "issuing.physical_bundle", typeof(Issuing.PhysicalBundle) },
                 { "issuing.settlement", typeof(Issuing.Settlement) },
@@ -130,11 +131,13 @@ namespace Stripe
                 { "mandate", typeof(Mandate) },
                 { "margin", typeof(Margin) },
                 { "order", typeof(Order) },
+                { "payment_attempt_record", typeof(PaymentAttemptRecord) },
                 { "payment_intent", typeof(PaymentIntent) },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
                 { "payment_method_configuration", typeof(PaymentMethodConfiguration) },
                 { "payment_method_domain", typeof(PaymentMethodDomain) },
+                { "payment_record", typeof(PaymentRecord) },
                 { "payout", typeof(Payout) },
                 { "person", typeof(Person) },
                 { "plan", typeof(Plan) },

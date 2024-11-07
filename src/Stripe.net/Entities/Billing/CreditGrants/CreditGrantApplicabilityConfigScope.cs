@@ -6,7 +6,7 @@ namespace Stripe.Billing
     public class CreditGrantApplicabilityConfigScope : StripeEntity<CreditGrantApplicabilityConfigScope>
     {
         /// <summary>
-        /// The price type to which credit grants can apply to. We currently only support
+        /// The price type for which credit grants can apply. We currently only support the
         /// <c>metered</c> price type. This refers to prices that have a <a
         /// href="https://docs.stripe.com/api/billing/meter">Billing Meter</a> attached to them.
         /// </summary>

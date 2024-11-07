@@ -3,7 +3,7 @@ namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
 
-    public class EventListOptions : ListOptions
+    public class EventListOptions : V2.ListOptions
     {
         /// <summary>
         /// Primary object ID used to retrieve related events.

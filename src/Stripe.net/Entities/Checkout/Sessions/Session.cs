@@ -39,6 +39,13 @@ namespace Stripe.Checkout
         public string Object { get; set; }
 
         /// <summary>
+        /// Settings for price localization with <a
+        /// href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>.
+        /// </summary>
+        [JsonProperty("adaptive_pricing")]
+        public SessionAdaptivePricing AdaptivePricing { get; set; }
+
+        /// <summary>
         /// When set, provides configuration for actions to take if this Checkout Session expires.
         /// </summary>
         [JsonProperty("after_expiration")]

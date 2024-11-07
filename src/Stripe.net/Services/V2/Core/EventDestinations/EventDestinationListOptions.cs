@@ -4,7 +4,7 @@ namespace Stripe.V2.Core
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class EventDestinationListOptions : ListOptions
+    public class EventDestinationListOptions : V2.ListOptions
     {
         /// <summary>
         /// Additional fields to include in the response. Currently supports
