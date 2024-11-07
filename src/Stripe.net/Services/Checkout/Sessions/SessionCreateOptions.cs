@@ -9,6 +9,13 @@ namespace Stripe.Checkout
     public class SessionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Settings for price localization with <a
+        /// href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>.
+        /// </summary>
+        [JsonProperty("adaptive_pricing")]
+        public SessionAdaptivePricingOptions AdaptivePricing { get; set; }
+
+        /// <summary>
         /// Configure actions after a Checkout Session has expired.
         /// </summary>
         [JsonProperty("after_expiration")]
