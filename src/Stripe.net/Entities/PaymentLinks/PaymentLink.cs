@@ -257,7 +257,7 @@ namespace Stripe
         /// <summary>
         /// Indicates the type of transaction being performed which customizes relevant text on the
         /// page, such as the submit button.
-        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
+        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
         public string SubmitType { get; set; }
