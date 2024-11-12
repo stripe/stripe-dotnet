@@ -8,6 +8,8 @@ namespace Stripe
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Net.Security;
+    using System.Security.Authentication;
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -33,6 +35,8 @@ namespace Stripe
             "net7.0"
 #elif NET8_0
             "net8.0"
+#elif NET9_0
+            "net9.0"
 #elif NETCOREAPP3_1
             "netcoreapp3.1"
 #elif NETSTANDARD2_0
@@ -43,6 +47,16 @@ namespace Stripe
 #error "Unknown target framework"
 #endif
             ;
+
+#if NET9_0
+        private static readonly SocketsHttpHandler Tls12HttpClientHandler = new SocketsHttpHandler
+        {
+            SslOptions = new SslClientAuthenticationOptions
+            {
+                EnabledSslProtocols = SslProtocols.Tls12,
+            },
+        };
+#endif
 
         private static readonly Lazy<System.Net.Http.HttpClient> LazyDefaultHttpClient
             = new Lazy<System.Net.Http.HttpClient>(BuildDefaultSystemNetHttpClient);
@@ -64,8 +78,11 @@ namespace Stripe
             // Enable support for TLS 1.2, as Stripe's API requires it. This should only be
             // necessary for .NET Framework 4.5 as more recent runtimes should have TLS 1.2 enabled
             // by default, but it can be disabled in some environments.
+#if NET9_0
+#else
             ServicePointManager.SecurityProtocol = ServicePointManager.SecurityProtocol |
                 SecurityProtocolType.Tls12;
+#endif
         }
 
         /// <summary>
@@ -140,10 +157,17 @@ namespace Stripe
             // We set the User-Agent and X-Stripe-Client-User-Agent headers in each request
             // message rather than through the client's `DefaultRequestHeaders` because we
             // want these headers to be present even when a custom HTTP client is used.
-            return new System.Net.Http.HttpClient
+#if NET9_0
+            return new System.Net.Http.HttpClient(Tls12HttpClientHandler)
             {
                 Timeout = DefaultHttpTimeout,
             };
+#else
+            return new System.Net.Http.HttpClient()
+            {
+                Timeout = DefaultHttpTimeout,
+            };
+#endif
         }
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>

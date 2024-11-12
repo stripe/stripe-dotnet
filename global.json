@@ -1,7 +1,7 @@
 {
   "projects": [ "src" ],
   "sdk": {
-    "version": "8.0.100",
+    "version": "9.0.100-rc.2.24474.11",
     "rollForward": "latestFeature"
   }
 }
