@@ -9,6 +9,39 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsCardInstallments Installments { get; set; }
 
         /// <summary>
+        /// Request ability to <a href="https://stripe.com/payments/extended-authorization">capture
+        /// beyond the standard authorization validity window</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_extended_authorization")]
+        public string RequestExtendedAuthorization { get; set; }
+
+        /// <summary>
+        /// Request ability to <a
+        /// href="https://stripe.com/payments/incremental-authorization">increment the
+        /// authorization</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_incremental_authorization")]
+        public string RequestIncrementalAuthorization { get; set; }
+
+        /// <summary>
+        /// Request ability to make <a href="https://stripe.com/payments/multicapture">multiple
+        /// captures</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_multicapture")]
+        public string RequestMulticapture { get; set; }
+
+        /// <summary>
+        /// Request ability to <a href="https://stripe.com/payments/overcapture">overcapture</a> for
+        /// this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_overcapture")]
+        public string RequestOvercapture { get; set; }
+
+        /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
         /// customers for authentication based on risk level and <a
         /// href="https://stripe.com/docs/strong-customer-authentication">other requirements</a>.

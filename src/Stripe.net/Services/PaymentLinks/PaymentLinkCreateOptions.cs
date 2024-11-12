@@ -196,7 +196,7 @@ namespace Stripe
         /// in the <a
         /// href="https://stripe.com/docs/api/payment_links/payment_links/object#url">url</a>
         /// property (example: <c>donate.stripe.com</c>).
-        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
+        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
         public string SubmitType { get; set; }

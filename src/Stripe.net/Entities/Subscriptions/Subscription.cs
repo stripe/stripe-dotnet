@@ -450,7 +450,7 @@ namespace Stripe
         /// <summary>
         /// If specified, payment collection for this subscription will be paused. Note that the
         /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
-        /// more about <a href="https://stripe.com/billing/subscriptions/pause-payment">pausing
+        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
@@ -573,12 +573,13 @@ namespace Stripe
         /// <c>active</c> when the trial period is over.
         ///
         /// A subscription can only enter a <c>paused</c> status <a
-        /// href="https://stripe.com/billing/subscriptions/trials#create-free-trials-without-payment">when
+        /// href="https://stripe.com/docs/billing/subscriptions/trials#create-free-trials-without-payment">when
         /// a trial ends without a payment method</a>. A <c>paused</c> subscription doesn't generate
         /// invoices and can be resumed after your customer adds their payment method. The
         /// <c>paused</c> status is different from <a
-        /// href="https://stripe.com/billing/subscriptions/pause-payment">pausing collection</a>,
-        /// which still generates invoices and leaves the subscription's status unchanged.
+        /// href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// collection</a>, which still generates invoices and leaves the subscription's status
+        /// unchanged.
         ///
         /// If subscription <c>collection_method=charge_automatically</c>, it becomes
         /// <c>past_due</c> when payment is required but cannot be paid (due to failed payment or

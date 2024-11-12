@@ -6,6 +6,13 @@ namespace Stripe
     public class RefundDestinationDetailsBlik : StripeEntity<RefundDestinationDetailsBlik>
     {
         /// <summary>
+        /// For refunds declined by the network, a decline code provided by the network which
+        /// indicates the reason the refund failed.
+        /// </summary>
+        [JsonProperty("network_decline_code")]
+        public string NetworkDeclineCode { get; set; }
+
+        /// <summary>
         /// The reference assigned to the refund.
         /// </summary>
         [JsonProperty("reference")]

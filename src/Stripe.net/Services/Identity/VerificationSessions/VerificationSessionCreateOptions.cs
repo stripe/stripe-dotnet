@@ -56,7 +56,7 @@ namespace Stripe.Identity
         public string Type { get; set; }
 
         /// <summary>
-        /// The ID of a Verification Flow from the Dashboard. See
+        /// The ID of a verification flow from the Dashboard. See
         /// https://docs.stripe.com/identity/verification-flows.
         /// </summary>
         [JsonProperty("verification_flow")]

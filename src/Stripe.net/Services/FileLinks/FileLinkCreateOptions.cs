@@ -18,7 +18,7 @@ namespace Stripe
         /// <summary>
         /// The ID of the file. The file's <c>purpose</c> must be one of the following:
         /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,
-        /// <c>dispute_evidence</c>, <c>finance_report_run</c>,
+        /// <c>dispute_evidence</c>, <c>finance_report_run</c>, <c>financial_account_statement</c>,
         /// <c>identity_document_downloadable</c>, <c>issuing_regulatory_reporting</c>,
         /// <c>pci_document</c>, <c>selfie</c>, <c>sigma_scheduled_query</c>,
         /// <c>tax_document_user_upload</c>, or <c>terminal_reader_splashscreen</c>.
