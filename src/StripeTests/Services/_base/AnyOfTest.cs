@@ -7,6 +7,50 @@ namespace StripeTests
     public class AnyOfTest : BaseStripeTest
     {
         [Fact]
+        public void Ctor_Variant1Type()
+        {
+            var testCases = new[]
+            {
+                new TestCase
+                {
+                    AnyOf = new AnyOf<int>(default),
+                    WantValue = default(int),
+                    WantType = typeof(int),
+                },
+                new TestCase
+                {
+                    AnyOf = new AnyOf<int>(234),
+                    WantValue = 234,
+                    WantType = typeof(int),
+                },
+                new TestCase
+                {
+                    AnyOf = new AnyOf<string>(default),
+                    WantValue = default(string),
+                    WantType = typeof(string),
+                },
+                new TestCase
+                {
+                    AnyOf = new AnyOf<string>("Hello!"),
+                    WantValue = "Hello!",
+                    WantType = typeof(string),
+                },
+                new TestCase
+                {
+                    AnyOf = new AnyOf<int?>(default(int?)),
+                    WantValue = default(int?),
+                    WantType = typeof(int?),
+                },
+            };
+
+            foreach (var testCase in testCases)
+            {
+                Assert.Equal(testCase.WantValue, testCase.AnyOf.Value);
+                Assert.Equal(testCase.WantType, testCase.AnyOf.Type);
+            }
+        }
+
+        [Fact]
         public void Ctor_Variant2Types()
         {
             var testCases = new[]

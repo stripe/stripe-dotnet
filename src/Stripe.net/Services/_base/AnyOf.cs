@@ -22,6 +22,85 @@ namespace Stripe
     }
 
     /// <summary>
+    /// <see cref="AnyOf{T}"/> is a generic class that can hold a value of one type.
+    /// It's useful for polymorphic fields that (so far) only have a single valid type.
+    /// It uses implicit conversion operators to seamlessly accept or return either type.
+    /// This is used to represent polymorphic request parameters, i.e. parameters that can
+    /// be different types (typically a string or an options class).
+    /// </summary>
+    /// <typeparam name="T">The only possible type of the value.</typeparam>
+    [SuppressMessage("StyleCop.CSharp.MaintainabilityRules", "SA1402:FileMayOnlyContainASingleType", Justification = "Generic variant")]
+    public class AnyOf<T> : AnyOf
+    {
+        private readonly T value;
+        private readonly Values setValue;
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AnyOf{T}"/> class with type <c>T</c>.
+        /// </summary>
+        /// <param name="value">The value to hold.</param>
+        public AnyOf(T value)
+        {
+            this.value = value;
+            this.setValue = Values.Value;
+        }
+
+        private enum Values
+        {
+            Value,
+        }
+
+        /// <summary>Gets the value of the current <see cref="AnyOf{T}"/> object.</summary>
+        /// <returns>The value of the current <see cref="AnyOf{T}"/> object.</returns>
+        public override object Value
+        {
+            get
+            {
+                switch (this.setValue)
+                {
+                    case Values.Value:
+                        return this.value;
+                    default:
+                        throw new InvalidOperationException($"Unexpected state, setValue={this.setValue}");
+                }
+            }
+        }
+
+        /// <summary>Gets the type of the current <see cref="AnyOf{T}"/> object.</summary>
+        /// <returns>The type of the current <see cref="AnyOf{T}"/> object.</returns>
+        public override Type Type
+        {
+            get
+            {
+                switch (this.setValue)
+                {
+                    case Values.Value:
+                        return typeof(T);
+                    default:
+                        throw new InvalidOperationException($"Unexpected state, setValue={this.setValue}");
+                }
+            }
+        }
+
+        /// <summary>
+        /// Converts a value of type <c>T</c> to an <see cref="AnyOf{T}"/> object.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>An <see cref="AnyOf{T}"/> object that holds the value.</returns>
+        public static implicit operator AnyOf<T>(T value) => value == null ? null : new AnyOf<T>(value);
+
+        /// <summary>
+        /// Converts an <see cref="AnyOf{T}"/> object to a value of type <c>T</c>.
+        /// </summary>
+        /// <param name="anyOf">The <see cref="AnyOf{T}"/> object to convert.</param>
+        /// <returns>
+        /// A value of type <c>T</c>. If the <see cref="AnyOf{T}"/> object currently
+        /// holds a value of a different type, the default value for type <c>T</c> is returned.
+        /// </returns>
+        public static implicit operator T(AnyOf<T> anyOf) => anyOf.value;
+    }
+
+    /// <summary>
     /// <see cref="AnyOf{T1, T2}"/> is a generic class that can hold a value of one of two different
     /// types. It uses implicit conversion operators to seamlessly accept or return either type.
     /// This is used to represent polymorphic request parameters, i.e. parameters that can
