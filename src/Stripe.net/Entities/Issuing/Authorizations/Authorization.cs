@@ -128,6 +128,13 @@ namespace Stripe.Issuing
         public AuthorizationFleet Fleet { get; set; }
 
         /// <summary>
+        /// Fraud challenges sent to the cardholder, if this authorization was declined for fraud
+        /// risk reasons.
+        /// </summary>
+        [JsonProperty("fraud_challenges")]
+        public List<AuthorizationFraudChallenge> FraudChallenges { get; set; }
+
+        /// <summary>
         /// Information about fuel that was purchased with this transaction. Typically this
         /// information is received from the merchant after the authorization has been approved and
         /// the fuel dispensed.
@@ -256,6 +263,14 @@ namespace Stripe.Issuing
 
         [JsonProperty("verification_data")]
         public AuthorizationVerificationData VerificationData { get; set; }
+
+        /// <summary>
+        /// Whether the authorization bypassed fraud risk checks because the cardholder has
+        /// previously completed a fraud challenge on a similar high-risk authorization from the
+        /// same merchant.
+        /// </summary>
+        [JsonProperty("verified_by_fraud_challenge")]
+        public bool? VerifiedByFraudChallenge { get; set; }
 
         /// <summary>
         /// The digital wallet used for this transaction. One of <c>apple_pay</c>,

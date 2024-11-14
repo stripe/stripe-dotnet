@@ -16,8 +16,8 @@ namespace Stripe
         public List<AccountFutureRequirementsAlternative> Alternatives { get; set; }
 
         /// <summary>
-        /// Date on which <c>future_requirements</c> merges with the main <c>requirements</c> hash
-        /// and <c>future_requirements</c> becomes empty. After the transition, <c>currently_due</c>
+        /// Date on which <c>future_requirements</c> becomes the main <c>requirements</c> hash and
+        /// <c>future_requirements</c> becomes empty. After the transition, <c>currently_due</c>
         /// requirements may immediately become <c>past_due</c>, but the account may also be given a
         /// grace period depending on its enablement state prior to transitioning.
         /// </summary>
