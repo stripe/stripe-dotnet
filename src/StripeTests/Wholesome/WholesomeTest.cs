@@ -1,4 +1,4 @@
-namespace StripeTests
+namespace StripeTests.Wholesome
 {
     using System;
     using System.Collections.Generic;
