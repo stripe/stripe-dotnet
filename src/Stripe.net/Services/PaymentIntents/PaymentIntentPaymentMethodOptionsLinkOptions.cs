@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsLinkOptions : INestedOptions
     {
@@ -17,6 +20,10 @@ namespace Stripe
         /// for this parameter unsets the stored value for this payment method type.
         /// </summary>
         [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
+
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -24,6 +31,10 @@ namespace Stripe
         /// </summary>
         [Obsolete("This property is deprecated, please refer to the description for details.")]
         [JsonProperty("persistent_token")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("persistent_token")]
+#endif
+
         public string PersistentToken { get; set; }
 
         /// <summary>
@@ -52,6 +63,10 @@ namespace Stripe
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
+
         public string SetupFutureUsage { get; set; }
     }
 }

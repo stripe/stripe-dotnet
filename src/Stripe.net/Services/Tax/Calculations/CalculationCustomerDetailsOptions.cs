@@ -3,6 +3,9 @@ namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CalculationCustomerDetailsOptions : INestedOptions
     {
@@ -10,6 +13,10 @@ namespace Stripe.Tax
         /// The customer's postal address (for example, home or business location).
         /// </summary>
         [JsonProperty("address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address")]
+#endif
+
         public AddressOptions Address { get; set; }
 
         /// <summary>
@@ -17,12 +24,20 @@ namespace Stripe.Tax
         /// One of: <c>billing</c>, or <c>shipping</c>.
         /// </summary>
         [JsonProperty("address_source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_source")]
+#endif
+
         public string AddressSource { get; set; }
 
         /// <summary>
         /// The customer's IP address (IPv4 or IPv6).
         /// </summary>
         [JsonProperty("ip_address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ip_address")]
+#endif
+
         public string IpAddress { get; set; }
 
         /// <summary>
@@ -31,6 +46,10 @@ namespace Stripe.Tax
         /// tax IDs for correctness.
         /// </summary>
         [JsonProperty("tax_ids")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_ids")]
+#endif
+
         public List<CalculationCustomerDetailsTaxIdOptions> TaxIds { get; set; }
 
         /// <summary>
@@ -41,6 +60,10 @@ namespace Stripe.Tax
         /// One of: <c>customer_exempt</c>, <c>none</c>, or <c>reverse_charge</c>.
         /// </summary>
         [JsonProperty("taxability_override")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("taxability_override")]
+#endif
+
         public string TaxabilityOverride { get; set; }
     }
 }

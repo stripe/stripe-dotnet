@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountControllerLossesOptions : INestedOptions
     {
@@ -11,6 +14,10 @@ namespace Stripe
         /// One of: <c>application</c>, or <c>stripe</c>.
         /// </summary>
         [JsonProperty("payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payments")]
+#endif
+
         public string Payments { get; set; }
     }
 }

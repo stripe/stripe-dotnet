@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountSettingsPayments : StripeEntity<AccountSettingsPayments>
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// field prefixes any dynamic <c>statement_descriptor</c> specified on the charge.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
+
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -19,6 +26,10 @@ namespace Stripe
         /// requirements</a>.
         /// </summary>
         [JsonProperty("statement_descriptor_kana")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_kana")]
+#endif
+
         public string StatementDescriptorKana { get; set; }
 
         /// <summary>
@@ -28,6 +39,10 @@ namespace Stripe
         /// requirements</a>.
         /// </summary>
         [JsonProperty("statement_descriptor_kanji")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_kanji")]
+#endif
+
         public string StatementDescriptorKanji { get; set; }
 
         /// <summary>
@@ -37,6 +52,10 @@ namespace Stripe
         /// requirements</a>.
         /// </summary>
         [JsonProperty("statement_descriptor_prefix_kana")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_prefix_kana")]
+#endif
+
         public string StatementDescriptorPrefixKana { get; set; }
 
         /// <summary>
@@ -46,6 +65,10 @@ namespace Stripe
         /// requirements</a>.
         /// </summary>
         [JsonProperty("statement_descriptor_prefix_kanji")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_prefix_kanji")]
+#endif
+
         public string StatementDescriptorPrefixKanji { get; set; }
     }
 }

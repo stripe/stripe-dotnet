@@ -3,6 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PlanTierOptions : INestedOptions
     {
@@ -11,6 +14,10 @@ namespace Stripe
         /// tier.
         /// </summary>
         [JsonProperty("flat_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flat_amount")]
+#endif
+
         public long? FlatAmount { get; set; }
 
         /// <summary>
@@ -19,12 +26,20 @@ namespace Stripe
         /// <c>flat_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("flat_amount_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flat_amount_decimal")]
+#endif
+
         public decimal? FlatAmountDecimal { get; set; }
 
         /// <summary>
         /// The per unit billing amount for each individual unit for which this tier applies.
         /// </summary>
         [JsonProperty("unit_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount")]
+#endif
+
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -33,6 +48,10 @@ namespace Stripe
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount_decimal")]
+#endif
+
         public decimal? UnitAmountDecimal { get; set; }
 
         /// <summary>
@@ -40,6 +59,10 @@ namespace Stripe
         /// the previous tier adding one. Use <c>inf</c> to define a fallback tier.
         /// </summary>
         [JsonProperty("up_to")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("up_to")]
+#endif
+
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<long?, PlanTierUpTo> UpTo { get; set; }
     }

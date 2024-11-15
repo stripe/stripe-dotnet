@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PersonVerification : StripeEntity<PersonVerification>
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// well-known utility company.
         /// </summary>
         [JsonProperty("additional_document")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("additional_document")]
+#endif
+
         public PersonVerificationAdditionalDocument AdditionalDocument { get; set; }
 
         /// <summary>
@@ -17,6 +24,10 @@ namespace Stripe
         /// this may say "Provided identity information could not be verified".
         /// </summary>
         [JsonProperty("details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("details")]
+#endif
+
         public string Details { get; set; }
 
         /// <summary>
@@ -27,9 +38,17 @@ namespace Stripe
         /// the verification state for the person.
         /// </summary>
         [JsonProperty("details_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("details_code")]
+#endif
+
         public string DetailsCode { get; set; }
 
         [JsonProperty("document")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("document")]
+#endif
+
         public PersonVerificationDocument Document { get; set; }
 
         /// <summary>
@@ -37,6 +56,10 @@ namespace Stripe
         /// <c>pending</c>, or <c>verified</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
     }
 }

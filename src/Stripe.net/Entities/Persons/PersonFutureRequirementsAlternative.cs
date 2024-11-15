@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PersonFutureRequirementsAlternative : StripeEntity<PersonFutureRequirementsAlternative>
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// Fields that can be provided to satisfy all fields in <c>original_fields_due</c>.
         /// </summary>
         [JsonProperty("alternative_fields_due")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alternative_fields_due")]
+#endif
+
         public List<string> AlternativeFieldsDue { get; set; }
 
         /// <summary>
@@ -17,6 +24,10 @@ namespace Stripe
         /// <c>alternative_fields_due</c>.
         /// </summary>
         [JsonProperty("original_fields_due")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("original_fields_due")]
+#endif
+
         public List<string> OriginalFieldsDue { get; set; }
     }
 }

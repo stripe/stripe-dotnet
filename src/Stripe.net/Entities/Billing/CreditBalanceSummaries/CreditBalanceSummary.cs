@@ -4,6 +4,9 @@ namespace Stripe.Billing
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Indicates the billing credit balance for billing credits granted to a customer.
@@ -14,6 +17,10 @@ namespace Stripe.Billing
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -21,6 +28,10 @@ namespace Stripe.Billing
         /// credit grants in a single currency, then this will have a single balance entry.
         /// </summary>
         [JsonProperty("balances")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balances")]
+#endif
+
         public List<CreditBalanceSummaryBalance> Balances { get; set; }
 
         #region Expandable Customer
@@ -30,6 +41,10 @@ namespace Stripe.Billing
         /// The customer the balance is for.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -43,6 +58,10 @@ namespace Stripe.Billing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -59,6 +78,10 @@ namespace Stripe.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
     }
 }

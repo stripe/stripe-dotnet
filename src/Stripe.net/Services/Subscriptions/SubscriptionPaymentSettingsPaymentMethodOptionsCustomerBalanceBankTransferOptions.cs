@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferOptions : INestedOptions
     {
@@ -9,6 +12,10 @@ namespace Stripe
         /// Configuration for eu_bank_transfer funding type.
         /// </summary>
         [JsonProperty("eu_bank_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("eu_bank_transfer")]
+#endif
+
         public SubscriptionPaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransferOptions EuBankTransfer { get; set; }
 
         /// <summary>
@@ -17,6 +24,10 @@ namespace Stripe
         /// <c>mx_bank_transfer</c>, or <c>us_bank_transfer</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

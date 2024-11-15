@@ -4,6 +4,9 @@ namespace Stripe.Billing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class MeterStatusTransitions : StripeEntity<MeterStatusTransitions>
     {
@@ -12,6 +15,10 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("deactivated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deactivated_at")]
+#endif
+
         public DateTime? DeactivatedAt { get; set; }
     }
 }

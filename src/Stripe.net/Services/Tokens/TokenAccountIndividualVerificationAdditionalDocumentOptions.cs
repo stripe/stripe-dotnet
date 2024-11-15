@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TokenAccountIndividualVerificationAdditionalDocumentOptions : INestedOptions
     {
@@ -12,6 +15,10 @@ namespace Stripe
         /// and less than 10 MB in size.
         /// </summary>
         [JsonProperty("back")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("back")]
+#endif
+
         public string Back { get; set; }
 
         /// <summary>
@@ -21,6 +28,10 @@ namespace Stripe
         /// and less than 10 MB in size.
         /// </summary>
         [JsonProperty("front")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("front")]
+#endif
+
         public string Front { get; set; }
     }
 }

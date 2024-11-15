@@ -4,6 +4,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionSchedulePhaseAddInvoiceItem : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItem>
     {
@@ -11,6 +14,10 @@ namespace Stripe
         /// The stackable discounts that will be applied to the item.
         /// </summary>
         [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
+
         public List<SubscriptionSchedulePhaseAddInvoiceItemDiscount> Discounts { get; set; }
 
         #region Expandable Price
@@ -20,6 +27,10 @@ namespace Stripe
         /// ID of the price used to generate the invoice item.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string PriceId
         {
             get => this.InternalPrice?.Id;
@@ -33,6 +44,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Price Price
         {
             get => this.InternalPrice?.ExpandedObject;
@@ -48,6 +63,10 @@ namespace Stripe
         /// The quantity of the invoice item.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
+
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -55,6 +74,10 @@ namespace Stripe
         /// apply to this item.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
+
         public List<TaxRate> TaxRates { get; set; }
     }
 }

@@ -5,6 +5,9 @@ namespace Stripe.Treasury
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Use <a
@@ -23,24 +26,40 @@ namespace Stripe.Treasury
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
         /// Amount (in cents) transferred.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         /// <summary>
         /// Returns <c>true</c> if the InboundTransfer is able to be canceled.
         /// </summary>
         [JsonProperty("cancelable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancelable")]
+#endif
+
         public bool Cancelable { get; set; }
 
         /// <summary>
@@ -48,6 +67,10 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -56,24 +79,40 @@ namespace Stripe.Treasury
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
         /// Details about this InboundTransfer's failure. Only set when status is <c>failed</c>.
         /// </summary>
         [JsonProperty("failure_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failure_details")]
+#endif
+
         public InboundTransferFailureDetails FailureDetails { get; set; }
 
         /// <summary>
         /// The FinancialAccount that received the funds.
         /// </summary>
         [JsonProperty("financial_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_account")]
+#endif
+
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -82,9 +121,17 @@ namespace Stripe.Treasury
         /// under Stripe's money transmission licenses.
         /// </summary>
         [JsonProperty("hosted_regulatory_receipt_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hosted_regulatory_receipt_url")]
+#endif
+
         public string HostedRegulatoryReceiptUrl { get; set; }
 
         [JsonProperty("linked_flows")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("linked_flows")]
+#endif
+
         public InboundTransferLinkedFlows LinkedFlows { get; set; }
 
         /// <summary>
@@ -92,6 +139,10 @@ namespace Stripe.Treasury
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -100,18 +151,30 @@ namespace Stripe.Treasury
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The origin payment method to be debited for an InboundTransfer.
         /// </summary>
         [JsonProperty("origin_payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("origin_payment_method")]
+#endif
+
         public string OriginPaymentMethod { get; set; }
 
         /// <summary>
         /// Details about the PaymentMethod for an InboundTransfer.
         /// </summary>
         [JsonProperty("origin_payment_method_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("origin_payment_method_details")]
+#endif
+
         public InboundTransferOriginPaymentMethodDetails OriginPaymentMethodDetails { get; set; }
 
         /// <summary>
@@ -119,6 +182,10 @@ namespace Stripe.Treasury
         /// InboundTransfer went to the <c>succeeded</c> state.
         /// </summary>
         [JsonProperty("returned")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("returned")]
+#endif
+
         public bool? Returned { get; set; }
 
         /// <summary>
@@ -126,6 +193,10 @@ namespace Stripe.Treasury
         /// networks support <c>statement_descriptor</c>.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
+
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -137,9 +208,17 @@ namespace Stripe.Treasury
         /// One of: <c>canceled</c>, <c>failed</c>, <c>processing</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         [JsonProperty("status_transitions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status_transitions")]
+#endif
+
         public InboundTransferStatusTransitions StatusTransitions { get; set; }
 
         #region Expandable Transaction
@@ -149,6 +228,10 @@ namespace Stripe.Treasury
         /// The Transaction associated with this object.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string TransactionId
         {
             get => this.InternalTransaction?.Id;
@@ -162,6 +245,10 @@ namespace Stripe.Treasury
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Transaction Transaction
         {
             get => this.InternalTransaction?.ExpandedObject;

@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteFinalizeOptions : BaseOptions
     {
@@ -12,6 +15,10 @@ namespace Stripe
         /// status. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("expires_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
     }

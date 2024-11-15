@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Some payment methods have no required amount that a customer must send. Customers can be
@@ -16,15 +19,27 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         [JsonProperty("ach_credit_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ach_credit_transfer")]
+#endif
+
         public SourceTransactionAchCreditTransfer AchCreditTransfer { get; set; }
 
         /// <summary>
@@ -33,9 +48,17 @@ namespace Stripe
         /// has pushed to the receiver.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         [JsonProperty("chf_credit_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("chf_credit_transfer")]
+#endif
+
         public SourceTransactionChfCreditTransfer ChfCreditTransfer { get; set; }
 
         /// <summary>
@@ -43,6 +66,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -51,9 +78,17 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         [JsonProperty("gbp_credit_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("gbp_credit_transfer")]
+#endif
+
         public SourceTransactionGbpCreditTransfer GbpCreditTransfer { get; set; }
 
         /// <summary>
@@ -61,18 +96,34 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         [JsonProperty("paper_check")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paper_check")]
+#endif
+
         public SourceTransactionPaperCheck PaperCheck { get; set; }
 
         [JsonProperty("sepa_credit_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sepa_credit_transfer")]
+#endif
+
         public SourceTransactionSepaCreditTransfer SepaCreditTransfer { get; set; }
 
         /// <summary>
         /// The ID of the source this transaction is attached to.
         /// </summary>
         [JsonProperty("source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source")]
+#endif
+
         public string Source { get; set; }
 
         /// <summary>
@@ -80,6 +131,10 @@ namespace Stripe
         /// <c>failed</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         /// <summary>
@@ -90,6 +145,10 @@ namespace Stripe
         /// <c>three_d_secure</c>, or <c>wechat</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

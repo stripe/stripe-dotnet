@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionItemUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -14,12 +17,20 @@ namespace Stripe
         /// thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
+
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
         /// The coupons to redeem into discounts for the subscription item.
         /// </summary>
         [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
+
         public List<SubscriptionItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -29,6 +40,10 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -36,6 +51,10 @@ namespace Stripe
         /// Defaults to <c>false</c> (on-session).
         /// </summary>
         [JsonProperty("off_session")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("off_session")]
+#endif
+
         public bool? OffSession { get; set; }
 
         /// <summary>
@@ -70,12 +89,20 @@ namespace Stripe
         /// or <c>pending_if_incomplete</c>.
         /// </summary>
         [JsonProperty("payment_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_behavior")]
+#endif
+
         public string PaymentBehavior { get; set; }
 
         /// <summary>
         /// The identifier of the new plan for this subscription item.
         /// </summary>
         [JsonProperty("plan")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("plan")]
+#endif
+
         public string Plan { get; set; }
 
         /// <summary>
@@ -84,6 +111,10 @@ namespace Stripe
         /// <c>quantity</c> parameter is provided.
         /// </summary>
         [JsonProperty("price")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price")]
+#endif
+
         public string Price { get; set; }
 
         /// <summary>
@@ -91,6 +122,10 @@ namespace Stripe
         /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price_data")]
+#endif
+
         public SubscriptionItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -102,6 +137,10 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_behavior")]
+#endif
+
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -111,6 +150,10 @@ namespace Stripe
         /// endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_date")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ProrationDate { get; set; }
 
@@ -118,6 +161,10 @@ namespace Stripe
         /// The quantity you'd like to apply to the subscription item you're creating.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
+
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -128,6 +175,10 @@ namespace Stripe
         /// tax rates.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
+
         public List<string> TaxRates { get; set; }
     }
 }

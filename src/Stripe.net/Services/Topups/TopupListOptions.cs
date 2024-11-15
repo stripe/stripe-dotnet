@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TopupListOptions : ListOptionsWithCreated
     {
@@ -11,6 +14,10 @@ namespace Stripe
         /// A positive integer representing how much to transfer.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> Amount { get; set; }
 
@@ -20,6 +27,10 @@ namespace Stripe
         /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
     }
 }

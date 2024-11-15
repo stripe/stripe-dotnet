@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ReceivedCreditLinkedFlows : StripeEntity<ReceivedCreditLinkedFlows>
     {
@@ -9,6 +12,10 @@ namespace Stripe.Treasury
         /// The CreditReversal created as a result of this ReceivedCredit being reversed.
         /// </summary>
         [JsonProperty("credit_reversal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("credit_reversal")]
+#endif
+
         public string CreditReversal { get; set; }
 
         /// <summary>
@@ -17,6 +24,10 @@ namespace Stripe.Treasury
         /// object.
         /// </summary>
         [JsonProperty("issuing_authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("issuing_authorization")]
+#endif
+
         public string IssuingAuthorization { get; set; }
 
         /// <summary>
@@ -24,6 +35,10 @@ namespace Stripe.Treasury
         /// href="https://stripe.com/docs/api#issuing_transactions">Issuing transaction</a> object.
         /// </summary>
         [JsonProperty("issuing_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("issuing_transaction")]
+#endif
+
         public string IssuingTransaction { get; set; }
 
         /// <summary>
@@ -32,12 +47,20 @@ namespace Stripe.Treasury
         /// CreditReversals.
         /// </summary>
         [JsonProperty("source_flow")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source_flow")]
+#endif
+
         public string SourceFlow { get; set; }
 
         /// <summary>
         /// The expandable object of the source flow.
         /// </summary>
         [JsonProperty("source_flow_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source_flow_details")]
+#endif
+
         public ReceivedCreditLinkedFlowsSourceFlowDetails SourceFlowDetails { get; set; }
 
         /// <summary>
@@ -45,6 +68,10 @@ namespace Stripe.Treasury
         /// <c>outbound_payment</c>).
         /// </summary>
         [JsonProperty("source_flow_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source_flow_type")]
+#endif
+
         public string SourceFlowType { get; set; }
     }
 }

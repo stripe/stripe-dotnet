@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountSettingsBacsDebitPaymentsOptions : INestedOptions
     {
@@ -15,6 +18,10 @@ namespace Stripe
         /// branding, which is free.
         /// </summary>
         [JsonProperty("display_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_name")]
+#endif
+
         public string DisplayName { get; set; }
     }
 }

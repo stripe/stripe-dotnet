@@ -3,6 +3,9 @@ namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ReaderActionProcessPaymentIntent : StripeEntity<ReaderActionProcessPaymentIntent>
     {
@@ -13,6 +16,10 @@ namespace Stripe.Terminal
         /// Most recent PaymentIntent processed by the reader.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
@@ -26,6 +33,10 @@ namespace Stripe.Terminal
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
@@ -41,6 +52,10 @@ namespace Stripe.Terminal
         /// Represents a per-transaction override of a reader configuration.
         /// </summary>
         [JsonProperty("process_config")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("process_config")]
+#endif
+
         public ReaderActionProcessPaymentIntentProcessConfig ProcessConfig { get; set; }
     }
 }

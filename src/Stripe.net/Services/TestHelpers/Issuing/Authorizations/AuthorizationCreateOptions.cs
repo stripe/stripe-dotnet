@@ -2,6 +2,9 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AuthorizationCreateOptions : BaseOptions
     {
@@ -11,6 +14,10 @@ namespace Stripe.TestHelpers.Issuing
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long? Amount { get; set; }
 
         /// <summary>
@@ -19,6 +26,10 @@ namespace Stripe.TestHelpers.Issuing
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_details")]
+#endif
+
         public AuthorizationAmountDetailsOptions AmountDetails { get; set; }
 
         /// <summary>
@@ -27,12 +38,20 @@ namespace Stripe.TestHelpers.Issuing
         /// <c>swipe</c>.
         /// </summary>
         [JsonProperty("authorization_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("authorization_method")]
+#endif
+
         public string AuthorizationMethod { get; set; }
 
         /// <summary>
         /// Card associated with this authorization.
         /// </summary>
         [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
+
         public string Card { get; set; }
 
         /// <summary>
@@ -42,18 +61,30 @@ namespace Stripe.TestHelpers.Issuing
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
         /// Fleet-specific information for authorizations using Fleet cards.
         /// </summary>
         [JsonProperty("fleet")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fleet")]
+#endif
+
         public AuthorizationFleetOptions Fleet { get; set; }
 
         /// <summary>
         /// Information about fuel that was purchased with this transaction.
         /// </summary>
         [JsonProperty("fuel")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fuel")]
+#endif
+
         public AuthorizationFuelOptions Fuel { get; set; }
 
         /// <summary>
@@ -62,6 +93,10 @@ namespace Stripe.TestHelpers.Issuing
         /// to control how much to hold for the authorization.
         /// </summary>
         [JsonProperty("is_amount_controllable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("is_amount_controllable")]
+#endif
+
         public bool? IsAmountControllable { get; set; }
 
         /// <summary>
@@ -69,12 +104,20 @@ namespace Stripe.TestHelpers.Issuing
         /// authorization happened.
         /// </summary>
         [JsonProperty("merchant_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("merchant_data")]
+#endif
+
         public AuthorizationMerchantDataOptions MerchantData { get; set; }
 
         /// <summary>
         /// Details about the authorization, such as identifiers, set by the card network.
         /// </summary>
         [JsonProperty("network_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_data")]
+#endif
+
         public AuthorizationNetworkDataOptions NetworkData { get; set; }
 
         /// <summary>
@@ -82,6 +125,10 @@ namespace Stripe.TestHelpers.Issuing
         /// merchant.
         /// </summary>
         [JsonProperty("verification_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("verification_data")]
+#endif
+
         public AuthorizationVerificationDataOptions VerificationData { get; set; }
 
         /// <summary>
@@ -91,6 +138,10 @@ namespace Stripe.TestHelpers.Issuing
         /// One of: <c>apple_pay</c>, <c>google_pay</c>, or <c>samsung_pay</c>.
         /// </summary>
         [JsonProperty("wallet")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wallet")]
+#endif
+
         public string Wallet { get; set; }
     }
 }

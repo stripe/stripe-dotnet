@@ -3,6 +3,9 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CardholderIndividualVerificationDocument : StripeEntity<CardholderIndividualVerificationDocument>
     {
@@ -15,6 +18,10 @@ namespace Stripe.Issuing
         /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string BackId
         {
             get => this.InternalBack?.Id;
@@ -30,6 +37,10 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public File Back
         {
             get => this.InternalBack?.ExpandedObject;
@@ -50,6 +61,10 @@ namespace Stripe.Issuing
         /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string FrontId
         {
             get => this.InternalFront?.Id;
@@ -65,6 +80,10 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public File Front
         {
             get => this.InternalFront?.ExpandedObject;

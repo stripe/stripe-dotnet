@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Refund objects allow you to refund a previously created charge that isn't refunded yet.
@@ -18,18 +21,30 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
         /// Amount, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         #region Expandable BalanceTransaction
@@ -39,6 +54,10 @@ namespace Stripe
         /// Balance transaction that describes the impact on your account balance.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
@@ -52,6 +71,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
@@ -70,6 +93,10 @@ namespace Stripe
         /// ID of the charge that's refunded.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ChargeId
         {
             get => this.InternalCharge?.Id;
@@ -83,6 +110,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Charge Charge
         {
             get => this.InternalCharge?.ExpandedObject;
@@ -99,6 +130,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -107,6 +142,10 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
@@ -114,9 +153,17 @@ namespace Stripe
         /// (available on non-card refunds only).
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         [JsonProperty("destination_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination_details")]
+#endif
+
         public RefundDestinationDetails DestinationDetails { get; set; }
 
         #region Expandable FailureBalanceTransaction
@@ -127,6 +174,10 @@ namespace Stripe
         /// account balance that reverses the initial balance transaction.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string FailureBalanceTransactionId
         {
             get => this.InternalFailureBalanceTransaction?.Id;
@@ -141,6 +192,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public BalanceTransaction FailureBalanceTransaction
         {
             get => this.InternalFailureBalanceTransaction?.ExpandedObject;
@@ -159,6 +214,10 @@ namespace Stripe
         /// <c>merchant_request</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failure_reason")]
+#endif
+
         public string FailureReason { get; set; }
 
         /// <summary>
@@ -166,6 +225,10 @@ namespace Stripe
         /// provide an email address for the customer to receive refund instructions.
         /// </summary>
         [JsonProperty("instructions_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("instructions_email")]
+#endif
+
         public string InstructionsEmail { get; set; }
 
         /// <summary>
@@ -174,9 +237,17 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("next_action")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("next_action")]
+#endif
+
         public RefundNextAction NextAction { get; set; }
 
         #region Expandable PaymentIntent
@@ -186,6 +257,10 @@ namespace Stripe
         /// ID of the PaymentIntent that's refunded.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
@@ -199,6 +274,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
@@ -218,12 +297,20 @@ namespace Stripe
         /// <c>requested_by_customer</c>.
         /// </summary>
         [JsonProperty("reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason")]
+#endif
+
         public string Reason { get; set; }
 
         /// <summary>
         /// This is the transaction number that appears on email receipts sent for this refund.
         /// </summary>
         [JsonProperty("receipt_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("receipt_number")]
+#endif
+
         public string ReceiptNumber { get; set; }
 
         #region Expandable SourceTransferReversal
@@ -234,6 +321,10 @@ namespace Stripe
         /// from another Stripe account.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string SourceTransferReversalId
         {
             get => this.InternalSourceTransferReversal?.Id;
@@ -248,6 +339,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public TransferReversal SourceTransferReversal
         {
             get => this.InternalSourceTransferReversal?.ExpandedObject;
@@ -265,6 +360,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/refunds#failed-refunds">failed refunds</a>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         #region Expandable TransferReversal
@@ -275,6 +374,10 @@ namespace Stripe
         /// is only applicable if the charge was created using the destination parameter.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string TransferReversalId
         {
             get => this.InternalTransferReversal?.Id;
@@ -289,6 +392,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public TransferReversal TransferReversal
         {
             get => this.InternalTransferReversal?.ExpandedObject;

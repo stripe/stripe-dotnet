@@ -3,6 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceFromInvoice : StripeEntity<InvoiceFromInvoice>
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// The relation between this invoice and the cloned invoice.
         /// </summary>
         [JsonProperty("action")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("action")]
+#endif
+
         public string Action { get; set; }
 
         #region Expandable Invoice
@@ -19,6 +26,10 @@ namespace Stripe
         /// The invoice that was cloned.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string InvoiceId
         {
             get => this.InternalInvoice?.Id;
@@ -32,6 +43,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Invoice Invoice
         {
             get => this.InternalInvoice?.ExpandedObject;

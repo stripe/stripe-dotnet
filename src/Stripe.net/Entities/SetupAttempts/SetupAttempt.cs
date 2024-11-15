@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A SetupAttempt describes one attempted confirmation of a SetupIntent, whether that
@@ -17,12 +20,20 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         #region Expandable Application
@@ -34,6 +45,10 @@ namespace Stripe
         /// on the SetupIntent at the time of this confirmation.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ApplicationId
         {
             get => this.InternalApplication?.Id;
@@ -49,6 +64,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
@@ -70,6 +89,10 @@ namespace Stripe
         /// Customer.
         /// </summary>
         [JsonProperty("attach_to_self")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("attach_to_self")]
+#endif
+
         public bool AttachToSelf { get; set; }
 
         /// <summary>
@@ -77,6 +100,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable Customer
@@ -88,6 +115,10 @@ namespace Stripe
         /// on the SetupIntent at the time of this confirmation.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -103,6 +134,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -125,6 +160,10 @@ namespace Stripe
         /// One of: <c>inbound</c>, or <c>outbound</c>.
         /// </summary>
         [JsonProperty("flow_directions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flow_directions")]
+#endif
+
         public List<string> FlowDirections { get; set; }
 
         /// <summary>
@@ -132,6 +171,10 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         #region Expandable OnBehalfOf
@@ -143,6 +186,10 @@ namespace Stripe
         /// on the SetupIntent at the time of this confirmation.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string OnBehalfOfId
         {
             get => this.InternalOnBehalfOf?.Id;
@@ -158,6 +205,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
@@ -176,6 +227,10 @@ namespace Stripe
         /// ID of the payment method used with this SetupAttempt.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string PaymentMethodId
         {
             get => this.InternalPaymentMethod?.Id;
@@ -189,6 +244,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public PaymentMethod PaymentMethod
         {
             get => this.InternalPaymentMethod?.ExpandedObject;
@@ -201,12 +260,20 @@ namespace Stripe
         #endregion
 
         [JsonProperty("payment_method_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_details")]
+#endif
+
         public SetupAttemptPaymentMethodDetails PaymentMethodDetails { get; set; }
 
         /// <summary>
         /// The error encountered during this attempt to confirm the SetupIntent, if any.
         /// </summary>
         [JsonProperty("setup_error")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_error")]
+#endif
+
         public StripeError SetupError { get; set; }
 
         #region Expandable SetupIntent
@@ -216,6 +283,10 @@ namespace Stripe
         /// ID of the SetupIntent that this attempt belongs to.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string SetupIntentId
         {
             get => this.InternalSetupIntent?.Id;
@@ -229,6 +300,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public SetupIntent SetupIntent
         {
             get => this.InternalSetupIntent?.ExpandedObject;
@@ -246,6 +321,10 @@ namespace Stripe
         /// <c>abandoned</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         /// <summary>
@@ -255,6 +334,10 @@ namespace Stripe
         /// <c>on_session</c>.
         /// </summary>
         [JsonProperty("usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("usage")]
+#endif
+
         public string Usage { get; set; }
     }
 }

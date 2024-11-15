@@ -3,6 +3,9 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class DisputeEvidenceDuplicate : StripeEntity<DisputeEvidenceDuplicate>
     {
@@ -14,6 +17,10 @@ namespace Stripe.Issuing
         /// Additional documentation supporting the dispute.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string AdditionalDocumentationId
         {
             get => this.InternalAdditionalDocumentation?.Id;
@@ -28,6 +35,10 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public File AdditionalDocumentation
         {
             get => this.InternalAdditionalDocumentation?.ExpandedObject;
@@ -47,6 +58,10 @@ namespace Stripe.Issuing
         /// the card statement showing that the product had already been paid for.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CardStatementId
         {
             get => this.InternalCardStatement?.Id;
@@ -61,6 +76,10 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public File CardStatement
         {
             get => this.InternalCardStatement?.ExpandedObject;
@@ -80,6 +99,10 @@ namespace Stripe.Issuing
         /// the receipt showing that the product had been paid for in cash.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CashReceiptId
         {
             get => this.InternalCashReceipt?.Id;
@@ -94,6 +117,10 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public File CashReceipt
         {
             get => this.InternalCashReceipt?.ExpandedObject;
@@ -113,6 +140,10 @@ namespace Stripe.Issuing
         /// the front and back of the check that was used to pay for the product.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CheckImageId
         {
             get => this.InternalCheckImage?.Id;
@@ -127,6 +158,10 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public File CheckImage
         {
             get => this.InternalCheckImage?.ExpandedObject;
@@ -142,6 +177,10 @@ namespace Stripe.Issuing
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
         [JsonProperty("explanation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("explanation")]
+#endif
+
         public string Explanation { get; set; }
 
         /// <summary>
@@ -149,6 +188,10 @@ namespace Stripe.Issuing
         /// or more transactions that are copies of each other, this is original undisputed one.
         /// </summary>
         [JsonProperty("original_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("original_transaction")]
+#endif
+
         public string OriginalTransaction { get; set; }
     }
 }

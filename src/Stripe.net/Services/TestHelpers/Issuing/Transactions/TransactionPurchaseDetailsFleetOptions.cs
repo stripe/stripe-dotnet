@@ -2,6 +2,9 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TransactionPurchaseDetailsFleetOptions : INestedOptions
     {
@@ -11,6 +14,10 @@ namespace Stripe.TestHelpers.Issuing
         /// support only numeric entry.
         /// </summary>
         [JsonProperty("cardholder_prompt_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cardholder_prompt_data")]
+#endif
+
         public TransactionPurchaseDetailsFleetCardholderPromptDataOptions CardholderPromptData { get; set; }
 
         /// <summary>
@@ -20,6 +27,10 @@ namespace Stripe.TestHelpers.Issuing
         /// <c>non_fuel_purchase</c>.
         /// </summary>
         [JsonProperty("purchase_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("purchase_type")]
+#endif
+
         public string PurchaseType { get; set; }
 
         /// <summary>
@@ -27,6 +38,10 @@ namespace Stripe.TestHelpers.Issuing
         /// accurate as some merchants may provide unreliable data.
         /// </summary>
         [JsonProperty("reported_breakdown")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reported_breakdown")]
+#endif
+
         public TransactionPurchaseDetailsFleetReportedBreakdownOptions ReportedBreakdown { get; set; }
 
         /// <summary>
@@ -35,6 +50,10 @@ namespace Stripe.TestHelpers.Issuing
         /// One of: <c>full_service</c>, <c>non_fuel_transaction</c>, or <c>self_service</c>.
         /// </summary>
         [JsonProperty("service_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("service_type")]
+#endif
+
         public string ServiceType { get; set; }
     }
 }

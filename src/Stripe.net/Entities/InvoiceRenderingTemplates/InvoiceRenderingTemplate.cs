@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Invoice Rendering Templates are used to configure how invoices are rendered on surfaces
@@ -17,12 +20,20 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -30,6 +41,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -37,6 +52,10 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -45,12 +64,20 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A brief description of the template, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nickname")]
+#endif
+
         public string Nickname { get; set; }
 
         /// <summary>
@@ -58,6 +85,10 @@ namespace Stripe
         /// One of: <c>active</c>, or <c>archived</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         /// <summary>
@@ -65,6 +96,10 @@ namespace Stripe
         /// changes any field that controls invoice rendering.
         /// </summary>
         [JsonProperty("version")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("version")]
+#endif
+
         public long Version { get; set; }
     }
 }

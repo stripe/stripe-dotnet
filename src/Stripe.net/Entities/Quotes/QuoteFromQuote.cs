@@ -3,6 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteFromQuote : StripeEntity<QuoteFromQuote>
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// Whether this quote is a revision of a different quote.
         /// </summary>
         [JsonProperty("is_revision")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("is_revision")]
+#endif
+
         public bool IsRevision { get; set; }
 
         #region Expandable Quote
@@ -19,6 +26,10 @@ namespace Stripe
         /// The quote that was cloned.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string QuoteId
         {
             get => this.InternalQuote?.Id;
@@ -32,6 +43,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Quote Quote
         {
             get => this.InternalQuote?.ExpandedObject;

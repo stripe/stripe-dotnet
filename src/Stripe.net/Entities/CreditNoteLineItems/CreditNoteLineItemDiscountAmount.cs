@@ -3,6 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditNoteLineItemDiscountAmount : StripeEntity<CreditNoteLineItemDiscountAmount>
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// The amount, in cents (or local equivalent), of the discount.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         #region Expandable Discount
@@ -19,6 +26,10 @@ namespace Stripe
         /// The discount that was applied to get this discount amount.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string DiscountId
         {
             get => this.InternalDiscount?.Id;
@@ -32,6 +43,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Discount Discount
         {
             get => this.InternalDiscount?.ExpandedObject;

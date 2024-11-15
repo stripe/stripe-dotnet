@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceRemoveLinesOptions : BaseOptions
     {
@@ -13,12 +16,20 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("invoice_metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_metadata")]
+#endif
+
         public Dictionary<string, string> InvoiceMetadata { get; set; }
 
         /// <summary>
         /// The line items to remove.
         /// </summary>
         [JsonProperty("lines")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lines")]
+#endif
+
         public List<InvoiceLineOptions> Lines { get; set; }
     }
 }

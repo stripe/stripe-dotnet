@@ -5,6 +5,9 @@ namespace Stripe.Billing
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditGrantCreateOptions : BaseOptions, IHasMetadata
     {
@@ -12,12 +15,20 @@ namespace Stripe.Billing
         /// Amount of this credit grant.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public CreditGrantAmountOptions Amount { get; set; }
 
         /// <summary>
         /// Configuration specifying what this credit grant applies to.
         /// </summary>
         [JsonProperty("applicability_config")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("applicability_config")]
+#endif
+
         public CreditGrantApplicabilityConfigOptions ApplicabilityConfig { get; set; }
 
         /// <summary>
@@ -25,12 +36,20 @@ namespace Stripe.Billing
         /// One of: <c>paid</c>, or <c>promotional</c>.
         /// </summary>
         [JsonProperty("category")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("category")]
+#endif
+
         public string Category { get; set; }
 
         /// <summary>
         /// ID of the customer to whom the billing credits should be granted.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
+
         public string Customer { get; set; }
 
         /// <summary>
@@ -38,6 +57,10 @@ namespace Stripe.Billing
         /// used. Defaults to the current timestamp if not specified.
         /// </summary>
         [JsonProperty("effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EffectiveAt { get; set; }
 
@@ -46,6 +69,10 @@ namespace Stripe.Billing
         /// will never expire.
         /// </summary>
         [JsonProperty("expires_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -54,12 +81,20 @@ namespace Stripe.Billing
         /// additional information about the object (ex: cost basis) in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A descriptive name shown in dashboard.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
+
         public string Name { get; set; }
     }
 }

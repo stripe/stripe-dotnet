@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptions>
     {
@@ -9,6 +12,10 @@ namespace Stripe
         /// Amount to be charged for future payments.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long? Amount { get; set; }
 
         /// <summary>
@@ -18,6 +25,10 @@ namespace Stripe
         /// One of: <c>fixed</c>, or <c>maximum</c>.
         /// </summary>
         [JsonProperty("amount_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_type")]
+#endif
+
         public string AmountType { get; set; }
 
         /// <summary>
@@ -25,6 +36,10 @@ namespace Stripe
         /// customer.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
     }
 }

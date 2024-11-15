@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CouponCreateOptions : BaseOptions, IHasId, IHasMetadata
     {
@@ -13,12 +16,20 @@ namespace Stripe
         /// if <c>percent_off</c> is not passed).
         /// </summary>
         [JsonProperty("amount_off")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_off")]
+#endif
+
         public long? AmountOff { get; set; }
 
         /// <summary>
         /// A hash containing directions for what this Coupon will apply discounts to.
         /// </summary>
         [JsonProperty("applies_to")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("applies_to")]
+#endif
+
         public CouponAppliesToOptions AppliesTo { get; set; }
 
         /// <summary>
@@ -26,6 +37,10 @@ namespace Stripe
         /// of the <c>amount_off</c> parameter (required if <c>amount_off</c> is passed).
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
@@ -35,6 +50,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency_options")]
+#endif
+
         public Dictionary<string, CouponCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
@@ -43,6 +62,10 @@ namespace Stripe
         /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
         /// </summary>
         [JsonProperty("duration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("duration")]
+#endif
+
         public string Duration { get; set; }
 
         /// <summary>
@@ -50,6 +73,10 @@ namespace Stripe
         /// positive integer that specifies the number of months the discount will be in effect.
         /// </summary>
         [JsonProperty("duration_in_months")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("duration_in_months")]
+#endif
+
         public long? DurationInMonths { get; set; }
 
         /// <summary>
@@ -58,6 +85,10 @@ namespace Stripe
         /// blank and we'll generate a random code for you.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
@@ -66,6 +97,10 @@ namespace Stripe
         /// of your blog can use.
         /// </summary>
         [JsonProperty("max_redemptions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("max_redemptions")]
+#endif
+
         public long? MaxRedemptions { get; set; }
 
         /// <summary>
@@ -75,6 +110,10 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -82,6 +121,10 @@ namespace Stripe
         /// default the <c>id</c> is shown if <c>name</c> is not set.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
+
         public string Name { get; set; }
 
         /// <summary>
@@ -89,6 +132,10 @@ namespace Stripe
         /// discount the coupon will apply (required if <c>amount_off</c> is not passed).
         /// </summary>
         [JsonProperty("percent_off")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("percent_off")]
+#endif
+
         public decimal? PercentOff { get; set; }
 
         /// <summary>
@@ -96,6 +143,10 @@ namespace Stripe
         /// redeem_by date, the coupon can no longer be applied to new customers.
         /// </summary>
         [JsonProperty("redeem_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("redeem_by")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? RedeemBy { get; set; }
     }

@@ -3,6 +3,9 @@ namespace Stripe.Billing
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AlertUsageThresholdFilter : StripeEntity<AlertUsageThresholdFilter>
     {
@@ -13,6 +16,10 @@ namespace Stripe.Billing
         /// Limit the scope of the alert to this customer ID.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -26,6 +33,10 @@ namespace Stripe.Billing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -38,6 +49,10 @@ namespace Stripe.Billing
         #endregion
 
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

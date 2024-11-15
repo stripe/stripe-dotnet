@@ -4,6 +4,9 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CardholderIndividualCardIssuingUserTermsAcceptanceOptions : INestedOptions
     {
@@ -12,6 +15,10 @@ namespace Stripe.Issuing
         /// Required for Celtic Spend Card users.
         /// </summary>
         [JsonProperty("date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("date")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? Date { get; set; }
 
@@ -20,6 +27,10 @@ namespace Stripe.Issuing
         /// for Celtic Spend Card users.
         /// </summary>
         [JsonProperty("ip")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ip")]
+#endif
+
         public string Ip { get; set; }
 
         /// <summary>
@@ -27,6 +38,10 @@ namespace Stripe.Issuing
         /// Terms.
         /// </summary>
         [JsonProperty("user_agent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("user_agent")]
+#endif
+
         public string UserAgent { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditGrantApplicabilityConfigScope : StripeEntity<CreditGrantApplicabilityConfigScope>
     {
@@ -11,6 +14,10 @@ namespace Stripe.Billing
         /// href="https://docs.stripe.com/api/billing/meter">Billing Meter</a> attached to them.
         /// </summary>
         [JsonProperty("price_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price_type")]
+#endif
+
         public string PriceType { get; set; }
     }
 }

@@ -4,6 +4,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ChargeCreateOptions : BaseOptions, IHasMetadata
     {
@@ -17,6 +20,10 @@ namespace Stripe
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long? Amount { get; set; }
 
         /// <summary>
@@ -27,6 +34,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/direct-charges#collect-fees">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
+
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -38,6 +49,10 @@ namespace Stripe
         /// later</a> documentation.
         /// </summary>
         [JsonProperty("capture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture")]
+#endif
+
         public bool? Capture { get; set; }
 
         /// <summary>
@@ -46,12 +61,20 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
         /// The ID of an existing customer that will be charged in this request.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
+
         public string Customer { get; set; }
 
         /// <summary>
@@ -61,15 +84,31 @@ namespace Stripe
         /// <c>description</c> of the charge(s) that they are describing.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         [JsonProperty("destination")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination")]
+#endif
+
         public ChargeDestinationOptions Destination { get; set; }
 
         [JsonProperty("exchange_rate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exchange_rate")]
+#endif
+
         public decimal? ExchangeRate { get; set; }
 
         [JsonProperty("level3")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("level3")]
+#endif
+
         public ChargeLevel3Options Level3 { get; set; }
 
         /// <summary>
@@ -79,6 +118,10 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -88,6 +131,10 @@ namespace Stripe
         /// Separate Charges and Transfers</a>.
         /// </summary>
         [JsonProperty("on_behalf_of")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("on_behalf_of")]
+#endif
+
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -96,6 +143,10 @@ namespace Stripe
         /// information.
         /// </summary>
         [JsonProperty("radar_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("radar_options")]
+#endif
+
         public ChargeRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
@@ -109,12 +160,20 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/account/emails">email settings</a>.
         /// </summary>
         [JsonProperty("receipt_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("receipt_email")]
+#endif
+
         public string ReceiptEmail { get; set; }
 
         /// <summary>
         /// Shipping information for the charge. Helps prevent fraud on charges for physical goods.
         /// </summary>
         [JsonProperty("shipping")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping")]
+#endif
+
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
@@ -131,6 +190,10 @@ namespace Stripe
         /// the associated customer.
         /// </summary>
         [JsonProperty("source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source")]
+#endif
+
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<string, CardCreateNestedOptions> Source { get; set; }
 
@@ -145,6 +208,10 @@ namespace Stripe
         /// <c>statement_descriptor_suffix</c>, in which case this value is used as the suffix.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
+
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -155,6 +222,10 @@ namespace Stripe
         /// the account's statement descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix")]
+#endif
+
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -163,6 +234,10 @@ namespace Stripe
         /// the Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
+
         public ChargeTransferDataOptions TransferData { get; set; }
 
         /// <summary>
@@ -171,6 +246,10 @@ namespace Stripe
         /// transactions</a>.
         /// </summary>
         [JsonProperty("transfer_group")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_group")]
+#endif
+
         public string TransferGroup { get; set; }
     }
 }

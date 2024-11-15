@@ -2,6 +2,9 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class RegistrationCountryOptionsUsLocalLeaseTaxOptions : INestedOptions
     {
@@ -10,6 +13,10 @@ namespace Stripe.Tax
         /// representing the local jurisdiction. Supported FIPS codes are: <c>14000</c> (Chicago).
         /// </summary>
         [JsonProperty("jurisdiction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("jurisdiction")]
+#endif
+
         public string Jurisdiction { get; set; }
     }
 }

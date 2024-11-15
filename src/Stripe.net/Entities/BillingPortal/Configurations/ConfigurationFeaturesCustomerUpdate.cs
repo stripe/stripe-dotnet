@@ -3,6 +3,9 @@ namespace Stripe.BillingPortal
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfigurationFeaturesCustomerUpdate : StripeEntity<ConfigurationFeaturesCustomerUpdate>
     {
@@ -13,12 +16,20 @@ namespace Stripe.BillingPortal
         /// <c>tax_id</c>.
         /// </summary>
         [JsonProperty("allowed_updates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allowed_updates")]
+#endif
+
         public List<string> AllowedUpdates { get; set; }
 
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
         [JsonProperty("enabled")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled")]
+#endif
+
         public bool Enabled { get; set; }
     }
 }

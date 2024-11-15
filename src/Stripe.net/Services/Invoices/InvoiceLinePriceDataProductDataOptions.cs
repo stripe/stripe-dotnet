@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceLinePriceDataProductDataOptions : INestedOptions, IHasMetadata
     {
@@ -12,6 +15,10 @@ namespace Stripe
         /// rendering purposes.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
@@ -19,6 +26,10 @@ namespace Stripe
         /// customer.
         /// </summary>
         [JsonProperty("images")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("images")]
+#endif
+
         public List<string> Images { get; set; }
 
         /// <summary>
@@ -28,18 +39,30 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The product's name, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
+
         public string Name { get; set; }
 
         /// <summary>
         /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonProperty("tax_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_code")]
+#endif
+
         public string TaxCode { get; set; }
     }
 }

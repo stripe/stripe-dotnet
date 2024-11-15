@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceItemListOptions : ListOptionsWithCreated
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// invoice items will be returned.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
+
         public string Customer { get; set; }
 
         /// <summary>
@@ -17,6 +24,10 @@ namespace Stripe
         /// items will be returned. If specifying an invoice, no customer identifier is needed.
         /// </summary>
         [JsonProperty("invoice")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice")]
+#endif
+
         public string Invoice { get; set; }
 
         /// <summary>
@@ -25,6 +36,10 @@ namespace Stripe
         /// If unspecified, no filter is applied.
         /// </summary>
         [JsonProperty("pending")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pending")]
+#endif
+
         public bool? Pending { get; set; }
     }
 }

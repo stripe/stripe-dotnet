@@ -3,6 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfirmationTokenPaymentMethodPreviewSepaDebitGeneratedFrom : StripeEntity<ConfirmationTokenPaymentMethodPreviewSepaDebitGeneratedFrom>
     {
@@ -13,6 +16,10 @@ namespace Stripe
         /// The ID of the Charge that generated this PaymentMethod, if any.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ChargeId
         {
             get => this.InternalCharge?.Id;
@@ -26,6 +33,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Charge Charge
         {
             get => this.InternalCharge?.ExpandedObject;
@@ -44,6 +55,10 @@ namespace Stripe
         /// The ID of the SetupAttempt that generated this PaymentMethod, if any.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string SetupAttemptId
         {
             get => this.InternalSetupAttempt?.Id;
@@ -57,6 +72,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public SetupAttempt SetupAttempt
         {
             get => this.InternalSetupAttempt?.ExpandedObject;

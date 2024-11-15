@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentProcessingCardCustomerNotification : StripeEntity<PaymentIntentProcessingCardCustomerNotification>
     {
@@ -13,6 +16,10 @@ namespace Stripe
         /// with their bank.
         /// </summary>
         [JsonProperty("approval_requested")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("approval_requested")]
+#endif
+
         public bool? ApprovalRequested { get; set; }
 
         /// <summary>
@@ -20,6 +27,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("completes_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("completes_at")]
+#endif
+
         public DateTime? CompletesAt { get; set; }
     }
 }

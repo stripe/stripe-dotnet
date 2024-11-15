@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PriceCreateOptions : BaseOptions, IHasMetadata
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// Whether the price can be used for new purchases. Defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
+
         public bool? Active { get; set; }
 
         /// <summary>
@@ -23,6 +30,10 @@ namespace Stripe
         /// One of: <c>per_unit</c>, or <c>tiered</c>.
         /// </summary>
         [JsonProperty("billing_scheme")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_scheme")]
+#endif
+
         public string BillingScheme { get; set; }
 
         /// <summary>
@@ -31,6 +42,10 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
@@ -39,6 +54,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency_options")]
+#endif
+
         public Dictionary<string, PriceCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
@@ -46,6 +65,10 @@ namespace Stripe
         /// Checkout Sessions and Payment Links.
         /// </summary>
         [JsonProperty("custom_unit_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("custom_unit_amount")]
+#endif
+
         public PriceCustomUnitAmountOptions CustomUnitAmount { get; set; }
 
         /// <summary>
@@ -53,6 +76,10 @@ namespace Stripe
         /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lookup_key")]
+#endif
+
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -62,30 +89,50 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A brief description of the price, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nickname")]
+#endif
+
         public string Nickname { get; set; }
 
         /// <summary>
         /// The ID of the product that this price will belong to.
         /// </summary>
         [JsonProperty("product")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("product")]
+#endif
+
         public string Product { get; set; }
 
         /// <summary>
         /// These fields can be used to create a new product that this price will belong to.
         /// </summary>
         [JsonProperty("product_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("product_data")]
+#endif
+
         public PriceProductDataOptions ProductData { get; set; }
 
         /// <summary>
         /// The recurring components of a price such as <c>interval</c> and <c>usage_type</c>.
         /// </summary>
         [JsonProperty("recurring")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("recurring")]
+#endif
+
         public PriceRecurringOptions Recurring { get; set; }
 
         /// <summary>
@@ -98,6 +145,10 @@ namespace Stripe
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_behavior")]
+#endif
+
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -105,6 +156,10 @@ namespace Stripe
         /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
         /// </summary>
         [JsonProperty("tiers")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tiers")]
+#endif
+
         public List<PriceTierOptions> Tiers { get; set; }
 
         /// <summary>
@@ -115,6 +170,10 @@ namespace Stripe
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiers_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tiers_mode")]
+#endif
+
         public string TiersMode { get; set; }
 
         /// <summary>
@@ -122,6 +181,10 @@ namespace Stripe
         /// assign it to this price.
         /// </summary>
         [JsonProperty("transfer_lookup_key")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_lookup_key")]
+#endif
+
         public bool? TransferLookupKey { get; set; }
 
         /// <summary>
@@ -129,6 +192,10 @@ namespace Stripe
         /// price. Cannot be combined with <c>tiers</c>.
         /// </summary>
         [JsonProperty("transform_quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transform_quantity")]
+#endif
+
         public PriceTransformQuantityOptions TransformQuantity { get; set; }
 
         /// <summary>
@@ -137,6 +204,10 @@ namespace Stripe
         /// <c>custom_unit_amount</c> is required, unless <c>billing_scheme=tiered</c>.
         /// </summary>
         [JsonProperty("unit_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount")]
+#endif
+
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -145,6 +216,10 @@ namespace Stripe
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount_decimal")]
+#endif
+
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

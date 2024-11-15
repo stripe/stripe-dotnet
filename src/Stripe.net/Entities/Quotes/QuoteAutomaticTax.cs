@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteAutomaticTax : StripeEntity<QuoteAutomaticTax>
     {
@@ -9,6 +12,10 @@ namespace Stripe
         /// Automatically calculate taxes.
         /// </summary>
         [JsonProperty("enabled")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled")]
+#endif
+
         public bool Enabled { get; set; }
 
         /// <summary>
@@ -17,6 +24,10 @@ namespace Stripe
         /// transaction is returned in the report of the connected account.
         /// </summary>
         [JsonProperty("liability")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("liability")]
+#endif
+
         public QuoteAutomaticTaxLiability Liability { get; set; }
 
         /// <summary>
@@ -24,6 +35,10 @@ namespace Stripe
         /// One of: <c>complete</c>, <c>failed</c>, or <c>requires_location_inputs</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
     }
 }

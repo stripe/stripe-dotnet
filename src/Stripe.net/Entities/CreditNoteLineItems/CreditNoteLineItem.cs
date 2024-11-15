@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// The credit note line item object.
@@ -13,12 +16,20 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -26,6 +37,10 @@ namespace Stripe
         /// credited for this line item, excluding (exclusive) tax and discounts.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         /// <summary>
@@ -33,12 +48,20 @@ namespace Stripe
         /// for this line item, excluding all tax and discounts.
         /// </summary>
         [JsonProperty("amount_excluding_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_excluding_tax")]
+#endif
+
         public long? AmountExcludingTax { get; set; }
 
         /// <summary>
         /// Description of the item being credited.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
@@ -46,18 +69,30 @@ namespace Stripe
         /// credited for this line item.
         /// </summary>
         [JsonProperty("discount_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discount_amount")]
+#endif
+
         public long DiscountAmount { get; set; }
 
         /// <summary>
         /// The amount of discount calculated per discount for this line item.
         /// </summary>
         [JsonProperty("discount_amounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discount_amounts")]
+#endif
+
         public List<CreditNoteLineItemDiscountAmount> DiscountAmounts { get; set; }
 
         /// <summary>
         /// ID of the invoice line item being credited.
         /// </summary>
         [JsonProperty("invoice_line_item")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_line_item")]
+#endif
+
         public string InvoiceLineItem { get; set; }
 
         /// <summary>
@@ -65,30 +100,50 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The pretax credit amounts (ex: discount, credit grants, etc) for this line item.
         /// </summary>
         [JsonProperty("pretax_credit_amounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pretax_credit_amounts")]
+#endif
+
         public List<CreditNoteLineItemPretaxCreditAmount> PretaxCreditAmounts { get; set; }
 
         /// <summary>
         /// The number of units of product being credited.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
+
         public long? Quantity { get; set; }
 
         /// <summary>
         /// The amount of tax calculated per tax rate for this line item.
         /// </summary>
         [JsonProperty("tax_amounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_amounts")]
+#endif
+
         public List<CreditNoteTaxAmount> TaxAmounts { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the line item.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
+
         public List<TaxRate> TaxRates { get; set; }
 
         /// <summary>
@@ -99,18 +154,30 @@ namespace Stripe
         /// One of: <c>custom_line_item</c>, or <c>invoice_line_item</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
 
         /// <summary>
         /// The cost of each unit of product being credited.
         /// </summary>
         [JsonProperty("unit_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount")]
+#endif
+
         public long? UnitAmount { get; set; }
 
         /// <summary>
         /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount_decimal")]
+#endif
+
         public decimal? UnitAmountDecimal { get; set; }
 
         /// <summary>
@@ -118,6 +185,10 @@ namespace Stripe
         /// for this line item, excluding all tax and discounts.
         /// </summary>
         [JsonProperty("unit_amount_excluding_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount_excluding_tax")]
+#endif
+
         public decimal? UnitAmountExcludingTax { get; set; }
     }
 }

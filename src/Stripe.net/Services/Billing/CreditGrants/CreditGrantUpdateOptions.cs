@@ -5,6 +5,9 @@ namespace Stripe.Billing
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditGrantUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -13,6 +16,10 @@ namespace Stripe.Billing
         /// empty, the billing credits will never expire.
         /// </summary>
         [JsonProperty("expires_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -21,6 +28,10 @@ namespace Stripe.Billing
         /// additional information about the object (ex: cost basis) in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

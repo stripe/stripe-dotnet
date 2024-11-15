@@ -4,6 +4,9 @@ namespace Stripe.Radar
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// An early fraud warning indicates that the card issuer has notified us that a charge may
@@ -19,12 +22,20 @@ namespace Stripe.Radar
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -33,6 +44,10 @@ namespace Stripe.Radar
         /// receiving a dispute later.
         /// </summary>
         [JsonProperty("actionable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("actionable")]
+#endif
+
         public bool Actionable { get; set; }
 
         #region Expandable Charge
@@ -42,6 +57,10 @@ namespace Stripe.Radar
         /// ID of the charge this early fraud warning is for, optionally expanded.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ChargeId
         {
             get => this.InternalCharge?.Id;
@@ -55,6 +74,10 @@ namespace Stripe.Radar
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Charge Charge
         {
             get => this.InternalCharge?.ExpandedObject;
@@ -71,6 +94,10 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -80,6 +107,10 @@ namespace Stripe.Radar
         /// <c>unauthorized_use_of_card</c>.
         /// </summary>
         [JsonProperty("fraud_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fraud_type")]
+#endif
+
         public string FraudType { get; set; }
 
         /// <summary>
@@ -87,6 +118,10 @@ namespace Stripe.Radar
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         #region Expandable PaymentIntent
@@ -96,6 +131,10 @@ namespace Stripe.Radar
         /// ID of the Payment Intent this early fraud warning is for, optionally expanded.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
@@ -109,6 +148,10 @@ namespace Stripe.Radar
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;

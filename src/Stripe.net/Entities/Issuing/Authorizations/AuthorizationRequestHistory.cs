@@ -4,6 +4,9 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AuthorizationRequestHistory : StripeEntity<AuthorizationRequestHistory>
     {
@@ -14,6 +17,10 @@ namespace Stripe.Issuing
         /// if the request was approved.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         /// <summary>
@@ -22,12 +29,20 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_details")]
+#endif
+
         public AuthorizationRequestHistoryAmountDetails AmountDetails { get; set; }
 
         /// <summary>
         /// Whether this request was approved.
         /// </summary>
         [JsonProperty("approved")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("approved")]
+#endif
+
         public bool Approved { get; set; }
 
         /// <summary>
@@ -38,6 +53,10 @@ namespace Stripe.Issuing
         /// authorizations.
         /// </summary>
         [JsonProperty("authorization_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("authorization_code")]
+#endif
+
         public string AuthorizationCode { get; set; }
 
         /// <summary>
@@ -45,6 +64,10 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -53,6 +76,10 @@ namespace Stripe.Issuing
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
@@ -61,6 +88,10 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("merchant_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("merchant_amount")]
+#endif
+
         public long MerchantAmount { get; set; }
 
         /// <summary>
@@ -71,6 +102,10 @@ namespace Stripe.Issuing
         /// currency</a>.
         /// </summary>
         [JsonProperty("merchant_currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("merchant_currency")]
+#endif
+
         public string MerchantCurrency { get; set; }
 
         /// <summary>
@@ -78,6 +113,10 @@ namespace Stripe.Issuing
         /// on values between 1 and 99.
         /// </summary>
         [JsonProperty("network_risk_score")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_risk_score")]
+#endif
+
         public long? NetworkRiskScore { get; set; }
 
         /// <summary>
@@ -92,6 +131,10 @@ namespace Stripe.Issuing
         /// <c>webhook_error</c>, or <c>webhook_timeout</c>.
         /// </summary>
         [JsonProperty("reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason")]
+#endif
+
         public string Reason { get; set; }
 
         /// <summary>
@@ -100,6 +143,10 @@ namespace Stripe.Issuing
         /// more detailed error message via this field.
         /// </summary>
         [JsonProperty("reason_message")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason_message")]
+#endif
+
         public string ReasonMessage { get; set; }
 
         /// <summary>
@@ -108,6 +155,10 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("requested_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("requested_at")]
+#endif
+
         public DateTime? RequestedAt { get; set; }
     }
 }

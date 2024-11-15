@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentLinkConsentCollectionPaymentMethodReuseAgreement : StripeEntity<PaymentLinkConsentCollectionPaymentMethodReuseAgreement>
     {
@@ -14,6 +17,10 @@ namespace Stripe
         /// One of: <c>auto</c>, or <c>hidden</c>.
         /// </summary>
         [JsonProperty("position")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("position")]
+#endif
+
         public string Position { get; set; }
     }
 }

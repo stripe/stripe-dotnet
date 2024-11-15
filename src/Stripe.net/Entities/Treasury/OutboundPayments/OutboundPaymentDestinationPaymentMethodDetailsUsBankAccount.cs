@@ -3,6 +3,9 @@ namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OutboundPaymentDestinationPaymentMethodDetailsUsBankAccount : StripeEntity<OutboundPaymentDestinationPaymentMethodDetailsUsBankAccount>
     {
@@ -11,6 +14,10 @@ namespace Stripe.Treasury
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
         [JsonProperty("account_holder_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_holder_type")]
+#endif
+
         public string AccountHolderType { get; set; }
 
         /// <summary>
@@ -18,12 +25,20 @@ namespace Stripe.Treasury
         /// One of: <c>checking</c>, or <c>savings</c>.
         /// </summary>
         [JsonProperty("account_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_type")]
+#endif
+
         public string AccountType { get; set; }
 
         /// <summary>
         /// Name of the bank associated with the bank account.
         /// </summary>
         [JsonProperty("bank_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank_name")]
+#endif
+
         public string BankName { get; set; }
 
         /// <summary>
@@ -31,12 +46,20 @@ namespace Stripe.Treasury
         /// whether two bank accounts are the same.
         /// </summary>
         [JsonProperty("fingerprint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fingerprint")]
+#endif
+
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// Last four digits of the bank account number.
         /// </summary>
         [JsonProperty("last4")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("last4")]
+#endif
+
         public string Last4 { get; set; }
 
         #region Expandable Mandate
@@ -46,6 +69,10 @@ namespace Stripe.Treasury
         /// ID of the mandate used to make this payment.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string MandateId
         {
             get => this.InternalMandate?.Id;
@@ -59,6 +86,10 @@ namespace Stripe.Treasury
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Mandate Mandate
         {
             get => this.InternalMandate?.ExpandedObject;
@@ -77,12 +108,20 @@ namespace Stripe.Treasury
         /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
         /// </summary>
         [JsonProperty("network")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network")]
+#endif
+
         public string Network { get; set; }
 
         /// <summary>
         /// Routing number of the bank account.
         /// </summary>
         [JsonProperty("routing_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("routing_number")]
+#endif
+
         public string RoutingNumber { get; set; }
     }
 }

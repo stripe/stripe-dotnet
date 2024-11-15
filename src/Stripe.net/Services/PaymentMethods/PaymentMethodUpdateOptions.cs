@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentMethodUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -14,6 +17,10 @@ namespace Stripe
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("allow_redisplay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allow_redisplay")]
+#endif
+
         public string AllowRedisplay { get; set; }
 
         /// <summary>
@@ -21,12 +28,20 @@ namespace Stripe
         /// particular types of payment methods.
         /// </summary>
         [JsonProperty("billing_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_details")]
+#endif
+
         public PaymentMethodBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
         /// If this is a <c>card</c> PaymentMethod, this hash contains the user's card details.
         /// </summary>
         [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
+
         public PaymentMethodCardOptions Card { get; set; }
 
         /// <summary>
@@ -34,6 +49,10 @@ namespace Stripe
         /// payment method.
         /// </summary>
         [JsonProperty("link")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("link")]
+#endif
+
         public PaymentMethodLinkOptions Link { get; set; }
 
         /// <summary>
@@ -43,6 +62,10 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -50,6 +73,10 @@ namespace Stripe
         /// Pay payment method.
         /// </summary>
         [JsonProperty("naver_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("naver_pay")]
+#endif
+
         public PaymentMethodNaverPayOptions NaverPay { get; set; }
 
         /// <summary>
@@ -57,6 +84,10 @@ namespace Stripe
         /// US bank account payment method.
         /// </summary>
         [JsonProperty("us_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("us_bank_account")]
+#endif
+
         public PaymentMethodUsBankAccountOptions UsBankAccount { get; set; }
     }
 }

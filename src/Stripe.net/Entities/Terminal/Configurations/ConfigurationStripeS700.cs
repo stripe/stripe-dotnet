@@ -3,6 +3,9 @@ namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfigurationStripeS700 : StripeEntity<ConfigurationStripeS700>
     {
@@ -13,6 +16,10 @@ namespace Stripe.Terminal
         /// A File ID representing an image you would like displayed on the reader.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string SplashscreenId
         {
             get => this.InternalSplashscreen?.Id;
@@ -26,6 +33,10 @@ namespace Stripe.Terminal
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public File Splashscreen
         {
             get => this.InternalSplashscreen?.ExpandedObject;

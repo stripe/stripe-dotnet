@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// You can configure <a href="https://docs.stripe.com/webhooks/">webhook endpoints</a> via
@@ -24,24 +27,40 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
         /// The API version events are rendered as for this webhook endpoint.
         /// </summary>
         [JsonProperty("api_version")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("api_version")]
+#endif
+
         public string ApiVersion { get; set; }
 
         /// <summary>
         /// The ID of the associated Connect application.
         /// </summary>
         [JsonProperty("application")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application")]
+#endif
+
         public string Application { get; set; }
 
         /// <summary>
@@ -49,18 +68,30 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deleted")]
+#endif
+
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// An optional description of what the webhook is used for.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
@@ -68,6 +99,10 @@ namespace Stripe
         /// are enabled, except those that require explicit selection.
         /// </summary>
         [JsonProperty("enabled_events")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled_events")]
+#endif
+
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
@@ -75,6 +110,10 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -83,6 +122,10 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -91,18 +134,30 @@ namespace Stripe
         /// at creation.
         /// </summary>
         [JsonProperty("secret")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("secret")]
+#endif
+
         public string Secret { get; set; }
 
         /// <summary>
         /// The status of the webhook. It can be <c>enabled</c> or <c>disabled</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         /// <summary>
         /// The URL of the webhook endpoint.
         /// </summary>
         [JsonProperty("url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("url")]
+#endif
+
         public string Url { get; set; }
     }
 }

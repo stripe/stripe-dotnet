@@ -2,6 +2,9 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A Connection Token is used by the Stripe Terminal SDK to connect to a reader.
@@ -15,6 +18,10 @@ namespace Stripe.Terminal
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -24,12 +31,20 @@ namespace Stripe.Terminal
         /// docs on scoping connection tokens</a>.
         /// </summary>
         [JsonProperty("location")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("location")]
+#endif
+
         public string Location { get; set; }
 
         /// <summary>
         /// Your application should pass this token to the Stripe Terminal SDK.
         /// </summary>
         [JsonProperty("secret")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("secret")]
+#endif
+
         public string Secret { get; set; }
     }
 }

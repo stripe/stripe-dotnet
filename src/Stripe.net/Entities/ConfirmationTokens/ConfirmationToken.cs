@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// ConfirmationTokens help transport client side data collected by Stripe JS over to your
@@ -22,12 +25,20 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -35,6 +46,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -43,6 +58,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+#endif
+
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -50,12 +69,20 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
         /// Data used for generating a Mandate.
         /// </summary>
         [JsonProperty("mandate_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_data")]
+#endif
+
         public ConfirmationTokenMandateData MandateData { get; set; }
 
         /// <summary>
@@ -63,12 +90,20 @@ namespace Stripe
         /// ConfirmationToken has not yet been used.
         /// </summary>
         [JsonProperty("payment_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_intent")]
+#endif
+
         public string PaymentIntent { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this ConfirmationToken.
         /// </summary>
         [JsonProperty("payment_method_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_options")]
+#endif
+
         public ConfirmationTokenPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -76,12 +111,20 @@ namespace Stripe
         /// PaymentIntent or SetupIntent is confirmed with this ConfirmationToken.
         /// </summary>
         [JsonProperty("payment_method_preview")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_preview")]
+#endif
+
         public ConfirmationTokenPaymentMethodPreview PaymentMethodPreview { get; set; }
 
         /// <summary>
         /// Return URL used to confirm the Intent.
         /// </summary>
         [JsonProperty("return_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("return_url")]
+#endif
+
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -95,6 +138,10 @@ namespace Stripe
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
+
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -102,12 +149,20 @@ namespace Stripe
         /// ConfirmationToken has not yet been used.
         /// </summary>
         [JsonProperty("setup_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_intent")]
+#endif
+
         public string SetupIntent { get; set; }
 
         /// <summary>
         /// Shipping information collected on this ConfirmationToken.
         /// </summary>
         [JsonProperty("shipping")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping")]
+#endif
+
         public ConfirmationTokenShipping Shipping { get; set; }
 
         /// <summary>
@@ -115,6 +170,10 @@ namespace Stripe
         /// <c>true</c> on ConfirmationToken.
         /// </summary>
         [JsonProperty("use_stripe_sdk")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("use_stripe_sdk")]
+#endif
+
         public bool UseStripeSdk { get; set; }
     }
 }

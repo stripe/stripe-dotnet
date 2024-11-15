@@ -2,6 +2,9 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionPaymentMethodOptionsCardOptions : INestedOptions
     {
@@ -9,6 +12,10 @@ namespace Stripe.Checkout
         /// Installment options for card payments.
         /// </summary>
         [JsonProperty("installments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("installments")]
+#endif
+
         public SessionPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
 
         /// <summary>
@@ -24,6 +31,10 @@ namespace Stripe.Checkout
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_three_d_secure")]
+#endif
+
         public string RequestThreeDSecure { get; set; }
 
         /// <summary>
@@ -48,6 +59,10 @@ namespace Stripe.Checkout
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
+
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -58,6 +73,10 @@ namespace Stripe.Checkout
         /// (including separators) will appear truncated to 22 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kana")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
+#endif
+
         public string StatementDescriptorSuffixKana { get; set; }
 
         /// <summary>
@@ -68,6 +87,10 @@ namespace Stripe.Checkout
         /// (including separators) will appear truncated to 17 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
+#endif
+
         public string StatementDescriptorSuffixKanji { get; set; }
     }
 }

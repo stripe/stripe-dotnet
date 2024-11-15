@@ -3,6 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TaxIdOwner : StripeEntity<TaxIdOwner>
     {
@@ -13,6 +16,10 @@ namespace Stripe
         /// The account being referenced when <c>type</c> is <c>account</c>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string AccountId
         {
             get => this.InternalAccount?.Id;
@@ -26,6 +33,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Account Account
         {
             get => this.InternalAccount?.ExpandedObject;
@@ -44,6 +55,10 @@ namespace Stripe
         /// The Connect Application being referenced when <c>type</c> is <c>application</c>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ApplicationId
         {
             get => this.InternalApplication?.Id;
@@ -57,6 +72,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
@@ -75,6 +94,10 @@ namespace Stripe
         /// The customer being referenced when <c>type</c> is <c>customer</c>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -88,6 +111,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -104,6 +131,10 @@ namespace Stripe
         /// One of: <c>account</c>, <c>application</c>, <c>customer</c>, or <c>self</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

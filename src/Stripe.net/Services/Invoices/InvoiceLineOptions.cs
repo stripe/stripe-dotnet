@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceLineOptions : INestedOptions, IHasMetadata, IHasId
     {
@@ -12,6 +15,10 @@ namespace Stripe
         /// negative amount.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long? Amount { get; set; }
 
         /// <summary>
@@ -20,6 +27,10 @@ namespace Stripe
         /// One of: <c>delete</c>, or <c>unassign</c>.
         /// </summary>
         [JsonProperty("behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("behavior")]
+#endif
+
         public string Behavior { get; set; }
 
         /// <summary>
@@ -27,6 +38,10 @@ namespace Stripe
         /// displayed in the invoice for easy tracking.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
@@ -35,6 +50,10 @@ namespace Stripe
         /// prorations.
         /// </summary>
         [JsonProperty("discountable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discountable")]
+#endif
+
         public bool? Discountable { get; set; }
 
         /// <summary>
@@ -43,12 +62,20 @@ namespace Stripe
         /// previously-defined discounts.
         /// </summary>
         [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
+
         public List<InvoiceLineDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// ID of an existing line item to remove from this invoice.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
@@ -56,6 +83,10 @@ namespace Stripe
         /// will be created.
         /// </summary>
         [JsonProperty("invoice_item")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_item")]
+#endif
+
         public string InvoiceItem { get; set; }
 
         /// <summary>
@@ -70,6 +101,10 @@ namespace Stripe
         /// items, where any existing metadata on the invoice line is merged with the incoming data.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -81,12 +116,20 @@ namespace Stripe
         /// Recognition documentation</a> for details.
         /// </summary>
         [JsonProperty("period")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("period")]
+#endif
+
         public InvoiceLinePeriodOptions Period { get; set; }
 
         /// <summary>
         /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price")]
+#endif
+
         public string Price { get; set; }
 
         /// <summary>
@@ -94,12 +137,20 @@ namespace Stripe
         /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price_data")]
+#endif
+
         public InvoiceLinePriceDataOptions PriceData { get; set; }
 
         /// <summary>
         /// Non-negative integer. The quantity of units for the line item.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
+
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -113,6 +164,10 @@ namespace Stripe
         /// string to remove previously defined tax amounts.
         /// </summary>
         [JsonProperty("tax_amounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_amounts")]
+#endif
+
         public List<InvoiceLineTaxAmountOptions> TaxAmounts { get; set; }
 
         /// <summary>
@@ -121,6 +176,10 @@ namespace Stripe
         /// previously-defined tax rates.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
+
         public List<string> TaxRates { get; set; }
     }
 }

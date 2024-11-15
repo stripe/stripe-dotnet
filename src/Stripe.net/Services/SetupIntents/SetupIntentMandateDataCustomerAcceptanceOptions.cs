@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SetupIntentMandateDataCustomerAcceptanceOptions : INestedOptions
     {
@@ -11,6 +14,10 @@ namespace Stripe
         /// The time at which the customer accepted the Mandate.
         /// </summary>
         [JsonProperty("accepted_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("accepted_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? AcceptedAt { get; set; }
 
@@ -19,6 +26,10 @@ namespace Stripe
         /// acceptance.
         /// </summary>
         [JsonProperty("offline")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("offline")]
+#endif
+
         public SetupIntentMandateDataCustomerAcceptanceOfflineOptions Offline { get; set; }
 
         /// <summary>
@@ -26,6 +37,10 @@ namespace Stripe
         /// acceptance.
         /// </summary>
         [JsonProperty("online")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("online")]
+#endif
+
         public SetupIntentMandateDataCustomerAcceptanceOnlineOptions Online { get; set; }
 
         /// <summary>
@@ -34,6 +49,10 @@ namespace Stripe
         /// One of: <c>offline</c>, or <c>online</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

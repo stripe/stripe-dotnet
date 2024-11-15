@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TransactionEntryFlowDetails : StripeEntity<TransactionEntryFlowDetails>
     {
@@ -12,6 +15,10 @@ namespace Stripe.Treasury
         /// object known as a CreditReversal.
         /// </summary>
         [JsonProperty("credit_reversal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("credit_reversal")]
+#endif
+
         public CreditReversal CreditReversal { get; set; }
 
         /// <summary>
@@ -21,6 +28,10 @@ namespace Stripe.Treasury
         /// known as a DebitReversal.
         /// </summary>
         [JsonProperty("debit_reversal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("debit_reversal")]
+#endif
+
         public DebitReversal DebitReversal { get; set; }
 
         /// <summary>
@@ -35,6 +46,10 @@ namespace Stripe.Treasury
         /// money with Treasury using InboundTransfer objects</a>.
         /// </summary>
         [JsonProperty("inbound_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("inbound_transfer")]
+#endif
+
         public InboundTransfer InboundTransfer { get; set; }
 
         /// <summary>
@@ -47,6 +62,10 @@ namespace Stripe.Treasury
         /// card authorizations</a>.
         /// </summary>
         [JsonProperty("issuing_authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("issuing_authorization")]
+#endif
+
         public Issuing.Authorization IssuingAuthorization { get; set; }
 
         /// <summary>
@@ -66,6 +85,10 @@ namespace Stripe.Treasury
         /// money with Treasury using OutboundPayment objects</a>.
         /// </summary>
         [JsonProperty("outbound_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("outbound_payment")]
+#endif
+
         public OutboundPayment OutboundPayment { get; set; }
 
         /// <summary>
@@ -87,6 +110,10 @@ namespace Stripe.Treasury
         /// money with Treasury using OutboundTransfer objects</a>.
         /// </summary>
         [JsonProperty("outbound_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("outbound_transfer")]
+#endif
+
         public OutboundTransfer OutboundTransfer { get; set; }
 
         /// <summary>
@@ -95,6 +122,10 @@ namespace Stripe.Treasury
         /// via ACH or wire). These money movements are not initiated from the FinancialAccount.
         /// </summary>
         [JsonProperty("received_credit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("received_credit")]
+#endif
+
         public ReceivedCredit ReceivedCredit { get; set; }
 
         /// <summary>
@@ -103,6 +134,10 @@ namespace Stripe.Treasury
         /// not initiated from the FinancialAccount.
         /// </summary>
         [JsonProperty("received_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("received_debit")]
+#endif
+
         public ReceivedDebit ReceivedDebit { get; set; }
 
         /// <summary>
@@ -113,6 +148,10 @@ namespace Stripe.Treasury
         /// <c>outbound_transfer</c>, <c>received_credit</c>, or <c>received_debit</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

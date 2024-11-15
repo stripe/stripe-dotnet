@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteCreateOptions : BaseOptions, IHasMetadata
     {
@@ -14,6 +17,10 @@ namespace Stripe
         /// line items with recurring prices when using this field.
         /// </summary>
         [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
+
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -23,6 +30,10 @@ namespace Stripe
         /// recurring price to use this field.
         /// </summary>
         [JsonProperty("application_fee_percent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_percent")]
+#endif
+
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
@@ -30,6 +41,10 @@ namespace Stripe
         /// subscriptions.
         /// </summary>
         [JsonProperty("automatic_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("automatic_tax")]
+#endif
+
         public QuoteAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -42,6 +57,10 @@ namespace Stripe
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("collection_method")]
+#endif
+
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -49,12 +68,20 @@ namespace Stripe
         /// the quote. Once specified, it cannot be changed.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
+
         public string Customer { get; set; }
 
         /// <summary>
         /// The tax rates that will apply to any line item that does not have <c>tax_rates</c> set.
         /// </summary>
         [JsonProperty("default_tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_tax_rates")]
+#endif
+
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
@@ -64,12 +91,20 @@ namespace Stripe
         /// will be used.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
         /// The discounts applied to the quote.
         /// </summary>
         [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
+
         public List<QuoteDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -80,6 +115,10 @@ namespace Stripe
         /// will be used.
         /// </summary>
         [JsonProperty("expires_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -90,6 +129,10 @@ namespace Stripe
         /// will be used.
         /// </summary>
         [JsonProperty("footer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("footer")]
+#endif
+
         public string Footer { get; set; }
 
         /// <summary>
@@ -98,6 +141,10 @@ namespace Stripe
         /// <c>expires_at</c>.
         /// </summary>
         [JsonProperty("from_quote")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("from_quote")]
+#endif
+
         public QuoteFromQuoteOptions FromQuote { get; set; }
 
         /// <summary>
@@ -107,12 +154,20 @@ namespace Stripe
         /// will be used.
         /// </summary>
         [JsonProperty("header")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("header")]
+#endif
+
         public string Header { get; set; }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
         /// </summary>
         [JsonProperty("invoice_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_settings")]
+#endif
+
         public QuoteInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
@@ -120,6 +175,10 @@ namespace Stripe
         /// information about the product, the quantity, and the resulting cost.
         /// </summary>
         [JsonProperty("line_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_items")]
+#endif
+
         public List<QuoteLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -129,12 +188,20 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The account on behalf of which to charge.
         /// </summary>
         [JsonProperty("on_behalf_of")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("on_behalf_of")]
+#endif
+
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -145,18 +212,30 @@ namespace Stripe
         /// subscription is created.
         /// </summary>
         [JsonProperty("subscription_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription_data")]
+#endif
+
         public QuoteSubscriptionDataOptions SubscriptionData { get; set; }
 
         /// <summary>
         /// ID of the test clock to attach to the quote.
         /// </summary>
         [JsonProperty("test_clock")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("test_clock")]
+#endif
+
         public string TestClock { get; set; }
 
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the invoices.
         /// </summary>
         [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
+
         public QuoteTransferDataOptions TransferData { get; set; }
     }
 }

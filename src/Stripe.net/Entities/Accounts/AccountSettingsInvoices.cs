@@ -5,6 +5,9 @@ namespace Stripe
     using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountSettingsInvoices : StripeEntity<AccountSettingsInvoices>
     {
@@ -16,6 +19,10 @@ namespace Stripe
         /// IDs get added when an invoice is finalized.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public List<string> DefaultAccountTaxIdIds
         {
             get => this.InternalDefaultAccountTaxIds?.Select((x) => x.Id).ToList();
@@ -30,6 +37,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public List<TaxId> DefaultAccountTaxIds
         {
             get => this.InternalDefaultAccountTaxIds?.Select((x) => x.ExpandedObject).ToList();

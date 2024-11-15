@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InboundTransferLinkedFlows : StripeEntity<InboundTransferLinkedFlows>
     {
@@ -10,6 +13,10 @@ namespace Stripe.Treasury
         /// this field contains a reference to the ReceivedDebit return.
         /// </summary>
         [JsonProperty("received_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("received_debit")]
+#endif
+
         public string ReceivedDebit { get; set; }
     }
 }

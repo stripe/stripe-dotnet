@@ -3,6 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CustomerCashBalanceTransactionTransferredToBalance : StripeEntity<CustomerCashBalanceTransactionTransferredToBalance>
     {
@@ -14,6 +17,10 @@ namespace Stripe
         /// Transaction</a> that corresponds to funds transferred to your Stripe balance.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
@@ -28,6 +35,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;

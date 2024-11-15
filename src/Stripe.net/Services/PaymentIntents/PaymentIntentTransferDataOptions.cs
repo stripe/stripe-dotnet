@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentTransferDataOptions : INestedOptions
     {
@@ -15,6 +18,10 @@ namespace Stripe
         /// might be a better fit for your integration.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long? Amount { get; set; }
 
         /// <summary>
@@ -24,6 +31,10 @@ namespace Stripe
         /// <c>transfer</c> field.
         /// </summary>
         [JsonProperty("destination")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination")]
+#endif
+
         public string Destination { get; set; }
     }
 }

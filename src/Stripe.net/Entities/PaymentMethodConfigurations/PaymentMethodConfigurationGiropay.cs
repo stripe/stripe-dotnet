@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentMethodConfigurationGiropay : StripeEntity<PaymentMethodConfigurationGiropay>
     {
@@ -10,9 +13,17 @@ namespace Stripe
         /// <c>display_preference</c> is <c>on</c> and the payment method's capability is active.
         /// </summary>
         [JsonProperty("available")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("available")]
+#endif
+
         public bool Available { get; set; }
 
         [JsonProperty("display_preference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_preference")]
+#endif
+
         public PaymentMethodConfigurationGiropayDisplayPreference DisplayPreference { get; set; }
     }
 }

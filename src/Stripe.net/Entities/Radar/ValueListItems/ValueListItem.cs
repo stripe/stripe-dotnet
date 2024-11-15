@@ -4,6 +4,9 @@ namespace Stripe.Radar
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Value list items allow you to add specific values to a given Radar value list, which can
@@ -18,12 +21,20 @@ namespace Stripe.Radar
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -31,18 +42,30 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The name or email address of the user who added this item to the value list.
         /// </summary>
         [JsonProperty("created_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created_by")]
+#endif
+
         public string CreatedBy { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deleted")]
+#endif
+
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -50,18 +73,30 @@ namespace Stripe.Radar
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The value of the item.
         /// </summary>
         [JsonProperty("value")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("value")]
+#endif
+
         public string Value { get; set; }
 
         /// <summary>
         /// The identifier of the value list this item belongs to.
         /// </summary>
         [JsonProperty("value_list")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("value_list")]
+#endif
+
         public string ValueList { get; set; }
     }
 }

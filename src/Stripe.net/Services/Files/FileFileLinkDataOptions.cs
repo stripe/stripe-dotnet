@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class FileFileLinkDataOptions : INestedOptions, IHasMetadata
     {
@@ -16,12 +19,20 @@ namespace Stripe
         /// <c>tax_document_user_upload</c>, or <c>terminal_reader_splashscreen</c>.
         /// </summary>
         [JsonProperty("create")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("create")]
+#endif
+
         public bool? Create { get; set; }
 
         /// <summary>
         /// The link isn't available after this future timestamp.
         /// </summary>
         [JsonProperty("expires_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -32,6 +43,10 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

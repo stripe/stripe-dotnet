@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionCancellationDetailsOptions : INestedOptions
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// was canceled explicitly by the user.
         /// </summary>
         [JsonProperty("comment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("comment")]
+#endif
+
         public string Comment { get; set; }
 
         /// <summary>
@@ -20,6 +27,10 @@ namespace Stripe
         /// <c>unused</c>.
         /// </summary>
         [JsonProperty("feedback")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("feedback")]
+#endif
+
         public string Feedback { get; set; }
     }
 }

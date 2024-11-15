@@ -3,6 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionSchedulePhaseInvoiceSettingsIssuer : StripeEntity<SubscriptionSchedulePhaseInvoiceSettingsIssuer>
     {
@@ -13,6 +16,10 @@ namespace Stripe
         /// The connected account being referenced when <c>type</c> is <c>account</c>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string AccountId
         {
             get => this.InternalAccount?.Id;
@@ -26,6 +33,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Account Account
         {
             get => this.InternalAccount?.ExpandedObject;
@@ -42,6 +53,10 @@ namespace Stripe
         /// One of: <c>account</c>, or <c>self</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

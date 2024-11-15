@@ -2,6 +2,9 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditGrantAmountOptions : INestedOptions
     {
@@ -9,6 +12,10 @@ namespace Stripe.Billing
         /// The monetary amount.
         /// </summary>
         [JsonProperty("monetary")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("monetary")]
+#endif
+
         public CreditGrantAmountMonetaryOptions Monetary { get; set; }
 
         /// <summary>
@@ -16,6 +23,10 @@ namespace Stripe.Billing
         /// credits.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

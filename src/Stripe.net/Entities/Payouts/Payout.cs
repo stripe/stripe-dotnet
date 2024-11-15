@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A <c>Payout</c> object is created when you receive funds from Stripe, or when you
@@ -22,12 +25,20 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -35,6 +46,10 @@ namespace Stripe
         /// card.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         #region Expandable ApplicationFee
@@ -46,6 +61,10 @@ namespace Stripe
         /// Connect documentation</a> for details.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ApplicationFeeId
         {
             get => this.InternalApplicationFee?.Id;
@@ -61,6 +80,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public ApplicationFee ApplicationFee
         {
             get => this.InternalApplicationFee?.ExpandedObject;
@@ -78,6 +101,10 @@ namespace Stripe
         /// Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
+
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -86,6 +113,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("arrival_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("arrival_date")]
+#endif
+
         public DateTime ArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -95,6 +126,10 @@ namespace Stripe
         /// manually</a>.
         /// </summary>
         [JsonProperty("automatic")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("automatic")]
+#endif
+
         public bool Automatic { get; set; }
 
         #region Expandable BalanceTransaction
@@ -105,6 +140,10 @@ namespace Stripe
         /// balance.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
@@ -119,6 +158,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
@@ -135,6 +178,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -143,12 +190,20 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         #region Expandable Destination
@@ -158,6 +213,10 @@ namespace Stripe
         /// ID of the bank account or card the payout is sent to.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string DestinationId
         {
             get => this.InternalDestination?.Id;
@@ -171,6 +230,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public IExternalAccount Destination
         {
             get => this.InternalDestination?.ExpandedObject;
@@ -191,6 +254,10 @@ namespace Stripe
         /// your balance.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string FailureBalanceTransactionId
         {
             get => this.InternalFailureBalanceTransaction?.Id;
@@ -206,6 +273,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public BalanceTransaction FailureBalanceTransaction
         {
             get => this.InternalFailureBalanceTransaction?.ExpandedObject;
@@ -222,12 +293,20 @@ namespace Stripe
         /// href="https://stripe.com/docs/api#payout_failures">list of failure codes</a>.
         /// </summary>
         [JsonProperty("failure_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failure_code")]
+#endif
+
         public string FailureCode { get; set; }
 
         /// <summary>
         /// Message that provides the reason for a payout failure, if available.
         /// </summary>
         [JsonProperty("failure_message")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failure_message")]
+#endif
+
         public string FailureMessage { get; set; }
 
         /// <summary>
@@ -235,6 +314,10 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -243,6 +326,10 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -253,6 +340,10 @@ namespace Stripe
         /// Payouts</a>.
         /// </summary>
         [JsonProperty("method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("method")]
+#endif
+
         public string Method { get; set; }
 
         #region Expandable OriginalPayout
@@ -262,6 +353,10 @@ namespace Stripe
         /// If the payout reverses another, this is the ID of the original payout.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string OriginalPayoutId
         {
             get => this.InternalOriginalPayout?.Id;
@@ -275,6 +370,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Payout OriginalPayout
         {
             get => this.InternalOriginalPayout?.ExpandedObject;
@@ -293,6 +392,10 @@ namespace Stripe
         /// One of: <c>completed</c>, <c>in_progress</c>, or <c>not_applicable</c>.
         /// </summary>
         [JsonProperty("reconciliation_status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reconciliation_status")]
+#endif
+
         public string ReconciliationStatus { get; set; }
 
         #region Expandable ReversedBy
@@ -302,6 +405,10 @@ namespace Stripe
         /// If the payout reverses, this is the ID of the payout that reverses this payout.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ReversedById
         {
             get => this.InternalReversedBy?.Id;
@@ -315,6 +422,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Payout ReversedBy
         {
             get => this.InternalReversedBy?.ExpandedObject;
@@ -331,12 +442,20 @@ namespace Stripe
         /// <c>card</c>, <c>fpx</c>, or <c>bank_account</c>.
         /// </summary>
         [JsonProperty("source_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source_type")]
+#endif
+
         public string SourceType { get; set; }
 
         /// <summary>
         /// Extra information about a payout that displays on the user's bank statement.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
+
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -348,6 +467,10 @@ namespace Stripe
         /// <c>failed</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         /// <summary>
@@ -355,6 +478,10 @@ namespace Stripe
         /// One of: <c>bank_account</c>, or <c>card</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

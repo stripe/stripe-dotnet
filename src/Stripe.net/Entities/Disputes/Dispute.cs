@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A dispute occurs when a customer questions your charge with their card issuer. When this
@@ -19,12 +22,20 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -32,6 +43,10 @@ namespace Stripe
         /// currency fluctuation or because only part of the order is disputed).
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         /// <summary>
@@ -39,6 +54,10 @@ namespace Stripe
         /// to your Stripe account as a result of this dispute.
         /// </summary>
         [JsonProperty("balance_transactions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_transactions")]
+#endif
+
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         #region Expandable Charge
@@ -48,6 +67,10 @@ namespace Stripe
         /// ID of the charge that's disputed.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ChargeId
         {
             get => this.InternalCharge?.Id;
@@ -61,6 +84,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Charge Charge
         {
             get => this.InternalCharge?.ExpandedObject;
@@ -77,6 +104,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -85,18 +116,34 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
         /// List of eligibility types that are included in <c>enhanced_evidence</c>.
         /// </summary>
         [JsonProperty("enhanced_eligibility_types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enhanced_eligibility_types")]
+#endif
+
         public List<string> EnhancedEligibilityTypes { get; set; }
 
         [JsonProperty("evidence")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("evidence")]
+#endif
+
         public DisputeEvidence Evidence { get; set; }
 
         [JsonProperty("evidence_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("evidence_details")]
+#endif
+
         public DisputeEvidenceDetails EvidenceDetails { get; set; }
 
         /// <summary>
@@ -105,6 +152,10 @@ namespace Stripe
         /// this dispute.
         /// </summary>
         [JsonProperty("is_charge_refundable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("is_charge_refundable")]
+#endif
+
         public bool IsChargeRefundable { get; set; }
 
         /// <summary>
@@ -112,6 +163,10 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -120,12 +175,20 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Network-dependent reason code for the dispute.
         /// </summary>
         [JsonProperty("network_reason_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_reason_code")]
+#endif
+
         public string NetworkReasonCode { get; set; }
 
         #region Expandable PaymentIntent
@@ -135,6 +198,10 @@ namespace Stripe
         /// ID of the PaymentIntent that's disputed.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
@@ -148,6 +215,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
@@ -160,6 +231,10 @@ namespace Stripe
         #endregion
 
         [JsonProperty("payment_method_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_details")]
+#endif
+
         public DisputePaymentMethodDetails PaymentMethodDetails { get; set; }
 
         /// <summary>
@@ -172,6 +247,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/disputes/categories">dispute reasons</a>.
         /// </summary>
         [JsonProperty("reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason")]
+#endif
+
         public string Reason { get; set; }
 
         /// <summary>
@@ -182,6 +261,10 @@ namespace Stripe
         /// <c>warning_needs_response</c>, <c>warning_under_review</c>, or <c>won</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
     }
 }

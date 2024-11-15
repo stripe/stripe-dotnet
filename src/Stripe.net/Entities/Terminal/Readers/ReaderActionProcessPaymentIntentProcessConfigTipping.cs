@@ -2,6 +2,9 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ReaderActionProcessPaymentIntentProcessConfigTipping : StripeEntity<ReaderActionProcessPaymentIntentProcessConfigTipping>
     {
@@ -11,6 +14,10 @@ namespace Stripe.Terminal
         /// to represent $1.00 or 100 to represent ¥100, a zero-decimal currency).
         /// </summary>
         [JsonProperty("amount_eligible")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_eligible")]
+#endif
+
         public long AmountEligible { get; set; }
     }
 }

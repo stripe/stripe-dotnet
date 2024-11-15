@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CustomerTaxLocation : StripeEntity<CustomerTaxLocation>
     {
@@ -9,6 +12,10 @@ namespace Stripe
         /// The customer's country as identified by Stripe Tax.
         /// </summary>
         [JsonProperty("country")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country")]
+#endif
+
         public string Country { get; set; }
 
         /// <summary>
@@ -17,12 +24,20 @@ namespace Stripe
         /// <c>shipping_destination</c>.
         /// </summary>
         [JsonProperty("source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source")]
+#endif
+
         public string Source { get; set; }
 
         /// <summary>
         /// The customer's state, county, province, or region as identified by Stripe Tax.
         /// </summary>
         [JsonProperty("state")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("state")]
+#endif
+
         public string State { get; set; }
     }
 }

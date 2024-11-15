@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ShippingRateUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// Whether the shipping rate can be used for new purchases. Defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
+
         public bool? Active { get; set; }
 
         /// <summary>
@@ -17,6 +24,10 @@ namespace Stripe
         /// <c>fixed_amount</c>.
         /// </summary>
         [JsonProperty("fixed_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fixed_amount")]
+#endif
+
         public ShippingRateFixedAmountOptions FixedAmount { get; set; }
 
         /// <summary>
@@ -26,6 +37,10 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -34,6 +49,10 @@ namespace Stripe
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_behavior")]
+#endif
+
         public string TaxBehavior { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class DisputeTreasury : StripeEntity<DisputeTreasury>
     {
@@ -11,6 +14,10 @@ namespace Stripe.Issuing
         /// representing this Issuing dispute.
         /// </summary>
         [JsonProperty("debit_reversal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("debit_reversal")]
+#endif
+
         public string DebitReversal { get; set; }
 
         /// <summary>
@@ -19,6 +26,10 @@ namespace Stripe.Issuing
         /// being disputed.
         /// </summary>
         [JsonProperty("received_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("received_debit")]
+#endif
+
         public string ReceivedDebit { get; set; }
     }
 }

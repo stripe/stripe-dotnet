@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PromotionCodeCreateOptions : BaseOptions, IHasMetadata
     {
@@ -12,6 +15,10 @@ namespace Stripe
         /// Whether the promotion code is currently active.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
+
         public bool? Active { get; set; }
 
         /// <summary>
@@ -22,12 +29,20 @@ namespace Stripe
         /// If left blank, we will generate one automatically.
         /// </summary>
         [JsonProperty("code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("code")]
+#endif
+
         public string Code { get; set; }
 
         /// <summary>
         /// The coupon for this promotion code.
         /// </summary>
         [JsonProperty("coupon")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("coupon")]
+#endif
+
         public string Coupon { get; set; }
 
         /// <summary>
@@ -35,6 +50,10 @@ namespace Stripe
         /// be used by all customers.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
+
         public string Customer { get; set; }
 
         /// <summary>
@@ -42,6 +61,10 @@ namespace Stripe
         /// <c>redeems_by</c>, then this value cannot be after the coupon's <c>redeems_by</c>.
         /// </summary>
         [JsonProperty("expires_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -51,6 +74,10 @@ namespace Stripe
         /// than the coupon's <c>max_redemptions</c>.
         /// </summary>
         [JsonProperty("max_redemptions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("max_redemptions")]
+#endif
+
         public long? MaxRedemptions { get; set; }
 
         /// <summary>
@@ -60,12 +87,20 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Settings that restrict the redemption of the promotion code.
         /// </summary>
         [JsonProperty("restrictions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("restrictions")]
+#endif
+
         public PromotionCodeRestrictionsOptions Restrictions { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InboundTransferFailureDetails : StripeEntity<InboundTransferFailureDetails>
     {
@@ -15,6 +18,10 @@ namespace Stripe.Treasury
         /// <c>other</c>.
         /// </summary>
         [JsonProperty("code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("code")]
+#endif
+
         public string Code { get; set; }
     }
 }

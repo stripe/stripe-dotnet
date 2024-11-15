@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class WebhookEndpointCreateOptions : BaseOptions, IHasMetadata
     {
@@ -38,6 +41,10 @@ namespace Stripe
         /// <c>2024-10-28.acacia</c>.
         /// </summary>
         [JsonProperty("api_version")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("api_version")]
+#endif
+
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -45,12 +52,20 @@ namespace Stripe
         /// from your account (<c>false</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("connect")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("connect")]
+#endif
+
         public bool? Connect { get; set; }
 
         /// <summary>
         /// An optional description of what the webhook is used for.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
@@ -180,6 +195,10 @@ namespace Stripe
         /// <c>ping</c>.
         /// </summary>
         [JsonProperty("enabled_events")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled_events")]
+#endif
+
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
@@ -189,12 +208,20 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The URL of the webhook endpoint.
         /// </summary>
         [JsonProperty("url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("url")]
+#endif
+
         public string Url { get; set; }
     }
 }

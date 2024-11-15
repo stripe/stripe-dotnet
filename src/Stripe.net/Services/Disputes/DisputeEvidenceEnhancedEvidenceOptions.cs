@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class DisputeEvidenceEnhancedEvidenceOptions : INestedOptions
     {
@@ -9,6 +12,10 @@ namespace Stripe
         /// Evidence provided for Visa Compelling Evidence 3.0 evidence submission.
         /// </summary>
         [JsonProperty("visa_compelling_evidence_3")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("visa_compelling_evidence_3")]
+#endif
+
         public DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3Options VisaCompellingEvidence3 { get; set; }
     }
 }

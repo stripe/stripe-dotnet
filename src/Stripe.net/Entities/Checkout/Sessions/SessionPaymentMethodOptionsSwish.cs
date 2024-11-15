@@ -2,6 +2,9 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionPaymentMethodOptionsSwish : StripeEntity<SessionPaymentMethodOptionsSwish>
     {
@@ -10,6 +13,10 @@ namespace Stripe.Checkout
         /// Defaults to the <c>id</c> of the Payment Intent.
         /// </summary>
         [JsonProperty("reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference")]
+#endif
+
         public string Reference { get; set; }
     }
 }

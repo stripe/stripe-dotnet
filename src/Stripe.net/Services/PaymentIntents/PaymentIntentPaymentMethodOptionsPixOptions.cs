@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsPixOptions : INestedOptions
     {
@@ -12,6 +15,10 @@ namespace Stripe
         /// Defaults to 86400 seconds.
         /// </summary>
         [JsonProperty("expires_after_seconds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_after_seconds")]
+#endif
+
         public long? ExpiresAfterSeconds { get; set; }
 
         /// <summary>
@@ -19,6 +26,10 @@ namespace Stripe
         /// Defaults to 1 day in the future.
         /// </summary>
         [JsonProperty("expires_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
 
@@ -47,6 +58,10 @@ namespace Stripe
         /// <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
+
         public string SetupFutureUsage { get; set; }
     }
 }

@@ -3,6 +3,9 @@ namespace Stripe.Entitlements
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// An active entitlement describes access to a feature for a customer.
@@ -13,12 +16,20 @@ namespace Stripe.Entitlements
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         #region Expandable Feature
@@ -29,6 +40,10 @@ namespace Stripe.Entitlements
         /// customer is entitled to.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string FeatureId
         {
             get => this.InternalFeature?.Id;
@@ -43,6 +58,10 @@ namespace Stripe.Entitlements
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Feature Feature
         {
             get => this.InternalFeature?.ExpandedObject;
@@ -59,12 +78,20 @@ namespace Stripe.Entitlements
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
         /// A unique key you provide as your own system identifier. This may be up to 80 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lookup_key")]
+#endif
+
         public string LookupKey { get; set; }
     }
 }

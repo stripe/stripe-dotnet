@@ -3,6 +3,9 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class DisputeEvidenceFraudulent : StripeEntity<DisputeEvidenceFraudulent>
     {
@@ -14,6 +17,10 @@ namespace Stripe.Issuing
         /// Additional documentation supporting the dispute.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string AdditionalDocumentationId
         {
             get => this.InternalAdditionalDocumentation?.Id;
@@ -28,6 +35,10 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public File AdditionalDocumentation
         {
             get => this.InternalAdditionalDocumentation?.ExpandedObject;
@@ -43,6 +54,10 @@ namespace Stripe.Issuing
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
         [JsonProperty("explanation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("explanation")]
+#endif
+
         public string Explanation { get; set; }
     }
 }

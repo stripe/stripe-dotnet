@@ -2,6 +2,9 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AuthorizationVerificationDataThreeDSecure : StripeEntity<AuthorizationVerificationDataThreeDSecure>
     {
@@ -11,6 +14,10 @@ namespace Stripe.Issuing
         /// <c>required</c>.
         /// </summary>
         [JsonProperty("result")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("result")]
+#endif
+
         public string Result { get; set; }
     }
 }

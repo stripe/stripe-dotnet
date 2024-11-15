@@ -5,6 +5,9 @@ namespace Stripe.Reporting
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ReportRunParametersOptions : INestedOptions
     {
@@ -13,24 +16,40 @@ namespace Stripe.Reporting
         /// is run with its default column set.
         /// </summary>
         [JsonProperty("columns")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("columns")]
+#endif
+
         public List<string> Columns { get; set; }
 
         /// <summary>
         /// Connected account ID to filter for in the report run.
         /// </summary>
         [JsonProperty("connected_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("connected_account")]
+#endif
+
         public string ConnectedAccount { get; set; }
 
         /// <summary>
         /// Currency of objects to be included in the report run.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
         /// Ending timestamp of data to be included in the report run (exclusive).
         /// </summary>
         [JsonProperty("interval_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval_end")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? IntervalEnd { get; set; }
 
@@ -38,6 +57,10 @@ namespace Stripe.Reporting
         /// Starting timestamp of data to be included in the report run.
         /// </summary>
         [JsonProperty("interval_start")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval_start")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? IntervalStart { get; set; }
 
@@ -45,6 +68,10 @@ namespace Stripe.Reporting
         /// Payout ID by which to filter the report run.
         /// </summary>
         [JsonProperty("payout")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payout")]
+#endif
+
         public string Payout { get; set; }
 
         /// <summary>
@@ -65,6 +92,10 @@ namespace Stripe.Reporting
         /// <c>unreconciled_customer_funds</c>.
         /// </summary>
         [JsonProperty("reporting_category")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reporting_category")]
+#endif
+
         public string ReportingCategory { get; set; }
 
         /// <summary>
@@ -257,6 +288,10 @@ namespace Stripe.Reporting
         /// <c>US/Samoa</c>, <c>UTC</c>, <c>Universal</c>, <c>W-SU</c>, <c>WET</c>, or <c>Zulu</c>.
         /// </summary>
         [JsonProperty("timezone")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("timezone")]
+#endif
+
         public string Timezone { get; set; }
     }
 }

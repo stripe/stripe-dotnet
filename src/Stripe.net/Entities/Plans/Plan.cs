@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// You can now model subscriptions more flexibly using the <a
@@ -32,18 +35,30 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
         /// Whether the plan can be used for new purchases.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
+
         public bool Active { get; set; }
 
         /// <summary>
@@ -56,6 +71,10 @@ namespace Stripe
         /// One of: <c>last_during_period</c>, <c>last_ever</c>, <c>max</c>, or <c>sum</c>.
         /// </summary>
         [JsonProperty("aggregate_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("aggregate_usage")]
+#endif
+
         public string AggregateUsage { get; set; }
 
         /// <summary>
@@ -63,6 +82,10 @@ namespace Stripe
         /// integer if possible. Only set if <c>billing_scheme=per_unit</c>.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long? Amount { get; set; }
 
         /// <summary>
@@ -70,6 +93,10 @@ namespace Stripe
         /// string with at most 12 decimal places. Only set if <c>billing_scheme=per_unit</c>.
         /// </summary>
         [JsonProperty("amount_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_decimal")]
+#endif
+
         public decimal? AmountDecimal { get; set; }
 
         /// <summary>
@@ -82,6 +109,10 @@ namespace Stripe
         /// One of: <c>per_unit</c>, or <c>tiered</c>.
         /// </summary>
         [JsonProperty("billing_scheme")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_scheme")]
+#endif
+
         public string BillingScheme { get; set; }
 
         /// <summary>
@@ -89,6 +120,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -97,12 +132,20 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deleted")]
+#endif
+
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -111,6 +154,10 @@ namespace Stripe
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("interval")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval")]
+#endif
+
         public string Interval { get; set; }
 
         /// <summary>
@@ -119,6 +166,10 @@ namespace Stripe
         /// bills every 3 months.
         /// </summary>
         [JsonProperty("interval_count")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval_count")]
+#endif
+
         public long IntervalCount { get; set; }
 
         /// <summary>
@@ -126,6 +177,10 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -134,18 +189,30 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The meter tracking the usage of a metered price.
         /// </summary>
         [JsonProperty("meter")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("meter")]
+#endif
+
         public string Meter { get; set; }
 
         /// <summary>
         /// A brief description of the plan, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nickname")]
+#endif
+
         public string Nickname { get; set; }
 
         #region Expandable Product
@@ -155,6 +222,10 @@ namespace Stripe
         /// The product whose pricing this plan determines.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ProductId
         {
             get => this.InternalProduct?.Id;
@@ -168,6 +239,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Product Product
         {
             get => this.InternalProduct?.ExpandedObject;
@@ -184,6 +259,10 @@ namespace Stripe
         /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
         /// </summary>
         [JsonProperty("tiers")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tiers")]
+#endif
+
         public List<PlanTier> Tiers { get; set; }
 
         /// <summary>
@@ -193,6 +272,10 @@ namespace Stripe
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiers_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tiers_mode")]
+#endif
+
         public string TiersMode { get; set; }
 
         /// <summary>
@@ -200,6 +283,10 @@ namespace Stripe
         /// billed. Cannot be combined with <c>tiers</c>.
         /// </summary>
         [JsonProperty("transform_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transform_usage")]
+#endif
+
         public PlanTransformUsage TransformUsage { get; set; }
 
         /// <summary>
@@ -207,6 +294,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/api#create_subscription-trial_from_plan"><c>trial_from_plan=true</c></a>.
         /// </summary>
         [JsonProperty("trial_period_days")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_period_days")]
+#endif
+
         public long? TrialPeriodDays { get; set; }
 
         /// <summary>
@@ -217,6 +308,10 @@ namespace Stripe
         /// One of: <c>licensed</c>, or <c>metered</c>.
         /// </summary>
         [JsonProperty("usage_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("usage_type")]
+#endif
+
         public string UsageType { get; set; }
     }
 }

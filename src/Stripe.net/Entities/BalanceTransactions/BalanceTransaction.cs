@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Balance transactions represent funds moving through your Stripe account. Stripe creates
@@ -20,12 +23,20 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -34,6 +45,10 @@ namespace Stripe
         /// another party.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         /// <summary>
@@ -41,6 +56,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("available_on")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("available_on")]
+#endif
+
         public DateTime AvailableOn { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -48,6 +67,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -56,12 +79,20 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
@@ -74,6 +105,10 @@ namespace Stripe
         /// and the <c>exchange_rate</c> is <c>1.234</c>.
         /// </summary>
         [JsonProperty("exchange_rate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exchange_rate")]
+#endif
+
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
@@ -81,12 +116,20 @@ namespace Stripe
         /// positive integer when assessed.
         /// </summary>
         [JsonProperty("fee")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fee")]
+#endif
+
         public long Fee { get; set; }
 
         /// <summary>
         /// Detailed breakdown of fees (in cents (or local equivalent)) paid for this transaction.
         /// </summary>
         [JsonProperty("fee_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fee_details")]
+#endif
+
         public List<BalanceTransactionFeeDetail> FeeDetails { get; set; }
 
         /// <summary>
@@ -96,6 +139,10 @@ namespace Stripe
         /// - <c>fee</c>.
         /// </summary>
         [JsonProperty("net")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("net")]
+#endif
+
         public long Net { get; set; }
 
         /// <summary>
@@ -104,6 +151,10 @@ namespace Stripe
         /// help you understand balance transactions from an accounting perspective.
         /// </summary>
         [JsonProperty("reporting_category")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reporting_category")]
+#endif
+
         public string ReportingCategory { get; set; }
 
         #region Expandable Source
@@ -113,6 +164,10 @@ namespace Stripe
         /// This transaction relates to the Stripe object.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string SourceId
         {
             get => this.InternalSource?.Id;
@@ -126,6 +181,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public IBalanceTransactionSource Source
         {
             get => this.InternalSource?.ExpandedObject;
@@ -142,6 +201,10 @@ namespace Stripe
         /// <c>available</c> or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         /// <summary>
@@ -178,6 +241,10 @@ namespace Stripe
         /// or <c>transfer_refund</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

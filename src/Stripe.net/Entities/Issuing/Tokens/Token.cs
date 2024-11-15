@@ -4,6 +4,9 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// An issuing token object is created when an issued card is added to a digital wallet. As
@@ -17,12 +20,20 @@ namespace Stripe.Issuing
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         #region Expandable Card
@@ -32,6 +43,10 @@ namespace Stripe.Issuing
         /// Card associated with this token.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CardId
         {
             get => this.InternalCard?.Id;
@@ -45,6 +60,10 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Card Card
         {
             get => this.InternalCard?.ExpandedObject;
@@ -61,6 +80,10 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -68,12 +91,20 @@ namespace Stripe.Issuing
         /// token.
         /// </summary>
         [JsonProperty("device_fingerprint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("device_fingerprint")]
+#endif
+
         public string DeviceFingerprint { get; set; }
 
         /// <summary>
         /// The last four digits of the token.
         /// </summary>
         [JsonProperty("last4")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("last4")]
+#endif
+
         public string Last4 { get; set; }
 
         /// <summary>
@@ -81,6 +112,10 @@ namespace Stripe.Issuing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -88,9 +123,17 @@ namespace Stripe.Issuing
         /// One of: <c>mastercard</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("network")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network")]
+#endif
+
         public string Network { get; set; }
 
         [JsonProperty("network_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_data")]
+#endif
+
         public TokenNetworkData NetworkData { get; set; }
 
         /// <summary>
@@ -99,6 +142,10 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("network_updated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_updated_at")]
+#endif
+
         public DateTime NetworkUpdatedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -106,6 +153,10 @@ namespace Stripe.Issuing
         /// One of: <c>active</c>, <c>deleted</c>, <c>requested</c>, or <c>suspended</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         /// <summary>
@@ -113,6 +164,10 @@ namespace Stripe.Issuing
         /// One of: <c>apple_pay</c>, <c>google_pay</c>, or <c>samsung_pay</c>.
         /// </summary>
         [JsonProperty("wallet_provider")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wallet_provider")]
+#endif
+
         public string WalletProvider { get; set; }
     }
 }

@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Products describe the specific goods or services you offer to your customers. For
@@ -27,18 +30,30 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
         /// Whether the product is currently available for purchase.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
+
         public bool Active { get; set; }
 
         /// <summary>
@@ -46,6 +61,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable DefaultPrice
@@ -56,6 +75,10 @@ namespace Stripe
         /// default price for this product.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string DefaultPriceId
         {
             get => this.InternalDefaultPrice?.Id;
@@ -70,6 +93,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Price DefaultPrice
         {
             get => this.InternalDefaultPrice?.ExpandedObject;
@@ -85,6 +112,10 @@ namespace Stripe
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deleted")]
+#endif
+
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -93,6 +124,10 @@ namespace Stripe
         /// rendering purposes.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
@@ -100,6 +135,10 @@ namespace Stripe
         /// customer.
         /// </summary>
         [JsonProperty("images")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("images")]
+#endif
+
         public List<string> Images { get; set; }
 
         /// <summary>
@@ -107,6 +146,10 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -114,6 +157,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
         /// </summary>
         [JsonProperty("marketing_features")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("marketing_features")]
+#endif
+
         public List<ProductMarketingFeature> MarketingFeatures { get; set; }
 
         /// <summary>
@@ -122,24 +169,40 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The product's name, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
+
         public string Name { get; set; }
 
         /// <summary>
         /// The dimensions of this product for shipping purposes.
         /// </summary>
         [JsonProperty("package_dimensions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("package_dimensions")]
+#endif
+
         public ProductPackageDimensions PackageDimensions { get; set; }
 
         /// <summary>
         /// Whether this product is shipped (i.e., physical goods).
         /// </summary>
         [JsonProperty("shippable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shippable")]
+#endif
+
         public bool? Shippable { get; set; }
 
         /// <summary>
@@ -148,6 +211,10 @@ namespace Stripe
         /// descriptor will be used. Only used for subscription payments.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
+
         public string StatementDescriptor { get; set; }
 
         #region Expandable TaxCode
@@ -157,6 +224,10 @@ namespace Stripe
         /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string TaxCodeId
         {
             get => this.InternalTaxCode?.Id;
@@ -170,6 +241,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public TaxCode TaxCode
         {
             get => this.InternalTaxCode?.ExpandedObject;
@@ -188,6 +263,10 @@ namespace Stripe
         /// One of: <c>good</c>, or <c>service</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
 
         /// <summary>
@@ -195,6 +274,10 @@ namespace Stripe
         /// customers' receipts, invoices, Checkout, and the customer portal.
         /// </summary>
         [JsonProperty("unit_label")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_label")]
+#endif
+
         public string UnitLabel { get; set; }
 
         /// <summary>
@@ -202,12 +285,20 @@ namespace Stripe
         /// </summary>
         [JsonProperty("updated")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("updated")]
+#endif
+
         public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// A URL of a publicly-accessible webpage for this product.
         /// </summary>
         [JsonProperty("url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("url")]
+#endif
+
         public string Url { get; set; }
     }
 }

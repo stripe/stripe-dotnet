@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SourceMandateOptions : INestedOptions
     {
@@ -10,18 +13,30 @@ namespace Stripe
         /// customer.
         /// </summary>
         [JsonProperty("acceptance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("acceptance")]
+#endif
+
         public SourceMandateAcceptanceOptions Acceptance { get; set; }
 
         /// <summary>
         /// The amount specified by the mandate. (Leave null for a mandate covering all amounts).
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long? Amount { get; set; }
 
         /// <summary>
         /// The currency specified by the mandate. (Must match <c>currency</c> of the source).
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
@@ -31,6 +46,10 @@ namespace Stripe
         /// One of: <c>one_time</c>, <c>scheduled</c>, or <c>variable</c>.
         /// </summary>
         [JsonProperty("interval")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval")]
+#endif
+
         public string Interval { get; set; }
 
         /// <summary>
@@ -44,6 +63,10 @@ namespace Stripe
         /// <c>stripe_email</c>.
         /// </summary>
         [JsonProperty("notification_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("notification_method")]
+#endif
+
         public string NotificationMethod { get; set; }
     }
 }

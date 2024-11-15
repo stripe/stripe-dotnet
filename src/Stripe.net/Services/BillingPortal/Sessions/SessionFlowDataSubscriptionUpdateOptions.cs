@@ -2,6 +2,9 @@
 namespace Stripe.BillingPortal
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionFlowDataSubscriptionUpdateOptions : INestedOptions
     {
@@ -9,6 +12,10 @@ namespace Stripe.BillingPortal
         /// The ID of the subscription to be updated.
         /// </summary>
         [JsonProperty("subscription")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription")]
+#endif
+
         public string Subscription { get; set; }
     }
 }

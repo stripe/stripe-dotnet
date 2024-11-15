@@ -2,6 +2,9 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class RegistrationCountryOptionsUsOptions : INestedOptions
     {
@@ -9,12 +12,20 @@ namespace Stripe.Tax
         /// Options for the local amusement tax registration.
         /// </summary>
         [JsonProperty("local_amusement_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("local_amusement_tax")]
+#endif
+
         public RegistrationCountryOptionsUsLocalAmusementTaxOptions LocalAmusementTax { get; set; }
 
         /// <summary>
         /// Options for the local lease tax registration.
         /// </summary>
         [JsonProperty("local_lease_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("local_lease_tax")]
+#endif
+
         public RegistrationCountryOptionsUsLocalLeaseTaxOptions LocalLeaseTax { get; set; }
 
         /// <summary>
@@ -22,12 +33,20 @@ namespace Stripe.Tax
         /// 3166-2</a>).
         /// </summary>
         [JsonProperty("state")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("state")]
+#endif
+
         public string State { get; set; }
 
         /// <summary>
         /// Options for the state sales tax registration.
         /// </summary>
         [JsonProperty("state_sales_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("state_sales_tax")]
+#endif
+
         public RegistrationCountryOptionsUsStateSalesTaxOptions StateSalesTax { get; set; }
 
         /// <summary>
@@ -37,6 +56,10 @@ namespace Stripe.Tax
         /// <c>state_sales_tax</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ChargeRadarOptions : StripeEntity<ChargeRadarOptions>
     {
@@ -11,6 +14,10 @@ namespace Stripe
         /// predictions on your payments.
         /// </summary>
         [JsonProperty("session")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("session")]
+#endif
+
         public string Session { get; set; }
     }
 }

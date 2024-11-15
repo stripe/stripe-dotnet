@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PromotionCodeRestrictionsOptions : INestedOptions
     {
@@ -12,6 +15,10 @@ namespace Stripe
         /// code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency_options")]
+#endif
+
         public Dictionary<string, PromotionCodeRestrictionsCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
@@ -19,6 +26,10 @@ namespace Stripe
         /// any successful payments or invoices.
         /// </summary>
         [JsonProperty("first_time_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("first_time_transaction")]
+#endif
+
         public bool? FirstTimeTransaction { get; set; }
 
         /// <summary>
@@ -26,6 +37,10 @@ namespace Stripe
         /// must be $100 or more to work).
         /// </summary>
         [JsonProperty("minimum_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("minimum_amount")]
+#endif
+
         public long? MinimumAmount { get; set; }
 
         /// <summary>
@@ -33,6 +48,10 @@ namespace Stripe
         /// minimum_amount.
         /// </summary>
         [JsonProperty("minimum_amount_currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("minimum_amount_currency")]
+#endif
+
         public string MinimumAmountCurrency { get; set; }
     }
 }

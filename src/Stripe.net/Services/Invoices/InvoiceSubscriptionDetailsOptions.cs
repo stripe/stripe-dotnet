@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceSubscriptionDetailsOptions : INestedOptions
     {
@@ -16,6 +19,10 @@ namespace Stripe
         /// subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
+#endif
+
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsBillingCycleAnchor> BillingCycleAnchor { get; set; }
 
@@ -26,6 +33,10 @@ namespace Stripe
         /// proration for that period.
         /// </summary>
         [JsonProperty("cancel_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? CancelAt { get; set; }
 
@@ -34,12 +45,20 @@ namespace Stripe
         /// (<c>current_period_end</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at_period_end")]
+#endif
+
         public bool? CancelAtPeriodEnd { get; set; }
 
         /// <summary>
         /// This simulates the subscription being canceled or expired immediately.
         /// </summary>
         [JsonProperty("cancel_now")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_now")]
+#endif
+
         public bool? CancelNow { get; set; }
 
         /// <summary>
@@ -48,12 +67,20 @@ namespace Stripe
         /// have <c>tax_rates</c> set.
         /// </summary>
         [JsonProperty("default_tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_tax_rates")]
+#endif
+
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
         /// A list of up to 20 subscription items, each with an attached price.
         /// </summary>
         [JsonProperty("items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("items")]
+#endif
+
         public List<InvoiceSubscriptionDetailsItemOptions> Items { get; set; }
 
         /// <summary>
@@ -65,6 +92,10 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_behavior")]
+#endif
+
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -77,6 +108,10 @@ namespace Stripe
         /// required. Also, <c>subscription_details.proration_behavior</c> cannot be set to 'none'.
         /// </summary>
         [JsonProperty("proration_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_date")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? ProrationDate { get; set; }
 
@@ -85,12 +120,20 @@ namespace Stripe
         /// will preview the invoice that will be generated if the subscription is resumed.
         /// </summary>
         [JsonProperty("resume_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("resume_at")]
+#endif
+
         public string ResumeAt { get; set; }
 
         /// <summary>
         /// Date a subscription is intended to start (can be future or past).
         /// </summary>
         [JsonProperty("start_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("start_date")]
+#endif
+
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? StartDate { get; set; }
 
@@ -100,6 +143,10 @@ namespace Stripe
         /// is required.
         /// </summary>
         [JsonProperty("trial_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_end")]
+#endif
+
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsTrialEnd> TrialEnd { get; set; }
     }

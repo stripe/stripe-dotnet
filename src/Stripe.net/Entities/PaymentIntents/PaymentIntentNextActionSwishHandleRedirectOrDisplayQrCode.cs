@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCode : StripeEntity<PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCode>
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// code.
         /// </summary>
         [JsonProperty("hosted_instructions_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hosted_instructions_url")]
+#endif
+
         public string HostedInstructionsUrl { get; set; }
 
         /// <summary>
@@ -17,9 +24,17 @@ namespace Stripe
         /// available in standard API requests).
         /// </summary>
         [JsonProperty("mobile_auth_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mobile_auth_url")]
+#endif
+
         public string MobileAuthUrl { get; set; }
 
         [JsonProperty("qr_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("qr_code")]
+#endif
+
         public PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCodeQrCode QrCode { get; set; }
     }
 }

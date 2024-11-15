@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class BankAccountDocumentsOptions : INestedOptions
     {
@@ -13,6 +16,10 @@ namespace Stripe
         /// or a check.
         /// </summary>
         [JsonProperty("bank_account_ownership_verification")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank_account_ownership_verification")]
+#endif
+
         public BankAccountDocumentsBankAccountOwnershipVerificationOptions BankAccountOwnershipVerification { get; set; }
     }
 }

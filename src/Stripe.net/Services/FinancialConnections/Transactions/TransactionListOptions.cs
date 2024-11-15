@@ -4,6 +4,9 @@ namespace Stripe.FinancialConnections
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TransactionListOptions : ListOptions
     {
@@ -11,6 +14,10 @@ namespace Stripe.FinancialConnections
         /// The ID of the Stripe account whose transactions will be retrieved.
         /// </summary>
         [JsonProperty("account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account")]
+#endif
+
         public string Account { get; set; }
 
         /// <summary>
@@ -19,6 +26,10 @@ namespace Stripe.FinancialConnections
         /// options:.
         /// </summary>
         [JsonProperty("transacted_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transacted_at")]
+#endif
+
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, DateRangeOptions> TransactedAt { get; set; }
 
@@ -27,6 +38,10 @@ namespace Stripe.FinancialConnections
         /// be a dictionary with the following options:.
         /// </summary>
         [JsonProperty("transaction_refresh")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction_refresh")]
+#endif
+
         public TransactionTransactionRefreshOptions TransactionRefresh { get; set; }
     }
 }

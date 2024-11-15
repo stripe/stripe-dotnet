@@ -4,6 +4,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CustomerInvoiceSettings : StripeEntity<CustomerInvoiceSettings>
     {
@@ -11,6 +14,10 @@ namespace Stripe
         /// Default custom fields to be displayed on invoices for this customer.
         /// </summary>
         [JsonProperty("custom_fields")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("custom_fields")]
+#endif
+
         public List<CustomerInvoiceSettingsCustomField> CustomFields { get; set; }
 
         #region Expandable DefaultPaymentMethod
@@ -21,6 +28,10 @@ namespace Stripe
         /// default payment method for subscriptions and invoices.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string DefaultPaymentMethodId
         {
             get => this.InternalDefaultPaymentMethod?.Id;
@@ -35,6 +46,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public PaymentMethod DefaultPaymentMethod
         {
             get => this.InternalDefaultPaymentMethod?.ExpandedObject;
@@ -50,12 +65,20 @@ namespace Stripe
         /// Default footer to be displayed on invoices for this customer.
         /// </summary>
         [JsonProperty("footer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("footer")]
+#endif
+
         public string Footer { get; set; }
 
         /// <summary>
         /// Default options for invoice PDF rendering for this customer.
         /// </summary>
         [JsonProperty("rendering_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("rendering_options")]
+#endif
+
         public CustomerInvoiceSettingsRenderingOptions RenderingOptions { get; set; }
     }
 }

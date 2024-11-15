@@ -5,6 +5,9 @@ namespace Stripe.Identity
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A VerificationSession guides you through the process of collecting and verifying the
@@ -28,12 +31,20 @@ namespace Stripe.Identity
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -41,6 +52,10 @@ namespace Stripe.Identity
         /// and can be used to reconcile this verification with your internal systems.
         /// </summary>
         [JsonProperty("client_reference_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("client_reference_id")]
+#endif
+
         public string ClientReferenceId { get; set; }
 
         /// <summary>
@@ -54,6 +69,10 @@ namespace Stripe.Identity
         /// client secret to the frontend</a> to learn more.
         /// </summary>
         [JsonProperty("client_secret")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("client_secret")]
+#endif
+
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -61,6 +80,10 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -68,6 +91,10 @@ namespace Stripe.Identity
         /// verification.
         /// </summary>
         [JsonProperty("last_error")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("last_error")]
+#endif
+
         public VerificationSessionLastError LastError { get; set; }
 
         #region Expandable LastVerificationReport
@@ -79,6 +106,10 @@ namespace Stripe.Identity
         /// accessing detailed verification results.</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string LastVerificationReportId
         {
             get => this.InternalLastVerificationReport?.Id;
@@ -94,6 +125,10 @@ namespace Stripe.Identity
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public VerificationReport LastVerificationReport
         {
             get => this.InternalLastVerificationReport?.ExpandedObject;
@@ -110,6 +145,10 @@ namespace Stripe.Identity
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -118,18 +157,30 @@ namespace Stripe.Identity
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A set of options for the session’s verification checks.
         /// </summary>
         [JsonProperty("options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("options")]
+#endif
+
         public VerificationSessionOptions Options { get; set; }
 
         /// <summary>
         /// Details provided about the user being verified. These details may be shown to the user.
         /// </summary>
         [JsonProperty("provided_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("provided_details")]
+#endif
+
         public VerificationSessionProvidedDetails ProvidedDetails { get; set; }
 
         /// <summary>
@@ -137,12 +188,20 @@ namespace Stripe.Identity
         /// redacted, this field will be null.
         /// </summary>
         [JsonProperty("redaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("redaction")]
+#endif
+
         public VerificationSessionRedaction Redaction { get; set; }
 
         /// <summary>
         /// Token referencing a Customer resource.
         /// </summary>
         [JsonProperty("related_customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("related_customer")]
+#endif
+
         public string RelatedCustomer { get; set; }
 
         /// <summary>
@@ -152,6 +211,10 @@ namespace Stripe.Identity
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_input</c>, or <c>verified</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         /// <summary>
@@ -160,6 +223,10 @@ namespace Stripe.Identity
         /// One of: <c>document</c>, <c>id_number</c>, or <c>verification_flow</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
 
         /// <summary>
@@ -171,18 +238,30 @@ namespace Stripe.Identity
         /// identity documents</a> to learn how to redirect users to Stripe.
         /// </summary>
         [JsonProperty("url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("url")]
+#endif
+
         public string Url { get; set; }
 
         /// <summary>
         /// The configuration token of a Verification Flow from the dashboard.
         /// </summary>
         [JsonProperty("verification_flow")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("verification_flow")]
+#endif
+
         public string VerificationFlow { get; set; }
 
         /// <summary>
         /// The user’s verified data.
         /// </summary>
         [JsonProperty("verified_outputs")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("verified_outputs")]
+#endif
+
         public VerificationSessionVerifiedOutputs VerifiedOutputs { get; set; }
     }
 }

@@ -3,6 +3,9 @@ namespace Stripe.V2.Billing
 {
     using System;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class MeterEventAdjustment : StripeEntity<MeterEventAdjustment>, IHasId, IHasObject
     {
@@ -10,6 +13,10 @@ namespace Stripe.V2.Billing
         /// The unique id of this meter event adjustment.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
@@ -17,24 +24,40 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
         /// Specifies which event to cancel.
         /// </summary>
         [JsonProperty("cancel")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel")]
+#endif
+
         public MeterEventAdjustmentCancel Cancel { get; set; }
 
         /// <summary>
         /// The time the adjustment was created.
         /// </summary>
         [JsonProperty("created")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The name of the meter event. Corresponds with the <c>event_name</c> field on a meter.
         /// </summary>
         [JsonProperty("event_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("event_name")]
+#endif
+
         public string EventName { get; set; }
 
         /// <summary>
@@ -42,6 +65,10 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -49,6 +76,10 @@ namespace Stripe.V2.Billing
         /// One of: <c>complete</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         /// <summary>
@@ -56,6 +87,10 @@ namespace Stripe.V2.Billing
         /// period. Time period cancellation is not supported yet.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }

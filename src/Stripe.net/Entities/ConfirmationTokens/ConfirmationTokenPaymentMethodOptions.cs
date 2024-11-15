@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfirmationTokenPaymentMethodOptions : StripeEntity<ConfirmationTokenPaymentMethodOptions>
     {
@@ -9,6 +12,10 @@ namespace Stripe
         /// This hash contains the card payment method options.
         /// </summary>
         [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
+
         public ConfirmationTokenPaymentMethodOptionsCard Card { get; set; }
     }
 }

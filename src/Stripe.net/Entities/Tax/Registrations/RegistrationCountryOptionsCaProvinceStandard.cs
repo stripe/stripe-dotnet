@@ -2,6 +2,9 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class RegistrationCountryOptionsCaProvinceStandard : StripeEntity<RegistrationCountryOptionsCaProvinceStandard>
     {
@@ -10,6 +13,10 @@ namespace Stripe.Tax
         /// 3166-2</a>).
         /// </summary>
         [JsonProperty("province")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("province")]
+#endif
+
         public string Province { get; set; }
     }
 }

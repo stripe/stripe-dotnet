@@ -2,6 +2,9 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionPaymentMethodOptionsCardInstallmentsOptions : INestedOptions
     {
@@ -10,6 +13,10 @@ namespace Stripe.Checkout
         /// prevent any installment plan from applying to a payment.
         /// </summary>
         [JsonProperty("enabled")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled")]
+#endif
+
         public bool? Enabled { get; set; }
     }
 }

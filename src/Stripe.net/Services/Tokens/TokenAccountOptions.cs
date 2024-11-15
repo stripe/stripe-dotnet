@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TokenAccountOptions : INestedOptions
     {
@@ -11,18 +14,30 @@ namespace Stripe
         /// <c>non_profit</c>.
         /// </summary>
         [JsonProperty("business_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("business_type")]
+#endif
+
         public string BusinessType { get; set; }
 
         /// <summary>
         /// Information about the company or business.
         /// </summary>
         [JsonProperty("company")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("company")]
+#endif
+
         public TokenAccountCompanyOptions Company { get; set; }
 
         /// <summary>
         /// Information about the person represented by the account.
         /// </summary>
         [JsonProperty("individual")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("individual")]
+#endif
+
         public TokenAccountIndividualOptions Individual { get; set; }
 
         /// <summary>
@@ -32,6 +47,10 @@ namespace Stripe
         /// Connect account, this value must be <c>true</c>.
         /// </summary>
         [JsonProperty("tos_shown_and_accepted")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tos_shown_and_accepted")]
+#endif
+
         public bool? TosShownAndAccepted { get; set; }
     }
 }

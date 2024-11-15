@@ -6,6 +6,9 @@ namespace Stripe
     using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Subscriptions allow you to charge a customer on a recurring basis.
@@ -19,12 +22,20 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         #region Expandable Application
@@ -34,6 +45,10 @@ namespace Stripe
         /// ID of the Connect Application that created the subscription.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ApplicationId
         {
             get => this.InternalApplication?.Id;
@@ -47,6 +62,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
@@ -64,9 +83,17 @@ namespace Stripe
         /// the application owner's Stripe account.
         /// </summary>
         [JsonProperty("application_fee_percent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_percent")]
+#endif
+
         public decimal? ApplicationFeePercent { get; set; }
 
         [JsonProperty("automatic_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("automatic_tax")]
+#endif
+
         public SubscriptionAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
@@ -78,12 +105,20 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
+#endif
+
         public DateTime BillingCycleAnchor { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The fixed values used to calculate the <c>billing_cycle_anchor</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor_config")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_cycle_anchor_config")]
+#endif
+
         public SubscriptionBillingCycleAnchorConfig BillingCycleAnchorConfig { get; set; }
 
         /// <summary>
@@ -91,6 +126,10 @@ namespace Stripe
         /// new billing period.
         /// </summary>
         [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
+
         public SubscriptionBillingThresholds BillingThresholds { get; set; }
 
         /// <summary>
@@ -98,6 +137,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("cancel_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at")]
+#endif
+
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
@@ -105,6 +148,10 @@ namespace Stripe
         /// <c>status=canceled</c>) cancel at the end of the current billing period.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at_period_end")]
+#endif
+
         public bool CancelAtPeriodEnd { get; set; }
 
         /// <summary>
@@ -115,12 +162,20 @@ namespace Stripe
         /// </summary>
         [JsonProperty("canceled_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("canceled_at")]
+#endif
+
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
         /// Details about why this subscription was cancelled.
         /// </summary>
         [JsonProperty("cancellation_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancellation_details")]
+#endif
+
         public SubscriptionCancellationDetails CancellationDetails { get; set; }
 
         /// <summary>
@@ -132,6 +187,10 @@ namespace Stripe
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("collection_method")]
+#endif
+
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -139,6 +198,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -147,6 +210,10 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+
         public string Currency { get; set; }
 
         /// <summary>
@@ -155,6 +222,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_end")]
+#endif
+
         public DateTime CurrentPeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -162,6 +233,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("current_period_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_start")]
+#endif
+
         public DateTime CurrentPeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable Customer
@@ -171,6 +246,10 @@ namespace Stripe
         /// ID of the customer who owns the subscription.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -184,6 +263,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -201,6 +284,10 @@ namespace Stripe
         /// <c>collection_method=charge_automatically</c>.
         /// </summary>
         [JsonProperty("days_until_due")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("days_until_due")]
+#endif
+
         public long? DaysUntilDue { get; set; }
 
         #region Expandable DefaultPaymentMethod
@@ -215,6 +302,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string DefaultPaymentMethodId
         {
             get => this.InternalDefaultPaymentMethod?.Id;
@@ -233,6 +324,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public PaymentMethod DefaultPaymentMethod
         {
             get => this.InternalDefaultPaymentMethod?.ExpandedObject;
@@ -257,6 +352,10 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string DefaultSourceId
         {
             get => this.InternalDefaultSource?.Id;
@@ -276,6 +375,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public IPaymentSource DefaultSource
         {
             get => this.InternalDefaultSource?.ExpandedObject;
@@ -293,6 +396,10 @@ namespace Stripe
         /// populated from the subscription.
         /// </summary>
         [JsonProperty("default_tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_tax_rates")]
+#endif
+
         public List<TaxRate> DefaultTaxRates { get; set; }
 
         /// <summary>
@@ -301,6 +408,10 @@ namespace Stripe
         /// and certain local payment methods UIs.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
+
         public string Description { get; set; }
 
         /// <summary>
@@ -310,6 +421,10 @@ namespace Stripe
         /// version. Use <c>discounts</c> instead.
         /// </summary>
         [JsonProperty("discount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discount")]
+#endif
+
         public Discount Discount { get; set; }
 
         #region Expandable Discounts
@@ -320,6 +435,10 @@ namespace Stripe
         /// before subscription discounts. Use <c>expand[]=discounts</c> to expand each discount.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public List<string> DiscountIds
         {
             get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
@@ -334,6 +453,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public List<Discount> Discounts
         {
             get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
@@ -349,15 +472,27 @@ namespace Stripe
         /// </summary>
         [JsonProperty("ended_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ended_at")]
+#endif
+
         public DateTime? EndedAt { get; set; }
 
         [JsonProperty("invoice_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_settings")]
+#endif
+
         public SubscriptionInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
         /// List of subscription items, each with an attached price.
         /// </summary>
         [JsonProperty("items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("items")]
+#endif
+
         public StripeList<SubscriptionItem> Items { get; set; }
 
         #region Expandable LatestInvoice
@@ -367,6 +502,10 @@ namespace Stripe
         /// The most recent invoice this subscription has generated.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string LatestInvoiceId
         {
             get => this.InternalLatestInvoice?.Id;
@@ -380,6 +519,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Invoice LatestInvoice
         {
             get => this.InternalLatestInvoice?.ExpandedObject;
@@ -396,6 +539,10 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -404,6 +551,10 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -412,6 +563,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("next_pending_invoice_item_invoice")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("next_pending_invoice_item_invoice")]
+#endif
+
         public DateTime? NextPendingInvoiceItemInvoice { get; set; }
 
         #region Expandable OnBehalfOf
@@ -422,6 +577,10 @@ namespace Stripe
         /// subscription. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string OnBehalfOfId
         {
             get => this.InternalOnBehalfOf?.Id;
@@ -436,6 +595,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
@@ -454,12 +617,20 @@ namespace Stripe
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pause_collection")]
+#endif
+
         public SubscriptionPauseCollection PauseCollection { get; set; }
 
         /// <summary>
         /// Payment settings passed on to invoices created by the subscription.
         /// </summary>
         [JsonProperty("payment_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_settings")]
+#endif
+
         public SubscriptionPaymentSettings PaymentSettings { get; set; }
 
         /// <summary>
@@ -468,6 +639,10 @@ namespace Stripe
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
         [JsonProperty("pending_invoice_item_interval")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pending_invoice_item_interval")]
+#endif
+
         public SubscriptionPendingInvoiceItemInterval PendingInvoiceItemInterval { get; set; }
 
         #region Expandable PendingSetupIntent
@@ -482,6 +657,10 @@ namespace Stripe
         /// Migration Guide</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string PendingSetupIntentId
         {
             get => this.InternalPendingSetupIntent?.Id;
@@ -500,6 +679,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public SetupIntent PendingSetupIntent
         {
             get => this.InternalPendingSetupIntent?.ExpandedObject;
@@ -517,6 +700,10 @@ namespace Stripe
         /// that will be applied to the subscription once the <c>latest_invoice</c> has been paid.
         /// </summary>
         [JsonProperty("pending_update")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pending_update")]
+#endif
+
         public SubscriptionPendingUpdate PendingUpdate { get; set; }
 
         #region Expandable Schedule
@@ -526,6 +713,10 @@ namespace Stripe
         /// The schedule attached to the subscription.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ScheduleId
         {
             get => this.InternalSchedule?.Id;
@@ -539,6 +730,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public SubscriptionSchedule Schedule
         {
             get => this.InternalSchedule?.ExpandedObject;
@@ -556,6 +751,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("start_date")]
+#endif
+
         public DateTime StartDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -596,6 +795,10 @@ namespace Stripe
         /// <c>past_due</c>, <c>paused</c>, <c>trialing</c>, or <c>unpaid</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+
         public string Status { get; set; }
 
         #region Expandable TestClock
@@ -605,6 +808,10 @@ namespace Stripe
         /// ID of the test clock this subscription belongs to.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string TestClockId
         {
             get => this.InternalTestClock?.Id;
@@ -618,6 +825,10 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public TestHelpers.TestClock TestClock
         {
             get => this.InternalTestClock?.ExpandedObject;
@@ -635,6 +846,10 @@ namespace Stripe
         /// subscription's invoices.
         /// </summary>
         [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
+
         public SubscriptionTransferData TransferData { get; set; }
 
         /// <summary>
@@ -642,12 +857,20 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_end")]
+#endif
+
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
         /// Settings related to subscription trials.
         /// </summary>
         [JsonProperty("trial_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_settings")]
+#endif
+
         public SubscriptionTrialSettings TrialSettings { get; set; }
 
         /// <summary>
@@ -655,6 +878,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_start")]
+#endif
+
         public DateTime? TrialStart { get; set; }
     }
 }

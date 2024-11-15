@@ -4,6 +4,9 @@ namespace Stripe.Terminal
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ReaderActionRefundPayment : StripeEntity<ReaderActionRefundPayment>, IHasMetadata
     {
@@ -11,6 +14,10 @@ namespace Stripe.Terminal
         /// The amount being refunded.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+
         public long Amount { get; set; }
 
         #region Expandable Charge
@@ -20,6 +27,10 @@ namespace Stripe.Terminal
         /// Charge that is being refunded.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string ChargeId
         {
             get => this.InternalCharge?.Id;
@@ -33,6 +44,10 @@ namespace Stripe.Terminal
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Charge Charge
         {
             get => this.InternalCharge?.ExpandedObject;
@@ -50,6 +65,10 @@ namespace Stripe.Terminal
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable PaymentIntent
@@ -59,6 +78,10 @@ namespace Stripe.Terminal
         /// Payment intent that is being refunded.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
@@ -72,6 +95,10 @@ namespace Stripe.Terminal
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
@@ -88,6 +115,10 @@ namespace Stripe.Terminal
         /// One of: <c>duplicate</c>, <c>fraudulent</c>, or <c>requested_by_customer</c>.
         /// </summary>
         [JsonProperty("reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason")]
+#endif
+
         public string Reason { get; set; }
 
         #region Expandable Refund
@@ -97,6 +128,10 @@ namespace Stripe.Terminal
         /// Unique identifier for the refund object.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string RefundId
         {
             get => this.InternalRefund?.Id;
@@ -110,6 +145,10 @@ namespace Stripe.Terminal
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public Refund Refund
         {
             get => this.InternalRefund?.ExpandedObject;
@@ -129,12 +168,20 @@ namespace Stripe.Terminal
         /// created the charge.
         /// </summary>
         [JsonProperty("refund_application_fee")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund_application_fee")]
+#endif
+
         public bool RefundApplicationFee { get; set; }
 
         /// <summary>
         /// Represents a per-transaction override of a reader configuration.
         /// </summary>
         [JsonProperty("refund_payment_config")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund_payment_config")]
+#endif
+
         public ReaderActionRefundPaymentRefundPaymentConfig RefundPaymentConfig { get; set; }
 
         /// <summary>
@@ -144,6 +191,10 @@ namespace Stripe.Terminal
         /// created the charge.
         /// </summary>
         [JsonProperty("reverse_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reverse_transfer")]
+#endif
+
         public bool ReverseTransfer { get; set; }
     }
 }

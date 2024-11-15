@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SetupAttemptPaymentMethodDetailsCardThreeDSecure : StripeEntity<SetupAttemptPaymentMethodDetailsCardThreeDSecure>
     {
@@ -10,6 +13,10 @@ namespace Stripe
         /// One of: <c>challenge</c>, or <c>frictionless</c>.
         /// </summary>
         [JsonProperty("authentication_flow")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("authentication_flow")]
+#endif
+
         public string AuthenticationFlow { get; set; }
 
         /// <summary>
@@ -18,6 +25,10 @@ namespace Stripe
         /// One of: <c>01</c>, <c>02</c>, <c>05</c>, <c>06</c>, or <c>07</c>.
         /// </summary>
         [JsonProperty("electronic_commerce_indicator")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("electronic_commerce_indicator")]
+#endif
+
         public string ElectronicCommerceIndicator { get; set; }
 
         /// <summary>
@@ -26,6 +37,10 @@ namespace Stripe
         /// <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
         /// </summary>
         [JsonProperty("result")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("result")]
+#endif
+
         public string Result { get; set; }
 
         /// <summary>
@@ -35,6 +50,10 @@ namespace Stripe
         /// <c>network_not_supported</c>, <c>protocol_error</c>, or <c>rejected</c>.
         /// </summary>
         [JsonProperty("result_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("result_reason")]
+#endif
+
         public string ResultReason { get; set; }
 
         /// <summary>
@@ -42,6 +61,10 @@ namespace Stripe
         /// payment.
         /// </summary>
         [JsonProperty("transaction_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction_id")]
+#endif
+
         public string TransactionId { get; set; }
 
         /// <summary>
@@ -49,6 +72,10 @@ namespace Stripe
         /// One of: <c>1.0.2</c>, <c>2.1.0</c>, or <c>2.2.0</c>.
         /// </summary>
         [JsonProperty("version")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("version")]
+#endif
+
         public string Version { get; set; }
     }
 }

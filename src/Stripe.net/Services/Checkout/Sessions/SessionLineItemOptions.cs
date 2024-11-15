@@ -3,6 +3,9 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionLineItemOptions : INestedOptions
     {
@@ -11,6 +14,10 @@ namespace Stripe.Checkout
         /// during Checkout.
         /// </summary>
         [JsonProperty("adjustable_quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("adjustable_quantity")]
+#endif
+
         public SessionLineItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
 
         /// <summary>
@@ -19,6 +26,10 @@ namespace Stripe.Checkout
         /// support the following countries: US, GB, AU, and all countries in the EU.
         /// </summary>
         [JsonProperty("dynamic_tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("dynamic_tax_rates")]
+#endif
+
         public List<string> DynamicTaxRates { get; set; }
 
         /// <summary>
@@ -27,6 +38,10 @@ namespace Stripe.Checkout
         /// <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price")]
+#endif
+
         public string Price { get; set; }
 
         /// <summary>
@@ -34,6 +49,10 @@ namespace Stripe.Checkout
         /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price_data")]
+#endif
+
         public SessionLineItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -41,6 +60,10 @@ namespace Stripe.Checkout
         /// <c>recurring.usage_type=metered</c>.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
+
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -48,6 +71,10 @@ namespace Stripe.Checkout
         /// line item.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
+
         public List<string> TaxRates { get; set; }
     }
 }

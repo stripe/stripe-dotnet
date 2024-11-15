@@ -4,6 +4,9 @@ namespace Stripe.Billing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A credit balance transaction is a resource representing a transaction (either a credit
@@ -15,12 +18,20 @@ namespace Stripe.Billing
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
+
         public string Object { get; set; }
 
         /// <summary>
@@ -28,6 +39,10 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -35,6 +50,10 @@ namespace Stripe.Billing
         /// <c>credit</c>.
         /// </summary>
         [JsonProperty("credit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("credit")]
+#endif
+
         public CreditBalanceTransactionCredit Credit { get; set; }
 
         #region Expandable CreditGrant
@@ -44,6 +63,10 @@ namespace Stripe.Billing
         /// The credit grant associated with this credit balance transaction.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string CreditGrantId
         {
             get => this.InternalCreditGrant?.Id;
@@ -57,6 +80,10 @@ namespace Stripe.Billing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public CreditGrant CreditGrant
         {
             get => this.InternalCreditGrant?.ExpandedObject;
@@ -72,6 +99,10 @@ namespace Stripe.Billing
         /// Debit details for this credit balance transaction. Only present if type is <c>debit</c>.
         /// </summary>
         [JsonProperty("debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("debit")]
+#endif
+
         public CreditBalanceTransactionDebit Debit { get; set; }
 
         /// <summary>
@@ -79,6 +110,10 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
+#endif
+
         public DateTime EffectiveAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -86,6 +121,10 @@ namespace Stripe.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+
         public bool Livemode { get; set; }
 
         #region Expandable TestClock
@@ -95,6 +134,10 @@ namespace Stripe.Billing
         /// ID of the test clock this credit balance transaction belongs to.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public string TestClockId
         {
             get => this.InternalTestClock?.Id;
@@ -108,6 +151,10 @@ namespace Stripe.Billing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         public TestHelpers.TestClock TestClock
         {
             get => this.InternalTestClock?.ExpandedObject;
@@ -124,6 +171,10 @@ namespace Stripe.Billing
         /// One of: <c>credit</c>, or <c>debit</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+
         public string Type { get; set; }
     }
 }
