@@ -6,7 +6,11 @@ namespace Stripe
     public class PaymentLinkAutomaticTaxOptions : INestedOptions
     {
         /// <summary>
-        /// If <c>true</c>, tax will be calculated automatically using the customer's location.
+        /// Set to <c>true</c> to <a href="https://docs.stripe.com/tax">calculate tax
+        /// automatically</a> using the customer's location.
+        ///
+        /// Enabling this parameter causes the payment link to collect any billing address
+        /// information necessary for tax calculation.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
