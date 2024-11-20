@@ -6,6 +6,12 @@ namespace Stripe.Checkout
     public class SessionPaymentMethodOptionsSepaDebitOptions : INestedOptions
     {
         /// <summary>
+        /// Additional fields for Mandate creation.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+        public SessionPaymentMethodOptionsSepaDebitMandateOptionsOptions MandateOptions { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///

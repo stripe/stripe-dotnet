@@ -39,6 +39,13 @@ namespace Stripe.Checkout
         public string Object { get; set; }
 
         /// <summary>
+        /// Settings for price localization with <a
+        /// href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>.
+        /// </summary>
+        [JsonProperty("adaptive_pricing")]
+        public SessionAdaptivePricing AdaptivePricing { get; set; }
+
+        /// <summary>
         /// When set, provides configuration for actions to take if this Checkout Session expires.
         /// </summary>
         [JsonProperty("after_expiration")]
@@ -502,7 +509,7 @@ namespace Stripe.Checkout
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
         /// specified on Checkout Sessions in <c>payment</c> mode. If blank or <c>auto</c>,
         /// <c>pay</c> is used.
-        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
+        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
         public string SubmitType { get; set; }

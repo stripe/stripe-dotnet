@@ -6,6 +6,12 @@ namespace Stripe.Checkout
     public class SessionPaymentMethodOptionsNaverPayOptions : INestedOptions
     {
         /// <summary>
+        /// Controls when the funds will be captured from the customer's account.
+        /// </summary>
+        [JsonProperty("capture_method")]
+        public string CaptureMethod { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
