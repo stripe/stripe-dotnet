@@ -14,6 +14,12 @@ namespace Stripe
         public long? AmountAuthorized { get; set; }
 
         /// <summary>
+        /// The latest amount intended to be authorized by this charge.
+        /// </summary>
+        [JsonProperty("amount_requested")]
+        public long? AmountRequested { get; set; }
+
+        /// <summary>
         /// Authorization code on the charge.
         /// </summary>
         [JsonProperty("authorization_code")]
@@ -157,6 +163,9 @@ namespace Stripe
 
         [JsonProperty("overcapture")]
         public ChargePaymentMethodDetailsCardOvercapture Overcapture { get; set; }
+
+        [JsonProperty("partial_authorization")]
+        public ChargePaymentMethodDetailsCardPartialAuthorization PartialAuthorization { get; set; }
 
         /// <summary>
         /// Populated if this transaction used 3D Secure authentication.
