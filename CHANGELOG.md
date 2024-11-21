@@ -1,5 +1,16 @@
 # Changelog
 
+## 47.2.0-beta.1 - 2024-11-21
+* [#3031](https://github.com/stripe/stripe-dotnet/pull/3031) Update generated code for beta
+  * Add support for `NetworkAdviceCode` and `NetworkDeclineCode` on `ChargeOutcome`, `InvoiceLastFinalizationError`, `PaymentIntentLastPaymentError`, `SetupAttemptSetupError`, `SetupIntentLastSetupError`, and `StripeError`
+  * Add support for `Funding` on `ChargePaymentMethodDetailsAmazonPay` and `ChargePaymentMethodDetailsRevolutPay`
+  * Add support for `AmountRequested` and `PartialAuthorization` on `ChargePaymentMethodDetailsCard`
+  * Add support for `Metadata` on `CheckoutSessionLineItemsOptions` and `LineItem`
+  * Add support for `LineItems` on `Checkout.SessionUpdateOptions`, `CheckoutSessionPermissionsUpdateOptions`, and `CheckoutSessionPermissionsUpdate`
+  * Add support for `AdjustableQuantity` and `Display` on `LineItem`
+  * Add support for `RequestPartialAuthorization` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
+  * Add support for `PaymentMethodOptions` on `PaymentIntentIncrementAuthorizationOptions`
+
 ## 47.1.0 - 2024-11-20
 * [#3025](https://github.com/stripe/stripe-dotnet/pull/3025) This release changes the pinned API version to `2024-11-20.acacia`.
   * Add support for `Respond` test helper method on resource `Issuing.Authorization`
