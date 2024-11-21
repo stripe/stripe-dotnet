@@ -36,7 +36,9 @@ namespace StripeTests.Wholesome
 
             foreach (var stripeClass in stripeClasses)
             {
-                foreach (var property in stripeClass.GetProperties())
+                var privateProperties = stripeClass.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                var allProperties = stripeClass.GetProperties().Concat(privateProperties);
+                foreach (var property in allProperties)
                 {
                     var jsonAttribute = default(Attribute);
 
@@ -55,36 +57,13 @@ namespace StripeTests.Wholesome
                     var hasAllCorrectAttributes = jsonAttribute != null;
 
 #if NET6_0_OR_GREATER
-                    var equivalents = new Dictionary<Type, Type>
-                    {
-                       { typeof(STJSerialization.JsonPropertyNameAttribute), typeof(JsonPropertyAttribute) },
-                       { typeof(STJSerialization.JsonIgnoreAttribute), typeof(JsonIgnoreAttribute) },
-                       { typeof(STJSerialization.JsonExtensionDataAttribute), typeof(JsonExtensionDataAttribute) },
-                    };
-
                     // if there isnt a json attribute present, no sense in looking for an equivalent; fall thru and
                     // proceed as if this additional check wasn't here
                     if (jsonAttribute != null)
                     {
-                        hasAllCorrectAttributes = false;
-                        var hasStjAttribute = false;
-                        foreach (var attribute in property.GetCustomAttributes())
-                        {
-                            if (equivalents.ContainsKey(attribute.GetType()))
-                            {
-                                hasAllCorrectAttributes = equivalents[attribute.GetType()] == jsonAttribute.GetType();
-                                hasStjAttribute = true;
-                                break;
-                            }
-                        }
-
-                        if (!hasStjAttribute)
-                        {
-                            Debugger.Break();
-                        }
+                        hasAllCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(jsonAttribute, property.GetCustomAttributes(), privateProperties.Contains(property));
                     }
 #endif
-
                     if (hasAllCorrectAttributes)
                     {
                         continue;
