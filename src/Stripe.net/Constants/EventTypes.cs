@@ -587,6 +587,11 @@ namespace Stripe
         public const string InvoiceOverdue = "invoice.overdue";
 
         /// <summary>
+        /// Occurs when an invoice transitions to paid with a non-zero amount_overpaid.
+        /// </summary>
+        public const string InvoiceOverpaid = "invoice.overpaid";
+
+        /// <summary>
         /// Occurs whenever an invoice payment attempt succeeds or an invoice is marked as paid
         /// out-of-band.
         /// </summary>

@@ -8,7 +8,7 @@ namespace Stripe
     /// <summary>
     /// A line item.
     /// </summary>
-    public class LineItem : StripeEntity<LineItem>, IHasId, IHasObject
+    public class LineItem : StripeEntity<LineItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -21,6 +21,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
+
+        [JsonProperty("adjustable_quantity")]
+        public LineItemAdjustableQuantity AdjustableQuantity { get; set; }
 
         /// <summary>
         /// Total discount amount applied. If no discounts were applied, defaults to 0.
@@ -72,6 +75,17 @@ namespace Stripe
         /// </summary>
         [JsonProperty("discounts")]
         public List<LineItemDiscount> Discounts { get; set; }
+
+        [JsonProperty("display")]
+        public LineItemDisplay Display { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The price used to generate the line item.
