@@ -14,9 +14,13 @@ namespace Stripe
         /// The end of this phase of the subscription schedule.
         /// </summary>
         [JsonProperty("end_date")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_date")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? EndDate { get; set; }
@@ -25,9 +29,13 @@ namespace Stripe
         /// The start of this phase of the subscription schedule.
         /// </summary>
         [JsonProperty("start_date")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("start_date")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? StartDate { get; set; }

@@ -178,6 +178,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+
         public AnyOf<DateTime?, SubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -193,6 +197,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? SubscriptionCancelAt { get; set; }
 
         /// <summary>
@@ -290,6 +298,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? SubscriptionProrationDate { get; set; }
 
         /// <summary>
@@ -316,6 +328,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? SubscriptionStartDate { get; set; }
 
         /// <summary>
@@ -330,6 +346,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+
         public AnyOf<DateTime?, SubscriptionTrialEnd> SubscriptionTrialEnd { get; set; }
 
         /// <summary>

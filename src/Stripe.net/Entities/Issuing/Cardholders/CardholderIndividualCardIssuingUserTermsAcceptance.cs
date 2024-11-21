@@ -14,9 +14,13 @@ namespace Stripe.Issuing
         /// The Unix timestamp marking when the cardholder accepted the Authorized User Terms.
         /// </summary>
         [JsonProperty("date")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("date")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? Date { get; set; }

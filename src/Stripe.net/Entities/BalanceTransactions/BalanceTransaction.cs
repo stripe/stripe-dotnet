@@ -55,9 +55,13 @@ namespace Stripe
         /// The date that the transaction's net funds become available in the Stripe balance.
         /// </summary>
         [JsonProperty("available_on")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available_on")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime AvailableOn { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -66,9 +70,13 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -192,7 +200,16 @@ namespace Stripe
         }
 
         [JsonProperty("source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<IBalanceTransactionSource>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IBalanceTransactionSource>))]
+#endif
+
         internal ExpandableField<IBalanceTransactionSource> InternalSource { get; set; }
         #endregion
 

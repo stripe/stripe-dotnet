@@ -55,7 +55,16 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("charge")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("charge")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
+#endif
+
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
@@ -106,7 +115,16 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("payment_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_intent")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
+#endif
+
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
@@ -156,7 +174,16 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("refund")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
+#endif
+
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
 

@@ -14,9 +14,13 @@ namespace Stripe.Billing
         /// The time the meter was deactivated, if any. Measured in seconds since Unix epoch.
         /// </summary>
         [JsonProperty("deactivated_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deactivated_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? DeactivatedAt { get; set; }

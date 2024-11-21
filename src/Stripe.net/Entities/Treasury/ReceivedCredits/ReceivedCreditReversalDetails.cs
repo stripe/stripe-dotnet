@@ -14,9 +14,13 @@ namespace Stripe.Treasury
         /// Time before which a ReceivedCredit can be reversed.
         /// </summary>
         [JsonProperty("deadline")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deadline")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? Deadline { get; set; }

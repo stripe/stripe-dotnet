@@ -68,7 +68,16 @@ namespace Stripe.Billing
         }
 
         [JsonProperty("meter")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("meter")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Meter>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Meter>))]
+#endif
+
         internal ExpandableField<Meter> InternalMeter { get; set; }
         #endregion
 

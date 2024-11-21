@@ -69,6 +69,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? AutomaticallyFinalizesAt { get; set; }
 
         /// <summary>
@@ -194,6 +198,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? DueDate { get; set; }
 
         /// <summary>
@@ -207,6 +215,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? EffectiveAt { get; set; }
 
         /// <summary>

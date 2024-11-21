@@ -39,6 +39,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/api#retrieve_event">Retrieve Event API</a> for 30 days.
     /// </summary>
     [JsonConverter(typeof(EventConverter))]
+#if NET6_0_OR_GREATER
+    [NoSystemTextJsonAttributesNeeded("Converter is only needed for deserialization")]
+#endif
     public class Event : StripeEntity<Event>, IHasId, IHasObject
     {
         /// <summary>
@@ -86,9 +89,13 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;

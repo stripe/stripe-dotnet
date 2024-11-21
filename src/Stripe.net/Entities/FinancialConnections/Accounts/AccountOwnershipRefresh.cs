@@ -15,9 +15,13 @@ namespace Stripe.FinancialConnections
         /// Unix epoch.
         /// </summary>
         [JsonProperty("last_attempted_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_attempted_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime LastAttemptedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -28,9 +32,13 @@ namespace Stripe.FinancialConnections
         /// epoch.
         /// </summary>
         [JsonProperty("next_refresh_available_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("next_refresh_available_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? NextRefreshAvailableAt { get; set; }

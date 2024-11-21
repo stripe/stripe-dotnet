@@ -104,7 +104,16 @@ namespace Stripe
         }
 
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
+#endif
+
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -124,9 +133,13 @@ namespace Stripe
         /// null.
         /// </summary>
         [JsonProperty("end")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? End { get; set; }
@@ -189,7 +202,16 @@ namespace Stripe
         }
 
         [JsonProperty("promotion_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("promotion_code")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PromotionCode>))]
+#endif
+
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
 
@@ -197,9 +219,13 @@ namespace Stripe
         /// Date that the coupon was applied.
         /// </summary>
         [JsonProperty("start")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("start")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Start { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;

@@ -47,9 +47,13 @@ namespace Stripe.Reporting
         /// report's last <c>data_available_end</c> value.
         /// </summary>
         [JsonProperty("interval_end")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_end")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime IntervalEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -60,9 +64,13 @@ namespace Stripe.Reporting
         /// user specified <c>interval_end</c> value.
         /// </summary>
         [JsonProperty("interval_start")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_start")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime IntervalStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;

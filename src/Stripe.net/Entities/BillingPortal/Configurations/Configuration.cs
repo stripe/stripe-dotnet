@@ -79,7 +79,16 @@ namespace Stripe.BillingPortal
         }
 
         [JsonProperty("application")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
+#endif
+
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
@@ -94,9 +103,13 @@ namespace Stripe.BillingPortal
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -167,9 +180,13 @@ namespace Stripe.BillingPortal
         /// Time at which the object was last updated. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("updated")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("updated")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;

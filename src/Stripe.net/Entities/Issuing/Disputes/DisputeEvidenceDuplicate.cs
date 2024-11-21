@@ -46,7 +46,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("additional_documentation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
 
@@ -87,7 +96,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("card_statement")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_statement")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalCardStatement { get; set; }
         #endregion
 
@@ -128,7 +146,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("cash_receipt")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cash_receipt")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalCashReceipt { get; set; }
         #endregion
 
@@ -169,7 +196,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("check_image")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("check_image")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalCheckImage { get; set; }
         #endregion
 

@@ -14,9 +14,13 @@ namespace Stripe
         /// Time at which the payment was collected while offline.
         /// </summary>
         [JsonProperty("stored_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stored_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? StoredAt { get; set; }

@@ -29,9 +29,13 @@ namespace Stripe
         /// accepted. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("effective_date")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("effective_date")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? EffectiveDate { get; set; }

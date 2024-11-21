@@ -16,6 +16,10 @@ namespace Stripe.Treasury
 #endif
 
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+
         public AnyOf<DateTime?, DateRangeOptions> EffectiveAt { get; set; }
 
         /// <summary>

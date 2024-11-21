@@ -58,7 +58,16 @@ namespace Stripe.Treasury
         }
 
         [JsonProperty("transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
+#endif
+
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion
     }

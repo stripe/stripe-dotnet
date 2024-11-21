@@ -91,7 +91,16 @@ namespace Stripe
         }
 
         [JsonProperty("application_fee")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<ApplicationFee>))]
+#endif
+
         internal ExpandableField<ApplicationFee> InternalApplicationFee { get; set; }
         #endregion
 
@@ -112,9 +121,13 @@ namespace Stripe
         /// account for weekends or bank holidays.
         /// </summary>
         [JsonProperty("arrival_date")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("arrival_date")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime ArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -169,7 +182,16 @@ namespace Stripe
         }
 
         [JsonProperty("balance_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_transaction")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
+#endif
+
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
@@ -177,9 +199,13 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -241,7 +267,16 @@ namespace Stripe
         }
 
         [JsonProperty("destination")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<IExternalAccount>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IExternalAccount>))]
+#endif
+
         internal ExpandableField<IExternalAccount> InternalDestination { get; set; }
         #endregion
 
@@ -284,7 +319,16 @@ namespace Stripe
         }
 
         [JsonProperty("failure_balance_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failure_balance_transaction")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
+#endif
+
         internal ExpandableField<BalanceTransaction> InternalFailureBalanceTransaction { get; set; }
         #endregion
 
@@ -381,7 +425,16 @@ namespace Stripe
         }
 
         [JsonProperty("original_payout")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("original_payout")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Payout>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Payout>))]
+#endif
+
         internal ExpandableField<Payout> InternalOriginalPayout { get; set; }
         #endregion
 
@@ -433,7 +486,16 @@ namespace Stripe
         }
 
         [JsonProperty("reversed_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reversed_by")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Payout>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Payout>))]
+#endif
+
         internal ExpandableField<Payout> InternalReversedBy { get; set; }
         #endregion
 

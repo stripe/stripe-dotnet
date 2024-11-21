@@ -87,9 +87,13 @@ namespace Stripe.FinancialConnections
         /// The timestamp of the refresh that updated this owner.
         /// </summary>
         [JsonProperty("refreshed_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refreshed_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? RefreshedAt { get; set; }

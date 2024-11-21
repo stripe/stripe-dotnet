@@ -66,7 +66,16 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("setup_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_intent")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SetupIntent>))]
+#endif
+
         internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
         #endregion
     }

@@ -79,7 +79,16 @@ namespace Stripe
         }
 
         [JsonProperty("plan")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("plan")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Plan>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Plan>))]
+#endif
+
         internal ExpandableField<Plan> InternalPlan { get; set; }
         #endregion
 
@@ -118,7 +127,16 @@ namespace Stripe
         }
 
         [JsonProperty("price")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Price>))]
+#endif
+
         internal ExpandableField<Price> InternalPrice { get; set; }
         #endregion
 

@@ -71,7 +71,16 @@ namespace Stripe
         }
 
         [JsonProperty("account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
+#endif
+
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
@@ -96,9 +105,13 @@ namespace Stripe
         /// Time at which the capability was requested. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("requested_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requested_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? RequestedAt { get; set; }

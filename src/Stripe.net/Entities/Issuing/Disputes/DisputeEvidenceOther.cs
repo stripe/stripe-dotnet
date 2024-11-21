@@ -46,7 +46,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("additional_documentation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
 

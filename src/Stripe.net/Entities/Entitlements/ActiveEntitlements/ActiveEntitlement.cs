@@ -69,7 +69,16 @@ namespace Stripe.Entitlements
         }
 
         [JsonProperty("feature")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("feature")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Feature>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Feature>))]
+#endif
+
         internal ExpandableField<Feature> InternalFeature { get; set; }
         #endregion
 

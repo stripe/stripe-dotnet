@@ -74,7 +74,16 @@ namespace Stripe
         }
 
         [JsonProperty("generated_sepa_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("generated_sepa_debit")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
+#endif
+
         internal ExpandableField<PaymentMethod> InternalGeneratedSepaDebit { get; set; }
         #endregion
 
@@ -115,7 +124,16 @@ namespace Stripe
         }
 
         [JsonProperty("generated_sepa_debit_mandate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("generated_sepa_debit_mandate")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Mandate>))]
+#endif
+
         internal ExpandableField<Mandate> InternalGeneratedSepaDebitMandate { get; set; }
         #endregion
 

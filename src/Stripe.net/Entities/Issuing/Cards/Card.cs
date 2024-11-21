@@ -74,9 +74,13 @@ namespace Stripe.Issuing
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -221,7 +225,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("personalization_design")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("personalization_design")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PersonalizationDesign>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PersonalizationDesign>))]
+#endif
+
         internal ExpandableField<PersonalizationDesign> InternalPersonalizationDesign { get; set; }
         #endregion
 
@@ -260,7 +273,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("replaced_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("replaced_by")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
+#endif
+
         internal ExpandableField<Card> InternalReplacedBy { get; set; }
         #endregion
 
@@ -299,7 +321,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("replacement_for")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("replacement_for")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
+#endif
+
         internal ExpandableField<Card> InternalReplacementFor { get; set; }
         #endregion
 

@@ -46,7 +46,16 @@ namespace Stripe
         }
 
         [JsonProperty("refund")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
+#endif
+
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
     }

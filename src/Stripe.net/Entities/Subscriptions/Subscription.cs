@@ -73,7 +73,16 @@ namespace Stripe
         }
 
         [JsonProperty("application")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
+#endif
+
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
@@ -104,9 +113,13 @@ namespace Stripe
         /// in UTC format.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cycle_anchor")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime BillingCycleAnchor { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -136,9 +149,13 @@ namespace Stripe
         /// A date in the future at which the subscription will automatically get canceled.
         /// </summary>
         [JsonProperty("cancel_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancel_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? CancelAt { get; set; }
@@ -161,9 +178,13 @@ namespace Stripe
         /// period when the subscription is automatically moved to a canceled state.
         /// </summary>
         [JsonProperty("canceled_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("canceled_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? CanceledAt { get; set; }
@@ -197,9 +218,13 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -221,9 +246,13 @@ namespace Stripe
         /// this period, a new invoice will be created.
         /// </summary>
         [JsonProperty("current_period_end")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_period_end")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime CurrentPeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -232,9 +261,13 @@ namespace Stripe
         /// Start of the current period that the subscription has been invoiced for.
         /// </summary>
         [JsonProperty("current_period_start")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_period_start")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime CurrentPeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -274,7 +307,16 @@ namespace Stripe
         }
 
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
+#endif
+
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -335,7 +377,16 @@ namespace Stripe
         }
 
         [JsonProperty("default_payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_payment_method")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
+#endif
+
         internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
 
@@ -386,7 +437,16 @@ namespace Stripe
         }
 
         [JsonProperty("default_source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_source")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IPaymentSource>))]
+#endif
+
         internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
         #endregion
 
@@ -464,6 +524,11 @@ namespace Stripe
         }
 
         [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+        [STJS.JsonInclude]
+#endif
+
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
@@ -471,9 +536,13 @@ namespace Stripe
         /// If the subscription has ended, the date the subscription ended.
         /// </summary>
         [JsonProperty("ended_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ended_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? EndedAt { get; set; }
@@ -530,7 +599,16 @@ namespace Stripe
         }
 
         [JsonProperty("latest_invoice")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("latest_invoice")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
+#endif
+
         internal ExpandableField<Invoice> InternalLatestInvoice { get; set; }
         #endregion
 
@@ -562,9 +640,13 @@ namespace Stripe
         /// according to the schedule provided at <c>pending_invoice_item_interval</c>.
         /// </summary>
         [JsonProperty("next_pending_invoice_item_invoice")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("next_pending_invoice_item_invoice")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? NextPendingInvoiceItemInvoice { get; set; }
@@ -606,7 +688,16 @@ namespace Stripe
         }
 
         [JsonProperty("on_behalf_of")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
+#endif
+
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
@@ -690,7 +781,16 @@ namespace Stripe
         }
 
         [JsonProperty("pending_setup_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pending_setup_intent")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SetupIntent>))]
+#endif
+
         internal ExpandableField<SetupIntent> InternalPendingSetupIntent { get; set; }
         #endregion
 
@@ -741,7 +841,16 @@ namespace Stripe
         }
 
         [JsonProperty("schedule")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("schedule")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionSchedule>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SubscriptionSchedule>))]
+#endif
+
         internal ExpandableField<SubscriptionSchedule> InternalSchedule { get; set; }
         #endregion
 
@@ -750,9 +859,13 @@ namespace Stripe
         /// <c>created</c> date due to backdating.
         /// </summary>
         [JsonProperty("start_date")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("start_date")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime StartDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -836,7 +949,16 @@ namespace Stripe
         }
 
         [JsonProperty("test_clock")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("test_clock")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TestHelpers.TestClock>))]
+#endif
+
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
 
@@ -856,9 +978,13 @@ namespace Stripe
         /// If the subscription has a trial, the end of that trial.
         /// </summary>
         [JsonProperty("trial_end")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_end")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? TrialEnd { get; set; }
@@ -877,9 +1003,13 @@ namespace Stripe
         /// If the subscription has a trial, the beginning of that trial.
         /// </summary>
         [JsonProperty("trial_start")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_start")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? TrialStart { get; set; }

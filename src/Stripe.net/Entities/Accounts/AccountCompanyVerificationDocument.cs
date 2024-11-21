@@ -48,7 +48,16 @@ namespace Stripe
         }
 
         [JsonProperty("back")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("back")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalBack { get; set; }
         #endregion
 
@@ -117,7 +126,16 @@ namespace Stripe
         }
 
         [JsonProperty("front")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("front")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalFront { get; set; }
         #endregion
     }

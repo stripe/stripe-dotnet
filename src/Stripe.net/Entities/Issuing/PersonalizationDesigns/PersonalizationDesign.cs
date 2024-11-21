@@ -72,7 +72,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("card_logo")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_logo")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalCardLogo { get; set; }
         #endregion
 
@@ -90,9 +99,13 @@ namespace Stripe.Issuing
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -176,7 +189,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("physical_bundle")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("physical_bundle")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PhysicalBundle>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PhysicalBundle>))]
+#endif
+
         internal ExpandableField<PhysicalBundle> InternalPhysicalBundle { get; set; }
         #endregion
 

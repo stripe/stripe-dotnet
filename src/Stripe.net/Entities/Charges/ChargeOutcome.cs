@@ -100,7 +100,16 @@ namespace Stripe
         }
 
         [JsonProperty("rule")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("rule")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Radar.Rule>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Radar.Rule>))]
+#endif
+
         internal ExpandableField<Radar.Rule> InternalRule { get; set; }
         #endregion
 

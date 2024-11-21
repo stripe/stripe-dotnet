@@ -98,7 +98,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("authorization")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Authorization>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Authorization>))]
+#endif
+
         internal ExpandableField<Authorization> InternalAuthorization { get; set; }
         #endregion
 
@@ -139,7 +148,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("balance_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_transaction")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
+#endif
+
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
@@ -178,7 +196,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
+#endif
+
         internal ExpandableField<Card> InternalCard { get; set; }
         #endregion
 
@@ -217,7 +244,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("cardholder")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cardholder")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Cardholder>))]
+#endif
+
         internal ExpandableField<Cardholder> InternalCardholder { get; set; }
         #endregion
 
@@ -225,9 +261,13 @@ namespace Stripe.Issuing
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -279,7 +319,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("dispute")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("dispute")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Dispute>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Dispute>))]
+#endif
+
         internal ExpandableField<Dispute> InternalDispute { get; set; }
         #endregion
 
@@ -395,7 +444,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("token")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("token")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Token>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Token>))]
+#endif
+
         internal ExpandableField<Token> InternalToken { get; set; }
         #endregion
 

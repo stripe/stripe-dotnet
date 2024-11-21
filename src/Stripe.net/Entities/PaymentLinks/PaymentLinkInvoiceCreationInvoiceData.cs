@@ -46,6 +46,11 @@ namespace Stripe
         }
 
         [JsonProperty("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_tax_ids")]
+        [STJS.JsonInclude]
+#endif
+
         internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }
         #endregion
 

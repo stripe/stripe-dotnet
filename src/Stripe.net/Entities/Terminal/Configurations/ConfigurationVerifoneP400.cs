@@ -44,7 +44,16 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("splashscreen")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("splashscreen")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalSplashscreen { get; set; }
         #endregion
     }

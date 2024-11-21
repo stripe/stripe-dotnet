@@ -46,7 +46,16 @@ namespace Stripe
         }
 
         [JsonProperty("icon")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("icon")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalIcon { get; set; }
         #endregion
 
@@ -89,7 +98,16 @@ namespace Stripe
         }
 
         [JsonProperty("logo")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("logo")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalLogo { get; set; }
         #endregion
 

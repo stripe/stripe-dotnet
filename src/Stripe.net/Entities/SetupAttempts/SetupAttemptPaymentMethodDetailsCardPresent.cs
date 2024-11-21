@@ -44,7 +44,16 @@ namespace Stripe
         }
 
         [JsonProperty("generated_card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("generated_card")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
+#endif
+
         internal ExpandableField<PaymentMethod> InternalGeneratedCard { get; set; }
         #endregion
 

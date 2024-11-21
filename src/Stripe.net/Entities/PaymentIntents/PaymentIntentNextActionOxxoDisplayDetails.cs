@@ -14,9 +14,13 @@ namespace Stripe
         /// The timestamp after which the OXXO voucher expires.
         /// </summary>
         [JsonProperty("expires_after")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_after")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? ExpiresAfter { get; set; }

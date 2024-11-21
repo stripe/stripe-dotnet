@@ -54,7 +54,16 @@ namespace Stripe
         }
 
         [JsonProperty("quote")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quote")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Quote>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Quote>))]
+#endif
+
         internal ExpandableField<Quote> InternalQuote { get; set; }
         #endregion
     }

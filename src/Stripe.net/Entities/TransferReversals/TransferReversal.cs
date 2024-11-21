@@ -92,7 +92,16 @@ namespace Stripe
         }
 
         [JsonProperty("balance_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_transaction")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
+#endif
+
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
@@ -100,9 +109,13 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -154,7 +167,16 @@ namespace Stripe
         }
 
         [JsonProperty("destination_payment_refund")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination_payment_refund")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
+#endif
+
         internal ExpandableField<Refund> InternalDestinationPaymentRefund { get; set; }
         #endregion
 
@@ -205,7 +227,16 @@ namespace Stripe
         }
 
         [JsonProperty("source_refund")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source_refund")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
+#endif
+
         internal ExpandableField<Refund> InternalSourceRefund { get; set; }
         #endregion
 
@@ -244,7 +275,16 @@ namespace Stripe
         }
 
         [JsonProperty("transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transfer>))]
+#endif
+
         internal ExpandableField<Transfer> InternalTransfer { get; set; }
         #endregion
     }

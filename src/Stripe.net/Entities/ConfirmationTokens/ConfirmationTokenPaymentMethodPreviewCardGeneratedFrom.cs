@@ -64,7 +64,16 @@ namespace Stripe
         }
 
         [JsonProperty("setup_attempt")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_attempt")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<SetupAttempt>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SetupAttempt>))]
+#endif
+
         internal ExpandableField<SetupAttempt> InternalSetupAttempt { get; set; }
         #endregion
     }

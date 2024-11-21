@@ -46,7 +46,16 @@ namespace Stripe
         }
 
         [JsonProperty("balance_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_transaction")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
+#endif
+
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
@@ -89,7 +98,16 @@ namespace Stripe
         }
 
         [JsonProperty("linked_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("linked_transaction")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<CustomerCashBalanceTransaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<CustomerCashBalanceTransaction>))]
+#endif
+
         internal ExpandableField<CustomerCashBalanceTransaction> InternalLinkedTransaction { get; set; }
         #endregion
     }

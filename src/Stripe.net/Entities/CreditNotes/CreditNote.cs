@@ -62,9 +62,13 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -116,7 +120,16 @@ namespace Stripe
         }
 
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
+#endif
+
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -155,7 +168,16 @@ namespace Stripe
         }
 
         [JsonProperty("customer_balance_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_balance_transaction")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<CustomerBalanceTransaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<CustomerBalanceTransaction>))]
+#endif
+
         internal ExpandableField<CustomerBalanceTransaction> InternalCustomerBalanceTransaction { get; set; }
         #endregion
 
@@ -186,9 +208,13 @@ namespace Stripe
         /// credit note PDF.
         /// </summary>
         [JsonProperty("effective_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("effective_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? EffectiveAt { get; set; }
@@ -228,7 +254,16 @@ namespace Stripe
         }
 
         [JsonProperty("invoice")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
+#endif
+
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
@@ -364,7 +399,16 @@ namespace Stripe
         }
 
         [JsonProperty("refund")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
+#endif
+
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
 
@@ -462,9 +506,13 @@ namespace Stripe
         /// The time that the credit note was voided.
         /// </summary>
         [JsonProperty("voided_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("voided_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? VoidedAt { get; set; }

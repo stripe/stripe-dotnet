@@ -52,9 +52,13 @@ namespace Stripe.Issuing
         /// A unix timestamp representing a best estimate of when the card will be delivered.
         /// </summary>
         [JsonProperty("eta")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eta")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? Eta { get; set; }

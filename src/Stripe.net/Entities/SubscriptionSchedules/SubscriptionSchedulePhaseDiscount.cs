@@ -44,7 +44,16 @@ namespace Stripe
         }
 
         [JsonProperty("coupon")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("coupon")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Coupon>))]
+#endif
+
         internal ExpandableField<Coupon> InternalCoupon { get; set; }
         #endregion
 
@@ -83,7 +92,16 @@ namespace Stripe
         }
 
         [JsonProperty("discount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discount")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Discount>))]
+#endif
+
         internal ExpandableField<Discount> InternalDiscount { get; set; }
         #endregion
 
@@ -122,7 +140,16 @@ namespace Stripe
         }
 
         [JsonProperty("promotion_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("promotion_code")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PromotionCode>))]
+#endif
+
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
     }

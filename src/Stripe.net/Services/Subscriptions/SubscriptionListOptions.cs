@@ -41,6 +41,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodEnd { get; set; }
 
         /// <summary>
@@ -53,6 +57,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodStart { get; set; }
 
         /// <summary>

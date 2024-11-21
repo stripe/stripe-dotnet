@@ -77,9 +77,13 @@ namespace Stripe.Climate
         /// Time at which the order was canceled. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("canceled_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("canceled_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? CanceledAt { get; set; }
@@ -109,9 +113,13 @@ namespace Stripe.Climate
         /// Time at which the order was confirmed. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("confirmed_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("confirmed_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? ConfirmedAt { get; set; }
@@ -120,9 +128,13 @@ namespace Stripe.Climate
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -143,9 +155,13 @@ namespace Stripe.Climate
         /// the Unix epoch.
         /// </summary>
         [JsonProperty("delayed_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delayed_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? DelayedAt { get; set; }
@@ -154,9 +170,13 @@ namespace Stripe.Climate
         /// Time at which the order was delivered. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("delivered_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delivered_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? DeliveredAt { get; set; }
@@ -249,7 +269,16 @@ namespace Stripe.Climate
         }
 
         [JsonProperty("product")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("product")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Product>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Product>))]
+#endif
+
         internal ExpandableField<Product> InternalProduct { get; set; }
         #endregion
 
@@ -258,9 +287,13 @@ namespace Stripe.Climate
         /// seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("product_substituted_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_substituted_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? ProductSubstitutedAt { get; set; }

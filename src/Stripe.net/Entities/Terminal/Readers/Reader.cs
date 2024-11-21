@@ -148,7 +148,16 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("location")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("location")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Location>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Location>))]
+#endif
+
         internal ExpandableField<Location> InternalLocation { get; set; }
         #endregion
 

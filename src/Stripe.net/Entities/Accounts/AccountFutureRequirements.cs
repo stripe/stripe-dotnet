@@ -29,9 +29,13 @@ namespace Stripe
         /// grace period depending on its enablement state prior to transitioning.
         /// </summary>
         [JsonProperty("current_deadline")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_deadline")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? CurrentDeadline { get; set; }

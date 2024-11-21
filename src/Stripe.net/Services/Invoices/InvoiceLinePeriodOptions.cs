@@ -20,6 +20,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? End { get; set; }
 
         /// <summary>
@@ -31,6 +35,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? Start { get; set; }
     }
 }

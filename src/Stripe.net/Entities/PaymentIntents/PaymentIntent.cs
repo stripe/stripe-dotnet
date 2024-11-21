@@ -124,7 +124,16 @@ namespace Stripe
         }
 
         [JsonProperty("application")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
+#endif
+
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
@@ -159,9 +168,13 @@ namespace Stripe
         /// PaymentIntent was canceled. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("canceled_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("canceled_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? CanceledAt { get; set; }
@@ -226,9 +239,13 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -302,7 +319,16 @@ namespace Stripe
         }
 
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
+#endif
+
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -351,7 +377,16 @@ namespace Stripe
         }
 
         [JsonProperty("invoice")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
+#endif
+
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
@@ -405,7 +440,16 @@ namespace Stripe
         }
 
         [JsonProperty("latest_charge")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("latest_charge")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
+#endif
+
         internal ExpandableField<Charge> InternalLatestCharge { get; set; }
         #endregion
 
@@ -484,7 +528,16 @@ namespace Stripe
         }
 
         [JsonProperty("on_behalf_of")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
+#endif
+
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
@@ -523,7 +576,16 @@ namespace Stripe
         }
 
         [JsonProperty("payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
+#endif
+
         internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
         #endregion
 
@@ -615,7 +677,16 @@ namespace Stripe
         }
 
         [JsonProperty("review")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("review")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Review>))]
+#endif
+
         internal ExpandableField<Review> InternalReview { get; set; }
         #endregion
 
@@ -694,7 +765,16 @@ namespace Stripe
         }
 
         [JsonProperty("source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IPaymentSource>))]
+#endif
+
         internal ExpandableField<IPaymentSource> InternalSource { get; set; }
         #endregion
 

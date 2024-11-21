@@ -47,7 +47,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("additional_documentation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
 
@@ -65,9 +74,13 @@ namespace Stripe.Issuing
         /// Date when the product was received.
         /// </summary>
         [JsonProperty("received_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("received_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? ReceivedAt { get; set; }
@@ -97,9 +110,13 @@ namespace Stripe.Issuing
         /// Date when the product was returned or attempted to be returned.
         /// </summary>
         [JsonProperty("returned_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("returned_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? ReturnedAt { get; set; }

@@ -165,9 +165,13 @@ namespace Stripe.Checkout
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -257,7 +261,16 @@ namespace Stripe.Checkout
         }
 
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
+#endif
+
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -301,9 +314,13 @@ namespace Stripe.Checkout
         /// The timestamp at which the Checkout Session will expire.
         /// </summary>
         [JsonProperty("expires_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -343,7 +360,16 @@ namespace Stripe.Checkout
         }
 
         [JsonProperty("invoice")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
+#endif
+
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
@@ -459,7 +485,16 @@ namespace Stripe.Checkout
         }
 
         [JsonProperty("payment_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_intent")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
+#endif
+
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
@@ -498,7 +533,16 @@ namespace Stripe.Checkout
         }
 
         [JsonProperty("payment_link")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_link")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentLink>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentLink>))]
+#endif
+
         internal ExpandableField<PaymentLink> InternalPaymentLink { get; set; }
         #endregion
 
@@ -654,7 +698,16 @@ namespace Stripe.Checkout
         }
 
         [JsonProperty("setup_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_intent")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SetupIntent>))]
+#endif
+
         internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
         #endregion
 
@@ -761,7 +814,16 @@ namespace Stripe.Checkout
         }
 
         [JsonProperty("subscription")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
+#endif
+
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
 

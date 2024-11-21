@@ -14,9 +14,13 @@ namespace Stripe.Climate
         /// Time at which the delivery occurred. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("delivered_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delivered_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime DeliveredAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;

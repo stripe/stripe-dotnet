@@ -26,9 +26,13 @@ namespace Stripe
         /// If customer approval is required, they need to provide approval before this time.
         /// </summary>
         [JsonProperty("completes_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("completes_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? CompletesAt { get; set; }

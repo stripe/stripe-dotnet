@@ -30,6 +30,10 @@ namespace Stripe.Issuing
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
@@ -61,6 +65,10 @@ namespace Stripe.Issuing
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? ReceivedAt { get; set; }
     }
 }

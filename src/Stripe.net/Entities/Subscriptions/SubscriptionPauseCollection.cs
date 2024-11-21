@@ -26,9 +26,13 @@ namespace Stripe
         /// The time after which the subscription will resume collecting payments.
         /// </summary>
         [JsonProperty("resumes_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("resumes_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? ResumesAt { get; set; }

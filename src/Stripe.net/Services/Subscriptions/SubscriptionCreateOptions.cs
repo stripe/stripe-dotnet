@@ -59,6 +59,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? BackdateStartDate { get; set; }
 
         /// <summary>
@@ -74,6 +78,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -111,6 +119,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
@@ -423,6 +435,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+
         public AnyOf<DateTime?, SubscriptionTrialEnd> TrialEnd { get; set; }
 
         /// <summary>

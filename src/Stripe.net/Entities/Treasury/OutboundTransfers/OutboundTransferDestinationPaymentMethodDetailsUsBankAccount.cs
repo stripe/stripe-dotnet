@@ -97,7 +97,16 @@ namespace Stripe.Treasury
         }
 
         [JsonProperty("mandate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Mandate>))]
+#endif
+
         internal ExpandableField<Mandate> InternalMandate { get; set; }
         #endregion
 

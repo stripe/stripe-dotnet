@@ -19,6 +19,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? Date { get; set; }
 
         /// <summary>

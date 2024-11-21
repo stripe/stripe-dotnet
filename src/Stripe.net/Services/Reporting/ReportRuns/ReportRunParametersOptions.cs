@@ -51,6 +51,10 @@ namespace Stripe.Reporting
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? IntervalEnd { get; set; }
 
         /// <summary>
@@ -62,6 +66,10 @@ namespace Stripe.Reporting
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? IntervalStart { get; set; }
 
         /// <summary>

@@ -221,6 +221,10 @@ namespace Stripe.Checkout
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>

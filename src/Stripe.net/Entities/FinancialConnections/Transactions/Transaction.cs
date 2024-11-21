@@ -109,9 +109,13 @@ namespace Stripe.FinancialConnections
         /// Time at which the transaction was transacted. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("transacted_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transacted_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime TransactedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
@@ -130,9 +134,13 @@ namespace Stripe.FinancialConnections
         /// Time at which the object was last updated. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("updated")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("updated")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;

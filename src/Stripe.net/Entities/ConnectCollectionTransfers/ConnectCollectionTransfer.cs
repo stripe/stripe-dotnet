@@ -86,7 +86,16 @@ namespace Stripe
         }
 
         [JsonProperty("destination")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
+#endif
+
         internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion
 

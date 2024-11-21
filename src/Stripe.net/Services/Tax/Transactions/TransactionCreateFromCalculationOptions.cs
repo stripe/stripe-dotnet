@@ -46,6 +46,10 @@ namespace Stripe.Tax
 #endif
 
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+
         public DateTime? PostedAt { get; set; }
 
         /// <summary>

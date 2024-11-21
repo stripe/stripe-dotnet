@@ -14,9 +14,13 @@ namespace Stripe
         /// The time that the customer accepts the mandate.
         /// </summary>
         [JsonProperty("accepted_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("accepted_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? AcceptedAt { get; set; }

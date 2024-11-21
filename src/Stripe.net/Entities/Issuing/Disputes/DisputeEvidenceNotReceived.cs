@@ -47,7 +47,16 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("additional_documentation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonInclude]
+#endif
+
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
+
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
 
@@ -55,9 +64,13 @@ namespace Stripe.Issuing
         /// Date when the cardholder expected to receive the product.
         /// </summary>
         [JsonProperty("expected_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expected_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? ExpectedAt { get; set; }

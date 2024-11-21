@@ -15,9 +15,13 @@ namespace Stripe
         /// provide approval before this time.
         /// </summary>
         [JsonProperty("charge_attempt_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charge_attempt_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? ChargeAttemptAt { get; set; }

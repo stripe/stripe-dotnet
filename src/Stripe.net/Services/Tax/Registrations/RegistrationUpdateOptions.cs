@@ -20,6 +20,10 @@ namespace Stripe.Tax
 #endif
 
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+
         public AnyOf<DateTime?, RegistrationActiveFrom> ActiveFrom { get; set; }
 
         /// <summary>
@@ -33,6 +37,10 @@ namespace Stripe.Tax
 #endif
 
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+
         public AnyOf<DateTime?, RegistrationExpiresAt> ExpiresAt { get; set; }
     }
 }

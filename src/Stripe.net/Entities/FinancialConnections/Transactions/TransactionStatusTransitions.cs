@@ -14,9 +14,13 @@ namespace Stripe.FinancialConnections
         /// Time at which this transaction posted. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("posted_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("posted_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? PostedAt { get; set; }
@@ -25,9 +29,13 @@ namespace Stripe.FinancialConnections
         /// Time at which this transaction was voided. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("void_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("void_at")]
+#endif
+
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
 
         public DateTime? VoidAt { get; set; }

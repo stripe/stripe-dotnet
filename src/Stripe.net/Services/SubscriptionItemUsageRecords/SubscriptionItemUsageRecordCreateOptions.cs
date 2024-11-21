@@ -48,6 +48,10 @@ namespace Stripe
 #endif
 
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+
         public AnyOf<DateTime?, SubscriptionItemUsageRecordTimestamp> Timestamp { get; set; }
     }
 }
