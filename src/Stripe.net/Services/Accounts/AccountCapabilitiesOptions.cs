@@ -42,6 +42,12 @@ namespace Stripe
         public AccountCapabilitiesAuBecsDebitPaymentsOptions AuBecsDebitPayments { get; set; }
 
         /// <summary>
+        /// The automatic_indirect_tax capability.
+        /// </summary>
+        [JsonProperty("automatic_indirect_tax")]
+        public AccountCapabilitiesAutomaticIndirectTaxOptions AutomaticIndirectTax { get; set; }
+
+        /// <summary>
         /// The bacs_debit_payments capability.
         /// </summary>
         [JsonProperty("bacs_debit_payments")]

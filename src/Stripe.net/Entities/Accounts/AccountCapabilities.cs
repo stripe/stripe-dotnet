@@ -54,6 +54,13 @@ namespace Stripe
         public string AuBecsDebitPayments { get; set; }
 
         /// <summary>
+        /// The status of the automatic_indirect_tax capability of the account.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("automatic_indirect_tax")]
+        public string AutomaticIndirectTax { get; set; }
+
+        /// <summary>
         /// The status of the Bacs Direct Debits payments capability of the account, or whether the
         /// account can directly process Bacs Direct Debits charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
