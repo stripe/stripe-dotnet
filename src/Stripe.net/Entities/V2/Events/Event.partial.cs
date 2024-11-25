@@ -11,6 +11,9 @@ namespace Stripe.V2
     /// Manually-maintained convenience methods added to ThinEvent.
     /// </summary>
     [JsonConverter(typeof(V2EventConverter))]
+#if NET6_0_OR_GREATER
+    [NoSystemTextJsonAttributesNeeded("Converter is only needed for deserialization")]
+#endif
     public partial class Event : StripeEntity<Event>, IHasId, IHasObject
     {
         /// <summary>

@@ -92,6 +92,9 @@ namespace Stripe
         public string Secret { get; set; }
 
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string RawJson => this.StripeResponse?.Content;
     }
 }

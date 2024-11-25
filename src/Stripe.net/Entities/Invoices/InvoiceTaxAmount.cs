@@ -2,6 +2,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceTaxAmount : StripeEntity<InvoiceTaxAmount>
     {
@@ -9,12 +12,18 @@ namespace Stripe
         /// The amount, in cents (or local equivalent), of the tax.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long Amount { get; set; }
 
         /// <summary>
         /// Whether this tax amount is inclusive or exclusive.
         /// </summary>
         [JsonProperty("inclusive")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("inclusive")]
+#endif
         public bool Inclusive { get; set; }
 
         #region Expandable TaxRate
@@ -45,6 +54,10 @@ namespace Stripe
 
         [JsonProperty("tax_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxRate>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rate")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TaxRate>))]
+#endif
         internal ExpandableField<TaxRate> InternalTaxRate { get; set; }
         #endregion
 
@@ -58,12 +71,18 @@ namespace Stripe
         /// <c>standard_rated</c>, <c>taxable_basis_reduced</c>, or <c>zero_rated</c>.
         /// </summary>
         [JsonProperty("taxability_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("taxability_reason")]
+#endif
         public string TaxabilityReason { get; set; }
 
         /// <summary>
         /// The amount on which tax is calculated, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("taxable_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("taxable_amount")]
+#endif
         public long? TaxableAmount { get; set; }
     }
 }

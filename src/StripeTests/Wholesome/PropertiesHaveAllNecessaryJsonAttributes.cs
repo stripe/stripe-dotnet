@@ -28,10 +28,7 @@ namespace StripeTests.Wholesome
             var types = assembly.DefinedTypes.Where(t => t.FullName.StartsWith("Stripe."));
             foreach (TypeInfo type in types)
             {
-                var privateProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-                var allProperties = type.GetProperties().Concat(privateProperties);
-
-                foreach (PropertyInfo property in allProperties)
+                foreach (ExtendedPropertyInfo property in GetPropertiesToCheck(type))
                 {
                     if (property.GetCustomAttribute(typeof(NoSystemTextJsonAttributesNeededAttribute), false) != null)
                     {
@@ -43,7 +40,7 @@ namespace StripeTests.Wholesome
                         if (attribute.GetType().Namespace.StartsWith("Newtonsoft", true, null))
                         {
 #if NET6_0_OR_GREATER
-                            bool hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, property.GetCustomAttributes(), privateProperties.Contains(property));
+                            bool hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, property.GetCustomAttributes(), property.IsNotPublic);
                             if (!hasCorrectAttributes)
                             {
                                 results.Add($"{type.FullName}.{property.Name}");

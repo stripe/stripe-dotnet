@@ -33,13 +33,14 @@ namespace StripeTests.Wholesome
                     continue;
                 }
 
-                foreach (Attribute attribute in type.GetCustomAttributes(false))
+                var attributes = type.GetCustomAttributes(false).Cast<Attribute>();
+                foreach (Attribute attribute in attributes)
                 {
                     if (attribute.GetType().Namespace.StartsWith("Newtonsoft", true, null))
                     {
 #if NET6_0_OR_GREATER
                         // we assume classes are public if they have json attributes
-                        bool hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, type.GetCustomAttributes(false) as IEnumerable<Attribute>, true);
+                        bool hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, attributes, true);
                         if (!hasCorrectAttributes)
                         {
                             results.Add($"{type.FullName}");

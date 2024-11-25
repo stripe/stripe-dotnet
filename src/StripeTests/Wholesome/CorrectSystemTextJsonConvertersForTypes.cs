@@ -1,0 +1,140 @@
+#if NET6_0_OR_GREATER
+namespace StripeTests.Wholesome
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Reflection;
+    using System.Text;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
+    using Stripe;
+    using Stripe.Infrastructure;
+    using Xunit;
+
+    /// <summary>
+    /// This wholesome test ensures that properties with types that require custom converters to
+    /// use the correct custom converter.  This checks the System.Text.Json attributes; see
+    /// CorrectJsonConvertersForTypes for the Newtonsoft Json checks.
+    /// </summary>
+    public class CorrectSystemTextJsonConvertersForTypes : WholesomeTest
+    {
+        private const string AssertionMessage =
+            "Found at least one property with a missing or incorrect [JsonConverter] attribute.";
+
+        [Fact]
+        public void Check()
+        {
+            var results = new List<string>();
+
+            // Get all classes that derive from StripeEntity or implement INestedOptions
+            var stripeClasses = GetSubclassesOf(typeof(StripeEntity));
+            stripeClasses.AddRange(GetClassesWithInterface(typeof(INestedOptions)));
+
+            foreach (var stripeClass in stripeClasses)
+            {
+                if (stripeClass.Name.Contains("InvoiceDiscountAmount"))
+                {
+                    Debugger.Break();
+                }
+
+                foreach (var property in GetPropertiesToCheck(stripeClass))
+                {
+                    var propType = property.PropertyType;
+                    if (Nullable.GetUnderlyingType(propType) != null)
+                    {
+                        propType = Nullable.GetUnderlyingType(propType);
+                    }
+
+                    // Skip properties that don't have a `JsonPropertyName` attribute
+                    // FIXME: this seems like an unnecessary test; why would we have a converter without a property name?
+                    var jsonPropertyNameAttribute = property.GetCustomAttribute<JsonPropertyNameAttribute>();
+                    if (jsonPropertyNameAttribute == null)
+                    {
+                        continue;
+                    }
+
+                    Type expectedConverterType = null;
+                    Type[] expectedGenericTypeArguments = null;
+
+                    // In V1 DateTime properties require a UnixDateTimeConverter, in V2
+                    // datetime conversion is handled by Newtonsoft.Json
+                    // Note that the Stripe.Events namespace contains V2 events; there are
+                    // some whos name starts with V1 but those are V1 payloads inside V2
+                    // style events.
+                    var v2Class =
+                        stripeClass.Namespace.Contains("V2") ||
+                        stripeClass.Namespace == "Stripe.Events";
+                    if (propType == typeof(DateTime) && !v2Class)
+                    {
+                        expectedConverterType = typeof(STJUnixDateTimeConverter);
+                    }
+                    else if (typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(propType.GetTypeInfo()))
+                    {
+                        expectedConverterType = typeof(STJAnyOfConverter);
+                    }
+                    else if (typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(propType.GetTypeInfo()))
+                    {
+                        expectedConverterType = typeof(STJExpandableFieldConverter<>);
+                        expectedGenericTypeArguments = propType.GenericTypeArguments;
+                    }
+                    else if (propType.GetTypeInfo().IsInterface)
+                    {
+                        expectedConverterType = typeof(STJStripeObjectConverter);
+                    }
+
+                    var expectedConverterName = GetConverterName(
+                        expectedConverterType,
+                        expectedGenericTypeArguments);
+
+                    Type actualConverterType = null;
+                    Type[] actualGenericTypeArguments = null;
+                    var jsonConverterAttribute = property.GetCustomAttribute<JsonConverterAttribute>();
+                    if (jsonConverterAttribute != null)
+                    {
+                        actualConverterType = jsonConverterAttribute.ConverterType;
+                        actualGenericTypeArguments = actualConverterType.GenericTypeArguments;
+                    }
+
+                    var actualConverterName = GetConverterName(
+                        actualConverterType,
+                        actualGenericTypeArguments);
+
+                    if (expectedConverterName == actualConverterName)
+                    {
+                        continue;
+                    }
+
+                    results.Add(
+                        $"{stripeClass.Name}.{property.Name}, expected = {expectedConverterName}, "
+                            + $"actual = {actualConverterName}");
+                }
+            }
+
+            var message = $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
+            AssertEmpty(results, message);
+        }
+
+        private static string GetConverterName(Type type, Type[] genericTypeArguments)
+        {
+            if (type == null)
+            {
+                return "null";
+            }
+
+            var sb = new StringBuilder();
+            sb.Append(type.Name);
+
+            if (genericTypeArguments != null && genericTypeArguments.Length > 0)
+            {
+                sb.Append("<");
+                sb.Append(string.Join(", ", genericTypeArguments.Select(t => t.Name)));
+                sb.Append(">");
+            }
+
+            return sb.ToString();
+        }
+    }
+}
+#endif

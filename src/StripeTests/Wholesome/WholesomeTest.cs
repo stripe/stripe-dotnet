@@ -2,9 +2,87 @@ namespace StripeTests.Wholesome
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Reflection;
+    using System.Runtime.CompilerServices;
     using Xunit;
+
+#pragma warning disable SA1402 // File may only contain a single type
+#pragma warning disable SA1649 // File name should match first type name
+    internal class ExtendedPropertyInfo : PropertyInfo
+#pragma warning restore SA1649 // File name should match first type name
+#pragma warning restore SA1402 // File may only contain a single type
+    {
+        private readonly PropertyInfo propertyInfo;
+
+        internal ExtendedPropertyInfo(PropertyInfo propertyInfo, bool isNotPublic)
+        {
+            this.propertyInfo = propertyInfo;
+            this.IsNotPublic = isNotPublic;
+        }
+
+        public bool IsNotPublic { get; }
+
+        public override PropertyAttributes Attributes => this.propertyInfo.Attributes;
+
+        public override bool CanRead => this.propertyInfo.CanRead;
+
+        public override bool CanWrite => this.propertyInfo.CanWrite;
+
+        public override Type PropertyType => this.propertyInfo.PropertyType;
+
+        public override Type DeclaringType => this.propertyInfo.DeclaringType;
+
+        public override string Name => this.propertyInfo.Name;
+
+        public override Type ReflectedType => this.propertyInfo.ReflectedType;
+
+        public override MethodInfo[] GetAccessors(bool nonPublic)
+        {
+            return this.propertyInfo.GetAccessors(nonPublic);
+        }
+
+        public override MethodInfo GetGetMethod(bool nonPublic)
+        {
+            return this.propertyInfo.GetGetMethod(nonPublic);
+        }
+
+        public override ParameterInfo[] GetIndexParameters()
+        {
+            return this.propertyInfo.GetIndexParameters();
+        }
+
+        public override MethodInfo GetSetMethod(bool nonPublic)
+        {
+            return this.propertyInfo.GetSetMethod(nonPublic);
+        }
+
+        public override object GetValue(object obj, BindingFlags invokeAttr, Binder binder, object[] index, CultureInfo culture)
+        {
+            return this.propertyInfo.GetValue(obj, invokeAttr, binder, index, culture);
+        }
+
+        public override void SetValue(object obj, object value, BindingFlags invokeAttr, Binder binder, object[] index, CultureInfo culture)
+        {
+            this.propertyInfo.SetValue(obj, value, invokeAttr, binder, index, culture);
+        }
+
+        public override object[] GetCustomAttributes(bool inherit)
+        {
+            return this.propertyInfo.GetCustomAttributes(inherit);
+        }
+
+        public override object[] GetCustomAttributes(Type attributeType, bool inherit)
+        {
+            return this.propertyInfo.GetCustomAttributes(attributeType, inherit);
+        }
+
+        public override bool IsDefined(Type attributeType, bool inherit)
+        {
+            return this.propertyInfo.IsDefined(attributeType, inherit);
+        }
+    }
 
     /// <summary>
     /// Parent class for all wholesome tests. Wholesome tests check the state of the Stripe.net
@@ -64,6 +142,15 @@ namespace StripeTests.Wholesome
                 .Where(t => t.IsClass && t.ImplementedInterfaces.Contains(implementedInterface))
                 .Select(t => t.AsType())
                 .ToList();
+        }
+
+        internal static IEnumerable<ExtendedPropertyInfo> GetPropertiesToCheck(Type type)
+        {
+            // Gets the nonpublic properties (private, internal, protected, etc)
+            var nonpublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+            var allProperties = type.GetProperties().Concat(nonpublicProperties);
+
+            return allProperties.Select(p => new ExtendedPropertyInfo(p, nonpublicProperties.Contains(p)));
         }
     }
 }
