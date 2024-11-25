@@ -5,6 +5,10 @@ namespace Stripe.V2
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
+
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -20,6 +24,10 @@ namespace Stripe.V2
         /// Used for .FetchObject and .FetchData helpers.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+
         internal ApiRequestor Requestor { get; set; }
 
         /// <summary>

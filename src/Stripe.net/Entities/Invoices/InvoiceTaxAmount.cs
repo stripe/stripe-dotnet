@@ -33,6 +33,9 @@ namespace Stripe
         /// The tax rate that was applied to get this tax amount.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string TaxRateId
         {
             get => this.InternalTaxRate?.Id;
@@ -46,6 +49,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public TaxRate TaxRate
         {
             get => this.InternalTaxRate?.ExpandedObject;
@@ -55,6 +61,7 @@ namespace Stripe
         [JsonProperty("tax_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxRate>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
         [STJS.JsonPropertyName("tax_rate")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TaxRate>))]
 #endif

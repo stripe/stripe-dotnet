@@ -69,11 +69,19 @@ namespace StripeTests.Wholesome
                     hasCorrectEquivalentAttribute = true;
                 }
 
-                // this is required to deserialize non-public properties; since we cannot
-                // easily tell which properties are public or at runtime, we just add
-                // it to everything.
-                if (!isNotPublic || attribute.GetType() == typeof(STJS.JsonIncludeAttribute))
+                // this is required to deserialize non-public properties; in Newtonsoft, this
+                // was handled by a class level JsonObject(MemberSerialization.OptIn) attribute
+                // which told Json.NET to serialize any property that has a JsonProperty attribute
+                if (jsonAttribute.GetType() == typeof(JsonPropertyAttribute))
                 {
+                    if (!isNotPublic || attribute.GetType() == typeof(STJS.JsonIncludeAttribute))
+                    {
+                        hasIncludeAttribute = true;
+                    }
+                }
+                else
+                {
+                    // We don't check for anything other than JsonProperty json attributes
                     hasIncludeAttribute = true;
                 }
 
