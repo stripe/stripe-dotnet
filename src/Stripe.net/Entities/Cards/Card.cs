@@ -311,6 +311,7 @@ namespace Stripe
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deleted")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
 
         public bool? Deleted { get; set; }

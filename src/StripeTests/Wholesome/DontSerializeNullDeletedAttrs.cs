@@ -7,6 +7,9 @@ namespace StripeTests.Wholesome
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// This test checks that <see cref="Stripe.StripeEntity" /> subclasses that have a
@@ -45,12 +48,22 @@ namespace StripeTests.Wholesome
                     }
 
                     // Check that NullValueHanding is set to Ignore
-                    if (attribute.NullValueHandling == NullValueHandling.Ignore)
+                    bool hasNullValueHandling = attribute.NullValueHandling == NullValueHandling.Ignore;
+#if NET6_0_OR_GREATER
+                    // This feature is implemented as part of JsonIgnore in STJ; make sure
+                    // we have the correct ignore w/ condition.
+                    // TODO: move to SystemTextJsonTestUtils
+                    var stjAttribute = property.GetCustomAttribute<STJS.JsonIgnoreAttribute>();
+                    if (stjAttribute == null || stjAttribute.Condition != STJS.JsonIgnoreCondition.WhenWritingNull)
                     {
-                        continue;
+                        hasNullValueHandling = false;
                     }
+#endif
 
-                    results.Add($"{entityClass.Name}.{property.Name}");
+                    if (!hasNullValueHandling)
+                    {
+                        results.Add($"{entityClass.Name}.{property.Name}");
+                    }
                 }
             }
 
@@ -67,7 +80,8 @@ namespace StripeTests.Wholesome
                 }
 
                 // Actually fail test
-                Assert.True(false, AssertionMessage);
+                var message = $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
+                Assert.True(false, message);
             }
         }
     }
