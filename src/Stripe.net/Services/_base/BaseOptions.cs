@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expand")]
 
-        // TODO: WhenWritingDefault?
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
         public List<string> Expand { get; set; }
