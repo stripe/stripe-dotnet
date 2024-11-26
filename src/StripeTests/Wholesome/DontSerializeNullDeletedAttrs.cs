@@ -59,9 +59,7 @@ namespace StripeTests.Wholesome
                     {
                         // This feature is implemented as part of JsonIgnore in STJ; make sure
                         // we have the correct ignore w/ condition.
-                        // TODO: move to SystemTextJsonTestUtils
-                        var stjAttribute = property.GetCustomAttribute<STJS.JsonIgnoreAttribute>();
-                        if (stjAttribute == null || stjAttribute.Condition != STJS.JsonIgnoreCondition.WhenWritingNull)
+                        if (!SystemTextJsonTestUtils.HasCorrectNullValueHandlingAttribute(property))
                         {
                             hasNullValueHandling = false;
                         }

@@ -16,7 +16,7 @@ namespace Stripe.V2
     {
         /// <summary>
         /// A list containing the actual response elements, paginated by any request parameters.
-        /// TODO does this need an ItemConverterType (like in Stripe.StripeList).
+        /// TODO(jar) does this need an ItemConverterType (like in Stripe.StripeList).
         /// </summary>
         [JsonProperty("data")]
 #if NET6_0_OR_GREATER

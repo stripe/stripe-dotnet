@@ -4,7 +4,6 @@ namespace StripeTests.Wholesome
     using System;
     using System.Collections;
     using System.Collections.Generic;
-    using System.Diagnostics;
     using System.Linq;
     using System.Reflection;
     using Castle.DynamicProxy.Internal;
@@ -205,7 +204,9 @@ namespace StripeTests.Wholesome
             }
             else if (type == typeof(System.IO.Stream))
             {
-                // TODO: what should we do here?
+                // neither JSON library supports serializing Streams without a custom converter
+                // which we currently do not support within Stripe.net (we use the
+                // MultipartFormDataContent type for sending streams across the network).
                 return null;
             }
             else if (typeof(IList).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))

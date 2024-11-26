@@ -6,8 +6,10 @@ namespace StripeTests.Wholesome
     using System.Diagnostics;
     using System.Linq;
     using System.Reflection;
-
+    using System.Text;
     using Newtonsoft.Json;
+    using Stripe;
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
     public class SystemTextJsonTestUtils
@@ -100,6 +102,108 @@ namespace StripeTests.Wholesome
             }
 
             return hasCorrectAttributes;
+        }
+
+        public static Tuple<string, string> HasCorrectConverterType(Type type, MemberInfo attributeTarget)
+        {
+            Type expectedConverterType = null;
+            Type[] expectedGenericTypeArguments = null;
+
+            var classTarget = attributeTarget as TypeInfo;
+            var propertyTarget = attributeTarget as PropertyInfo;
+
+            // In V1 DateTime properties require a UnixDateTimeConverter, in V2
+            // datetime conversion is handled by Newtonsoft.Json
+            // Note that the Stripe.Events namespace contains V2 events; there are
+            // some whos name starts with V1 but those are V1 payloads inside V2
+            // style events.
+            var v2Class =
+                propertyTarget?.DeclaringType.Namespace.Contains("V2") == true ||
+                propertyTarget?.DeclaringType.Namespace == "Stripe.Events";
+            if (type == typeof(DateTime) && !v2Class)
+            {
+                expectedConverterType = typeof(STJUnixDateTimeConverter);
+            }
+            else if (typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
+            {
+                expectedConverterType = typeof(STJAnyOfConverter);
+            }
+            else if (typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
+            {
+                expectedConverterType = typeof(STJExpandableFieldConverter<>);
+                if (classTarget != null)
+                {
+                    // because the annotation is going above a class, we don't have
+                    // access to the specific type parameter for the expandable field
+                    // so we add the annotation with <IHasId> as the parameter, and it
+                    // just works.
+                    expectedGenericTypeArguments = new Type[] { typeof(IHasId) };
+                }
+                else if (propertyTarget != null)
+                {
+                    expectedGenericTypeArguments = type.GenericTypeArguments;
+                }
+                else
+                {
+                    throw new Exception($"Unsupported attribute target {attributeTarget.Name}");
+                }
+            }
+            else if (type.GetTypeInfo().IsInterface)
+            {
+                expectedConverterType = typeof(STJStripeObjectConverter);
+            }
+
+            var expectedConverterName = GetConverterName(
+                expectedConverterType,
+                expectedGenericTypeArguments);
+
+            Type actualConverterType = null;
+            Type[] actualGenericTypeArguments = null;
+
+            // For this check, we are looking for the attribute on the class/type that is passed in.
+            var jsonConverterAttribute = attributeTarget.GetCustomAttribute<STJS.JsonConverterAttribute>();
+            if (jsonConverterAttribute != null)
+            {
+                actualConverterType = jsonConverterAttribute.ConverterType;
+                actualGenericTypeArguments = actualConverterType.GenericTypeArguments;
+            }
+
+            var actualConverterName = GetConverterName(
+                actualConverterType,
+                actualGenericTypeArguments);
+
+            if (expectedConverterName == actualConverterName)
+            {
+                return null;
+            }
+
+            return Tuple.Create(expectedConverterName, actualConverterName);
+        }
+
+        internal static bool HasCorrectNullValueHandlingAttribute(PropertyInfo property)
+        {
+            var stjAttribute = property.GetCustomAttribute<STJS.JsonIgnoreAttribute>();
+            return stjAttribute != null && stjAttribute.Condition == STJS.JsonIgnoreCondition.WhenWritingNull;
+        }
+
+        private static string GetConverterName(Type type, Type[] genericTypeArguments)
+        {
+            if (type == null)
+            {
+                return "null";
+            }
+
+            var sb = new StringBuilder();
+            sb.Append(type.Name);
+
+            if (genericTypeArguments != null && genericTypeArguments.Length > 0)
+            {
+                sb.Append("<");
+                sb.Append(string.Join(", ", genericTypeArguments.Select(t => t.Name)));
+                sb.Append(">");
+            }
+
+            return sb.ToString();
         }
     }
 }

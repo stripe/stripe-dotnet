@@ -3,14 +3,9 @@ namespace StripeTests.Wholesome
 {
     using System;
     using System.Collections.Generic;
-    using System.Diagnostics;
-    using System.Linq;
     using System.Reflection;
-    using System.Text;
-    using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
-    using Stripe.Infrastructure;
     using Xunit;
 
     /// <summary>
@@ -50,85 +45,18 @@ namespace StripeTests.Wholesome
                         continue;
                     }
 
-                    Type expectedConverterType = null;
-                    Type[] expectedGenericTypeArguments = null;
-
-                    // In V1 DateTime properties require a UnixDateTimeConverter, in V2
-                    // datetime conversion is handled by Newtonsoft.Json
-                    // Note that the Stripe.Events namespace contains V2 events; there are
-                    // some whos name starts with V1 but those are V1 payloads inside V2
-                    // style events.
-                    var v2Class =
-                        stripeClass.Namespace.Contains("V2") ||
-                        stripeClass.Namespace == "Stripe.Events";
-                    if (propType == typeof(DateTime) && !v2Class)
+                    var ret = SystemTextJsonTestUtils.HasCorrectConverterType(propType, property);
+                    if (ret != null)
                     {
-                        expectedConverterType = typeof(STJUnixDateTimeConverter);
+                        results.Add(
+                            $"{stripeClass.Name}.{property.Name}, expected = {ret.Item1}, "
+                                + $"actual = {ret.Item2}");
                     }
-                    else if (typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(propType.GetTypeInfo()))
-                    {
-                        expectedConverterType = typeof(STJAnyOfConverter);
-                    }
-                    else if (typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(propType.GetTypeInfo()))
-                    {
-                        expectedConverterType = typeof(STJExpandableFieldConverter<>);
-                        expectedGenericTypeArguments = propType.GenericTypeArguments;
-                    }
-                    else if (propType.GetTypeInfo().IsInterface)
-                    {
-                        expectedConverterType = typeof(STJStripeObjectConverter);
-                    }
-
-                    var expectedConverterName = GetConverterName(
-                        expectedConverterType,
-                        expectedGenericTypeArguments);
-
-                    Type actualConverterType = null;
-                    Type[] actualGenericTypeArguments = null;
-                    var jsonConverterAttribute = property.GetCustomAttribute<JsonConverterAttribute>();
-                    if (jsonConverterAttribute != null)
-                    {
-                        actualConverterType = jsonConverterAttribute.ConverterType;
-                        actualGenericTypeArguments = actualConverterType.GenericTypeArguments;
-                    }
-
-                    var actualConverterName = GetConverterName(
-                        actualConverterType,
-                        actualGenericTypeArguments);
-
-                    if (expectedConverterName == actualConverterName)
-                    {
-                        continue;
-                    }
-
-                    results.Add(
-                        $"{stripeClass.Name}.{property.Name}, expected = {expectedConverterName}, "
-                            + $"actual = {actualConverterName}");
                 }
             }
 
             var message = $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
             AssertEmpty(results, message);
-        }
-
-        private static string GetConverterName(Type type, Type[] genericTypeArguments)
-        {
-            if (type == null)
-            {
-                return "null";
-            }
-
-            var sb = new StringBuilder();
-            sb.Append(type.Name);
-
-            if (genericTypeArguments != null && genericTypeArguments.Length > 0)
-            {
-                sb.Append("<");
-                sb.Append(string.Join(", ", genericTypeArguments.Select(t => t.Name)));
-                sb.Append(">");
-            }
-
-            return sb.ToString();
         }
     }
 }
