@@ -15,15 +15,15 @@ namespace Stripe.Checkout
         /// <summary>
         /// A list of items the customer is purchasing.
         ///
-        /// When updating line items, the entire array of line items must be retransmitted.
+        /// When updating line items, you must retransmit the entire array of line items.
         ///
         /// To retain an existing line item, specify its <c>id</c>.
         ///
         /// To update an existing line item, specify its <c>id</c> along with the new values of the
-        /// fields to be updated.
+        /// fields to update.
         ///
-        /// To add a new line item, specify a <c>price</c> and <c>quantity</c>. Recurring prices are
-        /// not supported yet.
+        /// To add a new line item, specify a <c>price</c> and <c>quantity</c>. We don't currently
+        /// support recurring prices.
         ///
         /// To remove an existing line item, omit the line item's ID from the retransmitted array.
         ///
