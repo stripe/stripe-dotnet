@@ -15,7 +15,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alias")]
 #endif
-
         public string Alias { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("contains")]
 #endif
-
         public string Contains { get; set; }
     }
 }

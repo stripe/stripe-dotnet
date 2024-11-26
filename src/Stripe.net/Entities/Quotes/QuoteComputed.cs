@@ -18,14 +18,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recurring")]
 #endif
-
         public QuoteComputedRecurring Recurring { get; set; }
 
         [JsonProperty("upfront")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("upfront")]
 #endif
-
         public QuoteComputedUpfront Upfront { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ach")]
 #endif
-
         public FinancialAccountFeaturesOutboundTransfersAchOptions Ach { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_domestic_wire")]
 #endif
-
         public FinancialAccountFeaturesOutboundTransfersUsDomesticWireOptions UsDomesticWire { get; set; }
     }
 }

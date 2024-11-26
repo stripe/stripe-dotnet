@@ -16,7 +16,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aba")]
 #endif
-
         public FinancialAccountFinancialAddressAba Aba { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_networks")]
 #endif
-
         public List<string> SupportedNetworks { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

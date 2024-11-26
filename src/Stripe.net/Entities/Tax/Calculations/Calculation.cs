@@ -24,7 +24,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -34,7 +33,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -45,7 +43,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_total")]
 #endif
-
         public long AmountTotal { get; set; }
 
         /// <summary>
@@ -57,7 +54,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -68,29 +64,23 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         [JsonProperty("customer_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_details")]
 #endif
-
         public CalculationCustomerDetails CustomerDetails { get; set; }
 
         /// <summary>
         /// Timestamp of date at which the tax calculation will expire.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -100,7 +90,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
 #endif
-
         public StripeList<CalculationLineItem> LineItems { get; set; }
 
         /// <summary>
@@ -111,7 +100,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -121,7 +109,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ship_from_details")]
 #endif
-
         public CalculationShipFromDetails ShipFromDetails { get; set; }
 
         /// <summary>
@@ -131,7 +118,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_cost")]
 #endif
-
         public CalculationShippingCost ShippingCost { get; set; }
 
         /// <summary>
@@ -141,7 +127,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_amount_exclusive")]
 #endif
-
         public long TaxAmountExclusive { get; set; }
 
         /// <summary>
@@ -151,7 +136,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_amount_inclusive")]
 #endif
-
         public long TaxAmountInclusive { get; set; }
 
         /// <summary>
@@ -161,7 +145,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_breakdown")]
 #endif
-
         public List<CalculationTaxBreakdown> TaxBreakdown { get; set; }
 
         /// <summary>
@@ -169,15 +152,11 @@ namespace Stripe.Tax
         /// calculation.
         /// </summary>
         [JsonProperty("tax_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime TaxDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

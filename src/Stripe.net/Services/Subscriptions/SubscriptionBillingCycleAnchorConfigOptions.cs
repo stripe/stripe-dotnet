@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("day_of_month")]
 #endif
-
         public long? DayOfMonth { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hour")]
 #endif
-
         public long? Hour { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minute")]
 #endif
-
         public long? Minute { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("month")]
 #endif
-
         public long? Month { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("second")]
 #endif
-
         public long? Second { get; set; }
     }
 }

@@ -21,7 +21,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cycle_anchor")]
 #endif
-
         public SubscriptionBillingCycleAnchor BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -36,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
 #endif
-
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -46,15 +44,11 @@ namespace Stripe
         /// endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("proration_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ProrationDate { get; set; }
     }
 }

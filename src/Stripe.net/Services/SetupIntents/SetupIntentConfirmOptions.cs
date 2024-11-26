@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_secret")]
 #endif
-
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -26,14 +25,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("confirmation_token")]
 #endif
-
         public string ConfirmationToken { get; set; }
 
         [JsonProperty("mandate_data")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_data")]
 #endif
-
         public SetupIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>
@@ -44,7 +41,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method")]
 #endif
-
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -56,7 +52,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_data")]
 #endif
-
         public SetupIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
@@ -66,7 +61,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
 #endif
-
         public SetupIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -79,7 +73,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
 #endif
-
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -90,7 +83,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("use_stripe_sdk")]
 #endif
-
         public bool? UseStripeSdk { get; set; }
     }
 }

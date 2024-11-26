@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_behavior")]
 #endif
-
         public PaymentLinkSubscriptionDataTrialSettingsEndBehavior EndBehavior { get; set; }
     }
 }

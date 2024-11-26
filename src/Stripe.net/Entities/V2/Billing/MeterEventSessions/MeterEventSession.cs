@@ -16,7 +16,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authentication_token")]
 #endif
-
         public string AuthenticationToken { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -58,7 +54,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_at")]
 #endif
-
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -69,7 +64,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
     }
 }

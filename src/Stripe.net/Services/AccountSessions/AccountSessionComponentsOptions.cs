@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_management")]
 #endif
-
         public AccountSessionComponentsAccountManagementOptions AccountManagement { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_onboarding")]
 #endif
-
         public AccountSessionComponentsAccountOnboardingOptions AccountOnboarding { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balances")]
 #endif
-
         public AccountSessionComponentsBalancesOptions Balances { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("documents")]
 #endif
-
         public AccountSessionComponentsDocumentsOptions Documents { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("notification_banner")]
 #endif
-
         public AccountSessionComponentsNotificationBannerOptions NotificationBanner { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_details")]
 #endif
-
         public AccountSessionComponentsPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
@@ -75,7 +69,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payments")]
 #endif
-
         public AccountSessionComponentsPaymentsOptions Payments { get; set; }
 
         /// <summary>
@@ -85,7 +78,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payouts")]
 #endif
-
         public AccountSessionComponentsPayoutsOptions Payouts { get; set; }
 
         /// <summary>
@@ -95,7 +87,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payouts_list")]
 #endif
-
         public AccountSessionComponentsPayoutsListOptions PayoutsList { get; set; }
 
         /// <summary>
@@ -105,7 +96,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_registrations")]
 #endif
-
         public AccountSessionComponentsTaxRegistrationsOptions TaxRegistrations { get; set; }
 
         /// <summary>
@@ -115,7 +105,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_settings")]
 #endif
-
         public AccountSessionComponentsTaxSettingsOptions TaxSettings { get; set; }
     }
 }

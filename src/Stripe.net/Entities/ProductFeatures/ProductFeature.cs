@@ -20,7 +20,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -53,7 +50,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("entitlement_feature")]
 #endif
-
         public Entitlements.Feature EntitlementFeature { get; set; }
 
         /// <summary>
@@ -64,7 +60,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
     }
 }

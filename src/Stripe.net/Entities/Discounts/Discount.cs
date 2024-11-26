@@ -28,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -38,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -49,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("checkout_session")]
 #endif
-
         public string CheckoutSession { get; set; }
 
         /// <summary>
@@ -66,7 +63,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("coupon")]
 #endif
-
         public Coupon Coupon { get; set; }
 
         #region Expandable Customer
@@ -79,7 +75,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -96,7 +91,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -104,16 +98,12 @@ namespace Stripe
         }
 
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
-
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -125,7 +115,6 @@ namespace Stripe
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -134,15 +123,11 @@ namespace Stripe
         /// null.
         /// </summary>
         [JsonProperty("end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("end")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("end")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? End { get; set; }
 
         /// <summary>
@@ -153,7 +138,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice")]
 #endif
-
         public string Invoice { get; set; }
 
         /// <summary>
@@ -165,7 +149,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_item")]
 #endif
-
         public string InvoiceItem { get; set; }
 
         #region Expandable PromotionCode
@@ -178,7 +161,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string PromotionCodeId
         {
             get => this.InternalPromotionCode?.Id;
@@ -195,7 +177,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public PromotionCode PromotionCode
         {
             get => this.InternalPromotionCode?.ExpandedObject;
@@ -203,16 +184,12 @@ namespace Stripe
         }
 
         [JsonProperty("promotion_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("promotion_code")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("promotion_code")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PromotionCode>))]
 #endif
-
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
 
@@ -220,15 +197,11 @@ namespace Stripe
         /// Date that the coupon was applied.
         /// </summary>
         [JsonProperty("start")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("start")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("start")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Start { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -239,7 +212,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
 #endif
-
         public string Subscription { get; set; }
 
         /// <summary>
@@ -250,7 +222,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_item")]
 #endif
-
         public string SubscriptionItem { get; set; }
     }
 }

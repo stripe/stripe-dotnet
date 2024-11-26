@@ -22,7 +22,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
 #endif
-
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -50,7 +49,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
-
         public string SetupFutureUsage { get; set; }
     }
 }

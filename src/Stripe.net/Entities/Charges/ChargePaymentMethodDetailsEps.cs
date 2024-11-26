@@ -41,7 +41,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank")]
 #endif
-
         public string Bank { get; set; }
 
         /// <summary>
@@ -53,7 +52,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verified_name")]
 #endif
-
         public string VerifiedName { get; set; }
     }
 }

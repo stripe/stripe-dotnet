@@ -19,7 +19,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -29,14 +28,12 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         [JsonProperty("features")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
 #endif
-
         public PhysicalBundleFeatures Features { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -68,7 +63,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -79,7 +73,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

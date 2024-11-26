@@ -22,14 +22,12 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         [JsonProperty("defaults")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("defaults")]
 #endif
-
         public SettingsDefaults Defaults { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("head_office")]
 #endif
-
         public SettingsHeadOffice HeadOffice { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -61,14 +57,12 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         [JsonProperty("status_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
 #endif
-
         public SettingsStatusDetails StatusDetails { get; set; }
     }
 }

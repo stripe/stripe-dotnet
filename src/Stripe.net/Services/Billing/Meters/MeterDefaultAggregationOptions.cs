@@ -17,7 +17,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("formula")]
 #endif
-
         public string Formula { get; set; }
     }
 }

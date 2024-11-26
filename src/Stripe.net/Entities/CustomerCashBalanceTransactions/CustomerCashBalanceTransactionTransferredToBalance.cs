@@ -20,7 +20,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
@@ -38,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
@@ -46,16 +44,12 @@ namespace Stripe
         }
 
         [JsonProperty("balance_transaction")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("balance_transaction")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
-
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
     }

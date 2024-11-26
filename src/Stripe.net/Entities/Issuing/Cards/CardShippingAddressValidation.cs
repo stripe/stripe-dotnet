@@ -17,7 +17,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mode")]
 #endif
-
         public string Mode { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("normalized_address")]
 #endif
-
         public Address NormalizedAddress { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result")]
 #endif
-
         public string Result { get; set; }
     }
 }

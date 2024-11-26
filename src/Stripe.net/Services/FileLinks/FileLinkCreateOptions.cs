@@ -15,15 +15,11 @@ namespace Stripe
         /// The link isn't usable after this future timestamp.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -38,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("file")]
 #endif
-
         public string File { get; set; }
 
         /// <summary>
@@ -51,7 +46,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

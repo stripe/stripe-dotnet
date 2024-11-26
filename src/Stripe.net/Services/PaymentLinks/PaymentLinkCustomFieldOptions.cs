@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dropdown")]
 #endif
-
         public PaymentLinkCustomFieldDropdownOptions Dropdown { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("key")]
 #endif
-
         public string Key { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("label")]
 #endif
-
         public PaymentLinkCustomFieldLabelOptions Label { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("numeric")]
 #endif
-
         public PaymentLinkCustomFieldNumericOptions Numeric { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("optional")]
 #endif
-
         public bool? Optional { get; set; }
 
         /// <summary>
@@ -67,7 +62,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("text")]
 #endif
-
         public PaymentLinkCustomFieldTextOptions Text { get; set; }
 
         /// <summary>
@@ -78,7 +72,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

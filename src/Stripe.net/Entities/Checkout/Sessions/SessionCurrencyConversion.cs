@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_subtotal")]
 #endif
-
         public long AmountSubtotal { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_total")]
 #endif
-
         public long AmountTotal { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_rate")]
 #endif
-
         public decimal FxRate { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_currency")]
 #endif
-
         public string SourceCurrency { get; set; }
     }
 }

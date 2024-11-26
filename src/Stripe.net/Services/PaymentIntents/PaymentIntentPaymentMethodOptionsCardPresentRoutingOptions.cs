@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requested_priority")]
 #endif
-
         public string RequestedPriority { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_account")]
 #endif
-
         public long BankAccount { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
 #endif
-
         public long Card { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fpx")]
 #endif
-
         public long Fpx { get; set; }
     }
 }

@@ -14,15 +14,11 @@ namespace Stripe.TestHelpers
         /// The <c>frozen_time</c> that the Test Clock is advancing towards.
         /// </summary>
         [JsonProperty("target_frozen_time")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("target_frozen_time")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("target_frozen_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime TargetFrozenTime { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

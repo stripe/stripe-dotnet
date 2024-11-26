@@ -26,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -36,37 +35,28 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The file expires and isn't available at this time in epoch seconds.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -76,7 +66,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("filename")]
 #endif
-
         public string Filename { get; set; }
 
         /// <summary>
@@ -87,7 +76,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("links")]
 #endif
-
         public StripeList<FileLink> Links { get; set; }
 
         /// <summary>
@@ -105,7 +93,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purpose")]
 #endif
-
         public string Purpose { get; set; }
 
         /// <summary>
@@ -115,7 +102,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("size")]
 #endif
-
         public long Size { get; set; }
 
         /// <summary>
@@ -125,7 +111,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("title")]
 #endif
-
         public string Title { get; set; }
 
         /// <summary>
@@ -135,7 +120,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -145,7 +129,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
 #endif
-
         public string Url { get; set; }
     }
 }

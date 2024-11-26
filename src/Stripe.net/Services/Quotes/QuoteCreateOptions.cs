@@ -20,7 +20,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_amount")]
 #endif
-
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_percent")]
 #endif
-
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
@@ -44,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
 #endif
-
         public QuoteAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -60,7 +57,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection_method")]
 #endif
-
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -71,7 +67,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -81,7 +76,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_tax_rates")]
 #endif
-
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
@@ -94,7 +88,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -104,7 +97,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<QuoteDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -115,15 +107,11 @@ namespace Stripe
         /// will be used.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -136,7 +124,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("footer")]
 #endif
-
         public string Footer { get; set; }
 
         /// <summary>
@@ -148,7 +135,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("from_quote")]
 #endif
-
         public QuoteFromQuoteOptions FromQuote { get; set; }
 
         /// <summary>
@@ -161,7 +147,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("header")]
 #endif
-
         public string Header { get; set; }
 
         /// <summary>
@@ -171,7 +156,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_settings")]
 #endif
-
         public QuoteInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
@@ -182,7 +166,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
 #endif
-
         public List<QuoteLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -195,7 +178,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -205,7 +187,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
 #endif
-
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -219,7 +200,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_data")]
 #endif
-
         public QuoteSubscriptionDataOptions SubscriptionData { get; set; }
 
         /// <summary>
@@ -229,7 +209,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("test_clock")]
 #endif
-
         public string TestClock { get; set; }
 
         /// <summary>
@@ -239,7 +218,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_data")]
 #endif
-
         public QuoteTransferDataOptions TransferData { get; set; }
     }
 }

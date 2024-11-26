@@ -18,7 +18,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("device_type")]
 #endif
-
         public string DeviceType { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("location")]
 #endif
-
         public string Location { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("serial_number")]
 #endif
-
         public string SerialNumber { get; set; }
 
         /// <summary>
@@ -49,7 +46,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

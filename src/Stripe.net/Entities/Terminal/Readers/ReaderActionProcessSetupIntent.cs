@@ -18,7 +18,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("generated_card")]
 #endif
-
         public string GeneratedCard { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("process_config")]
 #endif
-
         public ReaderActionProcessSetupIntentProcessConfig ProcessConfig { get; set; }
 
         #region Expandable SetupIntent
@@ -41,7 +39,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string SetupIntentId
         {
             get => this.InternalSetupIntent?.Id;
@@ -58,7 +55,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public SetupIntent SetupIntent
         {
             get => this.InternalSetupIntent?.ExpandedObject;
@@ -66,16 +62,12 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("setup_intent")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("setup_intent")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("setup_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SetupIntent>))]
 #endif
-
         internal ExpandableField<SetupIntent> InternalSetupIntent { get; set; }
         #endregion
     }

@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recovery")]
 #endif
-
         public SessionAfterExpirationRecoveryOptions Recovery { get; set; }
     }
 }

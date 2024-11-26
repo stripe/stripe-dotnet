@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charge")]
 #endif
-
         public string Charge { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout")]
 #endif
-
         public string Payout { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

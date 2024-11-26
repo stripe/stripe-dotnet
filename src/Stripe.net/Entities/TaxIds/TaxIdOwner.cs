@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string AccountId
         {
             get => this.InternalAccount?.Id;
@@ -36,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Account Account
         {
             get => this.InternalAccount?.ExpandedObject;
@@ -44,16 +42,12 @@ namespace Stripe
         }
 
         [JsonProperty("account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("account")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
-
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
@@ -67,7 +61,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string ApplicationId
         {
             get => this.InternalApplication?.Id;
@@ -84,7 +77,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
@@ -92,16 +84,12 @@ namespace Stripe
         }
 
         [JsonProperty("application")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("application")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif
-
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
@@ -115,7 +103,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -132,7 +119,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -140,16 +126,12 @@ namespace Stripe
         }
 
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
-
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -161,7 +143,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

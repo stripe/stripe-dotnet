@@ -15,7 +15,6 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aws_account_id")]
 #endif
-
         public string AwsAccountId { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aws_event_source_arn")]
 #endif
-
         public string AwsEventSourceArn { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aws_event_source_status")]
 #endif
-
         public string AwsEventSourceStatus { get; set; }
     }
 }

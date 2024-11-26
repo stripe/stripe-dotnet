@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_address")]
 #endif
-
         public Address BillingAddress { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
 #endif
-
         public string Email { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_address")]
 #endif
-
         public Address ShippingAddress { get; set; }
     }
 }

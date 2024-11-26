@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eligible")]
 #endif
-
         public bool Eligible { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ineligible_reason")]
 #endif
-
         public string IneligibleReason { get; set; }
     }
 }

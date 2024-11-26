@@ -15,7 +15,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cart")]
 #endif
-
         public ReaderCartOptions Cart { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

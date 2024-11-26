@@ -18,7 +18,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("configuration")]
 #endif
-
         public string Configuration { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -40,7 +38,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flow_data")]
 #endif
-
         public SessionFlowDataOptions FlowData { get; set; }
 
         /// <summary>
@@ -58,7 +55,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("locale")]
 #endif
-
         public string Locale { get; set; }
 
         /// <summary>
@@ -75,7 +71,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
 #endif
-
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -86,7 +81,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
 #endif
-
         public string ReturnUrl { get; set; }
     }
 }

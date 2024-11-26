@@ -18,7 +18,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public AddressOptions Address { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("configuration_overrides")]
 #endif
-
         public string ConfigurationOverrides { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
 #endif
-
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

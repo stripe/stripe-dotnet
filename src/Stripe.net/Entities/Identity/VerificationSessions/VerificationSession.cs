@@ -34,7 +34,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -44,7 +43,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -55,7 +53,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_reference_id")]
 #endif
-
         public string ClientReferenceId { get; set; }
 
         /// <summary>
@@ -72,22 +69,17 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_secret")]
 #endif
-
         public string ClientSecret { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -98,7 +90,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_error")]
 #endif
-
         public VerificationSessionLastError LastError { get; set; }
 
         #region Expandable LastVerificationReport
@@ -113,7 +104,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string LastVerificationReportId
         {
             get => this.InternalLastVerificationReport?.Id;
@@ -132,7 +122,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public VerificationReport LastVerificationReport
         {
             get => this.InternalLastVerificationReport?.ExpandedObject;
@@ -140,16 +129,12 @@ namespace Stripe.Identity
         }
 
         [JsonProperty("last_verification_report")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("last_verification_report")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<VerificationReport>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("last_verification_report")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<VerificationReport>))]
 #endif
-
         internal ExpandableField<VerificationReport> InternalLastVerificationReport { get; set; }
         #endregion
 
@@ -161,7 +146,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -173,7 +157,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -183,7 +166,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("options")]
 #endif
-
         public VerificationSessionOptions Options { get; set; }
 
         /// <summary>
@@ -193,7 +175,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("provided_details")]
 #endif
-
         public VerificationSessionProvidedDetails ProvidedDetails { get; set; }
 
         /// <summary>
@@ -204,7 +185,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("redaction")]
 #endif
-
         public VerificationSessionRedaction Redaction { get; set; }
 
         /// <summary>
@@ -214,7 +194,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_customer")]
 #endif
-
         public string RelatedCustomer { get; set; }
 
         /// <summary>
@@ -227,7 +206,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -239,7 +217,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -254,7 +231,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
 #endif
-
         public string Url { get; set; }
 
         /// <summary>
@@ -264,7 +240,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_flow")]
 #endif
-
         public string VerificationFlow { get; set; }
 
         /// <summary>
@@ -274,7 +249,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verified_outputs")]
 #endif
-
         public VerificationSessionVerifiedOutputs VerifiedOutputs { get; set; }
     }
 }

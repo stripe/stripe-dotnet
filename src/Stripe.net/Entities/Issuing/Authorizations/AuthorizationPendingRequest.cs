@@ -19,7 +19,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_details")]
 #endif
-
         public AuthorizationPendingRequestAmountDetails AmountDetails { get; set; }
 
         /// <summary>
@@ -43,7 +41,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -55,7 +52,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_amount_controllable")]
 #endif
-
         public bool IsAmountControllable { get; set; }
 
         /// <summary>
@@ -67,7 +63,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_amount")]
 #endif
-
         public long MerchantAmount { get; set; }
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_currency")]
 #endif
-
         public string MerchantCurrency { get; set; }
 
         /// <summary>
@@ -88,7 +82,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_risk_score")]
 #endif
-
         public long? NetworkRiskScore { get; set; }
     }
 }

@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CouponId
         {
             get => this.InternalCoupon?.Id;
@@ -36,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Coupon Coupon
         {
             get => this.InternalCoupon?.ExpandedObject;
@@ -44,16 +42,12 @@ namespace Stripe
         }
 
         [JsonProperty("coupon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("coupon")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Coupon>))]
 #endif
-
         internal ExpandableField<Coupon> InternalCoupon { get; set; }
         #endregion
 
@@ -67,7 +61,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string DiscountId
         {
             get => this.InternalDiscount?.Id;
@@ -84,7 +77,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Discount Discount
         {
             get => this.InternalDiscount?.ExpandedObject;
@@ -92,16 +84,12 @@ namespace Stripe
         }
 
         [JsonProperty("discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discount")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("discount")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Discount>))]
 #endif
-
         internal ExpandableField<Discount> InternalDiscount { get; set; }
         #endregion
 
@@ -115,7 +103,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string PromotionCodeId
         {
             get => this.InternalPromotionCode?.Id;
@@ -132,7 +119,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public PromotionCode PromotionCode
         {
             get => this.InternalPromotionCode?.ExpandedObject;
@@ -140,16 +126,12 @@ namespace Stripe
         }
 
         [JsonProperty("promotion_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("promotion_code")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("promotion_code")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PromotionCode>))]
 #endif
-
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
     }

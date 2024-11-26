@@ -12,14 +12,12 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_details")]
 #endif
-
         public OutboundPaymentDestinationPaymentMethodDetailsBillingDetails BillingDetails { get; set; }
 
         [JsonProperty("financial_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
 #endif
-
         public OutboundPaymentDestinationPaymentMethodDetailsFinancialAccount FinancialAccount { get; set; }
 
         /// <summary>
@@ -30,14 +28,12 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         [JsonProperty("us_bank_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]
 #endif
-
         public OutboundPaymentDestinationPaymentMethodDetailsUsBankAccount UsBankAccount { get; set; }
     }
 }

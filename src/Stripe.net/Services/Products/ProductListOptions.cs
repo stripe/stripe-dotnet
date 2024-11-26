@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
 #endif
-
         public bool? Active { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ids")]
 #endif
-
         public List<string> Ids { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shippable")]
 #endif
-
         public bool? Shippable { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -60,7 +56,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
 #endif
-
         public string Url { get; set; }
     }
 }

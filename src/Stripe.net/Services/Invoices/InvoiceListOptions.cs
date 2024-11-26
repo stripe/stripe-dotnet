@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection_method")]
 #endif
-
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -29,19 +28,14 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         [JsonProperty("due_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("due_date")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("due_date")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, DateRangeOptions> DueDate { get; set; }
 
         /// <summary>
@@ -55,7 +49,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -65,7 +58,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
 #endif
-
         public string Subscription { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("include")]
 #endif
-
         public List<string> Include { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("page")]
 #endif
-
         public string Page { get; set; }
     }
 }

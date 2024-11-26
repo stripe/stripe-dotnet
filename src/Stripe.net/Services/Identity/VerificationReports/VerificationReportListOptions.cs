@@ -16,7 +16,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_reference_id")]
 #endif
-
         public string ClientReferenceId { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_session")]
 #endif
-
         public string VerificationSession { get; set; }
     }
 }

@@ -19,7 +19,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
@@ -36,7 +35,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
@@ -44,16 +42,12 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("payment_intent")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_intent")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif
-
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
@@ -64,7 +58,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("process_config")]
 #endif
-
         public ReaderActionProcessPaymentIntentProcessConfig ProcessConfig { get; set; }
     }
 }

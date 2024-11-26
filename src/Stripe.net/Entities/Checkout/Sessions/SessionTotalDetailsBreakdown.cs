@@ -16,7 +16,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<SessionTotalDetailsBreakdownDiscount> Discounts { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxes")]
 #endif
-
         public List<SessionTotalDetailsBreakdownTax> Taxes { get; set; }
     }
 }

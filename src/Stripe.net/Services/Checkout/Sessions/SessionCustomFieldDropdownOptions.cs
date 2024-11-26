@@ -17,7 +17,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_value")]
 #endif
-
         public string DefaultValue { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("options")]
 #endif
-
         public List<SessionCustomFieldDropdownOptionOptions> Options { get; set; }
     }
 }

@@ -15,15 +15,11 @@ namespace Stripe
         /// status. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpiresAt { get; set; }
     }
 }

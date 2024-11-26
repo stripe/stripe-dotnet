@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dispute_categories")]
 #endif
-
         public List<string> DisputeCategories { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

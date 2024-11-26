@@ -19,7 +19,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("missing_fields")]
 #endif
-
         public List<string> MissingFields { get; set; }
     }
 }

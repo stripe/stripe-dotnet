@@ -30,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -40,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -50,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("api_version")]
 #endif
-
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -60,22 +57,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application")]
 #endif
-
         public string Application { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -86,7 +78,6 @@ namespace Stripe
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -96,7 +87,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -107,7 +97,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled_events")]
 #endif
-
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
@@ -118,7 +107,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -130,7 +118,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -142,7 +129,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("secret")]
 #endif
-
         public string Secret { get; set; }
 
         /// <summary>
@@ -152,7 +138,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -162,7 +147,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
 #endif
-
         public string Url { get; set; }
     }
 }

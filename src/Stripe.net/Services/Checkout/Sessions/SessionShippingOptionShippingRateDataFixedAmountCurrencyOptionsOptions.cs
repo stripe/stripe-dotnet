@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long? Amount { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
 #endif
-
         public string TaxBehavior { get; set; }
     }
 }

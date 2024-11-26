@@ -15,7 +15,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public Address Address { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob")]
 #endif
-
         public VerificationSessionVerifiedOutputsDob Dob { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
 #endif
-
         public string Email { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_name")]
 #endif
-
         public string FirstName { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_number")]
 #endif
-
         public string IdNumber { get; set; }
 
         /// <summary>
@@ -66,7 +61,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_number_type")]
 #endif
-
         public string IdNumberType { get; set; }
 
         /// <summary>
@@ -76,7 +70,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_name")]
 #endif
-
         public string LastName { get; set; }
 
         /// <summary>
@@ -86,7 +79,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone")]
 #endif
-
         public string Phone { get; set; }
     }
 }

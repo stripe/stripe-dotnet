@@ -17,7 +17,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_line1_check")]
 #endif
-
         public string AddressLine1Check { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_postal_code_check")]
 #endif
-
         public string AddressPostalCodeCheck { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authentication_exemption")]
 #endif
-
         public AuthorizationVerificationDataAuthenticationExemption AuthenticationExemption { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cvc_check")]
 #endif
-
         public string CvcCheck { get; set; }
 
         /// <summary>
@@ -61,7 +57,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expiry_check")]
 #endif
-
         public string ExpiryCheck { get; set; }
 
         /// <summary>
@@ -72,7 +67,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("postal_code")]
 #endif
-
         public string PostalCode { get; set; }
 
         /// <summary>
@@ -82,7 +76,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("three_d_secure")]
 #endif
-
         public AuthorizationVerificationDataThreeDSecure ThreeDSecure { get; set; }
     }
 }

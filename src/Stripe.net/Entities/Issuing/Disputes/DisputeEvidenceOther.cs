@@ -20,7 +20,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string AdditionalDocumentationId
         {
             get => this.InternalAdditionalDocumentation?.Id;
@@ -38,7 +37,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public File AdditionalDocumentation
         {
             get => this.InternalAdditionalDocumentation?.ExpandedObject;
@@ -46,16 +44,12 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("additional_documentation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("additional_documentation")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("additional_documentation")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
-
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
 
@@ -66,7 +60,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("explanation")]
 #endif
-
         public string Explanation { get; set; }
 
         /// <summary>
@@ -76,7 +69,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_description")]
 #endif
-
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -87,7 +79,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_type")]
 #endif
-
         public string ProductType { get; set; }
     }
 }

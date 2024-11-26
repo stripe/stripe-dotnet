@@ -17,7 +17,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public Address Address { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
 #endif
-
         public string Email { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone")]
 #endif
-
         public string Phone { get; set; }
 
         /// <summary>
@@ -62,7 +58,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_exempt")]
 #endif
-
         public string TaxExempt { get; set; }
 
         /// <summary>
@@ -72,7 +67,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_ids")]
 #endif
-
         public List<SessionCustomerDetailsTaxId> TaxIds { get; set; }
     }
 }

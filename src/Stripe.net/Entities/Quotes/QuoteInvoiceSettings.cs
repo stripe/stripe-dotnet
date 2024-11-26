@@ -17,14 +17,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("days_until_due")]
 #endif
-
         public long? DaysUntilDue { get; set; }
 
         [JsonProperty("issuer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-
         public QuoteInvoiceSettingsIssuer Issuer { get; set; }
     }
 }

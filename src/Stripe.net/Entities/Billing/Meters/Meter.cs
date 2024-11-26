@@ -26,7 +26,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -36,36 +35,29 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("customer_mapping")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_mapping")]
 #endif
-
         public MeterCustomerMapping CustomerMapping { get; set; }
 
         [JsonProperty("default_aggregation")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_aggregation")]
 #endif
-
         public MeterDefaultAggregation DefaultAggregation { get; set; }
 
         /// <summary>
@@ -75,7 +67,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
 #endif
-
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -86,7 +77,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_name")]
 #endif
-
         public string EventName { get; set; }
 
         /// <summary>
@@ -97,7 +87,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_time_window")]
 #endif
-
         public string EventTimeWindow { get; set; }
 
         /// <summary>
@@ -108,7 +97,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -119,36 +107,29 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         [JsonProperty("status_transitions")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_transitions")]
 #endif
-
         public MeterStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
         /// Time at which the object was last updated. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("updated")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("updated")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("updated")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("value_settings")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value_settings")]
 #endif
-
         public MeterValueSettings ValueSettings { get; set; }
     }
 }

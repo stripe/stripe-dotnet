@@ -164,7 +164,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allowed_categories")]
 #endif
-
         public List<string> AllowedCategories { get; set; }
 
         /// <summary>
@@ -177,7 +176,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allowed_merchant_countries")]
 #endif
-
         public List<string> AllowedMerchantCountries { get; set; }
 
         /// <summary>
@@ -335,7 +333,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blocked_categories")]
 #endif
-
         public List<string> BlockedCategories { get; set; }
 
         /// <summary>
@@ -348,7 +345,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blocked_merchant_countries")]
 #endif
-
         public List<string> BlockedMerchantCountries { get; set; }
 
         /// <summary>
@@ -360,7 +356,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("spending_limits")]
 #endif
-
         public List<CardSpendingControlsSpendingLimitOptions> SpendingLimits { get; set; }
     }
 }

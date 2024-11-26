@@ -19,7 +19,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method")]
 #endif
-
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("replacements")]
 #endif
-
         public List<string> Replacements { get; set; }
 
         /// <summary>
@@ -52,7 +49,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request")]
 #endif
-
         public RequestRequestOptions Request { get; set; }
 
         /// <summary>
@@ -62,7 +58,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
 #endif
-
         public string Url { get; set; }
     }
 }

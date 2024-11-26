@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_confirmation")]
 #endif
-
         public PaymentLinkAfterCompletionHostedConfirmationOptions HostedConfirmation { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("redirect")]
 #endif
-
         public PaymentLinkAfterCompletionRedirectOptions Redirect { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

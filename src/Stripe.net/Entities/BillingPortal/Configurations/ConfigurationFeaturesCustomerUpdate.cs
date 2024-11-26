@@ -19,7 +19,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allowed_updates")]
 #endif
-
         public List<string> AllowedUpdates { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
 #endif
-
         public bool Enabled { get; set; }
     }
 }

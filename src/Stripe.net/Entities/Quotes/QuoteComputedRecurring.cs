@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_subtotal")]
 #endif
-
         public long AmountSubtotal { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_total")]
 #endif
-
         public long AmountTotal { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
 #endif
-
         public string Interval { get; set; }
 
         /// <summary>
@@ -49,14 +46,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_count")]
 #endif
-
         public long IntervalCount { get; set; }
 
         [JsonProperty("total_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("total_details")]
 #endif
-
         public QuoteComputedRecurringTotalDetails TotalDetails { get; set; }
     }
 }

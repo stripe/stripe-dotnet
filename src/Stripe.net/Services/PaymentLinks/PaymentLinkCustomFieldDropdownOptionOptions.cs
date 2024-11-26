@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("label")]
 #endif
-
         public string Label { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
 #endif
-
         public string Value { get; set; }
     }
 }

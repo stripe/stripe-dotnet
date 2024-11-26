@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand")]
 #endif
-
         public string Brand { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("case_type")]
 #endif
-
         public string CaseType { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_reason_code")]
 #endif
-
         public string NetworkReasonCode { get; set; }
     }
 }

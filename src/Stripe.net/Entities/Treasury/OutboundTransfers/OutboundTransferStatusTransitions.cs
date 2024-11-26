@@ -14,60 +14,44 @@ namespace Stripe.Treasury
         /// Timestamp describing when an OutboundTransfer changed status to <c>canceled</c>.
         /// </summary>
         [JsonProperty("canceled_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("canceled_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("canceled_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
         /// Timestamp describing when an OutboundTransfer changed status to <c>failed</c>.
         /// </summary>
         [JsonProperty("failed_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("failed_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failed_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? FailedAt { get; set; }
 
         /// <summary>
         /// Timestamp describing when an OutboundTransfer changed status to <c>posted</c>.
         /// </summary>
         [JsonProperty("posted_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("posted_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("posted_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? PostedAt { get; set; }
 
         /// <summary>
         /// Timestamp describing when an OutboundTransfer changed status to <c>returned</c>.
         /// </summary>
         [JsonProperty("returned_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("returned_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("returned_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ReturnedAt { get; set; }
     }
 }

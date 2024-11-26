@@ -15,7 +15,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_mapping")]
 #endif
-
         public MeterCustomerMappingOptions CustomerMapping { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_aggregation")]
 #endif
-
         public MeterDefaultAggregationOptions DefaultAggregation { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
 #endif
-
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_name")]
 #endif
-
         public string EventName { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_time_window")]
 #endif
-
         public string EventTimeWindow { get; set; }
 
         /// <summary>
@@ -67,7 +62,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value_settings")]
 #endif
-
         public MeterValueSettingsOptions ValueSettings { get; set; }
     }
 }

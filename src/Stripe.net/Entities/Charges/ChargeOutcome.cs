@@ -20,7 +20,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_status")]
 #endif
-
         public string NetworkStatus { get; set; }
 
         /// <summary>
@@ -35,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
 #endif
-
         public string Reason { get; set; }
 
         /// <summary>
@@ -49,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("risk_level")]
 #endif
-
         public string RiskLevel { get; set; }
 
         /// <summary>
@@ -62,7 +59,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("risk_score")]
 #endif
-
         public long RiskScore { get; set; }
 
         #region Expandable Rule
@@ -75,7 +71,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string RuleId
         {
             get => this.InternalRule?.Id;
@@ -92,7 +87,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Radar.Rule Rule
         {
             get => this.InternalRule?.ExpandedObject;
@@ -100,16 +94,12 @@ namespace Stripe
         }
 
         [JsonProperty("rule")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("rule")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Radar.Rule>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("rule")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Radar.Rule>))]
 #endif
-
         internal ExpandableField<Radar.Rule> InternalRule { get; set; }
         #endregion
 
@@ -121,7 +111,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("seller_message")]
 #endif
-
         public string SellerMessage { get; set; }
 
         /// <summary>
@@ -134,7 +123,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

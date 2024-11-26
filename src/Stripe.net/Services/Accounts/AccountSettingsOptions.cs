@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bacs_debit_payments")]
 #endif
-
         public AccountSettingsBacsDebitPaymentsOptions BacsDebitPayments { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("branding")]
 #endif
-
         public AccountSettingsBrandingOptions Branding { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_issuing")]
 #endif
-
         public AccountSettingsCardIssuingOptions CardIssuing { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_payments")]
 #endif
-
         public AccountSettingsCardPaymentsOptions CardPayments { get; set; }
 
         /// <summary>
@@ -56,7 +52,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoices")]
 #endif
-
         public AccountSettingsInvoicesOptions Invoices { get; set; }
 
         /// <summary>
@@ -66,7 +61,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payments")]
 #endif
-
         public AccountSettingsPaymentsOptions Payments { get; set; }
 
         /// <summary>
@@ -76,7 +70,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payouts")]
 #endif
-
         public AccountSettingsPayoutsOptions Payouts { get; set; }
 
         /// <summary>
@@ -86,7 +79,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("treasury")]
 #endif
-
         public AccountSettingsTreasuryOptions Treasury { get; set; }
     }
 }

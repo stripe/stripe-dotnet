@@ -19,7 +19,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string InvoiceId
         {
             get => this.InternalInvoice?.Id;
@@ -36,7 +35,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Invoice Invoice
         {
             get => this.InternalInvoice?.ExpandedObject;
@@ -44,16 +42,12 @@ namespace Stripe.Billing
         }
 
         [JsonProperty("invoice")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("invoice")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("invoice")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
 #endif
-
         internal ExpandableField<Invoice> InternalInvoice { get; set; }
         #endregion
 
@@ -64,7 +58,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_line_item")]
 #endif
-
         public string InvoiceLineItem { get; set; }
     }
 }

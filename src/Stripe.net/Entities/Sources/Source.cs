@@ -32,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -42,35 +41,30 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         [JsonProperty("ach_credit_transfer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ach_credit_transfer")]
 #endif
-
         public SourceAchCreditTransfer AchCreditTransfer { get; set; }
 
         [JsonProperty("ach_debit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ach_debit")]
 #endif
-
         public SourceAchDebit AchDebit { get; set; }
 
         [JsonProperty("acss_debit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("acss_debit")]
 #endif
-
         public SourceAcssDebit AcssDebit { get; set; }
 
         [JsonProperty("alipay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alipay")]
 #endif
-
         public SourceAlipay Alipay { get; set; }
 
         /// <summary>
@@ -83,35 +77,30 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long? Amount { get; set; }
 
         [JsonProperty("au_becs_debit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("au_becs_debit")]
 #endif
-
         public SourceAuBecsDebit AuBecsDebit { get; set; }
 
         [JsonProperty("bancontact")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bancontact")]
 #endif
-
         public SourceBancontact Bancontact { get; set; }
 
         [JsonProperty("card")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
 #endif
-
         public SourceCard Card { get; set; }
 
         [JsonProperty("card_present")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_present")]
 #endif
-
         public SourceCardPresent CardPresent { get; set; }
 
         /// <summary>
@@ -121,29 +110,23 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_secret")]
 #endif
-
         public string ClientSecret { get; set; }
 
         [JsonProperty("code_verification")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code_verification")]
 #endif
-
         public SourceCodeVerification CodeVerification { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -155,7 +138,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -166,14 +148,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         [JsonProperty("eps")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eps")]
 #endif
-
         public SourceEps Eps { get; set; }
 
         /// <summary>
@@ -184,28 +164,24 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flow")]
 #endif
-
         public string Flow { get; set; }
 
         [JsonProperty("giropay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("giropay")]
 #endif
-
         public SourceGiropay Giropay { get; set; }
 
         [JsonProperty("ideal")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ideal")]
 #endif
-
         public SourceIdeal Ideal { get; set; }
 
         [JsonProperty("klarna")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("klarna")]
 #endif
-
         public SourceKlarna Klarna { get; set; }
 
         /// <summary>
@@ -216,7 +192,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -228,14 +203,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("multibanco")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("multibanco")]
 #endif
-
         public SourceMultibanco Multibanco { get; set; }
 
         /// <summary>
@@ -246,56 +219,48 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owner")]
 #endif
-
         public SourceOwner Owner { get; set; }
 
         [JsonProperty("p24")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("p24")]
 #endif
-
         public SourceP24 P24 { get; set; }
 
         [JsonProperty("receiver")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("receiver")]
 #endif
-
         public SourceReceiver Receiver { get; set; }
 
         [JsonProperty("redirect")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("redirect")]
 #endif
-
         public SourceRedirect Redirect { get; set; }
 
         [JsonProperty("sepa_credit_transfer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_credit_transfer")]
 #endif
-
         public SourceSepaCreditTransfer SepaCreditTransfer { get; set; }
 
         [JsonProperty("sepa_debit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]
 #endif
-
         public SourceSepaDebit SepaDebit { get; set; }
 
         [JsonProperty("sofort")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sofort")]
 #endif
-
         public SourceSofort Sofort { get; set; }
 
         [JsonProperty("source_order")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_order")]
 #endif
-
         public SourceSourceOrder SourceOrder { get; set; }
 
         /// <summary>
@@ -306,7 +271,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
 #endif
-
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -318,14 +282,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         [JsonProperty("three_d_secure")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("three_d_secure")]
 #endif
-
         public SourceThreeDSecure ThreeDSecure { get; set; }
 
         /// <summary>
@@ -346,7 +308,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -359,14 +320,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage")]
 #endif
-
         public string Usage { get; set; }
 
         [JsonProperty("wechat")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wechat")]
 #endif
-
         public SourceWechat Wechat { get; set; }
     }
 }

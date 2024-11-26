@@ -16,7 +16,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long? Amount { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
 #endif
-
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -61,7 +57,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -71,7 +66,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("origin_payment_method")]
 #endif
-
         public string OriginPaymentMethod { get; set; }
 
         /// <summary>
@@ -82,7 +76,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
 #endif
-
         public string StatementDescriptor { get; set; }
     }
 }

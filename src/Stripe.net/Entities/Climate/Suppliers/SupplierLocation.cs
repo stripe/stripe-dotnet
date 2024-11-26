@@ -15,7 +15,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("city")]
 #endif
-
         public string City { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
 #endif
-
         public string Country { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("latitude")]
 #endif
-
         public decimal? Latitude { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("longitude")]
 #endif
-
         public decimal? Longitude { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("region")]
 #endif
-
         public string Region { get; set; }
     }
 }

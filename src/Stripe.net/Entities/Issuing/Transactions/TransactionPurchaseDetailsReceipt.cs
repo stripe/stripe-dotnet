@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public decimal? Quantity { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("total")]
 #endif
-
         public long? Total { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_cost")]
 #endif
-
         public long? UnitCost { get; set; }
     }
 }

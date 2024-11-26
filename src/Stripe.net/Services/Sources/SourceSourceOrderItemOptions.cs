@@ -12,21 +12,18 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long? Amount { get; set; }
 
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         [JsonProperty("description")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -36,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("parent")]
 #endif
-
         public string Parent { get; set; }
 
         /// <summary>
@@ -47,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -57,7 +52,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

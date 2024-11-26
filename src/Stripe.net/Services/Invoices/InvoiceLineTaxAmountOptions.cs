@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long? Amount { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rate_data")]
 #endif
-
         public InvoiceLineTaxAmountTaxRateDataOptions TaxRateData { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxable_amount")]
 #endif
-
         public long? TaxableAmount { get; set; }
     }
 }

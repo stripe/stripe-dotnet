@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available")]
 #endif
-
         public List<string> Available { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferred")]
 #endif
-
         public string Preferred { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Stripe.Apps
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Apps
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("user")]
 #endif
-
         public string User { get; set; }
     }
 }

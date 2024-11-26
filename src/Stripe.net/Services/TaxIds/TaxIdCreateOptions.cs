@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owner")]
 #endif
-
         public TaxIdOwnerOptions Owner { get; set; }
 
         /// <summary>
@@ -56,7 +55,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -66,7 +64,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
 #endif
-
         public string Value { get; set; }
     }
 }

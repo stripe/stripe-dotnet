@@ -16,14 +16,12 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_reference_id")]
 #endif
-
         public string ClientReferenceId { get; set; }
 
         [JsonProperty("related_customer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_customer")]
 #endif
-
         public string RelatedCustomer { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

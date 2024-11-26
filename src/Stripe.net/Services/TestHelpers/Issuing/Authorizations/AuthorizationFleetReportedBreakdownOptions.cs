@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fuel")]
 #endif
-
         public AuthorizationFleetReportedBreakdownFuelOptions Fuel { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("non_fuel")]
 #endif
-
         public AuthorizationFleetReportedBreakdownNonFuelOptions NonFuel { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax")]
 #endif
-
         public AuthorizationFleetReportedBreakdownTaxOptions Tax { get; set; }
     }
 }

@@ -12,7 +12,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("advancing")]
 #endif
-
         public TestClockStatusDetailsAdvancing Advancing { get; set; }
     }
 }

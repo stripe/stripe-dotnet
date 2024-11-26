@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("comment")]
 #endif
-
         public string Comment { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("feedback")]
 #endif
-
         public string Feedback { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
 #endif
-
         public string Reason { get; set; }
     }
 }

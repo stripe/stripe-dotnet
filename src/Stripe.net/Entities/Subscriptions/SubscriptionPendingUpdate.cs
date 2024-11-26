@@ -17,15 +17,11 @@ namespace Stripe
         /// invoices. The timestamp is in UTC format.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_cycle_anchor")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -33,15 +29,11 @@ namespace Stripe
         /// longer applied.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -52,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_items")]
 #endif
-
         public List<SubscriptionItem> SubscriptionItems { get; set; }
 
         /// <summary>
@@ -60,15 +51,11 @@ namespace Stripe
         /// being charged for the first time, if the update is applied.
         /// </summary>
         [JsonProperty("trial_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("trial_end")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_end")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
@@ -82,7 +69,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_from_plan")]
 #endif
-
         public bool? TrialFromPlan { get; set; }
     }
 }

@@ -21,7 +21,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
 #endif
-
         public bool Active { get; set; }
 
         /// <summary>
@@ -53,7 +50,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -63,7 +59,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
 #endif
-
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -74,7 +69,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -84,7 +78,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
     }
 }

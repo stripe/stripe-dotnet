@@ -25,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -35,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         #region Expandable Account
@@ -52,7 +50,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string AccountId
         {
             get => this.InternalAccount?.Id;
@@ -73,7 +70,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Account Account
         {
             get => this.InternalAccount?.ExpandedObject;
@@ -81,16 +77,12 @@ namespace Stripe
         }
 
         [JsonProperty("account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("account")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
-
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
@@ -101,7 +93,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_city")]
 #endif
-
         public string AddressCity { get; set; }
 
         /// <summary>
@@ -111,7 +102,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_country")]
 #endif
-
         public string AddressCountry { get; set; }
 
         /// <summary>
@@ -121,7 +111,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_line1")]
 #endif
-
         public string AddressLine1 { get; set; }
 
         /// <summary>
@@ -132,7 +121,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_line1_check")]
 #endif
-
         public string AddressLine1Check { get; set; }
 
         /// <summary>
@@ -142,7 +130,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_line2")]
 #endif
-
         public string AddressLine2 { get; set; }
 
         /// <summary>
@@ -152,7 +139,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_state")]
 #endif
-
         public string AddressState { get; set; }
 
         /// <summary>
@@ -162,7 +148,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_zip")]
 #endif
-
         public string AddressZip { get; set; }
 
         /// <summary>
@@ -173,7 +158,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_zip_check")]
 #endif
-
         public string AddressZipCheck { get; set; }
 
         /// <summary>
@@ -185,7 +169,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available_payout_methods")]
 #endif
-
         public List<string> AvailablePayoutMethods { get; set; }
 
         /// <summary>
@@ -197,7 +180,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand")]
 #endif
-
         public string Brand { get; set; }
 
         /// <summary>
@@ -208,7 +190,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
 #endif
-
         public string Country { get; set; }
 
         /// <summary>
@@ -224,7 +205,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -238,7 +218,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -256,7 +235,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -264,16 +242,12 @@ namespace Stripe
         }
 
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
-
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -289,7 +263,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cvc_check")]
 #endif
-
         public string CvcCheck { get; set; }
 
         /// <summary>
@@ -302,7 +275,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_for_currency")]
 #endif
-
         public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
@@ -313,7 +285,6 @@ namespace Stripe
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -324,7 +295,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -334,7 +304,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dynamic_last4")]
 #endif
-
         public string DynamicLast4 { get; set; }
 
         /// <summary>
@@ -344,7 +313,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_month")]
 #endif
-
         public long ExpMonth { get; set; }
 
         /// <summary>
@@ -354,7 +322,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_year")]
 #endif
-
         public long ExpYear { get; set; }
 
         /// <summary>
@@ -370,7 +337,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
 #endif
-
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -381,7 +347,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding")]
 #endif
-
         public string Funding { get; set; }
 
         /// <summary>
@@ -392,7 +357,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iin")]
 #endif
-
         public string Iin { get; set; }
 
         /// <summary>
@@ -403,7 +367,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-
         public string Issuer { get; set; }
 
         /// <summary>
@@ -413,7 +376,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
 #endif
-
         public string Last4 { get; set; }
 
         /// <summary>
@@ -425,7 +387,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -435,14 +396,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         [JsonProperty("networks")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("networks")]
 #endif
-
         public CardNetworks Networks { get; set; }
 
         /// <summary>
@@ -455,7 +414,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -467,7 +425,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tokenization_method")]
 #endif
-
         public string TokenizationMethod { get; set; }
     }
 }

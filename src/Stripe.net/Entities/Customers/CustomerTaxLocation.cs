@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
 #endif
-
         public string Country { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source")]
 #endif
-
         public string Source { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("state")]
 #endif
-
         public string State { get; set; }
     }
 }

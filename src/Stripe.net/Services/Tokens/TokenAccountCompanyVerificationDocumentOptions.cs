@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("back")]
 #endif
-
         public string Back { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("front")]
 #endif
-
         public string Front { get; set; }
     }
 }

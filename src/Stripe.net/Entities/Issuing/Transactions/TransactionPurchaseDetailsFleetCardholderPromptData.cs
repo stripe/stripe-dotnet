@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("driver_id")]
 #endif
-
         public string DriverId { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("odometer")]
 #endif
-
         public long? Odometer { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unspecified_id")]
 #endif
-
         public string UnspecifiedId { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("user_id")]
 #endif
-
         public string UserId { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("vehicle_number")]
 #endif
-
         public string VehicleNumber { get; set; }
     }
 }

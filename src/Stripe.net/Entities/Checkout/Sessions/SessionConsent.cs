@@ -17,7 +17,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("promotions")]
 #endif
-
         public string Promotions { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terms_of_service")]
 #endif
-
         public string TermsOfService { get; set; }
     }
 }

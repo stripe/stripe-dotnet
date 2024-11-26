@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
 #endif
-
         public string Reference { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference_status")]
 #endif
-
         public string ReferenceStatus { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference_type")]
 #endif
-
         public string ReferenceType { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

@@ -14,15 +14,11 @@ namespace Stripe
         /// Only return payouts that are expected to arrive during the given date interval.
         /// </summary>
         [JsonProperty("arrival_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("arrival_date")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("arrival_date")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, DateRangeOptions> ArrivalDate { get; set; }
 
         /// <summary>
@@ -32,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("destination")]
 #endif
-
         public string Destination { get; set; }
 
         /// <summary>
@@ -43,7 +38,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

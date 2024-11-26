@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flat_amount")]
 #endif
-
         public long? FlatAmount { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flat_amount_decimal")]
 #endif
-
         public decimal? FlatAmountDecimal { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
 #endif
-
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount_decimal")]
 #endif
-
         public decimal? UnitAmountDecimal { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("up_to")]
 #endif
-
         public long? UpTo { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_reason")]
 #endif
-
         public string CancellationReason { get; set; }
     }
 }

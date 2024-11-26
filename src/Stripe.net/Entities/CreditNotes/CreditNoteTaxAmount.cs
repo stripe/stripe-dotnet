@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inclusive")]
 #endif
-
         public bool Inclusive { get; set; }
 
         #region Expandable TaxRate
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string TaxRateId
         {
             get => this.InternalTaxRate?.Id;
@@ -56,7 +53,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public TaxRate TaxRate
         {
             get => this.InternalTaxRate?.ExpandedObject;
@@ -64,16 +60,12 @@ namespace Stripe
         }
 
         [JsonProperty("tax_rate")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_rate")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<TaxRate>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("tax_rate")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TaxRate>))]
 #endif
-
         internal ExpandableField<TaxRate> InternalTaxRate { get; set; }
         #endregion
 
@@ -90,7 +82,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxability_reason")]
 #endif
-
         public string TaxabilityReason { get; set; }
 
         /// <summary>
@@ -100,7 +91,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxable_amount")]
 #endif
-
         public long? TaxableAmount { get; set; }
     }
 }

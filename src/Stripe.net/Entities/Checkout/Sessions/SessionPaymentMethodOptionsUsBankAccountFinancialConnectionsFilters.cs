@@ -18,7 +18,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_subcategories")]
 #endif
-
         public List<string> AccountSubcategories { get; set; }
     }
 }

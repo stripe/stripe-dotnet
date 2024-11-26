@@ -15,7 +15,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
 #endif
-
         public string ReturnUrl { get; set; }
     }
 }

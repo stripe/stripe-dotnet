@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
 #endif
-
         public SubscriptionPaymentSettingsPaymentMethodOptionsAcssDebitMandateOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -23,7 +22,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_method")]
 #endif
-
         public string VerificationMethod { get; set; }
     }
 }

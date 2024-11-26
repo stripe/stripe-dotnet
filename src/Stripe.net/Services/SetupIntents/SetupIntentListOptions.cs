@@ -21,7 +21,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("attach_to_self")]
 #endif
-
         public bool? AttachToSelf { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method")]
 #endif
-
         public string PaymentMethod { get; set; }
     }
 }

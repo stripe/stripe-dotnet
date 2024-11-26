@@ -16,7 +16,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
 #endif
-
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percentage_decimal")]
 #endif
-
         public string PercentageDecimal { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_type")]
 #endif
-
         public string TaxType { get; set; }
     }
 }

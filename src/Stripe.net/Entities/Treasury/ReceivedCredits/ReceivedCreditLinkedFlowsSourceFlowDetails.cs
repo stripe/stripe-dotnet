@@ -18,7 +18,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit_reversal")]
 #endif
-
         public CreditReversal CreditReversal { get; set; }
 
         /// <summary>
@@ -41,7 +40,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_payment")]
 #endif
-
         public OutboundPayment OutboundPayment { get; set; }
 
         /// <summary>
@@ -58,7 +56,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout")]
 #endif
-
         public Payout Payout { get; set; }
 
         /// <summary>
@@ -69,7 +66,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

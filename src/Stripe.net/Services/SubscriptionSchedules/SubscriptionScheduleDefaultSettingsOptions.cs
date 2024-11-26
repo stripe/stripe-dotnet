@@ -20,7 +20,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_percent")]
 #endif
-
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
 #endif
-
         public SubscriptionScheduleDefaultSettingsAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -45,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cycle_anchor")]
 #endif
-
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -56,7 +53,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_thresholds")]
 #endif
-
         public SubscriptionScheduleDefaultSettingsBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
@@ -71,7 +67,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection_method")]
 #endif
-
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -83,7 +78,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_payment_method")]
 #endif
-
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
@@ -95,7 +89,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -105,7 +98,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_settings")]
 #endif
-
         public SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
@@ -116,7 +108,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
 #endif
-
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -127,7 +118,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_data")]
 #endif
-
         public SubscriptionScheduleDefaultSettingsTransferDataOptions TransferData { get; set; }
     }
 }

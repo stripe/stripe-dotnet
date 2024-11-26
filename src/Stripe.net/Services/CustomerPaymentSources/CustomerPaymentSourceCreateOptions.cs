@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -29,14 +28,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source")]
 #endif
-
         public string Source { get; set; }
 
         [JsonProperty("validate")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("validate")]
 #endif
-
         public bool? Validate { get; set; }
     }
 }

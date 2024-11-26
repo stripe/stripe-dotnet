@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tracking_details")]
 #endif
-
         public OutboundPaymentTrackingDetailsOptions TrackingDetails { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_eligible")]
 #endif
-
         public long AmountEligible { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inbound_flows")]
 #endif
-
         public string InboundFlows { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_flows")]
 #endif
-
         public string OutboundFlows { get; set; }
     }
 }

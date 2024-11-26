@@ -23,7 +23,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -43,7 +41,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_zip")]
 #endif
-
         public string BillingZip { get; set; }
 
         #region Expandable Charge
@@ -56,7 +53,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string ChargeId
         {
             get => this.InternalCharge?.Id;
@@ -73,7 +69,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Charge Charge
         {
             get => this.InternalCharge?.ExpandedObject;
@@ -81,16 +76,12 @@ namespace Stripe
         }
 
         [JsonProperty("charge")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("charge")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif
-
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
@@ -105,22 +96,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("closed_reason")]
 #endif
-
         public string ClosedReason { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -130,7 +116,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip_address")]
 #endif
-
         public string IpAddress { get; set; }
 
         /// <summary>
@@ -142,7 +127,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip_address_location")]
 #endif
-
         public ReviewLocation IpAddressLocation { get; set; }
 
         /// <summary>
@@ -153,7 +137,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -163,7 +146,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("open")]
 #endif
-
         public bool Open { get; set; }
 
         /// <summary>
@@ -174,7 +156,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("opened_reason")]
 #endif
-
         public string OpenedReason { get; set; }
 
         #region Expandable PaymentIntent
@@ -187,7 +168,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
@@ -204,7 +184,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
@@ -212,16 +191,12 @@ namespace Stripe
         }
 
         [JsonProperty("payment_intent")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_intent")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif
-
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
@@ -234,7 +209,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
 #endif
-
         public string Reason { get; set; }
 
         /// <summary>
@@ -244,7 +218,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("session")]
 #endif
-
         public ReviewSession Session { get; set; }
     }
 }

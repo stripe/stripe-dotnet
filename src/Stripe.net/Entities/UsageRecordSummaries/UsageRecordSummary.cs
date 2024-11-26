@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice")]
 #endif
-
         public string Invoice { get; set; }
 
         /// <summary>
@@ -50,14 +47,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         [JsonProperty("period")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("period")]
 #endif
-
         public UsageRecordSummaryPeriod Period { get; set; }
 
         /// <summary>
@@ -67,7 +62,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_item")]
 #endif
-
         public string SubscriptionItem { get; set; }
 
         /// <summary>
@@ -77,7 +71,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("total_usage")]
 #endif
-
         public long TotalUsage { get; set; }
     }
 }

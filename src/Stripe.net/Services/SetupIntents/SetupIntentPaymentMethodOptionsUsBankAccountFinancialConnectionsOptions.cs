@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("filters")]
 #endif
-
         public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions Filters { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("permissions")]
 #endif
-
         public List<string> Permissions { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prefetch")]
 #endif
-
         public List<string> Prefetch { get; set; }
 
         /// <summary>
@@ -53,7 +50,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
 #endif
-
         public string ReturnUrl { get; set; }
     }
 }

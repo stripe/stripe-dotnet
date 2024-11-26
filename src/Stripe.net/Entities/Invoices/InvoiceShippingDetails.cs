@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public Address Address { get; set; }
 
         /// <summary>
@@ -22,7 +21,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("carrier")]
 #endif
-
         public string Carrier { get; set; }
 
         /// <summary>
@@ -32,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -42,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone")]
 #endif
-
         public string Phone { get; set; }
 
         /// <summary>
@@ -54,7 +50,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tracking_number")]
 #endif
-
         public string TrackingNumber { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("encrypted_number")]
 #endif
-
         public string EncryptedNumber { get; set; }
     }
 }

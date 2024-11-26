@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disable_stripe_user_authentication")]
 #endif
-
         public bool DisableStripeUserAuthentication { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_account_collection")]
 #endif
-
         public bool ExternalAccountCollection { get; set; }
     }
 }

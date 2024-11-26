@@ -16,7 +16,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("error_message")]
 #endif
-
         public string ErrorMessage { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request")]
 #endif
-
         public V1BillingMeterNoMeterFoundEventDataReasonErrorTypeSampleErrorRequest Request { get; set; }
     }
 }

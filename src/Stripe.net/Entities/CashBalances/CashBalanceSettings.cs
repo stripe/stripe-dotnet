@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reconciliation_mode")]
 #endif
-
         public string ReconciliationMode { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("using_merchant_default")]
 #endif
-
         public bool UsingMerchantDefault { get; set; }
     }
 }

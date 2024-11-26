@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ares_trans_status")]
 #endif
-
         public string AresTransStatus { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cryptogram")]
 #endif
-
         public string Cryptogram { get; set; }
 
         /// <summary>
@@ -40,7 +38,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("electronic_commerce_indicator")]
 #endif
-
         public string ElectronicCommerceIndicator { get; set; }
 
         /// <summary>
@@ -52,7 +49,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_options")]
 #endif
-
         public SetupIntentPaymentMethodOptionsCardThreeDSecureNetworkOptionsOptions NetworkOptions { get; set; }
 
         /// <summary>
@@ -63,7 +59,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requestor_challenge_indicator")]
 #endif
-
         public string RequestorChallengeIndicator { get; set; }
 
         /// <summary>
@@ -74,7 +69,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
 #endif
-
         public string TransactionId { get; set; }
 
         /// <summary>
@@ -85,7 +79,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("version")]
 #endif
-
         public string Version { get; set; }
     }
 }

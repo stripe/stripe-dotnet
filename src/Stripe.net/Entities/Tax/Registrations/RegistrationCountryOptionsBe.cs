@@ -12,7 +12,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("standard")]
 #endif
-
         public RegistrationCountryOptionsBeStandard Standard { get; set; }
 
         /// <summary>
@@ -23,7 +22,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

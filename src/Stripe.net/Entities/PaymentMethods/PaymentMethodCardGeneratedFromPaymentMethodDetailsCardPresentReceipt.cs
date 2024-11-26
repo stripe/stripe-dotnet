@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_type")]
 #endif
-
         public string AccountType { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_cryptogram")]
 #endif
-
         public string ApplicationCryptogram { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_preferred_name")]
 #endif
-
         public string ApplicationPreferredName { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_code")]
 #endif
-
         public string AuthorizationCode { get; set; }
 
         /// <summary>
@@ -56,7 +52,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_response_code")]
 #endif
-
         public string AuthorizationResponseCode { get; set; }
 
         /// <summary>
@@ -68,7 +63,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cardholder_verification_method")]
 #endif
-
         public string CardholderVerificationMethod { get; set; }
 
         /// <summary>
@@ -78,7 +72,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dedicated_file_name")]
 #endif
-
         public string DedicatedFileName { get; set; }
 
         /// <summary>
@@ -88,7 +81,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terminal_verification_results")]
 #endif
-
         public string TerminalVerificationResults { get; set; }
 
         /// <summary>
@@ -98,7 +90,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_status_information")]
 #endif
-
         public string TransactionStatusInformation { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
 #endif
-
         public bool? Active { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_default")]
 #endif
-
         public bool? IsDefault { get; set; }
     }
 }

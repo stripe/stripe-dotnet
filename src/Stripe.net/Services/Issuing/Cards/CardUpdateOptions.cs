@@ -17,7 +17,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_reason")]
 #endif
-
         public string CancellationReason { get; set; }
 
         /// <summary>
@@ -30,14 +29,12 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("personalization_design")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("personalization_design")]
 #endif
-
         public string PersonalizationDesign { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pin")]
 #endif
-
         public CardPinOptions Pin { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping")]
 #endif
-
         public CardShippingOptions Shipping { get; set; }
 
         /// <summary>
@@ -69,7 +64,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("spending_controls")]
 #endif
-
         public CardSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
@@ -83,7 +77,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

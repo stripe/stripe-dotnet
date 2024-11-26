@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_discount")]
 #endif
-
         public long AmountDiscount { get; set; }
 
         /// <summary>
@@ -49,7 +46,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_subtotal")]
 #endif
-
         public long AmountSubtotal { get; set; }
 
         /// <summary>
@@ -59,7 +55,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_tax")]
 #endif
-
         public long AmountTax { get; set; }
 
         /// <summary>
@@ -69,7 +64,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_total")]
 #endif
-
         public long AmountTotal { get; set; }
 
         /// <summary>
@@ -81,7 +75,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -92,7 +85,6 @@ namespace Stripe
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -103,7 +95,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -113,7 +104,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<LineItemDiscount> Discounts { get; set; }
 
         /// <summary>
@@ -123,7 +113,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
 #endif
-
         public Price Price { get; set; }
 
         /// <summary>
@@ -133,7 +122,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -143,7 +131,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxes")]
 #endif
-
         public List<LineItemTax> Taxes { get; set; }
     }
 }

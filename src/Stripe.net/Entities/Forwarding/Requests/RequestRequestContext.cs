@@ -15,7 +15,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("destination_duration")]
 #endif
-
         public long DestinationDuration { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("destination_ip_address")]
 #endif
-
         public string DestinationIpAddress { get; set; }
     }
 }

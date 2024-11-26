@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long? Amount { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -40,7 +38,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_line_item")]
 #endif
-
         public string InvoiceLineItem { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -61,7 +57,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_amounts")]
 #endif
-
         public List<CreditNoteLineTaxAmountOptions> TaxAmounts { get; set; }
 
         /// <summary>
@@ -72,7 +67,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
 #endif
-
         public List<string> TaxRates { get; set; }
 
         /// <summary>
@@ -84,7 +78,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -96,7 +89,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
 #endif
-
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -108,7 +100,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount_decimal")]
 #endif
-
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

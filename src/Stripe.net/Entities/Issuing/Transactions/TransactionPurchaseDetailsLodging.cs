@@ -14,15 +14,11 @@ namespace Stripe.Issuing
         /// The time of checking into the lodging.
         /// </summary>
         [JsonProperty("check_in_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("check_in_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("check_in_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? CheckInAt { get; set; }
 
         /// <summary>
@@ -32,7 +28,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nights")]
 #endif
-
         public long? Nights { get; set; }
     }
 }

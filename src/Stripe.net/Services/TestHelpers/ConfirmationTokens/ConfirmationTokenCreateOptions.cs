@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method")]
 #endif
-
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_data")]
 #endif
-
         public ConfirmationTokenPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
 #endif
-
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -52,7 +49,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
-
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -62,7 +58,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping")]
 #endif
-
         public ConfirmationTokenShippingOptions Shipping { get; set; }
     }
 }

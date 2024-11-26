@@ -12,7 +12,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public CreditBalanceTransactionDebitAmount Amount { get; set; }
 
         /// <summary>
@@ -23,7 +22,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credits_applied")]
 #endif
-
         public CreditBalanceTransactionDebitCreditsApplied CreditsApplied { get; set; }
 
         /// <summary>
@@ -34,7 +32,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

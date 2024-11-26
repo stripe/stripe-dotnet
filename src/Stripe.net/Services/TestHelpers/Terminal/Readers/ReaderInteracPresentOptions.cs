@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("number")]
 #endif
-
         public string Number { get; set; }
     }
 }

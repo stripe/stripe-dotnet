@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
 #endif
-
         public SubscriptionAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -29,22 +28,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection_method")]
 #endif
-
         public string CollectionMethod { get; set; }
 
         /// <summary>
         /// Only return subscriptions whose current_period_end falls within the given date interval.
         /// </summary>
         [JsonProperty("current_period_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("current_period_end")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_end")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodEnd { get; set; }
 
         /// <summary>
@@ -52,15 +46,11 @@ namespace Stripe
         /// interval.
         /// </summary>
         [JsonProperty("current_period_start")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("current_period_start")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_start")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodStart { get; set; }
 
         /// <summary>
@@ -70,7 +60,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -80,7 +69,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("plan")]
 #endif
-
         public string Plan { get; set; }
 
         /// <summary>
@@ -90,7 +78,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
 #endif
-
         public string Price { get; set; }
 
         /// <summary>
@@ -109,7 +96,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -121,7 +107,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("test_clock")]
 #endif
-
         public string TestClock { get; set; }
     }
 }

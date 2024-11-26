@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_tax_ids")]
 #endif
-
         public List<string> AccountTaxIds { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-
         public SubscriptionInvoiceSettingsIssuerOptions Issuer { get; set; }
     }
 }

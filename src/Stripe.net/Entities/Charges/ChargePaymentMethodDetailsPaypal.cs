@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payer_email")]
 #endif
-
         public string PayerEmail { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payer_id")]
 #endif
-
         public string PayerId { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payer_name")]
 #endif
-
         public string PayerName { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("seller_protection")]
 #endif
-
         public ChargePaymentMethodDetailsPaypalSellerProtection SellerProtection { get; set; }
 
         /// <summary>
@@ -58,7 +54,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
 #endif
-
         public string TransactionId { get; set; }
     }
 }

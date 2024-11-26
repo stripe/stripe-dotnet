@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("confirmation_number")]
 #endif
-
         public string ConfirmationNumber { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_after_days")]
 #endif
-
         public long? ExpiresAfterDays { get; set; }
 
         /// <summary>
@@ -39,15 +37,11 @@ namespace Stripe
         /// <c>expires_after_days</c> or <c>expires_at</c> may be set.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -58,7 +52,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_description")]
 #endif
-
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -85,7 +78,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
-
         public string SetupFutureUsage { get; set; }
     }
 }

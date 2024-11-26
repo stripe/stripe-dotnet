@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("returned_details")]
 #endif
-
         public OutboundTransferReturnedDetailsOptions ReturnedDetails { get; set; }
     }
 }

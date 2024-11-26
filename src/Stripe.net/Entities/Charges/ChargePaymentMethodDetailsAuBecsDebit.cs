@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bsb_number")]
 #endif
-
         public string BsbNumber { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
 #endif
-
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
 #endif
-
         public string Last4 { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate")]
 #endif
-
         public string Mandate { get; set; }
     }
 }

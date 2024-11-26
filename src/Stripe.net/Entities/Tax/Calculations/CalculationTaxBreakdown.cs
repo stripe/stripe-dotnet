@@ -16,7 +16,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         /// <summary>
@@ -26,14 +25,12 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inclusive")]
 #endif
-
         public bool Inclusive { get; set; }
 
         [JsonProperty("tax_rate_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rate_details")]
 #endif
-
         public CalculationTaxBreakdownTaxRateDetails TaxRateDetails { get; set; }
 
         /// <summary>
@@ -49,7 +46,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxability_reason")]
 #endif
-
         public string TaxabilityReason { get; set; }
 
         /// <summary>
@@ -60,7 +56,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxable_amount")]
 #endif
-
         public long TaxableAmount { get; set; }
     }
 }

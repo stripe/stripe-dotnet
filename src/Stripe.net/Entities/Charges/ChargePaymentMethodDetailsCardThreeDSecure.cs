@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authentication_flow")]
 #endif
-
         public string AuthenticationFlow { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("electronic_commerce_indicator")]
 #endif
-
         public string ElectronicCommerceIndicator { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exemption_indicator")]
 #endif
-
         public string ExemptionIndicator { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exemption_indicator_applied")]
 #endif
-
         public bool ExemptionIndicatorApplied { get; set; }
 
         /// <summary>
@@ -62,7 +58,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result")]
 #endif
-
         public string Result { get; set; }
 
         /// <summary>
@@ -75,7 +70,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result_reason")]
 #endif
-
         public string ResultReason { get; set; }
 
         /// <summary>
@@ -86,7 +80,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
 #endif
-
         public string TransactionId { get; set; }
 
         /// <summary>
@@ -97,7 +90,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("version")]
 #endif
-
         public string Version { get; set; }
     }
 }

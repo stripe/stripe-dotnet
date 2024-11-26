@@ -21,7 +21,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
 #endif
-
         public bool Active { get; set; }
 
         #region Expandable Application
@@ -54,7 +51,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string ApplicationId
         {
             get => this.InternalApplication?.Id;
@@ -71,7 +67,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
@@ -79,16 +74,12 @@ namespace Stripe.BillingPortal
         }
 
         [JsonProperty("application")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("application")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif
-
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
@@ -96,22 +87,17 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_profile")]
 #endif
-
         public ConfigurationBusinessProfile BusinessProfile { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -124,14 +110,12 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_return_url")]
 #endif
-
         public string DefaultReturnUrl { get; set; }
 
         [JsonProperty("features")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
 #endif
-
         public ConfigurationFeatures Features { get; set; }
 
         /// <summary>
@@ -143,7 +127,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_default")]
 #endif
-
         public bool IsDefault { get; set; }
 
         /// <summary>
@@ -154,14 +137,12 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         [JsonProperty("login_page")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("login_page")]
 #endif
-
         public ConfigurationLoginPage LoginPage { get; set; }
 
         /// <summary>
@@ -173,22 +154,17 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Time at which the object was last updated. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("updated")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("updated")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("updated")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

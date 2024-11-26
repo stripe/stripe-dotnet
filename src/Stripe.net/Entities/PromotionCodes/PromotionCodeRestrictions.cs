@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency_options")]
 #endif
-
         public Dictionary<string, PromotionCodeRestrictionsCurrencyOptions> CurrencyOptions { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_time_transaction")]
 #endif
-
         public bool FirstTimeTransaction { get; set; }
 
         /// <summary>
@@ -40,7 +38,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minimum_amount")]
 #endif
-
         public long? MinimumAmount { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minimum_amount_currency")]
 #endif
-
         public string MinimumAmountCurrency { get; set; }
     }
 }

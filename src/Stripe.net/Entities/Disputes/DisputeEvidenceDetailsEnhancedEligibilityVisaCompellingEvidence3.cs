@@ -21,7 +21,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("required_actions")]
 #endif
-
         public List<string> RequiredActions { get; set; }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

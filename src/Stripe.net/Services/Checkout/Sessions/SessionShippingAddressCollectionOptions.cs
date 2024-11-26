@@ -48,7 +48,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allowed_countries")]
 #endif
-
         public List<string> AllowedCountries { get; set; }
     }
 }

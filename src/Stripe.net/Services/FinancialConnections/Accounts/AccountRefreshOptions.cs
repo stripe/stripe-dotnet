@@ -17,7 +17,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
 #endif
-
         public List<string> Features { get; set; }
     }
 }

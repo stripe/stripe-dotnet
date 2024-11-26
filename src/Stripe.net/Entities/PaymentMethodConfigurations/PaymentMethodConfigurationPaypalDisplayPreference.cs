@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("overridable")]
 #endif
-
         public bool? Overridable { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preference")]
 #endif
-
         public string Preference { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
 #endif
-
         public string Value { get; set; }
     }
 }

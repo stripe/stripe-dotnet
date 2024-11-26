@@ -17,7 +17,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("beneficiary")]
 #endif
-
         public OrderBeneficiaryOptions Beneficiary { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

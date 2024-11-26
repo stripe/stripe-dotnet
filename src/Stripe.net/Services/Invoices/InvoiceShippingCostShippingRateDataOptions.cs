@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delivery_estimate")]
 #endif
-
         public InvoiceShippingCostShippingRateDataDeliveryEstimateOptions DeliveryEstimate { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
 #endif
-
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fixed_amount")]
 #endif
-
         public InvoiceShippingCostShippingRateDataFixedAmountOptions FixedAmount { get; set; }
 
         /// <summary>
@@ -52,7 +49,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -64,7 +60,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
 #endif
-
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -75,7 +70,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_code")]
 #endif
-
         public string TaxCode { get; set; }
 
         /// <summary>
@@ -85,7 +79,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

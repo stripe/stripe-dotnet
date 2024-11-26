@@ -15,7 +15,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
 #endif
-
         public string Email { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("error")]
 #endif
-
         public VerificationReportEmailError Error { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

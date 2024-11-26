@@ -18,7 +18,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long? Amount { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product")]
 #endif
-
         public string Product { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -53,7 +50,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
 #endif
-
         public string Reference { get; set; }
 
         /// <summary>
@@ -64,7 +60,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
 #endif
-
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_code")]
 #endif
-
         public string TaxCode { get; set; }
     }
 }

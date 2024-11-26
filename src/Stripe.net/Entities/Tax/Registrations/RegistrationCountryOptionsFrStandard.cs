@@ -16,7 +16,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("place_of_supply_scheme")]
 #endif
-
         public string PlaceOfSupplyScheme { get; set; }
     }
 }

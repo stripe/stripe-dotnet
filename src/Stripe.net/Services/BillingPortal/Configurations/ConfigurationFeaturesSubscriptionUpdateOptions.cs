@@ -18,7 +18,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_allowed_updates")]
 #endif
-
         public List<string> DefaultAllowedUpdates { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
 #endif
-
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("products")]
 #endif
-
         public List<ConfigurationFeaturesSubscriptionUpdateProductOptions> Products { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
 #endif
-
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -61,7 +57,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule_at_period_end")]
 #endif
-
         public ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEndOptions ScheduleAtPeriodEnd { get; set; }
     }
 }

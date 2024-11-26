@@ -16,7 +16,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("elections")]
 #endif
-
         public List<RegistrationCountryOptionsUsStateSalesTaxElectionOptions> Elections { get; set; }
     }
 }

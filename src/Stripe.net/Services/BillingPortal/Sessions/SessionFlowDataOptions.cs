@@ -15,7 +15,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("after_completion")]
 #endif
-
         public SessionFlowDataAfterCompletionOptions AfterCompletion { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_cancel")]
 #endif
-
         public SessionFlowDataSubscriptionCancelOptions SubscriptionCancel { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_update")]
 #endif
-
         public SessionFlowDataSubscriptionUpdateOptions SubscriptionUpdate { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_update_confirm")]
 #endif
-
         public SessionFlowDataSubscriptionUpdateConfirmOptions SubscriptionUpdateConfirm { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

@@ -14,45 +14,33 @@ namespace Stripe
         /// The time that the quote was accepted. Measured in seconds since Unix epoch.
         /// </summary>
         [JsonProperty("accepted_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("accepted_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("accepted_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? AcceptedAt { get; set; }
 
         /// <summary>
         /// The time that the quote was canceled. Measured in seconds since Unix epoch.
         /// </summary>
         [JsonProperty("canceled_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("canceled_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("canceled_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
         /// The time that the quote was finalized. Measured in seconds since Unix epoch.
         /// </summary>
         [JsonProperty("finalized_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("finalized_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("finalized_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? FinalizedAt { get; set; }
     }
 }

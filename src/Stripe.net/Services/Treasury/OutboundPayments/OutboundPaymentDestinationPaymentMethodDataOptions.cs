@@ -17,7 +17,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_details")]
 #endif
-
         public OutboundPaymentDestinationPaymentMethodDataBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
 #endif
-
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -54,7 +51,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -64,7 +60,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]
 #endif
-
         public OutboundPaymentDestinationPaymentMethodDataUsBankAccountOptions UsBankAccount { get; set; }
     }
 }

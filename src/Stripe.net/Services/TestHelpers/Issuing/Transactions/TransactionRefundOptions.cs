@@ -17,7 +17,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_amount")]
 #endif
-
         public long? RefundAmount { get; set; }
     }
 }

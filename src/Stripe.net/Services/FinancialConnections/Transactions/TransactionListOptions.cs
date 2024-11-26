@@ -17,7 +17,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account")]
 #endif
-
         public string Account { get; set; }
 
         /// <summary>
@@ -26,15 +25,11 @@ namespace Stripe.FinancialConnections
         /// options:.
         /// </summary>
         [JsonProperty("transacted_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transacted_at")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transacted_at")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, DateRangeOptions> TransactedAt { get; set; }
 
         /// <summary>
@@ -45,7 +40,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_refresh")]
 #endif
-
         public TransactionTransactionRefreshOptions TransactionRefresh { get; set; }
     }
 }

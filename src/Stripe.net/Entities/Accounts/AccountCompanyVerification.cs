@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("document")]
 #endif
-
         public AccountCompanyVerificationDocument Document { get; set; }
     }
 }

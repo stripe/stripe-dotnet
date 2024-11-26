@@ -16,22 +16,17 @@ namespace Stripe
         /// this particular dispute.
         /// </summary>
         [JsonProperty("due_by")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("due_by")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("due_by")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? DueBy { get; set; }
 
         [JsonProperty("enhanced_eligibility")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enhanced_eligibility")]
 #endif
-
         public DisputeEvidenceDetailsEnhancedEligibility EnhancedEligibility { get; set; }
 
         /// <summary>
@@ -41,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("has_evidence")]
 #endif
-
         public bool HasEvidence { get; set; }
 
         /// <summary>
@@ -53,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("past_due")]
 #endif
-
         public bool PastDue { get; set; }
 
         /// <summary>
@@ -64,7 +57,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("submission_count")]
 #endif
-
         public long SubmissionCount { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disputed_transaction")]
 #endif
-
         public DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3DisputedTransaction DisputedTransaction { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prior_undisputed_transactions")]
 #endif
-
         public List<DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3PriorUndisputedTransaction> PriorUndisputedTransactions { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aba")]
 #endif
-
         public FinancialAccountFeaturesFinancialAddressesAbaOptions Aba { get; set; }
     }
 }

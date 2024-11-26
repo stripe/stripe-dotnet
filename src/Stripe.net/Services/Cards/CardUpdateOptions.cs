@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_type")]
 #endif
-
         public string AccountType { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_city")]
 #endif
-
         public string AddressCity { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_country")]
 #endif
-
         public string AddressCountry { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_line1")]
 #endif
-
         public string AddressLine1 { get; set; }
 
         /// <summary>
@@ -58,7 +54,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_line2")]
 #endif
-
         public string AddressLine2 { get; set; }
 
         /// <summary>
@@ -68,7 +63,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_state")]
 #endif
-
         public string AddressState { get; set; }
 
         /// <summary>
@@ -78,7 +72,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_zip")]
 #endif
-
         public string AddressZip { get; set; }
 
         /// <summary>
@@ -88,7 +81,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("documents")]
 #endif
-
         public CardDocumentsOptions Documents { get; set; }
 
         /// <summary>
@@ -98,7 +90,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_month")]
 #endif
-
         public long? ExpMonth { get; set; }
 
         /// <summary>
@@ -108,7 +99,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_year")]
 #endif
-
         public long? ExpYear { get; set; }
 
         /// <summary>
@@ -121,7 +111,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -131,14 +120,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         [JsonProperty("validate")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("validate")]
 #endif
-
         public bool? Validate { get; set; }
     }
 }

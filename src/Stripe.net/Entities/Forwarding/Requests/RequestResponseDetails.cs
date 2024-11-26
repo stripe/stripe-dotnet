@@ -16,7 +16,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("body")]
 #endif
-
         public string Body { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("headers")]
 #endif
-
         public List<RequestResponseDetailsHeader> Headers { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.Forwarding
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public long Status { get; set; }
     }
 }

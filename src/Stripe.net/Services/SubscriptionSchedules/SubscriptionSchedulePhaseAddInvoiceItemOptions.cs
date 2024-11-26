@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<SubscriptionSchedulePhaseAddInvoiceItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
 #endif
-
         public string Price { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
 #endif
-
         public SubscriptionSchedulePhaseAddInvoiceItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -58,7 +54,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
 #endif
-
         public List<string> TaxRates { get; set; }
     }
 }

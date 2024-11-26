@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aggregate_usage")]
 #endif
-
         public string AggregateUsage { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
 #endif
-
         public string Interval { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_count")]
 #endif
-
         public long IntervalCount { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("meter")]
 #endif
-
         public string Meter { get; set; }
 
         /// <summary>
@@ -62,7 +58,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_period_days")]
 #endif
-
         public long? TrialPeriodDays { get; set; }
 
         /// <summary>
@@ -76,7 +71,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage_type")]
 #endif
-
         public string UsageType { get; set; }
     }
 }

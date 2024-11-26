@@ -12,14 +12,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cashapp_handle_redirect_or_display_qr_code")]
 #endif
-
         public SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode CashappHandleRedirectOrDisplayQrCode { get; set; }
 
         [JsonProperty("redirect_to_url")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("redirect_to_url")]
 #endif
-
         public SetupIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 
         /// <summary>
@@ -31,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -43,14 +40,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("use_stripe_sdk")]
 #endif
-
         public SetupIntentNextActionUseStripeSdk UseStripeSdk { get; set; }
 
         [JsonProperty("verify_with_microdeposits")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verify_with_microdeposits")]
 #endif
-
         public SetupIntentNextActionVerifyWithMicrodeposits VerifyWithMicrodeposits { get; set; }
     }
 }

@@ -21,7 +21,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]
 #endif
-
         public string Code { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("error_count")]
 #endif
-
         public long ErrorCount { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sample_errors")]
 #endif
-
         public List<V1BillingMeterErrorReportTriggeredEventDataReasonErrorTypeSampleError> SampleErrors { get; set; }
     }
 }

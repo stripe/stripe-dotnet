@@ -17,7 +17,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_after_days")]
 #endif
-
         public long? ExpiresAfterDays { get; set; }
 
         /// <summary>
@@ -45,7 +44,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
-
         public string SetupFutureUsage { get; set; }
     }
 }

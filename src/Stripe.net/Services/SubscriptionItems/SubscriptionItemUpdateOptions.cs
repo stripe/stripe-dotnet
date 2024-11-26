@@ -20,7 +20,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_thresholds")]
 #endif
-
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<SubscriptionItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -43,7 +41,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -54,7 +51,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("off_session")]
 #endif
-
         public bool? OffSession { get; set; }
 
         /// <summary>
@@ -92,7 +88,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_behavior")]
 #endif
-
         public string PaymentBehavior { get; set; }
 
         /// <summary>
@@ -102,7 +97,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("plan")]
 #endif
-
         public string Plan { get; set; }
 
         /// <summary>
@@ -114,7 +108,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
 #endif
-
         public string Price { get; set; }
 
         /// <summary>
@@ -125,7 +118,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
 #endif
-
         public SubscriptionItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -140,7 +132,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
 #endif
-
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -150,15 +141,11 @@ namespace Stripe
         /// endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("proration_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ProrationDate { get; set; }
 
         /// <summary>
@@ -168,7 +155,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -182,7 +168,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
 #endif
-
         public List<string> TaxRates { get; set; }
     }
 }

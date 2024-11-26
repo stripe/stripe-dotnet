@@ -70,7 +70,7 @@ namespace Stripe.Infrastructure
             switch (value)
             {
                 case null:
-                    JsonSerializer.Serialize(writer, null, options);
+                    writer.WriteNullValue();
                     break;
 
                 case IExpandableField expandableField:

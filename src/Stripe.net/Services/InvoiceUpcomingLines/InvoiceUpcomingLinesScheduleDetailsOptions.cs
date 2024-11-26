@@ -21,7 +21,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_behavior")]
 #endif
-
         public string EndBehavior { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phases")]
 #endif
-
         public List<InvoiceUpcomingLinesScheduleDetailsPhaseOptions> Phases { get; set; }
 
         /// <summary>
@@ -45,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
 #endif
-
         public string ProrationBehavior { get; set; }
     }
 }

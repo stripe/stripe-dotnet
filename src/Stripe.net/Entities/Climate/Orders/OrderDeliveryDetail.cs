@@ -14,15 +14,11 @@ namespace Stripe.Climate
         /// Time at which the delivery occurred. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("delivered_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("delivered_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("delivered_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime DeliveredAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -32,7 +28,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("location")]
 #endif
-
         public OrderDeliveryDetailLocation Location { get; set; }
 
         /// <summary>
@@ -42,7 +37,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metric_tons")]
 #endif
-
         public string MetricTons { get; set; }
 
         /// <summary>
@@ -52,7 +46,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("registry_url")]
 #endif
-
         public string RegistryUrl { get; set; }
 
         /// <summary>
@@ -62,7 +55,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supplier")]
 #endif
-
         public Supplier Supplier { get; set; }
     }
 }

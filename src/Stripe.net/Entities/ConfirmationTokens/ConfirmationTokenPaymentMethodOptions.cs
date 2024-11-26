@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
 #endif
-
         public ConfirmationTokenPaymentMethodOptionsCard Card { get; set; }
     }
 }

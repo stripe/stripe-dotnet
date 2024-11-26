@@ -15,15 +15,11 @@ namespace Stripe.Tax
         /// the current time, or a timestamp measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("active_from")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("active_from")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active_from")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, RegistrationActiveFrom> ActiveFrom { get; set; }
 
         /// <summary>
@@ -32,15 +28,11 @@ namespace Stripe.Tax
         /// or a timestamp measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, RegistrationExpiresAt> ExpiresAt { get; set; }
     }
 }

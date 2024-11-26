@@ -22,7 +22,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder")]
 #endif
-
         public AccountAccountHolder AccountHolder { get; set; }
 
         /// <summary>
@@ -52,7 +49,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance")]
 #endif
-
         public AccountBalance Balance { get; set; }
 
         /// <summary>
@@ -62,7 +58,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance_refresh")]
 #endif
-
         public AccountBalanceRefresh BalanceRefresh { get; set; }
 
         /// <summary>
@@ -73,22 +68,17 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("category")]
 #endif
-
         public string Category { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -99,7 +89,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
 #endif
-
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -109,7 +98,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("institution_name")]
 #endif
-
         public string InstitutionName { get; set; }
 
         /// <summary>
@@ -119,7 +107,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
 #endif
-
         public string Last4 { get; set; }
 
         /// <summary>
@@ -130,7 +117,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         #region Expandable Ownership
@@ -143,7 +129,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string OwnershipId
         {
             get => this.InternalOwnership?.Id;
@@ -160,7 +145,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public AccountOwnership Ownership
         {
             get => this.InternalOwnership?.ExpandedObject;
@@ -168,16 +152,12 @@ namespace Stripe.FinancialConnections
         }
 
         [JsonProperty("ownership")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("ownership")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<AccountOwnership>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("ownership")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<AccountOwnership>))]
 #endif
-
         internal ExpandableField<AccountOwnership> InternalOwnership { get; set; }
         #endregion
 
@@ -188,7 +168,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ownership_refresh")]
 #endif
-
         public AccountOwnershipRefresh OwnershipRefresh { get; set; }
 
         /// <summary>
@@ -200,7 +179,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("permissions")]
 #endif
-
         public List<string> Permissions { get; set; }
 
         /// <summary>
@@ -211,7 +189,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -231,7 +208,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subcategory")]
 #endif
-
         public string Subcategory { get; set; }
 
         /// <summary>
@@ -241,7 +217,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscriptions")]
 #endif
-
         public List<string> Subscriptions { get; set; }
 
         /// <summary>
@@ -254,7 +229,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_payment_method_types")]
 #endif
-
         public List<string> SupportedPaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -264,7 +238,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_refresh")]
 #endif
-
         public AccountTransactionRefresh TransactionRefresh { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_type")]
 #endif
-
         public string AmountType { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -50,15 +47,11 @@ namespace Stripe
         /// until canceled. If provided, end date should be after start date.
         /// </summary>
         [JsonProperty("end_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("end_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("end_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? EndDate { get; set; }
 
         /// <summary>
@@ -70,7 +63,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
 #endif
-
         public string Interval { get; set; }
 
         /// <summary>
@@ -83,7 +75,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_count")]
 #endif
-
         public long? IntervalCount { get; set; }
 
         /// <summary>
@@ -93,7 +84,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
 #endif
-
         public string Reference { get; set; }
 
         /// <summary>
@@ -101,15 +91,11 @@ namespace Stripe
         /// yesterday.
         /// </summary>
         [JsonProperty("start_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("start_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("start_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime StartDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -119,7 +105,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_types")]
 #endif
-
         public List<string> SupportedTypes { get; set; }
     }
 }

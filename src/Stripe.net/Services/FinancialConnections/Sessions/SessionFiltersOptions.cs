@@ -20,7 +20,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_subcategories")]
 #endif
-
         public List<string> AccountSubcategories { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("countries")]
 #endif
-
         public List<string> Countries { get; set; }
     }
 }

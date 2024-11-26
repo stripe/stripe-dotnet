@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_extended_authorization")]
 #endif
-
         public bool? RequestExtendedAuthorization { get; set; }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_incremental_authorization_support")]
 #endif
-
         public bool? RequestIncrementalAuthorizationSupport { get; set; }
 
         /// <summary>
@@ -43,7 +41,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("routing")]
 #endif
-
         public PaymentIntentPaymentMethodOptionsCardPresentRoutingOptions Routing { get; set; }
     }
 }

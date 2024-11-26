@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_gte")]
 #endif
-
         public long? AmountGte { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("item_reasons")]
 #endif
-
         public List<InvoiceThresholdReasonItemReason> ItemReasons { get; set; }
     }
 }

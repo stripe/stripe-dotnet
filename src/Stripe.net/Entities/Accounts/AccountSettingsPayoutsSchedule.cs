@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delay_days")]
 #endif
-
         public long DelayDays { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
 #endif
-
         public string Interval { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monthly_anchor")]
 #endif
-
         public long MonthlyAnchor { get; set; }
 
         /// <summary>
@@ -49,7 +46,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("weekly_anchor")]
 #endif
-
         public string WeeklyAnchor { get; set; }
     }
 }

@@ -14,15 +14,11 @@ namespace Stripe.Apps
         /// The Unix timestamp for the expiry time of the secret, after which the secret deletes.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -32,7 +28,6 @@ namespace Stripe.Apps
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -42,7 +37,6 @@ namespace Stripe.Apps
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payload")]
 #endif
-
         public string Payload { get; set; }
 
         /// <summary>
@@ -53,7 +47,6 @@ namespace Stripe.Apps
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("scope")]
 #endif
-
         public SecretScopeOptions Scope { get; set; }
     }
 }

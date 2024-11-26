@@ -15,7 +15,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_intent")]
 #endif
-
         public string PaymentIntent { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("process_config")]
 #endif
-
         public ReaderProcessConfigOptions ProcessConfig { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]
 #endif
-
         public string Code { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
 #endif
-
         public string Reason { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("app_id")]
 #endif
-
         public string AppId { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nonce_str")]
 #endif
-
         public string NonceStr { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("package")]
 #endif
-
         public string Package { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("partner_id")]
 #endif
-
         public string PartnerId { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prepay_id")]
 #endif
-
         public string PrepayId { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sign")]
 #endif
-
         public string Sign { get; set; }
 
         /// <summary>
@@ -75,7 +69,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
 #endif
-
         public string Timestamp { get; set; }
     }
 }

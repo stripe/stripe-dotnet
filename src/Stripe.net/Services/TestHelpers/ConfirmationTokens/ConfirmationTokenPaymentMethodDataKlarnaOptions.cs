@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob")]
 #endif
-
         public ConfirmationTokenPaymentMethodDataKlarnaDobOptions Dob { get; set; }
     }
 }

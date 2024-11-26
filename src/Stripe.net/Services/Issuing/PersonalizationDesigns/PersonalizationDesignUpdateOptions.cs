@@ -17,7 +17,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_logo")]
 #endif
-
         public string CardLogo { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("carrier_text")]
 #endif
-
         public PersonalizationDesignCarrierTextOptions CarrierText { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
 #endif
-
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -61,7 +57,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -71,7 +66,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("physical_bundle")]
 #endif
-
         public string PhysicalBundle { get; set; }
 
         /// <summary>
@@ -82,7 +76,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferences")]
 #endif
-
         public PersonalizationDesignPreferencesOptions Preferences { get; set; }
 
         /// <summary>
@@ -93,7 +86,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_lookup_key")]
 #endif
-
         public bool? TransferLookupKey { get; set; }
     }
 }

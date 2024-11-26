@@ -17,7 +17,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("increment_amount")]
 #endif
-
         public long? IncrementAmount { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_amount_controllable")]
 #endif
-
         public bool? IsAmountControllable { get; set; }
     }
 }

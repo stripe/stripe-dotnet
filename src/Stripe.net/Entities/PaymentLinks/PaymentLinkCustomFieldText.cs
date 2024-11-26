@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("maximum_length")]
 #endif
-
         public long? MaximumLength { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minimum_length")]
 #endif
-
         public long? MinimumLength { get; set; }
     }
 }

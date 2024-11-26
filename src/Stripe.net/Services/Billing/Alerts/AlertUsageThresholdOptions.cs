@@ -17,7 +17,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("filters")]
 #endif
-
         public List<AlertUsageThresholdFilterOptions> Filters { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gte")]
 #endif
-
         public long? Gte { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("meter")]
 #endif
-
         public string Meter { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recurrence")]
 #endif
-
         public string Recurrence { get; set; }
     }
 }

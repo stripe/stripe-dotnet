@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder_name")]
 #endif
-
         public string AccountHolderName { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_number")]
 #endif
-
         public string AccountNumber { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("routing_number")]
 #endif
-
         public string RoutingNumber { get; set; }
     }
 }

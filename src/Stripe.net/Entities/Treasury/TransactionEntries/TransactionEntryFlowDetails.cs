@@ -18,7 +18,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit_reversal")]
 #endif
-
         public CreditReversal CreditReversal { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("debit_reversal")]
 #endif
-
         public DebitReversal DebitReversal { get; set; }
 
         /// <summary>
@@ -49,7 +47,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inbound_transfer")]
 #endif
-
         public InboundTransfer InboundTransfer { get; set; }
 
         /// <summary>
@@ -65,7 +62,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_authorization")]
 #endif
-
         public Issuing.Authorization IssuingAuthorization { get; set; }
 
         /// <summary>
@@ -88,7 +84,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_payment")]
 #endif
-
         public OutboundPayment OutboundPayment { get; set; }
 
         /// <summary>
@@ -113,7 +108,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_transfer")]
 #endif
-
         public OutboundTransfer OutboundTransfer { get; set; }
 
         /// <summary>
@@ -125,7 +119,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("received_credit")]
 #endif
-
         public ReceivedCredit ReceivedCredit { get; set; }
 
         /// <summary>
@@ -137,7 +130,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("received_debit")]
 #endif
-
         public ReceivedDebit ReceivedDebit { get; set; }
 
         /// <summary>
@@ -151,7 +143,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

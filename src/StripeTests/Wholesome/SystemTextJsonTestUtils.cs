@@ -21,10 +21,11 @@ namespace StripeTests.Wholesome
             { typeof(JsonConverterAttribute), typeof(STJS.JsonConverterAttribute) },
             { typeof(JsonPropertyAttribute), typeof(STJS.JsonPropertyNameAttribute) },
 
-            // NOTE: STJ does not have an equivalent for JsonObject to control member serialization
+            // STJ does not have an equivalent for JsonObject to control member serialization
             // (https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/migrate-from-newtonsoft?pivots=dotnet-6-0#jsonobjectattribute)
             // Instead, every public property to be ignored must be marked with a JsonIgnore attribute
             // This is ok, as we verify this verified as part of the PropertiesHaveJsonAttributes
+            // STJ DOES have built in converters for e.g. IEnumerable
             { typeof(JsonIgnoreAttribute), typeof(STJS.JsonIgnoreAttribute) },
             { typeof(JsonExtensionDataAttribute), typeof(STJS.JsonExtensionDataAttribute) },
         };

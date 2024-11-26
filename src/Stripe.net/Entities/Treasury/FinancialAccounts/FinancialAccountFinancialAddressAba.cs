@@ -15,7 +15,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder_name")]
 #endif
-
         public string AccountHolderName { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_number")]
 #endif
-
         public string AccountNumber { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_number_last4")]
 #endif
-
         public string AccountNumberLast4 { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_name")]
 #endif
-
         public string BankName { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("routing_number")]
 #endif
-
         public string RoutingNumber { get; set; }
     }
 }

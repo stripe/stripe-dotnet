@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("atm_fee")]
 #endif
-
         public long? AtmFee { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cashback_amount")]
 #endif
-
         public long? CashbackAmount { get; set; }
     }
 }

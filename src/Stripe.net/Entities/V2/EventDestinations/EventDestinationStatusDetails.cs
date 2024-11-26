@@ -15,7 +15,6 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disabled")]
 #endif
-
         public EventDestinationStatusDetailsDisabled Disabled { get; set; }
     }
 }

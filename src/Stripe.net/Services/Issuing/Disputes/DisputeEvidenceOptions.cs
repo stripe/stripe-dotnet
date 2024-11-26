@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("canceled")]
 #endif
-
         public DisputeEvidenceCanceledOptions Canceled { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duplicate")]
 #endif
-
         public DisputeEvidenceDuplicateOptions Duplicate { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fraudulent")]
 #endif
-
         public DisputeEvidenceFraudulentOptions Fraudulent { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchandise_not_as_described")]
 #endif
-
         public DisputeEvidenceMerchandiseNotAsDescribedOptions MerchandiseNotAsDescribed { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("no_valid_authorization")]
 #endif
-
         public DisputeEvidenceNoValidAuthorizationOptions NoValidAuthorization { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("not_received")]
 #endif
-
         public DisputeEvidenceNotReceivedOptions NotReceived { get; set; }
 
         /// <summary>
@@ -75,7 +69,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("other")]
 #endif
-
         public DisputeEvidenceOtherOptions Other { get; set; }
 
         /// <summary>
@@ -89,7 +82,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
 #endif
-
         public string Reason { get; set; }
 
         /// <summary>
@@ -99,7 +91,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_not_as_described")]
 #endif
-
         public DisputeEvidenceServiceNotAsDescribedOptions ServiceNotAsDescribed { get; set; }
     }
 }

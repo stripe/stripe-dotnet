@@ -22,7 +22,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allow_redirects")]
 #endif
-
         public string AllowRedirects { get; set; }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
 #endif
-
         public bool? Enabled { get; set; }
     }
 }

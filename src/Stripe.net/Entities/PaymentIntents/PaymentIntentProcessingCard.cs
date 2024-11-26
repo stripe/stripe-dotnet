@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_notification")]
 #endif
-
         public PaymentIntentProcessingCardCustomerNotification CustomerNotification { get; set; }
     }
 }

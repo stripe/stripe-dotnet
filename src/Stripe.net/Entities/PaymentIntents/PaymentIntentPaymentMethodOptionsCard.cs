@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
 #endif
-
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("installments")]
 #endif
-
         public PaymentIntentPaymentMethodOptionsCardInstallments Installments { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
 #endif
-
         public PaymentIntentPaymentMethodOptionsCardMandateOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -52,7 +49,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
 #endif
-
         public string Network { get; set; }
 
         /// <summary>
@@ -65,7 +61,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_extended_authorization")]
 #endif
-
         public string RequestExtendedAuthorization { get; set; }
 
         /// <summary>
@@ -78,7 +73,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_incremental_authorization")]
 #endif
-
         public string RequestIncrementalAuthorization { get; set; }
 
         /// <summary>
@@ -90,7 +84,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_multicapture")]
 #endif
-
         public string RequestMulticapture { get; set; }
 
         /// <summary>
@@ -103,7 +96,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_overcapture")]
 #endif
-
         public string RequestOvercapture { get; set; }
 
         /// <summary>
@@ -122,7 +114,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_three_d_secure")]
 #endif
-
         public string RequestThreeDSecure { get; set; }
 
         /// <summary>
@@ -133,7 +124,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("require_cvc_recollection")]
 #endif
-
         public bool RequireCvcRecollection { get; set; }
 
         /// <summary>
@@ -161,7 +151,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
-
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -175,7 +164,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
 #endif
-
         public string StatementDescriptorSuffixKana { get; set; }
 
         /// <summary>
@@ -189,7 +177,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
 #endif
-
         public string StatementDescriptorSuffixKanji { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("options")]
 #endif
-
         public List<PaymentLinkCustomFieldDropdownOptionOptions> Options { get; set; }
     }
 }

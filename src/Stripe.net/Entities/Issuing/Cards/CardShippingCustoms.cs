@@ -18,7 +18,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eori_number")]
 #endif
-
         public string EoriNumber { get; set; }
     }
 }

@@ -20,7 +20,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string RefundId
         {
             get => this.InternalRefund?.Id;
@@ -38,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Refund Refund
         {
             get => this.InternalRefund?.ExpandedObject;
@@ -46,16 +44,12 @@ namespace Stripe
         }
 
         [JsonProperty("refund")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("refund")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
 #endif
-
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
     }

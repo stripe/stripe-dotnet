@@ -19,7 +19,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_logo")]
 #endif
-
         public List<string> CardLogo { get; set; }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("carrier_text")]
 #endif
-
         public List<string> CarrierText { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("access_activity_log")]
 #endif
-
         public string AccessActivityLog { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_address")]
 #endif
-
         public string BillingAddress { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_policy")]
 #endif
-
         public string CancellationPolicy { get; set; }
 
         /// <summary>
@@ -49,7 +46,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_policy_disclosure")]
 #endif
-
         public string CancellationPolicyDisclosure { get; set; }
 
         /// <summary>
@@ -60,7 +56,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_rebuttal")]
 #endif
-
         public string CancellationRebuttal { get; set; }
 
         /// <summary>
@@ -73,7 +68,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_communication")]
 #endif
-
         public string CustomerCommunication { get; set; }
 
         /// <summary>
@@ -83,7 +77,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_email_address")]
 #endif
-
         public string CustomerEmailAddress { get; set; }
 
         /// <summary>
@@ -93,7 +86,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_name")]
 #endif
-
         public string CustomerName { get; set; }
 
         /// <summary>
@@ -103,7 +95,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_purchase_ip")]
 #endif
-
         public string CustomerPurchaseIp { get; set; }
 
         /// <summary>
@@ -114,7 +105,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_signature")]
 #endif
-
         public string CustomerSignature { get; set; }
 
         /// <summary>
@@ -127,7 +117,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duplicate_charge_documentation")]
 #endif
-
         public string DuplicateChargeDocumentation { get; set; }
 
         /// <summary>
@@ -138,7 +127,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duplicate_charge_explanation")]
 #endif
-
         public string DuplicateChargeExplanation { get; set; }
 
         /// <summary>
@@ -149,7 +137,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duplicate_charge_id")]
 #endif
-
         public string DuplicateChargeId { get; set; }
 
         /// <summary>
@@ -159,7 +146,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enhanced_evidence")]
 #endif
-
         public DisputeEvidenceEnhancedEvidenceOptions EnhancedEvidence { get; set; }
 
         /// <summary>
@@ -170,7 +156,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_description")]
 #endif
-
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -181,7 +166,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("receipt")]
 #endif
-
         public string Receipt { get; set; }
 
         /// <summary>
@@ -192,7 +176,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_policy")]
 #endif
-
         public string RefundPolicy { get; set; }
 
         /// <summary>
@@ -203,7 +186,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_policy_disclosure")]
 #endif
-
         public string RefundPolicyDisclosure { get; set; }
 
         /// <summary>
@@ -214,7 +196,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_refusal_explanation")]
 #endif
-
         public string RefundRefusalExplanation { get; set; }
 
         /// <summary>
@@ -225,7 +206,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_date")]
 #endif
-
         public string ServiceDate { get; set; }
 
         /// <summary>
@@ -237,7 +217,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_documentation")]
 #endif
-
         public string ServiceDocumentation { get; set; }
 
         /// <summary>
@@ -248,7 +227,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_address")]
 #endif
-
         public string ShippingAddress { get; set; }
 
         /// <summary>
@@ -259,7 +237,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_carrier")]
 #endif
-
         public string ShippingCarrier { get; set; }
 
         /// <summary>
@@ -270,7 +247,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_date")]
 #endif
-
         public string ShippingDate { get; set; }
 
         /// <summary>
@@ -283,7 +259,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_documentation")]
 #endif
-
         public string ShippingDocumentation { get; set; }
 
         /// <summary>
@@ -295,7 +270,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_tracking_number")]
 #endif
-
         public string ShippingTrackingNumber { get; set; }
 
         /// <summary>
@@ -306,7 +280,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("uncategorized_file")]
 #endif
-
         public string UncategorizedFile { get; set; }
 
         /// <summary>
@@ -316,7 +289,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("uncategorized_text")]
 #endif
-
         public string UncategorizedText { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("received_credits")]
 #endif
-
         public List<string> ReceivedCredits { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("received_debits")]
 #endif
-
         public List<string> ReceivedDebits { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction")]
 #endif
-
         public string Transaction { get; set; }
     }
 }

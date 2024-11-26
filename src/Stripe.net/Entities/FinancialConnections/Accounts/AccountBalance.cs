@@ -16,29 +16,23 @@ namespace Stripe.FinancialConnections
         /// since the Unix epoch.
         /// </summary>
         [JsonProperty("as_of")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("as_of")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("as_of")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime AsOf { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("cash")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cash")]
 #endif
-
         public AccountBalanceCash Cash { get; set; }
 
         [JsonProperty("credit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit")]
 #endif
-
         public AccountBalanceCredit Credit { get; set; }
 
         /// <summary>
@@ -56,7 +50,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current")]
 #endif
-
         public Dictionary<string, long> Current { get; set; }
 
         /// <summary>
@@ -68,7 +61,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

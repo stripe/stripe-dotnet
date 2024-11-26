@@ -12,28 +12,24 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amazon_pay")]
 #endif
-
         public DisputePaymentMethodDetailsAmazonPay AmazonPay { get; set; }
 
         [JsonProperty("card")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
 #endif
-
         public DisputePaymentMethodDetailsCard Card { get; set; }
 
         [JsonProperty("klarna")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("klarna")]
 #endif
-
         public DisputePaymentMethodDetailsKlarna Klarna { get; set; }
 
         [JsonProperty("paypal")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypal")]
 #endif
-
         public DisputePaymentMethodDetailsPaypal Paypal { get; set; }
 
         /// <summary>
@@ -44,7 +40,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

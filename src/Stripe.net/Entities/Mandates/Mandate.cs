@@ -20,7 +20,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -30,14 +29,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         [JsonProperty("customer_acceptance")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_acceptance")]
 #endif
-
         public MandateCustomerAcceptance CustomerAcceptance { get; set; }
 
         /// <summary>
@@ -48,14 +45,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         [JsonProperty("multi_use")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("multi_use")]
 #endif
-
         public MandateMultiUse MultiUse { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
 #endif
-
         public string OnBehalfOf { get; set; }
 
         #region Expandable PaymentMethod
@@ -78,7 +72,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string PaymentMethodId
         {
             get => this.InternalPaymentMethod?.Id;
@@ -95,7 +88,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public PaymentMethod PaymentMethod
         {
             get => this.InternalPaymentMethod?.ExpandedObject;
@@ -103,16 +95,12 @@ namespace Stripe
         }
 
         [JsonProperty("payment_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("payment_method")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
 #endif
-
         internal ExpandableField<PaymentMethod> InternalPaymentMethod { get; set; }
         #endregion
 
@@ -120,14 +108,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_details")]
 #endif
-
         public MandatePaymentMethodDetails PaymentMethodDetails { get; set; }
 
         [JsonProperty("single_use")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("single_use")]
 #endif
-
         public MandateSingleUse SingleUse { get; set; }
 
         /// <summary>
@@ -138,7 +124,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -149,7 +134,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("arrival_airport_code")]
 #endif
-
         public string ArrivalAirportCode { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("carrier")]
 #endif
-
         public string Carrier { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("departure_airport_code")]
 #endif
-
         public string DepartureAirportCode { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flight_number")]
 #endif
-
         public string FlightNumber { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_class")]
 #endif
-
         public string ServiceClass { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stopover_allowed")]
 #endif
-
         public bool? StopoverAllowed { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_default")]
 #endif
-
         public bool? IsDefault { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_platform_default")]
 #endif
-
         public bool? IsPlatformDefault { get; set; }
     }
 }

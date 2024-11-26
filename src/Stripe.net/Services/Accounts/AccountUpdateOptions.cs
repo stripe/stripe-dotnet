@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_token")]
 #endif
-
         public string AccountToken { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_profile")]
 #endif
-
         public AccountBusinessProfileOptions BusinessProfile { get; set; }
 
         /// <summary>
@@ -45,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_type")]
 #endif
-
         public string BusinessType { get; set; }
 
         /// <summary>
@@ -62,7 +59,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capabilities")]
 #endif
-
         public AccountCapabilitiesOptions Capabilities { get; set; }
 
         /// <summary>
@@ -78,7 +74,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company")]
 #endif
-
         public AccountCompanyOptions Company { get; set; }
 
         /// <summary>
@@ -90,7 +85,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_currency")]
 #endif
-
         public string DefaultCurrency { get; set; }
 
         /// <summary>
@@ -100,7 +94,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("documents")]
 #endif
-
         public AccountDocumentsOptions Documents { get; set; }
 
         /// <summary>
@@ -114,7 +107,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
 #endif
-
         public string Email { get; set; }
 
         /// <summary>
@@ -136,15 +128,11 @@ namespace Stripe
         /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("external_account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("external_account")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_account")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount { get; set; }
 
         /// <summary>
@@ -155,7 +143,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("groups")]
 #endif
-
         public AccountGroupsOptions Groups { get; set; }
 
         /// <summary>
@@ -171,7 +158,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("individual")]
 #endif
-
         public AccountIndividualOptions Individual { get; set; }
 
         /// <summary>
@@ -184,7 +170,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -194,7 +179,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("settings")]
 #endif
-
         public AccountSettingsOptions Settings { get; set; }
 
         /// <summary>
@@ -209,7 +193,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tos_acceptance")]
 #endif
-
         public AccountTosAcceptanceOptions TosAcceptance { get; set; }
     }
 }

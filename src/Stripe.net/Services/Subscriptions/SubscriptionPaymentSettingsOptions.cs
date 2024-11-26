@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
 #endif
-
         public SubscriptionPaymentSettingsPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -40,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_types")]
 #endif
-
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -52,7 +50,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("save_default_payment_method")]
 #endif
-
         public string SaveDefaultPaymentMethod { get; set; }
     }
 }

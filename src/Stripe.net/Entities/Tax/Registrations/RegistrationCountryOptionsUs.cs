@@ -12,14 +12,12 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("local_amusement_tax")]
 #endif
-
         public RegistrationCountryOptionsUsLocalAmusementTax LocalAmusementTax { get; set; }
 
         [JsonProperty("local_lease_tax")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("local_lease_tax")]
 #endif
-
         public RegistrationCountryOptionsUsLocalLeaseTax LocalLeaseTax { get; set; }
 
         /// <summary>
@@ -30,14 +28,12 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("state")]
 #endif
-
         public string State { get; set; }
 
         [JsonProperty("state_sales_tax")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("state_sales_tax")]
 #endif
-
         public RegistrationCountryOptionsUsStateSalesTax StateSalesTax { get; set; }
 
         /// <summary>
@@ -50,7 +46,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

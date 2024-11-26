@@ -18,7 +18,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("parameters")]
 #endif
-
         public ReportRunParametersOptions Parameters { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("report_type")]
 #endif
-
         public string ReportType { get; set; }
     }
 }

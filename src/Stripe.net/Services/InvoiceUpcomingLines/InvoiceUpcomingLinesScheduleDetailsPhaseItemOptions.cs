@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_thresholds")]
 #endif
-
         public InvoiceUpcomingLinesScheduleDetailsPhaseItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<InvoiceUpcomingLinesScheduleDetailsPhaseItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -45,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -56,7 +53,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("plan")]
 #endif
-
         public string Plan { get; set; }
 
         /// <summary>
@@ -66,7 +62,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
 #endif
-
         public string Price { get; set; }
 
         /// <summary>
@@ -77,7 +72,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
 #endif
-
         public InvoiceUpcomingLinesScheduleDetailsPhaseItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -88,7 +82,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -102,7 +95,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
 #endif
-
         public List<string> TaxRates { get; set; }
     }
 }

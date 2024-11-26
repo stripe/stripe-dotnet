@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("acss_debit")]
 #endif
-
         public SetupIntentPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amazon_pay")]
 #endif
-
         public SetupIntentPaymentMethodOptionsAmazonPayOptions AmazonPay { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bacs_debit")]
 #endif
-
         public SetupIntentPaymentMethodOptionsBacsDebitOptions BacsDebit { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
 #endif
-
         public SetupIntentPaymentMethodOptionsCardOptions Card { get; set; }
 
         /// <summary>
@@ -59,7 +55,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_present")]
 #endif
-
         public SetupIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
@@ -70,7 +65,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("link")]
 #endif
-
         public SetupIntentPaymentMethodOptionsLinkOptions Link { get; set; }
 
         /// <summary>
@@ -81,7 +75,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypal")]
 #endif
-
         public SetupIntentPaymentMethodOptionsPaypalOptions Paypal { get; set; }
 
         /// <summary>
@@ -92,7 +85,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]
 #endif
-
         public SetupIntentPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
@@ -103,7 +95,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]
 #endif
-
         public SetupIntentPaymentMethodOptionsUsBankAccountOptions UsBankAccount { get; set; }
     }
 }

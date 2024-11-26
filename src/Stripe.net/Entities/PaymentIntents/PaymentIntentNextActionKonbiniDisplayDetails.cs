@@ -14,15 +14,11 @@ namespace Stripe
         /// The timestamp at which the pending Konbini payment expires.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -33,14 +29,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_voucher_url")]
 #endif
-
         public string HostedVoucherUrl { get; set; }
 
         [JsonProperty("stores")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stores")]
 #endif
-
         public PaymentIntentNextActionKonbiniDisplayDetailsStores Stores { get; set; }
     }
 }

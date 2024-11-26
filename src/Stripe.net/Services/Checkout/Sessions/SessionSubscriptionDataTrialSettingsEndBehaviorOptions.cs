@@ -17,7 +17,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("missing_payment_method")]
 #endif
-
         public string MissingPaymentMethod { get; set; }
     }
 }

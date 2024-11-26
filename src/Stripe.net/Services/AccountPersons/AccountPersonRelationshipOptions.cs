@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("director")]
 #endif
-
         public bool? Director { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("executive")]
 #endif
-
         public bool? Executive { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("legal_guardian")]
 #endif
-
         public bool? LegalGuardian { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owner")]
 #endif
-
         public bool? Owner { get; set; }
 
         /// <summary>
@@ -60,7 +56,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_ownership")]
 #endif
-
         public decimal? PercentOwnership { get; set; }
 
         /// <summary>
@@ -74,7 +69,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("representative")]
 #endif
-
         public bool? Representative { get; set; }
 
         /// <summary>
@@ -84,7 +78,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("title")]
 #endif
-
         public string Title { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_keys")]
 #endif
-
         public List<string> LookupKeys { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferences")]
 #endif
-
         public PersonalizationDesignPreferencesOptions Preferences { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

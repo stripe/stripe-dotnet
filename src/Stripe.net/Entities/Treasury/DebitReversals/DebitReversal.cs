@@ -24,7 +24,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -34,7 +33,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -44,22 +42,17 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -71,7 +64,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -81,7 +73,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
 #endif
-
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -93,7 +84,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_regulatory_receipt_url")]
 #endif
-
         public string HostedRegulatoryReceiptUrl { get; set; }
 
         /// <summary>
@@ -103,7 +93,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("linked_flows")]
 #endif
-
         public DebitReversalLinkedFlows LinkedFlows { get; set; }
 
         /// <summary>
@@ -114,7 +103,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -126,7 +114,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -137,7 +124,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
 #endif
-
         public string Network { get; set; }
 
         /// <summary>
@@ -147,7 +133,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("received_debit")]
 #endif
-
         public string ReceivedDebit { get; set; }
 
         /// <summary>
@@ -158,14 +143,12 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         [JsonProperty("status_transitions")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_transitions")]
 #endif
-
         public DebitReversalStatusTransitions StatusTransitions { get; set; }
 
         #region Expandable Transaction
@@ -178,7 +161,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string TransactionId
         {
             get => this.InternalTransaction?.Id;
@@ -195,7 +177,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Transaction Transaction
         {
             get => this.InternalTransaction?.ExpandedObject;
@@ -203,16 +184,12 @@ namespace Stripe.Treasury
         }
 
         [JsonProperty("transaction")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transaction")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
 #endif
-
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion
     }

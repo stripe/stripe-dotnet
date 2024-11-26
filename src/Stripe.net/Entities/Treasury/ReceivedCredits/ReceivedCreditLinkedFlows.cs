@@ -15,7 +15,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit_reversal")]
 #endif
-
         public string CreditReversal { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_authorization")]
 #endif
-
         public string IssuingAuthorization { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_transaction")]
 #endif
-
         public string IssuingTransaction { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_flow")]
 #endif
-
         public string SourceFlow { get; set; }
 
         /// <summary>
@@ -60,7 +56,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_flow_details")]
 #endif
-
         public ReceivedCreditLinkedFlowsSourceFlowDetails SourceFlowDetails { get; set; }
 
         /// <summary>
@@ -71,7 +66,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_flow_type")]
 #endif
-
         public string SourceFlowType { get; set; }
     }
 }

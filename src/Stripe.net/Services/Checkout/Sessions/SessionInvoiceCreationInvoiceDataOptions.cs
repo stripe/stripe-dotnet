@@ -16,7 +16,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_tax_ids")]
 #endif
-
         public List<string> AccountTaxIds { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_fields")]
 #endif
-
         public List<SessionInvoiceCreationInvoiceDataCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("footer")]
 #endif
-
         public string Footer { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-
         public SessionInvoiceCreationInvoiceDataIssuerOptions Issuer { get; set; }
 
         /// <summary>
@@ -70,7 +65,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -80,7 +74,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rendering_options")]
 #endif
-
         public SessionInvoiceCreationInvoiceDataRenderingOptionsOptions RenderingOptions { get; set; }
     }
 }

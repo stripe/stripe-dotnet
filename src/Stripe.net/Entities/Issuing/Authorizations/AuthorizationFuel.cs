@@ -16,7 +16,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("industry_product_code")]
 #endif
-
         public string IndustryProductCode { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity_decimal")]
 #endif
-
         public decimal? QuantityDecimal { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit")]
 #endif
-
         public string Unit { get; set; }
 
         /// <summary>
@@ -62,7 +58,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_cost_decimal")]
 #endif
-
         public decimal? UnitCostDecimal { get; set; }
     }
 }

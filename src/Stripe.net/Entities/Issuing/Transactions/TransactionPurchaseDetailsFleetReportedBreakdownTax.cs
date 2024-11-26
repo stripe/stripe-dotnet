@@ -16,7 +16,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("local_amount_decimal")]
 #endif
-
         public decimal? LocalAmountDecimal { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("national_amount_decimal")]
 #endif
-
         public decimal? NationalAmountDecimal { get; set; }
     }
 }

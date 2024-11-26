@@ -19,7 +19,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("columns")]
 #endif
-
         public List<string> Columns { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("connected_account")]
 #endif
-
         public string ConnectedAccount { get; set; }
 
         /// <summary>
@@ -39,37 +37,28 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
         /// Ending timestamp of data to be included in the report run (exclusive).
         /// </summary>
         [JsonProperty("interval_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("interval_end")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval_end")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? IntervalEnd { get; set; }
 
         /// <summary>
         /// Starting timestamp of data to be included in the report run.
         /// </summary>
         [JsonProperty("interval_start")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("interval_start")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval_start")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? IntervalStart { get; set; }
 
         /// <summary>
@@ -79,7 +68,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout")]
 #endif
-
         public string Payout { get; set; }
 
         /// <summary>
@@ -103,7 +91,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reporting_category")]
 #endif
-
         public string ReportingCategory { get; set; }
 
         /// <summary>
@@ -299,7 +286,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timezone")]
 #endif
-
         public string Timezone { get; set; }
     }
 }

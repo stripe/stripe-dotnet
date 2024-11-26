@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failure_details")]
 #endif
-
         public InboundTransferFailureDetailsOptions FailureDetails { get; set; }
     }
 }

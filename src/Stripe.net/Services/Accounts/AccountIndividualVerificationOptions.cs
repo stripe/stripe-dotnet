@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("additional_document")]
 #endif
-
         public AccountIndividualVerificationAdditionalDocumentOptions AdditionalDocument { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("document")]
 #endif
-
         public AccountIndividualVerificationDocumentOptions Document { get; set; }
     }
 }

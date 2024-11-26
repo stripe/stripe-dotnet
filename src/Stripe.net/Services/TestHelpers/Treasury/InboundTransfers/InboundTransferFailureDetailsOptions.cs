@@ -21,7 +21,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]
 #endif
-
         public string Code { get; set; }
     }
 }

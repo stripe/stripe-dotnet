@@ -16,7 +16,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
 #endif
-
         public bool Enabled { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("options")]
 #endif
-
         public List<string> Options { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("installments")]
 #endif
-
         public SessionPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
 
         /// <summary>
@@ -34,7 +33,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_three_d_secure")]
 #endif
-
         public string RequestThreeDSecure { get; set; }
 
         /// <summary>
@@ -62,7 +60,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
-
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -76,7 +73,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
 #endif
-
         public string StatementDescriptorSuffixKana { get; set; }
 
         /// <summary>
@@ -90,7 +86,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
 #endif
-
         public string StatementDescriptorSuffixKanji { get; set; }
     }
 }

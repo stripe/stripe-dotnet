@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("maximum")]
 #endif
-
         public ShippingRateDeliveryEstimateMaximumOptions Maximum { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minimum")]
 #endif
-
         public ShippingRateDeliveryEstimateMinimumOptions Minimum { get; set; }
     }
 }

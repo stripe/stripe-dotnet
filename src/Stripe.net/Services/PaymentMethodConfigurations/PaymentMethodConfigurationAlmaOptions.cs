@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_preference")]
 #endif
-
         public PaymentMethodConfigurationAlmaDisplayPreferenceOptions DisplayPreference { get; set; }
     }
 }

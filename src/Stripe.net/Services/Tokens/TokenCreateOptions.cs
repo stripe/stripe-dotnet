@@ -16,22 +16,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account")]
 #endif
-
         public TokenAccountOptions Account { get; set; }
 
         /// <summary>
         /// The bank account this token will represent.
         /// </summary>
         [JsonProperty("bank_account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bank_account")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank_account")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<string, TokenBankAccountOptions> BankAccount { get; set; }
 
         /// <summary>
@@ -41,15 +36,11 @@ namespace Stripe
         /// below.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("card")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<string, TokenCardOptions> Card { get; set; }
 
         /// <summary>
@@ -65,7 +56,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -75,7 +65,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cvc_update")]
 #endif
-
         public TokenCvcUpdateOptions CvcUpdate { get; set; }
 
         /// <summary>
@@ -85,7 +74,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("person")]
 #endif
-
         public TokenPersonOptions Person { get; set; }
 
         /// <summary>
@@ -95,7 +83,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pii")]
 #endif
-
         public TokenPiiOptions Pii { get; set; }
     }
 }

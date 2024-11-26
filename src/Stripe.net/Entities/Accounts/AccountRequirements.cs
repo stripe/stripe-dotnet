@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alternatives")]
 #endif
-
         public List<AccountRequirementsAlternative> Alternatives { get; set; }
 
         /// <summary>
@@ -28,15 +27,11 @@ namespace Stripe
         /// before they are collected.
         /// </summary>
         [JsonProperty("current_deadline")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("current_deadline")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_deadline")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? CurrentDeadline { get; set; }
 
         /// <summary>
@@ -48,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currently_due")]
 #endif
-
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
@@ -64,7 +58,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disabled_reason")]
 #endif
-
         public string DisabledReason { get; set; }
 
         /// <summary>
@@ -75,7 +68,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("errors")]
 #endif
-
         public List<AccountRequirementsError> Errors { get; set; }
 
         /// <summary>
@@ -87,7 +79,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eventually_due")]
 #endif
-
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
@@ -98,7 +89,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("past_due")]
 #endif
-
         public List<string> PastDue { get; set; }
 
         /// <summary>
@@ -113,7 +103,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pending_verification")]
 #endif
-
         public List<string> PendingVerification { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("file")]
 #endif
-
         public Stream File { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("file_link_data")]
 #endif
-
         public FileFileLinkDataOptions FileLinkData { get; set; }
 
         /// <summary>
@@ -44,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purpose")]
 #endif
-
         public string Purpose { get; set; }
     }
 }

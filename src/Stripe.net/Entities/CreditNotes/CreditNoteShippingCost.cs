@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_subtotal")]
 #endif
-
         public long AmountSubtotal { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_tax")]
 #endif
-
         public long AmountTax { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_total")]
 #endif
-
         public long AmountTotal { get; set; }
 
         #region Expandable ShippingRate
@@ -50,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string ShippingRateId
         {
             get => this.InternalShippingRate?.Id;
@@ -67,7 +63,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public ShippingRate ShippingRate
         {
             get => this.InternalShippingRate?.ExpandedObject;
@@ -75,16 +70,12 @@ namespace Stripe
         }
 
         [JsonProperty("shipping_rate")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_rate")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<ShippingRate>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("shipping_rate")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<ShippingRate>))]
 #endif
-
         internal ExpandableField<ShippingRate> InternalShippingRate { get; set; }
         #endregion
 
@@ -95,7 +86,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxes")]
 #endif
-
         public List<CreditNoteShippingCostTax> Taxes { get; set; }
     }
 }

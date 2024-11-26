@@ -17,15 +17,11 @@ namespace Stripe.TestHelpers
         /// years in the future.
         /// </summary>
         [JsonProperty("frozen_time")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("frozen_time")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("frozen_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? FrozenTime { get; set; }
     }
 }

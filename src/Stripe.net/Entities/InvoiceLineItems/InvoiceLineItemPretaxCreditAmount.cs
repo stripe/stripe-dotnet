@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         #region Expandable CreditBalanceTransaction
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CreditBalanceTransactionId
         {
             get => this.InternalCreditBalanceTransaction?.Id;
@@ -46,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Billing.CreditBalanceTransaction CreditBalanceTransaction
         {
             get => this.InternalCreditBalanceTransaction?.ExpandedObject;
@@ -54,16 +51,12 @@ namespace Stripe
         }
 
         [JsonProperty("credit_balance_transaction")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("credit_balance_transaction")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Billing.CreditBalanceTransaction>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("credit_balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Billing.CreditBalanceTransaction>))]
 #endif
-
         internal ExpandableField<Billing.CreditBalanceTransaction> InternalCreditBalanceTransaction { get; set; }
         #endregion
 
@@ -77,7 +70,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string DiscountId
         {
             get => this.InternalDiscount?.Id;
@@ -94,7 +86,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Discount Discount
         {
             get => this.InternalDiscount?.ExpandedObject;
@@ -102,16 +93,12 @@ namespace Stripe
         }
 
         [JsonProperty("discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discount")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("discount")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Discount>))]
 #endif
-
         internal ExpandableField<Discount> InternalDiscount { get; set; }
         #endregion
 
@@ -123,7 +110,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

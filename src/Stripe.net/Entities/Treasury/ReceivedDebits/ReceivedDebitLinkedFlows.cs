@@ -15,7 +15,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("debit_reversal")]
 #endif
-
         public string DebitReversal { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inbound_transfer")]
 #endif
-
         public string InboundTransfer { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_authorization")]
 #endif
-
         public string IssuingAuthorization { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_transaction")]
 #endif
-
         public string IssuingTransaction { get; set; }
 
         /// <summary>
@@ -59,7 +55,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout")]
 #endif
-
         public string Payout { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public AddressOptions Address { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rejection_reasons")]
 #endif
-
         public PersonalizationDesignRejectionReasonsOptions RejectionReasons { get; set; }
     }
 }

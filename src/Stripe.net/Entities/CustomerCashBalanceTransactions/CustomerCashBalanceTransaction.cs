@@ -24,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -34,36 +33,29 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         [JsonProperty("adjusted_for_overdraft")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("adjusted_for_overdraft")]
 #endif
-
         public CustomerCashBalanceTransactionAdjustedForOverdraft AdjustedForOverdraft { get; set; }
 
         [JsonProperty("applied_to_payment")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applied_to_payment")]
 #endif
-
         public CustomerCashBalanceTransactionAppliedToPayment AppliedToPayment { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -75,7 +67,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -88,7 +79,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -105,7 +95,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -113,16 +102,12 @@ namespace Stripe
         }
 
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
-
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -135,14 +120,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ending_balance")]
 #endif
-
         public long EndingBalance { get; set; }
 
         [JsonProperty("funded")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funded")]
 #endif
-
         public CustomerCashBalanceTransactionFunded Funded { get; set; }
 
         /// <summary>
@@ -153,7 +136,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -166,21 +148,18 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("net_amount")]
 #endif
-
         public long NetAmount { get; set; }
 
         [JsonProperty("refunded_from_payment")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refunded_from_payment")]
 #endif
-
         public CustomerCashBalanceTransactionRefundedFromPayment RefundedFromPayment { get; set; }
 
         [JsonProperty("transferred_to_balance")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transferred_to_balance")]
 #endif
-
         public CustomerCashBalanceTransactionTransferredToBalance TransferredToBalance { get; set; }
 
         /// <summary>
@@ -196,14 +175,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         [JsonProperty("unapplied_from_payment")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unapplied_from_payment")]
 #endif
-
         public CustomerCashBalanceTransactionUnappliedFromPayment UnappliedFromPayment { get; set; }
     }
 }

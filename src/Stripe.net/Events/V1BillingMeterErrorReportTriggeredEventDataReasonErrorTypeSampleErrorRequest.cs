@@ -16,7 +16,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("identifier")]
 #endif
-
         public string Identifier { get; set; }
     }
 }

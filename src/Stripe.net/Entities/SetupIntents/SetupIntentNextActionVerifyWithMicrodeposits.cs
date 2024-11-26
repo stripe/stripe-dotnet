@@ -14,15 +14,11 @@ namespace Stripe
         /// The timestamp when the microdeposits are expected to land.
         /// </summary>
         [JsonProperty("arrival_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("arrival_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("arrival_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime ArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -33,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_verification_url")]
 #endif
-
         public string HostedVerificationUrl { get; set; }
 
         /// <summary>
@@ -45,7 +40,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("microdeposit_type")]
 #endif
-
         public string MicrodepositType { get; set; }
     }
 }

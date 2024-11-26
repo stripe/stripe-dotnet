@@ -17,7 +17,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -25,15 +24,11 @@ namespace Stripe.Billing
         /// with minute boundaries.
         /// </summary>
         [JsonProperty("end_time")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("end_time")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("end_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? EndTime { get; set; }
 
         /// <summary>
@@ -41,15 +36,11 @@ namespace Stripe.Billing
         /// with minute boundaries.
         /// </summary>
         [JsonProperty("start_time")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("start_time")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("start_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? StartTime { get; set; }
 
         /// <summary>
@@ -64,7 +55,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value_grouping_window")]
 #endif
-
         public string ValueGroupingWindow { get; set; }
     }
 }

@@ -50,7 +50,14 @@ namespace Stripe.Infrastructure
         /// <param name="options">The calling serializer's options.</param>
         public override void Write(Utf8JsonWriter writer, object value, JsonSerializerOptions options)
         {
-            throw new NotSupportedException("StripeObjectConverter should only be used while deserializing.");
+            if (value == null)
+            {
+                writer.WriteNullValue();
+            }
+            else
+            {
+                writer.WriteRawValue(JsonSerializer.Serialize(value, options));
+            }
         }
 
         /// <summary>

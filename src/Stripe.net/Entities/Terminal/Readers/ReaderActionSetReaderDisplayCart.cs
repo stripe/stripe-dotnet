@@ -18,7 +18,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
 #endif
-
         public List<ReaderActionSetReaderDisplayCartLineItem> LineItems { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax")]
 #endif
-
         public long? Tax { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("total")]
 #endif
-
         public long Total { get; set; }
     }
 }

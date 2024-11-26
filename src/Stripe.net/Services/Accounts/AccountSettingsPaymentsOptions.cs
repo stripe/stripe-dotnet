@@ -22,7 +22,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
 #endif
-
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -35,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_kana")]
 #endif
-
         public string StatementDescriptorKana { get; set; }
 
         /// <summary>
@@ -48,7 +46,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_kanji")]
 #endif
-
         public string StatementDescriptorKanji { get; set; }
     }
 }

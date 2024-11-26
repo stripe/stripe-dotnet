@@ -16,7 +16,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("province")]
 #endif
-
         public string Province { get; set; }
     }
 }

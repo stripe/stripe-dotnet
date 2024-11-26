@@ -19,7 +19,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allow_redisplay_filters")]
 #endif
-
         public List<string> AllowRedisplayFilters { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_remove")]
 #endif
-
         public string PaymentMethodRemove { get; set; }
 
         /// <summary>
@@ -43,7 +41,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_save")]
 #endif
-
         public string PaymentMethodSave { get; set; }
     }
 }

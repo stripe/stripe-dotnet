@@ -16,7 +16,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing")]
 #endif
-
         public CardholderBillingOptions Billing { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company")]
 #endif
-
         public CardholderCompanyOptions Company { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
 #endif
-
         public string Email { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("individual")]
 #endif
-
         public CardholderIndividualOptions Individual { get; set; }
 
         /// <summary>
@@ -59,7 +55,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -71,7 +66,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone_number")]
 #endif
-
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -85,7 +79,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferred_locales")]
 #endif
-
         public List<string> PreferredLocales { get; set; }
 
         /// <summary>
@@ -97,7 +90,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("spending_controls")]
 #endif
-
         public CardholderSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
@@ -108,7 +100,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

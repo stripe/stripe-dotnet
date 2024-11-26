@@ -15,14 +15,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
 #endif
-
         public bool Enabled { get; set; }
 
         [JsonProperty("features")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
 #endif
-
         public AccountSessionComponentsPayoutsFeatures Features { get; set; }
     }
 }

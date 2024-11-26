@@ -26,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -36,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -48,37 +46,28 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         /// <summary>
         /// The date that the transaction's net funds become available in the Stripe balance.
         /// </summary>
         [JsonProperty("available_on")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("available_on")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("available_on")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime AvailableOn { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -90,7 +79,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -100,7 +88,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -116,7 +103,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exchange_rate")]
 #endif
-
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
@@ -127,7 +113,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fee")]
 #endif
-
         public long Fee { get; set; }
 
         /// <summary>
@@ -137,7 +122,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fee_details")]
 #endif
-
         public List<BalanceTransactionFeeDetail> FeeDetails { get; set; }
 
         /// <summary>
@@ -150,7 +134,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("net")]
 #endif
-
         public long Net { get; set; }
 
         /// <summary>
@@ -162,7 +145,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reporting_category")]
 #endif
-
         public string ReportingCategory { get; set; }
 
         #region Expandable Source
@@ -175,7 +157,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string SourceId
         {
             get => this.InternalSource?.Id;
@@ -192,7 +173,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public IBalanceTransactionSource Source
         {
             get => this.InternalSource?.ExpandedObject;
@@ -200,16 +180,12 @@ namespace Stripe
         }
 
         [JsonProperty("source")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("source")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<IBalanceTransactionSource>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("source")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IBalanceTransactionSource>))]
 #endif
-
         internal ExpandableField<IBalanceTransactionSource> InternalSource { get; set; }
         #endregion
 
@@ -221,7 +197,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -261,7 +236,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

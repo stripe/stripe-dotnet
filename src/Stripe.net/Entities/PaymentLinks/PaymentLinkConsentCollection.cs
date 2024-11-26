@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_reuse_agreement")]
 #endif
-
         public PaymentLinkConsentCollectionPaymentMethodReuseAgreement PaymentMethodReuseAgreement { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("promotions")]
 #endif
-
         public string Promotions { get; set; }
 
         /// <summary>
@@ -40,7 +38,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terms_of_service")]
 #endif
-
         public string TermsOfService { get; set; }
     }
 }

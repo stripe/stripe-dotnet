@@ -12,14 +12,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
 #endif
-
         public string Reference { get; set; }
 
         [JsonProperty("statement_descriptor")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
 #endif
-
         public string StatementDescriptor { get; set; }
     }
 }

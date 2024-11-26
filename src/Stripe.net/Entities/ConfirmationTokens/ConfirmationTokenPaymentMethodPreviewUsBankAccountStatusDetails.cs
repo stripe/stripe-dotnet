@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blocked")]
 #endif
-
         public ConfirmationTokenPaymentMethodPreviewUsBankAccountStatusDetailsBlocked Blocked { get; set; }
     }
 }

@@ -30,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -43,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available")]
 #endif
-
         public List<BalanceAmount> Available { get; set; }
 
         /// <summary>
@@ -56,7 +54,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("connect_reserved")]
 #endif
-
         public List<BalanceAmount> ConnectReserved { get; set; }
 
         /// <summary>
@@ -66,14 +63,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("instant_available")]
 #endif
-
         public List<BalanceInstantAvailable> InstantAvailable { get; set; }
 
         [JsonProperty("issuing")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing")]
 #endif
-
         public BalanceIssuing Issuing { get; set; }
 
         /// <summary>
@@ -84,7 +79,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -95,7 +89,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pending")]
 #endif
-
         public List<BalanceAmount> Pending { get; set; }
     }
 }

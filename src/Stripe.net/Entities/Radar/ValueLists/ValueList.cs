@@ -24,7 +24,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -34,7 +33,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -44,22 +42,17 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alias")]
 #endif
-
         public string Alias { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -69,7 +62,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created_by")]
 #endif
-
         public string CreatedBy { get; set; }
 
         /// <summary>
@@ -80,7 +72,6 @@ namespace Stripe.Radar
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -96,7 +87,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("item_type")]
 #endif
-
         public string ItemType { get; set; }
 
         /// <summary>
@@ -106,7 +96,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("list_items")]
 #endif
-
         public StripeList<ValueListItem> ListItems { get; set; }
 
         /// <summary>
@@ -117,7 +106,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -129,7 +117,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -139,7 +126,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
     }
 }

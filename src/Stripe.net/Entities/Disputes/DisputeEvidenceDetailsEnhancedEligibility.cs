@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("visa_compelling_evidence_3")]
 #endif
-
         public DisputeEvidenceDetailsEnhancedEligibilityVisaCompellingEvidence3 VisaCompellingEvidence3 { get; set; }
     }
 }

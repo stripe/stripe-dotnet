@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("completed_sessions")]
 #endif
-
         public PaymentLinkRestrictionsCompletedSessions CompletedSessions { get; set; }
     }
 }

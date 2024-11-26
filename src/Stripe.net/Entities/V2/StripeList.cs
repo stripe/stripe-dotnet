@@ -4,15 +4,19 @@ namespace Stripe.V2
     using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 #endif
 
     [JsonObject]
-    [NoSystemTextJsonAttributesNeeded("JsonObject is implied by System.Text.Json")]
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJEnumerableObjectConverter))]
+#endif
     public class StripeList<T> : StripeEntity<StripeList<T>>, IEnumerable<T>
     {
         /// <summary>
         /// A list containing the actual response elements, paginated by any request parameters.
+        /// TODO does this need an ItemConverterType (like in Stripe.StripeList).
         /// </summary>
         [JsonProperty("data")]
 #if NET6_0_OR_GREATER

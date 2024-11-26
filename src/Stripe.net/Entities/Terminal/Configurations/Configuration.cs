@@ -19,7 +19,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -29,14 +28,12 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         [JsonProperty("bbpos_wisepos_e")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bbpos_wisepos_e")]
 #endif
-
         public ConfigurationBbposWiseposE BbposWiseposE { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_account_default")]
 #endif
-
         public bool? IsAccountDefault { get; set; }
 
         /// <summary>
@@ -68,7 +63,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -78,42 +72,36 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         [JsonProperty("offline")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("offline")]
 #endif
-
         public ConfigurationOffline Offline { get; set; }
 
         [JsonProperty("reboot_window")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reboot_window")]
 #endif
-
         public ConfigurationRebootWindow RebootWindow { get; set; }
 
         [JsonProperty("stripe_s700")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_s700")]
 #endif
-
         public ConfigurationStripeS700 StripeS700 { get; set; }
 
         [JsonProperty("tipping")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tipping")]
 #endif
-
         public ConfigurationTipping Tipping { get; set; }
 
         [JsonProperty("verifone_p400")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verifone_p400")]
 #endif
-
         public ConfigurationVerifoneP400 VerifoneP400 { get; set; }
     }
 }

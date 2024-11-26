@@ -23,7 +23,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -48,7 +46,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active_features")]
 #endif
-
         public List<string> ActiveFeatures { get; set; }
 
         /// <summary>
@@ -58,7 +55,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance")]
 #endif
-
         public FinancialAccountBalance Balance { get; set; }
 
         /// <summary>
@@ -69,22 +65,17 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
 #endif
-
         public string Country { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -96,7 +87,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
 #endif
-
         public FinancialAccountFeatures Features { get; set; }
 
         /// <summary>
@@ -106,7 +96,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_addresses")]
 #endif
-
         public List<FinancialAccountFinancialAddress> FinancialAddresses { get; set; }
 
         /// <summary>
@@ -117,7 +106,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -129,7 +117,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -144,7 +131,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pending_features")]
 #endif
-
         public List<string> PendingFeatures { get; set; }
 
         /// <summary>
@@ -154,7 +140,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("platform_restrictions")]
 #endif
-
         public FinancialAccountPlatformRestrictions PlatformRestrictions { get; set; }
 
         /// <summary>
@@ -169,7 +154,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("restricted_features")]
 #endif
-
         public List<string> RestrictedFeatures { get; set; }
 
         /// <summary>
@@ -180,14 +164,12 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         [JsonProperty("status_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
 #endif
-
         public FinancialAccountStatusDetails StatusDetails { get; set; }
 
         /// <summary>
@@ -199,7 +181,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_currencies")]
 #endif
-
         public List<string> SupportedCurrencies { get; set; }
     }
 }

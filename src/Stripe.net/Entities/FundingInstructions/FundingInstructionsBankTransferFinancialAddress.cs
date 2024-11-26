@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aba")]
 #endif
-
         public FundingInstructionsBankTransferFinancialAddressAba Aba { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iban")]
 #endif
-
         public FundingInstructionsBankTransferFinancialAddressIban Iban { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sort_code")]
 #endif
-
         public FundingInstructionsBankTransferFinancialAddressSortCode SortCode { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("spei")]
 #endif
-
         public FundingInstructionsBankTransferFinancialAddressSpei Spei { get; set; }
 
         /// <summary>
@@ -58,7 +54,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_networks")]
 #endif
-
         public List<string> SupportedNetworks { get; set; }
 
         /// <summary>
@@ -68,7 +63,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("swift")]
 #endif
-
         public FundingInstructionsBankTransferFinancialAddressSwift Swift { get; set; }
 
         /// <summary>
@@ -80,7 +74,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -90,7 +83,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("zengin")]
 #endif
-
         public FundingInstructionsBankTransferFinancialAddressZengin Zengin { get; set; }
     }
 }

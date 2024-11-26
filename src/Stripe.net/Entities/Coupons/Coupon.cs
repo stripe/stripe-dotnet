@@ -28,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -38,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -49,29 +47,23 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_off")]
 #endif
-
         public long? AmountOff { get; set; }
 
         [JsonProperty("applies_to")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applies_to")]
 #endif
-
         public CouponAppliesTo AppliesTo { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -83,7 +75,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -95,7 +86,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency_options")]
 #endif
-
         public Dictionary<string, CouponCurrencyOptions> CurrencyOptions { get; set; }
 
         /// <summary>
@@ -106,7 +96,6 @@ namespace Stripe
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -118,7 +107,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duration")]
 #endif
-
         public string Duration { get; set; }
 
         /// <summary>
@@ -129,7 +117,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duration_in_months")]
 #endif
-
         public long? DurationInMonths { get; set; }
 
         /// <summary>
@@ -140,7 +127,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -151,7 +137,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("max_redemptions")]
 #endif
-
         public long? MaxRedemptions { get; set; }
 
         /// <summary>
@@ -163,7 +148,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -173,7 +157,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -185,22 +168,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_off")]
 #endif
-
         public decimal? PercentOff { get; set; }
 
         /// <summary>
         /// Date after which the coupon can no longer be redeemed.
         /// </summary>
         [JsonProperty("redeem_by")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("redeem_by")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("redeem_by")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? RedeemBy { get; set; }
 
         /// <summary>
@@ -210,7 +188,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("times_redeemed")]
 #endif
-
         public long TimesRedeemed { get; set; }
 
         /// <summary>
@@ -221,7 +198,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("valid")]
 #endif
-
         public bool Valid { get; set; }
     }
 }

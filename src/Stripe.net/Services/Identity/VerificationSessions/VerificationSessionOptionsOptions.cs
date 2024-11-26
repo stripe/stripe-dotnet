@@ -17,7 +17,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("document")]
 #endif
-
         public VerificationSessionOptionsDocumentOptions Document { get; set; }
     }
 }

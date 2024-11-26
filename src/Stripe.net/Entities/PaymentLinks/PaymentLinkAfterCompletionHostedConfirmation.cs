@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_message")]
 #endif
-
         public string CustomMessage { get; set; }
     }
 }

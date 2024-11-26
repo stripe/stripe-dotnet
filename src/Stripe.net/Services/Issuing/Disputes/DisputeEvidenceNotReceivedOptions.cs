@@ -18,22 +18,17 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("additional_documentation")]
 #endif
-
         public string AdditionalDocumentation { get; set; }
 
         /// <summary>
         /// Date when the cardholder expected to receive the product.
         /// </summary>
         [JsonProperty("expected_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expected_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expected_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpectedAt { get; set; }
 
         /// <summary>
@@ -43,7 +38,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("explanation")]
 #endif
-
         public string Explanation { get; set; }
 
         /// <summary>
@@ -53,7 +47,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_description")]
 #endif
-
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -64,7 +57,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_type")]
 #endif
-
         public string ProductType { get; set; }
     }
 }

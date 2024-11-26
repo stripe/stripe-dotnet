@@ -16,14 +16,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available")]
 #endif
-
         public bool Available { get; set; }
 
         [JsonProperty("display_preference")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_preference")]
 #endif
-
         public PaymentMethodConfigurationApplePayDisplayPreference DisplayPreference { get; set; }
     }
 }

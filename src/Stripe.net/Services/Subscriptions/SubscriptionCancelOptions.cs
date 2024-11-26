@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_details")]
 #endif
-
         public SubscriptionCancellationDetailsOptions CancellationDetails { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_now")]
 #endif
-
         public bool? InvoiceNow { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prorate")]
 #endif
-
         public bool? Prorate { get; set; }
     }
 }

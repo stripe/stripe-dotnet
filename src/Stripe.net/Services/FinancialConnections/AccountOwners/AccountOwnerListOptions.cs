@@ -15,7 +15,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ownership")]
 #endif
-
         public string Ownership { get; set; }
     }
 }

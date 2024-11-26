@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("files")]
 #endif
-
         public List<string> Files { get; set; }
     }
 }

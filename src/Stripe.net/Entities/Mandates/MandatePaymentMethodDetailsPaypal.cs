@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_agreement_id")]
 #endif
-
         public string BillingAgreementId { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payer_id")]
 #endif
-
         public string PayerId { get; set; }
     }
 }

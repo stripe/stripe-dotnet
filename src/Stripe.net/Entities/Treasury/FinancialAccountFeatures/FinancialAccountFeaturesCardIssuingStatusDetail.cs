@@ -20,7 +20,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]
 #endif
-
         public string Code { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("resolution")]
 #endif
-
         public string Resolution { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("restriction")]
 #endif
-
         public string Restriction { get; set; }
     }
 }

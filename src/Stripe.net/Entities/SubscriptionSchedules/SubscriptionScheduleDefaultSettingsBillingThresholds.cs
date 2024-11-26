@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_gte")]
 #endif
-
         public long? AmountGte { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reset_billing_cycle_anchor")]
 #endif
-
         public bool? ResetBillingCycleAnchor { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_payload_key")]
 #endif
-
         public string EventPayloadKey { get; set; }
     }
 }

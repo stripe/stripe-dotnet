@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string GeneratedCardId
         {
             get => this.InternalGeneratedCard?.Id;
@@ -36,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public PaymentMethod GeneratedCard
         {
             get => this.InternalGeneratedCard?.ExpandedObject;
@@ -44,16 +42,12 @@ namespace Stripe
         }
 
         [JsonProperty("generated_card")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("generated_card")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("generated_card")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
 #endif
-
         internal ExpandableField<PaymentMethod> InternalGeneratedCard { get; set; }
         #endregion
 
@@ -64,7 +58,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("offline")]
 #endif
-
         public SetupAttemptPaymentMethodDetailsCardPresentOffline Offline { get; set; }
     }
 }

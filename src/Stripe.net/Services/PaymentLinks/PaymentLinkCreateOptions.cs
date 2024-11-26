@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("after_completion")]
 #endif
-
         public PaymentLinkAfterCompletionOptions AfterCompletion { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allow_promotion_codes")]
 #endif
-
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_amount")]
 #endif
-
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_percent")]
 #endif
-
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
@@ -61,7 +57,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
 #endif
-
         public PaymentLinkAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -72,7 +67,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_address_collection")]
 #endif
-
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
@@ -82,7 +76,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("consent_collection")]
 #endif
-
         public PaymentLinkConsentCollectionOptions ConsentCollection { get; set; }
 
         /// <summary>
@@ -94,7 +87,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -105,7 +97,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_fields")]
 #endif
-
         public List<PaymentLinkCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
@@ -115,7 +106,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_text")]
 #endif
-
         public PaymentLinkCustomTextOptions CustomText { get; set; }
 
         /// <summary>
@@ -128,7 +118,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_creation")]
 #endif
-
         public string CustomerCreation { get; set; }
 
         /// <summary>
@@ -139,7 +128,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inactive_message")]
 #endif
-
         public string InactiveMessage { get; set; }
 
         /// <summary>
@@ -149,7 +137,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_creation")]
 #endif
-
         public PaymentLinkInvoiceCreationOptions InvoiceCreation { get; set; }
 
         /// <summary>
@@ -160,7 +147,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
 #endif
-
         public List<PaymentLinkLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -176,7 +162,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -186,7 +171,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
 #endif
-
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -197,7 +181,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_intent_data")]
 #endif
-
         public PaymentLinkPaymentIntentDataOptions PaymentIntentData { get; set; }
 
         /// <summary>
@@ -217,7 +200,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_collection")]
 #endif
-
         public string PaymentMethodCollection { get; set; }
 
         /// <summary>
@@ -238,7 +220,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_types")]
 #endif
-
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -250,7 +231,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone_number_collection")]
 #endif
-
         public PaymentLinkPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
 
         /// <summary>
@@ -260,7 +240,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("restrictions")]
 #endif
-
         public PaymentLinkRestrictionsOptions Restrictions { get; set; }
 
         /// <summary>
@@ -270,7 +249,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_address_collection")]
 #endif
-
         public PaymentLinkShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
 
         /// <summary>
@@ -282,7 +260,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_options")]
 #endif
-
         public List<PaymentLinkShippingOptionOptions> ShippingOptions { get; set; }
 
         /// <summary>
@@ -297,7 +274,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("submit_type")]
 #endif
-
         public string SubmitType { get; set; }
 
         /// <summary>
@@ -308,7 +284,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_data")]
 #endif
-
         public PaymentLinkSubscriptionDataOptions SubscriptionData { get; set; }
 
         /// <summary>
@@ -318,7 +293,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_id_collection")]
 #endif
-
         public PaymentLinkTaxIdCollectionOptions TaxIdCollection { get; set; }
 
         /// <summary>
@@ -329,7 +303,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_data")]
 #endif
-
         public PaymentLinkTransferDataOptions TransferData { get; set; }
     }
 }

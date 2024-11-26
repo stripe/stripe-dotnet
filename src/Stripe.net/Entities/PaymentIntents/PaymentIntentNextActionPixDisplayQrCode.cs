@@ -18,22 +18,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("data")]
 #endif
-
         public string Data { get; set; }
 
         /// <summary>
         /// The date (unix timestamp) when the PIX expires.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -44,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_instructions_url")]
 #endif
-
         public string HostedInstructionsUrl { get; set; }
 
         /// <summary>
@@ -54,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("image_url_png")]
 #endif
-
         public string ImageUrlPng { get; set; }
 
         /// <summary>
@@ -64,7 +57,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("image_url_svg")]
 #endif
-
         public string ImageUrlSvg { get; set; }
     }
 }

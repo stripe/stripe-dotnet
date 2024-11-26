@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("contact_email")]
 #endif
-
         public string ContactEmail { get; set; }
     }
 }

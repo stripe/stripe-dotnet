@@ -21,7 +21,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string AdditionalDocumentationId
         {
             get => this.InternalAdditionalDocumentation?.Id;
@@ -39,7 +38,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public File AdditionalDocumentation
         {
             get => this.InternalAdditionalDocumentation?.ExpandedObject;
@@ -47,16 +45,12 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("additional_documentation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("additional_documentation")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("additional_documentation")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
-
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
 
@@ -67,22 +61,17 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("explanation")]
 #endif
-
         public string Explanation { get; set; }
 
         /// <summary>
         /// Date when the product was received.
         /// </summary>
         [JsonProperty("received_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("received_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("received_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ReceivedAt { get; set; }
 
         /// <summary>
@@ -92,7 +81,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_description")]
 #endif
-
         public string ReturnDescription { get; set; }
 
         /// <summary>
@@ -103,22 +91,17 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_status")]
 #endif
-
         public string ReturnStatus { get; set; }
 
         /// <summary>
         /// Date when the product was returned or attempted to be returned.
         /// </summary>
         [JsonProperty("returned_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("returned_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("returned_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ReturnedAt { get; set; }
     }
 }

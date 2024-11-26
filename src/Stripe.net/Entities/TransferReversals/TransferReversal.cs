@@ -34,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -44,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -54,7 +52,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         #region Expandable BalanceTransaction
@@ -67,7 +64,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
@@ -84,7 +80,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
@@ -92,16 +87,12 @@ namespace Stripe
         }
 
         [JsonProperty("balance_transaction")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("balance_transaction")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
-
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
@@ -109,15 +100,11 @@ namespace Stripe
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -129,7 +116,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         #region Expandable DestinationPaymentRefund
@@ -142,7 +128,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string DestinationPaymentRefundId
         {
             get => this.InternalDestinationPaymentRefund?.Id;
@@ -159,7 +144,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Refund DestinationPaymentRefund
         {
             get => this.InternalDestinationPaymentRefund?.ExpandedObject;
@@ -167,16 +151,12 @@ namespace Stripe
         }
 
         [JsonProperty("destination_payment_refund")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("destination_payment_refund")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("destination_payment_refund")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
 #endif
-
         internal ExpandableField<Refund> InternalDestinationPaymentRefund { get; set; }
         #endregion
 
@@ -189,7 +169,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable SourceRefund
@@ -202,7 +181,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string SourceRefundId
         {
             get => this.InternalSourceRefund?.Id;
@@ -219,7 +197,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Refund SourceRefund
         {
             get => this.InternalSourceRefund?.ExpandedObject;
@@ -227,16 +204,12 @@ namespace Stripe
         }
 
         [JsonProperty("source_refund")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("source_refund")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("source_refund")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
 #endif
-
         internal ExpandableField<Refund> InternalSourceRefund { get; set; }
         #endregion
 
@@ -250,7 +223,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string TransferId
         {
             get => this.InternalTransfer?.Id;
@@ -267,7 +239,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Transfer Transfer
         {
             get => this.InternalTransfer?.ExpandedObject;
@@ -275,16 +246,12 @@ namespace Stripe
         }
 
         [JsonProperty("transfer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transfer")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("transfer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transfer>))]
 #endif
-
         internal ExpandableField<Transfer> InternalTransfer { get; set; }
         #endregion
     }

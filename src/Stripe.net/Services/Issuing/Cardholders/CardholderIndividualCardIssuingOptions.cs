@@ -17,7 +17,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("user_terms_acceptance")]
 #endif
-
         public CardholderIndividualCardIssuingUserTermsAcceptanceOptions UserTermsAcceptance { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_value")]
 #endif
-
         public string DefaultValue { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("maximum_length")]
 #endif
-
         public long? MaximumLength { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minimum_length")]
 #endif
-
         public long? MinimumLength { get; set; }
     }
 }

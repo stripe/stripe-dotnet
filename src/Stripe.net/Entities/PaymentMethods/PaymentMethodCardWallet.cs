@@ -12,14 +12,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amex_express_checkout")]
 #endif
-
         public PaymentMethodCardWalletAmexExpressCheckout AmexExpressCheckout { get; set; }
 
         [JsonProperty("apple_pay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("apple_pay")]
 #endif
-
         public PaymentMethodCardWalletApplePay ApplePay { get; set; }
 
         /// <summary>
@@ -29,35 +27,30 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dynamic_last4")]
 #endif
-
         public string DynamicLast4 { get; set; }
 
         [JsonProperty("google_pay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("google_pay")]
 #endif
-
         public PaymentMethodCardWalletGooglePay GooglePay { get; set; }
 
         [JsonProperty("link")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("link")]
 #endif
-
         public PaymentMethodCardWalletLink Link { get; set; }
 
         [JsonProperty("masterpass")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("masterpass")]
 #endif
-
         public PaymentMethodCardWalletMasterpass Masterpass { get; set; }
 
         [JsonProperty("samsung_pay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("samsung_pay")]
 #endif
-
         public PaymentMethodCardWalletSamsungPay SamsungPay { get; set; }
 
         /// <summary>
@@ -72,14 +65,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         [JsonProperty("visa_checkout")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("visa_checkout")]
 #endif
-
         public PaymentMethodCardWalletVisaCheckout VisaCheckout { get; set; }
     }
 }

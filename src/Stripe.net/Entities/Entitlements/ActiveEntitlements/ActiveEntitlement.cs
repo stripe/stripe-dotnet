@@ -19,7 +19,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         #region Expandable Feature
@@ -43,7 +41,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string FeatureId
         {
             get => this.InternalFeature?.Id;
@@ -61,7 +58,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Feature Feature
         {
             get => this.InternalFeature?.ExpandedObject;
@@ -69,16 +65,12 @@ namespace Stripe.Entitlements
         }
 
         [JsonProperty("feature")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("feature")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Feature>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("feature")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Feature>))]
 #endif
-
         internal ExpandableField<Feature> InternalFeature { get; set; }
         #endregion
 
@@ -90,7 +82,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -100,7 +91,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
 #endif
-
         public string LookupKey { get; set; }
     }
 }

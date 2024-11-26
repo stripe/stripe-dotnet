@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
 #endif
-
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_data")]
 #endif
-
         public SessionInvoiceCreationInvoiceDataOptions InvoiceData { get; set; }
     }
 }

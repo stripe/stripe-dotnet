@@ -19,15 +19,11 @@ namespace Stripe
         /// subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_cycle_anchor")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsBillingCycleAnchor> BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -37,15 +33,11 @@ namespace Stripe
         /// proration for that period.
         /// </summary>
         [JsonProperty("cancel_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancel_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
@@ -56,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancel_at_period_end")]
 #endif
-
         public bool? CancelAtPeriodEnd { get; set; }
 
         /// <summary>
@@ -66,7 +57,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancel_now")]
 #endif
-
         public bool? CancelNow { get; set; }
 
         /// <summary>
@@ -78,7 +68,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_tax_rates")]
 #endif
-
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
@@ -88,7 +77,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("items")]
 #endif
-
         public List<InvoiceSubscriptionDetailsItemOptions> Items { get; set; }
 
         /// <summary>
@@ -103,7 +91,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
 #endif
-
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -116,15 +103,11 @@ namespace Stripe
         /// required. Also, <c>subscription_details.proration_behavior</c> cannot be set to 'none'.
         /// </summary>
         [JsonProperty("proration_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("proration_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ProrationDate { get; set; }
 
         /// <summary>
@@ -135,22 +118,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("resume_at")]
 #endif
-
         public string ResumeAt { get; set; }
 
         /// <summary>
         /// Date a subscription is intended to start (can be future or past).
         /// </summary>
         [JsonProperty("start_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("start_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("start_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? StartDate { get; set; }
 
         /// <summary>
@@ -159,15 +137,11 @@ namespace Stripe
         /// is required.
         /// </summary>
         [JsonProperty("trial_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("trial_end")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_end")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsTrialEnd> TrialEnd { get; set; }
     }
 }

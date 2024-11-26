@@ -15,7 +15,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("public_name")]
 #endif
-
         public string PublicName { get; set; }
     }
 }

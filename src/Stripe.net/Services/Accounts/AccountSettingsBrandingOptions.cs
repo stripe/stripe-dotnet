@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("icon")]
 #endif
-
         public string Icon { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("logo")]
 #endif
-
         public string Logo { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("primary_color")]
 #endif
-
         public string PrimaryColor { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("secondary_color")]
 #endif
-
         public string SecondaryColor { get; set; }
     }
 }

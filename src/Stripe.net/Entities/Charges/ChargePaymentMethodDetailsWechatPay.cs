@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
 #endif
-
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
 #endif
-
         public string TransactionId { get; set; }
     }
 }

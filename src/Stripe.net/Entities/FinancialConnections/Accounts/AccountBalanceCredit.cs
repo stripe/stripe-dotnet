@@ -23,7 +23,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("used")]
 #endif
-
         public Dictionary<string, long> Used { get; set; }
     }
 }

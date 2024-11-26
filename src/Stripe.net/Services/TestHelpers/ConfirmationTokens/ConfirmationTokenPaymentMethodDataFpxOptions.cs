@@ -16,7 +16,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder_type")]
 #endif
-
         public string AccountHolderType { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank")]
 #endif
-
         public string Bank { get; set; }
     }
 }

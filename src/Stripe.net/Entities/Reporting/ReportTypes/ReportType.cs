@@ -31,7 +31,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -41,7 +40,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -49,15 +47,11 @@ namespace Stripe.Reporting
         /// Unix epoch.
         /// </summary>
         [JsonProperty("data_available_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("data_available_end")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("data_available_end")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime DataAvailableEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -65,15 +59,11 @@ namespace Stripe.Reporting
         /// Unix epoch.
         /// </summary>
         [JsonProperty("data_available_start")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("data_available_start")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("data_available_start")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime DataAvailableStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -84,7 +74,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_columns")]
 #endif
-
         public List<string> DefaultColumns { get; set; }
 
         /// <summary>
@@ -95,7 +84,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -105,22 +93,17 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
         /// When this Report Type was latest updated. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("updated")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("updated")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("updated")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -131,7 +114,6 @@ namespace Stripe.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("version")]
 #endif
-
         public long Version { get; set; }
     }
 }

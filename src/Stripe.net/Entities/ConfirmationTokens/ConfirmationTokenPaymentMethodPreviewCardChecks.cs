@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_line1_check")]
 #endif
-
         public string AddressLine1Check { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_postal_code_check")]
 #endif
-
         public string AddressPostalCodeCheck { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cvc_check")]
 #endif
-
         public string CvcCheck { get; set; }
     }
 }

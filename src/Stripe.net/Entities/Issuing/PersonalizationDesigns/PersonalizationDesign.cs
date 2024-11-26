@@ -22,7 +22,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         #region Expandable CardLogo
@@ -46,7 +44,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CardLogoId
         {
             get => this.InternalCardLogo?.Id;
@@ -64,7 +61,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public File CardLogo
         {
             get => this.InternalCardLogo?.ExpandedObject;
@@ -72,16 +68,12 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("card_logo")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("card_logo")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("card_logo")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
-
         internal ExpandableField<File> InternalCardLogo { get; set; }
         #endregion
 
@@ -92,22 +84,17 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("carrier_text")]
 #endif
-
         public PersonalizationDesignCarrierText CarrierText { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -118,7 +105,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -129,7 +115,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
 #endif
-
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -141,7 +126,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -151,7 +135,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         #region Expandable PhysicalBundle
@@ -164,7 +147,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string PhysicalBundleId
         {
             get => this.InternalPhysicalBundle?.Id;
@@ -181,7 +163,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public PhysicalBundle PhysicalBundle
         {
             get => this.InternalPhysicalBundle?.ExpandedObject;
@@ -189,16 +170,12 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("physical_bundle")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("physical_bundle")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<PhysicalBundle>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("physical_bundle")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PhysicalBundle>))]
 #endif
-
         internal ExpandableField<PhysicalBundle> InternalPhysicalBundle { get; set; }
         #endregion
 
@@ -206,14 +183,12 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferences")]
 #endif
-
         public PersonalizationDesignPreferences Preferences { get; set; }
 
         [JsonProperty("rejection_reasons")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rejection_reasons")]
 #endif
-
         public PersonalizationDesignRejectionReasons RejectionReasons { get; set; }
 
         /// <summary>
@@ -224,7 +199,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

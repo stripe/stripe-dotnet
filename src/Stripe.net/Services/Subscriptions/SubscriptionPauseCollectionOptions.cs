@@ -19,22 +19,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("behavior")]
 #endif
-
         public string Behavior { get; set; }
 
         /// <summary>
         /// The time after which the subscription will resume collecting payments.
         /// </summary>
         [JsonProperty("resumes_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("resumes_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("resumes_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ResumesAt { get; set; }
     }
 }

@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
 #endif
-
         public InvoiceUpcomingLinesAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("coupon")]
 #endif
-
         public string Coupon { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -53,7 +50,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -65,7 +61,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_details")]
 #endif
-
         public InvoiceUpcomingLinesCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
@@ -78,7 +73,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<InvoiceUpcomingLinesDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -88,7 +82,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_items")]
 #endif
-
         public List<InvoiceUpcomingLinesInvoiceItemOptions> InvoiceItems { get; set; }
 
         /// <summary>
@@ -99,7 +92,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-
         public InvoiceUpcomingLinesIssuerOptions Issuer { get; set; }
 
         /// <summary>
@@ -112,7 +104,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
 #endif
-
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -124,7 +115,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preview_mode")]
 #endif
-
         public string PreviewMode { get; set; }
 
         /// <summary>
@@ -135,7 +125,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule")]
 #endif
-
         public string Schedule { get; set; }
 
         /// <summary>
@@ -146,7 +135,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule_details")]
 #endif
-
         public InvoiceUpcomingLinesScheduleDetailsOptions ScheduleDetails { get; set; }
 
         /// <summary>
@@ -160,7 +148,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
 #endif
-
         public string Subscription { get; set; }
 
         /// <summary>
@@ -173,15 +160,11 @@ namespace Stripe
         /// <c>subscription_details.billing_cycle_anchor</c> instead.
         /// </summary>
         [JsonProperty("subscription_billing_cycle_anchor")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_billing_cycle_anchor")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription_billing_cycle_anchor")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, SubscriptionBillingCycleAnchor> SubscriptionBillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -192,15 +175,11 @@ namespace Stripe
         /// future API version. Use <c>subscription_details.cancel_at</c> instead.
         /// </summary>
         [JsonProperty("subscription_cancel_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_cancel_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription_cancel_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? SubscriptionCancelAt { get; set; }
 
         /// <summary>
@@ -213,7 +192,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_cancel_at_period_end")]
 #endif
-
         public bool? SubscriptionCancelAtPeriodEnd { get; set; }
 
         /// <summary>
@@ -225,7 +203,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_cancel_now")]
 #endif
-
         public bool? SubscriptionCancelNow { get; set; }
 
         /// <summary>
@@ -238,7 +215,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_default_tax_rates")]
 #endif
-
         public List<string> SubscriptionDefaultTaxRates { get; set; }
 
         /// <summary>
@@ -249,7 +225,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_details")]
 #endif
-
         public InvoiceUpcomingLinesSubscriptionDetailsOptions SubscriptionDetails { get; set; }
 
         /// <summary>
@@ -261,7 +236,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_items")]
 #endif
-
         public List<InvoiceUpcomingLinesSubscriptionItemOptions> SubscriptionItems { get; set; }
 
         /// <summary>
@@ -278,7 +252,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_proration_behavior")]
 #endif
-
         public string SubscriptionProrationBehavior { get; set; }
 
         /// <summary>
@@ -293,15 +266,11 @@ namespace Stripe
         /// <c>subscription_details.proration_date</c> instead.
         /// </summary>
         [JsonProperty("subscription_proration_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_proration_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription_proration_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? SubscriptionProrationDate { get; set; }
 
         /// <summary>
@@ -314,7 +283,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_resume_at")]
 #endif
-
         public string SubscriptionResumeAt { get; set; }
 
         /// <summary>
@@ -323,15 +291,11 @@ namespace Stripe
         /// <c>subscription_details.start_date</c> instead.
         /// </summary>
         [JsonProperty("subscription_start_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_start_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription_start_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? SubscriptionStartDate { get; set; }
 
         /// <summary>
@@ -341,15 +305,11 @@ namespace Stripe
         /// Use <c>subscription_details.trial_end</c> instead.
         /// </summary>
         [JsonProperty("subscription_trial_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_trial_end")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription_trial_end")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, SubscriptionTrialEnd> SubscriptionTrialEnd { get; set; }
 
         /// <summary>
@@ -364,7 +324,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_trial_from_plan")]
 #endif
-
         public bool? SubscriptionTrialFromPlan { get; set; }
     }
 }

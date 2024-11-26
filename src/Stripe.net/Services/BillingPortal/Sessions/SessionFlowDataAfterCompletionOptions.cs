@@ -15,7 +15,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_confirmation")]
 #endif
-
         public SessionFlowDataAfterCompletionHostedConfirmationOptions HostedConfirmation { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("redirect")]
 #endif
-
         public SessionFlowDataAfterCompletionRedirectOptions Redirect { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public Address Address { get; set; }
 
         /// <summary>
@@ -22,7 +21,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_kana")]
 #endif
-
         public AddressJapan AddressKana { get; set; }
 
         /// <summary>
@@ -32,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_kanji")]
 #endif
-
         public AddressJapan AddressKanji { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("directors_provided")]
 #endif
-
         public bool DirectorsProvided { get; set; }
 
         /// <summary>
@@ -59,7 +55,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("executives_provided")]
 #endif
-
         public bool ExecutivesProvided { get; set; }
 
         /// <summary>
@@ -70,7 +65,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("export_license_id")]
 #endif
-
         public string ExportLicenseId { get; set; }
 
         /// <summary>
@@ -80,7 +74,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("export_purpose_code")]
 #endif
-
         public string ExportPurposeCode { get; set; }
 
         /// <summary>
@@ -90,7 +83,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -100,7 +92,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name_kana")]
 #endif
-
         public string NameKana { get; set; }
 
         /// <summary>
@@ -110,7 +101,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name_kanji")]
 #endif
-
         public string NameKanji { get; set; }
 
         /// <summary>
@@ -126,7 +116,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owners_provided")]
 #endif
-
         public bool OwnersProvided { get; set; }
 
         /// <summary>
@@ -137,7 +126,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ownership_declaration")]
 #endif
-
         public AccountCompanyOwnershipDeclaration OwnershipDeclaration { get; set; }
 
         /// <summary>
@@ -147,7 +135,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone")]
 #endif
-
         public string Phone { get; set; }
 
         /// <summary>
@@ -169,7 +156,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("structure")]
 #endif
-
         public string Structure { get; set; }
 
         /// <summary>
@@ -179,7 +165,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_id_provided")]
 #endif
-
         public bool TaxIdProvided { get; set; }
 
         /// <summary>
@@ -190,7 +175,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_id_registrar")]
 #endif
-
         public string TaxIdRegistrar { get; set; }
 
         /// <summary>
@@ -200,7 +184,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("vat_id_provided")]
 #endif
-
         public bool VatIdProvided { get; set; }
 
         /// <summary>
@@ -210,7 +193,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification")]
 #endif
-
         public AccountCompanyVerification Verification { get; set; }
     }
 }

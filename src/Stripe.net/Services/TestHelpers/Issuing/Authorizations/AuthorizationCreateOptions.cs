@@ -17,7 +17,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long? Amount { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_details")]
 #endif
-
         public AuthorizationAmountDetailsOptions AmountDetails { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_method")]
 #endif
-
         public string AuthorizationMethod { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
 #endif
-
         public string Card { get; set; }
 
         /// <summary>
@@ -64,7 +60,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -74,7 +69,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fleet")]
 #endif
-
         public AuthorizationFleetOptions Fleet { get; set; }
 
         /// <summary>
@@ -84,7 +78,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fuel")]
 #endif
-
         public AuthorizationFuelOptions Fuel { get; set; }
 
         /// <summary>
@@ -96,7 +89,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_amount_controllable")]
 #endif
-
         public bool? IsAmountControllable { get; set; }
 
         /// <summary>
@@ -107,7 +99,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_data")]
 #endif
-
         public AuthorizationMerchantDataOptions MerchantData { get; set; }
 
         /// <summary>
@@ -117,7 +108,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_data")]
 #endif
-
         public AuthorizationNetworkDataOptions NetworkData { get; set; }
 
         /// <summary>
@@ -128,7 +118,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_data")]
 #endif
-
         public AuthorizationVerificationDataOptions VerificationData { get; set; }
 
         /// <summary>
@@ -141,7 +130,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wallet")]
 #endif
-
         public string Wallet { get; set; }
     }
 }

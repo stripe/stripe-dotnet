@@ -17,7 +17,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("final_amount")]
 #endif
-
         public long? FinalAmount { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fleet")]
 #endif
-
         public AuthorizationFleetOptions Fleet { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fuel")]
 #endif
-
         public AuthorizationFuelOptions Fuel { get; set; }
     }
 }

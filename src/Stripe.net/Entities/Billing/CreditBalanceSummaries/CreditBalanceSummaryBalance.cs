@@ -12,14 +12,12 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available_balance")]
 #endif
-
         public CreditBalanceSummaryBalanceAvailableBalance AvailableBalance { get; set; }
 
         [JsonProperty("ledger_balance")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ledger_balance")]
 #endif
-
         public CreditBalanceSummaryBalanceLedgerBalance LedgerBalance { get; set; }
     }
 }

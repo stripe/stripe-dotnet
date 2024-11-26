@@ -19,7 +19,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disabled_reason")]
 #endif
-
         public string DisabledReason { get; set; }
 
         /// <summary>
@@ -35,7 +34,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("past_due")]
 #endif
-
         public List<string> PastDue { get; set; }
     }
 }

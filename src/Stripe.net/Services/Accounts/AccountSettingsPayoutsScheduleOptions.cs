@@ -18,15 +18,11 @@ namespace Stripe
         /// payout delay days</a>.
         /// </summary>
         [JsonProperty("delay_days")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("delay_days")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("delay_days")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<long?, AccountSettingsPayoutsScheduleDelayDays> DelayDays { get; set; }
 
         /// <summary>
@@ -38,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
 #endif
-
         public string Interval { get; set; }
 
         /// <summary>
@@ -51,7 +46,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monthly_anchor")]
 #endif
-
         public long? MonthlyAnchor { get; set; }
 
         /// <summary>
@@ -64,7 +58,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("weekly_anchor")]
 #endif
-
         public string WeeklyAnchor { get; set; }
     }
 }

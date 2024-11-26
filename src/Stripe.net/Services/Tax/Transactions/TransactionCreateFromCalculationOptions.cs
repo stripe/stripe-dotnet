@@ -18,7 +18,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("calculation")]
 #endif
-
         public string Calculation { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -41,15 +39,11 @@ namespace Stripe.Tax
         /// <c>tax_date</c> is scheduled in advance. Defaults to the current time.
         /// </summary>
         [JsonProperty("posted_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("posted_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("posted_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? PostedAt { get; set; }
 
         /// <summary>
@@ -60,7 +54,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
 #endif
-
         public string Reference { get; set; }
     }
 }

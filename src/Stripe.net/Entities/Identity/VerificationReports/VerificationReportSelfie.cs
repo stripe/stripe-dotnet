@@ -16,7 +16,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("document")]
 #endif
-
         public string Document { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("error")]
 #endif
-
         public VerificationReportSelfieError Error { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("selfie")]
 #endif
-
         public string Selfie { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

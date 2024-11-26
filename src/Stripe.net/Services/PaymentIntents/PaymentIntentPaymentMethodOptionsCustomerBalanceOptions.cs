@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_transfer")]
 #endif
-
         public PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransferOptions BankTransfer { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding_type")]
 #endif
-
         public string FundingType { get; set; }
 
         /// <summary>
@@ -58,7 +56,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
-
         public string SetupFutureUsage { get; set; }
     }
 }

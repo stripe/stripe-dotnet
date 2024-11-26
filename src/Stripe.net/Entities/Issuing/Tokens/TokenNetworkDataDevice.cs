@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("device_fingerprint")]
 #endif
-
         public string DeviceFingerprint { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip_address")]
 #endif
-
         public string IpAddress { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("location")]
 #endif
-
         public string Location { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -56,7 +52,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone_number")]
 #endif
-
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -67,7 +62,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

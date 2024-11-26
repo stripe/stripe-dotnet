@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preserve_cancel_date")]
 #endif
-
         public bool? PreserveCancelDate { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failure_code")]
 #endif
-
         public string FailureCode { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failure_message")]
 #endif
-
         public string FailureMessage { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("process_payment_intent")]
 #endif
-
         public ReaderActionProcessPaymentIntent ProcessPaymentIntent { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("process_setup_intent")]
 #endif
-
         public ReaderActionProcessSetupIntent ProcessSetupIntent { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_payment")]
 #endif
-
         public ReaderActionRefundPayment RefundPayment { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("set_reader_display")]
 #endif
-
         public ReaderActionSetReaderDisplay SetReaderDisplay { get; set; }
 
         /// <summary>
@@ -76,7 +70,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -88,7 +81,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

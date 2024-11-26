@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charge")]
 #endif
-
         public string Charge { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_details")]
 #endif
-
         public ConfirmationTokenPaymentMethodPreviewCardGeneratedFromPaymentMethodDetails PaymentMethodDetails { get; set; }
 
         #region Expandable SetupAttempt
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string SetupAttemptId
         {
             get => this.InternalSetupAttempt?.Id;
@@ -56,7 +53,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public SetupAttempt SetupAttempt
         {
             get => this.InternalSetupAttempt?.ExpandedObject;
@@ -64,16 +60,12 @@ namespace Stripe
         }
 
         [JsonProperty("setup_attempt")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("setup_attempt")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<SetupAttempt>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("setup_attempt")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SetupAttempt>))]
 #endif
-
         internal ExpandableField<SetupAttempt> InternalSetupAttempt { get; set; }
         #endregion
     }

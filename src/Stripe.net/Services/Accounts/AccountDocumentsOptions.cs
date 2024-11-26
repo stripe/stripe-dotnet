@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_account_ownership_verification")]
 #endif
-
         public AccountDocumentsBankAccountOwnershipVerificationOptions BankAccountOwnershipVerification { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company_license")]
 #endif
-
         public AccountDocumentsCompanyLicenseOptions CompanyLicense { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company_memorandum_of_association")]
 #endif
-
         public AccountDocumentsCompanyMemorandumOfAssociationOptions CompanyMemorandumOfAssociation { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company_ministerial_decree")]
 #endif
-
         public AccountDocumentsCompanyMinisterialDecreeOptions CompanyMinisterialDecree { get; set; }
 
         /// <summary>
@@ -61,7 +57,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company_registration_verification")]
 #endif
-
         public AccountDocumentsCompanyRegistrationVerificationOptions CompanyRegistrationVerification { get; set; }
 
         /// <summary>
@@ -71,7 +66,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company_tax_id_verification")]
 #endif
-
         public AccountDocumentsCompanyTaxIdVerificationOptions CompanyTaxIdVerification { get; set; }
 
         /// <summary>
@@ -82,7 +76,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proof_of_registration")]
 #endif
-
         public AccountDocumentsProofOfRegistrationOptions ProofOfRegistration { get; set; }
     }
 }

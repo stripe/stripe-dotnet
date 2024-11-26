@@ -16,7 +16,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fleet")]
 #endif
-
         public TransactionPurchaseDetailsFleetOptions Fleet { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flight")]
 #endif
-
         public TransactionPurchaseDetailsFlightOptions Flight { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fuel")]
 #endif
-
         public TransactionPurchaseDetailsFuelOptions Fuel { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lodging")]
 #endif
-
         public TransactionPurchaseDetailsLodgingOptions Lodging { get; set; }
 
         /// <summary>
@@ -56,7 +52,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("receipt")]
 #endif
-
         public List<TransactionPurchaseDetailsReceiptOptions> Receipt { get; set; }
 
         /// <summary>
@@ -66,7 +61,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
 #endif
-
         public string Reference { get; set; }
     }
 }

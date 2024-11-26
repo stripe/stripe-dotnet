@@ -17,7 +17,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         #region Expandable Charge
@@ -30,7 +29,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string ChargeId
         {
             get => this.InternalCharge?.Id;
@@ -47,7 +45,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Charge Charge
         {
             get => this.InternalCharge?.ExpandedObject;
@@ -55,16 +52,12 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("charge")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("charge")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif
-
         internal ExpandableField<Charge> InternalCharge { get; set; }
         #endregion
 
@@ -77,7 +70,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         #region Expandable PaymentIntent
@@ -90,7 +82,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string PaymentIntentId
         {
             get => this.InternalPaymentIntent?.Id;
@@ -107,7 +98,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public PaymentIntent PaymentIntent
         {
             get => this.InternalPaymentIntent?.ExpandedObject;
@@ -115,16 +105,12 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("payment_intent")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_intent")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif
-
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
@@ -136,7 +122,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
 #endif
-
         public string Reason { get; set; }
 
         #region Expandable Refund
@@ -149,7 +134,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string RefundId
         {
             get => this.InternalRefund?.Id;
@@ -166,7 +150,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Refund Refund
         {
             get => this.InternalRefund?.ExpandedObject;
@@ -174,16 +157,12 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("refund")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("refund")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
 #endif
-
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
 
@@ -198,7 +177,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_application_fee")]
 #endif
-
         public bool RefundApplicationFee { get; set; }
 
         /// <summary>
@@ -208,7 +186,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_payment_config")]
 #endif
-
         public ReaderActionRefundPaymentRefundPaymentConfig RefundPaymentConfig { get; set; }
 
         /// <summary>
@@ -221,7 +198,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reverse_transfer")]
 #endif
-
         public bool ReverseTransfer { get; set; }
     }
 }

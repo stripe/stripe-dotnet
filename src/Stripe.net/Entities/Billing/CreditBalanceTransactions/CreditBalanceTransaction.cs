@@ -21,7 +21,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -31,22 +30,17 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -57,7 +51,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit")]
 #endif
-
         public CreditBalanceTransactionCredit Credit { get; set; }
 
         #region Expandable CreditGrant
@@ -70,7 +63,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CreditGrantId
         {
             get => this.InternalCreditGrant?.Id;
@@ -87,7 +79,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public CreditGrant CreditGrant
         {
             get => this.InternalCreditGrant?.ExpandedObject;
@@ -95,16 +86,12 @@ namespace Stripe.Billing
         }
 
         [JsonProperty("credit_grant")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("credit_grant")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<CreditGrant>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("credit_grant")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<CreditGrant>))]
 #endif
-
         internal ExpandableField<CreditGrant> InternalCreditGrant { get; set; }
         #endregion
 
@@ -115,22 +102,17 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("debit")]
 #endif
-
         public CreditBalanceTransactionDebit Debit { get; set; }
 
         /// <summary>
         /// The effective time of this credit balance transaction.
         /// </summary>
         [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime EffectiveAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -141,7 +123,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         #region Expandable TestClock
@@ -154,7 +135,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string TestClockId
         {
             get => this.InternalTestClock?.Id;
@@ -171,7 +151,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public TestHelpers.TestClock TestClock
         {
             get => this.InternalTestClock?.ExpandedObject;
@@ -179,16 +158,12 @@ namespace Stripe.Billing
         }
 
         [JsonProperty("test_clock")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("test_clock")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("test_clock")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TestHelpers.TestClock>))]
 #endif
-
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
 
@@ -200,7 +175,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

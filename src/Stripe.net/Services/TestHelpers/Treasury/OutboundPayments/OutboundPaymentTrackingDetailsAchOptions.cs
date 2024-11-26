@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trace_id")]
 #endif
-
         public string TraceId { get; set; }
     }
 }

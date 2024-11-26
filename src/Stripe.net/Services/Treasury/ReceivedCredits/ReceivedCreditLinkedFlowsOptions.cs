@@ -16,7 +16,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_flow_type")]
 #endif
-
         public string SourceFlowType { get; set; }
     }
 }

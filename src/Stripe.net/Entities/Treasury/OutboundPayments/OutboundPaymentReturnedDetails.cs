@@ -20,7 +20,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]
 #endif
-
         public string Code { get; set; }
 
         #region Expandable Transaction
@@ -33,7 +32,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string TransactionId
         {
             get => this.InternalTransaction?.Id;
@@ -50,7 +48,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Transaction Transaction
         {
             get => this.InternalTransaction?.ExpandedObject;
@@ -58,16 +55,12 @@ namespace Stripe.Treasury
         }
 
         [JsonProperty("transaction")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transaction")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
 #endif
-
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion
     }

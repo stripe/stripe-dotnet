@@ -17,7 +17,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder")]
 #endif
-
         public AccountAccountHolderOptions AccountHolder { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("session")]
 #endif
-
         public string Session { get; set; }
     }
 }

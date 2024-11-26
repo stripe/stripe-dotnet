@@ -16,7 +16,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
 #endif
-
         public string Country { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flat_amount")]
 #endif
-
         public CalculationTaxBreakdownTaxRateDetailsFlatAmount FlatAmount { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percentage_decimal")]
 #endif
-
         public string PercentageDecimal { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_type")]
 #endif
-
         public string RateType { get; set; }
 
         /// <summary>
@@ -61,7 +57,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("state")]
 #endif
-
         public string State { get; set; }
 
         /// <summary>
@@ -74,7 +69,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_type")]
 #endif
-
         public string TaxType { get; set; }
     }
 }

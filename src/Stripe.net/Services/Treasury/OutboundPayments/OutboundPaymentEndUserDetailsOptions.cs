@@ -16,7 +16,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip_address")]
 #endif
-
         public string IpAddress { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("present")]
 #endif
-
         public bool? Present { get; set; }
     }
 }

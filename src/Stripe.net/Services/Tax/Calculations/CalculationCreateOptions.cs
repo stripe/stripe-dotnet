@@ -20,7 +20,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_details")]
 #endif
-
         public CalculationCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
 #endif
-
         public List<CalculationLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -61,7 +57,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ship_from_details")]
 #endif
-
         public CalculationShipFromDetailsOptions ShipFromDetails { get; set; }
 
         /// <summary>
@@ -71,7 +66,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_cost")]
 #endif
-
         public CalculationShippingCostOptions ShippingCost { get; set; }
 
         /// <summary>
@@ -80,15 +74,11 @@ namespace Stripe.Tax
         /// past, and up to 48 hours in the future.
         /// </summary>
         [JsonProperty("tax_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? TaxDate { get; set; }
     }
 }

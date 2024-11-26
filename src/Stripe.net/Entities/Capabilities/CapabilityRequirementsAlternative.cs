@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alternative_fields_due")]
 #endif
-
         public List<string> AlternativeFieldsDue { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("original_fields_due")]
 #endif
-
         public List<string> OriginalFieldsDue { get; set; }
     }
 }

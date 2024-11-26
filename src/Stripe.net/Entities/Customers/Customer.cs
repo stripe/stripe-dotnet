@@ -24,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -34,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -44,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public Address Address { get; set; }
 
         /// <summary>
@@ -58,7 +55,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance")]
 #endif
-
         public long Balance { get; set; }
 
         /// <summary>
@@ -71,22 +67,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cash_balance")]
 #endif
-
         public CashBalance CashBalance { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -97,7 +88,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         #region Expandable DefaultSource
@@ -114,7 +104,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string DefaultSourceId
         {
             get => this.InternalDefaultSource?.Id;
@@ -135,7 +124,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public IPaymentSource DefaultSource
         {
             get => this.InternalDefaultSource?.ExpandedObject;
@@ -143,16 +131,12 @@ namespace Stripe
         }
 
         [JsonProperty("default_source")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("default_source")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("default_source")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IPaymentSource>))]
 #endif
-
         internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
         #endregion
 
@@ -164,7 +148,6 @@ namespace Stripe
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -186,7 +169,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delinquent")]
 #endif
-
         public bool? Delinquent { get; set; }
 
         /// <summary>
@@ -196,7 +178,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -206,7 +187,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount")]
 #endif
-
         public Discount Discount { get; set; }
 
         /// <summary>
@@ -216,7 +196,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
 #endif
-
         public string Email { get; set; }
 
         /// <summary>
@@ -232,7 +211,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_credit_balance")]
 #endif
-
         public Dictionary<string, long> InvoiceCreditBalance { get; set; }
 
         /// <summary>
@@ -242,14 +220,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_prefix")]
 #endif
-
         public string InvoicePrefix { get; set; }
 
         [JsonProperty("invoice_settings")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_settings")]
 #endif
-
         public CustomerInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
@@ -260,7 +236,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -272,7 +247,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -282,7 +256,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -294,7 +267,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("next_invoice_sequence")]
 #endif
-
         public long NextInvoiceSequence { get; set; }
 
         /// <summary>
@@ -304,7 +276,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone")]
 #endif
-
         public string Phone { get; set; }
 
         /// <summary>
@@ -314,7 +285,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferred_locales")]
 #endif
-
         public List<string> PreferredLocales { get; set; }
 
         /// <summary>
@@ -325,7 +295,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping")]
 #endif
-
         public Shipping Shipping { get; set; }
 
         /// <summary>
@@ -335,7 +304,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sources")]
 #endif
-
         public StripeList<IPaymentSource> Sources { get; set; }
 
         /// <summary>
@@ -345,14 +313,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscriptions")]
 #endif
-
         public StripeList<Subscription> Subscriptions { get; set; }
 
         [JsonProperty("tax")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax")]
 #endif
-
         public CustomerTax Tax { get; set; }
 
         /// <summary>
@@ -365,7 +331,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_exempt")]
 #endif
-
         public string TaxExempt { get; set; }
 
         /// <summary>
@@ -375,7 +340,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_ids")]
 #endif
-
         public StripeList<TaxId> TaxIds { get; set; }
 
         #region Expandable TestClock
@@ -388,7 +352,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string TestClockId
         {
             get => this.InternalTestClock?.Id;
@@ -405,7 +368,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public TestHelpers.TestClock TestClock
         {
             get => this.InternalTestClock?.ExpandedObject;
@@ -413,16 +375,12 @@ namespace Stripe
         }
 
         [JsonProperty("test_clock")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("test_clock")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("test_clock")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TestHelpers.TestClock>))]
 #endif
-
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
     }

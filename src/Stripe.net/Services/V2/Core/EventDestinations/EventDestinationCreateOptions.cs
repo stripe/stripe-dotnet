@@ -16,7 +16,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amazon_eventbridge")]
 #endif
-
         public EventDestinationCreateAmazonEventbridgeOptions AmazonEventbridge { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled_events")]
 #endif
-
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_payload")]
 #endif
-
         public string EventPayload { get; set; }
 
         /// <summary>
@@ -58,7 +54,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("events_from")]
 #endif
-
         public List<string> EventsFrom { get; set; }
 
         /// <summary>
@@ -69,7 +64,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("include")]
 #endif
-
         public List<string> Include { get; set; }
 
         /// <summary>
@@ -79,7 +73,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -89,7 +82,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -99,7 +91,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("snapshot_api_version")]
 #endif
-
         public string SnapshotApiVersion { get; set; }
 
         /// <summary>
@@ -110,7 +101,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -120,7 +110,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("webhook_endpoint")]
 #endif
-
         public EventDestinationCreateWebhookEndpointOptions WebhookEndpoint { get; set; }
     }
 }

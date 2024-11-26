@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("installments")]
 #endif
-
         public InvoicePaymentSettingsPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
 
         /// <summary>
@@ -36,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_three_d_secure")]
 #endif
-
         public string RequestThreeDSecure { get; set; }
     }
 }

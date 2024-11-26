@@ -24,7 +24,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -34,7 +33,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -44,7 +42,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("action")]
 #endif
-
         public ReaderAction Action { get; set; }
 
         /// <summary>
@@ -55,7 +52,6 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
 #endif
-
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -65,7 +61,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("device_sw_version")]
 #endif
-
         public string DeviceSwVersion { get; set; }
 
         /// <summary>
@@ -80,7 +75,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("device_type")]
 #endif
-
         public string DeviceType { get; set; }
 
         /// <summary>
@@ -90,7 +84,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip_address")]
 #endif
-
         public string IpAddress { get; set; }
 
         /// <summary>
@@ -100,7 +93,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("label")]
 #endif
-
         public string Label { get; set; }
 
         /// <summary>
@@ -111,7 +103,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         #region Expandable Location
@@ -124,7 +115,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string LocationId
         {
             get => this.InternalLocation?.Id;
@@ -141,7 +131,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Location Location
         {
             get => this.InternalLocation?.ExpandedObject;
@@ -149,16 +138,12 @@ namespace Stripe.Terminal
         }
 
         [JsonProperty("location")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("location")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Location>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("location")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Location>))]
 #endif
-
         internal ExpandableField<Location> InternalLocation { get; set; }
         #endregion
 
@@ -171,7 +156,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -181,7 +165,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("serial_number")]
 #endif
-
         public string SerialNumber { get; set; }
 
         /// <summary>
@@ -193,7 +176,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

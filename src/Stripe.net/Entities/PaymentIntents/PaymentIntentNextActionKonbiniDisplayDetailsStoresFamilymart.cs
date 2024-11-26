@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("confirmation_number")]
 #endif
-
         public string ConfirmationNumber { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_code")]
 #endif
-
         public string PaymentCode { get; set; }
     }
 }

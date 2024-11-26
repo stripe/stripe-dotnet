@@ -20,7 +20,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -40,7 +38,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder")]
 #endif
-
         public SessionAccountHolder AccountHolder { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("accounts")]
 #endif
-
         public StripeList<Account> Accounts { get; set; }
 
         /// <summary>
@@ -60,14 +56,12 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_secret")]
 #endif
-
         public string ClientSecret { get; set; }
 
         [JsonProperty("filters")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("filters")]
 #endif
-
         public SessionFilters Filters { get; set; }
 
         /// <summary>
@@ -78,7 +72,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -90,7 +83,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("permissions")]
 #endif
-
         public List<string> Permissions { get; set; }
 
         /// <summary>
@@ -101,7 +93,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prefetch")]
 #endif
-
         public List<string> Prefetch { get; set; }
 
         /// <summary>
@@ -112,7 +103,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
 #endif
-
         public string ReturnUrl { get; set; }
     }
 }

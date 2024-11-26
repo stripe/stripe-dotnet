@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_card")]
 #endif
-
         public string IssuingCard { get; set; }
 
         /// <summary>
@@ -36,14 +34,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nonce")]
 #endif
-
         public string Nonce { get; set; }
 
         [JsonIgnore]
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string StripeVersion { get; set; }
 
         /// <summary>
@@ -54,7 +50,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_session")]
 #endif
-
         public string VerificationSession { get; set; }
     }
 }

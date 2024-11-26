@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public AddressOptions Address { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_validation")]
 #endif
-
         public CardShippingAddressValidationOptions AddressValidation { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customs")]
 #endif
-
         public CardShippingCustomsOptions Customs { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone_number")]
 #endif
-
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("require_signature")]
 #endif
-
         public bool? RequireSignature { get; set; }
 
         /// <summary>
@@ -76,7 +70,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service")]
 #endif
-
         public string Service { get; set; }
 
         /// <summary>
@@ -87,7 +80,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

@@ -14,45 +14,33 @@ namespace Stripe.Treasury
         /// Timestamp describing when an InboundTransfer changed status to <c>canceled</c>.
         /// </summary>
         [JsonProperty("canceled_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("canceled_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("canceled_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
         /// Timestamp describing when an InboundTransfer changed status to <c>failed</c>.
         /// </summary>
         [JsonProperty("failed_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("failed_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failed_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? FailedAt { get; set; }
 
         /// <summary>
         /// Timestamp describing when an InboundTransfer changed status to <c>succeeded</c>.
         /// </summary>
         [JsonProperty("succeeded_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("succeeded_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("succeeded_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? SucceededAt { get; set; }
     }
 }

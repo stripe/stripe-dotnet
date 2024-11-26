@@ -17,7 +17,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_amount")]
 #endif
-
         public long? CaptureAmount { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("close_authorization")]
 #endif
-
         public bool? CloseAuthorization { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purchase_details")]
 #endif
-
         public AuthorizationPurchaseDetailsOptions PurchaseDetails { get; set; }
     }
 }

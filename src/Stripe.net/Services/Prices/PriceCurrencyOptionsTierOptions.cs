@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flat_amount")]
 #endif
-
         public long? FlatAmount { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flat_amount_decimal")]
 #endif
-
         public decimal? FlatAmountDecimal { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
 #endif
-
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount_decimal")]
 #endif
-
         public decimal? UnitAmountDecimal { get; set; }
 
         /// <summary>
@@ -59,15 +55,11 @@ namespace Stripe
         /// the previous tier adding one. Use <c>inf</c> to define a fallback tier.
         /// </summary>
         [JsonProperty("up_to")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("up_to")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("up_to")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<long?, PriceTierUpTo> UpTo { get; set; }
     }
 }

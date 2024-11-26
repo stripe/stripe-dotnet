@@ -20,7 +20,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("permissions")]
 #endif
-
         public List<string> Permissions { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prefetch")]
 #endif
-
         public List<string> Prefetch { get; set; }
     }
 }

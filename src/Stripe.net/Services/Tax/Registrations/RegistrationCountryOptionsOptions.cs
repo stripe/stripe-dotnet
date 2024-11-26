@@ -15,7 +15,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ae")]
 #endif
-
         public RegistrationCountryOptionsAeOptions Ae { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("at")]
 #endif
-
         public RegistrationCountryOptionsAtOptions At { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("au")]
 #endif
-
         public RegistrationCountryOptionsAuOptions Au { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("be")]
 #endif
-
         public RegistrationCountryOptionsBeOptions Be { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bg")]
 #endif
-
         public RegistrationCountryOptionsBgOptions Bg { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bh")]
 #endif
-
         public RegistrationCountryOptionsBhOptions Bh { get; set; }
 
         /// <summary>
@@ -75,7 +69,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("by")]
 #endif
-
         public RegistrationCountryOptionsByOptions By { get; set; }
 
         /// <summary>
@@ -85,7 +78,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ca")]
 #endif
-
         public RegistrationCountryOptionsCaOptions Ca { get; set; }
 
         /// <summary>
@@ -95,7 +87,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ch")]
 #endif
-
         public RegistrationCountryOptionsChOptions Ch { get; set; }
 
         /// <summary>
@@ -105,7 +96,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cl")]
 #endif
-
         public RegistrationCountryOptionsClOptions Cl { get; set; }
 
         /// <summary>
@@ -115,7 +105,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("co")]
 #endif
-
         public RegistrationCountryOptionsCoOptions Co { get; set; }
 
         /// <summary>
@@ -125,7 +114,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cr")]
 #endif
-
         public RegistrationCountryOptionsCrOptions Cr { get; set; }
 
         /// <summary>
@@ -135,7 +123,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cy")]
 #endif
-
         public RegistrationCountryOptionsCyOptions Cy { get; set; }
 
         /// <summary>
@@ -145,7 +132,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cz")]
 #endif
-
         public RegistrationCountryOptionsCzOptions Cz { get; set; }
 
         /// <summary>
@@ -155,7 +141,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("de")]
 #endif
-
         public RegistrationCountryOptionsDeOptions De { get; set; }
 
         /// <summary>
@@ -165,7 +150,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dk")]
 #endif
-
         public RegistrationCountryOptionsDkOptions Dk { get; set; }
 
         /// <summary>
@@ -175,7 +159,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ec")]
 #endif
-
         public RegistrationCountryOptionsEcOptions Ec { get; set; }
 
         /// <summary>
@@ -185,7 +168,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ee")]
 #endif
-
         public RegistrationCountryOptionsEeOptions Ee { get; set; }
 
         /// <summary>
@@ -195,7 +177,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eg")]
 #endif
-
         public RegistrationCountryOptionsEgOptions Eg { get; set; }
 
         /// <summary>
@@ -205,7 +186,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("es")]
 #endif
-
         public RegistrationCountryOptionsEsOptions Es { get; set; }
 
         /// <summary>
@@ -215,7 +195,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fi")]
 #endif
-
         public RegistrationCountryOptionsFiOptions Fi { get; set; }
 
         /// <summary>
@@ -225,7 +204,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fr")]
 #endif
-
         public RegistrationCountryOptionsFrOptions Fr { get; set; }
 
         /// <summary>
@@ -235,7 +213,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gb")]
 #endif
-
         public RegistrationCountryOptionsGbOptions Gb { get; set; }
 
         /// <summary>
@@ -245,7 +222,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ge")]
 #endif
-
         public RegistrationCountryOptionsGeOptions Ge { get; set; }
 
         /// <summary>
@@ -255,7 +231,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gr")]
 #endif
-
         public RegistrationCountryOptionsGrOptions Gr { get; set; }
 
         /// <summary>
@@ -265,7 +240,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hr")]
 #endif
-
         public RegistrationCountryOptionsHrOptions Hr { get; set; }
 
         /// <summary>
@@ -275,7 +249,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hu")]
 #endif
-
         public RegistrationCountryOptionsHuOptions Hu { get; set; }
 
         /// <summary>
@@ -285,7 +258,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public RegistrationCountryOptionsIdOptions Id { get; set; }
 
         /// <summary>
@@ -295,7 +267,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ie")]
 #endif
-
         public RegistrationCountryOptionsIeOptions Ie { get; set; }
 
         /// <summary>
@@ -305,7 +276,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is")]
 #endif
-
         public RegistrationCountryOptionsIsOptions Is { get; set; }
 
         /// <summary>
@@ -315,7 +285,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("it")]
 #endif
-
         public RegistrationCountryOptionsItOptions It { get; set; }
 
         /// <summary>
@@ -325,7 +294,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jp")]
 #endif
-
         public RegistrationCountryOptionsJpOptions Jp { get; set; }
 
         /// <summary>
@@ -335,7 +303,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ke")]
 #endif
-
         public RegistrationCountryOptionsKeOptions Ke { get; set; }
 
         /// <summary>
@@ -345,7 +312,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kr")]
 #endif
-
         public RegistrationCountryOptionsKrOptions Kr { get; set; }
 
         /// <summary>
@@ -355,7 +321,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kz")]
 #endif
-
         public RegistrationCountryOptionsKzOptions Kz { get; set; }
 
         /// <summary>
@@ -365,7 +330,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lt")]
 #endif
-
         public RegistrationCountryOptionsLtOptions Lt { get; set; }
 
         /// <summary>
@@ -375,7 +339,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lu")]
 #endif
-
         public RegistrationCountryOptionsLuOptions Lu { get; set; }
 
         /// <summary>
@@ -385,7 +348,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lv")]
 #endif
-
         public RegistrationCountryOptionsLvOptions Lv { get; set; }
 
         /// <summary>
@@ -395,7 +357,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ma")]
 #endif
-
         public RegistrationCountryOptionsMaOptions Ma { get; set; }
 
         /// <summary>
@@ -405,7 +366,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("md")]
 #endif
-
         public RegistrationCountryOptionsMdOptions Md { get; set; }
 
         /// <summary>
@@ -415,7 +375,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mt")]
 #endif
-
         public RegistrationCountryOptionsMtOptions Mt { get; set; }
 
         /// <summary>
@@ -425,7 +384,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mx")]
 #endif
-
         public RegistrationCountryOptionsMxOptions Mx { get; set; }
 
         /// <summary>
@@ -435,7 +393,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("my")]
 #endif
-
         public RegistrationCountryOptionsMyOptions My { get; set; }
 
         /// <summary>
@@ -445,7 +402,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ng")]
 #endif
-
         public RegistrationCountryOptionsNgOptions Ng { get; set; }
 
         /// <summary>
@@ -455,7 +411,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nl")]
 #endif
-
         public RegistrationCountryOptionsNlOptions Nl { get; set; }
 
         /// <summary>
@@ -465,7 +420,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("no")]
 #endif
-
         public RegistrationCountryOptionsNoOptions No { get; set; }
 
         /// <summary>
@@ -475,7 +429,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nz")]
 #endif
-
         public RegistrationCountryOptionsNzOptions Nz { get; set; }
 
         /// <summary>
@@ -485,7 +438,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("om")]
 #endif
-
         public RegistrationCountryOptionsOmOptions Om { get; set; }
 
         /// <summary>
@@ -495,7 +447,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pl")]
 #endif
-
         public RegistrationCountryOptionsPlOptions Pl { get; set; }
 
         /// <summary>
@@ -505,7 +456,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pt")]
 #endif
-
         public RegistrationCountryOptionsPtOptions Pt { get; set; }
 
         /// <summary>
@@ -515,7 +465,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ro")]
 #endif
-
         public RegistrationCountryOptionsRoOptions Ro { get; set; }
 
         /// <summary>
@@ -525,7 +474,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rs")]
 #endif
-
         public RegistrationCountryOptionsRsOptions Rs { get; set; }
 
         /// <summary>
@@ -535,7 +483,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ru")]
 #endif
-
         public RegistrationCountryOptionsRuOptions Ru { get; set; }
 
         /// <summary>
@@ -545,7 +492,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sa")]
 #endif
-
         public RegistrationCountryOptionsSaOptions Sa { get; set; }
 
         /// <summary>
@@ -555,7 +501,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("se")]
 #endif
-
         public RegistrationCountryOptionsSeOptions Se { get; set; }
 
         /// <summary>
@@ -565,7 +510,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sg")]
 #endif
-
         public RegistrationCountryOptionsSgOptions Sg { get; set; }
 
         /// <summary>
@@ -575,7 +519,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("si")]
 #endif
-
         public RegistrationCountryOptionsSiOptions Si { get; set; }
 
         /// <summary>
@@ -585,7 +528,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sk")]
 #endif
-
         public RegistrationCountryOptionsSkOptions Sk { get; set; }
 
         /// <summary>
@@ -595,7 +537,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("th")]
 #endif
-
         public RegistrationCountryOptionsThOptions Th { get; set; }
 
         /// <summary>
@@ -605,7 +546,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tr")]
 #endif
-
         public RegistrationCountryOptionsTrOptions Tr { get; set; }
 
         /// <summary>
@@ -615,7 +555,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tz")]
 #endif
-
         public RegistrationCountryOptionsTzOptions Tz { get; set; }
 
         /// <summary>
@@ -625,7 +564,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us")]
 #endif
-
         public RegistrationCountryOptionsUsOptions Us { get; set; }
 
         /// <summary>
@@ -635,7 +573,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("uz")]
 #endif
-
         public RegistrationCountryOptionsUzOptions Uz { get; set; }
 
         /// <summary>
@@ -645,7 +582,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("vn")]
 #endif
-
         public RegistrationCountryOptionsVnOptions Vn { get; set; }
 
         /// <summary>
@@ -655,7 +591,6 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("za")]
 #endif
-
         public RegistrationCountryOptionsZaOptions Za { get; set; }
     }
 }

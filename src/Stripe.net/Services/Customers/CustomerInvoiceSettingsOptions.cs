@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_fields")]
 #endif
-
         public List<CustomerInvoiceSettingsCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_payment_method")]
 #endif
-
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("footer")]
 #endif
-
         public string Footer { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rendering_options")]
 #endif
-
         public CustomerInvoiceSettingsRenderingOptionsOptions RenderingOptions { get; set; }
     }
 }

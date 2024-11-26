@@ -15,15 +15,11 @@ namespace Stripe
         /// customer.
         /// </summary>
         [JsonProperty("date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? Date { get; set; }
 
         /// <summary>
@@ -33,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip")]
 #endif
-
         public string Ip { get; set; }
 
         /// <summary>
@@ -44,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("offline")]
 #endif
-
         public SourceMandateAcceptanceOfflineOptions Offline { get; set; }
 
         /// <summary>
@@ -55,7 +49,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("online")]
 #endif
-
         public SourceMandateAcceptanceOnlineOptions Online { get; set; }
 
         /// <summary>
@@ -67,7 +60,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -79,7 +71,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -90,7 +81,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("user_agent")]
 #endif
-
         public string UserAgent { get; set; }
     }
 }

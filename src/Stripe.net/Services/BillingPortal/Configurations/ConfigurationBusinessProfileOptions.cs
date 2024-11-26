@@ -15,7 +15,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("headline")]
 #endif
-
         public string Headline { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("privacy_policy_url")]
 #endif
-
         public string PrivacyPolicyUrl { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terms_of_service_url")]
 #endif
-
         public string TermsOfServiceUrl { get; set; }
     }
 }

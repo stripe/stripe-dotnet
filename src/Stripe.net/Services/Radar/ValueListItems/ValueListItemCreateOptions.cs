@@ -15,7 +15,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
 #endif
-
         public string Value { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value_list")]
 #endif
-
         public string ValueList { get; set; }
     }
 }

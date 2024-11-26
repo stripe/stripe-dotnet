@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage_gte")]
 #endif
-
         public long? UsageGte { get; set; }
     }
 }

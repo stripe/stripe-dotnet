@@ -12,14 +12,12 @@ namespace Stripe.Tax
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
 #endif
-
         public SettingsStatusDetailsActive Active { get; set; }
 
         [JsonProperty("pending")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pending")]
 #endif
-
         public SettingsStatusDetailsPending Pending { get; set; }
     }
 }

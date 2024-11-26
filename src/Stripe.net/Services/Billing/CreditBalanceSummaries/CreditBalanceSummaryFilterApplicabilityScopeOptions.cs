@@ -16,7 +16,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_type")]
 #endif
-
         public string PriceType { get; set; }
     }
 }

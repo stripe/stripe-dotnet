@@ -15,7 +15,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_account_default")]
 #endif
-
         public bool? IsAccountDefault { get; set; }
     }
 }

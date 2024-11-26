@@ -15,7 +15,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("coupon")]
 #endif
-
         public string Coupon { get; set; }
     }
 }

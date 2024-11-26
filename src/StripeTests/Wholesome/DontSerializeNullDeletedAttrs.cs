@@ -27,6 +27,11 @@ namespace StripeTests.Wholesome
         public void Check()
         {
             List<string> results = new List<string>();
+            List<string> skipTheseClasses = new List<string>
+            {
+                // For some reason, Secret.Deleted is not nullable
+                "Stripe.Apps.Secret",
+            };
 
             // Get all StripeEntity subclasses
             var entityClasses = GetSubclassesOf(typeof(StripeEntity));
@@ -50,13 +55,16 @@ namespace StripeTests.Wholesome
                     // Check that NullValueHanding is set to Ignore
                     bool hasNullValueHandling = attribute.NullValueHandling == NullValueHandling.Ignore;
 #if NET6_0_OR_GREATER
-                    // This feature is implemented as part of JsonIgnore in STJ; make sure
-                    // we have the correct ignore w/ condition.
-                    // TODO: move to SystemTextJsonTestUtils
-                    var stjAttribute = property.GetCustomAttribute<STJS.JsonIgnoreAttribute>();
-                    if (stjAttribute == null || stjAttribute.Condition != STJS.JsonIgnoreCondition.WhenWritingNull)
+                    if (!skipTheseClasses.Contains(entityClass.FullName))
                     {
-                        hasNullValueHandling = false;
+                        // This feature is implemented as part of JsonIgnore in STJ; make sure
+                        // we have the correct ignore w/ condition.
+                        // TODO: move to SystemTextJsonTestUtils
+                        var stjAttribute = property.GetCustomAttribute<STJS.JsonIgnoreAttribute>();
+                        if (stjAttribute == null || stjAttribute.Condition != STJS.JsonIgnoreCondition.WhenWritingNull)
+                        {
+                            hasNullValueHandling = false;
+                        }
                     }
 #endif
 

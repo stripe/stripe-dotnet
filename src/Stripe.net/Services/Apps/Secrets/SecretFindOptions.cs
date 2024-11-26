@@ -15,7 +15,6 @@ namespace Stripe.Apps
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Apps
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("scope")]
 #endif
-
         public SecretScopeOptions Scope { get; set; }
     }
 }

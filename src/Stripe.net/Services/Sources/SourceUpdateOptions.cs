@@ -16,14 +16,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long? Amount { get; set; }
 
         [JsonProperty("card")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
 #endif
-
         public SourceCardOptions Card { get; set; }
 
         /// <summary>
@@ -34,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate")]
 #endif
-
         public SourceMandateOptions Mandate { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -58,7 +54,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owner")]
 #endif
-
         public SourceOwnerOptions Owner { get; set; }
 
         /// <summary>
@@ -69,7 +64,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_order")]
 #endif
-
         public SourceSourceOrderOptions SourceOrder { get; set; }
     }
 }

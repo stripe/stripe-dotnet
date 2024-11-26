@@ -14,15 +14,11 @@ namespace Stripe.Treasury
         /// Timestamp describing when the DebitReversal changed status to <c>completed</c>.
         /// </summary>
         [JsonProperty("completed_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("completed_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("completed_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? CompletedAt { get; set; }
     }
 }

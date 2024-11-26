@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tip")]
 #endif
-
         public PaymentIntentAmountDetailsTip Tip { get; set; }
     }
 }

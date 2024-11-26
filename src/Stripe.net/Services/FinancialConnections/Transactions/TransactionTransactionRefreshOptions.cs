@@ -16,7 +16,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("after")]
 #endif
-
         public string After { get; set; }
     }
 }

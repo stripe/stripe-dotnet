@@ -16,7 +16,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("events")]
 #endif
-
         public List<MeterEventStreamCreateEventOptions> Events { get; set; }
     }
 }

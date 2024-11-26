@@ -18,7 +18,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("debit_negative_balances")]
 #endif
-
         public bool? DebitNegativeBalances { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule")]
 #endif
-
         public AccountSettingsPayoutsScheduleOptions Schedule { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
 #endif
-
         public string StatementDescriptor { get; set; }
     }
 }

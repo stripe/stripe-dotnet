@@ -22,7 +22,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public List<string> AccountTaxIdIds
         {
             get => this.InternalAccountTaxIds?.Select((x) => x.Id).ToList();
@@ -40,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public List<TaxId> AccountTaxIds
         {
             get => this.InternalAccountTaxIds?.Select((x) => x.ExpandedObject).ToList();
@@ -49,10 +47,9 @@ namespace Stripe
 
         [JsonProperty("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account_tax_ids")]
         [STJS.JsonInclude]
+        [STJS.JsonPropertyName("account_tax_ids")]
 #endif
-
         internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }
         #endregion
 
@@ -60,7 +57,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-
         public SubscriptionInvoiceSettingsIssuer Issuer { get; set; }
     }
 }

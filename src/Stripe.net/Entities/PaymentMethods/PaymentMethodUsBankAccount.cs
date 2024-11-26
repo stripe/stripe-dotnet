@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder_type")]
 #endif
-
         public string AccountHolderType { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_type")]
 #endif
-
         public string AccountType { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_name")]
 #endif
-
         public string BankName { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_connections_account")]
 #endif
-
         public string FinancialConnectionsAccount { get; set; }
 
         /// <summary>
@@ -58,7 +54,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
 #endif
-
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -68,7 +63,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
 #endif
-
         public string Last4 { get; set; }
 
         /// <summary>
@@ -78,7 +72,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("networks")]
 #endif
-
         public PaymentMethodUsBankAccountNetworks Networks { get; set; }
 
         /// <summary>
@@ -88,7 +81,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("routing_number")]
 #endif
-
         public string RoutingNumber { get; set; }
 
         /// <summary>
@@ -98,7 +90,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
 #endif
-
         public PaymentMethodUsBankAccountStatusDetails StatusDetails { get; set; }
     }
 }

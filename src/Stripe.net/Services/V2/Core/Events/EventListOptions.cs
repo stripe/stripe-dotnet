@@ -15,7 +15,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object_id")]
 #endif
-
         public string ObjectId { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("page")]
 #endif
-
         public string Page { get; set; }
     }
 }

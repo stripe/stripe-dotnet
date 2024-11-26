@@ -20,7 +20,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string IconId
         {
             get => this.InternalIcon?.Id;
@@ -38,7 +37,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public File Icon
         {
             get => this.InternalIcon?.ExpandedObject;
@@ -46,16 +44,12 @@ namespace Stripe
         }
 
         [JsonProperty("icon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("icon")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("icon")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
-
         internal ExpandableField<File> InternalIcon { get; set; }
         #endregion
 
@@ -71,7 +65,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string LogoId
         {
             get => this.InternalLogo?.Id;
@@ -90,7 +83,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public File Logo
         {
             get => this.InternalLogo?.ExpandedObject;
@@ -98,16 +90,12 @@ namespace Stripe
         }
 
         [JsonProperty("logo")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("logo")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("logo")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
-
         internal ExpandableField<File> InternalLogo { get; set; }
         #endregion
 
@@ -118,7 +106,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("primary_color")]
 #endif
-
         public string PrimaryColor { get; set; }
 
         /// <summary>
@@ -128,7 +115,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("secondary_color")]
 #endif
-
         public string SecondaryColor { get; set; }
     }
 }

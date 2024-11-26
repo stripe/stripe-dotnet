@@ -24,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_allow_redisplay_filters")]
 #endif
-
         public List<string> PaymentMethodAllowRedisplayFilters { get; set; }
 
         /// <summary>
@@ -36,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_redisplay")]
 #endif
-
         public string PaymentMethodRedisplay { get; set; }
 
         /// <summary>
@@ -47,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_redisplay_limit")]
 #endif
-
         public long? PaymentMethodRedisplayLimit { get; set; }
 
         /// <summary>
@@ -65,7 +62,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_remove")]
 #endif
-
         public string PaymentMethodRemove { get; set; }
 
         /// <summary>
@@ -84,7 +80,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_save")]
 #endif
-
         public string PaymentMethodSave { get; set; }
 
         /// <summary>
@@ -102,7 +97,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_save_usage")]
 #endif
-
         public string PaymentMethodSaveUsage { get; set; }
     }
 }

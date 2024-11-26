@@ -16,7 +16,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_id")]
 #endif
-
         public string AccountId { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_trust_score")]
 #endif
-
         public long AccountTrustScore { get; set; }
 
         /// <summary>
@@ -38,14 +36,12 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_number_source")]
 #endif
-
         public string CardNumberSource { get; set; }
 
         [JsonProperty("cardholder_address")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cardholder_address")]
 #endif
-
         public TokenNetworkDataWalletProviderCardholderAddress CardholderAddress { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cardholder_name")]
 #endif
-
         public string CardholderName { get; set; }
 
         /// <summary>
@@ -66,7 +61,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("device_trust_score")]
 #endif
-
         public long DeviceTrustScore { get; set; }
 
         /// <summary>
@@ -76,7 +70,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hashed_account_email_address")]
 #endif
-
         public string HashedAccountEmailAddress { get; set; }
 
         /// <summary>
@@ -98,7 +91,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason_codes")]
 #endif
-
         public List<string> ReasonCodes { get; set; }
 
         /// <summary>
@@ -109,7 +101,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("suggested_decision")]
 #endif
-
         public string SuggestedDecision { get; set; }
 
         /// <summary>
@@ -119,7 +110,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("suggested_decision_version")]
 #endif
-
         public string SuggestedDecisionVersion { get; set; }
     }
 }

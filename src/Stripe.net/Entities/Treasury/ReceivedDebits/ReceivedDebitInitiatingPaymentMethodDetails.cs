@@ -15,21 +15,18 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance")]
 #endif
-
         public string Balance { get; set; }
 
         [JsonProperty("billing_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_details")]
 #endif
-
         public ReceivedDebitInitiatingPaymentMethodDetailsBillingDetails BillingDetails { get; set; }
 
         [JsonProperty("financial_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
 #endif
-
         public ReceivedDebitInitiatingPaymentMethodDetailsFinancialAccount FinancialAccount { get; set; }
 
         /// <summary>
@@ -40,7 +37,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_card")]
 #endif
-
         public string IssuingCard { get; set; }
 
         /// <summary>
@@ -53,14 +49,12 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         [JsonProperty("us_bank_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]
 #endif
-
         public ReceivedDebitInitiatingPaymentMethodDetailsUsBankAccount UsBankAccount { get; set; }
     }
 }

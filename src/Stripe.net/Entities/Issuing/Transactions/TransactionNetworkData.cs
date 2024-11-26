@@ -19,7 +19,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_code")]
 #endif
-
         public string AuthorizationCode { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("processing_date")]
 #endif
-
         public string ProcessingDate { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_id")]
 #endif
-
         public string TransactionId { get; set; }
     }
 }

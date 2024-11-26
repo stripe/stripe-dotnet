@@ -12,14 +12,12 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("apple_pay")]
 #endif
-
         public CardWalletsApplePay ApplePay { get; set; }
 
         [JsonProperty("google_pay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("google_pay")]
 #endif
-
         public CardWalletsGooglePay GooglePay { get; set; }
 
         /// <summary>
@@ -29,7 +27,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("primary_account_identifier")]
 #endif
-
         public string PrimaryAccountIdentifier { get; set; }
     }
 }

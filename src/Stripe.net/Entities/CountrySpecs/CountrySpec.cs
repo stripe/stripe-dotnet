@@ -25,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -35,7 +34,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -46,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_currency")]
 #endif
-
         public string DefaultCurrency { get; set; }
 
         /// <summary>
@@ -56,7 +53,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_bank_account_currencies")]
 #endif
-
         public Dictionary<string, List<string>> SupportedBankAccountCurrencies { get; set; }
 
         /// <summary>
@@ -66,7 +62,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_payment_currencies")]
 #endif
-
         public List<string> SupportedPaymentCurrencies { get; set; }
 
         /// <summary>
@@ -80,7 +75,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_payment_methods")]
 #endif
-
         public List<string> SupportedPaymentMethods { get; set; }
 
         /// <summary>
@@ -90,14 +84,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_transfer_countries")]
 #endif
-
         public List<string> SupportedTransferCountries { get; set; }
 
         [JsonProperty("verification_fields")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_fields")]
 #endif
-
         public Dictionary<string, Dictionary<string, List<string>>> VerificationFields { get; set; }
     }
 }

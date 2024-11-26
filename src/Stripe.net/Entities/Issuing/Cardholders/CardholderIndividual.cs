@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_issuing")]
 #endif
-
         public CardholderIndividualCardIssuing CardIssuing { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob")]
 #endif
-
         public CardholderIndividualDob Dob { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_name")]
 #endif
-
         public string FirstName { get; set; }
 
         /// <summary>
@@ -49,7 +46,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_name")]
 #endif
-
         public string LastName { get; set; }
 
         /// <summary>
@@ -59,7 +55,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification")]
 #endif
-
         public CardholderIndividualVerification Verification { get; set; }
     }
 }

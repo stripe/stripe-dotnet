@@ -15,7 +15,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enable_customer_cancellation")]
 #endif
-
         public bool EnableCustomerCancellation { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("skip_tipping")]
 #endif
-
         public bool SkipTipping { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tipping")]
 #endif
-
         public ReaderActionProcessPaymentIntentProcessConfigTipping Tipping { get; set; }
     }
 }

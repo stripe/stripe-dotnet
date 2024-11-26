@@ -17,7 +17,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<SessionFlowDataSubscriptionUpdateConfirmDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("items")]
 #endif
-
         public List<SessionFlowDataSubscriptionUpdateConfirmItemOptions> Items { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
 #endif
-
         public string Subscription { get; set; }
     }
 }

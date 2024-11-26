@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ach")]
 #endif
-
         public OutboundTransferTrackingDetailsAchOptions Ach { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.TestHelpers.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_domestic_wire")]
 #endif
-
         public OutboundTransferTrackingDetailsUsDomesticWireOptions UsDomesticWire { get; set; }
     }
 }

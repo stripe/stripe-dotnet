@@ -10,6 +10,9 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     [JsonObject]
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJEnumerableObjectConverter))]
+#endif
     public class StripeSearchResult<T> : StripeEntity<StripeSearchResult<T>>, IHasObject, IEnumerable<T>
     {
         /// <summary>

@@ -15,15 +15,11 @@ namespace Stripe.TestHelpers.Issuing
         /// The time that the flight departed.
         /// </summary>
         [JsonProperty("departure_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("departure_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("departure_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? DepartureAt { get; set; }
 
         /// <summary>
@@ -33,7 +29,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("passenger_name")]
 #endif
-
         public string PassengerName { get; set; }
 
         /// <summary>
@@ -43,7 +38,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refundable")]
 #endif
-
         public bool? Refundable { get; set; }
 
         /// <summary>
@@ -53,7 +47,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("segments")]
 #endif
-
         public List<TransactionPurchaseDetailsFlightSegmentOptions> Segments { get; set; }
 
         /// <summary>
@@ -63,7 +56,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("travel_agency")]
 #endif
-
         public string TravelAgency { get; set; }
     }
 }

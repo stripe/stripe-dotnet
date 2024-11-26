@@ -18,7 +18,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("filters")]
 #endif
-
         public List<AlertUsageThresholdFilter> Filters { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gte")]
 #endif
-
         public long Gte { get; set; }
 
         #region Expandable Meter
@@ -42,7 +40,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string MeterId
         {
             get => this.InternalMeter?.Id;
@@ -60,7 +57,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Meter Meter
         {
             get => this.InternalMeter?.ExpandedObject;
@@ -68,16 +64,12 @@ namespace Stripe.Billing
         }
 
         [JsonProperty("meter")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("meter")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Meter>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("meter")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Meter>))]
 #endif
-
         internal ExpandableField<Meter> InternalMeter { get; set; }
         #endregion
 
@@ -88,7 +80,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recurrence")]
 #endif
-
         public string Recurrence { get; set; }
     }
 }

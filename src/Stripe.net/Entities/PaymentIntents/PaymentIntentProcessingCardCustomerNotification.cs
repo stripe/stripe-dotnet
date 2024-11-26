@@ -19,22 +19,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("approval_requested")]
 #endif
-
         public bool? ApprovalRequested { get; set; }
 
         /// <summary>
         /// If customer approval is required, they need to provide approval before this time.
         /// </summary>
         [JsonProperty("completes_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("completes_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("completes_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? CompletesAt { get; set; }
     }
 }

@@ -11,15 +11,11 @@ namespace Stripe.Treasury
     public class TransactionEntryListOptions : ListOptionsWithCreated
     {
         [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_at")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, DateRangeOptions> EffectiveAt { get; set; }
 
         /// <summary>
@@ -29,7 +25,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
 #endif
-
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -41,7 +36,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("order_by")]
 #endif
-
         public string OrderBy { get; set; }
 
         /// <summary>
@@ -51,7 +45,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction")]
 #endif
-
         public string Transaction { get; set; }
     }
 }

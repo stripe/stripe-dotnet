@@ -15,7 +15,6 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("signing_secret")]
 #endif
-
         public string SigningSecret { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
 #endif
-
         public string Url { get; set; }
     }
 }

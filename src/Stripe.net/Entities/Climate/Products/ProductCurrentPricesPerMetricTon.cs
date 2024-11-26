@@ -15,7 +15,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_fees")]
 #endif
-
         public long AmountFees { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_subtotal")]
 #endif
-
         public long AmountSubtotal { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Climate
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_total")]
 #endif
-
         public long AmountTotal { get; set; }
     }
 }

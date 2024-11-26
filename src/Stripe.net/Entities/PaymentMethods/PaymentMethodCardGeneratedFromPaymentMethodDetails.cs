@@ -12,7 +12,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_present")]
 #endif
-
         public PaymentMethodCardGeneratedFromPaymentMethodDetailsCardPresent CardPresent { get; set; }
 
         /// <summary>
@@ -23,7 +22,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

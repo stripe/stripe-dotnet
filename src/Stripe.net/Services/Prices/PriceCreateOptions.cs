@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
 #endif
-
         public bool? Active { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_scheme")]
 #endif
-
         public string BillingScheme { get; set; }
 
         /// <summary>
@@ -45,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -57,7 +54,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency_options")]
 #endif
-
         public Dictionary<string, PriceCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
@@ -68,7 +64,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_unit_amount")]
 #endif
-
         public PriceCustomUnitAmountOptions CustomUnitAmount { get; set; }
 
         /// <summary>
@@ -79,7 +74,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
 #endif
-
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -92,7 +86,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -102,7 +95,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nickname")]
 #endif
-
         public string Nickname { get; set; }
 
         /// <summary>
@@ -112,7 +104,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product")]
 #endif
-
         public string Product { get; set; }
 
         /// <summary>
@@ -122,7 +113,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_data")]
 #endif
-
         public PriceProductDataOptions ProductData { get; set; }
 
         /// <summary>
@@ -132,7 +122,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recurring")]
 #endif
-
         public PriceRecurringOptions Recurring { get; set; }
 
         /// <summary>
@@ -148,7 +137,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
 #endif
-
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -159,7 +147,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tiers")]
 #endif
-
         public List<PriceTierOptions> Tiers { get; set; }
 
         /// <summary>
@@ -173,7 +160,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tiers_mode")]
 #endif
-
         public string TiersMode { get; set; }
 
         /// <summary>
@@ -184,7 +170,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_lookup_key")]
 #endif
-
         public bool? TransferLookupKey { get; set; }
 
         /// <summary>
@@ -195,7 +180,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transform_quantity")]
 #endif
-
         public PriceTransformQuantityOptions TransformQuantity { get; set; }
 
         /// <summary>
@@ -207,7 +191,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
 #endif
-
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -219,7 +202,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount_decimal")]
 #endif
-
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

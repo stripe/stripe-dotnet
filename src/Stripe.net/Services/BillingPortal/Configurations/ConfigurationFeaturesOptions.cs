@@ -15,7 +15,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_update")]
 #endif
-
         public ConfigurationFeaturesCustomerUpdateOptions CustomerUpdate { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_history")]
 #endif
-
         public ConfigurationFeaturesInvoiceHistoryOptions InvoiceHistory { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_update")]
 #endif
-
         public ConfigurationFeaturesPaymentMethodUpdateOptions PaymentMethodUpdate { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_cancel")]
 #endif
-
         public ConfigurationFeaturesSubscriptionCancelOptions SubscriptionCancel { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_update")]
 #endif
-
         public ConfigurationFeaturesSubscriptionUpdateOptions SubscriptionUpdate { get; set; }
     }
 }

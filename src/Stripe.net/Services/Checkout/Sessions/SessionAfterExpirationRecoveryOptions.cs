@@ -16,7 +16,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allow_promotion_codes")]
 #endif
-
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
 #endif
-
         public bool? Enabled { get; set; }
     }
 }

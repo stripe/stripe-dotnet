@@ -16,7 +16,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("additional_documentation")]
 #endif
-
         public string AdditionalDocumentation { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("explanation")]
 #endif
-
         public string Explanation { get; set; }
     }
 }

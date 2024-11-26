@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public string Address { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_charged")]
 #endif
-
         public long AmountCharged { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_received")]
 #endif
-
         public long AmountReceived { get; set; }
 
         /// <summary>
@@ -52,7 +49,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_returned")]
 #endif
-
         public long AmountReturned { get; set; }
 
         /// <summary>
@@ -62,7 +58,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_attributes_method")]
 #endif
-
         public string RefundAttributesMethod { get; set; }
 
         /// <summary>
@@ -73,7 +68,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_attributes_status")]
 #endif
-
         public string RefundAttributesStatus { get; set; }
     }
 }

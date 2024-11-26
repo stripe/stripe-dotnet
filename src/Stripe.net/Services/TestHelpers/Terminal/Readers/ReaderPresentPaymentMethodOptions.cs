@@ -15,7 +15,6 @@ namespace Stripe.TestHelpers.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_tip")]
 #endif
-
         public long? AmountTip { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.TestHelpers.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_present")]
 #endif
-
         public ReaderCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.TestHelpers.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interac_present")]
 #endif
-
         public ReaderInteracPresentOptions InteracPresent { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe.TestHelpers.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

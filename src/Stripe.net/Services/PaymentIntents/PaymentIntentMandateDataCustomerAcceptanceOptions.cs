@@ -14,15 +14,11 @@ namespace Stripe
         /// The time at which the customer accepted the Mandate.
         /// </summary>
         [JsonProperty("accepted_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("accepted_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("accepted_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? AcceptedAt { get; set; }
 
         /// <summary>
@@ -33,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("offline")]
 #endif
-
         public PaymentIntentMandateDataCustomerAcceptanceOfflineOptions Offline { get; set; }
 
         /// <summary>
@@ -44,7 +39,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("online")]
 #endif
-
         public PaymentIntentMandateDataCustomerAcceptanceOnlineOptions Online { get; set; }
 
         /// <summary>
@@ -56,7 +50,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

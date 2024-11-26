@@ -17,7 +17,6 @@ namespace Stripe.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding")]
 #endif
-
         public string Funding { get; set; }
     }
 }

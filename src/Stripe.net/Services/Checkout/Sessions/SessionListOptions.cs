@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_details")]
 #endif
-
         public SessionCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_intent")]
 #endif
-
         public string PaymentIntent { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_link")]
 #endif
-
         public string PaymentLink { get; set; }
 
         /// <summary>
@@ -56,7 +52,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -66,7 +61,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
 #endif
-
         public string Subscription { get; set; }
     }
 }

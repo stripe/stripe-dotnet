@@ -16,7 +16,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cash")]
 #endif
-
         public Dictionary<string, long> Cash { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inbound_pending")]
 #endif
-
         public Dictionary<string, long> InboundPending { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_pending")]
 #endif
-
         public Dictionary<string, long> OutboundPending { get; set; }
     }
 }

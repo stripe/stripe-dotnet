@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_off")]
 #endif
-
         public long AmountOff { get; set; }
     }
 }

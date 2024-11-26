@@ -17,7 +17,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cardholder_prompt_data")]
 #endif
-
         public TransactionPurchaseDetailsFleetCardholderPromptDataOptions CardholderPromptData { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("purchase_type")]
 #endif
-
         public string PurchaseType { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reported_breakdown")]
 #endif
-
         public TransactionPurchaseDetailsFleetReportedBreakdownOptions ReportedBreakdown { get; set; }
 
         /// <summary>
@@ -53,7 +50,6 @@ namespace Stripe.TestHelpers.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_type")]
 #endif
-
         public string ServiceType { get; set; }
     }
 }

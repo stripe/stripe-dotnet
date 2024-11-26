@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("after_submit")]
 #endif
-
         public SessionCustomTextAfterSubmit AfterSubmit { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_address")]
 #endif
-
         public SessionCustomTextShippingAddress ShippingAddress { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("submit")]
 #endif
-
         public SessionCustomTextSubmit Submit { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terms_of_service_acceptance")]
 #endif
-
         public SessionCustomTextTermsOfServiceAcceptance TermsOfServiceAcceptance { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("annual_revenue")]
 #endif
-
         public AccountBusinessProfileAnnualRevenue AnnualRevenue { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("estimated_worker_count")]
 #endif
-
         public long? EstimatedWorkerCount { get; set; }
 
         /// <summary>
@@ -38,14 +36,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mcc")]
 #endif
-
         public string Mcc { get; set; }
 
         [JsonProperty("monthly_estimated_revenue")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monthly_estimated_revenue")]
 #endif
-
         public AccountBusinessProfileMonthlyEstimatedRevenue MonthlyEstimatedRevenue { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -66,7 +61,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_description")]
 #endif
-
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -76,7 +70,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("support_address")]
 #endif
-
         public Address SupportAddress { get; set; }
 
         /// <summary>
@@ -86,7 +79,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("support_email")]
 #endif
-
         public string SupportEmail { get; set; }
 
         /// <summary>
@@ -96,7 +88,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("support_phone")]
 #endif
-
         public string SupportPhone { get; set; }
 
         /// <summary>
@@ -106,7 +97,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("support_url")]
 #endif
-
         public string SupportUrl { get; set; }
 
         /// <summary>
@@ -116,7 +106,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
 #endif
-
         public string Url { get; set; }
     }
 }

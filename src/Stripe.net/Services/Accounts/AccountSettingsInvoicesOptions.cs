@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_account_tax_ids")]
 #endif
-
         public List<string> DefaultAccountTaxIds { get; set; }
     }
 }

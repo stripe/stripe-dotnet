@@ -12,7 +12,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_reason")]
 #endif
-
         public ConfigurationFeaturesSubscriptionCancelCancellationReason CancellationReason { get; set; }
 
         /// <summary>
@@ -22,7 +21,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
 #endif
-
         public bool Enabled { get; set; }
 
         /// <summary>
@@ -33,7 +31,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mode")]
 #endif
-
         public string Mode { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
 #endif
-
         public string ProrationBehavior { get; set; }
     }
 }

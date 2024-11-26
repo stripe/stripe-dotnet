@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("additional_tos_acceptances")]
 #endif
-
         public AccountPersonAdditionalTosAcceptancesOptions AdditionalTosAcceptances { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public AddressOptions Address { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_kana")]
 #endif
-
         public AddressJapanOptions AddressKana { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_kanji")]
 #endif
-
         public AddressJapanOptions AddressKanji { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob")]
 #endif
-
         public AccountPersonDobOptions Dob { get; set; }
 
         /// <summary>
@@ -67,7 +62,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("documents")]
 #endif
-
         public AccountPersonDocumentsOptions Documents { get; set; }
 
         /// <summary>
@@ -77,7 +71,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email")]
 #endif
-
         public string Email { get; set; }
 
         /// <summary>
@@ -87,7 +80,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_name")]
 #endif
-
         public string FirstName { get; set; }
 
         /// <summary>
@@ -97,7 +89,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_name_kana")]
 #endif
-
         public string FirstNameKana { get; set; }
 
         /// <summary>
@@ -107,7 +98,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_name_kanji")]
 #endif
-
         public string FirstNameKanji { get; set; }
 
         /// <summary>
@@ -117,7 +107,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("full_name_aliases")]
 #endif
-
         public List<string> FullNameAliases { get; set; }
 
         /// <summary>
@@ -127,7 +116,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gender")]
 #endif
-
         public string Gender { get; set; }
 
         /// <summary>
@@ -141,7 +129,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_number")]
 #endif
-
         public string IdNumber { get; set; }
 
         /// <summary>
@@ -155,7 +142,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_number_secondary")]
 #endif
-
         public string IdNumberSecondary { get; set; }
 
         /// <summary>
@@ -165,7 +151,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_name")]
 #endif
-
         public string LastName { get; set; }
 
         /// <summary>
@@ -175,7 +160,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_name_kana")]
 #endif
-
         public string LastNameKana { get; set; }
 
         /// <summary>
@@ -185,7 +169,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_name_kanji")]
 #endif
-
         public string LastNameKanji { get; set; }
 
         /// <summary>
@@ -195,7 +178,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("maiden_name")]
 #endif
-
         public string MaidenName { get; set; }
 
         /// <summary>
@@ -208,7 +190,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -220,7 +201,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nationality")]
 #endif
-
         public string Nationality { get; set; }
 
         /// <summary>
@@ -231,7 +211,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("person_token")]
 #endif
-
         public string PersonToken { get; set; }
 
         /// <summary>
@@ -241,7 +220,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone")]
 #endif
-
         public string Phone { get; set; }
 
         /// <summary>
@@ -253,7 +231,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("political_exposure")]
 #endif
-
         public string PoliticalExposure { get; set; }
 
         /// <summary>
@@ -263,7 +240,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("registered_address")]
 #endif
-
         public AddressOptions RegisteredAddress { get; set; }
 
         /// <summary>
@@ -273,7 +249,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("relationship")]
 #endif
-
         public AccountPersonRelationshipOptions Relationship { get; set; }
 
         /// <summary>
@@ -283,7 +258,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ssn_last_4")]
 #endif
-
         public string SsnLast4 { get; set; }
 
         /// <summary>
@@ -293,7 +267,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification")]
 #endif
-
         public AccountPersonVerificationOptions Verification { get; set; }
     }
 }

@@ -27,7 +27,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -37,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -47,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         /// <summary>
@@ -58,7 +55,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_excluding_tax")]
 #endif
-
         public long? AmountExcludingTax { get; set; }
 
         /// <summary>
@@ -70,7 +66,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -80,7 +75,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -90,7 +84,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_amounts")]
 #endif
-
         public List<InvoiceLineItemDiscountAmount> DiscountAmounts { get; set; }
 
         /// <summary>
@@ -100,7 +93,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discountable")]
 #endif
-
         public bool Discountable { get; set; }
 
         #region Expandable Discounts
@@ -114,7 +106,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public List<string> DiscountIds
         {
             get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
@@ -132,7 +123,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public List<Discount> Discounts
         {
             get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
@@ -141,10 +131,9 @@ namespace Stripe
 
         [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discounts")]
         [STJS.JsonInclude]
+        [STJS.JsonPropertyName("discounts")]
 #endif
-
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
@@ -155,7 +144,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice")]
 #endif
-
         public string Invoice { get; set; }
 
         #region Expandable InvoiceItem
@@ -169,7 +157,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string InvoiceItemId
         {
             get => this.InternalInvoiceItem?.Id;
@@ -187,7 +174,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public InvoiceItem InvoiceItem
         {
             get => this.InternalInvoiceItem?.ExpandedObject;
@@ -195,16 +181,12 @@ namespace Stripe
         }
 
         [JsonProperty("invoice_item")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("invoice_item")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<InvoiceItem>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("invoice_item")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<InvoiceItem>))]
 #endif
-
         internal ExpandableField<InvoiceItem> InternalInvoiceItem { get; set; }
         #endregion
 
@@ -216,7 +198,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -231,14 +212,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("period")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("period")]
 #endif
-
         public InvoiceLineItemPeriod Period { get; set; }
 
         /// <summary>
@@ -248,7 +227,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("plan")]
 #endif
-
         public Plan Plan { get; set; }
 
         /// <summary>
@@ -259,7 +237,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pretax_credit_amounts")]
 #endif
-
         public List<InvoiceLineItemPretaxCreditAmount> PretaxCreditAmounts { get; set; }
 
         /// <summary>
@@ -269,7 +246,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
 #endif
-
         public Price Price { get; set; }
 
         /// <summary>
@@ -279,7 +255,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration")]
 #endif
-
         public bool Proration { get; set; }
 
         /// <summary>
@@ -289,7 +264,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_details")]
 #endif
-
         public InvoiceLineItemProrationDetails ProrationDetails { get; set; }
 
         /// <summary>
@@ -299,7 +273,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         #region Expandable Subscription
@@ -312,7 +285,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string SubscriptionId
         {
             get => this.InternalSubscription?.Id;
@@ -329,7 +301,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Subscription Subscription
         {
             get => this.InternalSubscription?.ExpandedObject;
@@ -337,16 +308,12 @@ namespace Stripe
         }
 
         [JsonProperty("subscription")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("subscription")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
 #endif
-
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
 
@@ -361,7 +328,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string SubscriptionItemId
         {
             get => this.InternalSubscriptionItem?.Id;
@@ -379,7 +345,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public SubscriptionItem SubscriptionItem
         {
             get => this.InternalSubscriptionItem?.ExpandedObject;
@@ -387,16 +352,12 @@ namespace Stripe
         }
 
         [JsonProperty("subscription_item")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_item")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionItem>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("subscription_item")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SubscriptionItem>))]
 #endif
-
         internal ExpandableField<SubscriptionItem> InternalSubscriptionItem { get; set; }
         #endregion
 
@@ -407,7 +368,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_amounts")]
 #endif
-
         public List<InvoiceLineItemTaxAmount> TaxAmounts { get; set; }
 
         /// <summary>
@@ -417,7 +377,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
 #endif
-
         public List<TaxRate> TaxRates { get; set; }
 
         /// <summary>
@@ -429,7 +388,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         /// <summary>
@@ -440,7 +398,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount_excluding_tax")]
 #endif
-
         public decimal? UnitAmountExcludingTax { get; set; }
     }
 }

@@ -8,13 +8,12 @@ namespace StripeTests.Wholesome
     using Xunit;
 
     /// <summary>
-    /// This wholesome test ensures that if a property has Newtonsoft JSON attributes, it also has
-    /// all other necessary/equivalent attributes (i.e. for System.Text.Json support)
+    /// This wholesome test ensures that if any class property has Newtonsoft JSON attributes,
+    /// it also has all other necessary/equivalent attributes (i.e. for System.Text.Json support)
     /// attributes.
     /// </summary>
     public class PropertiesHaveAllNecessaryJsonAttributes : WholesomeTest
     {
-        // TODO(jar): update to include JsonExtensionData, and STJ attributes
         private const string AssertionMessage =
             "Found at least one class with a Json*Attribute that is missing other necessary (e.g. System.Text.Json) attributes.";
 

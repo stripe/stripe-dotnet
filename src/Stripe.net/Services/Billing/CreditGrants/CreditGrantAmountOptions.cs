@@ -15,7 +15,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monetary")]
 #endif
-
         public CreditGrantAmountMonetaryOptions Monetary { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

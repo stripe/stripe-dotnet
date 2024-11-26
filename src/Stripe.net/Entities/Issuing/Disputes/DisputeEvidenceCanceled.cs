@@ -21,7 +21,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string AdditionalDocumentationId
         {
             get => this.InternalAdditionalDocumentation?.Id;
@@ -39,7 +38,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public File AdditionalDocumentation
         {
             get => this.InternalAdditionalDocumentation?.ExpandedObject;
@@ -47,16 +45,12 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("additional_documentation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("additional_documentation")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("additional_documentation")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
-
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
 
@@ -64,15 +58,11 @@ namespace Stripe.Issuing
         /// Date when order was canceled.
         /// </summary>
         [JsonProperty("canceled_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("canceled_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("canceled_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
@@ -82,7 +72,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_policy_provided")]
 #endif
-
         public bool? CancellationPolicyProvided { get; set; }
 
         /// <summary>
@@ -92,22 +81,17 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancellation_reason")]
 #endif
-
         public string CancellationReason { get; set; }
 
         /// <summary>
         /// Date when the cardholder expected to receive the product.
         /// </summary>
         [JsonProperty("expected_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expected_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expected_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpectedAt { get; set; }
 
         /// <summary>
@@ -117,7 +101,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("explanation")]
 #endif
-
         public string Explanation { get; set; }
 
         /// <summary>
@@ -127,7 +110,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_description")]
 #endif
-
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -138,7 +120,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_type")]
 #endif
-
         public string ProductType { get; set; }
 
         /// <summary>
@@ -149,22 +130,17 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_status")]
 #endif
-
         public string ReturnStatus { get; set; }
 
         /// <summary>
         /// Date when the product was returned or attempted to be returned.
         /// </summary>
         [JsonProperty("returned_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("returned_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("returned_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ReturnedAt { get; set; }
     }
 }

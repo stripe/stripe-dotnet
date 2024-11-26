@@ -20,7 +20,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_details")]
 #endif
-
         public AuthorizationRequestHistoryAmountDetails AmountDetails { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("approved")]
 #endif
-
         public bool Approved { get; set; }
 
         /// <summary>
@@ -56,22 +53,17 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_code")]
 #endif
-
         public string AuthorizationCode { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -83,7 +75,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -95,7 +86,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_amount")]
 #endif
-
         public long MerchantAmount { get; set; }
 
         /// <summary>
@@ -109,7 +99,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_currency")]
 #endif
-
         public string MerchantCurrency { get; set; }
 
         /// <summary>
@@ -120,7 +109,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_risk_score")]
 #endif
-
         public long? NetworkRiskScore { get; set; }
 
         /// <summary>
@@ -138,7 +126,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
 #endif
-
         public string Reason { get; set; }
 
         /// <summary>
@@ -150,7 +137,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason_message")]
 #endif
-
         public string ReasonMessage { get; set; }
 
         /// <summary>
@@ -158,15 +144,11 @@ namespace Stripe.Issuing
         /// Referred to by networks as transmission time.
         /// </summary>
         [JsonProperty("requested_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("requested_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("requested_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? RequestedAt { get; set; }
     }
 }

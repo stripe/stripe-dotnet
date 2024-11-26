@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand")]
 #endif
-
         public string Brand { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("checks")]
 #endif
-
         public SetupAttemptPaymentMethodDetailsCardChecks Checks { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
 #endif
-
         public string Country { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -58,7 +54,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_month")]
 #endif
-
         public long? ExpMonth { get; set; }
 
         /// <summary>
@@ -68,7 +63,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_year")]
 #endif
-
         public long? ExpYear { get; set; }
 
         /// <summary>
@@ -84,7 +78,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
 #endif
-
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -95,7 +88,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding")]
 #endif
-
         public string Funding { get; set; }
 
         /// <summary>
@@ -106,7 +98,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iin")]
 #endif
-
         public string Iin { get; set; }
 
         /// <summary>
@@ -117,7 +108,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-
         public string Issuer { get; set; }
 
         /// <summary>
@@ -127,7 +117,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
 #endif
-
         public string Last4 { get; set; }
 
         /// <summary>
@@ -140,7 +129,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
 #endif
-
         public string Network { get; set; }
 
         /// <summary>
@@ -150,7 +138,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("three_d_secure")]
 #endif
-
         public SetupAttemptPaymentMethodDetailsCardThreeDSecure ThreeDSecure { get; set; }
 
         /// <summary>
@@ -160,7 +147,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wallet")]
 #endif
-
         public SetupAttemptPaymentMethodDetailsCardWallet Wallet { get; set; }
     }
 }

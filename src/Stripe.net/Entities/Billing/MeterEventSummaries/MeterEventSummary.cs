@@ -22,7 +22,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -44,7 +42,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aggregated_value")]
 #endif
-
         public decimal AggregatedValue { get; set; }
 
         /// <summary>
@@ -52,15 +49,11 @@ namespace Stripe.Billing
         /// boundaries.
         /// </summary>
         [JsonProperty("end_time")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("end_time")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("end_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime EndTime { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -71,7 +64,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -81,7 +73,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("meter")]
 #endif
-
         public string Meter { get; set; }
 
         /// <summary>
@@ -89,15 +80,11 @@ namespace Stripe.Billing
         /// boundaries.
         /// </summary>
         [JsonProperty("start_time")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("start_time")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("start_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime StartTime { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

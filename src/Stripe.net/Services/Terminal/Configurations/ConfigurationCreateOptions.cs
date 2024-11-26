@@ -15,7 +15,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bbpos_wisepos_e")]
 #endif
-
         public ConfigurationBbposWiseposEOptions BbposWiseposE { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("offline")]
 #endif
-
         public ConfigurationOfflineOptions Offline { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reboot_window")]
 #endif
-
         public ConfigurationRebootWindowOptions RebootWindow { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_s700")]
 #endif
-
         public ConfigurationStripeS700Options StripeS700 { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tipping")]
 #endif
-
         public ConfigurationTippingOptions Tipping { get; set; }
 
         /// <summary>
@@ -75,7 +69,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verifone_p400")]
 #endif
-
         public ConfigurationVerifoneP400Options VerifoneP400 { get; set; }
     }
 }

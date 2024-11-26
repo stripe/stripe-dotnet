@@ -15,7 +15,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applicability_scope")]
 #endif
-
         public CreditBalanceSummaryFilterApplicabilityScopeOptions ApplicabilityScope { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit_grant")]
 #endif
-
         public string CreditGrant { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

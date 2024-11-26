@@ -12,7 +12,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ach")]
 #endif
-
         public OutboundPaymentTrackingDetailsAch Ach { get; set; }
 
         /// <summary>
@@ -23,14 +22,12 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
 
         [JsonProperty("us_domestic_wire")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_domestic_wire")]
 #endif
-
         public OutboundPaymentTrackingDetailsUsDomesticWire UsDomesticWire { get; set; }
     }
 }

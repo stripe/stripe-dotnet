@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_account_ownership_verification")]
 #endif
-
         public CardDocumentsBankAccountOwnershipVerificationOptions BankAccountOwnershipVerification { get; set; }
     }
 }

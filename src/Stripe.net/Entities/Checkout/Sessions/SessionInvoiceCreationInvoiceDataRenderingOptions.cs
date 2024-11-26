@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_tax_display")]
 #endif
-
         public string AmountTaxDisplay { get; set; }
     }
 }

@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_tax_ids")]
 #endif
-
         public List<string> AccountTaxIds { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_amount")]
 #endif
-
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -45,7 +43,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("auto_advance")]
 #endif
-
         public bool? AutoAdvance { get; set; }
 
         /// <summary>
@@ -55,7 +52,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
 #endif
-
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -64,15 +60,11 @@ namespace Stripe
         /// finalization, set <c>auto_advance</c> to false.
         /// </summary>
         [JsonProperty("automatically_finalizes_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("automatically_finalizes_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("automatically_finalizes_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? AutomaticallyFinalizesAt { get; set; }
 
         /// <summary>
@@ -84,7 +76,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection_method")]
 #endif
-
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -96,7 +87,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_fields")]
 #endif
-
         public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
@@ -108,7 +98,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("days_until_due")]
 #endif
-
         public long? DaysUntilDue { get; set; }
 
         /// <summary>
@@ -120,7 +109,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_payment_method")]
 #endif
-
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
@@ -132,7 +120,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_source")]
 #endif
-
         public string DefaultSource { get; set; }
 
         /// <summary>
@@ -143,7 +130,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_tax_rates")]
 #endif
-
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
@@ -154,7 +140,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -165,7 +150,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<InvoiceDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -174,15 +158,11 @@ namespace Stripe
         /// invoices.
         /// </summary>
         [JsonProperty("due_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("due_date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("due_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? DueDate { get; set; }
 
         /// <summary>
@@ -191,15 +171,11 @@ namespace Stripe
         /// invoice PDF and receipt.
         /// </summary>
         [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? EffectiveAt { get; set; }
 
         /// <summary>
@@ -209,7 +185,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("footer")]
 #endif
-
         public string Footer { get; set; }
 
         /// <summary>
@@ -220,7 +195,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-
         public InvoiceIssuerOptions Issuer { get; set; }
 
         /// <summary>
@@ -233,7 +207,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -248,7 +221,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("number")]
 #endif
-
         public string Number { get; set; }
 
         /// <summary>
@@ -261,7 +233,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
 #endif
-
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -272,7 +243,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_settings")]
 #endif
-
         public InvoicePaymentSettingsOptions PaymentSettings { get; set; }
 
         /// <summary>
@@ -283,7 +253,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rendering")]
 #endif
-
         public InvoiceRenderingOptions Rendering { get; set; }
 
         /// <summary>
@@ -293,7 +262,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_cost")]
 #endif
-
         public InvoiceShippingCostOptions ShippingCost { get; set; }
 
         /// <summary>
@@ -305,7 +273,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_details")]
 #endif
-
         public InvoiceShippingDetailsOptions ShippingDetails { get; set; }
 
         /// <summary>
@@ -318,7 +285,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
 #endif
-
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -330,7 +296,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_data")]
 #endif
-
         public InvoiceTransferDataOptions TransferData { get; set; }
     }
 }

@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reconciliation_mode")]
 #endif
-
         public string ReconciliationMode { get; set; }
     }
 }

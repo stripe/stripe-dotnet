@@ -18,7 +18,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("after_expiration")]
 #endif
-
         public SessionAfterExpirationOptions AfterExpiration { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allow_promotion_codes")]
 #endif
-
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
 #endif
-
         public SessionAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -51,7 +48,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_address_collection")]
 #endif
-
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
@@ -63,7 +59,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancel_url")]
 #endif
-
         public string CancelUrl { get; set; }
 
         /// <summary>
@@ -74,7 +69,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_reference_id")]
 #endif
-
         public string ClientReferenceId { get; set; }
 
         /// <summary>
@@ -84,7 +78,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("consent_collection")]
 #endif
-
         public SessionConsentCollectionOptions ConsentCollection { get; set; }
 
         /// <summary>
@@ -96,7 +89,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -107,7 +99,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_fields")]
 #endif
-
         public List<SessionCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
@@ -117,7 +108,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_text")]
 #endif
-
         public SessionCustomTextOptions CustomText { get; set; }
 
         /// <summary>
@@ -149,7 +139,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
-
         public string Customer { get; set; }
 
         /// <summary>
@@ -172,7 +161,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_creation")]
 #endif
-
         public string CustomerCreation { get; set; }
 
         /// <summary>
@@ -185,7 +173,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_email")]
 #endif
-
         public string CustomerEmail { get; set; }
 
         /// <summary>
@@ -196,7 +183,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_update")]
 #endif
-
         public SessionCustomerUpdateOptions CustomerUpdate { get; set; }
 
         /// <summary>
@@ -207,7 +193,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-
         public List<SessionDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -216,15 +201,11 @@ namespace Stripe.Checkout
         /// 24 hours from creation.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -234,7 +215,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_creation")]
 #endif
-
         public SessionInvoiceCreationOptions InvoiceCreation { get; set; }
 
         /// <summary>
@@ -252,7 +232,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
 #endif
-
         public List<SessionLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -269,7 +248,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("locale")]
 #endif
-
         public string Locale { get; set; }
 
         /// <summary>
@@ -282,7 +260,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -294,7 +271,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mode")]
 #endif
-
         public string Mode { get; set; }
 
         /// <summary>
@@ -305,7 +281,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_intent_data")]
 #endif
-
         public SessionPaymentIntentDataOptions PaymentIntentData { get; set; }
 
         /// <summary>
@@ -326,7 +301,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_collection")]
 #endif
-
         public string PaymentMethodCollection { get; set; }
 
         /// <summary>
@@ -336,7 +310,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_configuration")]
 #endif
-
         public string PaymentMethodConfiguration { get; set; }
 
         /// <summary>
@@ -347,7 +320,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_data")]
 #endif
-
         public SessionPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
@@ -357,7 +329,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
 #endif
-
         public SessionPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -391,7 +362,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_types")]
 #endif
-
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -406,7 +376,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone_number_collection")]
 #endif
-
         public SessionPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
 
         /// <summary>
@@ -419,7 +388,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("redirect_on_completion")]
 #endif
-
         public string RedirectOnCompletion { get; set; }
 
         /// <summary>
@@ -431,7 +399,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
 #endif
-
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -442,7 +409,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("saved_payment_method_options")]
 #endif
-
         public SessionSavedPaymentMethodOptionsOptions SavedPaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -453,7 +419,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_intent_data")]
 #endif
-
         public SessionSetupIntentDataOptions SetupIntentData { get; set; }
 
         /// <summary>
@@ -464,7 +429,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_address_collection")]
 #endif
-
         public SessionShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
 
         /// <summary>
@@ -474,7 +438,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_options")]
 #endif
-
         public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
 
         /// <summary>
@@ -488,7 +451,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("submit_type")]
 #endif
-
         public string SubmitType { get; set; }
 
         /// <summary>
@@ -499,7 +461,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_data")]
 #endif
-
         public SessionSubscriptionDataOptions SubscriptionData { get; set; }
 
         /// <summary>
@@ -513,7 +474,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("success_url")]
 #endif
-
         public string SuccessUrl { get; set; }
 
         /// <summary>
@@ -523,7 +483,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_id_collection")]
 #endif
-
         public SessionTaxIdCollectionOptions TaxIdCollection { get; set; }
 
         /// <summary>
@@ -534,7 +493,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ui_mode")]
 #endif
-
         public string UiMode { get; set; }
     }
 }

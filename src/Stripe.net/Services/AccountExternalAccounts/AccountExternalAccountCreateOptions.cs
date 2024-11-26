@@ -18,22 +18,17 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_for_currency")]
 #endif
-
         public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
         /// Please refer to full <a href="https://stripe.com/docs/api">documentation</a> instead.
         /// </summary>
         [JsonProperty("external_account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("external_account")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_account")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<string, AccountExternalAccountCardOptions, AccountExternalAccountBankAccountOptions, AccountExternalAccountCardTokenOptions> ExternalAccount { get; set; }
 
         /// <summary>
@@ -46,7 +41,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

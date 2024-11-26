@@ -23,7 +23,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank")]
 #endif
-
         public string Bank { get; set; }
 
         /// <summary>
@@ -37,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bic")]
 #endif
-
         public string Bic { get; set; }
 
         #region Expandable GeneratedSepaDebit
@@ -50,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string GeneratedSepaDebitId
         {
             get => this.InternalGeneratedSepaDebit?.Id;
@@ -67,7 +64,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public PaymentMethod GeneratedSepaDebit
         {
             get => this.InternalGeneratedSepaDebit?.ExpandedObject;
@@ -75,16 +71,12 @@ namespace Stripe
         }
 
         [JsonProperty("generated_sepa_debit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("generated_sepa_debit")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("generated_sepa_debit")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
 #endif
-
         internal ExpandableField<PaymentMethod> InternalGeneratedSepaDebit { get; set; }
         #endregion
 
@@ -98,7 +90,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string GeneratedSepaDebitMandateId
         {
             get => this.InternalGeneratedSepaDebitMandate?.Id;
@@ -115,7 +106,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Mandate GeneratedSepaDebitMandate
         {
             get => this.InternalGeneratedSepaDebitMandate?.ExpandedObject;
@@ -123,16 +113,12 @@ namespace Stripe
         }
 
         [JsonProperty("generated_sepa_debit_mandate")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("generated_sepa_debit_mandate")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("generated_sepa_debit_mandate")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Mandate>))]
 #endif
-
         internal ExpandableField<Mandate> InternalGeneratedSepaDebitMandate { get; set; }
         #endregion
 
@@ -143,7 +129,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iban_last4")]
 #endif
-
         public string IbanLast4 { get; set; }
 
         /// <summary>
@@ -154,7 +139,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verified_name")]
 #endif
-
         public string VerifiedName { get; set; }
     }
 }

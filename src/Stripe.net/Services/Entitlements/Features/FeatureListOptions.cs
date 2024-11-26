@@ -15,7 +15,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("archived")]
 #endif
-
         public bool? Archived { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Entitlements
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
 #endif
-
         public string LookupKey { get; set; }
     }
 }

@@ -23,7 +23,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("action")]
 #endif
-
         public string Action { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -43,15 +41,11 @@ namespace Stripe
         /// Default is <c>"now"</c> if a value is not provided.
         /// </summary>
         [JsonProperty("timestamp")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("timestamp")]
-#endif
-
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("timestamp")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-
         public AnyOf<DateTime?, SubscriptionItemUsageRecordTimestamp> Timestamp { get; set; }
     }
 }

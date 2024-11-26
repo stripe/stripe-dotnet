@@ -27,7 +27,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -37,7 +36,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -50,7 +48,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         /// <summary>
@@ -62,7 +59,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_details")]
 #endif
-
         public AuthorizationAmountDetails AmountDetails { get; set; }
 
         /// <summary>
@@ -72,7 +68,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("approved")]
 #endif
-
         public bool Approved { get; set; }
 
         /// <summary>
@@ -84,7 +79,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_method")]
 #endif
-
         public string AuthorizationMethod { get; set; }
 
         /// <summary>
@@ -94,7 +88,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance_transactions")]
 #endif
-
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         /// <summary>
@@ -105,7 +98,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
 #endif
-
         public Card Card { get; set; }
 
         #region Expandable Cardholder
@@ -118,7 +110,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CardholderId
         {
             get => this.InternalCardholder?.Id;
@@ -135,7 +126,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Cardholder Cardholder
         {
             get => this.InternalCardholder?.ExpandedObject;
@@ -143,16 +133,12 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("cardholder")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cardholder")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("cardholder")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Cardholder>))]
 #endif
-
         internal ExpandableField<Cardholder> InternalCardholder { get; set; }
         #endregion
 
@@ -160,15 +146,11 @@ namespace Stripe.Issuing
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -182,7 +164,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         /// <summary>
@@ -192,7 +173,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fleet")]
 #endif
-
         public AuthorizationFleet Fleet { get; set; }
 
         /// <summary>
@@ -204,7 +184,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fuel")]
 #endif
-
         public AuthorizationFuel Fuel { get; set; }
 
         /// <summary>
@@ -215,7 +194,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -229,7 +207,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_amount")]
 #endif
-
         public long MerchantAmount { get; set; }
 
         /// <summary>
@@ -244,14 +221,12 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_currency")]
 #endif
-
         public string MerchantCurrency { get; set; }
 
         [JsonProperty("merchant_data")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("merchant_data")]
 #endif
-
         public AuthorizationMerchantData MerchantData { get; set; }
 
         /// <summary>
@@ -263,7 +238,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -273,7 +247,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_data")]
 #endif
-
         public AuthorizationNetworkData NetworkData { get; set; }
 
         /// <summary>
@@ -284,7 +257,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pending_request")]
 #endif
-
         public AuthorizationPendingRequest PendingRequest { get; set; }
 
         /// <summary>
@@ -298,7 +270,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_history")]
 #endif
-
         public List<AuthorizationRequestHistory> RequestHistory { get; set; }
 
         /// <summary>
@@ -309,7 +280,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         #region Expandable Token
@@ -324,7 +294,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string TokenId
         {
             get => this.InternalToken?.Id;
@@ -343,7 +312,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Token Token
         {
             get => this.InternalToken?.ExpandedObject;
@@ -351,16 +319,12 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("token")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("token")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Token>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("token")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Token>))]
 #endif
-
         internal ExpandableField<Token> InternalToken { get; set; }
         #endregion
 
@@ -372,7 +336,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transactions")]
 #endif
-
         public List<Transaction> Transactions { get; set; }
 
         /// <summary>
@@ -384,14 +347,12 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("treasury")]
 #endif
-
         public AuthorizationTreasury Treasury { get; set; }
 
         [JsonProperty("verification_data")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_data")]
 #endif
-
         public AuthorizationVerificationData VerificationData { get; set; }
 
         /// <summary>
@@ -403,7 +364,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wallet")]
 #endif
-
         public string Wallet { get; set; }
     }
 }

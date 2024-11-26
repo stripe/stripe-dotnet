@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("acss_debit_payments")]
 #endif
-
         public AccountCapabilitiesAcssDebitPaymentsOptions AcssDebitPayments { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("affirm_payments")]
 #endif
-
         public AccountCapabilitiesAffirmPaymentsOptions AffirmPayments { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("afterpay_clearpay_payments")]
 #endif
-
         public AccountCapabilitiesAfterpayClearpayPaymentsOptions AfterpayClearpayPayments { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alma_payments")]
 #endif
-
         public AccountCapabilitiesAlmaPaymentsOptions AlmaPayments { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amazon_pay_payments")]
 #endif
-
         public AccountCapabilitiesAmazonPayPaymentsOptions AmazonPayPayments { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("au_becs_debit_payments")]
 #endif
-
         public AccountCapabilitiesAuBecsDebitPaymentsOptions AuBecsDebitPayments { get; set; }
 
         /// <summary>
@@ -75,7 +69,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bacs_debit_payments")]
 #endif
-
         public AccountCapabilitiesBacsDebitPaymentsOptions BacsDebitPayments { get; set; }
 
         /// <summary>
@@ -85,7 +78,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bancontact_payments")]
 #endif
-
         public AccountCapabilitiesBancontactPaymentsOptions BancontactPayments { get; set; }
 
         /// <summary>
@@ -95,7 +87,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_transfer_payments")]
 #endif
-
         public AccountCapabilitiesBankTransferPaymentsOptions BankTransferPayments { get; set; }
 
         /// <summary>
@@ -105,7 +96,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blik_payments")]
 #endif
-
         public AccountCapabilitiesBlikPaymentsOptions BlikPayments { get; set; }
 
         /// <summary>
@@ -115,7 +105,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("boleto_payments")]
 #endif
-
         public AccountCapabilitiesBoletoPaymentsOptions BoletoPayments { get; set; }
 
         /// <summary>
@@ -125,7 +114,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_issuing")]
 #endif
-
         public AccountCapabilitiesCardIssuingOptions CardIssuing { get; set; }
 
         /// <summary>
@@ -135,7 +123,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_payments")]
 #endif
-
         public AccountCapabilitiesCardPaymentsOptions CardPayments { get; set; }
 
         /// <summary>
@@ -145,7 +132,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cartes_bancaires_payments")]
 #endif
-
         public AccountCapabilitiesCartesBancairesPaymentsOptions CartesBancairesPayments { get; set; }
 
         /// <summary>
@@ -155,7 +141,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cashapp_payments")]
 #endif
-
         public AccountCapabilitiesCashappPaymentsOptions CashappPayments { get; set; }
 
         /// <summary>
@@ -165,7 +150,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eps_payments")]
 #endif
-
         public AccountCapabilitiesEpsPaymentsOptions EpsPayments { get; set; }
 
         /// <summary>
@@ -175,7 +159,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fpx_payments")]
 #endif
-
         public AccountCapabilitiesFpxPaymentsOptions FpxPayments { get; set; }
 
         /// <summary>
@@ -185,7 +168,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gb_bank_transfer_payments")]
 #endif
-
         public AccountCapabilitiesGbBankTransferPaymentsOptions GbBankTransferPayments { get; set; }
 
         /// <summary>
@@ -195,7 +177,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("giropay_payments")]
 #endif
-
         public AccountCapabilitiesGiropayPaymentsOptions GiropayPayments { get; set; }
 
         /// <summary>
@@ -205,7 +186,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("grabpay_payments")]
 #endif
-
         public AccountCapabilitiesGrabpayPaymentsOptions GrabpayPayments { get; set; }
 
         /// <summary>
@@ -215,7 +195,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ideal_payments")]
 #endif
-
         public AccountCapabilitiesIdealPaymentsOptions IdealPayments { get; set; }
 
         /// <summary>
@@ -225,7 +204,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("india_international_payments")]
 #endif
-
         public AccountCapabilitiesIndiaInternationalPaymentsOptions IndiaInternationalPayments { get; set; }
 
         /// <summary>
@@ -235,7 +213,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jcb_payments")]
 #endif
-
         public AccountCapabilitiesJcbPaymentsOptions JcbPayments { get; set; }
 
         /// <summary>
@@ -245,7 +222,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jp_bank_transfer_payments")]
 #endif
-
         public AccountCapabilitiesJpBankTransferPaymentsOptions JpBankTransferPayments { get; set; }
 
         /// <summary>
@@ -255,7 +231,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kakao_pay_payments")]
 #endif
-
         public AccountCapabilitiesKakaoPayPaymentsOptions KakaoPayPayments { get; set; }
 
         /// <summary>
@@ -265,7 +240,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("klarna_payments")]
 #endif
-
         public AccountCapabilitiesKlarnaPaymentsOptions KlarnaPayments { get; set; }
 
         /// <summary>
@@ -275,7 +249,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("konbini_payments")]
 #endif
-
         public AccountCapabilitiesKonbiniPaymentsOptions KonbiniPayments { get; set; }
 
         /// <summary>
@@ -285,7 +258,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kr_card_payments")]
 #endif
-
         public AccountCapabilitiesKrCardPaymentsOptions KrCardPayments { get; set; }
 
         /// <summary>
@@ -295,7 +267,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("legacy_payments")]
 #endif
-
         public AccountCapabilitiesLegacyPaymentsOptions LegacyPayments { get; set; }
 
         /// <summary>
@@ -305,7 +276,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("link_payments")]
 #endif
-
         public AccountCapabilitiesLinkPaymentsOptions LinkPayments { get; set; }
 
         /// <summary>
@@ -315,7 +285,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mobilepay_payments")]
 #endif
-
         public AccountCapabilitiesMobilepayPaymentsOptions MobilepayPayments { get; set; }
 
         /// <summary>
@@ -325,7 +294,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("multibanco_payments")]
 #endif
-
         public AccountCapabilitiesMultibancoPaymentsOptions MultibancoPayments { get; set; }
 
         /// <summary>
@@ -335,7 +303,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mx_bank_transfer_payments")]
 #endif
-
         public AccountCapabilitiesMxBankTransferPaymentsOptions MxBankTransferPayments { get; set; }
 
         /// <summary>
@@ -345,7 +312,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("naver_pay_payments")]
 #endif
-
         public AccountCapabilitiesNaverPayPaymentsOptions NaverPayPayments { get; set; }
 
         /// <summary>
@@ -355,7 +321,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("oxxo_payments")]
 #endif
-
         public AccountCapabilitiesOxxoPaymentsOptions OxxoPayments { get; set; }
 
         /// <summary>
@@ -365,7 +330,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("p24_payments")]
 #endif
-
         public AccountCapabilitiesP24PaymentsOptions P24Payments { get; set; }
 
         /// <summary>
@@ -375,7 +339,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payco_payments")]
 #endif
-
         public AccountCapabilitiesPaycoPaymentsOptions PaycoPayments { get; set; }
 
         /// <summary>
@@ -385,7 +348,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paynow_payments")]
 #endif
-
         public AccountCapabilitiesPaynowPaymentsOptions PaynowPayments { get; set; }
 
         /// <summary>
@@ -395,7 +357,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("promptpay_payments")]
 #endif
-
         public AccountCapabilitiesPromptpayPaymentsOptions PromptpayPayments { get; set; }
 
         /// <summary>
@@ -405,7 +366,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("revolut_pay_payments")]
 #endif
-
         public AccountCapabilitiesRevolutPayPaymentsOptions RevolutPayPayments { get; set; }
 
         /// <summary>
@@ -415,7 +375,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("samsung_pay_payments")]
 #endif
-
         public AccountCapabilitiesSamsungPayPaymentsOptions SamsungPayPayments { get; set; }
 
         /// <summary>
@@ -425,7 +384,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_bank_transfer_payments")]
 #endif
-
         public AccountCapabilitiesSepaBankTransferPaymentsOptions SepaBankTransferPayments { get; set; }
 
         /// <summary>
@@ -435,7 +393,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit_payments")]
 #endif
-
         public AccountCapabilitiesSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
 
         /// <summary>
@@ -445,7 +402,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sofort_payments")]
 #endif
-
         public AccountCapabilitiesSofortPaymentsOptions SofortPayments { get; set; }
 
         /// <summary>
@@ -455,7 +411,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("swish_payments")]
 #endif
-
         public AccountCapabilitiesSwishPaymentsOptions SwishPayments { get; set; }
 
         /// <summary>
@@ -465,7 +420,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_reporting_us_1099_k")]
 #endif
-
         public AccountCapabilitiesTaxReportingUs1099KOptions TaxReportingUs1099K { get; set; }
 
         /// <summary>
@@ -475,7 +429,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_reporting_us_1099_misc")]
 #endif
-
         public AccountCapabilitiesTaxReportingUs1099MiscOptions TaxReportingUs1099Misc { get; set; }
 
         /// <summary>
@@ -485,7 +438,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfers")]
 #endif
-
         public AccountCapabilitiesTransfersOptions Transfers { get; set; }
 
         /// <summary>
@@ -495,7 +447,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("treasury")]
 #endif
-
         public AccountCapabilitiesTreasuryOptions Treasury { get; set; }
 
         /// <summary>
@@ -505,7 +456,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("twint_payments")]
 #endif
-
         public AccountCapabilitiesTwintPaymentsOptions TwintPayments { get; set; }
 
         /// <summary>
@@ -515,7 +465,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account_ach_payments")]
 #endif
-
         public AccountCapabilitiesUsBankAccountAchPaymentsOptions UsBankAccountAchPayments { get; set; }
 
         /// <summary>
@@ -525,7 +474,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_transfer_payments")]
 #endif
-
         public AccountCapabilitiesUsBankTransferPaymentsOptions UsBankTransferPayments { get; set; }
 
         /// <summary>
@@ -535,7 +483,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("zip_payments")]
 #endif
-
         public AccountCapabilitiesZipPaymentsOptions ZipPayments { get; set; }
     }
 }

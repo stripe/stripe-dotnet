@@ -22,7 +22,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -32,14 +31,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         [JsonProperty("ach_credit_transfer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ach_credit_transfer")]
 #endif
-
         public SourceTransactionAchCreditTransfer AchCreditTransfer { get; set; }
 
         /// <summary>
@@ -51,29 +48,23 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-
         public long Amount { get; set; }
 
         [JsonProperty("chf_credit_transfer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("chf_credit_transfer")]
 #endif
-
         public SourceTransactionChfCreditTransfer ChfCreditTransfer { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -85,14 +76,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
-
         public string Currency { get; set; }
 
         [JsonProperty("gbp_credit_transfer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gbp_credit_transfer")]
 #endif
-
         public SourceTransactionGbpCreditTransfer GbpCreditTransfer { get; set; }
 
         /// <summary>
@@ -103,21 +92,18 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         [JsonProperty("paper_check")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paper_check")]
 #endif
-
         public SourceTransactionPaperCheck PaperCheck { get; set; }
 
         [JsonProperty("sepa_credit_transfer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_credit_transfer")]
 #endif
-
         public SourceTransactionSepaCreditTransfer SepaCreditTransfer { get; set; }
 
         /// <summary>
@@ -127,7 +113,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source")]
 #endif
-
         public string Source { get; set; }
 
         /// <summary>
@@ -138,7 +123,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -152,7 +136,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prices")]
 #endif
-
         public List<string> Prices { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product")]
 #endif
-
         public string Product { get; set; }
     }
 }

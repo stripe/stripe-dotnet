@@ -7,6 +7,12 @@ namespace StripeTests.Wholesome
     using Stripe;
     using Xunit;
 
+#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
+    using Stripe.Infrastructure.FormEncoding;
+    using STJS = System.Text.Json.Serialization;
+#endif
+
     /// <summary>
     /// This wholesome test ensures that if a class has Newtonsoft JSON attributes, it also has
     /// all other necessary/equivalent attributes (i.e. for System.Text.Json support)
@@ -14,9 +20,8 @@ namespace StripeTests.Wholesome
     /// </summary>
     public class ClassesHaveAllNecessaryJsonAttributes : WholesomeTest
     {
-        // TODO(jar): update to include JsonExtensionData, and STJ attributes
         private const string AssertionMessage =
-            "Found at least one class with a Json*Attribute that is missing other necessary (e.g. System.Text.Json) attributes.";
+            "Found at least one class that is missing necessary attributes.";
 
         [Fact]
         public void Check()
@@ -33,20 +38,43 @@ namespace StripeTests.Wholesome
                     continue;
                 }
 
-                var attributes = type.GetCustomAttributes(false).Cast<Attribute>();
-                foreach (Attribute attribute in attributes)
-                {
-                    if (attribute.GetType().Namespace.StartsWith("Newtonsoft", true, null))
-                    {
+                var hasCorrectAttributes = true;
 #if NET6_0_OR_GREATER
-                        // we assume classes are public if they have json attributes
-                        bool hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, attributes, true);
-                        if (!hasCorrectAttributes)
-                        {
-                            results.Add($"{type.FullName}");
-                        }
-#endif
+                var isIEnumerable = typeof(System.Collections.IEnumerable).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo());
+                var isEntity = typeof(StripeEntity).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo());
+
+                if (isIEnumerable && isEntity)
+                {
+                    var converter = type.GetCustomAttribute(typeof(STJS.JsonConverterAttribute), false) as STJS.JsonConverterAttribute;
+                    if (converter?.ConverterType != typeof(STJEnumerableObjectConverter))
+                    {
+                        hasCorrectAttributes = false;
                     }
+                }
+#endif
+
+                if (hasCorrectAttributes)
+                {
+                    var attributes = type.GetCustomAttributes(false).Cast<Attribute>();
+                    foreach (Attribute attribute in attributes)
+                    {
+                        if (attribute.GetType().Namespace.StartsWith("Newtonsoft", true, null))
+                        {
+#if NET6_0_OR_GREATER
+                            // we assume classes are public if they have json attributes
+                            hasCorrectAttributes = SystemTextJsonTestUtils.HasCorrectAttributes(attribute, attributes, true);
+                            if (!hasCorrectAttributes)
+                            {
+                                break;
+                            }
+#endif
+                        }
+                    }
+                }
+
+                if (!hasCorrectAttributes)
+                {
+                    results.Add($"{type.FullName}");
                 }
             }
 

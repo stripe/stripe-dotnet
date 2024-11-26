@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_authorized")]
 #endif
-
         public long? AmountAuthorized { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_code")]
 #endif
-
         public string AuthorizationCode { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand")]
 #endif
-
         public string Brand { get; set; }
 
         /// <summary>
@@ -46,15 +43,11 @@ namespace Stripe
         /// refunded if uncaptured.
         /// </summary>
         [JsonProperty("capture_before")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("capture_before")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_before")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime CaptureBefore { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -64,7 +57,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("checks")]
 #endif
-
         public ChargePaymentMethodDetailsCardChecks Checks { get; set; }
 
         /// <summary>
@@ -75,7 +67,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
 #endif
-
         public string Country { get; set; }
 
         /// <summary>
@@ -86,7 +77,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
 #endif
-
         public string Description { get; set; }
 
         /// <summary>
@@ -96,7 +86,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_month")]
 #endif
-
         public long ExpMonth { get; set; }
 
         /// <summary>
@@ -106,14 +95,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_year")]
 #endif
-
         public long ExpYear { get; set; }
 
         [JsonProperty("extended_authorization")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("extended_authorization")]
 #endif
-
         public ChargePaymentMethodDetailsCardExtendedAuthorization ExtendedAuthorization { get; set; }
 
         /// <summary>
@@ -129,7 +116,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
 #endif
-
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -140,7 +126,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding")]
 #endif
-
         public string Funding { get; set; }
 
         /// <summary>
@@ -151,14 +136,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iin")]
 #endif
-
         public string Iin { get; set; }
 
         [JsonProperty("incremental_authorization")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("incremental_authorization")]
 #endif
-
         public ChargePaymentMethodDetailsCardIncrementalAuthorization IncrementalAuthorization { get; set; }
 
         /// <summary>
@@ -171,7 +154,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("installments")]
 #endif
-
         public ChargePaymentMethodDetailsCardInstallments Installments { get; set; }
 
         /// <summary>
@@ -182,7 +164,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-
         public string Issuer { get; set; }
 
         /// <summary>
@@ -192,7 +173,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
 #endif
-
         public string Last4 { get; set; }
 
         /// <summary>
@@ -202,7 +182,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate")]
 #endif
-
         public string Mandate { get; set; }
 
         /// <summary>
@@ -212,14 +191,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("moto")]
 #endif
-
         public bool? Moto { get; set; }
 
         [JsonProperty("multicapture")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("multicapture")]
 #endif
-
         public ChargePaymentMethodDetailsCardMulticapture Multicapture { get; set; }
 
         /// <summary>
@@ -232,7 +209,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
 #endif
-
         public string Network { get; set; }
 
         /// <summary>
@@ -243,14 +219,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_token")]
 #endif
-
         public ChargePaymentMethodDetailsCardNetworkToken NetworkToken { get; set; }
 
         [JsonProperty("overcapture")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("overcapture")]
 #endif
-
         public ChargePaymentMethodDetailsCardOvercapture Overcapture { get; set; }
 
         /// <summary>
@@ -260,7 +234,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("three_d_secure")]
 #endif
-
         public ChargePaymentMethodDetailsCardThreeDSecure ThreeDSecure { get; set; }
 
         /// <summary>
@@ -270,7 +243,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wallet")]
 #endif
-
         public ChargePaymentMethodDetailsCardWallet Wallet { get; set; }
     }
 }

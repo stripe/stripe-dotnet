@@ -16,7 +16,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fixed_amounts")]
 #endif
-
         public List<long?> FixedAmounts { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percentages")]
 #endif
-
         public List<long?> Percentages { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("smart_tip_threshold")]
 #endif
-
         public long? SmartTipThreshold { get; set; }
     }
 }

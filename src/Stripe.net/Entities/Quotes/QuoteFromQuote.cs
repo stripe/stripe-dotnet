@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_revision")]
 #endif
-
         public bool IsRevision { get; set; }
 
         #region Expandable Quote
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string QuoteId
         {
             get => this.InternalQuote?.Id;
@@ -46,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Quote Quote
         {
             get => this.InternalQuote?.ExpandedObject;
@@ -54,16 +51,12 @@ namespace Stripe
         }
 
         [JsonProperty("quote")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("quote")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Quote>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("quote")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Quote>))]
 #endif
-
         internal ExpandableField<Quote> InternalQuote { get; set; }
         #endregion
     }

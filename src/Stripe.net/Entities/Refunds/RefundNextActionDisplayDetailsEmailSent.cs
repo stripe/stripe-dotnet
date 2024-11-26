@@ -14,15 +14,11 @@ namespace Stripe
         /// The timestamp when the email was sent.
         /// </summary>
         [JsonProperty("email_sent_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("email_sent_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("email_sent_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime EmailSentAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -32,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email_sent_to")]
 #endif
-
         public string EmailSentTo { get; set; }
     }
 }

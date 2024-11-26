@@ -17,7 +17,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
 #endif
-
         public FinancialAccountFeaturesOptions Features { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -40,7 +38,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("platform_restrictions")]
 #endif
-
         public FinancialAccountPlatformRestrictionsOptions PlatformRestrictions { get; set; }
 
         /// <summary>
@@ -50,7 +47,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_currencies")]
 #endif
-
         public List<string> SupportedCurrencies { get; set; }
     }
 }

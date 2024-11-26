@@ -23,7 +23,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         #region Expandable Account
@@ -46,7 +44,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string AccountId
         {
             get => this.InternalAccount?.Id;
@@ -63,7 +60,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Account Account
         {
             get => this.InternalAccount?.ExpandedObject;
@@ -71,16 +67,12 @@ namespace Stripe
         }
 
         [JsonProperty("account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("account")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
-
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
@@ -88,7 +80,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("future_requirements")]
 #endif
-
         public CapabilityFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
@@ -98,29 +89,23 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requested")]
 #endif
-
         public bool Requested { get; set; }
 
         /// <summary>
         /// Time at which the capability was requested. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("requested_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("requested_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("requested_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? RequestedAt { get; set; }
 
         [JsonProperty("requirements")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requirements")]
 #endif
-
         public CapabilityRequirements Requirements { get; set; }
 
         /// <summary>
@@ -132,7 +117,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
     }
 }

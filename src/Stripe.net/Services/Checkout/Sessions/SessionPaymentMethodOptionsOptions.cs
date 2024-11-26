@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("acss_debit")]
 #endif
-
         public SessionPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("affirm")]
 #endif
-
         public SessionPaymentMethodOptionsAffirmOptions Affirm { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("afterpay_clearpay")]
 #endif
-
         public SessionPaymentMethodOptionsAfterpayClearpayOptions AfterpayClearpay { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alipay")]
 #endif
-
         public SessionPaymentMethodOptionsAlipayOptions Alipay { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amazon_pay")]
 #endif
-
         public SessionPaymentMethodOptionsAmazonPayOptions AmazonPay { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("au_becs_debit")]
 #endif
-
         public SessionPaymentMethodOptionsAuBecsDebitOptions AuBecsDebit { get; set; }
 
         /// <summary>
@@ -75,7 +69,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bacs_debit")]
 #endif
-
         public SessionPaymentMethodOptionsBacsDebitOptions BacsDebit { get; set; }
 
         /// <summary>
@@ -85,7 +78,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bancontact")]
 #endif
-
         public SessionPaymentMethodOptionsBancontactOptions Bancontact { get; set; }
 
         /// <summary>
@@ -95,7 +87,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("boleto")]
 #endif
-
         public SessionPaymentMethodOptionsBoletoOptions Boleto { get; set; }
 
         /// <summary>
@@ -105,7 +96,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
 #endif
-
         public SessionPaymentMethodOptionsCardOptions Card { get; set; }
 
         /// <summary>
@@ -115,7 +105,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cashapp")]
 #endif
-
         public SessionPaymentMethodOptionsCashappOptions Cashapp { get; set; }
 
         /// <summary>
@@ -125,7 +114,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_balance")]
 #endif
-
         public SessionPaymentMethodOptionsCustomerBalanceOptions CustomerBalance { get; set; }
 
         /// <summary>
@@ -135,7 +123,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eps")]
 #endif
-
         public SessionPaymentMethodOptionsEpsOptions Eps { get; set; }
 
         /// <summary>
@@ -145,7 +132,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fpx")]
 #endif
-
         public SessionPaymentMethodOptionsFpxOptions Fpx { get; set; }
 
         /// <summary>
@@ -155,7 +141,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("giropay")]
 #endif
-
         public SessionPaymentMethodOptionsGiropayOptions Giropay { get; set; }
 
         /// <summary>
@@ -165,7 +150,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("grabpay")]
 #endif
-
         public SessionPaymentMethodOptionsGrabpayOptions Grabpay { get; set; }
 
         /// <summary>
@@ -175,7 +159,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ideal")]
 #endif
-
         public SessionPaymentMethodOptionsIdealOptions Ideal { get; set; }
 
         /// <summary>
@@ -185,7 +168,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kakao_pay")]
 #endif
-
         public SessionPaymentMethodOptionsKakaoPayOptions KakaoPay { get; set; }
 
         /// <summary>
@@ -195,7 +177,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("klarna")]
 #endif
-
         public SessionPaymentMethodOptionsKlarnaOptions Klarna { get; set; }
 
         /// <summary>
@@ -205,7 +186,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("konbini")]
 #endif
-
         public SessionPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
 
         /// <summary>
@@ -215,7 +195,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kr_card")]
 #endif
-
         public SessionPaymentMethodOptionsKrCardOptions KrCard { get; set; }
 
         /// <summary>
@@ -225,7 +204,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("link")]
 #endif
-
         public SessionPaymentMethodOptionsLinkOptions Link { get; set; }
 
         /// <summary>
@@ -235,7 +213,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mobilepay")]
 #endif
-
         public SessionPaymentMethodOptionsMobilepayOptions Mobilepay { get; set; }
 
         /// <summary>
@@ -245,7 +222,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("multibanco")]
 #endif
-
         public SessionPaymentMethodOptionsMultibancoOptions Multibanco { get; set; }
 
         /// <summary>
@@ -255,7 +231,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("naver_pay")]
 #endif
-
         public SessionPaymentMethodOptionsNaverPayOptions NaverPay { get; set; }
 
         /// <summary>
@@ -265,7 +240,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("oxxo")]
 #endif
-
         public SessionPaymentMethodOptionsOxxoOptions Oxxo { get; set; }
 
         /// <summary>
@@ -275,7 +249,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("p24")]
 #endif
-
         public SessionPaymentMethodOptionsP24Options P24 { get; set; }
 
         /// <summary>
@@ -285,7 +258,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payco")]
 #endif
-
         public SessionPaymentMethodOptionsPaycoOptions Payco { get; set; }
 
         /// <summary>
@@ -295,7 +267,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paynow")]
 #endif
-
         public SessionPaymentMethodOptionsPaynowOptions Paynow { get; set; }
 
         /// <summary>
@@ -305,7 +276,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypal")]
 #endif
-
         public SessionPaymentMethodOptionsPaypalOptions Paypal { get; set; }
 
         /// <summary>
@@ -315,7 +285,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix")]
 #endif
-
         public SessionPaymentMethodOptionsPixOptions Pix { get; set; }
 
         /// <summary>
@@ -325,7 +294,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("revolut_pay")]
 #endif
-
         public SessionPaymentMethodOptionsRevolutPayOptions RevolutPay { get; set; }
 
         /// <summary>
@@ -335,7 +303,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("samsung_pay")]
 #endif
-
         public SessionPaymentMethodOptionsSamsungPayOptions SamsungPay { get; set; }
 
         /// <summary>
@@ -345,7 +312,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]
 #endif
-
         public SessionPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
@@ -355,7 +321,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sofort")]
 #endif
-
         public SessionPaymentMethodOptionsSofortOptions Sofort { get; set; }
 
         /// <summary>
@@ -365,7 +330,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("swish")]
 #endif
-
         public SessionPaymentMethodOptionsSwishOptions Swish { get; set; }
 
         /// <summary>
@@ -375,7 +339,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]
 #endif
-
         public SessionPaymentMethodOptionsUsBankAccountOptions UsBankAccount { get; set; }
 
         /// <summary>
@@ -385,7 +348,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wechat_pay")]
 #endif
-
         public SessionPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }
     }
 }

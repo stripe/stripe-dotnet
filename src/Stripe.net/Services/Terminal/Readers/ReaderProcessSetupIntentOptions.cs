@@ -18,7 +18,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allow_redisplay")]
 #endif
-
         public string AllowRedisplay { get; set; }
 
         /// <summary>
@@ -28,7 +27,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("process_config")]
 #endif
-
         public ReaderProcessConfigOptions ProcessConfig { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_intent")]
 #endif
-
         public string SetupIntent { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_rate")]
 #endif
-
         public string ShippingRate { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_rate_data")]
 #endif
-
         public SessionShippingOptionShippingRateDataOptions ShippingRateData { get; set; }
     }
 }

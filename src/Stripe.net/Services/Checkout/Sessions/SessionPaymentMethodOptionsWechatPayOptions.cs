@@ -15,7 +15,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("app_id")]
 #endif
-
         public string AppId { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client")]
 #endif
-
         public string Client { get; set; }
 
         /// <summary>
@@ -53,7 +51,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
-
         public string SetupFutureUsage { get; set; }
     }
 }

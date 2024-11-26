@@ -19,7 +19,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allowed_types")]
 #endif
-
         public List<string> AllowedTypes { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("require_id_number")]
 #endif
-
         public bool? RequireIdNumber { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("require_live_capture")]
 #endif
-
         public bool? RequireLiveCapture { get; set; }
 
         /// <summary>
@@ -55,7 +52,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("require_matching_selfie")]
 #endif
-
         public bool? RequireMatchingSelfie { get; set; }
     }
 }

@@ -21,7 +21,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         /// <summary>
@@ -34,7 +33,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("location")]
 #endif
-
         public string Location { get; set; }
 
         /// <summary>
@@ -44,7 +42,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("secret")]
 #endif
-
         public string Secret { get; set; }
     }
 }

@@ -17,7 +17,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("developer_message_summary")]
 #endif
-
         public string DeveloperMessageSummary { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
 #endif
-
         public V1BillingMeterErrorReportTriggeredEventDataReason Reason { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("validation_end")]
 #endif
-
         public DateTime ValidationEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("validation_start")]
 #endif
-
         public DateTime ValidationStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

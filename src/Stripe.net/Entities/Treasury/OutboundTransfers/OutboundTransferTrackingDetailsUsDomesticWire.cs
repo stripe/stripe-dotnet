@@ -16,7 +16,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("chips")]
 #endif
-
         public string Chips { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("imad")]
 #endif
-
         public string Imad { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("omad")]
 #endif
-
         public string Omad { get; set; }
     }
 }

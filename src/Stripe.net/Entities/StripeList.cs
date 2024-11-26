@@ -3,14 +3,15 @@ namespace Stripe
     using System.Collections;
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    using Stripe.Infrastructure;
-
     [JsonObject]
-    [NoSystemTextJsonAttributesNeeded("JsonObject is implied by System.Text.Json")]
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJEnumerableObjectConverter))]
+#endif
     public class StripeList<T> : StripeEntity<StripeList<T>>, IHasObject, IEnumerable<T>
     {
         /// <summary>

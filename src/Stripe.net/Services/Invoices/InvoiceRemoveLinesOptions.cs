@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_metadata")]
 #endif
-
         public Dictionary<string, string> InvoiceMetadata { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lines")]
 #endif
-
         public List<InvoiceLineOptions> Lines { get; set; }
     }
 }

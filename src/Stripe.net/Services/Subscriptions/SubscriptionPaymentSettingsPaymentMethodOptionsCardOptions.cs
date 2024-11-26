@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
 #endif
-
         public SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
 #endif
-
         public string Network { get; set; }
 
         /// <summary>
@@ -47,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_three_d_secure")]
 #endif
-
         public string RequestThreeDSecure { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alert_type")]
 #endif
-
         public string AlertType { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("meter")]
 #endif
-
         public string Meter { get; set; }
     }
 }

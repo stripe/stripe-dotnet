@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("familymart")]
 #endif
-
         public PaymentIntentNextActionKonbiniDisplayDetailsStoresFamilymart Familymart { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lawson")]
 #endif
-
         public PaymentIntentNextActionKonbiniDisplayDetailsStoresLawson Lawson { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ministop")]
 #endif
-
         public PaymentIntentNextActionKonbiniDisplayDetailsStoresMinistop Ministop { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("seicomart")]
 #endif
-
         public PaymentIntentNextActionKonbiniDisplayDetailsStoresSeicomart Seicomart { get; set; }
     }
 }

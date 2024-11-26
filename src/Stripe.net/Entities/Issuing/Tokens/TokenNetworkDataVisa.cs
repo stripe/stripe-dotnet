@@ -15,7 +15,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_reference_id")]
 #endif
-
         public string CardReferenceId { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("token_reference_id")]
 #endif
-
         public string TokenReferenceId { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("token_requestor_id")]
 #endif
-
         public string TokenRequestorId { get; set; }
 
         /// <summary>
@@ -47,7 +44,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("token_risk_score")]
 #endif
-
         public string TokenRiskScore { get; set; }
     }
 }

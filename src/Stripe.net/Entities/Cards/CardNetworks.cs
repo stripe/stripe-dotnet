@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferred")]
 #endif
-
         public string Preferred { get; set; }
     }
 }

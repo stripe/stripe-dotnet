@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hosted_instructions_url")]
 #endif
-
         public string HostedInstructionsUrl { get; set; }
 
         /// <summary>
@@ -27,14 +26,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mobile_auth_url")]
 #endif
-
         public string MobileAuthUrl { get; set; }
 
         [JsonProperty("qr_code")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qr_code")]
 #endif
-
         public PaymentIntentNextActionSwishHandleRedirectOrDisplayQrCodeQrCode QrCode { get; set; }
     }
 }

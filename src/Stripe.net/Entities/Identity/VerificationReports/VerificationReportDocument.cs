@@ -16,7 +16,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public Address Address { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob")]
 #endif
-
         public VerificationReportDocumentDob Dob { get; set; }
 
         /// <summary>
@@ -36,7 +34,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("error")]
 #endif
-
         public VerificationReportDocumentError Error { get; set; }
 
         /// <summary>
@@ -46,7 +43,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expiration_date")]
 #endif
-
         public VerificationReportDocumentExpirationDate ExpirationDate { get; set; }
 
         /// <summary>
@@ -57,7 +53,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("files")]
 #endif
-
         public List<string> Files { get; set; }
 
         /// <summary>
@@ -67,7 +62,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("first_name")]
 #endif
-
         public string FirstName { get; set; }
 
         /// <summary>
@@ -77,7 +71,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issued_date")]
 #endif
-
         public VerificationReportDocumentIssuedDate IssuedDate { get; set; }
 
         /// <summary>
@@ -87,7 +80,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_country")]
 #endif
-
         public string IssuingCountry { get; set; }
 
         /// <summary>
@@ -97,7 +89,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_name")]
 #endif
-
         public string LastName { get; set; }
 
         /// <summary>
@@ -107,7 +98,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("number")]
 #endif
-
         public string Number { get; set; }
 
         /// <summary>
@@ -118,7 +108,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -129,7 +118,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

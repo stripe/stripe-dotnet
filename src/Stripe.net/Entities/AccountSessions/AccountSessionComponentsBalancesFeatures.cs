@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disable_stripe_user_authentication")]
 #endif
-
         public bool DisableStripeUserAuthentication { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("edit_payout_schedule")]
 #endif
-
         public bool EditPayoutSchedule { get; set; }
 
         /// <summary>
@@ -44,7 +42,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_account_collection")]
 #endif
-
         public bool ExternalAccountCollection { get; set; }
 
         /// <summary>
@@ -55,7 +52,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("instant_payouts")]
 #endif
-
         public bool InstantPayouts { get; set; }
 
         /// <summary>
@@ -66,7 +62,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("standard_payouts")]
 #endif
-
         public bool StandardPayouts { get; set; }
     }
 }

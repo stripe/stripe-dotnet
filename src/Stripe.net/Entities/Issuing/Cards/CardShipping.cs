@@ -14,7 +14,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
 #endif
-
         public Address Address { get; set; }
 
         /// <summary>
@@ -24,7 +23,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address_validation")]
 #endif
-
         public CardShippingAddressValidation AddressValidation { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("carrier")]
 #endif
-
         public string Carrier { get; set; }
 
         /// <summary>
@@ -45,22 +42,17 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customs")]
 #endif
-
         public CardShippingCustoms Customs { get; set; }
 
         /// <summary>
         /// A unix timestamp representing a best estimate of when the card will be delivered.
         /// </summary>
         [JsonProperty("eta")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("eta")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("eta")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? Eta { get; set; }
 
         /// <summary>
@@ -70,7 +62,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
 
         /// <summary>
@@ -83,7 +74,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone_number")]
 #endif
-
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -96,7 +86,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("require_signature")]
 #endif
-
         public bool? RequireSignature { get; set; }
 
         /// <summary>
@@ -107,7 +96,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service")]
 #endif
-
         public string Service { get; set; }
 
         /// <summary>
@@ -119,7 +107,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -129,7 +116,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tracking_number")]
 #endif
-
         public string TrackingNumber { get; set; }
 
         /// <summary>
@@ -140,7 +126,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tracking_url")]
 #endif
-
         public string TrackingUrl { get; set; }
 
         /// <summary>
@@ -151,7 +136,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

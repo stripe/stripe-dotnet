@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_item_ids")]
 #endif
-
         public List<string> LineItemIds { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage_gte")]
 #endif
-
         public long UsageGte { get; set; }
     }
 }

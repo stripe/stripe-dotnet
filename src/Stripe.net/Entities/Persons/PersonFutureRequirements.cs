@@ -17,7 +17,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alternatives")]
 #endif
-
         public List<PersonFutureRequirementsAlternative> Alternatives { get; set; }
 
         /// <summary>
@@ -31,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currently_due")]
 #endif
-
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
@@ -42,7 +40,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("errors")]
 #endif
-
         public List<PersonFutureRequirementsError> Errors { get; set; }
 
         /// <summary>
@@ -54,7 +51,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eventually_due")]
 #endif
-
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
@@ -67,7 +63,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("past_due")]
 #endif
-
         public List<string> PastDue { get; set; }
 
         /// <summary>
@@ -82,7 +77,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pending_verification")]
 #endif
-
         public List<string> PendingVerification { get; set; }
     }
 }

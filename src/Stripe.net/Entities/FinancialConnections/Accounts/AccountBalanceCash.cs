@@ -25,7 +25,6 @@ namespace Stripe.FinancialConnections
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available")]
 #endif
-
         public Dictionary<string, long> Available { get; set; }
     }
 }

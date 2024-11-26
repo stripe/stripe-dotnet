@@ -32,7 +32,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
-
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -42,7 +41,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tos_shown_and_accepted")]
 #endif
-
         public bool? TosShownAndAccepted { get; set; }
     }
 }

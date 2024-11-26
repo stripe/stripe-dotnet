@@ -15,7 +15,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_dispute")]
 #endif
-
         public string IssuingDispute { get; set; }
     }
 }

@@ -14,30 +14,22 @@ namespace Stripe.Treasury
         /// Timestamp describing when the Transaction changed status to <c>posted</c>.
         /// </summary>
         [JsonProperty("posted_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("posted_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("posted_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? PostedAt { get; set; }
 
         /// <summary>
         /// Timestamp describing when the Transaction changed status to <c>void</c>.
         /// </summary>
         [JsonProperty("void_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("void_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("void_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? VoidAt { get; set; }
     }
 }

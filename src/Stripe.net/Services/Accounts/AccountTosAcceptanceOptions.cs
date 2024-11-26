@@ -15,15 +15,11 @@ namespace Stripe
         /// agreement.
         /// </summary>
         [JsonProperty("date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("date")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? Date { get; set; }
 
         /// <summary>
@@ -33,7 +29,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip")]
 #endif
-
         public string Ip { get; set; }
 
         /// <summary>
@@ -43,7 +38,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("service_agreement")]
 #endif
-
         public string ServiceAgreement { get; set; }
 
         /// <summary>
@@ -54,7 +48,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("user_agent")]
 #endif
-
         public string UserAgent { get; set; }
     }
 }

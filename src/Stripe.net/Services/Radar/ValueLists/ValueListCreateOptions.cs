@@ -16,7 +16,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alias")]
 #endif
-
         public string Alias { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("item_type")]
 #endif
-
         public string ItemType { get; set; }
 
         /// <summary>
@@ -46,7 +44,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -56,7 +53,6 @@ namespace Stripe.Radar
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
 #endif
-
         public string Name { get; set; }
     }
 }

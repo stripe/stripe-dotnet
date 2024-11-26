@@ -16,7 +16,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_hour")]
 #endif
-
         public long? EndHour { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("start_hour")]
 #endif
-
         public long? StartHour { get; set; }
     }
 }

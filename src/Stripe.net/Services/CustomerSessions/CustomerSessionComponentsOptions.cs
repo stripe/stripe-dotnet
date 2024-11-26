@@ -15,7 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("buy_button")]
 #endif
-
         public CustomerSessionComponentsBuyButtonOptions BuyButton { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_element")]
 #endif
-
         public CustomerSessionComponentsPaymentElementOptions PaymentElement { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_table")]
 #endif
-
         public CustomerSessionComponentsPricingTableOptions PricingTable { get; set; }
     }
 }

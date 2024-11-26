@@ -17,7 +17,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("adjustable_quantity")]
 #endif
-
         public SessionLineItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
 
         /// <summary>
@@ -29,7 +28,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dynamic_tax_rates")]
 #endif
-
         public List<string> DynamicTaxRates { get; set; }
 
         /// <summary>
@@ -41,7 +39,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
 #endif
-
         public string Price { get; set; }
 
         /// <summary>
@@ -52,7 +49,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
 #endif
-
         public SessionLineItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -63,7 +59,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -74,7 +69,6 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
 #endif
-
         public List<string> TaxRates { get; set; }
     }
 }

@@ -16,7 +16,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_issuing")]
 #endif
-
         public FinancialAccountFeaturesCardIssuingOptions CardIssuing { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deposit_insurance")]
 #endif
-
         public FinancialAccountFeaturesDepositInsuranceOptions DepositInsurance { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_addresses")]
 #endif
-
         public FinancialAccountFeaturesFinancialAddressesOptions FinancialAddresses { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inbound_transfers")]
 #endif
-
         public FinancialAccountFeaturesInboundTransfersOptions InboundTransfers { get; set; }
 
         /// <summary>
@@ -59,7 +55,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("intra_stripe_flows")]
 #endif
-
         public FinancialAccountFeaturesIntraStripeFlowsOptions IntraStripeFlows { get; set; }
 
         /// <summary>
@@ -70,7 +65,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_payments")]
 #endif
-
         public FinancialAccountFeaturesOutboundPaymentsOptions OutboundPayments { get; set; }
 
         /// <summary>
@@ -81,7 +75,6 @@ namespace Stripe.Treasury
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_transfers")]
 #endif
-
         public FinancialAccountFeaturesOutboundTransfersOptions OutboundTransfers { get; set; }
     }
 }

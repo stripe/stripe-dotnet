@@ -16,7 +16,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("additional_documentation")]
 #endif
-
         public string AdditionalDocumentation { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_statement")]
 #endif
-
         public string CardStatement { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cash_receipt")]
 #endif
-
         public string CashReceipt { get; set; }
 
         /// <summary>
@@ -49,7 +46,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("check_image")]
 #endif
-
         public string CheckImage { get; set; }
 
         /// <summary>
@@ -59,7 +55,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("explanation")]
 #endif
-
         public string Explanation { get; set; }
 
         /// <summary>
@@ -70,7 +65,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("original_transaction")]
 #endif
-
         public string OriginalTransaction { get; set; }
     }
 }

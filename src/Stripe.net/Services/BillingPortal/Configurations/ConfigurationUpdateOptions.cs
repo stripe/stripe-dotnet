@@ -16,7 +16,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
 #endif
-
         public bool? Active { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_profile")]
 #endif
-
         public ConfigurationBusinessProfileOptions BusinessProfile { get; set; }
 
         /// <summary>
@@ -39,7 +37,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_return_url")]
 #endif
-
         public string DefaultReturnUrl { get; set; }
 
         /// <summary>
@@ -49,7 +46,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
 #endif
-
         public ConfigurationFeaturesOptions Features { get; set; }
 
         /// <summary>
@@ -62,7 +58,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("login_page")]
 #endif
-
         public ConfigurationLoginPageOptions LoginPage { get; set; }
 
         /// <summary>
@@ -75,7 +70,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
 #endif
-
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

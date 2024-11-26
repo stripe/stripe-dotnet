@@ -12,14 +12,12 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("apple_pay")]
 #endif
-
         public SetupAttemptPaymentMethodDetailsCardWalletApplePay ApplePay { get; set; }
 
         [JsonProperty("google_pay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("google_pay")]
 #endif
-
         public SetupAttemptPaymentMethodDetailsCardWalletGooglePay GooglePay { get; set; }
 
         /// <summary>
@@ -32,7 +30,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
-
         public string Type { get; set; }
     }
 }

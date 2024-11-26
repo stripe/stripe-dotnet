@@ -15,14 +15,12 @@ namespace Stripe.Checkout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
 #endif
-
         public bool Enabled { get; set; }
 
         [JsonProperty("invoice_data")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_data")]
 #endif
-
         public SessionInvoiceCreationInvoiceData InvoiceData { get; set; }
     }
 }

@@ -15,7 +15,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aud")]
 #endif
-
         public ConfigurationTippingAudOptions Aud { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cad")]
 #endif
-
         public ConfigurationTippingCadOptions Cad { get; set; }
 
         /// <summary>
@@ -35,7 +33,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("chf")]
 #endif
-
         public ConfigurationTippingChfOptions Chf { get; set; }
 
         /// <summary>
@@ -45,7 +42,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("czk")]
 #endif
-
         public ConfigurationTippingCzkOptions Czk { get; set; }
 
         /// <summary>
@@ -55,7 +51,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dkk")]
 #endif
-
         public ConfigurationTippingDkkOptions Dkk { get; set; }
 
         /// <summary>
@@ -65,7 +60,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eur")]
 #endif
-
         public ConfigurationTippingEurOptions Eur { get; set; }
 
         /// <summary>
@@ -75,7 +69,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gbp")]
 #endif
-
         public ConfigurationTippingGbpOptions Gbp { get; set; }
 
         /// <summary>
@@ -85,7 +78,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hkd")]
 #endif
-
         public ConfigurationTippingHkdOptions Hkd { get; set; }
 
         /// <summary>
@@ -95,7 +87,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("myr")]
 #endif
-
         public ConfigurationTippingMyrOptions Myr { get; set; }
 
         /// <summary>
@@ -105,7 +96,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nok")]
 #endif
-
         public ConfigurationTippingNokOptions Nok { get; set; }
 
         /// <summary>
@@ -115,7 +105,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nzd")]
 #endif
-
         public ConfigurationTippingNzdOptions Nzd { get; set; }
 
         /// <summary>
@@ -125,7 +114,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pln")]
 #endif
-
         public ConfigurationTippingPlnOptions Pln { get; set; }
 
         /// <summary>
@@ -135,7 +123,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sek")]
 #endif
-
         public ConfigurationTippingSekOptions Sek { get; set; }
 
         /// <summary>
@@ -145,7 +132,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sgd")]
 #endif
-
         public ConfigurationTippingSgdOptions Sgd { get; set; }
 
         /// <summary>
@@ -155,7 +141,6 @@ namespace Stripe.Terminal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usd")]
 #endif
-
         public ConfigurationTippingUsdOptions Usd { get; set; }
     }
 }

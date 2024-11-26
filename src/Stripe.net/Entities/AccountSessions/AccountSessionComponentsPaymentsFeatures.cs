@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_payments")]
 #endif
-
         public bool CapturePayments { get; set; }
 
         /// <summary>
@@ -27,7 +26,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("destination_on_behalf_of_charge_management")]
 #endif
-
         public bool DestinationOnBehalfOfChargeManagement { get; set; }
 
         /// <summary>
@@ -38,7 +36,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dispute_management")]
 #endif
-
         public bool DisputeManagement { get; set; }
 
         /// <summary>
@@ -48,7 +45,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_management")]
 #endif
-
         public bool RefundManagement { get; set; }
     }
 }

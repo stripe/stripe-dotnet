@@ -19,7 +19,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_percent")]
 #endif
-
         public decimal? AmountPercent { get; set; }
 
         #region Expandable Destination
@@ -32,7 +31,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string DestinationId
         {
             get => this.InternalDestination?.Id;
@@ -49,7 +47,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Account Destination
         {
             get => this.InternalDestination?.ExpandedObject;
@@ -57,16 +54,12 @@ namespace Stripe
         }
 
         [JsonProperty("destination")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("destination")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("destination")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
-
         internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion
     }

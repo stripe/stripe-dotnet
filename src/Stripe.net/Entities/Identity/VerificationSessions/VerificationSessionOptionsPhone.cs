@@ -15,7 +15,6 @@ namespace Stripe.Identity
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("require_verification")]
 #endif
-
         public bool RequireVerification { get; set; }
     }
 }

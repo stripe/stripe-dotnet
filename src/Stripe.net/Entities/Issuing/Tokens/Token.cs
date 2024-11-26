@@ -23,7 +23,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
 #endif
-
         public string Id { get; set; }
 
         /// <summary>
@@ -33,7 +32,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
 #endif
-
         public string Object { get; set; }
 
         #region Expandable Card
@@ -46,7 +44,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public string CardId
         {
             get => this.InternalCard?.Id;
@@ -63,7 +60,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
 #endif
-
         public Card Card
         {
             get => this.InternalCard?.ExpandedObject;
@@ -71,16 +67,12 @@ namespace Stripe.Issuing
         }
 
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("card")]
-        [STJS.JsonInclude]
-#endif
-
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonInclude]
+        [STJS.JsonPropertyName("card")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
 #endif
-
         internal ExpandableField<Card> InternalCard { get; set; }
         #endregion
 
@@ -88,15 +80,11 @@ namespace Stripe.Issuing
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -107,7 +95,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("device_fingerprint")]
 #endif
-
         public string DeviceFingerprint { get; set; }
 
         /// <summary>
@@ -117,7 +104,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
 #endif
-
         public string Last4 { get; set; }
 
         /// <summary>
@@ -128,7 +114,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
-
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -139,14 +124,12 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
 #endif
-
         public string Network { get; set; }
 
         [JsonProperty("network_data")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_data")]
 #endif
-
         public TokenNetworkData NetworkData { get; set; }
 
         /// <summary>
@@ -154,15 +137,11 @@ namespace Stripe.Issuing
         /// the Unix epoch.
         /// </summary>
         [JsonProperty("network_updated_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("network_updated_at")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_updated_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime NetworkUpdatedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -173,7 +152,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
-
         public string Status { get; set; }
 
         /// <summary>
@@ -184,7 +162,6 @@ namespace Stripe.Issuing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("wallet_provider")]
 #endif
-
         public string WalletProvider { get; set; }
     }
 }

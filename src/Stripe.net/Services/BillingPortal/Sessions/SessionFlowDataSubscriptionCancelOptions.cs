@@ -15,7 +15,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("retention")]
 #endif
-
         public SessionFlowDataSubscriptionCancelRetentionOptions Retention { get; set; }
 
         /// <summary>
@@ -25,7 +24,6 @@ namespace Stripe.BillingPortal
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
 #endif
-
         public string Subscription { get; set; }
     }
 }

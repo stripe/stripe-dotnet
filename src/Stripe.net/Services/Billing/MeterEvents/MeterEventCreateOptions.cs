@@ -18,7 +18,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_name")]
 #endif
-
         public string EventName { get; set; }
 
         /// <summary>
@@ -30,7 +29,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("identifier")]
 #endif
-
         public string Identifier { get; set; }
 
         /// <summary>
@@ -44,7 +42,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payload")]
 #endif
-
         public Dictionary<string, string> Payload { get; set; }
 
         /// <summary>
@@ -53,15 +50,11 @@ namespace Stripe.Billing
         /// specified.
         /// </summary>
         [JsonProperty("timestamp")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("timestamp")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? Timestamp { get; set; }
     }
 }

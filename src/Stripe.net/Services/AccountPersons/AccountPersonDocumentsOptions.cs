@@ -16,7 +16,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company_authorization")]
 #endif
-
         public AccountPersonDocumentsCompanyAuthorizationOptions CompanyAuthorization { get; set; }
 
         /// <summary>
@@ -26,7 +25,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("passport")]
 #endif
-
         public AccountPersonDocumentsPassportOptions Passport { get; set; }
 
         /// <summary>
@@ -37,7 +35,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("visa")]
 #endif
-
         public AccountPersonDocumentsVisaOptions Visa { get; set; }
     }
 }

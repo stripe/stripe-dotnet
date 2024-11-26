@@ -15,30 +15,22 @@ namespace Stripe
         /// included.
         /// </summary>
         [JsonProperty("end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("end")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("end")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? End { get; set; }
 
         /// <summary>
         /// The start date of this usage period. All usage after this point in time is included.
         /// </summary>
         [JsonProperty("start")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("start")]
-#endif
-
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("start")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-
         public DateTime? Start { get; set; }
     }
 }
