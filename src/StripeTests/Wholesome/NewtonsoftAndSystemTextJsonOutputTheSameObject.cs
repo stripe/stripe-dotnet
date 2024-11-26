@@ -2,6 +2,7 @@
 namespace StripeTests.Wholesome
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
@@ -20,6 +21,8 @@ namespace StripeTests.Wholesome
     /// System.Text.Json serialize equivalent objects.  Equivalent objects have the same
     /// keys and data formats, but not necessarily in the same order when converted to
     /// string.
+    ///
+    /// Note that this is a very slow test, as it takes a lot of time to generate the test data.
     /// </summary>
     public class NewtonsoftAndSystemTextJsonOutputTheSameObject : WholesomeTest
     {
@@ -204,6 +207,34 @@ namespace StripeTests.Wholesome
             {
                 // TODO: what should we do here?
                 return null;
+            }
+            else if (typeof(IList).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
+            {
+                var propValue = (IList)Activator.CreateInstance(type);
+                this.PopulateWithReasonableDefaults(propValue, seen, expandedObjectCache);
+                if (type.GenericTypeArguments.Length > 0)
+                {
+                    // Add some elements to the list
+                    var objectType = type.GenericTypeArguments[0];
+                    var value = this.GetPopulatedObject(objectType, seen, expandedObjectCache);
+                    if (value != null)
+                    {
+                        propValue.Add(value);
+                        value = this.GetPopulatedObject(objectType, seen, expandedObjectCache);
+                        if (value != null)
+                        {
+                            propValue.Add(value);
+                        }
+                    }
+                }
+
+                return propValue;
+            }
+            else if (typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
+            {
+                var propValue = Activator.CreateInstance(type);
+                this.PopulateWithReasonableDefaults(propValue, seen, expandedObjectCache);
+                return propValue;
             }
             else if (type.IsClass)
             {

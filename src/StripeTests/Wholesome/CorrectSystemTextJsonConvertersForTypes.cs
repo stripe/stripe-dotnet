@@ -34,11 +34,6 @@ namespace StripeTests.Wholesome
 
             foreach (var stripeClass in stripeClasses)
             {
-                if (stripeClass.Name.Contains("InvoiceDiscountAmount"))
-                {
-                    Debugger.Break();
-                }
-
                 foreach (var property in GetPropertiesToCheck(stripeClass))
                 {
                     var propType = property.PropertyType;

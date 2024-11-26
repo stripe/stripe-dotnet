@@ -10,6 +10,7 @@ namespace Stripe
     using Stripe.Infrastructure;
 
 #if NET6_0_OR_GREATER
+    using STJ = System.Text.Json;
     using STJS = System.Text.Json.Serialization;
 #endif
 

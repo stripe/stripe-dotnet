@@ -131,6 +131,25 @@ namespace StripeTests.Wholesome
         }
 
         /// <summary>
+        /// Returns the list of interfaces that extend the provided interface.
+        /// </summary>
+        /// <param name="parent">The parent interface.</param>
+        /// <returns>The list of interfaces that extend the provided interface.</returns>
+        protected static List<Type> GetSubinterfacesOf(Type parent)
+        {
+            if (parent.IsInterface)
+            {
+                return new List<Type>();
+            }
+
+            var assembly = parent.GetTypeInfo().Assembly;
+            return assembly.DefinedTypes
+                .Where(t => t.IsInterface && parent.IsAssignableFrom(t))
+                .Select(t => t.AsType())
+                .ToList();
+        }
+
+        /// <summary>
         /// Returns the list of classes that implement the provided interface.
         /// </summary>
         /// <param name="implementedInterface">The implemented interface.</param>

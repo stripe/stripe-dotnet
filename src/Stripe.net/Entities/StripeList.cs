@@ -28,7 +28,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("data", ItemConverterType = typeof(StripeObjectConverter))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("data")] // ItemConverterType is not necessary; STJ determines the conversion from the underlying data type.
+        [STJS.JsonPropertyName("data")] // STJ determines the conversion from annotations on the inner type
 #endif
         public List<T> Data { get; set; }
 
