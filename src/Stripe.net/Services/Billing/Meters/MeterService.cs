@@ -34,7 +34,7 @@ namespace Stripe.Billing
             this.Requestor);
 
         /// <summary>
-        /// <p>Creates a billing meter</p>.
+        /// <p>Creates a billing meter.</p>.
         /// </summary>
         public virtual Meter Create(MeterCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -42,7 +42,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Creates a billing meter</p>.
+        /// <p>Creates a billing meter.</p>.
         /// </summary>
         public virtual Task<Meter> CreateAsync(MeterCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -50,7 +50,8 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Deactivates a billing meter</p>.
+        /// <p>When a meter is deactivated, no more meter events will be accepted for this meter.
+        /// You can’t attach a deactivated meter to a price.</p>.
         /// </summary>
         public virtual Meter Deactivate(string id, MeterDeactivateOptions options = null, RequestOptions requestOptions = null)
         {
@@ -58,7 +59,8 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Deactivates a billing meter</p>.
+        /// <p>When a meter is deactivated, no more meter events will be accepted for this meter.
+        /// You can’t attach a deactivated meter to a price.</p>.
         /// </summary>
         public virtual Task<Meter> DeactivateAsync(string id, MeterDeactivateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -66,7 +68,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves a billing meter given an ID</p>.
+        /// <p>Retrieves a billing meter given an ID.</p>.
         /// </summary>
         public virtual Meter Get(string id, MeterGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -74,7 +76,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves a billing meter given an ID</p>.
+        /// <p>Retrieves a billing meter given an ID.</p>.
         /// </summary>
         public virtual Task<Meter> GetAsync(string id, MeterGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -114,7 +116,8 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Reactivates a billing meter</p>.
+        /// <p>When a meter is reactivated, events for this meter can be accepted and you can attach
+        /// the meter to a price.</p>.
         /// </summary>
         public virtual Meter Reactivate(string id, MeterReactivateOptions options = null, RequestOptions requestOptions = null)
         {
@@ -122,7 +125,8 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Reactivates a billing meter</p>.
+        /// <p>When a meter is reactivated, events for this meter can be accepted and you can attach
+        /// the meter to a price.</p>.
         /// </summary>
         public virtual Task<Meter> ReactivateAsync(string id, MeterReactivateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -130,7 +134,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Updates a billing meter</p>.
+        /// <p>Updates a billing meter.</p>.
         /// </summary>
         public virtual Meter Update(string id, MeterUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -138,7 +142,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Updates a billing meter</p>.
+        /// <p>Updates a billing meter.</p>.
         /// </summary>
         public virtual Task<Meter> UpdateAsync(string id, MeterUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

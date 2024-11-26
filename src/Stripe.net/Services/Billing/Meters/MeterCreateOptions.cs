@@ -18,7 +18,7 @@ namespace Stripe.Billing
         public MeterDefaultAggregationOptions DefaultAggregation { get; set; }
 
         /// <summary>
-        /// The meter's name.
+        /// The meter’s name. Not visible to the customer.
         /// </summary>
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }
