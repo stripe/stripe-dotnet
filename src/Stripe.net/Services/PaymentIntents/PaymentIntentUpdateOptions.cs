@@ -114,7 +114,9 @@ namespace Stripe
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The ID of the payment method configuration to use with this PaymentIntent.
+        /// The ID of the <a
+        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// configuration</a> to use with this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
 #if NET6_0_OR_GREATER

@@ -42,8 +42,8 @@ namespace Stripe
         /// Selected network to process this payment intent on. Depends on the available networks of
         /// the card attached to the payment intent. Can be only set confirm-time.
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
-        /// <c>eftpos_au</c>, <c>girocard</c>, <c>interac</c>, <c>jcb</c>, <c>mastercard</c>,
-        /// <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
+        /// <c>eftpos_au</c>, <c>girocard</c>, <c>interac</c>, <c>jcb</c>, <c>link</c>,
+        /// <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("network")]
 #if NET6_0_OR_GREATER

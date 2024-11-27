@@ -13,8 +13,9 @@ namespace Stripe.Issuing
     /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is
     /// <a href="https://stripe.com/docs/issuing">issued</a> cards.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to
-    /// create a cardholder</a>.
+    /// Related guide: <a
+    /// href="https://stripe.com/docs/issuing/cards/virtual/issue-cards#create-cardholder">How
+    /// to create a cardholder</a>.
     /// </summary>
     public class Cardholder : StripeEntity<Cardholder>, IHasId, IHasMetadata, IHasObject
     {

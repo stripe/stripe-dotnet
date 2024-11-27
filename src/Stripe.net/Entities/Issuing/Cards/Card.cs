@@ -10,8 +10,8 @@ namespace Stripe.Issuing
 #endif
 
     /// <summary>
-    /// You can <a href="https://stripe.com/docs/issuing/cards">create physical or virtual
-    /// cards</a> that are issued to cardholders.
+    /// You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a>
+    /// that are issued to cardholders.
     /// </summary>
     public class Card : StripeEntity<Card>, IHasId, IHasMetadata, IHasObject
     {
@@ -56,8 +56,9 @@ namespace Stripe.Issuing
         /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is
         /// <a href="https://stripe.com/docs/issuing">issued</a> cards.
         ///
-        /// Related guide: <a href="https://stripe.com/docs/issuing/cards#create-cardholder">How to
-        /// create a cardholder</a>.
+        /// Related guide: <a
+        /// href="https://stripe.com/docs/issuing/cards/virtual/issue-cards#create-cardholder">How
+        /// to create a cardholder</a>.
         /// </summary>
         [JsonProperty("cardholder")]
 #if NET6_0_OR_GREATER

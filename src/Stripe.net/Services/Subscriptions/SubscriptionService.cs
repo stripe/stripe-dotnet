@@ -287,7 +287,7 @@ namespace Stripe
         /// <p>In these cases, we apply a credit for the unused time on the previous price,
         /// immediately charge the customer using the new price, and reset the billing date. Learn
         /// about how <a
-        /// href="https://stripe.com/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe
+        /// href="https://stripe.com/docs/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe
         /// immediately attempts payment for subscription changes</a>.</p>.
         ///
         /// <p>If you want to charge for an upgrade immediately, pass <c>proration_behavior</c> as
@@ -342,7 +342,7 @@ namespace Stripe
         /// <p>In these cases, we apply a credit for the unused time on the previous price,
         /// immediately charge the customer using the new price, and reset the billing date. Learn
         /// about how <a
-        /// href="https://stripe.com/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe
+        /// href="https://stripe.com/docs/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe
         /// immediately attempts payment for subscription changes</a>.</p>.
         ///
         /// <p>If you want to charge for an upgrade immediately, pass <c>proration_behavior</c> as

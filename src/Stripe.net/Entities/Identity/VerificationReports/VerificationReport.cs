@@ -139,7 +139,7 @@ namespace Stripe.Identity
         public string Type { get; set; }
 
         /// <summary>
-        /// The configuration token of a Verification Flow from the dashboard.
+        /// The configuration token of a verification flow from the dashboard.
         /// </summary>
         [JsonProperty("verification_flow")]
 #if NET6_0_OR_GREATER
