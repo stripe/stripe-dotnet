@@ -91,8 +91,8 @@ namespace Stripe.Issuing
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         /// <summary>
-        /// You can <a href="https://stripe.com/docs/issuing/cards">create physical or virtual
-        /// cards</a> that are issued to cardholders.
+        /// You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a>
+        /// that are issued to cardholders.
         /// </summary>
         [JsonProperty("card")]
 #if NET6_0_OR_GREATER
@@ -174,6 +174,13 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("fleet")]
 #endif
         public AuthorizationFleet Fleet { get; set; }
+
+        /// <summary>
+        /// Fraud challenges sent to the cardholder, if this authorization was declined for fraud
+        /// risk reasons.
+        /// </summary>
+        [JsonProperty("fraud_challenges")]
+        public List<AuthorizationFraudChallenge> FraudChallenges { get; set; }
 
         /// <summary>
         /// Information about fuel that was purchased with this transaction. Typically this
@@ -354,6 +361,14 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("verification_data")]
 #endif
         public AuthorizationVerificationData VerificationData { get; set; }
+
+        /// <summary>
+        /// Whether the authorization bypassed fraud risk checks because the cardholder has
+        /// previously completed a fraud challenge on a similar high-risk authorization from the
+        /// same merchant.
+        /// </summary>
+        [JsonProperty("verified_by_fraud_challenge")]
+        public bool? VerifiedByFraudChallenge { get; set; }
 
         /// <summary>
         /// The digital wallet used for this transaction. One of <c>apple_pay</c>,

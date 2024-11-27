@@ -8,6 +8,9 @@ namespace Stripe.Checkout
 
     public class SessionPaymentMethodOptionsBacsDebit : StripeEntity<SessionPaymentMethodOptionsBacsDebit>
     {
+        [JsonProperty("mandate_options")]
+        public SessionPaymentMethodOptionsBacsDebitMandateOptions MandateOptions { get; set; }
+
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.

@@ -15,7 +15,7 @@ namespace Stripe.Billing
     ///
     /// Related guide: <a
     /// href="https://docs.stripe.com/billing/subscriptions/usage-based/billing-credits">Billing
-    /// credits</a> end.
+    /// credits</a>.
     /// </summary>
     public class CreditGrant : StripeEntity<CreditGrant>, IHasId, IHasMetadata, IHasObject
     {
@@ -50,8 +50,8 @@ namespace Stripe.Billing
         public CreditGrantApplicabilityConfig ApplicabilityConfig { get; set; }
 
         /// <summary>
-        /// The category of this credit grant. This is for tracking purposes and will not be
-        /// displayed to the customer.
+        /// The category of this credit grant. This is for tracking purposes and isn't displayed to
+        /// the customer.
         /// One of: <c>paid</c>, or <c>promotional</c>.
         /// </summary>
         [JsonProperty("category")]
@@ -75,7 +75,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (ID of the Customer)
-        /// ID of the customer to whom the billing credits are granted.
+        /// ID of the customer receiving the billing credits.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -89,7 +89,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// (Expanded)
-        /// ID of the customer to whom the billing credits are granted.
+        /// ID of the customer receiving the billing credits.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -114,8 +114,7 @@ namespace Stripe.Billing
         #endregion
 
         /// <summary>
-        /// The time when the billing credits become effective i.e when they are eligible to be
-        /// used.
+        /// The time when the billing credits become effective—when they're eligible for use.
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -126,8 +125,8 @@ namespace Stripe.Billing
         public DateTime? EffectiveAt { get; set; }
 
         /// <summary>
-        /// The time when the billing credits will expire. If not present, the billing credits will
-        /// never expire.
+        /// The time when the billing credits expire. If not present, the billing credits don't
+        /// expire.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

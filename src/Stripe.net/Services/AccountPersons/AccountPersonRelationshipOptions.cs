@@ -9,6 +9,13 @@ namespace Stripe
     public class AccountPersonRelationshipOptions : INestedOptions
     {
         /// <summary>
+        /// A filter on the list of people returned based on whether these people are authorizers of
+        /// the account's representative.
+        /// </summary>
+        [JsonProperty("authorizer")]
+        public bool? Authorizer { get; set; }
+
+        /// <summary>
         /// Whether the person is a director of the account's legal entity. Directors are typically
         /// members of the governing board of the company, or responsible for ensuring the company
         /// meets its regulatory obligations.

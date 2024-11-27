@@ -92,6 +92,23 @@ namespace Stripe.TestHelpers.Issuing
         public bool? IsAmountControllable { get; set; }
 
         /// <summary>
+        /// The total amount to attempt to authorize. This amount is in the provided merchant
+        /// currency, and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// currency unit</a>.
+        /// </summary>
+        [JsonProperty("merchant_amount")]
+        public long? MerchantAmount { get; set; }
+
+        /// <summary>
+        /// The currency of the authorization. If not provided, defaults to the currency of the
+        /// card. Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO
+        /// currency code</a>, in lowercase. Must be a <a
+        /// href="https://stripe.com/docs/currencies">supported currency</a>.
+        /// </summary>
+        [JsonProperty("merchant_currency")]
+        public string MerchantCurrency { get; set; }
+
+        /// <summary>
         /// Details about the seller (grocery store, e-commerce website, etc.) where the card
         /// authorization happened.
         /// </summary>

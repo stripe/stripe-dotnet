@@ -198,6 +198,17 @@ namespace Stripe
         public PaymentLinkShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
 
         /// <summary>
+        /// Describes the type of transaction being performed in order to customize relevant text on
+        /// the page, such as the submit button. Changing this value will also affect the hostname
+        /// in the <a
+        /// href="https://stripe.com/docs/api/payment_links/payment_links/object#url">url</a>
+        /// property (example: <c>donate.stripe.com</c>).
+        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
+        /// </summary>
+        [JsonProperty("submit_type")]
+        public string SubmitType { get; set; }
+
+        /// <summary>
         /// When creating a subscription, the specified configuration data will be used. There must
         /// be at least one line item with a recurring price to use <c>subscription_data</c>.
         /// </summary>

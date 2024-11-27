@@ -11,8 +11,7 @@ namespace Stripe
     {
         /// <summary>
         /// An array of two-letter ISO country codes representing which countries Checkout should
-        /// provide as options for shipping locations. Unsupported country codes: <c>AS, CX, CC, CU,
-        /// HM, IR, KP, MH, FM, NF, MP, PW, SD, SY, UM, VI</c>.
+        /// provide as options for shipping locations.
         /// One of: <c>AC</c>, <c>AD</c>, <c>AE</c>, <c>AF</c>, <c>AG</c>, <c>AI</c>, <c>AL</c>,
         /// <c>AM</c>, <c>AO</c>, <c>AQ</c>, <c>AR</c>, <c>AT</c>, <c>AU</c>, <c>AW</c>, <c>AX</c>,
         /// <c>AZ</c>, <c>BA</c>, <c>BB</c>, <c>BD</c>, <c>BE</c>, <c>BF</c>, <c>BG</c>, <c>BH</c>,

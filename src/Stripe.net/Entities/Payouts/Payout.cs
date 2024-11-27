@@ -476,6 +476,13 @@ namespace Stripe
         public string Status { get; set; }
 
         /// <summary>
+        /// A value that generates from the beneficiary's bank that allows users to track payouts
+        /// with their bank. Banks might call this a "reference number" or something similar.
+        /// </summary>
+        [JsonProperty("trace_id")]
+        public PayoutTraceId TraceId { get; set; }
+
+        /// <summary>
         /// Can be <c>bank_account</c> or <c>card</c>.
         /// One of: <c>bank_account</c>, or <c>card</c>.
         /// </summary>

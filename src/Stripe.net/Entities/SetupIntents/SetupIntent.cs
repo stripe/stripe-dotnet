@@ -455,7 +455,9 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Information about the payment method configuration used for this Setup Intent.
+        /// Information about the <a
+        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// configuration</a> used for this Setup Intent.
         /// </summary>
         [JsonProperty("payment_method_configuration_details")]
 #if NET6_0_OR_GREATER

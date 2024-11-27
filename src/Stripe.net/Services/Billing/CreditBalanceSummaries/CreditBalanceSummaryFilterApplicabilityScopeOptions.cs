@@ -9,7 +9,7 @@ namespace Stripe.Billing
     public class CreditBalanceSummaryFilterApplicabilityScopeOptions : INestedOptions
     {
         /// <summary>
-        /// The price type to which credit grants can apply to. We currently only support
+        /// The price type for which credit grants can apply. We currently only support the
         /// <c>metered</c> price type.
         /// </summary>
         [JsonProperty("price_type")]
