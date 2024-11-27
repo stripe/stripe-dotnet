@@ -9,7 +9,6 @@ namespace StripeTests
     using System.Threading.Tasks;
 
     using Stripe;
-    using Stripe.Infrastructure;
     using Xunit;
 
     public class FileServiceTest : BaseStripeTest
@@ -60,7 +59,6 @@ namespace StripeTests
         {
             var requestOptions = new RequestOptions();
 
-            JsonUtils.SerializeObject(this.createOptions.File);
             var file = this.service.Create(this.createOptions, requestOptions);
             this.AssertRequest(HttpMethod.Post, "/v1/files", host: "files.stripe.com");
             Assert.NotNull(file);
