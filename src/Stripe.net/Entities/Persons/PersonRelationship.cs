@@ -12,6 +12,9 @@ namespace Stripe
         /// Whether the person is the authorizer of the account's representative.
         /// </summary>
         [JsonProperty("authorizer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("authorizer")]
+#endif
         public bool? Authorizer { get; set; }
 
         /// <summary>

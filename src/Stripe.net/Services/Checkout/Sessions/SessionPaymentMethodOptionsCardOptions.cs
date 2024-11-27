@@ -23,6 +23,9 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_extended_authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_extended_authorization")]
+#endif
         public string RequestExtendedAuthorization { get; set; }
 
         /// <summary>
@@ -32,6 +35,9 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_incremental_authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_incremental_authorization")]
+#endif
         public string RequestIncrementalAuthorization { get; set; }
 
         /// <summary>
@@ -40,6 +46,9 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_multicapture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_multicapture")]
+#endif
         public string RequestMulticapture { get; set; }
 
         /// <summary>
@@ -48,6 +57,9 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_overcapture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_overcapture")]
+#endif
         public string RequestOvercapture { get; set; }
 
         /// <summary>

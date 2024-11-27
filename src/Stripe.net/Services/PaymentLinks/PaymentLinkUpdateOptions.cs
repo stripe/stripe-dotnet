@@ -206,6 +206,9 @@ namespace Stripe
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("submit_type")]
+#endif
         public string SubmitType { get; set; }
 
         /// <summary>

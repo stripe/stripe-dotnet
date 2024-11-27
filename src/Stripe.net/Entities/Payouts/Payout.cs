@@ -480,6 +480,9 @@ namespace Stripe
         /// with their bank. Banks might call this a "reference number" or something similar.
         /// </summary>
         [JsonProperty("trace_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trace_id")]
+#endif
         public PayoutTraceId TraceId { get; set; }
 
         /// <summary>

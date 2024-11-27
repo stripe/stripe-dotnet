@@ -180,6 +180,9 @@ namespace Stripe.Issuing
         /// risk reasons.
         /// </summary>
         [JsonProperty("fraud_challenges")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fraud_challenges")]
+#endif
         public List<AuthorizationFraudChallenge> FraudChallenges { get; set; }
 
         /// <summary>
@@ -368,6 +371,9 @@ namespace Stripe.Issuing
         /// same merchant.
         /// </summary>
         [JsonProperty("verified_by_fraud_challenge")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("verified_by_fraud_challenge")]
+#endif
         public bool? VerifiedByFraudChallenge { get; set; }
 
         /// <summary>

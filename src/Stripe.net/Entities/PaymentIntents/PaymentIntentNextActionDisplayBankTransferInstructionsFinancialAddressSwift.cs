@@ -9,12 +9,18 @@ namespace Stripe
     public class PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressSwift : StripeEntity<PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressSwift>
     {
         [JsonProperty("account_holder_address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_holder_address")]
+#endif
         public Address AccountHolderAddress { get; set; }
 
         /// <summary>
         /// The account holder name.
         /// </summary>
         [JsonProperty("account_holder_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_holder_name")]
+#endif
         public string AccountHolderName { get; set; }
 
         /// <summary>
@@ -30,9 +36,15 @@ namespace Stripe
         /// The account type.
         /// </summary>
         [JsonProperty("account_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_type")]
+#endif
         public string AccountType { get; set; }
 
         [JsonProperty("bank_address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank_address")]
+#endif
         public Address BankAddress { get; set; }
 
         /// <summary>

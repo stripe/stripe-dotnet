@@ -9,6 +9,9 @@ namespace Stripe.Checkout
     public class SessionPaymentMethodOptionsBacsDebit : StripeEntity<SessionPaymentMethodOptionsBacsDebit>
     {
         [JsonProperty("mandate_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_options")]
+#endif
         public SessionPaymentMethodOptionsBacsDebitMandateOptions MandateOptions { get; set; }
 
         /// <summary>

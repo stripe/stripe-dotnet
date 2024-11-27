@@ -13,6 +13,9 @@ namespace Stripe
         /// indicates the reason the refund failed.
         /// </summary>
         [JsonProperty("network_decline_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_decline_code")]
+#endif
         public string NetworkDeclineCode { get; set; }
 
         /// <summary>

@@ -16,6 +16,9 @@ namespace Stripe.Checkout
         /// href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>.
         /// </summary>
         [JsonProperty("adaptive_pricing")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("adaptive_pricing")]
+#endif
         public SessionAdaptivePricingOptions AdaptivePricing { get; set; }
 
         /// <summary>

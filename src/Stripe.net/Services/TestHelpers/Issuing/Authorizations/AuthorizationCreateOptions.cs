@@ -97,6 +97,9 @@ namespace Stripe.TestHelpers.Issuing
         /// currency unit</a>.
         /// </summary>
         [JsonProperty("merchant_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("merchant_amount")]
+#endif
         public long? MerchantAmount { get; set; }
 
         /// <summary>
@@ -106,6 +109,9 @@ namespace Stripe.TestHelpers.Issuing
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("merchant_currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("merchant_currency")]
+#endif
         public string MerchantCurrency { get; set; }
 
         /// <summary>
