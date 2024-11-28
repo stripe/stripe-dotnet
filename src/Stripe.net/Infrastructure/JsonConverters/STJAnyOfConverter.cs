@@ -26,7 +26,6 @@ namespace Stripe.Infrastructure
                 return null;
             }
 
-            TestProfiler.Enter("STJAnyOfConverter");
             object o = null;
 
             // Try to deserialize with each possible type
@@ -53,7 +52,6 @@ namespace Stripe.Infrastructure
                     string.Join(", ", typeToConvert.GenericTypeArguments.Select(t => t.FullName))));
             }
 
-            TestProfiler.Exit("STJAnyOfConverter");
             return Activator.CreateInstance(typeToConvert, o);
         }
 

@@ -69,7 +69,6 @@ namespace Stripe.Infrastructure
             /// <param name="options">The calling serializer's options.</param>
             public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
             {
-                TestProfiler.Enter("STJEnumerableObjectConverter");
                 var allProperties = GetPropertiesForType(value.GetType());
                 writer.WriteStartObject();
                 foreach (var property in allProperties)
@@ -93,7 +92,6 @@ namespace Stripe.Infrastructure
                 }
 
                 writer.WriteEndObject();
-                TestProfiler.Exit("STJEnumerableObjectConverter");
             }
         }
     }

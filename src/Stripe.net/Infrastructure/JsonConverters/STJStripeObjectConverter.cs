@@ -50,7 +50,6 @@ namespace Stripe.Infrastructure
         /// <param name="options">The calling serializer's options.</param>
         public override void Write(Utf8JsonWriter writer, object value, JsonSerializerOptions options)
         {
-            TestProfiler.Enter("STJStripeObjectConverter");
             if (value == null)
             {
                 writer.WriteNullValue();
@@ -59,8 +58,6 @@ namespace Stripe.Infrastructure
             {
                 writer.WriteRawValue(JsonSerializer.Serialize(value, options));
             }
-
-            TestProfiler.Exit("STJStripeObjectConverter");
         }
 
         /// <summary>
