@@ -66,44 +66,21 @@ namespace StripeTests.Wholesome
 
             // technically, this means "is included" which is true for public properties or
             // if we find the JsonInclude attribute
-            var hasIncludeAttribute = false;
             foreach (var attribute in toSearch)
             {
                 if (attribute.GetType() == expectedEquivalentType)
                 {
                     hasCorrectEquivalentAttribute = true;
-                }
-
-                // this is required to deserialize non-public properties; in Newtonsoft, this
-                // was handled by a class level JsonObject(MemberSerialization.OptIn) attribute
-                // which told Json.NET to serialize any property that has a JsonProperty attribute
-                if (jsonAttribute.GetType() == typeof(JsonPropertyAttribute))
-                {
-                    if (!isNotPublic || attribute.GetType() == typeof(STJS.JsonIncludeAttribute))
-                    {
-                        hasIncludeAttribute = true;
-                    }
-                }
-                else
-                {
-                    // We don't check for anything other than JsonProperty json attributes
-                    hasIncludeAttribute = true;
-                }
-
-                if (hasCorrectEquivalentAttribute && hasIncludeAttribute)
-                {
                     break;
                 }
             }
 
-            var hasCorrectAttributes = hasCorrectEquivalentAttribute && hasIncludeAttribute;
-
-            if (!hasCorrectAttributes && breakOnIncorrectAttributes)
+            if (!hasCorrectEquivalentAttribute && breakOnIncorrectAttributes)
             {
                 Debugger.Break();
             }
 
-            return hasCorrectAttributes;
+            return hasCorrectEquivalentAttribute;
         }
 
         public static Tuple<string, string> HasCorrectConverterType(Type type, MemberInfo attributeTarget)
