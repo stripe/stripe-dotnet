@@ -17,7 +17,6 @@ namespace Stripe
         [JsonConverter(typeof(StripeObjectConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-        [STJS.JsonConverter(typeof(STJStripeObjectConverter))]
 #endif
         public IHasObject Object { get; set; }
 

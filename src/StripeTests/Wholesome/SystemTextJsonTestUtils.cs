@@ -73,6 +73,18 @@ namespace StripeTests.Wholesome
                     hasCorrectEquivalentAttribute = true;
                     break;
                 }
+
+                // This is weird special case; we add STJObjectConverter
+                // as class attributes on the interfaces and so they wont
+                // be on the propoperties.
+                if (attribute is JsonConverterAttribute converterAttribute)
+                {
+                    if (converterAttribute.ConverterType == typeof(StripeObjectConverter))
+                    {
+                        hasCorrectEquivalentAttribute = true;
+                        break;
+                    }
+                }
             }
 
             if (!hasCorrectEquivalentAttribute && breakOnIncorrectAttributes)
@@ -127,7 +139,7 @@ namespace StripeTests.Wholesome
                     throw new Exception($"Unsupported attribute target {attributeTarget.Name}");
                 }
             }
-            else if (type.GetTypeInfo().IsInterface)
+            else if (type.GetTypeInfo().IsInterface && classTarget != null)
             {
                 expectedConverterType = typeof(STJStripeObjectConverter);
             }

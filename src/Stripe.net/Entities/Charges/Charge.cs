@@ -715,7 +715,6 @@ namespace Stripe
         [JsonConverter(typeof(StripeObjectConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source")]
-        [STJS.JsonConverter(typeof(STJStripeObjectConverter))]
 #endif
         public IPaymentSource Source { get; set; }
 

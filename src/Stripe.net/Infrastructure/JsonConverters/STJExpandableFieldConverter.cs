@@ -45,7 +45,7 @@ namespace Stripe.Infrastructure
     /// </summary>
     /// <typeparam name="T">Type of the field when expanded.</typeparam>
 #pragma warning disable SA1402 // File may only contain a single type
-    public class STJExpandableFieldConverter<T> : JsonConverter<IExpandableField>
+    public class STJExpandableFieldConverter<T> : JsonConverter<ExpandableField<T>>
 #pragma warning restore SA1402 // File may only contain a single type
         where T : IHasId
     {
@@ -58,7 +58,7 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The calling serializer's options.</param>
         /// <returns>The object value.</returns>
-        public override IExpandableField Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override ExpandableField<T> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             var value = new ExpandableField<T>();
 
@@ -101,7 +101,7 @@ namespace Stripe.Infrastructure
         /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="options">The calling serializer's options.</param>
-        public override void Write(Utf8JsonWriter writer, IExpandableField value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, ExpandableField<T> value, JsonSerializerOptions options)
         {
             switch (value)
             {
@@ -109,7 +109,7 @@ namespace Stripe.Infrastructure
                     writer.WriteNullValue();
                     break;
 
-                case IExpandableField expandableField:
+                case IExpandableField<T> expandableField:
                     if (expandableField.IsExpanded)
                     {
                         JsonSerializer.Serialize(writer, expandableField.ExpandedObject, options);

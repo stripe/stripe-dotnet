@@ -163,6 +163,13 @@ namespace StripeTests.Wholesome
                 .ToList();
         }
 
+        /// <summary>
+        /// Gets all public and non public instance properties declared in the type.
+        ///
+        /// This does not get properties from any super types.
+        /// </summary>
+        /// <param name="type">The type to get properties from.</param>
+        /// <returns>Properties to check.</returns>
         internal static IEnumerable<ExtendedPropertyInfo> GetPropertiesToCheck(Type type)
         {
             // Gets the nonpublic properties (private, internal, protected, etc)

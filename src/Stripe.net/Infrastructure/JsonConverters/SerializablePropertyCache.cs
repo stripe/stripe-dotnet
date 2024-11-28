@@ -21,7 +21,7 @@ namespace Stripe.Infrastructure
             if (!propertyCache.TryGetValue(type, out var propsToSerialize))
             {
                 // Gets the all properties including nonpublic properties
-                var rawProps = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+                var rawProps = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
                 propsToSerialize = new List<SerializablePropertyInfo>();
                 foreach (var prop in rawProps)
@@ -106,6 +106,9 @@ namespace Stripe.Infrastructure
                     var customConverter = default(JsonConverter<object>);
                     if (this.CustomConverterType != null)
                     {
+                        // this assumes any property-level JsonConverter attribute
+                        // specifies a JsonConverter<> type and not a JsonConverterFactory
+                        // type
                         var baseType = this.CustomConverterType.BaseType;
                         var cvtGenericMethod = getConverterForTypeMethod.MakeGenericMethod(baseType, baseType.GenericTypeArguments[0]);
                         customConverter = (JsonConverter<object>)cvtGenericMethod.Invoke(null, new object[] { this.CustomConverterType });
