@@ -42,7 +42,6 @@ namespace Stripe
         [JsonProperty("discount")]
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("discount")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Discount>))]
 #endif

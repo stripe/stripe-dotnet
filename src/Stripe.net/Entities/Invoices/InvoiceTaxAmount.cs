@@ -64,7 +64,6 @@ namespace Stripe
         [JsonProperty("tax_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxRate>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("tax_rate")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TaxRate>))]
 #endif

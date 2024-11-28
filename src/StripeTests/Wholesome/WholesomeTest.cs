@@ -166,8 +166,8 @@ namespace StripeTests.Wholesome
         internal static IEnumerable<ExtendedPropertyInfo> GetPropertiesToCheck(Type type)
         {
             // Gets the nonpublic properties (private, internal, protected, etc)
-            var nonpublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
-            var allProperties = type.GetProperties().Concat(nonpublicProperties);
+            var nonpublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            var allProperties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
 
             return allProperties.Select(p => new ExtendedPropertyInfo(p, nonpublicProperties.Contains(p)));
         }
