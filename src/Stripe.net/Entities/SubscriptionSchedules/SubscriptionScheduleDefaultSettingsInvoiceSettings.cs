@@ -9,6 +9,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SubscriptionScheduleDefaultSettingsInvoiceSettings : StripeEntity<SubscriptionScheduleDefaultSettingsInvoiceSettings>
     {
         #region Expandable AccountTaxIds
@@ -47,7 +50,6 @@ namespace Stripe
 
         [JsonProperty("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("account_tax_ids")]
 #endif
         internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }

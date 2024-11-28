@@ -20,6 +20,9 @@ namespace Stripe
     /// href="https://stripe.com/payment-links/buy-button#pass-an-existing-customer">Customer
     /// Session with the Buy Button</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CustomerSession : StripeEntity<CustomerSession>, IHasObject
     {
         /// <summary>
@@ -100,7 +103,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif

@@ -15,6 +15,9 @@ namespace Stripe
     ///
     /// Related guide: <a href="https://stripe.com/docs/refunds">Refunds</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Refund : StripeEntity<Refund>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -79,7 +82,6 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -121,7 +123,6 @@ namespace Stripe
         [JsonProperty("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif
@@ -203,7 +204,6 @@ namespace Stripe
         [JsonProperty("failure_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("failure_balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -284,7 +284,6 @@ namespace Stripe
         [JsonProperty("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif
@@ -350,7 +349,6 @@ namespace Stripe
         [JsonProperty("source_transfer_reversal")]
         [JsonConverter(typeof(ExpandableFieldConverter<TransferReversal>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("source_transfer_reversal")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TransferReversal>))]
 #endif
@@ -405,7 +403,6 @@ namespace Stripe
         [JsonProperty("transfer_reversal")]
         [JsonConverter(typeof(ExpandableFieldConverter<TransferReversal>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("transfer_reversal")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TransferReversal>))]
 #endif

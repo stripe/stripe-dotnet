@@ -1,7 +1,9 @@
 #if NET6_0_OR_GREATER
 namespace StripeTests
 {
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using Stripe;
@@ -94,6 +96,38 @@ namespace StripeTests
         }
 
         [Fact]
+        public void SerializeListOfExpanded()
+        {
+            var nested = new TestNestedObject
+            {
+                Id = "id_expanded",
+                Bar = 42,
+            };
+            var obj = new TestTopLevelObjectWithList
+            {
+                InternalNestedList = new List<ExpandableField<TestNestedObject>>()
+                {
+                    new ExpandableField<TestNestedObject>
+                    {
+                        Id = nested.Id,
+                        ExpandedObject = nested,
+                    },
+                },
+            };
+
+            var expected =
+                "{\"nested_list\":[{\"id\":\"id_expanded\",\"bar\":42}]}";
+            var actual = JsonSerializer.Serialize(obj);
+            Assert.Equal(expected, actual);
+
+            var indentedExpected =
+                "{\n  \"nested_list\": [\n    {\n      \"id\": \"id_expanded\",\n      \"bar\": 42\n    }\n  ]\n}";
+            var options = new JsonSerializerOptions { WriteIndented = true };
+            var indentedActual = JsonSerializer.Serialize(obj, options);
+            Assert.Equal(indentedExpected, indentedActual);
+        }
+
+        [Fact]
         public void SerializeNull()
         {
             var obj = new TestTopLevelObject
@@ -124,6 +158,7 @@ namespace StripeTests
             public int Bar { get; set; }
         }
 
+        [JsonConverter(typeof(STJMemberSerializationOptIn))]
         private class TestTopLevelObject : StripeEntity<TestTopLevelObject>
         {
             [JsonIgnore]
@@ -133,9 +168,29 @@ namespace StripeTests
             public TestNestedObject Nested => this.InternalNested.ExpandedObject;
 
             [JsonPropertyName("nested")]
-            [JsonInclude]
             [JsonConverter(typeof(STJExpandableFieldConverter<TestNestedObject>))]
             internal ExpandableField<TestNestedObject> InternalNested { get; set; }
+        }
+
+        [JsonConverter(typeof(STJMemberSerializationOptIn))]
+        private class TestTopLevelObjectWithList : StripeEntity<TestTopLevelObjectWithList>
+        {
+            [JsonIgnore]
+            public List<string> NestedListIds
+            {
+                get => this.InternalNestedList?.Select((x) => x.Id).ToList();
+                set => this.InternalNestedList = SetExpandableArrayIds<TestNestedObject>(value);
+            }
+
+            [JsonIgnore]
+            public List<TestNestedObject> NestedList
+            {
+                get => this.InternalNestedList?.Select((x) => x.ExpandedObject).ToList();
+                set => this.InternalNestedList = SetExpandableArrayObjects(value);
+            }
+
+            [JsonPropertyName("nested_list")]
+            internal List<ExpandableField<TestNestedObject>> InternalNestedList { get; set; }
         }
     }
 }

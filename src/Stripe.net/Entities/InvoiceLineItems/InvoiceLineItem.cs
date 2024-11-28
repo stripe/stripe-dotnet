@@ -18,6 +18,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/api/invoiceitems">invoice item</a> or a <a
     /// href="https://stripe.com/docs/api/subscription_items">subscription item</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class InvoiceLineItem : StripeEntity<InvoiceLineItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -131,7 +134,6 @@ namespace Stripe
 
         [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("discounts")]
 #endif
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
@@ -183,7 +185,6 @@ namespace Stripe
         [JsonProperty("invoice_item")]
         [JsonConverter(typeof(ExpandableFieldConverter<InvoiceItem>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("invoice_item")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<InvoiceItem>))]
 #endif
@@ -310,7 +311,6 @@ namespace Stripe
         [JsonProperty("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("subscription")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
 #endif
@@ -354,7 +354,6 @@ namespace Stripe
         [JsonProperty("subscription_item")]
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionItem>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("subscription_item")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SubscriptionItem>))]
 #endif

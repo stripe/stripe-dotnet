@@ -20,6 +20,9 @@ namespace Stripe.Treasury
     /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">Moving
     /// money with Treasury using InboundTransfer objects</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class InboundTransfer : StripeEntity<InboundTransfer>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -238,7 +241,6 @@ namespace Stripe.Treasury
         [JsonProperty("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
 #endif

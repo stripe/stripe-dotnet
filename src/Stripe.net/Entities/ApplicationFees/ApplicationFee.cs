@@ -8,6 +8,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ApplicationFee : StripeEntity<ApplicationFee>, IHasId, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -63,7 +66,6 @@ namespace Stripe
         [JsonProperty("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("account")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
@@ -124,7 +126,6 @@ namespace Stripe
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif
@@ -168,7 +169,6 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -210,7 +210,6 @@ namespace Stripe
         [JsonProperty("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif
@@ -296,7 +295,6 @@ namespace Stripe
         [JsonProperty("originating_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("originating_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif

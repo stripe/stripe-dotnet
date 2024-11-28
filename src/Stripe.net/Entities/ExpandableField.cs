@@ -9,7 +9,7 @@ namespace Stripe
     /// <summary>Represents a generic expandable field.</summary>
     /// <typeparam name="T">Type of the field when expanded.</typeparam>
 #if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IHasId>))]
+    [STJS.JsonConverter(typeof(STJExpandableFieldConverterFactory))]
 #endif
     public class ExpandableField<T> : IExpandableField<T>
         where T : IHasId

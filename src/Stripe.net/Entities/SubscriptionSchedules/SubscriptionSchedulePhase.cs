@@ -9,6 +9,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SubscriptionSchedulePhase : StripeEntity<SubscriptionSchedulePhase>, IHasMetadata
     {
         /// <summary>
@@ -111,7 +114,6 @@ namespace Stripe
         [JsonProperty("coupon")]
         [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("coupon")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Coupon>))]
 #endif
@@ -168,7 +170,6 @@ namespace Stripe
         [JsonProperty("default_payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("default_payment_method")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
 #endif
@@ -286,7 +287,6 @@ namespace Stripe
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("on_behalf_of")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif

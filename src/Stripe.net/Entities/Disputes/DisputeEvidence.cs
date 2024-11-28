@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class DisputeEvidence : StripeEntity<DisputeEvidence>
     {
         /// <summary>
@@ -66,7 +69,6 @@ namespace Stripe
         [JsonProperty("cancellation_policy")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("cancellation_policy")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -133,7 +135,6 @@ namespace Stripe
         [JsonProperty("customer_communication")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer_communication")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -204,7 +205,6 @@ namespace Stripe
         [JsonProperty("customer_signature")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer_signature")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -252,7 +252,6 @@ namespace Stripe
         [JsonProperty("duplicate_charge_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("duplicate_charge_documentation")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -331,7 +330,6 @@ namespace Stripe
         [JsonProperty("receipt")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("receipt")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -375,7 +373,6 @@ namespace Stripe
         [JsonProperty("refund_policy")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("refund_policy")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -450,7 +447,6 @@ namespace Stripe
         [JsonProperty("service_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("service_documentation")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -528,7 +524,6 @@ namespace Stripe
         [JsonProperty("shipping_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("shipping_documentation")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -583,7 +578,6 @@ namespace Stripe
         [JsonProperty("uncategorized_file")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("uncategorized_file")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif

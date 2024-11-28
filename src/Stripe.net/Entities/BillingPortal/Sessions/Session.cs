@@ -23,6 +23,9 @@ namespace Stripe.BillingPortal
     ///
     /// Related guide: <a href="https://stripe.com/customer-management">Customer management</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Session : StripeEntity<Session>, IHasId, IHasObject
     {
         /// <summary>
@@ -78,7 +81,6 @@ namespace Stripe.BillingPortal
         [JsonProperty("configuration")]
         [JsonConverter(typeof(ExpandableFieldConverter<Configuration>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("configuration")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Configuration>))]
 #endif

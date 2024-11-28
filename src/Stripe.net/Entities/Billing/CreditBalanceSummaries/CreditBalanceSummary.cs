@@ -11,6 +11,9 @@ namespace Stripe.Billing
     /// <summary>
     /// Indicates the billing credit balance for billing credits granted to a customer.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CreditBalanceSummary : StripeEntity<CreditBalanceSummary>, IHasObject
     {
         /// <summary>
@@ -67,7 +70,6 @@ namespace Stripe.Billing
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif

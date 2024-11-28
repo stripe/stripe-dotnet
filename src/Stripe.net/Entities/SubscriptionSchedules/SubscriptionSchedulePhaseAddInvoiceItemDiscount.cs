@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SubscriptionSchedulePhaseAddInvoiceItemDiscount : StripeEntity<SubscriptionSchedulePhaseAddInvoiceItemDiscount>
     {
         #region Expandable Coupon
@@ -44,7 +47,6 @@ namespace Stripe
         [JsonProperty("coupon")]
         [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("coupon")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Coupon>))]
 #endif
@@ -86,7 +88,6 @@ namespace Stripe
         [JsonProperty("discount")]
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("discount")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Discount>))]
 #endif
@@ -128,7 +129,6 @@ namespace Stripe
         [JsonProperty("promotion_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("promotion_code")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PromotionCode>))]
 #endif

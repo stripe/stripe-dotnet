@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ChargePaymentMethodDetailsSofort : StripeEntity<ChargePaymentMethodDetailsSofort>
     {
         /// <summary>
@@ -80,7 +83,6 @@ namespace Stripe
         [JsonProperty("generated_sepa_debit")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("generated_sepa_debit")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
 #endif
@@ -122,7 +124,6 @@ namespace Stripe
         [JsonProperty("generated_sepa_debit_mandate")]
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("generated_sepa_debit_mandate")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Mandate>))]
 #endif

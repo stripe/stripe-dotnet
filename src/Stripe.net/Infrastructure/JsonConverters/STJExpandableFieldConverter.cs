@@ -7,10 +7,46 @@ namespace Stripe.Infrastructure
     using System.Text.Json.Serialization;
 
     /// <summary>
+    /// A JsonConverterFactory for use with generic IExpandableField implementations
+    /// to ensure we return a correctly typed custom converter.
+    /// </summary>
+#pragma warning disable SA1649 // File name should match first type name
+    public class STJExpandableFieldConverterFactory : JsonConverterFactory
+#pragma warning restore SA1649 // File name should match first type name
+    {
+        public override bool CanConvert(Type typeToConvert)
+        {
+            return typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(typeToConvert.GetTypeInfo());
+        }
+
+        public override JsonConverter CreateConverter(
+            Type type,
+            JsonSerializerOptions options)
+        {
+            Type[] typeArguments = type.GetGenericArguments();
+            Type fieldType = typeArguments[0];
+
+#pragma warning disable SA1009 // Closing parenthesis should be spaced correctly
+            JsonConverter converter = (JsonConverter)Activator.CreateInstance(
+                typeof(STJExpandableFieldConverter<>).MakeGenericType(
+                    fieldType),
+                BindingFlags.Instance | BindingFlags.Public,
+                binder: null,
+                args: null,
+                culture: null)!;
+#pragma warning restore SA1009 // Closing parenthesis should be spaced correctly
+
+            return converter;
+        }
+    }
+
+    /// <summary>
     /// Converts a <see cref="ExpandableField{T}"/> to and from JSON.
     /// </summary>
     /// <typeparam name="T">Type of the field when expanded.</typeparam>
+#pragma warning disable SA1402 // File may only contain a single type
     public class STJExpandableFieldConverter<T> : JsonConverter<IExpandableField>
+#pragma warning restore SA1402 // File may only contain a single type
         where T : IHasId
     {
         public override bool HandleNull => true;
@@ -39,7 +75,7 @@ namespace Stripe.Infrastructure
                 case JsonTokenType.StartObject:
                     var elem = JsonElement.ParseValue(ref reader);
 
-                    value.ExpandedObject = JsonSerializer.Deserialize<T>(elem.GetRawText(), options);
+                    value.ExpandedObject = (T)JsonSerializer.Deserialize(elem.GetRawText(), typeToConvert.GenericTypeArguments[0], options);
 
                     // If we failed to deserialize the expanded object (e.g. because of an unknown
                     // type), make a last ditch attempt at getting the ID.
@@ -74,10 +110,15 @@ namespace Stripe.Infrastructure
                     break;
 
                 case IExpandableField expandableField:
-                    var valueToSerialize = expandableField.IsExpanded
-                        ? expandableField.ExpandedObject
-                        : expandableField.Id;
-                    JsonSerializer.Serialize(writer, valueToSerialize, options);
+                    if (expandableField.IsExpanded)
+                    {
+                        JsonSerializer.Serialize(writer, expandableField.ExpandedObject, options);
+                    }
+                    else
+                    {
+                        writer.WriteStringValue(expandableField.Id);
+                    }
+
                     break;
 
                 default:
@@ -87,16 +128,9 @@ namespace Stripe.Infrastructure
             }
         }
 
-        /// <summary>
-        /// Determines whether this instance can convert the specified object type.
-        /// </summary>
-        /// <param name="objectType">Type of the object.</param>
-        /// <returns>
-        ///     <c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.
-        /// </returns>
-        public override bool CanConvert(Type objectType)
+        public override bool CanConvert(Type typeToConvert)
         {
-            return typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
+            return typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(typeToConvert.GetTypeInfo());
         }
     }
 }

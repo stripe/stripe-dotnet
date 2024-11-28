@@ -19,6 +19,9 @@ namespace Stripe
     /// Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More
     /// Payment Scenarios</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class PaymentMethod : StripeEntity<PaymentMethod>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -190,7 +193,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif

@@ -15,6 +15,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/payments/save-during-payment">save payment</a> and contact
     /// information, and track payments that belong to the same customer.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Customer : StripeEntity<Customer>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -133,7 +136,6 @@ namespace Stripe
         [JsonProperty("default_source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("default_source")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IPaymentSource>))]
 #endif
@@ -377,7 +379,6 @@ namespace Stripe
         [JsonProperty("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("test_clock")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TestHelpers.TestClock>))]
 #endif

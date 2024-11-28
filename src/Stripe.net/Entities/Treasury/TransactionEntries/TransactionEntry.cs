@@ -12,6 +12,9 @@ namespace Stripe.Treasury
     /// TransactionEntries represent individual units of money movements within a single <a
     /// href="https://stripe.com/docs/api#transactions">Transaction</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class TransactionEntry : StripeEntity<TransactionEntry>, IHasId, IHasObject
     {
         /// <summary>
@@ -158,7 +161,6 @@ namespace Stripe.Treasury
         [JsonProperty("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
 #endif

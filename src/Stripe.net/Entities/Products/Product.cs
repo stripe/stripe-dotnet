@@ -24,6 +24,9 @@ namespace Stripe
     /// payments with Checkout</a>, and more about <a
     /// href="https://stripe.com/docs/products-prices/overview">Products and Prices</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Product : StripeEntity<Product>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -101,7 +104,6 @@ namespace Stripe
         [JsonProperty("default_price")]
         [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("default_price")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Price>))]
 #endif
@@ -243,7 +245,6 @@ namespace Stripe
         [JsonProperty("tax_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxCode>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("tax_code")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TaxCode>))]
 #endif

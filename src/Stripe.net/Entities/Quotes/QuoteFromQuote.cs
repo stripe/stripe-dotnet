@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class QuoteFromQuote : StripeEntity<QuoteFromQuote>
     {
         /// <summary>
@@ -53,7 +56,6 @@ namespace Stripe
         [JsonProperty("quote")]
         [JsonConverter(typeof(ExpandableFieldConverter<Quote>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("quote")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Quote>))]
 #endif

@@ -17,6 +17,9 @@ namespace Stripe.Billing
     /// href="https://docs.stripe.com/billing/subscriptions/usage-based/billing-credits">Billing
     /// credits</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CreditGrant : StripeEntity<CreditGrant>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -106,7 +109,6 @@ namespace Stripe.Billing
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
@@ -201,7 +203,6 @@ namespace Stripe.Billing
         [JsonProperty("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("test_clock")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TestHelpers.TestClock>))]
 #endif

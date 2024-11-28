@@ -14,6 +14,9 @@ namespace Stripe
     /// Related guide: <a href="https://stripe.com/docs/connect/account-capabilities">Account
     /// capabilities</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Capability : StripeEntity<Capability>, IHasId, IHasObject
     {
         /// <summary>
@@ -69,7 +72,6 @@ namespace Stripe
         [JsonProperty("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("account")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif

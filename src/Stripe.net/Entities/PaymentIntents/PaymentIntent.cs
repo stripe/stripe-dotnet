@@ -23,6 +23,9 @@ namespace Stripe
     /// Related guide: <a href="https://stripe.com/docs/payments/payment-intents">Payment
     /// Intents API</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class PaymentIntent : StripeEntity<PaymentIntent>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -118,7 +121,6 @@ namespace Stripe
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif
@@ -292,7 +294,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
@@ -343,7 +344,6 @@ namespace Stripe
         [JsonProperty("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("invoice")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
 #endif
@@ -399,7 +399,6 @@ namespace Stripe
         [JsonProperty("latest_charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("latest_charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif
@@ -478,7 +477,6 @@ namespace Stripe
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("on_behalf_of")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
@@ -520,7 +518,6 @@ namespace Stripe
         [JsonProperty("payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_method")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
 #endif
@@ -612,7 +609,6 @@ namespace Stripe
         [JsonProperty("review")]
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("review")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Review>))]
 #endif
@@ -692,7 +688,6 @@ namespace Stripe
         [JsonProperty("source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("source")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IPaymentSource>))]
 #endif

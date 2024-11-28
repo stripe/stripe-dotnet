@@ -13,6 +13,9 @@ namespace Stripe.FinancialConnections
     /// A Financial Connections Account represents an account that exists outside of Stripe, to
     /// which you have been granted some degree of access.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Account : StripeEntity<Account>, IHasId, IHasObject
     {
         /// <summary>
@@ -154,7 +157,6 @@ namespace Stripe.FinancialConnections
         [JsonProperty("ownership")]
         [JsonConverter(typeof(ExpandableFieldConverter<AccountOwnership>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("ownership")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<AccountOwnership>))]
 #endif

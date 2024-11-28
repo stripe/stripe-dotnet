@@ -25,6 +25,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#reverse-transfers">Reverse
     /// transfers</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class TransferReversal : StripeEntity<TransferReversal>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -89,7 +92,6 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -153,7 +155,6 @@ namespace Stripe
         [JsonProperty("destination_payment_refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("destination_payment_refund")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
 #endif
@@ -206,7 +207,6 @@ namespace Stripe
         [JsonProperty("source_refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("source_refund")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
 #endif
@@ -248,7 +248,6 @@ namespace Stripe
         [JsonProperty("transfer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("transfer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transfer>))]
 #endif

@@ -15,6 +15,9 @@ namespace Stripe.Terminal
     /// href="https://stripe.com/docs/terminal/payments/connect-reader">Connecting to a
     /// reader</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Reader : StripeEntity<Reader>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -140,7 +143,6 @@ namespace Stripe.Terminal
         [JsonProperty("location")]
         [JsonConverter(typeof(ExpandableFieldConverter<Location>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("location")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Location>))]
 #endif

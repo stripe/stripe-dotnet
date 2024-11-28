@@ -15,6 +15,9 @@ namespace Stripe
     /// accepted, it will automatically create an invoice, subscription or subscription
     /// schedule.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Quote : StripeEntity<Quote>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -88,7 +91,6 @@ namespace Stripe
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif
@@ -204,7 +206,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
@@ -245,7 +246,6 @@ namespace Stripe
 
         [JsonProperty("default_tax_rates", ItemConverterType = typeof(ExpandableFieldConverter<TaxRate>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("default_tax_rates")]
 #endif
         internal List<ExpandableField<TaxRate>> InternalDefaultTaxRates { get; set; }
@@ -294,7 +294,6 @@ namespace Stripe
 
         [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("discounts")]
 #endif
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
@@ -375,7 +374,6 @@ namespace Stripe
         [JsonProperty("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("invoice")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
 #endif
@@ -467,7 +465,6 @@ namespace Stripe
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("on_behalf_of")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
@@ -525,7 +522,6 @@ namespace Stripe
         [JsonProperty("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("subscription")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
 #endif
@@ -573,7 +569,6 @@ namespace Stripe
         [JsonProperty("subscription_schedule")]
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionSchedule>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("subscription_schedule")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SubscriptionSchedule>))]
 #endif
@@ -615,7 +610,6 @@ namespace Stripe
         [JsonProperty("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("test_clock")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TestHelpers.TestClock>))]
 #endif

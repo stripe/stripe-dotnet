@@ -7,6 +7,9 @@ namespace Stripe.FinancialConnections
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class AccountAccountHolder : StripeEntity<AccountAccountHolder>
     {
         #region Expandable Account
@@ -46,7 +49,6 @@ namespace Stripe.FinancialConnections
         [JsonProperty("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("account")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
@@ -90,7 +92,6 @@ namespace Stripe.FinancialConnections
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif

@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CustomerCashBalanceTransactionRefundedFromPayment : StripeEntity<CustomerCashBalanceTransactionRefundedFromPayment>
     {
         #region Expandable Refund
@@ -46,7 +49,6 @@ namespace Stripe
         [JsonProperty("refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("refund")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
 #endif

@@ -10,6 +10,9 @@ namespace Stripe.Entitlements
     /// <summary>
     /// An active entitlement describes access to a feature for a customer.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ActiveEntitlement : StripeEntity<ActiveEntitlement>, IHasId, IHasObject
     {
         /// <summary>
@@ -67,7 +70,6 @@ namespace Stripe.Entitlements
         [JsonProperty("feature")]
         [JsonConverter(typeof(ExpandableFieldConverter<Feature>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("feature")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Feature>))]
 #endif

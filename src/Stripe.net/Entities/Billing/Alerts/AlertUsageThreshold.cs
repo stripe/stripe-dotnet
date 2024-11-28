@@ -8,6 +8,9 @@ namespace Stripe.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class AlertUsageThreshold : StripeEntity<AlertUsageThreshold>
     {
         /// <summary>
@@ -66,7 +69,6 @@ namespace Stripe.Billing
         [JsonProperty("meter")]
         [JsonConverter(typeof(ExpandableFieldConverter<Meter>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("meter")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Meter>))]
 #endif

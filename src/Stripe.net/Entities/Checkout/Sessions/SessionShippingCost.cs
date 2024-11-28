@@ -8,6 +8,9 @@ namespace Stripe.Checkout
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SessionShippingCost : StripeEntity<SessionShippingCost>
     {
         /// <summary>
@@ -72,7 +75,6 @@ namespace Stripe.Checkout
         [JsonProperty("shipping_rate")]
         [JsonConverter(typeof(ExpandableFieldConverter<ShippingRate>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("shipping_rate")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<ShippingRate>))]
 #endif

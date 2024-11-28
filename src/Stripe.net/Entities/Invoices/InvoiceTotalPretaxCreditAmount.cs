@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class InvoiceTotalPretaxCreditAmount : StripeEntity<InvoiceTotalPretaxCreditAmount>
     {
         /// <summary>
@@ -53,7 +56,6 @@ namespace Stripe
         [JsonProperty("credit_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Billing.CreditBalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("credit_balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Billing.CreditBalanceTransaction>))]
 #endif
@@ -95,7 +97,6 @@ namespace Stripe
         [JsonProperty("discount")]
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("discount")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Discount>))]
 #endif

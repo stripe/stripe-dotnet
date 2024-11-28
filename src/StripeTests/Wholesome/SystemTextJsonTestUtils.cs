@@ -2,11 +2,13 @@
 namespace StripeTests.Wholesome
 {
     using System;
+    using System.Collections;
     using System.Collections.Generic;
     using System.Diagnostics;
     using System.Linq;
     using System.Reflection;
     using System.Text;
+    using Castle.Core.Internal;
     using Newtonsoft.Json;
     using Stripe;
     using Stripe.Infrastructure;
@@ -130,17 +132,17 @@ namespace StripeTests.Wholesome
             }
             else if (typeof(IExpandableField).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
             {
-                expectedConverterType = typeof(STJExpandableFieldConverter<>);
                 if (classTarget != null)
                 {
                     // because the annotation is going above a class, we don't have
                     // access to the specific type parameter for the expandable field
                     // so we add the annotation with <IHasId> as the parameter, and it
                     // just works.
-                    expectedGenericTypeArguments = new Type[] { typeof(IHasId) };
+                    expectedConverterType = typeof(STJExpandableFieldConverterFactory);
                 }
                 else if (propertyTarget != null)
                 {
+                    expectedConverterType = typeof(STJExpandableFieldConverter<>);
                     expectedGenericTypeArguments = type.GenericTypeArguments;
                 }
                 else
@@ -151,6 +153,19 @@ namespace StripeTests.Wholesome
             else if (type.GetTypeInfo().IsInterface)
             {
                 expectedConverterType = typeof(STJStripeObjectConverter);
+            }
+            else
+            {
+                var nonpublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static);
+                foreach (var property in nonpublicProperties)
+                {
+                    if (property.GetCustomAttribute(typeof(STJS.JsonPropertyNameAttribute), false) != null)
+                    {
+                        expectedConverterType = typeof(STJMemberSerializationOptIn);
+                        attributeTarget = type;
+                        break;
+                    }
+                }
             }
 
             var expectedConverterName = GetConverterName(

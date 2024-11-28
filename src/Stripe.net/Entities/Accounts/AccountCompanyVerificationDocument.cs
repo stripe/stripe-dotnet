@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class AccountCompanyVerificationDocument : StripeEntity<AccountCompanyVerificationDocument>
     {
         #region Expandable Back
@@ -48,7 +51,6 @@ namespace Stripe
         [JsonProperty("back")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("back")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -118,7 +120,6 @@ namespace Stripe
         [JsonProperty("front")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("front")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif

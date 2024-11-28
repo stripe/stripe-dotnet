@@ -23,6 +23,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">Creating separate
     /// charges and transfers</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Transfer : StripeEntity<Transfer>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -97,7 +100,6 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -170,7 +172,6 @@ namespace Stripe
         [JsonProperty("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("destination")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
@@ -214,7 +215,6 @@ namespace Stripe
         [JsonProperty("destination_payment")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("destination_payment")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif
@@ -298,7 +298,6 @@ namespace Stripe
         [JsonProperty("source_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("source_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif

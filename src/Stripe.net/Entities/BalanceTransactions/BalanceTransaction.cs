@@ -17,6 +17,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/reports/balance-transaction-types">Balance transaction
     /// types</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class BalanceTransaction : StripeEntity<BalanceTransaction>, IHasId, IHasObject
     {
         /// <summary>
@@ -182,7 +185,6 @@ namespace Stripe
         [JsonProperty("source")]
         [JsonConverter(typeof(ExpandableFieldConverter<IBalanceTransactionSource>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("source")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<IBalanceTransactionSource>))]
 #endif

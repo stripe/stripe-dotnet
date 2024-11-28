@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ChargeTransferData : StripeEntity<ChargeTransferData>
     {
         /// <summary>
@@ -56,7 +59,6 @@ namespace Stripe
         [JsonProperty("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("destination")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif

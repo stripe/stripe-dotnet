@@ -17,6 +17,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/billing/subscriptions/subscription-schedules">Subscription
     /// schedules</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SubscriptionSchedule : StripeEntity<SubscriptionSchedule>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -72,7 +75,6 @@ namespace Stripe
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif
@@ -159,7 +161,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
@@ -287,7 +288,6 @@ namespace Stripe
         [JsonProperty("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("subscription")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
 #endif
@@ -329,7 +329,6 @@ namespace Stripe
         [JsonProperty("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("test_clock")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TestHelpers.TestClock>))]
 #endif

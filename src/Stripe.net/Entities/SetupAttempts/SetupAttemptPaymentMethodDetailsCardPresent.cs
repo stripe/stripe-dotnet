@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SetupAttemptPaymentMethodDetailsCardPresent : StripeEntity<SetupAttemptPaymentMethodDetailsCardPresent>
     {
         #region Expandable GeneratedCard
@@ -44,7 +47,6 @@ namespace Stripe
         [JsonProperty("generated_card")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("generated_card")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
 #endif

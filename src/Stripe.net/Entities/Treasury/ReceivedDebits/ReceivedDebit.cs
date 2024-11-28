@@ -13,6 +13,9 @@ namespace Stripe.Treasury
     /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>. These are
     /// not initiated from the FinancialAccount.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ReceivedDebit : StripeEntity<ReceivedDebit>, IHasId, IHasObject
     {
         /// <summary>
@@ -193,7 +196,6 @@ namespace Stripe.Treasury
         [JsonProperty("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
 #endif

@@ -21,6 +21,9 @@ namespace Stripe
     /// Related guide: <a href="https://stripe.com/docs/billing/customer/balance">Customer
     /// balance</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CustomerBalanceTransaction : StripeEntity<CustomerBalanceTransaction>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -97,7 +100,6 @@ namespace Stripe
         [JsonProperty("credit_note")]
         [JsonConverter(typeof(ExpandableFieldConverter<CreditNote>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("credit_note")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<CreditNote>))]
 #endif
@@ -150,7 +152,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
@@ -212,7 +213,6 @@ namespace Stripe
         [JsonProperty("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("invoice")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
 #endif

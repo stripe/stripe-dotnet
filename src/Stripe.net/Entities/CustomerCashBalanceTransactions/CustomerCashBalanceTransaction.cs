@@ -15,6 +15,9 @@ namespace Stripe
     /// This includes funding by the customer, allocation to payments, and refunds to the
     /// customer.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CustomerCashBalanceTransaction : StripeEntity<CustomerCashBalanceTransaction>, IHasId, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -104,7 +107,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif

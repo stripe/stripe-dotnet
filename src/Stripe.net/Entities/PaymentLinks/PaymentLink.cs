@@ -20,6 +20,9 @@ namespace Stripe
     ///
     /// Related guide: <a href="https://stripe.com/docs/payment-links">Payment Links API</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class PaymentLink : StripeEntity<PaymentLink>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -100,7 +103,6 @@ namespace Stripe
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif
@@ -277,7 +279,6 @@ namespace Stripe
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("on_behalf_of")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif

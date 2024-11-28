@@ -11,6 +11,9 @@ namespace Stripe
     /// A Mandate is a record of the permission that your customer gives you to debit their
     /// payment method.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Mandate : StripeEntity<Mandate>, IHasId, IHasObject
     {
         /// <summary>
@@ -97,7 +100,6 @@ namespace Stripe
         [JsonProperty("payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_method")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
 #endif

@@ -27,6 +27,9 @@ namespace Stripe.Checkout
     /// Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout
     /// quickstart</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Session : StripeEntity<Session>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -250,7 +253,6 @@ namespace Stripe.Checkout
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
@@ -336,7 +338,6 @@ namespace Stripe.Checkout
         [JsonProperty("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("invoice")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
 #endif
@@ -449,7 +450,6 @@ namespace Stripe.Checkout
         [JsonProperty("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif
@@ -491,7 +491,6 @@ namespace Stripe.Checkout
         [JsonProperty("payment_link")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentLink>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_link")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentLink>))]
 #endif
@@ -640,7 +639,6 @@ namespace Stripe.Checkout
         [JsonProperty("setup_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupIntent>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("setup_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SetupIntent>))]
 #endif
@@ -744,7 +742,6 @@ namespace Stripe.Checkout
         [JsonProperty("subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("subscription")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
 #endif

@@ -14,6 +14,9 @@ namespace Stripe
     /// <c>FileLink</c>. <c>FileLink</c>s contain a URL that you can use to retrieve the
     /// contents of the file without authentication.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class FileLink : StripeEntity<FileLink>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -100,7 +103,6 @@ namespace Stripe
         [JsonProperty("file")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("file")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif

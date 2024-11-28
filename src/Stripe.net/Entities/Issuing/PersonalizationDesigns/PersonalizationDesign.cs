@@ -13,6 +13,9 @@ namespace Stripe.Issuing
     /// A Personalization Design is a logical grouping of a Physical Bundle, card logo, and
     /// carrier text that represents a product line.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class PersonalizationDesign : StripeEntity<PersonalizationDesign>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -70,7 +73,6 @@ namespace Stripe.Issuing
         [JsonProperty("card_logo")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("card_logo")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -172,7 +174,6 @@ namespace Stripe.Issuing
         [JsonProperty("physical_bundle")]
         [JsonConverter(typeof(ExpandableFieldConverter<PhysicalBundle>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("physical_bundle")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PhysicalBundle>))]
 #endif

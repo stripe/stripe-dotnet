@@ -7,6 +7,9 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class DisputeEvidenceOther : StripeEntity<DisputeEvidenceOther>
     {
         #region Expandable AdditionalDocumentation
@@ -46,7 +49,6 @@ namespace Stripe.Issuing
         [JsonProperty("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("additional_documentation")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif

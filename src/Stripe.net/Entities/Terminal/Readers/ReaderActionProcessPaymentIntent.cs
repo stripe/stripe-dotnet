@@ -7,6 +7,9 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ReaderActionProcessPaymentIntent : StripeEntity<ReaderActionProcessPaymentIntent>
     {
         #region Expandable PaymentIntent
@@ -44,7 +47,6 @@ namespace Stripe.Terminal
         [JsonProperty("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif

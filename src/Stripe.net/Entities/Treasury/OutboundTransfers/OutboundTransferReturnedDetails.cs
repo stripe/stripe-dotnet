@@ -7,6 +7,9 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class OutboundTransferReturnedDetails : StripeEntity<OutboundTransferReturnedDetails>
     {
         /// <summary>
@@ -57,7 +60,6 @@ namespace Stripe.Treasury
         [JsonProperty("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
 #endif

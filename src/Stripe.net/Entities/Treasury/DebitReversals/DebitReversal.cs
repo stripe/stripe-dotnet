@@ -15,6 +15,9 @@ namespace Stripe.Treasury
     /// network and source flow. Reversing a ReceivedDebit leads to the creation of a new object
     /// known as a DebitReversal.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class DebitReversal : StripeEntity<DebitReversal>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -186,7 +189,6 @@ namespace Stripe.Treasury
         [JsonProperty("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
 #endif

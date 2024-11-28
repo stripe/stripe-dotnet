@@ -15,6 +15,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/payments/during-payment/charge-shipping">Charge for
     /// shipping</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ShippingRate : StripeEntity<ShippingRate>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -150,7 +153,6 @@ namespace Stripe
         [JsonProperty("tax_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<TaxCode>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("tax_code")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TaxCode>))]
 #endif

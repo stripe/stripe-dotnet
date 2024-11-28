@@ -14,6 +14,9 @@ namespace Stripe
     /// Subscription items allow you to create customer subscriptions with more than one plan,
     /// making it easy to represent complex billing relationships.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SubscriptionItem : StripeEntity<SubscriptionItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -101,7 +104,6 @@ namespace Stripe
 
         [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("discounts")]
 #endif
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }

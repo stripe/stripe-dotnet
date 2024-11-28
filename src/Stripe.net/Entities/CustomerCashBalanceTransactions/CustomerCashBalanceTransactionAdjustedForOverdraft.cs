@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CustomerCashBalanceTransactionAdjustedForOverdraft : StripeEntity<CustomerCashBalanceTransactionAdjustedForOverdraft>
     {
         #region Expandable BalanceTransaction
@@ -46,7 +49,6 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -92,7 +94,6 @@ namespace Stripe
         [JsonProperty("linked_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<CustomerCashBalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("linked_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<CustomerCashBalanceTransaction>))]
 #endif

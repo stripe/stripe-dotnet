@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ChargeOutcome : StripeEntity<ChargeOutcome>
     {
         /// <summary>
@@ -96,7 +99,6 @@ namespace Stripe
         [JsonProperty("rule")]
         [JsonConverter(typeof(ExpandableFieldConverter<Radar.Rule>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("rule")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Radar.Rule>))]
 #endif

@@ -7,6 +7,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class AccountSettingsBranding : StripeEntity<AccountSettingsBranding>
     {
         #region Expandable Icon
@@ -46,7 +49,6 @@ namespace Stripe
         [JsonProperty("icon")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("icon")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -92,7 +94,6 @@ namespace Stripe
         [JsonProperty("logo")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("logo")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif

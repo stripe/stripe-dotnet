@@ -17,6 +17,9 @@ namespace Stripe
     /// identification numbers</a>, <a
     /// href="https://stripe.com/docs/invoicing/connect#account-tax-ids">Account tax IDs</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class TaxId : StripeEntity<TaxId>, IHasId, IHasObject
     {
         /// <summary>
@@ -92,7 +95,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif

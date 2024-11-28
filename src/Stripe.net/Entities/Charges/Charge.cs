@@ -16,6 +16,9 @@ namespace Stripe
     /// Some legacy payment flows create Charges directly, which is not recommended for new
     /// integrations.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Charge : StripeEntity<Charge>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -106,7 +109,6 @@ namespace Stripe
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif
@@ -152,7 +154,6 @@ namespace Stripe
         [JsonProperty("application_fee")]
         [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("application_fee")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<ApplicationFee>))]
 #endif
@@ -216,7 +217,6 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -308,7 +308,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
@@ -370,7 +369,6 @@ namespace Stripe
         [JsonProperty("failure_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("failure_balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -440,7 +438,6 @@ namespace Stripe
         [JsonProperty("invoice")]
         [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("invoice")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
 #endif
@@ -515,7 +512,6 @@ namespace Stripe
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("on_behalf_of")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
@@ -576,7 +572,6 @@ namespace Stripe
         [JsonProperty("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif
@@ -696,7 +691,6 @@ namespace Stripe
         [JsonProperty("review")]
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("review")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Review>))]
 #endif
@@ -764,7 +758,6 @@ namespace Stripe
         [JsonProperty("source_transfer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("source_transfer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transfer>))]
 #endif
@@ -847,7 +840,6 @@ namespace Stripe
         [JsonProperty("transfer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transfer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("transfer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transfer>))]
 #endif

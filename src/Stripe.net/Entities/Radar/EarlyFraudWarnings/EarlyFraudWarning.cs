@@ -16,6 +16,9 @@ namespace Stripe.Radar
     /// href="https://stripe.com/docs/disputes/measuring#early-fraud-warnings">Early fraud
     /// warnings</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class EarlyFraudWarning : StripeEntity<EarlyFraudWarning>, IHasId, IHasObject
     {
         /// <summary>
@@ -82,7 +85,6 @@ namespace Stripe.Radar
         [JsonProperty("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif
@@ -157,7 +159,6 @@ namespace Stripe.Radar
         [JsonProperty("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif

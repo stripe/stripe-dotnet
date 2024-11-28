@@ -8,6 +8,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SubscriptionSchedulePhaseItem : StripeEntity<SubscriptionSchedulePhaseItem>, IHasMetadata
     {
         /// <summary>
@@ -76,7 +79,6 @@ namespace Stripe
         [JsonProperty("plan")]
         [JsonConverter(typeof(ExpandableFieldConverter<Plan>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("plan")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Plan>))]
 #endif
@@ -118,7 +120,6 @@ namespace Stripe
         [JsonProperty("price")]
         [JsonConverter(typeof(ExpandableFieldConverter<Price>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("price")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Price>))]
 #endif

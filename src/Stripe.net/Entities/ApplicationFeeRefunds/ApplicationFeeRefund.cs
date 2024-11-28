@@ -18,6 +18,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/connect/destination-charges#refunding-app-fee">Refunding
     /// application fees</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ApplicationFeeRefund : StripeEntity<ApplicationFeeRefund>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -82,7 +85,6 @@ namespace Stripe
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -146,7 +148,6 @@ namespace Stripe
         [JsonProperty("fee")]
         [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("fee")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<ApplicationFee>))]
 #endif

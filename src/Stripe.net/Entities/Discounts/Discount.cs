@@ -18,6 +18,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/billing/subscriptions/discounts">Applying discounts to
     /// subscriptions</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Discount : StripeEntity<Discount>, IHasId, IHasObject
     {
         /// <summary>
@@ -100,7 +103,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
@@ -186,7 +188,6 @@ namespace Stripe
         [JsonProperty("promotion_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("promotion_code")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PromotionCode>))]
 #endif

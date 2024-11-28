@@ -18,6 +18,9 @@ namespace Stripe.Issuing
     /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/authorizations">Issued
     /// card authorizations</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Authorization : StripeEntity<Authorization>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -135,7 +138,6 @@ namespace Stripe.Issuing
         [JsonProperty("cardholder")]
         [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("cardholder")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Cardholder>))]
 #endif
@@ -331,7 +333,6 @@ namespace Stripe.Issuing
         [JsonProperty("token")]
         [JsonConverter(typeof(ExpandableFieldConverter<Token>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("token")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Token>))]
 #endif

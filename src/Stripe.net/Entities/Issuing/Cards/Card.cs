@@ -13,6 +13,9 @@ namespace Stripe.Issuing
     /// You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a>
     /// that are issued to cardholders.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Card : StripeEntity<Card>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -208,7 +211,6 @@ namespace Stripe.Issuing
         [JsonProperty("personalization_design")]
         [JsonConverter(typeof(ExpandableFieldConverter<PersonalizationDesign>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("personalization_design")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PersonalizationDesign>))]
 #endif
@@ -250,7 +252,6 @@ namespace Stripe.Issuing
         [JsonProperty("replaced_by")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("replaced_by")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
 #endif
@@ -292,7 +293,6 @@ namespace Stripe.Issuing
         [JsonProperty("replacement_for")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("replacement_for")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
 #endif

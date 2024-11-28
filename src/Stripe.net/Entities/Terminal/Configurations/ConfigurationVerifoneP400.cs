@@ -7,6 +7,9 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ConfigurationVerifoneP400 : StripeEntity<ConfigurationVerifoneP400>
     {
         #region Expandable Splashscreen
@@ -44,7 +47,6 @@ namespace Stripe.Terminal
         [JsonProperty("splashscreen")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("splashscreen")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif

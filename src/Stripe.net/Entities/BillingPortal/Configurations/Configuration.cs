@@ -12,6 +12,9 @@ namespace Stripe.BillingPortal
     /// <summary>
     /// A portal configuration describes the functionality and behavior of a portal session.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Configuration : StripeEntity<Configuration>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -76,7 +79,6 @@ namespace Stripe.BillingPortal
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif

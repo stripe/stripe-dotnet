@@ -2,18 +2,18 @@
 namespace Stripe.Infrastructure
 {
     using System;
-    using System.Collections;
     using System.Reflection;
     using System.Text.Json;
     using System.Text.Json.Serialization;
     using static Stripe.Infrastructure.SerializablePropertyCache;
 
     /// <summary>
-    /// A custom converter for Enumerable objects.  This is needed because
-    /// STJ serializes IEnumerable objects as an array, and discards additional
-    /// fields (like those in StripeList or StripeSearchResult).
+    /// A JsonConverterFactory to implement the equivalent to
+    /// Newtonsoft Json.NET [JsonObject(MemberSerialization.OptIn)].
+    /// This is needed to serialize non-public properties such as the
+    /// inner ExpandableField properties.
     /// </summary>
-    public class STJEnumerableObjectConverter : JsonConverterFactory
+    public class STJMemberSerializationOptIn : JsonConverterFactory
     {
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
@@ -24,19 +24,16 @@ namespace Stripe.Infrastructure
         /// </returns>
         public override bool CanConvert(Type objectType)
         {
-            return typeof(IEnumerable).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
+            return objectType.IsClass;
         }
 
         public override JsonConverter CreateConverter(
             Type type,
             JsonSerializerOptions options)
         {
-            Type[] typeArguments = type.GetGenericArguments();
-            Type fieldType = typeArguments[0];
-
 #pragma warning disable SA1009 // Closing parenthesis should be spaced correctly
             JsonConverter converter = (JsonConverter)Activator.CreateInstance(
-                typeof(STJEnumerableObjectConverterInner<>).MakeGenericType(
+                typeof(STJMemberSerializationOptInInner<>).MakeGenericType(
                     type),
                 BindingFlags.Instance | BindingFlags.Public,
                 binder: null,
@@ -47,10 +44,12 @@ namespace Stripe.Infrastructure
             return converter;
         }
 
-        internal class STJEnumerableObjectConverterInner<T> : JsonConverter<T>
+        internal class STJMemberSerializationOptInInner<T> : JsonConverter<T>
         {
             /// <summary>
             /// Reads the JSON representation of the object.
+            ///
+            /// Adapted from https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/converters-how-to#sample-factory-pattern-converter.
             /// </summary>
             /// <param name="reader">The <see cref="Utf8JsonReader"/> to read from.</param>
             /// <param name="typeToConvert">Type of the object.</param>
@@ -58,7 +57,49 @@ namespace Stripe.Infrastructure
             /// <returns>The object value.</returns>
             public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                throw new NotSupportedException("STJEnumerableObjectConverter should only be used while serializing.");
+                if (reader.TokenType != JsonTokenType.StartObject)
+                {
+                    throw new JsonException();
+                }
+
+                var allProperties = GetPropertiesForType(typeToConvert);
+                var newInstance = Activator.CreateInstance(typeToConvert);
+
+                while (reader.Read())
+                {
+                    if (reader.TokenType == JsonTokenType.EndObject)
+                    {
+                        return (T)newInstance;
+                    }
+
+                    // Get the key.
+                    if (reader.TokenType != JsonTokenType.PropertyName)
+                    {
+                        throw new JsonException();
+                    }
+
+                    string propertyName = reader.GetString();
+
+                    foreach (var property in allProperties)
+                    {
+                        if (property.JsonPropertyName == propertyName)
+                        {
+                            var valueType = property.PropertyInfo.PropertyType;
+                            var valueConverter = property.GetConverter(options);
+
+                            // Get the value.
+                            reader.Read();
+#pragma warning disable SA1009 // Closing parenthesis should be spaced correctly
+                            object value = valueConverter.Read(ref reader, valueType, options)!;
+#pragma warning restore SA1009 // Closing parenthesis should be spaced correctly
+
+                            property.Set(newInstance, value);
+                            break;
+                        }
+                    }
+                }
+
+                throw new JsonException();
             }
 
             /// <summary>
@@ -69,31 +110,34 @@ namespace Stripe.Infrastructure
             /// <param name="options">The calling serializer's options.</param>
             public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
             {
-                TestProfiler.Enter("STJEnumerableObjectConverter");
                 var allProperties = GetPropertiesForType(value.GetType());
+
                 writer.WriteStartObject();
                 foreach (var property in allProperties)
                 {
-                    var valueToSerialize = property.Get(value);
+                    object valueToSerialize = property.Get(value);
 
-                    writer.WritePropertyName(property.JsonPropertyName);
                     switch (valueToSerialize)
                     {
                         case null:
-                            // this assumes that all of the members of a Stripe.net IEnumerable can be
-                            // written when null, which is a safe assumption at the time this was
-                            // written
-                            writer.WriteNullValue();
+                            if (property.IgnoreCondition != JsonIgnoreCondition.WhenWritingNull)
+                            {
+                                writer.WritePropertyName(property.JsonPropertyName);
+                                writer.WriteNullValue();
+                            }
+
                             break;
                         default:
+                            writer.WritePropertyName(property.JsonPropertyName);
+
                             var converter = property.GetConverter(options);
                             converter.Write(writer, valueToSerialize, options);
+
                             break;
                     }
                 }
 
                 writer.WriteEndObject();
-                TestProfiler.Exit("STJEnumerableObjectConverter");
             }
         }
     }

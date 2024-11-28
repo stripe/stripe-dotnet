@@ -13,6 +13,9 @@ namespace Stripe.Climate
     /// Orders represent your intent to purchase a particular Climate product. When you create
     /// an order, the payment is deducted from your merchant balance.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Order : StripeEntity<Order>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -235,7 +238,6 @@ namespace Stripe.Climate
         [JsonProperty("product")]
         [JsonConverter(typeof(ExpandableFieldConverter<Product>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("product")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Product>))]
 #endif

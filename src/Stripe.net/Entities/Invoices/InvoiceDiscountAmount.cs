@@ -6,6 +6,9 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class InvoiceDiscountAmount : StripeEntity<InvoiceDiscountAmount>
     {
         [JsonProperty("amount")]

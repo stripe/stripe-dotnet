@@ -25,6 +25,9 @@ namespace Stripe.Identity
     /// Related guide: <a href="https://stripe.com/docs/identity/verification-sessions">The
     /// Verification Sessions API</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class VerificationSession : StripeEntity<VerificationSession>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -131,7 +134,6 @@ namespace Stripe.Identity
         [JsonProperty("last_verification_report")]
         [JsonConverter(typeof(ExpandableFieldConverter<VerificationReport>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("last_verification_report")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<VerificationReport>))]
 #endif

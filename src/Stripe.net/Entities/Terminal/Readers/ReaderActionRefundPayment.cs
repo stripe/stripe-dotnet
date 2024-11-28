@@ -8,6 +8,9 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class ReaderActionRefundPayment : StripeEntity<ReaderActionRefundPayment>, IHasMetadata
     {
         /// <summary>
@@ -54,7 +57,6 @@ namespace Stripe.Terminal
         [JsonProperty("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif
@@ -107,7 +109,6 @@ namespace Stripe.Terminal
         [JsonProperty("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif
@@ -159,7 +160,6 @@ namespace Stripe.Terminal
         [JsonProperty("refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("refund")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
 #endif

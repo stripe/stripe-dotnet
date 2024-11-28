@@ -14,6 +14,9 @@ namespace Stripe
     /// href="https://stripe.com/docs/api#coupons">coupon</a>. It can be used to create multiple
     /// codes for a single coupon.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class PromotionCode : StripeEntity<PromotionCode>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -117,7 +120,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif

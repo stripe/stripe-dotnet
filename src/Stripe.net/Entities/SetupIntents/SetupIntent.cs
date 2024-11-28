@@ -43,6 +43,9 @@ namespace Stripe
     /// Related guide: <a href="https://docs.stripe.com/payments/setup-intents">Setup Intents
     /// API</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SetupIntent : StripeEntity<SetupIntent>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -98,7 +101,6 @@ namespace Stripe
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
 #endif
@@ -208,7 +210,6 @@ namespace Stripe
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
 #endif
@@ -284,7 +285,6 @@ namespace Stripe
         [JsonProperty("latest_attempt")]
         [JsonConverter(typeof(ExpandableFieldConverter<SetupAttempt>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("latest_attempt")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<SetupAttempt>))]
 #endif
@@ -336,7 +336,6 @@ namespace Stripe
         [JsonProperty("mandate")]
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("mandate")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Mandate>))]
 #endif
@@ -399,7 +398,6 @@ namespace Stripe
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("on_behalf_of")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
 #endif
@@ -447,7 +445,6 @@ namespace Stripe
         [JsonProperty("payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_method")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
 #endif
@@ -518,7 +515,6 @@ namespace Stripe
         [JsonProperty("single_use_mandate")]
         [JsonConverter(typeof(ExpandableFieldConverter<Mandate>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("single_use_mandate")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Mandate>))]
 #endif

@@ -12,6 +12,9 @@ namespace Stripe.Billing
     /// A credit balance transaction is a resource representing a transaction (either a credit
     /// or a debit) against an existing credit grant.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CreditBalanceTransaction : StripeEntity<CreditBalanceTransaction>, IHasId, IHasObject
     {
         /// <summary>
@@ -88,7 +91,6 @@ namespace Stripe.Billing
         [JsonProperty("credit_grant")]
         [JsonConverter(typeof(ExpandableFieldConverter<CreditGrant>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("credit_grant")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<CreditGrant>))]
 #endif
@@ -160,7 +162,6 @@ namespace Stripe.Billing
         [JsonProperty("test_clock")]
         [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("test_clock")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TestHelpers.TestClock>))]
 #endif

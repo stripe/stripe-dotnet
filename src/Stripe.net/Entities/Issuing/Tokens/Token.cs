@@ -14,6 +14,9 @@ namespace Stripe.Issuing
     /// href="https://stripe.com/docs/issuing/controls/token-management">view and manage these
     /// tokens</a> through Stripe.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Token : StripeEntity<Token>, IHasId, IHasObject
     {
         /// <summary>
@@ -69,7 +72,6 @@ namespace Stripe.Issuing
         [JsonProperty("card")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("card")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
 #endif

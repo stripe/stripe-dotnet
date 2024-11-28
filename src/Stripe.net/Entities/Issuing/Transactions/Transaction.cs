@@ -17,6 +17,9 @@ namespace Stripe.Issuing
     /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/transactions">Issued
     /// card transactions</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Transaction : StripeEntity<Transaction>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
@@ -94,7 +97,6 @@ namespace Stripe.Issuing
         [JsonProperty("authorization")]
         [JsonConverter(typeof(ExpandableFieldConverter<Authorization>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("authorization")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Authorization>))]
 #endif
@@ -138,7 +140,6 @@ namespace Stripe.Issuing
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
 #endif
@@ -180,7 +181,6 @@ namespace Stripe.Issuing
         [JsonProperty("card")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("card")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
 #endif
@@ -222,7 +222,6 @@ namespace Stripe.Issuing
         [JsonProperty("cardholder")]
         [JsonConverter(typeof(ExpandableFieldConverter<Cardholder>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("cardholder")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Cardholder>))]
 #endif
@@ -286,7 +285,6 @@ namespace Stripe.Issuing
         [JsonProperty("dispute")]
         [JsonConverter(typeof(ExpandableFieldConverter<Dispute>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("dispute")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Dispute>))]
 #endif
@@ -398,7 +396,6 @@ namespace Stripe.Issuing
         [JsonProperty("token")]
         [JsonConverter(typeof(ExpandableFieldConverter<Token>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("token")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Token>))]
 #endif

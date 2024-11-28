@@ -14,6 +14,9 @@ namespace Stripe
     /// Learn more about <a href="https://stripe.com/radar">Radar</a> and reviewing payments <a
     /// href="https://stripe.com/docs/radar/reviews">here</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Review : StripeEntity<Review>, IHasId, IHasObject
     {
         /// <summary>
@@ -78,7 +81,6 @@ namespace Stripe
         [JsonProperty("charge")]
         [JsonConverter(typeof(ExpandableFieldConverter<Charge>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("charge")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Charge>))]
 #endif
@@ -193,7 +195,6 @@ namespace Stripe
         [JsonProperty("payment_intent")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("payment_intent")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
 #endif

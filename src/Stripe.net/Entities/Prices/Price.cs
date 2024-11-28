@@ -27,6 +27,9 @@ namespace Stripe
     /// invoice</a>, and more about <a
     /// href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Price : StripeEntity<Price>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -200,7 +203,6 @@ namespace Stripe
         [JsonProperty("product")]
         [JsonConverter(typeof(ExpandableFieldConverter<Product>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("product")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Product>))]
 #endif

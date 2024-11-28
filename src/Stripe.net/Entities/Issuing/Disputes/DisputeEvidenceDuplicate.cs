@@ -7,6 +7,9 @@ namespace Stripe.Issuing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class DisputeEvidenceDuplicate : StripeEntity<DisputeEvidenceDuplicate>
     {
         #region Expandable AdditionalDocumentation
@@ -46,7 +49,6 @@ namespace Stripe.Issuing
         [JsonProperty("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("additional_documentation")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -90,7 +92,6 @@ namespace Stripe.Issuing
         [JsonProperty("card_statement")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("card_statement")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -134,7 +135,6 @@ namespace Stripe.Issuing
         [JsonProperty("cash_receipt")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("cash_receipt")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
@@ -178,7 +178,6 @@ namespace Stripe.Issuing
         [JsonProperty("check_image")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonInclude]
         [STJS.JsonPropertyName("check_image")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
 #endif
