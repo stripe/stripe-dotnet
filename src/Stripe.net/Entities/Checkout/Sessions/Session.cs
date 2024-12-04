@@ -96,8 +96,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The client secret of the Session. Use this with <a
-        /// href="https://stripe.com/docs/js/custom_checkout/init">initCustomCheckout</a> on your
-        /// front end.
+        /// href="https://stripe.com/docs/js/custom_checkout/init">initCheckout</a> on your front
+        /// end.
         /// </summary>
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
