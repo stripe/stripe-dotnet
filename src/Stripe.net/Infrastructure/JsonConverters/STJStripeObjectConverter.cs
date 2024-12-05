@@ -113,15 +113,6 @@ namespace Stripe.Infrastructure
                 }
 
                 writer.WriteEndObject();
-                /*
-                if (value == null)
-                {
-                    writer.WriteNullValue();
-                }
-                else
-                {
-                    writer.WriteRawValue(JsonSerializer.Serialize(value, options));
-                }*/
             }
         }
     }
