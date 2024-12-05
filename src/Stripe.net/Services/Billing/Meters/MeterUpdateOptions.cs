@@ -6,7 +6,7 @@ namespace Stripe.Billing
     public class MeterUpdateOptions : BaseOptions
     {
         /// <summary>
-        /// The meter's name.
+        /// The meter’s name. Not visible to the customer.
         /// </summary>
         [JsonProperty("display_name")]
         public string DisplayName { get; set; }

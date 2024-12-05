@@ -6,6 +6,12 @@ namespace Stripe
     public class SubscriptionAutomaticTax : StripeEntity<SubscriptionAutomaticTax>
     {
         /// <summary>
+        /// If Stripe disabled automatic tax, this enum describes why.
+        /// </summary>
+        [JsonProperty("disabled_reason")]
+        public string DisabledReason { get; set; }
+
+        /// <summary>
         /// Whether Stripe automatically computes tax on this subscription.
         /// </summary>
         [JsonProperty("enabled")]
