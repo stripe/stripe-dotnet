@@ -3,13 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class CustomerCashBalanceTransactionAdjustedForOverdraft : StripeEntity<CustomerCashBalanceTransactionAdjustedForOverdraft>
     {
         #region Expandable BalanceTransaction
@@ -20,9 +14,6 @@ namespace Stripe
         /// Transaction</a> that corresponds to funds taken out of your Stripe balance.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
@@ -37,9 +28,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
@@ -48,10 +36,6 @@ namespace Stripe
 
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("balance_transaction")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
-#endif
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
@@ -64,9 +48,6 @@ namespace Stripe
         /// funds.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string LinkedTransactionId
         {
             get => this.InternalLinkedTransaction?.Id;
@@ -82,9 +63,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public CustomerCashBalanceTransaction LinkedTransaction
         {
             get => this.InternalLinkedTransaction?.ExpandedObject;
@@ -93,10 +71,6 @@ namespace Stripe
 
         [JsonProperty("linked_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<CustomerCashBalanceTransaction>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("linked_transaction")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<CustomerCashBalanceTransaction>))]
-#endif
         internal ExpandableField<CustomerCashBalanceTransaction> InternalLinkedTransaction { get; set; }
         #endregion
     }

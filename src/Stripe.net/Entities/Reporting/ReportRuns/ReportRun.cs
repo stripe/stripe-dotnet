@@ -4,9 +4,6 @@ namespace Stripe.Reporting
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// The Report Run object represents an instance of a report type generated with specific
@@ -25,18 +22,12 @@ namespace Stripe.Reporting
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -44,10 +35,6 @@ namespace Stripe.Reporting
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -55,9 +42,6 @@ namespace Stripe.Reporting
         /// <c>status=failed</c>).
         /// </summary>
         [JsonProperty("error")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("error")]
-#endif
         public string Error { get; set; }
 
         /// <summary>
@@ -65,15 +49,9 @@ namespace Stripe.Reporting
         /// mode data.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         [JsonProperty("parameters")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("parameters")]
-#endif
         public ReportRunParameters Parameters { get; set; }
 
         /// <summary>
@@ -81,9 +59,6 @@ namespace Stripe.Reporting
         /// run, such as <c>"balance.summary.1"</c>.
         /// </summary>
         [JsonProperty("report_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("report_type")]
-#endif
         public string ReportType { get; set; }
 
         /// <summary>
@@ -91,9 +66,6 @@ namespace Stripe.Reporting
         /// <c>status=succeeded</c>).
         /// </summary>
         [JsonProperty("result")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("result")]
-#endif
         public File Result { get; set; }
 
         /// <summary>
@@ -103,9 +75,6 @@ namespace Stripe.Reporting
         /// this will be set to <c>failed</c> and the <c>error</c> field will be populated.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -114,10 +83,6 @@ namespace Stripe.Reporting
         /// </summary>
         [JsonProperty("succeeded_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("succeeded_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? SucceededAt { get; set; }
     }
 }

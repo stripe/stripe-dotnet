@@ -3,13 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class AccountSettingsBranding : StripeEntity<AccountSettingsBranding>
     {
         #region Expandable Icon
@@ -20,9 +14,6 @@ namespace Stripe
         /// for the account. Must be square and at least 128px x 128px.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string IconId
         {
             get => this.InternalIcon?.Id;
@@ -37,9 +28,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File Icon
         {
             get => this.InternalIcon?.ExpandedObject;
@@ -48,10 +36,6 @@ namespace Stripe
 
         [JsonProperty("icon")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("icon")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalIcon { get; set; }
         #endregion
 
@@ -64,9 +48,6 @@ namespace Stripe
         /// account's name next to it if provided. Must be at least 128px x 128px.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string LogoId
         {
             get => this.InternalLogo?.Id;
@@ -82,9 +63,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File Logo
         {
             get => this.InternalLogo?.ExpandedObject;
@@ -93,10 +71,6 @@ namespace Stripe
 
         [JsonProperty("logo")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("logo")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalLogo { get; set; }
         #endregion
 
@@ -104,18 +78,12 @@ namespace Stripe
         /// A CSS hex color value representing the primary branding color for this account.
         /// </summary>
         [JsonProperty("primary_color")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("primary_color")]
-#endif
         public string PrimaryColor { get; set; }
 
         /// <summary>
         /// A CSS hex color value representing the secondary branding color for this account.
         /// </summary>
         [JsonProperty("secondary_color")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("secondary_color")]
-#endif
         public string SecondaryColor { get; set; }
     }
 }

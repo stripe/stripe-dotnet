@@ -2,9 +2,6 @@
 namespace Stripe.BillingPortal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionFlowSubscriptionUpdateConfirmItem : StripeEntity<SessionFlowSubscriptionUpdateConfirmItem>, IHasId
     {
@@ -14,9 +11,6 @@ namespace Stripe.BillingPortal
         /// item</a> to be updated.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -25,9 +19,6 @@ namespace Stripe.BillingPortal
         /// href="https://stripe.com/docs/api/customer_portal/configuration#portal_configuration_object-features-subscription_update-products"><c>features.subscription_update.products</c></a>.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -35,9 +26,6 @@ namespace Stripe.BillingPortal
         /// that the customer should subscribe to through this flow.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("quantity")]
-#endif
         public long Quantity { get; set; }
     }
 }

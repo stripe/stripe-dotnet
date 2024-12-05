@@ -3,9 +3,6 @@ namespace Stripe.Terminal
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class LocationCreateOptions : BaseOptions, IHasMetadata
     {
@@ -13,27 +10,18 @@ namespace Stripe.Terminal
         /// The full address of the location.
         /// </summary>
         [JsonProperty("address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("address")]
-#endif
         public AddressOptions Address { get; set; }
 
         /// <summary>
         /// The ID of a configuration that will be used to customize all readers in this location.
         /// </summary>
         [JsonProperty("configuration_overrides")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("configuration_overrides")]
-#endif
         public string ConfigurationOverrides { get; set; }
 
         /// <summary>
         /// A name for the location. Maximum length is 1000 characters.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -43,9 +31,6 @@ namespace Stripe.Terminal
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

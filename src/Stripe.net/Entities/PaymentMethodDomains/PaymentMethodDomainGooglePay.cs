@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentMethodDomainGooglePay : StripeEntity<PaymentMethodDomainGooglePay>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// One of: <c>active</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe
         /// method domain.
         /// </summary>
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("status_details")]
-#endif
         public PaymentMethodDomainGooglePayStatusDetails StatusDetails { get; set; }
     }
 }

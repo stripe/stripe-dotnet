@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class QuoteInvoiceSettingsOptions : INestedOptions
     {
@@ -14,9 +11,6 @@ namespace Stripe
         /// <c>collection_method=charge_automatically</c>.
         /// </summary>
         [JsonProperty("days_until_due")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("days_until_due")]
-#endif
         public long? DaysUntilDue { get; set; }
 
         /// <summary>
@@ -24,9 +18,6 @@ namespace Stripe
         /// branding and support information of the specified account.
         /// </summary>
         [JsonProperty("issuer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("issuer")]
-#endif
         public QuoteInvoiceSettingsIssuerOptions Issuer { get; set; }
     }
 }

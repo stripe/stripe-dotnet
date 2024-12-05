@@ -4,9 +4,6 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentIntentNextActionOxxoDisplayDetails : StripeEntity<PaymentIntentNextActionOxxoDisplayDetails>
     {
@@ -15,10 +12,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_after")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_after")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ExpiresAfter { get; set; }
 
         /// <summary>
@@ -26,18 +19,12 @@ namespace Stripe
         /// OXXO voucher.
         /// </summary>
         [JsonProperty("hosted_voucher_url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("hosted_voucher_url")]
-#endif
         public string HostedVoucherUrl { get; set; }
 
         /// <summary>
         /// OXXO reference number.
         /// </summary>
         [JsonProperty("number")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("number")]
-#endif
         public string Number { get; set; }
     }
 }

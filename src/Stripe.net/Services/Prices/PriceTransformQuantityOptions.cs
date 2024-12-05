@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PriceTransformQuantityOptions : INestedOptions
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// Divide usage by this number.
         /// </summary>
         [JsonProperty("divide_by")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("divide_by")]
-#endif
         public long? DivideBy { get; set; }
 
         /// <summary>
@@ -22,9 +16,6 @@ namespace Stripe
         /// One of: <c>down</c>, or <c>up</c>.
         /// </summary>
         [JsonProperty("round")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("round")]
-#endif
         public string Round { get; set; }
     }
 }

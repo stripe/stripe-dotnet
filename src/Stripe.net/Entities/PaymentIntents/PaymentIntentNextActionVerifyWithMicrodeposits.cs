@@ -4,9 +4,6 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentIntentNextActionVerifyWithMicrodeposits : StripeEntity<PaymentIntentNextActionVerifyWithMicrodeposits>
     {
@@ -15,10 +12,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("arrival_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("arrival_date")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime ArrivalDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -26,9 +19,6 @@ namespace Stripe
         /// account.
         /// </summary>
         [JsonProperty("hosted_verification_url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("hosted_verification_url")]
-#endif
         public string HostedVerificationUrl { get; set; }
 
         /// <summary>
@@ -37,9 +27,6 @@ namespace Stripe
         /// One of: <c>amounts</c>, or <c>descriptor_code</c>.
         /// </summary>
         [JsonProperty("microdeposit_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("microdeposit_type")]
-#endif
         public string MicrodepositType { get; set; }
     }
 }

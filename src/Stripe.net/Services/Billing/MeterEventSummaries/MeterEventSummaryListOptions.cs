@@ -4,9 +4,6 @@ namespace Stripe.Billing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class MeterEventSummaryListOptions : ListOptions
     {
@@ -14,9 +11,6 @@ namespace Stripe.Billing
         /// The customer for which to fetch event summaries.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -25,10 +19,6 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("end_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("end_time")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? EndTime { get; set; }
 
         /// <summary>
@@ -37,10 +27,6 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("start_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("start_time")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? StartTime { get; set; }
 
         /// <summary>
@@ -52,9 +38,6 @@ namespace Stripe.Billing
         /// One of: <c>day</c>, or <c>hour</c>.
         /// </summary>
         [JsonProperty("value_grouping_window")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("value_grouping_window")]
-#endif
         public string ValueGroupingWindow { get; set; }
     }
 }

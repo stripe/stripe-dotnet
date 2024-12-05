@@ -4,9 +4,6 @@ namespace Stripe.Tax
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class RegistrationUpdateOptions : BaseOptions
     {
@@ -16,10 +13,6 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("active_from")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("active_from")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, RegistrationActiveFrom> ActiveFrom { get; set; }
 
         /// <summary>
@@ -29,10 +22,6 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, RegistrationExpiresAt> ExpiresAt { get; set; }
     }
 }

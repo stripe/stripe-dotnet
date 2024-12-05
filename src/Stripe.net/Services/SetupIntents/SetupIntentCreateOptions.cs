@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SetupIntentCreateOptions : BaseOptions, IHasMetadata
     {
@@ -19,9 +16,6 @@ namespace Stripe
         /// Customer.
         /// </summary>
         [JsonProperty("attach_to_self")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("attach_to_self")]
-#endif
         public bool? AttachToSelf { get; set; }
 
         /// <summary>
@@ -29,9 +23,6 @@ namespace Stripe
         /// in the Dashboard and that are compatible with its other parameters.
         /// </summary>
         [JsonProperty("automatic_payment_methods")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("automatic_payment_methods")]
-#endif
         public SetupIntentAutomaticPaymentMethodsOptions AutomaticPaymentMethods { get; set; }
 
         /// <summary>
@@ -40,9 +31,6 @@ namespace Stripe
         /// <c>return_url</c> in case further authentication is necessary.
         /// </summary>
         [JsonProperty("confirm")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("confirm")]
-#endif
         public bool? Confirm { get; set; }
 
         /// <summary>
@@ -53,9 +41,6 @@ namespace Stripe
         /// precedence.
         /// </summary>
         [JsonProperty("confirmation_token")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("confirmation_token")]
-#endif
         public string ConfirmationToken { get; set; }
 
         /// <summary>
@@ -66,18 +51,12 @@ namespace Stripe
         /// SetupIntent.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -91,9 +70,6 @@ namespace Stripe
         /// One of: <c>inbound</c>, or <c>outbound</c>.
         /// </summary>
         [JsonProperty("flow_directions")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("flow_directions")]
-#endif
         public List<string> FlowDirections { get; set; }
 
         /// <summary>
@@ -102,9 +78,6 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/setup_intents/create#create_setup_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
         [JsonProperty("mandate_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("mandate_data")]
-#endif
         public SetupIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>
@@ -114,18 +87,12 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The Stripe account ID created for this SetupIntent.
         /// </summary>
         [JsonProperty("on_behalf_of")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("on_behalf_of")]
-#endif
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -133,9 +100,6 @@ namespace Stripe
         /// this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method")]
-#endif
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -144,9 +108,6 @@ namespace Stripe
         /// configuration</a> to use with this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_configuration")]
-#endif
         public string PaymentMethodConfiguration { get; set; }
 
         /// <summary>
@@ -155,18 +116,12 @@ namespace Stripe
         /// value in the SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_data")]
-#endif
         public SetupIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment method-specific configuration for this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_options")]
-#endif
         public SetupIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -176,9 +131,6 @@ namespace Stripe
         /// settings</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_types")]
-#endif
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -189,9 +141,6 @@ namespace Stripe
         /// href="https://stripe.com/docs/api/setup_intents/create#create_setup_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -199,9 +148,6 @@ namespace Stripe
         /// successful completion.
         /// </summary>
         [JsonProperty("single_use")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("single_use")]
-#endif
         public SetupIntentSingleUseOptions SingleUse { get; set; }
 
         /// <summary>
@@ -210,9 +156,6 @@ namespace Stripe
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("usage")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("usage")]
-#endif
         public string Usage { get; set; }
 
         /// <summary>
@@ -220,9 +163,6 @@ namespace Stripe
         /// client-side SDKs to handle the next actions.
         /// </summary>
         [JsonProperty("use_stripe_sdk")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("use_stripe_sdk")]
-#endif
         public bool? UseStripeSdk { get; set; }
     }
 }

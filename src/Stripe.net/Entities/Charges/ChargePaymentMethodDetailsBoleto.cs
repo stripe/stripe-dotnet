@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ChargePaymentMethodDetailsBoleto : StripeEntity<ChargePaymentMethodDetailsBoleto>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// consumers).
         /// </summary>
         [JsonProperty("tax_id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_id")]
-#endif
         public string TaxId { get; set; }
     }
 }

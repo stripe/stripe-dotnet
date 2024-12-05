@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class QuoteTotalDetailsBreakdownDiscount : StripeEntity<QuoteTotalDetailsBreakdownDiscount>
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// The amount discounted.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -28,9 +22,6 @@ namespace Stripe
         /// subscriptions</a>.
         /// </summary>
         [JsonProperty("discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discount")]
-#endif
         public Discount Discount { get; set; }
     }
 }

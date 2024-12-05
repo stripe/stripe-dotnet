@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentLinkUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -14,36 +11,24 @@ namespace Stripe
         /// URL will be shown a page saying that the link has been deactivated.
         /// </summary>
         [JsonProperty("active")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("active")]
-#endif
         public bool? Active { get; set; }
 
         /// <summary>
         /// Behavior after the purchase is complete.
         /// </summary>
         [JsonProperty("after_completion")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("after_completion")]
-#endif
         public PaymentLinkAfterCompletionOptions AfterCompletion { get; set; }
 
         /// <summary>
         /// Enables user redeemable promotion codes.
         /// </summary>
         [JsonProperty("allow_promotion_codes")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("allow_promotion_codes")]
-#endif
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
         /// Configuration for automatic tax collection.
         /// </summary>
         [JsonProperty("automatic_tax")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("automatic_tax")]
-#endif
         public PaymentLinkAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -51,9 +36,6 @@ namespace Stripe
         /// One of: <c>auto</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("billing_address_collection")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_address_collection")]
-#endif
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
@@ -61,18 +43,12 @@ namespace Stripe
         /// are supported.
         /// </summary>
         [JsonProperty("custom_fields")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("custom_fields")]
-#endif
         public List<PaymentLinkCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
         /// Display additional text for your customers using custom text.
         /// </summary>
         [JsonProperty("custom_text")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("custom_text")]
-#endif
         public PaymentLinkCustomTextOptions CustomText { get; set; }
 
         /// <summary>
@@ -82,9 +58,6 @@ namespace Stripe
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
         [JsonProperty("customer_creation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_creation")]
-#endif
         public string CustomerCreation { get; set; }
 
         /// <summary>
@@ -92,18 +65,12 @@ namespace Stripe
         /// active.
         /// </summary>
         [JsonProperty("inactive_message")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("inactive_message")]
-#endif
         public string InactiveMessage { get; set; }
 
         /// <summary>
         /// Generate a post-purchase Invoice for one-time payments.
         /// </summary>
         [JsonProperty("invoice_creation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("invoice_creation")]
-#endif
         public PaymentLinkInvoiceCreationOptions InvoiceCreation { get; set; }
 
         /// <summary>
@@ -111,9 +78,6 @@ namespace Stripe
         /// sold. Up to 20 line items are supported.
         /// </summary>
         [JsonProperty("line_items")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("line_items")]
-#endif
         public List<PaymentLinkLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -126,9 +90,6 @@ namespace Stripe
         /// this payment link.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -136,9 +97,6 @@ namespace Stripe
         /// <c>payment</c> mode.
         /// </summary>
         [JsonProperty("payment_intent_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_intent_data")]
-#endif
         public PaymentLinkPaymentIntentDataOptions PaymentIntentData { get; set; }
 
         /// <summary>
@@ -155,9 +113,6 @@ namespace Stripe
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
         [JsonProperty("payment_method_collection")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_collection")]
-#endif
         public string PaymentMethodCollection { get; set; }
 
         /// <summary>
@@ -174,27 +129,18 @@ namespace Stripe
         /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_types")]
-#endif
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
         /// Settings that restrict the usage of a payment link.
         /// </summary>
         [JsonProperty("restrictions")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("restrictions")]
-#endif
         public PaymentLinkRestrictionsOptions Restrictions { get; set; }
 
         /// <summary>
         /// Configuration for collecting the customer's shipping address.
         /// </summary>
         [JsonProperty("shipping_address_collection")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_address_collection")]
-#endif
         public PaymentLinkShippingAddressCollectionOptions ShippingAddressCollection { get; set; }
 
         /// <summary>
@@ -206,9 +152,6 @@ namespace Stripe
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("submit_type")]
-#endif
         public string SubmitType { get; set; }
 
         /// <summary>
@@ -216,18 +159,12 @@ namespace Stripe
         /// be at least one line item with a recurring price to use <c>subscription_data</c>.
         /// </summary>
         [JsonProperty("subscription_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_data")]
-#endif
         public PaymentLinkSubscriptionDataOptions SubscriptionData { get; set; }
 
         /// <summary>
         /// Controls tax ID collection during checkout.
         /// </summary>
         [JsonProperty("tax_id_collection")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_id_collection")]
-#endif
         public PaymentLinkTaxIdCollectionOptions TaxIdCollection { get; set; }
     }
 }

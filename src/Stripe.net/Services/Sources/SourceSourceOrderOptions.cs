@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SourceSourceOrderOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// List of items constituting the order.
         /// </summary>
         [JsonProperty("items")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("items")]
-#endif
         public List<SourceSourceOrderItemOptions> Items { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe
         /// <c>shippable</c> set to true.
         /// </summary>
         [JsonProperty("shipping")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping")]
-#endif
         public ChargeShippingOptions Shipping { get; set; }
     }
 }

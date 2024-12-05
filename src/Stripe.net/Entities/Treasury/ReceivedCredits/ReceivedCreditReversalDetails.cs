@@ -4,9 +4,6 @@ namespace Stripe.Treasury
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ReceivedCreditReversalDetails : StripeEntity<ReceivedCreditReversalDetails>
     {
@@ -15,10 +12,6 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("deadline")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("deadline")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? Deadline { get; set; }
 
         /// <summary>
@@ -27,9 +20,6 @@ namespace Stripe.Treasury
         /// <c>other</c>, or <c>source_flow_restricted</c>.
         /// </summary>
         [JsonProperty("restricted_reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("restricted_reason")]
-#endif
         public string RestrictedReason { get; set; }
     }
 }

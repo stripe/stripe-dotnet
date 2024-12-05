@@ -3,13 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class DisputeEvidence : StripeEntity<DisputeEvidence>
     {
         /// <summary>
@@ -18,18 +12,12 @@ namespace Stripe
         /// timestamps, and any detailed recorded activity.
         /// </summary>
         [JsonProperty("access_activity_log")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("access_activity_log")]
-#endif
         public string AccessActivityLog { get; set; }
 
         /// <summary>
         /// The billing address provided by the customer.
         /// </summary>
         [JsonProperty("billing_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_address")]
-#endif
         public string BillingAddress { get; set; }
 
         #region Expandable CancellationPolicy
@@ -40,9 +28,6 @@ namespace Stripe
         /// subscription cancellation policy, as shown to the customer.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string CancellationPolicyId
         {
             get => this.InternalCancellationPolicy?.Id;
@@ -57,9 +42,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File CancellationPolicy
         {
             get => this.InternalCancellationPolicy?.ExpandedObject;
@@ -68,10 +50,6 @@ namespace Stripe
 
         [JsonProperty("cancellation_policy")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancellation_policy")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalCancellationPolicy { get; set; }
         #endregion
 
@@ -80,18 +58,12 @@ namespace Stripe
         /// purchase.
         /// </summary>
         [JsonProperty("cancellation_policy_disclosure")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancellation_policy_disclosure")]
-#endif
         public string CancellationPolicyDisclosure { get; set; }
 
         /// <summary>
         /// A justification for why the customer's subscription was not canceled.
         /// </summary>
         [JsonProperty("cancellation_rebuttal")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancellation_rebuttal")]
-#endif
         public string CancellationRebuttal { get; set; }
 
         #region Expandable CustomerCommunication
@@ -104,9 +76,6 @@ namespace Stripe
         /// use of or satisfaction with the product or service.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string CustomerCommunicationId
         {
             get => this.InternalCustomerCommunication?.Id;
@@ -123,9 +92,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File CustomerCommunication
         {
             get => this.InternalCustomerCommunication?.ExpandedObject;
@@ -134,10 +100,6 @@ namespace Stripe
 
         [JsonProperty("customer_communication")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_communication")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalCustomerCommunication { get; set; }
         #endregion
 
@@ -145,27 +107,18 @@ namespace Stripe
         /// The email address of the customer.
         /// </summary>
         [JsonProperty("customer_email_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_email_address")]
-#endif
         public string CustomerEmailAddress { get; set; }
 
         /// <summary>
         /// The name of the customer.
         /// </summary>
         [JsonProperty("customer_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_name")]
-#endif
         public string CustomerName { get; set; }
 
         /// <summary>
         /// The IP address that the customer used when making the purchase.
         /// </summary>
         [JsonProperty("customer_purchase_ip")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_purchase_ip")]
-#endif
         public string CustomerPurchaseIp { get; set; }
 
         #region Expandable CustomerSignature
@@ -176,9 +129,6 @@ namespace Stripe
         /// relevant document or contract showing the customer's signature.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string CustomerSignatureId
         {
             get => this.InternalCustomerSignature?.Id;
@@ -193,9 +143,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File CustomerSignature
         {
             get => this.InternalCustomerSignature?.ExpandedObject;
@@ -204,10 +151,6 @@ namespace Stripe
 
         [JsonProperty("customer_signature")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_signature")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalCustomerSignature { get; set; }
         #endregion
 
@@ -221,9 +164,6 @@ namespace Stripe
         /// document from the disputed payment that proves the two payments are separate.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string DuplicateChargeDocumentationId
         {
             get => this.InternalDuplicateChargeDocumentation?.Id;
@@ -240,9 +180,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File DuplicateChargeDocumentation
         {
             get => this.InternalDuplicateChargeDocumentation?.ExpandedObject;
@@ -251,10 +188,6 @@ namespace Stripe
 
         [JsonProperty("duplicate_charge_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("duplicate_charge_documentation")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalDuplicateChargeDocumentation { get; set; }
         #endregion
 
@@ -263,9 +196,6 @@ namespace Stripe
         /// that appears to be a duplicate.
         /// </summary>
         [JsonProperty("duplicate_charge_explanation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("duplicate_charge_explanation")]
-#endif
         public string DuplicateChargeExplanation { get; set; }
 
         /// <summary>
@@ -273,24 +203,15 @@ namespace Stripe
         /// charge.
         /// </summary>
         [JsonProperty("duplicate_charge_id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("duplicate_charge_id")]
-#endif
         public string DuplicateChargeId { get; set; }
 
         [JsonProperty("enhanced_evidence")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("enhanced_evidence")]
-#endif
         public DisputeEvidenceEnhancedEvidence EnhancedEvidence { get; set; }
 
         /// <summary>
         /// A description of the product or service that was sold.
         /// </summary>
         [JsonProperty("product_description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("product_description")]
-#endif
         public string ProductDescription { get; set; }
 
         #region Expandable Receipt
@@ -301,9 +222,6 @@ namespace Stripe
         /// receipt or message sent to the customer notifying them of the charge.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string ReceiptId
         {
             get => this.InternalReceipt?.Id;
@@ -318,9 +236,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File Receipt
         {
             get => this.InternalReceipt?.ExpandedObject;
@@ -329,10 +244,6 @@ namespace Stripe
 
         [JsonProperty("receipt")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("receipt")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalReceipt { get; set; }
         #endregion
 
@@ -344,9 +255,6 @@ namespace Stripe
         /// refund policy, as shown to the customer.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string RefundPolicyId
         {
             get => this.InternalRefundPolicy?.Id;
@@ -361,9 +269,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File RefundPolicy
         {
             get => this.InternalRefundPolicy?.ExpandedObject;
@@ -372,10 +277,6 @@ namespace Stripe
 
         [JsonProperty("refund_policy")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_policy")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalRefundPolicy { get; set; }
         #endregion
 
@@ -384,18 +285,12 @@ namespace Stripe
         /// purchase.
         /// </summary>
         [JsonProperty("refund_policy_disclosure")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_policy_disclosure")]
-#endif
         public string RefundPolicyDisclosure { get; set; }
 
         /// <summary>
         /// A justification for why the customer is not entitled to a refund.
         /// </summary>
         [JsonProperty("refund_refusal_explanation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_refusal_explanation")]
-#endif
         public string RefundRefusalExplanation { get; set; }
 
         /// <summary>
@@ -403,9 +298,6 @@ namespace Stripe
         /// clear human-readable format.
         /// </summary>
         [JsonProperty("service_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("service_date")]
-#endif
         public string ServiceDate { get; set; }
 
         #region Expandable ServiceDocumentation
@@ -417,9 +309,6 @@ namespace Stripe
         /// include a copy of a signed contract, work order, or other form of written agreement.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string ServiceDocumentationId
         {
             get => this.InternalServiceDocumentation?.Id;
@@ -435,9 +324,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File ServiceDocumentation
         {
             get => this.InternalServiceDocumentation?.ExpandedObject;
@@ -446,10 +332,6 @@ namespace Stripe
 
         [JsonProperty("service_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("service_documentation")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalServiceDocumentation { get; set; }
         #endregion
 
@@ -458,9 +340,6 @@ namespace Stripe
         /// complete address information as possible.
         /// </summary>
         [JsonProperty("shipping_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_address")]
-#endif
         public string ShippingAddress { get; set; }
 
         /// <summary>
@@ -468,9 +347,6 @@ namespace Stripe
         /// multiple carriers were used for this purchase, please separate them with commas.
         /// </summary>
         [JsonProperty("shipping_carrier")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_carrier")]
-#endif
         public string ShippingCarrier { get; set; }
 
         /// <summary>
@@ -478,9 +354,6 @@ namespace Stripe
         /// human-readable format.
         /// </summary>
         [JsonProperty("shipping_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_date")]
-#endif
         public string ShippingDate { get; set; }
 
         #region Expandable ShippingDocumentation
@@ -493,9 +366,6 @@ namespace Stripe
         /// shipping label, etc. It should show the customer's full shipping address, if possible.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string ShippingDocumentationId
         {
             get => this.InternalShippingDocumentation?.Id;
@@ -512,9 +382,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File ShippingDocumentation
         {
             get => this.InternalShippingDocumentation?.ExpandedObject;
@@ -523,10 +390,6 @@ namespace Stripe
 
         [JsonProperty("shipping_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_documentation")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalShippingDocumentation { get; set; }
         #endregion
 
@@ -536,9 +399,6 @@ namespace Stripe
         /// commas.
         /// </summary>
         [JsonProperty("shipping_tracking_number")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_tracking_number")]
-#endif
         public string ShippingTrackingNumber { get; set; }
 
         #region Expandable UncategorizedFile
@@ -549,9 +409,6 @@ namespace Stripe
         /// additional evidence or statements.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string UncategorizedFileId
         {
             get => this.InternalUncategorizedFile?.Id;
@@ -566,9 +423,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File UncategorizedFile
         {
             get => this.InternalUncategorizedFile?.ExpandedObject;
@@ -577,10 +431,6 @@ namespace Stripe
 
         [JsonProperty("uncategorized_file")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("uncategorized_file")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalUncategorizedFile { get; set; }
         #endregion
 
@@ -588,9 +438,6 @@ namespace Stripe
         /// Any additional evidence or statements.
         /// </summary>
         [JsonProperty("uncategorized_text")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("uncategorized_text")]
-#endif
         public string UncategorizedText { get; set; }
     }
 }

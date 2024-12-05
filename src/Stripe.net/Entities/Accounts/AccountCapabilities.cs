@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountCapabilities : StripeEntity<AccountCapabilities>
     {
@@ -14,9 +11,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("acss_debit_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("acss_debit_payments")]
-#endif
         public string AcssDebitPayments { get; set; }
 
         /// <summary>
@@ -25,9 +19,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("affirm_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("affirm_payments")]
-#endif
         public string AffirmPayments { get; set; }
 
         /// <summary>
@@ -36,9 +27,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("afterpay_clearpay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("afterpay_clearpay_payments")]
-#endif
         public string AfterpayClearpayPayments { get; set; }
 
         /// <summary>
@@ -47,9 +35,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("alma_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("alma_payments")]
-#endif
         public string AlmaPayments { get; set; }
 
         /// <summary>
@@ -58,9 +43,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("amazon_pay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amazon_pay_payments")]
-#endif
         public string AmazonPayPayments { get; set; }
 
         /// <summary>
@@ -69,9 +51,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("au_becs_debit_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("au_becs_debit_payments")]
-#endif
         public string AuBecsDebitPayments { get; set; }
 
         /// <summary>
@@ -80,9 +59,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("bacs_debit_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bacs_debit_payments")]
-#endif
         public string BacsDebitPayments { get; set; }
 
         /// <summary>
@@ -91,9 +67,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("bancontact_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bancontact_payments")]
-#endif
         public string BancontactPayments { get; set; }
 
         /// <summary>
@@ -102,9 +75,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("bank_transfer_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bank_transfer_payments")]
-#endif
         public string BankTransferPayments { get; set; }
 
         /// <summary>
@@ -113,9 +83,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("blik_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("blik_payments")]
-#endif
         public string BlikPayments { get; set; }
 
         /// <summary>
@@ -124,9 +91,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("boleto_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("boleto_payments")]
-#endif
         public string BoletoPayments { get; set; }
 
         /// <summary>
@@ -135,9 +99,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("card_issuing")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("card_issuing")]
-#endif
         public string CardIssuing { get; set; }
 
         /// <summary>
@@ -146,9 +107,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("card_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("card_payments")]
-#endif
         public string CardPayments { get; set; }
 
         /// <summary>
@@ -157,9 +115,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("cartes_bancaires_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cartes_bancaires_payments")]
-#endif
         public string CartesBancairesPayments { get; set; }
 
         /// <summary>
@@ -168,9 +123,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("cashapp_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cashapp_payments")]
-#endif
         public string CashappPayments { get; set; }
 
         /// <summary>
@@ -179,9 +131,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("eps_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("eps_payments")]
-#endif
         public string EpsPayments { get; set; }
 
         /// <summary>
@@ -190,9 +139,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("fpx_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("fpx_payments")]
-#endif
         public string FpxPayments { get; set; }
 
         /// <summary>
@@ -201,9 +147,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("gb_bank_transfer_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("gb_bank_transfer_payments")]
-#endif
         public string GbBankTransferPayments { get; set; }
 
         /// <summary>
@@ -212,9 +155,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("giropay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("giropay_payments")]
-#endif
         public string GiropayPayments { get; set; }
 
         /// <summary>
@@ -223,9 +163,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("grabpay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("grabpay_payments")]
-#endif
         public string GrabpayPayments { get; set; }
 
         /// <summary>
@@ -234,9 +171,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("ideal_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("ideal_payments")]
-#endif
         public string IdealPayments { get; set; }
 
         /// <summary>
@@ -245,9 +179,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("india_international_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("india_international_payments")]
-#endif
         public string IndiaInternationalPayments { get; set; }
 
         /// <summary>
@@ -256,9 +187,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("jcb_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("jcb_payments")]
-#endif
         public string JcbPayments { get; set; }
 
         /// <summary>
@@ -267,9 +195,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("jp_bank_transfer_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("jp_bank_transfer_payments")]
-#endif
         public string JpBankTransferPayments { get; set; }
 
         /// <summary>
@@ -278,9 +203,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("kakao_pay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("kakao_pay_payments")]
-#endif
         public string KakaoPayPayments { get; set; }
 
         /// <summary>
@@ -289,9 +211,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("klarna_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("klarna_payments")]
-#endif
         public string KlarnaPayments { get; set; }
 
         /// <summary>
@@ -300,9 +219,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("konbini_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("konbini_payments")]
-#endif
         public string KonbiniPayments { get; set; }
 
         /// <summary>
@@ -311,9 +227,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("kr_card_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("kr_card_payments")]
-#endif
         public string KrCardPayments { get; set; }
 
         /// <summary>
@@ -321,9 +234,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("legacy_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("legacy_payments")]
-#endif
         public string LegacyPayments { get; set; }
 
         /// <summary>
@@ -332,9 +242,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("link_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("link_payments")]
-#endif
         public string LinkPayments { get; set; }
 
         /// <summary>
@@ -343,9 +250,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("mobilepay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("mobilepay_payments")]
-#endif
         public string MobilepayPayments { get; set; }
 
         /// <summary>
@@ -354,9 +258,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("multibanco_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("multibanco_payments")]
-#endif
         public string MultibancoPayments { get; set; }
 
         /// <summary>
@@ -365,9 +266,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("mx_bank_transfer_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("mx_bank_transfer_payments")]
-#endif
         public string MxBankTransferPayments { get; set; }
 
         /// <summary>
@@ -376,9 +274,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("naver_pay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("naver_pay_payments")]
-#endif
         public string NaverPayPayments { get; set; }
 
         /// <summary>
@@ -387,9 +282,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("oxxo_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("oxxo_payments")]
-#endif
         public string OxxoPayments { get; set; }
 
         /// <summary>
@@ -398,9 +290,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("p24_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("p24_payments")]
-#endif
         public string P24Payments { get; set; }
 
         /// <summary>
@@ -409,9 +298,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("payco_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payco_payments")]
-#endif
         public string PaycoPayments { get; set; }
 
         /// <summary>
@@ -420,9 +306,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("paynow_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("paynow_payments")]
-#endif
         public string PaynowPayments { get; set; }
 
         /// <summary>
@@ -431,9 +314,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("promptpay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("promptpay_payments")]
-#endif
         public string PromptpayPayments { get; set; }
 
         /// <summary>
@@ -442,9 +322,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("revolut_pay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("revolut_pay_payments")]
-#endif
         public string RevolutPayPayments { get; set; }
 
         /// <summary>
@@ -453,9 +330,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("samsung_pay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("samsung_pay_payments")]
-#endif
         public string SamsungPayPayments { get; set; }
 
         /// <summary>
@@ -464,9 +338,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("sepa_bank_transfer_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("sepa_bank_transfer_payments")]
-#endif
         public string SepaBankTransferPayments { get; set; }
 
         /// <summary>
@@ -475,9 +346,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("sepa_debit_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("sepa_debit_payments")]
-#endif
         public string SepaDebitPayments { get; set; }
 
         /// <summary>
@@ -486,9 +354,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("sofort_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("sofort_payments")]
-#endif
         public string SofortPayments { get; set; }
 
         /// <summary>
@@ -497,9 +362,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("swish_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("swish_payments")]
-#endif
         public string SwishPayments { get; set; }
 
         /// <summary>
@@ -507,9 +369,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("tax_reporting_us_1099_k")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_reporting_us_1099_k")]
-#endif
         public string TaxReportingUs1099K { get; set; }
 
         /// <summary>
@@ -517,9 +376,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("tax_reporting_us_1099_misc")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_reporting_us_1099_misc")]
-#endif
         public string TaxReportingUs1099Misc { get; set; }
 
         /// <summary>
@@ -528,9 +384,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("transfers")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transfers")]
-#endif
         public string Transfers { get; set; }
 
         /// <summary>
@@ -538,9 +391,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("treasury")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("treasury")]
-#endif
         public string Treasury { get; set; }
 
         /// <summary>
@@ -549,9 +399,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("twint_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("twint_payments")]
-#endif
         public string TwintPayments { get; set; }
 
         /// <summary>
@@ -560,9 +407,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("us_bank_account_ach_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("us_bank_account_ach_payments")]
-#endif
         public string UsBankAccountAchPayments { get; set; }
 
         /// <summary>
@@ -571,9 +415,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("us_bank_transfer_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("us_bank_transfer_payments")]
-#endif
         public string UsBankTransferPayments { get; set; }
 
         /// <summary>
@@ -582,9 +423,6 @@ namespace Stripe
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("zip_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("zip_payments")]
-#endif
         public string ZipPayments { get; set; }
     }
 }

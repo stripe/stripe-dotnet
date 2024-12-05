@@ -2,9 +2,6 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class TransactionPurchaseDetailsFuel : StripeEntity<TransactionPurchaseDetailsFuel>
     {
@@ -13,9 +10,6 @@ namespace Stripe.Issuing
         /// Payment System Product Code</a> identifying the primary fuel product purchased.
         /// </summary>
         [JsonProperty("industry_product_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("industry_product_code")]
-#endif
         public string IndustryProductCode { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe.Issuing
         /// with at most 12 decimal places.
         /// </summary>
         [JsonProperty("quantity_decimal")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("quantity_decimal")]
-#endif
         public decimal? QuantityDecimal { get; set; }
 
         /// <summary>
@@ -33,9 +24,6 @@ namespace Stripe.Issuing
         /// <c>unleaded_regular</c>, <c>unleaded_super</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -44,9 +32,6 @@ namespace Stripe.Issuing
         /// <c>pound</c>, <c>us_gallon</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("unit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit")]
-#endif
         public string Unit { get; set; }
 
         /// <summary>
@@ -54,9 +39,6 @@ namespace Stripe.Issuing
         /// decimal places.
         /// </summary>
         [JsonProperty("unit_cost_decimal")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_cost_decimal")]
-#endif
         public decimal UnitCostDecimal { get; set; }
     }
 }

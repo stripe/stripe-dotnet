@@ -2,9 +2,6 @@
 namespace Stripe.Identity
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class VerificationReportSelfieError : StripeEntity<VerificationReportSelfieError>
     {
@@ -14,9 +11,6 @@ namespace Stripe.Identity
         /// <c>selfie_manipulated</c>, or <c>selfie_unverified_other</c>.
         /// </summary>
         [JsonProperty("code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("code")]
-#endif
         public string Code { get; set; }
 
         /// <summary>
@@ -24,9 +18,6 @@ namespace Stripe.Identity
         /// to your users.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
     }
 }

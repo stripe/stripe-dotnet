@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountSettingsBrandingOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// for the account. Must be square and at least 128px x 128px.
         /// </summary>
         [JsonProperty("icon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("icon")]
-#endif
         public string Icon { get; set; }
 
         /// <summary>
@@ -24,27 +18,18 @@ namespace Stripe
         /// account's name next to it if provided. Must be at least 128px x 128px.
         /// </summary>
         [JsonProperty("logo")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("logo")]
-#endif
         public string Logo { get; set; }
 
         /// <summary>
         /// A CSS hex color value representing the primary branding color for this account.
         /// </summary>
         [JsonProperty("primary_color")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("primary_color")]
-#endif
         public string PrimaryColor { get; set; }
 
         /// <summary>
         /// A CSS hex color value representing the secondary branding color for this account.
         /// </summary>
         [JsonProperty("secondary_color")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("secondary_color")]
-#endif
         public string SecondaryColor { get; set; }
     }
 }

@@ -5,9 +5,6 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CreditNotePreviewLinesListOptions : ListOptions, IHasMetadata
     {
@@ -16,9 +13,6 @@ namespace Stripe
         /// credit note.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -26,9 +20,6 @@ namespace Stripe
         /// customer's balance, which will be automatically applied to their next invoice.
         /// </summary>
         [JsonProperty("credit_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("credit_amount")]
-#endif
         public long? CreditAmount { get; set; }
 
         /// <summary>
@@ -38,10 +29,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? EffectiveAt { get; set; }
 
         /// <summary>
@@ -50,36 +37,24 @@ namespace Stripe
         /// One of: <c>credit_note</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("email_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("email_type")]
-#endif
         public string EmailType { get; set; }
 
         /// <summary>
         /// ID of the invoice.
         /// </summary>
         [JsonProperty("invoice")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("invoice")]
-#endif
         public string Invoice { get; set; }
 
         /// <summary>
         /// Line items that make up the credit note.
         /// </summary>
         [JsonProperty("lines")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("lines")]
-#endif
         public List<CreditNotePreviewLinesLineOptions> Lines { get; set; }
 
         /// <summary>
         /// The credit note's memo appears on the credit note PDF.
         /// </summary>
         [JsonProperty("memo")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("memo")]
-#endif
         public string Memo { get; set; }
 
         /// <summary>
@@ -89,9 +64,6 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -99,9 +71,6 @@ namespace Stripe
         /// credited outside of Stripe.
         /// </summary>
         [JsonProperty("out_of_band_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("out_of_band_amount")]
-#endif
         public long? OutOfBandAmount { get; set; }
 
         /// <summary>
@@ -111,18 +80,12 @@ namespace Stripe
         /// <c>product_unsatisfactory</c>.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
 
         /// <summary>
         /// ID of an existing refund to link this credit note to.
         /// </summary>
         [JsonProperty("refund")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund")]
-#endif
         public string Refund { get; set; }
 
         /// <summary>
@@ -130,9 +93,6 @@ namespace Stripe
         /// set, a refund will be created for the charge associated with the invoice.
         /// </summary>
         [JsonProperty("refund_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_amount")]
-#endif
         public long? RefundAmount { get; set; }
 
         /// <summary>
@@ -140,9 +100,6 @@ namespace Stripe
         /// included in the credit note.
         /// </summary>
         [JsonProperty("shipping_cost")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_cost")]
-#endif
         public CreditNotePreviewLinesShippingCostOptions ShippingCost { get; set; }
     }
 }

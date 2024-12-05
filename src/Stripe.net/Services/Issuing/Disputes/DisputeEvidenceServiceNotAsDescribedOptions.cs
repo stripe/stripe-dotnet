@@ -4,9 +4,6 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class DisputeEvidenceServiceNotAsDescribedOptions : INestedOptions
     {
@@ -15,9 +12,6 @@ namespace Stripe.Issuing
         /// Additional documentation supporting the dispute.
         /// </summary>
         [JsonProperty("additional_documentation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("additional_documentation")]
-#endif
         public string AdditionalDocumentation { get; set; }
 
         /// <summary>
@@ -25,28 +19,18 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("canceled_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("canceled_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
         /// Reason for canceling the order.
         /// </summary>
         [JsonProperty("cancellation_reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancellation_reason")]
-#endif
         public string CancellationReason { get; set; }
 
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
         [JsonProperty("explanation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("explanation")]
-#endif
         public string Explanation { get; set; }
 
         /// <summary>
@@ -54,10 +38,6 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("received_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("received_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ReceivedAt { get; set; }
     }
 }

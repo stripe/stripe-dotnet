@@ -3,13 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class PersonVerificationDocument : StripeEntity<PersonVerificationDocument>
     {
         #region Expandable Back
@@ -20,9 +14,6 @@ namespace Stripe
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string BackId
         {
             get => this.InternalBack?.Id;
@@ -37,9 +28,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File Back
         {
             get => this.InternalBack?.ExpandedObject;
@@ -48,10 +36,6 @@ namespace Stripe
 
         [JsonProperty("back")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("back")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalBack { get; set; }
         #endregion
 
@@ -61,9 +45,6 @@ namespace Stripe
         /// document is too unclear to read".
         /// </summary>
         [JsonProperty("details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("details")]
-#endif
         public string Details { get; set; }
 
         /// <summary>
@@ -78,9 +59,6 @@ namespace Stripe
         /// verification state for this document.
         /// </summary>
         [JsonProperty("details_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("details_code")]
-#endif
         public string DetailsCode { get; set; }
 
         #region Expandable Front
@@ -91,9 +69,6 @@ namespace Stripe
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string FrontId
         {
             get => this.InternalFront?.Id;
@@ -108,9 +83,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File Front
         {
             get => this.InternalFront?.ExpandedObject;
@@ -119,10 +91,6 @@ namespace Stripe
 
         [JsonProperty("front")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("front")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalFront { get; set; }
         #endregion
     }

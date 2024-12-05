@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ShippingRateCreateOptions : BaseOptions, IHasMetadata
     {
@@ -14,9 +11,6 @@ namespace Stripe
         /// customer. This will appear on CheckoutSessions.
         /// </summary>
         [JsonProperty("delivery_estimate")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("delivery_estimate")]
-#endif
         public ShippingRateDeliveryEstimateOptions DeliveryEstimate { get; set; }
 
         /// <summary>
@@ -24,9 +18,6 @@ namespace Stripe
         /// on CheckoutSessions.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -34,9 +25,6 @@ namespace Stripe
         /// <c>fixed_amount</c>.
         /// </summary>
         [JsonProperty("fixed_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("fixed_amount")]
-#endif
         public ShippingRateFixedAmountOptions FixedAmount { get; set; }
 
         /// <summary>
@@ -46,9 +34,6 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -57,9 +42,6 @@ namespace Stripe
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -67,18 +49,12 @@ namespace Stripe
         /// code is <c>txcd_92010001</c>.
         /// </summary>
         [JsonProperty("tax_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_code")]
-#endif
         public string TaxCode { get; set; }
 
         /// <summary>
         /// The type of calculation to use on the shipping rate.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

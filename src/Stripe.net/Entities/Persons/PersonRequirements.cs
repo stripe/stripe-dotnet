@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PersonRequirements : StripeEntity<PersonRequirements>
     {
@@ -14,9 +11,6 @@ namespace Stripe
         /// fields instead.
         /// </summary>
         [JsonProperty("alternatives")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("alternatives")]
-#endif
         public List<PersonRequirementsAlternative> Alternatives { get; set; }
 
         /// <summary>
@@ -25,9 +19,6 @@ namespace Stripe
         /// well, and the account is disabled.
         /// </summary>
         [JsonProperty("currently_due")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("currently_due")]
-#endif
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
@@ -35,9 +26,6 @@ namespace Stripe
         /// or verification failed.
         /// </summary>
         [JsonProperty("errors")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("errors")]
-#endif
         public List<PersonRequirementsError> Errors { get; set; }
 
         /// <summary>
@@ -46,9 +34,6 @@ namespace Stripe
         /// <c>current_deadline</c> becomes set.
         /// </summary>
         [JsonProperty("eventually_due")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("eventually_due")]
-#endif
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
@@ -56,9 +41,6 @@ namespace Stripe
         /// need to be collected to enable the person's account.
         /// </summary>
         [JsonProperty("past_due")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("past_due")]
-#endif
         public List<string> PastDue { get; set; }
 
         /// <summary>
@@ -70,9 +52,6 @@ namespace Stripe
         /// verification is still pending.
         /// </summary>
         [JsonProperty("pending_verification")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("pending_verification")]
-#endif
         public List<string> PendingVerification { get; set; }
     }
 }

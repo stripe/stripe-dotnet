@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CashBalanceSettings : StripeEntity<CashBalanceSettings>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("reconciliation_mode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reconciliation_mode")]
-#endif
         public string ReconciliationMode { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe
         /// to this customer cash balance.
         /// </summary>
         [JsonProperty("using_merchant_default")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("using_merchant_default")]
-#endif
         public bool UsingMerchantDefault { get; set; }
     }
 }

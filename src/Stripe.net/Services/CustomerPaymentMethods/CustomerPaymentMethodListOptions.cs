@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CustomerPaymentMethodListOptions : ListOptions
     {
@@ -16,9 +13,6 @@ namespace Stripe
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("allow_redisplay")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("allow_redisplay")]
-#endif
         public string AllowRedisplay { get; set; }
 
         /// <summary>
@@ -37,9 +31,6 @@ namespace Stripe
         /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

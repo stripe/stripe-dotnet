@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class InvoiceAutomaticTaxOptions : INestedOptions
     {
@@ -15,9 +12,6 @@ namespace Stripe
         /// <c>tax_behavior=unspecified</c>) cannot be added to automatic tax invoices.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("enabled")]
-#endif
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -26,9 +20,6 @@ namespace Stripe
         /// transaction is returned in the report of the connected account.
         /// </summary>
         [JsonProperty("liability")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("liability")]
-#endif
         public InvoiceAutomaticTaxLiabilityOptions Liability { get; set; }
     }
 }

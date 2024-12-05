@@ -4,9 +4,6 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class RefundNextActionDisplayDetailsEmailSent : StripeEntity<RefundNextActionDisplayDetailsEmailSent>
     {
@@ -15,19 +12,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("email_sent_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("email_sent_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime EmailSentAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The recipient's email address.
         /// </summary>
         [JsonProperty("email_sent_to")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("email_sent_to")]
-#endif
         public string EmailSentTo { get; set; }
     }
 }

@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class TransferReversalCreateOptions : BaseOptions, IHasMetadata
     {
@@ -16,9 +13,6 @@ namespace Stripe
         /// to the entire transfer amount.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -26,9 +20,6 @@ namespace Stripe
         /// POST an empty value.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -38,9 +29,6 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -50,9 +38,6 @@ namespace Stripe
         /// the amount of the transfer reversed.
         /// </summary>
         [JsonProperty("refund_application_fee")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_application_fee")]
-#endif
         public bool? RefundApplicationFee { get; set; }
     }
 }

@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class WebhookEndpointUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -13,18 +10,12 @@ namespace Stripe
         /// An optional description of what the webhook is used for.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// Disable the webhook endpoint if set to true.
         /// </summary>
         [JsonProperty("disabled")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("disabled")]
-#endif
         public bool? Disabled { get; set; }
 
         /// <summary>
@@ -154,9 +145,6 @@ namespace Stripe
         /// <c>ping</c>.
         /// </summary>
         [JsonProperty("enabled_events")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("enabled_events")]
-#endif
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
@@ -166,18 +154,12 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The URL of the webhook endpoint.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

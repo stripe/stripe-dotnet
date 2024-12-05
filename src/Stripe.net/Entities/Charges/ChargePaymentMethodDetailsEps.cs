@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ChargePaymentMethodDetailsEps : StripeEntity<ChargePaymentMethodDetailsEps>
     {
@@ -38,9 +35,6 @@ namespace Stripe
         /// <c>vr_bank_braunau</c>.
         /// </summary>
         [JsonProperty("bank")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bank")]
-#endif
         public string Bank { get; set; }
 
         /// <summary>
@@ -49,9 +43,6 @@ namespace Stripe
         /// EPS rarely provides this information so the attribute is usually empty.
         /// </summary>
         [JsonProperty("verified_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("verified_name")]
-#endif
         public string VerifiedName { get; set; }
     }
 }

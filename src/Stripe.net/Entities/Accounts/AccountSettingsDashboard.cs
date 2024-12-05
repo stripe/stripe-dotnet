@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountSettingsDashboard : StripeEntity<AccountSettingsDashboard>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// between accounts.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -24,9 +18,6 @@ namespace Stripe
         /// Database</a>.
         /// </summary>
         [JsonProperty("timezone")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("timezone")]
-#endif
         public string Timezone { get; set; }
     }
 }

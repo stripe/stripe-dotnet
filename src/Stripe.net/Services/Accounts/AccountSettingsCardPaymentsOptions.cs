@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountSettingsCardPaymentsOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// accepted or declined the charge.
         /// </summary>
         [JsonProperty("decline_on")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("decline_on")]
-#endif
         public AccountSettingsCardPaymentsDeclineOnOptions DeclineOn { get; set; }
 
         /// <summary>
@@ -25,9 +19,6 @@ namespace Stripe
         /// dynamic portion.
         /// </summary>
         [JsonProperty("statement_descriptor_prefix")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("statement_descriptor_prefix")]
-#endif
         public string StatementDescriptorPrefix { get; set; }
 
         /// <summary>
@@ -38,9 +29,6 @@ namespace Stripe
         /// the dynamic portion.
         /// </summary>
         [JsonProperty("statement_descriptor_prefix_kana")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("statement_descriptor_prefix_kana")]
-#endif
         public string StatementDescriptorPrefixKana { get; set; }
 
         /// <summary>
@@ -51,9 +39,6 @@ namespace Stripe
         /// the dynamic portion.
         /// </summary>
         [JsonProperty("statement_descriptor_prefix_kanji")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("statement_descriptor_prefix_kanji")]
-#endif
         public string StatementDescriptorPrefixKanji { get; set; }
     }
 }

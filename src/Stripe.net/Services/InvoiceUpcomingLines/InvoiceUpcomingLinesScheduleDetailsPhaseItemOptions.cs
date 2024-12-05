@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class InvoiceUpcomingLinesScheduleDetailsPhaseItemOptions : INestedOptions, IHasMetadata
     {
@@ -15,18 +12,12 @@ namespace Stripe
         /// thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_thresholds")]
-#endif
         public InvoiceUpcomingLinesScheduleDetailsPhaseItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
         /// The coupons to redeem into discounts for the subscription item.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discounts")]
-#endif
         public List<InvoiceUpcomingLinesScheduleDetailsPhaseItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -40,9 +31,6 @@ namespace Stripe
         /// configuration item's <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -50,18 +38,12 @@ namespace Stripe
         /// <c>price</c>.
         /// </summary>
         [JsonProperty("plan")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("plan")]
-#endif
         public string Plan { get; set; }
 
         /// <summary>
         /// The ID of the price object.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -69,9 +51,6 @@ namespace Stripe
         /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price_data")]
-#endif
         public InvoiceUpcomingLinesScheduleDetailsPhaseItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -79,9 +58,6 @@ namespace Stripe
         /// <c>licensed</c> and not <c>metered</c>.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -92,9 +68,6 @@ namespace Stripe
         /// tax rates.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
     }
 }

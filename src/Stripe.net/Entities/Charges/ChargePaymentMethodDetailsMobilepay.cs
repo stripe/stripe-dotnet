@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ChargePaymentMethodDetailsMobilepay : StripeEntity<ChargePaymentMethodDetailsMobilepay>
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// Internal card details.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("card")]
-#endif
         public ChargePaymentMethodDetailsMobilepayCard Card { get; set; }
     }
 }

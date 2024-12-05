@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentLinkCustomFieldOptions : INestedOptions
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// Configuration for <c>type=dropdown</c> fields.
         /// </summary>
         [JsonProperty("dropdown")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("dropdown")]
-#endif
         public PaymentLinkCustomFieldDropdownOptions Dropdown { get; set; }
 
         /// <summary>
@@ -22,27 +16,18 @@ namespace Stripe
         /// unique to this field, alphanumeric, and up to 200 characters.
         /// </summary>
         [JsonProperty("key")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("key")]
-#endif
         public string Key { get; set; }
 
         /// <summary>
         /// The label for the field, displayed to the customer.
         /// </summary>
         [JsonProperty("label")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("label")]
-#endif
         public PaymentLinkCustomFieldLabelOptions Label { get; set; }
 
         /// <summary>
         /// Configuration for <c>type=numeric</c> fields.
         /// </summary>
         [JsonProperty("numeric")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("numeric")]
-#endif
         public PaymentLinkCustomFieldNumericOptions Numeric { get; set; }
 
         /// <summary>
@@ -50,18 +35,12 @@ namespace Stripe
         /// Session. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("optional")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("optional")]
-#endif
         public bool? Optional { get; set; }
 
         /// <summary>
         /// Configuration for <c>type=text</c> fields.
         /// </summary>
         [JsonProperty("text")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("text")]
-#endif
         public PaymentLinkCustomFieldTextOptions Text { get; set; }
 
         /// <summary>
@@ -69,9 +48,6 @@ namespace Stripe
         /// One of: <c>dropdown</c>, <c>numeric</c>, or <c>text</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

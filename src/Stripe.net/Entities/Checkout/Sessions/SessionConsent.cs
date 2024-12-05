@@ -2,9 +2,6 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionConsent : StripeEntity<SessionConsent>
     {
@@ -14,9 +11,6 @@ namespace Stripe.Checkout
         /// One of: <c>opt_in</c>, or <c>opt_out</c>.
         /// </summary>
         [JsonProperty("promotions")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("promotions")]
-#endif
         public string Promotions { get; set; }
 
         /// <summary>
@@ -24,9 +18,6 @@ namespace Stripe.Checkout
         /// terms of service.
         /// </summary>
         [JsonProperty("terms_of_service")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("terms_of_service")]
-#endif
         public string TermsOfService { get; set; }
     }
 }

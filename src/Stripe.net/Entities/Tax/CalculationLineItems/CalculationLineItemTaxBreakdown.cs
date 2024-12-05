@@ -2,9 +2,6 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CalculationLineItemTaxBreakdown : StripeEntity<CalculationLineItemTaxBreakdown>
     {
@@ -13,15 +10,9 @@ namespace Stripe.Tax
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         [JsonProperty("jurisdiction")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("jurisdiction")]
-#endif
         public CalculationLineItemTaxBreakdownJurisdiction Jurisdiction { get; set; }
 
         /// <summary>
@@ -30,9 +21,6 @@ namespace Stripe.Tax
         /// One of: <c>destination</c>, or <c>origin</c>.
         /// </summary>
         [JsonProperty("sourcing")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("sourcing")]
-#endif
         public string Sourcing { get; set; }
 
         /// <summary>
@@ -40,9 +28,6 @@ namespace Stripe.Tax
         /// not imposed, for example if the product is exempt from tax.
         /// </summary>
         [JsonProperty("tax_rate_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_rate_details")]
-#endif
         public CalculationLineItemTaxBreakdownTaxRateDetails TaxRateDetails { get; set; }
 
         /// <summary>
@@ -55,9 +40,6 @@ namespace Stripe.Tax
         /// <c>standard_rated</c>, <c>taxable_basis_reduced</c>, or <c>zero_rated</c>.
         /// </summary>
         [JsonProperty("taxability_reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("taxability_reason")]
-#endif
         public string TaxabilityReason { get; set; }
 
         /// <summary>
@@ -65,9 +47,6 @@ namespace Stripe.Tax
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("taxable_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("taxable_amount")]
-#endif
         public long TaxableAmount { get; set; }
     }
 }
