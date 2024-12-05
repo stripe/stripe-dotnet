@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// This is an object representing your Stripe balance. You can retrieve it to see the
@@ -27,9 +24,6 @@ namespace Stripe
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -39,9 +33,6 @@ namespace Stripe
         /// balance for each currency and payment type in the <c>source_types</c> property.
         /// </summary>
         [JsonProperty("available")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("available")]
-#endif
         public List<BalanceAmount> Available { get; set; }
 
         /// <summary>
@@ -51,24 +42,15 @@ namespace Stripe
         /// balance for each currency and payment type in the <c>source_types</c> property.
         /// </summary>
         [JsonProperty("connect_reserved")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("connect_reserved")]
-#endif
         public List<BalanceAmount> ConnectReserved { get; set; }
 
         /// <summary>
         /// Funds that you can pay out using Instant Payouts.
         /// </summary>
         [JsonProperty("instant_available")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("instant_available")]
-#endif
         public List<BalanceInstantAvailable> InstantAvailable { get; set; }
 
         [JsonProperty("issuing")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("issuing")]
-#endif
         public BalanceIssuing Issuing { get; set; }
 
         /// <summary>
@@ -76,9 +58,6 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -86,9 +65,6 @@ namespace Stripe
         /// each currency and each payment type in the <c>source_types</c> property.
         /// </summary>
         [JsonProperty("pending")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("pending")]
-#endif
         public List<BalanceAmount> Pending { get; set; }
     }
 }

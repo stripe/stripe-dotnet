@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SetupIntentPaymentMethodOptionsLinkOptions : INestedOptions
     {
@@ -14,9 +11,6 @@ namespace Stripe
         /// </summary>
         [Obsolete("This property is deprecated, please refer to the description for details.")]
         [JsonProperty("persistent_token")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("persistent_token")]
-#endif
         public string PersistentToken { get; set; }
     }
 }

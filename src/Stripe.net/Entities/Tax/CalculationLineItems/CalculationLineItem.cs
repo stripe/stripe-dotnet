@@ -3,9 +3,6 @@ namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CalculationLineItem : StripeEntity<CalculationLineItem>, IHasId, IHasObject
     {
@@ -13,18 +10,12 @@ namespace Stripe.Tax
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -34,9 +25,6 @@ namespace Stripe.Tax
         /// calculated on top of this amount.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -44,9 +32,6 @@ namespace Stripe.Tax
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_tax")]
-#endif
         public long AmountTax { get; set; }
 
         /// <summary>
@@ -54,18 +39,12 @@ namespace Stripe.Tax
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The ID of an existing <a href="https://stripe.com/docs/api/products/object">Product</a>.
         /// </summary>
         [JsonProperty("product")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("product")]
-#endif
         public string Product { get; set; }
 
         /// <summary>
@@ -73,18 +52,12 @@ namespace Stripe.Tax
         /// reversed.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("quantity")]
-#endif
         public long Quantity { get; set; }
 
         /// <summary>
         /// A custom identifier for this line item.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -93,18 +66,12 @@ namespace Stripe.Tax
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
         /// Detailed account of taxes relevant to this line item.
         /// </summary>
         [JsonProperty("tax_breakdown")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_breakdown")]
-#endif
         public List<CalculationLineItemTaxBreakdown> TaxBreakdown { get; set; }
 
         /// <summary>
@@ -112,9 +79,6 @@ namespace Stripe.Tax
         /// resource.
         /// </summary>
         [JsonProperty("tax_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_code")]
-#endif
         public string TaxCode { get; set; }
     }
 }

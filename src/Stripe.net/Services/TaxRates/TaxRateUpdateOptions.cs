@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class TaxRateUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -15,9 +12,6 @@ namespace Stripe
         /// subscriptions and invoices that already have it set.
         /// </summary>
         [JsonProperty("active")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("active")]
-#endif
         public bool? Active { get; set; }
 
         /// <summary>
@@ -25,9 +19,6 @@ namespace Stripe
         /// 3166-1 alpha-2</a>).
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -35,18 +26,12 @@ namespace Stripe
         /// visible to your customers.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// The display name of the tax rate, which will be shown to users.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -54,9 +39,6 @@ namespace Stripe
         /// purposes. It also appears on your customer’s invoice.
         /// </summary>
         [JsonProperty("jurisdiction")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("jurisdiction")]
-#endif
         public string Jurisdiction { get; set; }
 
         /// <summary>
@@ -66,9 +48,6 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -76,9 +55,6 @@ namespace Stripe
         /// without country prefix. For example, "NY" for New York, United States.
         /// </summary>
         [JsonProperty("state")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("state")]
-#endif
         public string State { get; set; }
 
         /// <summary>
@@ -89,9 +65,6 @@ namespace Stripe
         /// <c>vat</c>.
         /// </summary>
         [JsonProperty("tax_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_type")]
-#endif
         public string TaxType { get; set; }
     }
 }

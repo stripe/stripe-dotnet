@@ -2,9 +2,6 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class TransactionRefundOptions : BaseOptions
     {
@@ -14,9 +11,6 @@ namespace Stripe.TestHelpers.Issuing
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("refund_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_amount")]
-#endif
         public long? RefundAmount { get; set; }
     }
 }

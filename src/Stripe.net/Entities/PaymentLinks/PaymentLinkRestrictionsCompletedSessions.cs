@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentLinkRestrictionsCompletedSessions : StripeEntity<PaymentLinkRestrictionsCompletedSessions>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// which count towards the <c>completed_sessions</c> restriction to be met.
         /// </summary>
         [JsonProperty("count")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("count")]
-#endif
         public long Count { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe
         /// <c>completed_sessions</c> restriction to be met.
         /// </summary>
         [JsonProperty("limit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("limit")]
-#endif
         public long Limit { get; set; }
     }
 }

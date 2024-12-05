@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class FileListOptions : ListOptionsWithCreated
     {
@@ -20,9 +17,6 @@ namespace Stripe
         /// <c>tax_document_user_upload</c>, or <c>terminal_reader_splashscreen</c>.
         /// </summary>
         [JsonProperty("purpose")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("purpose")]
-#endif
         public string Purpose { get; set; }
     }
 }

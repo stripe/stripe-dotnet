@@ -4,9 +4,6 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Tokenization is the process Stripe uses to collect sensitive card or bank account
@@ -34,18 +31,12 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -59,9 +50,6 @@ namespace Stripe
         /// and transfers</a>.
         /// </summary>
         [JsonProperty("bank_account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bank_account")]
-#endif
         public BankAccount BankAccount { get; set; }
 
         /// <summary>
@@ -73,18 +61,12 @@ namespace Stripe
         /// Sources</a>.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("card")]
-#endif
         public Card Card { get; set; }
 
         /// <summary>
         /// IP address of the client that generates the token.
         /// </summary>
         [JsonProperty("client_ip")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("client_ip")]
-#endif
         public string ClientIp { get; set; }
 
         /// <summary>
@@ -92,10 +74,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -103,27 +81,18 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// Type of the token: <c>account</c>, <c>bank_account</c>, <c>card</c>, or <c>pii</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// Determines if you have already used this token (you can only use tokens once).
         /// </summary>
         [JsonProperty("used")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("used")]
-#endif
         public bool Used { get; set; }
     }
 }

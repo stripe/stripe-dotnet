@@ -3,22 +3,13 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class InvoiceTotalPretaxCreditAmount : StripeEntity<InvoiceTotalPretaxCreditAmount>
     {
         /// <summary>
         /// The amount, in cents (or local equivalent), of the pretax credit amount.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         #region Expandable CreditBalanceTransaction
@@ -28,9 +19,6 @@ namespace Stripe
         /// The credit balance transaction that was applied to get this pretax credit amount.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string CreditBalanceTransactionId
         {
             get => this.InternalCreditBalanceTransaction?.Id;
@@ -44,9 +32,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public Billing.CreditBalanceTransaction CreditBalanceTransaction
         {
             get => this.InternalCreditBalanceTransaction?.ExpandedObject;
@@ -55,10 +40,6 @@ namespace Stripe
 
         [JsonProperty("credit_balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Billing.CreditBalanceTransaction>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("credit_balance_transaction")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Billing.CreditBalanceTransaction>))]
-#endif
         internal ExpandableField<Billing.CreditBalanceTransaction> InternalCreditBalanceTransaction { get; set; }
         #endregion
 
@@ -69,9 +50,6 @@ namespace Stripe
         /// The discount that was applied to get this pretax credit amount.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string DiscountId
         {
             get => this.InternalDiscount?.Id;
@@ -85,9 +63,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public Discount Discount
         {
             get => this.InternalDiscount?.ExpandedObject;
@@ -96,10 +71,6 @@ namespace Stripe
 
         [JsonProperty("discount")]
         [JsonConverter(typeof(ExpandableFieldConverter<Discount>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discount")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Discount>))]
-#endif
         internal ExpandableField<Discount> InternalDiscount { get; set; }
         #endregion
 
@@ -108,9 +79,6 @@ namespace Stripe
         /// One of: <c>credit_balance_transaction</c>, or <c>discount</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

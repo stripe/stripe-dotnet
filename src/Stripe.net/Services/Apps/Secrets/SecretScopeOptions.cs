@@ -2,9 +2,6 @@
 namespace Stripe.Apps
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SecretScopeOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe.Apps
         /// One of: <c>account</c>, or <c>user</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe.Apps
         /// be provided if <c>type</c> is set to <c>account</c>.
         /// </summary>
         [JsonProperty("user")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("user")]
-#endif
         public string User { get; set; }
     }
 }

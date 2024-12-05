@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentLinkCustomFieldDropdownOption : StripeEntity<PaymentLinkCustomFieldDropdownOption>
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// The label for the option, displayed to the customer. Up to 100 characters.
         /// </summary>
         [JsonProperty("label")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("label")]
-#endif
         public string Label { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe
         /// alphanumeric, and up to 100 characters.
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("value")]
-#endif
         public string Value { get; set; }
     }
 }

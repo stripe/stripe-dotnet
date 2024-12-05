@@ -2,9 +2,6 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionAfterExpirationRecoveryOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe.Checkout
         /// <c>false</c>.
         /// </summary>
         [JsonProperty("allow_promotion_codes")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("allow_promotion_codes")]
-#endif
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
@@ -24,9 +18,6 @@ namespace Stripe.Checkout
         /// Checkout Session object upon expiration.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("enabled")]
-#endif
         public bool? Enabled { get; set; }
     }
 }

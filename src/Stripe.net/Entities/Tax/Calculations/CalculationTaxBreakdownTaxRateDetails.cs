@@ -2,9 +2,6 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CalculationTaxBreakdownTaxRateDetails : StripeEntity<CalculationTaxBreakdownTaxRateDetails>
     {
@@ -13,9 +10,6 @@ namespace Stripe.Tax
         /// 3166-1 alpha-2</a>).
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -25,18 +19,12 @@ namespace Stripe.Tax
         /// rate.
         /// </summary>
         [JsonProperty("flat_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("flat_amount")]
-#endif
         public CalculationTaxBreakdownTaxRateDetailsFlatAmount FlatAmount { get; set; }
 
         /// <summary>
         /// The tax rate percentage as a string. For example, 8.5% is represented as <c>"8.5"</c>.
         /// </summary>
         [JsonProperty("percentage_decimal")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("percentage_decimal")]
-#endif
         public string PercentageDecimal { get; set; }
 
         /// <summary>
@@ -45,18 +33,12 @@ namespace Stripe.Tax
         /// One of: <c>flat_amount</c>, or <c>percentage</c>.
         /// </summary>
         [JsonProperty("rate_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("rate_type")]
-#endif
         public string RateType { get; set; }
 
         /// <summary>
         /// State, county, province, or region.
         /// </summary>
         [JsonProperty("state")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("state")]
-#endif
         public string State { get; set; }
 
         /// <summary>
@@ -67,9 +49,6 @@ namespace Stripe.Tax
         /// <c>vat</c>.
         /// </summary>
         [JsonProperty("tax_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_type")]
-#endif
         public string TaxType { get; set; }
     }
 }

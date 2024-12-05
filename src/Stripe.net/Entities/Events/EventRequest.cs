@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class EventRequest : StripeEntity<EventRequest>, IHasId
     {
@@ -14,9 +11,6 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/logs">dashboard</a>, but currently not in the API.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -24,9 +18,6 @@ namespace Stripe
         /// populated only for events on or after May 23, 2017</em>.
         /// </summary>
         [JsonProperty("idempotency_key")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("idempotency_key")]
-#endif
         public string IdempotencyKey { get; set; }
     }
 }

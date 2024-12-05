@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentLinkSubscriptionData : StripeEntity<PaymentLinkSubscriptionData>, IHasMetadata
     {
@@ -15,15 +12,9 @@ namespace Stripe
         /// and certain local payment methods UIs.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         [JsonProperty("invoice_settings")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("invoice_settings")]
-#endif
         public PaymentLinkSubscriptionDataInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
@@ -32,9 +23,6 @@ namespace Stripe
         /// generated from this payment link.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -42,18 +30,12 @@ namespace Stripe
         /// the first time.
         /// </summary>
         [JsonProperty("trial_period_days")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("trial_period_days")]
-#endif
         public long? TrialPeriodDays { get; set; }
 
         /// <summary>
         /// Settings related to subscription trials.
         /// </summary>
         [JsonProperty("trial_settings")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("trial_settings")]
-#endif
         public PaymentLinkSubscriptionDataTrialSettings TrialSettings { get; set; }
     }
 }

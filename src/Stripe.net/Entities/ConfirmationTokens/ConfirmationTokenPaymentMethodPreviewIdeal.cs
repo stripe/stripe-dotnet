@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ConfirmationTokenPaymentMethodPreviewIdeal : StripeEntity<ConfirmationTokenPaymentMethodPreviewIdeal>
     {
@@ -19,9 +16,6 @@ namespace Stripe
         /// <c>yoursafe</c>.
         /// </summary>
         [JsonProperty("bank")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bank")]
-#endif
         public string Bank { get; set; }
 
         /// <summary>
@@ -32,9 +26,6 @@ namespace Stripe
         /// <c>REVOLT21</c>, <c>SNSBNL2A</c>, or <c>TRIONL2U</c>.
         /// </summary>
         [JsonProperty("bic")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bic")]
-#endif
         public string Bic { get; set; }
     }
 }

@@ -5,9 +5,6 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class InvoiceUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -16,9 +13,6 @@ namespace Stripe
         /// draft.
         /// </summary>
         [JsonProperty("account_tax_ids")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account_tax_ids")]
-#endif
         public List<string> AccountTaxIds { get; set; }
 
         /// <summary>
@@ -29,9 +23,6 @@ namespace Stripe
         /// href="https://stripe.com/docs/billing/invoices/connect#collecting-fees">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("application_fee_amount")]
-#endif
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -40,18 +31,12 @@ namespace Stripe
         /// collection</a> of the invoice.
         /// </summary>
         [JsonProperty("auto_advance")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("auto_advance")]
-#endif
         public bool? AutoAdvance { get; set; }
 
         /// <summary>
         /// Settings for automatic tax lookup for this invoice.
         /// </summary>
         [JsonProperty("automatic_tax")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("automatic_tax")]
-#endif
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -61,10 +46,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("automatically_finalizes_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("automatically_finalizes_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? AutomaticallyFinalizesAt { get; set; }
 
         /// <summary>
@@ -73,9 +54,6 @@ namespace Stripe
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("collection_method")]
-#endif
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -84,9 +62,6 @@ namespace Stripe
         /// field list on this invoice. Pass an empty string to remove previously-defined fields.
         /// </summary>
         [JsonProperty("custom_fields")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("custom_fields")]
-#endif
         public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
@@ -95,9 +70,6 @@ namespace Stripe
         /// <c>draft</c> invoices.
         /// </summary>
         [JsonProperty("days_until_due")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("days_until_due")]
-#endif
         public long? DaysUntilDue { get; set; }
 
         /// <summary>
@@ -106,9 +78,6 @@ namespace Stripe
         /// method, if any, or to the default payment method in the customer's invoice settings.
         /// </summary>
         [JsonProperty("default_payment_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("default_payment_method")]
-#endif
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
@@ -117,9 +86,6 @@ namespace Stripe
         /// subscription's default source, if any, or to the customer's default source.
         /// </summary>
         [JsonProperty("default_source")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("default_source")]
-#endif
         public string DefaultSource { get; set; }
 
         /// <summary>
@@ -127,9 +93,6 @@ namespace Stripe
         /// Pass an empty string to remove previously-defined tax rates.
         /// </summary>
         [JsonProperty("default_tax_rates")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("default_tax_rates")]
-#endif
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
@@ -137,9 +100,6 @@ namespace Stripe
         /// Referenced as 'memo' in the Dashboard.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -147,9 +107,6 @@ namespace Stripe
         /// previously-defined discounts.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discounts")]
-#endif
         public List<InvoiceDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -159,10 +116,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("due_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("due_date")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? DueDate { get; set; }
 
         /// <summary>
@@ -172,19 +125,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? EffectiveAt { get; set; }
 
         /// <summary>
         /// Footer to be displayed on the invoice.
         /// </summary>
         [JsonProperty("footer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("footer")]
-#endif
         public string Footer { get; set; }
 
         /// <summary>
@@ -192,9 +138,6 @@ namespace Stripe
         /// branding and support information of the specified account.
         /// </summary>
         [JsonProperty("issuer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("issuer")]
-#endif
         public InvoiceIssuerOptions Issuer { get; set; }
 
         /// <summary>
@@ -204,9 +147,6 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -218,9 +158,6 @@ namespace Stripe
         /// invoice numbers, Stripe handles this aspect of compliance for you automatically.
         /// </summary>
         [JsonProperty("number")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("number")]
-#endif
         public string Number { get; set; }
 
         /// <summary>
@@ -230,9 +167,6 @@ namespace Stripe
         /// with Connect</a> documentation for details.
         /// </summary>
         [JsonProperty("on_behalf_of")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("on_behalf_of")]
-#endif
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -240,9 +174,6 @@ namespace Stripe
         /// finalized.
         /// </summary>
         [JsonProperty("payment_settings")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_settings")]
-#endif
         public InvoicePaymentSettingsOptions PaymentSettings { get; set; }
 
         /// <summary>
@@ -250,18 +181,12 @@ namespace Stripe
         /// customer-facing surfaces such as PDF and Hosted Invoice Page.
         /// </summary>
         [JsonProperty("rendering")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("rendering")]
-#endif
         public InvoiceRenderingOptions Rendering { get; set; }
 
         /// <summary>
         /// Settings for the cost of shipping for this invoice.
         /// </summary>
         [JsonProperty("shipping_cost")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_cost")]
-#endif
         public InvoiceShippingCostOptions ShippingCost { get; set; }
 
         /// <summary>
@@ -270,9 +195,6 @@ namespace Stripe
         /// customer.
         /// </summary>
         [JsonProperty("shipping_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_details")]
-#endif
         public InvoiceShippingDetailsOptions ShippingDetails { get; set; }
 
         /// <summary>
@@ -282,9 +204,6 @@ namespace Stripe
         /// subscription item's product's <c>statement_descriptor</c>.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -293,9 +212,6 @@ namespace Stripe
         /// if you POST an empty value.
         /// </summary>
         [JsonProperty("transfer_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transfer_data")]
-#endif
         public InvoiceTransferDataOptions TransferData { get; set; }
     }
 }

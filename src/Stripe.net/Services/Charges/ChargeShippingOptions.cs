@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ChargeShippingOptions : INestedOptions
     {
@@ -12,36 +9,24 @@ namespace Stripe
         /// Shipping address.
         /// </summary>
         [JsonProperty("address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("address")]
-#endif
         public AddressOptions Address { get; set; }
 
         /// <summary>
         /// The delivery service that shipped a physical product, such as Fedex, UPS, USPS, etc.
         /// </summary>
         [JsonProperty("carrier")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("carrier")]
-#endif
         public string Carrier { get; set; }
 
         /// <summary>
         /// Recipient name.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
 
         /// <summary>
         /// Recipient phone (including extension).
         /// </summary>
         [JsonProperty("phone")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("phone")]
-#endif
         public string Phone { get; set; }
 
         /// <summary>
@@ -50,9 +35,6 @@ namespace Stripe
         /// commas.
         /// </summary>
         [JsonProperty("tracking_number")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tracking_number")]
-#endif
         public string TrackingNumber { get; set; }
     }
 }

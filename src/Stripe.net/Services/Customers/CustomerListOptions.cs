@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CustomerListOptions : ListOptionsWithCreated
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// value must be a string.
         /// </summary>
         [JsonProperty("email")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("email")]
-#endif
         public string Email { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe
         /// response will not include customers with test clocks if this parameter is not set.
         /// </summary>
         [JsonProperty("test_clock")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("test_clock")]
-#endif
         public string TestClock { get; set; }
     }
 }

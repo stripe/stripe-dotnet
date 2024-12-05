@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ChargePaymentMethodDetailsKlarna : StripeEntity<ChargePaymentMethodDetailsKlarna>
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// The payer details for this transaction.
         /// </summary>
         [JsonProperty("payer_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payer_details")]
-#endif
         public ChargePaymentMethodDetailsKlarnaPayerDetails PayerDetails { get; set; }
 
         /// <summary>
@@ -22,9 +16,6 @@ namespace Stripe
         /// <c>pay_now</c>, <c>pay_with_financing</c>, or <c>pay_in_installments</c>.
         /// </summary>
         [JsonProperty("payment_method_category")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_category")]
-#endif
         public string PaymentMethodCategory { get; set; }
 
         /// <summary>
@@ -39,9 +30,6 @@ namespace Stripe
         /// <c>en-PT</c>, <c>de-CH</c>, <c>fr-CH</c>, <c>it-CH</c>, or <c>en-CH</c>.
         /// </summary>
         [JsonProperty("preferred_locale")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("preferred_locale")]
-#endif
         public string PreferredLocale { get; set; }
     }
 }

@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class TokenAccountIndividualOptions : INestedOptions, IHasMetadata
     {
@@ -13,90 +10,60 @@ namespace Stripe
         /// The individual's primary address.
         /// </summary>
         [JsonProperty("address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("address")]
-#endif
         public AddressOptions Address { get; set; }
 
         /// <summary>
         /// The Kana variation of the individual's primary address (Japan only).
         /// </summary>
         [JsonProperty("address_kana")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("address_kana")]
-#endif
         public AddressJapanOptions AddressKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the individual's primary address (Japan only).
         /// </summary>
         [JsonProperty("address_kanji")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("address_kanji")]
-#endif
         public AddressJapanOptions AddressKanji { get; set; }
 
         /// <summary>
         /// The individual's date of birth.
         /// </summary>
         [JsonProperty("dob")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("dob")]
-#endif
         public DobOptions Dob { get; set; }
 
         /// <summary>
         /// The individual's email address.
         /// </summary>
         [JsonProperty("email")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("email")]
-#endif
         public string Email { get; set; }
 
         /// <summary>
         /// The individual's first name.
         /// </summary>
         [JsonProperty("first_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("first_name")]
-#endif
         public string FirstName { get; set; }
 
         /// <summary>
         /// The Kana variation of the individual's first name (Japan only).
         /// </summary>
         [JsonProperty("first_name_kana")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("first_name_kana")]
-#endif
         public string FirstNameKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the individual's first name (Japan only).
         /// </summary>
         [JsonProperty("first_name_kanji")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("first_name_kanji")]
-#endif
         public string FirstNameKanji { get; set; }
 
         /// <summary>
         /// A list of alternate names or aliases that the individual is known by.
         /// </summary>
         [JsonProperty("full_name_aliases")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("full_name_aliases")]
-#endif
         public List<string> FullNameAliases { get; set; }
 
         /// <summary>
         /// The individual's gender.
         /// </summary>
         [JsonProperty("gender")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("gender")]
-#endif
         public string Gender { get; set; }
 
         /// <summary>
@@ -107,9 +74,6 @@ namespace Stripe
         /// Stripe.js</a>.
         /// </summary>
         [JsonProperty("id_number")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id_number")]
-#endif
         public string IdNumber { get; set; }
 
         /// <summary>
@@ -121,45 +85,30 @@ namespace Stripe
         /// Stripe.js</a>.
         /// </summary>
         [JsonProperty("id_number_secondary")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id_number_secondary")]
-#endif
         public string IdNumberSecondary { get; set; }
 
         /// <summary>
         /// The individual's last name.
         /// </summary>
         [JsonProperty("last_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("last_name")]
-#endif
         public string LastName { get; set; }
 
         /// <summary>
         /// The Kana variation of the individual's last name (Japan only).
         /// </summary>
         [JsonProperty("last_name_kana")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("last_name_kana")]
-#endif
         public string LastNameKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the individual's last name (Japan only).
         /// </summary>
         [JsonProperty("last_name_kanji")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("last_name_kanji")]
-#endif
         public string LastNameKanji { get; set; }
 
         /// <summary>
         /// The individual's maiden name.
         /// </summary>
         [JsonProperty("maiden_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("maiden_name")]
-#endif
         public string MaidenName { get; set; }
 
         /// <summary>
@@ -169,18 +118,12 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The individual's phone number.
         /// </summary>
         [JsonProperty("phone")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("phone")]
-#endif
         public string Phone { get; set; }
 
         /// <summary>
@@ -190,45 +133,30 @@ namespace Stripe
         /// One of: <c>existing</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("political_exposure")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("political_exposure")]
-#endif
         public string PoliticalExposure { get; set; }
 
         /// <summary>
         /// The individual's registered address.
         /// </summary>
         [JsonProperty("registered_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("registered_address")]
-#endif
         public AddressOptions RegisteredAddress { get; set; }
 
         /// <summary>
         /// Describes the person’s relationship to the account.
         /// </summary>
         [JsonProperty("relationship")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("relationship")]
-#endif
         public TokenAccountIndividualRelationshipOptions Relationship { get; set; }
 
         /// <summary>
         /// The last four digits of the individual's Social Security Number (U.S. only).
         /// </summary>
         [JsonProperty("ssn_last_4")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("ssn_last_4")]
-#endif
         public string SsnLast4 { get; set; }
 
         /// <summary>
         /// The individual's verification document information.
         /// </summary>
         [JsonProperty("verification")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("verification")]
-#endif
         public TokenAccountIndividualVerificationOptions Verification { get; set; }
     }
 }

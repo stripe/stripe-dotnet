@@ -2,9 +2,6 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionConsentCollection : StripeEntity<SessionConsentCollection>
     {
@@ -13,9 +10,6 @@ namespace Stripe.Checkout
         /// method.
         /// </summary>
         [JsonProperty("payment_method_reuse_agreement")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_reuse_agreement")]
-#endif
         public SessionConsentCollectionPaymentMethodReuseAgreement PaymentMethodReuseAgreement { get; set; }
 
         /// <summary>
@@ -26,9 +20,6 @@ namespace Stripe.Checkout
         /// One of: <c>auto</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("promotions")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("promotions")]
-#endif
         public string Promotions { get; set; }
 
         /// <summary>
@@ -37,9 +28,6 @@ namespace Stripe.Checkout
         /// One of: <c>none</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("terms_of_service")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("terms_of_service")]
-#endif
         public string TermsOfService { get; set; }
     }
 }

@@ -2,9 +2,6 @@
 namespace Stripe.Identity
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class VerificationSessionLastError : StripeEntity<VerificationSessionLastError>
     {
@@ -22,18 +19,12 @@ namespace Stripe.Identity
         /// or <c>under_supported_age</c>.
         /// </summary>
         [JsonProperty("code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("code")]
-#endif
         public string Code { get; set; }
 
         /// <summary>
         /// A message that explains the reason for verification or user-session failure.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
     }
 }

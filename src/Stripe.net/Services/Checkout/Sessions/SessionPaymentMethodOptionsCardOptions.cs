@@ -2,9 +2,6 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionPaymentMethodOptionsCardOptions : INestedOptions
     {
@@ -12,9 +9,6 @@ namespace Stripe.Checkout
         /// Installment options for card payments.
         /// </summary>
         [JsonProperty("installments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("installments")]
-#endif
         public SessionPaymentMethodOptionsCardInstallmentsOptions Installments { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_extended_authorization")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("request_extended_authorization")]
-#endif
         public string RequestExtendedAuthorization { get; set; }
 
         /// <summary>
@@ -35,9 +26,6 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_incremental_authorization")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("request_incremental_authorization")]
-#endif
         public string RequestIncrementalAuthorization { get; set; }
 
         /// <summary>
@@ -46,9 +34,6 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_multicapture")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("request_multicapture")]
-#endif
         public string RequestMulticapture { get; set; }
 
         /// <summary>
@@ -57,9 +42,6 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_overcapture")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("request_overcapture")]
-#endif
         public string RequestOvercapture { get; set; }
 
         /// <summary>
@@ -75,9 +57,6 @@ namespace Stripe.Checkout
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("request_three_d_secure")]
-#endif
         public string RequestThreeDSecure { get; set; }
 
         /// <summary>
@@ -102,9 +81,6 @@ namespace Stripe.Checkout
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -115,9 +91,6 @@ namespace Stripe.Checkout
         /// (including separators) will appear truncated to 22 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kana")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
-#endif
         public string StatementDescriptorSuffixKana { get; set; }
 
         /// <summary>
@@ -128,9 +101,6 @@ namespace Stripe.Checkout
         /// (including separators) will appear truncated to 17 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
-#endif
         public string StatementDescriptorSuffixKanji { get; set; }
     }
 }

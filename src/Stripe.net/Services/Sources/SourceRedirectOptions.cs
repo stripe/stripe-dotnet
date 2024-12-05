@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SourceRedirectOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// payment. It can use your application URI scheme in the context of a mobile application.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
     }
 }

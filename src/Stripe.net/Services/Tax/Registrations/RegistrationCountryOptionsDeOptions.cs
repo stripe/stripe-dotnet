@@ -2,9 +2,6 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class RegistrationCountryOptionsDeOptions : INestedOptions
     {
@@ -12,9 +9,6 @@ namespace Stripe.Tax
         /// Options for the standard registration.
         /// </summary>
         [JsonProperty("standard")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("standard")]
-#endif
         public RegistrationCountryOptionsDeStandardOptions Standard { get; set; }
 
         /// <summary>
@@ -22,9 +16,6 @@ namespace Stripe.Tax
         /// One of: <c>ioss</c>, <c>oss_non_union</c>, <c>oss_union</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

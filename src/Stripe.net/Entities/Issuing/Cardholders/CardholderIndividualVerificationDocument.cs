@@ -3,13 +3,7 @@ namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class CardholderIndividualVerificationDocument : StripeEntity<CardholderIndividualVerificationDocument>
     {
         #region Expandable Back
@@ -21,9 +15,6 @@ namespace Stripe.Issuing
         /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string BackId
         {
             get => this.InternalBack?.Id;
@@ -39,9 +30,6 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File Back
         {
             get => this.InternalBack?.ExpandedObject;
@@ -50,10 +38,6 @@ namespace Stripe.Issuing
 
         [JsonProperty("back")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("back")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalBack { get; set; }
         #endregion
 
@@ -66,9 +50,6 @@ namespace Stripe.Issuing
         /// value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string FrontId
         {
             get => this.InternalFront?.Id;
@@ -84,9 +65,6 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File Front
         {
             get => this.InternalFront?.ExpandedObject;
@@ -95,10 +73,6 @@ namespace Stripe.Issuing
 
         [JsonProperty("front")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("front")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalFront { get; set; }
         #endregion
     }

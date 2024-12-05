@@ -3,13 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class ChargeOutcome : StripeEntity<ChargeOutcome>
     {
         /// <summary>
@@ -20,9 +14,6 @@ namespace Stripe
         /// bank authorization, and may temporarily appear as "pending" on a cardholder's statement.
         /// </summary>
         [JsonProperty("network_status")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("network_status")]
-#endif
         public string NetworkStatus { get; set; }
 
         /// <summary>
@@ -34,9 +25,6 @@ namespace Stripe
         /// href="https://stripe.com/docs/declines">understanding declines</a> for more details.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
 
         /// <summary>
@@ -47,9 +35,6 @@ namespace Stripe
         /// will have the value <c>unknown</c>. This field is only available with Radar.
         /// </summary>
         [JsonProperty("risk_level")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("risk_level")]
-#endif
         public string RiskLevel { get; set; }
 
         /// <summary>
@@ -59,9 +44,6 @@ namespace Stripe
         /// field will not be present. This field is only available with Radar for Fraud Teams.
         /// </summary>
         [JsonProperty("risk_score")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("risk_score")]
-#endif
         public long RiskScore { get; set; }
 
         #region Expandable Rule
@@ -71,9 +53,6 @@ namespace Stripe
         /// The ID of the Radar rule that matched the payment, if applicable.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string RuleId
         {
             get => this.InternalRule?.Id;
@@ -87,9 +66,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public Radar.Rule Rule
         {
             get => this.InternalRule?.ExpandedObject;
@@ -98,10 +74,6 @@ namespace Stripe
 
         [JsonProperty("rule")]
         [JsonConverter(typeof(ExpandableFieldConverter<Radar.Rule>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("rule")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Radar.Rule>))]
-#endif
         internal ExpandableField<Radar.Rule> InternalRule { get; set; }
         #endregion
 
@@ -110,9 +82,6 @@ namespace Stripe
         /// recipient of the payment), not your customer.
         /// </summary>
         [JsonProperty("seller_message")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("seller_message")]
-#endif
         public string SellerMessage { get; set; }
 
         /// <summary>
@@ -122,9 +91,6 @@ namespace Stripe
         /// href="https://stripe.com/docs/radar/reviews">Radar reviews</a> for details.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

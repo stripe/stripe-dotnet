@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class BalanceTransactionListOptions : ListOptionsWithCreated
     {
@@ -15,9 +12,6 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -25,18 +19,12 @@ namespace Stripe
         /// specified payout ID.
         /// </summary>
         [JsonProperty("payout")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payout")]
-#endif
         public string Payout { get; set; }
 
         /// <summary>
         /// Only returns the original transaction.
         /// </summary>
         [JsonProperty("source")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("source")]
-#endif
         public string Source { get; set; }
 
         /// <summary>
@@ -56,9 +44,6 @@ namespace Stripe
         /// or <c>transfer_refund</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

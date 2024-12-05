@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountSessionComponentsNotificationBannerFeaturesOptions : INestedOptions
     {
@@ -16,9 +13,6 @@ namespace Stripe
         /// otherwise.
         /// </summary>
         [JsonProperty("disable_stripe_user_authentication")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("disable_stripe_user_authentication")]
-#endif
         public bool? DisableStripeUserAuthentication { get; set; }
 
         /// <summary>
@@ -29,9 +23,6 @@ namespace Stripe
         /// The default value for this feature is <c>true</c>.
         /// </summary>
         [JsonProperty("external_account_collection")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("external_account_collection")]
-#endif
         public bool? ExternalAccountCollection { get; set; }
     }
 }

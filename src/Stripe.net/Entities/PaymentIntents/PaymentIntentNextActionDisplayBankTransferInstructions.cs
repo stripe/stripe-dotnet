@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentIntentNextActionDisplayBankTransferInstructions : StripeEntity<PaymentIntentNextActionDisplayBankTransferInstructions>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// The remaining amount that needs to be transferred to complete the payment.
         /// </summary>
         [JsonProperty("amount_remaining")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_remaining")]
-#endif
         public long? AmountRemaining { get; set; }
 
         /// <summary>
@@ -24,27 +18,18 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// A list of financial addresses that can be used to fund the customer balance.
         /// </summary>
         [JsonProperty("financial_addresses")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("financial_addresses")]
-#endif
         public List<PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddress> FinancialAddresses { get; set; }
 
         /// <summary>
         /// A link to a hosted page that guides your customer through completing the transfer.
         /// </summary>
         [JsonProperty("hosted_instructions_url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("hosted_instructions_url")]
-#endif
         public string HostedInstructionsUrl { get; set; }
 
         /// <summary>
@@ -52,9 +37,6 @@ namespace Stripe
         /// reference or memo field of their bank transfer.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -63,9 +45,6 @@ namespace Stripe
         /// <c>mx_bank_transfer</c>, or <c>us_bank_transfer</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

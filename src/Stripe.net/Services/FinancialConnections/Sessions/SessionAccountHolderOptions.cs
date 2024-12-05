@@ -2,9 +2,6 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionAccountHolderOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe.FinancialConnections
         /// <c>type</c> is <c>account</c>.
         /// </summary>
         [JsonProperty("account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account")]
-#endif
         public string Account { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe.FinancialConnections
         /// if <c>type</c> is <c>customer</c>.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -33,9 +24,6 @@ namespace Stripe.FinancialConnections
         /// One of: <c>account</c>, or <c>customer</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

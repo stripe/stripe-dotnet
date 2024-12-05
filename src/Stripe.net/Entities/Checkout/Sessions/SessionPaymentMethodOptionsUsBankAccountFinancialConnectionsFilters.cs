@@ -3,9 +3,6 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters : StripeEntity<SessionPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters>
     {
@@ -15,9 +12,6 @@ namespace Stripe.Checkout
         /// One of: <c>checking</c>, or <c>savings</c>.
         /// </summary>
         [JsonProperty("account_subcategories")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account_subcategories")]
-#endif
         public List<string> AccountSubcategories { get; set; }
     }
 }

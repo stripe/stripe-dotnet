@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ProductFeatureCreateOptions : BaseOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// object attached to this product.
         /// </summary>
         [JsonProperty("entitlement_feature")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("entitlement_feature")]
-#endif
         public string EntitlementFeature { get; set; }
     }
 }

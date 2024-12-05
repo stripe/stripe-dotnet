@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PriceUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// Whether the price can be used for new purchases. Defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("active")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("active")]
-#endif
         public bool? Active { get; set; }
 
         /// <summary>
@@ -24,9 +18,6 @@ namespace Stripe
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency_options")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("currency_options")]
-#endif
         public Dictionary<string, PriceCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
@@ -34,9 +25,6 @@ namespace Stripe
         /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -46,18 +34,12 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A brief description of the price, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("nickname")]
-#endif
         public string Nickname { get; set; }
 
         /// <summary>
@@ -70,9 +52,6 @@ namespace Stripe
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -80,9 +59,6 @@ namespace Stripe
         /// assign it to this price.
         /// </summary>
         [JsonProperty("transfer_lookup_key")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transfer_lookup_key")]
-#endif
         public bool? TransferLookupKey { get; set; }
     }
 }

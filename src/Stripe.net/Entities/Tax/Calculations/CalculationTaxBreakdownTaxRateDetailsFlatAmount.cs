@@ -2,9 +2,6 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CalculationTaxBreakdownTaxRateDetailsFlatAmount : StripeEntity<CalculationTaxBreakdownTaxRateDetailsFlatAmount>
     {
@@ -15,18 +12,12 @@ namespace Stripe.Tax
         /// eight digits (e.g., a value of 99999999 for a USD charge of $999,999.99).
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
         /// Three-letter ISO currency code, in lowercase.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
     }
 }

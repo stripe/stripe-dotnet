@@ -2,9 +2,6 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountOwnerListOptions : ListOptions
     {
@@ -12,9 +9,6 @@ namespace Stripe.FinancialConnections
         /// The ID of the ownership object to fetch owners from.
         /// </summary>
         [JsonProperty("ownership")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("ownership")]
-#endif
         public string Ownership { get; set; }
     }
 }

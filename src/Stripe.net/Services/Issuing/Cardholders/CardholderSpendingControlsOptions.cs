@@ -3,9 +3,6 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CardholderSpendingControlsOptions : INestedOptions
     {
@@ -161,9 +158,6 @@ namespace Stripe.Issuing
         /// <c>wrecking_and_salvage_yards</c>.
         /// </summary>
         [JsonProperty("allowed_categories")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("allowed_categories")]
-#endif
         public List<string> AllowedCategories { get; set; }
 
         /// <summary>
@@ -173,9 +167,6 @@ namespace Stripe.Issuing
         /// <c>blocked_merchant_countries</c>. Provide an empty value to unset this control.
         /// </summary>
         [JsonProperty("allowed_merchant_countries")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("allowed_merchant_countries")]
-#endif
         public List<string> AllowedMerchantCountries { get; set; }
 
         /// <summary>
@@ -330,9 +321,6 @@ namespace Stripe.Issuing
         /// <c>wrecking_and_salvage_yards</c>.
         /// </summary>
         [JsonProperty("blocked_categories")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("blocked_categories")]
-#endif
         public List<string> BlockedCategories { get; set; }
 
         /// <summary>
@@ -342,18 +330,12 @@ namespace Stripe.Issuing
         /// this control.
         /// </summary>
         [JsonProperty("blocked_merchant_countries")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("blocked_merchant_countries")]
-#endif
         public List<string> BlockedMerchantCountries { get; set; }
 
         /// <summary>
         /// Limit spending with amount-based rules that apply across this cardholder's cards.
         /// </summary>
         [JsonProperty("spending_limits")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("spending_limits")]
-#endif
         public List<CardholderSpendingControlsSpendingLimitOptions> SpendingLimits { get; set; }
 
         /// <summary>
@@ -361,9 +343,6 @@ namespace Stripe.Issuing
         /// currency.
         /// </summary>
         [JsonProperty("spending_limits_currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("spending_limits_currency")]
-#endif
         public string SpendingLimitsCurrency { get; set; }
     }
 }

@@ -2,9 +2,6 @@
 namespace Stripe.BillingPortal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ConfigurationLoginPageOptions : INestedOptions
     {
@@ -16,9 +13,6 @@ namespace Stripe.BillingPortal
         /// Set to <c>false</c> to deactivate the <c>login_page.url</c>.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("enabled")]
-#endif
         public bool? Enabled { get; set; }
     }
 }

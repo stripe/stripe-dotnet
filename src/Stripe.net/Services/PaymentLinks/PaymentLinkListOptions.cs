@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentLinkListOptions : ListOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// all inactive payment links).
         /// </summary>
         [JsonProperty("active")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("active")]
-#endif
         public bool? Active { get; set; }
     }
 }

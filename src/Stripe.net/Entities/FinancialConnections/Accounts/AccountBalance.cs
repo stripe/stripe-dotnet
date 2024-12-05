@@ -5,9 +5,6 @@ namespace Stripe.FinancialConnections
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountBalance : StripeEntity<AccountBalance>
     {
@@ -17,22 +14,12 @@ namespace Stripe.FinancialConnections
         /// </summary>
         [JsonProperty("as_of")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("as_of")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime AsOf { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("cash")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cash")]
-#endif
         public AccountBalanceCash Cash { get; set; }
 
         [JsonProperty("credit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("credit")]
-#endif
         public AccountBalanceCredit Credit { get; set; }
 
         /// <summary>
@@ -47,9 +34,6 @@ namespace Stripe.FinancialConnections
         /// holder. A negative amount indicates money owed by the account holder.
         /// </summary>
         [JsonProperty("current")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("current")]
-#endif
         public Dictionary<string, long> Current { get; set; }
 
         /// <summary>
@@ -58,9 +42,6 @@ namespace Stripe.FinancialConnections
         /// One of: <c>cash</c>, or <c>credit</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

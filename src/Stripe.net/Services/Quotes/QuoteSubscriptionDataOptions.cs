@@ -5,9 +5,6 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class QuoteSubscriptionDataOptions : INestedOptions, IHasMetadata
     {
@@ -17,9 +14,6 @@ namespace Stripe
         /// and certain local payment methods UIs.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -32,10 +26,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("effective_date")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_date")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate { get; set; }
 
         /// <summary>
@@ -48,9 +38,6 @@ namespace Stripe
         /// metadata, this field is declarative. Updates will clear prior values.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -58,9 +45,6 @@ namespace Stripe
         /// the first time.
         /// </summary>
         [JsonProperty("trial_period_days")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("trial_period_days")]
-#endif
         public long? TrialPeriodDays { get; set; }
     }
 }

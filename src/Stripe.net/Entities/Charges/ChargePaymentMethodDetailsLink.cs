@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ChargePaymentMethodDetailsLink : StripeEntity<ChargePaymentMethodDetailsLink>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// You could use this attribute to get a sense of international fees.
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
     }
 }

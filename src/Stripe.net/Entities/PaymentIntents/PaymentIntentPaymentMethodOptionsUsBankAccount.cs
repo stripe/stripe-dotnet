@@ -2,22 +2,13 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentIntentPaymentMethodOptionsUsBankAccount : StripeEntity<PaymentIntentPaymentMethodOptionsUsBankAccount>
     {
         [JsonProperty("financial_connections")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("financial_connections")]
-#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections FinancialConnections { get; set; }
 
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("mandate_options")]
-#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountMandateOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -25,9 +16,6 @@ namespace Stripe
         /// One of: <c>fastest</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("preferred_settlement_speed")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("preferred_settlement_speed")]
-#endif
         public string PreferredSettlementSpeed { get; set; }
 
         /// <summary>
@@ -52,9 +40,6 @@ namespace Stripe
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -62,9 +47,6 @@ namespace Stripe
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
         [JsonProperty("verification_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("verification_method")]
-#endif
         public string VerificationMethod { get; set; }
     }
 }

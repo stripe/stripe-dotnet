@@ -4,9 +4,6 @@ namespace Stripe.Checkout
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionAfterExpirationRecovery : StripeEntity<SessionAfterExpirationRecovery>
     {
@@ -15,9 +12,6 @@ namespace Stripe.Checkout
         /// <c>false</c>.
         /// </summary>
         [JsonProperty("allow_promotion_codes")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("allow_promotion_codes")]
-#endif
         public bool AllowPromotionCodes { get; set; }
 
         /// <summary>
@@ -26,9 +20,6 @@ namespace Stripe.Checkout
         /// object upon expiration.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("enabled")]
-#endif
         public bool Enabled { get; set; }
 
         /// <summary>
@@ -36,10 +27,6 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -47,9 +34,6 @@ namespace Stripe.Checkout
         /// Checkout Session.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

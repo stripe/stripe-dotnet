@@ -4,9 +4,6 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SubscriptionItemUsageRecordCreateOptions : BaseOptions
     {
@@ -20,18 +17,12 @@ namespace Stripe
         /// One of: <c>increment</c>, or <c>set</c>.
         /// </summary>
         [JsonProperty("action")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("action")]
-#endif
         public string Action { get; set; }
 
         /// <summary>
         /// The usage quantity for the specified timestamp.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -42,10 +33,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("timestamp")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, SubscriptionItemUsageRecordTimestamp> Timestamp { get; set; }
     }
 }

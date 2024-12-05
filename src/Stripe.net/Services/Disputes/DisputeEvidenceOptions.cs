@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class DisputeEvidenceOptions : INestedOptions
     {
@@ -14,18 +11,12 @@ namespace Stripe
         /// timestamps, and any detailed recorded activity. Has a maximum character count of 20,000.
         /// </summary>
         [JsonProperty("access_activity_log")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("access_activity_log")]
-#endif
         public string AccessActivityLog { get; set; }
 
         /// <summary>
         /// The billing address provided by the customer.
         /// </summary>
         [JsonProperty("billing_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_address")]
-#endif
         public string BillingAddress { get; set; }
 
         /// <summary>
@@ -33,9 +24,6 @@ namespace Stripe
         /// subscription cancellation policy, as shown to the customer.
         /// </summary>
         [JsonProperty("cancellation_policy")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancellation_policy")]
-#endif
         public string CancellationPolicy { get; set; }
 
         /// <summary>
@@ -43,9 +31,6 @@ namespace Stripe
         /// purchase. Has a maximum character count of 20,000.
         /// </summary>
         [JsonProperty("cancellation_policy_disclosure")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancellation_policy_disclosure")]
-#endif
         public string CancellationPolicyDisclosure { get; set; }
 
         /// <summary>
@@ -53,9 +38,6 @@ namespace Stripe
         /// character count of 20,000.
         /// </summary>
         [JsonProperty("cancellation_rebuttal")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancellation_rebuttal")]
-#endif
         public string CancellationRebuttal { get; set; }
 
         /// <summary>
@@ -65,36 +47,24 @@ namespace Stripe
         /// use of or satisfaction with the product or service.
         /// </summary>
         [JsonProperty("customer_communication")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_communication")]
-#endif
         public string CustomerCommunication { get; set; }
 
         /// <summary>
         /// The email address of the customer.
         /// </summary>
         [JsonProperty("customer_email_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_email_address")]
-#endif
         public string CustomerEmailAddress { get; set; }
 
         /// <summary>
         /// The name of the customer.
         /// </summary>
         [JsonProperty("customer_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_name")]
-#endif
         public string CustomerName { get; set; }
 
         /// <summary>
         /// The IP address that the customer used when making the purchase.
         /// </summary>
         [JsonProperty("customer_purchase_ip")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_purchase_ip")]
-#endif
         public string CustomerPurchaseIp { get; set; }
 
         /// <summary>
@@ -102,9 +72,6 @@ namespace Stripe
         /// relevant document or contract showing the customer's signature.
         /// </summary>
         [JsonProperty("customer_signature")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer_signature")]
-#endif
         public string CustomerSignature { get; set; }
 
         /// <summary>
@@ -114,9 +81,6 @@ namespace Stripe
         /// document from the disputed payment that proves the two payments are separate.
         /// </summary>
         [JsonProperty("duplicate_charge_documentation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("duplicate_charge_documentation")]
-#endif
         public string DuplicateChargeDocumentation { get; set; }
 
         /// <summary>
@@ -124,9 +88,6 @@ namespace Stripe
         /// that appears to be a duplicate. Has a maximum character count of 20,000.
         /// </summary>
         [JsonProperty("duplicate_charge_explanation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("duplicate_charge_explanation")]
-#endif
         public string DuplicateChargeExplanation { get; set; }
 
         /// <summary>
@@ -134,18 +95,12 @@ namespace Stripe
         /// charge.
         /// </summary>
         [JsonProperty("duplicate_charge_id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("duplicate_charge_id")]
-#endif
         public string DuplicateChargeId { get; set; }
 
         /// <summary>
         /// Additional evidence for qualifying evidence programs.
         /// </summary>
         [JsonProperty("enhanced_evidence")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("enhanced_evidence")]
-#endif
         public DisputeEvidenceEnhancedEvidenceOptions EnhancedEvidence { get; set; }
 
         /// <summary>
@@ -153,9 +108,6 @@ namespace Stripe
         /// 20,000.
         /// </summary>
         [JsonProperty("product_description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("product_description")]
-#endif
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -163,9 +115,6 @@ namespace Stripe
         /// receipt or message sent to the customer notifying them of the charge.
         /// </summary>
         [JsonProperty("receipt")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("receipt")]
-#endif
         public string Receipt { get; set; }
 
         /// <summary>
@@ -173,9 +122,6 @@ namespace Stripe
         /// refund policy, as shown to the customer.
         /// </summary>
         [JsonProperty("refund_policy")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_policy")]
-#endif
         public string RefundPolicy { get; set; }
 
         /// <summary>
@@ -183,9 +129,6 @@ namespace Stripe
         /// purchase. Has a maximum character count of 20,000.
         /// </summary>
         [JsonProperty("refund_policy_disclosure")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_policy_disclosure")]
-#endif
         public string RefundPolicyDisclosure { get; set; }
 
         /// <summary>
@@ -193,9 +136,6 @@ namespace Stripe
         /// character count of 20,000.
         /// </summary>
         [JsonProperty("refund_refusal_explanation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_refusal_explanation")]
-#endif
         public string RefundRefusalExplanation { get; set; }
 
         /// <summary>
@@ -203,9 +143,6 @@ namespace Stripe
         /// clear human-readable format.
         /// </summary>
         [JsonProperty("service_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("service_date")]
-#endif
         public string ServiceDate { get; set; }
 
         /// <summary>
@@ -214,9 +151,6 @@ namespace Stripe
         /// include a copy of a signed contract, work order, or other form of written agreement.
         /// </summary>
         [JsonProperty("service_documentation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("service_documentation")]
-#endif
         public string ServiceDocumentation { get; set; }
 
         /// <summary>
@@ -224,9 +158,6 @@ namespace Stripe
         /// complete address information as possible.
         /// </summary>
         [JsonProperty("shipping_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_address")]
-#endif
         public string ShippingAddress { get; set; }
 
         /// <summary>
@@ -234,9 +165,6 @@ namespace Stripe
         /// multiple carriers were used for this purchase, please separate them with commas.
         /// </summary>
         [JsonProperty("shipping_carrier")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_carrier")]
-#endif
         public string ShippingCarrier { get; set; }
 
         /// <summary>
@@ -244,9 +172,6 @@ namespace Stripe
         /// human-readable format.
         /// </summary>
         [JsonProperty("shipping_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_date")]
-#endif
         public string ShippingDate { get; set; }
 
         /// <summary>
@@ -256,9 +181,6 @@ namespace Stripe
         /// shipping label, etc. It should show the customer's full shipping address, if possible.
         /// </summary>
         [JsonProperty("shipping_documentation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_documentation")]
-#endif
         public string ShippingDocumentation { get; set; }
 
         /// <summary>
@@ -267,9 +189,6 @@ namespace Stripe
         /// commas.
         /// </summary>
         [JsonProperty("shipping_tracking_number")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_tracking_number")]
-#endif
         public string ShippingTrackingNumber { get; set; }
 
         /// <summary>
@@ -277,18 +196,12 @@ namespace Stripe
         /// additional evidence or statements.
         /// </summary>
         [JsonProperty("uncategorized_file")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("uncategorized_file")]
-#endif
         public string UncategorizedFile { get; set; }
 
         /// <summary>
         /// Any additional evidence or statements. Has a maximum character count of 20,000.
         /// </summary>
         [JsonProperty("uncategorized_text")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("uncategorized_text")]
-#endif
         public string UncategorizedText { get; set; }
     }
 }

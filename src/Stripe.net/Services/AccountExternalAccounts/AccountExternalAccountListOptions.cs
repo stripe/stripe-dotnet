@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountExternalAccountListOptions : ListOptions, IHasObject
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// One of: <c>bank_account</c>, or <c>card</c>.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
     }
 }

@@ -3,9 +3,6 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class TokenNetworkDataWalletProvider : StripeEntity<TokenNetworkDataWalletProvider>
     {
@@ -13,9 +10,6 @@ namespace Stripe.Issuing
         /// The wallet provider-given account ID of the digital wallet the token belongs to.
         /// </summary>
         [JsonProperty("account_id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account_id")]
-#endif
         public string AccountId { get; set; }
 
         /// <summary>
@@ -23,9 +17,6 @@ namespace Stripe.Issuing
         /// score indicates more trustworthy.
         /// </summary>
         [JsonProperty("account_trust_score")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account_trust_score")]
-#endif
         public long AccountTrustScore { get; set; }
 
         /// <summary>
@@ -33,24 +24,15 @@ namespace Stripe.Issuing
         /// One of: <c>app</c>, <c>manual</c>, <c>on_file</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("card_number_source")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("card_number_source")]
-#endif
         public string CardNumberSource { get; set; }
 
         [JsonProperty("cardholder_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cardholder_address")]
-#endif
         public TokenNetworkDataWalletProviderCardholderAddress CardholderAddress { get; set; }
 
         /// <summary>
         /// The name of the cardholder tokenizing the card.
         /// </summary>
         [JsonProperty("cardholder_name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cardholder_name")]
-#endif
         public string CardholderName { get; set; }
 
         /// <summary>
@@ -58,18 +40,12 @@ namespace Stripe.Issuing
         /// trustworthy.
         /// </summary>
         [JsonProperty("device_trust_score")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("device_trust_score")]
-#endif
         public long DeviceTrustScore { get; set; }
 
         /// <summary>
         /// The hashed email address of the cardholder's account with the wallet provider.
         /// </summary>
         [JsonProperty("hashed_account_email_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("hashed_account_email_address")]
-#endif
         public string HashedAccountEmailAddress { get; set; }
 
         /// <summary>
@@ -88,9 +64,6 @@ namespace Stripe.Issuing
         /// <c>too_many_recent_attempts</c>, or <c>too_many_recent_tokens</c>.
         /// </summary>
         [JsonProperty("reason_codes")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reason_codes")]
-#endif
         public List<string> ReasonCodes { get; set; }
 
         /// <summary>
@@ -98,18 +71,12 @@ namespace Stripe.Issuing
         /// One of: <c>approve</c>, <c>decline</c>, or <c>require_auth</c>.
         /// </summary>
         [JsonProperty("suggested_decision")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("suggested_decision")]
-#endif
         public string SuggestedDecision { get; set; }
 
         /// <summary>
         /// The version of the standard for mapping reason codes followed by the wallet provider.
         /// </summary>
         [JsonProperty("suggested_decision_version")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("suggested_decision_version")]
-#endif
         public string SuggestedDecisionVersion { get; set; }
     }
 }

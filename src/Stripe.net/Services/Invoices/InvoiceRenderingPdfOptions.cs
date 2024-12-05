@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class InvoiceRenderingPdfOptions : INestedOptions
     {
@@ -15,9 +12,6 @@ namespace Stripe
         /// One of: <c>a4</c>, <c>auto</c>, or <c>letter</c>.
         /// </summary>
         [JsonProperty("page_size")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("page_size")]
-#endif
         public string PageSize { get; set; }
     }
 }

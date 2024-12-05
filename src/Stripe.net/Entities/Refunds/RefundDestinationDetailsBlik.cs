@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class RefundDestinationDetailsBlik : StripeEntity<RefundDestinationDetailsBlik>
     {
@@ -13,18 +10,12 @@ namespace Stripe
         /// indicates the reason the refund failed.
         /// </summary>
         [JsonProperty("network_decline_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("network_decline_code")]
-#endif
         public string NetworkDeclineCode { get; set; }
 
         /// <summary>
         /// The reference assigned to the refund.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -32,9 +23,6 @@ namespace Stripe
         /// <c>unavailable</c>.
         /// </summary>
         [JsonProperty("reference_status")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reference_status")]
-#endif
         public string ReferenceStatus { get; set; }
     }
 }

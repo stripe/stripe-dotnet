@@ -5,9 +5,6 @@ namespace Stripe.Forwarding
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Instructs Stripe to make a request on your behalf using the destination URL. The
@@ -36,18 +33,12 @@ namespace Stripe.Forwarding
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -55,10 +46,6 @@ namespace Stripe.Forwarding
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -66,9 +53,6 @@ namespace Stripe.Forwarding
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -77,9 +61,6 @@ namespace Stripe.Forwarding
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -87,9 +68,6 @@ namespace Stripe.Forwarding
         /// PaymentMethods is allowed.
         /// </summary>
         [JsonProperty("payment_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method")]
-#endif
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -98,27 +76,18 @@ namespace Stripe.Forwarding
         /// <c>cardholder_name</c>.
         /// </summary>
         [JsonProperty("replacements")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("replacements")]
-#endif
         public List<string> Replacements { get; set; }
 
         /// <summary>
         /// Context about the request from Stripe's servers to the destination endpoint.
         /// </summary>
         [JsonProperty("request_context")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("request_context")]
-#endif
         public RequestRequestContext RequestContext { get; set; }
 
         /// <summary>
         /// The request that was sent to the destination endpoint. We redact any sensitive fields.
         /// </summary>
         [JsonProperty("request_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("request_details")]
-#endif
         public RequestRequestDetails RequestDetails { get; set; }
 
         /// <summary>
@@ -126,18 +95,12 @@ namespace Stripe.Forwarding
         /// fields.
         /// </summary>
         [JsonProperty("response_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("response_details")]
-#endif
         public RequestResponseDetails ResponseDetails { get; set; }
 
         /// <summary>
         /// The destination URL for the forwarded request. Must be supported by the config.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

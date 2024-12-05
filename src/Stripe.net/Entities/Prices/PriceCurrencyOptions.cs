@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PriceCurrencyOptions : StripeEntity<PriceCurrencyOptions>
     {
@@ -14,9 +11,6 @@ namespace Stripe
         /// Checkout Sessions and Payment Links.
         /// </summary>
         [JsonProperty("custom_unit_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("custom_unit_amount")]
-#endif
         public PriceCurrencyOptionsCustomUnitAmount CustomUnitAmount { get; set; }
 
         /// <summary>
@@ -29,9 +23,6 @@ namespace Stripe
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -39,9 +30,6 @@ namespace Stripe
         /// be set to <c>tiered</c>. See also the documentation for <c>billing_scheme</c>.
         /// </summary>
         [JsonProperty("tiers")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tiers")]
-#endif
         public List<PriceCurrencyOptionsTier> Tiers { get; set; }
 
         /// <summary>
@@ -49,9 +37,6 @@ namespace Stripe
         /// integer if possible. Only set if <c>billing_scheme=per_unit</c>.
         /// </summary>
         [JsonProperty("unit_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_amount")]
-#endif
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -59,9 +44,6 @@ namespace Stripe
         /// string with at most 12 decimal places. Only set if <c>billing_scheme=per_unit</c>.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_amount_decimal")]
-#endif
         public decimal? UnitAmountDecimal { get; set; }
     }
 }
