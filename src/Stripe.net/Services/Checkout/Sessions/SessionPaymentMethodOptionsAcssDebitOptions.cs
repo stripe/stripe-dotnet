@@ -2,9 +2,6 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionPaymentMethodOptionsAcssDebitOptions : INestedOptions
     {
@@ -15,18 +12,12 @@ namespace Stripe.Checkout
         /// One of: <c>cad</c>, or <c>usd</c>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Additional fields for Mandate creation.
         /// </summary>
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("mandate_options")]
-#endif
         public SessionPaymentMethodOptionsAcssDebitMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -51,9 +42,6 @@ namespace Stripe.Checkout
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -61,9 +49,6 @@ namespace Stripe.Checkout
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
         [JsonProperty("verification_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("verification_method")]
-#endif
         public string VerificationMethod { get; set; }
     }
 }

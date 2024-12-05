@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SetupIntentPaymentMethodDataSofortOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// One of: <c>AT</c>, <c>BE</c>, <c>DE</c>, <c>ES</c>, <c>IT</c>, or <c>NL</c>.
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
     }
 }

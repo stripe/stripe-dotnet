@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SetupIntentPaymentMethodOptionsUsBankAccountMandateOptions : StripeEntity<SetupIntentPaymentMethodOptionsUsBankAccountMandateOptions>
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// Mandate collection method.
         /// </summary>
         [JsonProperty("collection_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("collection_method")]
-#endif
         public string CollectionMethod { get; set; }
     }
 }

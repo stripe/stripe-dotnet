@@ -2,9 +2,6 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AuthorizationFleet : StripeEntity<AuthorizationFleet>
     {
@@ -14,9 +11,6 @@ namespace Stripe.Issuing
         /// support only numeric entry.
         /// </summary>
         [JsonProperty("cardholder_prompt_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cardholder_prompt_data")]
-#endif
         public AuthorizationFleetCardholderPromptData CardholderPromptData { get; set; }
 
         /// <summary>
@@ -25,9 +19,6 @@ namespace Stripe.Issuing
         /// <c>non_fuel_purchase</c>.
         /// </summary>
         [JsonProperty("purchase_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("purchase_type")]
-#endif
         public string PurchaseType { get; set; }
 
         /// <summary>
@@ -37,9 +28,6 @@ namespace Stripe.Issuing
         /// data.
         /// </summary>
         [JsonProperty("reported_breakdown")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reported_breakdown")]
-#endif
         public AuthorizationFleetReportedBreakdown ReportedBreakdown { get; set; }
 
         /// <summary>
@@ -47,9 +35,6 @@ namespace Stripe.Issuing
         /// One of: <c>full_service</c>, <c>non_fuel_transaction</c>, or <c>self_service</c>.
         /// </summary>
         [JsonProperty("service_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("service_type")]
-#endif
         public string ServiceType { get; set; }
     }
 }

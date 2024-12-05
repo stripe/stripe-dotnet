@@ -2,9 +2,6 @@
 namespace Stripe.Identity
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class VerificationSessionOptionsOptions : INestedOptions
     {
@@ -14,9 +11,6 @@ namespace Stripe.Identity
         /// check</a>.
         /// </summary>
         [JsonProperty("document")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("document")]
-#endif
         public VerificationSessionOptionsDocumentOptions Document { get; set; }
     }
 }

@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ConfirmationTokenMandateDataCustomerAcceptance : StripeEntity<ConfirmationTokenMandateDataCustomerAcceptance>
     {
@@ -13,18 +10,12 @@ namespace Stripe
         /// acceptance.
         /// </summary>
         [JsonProperty("online")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("online")]
-#endif
         public ConfirmationTokenMandateDataCustomerAcceptanceOnline Online { get; set; }
 
         /// <summary>
         /// The type of customer acceptance information included with the Mandate.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

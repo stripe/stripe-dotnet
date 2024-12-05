@@ -5,13 +5,7 @@ namespace Stripe
     using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class SubscriptionInvoiceSettings : StripeEntity<SubscriptionInvoiceSettings>
     {
         #region Expandable AccountTaxIds
@@ -22,9 +16,6 @@ namespace Stripe
         /// by the subscription.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public List<string> AccountTaxIdIds
         {
             get => this.InternalAccountTaxIds?.Select((x) => x.Id).ToList();
@@ -39,9 +30,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public List<TaxId> AccountTaxIds
         {
             get => this.InternalAccountTaxIds?.Select((x) => x.ExpandedObject).ToList();
@@ -49,16 +37,10 @@ namespace Stripe
         }
 
         [JsonProperty("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account_tax_ids")]
-#endif
         internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }
         #endregion
 
         [JsonProperty("issuer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("issuer")]
-#endif
         public SubscriptionInvoiceSettingsIssuer Issuer { get; set; }
     }
 }

@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ChargePaymentMethodDetailsKonbini : StripeEntity<ChargePaymentMethodDetailsKonbini>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// payment was completed.
         /// </summary>
         [JsonProperty("store")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("store")]
-#endif
         public ChargePaymentMethodDetailsKonbiniStore Store { get; set; }
     }
 }

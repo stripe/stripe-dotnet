@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentIntentPaymentMethodOptionsBoletoOptions : INestedOptions
     {
@@ -14,9 +11,6 @@ namespace Stripe
         /// expire on Wednesday at 23:59 America/Sao_Paulo time.
         /// </summary>
         [JsonProperty("expires_after_days")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_after_days")]
-#endif
         public long? ExpiresAfterDays { get; set; }
 
         /// <summary>
@@ -45,9 +39,6 @@ namespace Stripe
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

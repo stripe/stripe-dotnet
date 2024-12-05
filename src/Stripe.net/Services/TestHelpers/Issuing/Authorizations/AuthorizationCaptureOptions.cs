@@ -2,9 +2,6 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AuthorizationCaptureOptions : BaseOptions
     {
@@ -14,9 +11,6 @@ namespace Stripe.TestHelpers.Issuing
         /// <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("capture_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("capture_amount")]
-#endif
         public long? CaptureAmount { get; set; }
 
         /// <summary>
@@ -24,18 +18,12 @@ namespace Stripe.TestHelpers.Issuing
         /// enable multi-capture flows.
         /// </summary>
         [JsonProperty("close_authorization")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("close_authorization")]
-#endif
         public bool? CloseAuthorization { get; set; }
 
         /// <summary>
         /// Additional purchase information that is optionally provided by the merchant.
         /// </summary>
         [JsonProperty("purchase_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("purchase_details")]
-#endif
         public AuthorizationPurchaseDetailsOptions PurchaseDetails { get; set; }
     }
 }

@@ -3,9 +3,6 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionPaymentMethodOptionsCustomerBalanceBankTransferOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe.Checkout
         /// Configuration for eu_bank_transfer funding type.
         /// </summary>
         [JsonProperty("eu_bank_transfer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("eu_bank_transfer")]
-#endif
         public SessionPaymentMethodOptionsCustomerBalanceBankTransferEuBankTransferOptions EuBankTransfer { get; set; }
 
         /// <summary>
@@ -27,9 +21,6 @@ namespace Stripe.Checkout
         /// <c>swift</c>, or <c>zengin</c>.
         /// </summary>
         [JsonProperty("requested_address_types")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("requested_address_types")]
-#endif
         public List<string> RequestedAddressTypes { get; set; }
 
         /// <summary>
@@ -38,9 +29,6 @@ namespace Stripe.Checkout
         /// <c>mx_bank_transfer</c>, or <c>us_bank_transfer</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

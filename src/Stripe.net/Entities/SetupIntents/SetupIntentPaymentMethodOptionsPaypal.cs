@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SetupIntentPaymentMethodOptionsPaypal : StripeEntity<SetupIntentPaymentMethodOptionsPaypal>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// represents the mandate between the merchant and the customer.
         /// </summary>
         [JsonProperty("billing_agreement_id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_agreement_id")]
-#endif
         public string BillingAgreementId { get; set; }
     }
 }

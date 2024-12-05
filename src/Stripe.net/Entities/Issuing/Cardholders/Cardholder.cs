@@ -5,9 +5,6 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is
@@ -23,33 +20,21 @@ namespace Stripe.Issuing
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         [JsonProperty("billing")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing")]
-#endif
         public CardholderBilling Billing { get; set; }
 
         /// <summary>
         /// Additional information about a <c>company</c> cardholder.
         /// </summary>
         [JsonProperty("company")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("company")]
-#endif
         public CardholderCompany Company { get; set; }
 
         /// <summary>
@@ -57,28 +42,18 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The cardholder's email address.
         /// </summary>
         [JsonProperty("email")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("email")]
-#endif
         public string Email { get; set; }
 
         /// <summary>
         /// Additional information about an <c>individual</c> cardholder.
         /// </summary>
         [JsonProperty("individual")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("individual")]
-#endif
         public CardholderIndividual Individual { get; set; }
 
         /// <summary>
@@ -86,9 +61,6 @@ namespace Stripe.Issuing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -97,18 +69,12 @@ namespace Stripe.Issuing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The cardholder's name. This will be printed on cards issued to them.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -118,9 +84,6 @@ namespace Stripe.Issuing
         /// documentation</a> for more details.
         /// </summary>
         [JsonProperty("phone_number")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("phone_number")]
-#endif
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -131,15 +94,9 @@ namespace Stripe.Issuing
         /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>.
         /// </summary>
         [JsonProperty("preferred_locales")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("preferred_locales")]
-#endif
         public List<string> PreferredLocales { get; set; }
 
         [JsonProperty("requirements")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("requirements")]
-#endif
         public CardholderRequirements Requirements { get; set; }
 
         /// <summary>
@@ -148,9 +105,6 @@ namespace Stripe.Issuing
         /// more details.
         /// </summary>
         [JsonProperty("spending_controls")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("spending_controls")]
-#endif
         public CardholderSpendingControls SpendingControls { get; set; }
 
         /// <summary>
@@ -158,9 +112,6 @@ namespace Stripe.Issuing
         /// One of: <c>active</c>, <c>blocked</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -170,9 +121,6 @@ namespace Stripe.Issuing
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

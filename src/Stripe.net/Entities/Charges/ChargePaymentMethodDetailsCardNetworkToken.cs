@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ChargePaymentMethodDetailsCardNetworkToken : StripeEntity<ChargePaymentMethodDetailsCardNetworkToken>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// processing the transaction.
         /// </summary>
         [JsonProperty("used")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("used")]
-#endif
         public bool Used { get; set; }
     }
 }

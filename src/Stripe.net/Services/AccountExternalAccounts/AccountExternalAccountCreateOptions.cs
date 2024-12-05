@@ -4,9 +4,6 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountExternalAccountCreateOptions : BaseOptions, IHasMetadata
     {
@@ -15,9 +12,6 @@ namespace Stripe
         /// account becomes the default external account for its currency.
         /// </summary>
         [JsonProperty("default_for_currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("default_for_currency")]
-#endif
         public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
@@ -25,10 +19,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("external_account")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("external_account")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<string, AccountExternalAccountCardOptions, AccountExternalAccountBankAccountOptions, AccountExternalAccountCardTokenOptions> ExternalAccount { get; set; }
 
         /// <summary>
@@ -38,9 +28,6 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentMethodConfigurationSofortDisplayPreferenceOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// One of: <c>none</c>, <c>off</c>, or <c>on</c>.
         /// </summary>
         [JsonProperty("preference")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("preference")]
-#endif
         public string Preference { get; set; }
     }
 }

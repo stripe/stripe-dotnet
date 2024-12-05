@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SourceReceiver : StripeEntity<SourceReceiver>
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// customer to send their funds to.
         /// </summary>
         [JsonProperty("address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("address")]
-#endif
         public string Address { get; set; }
 
         /// <summary>
@@ -25,9 +19,6 @@ namespace Stripe
         /// well. The amount charged is expressed in the source's currency.
         /// </summary>
         [JsonProperty("amount_charged")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_charged")]
-#endif
         public long AmountCharged { get; set; }
 
         /// <summary>
@@ -36,9 +27,6 @@ namespace Stripe
         /// funds. The amount received is expressed in the source's currency.
         /// </summary>
         [JsonProperty("amount_received")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_received")]
-#endif
         public long AmountReceived { get; set; }
 
         /// <summary>
@@ -46,18 +34,12 @@ namespace Stripe
         /// the source's currency.
         /// </summary>
         [JsonProperty("amount_returned")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_returned")]
-#endif
         public long AmountReturned { get; set; }
 
         /// <summary>
         /// Type of refund attribute method, one of <c>email</c>, <c>manual</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("refund_attributes_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_attributes_method")]
-#endif
         public string RefundAttributesMethod { get; set; }
 
         /// <summary>
@@ -65,9 +47,6 @@ namespace Stripe
         /// <c>available</c>.
         /// </summary>
         [JsonProperty("refund_attributes_status")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund_attributes_status")]
-#endif
         public string RefundAttributesStatus { get; set; }
     }
 }

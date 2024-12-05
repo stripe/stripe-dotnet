@@ -3,9 +3,6 @@ namespace Stripe.Treasury
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CreditReversalCreateOptions : BaseOptions, IHasMetadata
     {
@@ -16,18 +13,12 @@ namespace Stripe.Treasury
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The ReceivedCredit to reverse.
         /// </summary>
         [JsonProperty("received_credit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("received_credit")]
-#endif
         public string ReceivedCredit { get; set; }
     }
 }

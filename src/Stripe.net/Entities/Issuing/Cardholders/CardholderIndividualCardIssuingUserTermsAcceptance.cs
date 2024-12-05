@@ -4,9 +4,6 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CardholderIndividualCardIssuingUserTermsAcceptance : StripeEntity<CardholderIndividualCardIssuingUserTermsAcceptance>
     {
@@ -15,19 +12,12 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("date")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? Date { get; set; }
 
         /// <summary>
         /// The IP address from which the cardholder accepted the Authorized User Terms.
         /// </summary>
         [JsonProperty("ip")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("ip")]
-#endif
         public string Ip { get; set; }
 
         /// <summary>
@@ -35,9 +25,6 @@ namespace Stripe.Issuing
         /// Terms.
         /// </summary>
         [JsonProperty("user_agent")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("user_agent")]
-#endif
         public string UserAgent { get; set; }
     }
 }

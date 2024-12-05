@@ -4,9 +4,6 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class DisputeEvidenceNotReceivedOptions : INestedOptions
     {
@@ -15,9 +12,6 @@ namespace Stripe.Issuing
         /// Additional documentation supporting the dispute.
         /// </summary>
         [JsonProperty("additional_documentation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("additional_documentation")]
-#endif
         public string AdditionalDocumentation { get; set; }
 
         /// <summary>
@@ -25,28 +19,18 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("expected_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expected_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ExpectedAt { get; set; }
 
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
         [JsonProperty("explanation")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("explanation")]
-#endif
         public string Explanation { get; set; }
 
         /// <summary>
         /// Description of the merchandise or service that was purchased.
         /// </summary>
         [JsonProperty("product_description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("product_description")]
-#endif
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -54,9 +38,6 @@ namespace Stripe.Issuing
         /// One of: <c>merchandise</c>, or <c>service</c>.
         /// </summary>
         [JsonProperty("product_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("product_type")]
-#endif
         public string ProductType { get; set; }
     }
 }

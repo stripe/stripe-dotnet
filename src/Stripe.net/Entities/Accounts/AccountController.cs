@@ -2,16 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountController : StripeEntity<AccountController>
     {
         [JsonProperty("fees")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("fees")]
-#endif
         public AccountControllerFees Fees { get; set; }
 
         /// <summary>
@@ -21,15 +15,9 @@ namespace Stripe
         /// controls</a>. Otherwise, this field is null.
         /// </summary>
         [JsonProperty("is_controller")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("is_controller")]
-#endif
         public bool IsController { get; set; }
 
         [JsonProperty("losses")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("losses")]
-#endif
         public AccountControllerLosses Losses { get; set; }
 
         /// <summary>
@@ -38,15 +26,9 @@ namespace Stripe
         /// One of: <c>application</c>, or <c>stripe</c>.
         /// </summary>
         [JsonProperty("requirement_collection")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("requirement_collection")]
-#endif
         public string RequirementCollection { get; set; }
 
         [JsonProperty("stripe_dashboard")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("stripe_dashboard")]
-#endif
         public AccountControllerStripeDashboard StripeDashboard { get; set; }
 
         /// <summary>
@@ -55,9 +37,6 @@ namespace Stripe
         /// One of: <c>account</c>, or <c>application</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class InvoiceScheduleDetailsPhaseAddInvoiceItemOptions : INestedOptions
     {
@@ -13,18 +10,12 @@ namespace Stripe
         /// The coupons to redeem into discounts for the item.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discounts")]
-#endif
         public List<InvoiceScheduleDetailsPhaseAddInvoiceItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -32,18 +23,12 @@ namespace Stripe
         /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price_data")]
-#endif
         public InvoiceScheduleDetailsPhaseAddInvoiceItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
         /// Quantity for this item. Defaults to 1.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -51,9 +36,6 @@ namespace Stripe
         /// apply to this item.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
     }
 }

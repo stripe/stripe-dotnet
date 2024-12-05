@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class LineItemTax : StripeEntity<LineItemTax>
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// Amount of tax applied for this rate.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -27,9 +21,6 @@ namespace Stripe
         /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax rates</a>.
         /// </summary>
         [JsonProperty("rate")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("rate")]
-#endif
         public TaxRate Rate { get; set; }
 
         /// <summary>
@@ -42,18 +33,12 @@ namespace Stripe
         /// <c>standard_rated</c>, <c>taxable_basis_reduced</c>, or <c>zero_rated</c>.
         /// </summary>
         [JsonProperty("taxability_reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("taxability_reason")]
-#endif
         public string TaxabilityReason { get; set; }
 
         /// <summary>
         /// The amount on which tax is calculated, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("taxable_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("taxable_amount")]
-#endif
         public long? TaxableAmount { get; set; }
     }
 }

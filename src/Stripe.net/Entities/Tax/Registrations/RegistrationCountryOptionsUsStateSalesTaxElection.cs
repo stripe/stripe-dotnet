@@ -2,9 +2,6 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class RegistrationCountryOptionsUsStateSalesTaxElection : StripeEntity<RegistrationCountryOptionsUsStateSalesTaxElection>
     {
@@ -13,9 +10,6 @@ namespace Stripe.Tax
         /// representing the local jurisdiction.
         /// </summary>
         [JsonProperty("jurisdiction")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("jurisdiction")]
-#endif
         public string Jurisdiction { get; set; }
 
         /// <summary>
@@ -24,9 +18,6 @@ namespace Stripe.Tax
         /// <c>single_local_use_tax</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

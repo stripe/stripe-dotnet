@@ -5,9 +5,6 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SubscriptionPendingUpdate : StripeEntity<SubscriptionPendingUpdate>
     {
@@ -18,10 +15,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_cycle_anchor")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -30,10 +23,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("expires_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -41,9 +30,6 @@ namespace Stripe
         /// is applied.
         /// </summary>
         [JsonProperty("subscription_items")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_items")]
-#endif
         public List<SubscriptionItem> SubscriptionItems { get; set; }
 
         /// <summary>
@@ -52,10 +38,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("trial_end")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
@@ -66,9 +48,6 @@ namespace Stripe
         /// periods on subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_from_plan")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("trial_from_plan")]
-#endif
         public bool? TrialFromPlan { get; set; }
     }
 }

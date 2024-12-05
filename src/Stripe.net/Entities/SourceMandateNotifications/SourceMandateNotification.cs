@@ -4,9 +4,6 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Source mandate notifications should be created when a notification related to a source
@@ -19,24 +16,15 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         [JsonProperty("acss_debit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("acss_debit")]
-#endif
         public SourceMandateNotificationAcssDebit AcssDebit { get; set; }
 
         /// <summary>
@@ -46,15 +34,9 @@ namespace Stripe
         /// source. Required if the notification type is <c>debit_initiated</c>.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         [JsonProperty("bacs_debit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bacs_debit")]
-#endif
         public SourceMandateNotificationBacsDebit BacsDebit { get; set; }
 
         /// <summary>
@@ -62,10 +44,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -73,9 +51,6 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -83,15 +58,9 @@ namespace Stripe
         /// <c>debit_initiated</c>.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
 
         [JsonProperty("sepa_debit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("sepa_debit")]
-#endif
         public SourceMandateNotificationSepaDebit SepaDebit { get; set; }
 
         /// <summary>
@@ -109,9 +78,6 @@ namespace Stripe
         /// href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
         /// </summary>
         [JsonProperty("source")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("source")]
-#endif
         public Source Source { get; set; }
 
         /// <summary>
@@ -119,9 +85,6 @@ namespace Stripe
         /// <c>submitted</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -129,9 +92,6 @@ namespace Stripe
         /// identifier code for the payment method, such as <c>three_d_secure</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

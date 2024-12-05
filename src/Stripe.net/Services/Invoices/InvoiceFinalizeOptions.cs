@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class InvoiceFinalizeOptions : BaseOptions
     {
@@ -15,9 +12,6 @@ namespace Stripe
         /// automatically advance without an explicit action.
         /// </summary>
         [JsonProperty("auto_advance")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("auto_advance")]
-#endif
         public bool? AutoAdvance { get; set; }
     }
 }

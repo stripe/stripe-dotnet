@@ -3,9 +3,6 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class MeterEventStreamCreateOptions : BaseOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe.V2.Billing
         /// List of meter events to include in the request.
         /// </summary>
         [JsonProperty("events")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("events")]
-#endif
         public List<MeterEventStreamCreateEventOptions> Events { get; set; }
     }
 }

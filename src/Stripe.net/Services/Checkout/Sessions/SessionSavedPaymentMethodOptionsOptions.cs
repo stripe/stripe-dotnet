@@ -3,9 +3,6 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionSavedPaymentMethodOptionsOptions : INestedOptions
     {
@@ -16,9 +13,6 @@ namespace Stripe.Checkout
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("allow_redisplay_filters")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("allow_redisplay_filters")]
-#endif
         public List<string> AllowRedisplayFilters { get; set; }
 
         /// <summary>
@@ -27,9 +21,6 @@ namespace Stripe.Checkout
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("payment_method_save")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_save")]
-#endif
         public string PaymentMethodSave { get; set; }
     }
 }

@@ -3,13 +3,7 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class AccountCompanyVerificationDocument : StripeEntity<AccountCompanyVerificationDocument>
     {
         #region Expandable Back
@@ -21,9 +15,6 @@ namespace Stripe
         /// value of <c>additional_verification</c>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string BackId
         {
             get => this.InternalBack?.Id;
@@ -39,9 +30,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File Back
         {
             get => this.InternalBack?.ExpandedObject;
@@ -50,10 +38,6 @@ namespace Stripe
 
         [JsonProperty("back")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("back")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalBack { get; set; }
         #endregion
 
@@ -61,9 +45,6 @@ namespace Stripe
         /// A user-displayable string describing the verification state of this document.
         /// </summary>
         [JsonProperty("details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("details")]
-#endif
         public string Details { get; set; }
 
         /// <summary>
@@ -76,9 +57,6 @@ namespace Stripe
         /// code specifying the verification state for this document.
         /// </summary>
         [JsonProperty("details_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("details_code")]
-#endif
         public string DetailsCode { get; set; }
 
         #region Expandable Front
@@ -90,9 +68,6 @@ namespace Stripe
         /// value of <c>additional_verification</c>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string FrontId
         {
             get => this.InternalFront?.Id;
@@ -108,9 +83,6 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public File Front
         {
             get => this.InternalFront?.ExpandedObject;
@@ -119,10 +91,6 @@ namespace Stripe
 
         [JsonProperty("front")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("front")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
-#endif
         internal ExpandableField<File> InternalFront { get; set; }
         #endregion
     }

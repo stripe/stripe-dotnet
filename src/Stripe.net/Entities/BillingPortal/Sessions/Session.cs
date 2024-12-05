@@ -4,9 +4,6 @@ namespace Stripe.BillingPortal
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// The Billing customer portal is a Stripe-hosted UI for subscription and billing
@@ -23,27 +20,18 @@ namespace Stripe.BillingPortal
     ///
     /// Related guide: <a href="https://stripe.com/customer-management">Customer management</a>.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class Session : StripeEntity<Session>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         #region Expandable Configuration
@@ -53,9 +41,6 @@ namespace Stripe.BillingPortal
         /// The configuration used by this session, describing the features available.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string ConfigurationId
         {
             get => this.InternalConfiguration?.Id;
@@ -69,9 +54,6 @@ namespace Stripe.BillingPortal
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public Configuration Configuration
         {
             get => this.InternalConfiguration?.ExpandedObject;
@@ -80,10 +62,6 @@ namespace Stripe.BillingPortal
 
         [JsonProperty("configuration")]
         [JsonConverter(typeof(ExpandableFieldConverter<Configuration>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("configuration")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Configuration>))]
-#endif
         internal ExpandableField<Configuration> InternalConfiguration { get; set; }
         #endregion
 
@@ -92,19 +70,12 @@ namespace Stripe.BillingPortal
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The ID of the customer for this session.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -113,9 +84,6 @@ namespace Stripe.BillingPortal
         /// more about using customer portal deep links and flows.
         /// </summary>
         [JsonProperty("flow")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("flow")]
-#endif
         public SessionFlow Flow { get; set; }
 
         /// <summary>
@@ -123,9 +91,6 @@ namespace Stripe.BillingPortal
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -140,9 +105,6 @@ namespace Stripe.BillingPortal
         /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("locale")]
-#endif
         public string Locale { get; set; }
 
         /// <summary>
@@ -156,9 +118,6 @@ namespace Stripe.BillingPortal
         /// displays.
         /// </summary>
         [JsonProperty("on_behalf_of")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("on_behalf_of")]
-#endif
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -166,18 +125,12 @@ namespace Stripe.BillingPortal
         /// website.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
 
         /// <summary>
         /// The short-lived URL of the session that gives customers access to the customer portal.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

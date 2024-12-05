@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountLinkCreateOptions : BaseOptions
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// The identifier of the account to create an account link for.
         /// </summary>
         [JsonProperty("account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account")]
-#endif
         public string Account { get; set; }
 
         /// <summary>
@@ -22,9 +16,6 @@ namespace Stripe
         /// One of: <c>currently_due</c>, or <c>eventually_due</c>.
         /// </summary>
         [JsonProperty("collect")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("collect")]
-#endif
         public string Collect { get; set; }
 
         /// <summary>
@@ -32,9 +23,6 @@ namespace Stripe
         /// Onboarding flow.
         /// </summary>
         [JsonProperty("collection_options")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("collection_options")]
-#endif
         public AccountLinkCollectionOptionsOptions CollectionOptions { get; set; }
 
         /// <summary>
@@ -46,18 +34,12 @@ namespace Stripe
         /// should display a useful error to the user.
         /// </summary>
         [JsonProperty("refresh_url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refresh_url")]
-#endif
         public string RefreshUrl { get; set; }
 
         /// <summary>
         /// The URL that the user will be redirected to upon leaving or completing the linked flow.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -66,9 +48,6 @@ namespace Stripe
         /// One of: <c>account_onboarding</c>, or <c>account_update</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

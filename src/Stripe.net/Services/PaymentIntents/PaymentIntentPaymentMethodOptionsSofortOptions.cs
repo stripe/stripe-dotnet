@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentIntentPaymentMethodOptionsSofortOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe
         /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, <c>it</c>, <c>nl</c>, or <c>pl</c>.
         /// </summary>
         [JsonProperty("preferred_language")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("preferred_language")]
-#endif
         public string PreferredLanguage { get; set; }
 
         /// <summary>
@@ -44,9 +38,6 @@ namespace Stripe
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

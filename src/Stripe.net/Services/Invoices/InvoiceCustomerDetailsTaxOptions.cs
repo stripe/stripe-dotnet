@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class InvoiceCustomerDetailsTaxOptions : INestedOptions
     {
@@ -15,9 +12,6 @@ namespace Stripe
         /// frequently since it could result in unexpected tax location/reporting outcomes.
         /// </summary>
         [JsonProperty("ip_address")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("ip_address")]
-#endif
         public string IpAddress { get; set; }
     }
 }

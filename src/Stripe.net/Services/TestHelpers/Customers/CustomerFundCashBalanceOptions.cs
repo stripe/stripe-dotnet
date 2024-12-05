@@ -2,9 +2,6 @@
 namespace Stripe.TestHelpers
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class CustomerFundCashBalanceOptions : BaseOptions
     {
@@ -15,9 +12,6 @@ namespace Stripe.TestHelpers
         /// 100 cents to fund $1.00 or 100 to fund ¥100, a zero-decimal currency).
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -26,9 +20,6 @@ namespace Stripe.TestHelpers
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -39,9 +30,6 @@ namespace Stripe.TestHelpers
         /// algorithm</a> applies to different user inputs.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
     }
 }

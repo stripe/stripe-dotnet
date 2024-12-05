@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PaymentIntentPaymentMethodDataSepaDebitOptions : INestedOptions
     {
@@ -12,9 +9,6 @@ namespace Stripe
         /// IBAN of the bank account.
         /// </summary>
         [JsonProperty("iban")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("iban")]
-#endif
         public string Iban { get; set; }
     }
 }

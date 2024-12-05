@@ -3,9 +3,6 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class SessionShippingAddressCollection : StripeEntity<SessionShippingAddressCollection>
     {
@@ -45,9 +42,6 @@ namespace Stripe.Checkout
         /// <c>YE</c>, <c>YT</c>, <c>ZA</c>, <c>ZM</c>, <c>ZW</c>, or <c>ZZ</c>.
         /// </summary>
         [JsonProperty("allowed_countries")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("allowed_countries")]
-#endif
         public List<string> AllowedCountries { get; set; }
     }
 }

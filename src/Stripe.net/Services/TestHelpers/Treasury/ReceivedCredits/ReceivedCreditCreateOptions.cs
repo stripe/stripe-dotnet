@@ -2,9 +2,6 @@
 namespace Stripe.TestHelpers.Treasury
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class ReceivedCreditCreateOptions : BaseOptions
     {
@@ -12,9 +9,6 @@ namespace Stripe.TestHelpers.Treasury
         /// Amount (in cents) to be transferred.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -23,36 +17,24 @@ namespace Stripe.TestHelpers.Treasury
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// The FinancialAccount to send funds to.
         /// </summary>
         [JsonProperty("financial_account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("financial_account")]
-#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
         /// Initiating payment method details for the object.
         /// </summary>
         [JsonProperty("initiating_payment_method_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("initiating_payment_method_details")]
-#endif
         public ReceivedCreditInitiatingPaymentMethodDetailsOptions InitiatingPaymentMethodDetails { get; set; }
 
         /// <summary>
@@ -63,9 +45,6 @@ namespace Stripe.TestHelpers.Treasury
         /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
         /// </summary>
         [JsonProperty("network")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("network")]
-#endif
         public string Network { get; set; }
     }
 }

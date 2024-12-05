@@ -2,9 +2,6 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class PersonRequirementsError : StripeEntity<PersonRequirementsError>
     {
@@ -72,9 +69,6 @@ namespace Stripe
         /// <c>verification_supportability</c>.
         /// </summary>
         [JsonProperty("code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("code")]
-#endif
         public string Code { get; set; }
 
         /// <summary>
@@ -82,9 +76,6 @@ namespace Stripe
         /// about the error.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
 
         /// <summary>
@@ -92,9 +83,6 @@ namespace Stripe
         /// be resolved.
         /// </summary>
         [JsonProperty("requirement")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("requirement")]
-#endif
         public string Requirement { get; set; }
     }
 }

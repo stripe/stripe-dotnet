@@ -4,9 +4,6 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -15,18 +12,12 @@ namespace Stripe
         /// securely provide details to the account.
         /// </summary>
         [JsonProperty("account_token")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account_token")]
-#endif
         public string AccountToken { get; set; }
 
         /// <summary>
         /// Business information about the account.
         /// </summary>
         [JsonProperty("business_profile")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("business_profile")]
-#endif
         public AccountBusinessProfileOptions BusinessProfile { get; set; }
 
         /// <summary>
@@ -40,9 +31,6 @@ namespace Stripe
         /// <c>non_profit</c>.
         /// </summary>
         [JsonProperty("business_type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("business_type")]
-#endif
         public string BusinessType { get; set; }
 
         /// <summary>
@@ -56,9 +44,6 @@ namespace Stripe
         /// is <c>none</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("capabilities")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("capabilities")]
-#endif
         public AccountCapabilitiesOptions Capabilities { get; set; }
 
         /// <summary>
@@ -71,9 +56,6 @@ namespace Stripe
         /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("company")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("company")]
-#endif
         public AccountCompanyOptions Company { get; set; }
 
         /// <summary>
@@ -82,18 +64,12 @@ namespace Stripe
         /// account's country</a>.
         /// </summary>
         [JsonProperty("default_currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("default_currency")]
-#endif
         public string DefaultCurrency { get; set; }
 
         /// <summary>
         /// Documents that may be submitted to satisfy various informational requests.
         /// </summary>
         [JsonProperty("documents")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("documents")]
-#endif
         public AccountDocumentsOptions Documents { get; set; }
 
         /// <summary>
@@ -104,9 +80,6 @@ namespace Stripe
         /// without your consent.
         /// </summary>
         [JsonProperty("email")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("email")]
-#endif
         public string Email { get; set; }
 
         /// <summary>
@@ -129,10 +102,6 @@ namespace Stripe
         /// </summary>
         [JsonProperty("external_account")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("external_account")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<string, AccountBankAccountOptions, AccountCardOptions> ExternalAccount { get; set; }
 
         /// <summary>
@@ -140,9 +109,6 @@ namespace Stripe
         /// added to.
         /// </summary>
         [JsonProperty("groups")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("groups")]
-#endif
         public AccountGroupsOptions Groups { get; set; }
 
         /// <summary>
@@ -155,9 +121,6 @@ namespace Stripe
         /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("individual")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("individual")]
-#endif
         public AccountIndividualOptions Individual { get; set; }
 
         /// <summary>
@@ -167,18 +130,12 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Options for customizing how the account functions within Stripe.
         /// </summary>
         [JsonProperty("settings")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("settings")]
-#endif
         public AccountSettingsOptions Settings { get; set; }
 
         /// <summary>
@@ -190,9 +147,6 @@ namespace Stripe
         /// <c>full</c> service agreement when empty.
         /// </summary>
         [JsonProperty("tos_acceptance")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tos_acceptance")]
-#endif
         public AccountTosAcceptanceOptions TosAcceptance { get; set; }
     }
 }

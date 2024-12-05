@@ -2,9 +2,6 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class EventDestinationCreateWebhookEndpointOptions : INestedOptions
     {
@@ -12,9 +9,6 @@ namespace Stripe.V2.Core
         /// The URL of the webhook endpoint.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

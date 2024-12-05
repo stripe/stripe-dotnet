@@ -2,9 +2,6 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class TransactionTransactionRefreshOptions : INestedOptions
     {
@@ -13,9 +10,6 @@ namespace Stripe.FinancialConnections
         /// place after this refresh (non-inclusive).
         /// </summary>
         [JsonProperty("after")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("after")]
-#endif
         public string After { get; set; }
     }
 }

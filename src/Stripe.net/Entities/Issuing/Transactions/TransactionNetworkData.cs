@@ -2,9 +2,6 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class TransactionNetworkData : StripeEntity<TransactionNetworkData>
     {
@@ -16,9 +13,6 @@ namespace Stripe.Issuing
         /// authorizations.
         /// </summary>
         [JsonProperty("authorization_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("authorization_code")]
-#endif
         public string AuthorizationCode { get; set; }
 
         /// <summary>
@@ -27,9 +21,6 @@ namespace Stripe.Issuing
         /// transaction to the network.
         /// </summary>
         [JsonProperty("processing_date")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("processing_date")]
-#endif
         public string ProcessingDate { get; set; }
 
         /// <summary>
@@ -37,9 +28,6 @@ namespace Stripe.Issuing
         /// subsequent messages, disputes, and transactions.
         /// </summary>
         [JsonProperty("transaction_id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transaction_id")]
-#endif
         public string TransactionId { get; set; }
     }
 }

@@ -3,9 +3,6 @@ namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AccountBalanceCash : StripeEntity<AccountBalanceCash>
     {
@@ -22,9 +19,6 @@ namespace Stripe.FinancialConnections
         /// holder. A negative amount indicates money owed by the account holder.
         /// </summary>
         [JsonProperty("available")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("available")]
-#endif
         public Dictionary<string, long> Available { get; set; }
     }
 }

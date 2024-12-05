@@ -3,9 +3,6 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class InvoicePaymentSettings : StripeEntity<InvoicePaymentSettings>
     {
@@ -15,18 +12,12 @@ namespace Stripe
         /// default_source, if set.
         /// </summary>
         [JsonProperty("default_mandate")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("default_mandate")]
-#endif
         public string DefaultMandate { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration to provide to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_options")]
-#endif
         public InvoicePaymentSettingsPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -46,9 +37,6 @@ namespace Stripe
         /// <c>sofort</c>, <c>swish</c>, <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_method_types")]
-#endif
         public List<string> PaymentMethodTypes { get; set; }
     }
 }

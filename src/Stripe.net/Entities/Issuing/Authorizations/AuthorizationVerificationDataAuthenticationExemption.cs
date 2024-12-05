@@ -2,9 +2,6 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     public class AuthorizationVerificationDataAuthenticationExemption : StripeEntity<AuthorizationVerificationDataAuthenticationExemption>
     {
@@ -14,9 +11,6 @@ namespace Stripe.Issuing
         /// One of: <c>acquirer</c>, or <c>issuer</c>.
         /// </summary>
         [JsonProperty("claimed_by")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("claimed_by")]
-#endif
         public string ClaimedBy { get; set; }
 
         /// <summary>
@@ -25,9 +19,6 @@ namespace Stripe.Issuing
         /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

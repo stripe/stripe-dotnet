@@ -5,44 +5,29 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a>
     /// that are issued to cardholders.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class Card : StripeEntity<Card>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The brand of the card.
         /// </summary>
         [JsonProperty("brand")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("brand")]
-#endif
         public string Brand { get; set; }
 
         /// <summary>
@@ -50,9 +35,6 @@ namespace Stripe.Issuing
         /// One of: <c>design_rejected</c>, <c>lost</c>, or <c>stolen</c>.
         /// </summary>
         [JsonProperty("cancellation_reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancellation_reason")]
-#endif
         public string CancellationReason { get; set; }
 
         /// <summary>
@@ -64,9 +46,6 @@ namespace Stripe.Issuing
         /// to create a cardholder</a>.
         /// </summary>
         [JsonProperty("cardholder")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cardholder")]
-#endif
         public Cardholder Cardholder { get; set; }
 
         /// <summary>
@@ -74,10 +53,6 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -86,9 +61,6 @@ namespace Stripe.Issuing
         /// EU, and <c>gbp</c> in the UK.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -100,45 +72,30 @@ namespace Stripe.Issuing
         /// endpoint</a>, not via "List all cards" or any other endpoint.
         /// </summary>
         [JsonProperty("cvc")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cvc")]
-#endif
         public string Cvc { get; set; }
 
         /// <summary>
         /// The expiration month of the card.
         /// </summary>
         [JsonProperty("exp_month")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("exp_month")]
-#endif
         public long ExpMonth { get; set; }
 
         /// <summary>
         /// The expiration year of the card.
         /// </summary>
         [JsonProperty("exp_year")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("exp_year")]
-#endif
         public long ExpYear { get; set; }
 
         /// <summary>
         /// The financial account this card is attached to.
         /// </summary>
         [JsonProperty("financial_account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("financial_account")]
-#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
         /// The last 4 digits of the card number.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
 
         /// <summary>
@@ -146,9 +103,6 @@ namespace Stripe.Issuing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -157,9 +111,6 @@ namespace Stripe.Issuing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -171,9 +122,6 @@ namespace Stripe.Issuing
         /// endpoint</a>, not via "List all cards" or any other endpoint.
         /// </summary>
         [JsonProperty("number")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("number")]
-#endif
         public string Number { get; set; }
 
         #region Expandable PersonalizationDesign
@@ -183,9 +131,6 @@ namespace Stripe.Issuing
         /// The personalization design object belonging to this card.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string PersonalizationDesignId
         {
             get => this.InternalPersonalizationDesign?.Id;
@@ -199,9 +144,6 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public PersonalizationDesign PersonalizationDesign
         {
             get => this.InternalPersonalizationDesign?.ExpandedObject;
@@ -210,10 +152,6 @@ namespace Stripe.Issuing
 
         [JsonProperty("personalization_design")]
         [JsonConverter(typeof(ExpandableFieldConverter<PersonalizationDesign>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("personalization_design")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PersonalizationDesign>))]
-#endif
         internal ExpandableField<PersonalizationDesign> InternalPersonalizationDesign { get; set; }
         #endregion
 
@@ -224,9 +162,6 @@ namespace Stripe.Issuing
         /// The latest card that replaces this card, if any.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string ReplacedById
         {
             get => this.InternalReplacedBy?.Id;
@@ -240,9 +175,6 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public Card ReplacedBy
         {
             get => this.InternalReplacedBy?.ExpandedObject;
@@ -251,10 +183,6 @@ namespace Stripe.Issuing
 
         [JsonProperty("replaced_by")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("replaced_by")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
-#endif
         internal ExpandableField<Card> InternalReplacedBy { get; set; }
         #endregion
 
@@ -265,9 +193,6 @@ namespace Stripe.Issuing
         /// The card this card replaces, if any.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public string ReplacementForId
         {
             get => this.InternalReplacementFor?.Id;
@@ -281,9 +206,6 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
         public Card ReplacementFor
         {
             get => this.InternalReplacementFor?.ExpandedObject;
@@ -292,10 +214,6 @@ namespace Stripe.Issuing
 
         [JsonProperty("replacement_for")]
         [JsonConverter(typeof(ExpandableFieldConverter<Card>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("replacement_for")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Card>))]
-#endif
         internal ExpandableField<Card> InternalReplacementFor { get; set; }
         #endregion
 
@@ -304,24 +222,15 @@ namespace Stripe.Issuing
         /// One of: <c>damaged</c>, <c>expired</c>, <c>lost</c>, or <c>stolen</c>.
         /// </summary>
         [JsonProperty("replacement_reason")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("replacement_reason")]
-#endif
         public string ReplacementReason { get; set; }
 
         /// <summary>
         /// Where and how the card will be shipped.
         /// </summary>
         [JsonProperty("shipping")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping")]
-#endif
         public CardShipping Shipping { get; set; }
 
         [JsonProperty("spending_controls")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("spending_controls")]
-#endif
         public CardSpendingControls SpendingControls { get; set; }
 
         /// <summary>
@@ -330,9 +239,6 @@ namespace Stripe.Issuing
         /// One of: <c>active</c>, <c>canceled</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -340,18 +246,12 @@ namespace Stripe.Issuing
         /// One of: <c>physical</c>, or <c>virtual</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// Information relating to digital wallets (like Apple Pay and Google Pay).
         /// </summary>
         [JsonProperty("wallets")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("wallets")]
-#endif
         public CardWallets Wallets { get; set; }
     }
 }
