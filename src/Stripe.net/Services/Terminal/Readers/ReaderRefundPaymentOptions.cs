@@ -3,6 +3,9 @@ namespace Stripe.Terminal
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ReaderRefundPaymentOptions : BaseOptions, IHasMetadata
     {
@@ -11,12 +14,18 @@ namespace Stripe.Terminal
         /// refund.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
         /// ID of the Charge to refund.
         /// </summary>
         [JsonProperty("charge")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("charge")]
+#endif
         public string Charge { get; set; }
 
         /// <summary>
@@ -26,12 +35,18 @@ namespace Stripe.Terminal
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// ID of the PaymentIntent to refund.
         /// </summary>
         [JsonProperty("payment_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_intent")]
+#endif
         public string PaymentIntent { get; set; }
 
         /// <summary>
@@ -42,12 +57,18 @@ namespace Stripe.Terminal
         /// created the charge.
         /// </summary>
         [JsonProperty("refund_application_fee")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund_application_fee")]
+#endif
         public bool? RefundApplicationFee { get; set; }
 
         /// <summary>
         /// Configuration overrides.
         /// </summary>
         [JsonProperty("refund_payment_config")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund_payment_config")]
+#endif
         public ReaderRefundPaymentConfigOptions RefundPaymentConfig { get; set; }
 
         /// <summary>
@@ -57,6 +78,9 @@ namespace Stripe.Terminal
         /// created the charge.
         /// </summary>
         [JsonProperty("reverse_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reverse_transfer")]
+#endif
         public bool? ReverseTransfer { get; set; }
     }
 }

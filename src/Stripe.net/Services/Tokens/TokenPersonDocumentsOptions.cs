@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TokenPersonDocumentsOptions : INestedOptions
     {
@@ -10,12 +13,18 @@ namespace Stripe
         /// the company.
         /// </summary>
         [JsonProperty("company_authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("company_authorization")]
+#endif
         public TokenPersonDocumentsCompanyAuthorizationOptions CompanyAuthorization { get; set; }
 
         /// <summary>
         /// One or more documents showing the person's passport page with photo and personal data.
         /// </summary>
         [JsonProperty("passport")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("passport")]
+#endif
         public TokenPersonDocumentsPassportOptions Passport { get; set; }
 
         /// <summary>
@@ -23,6 +32,9 @@ namespace Stripe
         /// they are residing.
         /// </summary>
         [JsonProperty("visa")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("visa")]
+#endif
         public TokenPersonDocumentsVisaOptions Visa { get; set; }
     }
 }

@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceSubscriptionItemOptions : INestedOptions, IHasId, IHasMetadata
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
         public InvoiceSubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
@@ -19,24 +25,36 @@ namespace Stripe
         /// to <c>true</c> and the current plan's <c>usage_type</c> is <c>metered</c>.
         /// </summary>
         [JsonProperty("clear_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("clear_usage")]
+#endif
         public bool? ClearUsage { get; set; }
 
         /// <summary>
         /// A flag that, if set to <c>true</c>, will delete the specified item.
         /// </summary>
         [JsonProperty("deleted")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deleted")]
+#endif
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// The coupons to redeem into discounts for the subscription item.
         /// </summary>
         [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
         public List<InvoiceSubscriptionItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// Subscription item to update.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -46,12 +64,18 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Plan ID for this item, as a string.
         /// </summary>
         [JsonProperty("plan")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("plan")]
+#endif
         public string Plan { get; set; }
 
         /// <summary>
@@ -60,6 +84,9 @@ namespace Stripe
         /// <c>quantity</c> parameter is provided.
         /// </summary>
         [JsonProperty("price")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price")]
+#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -67,12 +94,18 @@ namespace Stripe
         /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price_data")]
+#endif
         public InvoiceSubscriptionItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
         /// Quantity for this item.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -83,6 +116,9 @@ namespace Stripe
         /// tax rates.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
         public List<string> TaxRates { get; set; }
     }
 }

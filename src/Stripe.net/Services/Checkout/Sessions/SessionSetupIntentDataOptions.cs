@@ -3,6 +3,9 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionSetupIntentDataOptions : INestedOptions, IHasMetadata
     {
@@ -10,6 +13,9 @@ namespace Stripe.Checkout
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -19,12 +25,18 @@ namespace Stripe.Checkout
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The Stripe account for which the setup is intended.
         /// </summary>
         [JsonProperty("on_behalf_of")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("on_behalf_of")]
+#endif
         public string OnBehalfOf { get; set; }
     }
 }

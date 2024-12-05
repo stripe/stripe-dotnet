@@ -3,6 +3,9 @@ namespace Stripe.Climate
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OrderCreateOptions : BaseOptions, IHasMetadata
     {
@@ -11,6 +14,9 @@ namespace Stripe.Climate
         /// specified.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -18,6 +24,9 @@ namespace Stripe.Climate
         /// Stripe account if not set.
         /// </summary>
         [JsonProperty("beneficiary")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("beneficiary")]
+#endif
         public OrderBeneficiaryOptions Beneficiary { get; set; }
 
         /// <summary>
@@ -27,6 +36,9 @@ namespace Stripe.Climate
         /// currency for your account</a>. If omitted, the account's default currency will be used.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -36,18 +48,27 @@ namespace Stripe.Climate
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Requested number of tons for the order. Either this or <c>amount</c> must be specified.
         /// </summary>
         [JsonProperty("metric_tons")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metric_tons")]
+#endif
         public decimal? MetricTons { get; set; }
 
         /// <summary>
         /// Unique identifier of the Climate product.
         /// </summary>
         [JsonProperty("product")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("product")]
+#endif
         public string Product { get; set; }
     }
 }

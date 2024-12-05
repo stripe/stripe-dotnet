@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A Customer Session allows you to grant Stripe's frontend SDKs (like Stripe.js)
@@ -17,12 +20,18 @@ namespace Stripe
     /// href="https://stripe.com/payment-links/buy-button#pass-an-existing-customer">Customer
     /// Session with the Buy Button</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CustomerSession : StripeEntity<CustomerSession>, IHasObject
     {
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -34,12 +43,18 @@ namespace Stripe
         /// Make sure that you have TLS enabled on any page that includes the client secret.
         /// </summary>
         [JsonProperty("client_secret")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("client_secret")]
+#endif
         public string ClientSecret { get; set; }
 
         /// <summary>
         /// Configuration for the components supported by this Customer Session.
         /// </summary>
         [JsonProperty("components")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("components")]
+#endif
         public CustomerSessionComponents Components { get; set; }
 
         /// <summary>
@@ -47,6 +62,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable Customer
@@ -56,6 +75,9 @@ namespace Stripe
         /// The Customer the Customer Session was created for.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -69,6 +91,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -77,6 +102,10 @@ namespace Stripe
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
+#endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -85,6 +114,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -92,6 +125,9 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
     }
 }

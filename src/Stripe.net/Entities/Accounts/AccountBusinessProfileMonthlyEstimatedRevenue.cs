@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountBusinessProfileMonthlyEstimatedRevenue : StripeEntity<AccountBusinessProfileMonthlyEstimatedRevenue>
     {
@@ -10,6 +13,9 @@ namespace Stripe
         /// href="https://stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -18,6 +24,9 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
     }
 }

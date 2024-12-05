@@ -3,6 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TokenCreateOptions : BaseOptions
     {
@@ -10,6 +13,9 @@ namespace Stripe
         /// Information for the account this token represents.
         /// </summary>
         [JsonProperty("account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account")]
+#endif
         public TokenAccountOptions Account { get; set; }
 
         /// <summary>
@@ -17,6 +23,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("bank_account")]
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank_account")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
         public AnyOf<string, TokenBankAccountOptions> BankAccount { get; set; }
 
         /// <summary>
@@ -27,6 +37,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("card")]
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
         public AnyOf<string, TokenCardOptions> Card { get; set; }
 
         /// <summary>
@@ -39,24 +53,36 @@ namespace Stripe
         /// payment methods</a>.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// The updated CVC value this token represents.
         /// </summary>
         [JsonProperty("cvc_update")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cvc_update")]
+#endif
         public TokenCvcUpdateOptions CvcUpdate { get; set; }
 
         /// <summary>
         /// Information for the person this token represents.
         /// </summary>
         [JsonProperty("person")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("person")]
+#endif
         public TokenPersonOptions Person { get; set; }
 
         /// <summary>
         /// The PII this token represents.
         /// </summary>
         [JsonProperty("pii")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pii")]
+#endif
         public TokenPiiOptions Pii { get; set; }
     }
 }

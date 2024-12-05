@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PriceRecurring : StripeEntity<PriceRecurring>
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// One of: <c>last_during_period</c>, <c>last_ever</c>, <c>max</c>, or <c>sum</c>.
         /// </summary>
         [JsonProperty("aggregate_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("aggregate_usage")]
+#endif
         public string AggregateUsage { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("interval")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval")]
+#endif
         public string Interval { get; set; }
 
         /// <summary>
@@ -27,12 +36,18 @@ namespace Stripe
         /// bills every 3 months.
         /// </summary>
         [JsonProperty("interval_count")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval_count")]
+#endif
         public long IntervalCount { get; set; }
 
         /// <summary>
         /// The meter tracking the usage of a metered price.
         /// </summary>
         [JsonProperty("meter")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("meter")]
+#endif
         public string Meter { get; set; }
 
         /// <summary>
@@ -40,6 +55,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/api#create_subscription-trial_from_plan"><c>trial_from_plan=true</c></a>.
         /// </summary>
         [JsonProperty("trial_period_days")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_period_days")]
+#endif
         public long? TrialPeriodDays { get; set; }
 
         /// <summary>
@@ -50,6 +68,9 @@ namespace Stripe
         /// One of: <c>licensed</c>, or <c>metered</c>.
         /// </summary>
         [JsonProperty("usage_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("usage_type")]
+#endif
         public string UsageType { get; set; }
     }
 }
