@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentNextActionCardAwaitNotification : StripeEntity<PaymentIntentNextActionCardAwaitNotification>
     {
@@ -13,6 +16,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("charge_attempt_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("charge_attempt_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? ChargeAttemptAt { get; set; }
 
         /// <summary>
@@ -20,6 +27,9 @@ namespace Stripe
         /// payment with their bank. For payments of lower amount, no customer action is required.
         /// </summary>
         [JsonProperty("customer_approval_required")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_approval_required")]
+#endif
         public bool? CustomerApprovalRequired { get; set; }
     }
 }

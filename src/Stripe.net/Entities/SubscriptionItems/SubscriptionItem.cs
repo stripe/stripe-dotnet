@@ -6,23 +6,35 @@ namespace Stripe
     using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Subscription items allow you to create customer subscriptions with more than one plan,
     /// making it easy to represent complex billing relationships.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SubscriptionItem : StripeEntity<SubscriptionItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -30,6 +42,9 @@ namespace Stripe
         /// advanced to a new billing period.
         /// </summary>
         [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
         public SubscriptionItemBillingThresholds BillingThresholds { get; set; }
 
         /// <summary>
@@ -37,12 +52,20 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deleted")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+#endif
         public bool? Deleted { get; set; }
 
         #region Expandable Discounts
@@ -53,6 +76,9 @@ namespace Stripe
         /// before subscription discounts. Use <c>expand[]=discounts</c> to expand each discount.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public List<string> DiscountIds
         {
             get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
@@ -67,6 +93,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public List<Discount> Discounts
         {
             get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
@@ -74,6 +103,9 @@ namespace Stripe
         }
 
         [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
@@ -83,6 +115,9 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -106,6 +141,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
         /// </summary>
         [JsonProperty("plan")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("plan")]
+#endif
         public Plan Plan { get; set; }
 
         /// <summary>
@@ -127,6 +165,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/products-prices/overview">products and prices</a>.
         /// </summary>
         [JsonProperty("price")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price")]
+#endif
         public Price Price { get; set; }
 
         /// <summary>
@@ -134,12 +175,18 @@ namespace Stripe
         /// to which the customer should be subscribed.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
         public long Quantity { get; set; }
 
         /// <summary>
         /// The <c>subscription</c> this <c>subscription_item</c> belongs to.
         /// </summary>
         [JsonProperty("subscription")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription")]
+#endif
         public string Subscription { get; set; }
 
         /// <summary>
@@ -148,6 +195,9 @@ namespace Stripe
         /// <c>subscription_item</c>.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
         public List<TaxRate> TaxRates { get; set; }
     }
 }

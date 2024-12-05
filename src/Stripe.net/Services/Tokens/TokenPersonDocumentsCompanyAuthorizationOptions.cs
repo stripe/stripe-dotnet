@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TokenPersonDocumentsCompanyAuthorizationOptions : INestedOptions
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// value of <c>account_requirement</c>.
         /// </summary>
         [JsonProperty("files")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("files")]
+#endif
         public List<string> Files { get; set; }
     }
 }

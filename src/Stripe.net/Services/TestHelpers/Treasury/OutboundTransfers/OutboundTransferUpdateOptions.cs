@@ -2,6 +2,9 @@
 namespace Stripe.TestHelpers.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OutboundTransferUpdateOptions : BaseOptions
     {
@@ -9,6 +12,9 @@ namespace Stripe.TestHelpers.Treasury
         /// Details about network-specific tracking information.
         /// </summary>
         [JsonProperty("tracking_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tracking_details")]
+#endif
         public OutboundTransferTrackingDetailsOptions TrackingDetails { get; set; }
     }
 }

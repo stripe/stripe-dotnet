@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// An AccountSession allows a Connect platform to grant access to a connected account in
@@ -23,12 +26,18 @@ namespace Stripe
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The ID of the account the AccountSession was created for.
         /// </summary>
         [JsonProperty("account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account")]
+#endif
         public string Account { get; set; }
 
         /// <summary>
@@ -45,9 +54,15 @@ namespace Stripe
         /// handled.
         /// </summary>
         [JsonProperty("client_secret")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("client_secret")]
+#endif
         public string ClientSecret { get; set; }
 
         [JsonProperty("components")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("components")]
+#endif
         public AccountSessionComponents Components { get; set; }
 
         /// <summary>
@@ -55,6 +70,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -62,6 +81,9 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TransactionShippingCostOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe.Tax
         /// negative.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe.Tax
         /// negative.
         /// </summary>
         [JsonProperty("amount_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_tax")]
+#endif
         public long? AmountTax { get; set; }
     }
 }

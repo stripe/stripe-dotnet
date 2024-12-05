@@ -2,6 +2,9 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionInvoiceCreationInvoiceDataRenderingOptionsOptions : INestedOptions
     {
@@ -14,6 +17,9 @@ namespace Stripe.Checkout
         /// One of: <c>exclude_tax</c>, or <c>include_inclusive_tax</c>.
         /// </summary>
         [JsonProperty("amount_tax_display")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_tax_display")]
+#endif
         public string AmountTaxDisplay { get; set; }
     }
 }

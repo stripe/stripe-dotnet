@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Each customer has a <a
@@ -18,9 +21,15 @@ namespace Stripe
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         [JsonProperty("bank_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank_transfer")]
+#endif
         public FundingInstructionsBankTransfer BankTransfer { get; set; }
 
         /// <summary>
@@ -29,12 +38,18 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// The <c>funding_type</c> of the returned instructions.
         /// </summary>
         [JsonProperty("funding_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("funding_type")]
+#endif
         public string FundingType { get; set; }
 
         /// <summary>
@@ -42,6 +57,9 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CardholderIndividualVerificationDocumentOptions : INestedOptions
     {
@@ -10,6 +13,9 @@ namespace Stripe.Issuing
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonProperty("back")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("back")]
+#endif
         public string Back { get; set; }
 
         /// <summary>
@@ -17,6 +23,9 @@ namespace Stripe.Issuing
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonProperty("front")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("front")]
+#endif
         public string Front { get; set; }
     }
 }
