@@ -18,7 +18,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// List of data features that you would like to retrieve upon account creation.
-        /// One of: <c>balances</c>, <c>ownership</c>, or <c>transactions</c>.
+        /// One of: <c>balances</c>, <c>inferred_balances</c>, <c>ownership</c>, or
+        /// <c>transactions</c>.
         /// </summary>
         [JsonProperty("prefetch")]
         public List<string> Prefetch { get; set; }

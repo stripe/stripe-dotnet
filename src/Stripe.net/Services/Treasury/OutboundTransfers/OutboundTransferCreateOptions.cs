@@ -54,6 +54,12 @@ namespace Stripe.Treasury
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Details about the network used for the OutboundTransfer.
+        /// </summary>
+        [JsonProperty("network_details")]
+        public OutboundTransferNetworkDetailsOptions NetworkDetails { get; set; }
+
+        /// <summary>
         /// Statement descriptor to be shown on the receiving end of an OutboundTransfer. Maximum 10
         /// characters for <c>ach</c> transfers or 140 characters for <c>us_domestic_wire</c>
         /// transfers. The default value is "transfer".

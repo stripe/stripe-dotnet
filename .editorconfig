@@ -13,6 +13,8 @@ dotnet_style_qualification_for_method = true
 # IDE0003: Remove qualification
 dotnet_style_qualification_for_field = true
 
+[CHANGELOG.md]
+trim_trailing_whitespace = false
 [src/Stripe.net/**/*.cs]
 
 dotnet_diagnostic.CA2007.severity = error

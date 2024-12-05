@@ -14,6 +14,15 @@ namespace Stripe
         [JsonProperty("balances")]
         public AccountSessionComponentsBalances Balances { get; set; }
 
+        [JsonProperty("capital_financing")]
+        public AccountSessionComponentsCapitalFinancing CapitalFinancing { get; set; }
+
+        [JsonProperty("capital_financing_application")]
+        public AccountSessionComponentsCapitalFinancingApplication CapitalFinancingApplication { get; set; }
+
+        [JsonProperty("capital_financing_promotion")]
+        public AccountSessionComponentsCapitalFinancingPromotion CapitalFinancingPromotion { get; set; }
+
         [JsonProperty("documents")]
         public AccountSessionComponentsDocuments Documents { get; set; }
 

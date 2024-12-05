@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class SetupIntentPaymentMethodOptionsPaypal : StripeEntity<SetupIntentPaymentMethodOptionsPaypal>
@@ -11,5 +12,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_agreement_id")]
         public string BillingAgreementId { get; set; }
+
+        /// <summary>
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// The Stripe connected account IDs of the sellers on the platform for this transaction
+        /// (optional). Only allowed when <a
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">separate charges
+        /// and transfers</a> are used.
+        /// </summary>
+        [JsonProperty("subsellers")]
+        public List<string> Subsellers { get; set; }
     }
 }

@@ -168,6 +168,9 @@ namespace Stripe
         [JsonProperty("requirements")]
         public AccountRequirements Requirements { get; set; }
 
+        [JsonProperty("risk_controls")]
+        public AccountRiskControls RiskControls { get; set; }
+
         /// <summary>
         /// Options for customizing how the account functions within Stripe.
         /// </summary>

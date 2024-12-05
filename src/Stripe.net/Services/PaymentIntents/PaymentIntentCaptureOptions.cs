@@ -26,6 +26,12 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("async_workflows")]
+        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
+
+        /// <summary>
         /// Defaults to <c>true</c>. When capturing a PaymentIntent, setting <c>final_capture</c> to
         /// <c>false</c> notifies Stripe to not release the remaining uncaptured funds to make sure
         /// that they're captured in future requests. You can only use this setting when <a
@@ -43,6 +49,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
         /// Text that appears on the customer's statement as the statement descriptor for a non-card

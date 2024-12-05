@@ -9,6 +9,13 @@ namespace Stripe
     public class QuoteUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Set to true to allow quote lines to have <c>starts_at</c> in the past if collection is
+        /// paused between <c>starts_at</c> and now.
+        /// </summary>
+        [JsonProperty("allow_backdated_lines")]
+        public bool? AllowBackdatedLines { get; set; }
+
+        /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. There cannot be any
         /// line items with recurring prices when using this field.
@@ -103,6 +110,15 @@ namespace Stripe
         public List<QuoteLineItemOptions> LineItems { get; set; }
 
         /// <summary>
+        /// A list of <a href="https://docs.stripe.com/api/quote_lines">quote lines</a> on the
+        /// quote. These lines describe changes, in the order provided, that will be used to create
+        /// new subscription schedules or update existing subscription schedules when the quote is
+        /// accepted.
+        /// </summary>
+        [JsonProperty("lines")]
+        public List<QuoteLineOptions> Lines { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
@@ -126,6 +142,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("subscription_data")]
         public QuoteSubscriptionDataOptions SubscriptionData { get; set; }
+
+        /// <summary>
+        /// List representing overrides for <c>subscription_data</c> configurations for specific
+        /// subscription schedules.
+        /// </summary>
+        [JsonProperty("subscription_data_overrides")]
+        public List<QuoteSubscriptionDataOverrideOptions> SubscriptionDataOverrides { get; set; }
 
         /// <summary>
         /// The data with which to automatically create a Transfer for each of the invoices.

@@ -7,6 +7,23 @@ namespace Stripe
     public class PaymentIntentConfirmOptions : BaseOptions
     {
         /// <summary>
+        /// The amount of the application fee (if any) that will be requested to be applied to the
+        /// payment and transferred to the application owner's Stripe account. The amount of the
+        /// application fee collected will be capped at the total payment amount. For more
+        /// information, see the PaymentIntents <a
+        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// accounts</a>.
+        /// </summary>
+        [JsonProperty("application_fee_amount")]
+        public long? ApplicationFeeAmount { get; set; }
+
+        /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("async_workflows")]
+        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
+
+        /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
@@ -54,6 +71,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("off_session")]
         public bool? OffSession { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a

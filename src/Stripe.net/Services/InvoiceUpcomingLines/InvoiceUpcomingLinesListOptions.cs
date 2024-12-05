@@ -174,6 +174,14 @@ namespace Stripe
         public List<InvoiceUpcomingLinesSubscriptionItemOptions> SubscriptionItems { get; set; }
 
         /// <summary>
+        /// The pre-billing to apply to the subscription as a preview. This field has been
+        /// deprecated and will be removed in a future API version. Use
+        /// <c>subscription_details.prebilling</c> instead.
+        /// </summary>
+        [JsonProperty("subscription_prebilling")]
+        public InvoiceUpcomingLinesSubscriptionPrebillingOptions SubscriptionPrebilling { get; set; }
+
+        /// <summary>
         /// Determines how to handle <a
         /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when the
         /// billing cycle changes (e.g., when switching plans, resetting

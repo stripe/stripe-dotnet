@@ -120,10 +120,28 @@ namespace Stripe
         public AccountCapabilitiesGiropayPaymentsOptions GiropayPayments { get; set; }
 
         /// <summary>
+        /// The gopay_payments capability.
+        /// </summary>
+        [JsonProperty("gopay_payments")]
+        public AccountCapabilitiesGopayPaymentsOptions GopayPayments { get; set; }
+
+        /// <summary>
         /// The grabpay_payments capability.
         /// </summary>
         [JsonProperty("grabpay_payments")]
         public AccountCapabilitiesGrabpayPaymentsOptions GrabpayPayments { get; set; }
+
+        /// <summary>
+        /// The id_bank_transfer_payments capability.
+        /// </summary>
+        [JsonProperty("id_bank_transfer_payments")]
+        public AccountCapabilitiesIdBankTransferPaymentsOptions IdBankTransferPayments { get; set; }
+
+        /// <summary>
+        /// The id_bank_transfer_payments_bca capability.
+        /// </summary>
+        [JsonProperty("id_bank_transfer_payments_bca")]
+        public AccountCapabilitiesIdBankTransferPaymentsBcaOptions IdBankTransferPaymentsBca { get; set; }
 
         /// <summary>
         /// The ideal_payments capability.
@@ -186,6 +204,12 @@ namespace Stripe
         public AccountCapabilitiesLinkPaymentsOptions LinkPayments { get; set; }
 
         /// <summary>
+        /// The mb_way_payments capability.
+        /// </summary>
+        [JsonProperty("mb_way_payments")]
+        public AccountCapabilitiesMbWayPaymentsOptions MbWayPayments { get; set; }
+
+        /// <summary>
         /// The mobilepay_payments capability.
         /// </summary>
         [JsonProperty("mobilepay_payments")]
@@ -234,10 +258,34 @@ namespace Stripe
         public AccountCapabilitiesPaynowPaymentsOptions PaynowPayments { get; set; }
 
         /// <summary>
+        /// The paypal_payments capability.
+        /// </summary>
+        [JsonProperty("paypal_payments")]
+        public AccountCapabilitiesPaypalPaymentsOptions PaypalPayments { get; set; }
+
+        /// <summary>
+        /// The payto_payments capability.
+        /// </summary>
+        [JsonProperty("payto_payments")]
+        public AccountCapabilitiesPaytoPaymentsOptions PaytoPayments { get; set; }
+
+        /// <summary>
         /// The promptpay_payments capability.
         /// </summary>
         [JsonProperty("promptpay_payments")]
         public AccountCapabilitiesPromptpayPaymentsOptions PromptpayPayments { get; set; }
+
+        /// <summary>
+        /// The qris_payments capability.
+        /// </summary>
+        [JsonProperty("qris_payments")]
+        public AccountCapabilitiesQrisPaymentsOptions QrisPayments { get; set; }
+
+        /// <summary>
+        /// The rechnung_payments capability.
+        /// </summary>
+        [JsonProperty("rechnung_payments")]
+        public AccountCapabilitiesRechnungPaymentsOptions RechnungPayments { get; set; }
 
         /// <summary>
         /// The revolut_pay_payments capability.
@@ -262,6 +310,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sepa_debit_payments")]
         public AccountCapabilitiesSepaDebitPaymentsOptions SepaDebitPayments { get; set; }
+
+        /// <summary>
+        /// The shopeepay_payments capability.
+        /// </summary>
+        [JsonProperty("shopeepay_payments")]
+        public AccountCapabilitiesShopeepayPaymentsOptions ShopeepayPayments { get; set; }
 
         /// <summary>
         /// The sofort_payments capability.
@@ -298,6 +352,24 @@ namespace Stripe
         /// </summary>
         [JsonProperty("treasury")]
         public AccountCapabilitiesTreasuryOptions Treasury { get; set; }
+
+        /// <summary>
+        /// The treasury_evolve capability.
+        /// </summary>
+        [JsonProperty("treasury_evolve")]
+        public AccountCapabilitiesTreasuryEvolveOptions TreasuryEvolve { get; set; }
+
+        /// <summary>
+        /// The treasury_fifth_third capability.
+        /// </summary>
+        [JsonProperty("treasury_fifth_third")]
+        public AccountCapabilitiesTreasuryFifthThirdOptions TreasuryFifthThird { get; set; }
+
+        /// <summary>
+        /// The treasury_goldman_sachs capability.
+        /// </summary>
+        [JsonProperty("treasury_goldman_sachs")]
+        public AccountCapabilitiesTreasuryGoldmanSachsOptions TreasuryGoldmanSachs { get; set; }
 
         /// <summary>
         /// The twint_payments capability.

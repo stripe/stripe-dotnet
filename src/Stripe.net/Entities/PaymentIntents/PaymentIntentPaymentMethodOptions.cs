@@ -59,8 +59,14 @@ namespace Stripe
         [JsonProperty("giropay")]
         public PaymentIntentPaymentMethodOptionsGiropay Giropay { get; set; }
 
+        [JsonProperty("gopay")]
+        public PaymentIntentPaymentMethodOptionsGopay Gopay { get; set; }
+
         [JsonProperty("grabpay")]
         public PaymentIntentPaymentMethodOptionsGrabpay Grabpay { get; set; }
+
+        [JsonProperty("id_bank_transfer")]
+        public PaymentIntentPaymentMethodOptionsIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
         public PaymentIntentPaymentMethodOptionsIdeal Ideal { get; set; }
@@ -82,6 +88,9 @@ namespace Stripe
 
         [JsonProperty("link")]
         public PaymentIntentPaymentMethodOptionsLink Link { get; set; }
+
+        [JsonProperty("mb_way")]
+        public PaymentIntentPaymentMethodOptionsMbWay MbWay { get; set; }
 
         [JsonProperty("mobilepay")]
         public PaymentIntentPaymentMethodOptionsMobilepay Mobilepay { get; set; }
@@ -107,11 +116,20 @@ namespace Stripe
         [JsonProperty("paypal")]
         public PaymentIntentPaymentMethodOptionsPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public PaymentIntentPaymentMethodOptionsPayto Payto { get; set; }
+
         [JsonProperty("pix")]
         public PaymentIntentPaymentMethodOptionsPix Pix { get; set; }
 
         [JsonProperty("promptpay")]
         public PaymentIntentPaymentMethodOptionsPromptpay Promptpay { get; set; }
+
+        [JsonProperty("qris")]
+        public PaymentIntentPaymentMethodOptionsQris Qris { get; set; }
+
+        [JsonProperty("rechnung")]
+        public PaymentIntentPaymentMethodOptionsRechnung Rechnung { get; set; }
 
         [JsonProperty("revolut_pay")]
         public PaymentIntentPaymentMethodOptionsRevolutPay RevolutPay { get; set; }
@@ -121,6 +139,9 @@ namespace Stripe
 
         [JsonProperty("sepa_debit")]
         public PaymentIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("shopeepay")]
+        public PaymentIntentPaymentMethodOptionsShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
         public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }

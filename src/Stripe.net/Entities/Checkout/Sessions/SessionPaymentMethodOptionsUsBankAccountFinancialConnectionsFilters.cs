@@ -13,5 +13,11 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("account_subcategories")]
         public List<string> AccountSubcategories { get; set; }
+
+        /// <summary>
+        /// The institution to use to filter for possible accounts to link.
+        /// </summary>
+        [JsonProperty("institution")]
+        public string Institution { get; set; }
     }
 }

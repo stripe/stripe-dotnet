@@ -57,6 +57,14 @@ namespace Stripe.Treasury
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The display name for the FinancialAccount. Use this field to customize the names of the
+        /// FinancialAccounts for your connected accounts. Unlike the <c>nickname</c> field,
+        /// <c>display_name</c> is not internal metadata and will be exposed to connected accounts.
+        /// </summary>
+        [JsonProperty("display_name")]
+        public string DisplayName { get; set; }
+
+        /// <summary>
         /// Encodes whether a FinancialAccount has access to a particular Feature, with a
         /// <c>status</c> enum and associated <c>status_details</c>. Stripe or the platform can
         /// control Features via the requested field.

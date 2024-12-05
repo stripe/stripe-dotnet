@@ -3146,6 +3146,17 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestQuotesPreviewInvoicesLinesGet()
+        {
+            var service = new QuoteService(this.StripeClient);
+            StripeList<InvoiceLineItem> invoiceLineItems = service
+                .ListPreviewInvoiceLines("qt_xyz", "in_xyz");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/quotes/qt_xyz/preview_invoices/in_xyz/lines");
+        }
+
+        [Fact]
         public void TestRadarEarlyFraudWarningsGet()
         {
             var options = new Stripe.Radar.EarlyFraudWarningListOptions
@@ -4032,6 +4043,16 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/tax_codes/txcd_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestTaxFormsPdfGet()
+        {
+            var service = new Stripe.Tax.FormService(this.StripeClient);
+            service.Pdf("form_xxxxxxxxxxxxx");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v1/tax/forms/form_xxxxxxxxxxxxx/pdf");
         }
 
         [Fact]

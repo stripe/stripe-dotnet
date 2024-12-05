@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class SessionPaymentMethodOptionsPaypalOptions : INestedOptions
@@ -29,6 +30,14 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }
+
+        /// <summary>
+        /// A reference of the PayPal transaction visible to customer which is mapped to PayPal's
+        /// invoice ID. This must be a globally unique ID if you have configured in your PayPal
+        /// settings to block multiple payments per invoice ID.
+        /// </summary>
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
 
         /// <summary>
         /// The risk correlation ID for an on-session payment using a saved PayPal payment method.
@@ -63,5 +72,14 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// The Stripe connected account IDs of the sellers on the platform for this transaction
+        /// (optional). Only allowed when <a
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">separate charges
+        /// and transfers</a> are used.
+        /// </summary>
+        [JsonProperty("subsellers")]
+        public List<string> Subsellers { get; set; }
     }
 }

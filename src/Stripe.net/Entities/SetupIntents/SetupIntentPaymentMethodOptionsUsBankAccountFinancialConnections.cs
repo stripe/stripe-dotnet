@@ -9,6 +9,9 @@ namespace Stripe
         [JsonProperty("filters")]
         public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters Filters { get; set; }
 
+        [JsonProperty("manual_entry")]
+        public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsManualEntry ManualEntry { get; set; }
+
         /// <summary>
         /// The list of permissions to request. The <c>payment_method</c> permission must be
         /// included.
@@ -20,7 +23,8 @@ namespace Stripe
 
         /// <summary>
         /// Data features requested to be retrieved upon account creation.
-        /// One of: <c>balances</c>, <c>ownership</c>, or <c>transactions</c>.
+        /// One of: <c>balances</c>, <c>inferred_balances</c>, <c>ownership</c>, or
+        /// <c>transactions</c>.
         /// </summary>
         [JsonProperty("prefetch")]
         public List<string> Prefetch { get; set; }

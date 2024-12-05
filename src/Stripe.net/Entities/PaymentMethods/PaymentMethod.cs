@@ -137,8 +137,14 @@ namespace Stripe
         [JsonProperty("giropay")]
         public PaymentMethodGiropay Giropay { get; set; }
 
+        [JsonProperty("gopay")]
+        public PaymentMethodGopay Gopay { get; set; }
+
         [JsonProperty("grabpay")]
         public PaymentMethodGrabpay Grabpay { get; set; }
+
+        [JsonProperty("id_bank_transfer")]
+        public PaymentMethodIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
         public PaymentMethodIdeal Ideal { get; set; }
@@ -167,6 +173,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
+
+        [JsonProperty("mb_way")]
+        public PaymentMethodMbWay MbWay { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
@@ -200,11 +209,17 @@ namespace Stripe
         [JsonProperty("paypal")]
         public PaymentMethodPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public PaymentMethodPayto Payto { get; set; }
+
         [JsonProperty("pix")]
         public PaymentMethodPix Pix { get; set; }
 
         [JsonProperty("promptpay")]
         public PaymentMethodPromptpay Promptpay { get; set; }
+
+        [JsonProperty("qris")]
+        public PaymentMethodQris Qris { get; set; }
 
         /// <summary>
         /// Options to configure Radar. See <a
@@ -214,6 +229,9 @@ namespace Stripe
         [JsonProperty("radar_options")]
         public PaymentMethodRadarOptions RadarOptions { get; set; }
 
+        [JsonProperty("rechnung")]
+        public PaymentMethodRechnung Rechnung { get; set; }
+
         [JsonProperty("revolut_pay")]
         public PaymentMethodRevolutPay RevolutPay { get; set; }
 
@@ -222,6 +240,9 @@ namespace Stripe
 
         [JsonProperty("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("shopeepay")]
+        public PaymentMethodShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
         public PaymentMethodSofort Sofort { get; set; }
@@ -240,12 +261,13 @@ namespace Stripe
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
         /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>card_present</c>,
         /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
-        /// <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>,
-        /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>,
-        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
-        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>gopay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
+        /// <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>,
+        /// <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
+        /// <c>oxxo</c>, <c>p24</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>,
+        /// <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>,
+        /// <c>samsung_pay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

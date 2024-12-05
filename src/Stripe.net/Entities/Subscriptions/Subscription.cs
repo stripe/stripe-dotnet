@@ -360,6 +360,12 @@ namespace Stripe
         [JsonProperty("items")]
         public StripeList<SubscriptionItem> Items { get; set; }
 
+        /// <summary>
+        /// Details of the most recent price migration that failed for the subscription.
+        /// </summary>
+        [JsonProperty("last_price_migration_error")]
+        public SubscriptionLastPriceMigrationError LastPriceMigrationError { get; set; }
+
         #region Expandable LatestInvoice
 
         /// <summary>
@@ -518,6 +524,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pending_update")]
         public SubscriptionPendingUpdate PendingUpdate { get; set; }
+
+        /// <summary>
+        /// Time period and invoice for a Subscription billed in advance.
+        /// </summary>
+        [JsonProperty("prebilling")]
+        public SubscriptionPrebilling Prebilling { get; set; }
 
         #region Expandable Schedule
 

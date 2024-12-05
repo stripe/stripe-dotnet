@@ -42,5 +42,8 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("process_config")]
         public ReaderActionProcessPaymentIntentProcessConfig ProcessConfig { get; set; }
+
+        [JsonProperty("stripe_account")]
+        public string StripeAccount { get; set; }
     }
 }

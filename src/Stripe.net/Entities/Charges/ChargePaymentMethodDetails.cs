@@ -65,8 +65,14 @@ namespace Stripe
         [JsonProperty("giropay")]
         public ChargePaymentMethodDetailsGiropay Giropay { get; set; }
 
+        [JsonProperty("gopay")]
+        public ChargePaymentMethodDetailsGopay Gopay { get; set; }
+
         [JsonProperty("grabpay")]
         public ChargePaymentMethodDetailsGrabpay Grabpay { get; set; }
+
+        [JsonProperty("id_bank_transfer")]
+        public ChargePaymentMethodDetailsIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
         public ChargePaymentMethodDetailsIdeal Ideal { get; set; }
@@ -88,6 +94,9 @@ namespace Stripe
 
         [JsonProperty("link")]
         public ChargePaymentMethodDetailsLink Link { get; set; }
+
+        [JsonProperty("mb_way")]
+        public ChargePaymentMethodDetailsMbWay MbWay { get; set; }
 
         [JsonProperty("mobilepay")]
         public ChargePaymentMethodDetailsMobilepay Mobilepay { get; set; }
@@ -113,11 +122,20 @@ namespace Stripe
         [JsonProperty("paypal")]
         public ChargePaymentMethodDetailsPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public ChargePaymentMethodDetailsPayto Payto { get; set; }
+
         [JsonProperty("pix")]
         public ChargePaymentMethodDetailsPix Pix { get; set; }
 
         [JsonProperty("promptpay")]
         public ChargePaymentMethodDetailsPromptpay Promptpay { get; set; }
+
+        [JsonProperty("qris")]
+        public ChargePaymentMethodDetailsQris Qris { get; set; }
+
+        [JsonProperty("rechnung")]
+        public ChargePaymentMethodDetailsRechnung Rechnung { get; set; }
 
         [JsonProperty("revolut_pay")]
         public ChargePaymentMethodDetailsRevolutPay RevolutPay { get; set; }
@@ -127,6 +145,9 @@ namespace Stripe
 
         [JsonProperty("sepa_debit")]
         public ChargePaymentMethodDetailsSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("shopeepay")]
+        public ChargePaymentMethodDetailsShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
         public ChargePaymentMethodDetailsSofort Sofort { get; set; }

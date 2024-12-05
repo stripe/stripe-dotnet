@@ -163,6 +163,15 @@ namespace Stripe
         public string OnBehalfOf { get; set; }
 
         /// <summary>
+        /// If specified, payment collection for this subscription will be paused. Note that the
+        /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
+        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// collection</a>.
+        /// </summary>
+        [JsonProperty("pause_collection")]
+        public SubscriptionSchedulePhasePauseCollectionOptions PauseCollection { get; set; }
+
+        /// <summary>
         /// Whether the subscription schedule will create <a
         /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when
         /// transitioning to this phase. The default value is <c>create_prorations</c>. This setting
@@ -199,11 +208,24 @@ namespace Stripe
         public bool? Trial { get; set; }
 
         /// <summary>
+        /// Specify trial behavior when crossing phase boundaries.
+        /// One of: <c>continue</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("trial_continuation")]
+        public string TrialContinuation { get; set; }
+
+        /// <summary>
         /// Sets the phase to trialing from the start date to this date. Must be before the phase
         /// end date, can not be combined with <c>trial</c>.
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
         public AnyOf<DateTime?, SubscriptionSchedulePhaseTrialEnd> TrialEnd { get; set; }
+
+        /// <summary>
+        /// Settings related to subscription trials.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionSchedulePhaseTrialSettingsOptions TrialSettings { get; set; }
     }
 }

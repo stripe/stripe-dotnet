@@ -136,11 +136,25 @@ namespace Stripe
         public SetupIntentPaymentMethodDataGiropayOptions Giropay { get; set; }
 
         /// <summary>
+        /// If this is a Gopay PaymentMethod, this hash contains details about the Gopay payment
+        /// method.
+        /// </summary>
+        [JsonProperty("gopay")]
+        public SetupIntentPaymentMethodDataGopayOptions Gopay { get; set; }
+
+        /// <summary>
         /// If this is a <c>grabpay</c> PaymentMethod, this hash contains details about the GrabPay
         /// payment method.
         /// </summary>
         [JsonProperty("grabpay")]
         public SetupIntentPaymentMethodDataGrabpayOptions Grabpay { get; set; }
+
+        /// <summary>
+        /// If this is an <c>IdBankTransfer</c> PaymentMethod, this hash contains details about the
+        /// IdBankTransfer payment method.
+        /// </summary>
+        [JsonProperty("id_bank_transfer")]
+        public SetupIntentPaymentMethodDataIdBankTransferOptions IdBankTransfer { get; set; }
 
         /// <summary>
         /// If this is an <c>ideal</c> PaymentMethod, this hash contains details about the iDEAL
@@ -190,6 +204,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("link")]
         public SetupIntentPaymentMethodDataLinkOptions Link { get; set; }
+
+        /// <summary>
+        /// If this is a MB WAY PaymentMethod, this hash contains details about the MB WAY payment
+        /// method.
+        /// </summary>
+        [JsonProperty("mb_way")]
+        public SetupIntentPaymentMethodDataMbWayOptions MbWay { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
@@ -257,6 +278,13 @@ namespace Stripe
         public SetupIntentPaymentMethodDataPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// If this is a <c>payto</c> PaymentMethod, this hash contains details about the PayTo
+        /// payment method.
+        /// </summary>
+        [JsonProperty("payto")]
+        public SetupIntentPaymentMethodDataPaytoOptions Payto { get; set; }
+
+        /// <summary>
         /// If this is a <c>pix</c> PaymentMethod, this hash contains details about the Pix payment
         /// method.
         /// </summary>
@@ -271,12 +299,26 @@ namespace Stripe
         public SetupIntentPaymentMethodDataPromptpayOptions Promptpay { get; set; }
 
         /// <summary>
+        /// If this is a <c>qris</c> PaymentMethod, this hash contains details about the QRIS
+        /// payment method.
+        /// </summary>
+        [JsonProperty("qris")]
+        public SetupIntentPaymentMethodDataQrisOptions Qris { get; set; }
+
+        /// <summary>
         /// Options to configure Radar. See <a
         /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
         [JsonProperty("radar_options")]
         public SetupIntentPaymentMethodDataRadarOptionsOptions RadarOptions { get; set; }
+
+        /// <summary>
+        /// If this is a <c>rechnung</c> PaymentMethod, this hash contains details about the
+        /// Rechnung payment method.
+        /// </summary>
+        [JsonProperty("rechnung")]
+        public SetupIntentPaymentMethodDataRechnungOptions Rechnung { get; set; }
 
         /// <summary>
         /// If this is a <c>Revolut Pay</c> PaymentMethod, this hash contains details about the
@@ -298,6 +340,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sepa_debit")]
         public SetupIntentPaymentMethodDataSepaDebitOptions SepaDebit { get; set; }
+
+        /// <summary>
+        /// If this is a Shopeepay PaymentMethod, this hash contains details about the Shopeepay
+        /// payment method.
+        /// </summary>
+        [JsonProperty("shopeepay")]
+        public SetupIntentPaymentMethodDataShopeepayOptions Shopeepay { get; set; }
 
         /// <summary>
         /// If this is a <c>sofort</c> PaymentMethod, this hash contains details about the SOFORT
@@ -327,12 +376,14 @@ namespace Stripe
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
         /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>cashapp</c>, <c>customer_balance</c>,
-        /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
-        /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>,
-        /// <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>payco</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
-        /// <c>samsung_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>,
+        /// <c>id_bank_transfer</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
+        /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
+        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>, <c>shopeepay</c>,
+        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

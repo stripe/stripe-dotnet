@@ -7,6 +7,16 @@ namespace Stripe
     public static class EventTypes
     {
         /// <summary>
+        /// Occurs whenever an AccountNotice is created.
+        /// </summary>
+        public const string AccountNoticeCreated = "account_notice.created";
+
+        /// <summary>
+        /// Occurs whenever an AccountNotice is updated.
+        /// </summary>
+        public const string AccountNoticeUpdated = "account_notice.updated";
+
+        /// <summary>
         /// Occurs whenever a user authorizes an application. Sent to the related application only.
         /// </summary>
         public const string AccountApplicationAuthorized = "account.application.authorized";
@@ -82,9 +92,59 @@ namespace Stripe
         public const string BillingAlertTriggered = "billing.alert.triggered";
 
         /// <summary>
+        /// Notifies of errors on a billing meter.
+        /// </summary>
+        public const string BillingMeterErrorReportTriggered = "billing.meter_error_report.triggered";
+
+        /// <summary>
         /// Occurs whenever a capability has new requirements or a new status.
         /// </summary>
         public const string CapabilityUpdated = "capability.updated";
+
+        /// <summary>
+        /// Occurs whenever a connected account accepts a financing offer.
+        /// </summary>
+        public const string CapitalFinancingOfferAccepted = "capital.financing_offer.accepted";
+
+        /// <summary>
+        /// Occurs whenever a financing offer is canceled.
+        /// </summary>
+        public const string CapitalFinancingOfferCanceled = "capital.financing_offer.canceled";
+
+        /// <summary>
+        /// Occurs whenever a new financing offer is created for a connected account.
+        /// </summary>
+        public const string CapitalFinancingOfferCreated = "capital.financing_offer.created";
+
+        /// <summary>
+        /// Occurs whenever a financing offer expires.
+        /// </summary>
+        public const string CapitalFinancingOfferExpired = "capital.financing_offer.expired";
+
+        /// <summary>
+        /// Occurs whenever a financing offer is fully repaid.
+        /// </summary>
+        public const string CapitalFinancingOfferFullyRepaid = "capital.financing_offer.fully_repaid";
+
+        /// <summary>
+        /// Occurs whenever a financing offer is paid out.
+        /// </summary>
+        public const string CapitalFinancingOfferPaidOut = "capital.financing_offer.paid_out";
+
+        /// <summary>
+        /// Occurs whenever a financing offer is rejected.
+        /// </summary>
+        public const string CapitalFinancingOfferRejected = "capital.financing_offer.rejected";
+
+        /// <summary>
+        /// Occurs whenever a replacement for a financing offer has been created.
+        /// </summary>
+        public const string CapitalFinancingOfferReplacementCreated = "capital.financing_offer.replacement_created";
+
+        /// <summary>
+        /// Occurs whenever a financing transaction is created.
+        /// </summary>
+        public const string CapitalFinancingTransactionCreated = "capital.financing_transaction.created";
 
         /// <summary>
         /// Occurs whenever there is a positive remaining cash balance after Stripe automatically
@@ -301,9 +361,30 @@ namespace Stripe
         public const string CustomerSourceUpdated = "customer.source.updated";
 
         /// <summary>
+        /// Occurs whenever collection is paused on a customer's subscription. Only applies when <a
+        /// href="https://docs.stripe.com/billing/subscriptions/pause">payment collection</a> is
+        /// paused, not when subscriptions enter <c>status=paused</c>.
+        /// </summary>
+        public const string CustomerSubscriptionCollectionPaused = "customer.subscription.collection_paused";
+
+        /// <summary>
+        /// Occurs whenever collection is resumed on a customer's subscription that is currently
+        /// paused. Only applies when <a
+        /// href="https://docs.stripe.com/billing/subscriptions/pause">payment collection</a> is
+        /// resumed, not when subscriptions exit <c>status=paused</c>.
+        /// </summary>
+        public const string CustomerSubscriptionCollectionResumed = "customer.subscription.collection_resumed";
+
+        /// <summary>
         /// Occurs whenever a customer is signed up for a new plan.
         /// </summary>
         public const string CustomerSubscriptionCreated = "customer.subscription.created";
+
+        /// <summary>
+        /// An ad-hoc custom event that is sent based on user configured <a
+        /// href="https://docs.stripe.com/billing/automations#send-custom-webhook-event-action">Automation</a>.
+        /// </summary>
+        public const string CustomerSubscriptionCustomEvent = "customer.subscription.custom_event";
 
         /// <summary>
         /// Occurs whenever a customer's subscription ends.
@@ -329,6 +410,11 @@ namespace Stripe
         /// invoice is paid.
         /// </summary>
         public const string CustomerSubscriptionPendingUpdateExpired = "customer.subscription.pending_update_expired";
+
+        /// <summary>
+        /// Occurs whenever a price migration failed to transition prices on a subscription.
+        /// </summary>
+        public const string CustomerSubscriptionPriceMigrationFailed = "customer.subscription.price_migration_failed";
 
         /// <summary>
         /// Occurs whenever a customer's subscription is no longer paused. Only applies when a
@@ -410,6 +496,12 @@ namespace Stripe
         public const string FinancialConnectionsAccountRefreshedBalance = "financial_connections.account.refreshed_balance";
 
         /// <summary>
+        /// Occurs when an Account’s <c>inferred_balances_refresh</c> status transitions from
+        /// <c>pending</c> to either <c>succeeded</c> or <c>failed</c>.
+        /// </summary>
+        public const string FinancialConnectionsAccountRefreshedInferredBalances = "financial_connections.account.refreshed_inferred_balances";
+
+        /// <summary>
         /// Occurs when an Account’s <c>ownership_refresh</c> status transitions from <c>pending</c>
         /// to either <c>succeeded</c> or <c>failed</c>.
         /// </summary>
@@ -420,6 +512,12 @@ namespace Stripe
         /// <c>pending</c> to either <c>succeeded</c> or <c>failed</c>.
         /// </summary>
         public const string FinancialConnectionsAccountRefreshedTransactions = "financial_connections.account.refreshed_transactions";
+
+        /// <summary>
+        /// Occurs when a Financial Connections Session <c>status</c> transitions from
+        /// <c>pending</c> to <c>failed</c>, <c>cancelled</c>, or <c>completed</c>.
+        /// </summary>
+        public const string FinancialConnectionsSessionUpdated = "financial_connections.session.updated";
 
         /// <summary>
         /// Occurs whenever a VerificationSession is canceled.
@@ -489,6 +587,11 @@ namespace Stripe
         public const string InvoiceOverdue = "invoice.overdue";
 
         /// <summary>
+        /// Occurs when an invoice transitions to paid with a non-zero amount_overpaid.
+        /// </summary>
+        public const string InvoiceOverpaid = "invoice.overpaid";
+
+        /// <summary>
         /// Occurs whenever an invoice payment attempt succeeds or an invoice is marked as paid
         /// out-of-band.
         /// </summary>
@@ -500,6 +603,12 @@ namespace Stripe
         public const string InvoicePaymentActionRequired = "invoice.payment_action_required";
 
         /// <summary>
+        /// Occurs when an invoice requires a payment using a payment method that cannot be
+        /// processed by Stripe.
+        /// </summary>
+        public const string InvoicePaymentAttemptRequired = "invoice.payment_attempt_required";
+
+        /// <summary>
         /// Occurs whenever an invoice payment attempt fails, due either to a declined payment or to
         /// the lack of a stored payment method.
         /// </summary>
@@ -509,6 +618,11 @@ namespace Stripe
         /// Occurs whenever an invoice payment attempt succeeds.
         /// </summary>
         public const string InvoicePaymentSucceeded = "invoice.payment_succeeded";
+
+        /// <summary>
+        /// Occurs when an InvoicePayment transitions to paid with a non-zero amount_overpaid.
+        /// </summary>
+        public const string InvoicePaymentOverpaid = "invoice.payment.overpaid";
 
         /// <summary>
         /// Occurs whenever an invoice email is sent out.
@@ -587,6 +701,16 @@ namespace Stripe
         public const string IssuingCardholderUpdated = "issuing_cardholder.updated";
 
         /// <summary>
+        /// Emitted when the DisputeSettlementDetail object is created.
+        /// </summary>
+        public const string IssuingDisputeSettlementDetailCreated = "issuing_dispute_settlement_detail.created";
+
+        /// <summary>
+        /// Emitted when the DisputeSettlementDetail object is updated.
+        /// </summary>
+        public const string IssuingDisputeSettlementDetailUpdated = "issuing_dispute_settlement_detail.updated";
+
+        /// <summary>
         /// Occurs whenever a dispute is won, lost or expired.
         /// </summary>
         public const string IssuingDisputeClosed = "issuing_dispute.closed";
@@ -617,6 +741,11 @@ namespace Stripe
         public const string IssuingDisputeUpdated = "issuing_dispute.updated";
 
         /// <summary>
+        /// Occurs whenever funds are deducted from your account for fraud dispute loss liability.
+        /// </summary>
+        public const string IssuingFraudLiabilityDebitCreated = "issuing_fraud_liability_debit.created";
+
+        /// <summary>
         /// Occurs whenever a personalization design is activated following the activation of the
         /// physical bundle that belongs to it.
         /// </summary>
@@ -637,6 +766,16 @@ namespace Stripe
         /// Occurs whenever a personalization design is updated.
         /// </summary>
         public const string IssuingPersonalizationDesignUpdated = "issuing_personalization_design.updated";
+
+        /// <summary>
+        /// Occurs whenever an issuing settlement is created.
+        /// </summary>
+        public const string IssuingSettlementCreated = "issuing_settlement.created";
+
+        /// <summary>
+        /// Occurs whenever an issuing settlement is updated.
+        /// </summary>
+        public const string IssuingSettlementUpdated = "issuing_settlement.updated";
 
         /// <summary>
         /// Occurs whenever an issuing digital wallet token is created.
@@ -854,9 +993,19 @@ namespace Stripe
         public const string PromotionCodeUpdated = "promotion_code.updated";
 
         /// <summary>
+        /// Occurs whenever a quote acceptance fails.
+        /// </summary>
+        public const string QuoteAcceptFailed = "quote.accept_failed";
+
+        /// <summary>
         /// Occurs whenever a quote is accepted.
         /// </summary>
         public const string QuoteAccepted = "quote.accepted";
+
+        /// <summary>
+        /// Occurs whenever a quote's status changes to accepting.
+        /// </summary>
+        public const string QuoteAccepting = "quote.accepting";
 
         /// <summary>
         /// Occurs whenever a quote is canceled.
@@ -869,9 +1018,30 @@ namespace Stripe
         public const string QuoteCreated = "quote.created";
 
         /// <summary>
+        /// Occurs when a quote's status changes from stale to draft.
+        /// </summary>
+        public const string QuoteDraft = "quote.draft";
+
+        /// <summary>
         /// Occurs whenever a quote is finalized.
         /// </summary>
         public const string QuoteFinalized = "quote.finalized";
+
+        /// <summary>
+        /// Occurs whenever a quote reestimate fails.
+        /// </summary>
+        public const string QuoteReestimateFailed = "quote.reestimate_failed";
+
+        /// <summary>
+        /// Occurs whenever an async job to compute preview subscription schedules/upcoming invoices
+        /// for the quote has completed.
+        /// </summary>
+        public const string QuoteReestimated = "quote.reestimated";
+
+        /// <summary>
+        /// Occurs whenever a quote's status changes to stale.
+        /// </summary>
+        public const string QuoteStale = "quote.stale";
 
         /// <summary>
         /// Occurs whenever an early fraud warning is created.
@@ -1018,6 +1188,12 @@ namespace Stripe
         public const string SubscriptionScheduleExpiring = "subscription_schedule.expiring";
 
         /// <summary>
+        /// Occurs whenever a price migration failed to transition prices on a subscription
+        /// schedule.
+        /// </summary>
+        public const string SubscriptionSchedulePriceMigrationFailed = "subscription_schedule.price_migration_failed";
+
+        /// <summary>
         /// Occurs whenever a new subscription schedule is released.
         /// </summary>
         public const string SubscriptionScheduleReleased = "subscription_schedule.released";
@@ -1038,6 +1214,11 @@ namespace Stripe
         public const string TaxRateUpdated = "tax_rate.updated";
 
         /// <summary>
+        /// Occurs when a tax form is updated.
+        /// </summary>
+        public const string TaxFormUpdated = "tax.form.updated";
+
+        /// <summary>
         /// Occurs whenever tax settings is updated.
         /// </summary>
         public const string TaxSettingsUpdated = "tax.settings.updated";
@@ -1051,6 +1232,11 @@ namespace Stripe
         /// Occurs whenever an action sent to a Terminal reader was successful.
         /// </summary>
         public const string TerminalReaderActionSucceeded = "terminal.reader.action_succeeded";
+
+        /// <summary>
+        /// Occurs whenever an action sent to a Terminal reader is updated.
+        /// </summary>
+        public const string TerminalReaderActionUpdated = "terminal.reader.action_updated";
 
         /// <summary>
         /// Occurs whenever a test clock starts advancing.

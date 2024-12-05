@@ -200,6 +200,16 @@ namespace Stripe
         public PaymentMethodConfigurationGooglePayOptions GooglePay { get; set; }
 
         /// <summary>
+        /// GoPay is a <a href="https://stripe.com/docs/payments/payment-methods#usage">single
+        /// use</a> digital wallet payment method popular in Indonesia. When paying with GoPay,
+        /// customers authenticate and approve payments using the Gojek app. Desktop checkout is
+        /// performed by scanning a QR code. When checking out on mobile, customers are redirected
+        /// to the Gojek app to confirm payment.
+        /// </summary>
+        [JsonProperty("gopay")]
+        public PaymentMethodConfigurationGopayOptions Gopay { get; set; }
+
+        /// <summary>
         /// GrabPay is a payment method developed by <a
         /// href="https://www.grab.com/sg/consumer/finance/pay/">Grab</a>. GrabPay is a digital
         /// wallet - customers maintain a balance in their wallets that they pay out with. Check
@@ -207,6 +217,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("grabpay")]
         public PaymentMethodConfigurationGrabpayOptions Grabpay { get; set; }
+
+        /// <summary>
+        /// Stripe users in Indonesia can receive bank transfers from customers in Indonesia. Bank
+        /// transfers are a popular B2C and B2B payment method in Indonesia.
+        /// </summary>
+        [JsonProperty("id_bank_transfer")]
+        public PaymentMethodConfigurationIdBankTransferOptions IdBankTransfer { get; set; }
 
         /// <summary>
         /// iDEAL is a Netherlands-based payment method that allows customers to complete
@@ -318,12 +335,29 @@ namespace Stripe
         public PaymentMethodConfigurationPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// PayTo is a <a href="https://docs.stripe.com/payments/real-time">real-time</a> payment
+        /// method that enables customers in Australia to pay by providing their bank account
+        /// details. Customers must accept a mandate authorizing you to debit their account. Check
+        /// this <a href="https://docs.stripe.com/payments/payto">page</a> for more details.
+        /// </summary>
+        [JsonProperty("payto")]
+        public PaymentMethodConfigurationPaytoOptions Payto { get; set; }
+
+        /// <summary>
         /// PromptPay is a Thailand-based payment method that allows customers to make a payment
         /// using their preferred app from participating banks. Check this <a
         /// href="https://stripe.com/docs/payments/promptpay">page</a> for more details.
         /// </summary>
         [JsonProperty("promptpay")]
         public PaymentMethodConfigurationPromptpayOptions Promptpay { get; set; }
+
+        /// <summary>
+        /// QRIS is a <a href="https://docs.stripe.com/payments/real-time">real-time</a> payment
+        /// method popular in Indonesia. When paying with QRIS, customers authenticate and approve
+        /// payments by scanning a QR code in their preferred digital wallet app.
+        /// </summary>
+        [JsonProperty("qris")]
+        public PaymentMethodConfigurationQrisOptions Qris { get; set; }
 
         /// <summary>
         /// Revolut Pay, developed by Revolut, a global finance app, is a digital wallet payment
@@ -344,6 +378,16 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sepa_debit")]
         public PaymentMethodConfigurationSepaDebitOptions SepaDebit { get; set; }
+
+        /// <summary>
+        /// ShopeePay is a <a href="https://stripe.com/docs/payments/payment-methods#usage">single
+        /// use</a> digital wallet payment method popular in Indonesia. When paying with GoPay,
+        /// customers authenticate and approve payments using the Shopee app. Desktop checkout is
+        /// performed by scanning a QR code. When checking out on mobile, customers are redirected
+        /// to the Shopee app to confirm payment.
+        /// </summary>
+        [JsonProperty("shopeepay")]
+        public PaymentMethodConfigurationShopeepayOptions Shopeepay { get; set; }
 
         /// <summary>
         /// Stripe users in Europe and the United States can use the <a

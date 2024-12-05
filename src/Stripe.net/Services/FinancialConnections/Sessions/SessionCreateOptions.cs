@@ -19,6 +19,18 @@ namespace Stripe.FinancialConnections
         public SessionFiltersOptions Filters { get; set; }
 
         /// <summary>
+        /// Settings for configuring Session-specific limits.
+        /// </summary>
+        [JsonProperty("limits")]
+        public SessionLimitsOptions Limits { get; set; }
+
+        /// <summary>
+        /// Settings for configuring manual entry of account details for this Session.
+        /// </summary>
+        [JsonProperty("manual_entry")]
+        public SessionManualEntryOptions ManualEntry { get; set; }
+
+        /// <summary>
         /// List of data features that you would like to request access to.
         ///
         /// Possible values are <c>balances</c>, <c>transactions</c>, <c>ownership</c>, and
@@ -31,7 +43,8 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// List of data features that you would like to retrieve upon account creation.
-        /// One of: <c>balances</c>, <c>ownership</c>, or <c>transactions</c>.
+        /// One of: <c>balances</c>, <c>inferred_balances</c>, <c>ownership</c>, or
+        /// <c>transactions</c>.
         /// </summary>
         [JsonProperty("prefetch")]
         public List<string> Prefetch { get; set; }

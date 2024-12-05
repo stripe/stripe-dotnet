@@ -74,9 +74,40 @@ namespace Stripe
         internal ExpandableField<Discount> InternalDiscount { get; set; }
         #endregion
 
+        #region Expandable Margin
+
+        /// <summary>
+        /// (ID of the Margin)
+        /// The margin that was applied to get this pretax credit amount.
+        /// </summary>
+        [JsonIgnore]
+        public string MarginId
+        {
+            get => this.InternalMargin?.Id;
+            set => this.InternalMargin = SetExpandableFieldId(value, this.InternalMargin);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The margin that was applied to get this pretax credit amount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Margin Margin
+        {
+            get => this.InternalMargin?.ExpandedObject;
+            set => this.InternalMargin = SetExpandableFieldObject(value, this.InternalMargin);
+        }
+
+        [JsonProperty("margin")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Margin>))]
+        internal ExpandableField<Margin> InternalMargin { get; set; }
+        #endregion
+
         /// <summary>
         /// Type of the pretax credit amount referenced.
-        /// One of: <c>credit_balance_transaction</c>, or <c>discount</c>.
+        /// One of: <c>credit_balance_transaction</c>, <c>discount</c>, or <c>margin</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

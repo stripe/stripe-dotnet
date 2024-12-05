@@ -4,7 +4,7 @@ namespace Stripe.Checkout
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class SessionLineItemOptions : INestedOptions
+    public class SessionLineItemOptions : INestedOptions, IHasMetadata, IHasId
     {
         /// <summary>
         /// When set, provides configuration for this item’s quantity to be adjusted by the customer
@@ -20,6 +20,21 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("dynamic_tax_rates")]
         public List<string> DynamicTaxRates { get; set; }
+
+        /// <summary>
+        /// ID of an existing line item.
+        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> or <a

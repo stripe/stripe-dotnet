@@ -14,6 +14,12 @@ namespace Stripe
         public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions Filters { get; set; }
 
         /// <summary>
+        /// Customize manual entry behavior.
+        /// </summary>
+        [JsonProperty("manual_entry")]
+        public SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsManualEntryOptions ManualEntry { get; set; }
+
+        /// <summary>
         /// The list of permissions to request. If this parameter is passed, the
         /// <c>payment_method</c> permission must be included. Valid permissions include:
         /// <c>balances</c>, <c>ownership</c>, <c>payment_method</c>, and <c>transactions</c>.
@@ -25,7 +31,8 @@ namespace Stripe
 
         /// <summary>
         /// List of data features that you would like to retrieve upon account creation.
-        /// One of: <c>balances</c>, <c>ownership</c>, or <c>transactions</c>.
+        /// One of: <c>balances</c>, <c>inferred_balances</c>, <c>ownership</c>, or
+        /// <c>transactions</c>.
         /// </summary>
         [JsonProperty("prefetch")]
         public List<string> Prefetch { get; set; }

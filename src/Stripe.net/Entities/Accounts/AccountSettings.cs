@@ -8,8 +8,14 @@ namespace Stripe
         [JsonProperty("bacs_debit_payments")]
         public AccountSettingsBacsDebitPayments BacsDebitPayments { get; set; }
 
+        [JsonProperty("bank_bca_onboarding")]
+        public AccountSettingsBankBcaOnboarding BankBcaOnboarding { get; set; }
+
         [JsonProperty("branding")]
         public AccountSettingsBranding Branding { get; set; }
+
+        [JsonProperty("capital")]
+        public AccountSettingsCapital Capital { get; set; }
 
         [JsonProperty("card_issuing")]
         public AccountSettingsCardIssuing CardIssuing { get; set; }
@@ -31,6 +37,9 @@ namespace Stripe
 
         [JsonProperty("sepa_debit_payments")]
         public AccountSettingsSepaDebitPayments SepaDebitPayments { get; set; }
+
+        [JsonProperty("tax_forms")]
+        public AccountSettingsTaxForms TaxForms { get; set; }
 
         [JsonProperty("treasury")]
         public AccountSettingsTreasury Treasury { get; set; }

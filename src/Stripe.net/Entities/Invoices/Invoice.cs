@@ -117,6 +117,13 @@ namespace Stripe
         public long AmountDue { get; set; }
 
         /// <summary>
+        /// Amount that was overpaid on the invoice. Overpayments are debited to the customer's
+        /// credit balance.
+        /// </summary>
+        [JsonProperty("amount_overpaid")]
+        public long AmountOverpaid { get; set; }
+
+        /// <summary>
         /// The amount, in cents (or local equivalent), that was paid.
         /// </summary>
         [JsonProperty("amount_paid")]
@@ -133,6 +140,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("amount_shipping")]
         public long AmountShipping { get; set; }
+
+        /// <summary>
+        /// List of expected payments and corresponding due dates. This value will be null for
+        /// invoices where collection_method=charge_automatically.
+        /// </summary>
+        [JsonProperty("amounts_due")]
+        public List<InvoiceAmountsDue> AmountsDue { get; set; }
 
         #region Expandable Application
 
@@ -383,6 +397,38 @@ namespace Stripe
         /// </summary>
         [JsonProperty("customer_tax_ids")]
         public List<InvoiceCustomerTaxId> CustomerTaxIds { get; set; }
+
+        #region Expandable DefaultMargins
+
+        /// <summary>
+        /// (IDs of the DefaultMargins)
+        /// The margins applied to the invoice. Can be overridden by line item <c>margins</c>. Use
+        /// <c>expand[]=default_margins</c> to expand each margin.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> DefaultMarginIds
+        {
+            get => this.InternalDefaultMargins?.Select((x) => x.Id).ToList();
+            set => this.InternalDefaultMargins = SetExpandableArrayIds<Margin>(value);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The margins applied to the invoice. Can be overridden by line item <c>margins</c>. Use
+        /// <c>expand[]=default_margins</c> to expand each margin.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public List<Margin> DefaultMargins
+        {
+            get => this.InternalDefaultMargins?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDefaultMargins = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("default_margins", ItemConverterType = typeof(ExpandableFieldConverter<Margin>))]
+        internal List<ExpandableField<Margin>> InternalDefaultMargins { get; set; }
+        #endregion
 
         #region Expandable DefaultPaymentMethod
 
@@ -735,6 +781,12 @@ namespace Stripe
         public InvoicePaymentSettings PaymentSettings { get; set; }
 
         /// <summary>
+        /// Payments for this invoice.
+        /// </summary>
+        [JsonProperty("payments")]
+        public StripeList<InvoicePayment> Payments { get; set; }
+
+        /// <summary>
         /// End of the usage period during which invoice items were added to this invoice. This
         /// looks back one period for a subscription invoice. Use the <a
         /// href="https://stripe.com/api/invoices/line_item#invoice_line_item_object-period">line
@@ -971,6 +1023,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("total_excluding_tax")]
         public long? TotalExcludingTax { get; set; }
+
+        /// <summary>
+        /// The aggregate amounts calculated per margin across all line items.
+        /// </summary>
+        [JsonProperty("total_margin_amounts")]
+        public List<InvoiceTotalMarginAmount> TotalMarginAmounts { get; set; }
 
         /// <summary>
         /// Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this

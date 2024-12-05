@@ -12,11 +12,23 @@ namespace Stripe
         public AccountSettingsBacsDebitPaymentsOptions BacsDebitPayments { get; set; }
 
         /// <summary>
+        /// Settings specific to bank BCA onboarding for Indonesia bank transfers payments method.
+        /// </summary>
+        [JsonProperty("bank_bca_onboarding")]
+        public AccountSettingsBankBcaOnboardingOptions BankBcaOnboarding { get; set; }
+
+        /// <summary>
         /// Settings used to apply the account's branding to email receipts, invoices, Checkout, and
         /// other products.
         /// </summary>
         [JsonProperty("branding")]
         public AccountSettingsBrandingOptions Branding { get; set; }
+
+        /// <summary>
+        /// Settings specific to the account's use of the Capital product.
+        /// </summary>
+        [JsonProperty("capital")]
+        public AccountSettingsCapitalOptions Capital { get; set; }
 
         /// <summary>
         /// Settings specific to the account's use of the Card Issuing product.
@@ -47,6 +59,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payouts")]
         public AccountSettingsPayoutsOptions Payouts { get; set; }
+
+        /// <summary>
+        /// Settings specific to the account's tax forms.
+        /// </summary>
+        [JsonProperty("tax_forms")]
+        public AccountSettingsTaxFormsOptions TaxForms { get; set; }
 
         /// <summary>
         /// Settings specific to the account's Treasury FinancialAccounts.

@@ -215,6 +215,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// If specified, payment collection for this subscription will be paused. Note that the
+        /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
+        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// collection</a>.
+        /// </summary>
+        [JsonProperty("pause_collection")]
+        public SubscriptionSchedulePhasePauseCollection PauseCollection { get; set; }
+
+        /// <summary>
         /// If the subscription schedule will prorate when transitioning to this phase. Possible
         /// values are <c>create_prorations</c> and <c>none</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
@@ -238,10 +247,23 @@ namespace Stripe
         public SubscriptionSchedulePhaseTransferData TransferData { get; set; }
 
         /// <summary>
+        /// Specify behavior of the trial when crossing schedule phase boundaries.
+        /// One of: <c>continue</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("trial_continuation")]
+        public string TrialContinuation { get; set; }
+
+        /// <summary>
         /// When the trial ends within the phase.
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? TrialEnd { get; set; }
+
+        /// <summary>
+        /// Settings related to any trials on the subscription during this phase.
+        /// </summary>
+        [JsonProperty("trial_settings")]
+        public SubscriptionSchedulePhaseTrialSettings TrialSettings { get; set; }
     }
 }

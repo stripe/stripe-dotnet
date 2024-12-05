@@ -26,6 +26,9 @@ namespace Stripe
         [JsonProperty("paypal")]
         public SetupIntentPaymentMethodOptionsPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public SetupIntentPaymentMethodOptionsPayto Payto { get; set; }
+
         [JsonProperty("sepa_debit")]
         public SetupIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 

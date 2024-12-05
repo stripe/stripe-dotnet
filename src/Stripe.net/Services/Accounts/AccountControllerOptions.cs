@@ -6,6 +6,18 @@ namespace Stripe
     public class AccountControllerOptions : INestedOptions
     {
         /// <summary>
+        /// A hash of configuration describing the Connect application that controls the account.
+        /// </summary>
+        [JsonProperty("application")]
+        public AccountControllerApplicationOptions Application { get; set; }
+
+        /// <summary>
+        /// Properties of the account's dashboard.
+        /// </summary>
+        [JsonProperty("dashboard")]
+        public AccountControllerDashboardOptions Dashboard { get; set; }
+
+        /// <summary>
         /// A hash of configuration for who pays Stripe fees for product usage on this account.
         /// </summary>
         [JsonProperty("fees")]

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class PaymentIntentPaymentMethodOptionsPaypal : StripeEntity<PaymentIntentPaymentMethodOptionsPaypal>
@@ -10,6 +11,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("capture_method")]
         public string CaptureMethod { get; set; }
+
+        /// <summary>
+        /// The line items purchased by the customer.
+        /// </summary>
+        [JsonProperty("line_items")]
+        public List<PaymentIntentPaymentMethodOptionsPaypalLineItem> LineItems { get; set; }
 
         /// <summary>
         /// Preferred locale of the PayPal checkout page that the customer is redirected to.
@@ -24,6 +31,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }
+
+        /// <summary>
+        /// A reference of the PayPal transaction visible to customer which is mapped to PayPal's
+        /// invoice ID. This must be a globally unique ID if you have configured in your PayPal
+        /// settings to block multiple payments per invoice ID.
+        /// </summary>
+        [JsonProperty("reference_id")]
+        public string ReferenceId { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -48,5 +63,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// The Stripe connected account IDs of the sellers on the platform for this transaction
+        /// (optional). Only allowed when <a
+        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">separate charges
+        /// and transfers</a> are used.
+        /// </summary>
+        [JsonProperty("subsellers")]
+        public List<string> Subsellers { get; set; }
     }
 }

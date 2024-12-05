@@ -31,6 +31,12 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("async_workflows")]
+        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
+
+        /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
@@ -69,6 +75,12 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// This hash contains details about the Mandate to create.
+        /// </summary>
+        [JsonProperty("mandate_data")]
+        public PaymentIntentMandateDataOptions MandateData { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
@@ -78,11 +90,11 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// ID of the payment method (a PaymentMethod, Card, or <a
-        /// href="https://stripe.com/docs/payments/payment-methods/transitioning#compatibility">compatible
-        /// Source</a> object) to attach to this PaymentIntent. To unset this field to null, pass in
-        /// an empty string.
+        /// Provides industry-specific information about the charge.
         /// </summary>
+        [JsonProperty("payment_details")]
+        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
+
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }
 

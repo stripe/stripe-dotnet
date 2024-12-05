@@ -38,5 +38,11 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("payout")]
         public string Payout { get; set; }
+
+        /// <summary>
+        /// The ReceivedCredit that Capital withheld from.
+        /// </summary>
+        [JsonProperty("received_credit_capital_withholding")]
+        public string ReceivedCreditCapitalWithholding { get; set; }
     }
 }

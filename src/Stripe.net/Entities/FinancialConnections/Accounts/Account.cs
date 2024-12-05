@@ -64,6 +64,12 @@ namespace Stripe.FinancialConnections
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// The state of the most recent attempt to refresh the account's inferred balance history.
+        /// </summary>
+        [JsonProperty("inferred_balances_refresh")]
+        public AccountInferredBalancesRefresh InferredBalancesRefresh { get; set; }
+
+        /// <summary>
         /// The name of the institution that holds this account.
         /// </summary>
         [JsonProperty("institution_name")]
@@ -152,6 +158,7 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// The list of data refresh subscriptions requested on this account.
+        /// One of: <c>balance</c>, <c>inferred_balances</c>, or <c>transactions</c>.
         /// </summary>
         [JsonProperty("subscriptions")]
         public List<string> Subscriptions { get; set; }

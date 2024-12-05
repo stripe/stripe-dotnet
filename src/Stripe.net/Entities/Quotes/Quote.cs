@@ -27,6 +27,13 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
+        /// Allow quote lines to have <c>starts_at</c> in the past if collection is paused between
+        /// <c>starts_at</c> and now.
+        /// </summary>
+        [JsonProperty("allow_backdated_lines")]
+        public bool? AllowBackdatedLines { get; set; }
+
+        /// <summary>
         /// Total before any discounts or taxes are applied.
         /// </summary>
         [JsonProperty("amount_subtotal")]
@@ -286,6 +293,15 @@ namespace Stripe
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
+        /// A list of <a href="https://docs.stripe.com/api/quote_lines">quote lines</a> on the
+        /// quote. These lines describe changes, in the order provided, that will be used to create
+        /// new subscription schedules or update existing subscription schedules when the quote is
+        /// accepted.
+        /// </summary>
+        [JsonProperty("lines")]
+        public List<string> Lines { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -344,10 +360,17 @@ namespace Stripe
 
         /// <summary>
         /// The status of the quote.
-        /// One of: <c>accepted</c>, <c>canceled</c>, <c>draft</c>, or <c>open</c>.
+        /// One of: <c>accepted</c>, <c>accepting</c>, <c>canceled</c>, <c>draft</c>, <c>open</c>,
+        /// or <c>stale</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// Details on when and why a quote has been marked as stale or canceled.
+        /// </summary>
+        [JsonProperty("status_details")]
+        public QuoteStatusDetails StatusDetails { get; set; }
 
         [JsonProperty("status_transitions")]
         public QuoteStatusTransitions StatusTransitions { get; set; }
@@ -386,6 +409,13 @@ namespace Stripe
         [JsonProperty("subscription_data")]
         public QuoteSubscriptionData SubscriptionData { get; set; }
 
+        /// <summary>
+        /// List representing overrides for <c>subscription_data</c> configurations for specific
+        /// subscription schedules.
+        /// </summary>
+        [JsonProperty("subscription_data_overrides")]
+        public List<QuoteSubscriptionDataOverride> SubscriptionDataOverrides { get; set; }
+
         #region Expandable SubscriptionSchedule
 
         /// <summary>
@@ -416,6 +446,12 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<SubscriptionSchedule>))]
         internal ExpandableField<SubscriptionSchedule> InternalSubscriptionSchedule { get; set; }
         #endregion
+
+        /// <summary>
+        /// The subscription schedules that were created or updated from this quote.
+        /// </summary>
+        [JsonProperty("subscription_schedules")]
+        public List<QuoteSubscriptionSchedule> SubscriptionSchedules { get; set; }
 
         #region Expandable TestClock
 

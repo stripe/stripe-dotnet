@@ -106,8 +106,14 @@ namespace Stripe
         [JsonProperty("giropay")]
         public ConfirmationTokenPaymentMethodPreviewGiropay Giropay { get; set; }
 
+        [JsonProperty("gopay")]
+        public ConfirmationTokenPaymentMethodPreviewGopay Gopay { get; set; }
+
         [JsonProperty("grabpay")]
         public ConfirmationTokenPaymentMethodPreviewGrabpay Grabpay { get; set; }
+
+        [JsonProperty("id_bank_transfer")]
+        public ConfirmationTokenPaymentMethodPreviewIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
         public ConfirmationTokenPaymentMethodPreviewIdeal Ideal { get; set; }
@@ -129,6 +135,9 @@ namespace Stripe
 
         [JsonProperty("link")]
         public ConfirmationTokenPaymentMethodPreviewLink Link { get; set; }
+
+        [JsonProperty("mb_way")]
+        public ConfirmationTokenPaymentMethodPreviewMbWay MbWay { get; set; }
 
         [JsonProperty("mobilepay")]
         public ConfirmationTokenPaymentMethodPreviewMobilepay Mobilepay { get; set; }
@@ -154,11 +163,20 @@ namespace Stripe
         [JsonProperty("paypal")]
         public ConfirmationTokenPaymentMethodPreviewPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public ConfirmationTokenPaymentMethodPreviewPayto Payto { get; set; }
+
         [JsonProperty("pix")]
         public ConfirmationTokenPaymentMethodPreviewPix Pix { get; set; }
 
         [JsonProperty("promptpay")]
         public ConfirmationTokenPaymentMethodPreviewPromptpay Promptpay { get; set; }
+
+        [JsonProperty("qris")]
+        public ConfirmationTokenPaymentMethodPreviewQris Qris { get; set; }
+
+        [JsonProperty("rechnung")]
+        public ConfirmationTokenPaymentMethodPreviewRechnung Rechnung { get; set; }
 
         [JsonProperty("revolut_pay")]
         public ConfirmationTokenPaymentMethodPreviewRevolutPay RevolutPay { get; set; }
@@ -168,6 +186,9 @@ namespace Stripe
 
         [JsonProperty("sepa_debit")]
         public ConfirmationTokenPaymentMethodPreviewSepaDebit SepaDebit { get; set; }
+
+        [JsonProperty("shopeepay")]
+        public ConfirmationTokenPaymentMethodPreviewShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
         public ConfirmationTokenPaymentMethodPreviewSofort Sofort { get; set; }
@@ -186,12 +207,13 @@ namespace Stripe
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
         /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>card_present</c>,
         /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
-        /// <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>,
-        /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>,
-        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
-        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>gopay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
+        /// <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>,
+        /// <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
+        /// <c>oxxo</c>, <c>p24</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>,
+        /// <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>,
+        /// <c>samsung_pay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

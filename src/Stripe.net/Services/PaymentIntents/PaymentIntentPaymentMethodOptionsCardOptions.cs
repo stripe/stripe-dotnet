@@ -61,6 +61,15 @@ namespace Stripe
 
         /// <summary>
         /// Request ability to <a
+        /// href="https://stripe.com/docs/payments/decremental-authorization">decrement the
+        /// authorization</a> for this PaymentIntent.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_decremental_authorization")]
+        public string RequestDecrementalAuthorization { get; set; }
+
+        /// <summary>
+        /// Request ability to <a
         /// href="https://stripe.com/docs/payments/extended-authorization">capture beyond the
         /// standard authorization validity window</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
@@ -93,6 +102,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("request_overcapture")]
         public string RequestOvercapture { get; set; }
+
+        /// <summary>
+        /// Request partial authorization on this PaymentIntent.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_partial_authorization")]
+        public string RequestPartialAuthorization { get; set; }
 
         /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
@@ -163,6 +179,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
         public string StatementDescriptorSuffixKanji { get; set; }
+
+        /// <summary>
+        /// Statement details for this payment intent. You can use this to override the merchant
+        /// details shown on your customers' statements.
+        /// </summary>
+        [JsonProperty("statement_details")]
+        public PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions StatementDetails { get; set; }
 
         /// <summary>
         /// If 3D Secure authentication was performed with a third-party provider, the

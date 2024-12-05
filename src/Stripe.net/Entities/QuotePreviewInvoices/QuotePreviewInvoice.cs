@@ -1,0 +1,967 @@
+// File generated from our OpenAPI spec
+namespace Stripe
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+
+    /// <summary>
+    /// Invoices are statements of amounts owed by a customer, and are either generated one-off,
+    /// or generated periodically from a subscription.
+    ///
+    /// They contain <a href="https://stripe.com/docs/api#invoiceitems">invoice items</a>, and
+    /// proration adjustments that may be caused by subscription upgrades/downgrades (if
+    /// necessary).
+    ///
+    /// If your invoice is configured to be billed through automatic charges, Stripe
+    /// automatically finalizes your invoice and attempts payment. Note that finalizing the
+    /// invoice, <a
+    /// href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">when
+    /// automatic</a>, does not happen immediately as the invoice is created. Stripe waits until
+    /// one hour after the last webhook was successfully sent (or the last webhook timed out
+    /// after failing). If you (and the platforms you may have connected to) have no webhooks
+    /// configured, Stripe waits one hour after creation to finalize the invoice.
+    ///
+    /// If your invoice is configured to be billed by sending an email, then based on your <a
+    /// href="https://dashboard.stripe.com/account/billing/automatic">email settings</a>, Stripe
+    /// will email the invoice to your customer and await payment. These emails can contain a
+    /// link to a hosted page to pay the invoice.
+    ///
+    /// Stripe applies any customer credit on the account before determining the amount due for
+    /// the invoice (i.e., the amount that will be actually charged). If the amount due for the
+    /// invoice is less than Stripe's <a
+    /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">minimum
+    /// allowed charge per currency</a>, the invoice is automatically marked paid, and we add
+    /// the amount due to the customer's credit balance which is applied to the next invoice.
+    ///
+    /// More details on the customer's credit balance are <a
+    /// href="https://stripe.com/docs/billing/customer/balance">here</a>.
+    ///
+    /// Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send invoices
+    /// to customers</a>.
+    /// </summary>
+    public class QuotePreviewInvoice : StripeEntity<QuotePreviewInvoice>, IHasId, IHasMetadata, IHasObject
+    {
+        /// <summary>
+        /// Unique identifier for the object. This property is always present unless the invoice is
+        /// an upcoming invoice. See <a
+        /// href="https://stripe.com/docs/api/invoices/upcoming">Retrieve an upcoming invoice</a>
+        /// for more details.
+        /// </summary>
+        [JsonProperty("id")]
+        public string Id { get; set; }
+
+        /// <summary>
+        /// String representing the object's type. Objects of the same type share the same value.
+        /// </summary>
+        [JsonProperty("object")]
+        public string Object { get; set; }
+
+        /// <summary>
+        /// The country of the business associated with this invoice, most often the business
+        /// creating the invoice.
+        /// </summary>
+        [JsonProperty("account_country")]
+        public string AccountCountry { get; set; }
+
+        /// <summary>
+        /// The public name of the business associated with this invoice, most often the business
+        /// creating the invoice.
+        /// </summary>
+        [JsonProperty("account_name")]
+        public string AccountName { get; set; }
+
+        #region Expandable AccountTaxIds
+
+        /// <summary>
+        /// (IDs of the AccountTaxIds)
+        /// The account tax IDs associated with the invoice. Only editable when the invoice is a
+        /// draft.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> AccountTaxIdIds
+        {
+            get => this.InternalAccountTaxIds?.Select((x) => x.Id).ToList();
+            set => this.InternalAccountTaxIds = SetExpandableArrayIds<TaxId>(value);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The account tax IDs associated with the invoice. Only editable when the invoice is a
+        /// draft.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public List<TaxId> AccountTaxIds
+        {
+            get => this.InternalAccountTaxIds?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalAccountTaxIds = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
+        internal List<ExpandableField<TaxId>> InternalAccountTaxIds { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Final amount due at this time for this invoice. If the invoice's total is smaller than
+        /// the minimum charge amount, for example, or if there is account credit that can be
+        /// applied to the invoice, the <c>amount_due</c> may be 0. If there is a positive
+        /// <c>starting_balance</c> for the invoice (the customer owes money), the <c>amount_due</c>
+        /// will also take that into account. The charge that gets generated for the invoice will be
+        /// for the amount specified in <c>amount_due</c>.
+        /// </summary>
+        [JsonProperty("amount_due")]
+        public long AmountDue { get; set; }
+
+        /// <summary>
+        /// Amount that was overpaid on the invoice. Overpayments are debited to the customer's
+        /// credit balance.
+        /// </summary>
+        [JsonProperty("amount_overpaid")]
+        public long AmountOverpaid { get; set; }
+
+        /// <summary>
+        /// The amount, in cents (or local equivalent), that was paid.
+        /// </summary>
+        [JsonProperty("amount_paid")]
+        public long AmountPaid { get; set; }
+
+        /// <summary>
+        /// The difference between amount_due and amount_paid, in cents (or local equivalent).
+        /// </summary>
+        [JsonProperty("amount_remaining")]
+        public long AmountRemaining { get; set; }
+
+        /// <summary>
+        /// This is the sum of all the shipping amounts.
+        /// </summary>
+        [JsonProperty("amount_shipping")]
+        public long AmountShipping { get; set; }
+
+        /// <summary>
+        /// List of expected payments and corresponding due dates. This value will be null for
+        /// invoices where collection_method=charge_automatically.
+        /// </summary>
+        [JsonProperty("amounts_due")]
+        public List<QuotePreviewInvoiceAmountsDue> AmountsDue { get; set; }
+
+        #region Expandable Application
+
+        /// <summary>
+        /// (ID of the Application)
+        /// ID of the Connect Application that created the invoice.
+        /// </summary>
+        [JsonIgnore]
+        public string ApplicationId
+        {
+            get => this.InternalApplication?.Id;
+            set => this.InternalApplication = SetExpandableFieldId(value, this.InternalApplication);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the Connect Application that created the invoice.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Application Application
+        {
+            get => this.InternalApplication?.ExpandedObject;
+            set => this.InternalApplication = SetExpandableFieldObject(value, this.InternalApplication);
+        }
+
+        [JsonProperty("application")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
+        internal ExpandableField<Application> InternalApplication { get; set; }
+        #endregion
+
+        /// <summary>
+        /// The fee in cents (or local equivalent) that will be applied to the invoice and
+        /// transferred to the application owner's Stripe account when the invoice is paid.
+        /// </summary>
+        [JsonProperty("application_fee_amount")]
+        public long? ApplicationFeeAmount { get; set; }
+
+        [JsonProperty("applies_to")]
+        public QuotePreviewInvoiceAppliesTo AppliesTo { get; set; }
+
+        /// <summary>
+        /// Number of payment attempts made for this invoice, from the perspective of the payment
+        /// retry schedule. Any payment attempt counts as the first attempt, and subsequently only
+        /// automatic retries increment the attempt count. In other words, manual payment attempts
+        /// after the first attempt do not affect the retry schedule. If a failure is returned with
+        /// a non-retryable return code, the invoice can no longer be retried unless a new payment
+        /// method is obtained. Retries will continue to be scheduled, and attempt_count will
+        /// continue to increment, but retries will only be executed if a new payment method is
+        /// obtained.
+        /// </summary>
+        [JsonProperty("attempt_count")]
+        public long AttemptCount { get; set; }
+
+        /// <summary>
+        /// Whether an attempt has been made to pay the invoice. An invoice is not attempted until 1
+        /// hour after the <c>invoice.created</c> webhook, for example, so you might not want to
+        /// display that invoice as unpaid to your users.
+        /// </summary>
+        [JsonProperty("attempted")]
+        public bool Attempted { get; set; }
+
+        [JsonProperty("automatic_tax")]
+        public QuotePreviewInvoiceAutomaticTax AutomaticTax { get; set; }
+
+        /// <summary>
+        /// The time when this invoice is currently scheduled to be automatically finalized. The
+        /// field will be <c>null</c> if the invoice is not scheduled to finalize in the future. If
+        /// the invoice is not in the draft state, this field will always be <c>null</c> - see
+        /// <c>finalized_at</c> for the time when an already-finalized invoice was finalized.
+        /// </summary>
+        [JsonProperty("automatically_finalizes_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? AutomaticallyFinalizesAt { get; set; }
+
+        /// <summary>
+        /// Indicates the reason why the invoice was created.
+        ///
+        /// * <c>manual</c>: Unrelated to a subscription, for example, created via the invoice
+        /// editor. * <c>subscription</c>: No longer in use. Applies to subscriptions from before
+        /// May 2018 where no distinction was made between updates, cycles, and thresholds. *
+        /// <c>subscription_create</c>: A new subscription was created. * <c>subscription_cycle</c>:
+        /// A subscription advanced into a new period. * <c>subscription_threshold</c>: A
+        /// subscription reached a billing threshold. * <c>subscription_update</c>: A subscription
+        /// was updated. * <c>upcoming</c>: Reserved for simulated invoices, per the upcoming
+        /// invoice endpoint.
+        /// One of: <c>automatic_pending_invoice_item_invoice</c>, <c>manual</c>,
+        /// <c>quote_accept</c>, <c>subscription</c>, <c>subscription_create</c>,
+        /// <c>subscription_cycle</c>, <c>subscription_threshold</c>, <c>subscription_update</c>, or
+        /// <c>upcoming</c>.
+        /// </summary>
+        [JsonProperty("billing_reason")]
+        public string BillingReason { get; set; }
+
+        /// <summary>
+        /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
+        /// Stripe will attempt to pay this invoice using the default source attached to the
+        /// customer. When sending an invoice, Stripe will email this invoice to the customer with
+        /// payment instructions.
+        /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
+        /// </summary>
+        [JsonProperty("collection_method")]
+        public string CollectionMethod { get; set; }
+
+        /// <summary>
+        /// Time at which the object was created. Measured in seconds since the Unix epoch.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
+        /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
+        /// currency</a>.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// Custom fields displayed on the invoice.
+        /// </summary>
+        [JsonProperty("custom_fields")]
+        public List<QuotePreviewInvoiceCustomField> CustomFields { get; set; }
+
+        /// <summary>
+        /// The customer's address. Until the invoice is finalized, this field will equal
+        /// <c>customer.address</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_address")]
+        public Address CustomerAddress { get; set; }
+
+        /// <summary>
+        /// The customer's email. Until the invoice is finalized, this field will equal
+        /// <c>customer.email</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_email")]
+        public string CustomerEmail { get; set; }
+
+        /// <summary>
+        /// The customer's name. Until the invoice is finalized, this field will equal
+        /// <c>customer.name</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_name")]
+        public string CustomerName { get; set; }
+
+        /// <summary>
+        /// The customer's phone number. Until the invoice is finalized, this field will equal
+        /// <c>customer.phone</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// </summary>
+        [JsonProperty("customer_phone")]
+        public string CustomerPhone { get; set; }
+
+        /// <summary>
+        /// The customer's shipping information. Until the invoice is finalized, this field will
+        /// equal <c>customer.shipping</c>. Once the invoice is finalized, this field will no longer
+        /// be updated.
+        /// </summary>
+        [JsonProperty("customer_shipping")]
+        public QuotePreviewInvoiceCustomerShipping CustomerShipping { get; set; }
+
+        /// <summary>
+        /// The customer's tax exempt status. Until the invoice is finalized, this field will equal
+        /// <c>customer.tax_exempt</c>. Once the invoice is finalized, this field will no longer be
+        /// updated.
+        /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
+        /// </summary>
+        [JsonProperty("customer_tax_exempt")]
+        public string CustomerTaxExempt { get; set; }
+
+        /// <summary>
+        /// The customer's tax IDs. Until the invoice is finalized, this field will contain the same
+        /// tax IDs as <c>customer.tax_ids</c>. Once the invoice is finalized, this field will no
+        /// longer be updated.
+        /// </summary>
+        [JsonProperty("customer_tax_ids")]
+        public List<QuotePreviewInvoiceCustomerTaxId> CustomerTaxIds { get; set; }
+
+        #region Expandable DefaultMargins
+
+        /// <summary>
+        /// (IDs of the DefaultMargins)
+        /// The margins applied to the invoice. Can be overridden by line item <c>margins</c>. Use
+        /// <c>expand[]=default_margins</c> to expand each margin.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> DefaultMarginIds
+        {
+            get => this.InternalDefaultMargins?.Select((x) => x.Id).ToList();
+            set => this.InternalDefaultMargins = SetExpandableArrayIds<Margin>(value);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The margins applied to the invoice. Can be overridden by line item <c>margins</c>. Use
+        /// <c>expand[]=default_margins</c> to expand each margin.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public List<Margin> DefaultMargins
+        {
+            get => this.InternalDefaultMargins?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDefaultMargins = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("default_margins", ItemConverterType = typeof(ExpandableFieldConverter<Margin>))]
+        internal List<ExpandableField<Margin>> InternalDefaultMargins { get; set; }
+        #endregion
+
+        #region Expandable DefaultPaymentMethod
+
+        /// <summary>
+        /// (ID of the PaymentMethod)
+        /// ID of the default payment method for the invoice. It must belong to the customer
+        /// associated with the invoice. If not set, defaults to the subscription's default payment
+        /// method, if any, or to the default payment method in the customer's invoice settings.
+        /// </summary>
+        [JsonIgnore]
+        public string DefaultPaymentMethodId
+        {
+            get => this.InternalDefaultPaymentMethod?.Id;
+            set => this.InternalDefaultPaymentMethod = SetExpandableFieldId(value, this.InternalDefaultPaymentMethod);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the default payment method for the invoice. It must belong to the customer
+        /// associated with the invoice. If not set, defaults to the subscription's default payment
+        /// method, if any, or to the default payment method in the customer's invoice settings.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PaymentMethod DefaultPaymentMethod
+        {
+            get => this.InternalDefaultPaymentMethod?.ExpandedObject;
+            set => this.InternalDefaultPaymentMethod = SetExpandableFieldObject(value, this.InternalDefaultPaymentMethod);
+        }
+
+        [JsonProperty("default_payment_method")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+        internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
+        #endregion
+
+        #region Expandable DefaultSource
+
+        /// <summary>
+        /// (ID of the IPaymentSource)
+        /// ID of the default payment source for the invoice. It must belong to the customer
+        /// associated with the invoice and be in a chargeable state. If not set, defaults to the
+        /// subscription's default source, if any, or to the customer's default source.
+        /// </summary>
+        [JsonIgnore]
+        public string DefaultSourceId
+        {
+            get => this.InternalDefaultSource?.Id;
+            set => this.InternalDefaultSource = SetExpandableFieldId(value, this.InternalDefaultSource);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the default payment source for the invoice. It must belong to the customer
+        /// associated with the invoice and be in a chargeable state. If not set, defaults to the
+        /// subscription's default source, if any, or to the customer's default source.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public IPaymentSource DefaultSource
+        {
+            get => this.InternalDefaultSource?.ExpandedObject;
+            set => this.InternalDefaultSource = SetExpandableFieldObject(value, this.InternalDefaultSource);
+        }
+
+        [JsonProperty("default_source")]
+        [JsonConverter(typeof(ExpandableFieldConverter<IPaymentSource>))]
+        internal ExpandableField<IPaymentSource> InternalDefaultSource { get; set; }
+        #endregion
+
+        /// <summary>
+        /// The tax rates applied to this invoice, if any.
+        /// </summary>
+        [JsonProperty("default_tax_rates")]
+        public List<TaxRate> DefaultTaxRates { get; set; }
+
+        /// <summary>
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
+        /// Referenced as 'memo' in the Dashboard.
+        /// </summary>
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Describes the current discount applied to this invoice, if there is one. Not populated
+        /// if there are multiple discounts.
+        /// </summary>
+        [JsonProperty("discount")]
+        public Discount Discount { get; set; }
+
+        #region Expandable Discounts
+
+        /// <summary>
+        /// (IDs of the Discounts)
+        /// The discounts applied to the invoice. Line item discounts are applied before invoice
+        /// discounts. Use <c>expand[]=discounts</c> to expand each discount.
+        /// </summary>
+        [JsonIgnore]
+        public List<string> DiscountIds
+        {
+            get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayIds<Discount>(value);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The discounts applied to the invoice. Line item discounts are applied before invoice
+        /// discounts. Use <c>expand[]=discounts</c> to expand each discount.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public List<Discount> Discounts
+        {
+            get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
+            set => this.InternalDiscounts = SetExpandableArrayObjects(value);
+        }
+
+        [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
+        internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
+        #endregion
+
+        /// <summary>
+        /// The date on which payment for this invoice is due. This value will be <c>null</c> for
+        /// invoices where <c>collection_method=charge_automatically</c>.
+        /// </summary>
+        [JsonProperty("due_date")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? DueDate { get; set; }
+
+        /// <summary>
+        /// The date when this invoice is in effect. Same as <c>finalized_at</c> unless overwritten.
+        /// When defined, this value replaces the system-generated 'Date of issue' printed on the
+        /// invoice PDF and receipt.
+        /// </summary>
+        [JsonProperty("effective_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? EffectiveAt { get; set; }
+
+        /// <summary>
+        /// Ending customer balance after the invoice is finalized. Invoices are finalized
+        /// approximately an hour after successful webhook delivery or when payment collection is
+        /// attempted for the invoice. If the invoice has not been finalized yet, this will be null.
+        /// </summary>
+        [JsonProperty("ending_balance")]
+        public long? EndingBalance { get; set; }
+
+        /// <summary>
+        /// Footer displayed on the invoice.
+        /// </summary>
+        [JsonProperty("footer")]
+        public string Footer { get; set; }
+
+        /// <summary>
+        /// Details of the invoice that was cloned. See the <a
+        /// href="https://stripe.com/docs/invoicing/invoice-revisions">revision documentation</a>
+        /// for more details.
+        /// </summary>
+        [JsonProperty("from_invoice")]
+        public QuotePreviewInvoiceFromInvoice FromInvoice { get; set; }
+
+        [JsonProperty("issuer")]
+        public QuotePreviewInvoiceIssuer Issuer { get; set; }
+
+        /// <summary>
+        /// The error encountered during the previous attempt to finalize the invoice. This field is
+        /// cleared when the invoice is successfully finalized.
+        /// </summary>
+        [JsonProperty("last_finalization_error")]
+        public StripeError LastFinalizationError { get; set; }
+
+        #region Expandable LatestRevision
+
+        /// <summary>
+        /// (ID of the Invoice)
+        /// The ID of the most recent non-draft revision of this invoice.
+        /// </summary>
+        [JsonIgnore]
+        public string LatestRevisionId
+        {
+            get => this.InternalLatestRevision?.Id;
+            set => this.InternalLatestRevision = SetExpandableFieldId(value, this.InternalLatestRevision);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the most recent non-draft revision of this invoice.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Invoice LatestRevision
+        {
+            get => this.InternalLatestRevision?.ExpandedObject;
+            set => this.InternalLatestRevision = SetExpandableFieldObject(value, this.InternalLatestRevision);
+        }
+
+        [JsonProperty("latest_revision")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+        internal ExpandableField<Invoice> InternalLatestRevision { get; set; }
+        #endregion
+
+        /// <summary>
+        /// The individual line items that make up the invoice. <c>lines</c> is sorted as follows:
+        /// (1) pending invoice items (including prorations) in reverse chronological order, (2)
+        /// subscription items in reverse chronological order, and (3) invoice items added after
+        /// invoice creation in chronological order.
+        /// </summary>
+        [JsonProperty("lines")]
+        public StripeList<InvoiceLineItem> Lines { get; set; }
+
+        /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+        public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The time at which payment will next be attempted. This value will be <c>null</c> for
+        /// invoices where <c>collection_method=send_invoice</c>.
+        /// </summary>
+        [JsonProperty("next_payment_attempt")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? NextPaymentAttempt { get; set; }
+
+        /// <summary>
+        /// A unique, identifying string that appears on emails sent to the customer for this
+        /// invoice. This starts with the customer's unique invoice_prefix if it is specified.
+        /// </summary>
+        [JsonProperty("number")]
+        public string Number { get; set; }
+
+        #region Expandable OnBehalfOf
+
+        /// <summary>
+        /// (ID of the Account)
+        /// The account (if any) for which the funds of the invoice payment are intended. If set,
+        /// the invoice will be presented with the branding and support information of the specified
+        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// with Connect</a> documentation for details.
+        /// </summary>
+        [JsonIgnore]
+        public string OnBehalfOfId
+        {
+            get => this.InternalOnBehalfOf?.Id;
+            set => this.InternalOnBehalfOf = SetExpandableFieldId(value, this.InternalOnBehalfOf);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The account (if any) for which the funds of the invoice payment are intended. If set,
+        /// the invoice will be presented with the branding and support information of the specified
+        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// with Connect</a> documentation for details.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Account OnBehalfOf
+        {
+            get => this.InternalOnBehalfOf?.ExpandedObject;
+            set => this.InternalOnBehalfOf = SetExpandableFieldObject(value, this.InternalOnBehalfOf);
+        }
+
+        [JsonProperty("on_behalf_of")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+        internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Whether payment was successfully collected for this invoice. An invoice can be paid
+        /// (most commonly) with a charge or with credit from the customer's account balance.
+        /// </summary>
+        [JsonProperty("paid")]
+        public bool Paid { get; set; }
+
+        /// <summary>
+        /// Returns true if the invoice was manually marked paid, returns false if the invoice
+        /// hasn't been paid yet or was paid on Stripe.
+        /// </summary>
+        [JsonProperty("paid_out_of_band")]
+        public bool PaidOutOfBand { get; set; }
+
+        #region Expandable PaymentIntent
+
+        /// <summary>
+        /// (ID of the PaymentIntent)
+        /// The PaymentIntent associated with this invoice. The PaymentIntent is generated when the
+        /// invoice is finalized, and can then be used to pay the invoice. Note that voiding an
+        /// invoice will cancel the PaymentIntent.
+        /// </summary>
+        [JsonIgnore]
+        public string PaymentIntentId
+        {
+            get => this.InternalPaymentIntent?.Id;
+            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The PaymentIntent associated with this invoice. The PaymentIntent is generated when the
+        /// invoice is finalized, and can then be used to pay the invoice. Note that voiding an
+        /// invoice will cancel the PaymentIntent.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public PaymentIntent PaymentIntent
+        {
+            get => this.InternalPaymentIntent?.ExpandedObject;
+            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
+        }
+
+        [JsonProperty("payment_intent")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
+        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
+        #endregion
+
+        [JsonProperty("payment_settings")]
+        public QuotePreviewInvoicePaymentSettings PaymentSettings { get; set; }
+
+        /// <summary>
+        /// Payments for this invoice.
+        /// </summary>
+        [JsonProperty("payments")]
+        public StripeList<InvoicePayment> Payments { get; set; }
+
+        /// <summary>
+        /// End of the usage period during which invoice items were added to this invoice. This
+        /// looks back one period for a subscription invoice. Use the <a
+        /// href="https://stripe.com/api/invoices/line_item#invoice_line_item_object-period">line
+        /// item period</a> to get the service period for each price.
+        /// </summary>
+        [JsonProperty("period_end")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime PeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Start of the usage period during which invoice items were added to this invoice. This
+        /// looks back one period for a subscription invoice. Use the <a
+        /// href="https://stripe.com/api/invoices/line_item#invoice_line_item_object-period">line
+        /// item period</a> to get the service period for each price.
+        /// </summary>
+        [JsonProperty("period_start")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime PeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Total amount of all post-payment credit notes issued for this invoice.
+        /// </summary>
+        [JsonProperty("post_payment_credit_notes_amount")]
+        public long PostPaymentCreditNotesAmount { get; set; }
+
+        /// <summary>
+        /// Total amount of all pre-payment credit notes issued for this invoice.
+        /// </summary>
+        [JsonProperty("pre_payment_credit_notes_amount")]
+        public long PrePaymentCreditNotesAmount { get; set; }
+
+        #region Expandable Quote
+
+        /// <summary>
+        /// (ID of the Quote)
+        /// The quote this invoice was generated from.
+        /// </summary>
+        [JsonIgnore]
+        public string QuoteId
+        {
+            get => this.InternalQuote?.Id;
+            set => this.InternalQuote = SetExpandableFieldId(value, this.InternalQuote);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The quote this invoice was generated from.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public Quote Quote
+        {
+            get => this.InternalQuote?.ExpandedObject;
+            set => this.InternalQuote = SetExpandableFieldObject(value, this.InternalQuote);
+        }
+
+        [JsonProperty("quote")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Quote>))]
+        internal ExpandableField<Quote> InternalQuote { get; set; }
+        #endregion
+
+        /// <summary>
+        /// This is the transaction number that appears on email receipts sent for this invoice.
+        /// </summary>
+        [JsonProperty("receipt_number")]
+        public string ReceiptNumber { get; set; }
+
+        /// <summary>
+        /// The rendering-related settings that control how the invoice is displayed on
+        /// customer-facing surfaces such as PDF and Hosted Invoice Page.
+        /// </summary>
+        [JsonProperty("rendering")]
+        public QuotePreviewInvoiceRendering Rendering { get; set; }
+
+        /// <summary>
+        /// The details of the cost of shipping, including the ShippingRate applied on the invoice.
+        /// </summary>
+        [JsonProperty("shipping_cost")]
+        public QuotePreviewInvoiceShippingCost ShippingCost { get; set; }
+
+        /// <summary>
+        /// Shipping details for the invoice. The Invoice PDF will use the <c>shipping_details</c>
+        /// value if it is set, otherwise the PDF will render the shipping address from the
+        /// customer.
+        /// </summary>
+        [JsonProperty("shipping_details")]
+        public QuotePreviewInvoiceShippingDetails ShippingDetails { get; set; }
+
+        /// <summary>
+        /// Starting customer balance before the invoice is finalized. If the invoice has not been
+        /// finalized yet, this will be the current customer balance. For revision invoices, this
+        /// also includes any customer balance that was applied to the original invoice.
+        /// </summary>
+        [JsonProperty("starting_balance")]
+        public long StartingBalance { get; set; }
+
+        /// <summary>
+        /// Extra information about an invoice for the customer's credit card statement.
+        /// </summary>
+        [JsonProperty("statement_descriptor")]
+        public string StatementDescriptor { get; set; }
+
+        /// <summary>
+        /// The status of the invoice, one of <c>draft</c>, <c>open</c>, <c>paid</c>,
+        /// <c>uncollectible</c>, or <c>void</c>. <a
+        /// href="https://stripe.com/docs/billing/invoices/workflow#workflow-overview">Learn
+        /// more</a>.
+        /// One of: <c>draft</c>, <c>open</c>, <c>paid</c>, <c>uncollectible</c>, or <c>void</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("status_transitions")]
+        public QuotePreviewInvoiceStatusTransitions StatusTransitions { get; set; }
+
+        #region Expandable Subscription
+
+        [JsonIgnore]
+        public string SubscriptionId
+        {
+            get => this.InternalSubscription?.Id;
+            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
+        }
+
+        [JsonIgnore]
+        public Subscription Subscription
+        {
+            get => this.InternalSubscription?.ExpandedObject;
+            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
+        }
+
+        [JsonProperty("subscription")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
+        internal ExpandableField<Subscription> InternalSubscription { get; set; }
+        #endregion
+
+        /// <summary>
+        /// Details about the subscription that created this invoice.
+        /// </summary>
+        [JsonProperty("subscription_details")]
+        public QuotePreviewInvoiceSubscriptionDetails SubscriptionDetails { get; set; }
+
+        /// <summary>
+        /// Only set for upcoming invoices that preview prorations. The time used to calculate
+        /// prorations.
+        /// </summary>
+        [JsonProperty("subscription_proration_date")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime SubscriptionProrationDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Total of all subscriptions, invoice items, and prorations on the invoice before any
+        /// invoice level discount or exclusive tax is applied. Item discounts are already
+        /// incorporated.
+        /// </summary>
+        [JsonProperty("subtotal")]
+        public long Subtotal { get; set; }
+
+        /// <summary>
+        /// The integer amount in cents (or local equivalent) representing the subtotal of the
+        /// invoice before any invoice level discount or tax is applied. Item discounts are already
+        /// incorporated.
+        /// </summary>
+        [JsonProperty("subtotal_excluding_tax")]
+        public long? SubtotalExcludingTax { get; set; }
+
+        /// <summary>
+        /// The amount of tax on this invoice. This is the sum of all the tax amounts on this
+        /// invoice.
+        /// </summary>
+        [JsonProperty("tax")]
+        public long? Tax { get; set; }
+
+        #region Expandable TestClock
+
+        /// <summary>
+        /// (ID of the TestHelpers.TestClock)
+        /// ID of the test clock this invoice belongs to.
+        /// </summary>
+        [JsonIgnore]
+        public string TestClockId
+        {
+            get => this.InternalTestClock?.Id;
+            set => this.InternalTestClock = SetExpandableFieldId(value, this.InternalTestClock);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the test clock this invoice belongs to.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public TestHelpers.TestClock TestClock
+        {
+            get => this.InternalTestClock?.ExpandedObject;
+            set => this.InternalTestClock = SetExpandableFieldObject(value, this.InternalTestClock);
+        }
+
+        [JsonProperty("test_clock")]
+        [JsonConverter(typeof(ExpandableFieldConverter<TestHelpers.TestClock>))]
+        internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
+        #endregion
+
+        [JsonProperty("threshold_reason")]
+        public QuotePreviewInvoiceThresholdReason ThresholdReason { get; set; }
+
+        /// <summary>
+        /// Total after discounts and taxes.
+        /// </summary>
+        [JsonProperty("total")]
+        public long Total { get; set; }
+
+        /// <summary>
+        /// The aggregate amounts calculated per discount across all line items.
+        /// </summary>
+        [JsonProperty("total_discount_amounts")]
+        public List<QuotePreviewInvoiceTotalDiscountAmount> TotalDiscountAmounts { get; set; }
+
+        /// <summary>
+        /// The integer amount in cents (or local equivalent) representing the total amount of the
+        /// invoice including all discounts but excluding all tax.
+        /// </summary>
+        [JsonProperty("total_excluding_tax")]
+        public long? TotalExcludingTax { get; set; }
+
+        /// <summary>
+        /// The aggregate amounts calculated per margin across all line items.
+        /// </summary>
+        [JsonProperty("total_margin_amounts")]
+        public List<QuotePreviewInvoiceTotalMarginAmount> TotalMarginAmounts { get; set; }
+
+        /// <summary>
+        /// Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this
+        /// invoice. This is a combined list of total_pretax_credit_amounts across all invoice line
+        /// items.
+        /// </summary>
+        [JsonProperty("total_pretax_credit_amounts")]
+        public List<QuotePreviewInvoiceTotalPretaxCreditAmount> TotalPretaxCreditAmounts { get; set; }
+
+        /// <summary>
+        /// The aggregate amounts calculated per tax rate for all line items.
+        /// </summary>
+        [JsonProperty("total_tax_amounts")]
+        public List<QuotePreviewInvoiceTotalTaxAmount> TotalTaxAmounts { get; set; }
+
+        /// <summary>
+        /// The account (if any) the payment will be attributed to for tax reporting, and where
+        /// funds from the payment will be transferred to for the invoice.
+        /// </summary>
+        [JsonProperty("transfer_data")]
+        public QuotePreviewInvoiceTransferData TransferData { get; set; }
+
+        /// <summary>
+        /// Invoices are automatically paid or sent 1 hour after webhooks are delivered, or until
+        /// all webhook delivery attempts have <a
+        /// href="https://stripe.com/docs/billing/webhooks#understand">been exhausted</a>. This
+        /// field tracks the time when webhooks for this invoice were successfully delivered. If the
+        /// invoice had no webhooks to deliver, this will be set while the invoice is being created.
+        /// </summary>
+        [JsonProperty("webhooks_delivered_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? WebhooksDeliveredAt { get; set; }
+    }
+}

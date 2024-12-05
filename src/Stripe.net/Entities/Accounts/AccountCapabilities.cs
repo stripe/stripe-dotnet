@@ -158,12 +158,35 @@ namespace Stripe
         public string GiropayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Gopay capability of the account, or whether the account can directly
+        /// process Gopay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("gopay_payments")]
+        public string GopayPayments { get; set; }
+
+        /// <summary>
         /// The status of the GrabPay payments capability of the account, or whether the account can
         /// directly process GrabPay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("grabpay_payments")]
         public string GrabpayPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Indonesia Bank Transfer payments capability of the account, or whether
+        /// the account can directly process Indonesia Bank Transfer charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("id_bank_transfer_payments")]
+        public string IdBankTransferPayments { get; set; }
+
+        /// <summary>
+        /// The status of Bank BCA onboarding of the account.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("id_bank_transfer_payments_bca")]
+        public string IdBankTransferPaymentsBca { get; set; }
 
         /// <summary>
         /// The status of the iDEAL payments capability of the account, or whether the account can
@@ -245,6 +268,14 @@ namespace Stripe
         public string LinkPayments { get; set; }
 
         /// <summary>
+        /// The status of the MB WAY payments capability of the account, or whether the account can
+        /// directly process MB WAY charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("mb_way_payments")]
+        public string MbWayPayments { get; set; }
+
+        /// <summary>
         /// The status of the MobilePay capability of the account, or whether the account can
         /// directly process MobilePay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -309,12 +340,44 @@ namespace Stripe
         public string PaynowPayments { get; set; }
 
         /// <summary>
+        /// The status of the PayPal payments capability of the account, or whether the account can
+        /// directly process PayPal charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("paypal_payments")]
+        public string PaypalPayments { get; set; }
+
+        /// <summary>
+        /// The status of the PayTo capability of the account, or whether the account can directly
+        /// process PayTo charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("payto_payments")]
+        public string PaytoPayments { get; set; }
+
+        /// <summary>
         /// The status of the promptpay payments capability of the account, or whether the account
         /// can directly process promptpay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("promptpay_payments")]
         public string PromptpayPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Qris capability of the account, or whether the account can directly
+        /// process Qris payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("qris_payments")]
+        public string QrisPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Rechnung capability of the account, or whether the account can
+        /// directly process Rechnung payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("rechnung_payments")]
+        public string RechnungPayments { get; set; }
 
         /// <summary>
         /// The status of the RevolutPay capability of the account, or whether the account can
@@ -347,6 +410,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sepa_debit_payments")]
         public string SepaDebitPayments { get; set; }
+
+        /// <summary>
+        /// The status of the ShopeePay capability of the account, or whether the account can
+        /// directly process ShopeePay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("shopeepay_payments")]
+        public string ShopeepayPayments { get; set; }
 
         /// <summary>
         /// The status of the Sofort payments capability of the account, or whether the account can
@@ -392,6 +463,27 @@ namespace Stripe
         /// </summary>
         [JsonProperty("treasury")]
         public string Treasury { get; set; }
+
+        /// <summary>
+        /// The status of the treasury_evolve capability of the account.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("treasury_evolve")]
+        public string TreasuryEvolve { get; set; }
+
+        /// <summary>
+        /// The status of the treasury_fifth_third capability of the account.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("treasury_fifth_third")]
+        public string TreasuryFifthThird { get; set; }
+
+        /// <summary>
+        /// The status of the treasury_goldman_sachs capability of the account.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("treasury_goldman_sachs")]
+        public string TreasuryGoldmanSachs { get; set; }
 
         /// <summary>
         /// The status of the TWINT capability of the account, or whether the account can directly

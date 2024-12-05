@@ -32,6 +32,9 @@ namespace Stripe
         [JsonProperty("cashapp")]
         public SetupAttemptPaymentMethodDetailsCashapp Cashapp { get; set; }
 
+        [JsonProperty("id_bank_transfer")]
+        public SetupAttemptPaymentMethodDetailsIdBankTransfer IdBankTransfer { get; set; }
+
         [JsonProperty("ideal")]
         public SetupAttemptPaymentMethodDetailsIdeal Ideal { get; set; }
 
@@ -49,6 +52,9 @@ namespace Stripe
 
         [JsonProperty("paypal")]
         public SetupAttemptPaymentMethodDetailsPaypal Paypal { get; set; }
+
+        [JsonProperty("payto")]
+        public SetupAttemptPaymentMethodDetailsPayto Payto { get; set; }
 
         [JsonProperty("revolut_pay")]
         public SetupAttemptPaymentMethodDetailsRevolutPay RevolutPay { get; set; }

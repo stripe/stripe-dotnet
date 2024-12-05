@@ -35,6 +35,9 @@ namespace Stripe
         [JsonProperty("paypal")]
         public MandatePaymentMethodDetailsPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+        public MandatePaymentMethodDetailsPayto Payto { get; set; }
+
         [JsonProperty("revolut_pay")]
         public MandatePaymentMethodDetailsRevolutPay RevolutPay { get; set; }
 

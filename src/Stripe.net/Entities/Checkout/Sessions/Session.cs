@@ -95,10 +95,18 @@ namespace Stripe.Checkout
         public string ClientReferenceId { get; set; }
 
         /// <summary>
-        /// Client secret to be used when initializing Stripe.js embedded checkout.
+        /// The client secret of the Session. Use this with <a
+        /// href="https://stripe.com/docs/js/custom_checkout/init">initCustomCheckout</a> on your
+        /// front end.
         /// </summary>
         [JsonProperty("client_secret")]
         public string ClientSecret { get; set; }
+
+        /// <summary>
+        /// Information about the customer collected within the Checkout Session.
+        /// </summary>
+        [JsonProperty("collected_information")]
+        public SessionCollectedInformation CollectedInformation { get; set; }
 
         /// <summary>
         /// Results of <c>consent_collection</c> for this session.
@@ -400,6 +408,16 @@ namespace Stripe.Checkout
         [JsonProperty("payment_status")]
         public string PaymentStatus { get; set; }
 
+        /// <summary>
+        /// This property is used to set up permissions for various actions (e.g., update) on the
+        /// CheckoutSession object.
+        ///
+        /// For specific permissions, please refer to their dedicated subsections, such as
+        /// <c>permissions.update.shipping_details</c>.
+        /// </summary>
+        [JsonProperty("permissions")]
+        public SessionPermissions Permissions { get; set; }
+
         [JsonProperty("phone_number_collection")]
         public SessionPhoneNumberCollection PhoneNumberCollection { get; set; }
 
@@ -419,9 +437,9 @@ namespace Stripe.Checkout
         public string RedirectOnCompletion { get; set; }
 
         /// <summary>
-        /// Applies to Checkout Sessions with <c>ui_mode: embedded</c>. The URL to redirect your
-        /// customer back to after they authenticate or cancel their payment on the payment method's
-        /// app or site.
+        /// Applies to Checkout Sessions with <c>ui_mode: embedded</c> or <c>ui_mode: custom</c>.
+        /// The URL to redirect your customer back to after they authenticate or cancel their
+        /// payment on the payment method's app or site.
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
@@ -563,7 +581,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>hosted</c>.
-        /// One of: <c>embedded</c>, or <c>hosted</c>.
+        /// One of: <c>custom</c>, <c>embedded</c>, or <c>hosted</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
         public string UiMode { get; set; }

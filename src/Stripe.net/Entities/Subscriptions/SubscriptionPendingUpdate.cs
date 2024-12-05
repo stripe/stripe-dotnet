@@ -26,6 +26,12 @@ namespace Stripe
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The number of iterations of prebilling to apply.
+        /// </summary>
+        [JsonProperty("prebilling_iterations")]
+        public long? PrebillingIterations { get; set; }
+
+        /// <summary>
         /// List of subscription items, each with an attached plan, that will be set if the update
         /// is applied.
         /// </summary>

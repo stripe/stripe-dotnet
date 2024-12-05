@@ -69,5 +69,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("tax_rates")]
         public List<string> TaxRates { get; set; }
+
+        /// <summary>
+        /// Options that configure the trial on the subscription item.
+        /// </summary>
+        [JsonProperty("trial")]
+        public InvoiceScheduleDetailsPhaseItemTrialOptions Trial { get; set; }
     }
 }

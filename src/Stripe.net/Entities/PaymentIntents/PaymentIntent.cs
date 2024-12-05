@@ -104,6 +104,9 @@ namespace Stripe
         [JsonProperty("application_fee_amount")]
         public long? ApplicationFeeAmount { get; set; }
 
+        [JsonProperty("async_workflows")]
+        public PaymentIntentAsyncWorkflows AsyncWorkflows { get; set; }
+
         /// <summary>
         /// Settings to configure compatible payment methods from the <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
@@ -365,6 +368,9 @@ namespace Stripe
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
+        [JsonProperty("payment_details")]
+        public PaymentIntentPaymentDetails PaymentDetails { get; set; }
+
         #region Expandable PaymentMethod
 
         /// <summary>
@@ -461,6 +467,14 @@ namespace Stripe
         [JsonConverter(typeof(ExpandableFieldConverter<Review>))]
         internal ExpandableField<Review> InternalReview { get; set; }
         #endregion
+
+        /// <summary>
+        /// Indicates whether confirmation for this PaymentIntent using a secret key is
+        /// <c>required</c> or <c>optional</c>.
+        /// One of: <c>optional</c>, or <c>required</c>.
+        /// </summary>
+        [JsonProperty("secret_key_confirmation")]
+        public string SecretKeyConfirmation { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment

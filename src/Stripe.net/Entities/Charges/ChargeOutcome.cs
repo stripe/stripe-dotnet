@@ -7,6 +7,20 @@ namespace Stripe
     public class ChargeOutcome : StripeEntity<ChargeOutcome>
     {
         /// <summary>
+        /// For charges declined by the network, a 2 digit code which indicates the advice returned
+        /// by the network on how to proceed with an error.
+        /// </summary>
+        [JsonProperty("network_advice_code")]
+        public string NetworkAdviceCode { get; set; }
+
+        /// <summary>
+        /// For charges declined by the network, a brand specific 2, 3, or 4 digit code which
+        /// indicates the reason the authorization failed.
+        /// </summary>
+        [JsonProperty("network_decline_code")]
+        public string NetworkDeclineCode { get; set; }
+
+        /// <summary>
         /// Possible values are <c>approved_by_network</c>, <c>declined_by_network</c>,
         /// <c>not_sent_to_network</c>, and <c>reversed_after_approval</c>. The value
         /// <c>reversed_after_approval</c> indicates the payment was <a

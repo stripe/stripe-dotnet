@@ -13,6 +13,12 @@ namespace Stripe
         public string AccountHolderType { get; set; }
 
         /// <summary>
+        /// Account number of the bank account.
+        /// </summary>
+        [JsonProperty("account_number")]
+        public string AccountNumber { get; set; }
+
+        /// <summary>
         /// Account type: checkings or savings. Defaults to checking if omitted.
         /// One of: <c>checking</c>, or <c>savings</c>.
         /// </summary>

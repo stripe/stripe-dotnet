@@ -5,6 +5,12 @@ namespace Stripe
 
     public class AccountController : StripeEntity<AccountController>
     {
+        [JsonProperty("application")]
+        public AccountControllerApplication Application { get; set; }
+
+        [JsonProperty("dashboard")]
+        public AccountControllerDashboard Dashboard { get; set; }
+
         [JsonProperty("fees")]
         public AccountControllerFees Fees { get; set; }
 

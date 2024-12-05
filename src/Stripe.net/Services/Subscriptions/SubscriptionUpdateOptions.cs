@@ -238,6 +238,13 @@ namespace Stripe
         public SubscriptionPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
 
         /// <summary>
+        /// If specified, the invoicing for the given billing cycle iterations will be processed
+        /// now.
+        /// </summary>
+        [JsonProperty("prebilling")]
+        public SubscriptionPrebillingOptions Prebilling { get; set; }
+
+        /// <summary>
         /// The promotion code to apply to this subscription. A promotion code applied to a
         /// subscription will only affect invoices created for that particular subscription. This
         /// field has been deprecated and will be removed in a future API version. Use

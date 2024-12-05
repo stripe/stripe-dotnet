@@ -145,5 +145,8 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("reverse_transfer")]
         public bool ReverseTransfer { get; set; }
+
+        [JsonProperty("stripe_account")]
+        public string StripeAccount { get; set; }
     }
 }

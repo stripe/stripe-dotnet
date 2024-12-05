@@ -16,6 +16,13 @@ namespace Stripe
         public List<string> AccountTaxIds { get; set; }
 
         /// <summary>
+        /// List of expected payments and corresponding due dates. Valid only for invoices where
+        /// <c>collection_method=send_invoice</c>.
+        /// </summary>
+        [JsonProperty("amounts_due")]
+        public List<InvoiceAmountsDueOptions> AmountsDue { get; set; }
+
+        /// <summary>
         /// A fee in cents (or local equivalent) that will be applied to the invoice and transferred
         /// to the application owner's Stripe account. The request must be made with an OAuth key or
         /// the Stripe-Account header in order to take an application fee. For more information, see
@@ -71,6 +78,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("days_until_due")]
         public long? DaysUntilDue { get; set; }
+
+        /// <summary>
+        /// The ids of the margins to apply to the invoice. Can be overridden by line item
+        /// <c>margins</c>.
+        /// </summary>
+        [JsonProperty("default_margins")]
+        public List<string> DefaultMargins { get; set; }
 
         /// <summary>
         /// ID of the default payment method for the invoice. It must belong to the customer

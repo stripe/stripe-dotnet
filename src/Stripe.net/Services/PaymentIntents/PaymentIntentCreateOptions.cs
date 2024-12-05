@@ -31,6 +31,12 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("async_workflows")]
+        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
+
+        /// <summary>
         /// When you enable this parameter, this PaymentIntent accepts payment methods that you
         /// enable in the Dashboard and that are compatible with this PaymentIntent's other
         /// parameters.
@@ -160,6 +166,12 @@ namespace Stripe
         public string OnBehalfOf { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a
         /// href="https://stripe.com/docs/payments/payment-methods#compatibility">compatible
         /// Source</a> object) to attach to this PaymentIntent.
@@ -228,6 +240,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// Indicates whether confirmation for this PaymentIntent using a secret key is
+        /// <c>required</c> or <c>optional</c>.
+        /// One of: <c>optional</c>, or <c>required</c>.
+        /// </summary>
+        [JsonProperty("secret_key_confirmation")]
+        public string SecretKeyConfirmation { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment

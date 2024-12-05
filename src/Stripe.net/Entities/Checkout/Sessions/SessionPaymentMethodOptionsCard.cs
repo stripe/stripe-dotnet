@@ -13,6 +13,14 @@ namespace Stripe.Checkout
         /// beyond the standard authorization validity window</a> for this CheckoutSession.
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
+        [JsonProperty("request_decremental_authorization")]
+        public string RequestDecrementalAuthorization { get; set; }
+
+        /// <summary>
+        /// Request ability to <a href="https://stripe.com/payments/extended-authorization">capture
+        /// beyond the standard authorization validity window</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
         [JsonProperty("request_extended_authorization")]
         public string RequestExtendedAuthorization { get; set; }
 

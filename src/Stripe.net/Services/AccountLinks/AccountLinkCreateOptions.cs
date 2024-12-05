@@ -45,7 +45,8 @@ namespace Stripe
         /// <summary>
         /// The type of account link the user is requesting. Possible values are
         /// <c>account_onboarding</c> or <c>account_update</c>.
-        /// One of: <c>account_onboarding</c>, or <c>account_update</c>.
+        /// One of: <c>account_onboarding</c>, <c>account_update</c>,
+        /// <c>capital_financing_offer</c>, or <c>capital_financing_reporting</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

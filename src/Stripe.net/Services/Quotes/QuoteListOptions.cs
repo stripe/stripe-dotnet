@@ -12,8 +12,15 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// The subscription which the quote updates.
+        /// </summary>
+        [JsonProperty("from_subscription")]
+        public string FromSubscription { get; set; }
+
+        /// <summary>
         /// The status of the quote.
-        /// One of: <c>accepted</c>, <c>canceled</c>, <c>draft</c>, or <c>open</c>.
+        /// One of: <c>accepted</c>, <c>accepting</c>, <c>canceled</c>, <c>draft</c>, <c>open</c>,
+        /// or <c>stale</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

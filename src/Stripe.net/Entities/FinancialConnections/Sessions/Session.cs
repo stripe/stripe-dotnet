@@ -43,12 +43,18 @@ namespace Stripe.FinancialConnections
         [JsonProperty("filters")]
         public SessionFilters Filters { get; set; }
 
+        [JsonProperty("limits")]
+        public SessionLimits Limits { get; set; }
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
+
+        [JsonProperty("manual_entry")]
+        public SessionManualEntry ManualEntry { get; set; }
 
         /// <summary>
         /// Permissions requested for accounts collected during this session.
@@ -60,7 +66,8 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// Data features requested to be retrieved upon account creation.
-        /// One of: <c>balances</c>, <c>ownership</c>, or <c>transactions</c>.
+        /// One of: <c>balances</c>, <c>inferred_balances</c>, <c>ownership</c>, or
+        /// <c>transactions</c>.
         /// </summary>
         [JsonProperty("prefetch")]
         public List<string> Prefetch { get; set; }
@@ -71,5 +78,15 @@ namespace Stripe.FinancialConnections
         /// </summary>
         [JsonProperty("return_url")]
         public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// The current state of the session.
+        /// One of: <c>cancelled</c>, <c>failed</c>, <c>pending</c>, or <c>succeeded</c>.
+        /// </summary>
+        [JsonProperty("status")]
+        public string Status { get; set; }
+
+        [JsonProperty("status_details")]
+        public SessionStatusDetails StatusDetails { get; set; }
     }
 }
