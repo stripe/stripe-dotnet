@@ -9,8 +9,14 @@ namespace Stripe
     using Newtonsoft.Json.Linq;
     using Stripe.Infrastructure;
 
+#if NET6_0_OR_GREATER
+    using STJ = System.Text.Json;
+    using STJS = System.Text.Json.Serialization;
+#endif
+
     [JsonObject(MemberSerialization.OptIn)]
     [JsonConverter(typeof(StripeEntityConverter))]
+    [NoSystemTextJsonAttributesNeeded("Converter is only needed for deserialization in Stripe.net.  Member serialization opt-in is implemented in STJMemberSerializationOptIn, which is placed on the concrete classes")]
     public abstract class StripeEntity : IStripeEntity
     {
         /// <summary>
@@ -25,9 +31,15 @@ namespace Stripe
         /// </remarks>
         /// <returns>The raw <see cref="JObject">JObject</see>.</returns>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public JObject RawJObject { get; protected set; }
 
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public StripeResponse StripeResponse { get; set; }
 
         /// <summary>

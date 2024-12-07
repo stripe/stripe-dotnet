@@ -2,6 +2,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OAuthAuthorizeUrlOptions : BaseOptions
     {
@@ -10,6 +13,9 @@ namespace Stripe
         /// already connected. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("always_prompt")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("always_prompt")]
+#endif
         public bool? AlwaysPrompt { get; set; }
 
         /// <summary>
@@ -17,10 +23,16 @@ namespace Stripe
         /// <see href="https://dashboard.stripe.com/account/applications/settings">application settings</see>.
         /// </summary>
         [JsonProperty("client_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("client_id")]
+#endif
         public string ClientId { get; set; }
 
         /// <summary>The only option at the moment is <c>code</c>.</summary>
         [JsonProperty("response_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("response_type")]
+#endif
         public string ResponseType { get; set; } = "code";
 
         /// <summary>
@@ -40,6 +52,9 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("redirect_uri")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("redirect_uri")]
+#endif
         public string RedirectUri { get; set; }
 
         /// <summary>
@@ -47,12 +62,18 @@ namespace Stripe
         /// Defaults to <c>read_only</c>.
         /// </summary>
         [JsonProperty("scope")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("scope")]
+#endif
         public string Scope { get; set; }
 
         /// <summary>
         /// An arbitrary string value we will pass back to you, useful for CSRF protection.
         /// </summary>
         [JsonProperty("state")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("state")]
+#endif
         public string State { get; set; }
 
         /// <summary>
@@ -68,10 +89,16 @@ namespace Stripe
         /// </para>
         /// </summary>
         [JsonProperty("stripe_landing")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_landing")]
+#endif
         public string StripeLanding { get; set; }
 
         /// <summary>Prefilled details in the account form for new users.</summary>
         [JsonProperty("stripe_user")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_user")]
+#endif
         public OAuthAuthorizeUrlStripeUserOptions StripeUser { get; set; }
 
         /// <summary>
@@ -83,6 +110,9 @@ namespace Stripe
         /// <see cref="SuggestedCapabilities"/> parameter in your OAuth link.
         /// </summary>
         [JsonProperty("suggested_capabilities")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("suggested_capabilities")]
+#endif
         public List<string> SuggestedCapabilities { get; set; }
     }
 }

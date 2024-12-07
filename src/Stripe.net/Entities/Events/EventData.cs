@@ -2,6 +2,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class EventData : StripeEntity<EventData>
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("object")]
         [JsonConverter(typeof(StripeObjectConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public IHasObject Object { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe
         /// values (sent along only with *.updated events).
         /// </summary>
         [JsonProperty("previous_attributes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("previous_attributes")]
+#endif
         public dynamic PreviousAttributes { get; set; }
 
         /// <summary>
@@ -27,6 +36,9 @@ namespace Stripe
         /// library does not have a concrete type.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public dynamic RawObject { get; set; }
     }
 }

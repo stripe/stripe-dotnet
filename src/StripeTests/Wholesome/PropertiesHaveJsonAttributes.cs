@@ -1,4 +1,4 @@
-namespace StripeTests
+namespace StripeTests.Wholesome
 {
     using System;
     using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace StripeTests
 
             foreach (var stripeClass in stripeClasses)
             {
-                foreach (var property in stripeClass.GetProperties())
+                foreach (var property in GetPropertiesToCheck(stripeClass))
                 {
                     var hasJsonAttribute = false;
 
