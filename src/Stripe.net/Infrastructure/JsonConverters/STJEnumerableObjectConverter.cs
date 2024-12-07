@@ -13,7 +13,7 @@ namespace Stripe.Infrastructure
     /// STJ serializes IEnumerable objects as an array, and discards additional
     /// fields (like those in StripeList or StripeSearchResult).
     /// </summary>
-    public class STJEnumerableObjectConverter : JsonConverterFactory
+    internal class STJEnumerableObjectConverter : JsonConverterFactory
     {
         /// <summary>
         /// Determines whether this instance can convert the specified object type.

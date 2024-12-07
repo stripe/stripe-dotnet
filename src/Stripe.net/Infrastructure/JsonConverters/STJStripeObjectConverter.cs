@@ -15,7 +15,7 @@ namespace Stripe.Infrastructure
     /// but it's not compatible with the expected interface), then the converter returns `null`.
     /// </summary>
     ///
-    public class STJStripeObjectConverter : JsonConverterFactory
+    internal class STJStripeObjectConverter : JsonConverterFactory
     {
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
@@ -27,7 +27,8 @@ namespace Stripe.Infrastructure
         public override bool CanConvert(Type objectType)
         {
             var typeInfo = objectType.GetTypeInfo();
-            return typeInfo.IsInterface && typeInfo.FullName.StartsWith("Stripe");
+            return (typeInfo.IsInterface && typeInfo.FullName.StartsWith("Stripe")) ||
+                    typeInfo.FullName.Equals("Stripe.V2.Event");
         }
 
         public override JsonConverter CreateConverter(
@@ -47,11 +48,13 @@ namespace Stripe.Infrastructure
             return converter;
         }
 
-        internal class STJStripeObjectConverterInner<T> : JsonConverter<T>
+        internal class STJStripeObjectConverterInner<T> : STJDefaultConverter<T>
         where T : class
         {
             /// <summary>
-            /// Reads the JSON representation of the object.
+            /// Reads the JSON representation of the object.  This creates the appropriate
+            /// type by examining the object property in the JSON (instead of looking at the
+            /// typeToConvert).
             /// </summary>
             /// <param name="reader">The <see cref="Utf8JsonReader"/> to read from.</param>
             /// <param name="typeToConvert">Type of the object.</param>
@@ -74,45 +77,7 @@ namespace Stripe.Infrastructure
                     return null;
                 }
 
-                return (T)JsonSerializer.Deserialize(jsonObject.GetRawText(), concreteType, options);
-            }
-
-            /// <summary>
-            /// Writes the JSON representation of the object.
-            /// </summary>
-            /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
-            /// <param name="value">The value.</param>
-            /// <param name="options">The calling serializer's options.</param>
-            public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
-            {
-                var allProperties = GetPropertiesForType(value.GetType());
-
-                writer.WriteStartObject();
-                foreach (var property in allProperties)
-                {
-                    object valueToSerialize = property.Get(value);
-
-                    switch (valueToSerialize)
-                    {
-                        case null:
-                            if (property.IgnoreCondition != JsonIgnoreCondition.WhenWritingNull)
-                            {
-                                writer.WritePropertyName(property.JsonPropertyName);
-                                writer.WriteNullValue();
-                            }
-
-                            break;
-                        default:
-                            writer.WritePropertyName(property.JsonPropertyName);
-
-                            var converter = property.GetConverter(options);
-                            converter.Write(writer, valueToSerialize, options);
-
-                            break;
-                    }
-                }
-
-                writer.WriteEndObject();
+                return (T)JsonSerializer.Deserialize(jsonObject, concreteType, options);
             }
         }
     }

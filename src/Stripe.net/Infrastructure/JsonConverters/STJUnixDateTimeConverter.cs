@@ -13,7 +13,7 @@ namespace Stripe.Infrastructure
     /// Newtonsoft.Json 11.0. Once we bump the minimum version of Newtonsoft.Json to 11.0, we can
     /// start using the provided converter and get rid of this class.
     /// </remarks>
-    public class STJUnixDateTimeConverter : JsonConverter<DateTime>
+    internal class STJUnixDateTimeConverter : JsonConverter<DateTime>
     {
         /// <summary>
         /// Reads the JSON representation of the object.

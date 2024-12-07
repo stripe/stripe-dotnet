@@ -10,7 +10,7 @@ namespace Stripe.Infrastructure
     /// <summary>
     /// Converts a <see cref="IAnyOf"/> to and from JSON.
     /// </summary>
-    public class STJAnyOfConverter : JsonConverter<object>
+    internal class STJAnyOfConverter : JsonConverter<object>
     {
         /// <summary>
         /// Reads the JSON representation of the object.
@@ -34,7 +34,7 @@ namespace Stripe.Infrastructure
             {
                 try
                 {
-                    o = JsonSerializer.Deserialize(elem.GetRawText(), type, options);
+                    o = JsonSerializer.Deserialize(elem, type, options);
 
                     // If deserialization succeeds, stop
                     break;

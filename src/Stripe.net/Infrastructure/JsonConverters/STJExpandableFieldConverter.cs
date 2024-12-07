@@ -11,7 +11,7 @@ namespace Stripe.Infrastructure
     /// to ensure we return a correctly typed custom converter.
     /// </summary>
 #pragma warning disable SA1649 // File name should match first type name
-    public class STJExpandableFieldConverterFactory : JsonConverterFactory
+    internal class STJExpandableFieldConverterFactory : JsonConverterFactory
 #pragma warning restore SA1649 // File name should match first type name
     {
         public override bool CanConvert(Type typeToConvert)
@@ -45,7 +45,7 @@ namespace Stripe.Infrastructure
     /// </summary>
     /// <typeparam name="T">Type of the field when expanded.</typeparam>
 #pragma warning disable SA1402 // File may only contain a single type
-    public class STJExpandableFieldConverter<T> : JsonConverter<ExpandableField<T>>
+    internal class STJExpandableFieldConverter<T> : JsonConverter<ExpandableField<T>>
 #pragma warning restore SA1402 // File may only contain a single type
         where T : IHasId
     {
@@ -75,7 +75,7 @@ namespace Stripe.Infrastructure
                 case JsonTokenType.StartObject:
                     var elem = JsonElement.ParseValue(ref reader);
 
-                    value.ExpandedObject = (T)JsonSerializer.Deserialize(elem.GetRawText(), typeToConvert.GenericTypeArguments[0], options);
+                    value.ExpandedObject = (T)JsonSerializer.Deserialize(elem, typeToConvert.GenericTypeArguments[0], options);
 
                     // If we failed to deserialize the expanded object (e.g. because of an unknown
                     // type), make a last ditch attempt at getting the ID.

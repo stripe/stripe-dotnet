@@ -4,12 +4,15 @@ namespace StripeTests.Wholesome
     using System;
     using System.Collections;
     using System.Collections.Generic;
+    using System.Diagnostics;
     using System.Linq;
     using System.Reflection;
     using Castle.DynamicProxy.Internal;
     using Newtonsoft.Json;
     using Stripe;
+    using Stripe.Events;
     using Stripe.Infrastructure;
+    using Stripe.V2;
     using Xunit;
 
     using STJ = System.Text.Json;
@@ -76,6 +79,11 @@ namespace StripeTests.Wholesome
                 {
                     // Skip StripeEntity and StripeEntity<T>
                     continue;
+                }
+
+                if (stripeClass.Name.StartsWith("V1Billing"))
+                {
+                    Debugger.Break();
                 }
 
                 if (stripeClass.IsGenericType)
@@ -284,7 +292,7 @@ namespace StripeTests.Wholesome
             return null;
         }
 
-        private void PopulateWithReasonableDefaults(object instance, List<Type> seen, Dictionary<Type, object> expandedObjectCache)
+        private T PopulateWithReasonableDefaults<T>(T instance, List<Type> seen, Dictionary<Type, object> expandedObjectCache)
         {
             expandedObjectCache = expandedObjectCache ?? new Dictionary<Type, object>();
             foreach (var property in GetPropertiesToCheck(instance.GetType()))
@@ -303,6 +311,8 @@ namespace StripeTests.Wholesome
                 var newValue = this.GetPopulatedObject(propertyType, seen?.ToList() ?? new List<Type>(), expandedObjectCache);
                 property.SetValue(instance, newValue);
             }
+
+            return instance;
         }
 
         private void CheckGenericTypes(List<Type> genericTypes, List<string> results)
@@ -329,7 +339,7 @@ namespace StripeTests.Wholesome
                 Email = "jrosen@example.com",
             };
 
-            var list = new StripeList<Customer>
+            var list = new Stripe.StripeList<Customer>
             {
                 Object = "list_object",
                 Data = new List<Customer>
@@ -344,11 +354,15 @@ namespace StripeTests.Wholesome
             var listType = list.GetType();
             genericTypes.RemoveAll(gt => listType.FullName.StartsWith(gt.FullName));
 
-            var v2List = new Stripe.V2.StripeList<Customer>
+            // This also tests polymorphic types like V2.Event within
+            // the list
+            var v2List = new Stripe.V2.StripeList<Stripe.V2.Event>
             {
-                Data = new List<Customer>
+                Data = new List<Stripe.V2.Event>
                 {
-                    customer1, customer2, customer3,
+                    this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
+                    this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
+                    this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
                 },
                 NextPageUrl = "/v2/customers?page=1234",
                 PreviousPageUrl = null,

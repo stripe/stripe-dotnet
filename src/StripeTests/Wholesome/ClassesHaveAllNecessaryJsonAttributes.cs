@@ -61,6 +61,16 @@ namespace StripeTests.Wholesome
                         hasCorrectAttributes = false;
                     }
                 }
+
+                // Special case for Stripe.V2.Event
+                if (type == typeof(Stripe.V2.Event))
+                {
+                    var converter = type.GetCustomAttribute(typeof(STJS.JsonConverterAttribute), false) as STJS.JsonConverterAttribute;
+                    if (converter?.ConverterType != typeof(STJV2EventConverter))
+                    {
+                        hasCorrectAttributes = false;
+                    }
+                }
 #endif
 
                 if (hasCorrectAttributes)

@@ -16,7 +16,7 @@ namespace Stripe
 
     [JsonObject(MemberSerialization.OptIn)]
     [JsonConverter(typeof(StripeEntityConverter))]
-    [NoSystemTextJsonAttributesNeeded("Converter is only needed for deserialization, and JsonObject is not supported on System.Text.Json")]
+    [NoSystemTextJsonAttributesNeeded("Converter is only needed for deserialization in Stripe.net.  Member serialization opt-in is implemented in STJMemberSerializationOptIn, which is placed on the concrete classes")]
     public abstract class StripeEntity : IStripeEntity
     {
         /// <summary>
