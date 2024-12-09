@@ -6,7 +6,7 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsSwish : StripeEntity<PaymentIntentPaymentMethodOptionsSwish>
     {
         /// <summary>
-        /// The order ID displayed in the Swish app after the payment is authorized.
+        /// A reference for this payment to be displayed in the Swish app.
         /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }

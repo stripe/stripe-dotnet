@@ -15,8 +15,9 @@ namespace Stripe
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
-        /// Delete all usage for a given subscription item. Allowed only when <c>deleted</c> is set
-        /// to <c>true</c> and the current plan's <c>usage_type</c> is <c>metered</c>.
+        /// Delete all usage for a given subscription item. You must pass this when deleting a usage
+        /// records subscription item. <c>clear_usage</c> has no effect if the plan has a billing
+        /// meter attached.
         /// </summary>
         [JsonProperty("clear_usage")]
         public bool? ClearUsage { get; set; }

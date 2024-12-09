@@ -292,6 +292,13 @@ namespace Stripe
         public CardNetworks Networks { get; set; }
 
         /// <summary>
+        /// Status of a card based on the card issuer.
+        /// One of: <c>regulated</c>, or <c>unregulated</c>.
+        /// </summary>
+        [JsonProperty("regulated_status")]
+        public string RegulatedStatus { get; set; }
+
+        /// <summary>
         /// For external accounts that are cards, possible values are <c>new</c> and <c>errored</c>.
         /// If a payout fails, the status is set to <c>errored</c> and <a
         /// href="https://stripe.com/docs/payouts#payout-schedule">scheduled payouts</a> are stopped

@@ -156,6 +156,13 @@ namespace Stripe
         public ChargePaymentMethodDetailsCardOvercapture Overcapture { get; set; }
 
         /// <summary>
+        /// Status of a card based on the card issuer.
+        /// One of: <c>regulated</c>, or <c>unregulated</c>.
+        /// </summary>
+        [JsonProperty("regulated_status")]
+        public string RegulatedStatus { get; set; }
+
+        /// <summary>
         /// Populated if this transaction used 3D Secure authentication.
         /// </summary>
         [JsonProperty("three_d_secure")]
