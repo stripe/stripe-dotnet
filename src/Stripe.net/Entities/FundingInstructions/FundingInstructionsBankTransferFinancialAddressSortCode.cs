@@ -5,6 +5,9 @@ namespace Stripe
 
     public class FundingInstructionsBankTransferFinancialAddressSortCode : StripeEntity<FundingInstructionsBankTransferFinancialAddressSortCode>
     {
+        [JsonProperty("account_holder_address")]
+        public Address AccountHolderAddress { get; set; }
+
         /// <summary>
         /// The name of the person or business that owns the bank account.
         /// </summary>
@@ -16,6 +19,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("account_number")]
         public string AccountNumber { get; set; }
+
+        [JsonProperty("bank_address")]
+        public Address BankAddress { get; set; }
 
         /// <summary>
         /// The six-digit sort code.

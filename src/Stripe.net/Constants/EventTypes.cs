@@ -143,12 +143,14 @@ namespace Stripe
         public const string ChargePending = "charge.pending";
 
         /// <summary>
-        /// Occurs whenever a refund is updated, on selected payment methods.
+        /// Occurs whenever a refund is updated on selected payment methods. For updates on all
+        /// refunds, listen to <c>refund.updated</c> instead.
         /// </summary>
         public const string ChargeRefundUpdated = "charge.refund.updated";
 
         /// <summary>
-        /// Occurs whenever a charge is refunded, including partial refunds.
+        /// Occurs whenever a charge is refunded, including partial refunds. Listen to
+        /// <c>refund.created</c> for information about the refund.
         /// </summary>
         public const string ChargeRefunded = "charge.refunded";
 

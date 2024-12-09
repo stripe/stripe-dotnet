@@ -81,7 +81,7 @@ namespace Stripe.Billing
         #endregion
 
         /// <summary>
-        /// The time when the billing credits become effective—when they're eligible for use.
+        /// The time when the billing credits become effective-when they're eligible for use.
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

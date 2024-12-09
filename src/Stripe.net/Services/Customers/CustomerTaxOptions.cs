@@ -16,7 +16,7 @@ namespace Stripe
 
         /// <summary>
         /// A flag that indicates when Stripe should validate the customer tax location. Defaults to
-        /// <c>deferred</c>.
+        /// <c>auto</c>.
         /// One of: <c>auto</c>, <c>deferred</c>, or <c>immediately</c>.
         /// </summary>
         [JsonProperty("validate_location")]

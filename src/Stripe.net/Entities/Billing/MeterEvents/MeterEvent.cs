@@ -7,10 +7,10 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// A billing meter event represents a customer's usage of a product. Meter events are used
-    /// to bill a customer based on their usage. Meter events are associated with billing
-    /// meters, which define the shape of the event's payload and how those events are
-    /// aggregated for billing.
+    /// Meter events represent actions that customers take in your system. You can use meter
+    /// events to bill a customer based on their usage. Meter events are associated with billing
+    /// meters, which define both the contents of the event’s payload and how to aggregate those
+    /// events.
     /// </summary>
     public class MeterEvent : StripeEntity<MeterEvent>, IHasObject
     {

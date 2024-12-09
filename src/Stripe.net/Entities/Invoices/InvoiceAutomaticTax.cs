@@ -6,6 +6,14 @@ namespace Stripe
     public class InvoiceAutomaticTax : StripeEntity<InvoiceAutomaticTax>
     {
         /// <summary>
+        /// If Stripe disabled automatic tax, this enum describes why.
+        /// One of: <c>finalization_requires_location_inputs</c>, or
+        /// <c>finalization_system_error</c>.
+        /// </summary>
+        [JsonProperty("disabled_reason")]
+        public string DisabledReason { get; set; }
+
+        /// <summary>
         /// Whether Stripe automatically computes tax on this invoice. Note that incompatible
         /// invoice items (invoice items with manually specified <a
         /// href="https://stripe.com/docs/api/tax_rates">tax rates</a>, negative amounts, or

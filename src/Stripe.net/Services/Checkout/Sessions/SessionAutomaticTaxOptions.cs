@@ -6,7 +6,11 @@ namespace Stripe.Checkout
     public class SessionAutomaticTaxOptions : INestedOptions
     {
         /// <summary>
-        /// Set to true to enable automatic taxes.
+        /// Set to <c>true</c> to <a href="https://docs.stripe.com/tax">calculate tax
+        /// automatically</a> using the customer's location.
+        ///
+        /// Enabling this parameter causes Checkout to collect any billing address information
+        /// necessary for tax calculation.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }
