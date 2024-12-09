@@ -6,6 +6,12 @@ namespace Stripe.Terminal
 
     public class ReaderActionProcessPaymentIntent : StripeEntity<ReaderActionProcessPaymentIntent>
     {
+        /// <summary>
+        /// Account the payment intent belongs to.
+        /// </summary>
+        [JsonProperty("account")]
+        public string Account { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>
@@ -43,6 +49,9 @@ namespace Stripe.Terminal
         [JsonProperty("process_config")]
         public ReaderActionProcessPaymentIntentProcessConfig ProcessConfig { get; set; }
 
+        /// <summary>
+        /// This field will be deprecated. Please use <c>account</c> instead.
+        /// </summary>
         [JsonProperty("stripe_account")]
         public string StripeAccount { get; set; }
     }

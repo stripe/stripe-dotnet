@@ -8,6 +8,12 @@ namespace Stripe.Terminal
     public class ReaderActionRefundPayment : StripeEntity<ReaderActionRefundPayment>, IHasMetadata
     {
         /// <summary>
+        /// Account the payment intent belongs to.
+        /// </summary>
+        [JsonProperty("account")]
+        public string Account { get; set; }
+
+        /// <summary>
         /// The amount being refunded.
         /// </summary>
         [JsonProperty("amount")]
@@ -146,6 +152,9 @@ namespace Stripe.Terminal
         [JsonProperty("reverse_transfer")]
         public bool ReverseTransfer { get; set; }
 
+        /// <summary>
+        /// This field will be deprecated. Please use <c>account</c> instead.
+        /// </summary>
         [JsonProperty("stripe_account")]
         public string StripeAccount { get; set; }
     }
