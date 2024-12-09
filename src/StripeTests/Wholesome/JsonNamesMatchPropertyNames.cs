@@ -1,4 +1,4 @@
-namespace StripeTests
+namespace StripeTests.Wholesome
 {
     using System;
     using System.Collections.Generic;
@@ -9,6 +9,9 @@ namespace StripeTests
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// This wholesome test ensures that `JsonProperty` attributes in entity and options classes
@@ -45,7 +48,7 @@ namespace StripeTests
 
             foreach (Type stripeClass in stripeClasses)
             {
-                foreach (PropertyInfo property in stripeClass.GetProperties())
+                foreach (PropertyInfo property in GetPropertiesToCheck(stripeClass))
                 {
                     var propType = property.PropertyType;
 
@@ -56,10 +59,41 @@ namespace StripeTests
                         continue;
                     }
 
+                    var propertyName = property.Name;
+
+                    // expandable field json properties are prefixed with with Internal so
+                    // that they don't conflict with the public properties we expose to the
+                    // user
+                    var toStrip = "Internal";
+                    if (propertyName.StartsWith(toStrip))
+                    {
+                        propertyName = propertyName.Substring(toStrip.Length);
+                    }
+
                     var pascalCasedJsonName = ToPascalCase(jsonPropertyAttribute.PropertyName);
+                    var hasCorrectJsonPropertyName = false;
 
                     // Skip properties when the property name matches the JSON name
-                    if (property.Name == pascalCasedJsonName)
+                    if (propertyName == pascalCasedJsonName)
+                    {
+                        hasCorrectJsonPropertyName = true;
+                    }
+
+#if NET6_0_OR_GREATER
+                    var stjsJsonPropertyNameAttribute = property.GetCustomAttribute<STJS.JsonPropertyNameAttribute>();
+
+                    // Only check if there is a stjs property name attribute; another test will check
+                    // that the necessary attributes are present
+                    if (stjsJsonPropertyNameAttribute != null)
+                    {
+                        // Error on properties where the STJ property name doesn't match the Newtonsoft property name
+                        if (jsonPropertyAttribute.PropertyName != stjsJsonPropertyNameAttribute?.Name)
+                        {
+                            hasCorrectJsonPropertyName = false;
+                        }
+                    }
+#endif
+                    if (hasCorrectJsonPropertyName)
                     {
                         continue;
                     }
@@ -71,11 +105,12 @@ namespace StripeTests
                         continue;
                     }
 
-                    results.Add($"{stripeClass.Name}.{property.Name}: {property.Name} != {pascalCasedJsonName}");
+                    results.Add($"{stripeClass.Name}.{property.Name}");
                 }
             }
 
-            AssertEmpty(results, AssertionMessage);
+            var message = $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
+            AssertEmpty(results, message);
         }
 
         private static string ToPascalCase(string snakeCase)

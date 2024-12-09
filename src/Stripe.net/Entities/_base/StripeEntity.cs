@@ -9,8 +9,14 @@ namespace Stripe
     using Newtonsoft.Json.Linq;
     using Stripe.Infrastructure;
 
+#if NET6_0_OR_GREATER
+    using STJ = System.Text.Json;
+    using STJS = System.Text.Json.Serialization;
+#endif
+
     [JsonObject(MemberSerialization.OptIn)]
     [JsonConverter(typeof(StripeEntityConverter))]
+    [NoSystemTextJsonAttributesNeeded("Converter is only needed for deserialization in Stripe.net.  Member serialization opt-in is implemented in STJMemberSerializationOptIn, which is placed on the concrete classes")]
     public abstract class StripeEntity : IStripeEntity
     {
         /// <summary>
@@ -22,12 +28,20 @@ namespace Stripe
         /// You should always prefer using the standard property accessors whenever possible. This
         /// accessor is not considered fully stable and might change or be removed in future
         /// versions.
+        /// This property is only available on the objects originally returned by Stripe's .NET
+        /// library. It is not available on objects deserialized from JSON in application code.
         /// </remarks>
         /// <returns>The raw <see cref="JObject">JObject</see>.</returns>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public JObject RawJObject { get; protected set; }
 
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public StripeResponse StripeResponse { get; set; }
 
         /// <summary>
@@ -88,7 +102,11 @@ namespace Stripe
                 this.ToJson());
         }
 
-        /// <summary>Serializes the Stripe object as a JSON string.</summary>
+        /// <summary>Serializes the Stripe object's documented properties as a JSON string.</summary>
+        /// <remarks>
+        /// The returned string will not include any undocumented properties contained in
+        /// <see cref="RawJObject"/>.
+        /// </remarks>
         /// <returns>An indented JSON string represensation of the object.</returns>
         public string ToJson()
         {

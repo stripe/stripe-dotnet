@@ -234,6 +234,8 @@ customer.RawJObject["secret_parameter"]["secondary"];
 
 ```
 
+This is only supported on objects returned directly from the Stripe.net SDK. If you are serializing Stripe objects to JSON you will need to handle undocumented properties separately.
+
 ### Writing a plugin
 
 If you're writing a plugin that uses the library, we'd appreciate it if you
@@ -263,6 +265,54 @@ You can disable this behavior if you prefer:
 ```c#
 StripeConfiguration.EnableTelemetry = false;
 ```
+
+### Serializing Stripe resources to JSON
+Stripe resources returned from a Stripe .NET library method can be serialized to a JSON string, which will contain all publicly documented fields for that object (see [Serialization and RawJObject](#serialization-and-rawjobject) below):
+
+#### Newtonsoft Json.NET
+```c#
+using Newtonsoft.Json;
+
+...
+
+var service = new CustomerService();
+var customer = service.Get("cus_1234");
+
+string output = JsonConvert.SerializeObject(customer);
+// { "id": "cus_1234", "name": "Jenny Rosen", ... }
+```
+
+If you are using .NET 6 or above, you can also use System.Text.Json to serialize the same string value:
+#### System.Text.Json
+```c#
+using System.Text.Json;
+...
+var service = new CustomerService();
+var customer = service.Get("cus_1234");
+
+string output = JsonSerializer.Serialize(customer);
+// { "id": "cus_1234", "name": "Jenny Rosen", ... }
+```
+
+#### ASP.NET
+If you are using .NET 6 or have installed the [Microsoft.AspNetCore.Mvc.NewtonsoftJson][https://www.nuget.org/packages/microsoft.aspnetcore.mvc.newtonsoftjson] package, you can return Stripe objects from ASP.NET controller methods:
+
+```c#
+using System.Text.Json;
+
+public class HomeController : Controller
+{
+...
+    public IActionResult Index()
+    {
+        return Json(_client.V1.Customers.List());
+      // { "data": [{"id": "cus_1234", "name": "Jenny Rosen"}, ...], "has_more": false }
+    }
+}
+```
+
+#### Serialization and RawJObject
+The [RawJObject property](#properties) is ignored on serialization in both Json.NET and System.Text.Json, which means that if you serialize a SDK response to a JSON string and the deserialize it back into a Stripe object, this property may be null or empty. If you rely on `RawJObject` you will need to serialize those values separately.
 
 ### Beta SDKs
 

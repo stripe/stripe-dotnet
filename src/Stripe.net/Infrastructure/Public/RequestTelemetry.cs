@@ -6,6 +6,10 @@ namespace Stripe
     using System.Linq;
     using System.Net.Http;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
+
     using Stripe.Infrastructure;
 
     /// <summary>
@@ -90,18 +94,30 @@ namespace Stripe
         private class ClientTelemetryPayload
         {
             [JsonProperty("last_request_metrics")]
+#if NET6_0_OR_GREATER
+            [STJS.JsonPropertyName("last_request_metrics")]
+#endif
             public RequestMetrics LastRequestMetrics { get; set; }
         }
 
         private class RequestMetrics
         {
             [JsonProperty("request_id")]
+#if NET6_0_OR_GREATER
+            [STJS.JsonPropertyName("request_id")]
+#endif
             public string RequestId { get; set; }
 
             [JsonProperty("request_duration_ms")]
+#if NET6_0_OR_GREATER
+            [STJS.JsonPropertyName("request_duration_ms")]
+#endif
             public long RequestDurationMs { get; set; }
 
             [JsonProperty("usage")]
+#if NET6_0_OR_GREATER
+            [STJS.JsonPropertyName("usage")]
+#endif
             public List<string> Usage { get; set; }
         }
     }
