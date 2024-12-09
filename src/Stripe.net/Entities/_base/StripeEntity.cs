@@ -106,6 +106,7 @@ namespace Stripe
         /// <remarks>
         /// The returned string will not include any undocumented properties contained in
         /// <see cref="RawJObject"/>.
+        /// </remarks>
         /// <returns>An indented JSON string represensation of the object.</returns>
         public string ToJson()
         {
