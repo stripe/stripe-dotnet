@@ -27,7 +27,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves a credit balance transaction</p>.
+        /// <p>Retrieves a credit balance transaction.</p>.
         /// </summary>
         public virtual CreditBalanceTransaction Get(string id, CreditBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -35,7 +35,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves a credit balance transaction</p>.
+        /// <p>Retrieves a credit balance transaction.</p>.
         /// </summary>
         public virtual Task<CreditBalanceTransaction> GetAsync(string id, CreditBalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -43,7 +43,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieve a list of credit balance transactions</p>.
+        /// <p>Retrieve a list of credit balance transactions.</p>.
         /// </summary>
         public virtual StripeList<CreditBalanceTransaction> List(CreditBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -51,7 +51,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieve a list of credit balance transactions</p>.
+        /// <p>Retrieve a list of credit balance transactions.</p>.
         /// </summary>
         public virtual Task<StripeList<CreditBalanceTransaction>> ListAsync(CreditBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -59,7 +59,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieve a list of credit balance transactions</p>.
+        /// <p>Retrieve a list of credit balance transactions.</p>.
         /// </summary>
         public virtual IEnumerable<CreditBalanceTransaction> ListAutoPaging(CreditBalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -67,7 +67,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieve a list of credit balance transactions</p>.
+        /// <p>Retrieve a list of credit balance transactions.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<CreditBalanceTransaction> ListAutoPagingAsync(CreditBalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
