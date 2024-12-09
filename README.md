@@ -234,6 +234,8 @@ customer.RawJObject["secret_parameter"]["secondary"];
 
 ```
 
+This is supported on the original objects returned from the Stripe.net SDK, and not on any objects deserialized from Json.  See [Serialization and RawJObject](#serialization-and-rawjobject) for more info.
+
 ### Writing a plugin
 
 If you're writing a plugin that uses the library, we'd appreciate it if you
@@ -263,6 +265,51 @@ You can disable this behavior if you prefer:
 ```c#
 StripeConfiguration.EnableTelemetry = false;
 ```
+
+### Serializing Stripe resources to JSON
+Stripe resources (i.e. objects returned from a Stripe resource or service call) can be serialized to a JSON string.  The resulting string will match the publicly-documented API results returned from the server (see [Serialization and RawJObject](#serialization-and-rawjobject) below):
+
+#### Newtonsoft Json.NET
+```c#
+using Newtonsoft.Json;
+
+...
+
+var service = new CustomerService();
+var customer = service.Get("cus_1234");
+
+string output = JsonConvert.SerializeObject(customer);
+```
+
+If you are using .NET 6 or above, you can also use System.Text.Json to serialize the same string value:
+#### System.Text.Json
+```c#
+using System.Text.Json;
+...
+var service = new CustomerService();
+var customer = service.Get("cus_1234");
+
+string output = JsonSerializer.Serialize(customer);
+```
+
+#### ASP.NET
+If you are using .NET 6 or have installed the [Microsoft.AspNetCore.Mvc.NewtonsoftJson][https://www.nuget.org/packages/microsoft.aspnetcore.mvc.newtonsoftjson] package, you can return Stripe objects from ASP.NET controller methods:
+
+```c#
+using System.Text.Json;
+
+public class HomeController : Controller
+{
+...
+    public IActionResult Index()
+    {
+        return Json(_client.V1.Customers.List());
+    }
+}
+```
+
+#### Serialization and RawJObject
+A `StripeEntity` returned from an SDK call will have a `RawJObject` property that can be used to access properties in the API that are [not officially supported by the SDK.](#how-to-use-undocumented-parameters-and-properties). This property is ignored on serialization in both Json.NET and System.Text.Json, which means that if you serialize a SDK response to a JSON string and the deserialize it back into a Stripe object, only publicly accessible properties will be available and this property will be null. 
 
 ### Beta SDKs
 
