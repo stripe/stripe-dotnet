@@ -234,7 +234,7 @@ customer.RawJObject["secret_parameter"]["secondary"];
 
 ```
 
-This is supported on the original objects returned from the Stripe.net SDK, and not on any objects deserialized from Json.  See [Serialization and RawJObject](#serialization-and-rawjobject) for more info.
+This is only supported on objects returned directly from the Stripe.net SDK. If you are serializing Stripe objects to JSON you will need to handle undocumented properties separately.
 
 ### Writing a plugin
 
