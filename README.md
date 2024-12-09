@@ -267,7 +267,7 @@ StripeConfiguration.EnableTelemetry = false;
 ```
 
 ### Serializing Stripe resources to JSON
-Stripe resources (i.e. objects returned from a Stripe resource or service call) can be serialized to a JSON string.  The resulting string will match the publicly-documented API results returned from the server (see [Serialization and RawJObject](#serialization-and-rawjobject) below):
+Stripe resources returned from a Stripe .NET library method can be serialized to a JSON string, which will contain all publicly documented fields for that object (see [Serialization and RawJObject](#serialization-and-rawjobject) below):
 
 #### Newtonsoft Json.NET
 ```c#
@@ -279,6 +279,7 @@ var service = new CustomerService();
 var customer = service.Get("cus_1234");
 
 string output = JsonConvert.SerializeObject(customer);
+// { "id": "cus_1234", "name": "Jenny Rosen", ... }
 ```
 
 If you are using .NET 6 or above, you can also use System.Text.Json to serialize the same string value:
@@ -290,6 +291,7 @@ var service = new CustomerService();
 var customer = service.Get("cus_1234");
 
 string output = JsonSerializer.Serialize(customer);
+// { "id": "cus_1234", "name": "Jenny Rosen", ... }
 ```
 
 #### ASP.NET
@@ -304,12 +306,13 @@ public class HomeController : Controller
     public IActionResult Index()
     {
         return Json(_client.V1.Customers.List());
+      // { "data": [{"id": "cus_1234", "name": "Jenny Rosen"}, ...], "has_more": false }
     }
 }
 ```
 
 #### Serialization and RawJObject
-A `StripeEntity` returned from an SDK call will have a `RawJObject` property that can be used to access properties in the API that are [not officially supported by the SDK.](#how-to-use-undocumented-parameters-and-properties). This property is ignored on serialization in both Json.NET and System.Text.Json, which means that if you serialize a SDK response to a JSON string and the deserialize it back into a Stripe object, only publicly accessible properties will be available and this property will be null. 
+The [RawJObject property](#properties) is ignored on serialization in both Json.NET and System.Text.Json, which means that if you serialize a SDK response to a JSON string and the deserialize it back into a Stripe object, this property may be null or empty. If you rely on `RawJObject` you will need to serialize those values separately.
 
 ### Beta SDKs
 
