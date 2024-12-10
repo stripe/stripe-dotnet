@@ -81,6 +81,13 @@ namespace Stripe
         public string RequestOvercapture { get; set; }
 
         /// <summary>
+        /// Request partial authorization on this PaymentIntent.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_partial_authorization")]
+        public string RequestPartialAuthorization { get; set; }
+
+        /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
         /// customers for authentication based on risk level and <a
         /// href="https://stripe.com/docs/strong-customer-authentication">other requirements</a>.
