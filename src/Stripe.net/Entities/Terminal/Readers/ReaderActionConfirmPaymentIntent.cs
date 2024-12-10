@@ -6,6 +6,12 @@ namespace Stripe.Terminal
 
     public class ReaderActionConfirmPaymentIntent : StripeEntity<ReaderActionConfirmPaymentIntent>
     {
+        /// <summary>
+        /// Account the payment intent belongs to.
+        /// </summary>
+        [JsonProperty("account")]
+        public string Account { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>
@@ -37,6 +43,9 @@ namespace Stripe.Terminal
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
+        /// <summary>
+        /// This field will be deprecated. Please use <c>account</c> instead.
+        /// </summary>
         [JsonProperty("stripe_account")]
         public string StripeAccount { get; set; }
     }

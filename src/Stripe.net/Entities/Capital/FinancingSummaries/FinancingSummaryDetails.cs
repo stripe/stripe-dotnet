@@ -1,9 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Capital
 {
-    using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 
     public class FinancingSummaryDetails : StripeEntity<FinancingSummaryDetails>
     {
@@ -18,8 +16,7 @@ namespace Stripe.Capital
         /// Given in milliseconds since unix epoch.
         /// </summary>
         [JsonProperty("advance_paid_out_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime? AdvancePaidOutAt { get; set; }
+        public decimal? AdvancePaidOutAt { get; set; }
 
         /// <summary>
         /// Currency that the financing offer is transacted in. For example, <c>usd</c>.
@@ -56,8 +53,7 @@ namespace Stripe.Capital
         /// unix epoch.
         /// </summary>
         [JsonProperty("repayments_begin_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime? RepaymentsBeginAt { get; set; }
+        public decimal? RepaymentsBeginAt { get; set; }
 
         /// <summary>
         /// Per-transaction rate at which Stripe will withhold funds to repay the financing.
