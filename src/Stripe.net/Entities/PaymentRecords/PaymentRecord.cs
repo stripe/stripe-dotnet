@@ -48,12 +48,6 @@ namespace Stripe
         /// <summary>
         /// A representation of an amount of money, consisting of an amount and a currency.
         /// </summary>
-        [JsonProperty("amount_refunded")]
-        public PaymentRecordAmountRefunded AmountRefunded { get; set; }
-
-        /// <summary>
-        /// A representation of an amount of money, consisting of an amount and a currency.
-        /// </summary>
         [JsonProperty("amount_requested")]
         public PaymentRecordAmountRequested AmountRequested { get; set; }
 
