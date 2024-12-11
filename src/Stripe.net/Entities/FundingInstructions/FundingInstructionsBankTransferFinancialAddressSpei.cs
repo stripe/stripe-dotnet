@@ -5,6 +5,18 @@ namespace Stripe
 
     public class FundingInstructionsBankTransferFinancialAddressSpei : StripeEntity<FundingInstructionsBankTransferFinancialAddressSpei>
     {
+        [JsonProperty("account_holder_address")]
+        public Address AccountHolderAddress { get; set; }
+
+        /// <summary>
+        /// The account holder name.
+        /// </summary>
+        [JsonProperty("account_holder_name")]
+        public string AccountHolderName { get; set; }
+
+        [JsonProperty("bank_address")]
+        public Address BankAddress { get; set; }
+
         /// <summary>
         /// The three-digit bank code.
         /// </summary>

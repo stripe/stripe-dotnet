@@ -26,7 +26,7 @@ namespace Stripe
         /// the invoice’s default payment method, the subscription’s default payment method, the
         /// customer’s default payment method, and your <a
         /// href="https://dashboard.stripe.com/settings/billing/invoice">invoice template
-        /// settings</a>.
+        /// settings</a>. Should not be specified with payment_method_configuration.
         /// One of: <c>ach_credit_transfer</c>, <c>ach_debit</c>, <c>acss_debit</c>,
         /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
         /// <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>,

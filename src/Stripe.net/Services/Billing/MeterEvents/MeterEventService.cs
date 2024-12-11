@@ -24,7 +24,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Creates a billing meter event</p>.
+        /// <p>Creates a billing meter event.</p>.
         /// </summary>
         public virtual MeterEvent Create(MeterEventCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -32,7 +32,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Creates a billing meter event</p>.
+        /// <p>Creates a billing meter event.</p>.
         /// </summary>
         public virtual Task<MeterEvent> CreateAsync(MeterEventCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -6,7 +6,7 @@ namespace Stripe.Billing
     public class CreditGrantApplicabilityConfigScopeOptions : INestedOptions
     {
         /// <summary>
-        /// The price type for which credit grants can apply. We currently only support the
+        /// The price type that credit grants can apply to. We currently only support the
         /// <c>metered</c> price type.
         /// </summary>
         [JsonProperty("price_type")]

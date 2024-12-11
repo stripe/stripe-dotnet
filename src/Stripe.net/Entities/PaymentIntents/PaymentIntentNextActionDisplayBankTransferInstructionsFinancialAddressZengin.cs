@@ -5,6 +5,9 @@ namespace Stripe
 
     public class PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressZengin : StripeEntity<PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressZengin>
     {
+        [JsonProperty("account_holder_address")]
+        public Address AccountHolderAddress { get; set; }
+
         /// <summary>
         /// The account holder name.
         /// </summary>
@@ -22,6 +25,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("account_type")]
         public string AccountType { get; set; }
+
+        [JsonProperty("bank_address")]
+        public Address BankAddress { get; set; }
 
         /// <summary>
         /// The bank code of the account.
