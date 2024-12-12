@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionSchedulePhaseAddInvoiceItemDiscountDiscountEndDurationOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("interval")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval")]
+#endif
         public string Interval { get; set; }
 
         /// <summary>
@@ -18,6 +24,9 @@ namespace Stripe
         /// the interval type to get the overall duration.
         /// </summary>
         [JsonProperty("interval_count")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interval_count")]
+#endif
         public long? IntervalCount { get; set; }
     }
 }

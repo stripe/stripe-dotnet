@@ -2,6 +2,9 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditUnderwritingRecordDecisionCreditLimitApproved : StripeEntity<CreditUnderwritingRecordDecisionCreditLimitApproved>
     {
@@ -10,6 +13,9 @@ namespace Stripe.Issuing
         /// in the <a href="https://stripe.com/docs/api/issuing/credit_policy">CreditPolicy API</a>.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -18,6 +24,9 @@ namespace Stripe.Issuing
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
     }
 }

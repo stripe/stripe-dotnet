@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A (partner) margin represents a specific discount distributed in partner reseller
@@ -17,12 +20,18 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -30,6 +39,9 @@ namespace Stripe
         /// Defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
         public bool Active { get; set; }
 
         /// <summary>
@@ -37,6 +49,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -44,6 +60,9 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -52,12 +71,18 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Name of the margin that's displayed on, for example, invoices.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -65,6 +90,9 @@ namespace Stripe
         /// promotions) of any invoice to which the margin is applied.
         /// </summary>
         [JsonProperty("percent_off")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("percent_off")]
+#endif
         public decimal PercentOff { get; set; }
 
         /// <summary>
@@ -72,6 +100,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("updated")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("updated")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Updated { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

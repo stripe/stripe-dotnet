@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteLineActionSetItemOptions : INestedOptions, IHasMetadata
     {
@@ -13,6 +16,9 @@ namespace Stripe
         /// <c>discounts</c>.
         /// </summary>
         [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
         public List<QuoteLineActionSetItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -22,12 +28,18 @@ namespace Stripe
         /// <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The ID of the price object.
         /// </summary>
         [JsonProperty("price")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price")]
+#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -36,6 +48,9 @@ namespace Stripe
         /// cleared and a single new item is added with the supplied <c>quantity</c>.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -45,6 +60,9 @@ namespace Stripe
         /// <c>tax_rates</c>.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
         public List<string> TaxRates { get; set; }
 
         /// <summary>
@@ -54,6 +72,9 @@ namespace Stripe
         /// <c>trial</c>.
         /// </summary>
         [JsonProperty("trial")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial")]
+#endif
         public QuoteLineActionSetItemTrialOptions Trial { get; set; }
     }
 }

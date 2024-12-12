@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteSubscriptionDataOverrideBillOnAcceptanceBillFromLineStartsAtOptions : INestedOptions, IHasId
     {
@@ -9,6 +12,9 @@ namespace Stripe
         /// The ID of a quote line.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -17,6 +23,9 @@ namespace Stripe
         /// in the array.
         /// </summary>
         [JsonProperty("index")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("index")]
+#endif
         public long? Index { get; set; }
     }
 }

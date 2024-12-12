@@ -2,6 +2,9 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class MeterListOptions : ListOptions
     {
@@ -10,6 +13,9 @@ namespace Stripe.Billing
         /// One of: <c>active</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
     }
 }

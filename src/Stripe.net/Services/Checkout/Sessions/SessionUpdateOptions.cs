@@ -3,6 +3,9 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -10,6 +13,9 @@ namespace Stripe.Checkout
         /// Information about the customer collected within the Checkout Session.
         /// </summary>
         [JsonProperty("collected_information")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("collected_information")]
+#endif
         public SessionCollectedInformationOptions CollectedInformation { get; set; }
 
         /// <summary>
@@ -30,6 +36,9 @@ namespace Stripe.Checkout
         /// To reorder a line item, specify it at the desired position in the retransmitted array.
         /// </summary>
         [JsonProperty("line_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_items")]
+#endif
         public List<SessionLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -39,12 +48,18 @@ namespace Stripe.Checkout
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The shipping rate options to apply to this Session. Up to a maximum of 5.
         /// </summary>
         [JsonProperty("shipping_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping_options")]
+#endif
         public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
     }
 }

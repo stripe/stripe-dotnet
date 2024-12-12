@@ -4,6 +4,9 @@ namespace Stripe.Tax
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class RegistrationCreateOptions : BaseOptions
     {
@@ -14,6 +17,10 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("active_from")]
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active_from")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
         public AnyOf<DateTime?, RegistrationActiveFrom> ActiveFrom { get; set; }
 
         /// <summary>
@@ -21,12 +28,18 @@ namespace Stripe.Tax
         /// 3166-1 alpha-2</a>).
         /// </summary>
         [JsonProperty("country")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country")]
+#endif
         public string Country { get; set; }
 
         /// <summary>
         /// Specific options for a registration in the specified <c>country</c>.
         /// </summary>
         [JsonProperty("country_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country_options")]
+#endif
         public RegistrationCountryOptionsOptions CountryOptions { get; set; }
 
         /// <summary>
@@ -36,6 +49,10 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? ExpiresAt { get; set; }
     }
 }

@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Tax rates can be applied to <a
@@ -21,12 +24,18 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -35,6 +44,9 @@ namespace Stripe
         /// that already have it set.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
         public bool Active { get; set; }
 
         /// <summary>
@@ -42,6 +54,9 @@ namespace Stripe
         /// 3166-1 alpha-2</a>).
         /// </summary>
         [JsonProperty("country")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country")]
+#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -49,6 +64,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -56,6 +75,9 @@ namespace Stripe
         /// visible to your customers.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -63,6 +85,9 @@ namespace Stripe
         /// email, PDF, and the hosted invoice page.
         /// </summary>
         [JsonProperty("display_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_name")]
+#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -72,6 +97,9 @@ namespace Stripe
         /// collect taxes in the corresponding jurisdiction.
         /// </summary>
         [JsonProperty("effective_percentage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_percentage")]
+#endif
         public decimal? EffectivePercentage { get; set; }
 
         /// <summary>
@@ -81,12 +109,18 @@ namespace Stripe
         /// rate.
         /// </summary>
         [JsonProperty("flat_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flat_amount")]
+#endif
         public TaxRateFlatAmount FlatAmount { get; set; }
 
         /// <summary>
         /// This specifies if the tax rate is inclusive or exclusive.
         /// </summary>
         [JsonProperty("inclusive")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("inclusive")]
+#endif
         public bool Inclusive { get; set; }
 
         /// <summary>
@@ -94,6 +128,9 @@ namespace Stripe
         /// purposes. It also appears on your customer’s invoice.
         /// </summary>
         [JsonProperty("jurisdiction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("jurisdiction")]
+#endif
         public string Jurisdiction { get; set; }
 
         /// <summary>
@@ -103,6 +140,9 @@ namespace Stripe
         /// <c>state</c>.
         /// </summary>
         [JsonProperty("jurisdiction_level")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("jurisdiction_level")]
+#endif
         public string JurisdictionLevel { get; set; }
 
         /// <summary>
@@ -110,6 +150,9 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -118,6 +161,9 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -125,6 +171,9 @@ namespace Stripe
         /// this percentage includes the statutory tax rate of non-taxable jurisdictions.
         /// </summary>
         [JsonProperty("percentage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("percentage")]
+#endif
         public decimal Percentage { get; set; }
 
         /// <summary>
@@ -133,6 +182,9 @@ namespace Stripe
         /// One of: <c>flat_amount</c>, or <c>percentage</c>.
         /// </summary>
         [JsonProperty("rate_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("rate_type")]
+#endif
         public string RateType { get; set; }
 
         /// <summary>
@@ -140,6 +192,9 @@ namespace Stripe
         /// without country prefix. For example, "NY" for New York, United States.
         /// </summary>
         [JsonProperty("state")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("state")]
+#endif
         public string State { get; set; }
 
         /// <summary>
@@ -150,6 +205,9 @@ namespace Stripe
         /// <c>vat</c>.
         /// </summary>
         [JsonProperty("tax_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_type")]
+#endif
         public string TaxType { get; set; }
     }
 }

@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OrderPaymentSettingsPaymentMethodOptionsPaypal : StripeEntity<OrderPaymentSettingsPaymentMethodOptionsPaypal>
     {
@@ -10,18 +13,27 @@ namespace Stripe
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
         [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
         /// The line items purchased by the customer.
         /// </summary>
         [JsonProperty("line_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_items")]
+#endif
         public List<OrderPaymentSettingsPaymentMethodOptionsPaypalLineItem> LineItems { get; set; }
 
         /// <summary>
         /// Preferred locale of the PayPal checkout page that the customer is redirected to.
         /// </summary>
         [JsonProperty("preferred_locale")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("preferred_locale")]
+#endif
         public string PreferredLocale { get; set; }
 
         /// <summary>
@@ -30,6 +42,9 @@ namespace Stripe
         /// settings to block multiple payments per invoice ID.
         /// </summary>
         [JsonProperty("reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference")]
+#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -38,6 +53,9 @@ namespace Stripe
         /// settings to block multiple payments per invoice ID.
         /// </summary>
         [JsonProperty("reference_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference_id")]
+#endif
         public string ReferenceId { get; set; }
 
         /// <summary>
@@ -62,6 +80,9 @@ namespace Stripe
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -71,6 +92,9 @@ namespace Stripe
         /// and transfers</a> are used.
         /// </summary>
         [JsonProperty("subsellers")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subsellers")]
+#endif
         public List<string> Subsellers { get; set; }
     }
 }

@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentRecordReportPaymentAttemptOptions : BaseOptions, IHasMetadata
     {
@@ -12,18 +15,27 @@ namespace Stripe
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
         /// Information about the payment attempt failure.
         /// </summary>
         [JsonProperty("failed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failed")]
+#endif
         public PaymentRecordFailedOptions Failed { get; set; }
 
         /// <summary>
         /// Information about the payment attempt guarantee.
         /// </summary>
         [JsonProperty("guaranteed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("guaranteed")]
+#endif
         public PaymentRecordGuaranteedOptions Guaranteed { get; set; }
 
         /// <summary>
@@ -31,6 +43,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("initiated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("initiated_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? InitiatedAt { get; set; }
 
         /// <summary>
@@ -40,6 +56,9 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -47,18 +66,27 @@ namespace Stripe
         /// One of: <c>failed</c>, or <c>guaranteed</c>.
         /// </summary>
         [JsonProperty("outcome")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("outcome")]
+#endif
         public string Outcome { get; set; }
 
         /// <summary>
         /// Information about the Payment Method debited for this payment.
         /// </summary>
         [JsonProperty("payment_method_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_details")]
+#endif
         public PaymentRecordPaymentMethodDetailsOptions PaymentMethodDetails { get; set; }
 
         /// <summary>
         /// Shipping information for this payment.
         /// </summary>
         [JsonProperty("shipping_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping_details")]
+#endif
         public PaymentRecordShippingDetailsOptions ShippingDetails { get; set; }
     }
 }

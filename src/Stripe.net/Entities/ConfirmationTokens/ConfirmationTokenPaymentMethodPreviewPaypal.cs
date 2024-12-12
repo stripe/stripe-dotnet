@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfirmationTokenPaymentMethodPreviewPaypal : StripeEntity<ConfirmationTokenPaymentMethodPreviewPaypal>
     {
@@ -10,6 +13,9 @@ namespace Stripe
         /// whether two PayPal accounts are the same.
         /// </summary>
         [JsonProperty("fingerprint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fingerprint")]
+#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -17,12 +23,18 @@ namespace Stripe
         /// authorization or settlement. They cannot be set or mutated.
         /// </summary>
         [JsonProperty("payer_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payer_email")]
+#endif
         public string PayerEmail { get; set; }
 
         /// <summary>
         /// PayPal account PayerID. This identifier uniquely identifies the PayPal customer.
         /// </summary>
         [JsonProperty("payer_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payer_id")]
+#endif
         public string PayerId { get; set; }
 
         /// <summary>
@@ -30,6 +42,9 @@ namespace Stripe
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
         [JsonProperty("verified_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("verified_email")]
+#endif
         public string VerifiedEmail { get; set; }
     }
 }

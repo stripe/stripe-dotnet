@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditNoteLineOptions : INestedOptions
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// exclusive.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe
         /// <c>custom_line_item</c>.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -26,12 +35,18 @@ namespace Stripe
         /// <c>invoice_line_item</c>.
         /// </summary>
         [JsonProperty("invoice_line_item")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_line_item")]
+#endif
         public string InvoiceLineItem { get; set; }
 
         /// <summary>
         /// The line item quantity to credit.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -39,6 +54,9 @@ namespace Stripe
         /// <c>tax_rates</c>.
         /// </summary>
         [JsonProperty("tax_amounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_amounts")]
+#endif
         public List<CreditNoteLineTaxAmountOptions> TaxAmounts { get; set; }
 
         /// <summary>
@@ -46,6 +64,9 @@ namespace Stripe
         /// is <c>custom_line_item</c> and cannot be mixed with <c>tax_amounts</c>.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
         public List<string> TaxRates { get; set; }
 
         /// <summary>
@@ -54,6 +75,9 @@ namespace Stripe
         /// One of: <c>custom_line_item</c>, or <c>invoice_line_item</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -62,6 +86,9 @@ namespace Stripe
         /// credit for this line item. Only valid when <c>type</c> is <c>custom_line_item</c>.
         /// </summary>
         [JsonProperty("unit_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount")]
+#endif
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -70,6 +97,9 @@ namespace Stripe
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount_decimal")]
+#endif
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

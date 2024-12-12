@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class FinancialAccountFeaturesFinancialAddressesAbaOptions : INestedOptions
     {
@@ -10,12 +13,18 @@ namespace Stripe.Treasury
         /// One of: <c>evolve</c>, <c>fifth_third</c>, or <c>goldman_sachs</c>.
         /// </summary>
         [JsonProperty("bank")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank")]
+#endif
         public string Bank { get; set; }
 
         /// <summary>
         /// Whether the FinancialAccount should have the Feature.
         /// </summary>
         [JsonProperty("requested")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("requested")]
+#endif
         public bool? Requested { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OrderPaymentSettingsPaymentMethodOptionsKlarna : StripeEntity<OrderPaymentSettingsPaymentMethodOptionsKlarna>
     {
@@ -9,12 +12,18 @@ namespace Stripe
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
         [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
         /// Preferred locale of the Klarna checkout page that the customer is redirected to.
         /// </summary>
         [JsonProperty("preferred_locale")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("preferred_locale")]
+#endif
         public string PreferredLocale { get; set; }
 
         /// <summary>
@@ -38,6 +47,9 @@ namespace Stripe
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
     }
 }

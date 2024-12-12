@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OrderSubmitOptions : BaseOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// where something else concurrently modifies the order.
         /// </summary>
         [JsonProperty("expected_total")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expected_total")]
+#endif
         public long? ExpectedTotal { get; set; }
     }
 }

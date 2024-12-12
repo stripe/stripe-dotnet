@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteLineEndsAt : StripeEntity<QuoteLineEndsAt>
     {
@@ -17,18 +20,28 @@ namespace Stripe
         /// </summary>
         [JsonProperty("computed")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("computed")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? Computed { get; set; }
 
         /// <summary>
         /// Use the <c>end</c> time of a given discount.
         /// </summary>
         [JsonProperty("discount_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discount_end")]
+#endif
         public QuoteLineEndsAtDiscountEnd DiscountEnd { get; set; }
 
         /// <summary>
         /// Time span for the quote line starting from the <c>starts_at</c> date.
         /// </summary>
         [JsonProperty("duration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("duration")]
+#endif
         public QuoteLineEndsAtDuration Duration { get; set; }
 
         /// <summary>
@@ -36,6 +49,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("timestamp")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? Timestamp { get; set; }
 
         /// <summary>
@@ -45,6 +62,9 @@ namespace Stripe
         /// <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

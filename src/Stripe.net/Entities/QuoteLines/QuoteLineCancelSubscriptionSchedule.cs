@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteLineCancelSubscriptionSchedule : StripeEntity<QuoteLineCancelSubscriptionSchedule>
     {
@@ -10,6 +13,9 @@ namespace Stripe
         /// date. Must be set to <c>line_starts_at</c>.
         /// </summary>
         [JsonProperty("cancel_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at")]
+#endif
         public string CancelAt { get; set; }
 
         /// <summary>
@@ -18,6 +24,9 @@ namespace Stripe
         /// items. Boolean that defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("invoice_now")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_now")]
+#endif
         public bool? InvoiceNow { get; set; }
 
         /// <summary>
@@ -25,6 +34,9 @@ namespace Stripe
         /// prorated. Boolean that defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("prorate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("prorate")]
+#endif
         public bool? Prorate { get; set; }
     }
 }

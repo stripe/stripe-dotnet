@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuotePreviewInvoiceAutomaticTax : StripeEntity<QuotePreviewInvoiceAutomaticTax>
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// <c>finalization_system_error</c>.
         /// </summary>
         [JsonProperty("disabled_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("disabled_reason")]
+#endif
         public string DisabledReason { get; set; }
 
         /// <summary>
@@ -20,6 +26,9 @@ namespace Stripe
         /// <c>tax_behavior=unspecified</c>) cannot be added to automatic tax invoices.
         /// </summary>
         [JsonProperty("enabled")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled")]
+#endif
         public bool Enabled { get; set; }
 
         /// <summary>
@@ -28,6 +37,9 @@ namespace Stripe
         /// transaction is returned in the report of the connected account.
         /// </summary>
         [JsonProperty("liability")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("liability")]
+#endif
         public QuotePreviewInvoiceAutomaticTaxLiability Liability { get; set; }
 
         /// <summary>
@@ -35,6 +47,9 @@ namespace Stripe
         /// One of: <c>complete</c>, <c>failed</c>, or <c>requires_location_inputs</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
     }
 }

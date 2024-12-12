@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SetupIntentPaymentMethodOptionsPaypalOptions : INestedOptions
     {
@@ -11,9 +14,15 @@ namespace Stripe
         /// represents the mandate between the merchant and the customer.
         /// </summary>
         [JsonProperty("billing_agreement_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_agreement_id")]
+#endif
         public string BillingAgreementId { get; set; }
 
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -23,6 +32,9 @@ namespace Stripe
         /// and transfers</a> are used.
         /// </summary>
         [JsonProperty("subsellers")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subsellers")]
+#endif
         public List<string> Subsellers { get; set; }
     }
 }

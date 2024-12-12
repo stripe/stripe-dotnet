@@ -2,6 +2,9 @@
 namespace Stripe.GiftCards
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TransactionListOptions : ListOptions
     {
@@ -9,6 +12,9 @@ namespace Stripe.GiftCards
         /// The gift card to list transactions for.
         /// </summary>
         [JsonProperty("gift_card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("gift_card")]
+#endif
         public string GiftCard { get; set; }
 
         /// <summary>
@@ -17,6 +23,9 @@ namespace Stripe.GiftCards
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_group")]
+#endif
         public string TransferGroup { get; set; }
     }
 }

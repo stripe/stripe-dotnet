@@ -3,6 +3,9 @@ namespace Stripe.GiftCards
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TransactionCreateOptions : BaseOptions, IHasMetadata
     {
@@ -11,6 +14,9 @@ namespace Stripe.GiftCards
         /// adds funds.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -19,30 +25,45 @@ namespace Stripe.GiftCards
         /// transaction that increments the <c>amount_held</c> on the gift card.
         /// </summary>
         [JsonProperty("confirm")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("confirm")]
+#endif
         public bool? Confirm { get; set; }
 
         /// <summary>
         /// Related objects which created this transaction.
         /// </summary>
         [JsonProperty("created_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created_by")]
+#endif
         public TransactionCreatedByOptions CreatedBy { get; set; }
 
         /// <summary>
         /// The currency of the transaction. This must match the currency of the gift card.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
         /// The gift card to create a new transaction on.
         /// </summary>
         [JsonProperty("gift_card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("gift_card")]
+#endif
         public string GiftCard { get; set; }
 
         /// <summary>
@@ -52,6 +73,9 @@ namespace Stripe.GiftCards
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -60,6 +84,9 @@ namespace Stripe.GiftCards
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_group")]
+#endif
         public string TransferGroup { get; set; }
     }
 }

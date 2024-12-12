@@ -2,6 +2,9 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ReaderActionCollectInputsInputEmail : StripeEntity<ReaderActionCollectInputsInputEmail>
     {
@@ -9,6 +12,9 @@ namespace Stripe.Terminal
         /// The collected email address.
         /// </summary>
         [JsonProperty("value")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("value")]
+#endif
         public string Value { get; set; }
     }
 }

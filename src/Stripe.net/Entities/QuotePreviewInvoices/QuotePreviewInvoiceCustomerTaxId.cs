@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuotePreviewInvoiceCustomerTaxId : StripeEntity<QuotePreviewInvoiceCustomerTaxId>
     {
@@ -42,12 +45,18 @@ namespace Stripe
         /// <c>za_vat</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
 
         /// <summary>
         /// The value of the tax ID.
         /// </summary>
         [JsonProperty("value")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("value")]
+#endif
         public string Value { get; set; }
     }
 }

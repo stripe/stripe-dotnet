@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountControllerDashboard : StripeEntity<AccountControllerDashboard>
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// One of: <c>express</c>, <c>full</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

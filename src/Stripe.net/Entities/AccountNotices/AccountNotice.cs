@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A notice to a Connected account. Notice can be sent by Stripe on your behalf or you can
@@ -20,12 +23,18 @@ namespace Stripe
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -33,6 +42,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -40,18 +53,28 @@ namespace Stripe
         /// </summary>
         [JsonProperty("deadline")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deadline")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? Deadline { get; set; }
 
         /// <summary>
         /// Information about the email when sent.
         /// </summary>
         [JsonProperty("email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("email")]
+#endif
         public AccountNoticeEmail Email { get; set; }
 
         /// <summary>
         /// Information about objects related to the notice.
         /// </summary>
         [JsonProperty("linked_objects")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("linked_objects")]
+#endif
         public AccountNoticeLinkedObjects LinkedObjects { get; set; }
 
         /// <summary>
@@ -59,6 +82,9 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -67,6 +93,9 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -89,6 +118,9 @@ namespace Stripe
         /// <c>issuing.dispute_won</c>.
         /// </summary>
         [JsonProperty("reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason")]
+#endif
         public string Reason { get; set; }
 
         /// <summary>
@@ -97,6 +129,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("sent_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sent_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? SentAt { get; set; }
     }
 }

@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OrderPaymentSettings : StripeEntity<OrderPaymentSettings>
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// payment and transferred to the application owner's Stripe account.
         /// </summary>
         [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -19,12 +25,18 @@ namespace Stripe
         /// manage payment method types.
         /// </summary>
         [JsonProperty("automatic_payment_methods")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("automatic_payment_methods")]
+#endif
         public OrderPaymentSettingsAutomaticPaymentMethods AutomaticPaymentMethods { get; set; }
 
         /// <summary>
         /// PaymentMethod-specific configuration to provide to the order's PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_options")]
+#endif
         public OrderPaymentSettingsPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -39,12 +51,18 @@ namespace Stripe
         /// <c>sepa_debit</c>, <c>sofort</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_types")]
+#endif
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
         /// The URL to redirect the customer to after they authenticate their payment.
         /// </summary>
         [JsonProperty("return_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("return_url")]
+#endif
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -52,6 +70,9 @@ namespace Stripe
         /// your customers' statements. Must contain at least one letter, maximum 22 characters.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -61,12 +82,18 @@ namespace Stripe
         /// concatenated descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix")]
+#endif
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
         /// Provides configuration for completing a transfer for the order after it is paid.
         /// </summary>
         [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
         public OrderPaymentSettingsTransferData TransferData { get; set; }
     }
 }

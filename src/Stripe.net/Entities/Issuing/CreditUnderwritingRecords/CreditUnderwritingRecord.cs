@@ -5,6 +5,9 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Every time an applicant submits an application for a Charge Card product your platform
@@ -22,18 +25,27 @@ namespace Stripe.Issuing
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
         /// For decisions triggered by an application, details about the submission.
         /// </summary>
         [JsonProperty("application")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application")]
+#endif
         public CreditUnderwritingRecordApplication Application { get; set; }
 
         /// <summary>
@@ -41,6 +53,10 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -48,9 +64,15 @@ namespace Stripe.Issuing
         /// One of: <c>application</c>, or <c>proactive_review</c>.
         /// </summary>
         [JsonProperty("created_from")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created_from")]
+#endif
         public string CreatedFrom { get; set; }
 
         [JsonProperty("credit_user")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("credit_user")]
+#endif
         public CreditUnderwritingRecordCreditUser CreditUser { get; set; }
 
         /// <summary>
@@ -58,12 +80,19 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("decided_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("decided_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? DecidedAt { get; set; }
 
         /// <summary>
         /// Details about the decision.
         /// </summary>
         [JsonProperty("decision")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("decision")]
+#endif
         public CreditUnderwritingRecordDecision Decision { get; set; }
 
         /// <summary>
@@ -72,6 +101,10 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("decision_deadline")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("decision_deadline")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? DecisionDeadline { get; set; }
 
         /// <summary>
@@ -79,6 +112,9 @@ namespace Stripe.Issuing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -87,6 +123,9 @@ namespace Stripe.Issuing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -96,6 +135,9 @@ namespace Stripe.Issuing
         /// requirement</a>.
         /// </summary>
         [JsonProperty("regulatory_reporting_file")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("regulatory_reporting_file")]
+#endif
         public string RegulatoryReportingFile { get; set; }
 
         /// <summary>
@@ -104,6 +146,9 @@ namespace Stripe.Issuing
         /// circumstances, in consultation with Stripe Compliance.
         /// </summary>
         [JsonProperty("underwriting_exception")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("underwriting_exception")]
+#endif
         public CreditUnderwritingRecordUnderwritingException UnderwritingException { get; set; }
     }
 }

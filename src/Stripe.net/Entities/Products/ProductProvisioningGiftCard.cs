@@ -2,10 +2,16 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ProductProvisioningGiftCard : StripeEntity<ProductProvisioningGiftCard>
     {
         [JsonProperty("fixed_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fixed_amount")]
+#endif
         public ProductProvisioningGiftCardFixedAmount FixedAmount { get; set; }
 
         /// <summary>
@@ -13,6 +19,9 @@ namespace Stripe
         /// supported.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

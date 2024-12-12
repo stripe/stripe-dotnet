@@ -1,9 +1,10 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Capital
 {
-    using System;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class FinancingSummaryDetailsCurrentRepaymentInterval : StripeEntity<FinancingSummaryDetailsCurrentRepaymentInterval>
     {
@@ -13,19 +14,27 @@ namespace Stripe.Capital
         /// debited. Given in seconds since unix epoch.
         /// </summary>
         [JsonProperty("due_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-        public DateTime DueAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("due_at")]
+#endif
+        public decimal DueAt { get; set; }
 
         /// <summary>
         /// The amount that has already been paid in the current repayment interval.
         /// </summary>
         [JsonProperty("paid_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paid_amount")]
+#endif
         public long? PaidAmount { get; set; }
 
         /// <summary>
         /// The amount that is yet to be paid in the current repayment interval.
         /// </summary>
         [JsonProperty("remaining_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("remaining_amount")]
+#endif
         public long RemainingAmount { get; set; }
     }
 }

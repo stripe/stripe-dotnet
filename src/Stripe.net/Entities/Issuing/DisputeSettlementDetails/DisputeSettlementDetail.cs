@@ -4,6 +4,9 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Represents a record from the card network of a money movement or change in state for an
@@ -16,12 +19,18 @@ namespace Stripe.Issuing
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -29,12 +38,18 @@ namespace Stripe.Issuing
         /// amount of the transaction, but can differ (usually because of currency fluctuation).
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long Amount { get; set; }
 
         /// <summary>
         /// The card used to make the original transaction.
         /// </summary>
         [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
         public string Card { get; set; }
 
         /// <summary>
@@ -42,6 +57,10 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -51,12 +70,18 @@ namespace Stripe.Issuing
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// The ID of the linked dispute.
         /// </summary>
         [JsonProperty("dispute")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("dispute")]
+#endif
         public string Dispute { get; set; }
 
         /// <summary>
@@ -65,6 +90,9 @@ namespace Stripe.Issuing
         /// One of: <c>filing</c>, <c>loss</c>, <c>representment</c>, or <c>win</c>.
         /// </summary>
         [JsonProperty("event_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("event_type")]
+#endif
         public string EventType { get; set; }
 
         /// <summary>
@@ -72,6 +100,9 @@ namespace Stripe.Issuing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -80,12 +111,18 @@ namespace Stripe.Issuing
         /// One of: <c>maestro</c>, <c>mastercard</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("network")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network")]
+#endif
         public string Network { get; set; }
 
         /// <summary>
         /// The ID of the linked card network settlement.
         /// </summary>
         [JsonProperty("settlement")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("settlement")]
+#endif
         public string Settlement { get; set; }
     }
 }

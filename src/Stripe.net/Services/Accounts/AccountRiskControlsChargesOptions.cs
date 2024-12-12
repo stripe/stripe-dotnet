@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountRiskControlsChargesOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// unpaused.
         /// </summary>
         [JsonProperty("pause_requested")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pause_requested")]
+#endif
         public bool? PauseRequested { get; set; }
     }
 }

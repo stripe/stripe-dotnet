@@ -3,6 +3,9 @@ namespace Stripe.BillingPortal
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfigurationCreateOptions : BaseOptions, IHasMetadata
     {
@@ -10,6 +13,9 @@ namespace Stripe.BillingPortal
         /// The business information shown to customers in the portal.
         /// </summary>
         [JsonProperty("business_profile")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("business_profile")]
+#endif
         public ConfigurationBusinessProfileOptions BusinessProfile { get; set; }
 
         /// <summary>
@@ -19,12 +25,18 @@ namespace Stripe.BillingPortal
         /// when creating the session.
         /// </summary>
         [JsonProperty("default_return_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_return_url")]
+#endif
         public string DefaultReturnUrl { get; set; }
 
         /// <summary>
         /// Information about the features available in the portal.
         /// </summary>
         [JsonProperty("features")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("features")]
+#endif
         public ConfigurationFeaturesOptions Features { get; set; }
 
         /// <summary>
@@ -34,6 +46,9 @@ namespace Stripe.BillingPortal
         /// docs</a>.
         /// </summary>
         [JsonProperty("login_page")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("login_page")]
+#endif
         public ConfigurationLoginPageOptions LoginPage { get; set; }
 
         /// <summary>
@@ -43,6 +58,9 @@ namespace Stripe.BillingPortal
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

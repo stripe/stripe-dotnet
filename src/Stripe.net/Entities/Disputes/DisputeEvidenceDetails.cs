@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class DisputeEvidenceDetails : StripeEntity<DisputeEvidenceDetails>
     {
@@ -14,15 +17,25 @@ namespace Stripe
         /// </summary>
         [JsonProperty("due_by")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("due_by")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? DueBy { get; set; }
 
         [JsonProperty("enhanced_eligibility")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enhanced_eligibility")]
+#endif
         public DisputeEvidenceDetailsEnhancedEligibility EnhancedEligibility { get; set; }
 
         /// <summary>
         /// Whether evidence has been staged for this dispute.
         /// </summary>
         [JsonProperty("has_evidence")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("has_evidence")]
+#endif
         public bool HasEvidence { get; set; }
 
         /// <summary>
@@ -31,6 +44,9 @@ namespace Stripe
         /// the latest evidence is <em>not</em> guaranteed.
         /// </summary>
         [JsonProperty("past_due")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("past_due")]
+#endif
         public bool PastDue { get; set; }
 
         /// <summary>
@@ -38,6 +54,9 @@ namespace Stripe
         /// once.
         /// </summary>
         [JsonProperty("submission_count")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("submission_count")]
+#endif
         public long SubmissionCount { get; set; }
     }
 }

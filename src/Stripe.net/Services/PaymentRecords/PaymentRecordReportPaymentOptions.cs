@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentRecordReportPaymentOptions : BaseOptions, IHasMetadata
     {
@@ -12,12 +15,18 @@ namespace Stripe
         /// The amount you intend to collect for this payment.
         /// </summary>
         [JsonProperty("amount_requested")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_requested")]
+#endif
         public PaymentRecordAmountRequestedOptions AmountRequested { get; set; }
 
         /// <summary>
         /// Customer information for this payment.
         /// </summary>
         [JsonProperty("customer_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_details")]
+#endif
         public PaymentRecordCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
@@ -25,24 +34,36 @@ namespace Stripe
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("customer_presence")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_presence")]
+#endif
         public string CustomerPresence { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
         /// Information about the payment attempt failure.
         /// </summary>
         [JsonProperty("failed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failed")]
+#endif
         public PaymentRecordFailedOptions Failed { get; set; }
 
         /// <summary>
         /// Information about the payment attempt guarantee.
         /// </summary>
         [JsonProperty("guaranteed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("guaranteed")]
+#endif
         public PaymentRecordGuaranteedOptions Guaranteed { get; set; }
 
         /// <summary>
@@ -50,6 +71,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("initiated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("initiated_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? InitiatedAt { get; set; }
 
         /// <summary>
@@ -59,6 +84,9 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -66,12 +94,18 @@ namespace Stripe
         /// One of: <c>failed</c>, or <c>guaranteed</c>.
         /// </summary>
         [JsonProperty("outcome")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("outcome")]
+#endif
         public string Outcome { get; set; }
 
         /// <summary>
         /// Information about the Payment Method debited for this payment.
         /// </summary>
         [JsonProperty("payment_method_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_details")]
+#endif
         public PaymentRecordPaymentMethodDetailsOptions PaymentMethodDetails { get; set; }
 
         /// <summary>
@@ -79,12 +113,18 @@ namespace Stripe
         /// or a payment processor ID.
         /// </summary>
         [JsonProperty("payment_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_reference")]
+#endif
         public string PaymentReference { get; set; }
 
         /// <summary>
         /// Shipping information for this payment.
         /// </summary>
         [JsonProperty("shipping_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping_details")]
+#endif
         public PaymentRecordShippingDetailsOptions ShippingDetails { get; set; }
     }
 }
