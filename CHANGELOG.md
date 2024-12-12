@@ -1,5 +1,13 @@
 # Changelog
 
+## 47.2.0-beta.3 - 2024-12-12
+* [#3035](https://github.com/stripe/stripe-dotnet/pull/3035) Update generated code for beta
+  * Add support for `AllowRedisplay` on `Card` and `Source`
+  * Remove support for `AmountRefunded` on `PaymentRecord`
+  * Add support for `Account` on `TerminalReaderActionCollectPaymentMethod`, `TerminalReaderActionConfirmPaymentIntent`, `TerminalReaderActionProcessPaymentIntent`, and `TerminalReaderActionRefundPayment`
+* [#3033](https://github.com/stripe/stripe-dotnet/pull/3033) System.Text.Json Serialization Support in .NET SDK Objects
+  - Add System.Text.Json support for serializing Stripe.net entities and objects for applications running on .NET 6 and above. Now you can pass a Stripe.net object or collection of objects to the System.Text.Json serializer and it will produce the correct JSON string.
+
 ## 47.2.0-beta.2 - 2024-12-05
 * [#3032](https://github.com/stripe/stripe-dotnet/pull/3032) Update generated code for beta
   * Add support for `AutomaticIndirectTax` on `AccountCapabilitiesOptions` and `AccountCapabilities`
