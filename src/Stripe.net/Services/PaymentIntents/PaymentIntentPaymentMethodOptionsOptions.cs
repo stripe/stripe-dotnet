@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsOptions : INestedOptions
     {
@@ -10,6 +13,9 @@ namespace Stripe
         /// ACSS Debit payment method options.
         /// </summary>
         [JsonProperty("acss_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("acss_debit")]
+#endif
         public PaymentIntentPaymentMethodOptionsAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
@@ -17,6 +23,9 @@ namespace Stripe
         /// Affirm payment method options.
         /// </summary>
         [JsonProperty("affirm")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("affirm")]
+#endif
         public PaymentIntentPaymentMethodOptionsAffirmOptions Affirm { get; set; }
 
         /// <summary>
@@ -24,6 +33,9 @@ namespace Stripe
         /// about the Afterpay Clearpay payment method options.
         /// </summary>
         [JsonProperty("afterpay_clearpay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("afterpay_clearpay")]
+#endif
         public PaymentIntentPaymentMethodOptionsAfterpayClearpayOptions AfterpayClearpay { get; set; }
 
         /// <summary>
@@ -31,6 +43,9 @@ namespace Stripe
         /// Alipay payment method options.
         /// </summary>
         [JsonProperty("alipay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alipay")]
+#endif
         public PaymentIntentPaymentMethodOptionsAlipayOptions Alipay { get; set; }
 
         /// <summary>
@@ -38,6 +53,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("alma")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alma")]
+#endif
         public PaymentIntentPaymentMethodOptionsAlmaOptions Alma { get; set; }
 
         /// <summary>
@@ -45,6 +63,9 @@ namespace Stripe
         /// Amazon Pay payment method options.
         /// </summary>
         [JsonProperty("amazon_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amazon_pay")]
+#endif
         public PaymentIntentPaymentMethodOptionsAmazonPayOptions AmazonPay { get; set; }
 
         /// <summary>
@@ -52,6 +73,9 @@ namespace Stripe
         /// the AU BECS Direct Debit payment method options.
         /// </summary>
         [JsonProperty("au_becs_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("au_becs_debit")]
+#endif
         public PaymentIntentPaymentMethodOptionsAuBecsDebitOptions AuBecsDebit { get; set; }
 
         /// <summary>
@@ -59,6 +83,9 @@ namespace Stripe
         /// BACS Debit payment method options.
         /// </summary>
         [JsonProperty("bacs_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bacs_debit")]
+#endif
         public PaymentIntentPaymentMethodOptionsBacsDebitOptions BacsDebit { get; set; }
 
         /// <summary>
@@ -66,6 +93,9 @@ namespace Stripe
         /// Bancontact payment method options.
         /// </summary>
         [JsonProperty("bancontact")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bancontact")]
+#endif
         public PaymentIntentPaymentMethodOptionsBancontactOptions Bancontact { get; set; }
 
         /// <summary>
@@ -73,6 +103,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("blik")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("blik")]
+#endif
         public PaymentIntentPaymentMethodOptionsBlikOptions Blik { get; set; }
 
         /// <summary>
@@ -80,12 +113,18 @@ namespace Stripe
         /// Boleto payment method options.
         /// </summary>
         [JsonProperty("boleto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("boleto")]
+#endif
         public PaymentIntentPaymentMethodOptionsBoletoOptions Boleto { get; set; }
 
         /// <summary>
         /// Configuration for any card payments attempted on this PaymentIntent.
         /// </summary>
         [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
         public PaymentIntentPaymentMethodOptionsCardOptions Card { get; set; }
 
         /// <summary>
@@ -93,6 +132,9 @@ namespace Stripe
         /// Card Present payment method options.
         /// </summary>
         [JsonProperty("card_present")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_present")]
+#endif
         public PaymentIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
@@ -100,6 +142,9 @@ namespace Stripe
         /// App Pay payment method options.
         /// </summary>
         [JsonProperty("cashapp")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cashapp")]
+#endif
         public PaymentIntentPaymentMethodOptionsCashappOptions Cashapp { get; set; }
 
         /// <summary>
@@ -107,6 +152,9 @@ namespace Stripe
         /// the customer balance payment method options.
         /// </summary>
         [JsonProperty("customer_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_balance")]
+#endif
         public PaymentIntentPaymentMethodOptionsCustomerBalanceOptions CustomerBalance { get; set; }
 
         /// <summary>
@@ -114,6 +162,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("eps")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("eps")]
+#endif
         public PaymentIntentPaymentMethodOptionsEpsOptions Eps { get; set; }
 
         /// <summary>
@@ -121,6 +172,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("fpx")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fpx")]
+#endif
         public PaymentIntentPaymentMethodOptionsFpxOptions Fpx { get; set; }
 
         /// <summary>
@@ -128,6 +182,9 @@ namespace Stripe
         /// Giropay payment method options.
         /// </summary>
         [JsonProperty("giropay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("giropay")]
+#endif
         public PaymentIntentPaymentMethodOptionsGiropayOptions Giropay { get; set; }
 
         /// <summary>
@@ -135,6 +192,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("gopay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("gopay")]
+#endif
         public PaymentIntentPaymentMethodOptionsGopayOptions Gopay { get; set; }
 
         /// <summary>
@@ -142,6 +202,9 @@ namespace Stripe
         /// Grabpay payment method options.
         /// </summary>
         [JsonProperty("grabpay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("grabpay")]
+#endif
         public PaymentIntentPaymentMethodOptionsGrabpayOptions Grabpay { get; set; }
 
         /// <summary>
@@ -149,6 +212,9 @@ namespace Stripe
         /// the Indonesia Bank Transfer payment method options.
         /// </summary>
         [JsonProperty("id_bank_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id_bank_transfer")]
+#endif
         public PaymentIntentPaymentMethodOptionsIdBankTransferOptions IdBankTransfer { get; set; }
 
         /// <summary>
@@ -156,6 +222,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("ideal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ideal")]
+#endif
         public PaymentIntentPaymentMethodOptionsIdealOptions Ideal { get; set; }
 
         /// <summary>
@@ -163,6 +232,9 @@ namespace Stripe
         /// the Card Present payment method options.
         /// </summary>
         [JsonProperty("interac_present")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interac_present")]
+#endif
         public PaymentIntentPaymentMethodOptionsInteracPresentOptions InteracPresent { get; set; }
 
         /// <summary>
@@ -170,6 +242,9 @@ namespace Stripe
         /// Kakao Pay payment method options.
         /// </summary>
         [JsonProperty("kakao_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kakao_pay")]
+#endif
         public PaymentIntentPaymentMethodOptionsKakaoPayOptions KakaoPay { get; set; }
 
         /// <summary>
@@ -177,6 +252,9 @@ namespace Stripe
         /// Klarna payment method options.
         /// </summary>
         [JsonProperty("klarna")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("klarna")]
+#endif
         public PaymentIntentPaymentMethodOptionsKlarnaOptions Klarna { get; set; }
 
         /// <summary>
@@ -184,6 +262,9 @@ namespace Stripe
         /// Konbini payment method options.
         /// </summary>
         [JsonProperty("konbini")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("konbini")]
+#endif
         public PaymentIntentPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
 
         /// <summary>
@@ -191,6 +272,9 @@ namespace Stripe
         /// Card payment method options.
         /// </summary>
         [JsonProperty("kr_card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kr_card")]
+#endif
         public PaymentIntentPaymentMethodOptionsKrCardOptions KrCard { get; set; }
 
         /// <summary>
@@ -198,6 +282,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("link")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("link")]
+#endif
         public PaymentIntentPaymentMethodOptionsLinkOptions Link { get; set; }
 
         /// <summary>
@@ -205,6 +292,9 @@ namespace Stripe
         /// WAY payment method options.
         /// </summary>
         [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
         public PaymentIntentPaymentMethodOptionsMbWayOptions MbWay { get; set; }
 
         /// <summary>
@@ -212,6 +302,9 @@ namespace Stripe
         /// MobilePay payment method options.
         /// </summary>
         [JsonProperty("mobilepay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mobilepay")]
+#endif
         public PaymentIntentPaymentMethodOptionsMobilepayOptions Mobilepay { get; set; }
 
         /// <summary>
@@ -219,6 +312,9 @@ namespace Stripe
         /// Multibanco payment method options.
         /// </summary>
         [JsonProperty("multibanco")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("multibanco")]
+#endif
         public PaymentIntentPaymentMethodOptionsMultibancoOptions Multibanco { get; set; }
 
         /// <summary>
@@ -226,6 +322,9 @@ namespace Stripe
         /// Naver Pay payment method options.
         /// </summary>
         [JsonProperty("naver_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("naver_pay")]
+#endif
         public PaymentIntentPaymentMethodOptionsNaverPayOptions NaverPay { get; set; }
 
         /// <summary>
@@ -233,6 +332,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("oxxo")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("oxxo")]
+#endif
         public PaymentIntentPaymentMethodOptionsOxxoOptions Oxxo { get; set; }
 
         /// <summary>
@@ -240,6 +342,9 @@ namespace Stripe
         /// Przelewy24 payment method options.
         /// </summary>
         [JsonProperty("p24")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("p24")]
+#endif
         public PaymentIntentPaymentMethodOptionsP24Options P24 { get; set; }
 
         /// <summary>
@@ -247,6 +352,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("payco")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payco")]
+#endif
         public PaymentIntentPaymentMethodOptionsPaycoOptions Payco { get; set; }
 
         /// <summary>
@@ -254,6 +362,9 @@ namespace Stripe
         /// PayNow payment method options.
         /// </summary>
         [JsonProperty("paynow")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paynow")]
+#endif
         public PaymentIntentPaymentMethodOptionsPaynowOptions Paynow { get; set; }
 
         /// <summary>
@@ -261,6 +372,9 @@ namespace Stripe
         /// PayPal payment method options.
         /// </summary>
         [JsonProperty("paypal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypal")]
+#endif
         public PaymentIntentPaymentMethodOptionsPaypalOptions Paypal { get; set; }
 
         /// <summary>
@@ -268,6 +382,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("payto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payto")]
+#endif
         public PaymentIntentPaymentMethodOptionsPaytoOptions Payto { get; set; }
 
         /// <summary>
@@ -275,6 +392,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("pix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pix")]
+#endif
         public PaymentIntentPaymentMethodOptionsPixOptions Pix { get; set; }
 
         /// <summary>
@@ -282,6 +402,9 @@ namespace Stripe
         /// PromptPay payment method options.
         /// </summary>
         [JsonProperty("promptpay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("promptpay")]
+#endif
         public PaymentIntentPaymentMethodOptionsPromptpayOptions Promptpay { get; set; }
 
         /// <summary>
@@ -289,6 +412,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("qris")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("qris")]
+#endif
         public PaymentIntentPaymentMethodOptionsQrisOptions Qris { get; set; }
 
         /// <summary>
@@ -296,6 +422,9 @@ namespace Stripe
         /// Rechnung payment method options.
         /// </summary>
         [JsonProperty("rechnung")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("rechnung")]
+#endif
         public PaymentIntentPaymentMethodOptionsRechnungOptions Rechnung { get; set; }
 
         /// <summary>
@@ -303,6 +432,9 @@ namespace Stripe
         /// Revolut Pay payment method options.
         /// </summary>
         [JsonProperty("revolut_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("revolut_pay")]
+#endif
         public PaymentIntentPaymentMethodOptionsRevolutPayOptions RevolutPay { get; set; }
 
         /// <summary>
@@ -310,6 +442,9 @@ namespace Stripe
         /// Samsung Pay payment method options.
         /// </summary>
         [JsonProperty("samsung_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("samsung_pay")]
+#endif
         public PaymentIntentPaymentMethodOptionsSamsungPayOptions SamsungPay { get; set; }
 
         /// <summary>
@@ -317,6 +452,9 @@ namespace Stripe
         /// SEPA Debit payment method options.
         /// </summary>
         [JsonProperty("sepa_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sepa_debit")]
+#endif
         public PaymentIntentPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
@@ -324,6 +462,9 @@ namespace Stripe
         /// ShopeePay payment method options.
         /// </summary>
         [JsonProperty("shopeepay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shopeepay")]
+#endif
         public PaymentIntentPaymentMethodOptionsShopeepayOptions Shopeepay { get; set; }
 
         /// <summary>
@@ -331,6 +472,9 @@ namespace Stripe
         /// SOFORT payment method options.
         /// </summary>
         [JsonProperty("sofort")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sofort")]
+#endif
         public PaymentIntentPaymentMethodOptionsSofortOptions Sofort { get; set; }
 
         /// <summary>
@@ -338,6 +482,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("swish")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("swish")]
+#endif
         public PaymentIntentPaymentMethodOptionsSwishOptions Swish { get; set; }
 
         /// <summary>
@@ -345,6 +492,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("twint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("twint")]
+#endif
         public PaymentIntentPaymentMethodOptionsTwintOptions Twint { get; set; }
 
         /// <summary>
@@ -352,6 +502,9 @@ namespace Stripe
         /// the US bank account payment method options.
         /// </summary>
         [JsonProperty("us_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("us_bank_account")]
+#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountOptions UsBankAccount { get; set; }
 
         /// <summary>
@@ -359,6 +512,9 @@ namespace Stripe
         /// WeChat Pay payment method options.
         /// </summary>
         [JsonProperty("wechat_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wechat_pay")]
+#endif
         public PaymentIntentPaymentMethodOptionsWechatPayOptions WechatPay { get; set; }
 
         /// <summary>
@@ -366,6 +522,9 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("zip")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("zip")]
+#endif
         public PaymentIntentPaymentMethodOptionsZipOptions Zip { get; set; }
     }
 }

@@ -5,7 +5,13 @@ namespace Stripe
     using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class AccountSettingsInvoices : StripeEntity<AccountSettingsInvoices>
     {
         #region Expandable DefaultAccountTaxIds
@@ -16,6 +22,9 @@ namespace Stripe
         /// IDs get added when an invoice is finalized.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public List<string> DefaultAccountTaxIdIds
         {
             get => this.InternalDefaultAccountTaxIds?.Select((x) => x.Id).ToList();
@@ -30,6 +39,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public List<TaxId> DefaultAccountTaxIds
         {
             get => this.InternalDefaultAccountTaxIds?.Select((x) => x.ExpandedObject).ToList();
@@ -37,6 +49,9 @@ namespace Stripe
         }
 
         [JsonProperty("default_account_tax_ids", ItemConverterType = typeof(ExpandableFieldConverter<TaxId>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_account_tax_ids")]
+#endif
         internal List<ExpandableField<TaxId>> InternalDefaultAccountTaxIds { get; set; }
         #endregion
     }

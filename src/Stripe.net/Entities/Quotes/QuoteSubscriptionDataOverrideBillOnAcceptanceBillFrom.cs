@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteSubscriptionDataOverrideBillOnAcceptanceBillFrom : StripeEntity<QuoteSubscriptionDataOverrideBillOnAcceptanceBillFrom>
     {
@@ -12,12 +15,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("computed")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("computed")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? Computed { get; set; }
 
         /// <summary>
         /// The timestamp the given line starts at.
         /// </summary>
         [JsonProperty("line_starts_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_starts_at")]
+#endif
         public QuoteSubscriptionDataOverrideBillOnAcceptanceBillFromLineStartsAt LineStartsAt { get; set; }
 
         /// <summary>
@@ -25,6 +35,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("timestamp")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? Timestamp { get; set; }
 
         /// <summary>
@@ -33,6 +47,9 @@ namespace Stripe
         /// <c>quote_acceptance_date</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class DisputeEvidenceDuplicateOptions : INestedOptions
     {
@@ -10,6 +13,9 @@ namespace Stripe.Issuing
         /// Additional documentation supporting the dispute.
         /// </summary>
         [JsonProperty("additional_documentation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("additional_documentation")]
+#endif
         public string AdditionalDocumentation { get; set; }
 
         /// <summary>
@@ -17,6 +23,9 @@ namespace Stripe.Issuing
         /// the card statement showing that the product had already been paid for.
         /// </summary>
         [JsonProperty("card_statement")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_statement")]
+#endif
         public string CardStatement { get; set; }
 
         /// <summary>
@@ -24,6 +33,9 @@ namespace Stripe.Issuing
         /// the receipt showing that the product had been paid for in cash.
         /// </summary>
         [JsonProperty("cash_receipt")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cash_receipt")]
+#endif
         public string CashReceipt { get; set; }
 
         /// <summary>
@@ -31,12 +43,18 @@ namespace Stripe.Issuing
         /// the front and back of the check that was used to pay for the product.
         /// </summary>
         [JsonProperty("check_image")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("check_image")]
+#endif
         public string CheckImage { get; set; }
 
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
         [JsonProperty("explanation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("explanation")]
+#endif
         public string Explanation { get; set; }
 
         /// <summary>
@@ -44,6 +62,9 @@ namespace Stripe.Issuing
         /// or more transactions that are copies of each other, this is original undisputed one.
         /// </summary>
         [JsonProperty("original_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("original_transaction")]
+#endif
         public string OriginalTransaction { get; set; }
     }
 }

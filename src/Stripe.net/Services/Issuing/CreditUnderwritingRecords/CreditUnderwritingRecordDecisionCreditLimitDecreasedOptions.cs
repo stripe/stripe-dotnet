@@ -3,6 +3,9 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditUnderwritingRecordDecisionCreditLimitDecreasedOptions : INestedOptions
     {
@@ -11,18 +14,27 @@ namespace Stripe.Issuing
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
         /// The currency of the credit approved, will default to the Account's Issuing currency.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Details about the <c>reasons.other</c> when present.
         /// </summary>
         [JsonProperty("reason_other_explanation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason_other_explanation")]
+#endif
         public string ReasonOtherExplanation { get; set; }
 
         /// <summary>
@@ -67,6 +79,9 @@ namespace Stripe.Issuing
         /// <c>unprofitable</c>, or <c>unsupportable_business_type</c>.
         /// </summary>
         [JsonProperty("reasons")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reasons")]
+#endif
         public List<string> Reasons { get; set; }
     }
 }

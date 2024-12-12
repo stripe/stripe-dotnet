@@ -2,10 +2,16 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsCard : StripeEntity<QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsCard>
     {
         [JsonProperty("installments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("installments")]
+#endif
         public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsCardInstallments Installments { get; set; }
 
         /// <summary>
@@ -20,6 +26,9 @@ namespace Stripe
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_three_d_secure")]
+#endif
         public string RequestThreeDSecure { get; set; }
     }
 }

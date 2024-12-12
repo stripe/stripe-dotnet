@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// method.
         /// </summary>
         [JsonProperty("filters")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("filters")]
+#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions Filters { get; set; }
 
         /// <summary>
@@ -21,6 +27,9 @@ namespace Stripe
         /// <c>transactions</c>.
         /// </summary>
         [JsonProperty("permissions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("permissions")]
+#endif
         public List<string> Permissions { get; set; }
 
         /// <summary>
@@ -29,6 +38,9 @@ namespace Stripe
         /// <c>transactions</c>.
         /// </summary>
         [JsonProperty("prefetch")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("prefetch")]
+#endif
         public List<string> Prefetch { get; set; }
     }
 }

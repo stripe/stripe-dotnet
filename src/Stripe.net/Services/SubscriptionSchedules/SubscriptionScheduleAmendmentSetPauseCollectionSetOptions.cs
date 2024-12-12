@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionScheduleAmendmentSetPauseCollectionSetOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// One of: <c>keep_as_draft</c>, <c>mark_uncollectible</c>, or <c>void</c>.
         /// </summary>
         [JsonProperty("behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("behavior")]
+#endif
         public string Behavior { get; set; }
     }
 }

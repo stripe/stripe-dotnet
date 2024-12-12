@@ -2,6 +2,9 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class FormListOptions : ListOptions
     {
@@ -9,6 +12,9 @@ namespace Stripe.Tax
         /// The payee whose volume is represented on the tax form.
         /// </summary>
         [JsonProperty("payee")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payee")]
+#endif
         public FormPayeeOptions Payee { get; set; }
 
         /// <summary>
@@ -20,6 +26,9 @@ namespace Stripe.Tax
         /// <c>us_1099_k</c>, <c>us_1099_misc</c>, or <c>us_1099_nec</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

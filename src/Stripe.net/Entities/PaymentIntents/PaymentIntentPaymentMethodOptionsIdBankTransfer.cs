@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsIdBankTransfer : StripeEntity<PaymentIntentPaymentMethodOptionsIdBankTransfer>
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// from now till 2678400 seconds (31 days) from now.
         /// </summary>
         [JsonProperty("expires_after")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_after")]
+#endif
         public long? ExpiresAfter { get; set; }
 
         /// <summary>
@@ -20,6 +26,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -43,6 +53,9 @@ namespace Stripe
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
     }
 }

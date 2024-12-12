@@ -1,4 +1,4 @@
-namespace StripeTests
+namespace StripeTests.Wholesome
 {
     using System;
     using System.Collections.Generic;
@@ -7,6 +7,9 @@ namespace StripeTests
     using Newtonsoft.Json;
     using Stripe;
     using Xunit;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// This test checks that <see cref="Stripe.StripeEntity" /> subclasses that have a
@@ -24,6 +27,11 @@ namespace StripeTests
         public void Check()
         {
             List<string> results = new List<string>();
+            List<string> skipTheseClasses = new List<string>
+            {
+                // For some reason, Secret.Deleted is not nullable
+                "Stripe.Apps.Secret",
+            };
 
             // Get all StripeEntity subclasses
             var entityClasses = GetSubclassesOf(typeof(StripeEntity));
@@ -45,12 +53,23 @@ namespace StripeTests
                     }
 
                     // Check that NullValueHanding is set to Ignore
-                    if (attribute.NullValueHandling == NullValueHandling.Ignore)
+                    bool hasNullValueHandling = attribute.NullValueHandling == NullValueHandling.Ignore;
+#if NET6_0_OR_GREATER
+                    if (!skipTheseClasses.Contains(entityClass.FullName))
                     {
-                        continue;
+                        // This feature is implemented as part of JsonIgnore in STJ; make sure
+                        // we have the correct ignore w/ condition.
+                        if (!SystemTextJsonTestUtils.HasCorrectNullValueHandlingAttribute(property))
+                        {
+                            hasNullValueHandling = false;
+                        }
                     }
+#endif
 
-                    results.Add($"{entityClass.Name}.{property.Name}");
+                    if (!hasNullValueHandling)
+                    {
+                        results.Add($"{entityClass.Name}.{property.Name}");
+                    }
                 }
             }
 
@@ -67,7 +86,8 @@ namespace StripeTests
                 }
 
                 // Actually fail test
-                Assert.True(false, AssertionMessage);
+                var message = $"{AssertionMessage}\n{results.Count} affected properties: {string.Join(",", results)}";
+                Assert.True(false, message);
             }
         }
     }

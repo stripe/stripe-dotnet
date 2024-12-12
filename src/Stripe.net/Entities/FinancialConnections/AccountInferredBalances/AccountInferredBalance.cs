@@ -5,6 +5,9 @@ namespace Stripe.FinancialConnections
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A historical balance for the account on a particular day. It may be sourced from a
@@ -17,12 +20,18 @@ namespace Stripe.FinancialConnections
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -32,6 +41,10 @@ namespace Stripe.FinancialConnections
         /// </summary>
         [JsonProperty("as_of")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("as_of")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime AsOf { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -46,6 +59,9 @@ namespace Stripe.FinancialConnections
         /// holder. A negative amount indicates money owed by the account holder.
         /// </summary>
         [JsonProperty("current")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current")]
+#endif
         public Dictionary<string, long> Current { get; set; }
     }
 }

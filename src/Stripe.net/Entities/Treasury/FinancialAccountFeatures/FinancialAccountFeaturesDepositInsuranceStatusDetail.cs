@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class FinancialAccountFeaturesDepositInsuranceStatusDetail : StripeEntity<FinancialAccountFeaturesDepositInsuranceStatusDetail>
     {
@@ -14,6 +17,9 @@ namespace Stripe.Treasury
         /// <c>restricted_other</c>.
         /// </summary>
         [JsonProperty("code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("code")]
+#endif
         public string Code { get; set; }
 
         /// <summary>
@@ -21,6 +27,9 @@ namespace Stripe.Treasury
         /// One of: <c>contact_stripe</c>, <c>provide_information</c>, or <c>remove_restriction</c>.
         /// </summary>
         [JsonProperty("resolution")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("resolution")]
+#endif
         public string Resolution { get; set; }
 
         /// <summary>
@@ -28,6 +37,9 @@ namespace Stripe.Treasury
         /// One of: <c>inbound_flows</c>, or <c>outbound_flows</c>.
         /// </summary>
         [JsonProperty("restriction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("restriction")]
+#endif
         public string Restriction { get; set; }
     }
 }

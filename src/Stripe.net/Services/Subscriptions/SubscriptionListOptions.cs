@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionListOptions : ListOptionsWithCreated
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// Filter subscriptions by their automatic tax settings.
         /// </summary>
         [JsonProperty("automatic_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("automatic_tax")]
+#endif
         public SubscriptionAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("collection_method")]
+#endif
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -26,6 +35,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_end")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodEnd { get; set; }
 
         /// <summary>
@@ -34,24 +47,37 @@ namespace Stripe
         /// </summary>
         [JsonProperty("current_period_start")]
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_start")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodStart { get; set; }
 
         /// <summary>
         /// The ID of the customer whose subscriptions will be retrieved.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// The ID of the plan whose subscriptions will be retrieved.
         /// </summary>
         [JsonProperty("plan")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("plan")]
+#endif
         public string Plan { get; set; }
 
         /// <summary>
         /// Filter for subscriptions that contain this recurring price ID.
         /// </summary>
         [JsonProperty("price")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price")]
+#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -67,6 +93,9 @@ namespace Stripe
         /// <c>unpaid</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -75,6 +104,9 @@ namespace Stripe
         /// not set.
         /// </summary>
         [JsonProperty("test_clock")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("test_clock")]
+#endif
         public string TestClock { get; set; }
     }
 }

@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuotePreviewInvoiceSubscriptionDetails : StripeEntity<QuotePreviewInvoiceSubscriptionDetails>, IHasMetadata
     {
@@ -13,6 +16,9 @@ namespace Stripe
         /// populated only for invoices created on or after June 29, 2023.</em>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -22,6 +28,9 @@ namespace Stripe
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pause_collection")]
+#endif
         public QuotePreviewInvoiceSubscriptionDetailsPauseCollection PauseCollection { get; set; }
     }
 }

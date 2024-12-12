@@ -3,6 +3,9 @@ namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionFilters : StripeEntity<SessionFilters>
     {
@@ -14,18 +17,27 @@ namespace Stripe.FinancialConnections
         /// <c>savings</c>.
         /// </summary>
         [JsonProperty("account_subcategories")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_subcategories")]
+#endif
         public List<string> AccountSubcategories { get; set; }
 
         /// <summary>
         /// List of countries from which to filter accounts.
         /// </summary>
         [JsonProperty("countries")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("countries")]
+#endif
         public List<string> Countries { get; set; }
 
         /// <summary>
         /// Stripe ID of the institution with which the customer should be directed to log in.
         /// </summary>
         [JsonProperty("institution")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("institution")]
+#endif
         public string Institution { get; set; }
     }
 }

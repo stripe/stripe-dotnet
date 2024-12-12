@@ -4,19 +4,31 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentDetailsSubscription : StripeEntity<PaymentIntentPaymentDetailsSubscription>
     {
         [JsonProperty("affiliate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("affiliate")]
+#endif
         public PaymentIntentPaymentDetailsSubscriptionAffiliate Affiliate { get; set; }
 
         /// <summary>
         /// Info whether the subscription will be auto renewed upon expiry.
         /// </summary>
         [JsonProperty("auto_renewal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("auto_renewal")]
+#endif
         public bool AutoRenewal { get; set; }
 
         [JsonProperty("billing_interval")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_interval")]
+#endif
         public PaymentIntentPaymentDetailsSubscriptionBillingInterval BillingInterval { get; set; }
 
         /// <summary>
@@ -24,12 +36,19 @@ namespace Stripe
         /// </summary>
         [JsonProperty("ends_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ends_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime EndsAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Name of the product on subscription. e.g. Apple Music Subscription.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -37,6 +56,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("starts_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("starts_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime StartsAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

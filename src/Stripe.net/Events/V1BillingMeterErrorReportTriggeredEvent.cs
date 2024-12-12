@@ -3,6 +3,9 @@ namespace Stripe.Events
 {
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// This event occurs when there are invalid async usage events for a given meter.
@@ -13,6 +16,9 @@ namespace Stripe.Events
         /// Data for the v1.billing.meter.error_report_triggered event.
         /// </summary>
         [JsonProperty("data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("data")]
+#endif
 
         public V1BillingMeterErrorReportTriggeredEventData Data { get; set; }
 
@@ -20,6 +26,9 @@ namespace Stripe.Events
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("related_object")]
+#endif
 
         public V2.EventRelatedObject RelatedObject { get; set; }
 

@@ -3,6 +3,9 @@ namespace Stripe.Tax
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TransactionCreateReversalOptions : BaseOptions, IHasMetadata
     {
@@ -13,12 +16,18 @@ namespace Stripe.Tax
         /// including taxes.
         /// </summary>
         [JsonProperty("flat_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flat_amount")]
+#endif
         public long? FlatAmount { get; set; }
 
         /// <summary>
         /// The line item amounts to reverse.
         /// </summary>
         [JsonProperty("line_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_items")]
+#endif
         public List<TransactionLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -28,6 +37,9 @@ namespace Stripe.Tax
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -36,12 +48,18 @@ namespace Stripe.Tax
         /// One of: <c>full</c>, or <c>partial</c>.
         /// </summary>
         [JsonProperty("mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mode")]
+#endif
         public string Mode { get; set; }
 
         /// <summary>
         /// The ID of the Transaction to partially or fully reverse.
         /// </summary>
         [JsonProperty("original_transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("original_transaction")]
+#endif
         public string OriginalTransaction { get; set; }
 
         /// <summary>
@@ -50,12 +68,18 @@ namespace Stripe.Tax
         /// transaction in exported <a href="https://stripe.com/docs/tax/reports">tax reports</a>.
         /// </summary>
         [JsonProperty("reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference")]
+#endif
         public string Reference { get; set; }
 
         /// <summary>
         /// The shipping cost to reverse.
         /// </summary>
         [JsonProperty("shipping_cost")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping_cost")]
+#endif
         public TransactionShippingCostOptions ShippingCost { get; set; }
     }
 }

@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ChargeUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// only be updated if there is no existing associated customer with this charge.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -20,9 +26,15 @@ namespace Stripe
         /// the charge(s) that they are describing.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         [JsonProperty("exchange_rate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exchange_rate")]
+#endif
         public decimal? ExchangeRate { get; set; }
 
         /// <summary>
@@ -33,6 +45,9 @@ namespace Stripe
         /// send to improve our fraud detection algorithms.
         /// </summary>
         [JsonProperty("fraud_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fraud_details")]
+#endif
         public ChargeFraudDetailsOptions FraudDetails { get; set; }
 
         /// <summary>
@@ -42,12 +57,18 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Provides industry-specific information about the charge.
         /// </summary>
         [JsonProperty("payment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_details")]
+#endif
         public ChargePaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
@@ -55,12 +76,18 @@ namespace Stripe
         /// field is updated, then a new email receipt will be sent to the updated address.
         /// </summary>
         [JsonProperty("receipt_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("receipt_email")]
+#endif
         public string ReceiptEmail { get; set; }
 
         /// <summary>
         /// Shipping information for the charge. Helps prevent fraud on charges for physical goods.
         /// </summary>
         [JsonProperty("shipping")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping")]
+#endif
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
@@ -70,6 +97,9 @@ namespace Stripe
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_group")]
+#endif
         public string TransferGroup { get; set; }
     }
 }

@@ -1,4 +1,4 @@
-namespace StripeTests
+namespace StripeTests.Wholesome
 {
     using System;
     using System.Collections.Generic;
@@ -8,8 +8,8 @@ namespace StripeTests
     using Xunit;
 
     /// <summary>
-    /// This wholesome test ensures that all Stripe entity and options classes implement the
-    /// <c>IHasX</c> interfaces when they have matching properties.
+    /// This wholesome test ensures that all Stripe entity classes inherit from the
+    /// generic StripeEntity&lt;T&gt; with the type parameter set to the entity class.
     /// </summary>
     public class DontForgetEntityType : WholesomeTest
     {

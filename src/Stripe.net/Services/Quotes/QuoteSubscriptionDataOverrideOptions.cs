@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class QuoteSubscriptionDataOverrideOptions : INestedOptions
     {
@@ -10,12 +13,18 @@ namespace Stripe
         /// Schedule.
         /// </summary>
         [JsonProperty("applies_to")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("applies_to")]
+#endif
         public QuoteSubscriptionDataOverrideAppliesToOptions AppliesTo { get; set; }
 
         /// <summary>
         /// Describes the period to bill for upon accepting the quote.
         /// </summary>
         [JsonProperty("bill_on_acceptance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bill_on_acceptance")]
+#endif
         public QuoteSubscriptionDataOverrideBillOnAcceptanceOptions BillOnAcceptance { get; set; }
 
         /// <summary>
@@ -27,6 +36,9 @@ namespace Stripe
         /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
         /// </summary>
         [JsonProperty("billing_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_behavior")]
+#endif
         public string BillingBehavior { get; set; }
 
         /// <summary>
@@ -34,6 +46,9 @@ namespace Stripe
         /// <c>applies_to.type=new_reference</c>.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -42,6 +57,9 @@ namespace Stripe
         /// and certain local payment methods UIs.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -49,6 +67,9 @@ namespace Stripe
         /// One of: <c>cancel</c>, or <c>release</c>.
         /// </summary>
         [JsonProperty("end_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("end_behavior")]
+#endif
         public string EndBehavior { get; set; }
 
         /// <summary>
@@ -69,6 +90,9 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_behavior")]
+#endif
         public string ProrationBehavior { get; set; }
     }
 }

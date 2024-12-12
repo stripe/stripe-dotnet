@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentConfirmOptions : BaseOptions
     {
@@ -15,12 +18,18 @@ namespace Stripe
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
         /// Automations to be run during the PaymentIntent lifecycle.
         /// </summary>
         [JsonProperty("async_workflows")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("async_workflows")]
+#endif
         public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
 
         /// <summary>
@@ -28,9 +37,15 @@ namespace Stripe
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
         public string CaptureMethod { get; set; }
 
         [JsonProperty("client_secret")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("client_secret")]
+#endif
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -41,6 +56,9 @@ namespace Stripe
         /// precedence.
         /// </summary>
         [JsonProperty("confirmation_token")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("confirmation_token")]
+#endif
         public string ConfirmationToken { get; set; }
 
         /// <summary>
@@ -51,15 +69,24 @@ namespace Stripe
         /// without authentication</a>.
         /// </summary>
         [JsonProperty("error_on_requires_action")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("error_on_requires_action")]
+#endif
         public bool? ErrorOnRequiresAction { get; set; }
 
         /// <summary>
         /// ID of the mandate that's used for this payment.
         /// </summary>
         [JsonProperty("mandate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate")]
+#endif
         public string Mandate { get; set; }
 
         [JsonProperty("mandate_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_data")]
+#endif
         public PaymentIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>
@@ -70,12 +97,18 @@ namespace Stripe
         /// later</a>.
         /// </summary>
         [JsonProperty("off_session")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("off_session")]
+#endif
         public bool? OffSession { get; set; }
 
         /// <summary>
         /// Provides industry-specific information about the charge.
         /// </summary>
         [JsonProperty("payment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_details")]
+#endif
         public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
@@ -84,6 +117,9 @@ namespace Stripe
         /// Source</a> object) to attach to this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method")]
+#endif
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -93,12 +129,18 @@ namespace Stripe
         /// property on the PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_data")]
+#endif
         public PaymentIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment method-specific configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_options")]
+#endif
         public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -107,6 +149,9 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_types")]
+#endif
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -114,6 +159,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/radar/radar-session">Radar Sessions</a>.
         /// </summary>
         [JsonProperty("radar_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("radar_options")]
+#endif
         public PaymentIntentRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
@@ -123,6 +171,9 @@ namespace Stripe
         /// settings</a>.
         /// </summary>
         [JsonProperty("receipt_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("receipt_email")]
+#endif
         public string ReceiptEmail { get; set; }
 
         /// <summary>
@@ -132,6 +183,9 @@ namespace Stripe
         /// only used for cards and other redirect-based payment methods.
         /// </summary>
         [JsonProperty("return_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("return_url")]
+#endif
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -160,12 +214,18 @@ namespace Stripe
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
         [JsonProperty("shipping")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping")]
+#endif
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
@@ -173,6 +233,9 @@ namespace Stripe
         /// client-side SDKs to handle the next actions.
         /// </summary>
         [JsonProperty("use_stripe_sdk")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("use_stripe_sdk")]
+#endif
         public bool? UseStripeSdk { get; set; }
     }
 }

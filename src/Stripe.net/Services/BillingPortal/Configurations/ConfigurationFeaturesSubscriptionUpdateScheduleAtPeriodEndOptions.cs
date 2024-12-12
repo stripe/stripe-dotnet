@@ -3,6 +3,9 @@ namespace Stripe.BillingPortal
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEndOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe.BillingPortal
         /// of the current period.
         /// </summary>
         [JsonProperty("conditions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("conditions")]
+#endif
         public List<ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEndConditionOptions> Conditions { get; set; }
     }
 }

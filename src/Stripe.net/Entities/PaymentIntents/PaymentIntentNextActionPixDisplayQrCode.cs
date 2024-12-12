@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentNextActionPixDisplayQrCode : StripeEntity<PaymentIntentNextActionPixDisplayQrCode>
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// library.
         /// </summary>
         [JsonProperty("data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("data")]
+#endif
         public string Data { get; set; }
 
         /// <summary>
@@ -19,6 +25,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -26,18 +36,27 @@ namespace Stripe
         /// code.
         /// </summary>
         [JsonProperty("hosted_instructions_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hosted_instructions_url")]
+#endif
         public string HostedInstructionsUrl { get; set; }
 
         /// <summary>
         /// The image_url_png string used to render png QR code.
         /// </summary>
         [JsonProperty("image_url_png")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("image_url_png")]
+#endif
         public string ImageUrlPng { get; set; }
 
         /// <summary>
         /// The image_url_svg string used to render svg QR code.
         /// </summary>
         [JsonProperty("image_url_svg")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("image_url_svg")]
+#endif
         public string ImageUrlSvg { get; set; }
     }
 }

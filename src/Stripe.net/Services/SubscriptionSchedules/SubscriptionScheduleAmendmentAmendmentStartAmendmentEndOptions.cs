@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionScheduleAmendmentAmendmentStartAmendmentEndOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// current amendment in the array.
         /// </summary>
         [JsonProperty("index")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("index")]
+#endif
         public long? Index { get; set; }
     }
 }

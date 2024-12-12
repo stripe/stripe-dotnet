@@ -4,7 +4,13 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class DisputeEvidenceMerchandiseNotAsDescribed : StripeEntity<DisputeEvidenceMerchandiseNotAsDescribed>
     {
         #region Expandable AdditionalDocumentation
@@ -15,6 +21,9 @@ namespace Stripe.Issuing
         /// Additional documentation supporting the dispute.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string AdditionalDocumentationId
         {
             get => this.InternalAdditionalDocumentation?.Id;
@@ -29,6 +38,9 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public File AdditionalDocumentation
         {
             get => this.InternalAdditionalDocumentation?.ExpandedObject;
@@ -37,6 +49,10 @@ namespace Stripe.Issuing
 
         [JsonProperty("additional_documentation")]
         [JsonConverter(typeof(ExpandableFieldConverter<File>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("additional_documentation")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<File>))]
+#endif
         internal ExpandableField<File> InternalAdditionalDocumentation { get; set; }
         #endregion
 
@@ -44,6 +60,9 @@ namespace Stripe.Issuing
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
         [JsonProperty("explanation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("explanation")]
+#endif
         public string Explanation { get; set; }
 
         /// <summary>
@@ -51,12 +70,19 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("received_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("received_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? ReceivedAt { get; set; }
 
         /// <summary>
         /// Description of the cardholder's attempt to return the product.
         /// </summary>
         [JsonProperty("return_description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("return_description")]
+#endif
         public string ReturnDescription { get; set; }
 
         /// <summary>
@@ -64,6 +90,9 @@ namespace Stripe.Issuing
         /// One of: <c>merchant_rejected</c>, or <c>successful</c>.
         /// </summary>
         [JsonProperty("return_status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("return_status")]
+#endif
         public string ReturnStatus { get; set; }
 
         /// <summary>
@@ -71,6 +100,10 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("returned_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("returned_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? ReturnedAt { get; set; }
     }
 }

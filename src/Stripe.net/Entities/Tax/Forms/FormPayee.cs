@@ -3,7 +3,13 @@ namespace Stripe.Tax
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class FormPayee : StripeEntity<FormPayee>
     {
         #region Expandable Account
@@ -13,6 +19,9 @@ namespace Stripe.Tax
         /// The ID of the payee's Stripe account.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string AccountId
         {
             get => this.InternalAccount?.Id;
@@ -26,6 +35,9 @@ namespace Stripe.Tax
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Account Account
         {
             get => this.InternalAccount?.ExpandedObject;
@@ -34,6 +46,10 @@ namespace Stripe.Tax
 
         [JsonProperty("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
+#endif
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
@@ -41,6 +57,9 @@ namespace Stripe.Tax
         /// The external reference to this payee.
         /// </summary>
         [JsonProperty("external_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_reference")]
+#endif
         public string ExternalReference { get; set; }
 
         /// <summary>
@@ -48,6 +67,9 @@ namespace Stripe.Tax
         /// One of: <c>account</c>, or <c>external_reference</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

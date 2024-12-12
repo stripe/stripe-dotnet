@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsPaytoOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// applicable to PayTo PaymentIntent with <c>setup_future_usage=off_session</c>.
         /// </summary>
         [JsonProperty("mandate_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_options")]
+#endif
         public PaymentIntentPaymentMethodOptionsPaytoMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -39,6 +45,9 @@ namespace Stripe
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
     }
 }

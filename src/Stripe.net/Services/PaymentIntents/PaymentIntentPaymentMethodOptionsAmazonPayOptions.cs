@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsAmazonPayOptions : INestedOptions
     {
@@ -16,6 +19,9 @@ namespace Stripe
         /// for this parameter unsets the stored value for this payment method type.
         /// </summary>
         [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -40,6 +46,9 @@ namespace Stripe
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
     }
 }

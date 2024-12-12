@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PlanProductOptions : INestedOptions, IHasId, IHasMetadata
     {
@@ -10,6 +13,9 @@ namespace Stripe
         /// Whether the product is currently available for purchase. Defaults to <c>true</c>.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
         public bool? Active { get; set; }
 
         /// <summary>
@@ -17,6 +23,9 @@ namespace Stripe
         /// randomly generated.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -26,12 +35,18 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The product's name, meant to be displayable to the customer.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -44,12 +59,18 @@ namespace Stripe
         /// statement in capital letters. Non-ASCII characters are automatically stripped.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
         /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonProperty("tax_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_code")]
+#endif
         public string TaxCode { get; set; }
 
         /// <summary>
@@ -57,6 +78,9 @@ namespace Stripe
         /// customers' receipts, invoices, Checkout, and the customer portal.
         /// </summary>
         [JsonProperty("unit_label")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_label")]
+#endif
         public string UnitLabel { get; set; }
     }
 }

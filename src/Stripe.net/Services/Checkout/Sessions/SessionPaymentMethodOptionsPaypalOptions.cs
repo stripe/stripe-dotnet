@@ -3,6 +3,9 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionPaymentMethodOptionsPaypalOptions : INestedOptions
     {
@@ -10,6 +13,9 @@ namespace Stripe.Checkout
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
         [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -21,6 +27,9 @@ namespace Stripe.Checkout
         /// <c>pl-PL</c>, <c>pt-PT</c>, <c>sk-SK</c>, or <c>sv-SE</c>.
         /// </summary>
         [JsonProperty("preferred_locale")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("preferred_locale")]
+#endif
         public string PreferredLocale { get; set; }
 
         /// <summary>
@@ -29,6 +38,9 @@ namespace Stripe.Checkout
         /// settings to block multiple payments per invoice ID.
         /// </summary>
         [JsonProperty("reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference")]
+#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -37,12 +49,18 @@ namespace Stripe.Checkout
         /// settings to block multiple payments per invoice ID.
         /// </summary>
         [JsonProperty("reference_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference_id")]
+#endif
         public string ReferenceId { get; set; }
 
         /// <summary>
         /// The risk correlation ID for an on-session payment using a saved PayPal payment method.
         /// </summary>
         [JsonProperty("risk_correlation_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("risk_correlation_id")]
+#endif
         public string RiskCorrelationId { get; set; }
 
         /// <summary>
@@ -71,6 +89,9 @@ namespace Stripe.Checkout
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -80,6 +101,9 @@ namespace Stripe.Checkout
         /// and transfers</a> are used.
         /// </summary>
         [JsonProperty("subsellers")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subsellers")]
+#endif
         public List<string> Subsellers { get; set; }
     }
 }

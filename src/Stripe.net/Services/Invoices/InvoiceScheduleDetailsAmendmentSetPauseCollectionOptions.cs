@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceScheduleDetailsAmendmentSetPauseCollectionOptions : INestedOptions
     {
@@ -9,6 +12,9 @@ namespace Stripe
         /// Details of the pause_collection behavior to apply to the amendment.
         /// </summary>
         [JsonProperty("set")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("set")]
+#endif
         public InvoiceScheduleDetailsAmendmentSetPauseCollectionSetOptions Set { get; set; }
 
         /// <summary>
@@ -16,6 +22,9 @@ namespace Stripe
         /// One of: <c>remove</c>, or <c>set</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

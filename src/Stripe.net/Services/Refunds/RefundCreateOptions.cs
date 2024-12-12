@@ -3,16 +3,25 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class RefundCreateOptions : BaseOptions, IHasMetadata
     {
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
         /// The identifier of the charge to refund.
         /// </summary>
         [JsonProperty("charge")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("charge")]
+#endif
         public string Charge { get; set; }
 
         /// <summary>
@@ -21,12 +30,18 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Customer whose customer balance to refund from.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -34,6 +49,9 @@ namespace Stripe
         /// email from the customer to receive refund instructions.
         /// </summary>
         [JsonProperty("instructions_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("instructions_email")]
+#endif
         public string InstructionsEmail { get; set; }
 
         /// <summary>
@@ -43,18 +61,27 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Origin of the refund.
         /// </summary>
         [JsonProperty("origin")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("origin")]
+#endif
         public string Origin { get; set; }
 
         /// <summary>
         /// The identifier of the PaymentIntent to refund.
         /// </summary>
         [JsonProperty("payment_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_intent")]
+#endif
         public string PaymentIntent { get; set; }
 
         /// <summary>
@@ -66,6 +93,9 @@ namespace Stripe
         /// One of: <c>duplicate</c>, <c>fraudulent</c>, or <c>requested_by_customer</c>.
         /// </summary>
         [JsonProperty("reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason")]
+#endif
         public string Reason { get; set; }
 
         /// <summary>
@@ -76,6 +106,9 @@ namespace Stripe
         /// created the charge.
         /// </summary>
         [JsonProperty("refund_application_fee")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund_application_fee")]
+#endif
         public bool? RefundApplicationFee { get; set; }
 
         /// <summary>
@@ -85,6 +118,9 @@ namespace Stripe
         /// that created the charge.
         /// </summary>
         [JsonProperty("reverse_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reverse_transfer")]
+#endif
         public bool? ReverseTransfer { get; set; }
     }
 }

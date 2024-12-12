@@ -1,10 +1,88 @@
-namespace StripeTests
+namespace StripeTests.Wholesome
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
     using System.Linq;
     using System.Reflection;
+    using System.Runtime.CompilerServices;
     using Xunit;
+
+#pragma warning disable SA1402 // File may only contain a single type
+#pragma warning disable SA1649 // File name should match first type name
+    internal class ExtendedPropertyInfo : PropertyInfo
+#pragma warning restore SA1649 // File name should match first type name
+#pragma warning restore SA1402 // File may only contain a single type
+    {
+        private readonly PropertyInfo propertyInfo;
+
+        internal ExtendedPropertyInfo(PropertyInfo propertyInfo, bool isNotPublic)
+        {
+            this.propertyInfo = propertyInfo;
+            this.IsNotPublic = isNotPublic;
+        }
+
+        public bool IsNotPublic { get; }
+
+        public override PropertyAttributes Attributes => this.propertyInfo.Attributes;
+
+        public override bool CanRead => this.propertyInfo.CanRead;
+
+        public override bool CanWrite => this.propertyInfo.CanWrite;
+
+        public override Type PropertyType => this.propertyInfo.PropertyType;
+
+        public override Type DeclaringType => this.propertyInfo.DeclaringType;
+
+        public override string Name => this.propertyInfo.Name;
+
+        public override Type ReflectedType => this.propertyInfo.ReflectedType;
+
+        public override MethodInfo[] GetAccessors(bool nonPublic)
+        {
+            return this.propertyInfo.GetAccessors(nonPublic);
+        }
+
+        public override MethodInfo GetGetMethod(bool nonPublic)
+        {
+            return this.propertyInfo.GetGetMethod(nonPublic);
+        }
+
+        public override ParameterInfo[] GetIndexParameters()
+        {
+            return this.propertyInfo.GetIndexParameters();
+        }
+
+        public override MethodInfo GetSetMethod(bool nonPublic)
+        {
+            return this.propertyInfo.GetSetMethod(nonPublic);
+        }
+
+        public override object GetValue(object obj, BindingFlags invokeAttr, Binder binder, object[] index, CultureInfo culture)
+        {
+            return this.propertyInfo.GetValue(obj, invokeAttr, binder, index, culture);
+        }
+
+        public override void SetValue(object obj, object value, BindingFlags invokeAttr, Binder binder, object[] index, CultureInfo culture)
+        {
+            this.propertyInfo.SetValue(obj, value, invokeAttr, binder, index, culture);
+        }
+
+        public override object[] GetCustomAttributes(bool inherit)
+        {
+            return this.propertyInfo.GetCustomAttributes(inherit);
+        }
+
+        public override object[] GetCustomAttributes(Type attributeType, bool inherit)
+        {
+            return this.propertyInfo.GetCustomAttributes(attributeType, inherit);
+        }
+
+        public override bool IsDefined(Type attributeType, bool inherit)
+        {
+            return this.propertyInfo.IsDefined(attributeType, inherit);
+        }
+    }
 
     /// <summary>
     /// Parent class for all wholesome tests. Wholesome tests check the state of the Stripe.net
@@ -53,6 +131,25 @@ namespace StripeTests
         }
 
         /// <summary>
+        /// Returns the list of interfaces that extend the provided interface.
+        /// </summary>
+        /// <param name="parent">The parent interface.</param>
+        /// <returns>The list of interfaces that extend the provided interface.</returns>
+        protected static List<Type> GetSubinterfacesOf(Type parent)
+        {
+            if (parent.IsInterface)
+            {
+                return new List<Type>();
+            }
+
+            var assembly = parent.GetTypeInfo().Assembly;
+            return assembly.DefinedTypes
+                .Where(t => t.IsInterface && parent.IsAssignableFrom(t))
+                .Select(t => t.AsType())
+                .ToList();
+        }
+
+        /// <summary>
         /// Returns the list of classes that implement the provided interface.
         /// </summary>
         /// <param name="implementedInterface">The implemented interface.</param>
@@ -64,6 +161,22 @@ namespace StripeTests
                 .Where(t => t.IsClass && t.ImplementedInterfaces.Contains(implementedInterface))
                 .Select(t => t.AsType())
                 .ToList();
+        }
+
+        /// <summary>
+        /// Gets all public and non public instance properties declared in the type.
+        ///
+        /// This does not get properties from any super types.
+        /// </summary>
+        /// <param name="type">The type to get properties from.</param>
+        /// <returns>Properties to check.</returns>
+        internal static IEnumerable<ExtendedPropertyInfo> GetPropertiesToCheck(Type type)
+        {
+            // Gets the nonpublic properties (private, internal, protected, etc)
+            var nonpublicProperties = type.GetProperties(BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+            var allProperties = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.DeclaredOnly);
+
+            return allProperties.Select(p => new ExtendedPropertyInfo(p, nonpublicProperties.Contains(p)));
         }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsPaypalLineItemTax : StripeEntity<PaymentIntentPaymentMethodOptionsPaypalLineItemTax>
     {
@@ -9,6 +12,9 @@ namespace Stripe
         /// The tax for a single unit of the line item in minor units. Cannot be a negative number.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -16,6 +22,9 @@ namespace Stripe
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("behavior")]
+#endif
         public string Behavior { get; set; }
     }
 }

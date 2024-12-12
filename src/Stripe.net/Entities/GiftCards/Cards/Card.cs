@@ -5,6 +5,9 @@ namespace Stripe.GiftCards
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A gift card represents a single gift card owned by a customer, including the remaining
@@ -16,36 +19,54 @@ namespace Stripe.GiftCards
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Whether this gift card can be used or not.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
         public bool Active { get; set; }
 
         /// <summary>
         /// The amount of funds available for new transactions.
         /// </summary>
         [JsonProperty("amount_available")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_available")]
+#endif
         public long AmountAvailable { get; set; }
 
         /// <summary>
         /// The amount of funds marked as held.
         /// </summary>
         [JsonProperty("amount_held")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_held")]
+#endif
         public long AmountHeld { get; set; }
 
         /// <summary>
         /// Code used to redeem this gift card.
         /// </summary>
         [JsonProperty("code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("code")]
+#endif
         public string Code { get; set; }
 
         /// <summary>
@@ -53,12 +74,19 @@ namespace Stripe.GiftCards
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The related Stripe objects that created this gift card.
         /// </summary>
         [JsonProperty("created_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created_by")]
+#endif
         public CardCreatedBy CreatedBy { get; set; }
 
         /// <summary>
@@ -67,6 +95,9 @@ namespace Stripe.GiftCards
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -75,12 +106,18 @@ namespace Stripe.GiftCards
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Transactions on this gift card.
         /// </summary>
         [JsonProperty("transactions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transactions")]
+#endif
         public StripeList<Transaction> Transactions { get; set; }
     }
 }

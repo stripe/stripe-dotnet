@@ -3,13 +3,22 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CreditNoteRefund : StripeEntity<CreditNoteRefund>
     {
         /// <summary>
         /// Amount of the refund that applies to this credit note, in cents (or local equivalent).
         /// </summary>
         [JsonProperty("amount_refunded")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_refunded")]
+#endif
         public long AmountRefunded { get; set; }
 
         #region Expandable Refund
@@ -19,6 +28,9 @@ namespace Stripe
         /// ID of the refund.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string RefundId
         {
             get => this.InternalRefund?.Id;
@@ -32,6 +44,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Refund Refund
         {
             get => this.InternalRefund?.ExpandedObject;
@@ -40,6 +55,10 @@ namespace Stripe
 
         [JsonProperty("refund")]
         [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
+#endif
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
     }

@@ -2,6 +2,9 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionPermissionsUpdate : StripeEntity<SessionPermissionsUpdate>
     {
@@ -18,6 +21,9 @@ namespace Stripe.Checkout
         /// One of: <c>client_only</c>, or <c>server_only</c>.
         /// </summary>
         [JsonProperty("line_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_items")]
+#endif
         public string LineItems { get; set; }
 
         /// <summary>
@@ -33,6 +39,9 @@ namespace Stripe.Checkout
         /// One of: <c>client_only</c>, or <c>server_only</c>.
         /// </summary>
         [JsonProperty("shipping_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping_details")]
+#endif
         public string ShippingDetails { get; set; }
     }
 }
