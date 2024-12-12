@@ -9,11 +9,11 @@ namespace Stripe
     public class AccountSessionComponentsAccountManagementFeaturesOptions : INestedOptions
     {
         /// <summary>
-        /// Disables Stripe user authentication for this embedded component. This feature can only
-        /// be <c>true</c> for accounts where you’re responsible for collecting updated information
-        /// when requirements are due or change, like Custom accounts. The default value for this
-        /// feature is <c>false</c> when <c>external_account_collection</c> is enabled and
-        /// <c>true</c> otherwise.
+        /// Disables Stripe user authentication for this embedded component. This value can only be
+        /// true for accounts where <c>controller.requirement_collection</c> is <c>application</c>.
+        /// The default value is the opposite of the <c>external_account_collection</c> value. For
+        /// example, if you don’t set <c>external_account_collection</c>, it defaults to true and
+        /// <c>disable_stripe_user_authentication</c> defaults to false.
         /// </summary>
         [JsonProperty("disable_stripe_user_authentication")]
 #if NET6_0_OR_GREATER

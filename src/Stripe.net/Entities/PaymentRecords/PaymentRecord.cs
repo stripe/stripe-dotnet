@@ -66,15 +66,6 @@ namespace Stripe
         /// <summary>
         /// A representation of an amount of money, consisting of an amount and a currency.
         /// </summary>
-        [JsonProperty("amount_refunded")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_refunded")]
-#endif
-        public PaymentRecordAmountRefunded AmountRefunded { get; set; }
-
-        /// <summary>
-        /// A representation of an amount of money, consisting of an amount and a currency.
-        /// </summary>
         [JsonProperty("amount_requested")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_requested")]

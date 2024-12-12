@@ -15,7 +15,18 @@ namespace Stripe.Billing
         public CreditBalanceTransactionCreditAmount Amount { get; set; }
 
         /// <summary>
+        /// Details of the invoice to which the reinstated credits were originally applied. Only
+        /// present if <c>type</c> is <c>credits_application_invoice_voided</c>.
+        /// </summary>
+        [JsonProperty("credits_application_invoice_voided")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("credits_application_invoice_voided")]
+#endif
+        public CreditBalanceTransactionCreditCreditsApplicationInvoiceVoided CreditsApplicationInvoiceVoided { get; set; }
+
+        /// <summary>
         /// The type of credit transaction.
+        /// One of: <c>credits_application_invoice_voided</c>, or <c>credits_granted</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

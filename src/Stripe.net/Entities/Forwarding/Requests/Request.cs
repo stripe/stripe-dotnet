@@ -94,8 +94,8 @@ namespace Stripe.Forwarding
 
         /// <summary>
         /// The field kinds to be replaced in the forwarded request.
-        /// One of: <c>card_cvc</c>, <c>card_expiry</c>, <c>card_number</c>, or
-        /// <c>cardholder_name</c>.
+        /// One of: <c>card_cvc</c>, <c>card_expiry</c>, <c>card_number</c>, <c>cardholder_name</c>,
+        /// or <c>request_signature</c>.
         /// </summary>
         [JsonProperty("replacements")]
 #if NET6_0_OR_GREATER
