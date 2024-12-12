@@ -72,8 +72,8 @@ namespace Stripe
         public List<AccountFutureRequirementsError> Errors { get; set; }
 
         /// <summary>
-        /// Fields that need to be collected assuming all volume thresholds are reached. As they
-        /// become required, they appear in <c>currently_due</c> as well.
+        /// Fields you must collect when all thresholds are reached. As they become required, they
+        /// appear in <c>currently_due</c> as well.
         /// </summary>
         [JsonProperty("eventually_due")]
 #if NET6_0_OR_GREATER
