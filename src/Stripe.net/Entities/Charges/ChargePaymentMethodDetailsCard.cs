@@ -20,6 +20,15 @@ namespace Stripe
         public long? AmountAuthorized { get; set; }
 
         /// <summary>
+        /// The latest amount intended to be authorized by this charge.
+        /// </summary>
+        [JsonProperty("amount_requested")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_requested")]
+#endif
+        public long? AmountRequested { get; set; }
+
+        /// <summary>
         /// Authorization code on the charge.
         /// </summary>
         [JsonProperty("authorization_code")]
@@ -228,11 +237,41 @@ namespace Stripe
 #endif
         public ChargePaymentMethodDetailsCardNetworkToken NetworkToken { get; set; }
 
+        /// <summary>
+        /// This is used by the financial networks to identify a transaction. Visa calls this the
+        /// Transaction ID, Mastercard calls this the Trace ID, and American Express calls this the
+        /// Acquirer Reference Data. The first three digits of the Trace ID is the Financial Network
+        /// Code, the next 6 digits is the Banknet Reference Number, and the last 4 digits represent
+        /// the date (MM/DD). This field will be available for successful Visa, Mastercard, or
+        /// American Express transactions and always null for other card brands.
+        /// </summary>
+        [JsonProperty("network_transaction_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_transaction_id")]
+#endif
+        public string NetworkTransactionId { get; set; }
+
         [JsonProperty("overcapture")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("overcapture")]
 #endif
         public ChargePaymentMethodDetailsCardOvercapture Overcapture { get; set; }
+
+        [JsonProperty("partial_authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("partial_authorization")]
+#endif
+        public ChargePaymentMethodDetailsCardPartialAuthorization PartialAuthorization { get; set; }
+
+        /// <summary>
+        /// Status of a card based on the card issuer.
+        /// One of: <c>regulated</c>, or <c>unregulated</c>.
+        /// </summary>
+        [JsonProperty("regulated_status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("regulated_status")]
+#endif
+        public string RegulatedStatus { get; set; }
 
         /// <summary>
         /// Populated if this transaction used 3D Secure authentication.

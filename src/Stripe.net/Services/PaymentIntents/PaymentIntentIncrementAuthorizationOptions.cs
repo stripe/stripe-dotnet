@@ -64,6 +64,15 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Payment method-specific configuration for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_options")]
+#endif
+        public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// Text that appears on the customer's statement as the statement descriptor for a non-card
         /// or card charge. This value overrides the account's default statement descriptor. For
         /// information about requirements, including the 22-character limit, see <a
