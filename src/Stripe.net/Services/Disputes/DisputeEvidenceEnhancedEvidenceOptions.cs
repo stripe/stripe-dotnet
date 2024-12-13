@@ -10,11 +10,5 @@ namespace Stripe
         /// </summary>
         [JsonProperty("visa_compelling_evidence_3")]
         public DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3Options VisaCompellingEvidence3 { get; set; }
-
-        /// <summary>
-        /// Evidence provided for Visa Compliance evidence submission.
-        /// </summary>
-        [JsonProperty("visa_compliance")]
-        public DisputeEvidenceEnhancedEvidenceVisaComplianceOptions VisaCompliance { get; set; }
     }
 }

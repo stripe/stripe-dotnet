@@ -107,13 +107,6 @@ namespace Stripe
         public ConfirmationTokenPaymentMethodPreviewCardNetworks Networks { get; set; }
 
         /// <summary>
-        /// Status of a card based on the card issuer.
-        /// One of: <c>regulated</c>, or <c>unregulated</c>.
-        /// </summary>
-        [JsonProperty("regulated_status")]
-        public string RegulatedStatus { get; set; }
-
-        /// <summary>
         /// Contains details on how this Card may be used for 3D Secure authentication.
         /// </summary>
         [JsonProperty("three_d_secure_usage")]
