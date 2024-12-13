@@ -13,15 +13,6 @@ namespace Stripe.Terminal
     public class ReaderActionCollectPaymentMethod : StripeEntity<ReaderActionCollectPaymentMethod>
     {
         /// <summary>
-        /// Account the payment intent belongs to.
-        /// </summary>
-        [JsonProperty("account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("account")]
-#endif
-        public string Account { get; set; }
-
-        /// <summary>
         /// Represents a per-transaction override of a reader configuration.
         /// </summary>
         [JsonProperty("collect_config")]
@@ -87,9 +78,6 @@ namespace Stripe.Terminal
 #endif
         public PaymentMethod PaymentMethod { get; set; }
 
-        /// <summary>
-        /// This field will be deprecated. Please use <c>account</c> instead.
-        /// </summary>
         [JsonProperty("stripe_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_account")]

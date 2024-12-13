@@ -41,9 +41,9 @@ namespace Stripe
         public List<PersonRequirementsError> Errors { get; set; }
 
         /// <summary>
-        /// Fields you must collect when all thresholds are reached. As they become required, they
-        /// appear in <c>currently_due</c> as well, and the account's <c>current_deadline</c>
-        /// becomes set.
+        /// Fields that need to be collected assuming all volume thresholds are reached. As they
+        /// become required, they appear in <c>currently_due</c> as well, and the account's
+        /// <c>current_deadline</c> becomes set.
         /// </summary>
         [JsonProperty("eventually_due")]
 #if NET6_0_OR_GREATER
