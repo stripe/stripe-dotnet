@@ -8,11 +8,26 @@ namespace Stripe.Tax
         [JsonProperty("ae")]
         public RegistrationCountryOptionsAe Ae { get; set; }
 
+        [JsonProperty("al")]
+        public RegistrationCountryOptionsAl Al { get; set; }
+
+        [JsonProperty("am")]
+        public RegistrationCountryOptionsAm Am { get; set; }
+
+        [JsonProperty("ao")]
+        public RegistrationCountryOptionsAo Ao { get; set; }
+
         [JsonProperty("at")]
         public RegistrationCountryOptionsAt At { get; set; }
 
         [JsonProperty("au")]
         public RegistrationCountryOptionsAu Au { get; set; }
+
+        [JsonProperty("ba")]
+        public RegistrationCountryOptionsBa Ba { get; set; }
+
+        [JsonProperty("bb")]
+        public RegistrationCountryOptionsBb Bb { get; set; }
 
         [JsonProperty("be")]
         public RegistrationCountryOptionsBe Be { get; set; }
@@ -23,11 +38,17 @@ namespace Stripe.Tax
         [JsonProperty("bh")]
         public RegistrationCountryOptionsBh Bh { get; set; }
 
+        [JsonProperty("bs")]
+        public RegistrationCountryOptionsBs Bs { get; set; }
+
         [JsonProperty("by")]
         public RegistrationCountryOptionsBy By { get; set; }
 
         [JsonProperty("ca")]
         public RegistrationCountryOptionsCa Ca { get; set; }
+
+        [JsonProperty("cd")]
+        public RegistrationCountryOptionsCd Cd { get; set; }
 
         [JsonProperty("ch")]
         public RegistrationCountryOptionsCh Ch { get; set; }
@@ -77,6 +98,9 @@ namespace Stripe.Tax
         [JsonProperty("ge")]
         public RegistrationCountryOptionsGe Ge { get; set; }
 
+        [JsonProperty("gn")]
+        public RegistrationCountryOptionsGn Gn { get; set; }
+
         [JsonProperty("gr")]
         public RegistrationCountryOptionsGr Gr { get; set; }
 
@@ -104,6 +128,9 @@ namespace Stripe.Tax
         [JsonProperty("ke")]
         public RegistrationCountryOptionsKe Ke { get; set; }
 
+        [JsonProperty("kh")]
+        public RegistrationCountryOptionsKh Kh { get; set; }
+
         [JsonProperty("kr")]
         public RegistrationCountryOptionsKr Kr { get; set; }
 
@@ -125,6 +152,15 @@ namespace Stripe.Tax
         [JsonProperty("md")]
         public RegistrationCountryOptionsMd Md { get; set; }
 
+        [JsonProperty("me")]
+        public RegistrationCountryOptionsMe Me { get; set; }
+
+        [JsonProperty("mk")]
+        public RegistrationCountryOptionsMk Mk { get; set; }
+
+        [JsonProperty("mr")]
+        public RegistrationCountryOptionsMr Mr { get; set; }
+
         [JsonProperty("mt")]
         public RegistrationCountryOptionsMt Mt { get; set; }
 
@@ -143,11 +179,17 @@ namespace Stripe.Tax
         [JsonProperty("no")]
         public RegistrationCountryOptionsNo No { get; set; }
 
+        [JsonProperty("np")]
+        public RegistrationCountryOptionsNp Np { get; set; }
+
         [JsonProperty("nz")]
         public RegistrationCountryOptionsNz Nz { get; set; }
 
         [JsonProperty("om")]
         public RegistrationCountryOptionsOm Om { get; set; }
+
+        [JsonProperty("pe")]
+        public RegistrationCountryOptionsPe Pe { get; set; }
 
         [JsonProperty("pl")]
         public RegistrationCountryOptionsPl Pl { get; set; }
@@ -179,8 +221,17 @@ namespace Stripe.Tax
         [JsonProperty("sk")]
         public RegistrationCountryOptionsSk Sk { get; set; }
 
+        [JsonProperty("sn")]
+        public RegistrationCountryOptionsSn Sn { get; set; }
+
+        [JsonProperty("sr")]
+        public RegistrationCountryOptionsSr Sr { get; set; }
+
         [JsonProperty("th")]
         public RegistrationCountryOptionsTh Th { get; set; }
+
+        [JsonProperty("tj")]
+        public RegistrationCountryOptionsTj Tj { get; set; }
 
         [JsonProperty("tr")]
         public RegistrationCountryOptionsTr Tr { get; set; }
@@ -188,8 +239,14 @@ namespace Stripe.Tax
         [JsonProperty("tz")]
         public RegistrationCountryOptionsTz Tz { get; set; }
 
+        [JsonProperty("ug")]
+        public RegistrationCountryOptionsUg Ug { get; set; }
+
         [JsonProperty("us")]
         public RegistrationCountryOptionsUs Us { get; set; }
+
+        [JsonProperty("uy")]
+        public RegistrationCountryOptionsUy Uy { get; set; }
 
         [JsonProperty("uz")]
         public RegistrationCountryOptionsUz Uz { get; set; }
@@ -199,5 +256,11 @@ namespace Stripe.Tax
 
         [JsonProperty("za")]
         public RegistrationCountryOptionsZa Za { get; set; }
+
+        [JsonProperty("zm")]
+        public RegistrationCountryOptionsZm Zm { get; set; }
+
+        [JsonProperty("zw")]
+        public RegistrationCountryOptionsZw Zw { get; set; }
     }
 }
