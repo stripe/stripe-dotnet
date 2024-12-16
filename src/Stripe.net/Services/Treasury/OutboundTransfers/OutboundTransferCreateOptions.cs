@@ -48,6 +48,16 @@ namespace Stripe.Treasury
         public string DestinationPaymentMethod { get; set; }
 
         /// <summary>
+        /// Hash used to generate the PaymentMethod to be used for this OutboundTransfer. Exclusive
+        /// with <c>destination_payment_method</c>.
+        /// </summary>
+        [JsonProperty("destination_payment_method_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination_payment_method_data")]
+#endif
+        public OutboundTransferDestinationPaymentMethodDataOptions DestinationPaymentMethodData { get; set; }
+
+        /// <summary>
         /// Hash describing payment method configuration details.
         /// </summary>
         [JsonProperty("destination_payment_method_options")]

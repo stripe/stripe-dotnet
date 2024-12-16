@@ -43,6 +43,30 @@ namespace Stripe.Treasury
         public OutboundPayment OutboundPayment { get; set; }
 
         /// <summary>
+        /// Use <a
+        /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">OutboundTransfers</a>
+        /// to transfer funds from a <a
+        /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> to a
+        /// PaymentMethod belonging to the same entity. To send funds to a different party, use <a
+        /// href="https://stripe.com/docs/api#outbound_payments">OutboundPayments</a> instead. You
+        /// can send funds over ACH rails or through a domestic wire transfer to a user's own
+        /// external bank account.
+        ///
+        /// Simulate OutboundTransfer state changes with the
+        /// <c>/v1/test_helpers/treasury/outbound_transfers</c> endpoints. These methods can only be
+        /// called on test mode objects.
+        ///
+        /// Related guide: <a
+        /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">Moving
+        /// money with Treasury using OutboundTransfer objects</a>.
+        /// </summary>
+        [JsonProperty("outbound_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("outbound_transfer")]
+#endif
+        public OutboundTransfer OutboundTransfer { get; set; }
+
+        /// <summary>
         /// A <c>Payout</c> object is created when you receive funds from Stripe, or when you
         /// initiate a payout to either a bank account or debit card of a <a
         /// href="https://stripe.com/docs/connect/bank-debit-card-payouts">connected Stripe
@@ -60,7 +84,8 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The type of the source flow that originated the ReceivedCredit.
-        /// One of: <c>credit_reversal</c>, <c>other</c>, <c>outbound_payment</c>, or <c>payout</c>.
+        /// One of: <c>credit_reversal</c>, <c>other</c>, <c>outbound_payment</c>,
+        /// <c>outbound_transfer</c>, or <c>payout</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
