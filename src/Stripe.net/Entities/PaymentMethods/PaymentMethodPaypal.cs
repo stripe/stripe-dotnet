@@ -9,6 +9,17 @@ namespace Stripe
     public class PaymentMethodPaypal : StripeEntity<PaymentMethodPaypal>
     {
         /// <summary>
+        /// Two-letter ISO code representing the buyer's country. Values are provided by PayPal
+        /// directly (if supported) at the time of authorization or settlement. They cannot be set
+        /// or mutated.
+        /// </summary>
+        [JsonProperty("country")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country")]
+#endif
+        public string Country { get; set; }
+
+        /// <summary>
         /// Uniquely identifies this particular PayPal account. You can use this attribute to check
         /// whether two PayPal accounts are the same.
         /// </summary>
