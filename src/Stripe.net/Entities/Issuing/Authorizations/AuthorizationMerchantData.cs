@@ -57,6 +57,12 @@ namespace Stripe.Issuing
         public string State { get; set; }
 
         /// <summary>
+        /// The seller's tax identification number. Currently populated for French merchants only.
+        /// </summary>
+        [JsonProperty("tax_id")]
+        public string TaxId { get; set; }
+
+        /// <summary>
         /// An ID assigned by the seller to the location of the sale.
         /// </summary>
         [JsonProperty("terminal_id")]

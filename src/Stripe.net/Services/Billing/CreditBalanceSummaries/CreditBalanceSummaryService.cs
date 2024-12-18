@@ -24,7 +24,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves the credit balance summary for a customer</p>.
+        /// <p>Retrieves the credit balance summary for a customer.</p>.
         /// </summary>
         public virtual CreditBalanceSummary Get(RequestOptions requestOptions = null)
         {
@@ -32,7 +32,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves the credit balance summary for a customer</p>.
+        /// <p>Retrieves the credit balance summary for a customer.</p>.
         /// </summary>
         public virtual Task<CreditBalanceSummary> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -40,7 +40,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves the credit balance summary for a customer</p>.
+        /// <p>Retrieves the credit balance summary for a customer.</p>.
         /// </summary>
         public virtual CreditBalanceSummary Get(CreditBalanceSummaryGetOptions options, RequestOptions requestOptions = null)
         {
@@ -48,7 +48,7 @@ namespace Stripe.Billing
         }
 
         /// <summary>
-        /// <p>Retrieves the credit balance summary for a customer</p>.
+        /// <p>Retrieves the credit balance summary for a customer.</p>.
         /// </summary>
         public virtual Task<CreditBalanceSummary> GetAsync(CreditBalanceSummaryGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

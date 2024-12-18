@@ -16,8 +16,8 @@ namespace Stripe
         public List<CapabilityFutureRequirementsAlternative> Alternatives { get; set; }
 
         /// <summary>
-        /// Date on which <c>future_requirements</c> merges with the main <c>requirements</c> hash
-        /// and <c>future_requirements</c> becomes empty. After the transition, <c>currently_due</c>
+        /// Date on which <c>future_requirements</c> becomes the main <c>requirements</c> hash and
+        /// <c>future_requirements</c> becomes empty. After the transition, <c>currently_due</c>
         /// requirements may immediately become <c>past_due</c>, but the account may also be given a
         /// grace period depending on the capability's enablement state prior to transitioning.
         /// </summary>
@@ -53,8 +53,8 @@ namespace Stripe
         public List<CapabilityFutureRequirementsError> Errors { get; set; }
 
         /// <summary>
-        /// Fields that need to be collected assuming all volume thresholds are reached. As they
-        /// become required, they appear in <c>currently_due</c> as well.
+        /// Fields you must collect when all thresholds are reached. As they become required, they
+        /// appear in <c>currently_due</c> as well.
         /// </summary>
         [JsonProperty("eventually_due")]
         public List<string> EventuallyDue { get; set; }
