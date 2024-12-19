@@ -193,6 +193,9 @@ namespace StripeTests
             Assert.Equal("pm_126", models[1].Id);
             Assert.Equal("pm_127", models[2].Id);
 
+            // Should not mutate its argument
+            Assert.Equal("pm_124", options.StartingAfter);
+
             // Check invocations
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
@@ -246,6 +249,9 @@ namespace StripeTests
                 EndingBefore = "pm_127",
             };
             var models = service.ListAutoPaging(options).ToList();
+
+            // Should not mutate its argument
+            Assert.Equal("pm_127", options.EndingBefore);
 
             // Check results
             Assert.Equal(5, models.Count);
