@@ -9,7 +9,7 @@ namespace Stripe
     public class DisputeEvidenceDetailsEnhancedEligibilityVisaCompliance : StripeEntity<DisputeEvidenceDetailsEnhancedEligibilityVisaCompliance>
     {
         /// <summary>
-        /// Visa Compelling Evidence 3.0 eligibility status.
+        /// Visa compliance eligibility status.
         /// One of: <c>fee_acknowledged</c>, or <c>requires_fee_acknowledgement</c>.
         /// </summary>
         [JsonProperty("status")]

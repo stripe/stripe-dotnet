@@ -9,6 +9,17 @@ namespace Stripe
     public class ChargePaymentMethodDetailsPaypal : StripeEntity<ChargePaymentMethodDetailsPaypal>
     {
         /// <summary>
+        /// Two-letter ISO code representing the buyer's country. Values are provided by PayPal
+        /// directly (if supported) at the time of authorization or settlement. They cannot be set
+        /// or mutated.
+        /// </summary>
+        [JsonProperty("country")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country")]
+#endif
+        public string Country { get; set; }
+
+        /// <summary>
         /// Owner's email. Values are provided by PayPal directly (if supported) at the time of
         /// authorization or settlement. They cannot be set or mutated.
         /// </summary>

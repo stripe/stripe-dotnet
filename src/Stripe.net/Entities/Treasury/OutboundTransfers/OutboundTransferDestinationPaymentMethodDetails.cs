@@ -14,8 +14,15 @@ namespace Stripe.Treasury
 #endif
         public OutboundTransferDestinationPaymentMethodDetailsBillingDetails BillingDetails { get; set; }
 
+        [JsonProperty("financial_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_account")]
+#endif
+        public OutboundTransferDestinationPaymentMethodDetailsFinancialAccount FinancialAccount { get; set; }
+
         /// <summary>
         /// The type of the payment method used in the OutboundTransfer.
+        /// One of: <c>financial_account</c>, or <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

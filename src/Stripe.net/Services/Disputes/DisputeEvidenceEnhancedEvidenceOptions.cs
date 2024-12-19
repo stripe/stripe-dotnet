@@ -18,7 +18,7 @@ namespace Stripe
         public DisputeEvidenceEnhancedEvidenceVisaCompellingEvidence3Options VisaCompellingEvidence3 { get; set; }
 
         /// <summary>
-        /// Evidence provided for Visa Compliance evidence submission.
+        /// Evidence provided for Visa compliance evidence submission.
         /// </summary>
         [JsonProperty("visa_compliance")]
 #if NET6_0_OR_GREATER

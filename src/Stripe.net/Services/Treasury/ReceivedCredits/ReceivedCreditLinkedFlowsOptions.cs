@@ -10,7 +10,8 @@ namespace Stripe.Treasury
     {
         /// <summary>
         /// The source flow type.
-        /// One of: <c>credit_reversal</c>, <c>other</c>, <c>outbound_payment</c>, or <c>payout</c>.
+        /// One of: <c>credit_reversal</c>, <c>other</c>, <c>outbound_payment</c>,
+        /// <c>outbound_transfer</c>, or <c>payout</c>.
         /// </summary>
         [JsonProperty("source_flow_type")]
 #if NET6_0_OR_GREATER

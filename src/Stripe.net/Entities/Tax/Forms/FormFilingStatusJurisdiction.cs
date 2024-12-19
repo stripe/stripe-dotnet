@@ -10,7 +10,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// Two-letter country code (<a href="https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2">ISO
-        /// 3166-1 alpha-2</a>). Always <c>US</c>.
+        /// 3166-1 alpha-2</a>).
         /// </summary>
         [JsonProperty("country")]
 #if NET6_0_OR_GREATER
@@ -30,7 +30,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US">ISO 3166-2 U.S. state code</a>,
-        /// without country prefix, if any. For example, "NY" for New York, United States.
+        /// without country prefix, if any. For example, "NY" for New York, United States. Null for
+        /// non-U.S. forms.
         /// </summary>
         [JsonProperty("state")]
 #if NET6_0_OR_GREATER
