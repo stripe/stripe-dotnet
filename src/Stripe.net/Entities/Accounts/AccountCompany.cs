@@ -44,6 +44,12 @@ namespace Stripe
 #endif
         public bool DirectorsProvided { get; set; }
 
+        [JsonProperty("directorship_declaration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("directorship_declaration")]
+#endif
+        public AccountCompanyDirectorshipDeclaration DirectorshipDeclaration { get; set; }
+
         /// <summary>
         /// Whether the company's executives have been provided. This Boolean will be <c>true</c> if
         /// you've manually indicated that all executives are provided via <a
