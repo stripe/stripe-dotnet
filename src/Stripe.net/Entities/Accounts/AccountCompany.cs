@@ -135,6 +135,16 @@ namespace Stripe
         public AccountCompanyOwnershipDeclaration OwnershipDeclaration { get; set; }
 
         /// <summary>
+        /// One of: <c>qualified_entity_exceeds_ownership_threshold</c>, or
+        /// <c>qualifies_as_financial_institution</c>.
+        /// </summary>
+        [JsonProperty("ownership_exemption_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ownership_exemption_reason")]
+#endif
+        public string OwnershipExemptionReason { get; set; }
+
+        /// <summary>
         /// The company's phone number (used for verification).
         /// </summary>
         [JsonProperty("phone")]
