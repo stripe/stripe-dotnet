@@ -44,6 +44,10 @@ namespace Stripe
 #endif
         public bool DirectorsProvided { get; set; }
 
+        /// <summary>
+        /// This hash is used to attest that the director information provided to Stripe is both
+        /// current and correct.
+        /// </summary>
         [JsonProperty("directorship_declaration")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("directorship_declaration")]
