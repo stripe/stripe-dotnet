@@ -50,7 +50,7 @@ jobs:
         run: make ci-test
 
       - name: Collect coverage
-        run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
+        run: dotnet test --no-build -c Release -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
 
       - name: Get branch name (merge)
         if: github.event_name != 'pull_request'
