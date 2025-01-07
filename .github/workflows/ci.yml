@@ -50,17 +50,6 @@ jobs:
       - name: Run test suite
         run: just ci-test
 
-      - name: Collect coverage
-        run: dotnet test --no-build -c Release -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
-
-      - name: Get branch name (merge)
-        if: github.event_name != 'pull_request'
-        run: echo "commitBranch=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
-
-      - name: Get branch name (pull request)
-        if: github.event_name == 'pull_request'
-        run: echo "commitBranch=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
-
       - name: Pack
         run: dotnet pack src/Stripe.net -c Release --no-build --output nuget
       - name: "Upload Artifact"
