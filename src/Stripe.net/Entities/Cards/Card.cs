@@ -198,6 +198,17 @@ namespace Stripe
         public string Brand { get; set; }
 
         /// <summary>
+        /// The <a href="https://stripe.com/docs/card-product-codes">product code</a> that
+        /// identifies the specific program or product associated with a card. (For internal use
+        /// only and not typically available in standard API requests.).
+        /// </summary>
+        [JsonProperty("brand_product")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("brand_product")]
+#endif
+        public string BrandProduct { get; set; }
+
+        /// <summary>
         /// Two-letter ISO code representing the country of the card. You could use this attribute
         /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>
