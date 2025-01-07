@@ -44,19 +44,13 @@ jobs:
       - name: Build Release
         run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
 
-      - name: Build Debug
-        run: dotnet build src -c Debug
-
       - uses: stripe/openapi/actions/stripe-mock@master
 
       - name: Run test suite
         run: make ci-test
 
-      - name: Run test suite (Debug)
-        run: make ci-test-debug
-
       - name: Collect coverage
-        run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
+        run: dotnet test --no-build -c Release -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
 
       - name: Get branch name (merge)
         if: github.event_name != 'pull_request'
