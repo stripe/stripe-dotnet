@@ -1,9 +1,12 @@
+set quiet
+
 import? '../sdk-codegen/justfile'
 
 _default:
     just --list --unsorted
 
 # base test command
+[no-quiet]
 _test no_build framework config:
     dotnet test {{no_build}} {{framework}} src/StripeTests/StripeTests.csproj -c {{config}}
 
@@ -26,7 +29,7 @@ format-check: (format "--verify-no-changes")
 
 # called by tooling
 [private]
-@update-version version:
+update-version version:
     echo "{{ version }}" > VERSION
     perl -pi -e 's|<Version>[.\-\d\w]+</Version>|<Version>{{ version }}</Version>|' src/Stripe.net/Stripe.net.csproj
     perl -pi -e 's|Current = "[.\-\d\w]+";|Current = "{{ version }}";|' src/Stripe.net/Constants/Version.cs
