@@ -18,8 +18,8 @@ test: (_test "" "-f net8.0" "Debug")
 ci-test: (_test "--no-build" "" "Release")
 
 # ⭐ format all files
-format *options:
-    TargetFramework=net5.0 dotnet format src/Stripe.net/Stripe.net.csproj --severity warn {{options}}
+format *args:
+    TargetFramework=net5.0 dotnet format src/Stripe.net/Stripe.net.csproj --severity warn {{args}}
 
 # for backwards compatibility; ideally removed later
 [private]
