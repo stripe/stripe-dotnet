@@ -5,21 +5,19 @@ import? '../sdk-codegen/justfile'
 _default:
     just --list --unsorted
 
-# base test command
+# base test command that other, more specific commands use
 [no-quiet]
+[no-exit-message]
 _test no_build framework config:
     dotnet test {{no_build}} {{framework}} src/StripeTests/StripeTests.csproj -c {{config}}
 
-# run tests in debug mode
-[group('useful')]
+# ⭐ run tests in debug mode
 test: (_test "" "-f net8.0" "Debug")
 
 # skip build and don't specify the dotnet framework
-[group('CI')]
 ci-test: (_test "--no-build" "" "Release")
 
-# format files as needed
-[group('useful')]
+# ⭐ format all files
 format *options:
     TargetFramework=net5.0 dotnet format src/Stripe.net/Stripe.net.csproj --severity warn {{options}}
 
@@ -28,7 +26,6 @@ format *options:
 alias codegen-format := format
 
 # verify, but don't modify, the project's formatting
-[group('CI')]
 format-check: (format "--verify-no-changes")
 
 # called by tooling

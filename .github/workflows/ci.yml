@@ -50,10 +50,6 @@ jobs:
       - name: Run test suite
         run: just ci-test
 
-      # commented out because it's slow, but it's here if we want it
-      # - name: Verify formatting
-      #   run: just format-check
-
       - name: Pack
         run: dotnet pack src/Stripe.net -c Release --no-build --output nuget
       - name: "Upload Artifact"
