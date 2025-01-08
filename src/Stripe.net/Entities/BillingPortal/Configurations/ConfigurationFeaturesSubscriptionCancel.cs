@@ -36,7 +36,7 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// Whether to create prorations when canceling subscriptions. Possible values are
         /// <c>none</c> and <c>create_prorations</c>.
-        /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        /// One of: <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
 #if NET6_0_OR_GREATER

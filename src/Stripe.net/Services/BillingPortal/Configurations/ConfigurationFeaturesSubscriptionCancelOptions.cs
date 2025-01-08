@@ -42,7 +42,7 @@ namespace Stripe.BillingPortal
         /// <c>none</c> and <c>create_prorations</c>, which is only compatible with
         /// <c>mode=immediately</c>. No prorations are generated when canceling a subscription at
         /// the end of its natural billing period.
-        /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        /// One of: <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
 #if NET6_0_OR_GREATER
