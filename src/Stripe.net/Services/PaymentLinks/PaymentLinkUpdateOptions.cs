@@ -181,6 +181,17 @@ namespace Stripe
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
+        /// Controls phone number collection settings during checkout.
+        ///
+        /// We recommend that you review your privacy policy and check with your legal contacts.
+        /// </summary>
+        [JsonProperty("phone_number_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("phone_number_collection")]
+#endif
+        public PaymentLinkPhoneNumberCollectionOptions PhoneNumberCollection { get; set; }
+
+        /// <summary>
         /// Settings that restrict the usage of a payment link.
         /// </summary>
         [JsonProperty("restrictions")]

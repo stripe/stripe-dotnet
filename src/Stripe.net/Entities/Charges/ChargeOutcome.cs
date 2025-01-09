@@ -13,6 +13,18 @@ namespace Stripe
     public class ChargeOutcome : StripeEntity<ChargeOutcome>
     {
         /// <summary>
+        /// An enumerated value providing a more detailed explanation on <a
+        /// href="https://stripe.com/docs/declines#retrying-issuer-declines">how to proceed with an
+        /// error</a>.
+        /// One of: <c>confirm_card_data</c>, <c>do_not_try_again</c>, or <c>try_again_later</c>.
+        /// </summary>
+        [JsonProperty("advice_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("advice_code")]
+#endif
+        public string AdviceCode { get; set; }
+
+        /// <summary>
         /// For charges declined by the network, a 2 digit code which indicates the advice returned
         /// by the network on how to proceed with an error.
         /// </summary>

@@ -24,6 +24,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - uses: extractions/setup-just@v2
       - uses: actions/checkout@master
 
       - name: Setup .NET
@@ -44,55 +45,14 @@ jobs:
       - name: Build Release
         run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
 
-      - name: Build Debug
-        run: dotnet build src -c Debug
-
       - uses: stripe/openapi/actions/stripe-mock@master
 
       - name: Run test suite
-        run: make ci-test
-
-      - name: Run test suite (Debug)
-        run: make ci-test-debug
-
-      - name: Collect coverage
-        run: dotnet test --no-build -c Debug -f netcoreapp3.1 src/StripeTests/StripeTests.csproj /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:ExcludeByAttribute=CompilerGenerated
-
-      - name: Get branch name (merge)
-        if: github.event_name != 'pull_request'
-        run: echo "commitBranch=$(echo ${GITHUB_REF#refs/heads/} | tr / -)" >> $GITHUB_ENV
-
-      - name: Get branch name (pull request)
-        if: github.event_name == 'pull_request'
-        run: echo "commitBranch=$(echo ${GITHUB_HEAD_REF} | tr / -)" >> $GITHUB_ENV
-
-      - name: Send code coverage report to coveralls.io
-        if: env.COVERALLS_REPO_TOKEN
-        run: |
-          export ARGS="--opencover \
-            -i src/StripeTests/coverage.netcoreapp3.1.opencover.xml \
-            --repoToken $COVERALLS_REPO_TOKEN \
-            --useRelativePaths \
-            --commitId $commitId \
-            --commitBranch $commitBranch \
-            --commitAuthor $commitAuthor \
-            --jobId $jobId"
-          if [ ! -z "${pullRequestId}" ];
-          then
-            export ARGS="$ARGS \
-              --pullRequest $pullRequestId"
-          fi
-          dotnet tool run csmacnz.Coveralls $ARGS
-        env:
-          COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
-          commitId: ${{ github.sha }}
-          commitAuthor: ${{ github.actor }}
-          jobId: ${{ github.run_id }}
-          pullRequestId: ${{ github.event.pull_request.number }}
+        run: just ci-test
 
       - name: Pack
         run: dotnet pack src/Stripe.net -c Release --no-build --output nuget
-      - name: 'Upload Artifact'
+      - name: "Upload Artifact"
         uses: actions/upload-artifact@v4
         with:
           name: nuget
@@ -103,13 +63,13 @@ jobs:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 8.0.x
-    - name: Run backcompat check
-      run: dotnet pack src/Stripe.net -p:RunBaselineCheck=true
+      - uses: actions/checkout@master
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 8.0.x
+      - name: Run backcompat check
+        run: dotnet pack src/Stripe.net -p:RunBaselineCheck=true
 
   publish:
     name: Publish
@@ -117,18 +77,18 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-    - name: Download all workflow run artifacts
-      uses: actions/download-artifact@v4
-      with:
-        name: nuget
-        path: nuget
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: 8.0.x
-    - name: Publish NuGet packages to NuGet
-      run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source "nuget.org"
-    - uses: stripe/openapi/actions/notify-release@master
-      if: always()
-      with:
-        bot_token: ${{ secrets.SLACK_BOT_TOKEN }}
+      - name: Download all workflow run artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nuget
+          path: nuget
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 8.0.x
+      - name: Publish NuGet packages to NuGet
+        run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source "nuget.org"
+      - uses: stripe/openapi/actions/notify-release@master
+        if: always()
+        with:
+          bot_token: ${{ secrets.SLACK_BOT_TOKEN }}

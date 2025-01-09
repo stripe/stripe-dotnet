@@ -4,7 +4,7 @@
 [![Build Status](https://github.com/stripe/stripe-dotnet/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/stripe/stripe-dotnet/actions?query=branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/github/stripe/stripe-dotnet/badge.svg?branch=master)](https://coveralls.io/github/stripe/stripe-dotnet?branch=master)
 
-The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 2.0+, and .NET Framework 4.6.1+.
+The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 3.1+, and .NET Framework 4.6.1+.
 
 ## Installation
 
@@ -30,10 +30,10 @@ From within Visual Studio:
 
 1. Open the Solution Explorer.
 2. Right-click on a project within your solution.
-3. Click on *Manage NuGet Packages...*
-4. Click on the *Browse* tab and search for "Stripe.net".
+3. Click on _Manage NuGet Packages..._
+4. Click on the _Browse_ tab and search for "Stripe.net".
 5. Click on the Stripe.net package, select the appropriate version in the
-   right-tab and click *Install*.
+   right-tab and click _Install_.
 
 ## Documentation
 
@@ -49,7 +49,7 @@ Stripe authenticates API requests using your account’s secret key, which you c
 
 Use `StripeConfiguration.ApiKey` property to set the secret key.
 
-``` C#
+```C#
 StripeConfiguration.ApiKey = "sk_test_...";
 ```
 
@@ -57,7 +57,7 @@ StripeConfiguration.ApiKey = "sk_test_...";
 
 The `Create` method of the service class can be used to create a new resource:
 
-``` C#
+```C#
 var options = new CustomerCreateOptions
 {
     Email = "customer@example.com"
@@ -74,7 +74,7 @@ Console.WriteLine(customer.Email);
 
 The `Retrieve` method of the service class can be used to retrieve a resource:
 
-``` C#
+```C#
 var service = new CustomerService();
 Customer customer = service.Get("cus_1234");
 
@@ -370,10 +370,13 @@ go install github.com/stripe/stripe-mock@latest
 stripe-mock
 ```
 
+Lastly, we use [just](https://github.com/casey/just) for running common development tasks. You can also read the `justfile` and run those commands directly.
+
 Run all tests from the `src/StripeTests` directory:
 
 ```sh
-dotnet test src
+just test
+# or: dotnet test src
 ```
 
 Run some tests, filtering by name:
@@ -393,7 +396,8 @@ must be formatted before PRs are submitted, otherwise CI will fail. Run the
 formatter with:
 
 ```sh
-dotnet format src/Stripe.net.sln
+just format
+# or: dotnet format src/Stripe.net.sln
 ```
 
 For any requests, bug or comments, please [open an issue][issues] or [submit a
