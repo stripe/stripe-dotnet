@@ -24,7 +24,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: extractions/setup-just@v2
+      - name: Install just
+        run: |
+          sudo apt-get update
+          sudo apt-get install just
+
       - uses: actions/checkout@master
 
       - name: Setup .NET
