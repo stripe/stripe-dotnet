@@ -99,7 +99,7 @@ namespace Stripe
         public AccountSessionComponentsDocumentsOptions Documents { get; set; }
 
         /// <summary>
-        /// Configuration for the financial account component.
+        /// Configuration for the financial account embedded component.
         /// </summary>
         [JsonProperty("financial_account")]
 #if NET6_0_OR_GREATER
@@ -108,7 +108,7 @@ namespace Stripe
         public AccountSessionComponentsFinancialAccountOptions FinancialAccount { get; set; }
 
         /// <summary>
-        /// Configuration for the financial account transactions component.
+        /// Configuration for the financial account transactions embedded component.
         /// </summary>
         [JsonProperty("financial_account_transactions")]
 #if NET6_0_OR_GREATER
@@ -117,7 +117,7 @@ namespace Stripe
         public AccountSessionComponentsFinancialAccountTransactionsOptions FinancialAccountTransactions { get; set; }
 
         /// <summary>
-        /// Configuration for the issuing card component.
+        /// Configuration for the issuing card embedded component.
         /// </summary>
         [JsonProperty("issuing_card")]
 #if NET6_0_OR_GREATER
@@ -126,7 +126,7 @@ namespace Stripe
         public AccountSessionComponentsIssuingCardOptions IssuingCard { get; set; }
 
         /// <summary>
-        /// Configuration for the issuing cards list component.
+        /// Configuration for the issuing cards list embedded component.
         /// </summary>
         [JsonProperty("issuing_cards_list")]
 #if NET6_0_OR_GREATER

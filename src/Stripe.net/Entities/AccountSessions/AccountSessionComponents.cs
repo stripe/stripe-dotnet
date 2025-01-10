@@ -50,6 +50,30 @@ namespace Stripe
 #endif
         public AccountSessionComponentsDocuments Documents { get; set; }
 
+        [JsonProperty("financial_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_account")]
+#endif
+        public AccountSessionComponentsFinancialAccount FinancialAccount { get; set; }
+
+        [JsonProperty("financial_account_transactions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_account_transactions")]
+#endif
+        public AccountSessionComponentsFinancialAccountTransactions FinancialAccountTransactions { get; set; }
+
+        [JsonProperty("issuing_card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("issuing_card")]
+#endif
+        public AccountSessionComponentsIssuingCard IssuingCard { get; set; }
+
+        [JsonProperty("issuing_cards_list")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("issuing_cards_list")]
+#endif
+        public AccountSessionComponentsIssuingCardsList IssuingCardsList { get; set; }
+
         [JsonProperty("notification_banner")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("notification_banner")]
