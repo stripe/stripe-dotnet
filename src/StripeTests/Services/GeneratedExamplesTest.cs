@@ -4511,6 +4511,21 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestTerminalReadersProcessSetupIntentPost()
+        {
+            var options = new Stripe.Terminal.ReaderProcessSetupIntentOptions
+            {
+                SetupIntent = "seti_xxxxxxxxxxxxx",
+                AllowRedisplay = "always",
+            };
+            var service = new Stripe.Terminal.ReaderService(this.StripeClient);
+            service.ProcessSetupIntent("tmr_xxxxxxxxxxxxx", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v1/terminal/readers/tmr_xxxxxxxxxxxxx/process_setup_intent");
+        }
+
+        [Fact]
         public void TestTestHelpersCustomersFundCashBalancePost()
         {
             var options = new Stripe.TestHelpers.CustomerFundCashBalanceOptions
