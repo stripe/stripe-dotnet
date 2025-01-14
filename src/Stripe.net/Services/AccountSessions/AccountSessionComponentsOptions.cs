@@ -223,5 +223,14 @@ namespace Stripe
         [STJS.JsonPropertyName("tax_settings")]
 #endif
         public AccountSessionComponentsTaxSettingsOptions TaxSettings { get; set; }
+
+        /// <summary>
+        /// Configuration for the tax threshold monitoring embedded component.
+        /// </summary>
+        [JsonProperty("tax_threshold_monitoring")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_threshold_monitoring")]
+#endif
+        public AccountSessionComponentsTaxThresholdMonitoringOptions TaxThresholdMonitoring { get; set; }
     }
 }
