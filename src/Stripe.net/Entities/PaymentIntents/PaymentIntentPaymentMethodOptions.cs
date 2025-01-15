@@ -212,6 +212,12 @@ namespace Stripe
 #endif
         public PaymentIntentPaymentMethodOptionsP24 P24 { get; set; }
 
+        [JsonProperty("pay_by_bank")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pay_by_bank")]
+#endif
+        public PaymentIntentPaymentMethodOptionsPayByBank PayByBank { get; set; }
+
         [JsonProperty("payco")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payco")]

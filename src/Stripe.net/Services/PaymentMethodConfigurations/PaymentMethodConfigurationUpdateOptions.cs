@@ -426,6 +426,18 @@ namespace Stripe
         public PaymentMethodConfigurationP24Options P24 { get; set; }
 
         /// <summary>
+        /// Pay by bank is a redirect payment method backed by bank transfers. A customer is
+        /// redirected to their bank to authorize a bank transfer for a given amount. This removes a
+        /// lot of the error risks inherent in waiting for the customer to initiate a transfer
+        /// themselves, and is less expensive than card payments.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pay_by_bank")]
+#endif
+        public PaymentMethodConfigurationPayByBankOptions PayByBank { get; set; }
+
+        /// <summary>
         /// PayNow is a Singapore-based payment method that allows customers to make a payment using
         /// their preferred app from participating banks and participating non-bank financial
         /// institutions. Check this <a href="https://stripe.com/docs/payments/paynow">page</a> for

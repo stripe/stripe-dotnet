@@ -304,6 +304,12 @@ namespace Stripe
 #endif
         public string Parent { get; set; }
 
+        [JsonProperty("pay_by_bank")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pay_by_bank")]
+#endif
+        public PaymentMethodConfigurationPayByBank PayByBank { get; set; }
+
         [JsonProperty("paynow")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paynow")]

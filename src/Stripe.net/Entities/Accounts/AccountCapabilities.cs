@@ -457,6 +457,17 @@ namespace Stripe
         public string P24Payments { get; set; }
 
         /// <summary>
+        /// The status of the pay_by_bank payments capability of the account, or whether the account
+        /// can directly process pay_by_bank charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("pay_by_bank_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pay_by_bank_payments")]
+#endif
+        public string PayByBankPayments { get; set; }
+
+        /// <summary>
         /// The status of the Payco capability of the account, or whether the account can directly
         /// process Payco payments.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

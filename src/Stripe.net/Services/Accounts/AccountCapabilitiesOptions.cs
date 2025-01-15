@@ -378,6 +378,15 @@ namespace Stripe
         public AccountCapabilitiesP24PaymentsOptions P24Payments { get; set; }
 
         /// <summary>
+        /// The pay_by_bank_payments capability.
+        /// </summary>
+        [JsonProperty("pay_by_bank_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pay_by_bank_payments")]
+#endif
+        public AccountCapabilitiesPayByBankPaymentsOptions PayByBankPayments { get; set; }
+
+        /// <summary>
         /// The payco_payments capability.
         /// </summary>
         [JsonProperty("payco_payments")]

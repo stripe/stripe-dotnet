@@ -50,6 +50,16 @@ namespace Stripe
         public bool? DirectorsProvided { get; set; }
 
         /// <summary>
+        /// This hash is used to attest that the directors information provided to Stripe is both
+        /// current and correct.
+        /// </summary>
+        [JsonProperty("directorship_declaration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("directorship_declaration")]
+#endif
+        public AccountCompanyDirectorshipDeclarationOptions DirectorshipDeclaration { get; set; }
+
+        /// <summary>
         /// Whether the company's executives have been provided. Set this Boolean to <c>true</c>
         /// after creating all the company's executives with <a
         /// href="https://stripe.com/api/persons">the Persons API</a> for accounts with a
