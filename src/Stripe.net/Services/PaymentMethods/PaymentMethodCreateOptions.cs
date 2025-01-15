@@ -389,6 +389,16 @@ namespace Stripe
         public PaymentMethodP24Options P24 { get; set; }
 
         /// <summary>
+        /// If this is a <c>pay_by_bank</c> PaymentMethod, this hash contains details about the
+        /// PayByBank payment method.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pay_by_bank")]
+#endif
+        public PaymentMethodPayByBankOptions PayByBank { get; set; }
+
+        /// <summary>
         /// If this is a <c>payco</c> PaymentMethod, this hash contains details about the PAYCO
         /// payment method.
         /// </summary>
@@ -568,9 +578,9 @@ namespace Stripe
         /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>gopay</c>,
         /// <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>,
-        /// <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>payco</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>,
-        /// <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
+        /// <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
         /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
         /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
