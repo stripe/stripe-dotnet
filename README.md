@@ -358,6 +358,8 @@ New features and bug fixes are released on the latest major version of the Strip
 
 ## Development
 
+[Contribution guidelines for this project](CONTRIBUTING.md)
+
 .NET 8 is required to build and test Stripe.net SDK, you can install it from [get.dot.net](https://get.dot.net/).
 
 The test suite depends on [stripe-mock][stripe-mock], so make sure to fetch
