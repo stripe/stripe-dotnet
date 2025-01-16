@@ -1,6 +1,6 @@
 set quiet
 
-import? '../sdk-codegen/justfile'
+import? '../sdk-codegen/utils.just'
 
 _default:
     just --list --unsorted
@@ -21,10 +21,6 @@ ci-test: (_test "--no-build" "" "Release")
 format *args:
     # This sets TargetFramework because of a race condition in dotnet format when it tries to format to multiple targets at a time, which could lead to code with compiler errors after it completes
     TargetFramework=net5.0 dotnet format src/Stripe.net/Stripe.net.csproj --severity warn {{args}}
-
-# for backwards compatibility; ideally removed later
-[private]
-alias codegen-format := format
 
 # verify, but don't modify, the project's formatting
 format-check: (format "--verify-no-changes")
