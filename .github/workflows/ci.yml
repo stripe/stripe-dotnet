@@ -21,7 +21,8 @@ jobs:
   build:
     name: Build and test
 
-    runs-on: ubuntu-latest
+    # TODO: this step is not compatible with ubuntu 24 LTS, so we pin the version here instead of using ubuntu-latest 
+    runs-on: ubuntu-22.04
 
     steps:
       - uses: extractions/setup-just@v2
