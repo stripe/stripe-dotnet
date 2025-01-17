@@ -168,6 +168,12 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsP24Options P24 { get; set; }
 
         /// <summary>
+        /// contains details about the Pay By Bank payment method options.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+        public SessionPaymentMethodOptionsPayByBankOptions PayByBank { get; set; }
+
+        /// <summary>
         /// contains details about the PAYCO payment method options.
         /// </summary>
         [JsonProperty("payco")]

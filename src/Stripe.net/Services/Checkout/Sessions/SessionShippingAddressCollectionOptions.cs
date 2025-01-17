@@ -32,13 +32,13 @@ namespace Stripe.Checkout
         /// <c>NU</c>, <c>NZ</c>, <c>OM</c>, <c>PA</c>, <c>PE</c>, <c>PF</c>, <c>PG</c>, <c>PH</c>,
         /// <c>PK</c>, <c>PL</c>, <c>PM</c>, <c>PN</c>, <c>PR</c>, <c>PS</c>, <c>PT</c>, <c>PY</c>,
         /// <c>QA</c>, <c>RE</c>, <c>RO</c>, <c>RS</c>, <c>RU</c>, <c>RW</c>, <c>SA</c>, <c>SB</c>,
-        /// <c>SC</c>, <c>SE</c>, <c>SG</c>, <c>SH</c>, <c>SI</c>, <c>SJ</c>, <c>SK</c>, <c>SL</c>,
-        /// <c>SM</c>, <c>SN</c>, <c>SO</c>, <c>SR</c>, <c>SS</c>, <c>ST</c>, <c>SV</c>, <c>SX</c>,
-        /// <c>SZ</c>, <c>TA</c>, <c>TC</c>, <c>TD</c>, <c>TF</c>, <c>TG</c>, <c>TH</c>, <c>TJ</c>,
-        /// <c>TK</c>, <c>TL</c>, <c>TM</c>, <c>TN</c>, <c>TO</c>, <c>TR</c>, <c>TT</c>, <c>TV</c>,
-        /// <c>TW</c>, <c>TZ</c>, <c>UA</c>, <c>UG</c>, <c>US</c>, <c>UY</c>, <c>UZ</c>, <c>VA</c>,
-        /// <c>VC</c>, <c>VE</c>, <c>VG</c>, <c>VN</c>, <c>VU</c>, <c>WF</c>, <c>WS</c>, <c>XK</c>,
-        /// <c>YE</c>, <c>YT</c>, <c>ZA</c>, <c>ZM</c>, <c>ZW</c>, or <c>ZZ</c>.
+        /// <c>SC</c>, <c>SD</c>, <c>SE</c>, <c>SG</c>, <c>SH</c>, <c>SI</c>, <c>SJ</c>, <c>SK</c>,
+        /// <c>SL</c>, <c>SM</c>, <c>SN</c>, <c>SO</c>, <c>SR</c>, <c>SS</c>, <c>ST</c>, <c>SV</c>,
+        /// <c>SX</c>, <c>SZ</c>, <c>TA</c>, <c>TC</c>, <c>TD</c>, <c>TF</c>, <c>TG</c>, <c>TH</c>,
+        /// <c>TJ</c>, <c>TK</c>, <c>TL</c>, <c>TM</c>, <c>TN</c>, <c>TO</c>, <c>TR</c>, <c>TT</c>,
+        /// <c>TV</c>, <c>TW</c>, <c>TZ</c>, <c>UA</c>, <c>UG</c>, <c>US</c>, <c>UY</c>, <c>UZ</c>,
+        /// <c>VA</c>, <c>VC</c>, <c>VE</c>, <c>VG</c>, <c>VN</c>, <c>VU</c>, <c>WF</c>, <c>WS</c>,
+        /// <c>XK</c>, <c>YE</c>, <c>YT</c>, <c>ZA</c>, <c>ZM</c>, <c>ZW</c>, or <c>ZZ</c>.
         /// </summary>
         [JsonProperty("allowed_countries")]
         public List<string> AllowedCountries { get; set; }

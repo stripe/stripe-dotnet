@@ -53,5 +53,11 @@ namespace Stripe
         /// </summary>
         [JsonProperty("proof_of_registration")]
         public AccountDocumentsProofOfRegistrationOptions ProofOfRegistration { get; set; }
+
+        /// <summary>
+        /// One or more documents that demonstrate proof of ultimate beneficial ownership.
+        /// </summary>
+        [JsonProperty("proof_of_ultimate_beneficial_ownership")]
+        public AccountDocumentsProofOfUltimateBeneficialOwnershipOptions ProofOfUltimateBeneficialOwnership { get; set; }
     }
 }

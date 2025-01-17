@@ -222,6 +222,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsP24Options P24 { get; set; }
 
         /// <summary>
+        /// If this is a <c>pay_by_bank</c> PaymentMethod, this sub-hash contains details about the
+        /// PayByBank payment method options.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+        public PaymentIntentPaymentMethodOptionsPayByBankOptions PayByBank { get; set; }
+
+        /// <summary>
         /// If this is a <c>payco</c> PaymentMethod, this sub-hash contains details about the PAYCO
         /// payment method options.
         /// </summary>

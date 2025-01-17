@@ -17,6 +17,18 @@ namespace Stripe
         [JsonProperty("documents")]
         public AccountSessionComponentsDocuments Documents { get; set; }
 
+        [JsonProperty("financial_account")]
+        public AccountSessionComponentsFinancialAccount FinancialAccount { get; set; }
+
+        [JsonProperty("financial_account_transactions")]
+        public AccountSessionComponentsFinancialAccountTransactions FinancialAccountTransactions { get; set; }
+
+        [JsonProperty("issuing_card")]
+        public AccountSessionComponentsIssuingCard IssuingCard { get; set; }
+
+        [JsonProperty("issuing_cards_list")]
+        public AccountSessionComponentsIssuingCardsList IssuingCardsList { get; set; }
+
         [JsonProperty("notification_banner")]
         public AccountSessionComponentsNotificationBanner NotificationBanner { get; set; }
 

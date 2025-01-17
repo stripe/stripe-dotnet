@@ -54,6 +54,12 @@ namespace Stripe.Terminal
         public ConfigurationTippingHkdOptions Hkd { get; set; }
 
         /// <summary>
+        /// Tipping configuration for JPY.
+        /// </summary>
+        [JsonProperty("jpy")]
+        public ConfigurationTippingJpyOptions Jpy { get; set; }
+
+        /// <summary>
         /// Tipping configuration for MYR.
         /// </summary>
         [JsonProperty("myr")]

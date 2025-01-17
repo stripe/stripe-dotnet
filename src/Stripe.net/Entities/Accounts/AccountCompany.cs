@@ -30,6 +30,13 @@ namespace Stripe
         public bool DirectorsProvided { get; set; }
 
         /// <summary>
+        /// This hash is used to attest that the director information provided to Stripe is both
+        /// current and correct.
+        /// </summary>
+        [JsonProperty("directorship_declaration")]
+        public AccountCompanyDirectorshipDeclaration DirectorshipDeclaration { get; set; }
+
+        /// <summary>
         /// Whether the company's executives have been provided. This Boolean will be <c>true</c> if
         /// you've manually indicated that all executives are provided via <a
         /// href="https://stripe.com/docs/api/accounts/update#update_account-company-executives_provided">the
@@ -88,6 +95,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("ownership_declaration")]
         public AccountCompanyOwnershipDeclaration OwnershipDeclaration { get; set; }
+
+        /// <summary>
+        /// One of: <c>qualified_entity_exceeds_ownership_threshold</c>, or
+        /// <c>qualifies_as_financial_institution</c>.
+        /// </summary>
+        [JsonProperty("ownership_exemption_reason")]
+        public string OwnershipExemptionReason { get; set; }
 
         /// <summary>
         /// The company's phone number (used for verification).

@@ -30,6 +30,30 @@ namespace Stripe
         public AccountSessionComponentsDocumentsOptions Documents { get; set; }
 
         /// <summary>
+        /// Configuration for the financial account embedded component.
+        /// </summary>
+        [JsonProperty("financial_account")]
+        public AccountSessionComponentsFinancialAccountOptions FinancialAccount { get; set; }
+
+        /// <summary>
+        /// Configuration for the financial account transactions embedded component.
+        /// </summary>
+        [JsonProperty("financial_account_transactions")]
+        public AccountSessionComponentsFinancialAccountTransactionsOptions FinancialAccountTransactions { get; set; }
+
+        /// <summary>
+        /// Configuration for the issuing card embedded component.
+        /// </summary>
+        [JsonProperty("issuing_card")]
+        public AccountSessionComponentsIssuingCardOptions IssuingCard { get; set; }
+
+        /// <summary>
+        /// Configuration for the issuing cards list embedded component.
+        /// </summary>
+        [JsonProperty("issuing_cards_list")]
+        public AccountSessionComponentsIssuingCardsListOptions IssuingCardsList { get; set; }
+
+        /// <summary>
         /// Configuration for the notification banner embedded component.
         /// </summary>
         [JsonProperty("notification_banner")]

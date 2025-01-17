@@ -104,6 +104,9 @@ namespace Stripe
         [JsonProperty("p24")]
         public ChargePaymentMethodDetailsP24 P24 { get; set; }
 
+        [JsonProperty("pay_by_bank")]
+        public ChargePaymentMethodDetailsPayByBank PayByBank { get; set; }
+
         [JsonProperty("payco")]
         public ChargePaymentMethodDetailsPayco Payco { get; set; }
 
