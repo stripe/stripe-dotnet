@@ -11,7 +11,7 @@ namespace Stripe.FinancialConnections
     public class TransactionListOptions : ListOptions
     {
         /// <summary>
-        /// The ID of the Stripe account whose transactions will be retrieved.
+        /// The ID of the Financial Connections Account whose transactions will be retrieved.
         /// </summary>
         [JsonProperty("account")]
 #if NET6_0_OR_GREATER
