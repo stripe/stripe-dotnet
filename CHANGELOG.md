@@ -1,5 +1,16 @@
 # Changelog
 
+## 47.3.0-beta.2 - 2025-01-17
+* [#3043](https://github.com/stripe/stripe-dotnet/pull/3043) Update generated code for beta
+  * Add support for `PayByBankPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `DirectorshipDeclaration` on `AccountCompanyOptions` and `TokenAccountCompanyOptions`
+  * Add support for `ProofOfUltimateBeneficialOwnership` on `AccountDocumentsOptions`
+  * Add support for `TaxThresholdMonitoring` on `AccountSessionComponentsOptions`
+  * Add support for `FinancialAccountTransactions`, `FinancialAccount`, `IssuingCard`, and `IssuingCardsList` on `AccountSessionComponents`
+  * Add support for `PayByBank` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Discounts` on `CheckoutSession`
+  * Add support for `Jpy` on `TerminalConfigurationTippingOptions` and `TerminalConfigurationTipping`
+
 ## 47.3.0-beta.1 - 2025-01-09
 * [#3037](https://github.com/stripe/stripe-dotnet/pull/3037) Update generated code for beta
   * Add support for `Close` method on resource `Treasury.FinancialAccount`
