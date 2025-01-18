@@ -304,6 +304,15 @@ namespace Stripe.Checkout
         public string CustomerEmail { get; set; }
 
         /// <summary>
+        /// List of coupons and promotion codes attached to the Checkout Session.
+        /// </summary>
+        [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
+        public List<SessionDiscount> Discounts { get; set; }
+
+        /// <summary>
         /// The timestamp at which the Checkout Session will expire.
         /// </summary>
         [JsonProperty("expires_at")]

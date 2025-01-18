@@ -77,5 +77,14 @@ namespace Stripe
         [STJS.JsonPropertyName("proof_of_registration")]
 #endif
         public AccountDocumentsProofOfRegistrationOptions ProofOfRegistration { get; set; }
+
+        /// <summary>
+        /// One or more documents that demonstrate proof of ultimate beneficial ownership.
+        /// </summary>
+        [JsonProperty("proof_of_ultimate_beneficial_ownership")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proof_of_ultimate_beneficial_ownership")]
+#endif
+        public AccountDocumentsProofOfUltimateBeneficialOwnershipOptions ProofOfUltimateBeneficialOwnership { get; set; }
     }
 }

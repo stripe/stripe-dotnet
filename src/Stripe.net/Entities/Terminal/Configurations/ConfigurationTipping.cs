@@ -56,6 +56,12 @@ namespace Stripe.Terminal
 #endif
         public ConfigurationTippingHkd Hkd { get; set; }
 
+        [JsonProperty("jpy")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("jpy")]
+#endif
+        public ConfigurationTippingJpy Jpy { get; set; }
+
         [JsonProperty("myr")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("myr")]

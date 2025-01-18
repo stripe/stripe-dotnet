@@ -81,6 +81,15 @@ namespace Stripe.Terminal
         public ConfigurationTippingHkdOptions Hkd { get; set; }
 
         /// <summary>
+        /// Tipping configuration for JPY.
+        /// </summary>
+        [JsonProperty("jpy")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("jpy")]
+#endif
+        public ConfigurationTippingJpyOptions Jpy { get; set; }
+
+        /// <summary>
         /// Tipping configuration for MYR.
         /// </summary>
         [JsonProperty("myr")]
