@@ -70,14 +70,5 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("process_config")]
 #endif
         public ReaderActionProcessPaymentIntentProcessConfig ProcessConfig { get; set; }
-
-        /// <summary>
-        /// This field will be deprecated. Please use <c>account</c> instead.
-        /// </summary>
-        [JsonProperty("stripe_account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("stripe_account")]
-#endif
-        public string StripeAccount { get; set; }
     }
 }
