@@ -10,7 +10,8 @@ namespace Stripe
     public class ConfirmationTokenPaymentMethodPreviewInteracPresentNetworks : StripeEntity<ConfirmationTokenPaymentMethodPreviewInteracPresentNetworks>
     {
         /// <summary>
-        /// All available networks for the card.
+        /// All networks available for selection via <a
+        /// href="https://stripe.com/api/payment_intents/confirm#confirm_payment_intent-payment_method_options-card-network">payment_method_options.card.network</a>.
         /// </summary>
         [JsonProperty("available")]
 #if NET6_0_OR_GREATER
