@@ -7,6 +7,8 @@ namespace Stripe.Checkout
     {
         /// <summary>
         /// Set to <c>true</c> to enable phone number collection.
+        ///
+        /// Can only be set in <c>payment</c> and <c>subscription</c> mode.
         /// </summary>
         [JsonProperty("enabled")]
         public bool? Enabled { get; set; }

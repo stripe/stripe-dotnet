@@ -98,6 +98,9 @@ namespace Stripe
         [JsonProperty("p24")]
         public PaymentIntentPaymentMethodOptionsP24 P24 { get; set; }
 
+        [JsonProperty("pay_by_bank")]
+        public PaymentIntentPaymentMethodOptionsPayByBank PayByBank { get; set; }
+
         [JsonProperty("payco")]
         public PaymentIntentPaymentMethodOptionsPayco Payco { get; set; }
 

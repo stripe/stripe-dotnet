@@ -53,6 +53,13 @@ namespace Stripe
         public PaymentMethodNaverPayOptions NaverPay { get; set; }
 
         /// <summary>
+        /// If this is a <c>pay_by_bank</c> PaymentMethod, this hash contains details about the
+        /// PayByBank payment method.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+        public PaymentMethodPayByBankOptions PayByBank { get; set; }
+
+        /// <summary>
         /// If this is an <c>us_bank_account</c> PaymentMethod, this hash contains details about the
         /// US bank account payment method.
         /// </summary>

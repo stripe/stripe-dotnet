@@ -175,6 +175,9 @@ namespace Stripe
         [JsonProperty("parent")]
         public string Parent { get; set; }
 
+        [JsonProperty("pay_by_bank")]
+        public PaymentMethodConfigurationPayByBank PayByBank { get; set; }
+
         [JsonProperty("paynow")]
         public PaymentMethodConfigurationPaynow Paynow { get; set; }
 

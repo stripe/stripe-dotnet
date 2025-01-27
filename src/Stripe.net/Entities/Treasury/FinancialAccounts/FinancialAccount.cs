@@ -70,6 +70,9 @@ namespace Stripe.Treasury
         [JsonProperty("financial_addresses")]
         public List<FinancialAccountFinancialAddress> FinancialAddresses { get; set; }
 
+        [JsonProperty("is_default")]
+        public bool IsDefault { get; set; }
+
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
@@ -84,6 +87,12 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The nickname for the FinancialAccount.
+        /// </summary>
+        [JsonProperty("nickname")]
+        public string Nickname { get; set; }
 
         /// <summary>
         /// The array of paths to pending Features in the Features hash.

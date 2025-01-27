@@ -191,6 +191,9 @@ namespace Stripe
         [JsonProperty("p24")]
         public PaymentMethodP24 P24 { get; set; }
 
+        [JsonProperty("pay_by_bank")]
+        public PaymentMethodPayByBank PayByBank { get; set; }
+
         [JsonProperty("payco")]
         public PaymentMethodPayco Payco { get; set; }
 
@@ -242,10 +245,10 @@ namespace Stripe
         /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
         /// <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>,
-        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
-        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
+        /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
+        /// <c>samsung_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
