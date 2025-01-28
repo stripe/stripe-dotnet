@@ -1,5 +1,33 @@
 # Changelog
 
+## 47.3.0 - 2025-01-27
+* [#3044](https://github.com/stripe/stripe-dotnet/pull/3044) Update generated code
+  * Add support for `Close` method on resource `Treasury.FinancialAccount`
+  * Add support for `PayByBankPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `DirectorshipDeclaration` and `OwnershipExemptionReason` on `AccountCompanyOptions`, `AccountCompany`, and `TokenAccountCompanyOptions`
+  * Add support for `ProofOfUltimateBeneficialOwnership` on `AccountDocumentsOptions`
+  * Add support for `FinancialAccount` on `AccountSessionComponentsOptions`, `AccountSessionComponents`, and `TreasuryOutboundTransferDestinationPaymentMethodDetails`
+  * Add support for `FinancialAccountTransactions`, `IssuingCard`, and `IssuingCardsList` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
+  * Add support for `AdviceCode` on `ChargeOutcome`, `InvoiceLastFinalizationError`, `PaymentIntentLastPaymentError`, `SetupAttemptSetupError`, `SetupIntentLastSetupError`, and `StripeError`
+  * Add support for `PayByBank` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Country` on `ChargePaymentMethodDetailsPaypal`, `ConfirmationTokenPaymentMethodPreviewPaypal`, and `PaymentMethodPaypal`
+  * Add support for `Discounts` on `CheckoutSession`
+  * Add support for `PhoneNumberCollection` on `PaymentLinkUpdateOptions`
+  * Add support for `Jpy` on `TerminalConfigurationTippingOptions` and `TerminalConfigurationTipping`
+  * Add support for `Nickname` on `Treasury.FinancialAccountCreateOptions`, `Treasury.FinancialAccountUpdateOptions`, and `TreasuryFinancialAccount`
+  * Add support for `ForwardingSettings` on `Treasury.FinancialAccountUpdateOptions`
+  * Add support for `IsDefault` on `TreasuryFinancialAccount`
+  * Add support for `DestinationPaymentMethodData` on `Treasury.OutboundTransferCreateOptions`
+  * Change type of `TreasuryOutboundTransferDestinationPaymentMethodDetailsType` from `literal('us_bank_account')` to `enum('financial_account'|'us_bank_account')`
+  * Add support for `OutboundTransfer` on `TreasuryReceivedCreditLinkedFlowsSourceFlowDetails`
+* [#3046](https://github.com/stripe/stripe-dotnet/pull/3046) update justfile import
+* [#3045](https://github.com/stripe/stripe-dotnet/pull/3045) Added CONTRIBUTING.md file
+* [#3047](https://github.com/stripe/stripe-dotnet/pull/3047) Pin ubuntu version in ci
+* [#3040](https://github.com/stripe/stripe-dotnet/pull/3040) Add justfile, remove coveralls
+* [#3042](https://github.com/stripe/stripe-dotnet/pull/3042) Remove debug build and test from CI
+* [#3039](https://github.com/stripe/stripe-dotnet/pull/3039) Fixed supported frameworks in project description and readme
+* [#3038](https://github.com/stripe/stripe-dotnet/pull/3038) Added pull request template
+
 ## 47.3.0-beta.3 - 2025-01-23
 * [#3048](https://github.com/stripe/stripe-dotnet/pull/3048) Update generated code for beta
   * Remove support for `StripeAccount` on `TerminalReaderActionCollectPaymentMethod`, `TerminalReaderActionConfirmPaymentIntent`, `TerminalReaderActionProcessPaymentIntent`, and `TerminalReaderActionRefundPayment`
