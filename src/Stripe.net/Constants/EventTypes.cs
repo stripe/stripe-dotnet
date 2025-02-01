@@ -137,7 +137,8 @@ namespace Stripe
         public const string CapitalFinancingOfferRejected = "capital.financing_offer.rejected";
 
         /// <summary>
-        /// Occurs whenever a replacement for a financing offer has been created.
+        /// Occurs whenever a replacement for a financing offer has been created. More details can
+        /// be <a href="https://docs.stripe.com/capital/replacements">found here</a>.
         /// </summary>
         public const string CapitalFinancingOfferReplacementCreated = "capital.financing_offer.replacement_created";
 
