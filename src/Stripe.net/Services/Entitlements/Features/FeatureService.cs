@@ -8,7 +8,7 @@ namespace Stripe.Entitlements
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class FeatureService : Service<Feature>,
+    public class FeatureService : Service,
         ICreatable<Feature, FeatureCreateOptions>,
         IListable<Feature, FeatureListOptions>,
         IRetrievable<Feature, FeatureGetOptions>,

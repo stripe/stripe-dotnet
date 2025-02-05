@@ -8,7 +8,7 @@ namespace Stripe.Reporting
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ReportTypeService : Service<ReportType>,
+    public class ReportTypeService : Service,
         IListable<ReportType, ReportTypeListOptions>,
         IRetrievable<ReportType, ReportTypeGetOptions>
     {

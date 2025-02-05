@@ -7,7 +7,7 @@ namespace Stripe.FinancialConnections
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SessionService : Service<Session>,
+    public class SessionService : Service,
         ICreatable<Session, SessionCreateOptions>,
         IRetrievable<Session, SessionGetOptions>
     {

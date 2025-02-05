@@ -6,7 +6,7 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreditBalanceSummaryService : Service<CreditBalanceSummary>,
+    public class CreditBalanceSummaryService : Service,
         ISingletonRetrievable<CreditBalanceSummary>
     {
         public CreditBalanceSummaryService()
