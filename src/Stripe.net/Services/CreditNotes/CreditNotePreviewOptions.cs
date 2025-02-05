@@ -32,6 +32,14 @@ namespace Stripe
         public DateTime? EffectiveAt { get; set; }
 
         /// <summary>
+        /// Type of email to send to the customer, one of <c>credit_note</c> or <c>none</c> and the
+        /// default is <c>credit_note</c>.
+        /// One of: <c>credit_note</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("email_type")]
+        public string EmailType { get; set; }
+
+        /// <summary>
         /// ID of the invoice.
         /// </summary>
         [JsonProperty("invoice")]

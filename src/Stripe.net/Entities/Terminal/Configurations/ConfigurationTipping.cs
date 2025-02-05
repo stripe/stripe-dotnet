@@ -29,6 +29,9 @@ namespace Stripe.Terminal
         [JsonProperty("hkd")]
         public ConfigurationTippingHkd Hkd { get; set; }
 
+        [JsonProperty("jpy")]
+        public ConfigurationTippingJpy Jpy { get; set; }
+
         [JsonProperty("myr")]
         public ConfigurationTippingMyr Myr { get; set; }
 
@@ -37,6 +40,9 @@ namespace Stripe.Terminal
 
         [JsonProperty("nzd")]
         public ConfigurationTippingNzd Nzd { get; set; }
+
+        [JsonProperty("pln")]
+        public ConfigurationTippingPln Pln { get; set; }
 
         [JsonProperty("sek")]
         public ConfigurationTippingSek Sek { get; set; }

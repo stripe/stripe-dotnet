@@ -27,7 +27,8 @@ namespace Stripe.Tax
         public string Object { get; set; }
 
         /// <summary>
-        /// Total after taxes.
+        /// Total amount after taxes in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_total")]
         public long AmountTotal { get; set; }
@@ -69,6 +70,12 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// The details of the ship from location, such as the address.
+        /// </summary>
+        [JsonProperty("ship_from_details")]
+        public CalculationShipFromDetails ShipFromDetails { get; set; }
 
         /// <summary>
         /// The shipping cost details for the calculation.

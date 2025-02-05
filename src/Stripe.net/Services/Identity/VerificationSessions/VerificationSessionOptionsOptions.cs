@@ -12,17 +12,5 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("document")]
         public VerificationSessionOptionsDocumentOptions Document { get; set; }
-
-        /// <summary>
-        /// Options that apply to the email check.
-        /// </summary>
-        [JsonProperty("email")]
-        public VerificationSessionOptionsEmailOptions Email { get; set; }
-
-        /// <summary>
-        /// Options that apply to the phone check.
-        /// </summary>
-        [JsonProperty("phone")]
-        public VerificationSessionOptionsPhoneOptions Phone { get; set; }
     }
 }

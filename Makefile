@@ -1,10 +1,13 @@
+# NOTE: this file is deprecated and slated for deletion; prefer using the equivalent `just` commands.
+
 .PHONY: update-version codegen-format test ci-test
 update-version:
 	@echo "$(VERSION)" > VERSION
 	@perl -pi -e 's|<Version>[.\-\d\w]+</Version>|<Version>$(VERSION)</Version>|' src/Stripe.net/Stripe.net.csproj
+	@perl -pi -e 's|Current = "[.\-\d\w]+";|Current = "$(VERSION)";|' src/Stripe.net/Constants/Version.cs
 
 codegen-format:
-	dotnet format src/Stripe.net/Stripe.net.csproj --severity warn
+	TargetFramework=net5.0 dotnet format src/Stripe.net/Stripe.net.csproj --severity warn
 
 ci-test:
 	dotnet test --no-build src/StripeTests/StripeTests.csproj -c Release

@@ -11,6 +11,12 @@ namespace Stripe.Issuing
         public Address Address { get; set; }
 
         /// <summary>
+        /// Address validation details for the shipment.
+        /// </summary>
+        [JsonProperty("address_validation")]
+        public CardShippingAddressValidation AddressValidation { get; set; }
+
+        /// <summary>
         /// The delivery company that shipped a card.
         /// One of: <c>dhl</c>, <c>fedex</c>, <c>royal_mail</c>, or <c>usps</c>.
         /// </summary>
@@ -64,7 +70,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// The delivery status of the card.
         /// One of: <c>canceled</c>, <c>delivered</c>, <c>failure</c>, <c>pending</c>,
-        /// <c>returned</c>, or <c>shipped</c>.
+        /// <c>returned</c>, <c>shipped</c>, or <c>submitted</c>.
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }

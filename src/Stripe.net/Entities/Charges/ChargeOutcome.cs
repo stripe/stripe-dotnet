@@ -7,6 +7,29 @@ namespace Stripe
     public class ChargeOutcome : StripeEntity<ChargeOutcome>
     {
         /// <summary>
+        /// An enumerated value providing a more detailed explanation on <a
+        /// href="https://stripe.com/docs/declines#retrying-issuer-declines">how to proceed with an
+        /// error</a>.
+        /// One of: <c>confirm_card_data</c>, <c>do_not_try_again</c>, or <c>try_again_later</c>.
+        /// </summary>
+        [JsonProperty("advice_code")]
+        public string AdviceCode { get; set; }
+
+        /// <summary>
+        /// For charges declined by the network, a 2 digit code which indicates the advice returned
+        /// by the network on how to proceed with an error.
+        /// </summary>
+        [JsonProperty("network_advice_code")]
+        public string NetworkAdviceCode { get; set; }
+
+        /// <summary>
+        /// For charges declined by the network, a brand specific 2, 3, or 4 digit code which
+        /// indicates the reason the authorization failed.
+        /// </summary>
+        [JsonProperty("network_decline_code")]
+        public string NetworkDeclineCode { get; set; }
+
+        /// <summary>
         /// Possible values are <c>approved_by_network</c>, <c>declined_by_network</c>,
         /// <c>not_sent_to_network</c>, and <c>reversed_after_approval</c>. The value
         /// <c>reversed_after_approval</c> indicates the payment was <a

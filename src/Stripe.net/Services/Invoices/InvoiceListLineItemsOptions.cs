@@ -1,8 +1,10 @@
 namespace Stripe
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
+    [Obsolete("Use InvoiceLineItemListOptions instead.")]
     public class InvoiceListLineItemsOptions : ListOptions
     {
         [JsonProperty("coupon")]

@@ -11,7 +11,7 @@ namespace StripeTests
         {
             var options = new BankAccountListOptions();
 
-            Assert.Equal("object=bank_account", FormEncoder.CreateQueryString(options));
+            Assert.Equal("object=bank_account", ContentEncoder.CreateQueryString(options));
         }
     }
 }

@@ -15,8 +15,9 @@ namespace Stripe
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
-        /// Delete all usage for a given subscription item. Allowed only when <c>deleted</c> is set
-        /// to <c>true</c> and the current plan's <c>usage_type</c> is <c>metered</c>.
+        /// Delete all usage for a given subscription item. You must pass this when deleting a usage
+        /// records subscription item. <c>clear_usage</c> has no effect if the plan has a billing
+        /// meter attached.
         /// </summary>
         [JsonProperty("clear_usage")]
         public bool? ClearUsage { get; set; }
@@ -55,15 +56,16 @@ namespace Stripe
         public string Plan { get; set; }
 
         /// <summary>
-        /// The ID of the price object. When changing a subscription item's price, <c>quantity</c>
-        /// is set to 1 unless a <c>quantity</c> parameter is provided.
+        /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required. When
+        /// changing a subscription item's price, <c>quantity</c> is set to 1 unless a
+        /// <c>quantity</c> parameter is provided.
         /// </summary>
         [JsonProperty("price")]
         public string Price { get; set; }
 
         /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
-        /// object inline.
+        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
         public SubscriptionItemPriceDataOptions PriceData { get; set; }

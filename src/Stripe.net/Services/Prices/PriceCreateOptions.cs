@@ -133,8 +133,8 @@ namespace Stripe
 
         /// <summary>
         /// A positive integer in cents (or local equivalent) (or 0 for a free price) representing
-        /// how much to charge. One of <c>unit_amount</c> or <c>custom_unit_amount</c> is required,
-        /// unless <c>billing_scheme=tiered</c>.
+        /// how much to charge. One of <c>unit_amount</c>, <c>unit_amount_decimal</c>, or
+        /// <c>custom_unit_amount</c> is required, unless <c>billing_scheme=tiered</c>.
         /// </summary>
         [JsonProperty("unit_amount")]
         public long? UnitAmount { get; set; }

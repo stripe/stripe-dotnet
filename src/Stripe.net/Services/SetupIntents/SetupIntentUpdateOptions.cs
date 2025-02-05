@@ -58,13 +58,15 @@ namespace Stripe
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or saved Source object) to attach to
-        /// this SetupIntent.
+        /// this SetupIntent. To unset this field to null, pass in an empty string.
         /// </summary>
         [JsonProperty("payment_method")]
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The ID of the payment method configuration to use with this SetupIntent.
+        /// The ID of the <a
+        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// configuration</a> to use with this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
         public string PaymentMethodConfiguration { get; set; }
@@ -85,7 +87,9 @@ namespace Stripe
 
         /// <summary>
         /// The list of payment method types (for example, card) that this SetupIntent can set up.
-        /// If you don't provide this array, it defaults to ["card"].
+        /// If you don't provide this, Stripe will dynamically show relevant payment methods from
+        /// your <a href="https://dashboard.stripe.com/settings/payment_methods">payment method
+        /// settings</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }

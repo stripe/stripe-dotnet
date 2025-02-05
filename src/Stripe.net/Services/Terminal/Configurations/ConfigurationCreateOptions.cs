@@ -24,6 +24,18 @@ namespace Stripe.Terminal
         public ConfigurationOfflineOptions Offline { get; set; }
 
         /// <summary>
+        /// Reboot time settings for readers that support customized reboot time configuration.
+        /// </summary>
+        [JsonProperty("reboot_window")]
+        public ConfigurationRebootWindowOptions RebootWindow { get; set; }
+
+        /// <summary>
+        /// An object containing device type specific settings for Stripe S700 readers.
+        /// </summary>
+        [JsonProperty("stripe_s700")]
+        public ConfigurationStripeS700Options StripeS700 { get; set; }
+
+        /// <summary>
         /// Tipping configurations for readers supporting on-reader tips.
         /// </summary>
         [JsonProperty("tipping")]

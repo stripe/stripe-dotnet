@@ -39,6 +39,13 @@ namespace Stripe.Checkout
         public string Object { get; set; }
 
         /// <summary>
+        /// Settings for price localization with <a
+        /// href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>.
+        /// </summary>
+        [JsonProperty("adaptive_pricing")]
+        public SessionAdaptivePricing AdaptivePricing { get; set; }
+
+        /// <summary>
         /// When set, provides configuration for actions to take if this Checkout Session expires.
         /// </summary>
         [JsonProperty("after_expiration")]
@@ -122,7 +129,9 @@ namespace Stripe.Checkout
         public string Currency { get; set; }
 
         /// <summary>
-        /// Currency conversion details for automatic currency conversion sessions.
+        /// Currency conversion details for <a
+        /// href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>
+        /// sessions.
         /// </summary>
         [JsonProperty("currency_conversion")]
         public SessionCurrencyConversion CurrencyConversion { get; set; }
@@ -199,6 +208,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("customer_email")]
         public string CustomerEmail { get; set; }
+
+        /// <summary>
+        /// List of coupons and promotion codes attached to the Checkout Session.
+        /// </summary>
+        [JsonProperty("discounts")]
+        public List<SessionDiscount> Discounts { get; set; }
 
         /// <summary>
         /// The timestamp at which the Checkout Session will expire.
@@ -289,7 +304,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (ID of the PaymentIntent)
-        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode.
+        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode. You can't
+        /// confirm or cancel the PaymentIntent for a Checkout Session. To cancel, <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a> instead.
         /// </summary>
         [JsonIgnore]
         public string PaymentIntentId
@@ -300,7 +318,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode.
+        /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode. You can't
+        /// confirm or cancel the PaymentIntent for a Checkout Session. To cancel, <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a> instead.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -396,7 +417,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// This parameter applies to <c>ui_mode: embedded</c>. Learn more about the <a
-        /// href="https://stripe.com/docs/payments/checkout/custom-redirect-behavior">redirect
+        /// href="https://stripe.com/docs/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
         /// </summary>
@@ -422,7 +443,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (ID of the SetupIntent)
-        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode.
+        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode. You can't confirm
+        /// or cancel the SetupIntent for a Checkout Session. To cancel, <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a> instead.
         /// </summary>
         [JsonIgnore]
         public string SetupIntentId
@@ -433,7 +457,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode.
+        /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode. You can't confirm
+        /// or cancel the SetupIntent for a Checkout Session. To cancel, <a
+        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// Session</a> instead.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -488,7 +515,7 @@ namespace Stripe.Checkout
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
         /// specified on Checkout Sessions in <c>payment</c> mode. If blank or <c>auto</c>,
         /// <c>pay</c> is used.
-        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
+        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
         public string SubmitType { get; set; }

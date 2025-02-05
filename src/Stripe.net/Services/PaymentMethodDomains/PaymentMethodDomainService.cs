@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -17,20 +18,22 @@ namespace Stripe
         {
         }
 
+        internal PaymentMethodDomainService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public PaymentMethodDomainService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/payment_method_domains";
 
         /// <summary>
         /// <p>Creates a payment method domain.</p>.
         /// </summary>
         public virtual PaymentMethodDomain Create(PaymentMethodDomainCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethodDomain>(HttpMethod.Post, $"/v1/payment_method_domains", options, requestOptions);
+            return this.Request<PaymentMethodDomain>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_method_domains", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentMethodDomain> CreateAsync(PaymentMethodDomainCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethodDomain>(HttpMethod.Post, $"/v1/payment_method_domains", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethodDomain>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_method_domains", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentMethodDomain Get(string id, PaymentMethodDomainGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethodDomain>(HttpMethod.Get, $"/v1/payment_method_domains/{id}", options, requestOptions);
+            return this.Request<PaymentMethodDomain>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_method_domains/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentMethodDomain> GetAsync(string id, PaymentMethodDomainGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethodDomain>(HttpMethod.Get, $"/v1/payment_method_domains/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethodDomain>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_method_domains/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -62,7 +65,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<PaymentMethodDomain> List(PaymentMethodDomainListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<PaymentMethodDomain>>(HttpMethod.Get, $"/v1/payment_method_domains", options, requestOptions);
+            return this.Request<StripeList<PaymentMethodDomain>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_method_domains", options, requestOptions);
         }
 
         /// <summary>
@@ -70,7 +73,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<PaymentMethodDomain>> ListAsync(PaymentMethodDomainListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<PaymentMethodDomain>>(HttpMethod.Get, $"/v1/payment_method_domains", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<PaymentMethodDomain>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_method_domains", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -94,7 +97,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentMethodDomain Update(string id, PaymentMethodDomainUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethodDomain>(HttpMethod.Post, $"/v1/payment_method_domains/{id}", options, requestOptions);
+            return this.Request<PaymentMethodDomain>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_method_domains/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -102,7 +105,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentMethodDomain> UpdateAsync(string id, PaymentMethodDomainUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethodDomain>(HttpMethod.Post, $"/v1/payment_method_domains/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethodDomain>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_method_domains/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -121,7 +124,7 @@ namespace Stripe
         /// </summary>
         public virtual PaymentMethodDomain Validate(string id, PaymentMethodDomainValidateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<PaymentMethodDomain>(HttpMethod.Post, $"/v1/payment_method_domains/{id}/validate", options, requestOptions);
+            return this.Request<PaymentMethodDomain>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_method_domains/{WebUtility.UrlEncode(id)}/validate", options, requestOptions);
         }
 
         /// <summary>
@@ -140,7 +143,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<PaymentMethodDomain> ValidateAsync(string id, PaymentMethodDomainValidateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<PaymentMethodDomain>(HttpMethod.Post, $"/v1/payment_method_domains/{id}/validate", options, requestOptions, cancellationToken);
+            return this.RequestAsync<PaymentMethodDomain>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_method_domains/{WebUtility.UrlEncode(id)}/validate", options, requestOptions, cancellationToken);
         }
     }
 }

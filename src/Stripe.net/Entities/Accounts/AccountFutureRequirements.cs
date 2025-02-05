@@ -16,8 +16,8 @@ namespace Stripe
         public List<AccountFutureRequirementsAlternative> Alternatives { get; set; }
 
         /// <summary>
-        /// Date on which <c>future_requirements</c> merges with the main <c>requirements</c> hash
-        /// and <c>future_requirements</c> becomes empty. After the transition, <c>currently_due</c>
+        /// Date on which <c>future_requirements</c> becomes the main <c>requirements</c> hash and
+        /// <c>future_requirements</c> becomes empty. After the transition, <c>currently_due</c>
         /// requirements may immediately become <c>past_due</c>, but the account may also be given a
         /// grace period depending on its enablement state prior to transitioning.
         /// </summary>
@@ -34,7 +34,13 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// This is typed as a string for consistency with <c>requirements.disabled_reason</c>.
+        /// This is typed as an enum for consistency with <c>requirements.disabled_reason</c>.
+        /// One of: <c>action_required.requested_capabilities</c>, <c>listed</c>, <c>other</c>,
+        /// <c>platform_paused</c>, <c>rejected.fraud</c>, <c>rejected.incomplete_verification</c>,
+        /// <c>rejected.listed</c>, <c>rejected.other</c>, <c>rejected.platform_fraud</c>,
+        /// <c>rejected.platform_other</c>, <c>rejected.platform_terms_of_service</c>,
+        /// <c>rejected.terms_of_service</c>, <c>requirements.past_due</c>,
+        /// <c>requirements.pending_verification</c>, or <c>under_review</c>.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }
@@ -47,8 +53,8 @@ namespace Stripe
         public List<AccountFutureRequirementsError> Errors { get; set; }
 
         /// <summary>
-        /// Fields that need to be collected assuming all volume thresholds are reached. As they
-        /// become required, they appear in <c>currently_due</c> as well.
+        /// Fields you must collect when all thresholds are reached. As they become required, they
+        /// appear in <c>currently_due</c> as well.
         /// </summary>
         [JsonProperty("eventually_due")]
         public List<string> EventuallyDue { get; set; }

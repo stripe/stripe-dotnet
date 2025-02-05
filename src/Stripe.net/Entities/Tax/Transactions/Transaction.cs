@@ -73,6 +73,13 @@ namespace Stripe.Tax
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The Unix timestamp representing when the tax liability is assumed or reduced.
+        /// </summary>
+        [JsonProperty("posted_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime PostedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// A custom unique identifier, such as 'myOrder_123'.
         /// </summary>
         [JsonProperty("reference")]
@@ -83,6 +90,12 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("reversal")]
         public TransactionReversal Reversal { get; set; }
+
+        /// <summary>
+        /// The details of the ship from location, such as the address.
+        /// </summary>
+        [JsonProperty("ship_from_details")]
+        public TransactionShipFromDetails ShipFromDetails { get; set; }
 
         /// <summary>
         /// The shipping cost details for the transaction.

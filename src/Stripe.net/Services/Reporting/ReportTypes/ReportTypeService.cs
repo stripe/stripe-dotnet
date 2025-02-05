@@ -3,6 +3,7 @@ namespace Stripe.Reporting
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -15,13 +16,15 @@ namespace Stripe.Reporting
         {
         }
 
+        internal ReportTypeService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public ReportTypeService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/reporting/report_types";
 
         /// <summary>
         /// <p>Retrieves the details of a Report Type. (Certain report types require a <a
@@ -29,7 +32,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual ReportType Get(string id, ReportTypeGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ReportType>(HttpMethod.Get, $"/v1/reporting/report_types/{id}", options, requestOptions);
+            return this.Request<ReportType>(BaseAddress.Api, HttpMethod.Get, $"/v1/reporting/report_types/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual Task<ReportType> GetAsync(string id, ReportTypeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ReportType>(HttpMethod.Get, $"/v1/reporting/report_types/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ReportType>(BaseAddress.Api, HttpMethod.Get, $"/v1/reporting/report_types/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual StripeList<ReportType> List(ReportTypeListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ReportType>>(HttpMethod.Get, $"/v1/reporting/report_types", options, requestOptions);
+            return this.Request<StripeList<ReportType>>(BaseAddress.Api, HttpMethod.Get, $"/v1/reporting/report_types", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual Task<StripeList<ReportType>> ListAsync(ReportTypeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ReportType>>(HttpMethod.Get, $"/v1/reporting/report_types", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ReportType>>(BaseAddress.Api, HttpMethod.Get, $"/v1/reporting/report_types", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

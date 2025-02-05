@@ -7,7 +7,8 @@ namespace Stripe
     {
         /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
-        /// <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
+        /// <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or
+        /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }
@@ -86,8 +87,8 @@ namespace Stripe
         /// <summary>
         /// Identifies which network this charge was processed on. Can be <c>amex</c>,
         /// <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
-        /// <c>interac</c>, <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or
-        /// <c>unknown</c>.
+        /// <c>interac</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>,
+        /// <c>visa</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("network")]
         public string Network { get; set; }

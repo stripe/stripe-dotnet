@@ -3,6 +3,7 @@ namespace Stripe.Radar
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -15,13 +16,15 @@ namespace Stripe.Radar
         {
         }
 
+        internal EarlyFraudWarningService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public EarlyFraudWarningService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/radar/early_fraud_warnings";
 
         /// <summary>
         /// <p>Retrieves the details of an early fraud warning that has previously been created.
@@ -33,7 +36,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual EarlyFraudWarning Get(string id, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<EarlyFraudWarning>(HttpMethod.Get, $"/v1/radar/early_fraud_warnings/{id}", options, requestOptions);
+            return this.Request<EarlyFraudWarning>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/early_fraud_warnings/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<EarlyFraudWarning> GetAsync(string id, EarlyFraudWarningGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<EarlyFraudWarning>(HttpMethod.Get, $"/v1/radar/early_fraud_warnings/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<EarlyFraudWarning>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/early_fraud_warnings/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual StripeList<EarlyFraudWarning> List(EarlyFraudWarningListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<EarlyFraudWarning>>(HttpMethod.Get, $"/v1/radar/early_fraud_warnings", options, requestOptions);
+            return this.Request<StripeList<EarlyFraudWarning>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/early_fraud_warnings", options, requestOptions);
         }
 
         /// <summary>
@@ -62,7 +65,7 @@ namespace Stripe.Radar
         /// </summary>
         public virtual Task<StripeList<EarlyFraudWarning>> ListAsync(EarlyFraudWarningListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<EarlyFraudWarning>>(HttpMethod.Get, $"/v1/radar/early_fraud_warnings", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<EarlyFraudWarning>>(BaseAddress.Api, HttpMethod.Get, $"/v1/radar/early_fraud_warnings", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

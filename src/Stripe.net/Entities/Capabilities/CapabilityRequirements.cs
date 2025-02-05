@@ -33,21 +33,13 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// If the capability is disabled, this string describes why. Can be
-        /// <c>requirements.past_due</c>, <c>requirements.pending_verification</c>, <c>listed</c>,
-        /// <c>platform_paused</c>, <c>rejected.fraud</c>, <c>rejected.listed</c>,
-        /// <c>rejected.terms_of_service</c>, <c>rejected.other</c>, <c>under_review</c>, or
-        /// <c>other</c>.
-        ///
-        /// <c>rejected.unsupported_business</c> means that the account's business is not supported
-        /// by the capability. For example, payment methods may restrict the businesses they support
-        /// in their terms of service:.
-        ///
-        /// - <a href="https://stripe.com/afterpay-clearpay/legal#restricted-businesses">Afterpay
-        /// Clearpay's terms of service</a>.
-        ///
-        /// If you believe that the rejection is in error, please contact support at
-        /// https://support.stripe.com/contact/ for assistance.
+        /// Description of why the capability is disabled. <a
+        /// href="https://stripe.com/docs/connect/handling-api-verification">Learn more about
+        /// handling verification issues</a>.
+        /// One of: <c>other</c>, <c>paused.inactivity</c>, <c>pending.onboarding</c>,
+        /// <c>pending.review</c>, <c>platform_disabled</c>, <c>platform_paused</c>,
+        /// <c>rejected.inactivity</c>, <c>rejected.other</c>, <c>rejected.unsupported_business</c>,
+        /// or <c>requirements.fields_needed</c>.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }
@@ -60,9 +52,8 @@ namespace Stripe
         public List<AccountRequirementsError> Errors { get; set; }
 
         /// <summary>
-        /// Fields that need to be collected assuming all volume thresholds are reached. As they
-        /// become required, they appear in <c>currently_due</c> as well, and
-        /// <c>current_deadline</c> becomes set.
+        /// Fields you must collect when all thresholds are reached. As they become required, they
+        /// appear in <c>currently_due</c> as well, and <c>current_deadline</c> becomes set.
         /// </summary>
         [JsonProperty("eventually_due")]
         public List<string> EventuallyDue { get; set; }

@@ -4,7 +4,7 @@
 [![Build Status](https://github.com/stripe/stripe-dotnet/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/stripe/stripe-dotnet/actions?query=branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/github/stripe/stripe-dotnet/badge.svg?branch=master)](https://coveralls.io/github/stripe/stripe-dotnet?branch=master)
 
-The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 2.0+, and .NET Framework 4.6.1+.
+The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 3.1+, and .NET Framework 4.6.1+.
 
 ## Installation
 
@@ -30,10 +30,10 @@ From within Visual Studio:
 
 1. Open the Solution Explorer.
 2. Right-click on a project within your solution.
-3. Click on *Manage NuGet Packages...*
-4. Click on the *Browse* tab and search for "Stripe.net".
+3. Click on _Manage NuGet Packages..._
+4. Click on the _Browse_ tab and search for "Stripe.net".
 5. Click on the Stripe.net package, select the appropriate version in the
-   right-tab and click *Install*.
+   right-tab and click _Install_.
 
 ## Documentation
 
@@ -49,7 +49,7 @@ Stripe authenticates API requests using your account’s secret key, which you c
 
 Use `StripeConfiguration.ApiKey` property to set the secret key.
 
-``` C#
+```C#
 StripeConfiguration.ApiKey = "sk_test_...";
 ```
 
@@ -57,7 +57,7 @@ StripeConfiguration.ApiKey = "sk_test_...";
 
 The `Create` method of the service class can be used to create a new resource:
 
-``` C#
+```C#
 var options = new CustomerCreateOptions
 {
     Email = "customer@example.com"
@@ -74,7 +74,7 @@ Console.WriteLine(customer.Email);
 
 The `Retrieve` method of the service class can be used to retrieve a resource:
 
-``` C#
+```C#
 var service = new CustomerService();
 Customer customer = service.Get("cus_1234");
 
@@ -271,8 +271,10 @@ We would love for you to try these and share feedback with us before these featu
 To install a beta version of Stripe.net use the version parameter with `dotnet add package` command:
 
 ```
-dotnet add package Stripe.net --version 40.3.0-beta.1
+dotnet add package Stripe.net --version <beta version>
 ```
+
+Beta versions are appended with `-beta.X` such as `45.0.0-beta.1`. Make sure to choose the version that includes support for the beta you are interested in!
 
 > **Note**
 > There can be breaking changes between beta versions. Therefore we recommend pinning the package version to a specific beta version in your project file. This way you can install the same version each time without breaking changes unless you are intentionally looking for the latest beta version.
@@ -288,11 +290,25 @@ If your beta feature requires a `Stripe-Version` header to be sent, set the `Str
 StripeConfiguration.AddBetaVersion("feature_beta", "v3");
 ```
 
+### Custom requests
+
+If you would like to send a request to an undocumented API (for example you are in a private beta), or if you prefer to bypass the method definitions in the library and specify your request details directly, you can use the `RawRequestAsync` method on `StripeClient`.
+
+```C#
+StripeClient client = new StripeClient();
+StripeResponse response = await client.RawRequestAsync(HttpMethod.Get, "/v1/accounts/acc_123");
+
+// Optionally use Deserialize to convert the response to strongly-typed object.
+Account account = client.Deserialize<Account>(response.Content)
+```
+
 ## Support
 
 New features and bug fixes are released on the latest major version of the Stripe .NET client library. If you are on an older major version, we recommend that you upgrade to the latest in order to use the new features and bug fixes including those for security vulnerabilities. Older major versions of the package will continue to be available for use, but will not be receiving any updates.
 
 ## Development
+
+[Contribution guidelines for this project](CONTRIBUTING.md)
 
 .NET 8 is required to build and test Stripe.net SDK, you can install it from [get.dot.net](https://get.dot.net/).
 
@@ -306,10 +322,13 @@ go install github.com/stripe/stripe-mock@latest
 stripe-mock
 ```
 
+Lastly, we use [just](https://github.com/casey/just) for running common development tasks. You can also read the `justfile` and run those commands directly.
+
 Run all tests from the `src/StripeTests` directory:
 
 ```sh
-dotnet test src
+just test
+# or: dotnet test src
 ```
 
 Run some tests, filtering by name:
@@ -329,7 +348,8 @@ must be formatted before PRs are submitted, otherwise CI will fail. Run the
 formatter with:
 
 ```sh
-dotnet format src/Stripe.net.sln
+just format
+# or: dotnet format src/Stripe.net.sln
 ```
 
 For any requests, bug or comments, please [open an issue][issues] or [submit a

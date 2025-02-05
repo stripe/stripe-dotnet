@@ -45,19 +45,24 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// For card charges, use <a
-        /// href="https://stripe.com/docs/payments/account/statement-descriptors#dynamic">statement_descriptor_suffix</a>.
-        /// Otherwise, you can use this value as the complete description of a charge on your
-        /// customers' statements. It must contain at least one letter and be 1–22 characters long.
+        /// Text that appears on the customer's statement as the statement descriptor for a non-card
+        /// charge. This value overrides the account's default statement descriptor. For information
+        /// about requirements, including the 22-character limit, see <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors">the Statement
+        /// Descriptor docs</a>.
+        ///
+        /// Setting this value for a card charge returns an error. For card charges, set the <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors#dynamic">statement_descriptor_suffix</a>
+        /// instead.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Provides information about a card payment that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
-        /// on the account to form the complete statement descriptor. The concatenated descriptor
-        /// must be 1-22 characters long.
+        /// Provides information about a card charge. Concatenated to the account's <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement
+        /// descriptor prefix</a> to form the complete statement descriptor that appears on the
+        /// customer's statement.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }

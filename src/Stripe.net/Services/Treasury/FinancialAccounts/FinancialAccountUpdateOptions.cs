@@ -15,6 +15,13 @@ namespace Stripe.Treasury
         public FinancialAccountFeaturesOptions Features { get; set; }
 
         /// <summary>
+        /// A different bank account where funds can be deposited/debited in order to get the
+        /// closing FA's balance to $0.
+        /// </summary>
+        [JsonProperty("forwarding_settings")]
+        public FinancialAccountForwardingSettingsOptions ForwardingSettings { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
@@ -22,6 +29,12 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The nickname for the FinancialAccount.
+        /// </summary>
+        [JsonProperty("nickname")]
+        public string Nickname { get; set; }
 
         /// <summary>
         /// The set of functionalities that the platform can restrict on the FinancialAccount.

@@ -1,16 +1,25 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 
     public class ConfirmationTokenPaymentMethodPreviewCardPresent : StripeEntity<ConfirmationTokenPaymentMethodPreviewCardPresent>
     {
         /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
-        /// <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
+        /// <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or
+        /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }
+
+        /// <summary>
+        /// The <a href="https://stripe.com/docs/card-product-codes">product code</a> that
+        /// identifies the specific program or product associated with a card.
+        /// </summary>
+        [JsonProperty("brand_product")]
+        public string BrandProduct { get; set; }
 
         /// <summary>
         /// The cardholder name as read from the card, in <a
@@ -95,11 +104,26 @@ namespace Stripe
         public ConfirmationTokenPaymentMethodPreviewCardPresentNetworks Networks { get; set; }
 
         /// <summary>
+        /// Details about payment methods collected offline.
+        /// </summary>
+        [JsonProperty("offline")]
+        public ConfirmationTokenPaymentMethodPreviewCardPresentOffline Offline { get; set; }
+
+        /// <summary>
+        /// EMV tag 5F2D. Preferred languages specified by the integrated circuit chip.
+        /// </summary>
+        [JsonProperty("preferred_locales")]
+        public List<string> PreferredLocales { get; set; }
+
+        /// <summary>
         /// How card details were read in this transaction.
         /// One of: <c>contact_emv</c>, <c>contactless_emv</c>, <c>contactless_magstripe_mode</c>,
         /// <c>magnetic_stripe_fallback</c>, or <c>magnetic_stripe_track2</c>.
         /// </summary>
         [JsonProperty("read_method")]
         public string ReadMethod { get; set; }
+
+        [JsonProperty("wallet")]
+        public ConfirmationTokenPaymentMethodPreviewCardPresentWallet Wallet { get; set; }
     }
 }

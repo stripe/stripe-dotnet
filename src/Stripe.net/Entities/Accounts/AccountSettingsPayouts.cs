@@ -7,10 +7,10 @@ namespace Stripe
     {
         /// <summary>
         /// A Boolean indicating if Stripe should try to reclaim negative balances from an attached
-        /// bank account. See our <a
-        /// href="https://stripe.com/docs/connect/account-balances">Understanding Connect Account
-        /// Balances</a> documentation for details. Default value is <c>false</c> for Custom
-        /// accounts, otherwise <c>true</c>.
+        /// bank account. See <a href="https://stripe.com/connect/account-balances">Understanding
+        /// Connect account balances</a> for details. The default value is <c>false</c> when <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts, otherwise <c>true</c>.
         /// </summary>
         [JsonProperty("debit_negative_balances")]
         public bool DebitNegativeBalances { get; set; }

@@ -3,6 +3,7 @@ namespace Stripe.Treasury
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -15,13 +16,15 @@ namespace Stripe.Treasury
         {
         }
 
+        internal ReceivedCreditService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public ReceivedCreditService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/treasury/received_credits";
 
         /// <summary>
         /// <p>Retrieves the details of an existing ReceivedCredit by passing the unique
@@ -29,7 +32,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual ReceivedCredit Get(string id, ReceivedCreditGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ReceivedCredit>(HttpMethod.Get, $"/v1/treasury/received_credits/{id}", options, requestOptions);
+            return this.Request<ReceivedCredit>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_credits/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<ReceivedCredit> GetAsync(string id, ReceivedCreditGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ReceivedCredit>(HttpMethod.Get, $"/v1/treasury/received_credits/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ReceivedCredit>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_credits/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<ReceivedCredit> List(ReceivedCreditListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ReceivedCredit>>(HttpMethod.Get, $"/v1/treasury/received_credits", options, requestOptions);
+            return this.Request<StripeList<ReceivedCredit>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_credits", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<ReceivedCredit>> ListAsync(ReceivedCreditListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ReceivedCredit>>(HttpMethod.Get, $"/v1/treasury/received_credits", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ReceivedCredit>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_credits", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

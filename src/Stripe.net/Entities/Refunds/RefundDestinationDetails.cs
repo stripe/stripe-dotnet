@@ -14,6 +14,9 @@ namespace Stripe
         [JsonProperty("alipay")]
         public RefundDestinationDetailsAlipay Alipay { get; set; }
 
+        [JsonProperty("alma")]
+        public RefundDestinationDetailsAlma Alma { get; set; }
+
         [JsonProperty("amazon_pay")]
         public RefundDestinationDetailsAmazonPay AmazonPay { get; set; }
 
@@ -55,6 +58,9 @@ namespace Stripe
 
         [JsonProperty("klarna")]
         public RefundDestinationDetailsKlarna Klarna { get; set; }
+
+        [JsonProperty("multibanco")]
+        public RefundDestinationDetailsMultibanco Multibanco { get; set; }
 
         [JsonProperty("mx_bank_transfer")]
         public RefundDestinationDetailsMxBankTransfer MxBankTransfer { get; set; }

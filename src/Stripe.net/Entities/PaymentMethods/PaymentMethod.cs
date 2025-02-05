@@ -42,6 +42,19 @@ namespace Stripe
         [JsonProperty("alipay")]
         public PaymentMethodAlipay Alipay { get; set; }
 
+        /// <summary>
+        /// This field indicates whether this payment method can be shown again to its customer in a
+        /// checkout flow. Stripe products such as Checkout and Elements use this field to determine
+        /// whether a payment method can be shown as a saved payment method in a checkout flow. The
+        /// field defaults to “unspecified”.
+        /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("allow_redisplay")]
+        public string AllowRedisplay { get; set; }
+
+        [JsonProperty("alma")]
+        public PaymentMethodAlma Alma { get; set; }
+
         [JsonProperty("amazon_pay")]
         public PaymentMethodAmazonPay AmazonPay { get; set; }
 
@@ -133,11 +146,17 @@ namespace Stripe
         [JsonProperty("interac_present")]
         public PaymentMethodInteracPresent InteracPresent { get; set; }
 
+        [JsonProperty("kakao_pay")]
+        public PaymentMethodKakaoPay KakaoPay { get; set; }
+
         [JsonProperty("klarna")]
         public PaymentMethodKlarna Klarna { get; set; }
 
         [JsonProperty("konbini")]
         public PaymentMethodKonbini Konbini { get; set; }
+
+        [JsonProperty("kr_card")]
+        public PaymentMethodKrCard KrCard { get; set; }
 
         [JsonProperty("link")]
         public PaymentMethodLink Link { get; set; }
@@ -160,11 +179,23 @@ namespace Stripe
         [JsonProperty("mobilepay")]
         public PaymentMethodMobilepay Mobilepay { get; set; }
 
+        [JsonProperty("multibanco")]
+        public PaymentMethodMultibanco Multibanco { get; set; }
+
+        [JsonProperty("naver_pay")]
+        public PaymentMethodNaverPay NaverPay { get; set; }
+
         [JsonProperty("oxxo")]
         public PaymentMethodOxxo Oxxo { get; set; }
 
         [JsonProperty("p24")]
         public PaymentMethodP24 P24 { get; set; }
+
+        [JsonProperty("pay_by_bank")]
+        public PaymentMethodPayByBank PayByBank { get; set; }
+
+        [JsonProperty("payco")]
+        public PaymentMethodPayco Payco { get; set; }
 
         [JsonProperty("paynow")]
         public PaymentMethodPaynow Paynow { get; set; }
@@ -189,6 +220,9 @@ namespace Stripe
         [JsonProperty("revolut_pay")]
         public PaymentMethodRevolutPay RevolutPay { get; set; }
 
+        [JsonProperty("samsung_pay")]
+        public PaymentMethodSamsungPay SamsungPay { get; set; }
+
         [JsonProperty("sepa_debit")]
         public PaymentMethodSepaDebit SepaDebit { get; set; }
 
@@ -198,17 +232,22 @@ namespace Stripe
         [JsonProperty("swish")]
         public PaymentMethodSwish Swish { get; set; }
 
+        [JsonProperty("twint")]
+        public PaymentMethodTwint Twint { get; set; }
+
         /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>card_present</c>, <c>cashapp</c>,
-        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
-        /// <c>ideal</c>, <c>interac_present</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>,
-        /// <c>mobilepay</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>,
-        /// <c>promptpay</c>, <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>card_present</c>,
+        /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
+        /// <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>,
+        /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>,
+        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
+        /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
+        /// <c>samsung_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
         /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]

@@ -10,7 +10,7 @@ namespace Stripe
     /// Stripe Elements use registered payment method domains to control where certain payment
     /// methods are shown.
     ///
-    /// Related guides: <a
+    /// Related guide: <a
     /// href="https://stripe.com/docs/payments/payment-methods/pmd-registration">Payment method
     /// domains</a>.
     /// </summary>
@@ -27,6 +27,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("object")]
         public string Object { get; set; }
+
+        /// <summary>
+        /// Indicates the status of a specific payment method on a payment method domain.
+        /// </summary>
+        [JsonProperty("amazon_pay")]
+        public PaymentMethodDomainAmazonPay AmazonPay { get; set; }
 
         /// <summary>
         /// Indicates the status of a specific payment method on a payment method domain.

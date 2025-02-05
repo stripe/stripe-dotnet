@@ -6,6 +6,9 @@ namespace Stripe
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections>
     {
+        [JsonProperty("filters")]
+        public SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters Filters { get; set; }
+
         /// <summary>
         /// The list of permissions to request. The <c>payment_method</c> permission must be
         /// included.

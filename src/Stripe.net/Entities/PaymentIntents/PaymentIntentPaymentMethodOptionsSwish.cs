@@ -6,7 +6,7 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsSwish : StripeEntity<PaymentIntentPaymentMethodOptionsSwish>
     {
         /// <summary>
-        /// The order ID displayed in the Swish app after the payment is authorized.
+        /// A reference for this payment to be displayed in the Swish app.
         /// </summary>
         [JsonProperty("reference")]
         public string Reference { get; set; }
@@ -15,17 +15,21 @@ namespace Stripe
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
-        /// Providing this parameter will <a
-        /// href="https://stripe.com/docs/payments/save-during-payment">attach the payment
-        /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
-        /// confirmed and any required actions from the user are complete. If no Customer was
-        /// provided, the payment method can still be <a
-        /// href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer
-        /// after the transaction completes.
+        /// If you provide a Customer with the PaymentIntent, you can use this parameter to <a
+        /// href="https://stripe.com/payments/save-during-payment">attach the payment method</a> to
+        /// the Customer after the PaymentIntent is confirmed and the customer completes any
+        /// required actions. If you don't provide a Customer, you can still <a
+        /// href="https://stripe.com/api/payment_methods/attach">attach</a> the payment method to a
+        /// Customer after the transaction completes.
         ///
-        /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
-        /// optimize your payment flow and comply with regional legislation and network rules, such
-        /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
+        /// If the payment method is <c>card_present</c> and isn't a digital wallet, Stripe creates
+        /// and attaches a <a
+        /// href="https://stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card to the Customer instead.
+        ///
+        /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
+        /// with regional legislation and network rules, such as <a
+        /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
         public string SetupFutureUsage { get; set; }

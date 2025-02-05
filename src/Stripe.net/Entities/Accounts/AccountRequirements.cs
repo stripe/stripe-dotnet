@@ -33,13 +33,15 @@ namespace Stripe
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
-        /// If the account is disabled, this string describes why. <a
+        /// If the account is disabled, this enum describes why. <a
         /// href="https://stripe.com/docs/connect/handling-api-verification">Learn more about
-        /// handling verification issues</a>. Can be <c>action_required.requested_capabilities</c>,
-        /// <c>requirements.past_due</c>, <c>requirements.pending_verification</c>, <c>listed</c>,
+        /// handling verification issues</a>.
+        /// One of: <c>action_required.requested_capabilities</c>, <c>listed</c>, <c>other</c>,
         /// <c>platform_paused</c>, <c>rejected.fraud</c>, <c>rejected.incomplete_verification</c>,
-        /// <c>rejected.listed</c>, <c>rejected.other</c>, <c>rejected.terms_of_service</c>,
-        /// <c>under_review</c>, or <c>other</c>.
+        /// <c>rejected.listed</c>, <c>rejected.other</c>, <c>rejected.platform_fraud</c>,
+        /// <c>rejected.platform_other</c>, <c>rejected.platform_terms_of_service</c>,
+        /// <c>rejected.terms_of_service</c>, <c>requirements.past_due</c>,
+        /// <c>requirements.pending_verification</c>, or <c>under_review</c>.
         /// </summary>
         [JsonProperty("disabled_reason")]
         public string DisabledReason { get; set; }
@@ -52,9 +54,8 @@ namespace Stripe
         public List<AccountRequirementsError> Errors { get; set; }
 
         /// <summary>
-        /// Fields that need to be collected assuming all volume thresholds are reached. As they
-        /// become required, they appear in <c>currently_due</c> as well, and
-        /// <c>current_deadline</c> becomes set.
+        /// Fields you must collect when all thresholds are reached. As they become required, they
+        /// appear in <c>currently_due</c> as well, and <c>current_deadline</c> becomes set.
         /// </summary>
         [JsonProperty("eventually_due")]
         public List<string> EventuallyDue { get; set; }

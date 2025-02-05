@@ -108,6 +108,12 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsIdealOptions Ideal { get; set; }
 
         /// <summary>
+        /// contains details about the Kakao Pay payment method options.
+        /// </summary>
+        [JsonProperty("kakao_pay")]
+        public SessionPaymentMethodOptionsKakaoPayOptions KakaoPay { get; set; }
+
+        /// <summary>
         /// contains details about the Klarna payment method options.
         /// </summary>
         [JsonProperty("klarna")]
@@ -118,6 +124,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("konbini")]
         public SessionPaymentMethodOptionsKonbiniOptions Konbini { get; set; }
+
+        /// <summary>
+        /// contains details about the Korean card payment method options.
+        /// </summary>
+        [JsonProperty("kr_card")]
+        public SessionPaymentMethodOptionsKrCardOptions KrCard { get; set; }
 
         /// <summary>
         /// contains details about the Link payment method options.
@@ -132,6 +144,18 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsMobilepayOptions Mobilepay { get; set; }
 
         /// <summary>
+        /// contains details about the Multibanco payment method options.
+        /// </summary>
+        [JsonProperty("multibanco")]
+        public SessionPaymentMethodOptionsMultibancoOptions Multibanco { get; set; }
+
+        /// <summary>
+        /// contains details about the Naver Pay payment method options.
+        /// </summary>
+        [JsonProperty("naver_pay")]
+        public SessionPaymentMethodOptionsNaverPayOptions NaverPay { get; set; }
+
+        /// <summary>
         /// contains details about the OXXO payment method options.
         /// </summary>
         [JsonProperty("oxxo")]
@@ -142,6 +166,18 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("p24")]
         public SessionPaymentMethodOptionsP24Options P24 { get; set; }
+
+        /// <summary>
+        /// contains details about the Pay By Bank payment method options.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+        public SessionPaymentMethodOptionsPayByBankOptions PayByBank { get; set; }
+
+        /// <summary>
+        /// contains details about the PAYCO payment method options.
+        /// </summary>
+        [JsonProperty("payco")]
+        public SessionPaymentMethodOptionsPaycoOptions Payco { get; set; }
 
         /// <summary>
         /// contains details about the PayNow payment method options.
@@ -166,6 +202,12 @@ namespace Stripe.Checkout
         /// </summary>
         [JsonProperty("revolut_pay")]
         public SessionPaymentMethodOptionsRevolutPayOptions RevolutPay { get; set; }
+
+        /// <summary>
+        /// contains details about the Samsung Pay payment method options.
+        /// </summary>
+        [JsonProperty("samsung_pay")]
+        public SessionPaymentMethodOptionsSamsungPayOptions SamsungPay { get; set; }
 
         /// <summary>
         /// contains details about the Sepa Debit payment method options.

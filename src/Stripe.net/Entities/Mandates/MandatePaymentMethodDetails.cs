@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("acss_debit")]
         public MandatePaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("amazon_pay")]
+        public MandatePaymentMethodDetailsAmazonPay AmazonPay { get; set; }
+
         [JsonProperty("au_becs_debit")]
         public MandatePaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
 
@@ -20,11 +23,20 @@ namespace Stripe
         [JsonProperty("cashapp")]
         public MandatePaymentMethodDetailsCashapp Cashapp { get; set; }
 
+        [JsonProperty("kakao_pay")]
+        public MandatePaymentMethodDetailsKakaoPay KakaoPay { get; set; }
+
+        [JsonProperty("kr_card")]
+        public MandatePaymentMethodDetailsKrCard KrCard { get; set; }
+
         [JsonProperty("link")]
         public MandatePaymentMethodDetailsLink Link { get; set; }
 
         [JsonProperty("paypal")]
         public MandatePaymentMethodDetailsPaypal Paypal { get; set; }
+
+        [JsonProperty("revolut_pay")]
+        public MandatePaymentMethodDetailsRevolutPay RevolutPay { get; set; }
 
         [JsonProperty("sepa_debit")]
         public MandatePaymentMethodDetailsSepaDebit SepaDebit { get; set; }

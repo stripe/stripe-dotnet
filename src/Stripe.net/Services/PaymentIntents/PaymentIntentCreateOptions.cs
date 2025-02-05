@@ -87,10 +87,14 @@ namespace Stripe
         ///
         /// Payment methods attached to other Customers cannot be used with this PaymentIntent.
         ///
-        /// If present in combination with <a
-        /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>,
-        /// this PaymentIntent's payment method will be attached to the Customer after the
-        /// PaymentIntent has been confirmed and any required actions from the user are complete.
+        /// If <a
+        /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
+        /// payment method attaches to the Customer after the PaymentIntent has been confirmed and
+        /// any required actions from the user are complete. If the payment method is
+        /// <c>card_present</c> and isn't a digital wallet, then a <a
+        /// href="https://docs.stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card is created and attached to the Customer instead.
         /// </summary>
         [JsonProperty("customer")]
         public string Customer { get; set; }
@@ -169,7 +173,9 @@ namespace Stripe
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The ID of the payment method configuration to use with this PaymentIntent.
+        /// The ID of the <a
+        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// configuration</a> to use with this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
         public string PaymentMethodConfiguration { get; set; }
@@ -191,9 +197,9 @@ namespace Stripe
 
         /// <summary>
         /// The list of payment method types (for example, a card) that this PaymentIntent can use.
-        /// If you don't provide this, it defaults to ["card"]. Use <c>automatic_payment_methods</c>
-        /// to manage payment methods from the <a
-        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
+        /// If you don't provide this, Stripe will dynamically show relevant payment methods from
+        /// your <a href="https://dashboard.stripe.com/settings/payment_methods">payment method
+        /// settings</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
@@ -227,17 +233,21 @@ namespace Stripe
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
-        /// Providing this parameter will <a
-        /// href="https://stripe.com/docs/payments/save-during-payment">attach the payment
-        /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
-        /// confirmed and any required actions from the user are complete. If no Customer was
-        /// provided, the payment method can still be <a
-        /// href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer
-        /// after the transaction completes.
+        /// If you provide a Customer with the PaymentIntent, you can use this parameter to <a
+        /// href="https://stripe.com/payments/save-during-payment">attach the payment method</a> to
+        /// the Customer after the PaymentIntent is confirmed and the customer completes any
+        /// required actions. If you don't provide a Customer, you can still <a
+        /// href="https://stripe.com/api/payment_methods/attach">attach</a> the payment method to a
+        /// Customer after the transaction completes.
         ///
-        /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
-        /// optimize your payment flow and comply with regional legislation and network rules, such
-        /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
+        /// If the payment method is <c>card_present</c> and isn't a digital wallet, Stripe creates
+        /// and attaches a <a
+        /// href="https://stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card to the Customer instead.
+        ///
+        /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
+        /// with regional legislation and network rules, such as <a
+        /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
@@ -250,19 +260,24 @@ namespace Stripe
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
-        /// For card charges, use <a
-        /// href="https://stripe.com/docs/payments/account/statement-descriptors#dynamic">statement_descriptor_suffix</a>.
-        /// Otherwise, you can use this value as the complete description of a charge on your
-        /// customers' statements. It must contain at least one letter and be 1–22 characters long.
+        /// Text that appears on the customer's statement as the statement descriptor for a non-card
+        /// charge. This value overrides the account's default statement descriptor. For information
+        /// about requirements, including the 22-character limit, see <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors">the Statement
+        /// Descriptor docs</a>.
+        ///
+        /// Setting this value for a card charge returns an error. For card charges, set the <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors#dynamic">statement_descriptor_suffix</a>
+        /// instead.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Provides information about a card payment that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
-        /// on the account to form the complete statement descriptor. The concatenated descriptor
-        /// must contain 1-22 characters.
+        /// Provides information about a card charge. Concatenated to the account's <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement
+        /// descriptor prefix</a> to form the complete statement descriptor that appears on the
+        /// customer's statement.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }

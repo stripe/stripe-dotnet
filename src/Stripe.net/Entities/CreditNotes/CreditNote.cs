@@ -216,6 +216,12 @@ namespace Stripe
         public string Pdf { get; set; }
 
         /// <summary>
+        /// The pretax credit amounts (ex: discount, credit grants, etc) for all line items.
+        /// </summary>
+        [JsonProperty("pretax_credit_amounts")]
+        public List<CreditNotePretaxCreditAmount> PretaxCreditAmounts { get; set; }
+
+        /// <summary>
         /// Reason for issuing this credit note, one of <c>duplicate</c>, <c>fraudulent</c>,
         /// <c>order_change</c>, or <c>product_unsatisfactory</c>.
         /// One of: <c>duplicate</c>, <c>fraudulent</c>, <c>order_change</c>, or

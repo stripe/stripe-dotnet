@@ -35,6 +35,12 @@ namespace Stripe.Identity
         public VerificationSessionProvidedDetailsOptions ProvidedDetails { get; set; }
 
         /// <summary>
+        /// Token referencing a Customer resource.
+        /// </summary>
+        [JsonProperty("related_customer")]
+        public string RelatedCustomer { get; set; }
+
+        /// <summary>
         /// The URL that the user will be redirected to upon completing the verification flow.
         /// </summary>
         [JsonProperty("return_url")]
@@ -42,14 +48,16 @@ namespace Stripe.Identity
 
         /// <summary>
         /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
-        /// check</a> to be performed.
+        /// check</a> to be performed. You must provide a <c>type</c> if not passing
+        /// <c>verification_flow</c>.
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }
 
         /// <summary>
-        /// The ID of a Verification Flow from the Dashboard.
+        /// The ID of a verification flow from the Dashboard. See
+        /// https://docs.stripe.com/identity/verification-flows.
         /// </summary>
         [JsonProperty("verification_flow")]
         public string VerificationFlow { get; set; }

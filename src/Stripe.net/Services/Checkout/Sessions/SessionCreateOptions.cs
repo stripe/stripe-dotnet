@@ -9,6 +9,13 @@ namespace Stripe.Checkout
     public class SessionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Settings for price localization with <a
+        /// href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>.
+        /// </summary>
+        [JsonProperty("adaptive_pricing")]
+        public SessionAdaptivePricingOptions AdaptivePricing { get; set; }
+
+        /// <summary>
         /// Configure actions after a Checkout Session has expired.
         /// </summary>
         [JsonProperty("after_expiration")]
@@ -37,7 +44,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// If set, Checkout displays a back button and customers will be directed to this URL if
-        /// they decide to cancel payment and return to your website.
+        /// they decide to cancel payment and return to your website. This parameter is not allowed
+        /// if ui_mode is <c>embedded</c>.
         /// </summary>
         [JsonProperty("cancel_url")]
         public string CancelUrl { get; set; }
@@ -266,12 +274,15 @@ namespace Stripe.Checkout
         /// prioritize the most relevant payment methods based on the customer's location and other
         /// characteristics.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>customer_balance</c>,
-        /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>,
-        /// <c>konbini</c>, <c>link</c>, <c>mobilepay</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>,
-        /// <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>cashapp</c>,
+        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
+        /// <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>,
+        /// <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>,
+        /// <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>,
+        /// <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
+        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         public List<string> PaymentMethodTypes { get; set; }
@@ -289,7 +300,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// This parameter applies to <c>ui_mode: embedded</c>. Learn more about the <a
-        /// href="https://stripe.com/docs/payments/checkout/custom-redirect-behavior">redirect
+        /// href="https://stripe.com/docs/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
         /// </summary>
@@ -336,7 +347,7 @@ namespace Stripe.Checkout
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
         /// specified on Checkout Sessions in <c>payment</c> mode. If blank or <c>auto</c>,
         /// <c>pay</c> is used.
-        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, or <c>pay</c>.
+        /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
         public string SubmitType { get; set; }
@@ -359,7 +370,7 @@ namespace Stripe.Checkout
         public string SuccessUrl { get; set; }
 
         /// <summary>
-        /// Controls tax ID collection settings for the session.
+        /// Controls tax ID collection during checkout.
         /// </summary>
         [JsonProperty("tax_id_collection")]
         public SessionTaxIdCollectionOptions TaxIdCollection { get; set; }

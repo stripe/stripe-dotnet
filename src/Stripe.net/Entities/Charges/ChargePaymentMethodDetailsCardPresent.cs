@@ -2,6 +2,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
@@ -15,10 +16,18 @@ namespace Stripe
 
         /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
-        /// <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
+        /// <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or
+        /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }
+
+        /// <summary>
+        /// The <a href="https://stripe.com/docs/card-product-codes">product code</a> that
+        /// identifies the specific program or product associated with a card.
+        /// </summary>
+        [JsonProperty("brand_product")]
+        public string BrandProduct { get; set; }
 
         /// <summary>
         /// When using manual capture, a future timestamp after which the charge will be
@@ -129,11 +138,22 @@ namespace Stripe
         /// <summary>
         /// Identifies which network this charge was processed on. Can be <c>amex</c>,
         /// <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
-        /// <c>interac</c>, <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or
-        /// <c>unknown</c>.
+        /// <c>interac</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>,
+        /// <c>visa</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("network")]
         public string Network { get; set; }
+
+        /// <summary>
+        /// This is used by the financial networks to identify a transaction. Visa calls this the
+        /// Transaction ID, Mastercard calls this the Trace ID, and American Express calls this the
+        /// Acquirer Reference Data. The first three digits of the Trace ID is the Financial Network
+        /// Code, the next 6 digits is the Banknet Reference Number, and the last 4 digits represent
+        /// the date (MM/DD). This field will be available for successful Visa, Mastercard, or
+        /// American Express transactions and always null for other card brands.
+        /// </summary>
+        [JsonProperty("network_transaction_id")]
+        public string NetworkTransactionId { get; set; }
 
         /// <summary>
         /// Details about payments collected offline.
@@ -146,6 +166,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("overcapture_supported")]
         public bool OvercaptureSupported { get; set; }
+
+        /// <summary>
+        /// EMV tag 5F2D. Preferred languages specified by the integrated circuit chip.
+        /// </summary>
+        [JsonProperty("preferred_locales")]
+        public List<string> PreferredLocales { get; set; }
 
         /// <summary>
         /// How card details were read in this transaction.
@@ -161,5 +187,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("receipt")]
         public ChargePaymentMethodDetailsCardPresentReceipt Receipt { get; set; }
+
+        [JsonProperty("wallet")]
+        public ChargePaymentMethodDetailsCardPresentWallet Wallet { get; set; }
     }
 }

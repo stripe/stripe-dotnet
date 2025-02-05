@@ -49,6 +49,13 @@ namespace Stripe
         public PaymentMethodConfigurationAlipayOptions Alipay { get; set; }
 
         /// <summary>
+        /// Alma is a Buy Now, Pay Later payment method that offers customers the ability to pay in
+        /// 2, 3, or 4 installments.
+        /// </summary>
+        [JsonProperty("alma")]
+        public PaymentMethodConfigurationAlmaOptions Alma { get; set; }
+
+        /// <summary>
         /// Amazon Pay is a wallet payment method that lets your customers check out the same way as
         /// on Amazon.
         /// </summary>
@@ -250,6 +257,25 @@ namespace Stripe
         public PaymentMethodConfigurationLinkOptions Link { get; set; }
 
         /// <summary>
+        /// MobilePay is a <a
+        /// href="https://stripe.com/docs/payments/payment-methods#usage">single-use</a> card wallet
+        /// payment method used in Denmark and Finland. It allows customers to <a
+        /// href="https://stripe.com/docs/payments/payment-methods#customer-actions">authenticate
+        /// and approve</a> payments using the MobilePay app. Check this <a
+        /// href="https://stripe.com/docs/payments/mobilepay">page</a> for more details.
+        /// </summary>
+        [JsonProperty("mobilepay")]
+        public PaymentMethodConfigurationMobilepayOptions Mobilepay { get; set; }
+
+        /// <summary>
+        /// Stripe users in Europe and the United States can accept Multibanco payments from
+        /// customers in Portugal using <a href="https://stripe.com/docs/sources">Sources</a>—a
+        /// single integration path for creating payments using any supported method.
+        /// </summary>
+        [JsonProperty("multibanco")]
+        public PaymentMethodConfigurationMultibancoOptions Multibanco { get; set; }
+
+        /// <summary>
         /// Configuration name.
         /// </summary>
         [JsonProperty("name")]
@@ -273,6 +299,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("p24")]
         public PaymentMethodConfigurationP24Options P24 { get; set; }
+
+        /// <summary>
+        /// Pay by bank is a redirect payment method backed by bank transfers. A customer is
+        /// redirected to their bank to authorize a bank transfer for a given amount. This removes a
+        /// lot of the error risks inherent in waiting for the customer to initiate a transfer
+        /// themselves, and is less expensive than card payments.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+        public PaymentMethodConfigurationPayByBankOptions PayByBank { get; set; }
 
         /// <summary>
         /// PayNow is a Singapore-based payment method that allows customers to make a payment using
@@ -340,10 +375,18 @@ namespace Stripe
         public PaymentMethodConfigurationSwishOptions Swish { get; set; }
 
         /// <summary>
+        /// Twint is a payment method popular in Switzerland. It allows customers to pay using their
+        /// mobile phone. Check this <a href="https://docs.stripe.com/payments/twint">page</a> for
+        /// more details.
+        /// </summary>
+        [JsonProperty("twint")]
+        public PaymentMethodConfigurationTwintOptions Twint { get; set; }
+
+        /// <summary>
         /// Stripe users in the United States can accept ACH direct debit payments from customers
         /// with a US bank account using the Automated Clearing House (ACH) payments system operated
-        /// by Nacha. Check this <a href="https://stripe.com/docs/payments/ach-debit">page</a> for
-        /// more details.
+        /// by Nacha. Check this <a
+        /// href="https://stripe.com/docs/payments/ach-direct-debit">page</a> for more details.
         /// </summary>
         [JsonProperty("us_bank_account")]
         public PaymentMethodConfigurationUsBankAccountOptions UsBankAccount { get; set; }

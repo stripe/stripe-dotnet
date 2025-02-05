@@ -101,10 +101,8 @@ namespace Stripe
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
-        /// If the subscription has been canceled with the <c>at_period_end</c> flag set to
-        /// <c>true</c>, <c>cancel_at_period_end</c> on the subscription will be true. You can use
-        /// this attribute to determine whether a subscription that has a status of active is
-        /// scheduled to be canceled at the end of the current period.
+        /// Whether this subscription will (if <c>status=active</c>) or did (if
+        /// <c>status=canceled</c>) cancel at the end of the current billing period.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
         public bool CancelAtPeriodEnd { get; set; }
@@ -353,6 +351,9 @@ namespace Stripe
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime? EndedAt { get; set; }
 
+        [JsonProperty("invoice_settings")]
+        public SubscriptionInvoiceSettings InvoiceSettings { get; set; }
+
         /// <summary>
         /// List of subscription items, each with an attached price.
         /// </summary>
@@ -449,7 +450,7 @@ namespace Stripe
         /// <summary>
         /// If specified, payment collection for this subscription will be paused. Note that the
         /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
-        /// more about <a href="https://stripe.com/billing/subscriptions/pause-payment">pausing
+        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
@@ -572,12 +573,13 @@ namespace Stripe
         /// <c>active</c> when the trial period is over.
         ///
         /// A subscription can only enter a <c>paused</c> status <a
-        /// href="https://stripe.com/billing/subscriptions/trials#create-free-trials-without-payment">when
+        /// href="https://stripe.com/docs/billing/subscriptions/trials#create-free-trials-without-payment">when
         /// a trial ends without a payment method</a>. A <c>paused</c> subscription doesn't generate
         /// invoices and can be resumed after your customer adds their payment method. The
         /// <c>paused</c> status is different from <a
-        /// href="https://stripe.com/billing/subscriptions/pause-payment">pausing collection</a>,
-        /// which still generates invoices and leaves the subscription's status unchanged.
+        /// href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// collection</a>, which still generates invoices and leaves the subscription's status
+        /// unchanged.
         ///
         /// If subscription <c>collection_method=charge_automatically</c>, it becomes
         /// <c>past_due</c> when payment is required but cannot be paid (due to failed payment or

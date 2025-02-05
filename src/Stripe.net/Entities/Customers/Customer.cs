@@ -7,11 +7,10 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// This object represents a customer of your business. Use it to create recurring charges
-    /// and track payments that belong to the same customer.
-    ///
-    /// Related guide: <a href="https://stripe.com/docs/payments/save-during-payment">Save a
-    /// card during payment</a>.
+    /// This object represents a customer of your business. Use it to <a
+    /// href="https://stripe.com/docs/invoicing/customer">create recurring charges</a>, <a
+    /// href="https://stripe.com/docs/payments/save-during-payment">save payment</a> and contact
+    /// information, and track payments that belong to the same customer.
     /// </summary>
     public class Customer : StripeEntity<Customer>, IHasId, IHasMetadata, IHasObject
     {
@@ -190,7 +189,9 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
-        /// The suffix of the customer's next invoice number (for example, 0001).
+        /// The suffix of the customer's next invoice number (for example, 0001). When the account
+        /// uses account level sequencing, this parameter is ignored in API requests and the field
+        /// omitted in API responses.
         /// </summary>
         [JsonProperty("next_invoice_sequence")]
         public long NextInvoiceSequence { get; set; }

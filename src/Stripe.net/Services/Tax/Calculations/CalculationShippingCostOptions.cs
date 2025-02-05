@@ -34,7 +34,7 @@ namespace Stripe.Tax
         /// <summary>
         /// The <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> used to calculate
         /// tax on shipping. If not provided, the default shipping tax code from your <a
-        /// href="https://stripe.com/settings/tax">Tax Settings</a> is used.
+        /// href="https://dashboard.stripe.com/settings/tax">Tax Settings</a> is used.
         /// </summary>
         [JsonProperty("tax_code")]
         public string TaxCode { get; set; }

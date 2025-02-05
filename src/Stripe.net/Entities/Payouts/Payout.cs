@@ -37,6 +37,49 @@ namespace Stripe
         [JsonProperty("amount")]
         public long Amount { get; set; }
 
+        #region Expandable ApplicationFee
+
+        /// <summary>
+        /// (ID of the ApplicationFee)
+        /// The application fee (if any) for the payout. <a
+        /// href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the
+        /// Connect documentation</a> for details.
+        /// </summary>
+        [JsonIgnore]
+        public string ApplicationFeeId
+        {
+            get => this.InternalApplicationFee?.Id;
+            set => this.InternalApplicationFee = SetExpandableFieldId(value, this.InternalApplicationFee);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The application fee (if any) for the payout. <a
+        /// href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the
+        /// Connect documentation</a> for details.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+        public ApplicationFee ApplicationFee
+        {
+            get => this.InternalApplicationFee?.ExpandedObject;
+            set => this.InternalApplicationFee = SetExpandableFieldObject(value, this.InternalApplicationFee);
+        }
+
+        [JsonProperty("application_fee")]
+        [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
+        internal ExpandableField<ApplicationFee> InternalApplicationFee { get; set; }
+        #endregion
+
+        /// <summary>
+        /// The amount of the application fee (if any) requested for the payout. <a
+        /// href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the
+        /// Connect documentation</a> for details.
+        /// </summary>
+        [JsonProperty("application_fee_amount")]
+        public long? ApplicationFeeAmount { get; set; }
+
         /// <summary>
         /// Date that you can expect the payout to arrive in the bank. This factors in delays to
         /// account for weekends or bank holidays.
@@ -306,6 +349,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// A value that generates from the beneficiary's bank that allows users to track payouts
+        /// with their bank. Banks might call this a "reference number" or something similar.
+        /// </summary>
+        [JsonProperty("trace_id")]
+        public PayoutTraceId TraceId { get; set; }
 
         /// <summary>
         /// Can be <c>bank_account</c> or <c>card</c>.

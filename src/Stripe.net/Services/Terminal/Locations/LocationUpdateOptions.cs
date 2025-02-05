@@ -7,7 +7,9 @@ namespace Stripe.Terminal
     public class LocationUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The full address of the location.
+        /// The full address of the location. You can't change the location's <c>country</c>. If you
+        /// need to modify the <c>country</c> field, create a new <c>Location</c> object and
+        /// re-register any existing readers to that location.
         /// </summary>
         [JsonProperty("address")]
         public AddressOptions Address { get; set; }

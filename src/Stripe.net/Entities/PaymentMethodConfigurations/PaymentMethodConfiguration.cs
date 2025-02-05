@@ -65,6 +65,9 @@ namespace Stripe
         [JsonProperty("alipay")]
         public PaymentMethodConfigurationAlipay Alipay { get; set; }
 
+        [JsonProperty("alma")]
+        public PaymentMethodConfigurationAlma Alma { get; set; }
+
         [JsonProperty("amazon_pay")]
         public PaymentMethodConfigurationAmazonPay AmazonPay { get; set; }
 
@@ -148,6 +151,12 @@ namespace Stripe
         [JsonProperty("livemode")]
         public bool Livemode { get; set; }
 
+        [JsonProperty("mobilepay")]
+        public PaymentMethodConfigurationMobilepay Mobilepay { get; set; }
+
+        [JsonProperty("multibanco")]
+        public PaymentMethodConfigurationMultibanco Multibanco { get; set; }
+
         /// <summary>
         /// The configuration's name.
         /// </summary>
@@ -165,6 +174,9 @@ namespace Stripe
         /// </summary>
         [JsonProperty("parent")]
         public string Parent { get; set; }
+
+        [JsonProperty("pay_by_bank")]
+        public PaymentMethodConfigurationPayByBank PayByBank { get; set; }
 
         [JsonProperty("paynow")]
         public PaymentMethodConfigurationPaynow Paynow { get; set; }
@@ -186,6 +198,9 @@ namespace Stripe
 
         [JsonProperty("swish")]
         public PaymentMethodConfigurationSwish Swish { get; set; }
+
+        [JsonProperty("twint")]
+        public PaymentMethodConfigurationTwint Twint { get; set; }
 
         [JsonProperty("us_bank_account")]
         public PaymentMethodConfigurationUsBankAccount UsBankAccount { get; set; }

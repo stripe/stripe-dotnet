@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -18,27 +19,30 @@ namespace Stripe
         {
         }
 
+        internal SubscriptionService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public SubscriptionService(IStripeClient client)
             : base(client)
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/subscriptions";
-
         /// <summary>
-        /// <p>Cancels a customer’s subscription immediately. The customer will not be charged again
-        /// for the subscription.</p>.
+        /// <p>Cancels a customer’s subscription immediately. The customer won’t be charged again
+        /// for the subscription. After it’s canceled, you can no longer update the subscription or
+        /// its <a href="https://stripe.com/metadata">metadata</a>.</p>.
         ///
-        /// <p>Note, however, that any pending invoice items that you’ve created will still be
-        /// charged for at the end of the period, unless manually <a
+        /// <p>Any pending invoice items that you’ve created are still charged at the end of the
+        /// period, unless manually <a
         /// href="https://stripe.com/docs/api#delete_invoiceitem">deleted</a>. If you’ve set the
-        /// subscription to cancel at the end of the period, any pending prorations will also be
-        /// left in place and collected at the end of the period. But if the subscription is set to
-        /// cancel immediately, pending prorations will be removed.</p>.
+        /// subscription to cancel at the end of the period, any pending prorations are also left in
+        /// place and collected at the end of the period. But if the subscription is set to cancel
+        /// immediately, pending prorations are removed.</p>.
         ///
-        /// <p>By default, upon subscription cancellation, Stripe will stop automatic collection of
-        /// all finalized invoices for the customer. This is intended to prevent unexpected payment
+        /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
+        /// finalized invoices for the customer. This is intended to prevent unexpected payment
         /// attempts after the customer has canceled a subscription. However, you can resume
         /// automatic collection of the invoices manually after subscription cancellation to have us
         /// proceed. Or, you could check for unpaid invoices before allowing the customer to cancel
@@ -46,22 +50,23 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Cancel(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
-        /// <p>Cancels a customer’s subscription immediately. The customer will not be charged again
-        /// for the subscription.</p>.
+        /// <p>Cancels a customer’s subscription immediately. The customer won’t be charged again
+        /// for the subscription. After it’s canceled, you can no longer update the subscription or
+        /// its <a href="https://stripe.com/metadata">metadata</a>.</p>.
         ///
-        /// <p>Note, however, that any pending invoice items that you’ve created will still be
-        /// charged for at the end of the period, unless manually <a
+        /// <p>Any pending invoice items that you’ve created are still charged at the end of the
+        /// period, unless manually <a
         /// href="https://stripe.com/docs/api#delete_invoiceitem">deleted</a>. If you’ve set the
-        /// subscription to cancel at the end of the period, any pending prorations will also be
-        /// left in place and collected at the end of the period. But if the subscription is set to
-        /// cancel immediately, pending prorations will be removed.</p>.
+        /// subscription to cancel at the end of the period, any pending prorations are also left in
+        /// place and collected at the end of the period. But if the subscription is set to cancel
+        /// immediately, pending prorations are removed.</p>.
         ///
-        /// <p>By default, upon subscription cancellation, Stripe will stop automatic collection of
-        /// all finalized invoices for the customer. This is intended to prevent unexpected payment
+        /// <p>By default, upon subscription cancellation, Stripe stops automatic collection of all
+        /// finalized invoices for the customer. This is intended to prevent unexpected payment
         /// attempts after the customer has canceled a subscription. However, you can resume
         /// automatic collection of the invoices manually after subscription cancellation to have us
         /// proceed. Or, you could check for unpaid invoices before allowing the customer to cancel
@@ -69,7 +74,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> CancelAsync(string id, SubscriptionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Delete, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -88,7 +93,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Create(SubscriptionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions", options, requestOptions);
         }
 
         /// <summary>
@@ -107,7 +112,23 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> CreateAsync(SubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Removes the currently applied discount on a subscription.</p>.
+        /// </summary>
+        public virtual Discount DeleteDiscount(string id, SubscriptionDeleteDiscountOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/discount", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Removes the currently applied discount on a subscription.</p>.
+        /// </summary>
+        public virtual Task<Discount> DeleteDiscountAsync(string id, SubscriptionDeleteDiscountOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Discount>(BaseAddress.Api, HttpMethod.Delete, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/discount", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -115,7 +136,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Get(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -123,7 +144,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> GetAsync(string id, SubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Get, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -132,7 +153,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Subscription> List(SubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Subscription>>(HttpMethod.Get, $"/v1/subscriptions", options, requestOptions);
+            return this.Request<StripeList<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions", options, requestOptions);
         }
 
         /// <summary>
@@ -141,7 +162,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Subscription>> ListAsync(SubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Subscription>>(HttpMethod.Get, $"/v1/subscriptions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -172,7 +193,7 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Resume(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/resume", options, requestOptions);
         }
 
         /// <summary>
@@ -185,7 +206,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> ResumeAsync(string id, SubscriptionResumeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}/resume", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/resume", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -198,7 +219,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeSearchResult<Subscription> Search(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeSearchResult<Subscription>>(HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions);
+            return this.Request<StripeSearchResult<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions);
         }
 
         /// <summary>
@@ -211,7 +232,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeSearchResult<Subscription>> SearchAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeSearchResult<Subscription>>(HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeSearchResult<Subscription>>(BaseAddress.Api, HttpMethod.Get, $"/v1/subscriptions/search", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -244,7 +265,8 @@ namespace Stripe
         /// <p>Updates an existing subscription to match the specified parameters. When changing
         /// prices or quantities, we optionally prorate the price we charge next month to make up
         /// for any price changes. To preview how the proration is calculated, use the <a
-        /// href="https://stripe.com/docs/api/invoices/upcoming">upcoming invoice</a> endpoint.</p>.
+        /// href="https://stripe.com/docs/api/invoices/create_preview">create preview</a>
+        /// endpoint.</p>.
         ///
         /// <p>By default, we prorate subscription changes. For example, if a customer signs up on
         /// May 1 for a <currency>100</currency> price, they’ll be billed <currency>100</currency>
@@ -259,11 +281,14 @@ namespace Stripe
         /// charge unless:</p>.
         ///
         /// <ul> <li>The billing interval is changed (for example, from monthly to yearly).</li>
-        /// <li>The subscription moves from free to paid, or paid to free.</li> <li>A trial starts
-        /// or ends.</li> </ul>.
+        /// <li>The subscription moves from free to paid.</li> <li>A trial starts or ends.</li>
+        /// </ul>.
         ///
         /// <p>In these cases, we apply a credit for the unused time on the previous price,
-        /// immediately charge the customer using the new price, and reset the billing date.</p>.
+        /// immediately charge the customer using the new price, and reset the billing date. Learn
+        /// about how <a
+        /// href="https://stripe.com/docs/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe
+        /// immediately attempts payment for subscription changes</a>.</p>.
         ///
         /// <p>If you want to charge for an upgrade immediately, pass <c>proration_behavior</c> as
         /// <c>always_invoice</c> to create prorations, automatically invoice the customer for those
@@ -288,14 +313,15 @@ namespace Stripe
         /// </summary>
         public virtual Subscription Update(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions);
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
         /// <p>Updates an existing subscription to match the specified parameters. When changing
         /// prices or quantities, we optionally prorate the price we charge next month to make up
         /// for any price changes. To preview how the proration is calculated, use the <a
-        /// href="https://stripe.com/docs/api/invoices/upcoming">upcoming invoice</a> endpoint.</p>.
+        /// href="https://stripe.com/docs/api/invoices/create_preview">create preview</a>
+        /// endpoint.</p>.
         ///
         /// <p>By default, we prorate subscription changes. For example, if a customer signs up on
         /// May 1 for a <currency>100</currency> price, they’ll be billed <currency>100</currency>
@@ -310,11 +336,14 @@ namespace Stripe
         /// charge unless:</p>.
         ///
         /// <ul> <li>The billing interval is changed (for example, from monthly to yearly).</li>
-        /// <li>The subscription moves from free to paid, or paid to free.</li> <li>A trial starts
-        /// or ends.</li> </ul>.
+        /// <li>The subscription moves from free to paid.</li> <li>A trial starts or ends.</li>
+        /// </ul>.
         ///
         /// <p>In these cases, we apply a credit for the unused time on the previous price,
-        /// immediately charge the customer using the new price, and reset the billing date.</p>.
+        /// immediately charge the customer using the new price, and reset the billing date. Learn
+        /// about how <a
+        /// href="https://stripe.com/docs/billing/subscriptions/upgrade-downgrade#immediate-payment">Stripe
+        /// immediately attempts payment for subscription changes</a>.</p>.
         ///
         /// <p>If you want to charge for an upgrade immediately, pass <c>proration_behavior</c> as
         /// <c>always_invoice</c> to create prorations, automatically invoice the customer for those
@@ -339,7 +368,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Subscription> UpdateAsync(string id, SubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Subscription>(HttpMethod.Post, $"/v1/subscriptions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

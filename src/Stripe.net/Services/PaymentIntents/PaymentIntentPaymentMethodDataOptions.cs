@@ -45,6 +45,13 @@ namespace Stripe
         public string AllowRedisplay { get; set; }
 
         /// <summary>
+        /// If this is a Alma PaymentMethod, this hash contains details about the Alma payment
+        /// method.
+        /// </summary>
+        [JsonProperty("alma")]
+        public PaymentIntentPaymentMethodDataAlmaOptions Alma { get; set; }
+
+        /// <summary>
         /// If this is a AmazonPay PaymentMethod, this hash contains details about the AmazonPay
         /// payment method.
         /// </summary>
@@ -150,6 +157,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataInteracPresentOptions InteracPresent { get; set; }
 
         /// <summary>
+        /// If this is a <c>kakao_pay</c> PaymentMethod, this hash contains details about the Kakao
+        /// Pay payment method.
+        /// </summary>
+        [JsonProperty("kakao_pay")]
+        public PaymentIntentPaymentMethodDataKakaoPayOptions KakaoPay { get; set; }
+
+        /// <summary>
         /// If this is a <c>klarna</c> PaymentMethod, this hash contains details about the Klarna
         /// payment method.
         /// </summary>
@@ -162,6 +176,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("konbini")]
         public PaymentIntentPaymentMethodDataKonbiniOptions Konbini { get; set; }
+
+        /// <summary>
+        /// If this is a <c>kr_card</c> PaymentMethod, this hash contains details about the Korean
+        /// Card payment method.
+        /// </summary>
+        [JsonProperty("kr_card")]
+        public PaymentIntentPaymentMethodDataKrCardOptions KrCard { get; set; }
 
         /// <summary>
         /// If this is an <c>Link</c> PaymentMethod, this hash contains details about the Link
@@ -187,6 +208,20 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataMobilepayOptions Mobilepay { get; set; }
 
         /// <summary>
+        /// If this is a <c>multibanco</c> PaymentMethod, this hash contains details about the
+        /// Multibanco payment method.
+        /// </summary>
+        [JsonProperty("multibanco")]
+        public PaymentIntentPaymentMethodDataMultibancoOptions Multibanco { get; set; }
+
+        /// <summary>
+        /// If this is a <c>naver_pay</c> PaymentMethod, this hash contains details about the Naver
+        /// Pay payment method.
+        /// </summary>
+        [JsonProperty("naver_pay")]
+        public PaymentIntentPaymentMethodDataNaverPayOptions NaverPay { get; set; }
+
+        /// <summary>
         /// If this is an <c>oxxo</c> PaymentMethod, this hash contains details about the OXXO
         /// payment method.
         /// </summary>
@@ -199,6 +234,20 @@ namespace Stripe
         /// </summary>
         [JsonProperty("p24")]
         public PaymentIntentPaymentMethodDataP24Options P24 { get; set; }
+
+        /// <summary>
+        /// If this is a <c>pay_by_bank</c> PaymentMethod, this hash contains details about the
+        /// PayByBank payment method.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+        public PaymentIntentPaymentMethodDataPayByBankOptions PayByBank { get; set; }
+
+        /// <summary>
+        /// If this is a <c>payco</c> PaymentMethod, this hash contains details about the PAYCO
+        /// payment method.
+        /// </summary>
+        [JsonProperty("payco")]
+        public PaymentIntentPaymentMethodDataPaycoOptions Payco { get; set; }
 
         /// <summary>
         /// If this is a <c>paynow</c> PaymentMethod, this hash contains details about the PayNow
@@ -244,6 +293,13 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataRevolutPayOptions RevolutPay { get; set; }
 
         /// <summary>
+        /// If this is a <c>samsung_pay</c> PaymentMethod, this hash contains details about the
+        /// SamsungPay payment method.
+        /// </summary>
+        [JsonProperty("samsung_pay")]
+        public PaymentIntentPaymentMethodDataSamsungPayOptions SamsungPay { get; set; }
+
+        /// <summary>
         /// If this is a <c>sepa_debit</c> PaymentMethod, this hash contains details about the SEPA
         /// debit bank account.
         /// </summary>
@@ -265,16 +321,25 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataSwishOptions Swish { get; set; }
 
         /// <summary>
+        /// If this is a TWINT PaymentMethod, this hash contains details about the TWINT payment
+        /// method.
+        /// </summary>
+        [JsonProperty("twint")]
+        public PaymentIntentPaymentMethodDataTwintOptions Twint { get; set; }
+
+        /// <summary>
         /// The type of the PaymentMethod. An additional hash is included on the PaymentMethod with
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>blik</c>, <c>boleto</c>, <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>,
-        /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>link</c>, <c>mobilepay</c>, <c>oxxo</c>, <c>p24</c>, <c>paynow</c>, <c>paypal</c>,
-        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>sepa_debit</c>, <c>sofort</c>,
-        /// <c>swish</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>cashapp</c>, <c>customer_balance</c>,
+        /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
+        /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>,
+        /// <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

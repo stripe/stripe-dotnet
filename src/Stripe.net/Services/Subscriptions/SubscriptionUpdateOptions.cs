@@ -61,8 +61,8 @@ namespace Stripe
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
-        /// Boolean indicating whether this subscription should cancel at the end of the current
-        /// period.
+        /// Indicate whether this subscription should cancel at the end of the current period
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
         public bool? CancelAtPeriodEnd { get; set; }
@@ -169,6 +169,7 @@ namespace Stripe
 
         /// <summary>
         /// Indicates if a customer is on or off-session while an invoice payment is attempted.
+        /// Defaults to <c>false</c> (on-session).
         /// </summary>
         [JsonProperty("off_session")]
         public bool? OffSession { get; set; }
@@ -182,7 +183,7 @@ namespace Stripe
         /// <summary>
         /// If specified, payment collection for this subscription will be paused. Note that the
         /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
-        /// more about <a href="https://stripe.com/billing/subscriptions/pause-payment">pausing
+        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
@@ -238,7 +239,9 @@ namespace Stripe
 
         /// <summary>
         /// The promotion code to apply to this subscription. A promotion code applied to a
-        /// subscription will only affect invoices created for that particular subscription.
+        /// subscription will only affect invoices created for that particular subscription. This
+        /// field has been deprecated and will be removed in a future API version. Use
+        /// <c>discounts</c> instead.
         /// </summary>
         [JsonProperty("promotion_code")]
         public string PromotionCode { get; set; }

@@ -67,8 +67,8 @@ namespace Stripe.Issuing
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         /// <summary>
-        /// You can <a href="https://stripe.com/docs/issuing/cards">create physical or virtual
-        /// cards</a> that are issued to cardholders.
+        /// You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a>
+        /// that are issued to cardholders.
         /// </summary>
         [JsonProperty("card")]
         public Card Card { get; set; }
@@ -120,6 +120,27 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
+
+        /// <summary>
+        /// Fleet-specific information for authorizations using Fleet cards.
+        /// </summary>
+        [JsonProperty("fleet")]
+        public AuthorizationFleet Fleet { get; set; }
+
+        /// <summary>
+        /// Fraud challenges sent to the cardholder, if this authorization was declined for fraud
+        /// risk reasons.
+        /// </summary>
+        [JsonProperty("fraud_challenges")]
+        public List<AuthorizationFraudChallenge> FraudChallenges { get; set; }
+
+        /// <summary>
+        /// Information about fuel that was purchased with this transaction. Typically this
+        /// information is received from the merchant after the authorization has been approved and
+        /// the fuel dispensed.
+        /// </summary>
+        [JsonProperty("fuel")]
+        public AuthorizationFuel Fuel { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -242,6 +263,14 @@ namespace Stripe.Issuing
 
         [JsonProperty("verification_data")]
         public AuthorizationVerificationData VerificationData { get; set; }
+
+        /// <summary>
+        /// Whether the authorization bypassed fraud risk checks because the cardholder has
+        /// previously completed a fraud challenge on a similar high-risk authorization from the
+        /// same merchant.
+        /// </summary>
+        [JsonProperty("verified_by_fraud_challenge")]
+        public bool? VerifiedByFraudChallenge { get; set; }
 
         /// <summary>
         /// The digital wallet used for this transaction. One of <c>apple_pay</c>,

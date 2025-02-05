@@ -6,8 +6,10 @@ namespace Stripe
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// Login Links are single-use login link for an Express account to access their Stripe
-    /// dashboard.
+    /// Login Links are single-use URLs for a connected account to access the Express Dashboard.
+    /// The connected account's <a
+    /// href="https://stripe.com/api/accounts/object#account_object-controller-stripe_dashboard-type">account.controller.stripe_dashboard.type</a>
+    /// must be <c>express</c> to have access to the Express Dashboard.
     /// </summary>
     public class LoginLink : StripeEntity<LoginLink>, IHasObject
     {

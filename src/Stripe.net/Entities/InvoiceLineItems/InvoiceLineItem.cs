@@ -6,6 +6,15 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
+    /// <summary>
+    /// Invoice Line Items represent the individual lines within an <a
+    /// href="https://stripe.com/docs/api/invoices">invoice</a> and only exist within the
+    /// context of an invoice.
+    ///
+    /// Each line item is backed by either an <a
+    /// href="https://stripe.com/docs/api/invoiceitems">invoice item</a> or a <a
+    /// href="https://stripe.com/docs/api/subscription_items">subscription item</a>.
+    /// </summary>
     public class InvoiceLineItem : StripeEntity<InvoiceLineItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
@@ -140,9 +149,10 @@ namespace Stripe
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
-        /// object in a structured format. Note that for line items with <c>type=subscription</c>
-        /// this will reflect the metadata of the subscription that caused the line item to be
-        /// created.
+        /// object in a structured format. Note that for line items with <c>type=subscription</c>,
+        /// <c>metadata</c> reflects the current metadata from the subscription associated with the
+        /// line item, unless the invoice line was directly updated with different metadata after
+        /// creation.
         /// </summary>
         [JsonProperty("metadata")]
         public Dictionary<string, string> Metadata { get; set; }
@@ -155,6 +165,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("plan")]
         public Plan Plan { get; set; }
+
+        /// <summary>
+        /// Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this
+        /// line item.
+        /// </summary>
+        [JsonProperty("pretax_credit_amounts")]
+        public List<InvoiceLineItemPretaxCreditAmount> PretaxCreditAmounts { get; set; }
 
         /// <summary>
         /// The price of the line item.

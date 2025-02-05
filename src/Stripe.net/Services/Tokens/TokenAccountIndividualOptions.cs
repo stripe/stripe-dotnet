@@ -13,13 +13,13 @@ namespace Stripe
         public AddressOptions Address { get; set; }
 
         /// <summary>
-        /// The Kana variation of the the individual's primary address (Japan only).
+        /// The Kana variation of the individual's primary address (Japan only).
         /// </summary>
         [JsonProperty("address_kana")]
         public AddressJapanOptions AddressKana { get; set; }
 
         /// <summary>
-        /// The Kanji variation of the the individual's primary address (Japan only).
+        /// The Kanji variation of the individual's primary address (Japan only).
         /// </summary>
         [JsonProperty("address_kanji")]
         public AddressJapanOptions AddressKanji { get; set; }
@@ -43,7 +43,7 @@ namespace Stripe
         public string FirstName { get; set; }
 
         /// <summary>
-        /// The Kana variation of the the individual's first name (Japan only).
+        /// The Kana variation of the individual's first name (Japan only).
         /// </summary>
         [JsonProperty("first_name_kana")]
         public string FirstNameKana { get; set; }
@@ -61,7 +61,7 @@ namespace Stripe
         public List<string> FullNameAliases { get; set; }
 
         /// <summary>
-        /// The individual's gender (International regulations require either "male" or "female").
+        /// The individual's gender.
         /// </summary>
         [JsonProperty("gender")]
         public string Gender { get; set; }
@@ -70,7 +70,7 @@ namespace Stripe
         /// The government-issued ID number of the individual, as appropriate for the
         /// representative's country. (Examples are a Social Security Number in the U.S., or a
         /// Social Insurance Number in Canada). Instead of the number itself, you can also provide a
-        /// <a href="https://docs.stripe.com/js/tokens/create_token?type=pii">PII token created with
+        /// <a href="https://stripe.com/js/tokens/create_token?type=pii">PII token created with
         /// Stripe.js</a>.
         /// </summary>
         [JsonProperty("id_number")]
@@ -81,7 +81,7 @@ namespace Stripe
         /// representative's country, will be used for enhanced verification checks. In Thailand,
         /// this would be the laser code found on the back of an ID card. Instead of the number
         /// itself, you can also provide a <a
-        /// href="https://docs.stripe.com/js/tokens/create_token?type=pii">PII token created with
+        /// href="https://stripe.com/js/tokens/create_token?type=pii">PII token created with
         /// Stripe.js</a>.
         /// </summary>
         [JsonProperty("id_number_secondary")]

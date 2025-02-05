@@ -7,7 +7,8 @@ namespace Stripe
     {
         /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
-        /// <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or <c>unknown</c>.
+        /// <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or
+        /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }
@@ -74,6 +75,12 @@ namespace Stripe
         public string Funding { get; set; }
 
         /// <summary>
+        /// Details of the original PaymentMethod that created this object.
+        /// </summary>
+        [JsonProperty("generated_from")]
+        public ConfirmationTokenPaymentMethodPreviewCardGeneratedFrom GeneratedFrom { get; set; }
+
+        /// <summary>
         /// Issuer identification number of the card. (For internal use only and not typically
         /// available in standard API requests.).
         /// </summary>
@@ -98,6 +105,13 @@ namespace Stripe
         /// </summary>
         [JsonProperty("networks")]
         public ConfirmationTokenPaymentMethodPreviewCardNetworks Networks { get; set; }
+
+        /// <summary>
+        /// Status of a card based on the card issuer.
+        /// One of: <c>regulated</c>, or <c>unregulated</c>.
+        /// </summary>
+        [JsonProperty("regulated_status")]
+        public string RegulatedStatus { get; set; }
 
         /// <summary>
         /// Contains details on how this Card may be used for 3D Secure authentication.

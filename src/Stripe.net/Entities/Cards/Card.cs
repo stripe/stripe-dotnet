@@ -32,7 +32,10 @@ namespace Stripe
         /// <summary>
         /// (ID of the Account)
         /// The account this card belongs to. This attribute will not be in the card object if the
-        /// card belongs to a customer or recipient instead.
+        /// card belongs to a customer or recipient instead. This property is only available for
+        /// accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonIgnore]
         public string AccountId
@@ -44,7 +47,10 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The account this card belongs to. This attribute will not be in the card object if the
-        /// card belongs to a customer or recipient instead.
+        /// card belongs to a customer or recipient instead. This property is only available for
+        /// accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -111,6 +117,16 @@ namespace Stripe
         public string AddressZipCheck { get; set; }
 
         /// <summary>
+        /// This field indicates whether this payment method can be shown again to its customer in a
+        /// checkout flow. Stripe products such as Checkout and Elements use this field to determine
+        /// whether a payment method can be shown as a saved payment method in a checkout flow. The
+        /// field defaults to “unspecified”.
+        /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("allow_redisplay")]
+        public string AllowRedisplay { get; set; }
+
+        /// <summary>
         /// A set of available payout methods for this card. Only values from this set should be
         /// passed as the <c>method</c> when creating a payout.
         /// One of: <c>instant</c>, or <c>standard</c>.
@@ -120,8 +136,8 @@ namespace Stripe
 
         /// <summary>
         /// Card brand. Can be <c>American Express</c>, <c>Diners Club</c>, <c>Discover</c>,
-        /// <c>Eftpos Australia</c>, <c>JCB</c>, <c>MasterCard</c>, <c>UnionPay</c>, <c>Visa</c>, or
-        /// <c>Unknown</c>.
+        /// <c>Eftpos Australia</c>, <c>Girocard</c>, <c>JCB</c>, <c>MasterCard</c>,
+        /// <c>UnionPay</c>, <c>Visa</c>, or <c>Unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
         public string Brand { get; set; }
@@ -134,9 +150,13 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
-        /// Three-letter <a href="https://stripe.com/docs/payouts">ISO code for currency</a>. Only
-        /// applicable on accounts (not customers or recipients). The card can be used as a transfer
-        /// destination for funds in this currency.
+        /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO code for
+        /// currency</a> in lowercase. Must be a <a
+        /// href="https://docs.stripe.com/currencies">supported currency</a>. Only applicable on
+        /// accounts (not customers or recipients). The card can be used as a transfer destination
+        /// for funds in this currency. This property is only available for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; }
@@ -186,7 +206,10 @@ namespace Stripe
         public string CvcCheck { get; set; }
 
         /// <summary>
-        /// Whether this card is the default external account for its currency.
+        /// Whether this card is the default external account for its currency. This property is
+        /// only available for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// </summary>
         [JsonProperty("default_for_currency")]
         public bool? DefaultForCurrency { get; set; }
@@ -277,6 +300,13 @@ namespace Stripe
 
         [JsonProperty("networks")]
         public CardNetworks Networks { get; set; }
+
+        /// <summary>
+        /// Status of a card based on the card issuer.
+        /// One of: <c>regulated</c>, or <c>unregulated</c>.
+        /// </summary>
+        [JsonProperty("regulated_status")]
+        public string RegulatedStatus { get; set; }
 
         /// <summary>
         /// For external accounts that are cards, possible values are <c>new</c> and <c>errored</c>.

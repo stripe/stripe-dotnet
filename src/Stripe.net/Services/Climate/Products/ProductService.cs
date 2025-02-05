@@ -3,6 +3,7 @@ namespace Stripe.Climate
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -15,20 +16,22 @@ namespace Stripe.Climate
         {
         }
 
+        internal ProductService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public ProductService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/climate/products";
 
         /// <summary>
         /// <p>Retrieves the details of a Climate product with the given ID.</p>.
         /// </summary>
         public virtual Product Get(string id, ProductGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Product>(HttpMethod.Get, $"/v1/climate/products/{id}", options, requestOptions);
+            return this.Request<Product>(BaseAddress.Api, HttpMethod.Get, $"/v1/climate/products/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +39,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Task<Product> GetAsync(string id, ProductGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Product>(HttpMethod.Get, $"/v1/climate/products/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Product>(BaseAddress.Api, HttpMethod.Get, $"/v1/climate/products/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -44,7 +47,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual StripeList<Product> List(ProductListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Product>>(HttpMethod.Get, $"/v1/climate/products", options, requestOptions);
+            return this.Request<StripeList<Product>>(BaseAddress.Api, HttpMethod.Get, $"/v1/climate/products", options, requestOptions);
         }
 
         /// <summary>
@@ -52,7 +55,7 @@ namespace Stripe.Climate
         /// </summary>
         public virtual Task<StripeList<Product>> ListAsync(ProductListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Product>>(HttpMethod.Get, $"/v1/climate/products", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Product>>(BaseAddress.Api, HttpMethod.Get, $"/v1/climate/products", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

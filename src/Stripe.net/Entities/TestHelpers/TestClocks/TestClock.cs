@@ -73,5 +73,8 @@ namespace Stripe.TestHelpers
         /// </summary>
         [JsonProperty("status")]
         public string Status { get; set; }
+
+        [JsonProperty("status_details")]
+        public TestClockStatusDetails StatusDetails { get; set; }
     }
 }

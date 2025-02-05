@@ -11,12 +11,18 @@ namespace Stripe
     /// on the account like its current requirements or if the account is enabled to make live
     /// charges or receive payouts.
     ///
-    /// For Custom accounts, the properties below are always returned. For other accounts, some
-    /// properties are returned until that account has started to go through Connect Onboarding.
-    /// Once you create an <a href="https://stripe.com/docs/api/account_links">Account Link</a>
-    /// or <a href="https://stripe.com/docs/api/account_sessions">Account Session</a>, some
-    /// properties are only returned for Custom accounts. Learn about the differences <a
-    /// href="https://stripe.com/docs/connect/accounts">between accounts</a>.
+    /// For accounts where <a
+    /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+    /// is <c>application</c>, which includes Custom accounts, the properties below are always
+    /// returned.
+    ///
+    /// For accounts where <a
+    /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+    /// is <c>stripe</c>, which includes Standard and Express accounts, some properties are only
+    /// returned until you create an <a href="https://stripe.com/api/account_links">Account
+    /// Link</a> or <a href="https://stripe.com/api/account_sessions">Account Session</a> to
+    /// start Connect Onboarding. Learn about the <a
+    /// href="https://stripe.com/connect/accounts">differences between accounts</a>.
     /// </summary>
     public class Account : StripeEntity<Account>, IHasId, IHasMetadata, IHasObject, IPaymentSource
     {
@@ -39,10 +45,12 @@ namespace Stripe
         public AccountBusinessProfile BusinessProfile { get; set; }
 
         /// <summary>
-        /// The business type. Once you create an <a
-        /// href="https://stripe.com/docs/api/account_links">Account Link</a> or <a
-        /// href="https://stripe.com/docs/api/account_sessions">Account Session</a>, this property
-        /// is only returned for Custom accounts.
+        /// The business type. After you create an <a
+        /// href="https://stripe.com/api/account_links">Account Link</a> or <a
+        /// href="https://stripe.com/api/account_sessions">Account Session</a>, this property is
+        /// only returned for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>application</c>, which includes Custom accounts.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>
@@ -53,7 +61,7 @@ namespace Stripe
         public AccountCapabilities Capabilities { get; set; }
 
         /// <summary>
-        /// Whether the account can create live charges.
+        /// Whether the account can process charges.
         /// </summary>
         [JsonProperty("charges_enabled")]
         public bool ChargesEnabled { get; set; }
@@ -92,8 +100,11 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// Whether account details have been submitted. Standard accounts cannot receive payouts
-        /// before this is true.
+        /// Whether account details have been submitted. Accounts with Stripe Dashboard access,
+        /// which includes Standard accounts, cannot receive payouts before this is true. Accounts
+        /// where this is false should be directed to <a
+        /// href="https://stripe.com/connect/onboarding">an onboarding flow</a> to finish submitting
+        /// account details.
         /// </summary>
         [JsonProperty("details_submitted")]
         public bool DetailsSubmitted { get; set; }
@@ -117,17 +128,24 @@ namespace Stripe
         public AccountFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
+        /// The groups associated with the account.
+        /// </summary>
+        [JsonProperty("groups")]
+        public AccountGroups Groups { get; set; }
+
+        /// <summary>
         /// This is an object representing a person associated with a Stripe account.
         ///
-        /// A platform cannot access a Standard or Express account's persons after the account
-        /// starts onboarding, such as after generating an account link for the account. See the <a
-        /// href="https://stripe.com/docs/connect/standard-accounts">Standard onboarding</a> or <a
-        /// href="https://stripe.com/docs/connect/express-accounts">Express onboarding
-        /// documentation</a> for information about platform prefilling and account onboarding
-        /// steps.
+        /// A platform cannot access a person for an account where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a>
+        /// is <c>stripe</c>, which includes Standard and Express accounts, after creating an
+        /// Account Link or Account Session to start Connect onboarding.
         ///
-        /// Related guide: <a
-        /// href="https://stripe.com/docs/connect/handling-api-verification#person-information">Handling
+        /// See the <a href="https://stripe.com/connect/standard-accounts">Standard onboarding</a>
+        /// or <a href="https://stripe.com/connect/express-accounts">Express onboarding</a>
+        /// documentation for information about prefilling information and account onboarding steps.
+        /// Learn more about <a
+        /// href="https://stripe.com/connect/handling-api-verification#person-information">handling
         /// identity verification with the API</a>.
         /// </summary>
         [JsonProperty("individual")]
@@ -142,7 +160,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Whether Stripe can send payouts to this account.
+        /// Whether the funds in this account can be paid out.
         /// </summary>
         [JsonProperty("payouts_enabled")]
         public bool PayoutsEnabled { get; set; }
@@ -160,7 +178,8 @@ namespace Stripe
         public AccountTosAcceptance TosAcceptance { get; set; }
 
         /// <summary>
-        /// The Stripe account type. Can be <c>standard</c>, <c>express</c>, or <c>custom</c>.
+        /// The Stripe account type. Can be <c>standard</c>, <c>express</c>, <c>custom</c>, or
+        /// <c>none</c>.
         /// One of: <c>custom</c>, <c>express</c>, <c>none</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("type")]

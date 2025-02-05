@@ -54,6 +54,12 @@ namespace Stripe.Terminal
         public ConfigurationTippingHkdOptions Hkd { get; set; }
 
         /// <summary>
+        /// Tipping configuration for JPY.
+        /// </summary>
+        [JsonProperty("jpy")]
+        public ConfigurationTippingJpyOptions Jpy { get; set; }
+
+        /// <summary>
         /// Tipping configuration for MYR.
         /// </summary>
         [JsonProperty("myr")]
@@ -70,6 +76,12 @@ namespace Stripe.Terminal
         /// </summary>
         [JsonProperty("nzd")]
         public ConfigurationTippingNzdOptions Nzd { get; set; }
+
+        /// <summary>
+        /// Tipping configuration for PLN.
+        /// </summary>
+        [JsonProperty("pln")]
+        public ConfigurationTippingPlnOptions Pln { get; set; }
 
         /// <summary>
         /// Tipping configuration for SEK.

@@ -23,6 +23,12 @@ namespace Stripe.Treasury
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The nickname for the FinancialAccount.
+        /// </summary>
+        [JsonProperty("nickname")]
+        public string Nickname { get; set; }
+
+        /// <summary>
         /// The set of functionalities that the platform can restrict on the FinancialAccount.
         /// </summary>
         [JsonProperty("platform_restrictions")]

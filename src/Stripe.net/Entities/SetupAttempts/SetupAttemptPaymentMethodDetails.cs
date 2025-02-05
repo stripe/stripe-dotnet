@@ -8,6 +8,9 @@ namespace Stripe
         [JsonProperty("acss_debit")]
         public SetupAttemptPaymentMethodDetailsAcssDebit AcssDebit { get; set; }
 
+        [JsonProperty("amazon_pay")]
+        public SetupAttemptPaymentMethodDetailsAmazonPay AmazonPay { get; set; }
+
         [JsonProperty("au_becs_debit")]
         public SetupAttemptPaymentMethodDetailsAuBecsDebit AuBecsDebit { get; set; }
 
@@ -32,14 +35,23 @@ namespace Stripe
         [JsonProperty("ideal")]
         public SetupAttemptPaymentMethodDetailsIdeal Ideal { get; set; }
 
+        [JsonProperty("kakao_pay")]
+        public SetupAttemptPaymentMethodDetailsKakaoPay KakaoPay { get; set; }
+
         [JsonProperty("klarna")]
         public SetupAttemptPaymentMethodDetailsKlarna Klarna { get; set; }
+
+        [JsonProperty("kr_card")]
+        public SetupAttemptPaymentMethodDetailsKrCard KrCard { get; set; }
 
         [JsonProperty("link")]
         public SetupAttemptPaymentMethodDetailsLink Link { get; set; }
 
         [JsonProperty("paypal")]
         public SetupAttemptPaymentMethodDetailsPaypal Paypal { get; set; }
+
+        [JsonProperty("revolut_pay")]
+        public SetupAttemptPaymentMethodDetailsRevolutPay RevolutPay { get; set; }
 
         [JsonProperty("sepa_debit")]
         public SetupAttemptPaymentMethodDetailsSepaDebit SepaDebit { get; set; }

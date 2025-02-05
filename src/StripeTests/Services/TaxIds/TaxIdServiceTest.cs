@@ -12,24 +12,24 @@ namespace StripeTests
         private const string CustomerId = "cus_123";
         private const string TaxIdId = "txi_123";
 
-        private readonly TaxIdService service;
-        private readonly TaxIdCreateOptions createOptions;
-        private readonly TaxIdListOptions listOptions;
+        private readonly CustomerTaxIdService service;
+        private readonly CustomerTaxIdCreateOptions createOptions;
+        private readonly CustomerTaxIdListOptions listOptions;
 
         public TaxIdServiceTest(
             StripeMockFixture stripeMockFixture,
             MockHttpClientFixture mockHttpClientFixture)
             : base(stripeMockFixture, mockHttpClientFixture)
         {
-            this.service = new TaxIdService(this.StripeClient);
+            this.service = new CustomerTaxIdService(this.StripeClient);
 
-            this.createOptions = new TaxIdCreateOptions
+            this.createOptions = new CustomerTaxIdCreateOptions
             {
                 Type = "eu_vat",
                 Value = "11111",
             };
 
-            this.listOptions = new TaxIdListOptions
+            this.listOptions = new CustomerTaxIdListOptions
             {
                 Limit = 1,
             };

@@ -195,8 +195,8 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Charge)
-        /// ID of the charge or payment that was used to fund the transfer. If null, the transfer
-        /// was funded from the available balance.
+        /// ID of the charge that was used to fund the transfer. If null, the transfer was funded
+        /// from the available balance.
         /// </summary>
         [JsonIgnore]
         public string SourceTransactionId
@@ -207,8 +207,8 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// ID of the charge or payment that was used to fund the transfer. If null, the transfer
-        /// was funded from the available balance.
+        /// ID of the charge that was used to fund the transfer. If null, the transfer was funded
+        /// from the available balance.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

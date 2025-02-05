@@ -654,17 +654,14 @@ namespace StripeTests
             {
             }
 
-            [Obsolete("This member is deprecated and will be removed in a future release")]
-            public override string BasePath => "/v1/pageablemodels";
-
             public IEnumerable<PageableModel> ListAutoPaging(ListOptions options = null, RequestOptions requestOptions = null)
             {
-                return this.ListEntitiesAutoPaging(options, requestOptions);
+                return this.ListRequestAutoPaging<PageableModel>("/v1/pageablemodels", options, requestOptions);
             }
 
             public IAsyncEnumerable<PageableModel> ListAutoPagingAsync(ListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
             {
-                return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+                return this.ListRequestAutoPagingAsync<PageableModel>("/v1/pageablemodels", options, requestOptions, cancellationToken);
             }
         }
     }

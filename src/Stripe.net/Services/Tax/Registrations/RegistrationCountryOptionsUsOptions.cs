@@ -25,9 +25,16 @@ namespace Stripe.Tax
         public string State { get; set; }
 
         /// <summary>
+        /// Options for the state sales tax registration.
+        /// </summary>
+        [JsonProperty("state_sales_tax")]
+        public RegistrationCountryOptionsUsStateSalesTaxOptions StateSalesTax { get; set; }
+
+        /// <summary>
         /// Type of registration to be created in the US.
         /// One of: <c>local_amusement_tax</c>, <c>local_lease_tax</c>,
-        /// <c>state_communications_tax</c>, or <c>state_sales_tax</c>.
+        /// <c>state_communications_tax</c>, <c>state_retail_delivery_fee</c>, or
+        /// <c>state_sales_tax</c>.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; }

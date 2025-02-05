@@ -30,6 +30,14 @@ namespace Stripe
         public string AfterpayClearpayPayments { get; set; }
 
         /// <summary>
+        /// The status of the Alma capability of the account, or whether the account can directly
+        /// process Alma payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("alma_payments")]
+        public string AlmaPayments { get; set; }
+
+        /// <summary>
         /// The status of the AmazonPay capability of the account, or whether the account can
         /// directly process AmazonPay payments.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -134,6 +142,14 @@ namespace Stripe
         public string FpxPayments { get; set; }
 
         /// <summary>
+        /// The status of the GB customer_balance payments (GBP currency) capability of the account,
+        /// or whether the account can directly process GB customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("gb_bank_transfer_payments")]
+        public string GbBankTransferPayments { get; set; }
+
+        /// <summary>
         /// The status of the giropay payments capability of the account, or whether the account can
         /// directly process giropay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -174,6 +190,22 @@ namespace Stripe
         public string JcbPayments { get; set; }
 
         /// <summary>
+        /// The status of the Japanese customer_balance payments (JPY currency) capability of the
+        /// account, or whether the account can directly process Japanese customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("jp_bank_transfer_payments")]
+        public string JpBankTransferPayments { get; set; }
+
+        /// <summary>
+        /// The status of the KakaoPay capability of the account, or whether the account can
+        /// directly process KakaoPay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("kakao_pay_payments")]
+        public string KakaoPayPayments { get; set; }
+
+        /// <summary>
         /// The status of the Klarna payments capability of the account, or whether the account can
         /// directly process Klarna charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -188,6 +220,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("konbini_payments")]
         public string KonbiniPayments { get; set; }
+
+        /// <summary>
+        /// The status of the KrCard capability of the account, or whether the account can directly
+        /// process KrCard payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("kr_card_payments")]
+        public string KrCardPayments { get; set; }
 
         /// <summary>
         /// The status of the legacy payments capability of the account.
@@ -205,12 +245,36 @@ namespace Stripe
         public string LinkPayments { get; set; }
 
         /// <summary>
-        /// The status of the MobilepPay capability of the account, or whether the account can
+        /// The status of the MobilePay capability of the account, or whether the account can
         /// directly process MobilePay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("mobilepay_payments")]
         public string MobilepayPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Multibanco payments capability of the account, or whether the account
+        /// can directly process Multibanco charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("multibanco_payments")]
+        public string MultibancoPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Mexican customer_balance payments (MXN currency) capability of the
+        /// account, or whether the account can directly process Mexican customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("mx_bank_transfer_payments")]
+        public string MxBankTransferPayments { get; set; }
+
+        /// <summary>
+        /// The status of the NaverPay capability of the account, or whether the account can
+        /// directly process NaverPay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("naver_pay_payments")]
+        public string NaverPayPayments { get; set; }
 
         /// <summary>
         /// The status of the OXXO payments capability of the account, or whether the account can
@@ -227,6 +291,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("p24_payments")]
         public string P24Payments { get; set; }
+
+        /// <summary>
+        /// The status of the pay_by_bank payments capability of the account, or whether the account
+        /// can directly process pay_by_bank charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("pay_by_bank_payments")]
+        public string PayByBankPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Payco capability of the account, or whether the account can directly
+        /// process Payco payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("payco_payments")]
+        public string PaycoPayments { get; set; }
 
         /// <summary>
         /// The status of the paynow payments capability of the account, or whether the account can
@@ -251,6 +331,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("revolut_pay_payments")]
         public string RevolutPayPayments { get; set; }
+
+        /// <summary>
+        /// The status of the SamsungPay capability of the account, or whether the account can
+        /// directly process SamsungPay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("samsung_pay_payments")]
+        public string SamsungPayPayments { get; set; }
+
+        /// <summary>
+        /// The status of the SEPA customer_balance payments (EUR currency) capability of the
+        /// account, or whether the account can directly process SEPA customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("sepa_bank_transfer_payments")]
+        public string SepaBankTransferPayments { get; set; }
 
         /// <summary>
         /// The status of the SEPA Direct Debits payments capability of the account, or whether the
@@ -306,12 +402,28 @@ namespace Stripe
         public string Treasury { get; set; }
 
         /// <summary>
+        /// The status of the TWINT capability of the account, or whether the account can directly
+        /// process TWINT charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("twint_payments")]
+        public string TwintPayments { get; set; }
+
+        /// <summary>
         /// The status of the US bank account ACH payments capability of the account, or whether the
         /// account can directly process US bank account charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("us_bank_account_ach_payments")]
         public string UsBankAccountAchPayments { get; set; }
+
+        /// <summary>
+        /// The status of the US customer_balance payments (USD currency) capability of the account,
+        /// or whether the account can directly process US customer_balance charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("us_bank_transfer_payments")]
+        public string UsBankTransferPayments { get; set; }
 
         /// <summary>
         /// The status of the Zip capability of the account, or whether the account can directly

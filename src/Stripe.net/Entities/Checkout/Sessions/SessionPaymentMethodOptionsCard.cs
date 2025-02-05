@@ -9,6 +9,39 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsCardInstallments Installments { get; set; }
 
         /// <summary>
+        /// Request ability to <a href="https://stripe.com/payments/extended-authorization">capture
+        /// beyond the standard authorization validity window</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_extended_authorization")]
+        public string RequestExtendedAuthorization { get; set; }
+
+        /// <summary>
+        /// Request ability to <a
+        /// href="https://stripe.com/payments/incremental-authorization">increment the
+        /// authorization</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_incremental_authorization")]
+        public string RequestIncrementalAuthorization { get; set; }
+
+        /// <summary>
+        /// Request ability to make <a href="https://stripe.com/payments/multicapture">multiple
+        /// captures</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_multicapture")]
+        public string RequestMulticapture { get; set; }
+
+        /// <summary>
+        /// Request ability to <a href="https://stripe.com/payments/overcapture">overcapture</a> for
+        /// this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_overcapture")]
+        public string RequestOvercapture { get; set; }
+
+        /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
         /// customers for authentication based on risk level and <a
         /// href="https://stripe.com/docs/strong-customer-authentication">other requirements</a>.
@@ -27,17 +60,21 @@ namespace Stripe.Checkout
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
-        /// Providing this parameter will <a
-        /// href="https://stripe.com/docs/payments/save-during-payment">attach the payment
-        /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
-        /// confirmed and any required actions from the user are complete. If no Customer was
-        /// provided, the payment method can still be <a
-        /// href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer
-        /// after the transaction completes.
+        /// If you provide a Customer with the PaymentIntent, you can use this parameter to <a
+        /// href="https://stripe.com/payments/save-during-payment">attach the payment method</a> to
+        /// the Customer after the PaymentIntent is confirmed and the customer completes any
+        /// required actions. If you don't provide a Customer, you can still <a
+        /// href="https://stripe.com/api/payment_methods/attach">attach</a> the payment method to a
+        /// Customer after the transaction completes.
         ///
-        /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
-        /// optimize your payment flow and comply with regional legislation and network rules, such
-        /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
+        /// If the payment method is <c>card_present</c> and isn't a digital wallet, Stripe creates
+        /// and attaches a <a
+        /// href="https://stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card to the Customer instead.
+        ///
+        /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
+        /// with regional legislation and network rules, such as <a
+        /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]

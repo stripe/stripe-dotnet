@@ -25,6 +25,14 @@ namespace Stripe
                 { "balance", typeof(Balance) },
                 { "balance_transaction", typeof(BalanceTransaction) },
                 { "bank_account", typeof(BankAccount) },
+                { "billing.alert", typeof(Billing.Alert) },
+                { "billing.alert_triggered", typeof(Billing.AlertTriggered) },
+                { "billing.credit_balance_summary", typeof(Billing.CreditBalanceSummary) },
+                {
+                    "billing.credit_balance_transaction", typeof(
+                    Billing.CreditBalanceTransaction)
+                },
+                { "billing.credit_grant", typeof(Billing.CreditGrant) },
                 { "billing.meter", typeof(Billing.Meter) },
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
@@ -81,6 +89,7 @@ namespace Stripe
                 { "identity.verification_report", typeof(Identity.VerificationReport) },
                 { "identity.verification_session", typeof(Identity.VerificationSession) },
                 { "invoice", typeof(Invoice) },
+                { "invoice_rendering_template", typeof(InvoiceRenderingTemplate) },
                 { "invoiceitem", typeof(InvoiceItem) },
                 { "issuing.authorization", typeof(Issuing.Authorization) },
                 { "issuing.card", typeof(Issuing.Card) },
@@ -102,7 +111,6 @@ namespace Stripe
                 { "payout", typeof(Payout) },
                 { "person", typeof(Person) },
                 { "plan", typeof(Plan) },
-                { "platform_tax_fee", typeof(PlatformTaxFee) },
                 { "price", typeof(Price) },
                 { "product", typeof(Product) },
                 { "product_feature", typeof(ProductFeature) },
@@ -166,6 +174,38 @@ namespace Stripe
                 // ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
 
+        internal static readonly IReadOnlyDictionary<string, Type> V2ObjectsToTypes = new ReadOnlyDictionary<string, Type>(
+            new Dictionary<string, Type>
+            {
+                // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
+                { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
+                {
+                    "v2.billing.meter_event_adjustment", typeof(
+                    V2.Billing.MeterEventAdjustment)
+                },
+                { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
+                { "v2.core.event", typeof(V2.Event) },
+                { "v2.core.event_destination", typeof(V2.EventDestination) },
+
+                // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
+            });
+
+        internal static readonly IReadOnlyDictionary<string, Type> V2TypesToEventTypes = new ReadOnlyDictionary<string, Type>(
+            new Dictionary<string, Type>
+            {
+                // ThinTypesToEventTypes: The beginning of the section generated from our OpenAPI spec
+                {
+                    "v1.billing.meter.error_report_triggered", typeof(
+                    Events.V1BillingMeterErrorReportTriggeredEvent)
+                },
+                {
+                    "v1.billing.meter.no_meter_found", typeof(
+                    Events.V1BillingMeterNoMeterFoundEvent)
+                },
+
+                // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
+            });
+
         /// <summary>
         /// Returns the concrete type to use, given a potential type and the value of the `object`
         /// key in a JSON payload.
@@ -195,6 +235,17 @@ namespace Stripe
             }
 
             return null;
+        }
+
+        public static Type GetConcreteThinEventType(string typeValue)
+        {
+            Type concreteType = null;
+            if (!string.IsNullOrEmpty(typeValue))
+            {
+                V2TypesToEventTypes.TryGetValue(typeValue, out concreteType);
+            }
+
+            return concreteType;
         }
     }
 }

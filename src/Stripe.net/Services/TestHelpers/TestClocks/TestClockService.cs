@@ -3,6 +3,7 @@ namespace Stripe.TestHelpers
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -17,13 +18,15 @@ namespace Stripe.TestHelpers
         {
         }
 
+        internal TestClockService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public TestClockService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/test_helpers/test_clocks";
 
         /// <summary>
         /// <p>Starts advancing a test clock to a specified time in the future. Advancement is done
@@ -31,7 +34,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual TestClock Advance(string id, TestClockAdvanceOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TestClock>(HttpMethod.Post, $"/v1/test_helpers/test_clocks/{id}/advance", options, requestOptions);
+            return this.Request<TestClock>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/test_clocks/{WebUtility.UrlEncode(id)}/advance", options, requestOptions);
         }
 
         /// <summary>
@@ -40,7 +43,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Task<TestClock> AdvanceAsync(string id, TestClockAdvanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TestClock>(HttpMethod.Post, $"/v1/test_helpers/test_clocks/{id}/advance", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TestClock>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/test_clocks/{WebUtility.UrlEncode(id)}/advance", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +51,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual TestClock Create(TestClockCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<TestClock>(HttpMethod.Post, $"/v1/test_helpers/test_clocks", options, requestOptions);
+            return this.Request<TestClock>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/test_clocks", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Task<TestClock> CreateAsync(TestClockCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TestClock>(HttpMethod.Post, $"/v1/test_helpers/test_clocks", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TestClock>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/test_clocks", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +67,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual TestClock Delete(string id, TestClockDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TestClock>(HttpMethod.Delete, $"/v1/test_helpers/test_clocks/{id}", options, requestOptions);
+            return this.Request<TestClock>(BaseAddress.Api, HttpMethod.Delete, $"/v1/test_helpers/test_clocks/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -72,7 +75,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Task<TestClock> DeleteAsync(string id, TestClockDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TestClock>(HttpMethod.Delete, $"/v1/test_helpers/test_clocks/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TestClock>(BaseAddress.Api, HttpMethod.Delete, $"/v1/test_helpers/test_clocks/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -80,7 +83,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual TestClock Get(string id, TestClockGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<TestClock>(HttpMethod.Get, $"/v1/test_helpers/test_clocks/{id}", options, requestOptions);
+            return this.Request<TestClock>(BaseAddress.Api, HttpMethod.Get, $"/v1/test_helpers/test_clocks/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -88,7 +91,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Task<TestClock> GetAsync(string id, TestClockGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<TestClock>(HttpMethod.Get, $"/v1/test_helpers/test_clocks/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<TestClock>(BaseAddress.Api, HttpMethod.Get, $"/v1/test_helpers/test_clocks/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -96,7 +99,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual StripeList<TestClock> List(TestClockListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<TestClock>>(HttpMethod.Get, $"/v1/test_helpers/test_clocks", options, requestOptions);
+            return this.Request<StripeList<TestClock>>(BaseAddress.Api, HttpMethod.Get, $"/v1/test_helpers/test_clocks", options, requestOptions);
         }
 
         /// <summary>
@@ -104,7 +107,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Task<StripeList<TestClock>> ListAsync(TestClockListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<TestClock>>(HttpMethod.Get, $"/v1/test_helpers/test_clocks", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<TestClock>>(BaseAddress.Api, HttpMethod.Get, $"/v1/test_helpers/test_clocks", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

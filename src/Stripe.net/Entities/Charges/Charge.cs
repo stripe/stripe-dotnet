@@ -172,7 +172,8 @@ namespace Stripe
         /// <summary>
         /// The full statement descriptor that is passed to card networks, and that is displayed on
         /// your customers' credit card and bank statements. Allows you to see what the statement
-        /// descriptor looks like after the static and dynamic portions are combined.
+        /// descriptor looks like after the static and dynamic portions are combined. This value
+        /// only exists for card payments.
         /// </summary>
         [JsonProperty("calculated_statement_descriptor")]
         public string CalculatedStatementDescriptor { get; set; }
@@ -529,7 +530,7 @@ namespace Stripe
         /// <summary>
         /// (ID of the Transfer)
         /// The transfer ID which created this charge. Only present if the charge came from another
-        /// Stripe account. <a href="https://stripe.com/docs/connect/destination-charges">See the
+        /// Stripe account. <a href="https://docs.stripe.com/connect/destination-charges">See the
         /// Connect documentation</a> for details.
         /// </summary>
         [JsonIgnore]
@@ -542,7 +543,7 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The transfer ID which created this charge. Only present if the charge came from another
-        /// Stripe account. <a href="https://stripe.com/docs/connect/destination-charges">See the
+        /// Stripe account. <a href="https://docs.stripe.com/connect/destination-charges">See the
         /// Connect documentation</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -560,18 +561,24 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// For card charges, use <c>statement_descriptor_suffix</c> instead. Otherwise, you can use
-        /// this value as the complete description of a charge on your customers’ statements. Must
-        /// contain at least one letter, maximum 22 characters.
+        /// For a non-card charge, text that appears on the customer's statement as the statement
+        /// descriptor. This value overrides the account's default statement descriptor. For
+        /// information about requirements, including the 22-character limit, see <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors">the Statement
+        /// Descriptor docs</a>.
+        ///
+        /// For a card charge, this value is ignored unless you don't specify a
+        /// <c>statement_descriptor_suffix</c>, in which case this value is used as the suffix.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
-        /// on the account to form the complete statement descriptor. Maximum 22 characters for the
-        /// concatenated descriptor.
+        /// Provides information about a card charge. Concatenated to the account's <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement
+        /// descriptor prefix</a> to form the complete statement descriptor that appears on the
+        /// customer's statement. If the account has no prefix value, the suffix is concatenated to
+        /// the account's statement descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
         public string StatementDescriptorSuffix { get; set; }

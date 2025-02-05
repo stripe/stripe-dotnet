@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -10,7 +11,12 @@ namespace Stripe
         IDeletable<EphemeralKey, EphemeralKeyDeleteOptions>
     {
         public EphemeralKeyService()
-            : base(null)
+            : base()
+        {
+        }
+
+        internal EphemeralKeyService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -18,9 +24,6 @@ namespace Stripe
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/ephemeral_keys";
 
         public virtual EphemeralKey Create(EphemeralKeyCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -34,7 +37,7 @@ namespace Stripe
             requestOptions = requestOptions ?? new RequestOptions();
             requestOptions.StripeVersion = options.StripeVersion;
 
-            return this.Request<EphemeralKey>(HttpMethod.Post, $"/v1/ephemeral_keys", options, requestOptions);
+            return this.Request<EphemeralKey>(BaseAddress.Api, HttpMethod.Post, $"/v1/ephemeral_keys", options, requestOptions);
         }
 
         public virtual Task<EphemeralKey> CreateAsync(EphemeralKeyCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
@@ -44,17 +47,17 @@ namespace Stripe
             requestOptions = requestOptions ?? new RequestOptions();
             requestOptions.StripeVersion = options.StripeVersion;
 
-            return this.RequestAsync<EphemeralKey>(HttpMethod.Post, $"/v1/ephemeral_keys", options, requestOptions, cancellationToken);
+            return this.RequestAsync<EphemeralKey>(BaseAddress.Api, HttpMethod.Post, $"/v1/ephemeral_keys", options, requestOptions, cancellationToken);
         }
 
         public virtual EphemeralKey Delete(string id, EphemeralKeyDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<EphemeralKey>(HttpMethod.Delete, $"/v1/ephemeral_keys/{id}", options, requestOptions);
+            return this.Request<EphemeralKey>(BaseAddress.Api, HttpMethod.Delete, $"/v1/ephemeral_keys/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         public virtual Task<EphemeralKey> DeleteAsync(string id, EphemeralKeyDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<EphemeralKey>(HttpMethod.Delete, $"/v1/ephemeral_keys/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<EphemeralKey>(BaseAddress.Api, HttpMethod.Delete, $"/v1/ephemeral_keys/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

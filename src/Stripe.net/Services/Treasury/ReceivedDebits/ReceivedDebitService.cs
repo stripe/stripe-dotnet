@@ -3,6 +3,7 @@ namespace Stripe.Treasury
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -15,13 +16,15 @@ namespace Stripe.Treasury
         {
         }
 
+        internal ReceivedDebitService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public ReceivedDebitService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/treasury/received_debits";
 
         /// <summary>
         /// <p>Retrieves the details of an existing ReceivedDebit by passing the unique
@@ -29,7 +32,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual ReceivedDebit Get(string id, ReceivedDebitGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ReceivedDebit>(HttpMethod.Get, $"/v1/treasury/received_debits/{id}", options, requestOptions);
+            return this.Request<ReceivedDebit>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_debits/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<ReceivedDebit> GetAsync(string id, ReceivedDebitGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ReceivedDebit>(HttpMethod.Get, $"/v1/treasury/received_debits/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ReceivedDebit>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_debits/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<ReceivedDebit> List(ReceivedDebitListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ReceivedDebit>>(HttpMethod.Get, $"/v1/treasury/received_debits", options, requestOptions);
+            return this.Request<StripeList<ReceivedDebit>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_debits", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<ReceivedDebit>> ListAsync(ReceivedDebitListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ReceivedDebit>>(HttpMethod.Get, $"/v1/treasury/received_debits", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ReceivedDebit>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/received_debits", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

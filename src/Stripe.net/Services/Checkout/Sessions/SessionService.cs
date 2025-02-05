@@ -3,16 +3,25 @@ namespace Stripe.Checkout
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SessionService : Service<Session>,
+    public partial class SessionService : Service<Session>,
         ICreatable<Session, SessionCreateOptions>,
         IListable<Session, SessionListOptions>,
-        IRetrievable<Session, SessionGetOptions>
+        IRetrievable<Session, SessionGetOptions>,
+        IUpdatable<Session, SessionUpdateOptions>
     {
+        private SessionLineItemService lineItems;
+
         public SessionService()
+        {
+        }
+
+        internal SessionService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -21,15 +30,15 @@ namespace Stripe.Checkout
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/checkout/sessions";
+        public virtual SessionLineItemService LineItems => this.lineItems ??= new SessionLineItemService(
+            this.Requestor);
 
         /// <summary>
         /// <p>Creates a Session object.</p>.
         /// </summary>
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(HttpMethod.Post, $"/v1/checkout/sessions", options, requestOptions);
+            return this.Request<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +46,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/checkout/sessions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -48,7 +57,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Session Expire(string id, SessionExpireOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(HttpMethod.Post, $"/v1/checkout/sessions/{id}/expire", options, requestOptions);
+            return this.Request<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/expire", options, requestOptions);
         }
 
         /// <summary>
@@ -59,7 +68,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Task<Session> ExpireAsync(string id, SessionExpireOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(HttpMethod.Post, $"/v1/checkout/sessions/{id}/expire", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/expire", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -67,7 +76,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Session Get(string id, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Session>(HttpMethod.Get, $"/v1/checkout/sessions/{id}", options, requestOptions);
+            return this.Request<Session>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -75,7 +84,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Task<Session> GetAsync(string id, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Session>(HttpMethod.Get, $"/v1/checkout/sessions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -83,7 +92,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual StripeList<Session> List(SessionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Session>>(HttpMethod.Get, $"/v1/checkout/sessions", options, requestOptions);
+            return this.Request<StripeList<Session>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -91,7 +100,7 @@ namespace Stripe.Checkout
         /// </summary>
         public virtual Task<StripeList<Session>> ListAsync(SessionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Session>>(HttpMethod.Get, $"/v1/checkout/sessions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Session>>(BaseAddress.Api, HttpMethod.Get, $"/v1/checkout/sessions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -111,43 +120,19 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// <p>When retrieving a Checkout Session, there is an includable
-        /// <strong>line_items</strong> property containing the first handful of those items. There
-        /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
+        /// <p>Updates a Session object.</p>.
         /// </summary>
-        public virtual StripeList<LineItem> ListLineItems(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null)
+        public virtual Session Update(string id, SessionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<LineItem>>(HttpMethod.Get, $"/v1/checkout/sessions/{id}/line_items", options, requestOptions);
+            return this.Request<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
-        /// <p>When retrieving a Checkout Session, there is an includable
-        /// <strong>line_items</strong> property containing the first handful of those items. There
-        /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
+        /// <p>Updates a Session object.</p>.
         /// </summary>
-        public virtual Task<StripeList<LineItem>> ListLineItemsAsync(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<Session> UpdateAsync(string id, SessionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<LineItem>>(HttpMethod.Get, $"/v1/checkout/sessions/{id}/line_items", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>When retrieving a Checkout Session, there is an includable
-        /// <strong>line_items</strong> property containing the first handful of those items. There
-        /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual IEnumerable<LineItem> ListLineItemsAutoPaging(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<LineItem>($"/v1/checkout/sessions/{id}/line_items", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>When retrieving a Checkout Session, there is an includable
-        /// <strong>line_items</strong> property containing the first handful of those items. There
-        /// is also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<LineItem> ListLineItemsAutoPagingAsync(string id, SessionListLineItemsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<LineItem>($"/v1/checkout/sessions/{id}/line_items", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

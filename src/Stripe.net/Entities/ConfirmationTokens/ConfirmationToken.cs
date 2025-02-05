@@ -39,8 +39,7 @@ namespace Stripe
 
         /// <summary>
         /// Time at which this ConfirmationToken expires and can no longer be used to confirm a
-        /// PaymentIntent or SetupIntent. This is set to null once this ConfirmationToken has been
-        /// used.
+        /// PaymentIntent or SetupIntent.
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -65,6 +64,12 @@ namespace Stripe
         /// </summary>
         [JsonProperty("payment_intent")]
         public string PaymentIntent { get; set; }
+
+        /// <summary>
+        /// Payment-method-specific configuration for this ConfirmationToken.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+        public ConfirmationTokenPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
         /// Payment details collected by the Payment Element, used to create a PaymentMethod when a

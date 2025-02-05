@@ -3,6 +3,7 @@ namespace Stripe.Treasury
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -16,20 +17,22 @@ namespace Stripe.Treasury
         {
         }
 
+        internal InboundTransferService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public InboundTransferService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/treasury/inbound_transfers";
 
         /// <summary>
         /// <p>Cancels an InboundTransfer.</p>.
         /// </summary>
         public virtual InboundTransfer Cancel(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions);
+            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +40,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<InboundTransfer> CancelAsync(string id, InboundTransferCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers/{id}/cancel", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}/cancel", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -45,7 +48,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual InboundTransfer Create(InboundTransferCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions);
+            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions);
         }
 
         /// <summary>
@@ -53,7 +56,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<InboundTransfer> CreateAsync(InboundTransferCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InboundTransfer>(HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Post, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -61,7 +64,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual InboundTransfer Get(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<InboundTransfer>(HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions);
+            return this.Request<InboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -69,7 +72,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<InboundTransfer> GetAsync(string id, InboundTransferGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<InboundTransfer>(HttpMethod.Get, $"/v1/treasury/inbound_transfers/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<InboundTransfer>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -77,7 +80,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual StripeList<InboundTransfer> List(InboundTransferListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<InboundTransfer>>(HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions);
+            return this.Request<StripeList<InboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions);
         }
 
         /// <summary>
@@ -85,7 +88,7 @@ namespace Stripe.Treasury
         /// </summary>
         public virtual Task<StripeList<InboundTransfer>> ListAsync(InboundTransferListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<InboundTransfer>>(HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<InboundTransfer>>(BaseAddress.Api, HttpMethod.Get, $"/v1/treasury/inbound_transfers", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

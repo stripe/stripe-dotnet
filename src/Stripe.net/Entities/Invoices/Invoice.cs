@@ -176,7 +176,11 @@ namespace Stripe
         /// Number of payment attempts made for this invoice, from the perspective of the payment
         /// retry schedule. Any payment attempt counts as the first attempt, and subsequently only
         /// automatic retries increment the attempt count. In other words, manual payment attempts
-        /// after the first attempt do not affect the retry schedule.
+        /// after the first attempt do not affect the retry schedule. If a failure is returned with
+        /// a non-retryable return code, the invoice can no longer be retried unless a new payment
+        /// method is obtained. Retries will continue to be scheduled, and attempt_count will
+        /// continue to increment, but retries will only be executed if a new payment method is
+        /// obtained.
         /// </summary>
         [JsonProperty("attempt_count")]
         public long AttemptCount { get; set; }
@@ -200,6 +204,16 @@ namespace Stripe
 
         [JsonProperty("automatic_tax")]
         public InvoiceAutomaticTax AutomaticTax { get; set; }
+
+        /// <summary>
+        /// The time when this invoice is currently scheduled to be automatically finalized. The
+        /// field will be <c>null</c> if the invoice is not scheduled to finalize in the future. If
+        /// the invoice is not in the draft state, this field will always be <c>null</c> - see
+        /// <c>finalized_at</c> for the time when an already-finalized invoice was finalized.
+        /// </summary>
+        [JsonProperty("automatically_finalizes_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+        public DateTime? AutomaticallyFinalizesAt { get; set; }
 
         /// <summary>
         /// Indicates the reason why the invoice was created.
@@ -721,14 +735,20 @@ namespace Stripe
         public InvoicePaymentSettings PaymentSettings { get; set; }
 
         /// <summary>
-        /// End of the usage period during which invoice items were added to this invoice.
+        /// End of the usage period during which invoice items were added to this invoice. This
+        /// looks back one period for a subscription invoice. Use the <a
+        /// href="https://stripe.com/api/invoices/line_item#invoice_line_item_object-period">line
+        /// item period</a> to get the service period for each price.
         /// </summary>
         [JsonProperty("period_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
         public DateTime PeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Start of the usage period during which invoice items were added to this invoice.
+        /// Start of the usage period during which invoice items were added to this invoice. This
+        /// looks back one period for a subscription invoice. Use the <a
+        /// href="https://stripe.com/api/invoices/line_item#invoice_line_item_object-period">line
+        /// item period</a> to get the service period for each price.
         /// </summary>
         [JsonProperty("period_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -951,6 +971,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("total_excluding_tax")]
         public long? TotalExcludingTax { get; set; }
+
+        /// <summary>
+        /// Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this
+        /// invoice. This is a combined list of total_pretax_credit_amounts across all invoice line
+        /// items.
+        /// </summary>
+        [JsonProperty("total_pretax_credit_amounts")]
+        public List<InvoiceTotalPretaxCreditAmount> TotalPretaxCreditAmounts { get; set; }
 
         /// <summary>
         /// The aggregate amounts calculated per tax rate for all line items.

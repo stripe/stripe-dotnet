@@ -21,5 +21,17 @@ namespace Stripe
         /// </summary>
         [JsonProperty("pdf")]
         public InvoiceRenderingPdfOptions Pdf { get; set; }
+
+        /// <summary>
+        /// ID of the invoice rendering template to use for this invoice.
+        /// </summary>
+        [JsonProperty("template")]
+        public string Template { get; set; }
+
+        /// <summary>
+        /// The specific version of invoice rendering template to use for this invoice.
+        /// </summary>
+        [JsonProperty("template_version")]
+        public long? TemplateVersion { get; set; }
     }
 }
