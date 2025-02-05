@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class CreditNoteService : Service<CreditNote>,
+    public partial class CreditNoteService : Service,
         ICreatable<CreditNote, CreditNoteCreateOptions>,
         IListable<CreditNote, CreditNoteListOptions>,
         IRetrievable<CreditNote, CreditNoteGetOptions>,

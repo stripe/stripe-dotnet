@@ -6,7 +6,7 @@ namespace Stripe.BillingPortal
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SessionService : Service<Session>,
+    public class SessionService : Service,
         ICreatable<Session, SessionCreateOptions>
     {
         public SessionService()

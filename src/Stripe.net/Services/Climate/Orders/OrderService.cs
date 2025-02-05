@@ -8,7 +8,7 @@ namespace Stripe.Climate
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class OrderService : Service<Order>,
+    public class OrderService : Service,
         ICreatable<Order, OrderCreateOptions>,
         IListable<Order, OrderListOptions>,
         IRetrievable<Order, OrderGetOptions>,

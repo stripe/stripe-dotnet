@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class InvoiceUpcomingLinesService : ServiceNested<InvoiceLineItem>
+    public class InvoiceUpcomingLinesService : Service
     {
         public InvoiceUpcomingLinesService()
         {

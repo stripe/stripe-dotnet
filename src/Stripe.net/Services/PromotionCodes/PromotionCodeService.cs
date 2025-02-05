@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PromotionCodeService : Service<PromotionCode>,
+    public class PromotionCodeService : Service,
         ICreatable<PromotionCode, PromotionCodeCreateOptions>,
         IListable<PromotionCode, PromotionCodeListOptions>,
         IRetrievable<PromotionCode, PromotionCodeGetOptions>,

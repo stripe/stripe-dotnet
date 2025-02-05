@@ -8,7 +8,7 @@ namespace Stripe.Tax
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CalculationLineItemService : ServiceNested<CalculationLineItem>,
+    public class CalculationLineItemService : Service,
         INestedListable<CalculationLineItem, CalculationLineItemListOptions>
     {
         public CalculationLineItemService()

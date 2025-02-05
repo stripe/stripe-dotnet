@@ -7,7 +7,7 @@ namespace Stripe.TestHelpers
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class RefundService : Service<Refund>
+    public class RefundService : Service
     {
         public RefundService()
         {

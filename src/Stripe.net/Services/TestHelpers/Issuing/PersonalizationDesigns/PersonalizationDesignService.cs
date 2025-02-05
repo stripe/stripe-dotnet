@@ -8,7 +8,7 @@ namespace Stripe.TestHelpers.Issuing
     using System.Threading.Tasks;
     using Stripe.Issuing;
 
-    public class PersonalizationDesignService : Service<Stripe.Issuing.PersonalizationDesign>
+    public class PersonalizationDesignService : Service
     {
         public PersonalizationDesignService()
         {

@@ -8,7 +8,7 @@ namespace Stripe.Checkout
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class SessionService : Service<Session>,
+    public partial class SessionService : Service,
         ICreatable<Session, SessionCreateOptions>,
         IListable<Session, SessionListOptions>,
         IRetrievable<Session, SessionGetOptions>,
