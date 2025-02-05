@@ -476,7 +476,7 @@ namespace StripeTests
 
             var rawResponse = await this.apiRequestor.RawRequestAsync(
                 HttpMethod.Post,
-                "/v1/charges",
+                "/v2/charges",
                 "{\"foo\":\"bar\"}",
                 new RawRequestOptions
                 {
@@ -484,7 +484,6 @@ namespace StripeTests
                     {
                         { "foo", "bar" },
                     },
-                    ApiMode = ApiMode.V2,
                 });
 
             var lastRequest = this.httpClient.LastRequest;

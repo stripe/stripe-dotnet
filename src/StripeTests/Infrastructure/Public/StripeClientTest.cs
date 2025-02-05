@@ -157,7 +157,6 @@ namespace StripeTests
                     {
                         { "foo", "bar" },
                     },
-                    ApiMode = ApiMode.V1,
                 });
 
             this.MockHttpClientFixture.MockHandler.Protected()
