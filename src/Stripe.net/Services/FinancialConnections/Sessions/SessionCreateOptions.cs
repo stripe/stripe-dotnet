@@ -37,7 +37,7 @@ namespace Stripe.FinancialConnections
         public SessionLimitsOptions Limits { get; set; }
 
         /// <summary>
-        /// Settings for configuring manual entry of account details for this Session.
+        /// Customize manual entry behavior.
         /// </summary>
         [JsonProperty("manual_entry")]
 #if NET6_0_OR_GREATER

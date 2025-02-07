@@ -189,6 +189,15 @@ namespace Stripe
         public AccountSessionComponentsPayoutsListOptions PayoutsList { get; set; }
 
         /// <summary>
+        /// Configuration for the product tax code selector embedded component.
+        /// </summary>
+        [JsonProperty("product_tax_code_selector")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("product_tax_code_selector")]
+#endif
+        public AccountSessionComponentsProductTaxCodeSelectorOptions ProductTaxCodeSelector { get; set; }
+
+        /// <summary>
         /// Configuration for the recipients component.
         /// </summary>
         [JsonProperty("recipients")]

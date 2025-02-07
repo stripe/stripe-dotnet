@@ -216,6 +216,7 @@ namespace Stripe
         /// Indicates if the person or any of their representatives, family members, or other
         /// closely related persons, declares that they hold or have held an important public job or
         /// function, in any jurisdiction.
+        /// One of: <c>existing</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("political_exposure")]
 #if NET6_0_OR_GREATER

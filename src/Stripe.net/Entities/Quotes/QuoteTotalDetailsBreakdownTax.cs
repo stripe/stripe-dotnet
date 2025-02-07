@@ -19,12 +19,12 @@ namespace Stripe
 
         /// <summary>
         /// Tax rates can be applied to <a
-        /// href="https://stripe.com/docs/billing/invoices/tax-rates">invoices</a>, <a
-        /// href="https://stripe.com/docs/billing/subscriptions/taxes">subscriptions</a> and <a
-        /// href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout
-        /// Sessions</a> to collect tax.
+        /// href="https://stripe.com/invoicing/taxes/tax-rates">invoices</a>, <a
+        /// href="https://stripe.com/billing/taxes/tax-rates">subscriptions</a> and <a
+        /// href="https://stripe.com/payments/checkout/use-manual-tax-rates">Checkout Sessions</a>
+        /// to collect tax.
         ///
-        /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax rates</a>.
+        /// Related guide: <a href="https://stripe.com/billing/taxes/tax-rates">Tax rates</a>.
         /// </summary>
         [JsonProperty("rate")]
 #if NET6_0_OR_GREATER

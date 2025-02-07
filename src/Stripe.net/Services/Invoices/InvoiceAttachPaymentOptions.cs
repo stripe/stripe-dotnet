@@ -28,7 +28,7 @@ namespace Stripe
         public string PaymentIntent { get; set; }
 
         /// <summary>
-        /// The ID of the PaymentRecord to detach from the invoice.
+        /// The ID of the PaymentRecord to attach to the invoice.
         /// </summary>
         [JsonProperty("payment_record")]
 #if NET6_0_OR_GREATER

@@ -92,6 +92,16 @@ namespace Stripe.Checkout
         public string RequestThreeDSecure { get; set; }
 
         /// <summary>
+        /// Restrictions to apply to the card payment method. For example, you can block specific
+        /// card brands.
+        /// </summary>
+        [JsonProperty("restrictions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("restrictions")]
+#endif
+        public SessionPaymentMethodOptionsCardRestrictionsOptions Restrictions { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
