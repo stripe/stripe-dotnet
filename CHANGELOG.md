@@ -1,5 +1,13 @@
 # Changelog
 
+## 47.4.0-beta.1 - 2025-02-07
+* [#3049](https://github.com/stripe/stripe-dotnet/pull/3049) Update generated code for beta
+  * Add support for `RejectedReason` on `AccountRiskControls`
+  * Add support for `ProductTaxCodeSelector` on `AccountSessionComponentsOptions`
+  * Add support for `Prices` on `BillingCreditBalanceSummaryFilterApplicabilityScopeOptions`, `BillingCreditGrantApplicabilityConfigScopeOptions`, and `BillingCreditGrantApplicabilityConfigScope`
+  * Add support for `BrandProduct` on `ChargePaymentMethodDetailsAmazonPayFundingCard` and `ChargePaymentMethodDetailsRevolutPayFundingCard`
+  * Add support for `Restrictions` on `CheckoutSessionPaymentMethodOptionsCardOptions` and `CheckoutSessionPaymentMethodOptionsCard`
+
 ## 47.3.0 - 2025-01-27
 * [#3044](https://github.com/stripe/stripe-dotnet/pull/3044) Update generated code
   * Add support for `Close` method on resource `Treasury.FinancialAccount`
