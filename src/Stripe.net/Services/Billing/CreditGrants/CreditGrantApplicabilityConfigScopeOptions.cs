@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Billing
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -17,5 +18,15 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("price_type")]
 #endif
         public string PriceType { get; set; }
+
+        /// <summary>
+        /// A list of prices that the credit grant can apply to. We currently only support the
+        /// <c>metered</c> prices.
+        /// </summary>
+        [JsonProperty("prices")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("prices")]
+#endif
+        public List<CreditGrantApplicabilityConfigScopePriceOptions> Prices { get; set; }
     }
 }

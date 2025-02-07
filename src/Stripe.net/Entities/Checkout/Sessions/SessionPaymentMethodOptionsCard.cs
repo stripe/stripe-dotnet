@@ -88,6 +88,12 @@ namespace Stripe.Checkout
 #endif
         public string RequestThreeDSecure { get; set; }
 
+        [JsonProperty("restrictions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("restrictions")]
+#endif
+        public SessionPaymentMethodOptionsCardRestrictions Restrictions { get; set; }
+
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
