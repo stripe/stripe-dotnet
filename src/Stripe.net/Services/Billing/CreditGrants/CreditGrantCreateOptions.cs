@@ -91,5 +91,15 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("name")]
 #endif
         public string Name { get; set; }
+
+        /// <summary>
+        /// The desired priority for applying this credit grant. If not specified, it will be set to
+        /// the default value of 50. The highest priority is 0 and the lowest is 100.
+        /// </summary>
+        [JsonProperty("priority")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("priority")]
+#endif
+        public long? Priority { get; set; }
     }
 }
