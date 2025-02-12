@@ -1,6 +1,5 @@
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
 
     public class RawRequestOptions : RequestOptions
