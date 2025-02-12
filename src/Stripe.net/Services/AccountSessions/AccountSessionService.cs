@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountSessionService : Service<AccountSession>,
+    public class AccountSessionService : Service,
         ICreatable<AccountSession, AccountSessionCreateOptions>
     {
         public AccountSessionService()

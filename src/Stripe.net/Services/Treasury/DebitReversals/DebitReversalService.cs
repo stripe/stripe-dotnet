@@ -8,7 +8,7 @@ namespace Stripe.Treasury
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class DebitReversalService : Service<DebitReversal>,
+    public class DebitReversalService : Service,
         ICreatable<DebitReversal, DebitReversalCreateOptions>,
         IListable<DebitReversal, DebitReversalListOptions>,
         IRetrievable<DebitReversal, DebitReversalGetOptions>

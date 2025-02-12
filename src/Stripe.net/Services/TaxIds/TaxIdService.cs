@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class TaxIdService : Service<TaxId>,
+    public partial class TaxIdService : Service,
         ICreatable<TaxId, TaxIdCreateOptions>,
         IDeletable<TaxId, TaxIdDeleteOptions>,
         IListable<TaxId, TaxIdListOptions>,

@@ -9,7 +9,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class QuoteService : Service<Quote>,
+    public partial class QuoteService : Service,
         ICreatable<Quote, QuoteCreateOptions>,
         IListable<Quote, QuoteListOptions>,
         IRetrievable<Quote, QuoteGetOptions>,
