@@ -7,7 +7,8 @@ namespace Stripe
     public class PaymentMethodInteracPresentNetworks : StripeEntity<PaymentMethodInteracPresentNetworks>
     {
         /// <summary>
-        /// All available networks for the card.
+        /// All networks available for selection via <a
+        /// href="https://stripe.com/api/payment_intents/confirm#confirm_payment_intent-payment_method_options-card-network">payment_method_options.card.network</a>.
         /// </summary>
         [JsonProperty("available")]
         public List<string> Available { get; set; }
