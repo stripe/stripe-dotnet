@@ -41,5 +41,23 @@ namespace Stripe.TestHelpers.Terminal
         {
             return this.RequestAsync<Stripe.Terminal.Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{WebUtility.UrlEncode(id)}/present_payment_method", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// <p>Succeeds an input collection on a simulated reader. Can be used to simulate
+        /// collecting inputs.</p>.
+        /// </summary>
+        public virtual Stripe.Terminal.Reader SucceedInputCollection(string id, ReaderSucceedInputCollectionOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Stripe.Terminal.Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{WebUtility.UrlEncode(id)}/succeed_input_collection", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Succeeds an input collection on a simulated reader. Can be used to simulate
+        /// collecting inputs.</p>.
+        /// </summary>
+        public virtual Task<Stripe.Terminal.Reader> SucceedInputCollectionAsync(string id, ReaderSucceedInputCollectionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Stripe.Terminal.Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{WebUtility.UrlEncode(id)}/succeed_input_collection", options, requestOptions, cancellationToken);
+        }
     }
 }
