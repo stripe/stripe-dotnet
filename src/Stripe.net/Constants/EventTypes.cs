@@ -612,8 +612,8 @@ namespace Stripe
         public const string InvoicePaymentAttemptRequired = "invoice.payment_attempt_required";
 
         /// <summary>
-        /// Occurs whenever an invoice payment attempt fails, due either to a declined payment or to
-        /// the lack of a stored payment method.
+        /// Occurs whenever an invoice payment attempt fails, due to either a declined payment,
+        /// including soft decline, or to the lack of a stored payment method.
         /// </summary>
         public const string InvoicePaymentFailed = "invoice.payment_failed";
 
