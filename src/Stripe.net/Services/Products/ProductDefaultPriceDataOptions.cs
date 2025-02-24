@@ -4,7 +4,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
 
-    public class ProductDefaultPriceDataOptions : INestedOptions
+    public class ProductDefaultPriceDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
@@ -28,6 +28,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("custom_unit_amount")]
         public ProductDefaultPriceDataCustomUnitAmountOptions CustomUnitAmount { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
+        /// </summary>
+        [JsonProperty("metadata")]
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The recurring components of a price such as <c>interval</c> and <c>interval_count</c>.

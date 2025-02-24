@@ -101,6 +101,12 @@ namespace Stripe.Checkout
         public string ClientSecret { get; set; }
 
         /// <summary>
+        /// Information about the customer collected within the Checkout Session.
+        /// </summary>
+        [JsonProperty("collected_information")]
+        public SessionCollectedInformation CollectedInformation { get; set; }
+
+        /// <summary>
         /// Results of <c>consent_collection</c> for this session.
         /// </summary>
         [JsonProperty("consent")]
