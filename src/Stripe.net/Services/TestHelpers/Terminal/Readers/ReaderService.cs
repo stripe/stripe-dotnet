@@ -59,5 +59,21 @@ namespace Stripe.TestHelpers.Terminal
         {
             return this.RequestAsync<Stripe.Terminal.Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{WebUtility.UrlEncode(id)}/succeed_input_collection", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// <p>Completes an input collection with a timeout error on a simulated reader.</p>.
+        /// </summary>
+        public virtual Stripe.Terminal.Reader TimeoutInputCollection(string id, ReaderTimeoutInputCollectionOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Stripe.Terminal.Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{WebUtility.UrlEncode(id)}/timeout_input_collection", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Completes an input collection with a timeout error on a simulated reader.</p>.
+        /// </summary>
+        public virtual Task<Stripe.Terminal.Reader> TimeoutInputCollectionAsync(string id, ReaderTimeoutInputCollectionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Stripe.Terminal.Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/terminal/readers/{WebUtility.UrlEncode(id)}/timeout_input_collection", options, requestOptions, cancellationToken);
+        }
     }
 }
