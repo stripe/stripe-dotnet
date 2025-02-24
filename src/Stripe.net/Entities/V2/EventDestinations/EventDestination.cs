@@ -8,14 +8,6 @@ namespace Stripe.V2
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    /// <summary>
-    /// Set up an event destination to receive events from Stripe across multiple destination
-    /// types, including <a href="https://docs.stripe.com/webhooks">webhook endpoints</a> and <a
-    /// href="https://docs.stripe.com/event-destinations/eventbridge">Amazon EventBridge</a>.
-    /// Event destinations support receiving <a
-    /// href="https://docs.stripe.com/api/v2/events">thin events</a> and <a
-    /// href="https://docs.stripe.com/api/events">snapshot events</a>.
-    /// </summary>
     public class EventDestination : StripeEntity<EventDestination>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
