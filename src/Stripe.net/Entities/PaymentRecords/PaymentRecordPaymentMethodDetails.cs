@@ -48,7 +48,6 @@ namespace Stripe
 
         /// <summary>
         /// The type of Payment Method used for this payment attempt.
-        /// One of: <c>card</c>, or <c>custom</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
