@@ -18,7 +18,18 @@ namespace Stripe
         public PaymentAttemptRecordPaymentMethodDetailsBillingDetails BillingDetails { get; set; }
 
         /// <summary>
-        /// Information about the custom (user-defined) payment method used to make this payment.
+        /// Details of the card used for this payment attempt.
+        /// </summary>
+        [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
+        public PaymentAttemptRecordPaymentMethodDetailsCard Card { get; set; }
+
+        /// <summary>
+        /// Custom Payment Methods represent Payment Method types not modeled directly in the Stripe
+        /// API. This resource consists of details about the custom payment method used for this
+        /// payment attempt.
         /// </summary>
         [JsonProperty("custom")]
 #if NET6_0_OR_GREATER

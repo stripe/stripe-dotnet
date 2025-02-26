@@ -31,3 +31,7 @@ update-version version:
     echo "{{ version }}" > VERSION
     perl -pi -e 's|<Version>[.\-\d\w]+</Version>|<Version>{{ version }}</Version>|' src/Stripe.net/Stripe.net.csproj
     perl -pi -e 's|Current = "[.\-\d\w]+";|Current = "{{ version }}";|' src/Stripe.net/Constants/Version.cs
+
+[working-directory("src/Examples/")]
+run-example example:
+    dotnet run --project Examples.csproj {{ example }}
