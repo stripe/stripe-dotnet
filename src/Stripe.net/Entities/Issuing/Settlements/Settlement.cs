@@ -144,6 +144,24 @@ namespace Stripe.Issuing
         public string NetworkSettlementIdentifier { get; set; }
 
         /// <summary>
+        /// The total amount of any additional ad-hoc fees accessed by the card network.
+        /// </summary>
+        [JsonProperty("other_fees_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("other_fees_amount")]
+#endif
+        public long OtherFeesAmount { get; set; }
+
+        /// <summary>
+        /// The total number of additional ad-hoc fees accessed by the card network.
+        /// </summary>
+        [JsonProperty("other_fees_count")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("other_fees_count")]
+#endif
+        public long OtherFeesCount { get; set; }
+
+        /// <summary>
         /// One of <c>international</c> or <c>uk_national_net</c>.
         /// </summary>
         [JsonProperty("settlement_service")]
