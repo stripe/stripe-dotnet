@@ -2,6 +2,7 @@ namespace Examples
 {
     using System;
     using System.Threading.Tasks;
+    using Stripe;
 
     /// <summary>
     ///
@@ -21,14 +22,12 @@ namespace Examples
     {
         public static async Task Run()
         {
-            var apiKey = "{{API_KEY}}";
+            var apiKey = Environment.GetEnvironmentVariable("STRIPE_API_KEY");
 
             try
             {
-                Console.WriteLine("Hello World");
-
-                // var client = new StripeClient(apiKey);
-                // client.V1...
+                var client = new StripeClient(apiKey);
+                Console.WriteLine(await client.V1.Customers.ListAsync());
             }
             catch (Exception ex)
             {

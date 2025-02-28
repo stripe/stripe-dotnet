@@ -45,7 +45,12 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Account)
-        /// The ID of the account that the bank account is associated with.
+        /// The account this bank account belongs to. Only applicable on Accounts (not customers or
+        /// recipients) This property is only available when returned as an <a
+        /// href="https://stripe.com/api/external_account_bank_accounts/object">External Account</a>
+        /// where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-is_controller">controller.is_controller</a>
+        /// is <c>true</c>.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -59,7 +64,12 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the account that the bank account is associated with.
+        /// The account this bank account belongs to. Only applicable on Accounts (not customers or
+        /// recipients) This property is only available when returned as an <a
+        /// href="https://stripe.com/api/external_account_bank_accounts/object">External Account</a>
+        /// where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-is_controller">controller.is_controller</a>
+        /// is <c>true</c>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
