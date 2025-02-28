@@ -79,11 +79,11 @@ namespace Stripe.Issuing
         /// <summary>
         /// The total interchange received as reimbursement for the transactions.
         /// </summary>
-        [JsonProperty("interchange_fees")]
+        [JsonProperty("interchange_fees_amount")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("interchange_fees")]
+        [STJS.JsonPropertyName("interchange_fees_amount")]
 #endif
-        public long InterchangeFees { get; set; }
+        public long InterchangeFeesAmount { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -109,11 +109,11 @@ namespace Stripe.Issuing
         /// <summary>
         /// The total net amount required to settle with the network.
         /// </summary>
-        [JsonProperty("net_total")]
+        [JsonProperty("net_total_amount")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("net_total")]
+        [STJS.JsonPropertyName("net_total_amount")]
 #endif
-        public long NetTotal { get; set; }
+        public long NetTotalAmount { get; set; }
 
         /// <summary>
         /// The card network for this settlement report. One of ["visa", "maestro"].
@@ -128,11 +128,11 @@ namespace Stripe.Issuing
         /// <summary>
         /// The total amount of fees owed to the network.
         /// </summary>
-        [JsonProperty("network_fees")]
+        [JsonProperty("network_fees_amount")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("network_fees")]
+        [STJS.JsonPropertyName("network_fees_amount")]
 #endif
-        public long NetworkFees { get; set; }
+        public long NetworkFeesAmount { get; set; }
 
         /// <summary>
         /// The Settlement Identification Number assigned by the network.
@@ -181,6 +181,15 @@ namespace Stripe.Issuing
         public string Status { get; set; }
 
         /// <summary>
+        /// The total transaction amount reflected in this settlement.
+        /// </summary>
+        [JsonProperty("transaction_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction_amount")]
+#endif
+        public long TransactionAmount { get; set; }
+
+        /// <summary>
         /// The total number of transactions reflected in this settlement.
         /// </summary>
         [JsonProperty("transaction_count")]
@@ -188,14 +197,5 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("transaction_count")]
 #endif
         public long TransactionCount { get; set; }
-
-        /// <summary>
-        /// The total transaction amount reflected in this settlement.
-        /// </summary>
-        [JsonProperty("transaction_volume")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transaction_volume")]
-#endif
-        public long TransactionVolume { get; set; }
     }
 }
