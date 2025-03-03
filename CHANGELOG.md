@@ -1,5 +1,16 @@
 # Changelog
 
+## 47.4.0 - 2025-02-24
+* [#3050](https://github.com/stripe/stripe-dotnet/pull/3050) Update generated code
+  * Add support for `Prices` on `BillingCreditBalanceSummaryFilterApplicabilityScopeOptions`, `BillingCreditGrantApplicabilityConfigScopeOptions`, and `BillingCreditGrantApplicabilityConfigScope`
+  * Add support for `Priority` on `Billing.CreditGrantCreateOptions` and `BillingCreditGrant`
+  * Add support for `TargetDate` on `CheckoutSessionPaymentMethodOptionsAcssDebitOptions`, `CheckoutSessionPaymentMethodOptionsAcssDebit`, `CheckoutSessionPaymentMethodOptionsAuBecsDebitOptions`, `CheckoutSessionPaymentMethodOptionsAuBecsDebit`, `CheckoutSessionPaymentMethodOptionsBacsDebitOptions`, `CheckoutSessionPaymentMethodOptionsBacsDebit`, `CheckoutSessionPaymentMethodOptionsSepaDebitOptions`, `CheckoutSessionPaymentMethodOptionsSepaDebit`, `CheckoutSessionPaymentMethodOptionsUsBankAccountOptions`, `CheckoutSessionPaymentMethodOptionsUsBankAccount`, `PaymentIntentPaymentMethodOptionsAcssDebitOptions`, `PaymentIntentPaymentMethodOptionsAcssDebit`, `PaymentIntentPaymentMethodOptionsAuBecsDebitOptions`, `PaymentIntentPaymentMethodOptionsAuBecsDebit`, `PaymentIntentPaymentMethodOptionsBacsDebitOptions`, `PaymentIntentPaymentMethodOptionsBacsDebit`, `PaymentIntentPaymentMethodOptionsSepaDebitOptions`, `PaymentIntentPaymentMethodOptionsSepaDebit`, `PaymentIntentPaymentMethodOptionsUsBankAccountOptions`, and `PaymentIntentPaymentMethodOptionsUsBankAccount`
+  * Add support for `Restrictions` on `CheckoutSessionPaymentMethodOptionsCardOptions` and `CheckoutSessionPaymentMethodOptionsCard`
+  * Add support for `CollectedInformation` on `Checkout.SessionUpdateOptions` and `CheckoutSession`
+  * Add support for `Metadata` on `ProductDefaultPriceDataOptions`
+* [#3054](https://github.com/stripe/stripe-dotnet/pull/3054) Improved examples
+* [#3055](https://github.com/stripe/stripe-dotnet/pull/3055) add codeowners file
+
 ## 47.4.0-beta.1 - 2025-02-07
 * [#3049](https://github.com/stripe/stripe-dotnet/pull/3049) Update generated code for beta
   * Add support for `RejectedReason` on `AccountRiskControls`

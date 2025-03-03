@@ -579,7 +579,9 @@ namespace Stripe
         /// <summary>
         /// (ID of the Account)
         /// The account (if any) the charge was made on behalf of for charges associated with this
-        /// subscription. See the Connect documentation for details.
+        /// subscription. See the <a
+        /// href="https://stripe.com/docs/connect/subscriptions#on-behalf-of">Connect
+        /// documentation</a> for details.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -594,7 +596,9 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The account (if any) the charge was made on behalf of for charges associated with this
-        /// subscription. See the Connect documentation for details.
+        /// subscription. See the <a
+        /// href="https://stripe.com/docs/connect/subscriptions#on-behalf-of">Connect
+        /// documentation</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
