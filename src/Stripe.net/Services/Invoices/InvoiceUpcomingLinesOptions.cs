@@ -6,13 +6,13 @@ namespace Stripe
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 
-    public class InvoiceUpcomingLinesListOptions : ListOptions
+    public class InvoiceUpcomingLinesOptions : ListOptions
     {
         /// <summary>
         /// Settings for automatic tax lookup for this invoice preview.
         /// </summary>
         [JsonProperty("automatic_tax")]
-        public InvoiceUpcomingLinesAutomaticTaxOptions AutomaticTax { get; set; }
+        public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
         /// The ID of the coupon to apply to this phase of the subscription schedule. This field has
@@ -43,7 +43,7 @@ namespace Stripe
         /// <c>subscription</c>, or <c>schedule</c> must be set.
         /// </summary>
         [JsonProperty("customer_details")]
-        public InvoiceUpcomingLinesCustomerDetailsOptions CustomerDetails { get; set; }
+        public InvoiceCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
         /// The coupons to redeem into discounts for the invoice preview. If not specified, inherits
@@ -52,20 +52,20 @@ namespace Stripe
         /// avoid inheriting any discounts.
         /// </summary>
         [JsonProperty("discounts")]
-        public List<InvoiceUpcomingLinesDiscountOptions> Discounts { get; set; }
+        public List<InvoiceDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// List of invoice items to add or update in the upcoming invoice preview (up to 250).
         /// </summary>
         [JsonProperty("invoice_items")]
-        public List<InvoiceUpcomingLinesInvoiceItemOptions> InvoiceItems { get; set; }
+        public List<InvoiceUpcomingInvoiceItemOptions> InvoiceItems { get; set; }
 
         /// <summary>
         /// The connected account that issues the invoice. The invoice is presented with the
         /// branding and support information of the specified account.
         /// </summary>
         [JsonProperty("issuer")]
-        public InvoiceUpcomingLinesIssuerOptions Issuer { get; set; }
+        public InvoiceIssuerOptions Issuer { get; set; }
 
         /// <summary>
         /// The account (if any) for which the funds of the invoice payment are intended. If set,
@@ -96,7 +96,7 @@ namespace Stripe
         /// <c>subscription</c> or <c>subscription_</c> prefixed fields.
         /// </summary>
         [JsonProperty("schedule_details")]
-        public InvoiceUpcomingLinesScheduleDetailsOptions ScheduleDetails { get; set; }
+        public InvoiceScheduleDetailsOptions ScheduleDetails { get; set; }
 
         /// <summary>
         /// The identifier of the subscription for which you'd like to retrieve the upcoming
@@ -163,7 +163,7 @@ namespace Stripe
         /// with <c>schedule</c> or <c>schedule_details</c> fields.
         /// </summary>
         [JsonProperty("subscription_details")]
-        public InvoiceUpcomingLinesSubscriptionDetailsOptions SubscriptionDetails { get; set; }
+        public InvoiceSubscriptionDetailsOptions SubscriptionDetails { get; set; }
 
         /// <summary>
         /// A list of up to 20 subscription items, each with an attached price. This field has been
@@ -171,7 +171,7 @@ namespace Stripe
         /// <c>subscription_details.items</c> instead.
         /// </summary>
         [JsonProperty("subscription_items")]
-        public List<InvoiceUpcomingLinesSubscriptionItemOptions> SubscriptionItems { get; set; }
+        public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
 
         /// <summary>
         /// Determines how to handle <a
