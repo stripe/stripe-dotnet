@@ -19,7 +19,6 @@ namespace StripeTests
         private readonly InvoiceListOptions listOptions;
         private readonly InvoiceLineItemListOptions lineItemListOptions;
         private readonly UpcomingInvoiceOptions upcomingOptions;
-        private readonly InvoiceUpcomingLinesListOptions upcomingListLineItemsOptions;
         private readonly InvoiceFinalizeOptions finalizeOptions;
         private readonly InvoiceMarkUncollectibleOptions markUncollectibleOptions;
         private readonly InvoiceSendOptions sendOptions;
@@ -63,13 +62,6 @@ namespace StripeTests
 
             this.upcomingOptions = new UpcomingInvoiceOptions
             {
-                Customer = "cus_123",
-                Subscription = "sub_123",
-            };
-
-            this.upcomingListLineItemsOptions = new InvoiceUpcomingLinesListOptions()
-            {
-                Limit = 1,
                 Customer = "cus_123",
                 Subscription = "sub_123",
             };
@@ -235,44 +227,6 @@ namespace StripeTests
         public async Task ListLineItemsAutoPagingAsync()
         {
             var lineItem = await this.service.LineItems.ListAutoPagingAsync(InvoiceId, this.lineItemListOptions).FirstAsync();
-            Assert.NotNull(lineItem);
-            Assert.Equal("line_item", lineItem.Object);
-        }
-
-        [Fact]
-        public void ListUpcomingLineItems()
-        {
-            var lineItems = this.service.UpcomingLines.List(this.upcomingListLineItemsOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming/lines");
-            Assert.NotNull(lineItems);
-            Assert.Equal("list", lineItems.Object);
-            Assert.Single(lineItems.Data);
-            Assert.Equal("line_item", lineItems.Data[0].Object);
-        }
-
-        [Fact]
-        public async Task ListUpcomingLineItemsAsync()
-        {
-            var lineItems = await this.service.UpcomingLines.ListAsync(this.upcomingListLineItemsOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming/lines");
-            Assert.NotNull(lineItems);
-            Assert.Equal("list", lineItems.Object);
-            Assert.Single(lineItems.Data);
-            Assert.Equal("line_item", lineItems.Data[0].Object);
-        }
-
-        [Fact]
-        public void ListUpcomingLineItemsAutoPaging()
-        {
-            var lineItem = this.service.UpcomingLines.ListAutoPaging(this.upcomingListLineItemsOptions).First();
-            Assert.NotNull(lineItem);
-            Assert.Equal("line_item", lineItem.Object);
-        }
-
-        [Fact]
-        public async Task ListUpcomingLineItemsAutoPagingAsync()
-        {
-            var lineItem = await this.service.UpcomingLines.ListAutoPagingAsync(this.upcomingListLineItemsOptions).FirstAsync();
             Assert.NotNull(lineItem);
             Assert.Equal("line_item", lineItem.Object);
         }
