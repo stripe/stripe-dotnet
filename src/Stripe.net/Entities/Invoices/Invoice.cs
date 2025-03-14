@@ -147,8 +147,8 @@ namespace Stripe
         public long AmountDue { get; set; }
 
         /// <summary>
-        /// Amount that was overpaid on the invoice. Overpayments are debited to the customer's
-        /// credit balance.
+        /// Amount that was overpaid on the invoice. The amount overpaid is credited to the
+        /// customer's credit balance.
         /// </summary>
         [JsonProperty("amount_overpaid")]
 #if NET6_0_OR_GREATER
@@ -688,16 +688,6 @@ namespace Stripe
         [STJS.JsonPropertyName("description")]
 #endif
         public string Description { get; set; }
-
-        /// <summary>
-        /// Describes the current discount applied to this invoice, if there is one. Not populated
-        /// if there are multiple discounts.
-        /// </summary>
-        [JsonProperty("discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discount")]
-#endif
-        public Discount Discount { get; set; }
 
         #region Expandable Discounts
 

@@ -51,16 +51,6 @@ namespace Stripe
         public long Amount { get; set; }
 
         /// <summary>
-        /// The integer amount in cents (or local equivalent) representing the amount for this line
-        /// item, excluding all tax and discounts.
-        /// </summary>
-        [JsonProperty("amount_excluding_tax")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_excluding_tax")]
-#endif
-        public long? AmountExcludingTax { get; set; }
-
-        /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.
@@ -274,15 +264,6 @@ namespace Stripe
         public InvoiceLineItemPeriod Period { get; set; }
 
         /// <summary>
-        /// The plan of the subscription, if the line item is a subscription or a proration.
-        /// </summary>
-        [JsonProperty("plan")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("plan")]
-#endif
-        public Plan Plan { get; set; }
-
-        /// <summary>
         /// Contains pretax credit amounts (ex: discount, credit grants, etc) that apply to this
         /// line item.
         /// </summary>
@@ -291,15 +272,6 @@ namespace Stripe
         [STJS.JsonPropertyName("pretax_credit_amounts")]
 #endif
         public List<InvoiceLineItemPretaxCreditAmount> PretaxCreditAmounts { get; set; }
-
-        /// <summary>
-        /// The price of the line item.
-        /// </summary>
-        [JsonProperty("price")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price")]
-#endif
-        public Price Price { get; set; }
 
         /// <summary>
         /// Whether this is a proration.
@@ -413,24 +385,6 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The amount of tax calculated per tax rate for this line item.
-        /// </summary>
-        [JsonProperty("tax_amounts")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_amounts")]
-#endif
-        public List<InvoiceLineItemTaxAmount> TaxAmounts { get; set; }
-
-        /// <summary>
-        /// The tax rates which apply to the line item.
-        /// </summary>
-        [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_rates")]
-#endif
-        public List<TaxRate> TaxRates { get; set; }
-
-        /// <summary>
         /// A string identifying the type of the source of this line item, either an
         /// <c>invoiceitem</c> or a <c>subscription</c>.
         /// One of: <c>invoiceitem</c>, or <c>subscription</c>.
@@ -440,15 +394,5 @@ namespace Stripe
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
-
-        /// <summary>
-        /// The amount in cents (or local equivalent) representing the unit amount for this line
-        /// item, excluding all tax and discounts.
-        /// </summary>
-        [JsonProperty("unit_amount_excluding_tax")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_amount_excluding_tax")]
-#endif
-        public decimal? UnitAmountExcludingTax { get; set; }
     }
 }

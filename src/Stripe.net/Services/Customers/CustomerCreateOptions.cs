@@ -40,6 +40,10 @@ namespace Stripe
 #endif
         public CustomerCashBalanceOptions CashBalance { get; set; }
 
+        /// <summary>
+        /// If you provide a coupon code, the customer will have a discount applied on all recurring
+        /// charges. Charges you create through the API will not have the discount.
+        /// </summary>
         [JsonProperty("coupon")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("coupon")]

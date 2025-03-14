@@ -469,8 +469,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Describes the type of transaction being performed by Checkout in order to customize
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
-        /// specified on Checkout Sessions in <c>payment</c> mode. If blank or <c>auto</c>,
-        /// <c>pay</c> is used.
+        /// specified on Checkout Sessions in <c>payment</c> or <c>subscription</c> mode. If blank
+        /// or <c>auto</c>, <c>pay</c> is used.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]

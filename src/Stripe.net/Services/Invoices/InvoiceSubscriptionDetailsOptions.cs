@@ -42,7 +42,8 @@ namespace Stripe
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
-        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>. This param is deprecated starting
+        /// the <c>2025-03-31.basil</c> version, please use <c>cancel_at</c> instead.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
 #if NET6_0_OR_GREATER

@@ -1853,21 +1853,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestInvoicesUpcomingGet()
-        {
-            var options = new UpcomingInvoiceOptions
-            {
-                Customer = "cus_9utnxg47pWjV1e",
-            };
-            var service = new InvoiceService(this.StripeClient);
-            service.Upcoming(options);
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v1/invoices/upcoming",
-                "customer=cus_9utnxg47pWjV1e");
-        }
-
-        [Fact]
         public void TestInvoicesVoidPost()
         {
             var service = new InvoiceService(this.StripeClient);

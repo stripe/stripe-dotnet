@@ -41,16 +41,6 @@ namespace Stripe
         public long Amount { get; set; }
 
         /// <summary>
-        /// The integer amount in cents (or local equivalent) representing the amount being credited
-        /// for this line item, excluding all tax and discounts.
-        /// </summary>
-        [JsonProperty("amount_excluding_tax")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_excluding_tax")]
-#endif
-        public long? AmountExcludingTax { get; set; }
-
-        /// <summary>
         /// Description of the item being credited.
         /// </summary>
         [JsonProperty("description")]
@@ -116,15 +106,6 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         /// <summary>
-        /// The amount of tax calculated per tax rate for this line item.
-        /// </summary>
-        [JsonProperty("tax_amounts")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_amounts")]
-#endif
-        public List<CreditNoteTaxAmount> TaxAmounts { get; set; }
-
-        /// <summary>
         /// The tax rates which apply to the line item.
         /// </summary>
         [JsonProperty("tax_rates")]
@@ -163,15 +144,5 @@ namespace Stripe
         [STJS.JsonPropertyName("unit_amount_decimal")]
 #endif
         public decimal? UnitAmountDecimal { get; set; }
-
-        /// <summary>
-        /// The amount in cents (or local equivalent) representing the unit amount being credited
-        /// for this line item, excluding all tax and discounts.
-        /// </summary>
-        [JsonProperty("unit_amount_excluding_tax")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_amount_excluding_tax")]
-#endif
-        public decimal? UnitAmountExcludingTax { get; set; }
     }
 }
