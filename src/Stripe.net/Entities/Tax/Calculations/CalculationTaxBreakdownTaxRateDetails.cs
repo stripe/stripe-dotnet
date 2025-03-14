@@ -41,7 +41,8 @@ namespace Stripe.Tax
 
         /// <summary>
         /// Indicates the type of tax rate applied to the taxable amount. This value can be
-        /// <c>null</c> when no tax applies to the location.
+        /// <c>null</c> when no tax applies to the location. This field is only present for TaxRates
+        /// created by Stripe Tax.
         /// One of: <c>flat_amount</c>, or <c>percentage</c>.
         /// </summary>
         [JsonProperty("rate_type")]

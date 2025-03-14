@@ -50,7 +50,7 @@ namespace Stripe.Identity
         public VerificationSessionProvidedDetailsOptions ProvidedDetails { get; set; }
 
         /// <summary>
-        /// Token referencing a Customer resource.
+        /// Customer ID.
         /// </summary>
         [JsonProperty("related_customer")]
 #if NET6_0_OR_GREATER

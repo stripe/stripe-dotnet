@@ -57,6 +57,17 @@ namespace Stripe.Checkout
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
+        /// Controls when Stripe will attempt to debit the funds from the customer's account. The
+        /// date must be a string in YYYY-MM-DD format. The date must be in the future and between 3
+        /// and 15 calendar days from now.
+        /// </summary>
+        [JsonProperty("target_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("target_date")]
+#endif
+        public string TargetDate { get; set; }
+
+        /// <summary>
         /// Verification method for the intent.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
