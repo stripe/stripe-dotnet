@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsSwishOptions : INestedOptions
     {
@@ -9,6 +12,9 @@ namespace Stripe
         /// A reference for this payment to be displayed in the Swish app.
         /// </summary>
         [JsonProperty("reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference")]
+#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -36,6 +42,9 @@ namespace Stripe
         /// <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
     }
 }

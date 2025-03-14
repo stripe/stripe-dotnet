@@ -3,6 +3,9 @@ namespace Stripe.Treasury
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OutboundTransferCreateOptions : BaseOptions, IHasMetadata
     {
@@ -10,6 +13,9 @@ namespace Stripe.Treasury
         /// Amount (in cents) to be transferred.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -18,18 +24,27 @@ namespace Stripe.Treasury
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
         /// The PaymentMethod to use as the payment instrument for the OutboundTransfer.
         /// </summary>
         [JsonProperty("destination_payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination_payment_method")]
+#endif
         public string DestinationPaymentMethod { get; set; }
 
         /// <summary>
@@ -37,18 +52,27 @@ namespace Stripe.Treasury
         /// with <c>destination_payment_method</c>.
         /// </summary>
         [JsonProperty("destination_payment_method_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination_payment_method_data")]
+#endif
         public OutboundTransferDestinationPaymentMethodDataOptions DestinationPaymentMethodData { get; set; }
 
         /// <summary>
         /// Hash describing payment method configuration details.
         /// </summary>
         [JsonProperty("destination_payment_method_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination_payment_method_options")]
+#endif
         public OutboundTransferDestinationPaymentMethodOptionsOptions DestinationPaymentMethodOptions { get; set; }
 
         /// <summary>
         /// The FinancialAccount to pull funds from.
         /// </summary>
         [JsonProperty("financial_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_account")]
+#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -58,7 +82,19 @@ namespace Stripe.Treasury
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Details about the network used for the OutboundTransfer.
+        /// </summary>
+        [JsonProperty("network_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_details")]
+#endif
+        public OutboundTransferNetworkDetailsOptions NetworkDetails { get; set; }
 
         /// <summary>
         /// Statement descriptor to be shown on the receiving end of an OutboundTransfer. Maximum 10
@@ -66,6 +102,9 @@ namespace Stripe.Treasury
         /// transfers. The default value is "transfer".
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
         public string StatementDescriptor { get; set; }
     }
 }

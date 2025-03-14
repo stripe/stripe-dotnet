@@ -46,6 +46,56 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
+        /// <p>Initiates an input collection flow on a Reader.</p>.
+        /// </summary>
+        public virtual Reader CollectInputs(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/collect_inputs", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Initiates an input collection flow on a Reader.</p>.
+        /// </summary>
+        public virtual Task<Reader> CollectInputsAsync(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/collect_inputs", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Initiates a payment flow on a Reader and updates the PaymentIntent with card details
+        /// before manual confirmation.</p>.
+        /// </summary>
+        public virtual Reader CollectPaymentMethod(string id, ReaderCollectPaymentMethodOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/collect_payment_method", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Initiates a payment flow on a Reader and updates the PaymentIntent with card details
+        /// before manual confirmation.</p>.
+        /// </summary>
+        public virtual Task<Reader> CollectPaymentMethodAsync(string id, ReaderCollectPaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/collect_payment_method", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Finalizes a payment on a Reader.</p>.
+        /// </summary>
+        public virtual Reader ConfirmPaymentIntent(string id, ReaderConfirmPaymentIntentOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/confirm_payment_intent", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Finalizes a payment on a Reader.</p>.
+        /// </summary>
+        public virtual Task<Reader> ConfirmPaymentIntentAsync(string id, ReaderConfirmPaymentIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/confirm_payment_intent", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Creates a new <c>Reader</c> object.</p>.
         /// </summary>
         public virtual Reader Create(ReaderCreateOptions options, RequestOptions requestOptions = null)

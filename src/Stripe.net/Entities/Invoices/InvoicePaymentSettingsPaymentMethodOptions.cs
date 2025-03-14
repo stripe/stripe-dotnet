@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoicePaymentSettingsPaymentMethodOptions : StripeEntity<InvoicePaymentSettingsPaymentMethodOptions>
     {
@@ -10,6 +13,9 @@ namespace Stripe
         /// pre-authorized debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("acss_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("acss_debit")]
+#endif
         public InvoicePaymentSettingsPaymentMethodOptionsAcssDebit AcssDebit { get; set; }
 
         /// <summary>
@@ -17,6 +23,9 @@ namespace Stripe
         /// payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("bancontact")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bancontact")]
+#endif
         public InvoicePaymentSettingsPaymentMethodOptionsBancontact Bancontact { get; set; }
 
         /// <summary>
@@ -24,6 +33,9 @@ namespace Stripe
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
         public InvoicePaymentSettingsPaymentMethodOptionsCard Card { get; set; }
 
         /// <summary>
@@ -31,13 +43,29 @@ namespace Stripe
         /// transfer payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("customer_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_balance")]
+#endif
         public InvoicePaymentSettingsPaymentMethodOptionsCustomerBalance CustomerBalance { get; set; }
+
+        /// <summary>
+        /// If paying by <c>id_bank_transfer</c>, this sub-hash contains details about the Indonesia
+        /// bank transfer payment method options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("id_bank_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id_bank_transfer")]
+#endif
+        public InvoicePaymentSettingsPaymentMethodOptionsIdBankTransfer IdBankTransfer { get; set; }
 
         /// <summary>
         /// If paying by <c>konbini</c>, this sub-hash contains details about the Konbini payment
         /// method options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("konbini")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("konbini")]
+#endif
         public InvoicePaymentSettingsPaymentMethodOptionsKonbini Konbini { get; set; }
 
         /// <summary>
@@ -45,6 +73,9 @@ namespace Stripe
         /// Debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("sepa_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sepa_debit")]
+#endif
         public InvoicePaymentSettingsPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
         /// <summary>
@@ -52,6 +83,9 @@ namespace Stripe
         /// debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
         [JsonProperty("us_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("us_bank_account")]
+#endif
         public InvoicePaymentSettingsPaymentMethodOptionsUsBankAccount UsBankAccount { get; set; }
     }
 }

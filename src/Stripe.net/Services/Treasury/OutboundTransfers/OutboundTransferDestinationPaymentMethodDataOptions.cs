@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OutboundTransferDestinationPaymentMethodDataOptions : INestedOptions
     {
@@ -10,12 +13,18 @@ namespace Stripe.Treasury
         /// funds to.
         /// </summary>
         [JsonProperty("financial_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_account")]
+#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
         /// The type of the destination.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

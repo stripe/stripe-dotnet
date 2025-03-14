@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SetupIntentAutomaticPaymentMethodsOptions : INestedOptions
     {
@@ -16,12 +19,18 @@ namespace Stripe
         /// One of: <c>always</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("allow_redirects")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allow_redirects")]
+#endif
         public string AllowRedirects { get; set; }
 
         /// <summary>
         /// Whether this feature is enabled.
         /// </summary>
         [JsonProperty("enabled")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled")]
+#endif
         public bool? Enabled { get; set; }
     }
 }

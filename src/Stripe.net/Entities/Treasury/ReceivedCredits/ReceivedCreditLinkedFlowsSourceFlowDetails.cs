@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ReceivedCreditLinkedFlowsSourceFlowDetails : StripeEntity<ReceivedCreditLinkedFlowsSourceFlowDetails>
     {
@@ -12,6 +15,9 @@ namespace Stripe.Treasury
         /// object known as a CreditReversal.
         /// </summary>
         [JsonProperty("credit_reversal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("credit_reversal")]
+#endif
         public CreditReversal CreditReversal { get; set; }
 
         /// <summary>
@@ -31,6 +37,9 @@ namespace Stripe.Treasury
         /// money with Treasury using OutboundPayment objects</a>.
         /// </summary>
         [JsonProperty("outbound_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("outbound_payment")]
+#endif
         public OutboundPayment OutboundPayment { get; set; }
 
         /// <summary>
@@ -52,6 +61,9 @@ namespace Stripe.Treasury
         /// money with Treasury using OutboundTransfer objects</a>.
         /// </summary>
         [JsonProperty("outbound_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("outbound_transfer")]
+#endif
         public OutboundTransfer OutboundTransfer { get; set; }
 
         /// <summary>
@@ -65,6 +77,9 @@ namespace Stripe.Treasury
         /// Related guide: <a href="https://stripe.com/docs/payouts">Receiving payouts</a>.
         /// </summary>
         [JsonProperty("payout")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payout")]
+#endif
         public Payout Payout { get; set; }
 
         /// <summary>
@@ -73,6 +88,9 @@ namespace Stripe.Treasury
         /// <c>outbound_transfer</c>, or <c>payout</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

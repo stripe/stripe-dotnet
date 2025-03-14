@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class EventListOptions : ListOptionsWithCreated
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// be returned.
         /// </summary>
         [JsonProperty("delivery_success")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("delivery_success")]
+#endif
         public bool? DeliverySuccess { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe
         /// list will be filtered to include only events with a matching event property.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -27,6 +36,9 @@ namespace Stripe
         /// or <c>types</c>, but not both.
         /// </summary>
         [JsonProperty("types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("types")]
+#endif
         public List<string> Types { get; set; }
     }
 }

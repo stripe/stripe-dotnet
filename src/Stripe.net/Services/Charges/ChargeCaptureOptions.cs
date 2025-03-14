@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ChargeCaptureOptions : BaseOptions
     {
@@ -10,12 +13,18 @@ namespace Stripe
         /// additional amount will be automatically refunded.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
         /// An application fee to add on to this charge.
         /// </summary>
         [JsonProperty("application_fee")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee")]
+#endif
         public long? ApplicationFee { get; set; }
 
         /// <summary>
@@ -23,10 +32,25 @@ namespace Stripe
         /// the original amount.
         /// </summary>
         [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
         public long? ApplicationFeeAmount { get; set; }
 
         [JsonProperty("exchange_rate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exchange_rate")]
+#endif
         public decimal? ExchangeRate { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_details")]
+#endif
+        public ChargePaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
         /// The email address to send this charge's receipt to. This will override the
@@ -34,6 +58,9 @@ namespace Stripe
         /// sent in test mode.
         /// </summary>
         [JsonProperty("receipt_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("receipt_email")]
+#endif
         public string ReceiptEmail { get; set; }
 
         /// <summary>
@@ -47,6 +74,9 @@ namespace Stripe
         /// <c>statement_descriptor_suffix</c>, in which case this value is used as the suffix.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -57,6 +87,9 @@ namespace Stripe
         /// the account's statement descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix")]
+#endif
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -65,6 +98,9 @@ namespace Stripe
         /// the Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
         public ChargeTransferDataOptions TransferData { get; set; }
 
         /// <summary>
@@ -74,6 +110,9 @@ namespace Stripe
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_group")]
+#endif
         public string TransferGroup { get; set; }
     }
 }

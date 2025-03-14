@@ -11,6 +11,14 @@
 * [#3054](https://github.com/stripe/stripe-dotnet/pull/3054) Improved examples
 * [#3055](https://github.com/stripe/stripe-dotnet/pull/3055) add codeowners file
 
+## 47.4.0-beta.1 - 2025-02-07
+* [#3049](https://github.com/stripe/stripe-dotnet/pull/3049) Update generated code for beta
+  * Add support for `RejectedReason` on `AccountRiskControls`
+  * Add support for `ProductTaxCodeSelector` on `AccountSessionComponentsOptions`
+  * Add support for `Prices` on `BillingCreditBalanceSummaryFilterApplicabilityScopeOptions`, `BillingCreditGrantApplicabilityConfigScopeOptions`, and `BillingCreditGrantApplicabilityConfigScope`
+  * Add support for `BrandProduct` on `ChargePaymentMethodDetailsAmazonPayFundingCard` and `ChargePaymentMethodDetailsRevolutPayFundingCard`
+  * Add support for `Restrictions` on `CheckoutSessionPaymentMethodOptionsCardOptions` and `CheckoutSessionPaymentMethodOptionsCard`
+
 ## 47.3.0 - 2025-01-27
 * [#3044](https://github.com/stripe/stripe-dotnet/pull/3044) Update generated code
   * Add support for `Close` method on resource `Treasury.FinancialAccount`
@@ -39,6 +47,38 @@
 * [#3039](https://github.com/stripe/stripe-dotnet/pull/3039) Fixed supported frameworks in project description and readme
 * [#3038](https://github.com/stripe/stripe-dotnet/pull/3038) Added pull request template
 
+## 47.3.0-beta.3 - 2025-01-23
+* [#3048](https://github.com/stripe/stripe-dotnet/pull/3048) Update generated code for beta
+  * Remove support for `StripeAccount` on `TerminalReaderActionCollectPaymentMethod`, `TerminalReaderActionConfirmPaymentIntent`, `TerminalReaderActionProcessPaymentIntent`, and `TerminalReaderActionRefundPayment`
+
+## 47.3.0-beta.2 - 2025-01-17
+* [#3043](https://github.com/stripe/stripe-dotnet/pull/3043) Update generated code for beta
+  * Add support for `PayByBankPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `DirectorshipDeclaration` on `AccountCompanyOptions` and `TokenAccountCompanyOptions`
+  * Add support for `ProofOfUltimateBeneficialOwnership` on `AccountDocumentsOptions`
+  * Add support for `TaxThresholdMonitoring` on `AccountSessionComponentsOptions`
+  * Add support for `FinancialAccountTransactions`, `FinancialAccount`, `IssuingCard`, and `IssuingCardsList` on `AccountSessionComponents`
+  * Add support for `PayByBank` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Discounts` on `CheckoutSession`
+  * Add support for `Jpy` on `TerminalConfigurationTippingOptions` and `TerminalConfigurationTipping`
+
+## 47.3.0-beta.1 - 2025-01-09
+* [#3037](https://github.com/stripe/stripe-dotnet/pull/3037) Update generated code for beta
+  * Add support for `Close` method on resource `Treasury.FinancialAccount`
+  * Add support for `OwnershipExemptionReason` on `AccountCompanyOptions`, `AccountCompany`, and `TokenAccountCompanyOptions`
+  * Add support for `DirectorshipDeclaration` on `AccountCompany`
+  * Add support for `AdviceCode` on `ChargeOutcome`, `InvoiceLastFinalizationError`, `PaymentIntentLastPaymentError`, `SetupAttemptSetupError`, `SetupIntentLastSetupError`, and `StripeError`
+  * Add support for `BrandProduct` on `Card`, `SourceCardPresent`, `SourceCard`, and `SourceThreeDSecure`
+  * Add support for `Country` on `ChargePaymentMethodDetailsPaypal`, `ConfirmationTokenPaymentMethodPreviewPaypal`, and `PaymentMethodPaypal`
+  * Add support for `PhoneNumberCollection` on `PaymentLinkUpdateOptions`
+  * Add support for `Nickname` on `Treasury.FinancialAccountCreateOptions`, `Treasury.FinancialAccountUpdateOptions`, and `TreasuryFinancialAccount`
+  * Add support for `ForwardingSettings` on `Treasury.FinancialAccountUpdateOptions`
+  * Add support for `IsDefault` on `TreasuryFinancialAccount`
+  * Add support for `DestinationPaymentMethodData` on `Treasury.OutboundTransferCreateOptions`
+  * Add support for `FinancialAccount` on `TreasuryOutboundTransferDestinationPaymentMethodDetails`
+  * Change type of `TreasuryOutboundTransferDestinationPaymentMethodDetailsType` from `literal('us_bank_account')` to `enum('financial_account'|'us_bank_account')`
+  * Add support for `OutboundTransfer` on `TreasuryReceivedCreditLinkedFlowsSourceFlowDetails`
+
 ## 47.2.0 - 2024-12-18
 * [#3036](https://github.com/stripe/stripe-dotnet/pull/3036) This release changes the pinned API version to `2024-12-18.acacia`.
   * Add support for `NetworkAdviceCode` and `NetworkDeclineCode` on `ChargeOutcome`, `InvoiceLastFinalizationError`, `PaymentIntentLastPaymentError`, `SetupAttemptSetupError`, `SetupIntentLastSetupError`, and `StripeError`
@@ -57,6 +97,32 @@
   * Add support for `TrialPeriodDays` on `PaymentLinkSubscriptionDataOptions`
   * Add support for `Al`, `Am`, `Ao`, `Ba`, `Bb`, `Bs`, `Cd`, `Gn`, `Kh`, `Me`, `Mk`, `Mr`, `Np`, `Pe`, `Sn`, `Sr`, `Tj`, `Ug`, `Uy`, `Zm`, and `Zw` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
 
+## 47.2.0-beta.3 - 2024-12-12
+* [#3035](https://github.com/stripe/stripe-dotnet/pull/3035) Update generated code for beta
+  * Add support for `AllowRedisplay` on `Card` and `Source`
+  * Remove support for `AmountRefunded` on `PaymentRecord`
+  * Add support for `Account` on `TerminalReaderActionCollectPaymentMethod`, `TerminalReaderActionConfirmPaymentIntent`, `TerminalReaderActionProcessPaymentIntent`, and `TerminalReaderActionRefundPayment`
+* [#3033](https://github.com/stripe/stripe-dotnet/pull/3033) System.Text.Json Serialization Support in .NET SDK Objects
+  - Add System.Text.Json support for serializing Stripe.net entities and objects for applications running on .NET 6 and above. Now you can pass a Stripe.net object or collection of objects to the System.Text.Json serializer and it will produce the correct JSON string.
+
+## 47.2.0-beta.2 - 2024-12-05
+* [#3032](https://github.com/stripe/stripe-dotnet/pull/3032) Update generated code for beta
+  * Add support for `AutomaticIndirectTax` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `ReferencePrefix` on `CheckoutSessionPaymentMethodOptionsBacsDebitMandateOptionsOptions`, `CheckoutSessionPaymentMethodOptionsBacsDebitMandateOptions`, `CheckoutSessionPaymentMethodOptionsSepaDebitMandateOptionsOptions`, `CheckoutSessionPaymentMethodOptionsSepaDebitMandateOptions`, `OrderPaymentSettingsPaymentMethodOptionsSepaDebitMandateOptionsOptions`, `OrderPaymentSettingsPaymentMethodOptionsSepaDebitMandateOptions`, `PaymentIntentPaymentMethodOptionsBacsDebitMandateOptionsOptions`, `PaymentIntentPaymentMethodOptionsBacsDebitMandateOptions`, `PaymentIntentPaymentMethodOptionsSepaDebitMandateOptionsOptions`, `PaymentIntentPaymentMethodOptionsSepaDebitMandateOptions`, `SetupIntentPaymentMethodOptionsBacsDebitMandateOptionsOptions`, `SetupIntentPaymentMethodOptionsBacsDebitMandateOptions`, `SetupIntentPaymentMethodOptionsSepaDebitMandateOptionsOptions`, and `SetupIntentPaymentMethodOptionsSepaDebitMandateOptions`
+  * Add support for `DisabledReason` on `InvoiceAutomaticTax`, `SubscriptionAutomaticTax`, `SubscriptionScheduleDefaultSettingsAutomaticTax`, and `SubscriptionSchedulePhasesAutomaticTax`
+  * Add support for `TrialPeriodDays` on `PaymentLinkSubscriptionDataOptions`
+
+## 47.2.0-beta.1 - 2024-11-21
+* [#3031](https://github.com/stripe/stripe-dotnet/pull/3031) Update generated code for beta
+  * Add support for `NetworkAdviceCode` and `NetworkDeclineCode` on `ChargeOutcome`, `InvoiceLastFinalizationError`, `PaymentIntentLastPaymentError`, `SetupAttemptSetupError`, `SetupIntentLastSetupError`, and `StripeError`
+  * Add support for `Funding` on `ChargePaymentMethodDetailsAmazonPay` and `ChargePaymentMethodDetailsRevolutPay`
+  * Add support for `AmountRequested` and `PartialAuthorization` on `ChargePaymentMethodDetailsCard`
+  * Add support for `Metadata` on `CheckoutSessionLineItemsOptions` and `LineItem`
+  * Add support for `LineItems` on `Checkout.SessionUpdateOptions`, `CheckoutSessionPermissionsUpdateOptions`, and `CheckoutSessionPermissionsUpdate`
+  * Add support for `AdjustableQuantity` and `Display` on `LineItem`
+  * Add support for `RequestPartialAuthorization` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
+  * Add support for `PaymentMethodOptions` on `PaymentIntentIncrementAuthorizationOptions`
+
 ## 47.1.0 - 2024-11-20
 * [#3025](https://github.com/stripe/stripe-dotnet/pull/3025) This release changes the pinned API version to `2024-11-20.acacia`.
   * Add support for `Respond` test helper method on resource `Issuing.Authorization`
@@ -74,6 +140,41 @@
 * [#3021](https://github.com/stripe/stripe-dotnet/pull/3021) Fix URL encoding of id strings passed to service methods
 * [#3026](https://github.com/stripe/stripe-dotnet/pull/3026) Fix V2 list options base class
   * Remove `StartingAfter` and `EndingBefore` properties from `Stripe.V2.EventListOptions` and `Stripe.V2.EventDestinationListOptions`.  These properties are not supported on V2 List APIs and would result in a HTTP 400 error if provided.
+
+## 47.1.0-beta.3 - 2024-11-14
+* [#3027](https://github.com/stripe/stripe-dotnet/pull/3027) Update generated code for beta
+  * Add support for `AccountHolderAddress` and `BankAddress` on `FundingInstructionsBankTransferFinancialAddressesIban`, `FundingInstructionsBankTransferFinancialAddressesSortCode`, `FundingInstructionsBankTransferFinancialAddressesSpei`, `FundingInstructionsBankTransferFinancialAddressesZengin`, `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesIban`, `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesSortCode`, `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesSpei`, and `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesZengin`
+  * Add support for `AccountHolderName` on `FundingInstructionsBankTransferFinancialAddressesSpei` and `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesSpei`
+
+## 47.1.0-beta.2 - 2024-11-07
+* [#3022](https://github.com/stripe/stripe-dotnet/pull/3022) Update generated code for beta
+  * Add support for new resources `Issuing.FraudLiabilityDebit`, `PaymentAttemptRecord`, and `PaymentRecord`
+  * Add support for `Get` and `List` methods on resources `FraudLiabilityDebit` and `PaymentAttemptRecord`
+  * Add support for `Get`, `ReportPaymentAttemptCanceled`, `ReportPaymentAttemptFailed`, `ReportPaymentAttemptGuaranteed`, `ReportPaymentAttempt`, and `ReportPayment` methods on resource `PaymentRecord`
+  * Remove support for `MoneyMovement` on `AccountSessionComponentsFinancialAccountFeaturesOptions`
+  * Add support for `CardManagement`, `CardSpendDisputeManagement`, `CardholderManagement`, and `SpendControlManagement` on `AccountSessionComponentsIssuingCardFeaturesOptions`
+  * Add support for `DisableStripeUserAuthentication` on `AccountSessionComponentsIssuingCardsListFeaturesOptions`
+  * Add support for `AdaptivePricing` on `Checkout.SessionCreateOptions` and `CheckoutSession`
+  * Add support for `MandateOptions` on `CheckoutSessionPaymentMethodOptionsBacsDebitOptions`, `CheckoutSessionPaymentMethodOptionsBacsDebit`, `CheckoutSessionPaymentMethodOptionsSepaDebitOptions`, and `CheckoutSessionPaymentMethodOptionsSepaDebit`
+  * Add support for `RequestDecrementalAuthorization`, `RequestExtendedAuthorization`, `RequestIncrementalAuthorization`, `RequestMulticapture`, and `RequestOvercapture` on `CheckoutSessionPaymentMethodOptionsCardOptions` and `CheckoutSessionPaymentMethodOptionsCard`
+  * Add support for `CaptureMethod` on `CheckoutSessionPaymentMethodOptionsKakaoPayOptions`, `CheckoutSessionPaymentMethodOptionsKrCardOptions`, `CheckoutSessionPaymentMethodOptionsNaverPayOptions`, `CheckoutSessionPaymentMethodOptionsPaycoOptions`, and `CheckoutSessionPaymentMethodOptionsSamsungPayOptions`
+  * Add support for `AccountHolderAddress`, `AccountHolderName`, `AccountType`, and `BankAddress` on `FundingInstructionsBankTransferFinancialAddressesAba`, `FundingInstructionsBankTransferFinancialAddressesSwift`, `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesAba`, and `PaymentIntentNextActionDisplayBankTransferInstructionsFinancialAddressesSwift`
+  * Add support for `PaymentRecordData` and `PaymentRecord` on `InvoiceAttachPaymentOptions`
+  * Remove support for `OutOfBandPayment` on `InvoiceAttachPaymentOptions`
+  * Add support for `AmountOverpaid` on `Invoice`
+  * Add support for `MerchantAmount` and `MerchantCurrency` on `Issuing.TestHelpersAuthorizationCreateOptions`
+  * Add support for `SubmitType` on `PaymentLinkUpdateOptions`
+
+## 47.1.0-beta.1 - 2024-10-29
+* [#3018](https://github.com/stripe/stripe-dotnet/pull/3018) Update generated code for beta
+  * Add support for `TriggerAction` method on resource `PaymentIntent`
+  * Add support for `IdBankTransferPaymentsBca` and `IdBankTransferPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `BankBcaOnboarding` on `AccountSettingsOptions` and `AccountSettings`
+  * Add support for `SendMoney` on `AccountSessionComponentsRecipientsFeaturesOptions`
+  * Add support for `IdBankTransfer` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `InvoicePaymentSettingsPaymentMethodOptionsOptions`, `InvoicePaymentSettingsPaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `RefundDestinationDetails`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodDataOptions`, `SubscriptionPaymentSettingsPaymentMethodOptionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptions`
+  * Add support for `Gopay`, `Qris`, and `Shopeepay` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+* [#3011](https://github.com/stripe/stripe-dotnet/pull/3011) Do not allow setting API Version directly on StripeConfiguration
+  * `StripeConfiguration.ApiVersion` is no longer settable. If you were using this to set the beta headers, use the helper method `StripeConfiguration.AddBetaVersion()` instead.
 
 ## 47.0.0 - 2024-10-29
 
@@ -103,6 +204,21 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `By`, `Cr`, `Ec`, `Ma`, `Md`, `Rs`, `Ru`, `Tz`, and `Uz` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
   * Add support for `Pln` on `TerminalConfigurationTippingOptions` and `TerminalConfigurationTipping`
 
+## 46.3.0-beta.1 - 2024-10-18
+* [#3000](https://github.com/stripe/stripe-dotnet/pull/3000) Update generated code for beta
+  * Add support for `AlmaPayments`, `GopayPayments`, `KakaoPayPayments`, `KrCardPayments`, `NaverPayPayments`, `PaycoPayments`, `QrisPayments`, `SamsungPayPayments`, `ShopeepayPayments`, `TreasuryEvolve`, `TreasuryFifthThird`, and `TreasuryGoldmanSachs` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `ScheduleAtPeriodEnd` on `BillingPortalConfigurationFeaturesSubscriptionUpdateOptions` and `BillingPortalConfigurationFeaturesSubscriptionUpdate`
+  * Add support for `Alma` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `RefundDestinationDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Gopay`, `Qris`, and `Shopeepay` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Metadata` on `Forwarding.RequestCreateOptions`
+  * Add support for `AmazonPay` on `PaymentMethodDomain`
+  * Add support for `ExternalReference` on `TaxFormPayeeOptions` and `TaxFormPayee`
+  * Change type of `TaxFormPayeeTypeOptions` and `TaxFormPayeeType` from `literal('account')` to `enum('account'|'external_reference')`
+  * Add support for `AuSerr`, `CaMrdp`, `EuDac7`, `GbMrdp`, and `NzMrdp` on `TaxForm`
+  * Add support for `Pln` on `TerminalConfigurationTippingOptions` and `TerminalConfigurationTipping`
+  * Add support for `Bank` on `TreasuryFinancialAccountFeaturesFinancialAddressesAbaOptions`, `TreasuryFinancialAccountFeaturesFinancialAddressesAba`, and `TreasuryFinancialAccountFinancialAddressesAbaOptions`
+* [#3004](https://github.com/stripe/stripe-dotnet/pull/3004) Ramya/merge dotnet beta
+
 ## 46.2.2 - 2024-10-29
 * [#3010](https://github.com/stripe/stripe-dotnet/pull/3010) Update webhook API version validation
   - Update webhook event processing to accept events from any API version within the supported major release
@@ -118,6 +234,26 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 ## 46.2.0 - 2024-10-09
 * [#3002](https://github.com/stripe/stripe-dotnet/pull/3002) Add ConfigureAwait calls to async calls that are awaited
   * Fixes issue [#2998](https://github.com/stripe/stripe-dotnet/issues/2998) that was introduced in v46
+
+## 46.2.0-beta.3 - 2024-10-08
+* [#2975](https://github.com/stripe/stripe-dotnet/pull/2975) Update generated code for beta
+  * Add support for `SubmitCard` test helper method on resource `Issuing.Card`
+  * Add support for `Groups` on `AccountCreateOptions`, `AccountUpdateOptions`, and `Account`
+  * Add support for `DisableStripeUserAuthentication` on `AccountSessionComponentsAccountManagementFeaturesOptions`, `AccountSessionComponentsAccountManagementFeatures`, `AccountSessionComponentsAccountOnboardingFeaturesOptions`, `AccountSessionComponentsAccountOnboardingFeatures`, `AccountSessionComponentsBalancesFeaturesOptions`, `AccountSessionComponentsBalancesFeatures`, `AccountSessionComponentsFinancialAccountFeaturesOptions`, `AccountSessionComponentsNotificationBannerFeaturesOptions`, `AccountSessionComponentsNotificationBannerFeatures`, `AccountSessionComponentsPayoutsFeaturesOptions`, and `AccountSessionComponentsPayoutsFeatures`
+  * Add support for `CardSpendDisputeManagement` and `SpendControlManagement` on `AccountSessionComponentsIssuingCardsListFeaturesOptions`
+  * Add support for `KakaoPay` and `KrCard` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `NaverPay` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Payco` and `SamsungPay` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Metadata` on `ForwardingRequest`
+  * Add support for `LineItems` on `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypal`, `PaymentIntentPaymentMethodOptionsPaypalOptions`, and `PaymentIntentPaymentMethodOptionsPaypal`
+  * Add support for `FlatAmount` and `RateType` on `TaxCalculationTaxBreakdownTaxRateDetails` and `TaxRate`
+  * Add support for `By`, `Cr`, `Ec`, `Ma`, `Md`, `Rs`, `Ru`, `Tz`, and `Uz` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+
+## 46.2.0-beta.1 - 2024-10-03
+* [#2991](https://github.com/stripe/stripe-dotnet/pull/2991) Updates beta branch with changes in master and update generated code
+  * Add support for `ReportingChart` on `AccountSessionComponentsOptions`
+  * Remove support for `FromSchedule` on `QuoteSubscriptionData`
+  * Add support for `AllowRedisplay` on `TerminalReaderCollectConfigOptions`
 
 ## 46.1.0 - 2024-10-03
 * [#2995](https://github.com/stripe/stripe-dotnet/pull/2995) Update the class for `ThinEvent` to include `Livemode ` and `Reason`
@@ -170,6 +306,11 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   ```
   This supports a move towards a services-based client pattern where a `StripeClient` instance consolidates configuration and service access. This enables you simultaneously use multiple clients with different configuration options (such as API keys), and makes it much easier to discover what services are available by inspecting the V1 and V2 properties (either manually or via your code editors auto-completion).
 
+## 45.15.0-beta.1 - 2024-09-18
+* [#2973](https://github.com/stripe/stripe-dotnet/pull/2973) Update generated code for beta
+  * Remove support for resource `QuotePhase`
+  * Remove support for `Get` and `ListLineItems` methods on resource `QuotePhase`
+  * Add support for `SendMoney` and `TransferBalance` on `AccountSessionComponentsFinancialAccountFeaturesOptions`
 
 ## 45.14.0 - 2024-09-18
 * [#2969](https://github.com/stripe/stripe-dotnet/pull/2969) Update generated code
@@ -186,10 +327,26 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Template` on `CustomerInvoiceSettingsRenderingOptionsOptions`, `CustomerInvoiceSettingsRenderingOptions`, `InvoiceRenderingOptions`, and `InvoiceRendering`
   * Add support for `TemplateVersion` on `InvoiceRenderingOptions` and `InvoiceRendering`
 
+## 45.13.0-beta.1 - 2024-09-13
+* [#2961](https://github.com/stripe/stripe-dotnet/pull/2961) Update generated code for beta
+  * Add support for new resources `Issuing.DisputeSettlementDetail` and `Issuing.Settlement`
+  * Add support for `Get` and `List` methods on resource `DisputeSettlementDetail`
+  * Remove support for `List` method on resource `QuotePhase`
+  * Add support for `Settlement` on `Issuing.TransactionListOptions` and `IssuingTransaction`
+
 ## 45.12.0 - 2024-09-13
 * [#2965](https://github.com/stripe/stripe-dotnet/pull/2965) Stop using deprecated versions of actions
 * [#2968](https://github.com/stripe/stripe-dotnet/pull/2968) Update upload artifact version in GH actions
 * [#2963](https://github.com/stripe/stripe-dotnet/pull/2963) Add .editorconfig file with minimal change to align with StypeCopAnalyzer
+
+## 45.12.0-beta.1 - 2024-09-05
+* [#2956](https://github.com/stripe/stripe-dotnet/pull/2956) Update generated code for beta
+  * Add support for new resources `Billing.MeterErrorReport` and `Terminal.ReaderCollectedData`
+  * Add support for `Get` method on resource `ReaderCollectedData`
+  * Add support for `Recipients` on `AccountSessionComponentsOptions`
+  * Add support for `BusinessName` and `TaxIds` on `CheckoutSessionCollectedInformation`
+  * Add support for `RegulatoryReportingFile` on `Issuing.CreditUnderwritingRecordCorrectOptions`, `Issuing.CreditUnderwritingRecordCreateFromProactiveReviewOptions`, `Issuing.CreditUnderwritingRecordReportDecisionOptions`, and `IssuingCreditUnderwritingRecord`
+  * Remove support for `Rechnung` on `PaymentMethodUpdateOptions`
 
 ## 45.11.0 - 2024-09-05
 * [#2952](https://github.com/stripe/stripe-dotnet/pull/2952) Update generated code
@@ -200,9 +357,27 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `StatusDetails` on `TestHelpersTestClock`
   * Added new const `IssuingRegulatoryReporting` with value `issuing_regulatory_reporting` to be used as a FilePurpose
 
+## 45.10.0-beta.1 - 2024-08-23
+* [#2954](https://github.com/stripe/stripe-dotnet/pull/2954) Update generated code for beta
+  * Add support for `Email` and `Phone` on `CheckoutSessionCollectedInformation`
+
 ## 45.9.0 - 2024-08-23
 * [#2955](https://github.com/stripe/stripe-dotnet/pull/2955) urlencode ids in url paths
   - id strings passed to service methods (like `PaymentMethodService.Get("...")`) are now correctly URL Encoded. This is an important update if you pass user inupt into any of those methods
+
+## 45.9.0-beta.2 - 2024-08-22
+* [#2953](https://github.com/stripe/stripe-dotnet/pull/2953) Update generated code for beta
+  * Add support for `MbWayPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `MbWay` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Remove support for `Phases` on `QuoteCreateOptions` and `QuoteUpdateOptions`
+  * Remove support for `FromSchedule` on `QuoteSubscriptionDataOptions`
+
+## 45.9.0-beta.1 - 2024-08-15
+* [#2951](https://github.com/stripe/stripe-dotnet/pull/2951) Update generated code for beta
+  * Add support for `CapitalFinancingApplication` and `CapitalFinancing` on `AccountSessionComponentsOptions`
+  * Add support for `Permissions` on `Checkout.SessionCreateOptions` and `CheckoutSession`
+  * Add support for `CollectedInformation` on `Checkout.SessionUpdateOptions` and `CheckoutSession`
+  * Add support for `ShippingOptions` on `Checkout.SessionUpdateOptions`
 
 ## 45.8.0 - 2024-08-15
 * [#2949](https://github.com/stripe/stripe-dotnet/pull/2949) Update generated code
@@ -213,6 +388,12 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Chips` on `TreasuryOutboundPaymentTrackingDetailsUsDomesticWireOptions`, `TreasuryOutboundPaymentTrackingDetailsUsDomesticWire`, `TreasuryOutboundTransferTrackingDetailsUsDomesticWireOptions`, and `TreasuryOutboundTransferTrackingDetailsUsDomesticWire`
 * [#2950](https://github.com/stripe/stripe-dotnet/pull/2950) Update beta readme to not use a concrete version
 
+## 45.8.0-beta.1 - 2024-08-12
+* [#2947](https://github.com/stripe/stripe-dotnet/pull/2947) Update generated code for beta
+  * Add support for `CapitalFinancingApplication` and `CapitalFinancing` on `AccountSessionComponents`
+  * Add support for `Payto` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
+  * ⚠️  Remove support for `RiskCorrelationId` on `PaymentIntentPaymentMethodOptionsRechnungOptions` and `PaymentIntentPaymentMethodOptionsRechnung`
+
 ## 45.7.0 - 2024-08-08
 * [#2946](https://github.com/stripe/stripe-dotnet/pull/2946) Update generated code
   * Add support for `Activate`, `Archive`, `Create`, `Deactivate`, `Get`, and `List` methods on resource `Billing.Alert`
@@ -221,10 +402,30 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Offline` on `ConfirmationTokenPaymentMethodPreviewCardPresent` and `PaymentMethodCardPresent`
   * Add support for `RelatedCustomer` on `Identity.VerificationSessionCreateOptions`, `Identity.VerificationSessionListOptions`, and `IdentityVerificationSession`
 
+## 45.7.0-beta.1 - 2024-08-01
+* [#2945](https://github.com/stripe/stripe-dotnet/pull/2945) Update generated code for beta
+  * Add support for `AttachPayment` method on resource `Invoice`
+  * Add support for `AppInstall` and `AppViewport` on `AccountSessionComponentsOptions`
+  * Remove support for `PartnerRejectedDetails` on `DisputeEvidenceDetailsEnhancedEligibilityVisaCompellingEvidence3`
+  * Add support for `LinesInvalid` on `QuoteStatusDetailsStaleLastReason`
+  * Add support for `LastPriceMigrationError` on `SubscriptionSchedule` and `Subscription`
+
 ## 45.6.0 - 2024-08-01
 * [#2944](https://github.com/stripe/stripe-dotnet/pull/2944) Update generated code
   * Add support for new resources `Billing.AlertTriggered` and `Billing.Alert`
   * ⚠️ Remove support for `AuthorizationCode` on `ChargePaymentMethodDetailsCard`. This was accidentally released last week.
+
+## 45.6.0-beta.1 - 2024-07-25
+* [#2938](https://github.com/stripe/stripe-dotnet/pull/2938) Update generated code for beta
+  ⚠️ `InvoicePayment.Charge` and `InvoicePayment.PaymentIntent` were removed in favor of `InvoicePaymentPayment`, which encapsulates both. The Charge and PaymentIntent fields are now found at `InvoicePaymentPayment.Charge` `InvoicePaymentPayment.PaymentIntent`
+  
+  * Add support for new resources `Billing.AlertTriggered`, `Billing.Alert`, and `Tax.Association`
+  * Add support for `Activate`, `Archive`, `Create`, `Deactivate`, `Get`, and `List` methods on resource `Alert`
+  * Add support for `Find` method on resource `Association`
+  * Add support for `Capital` on `AccountSettingsOptions` and `AccountSettings`
+  * Add support for `AsyncWorkflows` on `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentDecrementAuthorizationOptions`, `PaymentIntentIncrementAuthorizationOptions`, `PaymentIntentUpdateOptions`, and `PaymentIntent`
+  * Add support for `Payto` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `DisplayName` on `Treasury.FinancialAccountCreateOptions`, `Treasury.FinancialAccountUpdateOptions`, and `TreasuryFinancialAccount`
 
 ## 45.5.0 - 2024-07-25
 * [#2943](https://github.com/stripe/stripe-dotnet/pull/2943) Update generated code
@@ -250,10 +451,22 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `AddressValidation` on `IssuingCardShippingOptions` and `IssuingCardShipping`
   * Add support for `Shipping` on `Issuing.CardUpdateOptions`
 
+## 45.3.0-beta.1 - 2024-07-05
+* [#2933](https://github.com/stripe/stripe-dotnet/pull/2933) Update generated code for beta
+  * ⚠️ Remove support for `PaymentMethodUpdate` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`. Users are expected to completely migrate from using `payment_method_update`.
+  * Add support for new resource `FinancialConnections.Institution`
+  * Add support for `Get` and `List` methods on resource `Institution`
+  * Add support for `Institution` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`, `FinancialConnectionsSessionFiltersOptions`, `FinancialConnectionsSessionFilters`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters`
+  * Add support for `PaymentMethodAllowRedisplayFilters`, `PaymentMethodRedisplayLimit`, `PaymentMethodRedisplay`, and `PaymentMethodSaveUsage` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`
+
 ## 45.2.0 - 2024-07-05
 * [#2932](https://github.com/stripe/stripe-dotnet/pull/2932) Update generated code
   * Add support for `AddLines`, `RemoveLines`, and `UpdateLines` methods on resource `Invoice`
   * Add support for `PostedAt` on `Tax.TransactionCreateFromCalculationOptions` and `TaxTransaction`
+
+## 45.2.0-beta.1 - 2024-06-27
+* [#2928](https://github.com/stripe/stripe-dotnet/pull/2928) Update generated code for beta
+  * Remove support for `PaymentMethodSetAsDefault` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`
 
 ## 45.1.0 - 2024-06-27
 * [#2931](https://github.com/stripe/stripe-dotnet/pull/2931) Update generated code
@@ -279,11 +492,13 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Fleet` on `Issuing.TestHelpersAuthorizationCreateOptions`, `IssuingAuthorizationPurchaseDetailsOptions`, `IssuingAuthorization`, `IssuingTransactionPurchaseDetailsOptions`, and `IssuingTransactionPurchaseDetails`
   * Add support for `Fuel` on `Issuing.TestHelpersAuthorizationCreateOptions` and `IssuingAuthorization`
   * Add support for `IndustryProductCode` and `QuantityDecimal` on `IssuingAuthorizationPurchaseDetailsFuelOptions`, `IssuingTransactionPurchaseDetailsFuelOptions`, and `IssuingTransactionPurchaseDetailsFuel`
-  
 
 ## 44.13.0 - 2024-06-17
 * [#2927](https://github.com/stripe/stripe-dotnet/pull/2927) Update generated code
   * Add support for `TaxIdCollection` on `PaymentLinkUpdateOptions`
+
+## 44.13.0-beta.1 - 2024-06-13
+* [#2923](https://github.com/stripe/stripe-dotnet/pull/2923) Syncing changes from 44.12.0 release
 
 ## 44.12.0 - 2024-06-13
 * [#2922](https://github.com/stripe/stripe-dotnet/pull/2922) Update generated code
@@ -293,9 +508,17 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `MultibancoDisplayDetails` on `PaymentIntentNextAction`
   * Add support for `InvoiceSettings` on `Subscription`
 
+## 44.12.0-beta.1 - 2024-06-06
+* [#2920](https://github.com/stripe/stripe-dotnet/pull/2920) Update generated code for beta
+  * Add support for `Twint` on `PaymentIntentPaymentMethodOptionsOptions` and `PaymentIntentPaymentMethodOptions`
+
 ## 44.11.0 - 2024-06-06
 * [#2921](https://github.com/stripe/stripe-dotnet/pull/2921) Update generated code
   * Add support for `GbBankTransferPayments`, `JpBankTransferPayments`, `MxBankTransferPayments`, `SepaBankTransferPayments`, and `UsBankTransferPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+
+## 44.11.0-beta.1 - 2024-05-30
+* [#2915](https://github.com/stripe/stripe-dotnet/pull/2915) Update generated code for beta
+  * Keeping up with the changes from version 44.11.0
 
 ## 44.10.0 - 2024-05-30
 * [#2916](https://github.com/stripe/stripe-dotnet/pull/2916) Update generated code
@@ -304,10 +527,16 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 * [#2919](https://github.com/stripe/stripe-dotnet/pull/2919) Add missing information for InvoiceTaxAmount
   * Add missing information for `TaxableAmount` and `TaxabilityReason` on `InvoiceTaxAmount`. Fixes [#2918](https://github.com/stripe/stripe-dotnet/issues/2918)
 
+## 44.10.0-beta.1 - 2024-05-23
+* [#2912](https://github.com/stripe/stripe-dotnet/pull/2912) Update generated code for beta
+
 ## 44.9.0 - 2024-05-23
 * [#2913](https://github.com/stripe/stripe-dotnet/pull/2913) Update generated code
   * Add support for `ExternalAccountCollection` on `AccountSessionComponentsBalancesFeaturesOptions`, `AccountSessionComponentsBalancesFeatures`, `AccountSessionComponentsPayoutsFeaturesOptions`, and `AccountSessionComponentsPayoutsFeatures`
   * Add support for `PaymentMethodRemove` on `CheckoutSessionSavedPaymentMethodOptions`
+
+## 44.9.0-beta.1 - 2024-05-16
+* [#2908](https://github.com/stripe/stripe-dotnet/pull/2908) Update generated code for beta
 
 ## 44.8.0 - 2024-05-16
 * [#2909](https://github.com/stripe/stripe-dotnet/pull/2909) Update generated code
@@ -325,7 +554,10 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 ## 44.7.0 - 2024-05-09
 * [#2907](https://github.com/stripe/stripe-dotnet/pull/2907) Update generated code
   * Remove support for `PendingInvoiceItemsBehavior` on `SubscriptionCreateOptions` that was prematurely added in the previous release on the same day
-  
+
+## 44.7.0-beta.1 - 2024-05-09
+* [#2905](https://github.com/stripe/stripe-dotnet/pull/2905) Update generated code for beta
+  * No new beta features. Merging changes from the main branch.
 
 ## 44.6.0 - 2024-05-09
 * [#2906](https://github.com/stripe/stripe-dotnet/pull/2906) Update generated code
@@ -334,6 +566,12 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Change type of `EntitlementsFeatureMetadataOptions` from `map(string: string)` to `emptyable(map(string: string))`
   * Add support for `PreviewMode` on `InvoiceCreatePreviewOptions`, `InvoiceUpcomingLinesOptions`, and `InvoiceUpcomingOptions`
   * Add support for `TrackingDetails` on `TreasuryOutboundPayment` and `TreasuryOutboundTransfer`
+
+## 44.6.0-beta.1 - 2024-05-02
+* [#2901](https://github.com/stripe/stripe-dotnet/pull/2901) Update generated code for beta
+  * Add support for `RechnungPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Rechnung` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `Multibanco` on `CheckoutSessionPaymentMethodOptionsOptions` and `CheckoutSessionPaymentMethodOptions`
 
 ## 44.5.0 - 2024-05-02
 * [#2900](https://github.com/stripe/stripe-dotnet/pull/2900) Update generated code
@@ -345,6 +583,11 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 * [#2904](https://github.com/stripe/stripe-dotnet/pull/2904) Add config for dotnet8.0
 * [#2903](https://github.com/stripe/stripe-dotnet/pull/2903) Fix clientId getter
 
+## 44.5.0-beta.1 - 2024-04-25
+* [#2896](https://github.com/stripe/stripe-dotnet/pull/2896) Update generated code for beta
+  * Add support for `PaymentMethodSettings` on `AccountSessionComponentsOptions`
+  * Add support for `CancelSubscriptionSchedule` on `QuoteLine` and `QuoteLinesOptions`
+
 ## 44.4.0 - 2024-04-25
 * [#2897](https://github.com/stripe/stripe-dotnet/pull/2897) Update generated code
   * Add support for `SetupFutureUsage` on `CheckoutSessionPaymentMethodOptionsAmazonPay`, `CheckoutSessionPaymentMethodOptionsRevolutPay`, `PaymentIntentPaymentMethodOptionsAmazonPay`, and `PaymentIntentPaymentMethodOptionsRevolutPay`
@@ -353,6 +596,12 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `AmazonPay` and `RevolutPay` on `MandatePaymentMethodDetails` and `SetupAttemptPaymentMethodDetails`
   * Add support for `EndingBefore`, `Limit`, and `StartingAfter` on `PaymentMethodConfigurationListOptions`
   * Add support for `Mobilepay` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+
+## 44.4.0-beta.1 - 2024-04-18
+* [#2893](https://github.com/stripe/stripe-dotnet/pull/2893) Update generated code for beta
+  * Add support for `CapitalOverview`, `TaxRegistrations`, and `TaxSettings` on `AccountSessionComponentsOptions`
+  * Add support for `ExternalAccountCollection` on `AccountSessionComponentsFinancialAccountFeaturesOptions`
+  * Add support for `SubscriptionTrialFromPlan` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
 
 ## 44.3.0 - 2024-04-18
 * [#2894](https://github.com/stripe/stripe-dotnet/pull/2894) Update generated code
@@ -371,6 +620,14 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `CaptureMethod` on `PaymentIntentPaymentMethodOptionsRevolutPayOptions` and `PaymentIntentPaymentMethodOptionsRevolutPay`
   * Add support for `Swish` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
 * [#2892](https://github.com/stripe/stripe-dotnet/pull/2892) Add sections to StripeTypeRegistry
+
+## 44.2.0-beta.1 - 2024-04-11
+* [#2886](https://github.com/stripe/stripe-dotnet/pull/2886) Update generated code for beta
+  * Add support for `Get` method on resources `Entitlements.ActiveEntitlement` and `Entitlements.Feature`
+  * Add support for `Fees`, `Losses`, `RequirementCollection`, and `StripeDashboard` on `AccountControllerOptions`
+  * Add support for `HostedVoucherUrl` on `PaymentIntentNextActionMultibancoDisplayDetails`
+  * Add support for `Toggles` on `TerminalReaderActionCollectInputsInputs` and `TerminalReaderInputsOptions`
+  * Add support for `Email`, `Numeric`, `Phone`, and `Text` on `TerminalReaderActionCollectInputsInputs`
 
 ## 44.1.0 - 2024-04-11
 * [#2889](https://github.com/stripe/stripe-dotnet/pull/2889) Update generated code
@@ -433,20 +690,6 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
    * Remove the support for deprecated value `obligation` on `ReportRunParameterOptions.ReportingCategory`
    * Remove the legacy field `RenderingOptions` in `Invoice`, `InvoiceCreateOptions` and `InvoiceUpdateOptions`.
    * Rename the type of field `Rendering` in `InvoiceCreateOptions` and `InvoiceUpdateOptions` from `InvoiceRenderingOptionsOptions` to `InvoiceRenderingOptions`
-  
-   
-  
-   
-  
-  
-   
-   
-  
-  
-  
-  
-   
-   
 
 ## 43.23.0 - 2024-04-09
 * [#2887](https://github.com/stripe/stripe-dotnet/pull/2887) Update generated code
@@ -457,6 +700,12 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Fees`, `Losses`, `RequirementCollection`, and `StripeDashboard` on `AccountController`
   * Add support for `EventName` on `Billing.MeterEventAdjustmentCreateOptions` and `BillingMeterEventAdjustment`
   * Add support for `Cancel` and `Type` on `BillingMeterEventAdjustment`
+
+## 43.23.0-beta.1 - 2024-04-04
+* [#2882](https://github.com/stripe/stripe-dotnet/pull/2882) Update generated code for beta
+  * Add support for `Update` method on resource `Entitlements.Feature`
+  * Add support for `RiskControls` on `AccountCreateOptions`, `AccountUpdateOptions`, and `Account`
+  * Add support for `PromotionCode` on `InvoiceLinesDiscountsOptions`, `QuoteLineItemsDiscountsOptions`, `QuoteLinesActionsAddDiscountOptions`, and `QuotePhasesLineItemsDiscountsOptions`
 
 ## 43.22.0 - 2024-04-04
 * [#2881](https://github.com/stripe/stripe-dotnet/pull/2881) Update generated code
@@ -472,6 +721,11 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Offline` on `SetupAttemptPaymentMethodDetailsCardPresent`
   * Add support for `CardPresent` on `SetupIntentPaymentMethodOptionsOptions` and `SetupIntentPaymentMethodOptions`
 
+## 43.22.0-beta.1 - 2024-03-28
+* [#2878](https://github.com/stripe/stripe-dotnet/pull/2878) Update generated code for beta
+  * Add support for `FinancialAccountTransactions`, `FinancialAccount`, `IssuingCard`, and `IssuingCardsList` on `AccountSessionComponentsOptions`
+  * Remove support for `SubscriptionBillingCycleAnchor`, `SubscriptionCancelAtPeriodEnd`, `SubscriptionCancelAt`, `SubscriptionCancelNow`, `SubscriptionDefaultTaxRates`, `SubscriptionItems`, `SubscriptionPrebilling`, `SubscriptionProrationBehavior`, `SubscriptionProrationDate`, `SubscriptionResumeAt`, `SubscriptionStartDate`, and `SubscriptionTrialEnd` on `InvoiceCreatePreviewOptions`
+
 ## 43.21.0 - 2024-03-28
 * [#2877](https://github.com/stripe/stripe-dotnet/pull/2877) Update generated code
   * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
@@ -483,6 +737,18 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `SecondLine` on `Issuing.CardCreateOptions`
   * Add support for `Meter` on `PlanCreateOptions`, `Plan`, `PriceRecurringOptions`, and `PriceRecurring`
 * [#2876](https://github.com/stripe/stripe-dotnet/pull/2876) Generate assertions in generated tests
+
+## 43.21.0-beta.1 - 2024-03-21
+* [#2875](https://github.com/stripe/stripe-dotnet/pull/2875) Update generated code for beta
+  * Add support for new resources `Entitlements.ActiveEntitlementSummary` and `Entitlements.ActiveEntitlement`
+  * Add support for `List` method on resource `ActiveEntitlement`
+  * Add support for `Mobilepay` on `ConfirmationTokenPaymentMethodDataOptions` and `ConfirmationTokenPaymentMethodPreview`
+  * Add support for `UseStripeSdk` on `ConfirmationToken`
+  * Remove support for `PaymentMethod` on `ConfirmationToken`
+  * Add support for `Metadata` on `Entitlements.FeatureCreateOptions` and `EntitlementsFeature`
+  * Add support for `Active` on `EntitlementsFeature`
+* [#2870](https://github.com/stripe/stripe-dotnet/pull/2870) Update generated code for beta
+  Release specs are identical.
 
 ## 43.20.0 - 2024-03-21
 * [#2874](https://github.com/stripe/stripe-dotnet/pull/2874) Update generated code
@@ -498,6 +764,18 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 * [#2868](https://github.com/stripe/stripe-dotnet/pull/2868) Autogenerate more files
 * [#2869](https://github.com/stripe/stripe-dotnet/pull/2869) Add obsolete attributes to deprecated APIs and doc comments to methods
 
+## 43.20.0-beta.1 - 2024-03-14
+* [#2866](https://github.com/stripe/stripe-dotnet/pull/2866) Update generated code for beta
+  * Add support for new resources `Billing.MeterEventAdjustment`, `Billing.MeterEvent`, and `Billing.Meter`
+  * Add support for `Create`, `Deactivate`, `Get`, `List`, `Reactivate`, and `Update` methods on resource `Meter`
+  * Add support for `Create` method on resources `MeterEventAdjustment` and `MeterEvent`
+  * Add support for `Create` test helper method on resource `ConfirmationToken`
+  * Add support for `AddLines`, `RemoveLines`, and `UpdateLines` methods on resource `Invoice`
+  * Add support for `Multibanco` on `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `RefundDestinationDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `SecondLine` on `IssuingPhysicalBundleFeatures`
+  * Add support for `MultibancoDisplayDetails` on `PaymentIntentNextAction`
+  * Add support for `Meter` on `PlanCreateOptions`, `Plan`, `PriceRecurringOptions`, and `PriceRecurring`
+
 ## 43.19.0 - 2024-03-14
 * [#2865](https://github.com/stripe/stripe-dotnet/pull/2865) Update generated code
   * Add support for new resources `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
@@ -507,6 +785,9 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Change type of `SubscriptionApplicationFeePercentOptions` from `number` to `emptyStringable(number)`
   * Add support for `SepaDebit` on `SubscriptionPaymentSettingsPaymentMethodOptionsOptions` and `SubscriptionPaymentSettingsPaymentMethodOptions`
 
+## 43.19.0-beta.1 - 2024-03-07
+* [#2861](https://github.com/stripe/stripe-dotnet/pull/2861) Update generated code for beta
+
 ## 43.18.0 - 2024-03-07
 * [#2863](https://github.com/stripe/stripe-dotnet/pull/2863) Update generated code
   * Add support for `Documents` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
@@ -515,6 +796,15 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `SepaDebit` on `InvoicePaymentSettingsPaymentMethodOptionsOptions` and `InvoicePaymentSettingsPaymentMethodOptions`
 * [#2864](https://github.com/stripe/stripe-dotnet/pull/2864) Update development section of readme
 * [#2862](https://github.com/stripe/stripe-dotnet/pull/2862) Explicitly define paths in manually maintained services
+
+## 43.18.0-beta.1 - 2024-02-29
+* [#2853](https://github.com/stripe/stripe-dotnet/pull/2853) Update generated code for beta
+  * Remove support for resource `Entitlements.Event`
+  * Remove support for `Quantity` and `Type` on `Entitlements.FeatureCreateOptions` and `EntitlementsFeature`
+  * Add support for `Livemode` on `IssuingPersonalizationDesign`
+  * Add support for `ApplicationFeeAmount`, `Description`, `Metadata`, and `TransferData` on `PaymentIntentDecrementAuthorizationOptions`
+  * Add support for `EnableCustomerCancellation` on `TerminalReaderActionCollectPaymentMethodCollectConfig` and `TerminalReaderCollectConfigOptions`
+* [#2855](https://github.com/stripe/stripe-dotnet/pull/2855) Add helper to add beta version
 
 ## 43.17.0 - 2024-02-29
 * [#2854](https://github.com/stripe/stripe-dotnet/pull/2854) Update generated code
@@ -526,16 +816,33 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 * [#2859](https://github.com/stripe/stripe-dotnet/pull/2859) Use make CI test
 * [#2856](https://github.com/stripe/stripe-dotnet/pull/2856) Obsolete BasePath, InstanceUrl, and ClassUrl
 
+## 43.17.0-beta.1 - 2024-02-22
+* [#2851](https://github.com/stripe/stripe-dotnet/pull/2851) Update generated code for beta
+
 ## 43.16.0 - 2024-02-22
 * [#2850](https://github.com/stripe/stripe-dotnet/pull/2850) Update generated code
   * Add support for `ClientReferenceId` on `Identity.VerificationReportListOptions`, `Identity.VerificationSessionCreateOptions`, `Identity.VerificationSessionListOptions`, `IdentityVerificationReport`, and `IdentityVerificationSession`
   * Add support for `Created` on `Treasury.OutboundPaymentListOptions`
+
+## 43.16.0-beta.1 - 2024-02-16
+* [#2846](https://github.com/stripe/stripe-dotnet/pull/2846) Update generated code for beta
+  * Add support for `DecrementAuthorization` method on resource `PaymentIntent`
+  * Add support for `PaytoPayments` and `TwintPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `Payto` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodPreview`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+  * Add support for `Twint` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodPreview`, `PaymentIntentPaymentMethodDataOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `DecrementalAuthorization` on `ChargePaymentMethodDetailsCard`
+  * Add support for `DisplayBrand` on `ConfirmationTokenPaymentMethodPreviewCard`
+  * Add support for `RequestDecrementalAuthorization` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
 
 ## 43.15.0 - 2024-02-15
 * [#2847](https://github.com/stripe/stripe-dotnet/pull/2847) Update generated code
   * Add support for `Networks` on `Card`, `PaymentMethodCardOptions`, and `TokenCardOptions`
   * Add support for `DisplayBrand` on `PaymentMethodCard`
 * [#2849](https://github.com/stripe/stripe-dotnet/pull/2849) Add README to NuGet package
+
+## 43.15.0-beta.1 - 2024-02-08
+* [#2844](https://github.com/stripe/stripe-dotnet/pull/2844) Update generated code for beta
+  * Add support for `PaymentMethodOptions` on `ConfirmationToken`
 
 ## 43.14.0 - 2024-02-08
 * [#2843](https://github.com/stripe/stripe-dotnet/pull/2843) Update generated code
@@ -544,6 +851,15 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `RequireCvcRecollection` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
   * Add support for `AccountTaxIds` on `SubscriptionInvoiceSettingsOptions`, `SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions`, `SubscriptionScheduleDefaultSettingsInvoiceSettings`, `SubscriptionSchedulePhasesInvoiceSettingsOptions`, and `SubscriptionSchedulePhasesInvoiceSettings`
 
+## 43.14.0-beta.1 - 2024-02-01
+* [#2841](https://github.com/stripe/stripe-dotnet/pull/2841) Update generated code for beta
+  * Add support for new resources `Entitlements.Event` and `Entitlements.Feature`
+  * Add support for `Create` method on resource `Event`
+  * Add support for `Create` and `List` methods on resource `Feature`
+  * Add support for `Swish` on `ConfirmationTokenPaymentMethodPreview`
+  * Add support for `AccountTaxIds` on `InvoiceScheduleDetailsPhasesInvoiceSettingsOptions`
+  * Add support for `Feature` on `ProductFeaturesOptions` and `ProductFeatures`
+
 ## 43.13.0 - 2024-02-01
 * [#2840](https://github.com/stripe/stripe-dotnet/pull/2840) Update generated code
   * Add support for `SwishPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
@@ -551,6 +867,15 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Swish` on `ChargePaymentMethodDetails`, `CheckoutSessionPaymentMethodOptionsOptions`, `CheckoutSessionPaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, `RefundDestinationDetails`, and `SetupIntentPaymentMethodDataOptions`
   * Add support for `SwishHandleRedirectOrDisplayQrCode` on `PaymentIntentNextAction`
   * Add support for `JurisdictionLevel` on `TaxRate`
+
+## 43.13.0-beta.1 - 2024-01-26
+* [#2836](https://github.com/stripe/stripe-dotnet/pull/2836) Update generated code for beta
+  * Add support for `CreatePreview` method on resource `Invoice`
+  * Add support for `ChargedOffAt` on `CapitalFinancingOffer`
+  * Add support for `EnhancedEvidence` on `DisputeEvidenceOptions` and `DisputeEvidence`
+  * Add support for `EnhancedEligibilityTypes` on `Dispute`
+  * Add support for `EnhancedEligibility` on `DisputeEvidenceDetails`
+  * Add support for `PromotionCode` on `InvoiceScheduleDetailsAmendmentsDiscountActionsAddOptions`, `InvoiceScheduleDetailsAmendmentsDiscountActionsRemoveOptions`, `InvoiceScheduleDetailsAmendmentsDiscountActionsSetOptions`, `InvoiceScheduleDetailsAmendmentsItemActionsAddDiscountsOptions`, `InvoiceScheduleDetailsAmendmentsItemActionsSetDiscountsOptions`, `InvoiceScheduleDetailsPhasesAddInvoiceItemsDiscountsOptions`, `InvoiceScheduleDetailsPhasesDiscountsOptions`, `InvoiceScheduleDetailsPhasesItemsDiscountsOptions`, `InvoiceSubscriptionDetailsItemsDiscountsOptions`, `InvoiceSubscriptionItemsDiscountsOptions`, `QuoteLineActionsAddDiscount`, `QuoteLineActionsAddItemDiscounts`, `QuoteLineActionsRemoveDiscount`, `QuoteLineActionsSetDiscounts`, `QuoteLineActionsSetItemsDiscounts`, `QuoteLinesActionsAddItemDiscountsOptions`, `QuoteLinesActionsRemoveDiscountOptions`, `QuoteLinesActionsSetDiscountsOptions`, `QuoteLinesActionsSetItemsDiscountsOptions`, `QuotePhasesDiscountsOptions`, `SubscriptionAddInvoiceItemsDiscountsOptions`, `SubscriptionDiscountsOptions`, `SubscriptionItemDiscountsOptions`, `SubscriptionItemsDiscountsOptions`, `SubscriptionScheduleAmendmentsDiscountActionsAddOptions`, `SubscriptionScheduleAmendmentsDiscountActionsRemoveOptions`, `SubscriptionScheduleAmendmentsDiscountActionsSetOptions`, `SubscriptionScheduleAmendmentsItemActionsAddDiscountsOptions`, `SubscriptionScheduleAmendmentsItemActionsSetDiscountsOptions`, `SubscriptionSchedulePhasesAddInvoiceItemsDiscountsOptions`, `SubscriptionSchedulePhasesAddInvoiceItemsDiscounts`, `SubscriptionSchedulePhasesDiscountsOptions`, `SubscriptionSchedulePhasesDiscounts`, `SubscriptionSchedulePhasesItemsDiscountsOptions`, and `SubscriptionSchedulePhasesItemsDiscounts`
 
 ## 43.12.0 - 2024-01-25
 * [#2837](https://github.com/stripe/stripe-dotnet/pull/2837) Update generated code
@@ -569,6 +894,13 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `CustomerBalance` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
   * Add support for `InvoiceSettings` on `SubscriptionCreateOptions` and `SubscriptionUpdateOptions`
 
+## 43.12.0-beta.1 - 2024-01-18
+* [#2835](https://github.com/stripe/stripe-dotnet/pull/2835) Update generated code for beta
+  Release specs are identical.
+* [#2833](https://github.com/stripe/stripe-dotnet/pull/2833) Update generated code for beta
+
+* [#2830](https://github.com/stripe/stripe-dotnet/pull/2830) Beta: report RawRequest usage
+
 ## 43.11.0 - 2024-01-18
 * [#2831](https://github.com/stripe/stripe-dotnet/pull/2831) Update generated code
   * Add support for `Issuer` on `InvoiceCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `InvoiceUpdateOptions`, and `Invoice`
@@ -577,6 +909,12 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `RevocationReason` on `MandatePaymentMethodDetailsBacsDebit`
   * Add support for `CustomerBalance` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
   * Add support for `InvoiceSettings` on `SubscriptionCreateOptions` and `SubscriptionUpdateOptions`
+
+## 43.11.0-beta.1 - 2024-01-12
+* [#2828](https://github.com/stripe/stripe-dotnet/pull/2828) Update generated code for beta
+  * Add support for `Amount` on `ChargePaymentDetailsFlightSegmentsOptions` and `PaymentIntentPaymentDetailsFlightSegmentsOptions`
+  * Add support for `NumberOfRooms` and `RoomClass` on `ChargePaymentDetailsLodgingOptions` and `PaymentIntentPaymentDetailsLodgingOptions`
+  * Add support for `BuyButton` on `CustomerSessionComponentsOptions` and `CustomerSessionComponents`
 
 ## 43.10.0 - 2024-01-12
 * [#2827](https://github.com/stripe/stripe-dotnet/pull/2827) Update generated code
@@ -589,9 +927,19 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `BillingCycleAnchorConfig` on `SubscriptionCreateOptions` and `Subscription`
 * [#2807](https://github.com/stripe/stripe-dotnet/pull/2807) Add 'Usage' to RequestTelemetry
 
+## 43.10.0-beta.1 - 2024-01-04
+* [#2821](https://github.com/stripe/stripe-dotnet/pull/2821) Update generated code for beta
+  * Updated stable APIs to the latest version
+
 ## 43.9.0 - 2024-01-04
 * [#2822](https://github.com/stripe/stripe-dotnet/pull/2822) Update generated code
   * Add support for `Get` method on resource `Tax.Registration`
+
+## 43.9.0-beta.1 - 2023-12-22
+* [#2815](https://github.com/stripe/stripe-dotnet/pull/2815) Update generated code for beta
+  * Add support for `CapitalFinancingPromotion` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
+  * Change type of `PaymentLinkSubscriptionDataInvoiceSettings` from `nullable(PaymentLinksResourceSubscriptionDataInvoiceSettings)` to `PaymentLinksResourceSubscriptionDataInvoiceSettings`
+  * Add support for `ShipFromDetails` on `Tax.CalculationCreateOptions`, `TaxCalculation`, and `TaxTransaction`
 
 ## 43.8.0 - 2023-12-22
 * [#2818](https://github.com/stripe/stripe-dotnet/pull/2818) Update generated code
@@ -609,6 +957,13 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `RevolutPay` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
   * Add support for `DestinationDetails` on `Refund`
 
+## 43.8.0-beta.1 - 2023-12-14
+* [#2810](https://github.com/stripe/stripe-dotnet/pull/2810) Update generated code for beta
+  * Add support for `PreviewMode` and `SubscriptionDetails` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+  * Remove support for `SubscriptionTrialFromPlan` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+  * Add support for `BillingBehavior`, `EndBehavior`, and `ProrationBehavior` on `InvoiceScheduleDetailsOptions`
+* [#2811](https://github.com/stripe/stripe-dotnet/pull/2811) Merge master -> beta
+
 ## 43.7.0 - 2023-12-14
 * [#2813](https://github.com/stripe/stripe-dotnet/pull/2813) Update generated code
   * Add support for `PaymentMethodReuseAgreement` on `CheckoutSessionConsentCollectionOptions`, `CheckoutSessionConsentCollection`, `PaymentLinkConsentCollectionOptions`, and `PaymentLinkConsentCollection`
@@ -618,6 +973,13 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for passing request parameters to `Get` on `Balance` and `Tax.Settings`.
 * [#2809](https://github.com/stripe/stripe-dotnet/pull/2809) Add backcompat check
 
+## 43.7.0-beta.1 - 2023-12-08
+* [#2806](https://github.com/stripe/stripe-dotnet/pull/2806) Update generated code for beta
+  * Add support for `Get` method on resource `FinancialConnections.Transaction`
+  * Remove support for `IssuingCard` and `IssuingCardsList` on `AccountSessionComponentsOptions`
+  * Add support for `PaymentMethodRemove`, `PaymentMethodSave`, and `PaymentMethodSetAsDefault` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`
+  * Remove support for `PaymentMethodDetach` and `PaymentMethodSetAsCustomerDefault` on `CustomerSessionComponentsPaymentElementFeaturesOptions` and `CustomerSessionComponentsPaymentElementFeatures`
+
 ## 43.6.0 - 2023-12-07
 * [#2805](https://github.com/stripe/stripe-dotnet/pull/2805) Update generated code
   * Add support for `PaymentDetails`, `Payments`, and `Payouts` on `AccountSessionComponentsOptions` and `AccountSessionComponents`
@@ -626,6 +988,9 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `TransferGroup` on `PaymentLinkPaymentIntentDataOptions` and `PaymentLinkPaymentIntentData`
   * Add support for `TrialSettings` on `PaymentLinkSubscriptionDataOptions` and `PaymentLinkSubscriptionData`
 
+## 43.6.0-beta.1 - 2023-11-30
+* [#2802](https://github.com/stripe/stripe-dotnet/pull/2802) Update generated code for beta
+
 ## 43.5.0 - 2023-11-30
 * [#2801](https://github.com/stripe/stripe-dotnet/pull/2801) Update generated code
   * Add support for new resources `Climate.Order`, `Climate.Product`, and `Climate.Supplier`
@@ -633,6 +998,11 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Get` and `List` methods on resources `Product` and `Supplier`
   * Add support for `Created` on `Checkout.SessionListOptions`
   * Add support for `ValidateLocation` on `CustomerTaxOptions`
+
+## 43.5.0-beta.1 - 2023-11-21
+* [#2798](https://github.com/stripe/stripe-dotnet/pull/2798) Update generated code for beta
+  * Rename `Receipient` to `Recipient` beneath `PaymentDetails` on `Charge` and `PaymentIntent` APIs.
+  * Add support for `Components` on `CustomerSessionCreateOptions` and `CustomerSession`
 
 ## 43.4.0 - 2023-11-21
 * [#2797](https://github.com/stripe/stripe-dotnet/pull/2797) Update generated code
@@ -646,6 +1016,17 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `AuthorizationCode` on `IssuingTransactionNetworkData`
   * Add support for `ThreeDSecure` on `PaymentIntentPaymentMethodOptionsCardOptions` and `SetupIntentPaymentMethodOptionsCardOptions`
 
+## 43.4.0-beta.1 - 2023-11-16
+* [#2795](https://github.com/stripe/stripe-dotnet/pull/2795) Update generated code for beta
+  * Add support for `IssuingCard` and `IssuingCardsList` on `AccountSessionComponentsOptions`
+  * Add support for `EventDetails` and `Subscription` on `ChargePaymentDetailsOptions`, `PaymentIntentPaymentDetailsOptions`, and `PaymentIntentPaymentDetails`
+  * Add support for `Affiliate` and `Delivery` on `ChargePaymentDetailsCarRentalOptions`, `ChargePaymentDetailsFlightOptions`, `ChargePaymentDetailsLodgingOptions`, `PaymentIntentPaymentDetailsCarRentalOptions`, `PaymentIntentPaymentDetailsCarRental`, `PaymentIntentPaymentDetailsFlightOptions`, and `PaymentIntentPaymentDetailsLodgingOptions`
+  * Add support for `Drivers` on `ChargePaymentDetailsCarRentalOptions`, `PaymentIntentPaymentDetailsCarRentalOptions`, and `PaymentIntentPaymentDetailsCarRental`
+  * Add support for `Passengers` on `ChargePaymentDetailsFlightOptions`, `ChargePaymentDetailsLodgingOptions`, `PaymentIntentPaymentDetailsFlightOptions`, and `PaymentIntentPaymentDetailsLodgingOptions`
+  * Add support for `Created` on `CustomerSession`
+  * Change type of `Timestamp` property from `long` to `DateTime` on `InvoiceInvoiceItemDiscountDiscountEndOptions`, `InvoiceScheduleDetailsAmendmentAmendmentEndOptions`, `InvoiceScheduleDetailsAmendmentAmendmentStartOptions`, `InvoiceScheduleDetailsAmendmentItemActionAddDiscountDiscountEndOptions`, `InvoiceScheduleDetailsAmendmentItemActionSetDiscountDiscountEndOptions`, `InvoiceScheduleDetailsPhaseAddInvoiceItemDiscountDiscountEndOptions`, `InvoiceScheduleDetailsPhaseDiscountDiscountEndOptions`, `InvoiceScheduleDetailsPhaseItemDiscountDiscountEndOptions`,`InvoiceScheduleDetailsPrebillingBillUntilOptions`, and `InvoiceSubscriptionItemDiscountDiscountEndOptions`
+  * Change `long` to `DateTime` in `AnyOf` type for `EndDate`, `StartDate`, and `TrialEnd` on `InvoiceScheduleDetailsPhaseOptions`
+
 ## 43.3.0 - 2023-11-16
 * [#2796](https://github.com/stripe/stripe-dotnet/pull/2796) Update generated code
   * Add support for `BacsDebitPayments` on `AccountSettingsOptions`
@@ -656,10 +1037,29 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `TaxAmounts` on `CreditNoteLinesOptions`
   * Add support for `NetworkData` on `IssuingTransaction`
 
+## 43.3.0-beta.1 - 2023-11-10
+* [#2792](https://github.com/stripe/stripe-dotnet/pull/2792) Update generated code for beta
+  * Add support for `Metadata` on `QuotePhase` and `QuotePhasesOptions`
+  * Add support for `LastReestimationDetails` on `QuoteComputed`
+
 ## 43.2.0 - 2023-11-09
 * [#2793](https://github.com/stripe/stripe-dotnet/pull/2793) Update generated code
   * Add support for `Metadata` on `QuoteSubscriptionDataOptions` and `QuoteSubscriptionData`
 * [#2794](https://github.com/stripe/stripe-dotnet/pull/2794) Generate CardCreateNestedOptions
+
+## 43.2.0-beta.1 - 2023-11-02
+* [#2788](https://github.com/stripe/stripe-dotnet/pull/2788) Update generated code for beta
+  * Add support for `AttachPaymentIntent` method on resource `Invoice`
+  * Add support for `RevolutPay` on `ConfirmationTokenPaymentMethodPreview`
+  * Add support for `Refunds` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesOptions`, `CreditNotePreviewOptions`, and `CreditNote`
+  * Add support for `PostPaymentAmount` and `PrePaymentAmount` on `CreditNote`
+  * Add support for `ScheduleDetails` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+  * Add support for `AmountsDue` on `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+  * Add support for `Payments` on `Invoice`
+  * Add support for `Created` on `IssuingPersonalizationDesign`
+  * Add support for `EndingBefore`, `Limit`, and `StartingAfter` on `Tax.RegistrationListOptions`
+  * Change type of `TaxRegistrationActiveFromOptions` and `TaxRegistrationExpiresAtOptions` to `literal('now') | DateTime`
+  * Change type of `TaxRegistrationActiveFrom`, `TaxRegistrationCreated`, `TaxRegistrationExpiresAtOptions`, and `TaxRegistrationExpiresAt` from `longInteger` to `DateTime`
 
 ## 43.1.0 - 2023-11-02
 * [#2787](https://github.com/stripe/stripe-dotnet/pull/2787) Update generated code
@@ -674,15 +1074,44 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 * [#2790](https://github.com/stripe/stripe-dotnet/pull/2790) Generate all resource classes
 * [#2789](https://github.com/stripe/stripe-dotnet/pull/2789) Add list enum comments and autogenerate more options
 
+## 43.1.0-beta.2 - 2023-10-26
+* [#2784](https://github.com/stripe/stripe-dotnet/pull/2784) Update generated code for beta
+  * Add support for new resource `Margin`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `Margin`
+  * Add support for `Subsellers` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypal`, `PaymentIntentPaymentMethodOptionsPaypalOptions`, `PaymentIntentPaymentMethodOptionsPaypal`, `SetupIntentPaymentMethodOptionsPaypalOptions`, and `SetupIntentPaymentMethodOptionsPaypal`
+  * Add support for `DefaultMargins` on `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+  * Add support for `TotalMarginAmounts` on `Invoice`
+  * Add support for `Margins` on `InvoiceItemCreateOptions`, `InvoiceItemUpdateOptions`, and `InvoiceItem`
+  * Add support for `IsDefault` on `IssuingPersonalizationDesignPreferencesOptions` and `IssuingPersonalizationDesignPreferences`
+  * Add support for `IsPlatformDefault` on `IssuingPersonalizationDesignPreferencesOptions` and `IssuingPersonalizationDesignPreferences`
+  * Remove support for `AccountDefault` on `IssuingPersonalizationDesignPreferencesOptions` and `IssuingPersonalizationDesignPreferences`
+  * Remove support for `PlatformDefault` on `IssuingPersonalizationDesignPreferencesOptions` and `IssuingPersonalizationDesignPreferences`
+  * Add support for `Liability` on `PaymentLinkAutomaticTaxOptions` and `PaymentLinkAutomaticTax`
+  * Add support for `Issuer` on `PaymentLinkInvoiceCreationInvoiceDataOptions` and `PaymentLinkInvoiceCreationInvoiceData`
+  * Add support for `InvoiceSettings` on `PaymentLinkSubscriptionDataOptions` and `PaymentLinkSubscriptionData`
+
+## 43.1.0-beta.1 - 2023-10-17
+* [#2782](https://github.com/stripe/stripe-dotnet/pull/2782) Update generated code for beta
+  - Update pinned API version to `2023-10-16`
+
 ## 43.0.0 - 2023-10-16
 * This release changes the pinned API version to `2023-10-16`. Please read the [API Upgrade Guide](https://stripe.com/docs/upgrades#2023-10-16) and carefully review the API changes before upgrading `Stripe.net`.
 * [#2781](https://github.com/stripe/stripe-dotnet/pull/2781) Update generated code
   * Add support for `LegalGuardian` on `AccountRelationshipOptions` and `TokenPersonRelationshipOptions`
   * Add support for `AdditionalTosAcceptances` on `TokenPersonOptions`
 
+## 42.11.0-beta.1 - 2023-10-16
+* [#2779](https://github.com/stripe/stripe-dotnet/pull/2779) Update generated code for beta
+
 ## 42.10.0 - 2023-10-16
 * [#2780](https://github.com/stripe/stripe-dotnet/pull/2780) Update generated code
   * Add support for `issuing_token.created` and `issuing_token.updated` event types.
+
+## 42.10.0-beta.1 - 2023-10-11
+* [#2777](https://github.com/stripe/stripe-dotnet/pull/2777) Update generated code for beta
+  * Add support for new resources `AccountNotice` and `Issuing.CreditUnderwritingRecord`
+  * Add support for `Get`, `List`, and `Update` methods on resource `AccountNotice`
+  * Add support for `Correct`, `CreateFromApplication`, `CreateFromProactiveReview`, `Get`, `List`, and `ReportDecision` methods on resource `CreditUnderwritingRecord`
 
 ## 42.9.0 - 2023-10-11
 * [#2778](https://github.com/stripe/stripe-dotnet/pull/2778) Update generated code
@@ -690,6 +1119,16 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `ClientSecret` on `CheckoutSession`
   * Add support for `PostalCode` on `IssuingAuthorizationVerificationData`
   * Add support for `Offline` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `TerminalConfiguration`
+
+## 42.9.0-beta.1 - 2023-10-05
+* [#2775](https://github.com/stripe/stripe-dotnet/pull/2775) Update generated code for beta
+  * Add support for `MarkDraft` and `MarkStale` methods on resource `Quote`
+  * Remove support for `DraftQuote` and `MarkStaleQuote` methods on resource `Quote`
+  * Add support for `Liability` on `CheckoutSessionAutomaticTaxOptions` and `CheckoutSessionAutomaticTax`
+  * Add support for `Issuer` on `CheckoutSessionInvoiceCreationInvoiceDataOptions` and `CheckoutSessionInvoiceCreationInvoiceData`
+  * Add support for `InvoiceSettings` on `CheckoutSessionSubscriptionDataOptions`
+  * Add support for `PersonalizationDesign` on `Issuing.CardListOptions`
+  * Add support for `AllowBackdatedLines` on `QuoteCreateOptions`, `QuoteUpdateOptions`, and `Quote`
 
 ## 42.8.0 - 2023-10-05
 * [#2776](https://github.com/stripe/stripe-dotnet/pull/2776) Update generated code
@@ -705,14 +1144,45 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `StatementDescriptorSuffix` and `StatementDescriptor` on `PaymentLinkPaymentIntentDataOptions` and `PaymentLinkPaymentIntentData`
   * Add support for `PaymentIntentData` and `SubscriptionData` on `PaymentLinkUpdateOptions`
 
+## 42.8.0-beta.1 - 2023-09-28
+* [#2773](https://github.com/stripe/stripe-dotnet/pull/2773) Update generated code for beta
+  * Rename resources `Issuing.CardDesign` and `Issuing.CardBundle` to `Issuing.PersonalizationDesign` and `Issuing.PhysicalBundle`
+  * Add support for `Features` on `AccountSessionComponentsAccountOnboardingOptions`, `AccountSessionComponentsPaymentDetailsOptions`, `AccountSessionComponentsPaymentDetails`, `AccountSessionComponentsPaymentsOptions`, `AccountSessionComponentsPayments`, `AccountSessionComponentsPayoutsOptions`, and `AccountSessionComponentsPayouts`
+  * Add support for `Reason` on `Event`
+
 ## 42.7.0 - 2023-09-28
 * [#2772](https://github.com/stripe/stripe-dotnet/pull/2772) Update generated code
   * Add support for `Rendering` on `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+
+## 42.7.0-beta.1 - 2023-09-21
+* [#2768](https://github.com/stripe/stripe-dotnet/pull/2768) Update generated code for beta
+  * Remove support for `Customer` on `ConfirmationToken`
+  * Add support for `Issuer` on `InvoiceCreateOptions`, `InvoiceUpcomingLinesOptions`, `InvoiceUpcomingOptions`, `InvoiceUpdateOptions`, `Invoice`, `QuoteInvoiceSettingsOptions`, `QuoteInvoiceSettings`, `SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions`, `SubscriptionScheduleDefaultSettingsInvoiceSettings`, `SubscriptionSchedulePhasesInvoiceSettingsOptions`, and `SubscriptionSchedulePhasesInvoiceSettings`
+  * Add support for `OnBehalfOf` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
+  * Add support for `Liability` on `InvoiceAutomaticTaxOptions`, `InvoiceAutomaticTax`, `QuoteAutomaticTaxOptions`, `QuoteAutomaticTax`, `SubscriptionAutomaticTaxOptions`, `SubscriptionAutomaticTax`, `SubscriptionScheduleDefaultSettingsAutomaticTaxOptions`, `SubscriptionScheduleDefaultSettingsAutomaticTax`, `SubscriptionSchedulePhasesAutomaticTaxOptions`, and `SubscriptionSchedulePhasesAutomaticTax`
+  * Change type of `IssuingCardDesignCarrierTextOptions` from `carrier_text_param` to `emptyStringable(carrier_text_param)`
+  * Add support for `InvoiceSettings` on `SubscriptionCreateOptions` and `SubscriptionUpdateOptions`
+  * Remove `InvoiceLineItemDiscountDiscountEndDurationOptions`, `InvoiceLineItemDiscountDiscountEndOptions`, `InvoiceLineItemInvoiceItemDiscountDiscountEndDurationOptions`, `InvoiceLineItemInvoiceItemDiscountDiscountEndOptions`, `InvoiceLineItemSubscriptionItemDiscountDiscountEndDurationOptions`, `InvoiceLineItemSubscriptionItemDiscountDiscountEndOptions.cs`, `InvoiceLineItemSubscriptionItemDiscountOptions`, `InvoiceLineItemSubscriptionPrebillingOptions`. These are obsolete and not used anywhere.
 
 ## 42.6.0 - 2023-09-21
 * [#2769](https://github.com/stripe/stripe-dotnet/pull/2769) Update generated code
   * Add support for `TermsOfServiceAcceptance` on `CheckoutSessionCustomTextOptions`, `CheckoutSessionCustomText`, `PaymentLinkCustomTextOptions`, and `PaymentLinkCustomText`
 * [#2770](https://github.com/stripe/stripe-dotnet/pull/2770) Add comments for query parameters
+
+## 42.6.0-beta.1 - 2023-09-14
+* [#2765](https://github.com/stripe/stripe-dotnet/pull/2765) Update generated code for beta
+  * Add support for new resource `ConfirmationToken`
+  * Add support for `Get` method on resource `ConfirmationToken`
+  * Add support for `Create` method on resource `Issuing.CardDesign`
+  * Add support for `RejectTestmode` test helper method on resource `Issuing.CardDesign`
+  * Add support for `Features` on `IssuingCardBundle`
+  * Add support for `Preferences` on `Issuing.CardDesignListOptions`, `Issuing.CardDesignUpdateOptions`, and `IssuingCardDesign`
+  * Remove support for `Preference` on `Issuing.CardDesignListOptions`, `Issuing.CardDesignUpdateOptions`, and `IssuingCardDesign`
+  * Add support for `CardBundle` on `Issuing.CardDesignUpdateOptions`
+  * Add support for `CardLogo` and `CarrierText` on `Issuing.CardDesignUpdateOptions` and `IssuingCardDesign`
+  * Change type of `IssuingCardDesignLookupKeyOptions` and `IssuingCardDesignNameOptions` from `string` to `emptyStringable(string)`
+  * Add support for `RejectionReasons` on `IssuingCardDesign`
+  * Add support for `ConfirmationToken` on `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `SetupIntentConfirmOptions`, and `SetupIntentCreateOptions`
 
 ## 42.5.0 - 2023-09-14
 * [#2767](https://github.com/stripe/stripe-dotnet/pull/2767) Update generated code
@@ -726,6 +1196,22 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Nonce` on `EphemeralKeyCreateOptions`
   * Add support for `CashbackAmount` on `IssuingAuthorizationAmountDetails`, `IssuingAuthorizationPendingRequestAmountDetails`, `IssuingAuthorizationRequestHistoryAmountDetails`, and `IssuingTransactionAmountDetails`
   * Add support for `SerialNumber` on `Terminal.ReaderListOptions`
+
+## 42.5.0-beta.1 - 2023-09-07
+* [#2762](https://github.com/stripe/stripe-dotnet/pull/2762) Update generated code for beta
+  * Release specs are identical.
+* [#2761](https://github.com/stripe/stripe-dotnet/pull/2761) Update generated code for beta
+  * Remove support for `SubmitCard` test helper method on resource `Issuing.Card`
+  * Add support for `CardDesign` on `Issuing.CardUpdateOptions`
+* [#2759](https://github.com/stripe/stripe-dotnet/pull/2759) Update generated code for beta
+  * Rename `QuoteService.ListPreviewInvoices` to `QuotePreviewInvoiceService.List` and `QuoteService.ListPreviewSubscriptionSchedules` to `QuotePreviewScheduleService.List`
+  * Add support for `TaxForms` on `AccountSettingsOptions` and `AccountSettings`
+  * Add support for `Components` on `AccountSessionCreateOptions` and `AccountSession`
+* [#2749](https://github.com/stripe/stripe-dotnet/pull/2749) Update generated code for beta
+  * Add support for new resources `QuotePreviewInvoice` and `QuotePreviewSchedule`
+  * Remove support for `AppliesTo` on `Invoice` and `SubscriptionSchedule`
+  * Add support for `Cl`, `Co`, `Id`, `Kr`, `Mx`, `My`, `Sa`, `Th`, `Tr`, and `Vn` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+  * Remove support for `Hk` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
 
 ## 42.4.0 - 2023-09-07
 * [#2760](https://github.com/stripe/stripe-dotnet/pull/2760) Update generated code
@@ -741,6 +1227,12 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Prefetch` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnections`, `FinancialConnections.SessionCreateOptions`, `FinancialConnectionsSession`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `InvoicePaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnections`
   * Add support for `PaymentMethodDetails` on `Dispute`
   * Add support for `BalanceTransaction` on `CustomerCashBalanceTransactionAdjustedForOverdraft`
+
+## 42.4.0-beta.1 - 2023-09-01
+* [#2759](https://github.com/stripe/stripe-dotnet/pull/2759) Update generated code for beta
+  * Rename `QuoteService.ListPreviewInvoices` to `QuotePreviewInvoiceService.List` and `QuoteService.ListPreviewSubscriptionSchedules` to `QuotePreviewScheduleService.List`
+  * Add support for `TaxForms` on `AccountSettingsOptions` and `AccountSettings`
+  * Add support for `Components` on `AccountSessionCreateOptions` and `AccountSession`
 
 ## 42.3.0 - 2023-08-31
 * [#2755](https://github.com/stripe/stripe-dotnet/pull/2755) Update generated code
@@ -795,15 +1287,39 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * ⚠️ Reflect that `Discount.Subscription` is not expandable
   * ⚠️ Reflect that several fields on `InvoiceLineItem` are expandable.
 
+## 42.0.0-beta.1 - 2023-08-24
+* [#2749](https://github.com/stripe/stripe-dotnet/pull/2749) Update generated code for beta
+  * Add support for new resources `QuotePreviewInvoice` and `QuotePreviewSchedule`
+  * Remove support for `AppliesTo` on `Invoice` and `SubscriptionSchedule`
+  * Add support for `Cl`, `Co`, `Id`, `Kr`, `Mx`, `My`, `Sa`, `Th`, `Tr`, and `Vn` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+  * Remove support for `Hk` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+
+## 41.29.0-beta.1 - 2023-08-10
+* [#2743](https://github.com/stripe/stripe-dotnet/pull/2743) Update generated code for beta
+  * Add support for `Paypal` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+
 ## 41.28.0 - 2023-08-10
 * [#2742](https://github.com/stripe/stripe-dotnet/pull/2742) Update generated code
   * Add support for `AdjustedForOverdraft` to `CustomerCashBalanceTransaction`
+
+## 41.28.0-beta.1 - 2023-08-03
+* [#2737](https://github.com/stripe/stripe-dotnet/pull/2737) Update generated code for beta
+  * Add support for `SubmitCard` test helper method on resource `Issuing.Card`
+  * Add support for `AddressValidation` on `IssuingCardShippingOptions` and `IssuingCardShipping`
+  * Add support for `Shipping` on `Issuing.CardUpdateOptions`
+  * Change type of `OrderDescriptionOptions`, `OrderLineItemsProductDataDescriptionOptions`, `OrderLineItemsProductDataTaxCodeOptions`, `OrderShippingDetailsPhoneOptions`, `PaymentMethodConfigurationApplicationOptions`, and `QuoteSubscriptionDataOverridesDescriptionOptions` from `string` to `emptyStringable(string)`
+  * Add support for `Reason` on `QuoteMarkStaleQuoteOptions`
+  * Add support for `MarkedStale` on `QuoteStatusDetailsStaleLastReason`
+* [#2739](https://github.com/stripe/stripe-dotnet/pull/2739) Remove developer_message support
 
 ## 41.27.0 - 2023-08-03
 * [#2741](https://github.com/stripe/stripe-dotnet/pull/2741) Update generated code
   * Add support for `PreferredSettlementSpeed` on `PaymentIntentPaymentMethodOptionsUsBankAccountOptions` and `PaymentIntentPaymentMethodOptionsUsBankAccount`
 * [#2738](https://github.com/stripe/stripe-dotnet/pull/2738) Update generated code
   * Add support for `SubscriptionDetails` on `Invoice`
+
+## 41.27.0-beta.1 - 2023-07-27
+  * Updated stable APIs to the latest version
 
 ## 41.26.0 - 2023-07-27
 * [#2733](https://github.com/stripe/stripe-dotnet/pull/2733) Update generated code
@@ -815,7 +1331,17 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 * [#2732](https://github.com/stripe/stripe-dotnet/pull/2732) Update generated code
   * Add support for `UseStripeSdk` on `SetupIntentConfirmOptions` and `SetupIntentCreateOptions`
 * [#2728](https://github.com/stripe/stripe-dotnet/pull/2728) Update generated code
-* [#2730](https://github.com/stripe/stripe-dotnet/pull/2730) changelog: fixed namespace param names
+  * Add support for UseStripeSdk on SetupIntentConfirmOptions and SetupIntentCreateOptions
+
+## 41.25.0-beta.1 - 2023-07-13
+* [#2727](https://github.com/stripe/stripe-dotnet/pull/2727) Update generated code for beta
+  Release specs are identical.
+* [#2724](https://github.com/stripe/stripe-dotnet/pull/2724) Update generated code for beta
+  * Add support for new resource `PaymentMethodConfiguration`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `PaymentMethodConfiguration`
+  * Add support for `PaymentMethodConfiguration` on `PaymentIntentCreateOptions` and `PaymentIntentUpdateOptions`
+  * Add support for `PaymentMethodConfigurationDetails` on `PaymentIntent`
+* [#2721](https://github.com/stripe/stripe-dotnet/pull/2721) Update generated code for beta
 
 ## 41.24.0 - 2023-07-13
 * [#2725](https://github.com/stripe/stripe-dotnet/pull/2725) Update generated code
@@ -830,9 +1356,19 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Numeric` and `Text` on `PaymentLinkCustomFields`
   * Add support for `AutomaticTax` on `SubscriptionListOptions`
 
+## 41.23.0-beta.1 - 2023-06-29
+* [#2718](https://github.com/stripe/stripe-dotnet/pull/2718) Update generated code for beta
+  * Add support for `Metadata` on `InvoiceSubscriptionDetails`
+
 ## 41.22.0 - 2023-06-29
 * [#2717](https://github.com/stripe/stripe-dotnet/pull/2717) Update generated code
   * Add support for `EffectiveAt` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesOptions`, `CreditNotePreviewOptions`, `CreditNote`, `InvoiceCreateOptions`, `InvoiceUpdateOptions`, and `Invoice`
+
+## 41.22.0-beta.1 - 2023-06-22
+* [#2715](https://github.com/stripe/stripe-dotnet/pull/2715) Update generated code for beta
+  * Add support for new resource `CustomerSession`
+  * Add support for `Create` method on resource `CustomerSession`
+  * Change type of `TaxRegistrationCountryOptionsUsTypeOptions` and `TaxRegistrationCountryOptionsUsType` from `literal('state_sales_tax')` to `enum('local_lease_tax'|'state_sales_tax')`
 
 ## 41.21.0 - 2023-06-22
 * [#2714](https://github.com/stripe/stripe-dotnet/pull/2714) Update generated code
@@ -843,12 +1379,31 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 * [#2710](https://github.com/stripe/stripe-dotnet/pull/2710) Update generated code
   * Change type of `FileFileOptions` from `string` to `file`
 
+## 41.21.0-beta.2 - 2023-06-15
+* [#2712](https://github.com/stripe/stripe-dotnet/pull/2712) Update generated code for beta
+  * Add support for `PaymentDetails` on `ChargeCaptureOptions`, `ChargeUpdateOptions`, `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentUpdateOptions`, and `PaymentIntent`
+  * Add support for `StatementDetails` on `PaymentIntentPaymentMethodOptionsCardOptions` and `PaymentIntentPaymentMethodOptionsCard`
+* [#2711](https://github.com/stripe/stripe-dotnet/pull/2711) Update generated code for beta
+
+## 41.21.0-beta.1 - 2023-06-08
+* [#2704](https://github.com/stripe/stripe-dotnet/pull/2704) Update generated code for beta
+  * Updated stable APIs to the latest version
+
 ## 41.20.0 - 2023-06-08
 * [#2705](https://github.com/stripe/stripe-dotnet/pull/2705) Update generated code
   * Add support for `TaxabilityReason` on `Tax.CalculationTaxBreakdown`
 * [#2709](https://github.com/stripe/stripe-dotnet/pull/2709) Revert "Move ShippingOptions"
 * [#2707](https://github.com/stripe/stripe-dotnet/pull/2707) Move ShippingOptions
 * [#2703](https://github.com/stripe/stripe-dotnet/pull/2703) Fix stripe_net_target_framework telemetry
+
+## 41.20.0-beta.1 - 2023-06-01
+* [#2702](https://github.com/stripe/stripe-dotnet/pull/2702) Update generated code for beta
+  * Add support for `SubscriptionDetails` on `Invoice`
+  * Add support for `SetPauseCollection` on `QuoteLine`, `QuoteLinesOptions`, and `SubscriptionScheduleAmendmentsOptions`
+  * Add support for `PauseCollection` on `SubscriptionSchedulePhasesOptions` and `SubscriptionSchedulePhases`
+  * Add support for `LocalAmusementTax` on `TaxRegistrationCountryOptionsUsOptions` and `TaxRegistrationCountryOptionsUs`
+  * Remove support for `Locations` on `TaxSettingsUpdateOptions` and `TaxSettings`
+* [#2698](https://github.com/stripe/stripe-dotnet/pull/2698) Update generated code for beta
 
 ## 41.19.0 - 2023-06-01
 * [#2701](https://github.com/stripe/stripe-dotnet/pull/2701) Update generated code
@@ -858,16 +1413,37 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `Description`, `Iin`, and `Issuer` on `PaymentMethodCardPresent` and `PaymentMethodInteracPresent`
   * Add support for `PayerEmail` on `PaymentMethodPaypal`
 
+## 41.19.0-beta.1 - 2023-05-25
+* [#2700](https://github.com/stripe/stripe-dotnet/pull/2700) Handle developer_message in preview error responses
+
 ## 41.18.0 - 2023-05-25
 * [#2699](https://github.com/stripe/stripe-dotnet/pull/2699) Update generated code
   * Add support for `ZipPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
   * Add support for `Zip` on `ChargePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+
+## 41.18.0-beta.1 - 2023-05-19
+* [#2697](https://github.com/stripe/stripe-dotnet/pull/2697) Update generated code for beta
+  * Add support for `Subscribe` and `Unsubscribe` methods on resource `FinancialConnections.Account`
+  * Add support for `NextRefreshAvailableAt` on `FinancialConnectionsAccountBalanceRefresh`, `FinancialConnectionsAccountInferredBalancesRefresh`, `FinancialConnectionsAccountOwnershipRefresh`, and `FinancialConnectionsAccountTransactionRefresh`
+  * Add support for `StatusDetails` and `Status` on `TaxSettings`
+* [#2690](https://github.com/stripe/stripe-dotnet/pull/2690) StripeClient.RawRequest
 
 ## 41.17.0 - 2023-05-19
 * [#2696](https://github.com/stripe/stripe-dotnet/pull/2696) Update generated code
   * Add support for `SubscriptionUpdateConfirm` and `SubscriptionUpdate` on `BillingPortal.SessionFlowDataOptions` and `BillingPortal.SessionFlow`
   * Add support for `Link` on `ChargePaymentMethodDetailsCardWallet` and `PaymentMethodCardWallet`
   * Add support for `BuyerId` and `Cashtag` on `ChargePaymentMethodDetailsCashapp` and `PaymentMethodCashapp`
+
+## 41.17.0-beta.1 - 2023-05-11
+* [#2691](https://github.com/stripe/stripe-dotnet/pull/2691) Update generated code for beta
+  * Add support for `PayerEmail`, `PayerName`, and `SellerProtection` on `ChargePaymentMethodDetailsPaypal`
+  * Add support for `CaptureMethod`, `PreferredLocale`, `ReferenceId`, and `SetupFutureUsage` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`
+  * Add support for `Reference` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypal`, `PaymentIntentPaymentMethodOptionsPaypalOptions`, and `PaymentIntentPaymentMethodOptionsPaypal`
+  * Add support for `RiskCorrelationId` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, and `PaymentIntentPaymentMethodOptionsPaypalOptions`
+  * Remove support for `BillingAgreementId` and `Currency` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`
+  * Add support for `Fingerprint`, `PayerId`, and `VerifiedEmail` on `MandatePaymentMethodDetailsPaypal` and `PaymentMethodPaypal`
+  * Add support for `TaxabilityReason` and `TaxableAmount` on `OrderShippingCostTaxes`, `OrderTotalDetailsBreakdownTaxes`, and `QuotePhaseTotalDetailsBreakdownTaxes`
+  * Add support for `HeadOffice` on `TaxSettingsUpdateOptions` and `TaxSettings`
 
 ## 41.16.0 - 2023-05-11
 * [#2692](https://github.com/stripe/stripe-dotnet/pull/2692) Update generated code
@@ -879,10 +1455,23 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `EffectivePercentage` on `TaxRate`
   * Add support for `GbBankTransfer ` and `JpBankTransfer ` on `CustomerCashBalanceTransactionFundedBankTransfer`
 
+## 41.16.0-beta.1 - 2023-05-04
+* [#2686](https://github.com/stripe/stripe-dotnet/pull/2686) Update generated code for beta
+  * Updated stable APIs to the latest version
+
 ## 41.15.0 - 2023-05-04
 * [#2687](https://github.com/stripe/stripe-dotnet/pull/2687) Update generated code
   * Add support for `Link` on `Checkout.SessionPaymentMethodOptionsOptions` and `Checkout.SessionPaymentMethodOptions`
   * Add support for `Brand`, `Country`, `Description`, `ExpMonth`, `ExpYear`, `Fingerprint`, `Funding`, `Iin`, `Issuer`, `Last4`, `Network`, and `Wallet` on `SetupAttemptPaymentMethodDetailsCard`
+
+## 41.15.0-beta.1 - 2023-04-27
+* [#2683](https://github.com/stripe/stripe-dotnet/pull/2683) Update generated code for beta
+  * Add support for `BillingCycleAnchor` and `ProrationBehavior` on `CheckoutSessionSubscriptionDataOptions`
+  * Add support for `TerminalId` on `IssuingAuthorizationMerchantData` and `IssuingTransactionMerchantData`
+  * Add support for `Metadata` on `PaymentIntentCaptureOptions`
+  * Add support for `Checks` on `SetupAttemptPaymentMethodDetailsCard`
+  * Add support for `TaxBreakdown` on `TaxCalculationShippingCost` and `TaxTransactionShippingCost`
+  * Change type of `TaxRegistrationActiveFromOptions` and `TaxRegistrationExpiresAtOptions` from `longInteger` to `longInteger | literal('now')`
 
 ## 41.14.0 - 2023-04-27
 * [#2682](https://github.com/stripe/stripe-dotnet/pull/2682) Update generated code
@@ -896,10 +1485,31 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 * [#2676](https://github.com/stripe/stripe-dotnet/pull/2676) Update generated code
 * [#2673](https://github.com/stripe/stripe-dotnet/pull/2673) Added Events.CustomerSubscriptionPaused/Resumed.
 
+## 41.14.0-beta.3 - 2023-04-20
+* [#2680](https://github.com/stripe/stripe-dotnet/pull/2680) Update generated code for beta
+  * Add support for `Zip` on `PaymentIntentPaymentMethodOptionsOptions` and `PaymentIntentPaymentMethodOptions`
+  * Add support for `CountryOptions` on `TaxRegistrationCreateOptions` and `TaxRegistration`
+  * Remove support for `State` and `Type` on `TaxRegistrationCreateOptions` and `TaxRegistration`
+
+## 41.14.0-beta.2 - 2023-04-13
+* [#2675](https://github.com/stripe/stripe-dotnet/pull/2675) Update generated code for beta
+  * Add support for `CollectPaymentMethod` and `ConfirmPaymentIntent` methods on resource `Terminal.Reader`
+  * Add support for `PaypalPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `CollectPaymentMethod` and `ConfirmPaymentIntent` on `TerminalReaderAction`
+  * Add support for `StripeAccount` on `TerminalReaderActionProcessPaymentIntent` and `TerminalReaderActionRefundPayment`
+
+## 41.14.0-beta.1 - 2023-04-06
+* [#2671](https://github.com/stripe/stripe-dotnet/pull/2671) Update generated code for beta
+  * Add support for `TreasuryTransaction` on `CapitalFinancingTransactionListOptions`
+  * Add support for `Transaction` on `CapitalFinancingTransactionDetails`
+
 ## 41.13.0 - 2023-04-06
 * [#2672](https://github.com/stripe/stripe-dotnet/pull/2672) Update generated code
   * Add support for `Country` on `PaymentMethodLink`
   * Add support for `StatusDetails` on `PaymentMethodUsBankAccount`
+
+## 41.13.0-beta.1 - 2023-03-30
+* [#2670](https://github.com/stripe/stripe-dotnet/pull/2670) Update generated code for beta
 
 ## 41.12.0 - 2023-03-30
 * [#2667](https://github.com/stripe/stripe-dotnet/pull/2667) Update generated code
@@ -909,6 +1519,18 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `AmountTip` on `TestHelpersTerminal.ReaderPresentPaymentMethodOptions`
 * [#2669](https://github.com/stripe/stripe-dotnet/pull/2669) Update .gitattributes
 
+## 41.12.0-beta.1 - 2023-03-23
+* [#2662](https://github.com/stripe/stripe-dotnet/pull/2662) Update generated code for beta (new)
+  * Add support for new resources `Tax.CalculationLineItem` and `Tax.TransactionLineItem`
+  * Add support for `CollectInputs` method on resource `Terminal.Reader`
+  * Add support for `FinancingOffer` on `CapitalFinancingSummary`
+  * Add support for `FxRate` on `CheckoutSessionCurrencyConversion`
+  * Add support for `AutomaticPaymentMethods` on `SetupIntentCreateOptions` and `SetupIntent`
+  * Remove support for `Preview` on `TaxCalculationCreateOptions`
+  * Change type of `TaxCalculationLineItems` from `$LineItem` to `$Tax.CalculationLineItem`
+  * Change type of `TaxTransactionLineItems` from `$LineItem` to `$Tax.TransactionLineItem`
+  * Add support for `CollectInputs` on `TerminalReaderAction`
+
 ## 41.11.0 - 2023-03-23
 * [#2661](https://github.com/stripe/stripe-dotnet/pull/2661) Update generated code
   * Add support for new resources `Tax.CalculationLineItem`, `Tax.Calculation`, `Tax.TransactionLineItem`, and `Tax.Transaction`
@@ -916,6 +1538,16 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `CreateFromCalculation`, `CreateReversal`, `Create`, `Get`, and `ListLineItems` methods on resource `Transaction`
   * Add support for `CurrencyConversion` on `Checkout.Session`
   * Add support for `AutomaticPaymentMethods` on `SetupIntentCreateOptions` and `SetupIntent`
+
+## 41.11.0-beta.1 - 2023-03-16
+* [#2658](https://github.com/stripe/stripe-dotnet/pull/2658) API Updates
+  * Add support for `CreateFromCalculation` method on resource `Tax.Transaction`
+  * Add support for `Paypal` on `MandatePaymentMethodDetails`, `SetupAttemptPaymentMethodDetails`, `SetupIntentPaymentMethodOptionsOptions`, and `SetupIntentPaymentMethodOptions`
+  * Add support for `SetupFutureUsage` on `OrderPaymentSettingsPaymentMethodOptionsPaypalOptions`, `OrderPaymentSettingsPaymentMethodOptionsPaypal`, `PaymentIntentPaymentMethodOptionsPaypalOptions`, and `PaymentIntentPaymentMethodOptionsPaypal`
+  * Remove support for `AppliesTo` on `QuotePreviewInvoiceLinesOptions`
+  * Add support for `ShippingCost` on `TaxCalculationCreateOptions`, `TaxCalculation`, `TaxTransactionCreateReversalOptions`, and `TaxTransaction`
+  * Add support for `TaxBreakdown` on `TaxCalculation`
+  * Remove support for `TaxSummary` on `TaxCalculation`
 
 ## 41.10.0 - 2023-03-16
 * [#2659](https://github.com/stripe/stripe-dotnet/pull/2659) API Updates
@@ -932,17 +1564,50 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `PreferredLocale` on `PaymentIntentPaymentMethodOptionsAffirmOptions` and `PaymentIntentPaymentMethodOptionsAffirm`
   * Add support for `CashappHandleRedirectOrDisplayQrCode` on `PaymentIntentNextAction` and `SetupIntentNextAction`
 
+## 41.10.0-beta.1 - 2023-03-09
+* [#2655](https://github.com/stripe/stripe-dotnet/pull/2655) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Remove support for `ListTransactions` method on resource `Tax.Transaction`
+  * Add support for `UpdateBehavior` on `SubscriptionPrebillingOptions`, `SubscriptionPrebilling`, `SubscriptionSchedulePrebillingOptions`, and `SubscriptionSchedulePrebilling`
+  * Add support for `Prebilling` on `SubscriptionScheduleAmendOptions`
+  * Add support for `TaxabilityOverride` on `TaxCalculationCustomerDetailsOptions`, `TaxCalculationCustomerDetails`, and `TaxTransactionCustomerDetails`
+  * Add support for `TaxSummary` on `TaxCalculation`
+  * Remove support for `TaxBreakdown` on `TaxCalculation`
+  * Add support for `TaxBehavior` on `TaxSettingsDefaultsOptions` and `TaxSettingsDefaults`
+
 ## 41.9.0 - 2023-03-09
 * [#2654](https://github.com/stripe/stripe-dotnet/pull/2654) API Updates
   * Add support for `CardIssuing` on `Issuing.CardholderIndividualOptions`
   * Add support for `CancellationDetails` on `SubscriptionCancelOptions`, `SubscriptionUpdateOptions`, and `Subscription`
 * [#2652](https://github.com/stripe/stripe-dotnet/pull/2652) Improve webhook error
 
+## 41.9.0-beta.1 - 2023-03-02
+* [#2653](https://github.com/stripe/stripe-dotnet/pull/2653) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for new resources `Issuing.CardBundle` and `Issuing.CardDesign`
+  * Add support for `Get` and `List` methods on resource `CardBundle`
+  * Add support for `Get`, `List`, and `Update` methods on resource `CardDesign`
+  * Remove support for `Controller` on `AccountUpdateOptions`
+  * Add support for `CardDesign` on `IssuingCardCreateOptions` and `IssuingCard`
+
 ## 41.8.0 - 2023-03-02
 * [#2651](https://github.com/stripe/stripe-dotnet/pull/2651) API Updates
   * Add support for `ReconciliationStatus` on `Payout`
 * [#2648](https://github.com/stripe/stripe-dotnet/pull/2648) API Updates
 
+## 41.8.0-beta.2 - 2023-02-23
+* [#2649](https://github.com/stripe/stripe-dotnet/pull/2649) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `ManualEntry` on `CheckoutSessionPaymentMethodOptionsUsBankAccountFinancialConnections`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, `PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnections`, `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions`, and `SetupIntentPaymentMethodOptionsUsBankAccountFinancialConnections`
+
+## 41.8.0-beta.1 - 2023-02-16
+* [#2647](https://github.com/stripe/stripe-dotnet/pull/2647) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `CurrencyConversion` on `CheckoutSession`
+  * Add support for `Limits` on `FinancialConnectionsSessionCreateOptions` and `FinancialConnectionsSession`
+  * Remove support for `Enabled` on `FinancialConnectionsSessionManualEntryOptions`
+  * Remove support for `Reference` on `TaxCalculationCreateOptions` and `TaxCalculation`
+  * Add support for `Reference` on `TaxTransactionCreateOptions`
 
 ## 41.7.0 - 2023-02-16
 * [#2643](https://github.com/stripe/stripe-dotnet/pull/2643) API Updates
@@ -953,6 +1618,18 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `RefundPayment` on `Terminal.ReaderAction`
   * Update `ShippingAddress` on `SessionCustomTextOptions` and `PaymentLinkCustomTextOptions` to use `SessionCustomTextShippingAddressOptions` and `PaymentLinkCustomTextShippingAddressOptions` instead of shared `AddressOptions`. This did not work before and did not align with the API definitions (extension of https://github.com/stripe/stripe-dotnet/pull/2644).
 * [#2646](https://github.com/stripe/stripe-dotnet/pull/2646) Add missing parameters to the Upcoming Invoice API
+
+## 41.7.0-beta.1 - 2023-02-02
+* [#2642](https://github.com/stripe/stripe-dotnet/pull/2642) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for new resource `FinancialConnections.Transaction`
+  * Add support for `List` method on resource `Transaction`
+  * Add support for `Prefetch` on `-PaymentMethodOptionsUsBankAccountFinancialConnections`, and `-PaymentMethodOptionsUsBankAccountFinancialConnectionsOptions` across several APIs.
+  * Add support for `InferredBalancesRefresh`, `Subscriptions`, and `TransactionRefresh` on `FinancialConnectionsAccount`
+  * Add support for `ManualEntry` on `FinancialConnectionsSessionCreateOptions` and `FinancialConnectionsSession`
+  * Add support for `StatusDetails` and `Status` on `FinancialConnectionsSession`
+  * Add support for `AccountNumber` on `PaymentMethodUsBankAccount`
+  * Remove support for `Id` on `QuoteLinesStartsAtLineEndsAtOptions`
 
 ## 41.6.0 - 2023-02-02
 * [#2640](https://github.com/stripe/stripe-dotnet/pull/2640) API Updates
@@ -965,20 +1642,68 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for `SubscriptionResumeAt` on `InvoiceUpcomingLinesOptions` and `InvoiceUpcomingOptions`
   * Add support for `InvoiceCreation` on `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
 
+## 41.6.0-beta.2 - 2023-01-26
+* [#2638](https://github.com/stripe/stripe-dotnet/pull/2638) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `ListTransactions` method on resource `Tax.Transaction`
+  * Add support for `BillingAgreementId` on `CheckoutSessionPaymentMethodOptionsPaypalOptions`
+  * Change type of `QuoteSubscriptionDataOverridesOptions` from `array(create_specs)` to `emptyStringable(array(update_specs))`
+
+## 41.6.0-beta.1 - 2023-01-19
+* [#2635](https://github.com/stripe/stripe-dotnet/pull/2635) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `Tax.Settings` resource.
+
 ## 41.5.0 - 2023-01-19
 * [#2633](https://github.com/stripe/stripe-dotnet/pull/2633) API Updates
   * Add support for `VerificationSession` on `EphemeralKeyCreateOptions`
 * [#2622](https://github.com/stripe/stripe-dotnet/pull/2622) Fix missing IDisposable using
 
+## 41.5.0-beta.2 - 2023-01-12
+* [#2632](https://github.com/stripe/stripe-dotnet/pull/2632) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for new resource `Tax.Registration`
+  * Add support for `Create`, `List`, and `Update` methods on resource `Registration`
+  * Add support for `Controller` on `AccountCreateOptions` and `AccountUpdateOptions`
+  * Add support for `Application` and `Dashboard` on `AccountController`
+  * Remove support for `Timestamp` on `QuoteLineActionsAddDiscountDiscountEnd`
+  * Change type of `QuoteLineActionsAddDiscountDiscountEndType` from `literal('timestamp')` to `literal('line_ends_at')`
+  * Remove support for `Index` on `QuoteLineActionsAddItemDiscounts`, `QuoteLineActionsRemoveDiscount`, `QuoteLineActionsSetDiscounts`, `QuoteLineActionsSetItemsDiscounts`, `SubscriptionSchedulePhasesAddInvoiceItemsDiscounts`, `SubscriptionSchedulePhasesDiscounts`, and `SubscriptionSchedulePhasesItemsDiscounts`
+
+## 41.5.0-beta.1 - 2023-01-05
+* [#2630](https://github.com/stripe/stripe-dotnet/pull/2630) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `MarkStaleQuote` method on resource `Quote`
+  * Add support for `Duration` and `LineEndsAt` on `QuoteSubscriptionDataBillOnAcceptanceBillUntilOptions` and `QuoteSubscriptionDataOverridesBillOnAcceptanceBillUntilOptions`
+  * Remove support for `LineStartsAt` on `QuoteSubscriptionDataBillOnAcceptanceBillUntilOptions` and `QuoteSubscriptionDataOverridesBillOnAcceptanceBillUntilOptions`
+  * Add support for `Metadata` on `TerminalReaderActionRefundPayment` and `TerminalReaderRefundPaymentOptions`
+
 ## 41.4.0 - 2023-01-05
 * [#2629](https://github.com/stripe/stripe-dotnet/pull/2629) API Updates
   * Add support for `CardIssuing` on `Issuing.CardholderIndividual`
+
+## 41.4.0-beta.1 - 2022-12-22
+* [#2627](https://github.com/stripe/stripe-dotnet/pull/2627) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Move `Stripe.TaxTransaction` and `Stripe.TaxCalculation` to `Stripe.Tax.Transaction` and `Stripe.Tax.Calculation`.
 
 ## 41.3.0 - 2022-12-22
 * [#2626](https://github.com/stripe/stripe-dotnet/pull/2626) API Updates
   * Add support for `UsingMerchantDefault` on `CashBalanceSettings`
 * [#2625](https://github.com/stripe/stripe-dotnet/pull/2625) Stop `FileService` from mutating its `RequestOptions` argument
 
+## 41.3.0-beta.2 - 2022-12-15
+* [#2621](https://github.com/stripe/stripe-dotnet/pull/2621) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for new resources `QuoteLine`, `TaxCalculation`, and `TaxTransaction`
+  * Add support for `Create` and `ListLineItems` methods on resource `TaxCalculation`
+  * Add support for `CreateReversal`, `Create`, and `Get` methods on resource `TaxTransaction`
+
+## 41.3.0-beta.1 - 2022-12-08
+* [#2618](https://github.com/stripe/stripe-dotnet/pull/2618) API Updates for beta branch
+  * Updated stable APIs to the latest version
+* [#2615](https://github.com/stripe/stripe-dotnet/pull/2615) API Updates for beta branch
+  * Updated stable APIs to the latest version
 
 ## 41.2.0 - 2022-12-06
 * [#2614](https://github.com/stripe/stripe-dotnet/pull/2614) API Updates
@@ -996,7 +1721,6 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 * [#2609](https://github.com/stripe/stripe-dotnet/pull/2609) API Updates
   * Add support for `CustomText` on `Checkout.SessionCreateOptions`, `Checkout.Session`, `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
   * Add support for `HostedInstructionsUrl` on `PaymentIntentNextActionPaynowDisplayQrCode`
-  
 
 ## 41.0.0 - 2022-11-16
 
@@ -1017,6 +1741,12 @@ Breaking changes that arose during code generation of the library that we postpo
 ⚠️ Changed
 - `IncrementalAuthorizationSupported` and `OvercaptureSupported` become non-nullable in `ChargePaymentMethodDetailsCardPresent`.
 
+## 40.17.0-beta.1 - 2022-11-10
+* [#2606](https://github.com/stripe/stripe-dotnet/pull/2606) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `Url` on `AuthorizationMerchantData`.
+  * Add support for  `DiscountEnd` on `*DiscountOptions`.
+
 ## 40.16.0 - 2022-11-08
 * [#2602](https://github.com/stripe/stripe-dotnet/pull/2602) API Updates
   * Add support for `ReasonMessage` on `Issuing.AuthorizationRequestHistory`
@@ -1028,18 +1758,49 @@ Breaking changes that arose during code generation of the library that we postpo
   * Add support for `OnBehalfOf` on `Checkout.SessionSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionScheduleDefaultSettingsOptions`, `SubscriptionScheduleDefaultSettings`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, `SubscriptionUpdateOptions`, and `Subscription`
   * Add support for `TaxBehavior` and `TaxCode` on `InvoiceInvoiceItemsOptions`, `InvoiceItemCreateOptions`, and `InvoiceItemUpdateOptions`
 
+## 40.15.0-beta.2 - 2022-11-02
+* [#2597](https://github.com/stripe/stripe-dotnet/pull/2597) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `cashappPayments` and `zipPayments` on `Account`.
+  * Add support for `cashapp` and `zip` on `Charge`, `PaymentMethod`.
+  * Add support for `trialSettings` on `SubscriptionSchedule`.
+
+## 40.15.0-beta.1 - 2022-10-21
+* [#2593](https://github.com/stripe/stripe-dotnet/pull/2593) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `Paypal` on `ChargePaymentMethodDetails` and `Source`
+  * Add support for `NetworkData` on `IssuingTransaction`
+  * Add support for `BillingCycleAnchor` on `SubscriptionScheduleAmendmentsOptions`
+
 ## 40.14.0 - 2022-10-20
 * [#2591](https://github.com/stripe/stripe-dotnet/pull/2591) API Updates
   * Add support for `Tipping` on `Terminal.ReaderActionProcessPaymentIntentProcessConfig` and `Terminal.ReaderProcessConfigOptions`
+
+## 40.14.0-beta.1 - 2022-10-14
+* [#2590](https://github.com/stripe/stripe-dotnet/pull/2590) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for `ScheduleSettings` on `SubscriptionScheduleAmendOptions`
 
 ## 40.13.0 - 2022-10-13
 * [#2589](https://github.com/stripe/stripe-dotnet/pull/2589) API Updates
   * Add support for `NetworkData` on `Issuing.Authorization`
 * [#2586](https://github.com/stripe/stripe-dotnet/pull/2586) Add request_log_url on StripeError
 
+## 40.13.0-beta.1 - 2022-10-07
+* [#2585](https://github.com/stripe/stripe-dotnet/pull/2585) API Updates for beta branch
+  * Updated stable APIs to the latest version
+
 ## 40.12.0 - 2022-10-06
 * [#2584](https://github.com/stripe/stripe-dotnet/pull/2584) API Updates
   * Add support for `Klarna` on `SetupAttemptPaymentMethodDetails`
+
+## 40.12.0-beta.2 - 2022-10-04
+* Updated stable APIs to the latest version
+
+## 40.12.0-beta.1 - 2022-10-04
+* [#2583](https://github.com/stripe/stripe-dotnet/pull/2583) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Added `ReferenceId` to `PaymentIntentPaymentMethodOptionsPaypalOptions`
 
 ## 40.11.0 - 2022-09-29
 * [#2580](https://github.com/stripe/stripe-dotnet/pull/2580) API Updates
@@ -1048,12 +1809,16 @@ Breaking changes that arose during code generation of the library that we postpo
   * Add support for `SetupFutureUsage` on `PaymentIntentPaymentMethodOptionsPixOptions` and `PaymentIntentPaymentMethodOptionsPix`
   * Deprecate `SessionSubscriptionDataOptions.items` (use the `line_items` param instead). This will be removed in the next major version.
 
+## 40.11.0-beta.1 - 2022-09-26
+* [#2579](https://github.com/stripe/stripe-dotnet/pull/2579) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add `FinancingOffer`, `FinancingSummary` and `FinancingTransaction` resources.
+
 ## 40.10.0 - 2022-09-22
 * [#2578](https://github.com/stripe/stripe-dotnet/pull/2578) API Updates
   * Add support for `TermsOfService` on `Checkout.SessionConsentCollectionOptions`, `Checkout.SessionConsentCollection`, `Checkout.SessionConsent`, `PaymentLinkConsentCollectionOptions`, and `PaymentLinkConsentCollection`
   * ⚠️  Remove support for `Plan` on `Checkout.SessionPaymentMethodOptionsCardInstallmentsOptions`. The property was mistakenly released and never worked.
   * Add support for `StatementDescriptor` on `PaymentIntentIncrementAuthorizationOptions`
-  
 
 ## 40.9.0 - 2022-09-15
 * [#2577](https://github.com/stripe/stripe-dotnet/pull/2577) API Updates
@@ -1085,11 +1850,22 @@ Breaking changes that arose during code generation of the library that we postpo
   * Add support for `Description` on `QuoteSubscriptionDataOptions`, `QuoteSubscriptionData`, `SubscriptionScheduleDefaultSettingsOptions`, `SubscriptionScheduleDefaultSettings`, `SubscriptionSchedulePhasesOptions`, and `SubscriptionSchedulePhases`
 * [#2565](https://github.com/stripe/stripe-dotnet/pull/2565) Update README.md to clarify that API version can only be change in beta
 
+## 40.5.0-beta.1 - 2022-08-26
+* [#2566](https://github.com/stripe/stripe-dotnet/pull/2566) API Updates for beta branch
+  * Updated stable APIs to the latest version
+  * Add support for the beta [Gift Card API](https://stripe.com/docs/gift-cards).
+
 ## 40.4.0 - 2022-08-23
 * [#2562](https://github.com/stripe/stripe-dotnet/pull/2562) Add beta README.md section
 * [#2564](https://github.com/stripe/stripe-dotnet/pull/2564) API Updates
   * Change the return type of `CustomerService.FundCashBalance` test helper from `CustomerBalanceTransaction` to `CustomerCashBalanceTransaction`.
-    * This would generally be considered a breaking change, but we've worked with all existing users to migrate and are comfortable releasing this as a minor as it is solely a test helper method. This was essentially broken prior to this change. 
+    * This would generally be considered a breaking change, but we've worked with all existing users to migrate and are comfortable releasing this as a minor as it is solely a test helper method. This was essentially broken prior to this change.
+
+## 40.4.0-beta.1 - 2022-08-23
+* [#2563](https://github.com/stripe/stripe-dotnet/pull/2563) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - `Stripe-Version` beta headers are not pinned by-default and need to be manually specified, please refer to [beta SDKs README section](https://github.com/stripe/stripe-dotnet/blob/master/README.md#beta-sdks) 
+* [#2561](https://github.com/stripe/stripe-dotnet/pull/2561) Make APIVersion configuration settable
 
 ## 40.3.0 - 2022-08-19
 * [#2560](https://github.com/stripe/stripe-dotnet/pull/2560) API Updates
@@ -1098,6 +1874,11 @@ Breaking changes that arose during code generation of the library that we postpo
   * Add support for `Network` on `SetupIntentPaymentMethodOptionsCardOptions`, `SubscriptionPaymentSettingsPaymentMethodOptionsCardOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsCard`
 * [#2559](https://github.com/stripe/stripe-dotnet/pull/2559) Add a support section to the readme
 * [#2558](https://github.com/stripe/stripe-dotnet/pull/2558) Update README.md
+
+## 40.3.0-beta.1 - 2022-08-11
+* [#2557](https://github.com/stripe/stripe-dotnet/pull/2557) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Add RefundPayment method to Terminal resource
 
 ## 40.2.0 - 2022-08-11
 * [#2556](https://github.com/stripe/stripe-dotnet/pull/2556) API Updates
@@ -1112,54 +1893,21 @@ Breaking changes that arose during code generation of the library that we postpo
 * [#2551](https://github.com/stripe/stripe-dotnet/pull/2551) API Updates
   * Add support for `ExpiresAt` on `Apps.SecretCreateOptions` and `Apps.Secret`
 
+## 40.1.0-beta.1 - 2022-08-03
+* [#2550](https://github.com/stripe/stripe-dotnet/pull/2550) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Added the `Order` resource support
+
 ## 40.0.0 - 2022-08-02
 
-This release includes breaking changes resulting from:
+Major version release for API version 2022-08-01. Default API version changed to "2022-08-01".
 
-* Moving to use the new API version "2022-08-01". To learn more about these changes to Stripe products, see https://stripe.com/docs/upgrades#2022-08-01
-* Cleaning up the SDK to remove deprecated/unused APIs and rename classes/methods/properties to sync with product APIs. Read more detailed description at https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v40.
+Breaking changes that arose during code generation of the library that we postponed for the next major version. For changes to the SDK, read more detailed description at https://github.com/stripe/stripe-dotnet/wiki/Migration-guide-for-v40. For changes to the Stripe products, read more at https://stripe.com/docs/upgrades#2022-08-01.
 
 "⚠️" symbol highlights breaking changes.
 
 * [#2549](https://github.com/stripe/stripe-dotnet/pull/2549) API Updates
 * [#2547](https://github.com/stripe/stripe-dotnet/pull/2547) Next major release changes
-
-### Added
-* Add `RefundAccountHolderName`, `RefundAccountHolderType`, and `RefundRoutingNumber` properties to `SourceAchCreditTransfer` entity.
-* Add `DataString`, `NativeUrl`, and `StatementDescriptor` properties to `SourceAlipay` entity.
-* Add `Description`, `Iin`, and `Issuer` properties to `SourceCard` and `SourceCardPresent` entities.
-* Add `Reference` and `StatementDescriptor` properties to `SourceEps` entity.
-* Add `StatementDescriptor` property to `SourceBancontact`,`SourceGiropay`, `SourceIdeal`, and `SourceSofort` entities.
-* Add `RefundAccountHolderAddressCity`, `RefundAccountHolderAddressCountry`, `RefundAccountHolderAddressLine1`, `RefundAccountHolderAddressLine2`, `RefundAccountHolderAddressPostalCode`, `RefundAccountHolderAddressState`, `RefundAccountHolderName` and `RefundIban` properties to `SourceMultibanco` and `SourceSepaCreditTransfer` entities.
-* Add `Name` property to `SourceThreeDSecure` entity.
-* Add support for `ShippingCost` and `ShippingDetails` on `Checkout.Session`
-
-### ⚠️ Changed
-* Rename `BalanceDetails` to `BalanceIssuing`. Rename type of `Balance.Issuing` property.
-* Change `Application` property in `BillingPortal.Configuration` entity to be expandable.
-* Change `Delinquent` property in `Customer` entity to be nullable.
-* Change `Amount` property in `Dispute` and `PaymentIntentAmountDetailsTip` entities to be non-nullable. The field is required.
-* Change type of `Start` and `End` property in `InvoiceItemPeriod` and `InvoiceLineItemPeriod` entities to `DateTime`.
-* Change `AmountSubtotal` and `AmountTotal` properties in `LineItem` entity to be non-nullable. The fields are required.
-* Change `Director`, `Executive`, `Owner`, and `Representative` properties in `PersonRelationship` to be nullable.
-* Change `Location` property in `Reader` and `Terminal.Reader` entities to be expandable.
-* Change type of `ExpMonth` and `ExpYear` properties in `ExternalAccountUpdateOptions` and `TokenCardOptions` to `string`.
-* Change type of `StartDate` property in `SubscriptionSchedulePhaseOptions` to union of date and string. This supports `"now"` as a valid value.
-* Change type of `Timestamp` property in `UsageRecordCreateOptions` to union of date and string. This supports `"now"` as a valid value.
-
-### ⚠️ Removed
-* Remove `CustomerPaymentSettingsOptions`, `CustomerPaymentSettingsPaymentMethodOptionsBancontactOptions`, `CustomerPaymentSettingsPaymentMethodOptionsCardOptions`, and `CustomerPaymentSettingsPaymentMethodOptionsOptions`.
-* Remove `IncorporationArticle`,  `IncorporationDocument`, `PaymentProviderTransfer`, and `ProductFeed` from `FilePurpose` constants. The values are no longer in use.
-* Remove `DefaultSourceType` property from `Customer` entity. The field was undocumented and unsupported.
-* Remove `AssociatedObjects` array property from `EphemeralKey` entity. The field was undocumented and unsupported.
-* Remove `EphemeralKeyAssociatedObject` entity.
-* Remove `Quantity` and `TrialEnd` properties in `CustomerCreateOptions`. The fields are not supported in the operation.
-* Remove `TrialEnd` property in `CustomerUpdateOptions`. The property was not supported in the operation.
-* Remove `Order` and `OrderItem` resources and APIs as those have been deprecated for multiple years.
-  * Remove `OrderPaymentSucceeded`, `OrderUpdated`, and `OrderReturnCreated` event constants. These events are deprecated.
-  * Remove `Order` and `OrderId` properties in `Charge` entity. The property was deprecated.
-* Remove `QuoteFinalizeQuoteOptions`. The options weren't used anymore.
-* Remove `RedirectUrl` from `LoginLinkCreateOptions`. The property was deprecated.
 
 ## 39.126.0 - 2022-07-26
 * [#2544](https://github.com/stripe/stripe-dotnet/pull/2544) API Updates
@@ -1172,7 +1920,21 @@ This release includes breaking changes resulting from:
   * Add support for `Currency` on `InvoiceCreateOptions`
   * Add support for `DefaultMandate` on `InvoicePaymentSettingsOptions` and `InvoicePaymentSettings`
   * Add support for `Mandate` on `InvoicePayOptions`
-  
+
+## 39.125.0-beta.1 - 2022-07-22
+* [#2542](https://github.com/stripe/stripe-dotnet/pull/2542) API Updates for beta branch
+  - Updated stable APIs to the latest version
+* [#2540](https://github.com/stripe/stripe-dotnet/pull/2540) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Add `QuotePhase` resource
+* [#2536](https://github.com/stripe/stripe-dotnet/pull/2536) API Updates for beta branch
+  - Updated stable APIs to the latest version
+  - Add `Price.MigrateTo` property
+  - Add `SubscriptionSchedule.Amend` method.
+  - Add `Discount.SubscriptionItem` property.
+  - Add `Quote.SubscriptionData.BillingBehavior`, `BillingCycleAnchor`, `EndBehavior`, `FromSchedule`, `FromSubscription`, `Prebilling`, `ProrationBehavior` properties.
+  - Add `Phases` parameter to `Quote.Create`
+  - Add `Subscription.Discounts`, `Prebilling` properties.
 
 ## 39.124.0 - 2022-07-18
 * [#2534](https://github.com/stripe/stripe-dotnet/pull/2534) API Updates
@@ -1183,6 +1945,13 @@ This release includes breaking changes resulting from:
 ## 39.123.0 - 2022-07-12
 * [#2530](https://github.com/stripe/stripe-dotnet/pull/2530) API Updates
   * Add support for `CustomerDetails` on `Checkout.SessionListOptions`
+
+## 39.123.0-beta.1 - 2022-07-07
+* [#2529](https://github.com/stripe/stripe-dotnet/pull/2529) API Updates for beta branch
+  - Include `server_side_confirmation_beta=v1` beta
+  - Add `secretKeyConfirmation` to `PaymentIntent`
+* [#2525](https://github.com/stripe/stripe-dotnet/pull/2525) API Updates for beta branch
+  - Updated stable APIs to the latest version
 
 ## 39.122.0 - 2022-07-07
 * [#2528](https://github.com/stripe/stripe-dotnet/pull/2528) API Updates
@@ -1227,6 +1996,10 @@ This release includes breaking changes resulting from:
 * [#2507](https://github.com/stripe/stripe-dotnet/pull/2507) Trigger workflows on beta branches
 * [#2506](https://github.com/stripe/stripe-dotnet/pull/2506) Support updating pre-release versions
 
+## 39.119.0-beta.1 - 2022-06-15
+* [#2505](https://github.com/stripe/stripe-dotnet/pull/2505) API Updates
+  Add support for NetworkDetails properties on ReceivedCredits/ReceivedDebits resources
+
 ## 39.118.0 - 2022-06-09
 * [#2503](https://github.com/stripe/stripe-dotnet/pull/2503) API Updates
   * Add support for `Treasury` on `AccountSettingsOptions` and `AccountSettings`
@@ -1260,7 +2033,6 @@ This release includes breaking changes resulting from:
   * Add support for `HostedInstructionsUrl` on `PaymentIntentNextActionDisplayBankTransferInstructions`
   * Add support for `IdNumberSecondaryProvided` on `Person`
   * Add support for `CardIssuing` on `Treasury.FinancialAccountFeaturesOptions` and `Treasury.FinancialAccountUpdateFeaturesOptions`
-  
 
 ## 39.114.0 - 2022-05-23
 * [#2492](https://github.com/stripe/stripe-dotnet/pull/2492) API Updates
@@ -1304,14 +2076,12 @@ This release includes breaking changes resulting from:
 * [#2479](https://github.com/stripe/stripe-dotnet/pull/2479) API Updates
   
   * Add support for `AmountDiscount`, `AmountTax`, and `Product` on `LineItem`
-  
 
 ## 39.110.0 - 2022-05-05
 * [#2475](https://github.com/stripe/stripe-dotnet/pull/2475) API Updates
   * Add support for `DefaultPriceData` on `ProductCreateOptions`
   * Add support for `DefaultPrice` on `ProductUpdateOptions` and `Product`
   * Add support for `InstructionsEmail` on `RefundCreateOptions` and `Refund`
-  
 
 ## 39.109.0 - 2022-05-05
 * [#2474](https://github.com/stripe/stripe-dotnet/pull/2474) API Updates
@@ -1432,7 +2202,6 @@ This release includes breaking changes resulting from:
   * Add support for `MandateOptions` on `PaymentIntentPaymentMethodOptionsCardOptions`, `PaymentIntentPaymentMethodOptionsCard`, `SetupIntentPaymentMethodOptionsCardOptions`, and `SetupIntentPaymentMethodOptionsCard`
   * Add support for `CardAwaitNotification` on `PaymentIntentNextAction`
   * Add support for `CustomerNotification` on `PaymentIntentProcessingCard`
-  
 
 ## 39.96.0 - 2022-03-09
 * [#2435](https://github.com/stripe/stripe-dotnet/pull/2435) API Updates
@@ -1442,7 +2211,6 @@ This release includes breaking changes resulting from:
 * [#2432](https://github.com/stripe/stripe-dotnet/pull/2432) API Updates
   * Add support for new resources `InvoiceLineItemProrationDetails` and `InvoiceLineItemProrationDetailsCreditedItems`
   * Add support for `ProrationDetails` on `InvoiceLineItem`
-  
 
 ## 39.94.0 - 2022-03-01
 * [#2430](https://github.com/stripe/stripe-dotnet/pull/2430) [#2431](https://github.com/stripe/stripe-dotnet/pull/2431) API Updates
@@ -1553,7 +2321,6 @@ This release includes breaking changes resulting from:
 * [#2391](https://github.com/stripe/stripe-dotnet/pull/2391) API Updates
   * Remove support for `OwnershipDeclarationShownAndSigned` on `TokenAccountOptions`. This API was unused.
   * Add support for `OwnershipDeclarationShownAndSigned` on `TokenAccountCompanyOptions`
-  
 
 ## 39.75.0 - 2021-11-01
 * [#2388](https://github.com/stripe/stripe-dotnet/pull/2388) API Updates
@@ -1588,7 +2355,6 @@ This release includes breaking changes resulting from:
 * [#2372](https://github.com/stripe/stripe-dotnet/pull/2372) API Updates
   * Add support for `AmountAuthorized` and `OvercaptureSupported` on `ChargePaymentMethodDetailsCardPresent`
 
-
 ## 39.68.0 - 2021-09-16
 * [#2371](https://github.com/stripe/stripe-dotnet/pull/2371) API Updates
   * Add support for `FullNameAliases` on `AccountIndividualOptions`,  `PersonCreateOptions`, `PersonUpdateOptions`, `Person`, `TokenAccountIndividualOptions`, and `TokenPersonOptions`
@@ -1608,6 +2374,7 @@ This release includes breaking changes resulting from:
 * [#2366](https://github.com/stripe/stripe-dotnet/pull/2366) API Updates
   * Add support for `AfterExpiration`, `ConsentCollection`, and `ExpiresAt` on `Checkout.SessionCreateOptions` and `Checkout.Session`
   * Add support for `Consent` and `RecoveredFrom` on `Checkout.Session`
+
 ## 39.64.0 - 2021-08-27
 * [#2365](https://github.com/stripe/stripe-dotnet/pull/2365) API Updates
   * Add support for `CancellationReason` on `BillingPortal.ConfigurationFeaturesSubscriptionCancelOptions` and `BillingPortal.ConfigurationFeaturesSubscriptionCancel`
@@ -1689,7 +2456,6 @@ This release includes breaking changes resulting from:
   * Add support for `TaxType` on `TaxRate` API
   * Add support for `CustomerUpdate` on Checkout `SessionCreateOptions`
 
-
 ## 39.50.0 - 2021-05-26
 * [#2323](https://github.com/stripe/stripe-dotnet/pull/2323) API Updates
   * Added support for `documents` on `PersonUpdateOptions`, `PersonCreateOptions` and `TokenPersonOptions`
@@ -1767,8 +2533,6 @@ This release includes breaking changes resulting from:
 * [#2278](https://github.com/stripe/stripe-dotnet/pull/2278) Add link to playlist from README
 * [#2277](https://github.com/stripe/stripe-dotnet/pull/2277) API Updates
   * Add support for `nationality` on `Person`, `PersonUpdateOptions`, `PersonCreateOptions` and `TokenCreateParams.person`
-
-
 
 ## 39.33.0 - 2021-01-21
 * [#2274](https://github.com/stripe/stripe-dotnet/pull/2274) API Updates
@@ -1954,11 +2718,6 @@ This release includes breaking changes resulting from:
     * [#2178](https://github.com/stripe/stripe-dotnet/pull/2178) ⚠️ Unshare `ChargeDestinationOptions`
     * [#2181](https://github.com/stripe/stripe-dotnet/pull/2181) ⚠️ Updates doc strings to match the OpenAPI spec
     * [#2193](https://github.com/stripe/stripe-dotnet/pull/2193) Configure license and icon within repo
-
-
-## 38.0.0  and 39.0.0 - 2020-08-27
-
-We experienced multiple errors during the release of 38.0.0 and 39.0.0 that could not be reverted. The next major version after 37.X is the version 39.1.2 above.
 
 ## 37.35.0 - 2020-08-27
 * [#2186](https://github.com/stripe/stripe-dotnet/pull/2186) Add support for `SepaCreditTransfer` in `SourceTransaction`
@@ -3405,13 +4164,3 @@ List of backwards incompatible changes:
 * [#1022](https://github.com/stripe/stripe-dotnet#1022) Add support for SKUs
 * [#1025](https://github.com/stripe/stripe-dotnet#1025) Add `Discountable` for `StripeInvoiceLineItem`
 
-## Older releases
-
-Note that this changelog is relatively new and we haven't yet backfilled it.
-For details on old releases, check out the releases page:
-
-https://github.com/stripe/stripe-dotnet/releases
-
-<!--
-# vim: set tw=0:
--->

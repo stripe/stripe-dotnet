@@ -29,6 +29,22 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Amends an existing subscription schedule.</p>.
+        /// </summary>
+        public virtual SubscriptionSchedule Amend(string id, SubscriptionScheduleAmendOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/amend", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Amends an existing subscription schedule.</p>.
+        /// </summary>
+        public virtual Task<SubscriptionSchedule> AmendAsync(string id, SubscriptionScheduleAmendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<SubscriptionSchedule>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscription_schedules/{WebUtility.UrlEncode(id)}/amend", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Cancels a subscription schedule and its associated subscription immediately (if the
         /// subscription schedule has an active subscription). A subscription schedule can only be
         /// canceled if its status is <c>not_started</c> or <c>active</c>.</p>.

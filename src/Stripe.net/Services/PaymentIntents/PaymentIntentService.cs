@@ -212,6 +212,54 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Perform a decremental authorization on an eligible <a
+        /// href="https://stripe.com/docs/api/payment_intents/object">PaymentIntent</a>. To be
+        /// eligible, the PaymentIntent’s status must be <c>requires_capture</c> and <a
+        /// href="https://stripe.com/docs/api/charges/object#charge_object-payment_method_details-card-decremental_authorization">decremental_authorization.status</a>
+        /// must be <c>available</c>.</p>.
+        ///
+        /// <p>Decremental authorizations decrease the authorized amount on your customer’s card to
+        /// the new, lower <c>amount</c> provided. A single PaymentIntent can call this endpoint
+        /// multiple times to further decrease the authorized amount.</p>.
+        ///
+        /// <p>After decrement, the PaymentIntent object returns with the updated <a
+        /// href="https://stripe.com/docs/api/payment_intents/object#payment_intent_object-amount">amount</a>.
+        /// The PaymentIntent will now be capturable up to the new authorized amount.</p>.
+        ///
+        /// <p>Each PaymentIntent can have a maximum of 10 decremental or incremental authorization
+        /// attempts, including declines. After it’s fully captured, a PaymentIntent can no longer
+        /// be decremented.</p>.
+        /// </summary>
+        public virtual PaymentIntent DecrementAuthorization(string id, PaymentIntentDecrementAuthorizationOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/decrement_authorization", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Perform a decremental authorization on an eligible <a
+        /// href="https://stripe.com/docs/api/payment_intents/object">PaymentIntent</a>. To be
+        /// eligible, the PaymentIntent’s status must be <c>requires_capture</c> and <a
+        /// href="https://stripe.com/docs/api/charges/object#charge_object-payment_method_details-card-decremental_authorization">decremental_authorization.status</a>
+        /// must be <c>available</c>.</p>.
+        ///
+        /// <p>Decremental authorizations decrease the authorized amount on your customer’s card to
+        /// the new, lower <c>amount</c> provided. A single PaymentIntent can call this endpoint
+        /// multiple times to further decrease the authorized amount.</p>.
+        ///
+        /// <p>After decrement, the PaymentIntent object returns with the updated <a
+        /// href="https://stripe.com/docs/api/payment_intents/object#payment_intent_object-amount">amount</a>.
+        /// The PaymentIntent will now be capturable up to the new authorized amount.</p>.
+        ///
+        /// <p>Each PaymentIntent can have a maximum of 10 decremental or incremental authorization
+        /// attempts, including declines. After it’s fully captured, a PaymentIntent can no longer
+        /// be decremented.</p>.
+        /// </summary>
+        public virtual Task<PaymentIntent> DecrementAuthorizationAsync(string id, PaymentIntentDecrementAuthorizationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/decrement_authorization", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Retrieves the details of a PaymentIntent that has previously been created. </p>.
         ///
         /// <p>You can retrieve a PaymentIntent client-side using a publishable key when the
@@ -391,6 +439,22 @@ namespace Stripe
         public virtual IAsyncEnumerable<PaymentIntent> SearchAutoPagingAsync(PaymentIntentSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.SearchRequestAutoPagingAsync<PaymentIntent>($"/v1/payment_intents/search", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Trigger an external action on a PaymentIntent.</p>.
+        /// </summary>
+        public virtual PaymentIntent TriggerAction(string id, PaymentIntentTriggerActionOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/test/payment_intents/{WebUtility.UrlEncode(id)}/trigger_action", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Trigger an external action on a PaymentIntent.</p>.
+        /// </summary>
+        public virtual Task<PaymentIntent> TriggerActionAsync(string id, PaymentIntentTriggerActionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/test/payment_intents/{WebUtility.UrlEncode(id)}/trigger_action", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

@@ -3,43 +3,82 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SourceCardOptions : INestedOptions, IHasMetadata
     {
         [JsonProperty("address_city")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_city")]
+#endif
         public string AddressCity { get; set; }
 
         [JsonProperty("address_country")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_country")]
+#endif
         public string AddressCountry { get; set; }
 
         [JsonProperty("address_line1")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_line1")]
+#endif
         public string AddressLine1 { get; set; }
 
         [JsonProperty("address_line2")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_line2")]
+#endif
         public string AddressLine2 { get; set; }
 
         [JsonProperty("address_state")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_state")]
+#endif
         public string AddressState { get; set; }
 
         [JsonProperty("address_zip")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_zip")]
+#endif
         public string AddressZip { get; set; }
 
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         [JsonProperty("cvc")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cvc")]
+#endif
         public string Cvc { get; set; }
 
         [JsonProperty("exp_month")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exp_month")]
+#endif
         public long? ExpMonth { get; set; }
 
         [JsonProperty("exp_year")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exp_year")]
+#endif
         public long? ExpYear { get; set; }
 
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
         public string Name { get; set; }
 
         [JsonProperty("number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("number")]
+#endif
         public string Number { get; set; }
 
         /// <summary>
@@ -48,6 +87,9 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

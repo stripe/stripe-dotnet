@@ -2,6 +2,9 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionAdaptivePricingOptions : INestedOptions
     {
@@ -12,6 +15,9 @@ namespace Stripe.Checkout
         /// href="https://dashboard.stripe.com/settings/adaptive-pricing">dashboard setting</a>.
         /// </summary>
         [JsonProperty("enabled")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled")]
+#endif
         public bool? Enabled { get; set; }
     }
 }

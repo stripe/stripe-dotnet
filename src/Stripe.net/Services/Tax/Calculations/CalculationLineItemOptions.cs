@@ -2,6 +2,9 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CalculationLineItemOptions : INestedOptions
     {
@@ -12,6 +15,9 @@ namespace Stripe.Tax
         /// calculated on top of this amount.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe.Tax
         /// <c>tax_code</c>.
         /// </summary>
         [JsonProperty("product")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("product")]
+#endif
         public string Product { get; set; }
 
         /// <summary>
@@ -27,6 +36,9 @@ namespace Stripe.Tax
         /// <c>quantity=4</c>, the calculated unit price is 25.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -35,6 +47,9 @@ namespace Stripe.Tax
         /// href="https://stripe.com/docs/tax/reports">tax reports</a>.
         /// </summary>
         [JsonProperty("reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference")]
+#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -42,6 +57,9 @@ namespace Stripe.Tax
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_behavior")]
+#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -51,6 +69,9 @@ namespace Stripe.Tax
         /// default tax code from your Tax Settings.
         /// </summary>
         [JsonProperty("tax_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_code")]
+#endif
         public string TaxCode { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class DisputePaymentMethodDetailsCard : StripeEntity<DisputePaymentMethodDetailsCard>
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("brand")]
+#endif
         public string Brand { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe
         /// One of: <c>chargeback</c>, or <c>inquiry</c>.
         /// </summary>
         [JsonProperty("case_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("case_type")]
+#endif
         public string CaseType { get; set; }
 
         /// <summary>
@@ -28,6 +37,9 @@ namespace Stripe
         /// lists all available dispute reason codes by network.
         /// </summary>
         [JsonProperty("network_reason_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_reason_code")]
+#endif
         public string NetworkReasonCode { get; set; }
     }
 }

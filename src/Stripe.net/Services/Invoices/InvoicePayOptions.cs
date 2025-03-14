@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoicePayOptions : BaseOptions
     {
@@ -17,6 +20,9 @@ namespace Stripe
         /// forgive the difference. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("forgive")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("forgive")]
+#endif
         public bool? Forgive { get; set; }
 
         /// <summary>
@@ -25,6 +31,9 @@ namespace Stripe
         /// default_payment_method or default_source, if set.
         /// </summary>
         [JsonProperty("mandate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate")]
+#endif
         public string Mandate { get; set; }
 
         /// <summary>
@@ -32,6 +41,9 @@ namespace Stripe
         /// Defaults to <c>true</c> (off-session).
         /// </summary>
         [JsonProperty("off_session")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("off_session")]
+#endif
         public bool? OffSession { get; set; }
 
         /// <summary>
@@ -39,6 +51,9 @@ namespace Stripe
         /// no charge being made. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("paid_out_of_band")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paid_out_of_band")]
+#endif
         public bool? PaidOutOfBand { get; set; }
 
         /// <summary>
@@ -46,6 +61,9 @@ namespace Stripe
         /// belonging to the customer associated with the invoice being paid.
         /// </summary>
         [JsonProperty("payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method")]
+#endif
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -53,6 +71,9 @@ namespace Stripe
         /// customer associated with the invoice being paid.
         /// </summary>
         [JsonProperty("source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source")]
+#endif
         public string Source { get; set; }
     }
 }

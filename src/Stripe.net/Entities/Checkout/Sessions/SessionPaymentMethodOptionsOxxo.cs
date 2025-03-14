@@ -2,6 +2,9 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionPaymentMethodOptionsOxxo : StripeEntity<SessionPaymentMethodOptionsOxxo>
     {
@@ -11,6 +14,9 @@ namespace Stripe.Checkout
         /// expire on Wednesday at 23:59 America/Mexico_City time.
         /// </summary>
         [JsonProperty("expires_after_days")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_after_days")]
+#endif
         public long ExpiresAfterDays { get; set; }
 
         /// <summary>
@@ -34,6 +40,9 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
     }
 }

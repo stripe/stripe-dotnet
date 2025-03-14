@@ -28,10 +28,15 @@ namespace Stripe
         static StripeConfiguration()
         {
             StripeNetVersion = Stripe.Version.Current;
+            ApiVersion = Stripe.ApiVersion.Current;
         }
 
         /// <summary>API version used by Stripe.net.</summary>
-        public static string ApiVersion => Stripe.ApiVersion.Current;
+        public static string ApiVersion
+        {
+            get;
+            private set;
+        }
 
         /// <summary>Gets or sets the API key.</summary>
         /// <remarks>
@@ -240,6 +245,24 @@ namespace Stripe
         public static void SetApiKey(string newApiKey)
         {
             ApiKey = newApiKey;
+        }
+
+        /// <summary>Add beta version to ApiVersion.</summary>
+        /// <param name="betaName">Name of beta.</param>
+        /// <param name="betaVersion">Desired beta version.</param>
+        public static void AddBetaVersion(string betaName, string betaVersion)
+        {
+            if (ApiVersion.Contains($"; {betaName}="))
+            {
+                throw new Exception($"Stripe version header {ApiVersion} already contains entry for beta {betaName}");
+            }
+
+            ApiVersion = $"{ApiVersion}; {betaName}={betaVersion}";
+        }
+
+        internal static void ClearBetaVersion()
+        {
+            ApiVersion = Stripe.ApiVersion.Current;
         }
 
         private static StripeClient BuildDefaultStripeClient()

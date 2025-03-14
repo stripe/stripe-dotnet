@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentCaptureOptions : BaseOptions, IHasMetadata
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// <c>amount_capturable</c> if it's not provided.
         /// </summary>
         [JsonProperty("amount_to_capture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_to_capture")]
+#endif
         public long? AmountToCapture { get; set; }
 
         /// <summary>
@@ -23,7 +29,19 @@ namespace Stripe
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
         public long? ApplicationFeeAmount { get; set; }
+
+        /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("async_workflows")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("async_workflows")]
+#endif
+        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
 
         /// <summary>
         /// Defaults to <c>true</c>. When capturing a PaymentIntent, setting <c>final_capture</c> to
@@ -33,6 +51,9 @@ namespace Stripe
         /// PaymentIntents.
         /// </summary>
         [JsonProperty("final_capture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("final_capture")]
+#endif
         public bool? FinalCapture { get; set; }
 
         /// <summary>
@@ -42,7 +63,19 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_details")]
+#endif
+        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
         /// Text that appears on the customer's statement as the statement descriptor for a non-card
@@ -56,6 +89,9 @@ namespace Stripe
         /// instead.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -65,6 +101,9 @@ namespace Stripe
         /// customer's statement.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix")]
+#endif
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -74,6 +113,9 @@ namespace Stripe
         /// accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
         public PaymentIntentTransferDataOptions TransferData { get; set; }
     }
 }

@@ -6,6 +6,7 @@ namespace StripeTests
     using StripeTests.Infrastructure.TestData;
     using Xunit;
 
+    [Collection(nameof(TestsThatModifyApiVersion))]
     public class StripeRequestTest : BaseStripeTest
     {
         private readonly IStripeClient stripeClient;

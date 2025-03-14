@@ -2,6 +2,9 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PersonalizationDesignPreferencesOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe.Issuing
         /// design is set as the default design.
         /// </summary>
         [JsonProperty("is_default")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("is_default")]
+#endif
         public bool? IsDefault { get; set; }
 
         /// <summary>
@@ -18,6 +24,9 @@ namespace Stripe.Issuing
         /// This parameter is only applicable to connected accounts.
         /// </summary>
         [JsonProperty("is_platform_default")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("is_platform_default")]
+#endif
         public bool? IsPlatformDefault { get; set; }
     }
 }

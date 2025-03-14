@@ -3,15 +3,32 @@ namespace Stripe.Treasury
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class FinancialAccountUpdateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// The display name for the FinancialAccount. Use this field to customize the names of the
+        /// FinancialAccounts for your connected accounts. Unlike the <c>nickname</c> field,
+        /// <c>display_name</c> is not internal metadata and will be exposed to connected accounts.
+        /// </summary>
+        [JsonProperty("display_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_name")]
+#endif
+        public string DisplayName { get; set; }
+
         /// <summary>
         /// Encodes whether a FinancialAccount has access to a particular feature, with a status
         /// enum and associated <c>status_details</c>. Stripe or the platform may control features
         /// via the requested field.
         /// </summary>
         [JsonProperty("features")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("features")]
+#endif
         public FinancialAccountFeaturesOptions Features { get; set; }
 
         /// <summary>
@@ -19,6 +36,9 @@ namespace Stripe.Treasury
         /// closing FA's balance to $0.
         /// </summary>
         [JsonProperty("forwarding_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("forwarding_settings")]
+#endif
         public FinancialAccountForwardingSettingsOptions ForwardingSettings { get; set; }
 
         /// <summary>
@@ -28,18 +48,27 @@ namespace Stripe.Treasury
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The nickname for the FinancialAccount.
         /// </summary>
         [JsonProperty("nickname")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nickname")]
+#endif
         public string Nickname { get; set; }
 
         /// <summary>
         /// The set of functionalities that the platform can restrict on the FinancialAccount.
         /// </summary>
         [JsonProperty("platform_restrictions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("platform_restrictions")]
+#endif
         public FinancialAccountPlatformRestrictionsOptions PlatformRestrictions { get; set; }
     }
 }

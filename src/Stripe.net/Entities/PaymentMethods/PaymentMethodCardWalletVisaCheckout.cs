@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentMethodCardWalletVisaCheckout : StripeEntity<PaymentMethodCardWalletVisaCheckout>
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// mutated.
         /// </summary>
         [JsonProperty("billing_address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_address")]
+#endif
         public Address BillingAddress { get; set; }
 
         /// <summary>
@@ -18,6 +24,9 @@ namespace Stripe
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
         [JsonProperty("email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("email")]
+#endif
         public string Email { get; set; }
 
         /// <summary>
@@ -25,6 +34,9 @@ namespace Stripe
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -33,6 +45,9 @@ namespace Stripe
         /// or mutated.
         /// </summary>
         [JsonProperty("shipping_address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping_address")]
+#endif
         public Address ShippingAddress { get; set; }
     }
 }

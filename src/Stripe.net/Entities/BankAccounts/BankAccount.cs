@@ -4,6 +4,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// These bank accounts are payment methods on <c>Customer</c> objects.
@@ -15,18 +18,27 @@ namespace Stripe
     /// Related guide: <a href="https://stripe.com/payments/bank-debits-transfers">Bank debits
     /// and transfers</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class BankAccount : StripeEntity<BankAccount>, IHasId, IHasMetadata, IHasObject, IExternalAccount, IPaymentSource
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         #region Expandable Account
@@ -36,6 +48,9 @@ namespace Stripe
         /// The ID of the account that the bank account is associated with.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string AccountId
         {
             get => this.InternalAccount?.Id;
@@ -49,6 +64,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Account Account
         {
             get => this.InternalAccount?.ExpandedObject;
@@ -57,6 +75,10 @@ namespace Stripe
 
         [JsonProperty("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
+#endif
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
@@ -64,6 +86,9 @@ namespace Stripe
         /// The name of the person or business that owns the bank account.
         /// </summary>
         [JsonProperty("account_holder_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_holder_name")]
+#endif
         public string AccountHolderName { get; set; }
 
         /// <summary>
@@ -71,6 +96,9 @@ namespace Stripe
         /// <c>company</c>.
         /// </summary>
         [JsonProperty("account_holder_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_holder_type")]
+#endif
         public string AccountHolderType { get; set; }
 
         /// <summary>
@@ -78,6 +106,9 @@ namespace Stripe
         /// countries. In Japan, this can only be <c>futsu</c> or <c>toza</c>.
         /// </summary>
         [JsonProperty("account_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_type")]
+#endif
         public string AccountType { get; set; }
 
         /// <summary>
@@ -86,18 +117,27 @@ namespace Stripe
         /// One of: <c>instant</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("available_payout_methods")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("available_payout_methods")]
+#endif
         public List<string> AvailablePayoutMethods { get; set; }
 
         /// <summary>
         /// Name of the bank associated with the routing number (e.g., <c>WELLS FARGO</c>).
         /// </summary>
         [JsonProperty("bank_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank_name")]
+#endif
         public string BankName { get; set; }
 
         /// <summary>
         /// Two-letter ISO code representing the country the bank account is located in.
         /// </summary>
         [JsonProperty("country")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country")]
+#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -105,6 +145,9 @@ namespace Stripe
         /// paid out to the bank account.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -114,6 +157,9 @@ namespace Stripe
         /// The ID of the customer that the bank account is associated with.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -127,6 +173,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -135,6 +184,10 @@ namespace Stripe
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
+#endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -142,12 +195,19 @@ namespace Stripe
         /// Whether this bank account is the default external account for its currency.
         /// </summary>
         [JsonProperty("default_for_currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_for_currency")]
+#endif
         public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deleted")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+#endif
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -155,6 +215,9 @@ namespace Stripe
         /// whether two bank accounts are the same.
         /// </summary>
         [JsonProperty("fingerprint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fingerprint")]
+#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -164,12 +227,18 @@ namespace Stripe
         /// and by when.
         /// </summary>
         [JsonProperty("future_requirements")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("future_requirements")]
+#endif
         public BankAccountFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
         /// The last four digits of the bank account number.
         /// </summary>
         [JsonProperty("last4")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("last4")]
+#endif
         public string Last4 { get; set; }
 
         /// <summary>
@@ -178,6 +247,9 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -185,12 +257,18 @@ namespace Stripe
         /// needs to be collected.
         /// </summary>
         [JsonProperty("requirements")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("requirements")]
+#endif
         public BankAccountRequirements Requirements { get; set; }
 
         /// <summary>
         /// The routing transit number for the bank account.
         /// </summary>
         [JsonProperty("routing_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("routing_number")]
+#endif
         public string RoutingNumber { get; set; }
 
         /// <summary>
@@ -216,6 +294,9 @@ namespace Stripe
         /// payouts. This means the other statuses don't apply.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
     }
 }

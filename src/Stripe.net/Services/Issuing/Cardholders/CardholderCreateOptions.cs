@@ -3,6 +3,9 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CardholderCreateOptions : BaseOptions, IHasMetadata
     {
@@ -10,24 +13,36 @@ namespace Stripe.Issuing
         /// The cardholder's billing address.
         /// </summary>
         [JsonProperty("billing")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing")]
+#endif
         public CardholderBillingOptions Billing { get; set; }
 
         /// <summary>
         /// Additional information about a <c>company</c> cardholder.
         /// </summary>
         [JsonProperty("company")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("company")]
+#endif
         public CardholderCompanyOptions Company { get; set; }
 
         /// <summary>
         /// The cardholder's email address.
         /// </summary>
         [JsonProperty("email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("email")]
+#endif
         public string Email { get; set; }
 
         /// <summary>
         /// Additional information about an <c>individual</c> cardholder.
         /// </summary>
         [JsonProperty("individual")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("individual")]
+#endif
         public CardholderIndividualOptions Individual { get; set; }
 
         /// <summary>
@@ -37,6 +52,9 @@ namespace Stripe.Issuing
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -45,16 +63,24 @@ namespace Stripe.Issuing
         /// numbers.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
         public string Name { get; set; }
 
         /// <summary>
         /// The cardholder's phone number. This will be transformed to <a
         /// href="https://en.wikipedia.org/wiki/E.164">E.164</a> if it is not provided in that
-        /// format already. This is required for all cardholders who will be creating EU cards. See
-        /// the <a href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D
-        /// Secure documentation</a> for more details.
+        /// format already. This is required for all cardholders who will be creating EU cards.
+        /// While phone number is optional if the cardholder will not be creating EU cards, note
+        /// that this cardholder will not be eligible for 3DS without a phone number. See the <a
+        /// href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D Secure
+        /// documentation</a> for more details.
         /// </summary>
         [JsonProperty("phone_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("phone_number")]
+#endif
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -65,6 +91,9 @@ namespace Stripe.Issuing
         /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>.
         /// </summary>
         [JsonProperty("preferred_locales")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("preferred_locales")]
+#endif
         public List<string> PreferredLocales { get; set; }
 
         /// <summary>
@@ -73,6 +102,9 @@ namespace Stripe.Issuing
         /// more details.
         /// </summary>
         [JsonProperty("spending_controls")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("spending_controls")]
+#endif
         public CardholderSpendingControlsOptions SpendingControls { get; set; }
 
         /// <summary>
@@ -81,6 +113,9 @@ namespace Stripe.Issuing
         /// One of: <c>active</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -90,6 +125,9 @@ namespace Stripe.Issuing
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceLineItemUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// negative amount.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe
         /// displayed in the invoice for easy tracking.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -27,6 +36,9 @@ namespace Stripe
         /// prorations.
         /// </summary>
         [JsonProperty("discountable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discountable")]
+#endif
         public bool? Discountable { get; set; }
 
         /// <summary>
@@ -35,7 +47,20 @@ namespace Stripe
         /// previously-defined discounts.
         /// </summary>
         [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
         public List<InvoiceLineItemDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
+        /// The IDs of the margins to apply to the line item. When set, the <c>default_margins</c>
+        /// on the invoice do not apply to this line item.
+        /// </summary>
+        [JsonProperty("margins")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("margins")]
+#endif
+        public List<string> Margins { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
@@ -49,6 +74,9 @@ namespace Stripe
         /// items, where any existing metadata on the invoice line is merged with the incoming data.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -60,12 +88,18 @@ namespace Stripe
         /// Recognition documentation</a> for details.
         /// </summary>
         [JsonProperty("period")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("period")]
+#endif
         public InvoiceLineItemPeriodOptions Period { get; set; }
 
         /// <summary>
         /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price")]
+#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -73,12 +107,18 @@ namespace Stripe
         /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price_data")]
+#endif
         public InvoiceLineItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
         /// Non-negative integer. The quantity of units for the line item.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -92,6 +132,9 @@ namespace Stripe
         /// string to remove previously defined tax amounts.
         /// </summary>
         [JsonProperty("tax_amounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_amounts")]
+#endif
         public List<InvoiceLineItemTaxAmountOptions> TaxAmounts { get; set; }
 
         /// <summary>
@@ -100,6 +143,9 @@ namespace Stripe
         /// previously-defined tax rates.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
         public List<string> TaxRates { get; set; }
     }
 }
