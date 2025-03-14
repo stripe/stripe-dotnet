@@ -11,7 +11,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// The shipping details to apply to this Session.
         /// </summary>
-        [JsonProperty("shipping_details")
+        [JsonProperty("shipping_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_details")]
 #endif
