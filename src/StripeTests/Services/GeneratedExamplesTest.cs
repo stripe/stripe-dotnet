@@ -757,8 +757,8 @@ namespace StripeTests
             {
                 PercentOff = 25.5M,
                 Duration = "repeating",
-                DurationInMonths = 3,
             };
+            options.AddExtraParam("duration_in_months", 3);
             var service = new CouponService(this.StripeClient);
             service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/coupons");
