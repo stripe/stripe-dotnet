@@ -124,7 +124,7 @@ namespace Stripe
         public InvoiceLinePeriodOptions Period { get; set; }
 
         /// <summary>
-        /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
+        /// The ID of the price object.
         /// </summary>
         [JsonProperty("price")]
 #if NET6_0_OR_GREATER
@@ -134,7 +134,7 @@ namespace Stripe
 
         /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
-        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
+        /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
 #if NET6_0_OR_GREATER

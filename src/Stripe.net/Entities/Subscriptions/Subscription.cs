@@ -143,16 +143,6 @@ namespace Stripe
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
-        /// Whether this subscription will (if <c>status=active</c>) or did (if
-        /// <c>status=canceled</c>) cancel at the end of the current billing period.
-        /// </summary>
-        [JsonProperty("cancel_at_period_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancel_at_period_end")]
-#endif
-        public bool CancelAtPeriodEnd { get; set; }
-
-        /// <summary>
         /// If the subscription has been canceled, the date of that cancellation. If the
         /// subscription was canceled with <c>cancel_at_period_end</c>, <c>canceled_at</c> will
         /// reflect the time of the most recent update request, not the end of the subscription
@@ -213,7 +203,9 @@ namespace Stripe
 
         /// <summary>
         /// End of the current period that the subscription has been invoiced for. At the end of
-        /// this period, a new invoice will be created.
+        /// this period, a new invoice will be created. This field is deprecated starting on the
+        /// <c>2025-03-31.basil</c> version, please use <c>current_period_end</c> on the items[]
+        /// field instead.
         /// </summary>
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -224,7 +216,9 @@ namespace Stripe
         public DateTime CurrentPeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Start of the current period that the subscription has been invoiced for.
+        /// Start of the current period that the subscription has been invoiced for. This field is
+        /// deprecated starting on the <c>2025-03-31.basil</c> version, please use
+        /// <c>current_period_start</c> on the items[] field instead.
         /// </summary>
         [JsonProperty("current_period_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -412,18 +406,6 @@ namespace Stripe
 #endif
         public string Description { get; set; }
 
-        /// <summary>
-        /// Describes the current discount applied to this subscription, if there is one. When
-        /// billing, a discount applied to a subscription overrides a discount applied on a
-        /// customer-wide basis. This field has been deprecated and will be removed in a future API
-        /// version. Use <c>discounts</c> instead.
-        /// </summary>
-        [JsonProperty("discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discount")]
-#endif
-        public Discount Discount { get; set; }
-
         #region Expandable Discounts
 
         /// <summary>
@@ -579,7 +561,9 @@ namespace Stripe
         /// <summary>
         /// (ID of the Account)
         /// The account (if any) the charge was made on behalf of for charges associated with this
-        /// subscription. See the Connect documentation for details.
+        /// subscription. See the <a
+        /// href="https://stripe.com/docs/connect/subscriptions#on-behalf-of">Connect
+        /// documentation</a> for details.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -594,7 +578,9 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The account (if any) the charge was made on behalf of for charges associated with this
-        /// subscription. See the Connect documentation for details.
+        /// subscription. See the <a
+        /// href="https://stripe.com/docs/connect/subscriptions#on-behalf-of">Connect
+        /// documentation</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

@@ -89,7 +89,7 @@ namespace Stripe
         public InvoiceItemPeriodOptions Period { get; set; }
 
         /// <summary>
-        /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
+        /// The ID of the price object.
         /// </summary>
         [JsonProperty("price")]
 #if NET6_0_OR_GREATER
@@ -99,7 +99,7 @@ namespace Stripe
 
         /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
-        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
+        /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
 #if NET6_0_OR_GREATER
@@ -164,9 +164,10 @@ namespace Stripe
         public long? UnitAmount { get; set; }
 
         /// <summary>
-        /// Same as <c>unit_amount</c>, but accepts a decimal value in cents (or local equivalent)
-        /// with at most 12 decimal places. Only one of <c>unit_amount</c> and
-        /// <c>unit_amount_decimal</c> can be set.
+        /// The decimal unit amount in cents (or local equivalent) of the charge to be applied to
+        /// the upcoming invoice. This <c>unit_amount_decimal</c> will be multiplied by the quantity
+        /// to get the full amount. Passing in a negative <c>unit_amount_decimal</c> will reduce the
+        /// <c>amount_due</c> on the invoice. Accepts at most 12 decimal places.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
 #if NET6_0_OR_GREATER

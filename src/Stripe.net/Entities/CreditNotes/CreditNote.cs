@@ -426,15 +426,6 @@ namespace Stripe
         public long? SubtotalExcludingTax { get; set; }
 
         /// <summary>
-        /// The aggregate amounts calculated per tax rate for all line items.
-        /// </summary>
-        [JsonProperty("tax_amounts")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_amounts")]
-#endif
-        public List<CreditNoteTaxAmount> TaxAmounts { get; set; }
-
-        /// <summary>
         /// The integer amount in cents (or local equivalent) representing the total amount of the
         /// credit note, including tax and all discount.
         /// </summary>

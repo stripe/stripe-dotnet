@@ -306,25 +306,6 @@ namespace Stripe
         public InvoiceItemPeriod Period { get; set; }
 
         /// <summary>
-        /// If the invoice item is a proration, the plan of the subscription that the proration was
-        /// computed for.
-        /// </summary>
-        [JsonProperty("plan")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("plan")]
-#endif
-        public Plan Plan { get; set; }
-
-        /// <summary>
-        /// The price of the invoice item.
-        /// </summary>
-        [JsonProperty("price")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price")]
-#endif
-        public Price Price { get; set; }
-
-        /// <summary>
         /// Whether the invoice item was created automatically as a proration adjustment when the
         /// customer switched plans.
         /// </summary>
@@ -444,23 +425,5 @@ namespace Stripe
 #endif
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
-
-        /// <summary>
-        /// Unit amount (in the <c>currency</c> specified) of the invoice item.
-        /// </summary>
-        [JsonProperty("unit_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_amount")]
-#endif
-        public long? UnitAmount { get; set; }
-
-        /// <summary>
-        /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
-        /// </summary>
-        [JsonProperty("unit_amount_decimal")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_amount_decimal")]
-#endif
-        public decimal? UnitAmountDecimal { get; set; }
     }
 }
