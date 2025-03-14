@@ -168,6 +168,13 @@ namespace Stripe.Billing
 #endif
         public string Name { get; set; }
 
+        /// <summary>
+        /// The priority for applying this credit grant. The highest priority is 0 and the lowest is
+        /// 100.
+        /// </summary>
+        [JsonProperty("priority")]
+        public long? Priority { get; set; }
+
         #region Expandable TestClock
 
         /// <summary>
