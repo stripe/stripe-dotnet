@@ -641,6 +641,55 @@ namespace StripeTests
             Assert.Equal(typeof(Foo), deserialized.GetType());
         }
 
+        [Fact]
+        public async Task StripeContextHeaderSet()
+        {
+            var apiRequestorWithContext = new LiveApiRequestor(new StripeClientOptions
+            {
+                ApiKey = "sk_test_123",
+                HttpClient = this.httpClient,
+                StripeContext = "ctx_1234",
+            });
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{}");
+            this.httpClient.Response = response;
+
+            var service = new CustomerService(apiRequestorWithContext);
+
+            await service.CreateAsync(new CustomerCreateOptions() { });
+            var lastRequest = this.httpClient.LastRequest;
+            Assert.Equal("ctx_1234", lastRequest.StripeHeaders["Stripe-Context"]);
+
+            // If its set in the request options, that takes precendence
+            await service.CreateAsync(new CustomerCreateOptions() { }, new RequestOptions { StripeContext = "ctx_2345" });
+            lastRequest = this.httpClient.LastRequest;
+            Assert.Equal("ctx_2345", lastRequest.StripeHeaders["Stripe-Context"]);
+        }
+
+        [Fact]
+        public async Task StripeAccountHeaderSet()
+        {
+            var apiRequestorWithContext = new LiveApiRequestor(new StripeClientOptions
+            {
+                ApiKey = "sk_test_123",
+                HttpClient = this.httpClient,
+                StripeAccount = "acct_1234",
+            });
+
+            var response = new StripeResponse(HttpStatusCode.OK, null, "{}");
+            this.httpClient.Response = response;
+
+            var service = new CustomerService(apiRequestorWithContext);
+
+            await service.CreateAsync(new CustomerCreateOptions() { });
+            var lastRequest = this.httpClient.LastRequest;
+            Assert.Equal("acct_1234", lastRequest.StripeHeaders["Stripe-Account"]);
+
+            // If its set in the request options, that takes precendence
+            await service.CreateAsync(new CustomerCreateOptions() { }, new RequestOptions { StripeAccount = "acct_2345" });
+            lastRequest = this.httpClient.LastRequest;
+            Assert.Equal("acct_2345", lastRequest.StripeHeaders["Stripe-Account"]);
+        }
+
         private class Foo : StripeEntity<Foo>
         {
             [JsonProperty("bar")]

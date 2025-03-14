@@ -33,6 +33,8 @@ namespace StripeTests
                 MeterEventsBase = "localhost:6502",
                 FilesBase = "localhost:555",
                 HttpClient = new TestHttpClient(),
+                StripeAccount = "acct",
+                StripeContext = "ctx",
             };
 
             // This test is designed to ensure StripeClient properly consumes all options.  If any are
