@@ -56,6 +56,9 @@ namespace Stripe.Checkout
         [JsonProperty("request_three_d_secure")]
         public string RequestThreeDSecure { get; set; }
 
+        [JsonProperty("restrictions")]
+        public SessionPaymentMethodOptionsCardRestrictions Restrictions { get; set; }
+
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.

@@ -17,7 +17,6 @@ namespace Stripe
         IUpdatable<Invoice, InvoiceUpdateOptions>
     {
         private InvoiceLineItemService lineItems;
-        private InvoiceUpcomingLinesService upcomingLines;
 
         public InvoiceService()
         {
@@ -34,9 +33,6 @@ namespace Stripe
         }
 
         public virtual InvoiceLineItemService LineItems => this.lineItems ??= new InvoiceLineItemService(
-            this.Requestor);
-
-        public virtual InvoiceUpcomingLinesService UpcomingLines => this.upcomingLines ??= new InvoiceUpcomingLinesService(
             this.Requestor);
 
         /// <summary>
@@ -435,6 +431,46 @@ namespace Stripe
         public virtual Task<Invoice> UpcomingAsync(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/upcoming", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>When retrieving an upcoming invoice, you’ll get a <strong>lines</strong> property
+        /// containing the total count of line items and the first handful of those items. There is
+        /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
+        /// </summary>
+        public virtual StripeList<InvoiceLineItem> UpcomingLines(InvoiceUpcomingLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/upcoming/lines", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>When retrieving an upcoming invoice, you’ll get a <strong>lines</strong> property
+        /// containing the total count of line items and the first handful of those items. There is
+        /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
+        /// </summary>
+        public virtual Task<StripeList<InvoiceLineItem>> UpcomingLinesAsync(InvoiceUpcomingLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/upcoming/lines", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>When retrieving an upcoming invoice, you’ll get a <strong>lines</strong> property
+        /// containing the total count of line items and the first handful of those items. There is
+        /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
+        /// </summary>
+        public virtual IEnumerable<InvoiceLineItem> UpcomingLinesAutoPaging(InvoiceUpcomingLinesOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/invoices/upcoming/lines", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>When retrieving an upcoming invoice, you’ll get a <strong>lines</strong> property
+        /// containing the total count of line items and the first handful of those items. There is
+        /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
+        /// </summary>
+        public virtual IAsyncEnumerable<InvoiceLineItem> UpcomingLinesAutoPagingAsync(InvoiceUpcomingLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/invoices/upcoming/lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

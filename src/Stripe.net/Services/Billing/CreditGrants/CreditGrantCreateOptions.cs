@@ -15,7 +15,9 @@ namespace Stripe.Billing
         public CreditGrantAmountOptions Amount { get; set; }
 
         /// <summary>
-        /// Configuration specifying what this credit grant applies to.
+        /// Configuration specifying what this credit grant applies to. We currently only support
+        /// <c>metered</c> prices that have a <a
+        /// href="https://docs.stripe.com/api/billing/meter">Billing Meter</a> attached to them.
         /// </summary>
         [JsonProperty("applicability_config")]
         public CreditGrantApplicabilityConfigOptions ApplicabilityConfig { get; set; }
@@ -62,5 +64,12 @@ namespace Stripe.Billing
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// The desired priority for applying this credit grant. If not specified, it will be set to
+        /// the default value of 50. The highest priority is 0 and the lowest is 100.
+        /// </summary>
+        [JsonProperty("priority")]
+        public long? Priority { get; set; }
     }
 }

@@ -8,12 +8,12 @@ namespace Stripe
 
     /// <summary>
     /// Tax rates can be applied to <a
-    /// href="https://stripe.com/docs/billing/invoices/tax-rates">invoices</a>, <a
-    /// href="https://stripe.com/docs/billing/subscriptions/taxes">subscriptions</a> and <a
-    /// href="https://stripe.com/docs/payments/checkout/set-up-a-subscription#tax-rates">Checkout
-    /// Sessions</a> to collect tax.
+    /// href="https://stripe.com/invoicing/taxes/tax-rates">invoices</a>, <a
+    /// href="https://stripe.com/billing/taxes/tax-rates">subscriptions</a> and <a
+    /// href="https://stripe.com/payments/checkout/use-manual-tax-rates">Checkout Sessions</a>
+    /// to collect tax.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/billing/taxes/tax-rates">Tax rates</a>.
+    /// Related guide: <a href="https://stripe.com/billing/taxes/tax-rates">Tax rates</a>.
     /// </summary>
     public class TaxRate : StripeEntity<TaxRate>, IHasId, IHasMetadata, IHasObject
     {
@@ -136,7 +136,7 @@ namespace Stripe
         public string RateType { get; set; }
 
         /// <summary>
-        /// <a href="https://en.wikipedia.org/wiki/ISO_3166-2:US">ISO 3166-2 subdivision code</a>,
+        /// <a href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO 3166-2 subdivision code</a>,
         /// without country prefix. For example, "NY" for New York, United States.
         /// </summary>
         [JsonProperty("state")]
