@@ -756,8 +756,7 @@ namespace StripeTests
             var options = new CouponCreateOptions
             {
                 PercentOff = 25.5M,
-                Duration = "repeating",
-                DurationInMonths = 3,
+                Duration = "once",
             };
             var service = new CouponService(this.StripeClient);
             service.Create(options);
@@ -1850,21 +1849,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v1/invoices/in_xxxxxxxxxxxxx/send");
-        }
-
-        [Fact]
-        public void TestInvoicesUpcomingGet()
-        {
-            var options = new UpcomingInvoiceOptions
-            {
-                Customer = "cus_9utnxg47pWjV1e",
-            };
-            var service = new InvoiceService(this.StripeClient);
-            service.Upcoming(options);
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v1/invoices/upcoming",
-                "customer=cus_9utnxg47pWjV1e");
         }
 
         [Fact]
