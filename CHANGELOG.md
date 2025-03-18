@@ -1,5 +1,11 @@
 # Changelog
 
+## 47.5.0-beta.1 - 2025-03-18
+* [#3062](https://github.com/stripe/stripe-dotnet/pull/3062) Beta SDK updates between Open API versions 1473 and 1505
+  
+  * Add support for `SucceedInputCollection` and `TimeoutInputCollection` test helper methods on resource `Terminal.Reader`
+  * Add support for `TargetDate` on `OrderPaymentSettingsPaymentMethodOptionsAcssDebitOptions`, `OrderPaymentSettingsPaymentMethodOptionsAcssDebit`, `OrderPaymentSettingsPaymentMethodOptionsSepaDebitOptions`, and `OrderPaymentSettingsPaymentMethodOptionsSepaDebit`
+
 ## 47.4.0-beta.1 - 2025-02-07
 * [#3049](https://github.com/stripe/stripe-dotnet/pull/3049) Update generated code for beta
   * Add support for `RejectedReason` on `AccountRiskControls`
