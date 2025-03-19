@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class DisputeService : Service<Dispute>,
+    public class DisputeService : Service,
         IListable<Dispute, DisputeListOptions>,
         IRetrievable<Dispute, DisputeGetOptions>,
         IUpdatable<Dispute, DisputeUpdateOptions>

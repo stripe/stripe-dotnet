@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class QuotePreviewSubscriptionScheduleService : ServiceNested<QuotePreviewSubscriptionSchedule>,
+    public class QuotePreviewSubscriptionScheduleService : Service,
         INestedListable<QuotePreviewSubscriptionSchedule, QuotePreviewSubscriptionScheduleListOptions>
     {
         public QuotePreviewSubscriptionScheduleService()

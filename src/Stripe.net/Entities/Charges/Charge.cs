@@ -596,6 +596,12 @@ namespace Stripe
 #endif
         public ChargePaymentMethodDetails PaymentMethodDetails { get; set; }
 
+        [JsonProperty("presentment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("presentment_details")]
+#endif
+        public ChargePresentmentDetails PresentmentDetails { get; set; }
+
         /// <summary>
         /// Options to configure Radar. See <a
         /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more

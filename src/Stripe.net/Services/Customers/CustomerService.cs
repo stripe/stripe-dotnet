@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class CustomerService : Service<Customer>,
+    public partial class CustomerService : Service,
         ICreatable<Customer, CustomerCreateOptions>,
         IDeletable<Customer, CustomerDeleteOptions>,
         IListable<Customer, CustomerListOptions>,

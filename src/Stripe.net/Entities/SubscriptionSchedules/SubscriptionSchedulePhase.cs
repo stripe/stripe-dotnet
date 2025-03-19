@@ -79,47 +79,6 @@ namespace Stripe
 #endif
         public string CollectionMethod { get; set; }
 
-        #region Expandable Coupon
-
-        /// <summary>
-        /// (ID of the Coupon)
-        /// ID of the coupon to use during this phase of the subscription schedule.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public string CouponId
-        {
-            get => this.InternalCoupon?.Id;
-            set => this.InternalCoupon = SetExpandableFieldId(value, this.InternalCoupon);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// ID of the coupon to use during this phase of the subscription schedule.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public Coupon Coupon
-        {
-            get => this.InternalCoupon?.ExpandedObject;
-            set => this.InternalCoupon = SetExpandableFieldObject(value, this.InternalCoupon);
-        }
-
-        [JsonProperty("coupon")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Coupon>))]
-#endif
-        internal ExpandableField<Coupon> InternalCoupon { get; set; }
-        #endregion
-
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported

@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountLinkService : Service<AccountLink>,
+    public class AccountLinkService : Service,
         ICreatable<AccountLink, AccountLinkCreateOptions>
     {
         public AccountLinkService()

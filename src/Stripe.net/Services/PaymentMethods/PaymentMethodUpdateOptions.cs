@@ -64,16 +64,6 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// If this is a <c>naver_pay</c> PaymentMethod, this hash contains details about the Naver
-        /// Pay payment method.
-        /// </summary>
-        [JsonProperty("naver_pay")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("naver_pay")]
-#endif
-        public PaymentMethodNaverPayOptions NaverPay { get; set; }
-
-        /// <summary>
         /// If this is a <c>pay_by_bank</c> PaymentMethod, this hash contains details about the
         /// PayByBank payment method.
         /// </summary>

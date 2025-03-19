@@ -1701,7 +1701,6 @@ namespace StripeTests
             var options = new InvoiceItemCreateOptions
             {
                 Customer = "cus_xxxxxxxxxxxxx",
-                Price = "price_xxxxxxxxxxxxx",
             };
             var service = new InvoiceItemService(this.StripeClient);
             service.Create(options);
@@ -3752,41 +3751,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v1/subscription_items/si_xxxxxxxxxxxxx");
-        }
-
-        [Fact]
-        public void TestSubscriptionItemsUsageRecordSummariesGet()
-        {
-            var options = new SubscriptionItemUsageRecordSummaryListOptions
-            {
-                Limit = 3,
-            };
-            var service = new SubscriptionItemUsageRecordSummaryService(
-                this.StripeClient);
-            StripeList<UsageRecordSummary> usageRecordSummaries = service.List(
-                "si_xxxxxxxxxxxxx",
-                options);
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v1/subscription_items/si_xxxxxxxxxxxxx/usage_record_summaries",
-                "limit=3");
-        }
-
-        [Fact]
-        public void TestSubscriptionItemsUsageRecordsPost()
-        {
-            var options = new SubscriptionItemUsageRecordCreateOptions
-            {
-                Quantity = 100,
-                Timestamp = DateTimeOffset.FromUnixTimeSeconds(1571252444)
-                    .UtcDateTime,
-            };
-            var service = new SubscriptionItemUsageRecordService(
-                this.StripeClient);
-            service.Create("si_xxxxxxxxxxxxx", options);
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v1/subscription_items/si_xxxxxxxxxxxxx/usage_records");
         }
 
         [Fact]

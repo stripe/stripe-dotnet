@@ -139,6 +139,12 @@ namespace Stripe
         public AccountCompanyOwnershipDeclaration OwnershipDeclaration { get; set; }
 
         /// <summary>
+        /// This value is used to determine if a business is exempt from providing ultimate
+        /// beneficial owners. See <a
+        /// href="https://support.stripe.com/questions/exemption-from-providing-ownership-details">this
+        /// support article</a> and <a
+        /// href="https://docs.stripe.com/changelog/acacia/2025-01-27/ownership-exemption-reason-accounts-api">changelog</a>
+        /// for more details.
         /// One of: <c>qualified_entity_exceeds_ownership_threshold</c>, or
         /// <c>qualifies_as_financial_institution</c>.
         /// </summary>

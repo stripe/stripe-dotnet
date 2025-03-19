@@ -101,22 +101,12 @@ namespace Stripe
         /// proration for that period.
         /// </summary>
         [JsonProperty("cancel_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancel_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-        public DateTime? CancelAt { get; set; }
-
-        /// <summary>
-        /// Indicate whether this subscription should cancel at the end of the current period
-        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
-        /// </summary>
-        [JsonProperty("cancel_at_period_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("cancel_at_period_end")]
-#endif
-        public bool? CancelAtPeriodEnd { get; set; }
+        public AnyOf<DateTime?, SubscriptionCancelAt> CancelAt { get; set; }
 
         /// <summary>
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
@@ -131,17 +121,6 @@ namespace Stripe
         [STJS.JsonPropertyName("collection_method")]
 #endif
         public string CollectionMethod { get; set; }
-
-        /// <summary>
-        /// The ID of the coupon to apply to this subscription. A coupon applied to a subscription
-        /// will only affect invoices created for that particular subscription. This field has been
-        /// deprecated and will be removed in a future API version. Use <c>discounts</c> instead.
-        /// </summary>
-        [JsonProperty("coupon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-#endif
-        public string Coupon { get; set; }
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
@@ -354,18 +333,6 @@ namespace Stripe
         [STJS.JsonPropertyName("prebilling")]
 #endif
         public SubscriptionPrebillingOptions Prebilling { get; set; }
-
-        /// <summary>
-        /// The promotion code to apply to this subscription. A promotion code applied to a
-        /// subscription will only affect invoices created for that particular subscription. This
-        /// field has been deprecated and will be removed in a future API version. Use
-        /// <c>discounts</c> instead.
-        /// </summary>
-        [JsonProperty("promotion_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("promotion_code")]
-#endif
-        public string PromotionCode { get; set; }
 
         /// <summary>
         /// Determines how to handle <a

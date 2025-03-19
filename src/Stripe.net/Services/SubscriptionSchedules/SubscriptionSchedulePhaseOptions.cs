@@ -83,17 +83,6 @@ namespace Stripe
         public string CollectionMethod { get; set; }
 
         /// <summary>
-        /// The ID of the coupon to apply to this phase of the subscription schedule. This field has
-        /// been deprecated and will be removed in a future API version. Use <c>discounts</c>
-        /// instead.
-        /// </summary>
-        [JsonProperty("coupon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-#endif
-        public string Coupon { get; set; }
-
-        /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
         /// code</a>, in lowercase. Must be a <a href="https://stripe.com/docs/currencies">supported
         /// currency</a>.

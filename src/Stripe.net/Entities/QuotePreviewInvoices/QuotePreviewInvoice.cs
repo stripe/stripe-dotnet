@@ -147,8 +147,8 @@ namespace Stripe
         public long AmountDue { get; set; }
 
         /// <summary>
-        /// Amount that was overpaid on the invoice. Overpayments are debited to the customer's
-        /// credit balance.
+        /// Amount that was overpaid on the invoice. The amount overpaid is credited to the
+        /// customer's credit balance.
         /// </summary>
         [JsonProperty("amount_overpaid")]
 #if NET6_0_OR_GREATER
@@ -591,16 +591,6 @@ namespace Stripe
 #endif
         public string Description { get; set; }
 
-        /// <summary>
-        /// Describes the current discount applied to this invoice, if there is one. Not populated
-        /// if there are multiple discounts.
-        /// </summary>
-        [JsonProperty("discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("discount")]
-#endif
-        public Discount Discount { get; set; }
-
         #region Expandable Discounts
 
         /// <summary>
@@ -877,51 +867,6 @@ namespace Stripe
 #endif
         public bool PaidOutOfBand { get; set; }
 
-        #region Expandable PaymentIntent
-
-        /// <summary>
-        /// (ID of the PaymentIntent)
-        /// The PaymentIntent associated with this invoice. The PaymentIntent is generated when the
-        /// invoice is finalized, and can then be used to pay the invoice. Note that voiding an
-        /// invoice will cancel the PaymentIntent.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public string PaymentIntentId
-        {
-            get => this.InternalPaymentIntent?.Id;
-            set => this.InternalPaymentIntent = SetExpandableFieldId(value, this.InternalPaymentIntent);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The PaymentIntent associated with this invoice. The PaymentIntent is generated when the
-        /// invoice is finalized, and can then be used to pay the invoice. Note that voiding an
-        /// invoice will cancel the PaymentIntent.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public PaymentIntent PaymentIntent
-        {
-            get => this.InternalPaymentIntent?.ExpandedObject;
-            set => this.InternalPaymentIntent = SetExpandableFieldObject(value, this.InternalPaymentIntent);
-        }
-
-        [JsonProperty("payment_intent")]
-        [JsonConverter(typeof(ExpandableFieldConverter<PaymentIntent>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_intent")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentIntent>))]
-#endif
-        internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
-        #endregion
-
         [JsonProperty("payment_settings")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_settings")]
@@ -982,47 +927,6 @@ namespace Stripe
         [STJS.JsonPropertyName("pre_payment_credit_notes_amount")]
 #endif
         public long PrePaymentCreditNotesAmount { get; set; }
-
-        #region Expandable Quote
-
-        /// <summary>
-        /// (ID of the Quote)
-        /// The quote this invoice was generated from.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public string QuoteId
-        {
-            get => this.InternalQuote?.Id;
-            set => this.InternalQuote = SetExpandableFieldId(value, this.InternalQuote);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The quote this invoice was generated from.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public Quote Quote
-        {
-            get => this.InternalQuote?.ExpandedObject;
-            set => this.InternalQuote = SetExpandableFieldObject(value, this.InternalQuote);
-        }
-
-        [JsonProperty("quote")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Quote>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("quote")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Quote>))]
-#endif
-        internal ExpandableField<Quote> InternalQuote { get; set; }
-        #endregion
 
         /// <summary>
         /// This is the transaction number that appears on email receipts sent for this invoice.
@@ -1134,27 +1038,6 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Details about the subscription that created this invoice.
-        /// </summary>
-        [JsonProperty("subscription_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_details")]
-#endif
-        public QuotePreviewInvoiceSubscriptionDetails SubscriptionDetails { get; set; }
-
-        /// <summary>
-        /// Only set for upcoming invoices that preview prorations. The time used to calculate
-        /// prorations.
-        /// </summary>
-        [JsonProperty("subscription_proration_date")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_proration_date")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
-        public DateTime SubscriptionProrationDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
-
-        /// <summary>
         /// Total of all subscriptions, invoice items, and prorations on the invoice before any
         /// invoice level discount or exclusive tax is applied. Item discounts are already
         /// incorporated.
@@ -1175,16 +1058,6 @@ namespace Stripe
         [STJS.JsonPropertyName("subtotal_excluding_tax")]
 #endif
         public long? SubtotalExcludingTax { get; set; }
-
-        /// <summary>
-        /// The amount of tax on this invoice. This is the sum of all the tax amounts on this
-        /// invoice.
-        /// </summary>
-        [JsonProperty("tax")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax")]
-#endif
-        public long? Tax { get; set; }
 
         #region Expandable TestClock
 
@@ -1282,23 +1155,13 @@ namespace Stripe
         public List<QuotePreviewInvoiceTotalPretaxCreditAmount> TotalPretaxCreditAmounts { get; set; }
 
         /// <summary>
-        /// The aggregate amounts calculated per tax rate for all line items.
+        /// The aggregate tax information of all line items.
         /// </summary>
-        [JsonProperty("total_tax_amounts")]
+        [JsonProperty("total_taxes")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("total_tax_amounts")]
+        [STJS.JsonPropertyName("total_taxes")]
 #endif
-        public List<QuotePreviewInvoiceTotalTaxAmount> TotalTaxAmounts { get; set; }
-
-        /// <summary>
-        /// The account (if any) the payment will be attributed to for tax reporting, and where
-        /// funds from the payment will be transferred to for the invoice.
-        /// </summary>
-        [JsonProperty("transfer_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transfer_data")]
-#endif
-        public QuotePreviewInvoiceTransferData TransferData { get; set; }
+        public List<QuotePreviewInvoiceTotalTax> TotalTaxes { get; set; }
 
         /// <summary>
         /// Invoices are automatically paid or sent 1 hour after webhooks are delivered, or until

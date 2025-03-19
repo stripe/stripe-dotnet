@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class InvoiceService : Service<Invoice>,
+    public partial class InvoiceService : Service,
         ICreatable<Invoice, InvoiceCreateOptions>,
         IDeletable<Invoice, InvoiceDeleteOptions>,
         IListable<Invoice, InvoiceListOptions>,
@@ -457,104 +457,6 @@ namespace Stripe
         public virtual Task<Invoice> SendInvoiceAsync(string id, InvoiceSendOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/send", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>At any time, you can preview the upcoming invoice for a customer. This will show you
-        /// all the charges that are pending, including subscription renewal charges, invoice item
-        /// charges, etc. It will also show you any discounts that are applicable to the
-        /// invoice.</p>.
-        ///
-        /// <p>Note that when you are viewing an upcoming invoice, you are simply viewing a preview
-        /// – the invoice has not yet been created. As such, the upcoming invoice will not show up
-        /// in invoice listing calls, and you cannot use the API to pay or edit the invoice. If you
-        /// want to change the amount that your customer will be billed, you can add, remove, or
-        /// update pending invoice items, or update the customer’s discount.</p>.
-        ///
-        /// <p>You can preview the effects of updating a subscription, including a preview of what
-        /// proration will take place. To ensure that the actual proration is calculated exactly the
-        /// same as the previewed proration, you should pass the
-        /// <c>subscription_details.proration_date</c> parameter when doing the actual subscription
-        /// update. The recommended way to get only the prorations being previewed is to consider
-        /// only proration line items where <c>period[start]</c> is equal to the
-        /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
-        ///
-        /// <p>Note: Currency conversion calculations use the latest exchange rates. Exchange rates
-        /// may vary between the time of the preview and the time of the actual invoice creation. <a
-        /// href="https://docs.stripe.com/currencies/conversions">Learn more</a></p>.
-        /// </summary>
-        public virtual Invoice Upcoming(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/upcoming", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>At any time, you can preview the upcoming invoice for a customer. This will show you
-        /// all the charges that are pending, including subscription renewal charges, invoice item
-        /// charges, etc. It will also show you any discounts that are applicable to the
-        /// invoice.</p>.
-        ///
-        /// <p>Note that when you are viewing an upcoming invoice, you are simply viewing a preview
-        /// – the invoice has not yet been created. As such, the upcoming invoice will not show up
-        /// in invoice listing calls, and you cannot use the API to pay or edit the invoice. If you
-        /// want to change the amount that your customer will be billed, you can add, remove, or
-        /// update pending invoice items, or update the customer’s discount.</p>.
-        ///
-        /// <p>You can preview the effects of updating a subscription, including a preview of what
-        /// proration will take place. To ensure that the actual proration is calculated exactly the
-        /// same as the previewed proration, you should pass the
-        /// <c>subscription_details.proration_date</c> parameter when doing the actual subscription
-        /// update. The recommended way to get only the prorations being previewed is to consider
-        /// only proration line items where <c>period[start]</c> is equal to the
-        /// <c>subscription_details.proration_date</c> value passed in the request.</p>.
-        ///
-        /// <p>Note: Currency conversion calculations use the latest exchange rates. Exchange rates
-        /// may vary between the time of the preview and the time of the actual invoice creation. <a
-        /// href="https://docs.stripe.com/currencies/conversions">Learn more</a></p>.
-        /// </summary>
-        public virtual Task<Invoice> UpcomingAsync(UpcomingInvoiceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/upcoming", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>When retrieving an upcoming invoice, you’ll get a <strong>lines</strong> property
-        /// containing the total count of line items and the first handful of those items. There is
-        /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual StripeList<InvoiceLineItem> UpcomingLines(InvoiceUpcomingLinesOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/upcoming/lines", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>When retrieving an upcoming invoice, you’ll get a <strong>lines</strong> property
-        /// containing the total count of line items and the first handful of those items. There is
-        /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual Task<StripeList<InvoiceLineItem>> UpcomingLinesAsync(InvoiceUpcomingLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeList<InvoiceLineItem>>(BaseAddress.Api, HttpMethod.Get, $"/v1/invoices/upcoming/lines", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>When retrieving an upcoming invoice, you’ll get a <strong>lines</strong> property
-        /// containing the total count of line items and the first handful of those items. There is
-        /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual IEnumerable<InvoiceLineItem> UpcomingLinesAutoPaging(InvoiceUpcomingLinesOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<InvoiceLineItem>($"/v1/invoices/upcoming/lines", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>When retrieving an upcoming invoice, you’ll get a <strong>lines</strong> property
-        /// containing the total count of line items and the first handful of those items. There is
-        /// also a URL where you can retrieve the full (paginated) list of line items.</p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<InvoiceLineItem> UpcomingLinesAutoPagingAsync(InvoiceUpcomingLinesOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<InvoiceLineItem>($"/v1/invoices/upcoming/lines", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

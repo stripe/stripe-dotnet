@@ -92,6 +92,21 @@ namespace Stripe
         public const string BillingAlertTriggered = "billing.alert.triggered";
 
         /// <summary>
+        /// Occurs when a credit balance transaction is created.
+        /// </summary>
+        public const string BillingCreditBalanceTransactionCreated = "billing.credit_balance_transaction.created";
+
+        /// <summary>
+        /// Occurs when a credit grant is created.
+        /// </summary>
+        public const string BillingCreditGrantCreated = "billing.credit_grant.created";
+
+        /// <summary>
+        /// Occurs when a credit grant is updated.
+        /// </summary>
+        public const string BillingCreditGrantUpdated = "billing.credit_grant.updated";
+
+        /// <summary>
         /// Notifies of errors on a billing meter.
         /// </summary>
         public const string BillingMeterErrorReportTriggered = "billing.meter_error_report.triggered";
@@ -1089,7 +1104,8 @@ namespace Stripe
 
         /// <summary>
         /// Occurs whenever a review is closed. The review's <c>reason</c> field indicates why:
-        /// <c>approved</c>, <c>disputed</c>, <c>refunded</c>, or <c>refunded_as_fraud</c>.
+        /// <c>approved</c>, <c>disputed</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, or
+        /// <c>canceled</c>.
         /// </summary>
         public const string ReviewClosed = "review.closed";
 

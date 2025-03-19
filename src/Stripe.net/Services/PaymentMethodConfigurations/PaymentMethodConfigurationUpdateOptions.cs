@@ -146,6 +146,21 @@ namespace Stripe
         public PaymentMethodConfigurationBancontactOptions Bancontact { get; set; }
 
         /// <summary>
+        /// Billie is a <a
+        /// href="https://docs.stripe.com/payments/payment-methods#usage">single-use</a> payment
+        /// method that offers businesses Pay by Invoice where they offer payment terms ranging from
+        /// 7-120 days. Customers are redirected from your website or app, authorize the payment
+        /// with Billie, then return to your website or app. You get <a
+        /// href="https://stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public PaymentMethodConfigurationBillieOptions Billie { get; set; }
+
+        /// <summary>
         /// BLIK is a <a href="https://stripe.com/docs/payments/payment-methods#usage">single
         /// use</a> payment method that requires customers to authenticate their payments. When
         /// customers want to pay online using BLIK, they request a six-digit code from their
@@ -505,6 +520,22 @@ namespace Stripe
         [STJS.JsonPropertyName("revolut_pay")]
 #endif
         public PaymentMethodConfigurationRevolutPayOptions RevolutPay { get; set; }
+
+        /// <summary>
+        /// Satispay is a <a
+        /// href="https://docs.stripe.com/payments/payment-methods#usage">single-use</a> payment
+        /// method where customers are required to <a
+        /// href="https://stripe.com/payments/payment-methods#customer-actions">authenticate</a>
+        /// their payment. Customers pay by being redirected from your website or app, authorizing
+        /// the payment with Satispay, then returning to your website or app. You get <a
+        /// href="https://stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public PaymentMethodConfigurationSatispayOptions Satispay { get; set; }
 
         /// <summary>
         /// The <a href="https://en.wikipedia.org/wiki/Single_Euro_Payments_Area">Single Euro

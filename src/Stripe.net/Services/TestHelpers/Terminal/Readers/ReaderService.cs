@@ -8,7 +8,7 @@ namespace Stripe.TestHelpers.Terminal
     using System.Threading.Tasks;
     using Stripe.Terminal;
 
-    public class ReaderService : Service<Stripe.Terminal.Reader>
+    public class ReaderService : Service
     {
         public ReaderService()
         {
@@ -43,8 +43,7 @@ namespace Stripe.TestHelpers.Terminal
         }
 
         /// <summary>
-        /// <p>Succeeds an input collection on a simulated reader. Can be used to simulate
-        /// collecting inputs.</p>.
+        /// <p>Use this endpoint to trigger a successful input collection on a simulated reader.</p>.
         /// </summary>
         public virtual Stripe.Terminal.Reader SucceedInputCollection(string id, ReaderSucceedInputCollectionOptions options = null, RequestOptions requestOptions = null)
         {
@@ -52,8 +51,7 @@ namespace Stripe.TestHelpers.Terminal
         }
 
         /// <summary>
-        /// <p>Succeeds an input collection on a simulated reader. Can be used to simulate
-        /// collecting inputs.</p>.
+        /// <p>Use this endpoint to trigger a successful input collection on a simulated reader.</p>.
         /// </summary>
         public virtual Task<Stripe.Terminal.Reader> SucceedInputCollectionAsync(string id, ReaderSucceedInputCollectionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -61,7 +59,8 @@ namespace Stripe.TestHelpers.Terminal
         }
 
         /// <summary>
-        /// <p>Completes an input collection with a timeout error on a simulated reader.</p>.
+        /// <p>Use this endpoint to complete an input collection with a timeout error on a simulated
+        /// reader.</p>.
         /// </summary>
         public virtual Stripe.Terminal.Reader TimeoutInputCollection(string id, ReaderTimeoutInputCollectionOptions options = null, RequestOptions requestOptions = null)
         {
@@ -69,7 +68,8 @@ namespace Stripe.TestHelpers.Terminal
         }
 
         /// <summary>
-        /// <p>Completes an input collection with a timeout error on a simulated reader.</p>.
+        /// <p>Use this endpoint to complete an input collection with a timeout error on a simulated
+        /// reader.</p>.
         /// </summary>
         public virtual Task<Stripe.Terminal.Reader> TimeoutInputCollectionAsync(string id, ReaderTimeoutInputCollectionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

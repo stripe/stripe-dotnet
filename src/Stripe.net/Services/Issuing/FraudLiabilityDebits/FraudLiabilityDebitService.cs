@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class FraudLiabilityDebitService : Service<FraudLiabilityDebit>,
+    public class FraudLiabilityDebitService : Service,
         IListable<FraudLiabilityDebit, FraudLiabilityDebitListOptions>,
         IRetrievable<FraudLiabilityDebit, FraudLiabilityDebitGetOptions>
     {

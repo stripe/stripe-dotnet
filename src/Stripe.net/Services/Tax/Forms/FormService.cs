@@ -9,7 +9,7 @@ namespace Stripe.Tax
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class FormService : Service<Form>,
+    public class FormService : Service,
         IListable<Form, FormListOptions>,
         IRetrievable<Form, FormGetOptions>
     {

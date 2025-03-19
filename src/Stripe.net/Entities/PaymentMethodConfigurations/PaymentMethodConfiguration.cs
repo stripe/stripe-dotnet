@@ -134,6 +134,12 @@ namespace Stripe
 #endif
         public PaymentMethodConfigurationBancontact Bancontact { get; set; }
 
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public PaymentMethodConfigurationBillie Billie { get; set; }
+
         [JsonProperty("blik")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blik")]
@@ -345,6 +351,12 @@ namespace Stripe
         [STJS.JsonPropertyName("revolut_pay")]
 #endif
         public PaymentMethodConfigurationRevolutPay RevolutPay { get; set; }
+
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public PaymentMethodConfigurationSatispay Satispay { get; set; }
 
         [JsonProperty("sepa_debit")]
 #if NET6_0_OR_GREATER

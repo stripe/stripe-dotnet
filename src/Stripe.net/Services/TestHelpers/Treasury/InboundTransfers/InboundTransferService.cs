@@ -8,7 +8,7 @@ namespace Stripe.TestHelpers.Treasury
     using System.Threading.Tasks;
     using Stripe.Treasury;
 
-    public class InboundTransferService : Service<Stripe.Treasury.InboundTransfer>
+    public class InboundTransferService : Service
     {
         public InboundTransferService()
         {

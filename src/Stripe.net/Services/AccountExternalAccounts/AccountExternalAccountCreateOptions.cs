@@ -21,7 +21,10 @@ namespace Stripe
         public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
-        /// Please refer to full <a href="https://stripe.com/docs/api">documentation</a> instead.
+        /// A token, like the ones returned by <a href="https://stripe.com/docs/js">Stripe.js</a> or
+        /// a dictionary containing a user's external account details (with the options shown
+        /// below). Please refer to full <a
+        /// href="https://stripe.com/docs/api/external_accounts">documentation</a> instead.
         /// </summary>
         [JsonProperty("external_account")]
         [JsonConverter(typeof(AnyOfConverter))]

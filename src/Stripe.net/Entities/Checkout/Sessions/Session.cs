@@ -134,7 +134,10 @@ namespace Stripe.Checkout
         public string ClientReferenceId { get; set; }
 
         /// <summary>
-        /// The client secret of the Session. Use this with <a
+        /// The client secret of your Checkout Session. Applies to Checkout Sessions with
+        /// <c>ui_mode: embedded</c> or <c>ui_mode: custom</c>. For <c>ui_mode: embedded</c>, the
+        /// client secret is to be used when initializing Stripe.js embedded checkout. For
+        /// <c>ui_mode: custom</c>, use the client secret with <a
         /// href="https://stripe.com/docs/js/custom_checkout/init">initCheckout</a> on your front
         /// end.
         /// </summary>
@@ -589,6 +592,12 @@ namespace Stripe.Checkout
 #endif
         public SessionPhoneNumberCollection PhoneNumberCollection { get; set; }
 
+        [JsonProperty("presentment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("presentment_details")]
+#endif
+        public SessionPresentmentDetails PresentmentDetails { get; set; }
+
         /// <summary>
         /// The ID of the original expired Checkout Session that triggered the recovery flow.
         /// </summary>
@@ -697,15 +706,6 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("shipping_cost")]
 #endif
         public SessionShippingCost ShippingCost { get; set; }
-
-        /// <summary>
-        /// Shipping information for this Checkout Session.
-        /// </summary>
-        [JsonProperty("shipping_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_details")]
-#endif
-        public SessionShippingDetails ShippingDetails { get; set; }
 
         /// <summary>
         /// The shipping rate options applied to this Session.
@@ -817,8 +817,8 @@ namespace Stripe.Checkout
         public string UiMode { get; set; }
 
         /// <summary>
-        /// The URL to the Checkout Session. Redirect customers to this URL to take them to
-        /// Checkout. If you’re using <a
+        /// The URL to the Checkout Session. Applies to Checkout Sessions with <c>ui_mode:
+        /// hosted</c>. Redirect customers to this URL to take them to Checkout. If you’re using <a
         /// href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the
         /// URL will use your subdomain. Otherwise, it’ll use <c>checkout.stripe.com.</c> This value
         /// is only present when the session is active.

@@ -63,7 +63,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// If set, Checkout displays a back button and customers will be directed to this URL if
         /// they decide to cancel payment and return to your website. This parameter is not allowed
-        /// if ui_mode is <c>embedded</c> or <c>custom</c>.
+        /// if <c>ui_mode</c> is <c>embedded</c> or <c>custom</c>.
         /// </summary>
         [JsonProperty("cancel_url")]
 #if NET6_0_OR_GREATER
@@ -360,15 +360,15 @@ namespace Stripe.Checkout
         /// characteristics.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>cashapp</c>,
-        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>gopay</c>,
-        /// <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
-        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>,
-        /// <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
-        /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
+        /// <c>gopay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
+        /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>,
+        /// <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
+        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER
@@ -419,7 +419,7 @@ namespace Stripe.Checkout
         /// The URL to redirect your customer back to after they authenticate or cancel their
         /// payment on the payment method's app or site. This parameter is required if
         /// <c>ui_mode</c> is <c>embedded</c> or <c>custom</c> and redirect-based payment methods
-        /// are enabled on the session.
+        /// are enabled on the Checkout Session.
         /// </summary>
         [JsonProperty("return_url")]
 #if NET6_0_OR_GREATER
@@ -469,8 +469,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Describes the type of transaction being performed by Checkout in order to customize
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
-        /// specified on Checkout Sessions in <c>payment</c> mode. If blank or <c>auto</c>,
-        /// <c>pay</c> is used.
+        /// specified on Checkout Sessions in <c>payment</c> or <c>subscription</c> mode. If blank
+        /// or <c>auto</c>, <c>pay</c> is used.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
@@ -491,9 +491,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The URL to which Stripe should send customers when payment or setup is complete. This
-        /// parameter is not allowed if ui_mode is <c>embedded</c> or <c>custom</c>. If you'd like
-        /// to use information from the successful Checkout Session on your page, read the guide on
-        /// <a href="https://stripe.com/docs/payments/checkout/custom-success-page">customizing your
+        /// parameter is not allowed if <c>ui_mode</c> is <c>embedded</c> or <c>custom</c>. If you'd
+        /// like to use information from the successful Checkout Session on your page, read the
+        /// guide on <a
+        /// href="https://stripe.com/docs/payments/checkout/custom-success-page">customizing your
         /// success page</a>.
         /// </summary>
         [JsonProperty("success_url")]

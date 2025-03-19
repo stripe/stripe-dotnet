@@ -9,8 +9,7 @@ namespace Stripe
     public class ChargeCaptureOptions : BaseOptions
     {
         /// <summary>
-        /// The amount to capture, which must be less than or equal to the original amount. Any
-        /// additional amount will be automatically refunded.
+        /// The amount to capture, which must be less than or equal to the original amount.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER

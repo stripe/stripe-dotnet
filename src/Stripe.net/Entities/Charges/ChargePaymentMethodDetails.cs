@@ -74,6 +74,12 @@ namespace Stripe
 #endif
         public ChargePaymentMethodDetailsBancontact Bancontact { get; set; }
 
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public ChargePaymentMethodDetailsBillie Billie { get; set; }
+
         [JsonProperty("blik")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blik")]
@@ -289,6 +295,12 @@ namespace Stripe
         [STJS.JsonPropertyName("samsung_pay")]
 #endif
         public ChargePaymentMethodDetailsSamsungPay SamsungPay { get; set; }
+
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public ChargePaymentMethodDetailsSatispay Satispay { get; set; }
 
         [JsonProperty("sepa_debit")]
 #if NET6_0_OR_GREATER

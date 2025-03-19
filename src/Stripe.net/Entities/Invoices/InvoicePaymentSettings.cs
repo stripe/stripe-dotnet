@@ -40,11 +40,11 @@ namespace Stripe
         /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
         /// <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>custom</c>, <c>customer_balance</c>,
         /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>,
-        /// <c>ideal</c>, <c>jp_credit_transfer</c>, <c>kakao_pay</c>, <c>konbini</c>,
-        /// <c>kr_card</c>, <c>link</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>p24</c>,
-        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>promptpay</c>, <c>revolut_pay</c>,
-        /// <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
-        /// <c>us_bank_account</c>, or <c>wechat_pay</c>.
+        /// <c>ideal</c>, <c>jp_credit_transfer</c>, <c>kakao_pay</c>, <c>klarna</c>,
+        /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>multibanco</c>, <c>naver_pay</c>,
+        /// <c>p24</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>promptpay</c>,
+        /// <c>revolut_pay</c>, <c>sepa_credit_transfer</c>, <c>sepa_debit</c>, <c>sofort</c>,
+        /// <c>swish</c>, <c>us_bank_account</c>, or <c>wechat_pay</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER

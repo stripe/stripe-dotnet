@@ -117,6 +117,15 @@ namespace Stripe.Issuing
         public string Network { get; set; }
 
         /// <summary>
+        /// Details about the transaction, such as processing dates, set by the card network.
+        /// </summary>
+        [JsonProperty("network_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_data")]
+#endif
+        public DisputeSettlementDetailNetworkData NetworkData { get; set; }
+
+        /// <summary>
         /// The ID of the linked card network settlement.
         /// </summary>
         [JsonProperty("settlement")]
