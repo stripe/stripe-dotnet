@@ -8,7 +8,7 @@ namespace Stripe.FinancialConnections
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountOwnerService : ServiceNested<AccountOwner>,
+    public class AccountOwnerService : Service,
         INestedListable<AccountOwner, AccountOwnerListOptions>
     {
         public AccountOwnerService()

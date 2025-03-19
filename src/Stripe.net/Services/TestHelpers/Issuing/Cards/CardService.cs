@@ -8,7 +8,7 @@ namespace Stripe.TestHelpers.Issuing
     using System.Threading.Tasks;
     using Stripe.Issuing;
 
-    public class CardService : Service<Stripe.Issuing.Card>
+    public class CardService : Service
     {
         public CardService()
         {

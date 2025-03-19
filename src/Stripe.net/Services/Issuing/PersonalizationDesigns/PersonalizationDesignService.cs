@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PersonalizationDesignService : Service<PersonalizationDesign>,
+    public class PersonalizationDesignService : Service,
         ICreatable<PersonalizationDesign, PersonalizationDesignCreateOptions>,
         IListable<PersonalizationDesign, PersonalizationDesignListOptions>,
         IRetrievable<PersonalizationDesign, PersonalizationDesignGetOptions>,

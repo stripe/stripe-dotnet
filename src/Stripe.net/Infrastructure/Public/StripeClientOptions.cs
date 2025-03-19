@@ -36,6 +36,12 @@ namespace Stripe
         /// <value>The base URL for Stripe's Meter Events API.</value>
         public string MeterEventsBase { get; set; }
 
+        /// <summary>Gets and sets the Stripe-Account header value for requests made from this client.</summary>
+        public string StripeAccount { get; set; }
+
+        /// <summary>Gets and sets the Stripe-Context header value for requests made from this client.</summary>
+        public string StripeContext { get; set; }
+
         internal StripeClientOptions Clone()
         {
             return (StripeClientOptions)this.MemberwiseClone();

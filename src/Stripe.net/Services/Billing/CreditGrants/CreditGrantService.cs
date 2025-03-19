@@ -8,7 +8,7 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreditGrantService : Service<CreditGrant>,
+    public class CreditGrantService : Service,
         ICreatable<CreditGrant, CreditGrantCreateOptions>,
         IListable<CreditGrant, CreditGrantListOptions>,
         IRetrievable<CreditGrant, CreditGrantGetOptions>,

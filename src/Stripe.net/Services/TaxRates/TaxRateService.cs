@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TaxRateService : Service<TaxRate>,
+    public class TaxRateService : Service,
         ICreatable<TaxRate, TaxRateCreateOptions>,
         IListable<TaxRate, TaxRateListOptions>,
         IRetrievable<TaxRate, TaxRateGetOptions>,

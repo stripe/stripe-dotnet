@@ -8,7 +8,7 @@ namespace Stripe.Terminal
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ReaderService : Service<Reader>,
+    public class ReaderService : Service,
         ICreatable<Reader, ReaderCreateOptions>,
         IDeletable<Reader, ReaderDeleteOptions>,
         IListable<Reader, ReaderListOptions>,

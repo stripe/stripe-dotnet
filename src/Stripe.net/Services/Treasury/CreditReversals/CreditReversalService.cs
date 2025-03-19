@@ -8,7 +8,7 @@ namespace Stripe.Treasury
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreditReversalService : Service<CreditReversal>,
+    public class CreditReversalService : Service,
         ICreatable<CreditReversal, CreditReversalCreateOptions>,
         IListable<CreditReversal, CreditReversalListOptions>,
         IRetrievable<CreditReversal, CreditReversalGetOptions>

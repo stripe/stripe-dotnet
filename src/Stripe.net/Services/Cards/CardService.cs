@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CardService : ServiceNested<Card>,
+    public class CardService : Service,
         INestedCreatable<Card, CardCreateOptions>,
         INestedDeletable<Card, CardDeleteOptions>,
         INestedListable<Card, CardListOptions>,

@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ApplicationFeeRefundService : ServiceNested<ApplicationFeeRefund>,
+    public class ApplicationFeeRefundService : Service,
         INestedCreatable<ApplicationFeeRefund, ApplicationFeeRefundCreateOptions>,
         INestedListable<ApplicationFeeRefund, ApplicationFeeRefundListOptions>,
         INestedRetrievable<ApplicationFeeRefund, ApplicationFeeRefundGetOptions>,

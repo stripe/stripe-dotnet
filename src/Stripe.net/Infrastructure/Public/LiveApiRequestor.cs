@@ -298,7 +298,7 @@ namespace Stripe
             }
 
             requestOptions = requestOptions.WithUsage(RawRequestUsage);
-            var apiMode = requestOptions?.ApiMode ?? ApiMode.V1;
+            var apiMode = ApiModeUtils.GetApiMode(path);
             var uri = StripeRequest.BuildUri(
                 requestOptions?.BaseUrl ?? this.GetBaseUrl(BaseAddress.Api),
                 method,

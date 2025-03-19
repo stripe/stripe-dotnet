@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class EventService : Service<Event>,
+    public class EventService : Service,
         IListable<Event, EventListOptions>,
         IRetrievable<Event, EventGetOptions>
     {
