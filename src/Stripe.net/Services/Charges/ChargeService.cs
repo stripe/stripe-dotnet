@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ChargeService : Service<Charge>,
+    public class ChargeService : Service,
         ICreatable<Charge, ChargeCreateOptions>,
         IListable<Charge, ChargeListOptions>,
         IRetrievable<Charge, ChargeGetOptions>,

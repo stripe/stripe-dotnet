@@ -8,7 +8,7 @@ namespace Stripe.Radar
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class EarlyFraudWarningService : Service<EarlyFraudWarning>,
+    public class EarlyFraudWarningService : Service,
         IListable<EarlyFraudWarning, EarlyFraudWarningListOptions>,
         IRetrievable<EarlyFraudWarning, EarlyFraudWarningGetOptions>
     {

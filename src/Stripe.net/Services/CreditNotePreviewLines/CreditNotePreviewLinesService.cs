@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreditNotePreviewLinesService : ServiceNested<CreditNoteLineItem>
+    public class CreditNotePreviewLinesService : Service
     {
         public CreditNotePreviewLinesService()
         {

@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TopupService : Service<Topup>,
+    public class TopupService : Service,
         ICreatable<Topup, TopupCreateOptions>,
         IListable<Topup, TopupListOptions>,
         IRetrievable<Topup, TopupGetOptions>,

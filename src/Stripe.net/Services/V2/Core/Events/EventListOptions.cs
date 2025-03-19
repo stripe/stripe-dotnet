@@ -43,11 +43,5 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("object_id")]
         public string ObjectId { get; set; }
-
-        /// <summary>
-        /// The requested page.
-        /// </summary>
-        [JsonProperty("page")]
-        public string Page { get; set; }
     }
 }

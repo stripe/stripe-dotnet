@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CustomerTaxIdService : ServiceNested<TaxId>,
+    public class CustomerTaxIdService : Service,
         INestedCreatable<TaxId, CustomerTaxIdCreateOptions>,
         INestedDeletable<TaxId, CustomerTaxIdDeleteOptions>,
         INestedListable<TaxId, CustomerTaxIdListOptions>,

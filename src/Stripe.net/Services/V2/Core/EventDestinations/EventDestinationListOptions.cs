@@ -12,11 +12,5 @@ namespace Stripe.V2.Core
         /// </summary>
         [JsonProperty("include")]
         public List<string> Include { get; set; }
-
-        /// <summary>
-        /// The requested page.
-        /// </summary>
-        [JsonProperty("page")]
-        public string Page { get; set; }
     }
 }

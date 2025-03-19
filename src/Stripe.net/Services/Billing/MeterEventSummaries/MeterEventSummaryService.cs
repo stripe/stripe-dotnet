@@ -8,7 +8,7 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class MeterEventSummaryService : ServiceNested<MeterEventSummary>,
+    public class MeterEventSummaryService : Service,
         INestedListable<MeterEventSummary, MeterEventSummaryListOptions>
     {
         public MeterEventSummaryService()

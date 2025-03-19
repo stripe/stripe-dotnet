@@ -6,7 +6,7 @@ namespace Stripe.Terminal
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ConnectionTokenService : Service<ConnectionToken>,
+    public class ConnectionTokenService : Service,
         ICreatable<ConnectionToken, ConnectionTokenCreateOptions>
     {
         public ConnectionTokenService()
