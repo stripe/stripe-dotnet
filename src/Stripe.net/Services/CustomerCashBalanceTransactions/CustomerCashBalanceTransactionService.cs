@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CustomerCashBalanceTransactionService : ServiceNested<CustomerCashBalanceTransaction>,
+    public class CustomerCashBalanceTransactionService : Service,
         INestedListable<CustomerCashBalanceTransaction, CustomerCashBalanceTransactionListOptions>,
         INestedRetrievable<CustomerCashBalanceTransaction, CustomerCashBalanceTransactionGetOptions>
     {

@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TaxCodeService : Service<TaxCode>,
+    public class TaxCodeService : Service,
         IListable<TaxCode, TaxCodeListOptions>,
         IRetrievable<TaxCode, TaxCodeGetOptions>
     {

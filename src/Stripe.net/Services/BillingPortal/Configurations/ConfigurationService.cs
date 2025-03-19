@@ -8,7 +8,7 @@ namespace Stripe.BillingPortal
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ConfigurationService : Service<Configuration>,
+    public class ConfigurationService : Service,
         ICreatable<Configuration, ConfigurationCreateOptions>,
         IListable<Configuration, ConfigurationListOptions>,
         IRetrievable<Configuration, ConfigurationGetOptions>,

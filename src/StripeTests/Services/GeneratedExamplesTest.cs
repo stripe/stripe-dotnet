@@ -756,8 +756,7 @@ namespace StripeTests
             var options = new CouponCreateOptions
             {
                 PercentOff = 25.5M,
-                Duration = "repeating",
-                DurationInMonths = 3,
+                Duration = "once",
             };
             var service = new CouponService(this.StripeClient);
             service.Create(options);
@@ -1702,7 +1701,6 @@ namespace StripeTests
             var options = new InvoiceItemCreateOptions
             {
                 Customer = "cus_xxxxxxxxxxxxx",
-                Price = "price_xxxxxxxxxxxxx",
             };
             var service = new InvoiceItemService(this.StripeClient);
             service.Create(options);

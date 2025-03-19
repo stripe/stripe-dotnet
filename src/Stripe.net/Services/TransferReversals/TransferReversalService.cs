@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TransferReversalService : ServiceNested<TransferReversal>,
+    public class TransferReversalService : Service,
         INestedCreatable<TransferReversal, TransferReversalCreateOptions>,
         INestedListable<TransferReversal, TransferReversalListOptions>,
         INestedRetrievable<TransferReversal, TransferReversalGetOptions>,
