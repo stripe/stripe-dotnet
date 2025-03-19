@@ -39,17 +39,17 @@ namespace Stripe.V2.Core
         /// <summary>
         /// List events, going back up to 30 days.
         /// </summary>
-        public virtual StripeList<V2.Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
+        public virtual V2.StripeList<V2.Event> List(EventListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<V2.Event>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/events", options, requestOptions);
+            return this.Request<V2.StripeList<V2.Event>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/events", options, requestOptions);
         }
 
         /// <summary>
         /// List events, going back up to 30 days.
         /// </summary>
-        public virtual Task<StripeList<V2.Event>> ListAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<V2.StripeList<V2.Event>> ListAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<V2.Event>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/events", options, requestOptions, cancellationToken);
+            return this.RequestAsync<V2.StripeList<V2.Event>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/events", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

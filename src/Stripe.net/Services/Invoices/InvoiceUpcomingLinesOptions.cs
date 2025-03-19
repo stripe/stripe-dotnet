@@ -9,7 +9,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class InvoiceUpcomingLinesListOptions : ListOptions
+    public class InvoiceUpcomingLinesOptions : ListOptions
     {
         /// <summary>
         /// Settings for automatic tax lookup for this invoice preview.
@@ -18,7 +18,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
 #endif
-        public InvoiceUpcomingLinesAutomaticTaxOptions AutomaticTax { get; set; }
+        public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
         /// The ID of the coupon to apply to this phase of the subscription schedule. This field has
@@ -61,7 +61,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_details")]
 #endif
-        public InvoiceUpcomingLinesCustomerDetailsOptions CustomerDetails { get; set; }
+        public InvoiceCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
         /// The coupons to redeem into discounts for the invoice preview. If not specified, inherits
@@ -73,7 +73,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
 #endif
-        public List<InvoiceUpcomingLinesDiscountOptions> Discounts { get; set; }
+        public List<InvoiceDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// List of invoice items to add or update in the upcoming invoice preview (up to 250).
@@ -82,7 +82,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_items")]
 #endif
-        public List<InvoiceUpcomingLinesInvoiceItemOptions> InvoiceItems { get; set; }
+        public List<InvoiceUpcomingInvoiceItemOptions> InvoiceItems { get; set; }
 
         /// <summary>
         /// The connected account that issues the invoice. The invoice is presented with the
@@ -92,7 +92,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
 #endif
-        public InvoiceUpcomingLinesIssuerOptions Issuer { get; set; }
+        public InvoiceIssuerOptions Issuer { get; set; }
 
         /// <summary>
         /// The account (if any) for which the funds of the invoice payment are intended. If set,
@@ -135,7 +135,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule_details")]
 #endif
-        public InvoiceUpcomingLinesScheduleDetailsOptions ScheduleDetails { get; set; }
+        public InvoiceScheduleDetailsOptions ScheduleDetails { get; set; }
 
         /// <summary>
         /// The identifier of the subscription for which you'd like to retrieve the upcoming
@@ -225,7 +225,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_details")]
 #endif
-        public InvoiceUpcomingLinesSubscriptionDetailsOptions SubscriptionDetails { get; set; }
+        public InvoiceSubscriptionDetailsOptions SubscriptionDetails { get; set; }
 
         /// <summary>
         /// A list of up to 20 subscription items, each with an attached price. This field has been
@@ -236,7 +236,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_items")]
 #endif
-        public List<InvoiceUpcomingLinesSubscriptionItemOptions> SubscriptionItems { get; set; }
+        public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
 
         /// <summary>
         /// The pre-billing to apply to the subscription as a preview. This field has been
@@ -247,7 +247,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_prebilling")]
 #endif
-        public InvoiceUpcomingLinesSubscriptionPrebillingOptions SubscriptionPrebilling { get; set; }
+        public InvoiceSubscriptionPrebillingOptions SubscriptionPrebilling { get; set; }
 
         /// <summary>
         /// Determines how to handle <a

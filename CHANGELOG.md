@@ -6,14 +6,6 @@
   * Add support for `SucceedInputCollection` and `TimeoutInputCollection` test helper methods on resource `Terminal.Reader`
   * Add support for `TargetDate` on `OrderPaymentSettingsPaymentMethodOptionsAcssDebitOptions`, `OrderPaymentSettingsPaymentMethodOptionsAcssDebit`, `OrderPaymentSettingsPaymentMethodOptionsSepaDebitOptions`, and `OrderPaymentSettingsPaymentMethodOptionsSepaDebit`
 
-## 47.4.0-beta.1 - 2025-02-07
-* [#3049](https://github.com/stripe/stripe-dotnet/pull/3049) Update generated code for beta
-  * Add support for `RejectedReason` on `AccountRiskControls`
-  * Add support for `ProductTaxCodeSelector` on `AccountSessionComponentsOptions`
-  * Add support for `Prices` on `BillingCreditBalanceSummaryFilterApplicabilityScopeOptions`, `BillingCreditGrantApplicabilityConfigScopeOptions`, and `BillingCreditGrantApplicabilityConfigScope`
-  * Add support for `BrandProduct` on `ChargePaymentMethodDetailsAmazonPayFundingCard` and `ChargePaymentMethodDetailsRevolutPayFundingCard`
-  * Add support for `Restrictions` on `CheckoutSessionPaymentMethodOptionsCardOptions` and `CheckoutSessionPaymentMethodOptionsCard`
-  
 ## 47.4.0 - 2025-02-24
 * [#3050](https://github.com/stripe/stripe-dotnet/pull/3050) Update generated code
   * Add support for `Prices` on `BillingCreditBalanceSummaryFilterApplicabilityScopeOptions`, `BillingCreditGrantApplicabilityConfigScopeOptions`, and `BillingCreditGrantApplicabilityConfigScope`
@@ -24,6 +16,14 @@
   * Add support for `Metadata` on `ProductDefaultPriceDataOptions`
 * [#3054](https://github.com/stripe/stripe-dotnet/pull/3054) Improved examples
 * [#3055](https://github.com/stripe/stripe-dotnet/pull/3055) add codeowners file
+
+## 47.4.0-beta.1 - 2025-02-07
+* [#3049](https://github.com/stripe/stripe-dotnet/pull/3049) Update generated code for beta
+  * Add support for `RejectedReason` on `AccountRiskControls`
+  * Add support for `ProductTaxCodeSelector` on `AccountSessionComponentsOptions`
+  * Add support for `Prices` on `BillingCreditBalanceSummaryFilterApplicabilityScopeOptions`, `BillingCreditGrantApplicabilityConfigScopeOptions`, and `BillingCreditGrantApplicabilityConfigScope`
+  * Add support for `BrandProduct` on `ChargePaymentMethodDetailsAmazonPayFundingCard` and `ChargePaymentMethodDetailsRevolutPayFundingCard`
+  * Add support for `Restrictions` on `CheckoutSessionPaymentMethodOptionsCardOptions` and `CheckoutSessionPaymentMethodOptionsCard`
 
 ## 47.3.0 - 2025-01-27
 * [#3044](https://github.com/stripe/stripe-dotnet/pull/3044) Update generated code
@@ -4169,3 +4169,4 @@ List of backwards incompatible changes:
 * [#1019](https://github.com/stripe/stripe-dotnet#1019) Add `StripeChargeCaptureOptions` and use it for charge capture
 * [#1022](https://github.com/stripe/stripe-dotnet#1022) Add support for SKUs
 * [#1025](https://github.com/stripe/stripe-dotnet#1025) Add `Discountable` for `StripeInvoiceLineItem`
+
