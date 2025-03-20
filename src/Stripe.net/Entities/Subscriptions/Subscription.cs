@@ -122,16 +122,6 @@ namespace Stripe
         public SubscriptionBillingCycleAnchorConfig BillingCycleAnchorConfig { get; set; }
 
         /// <summary>
-        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
-        /// new billing period.
-        /// </summary>
-        [JsonProperty("billing_thresholds")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_thresholds")]
-#endif
-        public SubscriptionBillingThresholds BillingThresholds { get; set; }
-
-        /// <summary>
         /// A date in the future at which the subscription will automatically get canceled.
         /// </summary>
         [JsonProperty("cancel_at")]

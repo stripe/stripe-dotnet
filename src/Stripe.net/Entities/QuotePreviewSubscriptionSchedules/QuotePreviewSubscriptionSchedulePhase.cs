@@ -56,16 +56,6 @@ namespace Stripe
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
-        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
-        /// new billing period.
-        /// </summary>
-        [JsonProperty("billing_thresholds")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_thresholds")]
-#endif
-        public QuotePreviewSubscriptionSchedulePhaseBillingThresholds BillingThresholds { get; set; }
-
-        /// <summary>
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
         /// Stripe will attempt to pay the underlying subscription at the end of each billing cycle
         /// using the default source attached to the customer. When sending an invoice, Stripe will

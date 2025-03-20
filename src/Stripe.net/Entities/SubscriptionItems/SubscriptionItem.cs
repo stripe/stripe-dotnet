@@ -38,16 +38,6 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Define thresholds at which an invoice will be sent, and the related subscription
-        /// advanced to a new billing period.
-        /// </summary>
-        [JsonProperty("billing_thresholds")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_thresholds")]
-#endif
-        public SubscriptionItemBillingThresholds BillingThresholds { get; set; }
-
-        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]

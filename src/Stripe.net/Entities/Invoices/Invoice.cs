@@ -944,6 +944,12 @@ namespace Stripe
 #endif
         public bool PaidOutOfBand { get; set; }
 
+        [JsonProperty("parent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("parent")]
+#endif
+        public InvoiceParent Parent { get; set; }
+
         [JsonProperty("payment_settings")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_settings")]
