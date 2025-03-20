@@ -8,21 +8,12 @@ namespace Stripe
 
     public class InvoiceItemParent : StripeEntity<InvoiceItemParent>
     {
-        [JsonProperty("rate_card_subscription_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("rate_card_subscription_details")]
-#endif
-        public InvoiceItemParentRateCardSubscriptionDetails RateCardSubscriptionDetails { get; set; }
-
         [JsonProperty("subscription_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_details")]
 #endif
         public InvoiceItemParentSubscriptionDetails SubscriptionDetails { get; set; }
 
-        /// <summary>
-        /// One of: <c>rate_card_subscription_details</c>, or <c>subscription_details</c>.
-        /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
