@@ -235,16 +235,6 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The fee in cents (or local equivalent) that will be applied to the invoice and
-        /// transferred to the application owner's Stripe account when the invoice is paid.
-        /// </summary>
-        [JsonProperty("application_fee_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("application_fee_amount")]
-#endif
-        public long? ApplicationFeeAmount { get; set; }
-
-        /// <summary>
         /// Number of payment attempts made for this invoice, from the perspective of the payment
         /// retry schedule. Any payment attempt counts as the first attempt, and subsequently only
         /// automatic retries increment the attempt count. In other words, manual payment attempts
