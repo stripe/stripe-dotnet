@@ -35,19 +35,6 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Excess payment that was received for this invoice and credited to the customer’s
-        /// <c>invoice_credit_balance</c>. This field is null until the payment is <c>paid</c>.
-        /// Overpayment can happen when you attach more than one PaymentIntent to the invoice, and
-        /// each of them succeeds. To avoid overpayment, cancel any PaymentIntents that you do not
-        /// need before attaching more.
-        /// </summary>
-        [JsonProperty("amount_overpaid")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_overpaid")]
-#endif
-        public long? AmountOverpaid { get; set; }
-
-        /// <summary>
         /// Amount that was actually paid for this invoice, in cents (or local equivalent). This
         /// field is null until the payment is <c>paid</c>. This amount can be less than the
         /// <c>amount_requested</c> if the PaymentIntent’s <c>amount_received</c> is not sufficient
