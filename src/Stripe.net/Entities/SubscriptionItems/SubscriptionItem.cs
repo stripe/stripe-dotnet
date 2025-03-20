@@ -49,6 +49,28 @@ namespace Stripe
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The end time of this subscription item's current billing period.
+        /// </summary>
+        [JsonProperty("current_period_end")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_end")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+        public DateTime CurrentPeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// The start time of this subscription item's current billing period.
+        /// </summary>
+        [JsonProperty("current_period_start")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_start")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+        public DateTime CurrentPeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
