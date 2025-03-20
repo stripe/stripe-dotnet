@@ -317,47 +317,6 @@ namespace Stripe
 #endif
         public string Description { get; set; }
 
-        #region Expandable Invoice
-
-        /// <summary>
-        /// (ID of the Invoice)
-        /// ID of the invoice that created this PaymentIntent, if it exists.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public string InvoiceId
-        {
-            get => this.InternalInvoice?.Id;
-            set => this.InternalInvoice = SetExpandableFieldId(value, this.InternalInvoice);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// ID of the invoice that created this PaymentIntent, if it exists.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public Invoice Invoice
-        {
-            get => this.InternalInvoice?.ExpandedObject;
-            set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
-        }
-
-        [JsonProperty("invoice")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("invoice")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
-#endif
-        internal ExpandableField<Invoice> InternalInvoice { get; set; }
-        #endregion
-
         /// <summary>
         /// The payment error encountered in the previous PaymentIntent confirmation. It will be
         /// cleared if the PaymentIntent is later updated for any reason.
