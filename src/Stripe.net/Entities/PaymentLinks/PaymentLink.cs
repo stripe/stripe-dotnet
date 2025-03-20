@@ -286,6 +286,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The optional items presented to the customer at checkout.
+        /// </summary>
+        [JsonProperty("optional_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("optional_items")]
+#endif
+        public List<PaymentLinkOptionalItem> OptionalItems { get; set; }
+
+        /// <summary>
         /// Indicates the parameters to be passed to PaymentIntent creation during checkout.
         /// </summary>
         [JsonProperty("payment_intent_data")]

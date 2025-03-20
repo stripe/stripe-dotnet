@@ -432,6 +432,15 @@ namespace Stripe.Checkout
 #endif
         public string Mode { get; set; }
 
+        /// <summary>
+        /// The optional items presented to the customer at checkout.
+        /// </summary>
+        [JsonProperty("optional_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("optional_items")]
+#endif
+        public List<SessionOptionalItem> OptionalItems { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>

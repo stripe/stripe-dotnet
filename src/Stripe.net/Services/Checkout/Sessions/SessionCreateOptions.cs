@@ -284,6 +284,28 @@ namespace Stripe.Checkout
         public string Mode { get; set; }
 
         /// <summary>
+        /// A list of optional items the customer can add to their order at checkout. Use this
+        /// parameter to pass one-time or recurring <a
+        /// href="https://stripe.com/docs/api/prices">Prices</a>.
+        ///
+        /// There is a maximum of 10 optional items allowed on a Checkout Session, and the existing
+        /// limits on the number of line items allowed on a Checkout Session apply to the combined
+        /// number of line items and optional items.
+        ///
+        /// For <c>payment</c> mode, there is a maximum of 100 combined line items and optional
+        /// items, however it is recommended to consolidate items if there are more than a few
+        /// dozen.
+        ///
+        /// For <c>subscription</c> mode, there is a maximum of 20 line items and optional items
+        /// with recurring Prices and 20 line items and optional items with one-time Prices.
+        /// </summary>
+        [JsonProperty("optional_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("optional_items")]
+#endif
+        public List<SessionOptionalItemOptions> OptionalItems { get; set; }
+
+        /// <summary>
         /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
         /// <c>payment</c> mode.
         /// </summary>
