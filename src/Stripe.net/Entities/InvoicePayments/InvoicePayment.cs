@@ -127,7 +127,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_default")]
 #endif
-        public bool? IsDefault { get; set; }
+        public bool IsDefault { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
