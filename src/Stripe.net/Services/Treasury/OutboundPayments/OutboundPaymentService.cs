@@ -8,7 +8,7 @@ namespace Stripe.Treasury
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class OutboundPaymentService : Service<OutboundPayment>,
+    public class OutboundPaymentService : Service,
         ICreatable<OutboundPayment, OutboundPaymentCreateOptions>,
         IListable<OutboundPayment, OutboundPaymentListOptions>,
         IRetrievable<OutboundPayment, OutboundPaymentGetOptions>

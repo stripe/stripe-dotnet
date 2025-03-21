@@ -115,10 +115,7 @@ namespace Stripe
                     Issuing.CreditUnderwritingRecord)
                 },
                 { "issuing.dispute", typeof(Issuing.Dispute) },
-                {
-                    "issuing.dispute_settlement_detail", typeof(
-                    Issuing.DisputeSettlementDetail)
-                },
+                { "issuing.dispute_settlement_detail", typeof(Issuing.DisputeSettlementDetail) },
                 { "issuing.fraud_liability_debit", typeof(Issuing.FraudLiabilityDebit) },
                 { "issuing.personalization_design", typeof(Issuing.PersonalizationDesign) },
                 { "issuing.physical_bundle", typeof(Issuing.PhysicalBundle) },
@@ -206,8 +203,6 @@ namespace Stripe
                 { "treasury.received_debit", typeof(Treasury.ReceivedDebit) },
                 { "treasury.transaction", typeof(Treasury.Transaction) },
                 { "treasury.transaction_entry", typeof(Treasury.TransactionEntry) },
-                { "usage_record", typeof(UsageRecord) },
-                { "usage_record_summary", typeof(UsageRecordSummary) },
                 { "webhook_endpoint", typeof(WebhookEndpoint) },
 
                 // ObjectsToTypes: The end of the section generated from our OpenAPI spec
@@ -218,10 +213,7 @@ namespace Stripe
             {
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
                 { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
-                {
-                    "v2.billing.meter_event_adjustment", typeof(
-                    V2.Billing.MeterEventAdjustment)
-                },
+                { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
                 { "v2.core.event", typeof(V2.Event) },
                 { "v2.core.event_destination", typeof(V2.EventDestination) },

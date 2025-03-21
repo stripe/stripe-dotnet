@@ -7,7 +7,7 @@ namespace Stripe.Terminal
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ReaderCollectedDataService : Service<ReaderCollectedData>,
+    public class ReaderCollectedDataService : Service,
         IRetrievable<ReaderCollectedData, ReaderCollectedDataGetOptions>
     {
         public ReaderCollectedDataService()

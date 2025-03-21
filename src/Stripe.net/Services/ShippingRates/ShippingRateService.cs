@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ShippingRateService : Service<ShippingRate>,
+    public class ShippingRateService : Service,
         ICreatable<ShippingRate, ShippingRateCreateOptions>,
         IListable<ShippingRate, ShippingRateListOptions>,
         IRetrievable<ShippingRate, ShippingRateGetOptions>,

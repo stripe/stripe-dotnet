@@ -8,7 +8,7 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreditBalanceTransactionService : Service<CreditBalanceTransaction>,
+    public class CreditBalanceTransactionService : Service,
         IListable<CreditBalanceTransaction, CreditBalanceTransactionListOptions>,
         IRetrievable<CreditBalanceTransaction, CreditBalanceTransactionGetOptions>
     {

@@ -9,6 +9,15 @@ namespace Stripe
     public class PaymentLinkCustomFieldNumericOptions : INestedOptions
     {
         /// <summary>
+        /// The value that will pre-fill the field on the payment page.
+        /// </summary>
+        [JsonProperty("default_value")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_value")]
+#endif
+        public string DefaultValue { get; set; }
+
+        /// <summary>
         /// The maximum character length constraint for the customer's input.
         /// </summary>
         [JsonProperty("maximum_length")]

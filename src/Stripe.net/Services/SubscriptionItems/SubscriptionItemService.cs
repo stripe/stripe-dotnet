@@ -8,16 +8,13 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SubscriptionItemService : Service<SubscriptionItem>,
+    public class SubscriptionItemService : Service,
         ICreatable<SubscriptionItem, SubscriptionItemCreateOptions>,
         IDeletable<SubscriptionItem, SubscriptionItemDeleteOptions>,
         IListable<SubscriptionItem, SubscriptionItemListOptions>,
         IRetrievable<SubscriptionItem, SubscriptionItemGetOptions>,
         IUpdatable<SubscriptionItem, SubscriptionItemUpdateOptions>
     {
-        private SubscriptionItemUsageRecordService usageRecords;
-        private SubscriptionItemUsageRecordSummaryService usageRecordSummaries;
-
         public SubscriptionItemService()
         {
         }
@@ -31,12 +28,6 @@ namespace Stripe
             : base(client)
         {
         }
-
-        public virtual SubscriptionItemUsageRecordService UsageRecords => this.usageRecords ??= new SubscriptionItemUsageRecordService(
-            this.Requestor);
-
-        public virtual SubscriptionItemUsageRecordSummaryService UsageRecordSummaries => this.usageRecordSummaries ??= new SubscriptionItemUsageRecordSummaryService(
-            this.Requestor);
 
         /// <summary>
         /// <p>Adds a new item to an existing subscription. No existing items will be changed or

@@ -143,8 +143,7 @@ namespace Stripe
 
         /// <summary>
         /// Type of payment object associated with this invoice payment.
-        /// One of: <c>charge</c>, <c>out_of_band_payment</c>, <c>payment_intent</c>, or
-        /// <c>payment_record</c>.
+        /// One of: <c>charge</c>, or <c>payment_intent</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

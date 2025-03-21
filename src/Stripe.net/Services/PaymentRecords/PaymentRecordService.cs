@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PaymentRecordService : Service<PaymentRecord>,
+    public class PaymentRecordService : Service,
         IRetrievable<PaymentRecord, PaymentRecordGetOptions>
     {
         public PaymentRecordService()

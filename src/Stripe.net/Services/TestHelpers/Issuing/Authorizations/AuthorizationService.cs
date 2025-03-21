@@ -8,7 +8,7 @@ namespace Stripe.TestHelpers.Issuing
     using System.Threading.Tasks;
     using Stripe.Issuing;
 
-    public class AuthorizationService : Service<Stripe.Issuing.Authorization>
+    public class AuthorizationService : Service
     {
         public AuthorizationService()
         {

@@ -55,23 +55,13 @@ namespace Stripe
         /// <summary>
         /// Specifies how long the discount will be in effect if used on a subscription. Defaults to
         /// <c>once</c>.
-        /// One of: <c>forever</c>, <c>once</c>, <c>repeating</c>, or <c>variable</c>.
+        /// One of: <c>forever</c>, or <c>once</c>.
         /// </summary>
         [JsonProperty("duration")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duration")]
 #endif
         public string Duration { get; set; }
-
-        /// <summary>
-        /// Required only if <c>duration</c> is <c>repeating</c>, in which case it must be a
-        /// positive integer that specifies the number of months the discount will be in effect.
-        /// </summary>
-        [JsonProperty("duration_in_months")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("duration_in_months")]
-#endif
-        public long? DurationInMonths { get; set; }
 
         /// <summary>
         /// Unique string of your choice that will be used to identify this coupon when applying it

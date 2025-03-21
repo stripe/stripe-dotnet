@@ -334,47 +334,6 @@ namespace Stripe
 #endif
         public string Reason { get; set; }
 
-        #region Expandable Refund
-
-        /// <summary>
-        /// (ID of the Refund)
-        /// Refund related to this credit note.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public string RefundId
-        {
-            get => this.InternalRefund?.Id;
-            set => this.InternalRefund = SetExpandableFieldId(value, this.InternalRefund);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// Refund related to this credit note.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public Refund Refund
-        {
-            get => this.InternalRefund?.ExpandedObject;
-            set => this.InternalRefund = SetExpandableFieldObject(value, this.InternalRefund);
-        }
-
-        [JsonProperty("refund")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Refund>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Refund>))]
-#endif
-        internal ExpandableField<Refund> InternalRefund { get; set; }
-        #endregion
-
         /// <summary>
         /// Refunds related to this credit note.
         /// </summary>
@@ -426,15 +385,6 @@ namespace Stripe
         public long? SubtotalExcludingTax { get; set; }
 
         /// <summary>
-        /// The aggregate amounts calculated per tax rate for all line items.
-        /// </summary>
-        [JsonProperty("tax_amounts")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("tax_amounts")]
-#endif
-        public List<CreditNoteTaxAmount> TaxAmounts { get; set; }
-
-        /// <summary>
         /// The integer amount in cents (or local equivalent) representing the total amount of the
         /// credit note, including tax and all discount.
         /// </summary>
@@ -453,6 +403,15 @@ namespace Stripe
         [STJS.JsonPropertyName("total_excluding_tax")]
 #endif
         public long? TotalExcludingTax { get; set; }
+
+        /// <summary>
+        /// The aggregate tax information for all line items.
+        /// </summary>
+        [JsonProperty("total_taxes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("total_taxes")]
+#endif
+        public List<CreditNoteTotalTax> TotalTaxes { get; set; }
 
         /// <summary>
         /// Type of this credit note, one of <c>pre_payment</c> or <c>post_payment</c>. A

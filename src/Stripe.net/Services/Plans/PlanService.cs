@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PlanService : Service<Plan>,
+    public class PlanService : Service,
         ICreatable<Plan, PlanCreateOptions>,
         IDeletable<Plan, PlanDeleteOptions>,
         IListable<Plan, PlanListOptions>,

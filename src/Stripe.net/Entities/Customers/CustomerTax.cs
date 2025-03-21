@@ -30,7 +30,7 @@ namespace Stripe
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// The customer's location as identified by Stripe Tax.
+        /// The identified tax location of the customer.
         /// </summary>
         [JsonProperty("location")]
 #if NET6_0_OR_GREATER

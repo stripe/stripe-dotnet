@@ -6,7 +6,7 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class MeterEventAdjustmentService : Service<MeterEventAdjustment>,
+    public class MeterEventAdjustmentService : Service,
         ICreatable<MeterEventAdjustment, MeterEventAdjustmentCreateOptions>
     {
         public MeterEventAdjustmentService()

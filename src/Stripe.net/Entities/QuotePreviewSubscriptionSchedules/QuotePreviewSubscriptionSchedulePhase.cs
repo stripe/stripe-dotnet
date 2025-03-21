@@ -56,16 +56,6 @@ namespace Stripe
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
-        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
-        /// new billing period.
-        /// </summary>
-        [JsonProperty("billing_thresholds")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_thresholds")]
-#endif
-        public QuotePreviewSubscriptionSchedulePhaseBillingThresholds BillingThresholds { get; set; }
-
-        /// <summary>
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
         /// Stripe will attempt to pay the underlying subscription at the end of each billing cycle
         /// using the default source attached to the customer. When sending an invoice, Stripe will
@@ -78,47 +68,6 @@ namespace Stripe
         [STJS.JsonPropertyName("collection_method")]
 #endif
         public string CollectionMethod { get; set; }
-
-        #region Expandable Coupon
-
-        /// <summary>
-        /// (ID of the Coupon)
-        /// ID of the coupon to use during this phase of the subscription schedule.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public string CouponId
-        {
-            get => this.InternalCoupon?.Id;
-            set => this.InternalCoupon = SetExpandableFieldId(value, this.InternalCoupon);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// ID of the coupon to use during this phase of the subscription schedule.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public Coupon Coupon
-        {
-            get => this.InternalCoupon?.ExpandedObject;
-            set => this.InternalCoupon = SetExpandableFieldObject(value, this.InternalCoupon);
-        }
-
-        [JsonProperty("coupon")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Coupon>))]
-#endif
-        internal ExpandableField<Coupon> InternalCoupon { get; set; }
-        #endregion
 
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
