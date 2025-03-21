@@ -87,7 +87,9 @@ namespace Stripe
         public string ExportPurposeCode { get; set; }
 
         /// <summary>
-        /// The company's legal name.
+        /// The company's legal name. Also available for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>.
         /// </summary>
         [JsonProperty("name")]
 #if NET6_0_OR_GREATER
@@ -96,7 +98,10 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
-        /// The Kana variation of the company's legal name (Japan only).
+        /// The Kana variation of the company's legal name (Japan only). Also available for accounts
+        /// where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>.
         /// </summary>
         [JsonProperty("name_kana")]
 #if NET6_0_OR_GREATER
@@ -105,7 +110,10 @@ namespace Stripe
         public string NameKana { get; set; }
 
         /// <summary>
-        /// The Kanji variation of the company's legal name (Japan only).
+        /// The Kanji variation of the company's legal name (Japan only). Also available for
+        /// accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>.
         /// </summary>
         [JsonProperty("name_kanji")]
 #if NET6_0_OR_GREATER
@@ -164,7 +172,10 @@ namespace Stripe
         public string Phone { get; set; }
 
         /// <summary>
-        /// The category identifying the legal structure of the company or legal entity. See <a
+        /// The category identifying the legal structure of the company or legal entity. Also
+        /// available for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>. See <a
         /// href="https://stripe.com/docs/connect/identity-verification#business-structure">Business
         /// structure</a> for more details.
         /// One of: <c>free_zone_establishment</c>, <c>free_zone_llc</c>,
