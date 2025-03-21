@@ -54,6 +54,47 @@ namespace Stripe
 #endif
         public long Amount { get; set; }
 
+        #region Expandable CheckoutSession
+
+        /// <summary>
+        /// (ID of the Checkout.Session)
+        /// The ID of the checkout session (if any) that created the transaction.
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public string CheckoutSessionId
+        {
+            get => this.InternalCheckoutSession?.Id;
+            set => this.InternalCheckoutSession = SetExpandableFieldId(value, this.InternalCheckoutSession);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the checkout session (if any) that created the transaction.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public Checkout.Session CheckoutSession
+        {
+            get => this.InternalCheckoutSession?.ExpandedObject;
+            set => this.InternalCheckoutSession = SetExpandableFieldObject(value, this.InternalCheckoutSession);
+        }
+
+        [JsonProperty("checkout_session")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Checkout.Session>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("checkout_session")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Checkout.Session>))]
+#endif
+        internal ExpandableField<Checkout.Session> InternalCheckoutSession { get; set; }
+        #endregion
+
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
