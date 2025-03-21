@@ -112,6 +112,26 @@ namespace Stripe
         public const string BillingMeterErrorReportTriggered = "billing.meter_error_report.triggered";
 
         /// <summary>
+        /// Occurs when a meter is created.
+        /// </summary>
+        public const string BillingMeterCreated = "billing.meter.created";
+
+        /// <summary>
+        /// Occurs when a meter is deactivated.
+        /// </summary>
+        public const string BillingMeterDeactivated = "billing.meter.deactivated";
+
+        /// <summary>
+        /// Occurs when a meter is reactivated.
+        /// </summary>
+        public const string BillingMeterReactivated = "billing.meter.reactivated";
+
+        /// <summary>
+        /// Occurs when a meter is updated.
+        /// </summary>
+        public const string BillingMeterUpdated = "billing.meter.updated";
+
+        /// <summary>
         /// Occurs whenever a capability has new requirements or a new status.
         /// </summary>
         public const string CapabilityUpdated = "capability.updated";

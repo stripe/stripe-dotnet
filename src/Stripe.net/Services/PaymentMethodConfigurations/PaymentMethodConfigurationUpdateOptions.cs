@@ -416,6 +416,17 @@ namespace Stripe
         public string Name { get; set; }
 
         /// <summary>
+        /// Stripe users in New Zealand can accept Bulk Electronic Clearing System (BECS) direct
+        /// debit payments from customers with a New Zeland bank account. Check this <a
+        /// href="https://stripe.com/docs/payments/nz-bank-account">page</a> for more details.
+        /// </summary>
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public PaymentMethodConfigurationNzBankAccountOptions NzBankAccount { get; set; }
+
+        /// <summary>
         /// OXXO is a Mexican chain of convenience stores with thousands of locations across Latin
         /// America and represents nearly 20% of online transactions in Mexico. OXXO allows
         /// customers to pay bills and online purchases in-store with cash. Check this <a

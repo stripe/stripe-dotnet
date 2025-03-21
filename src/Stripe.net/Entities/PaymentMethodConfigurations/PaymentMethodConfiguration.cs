@@ -289,6 +289,12 @@ namespace Stripe
 #endif
         public string Name { get; set; }
 
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public PaymentMethodConfigurationNzBankAccount NzBankAccount { get; set; }
+
         [JsonProperty("oxxo")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("oxxo")]

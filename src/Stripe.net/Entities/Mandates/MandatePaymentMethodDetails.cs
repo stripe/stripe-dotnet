@@ -68,6 +68,12 @@ namespace Stripe
 #endif
         public MandatePaymentMethodDetailsNaverPay NaverPay { get; set; }
 
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public MandatePaymentMethodDetailsNzBankAccount NzBankAccount { get; set; }
+
         [JsonProperty("paypal")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypal")]
