@@ -312,6 +312,15 @@ namespace Stripe
         public InvoiceItemPeriod Period { get; set; }
 
         /// <summary>
+        /// The pricing information of the invoice item.
+        /// </summary>
+        [JsonProperty("pricing")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pricing")]
+#endif
+        public InvoiceItemPricing Pricing { get; set; }
+
+        /// <summary>
         /// Whether the invoice item was created automatically as a proration adjustment when the
         /// customer switched plans.
         /// </summary>

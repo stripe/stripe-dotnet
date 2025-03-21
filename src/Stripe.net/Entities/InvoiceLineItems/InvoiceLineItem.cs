@@ -237,6 +237,15 @@ namespace Stripe
         public List<InvoiceLineItemPretaxCreditAmount> PretaxCreditAmounts { get; set; }
 
         /// <summary>
+        /// The pricing information of the line item.
+        /// </summary>
+        [JsonProperty("pricing")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pricing")]
+#endif
+        public InvoiceLineItemPricing Pricing { get; set; }
+
+        /// <summary>
         /// The quantity of the subscription, if the line item is a subscription or a proration.
         /// </summary>
         [JsonProperty("quantity")]
