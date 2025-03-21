@@ -13,5 +13,11 @@ namespace Stripe
         [STJS.JsonPropertyName("invoice_item")]
 #endif
         public string InvoiceItem { get; set; }
+
+        [JsonProperty("subscription")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription")]
+#endif
+        public string Subscription { get; set; }
     }
 }
