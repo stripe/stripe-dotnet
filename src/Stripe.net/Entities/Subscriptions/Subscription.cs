@@ -133,6 +133,16 @@ namespace Stripe
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
+        /// Whether this subscription will (if <c>status=active</c>) or did (if
+        /// <c>status=canceled</c>) cancel at the end of the current billing period.
+        /// </summary>
+        [JsonProperty("cancel_at_period_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at_period_end")]
+#endif
+        public bool? CancelAtPeriodEnd { get; set; }
+
+        /// <summary>
         /// If the subscription has been canceled, the date of that cancellation. If the
         /// subscription was canceled with <c>cancel_at_period_end</c>, <c>canceled_at</c> will
         /// reflect the time of the most recent update request, not the end of the subscription

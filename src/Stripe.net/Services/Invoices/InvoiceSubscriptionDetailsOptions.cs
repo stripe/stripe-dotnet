@@ -41,6 +41,16 @@ namespace Stripe
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsCancelAt> CancelAt { get; set; }
 
         /// <summary>
+        /// Indicate whether this subscription should cancel at the end of the current period
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
+        /// </summary>
+        [JsonProperty("cancel_at_period_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at_period_end")]
+#endif
+        public bool? CancelAtPeriodEnd { get; set; }
+
+        /// <summary>
         /// This simulates the subscription being canceled or expired immediately.
         /// </summary>
         [JsonProperty("cancel_now")]
