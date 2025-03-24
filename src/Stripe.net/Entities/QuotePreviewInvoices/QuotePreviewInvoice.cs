@@ -323,6 +323,16 @@ namespace Stripe
         public string CollectionMethod { get; set; }
 
         /// <summary>
+        /// The confirmation secret associated with this invoice. Currently, this contains the
+        /// client_secret of the PaymentIntent that Stripe creates during invoice finalization.
+        /// </summary>
+        [JsonProperty("confirmation_secret")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("confirmation_secret")]
+#endif
+        public QuotePreviewInvoiceConfirmationSecret ConfirmationSecret { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
