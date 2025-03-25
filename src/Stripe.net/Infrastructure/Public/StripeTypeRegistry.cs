@@ -212,22 +212,39 @@ namespace Stripe
             new Dictionary<string, Type>
             {
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
+                {
+                    "financial_address_credit_simulation", typeof(
+                    V2.FinancialAddressCreditSimulation)
+                },
+                {
+                    "financial_address_generated_microdeposits", typeof(
+                    V2.FinancialAddressGeneratedMicrodeposits)
+                },
                 { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
                 { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
+                { "v2.core.account", typeof(V2.Core.Account) },
+                { "v2.core.account_person", typeof(V2.Core.Person) },
                 { "v2.core.event", typeof(V2.Event) },
                 { "v2.core.event_destination", typeof(V2.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
+                { "v2.money_management.financial_account", typeof(V2.FinancialAccount) },
+                { "v2.money_management.financial_address", typeof(V2.FinancialAddress) },
+                { "v2.money_management.inbound_transfer", typeof(V2.InboundTransfer) },
+                { "v2.money_management.outbound_payment", typeof(V2.OutboundPayment) },
                 {
                     "v2.money_management.outbound_setup_intent", typeof(
                     V2.MoneyManagement.OutboundSetupIntent)
                 },
+                { "v2.money_management.outbound_transfer", typeof(V2.OutboundTransfer) },
                 { "v2.money_management.payout_method", typeof(V2.MoneyManagement.PayoutMethod) },
                 {
                     "v2.money_management.payout_methods_bank_account_spec", typeof(
                     V2.MoneyManagement.PayoutMethodsBankAccountSpec)
                 },
+                { "v2.money_management.received_credit", typeof(V2.ReceivedCredit) },
+                { "v2.money_management.received_debit", typeof(V2.ReceivedDebit) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -243,6 +260,74 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
+                },
+                {
+                    "v2.money_management.financial_address.activated", typeof(
+                    Events.V2MoneyManagementFinancialAddressActivatedEvent)
+                },
+                {
+                    "v2.money_management.financial_address.failed", typeof(
+                    Events.V2MoneyManagementFinancialAddressFailedEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer.available", typeof(
+                    Events.V2MoneyManagementInboundTransferAvailableEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_failed", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitFailedEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_processing", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitProcessingEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_queued", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitQueuedEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_returned", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitReturnedEvent)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_succeeded", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitSucceededEvent)
+                },
+                {
+                    "v2.money_management.received_credit.available", typeof(
+                    Events.V2MoneyManagementReceivedCreditAvailableEvent)
+                },
+                {
+                    "v2.money_management.received_credit.failed", typeof(
+                    Events.V2MoneyManagementReceivedCreditFailedEvent)
+                },
+                {
+                    "v2.money_management.received_credit.returned", typeof(
+                    Events.V2MoneyManagementReceivedCreditReturnedEvent)
+                },
+                {
+                    "v2.money_management.received_credit.succeeded", typeof(
+                    Events.V2MoneyManagementReceivedCreditSucceededEvent)
+                },
+                {
+                    "v2.money_management.received_debit.canceled", typeof(
+                    Events.V2MoneyManagementReceivedDebitCanceledEvent)
+                },
+                {
+                    "v2.money_management.received_debit.failed", typeof(
+                    Events.V2MoneyManagementReceivedDebitFailedEvent)
+                },
+                {
+                    "v2.money_management.received_debit.pending", typeof(
+                    Events.V2MoneyManagementReceivedDebitPendingEvent)
+                },
+                {
+                    "v2.money_management.received_debit.succeeded", typeof(
+                    Events.V2MoneyManagementReceivedDebitSucceededEvent)
+                },
+                {
+                    "v2.money_management.received_debit.updated", typeof(
+                    Events.V2MoneyManagementReceivedDebitUpdatedEvent)
                 },
 
                 // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec

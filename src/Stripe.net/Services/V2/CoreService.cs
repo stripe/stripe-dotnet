@@ -7,6 +7,7 @@ namespace Stripe.V2
 
     public class CoreService : Service
     {
+        private V2.Core.AccountService accounts;
         private V2.Core.EventDestinationService eventDestinations;
         private V2.Core.EventService events;
         private V2.Core.VaultService vault;
@@ -20,6 +21,9 @@ namespace Stripe.V2
             : base(client)
         {
         }
+
+        public virtual V2.Core.AccountService Accounts => this.accounts ??= new V2.Core.AccountService(
+            this.Requestor);
 
         public virtual V2.Core.EventDestinationService EventDestinations => this.eventDestinations ??= new V2.Core.EventDestinationService(
             this.Requestor);
