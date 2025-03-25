@@ -217,6 +217,17 @@ namespace Stripe
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
                 { "v2.core.event", typeof(V2.Event) },
                 { "v2.core.event_destination", typeof(V2.EventDestination) },
+                { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
+                { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
+                {
+                    "v2.money_management.outbound_setup_intent", typeof(
+                    V2.MoneyManagement.OutboundSetupIntent)
+                },
+                { "v2.money_management.payout_method", typeof(V2.MoneyManagement.PayoutMethod) },
+                {
+                    "v2.money_management.payout_methods_bank_account_spec", typeof(
+                    V2.MoneyManagement.PayoutMethodsBankAccountSpec)
+                },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
