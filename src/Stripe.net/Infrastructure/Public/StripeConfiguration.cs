@@ -254,28 +254,28 @@ namespace Stripe
         {
             if (!System.Text.RegularExpressions.Regex.IsMatch(betaVersion, @"^v\d+$"))
             {
-            throw new Exception($"Invalid beta version format: {betaVersion}. Expected format is 'v' followed by a number (e.g., 'v3').");
+                throw new Exception($"Invalid beta version format: {betaVersion}. Expected format is 'v' followed by a number (e.g., 'v3').");
             }
 
             var existingBeta = $"; {betaName}=";
             if (ApiVersion.Contains(existingBeta))
             {
-            var startIndex = ApiVersion.IndexOf(existingBeta) + existingBeta.Length;
-            var endIndex = ApiVersion.IndexOf(';', startIndex);
-            endIndex = endIndex == -1 ? ApiVersion.Length : endIndex;
+                var startIndex = ApiVersion.IndexOf(existingBeta) + existingBeta.Length;
+                var endIndex = ApiVersion.IndexOf(';', startIndex);
+                endIndex = endIndex == -1 ? ApiVersion.Length : endIndex;
 
-            var currentVersion = ApiVersion.Substring(startIndex, endIndex - startIndex);
-            var currentVersionNumber = int.Parse(currentVersion.Substring(1));
-            var newVersionNumber = int.Parse(betaVersion.Substring(1));
+                var currentVersion = ApiVersion.Substring(startIndex, endIndex - startIndex);
+                var currentVersionNumber = int.Parse(currentVersion.Substring(1));
+                var newVersionNumber = int.Parse(betaVersion.Substring(1));
 
-            if (newVersionNumber > currentVersionNumber)
-            {
-                ApiVersion = ApiVersion.Replace($"{existingBeta}{currentVersion}", $"{existingBeta}{betaVersion}");
-            }
+                if (newVersionNumber > currentVersionNumber)
+                {
+                    ApiVersion = ApiVersion.Replace($"{existingBeta}{currentVersion}", $"{existingBeta}{betaVersion}");
+                }
             }
             else
             {
-            ApiVersion = $"{ApiVersion}; {betaName}={betaVersion}";
+                ApiVersion = $"{ApiVersion}; {betaName}={betaVersion}";
             }
         }
 
