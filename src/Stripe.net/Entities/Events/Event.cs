@@ -81,6 +81,12 @@ namespace Stripe
 #endif
         public string ApiVersion { get; set; }
 
+        [JsonProperty("context")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("context")]
+#endif
+        public string Context { get; set; }
+
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
