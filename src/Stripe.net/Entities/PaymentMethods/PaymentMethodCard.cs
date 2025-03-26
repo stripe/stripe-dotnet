@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentMethodCard : StripeEntity<PaymentMethodCard>
     {
@@ -11,12 +14,18 @@ namespace Stripe
         /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("brand")]
+#endif
         public string Brand { get; set; }
 
         /// <summary>
         /// Checks on Card address and CVC if provided.
         /// </summary>
         [JsonProperty("checks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("checks")]
+#endif
         public PaymentMethodCardChecks Checks { get; set; }
 
         /// <summary>
@@ -24,6 +33,9 @@ namespace Stripe
         /// to get a sense of the international breakdown of cards you've collected.
         /// </summary>
         [JsonProperty("country")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country")]
+#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -31,6 +43,9 @@ namespace Stripe
         /// only and not typically available in standard API requests.).
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -41,18 +56,27 @@ namespace Stripe
         /// contain more values in the future.
         /// </summary>
         [JsonProperty("display_brand")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_brand")]
+#endif
         public string DisplayBrand { get; set; }
 
         /// <summary>
         /// Two-digit number representing the card's expiration month.
         /// </summary>
         [JsonProperty("exp_month")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exp_month")]
+#endif
         public long ExpMonth { get; set; }
 
         /// <summary>
         /// Four-digit number representing the card's expiration year.
         /// </summary>
         [JsonProperty("exp_year")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exp_year")]
+#endif
         public long ExpYear { get; set; }
 
         /// <summary>
@@ -65,6 +89,9 @@ namespace Stripe
         /// fingerprints for the same card---one for India and one for the rest of the world.</em>.
         /// </summary>
         [JsonProperty("fingerprint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fingerprint")]
+#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
@@ -72,12 +99,18 @@ namespace Stripe
         /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("funding")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("funding")]
+#endif
         public string Funding { get; set; }
 
         /// <summary>
         /// Details of the original PaymentMethod that created this object.
         /// </summary>
         [JsonProperty("generated_from")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("generated_from")]
+#endif
         public PaymentMethodCardGeneratedFrom GeneratedFrom { get; set; }
 
         /// <summary>
@@ -85,6 +118,9 @@ namespace Stripe
         /// available in standard API requests.).
         /// </summary>
         [JsonProperty("iin")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("iin")]
+#endif
         public string Iin { get; set; }
 
         /// <summary>
@@ -92,18 +128,27 @@ namespace Stripe
         /// in standard API requests.).
         /// </summary>
         [JsonProperty("issuer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("issuer")]
+#endif
         public string Issuer { get; set; }
 
         /// <summary>
         /// The last four digits of the card.
         /// </summary>
         [JsonProperty("last4")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("last4")]
+#endif
         public string Last4 { get; set; }
 
         /// <summary>
         /// Contains information about card networks that can be used to process the payment.
         /// </summary>
         [JsonProperty("networks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("networks")]
+#endif
         public PaymentMethodCardNetworks Networks { get; set; }
 
         /// <summary>
@@ -111,18 +156,27 @@ namespace Stripe
         /// One of: <c>regulated</c>, or <c>unregulated</c>.
         /// </summary>
         [JsonProperty("regulated_status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("regulated_status")]
+#endif
         public string RegulatedStatus { get; set; }
 
         /// <summary>
         /// Contains details on how this Card may be used for 3D Secure authentication.
         /// </summary>
         [JsonProperty("three_d_secure_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("three_d_secure_usage")]
+#endif
         public PaymentMethodCardThreeDSecureUsage ThreeDSecureUsage { get; set; }
 
         /// <summary>
         /// If this Card is part of a card wallet, this contains the details of the card wallet.
         /// </summary>
         [JsonProperty("wallet")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wallet")]
+#endif
         public PaymentMethodCardWallet Wallet { get; set; }
     }
 }

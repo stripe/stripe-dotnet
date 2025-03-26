@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OutboundTransferDestinationPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
@@ -13,6 +16,9 @@ namespace Stripe.Treasury
         /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
         /// </summary>
         [JsonProperty("network")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network")]
+#endif
         public string Network { get; set; }
     }
 }

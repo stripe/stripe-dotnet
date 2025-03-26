@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class BankAccountRequirements : StripeEntity<BankAccountRequirements>
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// account is disabled.
         /// </summary>
         [JsonProperty("currently_due")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currently_due")]
+#endif
         public List<string> CurrentlyDue { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe
         /// or verification failed.
         /// </summary>
         [JsonProperty("errors")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("errors")]
+#endif
         public List<BankAccountRequirementsError> Errors { get; set; }
 
         /// <summary>
@@ -26,6 +35,9 @@ namespace Stripe
         /// collected to enable the external account.
         /// </summary>
         [JsonProperty("past_due")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("past_due")]
+#endif
         public List<string> PastDue { get; set; }
 
         /// <summary>
@@ -37,6 +49,9 @@ namespace Stripe
         /// verification is still pending.
         /// </summary>
         [JsonProperty("pending_verification")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pending_verification")]
+#endif
         public List<string> PendingVerification { get; set; }
     }
 }

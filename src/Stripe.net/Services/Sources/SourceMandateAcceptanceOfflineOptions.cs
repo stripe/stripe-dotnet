@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SourceMandateAcceptanceOfflineOptions : INestedOptions
     {
@@ -10,6 +13,9 @@ namespace Stripe
         /// <c>type</c> is <c>offline</c>.
         /// </summary>
         [JsonProperty("contact_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("contact_email")]
+#endif
         public string ContactEmail { get; set; }
     }
 }

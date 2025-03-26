@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SourceUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -10,9 +13,15 @@ namespace Stripe
         /// Amount associated with the source.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
         public SourceCardOptions Card { get; set; }
 
         /// <summary>
@@ -20,6 +29,9 @@ namespace Stripe
         /// debits) as well as its acceptance status.
         /// </summary>
         [JsonProperty("mandate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate")]
+#endif
         public SourceMandateOptions Mandate { get; set; }
 
         /// <summary>
@@ -29,6 +41,9 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -36,6 +51,9 @@ namespace Stripe
         /// particular source types.
         /// </summary>
         [JsonProperty("owner")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("owner")]
+#endif
         public SourceOwnerOptions Owner { get; set; }
 
         /// <summary>
@@ -43,6 +61,9 @@ namespace Stripe
         /// transactional credit (for example Klarna) sources before you can charge it.
         /// </summary>
         [JsonProperty("source_order")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source_order")]
+#endif
         public SourceSourceOrderOptions SourceOrder { get; set; }
     }
 }

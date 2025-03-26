@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters : StripeEntity<SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters>
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// One of: <c>checking</c>, or <c>savings</c>.
         /// </summary>
         [JsonProperty("account_subcategories")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_subcategories")]
+#endif
         public List<string> AccountSubcategories { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CustomerPaymentMethodService : ServiceNested<PaymentMethod>,
+    public class CustomerPaymentMethodService : Service,
         INestedListable<PaymentMethod, CustomerPaymentMethodListOptions>,
         INestedRetrievable<PaymentMethod, CustomerPaymentMethodGetOptions>
     {

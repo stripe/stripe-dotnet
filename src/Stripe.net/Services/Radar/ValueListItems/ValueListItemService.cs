@@ -8,7 +8,7 @@ namespace Stripe.Radar
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ValueListItemService : Service<ValueListItem>,
+    public class ValueListItemService : Service,
         ICreatable<ValueListItem, ValueListItemCreateOptions>,
         IDeletable<ValueListItem, ValueListItemDeleteOptions>,
         IListable<ValueListItem, ValueListItemListOptions>,

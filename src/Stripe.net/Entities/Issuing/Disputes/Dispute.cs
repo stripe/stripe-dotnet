@@ -5,6 +5,9 @@ namespace Stripe.Issuing
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// As a <a href="https://stripe.com/docs/issuing">card issuer</a>, you can dispute
@@ -14,18 +17,27 @@ namespace Stripe.Issuing
     /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/disputes">Issuing
     /// disputes</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Dispute : StripeEntity<Dispute>, IHasId, IHasMetadata, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -35,12 +47,18 @@ namespace Stripe.Issuing
         /// currency fluctuation).
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long Amount { get; set; }
 
         /// <summary>
         /// List of balance transactions associated with the dispute.
         /// </summary>
         [JsonProperty("balance_transactions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_transactions")]
+#endif
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         /// <summary>
@@ -48,15 +66,25 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The currency the <c>transaction</c> was made in.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         [JsonProperty("evidence")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("evidence")]
+#endif
         public DisputeEvidence Evidence { get; set; }
 
         /// <summary>
@@ -64,6 +92,9 @@ namespace Stripe.Issuing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -84,6 +115,9 @@ namespace Stripe.Issuing
         /// <c>transaction_unattended</c>.
         /// </summary>
         [JsonProperty("loss_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("loss_reason")]
+#endif
         public string LossReason { get; set; }
 
         /// <summary>
@@ -92,6 +126,9 @@ namespace Stripe.Issuing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -100,6 +137,9 @@ namespace Stripe.Issuing
         /// <c>won</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
 
         #region Expandable Transaction
@@ -109,6 +149,9 @@ namespace Stripe.Issuing
         /// The transaction being disputed.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string TransactionId
         {
             get => this.InternalTransaction?.Id;
@@ -122,6 +165,9 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Transaction Transaction
         {
             get => this.InternalTransaction?.ExpandedObject;
@@ -130,6 +176,10 @@ namespace Stripe.Issuing
 
         [JsonProperty("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
+#endif
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion
 
@@ -138,6 +188,9 @@ namespace Stripe.Issuing
         /// dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts.
         /// </summary>
         [JsonProperty("treasury")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("treasury")]
+#endif
         public DisputeTreasury Treasury { get; set; }
     }
 }

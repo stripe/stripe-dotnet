@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class InvoiceRenderingTemplateService : Service<InvoiceRenderingTemplate>,
+    public class InvoiceRenderingTemplateService : Service,
         IListable<InvoiceRenderingTemplate, InvoiceRenderingTemplateListOptions>,
         IRetrievable<InvoiceRenderingTemplate, InvoiceRenderingTemplateGetOptions>
     {

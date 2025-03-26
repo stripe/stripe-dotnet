@@ -3,6 +3,9 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class DisputeCreateOptions : BaseOptions, IHasMetadata
     {
@@ -12,12 +15,18 @@ namespace Stripe.Issuing
         /// not set, defaults to the full transaction amount.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
         /// Evidence provided for the dispute.
         /// </summary>
         [JsonProperty("evidence")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("evidence")]
+#endif
         public DisputeEvidenceOptions Evidence { get; set; }
 
         /// <summary>
@@ -27,6 +36,9 @@ namespace Stripe.Issuing
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -34,12 +46,18 @@ namespace Stripe.Issuing
         /// FinancialAccounts, use <c>treasury.received_debit</c>.
         /// </summary>
         [JsonProperty("transaction")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction")]
+#endif
         public string Transaction { get; set; }
 
         /// <summary>
         /// Params for disputes related to Treasury FinancialAccounts.
         /// </summary>
         [JsonProperty("treasury")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("treasury")]
+#endif
         public DisputeTreasuryOptions Treasury { get; set; }
     }
 }

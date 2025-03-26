@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class WebhookEndpointService : Service<WebhookEndpoint>,
+    public class WebhookEndpointService : Service,
         ICreatable<WebhookEndpoint, WebhookEndpointCreateOptions>,
         IDeletable<WebhookEndpoint, WebhookEndpointDeleteOptions>,
         IListable<WebhookEndpoint, WebhookEndpointListOptions>,
