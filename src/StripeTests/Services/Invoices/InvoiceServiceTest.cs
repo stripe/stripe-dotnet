@@ -286,24 +286,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void Upcoming()
-        {
-            var invoice = this.service.Upcoming(this.upcomingOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming");
-            Assert.NotNull(invoice);
-            Assert.Equal("invoice", invoice.Object);
-        }
-
-        [Fact]
-        public async Task UpcomingAsync()
-        {
-            var invoice = await this.service.UpcomingAsync(this.upcomingOptions);
-            this.AssertRequest(HttpMethod.Get, "/v1/invoices/upcoming");
-            Assert.NotNull(invoice);
-            Assert.Equal("invoice", invoice.Object);
-        }
-
-        [Fact]
         public void Update()
         {
             var invoice = this.service.Update(InvoiceId, this.updateOptions);

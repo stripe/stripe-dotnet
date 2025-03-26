@@ -57,9 +57,6 @@ namespace Stripe
         [JsonProperty("subscription_default_tax_rates")]
         public List<string> SubscriptionDefaultTaxRates { get; set; }
 
-        [JsonProperty("subscription_items")]
-        public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
-
         [Obsolete("Use SubscriptionProrationBehavior instead.")]
         [JsonProperty("subscription_prorate")]
         public bool? SubscriptionProrate { get; set; }

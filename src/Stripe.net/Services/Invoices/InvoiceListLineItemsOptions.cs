@@ -16,9 +16,6 @@ namespace Stripe
         [JsonProperty("subscription")]
         public string Subscription { get; set; }
 
-        [JsonProperty("subscription_items")]
-        public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
-
         [JsonProperty("subscription_plan")]
         public string SubscriptionPlan { get; set; }
     }
