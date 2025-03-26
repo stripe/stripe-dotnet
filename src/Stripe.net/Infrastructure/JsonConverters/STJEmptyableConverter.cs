@@ -10,7 +10,7 @@ namespace Stripe.Infrastructure
     /// Converts a <see cref="Emptyable{T}"/> to and from JSON.
     /// </summary>
     /// <typeparam name="T">Type of the field when expanded.</typeparam>
-    internal class STJEmptyableConverter<T> : JsonConverter<T>
+    internal class STJEmptyableConverter<T> : JsonConverter<Emptyable<T>>
     {
         /// <summary>
         /// Writes the JSON representation of the object.
@@ -18,7 +18,7 @@ namespace Stripe.Infrastructure
         /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="options">The calling serializer's options.</param>
-        public override void Write(Utf8JsonWriter writer, T value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, Emptyable<T> value, JsonSerializerOptions options)
         {
             switch (value)
             {
@@ -58,7 +58,7 @@ namespace Stripe.Infrastructure
                 return false;
             }
 
-            return typeof(Emptyable<>).GetTypeInfo().IsAssignableFrom(objectType.GetGenericTypeDefinition());
+            return typeof(IEmptyable).GetTypeInfo().IsAssignableFrom(objectType.GetGenericTypeDefinition());
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The calling serializer's options.</param>
         /// <returns>The object value.</returns>
-        public override T Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override Emptyable<T> Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             throw new NotSupportedException("Cannot deserialize Emptyable objects.");
         }

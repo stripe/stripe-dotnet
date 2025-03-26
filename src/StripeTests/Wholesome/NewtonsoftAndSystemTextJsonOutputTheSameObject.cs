@@ -81,11 +81,6 @@ namespace StripeTests.Wholesome
                     continue;
                 }
 
-                if (stripeClass.Name.StartsWith("V1Billing"))
-                {
-                    Debugger.Break();
-                }
-
                 if (stripeClass.IsGenericType)
                 {
                     // Handle generic types (container types) separately, because
