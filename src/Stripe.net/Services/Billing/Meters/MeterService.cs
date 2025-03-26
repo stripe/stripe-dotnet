@@ -8,7 +8,7 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class MeterService : Service<Meter>,
+    public class MeterService : Service,
         ICreatable<Meter, MeterCreateOptions>,
         IListable<Meter, MeterListOptions>,
         IRetrievable<Meter, MeterGetOptions>,

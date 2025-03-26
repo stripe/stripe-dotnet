@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class QuoteLineItemService : ServiceNested<LineItem>,
+    public class QuoteLineItemService : Service,
         INestedListable<LineItem, QuoteLineItemListOptions>
     {
         public QuoteLineItemService()
