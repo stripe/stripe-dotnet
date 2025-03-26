@@ -1,8 +1,8 @@
 namespace Stripe
 {
-    /// <summary>Represents a generic expandable field.</summary>
-    /// <typeparam name="T">Type of the field when expanded.</typeparam>
-    internal class Emptyable<T>
+    /// <summary>Represents a field that might be emptyble.</summary>
+    /// <typeparam name="T">Type of the field when not empty.</typeparam>
+    internal class Emptyable<T> : IEmptyable<T>
     {
         private bool empty;
         private T value;
@@ -29,5 +29,9 @@ namespace Stripe
                 }
             }
         }
+
+        /// <summary>Gets or sets the expanded object.</summary>
+        /// <value>The expanded object.</value>
+        object IEmptyable.Value => this.Value;
     }
 }
