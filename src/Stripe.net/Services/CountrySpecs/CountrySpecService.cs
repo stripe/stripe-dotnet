@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CountrySpecService : Service,
+    public class CountrySpecService : Service<CountrySpec>,
         IListable<CountrySpec, CountrySpecListOptions>,
         IRetrievable<CountrySpec, CountrySpecGetOptions>
     {

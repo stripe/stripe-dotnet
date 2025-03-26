@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ReviewService : Service,
+    public class ReviewService : Service<Review>,
         IListable<Review, ReviewListOptions>,
         IRetrievable<Review, ReviewGetOptions>
     {

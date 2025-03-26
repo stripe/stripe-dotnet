@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ApplicationFeeService : Service,
+    public class ApplicationFeeService : Service<ApplicationFee>,
         IListable<ApplicationFee, ApplicationFeeListOptions>,
         IRetrievable<ApplicationFee, ApplicationFeeGetOptions>
     {

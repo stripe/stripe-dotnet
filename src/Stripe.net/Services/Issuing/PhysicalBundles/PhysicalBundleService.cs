@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PhysicalBundleService : Service,
+    public class PhysicalBundleService : Service<PhysicalBundle>,
         IListable<PhysicalBundle, PhysicalBundleListOptions>,
         IRetrievable<PhysicalBundle, PhysicalBundleGetOptions>
     {

@@ -8,7 +8,7 @@ namespace Stripe.Terminal
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ConfigurationService : Service,
+    public class ConfigurationService : Service<Configuration>,
         ICreatable<Configuration, ConfigurationCreateOptions>,
         IDeletable<Configuration, ConfigurationDeleteOptions>,
         IListable<Configuration, ConfigurationListOptions>,

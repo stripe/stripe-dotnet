@@ -7,7 +7,7 @@ namespace Stripe.Tax
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class TransactionService : Service,
+    public partial class TransactionService : Service<Transaction>,
         IRetrievable<Transaction, TransactionGetOptions>
     {
         private TransactionLineItemService lineItems;

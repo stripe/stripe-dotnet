@@ -8,7 +8,7 @@ namespace Stripe.TestHelpers.Treasury
     using System.Threading.Tasks;
     using Stripe.Treasury;
 
-    public class OutboundPaymentService : Service
+    public class OutboundPaymentService : Service<Stripe.Treasury.OutboundPayment>
     {
         public OutboundPaymentService()
         {

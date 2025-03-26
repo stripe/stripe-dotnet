@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class PaymentLinkService : Service,
+    public partial class PaymentLinkService : Service<PaymentLink>,
         ICreatable<PaymentLink, PaymentLinkCreateOptions>,
         IListable<PaymentLink, PaymentLinkListOptions>,
         IRetrievable<PaymentLink, PaymentLinkGetOptions>,

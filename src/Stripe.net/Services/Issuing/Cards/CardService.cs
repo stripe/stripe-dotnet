@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CardService : Service,
+    public class CardService : Service<Card>,
         ICreatable<Card, CardCreateOptions>,
         IListable<Card, CardListOptions>,
         IRetrievable<Card, CardGetOptions>,

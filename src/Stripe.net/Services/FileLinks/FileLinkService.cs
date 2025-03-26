@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class FileLinkService : Service,
+    public class FileLinkService : Service<FileLink>,
         ICreatable<FileLink, FileLinkCreateOptions>,
         IListable<FileLink, FileLinkListOptions>,
         IRetrievable<FileLink, FileLinkGetOptions>,

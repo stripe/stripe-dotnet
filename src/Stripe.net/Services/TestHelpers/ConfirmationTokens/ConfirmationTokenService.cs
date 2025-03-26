@@ -6,7 +6,7 @@ namespace Stripe.TestHelpers
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ConfirmationTokenService : Service
+    public class ConfirmationTokenService : Service<ConfirmationToken>
     {
         public ConfirmationTokenService()
         {

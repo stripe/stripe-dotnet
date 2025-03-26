@@ -8,7 +8,7 @@ namespace Stripe.Entitlements
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ActiveEntitlementService : Service,
+    public class ActiveEntitlementService : Service<ActiveEntitlement>,
         IListable<ActiveEntitlement, ActiveEntitlementListOptions>,
         IRetrievable<ActiveEntitlement, ActiveEntitlementGetOptions>
     {

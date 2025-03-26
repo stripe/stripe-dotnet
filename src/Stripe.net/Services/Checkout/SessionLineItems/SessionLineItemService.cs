@@ -8,7 +8,7 @@ namespace Stripe.Checkout
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SessionLineItemService : Service,
+    public class SessionLineItemService : ServiceNested<LineItem>,
         INestedListable<LineItem, SessionLineItemListOptions>
     {
         public SessionLineItemService()

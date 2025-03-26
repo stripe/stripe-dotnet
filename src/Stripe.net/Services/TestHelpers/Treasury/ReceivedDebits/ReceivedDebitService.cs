@@ -7,7 +7,7 @@ namespace Stripe.TestHelpers.Treasury
     using System.Threading.Tasks;
     using Stripe.Treasury;
 
-    public class ReceivedDebitService : Service
+    public class ReceivedDebitService : Service<Stripe.Treasury.ReceivedDebit>
     {
         public ReceivedDebitService()
         {

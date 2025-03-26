@@ -8,7 +8,7 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AlertService : Service,
+    public class AlertService : Service<Alert>,
         ICreatable<Alert, AlertCreateOptions>,
         IListable<Alert, AlertListOptions>,
         IRetrievable<Alert, AlertGetOptions>

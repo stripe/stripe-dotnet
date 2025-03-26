@@ -8,7 +8,7 @@ namespace Stripe.Terminal
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class LocationService : Service,
+    public class LocationService : Service<Location>,
         ICreatable<Location, LocationCreateOptions>,
         IDeletable<Location, LocationDeleteOptions>,
         IListable<Location, LocationListOptions>,

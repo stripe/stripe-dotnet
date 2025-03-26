@@ -8,7 +8,7 @@ namespace Stripe.Tax
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class RegistrationService : Service,
+    public class RegistrationService : Service<Registration>,
         ICreatable<Registration, RegistrationCreateOptions>,
         IListable<Registration, RegistrationListOptions>,
         IRetrievable<Registration, RegistrationGetOptions>,

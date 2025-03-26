@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PaymentIntentService : Service,
+    public class PaymentIntentService : Service<PaymentIntent>,
         ICreatable<PaymentIntent, PaymentIntentCreateOptions>,
         IListable<PaymentIntent, PaymentIntentListOptions>,
         IRetrievable<PaymentIntent, PaymentIntentGetOptions>,

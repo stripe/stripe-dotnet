@@ -8,7 +8,7 @@ namespace Stripe.TestHelpers.Terminal
     using System.Threading.Tasks;
     using Stripe.Terminal;
 
-    public class ReaderService : Service
+    public class ReaderService : Service<Stripe.Terminal.Reader>
     {
         public ReaderService()
         {

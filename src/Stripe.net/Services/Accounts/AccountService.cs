@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountService : Service,
+    public class AccountService : Service<Account>,
         ICreatable<Account, AccountCreateOptions>,
         IDeletable<Account, AccountDeleteOptions>,
         IListable<Account, AccountListOptions>,

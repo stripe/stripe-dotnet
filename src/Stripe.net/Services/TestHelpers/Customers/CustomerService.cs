@@ -7,7 +7,7 @@ namespace Stripe.TestHelpers
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CustomerService : Service
+    public class CustomerService : Service<Customer>
     {
         public CustomerService()
         {

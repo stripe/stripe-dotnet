@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class RefundService : Service,
+    public class RefundService : Service<Refund>,
         ICreatable<Refund, RefundCreateOptions>,
         IListable<Refund, RefundListOptions>,
         IRetrievable<Refund, RefundGetOptions>,

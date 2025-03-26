@@ -6,7 +6,7 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class MeterEventService : Service,
+    public class MeterEventService : Service<MeterEvent>,
         ICreatable<MeterEvent, MeterEventCreateOptions>
     {
         public MeterEventService()

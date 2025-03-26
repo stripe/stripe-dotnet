@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PaymentLinkLineItemService : Service,
+    public class PaymentLinkLineItemService : ServiceNested<LineItem>,
         INestedListable<LineItem, PaymentLinkLineItemListOptions>
     {
         public PaymentLinkLineItemService()

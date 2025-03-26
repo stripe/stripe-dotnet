@@ -8,7 +8,7 @@ namespace Stripe.Reporting
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ReportRunService : Service,
+    public class ReportRunService : Service<ReportRun>,
         ICreatable<ReportRun, ReportRunCreateOptions>,
         IListable<ReportRun, ReportRunListOptions>,
         IRetrievable<ReportRun, ReportRunGetOptions>

@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ProductService : Service,
+    public class ProductService : Service<Product>,
         ICreatable<Product, ProductCreateOptions>,
         IDeletable<Product, ProductDeleteOptions>,
         IListable<Product, ProductListOptions>,

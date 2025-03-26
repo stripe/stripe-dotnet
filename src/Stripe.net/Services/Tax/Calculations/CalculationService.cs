@@ -7,7 +7,7 @@ namespace Stripe.Tax
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class CalculationService : Service,
+    public partial class CalculationService : Service<Calculation>,
         ICreatable<Calculation, CalculationCreateOptions>,
         IRetrievable<Calculation, CalculationGetOptions>
     {

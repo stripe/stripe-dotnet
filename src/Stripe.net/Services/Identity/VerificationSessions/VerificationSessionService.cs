@@ -8,7 +8,7 @@ namespace Stripe.Identity
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class VerificationSessionService : Service,
+    public class VerificationSessionService : Service<VerificationSession>,
         ICreatable<VerificationSession, VerificationSessionCreateOptions>,
         IListable<VerificationSession, VerificationSessionListOptions>,
         IRetrievable<VerificationSession, VerificationSessionGetOptions>,

@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SetupAttemptService : Service,
+    public class SetupAttemptService : Service<SetupAttempt>,
         IListable<SetupAttempt, SetupAttemptListOptions>
     {
         public SetupAttemptService()

@@ -8,7 +8,7 @@ namespace Stripe.Identity
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class VerificationReportService : Service,
+    public class VerificationReportService : Service<VerificationReport>,
         IListable<VerificationReport, VerificationReportListOptions>,
         IRetrievable<VerificationReport, VerificationReportGetOptions>
     {

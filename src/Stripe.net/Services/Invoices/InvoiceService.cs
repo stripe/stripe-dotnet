@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class InvoiceService : Service,
+    public partial class InvoiceService : Service<Invoice>,
         ICreatable<Invoice, InvoiceCreateOptions>,
         IDeletable<Invoice, InvoiceDeleteOptions>,
         IListable<Invoice, InvoiceListOptions>,

@@ -8,7 +8,7 @@ namespace Stripe.Sigma
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ScheduledQueryRunService : Service,
+    public class ScheduledQueryRunService : Service<ScheduledQueryRun>,
         IListable<ScheduledQueryRun, ScheduledQueryRunListOptions>,
         IRetrievable<ScheduledQueryRun, ScheduledQueryRunGetOptions>
     {

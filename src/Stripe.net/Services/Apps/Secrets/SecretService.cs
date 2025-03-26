@@ -7,7 +7,7 @@ namespace Stripe.Apps
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SecretService : Service,
+    public class SecretService : Service<Secret>,
         ICreatable<Secret, SecretCreateOptions>,
         IListable<Secret, SecretListOptions>
     {

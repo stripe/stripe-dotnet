@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PayoutService : Service,
+    public class PayoutService : Service<Payout>,
         ICreatable<Payout, PayoutCreateOptions>,
         IListable<Payout, PayoutListOptions>,
         IRetrievable<Payout, PayoutGetOptions>,

@@ -8,7 +8,7 @@ namespace Stripe.Forwarding
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class RequestService : Service,
+    public class RequestService : Service<Request>,
         ICreatable<Request, RequestCreateOptions>,
         IListable<Request, RequestListOptions>,
         IRetrievable<Request, RequestGetOptions>

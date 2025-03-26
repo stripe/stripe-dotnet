@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ProductFeatureService : Service,
+    public class ProductFeatureService : ServiceNested<ProductFeature>,
         INestedCreatable<ProductFeature, ProductFeatureCreateOptions>,
         INestedDeletable<ProductFeature, ProductFeatureDeleteOptions>,
         INestedListable<ProductFeature, ProductFeatureListOptions>,

@@ -6,7 +6,8 @@ namespace Stripe.Tax
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SettingsService : Service, ISingletonRetrievable<Settings>
+    public class SettingsService : Service<Settings>,
+        ISingletonRetrievable<Settings>
     {
         public SettingsService()
         {

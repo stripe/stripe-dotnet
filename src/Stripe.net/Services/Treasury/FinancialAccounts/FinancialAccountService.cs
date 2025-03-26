@@ -8,7 +8,7 @@ namespace Stripe.Treasury
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class FinancialAccountService : Service,
+    public partial class FinancialAccountService : Service<FinancialAccount>,
         ICreatable<FinancialAccount, FinancialAccountCreateOptions>,
         IListable<FinancialAccount, FinancialAccountListOptions>,
         IRetrievable<FinancialAccount, FinancialAccountGetOptions>,

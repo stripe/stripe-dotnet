@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TransactionService : Service,
+    public class TransactionService : Service<Transaction>,
         IListable<Transaction, TransactionListOptions>,
         IRetrievable<Transaction, TransactionGetOptions>,
         IUpdatable<Transaction, TransactionUpdateOptions>

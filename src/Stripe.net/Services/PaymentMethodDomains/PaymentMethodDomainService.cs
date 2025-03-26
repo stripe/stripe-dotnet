@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PaymentMethodDomainService : Service,
+    public class PaymentMethodDomainService : Service<PaymentMethodDomain>,
         ICreatable<PaymentMethodDomain, PaymentMethodDomainCreateOptions>,
         IListable<PaymentMethodDomain, PaymentMethodDomainListOptions>,
         IRetrievable<PaymentMethodDomain, PaymentMethodDomainGetOptions>,

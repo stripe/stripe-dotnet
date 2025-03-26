@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountExternalAccountService : Service,
+    public class AccountExternalAccountService : ServiceNested<IExternalAccount>,
         INestedCreatable<IExternalAccount, AccountExternalAccountCreateOptions>,
         INestedDeletable<IExternalAccount, AccountExternalAccountDeleteOptions>,
         INestedListable<IExternalAccount, AccountExternalAccountListOptions>,

@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TokenService : Service,
+    public class TokenService : Service<Token>,
         IListable<Token, TokenListOptions>,
         IRetrievable<Token, TokenGetOptions>,
         IUpdatable<Token, TokenUpdateOptions>

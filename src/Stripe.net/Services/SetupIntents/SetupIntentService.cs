@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SetupIntentService : Service,
+    public class SetupIntentService : Service<SetupIntent>,
         ICreatable<SetupIntent, SetupIntentCreateOptions>,
         IListable<SetupIntent, SetupIntentListOptions>,
         IRetrievable<SetupIntent, SetupIntentGetOptions>,

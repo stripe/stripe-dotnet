@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SubscriptionService : Service,
+    public class SubscriptionService : Service<Subscription>,
         ICreatable<Subscription, SubscriptionCreateOptions>,
         IListable<Subscription, SubscriptionListOptions>,
         IRetrievable<Subscription, SubscriptionGetOptions>,

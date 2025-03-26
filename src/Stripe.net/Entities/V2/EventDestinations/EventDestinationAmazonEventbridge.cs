@@ -1,5 +1,5 @@
 // File generated from our OpenAPI spec
-namespace Stripe.V2.Core
+namespace Stripe.V2
 {
     using Newtonsoft.Json;
 
