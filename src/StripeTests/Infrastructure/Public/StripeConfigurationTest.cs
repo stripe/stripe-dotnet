@@ -95,14 +95,23 @@ namespace StripeTests
         }
 
         [Fact]
-        public void StripeClient_Getter_ShouldAllowBetaVersionsToBeAddedOnceOnly()
+        public void StripeClient_Getter_ShouldAllowBetaVersionsToBeAddedMultipleTimes()
         {
             StripeConfiguration.ClearBetaVersion();
             StripeConfiguration.AddBetaVersion("feature_beta", "v3");
             Assert.Equal(ApiVersion.Current + "; feature_beta=v3", StripeConfiguration.ApiVersion);
 
-            var exception = Record.Exception(() => StripeConfiguration.AddBetaVersion("feature_beta", "v2"));
-            Assert.NotNull(exception);
+            // Same version is a no-op
+            StripeConfiguration.AddBetaVersion("feature_beta", "v3");
+            Assert.Equal(ApiVersion.Current + "; feature_beta=v3", StripeConfiguration.ApiVersion);
+
+            // Higher version is used
+            StripeConfiguration.AddBetaVersion("feature_beta", "v5");
+            Assert.Equal(ApiVersion.Current + "; feature_beta=v5", StripeConfiguration.ApiVersion);
+
+            // Lower version is a no-op
+            StripeConfiguration.AddBetaVersion("feature_beta", "v2");
+            Assert.Equal(ApiVersion.Current + "; feature_beta=v5", StripeConfiguration.ApiVersion);
         }
 
         [Fact]
