@@ -57,9 +57,6 @@ namespace StripeTests
             Assert.NotNull(charge.Customer);
             Assert.Equal("customer", charge.Customer.Object);
 
-            Assert.NotNull(charge.Invoice);
-            Assert.Equal("invoice", charge.Invoice.Object);
-
             Assert.NotNull(charge.OnBehalfOf);
             Assert.Equal("account", charge.OnBehalfOf.Object);
 
