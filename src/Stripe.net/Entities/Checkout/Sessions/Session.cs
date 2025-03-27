@@ -197,7 +197,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// Currency conversion details for <a
         /// href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>
-        /// sessions.
+        /// sessions created before 2025-03-31.
         /// </summary>
         [JsonProperty("currency_conversion")]
 #if NET6_0_OR_GREATER

@@ -8,6 +8,9 @@ namespace Stripe
 
     public class InvoiceParentQuoteDetails : StripeEntity<InvoiceParentQuoteDetails>
     {
+        /// <summary>
+        /// The quote that generated this invoice.
+        /// </summary>
         [JsonProperty("quote")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quote")]

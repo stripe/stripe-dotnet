@@ -8,6 +8,9 @@ namespace Stripe
 
     public class InvoiceLineItemParentInvoiceItemDetails : StripeEntity<InvoiceLineItemParentInvoiceItemDetails>
     {
+        /// <summary>
+        /// The invoice item that generated this line item.
+        /// </summary>
         [JsonProperty("invoice_item")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_item")]
@@ -32,6 +35,9 @@ namespace Stripe
 #endif
         public InvoiceLineItemParentInvoiceItemDetailsProrationDetails ProrationDetails { get; set; }
 
+        /// <summary>
+        /// The subscription that the invoice item belongs to.
+        /// </summary>
         [JsonProperty("subscription")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]

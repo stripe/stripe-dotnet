@@ -446,8 +446,8 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataSamsungPayOptions SamsungPay { get; set; }
 
         /// <summary>
-        /// If this is a Satispay PaymentMethod, this hash contains details about the Satispay
-        /// payment method.
+        /// If this is a <c>satispay</c> PaymentMethod, this hash contains details about the
+        /// satispay payment method.
         /// </summary>
         [JsonProperty("satispay")]
 #if NET6_0_OR_GREATER

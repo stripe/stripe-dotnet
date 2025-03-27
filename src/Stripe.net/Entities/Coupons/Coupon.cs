@@ -101,7 +101,7 @@ namespace Stripe
         /// <summary>
         /// One of <c>forever</c>, <c>once</c>, and <c>repeating</c>. Describes how long a customer
         /// who applies this coupon will get the discount.
-        /// One of: <c>forever</c>, or <c>once</c>.
+        /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
         /// </summary>
         [JsonProperty("duration")]
 #if NET6_0_OR_GREATER

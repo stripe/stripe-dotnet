@@ -873,6 +873,9 @@ namespace Stripe
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
+        /// <summary>
+        /// The parent that generated this invoice.
+        /// </summary>
         [JsonProperty("parent")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("parent")]

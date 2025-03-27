@@ -8,12 +8,18 @@ namespace Stripe
 
     public class InvoicePaymentPaymentOptions : INestedOptions
     {
+        /// <summary>
+        /// Only return invoice payments associated by this payment intent ID.
+        /// </summary>
         [JsonProperty("payment_intent")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_intent")]
 #endif
         public string PaymentIntent { get; set; }
 
+        /// <summary>
+        /// Only return invoice payments associated by this payment type.
+        /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
