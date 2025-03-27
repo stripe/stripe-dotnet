@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodDataIdealOptions : INestedOptions
     {
@@ -14,6 +17,9 @@ namespace Stripe
         /// <c>yoursafe</c>.
         /// </summary>
         [JsonProperty("bank")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank")]
+#endif
         public string Bank { get; set; }
     }
 }

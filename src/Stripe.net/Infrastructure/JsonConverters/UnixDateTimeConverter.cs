@@ -14,8 +14,6 @@ namespace Stripe.Infrastructure
     /// </remarks>
     public class UnixDateTimeConverter : DateTimeConverterBase
     {
-        internal static readonly DateTime UnixEpoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-
         /// <summary>
         /// Writes the JSON representation of the object.
         /// </summary>
@@ -28,7 +26,7 @@ namespace Stripe.Infrastructure
 
             if (value is DateTime dateTime)
             {
-                seconds = (long)(dateTime.ToUniversalTime() - UnixEpoch).TotalSeconds;
+                seconds = (long)(dateTime.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
             }
             else
             {
@@ -84,7 +82,7 @@ namespace Stripe.Infrastructure
 
             if (seconds >= 0)
             {
-                return UnixEpoch.AddSeconds(seconds);
+                return DateTimeUtils.UnixEpoch.AddSeconds(seconds);
             }
             else
             {

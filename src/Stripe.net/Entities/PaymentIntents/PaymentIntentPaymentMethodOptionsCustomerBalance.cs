@@ -2,10 +2,16 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsCustomerBalance : StripeEntity<PaymentIntentPaymentMethodOptionsCustomerBalance>
     {
         [JsonProperty("bank_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank_transfer")]
+#endif
         public PaymentIntentPaymentMethodOptionsCustomerBalanceBankTransfer BankTransfer { get; set; }
 
         /// <summary>
@@ -13,6 +19,9 @@ namespace Stripe
         /// balance. Permitted values include: <c>bank_transfer</c>.
         /// </summary>
         [JsonProperty("funding_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("funding_type")]
+#endif
         public string FundingType { get; set; }
 
         /// <summary>
@@ -36,6 +45,9 @@ namespace Stripe
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
     }
 }

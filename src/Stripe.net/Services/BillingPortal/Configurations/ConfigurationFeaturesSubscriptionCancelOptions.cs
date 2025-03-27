@@ -2,6 +2,9 @@
 namespace Stripe.BillingPortal
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfigurationFeaturesSubscriptionCancelOptions : INestedOptions
     {
@@ -10,12 +13,18 @@ namespace Stripe.BillingPortal
         /// exposed to the customer.
         /// </summary>
         [JsonProperty("cancellation_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancellation_reason")]
+#endif
         public ConfigurationFeaturesSubscriptionCancelCancellationReasonOptions CancellationReason { get; set; }
 
         /// <summary>
         /// Whether the feature is enabled.
         /// </summary>
         [JsonProperty("enabled")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled")]
+#endif
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -23,6 +32,9 @@ namespace Stripe.BillingPortal
         /// One of: <c>at_period_end</c>, or <c>immediately</c>.
         /// </summary>
         [JsonProperty("mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mode")]
+#endif
         public string Mode { get; set; }
 
         /// <summary>
@@ -34,6 +46,9 @@ namespace Stripe.BillingPortal
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_behavior")]
+#endif
         public string ProrationBehavior { get; set; }
     }
 }

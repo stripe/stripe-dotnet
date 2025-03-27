@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Events are our way of letting you know when something interesting happens in your
@@ -36,24 +39,36 @@ namespace Stripe
     /// href="https://stripe.com/docs/api#retrieve_event">Retrieve Event API</a> for 30 days.
     /// </summary>
     [JsonConverter(typeof(EventConverter))]
+#if NET6_0_OR_GREATER
+    [NoSystemTextJsonAttributesNeeded("Converter is only needed for deserialization inside the Stripe.net SDK")]
+#endif
     public class Event : StripeEntity<Event>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The connected account that originates the event.
         /// </summary>
         [JsonProperty("account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account")]
+#endif
         public string Account { get; set; }
 
         /// <summary>
@@ -61,6 +76,9 @@ namespace Stripe
         /// events on or after October 31, 2014.
         /// </summary>
         [JsonProperty("api_version")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("api_version")]
+#endif
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -68,9 +86,16 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         [JsonProperty("data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("data")]
+#endif
         public EventData Data { get; set; }
 
         /// <summary>
@@ -78,6 +103,9 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -85,12 +113,18 @@ namespace Stripe
         /// 20x response) to the URLs you specify.
         /// </summary>
         [JsonProperty("pending_webhooks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pending_webhooks")]
+#endif
         public long PendingWebhooks { get; set; }
 
         /// <summary>
         /// Information on the API request that triggers the event.
         /// </summary>
         [JsonProperty("request")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request")]
+#endif
         public EventRequest Request { get; set; }
 
         /// <summary>
@@ -219,6 +253,9 @@ namespace Stripe
         /// <c>ping</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceSubscriptionDetailsItemPriceDataOptions : INestedOptions
     {
@@ -11,18 +14,27 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// The ID of the product that this price will belong to.
         /// </summary>
         [JsonProperty("product")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("product")]
+#endif
         public string Product { get; set; }
 
         /// <summary>
         /// The recurring components of a price such as <c>interval</c> and <c>interval_count</c>.
         /// </summary>
         [JsonProperty("recurring")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("recurring")]
+#endif
         public InvoiceSubscriptionDetailsItemPriceDataRecurringOptions Recurring { get; set; }
 
         /// <summary>
@@ -35,6 +47,9 @@ namespace Stripe
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_behavior")]
+#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -42,6 +57,9 @@ namespace Stripe
         /// how much to charge.
         /// </summary>
         [JsonProperty("unit_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount")]
+#endif
         public long? UnitAmount { get; set; }
 
         /// <summary>
@@ -50,6 +68,9 @@ namespace Stripe
         /// <c>unit_amount_decimal</c> can be set.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount_decimal")]
+#endif
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

@@ -3,6 +3,9 @@ namespace Stripe.TestHelpers.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PersonalizationDesignRejectionReasonsOptions : INestedOptions
     {
@@ -13,6 +16,9 @@ namespace Stripe.TestHelpers.Issuing
         /// <c>promotional_material</c>.
         /// </summary>
         [JsonProperty("card_logo")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_logo")]
+#endif
         public List<string> CardLogo { get; set; }
 
         /// <summary>
@@ -22,6 +28,9 @@ namespace Stripe.TestHelpers.Issuing
         /// <c>promotional_material</c>.
         /// </summary>
         [JsonProperty("carrier_text")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("carrier_text")]
+#endif
         public List<string> CarrierText { get; set; }
     }
 }

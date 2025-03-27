@@ -3,7 +3,13 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class SubscriptionScheduleDefaultSettings : StripeEntity<SubscriptionScheduleDefaultSettings>
     {
         /// <summary>
@@ -12,9 +18,15 @@ namespace Stripe
         /// the application owner's Stripe account during this phase of the schedule.
         /// </summary>
         [JsonProperty("application_fee_percent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_percent")]
+#endif
         public decimal? ApplicationFeePercent { get; set; }
 
         [JsonProperty("automatic_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("automatic_tax")]
+#endif
         public SubscriptionScheduleDefaultSettingsAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
@@ -26,6 +38,9 @@ namespace Stripe
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
+#endif
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -33,6 +48,9 @@ namespace Stripe
         /// new billing period.
         /// </summary>
         [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
         public SubscriptionScheduleDefaultSettingsBillingThresholds BillingThresholds { get; set; }
 
         /// <summary>
@@ -44,6 +62,9 @@ namespace Stripe
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("collection_method")]
+#endif
         public string CollectionMethod { get; set; }
 
         #region Expandable DefaultPaymentMethod
@@ -54,6 +75,9 @@ namespace Stripe
         /// will use the default payment method in the customer's invoice settings.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string DefaultPaymentMethodId
         {
             get => this.InternalDefaultPaymentMethod?.Id;
@@ -68,6 +92,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public PaymentMethod DefaultPaymentMethod
         {
             get => this.InternalDefaultPaymentMethod?.ExpandedObject;
@@ -76,6 +103,10 @@ namespace Stripe
 
         [JsonProperty("default_payment_method")]
         [JsonConverter(typeof(ExpandableFieldConverter<PaymentMethod>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_payment_method")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentMethod>))]
+#endif
         internal ExpandableField<PaymentMethod> InternalDefaultPaymentMethod { get; set; }
         #endregion
 
@@ -85,9 +116,15 @@ namespace Stripe
         /// certain local payment methods UIs.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         [JsonProperty("invoice_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_settings")]
+#endif
         public SubscriptionScheduleDefaultSettingsInvoiceSettings InvoiceSettings { get; set; }
 
         #region Expandable OnBehalfOf
@@ -98,6 +135,9 @@ namespace Stripe
         /// schedule's subscription. See the Connect documentation for details.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string OnBehalfOfId
         {
             get => this.InternalOnBehalfOf?.Id;
@@ -112,6 +152,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Account OnBehalfOf
         {
             get => this.InternalOnBehalfOf?.ExpandedObject;
@@ -120,6 +163,10 @@ namespace Stripe
 
         [JsonProperty("on_behalf_of")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("on_behalf_of")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
+#endif
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
@@ -129,6 +176,9 @@ namespace Stripe
         /// subscription's invoices.
         /// </summary>
         [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
         public SubscriptionScheduleDefaultSettingsTransferData TransferData { get; set; }
     }
 }

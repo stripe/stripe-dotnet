@@ -4,6 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// Customers with certain payments enabled have a cash balance, representing funds that
@@ -12,24 +15,39 @@ namespace Stripe
     /// This includes funding by the customer, allocation to payments, and refunds to the
     /// customer.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class CustomerCashBalanceTransaction : StripeEntity<CustomerCashBalanceTransaction>, IHasId, IHasObject, IBalanceTransactionSource
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         [JsonProperty("adjusted_for_overdraft")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("adjusted_for_overdraft")]
+#endif
         public CustomerCashBalanceTransactionAdjustedForOverdraft AdjustedForOverdraft { get; set; }
 
         [JsonProperty("applied_to_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("applied_to_payment")]
+#endif
         public CustomerCashBalanceTransactionAppliedToPayment AppliedToPayment { get; set; }
 
         /// <summary>
@@ -37,6 +55,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -45,6 +67,9 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -54,6 +79,9 @@ namespace Stripe
         /// The customer whose available cash balance changed as a result of this transaction.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -67,6 +95,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -75,6 +106,10 @@ namespace Stripe
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
+#endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -84,9 +119,15 @@ namespace Stripe
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("ending_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ending_balance")]
+#endif
         public long EndingBalance { get; set; }
 
         [JsonProperty("funded")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("funded")]
+#endif
         public CustomerCashBalanceTransactionFunded Funded { get; set; }
 
         /// <summary>
@@ -94,6 +135,9 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -103,12 +147,21 @@ namespace Stripe
         /// represents funds being removed from the cash balance.
         /// </summary>
         [JsonProperty("net_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("net_amount")]
+#endif
         public long NetAmount { get; set; }
 
         [JsonProperty("refunded_from_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refunded_from_payment")]
+#endif
         public CustomerCashBalanceTransactionRefundedFromPayment RefundedFromPayment { get; set; }
 
         [JsonProperty("transferred_to_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transferred_to_balance")]
+#endif
         public CustomerCashBalanceTransactionTransferredToBalance TransferredToBalance { get; set; }
 
         /// <summary>
@@ -121,9 +174,15 @@ namespace Stripe
         /// <c>unapplied_from_payment</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
 
         [JsonProperty("unapplied_from_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unapplied_from_payment")]
+#endif
         public CustomerCashBalanceTransactionUnappliedFromPayment UnappliedFromPayment { get; set; }
     }
 }

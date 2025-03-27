@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentMethodEpsOptions : INestedOptions
     {
@@ -23,6 +26,9 @@ namespace Stripe
         /// <c>vr_bank_braunau</c>.
         /// </summary>
         [JsonProperty("bank")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank")]
+#endif
         public string Bank { get; set; }
     }
 }

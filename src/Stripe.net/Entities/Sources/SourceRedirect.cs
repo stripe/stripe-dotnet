@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SourceRedirect : StripeEntity<SourceRedirect>
     {
@@ -12,12 +15,18 @@ namespace Stripe
         /// technical error). Present only if the redirect status is <c>failed</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("failure_reason")]
+#endif
         public string FailureReason { get; set; }
 
         /// <summary>
         /// The URL you provide to redirect the customer to after they authenticated their payment.
         /// </summary>
         [JsonProperty("return_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("return_url")]
+#endif
         public string ReturnUrl { get; set; }
 
         /// <summary>
@@ -27,6 +36,9 @@ namespace Stripe
         /// authentication, cannot be reused).
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -34,6 +46,9 @@ namespace Stripe
         /// authentication flow.
         /// </summary>
         [JsonProperty("url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("url")]
+#endif
         public string Url { get; set; }
     }
 }

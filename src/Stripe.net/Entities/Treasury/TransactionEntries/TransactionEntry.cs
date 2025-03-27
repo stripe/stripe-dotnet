@@ -4,29 +4,44 @@ namespace Stripe.Treasury
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// TransactionEntries represent individual units of money movements within a single <a
     /// href="https://stripe.com/docs/api#transactions">Transaction</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class TransactionEntry : StripeEntity<TransactionEntry>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Change to a FinancialAccount's balance.
         /// </summary>
         [JsonProperty("balance_impact")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_impact")]
+#endif
         public TransactionEntryBalanceImpact BalanceImpact { get; set; }
 
         /// <summary>
@@ -34,6 +49,10 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -42,6 +61,9 @@ namespace Stripe.Treasury
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -49,24 +71,37 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime EffectiveAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The FinancialAccount associated with this object.
         /// </summary>
         [JsonProperty("financial_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_account")]
+#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
         /// Token of the flow associated with the TransactionEntry.
         /// </summary>
         [JsonProperty("flow")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flow")]
+#endif
         public string Flow { get; set; }
 
         /// <summary>
         /// Details of the flow associated with the TransactionEntry.
         /// </summary>
         [JsonProperty("flow_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flow_details")]
+#endif
         public TransactionEntryFlowDetails FlowDetails { get; set; }
 
         /// <summary>
@@ -76,6 +111,9 @@ namespace Stripe.Treasury
         /// <c>outbound_transfer</c>, <c>received_credit</c>, or <c>received_debit</c>.
         /// </summary>
         [JsonProperty("flow_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flow_type")]
+#endif
         public string FlowType { get; set; }
 
         /// <summary>
@@ -83,6 +121,9 @@ namespace Stripe.Treasury
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         #region Expandable Transaction
@@ -92,6 +133,9 @@ namespace Stripe.Treasury
         /// The Transaction associated with this object.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string TransactionId
         {
             get => this.InternalTransaction?.Id;
@@ -105,6 +149,9 @@ namespace Stripe.Treasury
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Transaction Transaction
         {
             get => this.InternalTransaction?.ExpandedObject;
@@ -113,6 +160,10 @@ namespace Stripe.Treasury
 
         [JsonProperty("transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<Transaction>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Transaction>))]
+#endif
         internal ExpandableField<Transaction> InternalTransaction { get; set; }
         #endregion
 
@@ -129,6 +180,9 @@ namespace Stripe.Treasury
         /// <c>received_credit</c>, or <c>received_debit</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentMethodListOptions : ListOptions
     {
@@ -9,6 +12,9 @@ namespace Stripe
         /// The ID of the customer whose PaymentMethods will be retrieved.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -28,6 +34,9 @@ namespace Stripe
         /// <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
     }
 }

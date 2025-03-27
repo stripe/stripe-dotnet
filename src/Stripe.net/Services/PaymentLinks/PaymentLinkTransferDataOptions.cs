@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentLinkTransferDataOptions : INestedOptions
     {
@@ -9,6 +12,9 @@ namespace Stripe
         /// The amount that will be transferred automatically when a charge succeeds.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -18,6 +24,9 @@ namespace Stripe
         /// <c>transfer</c> field.
         /// </summary>
         [JsonProperty("destination")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination")]
+#endif
         public string Destination { get; set; }
     }
 }

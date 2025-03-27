@@ -7,7 +7,7 @@ namespace Stripe.Treasury
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class FinancialAccountFeaturesService : ServiceNested<FinancialAccountFeatures>
+    public class FinancialAccountFeaturesService : Service
     {
         public FinancialAccountFeaturesService()
         {

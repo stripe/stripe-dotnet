@@ -4,6 +4,9 @@ namespace Stripe.Tax
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A Tax <c>Registration</c> lets us know that your business is registered to collect tax
@@ -23,12 +26,18 @@ namespace Stripe.Tax
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -36,6 +45,10 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("active_from")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active_from")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime ActiveFrom { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -43,9 +56,15 @@ namespace Stripe.Tax
         /// 3166-1 alpha-2</a>).
         /// </summary>
         [JsonProperty("country")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country")]
+#endif
         public string Country { get; set; }
 
         [JsonProperty("country_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("country_options")]
+#endif
         public RegistrationCountryOptions CountryOptions { get; set; }
 
         /// <summary>
@@ -53,6 +72,10 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -61,6 +84,10 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -68,6 +95,9 @@ namespace Stripe.Tax
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -76,6 +106,9 @@ namespace Stripe.Tax
         /// One of: <c>active</c>, <c>expired</c>, or <c>scheduled</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
     }
 }

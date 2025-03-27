@@ -3,6 +3,9 @@ namespace Stripe.Identity
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class VerificationSessionOptionsDocument : StripeEntity<VerificationSessionOptionsDocument>
     {
@@ -13,6 +16,9 @@ namespace Stripe.Identity
         /// One of: <c>driving_license</c>, <c>id_card</c>, or <c>passport</c>.
         /// </summary>
         [JsonProperty("allowed_types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allowed_types")]
+#endif
         public List<string> AllowedTypes { get; set; }
 
         /// <summary>
@@ -21,6 +27,9 @@ namespace Stripe.Identity
         /// check</a> with the document’s extracted name and date of birth.
         /// </summary>
         [JsonProperty("require_id_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("require_id_number")]
+#endif
         public bool RequireIdNumber { get; set; }
 
         /// <summary>
@@ -28,6 +37,9 @@ namespace Stripe.Identity
         /// camera.
         /// </summary>
         [JsonProperty("require_live_capture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("require_live_capture")]
+#endif
         public bool RequireLiveCapture { get; set; }
 
         /// <summary>
@@ -37,6 +49,9 @@ namespace Stripe.Identity
         /// href="https://stripe.com/docs/identity/selfie">Learn more</a>.
         /// </summary>
         [JsonProperty("require_matching_selfie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("require_matching_selfie")]
+#endif
         public bool RequireMatchingSelfie { get; set; }
     }
 }

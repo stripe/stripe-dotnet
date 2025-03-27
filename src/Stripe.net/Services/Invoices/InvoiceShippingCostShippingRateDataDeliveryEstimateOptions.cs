@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceShippingCostShippingRateDataDeliveryEstimateOptions : INestedOptions
     {
@@ -10,12 +13,18 @@ namespace Stripe
         /// infinite.
         /// </summary>
         [JsonProperty("maximum")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("maximum")]
+#endif
         public InvoiceShippingCostShippingRateDataDeliveryEstimateMaximumOptions Maximum { get; set; }
 
         /// <summary>
         /// The lower bound of the estimated range. If empty, represents no lower bound.
         /// </summary>
         [JsonProperty("minimum")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("minimum")]
+#endif
         public InvoiceShippingCostShippingRateDataDeliveryEstimateMinimumOptions Minimum { get; set; }
     }
 }
