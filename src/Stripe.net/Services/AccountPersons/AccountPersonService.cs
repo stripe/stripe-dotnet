@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountPersonService : ServiceNested<Person>,
+    public class AccountPersonService : Service,
         INestedCreatable<Person, AccountPersonCreateOptions>,
         INestedDeletable<Person, AccountPersonDeleteOptions>,
         INestedListable<Person, AccountPersonListOptions>,

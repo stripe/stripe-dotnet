@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class MandateService : Service<Mandate>,
+    public class MandateService : Service,
         IRetrievable<Mandate, MandateGetOptions>
     {
         public MandateService()

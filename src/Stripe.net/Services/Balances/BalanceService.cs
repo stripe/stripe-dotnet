@@ -6,8 +6,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class BalanceService : Service<Balance>,
-        ISingletonRetrievable<Balance>
+    public class BalanceService : Service, ISingletonRetrievable<Balance>
     {
         public BalanceService()
         {

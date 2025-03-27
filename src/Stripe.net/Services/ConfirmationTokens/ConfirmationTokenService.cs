@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ConfirmationTokenService : Service<ConfirmationToken>,
+    public class ConfirmationTokenService : Service,
         IRetrievable<ConfirmationToken, ConfirmationTokenGetOptions>
     {
         public ConfirmationTokenService()

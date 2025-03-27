@@ -8,7 +8,7 @@ namespace Stripe.Treasury
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TransactionEntryService : Service<TransactionEntry>,
+    public class TransactionEntryService : Service,
         IListable<TransactionEntry, TransactionEntryListOptions>,
         IRetrievable<TransactionEntry, TransactionEntryGetOptions>
     {

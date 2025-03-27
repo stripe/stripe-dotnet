@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AuthorizationService : Service<Authorization>,
+    public class AuthorizationService : Service,
         IListable<Authorization, AuthorizationListOptions>,
         IRetrievable<Authorization, AuthorizationGetOptions>,
         IUpdatable<Authorization, AuthorizationUpdateOptions>

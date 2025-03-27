@@ -8,7 +8,7 @@ namespace Stripe.Treasury
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ReceivedCreditService : Service<ReceivedCredit>,
+    public class ReceivedCreditService : Service,
         IListable<ReceivedCredit, ReceivedCreditListOptions>,
         IRetrievable<ReceivedCredit, ReceivedCreditGetOptions>
     {

@@ -8,7 +8,7 @@ namespace Stripe.Climate
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ProductService : Service<Product>,
+    public class ProductService : Service,
         IListable<Product, ProductListOptions>,
         IRetrievable<Product, ProductGetOptions>
     {

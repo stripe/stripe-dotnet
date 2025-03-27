@@ -1,9 +1,12 @@
 namespace Stripe
 {
+    using System;
+
     /// <summary>Abstract base class for all services.</summary>
     /// <typeparam name="TEntityReturned">
     /// The type of <see cref="IStripeEntity"/> that this service returns.
     /// </typeparam>
+    [Obsolete("This class is deprecated and will be removed in a future release.  Use StripeClient#RequestAsync or StripeClient#RawRequest instead.")]
     public abstract class Service<TEntityReturned> : Service
         where TEntityReturned : IStripeEntity
     {

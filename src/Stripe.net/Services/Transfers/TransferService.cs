@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TransferService : Service<Transfer>,
+    public class TransferService : Service,
         ICreatable<Transfer, TransferCreateOptions>,
         IListable<Transfer, TransferListOptions>,
         IRetrievable<Transfer, TransferGetOptions>,

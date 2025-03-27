@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class BankAccountService : ServiceNested<BankAccount>,
+    public class BankAccountService : Service,
         INestedCreatable<BankAccount, BankAccountCreateOptions>,
         INestedDeletable<BankAccount, BankAccountDeleteOptions>,
         INestedListable<BankAccount, BankAccountListOptions>,
