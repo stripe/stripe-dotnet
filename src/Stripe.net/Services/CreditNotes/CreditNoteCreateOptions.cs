@@ -117,15 +117,6 @@ namespace Stripe
         public string Reason { get; set; }
 
         /// <summary>
-        /// ID of an existing refund to link this credit note to.
-        /// </summary>
-        [JsonProperty("refund")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund")]
-#endif
-        public string Refund { get; set; }
-
-        /// <summary>
         /// The integer amount in cents (or local equivalent) representing the amount to refund. If
         /// set, a refund will be created for the charge associated with the invoice.
         /// </summary>
@@ -134,6 +125,15 @@ namespace Stripe
         [STJS.JsonPropertyName("refund_amount")]
 #endif
         public long? RefundAmount { get; set; }
+
+        /// <summary>
+        /// Refunds to link to this credit note.
+        /// </summary>
+        [JsonProperty("refunds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refunds")]
+#endif
+        public List<CreditNoteRefundOptions> Refunds { get; set; }
 
         /// <summary>
         /// When shipping_cost contains the shipping_rate from the invoice, the shipping_cost is

@@ -258,6 +258,12 @@ namespace Stripe
 #endif
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("parent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("parent")]
+#endif
+        public InvoiceItemParent Parent { get; set; }
+
         [JsonProperty("period")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("period")]
@@ -265,23 +271,13 @@ namespace Stripe
         public InvoiceItemPeriod Period { get; set; }
 
         /// <summary>
-        /// If the invoice item is a proration, the plan of the subscription that the proration was
-        /// computed for.
+        /// The pricing information of the invoice item.
         /// </summary>
-        [JsonProperty("plan")]
+        [JsonProperty("pricing")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("plan")]
+        [STJS.JsonPropertyName("pricing")]
 #endif
-        public Plan Plan { get; set; }
-
-        /// <summary>
-        /// The price of the invoice item.
-        /// </summary>
-        [JsonProperty("price")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price")]
-#endif
-        public Price Price { get; set; }
+        public InvoiceItemPricing Pricing { get; set; }
 
         /// <summary>
         /// Whether the invoice item was created automatically as a proration adjustment when the
@@ -302,56 +298,6 @@ namespace Stripe
         [STJS.JsonPropertyName("quantity")]
 #endif
         public long Quantity { get; set; }
-
-        #region Expandable Subscription
-
-        /// <summary>
-        /// (ID of the Subscription)
-        /// The subscription that this invoice item has been created for, if any.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public string SubscriptionId
-        {
-            get => this.InternalSubscription?.Id;
-            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// The subscription that this invoice item has been created for, if any.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public Subscription Subscription
-        {
-            get => this.InternalSubscription?.ExpandedObject;
-            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
-        }
-
-        [JsonProperty("subscription")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
-#endif
-        internal ExpandableField<Subscription> InternalSubscription { get; set; }
-        #endregion
-
-        /// <summary>
-        /// The subscription item that this invoice item has been created for, if any.
-        /// </summary>
-        [JsonProperty("subscription_item")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_item")]
-#endif
-        public string SubscriptionItem { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <c>default_tax_rates</c> on
@@ -403,23 +349,5 @@ namespace Stripe
 #endif
         internal ExpandableField<TestHelpers.TestClock> InternalTestClock { get; set; }
         #endregion
-
-        /// <summary>
-        /// Unit amount (in the <c>currency</c> specified) of the invoice item.
-        /// </summary>
-        [JsonProperty("unit_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_amount")]
-#endif
-        public long? UnitAmount { get; set; }
-
-        /// <summary>
-        /// Same as <c>unit_amount</c>, but contains a decimal value with at most 12 decimal places.
-        /// </summary>
-        [JsonProperty("unit_amount_decimal")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_amount_decimal")]
-#endif
-        public decimal? UnitAmountDecimal { get; set; }
     }
 }

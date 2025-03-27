@@ -19,17 +19,6 @@ namespace Stripe
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
-        /// The ID of the coupon to apply to this phase of the subscription schedule. This field has
-        /// been deprecated and will be removed in a future API version. Use <c>discounts</c>
-        /// instead.
-        /// </summary>
-        [JsonProperty("coupon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-#endif
-        public string Coupon { get; set; }
-
-        /// <summary>
         /// The currency to preview this invoice in. Defaults to that of <c>customer</c> if not
         /// specified.
         /// </summary>

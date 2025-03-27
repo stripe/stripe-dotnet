@@ -92,6 +92,18 @@ namespace Stripe
 #endif
         public SetupAttemptPaymentMethodDetailsLink Link { get; set; }
 
+        [JsonProperty("naver_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("naver_pay")]
+#endif
+        public SetupAttemptPaymentMethodDetailsNaverPay NaverPay { get; set; }
+
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public SetupAttemptPaymentMethodDetailsNzBankAccount NzBankAccount { get; set; }
+
         [JsonProperty("paypal")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypal")]

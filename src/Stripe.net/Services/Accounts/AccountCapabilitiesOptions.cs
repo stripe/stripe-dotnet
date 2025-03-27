@@ -90,6 +90,15 @@ namespace Stripe
         public AccountCapabilitiesBankTransferPaymentsOptions BankTransferPayments { get; set; }
 
         /// <summary>
+        /// The billie_payments capability.
+        /// </summary>
+        [JsonProperty("billie_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie_payments")]
+#endif
+        public AccountCapabilitiesBilliePaymentsOptions BilliePayments { get; set; }
+
+        /// <summary>
         /// The blik_payments capability.
         /// </summary>
         [JsonProperty("blik_payments")]
@@ -385,6 +394,15 @@ namespace Stripe
         [STJS.JsonPropertyName("samsung_pay_payments")]
 #endif
         public AccountCapabilitiesSamsungPayPaymentsOptions SamsungPayPayments { get; set; }
+
+        /// <summary>
+        /// The satispay_payments capability.
+        /// </summary>
+        [JsonProperty("satispay_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay_payments")]
+#endif
+        public AccountCapabilitiesSatispayPaymentsOptions SatispayPayments { get; set; }
 
         /// <summary>
         /// The sepa_bank_transfer_payments capability.

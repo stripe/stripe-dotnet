@@ -40,12 +40,6 @@ namespace Stripe
 #endif
         public CustomerCashBalanceOptions CashBalance { get; set; }
 
-        [JsonProperty("coupon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-#endif
-        public string Coupon { get; set; }
-
         /// <summary>
         /// An arbitrary string that you can attach to a customer object. It is displayed alongside
         /// the customer in the dashboard.
@@ -144,17 +138,6 @@ namespace Stripe
         [STJS.JsonPropertyName("preferred_locales")]
 #endif
         public List<string> PreferredLocales { get; set; }
-
-        /// <summary>
-        /// The ID of a promotion code to apply to the customer. The customer will have a discount
-        /// applied on all recurring payments. Charges you create through the API will not have the
-        /// discount.
-        /// </summary>
-        [JsonProperty("promotion_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("promotion_code")]
-#endif
-        public string PromotionCode { get; set; }
 
         /// <summary>
         /// The customer's shipping information. Appears on invoices emailed to this customer.

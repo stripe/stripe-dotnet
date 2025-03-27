@@ -10,8 +10,9 @@ namespace Stripe.Billing
     {
         /// <summary>
         /// Specifies how events are aggregated. Allowed values are <c>count</c> to count the number
-        /// of events and <c>sum</c> to sum each event's value.
-        /// One of: <c>count</c>, or <c>sum</c>.
+        /// of events, <c>sum</c> to sum each event's value and <c>last</c> to take the last event's
+        /// value in the window.
+        /// One of: <c>count</c>, <c>last</c>, or <c>sum</c>.
         /// </summary>
         [JsonProperty("formula")]
 #if NET6_0_OR_GREATER

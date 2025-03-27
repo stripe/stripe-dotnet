@@ -54,5 +54,16 @@ namespace Stripe
 #endif
         internal List<ExpandableField<TaxId>> InternalDefaultAccountTaxIds { get; set; }
         #endregion
+
+        /// <summary>
+        /// Whether payment methods should be saved when a payment is completed for a one-time
+        /// invoices on a hosted invoice page.
+        /// One of: <c>always</c>, <c>never</c>, or <c>offer</c>.
+        /// </summary>
+        [JsonProperty("hosted_payment_method_save")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hosted_payment_method_save")]
+#endif
+        public string HostedPaymentMethodSave { get; set; }
     }
 }

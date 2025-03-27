@@ -16,7 +16,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// (ID of the File)
-        /// A File ID representing an image you would like displayed on the reader.
+        /// A File ID representing an image to display on the reader.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -30,7 +30,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// (Expanded)
-        /// A File ID representing an image you would like displayed on the reader.
+        /// A File ID representing an image to display on the reader.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
