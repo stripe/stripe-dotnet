@@ -41,14 +41,6 @@ namespace Stripe
 
         #region Expandable Account
 
-        /// <summary>
-        /// (ID of the Account)
-        /// The account this card belongs to. This attribute will not be in the card object if the
-        /// card belongs to a customer or recipient instead. This property is only available for
-        /// accounts where <a
-        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
-        /// is <c>application</c>, which includes Custom accounts.
-        /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
@@ -59,16 +51,6 @@ namespace Stripe
             set => this.InternalAccount = SetExpandableFieldId(value, this.InternalAccount);
         }
 
-        /// <summary>
-        /// (Expanded)
-        /// The account this card belongs to. This attribute will not be in the card object if the
-        /// card belongs to a customer or recipient instead. This property is only available for
-        /// accounts where <a
-        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
-        /// is <c>application</c>, which includes Custom accounts.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
@@ -212,9 +194,11 @@ namespace Stripe
         /// currency</a> in lowercase. Must be a <a
         /// href="https://docs.stripe.com/currencies">supported currency</a>. Only applicable on
         /// accounts (not customers or recipients). The card can be used as a transfer destination
-        /// for funds in this currency. This property is only available for accounts where <a
-        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
-        /// is <c>application</c>, which includes Custom accounts.
+        /// for funds in this currency. This property is only available when returned as an <a
+        /// href="https://stripe.com/api/external_account_cards/object">External Account</a> where
+        /// <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-is_controller">controller.is_controller</a>
+        /// is <c>true</c>.
         /// </summary>
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER

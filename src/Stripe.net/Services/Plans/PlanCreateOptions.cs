@@ -20,21 +20,6 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
-        /// Specifies a usage aggregation strategy for plans of <c>usage_type=metered</c>. Allowed
-        /// values are <c>sum</c> for summing up all usage during a period,
-        /// <c>last_during_period</c> for using the last usage record reported within a period,
-        /// <c>last_ever</c> for using the last usage record ever (across period bounds) or
-        /// <c>max</c> which uses the usage record with the maximum reported usage during a period.
-        /// Defaults to <c>sum</c>.
-        /// One of: <c>last_during_period</c>, <c>last_ever</c>, <c>max</c>, or <c>sum</c>.
-        /// </summary>
-        [JsonProperty("aggregate_usage")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("aggregate_usage")]
-#endif
-        public string AggregateUsage { get; set; }
-
-        /// <summary>
         /// A positive integer in cents (or local equivalent) (or 0 for a free plan) representing
         /// how much to charge on a recurring basis.
         /// </summary>

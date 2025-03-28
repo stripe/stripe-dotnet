@@ -114,23 +114,23 @@ namespace Stripe
         public InvoiceLinePeriodOptions Period { get; set; }
 
         /// <summary>
-        /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
-        /// </summary>
-        [JsonProperty("price")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price")]
-#endif
-        public string Price { get; set; }
-
-        /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
-        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
+        /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
 #endif
         public InvoiceLinePriceDataOptions PriceData { get; set; }
+
+        /// <summary>
+        /// The pricing information for the invoice item.
+        /// </summary>
+        [JsonProperty("pricing")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pricing")]
+#endif
+        public InvoiceLinePricingOptions Pricing { get; set; }
 
         /// <summary>
         /// Non-negative integer. The quantity of units for the line item.

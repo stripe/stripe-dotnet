@@ -403,47 +403,6 @@ namespace Stripe
 #endif
         public ChargeFraudDetails FraudDetails { get; set; }
 
-        #region Expandable Invoice
-
-        /// <summary>
-        /// (ID of the Invoice)
-        /// ID of the invoice this charge is for if one exists.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public string InvoiceId
-        {
-            get => this.InternalInvoice?.Id;
-            set => this.InternalInvoice = SetExpandableFieldId(value, this.InternalInvoice);
-        }
-
-        /// <summary>
-        /// (Expanded)
-        /// ID of the invoice this charge is for if one exists.
-        ///
-        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
-        /// </summary>
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public Invoice Invoice
-        {
-            get => this.InternalInvoice?.ExpandedObject;
-            set => this.InternalInvoice = SetExpandableFieldObject(value, this.InternalInvoice);
-        }
-
-        [JsonProperty("invoice")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("invoice")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
-#endif
-        internal ExpandableField<Invoice> InternalInvoice { get; set; }
-        #endregion
-
         [JsonProperty("level3")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("level3")]
@@ -595,6 +554,12 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_method_details")]
 #endif
         public ChargePaymentMethodDetails PaymentMethodDetails { get; set; }
+
+        [JsonProperty("presentment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("presentment_details")]
+#endif
+        public ChargePresentmentDetails PresentmentDetails { get; set; }
 
         /// <summary>
         /// Options to configure Radar. See <a

@@ -117,10 +117,11 @@ namespace Stripe.Issuing
         /// One of: <c>account_disabled</c>, <c>card_active</c>, <c>card_canceled</c>,
         /// <c>card_expired</c>, <c>card_inactive</c>, <c>cardholder_blocked</c>,
         /// <c>cardholder_inactive</c>, <c>cardholder_verification_required</c>,
-        /// <c>insecure_authorization_method</c>, <c>insufficient_funds</c>, <c>not_allowed</c>,
-        /// <c>pin_blocked</c>, <c>spending_controls</c>, <c>suspected_fraud</c>,
-        /// <c>verification_failed</c>, <c>webhook_approved</c>, <c>webhook_declined</c>,
-        /// <c>webhook_error</c>, or <c>webhook_timeout</c>.
+        /// <c>insecure_authorization_method</c>, <c>insufficient_funds</c>,
+        /// <c>network_fallback</c>, <c>not_allowed</c>, <c>pin_blocked</c>,
+        /// <c>spending_controls</c>, <c>suspected_fraud</c>, <c>verification_failed</c>,
+        /// <c>webhook_approved</c>, <c>webhook_declined</c>, <c>webhook_error</c>, or
+        /// <c>webhook_timeout</c>.
         /// </summary>
         [JsonProperty("reason")]
 #if NET6_0_OR_GREATER

@@ -128,6 +128,12 @@ namespace Stripe
 #endif
         public RefundDestinationDetailsMxBankTransfer MxBankTransfer { get; set; }
 
+        [JsonProperty("nz_bank_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_transfer")]
+#endif
+        public RefundDestinationDetailsNzBankTransfer NzBankTransfer { get; set; }
+
         [JsonProperty("p24")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("p24")]

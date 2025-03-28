@@ -105,12 +105,6 @@ namespace Stripe
 #endif
         public List<string> SubscriptionDefaultTaxRates { get; set; }
 
-        [JsonProperty("subscription_items")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_items")]
-#endif
-        public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
-
         [Obsolete("Use SubscriptionProrationBehavior instead.")]
         [JsonProperty("subscription_prorate")]
 #if NET6_0_OR_GREATER

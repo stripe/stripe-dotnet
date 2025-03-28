@@ -63,7 +63,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// If set, Checkout displays a back button and customers will be directed to this URL if
         /// they decide to cancel payment and return to your website. This parameter is not allowed
-        /// if ui_mode is <c>embedded</c>.
+        /// if ui_mode is <c>embedded</c> or <c>custom</c>.
         /// </summary>
         [JsonProperty("cancel_url")]
 #if NET6_0_OR_GREATER
@@ -284,6 +284,28 @@ namespace Stripe.Checkout
         public string Mode { get; set; }
 
         /// <summary>
+        /// A list of optional items the customer can add to their order at checkout. Use this
+        /// parameter to pass one-time or recurring <a
+        /// href="https://stripe.com/docs/api/prices">Prices</a>.
+        ///
+        /// There is a maximum of 10 optional items allowed on a Checkout Session, and the existing
+        /// limits on the number of line items allowed on a Checkout Session apply to the combined
+        /// number of line items and optional items.
+        ///
+        /// For <c>payment</c> mode, there is a maximum of 100 combined line items and optional
+        /// items, however it is recommended to consolidate items if there are more than a few
+        /// dozen.
+        ///
+        /// For <c>subscription</c> mode, there is a maximum of 20 line items and optional items
+        /// with recurring Prices and 20 line items and optional items with one-time Prices.
+        /// </summary>
+        [JsonProperty("optional_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("optional_items")]
+#endif
+        public List<SessionOptionalItemOptions> OptionalItems { get; set; }
+
+        /// <summary>
         /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
         /// <c>payment</c> mode.
         /// </summary>
@@ -360,20 +382,33 @@ namespace Stripe.Checkout
         /// characteristics.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>cashapp</c>,
-        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
-        /// <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>,
-        /// <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>,
-        /// <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>,
-        /// <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
+        /// <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
+        /// <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
+        /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
+        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_types")]
 #endif
         public List<string> PaymentMethodTypes { get; set; }
+
+        /// <summary>
+        /// This property is used to set up permissions for various actions (e.g., update) on the
+        /// CheckoutSession object.
+        ///
+        /// For specific permissions, please refer to their dedicated subsections, such as
+        /// <c>permissions.update.shipping_details</c>.
+        /// </summary>
+        [JsonProperty("permissions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("permissions")]
+#endif
+        public SessionPermissionsOptions Permissions { get; set; }
 
         /// <summary>
         /// Controls phone number collection settings for the session.
@@ -403,8 +438,9 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The URL to redirect your customer back to after they authenticate or cancel their
-        /// payment on the payment method's app or site. This parameter is required if ui_mode is
-        /// <c>embedded</c> and redirect-based payment methods are enabled on the session.
+        /// payment on the payment method's app or site. This parameter is required if
+        /// <c>ui_mode</c> is <c>embedded</c> or <c>custom</c> and redirect-based payment methods
+        /// are enabled on the session.
         /// </summary>
         [JsonProperty("return_url")]
 #if NET6_0_OR_GREATER
@@ -454,8 +490,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// Describes the type of transaction being performed by Checkout in order to customize
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
-        /// specified on Checkout Sessions in <c>payment</c> mode. If blank or <c>auto</c>,
-        /// <c>pay</c> is used.
+        /// specified on Checkout Sessions in <c>payment</c> or <c>subscription</c> mode. If blank
+        /// or <c>auto</c>, <c>pay</c> is used.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]
@@ -476,9 +512,9 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The URL to which Stripe should send customers when payment or setup is complete. This
-        /// parameter is not allowed if ui_mode is <c>embedded</c>. If you’d like to use information
-        /// from the successful Checkout Session on your page, read the guide on <a
-        /// href="https://stripe.com/docs/payments/checkout/custom-success-page">customizing your
+        /// parameter is not allowed if ui_mode is <c>embedded</c> or <c>custom</c>. If you'd like
+        /// to use information from the successful Checkout Session on your page, read the guide on
+        /// <a href="https://stripe.com/docs/payments/checkout/custom-success-page">customizing your
         /// success page</a>.
         /// </summary>
         [JsonProperty("success_url")]
@@ -498,7 +534,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>hosted</c>.
-        /// One of: <c>embedded</c>, or <c>hosted</c>.
+        /// One of: <c>custom</c>, <c>embedded</c>, or <c>hosted</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
 #if NET6_0_OR_GREATER

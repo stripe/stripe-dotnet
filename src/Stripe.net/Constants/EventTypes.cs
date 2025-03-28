@@ -82,6 +82,41 @@ namespace Stripe
         public const string BillingAlertTriggered = "billing.alert.triggered";
 
         /// <summary>
+        /// Occurs when a credit balance transaction is created.
+        /// </summary>
+        public const string BillingCreditBalanceTransactionCreated = "billing.credit_balance_transaction.created";
+
+        /// <summary>
+        /// Occurs when a credit grant is created.
+        /// </summary>
+        public const string BillingCreditGrantCreated = "billing.credit_grant.created";
+
+        /// <summary>
+        /// Occurs when a credit grant is updated.
+        /// </summary>
+        public const string BillingCreditGrantUpdated = "billing.credit_grant.updated";
+
+        /// <summary>
+        /// Occurs when a meter is created.
+        /// </summary>
+        public const string BillingMeterCreated = "billing.meter.created";
+
+        /// <summary>
+        /// Occurs when a meter is deactivated.
+        /// </summary>
+        public const string BillingMeterDeactivated = "billing.meter.deactivated";
+
+        /// <summary>
+        /// Occurs when a meter is reactivated.
+        /// </summary>
+        public const string BillingMeterReactivated = "billing.meter.reactivated";
+
+        /// <summary>
+        /// Occurs when a meter is updated.
+        /// </summary>
+        public const string BillingMeterUpdated = "billing.meter.updated";
+
+        /// <summary>
         /// Occurs whenever a capability has new requirements or a new status.
         /// </summary>
         public const string CapabilityUpdated = "capability.updated";
@@ -491,6 +526,11 @@ namespace Stripe
         public const string InvoiceOverdue = "invoice.overdue";
 
         /// <summary>
+        /// Occurs when an invoice transitions to paid with a non-zero amount_overpaid.
+        /// </summary>
+        public const string InvoiceOverpaid = "invoice.overpaid";
+
+        /// <summary>
         /// Occurs whenever an invoice payment attempt succeeds or an invoice is marked as paid
         /// out-of-band.
         /// </summary>
@@ -502,8 +542,8 @@ namespace Stripe
         public const string InvoicePaymentActionRequired = "invoice.payment_action_required";
 
         /// <summary>
-        /// Occurs whenever an invoice payment attempt fails, due either to a declined payment or to
-        /// the lack of a stored payment method.
+        /// Occurs whenever an invoice payment attempt fails, due to either a declined payment,
+        /// including soft decline, or to the lack of a stored payment method.
         /// </summary>
         public const string InvoicePaymentFailed = "invoice.payment_failed";
 
@@ -918,7 +958,8 @@ namespace Stripe
 
         /// <summary>
         /// Occurs whenever a review is closed. The review's <c>reason</c> field indicates why:
-        /// <c>approved</c>, <c>disputed</c>, <c>refunded</c>, or <c>refunded_as_fraud</c>.
+        /// <c>approved</c>, <c>disputed</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, or
+        /// <c>canceled</c>.
         /// </summary>
         public const string ReviewClosed = "review.closed";
 
