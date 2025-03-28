@@ -8,7 +8,7 @@ namespace Stripe.FinancialConnections
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class AccountService : Service<Account>,
+    public partial class AccountService : Service,
         IListable<Account, AccountListOptions>,
         IRetrievable<Account, AccountGetOptions>
     {

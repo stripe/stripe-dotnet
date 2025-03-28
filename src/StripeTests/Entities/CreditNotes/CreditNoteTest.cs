@@ -48,9 +48,6 @@ namespace StripeTests
 
             Assert.NotNull(creditNote.Invoice);
             Assert.Equal("invoice", creditNote.Invoice.Object);
-
-            Assert.NotNull(creditNote.Refund);
-            Assert.Equal("refund", creditNote.Refund.Object);
         }
     }
 }

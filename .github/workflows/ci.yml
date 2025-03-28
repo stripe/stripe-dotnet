@@ -21,7 +21,7 @@ jobs:
   build:
     name: Build and test
 
-    # TODO: this step is not compatible with ubuntu 24 LTS, so we pin the version here instead of using ubuntu-latest 
+    # TODO: this step is not compatible with ubuntu 24 LTS, so we pin the version here instead of using ubuntu-latest
     runs-on: ubuntu-22.04
 
     steps:
@@ -47,6 +47,9 @@ jobs:
         run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
 
       - uses: stripe/openapi/actions/stripe-mock@master
+        with:
+          # Used to determine if stripe-mock runs in beta mode
+          base: ${{ github.base_ref }}
 
       - name: Run test suite
         run: just ci-test

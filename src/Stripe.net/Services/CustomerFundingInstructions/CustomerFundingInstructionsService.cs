@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CustomerFundingInstructionsService : ServiceNested<FundingInstructions>
+    public class CustomerFundingInstructionsService : Service
     {
         public CustomerFundingInstructionsService()
         {

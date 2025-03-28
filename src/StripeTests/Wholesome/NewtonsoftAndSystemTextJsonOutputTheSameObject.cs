@@ -324,7 +324,7 @@ namespace StripeTests.Wholesome
                 Id = "cust_124",
                 Object = "customer",
                 Name = "John Smith",
-                Email = "john@smith.com",
+                Email = "john@example.com",
             };
             var customer3 = new Customer
             {
