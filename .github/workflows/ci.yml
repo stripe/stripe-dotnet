@@ -21,7 +21,7 @@ jobs:
   build:
     name: Build and test
 
-    # TODO: this step is not compatible with ubuntu 24 LTS, so we pin the version here instead of using ubuntu-latest 
+    # TODO: this step is not compatible with ubuntu 24 LTS, so we pin the version here instead of using ubuntu-latest
     runs-on: ubuntu-22.04
 
     steps:
@@ -45,6 +45,9 @@ jobs:
 
       - name: Build Release
         run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
+
+      - name: DEBUG OUTPUT
+        run: echo "${{ github.base_ref }} ${{ github.ref_name }}""
 
       - uses: stripe/openapi/actions/stripe-mock@master
 
