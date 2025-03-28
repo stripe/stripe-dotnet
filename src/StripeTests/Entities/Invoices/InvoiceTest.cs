@@ -43,17 +43,11 @@ namespace StripeTests
             Assert.NotNull(invoice.Id);
             Assert.Equal("invoice", invoice.Object);
 
-            Assert.NotNull(invoice.Charge);
-            Assert.Equal("charge", invoice.Charge.Object);
-
             Assert.NotNull(invoice.Customer);
             Assert.Equal("customer", invoice.Customer.Object);
 
             Assert.NotNull(invoice.DefaultPaymentMethod);
             Assert.Equal("payment_method", invoice.DefaultPaymentMethod.Object);
-
-            Assert.NotNull(invoice.PaymentIntent);
-            Assert.Equal("payment_intent", invoice.PaymentIntent.Object);
 
             Assert.NotNull(invoice.Subscription);
             Assert.Equal("subscription", invoice.Subscription.Object);

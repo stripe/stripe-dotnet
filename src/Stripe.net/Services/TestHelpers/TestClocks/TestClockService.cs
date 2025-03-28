@@ -8,7 +8,7 @@ namespace Stripe.TestHelpers
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TestClockService : Service<TestClock>,
+    public class TestClockService : Service,
         ICreatable<TestClock, TestClockCreateOptions>,
         IDeletable<TestClock, TestClockDeleteOptions>,
         IListable<TestClock, TestClockListOptions>,

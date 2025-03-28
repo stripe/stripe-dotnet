@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountCapabilityService : ServiceNested<Capability>,
+    public class AccountCapabilityService : Service,
         INestedListable<Capability, AccountCapabilityListOptions>,
         INestedRetrievable<Capability, AccountCapabilityGetOptions>,
         INestedUpdatable<Capability, AccountCapabilityUpdateOptions>

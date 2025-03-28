@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PriceService : Service<Price>,
+    public class PriceService : Service,
         ICreatable<Price, PriceCreateOptions>,
         IListable<Price, PriceListOptions>,
         IRetrievable<Price, PriceGetOptions>,
