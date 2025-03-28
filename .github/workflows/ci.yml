@@ -50,6 +50,8 @@ jobs:
         run: echo "${{ github.base_ref || github.ref_name }}"
 
       - uses: stripe/openapi/actions/stripe-mock@master
+        with:
+          base: ${{ github.base_ref || github.ref_name }}
 
       - name: Run test suite
         run: just ci-test
