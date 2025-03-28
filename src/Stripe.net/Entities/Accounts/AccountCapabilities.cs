@@ -393,6 +393,17 @@ namespace Stripe
         public string NaverPayPayments { get; set; }
 
         /// <summary>
+        /// The status of the New Zealand BECS Direct Debit payments capability of the account, or
+        /// whether the account can directly process New Zealand BECS Direct Debit charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("nz_bank_account_becs_debit_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account_becs_debit_payments")]
+#endif
+        public string NzBankAccountBecsDebitPayments { get; set; }
+
+        /// <summary>
         /// The status of the OXXO payments capability of the account, or whether the account can
         /// directly process OXXO charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

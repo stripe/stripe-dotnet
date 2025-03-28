@@ -324,6 +324,15 @@ namespace Stripe
         public AccountCapabilitiesNaverPayPaymentsOptions NaverPayPayments { get; set; }
 
         /// <summary>
+        /// The nz_bank_account_becs_debit_payments capability.
+        /// </summary>
+        [JsonProperty("nz_bank_account_becs_debit_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account_becs_debit_payments")]
+#endif
+        public AccountCapabilitiesNzBankAccountBecsDebitPaymentsOptions NzBankAccountBecsDebitPayments { get; set; }
+
+        /// <summary>
         /// The oxxo_payments capability.
         /// </summary>
         [JsonProperty("oxxo_payments")]
