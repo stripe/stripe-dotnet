@@ -28,12 +28,6 @@ namespace Stripe
 #endif
         public string Subscription { get; set; }
 
-        [JsonProperty("subscription_items")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription_items")]
-#endif
-        public List<InvoiceSubscriptionItemOptions> SubscriptionItems { get; set; }
-
         [JsonProperty("subscription_plan")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_plan")]
