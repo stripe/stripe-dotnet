@@ -8,7 +8,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PayoutListOptions : ListOptionsWithCreated
+    public class PayoutListOptions : ListOptions
     {
         /// <summary>
         /// Only return payouts that are expected to arrive during the given date interval.
@@ -20,6 +20,17 @@ namespace Stripe
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
         public AnyOf<DateTime?, DateRangeOptions> ArrivalDate { get; set; }
+
+        /// <summary>
+        /// Only return payouts that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// The ID of an external account - only return payouts sent to this external account.

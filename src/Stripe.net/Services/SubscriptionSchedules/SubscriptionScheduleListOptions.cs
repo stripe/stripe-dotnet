@@ -8,7 +8,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class SubscriptionScheduleListOptions : ListOptionsWithCreated
+    public class SubscriptionScheduleListOptions : ListOptions
     {
         /// <summary>
         /// Only return subscription schedules that were created canceled the given date interval.
@@ -31,6 +31,17 @@ namespace Stripe
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
         public AnyOf<DateTime?, DateRangeOptions> CompletedAt { get; set; }
+
+        /// <summary>
+        /// Only return subscription schedules that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// Only return subscription schedules for the given customer.

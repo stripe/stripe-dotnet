@@ -9,7 +9,6 @@ namespace Stripe.Reporting
     using System.Threading.Tasks;
 
     public class ReportTypeService : Service,
-        IListable<ReportType, ReportTypeListOptions>,
         IRetrievable<ReportType, ReportTypeGetOptions>
     {
         public ReportTypeService()
@@ -58,22 +57,6 @@ namespace Stripe.Reporting
         public virtual Task<StripeList<ReportType>> ListAsync(ReportTypeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<ReportType>>(BaseAddress.Api, HttpMethod.Get, $"/v1/reporting/report_types", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Returns a full list of Report Types.</p>.
-        /// </summary>
-        public virtual IEnumerable<ReportType> ListAutoPaging(ReportTypeListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<ReportType>($"/v1/reporting/report_types", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Returns a full list of Report Types.</p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<ReportType> ListAutoPagingAsync(ReportTypeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<ReportType>($"/v1/reporting/report_types", options, requestOptions, cancellationToken);
         }
     }
 }
