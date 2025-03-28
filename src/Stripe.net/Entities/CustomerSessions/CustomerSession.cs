@@ -110,6 +110,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The Account that the Customer Session was created for.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The timestamp at which this Customer Session will expire.
         /// </summary>
         [JsonProperty("expires_at")]

@@ -18,6 +18,15 @@ namespace Stripe.Checkout
         public string Customer { get; set; }
 
         /// <summary>
+        /// Only return the Checkout Sessions for the Account specified.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Only return the Checkout Sessions for the Customer details specified.
         /// </summary>
         [JsonProperty("customer_details")]

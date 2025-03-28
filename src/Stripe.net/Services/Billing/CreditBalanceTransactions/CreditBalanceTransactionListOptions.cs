@@ -25,5 +25,14 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// The account for which to fetch credit balance transactions.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
     }
 }

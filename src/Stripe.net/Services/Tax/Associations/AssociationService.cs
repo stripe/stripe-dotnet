@@ -6,7 +6,7 @@ namespace Stripe.Tax
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AssociationService : Service<Association>
+    public class AssociationService : Service
     {
         public AssociationService()
         {

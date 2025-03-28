@@ -109,14 +109,14 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Some payment methods such as Apple Pay require additional steps to verify a domain.
-        /// If the requirements weren’t satisfied when the domain was created, the payment method
-        /// will be inactive on the domain. The payment method doesn’t appear in Elements for this
-        /// domain until it is active.</p>.
+        /// <p>Some payment methods might require additional steps to register a domain. If the
+        /// requirements weren’t satisfied when the domain was created, the payment method will be
+        /// inactive on the domain. The payment method doesn’t appear in Elements or Embedded
+        /// Checkout for this domain until it is active.</p>.
         ///
         /// <p>To activate a payment method on an existing payment method domain, complete the
-        /// required validation steps specific to the payment method, and then validate the payment
-        /// method domain with this endpoint.</p>.
+        /// required registration steps specific to the payment method, and then validate the
+        /// payment method domain with this endpoint.</p>.
         ///
         /// <p>Related guides: <a
         /// href="https://stripe.com/docs/payments/payment-methods/pmd-registration">Payment method
@@ -128,14 +128,14 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Some payment methods such as Apple Pay require additional steps to verify a domain.
-        /// If the requirements weren’t satisfied when the domain was created, the payment method
-        /// will be inactive on the domain. The payment method doesn’t appear in Elements for this
-        /// domain until it is active.</p>.
+        /// <p>Some payment methods might require additional steps to register a domain. If the
+        /// requirements weren’t satisfied when the domain was created, the payment method will be
+        /// inactive on the domain. The payment method doesn’t appear in Elements or Embedded
+        /// Checkout for this domain until it is active.</p>.
         ///
         /// <p>To activate a payment method on an existing payment method domain, complete the
-        /// required validation steps specific to the payment method, and then validate the payment
-        /// method domain with this endpoint.</p>.
+        /// required registration steps specific to the payment method, and then validate the
+        /// payment method domain with this endpoint.</p>.
         ///
         /// <p>Related guides: <a
         /// href="https://stripe.com/docs/payments/payment-methods/pmd-registration">Payment method

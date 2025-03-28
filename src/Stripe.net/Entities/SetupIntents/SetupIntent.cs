@@ -217,6 +217,19 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// ID of the Account this SetupIntent belongs to, if one exists.
+        ///
+        /// If present, the SetupIntent's payment method will be attached to the Account on
+        /// successful setup. Payment methods attached to other Accounts cannot be used with this
+        /// SetupIntent.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]

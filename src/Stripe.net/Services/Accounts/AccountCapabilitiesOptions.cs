@@ -99,6 +99,15 @@ namespace Stripe
         public AccountCapabilitiesBankTransferPaymentsOptions BankTransferPayments { get; set; }
 
         /// <summary>
+        /// The billie_payments capability.
+        /// </summary>
+        [JsonProperty("billie_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie_payments")]
+#endif
+        public AccountCapabilitiesBilliePaymentsOptions BilliePayments { get; set; }
+
+        /// <summary>
         /// The blik_payments capability.
         /// </summary>
         [JsonProperty("blik_payments")]
@@ -360,6 +369,15 @@ namespace Stripe
         public AccountCapabilitiesNaverPayPaymentsOptions NaverPayPayments { get; set; }
 
         /// <summary>
+        /// The nz_bank_account_becs_debit_payments capability.
+        /// </summary>
+        [JsonProperty("nz_bank_account_becs_debit_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account_becs_debit_payments")]
+#endif
+        public AccountCapabilitiesNzBankAccountBecsDebitPaymentsOptions NzBankAccountBecsDebitPayments { get; set; }
+
+        /// <summary>
         /// The oxxo_payments capability.
         /// </summary>
         [JsonProperty("oxxo_payments")]
@@ -468,6 +486,15 @@ namespace Stripe
         public AccountCapabilitiesSamsungPayPaymentsOptions SamsungPayPayments { get; set; }
 
         /// <summary>
+        /// The satispay_payments capability.
+        /// </summary>
+        [JsonProperty("satispay_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay_payments")]
+#endif
+        public AccountCapabilitiesSatispayPaymentsOptions SatispayPayments { get; set; }
+
+        /// <summary>
         /// The sepa_bank_transfer_payments capability.
         /// </summary>
         [JsonProperty("sepa_bank_transfer_payments")]
@@ -502,6 +529,15 @@ namespace Stripe
         [STJS.JsonPropertyName("sofort_payments")]
 #endif
         public AccountCapabilitiesSofortPaymentsOptions SofortPayments { get; set; }
+
+        /// <summary>
+        /// The stripe_balance_payments capability.
+        /// </summary>
+        [JsonProperty("stripe_balance_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_balance_payments")]
+#endif
+        public AccountCapabilitiesStripeBalancePaymentsOptions StripeBalancePayments { get; set; }
 
         /// <summary>
         /// The swish_payments capability.

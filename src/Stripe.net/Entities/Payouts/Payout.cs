@@ -387,6 +387,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// ID of the v2 FinancialAccount the funds are sent to.
+        /// </summary>
+        [JsonProperty("payout_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payout_method")]
+#endif
+        public string PayoutMethod { get; set; }
+
+        /// <summary>
         /// If <c>completed</c>, you can use the <a
         /// href="https://stripe.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance
         /// Transactions API</a> to list all balance transactions that are paid out in this payout.

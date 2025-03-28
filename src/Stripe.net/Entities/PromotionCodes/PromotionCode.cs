@@ -127,6 +127,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The account that this promotion code can be used by.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Date at which the promotion code can no longer be redeemed.
         /// </summary>
         [JsonProperty("expires_at")]

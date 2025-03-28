@@ -6,8 +6,17 @@ namespace Stripe.Terminal
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class ReaderInputSelectionChoiceOptions : INestedOptions
+    public class ReaderInputSelectionChoiceOptions : INestedOptions, IHasId
     {
+        /// <summary>
+        /// The unique identifier for this choice.
+        /// </summary>
+        [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
+        public string Id { get; set; }
+
         /// <summary>
         /// The style of the button which will be shown for this choice.
         /// One of: <c>primary</c>, or <c>secondary</c>.
@@ -21,10 +30,10 @@ namespace Stripe.Terminal
         /// <summary>
         /// The text which will be shown on the button for this choice.
         /// </summary>
-        [JsonProperty("value")]
+        [JsonProperty("text")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("value")]
+        [STJS.JsonPropertyName("text")]
 #endif
-        public string Value { get; set; }
+        public string Text { get; set; }
     }
 }

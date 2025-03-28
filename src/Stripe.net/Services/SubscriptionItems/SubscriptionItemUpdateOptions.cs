@@ -12,17 +12,6 @@ namespace Stripe
     public class SubscriptionItemUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
-        /// new billing period. When updating, pass an empty string to remove previously-defined
-        /// thresholds.
-        /// </summary>
-        [JsonProperty("billing_thresholds")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_thresholds")]
-#endif
-        public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
-
-        /// <summary>
         /// The coupons to redeem into discounts for the subscription item.
         /// </summary>
         [JsonProperty("discounts")]

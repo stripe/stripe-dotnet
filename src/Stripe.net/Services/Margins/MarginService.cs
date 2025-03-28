@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class MarginService : Service<Margin>,
+    public class MarginService : Service,
         ICreatable<Margin, MarginCreateOptions>,
         IListable<Margin, MarginListOptions>,
         IRetrievable<Margin, MarginGetOptions>,

@@ -15,6 +15,7 @@ namespace Stripe
         private ApplicationFeeService applicationFees;
         private AppsService apps;
         private BalanceService balance;
+        private BalanceSettingsService balanceSettings;
         private BalanceTransactionService balanceTransactions;
         private BankAccountService bankAccounts;
         private BillingService billing;
@@ -83,6 +84,7 @@ namespace Stripe
         private TransferService transfers;
         private TreasuryService treasury;
         private WebhookEndpointService webhookEndpoints;
+        private ExternalAccountService externalAccounts;
 
         internal V1Services(ApiRequestor requestor)
             : base(requestor)
@@ -116,6 +118,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual BalanceService Balance => this.balance ??= new BalanceService(
+            this.Requestor);
+
+        public virtual BalanceSettingsService BalanceSettings => this.balanceSettings ??= new BalanceSettingsService(
             this.Requestor);
 
         public virtual BalanceTransactionService BalanceTransactions => this.balanceTransactions ??= new BalanceTransactionService(
@@ -320,6 +325,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual WebhookEndpointService WebhookEndpoints => this.webhookEndpoints ??= new WebhookEndpointService(
+            this.Requestor);
+
+        public virtual ExternalAccountService ExternalAccounts => this.externalAccounts ??= new ExternalAccountService(
             this.Requestor);
     }
 }

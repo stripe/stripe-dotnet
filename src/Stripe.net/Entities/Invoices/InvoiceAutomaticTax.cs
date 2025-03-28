@@ -43,6 +43,15 @@ namespace Stripe
         public InvoiceAutomaticTaxLiability Liability { get; set; }
 
         /// <summary>
+        /// The tax provider powering automatic tax.
+        /// </summary>
+        [JsonProperty("provider")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("provider")]
+#endif
+        public string Provider { get; set; }
+
+        /// <summary>
         /// The status of the most recent automated tax calculation for this invoice.
         /// One of: <c>complete</c>, <c>failed</c>, or <c>requires_location_inputs</c>.
         /// </summary>

@@ -38,16 +38,6 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Define thresholds at which an invoice will be sent, and the related subscription
-        /// advanced to a new billing period.
-        /// </summary>
-        [JsonProperty("billing_thresholds")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_thresholds")]
-#endif
-        public SubscriptionItemBillingThresholds BillingThresholds { get; set; }
-
-        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]
@@ -57,6 +47,28 @@ namespace Stripe
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// The end time of this subscription item's current billing period.
+        /// </summary>
+        [JsonProperty("current_period_end")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_end")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+        public DateTime CurrentPeriodEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// The start time of this subscription item's current billing period.
+        /// </summary>
+        [JsonProperty("current_period_start")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_period_start")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+        public DateTime CurrentPeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Whether this object is deleted or not.

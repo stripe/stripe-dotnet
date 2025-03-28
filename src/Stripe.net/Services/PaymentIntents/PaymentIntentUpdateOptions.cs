@@ -28,7 +28,7 @@ namespace Stripe
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. The amount of the
-        /// application fee collected will be capped at the total payment amount. For more
+        /// application fee collected will be capped at the total amount captured. For more
         /// information, see the PaymentIntents <a
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
@@ -88,6 +88,26 @@ namespace Stripe
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// ID of the Account this PaymentIntent belongs to, if one exists.
+        ///
+        /// Payment methods attached to other Accounts cannot be used with this PaymentIntent.
+        ///
+        /// If <a
+        /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
+        /// payment method attaches to the Account after the PaymentIntent has been confirmed and
+        /// any required actions from the user are complete. If the payment method is
+        /// <c>card_present</c> and isn't a digital wallet, then a <a
+        /// href="https://docs.stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card is created and attached to the Account instead.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.

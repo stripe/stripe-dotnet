@@ -27,6 +27,16 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// v2 Account the tax ID belongs to. Can be used in place of <c>customer</c> when
+        /// <c>type=customer</c>.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Type of owner referenced.
         /// One of: <c>account</c>, <c>application</c>, <c>customer</c>, or <c>self</c>.
         /// </summary>

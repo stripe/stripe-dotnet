@@ -35,6 +35,15 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// The identifier of the account to create the subscription schedule for.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Object representing the subscription schedule's default settings.
         /// </summary>
         [JsonProperty("default_settings")]

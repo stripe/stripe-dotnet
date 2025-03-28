@@ -154,6 +154,17 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The value of <a
+        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-customer_account">customer_account</a>
+        /// on the SetupIntent at the time of this confirmation.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Indicates the directions of money movement for which this payment method is intended to
         /// be used.
         ///

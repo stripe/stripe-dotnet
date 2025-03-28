@@ -51,6 +51,15 @@ namespace Stripe.Billing
         public string Customer { get; set; }
 
         /// <summary>
+        /// ID of the account to receive the billing credits.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The time when the billing credits become effective-when they're eligible for use. It
         /// defaults to the current timestamp if not specified.
         /// </summary>

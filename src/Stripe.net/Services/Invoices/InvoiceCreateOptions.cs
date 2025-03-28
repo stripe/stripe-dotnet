@@ -119,6 +119,15 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// The ID of the account who will be billed.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The number of days from when the invoice is created until it is due. Valid only for
         /// invoices where <c>collection_method=send_invoice</c>.
         /// </summary>

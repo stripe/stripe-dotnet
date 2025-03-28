@@ -113,6 +113,12 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
         /// <summary>
         /// The total available cash balance for the specified currency after this transaction was
         /// applied. Represented in the <a

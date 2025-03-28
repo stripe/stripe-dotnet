@@ -24,6 +24,12 @@ namespace Stripe.Identity
 #endif
         public string RelatedCustomer { get; set; }
 
+        [JsonProperty("related_customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("related_customer_account")]
+#endif
+        public string RelatedCustomerAccount { get; set; }
+
         /// <summary>
         /// Only return VerificationSessions with this status. <a
         /// href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle

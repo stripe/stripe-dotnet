@@ -222,6 +222,16 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        /// <summary>
+        /// The account which this quote belongs to. A customer or account is required before
+        /// finalizing the quote. Once specified, it cannot be changed.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
         #region Expandable DefaultTaxRates
 
         /// <summary>
