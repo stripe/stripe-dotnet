@@ -46,12 +46,10 @@ jobs:
       - name: Build Release
         run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
 
-      - name: DEBUG OUTPUT
-        run: echo "${{ github.base_ref || github.ref_name }}"
-
       - uses: stripe/openapi/actions/stripe-mock@master
         with:
-          base: ${{ github.base_ref || github.ref_name }}
+          # Used to determine if stripe-mock runs in beta mode
+          base: ${{ github.base_ref }}
 
       - name: Run test suite
         run: just ci-test
