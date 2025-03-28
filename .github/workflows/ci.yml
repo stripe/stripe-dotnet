@@ -47,7 +47,7 @@ jobs:
         run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
 
       - name: DEBUG OUTPUT
-        run: echo "${{ github.base_ref }} ${{ github.ref_name }}""
+        run: echo "${{ github.base_ref || github.ref_name }}"
 
       - uses: stripe/openapi/actions/stripe-mock@master
 
