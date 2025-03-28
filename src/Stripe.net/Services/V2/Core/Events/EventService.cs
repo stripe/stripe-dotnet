@@ -51,5 +51,21 @@ namespace Stripe.V2.Core
         {
             return this.RequestAsync<V2.StripeList<V2.Event>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/events", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// List events, going back up to 30 days.
+        /// </summary>
+        public virtual IEnumerable<V2.Event> ListAutoPaging(EventListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<V2.Event>($"/v2/core/events", options, requestOptions);
+        }
+
+        /// <summary>
+        /// List events, going back up to 30 days.
+        /// </summary>
+        public virtual IAsyncEnumerable<V2.Event> ListAutoPagingAsync(EventListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<V2.Event>($"/v2/core/events", options, requestOptions, cancellationToken);
+        }
     }
 }
