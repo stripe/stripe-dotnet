@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class SourceTransactionService : ServiceNested<SourceTransaction>,
+    public partial class SourceTransactionService : Service,
         INestedListable<SourceTransaction, SourceTransactionListOptions>
     {
         public SourceTransactionService()

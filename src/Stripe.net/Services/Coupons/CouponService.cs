@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CouponService : Service<Coupon>,
+    public class CouponService : Service,
         ICreatable<Coupon, CouponCreateOptions>,
         IDeletable<Coupon, CouponDeleteOptions>,
         IListable<Coupon, CouponListOptions>,
