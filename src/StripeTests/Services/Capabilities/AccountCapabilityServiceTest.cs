@@ -74,22 +74,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void ListAutoPaging()
-        {
-            var capabilitie = this.service.ListAutoPaging(AccountId, this.listOptions).First();
-            Assert.NotNull(capabilitie);
-            Assert.Equal("capability", capabilitie.Object);
-        }
-
-        [Fact]
-        public async Task ListAutoPagingAsync()
-        {
-            var capabilitie = await this.service.ListAutoPagingAsync(AccountId, this.listOptions).FirstAsync();
-            Assert.NotNull(capabilitie);
-            Assert.Equal("capability", capabilitie.Object);
-        }
-
-        [Fact]
         public void Update()
         {
             var capability = this.service.Update(AccountId, CapabilityId, this.updateOptions);

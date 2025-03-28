@@ -117,22 +117,6 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Lists all event destinations.
-        /// </summary>
-        public virtual IEnumerable<V2.EventDestination> ListAutoPaging(EventDestinationListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<V2.EventDestination>($"/v2/core/event_destinations", options, requestOptions);
-        }
-
-        /// <summary>
-        /// Lists all event destinations.
-        /// </summary>
-        public virtual IAsyncEnumerable<V2.EventDestination> ListAutoPagingAsync(EventDestinationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<V2.EventDestination>($"/v2/core/event_destinations", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
         /// Send a <c>ping</c> event to an event destination.
         /// </summary>
         public virtual V2.Event Ping(string id, EventDestinationPingOptions options = null, RequestOptions requestOptions = null)
