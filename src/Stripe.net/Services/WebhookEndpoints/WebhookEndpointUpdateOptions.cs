@@ -174,7 +174,7 @@ namespace Stripe
         /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.created</c>,
         /// <c>billing.credit_grant.updated</c>, <c>billing.meter.created</c>,
         /// <c>billing.meter.deactivated</c>, <c>billing.meter.reactivated</c>,
-        /// <c>billing.meter.updated</c>, or <c>ping</c>.
+        /// <c>billing.meter.updated</c>, <c>balance_settings.updated</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("enabled_events")]
 #if NET6_0_OR_GREATER
