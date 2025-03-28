@@ -34,7 +34,7 @@ namespace Stripe.Checkout
             this.Requestor);
 
         /// <summary>
-        /// <p>Creates a Session object.</p>.
+        /// <p>Creates a Checkout Session object.</p>.
         /// </summary>
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -42,7 +42,7 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// <p>Creates a Session object.</p>.
+        /// <p>Creates a Checkout Session object.</p>.
         /// </summary>
         public virtual Task<Session> CreateAsync(SessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -50,10 +50,11 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// <p>A Session can be expired when it is in one of these statuses: <c>open</c> </p>.
+        /// <p>A Checkout Session can be expired when it is in one of these statuses: <c>open</c>
+        /// </p>.
         ///
-        /// <p>After it expires, a customer can’t complete a Session and customers loading the
-        /// Session see a message saying the Session is expired.</p>.
+        /// <p>After it expires, a customer can’t complete a Checkout Session and customers loading
+        /// the Checkout Session see a message saying the Checkout Session is expired.</p>.
         /// </summary>
         public virtual Session Expire(string id, SessionExpireOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,10 +62,11 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// <p>A Session can be expired when it is in one of these statuses: <c>open</c> </p>.
+        /// <p>A Checkout Session can be expired when it is in one of these statuses: <c>open</c>
+        /// </p>.
         ///
-        /// <p>After it expires, a customer can’t complete a Session and customers loading the
-        /// Session see a message saying the Session is expired.</p>.
+        /// <p>After it expires, a customer can’t complete a Checkout Session and customers loading
+        /// the Checkout Session see a message saying the Checkout Session is expired.</p>.
         /// </summary>
         public virtual Task<Session> ExpireAsync(string id, SessionExpireOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -72,7 +74,7 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// <p>Retrieves a Session object.</p>.
+        /// <p>Retrieves a Checkout Session object.</p>.
         /// </summary>
         public virtual Session Get(string id, SessionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -80,7 +82,7 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// <p>Retrieves a Session object.</p>.
+        /// <p>Retrieves a Checkout Session object.</p>.
         /// </summary>
         public virtual Task<Session> GetAsync(string id, SessionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -120,7 +122,7 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// <p>Updates a Session object.</p>.
+        /// <p>Updates a Checkout Session object.</p>.
         /// </summary>
         public virtual Session Update(string id, SessionUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -128,7 +130,7 @@ namespace Stripe.Checkout
         }
 
         /// <summary>
-        /// <p>Updates a Session object.</p>.
+        /// <p>Updates a Checkout Session object.</p>.
         /// </summary>
         public virtual Task<Session> UpdateAsync(string id, SessionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -108,6 +108,15 @@ namespace Stripe.BillingPortal
         public string Customer { get; set; }
 
         /// <summary>
+        /// The ID of the account for this session.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Information about a specific flow for the customer to go through. See the <a
         /// href="https://stripe.com/docs/customer-management/portal-deep-links">docs</a> to learn
         /// more about using customer portal deep links and flows.

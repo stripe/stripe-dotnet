@@ -72,6 +72,19 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// ID of the Account this SetupIntent belongs to, if one exists.
+        ///
+        /// If present, the SetupIntent's payment method will be attached to the Account on
+        /// successful setup. Payment methods attached to other Accounts cannot be used with this
+        /// SetupIntent.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
@@ -197,6 +210,10 @@ namespace Stripe
         /// <summary>
         /// If you populate this hash, this SetupIntent generates a <c>single_use</c> mandate after
         /// successful completion.
+        ///
+        /// Single-use mandates are only valid for the following payment methods: <c>acss_debit</c>,
+        /// <c>alipay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
+        /// <c>boleto</c>, <c>ideal</c>, <c>link</c>, <c>sepa_debit</c>, and <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("single_use")]
 #if NET6_0_OR_GREATER

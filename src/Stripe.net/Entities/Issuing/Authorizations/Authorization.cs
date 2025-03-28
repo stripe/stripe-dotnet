@@ -286,7 +286,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The current status of the authorization in its lifecycle.
-        /// One of: <c>closed</c>, <c>pending</c>, or <c>reversed</c>.
+        /// One of: <c>closed</c>, <c>expired</c>, <c>pending</c>, or <c>reversed</c>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER

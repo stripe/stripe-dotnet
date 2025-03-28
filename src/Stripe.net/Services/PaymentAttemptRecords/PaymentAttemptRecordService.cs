@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PaymentAttemptRecordService : Service<PaymentAttemptRecord>,
+    public class PaymentAttemptRecordService : Service,
         IListable<PaymentAttemptRecord, PaymentAttemptRecordListOptions>,
         IRetrievable<PaymentAttemptRecord, PaymentAttemptRecordGetOptions>
     {

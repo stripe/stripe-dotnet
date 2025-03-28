@@ -328,6 +328,16 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsNaverPayOptions NaverPay { get; set; }
 
         /// <summary>
+        /// If this is a <c>nz_bank_account</c> PaymentMethod, this sub-hash contains details about
+        /// the NZ BECS Direct Debit payment method options.
+        /// </summary>
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public PaymentIntentPaymentMethodOptionsNzBankAccountOptions NzBankAccount { get; set; }
+
+        /// <summary>
         /// If this is a <c>oxxo</c> PaymentMethod, this sub-hash contains details about the OXXO
         /// payment method options.
         /// </summary>
@@ -486,6 +496,16 @@ namespace Stripe
         [STJS.JsonPropertyName("sofort")]
 #endif
         public PaymentIntentPaymentMethodOptionsSofortOptions Sofort { get; set; }
+
+        /// <summary>
+        /// If this is a <c>stripe_balance</c> PaymentMethod, this sub-hash contains details about
+        /// the Stripe Balance payment method options.
+        /// </summary>
+        [JsonProperty("stripe_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_balance")]
+#endif
+        public PaymentIntentPaymentMethodOptionsStripeBalanceOptions StripeBalance { get; set; }
 
         /// <summary>
         /// If this is a <c>Swish</c> PaymentMethod, this sub-hash contains details about the Swish

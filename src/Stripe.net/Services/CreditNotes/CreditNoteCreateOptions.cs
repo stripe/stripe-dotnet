@@ -117,15 +117,6 @@ namespace Stripe
         public string Reason { get; set; }
 
         /// <summary>
-        /// ID of an existing refund to link this credit note to.
-        /// </summary>
-        [JsonProperty("refund")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refund")]
-#endif
-        public string Refund { get; set; }
-
-        /// <summary>
         /// The integer amount in cents (or local equivalent) representing the amount to refund. If
         /// set, a refund will be created for the charge associated with the invoice.
         /// </summary>

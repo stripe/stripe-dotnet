@@ -20,8 +20,9 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
-        /// The ID of the product that this price will belong to. One of <c>product</c> or
-        /// <c>product_data</c> is required.
+        /// The ID of the <a href="https://docs.stripe.com/api/products">Product</a> that this <a
+        /// href="https://docs.stripe.com/api/prices">Price</a> will belong to. One of
+        /// <c>product</c> or <c>product_data</c> is required.
         /// </summary>
         [JsonProperty("product")]
 #if NET6_0_OR_GREATER
@@ -30,8 +31,8 @@ namespace Stripe
         public string Product { get; set; }
 
         /// <summary>
-        /// Data used to generate a new product object inline. One of <c>product</c> or
-        /// <c>product_data</c> is required.
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/products">Product</a>
+        /// object inline. One of <c>product</c> or <c>product_data</c> is required.
         /// </summary>
         [JsonProperty("product_data")]
 #if NET6_0_OR_GREATER

@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CreditUnderwritingRecordService : Service<CreditUnderwritingRecord>,
+    public class CreditUnderwritingRecordService : Service,
         IListable<CreditUnderwritingRecord, CreditUnderwritingRecordListOptions>,
         IRetrievable<CreditUnderwritingRecord, CreditUnderwritingRecordGetOptions>
     {

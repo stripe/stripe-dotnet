@@ -30,6 +30,12 @@ namespace Stripe
 #endif
         public string Customer { get; set; }
 
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
         [JsonProperty("due_date")]
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER

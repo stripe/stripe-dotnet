@@ -8,7 +8,7 @@ namespace Stripe.Issuing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class DisputeSettlementDetailService : Service<DisputeSettlementDetail>,
+    public class DisputeSettlementDetailService : Service,
         IListable<DisputeSettlementDetail, DisputeSettlementDetailListOptions>,
         IRetrievable<DisputeSettlementDetail, DisputeSettlementDetailGetOptions>
     {

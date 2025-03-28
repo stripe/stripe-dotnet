@@ -19,6 +19,16 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// The identifier of the account whose invoice items to return. If none is provided, all
+        /// invoice items will be returned.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Only return invoice items belonging to this invoice. If none is provided, all invoice
         /// items will be returned. If specifying an invoice, no customer identifier is needed.
         /// </summary>

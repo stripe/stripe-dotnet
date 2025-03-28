@@ -8,7 +8,7 @@ namespace Stripe.GiftCards
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TransactionService : Service<Transaction>,
+    public class TransactionService : Service,
         ICreatable<Transaction, TransactionCreateOptions>,
         IListable<Transaction, TransactionListOptions>,
         IRetrievable<Transaction, TransactionGetOptions>,

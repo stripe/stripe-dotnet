@@ -80,6 +80,16 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// The account for which this quote belongs to. A customer or account is required before
+        /// finalizing the quote. Once specified, it cannot be changed.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The tax rates that will apply to any line item that does not have <c>tax_rates</c> set.
         /// </summary>
         [JsonProperty("default_tax_rates")]

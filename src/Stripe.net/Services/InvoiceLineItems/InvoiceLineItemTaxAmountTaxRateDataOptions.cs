@@ -57,6 +57,17 @@ namespace Stripe
         public string Jurisdiction { get; set; }
 
         /// <summary>
+        /// The level of the jurisdiction that imposes this tax rate.
+        /// One of: <c>city</c>, <c>country</c>, <c>county</c>, <c>district</c>, <c>multiple</c>, or
+        /// <c>state</c>.
+        /// </summary>
+        [JsonProperty("jurisdiction_level")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("jurisdiction_level")]
+#endif
+        public string JurisdictionLevel { get; set; }
+
+        /// <summary>
         /// The statutory tax rate percent. This field accepts decimal values between 0 and 100
         /// inclusive with at most 4 decimal places. To accommodate fixed-amount taxes, set the
         /// percentage to zero. Stripe will not display zero percentages on the invoice unless the

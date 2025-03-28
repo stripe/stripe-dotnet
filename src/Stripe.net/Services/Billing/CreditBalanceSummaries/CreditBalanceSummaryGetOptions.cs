@@ -18,6 +18,15 @@ namespace Stripe.Billing
         public string Customer { get; set; }
 
         /// <summary>
+        /// The account for which to fetch credit balance summary.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The filter criteria for the credit balance summary.
         /// </summary>
         [JsonProperty("filter")]

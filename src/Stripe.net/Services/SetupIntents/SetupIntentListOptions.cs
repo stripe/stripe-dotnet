@@ -33,6 +33,15 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// Only return SetupIntents for the account specified by this customer ID.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Only return SetupIntents that associate with the specified payment method.
         /// </summary>
         [JsonProperty("payment_method")]

@@ -8,7 +8,7 @@ namespace Stripe.FinancialConnections
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountInferredBalanceService : ServiceNested<AccountInferredBalance>,
+    public class AccountInferredBalanceService : Service,
         INestedListable<AccountInferredBalance, AccountInferredBalanceListOptions>
     {
         public AccountInferredBalanceService()

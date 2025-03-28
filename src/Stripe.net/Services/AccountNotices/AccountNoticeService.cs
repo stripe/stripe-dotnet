@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountNoticeService : Service<AccountNotice>,
+    public class AccountNoticeService : Service,
         IListable<AccountNotice, AccountNoticeListOptions>,
         IRetrievable<AccountNotice, AccountNoticeGetOptions>,
         IUpdatable<AccountNotice, AccountNoticeUpdateOptions>

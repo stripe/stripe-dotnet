@@ -29,7 +29,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// Only return authorizations with the given status. One of <c>pending</c>, <c>closed</c>,
         /// or <c>reversed</c>.
-        /// One of: <c>closed</c>, <c>pending</c>, or <c>reversed</c>.
+        /// One of: <c>closed</c>, <c>expired</c>, <c>pending</c>, or <c>reversed</c>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER

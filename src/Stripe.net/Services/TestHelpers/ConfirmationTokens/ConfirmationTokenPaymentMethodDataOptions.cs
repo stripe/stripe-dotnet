@@ -113,6 +113,16 @@ namespace Stripe.TestHelpers
         public ConfirmationTokenPaymentMethodDataBancontactOptions Bancontact { get; set; }
 
         /// <summary>
+        /// If this is a <c>billie</c> PaymentMethod, this hash contains details about the billie
+        /// payment method.
+        /// </summary>
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public ConfirmationTokenPaymentMethodDataBillieOptions Billie { get; set; }
+
+        /// <summary>
         /// Billing information associated with the PaymentMethod that may be used or required by
         /// particular types of payment methods.
         /// </summary>
@@ -345,6 +355,16 @@ namespace Stripe.TestHelpers
         public ConfirmationTokenPaymentMethodDataNaverPayOptions NaverPay { get; set; }
 
         /// <summary>
+        /// If this is an nz_bank_account PaymentMethod, this hash contains details about the
+        /// nz_bank_account payment method.
+        /// </summary>
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public ConfirmationTokenPaymentMethodDataNzBankAccountOptions NzBankAccount { get; set; }
+
+        /// <summary>
         /// If this is an <c>oxxo</c> PaymentMethod, this hash contains details about the OXXO
         /// payment method.
         /// </summary>
@@ -486,6 +506,16 @@ namespace Stripe.TestHelpers
         public ConfirmationTokenPaymentMethodDataSamsungPayOptions SamsungPay { get; set; }
 
         /// <summary>
+        /// If this is a <c>satispay</c> PaymentMethod, this hash contains details about the
+        /// satispay payment method.
+        /// </summary>
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public ConfirmationTokenPaymentMethodDataSatispayOptions Satispay { get; set; }
+
+        /// <summary>
         /// If this is a <c>sepa_debit</c> PaymentMethod, this hash contains details about the SEPA
         /// debit bank account.
         /// </summary>
@@ -516,6 +546,15 @@ namespace Stripe.TestHelpers
         public ConfirmationTokenPaymentMethodDataSofortOptions Sofort { get; set; }
 
         /// <summary>
+        /// This hash contains details about the Stripe balance payment method.
+        /// </summary>
+        [JsonProperty("stripe_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_balance")]
+#endif
+        public ConfirmationTokenPaymentMethodDataStripeBalanceOptions StripeBalance { get; set; }
+
+        /// <summary>
         /// If this is a <c>swish</c> PaymentMethod, this hash contains details about the Swish
         /// payment method.
         /// </summary>
@@ -541,14 +580,15 @@ namespace Stripe.TestHelpers
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>cashapp</c>, <c>customer_balance</c>,
-        /// <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>,
-        /// <c>id_bank_transfer</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
-        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>,
-        /// <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>sepa_debit</c>,
-        /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
+        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>cashapp</c>,
+        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>gopay</c>,
+        /// <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
+        /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>,
+        /// <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>,
+        /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>,
+        /// <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>,
+        /// <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>,
+        /// <c>stripe_balance</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
         /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]

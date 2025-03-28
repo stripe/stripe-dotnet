@@ -89,10 +89,10 @@ namespace Stripe
 
         /// <summary>
         /// The reason the review was closed, or null if it has not yet been closed. One of
-        /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, <c>disputed</c>, or
-        /// <c>redacted</c>.
-        /// One of: <c>approved</c>, <c>disputed</c>, <c>redacted</c>, <c>refunded</c>, or
-        /// <c>refunded_as_fraud</c>.
+        /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, <c>disputed</c>,
+        /// <c>redacted</c>, or <c>canceled</c>.
+        /// One of: <c>approved</c>, <c>canceled</c>, <c>disputed</c>, <c>redacted</c>,
+        /// <c>refunded</c>, or <c>refunded_as_fraud</c>.
         /// </summary>
         [JsonProperty("closed_reason")]
 #if NET6_0_OR_GREATER
@@ -203,8 +203,8 @@ namespace Stripe
 
         /// <summary>
         /// The reason the review is currently open or closed. One of <c>rule</c>, <c>manual</c>,
-        /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, <c>disputed</c>, or
-        /// <c>redacted</c>.
+        /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, <c>disputed</c>,
+        /// <c>redacted</c>, or <c>canceled</c>.
         /// </summary>
         [JsonProperty("reason")]
 #if NET6_0_OR_GREATER

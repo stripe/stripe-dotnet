@@ -11,8 +11,7 @@ namespace Stripe
     {
         /// <summary>
         /// The amount to capture from the PaymentIntent, which must be less than or equal to the
-        /// original amount. Any additional amount is automatically refunded. Defaults to the full
-        /// <c>amount_capturable</c> if it's not provided.
+        /// original amount. Defaults to the full <c>amount_capturable</c> if it's not provided.
         /// </summary>
         [JsonProperty("amount_to_capture")]
 #if NET6_0_OR_GREATER
@@ -23,7 +22,7 @@ namespace Stripe
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. The amount of the
-        /// application fee collected will be capped at the total payment amount. For more
+        /// application fee collected will be capped at the total amount captured. For more
         /// information, see the PaymentIntents <a
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.

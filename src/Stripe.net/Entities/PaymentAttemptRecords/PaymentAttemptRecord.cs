@@ -160,6 +160,16 @@ namespace Stripe
         public string PaymentReference { get; set; }
 
         /// <summary>
+        /// Indicates who reported the payment.
+        /// One of: <c>self</c>, or <c>stripe</c>.
+        /// </summary>
+        [JsonProperty("reported_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reported_by")]
+#endif
+        public string ReportedBy { get; set; }
+
+        /// <summary>
         /// Shipping information for this payment.
         /// </summary>
         [JsonProperty("shipping_details")]
