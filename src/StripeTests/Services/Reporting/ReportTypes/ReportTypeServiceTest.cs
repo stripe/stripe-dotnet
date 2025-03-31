@@ -57,19 +57,5 @@ namespace StripeTests.Reporting
             this.AssertRequest(HttpMethod.Get, "/v1/reporting/report_types");
             Assert.NotNull(reportTypes);
         }
-
-        [Fact]
-        public void ListAutoPaging()
-        {
-            var reportType = this.service.ListAutoPaging(this.listOptions).First();
-            Assert.NotNull(reportType);
-        }
-
-        [Fact]
-        public async Task ListAutoPagingAsync()
-        {
-            var reportType = await this.service.ListAutoPagingAsync(this.listOptions).FirstAsync();
-            Assert.NotNull(reportType);
-        }
     }
 }
