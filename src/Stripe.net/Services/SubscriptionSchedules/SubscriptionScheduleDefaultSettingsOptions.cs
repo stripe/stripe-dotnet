@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionScheduleDefaultSettingsOptions : INestedOptions
     {
@@ -14,12 +17,18 @@ namespace Stripe
         /// href="https://stripe.com/docs/connect/subscriptions#collecting-fees-on-subscriptions">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_percent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_percent")]
+#endif
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
         /// Default settings for automatic tax computation.
         /// </summary>
         [JsonProperty("automatic_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("automatic_tax")]
+#endif
         public SubscriptionScheduleDefaultSettingsAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -31,6 +40,9 @@ namespace Stripe
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
+#endif
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -38,6 +50,9 @@ namespace Stripe
         /// new billing period. Pass an empty string to remove previously-defined thresholds.
         /// </summary>
         [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
         public SubscriptionScheduleDefaultSettingsBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
@@ -49,6 +64,9 @@ namespace Stripe
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("collection_method")]
+#endif
         public string CollectionMethod { get; set; }
 
         /// <summary>
@@ -57,6 +75,9 @@ namespace Stripe
         /// default payment method in the customer's invoice settings.
         /// </summary>
         [JsonProperty("default_payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_payment_method")]
+#endif
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
@@ -65,12 +86,18 @@ namespace Stripe
         /// certain local payment methods UIs.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
         /// All invoices will be billed using the specified settings.
         /// </summary>
         [JsonProperty("invoice_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_settings")]
+#endif
         public SubscriptionScheduleDefaultSettingsInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
@@ -78,6 +105,9 @@ namespace Stripe
         /// invoices.
         /// </summary>
         [JsonProperty("on_behalf_of")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("on_behalf_of")]
+#endif
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -85,6 +115,9 @@ namespace Stripe
         /// subscription's invoices.
         /// </summary>
         [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
         public SubscriptionScheduleDefaultSettingsTransferDataOptions TransferData { get; set; }
     }
 }

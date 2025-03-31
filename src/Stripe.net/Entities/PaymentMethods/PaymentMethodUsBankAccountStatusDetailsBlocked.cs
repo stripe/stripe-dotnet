@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentMethodUsBankAccountStatusDetailsBlocked : StripeEntity<PaymentMethodUsBankAccountStatusDetailsBlocked>
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// <c>R10</c>, <c>R11</c>, <c>R16</c>, <c>R20</c>, <c>R29</c>, or <c>R31</c>.
         /// </summary>
         [JsonProperty("network_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_code")]
+#endif
         public string NetworkCode { get; set; }
 
         /// <summary>
@@ -20,6 +26,9 @@ namespace Stripe
         /// <c>bank_account_unusable</c>, or <c>debit_not_authorized</c>.
         /// </summary>
         [JsonProperty("reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason")]
+#endif
         public string Reason { get; set; }
     }
 }

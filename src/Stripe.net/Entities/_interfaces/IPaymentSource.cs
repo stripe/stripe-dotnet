@@ -1,5 +1,10 @@
 namespace Stripe
 {
+#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
+#endif
+
     /// <summary>
     /// Resources that implement this interface can be used as payment sources when creating
     /// charges.
@@ -19,6 +24,9 @@ namespace Stripe
     /// </item>
     /// </list>
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJStripeObjectConverter))]
+#endif
     public interface IPaymentSource : IStripeEntity, IHasId, IHasObject
     {
     }

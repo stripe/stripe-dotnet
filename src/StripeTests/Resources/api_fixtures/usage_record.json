@@ -1,8 +1,0 @@
-{
-  "id": "mbur_123",
-  "object": "usage_record",
-  "livemode": false,
-  "quantity": 100,
-  "subscription_item": "si_123",
-  "timestamp": 1528128974
-}

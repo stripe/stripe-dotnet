@@ -3,6 +3,9 @@ namespace Stripe.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditGrantApplicabilityConfigScope : StripeEntity<CreditGrantApplicabilityConfigScope>
     {
@@ -12,6 +15,9 @@ namespace Stripe.Billing
         /// href="https://docs.stripe.com/api/billing/meter">Billing Meter</a> attached to them.
         /// </summary>
         [JsonProperty("price_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price_type")]
+#endif
         public string PriceType { get; set; }
 
         /// <summary>
@@ -20,6 +26,9 @@ namespace Stripe.Billing
         /// href="https://docs.stripe.com/api/billing/meter">Billing Meter</a> attached to them.
         /// </summary>
         [JsonProperty("prices")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("prices")]
+#endif
         public List<CreditGrantApplicabilityConfigScopePrice> Prices { get; set; }
     }
 }

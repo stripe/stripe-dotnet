@@ -3,6 +3,9 @@ namespace Stripe.Radar
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ValueListUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -10,6 +13,9 @@ namespace Stripe.Radar
         /// The name of the value list for use in rules.
         /// </summary>
         [JsonProperty("alias")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alias")]
+#endif
         public string Alias { get; set; }
 
         /// <summary>
@@ -19,12 +25,18 @@ namespace Stripe.Radar
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The human-readable name of the value list.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
         public string Name { get; set; }
     }
 }

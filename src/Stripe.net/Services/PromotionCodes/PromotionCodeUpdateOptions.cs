@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PromotionCodeUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// when the coupon is still valid and the promotion code is otherwise redeemable.
         /// </summary>
         [JsonProperty("active")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("active")]
+#endif
         public bool? Active { get; set; }
 
         /// <summary>
@@ -20,12 +26,18 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Settings that restrict the redemption of the promotion code.
         /// </summary>
         [JsonProperty("restrictions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("restrictions")]
+#endif
         public PromotionCodeRestrictionsOptions Restrictions { get; set; }
     }
 }

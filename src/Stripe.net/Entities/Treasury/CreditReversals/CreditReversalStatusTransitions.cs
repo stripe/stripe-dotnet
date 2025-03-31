@@ -4,6 +4,9 @@ namespace Stripe.Treasury
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CreditReversalStatusTransitions : StripeEntity<CreditReversalStatusTransitions>
     {
@@ -12,6 +15,10 @@ namespace Stripe.Treasury
         /// </summary>
         [JsonProperty("posted_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("posted_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? PostedAt { get; set; }
     }
 }

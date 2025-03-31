@@ -2,6 +2,9 @@
 namespace Stripe.V2
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class EventDestinationStatusDetailsDisabled : StripeEntity<EventDestinationStatusDetailsDisabled>
     {
@@ -10,6 +13,9 @@ namespace Stripe.V2
         /// One of: <c>no_aws_event_source_exists</c>, or <c>user</c>.
         /// </summary>
         [JsonProperty("reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason")]
+#endif
         public string Reason { get; set; }
     }
 }

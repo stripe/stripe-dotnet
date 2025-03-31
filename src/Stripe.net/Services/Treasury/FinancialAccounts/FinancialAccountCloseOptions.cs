@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class FinancialAccountCloseOptions : BaseOptions
     {
@@ -10,6 +13,9 @@ namespace Stripe.Treasury
         /// closing FA's balance to $0.
         /// </summary>
         [JsonProperty("forwarding_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("forwarding_settings")]
+#endif
         public FinancialAccountForwardingSettingsOptions ForwardingSettings { get; set; }
     }
 }

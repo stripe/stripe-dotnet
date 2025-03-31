@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SourceReceiverOptions : INestedOptions
     {
@@ -14,6 +17,9 @@ namespace Stripe
         /// One of: <c>email</c>, <c>manual</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("refund_attributes_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund_attributes_method")]
+#endif
         public string RefundAttributesMethod { get; set; }
     }
 }

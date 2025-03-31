@@ -2,6 +2,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class OAuthTokenCreateOptions : BaseOptions
     {
@@ -16,6 +19,9 @@ namespace Stripe
         /// with a failure.
         /// </summary>
         [JsonProperty("assert_capabilities")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("assert_capabilities")]
+#endif
         public List<string> AssertCapabilities { get; set; }
 
         /// <summary>
@@ -24,10 +30,16 @@ namespace Stripe
         /// depends on whether the <c>client_id</c> used was production or development).
         /// </summary>
         [JsonProperty("client_secret")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("client_secret")]
+#endif
         public string ClientSecret { get; set; }
 
         /// <summary>The value of the <c>code</c>, depending on the <c>grant_type</c>.</summary>
         [JsonProperty("code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("code")]
+#endif
         public string Code { get; set; }
 
         /// <summary>
@@ -35,10 +47,16 @@ namespace Stripe
         /// <c>refresh_token</c> when using a refresh token to get a new access token.
         /// </summary>
         [JsonProperty("grant_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("grant_type")]
+#endif
         public string GrantType { get; set; }
 
         /// <summary>The value of the <c>refresh_token</c>, depending on the <c>grant_type</c>.</summary>
         [JsonProperty("refresh_token")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refresh_token")]
+#endif
         public string RefreshToken { get; set; }
 
         /// <summary>
@@ -50,6 +68,9 @@ namespace Stripe
         /// <para>Defaults to the scope of the refresh token.</para>
         /// </summary>
         [JsonProperty("scope")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("scope")]
+#endif
         public string Scope { get; set; }
     }
 }

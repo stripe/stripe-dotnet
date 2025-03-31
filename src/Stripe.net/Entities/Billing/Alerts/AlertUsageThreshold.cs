@@ -4,7 +4,13 @@ namespace Stripe.Billing
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class AlertUsageThreshold : StripeEntity<AlertUsageThreshold>
     {
         /// <summary>
@@ -12,12 +18,18 @@ namespace Stripe.Billing
         /// filter at this time.
         /// </summary>
         [JsonProperty("filters")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("filters")]
+#endif
         public List<AlertUsageThresholdFilter> Filters { get; set; }
 
         /// <summary>
         /// The value at which this alert will trigger.
         /// </summary>
         [JsonProperty("gte")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("gte")]
+#endif
         public long Gte { get; set; }
 
         #region Expandable Meter
@@ -28,6 +40,9 @@ namespace Stripe.Billing
         /// monitored.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string MeterId
         {
             get => this.InternalMeter?.Id;
@@ -42,6 +57,9 @@ namespace Stripe.Billing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Meter Meter
         {
             get => this.InternalMeter?.ExpandedObject;
@@ -50,6 +68,10 @@ namespace Stripe.Billing
 
         [JsonProperty("meter")]
         [JsonConverter(typeof(ExpandableFieldConverter<Meter>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("meter")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Meter>))]
+#endif
         internal ExpandableField<Meter> InternalMeter { get; set; }
         #endregion
 
@@ -57,6 +79,9 @@ namespace Stripe.Billing
         /// Defines how the alert will behave.
         /// </summary>
         [JsonProperty("recurrence")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("recurrence")]
+#endif
         public string Recurrence { get; set; }
     }
 }

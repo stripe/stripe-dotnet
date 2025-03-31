@@ -3,6 +3,9 @@ namespace Stripe.Treasury
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InboundTransferCreateOptions : BaseOptions, IHasMetadata
     {
@@ -10,6 +13,9 @@ namespace Stripe.Treasury
         /// Amount (in cents) to be transferred.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -18,18 +24,27 @@ namespace Stripe.Treasury
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
         /// The FinancialAccount to send funds to.
         /// </summary>
         [JsonProperty("financial_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_account")]
+#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -39,12 +54,18 @@ namespace Stripe.Treasury
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The origin payment method to be debited for the InboundTransfer.
         /// </summary>
         [JsonProperty("origin_payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("origin_payment_method")]
+#endif
         public string OriginPaymentMethod { get; set; }
 
         /// <summary>
@@ -52,6 +73,9 @@ namespace Stripe.Treasury
         /// characters.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
         public string StatementDescriptor { get; set; }
     }
 }

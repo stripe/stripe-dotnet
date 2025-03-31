@@ -44,9 +44,6 @@ namespace StripeTests
 
             Assert.NotNull(invoiceItem.Invoice);
             Assert.Equal("invoice", invoiceItem.Invoice.Object);
-
-            Assert.NotNull(invoiceItem.Subscription);
-            Assert.Equal("subscription", invoiceItem.Subscription.Object);
         }
     }
 }
