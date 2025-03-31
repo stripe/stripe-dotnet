@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Stripe.Infrastructure.FormEncoding;
 
-    public class OAuthTokenService : Service<OAuthToken>,
+    public class OAuthTokenService : Service,
         ICreatable<OAuthToken, OAuthTokenCreateOptions>
     {
         public OAuthTokenService()
