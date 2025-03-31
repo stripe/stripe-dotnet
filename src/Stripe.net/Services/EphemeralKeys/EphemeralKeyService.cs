@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class EphemeralKeyService : Service<EphemeralKey>,
+    public class EphemeralKeyService : Service,
         ICreatable<EphemeralKey, EphemeralKeyCreateOptions>,
         IDeletable<EphemeralKey, EphemeralKeyDeleteOptions>
     {

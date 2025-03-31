@@ -115,6 +115,11 @@ namespace StripeTests.Wholesome
             {
                 expectedConverterType = typeof(STJUnixDateTimeConverter);
             }
+            else if (typeof(IEmptyable).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
+            {
+                expectedConverterType = typeof(STJEmptyableConverter<>);
+                expectedGenericTypeArguments = type.GenericTypeArguments;
+            }
             else if (typeof(IAnyOf).GetTypeInfo().IsAssignableFrom(type.GetTypeInfo()))
             {
                 expectedConverterType = typeof(STJAnyOfConverter);
