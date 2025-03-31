@@ -9,7 +9,7 @@ namespace Stripe
     public class CustomerTaxLocation : StripeEntity<CustomerTaxLocation>
     {
         /// <summary>
-        /// The customer's country as identified by Stripe Tax.
+        /// The identified tax country of the customer.
         /// </summary>
         [JsonProperty("country")]
 #if NET6_0_OR_GREATER
@@ -29,7 +29,7 @@ namespace Stripe
         public string Source { get; set; }
 
         /// <summary>
-        /// The customer's state, county, province, or region as identified by Stripe Tax.
+        /// The identified tax state, county, province, or region of the customer.
         /// </summary>
         [JsonProperty("state")]
 #if NET6_0_OR_GREATER

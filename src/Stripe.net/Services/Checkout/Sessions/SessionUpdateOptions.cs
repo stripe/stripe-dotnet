@@ -29,5 +29,14 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("metadata")]
 #endif
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The shipping rate options to apply to this Session. Up to a maximum of 5.
+        /// </summary>
+        [JsonProperty("shipping_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping_options")]
+#endif
+        public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
     }
 }

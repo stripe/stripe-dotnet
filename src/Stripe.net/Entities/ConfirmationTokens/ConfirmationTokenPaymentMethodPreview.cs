@@ -79,6 +79,12 @@ namespace Stripe
 #endif
         public ConfirmationTokenPaymentMethodPreviewBancontact Bancontact { get; set; }
 
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public ConfirmationTokenPaymentMethodPreviewBillie Billie { get; set; }
+
         [JsonProperty("billing_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_details")]
@@ -248,6 +254,12 @@ namespace Stripe
 #endif
         public ConfirmationTokenPaymentMethodPreviewNaverPay NaverPay { get; set; }
 
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public ConfirmationTokenPaymentMethodPreviewNzBankAccount NzBankAccount { get; set; }
+
         [JsonProperty("oxxo")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("oxxo")]
@@ -308,6 +320,12 @@ namespace Stripe
 #endif
         public ConfirmationTokenPaymentMethodPreviewSamsungPay SamsungPay { get; set; }
 
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public ConfirmationTokenPaymentMethodPreviewSatispay Satispay { get; set; }
+
         [JsonProperty("sepa_debit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]
@@ -338,14 +356,15 @@ namespace Stripe
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
-        /// <c>bancontact</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>, <c>card_present</c>,
-        /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
-        /// <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>,
-        /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>,
-        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
-        /// <c>samsung_pay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>card_present</c>, <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
+        /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>,
+        /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>,
+        /// <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>,
+        /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>,
+        /// <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
+        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

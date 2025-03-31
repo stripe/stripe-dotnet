@@ -197,6 +197,10 @@ namespace Stripe
         /// <summary>
         /// If you populate this hash, this SetupIntent generates a <c>single_use</c> mandate after
         /// successful completion.
+        ///
+        /// Single-use mandates are only valid for the following payment methods: <c>acss_debit</c>,
+        /// <c>alipay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
+        /// <c>boleto</c>, <c>ideal</c>, <c>link</c>, <c>sepa_debit</c>, and <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("single_use")]
 #if NET6_0_OR_GREATER
