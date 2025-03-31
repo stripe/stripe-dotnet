@@ -10,6 +10,15 @@ namespace Stripe.V2.MoneyManagement
     public class TransactionListOptions : V2.ListOptions
     {
         /// <summary>
+        /// Filter for Transactions created at an exact time.
+        /// </summary>
+        [JsonProperty("created")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+        public DateTime? Created { get; set; }
+
+        /// <summary>
         /// Filter for Transactions created after the specified timestamp.
         /// </summary>
         [JsonProperty("created_gt")]

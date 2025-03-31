@@ -10,6 +10,16 @@ namespace Stripe.V2.MoneyManagement
     public class InboundTransferListOptions : V2.ListOptions
     {
         /// <summary>
+        /// Filter for objects created at the specified timestamp. Must be an RFC 3339 date &amp;
+        /// time value, for example: 2022-09-18T13:22:00Z.
+        /// </summary>
+        [JsonProperty("created")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+#endif
+        public DateTime? Created { get; set; }
+
+        /// <summary>
         /// Filter for objects created after the specified timestamp. Must be an RFC 3339 date &amp;
         /// time value, for example: 2022-09-18T13:22:00Z.
         /// </summary>

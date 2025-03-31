@@ -1,12 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Capital
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class FinancingOfferListOptions : ListOptionsWithCreated
+    public class FinancingOfferListOptions : ListOptions
     {
         /// <summary>
         /// limit list to offers belonging to given connected account.
@@ -16,6 +18,17 @@ namespace Stripe.Capital
         [STJS.JsonPropertyName("connected_account")]
 #endif
         public string ConnectedAccount { get; set; }
+
+        /// <summary>
+        /// Only return offers that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// limit list to offers with given status.
