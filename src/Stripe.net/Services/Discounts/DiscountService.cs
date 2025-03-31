@@ -6,7 +6,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class DiscountService : Service<Discount>
+    public class DiscountService : Service
     {
         public DiscountService()
             : base()
