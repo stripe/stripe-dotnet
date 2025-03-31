@@ -99,6 +99,16 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsBancontactOptions Bancontact { get; set; }
 
         /// <summary>
+        /// If this is a <c>billie</c> PaymentMethod, this sub-hash contains details about the
+        /// Billie payment method options.
+        /// </summary>
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public PaymentIntentPaymentMethodOptionsBillieOptions Billie { get; set; }
+
+        /// <summary>
         /// If this is a <c>blik</c> PaymentMethod, this sub-hash contains details about the BLIK
         /// payment method options.
         /// </summary>
