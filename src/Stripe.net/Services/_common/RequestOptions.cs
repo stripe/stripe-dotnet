@@ -71,6 +71,16 @@ namespace Stripe
                 clone.ApiKey = clientOptions.ApiKey;
             }
 
+            if (string.IsNullOrEmpty(clone.StripeContext))
+            {
+                clone.StripeContext = clientOptions.StripeContext;
+            }
+
+            if (string.IsNullOrEmpty(clone.StripeAccount))
+            {
+                clone.StripeAccount = clientOptions.StripeAccount;
+            }
+
             return clone;
         }
 

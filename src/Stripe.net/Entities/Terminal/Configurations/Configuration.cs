@@ -103,5 +103,11 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("verifone_p400")]
 #endif
         public ConfigurationVerifoneP400 VerifoneP400 { get; set; }
+
+        [JsonProperty("wifi")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wifi")]
+#endif
+        public ConfigurationWifi Wifi { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public partial class SourceService : Service<Source>,
+    public partial class SourceService : Service,
         ICreatable<Source, SourceCreateOptions>,
         IRetrievable<Source, SourceGetOptions>,
         IUpdatable<Source, SourceUpdateOptions>,

@@ -89,6 +89,7 @@ namespace Stripe
                 { "identity.verification_report", typeof(Identity.VerificationReport) },
                 { "identity.verification_session", typeof(Identity.VerificationSession) },
                 { "invoice", typeof(Invoice) },
+                { "invoice_payment", typeof(InvoicePayment) },
                 { "invoice_rendering_template", typeof(InvoiceRenderingTemplate) },
                 { "invoiceitem", typeof(InvoiceItem) },
                 { "issuing.authorization", typeof(Issuing.Authorization) },
@@ -167,8 +168,6 @@ namespace Stripe
                 { "treasury.received_debit", typeof(Treasury.ReceivedDebit) },
                 { "treasury.transaction", typeof(Treasury.Transaction) },
                 { "treasury.transaction_entry", typeof(Treasury.TransactionEntry) },
-                { "usage_record", typeof(UsageRecord) },
-                { "usage_record_summary", typeof(UsageRecordSummary) },
                 { "webhook_endpoint", typeof(WebhookEndpoint) },
 
                 // ObjectsToTypes: The end of the section generated from our OpenAPI spec

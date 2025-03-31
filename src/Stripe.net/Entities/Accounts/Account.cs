@@ -57,12 +57,7 @@ namespace Stripe
         public AccountBusinessProfile BusinessProfile { get; set; }
 
         /// <summary>
-        /// The business type. After you create an <a
-        /// href="https://stripe.com/api/account_links">Account Link</a> or <a
-        /// href="https://stripe.com/api/account_sessions">Account Session</a>, this property is
-        /// only returned for accounts where <a
-        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
-        /// is <c>application</c>, which includes Custom accounts.
+        /// The business type.
         /// One of: <c>company</c>, <c>government_entity</c>, <c>individual</c>, or
         /// <c>non_profit</c>.
         /// </summary>
@@ -192,7 +187,7 @@ namespace Stripe
         /// <summary>
         /// This is an object representing a person associated with a Stripe account.
         ///
-        /// A platform cannot access a person for an account where <a
+        /// A platform can only access a subset of data in a person for an account where <a
         /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">account.controller.requirement_collection</a>
         /// is <c>stripe</c>, which includes Standard and Express accounts, after creating an
         /// Account Link or Account Session to start Connect onboarding.

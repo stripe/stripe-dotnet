@@ -134,7 +134,9 @@ namespace Stripe.Checkout
         public string ClientReferenceId { get; set; }
 
         /// <summary>
-        /// Client secret to be used when initializing Stripe.js embedded checkout.
+        /// The client secret of your Checkout Session. Applies to Checkout Sessions with
+        /// <c>ui_mode: embedded</c>. Client secret to be used when initializing Stripe.js embedded
+        /// checkout.
         /// </summary>
         [JsonProperty("client_secret")]
 #if NET6_0_OR_GREATER
@@ -195,7 +197,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// Currency conversion details for <a
         /// href="https://docs.stripe.com/payments/checkout/adaptive-pricing">Adaptive Pricing</a>
-        /// sessions.
+        /// sessions created before 2025-03-31.
         /// </summary>
         [JsonProperty("currency_conversion")]
 #if NET6_0_OR_GREATER
@@ -427,6 +429,15 @@ namespace Stripe.Checkout
 #endif
         public string Mode { get; set; }
 
+        /// <summary>
+        /// The optional items presented to the customer at checkout.
+        /// </summary>
+        [JsonProperty("optional_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("optional_items")]
+#endif
+        public List<SessionOptionalItem> OptionalItems { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>
@@ -568,11 +579,30 @@ namespace Stripe.Checkout
 #endif
         public string PaymentStatus { get; set; }
 
+        /// <summary>
+        /// This property is used to set up permissions for various actions (e.g., update) on the
+        /// CheckoutSession object.
+        ///
+        /// For specific permissions, please refer to their dedicated subsections, such as
+        /// <c>permissions.update.shipping_details</c>.
+        /// </summary>
+        [JsonProperty("permissions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("permissions")]
+#endif
+        public SessionPermissions Permissions { get; set; }
+
         [JsonProperty("phone_number_collection")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone_number_collection")]
 #endif
         public SessionPhoneNumberCollection PhoneNumberCollection { get; set; }
+
+        [JsonProperty("presentment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("presentment_details")]
+#endif
+        public SessionPresentmentDetails PresentmentDetails { get; set; }
 
         /// <summary>
         /// The ID of the original expired Checkout Session that triggered the recovery flow.
@@ -684,15 +714,6 @@ namespace Stripe.Checkout
         public SessionShippingCost ShippingCost { get; set; }
 
         /// <summary>
-        /// Shipping information for this Checkout Session.
-        /// </summary>
-        [JsonProperty("shipping_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("shipping_details")]
-#endif
-        public SessionShippingDetails ShippingDetails { get; set; }
-
-        /// <summary>
         /// The shipping rate options applied to this Session.
         /// </summary>
         [JsonProperty("shipping_options")]
@@ -793,7 +814,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>hosted</c>.
-        /// One of: <c>embedded</c>, or <c>hosted</c>.
+        /// One of: <c>custom</c>, <c>embedded</c>, or <c>hosted</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
 #if NET6_0_OR_GREATER
@@ -802,8 +823,8 @@ namespace Stripe.Checkout
         public string UiMode { get; set; }
 
         /// <summary>
-        /// The URL to the Checkout Session. Redirect customers to this URL to take them to
-        /// Checkout. If you’re using <a
+        /// The URL to the Checkout Session. Applies to Checkout Sessions with <c>ui_mode:
+        /// hosted</c>. Redirect customers to this URL to take them to Checkout. If you’re using <a
         /// href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the
         /// URL will use your subdomain. Otherwise, it’ll use <c>checkout.stripe.com.</c> This value
         /// is only present when the session is active.

@@ -9,17 +9,6 @@ namespace Stripe
     public class PriceRecurringOptions : INestedOptions
     {
         /// <summary>
-        /// Specifies a usage aggregation strategy for prices of <c>usage_type=metered</c>. Defaults
-        /// to <c>sum</c>.
-        /// One of: <c>last_during_period</c>, <c>last_ever</c>, <c>max</c>, or <c>sum</c>.
-        /// </summary>
-        [JsonProperty("aggregate_usage")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("aggregate_usage")]
-#endif
-        public string AggregateUsage { get; set; }
-
-        /// <summary>
         /// Specifies billing frequency. Either <c>day</c>, <c>week</c>, <c>month</c> or
         /// <c>year</c>.
         /// One of: <c>day</c>, <c>month</c>, <c>week</c>, or <c>year</c>.

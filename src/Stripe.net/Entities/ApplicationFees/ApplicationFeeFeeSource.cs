@@ -27,7 +27,7 @@ namespace Stripe
         public string Payout { get; set; }
 
         /// <summary>
-        /// Type of object that created the application fee, either <c>charge</c> or <c>payout</c>.
+        /// Type of object that created the application fee.
         /// One of: <c>charge</c>, or <c>payout</c>.
         /// </summary>
         [JsonProperty("type")]

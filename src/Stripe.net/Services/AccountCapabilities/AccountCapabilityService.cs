@@ -9,7 +9,6 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public class AccountCapabilityService : Service,
-        INestedListable<Capability, AccountCapabilityListOptions>,
         INestedRetrievable<Capability, AccountCapabilityGetOptions>,
         INestedUpdatable<Capability, AccountCapabilityUpdateOptions>
     {
@@ -59,24 +58,6 @@ namespace Stripe
         public virtual Task<StripeList<Capability>> ListAsync(string parentId, AccountCapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<Capability>>(BaseAddress.Api, HttpMethod.Get, $"/v1/accounts/{WebUtility.UrlEncode(parentId)}/capabilities", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Returns a list of capabilities associated with the account. The capabilities are
-        /// returned sorted by creation date, with the most recent capability appearing first.</p>.
-        /// </summary>
-        public virtual IEnumerable<Capability> ListAutoPaging(string parentId, AccountCapabilityListOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<Capability>($"/v1/accounts/{WebUtility.UrlEncode(parentId)}/capabilities", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Returns a list of capabilities associated with the account. The capabilities are
-        /// returned sorted by creation date, with the most recent capability appearing first.</p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<Capability> ListAutoPagingAsync(string parentId, AccountCapabilityListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<Capability>($"/v1/accounts/{WebUtility.UrlEncode(parentId)}/capabilities", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
