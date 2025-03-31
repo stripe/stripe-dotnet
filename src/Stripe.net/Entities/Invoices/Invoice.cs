@@ -1081,37 +1081,6 @@ namespace Stripe
 #endif
         public InvoiceStatusTransitions StatusTransitions { get; set; }
 
-        #region Expandable Subscription
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public string SubscriptionId
-        {
-            get => this.InternalSubscription?.Id;
-            set => this.InternalSubscription = SetExpandableFieldId(value, this.InternalSubscription);
-        }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public Subscription Subscription
-        {
-            get => this.InternalSubscription?.ExpandedObject;
-            set => this.InternalSubscription = SetExpandableFieldObject(value, this.InternalSubscription);
-        }
-
-        [JsonProperty("subscription")]
-        [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("subscription")]
-        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
-#endif
-        internal ExpandableField<Subscription> InternalSubscription { get; set; }
-        #endregion
-
         /// <summary>
         /// Total of all subscriptions, invoice items, and prorations on the invoice before any
         /// invoice level discount or exclusive tax is applied. Item discounts are already
