@@ -33,7 +33,6 @@ namespace StripeTests
               "customer",
               "default_payment_method",
               "payment_intent",
-              "subscription",
             };
 
             string json = this.GetFixture("/v1/invoices/in_123", expansions);
@@ -48,9 +47,6 @@ namespace StripeTests
 
             Assert.NotNull(invoice.DefaultPaymentMethod);
             Assert.Equal("payment_method", invoice.DefaultPaymentMethod.Object);
-
-            Assert.NotNull(invoice.Subscription);
-            Assert.Equal("subscription", invoice.Subscription.Object);
         }
 
         [Fact]
