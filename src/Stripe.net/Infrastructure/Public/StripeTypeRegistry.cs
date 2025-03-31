@@ -299,6 +299,10 @@ namespace Stripe
                     Events.V2CoreAccountConfigurationCustomerCapabilityStatusUpdatedEvent)
                 },
                 {
+                    "v2.core.account[configuration.customer].updated", typeof(
+                    Events.V2CoreAccountConfigurationCustomerUpdatedEvent)
+                },
+                {
                     "v2.core.account[identity].updated", typeof(
                     Events.V2CoreAccountIdentityUpdatedEvent)
                 },
@@ -319,8 +323,16 @@ namespace Stripe
                     Events.V2CoreAccountConfigurationMerchantCapabilityStatusUpdatedEvent)
                 },
                 {
+                    "v2.core.account[configuration.merchant].updated", typeof(
+                    Events.V2CoreAccountConfigurationMerchantUpdatedEvent)
+                },
+                {
                     "v2.core.account[configuration.recipient].capability_status_updated", typeof(
                     Events.V2CoreAccountConfigurationRecipientCapabilityStatusUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.recipient].updated", typeof(
+                    Events.V2CoreAccountConfigurationRecipientUpdatedEvent)
                 },
                 {
                     "v1.billing.meter.error_report_triggered", typeof(
