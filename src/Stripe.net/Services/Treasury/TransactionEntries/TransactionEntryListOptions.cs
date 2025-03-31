@@ -8,19 +8,8 @@ namespace Stripe.Treasury
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class TransactionEntryListOptions : ListOptions
+    public class TransactionEntryListOptions : ListOptionsWithCreated
     {
-        /// <summary>
-        /// Only return TransactionEntries that were created during the given date interval.
-        /// </summary>
-        [JsonProperty("created")]
-        [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
-        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
-
         [JsonProperty("effective_at")]
         [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER

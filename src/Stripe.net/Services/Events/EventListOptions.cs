@@ -1,27 +1,14 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class EventListOptions : ListOptions
+    public class EventListOptions : ListOptionsWithCreated
     {
-        /// <summary>
-        /// Only return events that were created during the given date interval.
-        /// </summary>
-        [JsonProperty("created")]
-        [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
-        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
-
         /// <summary>
         /// Filter events by whether all webhooks were successfully delivered. If false, events
         /// which are still pending or have failed all delivery attempts to a webhook endpoint will

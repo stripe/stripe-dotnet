@@ -8,7 +8,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class SubscriptionListOptions : ListOptions
+    public class SubscriptionListOptions : ListOptionsWithCreated
     {
         /// <summary>
         /// Filter subscriptions by their automatic tax settings.
@@ -29,17 +29,6 @@ namespace Stripe
         [STJS.JsonPropertyName("collection_method")]
 #endif
         public string CollectionMethod { get; set; }
-
-        /// <summary>
-        /// Only return subscriptions that were created during the given date interval.
-        /// </summary>
-        [JsonProperty("created")]
-        [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("created")]
-        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
-        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// Only return subscriptions whose current_period_end falls within the given date interval.

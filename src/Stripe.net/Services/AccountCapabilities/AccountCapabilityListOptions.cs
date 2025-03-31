@@ -1,7 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    public class AccountCapabilityListOptions : BaseOptions
+    public class AccountCapabilityListOptions : ListOptions
     {
     }
 }
