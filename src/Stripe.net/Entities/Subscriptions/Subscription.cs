@@ -140,7 +140,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancel_at_period_end")]
 #endif
-        public bool? CancelAtPeriodEnd { get; set; }
+        public bool CancelAtPeriodEnd { get; set; }
 
         /// <summary>
         /// If the subscription has been canceled, the date of that cancellation. If the
