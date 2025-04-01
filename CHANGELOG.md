@@ -1,5 +1,82 @@
 # Changelog
 
+## 48.0.0 - 2025-04-01
+* [#3074](https://github.com/stripe/stripe-dotnet/pull/3074) System.Text.Json Serialization Support release to GA
+  * Add System.Text.Json support for serializing Stripe.net entities and objects for applications running on .NET 6 and above. Now you can pass a Stripe.net object or collection of objects to the System.Text.Json serializer and it will produce the correct JSON string.
+* [#3056](https://github.com/stripe/stripe-dotnet/pull/3056) Support for APIs in the new API version 2025-03-31.basil
+  
+  This release changes the pinned API version to `2025-03-31.basil`.
+  
+  ### ⚠️ Breaking changes  due to changes in the Stripe API
+  
+  Please review details for the breaking changes and alternatives in the [Stripe API changelog](https://docs.stripe.com/changelog/basil) before upgrading.
+
+  * Remove support for resources `SubscriptionItemUsageRecordSummary` and `SubscriptionItemUsageRecord`
+  * Remove support for `Create` method on resource `SubscriptionItemUsageRecord`
+  * Remove support for `List`, `ListAsync`, `ListAutoPaginating`, and `ListAutoPaginatingAsync` methods on resource `SubscriptionItemUsageRecordSummary`
+  * Remove support for `Upcoming` and `UpcomingAsync` methods on resource `Invoice`
+  * Remove support for `Invoice` on `Charge` and `PaymentIntent`
+  * Remove support for `ShippingDetails` on `CheckoutSession`
+  * Remove support for `Carrier`, `Phone`, and `TrackingNumber` on `SessionCollectedInformationShippingDetails`
+  * Remove support for `Refund` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesListOptions`, `CreditNotePreviewOptions`, and `CreditNote`
+  * Remove support for `TaxAmounts` on `CreditNoteLineItem`, `CreditNote`, and `InvoiceLineItem`
+  * Remove support for `AmountExcludingTax` and `UnitAmountExcludingTax` on `CreditNoteLineItem` and `InvoiceLineItem`
+  * Remove support for `Coupon` on `CustomerCreateOptions`, `CustomerUpdateOptions`, `InvoiceCreatePreviewOptions`, `InvoiceScheduleDetailsPhasesOptions`, `SubscriptionCreateOptions`, `SubscriptionSchedulePhasesOptions`, `SubscriptionSchedulePhases`, and `SubscriptionUpdateOptions`
+  * Remove support for `PromotionCode` on `CustomerCreateOptions`, `CustomerUpdateOptions`, `SubscriptionCreateOptions`, and `SubscriptionUpdateOptions`
+  * Remove support for `Price` on `InvoiceItemCreateOptions`, `InvoiceItemUpdateOptions`, `InvoiceItem`, `InvoiceLineItemUpdateOptions`, `InvoiceLineItem`, and `InvoiceLinesOptions`
+  * Remove support for `BillingThresholds` on `InvoiceScheduleDetailsPhaseItemOptions`, `InvoiceScheduleDetailsPhaseOptions`, `InvoiceSubscriptionDetailsItemOptions`, `SubscriptionCreateOptions`, `SubscriptionItemCreateOptions`, `SubscriptionItemUpdateOptions`, `SubscriptionItem`, `SubscriptionItemsOptions`, `SubscriptionScheduleDefaultSettingsOptions`, `SubscriptionScheduleDefaultSettings`, `SubscriptionSchedulePhaseItemOptions`, `SubscriptionSchedulePhaseItem`, `SubscriptionSchedulePhaseOptions`, `SubscriptionSchedulePhase`, `SubscriptionUpdateOptions`, and `Subscription`
+  * Remove support for `ApplicationFeeAmount`, `Charge`, `PaidOutOfBand`, `Paid`, `PaymentIntent`, `Quote`, `Subscription`, `SubscriptionDetails`, `SubscriptionProrationDate`, `Tax`, `TotalTaxAmounts`, and `TransferData` on `Invoice`
+  * Remove support for `Discount` on `Invoice` and `Subscription`
+  * Remove support for `InvoiceItem`, `ProrationDetails`, `Proration`, `TaxRates`, and `Type` on `InvoiceLineItem`
+  * Remove support for `Plan` and `SubscriptionItem` on `InvoiceItem` and `InvoiceLineItem`
+  * Remove support for `UnitAmount` on `InvoiceItemCreateOptions`, `InvoiceItemUpdateOptions`, and `InvoiceItem`
+  * Remove support for `SubscriptionItems` on `InvoiceLineItemListOptions` and `InvoiceLineItemsListOptions`
+  * Remove support for `Subscription` and `UnitAmountDecimal` on `InvoiceItem`
+  * Remove support for `NaverPay` on `PaymentMethodUpdateOptions`
+  * Remove support for `AggregateUsage` on `PlanCreateOptions`, `Plan`, `PriceRecurringOptions`, and `PriceRecurring`
+  * Remove support for `CurrentPeriodEnd` and `CurrentPeriodStart` on `Subscription`
+  * Remove support for Page on `V2.EventDestinationListOptions` and `V2.EventListOptions`
+  
+  ### Additions
+  
+  * Add support for new resource `InvoicePayment`
+  * Add support for `Get` and `List` methods on resource `InvoicePayment`
+  * Add support for `BilliePayments`, `NzBankAccountBecsDebitPayments`, and `SatispayPayments` on `AccountCapabilitiesOptions` and `AccountCapabilities`
+  * Add support for `HostedPaymentMethodSave` on `AccountSettingsInvoicesOptions` and `AccountSettingsInvoices`
+  * Add support for `Invoices` on `AccountSettingsOptions`
+  * Add support for `PresentmentDetails` on `Charge`, `CheckoutSession`, `PaymentIntent`, and `Refund`
+  * Add support for `Billie` and `Satispay` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `CustomerPaymentMethod`, `PaymentIntentPaymentMethodDataOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `NzBankAccount` on `ChargePaymentMethodDetails`, `ConfirmationTokenPaymentMethodDataOptions`, `ConfirmationTokenPaymentMethodPreview`, `CustomerPaymentMethod`, `MandatePaymentMethodDetails`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentIntentPaymentMethodOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethod`, `SetupAttemptPaymentMethodDetails`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `OptionalItems` on `Checkout.SessionCreateOptions`, `CheckoutSession`, `PaymentLinkCreateOptions`, and `PaymentLink`
+  * Add support for `Permissions` on `Checkout.SessionCreateOptions` and `CheckoutSession`
+  * Add support for `ShippingOptions` on `Checkout.SessionUpdateOptions`
+  * Add support for `BuyerId` on `ConfirmationTokenPaymentMethodPreviewNaverPay`, `CustomerPaymentMethodNaverPay`, and `PaymentMethodNaverPay`
+  * Add support for `Refunds` on `CreditNoteCreateOptions`, `CreditNotePreviewLinesListOptions`, `CreditNotePreviewOptions`, and `CreditNote`
+  * Add support for `TotalTaxes` on `CreditNote` and `Invoice`
+  * Add support for `Taxes` on `CreditNoteLineItem` and `InvoiceLineItem`
+  * Add support for `TaxabilityReason` on `InvoiceLineItemTaxAmountsOptions` and `InvoiceLinesTaxAmountsOptions`
+  * Add support for `JurisdictionLevel` on `InvoiceLineItemTaxAmountsTaxRateDataOptions` and `InvoiceLinesTaxAmountsTaxRateDataOptions`
+  * Add support for `AmountOverpaid`, `ConfirmationSecret`, and `Payments` on `Invoice`
+  * Add support for `Parent` on `InvoiceItem`, `InvoiceLineItem`, and `Invoice`
+  * Add support for `NaverPay` on `MandatePaymentMethodDetails` and `SetupAttemptPaymentMethodDetails`
+  * Add support for `SetupFutureUsage` on `PaymentIntentPaymentMethodOptionsNaverPayOptions` and `PaymentIntentPaymentMethodOptionsNaverPay`
+  * Add support for `DefaultValue` on `PaymentLinkCustomFieldsDropdownOptions`, `PaymentLinkCustomFieldsDropdown`, `PaymentLinkCustomFieldsNumericOptions`, `PaymentLinkCustomFieldsNumeric`, `PaymentLinkCustomFieldsTextOptions`, and `PaymentLinkCustomFieldsText`
+  * Add support for `NzBankTransfer` on `RefundDestinationDetails`
+  * Add support for `CurrentPeriodEnd` and `CurrentPeriodStart` on `SubscriptionItem`
+  * Add support for `Wifi` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `TerminalConfiguration`
+  
+  ### ⚠️ Other Breaking changes in the SDK
+* [#3065](https://github.com/stripe/stripe-dotnet/pull/3065) Merge breaking changes from sdk-release/next-major branch to master
+  * Adds `StripeAccount` and `StripeContext` to `StripeClientOptions`, so you can specify the Stripe-Account or Stripe-Context header at the client (instead of the individual request) level. See [PR #3058](https://github.com/stripe/stripe-dotnet/pull/3058)
+  * Removes `ApiMode` from `RawRequestOptions`.  ApiMode is automatically determined from the path passed to RawRequest. See [PR #3052](https://github.com/stripe/stripe-dotnet/pull/3052)
+  * Deprecates `ServiceNested` and `Service<T>` classes.  To implement custom services, use the request methods defined on `StripeClient`. See [PR #3051](https://github.com/stripe/stripe-dotnet/pull/3051)
+  * Fixes `ListAutoPaging` and `ListAutoPagingAsync` to not mutate options object passed in. See [PR #2899](https://github.com/stripe/stripe-dotnet/pull/2899)
+* [#3078](https://github.com/stripe/stripe-dotnet/pull/3078) and [#3085](https://github.com/stripe/stripe-dotnet/pull/3085) Remove `ListOptionsWithCreated` and clean up services that incorrectly extend `ListOptions`
+  * Remove `ListOptionsWithCreated` base class. The classes that use to extend it now extend `ListOptions` and have the the `created` field defined explicitly.
+  * Classes`ReportTypeService` and `AccountCapabilityService` no longer implement the `IListable` interface, and the `ListAutoPaging` and `ListAutoPagingAsync` methods are removed. This is because the list APIs here are not pageable. See #2227 for more details.
+     * As a consequence, the classes `ReportTypeOptions` and `AccountCapabilityOptions` no longer extend `ListOptions` as well
+  
+
 ## 47.4.0 - 2025-02-24
 * [#3050](https://github.com/stripe/stripe-dotnet/pull/3050) Update generated code
   * Add support for `Prices` on `BillingCreditBalanceSummaryFilterApplicabilityScopeOptions`, `BillingCreditGrantApplicabilityConfigScopeOptions`, and `BillingCreditGrantApplicabilityConfigScope`
