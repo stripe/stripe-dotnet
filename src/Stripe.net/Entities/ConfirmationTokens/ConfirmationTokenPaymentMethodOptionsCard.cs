@@ -16,5 +16,14 @@ namespace Stripe
         [STJS.JsonPropertyName("cvc_token")]
 #endif
         public string CvcToken { get; set; }
+
+        /// <summary>
+        /// Installment configuration for payments.
+        /// </summary>
+        [JsonProperty("installments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("installments")]
+#endif
+        public ConfirmationTokenPaymentMethodOptionsCardInstallments Installments { get; set; }
     }
 }

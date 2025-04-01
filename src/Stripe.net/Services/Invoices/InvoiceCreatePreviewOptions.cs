@@ -19,17 +19,6 @@ namespace Stripe
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
-        /// The ID of the coupon to apply to this phase of the subscription schedule. This field has
-        /// been deprecated and will be removed in a future API version. Use <c>discounts</c>
-        /// instead.
-        /// </summary>
-        [JsonProperty("coupon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-#endif
-        public string Coupon { get; set; }
-
-        /// <summary>
         /// The currency to preview this invoice in. Defaults to that of <c>customer</c> if not
         /// specified.
         /// </summary>
@@ -49,6 +38,17 @@ namespace Stripe
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// The identifier of the account whose upcoming invoice you'd like to retrieve. If
+        /// <c>automatic_tax</c> is enabled then one of <c>customer</c>, <c>customer_account</c>,
+        /// <c>customer_details</c>, <c>subscription</c>, or <c>schedule</c> must be set.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Details about the customer you want to invoice or overrides for an existing customer. If

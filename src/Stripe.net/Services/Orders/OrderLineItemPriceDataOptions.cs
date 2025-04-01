@@ -20,7 +20,8 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
-        /// ID of the product this price belongs to.
+        /// ID of the <a href="https://docs.stripe.com/api/products">Product</a> this <a
+        /// href="https://docs.stripe.com/api/prices">Price</a> belongs to.
         ///
         /// Use this to implement a variable-pricing model in your integration. This is required if
         /// <c>product_data</c> is not specified.

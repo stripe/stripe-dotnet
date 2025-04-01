@@ -59,6 +59,15 @@ namespace Stripe.Identity
         public string RelatedCustomer { get; set; }
 
         /// <summary>
+        /// Token referencing a Customer Account resource.
+        /// </summary>
+        [JsonProperty("related_customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("related_customer_account")]
+#endif
+        public string RelatedCustomerAccount { get; set; }
+
+        /// <summary>
         /// The URL that the user will be redirected to upon completing the verification flow.
         /// </summary>
         [JsonProperty("return_url")]

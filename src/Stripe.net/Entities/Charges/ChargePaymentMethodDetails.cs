@@ -74,6 +74,12 @@ namespace Stripe
 #endif
         public ChargePaymentMethodDetailsBancontact Bancontact { get; set; }
 
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public ChargePaymentMethodDetailsBillie Billie { get; set; }
+
         [JsonProperty("blik")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blik")]
@@ -212,6 +218,12 @@ namespace Stripe
 #endif
         public ChargePaymentMethodDetailsNaverPay NaverPay { get; set; }
 
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public ChargePaymentMethodDetailsNzBankAccount NzBankAccount { get; set; }
+
         [JsonProperty("oxxo")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("oxxo")]
@@ -290,6 +302,12 @@ namespace Stripe
 #endif
         public ChargePaymentMethodDetailsSamsungPay SamsungPay { get; set; }
 
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public ChargePaymentMethodDetailsSatispay Satispay { get; set; }
+
         [JsonProperty("sepa_debit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]
@@ -313,6 +331,12 @@ namespace Stripe
         [STJS.JsonPropertyName("stripe_account")]
 #endif
         public ChargePaymentMethodDetailsStripeAccount StripeAccount { get; set; }
+
+        [JsonProperty("stripe_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_balance")]
+#endif
+        public ChargePaymentMethodDetailsStripeBalance StripeBalance { get; set; }
 
         [JsonProperty("swish")]
 #if NET6_0_OR_GREATER

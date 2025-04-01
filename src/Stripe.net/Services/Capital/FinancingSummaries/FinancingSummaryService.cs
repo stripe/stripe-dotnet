@@ -6,7 +6,7 @@ namespace Stripe.Capital
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class FinancingSummaryService : Service<FinancingSummary>,
+    public class FinancingSummaryService : Service,
         ISingletonRetrievable<FinancingSummary>
     {
         public FinancingSummaryService()

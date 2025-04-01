@@ -116,6 +116,15 @@ namespace Stripe.Billing
         #endregion
 
         /// <summary>
+        /// ID of the account receiving the billing credits.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The time when the billing credits become effective-when they're eligible for use.
         /// </summary>
         [JsonProperty("effective_at")]

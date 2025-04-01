@@ -25,5 +25,14 @@ namespace Stripe.FinancialConnections
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// The Account ID of the Stripe customer whose accounts will be retrieved.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
     }
 }

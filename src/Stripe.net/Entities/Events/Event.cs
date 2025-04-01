@@ -81,6 +81,12 @@ namespace Stripe
 #endif
         public string ApiVersion { get; set; }
 
+        [JsonProperty("context")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("context")]
+#endif
+        public string Context { get; set; }
+
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
@@ -281,8 +287,11 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.returned</c>,
         /// <c>treasury.outbound_transfer.tracking_details_updated</c>,
         /// <c>treasury.received_credit.created</c>, <c>treasury.received_credit.failed</c>,
-        /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>, or
-        /// <c>ping</c>.
+        /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>,
+        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.created</c>,
+        /// <c>billing.credit_grant.updated</c>, <c>billing.meter.created</c>,
+        /// <c>billing.meter.deactivated</c>, <c>billing.meter.reactivated</c>,
+        /// <c>billing.meter.updated</c>, <c>balance_settings.updated</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

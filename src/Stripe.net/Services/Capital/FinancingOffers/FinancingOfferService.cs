@@ -8,7 +8,7 @@ namespace Stripe.Capital
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class FinancingOfferService : Service<FinancingOffer>,
+    public class FinancingOfferService : Service,
         IListable<FinancingOffer, FinancingOfferListOptions>,
         IRetrievable<FinancingOffer, FinancingOfferGetOptions>
     {

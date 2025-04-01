@@ -18,6 +18,15 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// The ID of the account whose quotes will be retrieved.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The subscription which the quote updates.
         /// </summary>
         [JsonProperty("from_subscription")]

@@ -99,9 +99,9 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// One of <c>forever</c>, <c>once</c>, and <c>repeating</c>. Describes how long a customer
+        /// One of <c>forever</c>, <c>once</c>, or <c>repeating</c>. Describes how long a customer
         /// who applies this coupon will get the discount.
-        /// One of: <c>forever</c>, <c>once</c>, <c>repeating</c>, or <c>variable</c>.
+        /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
         /// </summary>
         [JsonProperty("duration")]
 #if NET6_0_OR_GREATER

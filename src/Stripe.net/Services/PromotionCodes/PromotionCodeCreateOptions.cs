@@ -53,6 +53,16 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// The account that this promotion code can be used by. If not set, the promotion code can
+        /// be used by all accounts.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The timestamp at which this promotion code will expire. If the coupon has specified a
         /// <c>redeems_by</c>, then this value cannot be after the coupon's <c>redeems_by</c>.
         /// </summary>

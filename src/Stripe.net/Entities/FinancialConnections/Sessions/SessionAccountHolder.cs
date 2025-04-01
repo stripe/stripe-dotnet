@@ -98,6 +98,12 @@ namespace Stripe.FinancialConnections
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
         /// <summary>
         /// Type of account holder that this account belongs to.
         /// One of: <c>account</c>, or <c>customer</c>.

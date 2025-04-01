@@ -1,13 +1,26 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class SessionListOptions : ListOptionsWithCreated
+    public class SessionListOptions : ListOptions
     {
+        /// <summary>
+        /// Only return Checkout Sessions that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
         /// <summary>
         /// Only return the Checkout Sessions for the Customer specified.
         /// </summary>
@@ -16,6 +29,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// Only return the Checkout Sessions for the Account specified.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Only return the Checkout Sessions for the Customer details specified.

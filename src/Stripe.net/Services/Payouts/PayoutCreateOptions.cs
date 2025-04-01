@@ -75,6 +75,15 @@ namespace Stripe
         public string Method { get; set; }
 
         /// <summary>
+        /// The ID of a v2 FinancialAccount to send funds to.
+        /// </summary>
+        [JsonProperty("payout_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payout_method")]
+#endif
+        public string PayoutMethod { get; set; }
+
+        /// <summary>
         /// The balance type of your Stripe balance to draw this payout from. Balances for different
         /// payment sources are kept separately. You can find the amounts with the Balances API. One
         /// of <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.

@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PaymentAttemptRecordListOptions : ListOptions
+    public class PaymentAttemptRecordListOptions : BaseOptions
     {
         /// <summary>
         /// The ID of the Payment Record.

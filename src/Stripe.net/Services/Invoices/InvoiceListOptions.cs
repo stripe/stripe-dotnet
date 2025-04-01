@@ -8,7 +8,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class InvoiceListOptions : ListOptionsWithCreated
+    public class InvoiceListOptions : ListOptions
     {
         /// <summary>
         /// The collection method of the invoice to retrieve. Either <c>charge_automatically</c> or
@@ -22,6 +22,17 @@ namespace Stripe
         public string CollectionMethod { get; set; }
 
         /// <summary>
+        /// Only return invoices that were created during the given date interval.
+        /// </summary>
+        [JsonProperty("created")]
+        [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("created")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
+        public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
+        /// <summary>
         /// Only return invoices for the customer specified by this customer ID.
         /// </summary>
         [JsonProperty("customer")]
@@ -29,6 +40,12 @@ namespace Stripe
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         [JsonProperty("due_date")]
         [JsonConverter(typeof(AnyOfConverter))]

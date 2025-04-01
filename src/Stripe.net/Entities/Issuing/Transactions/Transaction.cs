@@ -359,6 +359,11 @@ namespace Stripe.Issuing
 
         #region Expandable Settlement
 
+        /// <summary>
+        /// (ID of the Settlement)
+        /// The ID of the <a href="https://stripe.com/docs/api/issuing/settlements">settlement</a>
+        /// to which this transaction belongs.
+        /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
@@ -369,6 +374,13 @@ namespace Stripe.Issuing
             set => this.InternalSettlement = SetExpandableFieldId(value, this.InternalSettlement);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the <a href="https://stripe.com/docs/api/issuing/settlements">settlement</a>
+        /// to which this transaction belongs.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]

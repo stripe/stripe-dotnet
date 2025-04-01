@@ -8,7 +8,7 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class OrderLineItemService : ServiceNested<LineItem>,
+    public class OrderLineItemService : Service,
         INestedListable<LineItem, OrderLineItemListOptions>
     {
         public OrderLineItemService()

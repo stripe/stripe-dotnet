@@ -8,7 +8,7 @@ namespace Stripe.FinancialConnections
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class InstitutionService : Service<Institution>,
+    public class InstitutionService : Service,
         IListable<Institution, InstitutionListOptions>,
         IRetrievable<Institution, InstitutionGetOptions>
     {

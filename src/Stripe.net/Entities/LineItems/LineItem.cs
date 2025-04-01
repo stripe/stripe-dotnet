@@ -197,6 +197,15 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         /// <summary>
+        /// The tax calculation identifiers of the line item.
+        /// </summary>
+        [JsonProperty("tax_calculation_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_calculation_reference")]
+#endif
+        public LineItemTaxCalculationReference TaxCalculationReference { get; set; }
+
+        /// <summary>
         /// The taxes applied to the line item.
         /// </summary>
         [JsonProperty("taxes")]

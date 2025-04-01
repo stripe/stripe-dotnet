@@ -18,7 +18,6 @@ namespace StripeTests
         private readonly InvoicePayOptions payOptions;
         private readonly InvoiceListOptions listOptions;
         private readonly InvoiceLineItemListOptions lineItemListOptions;
-        private readonly UpcomingInvoiceOptions upcomingOptions;
         private readonly InvoiceFinalizeOptions finalizeOptions;
         private readonly InvoiceMarkUncollectibleOptions markUncollectibleOptions;
         private readonly InvoiceSendOptions sendOptions;
@@ -58,12 +57,6 @@ namespace StripeTests
             this.lineItemListOptions = new InvoiceLineItemListOptions
             {
                 Limit = 1,
-            };
-
-            this.upcomingOptions = new UpcomingInvoiceOptions
-            {
-                Customer = "cus_123",
-                Subscription = "sub_123",
             };
 
             this.finalizeOptions = new InvoiceFinalizeOptions

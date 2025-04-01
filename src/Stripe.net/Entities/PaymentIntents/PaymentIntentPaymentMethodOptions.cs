@@ -62,6 +62,12 @@ namespace Stripe
 #endif
         public PaymentIntentPaymentMethodOptionsBancontact Bancontact { get; set; }
 
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public PaymentIntentPaymentMethodOptionsBillie Billie { get; set; }
+
         [JsonProperty("blik")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blik")]
@@ -200,6 +206,12 @@ namespace Stripe
 #endif
         public PaymentIntentPaymentMethodOptionsNaverPay NaverPay { get; set; }
 
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public PaymentIntentPaymentMethodOptionsNzBankAccount NzBankAccount { get; set; }
+
         [JsonProperty("oxxo")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("oxxo")]
@@ -295,6 +307,12 @@ namespace Stripe
         [STJS.JsonPropertyName("sofort")]
 #endif
         public PaymentIntentPaymentMethodOptionsSofort Sofort { get; set; }
+
+        [JsonProperty("stripe_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_balance")]
+#endif
+        public PaymentIntentPaymentMethodOptionsStripeBalance StripeBalance { get; set; }
 
         [JsonProperty("swish")]
 #if NET6_0_OR_GREATER
