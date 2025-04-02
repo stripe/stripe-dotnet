@@ -1,5 +1,8 @@
 # Changelog
 
+## 48.1.0-beta.2 - 2025-04-02
+* Re-releasing 48.1.0-beta.1 as it had publishing issues
+
 ## 48.1.0-beta.1 - 2025-04-02
 * [#3079](https://github.com/stripe/stripe-dotnet/pull/3079) Update generated code for beta
 
