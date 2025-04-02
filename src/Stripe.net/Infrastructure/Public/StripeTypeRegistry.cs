@@ -288,7 +288,7 @@ namespace Stripe
                 // ThinTypesToEventTypes: The beginning of the section generated from our OpenAPI spec
                 {
                     "v2.core.account[requirements].updated", typeof(
-                    Events.V2CoreAccountRequirementsUpdatedEvent)
+                    Events.V2CoreAccountIncludingRequirementsUpdatedEvent)
                 },
                 {
                     "v2.core.account_link.completed", typeof(
@@ -296,15 +296,15 @@ namespace Stripe
                 },
                 {
                     "v2.core.account[configuration.customer].capability_status_updated", typeof(
-                    Events.V2CoreAccountConfigurationCustomerCapabilityStatusUpdatedEvent)
+                    Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent)
                 },
                 {
                     "v2.core.account[configuration.customer].updated", typeof(
-                    Events.V2CoreAccountConfigurationCustomerUpdatedEvent)
+                    Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEvent)
                 },
                 {
                     "v2.core.account[identity].updated", typeof(
-                    Events.V2CoreAccountIdentityUpdatedEvent)
+                    Events.V2CoreAccountIncludingIdentityUpdatedEvent)
                 },
                 {
                     "v2.core.account_person.created", typeof(
@@ -320,19 +320,19 @@ namespace Stripe
                 },
                 {
                     "v2.core.account[configuration.merchant].capability_status_updated", typeof(
-                    Events.V2CoreAccountConfigurationMerchantCapabilityStatusUpdatedEvent)
+                    Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent)
                 },
                 {
                     "v2.core.account[configuration.merchant].updated", typeof(
-                    Events.V2CoreAccountConfigurationMerchantUpdatedEvent)
+                    Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEvent)
                 },
                 {
                     "v2.core.account[configuration.recipient].capability_status_updated", typeof(
-                    Events.V2CoreAccountConfigurationRecipientCapabilityStatusUpdatedEvent)
+                    Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent)
                 },
                 {
                     "v2.core.account[configuration.recipient].updated", typeof(
-                    Events.V2CoreAccountConfigurationRecipientUpdatedEvent)
+                    Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEvent)
                 },
                 {
                     "v1.billing.meter.error_report_triggered", typeof(

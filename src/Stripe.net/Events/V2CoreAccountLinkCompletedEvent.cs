@@ -21,32 +21,5 @@ namespace Stripe.Events
 #endif
 
         public V2CoreAccountLinkCompletedEventData Data { get; set; }
-
-        /// <summary>
-        /// Object containing the reference to API resource relevant to the event.
-        /// </summary>
-        [JsonProperty("related_object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("related_object")]
-#endif
-
-        public V2.EventRelatedObject RelatedObject { get; set; }
-
-        /// <summary>
-        /// Asynchronously retrieves the related object from the API. Make an API request on every
-        /// call.
-        /// </summary>
-        public Task<V2.Core.AccountLink> FetchRelatedObjectAsync()
-        {
-            return this.FetchRelatedObjectAsync<V2.Core.AccountLink>(this.RelatedObject);
-        }
-
-        /// <summary>
-        /// Retrieves the related object from the API. Make an API request on every call.
-        /// </summary>
-        public V2.Core.AccountLink FetchRelatedObject()
-        {
-            return this.FetchRelatedObject<V2.Core.AccountLink>(this.RelatedObject);
-        }
     }
 }
