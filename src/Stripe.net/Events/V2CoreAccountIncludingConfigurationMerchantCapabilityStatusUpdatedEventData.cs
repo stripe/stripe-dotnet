@@ -7,7 +7,7 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class V2CoreAccountConfigurationMerchantCapabilityStatusUpdatedEventData : StripeEntity<V2CoreAccountConfigurationMerchantCapabilityStatusUpdatedEventData>
+    public class V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventData : StripeEntity<V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventData>
     {
         /// <summary>
         /// Open Enum. The capability which had its status updated.
