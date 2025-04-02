@@ -49,7 +49,7 @@ jobs:
       - uses: stripe/openapi/actions/stripe-mock@master
         with:
           # Used to determine if stripe-mock runs in beta mode
-          base: ${{ github.base_ref }}
+          base: ${{ github.base_ref || github.ref_name }}
 
       - name: Run test suite
         run: just ci-test
