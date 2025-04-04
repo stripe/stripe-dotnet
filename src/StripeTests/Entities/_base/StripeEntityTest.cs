@@ -94,11 +94,12 @@ namespace StripeTests
             {
                 Integer = 234,
                 String = "String!",
+                Metadata = new Dictionary<string, string>() { { "foo", "bar" } },
             };
 
             var json = o.ToJson().Replace("\r\n", "\n");
 
-            var expectedJson = "{\n  \"integer\": 234,\n  \"string\": \"String!\",\n  \"$ref\": null,\n  \"nested\": null\n}";
+            var expectedJson = "{\n  \"integer\": 234,\n  \"string\": \"String!\",\n  \"metadata\": {\n    \"foo\": \"bar\"\n  },\n  \"nested\": null\n}";
             Assert.Equal(expectedJson, json);
         }
 
