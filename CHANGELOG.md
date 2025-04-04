@@ -2365,6 +2365,10 @@ Pull requests included in this release (cf. [#1934](https://github.com/stripe/st
 * [#1932](https://github.com/stripe/stripe-dotnet/pull/1932) ⚠️ Add support for passing parameters when deleting a Subscription Item
 * [#1936](https://github.com/stripe/stripe-dotnet/pull/1936) Get accurate runtime version
 * [#1937](https://github.com/stripe/stripe-dotnet/pull/1937) ⚠️ Move to API version `2020-03-02` and remove deprecated properties
+  * Removed `GeneratedCardId`, use `GeneratedCard` instead.
+  * Removed `ApplicationId`, use `Application` instead.
+  * Removed `Source` parameter when listing charges as this is deprecated.
+  * Removed `MaxAmount` in `AuthorizationControlsOptions` as this is deprecated.
 * [#1938](https://github.com/stripe/stripe-dotnet/pull/1938) Add support for `NextInvoiceSequence` on `Customer`
 
 ## 34.26.0 - 2020-02-24
