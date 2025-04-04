@@ -2,13 +2,23 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentLinkAutomaticTaxOptions : INestedOptions
     {
         /// <summary>
-        /// If <c>true</c>, tax will be calculated automatically using the customer's location.
+        /// Set to <c>true</c> to <a href="https://docs.stripe.com/tax">calculate tax
+        /// automatically</a> using the customer's location.
+        ///
+        /// Enabling this parameter causes the payment link to collect any billing address
+        /// information necessary for tax calculation.
         /// </summary>
         [JsonProperty("enabled")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled")]
+#endif
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -17,6 +27,9 @@ namespace Stripe
         /// transaction is returned in the report of the connected account.
         /// </summary>
         [JsonProperty("liability")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("liability")]
+#endif
         public PaymentLinkAutomaticTaxLiabilityOptions Liability { get; set; }
     }
 }

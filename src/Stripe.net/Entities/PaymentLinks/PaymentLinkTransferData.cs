@@ -3,7 +3,13 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class PaymentLinkTransferData : StripeEntity<PaymentLinkTransferData>
     {
         /// <summary>
@@ -11,6 +17,9 @@ namespace Stripe
         /// account. By default, the entire amount is transferred to the destination.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         #region Expandable Destination
@@ -20,6 +29,9 @@ namespace Stripe
         /// The connected account receiving the transfer.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string DestinationId
         {
             get => this.InternalDestination?.Id;
@@ -33,6 +45,9 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Account Destination
         {
             get => this.InternalDestination?.ExpandedObject;
@@ -41,6 +56,10 @@ namespace Stripe
 
         [JsonProperty("destination")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("destination")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
+#endif
         internal ExpandableField<Account> InternalDestination { get; set; }
         #endregion
     }

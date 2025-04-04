@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -17,17 +20,23 @@ namespace Stripe
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. The amount of the
-        /// application fee collected will be capped at the total payment amount. For more
+        /// application fee collected will be capped at the total amount captured. For more
         /// information, see the PaymentIntents <a
         /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -35,6 +44,9 @@ namespace Stripe
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -43,6 +55,9 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -50,18 +65,28 @@ namespace Stripe
         ///
         /// Payment methods attached to other Customers cannot be used with this PaymentIntent.
         ///
-        /// If present in combination with <a
-        /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>,
-        /// this PaymentIntent's payment method will be attached to the Customer after the
-        /// PaymentIntent has been confirmed and any required actions from the user are complete.
+        /// If <a
+        /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
+        /// payment method attaches to the Customer after the PaymentIntent has been confirmed and
+        /// any required actions from the user are complete. If the payment method is
+        /// <c>card_present</c> and isn't a digital wallet, then a <a
+        /// href="https://docs.stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card is created and attached to the Customer instead.
         /// </summary>
         [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -71,20 +96,32 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a
         /// href="https://stripe.com/docs/payments/payment-methods/transitioning#compatibility">compatible
-        /// Source</a> object) to attach to this PaymentIntent.
+        /// Source</a> object) to attach to this PaymentIntent. To unset this field to null, pass in
+        /// an empty string.
         /// </summary>
         [JsonProperty("payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method")]
+#endif
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// The ID of the payment method configuration to use with this PaymentIntent.
+        /// The ID of the <a
+        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// configuration</a> to use with this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_configuration")]
+#endif
         public string PaymentMethodConfiguration { get; set; }
 
         /// <summary>
@@ -94,12 +131,18 @@ namespace Stripe
         /// property on the PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_data")]
+#endif
         public PaymentIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment-method-specific configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_options")]
+#endif
         public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -108,6 +151,9 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_types")]
+#endif
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -117,54 +163,78 @@ namespace Stripe
         /// settings</a>.
         /// </summary>
         [JsonProperty("receipt_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("receipt_email")]
+#endif
         public string ReceiptEmail { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
-        /// Providing this parameter will <a
-        /// href="https://stripe.com/docs/payments/save-during-payment">attach the payment
-        /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
-        /// confirmed and any required actions from the user are complete. If no Customer was
-        /// provided, the payment method can still be <a
-        /// href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer
-        /// after the transaction completes.
+        /// If you provide a Customer with the PaymentIntent, you can use this parameter to <a
+        /// href="https://stripe.com/payments/save-during-payment">attach the payment method</a> to
+        /// the Customer after the PaymentIntent is confirmed and the customer completes any
+        /// required actions. If you don't provide a Customer, you can still <a
+        /// href="https://stripe.com/api/payment_methods/attach">attach</a> the payment method to a
+        /// Customer after the transaction completes.
         ///
-        /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
-        /// optimize your payment flow and comply with regional legislation and network rules, such
-        /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
+        /// If the payment method is <c>card_present</c> and isn't a digital wallet, Stripe creates
+        /// and attaches a <a
+        /// href="https://stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card to the Customer instead.
         ///
-        /// If <c>setup_future_usage</c> is already set and you are performing a request using a
-        /// publishable key, you may only update the value from <c>on_session</c> to
+        /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
+        /// with regional legislation and network rules, such as <a
+        /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
+        ///
+        /// If you've already set <c>setup_future_usage</c> and you're performing a request using a
+        /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
         [JsonProperty("shipping")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping")]
+#endif
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
-        /// For card charges, use <a
-        /// href="https://stripe.com/docs/payments/account/statement-descriptors#dynamic">statement_descriptor_suffix</a>.
-        /// Otherwise, you can use this value as the complete description of a charge on your
-        /// customers' statements. It must contain at least one letter and be 1–22 characters long.
+        /// Text that appears on the customer's statement as the statement descriptor for a non-card
+        /// charge. This value overrides the account's default statement descriptor. For information
+        /// about requirements, including the 22-character limit, see <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors">the Statement
+        /// Descriptor docs</a>.
+        ///
+        /// Setting this value for a card charge returns an error. For card charges, set the <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors#dynamic">statement_descriptor_suffix</a>
+        /// instead.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Provides information about a card payment that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that’s set
-        /// on the account to form the complete statement descriptor. Maximum 22 characters for the
-        /// concatenated descriptor.
+        /// Provides information about a card charge. Concatenated to the account's <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement
+        /// descriptor prefix</a> to form the complete statement descriptor that appears on the
+        /// customer's statement.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix")]
+#endif
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -173,6 +243,9 @@ namespace Stripe
         /// for connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
         public PaymentIntentTransferDataOptions TransferData { get; set; }
 
         /// <summary>
@@ -182,6 +255,9 @@ namespace Stripe
         /// accounts</a>.
         /// </summary>
         [JsonProperty("transfer_group")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_group")]
+#endif
         public string TransferGroup { get; set; }
     }
 }

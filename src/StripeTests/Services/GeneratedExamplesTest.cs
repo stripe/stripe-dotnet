@@ -37,7 +37,7 @@ namespace StripeTests
         [Fact]
         public void TestAccountsCapabilitiesGet()
         {
-            var service = new CapabilityService(this.StripeClient);
+            var service = new AccountCapabilityService(this.StripeClient);
             StripeList<Capability> capabilities = service.List(
                 "acct_xxxxxxxxxxxxx");
             this.AssertRequest(
@@ -48,7 +48,7 @@ namespace StripeTests
         [Fact]
         public void TestAccountsCapabilitiesGet2()
         {
-            var service = new CapabilityService(this.StripeClient);
+            var service = new AccountCapabilityService(this.StripeClient);
             service.Get("acct_xxxxxxxxxxxxx", "card_payments");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -58,8 +58,11 @@ namespace StripeTests
         [Fact]
         public void TestAccountsCapabilitiesPost()
         {
-            var options = new CapabilityUpdateOptions { Requested = true };
-            var service = new CapabilityService(this.StripeClient);
+            var options = new AccountCapabilityUpdateOptions
+            {
+                Requested = true,
+            };
+            var service = new AccountCapabilityService(this.StripeClient);
             service.Update("acct_xxxxxxxxxxxxx", "card_payments", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -98,7 +101,7 @@ namespace StripeTests
         [Fact]
         public void TestAccountsLoginLinksPost()
         {
-            var service = new LoginLinkService(this.StripeClient);
+            var service = new AccountLoginLinkService(this.StripeClient);
             service.Create("acct_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -108,7 +111,7 @@ namespace StripeTests
         [Fact]
         public void TestAccountsPersonsDelete()
         {
-            var service = new PersonService(this.StripeClient);
+            var service = new AccountPersonService(this.StripeClient);
             service.Delete("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -118,8 +121,8 @@ namespace StripeTests
         [Fact]
         public void TestAccountsPersonsGet()
         {
-            var options = new PersonListOptions { Limit = 3 };
-            var service = new PersonService(this.StripeClient);
+            var options = new AccountPersonListOptions { Limit = 3 };
+            var service = new AccountPersonService(this.StripeClient);
             StripeList<Person> persons = service.List(
                 "acct_xxxxxxxxxxxxx",
                 options);
@@ -132,7 +135,7 @@ namespace StripeTests
         [Fact]
         public void TestAccountsPersonsGet2()
         {
-            var service = new PersonService(this.StripeClient);
+            var service = new AccountPersonService(this.StripeClient);
             service.Get("acct_xxxxxxxxxxxxx", "person_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -142,12 +145,12 @@ namespace StripeTests
         [Fact]
         public void TestAccountsPersonsPost()
         {
-            var options = new PersonCreateOptions
+            var options = new AccountPersonCreateOptions
             {
                 FirstName = "Jane",
                 LastName = "Diaz",
             };
-            var service = new PersonService(this.StripeClient);
+            var service = new AccountPersonService(this.StripeClient);
             service.Create("acct_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -157,14 +160,14 @@ namespace StripeTests
         [Fact]
         public void TestAccountsPersonsPost2()
         {
-            var options = new PersonUpdateOptions
+            var options = new AccountPersonUpdateOptions
             {
                 Metadata = new Dictionary<string, string>
                 {
                     { "order_id", "6735" },
                 },
             };
-            var service = new PersonService(this.StripeClient);
+            var service = new AccountPersonService(this.StripeClient);
             service.Update(
                 "acct_xxxxxxxxxxxxx",
                 "person_xxxxxxxxxxxxx",
@@ -621,8 +624,9 @@ namespace StripeTests
         [Fact]
         public void TestCheckoutSessionsLineItemsGet()
         {
-            var service = new Stripe.Checkout.SessionService(this.StripeClient);
-            StripeList<LineItem> lineItems = service.ListLineItems("sess_xyz");
+            var service = new Stripe.Checkout.SessionLineItemService(
+                this.StripeClient);
+            StripeList<LineItem> lineItems = service.List("sess_xyz");
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/checkout/sessions/sess_xyz/line_items");
@@ -691,6 +695,20 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestCoreEventsGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/events/ll_123",
+                HttpStatusCode.OK,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":{\"type\":\"request\",\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Events;
+            service.Get("ll_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/core/events/ll_123");
+        }
+
+        [Fact]
         public void TestCountrySpecsGet()
         {
             var options = new CountrySpecListOptions { Limit = 3 };
@@ -738,8 +756,7 @@ namespace StripeTests
             var options = new CouponCreateOptions
             {
                 PercentOff = 25.5M,
-                Duration = "repeating",
-                DurationInMonths = 3,
+                Duration = "once",
             };
             var service = new CouponService(this.StripeClient);
             service.Create(options);
@@ -909,7 +926,7 @@ namespace StripeTests
         [Fact]
         public void TestCustomersCashBalanceGet()
         {
-            var service = new CashBalanceService(this.StripeClient);
+            var service = new CustomerCashBalanceService(this.StripeClient);
             service.Get("cus_123");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -919,14 +936,14 @@ namespace StripeTests
         [Fact]
         public void TestCustomersCashBalancePost()
         {
-            var options = new CashBalanceUpdateOptions
+            var options = new CustomerCashBalanceUpdateOptions
             {
-                Settings = new CashBalanceSettingsOptions
+                Settings = new CustomerCashBalanceSettingsOptions
                 {
                     ReconciliationMode = "manual",
                 },
             };
-            var service = new CashBalanceService(this.StripeClient);
+            var service = new CustomerCashBalanceService(this.StripeClient);
             service.Update("cus_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -963,9 +980,9 @@ namespace StripeTests
         [Fact]
         public void TestCustomersFundingInstructionsPost()
         {
-            var options = new CustomerCreateFundingInstructionsOptions
+            var options = new CustomerFundingInstructionsCreateOptions
             {
-                BankTransfer = new CustomerBankTransferOptions
+                BankTransfer = new CustomerFundingInstructionsBankTransferOptions
                 {
                     RequestedAddressTypes = new List<string> { "zengin" },
                     Type = "jp_bank_transfer",
@@ -973,8 +990,9 @@ namespace StripeTests
                 Currency = "usd",
                 FundingType = "bank_transfer",
             };
-            var service = new CustomerService(this.StripeClient);
-            service.CreateFundingInstructions("cus_123", options);
+            var service = new CustomerFundingInstructionsService(
+                this.StripeClient);
+            service.Create("cus_123", options);
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v1/customers/cus_123/funding_instructions");
@@ -1011,13 +1029,14 @@ namespace StripeTests
         [Fact]
         public void TestCustomersPaymentMethodsGet()
         {
-            var options = new CustomerListPaymentMethodsOptions
+            var options = new CustomerPaymentMethodListOptions
             {
                 Type = "card",
             };
-            var service = new CustomerService(this.StripeClient);
-            StripeList<PaymentMethod> paymentMethods = service
-                .ListPaymentMethods("cus_xyz", options);
+            var service = new CustomerPaymentMethodService(this.StripeClient);
+            StripeList<PaymentMethod> paymentMethods = service.List(
+                "cus_xyz",
+                options);
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/customers/cus_xyz/payment_methods",
@@ -1027,13 +1046,14 @@ namespace StripeTests
         [Fact]
         public void TestCustomersPaymentMethodsGet2()
         {
-            var options = new CustomerListPaymentMethodsOptions
+            var options = new CustomerPaymentMethodListOptions
             {
                 Type = "card",
             };
-            var service = new CustomerService(this.StripeClient);
-            StripeList<PaymentMethod> paymentMethods = service
-                .ListPaymentMethods("cus_xxxxxxxxxxxxx", options);
+            var service = new CustomerPaymentMethodService(this.StripeClient);
+            StripeList<PaymentMethod> paymentMethods = service.List(
+                "cus_xxxxxxxxxxxxx",
+                options);
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/customers/cus_xxxxxxxxxxxxx/payment_methods",
@@ -1102,7 +1122,7 @@ namespace StripeTests
         [Fact]
         public void TestCustomersTaxIdsDelete()
         {
-            var service = new TaxIdService(this.StripeClient);
+            var service = new CustomerTaxIdService(this.StripeClient);
             service.Delete("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Delete,
@@ -1112,8 +1132,8 @@ namespace StripeTests
         [Fact]
         public void TestCustomersTaxIdsGet()
         {
-            var options = new TaxIdListOptions { Limit = 3 };
-            var service = new TaxIdService(this.StripeClient);
+            var options = new CustomerTaxIdListOptions { Limit = 3 };
+            var service = new CustomerTaxIdService(this.StripeClient);
             StripeList<TaxId> taxIds = service.List(
                 "cus_xxxxxxxxxxxxx",
                 options);
@@ -1126,7 +1146,7 @@ namespace StripeTests
         [Fact]
         public void TestCustomersTaxIdsGet2()
         {
-            var service = new TaxIdService(this.StripeClient);
+            var service = new CustomerTaxIdService(this.StripeClient);
             service.Get("cus_xxxxxxxxxxxxx", "txi_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
@@ -1136,12 +1156,12 @@ namespace StripeTests
         [Fact]
         public void TestCustomersTaxIdsPost()
         {
-            var options = new TaxIdCreateOptions
+            var options = new CustomerTaxIdCreateOptions
             {
                 Type = "eu_vat",
                 Value = "DE123456789",
             };
-            var service = new TaxIdService(this.StripeClient);
+            var service = new CustomerTaxIdService(this.StripeClient);
             service.Create("cus_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Post,
@@ -1367,14 +1387,14 @@ namespace StripeTests
         [Fact]
         public void TestFinancialConnectionsAccountsOwnersGet()
         {
-            var options = new Stripe.FinancialConnections.AccountListOwnersOptions
+            var options = new Stripe.FinancialConnections.AccountOwnerListOptions
             {
                 Ownership = "fcaowns_xyz",
             };
-            var service = new Stripe.FinancialConnections.AccountService(
+            var service = new Stripe.FinancialConnections.AccountOwnerService(
                 this.StripeClient);
             StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
-                .ListOwners("fca_xyz", options);
+                .List("fca_xyz", options);
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/financial_connections/accounts/fca_xyz/owners",
@@ -1384,15 +1404,15 @@ namespace StripeTests
         [Fact]
         public void TestFinancialConnectionsAccountsOwnersGet2()
         {
-            var options = new Stripe.FinancialConnections.AccountListOwnersOptions
+            var options = new Stripe.FinancialConnections.AccountOwnerListOptions
             {
                 Limit = 3,
                 Ownership = "fcaowns_xxxxxxxxxxxxx",
             };
-            var service = new Stripe.FinancialConnections.AccountService(
+            var service = new Stripe.FinancialConnections.AccountOwnerService(
                 this.StripeClient);
             StripeList<Stripe.FinancialConnections.AccountOwner> accountOwners = service
-                .ListOwners("fca_xxxxxxxxxxxxx", options);
+                .List("fca_xxxxxxxxxxxxx", options);
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/financial_connections/accounts/fca_xxxxxxxxxxxxx/owners",
@@ -1681,7 +1701,6 @@ namespace StripeTests
             var options = new InvoiceItemCreateOptions
             {
                 Customer = "cus_xxxxxxxxxxxxx",
-                Price = "price_xxxxxxxxxxxxx",
             };
             var service = new InvoiceItemService(this.StripeClient);
             service.Create(options);
@@ -1829,21 +1848,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v1/invoices/in_xxxxxxxxxxxxx/send");
-        }
-
-        [Fact]
-        public void TestInvoicesUpcomingGet()
-        {
-            var options = new UpcomingInvoiceOptions
-            {
-                Customer = "cus_9utnxg47pWjV1e",
-            };
-            var service = new InvoiceService(this.StripeClient);
-            service.Upcoming(options);
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v1/invoices/upcoming",
-                "customer=cus_9utnxg47pWjV1e");
         }
 
         [Fact]
@@ -2447,8 +2451,8 @@ namespace StripeTests
         [Fact]
         public void TestPaymentLinksLineItemsGet()
         {
-            var service = new PaymentLinkService(this.StripeClient);
-            StripeList<LineItem> lineItems = service.ListLineItems("pl_xyz");
+            var service = new PaymentLinkLineItemService(this.StripeClient);
+            StripeList<LineItem> lineItems = service.List("pl_xyz");
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/payment_links/pl_xyz/line_items");
@@ -3072,9 +3076,8 @@ namespace StripeTests
         [Fact]
         public void TestQuotesLineItemsGet()
         {
-            var service = new QuoteService(this.StripeClient);
-            StripeList<LineItem> lineItems = service.ListLineItems(
-                "qt_xxxxxxxxxxxxx");
+            var service = new QuoteLineItemService(this.StripeClient);
+            StripeList<LineItem> lineItems = service.List("qt_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/quotes/qt_xxxxxxxxxxxxx/line_items");
@@ -3740,36 +3743,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestSubscriptionItemsUsageRecordSummariesGet()
-        {
-            var options = new UsageRecordSummaryListOptions { Limit = 3 };
-            var service = new UsageRecordSummaryService(this.StripeClient);
-            StripeList<UsageRecordSummary> usageRecordSummaries = service.List(
-                "si_xxxxxxxxxxxxx",
-                options);
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v1/subscription_items/si_xxxxxxxxxxxxx/usage_record_summaries",
-                "limit=3");
-        }
-
-        [Fact]
-        public void TestSubscriptionItemsUsageRecordsPost()
-        {
-            var options = new UsageRecordCreateOptions
-            {
-                Quantity = 100,
-                Timestamp = DateTimeOffset.FromUnixTimeSeconds(1571252444)
-                    .UtcDateTime,
-            };
-            var service = new UsageRecordService(this.StripeClient);
-            service.Create("si_xxxxxxxxxxxxx", options);
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v1/subscription_items/si_xxxxxxxxxxxxx/usage_records");
-        }
-
-        [Fact]
         public void TestSubscriptionSchedulesCancelPost()
         {
             var service = new SubscriptionScheduleService(this.StripeClient);
@@ -3869,8 +3842,8 @@ namespace StripeTests
         [Fact]
         public void TestSubscriptionsDiscountDelete()
         {
-            var service = new DiscountService(this.StripeClient);
-            service.DeleteSubscriptionDiscount("sub_xyz");
+            var service = new SubscriptionService(this.StripeClient);
+            service.DeleteDiscount("sub_xyz");
             this.AssertRequest(
                 HttpMethod.Delete,
                 "/v1/subscriptions/sub_xyz/discount");
@@ -3949,9 +3922,10 @@ namespace StripeTests
         [Fact]
         public void TestTaxCalculationsLineItemsGet()
         {
-            var service = new Stripe.Tax.CalculationService(this.StripeClient);
+            var service = new Stripe.Tax.CalculationLineItemService(
+                this.StripeClient);
             StripeList<Stripe.Tax.CalculationLineItem> calculationLineItems = service
-                .ListLineItems("xxx");
+                .List("xxx");
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/tax/calculations/xxx/line_items");
@@ -4490,7 +4464,7 @@ namespace StripeTests
             var options = new Stripe.Terminal.ReaderProcessSetupIntentOptions
             {
                 SetupIntent = "seti_xxxxxxxxxxxxx",
-                CustomerConsentCollected = true,
+                AllowRedisplay = "always",
             };
             var service = new Stripe.Terminal.ReaderService(this.StripeClient);
             service.ProcessSetupIntent("tmr_xxxxxxxxxxxxx", options);
@@ -5540,9 +5514,9 @@ namespace StripeTests
         [Fact]
         public void TestTreasuryFinancialAccountsFeaturesGet()
         {
-            var service = new Stripe.Treasury.FinancialAccountService(
+            var service = new Stripe.Treasury.FinancialAccountFeaturesService(
                 this.StripeClient);
-            service.RetrieveFeatures("fa_xxxxxxxxxxxxx");
+            service.Get("fa_xxxxxxxxxxxxx");
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v1/treasury/financial_accounts/fa_xxxxxxxxxxxxx/features");
@@ -5966,6 +5940,308 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v1/webhook_endpoints/we_xxxxxxxxxxxxx");
+        }
+
+        [Fact]
+        public void TestV2BillingMeterEventSessionPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_session",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.meter_event_session\",\"authentication_token\":\"authentication_token\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"livemode\":true}");
+            var options = new Stripe.V2.Billing.MeterEventSessionCreateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.MeterEventSession;
+            service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_session");
+        }
+
+        [Fact]
+        public void TestV2BillingMeterEventAdjustmentPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_adjustments",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.meter_event_adjustment\",\"cancel\":{\"identifier\":\"identifier\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"event_name\":\"event_name\",\"livemode\":true,\"status\":\"complete\",\"type\":\"cancel\"}");
+            var options = new Stripe.V2.Billing.MeterEventAdjustmentCreateOptions
+            {
+                Cancel = new Stripe.V2.Billing.MeterEventAdjustmentCreateCancelOptions
+                {
+                    Identifier = "identifier",
+                },
+                EventName = "event_name",
+                Type = "cancel",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.MeterEventAdjustments;
+            service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_adjustments");
+        }
+
+        [Fact]
+        public void TestV2BillingMeterEventStreamPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_stream",
+                (HttpStatusCode)200,
+                "{}");
+            var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
+            {
+                Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
+                {
+                    new Stripe.V2.Billing.MeterEventStreamCreateEventOptions
+                    {
+                        EventName = "event_name",
+                        Identifier = "identifier",
+                        Payload = new Dictionary<string, string>
+                        {
+                            { "undefined", "payload" },
+                        },
+                        Timestamp = DateTimeOffset.Parse(
+                            "1970-01-01T15:18:46.294Z")
+                            .UtcDateTime,
+                    },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.MeterEventStream;
+            service.Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_stream");
+        }
+
+        [Fact]
+        public void TestV2BillingMeterEventPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_events",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.billing.meter_event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"event_name\":\"event_name\",\"identifier\":\"identifier\",\"livemode\":true,\"payload\":{\"undefined\":\"payload\"},\"timestamp\":\"1970-01-01T15:18:46.294Z\"}");
+            var options = new Stripe.V2.Billing.MeterEventCreateOptions
+            {
+                EventName = "event_name",
+                Payload = new Dictionary<string, string>
+                {
+                    { "undefined", "payload" },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.MeterEvents;
+            service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/billing/meter_events");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"amazon_eventbridge\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"events_from\":null,\"livemode\":true,\"metadata\":null,\"name\":\"name\",\"snapshot_api_version\":null,\"status\":\"disabled\",\"status_details\":null,\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"webhook_endpoint\":null}");
+            var options = new Stripe.V2.Core.EventDestinationCreateOptions
+            {
+                EnabledEvents = new List<string> { "enabled_events" },
+                EventPayload = "thin",
+                Name = "name",
+                Type = "amazon_eventbridge",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/event_destinations");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationDelete()
+        {
+            this.StubRequest(
+                HttpMethod.Delete,
+                "/v2/core/event_destinations/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"amazon_eventbridge\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"events_from\":null,\"livemode\":true,\"metadata\":null,\"name\":\"name\",\"snapshot_api_version\":null,\"status\":\"disabled\",\"status_details\":null,\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"webhook_endpoint\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            service.Delete("id_123");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v2/core/event_destinations/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost2()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/disable",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"amazon_eventbridge\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"events_from\":null,\"livemode\":true,\"metadata\":null,\"name\":\"name\",\"snapshot_api_version\":null,\"status\":\"disabled\",\"status_details\":null,\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"webhook_endpoint\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            service.Disable("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/disable");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost3()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/enable",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"amazon_eventbridge\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"events_from\":null,\"livemode\":true,\"metadata\":null,\"name\":\"name\",\"snapshot_api_version\":null,\"status\":\"disabled\",\"status_details\":null,\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"webhook_endpoint\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            service.Enable("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/enable");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/event_destinations",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"amazon_eventbridge\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"events_from\":null,\"livemode\":true,\"metadata\":null,\"name\":\"name\",\"snapshot_api_version\":null,\"status\":\"disabled\",\"status_details\":null,\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"webhook_endpoint\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            Stripe.V2.StripeList<Stripe.V2.EventDestination> eventDestinations = service
+                .List();
+            this.AssertRequest(HttpMethod.Get, "/v2/core/event_destinations");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost4()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/ping",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            service.Ping("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/ping");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/event_destinations/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"amazon_eventbridge\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"events_from\":null,\"livemode\":true,\"metadata\":null,\"name\":\"name\",\"snapshot_api_version\":null,\"status\":\"disabled\",\"status_details\":null,\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"webhook_endpoint\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            service.Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/event_destinations/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost5()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"amazon_eventbridge\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"events_from\":null,\"livemode\":true,\"metadata\":null,\"name\":\"name\",\"snapshot_api_version\":null,\"status\":\"disabled\",\"status_details\":null,\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"webhook_endpoint\":null}");
+            var options = new Stripe.V2.Core.EventDestinationUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            service.Update("id_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreEventGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/events",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "object_id=object_id");
+            var options = new Stripe.V2.Core.EventListOptions
+            {
+                ObjectId = "object_id",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Events;
+            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List(
+                options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/events",
+                "object_id=object_id");
+        }
+
+        [Fact]
+        public void TestV2CoreEventGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/events/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Events;
+            service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/core/events/id_123");
+        }
+
+        [Fact]
+        public void TestTemporarySessionExpiredError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_stream",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"temporary_session_expired\",\"code\":\"billing_meter_event_session_expired\"}}");
+            var exception = Assert.Throws<Stripe.V2.TemporarySessionExpiredException>(
+            () =>
+            {
+            var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
+            {
+                Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
+                {
+                    new Stripe.V2.Billing.MeterEventStreamCreateEventOptions
+                    {
+                        EventName = "event_name",
+                        Payload = new Dictionary<string, string>
+                        {
+                            { "undefined", "payload" },
+                        },
+                    },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.MeterEventStream;
+            service.Create(options);
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_stream");
         }
     }
 }

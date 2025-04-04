@@ -2,6 +2,9 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AuthorizationIncrementOptions : BaseOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe.TestHelpers.Issuing
         /// currency unit</a>.
         /// </summary>
         [JsonProperty("increment_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("increment_amount")]
+#endif
         public long? IncrementAmount { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe.TestHelpers.Issuing
         /// to control how much to hold for the authorization.
         /// </summary>
         [JsonProperty("is_amount_controllable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("is_amount_controllable")]
+#endif
         public bool? IsAmountControllable { get; set; }
     }
 }

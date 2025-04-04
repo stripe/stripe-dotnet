@@ -3,6 +3,9 @@ namespace Stripe.TestHelpers
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfirmationTokenPaymentMethodDataOptions : INestedOptions, IHasMetadata
     {
@@ -11,6 +14,9 @@ namespace Stripe.TestHelpers
         /// Debit payment method.
         /// </summary>
         [JsonProperty("acss_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("acss_debit")]
+#endif
         public ConfirmationTokenPaymentMethodDataAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
@@ -18,6 +24,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("affirm")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("affirm")]
+#endif
         public ConfirmationTokenPaymentMethodDataAffirmOptions Affirm { get; set; }
 
         /// <summary>
@@ -25,6 +34,9 @@ namespace Stripe.TestHelpers
         /// the AfterpayClearpay payment method.
         /// </summary>
         [JsonProperty("afterpay_clearpay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("afterpay_clearpay")]
+#endif
         public ConfirmationTokenPaymentMethodDataAfterpayClearpayOptions AfterpayClearpay { get; set; }
 
         /// <summary>
@@ -32,6 +44,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("alipay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alipay")]
+#endif
         public ConfirmationTokenPaymentMethodDataAlipayOptions Alipay { get; set; }
 
         /// <summary>
@@ -42,13 +57,29 @@ namespace Stripe.TestHelpers
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("allow_redisplay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allow_redisplay")]
+#endif
         public string AllowRedisplay { get; set; }
+
+        /// <summary>
+        /// If this is a Alma PaymentMethod, this hash contains details about the Alma payment
+        /// method.
+        /// </summary>
+        [JsonProperty("alma")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alma")]
+#endif
+        public ConfirmationTokenPaymentMethodDataAlmaOptions Alma { get; set; }
 
         /// <summary>
         /// If this is a AmazonPay PaymentMethod, this hash contains details about the AmazonPay
         /// payment method.
         /// </summary>
         [JsonProperty("amazon_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amazon_pay")]
+#endif
         public ConfirmationTokenPaymentMethodDataAmazonPayOptions AmazonPay { get; set; }
 
         /// <summary>
@@ -56,6 +87,9 @@ namespace Stripe.TestHelpers
         /// bank account.
         /// </summary>
         [JsonProperty("au_becs_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("au_becs_debit")]
+#endif
         public ConfirmationTokenPaymentMethodDataAuBecsDebitOptions AuBecsDebit { get; set; }
 
         /// <summary>
@@ -63,6 +97,9 @@ namespace Stripe.TestHelpers
         /// Direct Debit bank account.
         /// </summary>
         [JsonProperty("bacs_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bacs_debit")]
+#endif
         public ConfirmationTokenPaymentMethodDataBacsDebitOptions BacsDebit { get; set; }
 
         /// <summary>
@@ -70,13 +107,29 @@ namespace Stripe.TestHelpers
         /// Bancontact payment method.
         /// </summary>
         [JsonProperty("bancontact")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bancontact")]
+#endif
         public ConfirmationTokenPaymentMethodDataBancontactOptions Bancontact { get; set; }
+
+        /// <summary>
+        /// If this is a <c>billie</c> PaymentMethod, this hash contains details about the billie
+        /// payment method.
+        /// </summary>
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public ConfirmationTokenPaymentMethodDataBillieOptions Billie { get; set; }
 
         /// <summary>
         /// Billing information associated with the PaymentMethod that may be used or required by
         /// particular types of payment methods.
         /// </summary>
         [JsonProperty("billing_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_details")]
+#endif
         public ConfirmationTokenPaymentMethodDataBillingDetailsOptions BillingDetails { get; set; }
 
         /// <summary>
@@ -84,6 +137,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("blik")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("blik")]
+#endif
         public ConfirmationTokenPaymentMethodDataBlikOptions Blik { get; set; }
 
         /// <summary>
@@ -91,6 +147,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("boleto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("boleto")]
+#endif
         public ConfirmationTokenPaymentMethodDataBoletoOptions Boleto { get; set; }
 
         /// <summary>
@@ -98,6 +157,9 @@ namespace Stripe.TestHelpers
         /// Pay payment method.
         /// </summary>
         [JsonProperty("cashapp")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cashapp")]
+#endif
         public ConfirmationTokenPaymentMethodDataCashappOptions Cashapp { get; set; }
 
         /// <summary>
@@ -105,6 +167,9 @@ namespace Stripe.TestHelpers
         /// CustomerBalance payment method.
         /// </summary>
         [JsonProperty("customer_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_balance")]
+#endif
         public ConfirmationTokenPaymentMethodDataCustomerBalanceOptions CustomerBalance { get; set; }
 
         /// <summary>
@@ -112,6 +177,9 @@ namespace Stripe.TestHelpers
         /// method.
         /// </summary>
         [JsonProperty("eps")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("eps")]
+#endif
         public ConfirmationTokenPaymentMethodDataEpsOptions Eps { get; set; }
 
         /// <summary>
@@ -119,6 +187,9 @@ namespace Stripe.TestHelpers
         /// method.
         /// </summary>
         [JsonProperty("fpx")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fpx")]
+#endif
         public ConfirmationTokenPaymentMethodDataFpxOptions Fpx { get; set; }
 
         /// <summary>
@@ -126,6 +197,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("giropay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("giropay")]
+#endif
         public ConfirmationTokenPaymentMethodDataGiropayOptions Giropay { get; set; }
 
         /// <summary>
@@ -133,6 +207,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("grabpay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("grabpay")]
+#endif
         public ConfirmationTokenPaymentMethodDataGrabpayOptions Grabpay { get; set; }
 
         /// <summary>
@@ -140,6 +217,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("ideal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ideal")]
+#endif
         public ConfirmationTokenPaymentMethodDataIdealOptions Ideal { get; set; }
 
         /// <summary>
@@ -147,13 +227,29 @@ namespace Stripe.TestHelpers
         /// Interac Present payment method.
         /// </summary>
         [JsonProperty("interac_present")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("interac_present")]
+#endif
         public ConfirmationTokenPaymentMethodDataInteracPresentOptions InteracPresent { get; set; }
+
+        /// <summary>
+        /// If this is a <c>kakao_pay</c> PaymentMethod, this hash contains details about the Kakao
+        /// Pay payment method.
+        /// </summary>
+        [JsonProperty("kakao_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kakao_pay")]
+#endif
+        public ConfirmationTokenPaymentMethodDataKakaoPayOptions KakaoPay { get; set; }
 
         /// <summary>
         /// If this is a <c>klarna</c> PaymentMethod, this hash contains details about the Klarna
         /// payment method.
         /// </summary>
         [JsonProperty("klarna")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("klarna")]
+#endif
         public ConfirmationTokenPaymentMethodDataKlarnaOptions Klarna { get; set; }
 
         /// <summary>
@@ -161,13 +257,29 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("konbini")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("konbini")]
+#endif
         public ConfirmationTokenPaymentMethodDataKonbiniOptions Konbini { get; set; }
+
+        /// <summary>
+        /// If this is a <c>kr_card</c> PaymentMethod, this hash contains details about the Korean
+        /// Card payment method.
+        /// </summary>
+        [JsonProperty("kr_card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kr_card")]
+#endif
+        public ConfirmationTokenPaymentMethodDataKrCardOptions KrCard { get; set; }
 
         /// <summary>
         /// If this is an <c>Link</c> PaymentMethod, this hash contains details about the Link
         /// payment method.
         /// </summary>
         [JsonProperty("link")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("link")]
+#endif
         public ConfirmationTokenPaymentMethodDataLinkOptions Link { get; set; }
 
         /// <summary>
@@ -177,6 +289,9 @@ namespace Stripe.TestHelpers
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -184,6 +299,9 @@ namespace Stripe.TestHelpers
         /// MobilePay payment method.
         /// </summary>
         [JsonProperty("mobilepay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mobilepay")]
+#endif
         public ConfirmationTokenPaymentMethodDataMobilepayOptions Mobilepay { get; set; }
 
         /// <summary>
@@ -191,13 +309,39 @@ namespace Stripe.TestHelpers
         /// Multibanco payment method.
         /// </summary>
         [JsonProperty("multibanco")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("multibanco")]
+#endif
         public ConfirmationTokenPaymentMethodDataMultibancoOptions Multibanco { get; set; }
+
+        /// <summary>
+        /// If this is a <c>naver_pay</c> PaymentMethod, this hash contains details about the Naver
+        /// Pay payment method.
+        /// </summary>
+        [JsonProperty("naver_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("naver_pay")]
+#endif
+        public ConfirmationTokenPaymentMethodDataNaverPayOptions NaverPay { get; set; }
+
+        /// <summary>
+        /// If this is an nz_bank_account PaymentMethod, this hash contains details about the
+        /// nz_bank_account payment method.
+        /// </summary>
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public ConfirmationTokenPaymentMethodDataNzBankAccountOptions NzBankAccount { get; set; }
 
         /// <summary>
         /// If this is an <c>oxxo</c> PaymentMethod, this hash contains details about the OXXO
         /// payment method.
         /// </summary>
         [JsonProperty("oxxo")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("oxxo")]
+#endif
         public ConfirmationTokenPaymentMethodDataOxxoOptions Oxxo { get; set; }
 
         /// <summary>
@@ -205,13 +349,39 @@ namespace Stripe.TestHelpers
         /// method.
         /// </summary>
         [JsonProperty("p24")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("p24")]
+#endif
         public ConfirmationTokenPaymentMethodDataP24Options P24 { get; set; }
+
+        /// <summary>
+        /// If this is a <c>pay_by_bank</c> PaymentMethod, this hash contains details about the
+        /// PayByBank payment method.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pay_by_bank")]
+#endif
+        public ConfirmationTokenPaymentMethodDataPayByBankOptions PayByBank { get; set; }
+
+        /// <summary>
+        /// If this is a <c>payco</c> PaymentMethod, this hash contains details about the PAYCO
+        /// payment method.
+        /// </summary>
+        [JsonProperty("payco")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payco")]
+#endif
+        public ConfirmationTokenPaymentMethodDataPaycoOptions Payco { get; set; }
 
         /// <summary>
         /// If this is a <c>paynow</c> PaymentMethod, this hash contains details about the PayNow
         /// payment method.
         /// </summary>
         [JsonProperty("paynow")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paynow")]
+#endif
         public ConfirmationTokenPaymentMethodDataPaynowOptions Paynow { get; set; }
 
         /// <summary>
@@ -219,6 +389,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("paypal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypal")]
+#endif
         public ConfirmationTokenPaymentMethodDataPaypalOptions Paypal { get; set; }
 
         /// <summary>
@@ -226,6 +399,9 @@ namespace Stripe.TestHelpers
         /// method.
         /// </summary>
         [JsonProperty("pix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pix")]
+#endif
         public ConfirmationTokenPaymentMethodDataPixOptions Pix { get; set; }
 
         /// <summary>
@@ -233,6 +409,9 @@ namespace Stripe.TestHelpers
         /// PromptPay payment method.
         /// </summary>
         [JsonProperty("promptpay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("promptpay")]
+#endif
         public ConfirmationTokenPaymentMethodDataPromptpayOptions Promptpay { get; set; }
 
         /// <summary>
@@ -241,6 +420,9 @@ namespace Stripe.TestHelpers
         /// information.
         /// </summary>
         [JsonProperty("radar_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("radar_options")]
+#endif
         public ConfirmationTokenPaymentMethodDataRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
@@ -248,13 +430,39 @@ namespace Stripe.TestHelpers
         /// Revolut Pay payment method.
         /// </summary>
         [JsonProperty("revolut_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("revolut_pay")]
+#endif
         public ConfirmationTokenPaymentMethodDataRevolutPayOptions RevolutPay { get; set; }
+
+        /// <summary>
+        /// If this is a <c>samsung_pay</c> PaymentMethod, this hash contains details about the
+        /// SamsungPay payment method.
+        /// </summary>
+        [JsonProperty("samsung_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("samsung_pay")]
+#endif
+        public ConfirmationTokenPaymentMethodDataSamsungPayOptions SamsungPay { get; set; }
+
+        /// <summary>
+        /// If this is a <c>satispay</c> PaymentMethod, this hash contains details about the
+        /// satispay payment method.
+        /// </summary>
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public ConfirmationTokenPaymentMethodDataSatispayOptions Satispay { get; set; }
 
         /// <summary>
         /// If this is a <c>sepa_debit</c> PaymentMethod, this hash contains details about the SEPA
         /// debit bank account.
         /// </summary>
         [JsonProperty("sepa_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sepa_debit")]
+#endif
         public ConfirmationTokenPaymentMethodDataSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
@@ -262,6 +470,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("sofort")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sofort")]
+#endif
         public ConfirmationTokenPaymentMethodDataSofortOptions Sofort { get; set; }
 
         /// <summary>
@@ -269,6 +480,9 @@ namespace Stripe.TestHelpers
         /// payment method.
         /// </summary>
         [JsonProperty("swish")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("swish")]
+#endif
         public ConfirmationTokenPaymentMethodDataSwishOptions Swish { get; set; }
 
         /// <summary>
@@ -276,6 +490,9 @@ namespace Stripe.TestHelpers
         /// method.
         /// </summary>
         [JsonProperty("twint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("twint")]
+#endif
         public ConfirmationTokenPaymentMethodDataTwintOptions Twint { get; set; }
 
         /// <summary>
@@ -283,15 +500,20 @@ namespace Stripe.TestHelpers
         /// a name matching this value. It contains additional information specific to the
         /// PaymentMethod type.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
-        /// <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>,
-        /// <c>blik</c>, <c>boleto</c>, <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>,
-        /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>,
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>cashapp</c>,
+        /// <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>,
+        /// <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>,
+        /// <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
+        /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -299,6 +521,9 @@ namespace Stripe.TestHelpers
         /// US bank account payment method.
         /// </summary>
         [JsonProperty("us_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("us_bank_account")]
+#endif
         public ConfirmationTokenPaymentMethodDataUsBankAccountOptions UsBankAccount { get; set; }
 
         /// <summary>
@@ -306,6 +531,9 @@ namespace Stripe.TestHelpers
         /// wechat_pay payment method.
         /// </summary>
         [JsonProperty("wechat_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wechat_pay")]
+#endif
         public ConfirmationTokenPaymentMethodDataWechatPayOptions WechatPay { get; set; }
 
         /// <summary>
@@ -313,6 +541,9 @@ namespace Stripe.TestHelpers
         /// method.
         /// </summary>
         [JsonProperty("zip")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("zip")]
+#endif
         public ConfirmationTokenPaymentMethodDataZipOptions Zip { get; set; }
     }
 }

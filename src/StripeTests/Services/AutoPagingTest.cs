@@ -193,6 +193,9 @@ namespace StripeTests
             Assert.Equal("pm_126", models[1].Id);
             Assert.Equal("pm_127", models[2].Id);
 
+            // Should not mutate its argument
+            Assert.Equal("pm_124", options.StartingAfter);
+
             // Check invocations
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Verify(
@@ -246,6 +249,9 @@ namespace StripeTests
                 EndingBefore = "pm_127",
             };
             var models = service.ListAutoPaging(options).ToList();
+
+            // Should not mutate its argument
+            Assert.Equal("pm_127", options.EndingBefore);
 
             // Check results
             Assert.Equal(5, models.Count);
@@ -648,17 +654,14 @@ namespace StripeTests
             {
             }
 
-            [Obsolete("This member is deprecated and will be removed in a future release")]
-            public override string BasePath => "/v1/pageablemodels";
-
             public IEnumerable<PageableModel> ListAutoPaging(ListOptions options = null, RequestOptions requestOptions = null)
             {
-                return this.ListEntitiesAutoPaging(options, requestOptions);
+                return this.ListRequestAutoPaging<PageableModel>("/v1/pageablemodels", options, requestOptions);
             }
 
             public IAsyncEnumerable<PageableModel> ListAutoPagingAsync(ListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
             {
-                return this.ListEntitiesAutoPagingAsync(options, requestOptions, cancellationToken);
+                return this.ListRequestAutoPagingAsync<PageableModel>("/v1/pageablemodels", options, requestOptions, cancellationToken);
             }
         }
     }

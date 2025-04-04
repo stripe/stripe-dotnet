@@ -19,9 +19,13 @@ namespace Stripe
 
         public const string FinanceReportRun = "finance_report_run";
 
+        public const string FinancialAccountStatement = "financial_account_statement";
+
         public const string IdentityDocument = "identity_document";
 
         public const string IdentityDocumentDownloadable = "identity_document_downloadable";
+
+        public const string IssuingRegulatoryReporting = "issuing_regulatory_reporting";
 
         public const string PciDocument = "pci_document";
 

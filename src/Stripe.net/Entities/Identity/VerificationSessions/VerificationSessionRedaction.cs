@@ -2,6 +2,9 @@
 namespace Stripe.Identity
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class VerificationSessionRedaction : StripeEntity<VerificationSessionRedaction>
     {
@@ -10,6 +13,9 @@ namespace Stripe.Identity
         /// One of: <c>processing</c>, or <c>redacted</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
     }
 }

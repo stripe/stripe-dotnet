@@ -2,6 +2,9 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// You can use Tax <c>Settings</c> to manage configurations used by Stripe Tax
@@ -16,15 +19,24 @@ namespace Stripe.Tax
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         [JsonProperty("defaults")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("defaults")]
+#endif
         public SettingsDefaults Defaults { get; set; }
 
         /// <summary>
         /// The place where your business is located.
         /// </summary>
         [JsonProperty("head_office")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("head_office")]
+#endif
         public SettingsHeadOffice HeadOffice { get; set; }
 
         /// <summary>
@@ -32,17 +44,25 @@ namespace Stripe.Tax
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The <c>active</c> status indicates you have all required settings to calculate tax. A
-        /// status can transition out of <c>active</c> when new required settings are introduced.
+        /// The status of the Tax <c>Settings</c>.
         /// One of: <c>active</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
 
         [JsonProperty("status_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status_details")]
+#endif
         public SettingsStatusDetails StatusDetails { get; set; }
     }
 }

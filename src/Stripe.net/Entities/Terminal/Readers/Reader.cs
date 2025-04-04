@@ -4,6 +4,9 @@ namespace Stripe.Terminal
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     /// <summary>
     /// A Reader represents a physical device for accepting payment details.
@@ -12,59 +15,87 @@ namespace Stripe.Terminal
     /// href="https://stripe.com/docs/terminal/payments/connect-reader">Connecting to a
     /// reader</a>.
     /// </summary>
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class Reader : StripeEntity<Reader>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("id")]
+#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("object")]
+#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The most recent action performed by the reader.
         /// </summary>
         [JsonProperty("action")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("action")]
+#endif
         public ReaderAction Action { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deleted")]
+        [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
+#endif
         public bool? Deleted { get; set; }
 
         /// <summary>
         /// The current software version of the reader.
         /// </summary>
         [JsonProperty("device_sw_version")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("device_sw_version")]
+#endif
         public string DeviceSwVersion { get; set; }
 
         /// <summary>
-        /// Type of reader, one of <c>bbpos_wisepad3</c>, <c>stripe_m2</c>, <c>bbpos_chipper2x</c>,
-        /// <c>bbpos_wisepos_e</c>, <c>verifone_P400</c>, <c>simulated_wisepos_e</c>, or
-        /// <c>mobile_phone_reader</c>.
+        /// Type of reader, one of <c>bbpos_wisepad3</c>, <c>stripe_m2</c>, <c>stripe_s700</c>,
+        /// <c>bbpos_chipper2x</c>, <c>bbpos_wisepos_e</c>, <c>verifone_P400</c>,
+        /// <c>simulated_wisepos_e</c>, or <c>mobile_phone_reader</c>.
         /// One of: <c>bbpos_chipper2x</c>, <c>bbpos_wisepad3</c>, <c>bbpos_wisepos_e</c>,
-        /// <c>mobile_phone_reader</c>, <c>simulated_wisepos_e</c>, <c>stripe_m2</c>, or
-        /// <c>verifone_P400</c>.
+        /// <c>mobile_phone_reader</c>, <c>simulated_wisepos_e</c>, <c>stripe_m2</c>,
+        /// <c>stripe_s700</c>, or <c>verifone_P400</c>.
         /// </summary>
         [JsonProperty("device_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("device_type")]
+#endif
         public string DeviceType { get; set; }
 
         /// <summary>
         /// The local IP address of the reader.
         /// </summary>
         [JsonProperty("ip_address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ip_address")]
+#endif
         public string IpAddress { get; set; }
 
         /// <summary>
         /// Custom label given to the reader for easier identification.
         /// </summary>
         [JsonProperty("label")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("label")]
+#endif
         public string Label { get; set; }
 
         /// <summary>
@@ -72,6 +103,9 @@ namespace Stripe.Terminal
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
         public bool Livemode { get; set; }
 
         #region Expandable Location
@@ -81,6 +115,9 @@ namespace Stripe.Terminal
         /// The location identifier of the reader.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public string LocationId
         {
             get => this.InternalLocation?.Id;
@@ -94,6 +131,9 @@ namespace Stripe.Terminal
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
         public Location Location
         {
             get => this.InternalLocation?.ExpandedObject;
@@ -102,6 +142,10 @@ namespace Stripe.Terminal
 
         [JsonProperty("location")]
         [JsonConverter(typeof(ExpandableFieldConverter<Location>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("location")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Location>))]
+#endif
         internal ExpandableField<Location> InternalLocation { get; set; }
         #endregion
 
@@ -111,19 +155,29 @@ namespace Stripe.Terminal
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Serial number of the reader.
         /// </summary>
         [JsonProperty("serial_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("serial_number")]
+#endif
         public string SerialNumber { get; set; }
 
         /// <summary>
-        /// The networking status of the reader.
+        /// The networking status of the reader. We do not recommend using this field in flows that
+        /// may block taking payments.
         /// One of: <c>offline</c>, or <c>online</c>.
         /// </summary>
         [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
         public string Status { get; set; }
     }
 }

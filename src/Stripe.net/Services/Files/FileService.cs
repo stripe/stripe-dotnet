@@ -3,11 +3,12 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class FileService : Service<File>,
+    public class FileService : Service,
         ICreatable<File, FileCreateOptions>,
         IListable<File, FileListOptions>,
         IRetrievable<File, FileGetOptions>
@@ -16,13 +17,15 @@ namespace Stripe
         {
         }
 
+        internal FileService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public FileService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/files";
 
         /// <summary>
         /// <p>To upload a file to Stripe, you need to send a request of type
@@ -34,14 +37,7 @@ namespace Stripe
         /// </summary>
         public virtual File Create(FileCreateOptions options, RequestOptions requestOptions = null)
         {
-            requestOptions ??= new RequestOptions();
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions = requestOptions.Clone();
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
-            return this.Request<File>(HttpMethod.Post, $"/v1/files", options, requestOptions);
+            return this.Request<File>(BaseAddress.Files, HttpMethod.Post, $"/v1/files", options, requestOptions);
         }
 
         /// <summary>
@@ -54,14 +50,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<File> CreateAsync(FileCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            requestOptions ??= new RequestOptions();
-            if (requestOptions.BaseUrl == null)
-            {
-                requestOptions = requestOptions.Clone();
-                requestOptions.BaseUrl = this.Client.FilesBase;
-            }
-
-            return this.RequestAsync<File>(HttpMethod.Post, $"/v1/files", options, requestOptions, cancellationToken);
+            return this.RequestAsync<File>(BaseAddress.Files, HttpMethod.Post, $"/v1/files", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -72,7 +61,7 @@ namespace Stripe
         /// </summary>
         public virtual File Get(string id, FileGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<File>(HttpMethod.Get, $"/v1/files/{id}", options, requestOptions);
+            return this.Request<File>(BaseAddress.Api, HttpMethod.Get, $"/v1/files/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -83,7 +72,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<File> GetAsync(string id, FileGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<File>(HttpMethod.Get, $"/v1/files/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<File>(BaseAddress.Api, HttpMethod.Get, $"/v1/files/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -93,7 +82,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<File> List(FileListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<File>>(HttpMethod.Get, $"/v1/files", options, requestOptions);
+            return this.Request<StripeList<File>>(BaseAddress.Api, HttpMethod.Get, $"/v1/files", options, requestOptions);
         }
 
         /// <summary>
@@ -103,7 +92,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<File>> ListAsync(FileListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<File>>(HttpMethod.Get, $"/v1/files", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<File>>(BaseAddress.Api, HttpMethod.Get, $"/v1/files", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

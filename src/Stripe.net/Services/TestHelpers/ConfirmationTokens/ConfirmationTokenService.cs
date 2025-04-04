@@ -6,9 +6,14 @@ namespace Stripe.TestHelpers
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ConfirmationTokenService : Service<ConfirmationToken>
+    public class ConfirmationTokenService : Service
     {
         public ConfirmationTokenService()
+        {
+        }
+
+        internal ConfirmationTokenService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -17,15 +22,12 @@ namespace Stripe.TestHelpers
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/test_helpers/confirmation_tokens";
-
         /// <summary>
         /// <p>Creates a test mode Confirmation Token server side for your integration tests.</p>.
         /// </summary>
         public virtual ConfirmationToken Create(ConfirmationTokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ConfirmationToken>(HttpMethod.Post, $"/v1/test_helpers/confirmation_tokens", options, requestOptions);
+            return this.Request<ConfirmationToken>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/confirmation_tokens", options, requestOptions);
         }
 
         /// <summary>
@@ -33,7 +35,7 @@ namespace Stripe.TestHelpers
         /// </summary>
         public virtual Task<ConfirmationToken> CreateAsync(ConfirmationTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ConfirmationToken>(HttpMethod.Post, $"/v1/test_helpers/confirmation_tokens", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ConfirmationToken>(BaseAddress.Api, HttpMethod.Post, $"/v1/test_helpers/confirmation_tokens", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -1,0 +1,18 @@
+
+[*.cs]
+
+# IDE0003: Remove qualification
+dotnet_style_qualification_for_event = true
+
+# IDE0003: Remove qualification
+dotnet_style_qualification_for_property = true
+
+# IDE0003: Remove qualification
+dotnet_style_qualification_for_method = true
+
+# IDE0003: Remove qualification
+dotnet_style_qualification_for_field = true
+
+[src/Stripe.net/**/*.cs]
+
+dotnet_diagnostic.CA2007.severity = error

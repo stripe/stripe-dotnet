@@ -6,10 +6,15 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class CustomerSessionService : Service<CustomerSession>,
+    public class CustomerSessionService : Service,
         ICreatable<CustomerSession, CustomerSessionCreateOptions>
     {
         public CustomerSessionService()
+        {
+        }
+
+        internal CustomerSessionService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -18,9 +23,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/customer_sessions";
-
         /// <summary>
         /// <p>Creates a Customer Session object that includes a single-use client secret that you
         /// can use on your front-end to grant client-side API access for certain customer
@@ -28,7 +30,7 @@ namespace Stripe
         /// </summary>
         public virtual CustomerSession Create(CustomerSessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<CustomerSession>(HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions);
+            return this.Request<CustomerSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<CustomerSession> CreateAsync(CustomerSessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<CustomerSession>(HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<CustomerSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/customer_sessions", options, requestOptions, cancellationToken);
         }
     }
 }

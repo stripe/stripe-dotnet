@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentLinkPaymentIntentData : StripeEntity<PaymentLinkPaymentIntentData>, IHasMetadata
     {
@@ -11,12 +14,18 @@ namespace Stripe
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -25,6 +34,9 @@ namespace Stripe
         /// generated from this payment link.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -33,22 +45,30 @@ namespace Stripe
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
-        /// Extra information about the payment. This will appear on your customer's statement when
-        /// this payment succeeds in creating a charge.
+        /// For a non-card payment, information about the charge that appears on the customer's
+        /// statement when this payment succeeds in creating a charge.
         /// </summary>
         [JsonProperty("statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor")]
+#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Provides information about the charge that customers see on their statements.
-        /// Concatenated with the prefix (shortened descriptor) or statement descriptor that's set
-        /// on the account to form the complete statement descriptor. Maximum 22 characters for the
-        /// concatenated descriptor.
+        /// For a card payment, information about the charge that appears on the customer's
+        /// statement when this payment succeeds in creating a charge. Concatenated with the
+        /// account's statement descriptor prefix to form the complete statement descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix")]
+#endif
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
@@ -58,6 +78,9 @@ namespace Stripe
         /// connected accounts</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_group")]
+#endif
         public string TransferGroup { get; set; }
     }
 }

@@ -3,15 +3,21 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ReviewService : Service<Review>,
+    public class ReviewService : Service,
         IListable<Review, ReviewListOptions>,
         IRetrievable<Review, ReviewGetOptions>
     {
         public ReviewService()
+        {
+        }
+
+        internal ReviewService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -20,16 +26,13 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/reviews";
-
         /// <summary>
         /// <p>Approves a <c>Review</c> object, closing it and removing it from the list of
         /// reviews.</p>.
         /// </summary>
         public virtual Review Approve(string id, ReviewApproveOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Review>(HttpMethod.Post, $"/v1/reviews/{id}/approve", options, requestOptions);
+            return this.Request<Review>(BaseAddress.Api, HttpMethod.Post, $"/v1/reviews/{WebUtility.UrlEncode(id)}/approve", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Review> ApproveAsync(string id, ReviewApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Review>(HttpMethod.Post, $"/v1/reviews/{id}/approve", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Review>(BaseAddress.Api, HttpMethod.Post, $"/v1/reviews/{WebUtility.UrlEncode(id)}/approve", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace Stripe
         /// </summary>
         public virtual Review Get(string id, ReviewGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Review>(HttpMethod.Get, $"/v1/reviews/{id}", options, requestOptions);
+            return this.Request<Review>(BaseAddress.Api, HttpMethod.Get, $"/v1/reviews/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Review> GetAsync(string id, ReviewGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Review>(HttpMethod.Get, $"/v1/reviews/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Review>(BaseAddress.Api, HttpMethod.Get, $"/v1/reviews/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -64,7 +67,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Review> List(ReviewListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Review>>(HttpMethod.Get, $"/v1/reviews", options, requestOptions);
+            return this.Request<StripeList<Review>>(BaseAddress.Api, HttpMethod.Get, $"/v1/reviews", options, requestOptions);
         }
 
         /// <summary>
@@ -74,7 +77,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Review>> ListAsync(ReviewListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Review>>(HttpMethod.Get, $"/v1/reviews", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Review>>(BaseAddress.Api, HttpMethod.Get, $"/v1/reviews", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

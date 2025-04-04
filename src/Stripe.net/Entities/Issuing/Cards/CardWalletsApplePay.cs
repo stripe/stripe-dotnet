@@ -2,6 +2,9 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CardWalletsApplePay : StripeEntity<CardWalletsApplePay>
     {
@@ -9,6 +12,9 @@ namespace Stripe.Issuing
         /// Apple Pay Eligibility.
         /// </summary>
         [JsonProperty("eligible")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("eligible")]
+#endif
         public bool Eligible { get; set; }
 
         /// <summary>
@@ -17,6 +23,9 @@ namespace Stripe.Issuing
         /// <c>unsupported_region</c>.
         /// </summary>
         [JsonProperty("ineligible_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ineligible_reason")]
+#endif
         public string IneligibleReason { get; set; }
     }
 }

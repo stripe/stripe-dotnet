@@ -3,11 +3,12 @@ namespace Stripe.Tax
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class RegistrationService : Service<Registration>,
+    public class RegistrationService : Service,
         ICreatable<Registration, RegistrationCreateOptions>,
         IListable<Registration, RegistrationListOptions>,
         IRetrievable<Registration, RegistrationGetOptions>,
@@ -17,20 +18,22 @@ namespace Stripe.Tax
         {
         }
 
+        internal RegistrationService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public RegistrationService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/tax/registrations";
 
         /// <summary>
         /// <p>Creates a new Tax <c>Registration</c> object.</p>.
         /// </summary>
         public virtual Registration Create(RegistrationCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Registration>(HttpMethod.Post, $"/v1/tax/registrations", options, requestOptions);
+            return this.Request<Registration>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/registrations", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +41,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Registration> CreateAsync(RegistrationCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Registration>(HttpMethod.Post, $"/v1/tax/registrations", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Registration>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/registrations", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +49,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Registration Get(string id, RegistrationGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Registration>(HttpMethod.Get, $"/v1/tax/registrations/{id}", options, requestOptions);
+            return this.Request<Registration>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/registrations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +57,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Registration> GetAsync(string id, RegistrationGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Registration>(HttpMethod.Get, $"/v1/tax/registrations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Registration>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/registrations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -62,7 +65,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual StripeList<Registration> List(RegistrationListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Registration>>(HttpMethod.Get, $"/v1/tax/registrations", options, requestOptions);
+            return this.Request<StripeList<Registration>>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/registrations", options, requestOptions);
         }
 
         /// <summary>
@@ -70,7 +73,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<StripeList<Registration>> ListAsync(RegistrationListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Registration>>(HttpMethod.Get, $"/v1/tax/registrations", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Registration>>(BaseAddress.Api, HttpMethod.Get, $"/v1/tax/registrations", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -97,7 +100,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Registration Update(string id, RegistrationUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Registration>(HttpMethod.Post, $"/v1/tax/registrations/{id}", options, requestOptions);
+            return this.Request<Registration>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/registrations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -108,7 +111,7 @@ namespace Stripe.Tax
         /// </summary>
         public virtual Task<Registration> UpdateAsync(string id, RegistrationUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Registration>(HttpMethod.Post, $"/v1/tax/registrations/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Registration>(BaseAddress.Api, HttpMethod.Post, $"/v1/tax/registrations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

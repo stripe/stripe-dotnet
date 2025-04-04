@@ -2,11 +2,62 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionPaymentMethodOptionsCard : StripeEntity<SessionPaymentMethodOptionsCard>
     {
         [JsonProperty("installments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("installments")]
+#endif
         public SessionPaymentMethodOptionsCardInstallments Installments { get; set; }
+
+        /// <summary>
+        /// Request ability to <a href="https://stripe.com/payments/extended-authorization">capture
+        /// beyond the standard authorization validity window</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_extended_authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_extended_authorization")]
+#endif
+        public string RequestExtendedAuthorization { get; set; }
+
+        /// <summary>
+        /// Request ability to <a
+        /// href="https://stripe.com/payments/incremental-authorization">increment the
+        /// authorization</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_incremental_authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_incremental_authorization")]
+#endif
+        public string RequestIncrementalAuthorization { get; set; }
+
+        /// <summary>
+        /// Request ability to make <a href="https://stripe.com/payments/multicapture">multiple
+        /// captures</a> for this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_multicapture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_multicapture")]
+#endif
+        public string RequestMulticapture { get; set; }
+
+        /// <summary>
+        /// Request ability to <a href="https://stripe.com/payments/overcapture">overcapture</a> for
+        /// this CheckoutSession.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_overcapture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_overcapture")]
+#endif
+        public string RequestOvercapture { get; set; }
 
         /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
@@ -21,26 +72,42 @@ namespace Stripe.Checkout
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_three_d_secure")]
+#endif
         public string RequestThreeDSecure { get; set; }
+
+        [JsonProperty("restrictions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("restrictions")]
+#endif
+        public SessionPaymentMethodOptionsCardRestrictions Restrictions { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
-        /// Providing this parameter will <a
-        /// href="https://stripe.com/docs/payments/save-during-payment">attach the payment
-        /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
-        /// confirmed and any required actions from the user are complete. If no Customer was
-        /// provided, the payment method can still be <a
-        /// href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer
-        /// after the transaction completes.
+        /// If you provide a Customer with the PaymentIntent, you can use this parameter to <a
+        /// href="https://stripe.com/payments/save-during-payment">attach the payment method</a> to
+        /// the Customer after the PaymentIntent is confirmed and the customer completes any
+        /// required actions. If you don't provide a Customer, you can still <a
+        /// href="https://stripe.com/api/payment_methods/attach">attach</a> the payment method to a
+        /// Customer after the transaction completes.
         ///
-        /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
-        /// optimize your payment flow and comply with regional legislation and network rules, such
-        /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
+        /// If the payment method is <c>card_present</c> and isn't a digital wallet, Stripe creates
+        /// and attaches a <a
+        /// href="https://stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card to the Customer instead.
+        ///
+        /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
+        /// with regional legislation and network rules, such as <a
+        /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -51,6 +118,9 @@ namespace Stripe.Checkout
         /// (including separators) will appear truncated to 22 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kana")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
+#endif
         public string StatementDescriptorSuffixKana { get; set; }
 
         /// <summary>
@@ -61,6 +131,9 @@ namespace Stripe.Checkout
         /// (including separators) will appear truncated to 17 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
+#endif
         public string StatementDescriptorSuffixKanji { get; set; }
     }
 }

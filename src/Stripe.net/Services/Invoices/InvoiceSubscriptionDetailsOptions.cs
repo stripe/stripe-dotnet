@@ -5,6 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceSubscriptionDetailsOptions : INestedOptions
     {
@@ -17,6 +20,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_cycle_anchor")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsBillingCycleAnchor> BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -27,19 +34,29 @@ namespace Stripe
         /// </summary>
         [JsonProperty("cancel_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? CancelAt { get; set; }
 
         /// <summary>
-        /// Boolean indicating whether this subscription should cancel at the end of the current
-        /// period.
+        /// Indicate whether this subscription should cancel at the end of the current period
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_at_period_end")]
+#endif
         public bool? CancelAtPeriodEnd { get; set; }
 
         /// <summary>
         /// This simulates the subscription being canceled or expired immediately.
         /// </summary>
         [JsonProperty("cancel_now")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancel_now")]
+#endif
         public bool? CancelNow { get; set; }
 
         /// <summary>
@@ -48,12 +65,18 @@ namespace Stripe
         /// have <c>tax_rates</c> set.
         /// </summary>
         [JsonProperty("default_tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_tax_rates")]
+#endif
         public List<string> DefaultTaxRates { get; set; }
 
         /// <summary>
         /// A list of up to 20 subscription items, each with an attached price.
         /// </summary>
         [JsonProperty("items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("items")]
+#endif
         public List<InvoiceSubscriptionDetailsItemOptions> Items { get; set; }
 
         /// <summary>
@@ -65,6 +88,9 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_behavior")]
+#endif
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -78,6 +104,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_date")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? ProrationDate { get; set; }
 
         /// <summary>
@@ -85,6 +115,9 @@ namespace Stripe
         /// will preview the invoice that will be generated if the subscription is resumed.
         /// </summary>
         [JsonProperty("resume_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("resume_at")]
+#endif
         public string ResumeAt { get; set; }
 
         /// <summary>
@@ -92,6 +125,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("start_date")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
         public DateTime? StartDate { get; set; }
 
         /// <summary>
@@ -101,6 +138,10 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(AnyOfConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_end")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
+#endif
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsTrialEnd> TrialEnd { get; set; }
     }
 }

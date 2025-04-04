@@ -3,12 +3,16 @@ namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountBalanceCash : StripeEntity<AccountBalanceCash>
     {
         /// <summary>
-        /// The funds available to the account holder. Typically this is the current balance less
-        /// any holds.
+        /// The funds available to the account holder. Typically this is the current balance after
+        /// subtracting any outbound pending transactions and adding any inbound pending
+        /// transactions.
         ///
         /// Each key is a three-letter <a
         /// href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency code</a>, in
@@ -18,6 +22,9 @@ namespace Stripe.FinancialConnections
         /// holder. A negative amount indicates money owed by the account holder.
         /// </summary>
         [JsonProperty("available")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("available")]
+#endif
         public Dictionary<string, long> Available { get; set; }
     }
 }

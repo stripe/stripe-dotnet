@@ -2,6 +2,9 @@
 namespace Stripe.TestHelpers
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ConfirmationTokenPaymentMethodDataRadarOptionsOptions : INestedOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe.TestHelpers
         /// predictions on your payments.
         /// </summary>
         [JsonProperty("session")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("session")]
+#endif
         public string Session { get; set; }
     }
 }

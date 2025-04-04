@@ -2,6 +2,9 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class TransactionBalanceImpact : StripeEntity<TransactionBalanceImpact>
     {
@@ -9,6 +12,9 @@ namespace Stripe.Treasury
         /// The change made to funds the user can spend right now.
         /// </summary>
         [JsonProperty("cash")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cash")]
+#endif
         public long Cash { get; set; }
 
         /// <summary>
@@ -16,6 +22,9 @@ namespace Stripe.Treasury
         /// later time.
         /// </summary>
         [JsonProperty("inbound_pending")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("inbound_pending")]
+#endif
         public long InboundPending { get; set; }
 
         /// <summary>
@@ -23,6 +32,9 @@ namespace Stripe.Treasury
         /// for pending outbound flows.
         /// </summary>
         [JsonProperty("outbound_pending")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("outbound_pending")]
+#endif
         public long OutboundPending { get; set; }
     }
 }

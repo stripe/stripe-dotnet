@@ -2,9 +2,11 @@ namespace StripeTests
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net;
     using System.Net.Http;
+    using System.Threading;
     using System.Threading.Tasks;
-
+    using Moq.Protected;
     using Stripe;
     using Xunit;
 
@@ -120,6 +122,21 @@ namespace StripeTests
             this.AssertRequest(HttpMethod.Get, "/v1/payment_methods/pm_123");
             Assert.NotNull(payment_method);
             Assert.Equal("payment_method", payment_method.Object);
+        }
+
+        // load bearing test - this ensures that autogen methods with ids in the url
+        // encode those params across all classes
+        [Fact]
+        public void GetEncodesParams()
+        {
+            // we don't want to hit stripe-mock becuase it handles path traversals weirdly
+            this.StubRequest(HttpMethod.Get, "/v1/payment_methods/very%2Fcool", HttpStatusCode.OK, "{}");
+
+            // this ID should get URL encoded in the request
+            this.service.Get("very/cool");
+
+            // assert that that was the case
+            this.AssertRequest(HttpMethod.Get, "/v1/payment_methods/very%2Fcool");
         }
 
         [Fact]

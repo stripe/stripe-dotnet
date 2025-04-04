@@ -2,22 +2,34 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountCompany : StripeEntity<AccountCompany>
     {
         [JsonProperty("address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address")]
+#endif
         public Address Address { get; set; }
 
         /// <summary>
         /// The Kana variation of the company's primary address (Japan only).
         /// </summary>
         [JsonProperty("address_kana")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_kana")]
+#endif
         public AddressJapan AddressKana { get; set; }
 
         /// <summary>
         /// The Kanji variation of the company's primary address (Japan only).
         /// </summary>
         [JsonProperty("address_kanji")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_kanji")]
+#endif
         public AddressJapan AddressKanji { get; set; }
 
         /// <summary>
@@ -27,7 +39,20 @@ namespace Stripe
         /// <c>directors_provided</c> parameter</a>.
         /// </summary>
         [JsonProperty("directors_provided")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("directors_provided")]
+#endif
         public bool DirectorsProvided { get; set; }
+
+        /// <summary>
+        /// This hash is used to attest that the director information provided to Stripe is both
+        /// current and correct.
+        /// </summary>
+        [JsonProperty("directorship_declaration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("directorship_declaration")]
+#endif
+        public AccountCompanyDirectorshipDeclaration DirectorshipDeclaration { get; set; }
 
         /// <summary>
         /// Whether the company's executives have been provided. This Boolean will be <c>true</c> if
@@ -37,6 +62,9 @@ namespace Stripe
         /// executives were provided.
         /// </summary>
         [JsonProperty("executives_provided")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("executives_provided")]
+#endif
         public bool ExecutivesProvided { get; set; }
 
         /// <summary>
@@ -44,30 +72,53 @@ namespace Stripe
         /// only).
         /// </summary>
         [JsonProperty("export_license_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("export_license_id")]
+#endif
         public string ExportLicenseId { get; set; }
 
         /// <summary>
         /// The purpose code to use for export transactions (India only).
         /// </summary>
         [JsonProperty("export_purpose_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("export_purpose_code")]
+#endif
         public string ExportPurposeCode { get; set; }
 
         /// <summary>
-        /// The company's legal name.
+        /// The company's legal name. Also available for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
         public string Name { get; set; }
 
         /// <summary>
-        /// The Kana variation of the company's legal name (Japan only).
+        /// The Kana variation of the company's legal name (Japan only). Also available for accounts
+        /// where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>.
         /// </summary>
         [JsonProperty("name_kana")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name_kana")]
+#endif
         public string NameKana { get; set; }
 
         /// <summary>
-        /// The Kanji variation of the company's legal name (Japan only).
+        /// The Kanji variation of the company's legal name (Japan only). Also available for
+        /// accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>.
         /// </summary>
         [JsonProperty("name_kanji")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name_kanji")]
+#endif
         public string NameKanji { get; set; }
 
         /// <summary>
@@ -80,6 +131,9 @@ namespace Stripe
         /// <c>percent_ownership</c> of each owner together).
         /// </summary>
         [JsonProperty("owners_provided")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("owners_provided")]
+#endif
         public bool OwnersProvided { get; set; }
 
         /// <summary>
@@ -87,16 +141,41 @@ namespace Stripe
         /// both current and correct.
         /// </summary>
         [JsonProperty("ownership_declaration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ownership_declaration")]
+#endif
         public AccountCompanyOwnershipDeclaration OwnershipDeclaration { get; set; }
+
+        /// <summary>
+        /// This value is used to determine if a business is exempt from providing ultimate
+        /// beneficial owners. See <a
+        /// href="https://support.stripe.com/questions/exemption-from-providing-ownership-details">this
+        /// support article</a> and <a
+        /// href="https://docs.stripe.com/changelog/acacia/2025-01-27/ownership-exemption-reason-accounts-api">changelog</a>
+        /// for more details.
+        /// One of: <c>qualified_entity_exceeds_ownership_threshold</c>, or
+        /// <c>qualifies_as_financial_institution</c>.
+        /// </summary>
+        [JsonProperty("ownership_exemption_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ownership_exemption_reason")]
+#endif
+        public string OwnershipExemptionReason { get; set; }
 
         /// <summary>
         /// The company's phone number (used for verification).
         /// </summary>
         [JsonProperty("phone")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("phone")]
+#endif
         public string Phone { get; set; }
 
         /// <summary>
-        /// The category identifying the legal structure of the company or legal entity. See <a
+        /// The category identifying the legal structure of the company or legal entity. Also
+        /// available for accounts where <a
+        /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
+        /// is <c>stripe</c>. See <a
         /// href="https://stripe.com/docs/connect/identity-verification#business-structure">Business
         /// structure</a> for more details.
         /// One of: <c>free_zone_establishment</c>, <c>free_zone_llc</c>,
@@ -111,12 +190,18 @@ namespace Stripe
         /// <c>unincorporated_partnership</c>.
         /// </summary>
         [JsonProperty("structure")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("structure")]
+#endif
         public string Structure { get; set; }
 
         /// <summary>
         /// Whether the company's business ID number was provided.
         /// </summary>
         [JsonProperty("tax_id_provided")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_id_provided")]
+#endif
         public bool TaxIdProvided { get; set; }
 
         /// <summary>
@@ -124,18 +209,27 @@ namespace Stripe
         /// only).
         /// </summary>
         [JsonProperty("tax_id_registrar")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_id_registrar")]
+#endif
         public string TaxIdRegistrar { get; set; }
 
         /// <summary>
         /// Whether the company's business VAT number was provided.
         /// </summary>
         [JsonProperty("vat_id_provided")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("vat_id_provided")]
+#endif
         public bool VatIdProvided { get; set; }
 
         /// <summary>
         /// Information on the verification state of the company.
         /// </summary>
         [JsonProperty("verification")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("verification")]
+#endif
         public AccountCompanyVerification Verification { get; set; }
     }
 }

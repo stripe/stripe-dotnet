@@ -6,10 +6,15 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountLinkService : Service<AccountLink>,
+    public class AccountLinkService : Service,
         ICreatable<AccountLink, AccountLinkCreateOptions>
     {
         public AccountLinkService()
+        {
+        }
+
+        internal AccountLinkService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -18,9 +23,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/account_links";
-
         /// <summary>
         /// <p>Creates an AccountLink object that includes a single-use Stripe URL that the platform
         /// can redirect their user to in order to take them through the Connect Onboarding
@@ -28,7 +30,7 @@ namespace Stripe
         /// </summary>
         public virtual AccountLink Create(AccountLinkCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountLink>(HttpMethod.Post, $"/v1/account_links", options, requestOptions);
+            return this.Request<AccountLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_links", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<AccountLink> CreateAsync(AccountLinkCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountLink>(HttpMethod.Post, $"/v1/account_links", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountLink>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_links", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -3,15 +3,21 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class BalanceTransactionService : Service<BalanceTransaction>,
+    public class BalanceTransactionService : Service,
         IListable<BalanceTransaction, BalanceTransactionListOptions>,
         IRetrievable<BalanceTransaction, BalanceTransactionGetOptions>
     {
         public BalanceTransactionService()
+        {
+        }
+
+        internal BalanceTransactionService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -20,9 +26,6 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/balance_transactions";
-
         /// <summary>
         /// <p>Retrieves the balance transaction with the given ID.</p>.
         ///
@@ -30,7 +33,7 @@ namespace Stripe
         /// </summary>
         public virtual BalanceTransaction Get(string id, BalanceTransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<BalanceTransaction>(HttpMethod.Get, $"/v1/balance_transactions/{id}", options, requestOptions);
+            return this.Request<BalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -40,7 +43,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<BalanceTransaction> GetAsync(string id, BalanceTransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<BalanceTransaction>(HttpMethod.Get, $"/v1/balance_transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<BalanceTransaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance_transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -53,7 +56,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<BalanceTransaction> List(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<BalanceTransaction>>(HttpMethod.Get, $"/v1/balance_transactions", options, requestOptions);
+            return this.Request<StripeList<BalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance_transactions", options, requestOptions);
         }
 
         /// <summary>
@@ -66,7 +69,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<BalanceTransaction>> ListAsync(BalanceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<BalanceTransaction>>(HttpMethod.Get, $"/v1/balance_transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<BalanceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/balance_transactions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

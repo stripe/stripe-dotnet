@@ -1,16 +1,22 @@
+// File generated from our OpenAPI spec
 namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class SourceTransactionService : ServiceNested<SourceTransaction>,
-        INestedListable<SourceTransaction, SourceTransactionsListOptions>
+    public partial class SourceTransactionService : Service,
+        INestedListable<SourceTransaction, SourceTransactionListOptions>
     {
         public SourceTransactionService()
-            : base(null)
+        {
+        }
+
+        internal SourceTransactionService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -19,27 +25,36 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/sources/{PARENT_ID}/source_transactions";
-
-        public virtual StripeList<SourceTransaction> List(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null)
+        /// <summary>
+        /// <p>List source transactions for a given source.</p>.
+        /// </summary>
+        public virtual StripeList<SourceTransaction> List(string parentId, SourceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<SourceTransaction>>(HttpMethod.Get, $"/v1/sources/{sourceId}/source_transactions", options, requestOptions);
+            return this.Request<StripeList<SourceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/sources/{WebUtility.UrlEncode(parentId)}/source_transactions", options, requestOptions);
         }
 
-        public virtual Task<StripeList<SourceTransaction>> ListAsync(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        /// <summary>
+        /// <p>List source transactions for a given source.</p>.
+        /// </summary>
+        public virtual Task<StripeList<SourceTransaction>> ListAsync(string parentId, SourceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<SourceTransaction>>(HttpMethod.Get, $"/v1/sources/{sourceId}/source_transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<SourceTransaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/sources/{WebUtility.UrlEncode(parentId)}/source_transactions", options, requestOptions, cancellationToken);
         }
 
-        public virtual IEnumerable<SourceTransaction> ListAutoPaging(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null)
+        /// <summary>
+        /// <p>List source transactions for a given source.</p>.
+        /// </summary>
+        public virtual IEnumerable<SourceTransaction> ListAutoPaging(string parentId, SourceTransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<SourceTransaction>($"/v1/sources/{sourceId}/source_transactions", options, requestOptions);
+            return this.ListRequestAutoPaging<SourceTransaction>($"/v1/sources/{WebUtility.UrlEncode(parentId)}/source_transactions", options, requestOptions);
         }
 
-        public virtual IAsyncEnumerable<SourceTransaction> ListAutoPagingAsync(string sourceId, SourceTransactionsListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        /// <summary>
+        /// <p>List source transactions for a given source.</p>.
+        /// </summary>
+        public virtual IAsyncEnumerable<SourceTransaction> ListAutoPagingAsync(string parentId, SourceTransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<SourceTransaction>($"/v1/sources/{sourceId}/source_transactions", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<SourceTransaction>($"/v1/sources/{WebUtility.UrlEncode(parentId)}/source_transactions", options, requestOptions, cancellationToken);
         }
     }
 }

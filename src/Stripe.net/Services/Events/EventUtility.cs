@@ -15,7 +15,35 @@ namespace Stripe
         internal static readonly UTF8Encoding SafeUTF8
             = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false, throwOnInvalidBytes: true);
 
-        private const int DefaultTimeTolerance = 300;
+        public const int DefaultTimeTolerance = 300;
+
+        public static bool IsCompatibleApiVersion(string sdkApiVersion, string eventApiVersion)
+        {
+            // If the event api version is from before we started adding
+            // a release train, there's no way its compatible with this
+            // version
+            if (!eventApiVersion.Contains("."))
+            {
+                return false;
+            }
+
+            // versions are yyyy-MM-dd.train
+            var currentReleaseTrain = sdkApiVersion.Split('.')[1];
+
+            // Beta SDKs should match event versions exactly when deserializing
+            if (currentReleaseTrain == "preview")
+            {
+                return eventApiVersion == sdkApiVersion;
+            }
+
+            var eventReleaseTrain = eventApiVersion.Split('.')[1];
+            return eventReleaseTrain == currentReleaseTrain;
+        }
+
+        public static bool IsCompatibleApiVersion(string eventApiVersion)
+        {
+            return IsCompatibleApiVersion(ApiVersion.Current, eventApiVersion);
+        }
 
         /// <summary>
         /// Parses a JSON string from a Stripe webhook into a <see cref="Event"/> object.
@@ -42,7 +70,7 @@ namespace Stripe
                 StripeConfiguration.SerializerSettings);
 
             if (throwOnApiVersionMismatch &&
-                stripeEvent.ApiVersion != StripeConfiguration.ApiVersion)
+                !IsCompatibleApiVersion(stripeEvent.ApiVersion))
             {
                 throw new StripeException(
                     $"Received event with API version {stripeEvent.ApiVersion}, but Stripe.net "

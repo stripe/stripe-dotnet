@@ -3,11 +3,12 @@ namespace Stripe.Issuing
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class TransactionService : Service<Transaction>,
+    public class TransactionService : Service,
         IListable<Transaction, TransactionListOptions>,
         IRetrievable<Transaction, TransactionGetOptions>,
         IUpdatable<Transaction, TransactionUpdateOptions>
@@ -16,20 +17,22 @@ namespace Stripe.Issuing
         {
         }
 
+        internal TransactionService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public TransactionService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/issuing/transactions";
 
         /// <summary>
         /// <p>Retrieves an Issuing <c>Transaction</c> object.</p>.
         /// </summary>
         public virtual Transaction Get(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Transaction>(HttpMethod.Get, $"/v1/issuing/transactions/{id}", options, requestOptions);
+            return this.Request<Transaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -37,7 +40,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Transaction> GetAsync(string id, TransactionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transaction>(HttpMethod.Get, $"/v1/issuing/transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transaction>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +50,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual StripeList<Transaction> List(TransactionListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Transaction>>(HttpMethod.Get, $"/v1/issuing/transactions", options, requestOptions);
+            return this.Request<StripeList<Transaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/transactions", options, requestOptions);
         }
 
         /// <summary>
@@ -57,7 +60,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<StripeList<Transaction>> ListAsync(TransactionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Transaction>>(HttpMethod.Get, $"/v1/issuing/transactions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Transaction>>(BaseAddress.Api, HttpMethod.Get, $"/v1/issuing/transactions", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -86,7 +89,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Transaction Update(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Transaction>(HttpMethod.Post, $"/v1/issuing/transactions/{id}", options, requestOptions);
+            return this.Request<Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -95,7 +98,7 @@ namespace Stripe.Issuing
         /// </summary>
         public virtual Task<Transaction> UpdateAsync(string id, TransactionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Transaction>(HttpMethod.Post, $"/v1/issuing/transactions/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Transaction>(BaseAddress.Api, HttpMethod.Post, $"/v1/issuing/transactions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

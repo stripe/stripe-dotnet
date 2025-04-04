@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentConfirmOptions : BaseOptions
     {
@@ -11,9 +14,15 @@ namespace Stripe
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
         public string CaptureMethod { get; set; }
 
         [JsonProperty("client_secret")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("client_secret")]
+#endif
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -24,6 +33,9 @@ namespace Stripe
         /// precedence.
         /// </summary>
         [JsonProperty("confirmation_token")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("confirmation_token")]
+#endif
         public string ConfirmationToken { get; set; }
 
         /// <summary>
@@ -34,15 +46,24 @@ namespace Stripe
         /// without authentication</a>.
         /// </summary>
         [JsonProperty("error_on_requires_action")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("error_on_requires_action")]
+#endif
         public bool? ErrorOnRequiresAction { get; set; }
 
         /// <summary>
         /// ID of the mandate that's used for this payment.
         /// </summary>
         [JsonProperty("mandate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate")]
+#endif
         public string Mandate { get; set; }
 
         [JsonProperty("mandate_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_data")]
+#endif
         public PaymentIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>
@@ -53,6 +74,9 @@ namespace Stripe
         /// later</a>.
         /// </summary>
         [JsonProperty("off_session")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("off_session")]
+#endif
         public bool? OffSession { get; set; }
 
         /// <summary>
@@ -61,6 +85,9 @@ namespace Stripe
         /// Source</a> object) to attach to this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method")]
+#endif
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -70,12 +97,18 @@ namespace Stripe
         /// property on the PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_data")]
+#endif
         public PaymentIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment method-specific configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_options")]
+#endif
         public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -84,6 +117,9 @@ namespace Stripe
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_types")]
+#endif
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -91,6 +127,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/radar/radar-session">Radar Sessions</a>.
         /// </summary>
         [JsonProperty("radar_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("radar_options")]
+#endif
         public PaymentIntentRadarOptionsOptions RadarOptions { get; set; }
 
         /// <summary>
@@ -100,6 +139,9 @@ namespace Stripe
         /// settings</a>.
         /// </summary>
         [JsonProperty("receipt_email")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("receipt_email")]
+#endif
         public string ReceiptEmail { get; set; }
 
         /// <summary>
@@ -109,36 +151,49 @@ namespace Stripe
         /// only used for cards and other redirect-based payment methods.
         /// </summary>
         [JsonProperty("return_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("return_url")]
+#endif
         public string ReturnUrl { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
-        /// Providing this parameter will <a
-        /// href="https://stripe.com/docs/payments/save-during-payment">attach the payment
-        /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
-        /// confirmed and any required actions from the user are complete. If no Customer was
-        /// provided, the payment method can still be <a
-        /// href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer
-        /// after the transaction completes.
+        /// If you provide a Customer with the PaymentIntent, you can use this parameter to <a
+        /// href="https://stripe.com/payments/save-during-payment">attach the payment method</a> to
+        /// the Customer after the PaymentIntent is confirmed and the customer completes any
+        /// required actions. If you don't provide a Customer, you can still <a
+        /// href="https://stripe.com/api/payment_methods/attach">attach</a> the payment method to a
+        /// Customer after the transaction completes.
         ///
-        /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
-        /// optimize your payment flow and comply with regional legislation and network rules, such
-        /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
+        /// If the payment method is <c>card_present</c> and isn't a digital wallet, Stripe creates
+        /// and attaches a <a
+        /// href="https://stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card to the Customer instead.
         ///
-        /// If <c>setup_future_usage</c> is already set and you are performing a request using a
-        /// publishable key, you may only update the value from <c>on_session</c> to
+        /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
+        /// with regional legislation and network rules, such as <a
+        /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
+        ///
+        /// If you've already set <c>setup_future_usage</c> and you're performing a request using a
+        /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// One of: <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.
         /// </summary>
         [JsonProperty("shipping")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping")]
+#endif
         public ChargeShippingOptions Shipping { get; set; }
 
         /// <summary>
@@ -146,6 +201,9 @@ namespace Stripe
         /// client-side SDKs to handle the next actions.
         /// </summary>
         [JsonProperty("use_stripe_sdk")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("use_stripe_sdk")]
+#endif
         public bool? UseStripeSdk { get; set; }
     }
 }

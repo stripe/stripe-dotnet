@@ -6,10 +6,15 @@ namespace Stripe.Terminal
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ConnectionTokenService : Service<ConnectionToken>,
+    public class ConnectionTokenService : Service,
         ICreatable<ConnectionToken, ConnectionTokenCreateOptions>
     {
         public ConnectionTokenService()
+        {
+        }
+
+        internal ConnectionTokenService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -18,9 +23,6 @@ namespace Stripe.Terminal
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/terminal/connection_tokens";
-
         /// <summary>
         /// <p>To connect to a reader the Stripe Terminal SDK needs to retrieve a short-lived
         /// connection token from Stripe, proxied through your server. On your backend, add an
@@ -28,7 +30,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual ConnectionToken Create(ConnectionTokenCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ConnectionToken>(HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions);
+            return this.Request<ConnectionToken>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +40,7 @@ namespace Stripe.Terminal
         /// </summary>
         public virtual Task<ConnectionToken> CreateAsync(ConnectionTokenCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ConnectionToken>(HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ConnectionToken>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/connection_tokens", options, requestOptions, cancellationToken);
         }
     }
 }

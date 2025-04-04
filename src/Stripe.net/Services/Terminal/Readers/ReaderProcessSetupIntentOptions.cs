@@ -2,25 +2,40 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class ReaderProcessSetupIntentOptions : BaseOptions
     {
         /// <summary>
-        /// Customer Consent Collected.
+        /// This field indicates whether this payment method can be shown again to its customer in a
+        /// checkout flow. Stripe products such as Checkout and Elements use this field to determine
+        /// whether a payment method can be shown as a saved payment method in a checkout flow.
+        /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
         /// </summary>
-        [JsonProperty("customer_consent_collected")]
-        public bool? CustomerConsentCollected { get; set; }
+        [JsonProperty("allow_redisplay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allow_redisplay")]
+#endif
+        public string AllowRedisplay { get; set; }
 
         /// <summary>
         /// Configuration overrides.
         /// </summary>
         [JsonProperty("process_config")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("process_config")]
+#endif
         public ReaderProcessConfigOptions ProcessConfig { get; set; }
 
         /// <summary>
         /// SetupIntent ID.
         /// </summary>
         [JsonProperty("setup_intent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_intent")]
+#endif
         public string SetupIntent { get; set; }
     }
 }

@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SubscriptionPaymentSettingsPaymentMethodOptionsCardOptions : INestedOptions
     {
@@ -9,16 +12,22 @@ namespace Stripe
         /// Configuration options for setting up an eMandate for cards issued in India.
         /// </summary>
         [JsonProperty("mandate_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_options")]
+#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsCardMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
         /// Selected network to process this Subscription on. Depends on the available networks of
         /// the card attached to the Subscription. Can be only set confirm-time.
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
-        /// <c>eftpos_au</c>, <c>interac</c>, <c>jcb</c>, <c>mastercard</c>, <c>unionpay</c>,
-        /// <c>unknown</c>, or <c>visa</c>.
+        /// <c>eftpos_au</c>, <c>girocard</c>, <c>interac</c>, <c>jcb</c>, <c>link</c>,
+        /// <c>mastercard</c>, <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.
         /// </summary>
         [JsonProperty("network")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network")]
+#endif
         public string Network { get; set; }
 
         /// <summary>
@@ -33,6 +42,9 @@ namespace Stripe
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_three_d_secure")]
+#endif
         public string RequestThreeDSecure { get; set; }
     }
 }

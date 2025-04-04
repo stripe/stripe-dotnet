@@ -3,13 +3,16 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class SessionShippingAddressCollection : StripeEntity<SessionShippingAddressCollection>
     {
         /// <summary>
         /// An array of two-letter ISO country codes representing which countries Checkout should
         /// provide as options for shipping locations. Unsupported country codes: <c>AS, CX, CC, CU,
-        /// HM, IR, KP, MH, FM, NF, MP, PW, SD, SY, UM, VI</c>.
+        /// HM, IR, KP, MH, FM, NF, MP, PW, SY, UM, VI</c>.
         /// One of: <c>AC</c>, <c>AD</c>, <c>AE</c>, <c>AF</c>, <c>AG</c>, <c>AI</c>, <c>AL</c>,
         /// <c>AM</c>, <c>AO</c>, <c>AQ</c>, <c>AR</c>, <c>AT</c>, <c>AU</c>, <c>AW</c>, <c>AX</c>,
         /// <c>AZ</c>, <c>BA</c>, <c>BB</c>, <c>BD</c>, <c>BE</c>, <c>BF</c>, <c>BG</c>, <c>BH</c>,
@@ -33,15 +36,18 @@ namespace Stripe.Checkout
         /// <c>NU</c>, <c>NZ</c>, <c>OM</c>, <c>PA</c>, <c>PE</c>, <c>PF</c>, <c>PG</c>, <c>PH</c>,
         /// <c>PK</c>, <c>PL</c>, <c>PM</c>, <c>PN</c>, <c>PR</c>, <c>PS</c>, <c>PT</c>, <c>PY</c>,
         /// <c>QA</c>, <c>RE</c>, <c>RO</c>, <c>RS</c>, <c>RU</c>, <c>RW</c>, <c>SA</c>, <c>SB</c>,
-        /// <c>SC</c>, <c>SE</c>, <c>SG</c>, <c>SH</c>, <c>SI</c>, <c>SJ</c>, <c>SK</c>, <c>SL</c>,
-        /// <c>SM</c>, <c>SN</c>, <c>SO</c>, <c>SR</c>, <c>SS</c>, <c>ST</c>, <c>SV</c>, <c>SX</c>,
-        /// <c>SZ</c>, <c>TA</c>, <c>TC</c>, <c>TD</c>, <c>TF</c>, <c>TG</c>, <c>TH</c>, <c>TJ</c>,
-        /// <c>TK</c>, <c>TL</c>, <c>TM</c>, <c>TN</c>, <c>TO</c>, <c>TR</c>, <c>TT</c>, <c>TV</c>,
-        /// <c>TW</c>, <c>TZ</c>, <c>UA</c>, <c>UG</c>, <c>US</c>, <c>UY</c>, <c>UZ</c>, <c>VA</c>,
-        /// <c>VC</c>, <c>VE</c>, <c>VG</c>, <c>VN</c>, <c>VU</c>, <c>WF</c>, <c>WS</c>, <c>XK</c>,
-        /// <c>YE</c>, <c>YT</c>, <c>ZA</c>, <c>ZM</c>, <c>ZW</c>, or <c>ZZ</c>.
+        /// <c>SC</c>, <c>SD</c>, <c>SE</c>, <c>SG</c>, <c>SH</c>, <c>SI</c>, <c>SJ</c>, <c>SK</c>,
+        /// <c>SL</c>, <c>SM</c>, <c>SN</c>, <c>SO</c>, <c>SR</c>, <c>SS</c>, <c>ST</c>, <c>SV</c>,
+        /// <c>SX</c>, <c>SZ</c>, <c>TA</c>, <c>TC</c>, <c>TD</c>, <c>TF</c>, <c>TG</c>, <c>TH</c>,
+        /// <c>TJ</c>, <c>TK</c>, <c>TL</c>, <c>TM</c>, <c>TN</c>, <c>TO</c>, <c>TR</c>, <c>TT</c>,
+        /// <c>TV</c>, <c>TW</c>, <c>TZ</c>, <c>UA</c>, <c>UG</c>, <c>US</c>, <c>UY</c>, <c>UZ</c>,
+        /// <c>VA</c>, <c>VC</c>, <c>VE</c>, <c>VG</c>, <c>VN</c>, <c>VU</c>, <c>WF</c>, <c>WS</c>,
+        /// <c>XK</c>, <c>YE</c>, <c>YT</c>, <c>ZA</c>, <c>ZM</c>, <c>ZW</c>, or <c>ZZ</c>.
         /// </summary>
         [JsonProperty("allowed_countries")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allowed_countries")]
+#endif
         public List<string> AllowedCountries { get; set; }
     }
 }

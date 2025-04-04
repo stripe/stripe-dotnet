@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class WebhookEndpointCreateOptions : BaseOptions, IHasMetadata
     {
@@ -34,9 +37,15 @@ namespace Stripe
         /// <c>2019-08-14</c>, <c>2019-09-09</c>, <c>2019-10-08</c>, <c>2019-10-17</c>,
         /// <c>2019-11-05</c>, <c>2019-12-03</c>, <c>2020-03-02</c>, <c>2020-08-27</c>,
         /// <c>2022-08-01</c>, <c>2022-11-15</c>, <c>2023-08-16</c>, <c>2023-10-16</c>,
-        /// <c>2024-04-10</c>, or <c>2024-06-20</c>.
+        /// <c>2024-04-10</c>, <c>2024-06-20</c>, <c>2024-09-30.acacia</c>,
+        /// <c>2024-10-28.acacia</c>, <c>2024-11-20.acacia</c>, <c>2024-12-18.acacia</c>,
+        /// <c>2025-01-27.acacia</c>, <c>2025-02-24.acacia</c>, <c>2025-03-01.dashboard</c>, or
+        /// <c>2025-03-31.basil</c>.
         /// </summary>
         [JsonProperty("api_version")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("api_version")]
+#endif
         public string ApiVersion { get; set; }
 
         /// <summary>
@@ -44,12 +53,18 @@ namespace Stripe
         /// from your account (<c>false</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("connect")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("connect")]
+#endif
         public bool? Connect { get; set; }
 
         /// <summary>
         /// An optional description of what the webhook is used for.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -60,7 +75,8 @@ namespace Stripe
         /// <c>account.external_account.deleted</c>, <c>account.external_account.updated</c>,
         /// <c>account.updated</c>, <c>application_fee.created</c>,
         /// <c>application_fee.refund.updated</c>, <c>application_fee.refunded</c>,
-        /// <c>balance.available</c>, <c>billing_portal.configuration.created</c>,
+        /// <c>balance.available</c>, <c>billing.alert.triggered</c>,
+        /// <c>billing_portal.configuration.created</c>,
         /// <c>billing_portal.configuration.updated</c>, <c>billing_portal.session.created</c>,
         /// <c>capability.updated</c>, <c>cash_balance.funds_available</c>, <c>charge.captured</c>,
         /// <c>charge.dispute.closed</c>, <c>charge.dispute.created</c>,
@@ -103,21 +119,23 @@ namespace Stripe
         /// <c>identity.verification_session.requires_input</c>,
         /// <c>identity.verification_session.verified</c>, <c>invoice.created</c>,
         /// <c>invoice.deleted</c>, <c>invoice.finalization_failed</c>, <c>invoice.finalized</c>,
-        /// <c>invoice.marked_uncollectible</c>, <c>invoice.paid</c>,
-        /// <c>invoice.payment_action_required</c>, <c>invoice.payment_failed</c>,
-        /// <c>invoice.payment_succeeded</c>, <c>invoice.sent</c>, <c>invoice.upcoming</c>,
-        /// <c>invoice.updated</c>, <c>invoice.voided</c>, <c>invoiceitem.created</c>,
-        /// <c>invoiceitem.deleted</c>, <c>issuing_authorization.created</c>,
-        /// <c>issuing_authorization.request</c>, <c>issuing_authorization.updated</c>,
-        /// <c>issuing_card.created</c>, <c>issuing_card.updated</c>,
-        /// <c>issuing_cardholder.created</c>, <c>issuing_cardholder.updated</c>,
-        /// <c>issuing_dispute.closed</c>, <c>issuing_dispute.created</c>,
-        /// <c>issuing_dispute.funds_reinstated</c>, <c>issuing_dispute.submitted</c>,
+        /// <c>invoice.marked_uncollectible</c>, <c>invoice.overdue</c>, <c>invoice.overpaid</c>,
+        /// <c>invoice.paid</c>, <c>invoice.payment_action_required</c>,
+        /// <c>invoice.payment_failed</c>, <c>invoice.payment_succeeded</c>, <c>invoice.sent</c>,
+        /// <c>invoice.upcoming</c>, <c>invoice.updated</c>, <c>invoice.voided</c>,
+        /// <c>invoice.will_be_due</c>, <c>invoiceitem.created</c>, <c>invoiceitem.deleted</c>,
+        /// <c>issuing_authorization.created</c>, <c>issuing_authorization.request</c>,
+        /// <c>issuing_authorization.updated</c>, <c>issuing_card.created</c>,
+        /// <c>issuing_card.updated</c>, <c>issuing_cardholder.created</c>,
+        /// <c>issuing_cardholder.updated</c>, <c>issuing_dispute.closed</c>,
+        /// <c>issuing_dispute.created</c>, <c>issuing_dispute.funds_reinstated</c>,
+        /// <c>issuing_dispute.funds_rescinded</c>, <c>issuing_dispute.submitted</c>,
         /// <c>issuing_dispute.updated</c>, <c>issuing_personalization_design.activated</c>,
         /// <c>issuing_personalization_design.deactivated</c>,
         /// <c>issuing_personalization_design.rejected</c>,
         /// <c>issuing_personalization_design.updated</c>, <c>issuing_token.created</c>,
         /// <c>issuing_token.updated</c>, <c>issuing_transaction.created</c>,
+        /// <c>issuing_transaction.purchase_details_receipt_updated</c>,
         /// <c>issuing_transaction.updated</c>, <c>mandate.updated</c>,
         /// <c>payment_intent.amount_capturable_updated</c>, <c>payment_intent.canceled</c>,
         /// <c>payment_intent.created</c>, <c>payment_intent.partially_funded</c>,
@@ -134,27 +152,28 @@ namespace Stripe
         /// <c>promotion_code.created</c>, <c>promotion_code.updated</c>, <c>quote.accepted</c>,
         /// <c>quote.canceled</c>, <c>quote.created</c>, <c>quote.finalized</c>,
         /// <c>radar.early_fraud_warning.created</c>, <c>radar.early_fraud_warning.updated</c>,
-        /// <c>refund.created</c>, <c>refund.updated</c>, <c>reporting.report_run.failed</c>,
-        /// <c>reporting.report_run.succeeded</c>, <c>reporting.report_type.updated</c>,
-        /// <c>review.closed</c>, <c>review.opened</c>, <c>setup_intent.canceled</c>,
-        /// <c>setup_intent.created</c>, <c>setup_intent.requires_action</c>,
-        /// <c>setup_intent.setup_failed</c>, <c>setup_intent.succeeded</c>,
-        /// <c>sigma.scheduled_query_run.created</c>, <c>source.canceled</c>,
-        /// <c>source.chargeable</c>, <c>source.failed</c>, <c>source.mandate_notification</c>,
-        /// <c>source.refund_attributes_required</c>, <c>source.transaction.created</c>,
-        /// <c>source.transaction.updated</c>, <c>subscription_schedule.aborted</c>,
-        /// <c>subscription_schedule.canceled</c>, <c>subscription_schedule.completed</c>,
-        /// <c>subscription_schedule.created</c>, <c>subscription_schedule.expiring</c>,
-        /// <c>subscription_schedule.released</c>, <c>subscription_schedule.updated</c>,
-        /// <c>tax.settings.updated</c>, <c>tax_rate.created</c>, <c>tax_rate.updated</c>,
-        /// <c>terminal.reader.action_failed</c>, <c>terminal.reader.action_succeeded</c>,
-        /// <c>test_helpers.test_clock.advancing</c>, <c>test_helpers.test_clock.created</c>,
-        /// <c>test_helpers.test_clock.deleted</c>, <c>test_helpers.test_clock.internal_failure</c>,
-        /// <c>test_helpers.test_clock.ready</c>, <c>topup.canceled</c>, <c>topup.created</c>,
-        /// <c>topup.failed</c>, <c>topup.reversed</c>, <c>topup.succeeded</c>,
-        /// <c>transfer.created</c>, <c>transfer.reversed</c>, <c>transfer.updated</c>,
-        /// <c>treasury.credit_reversal.created</c>, <c>treasury.credit_reversal.posted</c>,
-        /// <c>treasury.debit_reversal.completed</c>, <c>treasury.debit_reversal.created</c>,
+        /// <c>refund.created</c>, <c>refund.failed</c>, <c>refund.updated</c>,
+        /// <c>reporting.report_run.failed</c>, <c>reporting.report_run.succeeded</c>,
+        /// <c>reporting.report_type.updated</c>, <c>review.closed</c>, <c>review.opened</c>,
+        /// <c>setup_intent.canceled</c>, <c>setup_intent.created</c>,
+        /// <c>setup_intent.requires_action</c>, <c>setup_intent.setup_failed</c>,
+        /// <c>setup_intent.succeeded</c>, <c>sigma.scheduled_query_run.created</c>,
+        /// <c>source.canceled</c>, <c>source.chargeable</c>, <c>source.failed</c>,
+        /// <c>source.mandate_notification</c>, <c>source.refund_attributes_required</c>,
+        /// <c>source.transaction.created</c>, <c>source.transaction.updated</c>,
+        /// <c>subscription_schedule.aborted</c>, <c>subscription_schedule.canceled</c>,
+        /// <c>subscription_schedule.completed</c>, <c>subscription_schedule.created</c>,
+        /// <c>subscription_schedule.expiring</c>, <c>subscription_schedule.released</c>,
+        /// <c>subscription_schedule.updated</c>, <c>tax.settings.updated</c>,
+        /// <c>tax_rate.created</c>, <c>tax_rate.updated</c>, <c>terminal.reader.action_failed</c>,
+        /// <c>terminal.reader.action_succeeded</c>, <c>test_helpers.test_clock.advancing</c>,
+        /// <c>test_helpers.test_clock.created</c>, <c>test_helpers.test_clock.deleted</c>,
+        /// <c>test_helpers.test_clock.internal_failure</c>, <c>test_helpers.test_clock.ready</c>,
+        /// <c>topup.canceled</c>, <c>topup.created</c>, <c>topup.failed</c>, <c>topup.reversed</c>,
+        /// <c>topup.succeeded</c>, <c>transfer.created</c>, <c>transfer.reversed</c>,
+        /// <c>transfer.updated</c>, <c>treasury.credit_reversal.created</c>,
+        /// <c>treasury.credit_reversal.posted</c>, <c>treasury.debit_reversal.completed</c>,
+        /// <c>treasury.debit_reversal.created</c>,
         /// <c>treasury.debit_reversal.initial_credit_granted</c>,
         /// <c>treasury.financial_account.closed</c>, <c>treasury.financial_account.created</c>,
         /// <c>treasury.financial_account.features_status_updated</c>,
@@ -171,10 +190,16 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.returned</c>,
         /// <c>treasury.outbound_transfer.tracking_details_updated</c>,
         /// <c>treasury.received_credit.created</c>, <c>treasury.received_credit.failed</c>,
-        /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>, or
-        /// <c>ping</c>.
+        /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>,
+        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.created</c>,
+        /// <c>billing.credit_grant.updated</c>, <c>billing.meter.created</c>,
+        /// <c>billing.meter.deactivated</c>, <c>billing.meter.reactivated</c>,
+        /// <c>billing.meter.updated</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("enabled_events")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enabled_events")]
+#endif
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
@@ -184,12 +209,18 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The URL of the webhook endpoint.
         /// </summary>
         [JsonProperty("url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("url")]
+#endif
         public string Url { get; set; }
     }
 }

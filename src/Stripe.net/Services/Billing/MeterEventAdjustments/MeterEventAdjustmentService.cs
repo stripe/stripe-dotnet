@@ -6,10 +6,15 @@ namespace Stripe.Billing
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class MeterEventAdjustmentService : Service<MeterEventAdjustment>,
+    public class MeterEventAdjustmentService : Service,
         ICreatable<MeterEventAdjustment, MeterEventAdjustmentCreateOptions>
     {
         public MeterEventAdjustmentService()
+        {
+        }
+
+        internal MeterEventAdjustmentService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -18,23 +23,20 @@ namespace Stripe.Billing
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/billing/meter_event_adjustments";
-
         /// <summary>
-        /// <p>Creates a billing meter event adjustment</p>.
+        /// <p>Creates a billing meter event adjustment.</p>.
         /// </summary>
         public virtual MeterEventAdjustment Create(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<MeterEventAdjustment>(HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions);
+            return this.Request<MeterEventAdjustment>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions);
         }
 
         /// <summary>
-        /// <p>Creates a billing meter event adjustment</p>.
+        /// <p>Creates a billing meter event adjustment.</p>.
         /// </summary>
         public virtual Task<MeterEventAdjustment> CreateAsync(MeterEventAdjustmentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<MeterEventAdjustment>(HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions, cancellationToken);
+            return this.RequestAsync<MeterEventAdjustment>(BaseAddress.Api, HttpMethod.Post, $"/v1/billing/meter_event_adjustments", options, requestOptions, cancellationToken);
         }
     }
 }

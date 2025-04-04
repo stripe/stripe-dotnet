@@ -3,11 +3,12 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class PlanService : Service<Plan>,
+    public class PlanService : Service,
         ICreatable<Plan, PlanCreateOptions>,
         IDeletable<Plan, PlanDeleteOptions>,
         IListable<Plan, PlanListOptions>,
@@ -18,13 +19,15 @@ namespace Stripe
         {
         }
 
+        internal PlanService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public PlanService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/plans";
 
         /// <summary>
         /// <p>You can now model subscriptions more flexibly using the <a
@@ -33,7 +36,7 @@ namespace Stripe
         /// </summary>
         public virtual Plan Create(PlanCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Plan>(HttpMethod.Post, $"/v1/plans", options, requestOptions);
+            return this.Request<Plan>(BaseAddress.Api, HttpMethod.Post, $"/v1/plans", options, requestOptions);
         }
 
         /// <summary>
@@ -43,7 +46,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Plan> CreateAsync(PlanCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Plan>(HttpMethod.Post, $"/v1/plans", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Plan>(BaseAddress.Api, HttpMethod.Post, $"/v1/plans", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -52,7 +55,7 @@ namespace Stripe
         /// </summary>
         public virtual Plan Delete(string id, PlanDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Plan>(HttpMethod.Delete, $"/v1/plans/{id}", options, requestOptions);
+            return this.Request<Plan>(BaseAddress.Api, HttpMethod.Delete, $"/v1/plans/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -61,7 +64,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Plan> DeleteAsync(string id, PlanDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Plan>(HttpMethod.Delete, $"/v1/plans/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Plan>(BaseAddress.Api, HttpMethod.Delete, $"/v1/plans/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -69,7 +72,7 @@ namespace Stripe
         /// </summary>
         public virtual Plan Get(string id, PlanGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Plan>(HttpMethod.Get, $"/v1/plans/{id}", options, requestOptions);
+            return this.Request<Plan>(BaseAddress.Api, HttpMethod.Get, $"/v1/plans/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -77,7 +80,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Plan> GetAsync(string id, PlanGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Plan>(HttpMethod.Get, $"/v1/plans/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Plan>(BaseAddress.Api, HttpMethod.Get, $"/v1/plans/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -85,7 +88,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<Plan> List(PlanListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Plan>>(HttpMethod.Get, $"/v1/plans", options, requestOptions);
+            return this.Request<StripeList<Plan>>(BaseAddress.Api, HttpMethod.Get, $"/v1/plans", options, requestOptions);
         }
 
         /// <summary>
@@ -93,7 +96,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<Plan>> ListAsync(PlanListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Plan>>(HttpMethod.Get, $"/v1/plans", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Plan>>(BaseAddress.Api, HttpMethod.Get, $"/v1/plans", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -119,7 +122,7 @@ namespace Stripe
         /// </summary>
         public virtual Plan Update(string id, PlanUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<Plan>(HttpMethod.Post, $"/v1/plans/{id}", options, requestOptions);
+            return this.Request<Plan>(BaseAddress.Api, HttpMethod.Post, $"/v1/plans/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -129,7 +132,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<Plan> UpdateAsync(string id, PlanUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Plan>(HttpMethod.Post, $"/v1/plans/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Plan>(BaseAddress.Api, HttpMethod.Post, $"/v1/plans/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

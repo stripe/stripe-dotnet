@@ -6,10 +6,15 @@ namespace Stripe
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountSessionService : Service<AccountSession>,
+    public class AccountSessionService : Service,
         ICreatable<AccountSession, AccountSessionCreateOptions>
     {
         public AccountSessionService()
+        {
+        }
+
+        internal AccountSessionService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -18,16 +23,13 @@ namespace Stripe
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/account_sessions";
-
         /// <summary>
         /// <p>Creates a AccountSession object that includes a single-use token that the platform
         /// can use on their front-end to grant client-side API access.</p>.
         /// </summary>
         public virtual AccountSession Create(AccountSessionCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<AccountSession>(HttpMethod.Post, $"/v1/account_sessions", options, requestOptions);
+            return this.Request<AccountSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_sessions", options, requestOptions);
         }
 
         /// <summary>
@@ -36,7 +38,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<AccountSession> CreateAsync(AccountSessionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<AccountSession>(HttpMethod.Post, $"/v1/account_sessions", options, requestOptions, cancellationToken);
+            return this.RequestAsync<AccountSession>(BaseAddress.Api, HttpMethod.Post, $"/v1/account_sessions", options, requestOptions, cancellationToken);
         }
     }
 }

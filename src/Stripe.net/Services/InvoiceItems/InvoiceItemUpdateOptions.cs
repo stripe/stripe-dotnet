@@ -3,6 +3,9 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class InvoiceItemUpdateOptions : BaseOptions, IHasMetadata
     {
@@ -12,6 +15,9 @@ namespace Stripe
         /// negative amount.
         /// </summary>
         [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -19,6 +25,9 @@ namespace Stripe
         /// displayed in the invoice for easy tracking.
         /// </summary>
         [JsonProperty("description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("description")]
+#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -27,6 +36,9 @@ namespace Stripe
         /// for prorations.
         /// </summary>
         [JsonProperty("discountable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discountable")]
+#endif
         public bool? Discountable { get; set; }
 
         /// <summary>
@@ -35,6 +47,9 @@ namespace Stripe
         /// string to remove previously-defined discounts.
         /// </summary>
         [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
         public List<InvoiceItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -44,6 +59,9 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -55,25 +73,37 @@ namespace Stripe
         /// Recognition documentation</a> for details.
         /// </summary>
         [JsonProperty("period")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("period")]
+#endif
         public InvoiceItemPeriodOptions Period { get; set; }
 
         /// <summary>
-        /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
-        /// </summary>
-        [JsonProperty("price")]
-        public string Price { get; set; }
-
-        /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
-        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
+        /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price_data")]
+#endif
         public InvoiceItemPriceDataOptions PriceData { get; set; }
+
+        /// <summary>
+        /// The pricing information for the invoice item.
+        /// </summary>
+        [JsonProperty("pricing")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pricing")]
+#endif
+        public InvoiceItemPricingOptions Pricing { get; set; }
 
         /// <summary>
         /// Non-negative integer. The quantity of units for the invoice item.
         /// </summary>
         [JsonProperty("quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity")]
+#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -86,12 +116,18 @@ namespace Stripe
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_behavior")]
+#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
         /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonProperty("tax_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_code")]
+#endif
         public string TaxCode { get; set; }
 
         /// <summary>
@@ -100,23 +136,21 @@ namespace Stripe
         /// previously-defined tax rates.
         /// </summary>
         [JsonProperty("tax_rates")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_rates")]
+#endif
         public List<string> TaxRates { get; set; }
 
         /// <summary>
-        /// The integer unit amount in cents (or local equivalent) of the charge to be applied to
-        /// the upcoming invoice. This unit_amount will be multiplied by the quantity to get the
-        /// full amount. If you want to apply a credit to the customer's account, pass a negative
-        /// unit_amount.
-        /// </summary>
-        [JsonProperty("unit_amount")]
-        public long? UnitAmount { get; set; }
-
-        /// <summary>
-        /// Same as <c>unit_amount</c>, but accepts a decimal value in cents (or local equivalent)
-        /// with at most 12 decimal places. Only one of <c>unit_amount</c> and
-        /// <c>unit_amount_decimal</c> can be set.
+        /// The decimal unit amount in cents (or local equivalent) of the charge to be applied to
+        /// the upcoming invoice. This <c>unit_amount_decimal</c> will be multiplied by the quantity
+        /// to get the full amount. Passing in a negative <c>unit_amount_decimal</c> will reduce the
+        /// <c>amount_due</c> on the invoice. Accepts at most 12 decimal places.
         /// </summary>
         [JsonProperty("unit_amount_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_amount_decimal")]
+#endif
         public decimal? UnitAmountDecimal { get; set; }
     }
 }

@@ -2,18 +2,21 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class AccountRequirementsError : StripeEntity<AccountRequirementsError>
     {
         /// <summary>
         /// The code for the type of error.
-        /// One of: <c>invalid_address_city_state_postal_code</c>,
+        /// One of: <c>information_missing</c>, <c>invalid_address_city_state_postal_code</c>,
         /// <c>invalid_address_highway_contract_box</c>, <c>invalid_address_private_mailbox</c>,
         /// <c>invalid_business_profile_name</c>, <c>invalid_business_profile_name_denylisted</c>,
         /// <c>invalid_company_name_denylisted</c>, <c>invalid_dob_age_over_maximum</c>,
         /// <c>invalid_dob_age_under_18</c>, <c>invalid_dob_age_under_minimum</c>,
         /// <c>invalid_product_description_length</c>, <c>invalid_product_description_url_match</c>,
-        /// <c>invalid_representative_country</c>,
+        /// <c>invalid_representative_country</c>, <c>invalid_signator</c>,
         /// <c>invalid_statement_descriptor_business_mismatch</c>,
         /// <c>invalid_statement_descriptor_denylisted</c>,
         /// <c>invalid_statement_descriptor_length</c>,
@@ -56,6 +59,7 @@ namespace Stripe
         /// <c>verification_document_not_uploaded</c>, <c>verification_document_photo_mismatch</c>,
         /// <c>verification_document_too_large</c>, <c>verification_document_type_not_supported</c>,
         /// <c>verification_extraneous_directors</c>, <c>verification_failed_address_match</c>,
+        /// <c>verification_failed_authorizer_authority</c>,
         /// <c>verification_failed_business_iec_number</c>,
         /// <c>verification_failed_document_match</c>, <c>verification_failed_id_number_match</c>,
         /// <c>verification_failed_keyed_identity</c>, <c>verification_failed_keyed_match</c>,
@@ -64,10 +68,15 @@ namespace Stripe
         /// <c>verification_failed_residential_address</c>, <c>verification_failed_tax_id_match</c>,
         /// <c>verification_failed_tax_id_not_issued</c>, <c>verification_missing_directors</c>,
         /// <c>verification_missing_executives</c>, <c>verification_missing_owners</c>,
-        /// <c>verification_requires_additional_memorandum_of_associations</c>, or
-        /// <c>verification_requires_additional_proof_of_registration</c>.
+        /// <c>verification_rejected_ownership_exemption_reason</c>,
+        /// <c>verification_requires_additional_memorandum_of_associations</c>,
+        /// <c>verification_requires_additional_proof_of_registration</c>, or
+        /// <c>verification_supportability</c>.
         /// </summary>
         [JsonProperty("code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("code")]
+#endif
         public string Code { get; set; }
 
         /// <summary>
@@ -75,6 +84,9 @@ namespace Stripe
         /// about the error.
         /// </summary>
         [JsonProperty("reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reason")]
+#endif
         public string Reason { get; set; }
 
         /// <summary>
@@ -82,6 +94,9 @@ namespace Stripe
         /// be resolved.
         /// </summary>
         [JsonProperty("requirement")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("requirement")]
+#endif
         public string Requirement { get; set; }
     }
 }

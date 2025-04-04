@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentMethodConfigurationCreateOptions : BaseOptions
     {
@@ -11,6 +14,9 @@ namespace Stripe
         /// country availability.
         /// </summary>
         [JsonProperty("acss_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("acss_debit")]
+#endif
         public PaymentMethodConfigurationAcssDebitOptions AcssDebit { get; set; }
 
         /// <summary>
@@ -21,6 +27,9 @@ namespace Stripe
         /// for more details like country availability.
         /// </summary>
         [JsonProperty("affirm")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("affirm")]
+#endif
         public PaymentMethodConfigurationAffirmOptions Affirm { get; set; }
 
         /// <summary>
@@ -30,6 +39,9 @@ namespace Stripe
         /// beauty, and sports products.
         /// </summary>
         [JsonProperty("afterpay_clearpay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("afterpay_clearpay")]
+#endif
         public PaymentMethodConfigurationAfterpayClearpayOptions AfterpayClearpay { get; set; }
 
         /// <summary>
@@ -40,13 +52,29 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/alipay">page</a> for more details.
         /// </summary>
         [JsonProperty("alipay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alipay")]
+#endif
         public PaymentMethodConfigurationAlipayOptions Alipay { get; set; }
+
+        /// <summary>
+        /// Alma is a Buy Now, Pay Later payment method that offers customers the ability to pay in
+        /// 2, 3, or 4 installments.
+        /// </summary>
+        [JsonProperty("alma")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alma")]
+#endif
+        public PaymentMethodConfigurationAlmaOptions Alma { get; set; }
 
         /// <summary>
         /// Amazon Pay is a wallet payment method that lets your customers check out the same way as
         /// on Amazon.
         /// </summary>
         [JsonProperty("amazon_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amazon_pay")]
+#endif
         public PaymentMethodConfigurationAmazonPayOptions AmazonPay { get; set; }
 
         /// <summary>
@@ -57,6 +85,9 @@ namespace Stripe
         /// Check this <a href="https://stripe.com/docs/apple-pay">page</a> for more details.
         /// </summary>
         [JsonProperty("apple_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("apple_pay")]
+#endif
         public PaymentMethodConfigurationApplePayOptions ApplePay { get; set; }
 
         /// <summary>
@@ -64,6 +95,9 @@ namespace Stripe
         /// customers a way to split purchases into four installments across six weeks.
         /// </summary>
         [JsonProperty("apple_pay_later")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("apple_pay_later")]
+#endif
         public PaymentMethodConfigurationApplePayLaterOptions ApplePayLater { get; set; }
 
         /// <summary>
@@ -72,6 +106,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/au-becs-debit">page</a> for more details.
         /// </summary>
         [JsonProperty("au_becs_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("au_becs_debit")]
+#endif
         public PaymentMethodConfigurationAuBecsDebitOptions AuBecsDebit { get; set; }
 
         /// <summary>
@@ -81,6 +118,9 @@ namespace Stripe
         /// details.
         /// </summary>
         [JsonProperty("bacs_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bacs_debit")]
+#endif
         public PaymentMethodConfigurationBacsDebitOptions BacsDebit { get; set; }
 
         /// <summary>
@@ -91,7 +131,25 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/bancontact">page</a> for more details.
         /// </summary>
         [JsonProperty("bancontact")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bancontact")]
+#endif
         public PaymentMethodConfigurationBancontactOptions Bancontact { get; set; }
+
+        /// <summary>
+        /// Billie is a <a
+        /// href="https://docs.stripe.com/payments/payment-methods#usage">single-use</a> payment
+        /// method that offers businesses Pay by Invoice where they offer payment terms ranging from
+        /// 7-120 days. Customers are redirected from your website or app, authorize the payment
+        /// with Billie, then return to your website or app. You get <a
+        /// href="https://stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public PaymentMethodConfigurationBillieOptions Billie { get; set; }
 
         /// <summary>
         /// BLIK is a <a href="https://stripe.com/docs/payments/payment-methods#usage">single
@@ -101,6 +159,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/blik">page</a> for more details.
         /// </summary>
         [JsonProperty("blik")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("blik")]
+#endif
         public PaymentMethodConfigurationBlikOptions Blik { get; set; }
 
         /// <summary>
@@ -109,6 +170,9 @@ namespace Stripe
         /// details.
         /// </summary>
         [JsonProperty("boleto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("boleto")]
+#endif
         public PaymentMethodConfigurationBoletoOptions Boleto { get; set; }
 
         /// <summary>
@@ -116,6 +180,9 @@ namespace Stripe
         /// supports global and local card networks.
         /// </summary>
         [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
         public PaymentMethodConfigurationCardOptions Card { get; set; }
 
         /// <summary>
@@ -125,6 +192,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/cartes-bancaires">page</a> for more details.
         /// </summary>
         [JsonProperty("cartes_bancaires")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cartes_bancaires")]
+#endif
         public PaymentMethodConfigurationCartesBancairesOptions CartesBancaires { get; set; }
 
         /// <summary>
@@ -133,6 +203,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/cash-app-pay">page</a> for more details.
         /// </summary>
         [JsonProperty("cashapp")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cashapp")]
+#endif
         public PaymentMethodConfigurationCashappOptions Cashapp { get; set; }
 
         /// <summary>
@@ -142,6 +215,9 @@ namespace Stripe
         /// details.
         /// </summary>
         [JsonProperty("customer_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_balance")]
+#endif
         public PaymentMethodConfigurationCustomerBalanceOptions CustomerBalance { get; set; }
 
         /// <summary>
@@ -151,6 +227,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/eps">page</a> for more details.
         /// </summary>
         [JsonProperty("eps")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("eps")]
+#endif
         public PaymentMethodConfigurationEpsOptions Eps { get; set; }
 
         /// <summary>
@@ -163,6 +242,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/fpx">page</a> for more details.
         /// </summary>
         [JsonProperty("fpx")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fpx")]
+#endif
         public PaymentMethodConfigurationFpxOptions Fpx { get; set; }
 
         /// <summary>
@@ -174,6 +256,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/giropay">page</a> for more details.
         /// </summary>
         [JsonProperty("giropay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("giropay")]
+#endif
         public PaymentMethodConfigurationGiropayOptions Giropay { get; set; }
 
         /// <summary>
@@ -184,6 +269,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/google-pay">page</a> for more details.
         /// </summary>
         [JsonProperty("google_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("google_pay")]
+#endif
         public PaymentMethodConfigurationGooglePayOptions GooglePay { get; set; }
 
         /// <summary>
@@ -193,6 +281,9 @@ namespace Stripe
         /// this <a href="https://stripe.com/docs/payments/grabpay">page</a> for more details.
         /// </summary>
         [JsonProperty("grabpay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("grabpay")]
+#endif
         public PaymentMethodConfigurationGrabpayOptions Grabpay { get; set; }
 
         /// <summary>
@@ -203,6 +294,9 @@ namespace Stripe
         /// <a href="https://stripe.com/docs/payments/ideal">page</a> for more details.
         /// </summary>
         [JsonProperty("ideal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ideal")]
+#endif
         public PaymentMethodConfigurationIdealOptions Ideal { get; set; }
 
         /// <summary>
@@ -214,6 +308,9 @@ namespace Stripe
         /// for more details.
         /// </summary>
         [JsonProperty("jcb")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("jcb")]
+#endif
         public PaymentMethodConfigurationJcbOptions Jcb { get; set; }
 
         /// <summary>
@@ -225,6 +322,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/klarna">page</a> for more details.
         /// </summary>
         [JsonProperty("klarna")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("klarna")]
+#endif
         public PaymentMethodConfigurationKlarnaOptions Klarna { get; set; }
 
         /// <summary>
@@ -233,6 +333,9 @@ namespace Stripe
         /// for more details.
         /// </summary>
         [JsonProperty("konbini")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("konbini")]
+#endif
         public PaymentMethodConfigurationKonbiniOptions Konbini { get; set; }
 
         /// <summary>
@@ -241,6 +344,9 @@ namespace Stripe
         /// with one click for any business on the network.
         /// </summary>
         [JsonProperty("link")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("link")]
+#endif
         public PaymentMethodConfigurationLinkOptions Link { get; set; }
 
         /// <summary>
@@ -252,6 +358,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/mobilepay">page</a> for more details.
         /// </summary>
         [JsonProperty("mobilepay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mobilepay")]
+#endif
         public PaymentMethodConfigurationMobilepayOptions Mobilepay { get; set; }
 
         /// <summary>
@@ -260,13 +369,30 @@ namespace Stripe
         /// single integration path for creating payments using any supported method.
         /// </summary>
         [JsonProperty("multibanco")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("multibanco")]
+#endif
         public PaymentMethodConfigurationMultibancoOptions Multibanco { get; set; }
 
         /// <summary>
         /// Configuration name.
         /// </summary>
         [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
         public string Name { get; set; }
+
+        /// <summary>
+        /// Stripe users in New Zealand can accept Bulk Electronic Clearing System (BECS) direct
+        /// debit payments from customers with a New Zeland bank account. Check this <a
+        /// href="https://stripe.com/docs/payments/nz-bank-account">page</a> for more details.
+        /// </summary>
+        [JsonProperty("nz_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("nz_bank_account")]
+#endif
+        public PaymentMethodConfigurationNzBankAccountOptions NzBankAccount { get; set; }
 
         /// <summary>
         /// OXXO is a Mexican chain of convenience stores with thousands of locations across Latin
@@ -275,6 +401,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/oxxo">page</a> for more details.
         /// </summary>
         [JsonProperty("oxxo")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("oxxo")]
+#endif
         public PaymentMethodConfigurationOxxoOptions Oxxo { get; set; }
 
         /// <summary>
@@ -285,13 +414,31 @@ namespace Stripe
         /// more details.
         /// </summary>
         [JsonProperty("p24")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("p24")]
+#endif
         public PaymentMethodConfigurationP24Options P24 { get; set; }
 
         /// <summary>
         /// Configuration's parent configuration. Specify to create a child configuration.
         /// </summary>
         [JsonProperty("parent")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("parent")]
+#endif
         public string Parent { get; set; }
+
+        /// <summary>
+        /// Pay by bank is a redirect payment method backed by bank transfers. A customer is
+        /// redirected to their bank to authorize a bank transfer for a given amount. This removes a
+        /// lot of the error risks inherent in waiting for the customer to initiate a transfer
+        /// themselves, and is less expensive than card payments.
+        /// </summary>
+        [JsonProperty("pay_by_bank")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pay_by_bank")]
+#endif
+        public PaymentMethodConfigurationPayByBankOptions PayByBank { get; set; }
 
         /// <summary>
         /// PayNow is a Singapore-based payment method that allows customers to make a payment using
@@ -300,6 +447,9 @@ namespace Stripe
         /// more details.
         /// </summary>
         [JsonProperty("paynow")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paynow")]
+#endif
         public PaymentMethodConfigurationPaynowOptions Paynow { get; set; }
 
         /// <summary>
@@ -308,6 +458,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/paypal">page</a> for more details.
         /// </summary>
         [JsonProperty("paypal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypal")]
+#endif
         public PaymentMethodConfigurationPaypalOptions Paypal { get; set; }
 
         /// <summary>
@@ -316,6 +469,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/promptpay">page</a> for more details.
         /// </summary>
         [JsonProperty("promptpay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("promptpay")]
+#endif
         public PaymentMethodConfigurationPromptpayOptions Promptpay { get; set; }
 
         /// <summary>
@@ -325,7 +481,26 @@ namespace Stripe
         /// purchase.
         /// </summary>
         [JsonProperty("revolut_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("revolut_pay")]
+#endif
         public PaymentMethodConfigurationRevolutPayOptions RevolutPay { get; set; }
+
+        /// <summary>
+        /// Satispay is a <a
+        /// href="https://docs.stripe.com/payments/payment-methods#usage">single-use</a> payment
+        /// method where customers are required to <a
+        /// href="https://stripe.com/payments/payment-methods#customer-actions">authenticate</a>
+        /// their payment. Customers pay by being redirected from your website or app, authorizing
+        /// the payment with Satispay, then returning to your website or app. You get <a
+        /// href="https://stripe.com/payments/payment-methods#payment-notification">immediate
+        /// notification</a> of whether the payment succeeded or failed.
+        /// </summary>
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public PaymentMethodConfigurationSatispayOptions Satispay { get; set; }
 
         /// <summary>
         /// The <a href="https://en.wikipedia.org/wiki/Single_Euro_Payments_Area">Single Euro
@@ -336,6 +511,9 @@ namespace Stripe
         /// more details.
         /// </summary>
         [JsonProperty("sepa_debit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sepa_debit")]
+#endif
         public PaymentMethodConfigurationSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
@@ -346,6 +524,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/sofort">page</a> for more details.
         /// </summary>
         [JsonProperty("sofort")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sofort")]
+#endif
         public PaymentMethodConfigurationSofortOptions Sofort { get; set; }
 
         /// <summary>
@@ -356,15 +537,32 @@ namespace Stripe
         /// Check this <a href="https://stripe.com/docs/payments/swish">page</a> for more details.
         /// </summary>
         [JsonProperty("swish")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("swish")]
+#endif
         public PaymentMethodConfigurationSwishOptions Swish { get; set; }
+
+        /// <summary>
+        /// Twint is a payment method popular in Switzerland. It allows customers to pay using their
+        /// mobile phone. Check this <a href="https://docs.stripe.com/payments/twint">page</a> for
+        /// more details.
+        /// </summary>
+        [JsonProperty("twint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("twint")]
+#endif
+        public PaymentMethodConfigurationTwintOptions Twint { get; set; }
 
         /// <summary>
         /// Stripe users in the United States can accept ACH direct debit payments from customers
         /// with a US bank account using the Automated Clearing House (ACH) payments system operated
-        /// by Nacha. Check this <a href="https://stripe.com/docs/payments/ach-debit">page</a> for
-        /// more details.
+        /// by Nacha. Check this <a
+        /// href="https://stripe.com/docs/payments/ach-direct-debit">page</a> for more details.
         /// </summary>
         [JsonProperty("us_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("us_bank_account")]
+#endif
         public PaymentMethodConfigurationUsBankAccountOptions UsBankAccount { get; set; }
 
         /// <summary>
@@ -375,6 +573,9 @@ namespace Stripe
         /// href="https://stripe.com/docs/payments/wechat-pay">page</a> for more details.
         /// </summary>
         [JsonProperty("wechat_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wechat_pay")]
+#endif
         public PaymentMethodConfigurationWechatPayOptions WechatPay { get; set; }
 
         /// <summary>
@@ -383,6 +584,9 @@ namespace Stripe
         /// availability.
         /// </summary>
         [JsonProperty("zip")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("zip")]
+#endif
         public PaymentMethodConfigurationZipOptions Zip { get; set; }
     }
 }

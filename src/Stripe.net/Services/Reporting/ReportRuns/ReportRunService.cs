@@ -3,11 +3,12 @@ namespace Stripe.Reporting
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ReportRunService : Service<ReportRun>,
+    public class ReportRunService : Service,
         ICreatable<ReportRun, ReportRunCreateOptions>,
         IListable<ReportRun, ReportRunListOptions>,
         IRetrievable<ReportRun, ReportRunGetOptions>
@@ -16,13 +17,15 @@ namespace Stripe.Reporting
         {
         }
 
+        internal ReportRunService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public ReportRunService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/reporting/report_runs";
 
         /// <summary>
         /// <p>Creates a new object and begin running the report. (Certain report types require a <a
@@ -30,7 +33,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual ReportRun Create(ReportRunCreateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ReportRun>(HttpMethod.Post, $"/v1/reporting/report_runs", options, requestOptions);
+            return this.Request<ReportRun>(BaseAddress.Api, HttpMethod.Post, $"/v1/reporting/report_runs", options, requestOptions);
         }
 
         /// <summary>
@@ -39,7 +42,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual Task<ReportRun> CreateAsync(ReportRunCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ReportRun>(HttpMethod.Post, $"/v1/reporting/report_runs", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ReportRun>(BaseAddress.Api, HttpMethod.Post, $"/v1/reporting/report_runs", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -47,7 +50,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual ReportRun Get(string id, ReportRunGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ReportRun>(HttpMethod.Get, $"/v1/reporting/report_runs/{id}", options, requestOptions);
+            return this.Request<ReportRun>(BaseAddress.Api, HttpMethod.Get, $"/v1/reporting/report_runs/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -55,7 +58,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual Task<ReportRun> GetAsync(string id, ReportRunGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ReportRun>(HttpMethod.Get, $"/v1/reporting/report_runs/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ReportRun>(BaseAddress.Api, HttpMethod.Get, $"/v1/reporting/report_runs/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -63,7 +66,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual StripeList<ReportRun> List(ReportRunListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ReportRun>>(HttpMethod.Get, $"/v1/reporting/report_runs", options, requestOptions);
+            return this.Request<StripeList<ReportRun>>(BaseAddress.Api, HttpMethod.Get, $"/v1/reporting/report_runs", options, requestOptions);
         }
 
         /// <summary>
@@ -71,7 +74,7 @@ namespace Stripe.Reporting
         /// </summary>
         public virtual Task<StripeList<ReportRun>> ListAsync(ReportRunListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ReportRun>>(HttpMethod.Get, $"/v1/reporting/report_runs", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ReportRun>>(BaseAddress.Api, HttpMethod.Get, $"/v1/reporting/report_runs", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

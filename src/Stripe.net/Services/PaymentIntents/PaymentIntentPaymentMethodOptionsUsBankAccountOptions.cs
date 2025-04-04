@@ -2,6 +2,9 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class PaymentIntentPaymentMethodOptionsUsBankAccountOptions : INestedOptions
     {
@@ -9,18 +12,27 @@ namespace Stripe
         /// Additional fields for Financial Connections Session creation.
         /// </summary>
         [JsonProperty("financial_connections")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_connections")]
+#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsOptions FinancialConnections { get; set; }
 
         /// <summary>
         /// Additional fields for Mandate creation.
         /// </summary>
         [JsonProperty("mandate_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_options")]
+#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
         /// Additional fields for network related functions.
         /// </summary>
         [JsonProperty("networks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("networks")]
+#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountNetworksOptions Networks { get; set; }
 
         /// <summary>
@@ -28,37 +40,61 @@ namespace Stripe
         /// One of: <c>fastest</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("preferred_settlement_speed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("preferred_settlement_speed")]
+#endif
         public string PreferredSettlementSpeed { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
-        /// Providing this parameter will <a
-        /// href="https://stripe.com/docs/payments/save-during-payment">attach the payment
-        /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
-        /// confirmed and any required actions from the user are complete. If no Customer was
-        /// provided, the payment method can still be <a
-        /// href="https://stripe.com/docs/api/payment_methods/attach">attached</a> to a Customer
-        /// after the transaction completes.
+        /// If you provide a Customer with the PaymentIntent, you can use this parameter to <a
+        /// href="https://stripe.com/payments/save-during-payment">attach the payment method</a> to
+        /// the Customer after the PaymentIntent is confirmed and the customer completes any
+        /// required actions. If you don't provide a Customer, you can still <a
+        /// href="https://stripe.com/api/payment_methods/attach">attach</a> the payment method to a
+        /// Customer after the transaction completes.
         ///
-        /// When processing card payments, Stripe also uses <c>setup_future_usage</c> to dynamically
-        /// optimize your payment flow and comply with regional legislation and network rules, such
-        /// as <a href="https://stripe.com/docs/strong-customer-authentication">SCA</a>.
+        /// If the payment method is <c>card_present</c> and isn't a digital wallet, Stripe creates
+        /// and attaches a <a
+        /// href="https://stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card to the Customer instead.
         ///
-        /// If <c>setup_future_usage</c> is already set and you are performing a request using a
-        /// publishable key, you may only update the value from <c>on_session</c> to
+        /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
+        /// with regional legislation and network rules, such as <a
+        /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
+        ///
+        /// If you've already set <c>setup_future_usage</c> and you're performing a request using a
+        /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// Controls when Stripe will attempt to debit the funds from the customer's account. The
+        /// date must be a string in YYYY-MM-DD format. The date must be in the future and between 3
+        /// and 15 calendar days from now.
+        /// </summary>
+        [JsonProperty("target_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("target_date")]
+#endif
+        public string TargetDate { get; set; }
 
         /// <summary>
         /// Bank account verification method.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
         [JsonProperty("verification_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("verification_method")]
+#endif
         public string VerificationMethod { get; set; }
     }
 }

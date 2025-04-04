@@ -3,15 +3,23 @@ namespace Stripe.FinancialConnections
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class AccountService : Service<Account>,
+    public partial class AccountService : Service,
         IListable<Account, AccountListOptions>,
         IRetrievable<Account, AccountGetOptions>
     {
+        private AccountOwnerService owners;
+
         public AccountService()
+        {
+        }
+
+        internal AccountService(ApiRequestor requestor)
+            : base(requestor)
         {
         }
 
@@ -20,8 +28,8 @@ namespace Stripe.FinancialConnections
         {
         }
 
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/financial_connections/accounts";
+        public virtual AccountOwnerService Owners => this.owners ??= new AccountOwnerService(
+            this.Requestor);
 
         /// <summary>
         /// <p>Disables your access to a Financial Connections <c>Account</c>. You will no longer be
@@ -29,7 +37,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Account Disconnect(string id, AccountDisconnectOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Account>(HttpMethod.Post, $"/v1/financial_connections/accounts/{id}/disconnect", options, requestOptions);
+            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/disconnect", options, requestOptions);
         }
 
         /// <summary>
@@ -38,7 +46,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<Account> DisconnectAsync(string id, AccountDisconnectOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/financial_connections/accounts/{id}/disconnect", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/disconnect", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -46,7 +54,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Account Get(string id, AccountGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Account>(HttpMethod.Get, $"/v1/financial_connections/accounts/{id}", options, requestOptions);
+            return this.Request<Account>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -54,7 +62,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<Account> GetAsync(string id, AccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Account>(HttpMethod.Get, $"/v1/financial_connections/accounts/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -62,7 +70,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual StripeList<Account> List(AccountListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<Account>>(HttpMethod.Get, $"/v1/financial_connections/accounts", options, requestOptions);
+            return this.Request<StripeList<Account>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts", options, requestOptions);
         }
 
         /// <summary>
@@ -70,7 +78,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<StripeList<Account>> ListAsync(AccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<Account>>(HttpMethod.Get, $"/v1/financial_connections/accounts", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<Account>>(BaseAddress.Api, HttpMethod.Get, $"/v1/financial_connections/accounts", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -90,43 +98,11 @@ namespace Stripe.FinancialConnections
         }
 
         /// <summary>
-        /// <p>Lists all owners for a given <c>Account</c></p>.
-        /// </summary>
-        public virtual StripeList<AccountOwner> ListOwners(string id, AccountListOwnersOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<StripeList<AccountOwner>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{id}/owners", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Lists all owners for a given <c>Account</c></p>.
-        /// </summary>
-        public virtual Task<StripeList<AccountOwner>> ListOwnersAsync(string id, AccountListOwnersOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<StripeList<AccountOwner>>(HttpMethod.Get, $"/v1/financial_connections/accounts/{id}/owners", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Lists all owners for a given <c>Account</c></p>.
-        /// </summary>
-        public virtual IEnumerable<AccountOwner> ListOwnersAutoPaging(string id, AccountListOwnersOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.ListRequestAutoPaging<AccountOwner>($"/v1/financial_connections/accounts/{id}/owners", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Lists all owners for a given <c>Account</c></p>.
-        /// </summary>
-        public virtual IAsyncEnumerable<AccountOwner> ListOwnersAutoPagingAsync(string id, AccountListOwnersOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.ListRequestAutoPagingAsync<AccountOwner>($"/v1/financial_connections/accounts/{id}/owners", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
         /// <p>Refreshes the data associated with a Financial Connections <c>Account</c>.</p>.
         /// </summary>
         public virtual Account Refresh(string id, AccountRefreshOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Account>(HttpMethod.Post, $"/v1/financial_connections/accounts/{id}/refresh", options, requestOptions);
+            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/refresh", options, requestOptions);
         }
 
         /// <summary>
@@ -134,7 +110,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<Account> RefreshAsync(string id, AccountRefreshOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/financial_connections/accounts/{id}/refresh", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/refresh", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -143,7 +119,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Account Subscribe(string id, AccountSubscribeOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Account>(HttpMethod.Post, $"/v1/financial_connections/accounts/{id}/subscribe", options, requestOptions);
+            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/subscribe", options, requestOptions);
         }
 
         /// <summary>
@@ -152,7 +128,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<Account> SubscribeAsync(string id, AccountSubscribeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/financial_connections/accounts/{id}/subscribe", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/subscribe", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -161,7 +137,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Account Unsubscribe(string id, AccountUnsubscribeOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<Account>(HttpMethod.Post, $"/v1/financial_connections/accounts/{id}/unsubscribe", options, requestOptions);
+            return this.Request<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/unsubscribe", options, requestOptions);
         }
 
         /// <summary>
@@ -170,7 +146,7 @@ namespace Stripe.FinancialConnections
         /// </summary>
         public virtual Task<Account> UnsubscribeAsync(string id, AccountUnsubscribeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<Account>(HttpMethod.Post, $"/v1/financial_connections/accounts/{id}/unsubscribe", options, requestOptions, cancellationToken);
+            return this.RequestAsync<Account>(BaseAddress.Api, HttpMethod.Post, $"/v1/financial_connections/accounts/{WebUtility.UrlEncode(id)}/unsubscribe", options, requestOptions, cancellationToken);
         }
     }
 }

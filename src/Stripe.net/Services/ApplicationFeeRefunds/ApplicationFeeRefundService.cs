@@ -3,11 +3,12 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
 
-    public class ApplicationFeeRefundService : ServiceNested<ApplicationFeeRefund>,
+    public class ApplicationFeeRefundService : Service,
         INestedCreatable<ApplicationFeeRefund, ApplicationFeeRefundCreateOptions>,
         INestedListable<ApplicationFeeRefund, ApplicationFeeRefundListOptions>,
         INestedRetrievable<ApplicationFeeRefund, ApplicationFeeRefundGetOptions>,
@@ -17,13 +18,15 @@ namespace Stripe
         {
         }
 
+        internal ApplicationFeeRefundService(ApiRequestor requestor)
+            : base(requestor)
+        {
+        }
+
         public ApplicationFeeRefundService(IStripeClient client)
             : base(client)
         {
         }
-
-        [Obsolete("This member is deprecated and will be removed in a future release")]
-        public override string BasePath => "/v1/application_fees/{PARENT_ID}/refunds";
 
         /// <summary>
         /// <p>Refunds an application fee that has previously been collected but not yet refunded.
@@ -39,7 +42,7 @@ namespace Stripe
         /// </summary>
         public virtual ApplicationFeeRefund Create(string parentId, ApplicationFeeRefundCreateOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplicationFeeRefund>(HttpMethod.Post, $"/v1/application_fees/{parentId}/refunds", options, requestOptions);
+            return this.Request<ApplicationFeeRefund>(BaseAddress.Api, HttpMethod.Post, $"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds", options, requestOptions);
         }
 
         /// <summary>
@@ -56,7 +59,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplicationFeeRefund> CreateAsync(string parentId, ApplicationFeeRefundCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplicationFeeRefund>(HttpMethod.Post, $"/v1/application_fees/{parentId}/refunds", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApplicationFeeRefund>(BaseAddress.Api, HttpMethod.Post, $"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -66,7 +69,7 @@ namespace Stripe
         /// </summary>
         public virtual ApplicationFeeRefund Get(string parentId, string id, ApplicationFeeRefundGetOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplicationFeeRefund>(HttpMethod.Get, $"/v1/application_fees/{parentId}/refunds/{id}", options, requestOptions);
+            return this.Request<ApplicationFeeRefund>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -76,7 +79,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplicationFeeRefund> GetAsync(string parentId, string id, ApplicationFeeRefundGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplicationFeeRefund>(HttpMethod.Get, $"/v1/application_fees/{parentId}/refunds/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApplicationFeeRefund>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -87,7 +90,7 @@ namespace Stripe
         /// </summary>
         public virtual StripeList<ApplicationFeeRefund> List(string parentId, ApplicationFeeRefundListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<StripeList<ApplicationFeeRefund>>(HttpMethod.Get, $"/v1/application_fees/{parentId}/refunds", options, requestOptions);
+            return this.Request<StripeList<ApplicationFeeRefund>>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds", options, requestOptions);
         }
 
         /// <summary>
@@ -98,7 +101,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<StripeList<ApplicationFeeRefund>> ListAsync(string parentId, ApplicationFeeRefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<StripeList<ApplicationFeeRefund>>(HttpMethod.Get, $"/v1/application_fees/{parentId}/refunds", options, requestOptions, cancellationToken);
+            return this.RequestAsync<StripeList<ApplicationFeeRefund>>(BaseAddress.Api, HttpMethod.Get, $"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -109,7 +112,7 @@ namespace Stripe
         /// </summary>
         public virtual IEnumerable<ApplicationFeeRefund> ListAutoPaging(string parentId, ApplicationFeeRefundListOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.ListRequestAutoPaging<ApplicationFeeRefund>($"/v1/application_fees/{parentId}/refunds", options, requestOptions);
+            return this.ListRequestAutoPaging<ApplicationFeeRefund>($"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds", options, requestOptions);
         }
 
         /// <summary>
@@ -120,7 +123,7 @@ namespace Stripe
         /// </summary>
         public virtual IAsyncEnumerable<ApplicationFeeRefund> ListAutoPagingAsync(string parentId, ApplicationFeeRefundListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.ListRequestAutoPagingAsync<ApplicationFeeRefund>($"/v1/application_fees/{parentId}/refunds", options, requestOptions, cancellationToken);
+            return this.ListRequestAutoPagingAsync<ApplicationFeeRefund>($"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
@@ -131,7 +134,7 @@ namespace Stripe
         /// </summary>
         public virtual ApplicationFeeRefund Update(string parentId, string id, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null)
         {
-            return this.Request<ApplicationFeeRefund>(HttpMethod.Post, $"/v1/application_fees/{parentId}/refunds/{id}", options, requestOptions);
+            return this.Request<ApplicationFeeRefund>(BaseAddress.Api, HttpMethod.Post, $"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
@@ -142,7 +145,7 @@ namespace Stripe
         /// </summary>
         public virtual Task<ApplicationFeeRefund> UpdateAsync(string parentId, string id, ApplicationFeeRefundUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<ApplicationFeeRefund>(HttpMethod.Post, $"/v1/application_fees/{parentId}/refunds/{id}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<ApplicationFeeRefund>(BaseAddress.Api, HttpMethod.Post, $"/v1/application_fees/{WebUtility.UrlEncode(parentId)}/refunds/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

@@ -28,9 +28,13 @@ namespace Stripe
 #if NET5_0
             "net5.0"
 #elif NET6_0
-             "net6.0"
+            "net6.0"
+#elif NET7_0
+            "net7.0"
+#elif NET8_0
+            "net8.0"
 #elif NETCOREAPP3_1
-             "netcoreapp3.1"
+            "netcoreapp3.1"
 #elif NETSTANDARD2_0
             "netstandard2.0"
 #elif NET461
@@ -54,8 +58,6 @@ namespace Stripe
         private readonly Random rand = new Random();
 
         private string stripeClientUserAgentString;
-
-        private string userAgentString;
 
         static SystemNetHttpClient()
         {
@@ -96,7 +98,6 @@ namespace Stripe
             this.EnableTelemetry = enableTelemetry;
 
             this.stripeClientUserAgentString = this.BuildStripeClientUserAgentString();
-            this.userAgentString = this.BuildUserAgentString();
         }
 
         /// <summary>Default timespan before the request times out.</summary>
@@ -298,9 +299,9 @@ namespace Stripe
             return JsonUtils.SerializeObject(values, Formatting.None);
         }
 
-        private string BuildUserAgentString()
+        private string BuildUserAgentString(ApiMode apiMode)
         {
-            var userAgent = $"Stripe/v1 .NetBindings/{StripeConfiguration.StripeNetVersion}";
+            var userAgent = $"Stripe/{apiMode} .NetBindings/{StripeConfiguration.StripeNetVersion}";
 
             if (this.appInfo != null)
             {
@@ -367,7 +368,7 @@ namespace Stripe
             var requestMessage = new System.Net.Http.HttpRequestMessage(request.Method, request.Uri);
 
             // Standard headers
-            requestMessage.Headers.TryAddWithoutValidation("User-Agent", this.userAgentString);
+            requestMessage.Headers.TryAddWithoutValidation("User-Agent", this.BuildUserAgentString(request.ApiMode));
             requestMessage.Headers.Authorization = request.AuthorizationHeader;
 
             // Custom headers

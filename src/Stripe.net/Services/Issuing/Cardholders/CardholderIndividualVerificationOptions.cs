@@ -2,6 +2,9 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
 
     public class CardholderIndividualVerificationOptions : INestedOptions
     {
@@ -9,6 +12,9 @@ namespace Stripe.Issuing
         /// An identifying document, either a passport or local ID card.
         /// </summary>
         [JsonProperty("document")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("document")]
+#endif
         public CardholderIndividualVerificationDocumentOptions Document { get; set; }
     }
 }

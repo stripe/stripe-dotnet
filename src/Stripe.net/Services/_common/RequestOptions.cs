@@ -24,6 +24,9 @@ namespace Stripe
         /// </summary>
         public string StripeAccount { get; set; }
 
+        /// <summary>Gets or sets the value or Stripe-Context request header.</summary>
+        public string StripeContext { get; set; }
+
         /// <summary>Gets or sets the base URL for the request.</summary>
         /// <remarks>
         /// This is an internal property. It is set by services or individual request methods when
@@ -52,4 +55,47 @@ namespace Stripe
             return (RequestOptions)this.MemberwiseClone();
         }
     }
+
+#pragma warning disable SA1402 // FileMayOnlyContainASingleType
+    internal static class RequestOptionsExtensions
+    {
+        // TODO: some way to enforce this stays up-to-date if new fields are added
+        // to requestorOptions or requestOptions?
+        internal static T WithClientOptions<T>(this T requestOptions, StripeClientOptions clientOptions)
+            where T : RequestOptions, new()
+        {
+            T clone = (T)requestOptions?.Clone() ?? new T();
+
+            if (string.IsNullOrEmpty(clone.ApiKey))
+            {
+                clone.ApiKey = clientOptions.ApiKey;
+            }
+
+            if (string.IsNullOrEmpty(clone.StripeContext))
+            {
+                clone.StripeContext = clientOptions.StripeContext;
+            }
+
+            if (string.IsNullOrEmpty(clone.StripeAccount))
+            {
+                clone.StripeAccount = clientOptions.StripeAccount;
+            }
+
+            return clone;
+        }
+
+        internal static T WithUsage<T>(this T options, List<string> usage)
+            where T : RequestOptions, new()
+        {
+            if (options == null)
+            {
+                return new T() { Usage = usage };
+            }
+
+            var clone = (T)options.Clone();
+            clone.Usage = usage;
+            return clone;
+        }
+    }
+#pragma warning restore SA1402 // FileMayOnlyContainASingleType
 }
