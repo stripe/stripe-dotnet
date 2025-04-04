@@ -225,6 +225,7 @@ namespace Stripe
                     new StripeObjectConverter(),
                 },
                 DateParseHandling = DateParseHandling.None,
+                MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
                 MaxDepth = 128,
             };
         }
