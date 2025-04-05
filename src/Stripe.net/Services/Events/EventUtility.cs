@@ -17,7 +17,7 @@ namespace Stripe
 
         public const int DefaultTimeTolerance = 300;
 
-        public static bool IsCompatibleApiVersion(string eventApiVersion)
+        public static bool IsCompatibleApiVersion(string sdkApiVersion, string eventApiVersion)
         {
             // If the event api version is from before we started adding
             // a release train, there's no way its compatible with this
@@ -28,9 +28,21 @@ namespace Stripe
             }
 
             // versions are yyyy-MM-dd.train
+            var currentReleaseTrain = sdkApiVersion.Split('.')[1];
+
+            // Beta SDKs should match event versions exactly when deserializing
+            if (currentReleaseTrain == "preview")
+            {
+                return eventApiVersion == sdkApiVersion;
+            }
+
             var eventReleaseTrain = eventApiVersion.Split('.')[1];
-            var currentReleaseTrain = ApiVersion.Current.Split('.')[1];
             return eventReleaseTrain == currentReleaseTrain;
+        }
+
+        public static bool IsCompatibleApiVersion(string eventApiVersion)
+        {
+            return IsCompatibleApiVersion(ApiVersion.Current, eventApiVersion);
         }
 
         /// <summary>
