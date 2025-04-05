@@ -1,6 +1,7 @@
 namespace StripeTests
 {
     using System;
+    using System.Collections.Generic;
     using System.Globalization;
 
     using Newtonsoft.Json;
@@ -73,17 +74,32 @@ namespace StripeTests
         }
 
         [Fact]
+        public void FromJsonDollarRefInMetadata()
+        {
+            var json = "{\"integer\": 234, \"string\": \"String!\", \"metadata\": { \"$ref\": \"1\", \"foo\": \"bar\" }}";
+
+            var o = StripeEntity.FromJson<TestEntity>(json);
+
+            Assert.NotNull(o);
+            Assert.Equal(234, o.Integer);
+            Assert.Equal("String!", o.String);
+            Assert.Equal("1", o.Metadata["$ref"]);
+            Assert.Equal("bar", o.Metadata["foo"]);
+        }
+
+        [Fact]
         public void ToJson()
         {
             var o = new TestEntity
             {
                 Integer = 234,
                 String = "String!",
+                Metadata = new Dictionary<string, string>() { { "foo", "bar" } },
             };
 
             var json = o.ToJson().Replace("\r\n", "\n");
 
-            var expectedJson = "{\n  \"integer\": 234,\n  \"string\": \"String!\",\n  \"nested\": null\n}";
+            var expectedJson = "{\n  \"integer\": 234,\n  \"string\": \"String!\",\n  \"metadata\": {\n    \"foo\": \"bar\"\n  },\n  \"nested\": null\n}";
             Assert.Equal(expectedJson, json);
         }
 
@@ -181,13 +197,16 @@ namespace StripeTests
                 subscription.RawJObject["items"]["data"][0]["id"]);
         }
 
-        private class TestEntity : StripeEntity<TestEntity>
+        private class TestEntity : StripeEntity<TestEntity>, IHasMetadata
         {
             [JsonProperty("integer")]
             public int Integer { get; set; }
 
             [JsonProperty("string")]
             public string String { get; set; }
+
+            [JsonProperty("metadata")]
+            public Dictionary<string, string> Metadata { get; set; }
 
             [JsonIgnore]
             public string NestedId
