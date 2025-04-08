@@ -94,6 +94,14 @@ namespace StripeTests
         {
             var evt = Event.FromJson(this.json);
             var expectedReleaseTrain = StripeConfiguration.ApiVersion.Split('.')[1];
+
+            // this test only makes sense on GA versions- the exact version for preview versions doesn't
+            // work this way and we can't mock private methods from this test class.
+            if (expectedReleaseTrain == "preview")
+            {
+                return;
+            }
+
             evt.ApiVersion = "2999-10-10." + expectedReleaseTrain;
             var serialized = evt.ToJson();
 
