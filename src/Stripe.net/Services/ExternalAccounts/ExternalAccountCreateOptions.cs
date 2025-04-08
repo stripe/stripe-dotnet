@@ -3,6 +3,7 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
@@ -25,10 +26,12 @@ namespace Stripe
         /// external account details (with the options shown below).
         /// </summary>
         [JsonProperty("external_account")]
+        [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_account")]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-        public string ExternalAccount { get; set; }
+        public AnyOf<string, ExternalAccountCardOptions, AccountBankAccountOptions, ExternalAccountCardTokenOptions> ExternalAccount { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
