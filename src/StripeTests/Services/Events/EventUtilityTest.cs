@@ -82,18 +82,18 @@ namespace StripeTests
         public void AcceptsExpectedApiVersion()
         {
             var evt = Event.FromJson(this.json);
-            evt.ApiVersion = StripeConfiguration.ApiVersion;
+            evt.ApiVersion = ApiVersion.Current
             var serialized = evt.ToJson();
 
             evt = EventUtility.ParseEvent(serialized);
-            Assert.Equal(StripeConfiguration.ApiVersion, evt.ApiVersion);
+            Assert.Equal(ApiVersion.Current, evt.ApiVersion);
         }
 
         [Fact]
         public void AcceptsNewApiVersionInExpectedReleaseTrain()
         {
             var evt = Event.FromJson(this.json);
-            var expectedReleaseTrain = StripeConfiguration.ApiVersion.Split('.')[1];
+            var expectedReleaseTrain = ApiVersion.Current.Split('.')[1];
 
             // this test only makes sense on GA versions- the exact version for preview versions doesn't
             // work this way and we can't mock private methods from this test class.
