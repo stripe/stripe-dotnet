@@ -86,27 +86,25 @@ namespace StripeTests
             evt.ApiVersion = ApiVersion.Current;
             var serialized = evt.ToJson();
 
-            evt = EventUtility.ParseEvent(serialized);
+            evt = EventUtility.ParseEvent(serialized, ApiVersion.Current);
             Assert.Equal(ApiVersion.Current, evt.ApiVersion);
         }
 
+        // this test only makes sense on GA versions - the exact version for preview versions doesn't
+        // work this way - but it is otherwise harmless to run in both cases
         [Fact]
         public void AcceptsNewApiVersionInExpectedReleaseTrain()
         {
             var evt = Event.FromJson(this.json);
-            var expectedReleaseTrain = ApiVersion.Current.Split('.')[1];
 
-            // this test only makes sense on GA versions- the exact version for preview versions doesn't
-            // work this way and we can't mock private methods from this test class.
-            if (expectedReleaseTrain == "preview")
-            {
-                return;
-            }
+            // uses a hardcoded release train because we're testing ParseEvent primarily
+            var expectedReleaseTrain = "bufo";
 
             evt.ApiVersion = "2999-10-10." + expectedReleaseTrain;
             var serialized = evt.ToJson();
 
-            evt = EventUtility.ParseEvent(serialized);
+            var currentApiVersion = ApiVersion.Current.Split('.')[0] + $".{expectedReleaseTrain}";
+            evt = EventUtility.ParseEvent(serialized, currentApiVersion);
             Assert.EndsWith($".{expectedReleaseTrain}", evt.ApiVersion);
         }
 
@@ -114,7 +112,7 @@ namespace StripeTests
         public void ThrowsOnLegacyApiVersionMismatch()
         {
             var exception = Assert.Throws<StripeException>(() =>
-                EventUtility.ParseEvent(this.json));
+                EventUtility.ParseEvent(this.json, ApiVersion.Current));
 
             Assert.Contains("Received event with API version 2017-05-25", exception.Message);
         }
@@ -127,7 +125,7 @@ namespace StripeTests
             var serialized = evt.ToJson();
 
             var exception = Assert.Throws<StripeException>(() =>
-                EventUtility.ParseEvent(serialized));
+                EventUtility.ParseEvent(serialized, ApiVersion.Current));
 
             Assert.Contains("Received event with API version 2999-10-10.the_larch", exception.Message);
         }
@@ -135,7 +133,7 @@ namespace StripeTests
         [Fact]
         public void CanDisableThrowOnApiVersionMismatch()
         {
-            var evt = EventUtility.ParseEvent(this.json, false);
+            var evt = EventUtility.ParseEvent(this.json, ApiVersion.Current, false);
             Assert.Equal("2017-05-25", evt.ApiVersion);
         }
 

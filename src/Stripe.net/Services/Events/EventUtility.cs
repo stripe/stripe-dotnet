@@ -40,15 +40,11 @@ namespace Stripe
             return eventReleaseTrain == currentReleaseTrain;
         }
 
-        public static bool IsCompatibleApiVersion(string eventApiVersion)
-        {
-            return IsCompatibleApiVersion(ApiVersion.Current, eventApiVersion);
-        }
-
         /// <summary>
         /// Parses a JSON string from a Stripe webhook into a <see cref="Event"/> object.
         /// </summary>
         /// <param name="json">The JSON string to parse.</param>
+        /// <param name="currentApiVersion">The SDK's current API version.</param>
         /// <param name="throwOnApiVersionMismatch">
         /// If <c>true</c> (default), the method will throw a <see cref="StripeException"/> if the
         /// API version of the event doesn't match Stripe.net's default API version (see
@@ -63,14 +59,14 @@ namespace Stripe
         /// signatures</a>. It's recommended that you use
         /// <see cref="ConstructEvent(string, string, string, long, bool)"/> instead.
         /// </remarks>
-        public static Event ParseEvent(string json, bool throwOnApiVersionMismatch = true)
+        public static Event ParseEvent(string json, string currentApiVersion, bool throwOnApiVersionMismatch = true)
         {
             var stripeEvent = JsonUtils.DeserializeObject<Event>(
                 json,
                 StripeConfiguration.SerializerSettings);
 
             if (throwOnApiVersionMismatch &&
-                !IsCompatibleApiVersion(stripeEvent.ApiVersion))
+                !IsCompatibleApiVersion(currentApiVersion, stripeEvent.ApiVersion))
             {
                 throw new StripeException(
                     $"Received event with API version {stripeEvent.ApiVersion}, but Stripe.net "
@@ -153,7 +149,7 @@ namespace Stripe
             bool throwOnApiVersionMismatch = true)
         {
             ValidateSignature(json, stripeSignatureHeader, secret, tolerance, utcNow);
-            return ParseEvent(json, throwOnApiVersionMismatch);
+            return ParseEvent(json, ApiVersion.Current, throwOnApiVersionMismatch);
         }
 
         public static void ValidateSignature(string json, string stripeSignatureHeader, string secret, long tolerance = DefaultTimeTolerance)
