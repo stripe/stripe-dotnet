@@ -52,7 +52,7 @@ namespace Stripe
         /// <param name="throwOnApiVersionMismatch">
         /// If <c>true</c> (default), the method will throw a <see cref="StripeException"/> if the
         /// API version of the event doesn't match Stripe.net's default API version (see
-        /// <see cref="StripeConfiguration.ApiVersion"/>).
+        /// <see cref="ApiVersion.Current"/>).
         /// </param>
         /// <returns>The deserialized <see cref="Event"/>.</returns>
         /// <exception cref="StripeException">
@@ -99,7 +99,7 @@ namespace Stripe
         /// <param name="throwOnApiVersionMismatch">
         /// If <c>true</c> (default), the method will throw a <see cref="StripeException"/> if the
         /// API version of the event doesn't match Stripe.net's default API version (see
-        /// <see cref="StripeConfiguration.ApiVersion"/>).
+        /// <see cref="ApiVersion.Current"/>).
         /// </param>
         /// <returns>The deserialized <see cref="Event"/>.</returns>
         /// <exception cref="StripeException">
@@ -137,7 +137,7 @@ namespace Stripe
         /// <param name="throwOnApiVersionMismatch">
         /// If <c>true</c> (default), the method will throw a <see cref="StripeException"/> if the
         /// API version of the event doesn't match Stripe.net's default API version (see
-        /// <see cref="StripeConfiguration.ApiVersion"/>).
+        /// <see cref="ApiVersion.Current"/>).
         /// </param>
         /// <returns>The deserialized <see cref="Event"/>.</returns>
         /// <exception cref="StripeException">
