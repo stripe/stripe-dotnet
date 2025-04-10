@@ -82,7 +82,7 @@ namespace StripeTests
         public void AcceptsExpectedApiVersion()
         {
             var evt = Event.FromJson(this.json);
-            evt.ApiVersion = ApiVersion.Current
+            evt.ApiVersion = ApiVersion.Current;
             var serialized = evt.ToJson();
 
             evt = EventUtility.ParseEvent(serialized);
