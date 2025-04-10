@@ -113,7 +113,7 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataBancontactOptions Bancontact { get; set; }
 
         /// <summary>
-        /// If this is a <c>billie</c> PaymentMethod, this hash contains details about the billie
+        /// If this is a <c>billie</c> PaymentMethod, this hash contains details about the Billie
         /// payment method.
         /// </summary>
         [JsonProperty("billie")]
@@ -486,7 +486,7 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataRechnungOptions Rechnung { get; set; }
 
         /// <summary>
-        /// If this is a <c>Revolut Pay</c> PaymentMethod, this hash contains details about the
+        /// If this is a <c>revolut_pay</c> PaymentMethod, this hash contains details about the
         /// Revolut Pay payment method.
         /// </summary>
         [JsonProperty("revolut_pay")]
@@ -507,7 +507,7 @@ namespace Stripe
 
         /// <summary>
         /// If this is a <c>satispay</c> PaymentMethod, this hash contains details about the
-        /// satispay payment method.
+        /// Satispay payment method.
         /// </summary>
         [JsonProperty("satispay")]
 #if NET6_0_OR_GREATER

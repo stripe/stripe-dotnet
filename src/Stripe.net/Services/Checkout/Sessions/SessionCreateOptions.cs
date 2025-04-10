@@ -412,7 +412,7 @@ namespace Stripe.Checkout
         /// CheckoutSession object.
         ///
         /// For specific permissions, please refer to their dedicated subsections, such as
-        /// <c>permissions.update.shipping_details</c>.
+        /// <c>permissions.update_shipping_details</c>.
         /// </summary>
         [JsonProperty("permissions")]
 #if NET6_0_OR_GREATER
@@ -551,5 +551,14 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("ui_mode")]
 #endif
         public string UiMode { get; set; }
+
+        /// <summary>
+        /// Wallet-specific configuration.
+        /// </summary>
+        [JsonProperty("wallet_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wallet_options")]
+#endif
+        public SessionWalletOptionsOptions WalletOptions { get; set; }
     }
 }

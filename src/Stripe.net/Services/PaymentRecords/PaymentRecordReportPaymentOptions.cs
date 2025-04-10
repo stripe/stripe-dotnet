@@ -12,7 +12,7 @@ namespace Stripe
     public class PaymentRecordReportPaymentOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The amount you intend to collect for this payment.
+        /// The amount you initially requested for this payment.
         /// </summary>
         [JsonProperty("amount_requested")]
 #if NET6_0_OR_GREATER

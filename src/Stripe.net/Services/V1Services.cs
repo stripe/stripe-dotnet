@@ -59,6 +59,7 @@ namespace Stripe
         private PayoutService payouts;
         private PlanService plans;
         private PriceService prices;
+        private PrivacyService privacy;
         private ProductService products;
         private PromotionCodeService promotionCodes;
         private QuoteService quotes;
@@ -250,6 +251,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual PriceService Prices => this.prices ??= new PriceService(
+            this.Requestor);
+
+        public virtual PrivacyService Privacy => this.privacy ??= new PrivacyService(
             this.Requestor);
 
         public virtual ProductService Products => this.products ??= new ProductService(

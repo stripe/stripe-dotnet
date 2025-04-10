@@ -242,6 +242,9 @@ namespace Stripe
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        /// <summary>
+        /// ID of the account who owns the subscription.
+        /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]

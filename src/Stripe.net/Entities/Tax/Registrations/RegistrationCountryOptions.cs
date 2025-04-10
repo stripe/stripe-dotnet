@@ -230,6 +230,12 @@ namespace Stripe.Tax
 #endif
         public RegistrationCountryOptionsIe Ie { get; set; }
 
+        [JsonProperty("in")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("in")]
+#endif
+        public RegistrationCountryOptionsIn In { get; set; }
+
         [JsonProperty("is")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is")]

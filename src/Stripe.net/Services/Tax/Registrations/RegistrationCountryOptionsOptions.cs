@@ -342,6 +342,15 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsIeOptions Ie { get; set; }
 
         /// <summary>
+        /// Options for the registration in IN.
+        /// </summary>
+        [JsonProperty("in")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("in")]
+#endif
+        public RegistrationCountryOptionsInOptions In { get; set; }
+
+        /// <summary>
         /// Options for the registration in IS.
         /// </summary>
         [JsonProperty("is")]

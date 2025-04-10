@@ -142,6 +142,9 @@ namespace Stripe
 #endif
         public string Customer { get; set; }
 
+        /// <summary>
+        /// The identifier of the account to subscribe.
+        /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
