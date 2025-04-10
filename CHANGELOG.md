@@ -1,5 +1,19 @@
 # Changelog
 
+## 48.1.0-beta.3 - 2025-04-10
+* [#3094](https://github.com/stripe/stripe-dotnet/pull/3094) Update generated code for beta
+  * Add support for new resources `Privacy.RedactionJobRootObjects`, `Privacy.RedactionJobValidationError`, and `Privacy.RedactionJob`
+  * Add support for `Cancel`, `Create`, `Get`, `List`, `Run`, `Update`, and `Validate` methods on resource `RedactionJob`
+  * Add support for `Get` and `List` methods on resource `RedactionJobValidationError`
+  * Add support for `MinorityOwnedBusinessDesignation` on `AccountBusinessProfileOptions` and `AccountBusinessProfile`
+  * Add support for `ExportTaxTransactions` and `PaymentDisputes` on `AccountSessionComponentsOptions`
+  * Add support for `WalletOptions` on `Checkout.SessionCreateOptions` and `CheckoutSession`
+  * Add support for `Klarna` on `PaymentMethodDomain`
+  * Add support for `In` on `TaxRegistrationCountryOptionsOptions` and `TaxRegistrationCountryOptions`
+* [#3092](https://github.com/stripe/stripe-dotnet/pull/3092) Handle external_account field
+  - Changes `externalAccount` field in `externalAccounts.create` from a `string` to a union type.
+* [#3091](https://github.com/stripe/stripe-dotnet/pull/3091) Xavdid/merge dotnet beta & fix tests
+
 ## 48.1.0-beta.2 - 2025-04-02
 * Re-releasing 48.1.0-beta.1 as it had publishing issues
 
