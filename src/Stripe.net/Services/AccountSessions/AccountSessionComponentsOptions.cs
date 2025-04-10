@@ -99,6 +99,15 @@ namespace Stripe
         public AccountSessionComponentsDocumentsOptions Documents { get; set; }
 
         /// <summary>
+        /// Configuration for the export tax transactions embedded component.
+        /// </summary>
+        [JsonProperty("export_tax_transactions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("export_tax_transactions")]
+#endif
+        public AccountSessionComponentsExportTaxTransactionsOptions ExportTaxTransactions { get; set; }
+
+        /// <summary>
         /// Configuration for the financial account embedded component.
         /// </summary>
         [JsonProperty("financial_account")]
@@ -151,6 +160,15 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_details")]
 #endif
         public AccountSessionComponentsPaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
+        /// Configuration for the payment disputes embedded component.
+        /// </summary>
+        [JsonProperty("payment_disputes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_disputes")]
+#endif
+        public AccountSessionComponentsPaymentDisputesOptions PaymentDisputes { get; set; }
 
         /// <summary>
         /// Configuration for the payment method settings embedded component.

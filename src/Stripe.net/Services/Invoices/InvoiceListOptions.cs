@@ -41,6 +41,9 @@ namespace Stripe
 #endif
         public string Customer { get; set; }
 
+        /// <summary>
+        /// Only return invoices for the account specified by this account ID.
+        /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]

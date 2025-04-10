@@ -73,6 +73,9 @@ namespace Stripe
 #endif
         public string Customer { get; set; }
 
+        /// <summary>
+        /// The ID of the account whose subscriptions will be retrieved.
+        /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]

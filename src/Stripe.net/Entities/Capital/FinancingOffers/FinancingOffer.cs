@@ -170,7 +170,7 @@ namespace Stripe.Capital
         /// <summary>
         /// See <a
         /// href="https://stripe.com/docs/api/capital/connect_financing_object#financing_offer_object-financing_type">financing_type</a>.
-        /// One of: <c>cash_advance</c>, or <c>flex_loan</c>.
+        /// One of: <c>cash_advance</c>, <c>fixed_term_loan</c>, or <c>flex_loan</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

@@ -66,8 +66,10 @@ namespace Stripe
         /// <c>verification_failed_name_match</c>, <c>verification_failed_other</c>,
         /// <c>verification_failed_representative_authority</c>,
         /// <c>verification_failed_residential_address</c>, <c>verification_failed_tax_id_match</c>,
-        /// <c>verification_failed_tax_id_not_issued</c>, <c>verification_missing_directors</c>,
-        /// <c>verification_missing_executives</c>, <c>verification_missing_owners</c>,
+        /// <c>verification_failed_tax_id_not_issued</c>,
+        /// <c>verification_legal_entity_structure_mismatch</c>,
+        /// <c>verification_missing_directors</c>, <c>verification_missing_executives</c>,
+        /// <c>verification_missing_owners</c>,
         /// <c>verification_rejected_ownership_exemption_reason</c>,
         /// <c>verification_requires_additional_memorandum_of_associations</c>,
         /// <c>verification_requires_additional_proof_of_registration</c>, or

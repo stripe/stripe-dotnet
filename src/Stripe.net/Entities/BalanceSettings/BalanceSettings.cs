@@ -7,7 +7,7 @@ namespace Stripe
 #endif
 
     /// <summary>
-    /// "Options for customizing account balances within Stripe.".
+    /// Options for customizing account balances within Stripe.
     /// </summary>
     public class BalanceSettings : StripeEntity<BalanceSettings>, IHasObject
     {

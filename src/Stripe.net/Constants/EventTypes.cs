@@ -1011,6 +1011,31 @@ namespace Stripe
         public const string PriceUpdated = "price.updated";
 
         /// <summary>
+        /// Occurs whenever a redaction job is canceled.
+        /// </summary>
+        public const string PrivacyRedactionJobCanceled = "privacy.redaction_job.canceled";
+
+        /// <summary>
+        /// Occurs whenever a redaction job is created.
+        /// </summary>
+        public const string PrivacyRedactionJobCreated = "privacy.redaction_job.created";
+
+        /// <summary>
+        /// Occurs whenever a redaction job has been successfully validated and is ready to run.
+        /// </summary>
+        public const string PrivacyRedactionJobReady = "privacy.redaction_job.ready";
+
+        /// <summary>
+        /// Occurs whenever a redaction job finishes running.
+        /// </summary>
+        public const string PrivacyRedactionJobSucceeded = "privacy.redaction_job.succeeded";
+
+        /// <summary>
+        /// Occurs whenever a redaction job fails validation.
+        /// </summary>
+        public const string PrivacyRedactionJobValidationError = "privacy.redaction_job.validation_error";
+
+        /// <summary>
         /// Occurs whenever a product is created.
         /// </summary>
         public const string ProductCreated = "product.created";
