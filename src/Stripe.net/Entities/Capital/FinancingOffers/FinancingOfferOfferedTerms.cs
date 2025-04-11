@@ -9,7 +9,8 @@ namespace Stripe.Capital
     public class FinancingOfferOfferedTerms : StripeEntity<FinancingOfferOfferedTerms>
     {
         /// <summary>
-        /// Amount of financing offered, in minor units.
+        /// Amount of financing offered, in minor units. For example, $1,000 USD will be represented
+        /// as 100000.
         /// </summary>
         [JsonProperty("advance_amount")]
 #if NET6_0_OR_GREATER
@@ -38,7 +39,7 @@ namespace Stripe.Capital
         public string Currency { get; set; }
 
         /// <summary>
-        /// Fixed fee amount, in minor units.
+        /// Fixed fee amount, in minor units. For example, $100 USD will be represented as 10000.
         /// </summary>
         [JsonProperty("fee_amount")]
 #if NET6_0_OR_GREATER

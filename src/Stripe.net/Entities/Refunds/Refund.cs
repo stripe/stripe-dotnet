@@ -290,6 +290,17 @@ namespace Stripe
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
+        /// <summary>
+        /// Provides the reason for why the refund is pending. Possible values are:
+        /// <c>processing</c>, <c>insufficient_funds</c>, or <c>charge_pending</c>.
+        /// One of: <c>charge_pending</c>, <c>insufficient_funds</c>, or <c>processing</c>.
+        /// </summary>
+        [JsonProperty("pending_reason")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pending_reason")]
+#endif
+        public string PendingReason { get; set; }
+
         [JsonProperty("presentment_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("presentment_details")]
