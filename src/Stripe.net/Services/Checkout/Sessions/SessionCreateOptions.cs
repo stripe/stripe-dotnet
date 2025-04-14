@@ -409,7 +409,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// This property is used to set up permissions for various actions (e.g., update) on the
-        /// CheckoutSession object.
+        /// CheckoutSession object. Can only be set when creating <c>embedded</c> or <c>custom</c>
+        /// sessions.
         ///
         /// For specific permissions, please refer to their dedicated subsections, such as
         /// <c>permissions.update_shipping_details</c>.
