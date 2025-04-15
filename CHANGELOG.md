@@ -89,6 +89,9 @@ See [SaaS platform payments with subscription billing using Accounts v2](https:/
 * [#3069](https://github.com/stripe/stripe-dotnet/pull/3069) Enhance beta version handling in ApiVersion
   * `StripeConfiguation.AddBetaVersion` will use the highest version number used for a beta feature instead of throwing an `Exception` on a conflict as it had done previously.
 
+## 48.0.2 - 2025-04-15
+* [#3101](https://github.com/stripe/stripe-dotnet/pull/3101) Replace Dictionary with ConcurrentDictionary in SerializablePropertyCache to fix a concurrency related error reported in [#3100](https://github.com/stripe/stripe-dotnet/issues/3100)
+
 ## 48.0.1 - 2025-04-14
 * [#3090](https://github.com/stripe/stripe-dotnet/pull/3090) Disable Json.NET metadata special handling. Fixes issue [#3068](https://github.com/stripe/stripe-dotnet/issues/3068)
 
