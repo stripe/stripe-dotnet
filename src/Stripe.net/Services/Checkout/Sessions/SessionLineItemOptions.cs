@@ -64,7 +64,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
-        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
+        /// object inline. One of <c>price</c> or <c>price_data</c> is required when creating a new
+        /// line item.
         /// </summary>
         [JsonProperty("price_data")]
 #if NET6_0_OR_GREATER
