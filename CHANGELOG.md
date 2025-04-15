@@ -1,5 +1,8 @@
 # Changelog
 
+## 48.0.2 - 2025-04-15
+* [#3101](https://github.com/stripe/stripe-dotnet/pull/3101) Replace Dictionary with ConcurrentDictionary in SerializablePropertyCache to fix a concurrency related error reported in [#3100](https://github.com/stripe/stripe-dotnet/issues/3100)
+
 ## 48.0.1 - 2025-04-14
 * [#3090](https://github.com/stripe/stripe-dotnet/pull/3090) Disable Json.NET metadata special handling. Fixes issue [#3068](https://github.com/stripe/stripe-dotnet/issues/3068)
 
