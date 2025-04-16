@@ -43,5 +43,14 @@ namespace Stripe.Treasury
         [STJS.JsonPropertyName("phone")]
 #endif
         public string Phone { get; set; }
+
+        /// <summary>
+        /// Taxpayer identification number.
+        /// </summary>
+        [JsonProperty("tax_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_id")]
+#endif
+        public string TaxId { get; set; }
     }
 }
