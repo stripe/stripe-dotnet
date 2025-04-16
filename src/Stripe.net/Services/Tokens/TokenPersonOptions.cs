@@ -252,6 +252,15 @@ namespace Stripe
         public string SsnLast4 { get; set; }
 
         /// <summary>
+        /// Demographic data related to the person.
+        /// </summary>
+        [JsonProperty("us_cfpb_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("us_cfpb_data")]
+#endif
+        public TokenPersonUsCfpbDataOptions UsCfpbData { get; set; }
+
+        /// <summary>
         /// The person's verification status.
         /// </summary>
         [JsonProperty("verification")]
