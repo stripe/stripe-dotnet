@@ -119,6 +119,16 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The FX rate in the quote is validated and used to convert the presentment amount to the
+        /// settlement amount.
+        /// </summary>
+        [JsonProperty("fx_quote")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fx_quote")]
+#endif
+        public string FxQuote { get; set; }
+
+        /// <summary>
         /// This hash contains details about the Mandate to create.
         /// </summary>
         [JsonProperty("mandate_data")]

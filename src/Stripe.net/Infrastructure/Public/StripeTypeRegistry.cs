@@ -100,6 +100,7 @@ namespace Stripe
                 },
                 { "forwarding.request", typeof(Forwarding.Request) },
                 { "funding_instructions", typeof(FundingInstructions) },
+                { "fx_quote", typeof(FxQuote) },
                 { "gift_cards.card", typeof(GiftCards.Card) },
                 { "gift_cards.transaction", typeof(GiftCards.Transaction) },
                 { "identity.verification_report", typeof(Identity.VerificationReport) },

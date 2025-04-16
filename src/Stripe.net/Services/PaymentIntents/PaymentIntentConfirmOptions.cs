@@ -75,6 +75,16 @@ namespace Stripe
         public bool? ErrorOnRequiresAction { get; set; }
 
         /// <summary>
+        /// The FX rate in the quote is validated and used to convert the presentment amount to the
+        /// settlement amount.
+        /// </summary>
+        [JsonProperty("fx_quote")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fx_quote")]
+#endif
+        public string FxQuote { get; set; }
+
+        /// <summary>
         /// ID of the mandate that's used for this payment.
         /// </summary>
         [JsonProperty("mandate")]
