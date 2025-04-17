@@ -182,6 +182,17 @@ namespace Stripe
         public DateTime? RedeemBy { get; set; }
 
         /// <summary>
+        /// Configuration of the <a
+        /// href="https://docs.stripe.com/billing/subscriptions/script-coupons">script</a> used to
+        /// calculate the discount.
+        /// </summary>
+        [JsonProperty("script")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("script")]
+#endif
+        public CouponScript Script { get; set; }
+
+        /// <summary>
         /// Number of times this coupon has been applied to a customer.
         /// </summary>
         [JsonProperty("times_redeemed")]
@@ -189,6 +200,17 @@ namespace Stripe
         [STJS.JsonPropertyName("times_redeemed")]
 #endif
         public long TimesRedeemed { get; set; }
+
+        /// <summary>
+        /// One of <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>. Describes the type of
+        /// coupon logic used to calculate the discount.
+        /// One of: <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>.
+        /// </summary>
+        [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+        public string Type { get; set; }
 
         /// <summary>
         /// Taking account of the above properties, whether this coupon can still be applied to a

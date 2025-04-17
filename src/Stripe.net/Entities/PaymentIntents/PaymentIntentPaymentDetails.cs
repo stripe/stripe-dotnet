@@ -14,11 +14,30 @@ namespace Stripe
 #endif
         public PaymentIntentPaymentDetailsCarRental CarRental { get; set; }
 
+        /// <summary>
+        /// Some customers might be required by their company or organization to provide this
+        /// information. If so, provide this value. Otherwise you can ignore this field.
+        /// </summary>
+        [JsonProperty("customer_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_reference")]
+#endif
+        public string CustomerReference { get; set; }
+
         [JsonProperty("event_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_details")]
 #endif
         public PaymentIntentPaymentDetailsEventDetails EventDetails { get; set; }
+
+        /// <summary>
+        /// A unique value assigned by the business to identify the transaction.
+        /// </summary>
+        [JsonProperty("order_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("order_reference")]
+#endif
+        public string OrderReference { get; set; }
 
         [JsonProperty("subscription")]
 #if NET6_0_OR_GREATER

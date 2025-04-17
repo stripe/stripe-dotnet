@@ -222,6 +222,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The FX Quote used for the transfer.
+        /// </summary>
+        [JsonProperty("fx_quote")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fx_quote")]
+#endif
+        public string FxQuote { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

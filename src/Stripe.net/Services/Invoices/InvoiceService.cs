@@ -16,7 +16,6 @@ namespace Stripe
         ISearchable<Invoice, InvoiceSearchOptions>,
         IUpdatable<Invoice, InvoiceUpdateOptions>
     {
-        private InvoicePaymentService payments;
         private InvoiceLineItemService lineItems;
 
         public InvoiceService()
@@ -32,9 +31,6 @@ namespace Stripe
             : base(client)
         {
         }
-
-        public virtual InvoicePaymentService Payments => this.payments ??= new InvoicePaymentService(
-            this.Requestor);
 
         public virtual InvoiceLineItemService LineItems => this.lineItems ??= new InvoiceLineItemService(
             this.Requestor);
@@ -101,40 +97,6 @@ namespace Stripe
         public virtual Task<Invoice> AttachPaymentAsync(string id, InvoiceAttachPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Attaches a PaymentIntent to the invoice, adding it to the list of <c>payments</c>.
-        /// When the PaymentIntent’s status changes to <c>succeeded</c>, the payment is credited to
-        /// the invoice, increasing its <c>amount_paid</c>. When the invoice is fully paid, the
-        /// invoice’s status becomes <c>paid</c>.</p>.
-        ///
-        /// <p>If the PaymentIntent’s status is already <c>succeeded</c> when it is attached, it is
-        /// credited to the invoice immediately.</p>.
-        ///
-        /// <p>Related guide: <a href="https://stripe.com/docs/invoicing/payments/create">Create an
-        /// invoice payment</a></p>.
-        /// </summary>
-        public virtual Invoice AttachPaymentIntent(string id, InvoiceAttachPaymentIntentOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment_intent", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Attaches a PaymentIntent to the invoice, adding it to the list of <c>payments</c>.
-        /// When the PaymentIntent’s status changes to <c>succeeded</c>, the payment is credited to
-        /// the invoice, increasing its <c>amount_paid</c>. When the invoice is fully paid, the
-        /// invoice’s status becomes <c>paid</c>.</p>.
-        ///
-        /// <p>If the PaymentIntent’s status is already <c>succeeded</c> when it is attached, it is
-        /// credited to the invoice immediately.</p>.
-        ///
-        /// <p>Related guide: <a href="https://stripe.com/docs/invoicing/payments/create">Create an
-        /// invoice payment</a></p>.
-        /// </summary>
-        public virtual Task<Invoice> AttachPaymentIntentAsync(string id, InvoiceAttachPaymentIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/attach_payment_intent", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

@@ -338,6 +338,15 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// The FX Quote used for the PaymentIntent.
+        /// </summary>
+        [JsonProperty("fx_quote")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fx_quote")]
+#endif
+        public string FxQuote { get; set; }
+
+        /// <summary>
         /// The payment error encountered in the previous PaymentIntent confirmation. It will be
         /// cleared if the PaymentIntent is later updated for any reason.
         /// </summary>

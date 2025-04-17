@@ -499,6 +499,17 @@ namespace Stripe
         public PaymentMethodConfigurationPaytoOptions Payto { get; set; }
 
         /// <summary>
+        /// Pix is a payment method popular in Brazil. When paying with Pix, customers authenticate
+        /// and approve payments by scanning a QR code in their preferred banking app. Check this <a
+        /// href="https://docs.stripe.com/payments/pix">page</a> for more details.
+        /// </summary>
+        [JsonProperty("pix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pix")]
+#endif
+        public PaymentMethodConfigurationPixOptions Pix { get; set; }
+
+        /// <summary>
         /// PromptPay is a Thailand-based payment method that allows customers to make a payment
         /// using their preferred app from participating banks. Check this <a
         /// href="https://stripe.com/docs/payments/promptpay">page</a> for more details.

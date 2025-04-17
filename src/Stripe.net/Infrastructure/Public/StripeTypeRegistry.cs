@@ -100,6 +100,7 @@ namespace Stripe
                 },
                 { "forwarding.request", typeof(Forwarding.Request) },
                 { "funding_instructions", typeof(FundingInstructions) },
+                { "fx_quote", typeof(FxQuote) },
                 { "gift_cards.card", typeof(GiftCards.Card) },
                 { "gift_cards.transaction", typeof(GiftCards.Transaction) },
                 { "identity.verification_report", typeof(Identity.VerificationReport) },
@@ -131,6 +132,10 @@ namespace Stripe
                 { "order", typeof(Order) },
                 { "payment_attempt_record", typeof(PaymentAttemptRecord) },
                 { "payment_intent", typeof(PaymentIntent) },
+                {
+                    "payment_intent_amount_details_line_item", typeof(
+                    PaymentIntentAmountDetailsLineItem)
+                },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
                 { "payment_method_configuration", typeof(PaymentMethodConfiguration) },

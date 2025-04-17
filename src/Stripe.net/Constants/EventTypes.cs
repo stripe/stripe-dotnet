@@ -563,6 +563,11 @@ namespace Stripe
         public const string FinancialConnectionsSessionUpdated = "financial_connections.session.updated";
 
         /// <summary>
+        /// Occurs when FX Quote's lock_status field transitions to 'Expired'.
+        /// </summary>
+        public const string FxQuoteExpired = "fx_quote.expired";
+
+        /// <summary>
         /// Occurs whenever a VerificationSession is canceled.
         /// </summary>
         public const string IdentityVerificationSessionCanceled = "identity.verification_session.canceled";

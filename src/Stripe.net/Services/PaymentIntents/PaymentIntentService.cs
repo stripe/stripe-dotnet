@@ -15,6 +15,8 @@ namespace Stripe
         ISearchable<PaymentIntent, PaymentIntentSearchOptions>,
         IUpdatable<PaymentIntent, PaymentIntentUpdateOptions>
     {
+        private PaymentIntentAmountDetailsLineItemService amountDetailsLineItems;
+
         public PaymentIntentService()
         {
         }
@@ -28,6 +30,9 @@ namespace Stripe
             : base(client)
         {
         }
+
+        public virtual PaymentIntentAmountDetailsLineItemService AmountDetailsLineItems => this.amountDetailsLineItems ??= new PaymentIntentAmountDetailsLineItemService(
+            this.Requestor);
 
         /// <summary>
         /// <p>Manually reconcile the remaining amount for a <c>customer_balance</c>

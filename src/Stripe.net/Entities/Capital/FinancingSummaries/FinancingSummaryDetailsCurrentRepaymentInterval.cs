@@ -20,7 +20,8 @@ namespace Stripe.Capital
         public decimal DueAt { get; set; }
 
         /// <summary>
-        /// The amount that has already been paid in the current repayment interval.
+        /// The amount that has already been paid in the current repayment interval, in minor units.
+        /// For example, $100 USD will be represented as 10000.
         /// </summary>
         [JsonProperty("paid_amount")]
 #if NET6_0_OR_GREATER
@@ -29,7 +30,8 @@ namespace Stripe.Capital
         public long? PaidAmount { get; set; }
 
         /// <summary>
-        /// The amount that is yet to be paid in the current repayment interval.
+        /// The amount that is yet to be paid in the current repayment interval, in minor units. For
+        /// example, $100 USD will be represented as 10000.
         /// </summary>
         [JsonProperty("remaining_amount")]
 #if NET6_0_OR_GREATER

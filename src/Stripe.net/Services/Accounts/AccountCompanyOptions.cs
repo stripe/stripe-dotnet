@@ -163,6 +163,12 @@ namespace Stripe
 #endif
         public string Phone { get; set; }
 
+        [JsonProperty("registration_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("registration_date")]
+#endif
+        public AccountCompanyRegistrationDateOptions RegistrationDate { get; set; }
+
         /// <summary>
         /// The identification number given to a company when it is registered or incorporated, if
         /// distinct from the identification number used for filing taxes. (Examples are the CIN for

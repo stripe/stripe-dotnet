@@ -138,5 +138,16 @@ namespace Stripe
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
         public DateTime? RedeemBy { get; set; }
+
+        /// <summary>
+        /// Configuration of the <a
+        /// href="https://docs.stripe.com/billing/subscriptions/script-coupons">script</a> used to
+        /// calculate the discount.
+        /// </summary>
+        [JsonProperty("script")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("script")]
+#endif
+        public CouponScriptOptions Script { get; set; }
     }
 }

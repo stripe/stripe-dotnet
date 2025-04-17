@@ -199,7 +199,7 @@ namespace Stripe
         /// <c>financial_connections.account.refreshed_inferred_balances</c>,
         /// <c>financial_connections.account.refreshed_ownership</c>,
         /// <c>financial_connections.account.refreshed_transactions</c>,
-        /// <c>financial_connections.session.updated</c>,
+        /// <c>financial_connections.session.updated</c>, <c>fx_quote.expired</c>,
         /// <c>identity.verification_session.canceled</c>,
         /// <c>identity.verification_session.created</c>,
         /// <c>identity.verification_session.processing</c>,
