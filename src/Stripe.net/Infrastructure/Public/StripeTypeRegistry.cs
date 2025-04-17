@@ -132,6 +132,10 @@ namespace Stripe
                 { "order", typeof(Order) },
                 { "payment_attempt_record", typeof(PaymentAttemptRecord) },
                 { "payment_intent", typeof(PaymentIntent) },
+                {
+                    "payment_intent_amount_details_line_item", typeof(
+                    PaymentIntentAmountDetailsLineItem)
+                },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
                 { "payment_method_configuration", typeof(PaymentMethodConfiguration) },
