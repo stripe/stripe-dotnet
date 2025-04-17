@@ -1,5 +1,8 @@
 # Changelog
 
+## 48.0.3 - 2025-04-17
+* [#3104](https://github.com/stripe/stripe-dotnet/pull/3104) Fixed encoding of boolean query params
+
 ## 48.0.2 - 2025-04-15
 * [#3101](https://github.com/stripe/stripe-dotnet/pull/3101) Replace Dictionary with ConcurrentDictionary in SerializablePropertyCache to fix a concurrency related error reported in [#3100](https://github.com/stripe/stripe-dotnet/issues/3100)
 
