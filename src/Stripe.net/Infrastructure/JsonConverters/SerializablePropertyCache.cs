@@ -2,6 +2,7 @@
 namespace Stripe.Infrastructure
 {
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Reflection;
     using System.Text.Json;
@@ -13,17 +14,17 @@ namespace Stripe.Infrastructure
     /// </summary>
     internal class SerializablePropertyCache
     {
-        private static Dictionary<Type, JsonConverter> converterCache = new Dictionary<Type, JsonConverter>();
-        private static Dictionary<Type, List<SerializablePropertyInfo>> propertyCache = new Dictionary<Type, List<SerializablePropertyInfo>>();
+        private static ConcurrentDictionary<Type, JsonConverter> converterCache = new ConcurrentDictionary<Type, JsonConverter>();
+        private static ConcurrentDictionary<Type, List<SerializablePropertyInfo>> propertyCache = new ConcurrentDictionary<Type, List<SerializablePropertyInfo>>();
 
         internal static List<SerializablePropertyInfo> GetPropertiesForType(Type type)
         {
-            if (!propertyCache.TryGetValue(type, out var propsToSerialize))
+            return propertyCache.GetOrAdd(type, (key) =>
             {
                 // Gets the all properties including nonpublic properties
                 var rawProps = type.GetProperties(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);
 
-                propsToSerialize = new List<SerializablePropertyInfo>();
+                var propsToSerialize = new List<SerializablePropertyInfo>();
                 foreach (var prop in rawProps)
                 {
                     var propertyNameAttribute = prop.GetCustomAttribute(typeof(JsonPropertyNameAttribute), false) as JsonPropertyNameAttribute;
@@ -55,10 +56,8 @@ namespace Stripe.Infrastructure
                     });
                 }
 
-                propertyCache[type] = propsToSerialize;
-            }
-
-            return propsToSerialize;
+                return propsToSerialize;
+            });
         }
 
         // Create the various methods stored in SerializablePropertyInfo
@@ -169,11 +168,10 @@ namespace Stripe.Infrastructure
             private static JsonConverter<object> GetConverterForType<T, TV>(Type ct)
             where T : JsonConverter<TV>
             {
-                if (!converterCache.TryGetValue(ct, out var conv))
+                var conv = converterCache.GetOrAdd(ct, (key) =>
                 {
-                    conv = (JsonConverter)Activator.CreateInstance(ct);
-                    converterCache[ct] = conv;
-                }
+                    return (JsonConverter)Activator.CreateInstance(ct);
+                });
 
                 return new JsonConverterAdapter<T, TV>((T)conv);
             }
