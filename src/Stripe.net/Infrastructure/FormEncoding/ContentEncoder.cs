@@ -163,6 +163,12 @@ namespace Stripe.Infrastructure.FormEncoding
                     flatParams = SingleParam(keyPrefix, JsonUtils.SerializeObject(e).Trim('"'));
                     break;
 
+                case bool b:
+                    flatParams = SingleParam(
+                        keyPrefix,
+                        b ? "true" : "false");
+                    break;
+
                 default:
                     flatParams = SingleParam(
                         keyPrefix,
