@@ -45,7 +45,8 @@ namespace Stripe.Treasury
         public string Phone { get; set; }
 
         /// <summary>
-        /// Taxpayer identification number.
+        /// Taxpayer identification number. Used only for transactions between LATAM buyers and
+        /// non-LATAM sellers.
         /// </summary>
         [JsonProperty("tax_id")]
 #if NET6_0_OR_GREATER
