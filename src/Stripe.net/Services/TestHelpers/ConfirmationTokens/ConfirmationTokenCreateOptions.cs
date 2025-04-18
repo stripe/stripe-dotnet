@@ -26,6 +26,9 @@ namespace Stripe.TestHelpers
 #endif
         public ConfirmationTokenPaymentMethodDataOptions PaymentMethodData { get; set; }
 
+        /// <summary>
+        /// Payment-method-specific configuration for this ConfirmationToken.
+        /// </summary>
         [JsonProperty("payment_method_options")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
