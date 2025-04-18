@@ -80,6 +80,12 @@ namespace Stripe.Tax
 #endif
         public RegistrationCountryOptionsBe Be { get; set; }
 
+        [JsonProperty("bf")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bf")]
+#endif
+        public RegistrationCountryOptionsBf Bf { get; set; }
+
         [JsonProperty("bg")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bg")]
@@ -134,6 +140,12 @@ namespace Stripe.Tax
 #endif
         public RegistrationCountryOptionsCl Cl { get; set; }
 
+        [JsonProperty("cm")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cm")]
+#endif
+        public RegistrationCountryOptionsCm Cm { get; set; }
+
         [JsonProperty("co")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("co")]
@@ -145,6 +157,12 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("cr")]
 #endif
         public RegistrationCountryOptionsCr Cr { get; set; }
+
+        [JsonProperty("cv")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cv")]
+#endif
+        public RegistrationCountryOptionsCv Cv { get; set; }
 
         [JsonProperty("cy")]
 #if NET6_0_OR_GREATER

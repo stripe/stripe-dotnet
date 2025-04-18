@@ -39,8 +39,8 @@ namespace Stripe
         /// <c>2022-08-01</c>, <c>2022-11-15</c>, <c>2023-08-16</c>, <c>2023-10-16</c>,
         /// <c>2024-04-10</c>, <c>2024-06-20</c>, <c>2024-09-30.acacia</c>,
         /// <c>2024-10-28.acacia</c>, <c>2024-11-20.acacia</c>, <c>2024-12-18.acacia</c>,
-        /// <c>2025-01-27.acacia</c>, <c>2025-02-24.acacia</c>, <c>2025-03-01.dashboard</c>, or
-        /// <c>2025-03-31.basil</c>.
+        /// <c>2025-01-27.acacia</c>, <c>2025-02-24.acacia</c>, <c>2025-03-01.dashboard</c>,
+        /// <c>2025-03-31.basil</c>, or <c>2025-04-30.basil</c>.
         /// </summary>
         [JsonProperty("api_version")]
 #if NET6_0_OR_GREATER

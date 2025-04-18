@@ -9,6 +9,15 @@ namespace Stripe
     public class PaymentMethodAcssDebit : StripeEntity<PaymentMethodAcssDebit>
     {
         /// <summary>
+        /// Account number of the bank account.
+        /// </summary>
+        [JsonProperty("account_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_number")]
+#endif
+        public string AccountNumber { get; set; }
+
+        /// <summary>
         /// Name of the bank associated with the bank account.
         /// </summary>
         [JsonProperty("bank_name")]

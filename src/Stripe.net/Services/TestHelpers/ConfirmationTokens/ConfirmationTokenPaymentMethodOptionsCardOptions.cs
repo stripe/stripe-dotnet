@@ -9,7 +9,7 @@ namespace Stripe.TestHelpers
     public class ConfirmationTokenPaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
-        /// Installment configuration for payments attempted on this PaymentIntent.
+        /// Installment configuration for payments confirmed using this ConfirmationToken.
         /// </summary>
         [JsonProperty("installments")]
 #if NET6_0_OR_GREATER
