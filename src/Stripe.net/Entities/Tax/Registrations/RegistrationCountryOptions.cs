@@ -44,6 +44,18 @@ namespace Stripe.Tax
 #endif
         public RegistrationCountryOptionsAu Au { get; set; }
 
+        [JsonProperty("aw")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("aw")]
+#endif
+        public RegistrationCountryOptionsAw Aw { get; set; }
+
+        [JsonProperty("az")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("az")]
+#endif
+        public RegistrationCountryOptionsAz Az { get; set; }
+
         [JsonProperty("ba")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ba")]
@@ -56,11 +68,23 @@ namespace Stripe.Tax
 #endif
         public RegistrationCountryOptionsBb Bb { get; set; }
 
+        [JsonProperty("bd")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bd")]
+#endif
+        public RegistrationCountryOptionsBd Bd { get; set; }
+
         [JsonProperty("be")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("be")]
 #endif
         public RegistrationCountryOptionsBe Be { get; set; }
+
+        [JsonProperty("bf")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bf")]
+#endif
+        public RegistrationCountryOptionsBf Bf { get; set; }
 
         [JsonProperty("bg")]
 #if NET6_0_OR_GREATER
@@ -73,6 +97,12 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("bh")]
 #endif
         public RegistrationCountryOptionsBh Bh { get; set; }
+
+        [JsonProperty("bj")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bj")]
+#endif
+        public RegistrationCountryOptionsBj Bj { get; set; }
 
         [JsonProperty("bs")]
 #if NET6_0_OR_GREATER
@@ -110,6 +140,12 @@ namespace Stripe.Tax
 #endif
         public RegistrationCountryOptionsCl Cl { get; set; }
 
+        [JsonProperty("cm")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cm")]
+#endif
+        public RegistrationCountryOptionsCm Cm { get; set; }
+
         [JsonProperty("co")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("co")]
@@ -121,6 +157,12 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("cr")]
 #endif
         public RegistrationCountryOptionsCr Cr { get; set; }
+
+        [JsonProperty("cv")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cv")]
+#endif
+        public RegistrationCountryOptionsCv Cv { get; set; }
 
         [JsonProperty("cy")]
 #if NET6_0_OR_GREATER
@@ -169,6 +211,12 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("es")]
 #endif
         public RegistrationCountryOptionsEs Es { get; set; }
+
+        [JsonProperty("et")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("et")]
+#endif
+        public RegistrationCountryOptionsEt Et { get; set; }
 
         [JsonProperty("fi")]
 #if NET6_0_OR_GREATER
@@ -230,6 +278,12 @@ namespace Stripe.Tax
 #endif
         public RegistrationCountryOptionsIe Ie { get; set; }
 
+        [JsonProperty("in")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("in")]
+#endif
+        public RegistrationCountryOptionsIn In { get; set; }
+
         [JsonProperty("is")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is")]
@@ -254,6 +308,12 @@ namespace Stripe.Tax
 #endif
         public RegistrationCountryOptionsKe Ke { get; set; }
 
+        [JsonProperty("kg")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kg")]
+#endif
+        public RegistrationCountryOptionsKg Kg { get; set; }
+
         [JsonProperty("kh")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kh")]
@@ -271,6 +331,12 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("kz")]
 #endif
         public RegistrationCountryOptionsKz Kz { get; set; }
+
+        [JsonProperty("la")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("la")]
+#endif
+        public RegistrationCountryOptionsLa La { get; set; }
 
         [JsonProperty("lt")]
 #if NET6_0_OR_GREATER
@@ -379,6 +445,12 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("pe")]
 #endif
         public RegistrationCountryOptionsPe Pe { get; set; }
+
+        [JsonProperty("ph")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ph")]
+#endif
+        public RegistrationCountryOptionsPh Ph { get; set; }
 
         [JsonProperty("pl")]
 #if NET6_0_OR_GREATER

@@ -171,6 +171,12 @@ namespace Stripe
 #endif
         public string Phone { get; set; }
 
+        [JsonProperty("registration_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("registration_date")]
+#endif
+        public AccountCompanyRegistrationDate RegistrationDate { get; set; }
+
         /// <summary>
         /// The category identifying the legal structure of the company or legal entity. Also
         /// available for accounts where <a

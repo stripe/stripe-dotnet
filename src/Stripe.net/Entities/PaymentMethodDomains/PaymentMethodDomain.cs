@@ -97,6 +97,15 @@ namespace Stripe
         /// <summary>
         /// Indicates the status of a specific payment method on a payment method domain.
         /// </summary>
+        [JsonProperty("klarna")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("klarna")]
+#endif
+        public PaymentMethodDomainKlarna Klarna { get; set; }
+
+        /// <summary>
+        /// Indicates the status of a specific payment method on a payment method domain.
+        /// </summary>
         [JsonProperty("link")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("link")]

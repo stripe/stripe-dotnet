@@ -62,6 +62,12 @@ namespace Stripe
 #endif
         public PaymentIntentPaymentMethodOptionsBancontact Bancontact { get; set; }
 
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public PaymentIntentPaymentMethodOptionsBillie Billie { get; set; }
+
         [JsonProperty("blik")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("blik")]
