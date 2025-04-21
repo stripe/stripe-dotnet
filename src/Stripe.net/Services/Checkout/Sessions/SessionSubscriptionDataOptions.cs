@@ -37,6 +37,18 @@ namespace Stripe.Checkout
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// The billing mode to create the subscription with. Once a subscription has been created
+        /// with a billing_mode, all future operations on the subscription will be processed based
+        /// on the billing_mode.
+        /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public string BillingMode { get; set; }
+
+        /// <summary>
         /// The tax rates that will apply to any subscription item that does not have
         /// <c>tax_rates</c> set. Invoices created will have their <c>default_tax_rates</c>
         /// populated from the subscription.

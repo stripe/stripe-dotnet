@@ -96,6 +96,19 @@ namespace Stripe
         public string BillingBehavior { get; set; }
 
         /// <summary>
+        /// The <a
+        /// href="https://stripe.com/api/subscriptions/create#create_subscription-billing_mode">billing
+        /// mode</a> that will be used to process all future operations for the subscription
+        /// schedule.
+        /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public string BillingMode { get; set; }
+
+        /// <summary>
         /// Time at which the subscription schedule was canceled. Measured in seconds since the Unix
         /// epoch.
         /// </summary>

@@ -27,6 +27,18 @@ namespace Stripe
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsBillingCycleAnchor> BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// The billing mode to create the subscription with. Once a subscription has been created
+        /// with a billing_mode, all future operations on the subscription will be processed based
+        /// on the billing_mode.
+        /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public string BillingMode { get; set; }
+
+        /// <summary>
         /// A timestamp at which the subscription should cancel. If set to a date before the current
         /// period ends, this will cause a proration if prorations have been enabled using
         /// <c>proration_behavior</c>. If set during a future period, this will always cause a
