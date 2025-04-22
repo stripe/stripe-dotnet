@@ -58,7 +58,7 @@ namespace Stripe
         public string Category { get; set; }
 
         /// <summary>
-        /// Loding check-in time. Measured in seconds since the Unix epoch.
+        /// Lodging check-in time. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("checkin_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
