@@ -29,6 +29,16 @@ namespace Stripe.V2
         public List<Amount> Amounts { get; set; }
 
         /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// Closed Enum. The status of the request.
         /// </summary>
         [JsonProperty("status")]

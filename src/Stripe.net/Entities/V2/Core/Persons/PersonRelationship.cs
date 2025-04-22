@@ -9,6 +9,15 @@ namespace Stripe.V2.Core
     public class PersonRelationship : StripeEntity<PersonRelationship>
     {
         /// <summary>
+        /// Whether the individual is an authorizer of the Account’s legal entity.
+        /// </summary>
+        [JsonProperty("authorizer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("authorizer")]
+#endif
+        public bool? Authorizer { get; set; }
+
+        /// <summary>
         /// Whether the individual is a director of the Account’s legal entity. Directors are
         /// typically members of the governing board of the company, or responsible for ensuring the
         /// company meets its regulatory obligations.

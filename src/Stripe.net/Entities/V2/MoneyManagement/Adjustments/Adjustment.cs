@@ -79,8 +79,20 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// A hosted transaction receipt URL that is provided when money movement is considered
-        /// regulated under Stripe’s money transmission licenses.
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+        public bool Livemode { get; set; }
+
+        /// <summary>
+        /// A link to the Stripe-hosted receipt that is provided when money movement is considered
+        /// regulated under Stripe’s money transmission licenses. The receipt link remains active
+        /// for 60 days from the Adjustment creation date. After this period, the link will expire
+        /// and the receipt url value will be null.
         /// </summary>
         [JsonProperty("receipt_url")]
 #if NET6_0_OR_GREATER

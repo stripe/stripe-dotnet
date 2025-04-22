@@ -30,7 +30,7 @@ namespace Stripe.V2.Core
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// The data source used by Stripe Tax to identify the customer's location - defaults to
+        /// The data source used to identify the customer's tax location - defaults to
         /// 'identity_address'. Will only be used for automatic tax calculation on the customer's
         /// Invoices and Subscriptions.
         /// One of: <c>identity_address</c>, <c>ip_address</c>, or <c>shipping_address</c>.

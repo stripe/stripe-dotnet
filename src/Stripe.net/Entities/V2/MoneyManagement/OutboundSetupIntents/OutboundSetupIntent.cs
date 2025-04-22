@@ -41,6 +41,16 @@ namespace Stripe.V2.MoneyManagement
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// Specifies which actions needs to be taken next to continue setup of the credential.
         /// </summary>
         [JsonProperty("next_action")]

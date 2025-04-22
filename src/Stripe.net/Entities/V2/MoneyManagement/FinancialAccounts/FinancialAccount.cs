@@ -101,6 +101,16 @@ namespace Stripe.V2.MoneyManagement
         public string Description { get; set; }
 
         /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// If this is a <c>other</c> FinancialAccount, this hash indicates what the actual type is.
         /// Upgrade your API version to see it reflected in <c>type</c>.
         /// </summary>
@@ -111,8 +121,9 @@ namespace Stripe.V2.MoneyManagement
         public FinancialAccountOther Other { get; set; }
 
         /// <summary>
-        /// An enum value that specifies which state the FinancialAccount is in.
-        /// One of: <c>closed</c>, or <c>open</c>.
+        /// Closed Enum. An enum representing the status of the FinancialAccount. This indicates
+        /// whether or not the FinancialAccount can be used for any money movement flows.
+        /// One of: <c>closed</c>, <c>open</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER
