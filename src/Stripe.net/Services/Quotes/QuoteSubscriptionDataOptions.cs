@@ -45,9 +45,9 @@ namespace Stripe
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
-        /// The billing mode to create the quote with. Once a quote that creates a subscription or
-        /// subscription schedule is accepted,all future operations on the subscription or
-        /// subscription schedule will be processed based on this billing_mode.
+        /// Configure billing_mode to opt in improved credit proration behavior.Once a quote that
+        /// creates a subscription or subscription schedule is accepted,all future operations on the
+        /// subscription or subscription schedule will be processed based on this billing_mode.
         /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
         /// </summary>
         [JsonProperty("billing_mode")]
