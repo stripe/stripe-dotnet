@@ -36,7 +36,8 @@ namespace Stripe
         /// <c>account.updated</c>, <c>account_notice.created</c>, <c>account_notice.updated</c>,
         /// <c>application_fee.created</c>, <c>application_fee.refund.updated</c>,
         /// <c>application_fee.refunded</c>, <c>balance.available</c>,
-        /// <c>billing.alert.triggered</c>, <c>billing.meter_error_report.triggered</c>,
+        /// <c>balance_settings.updated</c>, <c>billing.alert.triggered</c>,
+        /// <c>billing.meter_error_report.triggered</c>,
         /// <c>billing_portal.configuration.created</c>,
         /// <c>billing_portal.configuration.updated</c>, <c>billing_portal.session.created</c>,
         /// <c>capability.updated</c>, <c>capital.financing_offer.accepted</c>,
@@ -176,7 +177,7 @@ namespace Stripe
         /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.created</c>,
         /// <c>billing.credit_grant.updated</c>, <c>billing.meter.created</c>,
         /// <c>billing.meter.deactivated</c>, <c>billing.meter.reactivated</c>,
-        /// <c>billing.meter.updated</c>, <c>balance_settings.updated</c>, or <c>ping</c>.
+        /// <c>billing.meter.updated</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("enabled_events")]
 #if NET6_0_OR_GREATER
