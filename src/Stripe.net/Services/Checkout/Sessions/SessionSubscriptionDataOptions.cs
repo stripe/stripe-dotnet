@@ -37,9 +37,8 @@ namespace Stripe.Checkout
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
-        /// The billing mode to create the subscription with. Once a subscription has been created
-        /// with a billing_mode, all future operations on the subscription will be processed based
-        /// on the billing_mode.
+        /// Configure billing_mode in each subscription to opt in improved credit proration
+        /// behavior.
         /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
         /// </summary>
         [JsonProperty("billing_mode")]

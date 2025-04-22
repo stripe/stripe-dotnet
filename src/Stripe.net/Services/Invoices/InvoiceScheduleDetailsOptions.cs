@@ -33,9 +33,9 @@ namespace Stripe
         public string BillingBehavior { get; set; }
 
         /// <summary>
-        /// The billing mode that will be used to create the subscription schedule. When the
-        /// schedule creates a subscription, the subscription's <c>billing_mode</c> will be set to
-        /// the same value as the schedule's <c>billing_mode</c>.
+        /// Configure billing_mode to opt in improved credit proration behavior.When the schedule
+        /// creates a subscription, the subscription's <c>billing_mode</c> will be set to the same
+        /// value as the schedule's <c>billing_mode</c>.
         /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
         /// </summary>
         [JsonProperty("billing_mode")]
