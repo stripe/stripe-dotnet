@@ -44,7 +44,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Archive a GbBankAccount object. Archived GbBankAccount objects cannot be used as
+        /// Archive a GBBankAccount object. Archived GBBankAccount objects cannot be used as
         /// outbound destinations and will not appear in the outbound destination list.
         /// </summary>
         public virtual GbBankAccount Archive(string id, GbBankAccountArchiveOptions options = null, RequestOptions requestOptions = null)
@@ -53,7 +53,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Archive a GbBankAccount object. Archived GbBankAccount objects cannot be used as
+        /// Archive a GBBankAccount object. Archived GBBankAccount objects cannot be used as
         /// outbound destinations and will not appear in the outbound destination list.
         /// </summary>
         public virtual Task<GbBankAccount> ArchiveAsync(string id, GbBankAccountArchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

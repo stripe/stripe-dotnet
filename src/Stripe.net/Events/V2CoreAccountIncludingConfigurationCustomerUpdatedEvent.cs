@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// A customer config was updated.
+    /// Occurs when an Account's customer configuration is updated.
     /// </summary>
     public class V2CoreAccountIncludingConfigurationCustomerUpdatedEvent : V2.Event
     {

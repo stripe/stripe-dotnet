@@ -10,34 +10,13 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Open Enum. The type of Credentials that are provisioned for the FinancialAddress.
-        /// One of: <c>crypto_wallet</c>, <c>eu_bank_account</c>, <c>gb_bank_account</c>, or
-        /// <c>us_bank_account</c>.
+        /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
-
-        /// <summary>
-        /// The credentials of the crypto wallet for the Financial Address. This contains unique
-        /// details such as the blockchain network, wallet address, and memo of a crypto wallet.
-        /// </summary>
-        [JsonProperty("crypto_wallet")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("crypto_wallet")]
-#endif
-        public FinancialAddressCredentialsCryptoWallet CryptoWallet { get; set; }
-
-        /// <summary>
-        /// The credentials of the EU Bank Account for the FinancialAddress. This contains unique
-        /// banking details such as the IBAN, BIC, etc. of a EU bank account.
-        /// </summary>
-        [JsonProperty("eu_bank_account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("eu_bank_account")]
-#endif
-        public FinancialAddressCredentialsEuBankAccount EuBankAccount { get; set; }
 
         /// <summary>
         /// The credentials of the UK Bank Account for the FinancialAddress. This contains unique

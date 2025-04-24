@@ -8,8 +8,8 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// A credit was attempted to your balance and was not successful. See the status_details
-    /// for more information.
+    /// Occurs when a ReceivedCredit is attempted to your balance and fails. See the
+    /// status_details for more information.
     /// </summary>
     public class V2MoneyManagementReceivedCreditFailedEvent : V2.Event
     {

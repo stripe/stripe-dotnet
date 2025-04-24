@@ -8,8 +8,8 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// The previously received credit has been reversed, returned to the originator and
-    /// deducted from your balance.
+    /// Occurs when a ReceivedCredit is reversed, returned to the originator, and deducted from
+    /// your balance.
     /// </summary>
     public class V2MoneyManagementReceivedCreditReturnedEvent : V2.Event
     {

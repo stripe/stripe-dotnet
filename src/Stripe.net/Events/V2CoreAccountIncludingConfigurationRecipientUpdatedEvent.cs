@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// A recipient config was updated.
+    /// Occurs when a Recipient's configuration is updated.
     /// </summary>
     public class V2CoreAccountIncludingConfigurationRecipientUpdatedEvent : V2.Event
     {

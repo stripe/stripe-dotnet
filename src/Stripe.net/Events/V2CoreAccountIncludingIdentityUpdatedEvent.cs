@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event occurs when identity is updated.
+    /// Occurs when an Identity is updated.
     /// </summary>
     public class V2CoreAccountIncludingIdentityUpdatedEvent : V2.Event
     {

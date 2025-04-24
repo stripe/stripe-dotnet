@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// A merchant config was updated.
+    /// Occurs when an Account's merchant configuration is updated.
     /// </summary>
     public class V2CoreAccountIncludingConfigurationMerchantUpdatedEvent : V2.Event
     {

@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// An OutboundTransfer has transitioned into the returned state.
+    /// Occurs when an OutboundTransfer transitions into the returned state.
     /// </summary>
     public class V2MoneyManagementOutboundTransferReturnedEvent : V2.Event
     {

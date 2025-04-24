@@ -6516,11 +6516,20 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "object_id=object_id");
+            var options = new Stripe.V2.Core.EventListOptions
+            {
+                ObjectId = "object_id",
+            };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
-            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List();
-            this.AssertRequest(HttpMethod.Get, "/v2/core/events");
+            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List(
+                options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/events",
+                "object_id=object_id");
         }
 
         [Fact]
@@ -6776,7 +6785,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/financial_addresses",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_address\",\"created\":\"1970-01-12T21:42:34.472Z\",\"credentials\":null,\"currency\":\"stn\",\"financial_account\":\"financial_account\",\"livemode\":true,\"settlement_currency\":null,\"status\":\"failed\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_address\",\"created\":\"1970-01-12T21:42:34.472Z\",\"credentials\":null,\"currency\":\"stn\",\"financial_account\":\"financial_account\",\"livemode\":true,\"status\":\"failed\"}");
             var options = new Stripe.V2.MoneyManagement.FinancialAddressCreateOptions
             {
                 Currency = "stn",
@@ -6798,7 +6807,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/financial_addresses",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_address\",\"created\":\"1970-01-12T21:42:34.472Z\",\"credentials\":null,\"currency\":\"stn\",\"financial_account\":\"financial_account\",\"livemode\":true,\"settlement_currency\":null,\"status\":\"failed\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_address\",\"created\":\"1970-01-12T21:42:34.472Z\",\"credentials\":null,\"currency\":\"stn\",\"financial_account\":\"financial_account\",\"livemode\":true,\"status\":\"failed\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAddresses;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.FinancialAddress> financialAddresses = service
@@ -6815,7 +6824,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/financial_addresses/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_address\",\"created\":\"1970-01-12T21:42:34.472Z\",\"credentials\":null,\"currency\":\"stn\",\"financial_account\":\"financial_account\",\"livemode\":true,\"settlement_currency\":null,\"status\":\"failed\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_address\",\"created\":\"1970-01-12T21:42:34.472Z\",\"credentials\":null,\"currency\":\"stn\",\"financial_account\":\"financial_account\",\"livemode\":true,\"status\":\"failed\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAddresses;
             Stripe.V2.MoneyManagement.FinancialAddress financialAddress = service
@@ -7286,7 +7295,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_credits",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_transfer\":null,\"bank_transfer\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"crypto_wallet_transfer\":null,\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"returned\",\"status_details\":null,\"status_transitions\":null,\"type\":\"crypto_wallet_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_transfer\":null,\"bank_transfer\":null,\"card_spend\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"returned\",\"status_details\":null,\"status_transitions\":null,\"type\":\"card_spend\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedCredits;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.ReceivedCredit> receivedCredits = service
@@ -7303,7 +7312,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_credits/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_transfer\":null,\"bank_transfer\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"crypto_wallet_transfer\":null,\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"returned\",\"status_details\":null,\"status_transitions\":null,\"type\":\"crypto_wallet_transfer\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_transfer\":null,\"bank_transfer\":null,\"card_spend\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"returned\",\"status_details\":null,\"status_transitions\":null,\"type\":\"card_spend\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedCredits;
             Stripe.V2.MoneyManagement.ReceivedCredit receivedCredit = service
@@ -7320,7 +7329,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_debits",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"bank_transfer\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"canceled\",\"status_details\":null,\"status_transitions\":null,\"type\":\"bank_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"bank_transfer\":null,\"card_spend\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"canceled\",\"status_details\":null,\"status_transitions\":null,\"type\":\"bank_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedDebits;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.ReceivedDebit> receivedDebits = service
@@ -7337,7 +7346,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_debits/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"bank_transfer\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"canceled\",\"status_details\":null,\"status_transitions\":null,\"type\":\"bank_transfer\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"bank_transfer\":null,\"card_spend\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"canceled\",\"status_details\":null,\"status_transitions\":null,\"type\":\"bank_transfer\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedDebits;
             Stripe.V2.MoneyManagement.ReceivedDebit receivedDebit = service.Get(

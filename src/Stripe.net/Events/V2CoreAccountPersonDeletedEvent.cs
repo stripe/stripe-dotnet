@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event occurs when a person is deleted.
+    /// Occurs when a Person is deleted.
     /// </summary>
     public class V2CoreAccountPersonDeletedEvent : V2.Event
     {

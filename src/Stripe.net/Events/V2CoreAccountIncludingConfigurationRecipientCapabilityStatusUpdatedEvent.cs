@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// The status of a recipient config capability was updated.
+    /// Occurs when the status of an Account's recipient configuration capability is updated.
     /// </summary>
     public class V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent : V2.Event
     {

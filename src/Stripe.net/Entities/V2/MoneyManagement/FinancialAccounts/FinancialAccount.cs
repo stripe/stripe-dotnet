@@ -123,7 +123,7 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Closed Enum. An enum representing the status of the FinancialAccount. This indicates
         /// whether or not the FinancialAccount can be used for any money movement flows.
-        /// One of: <c>closed</c>, <c>open</c>, or <c>pending</c>.
+        /// One of: <c>closed</c>, or <c>open</c>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER

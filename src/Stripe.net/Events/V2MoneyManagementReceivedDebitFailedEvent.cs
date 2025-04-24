@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event is sent when a received debit fails.
+    /// Occurs when a ReceivedDebit fails.
     /// </summary>
     public class V2MoneyManagementReceivedDebitFailedEvent : V2.Event
     {
