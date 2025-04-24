@@ -9,6 +9,15 @@ namespace Stripe.V2.Core.Accounts
     public class PersonCreateRelationshipOptions : INestedOptions
     {
         /// <summary>
+        /// Whether the individual is an authorizer of the Account’s legal entity.
+        /// </summary>
+        [JsonProperty("authorizer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("authorizer")]
+#endif
+        public bool? Authorizer { get; set; }
+
+        /// <summary>
         /// Indicates whether the person is a director of the associated legal entity.
         /// </summary>
         [JsonProperty("director")]

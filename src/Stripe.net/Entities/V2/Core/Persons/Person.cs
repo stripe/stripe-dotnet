@@ -143,6 +143,16 @@ namespace Stripe.V2.Core
         public string LegalGender { get; set; }
 
         /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// Set of key-value pairs that you can attach to an object. This can be useful for storing
         /// additional information about the object in a structured format.
         /// </summary>

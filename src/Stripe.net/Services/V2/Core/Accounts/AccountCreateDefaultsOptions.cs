@@ -35,10 +35,10 @@ namespace Stripe.V2.Core
         /// <c>sek</c>, <c>sgd</c>, <c>shp</c>, <c>sle</c>, <c>sll</c>, <c>sos</c>, <c>srd</c>,
         /// <c>ssp</c>, <c>std</c>, <c>stn</c>, <c>svc</c>, <c>syp</c>, <c>szl</c>, <c>thb</c>,
         /// <c>tjs</c>, <c>tmt</c>, <c>tnd</c>, <c>top</c>, <c>try</c>, <c>ttd</c>, <c>twd</c>,
-        /// <c>tzs</c>, <c>uah</c>, <c>ugx</c>, <c>usd</c>, <c>usdc</c>, <c>usn</c>, <c>uyi</c>,
-        /// <c>uyu</c>, <c>uzs</c>, <c>vef</c>, <c>ves</c>, <c>vnd</c>, <c>vuv</c>, <c>wst</c>,
-        /// <c>xaf</c>, <c>xcd</c>, <c>xcg</c>, <c>xof</c>, <c>xpf</c>, <c>yer</c>, <c>zar</c>,
-        /// <c>zmk</c>, <c>zmw</c>, <c>zwd</c>, <c>zwg</c>, or <c>zwl</c>.
+        /// <c>tzs</c>, <c>uah</c>, <c>ugx</c>, <c>usd</c>, <c>usdb</c>, <c>usdc</c>, <c>usn</c>,
+        /// <c>uyi</c>, <c>uyu</c>, <c>uzs</c>, <c>vef</c>, <c>ves</c>, <c>vnd</c>, <c>vuv</c>,
+        /// <c>wst</c>, <c>xaf</c>, <c>xcd</c>, <c>xcg</c>, <c>xof</c>, <c>xpf</c>, <c>yer</c>,
+        /// <c>zar</c>, <c>zmk</c>, <c>zmw</c>, <c>zwd</c>, <c>zwg</c>, or <c>zwl</c>.
         /// </summary>
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER

@@ -122,6 +122,17 @@ namespace Stripe
         public SubscriptionBillingCycleAnchorConfig BillingCycleAnchorConfig { get; set; }
 
         /// <summary>
+        /// Configure billing_mode in each subscription to opt in improved credit proration
+        /// behavior.
+        /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public string BillingMode { get; set; }
+
+        /// <summary>
         /// A date in the future at which the subscription will automatically get canceled.
         /// </summary>
         [JsonProperty("cancel_at")]

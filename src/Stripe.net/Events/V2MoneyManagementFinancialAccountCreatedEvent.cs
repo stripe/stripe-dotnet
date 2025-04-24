@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Occurs when a financial account is created.
+    /// Occurs when a FinancialAccount is created.
     /// </summary>
     public class V2MoneyManagementFinancialAccountCreatedEvent : V2.Event
     {

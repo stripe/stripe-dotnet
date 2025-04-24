@@ -308,6 +308,13 @@ namespace Stripe
                     "v2.core.account_link.completed", typeof(
                     Events.V2CoreAccountLinkCompletedEvent)
                 },
+                { "v2.core.account.closed", typeof(Events.V2CoreAccountClosedEvent) },
+                { "v2.core.account.created", typeof(Events.V2CoreAccountCreatedEvent) },
+                { "v2.core.account.updated", typeof(Events.V2CoreAccountUpdatedEvent) },
+                {
+                    "v2.core.account[defaults].updated", typeof(
+                    Events.V2CoreAccountIncludingDefaultsUpdatedEvent)
+                },
                 {
                     "v2.core.account[configuration.customer].capability_status_updated", typeof(
                     Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent)
@@ -349,6 +356,10 @@ namespace Stripe
                     Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEvent)
                 },
                 {
+                    "v2.money_management.adjustment.created", typeof(
+                    Events.V2MoneyManagementAdjustmentCreatedEvent)
+                },
+                {
                     "v1.billing.meter.error_report_triggered", typeof(
                     Events.V1BillingMeterErrorReportTriggeredEvent)
                 },
@@ -359,6 +370,10 @@ namespace Stripe
                 {
                     "v2.money_management.financial_account.created", typeof(
                     Events.V2MoneyManagementFinancialAccountCreatedEvent)
+                },
+                {
+                    "v2.money_management.financial_account.updated", typeof(
+                    Events.V2MoneyManagementFinancialAccountUpdatedEvent)
                 },
                 {
                     "v2.money_management.financial_address.activated", typeof(
@@ -393,6 +408,10 @@ namespace Stripe
                     Events.V2MoneyManagementInboundTransferBankDebitSucceededEvent)
                 },
                 {
+                    "v2.core.event_destination.ping", typeof(
+                    Events.V2CoreEventDestinationPingEvent)
+                },
+                {
                     "v2.money_management.outbound_payment.canceled", typeof(
                     Events.V2MoneyManagementOutboundPaymentCanceledEvent)
                 },
@@ -413,6 +432,10 @@ namespace Stripe
                     Events.V2MoneyManagementOutboundPaymentReturnedEvent)
                 },
                 {
+                    "v2.money_management.outbound_payment.updated", typeof(
+                    Events.V2MoneyManagementOutboundPaymentUpdatedEvent)
+                },
+                {
                     "v2.money_management.outbound_transfer.canceled", typeof(
                     Events.V2MoneyManagementOutboundTransferCanceledEvent)
                 },
@@ -431,6 +454,10 @@ namespace Stripe
                 {
                     "v2.money_management.outbound_transfer.returned", typeof(
                     Events.V2MoneyManagementOutboundTransferReturnedEvent)
+                },
+                {
+                    "v2.money_management.outbound_transfer.updated", typeof(
+                    Events.V2MoneyManagementOutboundTransferUpdatedEvent)
                 },
                 {
                     "v2.money_management.received_credit.available", typeof(
@@ -467,6 +494,14 @@ namespace Stripe
                 {
                     "v2.money_management.received_debit.updated", typeof(
                     Events.V2MoneyManagementReceivedDebitUpdatedEvent)
+                },
+                {
+                    "v2.money_management.transaction.created", typeof(
+                    Events.V2MoneyManagementTransactionCreatedEvent)
+                },
+                {
+                    "v2.money_management.transaction.updated", typeof(
+                    Events.V2MoneyManagementTransactionUpdatedEvent)
                 },
 
                 // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec

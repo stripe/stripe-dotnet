@@ -2,6 +2,7 @@
 namespace Stripe.V2.MoneyManagement
 {
     using System;
+    using System.Net;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -32,6 +33,24 @@ namespace Stripe.V2.MoneyManagement
         public virtual Task<OutboundPaymentQuote> CreateAsync(OutboundPaymentQuoteCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<OutboundPaymentQuote>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/outbound_payment_quotes", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Retrieves the details of an existing OutboundPaymentQuote by passing the unique
+        /// OutboundPaymentQuote ID.
+        /// </summary>
+        public virtual OutboundPaymentQuote Get(string id, OutboundPaymentQuoteGetOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<OutboundPaymentQuote>(BaseAddress.Api, HttpMethod.Get, $"/v2/money_management/outbound_payment_quotes/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Retrieves the details of an existing OutboundPaymentQuote by passing the unique
+        /// OutboundPaymentQuote ID.
+        /// </summary>
+        public virtual Task<OutboundPaymentQuote> GetAsync(string id, OutboundPaymentQuoteGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<OutboundPaymentQuote>(BaseAddress.Api, HttpMethod.Get, $"/v2/money_management/outbound_payment_quotes/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
     }
 }

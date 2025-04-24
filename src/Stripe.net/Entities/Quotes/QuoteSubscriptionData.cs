@@ -48,6 +48,18 @@ namespace Stripe
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// The <a
+        /// href="https://stripe.com/api/subscriptions/create#create_subscription-billing_mode">billing
+        /// mode</a> that will be set on the subscription once the quote is accepted.
+        /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public string BillingMode { get; set; }
+
+        /// <summary>
         /// The subscription's description, meant to be displayable to the customer. Use this field
         /// to optionally store an explanation of the subscription for rendering in Stripe surfaces
         /// and certain local payment methods UIs.

@@ -8,6 +8,9 @@ namespace Stripe.TestHelpers
 
     public class ConfirmationTokenPaymentMethodOptionsOptions : INestedOptions
     {
+        /// <summary>
+        /// Configuration for any card payments confirmed using this ConfirmationToken.
+        /// </summary>
         [JsonProperty("card")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]

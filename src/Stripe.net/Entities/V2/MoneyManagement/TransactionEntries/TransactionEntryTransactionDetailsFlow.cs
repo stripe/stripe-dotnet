@@ -11,9 +11,9 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. Type of the flow that created the Transaction. The field matching this value
         /// will contain the ID of the flow.
-        /// One of: <c>adjustment</c>, <c>currency_conversion</c>, <c>fee_transaction</c>,
-        /// <c>inbound_transfer</c>, <c>outbound_payment</c>, <c>outbound_transfer</c>,
-        /// <c>received_credit</c>, or <c>received_debit</c>.
+        /// One of: <c>adjustment</c>, <c>fee_transaction</c>, <c>inbound_transfer</c>,
+        /// <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>received_credit</c>, or
+        /// <c>received_debit</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

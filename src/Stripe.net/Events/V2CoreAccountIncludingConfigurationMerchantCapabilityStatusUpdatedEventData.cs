@@ -22,8 +22,8 @@ namespace Stripe.Events
         /// <c>kr_card_payments</c>, <c>link_payments</c>, <c>mobilepay_payments</c>,
         /// <c>multibanco_payments</c>, <c>mx_bank_transfer_payments</c>, <c>naver_pay_payments</c>,
         /// <c>oxxo_payments</c>, <c>p24_payments</c>, <c>payco_payments</c>,
-        /// <c>paynow_payments</c>, <c>pay_by_bank_payments</c>, <c>promptpay_payments</c>,
-        /// <c>revolut_pay_payments</c>, <c>samsung_pay_payments</c>,
+        /// <c>paynow_payments</c>, <c>stripe_balance.payouts</c>, <c>pay_by_bank_payments</c>,
+        /// <c>promptpay_payments</c>, <c>revolut_pay_payments</c>, <c>samsung_pay_payments</c>,
         /// <c>sepa_bank_transfer_payments</c>, <c>sepa_debit_payments</c>, <c>swish_payments</c>,
         /// <c>twint_payments</c>, <c>us_bank_transfer_payments</c>, or <c>zip_payments</c>.
         /// </summary>

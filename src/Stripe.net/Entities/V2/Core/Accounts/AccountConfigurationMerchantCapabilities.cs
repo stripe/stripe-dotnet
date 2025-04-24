@@ -369,6 +369,15 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCapabilitiesSepaDebitPayments SepaDebitPayments { get; set; }
 
         /// <summary>
+        /// Capabilities that enable the recipient to manage their Stripe Balance (/v1/balance).
+        /// </summary>
+        [JsonProperty("stripe_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_balance")]
+#endif
+        public AccountConfigurationMerchantCapabilitiesStripeBalance StripeBalance { get; set; }
+
+        /// <summary>
         /// Allow the merchant to process Swish payments.
         /// </summary>
         [JsonProperty("swish_payments")]

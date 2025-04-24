@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountUpdateConfigurationRecipientCapabilitiesStripeBalanceOptions : INestedOptions
     {
         /// <summary>
-        /// Allows the recipient to receive /v1/transfers into their Stripe Balance (/v1/balance).
+        /// Allows the account to receive /v1/transfers into their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("stripe_transfers")]
 #if NET6_0_OR_GREATER

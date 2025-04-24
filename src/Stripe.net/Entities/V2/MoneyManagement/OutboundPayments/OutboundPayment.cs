@@ -102,6 +102,16 @@ namespace Stripe.V2.MoneyManagement
         public OutboundPaymentFrom From { get; set; }
 
         /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// Set of key-value pairs that you can attach to an object. This can be useful for storing
         /// additional information about the object in a structured format.
         /// </summary>
@@ -122,8 +132,9 @@ namespace Stripe.V2.MoneyManagement
         public string OutboundPaymentQuote { get; set; }
 
         /// <summary>
-        /// A hosted transaction receipt URL that is provided when money movement is considered
-        /// regulated under Stripe's money transmission licenses.
+        /// A link to the Stripe-hosted receipt for this OutboundPayment. The receipt link remains
+        /// active for 60 days from the OutboundPayment creation date. After this period, the link
+        /// will expire and the receipt url value will be null.
         /// </summary>
         [JsonProperty("receipt_url")]
 #if NET6_0_OR_GREATER
