@@ -8,13 +8,13 @@ namespace Stripe.V2.Core.Vault
 #endif
 
     /// <summary>
-    /// Use the UsBankAccounts API to create and manage US bank accounts objects that you can
+    /// Use the USBankAccounts API to create and manage US bank accounts objects that you can
     /// use to receive funds. Note that these are not interchangeable with v1 Tokens.
     /// </summary>
     public class UsBankAccount : StripeEntity<UsBankAccount>, IHasId, IHasObject
     {
         /// <summary>
-        /// The ID of the UsBankAccount object.
+        /// The ID of the USBankAccount object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -33,7 +33,7 @@ namespace Stripe.V2.Core.Vault
         public string Object { get; set; }
 
         /// <summary>
-        /// Whether this UsBankAccount object was archived.
+        /// Whether this USBankAccount object was archived.
         /// </summary>
         [JsonProperty("archived")]
 #if NET6_0_OR_GREATER

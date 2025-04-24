@@ -20,8 +20,8 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Archive a UsBankAccount object. UsBankAccount objects will not be automatically archived
-        /// by Stripe. Archived UsBankAccount objects cannot be used as outbound destinations and
+        /// Archive a USBankAccount object. USBankAccount objects will not be automatically archived
+        /// by Stripe. Archived USBankAccount objects cannot be used as outbound destinations and
         /// will not appear in the outbound destination list.
         /// </summary>
         public virtual UsBankAccount Archive(string id, UsBankAccountArchiveOptions options = null, RequestOptions requestOptions = null)
@@ -30,8 +30,8 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Archive a UsBankAccount object. UsBankAccount objects will not be automatically archived
-        /// by Stripe. Archived UsBankAccount objects cannot be used as outbound destinations and
+        /// Archive a USBankAccount object. USBankAccount objects will not be automatically archived
+        /// by Stripe. Archived USBankAccount objects cannot be used as outbound destinations and
         /// will not appear in the outbound destination list.
         /// </summary>
         public virtual Task<UsBankAccount> ArchiveAsync(string id, UsBankAccountArchiveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
@@ -40,7 +40,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Create a UsBankAccount object.
+        /// Create a USBankAccount object.
         /// </summary>
         public virtual UsBankAccount Create(UsBankAccountCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -48,7 +48,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Create a UsBankAccount object.
+        /// Create a USBankAccount object.
         /// </summary>
         public virtual Task<UsBankAccount> CreateAsync(UsBankAccountCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -56,7 +56,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Retrieve a UsBankAccount object.
+        /// Retrieve a USBankAccount object.
         /// </summary>
         public virtual UsBankAccount Get(string id, UsBankAccountGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -64,7 +64,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Retrieve a UsBankAccount object.
+        /// Retrieve a USBankAccount object.
         /// </summary>
         public virtual Task<UsBankAccount> GetAsync(string id, UsBankAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -72,7 +72,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Update a UsBankAccount object. This is limited to supplying a previously empty
+        /// Update a USBankAccount object. This is limited to supplying a previously empty
         /// routing_number field.
         /// </summary>
         public virtual UsBankAccount Update(string id, UsBankAccountUpdateOptions options, RequestOptions requestOptions = null)
@@ -81,7 +81,7 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
-        /// Update a UsBankAccount object. This is limited to supplying a previously empty
+        /// Update a USBankAccount object. This is limited to supplying a previously empty
         /// routing_number field.
         /// </summary>
         public virtual Task<UsBankAccount> UpdateAsync(string id, UsBankAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// The funds related to the received credit are available in your balance.
+    /// Occurs when a ReceivedCredit's funds are received and are available in your balance.
     /// </summary>
     public class V2MoneyManagementReceivedCreditAvailableEvent : V2.Event
     {

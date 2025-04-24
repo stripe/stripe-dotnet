@@ -8,8 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// The FinancialAddress is now active and ready to receive funds using the credentials
-    /// provided.
+    /// Occurs when a FinancialAddress is activated and is ready to receive funds.
     /// </summary>
     public class V2MoneyManagementFinancialAddressActivatedEvent : V2.Event
     {

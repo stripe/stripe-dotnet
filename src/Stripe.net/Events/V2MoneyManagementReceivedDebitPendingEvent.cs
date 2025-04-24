@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event is sent when a ReceivedDebit is set to pending.
+    /// Occurs when a ReceivedDebit is set to pending.
     /// </summary>
     public class V2MoneyManagementReceivedDebitPendingEvent : V2.Event
     {

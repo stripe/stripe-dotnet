@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event occurs when an account is created.
+    /// Occurs when an Account is created.
     /// </summary>
     public class V2CoreAccountCreatedEvent : V2.Event
     {

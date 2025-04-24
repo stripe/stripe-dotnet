@@ -40,5 +40,16 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("location_source")]
 #endif
         public string LocationSource { get; set; }
+
+        /// <summary>
+        /// A per-request flag that indicates when Stripe should validate the customer tax location
+        /// - defaults to 'auto'.
+        /// One of: <c>auto</c>, <c>deferred</c>, or <c>immediately</c>.
+        /// </summary>
+        [JsonProperty("validate_location")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("validate_location")]
+#endif
+        public string ValidateLocation { get; set; }
     }
 }

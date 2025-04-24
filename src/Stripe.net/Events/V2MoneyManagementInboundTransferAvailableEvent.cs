@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Funds from an InboundTransfer were just made available.
+    /// Occurs when an InboundTransfer's funds are made available.
     /// </summary>
     public class V2MoneyManagementInboundTransferAvailableEvent : V2.Event
     {

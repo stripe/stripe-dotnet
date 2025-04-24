@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event is sent when a ReceivedDebit succeeds.
+    /// Occurs when a ReceivedDebit succeeds.
     /// </summary>
     public class V2MoneyManagementReceivedDebitSucceededEvent : V2.Event
     {

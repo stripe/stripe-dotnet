@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event occurs when the account's requirements are updated.
+    /// Occurs when an Account's requirements are updated.
     /// </summary>
     public class V2CoreAccountIncludingRequirementsUpdatedEvent : V2.Event
     {

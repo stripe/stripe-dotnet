@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// A new OutboundPayment has been created.
+    /// Occurs when an OutboundPayment is created.
     /// </summary>
     public class V2MoneyManagementOutboundPaymentCreatedEvent : V2.Event
     {

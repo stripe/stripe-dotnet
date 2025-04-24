@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// The status of a customer config capability was updated.
+    /// Occurs when the status of an Account's customer configuration capability is updated.
     /// </summary>
     public class V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent : V2.Event
     {

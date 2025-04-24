@@ -8,12 +8,12 @@ namespace Stripe.V2.Core.Vault
 #endif
 
     /// <summary>
-    /// Use the GbBankAccounts API to create and manage GB bank account objects.
+    /// Use the GBBankAccounts API to create and manage GB bank account objects.
     /// </summary>
     public class GbBankAccount : StripeEntity<GbBankAccount>, IHasId, IHasObject
     {
         /// <summary>
-        /// The ID of the GbBankAccount object.
+        /// The ID of the GBBankAccount object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER

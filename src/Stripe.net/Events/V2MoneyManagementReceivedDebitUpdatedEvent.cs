@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event is sent when a ReceivedDebit is updated.
+    /// Occurs when a ReceivedDebit is updated.
     /// </summary>
     public class V2MoneyManagementReceivedDebitUpdatedEvent : V2.Event
     {

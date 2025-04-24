@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// The FinancialAddress could not be activated and can not receive funds.
+    /// Occurs when a FinancialAddress fails to activate and can not receive funds.
     /// </summary>
     public class V2MoneyManagementFinancialAddressFailedEvent : V2.Event
     {

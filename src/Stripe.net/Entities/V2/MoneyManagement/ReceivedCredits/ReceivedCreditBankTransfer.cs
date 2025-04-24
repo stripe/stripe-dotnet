@@ -19,8 +19,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. Indicates the type of source via from which external funds originated.
-        /// One of: <c>crypto_wallet</c>, <c>eu_bank_account</c>, <c>gb_bank_account</c>, or
-        /// <c>us_bank_account</c>.
+        /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("payment_method_type")]
 #if NET6_0_OR_GREATER
@@ -36,16 +35,6 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("statement_descriptor")]
 #endif
         public string StatementDescriptor { get; set; }
-
-        /// <summary>
-        /// Hash containing the transaction bank details. Present if <c>payment_method_type</c>
-        /// field value is <c>eu_bank_account</c>.
-        /// </summary>
-        [JsonProperty("eu_bank_account")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("eu_bank_account")]
-#endif
-        public ReceivedCreditBankTransferEuBankAccount EuBankAccount { get; set; }
 
         /// <summary>
         /// Hash containing the transaction bank details. Present if <c>payment_method_type</c>

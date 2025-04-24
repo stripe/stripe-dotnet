@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountConfigurationCustomerAutomaticIndirectTaxLocation : StripeEntity<AccountConfigurationCustomerAutomaticIndirectTaxLocation>
     {
         /// <summary>
-        /// The identified tax country of the customer.
+        /// The customer's country as identified by Stripe Tax.
         /// One of: <c>ad</c>, <c>ae</c>, <c>af</c>, <c>ag</c>, <c>ai</c>, <c>al</c>, <c>am</c>,
         /// <c>ao</c>, <c>aq</c>, <c>ar</c>, <c>as</c>, <c>at</c>, <c>au</c>, <c>aw</c>, <c>ax</c>,
         /// <c>az</c>, <c>ba</c>, <c>bb</c>, <c>bd</c>, <c>be</c>, <c>bf</c>, <c>bg</c>, <c>bh</c>,
@@ -50,7 +50,7 @@ namespace Stripe.V2.Core
         public string Country { get; set; }
 
         /// <summary>
-        /// The identified tax state, county, province, or region of the customer.
+        /// The customer's state, county, province, or region as identified by Stripe Tax.
         /// </summary>
         [JsonProperty("state")]
 #if NET6_0_OR_GREATER

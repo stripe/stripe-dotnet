@@ -9,15 +9,6 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAddressCreateOptions : BaseOptions
     {
         /// <summary>
-        /// Properties needed to create a FinancialAddress for an FA with USDC currency.
-        /// </summary>
-        [JsonProperty("crypto_properties")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("crypto_properties")]
-#endif
-        public FinancialAddressCreateCryptoPropertiesOptions CryptoProperties { get; set; }
-
-        /// <summary>
         /// Open Enum. The currency the FinancialAddress should support. Currently, only the
         /// <c>usd</c> and <c>gbp</c> values are supported.
         /// One of: <c>aed</c>, <c>afn</c>, <c>all</c>, <c>amd</c>, <c>ang</c>, <c>aoa</c>,
