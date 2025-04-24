@@ -205,7 +205,7 @@ namespace StripeTests
                     {
                         Bool = false,
                     },
-                    Want = "bool=False",
+                    Want = "bool=false",
                 },
                 new QueryStringTestCase
                 {
@@ -213,7 +213,7 @@ namespace StripeTests
                     {
                         Bool = true,
                     },
-                    Want = "bool=True",
+                    Want = "bool=true",
                 },
 
                 // DateRangeOptions
