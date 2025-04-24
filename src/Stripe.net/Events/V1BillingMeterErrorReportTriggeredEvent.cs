@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event occurs when there are invalid async usage events for a given meter.
+    /// Occurs when a Meter has invalid async usage events.
     /// </summary>
     public class V1BillingMeterErrorReportTriggeredEvent : V2.Event
     {

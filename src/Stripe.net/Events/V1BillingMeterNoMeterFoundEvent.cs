@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event occurs when async usage events have missing or invalid meter ids.
+    /// Occurs when a Meter's id is missing or invalid in async usage events.
     /// </summary>
     public class V1BillingMeterNoMeterFoundEvent : V2.Event
     {

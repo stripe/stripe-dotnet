@@ -6394,11 +6394,20 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "object_id=object_id");
+            var options = new Stripe.V2.Core.EventListOptions
+            {
+                ObjectId = "object_id",
+            };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
-            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List();
-            this.AssertRequest(HttpMethod.Get, "/v2/core/events");
+            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List(
+                options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/events",
+                "object_id=object_id");
         }
 
         [Fact]
