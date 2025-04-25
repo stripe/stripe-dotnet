@@ -14,7 +14,7 @@ namespace StripeTests
         [Fact]
         public void Deserialize()
         {
-            string json = this.GetFixture("/v1/customers/cus_123/cards/card_123");
+            var json = GetResourceAsString("api_fixtures.customer_card.json");
             var card = JsonConvert.DeserializeObject<Card>(json);
             Assert.NotNull(card);
             Assert.IsType<Card>(card);
@@ -25,12 +25,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "customer",
-            };
-
-            string json = this.GetFixture("/v1/customers/cus_123/cards/card_123", expansions);
+            var json = GetResourceAsString("api_fixtures.customer_card_with_expansion.json");
             var card = JsonConvert.DeserializeObject<Card>(json);
             Assert.NotNull(card);
             Assert.IsType<Card>(card);
