@@ -1,0 +1,116 @@
+{
+  "application": null,
+  "canceled_at": 1234567890,
+  "completed_at": 1234567890,
+  "created": 1234567890,
+  "current_phase": {
+    "end_date": 1725067410,
+    "start_date": 1573629589
+  },
+  "customer": "cus_QXg1o8vcGmoR32",
+  "default_settings": {
+    "application_fee_percent": null,
+    "automatic_tax": {
+      "disabled_reason": null,
+      "enabled": false,
+      "liability": {
+        "type": "account"
+      }
+    },
+    "billing_cycle_anchor": "automatic",
+    "collection_method": "charge_automatically",
+    "default_payment_method": null,
+    "description": null,
+    "invoice_settings": {
+      "account_tax_ids": null,
+      "days_until_due": null,
+      "issuer": {
+        "type": "self"
+      }
+    },
+    "on_behalf_of": null,
+    "transfer_data": {
+      "amount_percent": null,
+      "destination": {
+        "id": "obj_123",
+        "object": "account"
+      }
+    }
+  },
+  "end_behavior": "release",
+  "id": "sub_sched_123",
+  "livemode": false,
+  "metadata": {},
+  "object": "subscription_schedule",
+  "phases": [
+    {
+      "add_invoice_items": [],
+      "application_fee_percent": null,
+      "billing_cycle_anchor": null,
+      "collection_method": null,
+      "currency": "usd",
+      "default_payment_method": null,
+      "default_tax_rates": [],
+      "description": null,
+      "discounts": [],
+      "end_date": 1754008472,
+      "invoice_settings": {
+        "account_tax_ids": null,
+        "days_until_due": null,
+        "issuer": {
+          "type": "account"
+        }
+      },
+      "items": [
+        {
+          "discounts": [],
+          "metadata": {},
+          "plan": {
+            "active": true,
+            "amount": null,
+            "amount_decimal": null,
+            "billing_scheme": "tiered",
+            "created": 1028554472,
+            "currency": "currency",
+            "id": "obj_123",
+            "interval": "month",
+            "interval_count": 797691627,
+            "livemode": true,
+            "metadata": null,
+            "meter": null,
+            "nickname": null,
+            "object": "plan",
+            "product": null,
+            "tiers_mode": null,
+            "transform_usage": {
+              "divide_by": 1592560163,
+              "round": "down"
+            },
+            "trial_period_days": null,
+            "usage_type": "licensed"
+          },
+          "price": "price_1PgafmB7WZ01zgkW6dKueIc5",
+          "quantity": 1,
+          "tax_rates": []
+        }
+      ],
+      "metadata": {},
+      "on_behalf_of": null,
+      "proration_behavior": "create_prorations",
+      "start_date": 1722558872,
+      "transfer_data": {
+        "amount_percent": null,
+        "destination": {
+          "id": "obj_123",
+          "object": "account"
+        }
+      },
+      "trial_end": null
+    }
+  ],
+  "released_at": 1234567890,
+  "released_subscription": null,
+  "status": "not_started",
+  "subscription": null,
+  "test_clock": null
+}
