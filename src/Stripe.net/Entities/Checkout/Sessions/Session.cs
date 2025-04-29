@@ -135,8 +135,11 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The client secret of your Checkout Session. Applies to Checkout Sessions with
-        /// <c>ui_mode: embedded</c>. Client secret to be used when initializing Stripe.js embedded
-        /// checkout.
+        /// <c>ui_mode: embedded</c> or <c>ui_mode: custom</c>. For <c>ui_mode: embedded</c>, the
+        /// client secret is to be used when initializing Stripe.js embedded checkout. For
+        /// <c>ui_mode: custom</c>, use the client secret with <a
+        /// href="https://stripe.com/docs/js/custom_checkout/init">initCheckout</a> on your front
+        /// end.
         /// </summary>
         [JsonProperty("client_secret")]
 #if NET6_0_OR_GREATER
@@ -584,7 +587,7 @@ namespace Stripe.Checkout
         /// CheckoutSession object.
         ///
         /// For specific permissions, please refer to their dedicated subsections, such as
-        /// <c>permissions.update.shipping_details</c>.
+        /// <c>permissions.update_shipping_details</c>.
         /// </summary>
         [JsonProperty("permissions")]
 #if NET6_0_OR_GREATER
@@ -626,9 +629,9 @@ namespace Stripe.Checkout
         public string RedirectOnCompletion { get; set; }
 
         /// <summary>
-        /// Applies to Checkout Sessions with <c>ui_mode: embedded</c>. The URL to redirect your
-        /// customer back to after they authenticate or cancel their payment on the payment method's
-        /// app or site.
+        /// Applies to Checkout Sessions with <c>ui_mode: embedded</c> or <c>ui_mode: custom</c>.
+        /// The URL to redirect your customer back to after they authenticate or cancel their
+        /// payment on the payment method's app or site.
         /// </summary>
         [JsonProperty("return_url")]
 #if NET6_0_OR_GREATER
@@ -834,5 +837,14 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("url")]
 #endif
         public string Url { get; set; }
+
+        /// <summary>
+        /// Wallet-specific configuration for this Checkout Session.
+        /// </summary>
+        [JsonProperty("wallet_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wallet_options")]
+#endif
+        public SessionWalletOptions WalletOptions { get; set; }
     }
 }

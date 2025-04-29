@@ -10,7 +10,8 @@ namespace Stripe.Checkout
     public class SessionUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Information about the customer collected within the Checkout Session.
+        /// Information about the customer collected within the Checkout Session. Can only be set
+        /// when updating <c>embedded</c> or <c>custom</c> sessions.
         /// </summary>
         [JsonProperty("collected_information")]
 #if NET6_0_OR_GREATER

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -37,6 +38,17 @@ namespace Stripe
         [STJS.JsonPropertyName("mcc")]
 #endif
         public string Mcc { get; set; }
+
+        /// <summary>
+        /// Whether the business is a minority-owned, women-owned, and/or LGBTQI+-owned business.
+        /// One of: <c>lgbtqi_owned_business</c>, <c>minority_owned_business</c>,
+        /// <c>none_of_these_apply</c>, <c>prefer_not_to_answer</c>, or <c>women_owned_business</c>.
+        /// </summary>
+        [JsonProperty("minority_owned_business_designation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("minority_owned_business_designation")]
+#endif
+        public List<string> MinorityOwnedBusinessDesignation { get; set; }
 
         /// <summary>
         /// An estimate of the monthly revenue of the business. Only accepted for accounts in Brazil
