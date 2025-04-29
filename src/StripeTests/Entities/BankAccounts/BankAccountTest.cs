@@ -25,7 +25,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeForCustomer()
         {
-            string json = this.GetFixture("/v1/customers/cus_123/bank_accounts/ba_123");
+            var json = GetResourceAsString("api_fixtures.bank_account.json");
             var bankAccount = JsonConvert.DeserializeObject<BankAccount>(json);
             Assert.NotNull(bankAccount);
             Assert.IsType<BankAccount>(bankAccount);
@@ -36,12 +36,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansionsForCustomer()
         {
-            string[] expansions =
-            {
-              "customer",
-            };
-
-            string json = this.GetFixture("/v1/customers/cus_123/bank_accounts/ba_123", expansions);
+            var json = GetResourceAsString("api_fixtures.bank_account_with_expansion.json");
             var bankAccount = JsonConvert.DeserializeObject<BankAccount>(json);
             Assert.NotNull(bankAccount);
             Assert.IsType<BankAccount>(bankAccount);
