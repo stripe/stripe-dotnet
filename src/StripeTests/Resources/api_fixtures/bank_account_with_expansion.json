@@ -1,0 +1,83 @@
+{
+  "account_holder_name": "Jane Austen",
+  "account_holder_type": "company",
+  "account_type": null,
+  "bank_name": "STRIPE TEST BANK",
+  "country": "US",
+  "currency": "usd",
+  "customer": {
+    "address": {
+      "city": null,
+      "country": null,
+      "line1": null,
+      "line2": null,
+      "postal_code": null,
+      "state": null
+    },
+    "balance": 0,
+    "created": 1234567890,
+    "currency": "usd",
+    "default_source": null,
+    "delinquent": false,
+    "description": null,
+    "discount": {
+      "checkout_session": null,
+      "coupon": {
+        "amount_off": null,
+        "created": 1028554472,
+        "currency": null,
+        "duration": "forever",
+        "duration_in_months": null,
+        "id": "obj_123",
+        "livemode": true,
+        "max_redemptions": null,
+        "metadata": null,
+        "name": null,
+        "object": "coupon",
+        "percent_off": null,
+        "redeem_by": null,
+        "times_redeemed": 990066668,
+        "valid": true
+      },
+      "customer": null,
+      "end": null,
+      "id": "obj_123",
+      "invoice": null,
+      "invoice_item": null,
+      "object": "discount",
+      "promotion_code": null,
+      "start": 109757538,
+      "subscription": null,
+      "subscription_item": null
+    },
+    "email": null,
+    "id": "cus_123",
+    "invoice_prefix": "7FE1103",
+    "invoice_settings": {
+      "custom_fields": null,
+      "default_payment_method": null,
+      "footer": null,
+      "rendering_options": {
+        "amount_tax_display": null,
+        "template": null
+      }
+    },
+    "livemode": false,
+    "metadata": {},
+    "name": null,
+    "next_invoice_sequence": 1,
+    "object": "customer",
+    "phone": null,
+    "preferred_locales": [],
+    "shipping": {},
+    "tax_exempt": "none",
+    "test_clock": null
+  },
+  "fingerprint": "AuoSJ18zsVWV9SPc",
+  "id": "ba_123",
+  "last4": "6789",
+  "metadata": {},
+  "object": "bank_account",
+  "routing_number": "110000000",
+  "status": "new"
+}

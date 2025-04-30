@@ -14,7 +14,7 @@ namespace StripeTests
         [Fact]
         public void Deserialize()
         {
-            string json = this.GetFixture("/v1/subscriptions/sub_123");
+            var json = GetResourceAsString("api_fixtures.subscription.json");
             var subscription = JsonConvert.DeserializeObject<Subscription>(json);
             Assert.NotNull(subscription);
             Assert.IsType<Subscription>(subscription);
@@ -25,15 +25,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            string[] expansions =
-            {
-              "customer",
-              "default_payment_method",
-              "latest_invoice",
-              "pending_setup_intent",
-            };
-
-            string json = this.GetFixture("/v1/subscriptions/sub_123", expansions);
+            var json = GetResourceAsString("api_fixtures.subscription_with_expansions.json");
             var subscription = JsonConvert.DeserializeObject<Subscription>(json);
             Assert.NotNull(subscription);
             Assert.IsType<Subscription>(subscription);
