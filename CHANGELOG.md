@@ -1,6 +1,10 @@
 # Changelog
 
 
+## 48.2.0-beta.2 - 2025-04-30
+* [#3122](https://github.com/stripe/stripe-dotnet/pull/3122) Update generated code for beta
+  Release specs are identical.
+
 ## 48.2.0-beta.1 - 2025-04-30
 * [#3107](https://github.com/stripe/stripe-dotnet/pull/3107) Update generated code for beta
   This release changes the pinned API version to `2025-04-30.preview`.
