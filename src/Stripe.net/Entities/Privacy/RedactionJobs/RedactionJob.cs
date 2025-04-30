@@ -50,7 +50,7 @@ namespace Stripe.Privacy
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("objects")]
 #endif
-        public RedactionJobRootObjects Objects { get; set; }
+        public RedactionJobObjects Objects { get; set; }
 
         /// <summary>
         /// The status field represents the current state of the redaction job. It can take on any

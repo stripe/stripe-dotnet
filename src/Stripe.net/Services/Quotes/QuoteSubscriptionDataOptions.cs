@@ -48,7 +48,7 @@ namespace Stripe
         /// Configure billing_mode to opt in improved credit proration behavior.Once a quote that
         /// creates a subscription or subscription schedule is accepted,all future operations on the
         /// subscription or subscription schedule will be processed based on this billing_mode.
-        /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
+        /// One of: <c>classic</c>, or <c>flexible</c>.
         /// </summary>
         [JsonProperty("billing_mode")]
 #if NET6_0_OR_GREATER

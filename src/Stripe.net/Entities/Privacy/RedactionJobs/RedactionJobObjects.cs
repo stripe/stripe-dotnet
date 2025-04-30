@@ -7,21 +7,8 @@ namespace Stripe.Privacy
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    /// <summary>
-    /// The objects to redact, grouped by type. All redactable objects associated with these
-    /// objects will be redacted as well.
-    /// </summary>
-    public class RedactionJobRootObjects : StripeEntity<RedactionJobRootObjects>, IHasObject
+    public class RedactionJobObjects : StripeEntity<RedactionJobObjects>
     {
-        /// <summary>
-        /// String representing the object's type. Objects of the same type share the same value.
-        /// </summary>
-        [JsonProperty("object")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("object")]
-#endif
-        public string Object { get; set; }
-
         [JsonProperty("charges")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charges")]
