@@ -15,7 +15,7 @@ namespace StripeTests
         [Fact]
         public void Deserialize()
         {
-            string json = this.GetFixture("/v1/balance_transactions/txn_123");
+            var json = GetResourceAsString("api_fixtures.balance_transaction.json");
             var balanceTransaction = JsonConvert.DeserializeObject<BalanceTransaction>(json);
             Assert.NotNull(balanceTransaction);
             Assert.IsType<BalanceTransaction>(balanceTransaction);

@@ -14,7 +14,7 @@ namespace StripeTests
         [Fact]
         public void Deserialize()
         {
-            string json = this.GetFixture("/v1/subscription_schedules/sub_sched_123");
+            var json = GetResourceAsString("api_fixtures.subscription_schedule.json");
             var schedule = JsonConvert.DeserializeObject<SubscriptionSchedule>(json);
             Assert.NotNull(schedule);
             Assert.IsType<SubscriptionSchedule>(schedule);
@@ -25,16 +25,7 @@ namespace StripeTests
         [Fact]
         public void DeserializeWithExpansions()
         {
-            // TODO: support expanding "phases.coupon" and "phases.plans.plan" and others with stripe-mock
-            string[] expansions =
-            {
-              "customer",
-              "default_settings.default_payment_method",
-              "phases.plans.plan",
-              "subscription",
-            };
-
-            string json = this.GetFixture("/v1/subscription_schedules/sub_sched_123", expansions);
+            var json = GetResourceAsString("api_fixtures.subscription_schedule_with_expansions.json");
             var schedule = JsonConvert.DeserializeObject<SubscriptionSchedule>(json);
             Assert.NotNull(schedule);
             Assert.IsType<SubscriptionSchedule>(schedule);
