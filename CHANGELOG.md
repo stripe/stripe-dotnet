@@ -1,5 +1,13 @@
 # Changelog
 
+
+## 48.2.0-beta.1 - 2025-04-30
+* [#3107](https://github.com/stripe/stripe-dotnet/pull/3107) Update generated code for beta
+  This release changes the pinned API version to `2025-04-30.preview`.
+
+  * Add support for `BillingMode` on `CheckoutSessionSubscriptionDataOptions`, `InvoiceScheduleDetailsOptions`, `InvoiceSubscriptionDetailsOptions`, `Quote.SubscriptionData`, `QuotePreviewSubscriptionSchedule`, `QuoteSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionScheduleCreateOptions`, `SubscriptionSchedule`, and `Subscription`
+  * Add support for `AccountNumber` on `ConfirmationToken.PaymentMethodPreview.AcssDebit` and `PaymentMethod.AcssDebit`
+
 ## 48.1.0 - 2025-04-30
 
   This release changes the pinned API version to `2025-04-30.basil`.
@@ -19,6 +27,7 @@
   * Add support for `Klarna` on `PaymentMethodDomain`
   * Add support for `PendingReason` on `Refund`
   * Add support for `Aw`, `Az`, `Bd`, `Bf`, `Bj`, `Cm`, `Cv`, `Et`, `In`, `Kg`, `La`, and `Ph` on `Tax.Registration.CountryOptions` and `TaxRegistrationCountryOptionsOptions`
+
 
 ## 48.1.0-beta.4 - 2025-04-17
 * [#3099](https://github.com/stripe/stripe-dotnet/pull/3099) Update generated code for beta
