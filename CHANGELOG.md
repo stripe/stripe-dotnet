@@ -1,11 +1,33 @@
 # Changelog
 
+
 ## 48.2.0-beta.1 - 2025-04-30
 * [#3107](https://github.com/stripe/stripe-dotnet/pull/3107) Update generated code for beta
   This release changes the pinned API version to `2025-04-30.preview`.
 
   * Add support for `BillingMode` on `CheckoutSessionSubscriptionDataOptions`, `InvoiceScheduleDetailsOptions`, `InvoiceSubscriptionDetailsOptions`, `Quote.SubscriptionData`, `QuotePreviewSubscriptionSchedule`, `QuoteSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionScheduleCreateOptions`, `SubscriptionSchedule`, and `Subscription`
   * Add support for `AccountNumber` on `ConfirmationToken.PaymentMethodPreview.AcssDebit` and `PaymentMethod.AcssDebit`
+
+## 48.1.0 - 2025-04-30
+
+  This release changes the pinned API version to `2025-04-30.basil`.
+
+* [#3102](https://github.com/stripe/stripe-dotnet/pull/3102) Update generated code
+  * Add support for `MinorityOwnedBusinessDesignation` on `Account.BusinessProfile` and `AccountBusinessProfileOptions`
+  * Add support for `RegistrationDate` on `Account.Company`, `AccountCompanyOptions`, and `TokenAccountCompanyOptions`
+  * Add support for `UsCfpbData` on `AccountCreateOptions`, `AccountUpdateOptions`, `Person`, and `TokenPersonOptions`
+  * Add support for `TaxId` on `Charge.BillingDetails`, `ConfirmationToken.PaymentMethodPreview.BillingDetails`, `ConfirmationTokenPaymentMethodDataBillingDetailsOptions`, `PaymentIntentPaymentMethodDataBillingDetailsOptions`, `PaymentMethod.BillingDetails`, `PaymentMethodBillingDetailsOptions`, and `SetupIntentPaymentMethodDataBillingDetailsOptions`
+  * Add support for `WalletOptions` on `Checkout.SessionCreateOptions` and `Checkout.Session`
+  * Add support for `Provider` on `Checkout.Session.AutomaticTax`, `Invoice.AutomaticTax`, and `Quote.AutomaticTax`
+  * Add support for `PaymentMethodOptions` on `TestHelpersConfirmationTokenCreateOptions`
+  * Add support for `Installments` on `ConfirmationToken.PaymentMethodOptions.Card`
+  * Add support for `Context` on `Event`
+  * Add support for `Billie` on `PaymentIntent.PaymentMethodOptions` and `PaymentIntentPaymentMethodOptionsOptions`
+  * Add support for `Pix` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `Klarna` on `PaymentMethodDomain`
+  * Add support for `PendingReason` on `Refund`
+  * Add support for `Aw`, `Az`, `Bd`, `Bf`, `Bj`, `Cm`, `Cv`, `Et`, `In`, `Kg`, `La`, and `Ph` on `Tax.Registration.CountryOptions` and `TaxRegistrationCountryOptionsOptions`
+
 
 ## 48.1.0-beta.4 - 2025-04-17
 * [#3099](https://github.com/stripe/stripe-dotnet/pull/3099) Update generated code for beta

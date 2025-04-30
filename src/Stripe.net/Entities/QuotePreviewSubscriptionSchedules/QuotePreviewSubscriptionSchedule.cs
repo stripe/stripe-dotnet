@@ -98,7 +98,7 @@ namespace Stripe
         /// href="https://stripe.com/api/subscriptions/create#create_subscription-billing_mode">billing
         /// mode</a> that will be used to process all future operations for the subscription
         /// schedule.
-        /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
+        /// One of: <c>classic</c>, or <c>flexible</c>.
         /// </summary>
         [JsonProperty("billing_mode")]
 #if NET6_0_OR_GREATER

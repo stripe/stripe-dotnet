@@ -147,10 +147,6 @@ namespace Stripe
                 { "price", typeof(Price) },
                 { "privacy.redaction_job", typeof(Privacy.RedactionJob) },
                 {
-                    "privacy.redaction_job_root_objects", typeof(
-                    Privacy.RedactionJobRootObjects)
-                },
-                {
                     "privacy.redaction_job_validation_error", typeof(
                     Privacy.RedactionJobValidationError)
                 },

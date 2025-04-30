@@ -9,8 +9,7 @@ namespace Stripe.Privacy
     using System.Threading.Tasks;
 
     public class RedactionJobValidationErrorService : Service,
-        INestedListable<RedactionJobValidationError, RedactionJobValidationErrorListOptions>,
-        INestedRetrievable<RedactionJobValidationError, RedactionJobValidationErrorGetOptions>
+        INestedListable<RedactionJobValidationError, RedactionJobValidationErrorListOptions>
     {
         public RedactionJobValidationErrorService()
         {
@@ -24,22 +23,6 @@ namespace Stripe.Privacy
         public RedactionJobValidationErrorService(IStripeClient client)
             : base(client)
         {
-        }
-
-        /// <summary>
-        /// <p>Retrieve validation error method</p>.
-        /// </summary>
-        public virtual RedactionJobValidationError Get(string parentId, string id, RedactionJobValidationErrorGetOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<RedactionJobValidationError>(BaseAddress.Api, HttpMethod.Get, $"/v1/privacy/redaction_jobs/{WebUtility.UrlEncode(parentId)}/validation_errors/{WebUtility.UrlEncode(id)}", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Retrieve validation error method</p>.
-        /// </summary>
-        public virtual Task<RedactionJobValidationError> GetAsync(string parentId, string id, RedactionJobValidationErrorGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<RedactionJobValidationError>(BaseAddress.Api, HttpMethod.Get, $"/v1/privacy/redaction_jobs/{WebUtility.UrlEncode(parentId)}/validation_errors/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

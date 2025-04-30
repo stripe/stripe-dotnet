@@ -29,7 +29,7 @@ namespace Stripe
         /// <summary>
         /// Configure billing_mode in each subscription to opt in improved credit proration
         /// behavior.
-        /// One of: <c>credits_attributed_to_debits</c>, or <c>legacy_prorations</c>.
+        /// One of: <c>classic</c>, or <c>flexible</c>.
         /// </summary>
         [JsonProperty("billing_mode")]
 #if NET6_0_OR_GREATER
