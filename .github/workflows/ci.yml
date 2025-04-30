@@ -46,10 +46,48 @@ jobs:
       - name: Build Release
         run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
 
+      - name: Determine OpenAPI versions and extract specs
+        run: |
+          set -e -o pipefail
+
+          CURL_OPTS=(--retry 3 \
+            --retry-all-errors \
+            --fail \
+            --verbose \
+            --no-progress-meter \
+            --show-error)
+
+          LATEST_OPENAPI_VERSION=$(curl https://api.github.com/repos/stripe/openapi/releases/latest -s | jq .name -r)
+          CURRENT_OPENAPI_VERSION=$(cat OPENAPI_VERSION)
+          if [[ "$PR_BODY" == *"TEST USING LATEST OPENAPI"* ]]; then
+            OPENAPI_VERSION=$LATEST_OPENAPI_VERSION
+          else
+            OPENAPI_VERSION=$CURRENT_OPENAPI_VERSION
+          fi
+
+          CURRENT_OPENAPI_SPEC=$(realpath latest.yaml)
+          CURRENT_OPENAPI_SPEC_JSON=${CURRENT_OPENAPI_SPEC%.yaml}.json
+          CURRENT_FIXTURES_JSON=${CURRENT_OPENAPI_SPEC%/*}/fixtures.json
+
+          SPEC_NAME="spec3.sdk.yaml"
+          FIXTURES_NAME="fixtures3.json"
+          if [[ "$GITHUB_BASE" == *"b"* ]]; then
+            SPEC_NAME="spec3.beta.sdk.yaml"
+            FIXTURES_NAME="fixtures3.beta.json"
+          fi
+          curl "${CURL_OPTS[@]}" https://raw.githubusercontent.com/stripe/openapi/$OPENAPI_VERSION/openapi/${SPEC_NAME%.yaml}.json -o $CURRENT_OPENAPI_SPEC_JSON
+          curl "${CURL_OPTS[@]}" https://raw.githubusercontent.com/stripe/openapi/$OPENAPI_VERSION/openapi/$FIXTURES_NAME -o $CURRENT_FIXTURES_JSON
+
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          GITHUB_BASE: ${{ github.base_ref || github.ref_name }}
+
       - uses: stripe/openapi/actions/stripe-mock@master
         with:
           # Used to determine if stripe-mock runs in beta mode
           base: ${{ github.base_ref || github.ref_name }}
+          fixtures: "/workspace/fixtures.json"
+          spec_path: "/workspace/latest.json"
 
       - name: Run test suite
         run: just ci-test
