@@ -326,6 +326,15 @@ namespace Stripe
 #endif
         public bool SsnLast4Provided { get; set; }
 
+        /// <summary>
+        /// Demographic data related to the person.
+        /// </summary>
+        [JsonProperty("us_cfpb_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("us_cfpb_data")]
+#endif
+        public PersonUsCfpbData UsCfpbData { get; set; }
+
         [JsonProperty("verification")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification")]

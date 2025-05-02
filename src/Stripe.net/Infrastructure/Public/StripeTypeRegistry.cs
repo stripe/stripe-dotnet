@@ -198,6 +198,10 @@ namespace Stripe
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
                 },
+                {
+                    "v2.core.event_destination.ping", typeof(
+                    Events.V2CoreEventDestinationPingEvent)
+                },
 
                 // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
             });

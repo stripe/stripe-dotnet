@@ -27,6 +27,15 @@ namespace Stripe.TestHelpers
         public ConfirmationTokenPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
+        /// Payment-method-specific configuration for this ConfirmationToken.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_options")]
+#endif
+        public ConfirmationTokenPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
         /// Return URL used to confirm the Intent.
         /// </summary>
         [JsonProperty("return_url")]

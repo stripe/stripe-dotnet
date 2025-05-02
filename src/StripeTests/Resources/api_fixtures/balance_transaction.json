@@ -1,0 +1,8 @@
+{
+  "id": "txn_123",
+  "object": "balance_transaction",
+  "source": {
+    "id": "random",
+    "object": "unknown_object"
+  }
+}

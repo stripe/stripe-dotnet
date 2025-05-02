@@ -63,6 +63,24 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsAuOptions Au { get; set; }
 
         /// <summary>
+        /// Options for the registration in AW.
+        /// </summary>
+        [JsonProperty("aw")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("aw")]
+#endif
+        public RegistrationCountryOptionsAwOptions Aw { get; set; }
+
+        /// <summary>
+        /// Options for the registration in AZ.
+        /// </summary>
+        [JsonProperty("az")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("az")]
+#endif
+        public RegistrationCountryOptionsAzOptions Az { get; set; }
+
+        /// <summary>
         /// Options for the registration in BA.
         /// </summary>
         [JsonProperty("ba")]
@@ -81,6 +99,15 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsBbOptions Bb { get; set; }
 
         /// <summary>
+        /// Options for the registration in BD.
+        /// </summary>
+        [JsonProperty("bd")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bd")]
+#endif
+        public RegistrationCountryOptionsBdOptions Bd { get; set; }
+
+        /// <summary>
         /// Options for the registration in BE.
         /// </summary>
         [JsonProperty("be")]
@@ -88,6 +115,15 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("be")]
 #endif
         public RegistrationCountryOptionsBeOptions Be { get; set; }
+
+        /// <summary>
+        /// Options for the registration in BF.
+        /// </summary>
+        [JsonProperty("bf")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bf")]
+#endif
+        public RegistrationCountryOptionsBfOptions Bf { get; set; }
 
         /// <summary>
         /// Options for the registration in BG.
@@ -106,6 +142,15 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("bh")]
 #endif
         public RegistrationCountryOptionsBhOptions Bh { get; set; }
+
+        /// <summary>
+        /// Options for the registration in BJ.
+        /// </summary>
+        [JsonProperty("bj")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bj")]
+#endif
+        public RegistrationCountryOptionsBjOptions Bj { get; set; }
 
         /// <summary>
         /// Options for the registration in BS.
@@ -162,6 +207,15 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsClOptions Cl { get; set; }
 
         /// <summary>
+        /// Options for the registration in CM.
+        /// </summary>
+        [JsonProperty("cm")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cm")]
+#endif
+        public RegistrationCountryOptionsCmOptions Cm { get; set; }
+
+        /// <summary>
         /// Options for the registration in CO.
         /// </summary>
         [JsonProperty("co")]
@@ -178,6 +232,15 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("cr")]
 #endif
         public RegistrationCountryOptionsCrOptions Cr { get; set; }
+
+        /// <summary>
+        /// Options for the registration in CV.
+        /// </summary>
+        [JsonProperty("cv")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cv")]
+#endif
+        public RegistrationCountryOptionsCvOptions Cv { get; set; }
 
         /// <summary>
         /// Options for the registration in CY.
@@ -250,6 +313,15 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("es")]
 #endif
         public RegistrationCountryOptionsEsOptions Es { get; set; }
+
+        /// <summary>
+        /// Options for the registration in ET.
+        /// </summary>
+        [JsonProperty("et")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("et")]
+#endif
+        public RegistrationCountryOptionsEtOptions Et { get; set; }
 
         /// <summary>
         /// Options for the registration in FI.
@@ -342,6 +414,15 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsIeOptions Ie { get; set; }
 
         /// <summary>
+        /// Options for the registration in IN.
+        /// </summary>
+        [JsonProperty("in")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("in")]
+#endif
+        public RegistrationCountryOptionsInOptions In { get; set; }
+
+        /// <summary>
         /// Options for the registration in IS.
         /// </summary>
         [JsonProperty("is")]
@@ -378,6 +459,15 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsKeOptions Ke { get; set; }
 
         /// <summary>
+        /// Options for the registration in KG.
+        /// </summary>
+        [JsonProperty("kg")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kg")]
+#endif
+        public RegistrationCountryOptionsKgOptions Kg { get; set; }
+
+        /// <summary>
         /// Options for the registration in KH.
         /// </summary>
         [JsonProperty("kh")]
@@ -403,6 +493,15 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("kz")]
 #endif
         public RegistrationCountryOptionsKzOptions Kz { get; set; }
+
+        /// <summary>
+        /// Options for the registration in LA.
+        /// </summary>
+        [JsonProperty("la")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("la")]
+#endif
+        public RegistrationCountryOptionsLaOptions La { get; set; }
 
         /// <summary>
         /// Options for the registration in LT.
@@ -565,6 +664,15 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("pe")]
 #endif
         public RegistrationCountryOptionsPeOptions Pe { get; set; }
+
+        /// <summary>
+        /// Options for the registration in PH.
+        /// </summary>
+        [JsonProperty("ph")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ph")]
+#endif
+        public RegistrationCountryOptionsPhOptions Ph { get; set; }
 
         /// <summary>
         /// Options for the registration in PL.
