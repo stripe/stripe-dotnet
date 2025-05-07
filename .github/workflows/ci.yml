@@ -65,19 +65,7 @@ jobs:
             OPENAPI_VERSION=$CURRENT_OPENAPI_VERSION
           fi
 
-          CURRENT_OPENAPI_SPEC=$(realpath latest.yaml)
-          CURRENT_OPENAPI_SPEC_JSON=${CURRENT_OPENAPI_SPEC%.yaml}.json
-          CURRENT_FIXTURES_JSON=${CURRENT_OPENAPI_SPEC%/*}/fixtures.json
-
-          SPEC_NAME="spec3.sdk.yaml"
-          FIXTURES_NAME="fixtures3.json"
-          if [[ "$GITHUB_BASE" == *"b"* ]]; then
-            SPEC_NAME="spec3.beta.sdk.yaml"
-            FIXTURES_NAME="fixtures3.beta.json"
-          fi
-          curl "${CURL_OPTS[@]}" https://raw.githubusercontent.com/stripe/openapi/$OPENAPI_VERSION/openapi/${SPEC_NAME%.yaml}.json -o $CURRENT_OPENAPI_SPEC_JSON
-          curl "${CURL_OPTS[@]}" https://raw.githubusercontent.com/stripe/openapi/$OPENAPI_VERSION/openapi/$FIXTURES_NAME -o $CURRENT_FIXTURES_JSON
-
+          echo "OPENAPI_VERSION=$OPENAPI_VERSION" >> $GITHUB_ENV
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
           GITHUB_BASE: ${{ github.base_ref || github.ref_name }}
@@ -86,8 +74,7 @@ jobs:
         with:
           # Used to determine if stripe-mock runs in beta mode
           base: ${{ github.base_ref || github.ref_name }}
-          fixtures: "/workspace/fixtures.json"
-          spec_path: "/workspace/latest.json"
+          openapi_version: ${{ env.OPENAPI_VERSION }}
 
       - name: Run test suite
         run: just ci-test
