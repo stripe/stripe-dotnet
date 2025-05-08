@@ -266,10 +266,10 @@ StripeConfiguration.EnableTelemetry = false;
 
 ### Public Preview SDKs
 
-Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via the beta version of this package.
+Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-beta.X` suffix like `45.1.0-beta.2`.
 We would love for you to try these as we incrementally release new features and improve them based on your feedback.
 
-The public preview SDKs are different versions of the same package as the stable SDKs. These versions are appended with `-beta.X` such as `45.0.0-beta.1`. To install, choose the version that includes support for the preview feature you are interested in by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the version parameter with `dotnet add package` command:
+To install, choose the version that includes support for the preview feature you are interested in by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the version parameter with `dotnet add package` command:
 
 ```
 dotnet add package Stripe.net --version <replace-with-the-version-of-your-choice>
@@ -278,7 +278,7 @@ dotnet add package Stripe.net --version <replace-with-the-version-of-your-choice
 > **Note**
 > There can be breaking changes between two versions of the public preview SDKs without a bump in the major version. Therefore we recommend pinning the package version to a specific version in your project file. This way you can install the same version each time without breaking changes unless you are intentionally looking for the latest public preview SDK.
 
-If your beta feature requires a `Stripe-Version` header to be sent, set the `StripeConfiguration.ApiVersion` property with the `StripeConfiguration.AddBetaVersion` function (available only in the public preview SDKs):
+Some preview features require a name and version to be set in the `Stripe-Version` header like `feature_beta=v3`. If your preview feature has this requirement, use the `StripeConfiguration.AddBetaVersion` function (available only in the public preview SDKs):
 
 ```csharp
 StripeConfiguration.AddBetaVersion("feature_beta", "v3");
