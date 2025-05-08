@@ -1,6 +1,5 @@
 # Changelog
 
-
 ## 48.2.0-beta.2 - 2025-04-30
 * [#3122](https://github.com/stripe/stripe-dotnet/pull/3122) Update generated code for beta
   Release specs are identical.
@@ -31,7 +30,6 @@
   * Add support for `Klarna` on `PaymentMethodDomain`
   * Add support for `PendingReason` on `Refund`
   * Add support for `Aw`, `Az`, `Bd`, `Bf`, `Bj`, `Cm`, `Cv`, `Et`, `In`, `Kg`, `La`, and `Ph` on `Tax.Registration.CountryOptions` and `TaxRegistrationCountryOptionsOptions`
-
 
 ## 48.1.0-beta.4 - 2025-04-17
 * [#3099](https://github.com/stripe/stripe-dotnet/pull/3099) Update generated code for beta
