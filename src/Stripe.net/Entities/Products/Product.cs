@@ -191,15 +191,6 @@ namespace Stripe
         public ProductPackageDimensions PackageDimensions { get; set; }
 
         /// <summary>
-        /// Provisioning configuration for this product.
-        /// </summary>
-        [JsonProperty("provisioning")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("provisioning")]
-#endif
-        public ProductProvisioning Provisioning { get; set; }
-
-        /// <summary>
         /// Whether this product is shipped (i.e., physical goods).
         /// </summary>
         [JsonProperty("shippable")]

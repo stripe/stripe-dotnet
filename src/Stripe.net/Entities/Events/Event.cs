@@ -81,6 +81,9 @@ namespace Stripe
 #endif
         public string ApiVersion { get; set; }
 
+        /// <summary>
+        /// Authentication context needed to fetch the event or related object.
+        /// </summary>
         [JsonProperty("context")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("context")]
@@ -154,7 +157,6 @@ namespace Stripe
         /// <c>application_fee.created</c>, <c>application_fee.refund.updated</c>,
         /// <c>application_fee.refunded</c>, <c>balance.available</c>,
         /// <c>balance_settings.updated</c>, <c>billing.alert.triggered</c>,
-        /// <c>billing.meter_error_report.triggered</c>,
         /// <c>billing_portal.configuration.created</c>,
         /// <c>billing_portal.configuration.updated</c>, <c>billing_portal.session.created</c>,
         /// <c>capability.updated</c>, <c>capital.financing_offer.accepted</c>,

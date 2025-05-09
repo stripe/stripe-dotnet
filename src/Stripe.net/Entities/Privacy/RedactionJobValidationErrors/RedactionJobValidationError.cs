@@ -30,6 +30,10 @@ namespace Stripe.Privacy
 #endif
         public string Object { get; set; }
 
+        /// <summary>
+        /// One of: <c>invalid_cascading_source</c>, <c>invalid_file_purpose</c>,
+        /// <c>invalid_state</c>, <c>locked_by_other_job</c>, or <c>too_many_objects</c>.
+        /// </summary>
         [JsonProperty("code")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("code")]

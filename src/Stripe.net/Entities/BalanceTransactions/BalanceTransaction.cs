@@ -63,6 +63,16 @@ namespace Stripe
         public DateTime AvailableOn { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The balance that this transaction impacts.
+        /// One of: <c>issuing</c>, <c>payments</c>, or <c>refund_and_dispute_prefunding</c>.
+        /// </summary>
+        [JsonProperty("balance_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_type")]
+#endif
+        public string BalanceType { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("created")]

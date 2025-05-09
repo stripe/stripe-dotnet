@@ -28,6 +28,10 @@ namespace Stripe.Issuing
 #endif
         public string Currency { get; set; }
 
+        /// <summary>
+        /// The new financial account ID the card will be associated with. This field allows a card
+        /// to be reassigned to a different financial account.
+        /// </summary>
         [JsonProperty("financial_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
