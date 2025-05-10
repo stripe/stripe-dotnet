@@ -266,7 +266,10 @@ namespace Stripe
         /// If you don't provide the <c>payment_method</c> parameter or the <c>source</c> parameter
         /// with <c>confirm=true</c>, <c>source</c> automatically populates with
         /// <c>customer.default_source</c> to improve migration for users of the Charges API. We
-        /// recommend that you explicitly provide the <c>payment_method</c> moving forward.
+        /// recommend that you explicitly provide the <c>payment_method</c> moving forward. If the
+        /// payment method is attached to a Customer, you must also provide the ID of that Customer
+        /// as the <a href="https://stripe.com/docs/api#create_payment_intent-customer">customer</a>
+        /// parameter of this PaymentIntent. end.
         /// </summary>
         [JsonProperty("payment_method")]
 #if NET6_0_OR_GREATER

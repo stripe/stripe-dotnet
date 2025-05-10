@@ -112,11 +112,6 @@ namespace Stripe
         public const string BillingCreditGrantUpdated = "billing.credit_grant.updated";
 
         /// <summary>
-        /// Notifies of errors on a billing meter.
-        /// </summary>
-        public const string BillingMeterErrorReportTriggered = "billing.meter_error_report.triggered";
-
-        /// <summary>
         /// Occurs when a meter is created.
         /// </summary>
         public const string BillingMeterCreated = "billing.meter.created";

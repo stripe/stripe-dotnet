@@ -65,12 +65,12 @@ namespace Stripe
         /// proration for that period.
         /// </summary>
         [JsonProperty("cancel_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancel_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-        public DateTime? CancelAt { get; set; }
+        public AnyOf<DateTime?, SubscriptionCancelAt> CancelAt { get; set; }
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
@@ -320,11 +320,12 @@ namespace Stripe
         public string ProrationBehavior { get; set; }
 
         /// <summary>
-        /// If set, the proration will be calculated as though the subscription was updated at the
-        /// given time. This can be used to apply exactly the same proration that was previewed with
-        /// <a href="https://stripe.com/docs/api#upcoming_invoice">upcoming invoice</a> endpoint. It
-        /// can also be used to implement custom proration logic, such as prorating by day instead
-        /// of by second, by providing the time that you wish to use for proration calculations.
+        /// If set, prorations will be calculated as though the subscription was updated at the
+        /// given time. This can be used to apply exactly the same prorations that were previewed
+        /// with the <a href="https://stripe.com/docs/api/invoices/create_preview">create
+        /// preview</a> endpoint. <c>proration_date</c> can also be used to implement custom
+        /// proration logic, such as prorating by day instead of by second, by providing the time
+        /// that you wish to use for proration calculations.
         /// </summary>
         [JsonProperty("proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

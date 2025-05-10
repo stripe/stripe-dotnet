@@ -124,7 +124,10 @@ namespace Stripe
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a
         /// href="https://stripe.com/docs/payments/payment-methods/transitioning#compatibility">compatible
-        /// Source</a> object) to attach to this PaymentIntent.
+        /// Source</a> object) to attach to this PaymentIntent. If the payment method is attached to
+        /// a Customer, it must match the <a
+        /// href="https://stripe.com/docs/api#create_payment_intent-customer">customer</a> that is
+        /// set on this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
 #if NET6_0_OR_GREATER

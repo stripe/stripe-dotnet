@@ -44,6 +44,16 @@ namespace Stripe.Privacy
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
+        /// the object exists in test mode.
+        /// </summary>
+        [JsonProperty("livemode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("livemode")]
+#endif
+        public bool Livemode { get; set; }
+
+        /// <summary>
         /// The objects at the root level that are subject to redaction.
         /// </summary>
         [JsonProperty("objects")]
@@ -55,6 +65,8 @@ namespace Stripe.Privacy
         /// <summary>
         /// The status field represents the current state of the redaction job. It can take on any
         /// of the following values: VALIDATING, READY, REDACTING, SUCCEEDED, CANCELED, FAILED.
+        /// One of: <c>canceled</c>, <c>canceling</c>, <c>created</c>, <c>failed</c>, <c>ready</c>,
+        /// <c>redacting</c>, <c>succeeded</c>, or <c>validating</c>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER
@@ -67,6 +79,7 @@ namespace Stripe.Privacy
         /// redactable in the 1st traversal, otherwise error. If "fix", where possible, we will
         /// auto-fix any validation errors (e.g. by auto-transitioning objects to a terminal state,
         /// etc.) in the 2nd traversal before redacting.
+        /// One of: <c>error</c>, or <c>fix</c>.
         /// </summary>
         [JsonProperty("validation_behavior")]
 #if NET6_0_OR_GREATER
