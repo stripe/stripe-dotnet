@@ -9,8 +9,9 @@ namespace Stripe.Privacy
 #endif
 
     /// <summary>
-    /// Redaction Jobs store the status of a redaction request. They are created when a
-    /// redaction request is made and track the redaction validation and execution.
+    /// The Redaction Job object is used to redact Stripe objects. It is used to coordinate the
+    /// removal of personal information from selected objects, making them permanently
+    /// inaccessible in the Stripe Dashboard and API.
     /// </summary>
     public class RedactionJob : StripeEntity<RedactionJob>, IHasId, IHasObject
     {
@@ -54,7 +55,7 @@ namespace Stripe.Privacy
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The objects at the root level that are subject to redaction.
+        /// The objects to redact in this job.
         /// </summary>
         [JsonProperty("objects")]
 #if NET6_0_OR_GREATER
@@ -63,8 +64,7 @@ namespace Stripe.Privacy
         public RedactionJobObjects Objects { get; set; }
 
         /// <summary>
-        /// The status field represents the current state of the redaction job. It can take on any
-        /// of the following values: VALIDATING, READY, REDACTING, SUCCEEDED, CANCELED, FAILED.
+        /// The status of the job.
         /// One of: <c>canceled</c>, <c>canceling</c>, <c>created</c>, <c>failed</c>, <c>ready</c>,
         /// <c>redacting</c>, <c>succeeded</c>, or <c>validating</c>.
         /// </summary>
@@ -75,10 +75,8 @@ namespace Stripe.Privacy
         public string Status { get; set; }
 
         /// <summary>
-        /// Default is "error". If "error", we will make sure all objects in the graph are
-        /// redactable in the 1st traversal, otherwise error. If "fix", where possible, we will
-        /// auto-fix any validation errors (e.g. by auto-transitioning objects to a terminal state,
-        /// etc.) in the 2nd traversal before redacting.
+        /// Validation behavior determines how a job validates objects for redaction eligibility.
+        /// Default is <c>error</c>.
         /// One of: <c>error</c>, or <c>fix</c>.
         /// </summary>
         [JsonProperty("validation_behavior")]

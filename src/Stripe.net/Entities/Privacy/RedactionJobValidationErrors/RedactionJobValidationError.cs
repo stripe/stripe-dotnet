@@ -8,7 +8,8 @@ namespace Stripe.Privacy
 #endif
 
     /// <summary>
-    /// Validation errors.
+    /// The Redaction Job validation error object contains information about errors that affect
+    /// the ability to redact a specific object in a redaction job.
     /// </summary>
     public class RedactionJobValidationError : StripeEntity<RedactionJobValidationError>, IHasId, IHasObject
     {
@@ -31,6 +32,7 @@ namespace Stripe.Privacy
         public string Object { get; set; }
 
         /// <summary>
+        /// A code indicating the reason for the error.
         /// One of: <c>invalid_cascading_source</c>, <c>invalid_file_purpose</c>,
         /// <c>invalid_state</c>, <c>locked_by_other_job</c>, or <c>too_many_objects</c>.
         /// </summary>
@@ -40,12 +42,19 @@ namespace Stripe.Privacy
 #endif
         public string Code { get; set; }
 
+        /// <summary>
+        /// If the error is related to a specific object, this field will include the object's
+        /// identifier in <c>id</c> and object type in <c>object</c>.
+        /// </summary>
         [JsonProperty("erroring_object")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("erroring_object")]
 #endif
         public Dictionary<string, string> ErroringObject { get; set; }
 
+        /// <summary>
+        /// A human-readable message providing more details about the error.
+        /// </summary>
         [JsonProperty("message")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("message")]
