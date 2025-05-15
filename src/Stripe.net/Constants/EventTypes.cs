@@ -668,6 +668,11 @@ namespace Stripe
         public const string InvoicePaymentOverpaid = "invoice.payment.overpaid";
 
         /// <summary>
+        /// Occurs when an InvoicePayment is successfully paid.
+        /// </summary>
+        public const string InvoicePaymentPaid = "invoice.payment.paid";
+
+        /// <summary>
         /// Occurs whenever an invoice email is sent out.
         /// </summary>
         public const string InvoiceSent = "invoice.sent";

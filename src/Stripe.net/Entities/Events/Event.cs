@@ -211,7 +211,7 @@ namespace Stripe
         /// <c>identity.verification_session.verified</c>, <c>invoice.created</c>,
         /// <c>invoice.deleted</c>, <c>invoice.finalization_failed</c>, <c>invoice.finalized</c>,
         /// <c>invoice.marked_uncollectible</c>, <c>invoice.overdue</c>, <c>invoice.overpaid</c>,
-        /// <c>invoice.paid</c>, <c>invoice.payment.overpaid</c>,
+        /// <c>invoice.paid</c>, <c>invoice.payment.overpaid</c>, <c>invoice.payment.paid</c>,
         /// <c>invoice.payment_action_required</c>, <c>invoice.payment_attempt_required</c>,
         /// <c>invoice.payment_failed</c>, <c>invoice.payment_succeeded</c>, <c>invoice.sent</c>,
         /// <c>invoice.upcoming</c>, <c>invoice.updated</c>, <c>invoice.voided</c>,
