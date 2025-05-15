@@ -21,6 +21,15 @@ namespace Stripe.Terminal
 #endif
         public string Account { get; set; }
 
+        /// <summary>
+        /// Represents a per-transaction override of a reader configuration.
+        /// </summary>
+        [JsonProperty("confirm_config")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("confirm_config")]
+#endif
+        public ReaderActionConfirmPaymentIntentConfirmConfig ConfirmConfig { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>
