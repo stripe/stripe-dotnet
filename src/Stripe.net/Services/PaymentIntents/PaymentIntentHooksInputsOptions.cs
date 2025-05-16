@@ -6,12 +6,15 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PaymentIntentAsyncWorkflowsInputs : StripeEntity<PaymentIntentAsyncWorkflowsInputs>
+    public class PaymentIntentHooksInputsOptions : INestedOptions
     {
+        /// <summary>
+        /// Tax arguments for automations.
+        /// </summary>
         [JsonProperty("tax")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax")]
 #endif
-        public PaymentIntentAsyncWorkflowsInputsTax Tax { get; set; }
+        public PaymentIntentHooksInputsTaxOptions Tax { get; set; }
     }
 }

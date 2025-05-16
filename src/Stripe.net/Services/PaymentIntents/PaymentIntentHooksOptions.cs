@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PaymentIntentAsyncWorkflowsOptions : INestedOptions
+    public class PaymentIntentHooksOptions : INestedOptions
     {
         /// <summary>
         /// Arguments passed in automations.
@@ -15,6 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inputs")]
 #endif
-        public PaymentIntentAsyncWorkflowsInputsOptions Inputs { get; set; }
+        public PaymentIntentHooksInputsOptions Inputs { get; set; }
     }
 }

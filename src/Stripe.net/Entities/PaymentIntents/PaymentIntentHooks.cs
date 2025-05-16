@@ -6,12 +6,12 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PaymentIntentAsyncWorkflows : StripeEntity<PaymentIntentAsyncWorkflows>
+    public class PaymentIntentHooks : StripeEntity<PaymentIntentHooks>
     {
         [JsonProperty("inputs")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inputs")]
 #endif
-        public PaymentIntentAsyncWorkflowsInputs Inputs { get; set; }
+        public PaymentIntentHooksInputs Inputs { get; set; }
     }
 }

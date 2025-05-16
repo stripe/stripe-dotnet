@@ -24,15 +24,6 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
-        /// Automations to be run during the PaymentIntent lifecycle.
-        /// </summary>
-        [JsonProperty("async_workflows")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("async_workflows")]
-#endif
-        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
-
-        /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
@@ -83,6 +74,15 @@ namespace Stripe
         [STJS.JsonPropertyName("fx_quote")]
 #endif
         public string FxQuote { get; set; }
+
+        /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("hooks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hooks")]
+#endif
+        public PaymentIntentHooksOptions Hooks { get; set; }
 
         /// <summary>
         /// ID of the mandate that's used for this payment.

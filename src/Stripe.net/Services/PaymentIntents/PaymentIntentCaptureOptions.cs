@@ -34,15 +34,6 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
-        /// Automations to be run during the PaymentIntent lifecycle.
-        /// </summary>
-        [JsonProperty("async_workflows")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("async_workflows")]
-#endif
-        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
-
-        /// <summary>
         /// Defaults to <c>true</c>. When capturing a PaymentIntent, setting <c>final_capture</c> to
         /// <c>false</c> notifies Stripe to not release the remaining uncaptured funds to make sure
         /// that they're captured in future requests. You can only use this setting when <a
@@ -54,6 +45,15 @@ namespace Stripe
         [STJS.JsonPropertyName("final_capture")]
 #endif
         public bool? FinalCapture { get; set; }
+
+        /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("hooks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hooks")]
+#endif
+        public PaymentIntentHooksOptions Hooks { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can

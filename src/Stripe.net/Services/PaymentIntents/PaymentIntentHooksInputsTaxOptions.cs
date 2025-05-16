@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PaymentIntentAsyncWorkflowsInputsTaxOptions : INestedOptions
+    public class PaymentIntentHooksInputsTaxOptions : INestedOptions
     {
         /// <summary>
         /// The <a href="https://stripe.com/docs/api/tax/calculations">TaxCalculation</a> id.
