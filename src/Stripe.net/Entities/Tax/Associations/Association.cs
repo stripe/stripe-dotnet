@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -51,19 +52,12 @@ namespace Stripe.Tax
         public string PaymentIntent { get; set; }
 
         /// <summary>
-        /// Status of the Tax Association.
-        /// One of: <c>committed</c>, or <c>errored</c>.
+        /// Information about the tax transactions linked to this payment intent.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonProperty("tax_transaction_attempts")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("status")]
+        [STJS.JsonPropertyName("tax_transaction_attempts")]
 #endif
-        public string Status { get; set; }
-
-        [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("status_details")]
-#endif
-        public AssociationStatusDetails StatusDetails { get; set; }
+        public List<AssociationTaxTransactionAttempt> TaxTransactionAttempts { get; set; }
     }
 }
