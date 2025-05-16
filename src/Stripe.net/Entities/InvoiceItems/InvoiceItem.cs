@@ -259,7 +259,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The parent that generated this invoice.
+        /// The parent that generated this invoice item.
         /// </summary>
         [JsonProperty("parent")]
 #if NET6_0_OR_GREATER
