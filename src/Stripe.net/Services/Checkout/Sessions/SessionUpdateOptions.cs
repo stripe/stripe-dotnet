@@ -29,7 +29,8 @@ namespace Stripe.Checkout
         /// To update an existing line item, specify its <c>id</c> along with the new values of the
         /// fields to update.
         ///
-        /// To add a new line item, specify a <c>price</c> and <c>quantity</c>.
+        /// To add a new line item, specify one of <c>price</c> or <c>price_data</c> and
+        /// <c>quantity</c>.
         ///
         /// To remove an existing line item, omit the line item's ID from the retransmitted array.
         ///

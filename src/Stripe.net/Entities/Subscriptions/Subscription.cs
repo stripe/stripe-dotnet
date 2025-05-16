@@ -122,8 +122,7 @@ namespace Stripe
         public SubscriptionBillingCycleAnchorConfig BillingCycleAnchorConfig { get; set; }
 
         /// <summary>
-        /// Configure billing_mode in each subscription to opt in improved credit proration
-        /// behavior.
+        /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// One of: <c>classic</c>, or <c>flexible</c>.
         /// </summary>
         [JsonProperty("billing_mode")]
@@ -131,6 +130,15 @@ namespace Stripe
         [STJS.JsonPropertyName("billing_mode")]
 #endif
         public string BillingMode { get; set; }
+
+        /// <summary>
+        /// Details about when the current billing_mode was updated.
+        /// </summary>
+        [JsonProperty("billing_mode_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode_details")]
+#endif
+        public SubscriptionBillingModeDetails BillingModeDetails { get; set; }
 
         /// <summary>
         /// A date in the future at which the subscription will automatically get canceled.
@@ -145,7 +153,8 @@ namespace Stripe
 
         /// <summary>
         /// Whether this subscription will (if <c>status=active</c>) or did (if
-        /// <c>status=canceled</c>) cancel at the end of the current billing period.
+        /// <c>status=canceled</c>) cancel at the end of the current billing period. This field will
+        /// be removed in a future API version. Please use <c>cancel_at</c> instead.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
 #if NET6_0_OR_GREATER

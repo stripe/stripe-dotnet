@@ -255,8 +255,8 @@ namespace Stripe
         public SubscriptionSchedulePhasePauseCollection PauseCollection { get; set; }
 
         /// <summary>
-        /// If the subscription schedule will prorate when transitioning to this phase. Possible
-        /// values are <c>create_prorations</c> and <c>none</c>.
+        /// When transitioning phases, controls how prorations are handled (if any). Possible values
+        /// are <c>create_prorations</c>, <c>none</c>, and <c>always_invoice</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]

@@ -9,6 +9,7 @@ namespace Stripe.Privacy
     public class RedactionJobUpdateOptions : BaseOptions
     {
         /// <summary>
+        /// Determines the validation behavior of the job. Default is <c>error</c>.
         /// One of: <c>error</c>, or <c>fix</c>.
         /// </summary>
         [JsonProperty("validation_behavior")]

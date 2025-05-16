@@ -81,6 +81,9 @@ namespace Stripe
 #endif
         public string ApiVersion { get; set; }
 
+        /// <summary>
+        /// Authentication context needed to fetch the event or related object.
+        /// </summary>
         [JsonProperty("context")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("context")]
@@ -154,7 +157,6 @@ namespace Stripe
         /// <c>application_fee.created</c>, <c>application_fee.refund.updated</c>,
         /// <c>application_fee.refunded</c>, <c>balance.available</c>,
         /// <c>balance_settings.updated</c>, <c>billing.alert.triggered</c>,
-        /// <c>billing.meter_error_report.triggered</c>,
         /// <c>billing_portal.configuration.created</c>,
         /// <c>billing_portal.configuration.updated</c>, <c>billing_portal.session.created</c>,
         /// <c>capability.updated</c>, <c>capital.financing_offer.accepted</c>,
@@ -209,7 +211,7 @@ namespace Stripe
         /// <c>identity.verification_session.verified</c>, <c>invoice.created</c>,
         /// <c>invoice.deleted</c>, <c>invoice.finalization_failed</c>, <c>invoice.finalized</c>,
         /// <c>invoice.marked_uncollectible</c>, <c>invoice.overdue</c>, <c>invoice.overpaid</c>,
-        /// <c>invoice.paid</c>, <c>invoice.payment.overpaid</c>,
+        /// <c>invoice.paid</c>, <c>invoice.payment.overpaid</c>, <c>invoice.payment.paid</c>,
         /// <c>invoice.payment_action_required</c>, <c>invoice.payment_attempt_required</c>,
         /// <c>invoice.payment_failed</c>, <c>invoice.payment_succeeded</c>, <c>invoice.sent</c>,
         /// <c>invoice.upcoming</c>, <c>invoice.updated</c>, <c>invoice.voided</c>,

@@ -31,6 +31,15 @@ namespace Stripe.FinancialConnections
 #endif
         public string Object { get; set; }
 
+        /// <summary>
+        /// The list of countries supported by this institution, formatted as ISO country codes.
+        /// </summary>
+        [JsonProperty("countries")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("countries")]
+#endif
+        public List<string> Countries { get; set; }
+
         [JsonProperty("features")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]

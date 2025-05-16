@@ -14,6 +14,12 @@ namespace Stripe
 #endif
         public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCard Card { get; set; }
 
+        [JsonProperty("card_present")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_present")]
+#endif
+        public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresent CardPresent { get; set; }
+
         [JsonProperty("klarna")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("klarna")]

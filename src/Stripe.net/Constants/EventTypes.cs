@@ -112,11 +112,6 @@ namespace Stripe
         public const string BillingCreditGrantUpdated = "billing.credit_grant.updated";
 
         /// <summary>
-        /// Notifies of errors on a billing meter.
-        /// </summary>
-        public const string BillingMeterErrorReportTriggered = "billing.meter_error_report.triggered";
-
-        /// <summary>
         /// Occurs when a meter is created.
         /// </summary>
         public const string BillingMeterCreated = "billing.meter.created";
@@ -671,6 +666,11 @@ namespace Stripe
         /// Occurs when an InvoicePayment transitions to paid with a non-zero amount_overpaid.
         /// </summary>
         public const string InvoicePaymentOverpaid = "invoice.payment.overpaid";
+
+        /// <summary>
+        /// Occurs when an InvoicePayment is successfully paid.
+        /// </summary>
+        public const string InvoicePaymentPaid = "invoice.payment.paid";
 
         /// <summary>
         /// Occurs whenever an invoice email is sent out.
