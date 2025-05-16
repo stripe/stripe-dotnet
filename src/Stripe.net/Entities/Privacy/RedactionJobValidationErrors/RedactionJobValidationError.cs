@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Privacy
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -43,14 +42,14 @@ namespace Stripe.Privacy
         public string Code { get; set; }
 
         /// <summary>
-        /// If the error is related to a specific object, this field will include the object's
-        /// identifier in <c>id</c> and object type in <c>object</c>.
+        /// If the error is related to a specific object, this field includes the object's
+        /// identifier and object type.
         /// </summary>
         [JsonProperty("erroring_object")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("erroring_object")]
 #endif
-        public Dictionary<string, string> ErroringObject { get; set; }
+        public RedactionJobValidationErrorErroringObject ErroringObject { get; set; }
 
         /// <summary>
         /// A human-readable message providing more details about the error.
