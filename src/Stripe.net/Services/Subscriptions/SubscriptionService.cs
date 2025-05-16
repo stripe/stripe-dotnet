@@ -186,8 +186,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>This endpoint allows merchants to upgrade the billing_mode on their existing
-        /// subscriptions.</p>.
+        /// <p>Upgrade the billing_mode of an existing subscription.</p>.
         /// </summary>
         public virtual Subscription Migrate(string id, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null)
         {
@@ -195,8 +194,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>This endpoint allows merchants to upgrade the billing_mode on their existing
-        /// subscriptions.</p>.
+        /// <p>Upgrade the billing_mode of an existing subscription.</p>.
         /// </summary>
         public virtual Task<Subscription> MigrateAsync(string id, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -132,6 +132,15 @@ namespace Stripe
         public string BillingMode { get; set; }
 
         /// <summary>
+        /// Details about when the current billing_mode was updated.
+        /// </summary>
+        [JsonProperty("billing_mode_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode_details")]
+#endif
+        public SubscriptionBillingModeDetails BillingModeDetails { get; set; }
+
+        /// <summary>
         /// A date in the future at which the subscription will automatically get canceled.
         /// </summary>
         [JsonProperty("cancel_at")]
