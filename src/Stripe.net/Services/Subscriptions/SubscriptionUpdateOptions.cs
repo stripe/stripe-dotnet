@@ -74,7 +74,8 @@ namespace Stripe
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
-        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>. This param will be removed in a
+        /// future API version. Please use <c>cancel_at</c> instead.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
 #if NET6_0_OR_GREATER
@@ -310,11 +311,12 @@ namespace Stripe
         public string ProrationBehavior { get; set; }
 
         /// <summary>
-        /// If set, the proration will be calculated as though the subscription was updated at the
-        /// given time. This can be used to apply exactly the same proration that was previewed with
-        /// <a href="https://stripe.com/docs/api#upcoming_invoice">upcoming invoice</a> endpoint. It
-        /// can also be used to implement custom proration logic, such as prorating by day instead
-        /// of by second, by providing the time that you wish to use for proration calculations.
+        /// If set, prorations will be calculated as though the subscription was updated at the
+        /// given time. This can be used to apply exactly the same prorations that were previewed
+        /// with the <a href="https://stripe.com/docs/api/invoices/create_preview">create
+        /// preview</a> endpoint. <c>proration_date</c> can also be used to implement custom
+        /// proration logic, such as prorating by day instead of by second, by providing the time
+        /// that you wish to use for proration calculations.
         /// </summary>
         [JsonProperty("proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

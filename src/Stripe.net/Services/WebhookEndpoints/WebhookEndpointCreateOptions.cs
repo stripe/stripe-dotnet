@@ -40,7 +40,7 @@ namespace Stripe
         /// <c>2024-04-10</c>, <c>2024-06-20</c>, <c>2024-09-30.acacia</c>,
         /// <c>2024-10-28.acacia</c>, <c>2024-11-20.acacia</c>, <c>2024-12-18.acacia</c>,
         /// <c>2025-01-27.acacia</c>, <c>2025-02-24.acacia</c>, <c>2025-03-01.dashboard</c>,
-        /// <c>2025-03-31.basil</c>, or <c>2025-04-30.basil</c>.
+        /// <c>2025-03-31.basil</c>, <c>2025-04-30.basil</c>, or <c>2025-05-28.basil</c>.
         /// </summary>
         [JsonProperty("api_version")]
 #if NET6_0_OR_GREATER
@@ -120,10 +120,11 @@ namespace Stripe
         /// <c>identity.verification_session.verified</c>, <c>invoice.created</c>,
         /// <c>invoice.deleted</c>, <c>invoice.finalization_failed</c>, <c>invoice.finalized</c>,
         /// <c>invoice.marked_uncollectible</c>, <c>invoice.overdue</c>, <c>invoice.overpaid</c>,
-        /// <c>invoice.paid</c>, <c>invoice.payment_action_required</c>,
-        /// <c>invoice.payment_failed</c>, <c>invoice.payment_succeeded</c>, <c>invoice.sent</c>,
-        /// <c>invoice.upcoming</c>, <c>invoice.updated</c>, <c>invoice.voided</c>,
-        /// <c>invoice.will_be_due</c>, <c>invoiceitem.created</c>, <c>invoiceitem.deleted</c>,
+        /// <c>invoice.paid</c>, <c>invoice.payment.paid</c>,
+        /// <c>invoice.payment_action_required</c>, <c>invoice.payment_failed</c>,
+        /// <c>invoice.payment_succeeded</c>, <c>invoice.sent</c>, <c>invoice.upcoming</c>,
+        /// <c>invoice.updated</c>, <c>invoice.voided</c>, <c>invoice.will_be_due</c>,
+        /// <c>invoiceitem.created</c>, <c>invoiceitem.deleted</c>,
         /// <c>issuing_authorization.created</c>, <c>issuing_authorization.request</c>,
         /// <c>issuing_authorization.updated</c>, <c>issuing_card.created</c>,
         /// <c>issuing_card.updated</c>, <c>issuing_cardholder.created</c>,

@@ -323,6 +323,15 @@ namespace Stripe
         public PaymentMethodConfigurationJcbOptions Jcb { get; set; }
 
         /// <summary>
+        /// Kakao Pay is a popular local wallet available in South Korea.
+        /// </summary>
+        [JsonProperty("kakao_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kakao_pay")]
+#endif
+        public PaymentMethodConfigurationKakaoPayOptions KakaoPay { get; set; }
+
+        /// <summary>
         /// Klarna gives customers a range of <a
         /// href="https://stripe.com/docs/payments/klarna#payment-options">payment options</a>
         /// during checkout. Available payment options vary depending on the customer's billing
@@ -346,6 +355,15 @@ namespace Stripe
         [STJS.JsonPropertyName("konbini")]
 #endif
         public PaymentMethodConfigurationKonbiniOptions Konbini { get; set; }
+
+        /// <summary>
+        /// Korean cards let users pay using locally issued cards from South Korea.
+        /// </summary>
+        [JsonProperty("kr_card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kr_card")]
+#endif
+        public PaymentMethodConfigurationKrCardOptions KrCard { get; set; }
 
         /// <summary>
         /// <a href="https://stripe.com/docs/payments/link">Link</a> is a payment method network.
@@ -391,6 +409,15 @@ namespace Stripe
         [STJS.JsonPropertyName("name")]
 #endif
         public string Name { get; set; }
+
+        /// <summary>
+        /// Naver Pay is a popular local wallet available in South Korea.
+        /// </summary>
+        [JsonProperty("naver_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("naver_pay")]
+#endif
+        public PaymentMethodConfigurationNaverPayOptions NaverPay { get; set; }
 
         /// <summary>
         /// Stripe users in New Zealand can accept Bulk Electronic Clearing System (BECS) direct
@@ -439,6 +466,16 @@ namespace Stripe
         [STJS.JsonPropertyName("pay_by_bank")]
 #endif
         public PaymentMethodConfigurationPayByBankOptions PayByBank { get; set; }
+
+        /// <summary>
+        /// PAYCO is a [single-use](https://docs.stripe.com/payments/payment-methods#usage local
+        /// wallet available in South Korea.
+        /// </summary>
+        [JsonProperty("payco")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payco")]
+#endif
+        public PaymentMethodConfigurationPaycoOptions Payco { get; set; }
 
         /// <summary>
         /// PayNow is a Singapore-based payment method that allows customers to make a payment using
@@ -496,6 +533,16 @@ namespace Stripe
         [STJS.JsonPropertyName("revolut_pay")]
 #endif
         public PaymentMethodConfigurationRevolutPayOptions RevolutPay { get; set; }
+
+        /// <summary>
+        /// Samsung Pay is a [single-use](https://docs.stripe.com/payments/payment-methods#usage
+        /// local wallet available in South Korea.
+        /// </summary>
+        [JsonProperty("samsung_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("samsung_pay")]
+#endif
+        public PaymentMethodConfigurationSamsungPayOptions SamsungPay { get; set; }
 
         /// <summary>
         /// Satispay is a <a

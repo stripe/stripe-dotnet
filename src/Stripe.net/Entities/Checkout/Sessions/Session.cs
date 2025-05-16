@@ -753,7 +753,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (ID of the Subscription)
-        /// The ID of the subscription for Checkout Sessions in <c>subscription</c> mode.
+        /// The ID of the <a href="https://stripe.com/docs/api/subscriptions">Subscription</a> for
+        /// Checkout Sessions in <c>subscription</c> mode.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -767,7 +768,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the subscription for Checkout Sessions in <c>subscription</c> mode.
+        /// The ID of the <a href="https://stripe.com/docs/api/subscriptions">Subscription</a> for
+        /// Checkout Sessions in <c>subscription</c> mode.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

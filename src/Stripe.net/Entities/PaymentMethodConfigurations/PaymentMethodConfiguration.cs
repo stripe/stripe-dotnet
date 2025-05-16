@@ -228,6 +228,12 @@ namespace Stripe
 #endif
         public PaymentMethodConfigurationJcb Jcb { get; set; }
 
+        [JsonProperty("kakao_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kakao_pay")]
+#endif
+        public PaymentMethodConfigurationKakaoPay KakaoPay { get; set; }
+
         [JsonProperty("klarna")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("klarna")]
@@ -239,6 +245,12 @@ namespace Stripe
         [STJS.JsonPropertyName("konbini")]
 #endif
         public PaymentMethodConfigurationKonbini Konbini { get; set; }
+
+        [JsonProperty("kr_card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("kr_card")]
+#endif
+        public PaymentMethodConfigurationKrCard KrCard { get; set; }
 
         [JsonProperty("link")]
 #if NET6_0_OR_GREATER
@@ -277,6 +289,12 @@ namespace Stripe
 #endif
         public string Name { get; set; }
 
+        [JsonProperty("naver_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("naver_pay")]
+#endif
+        public PaymentMethodConfigurationNaverPay NaverPay { get; set; }
+
         [JsonProperty("nz_bank_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nz_bank_account")]
@@ -310,6 +328,12 @@ namespace Stripe
 #endif
         public PaymentMethodConfigurationPayByBank PayByBank { get; set; }
 
+        [JsonProperty("payco")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payco")]
+#endif
+        public PaymentMethodConfigurationPayco Payco { get; set; }
+
         [JsonProperty("paynow")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paynow")]
@@ -339,6 +363,12 @@ namespace Stripe
         [STJS.JsonPropertyName("revolut_pay")]
 #endif
         public PaymentMethodConfigurationRevolutPay RevolutPay { get; set; }
+
+        [JsonProperty("samsung_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("samsung_pay")]
+#endif
+        public PaymentMethodConfigurationSamsungPay SamsungPay { get; set; }
 
         [JsonProperty("satispay")]
 #if NET6_0_OR_GREATER

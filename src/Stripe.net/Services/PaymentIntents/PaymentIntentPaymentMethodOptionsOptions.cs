@@ -418,6 +418,16 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsSamsungPayOptions SamsungPay { get; set; }
 
         /// <summary>
+        /// If this is a <c>satispay</c> PaymentMethod, this sub-hash contains details about the
+        /// Satispay payment method options.
+        /// </summary>
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public PaymentIntentPaymentMethodOptionsSatispayOptions Satispay { get; set; }
+
+        /// <summary>
         /// If this is a <c>sepa_debit</c> PaymentIntent, this sub-hash contains details about the
         /// SEPA Debit payment method options.
         /// </summary>
