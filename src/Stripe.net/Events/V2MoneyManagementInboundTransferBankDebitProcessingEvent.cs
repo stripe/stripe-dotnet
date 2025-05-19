@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// An InboundTransfer is now processing.
+    /// Occurs when an InboundTransfer starts processing.
     /// </summary>
     public class V2MoneyManagementInboundTransferBankDebitProcessingEvent : V2.Event
     {

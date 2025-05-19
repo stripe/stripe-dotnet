@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// An InboundTransfer has been queued.
+    /// Occurs when an InboundTransfer is queued.
     /// </summary>
     public class V2MoneyManagementInboundTransferBankDebitQueuedEvent : V2.Event
     {

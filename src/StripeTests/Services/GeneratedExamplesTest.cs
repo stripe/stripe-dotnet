@@ -7295,7 +7295,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_credits",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_transfer\":null,\"bank_transfer\":null,\"card_spend\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"returned\",\"status_details\":null,\"status_transitions\":null,\"type\":\"card_spend\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_transfer\":null,\"bank_transfer\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"returned\",\"status_details\":null,\"status_transitions\":null,\"type\":\"balance_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedCredits;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.ReceivedCredit> receivedCredits = service
@@ -7312,7 +7312,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_credits/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_transfer\":null,\"bank_transfer\":null,\"card_spend\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"returned\",\"status_details\":null,\"status_transitions\":null,\"type\":\"card_spend\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_transfer\":null,\"bank_transfer\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"returned\",\"status_details\":null,\"status_transitions\":null,\"type\":\"balance_transfer\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedCredits;
             Stripe.V2.MoneyManagement.ReceivedCredit receivedCredit = service
@@ -7329,7 +7329,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_debits",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"bank_transfer\":null,\"card_spend\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"canceled\",\"status_details\":null,\"status_transitions\":null,\"type\":\"bank_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"bank_transfer\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"canceled\",\"status_details\":null,\"status_transitions\":null,\"type\":\"bank_transfer\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedDebits;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.ReceivedDebit> receivedDebits = service
@@ -7346,7 +7346,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_debits/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"bank_transfer\":null,\"card_spend\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"canceled\",\"status_details\":null,\"status_transitions\":null,\"type\":\"bank_transfer\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"bank_transfer\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":null,\"financial_account\":\"financial_account\",\"livemode\":true,\"receipt_url\":null,\"status\":\"canceled\",\"status_details\":null,\"status_transitions\":null,\"type\":\"bank_transfer\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedDebits;
             Stripe.V2.MoneyManagement.ReceivedDebit receivedDebit = service.Get(
@@ -7561,6 +7561,85 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/test_helpers/financial_addresses/id_123/generate_microdeposits");
+        }
+
+        [Fact]
+        public void TestV2PaymentsOffSessionPaymentPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/payments/off_session_payments/id_123/cancel",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.payments.off_session_payment\",\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"attempts\":542738246,\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"failure_reason\":null,\"last_authorization_attempt_error\":null,\"latest_payment_attempt_record\":null,\"livemode\":true,\"metadata\":{\"undefined\":\"metadata\"},\"on_behalf_of\":null,\"payment_method\":\"payment_method\",\"payment_record\":null,\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"none\"},\"statement_descriptor\":null,\"statement_descriptor_suffix\":null,\"status\":\"pending\",\"test_clock\":null,\"transfer_data\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Payments.OffSessionPayments;
+            Stripe.V2.Payments.OffSessionPayment offSessionPayment = service
+                .Cancel("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/payments/off_session_payments/id_123/cancel");
+        }
+
+        [Fact]
+        public void TestV2PaymentsOffSessionPaymentPost2()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/payments/off_session_payments",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.payments.off_session_payment\",\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"attempts\":542738246,\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"failure_reason\":null,\"last_authorization_attempt_error\":null,\"latest_payment_attempt_record\":null,\"livemode\":true,\"metadata\":{\"undefined\":\"metadata\"},\"on_behalf_of\":null,\"payment_method\":\"payment_method\",\"payment_record\":null,\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"none\"},\"statement_descriptor\":null,\"statement_descriptor_suffix\":null,\"status\":\"pending\",\"test_clock\":null,\"transfer_data\":null}");
+            var options = new Stripe.V2.Payments.OffSessionPaymentCreateOptions
+            {
+                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                Cadence = "unscheduled",
+                Customer = "customer",
+                Metadata = new Dictionary<string, string>
+                {
+                    { "undefined", "metadata" },
+                },
+                PaymentMethod = "payment_method",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Payments.OffSessionPayments;
+            Stripe.V2.Payments.OffSessionPayment offSessionPayment = service
+                .Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/payments/off_session_payments");
+        }
+
+        [Fact]
+        public void TestV2PaymentsOffSessionPaymentGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/payments/off_session_payments",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.payments.off_session_payment\",\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"attempts\":542738246,\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"failure_reason\":null,\"last_authorization_attempt_error\":null,\"latest_payment_attempt_record\":null,\"livemode\":true,\"metadata\":{\"undefined\":\"metadata\"},\"on_behalf_of\":null,\"payment_method\":\"payment_method\",\"payment_record\":null,\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"none\"},\"statement_descriptor\":null,\"statement_descriptor_suffix\":null,\"status\":\"pending\",\"test_clock\":null,\"transfer_data\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Payments.OffSessionPayments;
+            Stripe.V2.StripeList<Stripe.V2.Payments.OffSessionPayment> offSessionPayments = service
+                .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/payments/off_session_payments");
+        }
+
+        [Fact]
+        public void TestV2PaymentsOffSessionPaymentGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/payments/off_session_payments/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.payments.off_session_payment\",\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"attempts\":542738246,\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"failure_reason\":null,\"last_authorization_attempt_error\":null,\"latest_payment_attempt_record\":null,\"livemode\":true,\"metadata\":{\"undefined\":\"metadata\"},\"on_behalf_of\":null,\"payment_method\":\"payment_method\",\"payment_record\":null,\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"none\"},\"statement_descriptor\":null,\"statement_descriptor_suffix\":null,\"status\":\"pending\",\"test_clock\":null,\"transfer_data\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Payments.OffSessionPayments;
+            Stripe.V2.Payments.OffSessionPayment offSessionPayment = service
+                .Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/payments/off_session_payments/id_123");
         }
 
         [Fact]

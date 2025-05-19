@@ -8,9 +8,9 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Occurs when an OutboundPayment transitions into the canceled state.
+    /// Off session payment canceled event definition.
     /// </summary>
-    public class V2MoneyManagementOutboundPaymentCanceledEvent : V2.Event
+    public class V2PaymentsOffSessionPaymentCanceledEvent : V2.Event
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -26,17 +26,17 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<V2.MoneyManagement.OutboundPayment> FetchRelatedObjectAsync()
+        public Task<V2.Payments.OffSessionPayment> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<V2.MoneyManagement.OutboundPayment>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<V2.Payments.OffSessionPayment>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public V2.MoneyManagement.OutboundPayment FetchRelatedObject()
+        public V2.Payments.OffSessionPayment FetchRelatedObject()
         {
-            return this.FetchRelatedObject<V2.MoneyManagement.OutboundPayment>(this.RelatedObject);
+            return this.FetchRelatedObject<V2.Payments.OffSessionPayment>(this.RelatedObject);
         }
     }
 }
