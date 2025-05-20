@@ -70,7 +70,7 @@ jobs:
           PR_BODY: ${{ github.event.pull_request.body }}
           GITHUB_BASE: ${{ github.base_ref || github.ref_name }}
 
-      - uses: stripe/openapi/actions/stripe-mock@master
+      - uses: stripe/openapi/actions/stripe-mock@helenye-mock-spinup
         with:
           # Used to determine if stripe-mock runs in beta mode
           base: ${{ github.base_ref || github.ref_name }}
