@@ -125,10 +125,11 @@ namespace Stripe
         /// subscription schedule, including a preview of any prorations that will take place. To
         /// ensure that the actual proration is calculated exactly the same as the previewed
         /// proration, you should pass the <c>subscription_details.proration_date</c> parameter when
-        /// doing the actual subscription update. The recommended way to get only the prorations
-        /// being previewed is to consider only proration line items where <c>period[start]</c> is
-        /// equal to the <c>subscription_details.proration_date</c> value passed in the request.
-        /// </p>.
+        /// doing the actual subscription update.</p>.
+        ///
+        /// <p>The recommended way to get only the prorations being previewed on the invoice is to
+        /// consider line items where <c>parent.subscription_item_details.proration</c> is
+        /// <c>true</c>.</p>.
         ///
         /// <p>Note that when you are viewing an upcoming invoice, you are simply viewing a preview
         /// – the invoice has not yet been created. As such, the upcoming invoice will not show up
@@ -155,10 +156,11 @@ namespace Stripe
         /// subscription schedule, including a preview of any prorations that will take place. To
         /// ensure that the actual proration is calculated exactly the same as the previewed
         /// proration, you should pass the <c>subscription_details.proration_date</c> parameter when
-        /// doing the actual subscription update. The recommended way to get only the prorations
-        /// being previewed is to consider only proration line items where <c>period[start]</c> is
-        /// equal to the <c>subscription_details.proration_date</c> value passed in the request.
-        /// </p>.
+        /// doing the actual subscription update.</p>.
+        ///
+        /// <p>The recommended way to get only the prorations being previewed on the invoice is to
+        /// consider line items where <c>parent.subscription_item_details.proration</c> is
+        /// <c>true</c>.</p>.
         ///
         /// <p>Note that when you are viewing an upcoming invoice, you are simply viewing a preview
         /// – the invoice has not yet been created. As such, the upcoming invoice will not show up
