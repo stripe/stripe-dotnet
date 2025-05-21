@@ -141,6 +141,16 @@ namespace Stripe
         public SubscriptionBillingModeDetails BillingModeDetails { get; set; }
 
         /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
+        /// new billing period.
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
+        public SubscriptionBillingThresholds BillingThresholds { get; set; }
+
+        /// <summary>
         /// A date in the future at which the subscription will automatically get canceled.
         /// </summary>
         [JsonProperty("cancel_at")]
@@ -878,7 +888,8 @@ namespace Stripe
         public SubscriptionTrialSettings TrialSettings { get; set; }
 
         /// <summary>
-        /// If the subscription has a trial, the beginning of that trial.
+        /// If the subscription has a trial, the beginning of that trial. For subsequent trials,
+        /// this date remains as the start of the first ever trial on the subscription.
         /// </summary>
         [JsonProperty("trial_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

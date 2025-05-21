@@ -14,6 +14,16 @@ namespace Stripe
     public class QuotePreviewSubscriptionSchedulePhaseItem : StripeEntity<QuotePreviewSubscriptionSchedulePhaseItem>, IHasMetadata
     {
         /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the related subscription
+        /// advanced to a new billing period.
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
+        public QuotePreviewSubscriptionSchedulePhaseItemBillingThresholds BillingThresholds { get; set; }
+
+        /// <summary>
         /// The discounts applied to the subscription item. Subscription item discounts are applied
         /// before subscription discounts. Use <c>expand[]=discounts</c> to expand each discount.
         /// </summary>

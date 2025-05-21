@@ -59,6 +59,17 @@ namespace Stripe
         public SubscriptionBillingCycleAnchor BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
+        /// new billing period. When updating, pass an empty string to remove previously-defined
+        /// thresholds.
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
+        public SubscriptionBillingThresholdsOptions BillingThresholds { get; set; }
+
+        /// <summary>
         /// A timestamp at which the subscription should cancel. If set to a date before the current
         /// period ends, this will cause a proration if prorations have been enabled using
         /// <c>proration_behavior</c>. If set during a future period, this will always cause a
@@ -350,9 +361,10 @@ namespace Stripe
         /// <summary>
         /// Unix timestamp representing the end of the trial period the customer will get before
         /// being charged for the first time. This will always overwrite any trials that might apply
-        /// via a subscribed plan. If set, trial_end will override the default trial period of the
-        /// plan the customer is being subscribed to. The special value <c>now</c> can be provided
-        /// to end the customer's trial immediately. Can be at most two years from
+        /// via a subscribed plan. If set, <c>trial_end</c> will override the default trial period
+        /// of the plan the customer is being subscribed to. The <c>billing_cycle_anchor</c> will be
+        /// updated to the <c>trial_end</c> value. The special value <c>now</c> can be provided to
+        /// end the customer's trial immediately. Can be at most two years from
         /// <c>billing_cycle_anchor</c>.
         /// </summary>
         [JsonProperty("trial_end")]
