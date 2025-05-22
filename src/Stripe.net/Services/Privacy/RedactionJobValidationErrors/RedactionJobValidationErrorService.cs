@@ -26,7 +26,7 @@ namespace Stripe.Privacy
         }
 
         /// <summary>
-        /// <p>List validation errors method</p>.
+        /// <p>Returns a list of validation errors for the specified redaction job.</p>.
         /// </summary>
         public virtual StripeList<RedactionJobValidationError> List(string parentId, RedactionJobValidationErrorListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -34,7 +34,7 @@ namespace Stripe.Privacy
         }
 
         /// <summary>
-        /// <p>List validation errors method</p>.
+        /// <p>Returns a list of validation errors for the specified redaction job.</p>.
         /// </summary>
         public virtual Task<StripeList<RedactionJobValidationError>> ListAsync(string parentId, RedactionJobValidationErrorListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -42,7 +42,7 @@ namespace Stripe.Privacy
         }
 
         /// <summary>
-        /// <p>List validation errors method</p>.
+        /// <p>Returns a list of validation errors for the specified redaction job.</p>.
         /// </summary>
         public virtual IEnumerable<RedactionJobValidationError> ListAutoPaging(string parentId, RedactionJobValidationErrorListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -50,7 +50,7 @@ namespace Stripe.Privacy
         }
 
         /// <summary>
-        /// <p>List validation errors method</p>.
+        /// <p>Returns a list of validation errors for the specified redaction job.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<RedactionJobValidationError> ListAutoPagingAsync(string parentId, RedactionJobValidationErrorListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

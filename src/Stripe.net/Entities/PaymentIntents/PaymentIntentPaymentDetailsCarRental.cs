@@ -86,6 +86,12 @@ namespace Stripe
 #endif
         public PaymentIntentPaymentDetailsCarRentalDelivery Delivery { get; set; }
 
+        [JsonProperty("distance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("distance")]
+#endif
+        public PaymentIntentPaymentDetailsCarRentalDistance Distance { get; set; }
+
         /// <summary>
         /// The details of the drivers associated with the trip.
         /// </summary>
@@ -131,6 +137,15 @@ namespace Stripe
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
         public DateTime PickupAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// Name of the pickup location.
+        /// </summary>
+        [JsonProperty("pickup_location_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pickup_location_name")]
+#endif
+        public string PickupLocationName { get; set; }
 
         /// <summary>
         /// Rental rate.
@@ -179,6 +194,15 @@ namespace Stripe
         public DateTime ReturnAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Name of the return location.
+        /// </summary>
+        [JsonProperty("return_location_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("return_location_name")]
+#endif
+        public string ReturnLocationName { get; set; }
+
+        /// <summary>
         /// Indicates whether the goods or services are tax-exempt or tax is not collected.
         /// </summary>
         [JsonProperty("tax_exempt")]
@@ -186,5 +210,14 @@ namespace Stripe
         [STJS.JsonPropertyName("tax_exempt")]
 #endif
         public bool TaxExempt { get; set; }
+
+        /// <summary>
+        /// The vehicle identification number of the car.
+        /// </summary>
+        [JsonProperty("vehicle_identification_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("vehicle_identification_number")]
+#endif
+        public string VehicleIdentificationNumber { get; set; }
     }
 }

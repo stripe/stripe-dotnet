@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Event that is emitted every time an Outbound Payment is updated.
+    /// Occurs when an OutboundPayment is updated.
     /// </summary>
     public class V2MoneyManagementOutboundPaymentUpdatedEvent : V2.Event
     {

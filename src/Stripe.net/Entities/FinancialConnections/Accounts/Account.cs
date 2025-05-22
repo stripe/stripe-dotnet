@@ -103,6 +103,49 @@ namespace Stripe.FinancialConnections
 #endif
         public AccountInferredBalancesRefresh InferredBalancesRefresh { get; set; }
 
+        #region Expandable Institution
+
+        /// <summary>
+        /// (ID of the Institution)
+        /// The ID of the Financial Connections Institution this account belongs to. Note that this
+        /// relationship may sometimes change in rare circumstances (e.g. institution mergers).
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public string InstitutionId
+        {
+            get => this.InternalInstitution?.Id;
+            set => this.InternalInstitution = SetExpandableFieldId(value, this.InternalInstitution);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The ID of the Financial Connections Institution this account belongs to. Note that this
+        /// relationship may sometimes change in rare circumstances (e.g. institution mergers).
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public Institution Institution
+        {
+            get => this.InternalInstitution?.ExpandedObject;
+            set => this.InternalInstitution = SetExpandableFieldObject(value, this.InternalInstitution);
+        }
+
+        [JsonProperty("institution")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Institution>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("institution")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Institution>))]
+#endif
+        internal ExpandableField<Institution> InternalInstitution { get; set; }
+        #endregion
+
         /// <summary>
         /// The name of the institution that holds this account.
         /// </summary>

@@ -37,7 +37,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Retrieve a FinancialAddress. By default, the FinancialAddress will be returned in it's
+        /// Retrieve a FinancialAddress. By default, the FinancialAddress will be returned in its
         /// unexpanded state, revealing only the last 4 digits of the account number.
         /// </summary>
         public virtual FinancialAddress Get(string id, FinancialAddressGetOptions options = null, RequestOptions requestOptions = null)
@@ -46,7 +46,7 @@ namespace Stripe.V2.MoneyManagement
         }
 
         /// <summary>
-        /// Retrieve a FinancialAddress. By default, the FinancialAddress will be returned in it's
+        /// Retrieve a FinancialAddress. By default, the FinancialAddress will be returned in its
         /// unexpanded state, revealing only the last 4 digits of the account number.
         /// </summary>
         public virtual Task<FinancialAddress> GetAsync(string id, FinancialAddressGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

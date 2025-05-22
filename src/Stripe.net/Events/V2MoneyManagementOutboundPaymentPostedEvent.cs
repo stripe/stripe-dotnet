@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// An OutboundPayment has transitioned into the posted state.
+    /// Occurs when an OutboundPayment transitions into the posted state.
     /// </summary>
     public class V2MoneyManagementOutboundPaymentPostedEvent : V2.Event
     {

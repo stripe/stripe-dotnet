@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// The generated account link has been completed.
+    /// Occurs when the generated AccountLink is completed.
     /// </summary>
     public class V2CoreAccountLinkCompletedEvent : V2.Event
     {

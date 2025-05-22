@@ -101,6 +101,16 @@ namespace Stripe.Identity
         public string Number { get; set; }
 
         /// <summary>
+        /// Sex of the person in the document.
+        /// One of: <c>[redacted]</c>, <c>female</c>, <c>male</c>, or <c>unknown</c>.
+        /// </summary>
+        [JsonProperty("sex")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sex")]
+#endif
+        public string Sex { get; set; }
+
+        /// <summary>
         /// Status of this <c>document</c> check.
         /// One of: <c>unverified</c>, or <c>verified</c>.
         /// </summary>
@@ -119,5 +129,23 @@ namespace Stripe.Identity
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
+
+        /// <summary>
+        /// Place of birth as it appears in the document.
+        /// </summary>
+        [JsonProperty("unparsed_place_of_birth")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unparsed_place_of_birth")]
+#endif
+        public string UnparsedPlaceOfBirth { get; set; }
+
+        /// <summary>
+        /// Sex as it appears in the document.
+        /// </summary>
+        [JsonProperty("unparsed_sex")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unparsed_sex")]
+#endif
+        public string UnparsedSex { get; set; }
     }
 }

@@ -1,12 +1,13 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Tax
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class CalculationLineItemOptions : INestedOptions
+    public class CalculationLineItemOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// A positive integer representing the line item's total price in the <a
@@ -19,6 +20,17 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("amount")]
 #endif
         public long? Amount { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
+        /// </summary>
+        [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// If provided, the product's <c>tax_code</c> will be used as the line item's

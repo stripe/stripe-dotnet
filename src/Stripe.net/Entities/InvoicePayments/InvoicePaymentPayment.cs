@@ -16,7 +16,10 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Charge)
-        /// ID of the successful charge for this payment when <c>type</c> is <c>charge</c>.
+        /// ID of the successful charge for this payment when <c>type</c> is <c>charge</c>.Note:
+        /// charge is only surfaced if the charge object is not associated with a payment intent. If
+        /// the charge object does have a payment intent, the Invoice Payment surfaces the payment
+        /// intent instead.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -30,7 +33,10 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// ID of the successful charge for this payment when <c>type</c> is <c>charge</c>.
+        /// ID of the successful charge for this payment when <c>type</c> is <c>charge</c>.Note:
+        /// charge is only surfaced if the charge object is not associated with a payment intent. If
+        /// the charge object does have a payment intent, the Invoice Payment surfaces the payment
+        /// intent instead.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

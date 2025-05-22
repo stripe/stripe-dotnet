@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// An OutboundPayment has transitioned into the canceled state.
+    /// Occurs when an OutboundPayment transitions into the canceled state.
     /// </summary>
     public class V2MoneyManagementOutboundPaymentCanceledEvent : V2.Event
     {

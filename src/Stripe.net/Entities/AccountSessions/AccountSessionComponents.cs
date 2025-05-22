@@ -44,6 +44,12 @@ namespace Stripe
 #endif
         public AccountSessionComponentsCapitalFinancingPromotion CapitalFinancingPromotion { get; set; }
 
+        [JsonProperty("disputes_list")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("disputes_list")]
+#endif
+        public AccountSessionComponentsDisputesList DisputesList { get; set; }
+
         [JsonProperty("documents")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("documents")]
@@ -85,6 +91,12 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_details")]
 #endif
         public AccountSessionComponentsPaymentDetails PaymentDetails { get; set; }
+
+        [JsonProperty("payment_disputes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_disputes")]
+#endif
+        public AccountSessionComponentsPaymentDisputes PaymentDisputes { get; set; }
 
         [JsonProperty("payments")]
 #if NET6_0_OR_GREATER

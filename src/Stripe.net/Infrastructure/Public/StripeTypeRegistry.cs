@@ -36,7 +36,6 @@ namespace Stripe
                 },
                 { "billing.credit_grant", typeof(Billing.CreditGrant) },
                 { "billing.meter", typeof(Billing.Meter) },
-                { "billing.meter_error_report", typeof(Billing.MeterErrorReport) },
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
                 { "billing.meter_event_summary", typeof(Billing.MeterEventSummary) },
@@ -101,8 +100,6 @@ namespace Stripe
                 { "forwarding.request", typeof(Forwarding.Request) },
                 { "funding_instructions", typeof(FundingInstructions) },
                 { "fx_quote", typeof(FxQuote) },
-                { "gift_cards.card", typeof(GiftCards.Card) },
-                { "gift_cards.transaction", typeof(GiftCards.Transaction) },
                 { "identity.verification_report", typeof(Identity.VerificationReport) },
                 { "identity.verification_session", typeof(Identity.VerificationSession) },
                 { "invoice", typeof(Invoice) },
@@ -288,6 +285,7 @@ namespace Stripe
                     "v2.money_management.transaction_entry", typeof(
                     V2.MoneyManagement.TransactionEntry)
                 },
+                { "v2.payments.off_session_payment", typeof(V2.Payments.OffSessionPayment) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -406,6 +404,34 @@ namespace Stripe
                 {
                     "v2.core.event_destination.ping", typeof(
                     Events.V2CoreEventDestinationPingEvent)
+                },
+                {
+                    "v2.off_session_payment.requires_capture", typeof(
+                    Events.V2OffSessionPaymentRequiresCaptureEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.authorization_attempt_failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.authorization_attempt_started", typeof(
+                    Events.V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.canceled", typeof(
+                    Events.V2PaymentsOffSessionPaymentCanceledEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.created", typeof(
+                    Events.V2PaymentsOffSessionPaymentCreatedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentFailedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.succeeded", typeof(
+                    Events.V2PaymentsOffSessionPaymentSucceededEvent)
                 },
                 {
                     "v2.money_management.outbound_payment.canceled", typeof(

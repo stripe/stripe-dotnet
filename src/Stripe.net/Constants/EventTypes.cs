@@ -112,11 +112,6 @@ namespace Stripe
         public const string BillingCreditGrantUpdated = "billing.credit_grant.updated";
 
         /// <summary>
-        /// Notifies of errors on a billing meter.
-        /// </summary>
-        public const string BillingMeterErrorReportTriggered = "billing.meter_error_report.triggered";
-
-        /// <summary>
         /// Occurs when a meter is created.
         /// </summary>
         public const string BillingMeterCreated = "billing.meter.created";
@@ -596,6 +591,11 @@ namespace Stripe
         /// Occurs whenever a VerificationSession transitions to verified.
         /// </summary>
         public const string IdentityVerificationSessionVerified = "identity.verification_session.verified";
+
+        /// <summary>
+        /// Occurs when an InvoicePayment is successfully paid.
+        /// </summary>
+        public const string InvoicePaymentPaid = "invoice_payment.paid";
 
         /// <summary>
         /// Occurs whenever a new invoice is created. To learn how webhooks can be used with this

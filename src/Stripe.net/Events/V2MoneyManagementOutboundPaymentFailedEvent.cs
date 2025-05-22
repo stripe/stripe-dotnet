@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// An OutboundPayment has transitioned into the failed state.
+    /// Occurs when an OutboundPayment transitions into the failed state.
     /// </summary>
     public class V2MoneyManagementOutboundPaymentFailedEvent : V2.Event
     {
