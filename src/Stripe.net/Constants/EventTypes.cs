@@ -593,6 +593,11 @@ namespace Stripe
         public const string IdentityVerificationSessionVerified = "identity.verification_session.verified";
 
         /// <summary>
+        /// Occurs when an InvoicePayment is successfully paid.
+        /// </summary>
+        public const string InvoicePaymentPaid = "invoice_payment.paid";
+
+        /// <summary>
         /// Occurs whenever a new invoice is created. To learn how webhooks can be used with this
         /// event, and how they can affect it, see <a
         /// href="https://docs.stripe.com/subscriptions/webhooks">Using Webhooks with
@@ -666,11 +671,6 @@ namespace Stripe
         /// Occurs when an InvoicePayment transitions to paid with a non-zero amount_overpaid.
         /// </summary>
         public const string InvoicePaymentOverpaid = "invoice.payment.overpaid";
-
-        /// <summary>
-        /// Occurs when an InvoicePayment is successfully paid.
-        /// </summary>
-        public const string InvoicePaymentPaid = "invoice.payment.paid";
 
         /// <summary>
         /// Occurs whenever an invoice email is sent out.
