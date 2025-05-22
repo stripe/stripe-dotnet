@@ -36,6 +36,15 @@ namespace Stripe
         public AccountSessionComponentsBalancesOptions Balances { get; set; }
 
         /// <summary>
+        /// Configuration for the disputes list embedded component.
+        /// </summary>
+        [JsonProperty("disputes_list")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("disputes_list")]
+#endif
+        public AccountSessionComponentsDisputesListOptions DisputesList { get; set; }
+
+        /// <summary>
         /// Configuration for the documents embedded component.
         /// </summary>
         [JsonProperty("documents")]
@@ -97,6 +106,15 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_details")]
 #endif
         public AccountSessionComponentsPaymentDetailsOptions PaymentDetails { get; set; }
+
+        /// <summary>
+        /// Configuration for the payment disputes embedded component.
+        /// </summary>
+        [JsonProperty("payment_disputes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_disputes")]
+#endif
+        public AccountSessionComponentsPaymentDisputesOptions PaymentDisputes { get; set; }
 
         /// <summary>
         /// Configuration for the payments embedded component.

@@ -81,6 +81,9 @@ namespace Stripe
 #endif
         public string ApiVersion { get; set; }
 
+        /// <summary>
+        /// Authentication context needed to fetch the event or related object.
+        /// </summary>
         [JsonProperty("context")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("context")]
@@ -188,14 +191,15 @@ namespace Stripe
         /// <c>invoice.paid</c>, <c>invoice.payment_action_required</c>,
         /// <c>invoice.payment_failed</c>, <c>invoice.payment_succeeded</c>, <c>invoice.sent</c>,
         /// <c>invoice.upcoming</c>, <c>invoice.updated</c>, <c>invoice.voided</c>,
-        /// <c>invoice.will_be_due</c>, <c>invoiceitem.created</c>, <c>invoiceitem.deleted</c>,
-        /// <c>issuing_authorization.created</c>, <c>issuing_authorization.request</c>,
-        /// <c>issuing_authorization.updated</c>, <c>issuing_card.created</c>,
-        /// <c>issuing_card.updated</c>, <c>issuing_cardholder.created</c>,
-        /// <c>issuing_cardholder.updated</c>, <c>issuing_dispute.closed</c>,
-        /// <c>issuing_dispute.created</c>, <c>issuing_dispute.funds_reinstated</c>,
-        /// <c>issuing_dispute.funds_rescinded</c>, <c>issuing_dispute.submitted</c>,
-        /// <c>issuing_dispute.updated</c>, <c>issuing_personalization_design.activated</c>,
+        /// <c>invoice.will_be_due</c>, <c>invoice_payment.paid</c>, <c>invoiceitem.created</c>,
+        /// <c>invoiceitem.deleted</c>, <c>issuing_authorization.created</c>,
+        /// <c>issuing_authorization.request</c>, <c>issuing_authorization.updated</c>,
+        /// <c>issuing_card.created</c>, <c>issuing_card.updated</c>,
+        /// <c>issuing_cardholder.created</c>, <c>issuing_cardholder.updated</c>,
+        /// <c>issuing_dispute.closed</c>, <c>issuing_dispute.created</c>,
+        /// <c>issuing_dispute.funds_reinstated</c>, <c>issuing_dispute.funds_rescinded</c>,
+        /// <c>issuing_dispute.submitted</c>, <c>issuing_dispute.updated</c>,
+        /// <c>issuing_personalization_design.activated</c>,
         /// <c>issuing_personalization_design.deactivated</c>,
         /// <c>issuing_personalization_design.rejected</c>,
         /// <c>issuing_personalization_design.updated</c>, <c>issuing_token.created</c>,

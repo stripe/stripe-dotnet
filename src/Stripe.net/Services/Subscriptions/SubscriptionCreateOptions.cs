@@ -85,6 +85,17 @@ namespace Stripe
         public SubscriptionBillingCycleAnchorConfigOptions BillingCycleAnchorConfig { get; set; }
 
         /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
+        /// new billing period. When updating, pass an empty string to remove previously-defined
+        /// thresholds.
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
+        public SubscriptionBillingThresholdsOptions BillingThresholds { get; set; }
+
+        /// <summary>
         /// A timestamp at which the subscription should cancel. If set to a date before the current
         /// period ends, this will cause a proration if prorations have been enabled using
         /// <c>proration_behavior</c>. If set during a future period, this will always cause a
@@ -100,7 +111,8 @@ namespace Stripe
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
-        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>. This param will be removed in a
+        /// future API version. Please use <c>cancel_at</c> instead.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
 #if NET6_0_OR_GREATER

@@ -22,6 +22,17 @@ namespace Stripe.Checkout
         public List<string> AllowRedisplayFilters { get; set; }
 
         /// <summary>
+        /// Enable customers to choose if they wish to remove their saved payment methods. Disabled
+        /// by default.
+        /// One of: <c>disabled</c>, or <c>enabled</c>.
+        /// </summary>
+        [JsonProperty("payment_method_remove")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_remove")]
+#endif
+        public string PaymentMethodRemove { get; set; }
+
+        /// <summary>
         /// Enable customers to choose if they wish to save their payment method for future use.
         /// Disabled by default.
         /// One of: <c>disabled</c>, or <c>enabled</c>.

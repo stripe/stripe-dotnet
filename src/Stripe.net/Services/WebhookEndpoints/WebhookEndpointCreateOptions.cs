@@ -40,7 +40,7 @@ namespace Stripe
         /// <c>2024-04-10</c>, <c>2024-06-20</c>, <c>2024-09-30.acacia</c>,
         /// <c>2024-10-28.acacia</c>, <c>2024-11-20.acacia</c>, <c>2024-12-18.acacia</c>,
         /// <c>2025-01-27.acacia</c>, <c>2025-02-24.acacia</c>, <c>2025-03-01.dashboard</c>,
-        /// <c>2025-03-31.basil</c>, or <c>2025-04-30.basil</c>.
+        /// <c>2025-03-31.basil</c>, <c>2025-04-30.basil</c>, or <c>2025-05-28.basil</c>.
         /// </summary>
         [JsonProperty("api_version")]
 #if NET6_0_OR_GREATER
@@ -123,14 +123,15 @@ namespace Stripe
         /// <c>invoice.paid</c>, <c>invoice.payment_action_required</c>,
         /// <c>invoice.payment_failed</c>, <c>invoice.payment_succeeded</c>, <c>invoice.sent</c>,
         /// <c>invoice.upcoming</c>, <c>invoice.updated</c>, <c>invoice.voided</c>,
-        /// <c>invoice.will_be_due</c>, <c>invoiceitem.created</c>, <c>invoiceitem.deleted</c>,
-        /// <c>issuing_authorization.created</c>, <c>issuing_authorization.request</c>,
-        /// <c>issuing_authorization.updated</c>, <c>issuing_card.created</c>,
-        /// <c>issuing_card.updated</c>, <c>issuing_cardholder.created</c>,
-        /// <c>issuing_cardholder.updated</c>, <c>issuing_dispute.closed</c>,
-        /// <c>issuing_dispute.created</c>, <c>issuing_dispute.funds_reinstated</c>,
-        /// <c>issuing_dispute.funds_rescinded</c>, <c>issuing_dispute.submitted</c>,
-        /// <c>issuing_dispute.updated</c>, <c>issuing_personalization_design.activated</c>,
+        /// <c>invoice.will_be_due</c>, <c>invoice_payment.paid</c>, <c>invoiceitem.created</c>,
+        /// <c>invoiceitem.deleted</c>, <c>issuing_authorization.created</c>,
+        /// <c>issuing_authorization.request</c>, <c>issuing_authorization.updated</c>,
+        /// <c>issuing_card.created</c>, <c>issuing_card.updated</c>,
+        /// <c>issuing_cardholder.created</c>, <c>issuing_cardholder.updated</c>,
+        /// <c>issuing_dispute.closed</c>, <c>issuing_dispute.created</c>,
+        /// <c>issuing_dispute.funds_reinstated</c>, <c>issuing_dispute.funds_rescinded</c>,
+        /// <c>issuing_dispute.submitted</c>, <c>issuing_dispute.updated</c>,
+        /// <c>issuing_personalization_design.activated</c>,
         /// <c>issuing_personalization_design.deactivated</c>,
         /// <c>issuing_personalization_design.rejected</c>,
         /// <c>issuing_personalization_design.updated</c>, <c>issuing_token.created</c>,
