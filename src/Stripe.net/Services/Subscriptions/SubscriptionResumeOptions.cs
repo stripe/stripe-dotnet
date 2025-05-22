@@ -25,10 +25,10 @@ namespace Stripe
 
         /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when the
-        /// billing cycle changes (e.g., when switching plans, resetting
-        /// <c>billing_cycle_anchor=now</c>, or starting a trial), or if an item's <c>quantity</c>
-        /// changes. The default value is <c>create_prorations</c>.
+        /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> resulting
+        /// from the <c>billing_cycle_anchor</c> being <c>unchanged</c>. When the
+        /// <c>billing_cycle_anchor</c> is set to <c>now</c> (default value), no prorations are
+        /// generated. If no value is passed, the default is <c>create_prorations</c>.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
