@@ -235,7 +235,7 @@ namespace Stripe
         /// Reason given by cardholder for dispute. Possible values are <c>bank_cannot_process</c>,
         /// <c>check_returned</c>, <c>credit_not_processed</c>, <c>customer_initiated</c>,
         /// <c>debit_not_authorized</c>, <c>duplicate</c>, <c>fraudulent</c>, <c>general</c>,
-        /// <c>incorrect_account_details</c>, <c>insufficient_funds</c>,
+        /// <c>incorrect_account_details</c>, <c>insufficient_funds</c>, <c>noncompliant</c>,
         /// <c>product_not_received</c>, <c>product_unacceptable</c>, <c>subscription_canceled</c>,
         /// or <c>unrecognized</c>. Learn more about <a
         /// href="https://stripe.com/docs/disputes/categories">dispute reasons</a>.

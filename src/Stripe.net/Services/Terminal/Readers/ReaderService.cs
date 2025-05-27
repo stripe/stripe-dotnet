@@ -46,6 +46,22 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
+        /// <p>Initiates an input collection flow on a Reader.</p>.
+        /// </summary>
+        public virtual Reader CollectInputs(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/collect_inputs", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Initiates an input collection flow on a Reader.</p>.
+        /// </summary>
+        public virtual Task<Reader> CollectInputsAsync(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Reader>(BaseAddress.Api, HttpMethod.Post, $"/v1/terminal/readers/{WebUtility.UrlEncode(id)}/collect_inputs", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Creates a new <c>Reader</c> object.</p>.
         /// </summary>
         public virtual Reader Create(ReaderCreateOptions options, RequestOptions requestOptions = null)

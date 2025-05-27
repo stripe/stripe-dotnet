@@ -302,6 +302,26 @@ namespace Stripe
         public string Pdf { get; set; }
 
         /// <summary>
+        /// The amount of the credit note that was refunded to the customer, credited to the
+        /// customer's balance, credited outside of Stripe, or any combination thereof.
+        /// </summary>
+        [JsonProperty("post_payment_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("post_payment_amount")]
+#endif
+        public long PostPaymentAmount { get; set; }
+
+        /// <summary>
+        /// The amount of the credit note by which the invoice's <c>amount_remaining</c> and
+        /// <c>amount_due</c> were reduced.
+        /// </summary>
+        [JsonProperty("pre_payment_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pre_payment_amount")]
+#endif
+        public long PrePaymentAmount { get; set; }
+
+        /// <summary>
         /// The pretax credit amounts (ex: discount, credit grants, etc) for all line items.
         /// </summary>
         [JsonProperty("pretax_credit_amounts")]
@@ -405,7 +425,7 @@ namespace Stripe
         /// Type of this credit note, one of <c>pre_payment</c> or <c>post_payment</c>. A
         /// <c>pre_payment</c> credit note means it was issued when the invoice was open. A
         /// <c>post_payment</c> credit note means it was issued when the invoice was paid.
-        /// One of: <c>post_payment</c>, or <c>pre_payment</c>.
+        /// One of: <c>mixed</c>, <c>post_payment</c>, or <c>pre_payment</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
