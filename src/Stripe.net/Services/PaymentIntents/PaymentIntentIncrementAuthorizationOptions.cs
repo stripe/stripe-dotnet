@@ -34,15 +34,6 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
-        /// Automations to be run during the PaymentIntent lifecycle.
-        /// </summary>
-        [JsonProperty("async_workflows")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("async_workflows")]
-#endif
-        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
-
-        /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
@@ -50,6 +41,15 @@ namespace Stripe
         [STJS.JsonPropertyName("description")]
 #endif
         public string Description { get; set; }
+
+        /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("hooks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hooks")]
+#endif
+        public PaymentIntentHooksOptions Hooks { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can

@@ -59,6 +59,16 @@ namespace Stripe
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
+        /// new billing period. Pass an empty string to remove previously-defined thresholds.
+        /// </summary>
+        [JsonProperty("billing_thresholds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_thresholds")]
+#endif
+        public InvoiceScheduleDetailsPhaseBillingThresholdsOptions BillingThresholds { get; set; }
+
+        /// <summary>
         /// Either <c>charge_automatically</c>, or <c>send_invoice</c>. When charging automatically,
         /// Stripe will attempt to pay the underlying subscription at the end of each billing cycle
         /// using the default source attached to the customer. When sending an invoice, Stripe will
@@ -212,14 +222,13 @@ namespace Stripe
         public InvoiceScheduleDetailsPhasePauseCollectionOptions PauseCollection { get; set; }
 
         /// <summary>
-        /// Whether the subscription schedule will create <a
+        /// Controls whether the subscription schedule should create <a
         /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when
-        /// transitioning to this phase. The default value is <c>create_prorations</c>. This setting
-        /// controls prorations when a phase is started asynchronously and it is persisted as a
-        /// field on the phase. It's different from the request-level <a
+        /// transitioning to this phase if there is a difference in billing configuration. It's
+        /// different from the request-level <a
         /// href="https://stripe.com/docs/api/subscription_schedules/update#update_subscription_schedule-proration_behavior">proration_behavior</a>
         /// parameter which controls what happens if the update request affects the billing
-        /// configuration of the current phase.
+        /// configuration (item price, quantity, etc.) of the current phase.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]

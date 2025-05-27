@@ -41,7 +41,6 @@ namespace Stripe
         private FinancialConnectionsService financialConnections;
         private ForwardingService forwarding;
         private FxQuoteService fxQuotes;
-        private GiftCardsService giftCards;
         private IdentityService identity;
         private InvoiceService invoices;
         private InvoiceRenderingTemplateService invoiceRenderingTemplates;
@@ -198,9 +197,6 @@ namespace Stripe
             this.Requestor);
 
         public virtual FxQuoteService FxQuotes => this.fxQuotes ??= new FxQuoteService(
-            this.Requestor);
-
-        public virtual GiftCardsService GiftCards => this.giftCards ??= new GiftCardsService(
             this.Requestor);
 
         public virtual IdentityService Identity => this.identity ??= new IdentityService(

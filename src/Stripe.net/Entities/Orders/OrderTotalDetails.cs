@@ -8,12 +8,6 @@ namespace Stripe
 
     public class OrderTotalDetails : StripeEntity<OrderTotalDetails>
     {
-        [JsonProperty("amount_credit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_credit")]
-#endif
-        public long AmountCredit { get; set; }
-
         /// <summary>
         /// This is the sum of all the discounts.
         /// </summary>

@@ -369,7 +369,7 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantCapabilitiesSepaDebitPayments SepaDebitPayments { get; set; }
 
         /// <summary>
-        /// Capabilities that enable the recipient to manage their Stripe Balance (/v1/balance).
+        /// Capabilities that enable the merchant to manage their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("stripe_balance")]
 #if NET6_0_OR_GREATER

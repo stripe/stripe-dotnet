@@ -24,15 +24,6 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
-        /// Automations to be run during the PaymentIntent lifecycle.
-        /// </summary>
-        [JsonProperty("async_workflows")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("async_workflows")]
-#endif
-        public PaymentIntentAsyncWorkflowsOptions AsyncWorkflows { get; set; }
-
-        /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
@@ -85,6 +76,15 @@ namespace Stripe
         public string FxQuote { get; set; }
 
         /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("hooks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hooks")]
+#endif
+        public PaymentIntentHooksOptions Hooks { get; set; }
+
+        /// <summary>
         /// ID of the mandate that's used for this payment.
         /// </summary>
         [JsonProperty("mandate")]
@@ -124,7 +124,10 @@ namespace Stripe
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a
         /// href="https://stripe.com/docs/payments/payment-methods/transitioning#compatibility">compatible
-        /// Source</a> object) to attach to this PaymentIntent.
+        /// Source</a> object) to attach to this PaymentIntent. If the payment method is attached to
+        /// a Customer, it must match the <a
+        /// href="https://stripe.com/docs/api#create_payment_intent-customer">customer</a> that is
+        /// set on this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
 #if NET6_0_OR_GREATER

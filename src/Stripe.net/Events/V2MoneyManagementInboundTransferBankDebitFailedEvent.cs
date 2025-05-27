@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// An InboundTransfer failed.
+    /// Occurs when an InboundTransfer fails.
     /// </summary>
     public class V2MoneyManagementInboundTransferBankDebitFailedEvent : V2.Event
     {

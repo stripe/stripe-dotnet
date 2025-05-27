@@ -441,6 +441,15 @@ namespace Stripe
         public AccountCapabilitiesPaytoPaymentsOptions PaytoPayments { get; set; }
 
         /// <summary>
+        /// The pix_payments capability.
+        /// </summary>
+        [JsonProperty("pix_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pix_payments")]
+#endif
+        public AccountCapabilitiesPixPaymentsOptions PixPayments { get; set; }
+
+        /// <summary>
         /// The promptpay_payments capability.
         /// </summary>
         [JsonProperty("promptpay_payments")]

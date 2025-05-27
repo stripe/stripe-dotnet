@@ -290,6 +290,12 @@ namespace Stripe
 #endif
         public PaymentIntentPaymentMethodOptionsSamsungPay SamsungPay { get; set; }
 
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public PaymentIntentPaymentMethodOptionsSatispay Satispay { get; set; }
+
         [JsonProperty("sepa_debit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]

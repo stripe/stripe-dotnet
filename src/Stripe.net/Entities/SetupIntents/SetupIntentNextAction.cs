@@ -21,7 +21,8 @@ namespace Stripe
         public SetupIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 
         /// <summary>
-        /// Type of the next action to perform, one of <c>redirect_to_url</c>,
+        /// Type of the next action to perform. Refer to the other child attributes under
+        /// <c>next_action</c> for available values. Examples include: <c>redirect_to_url</c>,
         /// <c>use_stripe_sdk</c>, <c>alipay_handle_redirect</c>, <c>oxxo_display_details</c>, or
         /// <c>verify_with_microdeposits</c>.
         /// </summary>

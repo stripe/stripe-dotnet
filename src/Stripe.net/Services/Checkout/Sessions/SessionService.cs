@@ -123,6 +123,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// <p>Updates a Checkout Session object.</p>.
+        ///
+        /// <p>Related guide: <a
+        /// href="https://stripe.com/payments/checkout/dynamic-updates">Dynamically update
+        /// Checkout</a></p>.
         /// </summary>
         public virtual Session Update(string id, SessionUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -131,6 +135,10 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// <p>Updates a Checkout Session object.</p>.
+        ///
+        /// <p>Related guide: <a
+        /// href="https://stripe.com/payments/checkout/dynamic-updates">Dynamically update
+        /// Checkout</a></p>.
         /// </summary>
         public virtual Task<Session> UpdateAsync(string id, SessionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -90,5 +90,11 @@ namespace Stripe
         [STJS.JsonPropertyName("pending")]
 #endif
         public List<BalanceAmount> Pending { get; set; }
+
+        [JsonProperty("refund_and_dispute_prefunding")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund_and_dispute_prefunding")]
+#endif
+        public BalanceRefundAndDisputePrefunding RefundAndDisputePrefunding { get; set; }
     }
 }

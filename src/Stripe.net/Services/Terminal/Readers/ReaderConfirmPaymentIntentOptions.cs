@@ -9,6 +9,15 @@ namespace Stripe.Terminal
     public class ReaderConfirmPaymentIntentOptions : BaseOptions
     {
         /// <summary>
+        /// Configuration overrides.
+        /// </summary>
+        [JsonProperty("confirm_config")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("confirm_config")]
+#endif
+        public ReaderConfirmConfigOptions ConfirmConfig { get; set; }
+
+        /// <summary>
         /// PaymentIntent ID.
         /// </summary>
         [JsonProperty("payment_intent")]

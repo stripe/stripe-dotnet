@@ -90,6 +90,15 @@ namespace Stripe
         public AccountSessionComponentsCapitalOverviewOptions CapitalOverview { get; set; }
 
         /// <summary>
+        /// Configuration for the disputes list embedded component.
+        /// </summary>
+        [JsonProperty("disputes_list")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("disputes_list")]
+#endif
+        public AccountSessionComponentsDisputesListOptions DisputesList { get; set; }
+
+        /// <summary>
         /// Configuration for the documents embedded component.
         /// </summary>
         [JsonProperty("documents")]

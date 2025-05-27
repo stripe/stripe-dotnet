@@ -45,9 +45,7 @@ namespace Stripe
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
-        /// Configure billing_mode to opt in improved credit proration behavior.Once a quote that
-        /// creates a subscription or subscription schedule is accepted,all future operations on the
-        /// subscription or subscription schedule will be processed based on this billing_mode.
+        /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// One of: <c>classic</c>, or <c>flexible</c>.
         /// </summary>
         [JsonProperty("billing_mode")]

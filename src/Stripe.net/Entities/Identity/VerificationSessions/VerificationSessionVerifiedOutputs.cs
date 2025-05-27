@@ -80,5 +80,33 @@ namespace Stripe.Identity
         [STJS.JsonPropertyName("phone")]
 #endif
         public string Phone { get; set; }
+
+        /// <summary>
+        /// The user's verified sex.
+        /// One of: <c>[redacted]</c>, <c>female</c>, <c>male</c>, or <c>unknown</c>.
+        /// </summary>
+        [JsonProperty("sex")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sex")]
+#endif
+        public string Sex { get; set; }
+
+        /// <summary>
+        /// The user's verified place of birth as it appears in the document.
+        /// </summary>
+        [JsonProperty("unparsed_place_of_birth")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unparsed_place_of_birth")]
+#endif
+        public string UnparsedPlaceOfBirth { get; set; }
+
+        /// <summary>
+        /// The user's verified sex as it appears in the document.
+        /// </summary>
+        [JsonProperty("unparsed_sex")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unparsed_sex")]
+#endif
+        public string UnparsedSex { get; set; }
     }
 }

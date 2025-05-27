@@ -141,12 +141,6 @@ namespace Stripe
 #endif
         public long? ApplicationFeeAmount { get; set; }
 
-        [JsonProperty("async_workflows")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("async_workflows")]
-#endif
-        public PaymentIntentAsyncWorkflows AsyncWorkflows { get; set; }
-
         /// <summary>
         /// Settings to configure compatible payment methods from the <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
@@ -345,6 +339,12 @@ namespace Stripe
         [STJS.JsonPropertyName("fx_quote")]
 #endif
         public string FxQuote { get; set; }
+
+        [JsonProperty("hooks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hooks")]
+#endif
+        public PaymentIntentHooks Hooks { get; set; }
 
         /// <summary>
         /// The payment error encountered in the previous PaymentIntent confirmation. It will be

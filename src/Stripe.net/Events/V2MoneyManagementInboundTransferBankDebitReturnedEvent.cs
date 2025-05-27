@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// An InboundTransfer was returned.
+    /// Occurs when an InboundTransfer is returned.
     /// </summary>
     public class V2MoneyManagementInboundTransferBankDebitReturnedEvent : V2.Event
     {

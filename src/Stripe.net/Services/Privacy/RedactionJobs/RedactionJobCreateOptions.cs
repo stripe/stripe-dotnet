@@ -9,7 +9,8 @@ namespace Stripe.Privacy
     public class RedactionJobCreateOptions : BaseOptions
     {
         /// <summary>
-        /// The objects at the root level that are subject to redaction.
+        /// The objects to redact. These root objects and their related ones will be validated for
+        /// redaction.
         /// </summary>
         [JsonProperty("objects")]
 #if NET6_0_OR_GREATER
@@ -18,10 +19,7 @@ namespace Stripe.Privacy
         public RedactionJobObjectsOptions Objects { get; set; }
 
         /// <summary>
-        /// Default is "error". If "error", we will make sure all objects in the graph are
-        /// redactable in the 1st traversal, otherwise error. If "fix", where possible, we will
-        /// auto-fix any validation errors (e.g. by auto-transitioning objects to a terminal state,
-        /// etc.) in the 2nd traversal before redacting.
+        /// Determines the validation behavior of the job. Default is <c>error</c>.
         /// One of: <c>error</c>, or <c>fix</c>.
         /// </summary>
         [JsonProperty("validation_behavior")]
