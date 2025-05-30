@@ -163,6 +163,9 @@ namespace Stripe
 #endif
         public string Phone { get; set; }
 
+        /// <summary>
+        /// When the business was incorporated or registered.
+        /// </summary>
         [JsonProperty("registration_date")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("registration_date")]
