@@ -11,15 +11,6 @@ namespace Stripe.Events
     public class V1BillingMeterErrorReportTriggeredEventData : StripeEntity<V1BillingMeterErrorReportTriggeredEventData>
     {
         /// <summary>
-        /// Extra field included in the event's <c>data</c> when fetched from /v2/events.
-        /// </summary>
-        [JsonProperty("developer_message_summary")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("developer_message_summary")]
-#endif
-        public string DeveloperMessageSummary { get; set; }
-
-        /// <summary>
         /// This contains information about why meter error happens.
         /// </summary>
         [JsonProperty("reason")]
@@ -29,13 +20,13 @@ namespace Stripe.Events
         public V1BillingMeterErrorReportTriggeredEventDataReason Reason { get; set; }
 
         /// <summary>
-        /// The end of the window that is encapsulated by this summary.
+        /// Extra field included in the event's <c>data</c> when fetched from /v2/events.
         /// </summary>
-        [JsonProperty("validation_end")]
+        [JsonProperty("developer_message_summary")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("validation_end")]
+        [STJS.JsonPropertyName("developer_message_summary")]
 #endif
-        public DateTime ValidationEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public string DeveloperMessageSummary { get; set; }
 
         /// <summary>
         /// The start of the window that is encapsulated by this summary.
@@ -45,5 +36,14 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("validation_start")]
 #endif
         public DateTime ValidationStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// The end of the window that is encapsulated by this summary.
+        /// </summary>
+        [JsonProperty("validation_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("validation_end")]
+#endif
+        public DateTime ValidationEnd { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }
