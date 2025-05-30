@@ -20,5 +20,15 @@ namespace Stripe.Treasury
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
+        /// <summary>
+        /// Only return FinancialAccounts that have the given status: <c>open</c> or <c>closed</c>.
+        /// One of: <c>closed</c>, or <c>open</c>.
+        /// </summary>
+        [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+        public string Status { get; set; }
     }
 }

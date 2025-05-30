@@ -402,6 +402,9 @@ namespace Stripe
 #endif
         public string Type { get; set; }
 
+        /// <summary>
+        /// Details of the US Bank Account used for this payment attempt.
+        /// </summary>
         [JsonProperty("us_bank_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]

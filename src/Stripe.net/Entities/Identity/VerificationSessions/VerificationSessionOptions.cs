@@ -26,6 +26,12 @@ namespace Stripe.Identity
 #endif
         public VerificationSessionOptionsIdNumber IdNumber { get; set; }
 
+        [JsonProperty("matching")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("matching")]
+#endif
+        public VerificationSessionOptionsMatching Matching { get; set; }
+
         [JsonProperty("phone")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("phone")]
