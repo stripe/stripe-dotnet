@@ -8,7 +8,9 @@ namespace Stripe.Terminal
 
     /// <summary>
     /// A Configurations object represents how features should be configured for terminal
-    /// readers.
+    /// readers. For information about how to use it, see the <a
+    /// href="https://docs.stripe.com/terminal/fleet/configurations-overview">Terminal
+    /// configurations documentation</a>.
     /// </summary>
     public class Configuration : StripeEntity<Configuration>, IHasId, IHasObject
     {
