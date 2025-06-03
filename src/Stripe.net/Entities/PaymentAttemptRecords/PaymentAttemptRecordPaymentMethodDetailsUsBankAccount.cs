@@ -31,15 +31,6 @@ namespace Stripe
         public string AccountType { get; set; }
 
         /// <summary>
-        /// Amount of the ACH return to the bank account.
-        /// </summary>
-        [JsonProperty("ach_return_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("ach_return_amount")]
-#endif
-        public PaymentAttemptRecordPaymentMethodDetailsUsBankAccountAchReturnAmount AchReturnAmount { get; set; }
-
-        /// <summary>
         /// Name of the bank associated with the bank account.
         /// </summary>
         [JsonProperty("bank_name")]
