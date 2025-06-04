@@ -62,5 +62,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("shipping_options")]
 #endif
         public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
+
+        /// <summary>
+        /// A subset of parameters to be passed to subscription creation for Checkout Sessions in
+        /// <c>subscription</c> mode.
+        /// </summary>
+        [JsonProperty("subscription_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription_data")]
+#endif
+        public SessionSubscriptionDataOptions SubscriptionData { get; set; }
     }
 }
