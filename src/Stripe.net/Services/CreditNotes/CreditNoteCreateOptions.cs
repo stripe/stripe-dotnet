@@ -13,7 +13,8 @@ namespace Stripe
     {
         /// <summary>
         /// The integer amount in cents (or local equivalent) representing the total amount of the
-        /// credit note.
+        /// credit note. One of <c>amount</c>, <c>lines</c>, or <c>shipping_cost</c> must be
+        /// provided.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER
@@ -65,7 +66,8 @@ namespace Stripe
         public string Invoice { get; set; }
 
         /// <summary>
-        /// Line items that make up the credit note.
+        /// Line items that make up the credit note. One of <c>amount</c>, <c>lines</c>, or
+        /// <c>shipping_cost</c> must be provided.
         /// </summary>
         [JsonProperty("lines")]
 #if NET6_0_OR_GREATER
@@ -137,7 +139,8 @@ namespace Stripe
 
         /// <summary>
         /// When shipping_cost contains the shipping_rate from the invoice, the shipping_cost is
-        /// included in the credit note.
+        /// included in the credit note. One of <c>amount</c>, <c>lines</c>, or <c>shipping_cost</c>
+        /// must be provided.
         /// </summary>
         [JsonProperty("shipping_cost")]
 #if NET6_0_OR_GREATER
