@@ -63,7 +63,8 @@ var options = new CustomerCreateOptions
     Email = "customer@example.com"
 };
 
-var service = new CustomerService();
+var client = new StripeClient("sk_test_...");
+var service = client.V1.Customers;
 Customer customer = service.Create(options);
 
 // Newly created customer is returned
@@ -75,7 +76,8 @@ Console.WriteLine(customer.Email);
 The `Retrieve` method of the service class can be used to retrieve a resource:
 
 ```C#
-var service = new CustomerService();
+var client = new StripeClient("sk_test_...");
+var service = client.V1.Customers;
 Customer customer = service.Get("cus_1234");
 
 Console.WriteLine(customer.Email);
@@ -91,7 +93,8 @@ var options = new CustomerUpdateOptions
     Email = "updated-email@example.com"
 };
 
-var service = new CustomerService();
+var client = new StripeClient("sk_test_...");
+var service = client.V1.Customers;
 Customer customer = service.Update("cus_123", options);
 
 // The updated customer is returned
@@ -103,7 +106,8 @@ Console.WriteLine(customer.Email);
 The `Delete` method of the service class can be used to delete a resource:
 
 ```C#
-var service = new CustomerService();
+var client = new StripeClient("sk_test_...");
+var service = client.V1.Customers;
 Customer customer = service.Delete("cus_123", options);
 ```
 
@@ -115,7 +119,8 @@ The `List` method on the service class can be used to list resources page-by-pag
 > The `List` method returns only a single page, you have to manually continue the iteration using the `StartingAfter` parameter.
 
 ```C#
-var service = new CustomerService();
+var client = new StripeClient("sk_test_...");
+var service = client.V1.Customers;
 var customers = service.List();
 
 string lastId = null;
@@ -145,7 +150,8 @@ foreach (Customer customer in customers)
 The `ListAutoPaging` method on the service class can be used to automatically iterate over all pages.
 
 ```C#
-var service = new CustomerService();
+var client = new StripeClient("sk_test_...");
+var service = client.V1.Customers;
 var customers = service.ListAutoPaging();
 
 // Enumerate all pages of the list
@@ -157,7 +163,7 @@ foreach (Customer customer in customers)
 
 ### Per-request configuration
 
-All of the service methods accept an optional `RequestOptions` object. This is
+All the service methods accept an optional `RequestOptions` object. This is
 used if you want to set an [idempotency key][idempotency-keys], if you are
 using [Stripe Connect][connect-auth], or if you want to pass the secret API
 key on each method.
@@ -216,7 +222,8 @@ options.AddExtraParam("secret_feature_enabled", "true");
 options.AddExtraParam("secret_parameter[primary]", "primary value");
 options.AddExtraParam("secret_parameter[secondary]", "secondary value");
 
-var service = new CustomerService();
+var client = new StripeClient("sk_test_...");
+var service = client.V1.Customers;
 var customer = service.Create(options);
 ```
 
@@ -225,13 +232,13 @@ var customer = service.Create(options);
 To retrieve undocumented properties from Stripe using C# you can use an option in the library to return the raw JSON object and return the property. An example of this is shown below:
 
 ```c#
-var service = new CustomerService();
+var client = new StripeClient("sk_test_...");
+var service = client.V1.Customers;
 var customer = service.Get("cus_1234");
 
 customer.RawJObject["secret_feature_enabled"];
 customer.RawJObject["secret_parameter"]["primary"];
 customer.RawJObject["secret_parameter"]["secondary"];
-
 ```
 
 ### Writing a plugin
