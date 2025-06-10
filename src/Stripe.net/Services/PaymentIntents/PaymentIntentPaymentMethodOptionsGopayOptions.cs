@@ -31,6 +31,7 @@ namespace Stripe
         /// If you've already set <c>setup_future_usage</c> and you're performing a request using a
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
+        /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
 #if NET6_0_OR_GREATER
