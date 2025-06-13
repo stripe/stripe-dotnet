@@ -238,7 +238,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
-        /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>.
+        /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>. The parameter is
+        /// required for <c>payment</c> and <c>subscription</c> mode.
         ///
         /// For <c>payment</c> mode, there is a maximum of 100 line items, however it is recommended
         /// to consolidate line items if there are more than a few dozen.

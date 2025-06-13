@@ -163,8 +163,7 @@ namespace Stripe
 
         /// <summary>
         /// Whether this subscription will (if <c>status=active</c>) or did (if
-        /// <c>status=canceled</c>) cancel at the end of the current billing period. This field will
-        /// be removed in a future API version. Please use <c>cancel_at</c> instead.
+        /// <c>status=canceled</c>) cancel at the end of the current billing period.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
 #if NET6_0_OR_GREATER
