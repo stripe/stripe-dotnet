@@ -15,6 +15,6 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_mode")]
 #endif
-        public string BillingMode { get; set; }
+        public SubscriptionBillingModeOptions BillingMode { get; set; }
     }
 }

@@ -85,13 +85,12 @@ namespace Stripe
 
         /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
-        /// One of: <c>classic</c>, or <c>flexible</c>.
         /// </summary>
         [JsonProperty("billing_mode")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_mode")]
 #endif
-        public string BillingMode { get; set; }
+        public SubscriptionBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
