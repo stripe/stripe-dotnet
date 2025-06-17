@@ -5,6 +5,5 @@ namespace Stripe
     {
         public const string Current = "2025-06-30.preview";
         public const string CurrentMajor = "preview";
-        public const string CurrentMonthly = "2025-06-30";
     }
 }
