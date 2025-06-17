@@ -36,9 +36,11 @@ namespace Stripe
         public bool? CardholderManagement { get; set; }
 
         /// <summary>
-        /// Disables Stripe user authentication for this embedded component. This feature can only
-        /// be false for accounts where you’re responsible for collecting updated information when
-        /// requirements are due or change, like custom accounts.
+        /// Whether Stripe user authentication is disabled. This value can only be <c>true</c> for
+        /// accounts where <c>controller.requirement_collection</c> is <c>application</c> for the
+        /// account. The default value is the opposite of the <c>external_account_collection</c>
+        /// value. For example, if you don't set <c>external_account_collection</c>, it defaults to
+        /// <c>true</c> and <c>disable_stripe_user_authentication</c> defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("disable_stripe_user_authentication")]
 #if NET6_0_OR_GREATER

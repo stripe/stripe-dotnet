@@ -10,7 +10,7 @@ namespace Stripe
     public class AccountSessionComponentsAppInstallFeaturesOptions : INestedOptions
     {
         /// <summary>
-        /// List of apps allowed to be enabled for this account session.
+        /// The list of apps allowed to be enabled in the embedded component.
         /// </summary>
         [JsonProperty("allowed_apps")]
 #if NET6_0_OR_GREATER
