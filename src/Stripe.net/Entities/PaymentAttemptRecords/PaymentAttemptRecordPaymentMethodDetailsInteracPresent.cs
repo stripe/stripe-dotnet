@@ -169,7 +169,9 @@ namespace Stripe
         public string NetworkTransactionId { get; set; }
 
         /// <summary>
-        /// EMV tag 5F2D. Preferred languages specified by the integrated circuit chip.
+        /// The languages that the issuing bank recommends using for localizing any customer-facing
+        /// text, as read from the card. Referenced from EMV tag 5F2D, data encoded on the card's
+        /// chip.
         /// </summary>
         [JsonProperty("preferred_locales")]
 #if NET6_0_OR_GREATER
