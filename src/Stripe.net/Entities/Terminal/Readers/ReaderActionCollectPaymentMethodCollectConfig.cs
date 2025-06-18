@@ -9,7 +9,7 @@ namespace Stripe.Terminal
     public class ReaderActionCollectPaymentMethodCollectConfig : StripeEntity<ReaderActionCollectPaymentMethodCollectConfig>
     {
         /// <summary>
-        /// Enable customer initiated cancellation when processing this payment.
+        /// Enable customer-initiated cancellation when processing this payment.
         /// </summary>
         [JsonProperty("enable_customer_cancellation")]
 #if NET6_0_OR_GREATER
