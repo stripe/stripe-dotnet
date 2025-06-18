@@ -42,15 +42,6 @@ namespace Stripe.V2.Payments
         public V2.Amount AmountRequested { get; set; }
 
         /// <summary>
-        /// Number of authorization attempts.
-        /// </summary>
-        [JsonProperty("attempts")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("attempts")]
-#endif
-        public long Attempts { get; set; }
-
-        /// <summary>
         /// The frequency of the underlying payment that this OSP represents.
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
         /// </summary>

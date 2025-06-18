@@ -134,8 +134,8 @@ namespace Stripe.V2.Core
         /// <c>td</c>, <c>tf</c>, <c>tg</c>, <c>th</c>, <c>tj</c>, <c>tk</c>, <c>tl</c>, <c>tm</c>,
         /// <c>tn</c>, <c>to</c>, <c>tr</c>, <c>tt</c>, <c>tv</c>, <c>tw</c>, <c>tz</c>, <c>ua</c>,
         /// <c>ug</c>, <c>um</c>, <c>us</c>, <c>uy</c>, <c>uz</c>, <c>va</c>, <c>vc</c>, <c>ve</c>,
-        /// <c>vg</c>, <c>vi</c>, <c>vn</c>, <c>vu</c>, <c>wf</c>, <c>ws</c>, <c>ye</c>, <c>yt</c>,
-        /// <c>za</c>, <c>zm</c>, or <c>zw</c>.
+        /// <c>vg</c>, <c>vi</c>, <c>vn</c>, <c>vu</c>, <c>wf</c>, <c>ws</c>, <c>xx</c>, <c>ye</c>,
+        /// <c>yt</c>, <c>za</c>, <c>zm</c>, or <c>zw</c>.
         /// </summary>
         [JsonProperty("nationalities")]
 #if NET6_0_OR_GREATER

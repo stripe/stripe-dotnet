@@ -2,6 +2,7 @@
 namespace Stripe.V2.MoneyManagement
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -11,7 +12,7 @@ namespace Stripe.V2.MoneyManagement
     /// The Financial Account is the container that allows for the configuration of money
     /// movement.
     /// </summary>
-    public class FinancialAccount : StripeEntity<FinancialAccount>, IHasId, IHasObject
+    public class FinancialAccount : StripeEntity<FinancialAccount>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
@@ -76,8 +77,8 @@ namespace Stripe.V2.MoneyManagement
         /// <c>td</c>, <c>tf</c>, <c>tg</c>, <c>th</c>, <c>tj</c>, <c>tk</c>, <c>tl</c>, <c>tm</c>,
         /// <c>tn</c>, <c>to</c>, <c>tr</c>, <c>tt</c>, <c>tv</c>, <c>tw</c>, <c>tz</c>, <c>ua</c>,
         /// <c>ug</c>, <c>um</c>, <c>us</c>, <c>uy</c>, <c>uz</c>, <c>va</c>, <c>vc</c>, <c>ve</c>,
-        /// <c>vg</c>, <c>vi</c>, <c>vn</c>, <c>vu</c>, <c>wf</c>, <c>ws</c>, <c>ye</c>, <c>yt</c>,
-        /// <c>za</c>, <c>zm</c>, or <c>zw</c>.
+        /// <c>vg</c>, <c>vi</c>, <c>vn</c>, <c>vu</c>, <c>wf</c>, <c>ws</c>, <c>xx</c>, <c>ye</c>,
+        /// <c>yt</c>, <c>za</c>, <c>zm</c>, or <c>zw</c>.
         /// </summary>
         [JsonProperty("country")]
 #if NET6_0_OR_GREATER
@@ -94,12 +95,6 @@ namespace Stripe.V2.MoneyManagement
 #endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
-        [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
-        public string Description { get; set; }
-
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
@@ -109,6 +104,15 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("livemode")]
 #endif
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Metadata associated with the FinancialAccount.
+        /// </summary>
+        [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+        public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// If this is a <c>other</c> FinancialAccount, this hash indicates what the actual type is.
@@ -123,13 +127,19 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Closed Enum. An enum representing the status of the FinancialAccount. This indicates
         /// whether or not the FinancialAccount can be used for any money movement flows.
-        /// One of: <c>closed</c>, or <c>open</c>.
+        /// One of: <c>closed</c>, <c>open</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
 #endif
         public string Status { get; set; }
+
+        [JsonProperty("status_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status_details")]
+#endif
+        public FinancialAccountStatusDetails StatusDetails { get; set; }
 
         /// <summary>
         /// If this is a <c>storage</c> FinancialAccount, this hash includes details specific to

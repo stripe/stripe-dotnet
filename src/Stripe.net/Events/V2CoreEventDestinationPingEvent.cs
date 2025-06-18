@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// A ping event used to test the connection to an event destination.
+    /// A ping event used to test the connection to an EventDestination.
     /// </summary>
     public class V2CoreEventDestinationPingEvent : V2.Event
     {
