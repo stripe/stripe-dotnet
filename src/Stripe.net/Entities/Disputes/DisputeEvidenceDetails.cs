@@ -60,6 +60,7 @@ namespace Stripe
         public long SubmissionCount { get; set; }
 
         /// <summary>
+        /// Whether the dispute was submitted manually, with Smart Disputes, or not submitted.
         /// One of: <c>manual</c>, <c>not_submitted</c>, or <c>smart_disputes</c>.
         /// </summary>
         [JsonProperty("submission_method")]
