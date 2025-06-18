@@ -877,8 +877,7 @@ namespace Stripe
         public SubscriptionTrialSettings TrialSettings { get; set; }
 
         /// <summary>
-        /// If the subscription has a trial, the beginning of that trial. For subsequent trials,
-        /// this date remains as the start of the first ever trial on the subscription.
+        /// If the subscription has a trial, the beginning of that trial.
         /// </summary>
         [JsonProperty("trial_start")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
