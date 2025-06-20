@@ -9,7 +9,7 @@ namespace Stripe.Terminal
     public class ReaderActionProcessSetupIntentProcessConfig : StripeEntity<ReaderActionProcessSetupIntentProcessConfig>
     {
         /// <summary>
-        /// Enable customer initiated cancellation when processing this SetupIntent.
+        /// Enable customer-initiated cancellation when processing this SetupIntent.
         /// </summary>
         [JsonProperty("enable_customer_cancellation")]
 #if NET6_0_OR_GREATER

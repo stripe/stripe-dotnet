@@ -9,7 +9,7 @@ namespace Stripe.Terminal
     public class ReaderActionProcessPaymentIntentProcessConfig : StripeEntity<ReaderActionProcessPaymentIntentProcessConfig>
     {
         /// <summary>
-        /// Enable customer initiated cancellation when processing this payment.
+        /// Enable customer-initiated cancellation when processing this payment.
         /// </summary>
         [JsonProperty("enable_customer_cancellation")]
 #if NET6_0_OR_GREATER
@@ -18,8 +18,8 @@ namespace Stripe.Terminal
         public bool EnableCustomerCancellation { get; set; }
 
         /// <summary>
-        /// If the customer does not abandon authenticating the payment, they will be redirected to
-        /// this specified URL after completion.
+        /// If the customer doesn't abandon authenticating the payment, they're redirected to this
+        /// URL after completion.
         /// </summary>
         [JsonProperty("return_url")]
 #if NET6_0_OR_GREATER

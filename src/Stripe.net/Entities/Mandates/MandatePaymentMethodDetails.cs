@@ -50,6 +50,12 @@ namespace Stripe
 #endif
         public MandatePaymentMethodDetailsKakaoPay KakaoPay { get; set; }
 
+        [JsonProperty("klarna")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("klarna")]
+#endif
+        public MandatePaymentMethodDetailsKlarna Klarna { get; set; }
+
         [JsonProperty("kr_card")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kr_card")]
