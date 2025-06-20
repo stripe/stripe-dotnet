@@ -122,6 +122,12 @@ namespace Stripe
 #endif
         public PaymentAttemptRecordPaymentMethodDetailsCashapp Cashapp { get; set; }
 
+        [JsonProperty("crypto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto")]
+#endif
+        public PaymentAttemptRecordPaymentMethodDetailsCrypto Crypto { get; set; }
+
         /// <summary>
         /// Custom Payment Methods represent Payment Method types not modeled directly in the Stripe
         /// API. This resource consists of details about the custom payment method used for this
