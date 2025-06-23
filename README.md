@@ -43,16 +43,6 @@ how to use the library.
 
 ## Usage
 
-### Authentication
-
-Stripe authenticates API requests using your account’s secret key, which you can find in the Stripe Dashboard. By default, secret keys can be used to perform any API request without restriction.
-
-Use `StripeConfiguration.ApiKey` property to set the secret key.
-
-```C#
-StripeConfiguration.ApiKey = "sk_test_...";
-```
-
 ### Using StripeClient
 
 Stripe .NET SDK offers a more flexible approach of working with the Stripe API through the `StripeClient` class. 
@@ -72,6 +62,14 @@ Customer customer = service.Get("cus_1234");
 ```
 
 The traditional Global Configuration pattern will continue to work for everyone. 
+
+### Authentication
+
+Stripe authenticates API requests using your account’s secret key, which you can find in the Stripe Dashboard. By default, secret keys can be used to perform any API request without restriction.
+
+```C#
+var client = new StripeClient("sk_test_...");
+```
 
 ### Creating a resource
 
