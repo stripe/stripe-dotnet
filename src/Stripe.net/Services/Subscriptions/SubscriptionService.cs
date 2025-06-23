@@ -186,6 +186,22 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Upgrade the billing_mode of an existing subscription.</p>.
+        /// </summary>
+        public virtual Subscription Migrate(string id, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/migrate", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Upgrade the billing_mode of an existing subscription.</p>.
+        /// </summary>
+        public virtual Task<Subscription> MigrateAsync(string id, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/migrate", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle
         /// anchor and creating prorations. If a resumption invoice is generated, it must be paid or
         /// marked uncollectible before the subscription will be unpaused. If payment succeeds the

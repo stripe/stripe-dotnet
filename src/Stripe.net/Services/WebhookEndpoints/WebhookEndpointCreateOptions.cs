@@ -40,7 +40,8 @@ namespace Stripe
         /// <c>2024-04-10</c>, <c>2024-06-20</c>, <c>2024-09-30.acacia</c>,
         /// <c>2024-10-28.acacia</c>, <c>2024-11-20.acacia</c>, <c>2024-12-18.acacia</c>,
         /// <c>2025-01-27.acacia</c>, <c>2025-02-24.acacia</c>, <c>2025-03-01.dashboard</c>,
-        /// <c>2025-03-31.basil</c>, <c>2025-04-30.basil</c>, or <c>2025-05-28.basil</c>.
+        /// <c>2025-03-31.basil</c>, <c>2025-04-30.basil</c>, <c>2025-05-28.basil</c>, or
+        /// <c>2025-06-30.basil</c>.
         /// </summary>
         [JsonProperty("api_version")]
 #if NET6_0_OR_GREATER
@@ -167,14 +168,14 @@ namespace Stripe
         /// <c>subscription_schedule.expiring</c>, <c>subscription_schedule.released</c>,
         /// <c>subscription_schedule.updated</c>, <c>tax.settings.updated</c>,
         /// <c>tax_rate.created</c>, <c>tax_rate.updated</c>, <c>terminal.reader.action_failed</c>,
-        /// <c>terminal.reader.action_succeeded</c>, <c>test_helpers.test_clock.advancing</c>,
-        /// <c>test_helpers.test_clock.created</c>, <c>test_helpers.test_clock.deleted</c>,
-        /// <c>test_helpers.test_clock.internal_failure</c>, <c>test_helpers.test_clock.ready</c>,
-        /// <c>topup.canceled</c>, <c>topup.created</c>, <c>topup.failed</c>, <c>topup.reversed</c>,
-        /// <c>topup.succeeded</c>, <c>transfer.created</c>, <c>transfer.reversed</c>,
-        /// <c>transfer.updated</c>, <c>treasury.credit_reversal.created</c>,
-        /// <c>treasury.credit_reversal.posted</c>, <c>treasury.debit_reversal.completed</c>,
-        /// <c>treasury.debit_reversal.created</c>,
+        /// <c>terminal.reader.action_succeeded</c>, <c>terminal.reader.action_updated</c>,
+        /// <c>test_helpers.test_clock.advancing</c>, <c>test_helpers.test_clock.created</c>,
+        /// <c>test_helpers.test_clock.deleted</c>, <c>test_helpers.test_clock.internal_failure</c>,
+        /// <c>test_helpers.test_clock.ready</c>, <c>topup.canceled</c>, <c>topup.created</c>,
+        /// <c>topup.failed</c>, <c>topup.reversed</c>, <c>topup.succeeded</c>,
+        /// <c>transfer.created</c>, <c>transfer.reversed</c>, <c>transfer.updated</c>,
+        /// <c>treasury.credit_reversal.created</c>, <c>treasury.credit_reversal.posted</c>,
+        /// <c>treasury.debit_reversal.completed</c>, <c>treasury.debit_reversal.created</c>,
         /// <c>treasury.debit_reversal.initial_credit_granted</c>,
         /// <c>treasury.financial_account.closed</c>, <c>treasury.financial_account.created</c>,
         /// <c>treasury.financial_account.features_status_updated</c>,

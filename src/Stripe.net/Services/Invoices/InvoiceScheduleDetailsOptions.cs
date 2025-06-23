@@ -10,6 +10,15 @@ namespace Stripe
     public class InvoiceScheduleDetailsOptions : INestedOptions
     {
         /// <summary>
+        /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public InvoiceScheduleDetailsBillingModeOptions BillingMode { get; set; }
+
+        /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
         /// values are <c>release</c> or <c>cancel</c> with the default being <c>release</c>.
         /// <c>release</c> will end the subscription schedule and keep the underlying subscription
