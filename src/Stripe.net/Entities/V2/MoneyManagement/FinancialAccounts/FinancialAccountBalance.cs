@@ -19,7 +19,7 @@ namespace Stripe.V2.MoneyManagement
         public Dictionary<string, V2.Amount> Available { get; set; }
 
         /// <summary>
-        /// Balance of inbound funds that will later transition to the <c>cash</c> balance.
+        /// Balance of inbound funds that will later transition to the <c>available</c> balance.
         /// </summary>
         [JsonProperty("inbound_pending")]
 #if NET6_0_OR_GREATER

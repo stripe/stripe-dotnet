@@ -55,6 +55,10 @@ namespace Stripe
                     ret = Stripe.V2.FinancialAccountNotOpenException.Parse(httpStatusCode, body);
                     break;
 
+                case "feature_not_enabled":
+                    ret = Stripe.V2.FeatureNotEnabledException.Parse(httpStatusCode, body);
+                    break;
+
                 case "blocked_by_stripe":
                     ret = Stripe.V2.BlockedByStripeException.Parse(httpStatusCode, body);
                     break;
@@ -77,10 +81,6 @@ namespace Stripe
 
                 case "recipient_not_notifiable":
                     ret = Stripe.V2.RecipientNotNotifiableException.Parse(httpStatusCode, body);
-                    break;
-
-                case "feature_not_enabled":
-                    ret = Stripe.V2.FeatureNotEnabledException.Parse(httpStatusCode, body);
                     break;
 
                 case "invalid_payout_method":

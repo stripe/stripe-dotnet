@@ -6751,7 +6751,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/financial_accounts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"undefined\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"undefined\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"undefined\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"undefined\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"undefined\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"undefined\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"storage\":null,\"type\":\"other\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAccounts;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.FinancialAccount> financialAccounts = service
@@ -6768,7 +6768,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/financial_accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"undefined\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"undefined\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"undefined\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"undefined\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"undefined\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"undefined\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"storage\":null,\"type\":\"other\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAccounts;
             Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
@@ -7703,6 +7703,32 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestFeatureNotEnabledError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/financial_addresses",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"feature_not_enabled\",\"code\":\"storer_capability_missing\"}}");
+            var exception = Assert.Throws<Stripe.V2.FeatureNotEnabledException>(
+            () =>
+            {
+            var options = new Stripe.V2.MoneyManagement.FinancialAddressCreateOptions
+            {
+                Currency = "stn",
+                FinancialAccount = "financial_account",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.FinancialAddresses;
+            Stripe.V2.MoneyManagement.FinancialAddress financialAddress = service
+                .Create(options);
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/financial_addresses");
+        }
+
+        [Fact]
         public void TestBlockedByStripeError()
         {
             this.StubRequest(
@@ -7837,40 +7863,6 @@ namespace StripeTests
                 (HttpStatusCode)400,
                 "{\"error\":{\"type\":\"recipient_not_notifiable\",\"code\":\"recipient_email_does_not_exist\"}}");
             var exception = Assert.Throws<Stripe.V2.RecipientNotNotifiableException>(
-            () =>
-            {
-            var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
-            {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
-                From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
-                {
-                    Currency = "currency",
-                    FinancialAccount = "financial_account",
-                },
-                To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
-                {
-                    Recipient = "recipient",
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Create(options);
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments");
-        }
-
-        [Fact]
-        public void TestFeatureNotEnabledError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"feature_not_enabled\",\"code\":\"recipient_feature_not_active\"}}");
-            var exception = Assert.Throws<Stripe.V2.FeatureNotEnabledException>(
             () =>
             {
             var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
