@@ -60,7 +60,7 @@ var service = new CustomerService();
 Customer customer = service.Get("cus_1234");
 ```
 
-The traditional Global Configuration pattern will continue to work for everyone. 
+The previous global configuration pattern will continue to be supported.
 
 ### Authentication
 
