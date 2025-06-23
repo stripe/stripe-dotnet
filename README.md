@@ -43,14 +43,31 @@ how to use the library.
 
 ## Usage
 
+### Using StripeClient
+
+In version 46 of the Stripe .NET SDK, we have enhanced the `StripeClient` class to be the entry point to access all services that had to be previously independently instantiated with global configuration. This improves discoverability during IDE auto-completion and creates a more intuitive developer experience for you. 
+
+Each client instantiation can have its own configuration so you can access Stripe API with different API keys or different configuration (like number of retries) on a per client basis and without changing a global configuration.
+
+```C#
+// StripeClient pattern (Recommended)
+var client = new StripeClient("sk_test_...");
+Customer customer = client.V1.Customers.Get("cus_1234");
+
+// Global Configuration pattern (Legacy)
+StripeConfiguration.ApiKey = "sk_test_...";
+var service = new CustomerService();
+Customer customer = service.Get("cus_1234");
+```
+
+The previous global configuration pattern will continue to be supported.
+
 ### Authentication
 
 Stripe authenticates API requests using your account’s secret key, which you can find in the Stripe Dashboard. By default, secret keys can be used to perform any API request without restriction.
 
-Use `StripeConfiguration.ApiKey` property to set the secret key.
-
 ```C#
-StripeConfiguration.ApiKey = "sk_test_...";
+var client = new StripeClient("sk_test_...");
 ```
 
 ### Creating a resource
@@ -63,8 +80,8 @@ var options = new CustomerCreateOptions
     Email = "customer@example.com"
 };
 
-var service = new CustomerService();
-Customer customer = service.Create(options);
+var client = new StripeClient("sk_test_...");
+Customer customer = client.V1.Customers.Create(options);
 
 // Newly created customer is returned
 Console.WriteLine(customer.Email);
@@ -75,8 +92,8 @@ Console.WriteLine(customer.Email);
 The `Retrieve` method of the service class can be used to retrieve a resource:
 
 ```C#
-var service = new CustomerService();
-Customer customer = service.Get("cus_1234");
+var client = new StripeClient("sk_test_...");
+Customer customer = client.V1.Customers.Get("cus_1234");
 
 Console.WriteLine(customer.Email);
 ```
@@ -91,8 +108,8 @@ var options = new CustomerUpdateOptions
     Email = "updated-email@example.com"
 };
 
-var service = new CustomerService();
-Customer customer = service.Update("cus_123", options);
+var client = new StripeClient("sk_test_...");
+Customer customer = client.V1.Customers.Update("cus_123", options);
 
 // The updated customer is returned
 Console.WriteLine(customer.Email);
@@ -103,8 +120,8 @@ Console.WriteLine(customer.Email);
 The `Delete` method of the service class can be used to delete a resource:
 
 ```C#
-var service = new CustomerService();
-Customer customer = service.Delete("cus_123", options);
+var client = new StripeClient("sk_test_...");
+Customer customer = client.V1.Customers.Delete("cus_123", options);
 ```
 
 ### Listing a resource
@@ -115,8 +132,8 @@ The `List` method on the service class can be used to list resources page-by-pag
 > The `List` method returns only a single page, you have to manually continue the iteration using the `StartingAfter` parameter.
 
 ```C#
-var service = new CustomerService();
-var customers = service.List();
+var client = new StripeClient("sk_test_...");
+var customers = client.V1.Customers.List();
 
 string lastId = null;
 
@@ -145,8 +162,8 @@ foreach (Customer customer in customers)
 The `ListAutoPaging` method on the service class can be used to automatically iterate over all pages.
 
 ```C#
-var service = new CustomerService();
-var customers = service.ListAutoPaging();
+var client = new StripeClient("sk_test_...");
+var customers = client.V1.Customers.ListAutoPaging();
 
 // Enumerate all pages of the list
 foreach (Customer customer in customers)
@@ -157,7 +174,7 @@ foreach (Customer customer in customers)
 
 ### Per-request configuration
 
-All of the service methods accept an optional `RequestOptions` object. This is
+All the service methods accept an optional `RequestOptions` object. This is
 used if you want to set an [idempotency key][idempotency-keys], if you are
 using [Stripe Connect][connect-auth], or if you want to pass the secret API
 key on each method.
@@ -216,8 +233,8 @@ options.AddExtraParam("secret_feature_enabled", "true");
 options.AddExtraParam("secret_parameter[primary]", "primary value");
 options.AddExtraParam("secret_parameter[secondary]", "secondary value");
 
-var service = new CustomerService();
-var customer = service.Create(options);
+var client = new StripeClient("sk_test_...");
+var customer = client.V1.Customers.Create(options);
 ```
 
 #### Properties
@@ -225,13 +242,12 @@ var customer = service.Create(options);
 To retrieve undocumented properties from Stripe using C# you can use an option in the library to return the raw JSON object and return the property. An example of this is shown below:
 
 ```c#
-var service = new CustomerService();
-var customer = service.Get("cus_1234");
+var client = new StripeClient("sk_test_...");
+var customer = client.V1.Customers.Get("cus_1234");
 
 customer.RawJObject["secret_feature_enabled"];
 customer.RawJObject["secret_parameter"]["primary"];
 customer.RawJObject["secret_parameter"]["secondary"];
-
 ```
 
 This is only supported on objects returned directly from the Stripe.net SDK. If you are serializing Stripe objects to JSON you will need to handle undocumented properties separately.
