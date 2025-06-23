@@ -58,10 +58,10 @@ StripeConfiguration.ApiKey = "sk_test_...";
 Stripe .NET SDK offers a more flexible approach of working with the Stripe API through the `StripeClient` class. 
 StripeClient pattern has several advantages over the traditional approach of instantiating services with a global configuration: 
 - Client based configuration: Allows you to instantiate several clients with different configurations(API key, network retries etc.). 
-- Single Root Entry Point: The StripeClient provides a centralized entry point to all available Stripe services. This improves discoverability in IDE auto-completion and creates a more intuitive developer experience for you.
+- Single Root Entry Point: The StripeClient provides a centralized entry point to all available Stripe services. This improves discoverability through IDE auto-completion and creates a more intuitive developer experience for you.
 
 ```C#
-// StripeClient pattern 
+// StripeClient pattern (Recommended)
 var client = new StripeClient("sk_test_...");
 Customer customer = client.V1.Customers.Get("cus_1234");
 
