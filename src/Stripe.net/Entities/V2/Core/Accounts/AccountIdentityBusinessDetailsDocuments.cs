@@ -76,6 +76,15 @@ namespace Stripe.V2.Core
         public AccountIdentityBusinessDetailsDocumentsPrimaryVerification PrimaryVerification { get; set; }
 
         /// <summary>
+        /// One or more documents that demonstrate proof of address.
+        /// </summary>
+        [JsonProperty("proof_of_address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proof_of_address")]
+#endif
+        public AccountIdentityBusinessDetailsDocumentsProofOfAddress ProofOfAddress { get; set; }
+
+        /// <summary>
         /// One or more documents showing the company’s proof of registration with the national
         /// business registry.
         /// </summary>

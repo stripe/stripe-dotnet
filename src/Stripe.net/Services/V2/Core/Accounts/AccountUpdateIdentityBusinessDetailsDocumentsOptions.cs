@@ -289,6 +289,15 @@ namespace Stripe.V2.Core
             }
         }
 
+        /// <summary>
+        /// One or more documents that demonstrate proof of address.
+        /// </summary>
+        [JsonProperty("proof_of_address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proof_of_address")]
+#endif
+        public AccountUpdateIdentityBusinessDetailsDocumentsProofOfAddressOptions ProofOfAddress { get; set; }
+
         [JsonProperty("proof_of_registration")]
         [JsonConverter(typeof(EmptyableConverter<AccountUpdateIdentityBusinessDetailsDocumentsProofOfRegistrationOptions>))]
 #if NET6_0_OR_GREATER

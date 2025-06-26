@@ -58,5 +58,15 @@ namespace Stripe
         [STJS.JsonPropertyName("submission_count")]
 #endif
         public long SubmissionCount { get; set; }
+
+        /// <summary>
+        /// Whether the dispute was submitted manually, with Smart Disputes, or not submitted.
+        /// One of: <c>manual</c>, <c>not_submitted</c>, or <c>smart_disputes</c>.
+        /// </summary>
+        [JsonProperty("submission_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("submission_method")]
+#endif
+        public string SubmissionMethod { get; set; }
     }
 }

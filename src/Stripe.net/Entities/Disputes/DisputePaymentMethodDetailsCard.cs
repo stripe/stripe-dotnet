@@ -22,7 +22,7 @@ namespace Stripe
         /// <summary>
         /// The type of dispute opened. Different case types may have varying fees and financial
         /// impact.
-        /// One of: <c>chargeback</c>, or <c>inquiry</c>.
+        /// One of: <c>chargeback</c>, <c>compliance</c>, or <c>inquiry</c>.
         /// </summary>
         [JsonProperty("case_type")]
 #if NET6_0_OR_GREATER

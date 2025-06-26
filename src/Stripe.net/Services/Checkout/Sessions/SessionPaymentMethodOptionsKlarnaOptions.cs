@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Checkout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -33,5 +34,14 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// Subscription details if the Checkout Session sets up a future subscription.
+        /// </summary>
+        [JsonProperty("subscriptions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscriptions")]
+#endif
+        public List<SessionPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions { get; set; }
     }
 }

@@ -13,7 +13,8 @@ namespace Stripe.V2.Core
         /// status.
         /// One of: <c>determining_status</c>, <c>requirements_past_due</c>,
         /// <c>requirements_pending_verification</c>, <c>restricted_other</c>,
-        /// <c>unsupported_business</c>, or <c>unsupported_country</c>.
+        /// <c>unsupported_business</c>, <c>unsupported_country</c>, or
+        /// <c>unsupported_entity_type</c>.
         /// </summary>
         [JsonProperty("code")]
 #if NET6_0_OR_GREATER

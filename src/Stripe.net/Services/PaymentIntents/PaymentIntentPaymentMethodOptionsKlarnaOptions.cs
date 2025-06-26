@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -23,6 +24,15 @@ namespace Stripe
         [STJS.JsonPropertyName("capture_method")]
 #endif
         public string CaptureMethod { get; set; }
+
+        /// <summary>
+        /// On-demand details if setting up or charging an on-demand payment.
+        /// </summary>
+        [JsonProperty("on_demand")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("on_demand")]
+#endif
+        public PaymentIntentPaymentMethodOptionsKlarnaOnDemandOptions OnDemand { get; set; }
 
         /// <summary>
         /// Preferred language of the Klarna authorization page that the customer is redirected to.
@@ -64,11 +74,21 @@ namespace Stripe
         /// If you've already set <c>setup_future_usage</c> and you're performing a request using a
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
+        /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// Subscription details if setting up or charging a subscription.
+        /// </summary>
+        [JsonProperty("subscriptions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscriptions")]
+#endif
+        public List<PaymentIntentPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions { get; set; }
     }
 }
