@@ -12,6 +12,15 @@ namespace Stripe
     public class QuoteSubscriptionData : StripeEntity<QuoteSubscriptionData>, IHasMetadata
     {
         /// <summary>
+        /// The billing mode of the quote.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public QuoteSubscriptionDataBillingMode BillingMode { get; set; }
+
+        /// <summary>
         /// The subscription's description, meant to be displayable to the customer. Use this field
         /// to optionally store an explanation of the subscription for rendering in Stripe surfaces
         /// and certain local payment methods UIs.

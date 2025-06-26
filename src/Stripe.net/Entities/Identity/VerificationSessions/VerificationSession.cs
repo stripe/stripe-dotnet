@@ -198,6 +198,12 @@ namespace Stripe.Identity
 #endif
         public string RelatedCustomer { get; set; }
 
+        [JsonProperty("related_person")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("related_person")]
+#endif
+        public VerificationSessionRelatedPerson RelatedPerson { get; set; }
+
         /// <summary>
         /// Status of this VerificationSession. <a
         /// href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle

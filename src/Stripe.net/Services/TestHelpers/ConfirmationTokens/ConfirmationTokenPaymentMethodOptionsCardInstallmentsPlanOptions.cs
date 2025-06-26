@@ -30,7 +30,8 @@ namespace Stripe.TestHelpers
         public string Interval { get; set; }
 
         /// <summary>
-        /// Type of installment plan, one of <c>fixed_count</c>.
+        /// Type of installment plan, one of <c>fixed_count</c>, <c>bonus</c>, or <c>revolving</c>.
+        /// One of: <c>bonus</c>, <c>fixed_count</c>, or <c>revolving</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

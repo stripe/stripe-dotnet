@@ -39,7 +39,7 @@ namespace Stripe
 
         /// <summary>
         /// Determines the max number of saved payment methods for the Payment Element to display.
-        /// This parameter defaults to <c>3</c>.
+        /// This parameter defaults to <c>3</c>. The maximum redisplay limit is <c>10</c>.
         /// </summary>
         [JsonProperty("payment_method_redisplay_limit")]
 #if NET6_0_OR_GREATER

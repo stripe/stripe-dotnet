@@ -10,8 +10,7 @@ namespace Stripe.BillingPortal
     public class SessionFlowDataSubscriptionUpdateConfirmOptions : INestedOptions
     {
         /// <summary>
-        /// The coupon or promotion code to apply to this subscription update. Currently, only up to
-        /// one may be specified.
+        /// The coupon or promotion code to apply to this subscription update.
         /// </summary>
         [JsonProperty("discounts")]
 #if NET6_0_OR_GREATER

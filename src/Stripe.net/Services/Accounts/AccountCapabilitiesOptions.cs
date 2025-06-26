@@ -153,6 +153,15 @@ namespace Stripe
         public AccountCapabilitiesCashappPaymentsOptions CashappPayments { get; set; }
 
         /// <summary>
+        /// The crypto_payments capability.
+        /// </summary>
+        [JsonProperty("crypto_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto_payments")]
+#endif
+        public AccountCapabilitiesCryptoPaymentsOptions CryptoPayments { get; set; }
+
+        /// <summary>
         /// The eps_payments capability.
         /// </summary>
         [JsonProperty("eps_payments")]

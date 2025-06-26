@@ -229,7 +229,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
-        /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>.
+        /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>. The parameter is
+        /// required for <c>payment</c> and <c>subscription</c> mode.
         ///
         /// For <c>payment</c> mode, there is a maximum of 100 line items, however it is recommended
         /// to consolidate line items if there are more than a few dozen.
@@ -383,13 +384,13 @@ namespace Stripe.Checkout
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
         /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
-        /// <c>cashapp</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
-        /// <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
-        /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
-        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
+        /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
+        /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>,
+        /// <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
+        /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
+        /// <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
+        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER

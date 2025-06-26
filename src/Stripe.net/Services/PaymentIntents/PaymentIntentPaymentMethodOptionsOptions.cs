@@ -158,6 +158,16 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsCashappOptions Cashapp { get; set; }
 
         /// <summary>
+        /// If this is a <c>crypto</c> PaymentMethod, this sub-hash contains details about the
+        /// Crypto payment method options.
+        /// </summary>
+        [JsonProperty("crypto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto")]
+#endif
+        public PaymentIntentPaymentMethodOptionsCryptoOptions Crypto { get; set; }
+
+        /// <summary>
         /// If this is a <c>customer balance</c> PaymentMethod, this sub-hash contains details about
         /// the customer balance payment method options.
         /// </summary>

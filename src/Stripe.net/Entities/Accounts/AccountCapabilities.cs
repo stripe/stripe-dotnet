@@ -185,6 +185,17 @@ namespace Stripe
         public string CashappPayments { get; set; }
 
         /// <summary>
+        /// The status of the Crypto capability of the account, or whether the account can directly
+        /// process Crypto payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("crypto_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto_payments")]
+#endif
+        public string CryptoPayments { get; set; }
+
+        /// <summary>
         /// The status of the EPS payments capability of the account, or whether the account can
         /// directly process EPS charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

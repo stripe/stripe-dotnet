@@ -473,6 +473,8 @@ namespace Stripe
 
         /// <summary>
         /// The list of payment method types (e.g. card) that this SetupIntent is allowed to set up.
+        /// A list of valid payment method types can be found <a
+        /// href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-type">here</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER

@@ -1101,6 +1101,11 @@ namespace Stripe
         public const string TerminalReaderActionSucceeded = "terminal.reader.action_succeeded";
 
         /// <summary>
+        /// Occurs whenever an action sent to a Terminal reader is updated.
+        /// </summary>
+        public const string TerminalReaderActionUpdated = "terminal.reader.action_updated";
+
+        /// <summary>
         /// Occurs whenever a test clock starts advancing.
         /// </summary>
         public const string TestHelpersTestClockAdvancing = "test_helpers.test_clock.advancing";

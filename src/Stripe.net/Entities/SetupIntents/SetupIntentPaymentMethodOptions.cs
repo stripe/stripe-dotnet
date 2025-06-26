@@ -38,6 +38,12 @@ namespace Stripe
 #endif
         public SetupIntentPaymentMethodOptionsCardPresent CardPresent { get; set; }
 
+        [JsonProperty("klarna")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("klarna")]
+#endif
+        public SetupIntentPaymentMethodOptionsKlarna Klarna { get; set; }
+
         [JsonProperty("link")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("link")]
