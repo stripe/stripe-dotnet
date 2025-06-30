@@ -7626,23 +7626,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2PaymentsOffSessionPaymentGet()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/payments/off_session_payments",
-                (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.payments.off_session_payment\",\"amount_requested\":{\"currency\":\"USD\",\"value\":47},\"cadence\":\"unscheduled\",\"compartment_id\":\"compartment_id\",\"created\":\"1970-01-12T21:42:34.472Z\",\"customer\":\"customer\",\"failure_reason\":null,\"last_authorization_attempt_error\":null,\"latest_payment_attempt_record\":null,\"livemode\":true,\"metadata\":{\"undefined\":\"metadata\"},\"on_behalf_of\":null,\"payment_method\":\"payment_method\",\"payment_record\":null,\"retry_details\":{\"attempts\":542738246,\"retry_strategy\":\"none\"},\"statement_descriptor\":null,\"statement_descriptor_suffix\":null,\"status\":\"pending\",\"test_clock\":null,\"transfer_data\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Payments.OffSessionPayments;
-            Stripe.V2.StripeList<Stripe.V2.Payments.OffSessionPayment> offSessionPayments = service
-                .List();
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/payments/off_session_payments");
-        }
-
-        [Fact]
         public void TestV2TestHelpersFinancialAddressPost2()
         {
             this.StubRequest(
