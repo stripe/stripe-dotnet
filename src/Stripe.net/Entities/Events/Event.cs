@@ -72,8 +72,10 @@ namespace Stripe
         public string Account { get; set; }
 
         /// <summary>
-        /// The Stripe API version used to render <c>data</c>. This property is populated only for
-        /// events on or after October 31, 2014.
+        /// The Stripe API version used to render <c>data</c> when the event was created. The
+        /// contents of <c>data</c> never change, so this value remains static regardless of the API
+        /// version currently in use. This property is populated only for events created on or after
+        /// October 31, 2014.
         /// </summary>
         [JsonProperty("api_version")]
 #if NET6_0_OR_GREATER

@@ -8,8 +8,18 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class SubscriptionBillingModeDetails : StripeEntity<SubscriptionBillingModeDetails>
+    public class SubscriptionBillingMode : StripeEntity<SubscriptionBillingMode>
     {
+        /// <summary>
+        /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
+        /// One of: <c>classic</c>, or <c>flexible</c>.
+        /// </summary>
+        [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+        public string Type { get; set; }
+
         /// <summary>
         /// Details on when the current billing_mode was adopted.
         /// </summary>

@@ -9,7 +9,9 @@ namespace Stripe
     public class AccountSessionComponentsOptions : INestedOptions
     {
         /// <summary>
-        /// Configuration for the account management embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/account-management/">account
+        /// management</a> embedded component.
         /// </summary>
         [JsonProperty("account_management")]
 #if NET6_0_OR_GREATER
@@ -18,7 +20,9 @@ namespace Stripe
         public AccountSessionComponentsAccountManagementOptions AccountManagement { get; set; }
 
         /// <summary>
-        /// Configuration for the account onboarding embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/account-onboarding/">account
+        /// onboarding</a> embedded component.
         /// </summary>
         [JsonProperty("account_onboarding")]
 #if NET6_0_OR_GREATER
@@ -27,7 +31,9 @@ namespace Stripe
         public AccountSessionComponentsAccountOnboardingOptions AccountOnboarding { get; set; }
 
         /// <summary>
-        /// Configuration for the app install component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/app-install/">app
+        /// install</a> embedded component.
         /// </summary>
         [JsonProperty("app_install")]
 #if NET6_0_OR_GREATER
@@ -36,7 +42,9 @@ namespace Stripe
         public AccountSessionComponentsAppInstallOptions AppInstall { get; set; }
 
         /// <summary>
-        /// Configuration for the app viewport component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/app-viewport/">app
+        /// viewport</a> embedded component.
         /// </summary>
         [JsonProperty("app_viewport")]
 #if NET6_0_OR_GREATER
@@ -45,7 +53,9 @@ namespace Stripe
         public AccountSessionComponentsAppViewportOptions AppViewport { get; set; }
 
         /// <summary>
-        /// Configuration for the balances embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/balances/">balances</a>
+        /// embedded component.
         /// </summary>
         [JsonProperty("balances")]
 #if NET6_0_OR_GREATER
@@ -54,7 +64,9 @@ namespace Stripe
         public AccountSessionComponentsBalancesOptions Balances { get; set; }
 
         /// <summary>
-        /// Configuration for the capital financing embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/capital-financing/">Capital
+        /// financing</a> embedded component.
         /// </summary>
         [JsonProperty("capital_financing")]
 #if NET6_0_OR_GREATER
@@ -63,7 +75,9 @@ namespace Stripe
         public AccountSessionComponentsCapitalFinancingOptions CapitalFinancing { get; set; }
 
         /// <summary>
-        /// Configuration for the capital financing application embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/capital-financing-application/">Capital
+        /// financing application</a> embedded component.
         /// </summary>
         [JsonProperty("capital_financing_application")]
 #if NET6_0_OR_GREATER
@@ -72,7 +86,9 @@ namespace Stripe
         public AccountSessionComponentsCapitalFinancingApplicationOptions CapitalFinancingApplication { get; set; }
 
         /// <summary>
-        /// Configuration for the capital financing promotion embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/capital-financing-promotion/">Capital
+        /// financing promotion</a> embedded component.
         /// </summary>
         [JsonProperty("capital_financing_promotion")]
 #if NET6_0_OR_GREATER
@@ -81,7 +97,9 @@ namespace Stripe
         public AccountSessionComponentsCapitalFinancingPromotionOptions CapitalFinancingPromotion { get; set; }
 
         /// <summary>
-        /// Configuration for the capital overview embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/capital-overview/">Capital
+        /// overview</a> embedded component.
         /// </summary>
         [JsonProperty("capital_overview")]
 #if NET6_0_OR_GREATER
@@ -90,7 +108,9 @@ namespace Stripe
         public AccountSessionComponentsCapitalOverviewOptions CapitalOverview { get; set; }
 
         /// <summary>
-        /// Configuration for the disputes list embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/disputes-list/">disputes
+        /// list</a> embedded component.
         /// </summary>
         [JsonProperty("disputes_list")]
 #if NET6_0_OR_GREATER
@@ -99,7 +119,9 @@ namespace Stripe
         public AccountSessionComponentsDisputesListOptions DisputesList { get; set; }
 
         /// <summary>
-        /// Configuration for the documents embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/documents/">documents</a>
+        /// embedded component.
         /// </summary>
         [JsonProperty("documents")]
 #if NET6_0_OR_GREATER
@@ -108,7 +130,9 @@ namespace Stripe
         public AccountSessionComponentsDocumentsOptions Documents { get; set; }
 
         /// <summary>
-        /// Configuration for the export tax transactions embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/export-tax-transactions/">export
+        /// tax transactions</a> embedded component.
         /// </summary>
         [JsonProperty("export_tax_transactions")]
 #if NET6_0_OR_GREATER
@@ -117,7 +141,9 @@ namespace Stripe
         public AccountSessionComponentsExportTaxTransactionsOptions ExportTaxTransactions { get; set; }
 
         /// <summary>
-        /// Configuration for the financial account embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-account/">financial
+        /// account</a> embedded component.
         /// </summary>
         [JsonProperty("financial_account")]
 #if NET6_0_OR_GREATER
@@ -126,7 +152,9 @@ namespace Stripe
         public AccountSessionComponentsFinancialAccountOptions FinancialAccount { get; set; }
 
         /// <summary>
-        /// Configuration for the financial account transactions embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-account-transactions/">financial
+        /// account transactions</a> embedded component.
         /// </summary>
         [JsonProperty("financial_account_transactions")]
 #if NET6_0_OR_GREATER
@@ -135,7 +163,9 @@ namespace Stripe
         public AccountSessionComponentsFinancialAccountTransactionsOptions FinancialAccountTransactions { get; set; }
 
         /// <summary>
-        /// Configuration for the issuing card embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/issuing-card/">issuing
+        /// card</a> embedded component.
         /// </summary>
         [JsonProperty("issuing_card")]
 #if NET6_0_OR_GREATER
@@ -144,7 +174,9 @@ namespace Stripe
         public AccountSessionComponentsIssuingCardOptions IssuingCard { get; set; }
 
         /// <summary>
-        /// Configuration for the issuing cards list embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/issuing-cards-list/">issuing
+        /// cards list</a> embedded component.
         /// </summary>
         [JsonProperty("issuing_cards_list")]
 #if NET6_0_OR_GREATER
@@ -153,7 +185,9 @@ namespace Stripe
         public AccountSessionComponentsIssuingCardsListOptions IssuingCardsList { get; set; }
 
         /// <summary>
-        /// Configuration for the notification banner embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/notification-banner/">notification
+        /// banner</a> embedded component.
         /// </summary>
         [JsonProperty("notification_banner")]
 #if NET6_0_OR_GREATER
@@ -162,7 +196,9 @@ namespace Stripe
         public AccountSessionComponentsNotificationBannerOptions NotificationBanner { get; set; }
 
         /// <summary>
-        /// Configuration for the payment details embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/payment-details/">payment
+        /// details</a> embedded component.
         /// </summary>
         [JsonProperty("payment_details")]
 #if NET6_0_OR_GREATER
@@ -171,7 +207,9 @@ namespace Stripe
         public AccountSessionComponentsPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
-        /// Configuration for the payment disputes embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/payment-disputes/">payment
+        /// disputes</a> embedded component.
         /// </summary>
         [JsonProperty("payment_disputes")]
 #if NET6_0_OR_GREATER
@@ -180,7 +218,9 @@ namespace Stripe
         public AccountSessionComponentsPaymentDisputesOptions PaymentDisputes { get; set; }
 
         /// <summary>
-        /// Configuration for the payment method settings embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/payment-method-settings/">payment
+        /// method settings</a> embedded component.
         /// </summary>
         [JsonProperty("payment_method_settings")]
 #if NET6_0_OR_GREATER
@@ -189,7 +229,9 @@ namespace Stripe
         public AccountSessionComponentsPaymentMethodSettingsOptions PaymentMethodSettings { get; set; }
 
         /// <summary>
-        /// Configuration for the payments embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/payments/">payments</a>
+        /// embedded component.
         /// </summary>
         [JsonProperty("payments")]
 #if NET6_0_OR_GREATER
@@ -198,7 +240,9 @@ namespace Stripe
         public AccountSessionComponentsPaymentsOptions Payments { get; set; }
 
         /// <summary>
-        /// Configuration for the payouts embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/payouts/">payouts</a>
+        /// embedded component.
         /// </summary>
         [JsonProperty("payouts")]
 #if NET6_0_OR_GREATER
@@ -207,7 +251,9 @@ namespace Stripe
         public AccountSessionComponentsPayoutsOptions Payouts { get; set; }
 
         /// <summary>
-        /// Configuration for the payouts list embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/payouts-list/">payouts
+        /// list</a> embedded component.
         /// </summary>
         [JsonProperty("payouts_list")]
 #if NET6_0_OR_GREATER
@@ -216,7 +262,9 @@ namespace Stripe
         public AccountSessionComponentsPayoutsListOptions PayoutsList { get; set; }
 
         /// <summary>
-        /// Configuration for the product tax code selector embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/product-tax-code-selector/">product
+        /// tax code selector</a> embedded component.
         /// </summary>
         [JsonProperty("product_tax_code_selector")]
 #if NET6_0_OR_GREATER
@@ -225,7 +273,9 @@ namespace Stripe
         public AccountSessionComponentsProductTaxCodeSelectorOptions ProductTaxCodeSelector { get; set; }
 
         /// <summary>
-        /// Configuration for the recipients component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/recipients/">recipients</a>
+        /// embedded component.
         /// </summary>
         [JsonProperty("recipients")]
 #if NET6_0_OR_GREATER
@@ -234,7 +284,9 @@ namespace Stripe
         public AccountSessionComponentsRecipientsOptions Recipients { get; set; }
 
         /// <summary>
-        /// Configuration for the reporting chart embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/reporting-chart/">reporting
+        /// chart</a> embedded component.
         /// </summary>
         [JsonProperty("reporting_chart")]
 #if NET6_0_OR_GREATER
@@ -243,7 +295,9 @@ namespace Stripe
         public AccountSessionComponentsReportingChartOptions ReportingChart { get; set; }
 
         /// <summary>
-        /// Configuration for the tax registrations embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/tax-registrations/">tax
+        /// registrations</a> embedded component.
         /// </summary>
         [JsonProperty("tax_registrations")]
 #if NET6_0_OR_GREATER
@@ -252,7 +306,9 @@ namespace Stripe
         public AccountSessionComponentsTaxRegistrationsOptions TaxRegistrations { get; set; }
 
         /// <summary>
-        /// Configuration for the tax settings embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/tax-settings/">tax
+        /// settings</a> embedded component.
         /// </summary>
         [JsonProperty("tax_settings")]
 #if NET6_0_OR_GREATER
@@ -261,7 +317,9 @@ namespace Stripe
         public AccountSessionComponentsTaxSettingsOptions TaxSettings { get; set; }
 
         /// <summary>
-        /// Configuration for the tax threshold monitoring embedded component.
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/tax-threshold-monitoring/">tax
+        /// threshold monitoring</a> embedded component.
         /// </summary>
         [JsonProperty("tax_threshold_monitoring")]
 #if NET6_0_OR_GREATER

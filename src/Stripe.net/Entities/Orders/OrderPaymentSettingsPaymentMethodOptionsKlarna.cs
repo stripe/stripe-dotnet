@@ -45,6 +45,7 @@ namespace Stripe
         /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
+        /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
 #if NET6_0_OR_GREATER

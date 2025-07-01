@@ -161,7 +161,7 @@ namespace Stripe
         public ChargePaymentMethodDetailsCardIncrementalAuthorization IncrementalAuthorization { get; set; }
 
         /// <summary>
-        /// Installment details for this payment (Mexico only).
+        /// Installment details for this payment.
         ///
         /// For more information, see the <a
         /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.

@@ -134,7 +134,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// The description that appears on the receiving end for an OutboundTransfer (for example,
-        /// bank statement for external bank transfer).
+        /// bank statement for external bank transfer). It will default to <c>STRIPE</c> if not set
+        /// on the account settings.
         /// </summary>
         [JsonProperty("statement_descriptor")]
 #if NET6_0_OR_GREATER

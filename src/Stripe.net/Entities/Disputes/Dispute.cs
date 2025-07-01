@@ -124,6 +124,7 @@ namespace Stripe
 
         /// <summary>
         /// List of eligibility types that are included in <c>enhanced_evidence</c>.
+        /// One of: <c>visa_compelling_evidence_3</c>, or <c>visa_compliance</c>.
         /// </summary>
         [JsonProperty("enhanced_eligibility_types")]
 #if NET6_0_OR_GREATER
