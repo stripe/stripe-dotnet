@@ -6964,12 +6964,12 @@ namespace StripeTests
                 Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
                 From = new Stripe.V2.MoneyManagement.InboundTransferCreateFromOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     PaymentMethod = "payment_method",
                 },
                 To = new Stripe.V2.MoneyManagement.InboundTransferCreateToOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     FinancialAccount = "financial_account",
                 },
             };
@@ -7006,18 +7006,18 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/outbound_payment_quotes",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment_quote\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"delivery_options\":null,\"estimated_fees\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"cross_border_payout_fee\"}],\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"fx_quote\":{\"lock_duration\":\"five_minutes\",\"lock_expires_at\":\"1970-01-18T15:15:29.586Z\",\"lock_status\":\"active\",\"rates\":{\"undefined\":{\"exchange_rate\":\"exchange_rate\"}},\"to_currency\":\"to_currency\"},\"livemode\":true,\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment_quote\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"delivery_options\":null,\"estimated_fees\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"cross_border_payout_fee\"}],\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"fx_quote\":{\"lock_duration\":\"five_minutes\",\"lock_expires_at\":\"1970-01-18T15:15:29.586Z\",\"lock_status\":\"active\",\"rates\":{\"undefined\":{\"exchange_rate\":\"exchange_rate\"}},\"to_currency\":\"usd\"},\"livemode\":true,\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"}}");
             var options = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateOptions
             {
                 Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
                 From = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateFromOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     FinancialAccount = "financial_account",
                 },
                 To = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     PayoutMethod = "payout_method",
                     Recipient = "recipient",
                 },
@@ -7038,7 +7038,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/outbound_payment_quotes/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment_quote\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"delivery_options\":null,\"estimated_fees\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"cross_border_payout_fee\"}],\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"fx_quote\":{\"lock_duration\":\"five_minutes\",\"lock_expires_at\":\"1970-01-18T15:15:29.586Z\",\"lock_status\":\"active\",\"rates\":{\"undefined\":{\"exchange_rate\":\"exchange_rate\"}},\"to_currency\":\"to_currency\"},\"livemode\":true,\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment_quote\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"delivery_options\":null,\"estimated_fees\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"cross_border_payout_fee\"}],\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"fx_quote\":{\"lock_duration\":\"five_minutes\",\"lock_expires_at\":\"1970-01-18T15:15:29.586Z\",\"lock_status\":\"active\",\"rates\":{\"undefined\":{\"exchange_rate\":\"exchange_rate\"}},\"to_currency\":\"usd\"},\"livemode\":true,\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.OutboundPaymentQuotes;
             Stripe.V2.MoneyManagement.OutboundPaymentQuote outboundPaymentQuote = service
@@ -7078,12 +7078,12 @@ namespace StripeTests
                 Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
                 From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     FinancialAccount = "financial_account",
                 },
                 To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     PayoutMethod = "payout_method",
                     Recipient = "recipient",
                 },
@@ -7248,12 +7248,12 @@ namespace StripeTests
                 Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
                 From = new Stripe.V2.MoneyManagement.OutboundTransferCreateFromOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     FinancialAccount = "financial_account",
                 },
                 To = new Stripe.V2.MoneyManagement.OutboundTransferCreateToOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     PayoutMethod = "payout_method",
                 },
             };
@@ -7811,7 +7811,7 @@ namespace StripeTests
                 Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
                 From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     FinancialAccount = "financial_account",
                 },
                 To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
@@ -7870,7 +7870,7 @@ namespace StripeTests
                 Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
                 From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
                 {
-                    Currency = "currency",
+                    Currency = "usd",
                     FinancialAccount = "financial_account",
                 },
                 To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
