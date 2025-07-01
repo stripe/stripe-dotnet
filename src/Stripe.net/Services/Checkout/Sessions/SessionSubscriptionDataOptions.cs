@@ -37,6 +37,15 @@ namespace Stripe.Checkout
         public DateTime? BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public SessionSubscriptionDataBillingModeOptions BillingMode { get; set; }
+
+        /// <summary>
         /// The tax rates that will apply to any subscription item that does not have
         /// <c>tax_rates</c> set. Invoices created will have their <c>default_tax_rates</c>
         /// populated from the subscription.

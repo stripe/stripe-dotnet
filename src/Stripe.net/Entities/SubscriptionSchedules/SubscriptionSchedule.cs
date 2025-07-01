@@ -82,6 +82,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The billing mode of the subscription.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public SubscriptionScheduleBillingMode BillingMode { get; set; }
+
+        /// <summary>
         /// Time at which the subscription schedule was canceled. Measured in seconds since the Unix
         /// epoch.
         /// </summary>

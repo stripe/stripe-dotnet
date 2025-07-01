@@ -36,8 +36,7 @@ namespace Stripe
         public decimal? ApplicationFeePercent { get; set; }
 
         /// <summary>
-        /// Automatic tax settings for this subscription. We recommend you only include this
-        /// parameter when the existing value is being changed.
+        /// Automatic tax settings for this subscription.
         /// </summary>
         [JsonProperty("automatic_tax")]
 #if NET6_0_OR_GREATER
@@ -46,9 +45,9 @@ namespace Stripe
         public SubscriptionAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
-        /// For new subscriptions, a past timestamp to backdate the subscription's start date to. If
-        /// set, the first invoice will contain a proration for the timespan between the start date
-        /// and the current time. Can be combined with trials and the billing cycle anchor.
+        /// A past timestamp to backdate the subscription's start date to. If set, the first invoice
+        /// will contain line items for the timespan between the start date and the current time.
+        /// Can be combined with trials and the billing cycle anchor.
         /// </summary>
         [JsonProperty("backdate_start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -85,6 +84,15 @@ namespace Stripe
         public SubscriptionBillingCycleAnchorConfigOptions BillingCycleAnchorConfig { get; set; }
 
         /// <summary>
+        /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public SubscriptionBillingModeOptions BillingMode { get; set; }
+
+        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. When updating, pass an empty string to remove previously-defined
         /// thresholds.
@@ -111,8 +119,7 @@ namespace Stripe
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
-        /// (<c>current_period_end</c>). Defaults to <c>false</c>. This param will be removed in a
-        /// future API version. Please use <c>cancel_at</c> instead.
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
 #if NET6_0_OR_GREATER

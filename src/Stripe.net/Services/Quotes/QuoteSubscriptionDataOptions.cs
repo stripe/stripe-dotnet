@@ -12,6 +12,15 @@ namespace Stripe
     public class QuoteSubscriptionDataOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
+        /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public QuoteSubscriptionDataBillingModeOptions BillingMode { get; set; }
+
+        /// <summary>
         /// The subscription's description, meant to be displayable to the customer. Use this field
         /// to optionally store an explanation of the subscription for rendering in Stripe surfaces
         /// and certain local payment methods UIs.
@@ -24,11 +33,8 @@ namespace Stripe
 
         /// <summary>
         /// When creating a new subscription, the date of which the subscription schedule will start
-        /// after the quote is accepted. When updating a subscription, the date of which the
-        /// subscription will be updated using a subscription schedule. The special value
-        /// <c>current_period_end</c> can be provided to update a subscription at the end of its
-        /// current period. The <c>effective_date</c> is ignored if it is in the past when the quote
-        /// is accepted.
+        /// after the quote is accepted. The <c>effective_date</c> is ignored if it is in the past
+        /// when the quote is accepted.
         /// </summary>
         [JsonProperty("effective_date")]
         [JsonConverter(typeof(AnyOfConverter))]

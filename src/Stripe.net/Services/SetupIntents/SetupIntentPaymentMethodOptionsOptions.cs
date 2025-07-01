@@ -58,6 +58,16 @@ namespace Stripe
         public SetupIntentPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
+        /// If this is a <c>klarna</c> PaymentMethod, this hash contains details about the Klarna
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("klarna")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("klarna")]
+#endif
+        public SetupIntentPaymentMethodOptionsKlarnaOptions Klarna { get; set; }
+
+        /// <summary>
         /// If this is a <c>link</c> PaymentMethod, this sub-hash contains details about the Link
         /// payment method options.
         /// </summary>

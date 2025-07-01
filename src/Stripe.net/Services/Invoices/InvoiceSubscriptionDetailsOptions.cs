@@ -27,6 +27,15 @@ namespace Stripe
         public AnyOf<DateTime?, InvoiceSubscriptionDetailsBillingCycleAnchor> BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
+        /// </summary>
+        [JsonProperty("billing_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_mode")]
+#endif
+        public InvoiceSubscriptionDetailsBillingModeOptions BillingMode { get; set; }
+
+        /// <summary>
         /// A timestamp at which the subscription should cancel. If set to a date before the current
         /// period ends, this will cause a proration if prorations have been enabled using
         /// <c>proration_behavior</c>. If set during a future period, this will always cause a
@@ -42,8 +51,7 @@ namespace Stripe
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
-        /// (<c>current_period_end</c>). Defaults to <c>false</c>. This param will be removed in a
-        /// future API version. Please use <c>cancel_at</c> instead.
+        /// (<c>current_period_end</c>). Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("cancel_at_period_end")]
 #if NET6_0_OR_GREATER
