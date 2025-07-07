@@ -169,6 +169,7 @@ namespace Stripe
                 { "setup_attempt", typeof(SetupAttempt) },
                 { "setup_intent", typeof(SetupIntent) },
                 { "shipping_rate", typeof(ShippingRate) },
+                { "sigma.schema", typeof(Sigma.Schema) },
                 { "source", typeof(Source) },
                 { "source_mandate_notification", typeof(SourceMandateNotification) },
                 { "source_transaction", typeof(SourceTransaction) },

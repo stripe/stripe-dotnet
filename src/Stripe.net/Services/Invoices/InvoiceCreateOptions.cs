@@ -48,7 +48,7 @@ namespace Stripe
         /// Controls whether Stripe performs <a
         /// href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">automatic
         /// collection</a> of the invoice. If <c>false</c>, the invoice's state doesn't
-        /// automatically advance without an explicit action.
+        /// automatically advance without an explicit action. Defaults to false.
         /// </summary>
         [JsonProperty("auto_advance")]
 #if NET6_0_OR_GREATER
