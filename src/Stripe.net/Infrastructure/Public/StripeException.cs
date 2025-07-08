@@ -51,12 +51,20 @@ namespace Stripe
                     ret = Stripe.V2.TemporarySessionExpiredException.Parse(httpStatusCode, body);
                     break;
 
-                case "financial_account_not_open":
-                    ret = Stripe.V2.FinancialAccountNotOpenException.Parse(httpStatusCode, body);
+                case "non_zero_balance":
+                    ret = Stripe.V2.NonZeroBalanceException.Parse(httpStatusCode, body);
+                    break;
+
+                case "already_exists":
+                    ret = Stripe.V2.AlreadyExistsException.Parse(httpStatusCode, body);
                     break;
 
                 case "feature_not_enabled":
                     ret = Stripe.V2.FeatureNotEnabledException.Parse(httpStatusCode, body);
+                    break;
+
+                case "financial_account_not_open":
+                    ret = Stripe.V2.FinancialAccountNotOpenException.Parse(httpStatusCode, body);
                     break;
 
                 case "blocked_by_stripe":
