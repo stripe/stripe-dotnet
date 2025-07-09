@@ -1,5 +1,14 @@
 # Changelog
 
+## 48.4.0-beta.2 - 2025-07-09
+* [#3145](https://github.com/stripe/stripe-dotnet/pull/3145) Pull in V2 FinancialAccount changes for June release
+  * Add support for `Close` and `Create` methods on resource `V2.MoneyManagement.FinancialAccount`
+  * Add support for `Storer` on `V2.Core.Account.Configuration` and `V2CoreAccountConfigurationOptions`
+  * Add support for `StatusDetails` on `V2.MoneyManagement.FinancialAccount`
+  * Add support for `Status` on `V2.MoneyManagement.FinancialAccountListOptions`
+  * Add support for thin events `V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent` and `V2CoreAccountIncludingConfigurationStorerUpdatedEvent` with related object `V2.Core.Account`
+  * Add support for error types `AlreadyExistsException` and `NonZeroBalanceException`
+
 ## 48.4.0-beta.1 - 2025-07-01
 * [#3132](https://github.com/stripe/stripe-dotnet/pull/3132) Update generated code for beta
   * Change type of `CheckoutSessionSubscriptionDataOptions.BillingMode`, `InvoiceScheduleDetailsOptions.BillingMode`, `InvoiceSubscriptionDetailsOptions.BillingMode`, `Quote.SubscriptionData.BillingMode`, `QuoteSubscriptionDataOptions.BillingMode`, `SubscriptionCreateOptions.BillingMode`, and `SubscriptionScheduleCreateOptions.BillingMode` from `enum('classic'|'flexible')` to `billing_mode`
