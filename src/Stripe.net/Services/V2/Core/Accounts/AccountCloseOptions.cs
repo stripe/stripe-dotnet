@@ -12,7 +12,7 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Configurations on the Account to be closed. All configurations on the Account must be
         /// passed in for this request to succeed.
-        /// One of: <c>customer</c>, <c>merchant</c>, or <c>recipient</c>.
+        /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
 #if NET6_0_OR_GREATER

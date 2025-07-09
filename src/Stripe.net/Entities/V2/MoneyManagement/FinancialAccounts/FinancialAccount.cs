@@ -135,6 +135,12 @@ namespace Stripe.V2.MoneyManagement
 #endif
         public string Status { get; set; }
 
+        [JsonProperty("status_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status_details")]
+#endif
+        public FinancialAccountStatusDetails StatusDetails { get; set; }
+
         /// <summary>
         /// If this is a <c>storage</c> FinancialAccount, this hash includes details specific to
         /// <c>storage</c> FinancialAccounts.

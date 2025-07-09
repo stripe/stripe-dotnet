@@ -350,6 +350,14 @@ namespace Stripe
                     Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEvent)
                 },
                 {
+                    "v2.core.account[configuration.storer].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.storer].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationStorerUpdatedEvent)
+                },
+                {
                     "v2.money_management.adjustment.created", typeof(
                     Events.V2MoneyManagementAdjustmentCreatedEvent)
                 },

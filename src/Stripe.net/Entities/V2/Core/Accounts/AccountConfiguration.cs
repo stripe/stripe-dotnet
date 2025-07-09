@@ -36,5 +36,15 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("recipient")]
 #endif
         public AccountConfigurationRecipient Recipient { get; set; }
+
+        /// <summary>
+        /// The Storer Configuration allows the Account to store and move funds using stored-value
+        /// FinancialAccounts.
+        /// </summary>
+        [JsonProperty("storer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("storer")]
+#endif
+        public AccountConfigurationStorer Storer { get; set; }
     }
 }

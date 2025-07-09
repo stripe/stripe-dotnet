@@ -37,7 +37,7 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Filter only accounts that have all of the configurations specified. If omitted, returns
         /// all accounts regardless of which configurations they have.
-        /// One of: <c>customer</c>, <c>merchant</c>, or <c>recipient</c>.
+        /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
 #if NET6_0_OR_GREATER
