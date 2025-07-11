@@ -61,8 +61,16 @@ namespace Stripe
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// The type of account link the user is requesting. Possible values are
-        /// <c>account_onboarding</c> or <c>account_update</c>.
+        /// The type of account link the user is requesting.
+        ///
+        /// You can create Account Links of type <c>account_update</c> only for connected accounts
+        /// where your platform is responsible for collecting requirements, including Custom
+        /// accounts. You can't create them for accounts that have access to a Stripe-hosted
+        /// Dashboard. If you use <a
+        /// href="https://stripe.com/connect/get-started-connect-embedded-components">Connect
+        /// embedded components</a>, you can include components that allow your connected accounts
+        /// to update their own information. For an account without Stripe-hosted Dashboard access
+        /// where Stripe is liable for negative balances, you must use embedded components.
         /// One of: <c>account_onboarding</c>, <c>account_update</c>,
         /// <c>capital_financing_offer</c>, or <c>capital_financing_reporting</c>.
         /// </summary>
