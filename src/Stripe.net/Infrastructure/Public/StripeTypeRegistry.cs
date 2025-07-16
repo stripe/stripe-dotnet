@@ -415,10 +415,6 @@ namespace Stripe
                     Events.V2CoreEventDestinationPingEvent)
                 },
                 {
-                    "v2.off_session_payment.requires_capture", typeof(
-                    Events.V2OffSessionPaymentRequiresCaptureEvent)
-                },
-                {
                     "v2.payments.off_session_payment.authorization_attempt_failed", typeof(
                     Events.V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent)
                 },
@@ -489,6 +485,10 @@ namespace Stripe
                 {
                     "v2.money_management.outbound_transfer.updated", typeof(
                     Events.V2MoneyManagementOutboundTransferUpdatedEvent)
+                },
+                {
+                    "v2.money_management.payout_method.updated", typeof(
+                    Events.V2MoneyManagementPayoutMethodUpdatedEvent)
                 },
                 {
                     "v2.money_management.received_credit.available", typeof(
