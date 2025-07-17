@@ -191,6 +191,7 @@ namespace Stripe
                 { "terminal.configuration", typeof(Terminal.Configuration) },
                 { "terminal.connection_token", typeof(Terminal.ConnectionToken) },
                 { "terminal.location", typeof(Terminal.Location) },
+                { "terminal.onboarding_link", typeof(Terminal.OnboardingLink) },
                 { "terminal.reader", typeof(Terminal.Reader) },
                 { "terminal.reader_collected_data", typeof(Terminal.ReaderCollectedData) },
                 { "test_helpers.test_clock", typeof(TestHelpers.TestClock) },
