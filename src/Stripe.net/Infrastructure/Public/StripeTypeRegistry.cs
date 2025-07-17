@@ -39,6 +39,8 @@ namespace Stripe
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
                 { "billing.meter_event_summary", typeof(Billing.MeterEventSummary) },
+                { "billing.meter_usage", typeof(Billing.MeterUsage) },
+                { "billing.meter_usage_row", typeof(Billing.MeterUsageRow) },
                 { "billing_portal.configuration", typeof(BillingPortal.Configuration) },
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
