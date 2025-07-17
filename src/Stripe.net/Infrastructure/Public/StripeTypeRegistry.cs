@@ -39,6 +39,8 @@ namespace Stripe
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
                 { "billing.meter_event_summary", typeof(Billing.MeterEventSummary) },
+                { "billing.meter_usage", typeof(Billing.MeterUsage) },
+                { "billing.meter_usage_row", typeof(Billing.MeterUsageRow) },
                 { "billing_portal.configuration", typeof(BillingPortal.Configuration) },
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
@@ -169,6 +171,7 @@ namespace Stripe
                 { "setup_attempt", typeof(SetupAttempt) },
                 { "setup_intent", typeof(SetupIntent) },
                 { "shipping_rate", typeof(ShippingRate) },
+                { "sigma.schema", typeof(Sigma.Schema) },
                 { "source", typeof(Source) },
                 { "source_mandate_notification", typeof(SourceMandateNotification) },
                 { "source_transaction", typeof(SourceTransaction) },
@@ -190,6 +193,7 @@ namespace Stripe
                 { "terminal.configuration", typeof(Terminal.Configuration) },
                 { "terminal.connection_token", typeof(Terminal.ConnectionToken) },
                 { "terminal.location", typeof(Terminal.Location) },
+                { "terminal.onboarding_link", typeof(Terminal.OnboardingLink) },
                 { "terminal.reader", typeof(Terminal.Reader) },
                 { "terminal.reader_collected_data", typeof(Terminal.ReaderCollectedData) },
                 { "test_helpers.test_clock", typeof(TestHelpers.TestClock) },
@@ -414,10 +418,6 @@ namespace Stripe
                     Events.V2CoreEventDestinationPingEvent)
                 },
                 {
-                    "v2.off_session_payment.requires_capture", typeof(
-                    Events.V2OffSessionPaymentRequiresCaptureEvent)
-                },
-                {
                     "v2.payments.off_session_payment.authorization_attempt_failed", typeof(
                     Events.V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent)
                 },
@@ -488,6 +488,10 @@ namespace Stripe
                 {
                     "v2.money_management.outbound_transfer.updated", typeof(
                     Events.V2MoneyManagementOutboundTransferUpdatedEvent)
+                },
+                {
+                    "v2.money_management.payout_method.updated", typeof(
+                    Events.V2MoneyManagementPayoutMethodUpdatedEvent)
                 },
                 {
                     "v2.money_management.received_credit.available", typeof(

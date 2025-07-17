@@ -9,12 +9,12 @@ namespace Stripe.V2.Payments
 #endif
 
     /// <summary>
-    /// Off-session payment resource.
+    /// OffSessionPayment resource.
     /// </summary>
     public class OffSessionPayment : StripeEntity<OffSessionPayment>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// ID of the OSP.
+        /// Unique identifier for the object..
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -33,7 +33,7 @@ namespace Stripe.V2.Payments
         public string Object { get; set; }
 
         /// <summary>
-        /// The amount you requested to be collected on the OSP upon creation.
+        /// The “presentment amount” to be collected from the customer.
         /// </summary>
         [JsonProperty("amount_requested")]
 #if NET6_0_OR_GREATER
@@ -42,7 +42,7 @@ namespace Stripe.V2.Payments
         public V2.Amount AmountRequested { get; set; }
 
         /// <summary>
-        /// The frequency of the underlying payment that this OSP represents.
+        /// The frequency of the underlying payment.
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
         /// </summary>
         [JsonProperty("cadence")]
@@ -52,7 +52,7 @@ namespace Stripe.V2.Payments
         public string Cadence { get; set; }
 
         /// <summary>
-        /// ID of owning compartment.
+        /// ID of the owning compartment.
         /// </summary>
         [JsonProperty("compartment_id")]
 #if NET6_0_OR_GREATER
@@ -61,7 +61,8 @@ namespace Stripe.V2.Payments
         public string CompartmentId { get; set; }
 
         /// <summary>
-        /// Timestamp of creation.
+        /// Creation time of the OffSessionPayment. Represented as a RFC 3339 date &amp; time UTC
+        /// value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("created")]
 #if NET6_0_OR_GREATER
@@ -70,7 +71,7 @@ namespace Stripe.V2.Payments
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Customer owning the supplied payment method.
+        /// ID of the Customer to which this OffSessionPayment belongs.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
@@ -79,7 +80,7 @@ namespace Stripe.V2.Payments
         public string Customer { get; set; }
 
         /// <summary>
-        /// Reason why the OSP failed.
+        /// The reason why the OffSessionPayment failed.
         /// One of: <c>rejected_by_partner</c>, or <c>retries_exhausted</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
@@ -89,7 +90,7 @@ namespace Stripe.V2.Payments
         public string FailureReason { get; set; }
 
         /// <summary>
-        /// Last error returned by the financial partner for a failed authorization.
+        /// The payment error encountered in the previous attempt to authorize the payment.
         /// </summary>
         [JsonProperty("last_authorization_attempt_error")]
 #if NET6_0_OR_GREATER
@@ -107,7 +108,8 @@ namespace Stripe.V2.Payments
         public string LatestPaymentAttemptRecord { get; set; }
 
         /// <summary>
-        /// True if the txn is livemode, false otherwise.
+        /// Has the value true if the object exists in live mode or the value false if the object
+        /// exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
 #if NET6_0_OR_GREATER
@@ -116,7 +118,11 @@ namespace Stripe.V2.Payments
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Metadata you provided.
+        /// Set of <a href="https://docs.corp.stripe.com/api/metadata">key-value pairs</a> that you
+        /// can attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Learn more about <a
+        /// href="https://docs.corp.stripe.com/payments/payment-intents#storing-information-in-metadata">storing
+        /// information in metadata</a>.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER
@@ -125,7 +131,7 @@ namespace Stripe.V2.Payments
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// OBO, same as on the PI.
+        /// The account (if any) for which the funds of the OffSessionPayment are intended.
         /// </summary>
         [JsonProperty("on_behalf_of")]
 #if NET6_0_OR_GREATER
@@ -134,7 +140,7 @@ namespace Stripe.V2.Payments
         public string OnBehalfOf { get; set; }
 
         /// <summary>
-        /// ID of payment method.
+        /// ID of the payment method used in this OffSessionPayment.
         /// </summary>
         [JsonProperty("payment_method")]
 #if NET6_0_OR_GREATER
@@ -143,7 +149,7 @@ namespace Stripe.V2.Payments
         public string PaymentMethod { get; set; }
 
         /// <summary>
-        /// Payment record associated with the OSP. consistent across attempts.
+        /// Payment record associated with the OffSessionPayment.
         /// </summary>
         [JsonProperty("payment_record")]
 #if NET6_0_OR_GREATER
@@ -152,7 +158,7 @@ namespace Stripe.V2.Payments
         public string PaymentRecord { get; set; }
 
         /// <summary>
-        /// Details about the OSP retries.
+        /// Details about the OffSessionPayment retries.
         /// </summary>
         [JsonProperty("retry_details")]
 #if NET6_0_OR_GREATER
@@ -161,7 +167,11 @@ namespace Stripe.V2.Payments
         public OffSessionPaymentRetryDetails RetryDetails { get; set; }
 
         /// <summary>
-        /// Statement descriptor you provided.
+        /// Text that appears on the customer’s statement as the statement descriptor for a non-card
+        /// charge. This value overrides the account’s default statement descriptor. For information
+        /// about requirements, including the 22-character limit, see the <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors">Statement
+        /// Descriptor docs</a>.
         /// </summary>
         [JsonProperty("statement_descriptor")]
 #if NET6_0_OR_GREATER
@@ -170,7 +180,10 @@ namespace Stripe.V2.Payments
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// Statement descriptor suffix you provided, similar to that on the PI.
+        /// Provides information about a card charge. Concatenated to the account’s <a
+        /// href="https://docs.stripe.com/get-started/account/statement-descriptors#static">statement
+        /// descriptor prefix</a> to form the complete statement descriptor that appears on the
+        /// customer’s statement.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix")]
 #if NET6_0_OR_GREATER
@@ -179,7 +192,9 @@ namespace Stripe.V2.Payments
         public string StatementDescriptorSuffix { get; set; }
 
         /// <summary>
-        /// Status of the OSP.
+        /// Status of this OffSessionPayment, one of <c>pending</c>, <c>pending_retry</c>,
+        /// <c>processing</c>, <c>failed</c>, <c>canceled</c>, <c>requires_capture</c>, or
+        /// <c>succeeded</c>.
         /// One of: <c>canceled</c>, <c>failed</c>, <c>pending</c>, <c>pending_retry</c>,
         /// <c>processing</c>, <c>requires_capture</c>, or <c>succeeded</c>.
         /// </summary>
@@ -190,7 +205,7 @@ namespace Stripe.V2.Payments
         public string Status { get; set; }
 
         /// <summary>
-        /// Test clock to be used to advance the retry attempts.
+        /// Test clock that can be used to advance the retry attempts in a sandbox.
         /// </summary>
         [JsonProperty("test_clock")]
 #if NET6_0_OR_GREATER
@@ -199,7 +214,9 @@ namespace Stripe.V2.Payments
         public string TestClock { get; set; }
 
         /// <summary>
-        /// Instructions for the transfer to be made with this OSP after successful money movement.
+        /// The data that automatically creates a Transfer after the payment finalizes. Learn more
+        /// about the use case for <a
+        /// href="https://docs.corp.stripe.com/payments/connected-accounts">connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
 #if NET6_0_OR_GREATER

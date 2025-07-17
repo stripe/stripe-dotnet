@@ -11,9 +11,9 @@ namespace Stripe
     public class PaymentAttemptRecordPaymentMethodDetailsCard : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsCard>
     {
         /// <summary>
-        /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
-        /// <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or
-        /// <c>unknown</c>.
+        /// Card brand. Can be <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
+        /// <c>eftpos_au</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>,
+        /// <c>visa</c> or <c>unknown</c>.
         /// One of: <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>eftpos_au</c>, <c>interac</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>,
         /// <c>unionpay</c>, <c>unknown</c>, or <c>visa</c>.

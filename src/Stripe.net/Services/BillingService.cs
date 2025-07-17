@@ -14,6 +14,7 @@ namespace Stripe
         private Billing.MeterService meters;
         private Billing.MeterEventService meterEvents;
         private Billing.MeterEventAdjustmentService meterEventAdjustments;
+        private Billing.MeterUsageService meterUsage;
 
         internal BillingService(ApiRequestor requestor)
             : base(requestor)
@@ -44,6 +45,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual Billing.MeterEventAdjustmentService MeterEventAdjustments => this.meterEventAdjustments ??= new Billing.MeterEventAdjustmentService(
+            this.Requestor);
+
+        public virtual Billing.MeterUsageService MeterUsage => this.meterUsage ??= new Billing.MeterUsageService(
             this.Requestor);
     }
 }

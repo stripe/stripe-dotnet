@@ -316,6 +316,19 @@ namespace Stripe.Checkout
         public List<SessionOptionalItemOptions> OptionalItems { get; set; }
 
         /// <summary>
+        /// Where the user is coming from. This informs the optimizations that are applied to the
+        /// session. For example, a session originating from a mobile app may behave more like a
+        /// native app, depending on the platform. This parameter is currently not allowed if
+        /// <c>ui_mode</c> is <c>custom</c>.
+        /// One of: <c>mobile_app</c>, or <c>web</c>.
+        /// </summary>
+        [JsonProperty("origin_context")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("origin_context")]
+#endif
+        public string OriginContext { get; set; }
+
+        /// <summary>
         /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
         /// <c>payment</c> mode.
         /// </summary>

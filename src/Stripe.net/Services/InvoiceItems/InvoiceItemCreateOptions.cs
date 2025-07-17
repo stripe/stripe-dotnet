@@ -80,10 +80,12 @@ namespace Stripe
         public List<InvoiceItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
-        /// The ID of an existing invoice to add this invoice item to. When left blank, the invoice
-        /// item will be added to the next upcoming scheduled invoice. This is useful when adding
-        /// invoice items in response to an invoice.created webhook. You can only add invoice items
-        /// to draft invoices and there is a maximum of 250 items per invoice.
+        /// The ID of an existing invoice to add this invoice item to. For subscription invoices,
+        /// when left blank, the invoice item will be added to the next upcoming scheduled invoice.
+        /// For standalone invoices, the invoice item won't be automatically added unless you pass
+        /// <c>pending_invoice_item_behavior: 'include'</c> when creating the invoice. This is
+        /// useful when adding invoice items in response to an invoice.created webhook. You can only
+        /// add invoice items to draft invoices and there is a maximum of 250 items per invoice.
         /// </summary>
         [JsonProperty("invoice")]
 #if NET6_0_OR_GREATER

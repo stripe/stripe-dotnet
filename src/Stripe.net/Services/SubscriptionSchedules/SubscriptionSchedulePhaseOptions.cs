@@ -141,6 +141,15 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseDiscountOptions> Discounts { get; set; }
 
         /// <summary>
+        /// The number of intervals the phase should last. If set, <c>end_date</c> must not be set.
+        /// </summary>
+        [JsonProperty("duration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("duration")]
+#endif
+        public SubscriptionSchedulePhaseDurationOptions Duration { get; set; }
+
+        /// <summary>
         /// The date at which this phase of the subscription schedule ends. If set,
         /// <c>iterations</c> must not be set.
         /// </summary>
@@ -175,7 +184,8 @@ namespace Stripe
         /// Integer representing the multiplier applied to the price interval. For example,
         /// <c>iterations=2</c> applied to a price with <c>interval=month</c> and
         /// <c>interval_count=3</c> results in a phase of duration <c>2 * 3 months = 6 months</c>.
-        /// If set, <c>end_date</c> must not be set.
+        /// If set, <c>end_date</c> must not be set. This parameter is deprecated and will be
+        /// removed in a future version. Use <c>duration</c> instead.
         /// </summary>
         [JsonProperty("iterations")]
 #if NET6_0_OR_GREATER

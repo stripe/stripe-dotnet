@@ -10,6 +10,15 @@ namespace Stripe
     public class PaymentIntentCaptureOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Provides industry-specific information about the amount.
+        /// </summary>
+        [JsonProperty("amount_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_details")]
+#endif
+        public PaymentIntentAmountDetailsOptions AmountDetails { get; set; }
+
+        /// <summary>
         /// The amount to capture from the PaymentIntent, which must be less than or equal to the
         /// original amount. Defaults to the full <c>amount_capturable</c> if it's not provided.
         /// </summary>
