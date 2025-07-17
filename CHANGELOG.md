@@ -311,12 +311,15 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for new Usage Billing APIs `Billing.MeterEvent`, `Billing.MeterEventAdjustments`, `Billing.MeterEventSession`, `Billing.MeterEventStream` and the new Events API `Core.Events` under the [v2 namespace ](https://docs.corp.stripe.com/api-v2-overview)
   * Add method `ParseThinEvent()` on the `StripeClient` class to parse [thin events](https://docs.corp.stripe.com/event-destinations#events-overview).
   * Add methods [RawRequestAsync()](https://github.com/stripe/stripe-dotnet/tree/master?tab=readme-ov-file#custom-requests) on the `StripeClient` class that takes a HTTP method type, url and relevant parameters to make requests to the Stripe API that are not yet supported in the SDK.
-  * Add access to services to StripeClient under `V1` and `V2` property accessors, so that instead of
-      ```csharp
-      StripeConfiguration.ApiKey = apiKey;
-      var svc = new CustomerService();
-      svc.Get(customerId);
-      ```
+
+  #### StripeClient
+
+  Add access to services to StripeClient under `V1` and `V2` property accessors, so that instead of
+  ```csharp
+  StripeConfiguration.ApiKey = apiKey;
+  var svc = new CustomerService();
+  svc.Get(customerId);
+  ```
   you can write:
   ```csharp
   var client = new StripeClient(apiKey);
