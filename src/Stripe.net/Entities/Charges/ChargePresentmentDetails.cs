@@ -9,7 +9,8 @@ namespace Stripe
     public class ChargePresentmentDetails : StripeEntity<ChargePresentmentDetails>
     {
         /// <summary>
-        /// Amount intended to be collected by this payment, denominated in presentment_currency.
+        /// Amount intended to be collected by this payment, denominated in
+        /// <c>presentment_currency</c>.
         /// </summary>
         [JsonProperty("presentment_amount")]
 #if NET6_0_OR_GREATER

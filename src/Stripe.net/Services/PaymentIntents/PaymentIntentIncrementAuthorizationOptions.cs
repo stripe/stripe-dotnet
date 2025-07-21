@@ -20,6 +20,15 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the amount.
+        /// </summary>
+        [JsonProperty("amount_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_details")]
+#endif
+        public PaymentIntentAmountDetailsOptions AmountDetails { get; set; }
+
+        /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. The amount of the
         /// application fee collected will be capped at the total amount captured. For more
@@ -62,6 +71,15 @@ namespace Stripe
         [STJS.JsonPropertyName("metadata")]
 #endif
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_details")]
+#endif
+        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
         /// Payment method-specific configuration for this PaymentIntent.
