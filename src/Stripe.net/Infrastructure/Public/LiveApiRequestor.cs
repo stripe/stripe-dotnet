@@ -3,6 +3,7 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -17,8 +18,9 @@ namespace Stripe
         internal static readonly List<string> RawRequestUsage = new List<string> { "raw_request" };
         private JsonSerializerSettings jsonSerializerSettings;
         private StripeClientOptions clientOptions;
+        private List<string> defaultUsage;
 
-        public LiveApiRequestor(StripeClientOptions options)
+        public LiveApiRequestor(StripeClientOptions options, List<string> defaultUsage = null)
         {
             // Clone the object passed in, or use an empty option object if it is null
             options = options?.Clone() ?? new StripeClientOptions();
@@ -41,6 +43,7 @@ namespace Stripe
             this.ConnectBase = options.ConnectBase ?? DefaultConnectBase;
             this.FilesBase = options.FilesBase ?? DefaultFilesBase;
             this.MeterEventsBase = options.MeterEventsBase ?? DefaultMeterEventsBase;
+            this.defaultUsage = defaultUsage ?? new List<string>();
             this.jsonSerializerSettings = StripeConfiguration.DefaultSerializerSettings(this);
         }
 
@@ -216,6 +219,11 @@ namespace Stripe
             RequestOptions requestOptions,
             ApiMode apiMode)
         {
+            if (this.defaultUsage.Count > 0)
+            {
+                requestOptions = requestOptions.WithUsage(this.defaultUsage);
+            }
+
             var uri = StripeRequest.BuildUri(
                 requestOptions?.BaseUrl ?? this.GetBaseUrl(baseAddress),
                 method,
@@ -297,7 +305,7 @@ namespace Stripe
                 throw new InvalidOperationException("content is not allowed for non-POST requests.");
             }
 
-            requestOptions = requestOptions.WithUsage(RawRequestUsage);
+            requestOptions = requestOptions.WithUsage(this.defaultUsage.Concat(RawRequestUsage).ToList());
             var apiMode = ApiModeUtils.GetApiMode(path);
             var uri = StripeRequest.BuildUri(
                 requestOptions?.BaseUrl ?? this.GetBaseUrl(BaseAddress.Api),

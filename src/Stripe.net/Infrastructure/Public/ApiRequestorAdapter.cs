@@ -35,6 +35,11 @@ namespace Stripe
                 return stripeClient.Requestor;
             }
 
+            if (client is DefaultStripeClient defaultStripeClient)
+            {
+                return defaultStripeClient.Requestor;
+            }
+
             return new ApiRequestorAdapter(client);
         }
 

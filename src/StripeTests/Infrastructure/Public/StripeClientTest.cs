@@ -1,15 +1,19 @@
 namespace StripeTests
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Net.Http;
+    using System.Net.Http.Headers;
     using System.Threading;
     using System.Threading.Tasks;
     using Moq;
     using Moq.Protected;
+    using Newtonsoft.Json.Linq;
     using Stripe;
-    using StripeTests.V2;
     using Xunit;
+
+    using static TelemetryTestUtils;
 
     public class StripeClientTest : BaseStripeTest
     {
@@ -71,6 +75,58 @@ namespace StripeTests
             options.ApiKey = "wrong_key_456";
             Assert.NotEqual(options.ApiKey, client.ApiKey);
             Assert.Equal(goodApiKey, client.ApiKey);
+        }
+
+        [Fact]
+        public void StripeClientRequestorIncludesCorrectUsage()
+        {
+            var client = this.StripeClient as StripeClient;
+            client.V1.Customers.Get("cus_123");
+            client.V1.Customers.Get("cus_123");
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        TelemetryHeaderMatcher(
+                            m.Headers,
+                            (_) => true,
+                            (_) => true,
+                            (t) => t != null && t.Count == 1 && t.Contains(Stripe.StripeClient.StripeClientUsage[0]))),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
+        public void DefaultStripeClientRequestorDoesNotIncludeUsage()
+        {
+            var stripeClient = this.StripeClient as StripeClient;
+
+            // This mimics StripeConfiguration.BuildDefaultStripeClient, which is used
+            // by StripeConfiguration.StripeClient when a client is not set
+            StripeConfiguration.StripeClient = new DefaultStripeClient(
+                stripeClient.ApiKey, stripeClient.ClientId, stripeClient.HttpClient);
+
+            var customers = new CustomerService();
+            customers.Get("cus_123");
+            customers.Get("cus_123");
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        TelemetryHeaderMatcher(
+                            m.Headers,
+                            (_) => true,
+                            (_) => true,
+                            (t) => t != null && t.Count == 0)),
+                    ItExpr.IsAny<CancellationToken>());
+
+            // unfortunately we cannot check at the top of the test because
+            // StripeConfiguration.StripeClient always returns a value; but
+            // we should assume it was not set
+            StripeConfiguration.StripeClient = null;
         }
 
         [Fact]
