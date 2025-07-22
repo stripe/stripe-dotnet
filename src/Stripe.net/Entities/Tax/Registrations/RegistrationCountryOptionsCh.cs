@@ -8,6 +8,12 @@ namespace Stripe.Tax
 
     public class RegistrationCountryOptionsCh : StripeEntity<RegistrationCountryOptionsCh>
     {
+        [JsonProperty("standard")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("standard")]
+#endif
+        public RegistrationCountryOptionsChStandard Standard { get; set; }
+
         /// <summary>
         /// Type of registration in <c>country</c>.
         /// </summary>

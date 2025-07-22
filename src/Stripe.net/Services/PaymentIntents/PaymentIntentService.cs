@@ -119,27 +119,35 @@ namespace Stripe
 
         /// <summary>
         /// <p>Confirm that your customer intends to pay with current or provided payment method.
-        /// Upon confirmation, the PaymentIntent will attempt to initiate a payment. If the selected
-        /// payment method requires additional authentication steps, the PaymentIntent will
-        /// transition to the <c>requires_action</c> status and suggest additional actions via
-        /// <c>next_action</c>. If payment fails, the PaymentIntent transitions to the
-        /// <c>requires_payment_method</c> status or the <c>canceled</c> status if the confirmation
-        /// limit is reached. If payment succeeds, the PaymentIntent will transition to the
-        /// <c>succeeded</c> status (or <c>requires_capture</c>, if <c>capture_method</c> is set to
-        /// <c>manual</c>). If the <c>confirmation_method</c> is <c>automatic</c>, payment may be
-        /// attempted using our <a
+        /// Upon confirmation, the PaymentIntent will attempt to initiate a payment.</p>.
+        ///
+        /// <p>If the selected payment method requires additional authentication steps, the
+        /// PaymentIntent will transition to the <c>requires_action</c> status and suggest
+        /// additional actions via <c>next_action</c>. If payment fails, the PaymentIntent
+        /// transitions to the <c>requires_payment_method</c> status or the <c>canceled</c> status
+        /// if the confirmation limit is reached. If payment succeeds, the PaymentIntent will
+        /// transition to the <c>succeeded</c> status (or <c>requires_capture</c>, if
+        /// <c>capture_method</c> is set to <c>manual</c>).</p>.
+        ///
+        /// <p>If the <c>confirmation_method</c> is <c>automatic</c>, payment may be attempted using
+        /// our <a
         /// href="https://stripe.com/docs/stripe-js/reference#stripe-handle-card-payment">client
         /// SDKs</a> and the PaymentIntent’s <a
         /// href="https://stripe.com/docs/api#payment_intent_object-client_secret">client_secret</a>.
         /// After <c>next_action</c>s are handled by the client, no additional confirmation is
-        /// required to complete the payment. If the <c>confirmation_method</c> is <c>manual</c>,
-        /// all payment attempts must be initiated using a secret key. If any actions are required
-        /// for the payment, the PaymentIntent will return to the <c>requires_confirmation</c> state
-        /// after those actions are completed. Your server needs to then explicitly re-confirm the
-        /// PaymentIntent to initiate the next payment attempt. There is a variable upper limit on
-        /// how many times a PaymentIntent can be confirmed. After this limit is reached, any
-        /// further calls to this endpoint will transition the PaymentIntent to the <c>canceled</c>
-        /// state.</p>.
+        /// required to complete the payment.</p>.
+        ///
+        /// <p>If the <c>confirmation_method</c> is <c>manual</c>, all payment attempts must be
+        /// initiated using a secret key.</p>.
+        ///
+        /// <p>If any actions are required for the payment, the PaymentIntent will return to the
+        /// <c>requires_confirmation</c> state after those actions are completed. Your server needs
+        /// to then explicitly re-confirm the PaymentIntent to initiate the next payment
+        /// attempt.</p>.
+        ///
+        /// <p>There is a variable upper limit on how many times a PaymentIntent can be confirmed.
+        /// After this limit is reached, any further calls to this endpoint will transition the
+        /// PaymentIntent to the <c>canceled</c> state.</p>.
         /// </summary>
         public virtual PaymentIntent Confirm(string id, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null)
         {
@@ -148,27 +156,35 @@ namespace Stripe
 
         /// <summary>
         /// <p>Confirm that your customer intends to pay with current or provided payment method.
-        /// Upon confirmation, the PaymentIntent will attempt to initiate a payment. If the selected
-        /// payment method requires additional authentication steps, the PaymentIntent will
-        /// transition to the <c>requires_action</c> status and suggest additional actions via
-        /// <c>next_action</c>. If payment fails, the PaymentIntent transitions to the
-        /// <c>requires_payment_method</c> status or the <c>canceled</c> status if the confirmation
-        /// limit is reached. If payment succeeds, the PaymentIntent will transition to the
-        /// <c>succeeded</c> status (or <c>requires_capture</c>, if <c>capture_method</c> is set to
-        /// <c>manual</c>). If the <c>confirmation_method</c> is <c>automatic</c>, payment may be
-        /// attempted using our <a
+        /// Upon confirmation, the PaymentIntent will attempt to initiate a payment.</p>.
+        ///
+        /// <p>If the selected payment method requires additional authentication steps, the
+        /// PaymentIntent will transition to the <c>requires_action</c> status and suggest
+        /// additional actions via <c>next_action</c>. If payment fails, the PaymentIntent
+        /// transitions to the <c>requires_payment_method</c> status or the <c>canceled</c> status
+        /// if the confirmation limit is reached. If payment succeeds, the PaymentIntent will
+        /// transition to the <c>succeeded</c> status (or <c>requires_capture</c>, if
+        /// <c>capture_method</c> is set to <c>manual</c>).</p>.
+        ///
+        /// <p>If the <c>confirmation_method</c> is <c>automatic</c>, payment may be attempted using
+        /// our <a
         /// href="https://stripe.com/docs/stripe-js/reference#stripe-handle-card-payment">client
         /// SDKs</a> and the PaymentIntent’s <a
         /// href="https://stripe.com/docs/api#payment_intent_object-client_secret">client_secret</a>.
         /// After <c>next_action</c>s are handled by the client, no additional confirmation is
-        /// required to complete the payment. If the <c>confirmation_method</c> is <c>manual</c>,
-        /// all payment attempts must be initiated using a secret key. If any actions are required
-        /// for the payment, the PaymentIntent will return to the <c>requires_confirmation</c> state
-        /// after those actions are completed. Your server needs to then explicitly re-confirm the
-        /// PaymentIntent to initiate the next payment attempt. There is a variable upper limit on
-        /// how many times a PaymentIntent can be confirmed. After this limit is reached, any
-        /// further calls to this endpoint will transition the PaymentIntent to the <c>canceled</c>
-        /// state.</p>.
+        /// required to complete the payment.</p>.
+        ///
+        /// <p>If the <c>confirmation_method</c> is <c>manual</c>, all payment attempts must be
+        /// initiated using a secret key.</p>.
+        ///
+        /// <p>If any actions are required for the payment, the PaymentIntent will return to the
+        /// <c>requires_confirmation</c> state after those actions are completed. Your server needs
+        /// to then explicitly re-confirm the PaymentIntent to initiate the next payment
+        /// attempt.</p>.
+        ///
+        /// <p>There is a variable upper limit on how many times a PaymentIntent can be confirmed.
+        /// After this limit is reached, any further calls to this endpoint will transition the
+        /// PaymentIntent to the <c>canceled</c> state.</p>.
         /// </summary>
         public virtual Task<PaymentIntent> ConfirmAsync(string id, PaymentIntentConfirmOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
