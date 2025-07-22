@@ -79,7 +79,7 @@ namespace Stripe
         /// authentication due to SCA regulation and further user action is needed, this parameter
         /// does not update the subscription and returns an error instead. This was the default
         /// behavior for API versions prior to 2019-03-14. See the <a
-        /// href="https://stripe.com/docs/upgrades#2019-03-14">changelog</a> to learn more.
+        /// href="https://docs.stripe.com/changelog/2019-03-14">changelog</a> to learn more.
         /// One of: <c>allow_incomplete</c>, <c>default_incomplete</c>, <c>error_if_incomplete</c>,
         /// or <c>pending_if_incomplete</c>.
         /// </summary>

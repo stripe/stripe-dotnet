@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Off session payment created event definition.
+    /// Sent immediately following a user's call to the Off-Session Payments create endpoint.
     /// </summary>
     public class V2PaymentsOffSessionPaymentCreatedEvent : V2.Event
     {

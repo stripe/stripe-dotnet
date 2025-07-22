@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -24,22 +25,22 @@ namespace Stripe
         /// Payouts scheduled between the 29th and 31st of the month are sent on the last day of
         /// shorter months.
         /// </summary>
-        [JsonProperty("monthly_anchor")]
+        [JsonProperty("monthly_payout_days")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("monthly_anchor")]
+        [STJS.JsonPropertyName("monthly_payout_days")]
 #endif
-        public long MonthlyAnchor { get; set; }
+        public List<long> MonthlyPayoutDays { get; set; }
 
         /// <summary>
-        /// The day of the week funds will be paid out, of the style 'monday', 'tuesday', etc. Only
-        /// shown if <c>interval</c> is weekly.
-        /// One of: <c>friday</c>, <c>monday</c>, <c>thursday</c>, <c>tuesday</c>, or
-        /// <c>wednesday</c>.
+        /// The days of the week when available funds are paid out, specified as an array, for
+        /// example, [<c>monday</c>, <c>tuesday</c>]. Only shown if <c>interval</c> is weekly.
+        /// One of: <c>friday</c>, <c>monday</c>, <c>saturday</c>, <c>sunday</c>, <c>thursday</c>,
+        /// <c>tuesday</c>, or <c>wednesday</c>.
         /// </summary>
-        [JsonProperty("weekly_anchor")]
+        [JsonProperty("weekly_payout_days")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("weekly_anchor")]
+        [STJS.JsonPropertyName("weekly_payout_days")]
 #endif
-        public string WeeklyAnchor { get; set; }
+        public List<string> WeeklyPayoutDays { get; set; }
     }
 }

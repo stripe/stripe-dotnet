@@ -316,6 +316,19 @@ namespace Stripe.Checkout
         public List<SessionOptionalItemOptions> OptionalItems { get; set; }
 
         /// <summary>
+        /// Where the user is coming from. This informs the optimizations that are applied to the
+        /// session. For example, a session originating from a mobile app may behave more like a
+        /// native app, depending on the platform. This parameter is currently not allowed if
+        /// <c>ui_mode</c> is <c>custom</c>.
+        /// One of: <c>mobile_app</c>, or <c>web</c>.
+        /// </summary>
+        [JsonProperty("origin_context")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("origin_context")]
+#endif
+        public string OriginContext { get; set; }
+
+        /// <summary>
         /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
         /// <c>payment</c> mode.
         /// </summary>
@@ -396,11 +409,12 @@ namespace Stripe.Checkout
         /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
         /// <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
         /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>,
-        /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>oxxo</c>, <c>p24</c>,
-        /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>,
-        /// <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>,
-        /// <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>,
-        /// <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>,
+        /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
+        /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER

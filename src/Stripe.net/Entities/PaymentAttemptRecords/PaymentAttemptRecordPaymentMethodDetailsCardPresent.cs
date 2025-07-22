@@ -21,9 +21,9 @@ namespace Stripe
         public long? AmountAuthorized { get; set; }
 
         /// <summary>
-        /// Card brand. Can be <c>amex</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
-        /// <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>, <c>visa</c>, or
-        /// <c>unknown</c>.
+        /// Card brand. Can be <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
+        /// <c>eftpos_au</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>,
+        /// <c>visa</c> or <c>unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
 #if NET6_0_OR_GREATER

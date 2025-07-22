@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Off session payment succeeded event definition.
+    /// Sent immediately after a successful authorization.
     /// </summary>
     public class V2PaymentsOffSessionPaymentSucceededEvent : V2.Event
     {

@@ -22,6 +22,16 @@ namespace Stripe.V2.MoneyManagement
         public bool Archived { get; set; }
 
         /// <summary>
+        /// The type of bank account (checking or savings).
+        /// One of: <c>checking</c>, or <c>savings</c>.
+        /// </summary>
+        [JsonProperty("bank_account_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bank_account_type")]
+#endif
+        public string BankAccountType { get; set; }
+
+        /// <summary>
         /// The name of the bank this bank account is in. This field is populated automatically by
         /// Stripe.
         /// </summary>

@@ -8,7 +8,8 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Off session payment authorization attempt started event definition.
+    /// Sent when our internal scheduling system kicks off an attempt at authorization, whether
+    /// it's a retry or an initial authorization.
     /// </summary>
     public class V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent : V2.Event
     {

@@ -75,10 +75,10 @@ namespace Stripe.Radar
         public bool? Deleted { get; set; }
 
         /// <summary>
-        /// The type of items in the value list. One of <c>card_fingerprint</c>,
-        /// <c>us_bank_account_fingerprint</c>, <c>sepa_debit_fingerprint</c>, <c>card_bin</c>,
+        /// The type of items in the value list. One of <c>card_fingerprint</c>, <c>card_bin</c>,
         /// <c>email</c>, <c>ip_address</c>, <c>country</c>, <c>string</c>,
-        /// <c>case_sensitive_string</c>, or <c>customer_id</c>.
+        /// <c>case_sensitive_string</c>, <c>customer_id</c>, <c>sepa_debit_fingerprint</c>, or
+        /// <c>us_bank_account_fingerprint</c>.
         /// One of: <c>card_bin</c>, <c>card_fingerprint</c>, <c>case_sensitive_string</c>,
         /// <c>country</c>, <c>customer_id</c>, <c>email</c>, <c>ip_address</c>,
         /// <c>sepa_debit_fingerprint</c>, <c>string</c>, or <c>us_bank_account_fingerprint</c>.

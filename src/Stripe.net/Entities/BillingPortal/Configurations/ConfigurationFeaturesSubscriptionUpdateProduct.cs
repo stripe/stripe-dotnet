@@ -9,6 +9,12 @@ namespace Stripe.BillingPortal
 
     public class ConfigurationFeaturesSubscriptionUpdateProduct : StripeEntity<ConfigurationFeaturesSubscriptionUpdateProduct>
     {
+        [JsonProperty("adjustable_quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("adjustable_quantity")]
+#endif
+        public ConfigurationFeaturesSubscriptionUpdateProductAdjustableQuantity AdjustableQuantity { get; set; }
+
         /// <summary>
         /// The list of price IDs which, when subscribed to, a subscription can be updated.
         /// </summary>

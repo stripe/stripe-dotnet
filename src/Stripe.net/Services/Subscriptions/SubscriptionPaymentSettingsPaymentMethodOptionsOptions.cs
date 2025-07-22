@@ -79,6 +79,16 @@ namespace Stripe
         public SubscriptionPaymentSettingsPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
 
         /// <summary>
+        /// This sub-hash contains details about the UPI payment method options to pass to the
+        /// invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("upi")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("upi")]
+#endif
+        public SubscriptionPaymentSettingsPaymentMethodOptionsUpiOptions Upi { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the ACH direct debit payment method options to pass
         /// to the invoice’s PaymentIntent.
         /// </summary>

@@ -9,6 +9,7 @@ namespace Stripe
     public class InvoiceSubscriptionDetailsBillingModeOptions : INestedOptions
     {
         /// <summary>
+        /// Controls the calculation and orchestration of prorations and invoices for subscriptions.
         /// One of: <c>classic</c>, or <c>flexible</c>.
         /// </summary>
         [JsonProperty("type")]
