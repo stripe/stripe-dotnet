@@ -167,23 +167,20 @@ namespace StripeTests
         [Fact]
         public async Task RawRequestAsyncIncludesCorrectUsage()
         {
-            // Stub a request as stripe-mock does not support v2
-            this.MockHttpClientFixture.StubRequest(
-                    HttpMethod.Post,
-                    "/v2/billing/meter_event_session",
-                    System.Net.HttpStatusCode.OK,
-                    "{\"id\": \"mes_123\",\"object\":\"v2.billing.meter_event_session\"}");
+            await this.stripeClient.RawRequestAsync(
+               HttpMethod.Get,
+               "/v1/customers/cus_123",
+               null,
+               new RawRequestOptions
+               {
+               });
 
-            var rawResponse = await this.stripeClient.RawRequestAsync(
-                HttpMethod.Post,
-                "/v2/billing/meter_event_session",
-                "{}",
+            await this.stripeClient.RawRequestAsync(
+                HttpMethod.Get,
+                "/v1/customers/cus_123",
+                null,
                 new RawRequestOptions
                 {
-                    AdditionalHeaders =
-                    {
-                        { "foo", "bar" },
-                    },
                 });
 
             this.MockHttpClientFixture.MockHandler.Protected()
