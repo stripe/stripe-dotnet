@@ -221,7 +221,13 @@ namespace Stripe
         {
             if (this.defaultUsage.Count > 0)
             {
-                requestOptions = requestOptions.WithUsage(this.defaultUsage);
+                var usage = this.defaultUsage;
+                if (requestOptions?.Usage?.Count > 0)
+                {
+                    usage = usage.Concat(requestOptions.Usage).ToList();
+                }
+
+                requestOptions = requestOptions.WithUsage(usage);
             }
 
             var uri = StripeRequest.BuildUri(

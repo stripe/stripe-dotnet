@@ -165,6 +165,41 @@ namespace StripeTests
         }
 
         [Fact]
+        public async Task RawRequestAsyncIncludesCorrectUsage()
+        {
+            // Stub a request as stripe-mock does not support v2
+            this.MockHttpClientFixture.StubRequest(
+                    HttpMethod.Post,
+                    "/v2/billing/meter_event_session",
+                    System.Net.HttpStatusCode.OK,
+                    "{\"id\": \"mes_123\",\"object\":\"v2.billing.meter_event_session\"}");
+
+            var rawResponse = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_session",
+                "{}",
+                new RawRequestOptions
+                {
+                    AdditionalHeaders =
+                    {
+                        { "foo", "bar" },
+                    },
+                });
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        TelemetryHeaderMatcher(
+                            m.Headers,
+                            (_) => true,
+                            (_) => true,
+                            (t) => t != null && t.Count == 2 && t.Contains(Stripe.StripeClient.StripeClientUsage[0]) && t.Contains(LiveApiRequestor.RawRequestUsage[0]))),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        [Fact]
         public void ConstructThinEvent()
         {
             string payload = @"{

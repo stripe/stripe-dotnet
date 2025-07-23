@@ -97,7 +97,7 @@ namespace StripeTests
                             m.Headers,
                             (_) => true,
                             (_) => true,
-                            (t) => t != null && t.Count == 2 && t.Contains("llama") && t.Contains("bufo"))),
+                            (t) => t != null && t.Count >= 2 && t.Contains("llama") && t.Contains("bufo"))),
                     ItExpr.IsAny<CancellationToken>());
         }
 
