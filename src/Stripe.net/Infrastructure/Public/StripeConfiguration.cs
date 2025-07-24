@@ -10,7 +10,7 @@ namespace Stripe
     /// <summary>
     /// Global configuration class for Stripe.net settings.
     /// </summary>
-    public static class StripeConfiguration
+    public static partial class StripeConfiguration
     {
         private static string apiKey;
 
