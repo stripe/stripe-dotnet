@@ -28,6 +28,30 @@
   * Add support for `FromAccount`, `OutboundPayment`, and `OutboundTransfer` on `V2.MoneyManagement.ReceivedCredit.BalanceTransfer`
   * Change type of `V2.MoneyManagement.ReceivedCredit.BalanceTransfer.Type` from `literal('payout_v1')` to `enum('outbound_payment'|'outbound_transfer'|'payout_v1')`
 
+## 48.3.0 - 2025-07-01
+* [#3139](https://github.com/stripe/stripe-dotnet/pull/3139) Update generated code
+  * Add support for `Migrate` method on resource `Subscription`
+  * Add support for `CollectPaymentMethod` and `ConfirmPaymentIntent` methods on resource `Terminal.Reader`
+  * Add support for `CryptoPayments` on `Account.Capabilities` and `AccountCapabilitiesOptions`
+  * Add support for `ProofOfAddress` on `AccountDocumentsOptions`
+  * Add support for `MonthlyPayoutDays` and `WeeklyPayoutDays` on `Account.Settings.Payouts.Schedule` and `AccountSettingsPayoutsScheduleOptions`
+  * Add support for `Crypto` on `Charge.PaymentMethodDetails`, `ConfirmationToken.PaymentMethodPreview`, `ConfirmationTokenPaymentMethodDataOptions`, `PaymentIntent.PaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Change type of `Charge.PaymentMethodDetails.Card.Installments.Plan.Type`, `ConfirmationToken.PaymentMethodOptions.Card.Installments.Plan.Type`, `ConfirmationTokenPaymentMethodOptionsCardInstallmentsPlanOptions.Type`, `InvoicePaymentSettingsPaymentMethodOptionsCardInstallmentsPlanOptions.Type`, `PaymentIntent.PaymentMethodOptions.Card.Installments.AvailablePlans.Type`, `PaymentIntent.PaymentMethodOptions.Card.Installments.Plan.Type`, and `PaymentIntentPaymentMethodOptionsCardInstallmentsPlanOptions.Type` from `literal('fixed_count')` to `enum('bonus'|'fixed_count'|'revolving')`
+  * Add support for `Subscriptions` on `CheckoutSessionPaymentMethodOptionsKlarnaOptions` and `PaymentIntentPaymentMethodOptionsKlarnaOptions`
+  * Add support for `BillingMode` on `CheckoutSessionSubscriptionDataOptions`, `InvoiceScheduleDetailsOptions`, `InvoiceSubscriptionDetailsOptions`, `Quote.SubscriptionData`, `QuoteSubscriptionDataOptions`, `SubscriptionCreateOptions`, `SubscriptionScheduleCreateOptions`, `SubscriptionSchedule`, and `Subscription`
+  * Change type of `Dispute.EnhancedEligibilityTypes` from `literal('visa_compelling_evidence_3')` to `enum('visa_compelling_evidence_3'|'visa_compliance')`
+  * Add support for `RelatedPerson` on `Identity.VerificationSessionCreateOptions` and `Identity.VerificationSession`
+  * Add support for `Matching` on `Identity.VerificationSession.Options`
+  * Add support for `Klarna` on `Mandate.PaymentMethodDetails`, `SetupIntent.PaymentMethodOptions`, and `SetupIntentPaymentMethodOptionsOptions`
+  * Add support for `OnDemand` on `PaymentIntentPaymentMethodOptionsKlarnaOptions`
+  * Change type of `PaymentIntent.PaymentMethodOptions.Klarna.SetupFutureUsage` and `PaymentIntentPaymentMethodOptionsKlarnaOptions.SetupFutureUsage` from `literal('none')` to `enum('none'|'off_session'|'on_session')`
+  * Add support for `Ua` on `Tax.Registration.CountryOptions` and `TaxRegistrationCountryOptionsOptions`
+  * Change type of `Terminal.LocationUpdateOptions.DisplayName` from `string` to `emptyable(string)`
+  * Add support for `CollectPaymentMethod` and `ConfirmPaymentIntent` on `Terminal.Reader.Action`
+  * Add support for `Status` on `Treasury.FinancialAccountListOptions`
+  * Add support for snapshot event `TerminalReaderActionUpdated` with resource `Terminal.Reader`
+* [#3137](https://github.com/stripe/stripe-dotnet/pull/3137) Updated stripeclient snippets in Readme.md
+
 ## 48.3.0-beta.2 - 2025-06-26
 * [#3142](https://github.com/stripe/stripe-dotnet/pull/3142) Pull in OffSessionPayment changes for the May release
 
@@ -630,12 +654,15 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
   * Add support for new Usage Billing APIs `Billing.MeterEvent`, `Billing.MeterEventAdjustments`, `Billing.MeterEventSession`, `Billing.MeterEventStream` and the new Events API `Core.Events` under the [v2 namespace ](https://docs.corp.stripe.com/api-v2-overview)
   * Add method `ParseThinEvent()` on the `StripeClient` class to parse [thin events](https://docs.corp.stripe.com/event-destinations#events-overview).
   * Add methods [RawRequestAsync()](https://github.com/stripe/stripe-dotnet/tree/master?tab=readme-ov-file#custom-requests) on the `StripeClient` class that takes a HTTP method type, url and relevant parameters to make requests to the Stripe API that are not yet supported in the SDK.
-  * Add access to services to StripeClient under `V1` and `V2` property accessors, so that instead of
-      ```csharp
-      StripeConfiguration.ApiKey = apiKey;
-      var svc = new CustomerService();
-      svc.Get(customerId);
-      ```
+
+  #### StripeClient
+
+  Add access to services to StripeClient under `V1` and `V2` property accessors, so that instead of
+  ```csharp
+  StripeConfiguration.ApiKey = apiKey;
+  var svc = new CustomerService();
+  svc.Get(customerId);
+  ```
   you can write:
   ```csharp
   var client = new StripeClient(apiKey);

@@ -1,6 +1,7 @@
 namespace Stripe
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Net.Http;
     using System.Threading;
@@ -13,6 +14,8 @@ namespace Stripe
     /// </summary>
     public class StripeClient : IStripeClient
     {
+        internal static readonly List<string> StripeClientUsage = new List<string> { "stripe_client" };
+
         private JsonSerializerSettings jsonSerializerSettings;
 
         // Fields: The beginning of the section generated from our OpenAPI spec
@@ -71,7 +74,7 @@ namespace Stripe
         }
 
         public StripeClient(StripeClientOptions options)
-            : this(new LiveApiRequestor(options))
+            : this(new LiveApiRequestor(options, StripeClientUsage))
         {
         }
 
