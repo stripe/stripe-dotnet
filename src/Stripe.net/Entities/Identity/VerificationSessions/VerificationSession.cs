@@ -198,12 +198,6 @@ namespace Stripe.Identity
 #endif
         public string RelatedCustomer { get; set; }
 
-        [JsonProperty("related_person")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("related_person")]
-#endif
-        public VerificationSessionRelatedPerson RelatedPerson { get; set; }
-
         /// <summary>
         /// Token referencing a Customer Account resource.
         /// </summary>
