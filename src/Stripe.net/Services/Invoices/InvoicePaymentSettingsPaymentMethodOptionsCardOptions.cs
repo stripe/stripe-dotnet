@@ -9,7 +9,7 @@ namespace Stripe
     public class InvoicePaymentSettingsPaymentMethodOptionsCardOptions : INestedOptions
     {
         /// <summary>
-        /// Installment configuration for payments attempted on this invoice (Mexico Only).
+        /// Installment configuration for payments attempted on this invoice.
         ///
         /// For more information, see the <a
         /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.

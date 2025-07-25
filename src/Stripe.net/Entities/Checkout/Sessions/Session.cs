@@ -441,6 +441,17 @@ namespace Stripe.Checkout
 #endif
         public List<SessionOptionalItem> OptionalItems { get; set; }
 
+        /// <summary>
+        /// Where the user is coming from. This informs the optimizations that are applied to the
+        /// session.
+        /// One of: <c>mobile_app</c>, or <c>web</c>.
+        /// </summary>
+        [JsonProperty("origin_context")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("origin_context")]
+#endif
+        public string OriginContext { get; set; }
+
         #region Expandable PaymentIntent
 
         /// <summary>

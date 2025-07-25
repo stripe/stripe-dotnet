@@ -8,11 +8,23 @@ namespace Stripe.Terminal
 
     public class ConfigurationTipping : StripeEntity<ConfigurationTipping>
     {
+        [JsonProperty("aed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("aed")]
+#endif
+        public ConfigurationTippingAed Aed { get; set; }
+
         [JsonProperty("aud")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("aud")]
 #endif
         public ConfigurationTippingAud Aud { get; set; }
+
+        [JsonProperty("bgn")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bgn")]
+#endif
+        public ConfigurationTippingBgn Bgn { get; set; }
 
         [JsonProperty("cad")]
 #if NET6_0_OR_GREATER
@@ -56,6 +68,12 @@ namespace Stripe.Terminal
 #endif
         public ConfigurationTippingHkd Hkd { get; set; }
 
+        [JsonProperty("huf")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("huf")]
+#endif
+        public ConfigurationTippingHuf Huf { get; set; }
+
         [JsonProperty("jpy")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jpy")]
@@ -85,6 +103,12 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("pln")]
 #endif
         public ConfigurationTippingPln Pln { get; set; }
+
+        [JsonProperty("ron")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ron")]
+#endif
+        public ConfigurationTippingRon Ron { get; set; }
 
         [JsonProperty("sek")]
 #if NET6_0_OR_GREATER

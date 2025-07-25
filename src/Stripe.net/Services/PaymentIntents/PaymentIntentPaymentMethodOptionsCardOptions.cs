@@ -36,7 +36,7 @@ namespace Stripe
         public string CvcToken { get; set; }
 
         /// <summary>
-        /// Installment configuration for payments attempted on this PaymentIntent (Mexico Only).
+        /// Installment configuration for payments attempted on this PaymentIntent.
         ///
         /// For more information, see the <a
         /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.

@@ -9,6 +9,15 @@ namespace Stripe.Tax
     public class RegistrationCountryOptionsAoOptions : INestedOptions
     {
         /// <summary>
+        /// Options for the standard registration.
+        /// </summary>
+        [JsonProperty("standard")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("standard")]
+#endif
+        public RegistrationCountryOptionsAoStandardOptions Standard { get; set; }
+
+        /// <summary>
         /// Type of registration to be created in <c>country</c>.
         /// </summary>
         [JsonProperty("type")]

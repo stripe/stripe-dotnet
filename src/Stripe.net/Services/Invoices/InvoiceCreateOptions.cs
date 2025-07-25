@@ -38,7 +38,7 @@ namespace Stripe
         /// Controls whether Stripe performs <a
         /// href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">automatic
         /// collection</a> of the invoice. If <c>false</c>, the invoice's state doesn't
-        /// automatically advance without an explicit action.
+        /// automatically advance without an explicit action. Defaults to false.
         /// </summary>
         [JsonProperty("auto_advance")]
 #if NET6_0_OR_GREATER
@@ -56,8 +56,8 @@ namespace Stripe
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
-        /// The time when this invoice should be scheduled to finalize. The invoice will be
-        /// finalized at this time if it is still in draft state.
+        /// The time when this invoice should be scheduled to finalize (up to 5 years in the
+        /// future). The invoice is finalized at this time if it's still in draft state.
         /// </summary>
         [JsonProperty("automatically_finalizes_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

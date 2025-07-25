@@ -10,7 +10,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// Place of supply scheme used in an EU standard registration.
-        /// One of: <c>small_seller</c>, or <c>standard</c>.
+        /// One of: <c>inbound_goods</c>, <c>small_seller</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("place_of_supply_scheme")]
 #if NET6_0_OR_GREATER

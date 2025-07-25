@@ -18,8 +18,7 @@ namespace Stripe.Billing
         public CreditGrantAmountMonetaryOptions Monetary { get; set; }
 
         /// <summary>
-        /// Specify the type of this amount. We currently only support <c>monetary</c> billing
-        /// credits.
+        /// The type of this amount. We currently only support <c>monetary</c> billing credits.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
