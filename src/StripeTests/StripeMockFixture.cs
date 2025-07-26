@@ -43,14 +43,14 @@ namespace StripeTests
         /// created with default parameters.
         /// </param>
         /// <returns>The new <see cref="ApiRequestor"/> instance.</returns>
-        internal ApiRequestor BuildApiRequestor(HttpClientHandler innerHandler = null)
+        internal StripeClientOptions BuildStripeClientOptions(HttpClientHandler innerHandler = null)
         {
-            return new LiveApiRequestor(new StripeClientOptions
+            return new StripeClientOptions
             {
                 ApiKey = "sk_test_123",
                 ClientId = "ca_123",
                 HttpClient = new SystemNetHttpClient(new ForwardingHttpClient(innerHandler, this.port)),
-            });
+            };
         }
 
         /// <summary>

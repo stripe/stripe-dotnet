@@ -24,6 +24,7 @@ namespace StripeTests
 
                 var client = StripeConfiguration.StripeClient;
                 Assert.NotNull(client);
+                Assert.IsType<DefaultStripeClient>(client);
                 Assert.Equal(StripeConfiguration.ApiKey, client.ApiKey);
                 Assert.Equal(StripeConfiguration.ClientId, client.ClientId);
             }
@@ -46,6 +47,7 @@ namespace StripeTests
 
                 var client = StripeConfiguration.StripeClient;
                 Assert.NotNull(client);
+                Assert.IsType<DefaultStripeClient>(client);
                 Assert.Null(client.ApiKey);
             }
             finally
