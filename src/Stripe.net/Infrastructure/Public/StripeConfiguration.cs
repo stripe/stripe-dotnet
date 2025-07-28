@@ -3,7 +3,6 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using System.Configuration;
-    using System.Reflection;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -11,7 +10,7 @@ namespace Stripe
     /// <summary>
     /// Global configuration class for Stripe.net settings.
     /// </summary>
-    public static class StripeConfiguration
+    public static partial class StripeConfiguration
     {
         private static string apiKey;
 
@@ -248,44 +247,7 @@ namespace Stripe
             ApiKey = newApiKey;
         }
 
-        /// <summary>Add beta version to ApiVersion. If the betaName already exists, the higher betaVersion will take precedent.</summary>
-        /// <param name="betaName">Name of beta.</param>
-        /// <param name="betaVersion">Desired beta version in the format "v" + a number (e.g. "v3").</param>
-        public static void AddBetaVersion(string betaName, string betaVersion)
-        {
-            if (!System.Text.RegularExpressions.Regex.IsMatch(betaVersion, @"^v\d+$"))
-            {
-                throw new Exception($"Invalid beta version format: {betaVersion}. Expected format is 'v' followed by a number (e.g., 'v3').");
-            }
-
-            var existingBeta = $"; {betaName}=";
-            if (ApiVersion.Contains(existingBeta))
-            {
-                var startIndex = ApiVersion.IndexOf(existingBeta) + existingBeta.Length;
-                var endIndex = ApiVersion.IndexOf(';', startIndex);
-                endIndex = endIndex == -1 ? ApiVersion.Length : endIndex;
-
-                var currentVersion = ApiVersion.Substring(startIndex, endIndex - startIndex);
-                var currentVersionNumber = int.Parse(currentVersion.Substring(1));
-                var newVersionNumber = int.Parse(betaVersion.Substring(1));
-
-                if (newVersionNumber > currentVersionNumber)
-                {
-                    ApiVersion = ApiVersion.Replace($"{existingBeta}{currentVersion}", $"{existingBeta}{betaVersion}");
-                }
-            }
-            else
-            {
-                ApiVersion = $"{ApiVersion}; {betaName}={betaVersion}";
-            }
-        }
-
-        internal static void ClearBetaVersion()
-        {
-            ApiVersion = Stripe.ApiVersion.Current;
-        }
-
-        private static StripeClient BuildDefaultStripeClient()
+        private static IStripeClient BuildDefaultStripeClient()
         {
             if (ApiKey != null && ApiKey.Length == 0)
             {
@@ -310,7 +272,7 @@ namespace Stripe
                 maxNetworkRetries: MaxNetworkRetries,
                 appInfo: AppInfo,
                 enableTelemetry: EnableTelemetry);
-            return new StripeClient(ApiKey, ClientId, httpClient: httpClient);
+            return new DefaultStripeClient(ApiKey, ClientId, httpClient);
         }
     }
 }
