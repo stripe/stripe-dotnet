@@ -20,6 +20,15 @@ namespace Stripe.Checkout
         public SessionCollectedInformationOptions CollectedInformation { get; set; }
 
         /// <summary>
+        /// List of coupons and promotion codes attached to the Checkout Session.
+        /// </summary>
+        [JsonProperty("discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("discounts")]
+#endif
+        public List<SessionDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
         /// A list of items the customer is purchasing.
         ///
         /// When updating line items, you must retransmit the entire array of line items.
@@ -62,5 +71,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("shipping_options")]
 #endif
         public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
+
+        /// <summary>
+        /// A subset of parameters to be passed to subscription creation for Checkout Sessions in
+        /// <c>subscription</c> mode.
+        /// </summary>
+        [JsonProperty("subscription_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription_data")]
+#endif
+        public SessionSubscriptionDataOptions SubscriptionData { get; set; }
     }
 }

@@ -16,10 +16,10 @@ namespace Stripe
         /// href="https://stripe.com/connect/manage-payout-schedule">Learn more about controlling
         /// payout delay days</a>.
         /// </summary>
-        [JsonProperty("delay_days")]
+        [JsonProperty("delay_days_override")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("delay_days")]
+        [STJS.JsonPropertyName("delay_days_override")]
 #endif
-        public long? DelayDays { get; set; }
+        public long? DelayDaysOverride { get; set; }
     }
 }

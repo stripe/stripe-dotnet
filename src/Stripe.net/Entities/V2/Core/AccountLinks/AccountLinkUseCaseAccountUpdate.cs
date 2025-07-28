@@ -10,9 +10,20 @@ namespace Stripe.V2.Core
     public class AccountLinkUseCaseAccountUpdate : StripeEntity<AccountLinkUseCaseAccountUpdate>
     {
         /// <summary>
+        /// Specifies the requirements that Stripe collects from v2/core/accounts in the Onboarding
+        /// flow.
+        /// </summary>
+        [JsonProperty("collection_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("collection_options")]
+#endif
+        public AccountLinkUseCaseAccountUpdateCollectionOptions CollectionOptions { get; set; }
+
+        /// <summary>
         /// Open Enum. A v2/account can be configured to enable certain functionality. The
         /// configuration param targets the v2/account_link to collect information for the specified
         /// v2/account configuration/s.
+        /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
         /// </summary>
         [JsonProperty("configurations")]
 #if NET6_0_OR_GREATER

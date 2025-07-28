@@ -8,9 +8,9 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Off session payment requires capture event definition.
+    /// Occurs when a PayoutMethod is updated.
     /// </summary>
-    public class V2OffSessionPaymentRequiresCaptureEvent : V2.Event
+    public class V2MoneyManagementPayoutMethodUpdatedEvent : V2.Event
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -26,17 +26,17 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<V2.Payments.OffSessionPayment> FetchRelatedObjectAsync()
+        public Task<V2.MoneyManagement.PayoutMethod> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<V2.Payments.OffSessionPayment>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<V2.MoneyManagement.PayoutMethod>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public V2.Payments.OffSessionPayment FetchRelatedObject()
+        public V2.MoneyManagement.PayoutMethod FetchRelatedObject()
         {
-            return this.FetchRelatedObject<V2.Payments.OffSessionPayment>(this.RelatedObject);
+            return this.FetchRelatedObject<V2.MoneyManagement.PayoutMethod>(this.RelatedObject);
         }
     }
 }

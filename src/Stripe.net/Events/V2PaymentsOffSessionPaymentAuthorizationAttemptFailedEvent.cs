@@ -8,7 +8,8 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Off session payment authorization attempt failed event definition.
+    /// Sent after a failed authorization if there are still retries available on the
+    /// OffSessionPayment.
     /// </summary>
     public class V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent : V2.Event
     {

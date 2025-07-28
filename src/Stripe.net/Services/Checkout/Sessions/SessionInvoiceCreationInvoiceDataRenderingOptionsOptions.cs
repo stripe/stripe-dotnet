@@ -21,5 +21,14 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("amount_tax_display")]
 #endif
         public string AmountTaxDisplay { get; set; }
+
+        /// <summary>
+        /// ID of the invoice rendering template to use for this invoice.
+        /// </summary>
+        [JsonProperty("template")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("template")]
+#endif
+        public string Template { get; set; }
     }
 }

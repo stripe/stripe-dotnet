@@ -9,6 +9,15 @@ namespace Stripe.Terminal
     public class ConfigurationTippingOptions : INestedOptions
     {
         /// <summary>
+        /// Tipping configuration for AED.
+        /// </summary>
+        [JsonProperty("aed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("aed")]
+#endif
+        public ConfigurationTippingAedOptions Aed { get; set; }
+
+        /// <summary>
         /// Tipping configuration for AUD.
         /// </summary>
         [JsonProperty("aud")]
@@ -16,6 +25,15 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("aud")]
 #endif
         public ConfigurationTippingAudOptions Aud { get; set; }
+
+        /// <summary>
+        /// Tipping configuration for BGN.
+        /// </summary>
+        [JsonProperty("bgn")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bgn")]
+#endif
+        public ConfigurationTippingBgnOptions Bgn { get; set; }
 
         /// <summary>
         /// Tipping configuration for CAD.
@@ -81,6 +99,15 @@ namespace Stripe.Terminal
         public ConfigurationTippingHkdOptions Hkd { get; set; }
 
         /// <summary>
+        /// Tipping configuration for HUF.
+        /// </summary>
+        [JsonProperty("huf")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("huf")]
+#endif
+        public ConfigurationTippingHufOptions Huf { get; set; }
+
+        /// <summary>
         /// Tipping configuration for JPY.
         /// </summary>
         [JsonProperty("jpy")]
@@ -124,6 +151,15 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("pln")]
 #endif
         public ConfigurationTippingPlnOptions Pln { get; set; }
+
+        /// <summary>
+        /// Tipping configuration for RON.
+        /// </summary>
+        [JsonProperty("ron")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ron")]
+#endif
+        public ConfigurationTippingRonOptions Ron { get; set; }
 
         /// <summary>
         /// Tipping configuration for SEK.

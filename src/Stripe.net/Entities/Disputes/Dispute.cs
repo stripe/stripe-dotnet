@@ -247,6 +247,12 @@ namespace Stripe
 #endif
         public string Reason { get; set; }
 
+        [JsonProperty("smart_disputes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("smart_disputes")]
+#endif
+        public DisputeSmartDisputes SmartDisputes { get; set; }
+
         /// <summary>
         /// Current status of dispute. Possible values are <c>warning_needs_response</c>,
         /// <c>warning_under_review</c>, <c>warning_closed</c>, <c>needs_response</c>,

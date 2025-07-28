@@ -21,7 +21,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// Cancel OSP.
+        /// Cancel an OffSessionPayment that has previously been created.
         /// </summary>
         public virtual OffSessionPayment Cancel(string id, OffSessionPaymentCancelOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// Cancel OSP.
+        /// Cancel an OffSessionPayment that has previously been created.
         /// </summary>
         public virtual Task<OffSessionPayment> CancelAsync(string id, OffSessionPaymentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// Create OSP.
+        /// Creates an OffSessionPayment object.
         /// </summary>
         public virtual OffSessionPayment Create(OffSessionPaymentCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// Create OSP.
+        /// Creates an OffSessionPayment object.
         /// </summary>
         public virtual Task<OffSessionPayment> CreateAsync(OffSessionPaymentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// Retrieve OSP by ID.
+        /// Retrieves the details of an OffSessionPayment that has previously been created.
         /// </summary>
         public virtual OffSessionPayment Get(string id, OffSessionPaymentGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// Retrieve OSP by ID.
+        /// Retrieves the details of an OffSessionPayment that has previously been created.
         /// </summary>
         public virtual Task<OffSessionPayment> GetAsync(string id, OffSessionPaymentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// List OSPs matching filter.
+        /// Returns a list of OffSessionPayments matching a filter.
         /// </summary>
         public virtual V2.StripeList<OffSessionPayment> List(OffSessionPaymentListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +77,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// List OSPs matching filter.
+        /// Returns a list of OffSessionPayments matching a filter.
         /// </summary>
         public virtual Task<V2.StripeList<OffSessionPayment>> ListAsync(OffSessionPaymentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +85,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// List OSPs matching filter.
+        /// Returns a list of OffSessionPayments matching a filter.
         /// </summary>
         public virtual IEnumerable<OffSessionPayment> ListAutoPaging(OffSessionPaymentListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -93,7 +93,7 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
-        /// List OSPs matching filter.
+        /// Returns a list of OffSessionPayments matching a filter.
         /// </summary>
         public virtual IAsyncEnumerable<OffSessionPayment> ListAutoPagingAsync(OffSessionPaymentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

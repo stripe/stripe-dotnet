@@ -25,5 +25,14 @@ namespace Stripe
         [STJS.JsonPropertyName("cashtag")]
 #endif
         public string Cashtag { get; set; }
+
+        /// <summary>
+        /// A unique and immutable identifier of payments assigned by Cash App.
+        /// </summary>
+        [JsonProperty("transaction_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction_id")]
+#endif
+        public string TransactionId { get; set; }
     }
 }

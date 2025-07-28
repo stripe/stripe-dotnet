@@ -10,7 +10,7 @@ namespace Stripe.V2.Core
     /// <summary>
     /// AccountLinks are the means by which a Merchant grants an Account permission to access
     /// Stripe-hosted applications, such as Recipient Onboarding. This API is only available for
-    /// users enrolled in the public preview for Global Payouts.
+    /// users enrolled in the public preview for Accounts v2.
     /// </summary>
     public class AccountLink : StripeEntity<AccountLink>, IHasObject
     {

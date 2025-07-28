@@ -18,7 +18,7 @@ namespace Stripe.V2.Payments
         public long Attempts { get; set; }
 
         /// <summary>
-        /// How you want Stripe to retry the payment.
+        /// Indicates the strategy for how you want Stripe to retry the payment.
         /// One of: <c>none</c>, or <c>smart</c>.
         /// </summary>
         [JsonProperty("retry_strategy")]

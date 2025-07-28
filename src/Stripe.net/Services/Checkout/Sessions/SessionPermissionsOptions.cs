@@ -18,6 +18,20 @@ namespace Stripe.Checkout
         public SessionPermissionsUpdateOptions Update { get; set; }
 
         /// <summary>
+        /// Determines which entity is allowed to update the discounts (coupons or promotion codes)
+        /// that apply to this session.
+        ///
+        /// Default is <c>client_only</c>. Stripe Checkout client will automatically handle discount
+        /// updates. If set to <c>server_only</c>, only your server is allowed to update discounts.
+        /// One of: <c>client_only</c>, or <c>server_only</c>.
+        /// </summary>
+        [JsonProperty("update_discounts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("update_discounts")]
+#endif
+        public string UpdateDiscounts { get; set; }
+
+        /// <summary>
         /// Determines which entity is allowed to update the line items.
         ///
         /// Default is <c>client_only</c>. Stripe Checkout client will automatically update the line

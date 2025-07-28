@@ -68,6 +68,12 @@ namespace Stripe
 #endif
         public AccountSessionComponentsFinancialAccountTransactions FinancialAccountTransactions { get; set; }
 
+        [JsonProperty("instant_payouts_promotion")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("instant_payouts_promotion")]
+#endif
+        public AccountSessionComponentsInstantPayoutsPromotion InstantPayoutsPromotion { get; set; }
+
         [JsonProperty("issuing_card")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_card")]
