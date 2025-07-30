@@ -10,6 +10,15 @@ namespace Stripe
     public class PaymentIntentConfirmOptions : BaseOptions
     {
         /// <summary>
+        /// Provides industry-specific information about the amount.
+        /// </summary>
+        [JsonProperty("amount_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_details")]
+#endif
+        public PaymentIntentAmountDetailsOptions AmountDetails { get; set; }
+
+        /// <summary>
         /// The amount of the application fee (if any) that will be requested to be applied to the
         /// payment and transferred to the application owner's Stripe account. The amount of the
         /// application fee collected will be capped at the total amount captured. For more

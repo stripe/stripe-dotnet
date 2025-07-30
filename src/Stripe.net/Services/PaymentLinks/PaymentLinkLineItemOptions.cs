@@ -38,6 +38,16 @@ namespace Stripe
         public string Price { get; set; }
 
         /// <summary>
+        /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
+        /// object inline. One of <c>price</c> or <c>price_data</c> is required.
+        /// </summary>
+        [JsonProperty("price_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("price_data")]
+#endif
+        public PaymentLinkLineItemPriceDataOptions PriceData { get; set; }
+
+        /// <summary>
         /// The quantity of the line item being purchased.
         /// </summary>
         [JsonProperty("quantity")]

@@ -8,7 +8,7 @@ namespace Stripe.Events
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class V2CoreAccountLinkCompletedEventData : StripeEntity<V2CoreAccountLinkCompletedEventData>
+    public class V2CoreAccountLinkReturnedEventData : StripeEntity<V2CoreAccountLinkReturnedEventData>
     {
         /// <summary>
         /// The ID of the v2 account.
@@ -21,6 +21,7 @@ namespace Stripe.Events
 
         /// <summary>
         /// Configurations on the Account that was onboarded via the account link.
+        /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
         /// </summary>
         [JsonProperty("configurations")]
 #if NET6_0_OR_GREATER

@@ -6286,13 +6286,23 @@ namespace StripeTests
                     Type = "account_onboarding",
                     AccountOnboarding = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingOptions
                     {
-                        Configurations = new List<string> { "recipient" },
+                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingCollectionOptionsOptions
+                        {
+                            Fields = "eventually_due",
+                            FutureRequirements = "include",
+                        },
+                        Configurations = new List<string> { "storer" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
                     AccountUpdate = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountUpdateOptions
                     {
-                        Configurations = new List<string> { "recipient" },
+                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountUpdateCollectionOptionsOptions
+                        {
+                            Fields = "eventually_due",
+                            FutureRequirements = "include",
+                        },
+                        Configurations = new List<string> { "storer" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },

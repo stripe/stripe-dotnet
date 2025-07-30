@@ -40,7 +40,7 @@ namespace Stripe
         public string Mcc { get; set; }
 
         /// <summary>
-        /// Whether the business is a minority-owned, women-owned, and/or LGBTQI+-owned business.
+        /// Whether the business is a minority-owned, women-owned, and/or LGBTQI+ -owned business.
         /// One of: <c>lgbtqi_owned_business</c>, <c>minority_owned_business</c>,
         /// <c>none_of_these_apply</c>, <c>prefer_not_to_answer</c>, or <c>women_owned_business</c>.
         /// </summary>

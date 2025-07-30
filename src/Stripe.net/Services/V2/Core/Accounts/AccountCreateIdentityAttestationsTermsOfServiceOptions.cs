@@ -18,5 +18,14 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("account")]
 #endif
         public AccountCreateIdentityAttestationsTermsOfServiceAccountOptions Account { get; set; }
+
+        /// <summary>
+        /// Details on the Account's acceptance of Treasury-specific terms of service.
+        /// </summary>
+        [JsonProperty("storer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("storer")]
+#endif
+        public AccountCreateIdentityAttestationsTermsOfServiceStorerOptions Storer { get; set; }
     }
 }

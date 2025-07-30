@@ -112,8 +112,7 @@ namespace Stripe
 
         /// <summary>
         /// The status of the capability.
-        /// One of: <c>active</c>, <c>disabled</c>, <c>inactive</c>, <c>pending</c>, or
-        /// <c>unrequested</c>.
+        /// One of: <c>active</c>, <c>inactive</c>, <c>pending</c>, or <c>unrequested</c>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER
