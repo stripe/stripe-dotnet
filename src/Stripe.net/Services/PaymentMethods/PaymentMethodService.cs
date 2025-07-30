@@ -193,7 +193,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Updates a PaymentMethod object. A PaymentMethod must be attached a customer to be
+        /// <p>Updates a PaymentMethod object. A PaymentMethod must be attached to a customer to be
         /// updated.</p>.
         /// </summary>
         public virtual PaymentMethod Update(string id, PaymentMethodUpdateOptions options, RequestOptions requestOptions = null)
@@ -202,7 +202,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Updates a PaymentMethod object. A PaymentMethod must be attached a customer to be
+        /// <p>Updates a PaymentMethod object. A PaymentMethod must be attached to a customer to be
         /// updated.</p>.
         /// </summary>
         public virtual Task<PaymentMethod> UpdateAsync(string id, PaymentMethodUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

@@ -87,6 +87,17 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/instant-payouts-promotion/">instant
+        /// payouts promotion</a> embedded component.
+        /// </summary>
+        [JsonProperty("instant_payouts_promotion")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("instant_payouts_promotion")]
+#endif
+        public AccountSessionComponentsInstantPayoutsPromotionOptions InstantPayoutsPromotion { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/issuing-card/">issuing
         /// card</a> embedded component.
         /// </summary>
