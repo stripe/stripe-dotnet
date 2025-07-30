@@ -3,7 +3,6 @@ namespace Stripe
     using System;
     using System.Collections.Generic;
     using System.Configuration;
-    using System.Reflection;
     using System.Runtime.Serialization;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -11,7 +10,7 @@ namespace Stripe
     /// <summary>
     /// Global configuration class for Stripe.net settings.
     /// </summary>
-    public static class StripeConfiguration
+    public static partial class StripeConfiguration
     {
         private static string apiKey;
 
@@ -243,7 +242,7 @@ namespace Stripe
             ApiKey = newApiKey;
         }
 
-        private static StripeClient BuildDefaultStripeClient()
+        private static IStripeClient BuildDefaultStripeClient()
         {
             if (ApiKey != null && ApiKey.Length == 0)
             {
@@ -268,7 +267,7 @@ namespace Stripe
                 maxNetworkRetries: MaxNetworkRetries,
                 appInfo: AppInfo,
                 enableTelemetry: EnableTelemetry);
-            return new StripeClient(ApiKey, ClientId, httpClient: httpClient);
+            return new DefaultStripeClient(ApiKey, ClientId, httpClient);
         }
     }
 }
