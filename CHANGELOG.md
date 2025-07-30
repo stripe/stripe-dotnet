@@ -1,6 +1,25 @@
 # Changelog
 
+## 48.4.0 - 2025-07-30
+This release changes the pinned API version to `2025-07-30.basil`.
+
+* [#3151](https://github.com/stripe/stripe-dotnet/pull/3151) Update generated code
+  * Add support for `InstantPayoutsPromotion` on `AccountSession.Components` and `AccountSessionComponentsOptions`
+  * Add support for `AdjustableQuantity` on `BillingPortal.Configuration.Features.SubscriptionUpdate.Products` and `BillingPortalConfigurationFeaturesSubscriptionUpdateProductsOptions`
+  * Add support for `TransactionId` on `Charge.PaymentMethodDetails.Cashapp`
+  * Add support for `OriginContext` on `Checkout.SessionCreateOptions` and `Checkout.Session`
+  * Add support for `Template` on `Checkout.Session.InvoiceCreation.InvoiceData.RenderingOptions`, `CheckoutSessionInvoiceCreationInvoiceDataRenderingOptionsOptions`, `PaymentLink.InvoiceCreation.InvoiceData.RenderingOptions`, and `PaymentLinkInvoiceCreationInvoiceDataRenderingOptionsOptions`
+  * Add support for `SetupFutureUsage` on `Checkout.Session.PaymentMethodOptions.Pix` and `CheckoutSessionPaymentMethodOptionsPixOptions`
+  * Add support for `Duration` on `InvoiceScheduleDetailsPhaseOptions` and `SubscriptionSchedulePhaseOptions`
+  * Add support for `PriceData` on `PaymentLinkLineItemOptions`
+  * Add support for `Standard` on `Tax.Registration.CountryOptions.Ae`, `Tax.Registration.CountryOptions.Au`, `Tax.Registration.CountryOptions.Ch`, `Tax.Registration.CountryOptions.Gb`, `Tax.Registration.CountryOptions.Jp`, `Tax.Registration.CountryOptions.No`, `Tax.Registration.CountryOptions.Nz`, `Tax.Registration.CountryOptions.Sg`, `TaxRegistrationCountryOptionsAeOptions`, `TaxRegistrationCountryOptionsAlOptions`, `TaxRegistrationCountryOptionsAoOptions`, `TaxRegistrationCountryOptionsAuOptions`, `TaxRegistrationCountryOptionsAwOptions`, `TaxRegistrationCountryOptionsBaOptions`, `TaxRegistrationCountryOptionsBbOptions`, `TaxRegistrationCountryOptionsBdOptions`, `TaxRegistrationCountryOptionsBfOptions`, `TaxRegistrationCountryOptionsBhOptions`, `TaxRegistrationCountryOptionsBsOptions`, `TaxRegistrationCountryOptionsCdOptions`, `TaxRegistrationCountryOptionsChOptions`, `TaxRegistrationCountryOptionsEtOptions`, `TaxRegistrationCountryOptionsGbOptions`, `TaxRegistrationCountryOptionsGnOptions`, `TaxRegistrationCountryOptionsIsOptions`, `TaxRegistrationCountryOptionsJpOptions`, `TaxRegistrationCountryOptionsMeOptions`, `TaxRegistrationCountryOptionsMkOptions`, `TaxRegistrationCountryOptionsMrOptions`, `TaxRegistrationCountryOptionsNoOptions`, `TaxRegistrationCountryOptionsNzOptions`, `TaxRegistrationCountryOptionsOmOptions`, `TaxRegistrationCountryOptionsRsOptions`, `TaxRegistrationCountryOptionsSgOptions`, `TaxRegistrationCountryOptionsSrOptions`, `TaxRegistrationCountryOptionsUyOptions`, `TaxRegistrationCountryOptionsZaOptions`, and `TaxRegistrationCountryOptionsZwOptions`
+  * Add support for `Aed`, `Bgn`, `Huf`, and `Ron` on `Terminal.Configuration.Tipping` and `TerminalConfigurationTippingOptions`
+* [#3152](https://github.com/stripe/stripe-dotnet/pull/3152) Mark StripeConfiguration as partial so we can add configuration in beta branch
+* [#3150](https://github.com/stripe/stripe-dotnet/pull/3150) Adds usage string to telemetry on API calls made through `StripeClient` service accessors
+
 ## 48.3.0 - 2025-07-01
+This release changes the pinned API version to `2025-06-30.basil`.
+
 * [#3139](https://github.com/stripe/stripe-dotnet/pull/3139) Update generated code
   * Add support for `Migrate` method on resource `Subscription`
   * Add support for `CollectPaymentMethod` and `ConfirmPaymentIntent` methods on resource `Terminal.Reader`
