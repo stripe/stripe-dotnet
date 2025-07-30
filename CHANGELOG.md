@@ -1,7 +1,7 @@
 # Changelog
 
 ## 48.5.0-beta.1 - 2025-07-30
-This release changes the pinned API version to `2025-07-30.basil`.
+This release changes the pinned API version to `2025-07-30.preview`.
 
 * [#3143](https://github.com/stripe/stripe-dotnet/pull/3143) Update generated code for beta
   * Add support for new resources `Billing.MeterUsageRow`, `Billing.MeterUsage`, and `Terminal.OnboardingLink`
@@ -37,7 +37,7 @@ This release changes the pinned API version to `2025-07-30.basil`.
   * Add support for error types `AlreadyExistsException` and `NonZeroBalanceException`
 
 ## 48.4.0-beta.1 - 2025-07-01
-This release changes the pinned API version to `2025-06-30.basil`.
+This release changes the pinned API version to `2025-06-30.preview`.
 
 * [#3132](https://github.com/stripe/stripe-dotnet/pull/3132) Update generated code for beta
   * Change type of `CheckoutSessionSubscriptionDataOptions.BillingMode`, `InvoiceScheduleDetailsOptions.BillingMode`, `InvoiceSubscriptionDetailsOptions.BillingMode`, `Quote.SubscriptionData.BillingMode`, `QuoteSubscriptionDataOptions.BillingMode`, `SubscriptionCreateOptions.BillingMode`, and `SubscriptionScheduleCreateOptions.BillingMode` from `enum('classic'|'flexible')` to `billing_mode`
