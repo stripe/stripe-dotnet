@@ -6,14 +6,14 @@ namespace Stripe.Infrastructure
     using System.Text.Json.Serialization;
 
     /// <summary>
-    /// Converts a <see cref="DateTime"/> to and from Unix epoch time.
+    /// Converts a <see cref="DateTime"/> or nullable <see cref="DateTime"/> to and from Unix epoch time.
     /// </summary>
     /// <remarks>
     /// This is a somewhat simplified version of the converter with the same name that was added in
     /// Newtonsoft.Json 11.0. Once we bump the minimum version of Newtonsoft.Json to 11.0, we can
     /// start using the provided converter and get rid of this class.
     /// </remarks>
-    internal class STJUnixDateTimeConverter : JsonConverter<DateTime>
+    internal class STJUnixDateTimeConverter : JsonConverter<DateTime?>
     {
         /// <summary>
         /// Reads the JSON representation of the object.
@@ -22,7 +22,7 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The calling serializer's options.</param>
         /// <returns>The object value.</returns>
-        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             bool nullable = IsNullable(typeToConvert);
             long seconds;
@@ -37,6 +37,15 @@ namespace Stripe.Infrastructure
                 {
                     throw new JsonException(string.Format("Cannot convert invalid value to {0}.", typeToConvert));
                 }
+            }
+            else if (reader.TokenType == JsonTokenType.Null)
+            {
+                if (!nullable)
+                {
+                    throw new JsonException(string.Format("Cannot convert null value to {0}.", typeToConvert));
+                }
+
+                return null;
             }
             else
             {
@@ -59,18 +68,15 @@ namespace Stripe.Infrastructure
         /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="options">The calling serializer's options.</param>
-        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+        public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
         {
-            long seconds;
+            if (value == null)
+            {
+                writer.WriteNullValue();
+                return;
+            }
 
-            if (value is DateTime dateTime)
-            {
-                seconds = (long)(dateTime.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
-            }
-            else
-            {
-                throw new JsonException("Expected date object value.");
-            }
+            long seconds = (long)(value.Value.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
 
             if (seconds < 0)
             {
