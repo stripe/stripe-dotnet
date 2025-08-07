@@ -6211,7 +6211,7 @@ namespace StripeTests
                         Identifier = "identifier",
                         Payload = new Dictionary<string, string>
                         {
-                            { "undefined", "payload" },
+                            { "key", "payload" },
                         },
                         Timestamp = DateTimeOffset.Parse(
                             "1970-01-01T15:18:46.294Z")
@@ -6234,13 +6234,13 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/meter_events",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.meter_event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"event_name\":\"event_name\",\"identifier\":\"identifier\",\"livemode\":true,\"payload\":{\"undefined\":\"payload\"},\"timestamp\":\"1970-01-01T15:18:46.294Z\"}");
+                "{\"object\":\"v2.billing.meter_event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"event_name\":\"event_name\",\"identifier\":\"identifier\",\"livemode\":true,\"payload\":{\"key\":\"payload\"},\"timestamp\":\"1970-01-01T15:18:46.294Z\"}");
             var options = new Stripe.V2.Billing.MeterEventCreateOptions
             {
                 EventName = "event_name",
                 Payload = new Dictionary<string, string>
                 {
-                    { "undefined", "payload" },
+                    { "key", "payload" },
                 },
             };
             var client = new StripeClient(this.Requestor);
@@ -6444,7 +6444,7 @@ namespace StripeTests
                         EventName = "event_name",
                         Payload = new Dictionary<string, string>
                         {
-                            { "undefined", "payload" },
+                            { "key", "payload" },
                         },
                     },
                 },
