@@ -35,6 +35,8 @@ namespace Stripe
 
         public const string TaxDocumentUserUpload = "tax_document_user_upload";
 
+        public const string TerminalAndroidApk = "terminal_android_apk";
+
         public const string TerminalReaderSplashscreen = "terminal_reader_splashscreen";
     }
 }
