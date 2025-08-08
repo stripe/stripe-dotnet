@@ -1,5 +1,12 @@
 # Changelog
 
+## 48.5.0-beta.2 - 2025-08-08
+* [#3160](https://github.com/stripe/stripe-dotnet/pull/3160) Bring back invoice payments APIs that were missing in the public preview SDKs
+    * Add support for new resource `InvoicePayment`
+    * Add support for `Get` and `List` methods on resource `InvoicePayment`
+  
+* [#3155](https://github.com/stripe/stripe-dotnet/pull/3155) Fix links to pinned api versions in CHANGELOG.md in beta branch
+
 ## 48.5.0-beta.1 - 2025-07-30
 This release changes the pinned API version to `2025-07-30.preview`.
 
