@@ -80,6 +80,12 @@ namespace Stripe.Terminal
 #endif
         public ConfigurationTippingJpy Jpy { get; set; }
 
+        [JsonProperty("mxn")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mxn")]
+#endif
+        public ConfigurationTippingMxn Mxn { get; set; }
+
         [JsonProperty("myr")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("myr")]

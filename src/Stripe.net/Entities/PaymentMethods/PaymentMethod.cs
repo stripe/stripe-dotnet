@@ -295,6 +295,16 @@ namespace Stripe
 #endif
         public PaymentMethodKrCard KrCard { get; set; }
 
+        /// <summary>
+        /// The Mandate object of the most recently created Mandate associated with this payment
+        /// method.
+        /// </summary>
+        [JsonProperty("latest_active_mandate")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("latest_active_mandate")]
+#endif
+        public Mandate LatestActiveMandate { get; set; }
+
         [JsonProperty("link")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("link")]

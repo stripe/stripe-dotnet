@@ -117,6 +117,15 @@ namespace Stripe.Terminal
         public ConfigurationTippingJpyOptions Jpy { get; set; }
 
         /// <summary>
+        /// Tipping configuration for MXN.
+        /// </summary>
+        [JsonProperty("mxn")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mxn")]
+#endif
+        public ConfigurationTippingMxnOptions Mxn { get; set; }
+
+        /// <summary>
         /// Tipping configuration for MYR.
         /// </summary>
         [JsonProperty("myr")]

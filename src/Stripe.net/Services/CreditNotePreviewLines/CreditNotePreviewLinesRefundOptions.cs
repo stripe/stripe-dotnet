@@ -19,7 +19,8 @@ namespace Stripe
         public long? AmountRefunded { get; set; }
 
         /// <summary>
-        /// ID of an existing refund to link this credit note to.
+        /// ID of an existing refund to link this credit note to. Required when <c>type</c> is
+        /// <c>refund</c>.
         /// </summary>
         [JsonProperty("refund")]
 #if NET6_0_OR_GREATER

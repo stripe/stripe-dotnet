@@ -18,6 +18,15 @@ namespace Stripe.TestHelpers.Terminal
         public long? AmountTip { get; set; }
 
         /// <summary>
+        /// Simulated data for the card payment method.
+        /// </summary>
+        [JsonProperty("card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card")]
+#endif
+        public ReaderCardOptions Card { get; set; }
+
+        /// <summary>
         /// Simulated data for the card_present payment method.
         /// </summary>
         [JsonProperty("card_present")]
@@ -37,7 +46,7 @@ namespace Stripe.TestHelpers.Terminal
 
         /// <summary>
         /// Simulated payment type.
-        /// One of: <c>card_present</c>, or <c>interac_present</c>.
+        /// One of: <c>card</c>, <c>card_present</c>, or <c>interac_present</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

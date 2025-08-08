@@ -13,5 +13,14 @@ namespace Stripe
         [STJS.JsonPropertyName("funding")]
 #endif
         public ChargePaymentMethodDetailsAmazonPayFunding Funding { get; set; }
+
+        /// <summary>
+        /// The Amazon Pay transaction ID associated with this payment.
+        /// </summary>
+        [JsonProperty("transaction_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction_id")]
+#endif
+        public string TransactionId { get; set; }
     }
 }

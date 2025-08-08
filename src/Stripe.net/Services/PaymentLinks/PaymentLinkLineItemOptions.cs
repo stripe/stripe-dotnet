@@ -29,7 +29,8 @@ namespace Stripe
 
         /// <summary>
         /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> or <a
-        /// href="https://stripe.com/docs/api/plans">Plan</a> object.
+        /// href="https://stripe.com/docs/api/plans">Plan</a> object. One of <c>price</c> or
+        /// <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
 #if NET6_0_OR_GREATER

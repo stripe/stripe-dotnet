@@ -70,7 +70,8 @@ namespace Stripe.Billing
         public Dictionary<string, string> Dimensions { get; set; }
 
         /// <summary>
-        /// The unique identifier for the meter.
+        /// The unique identifier for the meter. Null if no meters were provided and usage was
+        /// aggregated across all meters.
         /// </summary>
         [JsonProperty("meter_id")]
 #if NET6_0_OR_GREATER
