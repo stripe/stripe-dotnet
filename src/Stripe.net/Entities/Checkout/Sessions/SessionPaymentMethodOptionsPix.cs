@@ -9,6 +9,16 @@ namespace Stripe.Checkout
     public class SessionPaymentMethodOptionsPix : StripeEntity<SessionPaymentMethodOptionsPix>
     {
         /// <summary>
+        /// Determines if the amount includes the IOF tax.
+        /// One of: <c>always</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("amount_includes_iof")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_includes_iof")]
+#endif
+        public string AmountIncludesIof { get; set; }
+
+        /// <summary>
         /// The number of seconds after which Pix payment will expire.
         /// </summary>
         [JsonProperty("expires_after_seconds")]
