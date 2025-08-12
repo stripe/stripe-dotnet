@@ -20,9 +20,9 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
-        /// A positive integer representing the amount in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> for
-        /// example, 100 cents for 1 USD or 100 for 100 JPY, a zero-decimal currency.
+        /// A positive integer representing the amount in the currency's <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">minor unit</a>. For example,
+        /// <c>100</c> can represent 1 USD or 100 JPY.
         /// </summary>
         [JsonProperty("value")]
 #if NET6_0_OR_GREATER

@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PaymentRecordAmountFailed : StripeEntity<PaymentRecordAmountFailed>
+    public class PaymentRecordAmountAuthorized : StripeEntity<PaymentRecordAmountAuthorized>
     {
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO currency
