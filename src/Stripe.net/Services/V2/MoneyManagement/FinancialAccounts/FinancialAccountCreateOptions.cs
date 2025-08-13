@@ -10,6 +10,16 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAccountCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// A descriptive name for the FinancialAccount, up to 50 characters long. This name will be
+        /// used in the Stripe Dashboard and embedded components.
+        /// </summary>
+        [JsonProperty("display_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_name")]
+#endif
+        public string DisplayName { get; set; }
+
+        /// <summary>
         /// Metadata associated with the FinancialAccount.
         /// </summary>
         [JsonProperty("metadata")]

@@ -6861,7 +6861,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/financial_accounts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"key\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"key\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAccounts;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.FinancialAccount> financialAccounts = service
@@ -6878,7 +6878,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/financial_accounts",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"key\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"key\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}");
             var options = new Stripe.V2.MoneyManagement.FinancialAccountCreateOptions
             {
                 Type = "storage",
@@ -6899,7 +6899,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/financial_accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"key\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"key\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAccounts;
             Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
@@ -6916,7 +6916,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/financial_accounts/id_123/close",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"key\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"key\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"af\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"livemode\":true,\"metadata\":null,\"other\":null,\"status\":\"closed\",\"status_details\":null,\"storage\":null,\"type\":\"other\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAccounts;
             Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
