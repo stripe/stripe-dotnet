@@ -17,6 +17,9 @@ namespace Stripe
 #endif
         public string PaymentIntent { get; set; }
 
+        /// <summary>
+        /// Only return invoice payments associated by this payment record ID.
+        /// </summary>
         [JsonProperty("payment_record")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_record")]

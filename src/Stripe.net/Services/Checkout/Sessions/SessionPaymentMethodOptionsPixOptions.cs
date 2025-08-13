@@ -29,6 +29,15 @@ namespace Stripe.Checkout
         public long? ExpiresAfterSeconds { get; set; }
 
         /// <summary>
+        /// Additional fields for mandate creation.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_options")]
+#endif
+        public SessionPaymentMethodOptionsPixMandateOptionsOptions MandateOptions { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
@@ -47,6 +56,7 @@ namespace Stripe.Checkout
         /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
+        /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
 #if NET6_0_OR_GREATER
