@@ -110,6 +110,12 @@ namespace Stripe
 #endif
         public AccountSessionComponentsPayments Payments { get; set; }
 
+        [JsonProperty("payout_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payout_details")]
+#endif
+        public AccountSessionComponentsPayoutDetails PayoutDetails { get; set; }
+
         [JsonProperty("payouts")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payouts")]

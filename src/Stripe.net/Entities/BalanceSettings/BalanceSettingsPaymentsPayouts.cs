@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class BalanceSettingsPayouts : StripeEntity<BalanceSettingsPayouts>
+    public class BalanceSettingsPaymentsPayouts : StripeEntity<BalanceSettingsPaymentsPayouts>
     {
         /// <summary>
         /// Details on when funds from charges are available, and when they are paid out to an
@@ -18,7 +18,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule")]
 #endif
-        public BalanceSettingsPayoutsSchedule Schedule { get; set; }
+        public BalanceSettingsPaymentsPayoutsSchedule Schedule { get; set; }
 
         /// <summary>
         /// The text that appears on the bank account statement for payouts. If not set, this

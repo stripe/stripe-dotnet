@@ -252,6 +252,17 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/payout-details/">payout
+        /// details</a> embedded component.
+        /// </summary>
+        [JsonProperty("payout_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payout_details")]
+#endif
+        public AccountSessionComponentsPayoutDetailsOptions PayoutDetails { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/payouts/">payouts</a>
         /// embedded component.
         /// </summary>

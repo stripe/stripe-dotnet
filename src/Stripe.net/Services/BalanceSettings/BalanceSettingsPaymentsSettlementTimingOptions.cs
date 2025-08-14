@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class BalanceSettingsSettlementTimingOptions : INestedOptions
+    public class BalanceSettingsPaymentsSettlementTimingOptions : INestedOptions
     {
         /// <summary>
         /// The number of days charge funds are held before becoming available. May also be set to
