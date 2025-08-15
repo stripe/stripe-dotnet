@@ -54,6 +54,17 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-reports#balance-report">balance
+        /// report</a> embedded component.
+        /// </summary>
+        [JsonProperty("balance_report")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_report")]
+#endif
+        public AccountSessionComponentsBalanceReportOptions BalanceReport { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/balances/">balances</a>
         /// embedded component.
         /// </summary>
@@ -260,6 +271,17 @@ namespace Stripe
         [STJS.JsonPropertyName("payout_details")]
 #endif
         public AccountSessionComponentsPayoutDetailsOptions PayoutDetails { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/financial-reports#payout-reconciliation-report">payout
+        /// reconciliation report</a> embedded component.
+        /// </summary>
+        [JsonProperty("payout_reconciliation_report")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payout_reconciliation_report")]
+#endif
+        public AccountSessionComponentsPayoutReconciliationReportOptions PayoutReconciliationReport { get; set; }
 
         /// <summary>
         /// Configuration for the <a

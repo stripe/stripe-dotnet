@@ -20,6 +20,12 @@ namespace Stripe
 #endif
         public AccountSessionComponentsAccountOnboarding AccountOnboarding { get; set; }
 
+        [JsonProperty("balance_report")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_report")]
+#endif
+        public AccountSessionComponentsBalanceReport BalanceReport { get; set; }
+
         [JsonProperty("balances")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balances")]
@@ -115,6 +121,12 @@ namespace Stripe
         [STJS.JsonPropertyName("payout_details")]
 #endif
         public AccountSessionComponentsPayoutDetails PayoutDetails { get; set; }
+
+        [JsonProperty("payout_reconciliation_report")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payout_reconciliation_report")]
+#endif
+        public AccountSessionComponentsPayoutReconciliationReport PayoutReconciliationReport { get; set; }
 
         [JsonProperty("payouts")]
 #if NET6_0_OR_GREATER
