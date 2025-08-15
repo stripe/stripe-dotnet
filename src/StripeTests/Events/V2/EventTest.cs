@@ -158,8 +158,8 @@ namespace StripeTests.V2
 
         /// <summary>
         /// Parse a ThinEvent object.  This uses StripeClient.ParseThinEvent to
-        /// parse a BasePushedThinEventNameTBD and then uses the EventService
-        /// to retrieve the ThinEvent.
+        /// parse a ThinEvent and then uses the EventService
+        /// to retrieve the Stripe.V2.Event.
         /// </summary>
         /// <param name="payload">The json payload to parse.</param>
         /// <returns>A ThinEvent derived class.</returns>
@@ -386,6 +386,114 @@ namespace StripeTests.V2
             var v2EventService = new Stripe.V2.Core.EventService(this.stripeClient);
             var v2Event = await v2EventService.GetAsync("evt_234");
             Assert.Equal(this.stripeClient.Requestor, v2Event.Requestor);
+        }
+
+        [Fact]
+        public void ParseThinEvent__Experimental_ReturnsTypedEvent()
+        {
+            var pushedEvent = this.stripeClient.ParseThinEvent__Experimental(v2KnownEventPayload, GenerateSigHeader(v2KnownEventPayload), WebhookSecret);
+            Assert.True(pushedEvent is Stripe.Events.PushedV1BillingMeterErrorReportTriggeredEvent);
+        }
+
+        [Fact]
+        public void ParseThinEvent__Experimental_PullReturnsEvent()
+        {
+            var payload = v2KnownEventPayload;
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    Content = new StringContent(payload),
+                });
+
+            var pushedEvent = this.stripeClient.ParseThinEvent__Experimental(payload, GenerateSigHeader(payload), WebhookSecret);
+            var pushedV1BillingEvent = pushedEvent as Stripe.Events.PushedV1BillingMeterErrorReportTriggeredEvent;
+            Assert.NotNull(pushedV1BillingEvent);
+            var pulledEvent = pushedV1BillingEvent.Pull();
+            Assert.NotNull(pulledEvent);
+            Assert.True(pulledEvent is Stripe.Events.V1BillingMeterErrorReportTriggeredEvent);
+        }
+
+        [Fact]
+        public async void ParseThinEvent__Experimental_PullAsyncReturnsEvent()
+        {
+            var payload = v2KnownEventPayload;
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    Content = new StringContent(payload),
+                });
+
+            var pushedEvent = this.stripeClient.ParseThinEvent__Experimental(payload, GenerateSigHeader(payload), WebhookSecret);
+            var pushedV1BillingEvent = pushedEvent as Stripe.Events.PushedV1BillingMeterErrorReportTriggeredEvent;
+            Assert.NotNull(pushedV1BillingEvent);
+            var pulledEvent = await pushedV1BillingEvent.PullAsync();
+            Assert.NotNull(pulledEvent);
+            Assert.True(pulledEvent is Stripe.Events.V1BillingMeterErrorReportTriggeredEvent);
+            Assert.True(pushedEvent is Stripe.Events.PushedV1BillingMeterErrorReportTriggeredEvent);
+        }
+
+        [Fact]
+        public void ParseThinEvent__Experimental_FetchRelatedObjectReturnsResource()
+        {
+            var payload = v2KnownEventPayload;
+            var relatedObjectPayload = @"
+            {
+                ""id"": ""mtr_test_123"",
+                ""object"": ""billing_meter""
+            }";
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    Content = new StringContent(relatedObjectPayload),
+                });
+
+            var pushedEvent = this.stripeClient.ParseThinEvent__Experimental(payload, GenerateSigHeader(payload), WebhookSecret);
+            var pushedV1BillingEvent = pushedEvent as Stripe.Events.PushedV1BillingMeterErrorReportTriggeredEvent;
+            Assert.NotNull(pushedV1BillingEvent);
+
+            var relatedObject = pushedV1BillingEvent.FetchRelatedObject();
+            Assert.Equal("mtr_test_123", relatedObject.Id);
+            Assert.Equal("billing_meter", relatedObject.Object);
+        }
+
+        [Fact]
+        public async void ParseThinEvent__Experimental_FetchRelatedObjectAsyncReturnsResource()
+        {
+            var payload = v2KnownEventPayload;
+            var relatedObjectPayload = @"
+            {
+                ""id"": ""mtr_test_123"",
+                ""object"": ""billing_meter""
+            }";
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .ReturnsAsync(new HttpResponseMessage
+                {
+                    Content = new StringContent(relatedObjectPayload),
+                });
+
+            var pushedEvent = this.stripeClient.ParseThinEvent__Experimental(payload, GenerateSigHeader(payload), WebhookSecret);
+            var pushedV1BillingEvent = pushedEvent as Stripe.Events.PushedV1BillingMeterErrorReportTriggeredEvent;
+            Assert.NotNull(pushedV1BillingEvent);
+
+            var relatedObject = await pushedV1BillingEvent.FetchRelatedObjectAsync();
+            Assert.Equal("mtr_test_123", relatedObject.Id);
+            Assert.Equal("billing_meter", relatedObject.Object);
         }
     }
 }

@@ -81,6 +81,13 @@ namespace StripeTests.Wholesome
                     continue;
                 }
 
+                if (stripeClass.IsAbstract)
+                {
+                    // Skip abstract classes; we'll check their fields when
+                    // we check their concrete classes
+                    continue;
+                }
+
                 if (stripeClass.IsGenericType)
                 {
                     // Handle generic types (container types) separately, because

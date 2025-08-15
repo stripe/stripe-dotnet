@@ -230,5 +230,31 @@ namespace Stripe
 
             return thinEvent;
         }
+
+        /// <summary>
+        /// Parses a JSON string from a Stripe webhook into a <see cref="V2.PushedEvent"/> subclass,
+        /// while verifying the <a href="https://stripe.com/docs/webhooks/signatures">webhook's
+        /// signature</a>.
+        /// </summary>
+        /// <param name="json">The JSON string to parse.</param>
+        /// <param name="stripeSignatureHeader">
+        /// The value of the <c>Stripe-Signature</c> header from the webhook request.
+        /// </param>
+        /// <param name="secret">The webhook endpoint's signing secret.</param>
+        /// <param name="tolerance">The time tolerance, in seconds (default 300).</param>
+        /// <returns>The deserialized <see cref="ThinEvent"/>.</returns>
+        /// <exception cref="StripeException">
+        /// Thrown if the signature verification fails for any reason, of if the API version of the
+        /// event doesn't match Stripe.net's default API version.
+        /// </exception>
+        public V2.PushedEvent ParseThinEvent__Experimental(
+            string json,
+            string stripeSignatureHeader,
+            string secret,
+            long tolerance = EventUtility.DefaultTimeTolerance)
+        {
+            EventUtility.ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
+            return JsonUtils.DeserializeObject<V2.PushedEvent>(json, this.jsonSerializerSettings);
+        }
     }
 }

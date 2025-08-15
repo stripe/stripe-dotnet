@@ -1,6 +1,7 @@
 namespace Stripe.V2
 {
     using System;
+    using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
@@ -20,6 +21,8 @@ namespace Stripe.V2
 #endif
     public partial class Event : StripeEntity<Event>, IHasId, IHasObject
     {
+        internal static readonly List<string> PullEventUsage = new List<string> { "pull_event" };
+
         /// <summary>
         /// Used for .FetchObject and .FetchData helpers.
         /// </summary>

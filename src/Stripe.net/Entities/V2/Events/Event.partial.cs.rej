@@ -1,0 +1,10 @@
+diff a/src/Stripe.net/Entities/V2/Events/Event.partial.cs b/src/Stripe.net/Entities/V2/Events/Event.partial.cs	(rejected hunks)
+@@ -13,6 +14,8 @@ namespace Stripe.V2
+     [JsonConverter(typeof(V2EventConverter))]
+     public partial class Event : StripeEntity<Event>, IHasId, IHasObject
+     {
++        internal static readonly List<string> PullEventUsage = new List<string> { "pull_event" };
++
+         /// <summary>
+         /// Used for .FetchObject and .FetchData helpers.
+         /// </summary>

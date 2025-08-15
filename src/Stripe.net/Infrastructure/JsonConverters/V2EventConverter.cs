@@ -31,7 +31,9 @@ namespace Stripe.Infrastructure
             // class to deserialize into.
             var typeValue = (string)jsonObject["type"];
 
-            Type concreteType = StripeTypeRegistry.GetConcreteThinEventType(typeValue);
+            Type concreteType = typeof(V2.PushedEvent).IsAssignableFrom(objectType) ?
+                                    StripeTypeRegistry.GetThinEventPushedEventType(typeValue) :
+                                    StripeTypeRegistry.GetConcreteThinEventType(typeValue);
             if (concreteType == null)
             {
                 // If "type" is unknown by this SDK, default to the generic ThinEvent type.
