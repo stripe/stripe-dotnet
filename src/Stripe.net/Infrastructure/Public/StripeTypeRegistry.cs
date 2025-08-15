@@ -223,6 +223,8 @@ namespace Stripe
             new Dictionary<string, Type>
             {
                 // V2ObjectsToTypes: The beginning of the section generated from our OpenAPI spec
+                { "account", typeof(V2.Account) },
+                { "account_link", typeof(V2.AccountLink) },
                 {
                     "financial_address_credit_simulation", typeof(
                     V2.FinancialAddressCreditSimulation)
@@ -231,9 +233,36 @@ namespace Stripe
                     "financial_address_generated_microdeposits", typeof(
                     V2.FinancialAddressGeneratedMicrodeposits)
                 },
+                { "v2.billing.bill_setting", typeof(V2.Billing.BillSetting) },
+                { "v2.billing.bill_setting_version", typeof(V2.Billing.BillSettingVersion) },
+                { "v2.billing.cadence", typeof(V2.Billing.Cadence) },
+                { "v2.billing.collection_setting", typeof(V2.Billing.CollectionSetting) },
+                {
+                    "v2.billing.collection_setting_version", typeof(
+                    V2.Billing.CollectionSettingVersion)
+                },
+                { "v2.billing.custom_pricing_unit", typeof(V2.Billing.CustomPricingUnit) },
+                { "v2.billing.intent", typeof(V2.Billing.Intent) },
+                { "v2.billing.license_fee", typeof(V2.Billing.LicenseFee) },
+                { "v2.billing.license_fee_version", typeof(V2.Billing.LicenseFeeVersion) },
+                { "v2.billing.licensed_item", typeof(V2.Billing.LicensedItem) },
                 { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
                 { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
+                { "v2.billing.metered_item", typeof(V2.Billing.MeteredItem) },
+                { "v2.billing.pricing_plan", typeof(V2.Billing.PricingPlan) },
+                { "v2.billing.pricing_plan_component", typeof(V2.Billing.PricingPlanComponent) },
+                {
+                    "v2.billing.pricing_plan_subscription", typeof(
+                    V2.Billing.PricingPlanSubscription)
+                },
+                { "v2.billing.pricing_plan_version", typeof(V2.Billing.PricingPlanVersion) },
+                { "v2.billing.profile", typeof(V2.Billing.Profile) },
+                { "v2.billing.rate_card", typeof(V2.Billing.RateCard) },
+                { "v2.billing.rate_card_rate", typeof(V2.Billing.RateCardRate) },
+                { "v2.billing.rate_card_subscription", typeof(V2.Billing.RateCardSubscription) },
+                { "v2.billing.rate_card_version", typeof(V2.Billing.RateCardVersion) },
+                { "v2.billing.service_action", typeof(V2.Billing.ServiceAction) },
                 { "v2.core.account", typeof(V2.Core.Account) },
                 { "v2.core.account_link", typeof(V2.Core.AccountLink) },
                 { "v2.core.account_person", typeof(V2.Core.Person) },
@@ -289,6 +318,9 @@ namespace Stripe
                     V2.MoneyManagement.TransactionEntry)
                 },
                 { "v2.payments.off_session_payment", typeof(V2.Payments.OffSessionPayment) },
+                { "v2.reporting.report", typeof(V2.Reporting.Report) },
+                { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
+                { "v2.tax.automatic_rule", typeof(V2.Tax.AutomaticRule) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -371,6 +403,18 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
+                },
+                {
+                    "account.configuration_recipient_data.account_link_completed", typeof(
+                    Events.AccountConfigurationRecipientDataAccountLinkCompletedEvent)
+                },
+                {
+                    "account.configuration_recipient_data.feature_status_updated", typeof(
+                    Events.AccountConfigurationRecipientDataFeatureStatusUpdatedEvent)
+                },
+                {
+                    "account.requirements.updated", typeof(
+                    Events.AccountRequirementsUpdatedEvent)
                 },
                 {
                     "v2.money_management.financial_account.created", typeof(
@@ -492,6 +536,140 @@ namespace Stripe
                     "v2.money_management.payout_method.updated", typeof(
                     Events.V2MoneyManagementPayoutMethodUpdatedEvent)
                 },
+                { "v2.billing.cadence.billed", typeof(Events.V2BillingCadenceBilledEvent) },
+                { "v2.billing.cadence.canceled", typeof(Events.V2BillingCadenceCanceledEvent) },
+                { "v2.billing.cadence.created", typeof(Events.V2BillingCadenceCreatedEvent) },
+                { "v2.billing.cadence.errored", typeof(Events.V2BillingCadenceErroredEvent) },
+                {
+                    "v2.billing.license_fee.created", typeof(
+                    Events.V2BillingLicenseFeeCreatedEvent)
+                },
+                {
+                    "v2.billing.license_fee.updated", typeof(
+                    Events.V2BillingLicenseFeeUpdatedEvent)
+                },
+                {
+                    "v2.billing.license_fee_version.created", typeof(
+                    Events.V2BillingLicenseFeeVersionCreatedEvent)
+                },
+                {
+                    "v2.billing.licensed_item.created", typeof(
+                    Events.V2BillingLicensedItemCreatedEvent)
+                },
+                {
+                    "v2.billing.licensed_item.updated", typeof(
+                    Events.V2BillingLicensedItemUpdatedEvent)
+                },
+                {
+                    "v2.billing.metered_item.created", typeof(
+                    Events.V2BillingMeteredItemCreatedEvent)
+                },
+                {
+                    "v2.billing.metered_item.updated", typeof(
+                    Events.V2BillingMeteredItemUpdatedEvent)
+                },
+                {
+                    "v2.billing.pricing_plan.created", typeof(
+                    Events.V2BillingPricingPlanCreatedEvent)
+                },
+                {
+                    "v2.billing.pricing_plan.updated", typeof(
+                    Events.V2BillingPricingPlanUpdatedEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_component.created", typeof(
+                    Events.V2BillingPricingPlanComponentCreatedEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_component.updated", typeof(
+                    Events.V2BillingPricingPlanComponentUpdatedEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_awaiting_customer_action", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionAwaitingCustomerActionEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_current", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionCurrentEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_past_due", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionPastDueEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_paused", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionPausedEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_unpaid", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionUnpaidEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.servicing_activated", typeof(
+                    Events.V2BillingPricingPlanSubscriptionServicingActivatedEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.servicing_canceled", typeof(
+                    Events.V2BillingPricingPlanSubscriptionServicingCanceledEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.servicing_paused", typeof(
+                    Events.V2BillingPricingPlanSubscriptionServicingPausedEvent)
+                },
+                {
+                    "v2.billing.pricing_plan_version.created", typeof(
+                    Events.V2BillingPricingPlanVersionCreatedEvent)
+                },
+                { "v2.billing.rate_card.created", typeof(Events.V2BillingRateCardCreatedEvent) },
+                { "v2.billing.rate_card.updated", typeof(Events.V2BillingRateCardUpdatedEvent) },
+                {
+                    "v2.billing.rate_card_rate.created", typeof(
+                    Events.V2BillingRateCardRateCreatedEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.activated", typeof(
+                    Events.V2BillingRateCardSubscriptionActivatedEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.canceled", typeof(
+                    Events.V2BillingRateCardSubscriptionCanceledEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_awaiting_customer_action", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionAwaitingCustomerActionEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_current", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionCurrentEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_past_due", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionPastDueEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_paused", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionPausedEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_unpaid", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionUnpaidEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.servicing_activated", typeof(
+                    Events.V2BillingRateCardSubscriptionServicingActivatedEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.servicing_canceled", typeof(
+                    Events.V2BillingRateCardSubscriptionServicingCanceledEvent)
+                },
+                {
+                    "v2.billing.rate_card_subscription.servicing_paused", typeof(
+                    Events.V2BillingRateCardSubscriptionServicingPausedEvent)
+                },
+                {
+                    "v2.billing.rate_card_version.created", typeof(
+                    Events.V2BillingRateCardVersionCreatedEvent)
+                },
                 {
                     "v2.money_management.received_credit.available", typeof(
                     Events.V2MoneyManagementReceivedCreditAvailableEvent)
@@ -527,6 +705,22 @@ namespace Stripe
                 {
                     "v2.money_management.received_debit.updated", typeof(
                     Events.V2MoneyManagementReceivedDebitUpdatedEvent)
+                },
+                {
+                    "v2.reporting.report_run.created", typeof(
+                    Events.V2ReportingReportRunCreatedEvent)
+                },
+                {
+                    "v2.reporting.report_run.failed", typeof(
+                    Events.V2ReportingReportRunFailedEvent)
+                },
+                {
+                    "v2.reporting.report_run.succeeded", typeof(
+                    Events.V2ReportingReportRunSucceededEvent)
+                },
+                {
+                    "v2.reporting.report_run.updated", typeof(
+                    Events.V2ReportingReportRunUpdatedEvent)
                 },
                 {
                     "v2.money_management.transaction.created", typeof(

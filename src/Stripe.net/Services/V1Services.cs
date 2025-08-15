@@ -43,7 +43,6 @@ namespace Stripe
         private FxQuoteService fxQuotes;
         private IdentityService identity;
         private InvoiceService invoices;
-        private InvoicePaymentService invoicePayments;
         private InvoiceRenderingTemplateService invoiceRenderingTemplates;
         private InvoiceItemService invoiceItems;
         private IssuingService issuing;
@@ -204,9 +203,6 @@ namespace Stripe
             this.Requestor);
 
         public virtual InvoiceService Invoices => this.invoices ??= new InvoiceService(
-            this.Requestor);
-
-        public virtual InvoicePaymentService InvoicePayments => this.invoicePayments ??= new InvoicePaymentService(
             this.Requestor);
 
         public virtual InvoiceRenderingTemplateService InvoiceRenderingTemplates => this.invoiceRenderingTemplates ??= new InvoiceRenderingTemplateService(

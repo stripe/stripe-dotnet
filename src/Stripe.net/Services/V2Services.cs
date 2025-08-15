@@ -7,10 +7,14 @@ namespace Stripe
 
     public class V2Services : Service
     {
+        private V2.AccountLinkService accountLinks;
+        private V2.AccountService accounts;
         private V2.BillingService billing;
         private V2.CoreService core;
         private V2.MoneyManagementService moneyManagement;
         private V2.PaymentService payments;
+        private V2.ReportingService reporting;
+        private V2.TaxService tax;
         private V2.TestHelperService testHelpers;
 
         internal V2Services(ApiRequestor requestor)
@@ -23,6 +27,12 @@ namespace Stripe
         {
         }
 
+        public virtual V2.AccountLinkService AccountLinks => this.accountLinks ??= new V2.AccountLinkService(
+            this.Requestor);
+
+        public virtual V2.AccountService Accounts => this.accounts ??= new V2.AccountService(
+            this.Requestor);
+
         public virtual V2.BillingService Billing => this.billing ??= new V2.BillingService(
             this.Requestor);
 
@@ -33,6 +43,12 @@ namespace Stripe
             this.Requestor);
 
         public virtual V2.PaymentService Payments => this.payments ??= new V2.PaymentService(
+            this.Requestor);
+
+        public virtual V2.ReportingService Reporting => this.reporting ??= new V2.ReportingService(
+            this.Requestor);
+
+        public virtual V2.TaxService Tax => this.tax ??= new V2.TaxService(
             this.Requestor);
 
         public virtual V2.TestHelperService TestHelpers => this.testHelpers ??= new V2.TestHelperService(

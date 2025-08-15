@@ -103,6 +103,10 @@ namespace Stripe
                     ret = Stripe.V2.InvalidPaymentMethodException.Parse(httpStatusCode, body);
                     break;
 
+                case "rate_limit":
+                    ret = Stripe.V2.RateLimitException.Parse(httpStatusCode, body);
+                    break;
+
                 // The end of the section generated from our OpenAPI spec
                 default:
                     return null;

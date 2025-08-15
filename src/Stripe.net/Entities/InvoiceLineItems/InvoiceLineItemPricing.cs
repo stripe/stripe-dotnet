@@ -16,6 +16,7 @@ namespace Stripe
 
         /// <summary>
         /// The type of the pricing details.
+        /// One of: <c>price_details</c>, or <c>rate_card_rate_details</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
@@ -32,5 +33,11 @@ namespace Stripe
         [STJS.JsonPropertyName("unit_amount_decimal")]
 #endif
         public decimal? UnitAmountDecimal { get; set; }
+
+        [JsonProperty("rate_card_rate_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("rate_card_rate_details")]
+#endif
+        public InvoiceLineItemPricingRateCardRateDetails RateCardRateDetails { get; set; }
     }
 }

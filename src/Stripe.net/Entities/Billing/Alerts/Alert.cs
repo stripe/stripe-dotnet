@@ -33,12 +33,22 @@ namespace Stripe.Billing
 
         /// <summary>
         /// Defines the type of the alert.
+        /// One of: <c>credit_balance_threshold</c>, or <c>usage_threshold</c>.
         /// </summary>
         [JsonProperty("alert_type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alert_type")]
 #endif
         public string AlertType { get; set; }
+
+        /// <summary>
+        /// Encapsulates configuration of the alert to monitor billing credit balance.
+        /// </summary>
+        [JsonProperty("credit_balance_threshold")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("credit_balance_threshold")]
+#endif
+        public AlertCreditBalanceThreshold CreditBalanceThreshold { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

@@ -10,6 +10,16 @@ namespace Stripe.Billing
     public class CreditGrantApplicabilityConfigScope : StripeEntity<CreditGrantApplicabilityConfigScope>
     {
         /// <summary>
+        /// The billable items that credit grants can apply to. We currently only support metered
+        /// billable items. Cannot be used in combination with <c>price_type</c> or <c>prices</c>.
+        /// </summary>
+        [JsonProperty("billable_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billable_items")]
+#endif
+        public List<CreditGrantApplicabilityConfigScopeBillableItem> BillableItems { get; set; }
+
+        /// <summary>
         /// The price type that credit grants can apply to. We currently only support the
         /// <c>metered</c> price type. This refers to prices that have a <a
         /// href="https://docs.stripe.com/api/billing/meter">Billing Meter</a> attached to them.

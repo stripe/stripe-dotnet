@@ -1,0 +1,21 @@
+// File generated from our OpenAPI spec
+namespace Stripe.Events
+{
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
+
+    public class V2BillingPricingPlanComponentCreatedEventData : StripeEntity<V2BillingPricingPlanComponentCreatedEventData>
+    {
+        /// <summary>
+        /// The ID of the PricingPlan that the PricingPlanComponent belongs to.
+        /// </summary>
+        [JsonProperty("pricing_plan_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pricing_plan_id")]
+#endif
+        public string PricingPlanId { get; set; }
+    }
+}

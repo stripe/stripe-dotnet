@@ -10,12 +10,22 @@ namespace Stripe.Billing
     {
         /// <summary>
         /// The type of alert to create.
+        /// One of: <c>credit_balance_threshold</c>, or <c>usage_threshold</c>.
         /// </summary>
         [JsonProperty("alert_type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alert_type")]
 #endif
         public string AlertType { get; set; }
+
+        /// <summary>
+        /// The configuration of the credit balance threshold.
+        /// </summary>
+        [JsonProperty("credit_balance_threshold")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("credit_balance_threshold")]
+#endif
+        public AlertCreditBalanceThresholdOptions CreditBalanceThreshold { get; set; }
 
         /// <summary>
         /// The title of the alert.

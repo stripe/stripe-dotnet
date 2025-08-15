@@ -71,6 +71,12 @@ namespace Stripe.Checkout
 #endif
         public string CancelUrl { get; set; }
 
+        [JsonProperty("checkout_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("checkout_items")]
+#endif
+        public List<SessionCheckoutItemOptions> CheckoutItems { get; set; }
+
         /// <summary>
         /// A unique string to reference the Checkout Session. This can be a customer ID, a cart ID,
         /// or similar, and can be used to reconcile the session with your internal systems.

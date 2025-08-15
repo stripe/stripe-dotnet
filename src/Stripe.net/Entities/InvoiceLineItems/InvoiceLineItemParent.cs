@@ -28,12 +28,19 @@ namespace Stripe
 
         /// <summary>
         /// The type of parent that generated this line item.
-        /// One of: <c>invoice_item_details</c>, or <c>subscription_item_details</c>.
+        /// One of: <c>invoice_item_details</c>, <c>subscription_item_details</c>, or
+        /// <c>rate_card_subscription_details</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
+
+        [JsonProperty("rate_card_subscription_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("rate_card_subscription_details")]
+#endif
+        public InvoiceLineItemParentRateCardSubscriptionDetails RateCardSubscriptionDetails { get; set; }
     }
 }
