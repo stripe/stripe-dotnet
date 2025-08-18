@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// Amount to be charged for future payments. Required when <c>amount_type=fixed</c>. If not
-        /// provided for <c>amount_type=maximum</c>, defaults to 250 BRL.
+        /// provided for <c>amount_type=maximum</c>, defaults to 40000.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER
