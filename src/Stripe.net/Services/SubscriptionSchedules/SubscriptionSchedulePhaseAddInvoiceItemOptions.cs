@@ -7,7 +7,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class SubscriptionSchedulePhaseAddInvoiceItemOptions : INestedOptions
+    public class SubscriptionSchedulePhaseAddInvoiceItemOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The coupons to redeem into discounts for the item.
@@ -17,6 +17,28 @@ namespace Stripe
         [STJS.JsonPropertyName("discounts")]
 #endif
         public List<SubscriptionSchedulePhaseAddInvoiceItemDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format. Individual keys can be unset by posting an empty value to
+        /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
+        /// </summary>
+        [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+        public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The period associated with this invoice item. Defaults to the period of the underlying
+        /// subscription that surrounds the start of the phase.
+        /// </summary>
+        [JsonProperty("period")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("period")]
+#endif
+        public SubscriptionSchedulePhaseAddInvoiceItemPeriodOptions Period { get; set; }
 
         /// <summary>
         /// The ID of the price object. One of <c>price</c> or <c>price_data</c> is required.
