@@ -9,7 +9,7 @@ namespace Stripe
     public class SubscriptionBillingCycleAnchorConfigOptions : INestedOptions
     {
         /// <summary>
-        /// The day of the month the billing_cycle_anchor should be. Ranges from 1 to 31.
+        /// The day of the month the anchor should be. Ranges from 1 to 31.
         /// </summary>
         [JsonProperty("day_of_month")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,7 @@ namespace Stripe
         public long? DayOfMonth { get; set; }
 
         /// <summary>
-        /// The hour of the day the billing_cycle_anchor should be. Ranges from 0 to 23.
+        /// The hour of the day the anchor should be. Ranges from 0 to 23.
         /// </summary>
         [JsonProperty("hour")]
 #if NET6_0_OR_GREATER
@@ -27,7 +27,7 @@ namespace Stripe
         public long? Hour { get; set; }
 
         /// <summary>
-        /// The minute of the hour the billing_cycle_anchor should be. Ranges from 0 to 59.
+        /// The minute of the hour the anchor should be. Ranges from 0 to 59.
         /// </summary>
         [JsonProperty("minute")]
 #if NET6_0_OR_GREATER
@@ -36,7 +36,7 @@ namespace Stripe
         public long? Minute { get; set; }
 
         /// <summary>
-        /// The month to start full cycle billing periods. Ranges from 1 to 12.
+        /// The month to start full cycle periods. Ranges from 1 to 12.
         /// </summary>
         [JsonProperty("month")]
 #if NET6_0_OR_GREATER
@@ -45,7 +45,7 @@ namespace Stripe
         public long? Month { get; set; }
 
         /// <summary>
-        /// The second of the minute the billing_cycle_anchor should be. Ranges from 0 to 59.
+        /// The second of the minute the anchor should be. Ranges from 0 to 59.
         /// </summary>
         [JsonProperty("second")]
 #if NET6_0_OR_GREATER
