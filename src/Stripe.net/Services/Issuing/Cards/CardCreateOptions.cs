@@ -29,6 +29,28 @@ namespace Stripe.Issuing
         public string Currency { get; set; }
 
         /// <summary>
+        /// The desired expiration month (1-12) for this card if <a
+        /// href="https://stripe.com/issuing/cards/virtual/issue-cards?testing-method=with-code#exp-dates">specifying
+        /// a custom expiration date</a>.
+        /// </summary>
+        [JsonProperty("exp_month")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exp_month")]
+#endif
+        public long? ExpMonth { get; set; }
+
+        /// <summary>
+        /// The desired 4-digit expiration year for this card if <a
+        /// href="https://stripe.com/issuing/cards/virtual/issue-cards?testing-method=with-code#exp-dates">specifying
+        /// a custom expiration date</a>.
+        /// </summary>
+        [JsonProperty("exp_year")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("exp_year")]
+#endif
+        public long? ExpYear { get; set; }
+
+        /// <summary>
         /// The new financial account ID the card will be associated with. This field allows a card
         /// to be reassigned to a different financial account.
         /// </summary>
