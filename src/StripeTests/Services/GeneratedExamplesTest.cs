@@ -7691,58 +7691,24 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTemporarySessionExpiredError()
+        public void TestAlreadyCanceledError()
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/billing/meter_event_stream",
+                "/v2/money_management/outbound_payments/id_123/cancel",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"temporary_session_expired\",\"code\":\"billing_meter_event_session_expired\"}}");
-            var exception = Assert.Throws<Stripe.V2.TemporarySessionExpiredException>(
-            () =>
-            {
-            var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
-            {
-                Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
-                {
-                    new Stripe.V2.Billing.MeterEventStreamCreateEventOptions
-                    {
-                        EventName = "event_name",
-                        Payload = new Dictionary<string, string>
-                        {
-                            { "key", "payload" },
-                        },
-                    },
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.MeterEventStream;
-            service.Create(options);
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/billing/meter_event_stream");
-        }
-
-        [Fact]
-        public void TestNonZeroBalanceError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/money_management/financial_accounts/id_123/close",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"non_zero_balance\",\"code\":\"closing_financial_account_with_non_zero_balances\"}}");
-            var exception = Assert.Throws<Stripe.V2.NonZeroBalanceException>(
+                "{\"error\":{\"type\":\"already_canceled\",\"code\":\"outbound_payment_already_canceled\"}}");
+            var exception = Assert.Throws<Stripe.V2.AlreadyCanceledException>(
             () =>
             {
             var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.FinancialAccounts;
-            Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
-                .Close("id_123");
+            var service = client.V2.MoneyManagement.OutboundPayments;
+            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
+                .Cancel("id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
-                "/v2/money_management/financial_accounts/id_123/close");
+                "/v2/money_management/outbound_payments/id_123/cancel");
         }
 
         [Fact]
@@ -7768,6 +7734,52 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/money_management/financial_accounts");
+        }
+
+        [Fact]
+        public void TestBlockedByStripeError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"blocked_by_stripe\",\"code\":\"inbound_transfer_not_allowed\"}}");
+            var exception = Assert.Throws<Stripe.V2.BlockedByStripeException>(
+            () =>
+            {
+            var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
+            {
+                AccountNumber = "account_number",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Vault.UsBankAccounts;
+            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
+                options);
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts");
+        }
+
+        [Fact]
+        public void TestControlledByDashboardError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts/id_123/archive",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"controlled_by_dashboard\",\"code\":\"bank_account_cannot_be_archived\"}}");
+            var exception = Assert.Throws<Stripe.V2.ControlledByDashboardException>(
+            () =>
+            {
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Vault.UsBankAccounts;
+            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Archive(
+                "id_123");
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts/id_123/archive");
         }
 
         [Fact]
@@ -7822,73 +7834,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestBlockedByStripeError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"blocked_by_stripe\",\"code\":\"inbound_transfer_not_allowed\"}}");
-            var exception = Assert.Throws<Stripe.V2.BlockedByStripeException>(
-            () =>
-            {
-            var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
-            {
-                AccountNumber = "account_number",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.UsBankAccounts;
-            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
-                options);
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts");
-        }
-
-        [Fact]
-        public void TestAlreadyCanceledError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments/id_123/cancel",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"already_canceled\",\"code\":\"outbound_payment_already_canceled\"}}");
-            var exception = Assert.Throws<Stripe.V2.AlreadyCanceledException>(
-            () =>
-            {
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Cancel("id_123");
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments/id_123/cancel");
-        }
-
-        [Fact]
-        public void TestNotCancelableError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments/id_123/cancel",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"not_cancelable\",\"code\":\"outbound_payment_not_cancelable\"}}");
-            var exception = Assert.Throws<Stripe.V2.NotCancelableException>(
-            () =>
-            {
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Cancel("id_123");
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments/id_123/cancel");
-        }
-
-        [Fact]
         public void TestInsufficientFundsError()
         {
             this.StubRequest(
@@ -7920,6 +7865,95 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/money_management/outbound_payments");
+        }
+
+        [Fact]
+        public void TestInvalidPaymentMethodError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"invalid_payment_method\",\"code\":\"invalid_us_bank_account\"}}");
+            var exception = Assert.Throws<Stripe.V2.InvalidPaymentMethodException>(
+            () =>
+            {
+            var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
+            {
+                AccountNumber = "account_number",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Vault.UsBankAccounts;
+            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
+                options);
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts");
+        }
+
+        [Fact]
+        public void TestInvalidPayoutMethodError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_setup_intents",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"invalid_payout_method\",\"code\":\"invalid_payout_method\"}}");
+            var exception = Assert.Throws<Stripe.V2.InvalidPayoutMethodException>(
+            () =>
+            {
+            var options = new Stripe.V2.MoneyManagement.OutboundSetupIntentCreateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.OutboundSetupIntents;
+            Stripe.V2.MoneyManagement.OutboundSetupIntent outboundSetupIntent = service
+                .Create(options);
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_setup_intents");
+        }
+
+        [Fact]
+        public void TestNonZeroBalanceError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/financial_accounts/id_123/close",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"non_zero_balance\",\"code\":\"closing_financial_account_with_non_zero_balances\"}}");
+            var exception = Assert.Throws<Stripe.V2.NonZeroBalanceException>(
+            () =>
+            {
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.FinancialAccounts;
+            Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
+                .Close("id_123");
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/financial_accounts/id_123/close");
+        }
+
+        [Fact]
+        public void TestNotCancelableError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_payments/id_123/cancel",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"not_cancelable\",\"code\":\"outbound_payment_not_cancelable\"}}");
+            var exception = Assert.Throws<Stripe.V2.NotCancelableException>(
+            () =>
+            {
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.OutboundPayments;
+            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
+                .Cancel("id_123");
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_payments/id_123/cancel");
         }
 
         [Fact]
@@ -7982,71 +8016,37 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestInvalidPayoutMethodError()
+        public void TestTemporarySessionExpiredError()
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/money_management/outbound_setup_intents",
+                "/v2/billing/meter_event_stream",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"invalid_payout_method\",\"code\":\"invalid_payout_method\"}}");
-            var exception = Assert.Throws<Stripe.V2.InvalidPayoutMethodException>(
+                "{\"error\":{\"type\":\"temporary_session_expired\",\"code\":\"billing_meter_event_session_expired\"}}");
+            var exception = Assert.Throws<Stripe.V2.TemporarySessionExpiredException>(
             () =>
             {
-            var options = new Stripe.V2.MoneyManagement.OutboundSetupIntentCreateOptions();
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundSetupIntents;
-            Stripe.V2.MoneyManagement.OutboundSetupIntent outboundSetupIntent = service
-                .Create(options);
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_setup_intents");
-        }
-
-        [Fact]
-        public void TestControlledByDashboardError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts/id_123/archive",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"controlled_by_dashboard\",\"code\":\"bank_account_cannot_be_archived\"}}");
-            var exception = Assert.Throws<Stripe.V2.ControlledByDashboardException>(
-            () =>
+            var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
             {
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.UsBankAccounts;
-            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Archive(
-                "id_123");
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts/id_123/archive");
-        }
-
-        [Fact]
-        public void TestInvalidPaymentMethodError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"invalid_payment_method\",\"code\":\"invalid_us_bank_account\"}}");
-            var exception = Assert.Throws<Stripe.V2.InvalidPaymentMethodException>(
-            () =>
-            {
-            var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
-            {
-                AccountNumber = "account_number",
+                Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
+                {
+                    new Stripe.V2.Billing.MeterEventStreamCreateEventOptions
+                    {
+                        EventName = "event_name",
+                        Payload = new Dictionary<string, string>
+                        {
+                            { "key", "payload" },
+                        },
+                    },
+                },
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.UsBankAccounts;
-            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
-                options);
+            var service = client.V2.Billing.MeterEventStream;
+            service.Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts");
+                "/v2/billing/meter_event_stream");
         }
     }
 }
