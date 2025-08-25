@@ -7,10 +7,10 @@ namespace Stripe.V2
 
     public class BillingService : Service
     {
+        private V2.Billing.MeterEventService meterEvents;
         private V2.Billing.MeterEventAdjustmentService meterEventAdjustments;
         private V2.Billing.MeterEventSessionService meterEventSession;
         private V2.Billing.MeterEventStreamService meterEventStream;
-        private V2.Billing.MeterEventService meterEvents;
 
         internal BillingService(ApiRequestor requestor)
             : base(requestor)
@@ -22,6 +22,9 @@ namespace Stripe.V2
         {
         }
 
+        public virtual V2.Billing.MeterEventService MeterEvents => this.meterEvents ??= new V2.Billing.MeterEventService(
+            this.Requestor);
+
         public virtual V2.Billing.MeterEventAdjustmentService MeterEventAdjustments => this.meterEventAdjustments ??= new V2.Billing.MeterEventAdjustmentService(
             this.Requestor);
 
@@ -29,9 +32,6 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.Billing.MeterEventStreamService MeterEventStream => this.meterEventStream ??= new V2.Billing.MeterEventStreamService(
-            this.Requestor);
-
-        public virtual V2.Billing.MeterEventService MeterEvents => this.meterEvents ??= new V2.Billing.MeterEventService(
             this.Requestor);
     }
 }
