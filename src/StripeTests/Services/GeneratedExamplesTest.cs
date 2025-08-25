@@ -6150,6 +6150,28 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2BillingMeterEventPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_events",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.billing.meter_event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"event_name\":\"event_name\",\"identifier\":\"identifier\",\"livemode\":true,\"payload\":{\"key\":\"payload\"},\"timestamp\":\"1970-01-01T15:18:46.294Z\"}");
+            var options = new Stripe.V2.Billing.MeterEventCreateOptions
+            {
+                EventName = "event_name",
+                Payload = new Dictionary<string, string>
+                {
+                    { "key", "payload" },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.MeterEvents;
+            Stripe.V2.Billing.MeterEvent meterEvent = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/billing/meter_events");
+        }
+
+        [Fact]
         public void TestV2BillingMeterEventAdjustmentPost()
         {
             this.StubRequest(
@@ -6228,25 +6250,40 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2BillingMeterEventPost()
+        public void TestV2CoreEventGet()
         {
             this.StubRequest(
-                HttpMethod.Post,
-                "/v2/billing/meter_events",
+                HttpMethod.Get,
+                "/v2/core/events",
                 (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.meter_event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"event_name\":\"event_name\",\"identifier\":\"identifier\",\"livemode\":true,\"payload\":{\"key\":\"payload\"},\"timestamp\":\"1970-01-01T15:18:46.294Z\"}");
-            var options = new Stripe.V2.Billing.MeterEventCreateOptions
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "object_id=object_id");
+            var options = new Stripe.V2.Core.EventListOptions
             {
-                EventName = "event_name",
-                Payload = new Dictionary<string, string>
-                {
-                    { "key", "payload" },
-                },
+                ObjectId = "object_id",
             };
             var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.MeterEvents;
-            Stripe.V2.Billing.MeterEvent meterEvent = service.Create(options);
-            this.AssertRequest(HttpMethod.Post, "/v2/billing/meter_events");
+            var service = client.V2.Core.Events;
+            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List(
+                options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/events",
+                "object_id=object_id");
+        }
+
+        [Fact]
+        public void TestV2CoreEventGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/events/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Events;
+            Stripe.V2.Event result = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/core/events/id_123");
         }
 
         [Fact]
@@ -6385,43 +6422,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/core/event_destinations/id_123/ping");
-        }
-
-        [Fact]
-        public void TestV2CoreEventGet()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/core/events",
-                (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}",
-                "object_id=object_id");
-            var options = new Stripe.V2.Core.EventListOptions
-            {
-                ObjectId = "object_id",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Events;
-            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List(
-                options);
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/core/events",
-                "object_id=object_id");
-        }
-
-        [Fact]
-        public void TestV2CoreEventGet2()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/core/events/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Events;
-            Stripe.V2.Event result = service.Get("id_123");
-            this.AssertRequest(HttpMethod.Get, "/v2/core/events/id_123");
         }
 
         [Fact]

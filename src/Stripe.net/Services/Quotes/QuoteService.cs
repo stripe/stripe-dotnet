@@ -15,8 +15,8 @@ namespace Stripe
         IRetrievable<Quote, QuoteGetOptions>,
         IUpdatable<Quote, QuoteUpdateOptions>
     {
-        private QuoteLineItemService lineItems;
         private QuoteComputedUpfrontLineItemsService computedUpfrontLineItems;
+        private QuoteLineItemService lineItems;
 
         public QuoteService()
         {
@@ -32,10 +32,10 @@ namespace Stripe
         {
         }
 
-        public virtual QuoteLineItemService LineItems => this.lineItems ??= new QuoteLineItemService(
+        public virtual QuoteComputedUpfrontLineItemsService ComputedUpfrontLineItems => this.computedUpfrontLineItems ??= new QuoteComputedUpfrontLineItemsService(
             this.Requestor);
 
-        public virtual QuoteComputedUpfrontLineItemsService ComputedUpfrontLineItems => this.computedUpfrontLineItems ??= new QuoteComputedUpfrontLineItemsService(
+        public virtual QuoteLineItemService LineItems => this.lineItems ??= new QuoteLineItemService(
             this.Requestor);
 
         /// <summary>

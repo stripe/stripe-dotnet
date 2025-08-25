@@ -7,8 +7,8 @@ namespace Stripe.V2
 
     public class CoreService : Service
     {
-        private V2.Core.EventDestinationService eventDestinations;
         private V2.Core.EventService events;
+        private V2.Core.EventDestinationService eventDestinations;
 
         internal CoreService(ApiRequestor requestor)
             : base(requestor)
@@ -20,10 +20,10 @@ namespace Stripe.V2
         {
         }
 
-        public virtual V2.Core.EventDestinationService EventDestinations => this.eventDestinations ??= new V2.Core.EventDestinationService(
+        public virtual V2.Core.EventService Events => this.events ??= new V2.Core.EventService(
             this.Requestor);
 
-        public virtual V2.Core.EventService Events => this.events ??= new V2.Core.EventService(
+        public virtual V2.Core.EventDestinationService EventDestinations => this.eventDestinations ??= new V2.Core.EventDestinationService(
             this.Requestor);
     }
 }
