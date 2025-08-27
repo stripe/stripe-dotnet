@@ -30,9 +30,9 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Attach a Cadence to an existing subscription. Once attached, the subscription will be
-        /// billed by the cadence, potentially sharing invoices with the other subscriptions linked
-        /// to the Cadence.</p>.
+        /// <p>Attach a Billing Cadence to an existing subscription. When attached, the subscription
+        /// is billed by the Billing Cadence, potentially sharing invoices with the other
+        /// subscriptions linked to the Billing Cadence.</p>.
         /// </summary>
         public virtual Subscription AttachCadence(string id, SubscriptionAttachCadenceOptions options = null, RequestOptions requestOptions = null)
         {
@@ -40,9 +40,9 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Attach a Cadence to an existing subscription. Once attached, the subscription will be
-        /// billed by the cadence, potentially sharing invoices with the other subscriptions linked
-        /// to the Cadence.</p>.
+        /// <p>Attach a Billing Cadence to an existing subscription. When attached, the subscription
+        /// is billed by the Billing Cadence, potentially sharing invoices with the other
+        /// subscriptions linked to the Billing Cadence.</p>.
         /// </summary>
         public virtual Task<Subscription> AttachCadenceAsync(string id, SubscriptionAttachCadenceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

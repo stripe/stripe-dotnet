@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing.PricingPlans
     public class ComponentCreateLicenseFeeOptions : INestedOptions, IHasId
     {
         /// <summary>
-        /// The ID of the LicenseFee.
+        /// The ID of the License Fee.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing.PricingPlans
         public string Id { get; set; }
 
         /// <summary>
-        /// The version of the LicenseFee.
+        /// The version of the LicenseFee. Defaults to 'latest', if not specified.
         /// </summary>
         [JsonProperty("version")]
 #if NET6_0_OR_GREATER

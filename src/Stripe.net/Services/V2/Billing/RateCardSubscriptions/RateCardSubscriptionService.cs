@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Cancel an existing, active RateCardSubscription.
+        /// Cancel an existing, active Rate Card Subscription.
         /// </summary>
         public virtual RateCardSubscription Cancel(string id, RateCardSubscriptionCancelOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Cancel an existing, active RateCardSubscription.
+        /// Cancel an existing, active Rate Card Subscription.
         /// </summary>
         public virtual Task<RateCardSubscription> CancelAsync(string id, RateCardSubscriptionCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a RateCardSubscription to bill a RateCard on a specified billing Cadence.
+        /// Create a Rate Card Subscription to bill a Rate Card on a specified Billing Cadence.
         /// </summary>
         public virtual RateCardSubscription Create(RateCardSubscriptionCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a RateCardSubscription to bill a RateCard on a specified billing Cadence.
+        /// Create a Rate Card Subscription to bill a Rate Card on a specified Billing Cadence.
         /// </summary>
         public virtual Task<RateCardSubscription> CreateAsync(RateCardSubscriptionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a RateCardSubscription by ID.
+        /// Retrieve a Rate Card Subscription by ID.
         /// </summary>
         public virtual RateCardSubscription Get(string id, RateCardSubscriptionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a RateCardSubscription by ID.
+        /// Retrieve a Rate Card Subscription by ID.
         /// </summary>
         public virtual Task<RateCardSubscription> GetAsync(string id, RateCardSubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all RateCardSubscription objects.
+        /// List all Rate Card Subscription objects.
         /// </summary>
         public virtual V2.StripeList<RateCardSubscription> List(RateCardSubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +77,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all RateCardSubscription objects.
+        /// List all Rate Card Subscription objects.
         /// </summary>
         public virtual Task<V2.StripeList<RateCardSubscription>> ListAsync(RateCardSubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +85,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all RateCardSubscription objects.
+        /// List all Rate Card Subscription objects.
         /// </summary>
         public virtual IEnumerable<RateCardSubscription> ListAutoPaging(RateCardSubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -93,7 +93,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all RateCardSubscription objects.
+        /// List all Rate Card Subscription objects.
         /// </summary>
         public virtual IAsyncEnumerable<RateCardSubscription> ListAutoPagingAsync(RateCardSubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -101,7 +101,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update fields on an existing, active RateCardSubscription.
+        /// Update fields on an existing, active Rate Card Subscription.
         /// </summary>
         public virtual RateCardSubscription Update(string id, RateCardSubscriptionUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -109,7 +109,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update fields on an existing, active RateCardSubscription.
+        /// Update fields on an existing, active Rate Card Subscription.
         /// </summary>
         public virtual Task<RateCardSubscription> UpdateAsync(string id, RateCardSubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

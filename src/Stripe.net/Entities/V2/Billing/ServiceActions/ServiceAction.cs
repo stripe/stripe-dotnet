@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class ServiceAction : StripeEntity<ServiceAction>, IHasId, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the ServiceAction.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER

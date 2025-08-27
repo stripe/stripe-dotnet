@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class CustomPricingUnitCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Description that customers will see in the invoice line item. Maximum length of 250
+        /// Description that customers will see in the invoice line item. Maximum length of 10
         /// characters.
         /// </summary>
         [JsonProperty("display_name")]
@@ -20,7 +20,7 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular CustomPricingUnit item. Must be
+        /// An internal key you can use to search for a particular custom pricing unit item. Must be
         /// unique among items. Maximum length of 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
@@ -30,8 +30,9 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER

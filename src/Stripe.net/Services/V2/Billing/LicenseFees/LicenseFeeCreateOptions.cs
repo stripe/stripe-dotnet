@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class LicenseFeeCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The currency of this LicenseFee.
+        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER
@@ -19,7 +19,7 @@ namespace Stripe.V2.Billing
         public string Currency { get; set; }
 
         /// <summary>
-        /// A customer-facing name for the LicenseFee. This name is used in Stripe-hosted products
+        /// A customer-facing name for the License Fee. This name is used in Stripe-hosted products
         /// like the Customer Portal and Checkout. It does not show up on Invoices. Maximum length
         /// of 250 characters.
         /// </summary>
@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// The LicensedItem that this rate binds to.
+        /// The Licensed Item that this License Fee binds to.
         /// </summary>
         [JsonProperty("licensed_item")]
 #if NET6_0_OR_GREATER
@@ -39,8 +39,8 @@ namespace Stripe.V2.Billing
         public string LicensedItem { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular LicenseFee. Maximum length of 200
-        /// characters.
+        /// An internal key you can use to search for a particular license fee. Maximum length of
+        /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
 #if NET6_0_OR_GREATER
@@ -49,8 +49,9 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER
@@ -59,7 +60,7 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The interval for assessing service. For example, a monthly LicenseFee with a rate of $1
+        /// The interval for assessing service. For example, a monthly license fee with a rate of $1
         /// for the first 10 "workloads" and $2 thereafter means "$1 per workload up to 10 workloads
         /// during a month of service." This is similar to but distinct from billing interval; the
         /// service interval deals with the rate at which the customer accumulates fees, while the

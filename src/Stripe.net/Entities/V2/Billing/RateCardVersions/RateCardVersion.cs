@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class RateCardVersion : StripeEntity<RateCardVersion>, IHasId, IHasObject
     {
         /// <summary>
-        /// The ID of the RateCardVersion.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -48,7 +48,7 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The ID of the RateCard that this version belongs to.
+        /// The ID of the Rate Card that this version belongs to.
         /// </summary>
         [JsonProperty("rate_card_id")]
 #if NET6_0_OR_GREATER

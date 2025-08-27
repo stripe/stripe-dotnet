@@ -11,15 +11,12 @@ namespace Stripe
     /// This is an object representing your Stripe balance. You can retrieve it to see the
     /// balance currently on your Stripe account.
     ///
-    /// You can also retrieve the balance history, which contains a list of <a
-    /// href="https://stripe.com/docs/reporting/balance-transaction-types">transactions</a> that
-    /// contributed to the balance (charges, payouts, and so forth).
+    /// The top-level <c>available</c> and <c>pending</c> comprise your "payments balance.".
     ///
-    /// The available and pending amounts for each currency are broken down further by payment
-    /// source types.
-    ///
-    /// Related guide: <a href="https://stripe.com/docs/connect/account-balances">Understanding
-    /// Connect account balances</a>.
+    /// Related guide: <a href="https://stripe.com/docs/payments/balances">Balances and
+    /// settlement time</a>, <a
+    /// href="https://stripe.com/docs/connect/account-balances">Understanding Connect account
+    /// balances</a>.
     /// </summary>
     public class Balance : StripeEntity<Balance>, IHasObject
     {

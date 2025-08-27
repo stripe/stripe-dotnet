@@ -11,6 +11,16 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsPix : StripeEntity<PaymentIntentPaymentMethodOptionsPix>
     {
         /// <summary>
+        /// Determines if the amount includes the IOF tax.
+        /// One of: <c>always</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("amount_includes_iof")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_includes_iof")]
+#endif
+        public string AmountIncludesIof { get; set; }
+
+        /// <summary>
         /// The number of seconds (between 10 and 1209600) after which Pix payment will expire.
         /// </summary>
         [JsonProperty("expires_after_seconds")]
@@ -29,6 +39,12 @@ namespace Stripe
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
         public DateTime? ExpiresAt { get; set; }
+
+        [JsonProperty("mandate_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_options")]
+#endif
+        public PaymentIntentPaymentMethodOptionsPixMandateOptions MandateOptions { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -49,6 +65,7 @@ namespace Stripe
         /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
+        /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
 #if NET6_0_OR_GREATER

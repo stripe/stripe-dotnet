@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
             this.Requestor);
 
         /// <summary>
-        /// Create a PricingPlan object.
+        /// Create a Pricing Plan object.
         /// </summary>
         public virtual PricingPlan Create(PricingPlanCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -38,7 +38,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a PricingPlan object.
+        /// Create a Pricing Plan object.
         /// </summary>
         public virtual Task<PricingPlan> CreateAsync(PricingPlanCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -46,7 +46,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a PricingPlan object.
+        /// Retrieve a Pricing Plan object.
         /// </summary>
         public virtual PricingPlan Get(string id, PricingPlanGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -54,7 +54,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a PricingPlan object.
+        /// Retrieve a Pricing Plan object.
         /// </summary>
         public virtual Task<PricingPlan> GetAsync(string id, PricingPlanGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -62,7 +62,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all PricingPlan objects.
+        /// List all Pricing Plan objects.
         /// </summary>
         public virtual V2.StripeList<PricingPlan> List(PricingPlanListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -70,7 +70,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all PricingPlan objects.
+        /// List all Pricing Plan objects.
         /// </summary>
         public virtual Task<V2.StripeList<PricingPlan>> ListAsync(PricingPlanListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -78,7 +78,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all PricingPlan objects.
+        /// List all Pricing Plan objects.
         /// </summary>
         public virtual IEnumerable<PricingPlan> ListAutoPaging(PricingPlanListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -86,7 +86,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all PricingPlan objects.
+        /// List all Pricing Plan objects.
         /// </summary>
         public virtual IAsyncEnumerable<PricingPlan> ListAutoPagingAsync(PricingPlanListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -94,7 +94,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a PricingPlan object.
+        /// Update a Pricing Plan object.
         /// </summary>
         public virtual PricingPlan Update(string id, PricingPlanUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -102,7 +102,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a PricingPlan object.
+        /// Update a Pricing Plan object.
         /// </summary>
         public virtual Task<PricingPlan> UpdateAsync(string id, PricingPlanUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

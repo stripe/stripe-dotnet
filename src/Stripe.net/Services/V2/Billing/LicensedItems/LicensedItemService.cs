@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a LicensedItem object.
+        /// Create a Licensed Item object.
         /// </summary>
         public virtual LicensedItem Create(LicensedItemCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a LicensedItem object.
+        /// Create a Licensed Item object.
         /// </summary>
         public virtual Task<LicensedItem> CreateAsync(LicensedItemCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a LicensedItem object.
+        /// Retrieve a Licensed Item object.
         /// </summary>
         public virtual LicensedItem Get(string id, LicensedItemGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a LicensedItem object.
+        /// Retrieve a Licensed Item object.
         /// </summary>
         public virtual Task<LicensedItem> GetAsync(string id, LicensedItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all LicensedItem objects in reverse chronological order of creation.
+        /// List all Licensed Item objects in reverse chronological order of creation.
         /// </summary>
         public virtual V2.StripeList<LicensedItem> List(LicensedItemListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all LicensedItem objects in reverse chronological order of creation.
+        /// List all Licensed Item objects in reverse chronological order of creation.
         /// </summary>
         public virtual Task<V2.StripeList<LicensedItem>> ListAsync(LicensedItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all LicensedItem objects in reverse chronological order of creation.
+        /// List all Licensed Item objects in reverse chronological order of creation.
         /// </summary>
         public virtual IEnumerable<LicensedItem> ListAutoPaging(LicensedItemListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +77,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all LicensedItem objects in reverse chronological order of creation.
+        /// List all Licensed Item objects in reverse chronological order of creation.
         /// </summary>
         public virtual IAsyncEnumerable<LicensedItem> ListAutoPagingAsync(LicensedItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +85,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a LicensedItem object. At least one of the fields is required.
+        /// Update a Licensed Item object. At least one of the fields is required.
         /// </summary>
         public virtual LicensedItem Update(string id, LicensedItemUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -93,7 +93,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a LicensedItem object. At least one of the fields is required.
+        /// Update a Licensed Item object. At least one of the fields is required.
         /// </summary>
         public virtual Task<LicensedItem> UpdateAsync(string id, LicensedItemUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

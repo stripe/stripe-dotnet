@@ -62,6 +62,12 @@ namespace Stripe
 #endif
         public SetupIntentPaymentMethodOptionsPayto Payto { get; set; }
 
+        [JsonProperty("pix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pix")]
+#endif
+        public SetupIntentPaymentMethodOptionsPix Pix { get; set; }
+
         [JsonProperty("sepa_debit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]

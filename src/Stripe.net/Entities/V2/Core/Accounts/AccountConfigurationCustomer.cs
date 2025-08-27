@@ -9,6 +9,16 @@ namespace Stripe.V2.Core
     public class AccountConfigurationCustomer : StripeEntity<AccountConfigurationCustomer>
     {
         /// <summary>
+        /// Represents the state of the configuration, and can be updated to deactivate or re-apply
+        /// a configuration.
+        /// </summary>
+        [JsonProperty("applied")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("applied")]
+#endif
+        public bool Applied { get; set; }
+
+        /// <summary>
         /// Automatic indirect tax settings to be used when automatic tax calculation is enabled on
         /// the customer's invoices, subscriptions, checkout sessions, or payment links. Surfaces if
         /// automatic tax calculation is possible given the current customer location information.

@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a MeteredItem object.
+        /// Create a Metered Item object.
         /// </summary>
         public virtual MeteredItem Create(MeteredItemCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a MeteredItem object.
+        /// Create a Metered Item object.
         /// </summary>
         public virtual Task<MeteredItem> CreateAsync(MeteredItemCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a MeteredItem object.
+        /// Retrieve a Metered Item object.
         /// </summary>
         public virtual MeteredItem Get(string id, MeteredItemGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a MeteredItem object.
+        /// Retrieve a Metered Item object.
         /// </summary>
         public virtual Task<MeteredItem> GetAsync(string id, MeteredItemGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all MeteredItem objects in reverse chronological order of creation.
+        /// List all Metered Item objects in reverse chronological order of creation.
         /// </summary>
         public virtual V2.StripeList<MeteredItem> List(MeteredItemListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all MeteredItem objects in reverse chronological order of creation.
+        /// List all Metered Item objects in reverse chronological order of creation.
         /// </summary>
         public virtual Task<V2.StripeList<MeteredItem>> ListAsync(MeteredItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all MeteredItem objects in reverse chronological order of creation.
+        /// List all Metered Item objects in reverse chronological order of creation.
         /// </summary>
         public virtual IEnumerable<MeteredItem> ListAutoPaging(MeteredItemListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +77,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all MeteredItem objects in reverse chronological order of creation.
+        /// List all Metered Item objects in reverse chronological order of creation.
         /// </summary>
         public virtual IAsyncEnumerable<MeteredItem> ListAutoPagingAsync(MeteredItemListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +85,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a MeteredItem object. At least one of the fields is required.
+        /// Update a Metered Item object. At least one of the fields is required.
         /// </summary>
         public virtual MeteredItem Update(string id, MeteredItemUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -93,7 +93,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a MeteredItem object. At least one of the fields is required.
+        /// Update a Metered Item object. At least one of the fields is required.
         /// </summary>
         public virtual Task<MeteredItem> UpdateAsync(string id, MeteredItemUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

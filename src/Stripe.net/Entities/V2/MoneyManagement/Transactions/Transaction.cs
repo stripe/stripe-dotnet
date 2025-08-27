@@ -56,9 +56,9 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. A descriptive category used to classify the Transaction.
-        /// One of: <c>adjustment</c>, <c>inbound_transfer</c>, <c>outbound_payment</c>,
-        /// <c>outbound_transfer</c>, <c>received_credit</c>, <c>received_debit</c>, <c>return</c>,
-        /// or <c>stripe_fee</c>.
+        /// One of: <c>adjustment</c>, <c>currency_conversion</c>, <c>inbound_transfer</c>,
+        /// <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>received_credit</c>,
+        /// <c>received_debit</c>, <c>return</c>, or <c>stripe_fee</c>.
         /// </summary>
         [JsonProperty("category")]
 #if NET6_0_OR_GREATER

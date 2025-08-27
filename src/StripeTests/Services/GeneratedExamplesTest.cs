@@ -6150,112 +6150,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2AccountLinkPost()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/account_links",
-                (HttpStatusCode)200,
-                "{\"object\":\"account_link\",\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"livemode\":true,\"url\":\"url\",\"use_case\":{\"type\":\"account_onboarding\",\"account_onboarding\":null,\"account_update\":null}}");
-            var options = new Stripe.V2.AccountLinkCreateOptions
-            {
-                Account = "account",
-                UseCase = new Stripe.V2.AccountLinkCreateUseCaseOptions
-                {
-                    Type = "account_onboarding",
-                    AccountOnboarding = new Stripe.V2.AccountLinkCreateUseCaseAccountOnboardingOptions
-                    {
-                        Configurations = new List<string> { "recipient" },
-                        RefreshUrl = "refresh_url",
-                        ReturnUrl = "return_url",
-                    },
-                    AccountUpdate = new Stripe.V2.AccountLinkCreateUseCaseAccountUpdateOptions
-                    {
-                        Configurations = new List<string> { "recipient" },
-                        RefreshUrl = "refresh_url",
-                        ReturnUrl = "return_url",
-                    },
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.AccountLinks;
-            Stripe.V2.AccountLink accountLink = service.Create(options);
-            this.AssertRequest(HttpMethod.Post, "/v2/account_links");
-        }
-
-        [Fact]
-        public void TestV2AccountGet()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/accounts",
-                (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"account\",\"applied_configurations\":[\"storer\"],\"configuration\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"email\":null,\"legal_entity_data\":null,\"livemode\":true,\"metadata\":null,\"name\":null,\"requirements\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Accounts;
-            Stripe.V2.StripeList<Stripe.V2.Account> accounts = service.List();
-            this.AssertRequest(HttpMethod.Get, "/v2/accounts");
-        }
-
-        [Fact]
-        public void TestV2AccountPost()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/accounts",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"account\",\"applied_configurations\":[\"storer\"],\"configuration\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"email\":null,\"legal_entity_data\":null,\"livemode\":true,\"metadata\":null,\"name\":null,\"requirements\":null}");
-            var options = new Stripe.V2.AccountCreateOptions();
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Accounts;
-            Stripe.V2.Account account = service.Create(options);
-            this.AssertRequest(HttpMethod.Post, "/v2/accounts");
-        }
-
-        [Fact]
-        public void TestV2AccountGet2()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/accounts/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"account\",\"applied_configurations\":[\"storer\"],\"configuration\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"email\":null,\"legal_entity_data\":null,\"livemode\":true,\"metadata\":null,\"name\":null,\"requirements\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Accounts;
-            Stripe.V2.Account account = service.Get("id_123");
-            this.AssertRequest(HttpMethod.Get, "/v2/accounts/id_123");
-        }
-
-        [Fact]
-        public void TestV2AccountPost2()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/accounts/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"account\",\"applied_configurations\":[\"storer\"],\"configuration\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"email\":null,\"legal_entity_data\":null,\"livemode\":true,\"metadata\":null,\"name\":null,\"requirements\":null}");
-            var options = new Stripe.V2.AccountUpdateOptions();
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Accounts;
-            Stripe.V2.Account account = service.Update("id_123", options);
-            this.AssertRequest(HttpMethod.Post, "/v2/accounts/id_123");
-        }
-
-        [Fact]
-        public void TestV2AccountPost3()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/accounts/id_123/close",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"account\",\"applied_configurations\":[\"storer\"],\"configuration\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"email\":null,\"legal_entity_data\":null,\"livemode\":true,\"metadata\":null,\"name\":null,\"requirements\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Accounts;
-            Stripe.V2.Account account = service.Close("id_123");
-            this.AssertRequest(HttpMethod.Post, "/v2/accounts/id_123/close");
-        }
-
-        [Fact]
         public void TestV2BillingBillSettingGet()
         {
             this.StubRequest(
@@ -6389,6 +6283,7 @@ namespace StripeTests
                         {
                             Hour = 3208676,
                             Minute = 1074026988,
+                            Second = 906279820,
                         },
                     },
                     Month = new Stripe.V2.Billing.CadenceCreateBillingCycleMonthOptions
@@ -6398,6 +6293,7 @@ namespace StripeTests
                         {
                             Hour = 3208676,
                             Minute = 1074026988,
+                            Second = 906279820,
                         },
                     },
                     Week = new Stripe.V2.Billing.CadenceCreateBillingCycleWeekOptions
@@ -6407,6 +6303,7 @@ namespace StripeTests
                         {
                             Hour = 3208676,
                             Minute = 1074026988,
+                            Second = 906279820,
                         },
                     },
                     Year = new Stripe.V2.Billing.CadenceCreateBillingCycleYearOptions
@@ -6417,6 +6314,7 @@ namespace StripeTests
                         {
                             Hour = 3208676,
                             Minute = 1074026988,
+                            Second = 906279820,
                         },
                     },
                 },
@@ -6487,7 +6385,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/collection_settings",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"payment_method_configuration\":null,\"payment_method_options\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"email_delivery\":null,\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"payment_method_configuration\":null,\"payment_method_options\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.CollectionSettings;
             Stripe.V2.StripeList<Stripe.V2.Billing.CollectionSetting> collectionSettings = service
@@ -6504,7 +6402,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/collection_settings",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"payment_method_configuration\":null,\"payment_method_options\":null}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"email_delivery\":null,\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"payment_method_configuration\":null,\"payment_method_options\":null}");
             var options = new Stripe.V2.Billing.CollectionSettingCreateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.CollectionSettings;
@@ -6522,7 +6420,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/collection_settings/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"payment_method_configuration\":null,\"payment_method_options\":null}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"email_delivery\":null,\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"payment_method_configuration\":null,\"payment_method_options\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.CollectionSettings;
             Stripe.V2.Billing.CollectionSetting collectionSetting = service.Get(
@@ -6539,7 +6437,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/collection_settings/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"payment_method_configuration\":null,\"payment_method_options\":null}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":null,\"email_delivery\":null,\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"payment_method_configuration\":null,\"payment_method_options\":null}");
             var options = new Stripe.V2.Billing.CollectionSettingUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.CollectionSettings;
@@ -6557,7 +6455,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/collection_settings/collection_setting_id_123/versions",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting_version\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"payment_method_configuration\":null,\"payment_method_options\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting_version\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"email_delivery\":null,\"livemode\":true,\"payment_method_configuration\":null,\"payment_method_options\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.CollectionSettings.Versions;
             Stripe.V2.StripeList<Stripe.V2.Billing.CollectionSettingVersion> collectionSettingVersions = service
@@ -6574,7 +6472,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/collection_settings/collection_setting_id_123/versions/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting_version\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"payment_method_configuration\":null,\"payment_method_options\":null}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.collection_setting_version\",\"collection_method\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"email_delivery\":null,\"livemode\":true,\"payment_method_configuration\":null,\"payment_method_options\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.CollectionSettings.Versions;
             Stripe.V2.Billing.CollectionSettingVersion collectionSettingVersion = service
@@ -6664,7 +6562,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/intents",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"effective_at\":\"on_reserve\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.StripeList<Stripe.V2.Billing.Intent> intents = service
@@ -6679,7 +6577,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"effective_at\":\"on_reserve\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
             var options = new Stripe.V2.Billing.IntentCreateOptions
             {
                 Actions = new List<Stripe.V2.Billing.IntentCreateActionOptions>
@@ -6706,15 +6604,36 @@ namespace StripeTests
                         },
                         Deactivate = new Stripe.V2.Billing.IntentCreateActionDeactivateOptions
                         {
+                            BillingDetails = new Stripe.V2.Billing.IntentCreateActionDeactivateBillingDetailsOptions
+                            {
+                                ProrationBehavior = "prorated_adjustment",
+                            },
+                            EffectiveAt = new Stripe.V2.Billing.IntentCreateActionDeactivateEffectiveAtOptions
+                            {
+                                Timestamp = DateTimeOffset.Parse(
+                                    "1970-01-01T15:18:46.294Z")
+                                    .UtcDateTime,
+                                Type = "current_billing_period_start",
+                            },
                             PricingPlanSubscriptionDetails = new Stripe.V2.Billing.IntentCreateActionDeactivatePricingPlanSubscriptionDetailsOptions
                             {
                                 PricingPlanSubscription = "pricing_plan_subscription",
                             },
-                            ProrationBehavior = "none",
                             Type = "pricing_plan_subscription_details",
                         },
                         Modify = new Stripe.V2.Billing.IntentCreateActionModifyOptions
                         {
+                            BillingDetails = new Stripe.V2.Billing.IntentCreateActionModifyBillingDetailsOptions
+                            {
+                                ProrationBehavior = "prorated_adjustment",
+                            },
+                            EffectiveAt = new Stripe.V2.Billing.IntentCreateActionModifyEffectiveAtOptions
+                            {
+                                Timestamp = DateTimeOffset.Parse(
+                                    "1970-01-01T15:18:46.294Z")
+                                    .UtcDateTime,
+                                Type = "current_billing_period_start",
+                            },
                             PricingPlanSubscriptionDetails = new Stripe.V2.Billing.IntentCreateActionModifyPricingPlanSubscriptionDetailsOptions
                             {
                                 ComponentConfigurations = new List<Stripe.V2.Billing.IntentCreateActionModifyPricingPlanSubscriptionDetailsComponentConfigurationOptions>
@@ -6730,7 +6649,6 @@ namespace StripeTests
                                 NewPricingPlanVersion = "new_pricing_plan_version",
                                 PricingPlanSubscription = "pricing_plan_subscription",
                             },
-                            ProrationBehavior = "none",
                             Type = "pricing_plan_subscription_details",
                         },
                         Remove = new Stripe.V2.Billing.IntentCreateActionRemoveOptions
@@ -6740,7 +6658,17 @@ namespace StripeTests
                         },
                         Subscribe = new Stripe.V2.Billing.IntentCreateActionSubscribeOptions
                         {
-                            ProrationBehavior = "none",
+                            BillingDetails = new Stripe.V2.Billing.IntentCreateActionSubscribeBillingDetailsOptions
+                            {
+                                ProrationBehavior = "prorated_adjustment",
+                            },
+                            EffectiveAt = new Stripe.V2.Billing.IntentCreateActionSubscribeEffectiveAtOptions
+                            {
+                                Timestamp = DateTimeOffset.Parse(
+                                    "1970-01-01T15:18:46.294Z")
+                                    .UtcDateTime,
+                                Type = "current_billing_period_start",
+                            },
                             Type = "pricing_plan_subscription_details",
                             PricingPlanSubscriptionDetails = new Stripe.V2.Billing.IntentCreateActionSubscribePricingPlanSubscriptionDetailsOptions
                             {
@@ -6760,11 +6688,30 @@ namespace StripeTests
                                 PricingPlan = "pricing_plan",
                                 PricingPlanVersion = "pricing_plan_version",
                             },
+                            V1SubscriptionDetails = new Stripe.V2.Billing.IntentCreateActionSubscribeV1SubscriptionDetailsOptions
+                            {
+                                Description = "description",
+                                Items = new List<Stripe.V2.Billing.IntentCreateActionSubscribeV1SubscriptionDetailsItemOptions>
+                                {
+                                    new Stripe.V2.Billing.IntentCreateActionSubscribeV1SubscriptionDetailsItemOptions
+                                    {
+                                        Metadata = new Dictionary<string, string>
+                                        {
+                                            { "key", "metadata" },
+                                        },
+                                        Price = "price",
+                                        Quantity = 1285004149,
+                                    },
+                                },
+                                Metadata = new Dictionary<string, string>
+                                {
+                                    { "key", "metadata" },
+                                },
+                            },
                         },
                     },
                 },
                 Currency = "usd",
-                EffectiveAt = "on_reserve",
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
@@ -6779,7 +6726,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/intents/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"effective_at\":\"on_reserve\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.Get("id_123");
@@ -6793,7 +6740,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"effective_at\":\"on_reserve\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.Cancel("id_123");
@@ -6809,7 +6756,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents/id_123/commit",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"effective_at\":\"on_reserve\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.Commit("id_123");
@@ -6825,7 +6772,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents/id_123/release_reservation",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"effective_at\":\"on_reserve\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.ReleaseReservation(
@@ -6842,13 +6789,48 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/intents/id_123/reserve",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"effective_at\":\"on_reserve\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent\",\"amount_details\":{\"currency\":\"usd\",\"discount\":\"discount\",\"shipping\":\"shipping\",\"subtotal\":\"subtotal\",\"tax\":\"tax\",\"total\":\"total\"},\"cadence\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"livemode\":true,\"status\":\"draft\",\"status_transitions\":{\"canceled_at\":null,\"committed_at\":null,\"drafted_at\":null,\"reserved_at\":null}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.Intents;
             Stripe.V2.Billing.Intent intent = service.Reserve("id_123");
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/billing/intents/id_123/reserve");
+        }
+
+        [Fact]
+        public void TestV2BillingIntentsActionGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/intents/intent_id_123/actions",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.intent_action\",\"apply\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"deactivate\":null,\"livemode\":true,\"modify\":null,\"remove\":null,\"subscribe\":null,\"type\":\"apply\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.Intents.Actions;
+            Stripe.V2.StripeList<Stripe.V2.Billing.IntentAction> intentActions = service
+                .List("intent_id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/billing/intents/intent_id_123/actions");
+        }
+
+        [Fact]
+        public void TestV2BillingIntentsActionGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/intents/intent_id_123/actions/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.intent_action\",\"apply\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"deactivate\":null,\"livemode\":true,\"modify\":null,\"remove\":null,\"subscribe\":null,\"type\":\"apply\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.Intents.Actions;
+            Stripe.V2.Billing.IntentAction intentAction = service.Get(
+                "intent_id_123",
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/billing/intents/intent_id_123/actions/id_123");
         }
 
         [Fact]
@@ -6971,6 +6953,23 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2BillingLicenseFeeSubscriptionGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/license_fee_subscriptions/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.license_fee_subscription\",\"billing_cadence\":\"billing_cadence\",\"created\":\"1970-01-12T21:42:34.472Z\",\"license_fee\":\"license_fee\",\"license_fee_version\":\"license_fee_version\",\"livemode\":true,\"metadata\":null,\"quantity\":1285004149,\"test_clock\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.LicenseFeeSubscriptions;
+            Stripe.V2.Billing.LicenseFeeSubscription licenseFeeSubscription = service
+                .Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/billing/license_fee_subscriptions/id_123");
+        }
+
+        [Fact]
         public void TestV2BillingLicensedItemGet()
         {
             this.StubRequest(
@@ -7037,6 +7036,28 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/billing/licensed_items/id_123");
+        }
+
+        [Fact]
+        public void TestV2BillingMeterEventPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_events",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.billing.meter_event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"event_name\":\"event_name\",\"identifier\":\"identifier\",\"livemode\":true,\"payload\":{\"key\":\"payload\"},\"timestamp\":\"1970-01-01T15:18:46.294Z\"}");
+            var options = new Stripe.V2.Billing.MeterEventCreateOptions
+            {
+                EventName = "event_name",
+                Payload = new Dictionary<string, string>
+                {
+                    { "key", "payload" },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.MeterEvents;
+            Stripe.V2.Billing.MeterEvent meterEvent = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/billing/meter_events");
         }
 
         [Fact]
@@ -7118,28 +7139,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2BillingMeterEventPost()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/billing/meter_events",
-                (HttpStatusCode)200,
-                "{\"object\":\"v2.billing.meter_event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"event_name\":\"event_name\",\"identifier\":\"identifier\",\"livemode\":true,\"payload\":{\"key\":\"payload\"},\"timestamp\":\"1970-01-01T15:18:46.294Z\"}");
-            var options = new Stripe.V2.Billing.MeterEventCreateOptions
-            {
-                EventName = "event_name",
-                Payload = new Dictionary<string, string>
-                {
-                    { "key", "payload" },
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.MeterEvents;
-            Stripe.V2.Billing.MeterEvent meterEvent = service.Create(options);
-            this.AssertRequest(HttpMethod.Post, "/v2/billing/meter_events");
-        }
-
-        [Fact]
         public void TestV2BillingMeteredItemGet()
         {
             this.StubRequest(
@@ -7206,40 +7205,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/billing/metered_items/id_123");
-        }
-
-        [Fact]
-        public void TestV2BillingPricingPlanSubscriptionGet()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/billing/pricing_plan_subscriptions",
-                (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":\"past_due\",\"collection_status_transitions\":{\"awaiting_customer_action_at\":null,\"current_at\":null,\"past_due_at\":null,\"paused_at\":null,\"unpaid_at\":null},\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"pricing_plan\":\"pricing_plan\",\"pricing_plan_version\":\"pricing_plan_version\",\"servicing_status\":\"pending\",\"servicing_status_transitions\":{\"activated_at\":null,\"canceled_at\":null,\"paused_at\":null},\"test_clock\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.PricingPlanSubscriptions;
-            Stripe.V2.StripeList<Stripe.V2.Billing.PricingPlanSubscription> pricingPlanSubscriptions = service
-                .List();
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/billing/pricing_plan_subscriptions");
-        }
-
-        [Fact]
-        public void TestV2BillingPricingPlanSubscriptionGet2()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/billing/pricing_plan_subscriptions/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":\"past_due\",\"collection_status_transitions\":{\"awaiting_customer_action_at\":null,\"current_at\":null,\"past_due_at\":null,\"paused_at\":null,\"unpaid_at\":null},\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"pricing_plan\":\"pricing_plan\",\"pricing_plan_version\":\"pricing_plan_version\",\"servicing_status\":\"pending\",\"servicing_status_transitions\":{\"activated_at\":null,\"canceled_at\":null,\"paused_at\":null},\"test_clock\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.PricingPlanSubscriptions;
-            Stripe.V2.Billing.PricingPlanSubscription pricingPlanSubscription = service
-                .Get("id_123");
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/billing/pricing_plan_subscriptions/id_123");
         }
 
         [Fact]
@@ -7410,7 +7375,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/pricing_plans/pricing_plan_id_123/versions",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_version\",\"created\":\"1970-01-12T21:42:34.472Z\",\"end_date\":\"1970-01-20T23:11:07.410Z\",\"livemode\":true,\"pricing_plan\":\"pricing_plan\",\"start_date\":\"1970-01-19T05:07:09.589Z\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_version\",\"created\":\"1970-01-12T21:42:34.472Z\",\"end_date\":null,\"livemode\":true,\"pricing_plan\":\"pricing_plan\",\"start_date\":\"1970-01-19T05:07:09.589Z\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.PricingPlans.Versions;
             Stripe.V2.StripeList<Stripe.V2.Billing.PricingPlanVersion> pricingPlanVersions = service
@@ -7427,7 +7392,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/pricing_plans/pricing_plan_id_123/versions/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_version\",\"created\":\"1970-01-12T21:42:34.472Z\",\"end_date\":\"1970-01-20T23:11:07.410Z\",\"livemode\":true,\"pricing_plan\":\"pricing_plan\",\"start_date\":\"1970-01-19T05:07:09.589Z\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_version\",\"created\":\"1970-01-12T21:42:34.472Z\",\"end_date\":null,\"livemode\":true,\"pricing_plan\":\"pricing_plan\",\"start_date\":\"1970-01-19T05:07:09.589Z\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.PricingPlans.Versions;
             Stripe.V2.Billing.PricingPlanVersion pricingPlanVersion = service
@@ -7435,6 +7400,40 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/billing/pricing_plans/pricing_plan_id_123/versions/id_123");
+        }
+
+        [Fact]
+        public void TestV2BillingPricingPlanSubscriptionGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/pricing_plan_subscriptions",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":\"past_due\",\"collection_status_transitions\":{\"awaiting_customer_action_at\":null,\"current_at\":null,\"past_due_at\":null,\"paused_at\":null,\"unpaid_at\":null},\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"pricing_plan\":\"pricing_plan\",\"pricing_plan_version\":\"pricing_plan_version\",\"servicing_status\":\"pending\",\"servicing_status_transitions\":{\"activated_at\":null,\"canceled_at\":null,\"paused_at\":null},\"test_clock\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.PricingPlanSubscriptions;
+            Stripe.V2.StripeList<Stripe.V2.Billing.PricingPlanSubscription> pricingPlanSubscriptions = service
+                .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/billing/pricing_plan_subscriptions");
+        }
+
+        [Fact]
+        public void TestV2BillingPricingPlanSubscriptionGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/pricing_plan_subscriptions/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":\"past_due\",\"collection_status_transitions\":{\"awaiting_customer_action_at\":null,\"current_at\":null,\"past_due_at\":null,\"paused_at\":null,\"unpaid_at\":null},\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"pricing_plan\":\"pricing_plan\",\"pricing_plan_version\":\"pricing_plan_version\",\"servicing_status\":\"pending\",\"servicing_status_transitions\":{\"activated_at\":null,\"canceled_at\":null,\"paused_at\":null},\"test_clock\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.PricingPlanSubscriptions;
+            Stripe.V2.Billing.PricingPlanSubscription pricingPlanSubscription = service
+                .Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/billing/pricing_plan_subscriptions/id_123");
         }
 
         [Fact]
@@ -7510,104 +7509,13 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2BillingRateCardSubscriptionGet()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/billing/rate_card_subscriptions",
-                (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.RateCardSubscriptions;
-            Stripe.V2.StripeList<Stripe.V2.Billing.RateCardSubscription> rateCardSubscriptions = service
-                .List();
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/billing/rate_card_subscriptions");
-        }
-
-        [Fact]
-        public void TestV2BillingRateCardSubscriptionPost()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/billing/rate_card_subscriptions",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}");
-            var options = new Stripe.V2.Billing.RateCardSubscriptionCreateOptions
-            {
-                BillingCadence = "billing_cadence",
-                RateCard = "rate_card",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.RateCardSubscriptions;
-            Stripe.V2.Billing.RateCardSubscription rateCardSubscription = service
-                .Create(options);
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/billing/rate_card_subscriptions");
-        }
-
-        [Fact]
-        public void TestV2BillingRateCardSubscriptionGet2()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/billing/rate_card_subscriptions/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.RateCardSubscriptions;
-            Stripe.V2.Billing.RateCardSubscription rateCardSubscription = service
-                .Get("id_123");
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/billing/rate_card_subscriptions/id_123");
-        }
-
-        [Fact]
-        public void TestV2BillingRateCardSubscriptionPost2()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/billing/rate_card_subscriptions/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}");
-            var options = new Stripe.V2.Billing.RateCardSubscriptionUpdateOptions();
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.RateCardSubscriptions;
-            Stripe.V2.Billing.RateCardSubscription rateCardSubscription = service
-                .Update("id_123", options);
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/billing/rate_card_subscriptions/id_123");
-        }
-
-        [Fact]
-        public void TestV2BillingRateCardSubscriptionPost3()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/billing/rate_card_subscriptions/id_123/cancel",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.RateCardSubscriptions;
-            Stripe.V2.Billing.RateCardSubscription rateCardSubscription = service
-                .Cancel("id_123");
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/billing/rate_card_subscriptions/id_123/cancel");
-        }
-
-        [Fact]
         public void TestV2BillingRateCardGet()
         {
             this.StubRequest(
                 HttpMethod.Get,
                 "/v2/billing/rate_cards",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"metadata\":null,\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"metadata\":null,\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.RateCards;
             Stripe.V2.StripeList<Stripe.V2.Billing.RateCard> rateCards = service
@@ -7622,7 +7530,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/rate_cards",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"metadata\":null,\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"metadata\":null,\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}");
             var options = new Stripe.V2.Billing.RateCardCreateOptions
             {
                 Currency = "usd",
@@ -7644,7 +7552,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/rate_cards/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"metadata\":null,\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"metadata\":null,\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.RateCards;
             Stripe.V2.Billing.RateCard rateCard = service.Get("id_123");
@@ -7658,7 +7566,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/billing/rate_cards/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"metadata\":null,\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"latest_version\":\"latest_version\",\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"metadata\":null,\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\"}");
             var options = new Stripe.V2.Billing.RateCardUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.RateCards;
@@ -7778,6 +7686,97 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2BillingRateCardSubscriptionGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/rate_card_subscriptions",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.RateCardSubscriptions;
+            Stripe.V2.StripeList<Stripe.V2.Billing.RateCardSubscription> rateCardSubscriptions = service
+                .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/billing/rate_card_subscriptions");
+        }
+
+        [Fact]
+        public void TestV2BillingRateCardSubscriptionPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/rate_card_subscriptions",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}");
+            var options = new Stripe.V2.Billing.RateCardSubscriptionCreateOptions
+            {
+                BillingCadence = "billing_cadence",
+                RateCard = "rate_card",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.RateCardSubscriptions;
+            Stripe.V2.Billing.RateCardSubscription rateCardSubscription = service
+                .Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/rate_card_subscriptions");
+        }
+
+        [Fact]
+        public void TestV2BillingRateCardSubscriptionGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/billing/rate_card_subscriptions/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.RateCardSubscriptions;
+            Stripe.V2.Billing.RateCardSubscription rateCardSubscription = service
+                .Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/billing/rate_card_subscriptions/id_123");
+        }
+
+        [Fact]
+        public void TestV2BillingRateCardSubscriptionPost2()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/rate_card_subscriptions/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}");
+            var options = new Stripe.V2.Billing.RateCardSubscriptionUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.RateCardSubscriptions;
+            Stripe.V2.Billing.RateCardSubscription rateCardSubscription = service
+                .Update("id_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/rate_card_subscriptions/id_123");
+        }
+
+        [Fact]
+        public void TestV2BillingRateCardSubscriptionPost3()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/rate_card_subscriptions/id_123/cancel",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.rate_card_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":null,\"collection_status_transitions\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"servicing_status\":null,\"servicing_status_transitions\":null,\"test_clock\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.RateCardSubscriptions;
+            Stripe.V2.Billing.RateCardSubscription rateCardSubscription = service
+                .Cancel("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/rate_card_subscriptions/id_123/cancel");
+        }
+
+        [Fact]
         public void TestV2BillingServiceActionPost()
         {
             this.StubRequest(
@@ -7813,50 +7812,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/billing/service_actions/id_123");
-        }
-
-        [Fact]
-        public void TestV2CoreAccountLinkPost()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/core/account_links",
-                (HttpStatusCode)200,
-                "{\"object\":\"v2.core.account_link\",\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"livemode\":true,\"url\":\"url\",\"use_case\":{\"type\":\"account_onboarding\",\"account_onboarding\":null,\"account_update\":null}}");
-            var options = new Stripe.V2.Core.AccountLinkCreateOptions
-            {
-                Account = "account",
-                UseCase = new Stripe.V2.Core.AccountLinkCreateUseCaseOptions
-                {
-                    Type = "account_onboarding",
-                    AccountOnboarding = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingOptions
-                    {
-                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingCollectionOptionsOptions
-                        {
-                            Fields = "eventually_due",
-                            FutureRequirements = "include",
-                        },
-                        Configurations = new List<string> { "storer" },
-                        RefreshUrl = "refresh_url",
-                        ReturnUrl = "return_url",
-                    },
-                    AccountUpdate = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountUpdateOptions
-                    {
-                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountUpdateCollectionOptionsOptions
-                        {
-                            Fields = "eventually_due",
-                            FutureRequirements = "include",
-                        },
-                        Configurations = new List<string> { "storer" },
-                        RefreshUrl = "refresh_url",
-                        ReturnUrl = "return_url",
-                    },
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.AccountLinks;
-            Stripe.V2.Core.AccountLink accountLink = service.Create(options);
-            this.AssertRequest(HttpMethod.Post, "/v2/core/account_links");
         }
 
         [Fact]
@@ -8027,6 +7982,112 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2CoreAccountLinkPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/account_links",
+                (HttpStatusCode)200,
+                "{\"object\":\"v2.core.account_link\",\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"livemode\":true,\"url\":\"url\",\"use_case\":{\"type\":\"account_onboarding\",\"account_onboarding\":null,\"account_update\":null}}");
+            var options = new Stripe.V2.Core.AccountLinkCreateOptions
+            {
+                Account = "account",
+                UseCase = new Stripe.V2.Core.AccountLinkCreateUseCaseOptions
+                {
+                    Type = "account_onboarding",
+                    AccountOnboarding = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingOptions
+                    {
+                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingCollectionOptionsOptions
+                        {
+                            Fields = "eventually_due",
+                            FutureRequirements = "include",
+                        },
+                        Configurations = new List<string> { "storer" },
+                        RefreshUrl = "refresh_url",
+                        ReturnUrl = "return_url",
+                    },
+                    AccountUpdate = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountUpdateOptions
+                    {
+                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountUpdateCollectionOptionsOptions
+                        {
+                            Fields = "eventually_due",
+                            FutureRequirements = "include",
+                        },
+                        Configurations = new List<string> { "storer" },
+                        RefreshUrl = "refresh_url",
+                        ReturnUrl = "return_url",
+                    },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.AccountLinks;
+            Stripe.V2.Core.AccountLink accountLink = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/account_links");
+        }
+
+        [Fact]
+        public void TestV2CoreClaimableSandboxPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/claimable_sandboxes",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.claimable_sandbox\",\"api_keys\":{\"mcp\":null,\"publishable\":\"publishable\",\"secret\":\"secret\"},\"claim_url\":\"claim_url\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"prefill\":{\"country\":\"af\",\"email\":\"email\",\"name\":\"name\"}}");
+            var options = new Stripe.V2.Core.ClaimableSandboxCreateOptions
+            {
+                EnableMcpAccess = true,
+                Prefill = new Stripe.V2.Core.ClaimableSandboxCreatePrefillOptions
+                {
+                    Country = "af",
+                    Email = "email",
+                    Name = "name",
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ClaimableSandboxes;
+            Stripe.V2.Core.ClaimableSandbox claimableSandbox = service.Create(
+                options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/claimable_sandboxes");
+        }
+
+        [Fact]
+        public void TestV2CoreEventGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/events",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"changes\":{\"key\":{}},\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}",
+                "object_id=object_id");
+            var options = new Stripe.V2.Core.EventListOptions
+            {
+                ObjectId = "object_id",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Events;
+            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List(
+                options);
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/events",
+                "object_id=object_id");
+        }
+
+        [Fact]
+        public void TestV2CoreEventGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/events/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"changes\":{\"key\":{}},\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Events;
+            Stripe.V2.Event result = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/core/events/id_123");
+        }
+
+        [Fact]
         public void TestV2CoreEventDestinationGet()
         {
             this.StubRequest(
@@ -8162,43 +8223,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/core/event_destinations/id_123/ping");
-        }
-
-        [Fact]
-        public void TestV2CoreEventGet()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/core/events",
-                (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"changes\":{\"key\":{}},\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}",
-                "object_id=object_id");
-            var options = new Stripe.V2.Core.EventListOptions
-            {
-                ObjectId = "object_id",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Events;
-            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List(
-                options);
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/core/events",
-                "object_id=object_id");
-        }
-
-        [Fact]
-        public void TestV2CoreEventGet2()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/core/events/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"changes\":{\"key\":{}},\"context\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":null,\"type\":\"type\"}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Events;
-            Stripe.V2.Event result = service.Get("id_123");
-            this.AssertRequest(HttpMethod.Get, "/v2/core/events/id_123");
         }
 
         [Fact]
@@ -8593,55 +8617,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2MoneyManagementOutboundPaymentQuotePost()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payment_quotes",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment_quote\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"delivery_options\":null,\"estimated_fees\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"cross_border_payout_fee\"}],\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"fx_quote\":{\"lock_duration\":\"five_minutes\",\"lock_expires_at\":\"1970-01-18T15:15:29.586Z\",\"lock_status\":\"active\",\"rates\":{\"key\":{\"exchange_rate\":\"exchange_rate\"}},\"to_currency\":\"usd\"},\"livemode\":true,\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"}}");
-            var options = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateOptions
-            {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
-                From = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateFromOptions
-                {
-                    Currency = "usd",
-                    FinancialAccount = "financial_account",
-                },
-                To = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToOptions
-                {
-                    Currency = "usd",
-                    PayoutMethod = "payout_method",
-                    Recipient = "recipient",
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPaymentQuotes;
-            Stripe.V2.MoneyManagement.OutboundPaymentQuote outboundPaymentQuote = service
-                .Create(options);
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payment_quotes");
-        }
-
-        [Fact]
-        public void TestV2MoneyManagementOutboundPaymentQuoteGet()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/money_management/outbound_payment_quotes/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment_quote\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"delivery_options\":null,\"estimated_fees\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"cross_border_payout_fee\"}],\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"fx_quote\":{\"lock_duration\":\"five_minutes\",\"lock_expires_at\":\"1970-01-18T15:15:29.586Z\",\"lock_status\":\"active\",\"rates\":{\"key\":{\"exchange_rate\":\"exchange_rate\"}},\"to_currency\":\"usd\"},\"livemode\":true,\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"}}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPaymentQuotes;
-            Stripe.V2.MoneyManagement.OutboundPaymentQuote outboundPaymentQuote = service
-                .Get("id_123");
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/money_management/outbound_payment_quotes/id_123");
-        }
-
-        [Fact]
         public void TestV2MoneyManagementOutboundPaymentGet()
         {
             this.StubRequest(
@@ -8722,6 +8697,55 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/money_management/outbound_payments/id_123/cancel");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementOutboundPaymentQuotePost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_payment_quotes",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment_quote\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"delivery_options\":null,\"estimated_fees\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"cross_border_payout_fee\"}],\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"fx_quote\":{\"lock_duration\":\"five_minutes\",\"lock_expires_at\":\"1970-01-18T15:15:29.586Z\",\"lock_status\":\"active\",\"rates\":{\"key\":{\"exchange_rate\":\"exchange_rate\"}},\"to_currency\":\"usd\"},\"livemode\":true,\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"}}");
+            var options = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateOptions
+            {
+                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                From = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateFromOptions
+                {
+                    Currency = "usd",
+                    FinancialAccount = "financial_account",
+                },
+                To = new Stripe.V2.MoneyManagement.OutboundPaymentQuoteCreateToOptions
+                {
+                    Currency = "usd",
+                    PayoutMethod = "payout_method",
+                    Recipient = "recipient",
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.OutboundPaymentQuotes;
+            Stripe.V2.MoneyManagement.OutboundPaymentQuote outboundPaymentQuote = service
+                .Create(options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_payment_quotes");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementOutboundPaymentQuoteGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/money_management/outbound_payment_quotes/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.outbound_payment_quote\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"created\":\"1970-01-12T21:42:34.472Z\",\"delivery_options\":null,\"estimated_fees\":[{\"amount\":{\"currency\":\"USD\",\"value\":96},\"type\":\"cross_border_payout_fee\"}],\"from\":{\"debited\":{\"currency\":\"USD\",\"value\":55},\"financial_account\":\"financial_account\"},\"fx_quote\":{\"lock_duration\":\"five_minutes\",\"lock_expires_at\":\"1970-01-18T15:15:29.586Z\",\"lock_status\":\"active\",\"rates\":{\"key\":{\"exchange_rate\":\"exchange_rate\"}},\"to_currency\":\"usd\"},\"livemode\":true,\"to\":{\"credited\":{\"currency\":\"USD\",\"value\":68},\"payout_method\":\"payout_method\",\"recipient\":\"recipient\"}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.OutboundPaymentQuotes;
+            Stripe.V2.MoneyManagement.OutboundPaymentQuote outboundPaymentQuote = service
+                .Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/money_management/outbound_payment_quotes/id_123");
         }
 
         [Fact]
@@ -9050,47 +9074,13 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2MoneyManagementTransactionEntryGet()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/money_management/transaction_entries",
-                (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"livemode\":true,\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"return\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"outbound_payment\",\"adjustment\":null,\"fee_transaction\":null,\"inbound_transfer\":null,\"outbound_payment\":null,\"outbound_transfer\":null,\"received_credit\":null,\"received_debit\":null}}}],\"next_page_url\":null,\"previous_page_url\":null}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.TransactionEntries;
-            Stripe.V2.StripeList<Stripe.V2.MoneyManagement.TransactionEntry> transactionEntries = service
-                .List();
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/money_management/transaction_entries");
-        }
-
-        [Fact]
-        public void TestV2MoneyManagementTransactionEntryGet2()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/money_management/transaction_entries/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"livemode\":true,\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"return\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"outbound_payment\",\"adjustment\":null,\"fee_transaction\":null,\"inbound_transfer\":null,\"outbound_payment\":null,\"outbound_transfer\":null,\"received_credit\":null,\"received_debit\":null}}}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.TransactionEntries;
-            Stripe.V2.MoneyManagement.TransactionEntry transactionEntry = service
-                .Get("id_123");
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/money_management/transaction_entries/id_123");
-        }
-
-        [Fact]
         public void TestV2MoneyManagementTransactionGet()
         {
             this.StubRequest(
                 HttpMethod.Get,
                 "/v2/money_management/transactions",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"return\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"outbound_payment\",\"adjustment\":null,\"fee_transaction\":null,\"inbound_transfer\":null,\"outbound_payment\":null,\"outbound_transfer\":null,\"received_credit\":null,\"received_debit\":null},\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{\"posted_at\":null,\"void_at\":null}}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"received_debit\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"fee_transaction\",\"adjustment\":null,\"currency_conversion\":null,\"fee_transaction\":null,\"inbound_transfer\":null,\"outbound_payment\":null,\"outbound_transfer\":null,\"received_credit\":null,\"received_debit\":null},\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{\"posted_at\":null,\"void_at\":null}}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.Transactions;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.Transaction> transactions = service
@@ -9107,7 +9097,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transactions/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"return\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"outbound_payment\",\"adjustment\":null,\"fee_transaction\":null,\"inbound_transfer\":null,\"outbound_payment\":null,\"outbound_transfer\":null,\"received_credit\":null,\"received_debit\":null},\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{\"posted_at\":null,\"void_at\":null}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"amount\":{\"currency\":\"USD\",\"value\":96},\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"category\":\"received_debit\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"fee_transaction\",\"adjustment\":null,\"currency_conversion\":null,\"fee_transaction\":null,\"inbound_transfer\":null,\"outbound_payment\":null,\"outbound_transfer\":null,\"received_credit\":null,\"received_debit\":null},\"livemode\":true,\"status\":\"pending\",\"status_transitions\":{\"posted_at\":null,\"void_at\":null}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.Transactions;
             Stripe.V2.MoneyManagement.Transaction transaction = service.Get(
@@ -9115,6 +9105,40 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/money_management/transactions/id_123");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementTransactionEntryGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/money_management/transaction_entries",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"livemode\":true,\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"received_debit\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"fee_transaction\",\"adjustment\":null,\"currency_conversion\":null,\"fee_transaction\":null,\"inbound_transfer\":null,\"outbound_payment\":null,\"outbound_transfer\":null,\"received_credit\":null,\"received_debit\":null}}}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.TransactionEntries;
+            Stripe.V2.StripeList<Stripe.V2.MoneyManagement.TransactionEntry> transactionEntries = service
+                .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/money_management/transaction_entries");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementTransactionEntryGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/money_management/transaction_entries/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"balance_impact\":{\"available\":{\"currency\":\"USD\",\"value\":35},\"inbound_pending\":{\"currency\":\"USD\",\"value\":11},\"outbound_pending\":{\"currency\":\"USD\",\"value\":60}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"livemode\":true,\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"received_debit\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"fee_transaction\",\"adjustment\":null,\"currency_conversion\":null,\"fee_transaction\":null,\"inbound_transfer\":null,\"outbound_payment\":null,\"outbound_transfer\":null,\"received_credit\":null,\"received_debit\":null}}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.TransactionEntries;
+            Stripe.V2.MoneyManagement.TransactionEntry transactionEntry = service
+                .Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/money_management/transaction_entries/id_123");
         }
 
         [Fact]
@@ -9197,6 +9221,20 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2ReportingReportGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/reporting/reports/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.reporting.report\",\"livemode\":true,\"name\":\"name\",\"parameters\":{\"key\":{\"array_details\":null,\"description\":\"description\",\"enum_details\":null,\"required\":true,\"timestamp_details\":null,\"type\":\"string\"}}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Reporting.Reports;
+            Stripe.V2.Reporting.Report report = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/reporting/reports/id_123");
+        }
+
+        [Fact]
         public void TestV2ReportingReportRunPost()
         {
             this.StubRequest(
@@ -9245,20 +9283,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/reporting/report_runs/id_123");
-        }
-
-        [Fact]
-        public void TestV2ReportingReportGet()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/reporting/reports/id_123",
-                (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.reporting.report\",\"livemode\":true,\"name\":\"name\",\"parameters\":{\"key\":{\"array_details\":null,\"description\":\"description\",\"enum_details\":null,\"required\":true,\"timestamp_details\":null,\"type\":\"string\"}}}");
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Reporting.Reports;
-            Stripe.V2.Reporting.Report report = service.Get("id_123");
-            this.AssertRequest(HttpMethod.Get, "/v2/reporting/reports/id_123");
         }
 
         [Fact]
@@ -9397,58 +9421,24 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestTemporarySessionExpiredError()
+        public void TestAlreadyCanceledError()
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/billing/meter_event_stream",
+                "/v2/money_management/outbound_payments/id_123/cancel",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"temporary_session_expired\",\"code\":\"billing_meter_event_session_expired\"}}");
-            var exception = Assert.Throws<Stripe.V2.TemporarySessionExpiredException>(
-            () =>
-            {
-            var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
-            {
-                Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
-                {
-                    new Stripe.V2.Billing.MeterEventStreamCreateEventOptions
-                    {
-                        EventName = "event_name",
-                        Payload = new Dictionary<string, string>
-                        {
-                            { "key", "payload" },
-                        },
-                    },
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.MeterEventStream;
-            service.Create(options);
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/billing/meter_event_stream");
-        }
-
-        [Fact]
-        public void TestNonZeroBalanceError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/money_management/financial_accounts/id_123/close",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"non_zero_balance\",\"code\":\"closing_financial_account_with_non_zero_balances\"}}");
-            var exception = Assert.Throws<Stripe.V2.NonZeroBalanceException>(
+                "{\"error\":{\"type\":\"already_canceled\",\"code\":\"outbound_payment_already_canceled\"}}");
+            var exception = Assert.Throws<Stripe.V2.AlreadyCanceledException>(
             () =>
             {
             var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.FinancialAccounts;
-            Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
-                .Close("id_123");
+            var service = client.V2.MoneyManagement.OutboundPayments;
+            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
+                .Cancel("id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
-                "/v2/money_management/financial_accounts/id_123/close");
+                "/v2/money_management/outbound_payments/id_123/cancel");
         }
 
         [Fact]
@@ -9474,6 +9464,52 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/money_management/financial_accounts");
+        }
+
+        [Fact]
+        public void TestBlockedByStripeError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"blocked_by_stripe\",\"code\":\"inbound_transfer_not_allowed\"}}");
+            var exception = Assert.Throws<Stripe.V2.BlockedByStripeException>(
+            () =>
+            {
+            var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
+            {
+                AccountNumber = "account_number",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Vault.UsBankAccounts;
+            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
+                options);
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts");
+        }
+
+        [Fact]
+        public void TestControlledByDashboardError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts/id_123/archive",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"controlled_by_dashboard\",\"code\":\"bank_account_cannot_be_archived\"}}");
+            var exception = Assert.Throws<Stripe.V2.ControlledByDashboardException>(
+            () =>
+            {
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Vault.UsBankAccounts;
+            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Archive(
+                "id_123");
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts/id_123/archive");
         }
 
         [Fact]
@@ -9528,73 +9564,6 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestBlockedByStripeError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"blocked_by_stripe\",\"code\":\"inbound_transfer_not_allowed\"}}");
-            var exception = Assert.Throws<Stripe.V2.BlockedByStripeException>(
-            () =>
-            {
-            var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
-            {
-                AccountNumber = "account_number",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.UsBankAccounts;
-            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
-                options);
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts");
-        }
-
-        [Fact]
-        public void TestAlreadyCanceledError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments/id_123/cancel",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"already_canceled\",\"code\":\"outbound_payment_already_canceled\"}}");
-            var exception = Assert.Throws<Stripe.V2.AlreadyCanceledException>(
-            () =>
-            {
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Cancel("id_123");
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments/id_123/cancel");
-        }
-
-        [Fact]
-        public void TestNotCancelableError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments/id_123/cancel",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"not_cancelable\",\"code\":\"outbound_payment_not_cancelable\"}}");
-            var exception = Assert.Throws<Stripe.V2.NotCancelableException>(
-            () =>
-            {
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Cancel("id_123");
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments/id_123/cancel");
-        }
-
-        [Fact]
         public void TestInsufficientFundsError()
         {
             this.StubRequest(
@@ -9629,14 +9598,14 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestQuotaExceededError()
+        public void TestInvalidPaymentMethodError()
         {
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"quota_exceeded\",\"code\":\"recipient_amount_limit_exceeded\"}}");
-            var exception = Assert.Throws<Stripe.V2.QuotaExceededException>(
+                "{\"error\":{\"type\":\"invalid_payment_method\",\"code\":\"invalid_us_bank_account\"}}");
+            var exception = Assert.Throws<Stripe.V2.InvalidPaymentMethodException>(
             () =>
             {
             var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
@@ -9651,40 +9620,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts");
-        }
-
-        [Fact]
-        public void TestRecipientNotNotifiableError()
-        {
-            this.StubRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"recipient_not_notifiable\",\"code\":\"recipient_email_does_not_exist\"}}");
-            var exception = Assert.Throws<Stripe.V2.RecipientNotNotifiableException>(
-            () =>
-            {
-            var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
-            {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
-                From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
-                {
-                    Currency = "usd",
-                    FinancialAccount = "financial_account",
-                },
-                To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
-                {
-                    Recipient = "recipient",
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Create(options);
-            });
-            this.AssertRequest(
-                HttpMethod.Post,
-                "/v2/money_management/outbound_payments");
         }
 
         [Fact]
@@ -9710,35 +9645,56 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestControlledByDashboardError()
+        public void TestNonZeroBalanceError()
         {
             this.StubRequest(
                 HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts/id_123/archive",
+                "/v2/money_management/financial_accounts/id_123/close",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"controlled_by_dashboard\",\"code\":\"bank_account_cannot_be_archived\"}}");
-            var exception = Assert.Throws<Stripe.V2.ControlledByDashboardException>(
+                "{\"error\":{\"type\":\"non_zero_balance\",\"code\":\"closing_financial_account_with_non_zero_balances\"}}");
+            var exception = Assert.Throws<Stripe.V2.NonZeroBalanceException>(
             () =>
             {
             var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.UsBankAccounts;
-            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Archive(
-                "id_123");
+            var service = client.V2.MoneyManagement.FinancialAccounts;
+            Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
+                .Close("id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
-                "/v2/core/vault/us_bank_accounts/id_123/archive");
+                "/v2/money_management/financial_accounts/id_123/close");
         }
 
         [Fact]
-        public void TestInvalidPaymentMethodError()
+        public void TestNotCancelableError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_payments/id_123/cancel",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"not_cancelable\",\"code\":\"outbound_payment_not_cancelable\"}}");
+            var exception = Assert.Throws<Stripe.V2.NotCancelableException>(
+            () =>
+            {
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.OutboundPayments;
+            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
+                .Cancel("id_123");
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_payments/id_123/cancel");
+        }
+
+        [Fact]
+        public void TestQuotaExceededError()
         {
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"invalid_payment_method\",\"code\":\"invalid_us_bank_account\"}}");
-            var exception = Assert.Throws<Stripe.V2.InvalidPaymentMethodException>(
+                "{\"error\":{\"type\":\"quota_exceeded\",\"code\":\"recipient_amount_limit_exceeded\"}}");
+            var exception = Assert.Throws<Stripe.V2.QuotaExceededException>(
             () =>
             {
             var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
@@ -9782,6 +9738,74 @@ namespace StripeTests
             Stripe.V2.Reporting.ReportRun reportRun = service.Create(options);
             });
             this.AssertRequest(HttpMethod.Post, "/v2/reporting/report_runs");
+        }
+
+        [Fact]
+        public void TestRecipientNotNotifiableError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_payments",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"recipient_not_notifiable\",\"code\":\"recipient_email_does_not_exist\"}}");
+            var exception = Assert.Throws<Stripe.V2.RecipientNotNotifiableException>(
+            () =>
+            {
+            var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
+            {
+                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
+                {
+                    Currency = "usd",
+                    FinancialAccount = "financial_account",
+                },
+                To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
+                {
+                    Recipient = "recipient",
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.OutboundPayments;
+            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
+                .Create(options);
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_payments");
+        }
+
+        [Fact]
+        public void TestTemporarySessionExpiredError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_stream",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"temporary_session_expired\",\"code\":\"billing_meter_event_session_expired\"}}");
+            var exception = Assert.Throws<Stripe.V2.TemporarySessionExpiredException>(
+            () =>
+            {
+            var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
+            {
+                Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
+                {
+                    new Stripe.V2.Billing.MeterEventStreamCreateEventOptions
+                    {
+                        EventName = "event_name",
+                        Payload = new Dictionary<string, string>
+                        {
+                            { "key", "payload" },
+                        },
+                    },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Billing.MeterEventStream;
+            service.Create(options);
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_stream");
         }
     }
 }

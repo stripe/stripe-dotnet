@@ -19,9 +19,9 @@ namespace Stripe.V2.Billing
         public string BillingCadence { get; set; }
 
         /// <summary>
-        /// Optionally filter by the payer associated with Cadences which the RateCardSubscriptions
-        /// are subscribed to. Mutually exclusive with <c>billing_cadence</c>, <c>rate_card</c>, and
-        /// <c>rate_card_version</c>.
+        /// Optionally filter by the payer associated with Billing Cadences which the Rate Card
+        /// Subscriptions are subscribed to. Mutually exclusive with <c>billing_cadence</c>,
+        /// <c>rate_card</c>, and <c>rate_card_version</c>.
         /// </summary>
         [JsonProperty("payer")]
 #if NET6_0_OR_GREATER

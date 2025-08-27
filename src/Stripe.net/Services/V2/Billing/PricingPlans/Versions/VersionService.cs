@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Retrieve a specific version of a PricingPlan.
+        /// Retrieve a specific Pricing Plan Version of a Pricing Plan.
         /// </summary>
         public virtual V2.Billing.PricingPlanVersion Get(string parentId, string id, VersionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Retrieve a specific version of a PricingPlan.
+        /// Retrieve a specific Pricing Plan Version of a Pricing Plan.
         /// </summary>
         public virtual Task<V2.Billing.PricingPlanVersion> GetAsync(string parentId, string id, VersionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// List all versions of a PricingPlan.
+        /// List all Pricing Plan Versions of a Pricing Plan.
         /// </summary>
         public virtual V2.StripeList<V2.Billing.PricingPlanVersion> List(string id, VersionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// List all versions of a PricingPlan.
+        /// List all Pricing Plan Versions of a Pricing Plan.
         /// </summary>
         public virtual Task<V2.StripeList<V2.Billing.PricingPlanVersion>> ListAsync(string id, VersionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// List all versions of a PricingPlan.
+        /// List all Pricing Plan Versions of a Pricing Plan.
         /// </summary>
         public virtual IEnumerable<V2.Billing.PricingPlanVersion> ListAutoPaging(string id, VersionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// List all versions of a PricingPlan.
+        /// List all Pricing Plan Versions of a Pricing Plan.
         /// </summary>
         public virtual IAsyncEnumerable<V2.Billing.PricingPlanVersion> ListAutoPagingAsync(string id, VersionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

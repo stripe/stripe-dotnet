@@ -27,5 +27,15 @@ namespace Stripe.V2.Billing
         [STJS.JsonPropertyName("minute")]
 #endif
         public long Minute { get; set; }
+
+        /// <summary>
+        /// The second at which the billing cycle ends. Must be an integer between 0 and 59,
+        /// inclusive.
+        /// </summary>
+        [JsonProperty("second")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("second")]
+#endif
+        public long? Second { get; set; }
     }
 }

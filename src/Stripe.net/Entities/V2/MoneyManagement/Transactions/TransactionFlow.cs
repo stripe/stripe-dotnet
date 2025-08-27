@@ -11,9 +11,9 @@ namespace Stripe.V2.MoneyManagement
         /// <summary>
         /// Open Enum. Type of the flow that created the Transaction. The field matching this value
         /// will contain the ID of the flow.
-        /// One of: <c>adjustment</c>, <c>fee_transaction</c>, <c>inbound_transfer</c>,
-        /// <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>received_credit</c>, or
-        /// <c>received_debit</c>.
+        /// One of: <c>adjustment</c>, <c>currency_conversion</c>, <c>fee_transaction</c>,
+        /// <c>inbound_transfer</c>, <c>outbound_payment</c>, <c>outbound_transfer</c>,
+        /// <c>received_credit</c>, or <c>received_debit</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
@@ -29,6 +29,16 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("adjustment")]
 #endif
         public string Adjustment { get; set; }
+
+        /// <summary>
+        /// In the future, this will be the ID of the currency conversion that created this
+        /// Transaction. For now, this field is always null.
+        /// </summary>
+        [JsonProperty("currency_conversion")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency_conversion")]
+#endif
+        public string CurrencyConversion { get; set; }
 
         /// <summary>
         /// If applicable, the ID of the FeeTransaction that created this Transaction.

@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionOptions : INestedOptions
     {
         /// <summary>
-        /// Type of the BillingIntentAction.
+        /// Type of the Billing Intent action.
         /// One of: <c>apply</c>, <c>deactivate</c>, <c>modify</c>, <c>remove</c>, or
         /// <c>subscribe</c>.
         /// </summary>

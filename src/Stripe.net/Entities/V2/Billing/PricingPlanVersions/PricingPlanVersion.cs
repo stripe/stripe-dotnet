@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class PricingPlanVersion : StripeEntity<PricingPlanVersion>, IHasId, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the PricingPlanVersion.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -38,13 +38,13 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The timestamp when this version became inactive.
+        /// The timestamp when this version became inactive. Null if it's the latest version.
         /// </summary>
         [JsonProperty("end_date")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_date")]
 #endif
-        public DateTime EndDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

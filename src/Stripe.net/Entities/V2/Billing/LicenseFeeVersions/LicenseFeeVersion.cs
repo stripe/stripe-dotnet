@@ -11,7 +11,7 @@ namespace Stripe.V2.Billing
     public class LicenseFeeVersion : StripeEntity<LicenseFeeVersion>, IHasId, IHasObject
     {
         /// <summary>
-        /// The ID of the LicenseFeeVersion.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -39,7 +39,7 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The ID of the parent LicenseFee.
+        /// The ID of the parent License Fee.
         /// </summary>
         [JsonProperty("license_fee_id")]
 #if NET6_0_OR_GREATER

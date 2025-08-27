@@ -26,7 +26,7 @@ namespace Stripe.V2.Billing
             this.Requestor);
 
         /// <summary>
-        /// Create a LicenseFee object.
+        /// Create a License Fee object.
         /// </summary>
         public virtual LicenseFee Create(LicenseFeeCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -34,7 +34,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a LicenseFee object.
+        /// Create a License Fee object.
         /// </summary>
         public virtual Task<LicenseFee> CreateAsync(LicenseFeeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -42,7 +42,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a LicenseFee object.
+        /// Retrieve a License Fee object.
         /// </summary>
         public virtual LicenseFee Get(string id, LicenseFeeGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -50,7 +50,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a LicenseFee object.
+        /// Retrieve a License Fee object.
         /// </summary>
         public virtual Task<LicenseFee> GetAsync(string id, LicenseFeeGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -58,7 +58,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all LicenseFee objects.
+        /// List all License Fee objects.
         /// </summary>
         public virtual V2.StripeList<LicenseFee> List(LicenseFeeListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -66,7 +66,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all LicenseFee objects.
+        /// List all License Fee objects.
         /// </summary>
         public virtual Task<V2.StripeList<LicenseFee>> ListAsync(LicenseFeeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -74,7 +74,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all LicenseFee objects.
+        /// List all License Fee objects.
         /// </summary>
         public virtual IEnumerable<LicenseFee> ListAutoPaging(LicenseFeeListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -82,7 +82,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all LicenseFee objects.
+        /// List all License Fee objects.
         /// </summary>
         public virtual IAsyncEnumerable<LicenseFee> ListAutoPagingAsync(LicenseFeeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -90,7 +90,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a LicenseFee object.
+        /// Update a License Fee object.
         /// </summary>
         public virtual LicenseFee Update(string id, LicenseFeeUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -98,7 +98,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a LicenseFee object.
+        /// Update a License Fee object.
         /// </summary>
         public virtual Task<LicenseFee> UpdateAsync(string id, LicenseFeeUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

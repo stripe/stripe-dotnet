@@ -11,7 +11,7 @@ namespace Stripe.V2.Billing
     public class LicenseFee : StripeEntity<LicenseFee>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// The ID of the LicenseFee.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// Whether this LicenseFee is active. Inactive LicenseFees cannot be used in new
+        /// Whether this License Fee is active. Inactive License Fees cannot be used in new
         /// activations or be modified.
         /// </summary>
         [JsonProperty("active")]
@@ -49,7 +49,7 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The currency of this LicenseFee.
+        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER
@@ -58,7 +58,7 @@ namespace Stripe.V2.Billing
         public string Currency { get; set; }
 
         /// <summary>
-        /// A customer-facing name for the LicenseFee. This name is used in Stripe-hosted products
+        /// A customer-facing name for the license fee. This name is used in Stripe-hosted products
         /// like the Customer Portal and Checkout. It does not show up on Invoices. Maximum length
         /// of 250 characters.
         /// </summary>
@@ -69,7 +69,7 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// The ID of the LicenseFee's most recently created version.
+        /// The ID of the license fee's most recently created version.
         /// </summary>
         [JsonProperty("latest_version")]
 #if NET6_0_OR_GREATER
@@ -78,7 +78,7 @@ namespace Stripe.V2.Billing
         public string LatestVersion { get; set; }
 
         /// <summary>
-        /// The LicensedItem that this license fee binds to.
+        /// The Licensed Item that this License Fee binds to.
         /// </summary>
         [JsonProperty("licensed_item")]
 #if NET6_0_OR_GREATER
@@ -87,8 +87,8 @@ namespace Stripe.V2.Billing
         public LicensedItem LicensedItem { get; set; }
 
         /// <summary>
-        /// The ID of the version that will be used by all Subscriptions when no specific version is
-        /// specified.
+        /// The ID of the License Fee Version that will be used by all subscriptions when no
+        /// specific version is specified.
         /// </summary>
         [JsonProperty("live_version")]
 #if NET6_0_OR_GREATER
@@ -107,8 +107,8 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular LicenseFee. Maximum length of 200
-        /// characters.
+        /// An internal key you can use to search for a particular License Fee. Maximum length of
+        /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
 #if NET6_0_OR_GREATER
@@ -117,8 +117,9 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER

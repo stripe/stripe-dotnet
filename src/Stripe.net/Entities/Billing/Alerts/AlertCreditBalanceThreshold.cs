@@ -24,14 +24,5 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("lte")]
 #endif
         public AlertCreditBalanceThresholdLte Lte { get; set; }
-
-        /// <summary>
-        /// Defines how the alert will behave.
-        /// </summary>
-        [JsonProperty("recurrence")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("recurrence")]
-#endif
-        public string Recurrence { get; set; }
     }
 }

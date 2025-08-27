@@ -10,6 +10,8 @@ namespace Stripe.V2.Billing
 
     public class IntentService : Service
     {
+        private V2.Billing.Intents.ActionService actions;
+
         internal IntentService(ApiRequestor requestor)
             : base(requestor)
         {
@@ -20,8 +22,11 @@ namespace Stripe.V2.Billing
         {
         }
 
+        public virtual V2.Billing.Intents.ActionService Actions => this.actions ??= new V2.Billing.Intents.ActionService(
+            this.Requestor);
+
         /// <summary>
-        /// Cancel a BillingIntent.
+        /// Cancel a Billing Intent.
         /// </summary>
         public virtual Intent Cancel(string id, IntentCancelOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +34,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Cancel a BillingIntent.
+        /// Cancel a Billing Intent.
         /// </summary>
         public virtual Task<Intent> CancelAsync(string id, IntentCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +42,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Commit a BillingIntent.
+        /// Commit a Billing Intent.
         /// </summary>
         public virtual Intent Commit(string id, IntentCommitOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +50,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Commit a BillingIntent.
+        /// Commit a Billing Intent.
         /// </summary>
         public virtual Task<Intent> CommitAsync(string id, IntentCommitOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +58,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a BillingIntent.
+        /// Create a Billing Intent.
         /// </summary>
         public virtual Intent Create(IntentCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -61,7 +66,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a BillingIntent.
+        /// Create a Billing Intent.
         /// </summary>
         public virtual Task<Intent> CreateAsync(IntentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +74,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a BillingIntent.
+        /// Retrieve a Billing Intent.
         /// </summary>
         public virtual Intent Get(string id, IntentGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +82,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a BillingIntent.
+        /// Retrieve a Billing Intent.
         /// </summary>
         public virtual Task<Intent> GetAsync(string id, IntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +90,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List BillingIntents.
+        /// List Billing Intents.
         /// </summary>
         public virtual V2.StripeList<Intent> List(IntentListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -93,7 +98,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List BillingIntents.
+        /// List Billing Intents.
         /// </summary>
         public virtual Task<V2.StripeList<Intent>> ListAsync(IntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -101,7 +106,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List BillingIntents.
+        /// List Billing Intents.
         /// </summary>
         public virtual IEnumerable<Intent> ListAutoPaging(IntentListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -109,7 +114,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List BillingIntents.
+        /// List Billing Intents.
         /// </summary>
         public virtual IAsyncEnumerable<Intent> ListAutoPagingAsync(IntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -117,7 +122,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Release a BillingIntent.
+        /// Release a Billing Intent.
         /// </summary>
         public virtual Intent ReleaseReservation(string id, IntentReleaseReservationOptions options = null, RequestOptions requestOptions = null)
         {
@@ -125,7 +130,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Release a BillingIntent.
+        /// Release a Billing Intent.
         /// </summary>
         public virtual Task<Intent> ReleaseReservationAsync(string id, IntentReleaseReservationOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -133,7 +138,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Reserve a BillingIntent.
+        /// Reserve a Billing Intent.
         /// </summary>
         public virtual Intent Reserve(string id, IntentReserveOptions options = null, RequestOptions requestOptions = null)
         {
@@ -141,7 +146,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Reserve a BillingIntent.
+        /// Reserve a Billing Intent.
         /// </summary>
         public virtual Task<Intent> ReserveAsync(string id, IntentReserveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

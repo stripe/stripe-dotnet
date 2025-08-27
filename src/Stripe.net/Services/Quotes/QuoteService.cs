@@ -15,11 +15,11 @@ namespace Stripe
         IRetrievable<Quote, QuoteGetOptions>,
         IUpdatable<Quote, QuoteUpdateOptions>
     {
-        private QuotePreviewInvoiceService previewInvoices;
-        private QuotePreviewSubscriptionScheduleService previewSubscriptionSchedules;
+        private QuoteComputedUpfrontLineItemsService computedUpfrontLineItems;
         private QuoteLineService lines;
         private QuoteLineItemService lineItems;
-        private QuoteComputedUpfrontLineItemsService computedUpfrontLineItems;
+        private QuotePreviewInvoiceService previewInvoices;
+        private QuotePreviewSubscriptionScheduleService previewSubscriptionSchedules;
 
         public QuoteService()
         {
@@ -35,10 +35,7 @@ namespace Stripe
         {
         }
 
-        public virtual QuotePreviewInvoiceService PreviewInvoices => this.previewInvoices ??= new QuotePreviewInvoiceService(
-            this.Requestor);
-
-        public virtual QuotePreviewSubscriptionScheduleService PreviewSubscriptionSchedules => this.previewSubscriptionSchedules ??= new QuotePreviewSubscriptionScheduleService(
+        public virtual QuoteComputedUpfrontLineItemsService ComputedUpfrontLineItems => this.computedUpfrontLineItems ??= new QuoteComputedUpfrontLineItemsService(
             this.Requestor);
 
         public virtual QuoteLineService Lines => this.lines ??= new QuoteLineService(
@@ -47,7 +44,10 @@ namespace Stripe
         public virtual QuoteLineItemService LineItems => this.lineItems ??= new QuoteLineItemService(
             this.Requestor);
 
-        public virtual QuoteComputedUpfrontLineItemsService ComputedUpfrontLineItems => this.computedUpfrontLineItems ??= new QuoteComputedUpfrontLineItemsService(
+        public virtual QuotePreviewInvoiceService PreviewInvoices => this.previewInvoices ??= new QuotePreviewInvoiceService(
+            this.Requestor);
+
+        public virtual QuotePreviewSubscriptionScheduleService PreviewSubscriptionSchedules => this.previewSubscriptionSchedules ??= new QuotePreviewSubscriptionScheduleService(
             this.Requestor);
 
         /// <summary>

@@ -51,6 +51,15 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Email delivery settings.
+        /// </summary>
+        [JsonProperty("email_delivery")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("email_delivery")]
+#endif
+        public CollectionSettingVersionEmailDelivery EmailDelivery { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

@@ -9,8 +9,8 @@ namespace Stripe.V2.MoneyManagement
 #endif
 
     /// <summary>
-    /// The Financial Account is the container that allows for the configuration of money
-    /// movement.
+    /// A FinancialAccount represents a balance and can be used as the source or destination for
+    /// the money management (<c>/v2/money_management</c>) APIs.
     /// </summary>
     public class FinancialAccount : StripeEntity<FinancialAccount>, IHasId, IHasMetadata, IHasObject
     {

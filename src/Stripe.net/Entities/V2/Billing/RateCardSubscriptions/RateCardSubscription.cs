@@ -11,7 +11,7 @@ namespace Stripe.V2.Billing
     public class RateCardSubscription : StripeEntity<RateCardSubscription>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// The ID of the RateCardSubscription.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// The ID of the billing Cadence.
+        /// The ID of the Billing Cadence.
         /// </summary>
         [JsonProperty("billing_cadence")]
 #if NET6_0_OR_GREATER
@@ -39,7 +39,7 @@ namespace Stripe.V2.Billing
         public string BillingCadence { get; set; }
 
         /// <summary>
-        /// The payment status of a RateCardSubscription.
+        /// The payment status of a Rate Card Subscription.
         /// One of: <c>awaiting_customer_action</c>, <c>current</c>, <c>past_due</c>, <c>paused</c>,
         /// or <c>unpaid</c>.
         /// </summary>
@@ -50,7 +50,7 @@ namespace Stripe.V2.Billing
         public string CollectionStatus { get; set; }
 
         /// <summary>
-        /// The collection status transitions of the RateCardSubscription.
+        /// The collection status transitions of the Rate Card Subscription.
         /// </summary>
         [JsonProperty("collection_status_transitions")]
 #if NET6_0_OR_GREATER
@@ -78,8 +78,9 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER
@@ -88,7 +89,7 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The ID of the RateCard.
+        /// The ID of the Rate Card.
         /// </summary>
         [JsonProperty("rate_card")]
 #if NET6_0_OR_GREATER
@@ -97,7 +98,7 @@ namespace Stripe.V2.Billing
         public string RateCard { get; set; }
 
         /// <summary>
-        /// The ID of the RateCardVersion.
+        /// The ID of the Rate Card Version.
         /// </summary>
         [JsonProperty("rate_card_version")]
 #if NET6_0_OR_GREATER
@@ -106,7 +107,7 @@ namespace Stripe.V2.Billing
         public string RateCardVersion { get; set; }
 
         /// <summary>
-        /// The servicing status of a RateCardSubscription.
+        /// The servicing status of a Rate Card Subscription.
         /// One of: <c>active</c>, <c>canceled</c>, <c>paused</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("servicing_status")]
@@ -116,7 +117,7 @@ namespace Stripe.V2.Billing
         public string ServicingStatus { get; set; }
 
         /// <summary>
-        /// The servicing status transitions of the RateCardSubscription.
+        /// The servicing status transitions of the Rate Card Subscription.
         /// </summary>
         [JsonProperty("servicing_status_transitions")]
 #if NET6_0_OR_GREATER

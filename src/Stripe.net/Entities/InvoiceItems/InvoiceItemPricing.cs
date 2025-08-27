@@ -8,14 +8,28 @@ namespace Stripe
 
     public class InvoiceItemPricing : StripeEntity<InvoiceItemPricing>
     {
+        [JsonProperty("license_fee_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("license_fee_details")]
+#endif
+        public InvoiceItemPricingLicenseFeeDetails LicenseFeeDetails { get; set; }
+
         [JsonProperty("price_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_details")]
 #endif
         public InvoiceItemPricingPriceDetails PriceDetails { get; set; }
 
+        [JsonProperty("rate_card_rate_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("rate_card_rate_details")]
+#endif
+        public InvoiceItemPricingRateCardRateDetails RateCardRateDetails { get; set; }
+
         /// <summary>
         /// The type of the pricing details.
+        /// One of: <c>license_fee_details</c>, <c>price_details</c>, or
+        /// <c>rate_card_rate_details</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

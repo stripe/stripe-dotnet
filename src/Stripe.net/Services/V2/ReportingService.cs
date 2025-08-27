@@ -7,8 +7,8 @@ namespace Stripe.V2
 
     public class ReportingService : Service
     {
-        private V2.Reporting.ReportRunService reportRuns;
         private V2.Reporting.ReportService reports;
+        private V2.Reporting.ReportRunService reportRuns;
 
         internal ReportingService(ApiRequestor requestor)
             : base(requestor)
@@ -20,10 +20,10 @@ namespace Stripe.V2
         {
         }
 
-        public virtual V2.Reporting.ReportRunService ReportRuns => this.reportRuns ??= new V2.Reporting.ReportRunService(
+        public virtual V2.Reporting.ReportService Reports => this.reports ??= new V2.Reporting.ReportService(
             this.Requestor);
 
-        public virtual V2.Reporting.ReportService Reports => this.reports ??= new V2.Reporting.ReportService(
+        public virtual V2.Reporting.ReportRunService ReportRuns => this.reportRuns ??= new V2.Reporting.ReportRunService(
             this.Requestor);
     }
 }

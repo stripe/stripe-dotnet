@@ -19,7 +19,7 @@ namespace Stripe.V2.Billing
         public List<string> Include { get; set; }
 
         /// <summary>
-        /// If provided, only Cadences that specifically reference the payer will be returned.
+        /// If provided, only cadences that specifically reference the payer will be returned.
         /// Mutually exclusive with <c>test_clock</c>.
         /// </summary>
         [JsonProperty("payer")]
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing
         public CadenceListPayerOptions Payer { get; set; }
 
         /// <summary>
-        /// If provided, only Cadences that specifically reference the provided test clock ID (via
+        /// If provided, only cadences that specifically reference the provided test clock ID (via
         /// the customer's test clock) will be returned. Mutually exclusive with <c>payer</c>.
         /// </summary>
         [JsonProperty("test_clock")]

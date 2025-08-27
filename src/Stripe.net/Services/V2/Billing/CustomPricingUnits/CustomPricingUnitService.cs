@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a CustomPricingUnit object.
+        /// Create a Custom Pricing Unit object.
         /// </summary>
         public virtual CustomPricingUnit Create(CustomPricingUnitCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a CustomPricingUnit object.
+        /// Create a Custom Pricing Unit object.
         /// </summary>
         public virtual Task<CustomPricingUnit> CreateAsync(CustomPricingUnitCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a CustomPricingUnit object.
+        /// Retrieve a Custom Pricing Unit object.
         /// </summary>
         public virtual CustomPricingUnit Get(string id, CustomPricingUnitGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a CustomPricingUnit object.
+        /// Retrieve a Custom Pricing Unit object.
         /// </summary>
         public virtual Task<CustomPricingUnit> GetAsync(string id, CustomPricingUnitGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all CustomPricingUnit objects.
+        /// List all Custom Pricing Unit objects.
         /// </summary>
         public virtual V2.StripeList<CustomPricingUnit> List(CustomPricingUnitListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all CustomPricingUnit objects.
+        /// List all Custom Pricing Unit objects.
         /// </summary>
         public virtual Task<V2.StripeList<CustomPricingUnit>> ListAsync(CustomPricingUnitListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all CustomPricingUnit objects.
+        /// List all Custom Pricing Unit objects.
         /// </summary>
         public virtual IEnumerable<CustomPricingUnit> ListAutoPaging(CustomPricingUnitListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +77,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all CustomPricingUnit objects.
+        /// List all Custom Pricing Unit objects.
         /// </summary>
         public virtual IAsyncEnumerable<CustomPricingUnit> ListAutoPagingAsync(CustomPricingUnitListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +85,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a CustomPricingUnit object.
+        /// Update a Custom Pricing Unit object.
         /// </summary>
         public virtual CustomPricingUnit Update(string id, CustomPricingUnitUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -93,7 +93,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a CustomPricingUnit object.
+        /// Update a Custom Pricing Unit object.
         /// </summary>
         public virtual Task<CustomPricingUnit> UpdateAsync(string id, CustomPricingUnitUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

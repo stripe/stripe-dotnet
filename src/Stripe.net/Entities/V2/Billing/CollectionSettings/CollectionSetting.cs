@@ -63,6 +63,15 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Email delivery settings.
+        /// </summary>
+        [JsonProperty("email_delivery")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("email_delivery")]
+#endif
+        public CollectionSettingEmailDelivery EmailDelivery { get; set; }
+
+        /// <summary>
         /// The latest version of the current settings object. This will be Updated every time an
         /// attribute of the settings is updated.
         /// </summary>

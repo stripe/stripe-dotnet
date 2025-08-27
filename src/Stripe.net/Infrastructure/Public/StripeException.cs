@@ -47,16 +47,20 @@ namespace Stripe
             switch (type)
             {
                 // The beginning of the section generated from our OpenAPI spec
-                case "temporary_session_expired":
-                    ret = Stripe.V2.TemporarySessionExpiredException.Parse(httpStatusCode, body);
-                    break;
-
-                case "non_zero_balance":
-                    ret = Stripe.V2.NonZeroBalanceException.Parse(httpStatusCode, body);
+                case "already_canceled":
+                    ret = Stripe.V2.AlreadyCanceledException.Parse(httpStatusCode, body);
                     break;
 
                 case "already_exists":
                     ret = Stripe.V2.AlreadyExistsException.Parse(httpStatusCode, body);
+                    break;
+
+                case "blocked_by_stripe":
+                    ret = Stripe.V2.BlockedByStripeException.Parse(httpStatusCode, body);
+                    break;
+
+                case "controlled_by_dashboard":
+                    ret = Stripe.V2.ControlledByDashboardException.Parse(httpStatusCode, body);
                     break;
 
                 case "feature_not_enabled":
@@ -67,44 +71,40 @@ namespace Stripe
                     ret = Stripe.V2.FinancialAccountNotOpenException.Parse(httpStatusCode, body);
                     break;
 
-                case "blocked_by_stripe":
-                    ret = Stripe.V2.BlockedByStripeException.Parse(httpStatusCode, body);
-                    break;
-
-                case "already_canceled":
-                    ret = Stripe.V2.AlreadyCanceledException.Parse(httpStatusCode, body);
-                    break;
-
-                case "not_cancelable":
-                    ret = Stripe.V2.NotCancelableException.Parse(httpStatusCode, body);
-                    break;
-
                 case "insufficient_funds":
                     ret = Stripe.V2.InsufficientFundsException.Parse(httpStatusCode, body);
-                    break;
-
-                case "quota_exceeded":
-                    ret = Stripe.V2.QuotaExceededException.Parse(httpStatusCode, body);
-                    break;
-
-                case "recipient_not_notifiable":
-                    ret = Stripe.V2.RecipientNotNotifiableException.Parse(httpStatusCode, body);
-                    break;
-
-                case "invalid_payout_method":
-                    ret = Stripe.V2.InvalidPayoutMethodException.Parse(httpStatusCode, body);
-                    break;
-
-                case "controlled_by_dashboard":
-                    ret = Stripe.V2.ControlledByDashboardException.Parse(httpStatusCode, body);
                     break;
 
                 case "invalid_payment_method":
                     ret = Stripe.V2.InvalidPaymentMethodException.Parse(httpStatusCode, body);
                     break;
 
+                case "invalid_payout_method":
+                    ret = Stripe.V2.InvalidPayoutMethodException.Parse(httpStatusCode, body);
+                    break;
+
+                case "non_zero_balance":
+                    ret = Stripe.V2.NonZeroBalanceException.Parse(httpStatusCode, body);
+                    break;
+
+                case "not_cancelable":
+                    ret = Stripe.V2.NotCancelableException.Parse(httpStatusCode, body);
+                    break;
+
+                case "quota_exceeded":
+                    ret = Stripe.V2.QuotaExceededException.Parse(httpStatusCode, body);
+                    break;
+
                 case "rate_limit":
                     ret = Stripe.V2.RateLimitException.Parse(httpStatusCode, body);
+                    break;
+
+                case "recipient_not_notifiable":
+                    ret = Stripe.V2.RecipientNotNotifiableException.Parse(httpStatusCode, body);
+                    break;
+
+                case "temporary_session_expired":
+                    ret = Stripe.V2.TemporarySessionExpiredException.Parse(httpStatusCode, body);
                     break;
 
                 // The end of the section generated from our OpenAPI spec

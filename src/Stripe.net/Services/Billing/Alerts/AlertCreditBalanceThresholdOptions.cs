@@ -27,14 +27,5 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("lte")]
 #endif
         public AlertCreditBalanceThresholdLteOptions Lte { get; set; }
-
-        /// <summary>
-        /// Whether the alert should only fire only once, or once per billing cycle.
-        /// </summary>
-        [JsonProperty("recurrence")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("recurrence")]
-#endif
-        public string Recurrence { get; set; }
     }
 }

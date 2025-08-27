@@ -20,12 +20,22 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The minute at which the billing cycle ends. Must be an integer between 0 and 59,
-        /// inclusive. Will default to the minute the cadence was created in UTC timezone.
+        /// inclusive.
         /// </summary>
         [JsonProperty("minute")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minute")]
 #endif
         public long? Minute { get; set; }
+
+        /// <summary>
+        /// The second at which the billing cycle ends. Must be an integer between 0 and 59,
+        /// inclusive.
+        /// </summary>
+        [JsonProperty("second")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("second")]
+#endif
+        public long? Second { get; set; }
     }
 }

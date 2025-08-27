@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a PricingPlanSubscription object.
+        /// Retrieve a Pricing Plan Subscription object.
         /// </summary>
         public virtual PricingPlanSubscription Get(string id, PricingPlanSubscriptionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a PricingPlanSubscription object.
+        /// Retrieve a Pricing Plan Subscription object.
         /// </summary>
         public virtual Task<PricingPlanSubscription> GetAsync(string id, PricingPlanSubscriptionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all PricingPlanSubscription objects.
+        /// List all Pricing Plan Subscription objects.
         /// </summary>
         public virtual V2.StripeList<PricingPlanSubscription> List(PricingPlanSubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all PricingPlanSubscription objects.
+        /// List all Pricing Plan Subscription objects.
         /// </summary>
         public virtual Task<V2.StripeList<PricingPlanSubscription>> ListAsync(PricingPlanSubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all PricingPlanSubscription objects.
+        /// List all Pricing Plan Subscription objects.
         /// </summary>
         public virtual IEnumerable<PricingPlanSubscription> ListAutoPaging(PricingPlanSubscriptionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all PricingPlanSubscription objects.
+        /// List all Pricing Plan Subscription objects.
         /// </summary>
         public virtual IAsyncEnumerable<PricingPlanSubscription> ListAutoPagingAsync(PricingPlanSubscriptionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

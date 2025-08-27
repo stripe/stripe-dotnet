@@ -159,6 +159,15 @@ namespace Stripe.BillingPortal
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The name of the configuration.
+        /// </summary>
+        [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
+        public string Name { get; set; }
+
+        /// <summary>
         /// Time at which the object was last updated. Measured in seconds since the Unix epoch.
         /// </summary>
         [JsonProperty("updated")]

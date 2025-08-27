@@ -30,8 +30,19 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// An internal key you can use to search for a particular RateCard. Maximum length of 200
+        /// characters.
+        /// </summary>
+        [JsonProperty("lookup_key")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lookup_key")]
+#endif
+        public string LookupKey { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER
