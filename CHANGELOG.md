@@ -1,5 +1,85 @@
 # Changelog
 
+## 48.6.0-alpha.1 - 2025-08-27
+* [#3166](https://github.com/stripe/stripe-dotnet/pull/3166) Use the right API version 2025-08-27.preview
+* [#3162](https://github.com/stripe/stripe-dotnet/pull/3162) Update generated code for private-preview
+  
+  * Add support for `AttachCadence` method on resource `Subscription`
+  * Add support for `Currency` and `ExternalCustomerId` on `Billing.AlertTriggered`
+  * Add support for `CustomPricingUnit` on `Billing.AlertTriggered`, `Billing.CreditBalanceSummary.Balance.AvailableBalance`, `Billing.CreditBalanceSummary.Balance.LedgerBalance`, `Billing.CreditBalanceTransaction.Credit.Amount`, `Billing.CreditBalanceTransaction.Debit.Amount`, `Billing.CreditGrant.Amount`, and `BillingCreditGrantAmountOptions`
+  * Add support for `Customer` on `Billing.AlertListOptions`
+  * Change type of `Billing.Alert.AlertType`, `Billing.AlertCreateOptions.AlertType`, and `Billing.AlertListOptions.AlertType` from `literal('usage_threshold')` to `enum('credit_balance_threshold'|'usage_threshold')`
+  * Add support for `CreditBalanceThreshold` on `Billing.AlertCreateOptions` and `Billing.Alert`
+  * Add support for `BillableItems` on `Billing.CreditGrant.ApplicabilityConfig.Scope`, `BillingCreditBalanceSummaryFilterApplicabilityScopeOptions`, and `BillingCreditGrantApplicabilityConfigScopeOptions`
+  * Change type of `Billing.CreditBalanceSummary.Balance.AvailableBalance.Type`, `Billing.CreditBalanceSummary.Balance.LedgerBalance.Type`, `Billing.CreditBalanceTransaction.Credit.Amount.Type`, `Billing.CreditBalanceTransaction.Debit.Amount.Type`, `Billing.CreditGrant.Amount.Type`, and `BillingCreditGrantAmountOptions.Type` from `literal('monetary')` to `enum('custom_pricing_unit'|'monetary')`
+  * Add support for `LicenseFeeSubscriptionDetails` and `RateCardSubscriptionDetails` on `InvoiceItem.Parent` and `InvoiceLineItem.Parent`
+  * Change type of `InvoiceItem.Parent.Type` from `literal('subscription_details')` to `enum('license_fee_subscription_details'|'rate_card_subscription_details'|'subscription_details')`
+  * Add support for `LicenseFeeDetails` and `RateCardRateDetails` on `InvoiceItem.Pricing` and `InvoiceLineItem.Pricing`
+  * Change type of `InvoiceItem.Pricing.Type` and `InvoiceLineItem.Pricing.Type` from `literal('price_details')` to `enum('license_fee_details'|'price_details'|'rate_card_rate_details')`
+  * Add support for `BillingCadence` on `InvoiceCreatePreviewOptions`, `SubscriptionCreateOptions`, and `Subscription`
+  * Add support for `BillingCadenceDetails` on `Invoice.Parent` and `QuotePreviewInvoice.Parent`
+  * Add support for new resources `V2.AccountLink`, `V2.Account`, `V2.Billing.BillSettingVersion`, `V2.Billing.BillSetting`, `V2.Billing.Cadence`, `V2.Billing.CollectionSettingVersion`, `V2.Billing.CollectionSetting`, `V2.Billing.CustomPricingUnit`, `V2.Billing.IntentAction`, `V2.Billing.Intent`, `V2.Billing.LicenseFeeSubscription`, `V2.Billing.LicenseFeeVersion`, `V2.Billing.LicenseFee`, `V2.Billing.LicensedItem`, `V2.Billing.MeteredItem`, `V2.Billing.PricingPlanComponent`, `V2.Billing.PricingPlanSubscription`, `V2.Billing.PricingPlanVersion`, `V2.Billing.PricingPlan`, `V2.Billing.Profile`, `V2.Billing.RateCardRate`, `V2.Billing.RateCardSubscription`, `V2.Billing.RateCardVersion`, `V2.Billing.RateCard`, `V2.Billing.ServiceAction`, `V2.Core.ClaimableSandbox`, `V2.Reporting.ReportRun`, `V2.Reporting.Report`, and `V2.Tax.AutomaticRule`
+  * Add support for `Create`, `Deactivate`, `Find`, `Get`, and `Update` methods on resource `V2.Tax.AutomaticRule`
+  * Add support for `Create` and `Get` methods on resources `V2.Billing.ServiceAction` and `V2.Reporting.ReportRun`
+  * Add support for `Get` method on resources `V2.Billing.LicenseFeeSubscription` and `V2.Reporting.Report`
+  * Add support for `Create` method on resources `V2.AccountLink` and `V2.Core.ClaimableSandbox`
+  * Add support for `Cancel`, `Create`, `Get`, `List`, and `Update` methods on resources `V2.Billing.Cadence` and `V2.Billing.RateCardSubscription`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resources `V2.Billing.BillSetting`, `V2.Billing.CollectionSetting`, `V2.Billing.CustomPricingUnit`, `V2.Billing.LicenseFee`, `V2.Billing.LicensedItem`, `V2.Billing.MeteredItem`, `V2.Billing.PricingPlan`, `V2.Billing.Profile`, and `V2.Billing.RateCard`
+  * Add support for `Get` and `List` methods on resources `V2.Billing.BillSettingVersion`, `V2.Billing.CollectionSettingVersion`, `V2.Billing.IntentAction`, `V2.Billing.LicenseFeeVersion`, `V2.Billing.PricingPlanSubscription`, `V2.Billing.PricingPlanVersion`, and `V2.Billing.RateCardVersion`
+  * Add support for `Create`, `Delete`, `Get`, and `List` methods on resource `V2.Billing.RateCardRate`
+  * Add support for `Create`, `Delete`, `Get`, `List`, and `Update` methods on resource `V2.Billing.PricingPlanComponent`
+  * Add support for `Cancel`, `Commit`, `Create`, `Get`, `List`, `ReleaseReservation`, and `Reserve` methods on resource `V2.Billing.Intent`
+  * Add support for `Close`, `Create`, `Get`, `List`, and `Update` methods on resource `V2.Account`
+  * Add support for `Changes` on `V2.Event`
+  * Add support for thin events `AccountConfigurationRecipientDataAccountLinkCompletedEvent`, `AccountConfigurationRecipientDataFeatureStatusUpdatedEvent`, and `AccountRequirementsUpdatedEvent` with related object `V2.Account`
+  * Add support for thin events `V2BillingCadenceBilledEvent`, `V2BillingCadenceCanceledEvent`, `V2BillingCadenceCreatedEvent`, and `V2BillingCadenceErroredEvent` with related object `V2.Billing.Cadence`
+  * Add support for thin events `V2BillingLicenseFeeCreatedEvent` and `V2BillingLicenseFeeUpdatedEvent` with related object `V2.Billing.LicenseFee`
+  * Add support for thin event `V2BillingLicenseFeeVersionCreatedEvent` with related object `V2.Billing.LicenseFeeVersion`
+  * Add support for thin events `V2BillingLicensedItemCreatedEvent` and `V2BillingLicensedItemUpdatedEvent` with related object `V2.Billing.LicensedItem`
+  * Add support for thin events `V2BillingMeteredItemCreatedEvent` and `V2BillingMeteredItemUpdatedEvent` with related object `V2.Billing.MeteredItem`
+  * Add support for thin events `V2BillingPricingPlanCreatedEvent` and `V2BillingPricingPlanUpdatedEvent` with related object `V2.Billing.PricingPlan`
+  * Add support for thin events `V2BillingPricingPlanComponentCreatedEvent` and `V2BillingPricingPlanComponentUpdatedEvent` with related object `V2.Billing.PricingPlanComponent`
+  * Add support for thin events `V2BillingPricingPlanSubscriptionCollectionAwaitingCustomerActionEvent`, `V2BillingPricingPlanSubscriptionCollectionCurrentEvent`, `V2BillingPricingPlanSubscriptionCollectionPastDueEvent`, `V2BillingPricingPlanSubscriptionCollectionPausedEvent`, `V2BillingPricingPlanSubscriptionCollectionUnpaidEvent`, `V2BillingPricingPlanSubscriptionServicingActivatedEvent`, `V2BillingPricingPlanSubscriptionServicingCanceledEvent`, and `V2BillingPricingPlanSubscriptionServicingPausedEvent` with related object `V2.Billing.PricingPlanSubscription`
+  * Add support for thin event `V2BillingPricingPlanVersionCreatedEvent` with related object `V2.Billing.PricingPlanVersion`
+  * Add support for thin events `V2BillingRateCardCreatedEvent` and `V2BillingRateCardUpdatedEvent` with related object `V2.Billing.RateCard`
+  * Add support for thin event `V2BillingRateCardRateCreatedEvent` with related object `V2.Billing.RateCardRate`
+  * Add support for thin events `V2BillingRateCardSubscriptionActivatedEvent`, `V2BillingRateCardSubscriptionCanceledEvent`, `V2BillingRateCardSubscriptionCollectionAwaitingCustomerActionEvent`, `V2BillingRateCardSubscriptionCollectionCurrentEvent`, `V2BillingRateCardSubscriptionCollectionPastDueEvent`, `V2BillingRateCardSubscriptionCollectionPausedEvent`, `V2BillingRateCardSubscriptionCollectionUnpaidEvent`, `V2BillingRateCardSubscriptionServicingActivatedEvent`, `V2BillingRateCardSubscriptionServicingCanceledEvent`, and `V2BillingRateCardSubscriptionServicingPausedEvent` with related object `V2.Billing.RateCardSubscription`
+  * Add support for thin event `V2BillingRateCardVersionCreatedEvent` with related object `V2.Billing.RateCardVersion`
+  * Add support for thin events `V2CoreHealthApiErrorFiringEvent`, `V2CoreHealthApiErrorResolvedEvent`, `V2CoreHealthApiLatencyFiringEvent`, `V2CoreHealthApiLatencyResolvedEvent`, `V2CoreHealthAuthorizationRateDropFiringEvent`, `V2CoreHealthAuthorizationRateDropResolvedEvent`, `V2CoreHealthEventGenerationFailureResolvedEvent`, `V2CoreHealthFraudRateIncreasedEvent`, `V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEvent`, `V2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEvent`, `V2CoreHealthPaymentMethodErrorFiringEvent`, `V2CoreHealthPaymentMethodErrorResolvedEvent`, `V2CoreHealthTrafficVolumeDropFiringEvent`, `V2CoreHealthTrafficVolumeDropResolvedEvent`, `V2CoreHealthWebhookLatencyFiringEvent`, and `V2CoreHealthWebhookLatencyResolvedEvent`
+  * Add support for thin events `V2ReportingReportRunCreatedEvent`, `V2ReportingReportRunFailedEvent`, `V2ReportingReportRunSucceededEvent`, and `V2ReportingReportRunUpdatedEvent` with related object `V2.Reporting.ReportRun`
+  * Add support for error type `RateLimitException`
+
+## 48.6.0-beta.1 - 2025-08-27
+This release changes the pinned API version to `2025-08-27.preview`.
+
+* [#3156](https://github.com/stripe/stripe-dotnet/pull/3156) Update generated code for beta
+  * Add support for `Get` and `List` methods on resource `InvoicePayment`
+  * Add support for `List` method on resource `Mandate`
+  * Add support for `Applied` on `V2.Core.Account.Configuration.Customer`, `V2.Core.Account.Configuration.Merchant`, `V2.Core.Account.Configuration.Recipient`, `V2.Core.Account.Configuration.Storer`, `V2CoreAccountConfigurationCustomerOptions`, `V2CoreAccountConfigurationMerchantOptions`, `V2CoreAccountConfigurationRecipientOptions`, and `V2CoreAccountConfigurationStorerOptions`
+  * Change type of `Billing.AlertTriggered.Value` from `longInteger` to `decimal_string`
+  * Add support for `DisplayName` on `V2.MoneyManagement.FinancialAccountCreateOptions` and `V2.MoneyManagement.FinancialAccount`
+  * Add support for `CurrencyConversion` on `V2.MoneyManagement.Transaction.Flow` and `V2.MoneyManagement.TransactionEntry.TransactionDetails.Flow`
+  * Add support for `Payments` on `BalanceSettingsUpdateOptions` and `BalanceSettings`
+  * Remove support for `DebitNegativeBalances`, `Payouts`, and `SettlementTiming` on `BalanceSettingsUpdateOptions` and `BalanceSettings`
+  * Add support for `Mandate` on `Charge.PaymentMethodDetails.Pix`, `PaymentAttemptRecord.PaymentMethodDetails.Pix`, and `PaymentRecord.PaymentMethodDetails.Pix`
+  * Add support for `CouponData` on `CheckoutSessionDiscountOptions`
+  * Add support for `MandateOptions` on `Checkout.Session.PaymentMethodOptions.Pix`, `CheckoutSessionPaymentMethodOptionsPixOptions`, `PaymentIntent.PaymentMethodOptions.Pix`, and `PaymentIntentPaymentMethodOptionsPixOptions`
+  * Change type of `Checkout.Session.PaymentMethodOptions.Pix.SetupFutureUsage`, `CheckoutSessionPaymentMethodOptionsPixOptions.SetupFutureUsage`, `PaymentIntent.PaymentMethodOptions.Pix.SetupFutureUsage`, and `PaymentIntentPaymentMethodOptionsPixOptions.SetupFutureUsage` from `literal('none')` to `enum('none'|'off_session')`
+  * Add support for `Amount` on `Mandate.MultiUse`, `PaymentAttemptRecord`, and `PaymentRecord`
+  * Add support for `Currency` on `Mandate.MultiUse`
+  * Add support for `Pix` on `Mandate.PaymentMethodDetails`, `SetupAttempt.PaymentMethodDetails`, `SetupIntent.PaymentMethodOptions`, and `SetupIntentPaymentMethodOptionsOptions`
+  * Add support for `Limit` on `PaymentAttemptRecordListOptions`
+  * Add support for `AmountAuthorized`, `AmountRefunded`, and `Application` on `PaymentAttemptRecord` and `PaymentRecord`
+  * Add support for `ProcessorDetails` on `PaymentAttemptRecord`, `PaymentRecordReportPaymentOptions`, and `PaymentRecord`
+  * Remove support for `PaymentReference` on `PaymentAttemptRecord`, `PaymentRecordReportPaymentOptions`, and `PaymentRecord`
+  * Add support for `Installments` on `PaymentAttemptRecord.PaymentMethodDetails.Alma` and `PaymentRecord.PaymentMethodDetails.Alma`
+  * Add support for `TransactionId` on `PaymentAttemptRecord.PaymentMethodDetails.Alma`, `PaymentAttemptRecord.PaymentMethodDetails.AmazonPay`, `PaymentAttemptRecord.PaymentMethodDetails.Billie`, `PaymentAttemptRecord.PaymentMethodDetails.KakaoPay`, `PaymentAttemptRecord.PaymentMethodDetails.KrCard`, `PaymentAttemptRecord.PaymentMethodDetails.NaverPay`, `PaymentAttemptRecord.PaymentMethodDetails.Payco`, `PaymentAttemptRecord.PaymentMethodDetails.RevolutPay`, `PaymentAttemptRecord.PaymentMethodDetails.SamsungPay`, `PaymentAttemptRecord.PaymentMethodDetails.Satispay`, `PaymentRecord.PaymentMethodDetails.Alma`, `PaymentRecord.PaymentMethodDetails.AmazonPay`, `PaymentRecord.PaymentMethodDetails.Billie`, `PaymentRecord.PaymentMethodDetails.KakaoPay`, `PaymentRecord.PaymentMethodDetails.KrCard`, `PaymentRecord.PaymentMethodDetails.NaverPay`, `PaymentRecord.PaymentMethodDetails.Payco`, `PaymentRecord.PaymentMethodDetails.RevolutPay`, `PaymentRecord.PaymentMethodDetails.SamsungPay`, and `PaymentRecord.PaymentMethodDetails.Satispay`
+  * Add support for `Location` and `Reader` on `PaymentAttemptRecord.PaymentMethodDetails.Paynow` and `PaymentRecord.PaymentMethodDetails.Paynow`
+  * Add support for `LatestActiveMandate` on `PaymentMethod`
+  * Add support for `Metadata` and `Period` on `QuotePreviewSubscriptionSchedule.Phase.AddInvoiceItem`
+  * Add support for `PixDisplayQrCode` on `SetupIntent.NextAction`
+  * Add support for `ReaderSecurity` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `Terminal.Configuration`
+
 ## 48.5.0 - 2025-08-27
 * [#3164](https://github.com/stripe/stripe-dotnet/pull/3164) Add section on private preview SDKs in readme
 * [#3159](https://github.com/stripe/stripe-dotnet/pull/3159) Update generated code. This release changes the pinned API version to `2025-08-27.basil`.
