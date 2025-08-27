@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class LicenseFeeUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// A customer-facing name for the LicenseFee. This name is used in Stripe-hosted products
+        /// A customer-facing name for the License Fee. This name is used in Stripe-hosted products
         /// like the Customer Portal and Checkout. It does not show up on Invoices. Maximum length
         /// of 250 characters.
         /// </summary>
@@ -21,8 +21,8 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Changes the version that new LicenseFee will use. Providing <c>live_version =
-        /// "latest"</c> will set the LicenseFee's <c>live_version</c> to its latest version.
+        /// Changes the version that new license fee will use. Providing <c>live_version =
+        /// "latest"</c> will set the license fee's <c>live_version</c> to its latest version.
         /// </summary>
         [JsonProperty("live_version")]
 #if NET6_0_OR_GREATER
@@ -31,8 +31,8 @@ namespace Stripe.V2.Billing
         public string LiveVersion { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular LicenseFee. Maximum length of 200
-        /// characters.
+        /// An internal key you can use to search for a particular license fee. Maximum length of
+        /// 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
 #if NET6_0_OR_GREATER
@@ -41,8 +41,9 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER

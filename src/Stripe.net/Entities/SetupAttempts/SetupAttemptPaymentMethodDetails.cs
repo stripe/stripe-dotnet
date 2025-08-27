@@ -122,6 +122,12 @@ namespace Stripe
 #endif
         public SetupAttemptPaymentMethodDetailsPayto Payto { get; set; }
 
+        [JsonProperty("pix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pix")]
+#endif
+        public SetupAttemptPaymentMethodDetailsPix Pix { get; set; }
+
         [JsonProperty("revolut_pay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("revolut_pay")]

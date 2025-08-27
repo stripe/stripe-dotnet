@@ -42,6 +42,24 @@ namespace Stripe.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// Currency for the threshold value.
+        /// </summary>
+        [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// Custom pricing unit for the threshold value.
+        /// </summary>
+        [JsonProperty("custom_pricing_unit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("custom_pricing_unit")]
+#endif
+        public string CustomPricingUnit { get; set; }
+
+        /// <summary>
         /// ID of customer for which the alert triggered.
         /// </summary>
         [JsonProperty("customer")]
@@ -49,6 +67,15 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// External customer ID for the customer for which the alert triggered.
+        /// </summary>
+        [JsonProperty("external_customer_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_customer_id")]
+#endif
+        public string ExternalCustomerId { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -67,6 +94,6 @@ namespace Stripe.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
 #endif
-        public long Value { get; set; }
+        public decimal Value { get; set; }
     }
 }

@@ -39,5 +39,14 @@ namespace Stripe
         [STJS.JsonPropertyName("last4")]
 #endif
         public string Last4 { get; set; }
+
+        /// <summary>
+        /// The Korean Card transaction ID associated with this payment.
+        /// </summary>
+        [JsonProperty("transaction_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction_id")]
+#endif
+        public string TransactionId { get; set; }
     }
 }

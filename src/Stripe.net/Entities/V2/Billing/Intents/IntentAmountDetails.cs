@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class IntentAmountDetails : StripeEntity<IntentAmountDetails>
     {
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase.
+        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER
@@ -54,7 +54,7 @@ namespace Stripe.V2.Billing
         public string Tax { get; set; }
 
         /// <summary>
-        /// Total amount for the BillingIntent.
+        /// Total amount for the Billing Intent.
         /// </summary>
         [JsonProperty("total")]
 #if NET6_0_OR_GREATER

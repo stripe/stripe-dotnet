@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing.RateCards
     public class RateListOptions : V2.ListOptions
     {
         /// <summary>
-        /// Optionally filter by a MeteredItem.
+        /// Optionally filter by a Metered Item.
         /// </summary>
         [JsonProperty("metered_item")]
 #if NET6_0_OR_GREATER

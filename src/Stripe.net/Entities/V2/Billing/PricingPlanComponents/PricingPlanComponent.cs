@@ -11,7 +11,7 @@ namespace Stripe.V2.Billing
     public class PricingPlanComponent : StripeEntity<PricingPlanComponent>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the PricingPlanComponent.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -39,7 +39,7 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Details if this component is a LicenseFee.
+        /// Details if this component is a License Fee.
         /// </summary>
         [JsonProperty("license_fee")]
 #if NET6_0_OR_GREATER
@@ -67,7 +67,9 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER
@@ -76,7 +78,7 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The ID of the PricingPlan this component belongs to.
+        /// The ID of the Pricing Plan this component belongs to.
         /// </summary>
         [JsonProperty("pricing_plan")]
 #if NET6_0_OR_GREATER
@@ -85,7 +87,7 @@ namespace Stripe.V2.Billing
         public string PricingPlan { get; set; }
 
         /// <summary>
-        /// The ID of the PricingPlanVersion this component belongs to.
+        /// The ID of the Pricing Plan Version this component belongs to.
         /// </summary>
         [JsonProperty("pricing_plan_version")]
 #if NET6_0_OR_GREATER
@@ -94,7 +96,7 @@ namespace Stripe.V2.Billing
         public string PricingPlanVersion { get; set; }
 
         /// <summary>
-        /// Details if this component is a RateCard.
+        /// Details if this component is a Rate Card.
         /// </summary>
         [JsonProperty("rate_card")]
 #if NET6_0_OR_GREATER
@@ -103,7 +105,7 @@ namespace Stripe.V2.Billing
         public PricingPlanComponentRateCard RateCard { get; set; }
 
         /// <summary>
-        /// Details if this component is a ServiceAction.
+        /// Details if this component is a Service Action.
         /// </summary>
         [JsonProperty("service_action")]
 #if NET6_0_OR_GREATER

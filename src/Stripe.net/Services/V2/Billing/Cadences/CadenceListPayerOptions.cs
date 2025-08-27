@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class CadenceListPayerOptions : INestedOptions
     {
         /// <summary>
-        /// The ID of the Customer object. If provided, only Cadences that specifically reference
+        /// The ID of the Customer object. If provided, only cadences that specifically reference
         /// the provided customer ID will be returned.
         /// </summary>
         [JsonProperty("customer")]

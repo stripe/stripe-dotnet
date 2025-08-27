@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing.LicenseFees
         }
 
         /// <summary>
-        /// Retrieve a LicenseFeeVersion object.
+        /// Retrieve a License Fee Version object.
         /// </summary>
         public virtual V2.Billing.LicenseFeeVersion Get(string parentId, string id, VersionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing.LicenseFees
         }
 
         /// <summary>
-        /// Retrieve a LicenseFeeVersion object.
+        /// Retrieve a License Fee Version object.
         /// </summary>
         public virtual Task<V2.Billing.LicenseFeeVersion> GetAsync(string parentId, string id, VersionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing.LicenseFees
         }
 
         /// <summary>
-        /// List all versions of a LicenseFee objects.
+        /// List all versions of a License Fee object.
         /// </summary>
         public virtual V2.StripeList<V2.Billing.LicenseFeeVersion> List(string id, VersionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing.LicenseFees
         }
 
         /// <summary>
-        /// List all versions of a LicenseFee objects.
+        /// List all versions of a License Fee object.
         /// </summary>
         public virtual Task<V2.StripeList<V2.Billing.LicenseFeeVersion>> ListAsync(string id, VersionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing.LicenseFees
         }
 
         /// <summary>
-        /// List all versions of a LicenseFee objects.
+        /// List all versions of a License Fee object.
         /// </summary>
         public virtual IEnumerable<V2.Billing.LicenseFeeVersion> ListAutoPaging(string id, VersionListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Billing.LicenseFees
         }
 
         /// <summary>
-        /// List all versions of a LicenseFee objects.
+        /// List all versions of a License Fee object.
         /// </summary>
         public virtual IAsyncEnumerable<V2.Billing.LicenseFeeVersion> ListAutoPagingAsync(string id, VersionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

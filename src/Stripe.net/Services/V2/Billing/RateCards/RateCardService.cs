@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
             this.Requestor);
 
         /// <summary>
-        /// Create a RateCard object.
+        /// Create a Rate Card object.
         /// </summary>
         public virtual RateCard Create(RateCardCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -38,7 +38,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a RateCard object.
+        /// Create a Rate Card object.
         /// </summary>
         public virtual Task<RateCard> CreateAsync(RateCardCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -46,7 +46,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve the latest version of a RateCard object.
+        /// Retrieve the latest version of a Rate Card object.
         /// </summary>
         public virtual RateCard Get(string id, RateCardGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -54,7 +54,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve the latest version of a RateCard object.
+        /// Retrieve the latest version of a Rate Card object.
         /// </summary>
         public virtual Task<RateCard> GetAsync(string id, RateCardGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -62,7 +62,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all RateCard objects.
+        /// List all Rate Card objects.
         /// </summary>
         public virtual V2.StripeList<RateCard> List(RateCardListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -70,7 +70,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all RateCard objects.
+        /// List all Rate Card objects.
         /// </summary>
         public virtual Task<V2.StripeList<RateCard>> ListAsync(RateCardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -78,7 +78,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all RateCard objects.
+        /// List all Rate Card objects.
         /// </summary>
         public virtual IEnumerable<RateCard> ListAutoPaging(RateCardListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -86,7 +86,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all RateCard objects.
+        /// List all Rate Card objects.
         /// </summary>
         public virtual IAsyncEnumerable<RateCard> ListAutoPagingAsync(RateCardListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -94,7 +94,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a RateCard object.
+        /// Update a Rate Card object.
         /// </summary>
         public virtual RateCard Update(string id, RateCardUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -102,7 +102,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a RateCard object.
+        /// Update a Rate Card object.
         /// </summary>
         public virtual Task<RateCard> UpdateAsync(string id, RateCardUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

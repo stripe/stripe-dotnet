@@ -9,14 +9,14 @@ namespace Stripe.V2.Billing
 #endif
 
     /// <summary>
-    /// A MeteredItem represents a billable item whose pricing is based on usage, measured by a
-    /// Meter. You can use RateCards to specify the pricing and create Subscriptions to these
+    /// A Metered Item represents a billable item whose pricing is based on usage, measured by a
+    /// meter. You can use rate cards to specify the pricing and create subscriptions to these
     /// items.
     /// </summary>
     public class MeteredItem : StripeEntity<MeteredItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// The ID of the MeteredItem.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -83,8 +83,9 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER
@@ -93,7 +94,7 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// ID of the Meter that measures usage for this MeteredItem.
+        /// ID of the Meter that measures usage for this Metered Item.
         /// </summary>
         [JsonProperty("meter")]
 #if NET6_0_OR_GREATER

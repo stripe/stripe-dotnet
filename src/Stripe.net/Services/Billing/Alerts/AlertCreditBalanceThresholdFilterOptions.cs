@@ -19,6 +19,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// What type of filter is being applied to this credit balance alert.
+        /// One of: <c>customer</c>, or <c>tenant</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

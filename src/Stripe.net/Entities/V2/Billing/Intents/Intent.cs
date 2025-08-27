@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class Intent : StripeEntity<Intent>, IHasId, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the BillingIntent.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// Breakdown of the amount for this BillingIntent.
+        /// Breakdown of the amount for this Billing Intent.
         /// </summary>
         [JsonProperty("amount_details")]
 #if NET6_0_OR_GREATER
@@ -56,23 +56,13 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase.
+        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
         public string Currency { get; set; }
-
-        /// <summary>
-        /// When the BillingIntent will take effect.
-        /// One of: <c>current_billing_period_start</c>, <c>on_commit</c>, or <c>on_reserve</c>.
-        /// </summary>
-        [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_at")]
-#endif
-        public string EffectiveAt { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -85,7 +75,7 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Current status of the BillingIntent.
+        /// Current status of the Billing Intent.
         /// One of: <c>canceled</c>, <c>committed</c>, <c>draft</c>, or <c>reserved</c>.
         /// </summary>
         [JsonProperty("status")]
@@ -95,7 +85,7 @@ namespace Stripe.V2.Billing
         public string Status { get; set; }
 
         /// <summary>
-        /// Timestamps for status transitions of the BillingIntent.
+        /// Timestamps for status transitions of the Billing Intent.
         /// </summary>
         [JsonProperty("status_transitions")]
 #if NET6_0_OR_GREATER

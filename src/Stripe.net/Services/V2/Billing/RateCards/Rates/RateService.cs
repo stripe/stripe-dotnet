@@ -21,8 +21,8 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Set the rate for a MeteredItem on the latest version of a RateCard object. This will
-        /// create a new RateCard version if the MeteredItem already has a rate on the RateCard.
+        /// Set the Rate for a Metered Item on the latest version of a Rate Card object. This will
+        /// create a new Rate Card version if the Metered Item already has a rate on the Rate Card.
         /// </summary>
         public virtual V2.Billing.RateCardRate Create(string id, RateCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -30,8 +30,8 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Set the rate for a MeteredItem on the latest version of a RateCard object. This will
-        /// create a new RateCard version if the MeteredItem already has a rate on the RateCard.
+        /// Set the Rate for a Metered Item on the latest version of a Rate Card object. This will
+        /// create a new Rate Card version if the Metered Item already has a rate on the Rate Card.
         /// </summary>
         public virtual Task<V2.Billing.RateCardRate> CreateAsync(string id, RateCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -39,8 +39,8 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Remove an existing Rate from a RateCard. This will create a new RateCard version without
-        /// that rate.
+        /// Remove an existing Rate from a Rate Card. This will create a new Rate Card Version
+        /// without that Rate.
         /// </summary>
         public virtual V2.Billing.RateCardRate Delete(string parentId, string id, RateDeleteOptions options = null, RequestOptions requestOptions = null)
         {
@@ -48,8 +48,8 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Remove an existing Rate from a RateCard. This will create a new RateCard version without
-        /// that rate.
+        /// Remove an existing Rate from a Rate Card. This will create a new Rate Card Version
+        /// without that Rate.
         /// </summary>
         public virtual Task<V2.Billing.RateCardRate> DeleteAsync(string parentId, string id, RateDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -73,9 +73,9 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List all Rates associated with a RateCard for a specific version (defaults to latest).
-        /// Rates remain active for all subsequent versions until a new Rate is created for the same
-        /// MeteredItem.
+        /// List all Rates associated with a Rate Card for a specific version (defaults to latest).
+        /// Rates remain active for all subsequent versions until a new rate is created for the same
+        /// Metered Item.
         /// </summary>
         public virtual V2.StripeList<V2.Billing.RateCardRate> List(string id, RateListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -83,9 +83,9 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List all Rates associated with a RateCard for a specific version (defaults to latest).
-        /// Rates remain active for all subsequent versions until a new Rate is created for the same
-        /// MeteredItem.
+        /// List all Rates associated with a Rate Card for a specific version (defaults to latest).
+        /// Rates remain active for all subsequent versions until a new rate is created for the same
+        /// Metered Item.
         /// </summary>
         public virtual Task<V2.StripeList<V2.Billing.RateCardRate>> ListAsync(string id, RateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -93,9 +93,9 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List all Rates associated with a RateCard for a specific version (defaults to latest).
-        /// Rates remain active for all subsequent versions until a new Rate is created for the same
-        /// MeteredItem.
+        /// List all Rates associated with a Rate Card for a specific version (defaults to latest).
+        /// Rates remain active for all subsequent versions until a new rate is created for the same
+        /// Metered Item.
         /// </summary>
         public virtual IEnumerable<V2.Billing.RateCardRate> ListAutoPaging(string id, RateListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -103,9 +103,9 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List all Rates associated with a RateCard for a specific version (defaults to latest).
-        /// Rates remain active for all subsequent versions until a new Rate is created for the same
-        /// MeteredItem.
+        /// List all Rates associated with a Rate Card for a specific version (defaults to latest).
+        /// Rates remain active for all subsequent versions until a new rate is created for the same
+        /// Metered Item.
         /// </summary>
         public virtual IAsyncEnumerable<V2.Billing.RateCardRate> ListAutoPagingAsync(string id, RateListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -11,7 +11,7 @@ namespace Stripe.V2.Billing
     public class PricingPlanSubscription : StripeEntity<PricingPlanSubscription>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the PricingPlanSubscription.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// The ID of the Cadence this subscription is billed on.
+        /// The ID of the Billing Cadence this subscription is billed on.
         /// </summary>
         [JsonProperty("billing_cadence")]
 #if NET6_0_OR_GREATER
@@ -78,7 +78,9 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER
@@ -87,7 +89,7 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The ID of the PricingPlan for this subscription.
+        /// The ID of the Pricing Plan for this subscription.
         /// </summary>
         [JsonProperty("pricing_plan")]
 #if NET6_0_OR_GREATER
@@ -96,7 +98,7 @@ namespace Stripe.V2.Billing
         public string PricingPlan { get; set; }
 
         /// <summary>
-        /// The ID of the PricingPlanVersion for this subscription.
+        /// The ID of the Pricing Plan Version for this subscription.
         /// </summary>
         [JsonProperty("pricing_plan_version")]
 #if NET6_0_OR_GREATER
@@ -124,7 +126,7 @@ namespace Stripe.V2.Billing
         public PricingPlanSubscriptionServicingStatusTransitions ServicingStatusTransitions { get; set; }
 
         /// <summary>
-        /// The ID of the TestClock of the associated Cadence, if any.
+        /// The ID of the Test Clock of the associated Billing Cadence, if any.
         /// </summary>
         [JsonProperty("test_clock")]
 #if NET6_0_OR_GREATER

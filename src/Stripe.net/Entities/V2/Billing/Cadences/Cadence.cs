@@ -11,7 +11,7 @@ namespace Stripe.V2.Billing
     public class Cadence : StripeEntity<Cadence>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// The ID of the billing Cadence object.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -67,8 +67,9 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER
@@ -114,7 +115,7 @@ namespace Stripe.V2.Billing
         public string Status { get; set; }
 
         /// <summary>
-        /// The ID of the TestClock.
+        /// The ID of the Test Clock.
         /// </summary>
         [JsonProperty("test_clock")]
 #if NET6_0_OR_GREATER

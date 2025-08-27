@@ -8,12 +8,9 @@ namespace Stripe.Checkout
 
     public class SessionCheckoutItem : StripeEntity<SessionCheckoutItem>
     {
-        [JsonProperty("key")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("key")]
-#endif
-        public string Key { get; set; }
-
+        /// <summary>
+        /// One of: <c>rate_card_subscription_item</c>, or <c>pricing_plan_subscription_item</c>.
+        /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
@@ -25,5 +22,11 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("rate_card_subscription_item")]
 #endif
         public SessionCheckoutItemRateCardSubscriptionItem RateCardSubscriptionItem { get; set; }
+
+        [JsonProperty("pricing_plan_subscription_item")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pricing_plan_subscription_item")]
+#endif
+        public SessionCheckoutItemPricingPlanSubscriptionItem PricingPlanSubscriptionItem { get; set; }
     }
 }

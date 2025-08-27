@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class IntentStatusTransitions : StripeEntity<IntentStatusTransitions>
     {
         /// <summary>
-        /// Time at which the BillingIntent was canceled.
+        /// Time at which the Billing Intent was canceled.
         /// </summary>
         [JsonProperty("canceled_at")]
 #if NET6_0_OR_GREATER
@@ -19,7 +19,7 @@ namespace Stripe.V2.Billing
         public DateTime? CanceledAt { get; set; }
 
         /// <summary>
-        /// Time at which the BillingIntent was committed.
+        /// Time at which the Billing Intent was committed.
         /// </summary>
         [JsonProperty("committed_at")]
 #if NET6_0_OR_GREATER
@@ -28,7 +28,7 @@ namespace Stripe.V2.Billing
         public DateTime? CommittedAt { get; set; }
 
         /// <summary>
-        /// Time at which the BillingIntent was drafted.
+        /// Time at which the Billing Intent was drafted.
         /// </summary>
         [JsonProperty("drafted_at")]
 #if NET6_0_OR_GREATER
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing
         public DateTime? DraftedAt { get; set; }
 
         /// <summary>
-        /// Time at which the BillingIntent was reserved.
+        /// Time at which the Billing Intent was reserved.
         /// </summary>
         [JsonProperty("reserved_at")]
 #if NET6_0_OR_GREATER

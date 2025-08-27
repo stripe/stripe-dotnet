@@ -9,6 +9,7 @@ namespace Stripe
     using System.Threading.Tasks;
 
     public class PaymentAttemptRecordService : Service,
+        IListable<PaymentAttemptRecord, PaymentAttemptRecordListOptions>,
         IRetrievable<PaymentAttemptRecord, PaymentAttemptRecordGetOptions>
     {
         public PaymentAttemptRecordService()
@@ -55,6 +56,22 @@ namespace Stripe
         public virtual Task<StripeList<PaymentAttemptRecord>> ListAsync(PaymentAttemptRecordListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<StripeList<PaymentAttemptRecord>>(BaseAddress.Api, HttpMethod.Get, $"/v1/payment_attempt_records", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>List all the Payment Attempt Records attached to the specified Payment Record.</p>.
+        /// </summary>
+        public virtual IEnumerable<PaymentAttemptRecord> ListAutoPaging(PaymentAttemptRecordListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<PaymentAttemptRecord>($"/v1/payment_attempt_records", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>List all the Payment Attempt Records attached to the specified Payment Record.</p>.
+        /// </summary>
+        public virtual IAsyncEnumerable<PaymentAttemptRecord> ListAutoPagingAsync(PaymentAttemptRecordListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<PaymentAttemptRecord>($"/v1/payment_attempt_records", options, requestOptions, cancellationToken);
         }
     }
 }

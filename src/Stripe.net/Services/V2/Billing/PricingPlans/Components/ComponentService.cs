@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Create a PricingPlanComponent object.
+        /// Create a Pricing Plan Component object.
         /// </summary>
         public virtual V2.Billing.PricingPlanComponent Create(string id, ComponentCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Create a PricingPlanComponent object.
+        /// Create a Pricing Plan Component object.
         /// </summary>
         public virtual Task<V2.Billing.PricingPlanComponent> CreateAsync(string id, ComponentCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Remove a PricingPlanComponent from the latest version of a PricingPlan.
+        /// Remove a Pricing Plan Component from the latest version of a Pricing Plan.
         /// </summary>
         public virtual V2.Billing.PricingPlanComponent Delete(string parentId, string id, ComponentDeleteOptions options = null, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Remove a PricingPlanComponent from the latest version of a PricingPlan.
+        /// Remove a Pricing Plan Component from the latest version of a Pricing Plan.
         /// </summary>
         public virtual Task<V2.Billing.PricingPlanComponent> DeleteAsync(string parentId, string id, ComponentDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Retrieve a PricingPlanComponent object.
+        /// Retrieve a Pricing Plan Component object.
         /// </summary>
         public virtual V2.Billing.PricingPlanComponent Get(string parentId, string id, ComponentGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Retrieve a PricingPlanComponent object.
+        /// Retrieve a Pricing Plan Component object.
         /// </summary>
         public virtual Task<V2.Billing.PricingPlanComponent> GetAsync(string parentId, string id, ComponentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// List all PricingPlanComponent objects for a PricingPlan.
+        /// List all Pricing Plan Component objects for a Pricing Plan.
         /// </summary>
         public virtual V2.StripeList<V2.Billing.PricingPlanComponent> List(string id, ComponentListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +77,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// List all PricingPlanComponent objects for a PricingPlan.
+        /// List all Pricing Plan Component objects for a Pricing Plan.
         /// </summary>
         public virtual Task<V2.StripeList<V2.Billing.PricingPlanComponent>> ListAsync(string id, ComponentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +85,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// List all PricingPlanComponent objects for a PricingPlan.
+        /// List all Pricing Plan Component objects for a Pricing Plan.
         /// </summary>
         public virtual IEnumerable<V2.Billing.PricingPlanComponent> ListAutoPaging(string id, ComponentListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -93,7 +93,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// List all PricingPlanComponent objects for a PricingPlan.
+        /// List all Pricing Plan Component objects for a Pricing Plan.
         /// </summary>
         public virtual IAsyncEnumerable<V2.Billing.PricingPlanComponent> ListAutoPagingAsync(string id, ComponentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -101,7 +101,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Update a PricingPlanComponent object.
+        /// Update a Pricing Plan Component object.
         /// </summary>
         public virtual V2.Billing.PricingPlanComponent Update(string parentId, string id, ComponentUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -109,7 +109,7 @@ namespace Stripe.V2.Billing.PricingPlans
         }
 
         /// <summary>
-        /// Update a PricingPlanComponent object.
+        /// Update a Pricing Plan Component object.
         /// </summary>
         public virtual Task<V2.Billing.PricingPlanComponent> UpdateAsync(string parentId, string id, ComponentUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -9,15 +9,15 @@ namespace Stripe.V2.Billing
 #endif
 
     /// <summary>
-    /// A RateCard represents a versioned set of usage-based prices (Rates). Each Rate is
-    /// associated with one MeteredItem and defines how much to charge for usage of that item.
-    /// After you've set up a RateCard, you can subscribe customers to it by creating a
-    /// RateCardSubscription.
+    /// A Rate Card represents a versioned set of usage-based prices (rates). Each rate is
+    /// associated with one Metered Item and defines how much to charge for usage of that item.
+    /// After you've set up a RateCard, you can subscribe customers to it by creating a Rate
+    /// Card Subscription.
     /// </summary>
     public class RateCard : StripeEntity<RateCard>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// The ID of the RateCard.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -55,7 +55,7 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The currency of this RateCard.
+        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER
@@ -64,7 +64,7 @@ namespace Stripe.V2.Billing
         public string Currency { get; set; }
 
         /// <summary>
-        /// A customer-facing name for the RateCard. This name is used in Stripe-hosted products
+        /// A customer-facing name for the Rate Card. This name is used in Stripe-hosted products
         /// like the Customer Portal and Checkout. It does not show up on Invoices. Maximum length
         /// of 250 characters.
         /// </summary>
@@ -75,7 +75,7 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// The ID of this RateCard's most recently created version.
+        /// The ID of this rate card's most recently created version.
         /// </summary>
         [JsonProperty("latest_version")]
 #if NET6_0_OR_GREATER
@@ -84,8 +84,8 @@ namespace Stripe.V2.Billing
         public string LatestVersion { get; set; }
 
         /// <summary>
-        /// The ID of the version that will be used by all Subscriptions when no specific version is
-        /// specified.
+        /// The ID of the Rate Card Version that will be used by all subscriptions when no specific
+        /// version is specified.
         /// </summary>
         [JsonProperty("live_version")]
 #if NET6_0_OR_GREATER
@@ -104,8 +104,19 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// An internal key you can use to search for a particular RateCard. Maximum length of 200
+        /// characters.
+        /// </summary>
+        [JsonProperty("lookup_key")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lookup_key")]
+#endif
+        public string LookupKey { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER
@@ -114,7 +125,7 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The interval for assessing service. For example, a monthly RateCard with a rate of $1
+        /// The interval for assessing service. For example, a monthly Rate Card with a rate of $1
         /// for the first 10 "workloads" and $2 thereafter means "$1 per workload up to 10 workloads
         /// during a month of service." This is similar to but distinct from billing interval; the
         /// service interval deals with the rate at which the customer accumulates fees, while the

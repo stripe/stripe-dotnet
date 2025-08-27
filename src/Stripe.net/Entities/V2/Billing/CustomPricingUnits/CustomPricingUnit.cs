@@ -14,7 +14,7 @@ namespace Stripe.V2.Billing
     public class CustomPricingUnit : StripeEntity<CustomPricingUnit>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// The ID of the custom pricing unit.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -33,7 +33,7 @@ namespace Stripe.V2.Billing
         public string Object { get; set; }
 
         /// <summary>
-        /// Whether the CustomPricingUnit is active.
+        /// Whether the custom pricing unit is active.
         /// </summary>
         [JsonProperty("active")]
 #if NET6_0_OR_GREATER
@@ -51,7 +51,7 @@ namespace Stripe.V2.Billing
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Description that customers will see in the invoice line item. Maximum length of 250
+        /// Description that customers will see in the invoice line item. Maximum length of 10
         /// characters.
         /// </summary>
         [JsonProperty("display_name")]
@@ -71,7 +71,7 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// An internal key you can use to search for a particular CustomPricingUnit item. Maximum
+        /// An internal key you can use to search for a particular Custom Pricing Unit. Maximum
         /// length of 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
@@ -81,8 +81,9 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER

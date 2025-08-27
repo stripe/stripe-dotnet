@@ -9,13 +9,13 @@ namespace Stripe.V2.Billing
 #endif
 
     /// <summary>
-    /// A LicensedItem represents a billable item whose pricing is based on license fees. You
-    /// can use LicenseFees to specify the pricing and create Subscriptions to these items.
+    /// A Licensed Item represents a billable item whose pricing is based on license fees. You
+    /// can use license fees to specify the pricing and create subscriptions to these items.
     /// </summary>
     public class LicensedItem : StripeEntity<LicensedItem>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// The ID of the LicensedItem.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -73,8 +73,9 @@ namespace Stripe.V2.Billing
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of key-value pairs that you can attach to an object. This can be useful for storing
-        /// additional information about the object in a structured format.
+        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
+        /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
 #if NET6_0_OR_GREATER

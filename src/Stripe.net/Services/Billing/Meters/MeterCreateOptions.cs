@@ -46,7 +46,7 @@ namespace Stripe.Billing
         public string EventName { get; set; }
 
         /// <summary>
-        /// The time window to pre-aggregate meter events for, if any.
+        /// The time window which meter events have been pre-aggregated for, if any.
         /// One of: <c>day</c>, or <c>hour</c>.
         /// </summary>
         [JsonProperty("event_time_window")]

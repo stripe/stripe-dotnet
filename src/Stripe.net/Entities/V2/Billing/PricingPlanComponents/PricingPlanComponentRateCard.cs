@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class PricingPlanComponentRateCard : StripeEntity<PricingPlanComponentRateCard>, IHasId
     {
         /// <summary>
-        /// The ID of the RateCard.
+        /// The ID of the Rate Card.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing
         public string Id { get; set; }
 
         /// <summary>
-        /// The version of the RateCard.
+        /// The version of the RateCard. Defaults to 'latest', if not specified.
         /// </summary>
         [JsonProperty("version")]
 #if NET6_0_OR_GREATER

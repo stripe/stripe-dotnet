@@ -36,6 +36,15 @@ namespace Stripe.Terminal
         public ConfigurationOfflineOptions Offline { get; set; }
 
         /// <summary>
+        /// Configurations for reader security settings.
+        /// </summary>
+        [JsonProperty("reader_security")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reader_security")]
+#endif
+        public ConfigurationReaderSecurityOptions ReaderSecurity { get; set; }
+
+        /// <summary>
         /// Reboot time settings for readers that support customized reboot time configuration.
         /// </summary>
         [JsonProperty("reboot_window")]

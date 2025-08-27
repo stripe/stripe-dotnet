@@ -53,6 +53,9 @@ namespace Stripe.Billing
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
+        /// <summary>
+        /// One of: <c>customer</c>, or <c>tenant</c>.
+        /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]

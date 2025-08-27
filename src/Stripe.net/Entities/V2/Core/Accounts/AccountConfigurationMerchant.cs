@@ -9,6 +9,16 @@ namespace Stripe.V2.Core
     public class AccountConfigurationMerchant : StripeEntity<AccountConfigurationMerchant>
     {
         /// <summary>
+        /// Represents the state of the configuration, and can be updated to deactivate or re-apply
+        /// a configuration.
+        /// </summary>
+        [JsonProperty("applied")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("applied")]
+#endif
+        public bool Applied { get; set; }
+
+        /// <summary>
         /// Settings used for Bacs debit payments.
         /// </summary>
         [JsonProperty("bacs_debit_payments")]

@@ -20,7 +20,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a ServiceAction object.
+        /// Create a Service Action object.
         /// </summary>
         public virtual ServiceAction Create(ServiceActionCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -28,7 +28,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a ServiceAction object.
+        /// Create a Service Action object.
         /// </summary>
         public virtual Task<ServiceAction> CreateAsync(ServiceActionCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -36,7 +36,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a ServiceAction object.
+        /// Retrieve a Service Action object.
         /// </summary>
         public virtual ServiceAction Get(string id, ServiceActionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -44,7 +44,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a ServiceAction object.
+        /// Retrieve a Service Action object.
         /// </summary>
         public virtual Task<ServiceAction> GetAsync(string id, ServiceActionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

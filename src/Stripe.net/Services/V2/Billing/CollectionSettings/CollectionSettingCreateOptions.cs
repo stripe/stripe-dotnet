@@ -32,6 +32,15 @@ namespace Stripe.V2.Billing
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Email delivery setting.
+        /// </summary>
+        [JsonProperty("email_delivery")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("email_delivery")]
+#endif
+        public CollectionSettingCreateEmailDeliveryOptions EmailDelivery { get; set; }
+
+        /// <summary>
         /// A lookup key used to retrieve settings dynamically from a static string. This may be up
         /// to 200 characters.
         /// </summary>

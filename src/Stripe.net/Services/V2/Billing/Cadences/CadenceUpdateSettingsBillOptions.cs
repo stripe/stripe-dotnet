@@ -13,7 +13,7 @@ namespace Stripe.V2.Billing
     public class CadenceUpdateSettingsBillOptions : INestedOptions, IHasId
     {
         /// <summary>
-        /// The ID of the referenced Settings object.
+        /// The ID of the referenced settings object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER

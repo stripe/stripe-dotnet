@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing
         public string Dimension { get; set; }
 
         /// <summary>
-        /// To count usage towards this MeteredItem, the dimension must have this value.
+        /// To count usage towards this metered item, the dimension must have this value.
         /// </summary>
         [JsonProperty("value")]
 #if NET6_0_OR_GREATER

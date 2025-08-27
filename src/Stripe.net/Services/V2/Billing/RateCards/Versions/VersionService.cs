@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Retrieve a specific version of a RateCard object.
+        /// Retrieve a specific version of a Rate Card object.
         /// </summary>
         public virtual V2.Billing.RateCardVersion Get(string parentId, string id, VersionGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// Retrieve a specific version of a RateCard object.
+        /// Retrieve a specific version of a Rate Card object.
         /// </summary>
         public virtual Task<V2.Billing.RateCardVersion> GetAsync(string parentId, string id, VersionGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List the versions of a RateCard object. Results are sorted in reverse chronological
+        /// List the versions of a Rate Card object. Results are sorted in reverse chronological
         /// order (most recent first).
         /// </summary>
         public virtual V2.StripeList<V2.Billing.RateCardVersion> List(string id, VersionListOptions options = null, RequestOptions requestOptions = null)
@@ -46,7 +46,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List the versions of a RateCard object. Results are sorted in reverse chronological
+        /// List the versions of a Rate Card object. Results are sorted in reverse chronological
         /// order (most recent first).
         /// </summary>
         public virtual Task<V2.StripeList<V2.Billing.RateCardVersion>> ListAsync(string id, VersionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
@@ -55,7 +55,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List the versions of a RateCard object. Results are sorted in reverse chronological
+        /// List the versions of a Rate Card object. Results are sorted in reverse chronological
         /// order (most recent first).
         /// </summary>
         public virtual IEnumerable<V2.Billing.RateCardVersion> ListAutoPaging(string id, VersionListOptions options = null, RequestOptions requestOptions = null)
@@ -64,7 +64,7 @@ namespace Stripe.V2.Billing.RateCards
         }
 
         /// <summary>
-        /// List the versions of a RateCard object. Results are sorted in reverse chronological
+        /// List the versions of a Rate Card object. Results are sorted in reverse chronological
         /// order (most recent first).
         /// </summary>
         public virtual IAsyncEnumerable<V2.Billing.RateCardVersion> ListAutoPagingAsync(string id, VersionListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

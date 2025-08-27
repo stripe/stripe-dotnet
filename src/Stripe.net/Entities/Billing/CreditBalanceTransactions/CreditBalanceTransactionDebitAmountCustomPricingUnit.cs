@@ -9,6 +9,15 @@ namespace Stripe.Billing
     public class CreditBalanceTransactionDebitAmountCustomPricingUnit : StripeEntity<CreditBalanceTransactionDebitAmountCustomPricingUnit>, IHasId
     {
         /// <summary>
+        /// The custom pricing unit object.
+        /// </summary>
+        [JsonProperty("custom_pricing_unit_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("custom_pricing_unit_details")]
+#endif
+        public CreditBalanceTransactionDebitAmountCustomPricingUnitCustomPricingUnitDetails CustomPricingUnitDetails { get; set; }
+
+        /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]

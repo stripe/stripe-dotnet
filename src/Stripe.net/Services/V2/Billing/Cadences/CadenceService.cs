@@ -21,7 +21,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Cancel the billing cadence.
+        /// Cancel the Billing Cadence.
         /// </summary>
         public virtual Cadence Cancel(string id, CadenceCancelOptions options = null, RequestOptions requestOptions = null)
         {
@@ -29,7 +29,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Cancel the billing cadence.
+        /// Cancel the Billing Cadence.
         /// </summary>
         public virtual Task<Cadence> CancelAsync(string id, CadenceCancelOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -37,7 +37,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a billing Cadence object.
+        /// Create a Billing Cadence object.
         /// </summary>
         public virtual Cadence Create(CadenceCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -45,7 +45,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Create a billing Cadence object.
+        /// Create a Billing Cadence object.
         /// </summary>
         public virtual Task<Cadence> CreateAsync(CadenceCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -53,7 +53,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a billing Cadence object.
+        /// Retrieve a Billing Cadence object.
         /// </summary>
         public virtual Cadence Get(string id, CadenceGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -61,7 +61,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Retrieve a billing Cadence object.
+        /// Retrieve a Billing Cadence object.
         /// </summary>
         public virtual Task<Cadence> GetAsync(string id, CadenceGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +69,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all the billing Cadences.
+        /// List Billing Cadences.
         /// </summary>
         public virtual V2.StripeList<Cadence> List(CadenceListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +77,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all the billing Cadences.
+        /// List Billing Cadences.
         /// </summary>
         public virtual Task<V2.StripeList<Cadence>> ListAsync(CadenceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +85,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all the billing Cadences.
+        /// List Billing Cadences.
         /// </summary>
         public virtual IEnumerable<Cadence> ListAutoPaging(CadenceListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -93,7 +93,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// List all the billing Cadences.
+        /// List Billing Cadences.
         /// </summary>
         public virtual IAsyncEnumerable<Cadence> ListAutoPagingAsync(CadenceListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -101,7 +101,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a billing Cadence object.
+        /// Update a Billing Cadence object.
         /// </summary>
         public virtual Cadence Update(string id, CadenceUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -109,7 +109,7 @@ namespace Stripe.V2.Billing
         }
 
         /// <summary>
-        /// Update a billing Cadence object.
+        /// Update a Billing Cadence object.
         /// </summary>
         public virtual Task<Cadence> UpdateAsync(string id, CadenceUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

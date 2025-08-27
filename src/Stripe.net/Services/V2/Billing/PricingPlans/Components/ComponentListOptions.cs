@@ -20,8 +20,8 @@ namespace Stripe.V2.Billing.PricingPlans
         public List<string> LookupKeys { get; set; }
 
         /// <summary>
-        /// The ID of the PricingPlanVersion to list components for. Will use the latest version if
-        /// not provided. Mutually exclusive with <c>lookup_keys</c>.
+        /// The ID of the Pricing Plan Version to list components for. Will use the latest version
+        /// if not provided. Mutually exclusive with <c>lookup_keys</c>.
         /// </summary>
         [JsonProperty("pricing_plan_version")]
 #if NET6_0_OR_GREATER

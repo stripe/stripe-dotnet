@@ -9,8 +9,8 @@ namespace Stripe.V2.Billing
     public class PricingPlanSubscriptionListOptions : V2.ListOptions
     {
         /// <summary>
-        /// Filter by Cadence ID. Mutually exclusive with <c>payer</c>, <c>pricing_plan</c>, and
-        /// <c>pricing_plan_version</c>.
+        /// Filter by Billing Cadence ID. Mutually exclusive with <c>payer</c>, <c>pricing_plan</c>,
+        /// and <c>pricing_plan_version</c>.
         /// </summary>
         [JsonProperty("billing_cadence")]
 #if NET6_0_OR_GREATER
@@ -39,7 +39,7 @@ namespace Stripe.V2.Billing
         public string PricingPlan { get; set; }
 
         /// <summary>
-        /// Filter by PricingPlanVersion ID. Mutually exlcusive with <c>billing_cadence</c>,
+        /// Filter by Pricing Plan Version ID. Mutually exlcusive with <c>billing_cadence</c>,
         /// <c>payer</c>, and <c>pricing_plan</c>.
         /// </summary>
         [JsonProperty("pricing_plan_version")]

@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class IntentCreateOptions : BaseOptions
     {
         /// <summary>
-        /// Actions to be performed by this BillingIntent.
+        /// Actions to be performed by this Billing Intent.
         /// </summary>
         [JsonProperty("actions")]
 #if NET6_0_OR_GREATER
@@ -28,22 +28,12 @@ namespace Stripe.V2.Billing
         public string Cadence { get; set; }
 
         /// <summary>
-        /// Three-letter ISO currency code, in lowercase.
+        /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
 #endif
         public string Currency { get; set; }
-
-        /// <summary>
-        /// When the BillingIntent will take effect.
-        /// One of: <c>current_billing_period_start</c>, <c>on_commit</c>, or <c>on_reserve</c>.
-        /// </summary>
-        [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_at")]
-#endif
-        public string EffectiveAt { get; set; }
     }
 }

@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class CadenceInvoiceDiscountRule : StripeEntity<CadenceInvoiceDiscountRule>, IHasId
     {
         /// <summary>
-        /// The ID of the inline discount applied to the cadence.
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER

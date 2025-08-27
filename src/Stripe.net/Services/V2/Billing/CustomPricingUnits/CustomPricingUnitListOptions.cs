@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class CustomPricingUnitListOptions : V2.ListOptions
     {
         /// <summary>
-        /// Filter for active/inactive CustomPricingUnits. Mutually exclusive with
+        /// Filter for active/inactive custom pricing units. Mutually exclusive with
         /// <c>lookup_keys</c>.
         /// </summary>
         [JsonProperty("active")]

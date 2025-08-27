@@ -7,8 +7,6 @@ namespace Stripe
 
     public class V2Services : Service
     {
-        private V2.AccountLinkService accountLinks;
-        private V2.AccountService accounts;
         private V2.BillingService billing;
         private V2.CoreService core;
         private V2.MoneyManagementService moneyManagement;
@@ -26,12 +24,6 @@ namespace Stripe
             : base(client)
         {
         }
-
-        public virtual V2.AccountLinkService AccountLinks => this.accountLinks ??= new V2.AccountLinkService(
-            this.Requestor);
-
-        public virtual V2.AccountService Accounts => this.accounts ??= new V2.AccountService(
-            this.Requestor);
 
         public virtual V2.BillingService Billing => this.billing ??= new V2.BillingService(
             this.Requestor);

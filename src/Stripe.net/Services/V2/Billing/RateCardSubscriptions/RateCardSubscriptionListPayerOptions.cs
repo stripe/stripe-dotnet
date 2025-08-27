@@ -9,8 +9,8 @@ namespace Stripe.V2.Billing
     public class RateCardSubscriptionListPayerOptions : INestedOptions
     {
         /// <summary>
-        /// The ID of the Customer object. If provided, only RateCardSubscriptions that are
-        /// subscribed on the Cadences with the specified Payer will be returned.
+        /// The ID of the Customer object. If provided, only the Rate Card Subscriptions that are
+        /// subscribed on the Billing Cadences with the specified payer will be returned.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
