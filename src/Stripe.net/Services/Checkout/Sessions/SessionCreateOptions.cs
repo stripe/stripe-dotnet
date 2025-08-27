@@ -308,9 +308,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Where the user is coming from. This informs the optimizations that are applied to the
-        /// session. For example, a session originating from a mobile app may behave more like a
-        /// native app, depending on the platform. This parameter is currently not allowed if
-        /// <c>ui_mode</c> is <c>custom</c>.
+        /// session.
         /// One of: <c>mobile_app</c>, or <c>web</c>.
         /// </summary>
         [JsonProperty("origin_context")]

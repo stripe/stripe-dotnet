@@ -16,7 +16,8 @@ namespace Stripe
         /// link is only possible when the file's <c>purpose</c> is one of the following:
         /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,
         /// <c>dispute_evidence</c>, <c>issuing_regulatory_reporting</c>, <c>pci_document</c>,
-        /// <c>tax_document_user_upload</c>, or <c>terminal_reader_splashscreen</c>.
+        /// <c>tax_document_user_upload</c>, <c>terminal_android_apk</c>, or
+        /// <c>terminal_reader_splashscreen</c>.
         /// </summary>
         [JsonProperty("create")]
 #if NET6_0_OR_GREATER
