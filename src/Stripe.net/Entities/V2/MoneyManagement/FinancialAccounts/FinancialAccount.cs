@@ -96,6 +96,16 @@ namespace Stripe.V2.MoneyManagement
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// A descriptive name for the FinancialAccount, up to 50 characters long. This name will be
+        /// used in the Stripe Dashboard and embedded components.
+        /// </summary>
+        [JsonProperty("display_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_name")]
+#endif
+        public string DisplayName { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

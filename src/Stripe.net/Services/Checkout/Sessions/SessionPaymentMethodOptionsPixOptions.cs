@@ -9,6 +9,16 @@ namespace Stripe.Checkout
     public class SessionPaymentMethodOptionsPixOptions : INestedOptions
     {
         /// <summary>
+        /// Determines if the amount includes the IOF tax. Defaults to <c>never</c>.
+        /// One of: <c>always</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("amount_includes_iof")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_includes_iof")]
+#endif
+        public string AmountIncludesIof { get; set; }
+
+        /// <summary>
         /// The number of seconds (between 10 and 1209600) after which Pix payment will expire.
         /// Defaults to 86400 seconds.
         /// </summary>
@@ -17,6 +27,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("expires_after_seconds")]
 #endif
         public long? ExpiresAfterSeconds { get; set; }
+
+        /// <summary>
+        /// Additional fields for mandate creation.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_options")]
+#endif
+        public SessionPaymentMethodOptionsPixMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -37,6 +56,7 @@ namespace Stripe.Checkout
         /// When processing card payments, Stripe uses <c>setup_future_usage</c> to help you comply
         /// with regional legislation and network rules, such as <a
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
+        /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
 #if NET6_0_OR_GREATER

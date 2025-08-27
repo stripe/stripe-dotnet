@@ -9,7 +9,9 @@ namespace Stripe.Checkout
     public class SessionAdaptivePricing : StripeEntity<SessionAdaptivePricing>
     {
         /// <summary>
-        /// Whether Adaptive Pricing is enabled.
+        /// If enabled, Adaptive Pricing is available on <a
+        /// href="https://docs.stripe.com/payments/currencies/localize-prices/adaptive-pricing?payment-ui=stripe-hosted#restrictions">eligible
+        /// sessions</a>.
         /// </summary>
         [JsonProperty("enabled")]
 #if NET6_0_OR_GREATER

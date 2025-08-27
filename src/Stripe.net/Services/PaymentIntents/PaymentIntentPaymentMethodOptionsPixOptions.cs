@@ -11,6 +11,16 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsPixOptions : INestedOptions
     {
         /// <summary>
+        /// Determines if the amount includes the IOF tax. Defaults to <c>never</c>.
+        /// One of: <c>always</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("amount_includes_iof")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_includes_iof")]
+#endif
+        public string AmountIncludesIof { get; set; }
+
+        /// <summary>
         /// The number of seconds (between 10 and 1209600) after which Pix payment will expire.
         /// Defaults to 86400 seconds.
         /// </summary>
@@ -31,6 +41,16 @@ namespace Stripe
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
         public DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
+        /// Additional fields for mandate creation. Only applicable when
+        /// <c>setup_future_usage=off_session</c>.
+        /// </summary>
+        [JsonProperty("mandate_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_options")]
+#endif
+        public PaymentIntentPaymentMethodOptionsPixMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
@@ -55,6 +75,7 @@ namespace Stripe
         /// If you've already set <c>setup_future_usage</c> and you're performing a request using a
         /// publishable key, you can only update the value from <c>on_session</c> to
         /// <c>off_session</c>.
+        /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
 #if NET6_0_OR_GREATER

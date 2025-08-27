@@ -9,33 +9,13 @@ namespace Stripe
     public class BalanceSettingsUpdateOptions : BaseOptions
     {
         /// <summary>
-        /// A Boolean indicating whether Stripe should try to reclaim negative balances from an
-        /// attached bank account. For details, see <a
-        /// href="https://stripe.com/connect/account-balances">Understanding Connect Account
-        /// Balances</a>.
+        /// Settings that apply to the <a href="https://docs.stripe.com/api/balance">Payments
+        /// Balance</a>.
         /// </summary>
-        [JsonProperty("debit_negative_balances")]
+        [JsonProperty("payments")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("debit_negative_balances")]
+        [STJS.JsonPropertyName("payments")]
 #endif
-        public bool? DebitNegativeBalances { get; set; }
-
-        /// <summary>
-        /// Settings specific to the account's payouts.
-        /// </summary>
-        [JsonProperty("payouts")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payouts")]
-#endif
-        public BalanceSettingsPayoutsOptions Payouts { get; set; }
-
-        /// <summary>
-        /// Settings related to the account's balance settlement timing.
-        /// </summary>
-        [JsonProperty("settlement_timing")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("settlement_timing")]
-#endif
-        public BalanceSettingsSettlementTimingOptions SettlementTiming { get; set; }
+        public BalanceSettingsPaymentsOptions Payments { get; set; }
     }
 }

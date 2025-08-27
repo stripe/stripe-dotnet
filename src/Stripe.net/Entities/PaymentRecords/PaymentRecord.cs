@@ -39,6 +39,24 @@ namespace Stripe
         /// <summary>
         /// A representation of an amount of money, consisting of an amount and a currency.
         /// </summary>
+        [JsonProperty("amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount")]
+#endif
+        public PaymentRecordAmount Amount { get; set; }
+
+        /// <summary>
+        /// A representation of an amount of money, consisting of an amount and a currency.
+        /// </summary>
+        [JsonProperty("amount_authorized")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_authorized")]
+#endif
+        public PaymentRecordAmountAuthorized AmountAuthorized { get; set; }
+
+        /// <summary>
+        /// A representation of an amount of money, consisting of an amount and a currency.
+        /// </summary>
         [JsonProperty("amount_canceled")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_canceled")]
@@ -66,11 +84,29 @@ namespace Stripe
         /// <summary>
         /// A representation of an amount of money, consisting of an amount and a currency.
         /// </summary>
+        [JsonProperty("amount_refunded")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_refunded")]
+#endif
+        public PaymentRecordAmountRefunded AmountRefunded { get; set; }
+
+        /// <summary>
+        /// A representation of an amount of money, consisting of an amount and a currency.
+        /// </summary>
         [JsonProperty("amount_requested")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_requested")]
 #endif
         public PaymentRecordAmountRequested AmountRequested { get; set; }
+
+        /// <summary>
+        /// ID of the Connect application that created the PaymentRecord.
+        /// </summary>
+        [JsonProperty("application")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application")]
+#endif
+        public string Application { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
@@ -151,14 +187,13 @@ namespace Stripe
         public PaymentRecordPaymentMethodDetails PaymentMethodDetails { get; set; }
 
         /// <summary>
-        /// An opaque string for manual reconciliation of this payment, for example a check number
-        /// or a payment processor ID.
+        /// Processor information associated with this payment.
         /// </summary>
-        [JsonProperty("payment_reference")]
+        [JsonProperty("processor_details")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_reference")]
+        [STJS.JsonPropertyName("processor_details")]
 #endif
-        public string PaymentReference { get; set; }
+        public PaymentRecordProcessorDetails ProcessorDetails { get; set; }
 
         /// <summary>
         /// Shipping information for this payment.

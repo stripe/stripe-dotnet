@@ -26,7 +26,6 @@ namespace Stripe
         private CheckoutService checkout;
         private ClimateService climate;
         private ConfirmationTokenService confirmationTokens;
-        private TestHelpersService testHelpers;
         private CountrySpecService countrySpecs;
         private CouponService coupons;
         private CreditNoteService creditNotes;
@@ -36,6 +35,7 @@ namespace Stripe
         private EntitlementsService entitlements;
         private EphemeralKeyService ephemeralKeys;
         private EventService events;
+        private ExternalAccountService externalAccounts;
         private FileService files;
         private FileLinkService fileLinks;
         private FinancialConnectionsService financialConnections;
@@ -43,9 +43,9 @@ namespace Stripe
         private FxQuoteService fxQuotes;
         private IdentityService identity;
         private InvoiceService invoices;
+        private InvoiceItemService invoiceItems;
         private InvoicePaymentService invoicePayments;
         private InvoiceRenderingTemplateService invoiceRenderingTemplates;
-        private InvoiceItemService invoiceItems;
         private IssuingService issuing;
         private MandateService mandates;
         private MarginService margins;
@@ -68,10 +68,10 @@ namespace Stripe
         private RefundService refunds;
         private ReportingService reporting;
         private ReviewService reviews;
-        private SigmaService sigma;
         private SetupAttemptService setupAttempts;
         private SetupIntentService setupIntents;
         private ShippingRateService shippingRates;
+        private SigmaService sigma;
         private SourceService sources;
         private SubscriptionService subscriptions;
         private SubscriptionItemService subscriptionItems;
@@ -81,12 +81,12 @@ namespace Stripe
         private TaxIdService taxIds;
         private TaxRateService taxRates;
         private TerminalService terminal;
+        private TestHelpersService testHelpers;
         private TokenService tokens;
         private TopupService topups;
         private TransferService transfers;
         private TreasuryService treasury;
         private WebhookEndpointService webhookEndpoints;
-        private ExternalAccountService externalAccounts;
 
         internal V1Services(ApiRequestor requestor)
             : base(requestor)
@@ -155,9 +155,6 @@ namespace Stripe
         public virtual ConfirmationTokenService ConfirmationTokens => this.confirmationTokens ??= new ConfirmationTokenService(
             this.Requestor);
 
-        public virtual TestHelpersService TestHelpers => this.testHelpers ??= new TestHelpersService(
-            this.Requestor);
-
         public virtual CountrySpecService CountrySpecs => this.countrySpecs ??= new CountrySpecService(
             this.Requestor);
 
@@ -185,6 +182,9 @@ namespace Stripe
         public virtual EventService Events => this.events ??= new EventService(
             this.Requestor);
 
+        public virtual ExternalAccountService ExternalAccounts => this.externalAccounts ??= new ExternalAccountService(
+            this.Requestor);
+
         public virtual FileService Files => this.files ??= new FileService(
             this.Requestor);
 
@@ -206,13 +206,13 @@ namespace Stripe
         public virtual InvoiceService Invoices => this.invoices ??= new InvoiceService(
             this.Requestor);
 
+        public virtual InvoiceItemService InvoiceItems => this.invoiceItems ??= new InvoiceItemService(
+            this.Requestor);
+
         public virtual InvoicePaymentService InvoicePayments => this.invoicePayments ??= new InvoicePaymentService(
             this.Requestor);
 
         public virtual InvoiceRenderingTemplateService InvoiceRenderingTemplates => this.invoiceRenderingTemplates ??= new InvoiceRenderingTemplateService(
-            this.Requestor);
-
-        public virtual InvoiceItemService InvoiceItems => this.invoiceItems ??= new InvoiceItemService(
             this.Requestor);
 
         public virtual IssuingService Issuing => this.issuing ??= new IssuingService(
@@ -281,9 +281,6 @@ namespace Stripe
         public virtual ReviewService Reviews => this.reviews ??= new ReviewService(
             this.Requestor);
 
-        public virtual SigmaService Sigma => this.sigma ??= new SigmaService(
-            this.Requestor);
-
         public virtual SetupAttemptService SetupAttempts => this.setupAttempts ??= new SetupAttemptService(
             this.Requestor);
 
@@ -291,6 +288,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual ShippingRateService ShippingRates => this.shippingRates ??= new ShippingRateService(
+            this.Requestor);
+
+        public virtual SigmaService Sigma => this.sigma ??= new SigmaService(
             this.Requestor);
 
         public virtual SourceService Sources => this.sources ??= new SourceService(
@@ -320,6 +320,9 @@ namespace Stripe
         public virtual TerminalService Terminal => this.terminal ??= new TerminalService(
             this.Requestor);
 
+        public virtual TestHelpersService TestHelpers => this.testHelpers ??= new TestHelpersService(
+            this.Requestor);
+
         public virtual TokenService Tokens => this.tokens ??= new TokenService(
             this.Requestor);
 
@@ -333,9 +336,6 @@ namespace Stripe
             this.Requestor);
 
         public virtual WebhookEndpointService WebhookEndpoints => this.webhookEndpoints ??= new WebhookEndpointService(
-            this.Requestor);
-
-        public virtual ExternalAccountService ExternalAccounts => this.externalAccounts ??= new ExternalAccountService(
             this.Requestor);
     }
 }

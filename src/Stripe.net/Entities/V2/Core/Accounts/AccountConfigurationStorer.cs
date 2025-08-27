@@ -9,6 +9,16 @@ namespace Stripe.V2.Core
     public class AccountConfigurationStorer : StripeEntity<AccountConfigurationStorer>
     {
         /// <summary>
+        /// Represents the state of the configuration, and can be updated to deactivate or re-apply
+        /// a configuration.
+        /// </summary>
+        [JsonProperty("applied")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("applied")]
+#endif
+        public bool Applied { get; set; }
+
+        /// <summary>
         /// Capabilities that have been requested on the Storer Configuration.
         /// </summary>
         [JsonProperty("capabilities")]

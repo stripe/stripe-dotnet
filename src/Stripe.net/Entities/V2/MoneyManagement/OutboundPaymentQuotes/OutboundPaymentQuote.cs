@@ -9,7 +9,8 @@ namespace Stripe.V2.MoneyManagement
 #endif
 
     /// <summary>
-    /// OutboundPaymentQuote represents a quote.
+    /// OutboundPaymentQuote represents a quote that provides fee and amount estimates for
+    /// OutboundPayment.
     /// </summary>
     public class OutboundPaymentQuote : StripeEntity<OutboundPaymentQuote>, IHasId, IHasObject
     {

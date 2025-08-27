@@ -35,8 +35,8 @@ namespace Stripe
         public string NetworkAdviceCode { get; set; }
 
         /// <summary>
-        /// For charges declined by the network, a brand specific 2, 3, or 4 digit code which
-        /// indicates the reason the authorization failed.
+        /// For charges declined by the network, an alphanumeric code which indicates the reason the
+        /// charge failed.
         /// </summary>
         [JsonProperty("network_decline_code")]
 #if NET6_0_OR_GREATER
@@ -61,8 +61,9 @@ namespace Stripe
         /// An enumerated value providing a more detailed explanation of the outcome's <c>type</c>.
         /// Charges blocked by Radar's default block rule have the value <c>highest_risk_level</c>.
         /// Charges placed in review by Radar's default review rule have the value
-        /// <c>elevated_risk_level</c>. Charges authorized, blocked, or placed in review by custom
-        /// rules have the value <c>rule</c>. See <a
+        /// <c>elevated_risk_level</c>. Charges blocked because the payment is unlikely to be
+        /// authorized have the value <c>low_probability_of_authorization</c>. Charges authorized,
+        /// blocked, or placed in review by custom rules have the value <c>rule</c>. See <a
         /// href="https://stripe.com/docs/declines">understanding declines</a> for more details.
         /// </summary>
         [JsonProperty("reason")]

@@ -42,7 +42,8 @@ namespace Stripe
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
-        /// Only return subscriptions whose current_period_end falls within the given date interval.
+        /// Only return subscriptions whose minimum item current_period_end falls within the given
+        /// date interval.
         /// </summary>
         [JsonProperty("current_period_end")]
         [JsonConverter(typeof(AnyOfConverter))]
@@ -53,8 +54,8 @@ namespace Stripe
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodEnd { get; set; }
 
         /// <summary>
-        /// Only return subscriptions whose current_period_start falls within the given date
-        /// interval.
+        /// Only return subscriptions whose maximum item current_period_start falls within the given
+        /// date interval.
         /// </summary>
         [JsonProperty("current_period_start")]
         [JsonConverter(typeof(AnyOfConverter))]
