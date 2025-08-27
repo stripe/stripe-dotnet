@@ -45,7 +45,7 @@ how to use the library.
 
 ### Using StripeClient
 
-In version 46 of the Stripe .NET SDK, we have enhanced the `StripeClient` class to be the entry point to access all services that had to be previously independently instantiated with global configuration. This improves discoverability during IDE auto-completion and creates a more intuitive developer experience for you. 
+In version 46 of the Stripe .NET SDK, we have enhanced the `StripeClient` class to be the entry point to access all services that had to be previously independently instantiated with global configuration. This improves discoverability during IDE auto-completion and creates a more intuitive developer experience for you.
 
 Each client instantiation can have its own configuration so you can access Stripe API with different API keys or different configuration (like number of retries) on a per client basis and without changing a global configuration.
 
@@ -285,7 +285,7 @@ StripeConfiguration.EnableTelemetry = false;
 Stripe has features in the [public preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-beta.X` suffix like `45.1.0-beta.2`.
 We would love for you to try these as we incrementally release new features and improve them based on your feedback.
 
-To install, choose the version that includes support for the preview feature you are interested in by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the version parameter with `dotnet add package` command:
+To install, pick the latest version with the `beta` suffix by reviewing the [releases page](https://github.com/stripe/stripe-dotnet/releases/) and then use it in the version parameter with `dotnet add package` command:
 
 ```
 dotnet add package Stripe.net --version <replace-with-the-version-of-your-choice>
@@ -299,6 +299,9 @@ Some preview features require a name and version to be set in the `Stripe-Versio
 ```csharp
 StripeConfiguration.AddBetaVersion("feature_beta", "v3");
 ```
+### Private Preview SDKs
+
+Stripe has features in the [private preview phase](https://docs.stripe.com/release-phases) that can be accessed via versions of this package that have the `-alpha.X` suffix like `45.2.0-alpha.2`. These are invite-only features. Once invited, you can install the private preview SDKs by following the same instructions as for the [public preview SDKs](https://github.com/stripe/stripe-dotnet?tab=readme-ov-file#public-preview-sdks) above and replacing the term `beta` with `alpha`.
 
 ### Custom requests
 
