@@ -63,7 +63,7 @@ namespace Stripe
 
         /// <summary>
         /// The day of the week when available funds are paid out, specified as <c>monday</c>,
-        /// <c>tuesday</c>, etc. (required and applicable only if <c>interval</c> is <c>weekly</c>.).
+        /// <c>tuesday</c>, etc. Required and applicable only if <c>interval</c> is <c>weekly</c>.
         /// One of: <c>friday</c>, <c>monday</c>, <c>saturday</c>, <c>sunday</c>, <c>thursday</c>,
         /// <c>tuesday</c>, or <c>wednesday</c>.
         /// </summary>
@@ -75,8 +75,8 @@ namespace Stripe
 
         /// <summary>
         /// The days of the week when available funds are paid out, specified as an array, e.g.,
-        /// [<c>monday</c>, <c>tuesday</c>]. (required and applicable only if <c>interval</c> is
-        /// <c>weekly</c> and <c>weekly_anchor</c> is not set.).
+        /// [<c>monday</c>, <c>tuesday</c>]. Required and applicable only if <c>interval</c> is
+        /// <c>weekly</c>.
         /// One of: <c>friday</c>, <c>monday</c>, <c>saturday</c>, <c>sunday</c>, <c>thursday</c>,
         /// <c>tuesday</c>, or <c>wednesday</c>.
         /// </summary>

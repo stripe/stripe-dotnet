@@ -8,13 +8,13 @@ namespace Stripe
     public class BillingService : Service
     {
         private Billing.AlertService alerts;
+        private Billing.AnalyticsService analytics;
         private Billing.CreditBalanceSummaryService creditBalanceSummary;
         private Billing.CreditBalanceTransactionService creditBalanceTransactions;
         private Billing.CreditGrantService creditGrants;
         private Billing.MeterService meters;
         private Billing.MeterEventService meterEvents;
         private Billing.MeterEventAdjustmentService meterEventAdjustments;
-        private Billing.MeterUsageService meterUsage;
 
         internal BillingService(ApiRequestor requestor)
             : base(requestor)
@@ -27,6 +27,9 @@ namespace Stripe
         }
 
         public virtual Billing.AlertService Alerts => this.alerts ??= new Billing.AlertService(
+            this.Requestor);
+
+        public virtual Billing.AnalyticsService Analytics => this.analytics ??= new Billing.AnalyticsService(
             this.Requestor);
 
         public virtual Billing.CreditBalanceSummaryService CreditBalanceSummary => this.creditBalanceSummary ??= new Billing.CreditBalanceSummaryService(
@@ -45,9 +48,6 @@ namespace Stripe
             this.Requestor);
 
         public virtual Billing.MeterEventAdjustmentService MeterEventAdjustments => this.meterEventAdjustments ??= new Billing.MeterEventAdjustmentService(
-            this.Requestor);
-
-        public virtual Billing.MeterUsageService MeterUsage => this.meterUsage ??= new Billing.MeterUsageService(
             this.Requestor);
     }
 }

@@ -39,7 +39,7 @@ namespace Stripe.Billing
         public string Meter { get; set; }
 
         /// <summary>
-        /// Whether the alert should only fire only once, or once per billing cycle.
+        /// Defines how the alert will behave.
         /// </summary>
         [JsonProperty("recurrence")]
 #if NET6_0_OR_GREATER
