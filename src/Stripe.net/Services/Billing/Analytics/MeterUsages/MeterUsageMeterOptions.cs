@@ -1,5 +1,5 @@
 // File generated from our OpenAPI spec
-namespace Stripe.Billing
+namespace Stripe.Billing.Analytics
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;

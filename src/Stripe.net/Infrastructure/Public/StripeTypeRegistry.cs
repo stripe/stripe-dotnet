@@ -29,6 +29,8 @@ namespace Stripe
                 { "bank_account", typeof(BankAccount) },
                 { "billing.alert", typeof(Billing.Alert) },
                 { "billing.alert_triggered", typeof(Billing.AlertTriggered) },
+                { "billing.analytics.meter_usage", typeof(Billing.Analytics.MeterUsage) },
+                { "billing.analytics.meter_usage_row", typeof(Billing.Analytics.MeterUsageRow) },
                 { "billing.credit_balance_summary", typeof(Billing.CreditBalanceSummary) },
                 {
                     "billing.credit_balance_transaction", typeof(
@@ -39,8 +41,6 @@ namespace Stripe
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
                 { "billing.meter_event_summary", typeof(Billing.MeterEventSummary) },
-                { "billing.meter_usage", typeof(Billing.MeterUsage) },
-                { "billing.meter_usage_row", typeof(Billing.MeterUsageRow) },
                 { "billing_portal.configuration", typeof(BillingPortal.Configuration) },
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
