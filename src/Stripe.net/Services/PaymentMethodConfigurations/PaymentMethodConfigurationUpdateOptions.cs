@@ -524,6 +524,15 @@ namespace Stripe
         public PaymentMethodConfigurationPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// Customers can pay with PayPay online or using the PayPay app.
+        /// </summary>
+        [JsonProperty("paypay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay")]
+#endif
+        public PaymentMethodConfigurationPaypayOptions Paypay { get; set; }
+
+        /// <summary>
         /// PayTo is a <a href="https://docs.stripe.com/payments/real-time">real-time</a> payment
         /// method that enables customers in Australia to pay by providing their bank account
         /// details. Customers must accept a mandate authorizing you to debit their account. Check
