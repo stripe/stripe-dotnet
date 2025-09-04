@@ -12,7 +12,7 @@ namespace Stripe.V2
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// Manually-maintained convenience methods added to ThinEvent.
+    /// Manually-maintained convenience methods added to V2 Events.
     /// </summary>
     [JsonConverter(typeof(V2EventConverter))]
 #if NET6_0_OR_GREATER

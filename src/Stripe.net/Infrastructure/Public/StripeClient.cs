@@ -8,6 +8,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+    using Stripe.V2;
 
     /// <summary>
     /// A Stripe client, used to issue requests to Stripe's API and deserialize responses.

@@ -1,6 +1,6 @@
 #nullable disable
 
-namespace Stripe
+namespace Stripe.V2
 {
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER

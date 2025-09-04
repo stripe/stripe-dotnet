@@ -1,6 +1,7 @@
-namespace Stripe
+namespace Stripe.V2
 {
     using System;
+    using System.Diagnostics.CodeAnalysis;
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
@@ -23,16 +24,38 @@ namespace Stripe
 #endif
         public EventNotificationRelatedObject? RelatedObject { get; internal set; }
 
-        public new V2.Event FetchEvent()
+        public V2.Event FetchEvent()
         {
-            return base.FetchEvent();
+            return this.FetchEvent<V2.Event>();
         }
 
-        public new Task<V2.Event> FetchEventAsync(CancellationToken cancellationToken = default)
+        public Task<V2.Event> FetchEventAsync(CancellationToken cancellationToken = default)
         {
-            return base.FetchEventAsync(cancellationToken);
+            return this.FetchEventAsync<V2.Event>(cancellationToken);
         }
 
-        // TODO: fetchRelatedObject
+        [return: MaybeNull]
+        public T FetchRelatedObject<T>()
+            where T : IStripeEntity
+        {
+            if (this.RelatedObject == null)
+            {
+                return default;
+            }
+
+            return this.FetchRelatedObject<T>(this.RelatedObject);
+        }
+
+        [return: MaybeNull]
+        public Task<T> FetchRelatedObjectAsync<T>()
+            where T : IStripeEntity
+        {
+            if (this.RelatedObject == null)
+            {
+                return default;
+            }
+
+            return this.FetchRelatedObjectAsync<T>(this.RelatedObject);
+        }
     }
 }

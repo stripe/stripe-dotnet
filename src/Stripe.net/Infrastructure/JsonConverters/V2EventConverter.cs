@@ -18,6 +18,11 @@ namespace Stripe.Infrastructure
             throw new NotSupportedException("V2EventConverter should only be used while deserializing.");
         }
 
+        private Type GetCongreteType(string typeValue)
+        {
+            return StripeTypeRegistry.GetConcreteV2EventType(typeValue) ?? typeof(V2.Event);
+        }
+
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null)
@@ -31,12 +36,7 @@ namespace Stripe.Infrastructure
             // class to deserialize into.
             var typeValue = (string)jsonObject["type"];
 
-            Type concreteType = StripeTypeRegistry.GetConcreteThinEventType(typeValue);
-            if (concreteType == null)
-            {
-                // If "type" is unknown by this SDK, default to the generic ThinEvent type.
-                concreteType = typeof(V2.Event);
-            }
+            Type concreteType = this.GetCongreteType(typeValue);
 
             using (var subReader = jsonObject.CreateReader())
             {
