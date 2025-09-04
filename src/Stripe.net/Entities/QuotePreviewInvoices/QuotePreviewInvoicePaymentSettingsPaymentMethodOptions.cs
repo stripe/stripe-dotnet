@@ -69,6 +69,16 @@ namespace Stripe
         public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsKonbini Konbini { get; set; }
 
         /// <summary>
+        /// If paying by <c>pix</c>, this sub-hash contains details about the Pix payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("pix")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pix")]
+#endif
+        public QuotePreviewInvoicePaymentSettingsPaymentMethodOptionsPix Pix { get; set; }
+
+        /// <summary>
         /// If paying by <c>sepa_debit</c>, this sub-hash contains details about the SEPA Direct
         /// Debit payment method options to pass to the invoice’s PaymentIntent.
         /// </summary>
