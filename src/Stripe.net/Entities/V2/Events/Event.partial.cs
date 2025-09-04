@@ -66,7 +66,7 @@ namespace Stripe.V2
             RequestOptions opts = null;
             if (this.Context != null)
             {
-                opts = new RequestOptions { StripeAccount = this.Context };
+                opts = new RequestOptions { StripeContext = this.Context };
             }
 
             return this.Requestor.RequestAsync<T>(

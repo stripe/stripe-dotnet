@@ -175,7 +175,7 @@ namespace StripeTests.V2
                     Content = new StringContent(payload),
                 });
 
-            var bte = this.stripeClient.ParseThinEvent(payload, GenerateSigHeader(payload), WebhookSecret);
+            var bte = this.stripeClient.ParseEventNotification(payload, GenerateSigHeader(payload), WebhookSecret);
 
             // Check to make sure this parsed the payload correctly
             Assert.NotNull(bte.Id);
@@ -186,7 +186,7 @@ namespace StripeTests.V2
         [Fact]
         public void ParseThinEventWithoutRelatedObject()
         {
-            var baseThinEvent = this.stripeClient.ParseThinEvent(v2KnownEventNoRelatedObjectPayload, GenerateSigHeader(v2KnownEventNoRelatedObjectPayload), WebhookSecret);
+            var baseThinEvent = this.stripeClient.ParseEventNotification(v2KnownEventNoRelatedObjectPayload, GenerateSigHeader(v2KnownEventNoRelatedObjectPayload), WebhookSecret);
             Assert.NotNull(baseThinEvent);
             Assert.Equal("evt_234", baseThinEvent.Id);
             Assert.Equal("v1.billing.meter.no_meter_found", baseThinEvent.Type);
@@ -199,7 +199,7 @@ namespace StripeTests.V2
         [Fact]
         public void ParseThinEventWithRelatedObject()
         {
-            var baseThinEvent = this.stripeClient.ParseThinEvent(v2KnownEventPayload, GenerateSigHeader(v2KnownEventPayload), WebhookSecret);
+            var baseThinEvent = this.stripeClient.ParseEventNotification(v2KnownEventPayload, GenerateSigHeader(v2KnownEventPayload), WebhookSecret);
             Assert.NotNull(baseThinEvent);
             Assert.Equal("evt_234", baseThinEvent.Id);
             Assert.Equal("v1.billing.meter.error_report_triggered", baseThinEvent.Type);
@@ -227,7 +227,7 @@ namespace StripeTests.V2
         [Fact]
         public void ParseThinEventWithLivemodeFalse()
         {
-            var baseThinEvent = this.stripeClient.ParseThinEvent(v2KnownEventLivemodeFalsePayload, GenerateSigHeader(v2KnownEventLivemodeFalsePayload), WebhookSecret);
+            var baseThinEvent = this.stripeClient.ParseEventNotification(v2KnownEventLivemodeFalsePayload, GenerateSigHeader(v2KnownEventLivemodeFalsePayload), WebhookSecret);
             Assert.NotNull(baseThinEvent);
             Assert.Equal("evt_234", baseThinEvent.Id);
             Assert.Equal("v1.billing.meter.no_meter_found", baseThinEvent.Type);
@@ -240,7 +240,7 @@ namespace StripeTests.V2
         [Fact]
         public void ParseThinEventWithReason()
         {
-            var baseThinEvent = this.stripeClient.ParseThinEvent(v2KnownEventWithReasonPayload, GenerateSigHeader(v2KnownEventWithReasonPayload), WebhookSecret);
+            var baseThinEvent = this.stripeClient.ParseEventNotification(v2KnownEventWithReasonPayload, GenerateSigHeader(v2KnownEventWithReasonPayload), WebhookSecret);
             Assert.NotNull(baseThinEvent);
             Assert.Equal("evt_234", baseThinEvent.Id);
             Assert.Equal("v1.billing.meter.no_meter_found", baseThinEvent.Type);
@@ -257,7 +257,7 @@ namespace StripeTests.V2
         [Fact]
         public void ParseThinEventWithInvalidSignature()
         {
-            var exception = Assert.Throws<StripeException>(() => this.stripeClient.ParseThinEvent(v2UnknownEventPayload, "invalid signature", WebhookSecret));
+            var exception = Assert.Throws<StripeException>(() => this.stripeClient.ParseEventNotification(v2UnknownEventPayload, "invalid signature", WebhookSecret));
 
             Assert.Matches("header format is unexpected", exception.Message);
         }

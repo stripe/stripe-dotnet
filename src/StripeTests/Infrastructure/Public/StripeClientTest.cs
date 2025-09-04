@@ -209,7 +209,7 @@ namespace StripeTests
                     ""url"": ""/v2/accounts""
                 }
             }";
-            var evt = this.stripeClient.ParseThinEvent(
+            var evt = this.stripeClient.ParseEventNotification(
                 payload,
                 V2.EventTest.GenerateSigHeader(payload),
                 V2.EventTest.WebhookSecret);
