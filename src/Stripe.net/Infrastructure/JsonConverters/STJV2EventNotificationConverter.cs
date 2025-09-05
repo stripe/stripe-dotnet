@@ -20,7 +20,7 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The calling serializer's options.</param>
         /// <returns>The object value.</returns>
-        public override V2.Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override V2.EventNotification Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             throw new NotSupportedException("STJV2EventConverter should only be used while serializing.");
         }

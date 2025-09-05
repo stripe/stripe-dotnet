@@ -19,7 +19,7 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJV2EventNotificationConverter))]
 #endif
-    public abstract class EventNotification
+    public class EventNotification
     {
         /// <summary>
         /// Unique identifier for the event.
@@ -86,34 +86,11 @@ namespace Stripe.V2
         /// <returns></returns>
         public static EventNotification FromJson(string payload, StripeClient client)
         {
-            // FIXME
-            var en = JsonUtils.DeserializeObject(payload, client.GetJsonSerializationSettings());
+            var en = JsonUtils.DeserializeObject<EventNotification>(payload, client.GetJsonSerializationSettings());
 
             en.Client = client;
 
             return en;
-        }
-
-        private RequestOptions GetRequestOptions(string usage)
-        {
-            var o = new RequestOptions { Usage = new List<string> { usage } };
-            if (this.Context != null)
-            {
-                o.StripeContext = this.Context;
-            }
-
-            return o;
-        }
-
-        private RawRequestOptions GetRawRequestOptions(string usage)
-        {
-            var o = new RawRequestOptions { Usage = new List<string> { usage } };
-            if (this.Context != null)
-            {
-                o.StripeContext = this.Context;
-            }
-
-            return o;
         }
 
         protected T FetchEvent<T>()

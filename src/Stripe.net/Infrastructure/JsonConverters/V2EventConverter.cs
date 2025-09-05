@@ -18,7 +18,7 @@ namespace Stripe.Infrastructure
             throw new NotSupportedException("V2EventConverter should only be used while deserializing.");
         }
 
-        private Type GetCongreteType(string typeValue)
+        protected virtual Type GetConcreteType(string typeValue)
         {
             return StripeTypeRegistry.GetConcreteV2EventType(typeValue) ?? typeof(V2.Event);
         }
@@ -36,7 +36,7 @@ namespace Stripe.Infrastructure
             // class to deserialize into.
             var typeValue = (string)jsonObject["type"];
 
-            Type concreteType = this.GetCongreteType(typeValue);
+            Type concreteType = this.GetConcreteType(typeValue);
 
             using (var subReader = jsonObject.CreateReader())
             {
