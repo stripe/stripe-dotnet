@@ -34,25 +34,23 @@ namespace Stripe.V2
             return this.FetchEventAsync<V2.Event>(cancellationToken);
         }
 
-        [return: MaybeNull]
         public T FetchRelatedObject<T>()
             where T : IStripeEntity
         {
             if (this.RelatedObject == null)
             {
-                return default;
+                throw new Exception("there's no relatedObject to fetch.");
             }
 
             return this.FetchRelatedObject<T>(this.RelatedObject);
         }
 
-        [return: MaybeNull]
         public Task<T> FetchRelatedObjectAsync<T>()
             where T : IStripeEntity
         {
             if (this.RelatedObject == null)
             {
-                return default;
+                throw new Exception("there's no relatedObject to fetch.");
             }
 
             return this.FetchRelatedObjectAsync<T>(this.RelatedObject);
