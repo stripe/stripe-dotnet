@@ -93,7 +93,7 @@ namespace Stripe.V2
             return en;
         }
 
-        protected T FetchEvent<T>()
+        protected internal T FetchEvent<T>()
         where T : V2.Event
         {
             return this.FetchEventAsync<T>().ConfigureAwait(false).GetAwaiter().GetResult();
@@ -109,7 +109,7 @@ namespace Stripe.V2
 
             return (T)await this.Client.V2.Core.Events.GetAsync(
                 this.Id,
-                requestOptions: new RawRequestOptions
+                requestOptions: new RequestOptions
                 {
                     Usage = new List<string> { "fetch_event" },
                     StripeContext = this.Context,

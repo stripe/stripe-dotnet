@@ -13,7 +13,7 @@ namespace Stripe.Infrastructure
     {
         protected override Type GetConcreteType(string typeValue)
         {
-            return StripeTypeRegistry.GetConcreteV2EventNotificationType(typeValue) ?? typeof(V2.EventNotification);
+            return StripeTypeRegistry.GetConcreteV2EventNotificationType(typeValue) ?? typeof(V2.UnknownEventNotification);
         }
 
         // mostly copied from the parent, but with different types
