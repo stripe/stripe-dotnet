@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonDocumentsPrimaryVerification : StripeEntity<PersonDocumentsPrimaryVerification>
+    public class AccountPersonDocumentsPrimaryVerification : StripeEntity<AccountPersonDocumentsPrimaryVerification>
     {
         /// <summary>
         /// The <a href="https://docs.stripe.com/api/persons/update#create_file">file upload</a>
@@ -16,7 +16,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("front_back")]
 #endif
-        public PersonDocumentsPrimaryVerificationFrontBack FrontBack { get; set; }
+        public AccountPersonDocumentsPrimaryVerificationFrontBack FrontBack { get; set; }
 
         /// <summary>
         /// The format of the verification document. Currently supports <c>front_back</c> only.

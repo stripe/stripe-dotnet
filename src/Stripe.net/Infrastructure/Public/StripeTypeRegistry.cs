@@ -236,7 +236,7 @@ namespace Stripe
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
                 { "v2.core.account", typeof(V2.Core.Account) },
                 { "v2.core.account_link", typeof(V2.Core.AccountLink) },
-                { "v2.core.account_person", typeof(V2.Core.Person) },
+                { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
                 { "v2.core.event", typeof(V2.Event) },
                 { "v2.core.event_destination", typeof(V2.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },

@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class AccountCreateIdentityIndividualAdditionalAddressOptions : INestedOptions
+    public class AccountPersonScriptAddressesKana : StripeEntity<AccountPersonScriptAddressesKana>
     {
         /// <summary>
         /// City, district, suburb, town, or village.
@@ -53,15 +53,6 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("postal_code")]
 #endif
         public string PostalCode { get; set; }
-
-        /// <summary>
-        /// Purpose of additional address.
-        /// </summary>
-        [JsonProperty("purpose")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("purpose")]
-#endif
-        public string Purpose { get; set; }
 
         /// <summary>
         /// State, county, province, or region.

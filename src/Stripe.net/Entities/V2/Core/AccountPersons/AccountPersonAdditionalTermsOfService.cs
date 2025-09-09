@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonAdditionalTermsOfService : StripeEntity<PersonAdditionalTermsOfService>
+    public class AccountPersonAdditionalTermsOfService : StripeEntity<AccountPersonAdditionalTermsOfService>
     {
         /// <summary>
         /// Stripe terms of service agreement.
@@ -15,6 +15,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account")]
 #endif
-        public PersonAdditionalTermsOfServiceAccount Account { get; set; }
+        public AccountPersonAdditionalTermsOfServiceAccount Account { get; set; }
     }
 }

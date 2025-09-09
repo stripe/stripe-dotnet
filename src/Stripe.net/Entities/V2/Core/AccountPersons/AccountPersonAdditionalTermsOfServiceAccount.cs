@@ -7,7 +7,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonAdditionalTermsOfServiceAccount : StripeEntity<PersonAdditionalTermsOfServiceAccount>
+    public class AccountPersonAdditionalTermsOfServiceAccount : StripeEntity<AccountPersonAdditionalTermsOfServiceAccount>
     {
         /// <summary>
         /// The time when the Account's representative accepted the terms of service. Represented as
@@ -18,7 +18,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("date")]
 #endif
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The IP address from which the Account's representative accepted the terms of service.

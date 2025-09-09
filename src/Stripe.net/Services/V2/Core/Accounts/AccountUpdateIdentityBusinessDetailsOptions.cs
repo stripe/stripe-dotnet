@@ -3,507 +3,121 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class AccountUpdateIdentityBusinessDetailsOptions : INestedOptions
     {
-        [JsonProperty("address")]
-        [JsonConverter(typeof(EmptyableConverter<AddressJapanOptions>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("address")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<AddressJapanOptions>))]
-#endif
-        internal Emptyable<AddressJapanOptions> InternalAddress { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyAddress
-        {
-            get => this.InternalAddress?.Empty ?? false;
-            set
-            {
-                this.InternalAddress ??= new Emptyable<AddressJapanOptions>();
-                this.InternalAddress.Empty = value;
-            }
-        }
-
         /// <summary>
         /// The business registration address of the business entity.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("address")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("address")]
 #endif
-        public AddressJapanOptions Address
-        {
-            get => this.InternalAddress?.Value;
-            set
-            {
-                this.InternalAddress ??= new Emptyable<AddressJapanOptions>();
-                this.InternalAddress.Value = value;
-            }
-        }
-
-        [JsonProperty("annual_revenue")]
-        [JsonConverter(typeof(EmptyableConverter<AccountUpdateIdentityBusinessDetailsAnnualRevenueOptions>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("annual_revenue")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<AccountUpdateIdentityBusinessDetailsAnnualRevenueOptions>))]
-#endif
-        internal Emptyable<AccountUpdateIdentityBusinessDetailsAnnualRevenueOptions> InternalAnnualRevenue { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyAnnualRevenue
-        {
-            get => this.InternalAnnualRevenue?.Empty ?? false;
-            set
-            {
-                this.InternalAnnualRevenue ??= new Emptyable<AccountUpdateIdentityBusinessDetailsAnnualRevenueOptions>();
-                this.InternalAnnualRevenue.Empty = value;
-            }
-        }
+        public AddressJapanOptions Address { get; set; }
 
         /// <summary>
         /// The business gross annual revenue for its preceding fiscal year.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("annual_revenue")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("annual_revenue")]
 #endif
-        public AccountUpdateIdentityBusinessDetailsAnnualRevenueOptions AnnualRevenue
-        {
-            get => this.InternalAnnualRevenue?.Value;
-            set
-            {
-                this.InternalAnnualRevenue ??= new Emptyable<AccountUpdateIdentityBusinessDetailsAnnualRevenueOptions>();
-                this.InternalAnnualRevenue.Value = value;
-            }
-        }
-
-        [JsonProperty("documents")]
-        [JsonConverter(typeof(EmptyableConverter<AccountUpdateIdentityBusinessDetailsDocumentsOptions>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("documents")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<AccountUpdateIdentityBusinessDetailsDocumentsOptions>))]
-#endif
-        internal Emptyable<AccountUpdateIdentityBusinessDetailsDocumentsOptions> InternalDocuments { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyDocuments
-        {
-            get => this.InternalDocuments?.Empty ?? false;
-            set
-            {
-                this.InternalDocuments ??= new Emptyable<AccountUpdateIdentityBusinessDetailsDocumentsOptions>();
-                this.InternalDocuments.Empty = value;
-            }
-        }
+        public AccountUpdateIdentityBusinessDetailsAnnualRevenueOptions AnnualRevenue { get; set; }
 
         /// <summary>
         /// A document verifying the business.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("documents")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("documents")]
 #endif
-        public AccountUpdateIdentityBusinessDetailsDocumentsOptions Documents
-        {
-            get => this.InternalDocuments?.Value;
-            set
-            {
-                this.InternalDocuments ??= new Emptyable<AccountUpdateIdentityBusinessDetailsDocumentsOptions>();
-                this.InternalDocuments.Value = value;
-            }
-        }
-
-        [JsonProperty("doing_business_as")]
-        [JsonConverter(typeof(EmptyableConverter<string>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("doing_business_as")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<string>))]
-#endif
-        internal Emptyable<string> InternalDoingBusinessAs { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyDoingBusinessAs
-        {
-            get => this.InternalDoingBusinessAs?.Empty ?? false;
-            set
-            {
-                this.InternalDoingBusinessAs ??= new Emptyable<string>();
-                this.InternalDoingBusinessAs.Empty = value;
-            }
-        }
+        public AccountUpdateIdentityBusinessDetailsDocumentsOptions Documents { get; set; }
 
         /// <summary>
         /// The name which is used by the business.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("doing_business_as")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("doing_business_as")]
 #endif
-        public string DoingBusinessAs
-        {
-            get => this.InternalDoingBusinessAs?.Value;
-            set
-            {
-                this.InternalDoingBusinessAs ??= new Emptyable<string>();
-                this.InternalDoingBusinessAs.Value = value;
-            }
-        }
-
-        [JsonProperty("estimated_worker_count")]
-        [JsonConverter(typeof(EmptyableConverter<long?>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("estimated_worker_count")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<long?>))]
-#endif
-        internal Emptyable<long?> InternalEstimatedWorkerCount { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyEstimatedWorkerCount
-        {
-            get => this.InternalEstimatedWorkerCount?.Empty ?? false;
-            set
-            {
-                this.InternalEstimatedWorkerCount ??= new Emptyable<long?>();
-                this.InternalEstimatedWorkerCount.Empty = value;
-            }
-        }
+        public string DoingBusinessAs { get; set; }
 
         /// <summary>
         /// An estimated upper bound of employees, contractors, vendors, etc. currently working for
         /// the business.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("estimated_worker_count")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("estimated_worker_count")]
 #endif
-        public long? EstimatedWorkerCount
-        {
-            get => this.InternalEstimatedWorkerCount?.Value;
-            set
-            {
-                this.InternalEstimatedWorkerCount ??= new Emptyable<long?>();
-                this.InternalEstimatedWorkerCount.Value = value;
-            }
-        }
-
-        [JsonProperty("id_numbers")]
-        [JsonConverter(typeof(EmptyableConverter<List<AccountUpdateIdentityBusinessDetailsIdNumberOptions>>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("id_numbers")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<List<AccountUpdateIdentityBusinessDetailsIdNumberOptions>>))]
-#endif
-        internal Emptyable<List<AccountUpdateIdentityBusinessDetailsIdNumberOptions>> InternalIdNumbers { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyIdNumbers
-        {
-            get => this.InternalIdNumbers?.Empty ?? false;
-            set
-            {
-                this.InternalIdNumbers ??= new Emptyable<List<AccountUpdateIdentityBusinessDetailsIdNumberOptions>>();
-                this.InternalIdNumbers.Empty = value;
-            }
-        }
+        public long? EstimatedWorkerCount { get; set; }
 
         /// <summary>
         /// The ID numbers of a business entity.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("id_numbers")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("id_numbers")]
 #endif
-        public List<AccountUpdateIdentityBusinessDetailsIdNumberOptions> IdNumbers
-        {
-            get => this.InternalIdNumbers?.Value;
-            set
-            {
-                this.InternalIdNumbers ??= new Emptyable<List<AccountUpdateIdentityBusinessDetailsIdNumberOptions>>();
-                this.InternalIdNumbers.Value = value;
-            }
-        }
-
-        [JsonProperty("monthly_estimated_revenue")]
-        [JsonConverter(typeof(EmptyableConverter<AccountUpdateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("monthly_estimated_revenue")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<AccountUpdateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions>))]
-#endif
-        internal Emptyable<AccountUpdateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions> InternalMonthlyEstimatedRevenue { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyMonthlyEstimatedRevenue
-        {
-            get => this.InternalMonthlyEstimatedRevenue?.Empty ?? false;
-            set
-            {
-                this.InternalMonthlyEstimatedRevenue ??= new Emptyable<AccountUpdateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions>();
-                this.InternalMonthlyEstimatedRevenue.Empty = value;
-            }
-        }
+        public List<AccountUpdateIdentityBusinessDetailsIdNumberOptions> IdNumbers { get; set; }
 
         /// <summary>
         /// An estimate of the monthly revenue of the business.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("monthly_estimated_revenue")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("monthly_estimated_revenue")]
 #endif
-        public AccountUpdateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions MonthlyEstimatedRevenue
-        {
-            get => this.InternalMonthlyEstimatedRevenue?.Value;
-            set
-            {
-                this.InternalMonthlyEstimatedRevenue ??= new Emptyable<AccountUpdateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions>();
-                this.InternalMonthlyEstimatedRevenue.Value = value;
-            }
-        }
-
-        [JsonProperty("phone")]
-        [JsonConverter(typeof(EmptyableConverter<string>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("phone")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<string>))]
-#endif
-        internal Emptyable<string> InternalPhone { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyPhone
-        {
-            get => this.InternalPhone?.Empty ?? false;
-            set
-            {
-                this.InternalPhone ??= new Emptyable<string>();
-                this.InternalPhone.Empty = value;
-            }
-        }
+        public AccountUpdateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions MonthlyEstimatedRevenue { get; set; }
 
         /// <summary>
         /// The phone number of the Business Entity.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("phone")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("phone")]
 #endif
-        public string Phone
-        {
-            get => this.InternalPhone?.Value;
-            set
-            {
-                this.InternalPhone ??= new Emptyable<string>();
-                this.InternalPhone.Value = value;
-            }
-        }
-
-        [JsonProperty("product_description")]
-        [JsonConverter(typeof(EmptyableConverter<string>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("product_description")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<string>))]
-#endif
-        internal Emptyable<string> InternalProductDescription { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyProductDescription
-        {
-            get => this.InternalProductDescription?.Empty ?? false;
-            set
-            {
-                this.InternalProductDescription ??= new Emptyable<string>();
-                this.InternalProductDescription.Empty = value;
-            }
-        }
+        public string Phone { get; set; }
 
         /// <summary>
         /// Internal-only description of the product sold or service provided by the business. It’s
         /// used by Stripe for risk and underwriting purposes.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("product_description")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("product_description")]
 #endif
-        public string ProductDescription
-        {
-            get => this.InternalProductDescription?.Value;
-            set
-            {
-                this.InternalProductDescription ??= new Emptyable<string>();
-                this.InternalProductDescription.Value = value;
-            }
-        }
-
-        [JsonProperty("registered_name")]
-        [JsonConverter(typeof(EmptyableConverter<string>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("registered_name")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<string>))]
-#endif
-        internal Emptyable<string> InternalRegisteredName { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyRegisteredName
-        {
-            get => this.InternalRegisteredName?.Empty ?? false;
-            set
-            {
-                this.InternalRegisteredName ??= new Emptyable<string>();
-                this.InternalRegisteredName.Empty = value;
-            }
-        }
+        public string ProductDescription { get; set; }
 
         /// <summary>
         /// The business legal name.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("registered_name")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("registered_name")]
 #endif
-        public string RegisteredName
-        {
-            get => this.InternalRegisteredName?.Value;
-            set
-            {
-                this.InternalRegisteredName ??= new Emptyable<string>();
-                this.InternalRegisteredName.Value = value;
-            }
-        }
-
-        [JsonProperty("script_addresses")]
-        [JsonConverter(typeof(EmptyableConverter<AccountUpdateIdentityBusinessDetailsScriptAddressesOptions>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("script_addresses")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<AccountUpdateIdentityBusinessDetailsScriptAddressesOptions>))]
-#endif
-        internal Emptyable<AccountUpdateIdentityBusinessDetailsScriptAddressesOptions> InternalScriptAddresses { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyScriptAddresses
-        {
-            get => this.InternalScriptAddresses?.Empty ?? false;
-            set
-            {
-                this.InternalScriptAddresses ??= new Emptyable<AccountUpdateIdentityBusinessDetailsScriptAddressesOptions>();
-                this.InternalScriptAddresses.Empty = value;
-            }
-        }
+        public string RegisteredName { get; set; }
 
         /// <summary>
         /// The business registration address of the business entity in non latin script.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("script_addresses")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("script_addresses")]
 #endif
-        public AccountUpdateIdentityBusinessDetailsScriptAddressesOptions ScriptAddresses
-        {
-            get => this.InternalScriptAddresses?.Value;
-            set
-            {
-                this.InternalScriptAddresses ??= new Emptyable<AccountUpdateIdentityBusinessDetailsScriptAddressesOptions>();
-                this.InternalScriptAddresses.Value = value;
-            }
-        }
-
-        [JsonProperty("script_names")]
-        [JsonConverter(typeof(EmptyableConverter<AccountUpdateIdentityBusinessDetailsScriptNamesOptions>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("script_names")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<AccountUpdateIdentityBusinessDetailsScriptNamesOptions>))]
-#endif
-        internal Emptyable<AccountUpdateIdentityBusinessDetailsScriptNamesOptions> InternalScriptNames { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyScriptNames
-        {
-            get => this.InternalScriptNames?.Empty ?? false;
-            set
-            {
-                this.InternalScriptNames ??= new Emptyable<AccountUpdateIdentityBusinessDetailsScriptNamesOptions>();
-                this.InternalScriptNames.Empty = value;
-            }
-        }
+        public AccountUpdateIdentityBusinessDetailsScriptAddressesOptions ScriptAddresses { get; set; }
 
         /// <summary>
         /// The business legal name in non latin script.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("script_names")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("script_names")]
 #endif
-        public AccountUpdateIdentityBusinessDetailsScriptNamesOptions ScriptNames
-        {
-            get => this.InternalScriptNames?.Value;
-            set
-            {
-                this.InternalScriptNames ??= new Emptyable<AccountUpdateIdentityBusinessDetailsScriptNamesOptions>();
-                this.InternalScriptNames.Value = value;
-            }
-        }
-
-        [JsonProperty("structure")]
-        [JsonConverter(typeof(EmptyableConverter<string>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("structure")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<string>))]
-#endif
-        internal Emptyable<string> InternalStructure { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyStructure
-        {
-            get => this.InternalStructure?.Empty ?? false;
-            set
-            {
-                this.InternalStructure ??= new Emptyable<string>();
-                this.InternalStructure.Empty = value;
-            }
-        }
+        public AccountUpdateIdentityBusinessDetailsScriptNamesOptions ScriptNames { get; set; }
 
         /// <summary>
         /// The category identifying the legal structure of the business.
@@ -519,57 +133,19 @@ namespace Stripe.V2.Core
         /// <c>unincorporated_association</c>, <c>unincorporated_non_profit</c>, or
         /// <c>unincorporated_partnership</c>.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("structure")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("structure")]
 #endif
-        public string Structure
-        {
-            get => this.InternalStructure?.Value;
-            set
-            {
-                this.InternalStructure ??= new Emptyable<string>();
-                this.InternalStructure.Value = value;
-            }
-        }
-
-        [JsonProperty("url")]
-        [JsonConverter(typeof(EmptyableConverter<string>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("url")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<string>))]
-#endif
-        internal Emptyable<string> InternalUrl { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyUrl
-        {
-            get => this.InternalUrl?.Empty ?? false;
-            set
-            {
-                this.InternalUrl ??= new Emptyable<string>();
-                this.InternalUrl.Empty = value;
-            }
-        }
+        public string Structure { get; set; }
 
         /// <summary>
         /// The business's publicly available website.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("url")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("url")]
 #endif
-        public string Url
-        {
-            get => this.InternalUrl?.Value;
-            set
-            {
-                this.InternalUrl ??= new Emptyable<string>();
-                this.InternalUrl.Value = value;
-            }
-        }
+        public string Url { get; set; }
     }
 }

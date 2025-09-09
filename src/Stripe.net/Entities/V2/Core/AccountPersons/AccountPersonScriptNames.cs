@@ -6,24 +6,24 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonScriptAddresses : StripeEntity<PersonScriptAddresses>
+    public class AccountPersonScriptNames : StripeEntity<AccountPersonScriptNames>
     {
         /// <summary>
-        /// Kana Address.
+        /// Persons name in kana script.
         /// </summary>
         [JsonProperty("kana")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kana")]
 #endif
-        public PersonScriptAddressesKana Kana { get; set; }
+        public AccountPersonScriptNamesKana Kana { get; set; }
 
         /// <summary>
-        /// Kanji Address.
+        /// Persons name in kanji script.
         /// </summary>
         [JsonProperty("kanji")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kanji")]
 #endif
-        public PersonScriptAddressesKanji Kanji { get; set; }
+        public AccountPersonScriptNamesKanji Kanji { get; set; }
     }
 }

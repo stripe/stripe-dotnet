@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonAdditionalName : StripeEntity<PersonAdditionalName>
+    public class AccountPersonAdditionalName : StripeEntity<AccountPersonAdditionalName>
     {
         /// <summary>
         /// The individual's full name.

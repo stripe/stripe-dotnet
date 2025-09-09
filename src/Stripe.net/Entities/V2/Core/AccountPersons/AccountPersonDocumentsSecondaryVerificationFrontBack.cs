@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonDocumentsSecondaryVerificationFrontBack : StripeEntity<PersonDocumentsSecondaryVerificationFrontBack>
+    public class AccountPersonDocumentsSecondaryVerificationFrontBack : StripeEntity<AccountPersonDocumentsSecondaryVerificationFrontBack>
     {
         /// <summary>
         /// A <a href="https://docs.stripe.com/api/persons/update#create_file">file upload</a> token

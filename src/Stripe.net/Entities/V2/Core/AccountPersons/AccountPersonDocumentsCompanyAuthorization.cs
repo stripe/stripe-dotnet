@@ -7,7 +7,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonDocumentsPassport : StripeEntity<PersonDocumentsPassport>
+    public class AccountPersonDocumentsCompanyAuthorization : StripeEntity<AccountPersonDocumentsCompanyAuthorization>
     {
         /// <summary>
         /// One or more document IDs returned by a <a

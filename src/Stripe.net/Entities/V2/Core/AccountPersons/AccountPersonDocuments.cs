@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonDocuments : StripeEntity<PersonDocuments>
+    public class AccountPersonDocuments : StripeEntity<AccountPersonDocuments>
     {
         /// <summary>
         /// One or more documents that demonstrate proof that this person is authorized to represent
@@ -16,7 +16,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("company_authorization")]
 #endif
-        public PersonDocumentsCompanyAuthorization CompanyAuthorization { get; set; }
+        public AccountPersonDocumentsCompanyAuthorization CompanyAuthorization { get; set; }
 
         /// <summary>
         /// One or more documents showing the person’s passport page with photo and personal data.
@@ -25,7 +25,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("passport")]
 #endif
-        public PersonDocumentsPassport Passport { get; set; }
+        public AccountPersonDocumentsPassport Passport { get; set; }
 
         /// <summary>
         /// An identifying document showing the person's name, either a passport or local ID card.
@@ -34,7 +34,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("primary_verification")]
 #endif
-        public PersonDocumentsPrimaryVerification PrimaryVerification { get; set; }
+        public AccountPersonDocumentsPrimaryVerification PrimaryVerification { get; set; }
 
         /// <summary>
         /// A document showing address, either a passport, local ID card, or utility bill from a
@@ -44,7 +44,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("secondary_verification")]
 #endif
-        public PersonDocumentsSecondaryVerification SecondaryVerification { get; set; }
+        public AccountPersonDocumentsSecondaryVerification SecondaryVerification { get; set; }
 
         /// <summary>
         /// One or more documents showing the person’s visa required for living in the country where
@@ -54,6 +54,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("visa")]
 #endif
-        public PersonDocumentsVisa Visa { get; set; }
+        public AccountPersonDocumentsVisa Visa { get; set; }
     }
 }

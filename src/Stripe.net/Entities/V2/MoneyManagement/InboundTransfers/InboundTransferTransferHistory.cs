@@ -2,6 +2,7 @@
 namespace Stripe.V2.MoneyManagement
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -73,7 +74,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_debit_processing")]
 #endif
-        public InboundTransferTransferHistoryBankDebitProcessing BankDebitProcessing { get; set; }
+        public Dictionary<string, object> BankDebitProcessing { get; set; }
 
         /// <summary>
         /// The history entry for a queued InboundTransfer.
@@ -82,7 +83,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_debit_queued")]
 #endif
-        public InboundTransferTransferHistoryBankDebitQueued BankDebitQueued { get; set; }
+        public Dictionary<string, object> BankDebitQueued { get; set; }
 
         /// <summary>
         /// The history entry for a returned InboundTransfer.
@@ -100,6 +101,6 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_debit_succeeded")]
 #endif
-        public InboundTransferTransferHistoryBankDebitSucceeded BankDebitSucceeded { get; set; }
+        public Dictionary<string, object> BankDebitSucceeded { get; set; }
     }
 }

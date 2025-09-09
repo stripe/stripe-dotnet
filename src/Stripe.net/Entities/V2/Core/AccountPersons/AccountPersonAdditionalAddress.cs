@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class AccountCreateIdentityIndividualAdditionalAddressOptions : INestedOptions
+    public class AccountPersonAdditionalAddress : StripeEntity<AccountPersonAdditionalAddress>
     {
         /// <summary>
         /// City, district, suburb, town, or village.

@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonIdNumber : StripeEntity<PersonIdNumber>
+    public class AccountPersonIdNumber : StripeEntity<AccountPersonIdNumber>
     {
         /// <summary>
         /// The ID number type of an individual.

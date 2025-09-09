@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PersonDateOfBirth : StripeEntity<PersonDateOfBirth>
+    public class AccountPersonDateOfBirth : StripeEntity<AccountPersonDateOfBirth>
     {
         /// <summary>
         /// The day of birth, between 1 and 31.
