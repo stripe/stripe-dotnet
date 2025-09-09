@@ -6330,7 +6330,7 @@ namespace StripeTests
                 HttpMethod.Delete,
                 "/v2/core/event_destinations/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"abc_123\",\"object\":\"some.object.tag\",\"deleted\":true}");
+                "{\"id\":\"abc_123\",\"object\":\"some.object.tag\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.EventDestinations;
             Stripe.V2.DeletedObject deleted = service.Delete("id_123");
