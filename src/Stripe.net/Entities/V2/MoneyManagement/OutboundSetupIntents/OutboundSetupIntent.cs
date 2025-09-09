@@ -60,8 +60,7 @@ namespace Stripe.V2.MoneyManagement
         public OutboundSetupIntentNextAction NextAction { get; set; }
 
         /// <summary>
-        /// Information about the payout method that’s created and linked to this outbound setup
-        /// intent.
+        /// Use the PayoutMethods API to list and interact with PayoutMethod objects.
         /// </summary>
         [JsonProperty("payout_method")]
 #if NET6_0_OR_GREATER

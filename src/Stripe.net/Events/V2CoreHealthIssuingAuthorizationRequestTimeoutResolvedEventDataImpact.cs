@@ -25,7 +25,7 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("approved_impacted_requests")]
 #endif
-        public long? ApprovedImpactedRequests { get; set; }
+        public long ApprovedImpactedRequests { get; set; }
 
         /// <summary>
         /// Estimated aggregated amount for the declined requests.
@@ -43,6 +43,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("declined_impacted_requests")]
 #endif
-        public long? DeclinedImpactedRequests { get; set; }
+        public long DeclinedImpactedRequests { get; set; }
     }
 }

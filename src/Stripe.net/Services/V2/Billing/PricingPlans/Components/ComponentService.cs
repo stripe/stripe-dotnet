@@ -39,17 +39,17 @@ namespace Stripe.V2.Billing.PricingPlans
         /// <summary>
         /// Remove a Pricing Plan Component from the latest version of a Pricing Plan.
         /// </summary>
-        public virtual V2.Billing.PricingPlanComponent Delete(string parentId, string id, ComponentDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual V2.DeletedObject Delete(string parentId, string id, ComponentDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<V2.Billing.PricingPlanComponent>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/pricing_plans/{WebUtility.UrlEncode(parentId)}/components/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/pricing_plans/{WebUtility.UrlEncode(parentId)}/components/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
         /// Remove a Pricing Plan Component from the latest version of a Pricing Plan.
         /// </summary>
-        public virtual Task<V2.Billing.PricingPlanComponent> DeleteAsync(string parentId, string id, ComponentDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<V2.DeletedObject> DeleteAsync(string parentId, string id, ComponentDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<V2.Billing.PricingPlanComponent>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/pricing_plans/{WebUtility.UrlEncode(parentId)}/components/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/pricing_plans/{WebUtility.UrlEncode(parentId)}/components/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
