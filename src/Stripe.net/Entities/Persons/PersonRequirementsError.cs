@@ -10,7 +10,8 @@ namespace Stripe
     {
         /// <summary>
         /// The code for the type of error.
-        /// One of: <c>information_missing</c>, <c>invalid_address_city_state_postal_code</c>,
+        /// One of: <c>external_request</c>, <c>information_missing</c>,
+        /// <c>invalid_address_city_state_postal_code</c>,
         /// <c>invalid_address_highway_contract_box</c>, <c>invalid_address_private_mailbox</c>,
         /// <c>invalid_business_profile_name</c>, <c>invalid_business_profile_name_denylisted</c>,
         /// <c>invalid_company_name_denylisted</c>, <c>invalid_dob_age_over_maximum</c>,
