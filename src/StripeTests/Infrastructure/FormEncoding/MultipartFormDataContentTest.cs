@@ -5,6 +5,7 @@ namespace StripeTests
     using System.IO;
     using System.Text;
     using System.Threading.Tasks;
+    using Stripe;
     using Stripe.Infrastructure.FormEncoding;
     using Xunit;
 
@@ -66,6 +67,132 @@ namespace StripeTests
             Assert.Equal(
                 "--test-boundary\r\n"
                 + "Content-Disposition: form-data; name=\"key\"; filename=blob; filename*=utf-8''blob\r\n"
+                + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
+                + "--test-boundary--\r\n",
+                result);
+        }
+
+        [Fact]
+        public async Task Ctor_OneFileFileOptionsEntry_Success()
+        {
+            var source = new Dictionary<string, object>
+            {
+                { "key", new FileFileOptions { Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")) } },
+            };
+            var content = new MultipartFormDataContent(source, "test-boundary");
+
+            var stream = await content.ReadAsStreamAsync();
+            Assert.Equal(174, stream.Length);
+            var result = new StreamReader(stream).ReadToEnd();
+            Assert.Equal(
+                "--test-boundary\r\n"
+                + "Content-Disposition: form-data; name=\"key\"; filename=blob; filename*=utf-8''blob\r\n"
+                + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
+                + "--test-boundary--\r\n",
+                result);
+        }
+
+        [Fact]
+        public async Task Ctor_OneFileFileOptionsWithNameEntry_Success()
+        {
+            var source = new Dictionary<string, object>
+            {
+                {
+                    "key", new FileFileOptions
+                    {
+                         Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
+                         Name = "file",
+                    }
+                },
+            };
+            var content = new MultipartFormDataContent(source, "test-boundary");
+
+            var stream = await content.ReadAsStreamAsync();
+            Assert.Equal(174, stream.Length);
+            var result = new StreamReader(stream).ReadToEnd();
+            Assert.Equal(
+                "--test-boundary\r\n"
+                + "Content-Disposition: form-data; name=\"key\"; filename=file; filename*=utf-8''file\r\n"
+                + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
+                + "--test-boundary--\r\n",
+                result);
+        }
+
+        [Fact]
+        public async Task Ctor_OneFileFileOptionsWithNameAndExtEntry_Success()
+        {
+            var source = new Dictionary<string, object>
+            {
+                {
+                    "key", new FileFileOptions
+                    {
+                        Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
+                        Name = "file.csv",
+                    }
+                },
+            };
+            var content = new MultipartFormDataContent(source, "test-boundary");
+
+            var stream = await content.ReadAsStreamAsync();
+            Assert.Equal(166, stream.Length);
+            var result = new StreamReader(stream).ReadToEnd();
+            Assert.Equal(
+                "--test-boundary\r\n"
+                + "Content-Disposition: form-data; name=\"key\"; filename=file.csv; filename*=utf-8''file.csv\r\n"
+                + "Content-Type: text/csv\r\n\r\nHello World!\r\n"
+                + "--test-boundary--\r\n",
+                result);
+        }
+
+        [Fact]
+        public async Task Ctor_OneFileFileOptionsWithNameAndTypeEntry_Success()
+        {
+            var source = new Dictionary<string, object>
+            {
+                {
+                    "key", new FileFileOptions
+                    {
+                        Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
+                        Name = "file",
+                        Type = "application/json",
+                    }
+                },
+            };
+            var content = new MultipartFormDataContent(source, "test-boundary");
+
+            var stream = await content.ReadAsStreamAsync();
+            Assert.Equal(166, stream.Length);
+            var result = new StreamReader(stream).ReadToEnd();
+            Assert.Equal(
+                "--test-boundary\r\n"
+                + "Content-Disposition: form-data; name=\"key\"; filename=file; filename*=utf-8''file\r\n"
+                + "Content-Type: application/json\r\n\r\nHello World!\r\n"
+                + "--test-boundary--\r\n",
+                result);
+        }
+
+        [Fact]
+        public async Task Ctor_OneFileFileOptionsWithNameAndExtAndTypeEntry_Success()
+        {
+            var source = new Dictionary<string, object>
+            {
+                {
+                    "key", new FileFileOptions
+                    {
+                        Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
+                        Name = "file.json",
+                        Type = "application/octet-stream",
+                    }
+                },
+            };
+            var content = new MultipartFormDataContent(source, "test-boundary");
+
+            var stream = await content.ReadAsStreamAsync();
+            Assert.Equal(184, stream.Length);
+            var result = new StreamReader(stream).ReadToEnd();
+            Assert.Equal(
+                "--test-boundary\r\n"
+                + "Content-Disposition: form-data; name=\"key\"; filename=file.json; filename*=utf-8''file.json\r\n"
                 + "Content-Type: application/octet-stream\r\n\r\nHello World!\r\n"
                 + "--test-boundary--\r\n",
                 result);

@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using System.IO;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -17,7 +16,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("file")]
 #endif
-        public Stream File { get; set; }
+        public FileFileOptions File { get; set; }
 
         /// <summary>
         /// Optional parameters that automatically create a <a

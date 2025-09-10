@@ -28,9 +28,13 @@ namespace StripeTests
         {
             this.service = new FileService(this.StripeClient);
 
+            var resourceStream = typeof(FileServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName);
             this.createOptions = new FileCreateOptions
             {
-                File = typeof(FileServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName),
+                File = new FileFileOptions
+                {
+                    Data = resourceStream,
+                },
                 FileLinkData = new FileFileLinkDataOptions
                 {
                     Create = true,
@@ -44,7 +48,10 @@ namespace StripeTests
 
             this.base64Options = new FileCreateOptions
             {
-                File = new MemoryStream(Convert.FromBase64String("c3RyaXBlLWRvdG5ldA==")),
+                File = new FileFileOptions
+                {
+                    Data = new MemoryStream(Convert.FromBase64String("c3RyaXBlLWRvdG5ldA==")),
+                },
                 Purpose = FilePurpose.BusinessLogo,
             };
 
