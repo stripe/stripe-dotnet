@@ -10,6 +10,7 @@ namespace Stripe.Checkout
     {
         /// <summary>
         /// Controls the calculation and orchestration of prorations and invoices for subscriptions.
+        /// If no value is passed, the default is <c>flexible</c>.
         /// One of: <c>classic</c>, or <c>flexible</c>.
         /// </summary>
         [JsonProperty("type")]
