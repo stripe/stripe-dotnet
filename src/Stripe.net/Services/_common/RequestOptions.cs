@@ -27,13 +27,13 @@ namespace Stripe
         /// <summary>Gets or sets the value or Stripe-Context request header.</summary>
         public string StripeContext { get; set; }
 
-        /// <summary>Gets or sets the base URL for the request.</summary>
+        /// <summary>Gets the base URL for the request.</summary>
         /// <remarks>
         /// This is an internal property. It is set by services or individual request methods when
         /// they need to send a request to a non-standard destination, e.g. <c>files.stripe.com</c>
         /// for file creation requests or <c>connect.stripe.com</c> for OAuth requests.
         /// </remarks>
-        internal string BaseUrl { get; set; }
+        internal string InternalBaseUrl { get; set; }
 
         /// <summary>Gets or sets the API version for the request.</summary>
         /// <remarks>
