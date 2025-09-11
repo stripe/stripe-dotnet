@@ -9,10 +9,10 @@ namespace Stripe
     public class BalanceSettingsPaymentsSettlementTimingOptions : INestedOptions
     {
         /// <summary>
-        /// The number of days charge funds are held before becoming available. The default value is
-        /// <c>minimum</c>, representing the lowest available value for the account. The maximum
-        /// value is 31. The <c>delay_days</c> parameter remains at the last configured value if
-        /// <c>payouts.schedule.interval</c> is <c>manual</c>. <a
+        /// Change <c>delay_days</c> for this account, which determines the number of days charge
+        /// funds are held before becoming available. The maximum value is 31. Passing an empty
+        /// string to <c>delay_days_override</c> will return <c>delay_days</c> to the default, which
+        /// is the lowest available value for the account. <a
         /// href="https://stripe.com/connect/manage-payout-schedule">Learn more about controlling
         /// delay days</a>.
         /// </summary>
