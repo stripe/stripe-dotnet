@@ -2,14 +2,10 @@
 namespace Stripe.V2.Core.Accounts
 {
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class PersonUpdateDocumentsOptions : INestedOptions
     {
         /// <summary>
@@ -31,84 +27,24 @@ namespace Stripe.V2.Core.Accounts
 #endif
         public PersonUpdateDocumentsPassportOptions Passport { get; set; }
 
-        [JsonProperty("primary_verification")]
-        [JsonConverter(typeof(EmptyableConverter<PersonUpdateDocumentsPrimaryVerificationOptions>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("primary_verification")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<PersonUpdateDocumentsPrimaryVerificationOptions>))]
-#endif
-        internal Emptyable<PersonUpdateDocumentsPrimaryVerificationOptions> InternalPrimaryVerification { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyPrimaryVerification
-        {
-            get => this.InternalPrimaryVerification?.Empty ?? false;
-            set
-            {
-                this.InternalPrimaryVerification ??= new Emptyable<PersonUpdateDocumentsPrimaryVerificationOptions>();
-                this.InternalPrimaryVerification.Empty = value;
-            }
-        }
-
         /// <summary>
         /// An identifying document showing the person's name, either a passport or local ID card.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("primary_verification")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("primary_verification")]
 #endif
-        public PersonUpdateDocumentsPrimaryVerificationOptions PrimaryVerification
-        {
-            get => this.InternalPrimaryVerification?.Value;
-            set
-            {
-                this.InternalPrimaryVerification ??= new Emptyable<PersonUpdateDocumentsPrimaryVerificationOptions>();
-                this.InternalPrimaryVerification.Value = value;
-            }
-        }
-
-        [JsonProperty("secondary_verification")]
-        [JsonConverter(typeof(EmptyableConverter<PersonUpdateDocumentsSecondaryVerificationOptions>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("secondary_verification")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<PersonUpdateDocumentsSecondaryVerificationOptions>))]
-#endif
-        internal Emptyable<PersonUpdateDocumentsSecondaryVerificationOptions> InternalSecondaryVerification { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptySecondaryVerification
-        {
-            get => this.InternalSecondaryVerification?.Empty ?? false;
-            set
-            {
-                this.InternalSecondaryVerification ??= new Emptyable<PersonUpdateDocumentsSecondaryVerificationOptions>();
-                this.InternalSecondaryVerification.Empty = value;
-            }
-        }
+        public PersonUpdateDocumentsPrimaryVerificationOptions PrimaryVerification { get; set; }
 
         /// <summary>
         /// A document showing address, either a passport, local ID card, or utility bill from a
         /// well-known utility company.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("secondary_verification")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("secondary_verification")]
 #endif
-        public PersonUpdateDocumentsSecondaryVerificationOptions SecondaryVerification
-        {
-            get => this.InternalSecondaryVerification?.Value;
-            set
-            {
-                this.InternalSecondaryVerification ??= new Emptyable<PersonUpdateDocumentsSecondaryVerificationOptions>();
-                this.InternalSecondaryVerification.Value = value;
-            }
-        }
+        public PersonUpdateDocumentsSecondaryVerificationOptions SecondaryVerification { get; set; }
 
         /// <summary>
         /// One or more documents showing the person’s visa required for living in the country where

@@ -26,17 +26,17 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<V2.Core.Person> FetchRelatedObjectAsync()
+        public Task<V2.Core.AccountPerson> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<V2.Core.Person>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<V2.Core.AccountPerson>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public V2.Core.Person FetchRelatedObject()
+        public V2.Core.AccountPerson FetchRelatedObject()
         {
-            return this.FetchRelatedObject<V2.Core.Person>(this.RelatedObject);
+            return this.FetchRelatedObject<V2.Core.AccountPerson>(this.RelatedObject);
         }
 
         public V2CoreAccountPersonUpdatedEvent Pull()

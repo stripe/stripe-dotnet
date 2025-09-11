@@ -2,14 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class CollectionSettingUpdateOptions : BaseOptions
     {
         /// <summary>
@@ -36,44 +32,14 @@ namespace Stripe.V2.Billing
 #endif
         public string DisplayName { get; set; }
 
-        [JsonProperty("email_delivery")]
-        [JsonConverter(typeof(EmptyableConverter<CollectionSettingUpdateEmailDeliveryOptions>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("email_delivery")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<CollectionSettingUpdateEmailDeliveryOptions>))]
-#endif
-        internal Emptyable<CollectionSettingUpdateEmailDeliveryOptions> InternalEmailDelivery { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyEmailDelivery
-        {
-            get => this.InternalEmailDelivery?.Empty ?? false;
-            set
-            {
-                this.InternalEmailDelivery ??= new Emptyable<CollectionSettingUpdateEmailDeliveryOptions>();
-                this.InternalEmailDelivery.Empty = value;
-            }
-        }
-
         /// <summary>
         /// Email delivery settings.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("email_delivery")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("email_delivery")]
 #endif
-        public CollectionSettingUpdateEmailDeliveryOptions EmailDelivery
-        {
-            get => this.InternalEmailDelivery?.Value;
-            set
-            {
-                this.InternalEmailDelivery ??= new Emptyable<CollectionSettingUpdateEmailDeliveryOptions>();
-                this.InternalEmailDelivery.Value = value;
-            }
-        }
+        public CollectionSettingUpdateEmailDeliveryOptions EmailDelivery { get; set; }
 
         /// <summary>
         /// Optionally change the live version of the CollectionSetting. Billing Cadences and other

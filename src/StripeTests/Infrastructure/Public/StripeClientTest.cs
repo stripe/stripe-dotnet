@@ -165,6 +165,42 @@ namespace StripeTests
         }
 
         [Fact]
+        public async Task RawRequest_BaseUrl()
+        {
+            // Stub a request as stripe-mock does not support v2
+            this.MockHttpClientFixture.StubRequest(
+                    HttpMethod.Post,
+                    "/v2/billing/meter_event_session",
+                    System.Net.HttpStatusCode.OK,
+                    "{\"id\": \"mes_123\",\"object\":\"v2.billing.meter_event_session\"}");
+
+            var expectedBaseUrl = "https://test.stripetest.com";
+            var rawResponse = await this.stripeClient.RawRequestAsync(
+                HttpMethod.Post,
+                "/v2/billing/meter_event_session",
+                "{}",
+                new RawRequestOptions
+                {
+                    BaseUrl = expectedBaseUrl,
+                    AdditionalHeaders =
+                    {
+                        { "foo", "bar" },
+                    },
+                });
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                        "SendAsync",
+                        Times.Once(),
+                        ItExpr.Is<HttpRequestMessage>(m =>
+                            new Uri(expectedBaseUrl).Host == (string)m.Properties["OriginalHost"]),
+                        ItExpr.IsAny<CancellationToken>());
+
+            var obj = this.stripeClient.Deserialize<Stripe.V2.Billing.MeterEventSession>(rawResponse.Content);
+            Assert.Equal("mes_123", obj.Id);
+        }
+
+        [Fact]
         public async Task RawRequestAsyncIncludesCorrectUsage()
         {
             await this.stripeClient.RawRequestAsync(

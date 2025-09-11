@@ -3,14 +3,10 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class CustomPricingUnitUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -31,44 +27,14 @@ namespace Stripe.V2.Billing
 #endif
         public string DisplayName { get; set; }
 
-        [JsonProperty("lookup_key")]
-        [JsonConverter(typeof(EmptyableConverter<string>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("lookup_key")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<string>))]
-#endif
-        internal Emptyable<string> InternalLookupKey { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyLookupKey
-        {
-            get => this.InternalLookupKey?.Empty ?? false;
-            set
-            {
-                this.InternalLookupKey ??= new Emptyable<string>();
-                this.InternalLookupKey.Empty = value;
-            }
-        }
-
         /// <summary>
         /// An internal key you can use to search for a particular CustomPricingUnit item.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("lookup_key")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("lookup_key")]
 #endif
-        public string LookupKey
-        {
-            get => this.InternalLookupKey?.Value;
-            set
-            {
-                this.InternalLookupKey ??= new Emptyable<string>();
-                this.InternalLookupKey.Value = value;
-            }
-        }
+        public string LookupKey { get; set; }
 
         /// <summary>
         /// Set of key-value pairs that you can attach to an object.
