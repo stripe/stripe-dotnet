@@ -3922,10 +3922,10 @@ namespace StripeTests
                                 Quantity = 1,
                             },
                         },
-                        Iterations = 12,
                     },
                 },
             };
+            options.AddExtraParam("phases[0][iterations]", 12);
             var service = new SubscriptionScheduleService(this.StripeClient);
             SubscriptionSchedule subscriptionSchedule = service.Create(options);
             this.AssertRequest(HttpMethod.Post, "/v1/subscription_schedules");
