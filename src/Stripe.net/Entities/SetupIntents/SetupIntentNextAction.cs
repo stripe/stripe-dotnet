@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -47,7 +48,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("use_stripe_sdk")]
 #endif
-        public SetupIntentNextActionUseStripeSdk UseStripeSdk { get; set; }
+        public Dictionary<string, object> UseStripeSdk { get; set; }
 
         [JsonProperty("verify_with_microdeposits")]
 #if NET6_0_OR_GREATER

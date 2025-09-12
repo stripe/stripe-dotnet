@@ -18,7 +18,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failed_at")]
 #endif
-        public DateTime? FailedAt { get; set; }
+        public DateTime FailedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Timestamp describing when the ReceivedCredit changed status to <c>returned</c>.
@@ -29,7 +29,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("returned_at")]
 #endif
-        public DateTime? ReturnedAt { get; set; }
+        public DateTime ReturnedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Timestamp describing when the ReceivedCredit was marked as <c>succeeded</c>. Represented
@@ -40,6 +40,6 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("succeeded_at")]
 #endif
-        public DateTime? SucceededAt { get; set; }
+        public DateTime SucceededAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

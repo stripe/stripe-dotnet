@@ -188,6 +188,12 @@ namespace Stripe
 #endif
         public PaymentMethodConfigurationFpx Fpx { get; set; }
 
+        [JsonProperty("fr_meal_voucher_conecs")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fr_meal_voucher_conecs")]
+#endif
+        public PaymentMethodConfigurationFrMealVoucherConecs FrMealVoucherConecs { get; set; }
+
         [JsonProperty("giropay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("giropay")]
@@ -357,6 +363,12 @@ namespace Stripe
         [STJS.JsonPropertyName("paypal")]
 #endif
         public PaymentMethodConfigurationPaypal Paypal { get; set; }
+
+        [JsonProperty("paypay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay")]
+#endif
+        public PaymentMethodConfigurationPaypay Paypay { get; set; }
 
         [JsonProperty("payto")]
 #if NET6_0_OR_GREATER

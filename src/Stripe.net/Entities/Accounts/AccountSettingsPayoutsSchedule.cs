@@ -63,8 +63,8 @@ namespace Stripe
         /// <summary>
         /// The days of the week when available funds are paid out, specified as an array, for
         /// example, [<c>monday</c>, <c>tuesday</c>]. Only shown if <c>interval</c> is weekly.
-        /// One of: <c>friday</c>, <c>monday</c>, <c>saturday</c>, <c>sunday</c>, <c>thursday</c>,
-        /// <c>tuesday</c>, or <c>wednesday</c>.
+        /// One of: <c>friday</c>, <c>monday</c>, <c>thursday</c>, <c>tuesday</c>, or
+        /// <c>wednesday</c>.
         /// </summary>
         [JsonProperty("weekly_payout_days")]
 #if NET6_0_OR_GREATER

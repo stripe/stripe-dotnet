@@ -31,6 +31,22 @@ This release changes the pinned API version to `2025-08-27.preview`.
   * Add support for `PixDisplayQrCode` on `SetupIntent.NextAction`
   * Add support for `ReaderSecurity` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `Terminal.Configuration`
 
+## 48.5.0 - 2025-08-27
+* [#3164](https://github.com/stripe/stripe-dotnet/pull/3164) Add section on private preview SDKs in readme
+* [#3159](https://github.com/stripe/stripe-dotnet/pull/3159) Update generated code. This release changes the pinned API version to `2025-08-27.basil`.
+  * Add support for `BalanceReport`, `PayoutDetails`, and `PayoutReconciliationReport` on `AccountSession.Components` and `AccountSessionComponentsOptions`
+  * Add support for `Name` on `BillingPortal.ConfigurationCreateOptions`, `BillingPortal.ConfigurationUpdateOptions`, and `BillingPortal.Configuration`
+  * Add support for `Installments` on `Charge.PaymentMethodDetails.Alma`
+  * Add support for `TransactionId` on `Charge.PaymentMethodDetails.Alma`, `Charge.PaymentMethodDetails.AmazonPay`, `Charge.PaymentMethodDetails.Billie`, `Charge.PaymentMethodDetails.KakaoPay`, `Charge.PaymentMethodDetails.KrCard`, `Charge.PaymentMethodDetails.NaverPay`, `Charge.PaymentMethodDetails.Payco`, `Charge.PaymentMethodDetails.RevolutPay`, `Charge.PaymentMethodDetails.SamsungPay`, and `Charge.PaymentMethodDetails.Satispay`
+  * Add support for `Location` and `Reader` on `Charge.PaymentMethodDetails.Paynow`
+  * Add support for `AmountIncludesIof` on `Checkout.Session.PaymentMethodOptions.Pix`, `CheckoutSessionPaymentMethodOptionsPixOptions`, `PaymentIntent.PaymentMethodOptions.Pix`, and `PaymentIntentPaymentMethodOptionsPixOptions`
+  * Add support for `Metadata` and `Period` on `InvoiceScheduleDetailsPhaseAddInvoiceItemOptions`, `SubscriptionAddInvoiceItemOptions`, `SubscriptionSchedule.Phase.AddInvoiceItem`, and `SubscriptionSchedulePhaseAddInvoiceItemOptions`
+  * Add support for `ExpMonth` and `ExpYear` on `Issuing.CardCreateOptions`
+  * Add support for `ExcludedPaymentMethodTypes` on `PaymentIntentCreateOptions` and `PaymentIntent`
+  * Add support for `PayoutMethod` on `PayoutCreateOptions` and `Payout`
+  * Add support for `Mxn` on `Terminal.Configuration.Tipping` and `TerminalConfigurationTippingOptions`
+  * Add support for `Card` on `Terminal.TestHelpersReaderPresentPaymentMethodOptions`
+
 ## 48.5.0-beta.2 - 2025-08-08
 * [#3160](https://github.com/stripe/stripe-dotnet/pull/3160) Bring back invoice payments APIs that were missing in the public preview SDKs
     * Add support for new resource `InvoicePayment`

@@ -31,8 +31,9 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The period associated with this invoice item. Defaults to the period of the underlying
-        /// subscription that surrounds the start of the phase.
+        /// The period associated with this invoice item. If not set, <c>period.start.type</c>
+        /// defaults to <c>max_item_period_start</c> and <c>period.end.type</c> defaults to
+        /// <c>min_item_period_end</c>.
         /// </summary>
         [JsonProperty("period")]
 #if NET6_0_OR_GREATER

@@ -257,6 +257,19 @@ namespace Stripe
         public PaymentMethodConfigurationFpxOptions Fpx { get; set; }
 
         /// <summary>
+        /// Meal vouchers in France, or “titres-restaurant”, is a local benefits program commonly
+        /// offered by employers for their employees to purchase prepared food and beverages on
+        /// working days. Check this <a
+        /// href="https://stripe.com/docs/payments/benefits/fr-meal-vouchers">page</a> for more
+        /// details.
+        /// </summary>
+        [JsonProperty("fr_meal_voucher_conecs")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fr_meal_voucher_conecs")]
+#endif
+        public PaymentMethodConfigurationFrMealVoucherConecsOptions FrMealVoucherConecs { get; set; }
+
+        /// <summary>
         /// giropay is a German payment method based on online banking, introduced in 2006. It
         /// allows customers to complete transactions online using their online banking environment,
         /// with funds debited from their bank account. Depending on their bank, customers confirm
@@ -522,6 +535,15 @@ namespace Stripe
         [STJS.JsonPropertyName("paypal")]
 #endif
         public PaymentMethodConfigurationPaypalOptions Paypal { get; set; }
+
+        /// <summary>
+        /// Customers can pay with PayPay online or using the PayPay app.
+        /// </summary>
+        [JsonProperty("paypay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay")]
+#endif
+        public PaymentMethodConfigurationPaypayOptions Paypay { get; set; }
 
         /// <summary>
         /// PayTo is a <a href="https://docs.stripe.com/payments/real-time">real-time</a> payment

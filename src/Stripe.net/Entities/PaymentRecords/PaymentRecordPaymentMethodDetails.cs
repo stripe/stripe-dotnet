@@ -298,6 +298,12 @@ namespace Stripe
 #endif
         public PaymentRecordPaymentMethodDetailsPaypal Paypal { get; set; }
 
+        [JsonProperty("paypay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay")]
+#endif
+        public PaymentRecordPaymentMethodDetailsPaypay Paypay { get; set; }
+
         [JsonProperty("payto")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payto")]

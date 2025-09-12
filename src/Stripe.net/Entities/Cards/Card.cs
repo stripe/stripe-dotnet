@@ -169,9 +169,9 @@ namespace Stripe
         public List<string> AvailablePayoutMethods { get; set; }
 
         /// <summary>
-        /// Card brand. Can be <c>American Express</c>, <c>Diners Club</c>, <c>Discover</c>,
-        /// <c>Eftpos Australia</c>, <c>Girocard</c>, <c>JCB</c>, <c>MasterCard</c>,
-        /// <c>UnionPay</c>, <c>Visa</c>, or <c>Unknown</c>.
+        /// Card brand. Can be <c>American Express</c>, <c>Cartes Bancaires</c>, <c>Diners Club</c>,
+        /// <c>Discover</c>, <c>Eftpos Australia</c>, <c>Girocard</c>, <c>JCB</c>,
+        /// <c>MasterCard</c>, <c>UnionPay</c>, <c>Visa</c>, or <c>Unknown</c>.
         /// </summary>
         [JsonProperty("brand")]
 #if NET6_0_OR_GREATER
