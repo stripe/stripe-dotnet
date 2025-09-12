@@ -74,8 +74,8 @@ namespace Stripe
 
         /// <summary>
         /// Mutually exclusive with billing_cycle_anchor and only valid with monthly and yearly
-        /// price intervals. When provided, the billing_cycle_anchor is set to the next occurence of
-        /// the day_of_month at the hour, minute, and second UTC.
+        /// price intervals. When provided, the billing_cycle_anchor is set to the next occurrence
+        /// of the day_of_month at the hour, minute, and second UTC.
         /// </summary>
         [JsonProperty("billing_cycle_anchor_config")]
 #if NET6_0_OR_GREATER
