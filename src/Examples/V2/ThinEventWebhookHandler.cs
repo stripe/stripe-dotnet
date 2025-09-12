@@ -39,7 +39,7 @@ namespace Examples.V2
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
             try
             {
-                var thinEvent = _client.ParseThinEvent(json, Request.Headers["Stripe-Signature"], _webhookSecret);
+                var thinEvent = _client.ParseEventNotification(json, Request.Headers["Stripe-Signature"], _webhookSecret);
 
                 // Fetch the event data to understand the failure
                 var baseEvent = await _client.V2.Core.Events.GetAsync(thinEvent.Id);

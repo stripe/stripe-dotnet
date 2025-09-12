@@ -9,20 +9,14 @@ namespace Stripe.Infrastructure
     /// This converter deserializes Stripe thin events, which are polymorphic and discriminated by the value
     /// of a property named "type".
     /// </summary>
-    internal class V2EventConverter : JsonConverter
+    internal class V2EventNotificationConverter : V2EventConverter
     {
-        public override bool CanWrite => false;
-
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        protected override Type GetConcreteType(string typeValue)
         {
-            throw new NotSupportedException("V2EventConverter should only be used while deserializing.");
+            return StripeTypeRegistry.GetConcreteV2EventNotificationType(typeValue) ?? typeof(V2.UnknownEventNotification);
         }
 
-        protected virtual Type GetConcreteType(string typeValue)
-        {
-            return StripeTypeRegistry.GetConcreteV2EventType(typeValue) ?? typeof(V2.Event);
-        }
-
+        // mostly copied from the parent, but with different types
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
             if (reader.TokenType == JsonToken.Null)
@@ -38,19 +32,10 @@ namespace Stripe.Infrastructure
 
             Type concreteType = this.GetConcreteType(typeValue);
 
-            using (var subReader = jsonObject.CreateReader())
-            {
-                var e = (V2.Event)Activator.CreateInstance(concreteType);
-
-                if (serializer.Context.Context is DeserializationContext context)
-                {
-                    e.Requestor = context.Requestor;
-                }
-
-                serializer.Populate(subReader, e);
-                e.SetRawJObject(jsonObject);
-                return e;
-            }
+            using var subReader = jsonObject.CreateReader();
+            var e = Activator.CreateInstance(concreteType);
+            serializer.Populate(subReader, e);
+            return e;
         }
 
         /// <summary>
@@ -62,7 +47,7 @@ namespace Stripe.Infrastructure
         /// </returns>
         public override bool CanConvert(Type objectType)
         {
-            return objectType.GetTypeInfo() == typeof(V2.Event);
+            return objectType.GetTypeInfo() == typeof(V2.EventNotification);
         }
     }
 }

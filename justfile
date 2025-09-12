@@ -8,11 +8,14 @@ _default:
 # base test command that other, more specific commands use
 [no-quiet]
 [no-exit-message]
-_test no_build framework config:
-    dotnet test {{no_build}} {{framework}} src/StripeTests/StripeTests.csproj -c {{config}}
+_test no_build framework config filter="":
+    dotnet test {{no_build}} {{framework}} src/StripeTests/StripeTests.csproj -c {{config}} {{ if filter == "" {""} else {"--filter " + filter} }}
 
 # ⭐ run tests in debug mode
 test: (_test "" "-f net8.0" "Debug")
+
+# run a test matching a filter
+test-one name: (_test "" "-f net8.0" "Debug" name)
 
 # skip build and don't specify the dotnet framework
 ci-test: (_test "--no-build" "" "Release")

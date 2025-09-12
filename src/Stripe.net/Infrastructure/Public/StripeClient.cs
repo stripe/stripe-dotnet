@@ -8,6 +8,7 @@ namespace Stripe
     using System.Threading.Tasks;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
+    using Stripe.V2;
 
     /// <summary>
     /// A Stripe client, used to issue requests to Stripe's API and deserialize responses.
@@ -203,7 +204,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Parses a JSON string from a Stripe webhook into a <see cref="ThinEvent"/> object, while
+        /// Parses a JSON string from a Stripe webhook into a <see cref="EventNotification"/> object, while
         /// verifying the <a href="https://stripe.com/docs/webhooks/signatures">webhook's
         /// signature</a>.
         /// </summary>
@@ -213,12 +214,12 @@ namespace Stripe
         /// </param>
         /// <param name="secret">The webhook endpoint's signing secret.</param>
         /// <param name="tolerance">The time tolerance, in seconds (default 300).</param>
-        /// <returns>The deserialized <see cref="ThinEvent"/>.</returns>
+        /// <returns>The deserialized <see cref="EventNotification"/>.</returns>
         /// <exception cref="StripeException">
         /// Thrown if the signature verification fails for any reason, of if the API version of the
         /// event doesn't match Stripe.net's default API version.
         /// </exception>
-        public ThinEvent ParseThinEvent(
+        public EventNotification ParseEventNotification(
             string json,
             string stripeSignatureHeader,
             string secret,
@@ -226,9 +227,12 @@ namespace Stripe
         {
             EventUtility.ValidateSignature(json, stripeSignatureHeader, secret, tolerance, DateTimeOffset.UtcNow.ToUnixTimeSeconds());
 
-            var thinEvent = JsonUtils.DeserializeObject<ThinEvent>(json, this.jsonSerializerSettings);
+            return EventNotification.FromJson(json, this);
+        }
 
-            return thinEvent;
+        internal JsonSerializerSettings GetJsonSerializationSettings()
+        {
+            return this.jsonSerializerSettings;
         }
     }
 }
