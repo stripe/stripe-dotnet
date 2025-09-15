@@ -344,7 +344,6 @@ namespace Stripe
                 { "v2.billing.cadence.billed", typeof(Events.V2BillingCadenceBilledEvent) },
                 { "v2.billing.cadence.canceled", typeof(Events.V2BillingCadenceCanceledEvent) },
                 { "v2.billing.cadence.created", typeof(Events.V2BillingCadenceCreatedEvent) },
-                { "v2.billing.cadence.errored", typeof(Events.V2BillingCadenceErroredEvent) },
                 {
                     "v2.billing.license_fee.created", typeof(
                     Events.V2BillingLicenseFeeCreatedEvent)
@@ -813,10 +812,6 @@ namespace Stripe
                 {
                     "v2.billing.cadence.created", typeof(
                     Events.PushedV2BillingCadenceCreatedEvent)
-                },
-                {
-                    "v2.billing.cadence.errored", typeof(
-                    Events.PushedV2BillingCadenceErroredEvent)
                 },
                 {
                     "v2.billing.license_fee.created", typeof(
