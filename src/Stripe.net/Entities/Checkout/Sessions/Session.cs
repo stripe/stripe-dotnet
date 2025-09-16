@@ -325,6 +325,18 @@ namespace Stripe.Checkout
         public List<SessionDiscount> Discounts { get; set; }
 
         /// <summary>
+        /// A list of the types of payment methods (e.g., <c>card</c>) that should be excluded from
+        /// this Checkout Session. This should only be used when payment methods for this Checkout
+        /// Session are managed through the <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
+        /// </summary>
+        [JsonProperty("excluded_payment_method_types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("excluded_payment_method_types")]
+#endif
+        public List<string> ExcludedPaymentMethodTypes { get; set; }
+
+        /// <summary>
         /// The timestamp at which the Checkout Session will expire.
         /// </summary>
         [JsonProperty("expires_at")]

@@ -215,6 +215,30 @@ namespace Stripe.Checkout
         public List<SessionDiscountOptions> Discounts { get; set; }
 
         /// <summary>
+        /// A list of the types of payment methods (e.g., <c>card</c>) that should be excluded from
+        /// this Checkout Session. This should only be used when payment methods for this Checkout
+        /// Session are managed through the <a
+        /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.
+        /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
+        /// <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>,
+        /// <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>mb_way</c>, <c>mobilepay</c>,
+        /// <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>,
+        /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>,
+        /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
+        /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// </summary>
+        [JsonProperty("excluded_payment_method_types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("excluded_payment_method_types")]
+#endif
+        public List<string> ExcludedPaymentMethodTypes { get; set; }
+
+        /// <summary>
         /// The Epoch time in seconds at which the Checkout Session will expire. It can be anywhere
         /// from 30 minutes to 24 hours after Checkout Session creation. By default, this value is
         /// 24 hours from creation.
