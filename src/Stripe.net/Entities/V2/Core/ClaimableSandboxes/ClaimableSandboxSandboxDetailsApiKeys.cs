@@ -6,7 +6,7 @@ namespace Stripe.V2.Core
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class ClaimableSandboxApiKeys : StripeEntity<ClaimableSandboxApiKeys>
+    public class ClaimableSandboxSandboxDetailsApiKeys : StripeEntity<ClaimableSandboxSandboxDetailsApiKeys>
     {
         /// <summary>
         /// Used to communicate with <a href="https://docs.stripe.com/mcp">Stripe's MCP server</a>.

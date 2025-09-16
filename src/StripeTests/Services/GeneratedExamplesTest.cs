@@ -8030,7 +8030,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/claimable_sandboxes",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.core.claimable_sandbox\",\"api_keys\":{\"mcp\":null,\"publishable\":\"publishable\",\"secret\":\"secret\"},\"claim_url\":\"claim_url\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"prefill\":{\"country\":\"af\",\"email\":\"email\",\"name\":\"name\"}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.claimable_sandbox\",\"claim_url\":null,\"claimed_at\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":null,\"livemode\":true,\"prefill\":{\"country\":\"af\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\",\"api_keys\":null,\"owner_account\":null},\"status\":\"claimed\"}");
             var options = new Stripe.V2.Core.ClaimableSandboxCreateOptions
             {
                 EnableMcpAccess = true,
@@ -8046,6 +8046,23 @@ namespace StripeTests
             Stripe.V2.Core.ClaimableSandbox claimableSandbox = service.Create(
                 options);
             this.AssertRequest(HttpMethod.Post, "/v2/core/claimable_sandboxes");
+        }
+
+        [Fact]
+        public void TestV2CoreClaimableSandboxGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/claimable_sandboxes/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.claimable_sandbox\",\"claim_url\":null,\"claimed_at\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":null,\"livemode\":true,\"prefill\":{\"country\":\"af\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\",\"api_keys\":null,\"owner_account\":null},\"status\":\"claimed\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ClaimableSandboxes;
+            Stripe.V2.Core.ClaimableSandbox claimableSandbox = service.Get(
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/claimable_sandboxes/id_123");
         }
 
         [Fact]

@@ -538,6 +538,22 @@ namespace Stripe
                     Events.V2CoreAccountPersonUpdatedEvent)
                 },
                 {
+                    "v2.core.claimable_sandbox.claimed", typeof(
+                    Events.V2CoreClaimableSandboxClaimedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expired", typeof(
+                    Events.V2CoreClaimableSandboxExpiredEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expiring", typeof(
+                    Events.V2CoreClaimableSandboxExpiringEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.sandbox_details_owner_account_updated", typeof(
+                    Events.V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent)
+                },
+                {
                     "v2.core.event_destination.ping", typeof(
                     Events.V2CoreEventDestinationPingEvent)
                 },
@@ -1011,6 +1027,22 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.PushedV2CoreAccountPersonUpdatedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.claimed", typeof(
+                    Events.PushedV2CoreClaimableSandboxClaimedEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expired", typeof(
+                    Events.PushedV2CoreClaimableSandboxExpiredEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.expiring", typeof(
+                    Events.PushedV2CoreClaimableSandboxExpiringEvent)
+                },
+                {
+                    "v2.core.claimable_sandbox.sandbox_details_owner_account_updated", typeof(
+                    Events.PushedV2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
