@@ -1,9 +1,24 @@
 # Changelog
 
+## 48.6.0-alpha.2 - 2025-09-17
+* [#3173](https://github.com/stripe/stripe-dotnet/pull/3173) generate private-preview SDK w/ mid Sept changes
+  * Add support for `retrieve` method on resource `V2.Core.ClaimableSandbox`
+  * Add support for `month_of_year` on `V2.Billing.Cadence#create.billing_cycle.month` and `V2.Billing.Cadence.billing_cycle.month`
+  * Add support for `claimed_at`, `expires_at`, `sandbox_details`, and `status` on `V2.Core.ClaimableSandbox`
+  * Remove support for `api_keys` on `V2.Core.ClaimableSandbox`
+  * Change type of `V2.Core.ClaimableSandbox.claim_url` from `string` to `nullable(string)`
+  * Add support for new value `current_billing_period_end` on enums `V2.Billing.Intent#create.actions[].deactivate.effective_at.type` and `V2.Billing.IntentAction.deactivate.effective_at.type`
+  * Add support for `will_activate_at` and `will_cancel_at` on `V2.Billing.PricingPlanSubscription.servicing_status_transitions` and `V2.Billing.RateCardSubscription.servicing_status_transitions`
+  * Add support for `category` and `priority` on `V2.Billing.ServiceAction#create.credit_grant_per_tenant`, `V2.Billing.ServiceAction#create.credit_grant`, `V2.Billing.ServiceAction.credit_grant_per_tenant`, and `V2.Billing.ServiceAction.credit_grant`
+  * Change `V2.Billing.LicenseFee#update.display_name` to be optional
+  * Add support for `invoices` on `EventsV2BillingCadenceBilledEvent`
+  * Add support for thin events `V2CoreClaimableSandboxClaimedEvent`, `V2CoreClaimableSandboxExpiredEvent`, `V2CoreClaimableSandboxExpiringEvent`, and `V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent` with related object `V2.Core.ClaimableSandbox`
+  * Remove support for thin event `V2BillingCadenceErroredEvent` with related object `V2.Billing.Cadence`
+
 ## 48.6.0-alpha.1 - 2025-08-27
 * [#3166](https://github.com/stripe/stripe-dotnet/pull/3166) Use the right API version 2025-08-27.preview
 * [#3162](https://github.com/stripe/stripe-dotnet/pull/3162) Update generated code for private-preview
-  
+
   * Add support for `AttachCadence` method on resource `Subscription`
   * Add support for `Currency` and `ExternalCustomerId` on `Billing.AlertTriggered`
   * Add support for `CustomPricingUnit` on `Billing.AlertTriggered`, `Billing.CreditBalanceSummary.Balance.AvailableBalance`, `Billing.CreditBalanceSummary.Balance.LedgerBalance`, `Billing.CreditBalanceTransaction.Credit.Amount`, `Billing.CreditBalanceTransaction.Debit.Amount`, `Billing.CreditGrant.Amount`, and `BillingCreditGrantAmountOptions`
@@ -100,7 +115,7 @@ This release changes the pinned API version to `2025-08-27.preview`.
 * [#3160](https://github.com/stripe/stripe-dotnet/pull/3160) Bring back invoice payments APIs that were missing in the public preview SDKs
     * Add support for new resource `InvoicePayment`
     * Add support for `Get` and `List` methods on resource `InvoicePayment`
-  
+
 * [#3155](https://github.com/stripe/stripe-dotnet/pull/3155) Fix links to pinned api versions in CHANGELOG.md in beta branch
 
 ## 48.5.0-beta.1 - 2025-07-30
@@ -420,7 +435,7 @@ See [SaaS platform payments with subscription billing using Accounts v2](https:/
   * Change `Invoice.amount_overpaid` and `QuotePreviewInvoice.amount_overpaid` to be required
   * Change type of `PaymentAttemptRecord.PaymentMethodDetail.custom` and `PaymentRecord.PaymentMethodDetail.custom` from `nullable(PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCustomDetails)` to `PaymentsPrimitivesPaymentRecordsResourcePaymentMethodCustomDetails`
   * Change `PaymentRecord.ReportPaymentParams.payment_reference` to be optional
-  
+
 * [#3069](https://github.com/stripe/stripe-dotnet/pull/3069) Enhance beta version handling in ApiVersion
   * `StripeConfiguation.AddBetaVersion` will use the highest version number used for a beta feature instead of throwing an `Exception` on a conflict as it had done previously.
 
@@ -508,7 +523,7 @@ See [SaaS platform payments with subscription billing using Accounts v2](https:/
 
 ## 47.5.0-beta.1 - 2025-03-18
 * [#3062](https://github.com/stripe/stripe-dotnet/pull/3062) Beta SDK updates between Open API versions 1473 and 1505
-  
+
   * Add support for `SucceedInputCollection` and `TimeoutInputCollection` test helper methods on resource `Terminal.Reader`
   * Add support for `TargetDate` on `OrderPaymentSettingsPaymentMethodOptionsAcssDebitOptions`, `OrderPaymentSettingsPaymentMethodOptionsAcssDebit`, `OrderPaymentSettingsPaymentMethodOptionsSepaDebitOptions`, and `OrderPaymentSettingsPaymentMethodOptionsSepaDebit`
 
@@ -933,7 +948,7 @@ However, [a bug](https://github.com/stripe/stripe-dotnet/pull/3010) in the `46.x
 ## 45.6.0-beta.1 - 2024-07-25
 * [#2938](https://github.com/stripe/stripe-dotnet/pull/2938) Update generated code for beta
   ⚠️ `InvoicePayment.Charge` and `InvoicePayment.PaymentIntent` were removed in favor of `InvoicePaymentPayment`, which encapsulates both. The Charge and PaymentIntent fields are now found at `InvoicePaymentPayment.Charge` `InvoicePaymentPayment.PaymentIntent`
-  
+
   * Add support for new resources `Billing.AlertTriggered`, `Billing.Alert`, and `Tax.Association`
   * Add support for `Activate`, `Archive`, `Create`, `Deactivate`, `Get`, and `List` methods on resource `Alert`
   * Add support for `Find` method on resource `Association`
@@ -2379,7 +2394,7 @@ Breaking changes that arose during code generation of the library that we postpo
 ## 40.4.0-beta.1 - 2022-08-23
 * [#2563](https://github.com/stripe/stripe-dotnet/pull/2563) API Updates for beta branch
   - Updated stable APIs to the latest version
-  - `Stripe-Version` beta headers are not pinned by-default and need to be manually specified, please refer to [beta SDKs README section](https://github.com/stripe/stripe-dotnet/blob/master/README.md#beta-sdks) 
+  - `Stripe-Version` beta headers are not pinned by-default and need to be manually specified, please refer to [beta SDKs README section](https://github.com/stripe/stripe-dotnet/blob/master/README.md#beta-sdks)
 * [#2561](https://github.com/stripe/stripe-dotnet/pull/2561) Make APIVersion configuration settable
 
 ## 40.3.0 - 2022-08-19
