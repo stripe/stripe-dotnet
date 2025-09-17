@@ -34,5 +34,23 @@ namespace Stripe.V2.Billing
         [STJS.JsonPropertyName("paused_at")]
 #endif
         public string PausedAt { get; set; }
+
+        /// <summary>
+        /// When the servicing is scheduled to transition to activate.
+        /// </summary>
+        [JsonProperty("will_activate_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("will_activate_at")]
+#endif
+        public string WillActivateAt { get; set; }
+
+        /// <summary>
+        /// When the servicing is scheduled to cancel.
+        /// </summary>
+        [JsonProperty("will_cancel_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("will_cancel_at")]
+#endif
+        public string WillCancelAt { get; set; }
     }
 }

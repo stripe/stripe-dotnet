@@ -21,7 +21,8 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// When the deactivate action will take effect.
-        /// One of: <c>current_billing_period_start</c>, <c>on_reserve</c>, or <c>timestamp</c>.
+        /// One of: <c>current_billing_period_end</c>, <c>current_billing_period_start</c>,
+        /// <c>on_reserve</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

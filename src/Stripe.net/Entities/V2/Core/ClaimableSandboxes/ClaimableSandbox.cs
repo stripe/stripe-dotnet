@@ -38,23 +38,24 @@ namespace Stripe.V2.Core
         public string Object { get; set; }
 
         /// <summary>
-        /// Keys that can be used to set up an integration for this sandbox and operate on the
-        /// account.
-        /// </summary>
-        [JsonProperty("api_keys")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("api_keys")]
-#endif
-        public ClaimableSandboxApiKeys ApiKeys { get; set; }
-
-        /// <summary>
-        /// URL for user to claim sandbox into their existing Stripe account.
+        /// URL for user to claim sandbox into their existing Stripe account. The value will be null
+        /// if the sandbox status is <c>claimed</c> or <c>expired</c>.
         /// </summary>
         [JsonProperty("claim_url")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("claim_url")]
 #endif
         public string ClaimUrl { get; set; }
+
+        /// <summary>
+        /// The timestamp the sandbox was claimed. The value will be null if the sandbox status is
+        /// not <c>claimed</c>.
+        /// </summary>
+        [JsonProperty("claimed_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("claimed_at")]
+#endif
+        public DateTime? ClaimedAt { get; set; }
 
         /// <summary>
         /// When the sandbox is created.
@@ -64,6 +65,16 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("created")]
 #endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// The timestamp the sandbox will expire. The value will be null if the sandbox is
+        /// <c>claimed</c>.
+        /// </summary>
+        [JsonProperty("expires_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expires_at")]
+#endif
+        public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
@@ -83,5 +94,24 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("prefill")]
 #endif
         public ClaimableSandboxPrefill Prefill { get; set; }
+
+        /// <summary>
+        /// Data about the Stripe sandbox object.
+        /// </summary>
+        [JsonProperty("sandbox_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sandbox_details")]
+#endif
+        public ClaimableSandboxSandboxDetails SandboxDetails { get; set; }
+
+        /// <summary>
+        /// Status of the sandbox. One of <c>unclaimed</c>, <c>expired</c>, <c>claimed</c>.
+        /// One of: <c>claimed</c>, <c>expired</c>, or <c>unclaimed</c>.
+        /// </summary>
+        [JsonProperty("status")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status")]
+#endif
+        public string Status { get; set; }
     }
 }

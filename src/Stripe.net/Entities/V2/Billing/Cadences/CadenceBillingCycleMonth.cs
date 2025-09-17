@@ -20,6 +20,16 @@ namespace Stripe.V2.Billing
         public long DayOfMonth { get; set; }
 
         /// <summary>
+        /// The month to anchor the billing on for a type="month" billing cycle from 1-12.
+        /// Occurrences are calculated from the month anchor.
+        /// </summary>
+        [JsonProperty("month_of_year")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("month_of_year")]
+#endif
+        public long? MonthOfYear { get; set; }
+
+        /// <summary>
         /// The time at which the billing cycle ends.
         /// </summary>
         [JsonProperty("time")]

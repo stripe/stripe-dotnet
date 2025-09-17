@@ -8,20 +8,10 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Occurs when a billing Cadence generates an invoice.
+    /// Occurs when a claimable sandbox is claimed.
     /// </summary>
-    public class V2BillingCadenceBilledEvent : V2.Event
+    public class PushedV2CoreClaimableSandboxClaimedEvent : V2.PushedEvent
     {
-        /// <summary>
-        /// Data for the v2.billing.cadence.billed event.
-        /// </summary>
-        [JsonProperty("data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("data")]
-#endif
-
-        public V2BillingCadenceBilledEventData Data { get; set; }
-
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
@@ -36,17 +26,27 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<V2.Billing.Cadence> FetchRelatedObjectAsync()
+        public Task<V2.Core.ClaimableSandbox> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<V2.Billing.Cadence>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<V2.Core.ClaimableSandbox>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public V2.Billing.Cadence FetchRelatedObject()
+        public V2.Core.ClaimableSandbox FetchRelatedObject()
         {
-            return this.FetchRelatedObject<V2.Billing.Cadence>(this.RelatedObject);
+            return this.FetchRelatedObject<V2.Core.ClaimableSandbox>(this.RelatedObject);
+        }
+
+        public V2CoreClaimableSandboxClaimedEvent Pull()
+        {
+            return this.PullEvent<V2CoreClaimableSandboxClaimedEvent>();
+        }
+
+        public Task<V2CoreClaimableSandboxClaimedEvent> PullAsync()
+        {
+            return this.PullEventAsync<V2CoreClaimableSandboxClaimedEvent>();
         }
     }
 }

@@ -6289,6 +6289,7 @@ namespace StripeTests
                     Month = new Stripe.V2.Billing.CadenceCreateBillingCycleMonthOptions
                     {
                         DayOfMonth = 1361669285,
+                        MonthOfYear = 82933018,
                         Time = new Stripe.V2.Billing.CadenceCreateBillingCycleMonthTimeOptions
                         {
                             Hour = 3208676,
@@ -6613,7 +6614,7 @@ namespace StripeTests
                                 Timestamp = DateTimeOffset.Parse(
                                     "1970-01-01T15:18:46.294Z")
                                     .UtcDateTime,
-                                Type = "current_billing_period_start",
+                                Type = "on_reserve",
                             },
                             PricingPlanSubscriptionDetails = new Stripe.V2.Billing.IntentCreateActionDeactivatePricingPlanSubscriptionDetailsOptions
                             {
@@ -6903,10 +6904,7 @@ namespace StripeTests
                 "/v2/billing/license_fees/id_123",
                 (HttpStatusCode)200,
                 "{\"id\":\"obj_123\",\"object\":\"v2.billing.license_fee\",\"active\":true,\"created\":\"1970-01-12T21:42:34.472Z\",\"currency\":\"usd\",\"display_name\":\"display_name\",\"latest_version\":\"latest_version\",\"licensed_item\":{\"id\":\"obj_123\",\"object\":\"v2.billing.licensed_item\",\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"livemode\":true,\"lookup_key\":null,\"metadata\":null,\"tax_details\":null,\"unit_label\":null},\"live_version\":\"live_version\",\"livemode\":true,\"lookup_key\":null,\"metadata\":null,\"service_interval\":\"month\",\"service_interval_count\":1375336415,\"tax_behavior\":\"exclusive\",\"tiering_mode\":null,\"tiers\":[{\"flat_amount\":null,\"unit_amount\":null,\"up_to_decimal\":null,\"up_to_inf\":null}],\"transform_quantity\":null,\"unit_amount\":null}");
-            var options = new Stripe.V2.Billing.LicenseFeeUpdateOptions
-            {
-                DisplayName = "display_name",
-            };
+            var options = new Stripe.V2.Billing.LicenseFeeUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.LicenseFees;
             Stripe.V2.Billing.LicenseFee licenseFee = service.Update(
@@ -7409,7 +7407,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/pricing_plan_subscriptions",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":\"past_due\",\"collection_status_transitions\":{\"awaiting_customer_action_at\":null,\"current_at\":null,\"past_due_at\":null,\"paused_at\":null,\"unpaid_at\":null},\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"pricing_plan\":\"pricing_plan\",\"pricing_plan_version\":\"pricing_plan_version\",\"servicing_status\":\"pending\",\"servicing_status_transitions\":{\"activated_at\":null,\"canceled_at\":null,\"paused_at\":null},\"test_clock\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":\"past_due\",\"collection_status_transitions\":{\"awaiting_customer_action_at\":null,\"current_at\":null,\"past_due_at\":null,\"paused_at\":null,\"unpaid_at\":null},\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"pricing_plan\":\"pricing_plan\",\"pricing_plan_version\":\"pricing_plan_version\",\"servicing_status\":\"pending\",\"servicing_status_transitions\":{\"activated_at\":null,\"canceled_at\":null,\"paused_at\":null,\"will_activate_at\":null,\"will_cancel_at\":null},\"test_clock\":null}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.PricingPlanSubscriptions;
             Stripe.V2.StripeList<Stripe.V2.Billing.PricingPlanSubscription> pricingPlanSubscriptions = service
@@ -7426,7 +7424,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/billing/pricing_plan_subscriptions/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":\"past_due\",\"collection_status_transitions\":{\"awaiting_customer_action_at\":null,\"current_at\":null,\"past_due_at\":null,\"paused_at\":null,\"unpaid_at\":null},\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"pricing_plan\":\"pricing_plan\",\"pricing_plan_version\":\"pricing_plan_version\",\"servicing_status\":\"pending\",\"servicing_status_transitions\":{\"activated_at\":null,\"canceled_at\":null,\"paused_at\":null},\"test_clock\":null}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.billing.pricing_plan_subscription\",\"billing_cadence\":\"billing_cadence\",\"collection_status\":\"past_due\",\"collection_status_transitions\":{\"awaiting_customer_action_at\":null,\"current_at\":null,\"past_due_at\":null,\"paused_at\":null,\"unpaid_at\":null},\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"metadata\":null,\"pricing_plan\":\"pricing_plan\",\"pricing_plan_version\":\"pricing_plan_version\",\"servicing_status\":\"pending\",\"servicing_status_transitions\":{\"activated_at\":null,\"canceled_at\":null,\"paused_at\":null,\"will_activate_at\":null,\"will_cancel_at\":null},\"test_clock\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.PricingPlanSubscriptions;
             Stripe.V2.Billing.PricingPlanSubscription pricingPlanSubscription = service
@@ -8032,7 +8030,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/claimable_sandboxes",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.core.claimable_sandbox\",\"api_keys\":{\"mcp\":null,\"publishable\":\"publishable\",\"secret\":\"secret\"},\"claim_url\":\"claim_url\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"prefill\":{\"country\":\"af\",\"email\":\"email\",\"name\":\"name\"}}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.claimable_sandbox\",\"claim_url\":null,\"claimed_at\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":null,\"livemode\":true,\"prefill\":{\"country\":\"af\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\",\"api_keys\":null,\"owner_account\":null},\"status\":\"claimed\"}");
             var options = new Stripe.V2.Core.ClaimableSandboxCreateOptions
             {
                 EnableMcpAccess = true,
@@ -8048,6 +8046,23 @@ namespace StripeTests
             Stripe.V2.Core.ClaimableSandbox claimableSandbox = service.Create(
                 options);
             this.AssertRequest(HttpMethod.Post, "/v2/core/claimable_sandboxes");
+        }
+
+        [Fact]
+        public void TestV2CoreClaimableSandboxGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/claimable_sandboxes/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.claimable_sandbox\",\"claim_url\":null,\"claimed_at\":null,\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":null,\"livemode\":true,\"prefill\":{\"country\":\"af\",\"email\":\"email\",\"name\":\"name\"},\"sandbox_details\":{\"account\":\"account\",\"api_keys\":null,\"owner_account\":null},\"status\":\"claimed\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ClaimableSandboxes;
+            Stripe.V2.Core.ClaimableSandbox claimableSandbox = service.Get(
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/claimable_sandboxes/id_123");
         }
 
         [Fact]

@@ -8,9 +8,9 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Occurs when a billing Cadence encounters an error during a tick.
+    /// Occurs when a claimable sandbox expires.
     /// </summary>
-    public class PushedV2BillingCadenceErroredEvent : V2.PushedEvent
+    public class V2CoreClaimableSandboxExpiredEvent : V2.Event
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -26,27 +26,17 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<V2.Billing.Cadence> FetchRelatedObjectAsync()
+        public Task<V2.Core.ClaimableSandbox> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<V2.Billing.Cadence>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<V2.Core.ClaimableSandbox>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public V2.Billing.Cadence FetchRelatedObject()
+        public V2.Core.ClaimableSandbox FetchRelatedObject()
         {
-            return this.FetchRelatedObject<V2.Billing.Cadence>(this.RelatedObject);
-        }
-
-        public V2BillingCadenceErroredEvent Pull()
-        {
-            return this.PullEvent<V2BillingCadenceErroredEvent>();
-        }
-
-        public Task<V2BillingCadenceErroredEvent> PullAsync()
-        {
-            return this.PullEventAsync<V2BillingCadenceErroredEvent>();
+            return this.FetchRelatedObject<V2.Core.ClaimableSandbox>(this.RelatedObject);
         }
     }
 }
