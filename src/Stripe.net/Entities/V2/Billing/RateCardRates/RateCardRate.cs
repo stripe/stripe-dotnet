@@ -69,7 +69,9 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The Metered Item that this rate binds to.
+        /// A Metered Item represents a billable item whose pricing is based on usage, measured by a
+        /// meter. You can use rate cards to specify the pricing and create subscriptions to these
+        /// items.
         /// </summary>
         [JsonProperty("metered_item")]
 #if NET6_0_OR_GREATER

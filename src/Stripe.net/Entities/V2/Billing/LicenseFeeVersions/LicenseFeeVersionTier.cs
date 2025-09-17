@@ -36,7 +36,7 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("up_to_decimal")]
 #endif
-        public string UpToDecimal { get; set; }
+        public decimal UpToDecimal { get; set; }
 
         /// <summary>
         /// No upper bound to this tier. Only one of <c>up_to_decimal</c> and <c>up_to_inf</c> may

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Billing
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -52,7 +53,7 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("konbini")]
 #endif
-        public CollectionSettingCreatePaymentMethodOptionsKonbiniOptions Konbini { get; set; }
+        public Dictionary<string, object> Konbini { get; set; }
 
         /// <summary>
         /// This sub-hash contains details about the SEPA Direct Debit payment method options.
@@ -61,7 +62,7 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]
 #endif
-        public CollectionSettingCreatePaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
+        public Dictionary<string, object> SepaDebit { get; set; }
 
         /// <summary>
         /// This sub-hash contains details about the ACH direct debit payment method options.

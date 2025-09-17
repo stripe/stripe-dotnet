@@ -16,7 +16,7 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("canceled_at")]
 #endif
-        public DateTime? CanceledAt { get; set; }
+        public DateTime CanceledAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Time at which the Billing Intent was committed.
@@ -25,7 +25,7 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("committed_at")]
 #endif
-        public DateTime? CommittedAt { get; set; }
+        public DateTime CommittedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Time at which the Billing Intent was drafted.
@@ -34,7 +34,7 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("drafted_at")]
 #endif
-        public DateTime? DraftedAt { get; set; }
+        public DateTime DraftedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Time at which the Billing Intent was reserved.
@@ -43,6 +43,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reserved_at")]
 #endif
-        public DateTime? ReservedAt { get; set; }
+        public DateTime ReservedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

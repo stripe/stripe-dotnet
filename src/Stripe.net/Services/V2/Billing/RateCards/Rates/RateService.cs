@@ -42,18 +42,18 @@ namespace Stripe.V2.Billing.RateCards
         /// Remove an existing Rate from a Rate Card. This will create a new Rate Card Version
         /// without that Rate.
         /// </summary>
-        public virtual V2.Billing.RateCardRate Delete(string parentId, string id, RateDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual V2.DeletedObject Delete(string parentId, string id, RateDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<V2.Billing.RateCardRate>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/rate_cards/{WebUtility.UrlEncode(parentId)}/rates/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/rate_cards/{WebUtility.UrlEncode(parentId)}/rates/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
         /// Remove an existing Rate from a Rate Card. This will create a new Rate Card Version
         /// without that Rate.
         /// </summary>
-        public virtual Task<V2.Billing.RateCardRate> DeleteAsync(string parentId, string id, RateDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<V2.DeletedObject> DeleteAsync(string parentId, string id, RateDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<V2.Billing.RateCardRate>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/rate_cards/{WebUtility.UrlEncode(parentId)}/rates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/billing/rate_cards/{WebUtility.UrlEncode(parentId)}/rates/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
