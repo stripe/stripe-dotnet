@@ -23,8 +23,8 @@ namespace Stripe.TestHelpers.Issuing
         /// <summary>
         /// The likelihood that authorizations from this merchant will result in a dispute based on
         /// their history on Stripe Issuing.
-        /// One of: <c>elevated</c>, <c>high</c>, <c>highest</c>, <c>normal</c>,
-        /// <c>not_assessed</c>, or <c>unknown</c>.
+        /// One of: <c>elevated</c>, <c>highest</c>, <c>normal</c>, <c>not_assessed</c>, or
+        /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("risk_level")]
 #if NET6_0_OR_GREATER
