@@ -21,6 +21,17 @@ namespace Stripe
         public DisputeEvidenceOptions Evidence { get; set; }
 
         /// <summary>
+        /// Intended submission method for the dispute.
+        /// One of: <c>manual</c>, <c>prefer_manual</c>, <c>prefer_smart_disputes</c>, or
+        /// <c>smart_disputes</c>.
+        /// </summary>
+        [JsonProperty("intended_submission_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("intended_submission_method")]
+#endif
+        public string IntendedSubmissionMethod { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
