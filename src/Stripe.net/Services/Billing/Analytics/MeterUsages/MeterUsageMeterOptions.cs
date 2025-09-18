@@ -32,11 +32,11 @@ namespace Stripe.Billing.Analytics
         /// <summary>
         /// Meter id to query usage for.
         /// </summary>
-        [JsonProperty("meter")]
+        [JsonProperty("meter_id")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("meter")]
+        [STJS.JsonPropertyName("meter_id")]
 #endif
-        public string Meter { get; set; }
+        public string MeterId { get; set; }
 
         /// <summary>
         /// Key-value pairs used to filter usage events by high cardinality tenant dimension values.

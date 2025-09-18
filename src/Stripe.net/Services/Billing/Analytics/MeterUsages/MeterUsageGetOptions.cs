@@ -24,13 +24,13 @@ namespace Stripe.Billing.Analytics
         /// The timestamp from when to stop aggregating meter events (exclusive). Must be aligned
         /// with minute boundaries.
         /// </summary>
-        [JsonProperty("ends_at")]
+        [JsonProperty("end_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("ends_at")]
+        [STJS.JsonPropertyName("end_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-        public DateTime? EndsAt { get; set; }
+        public DateTime? EndTime { get; set; }
 
         /// <summary>
         /// An array of meter parameters to specify which meters to include in the usage data. If
@@ -46,13 +46,13 @@ namespace Stripe.Billing.Analytics
         /// The timestamp from when to start aggregating meter events (inclusive). Must be aligned
         /// with minute boundaries.
         /// </summary>
-        [JsonProperty("starts_at")]
+        [JsonProperty("start_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("starts_at")]
+        [STJS.JsonPropertyName("start_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-        public DateTime? StartsAt { get; set; }
+        public DateTime? StartTime { get; set; }
 
         /// <summary>
         /// The timezone to use for the start and end times. Defaults to UTC if not specified.

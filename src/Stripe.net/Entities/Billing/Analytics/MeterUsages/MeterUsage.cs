@@ -2,6 +2,7 @@
 namespace Stripe.Billing.Analytics
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
@@ -24,6 +25,26 @@ namespace Stripe.Billing.Analytics
         public string Object { get; set; }
 
         /// <summary>
+        /// The aggregated meter usage data for the specified customer and time range.
+        /// </summary>
+        [JsonProperty("data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("data")]
+#endif
+        public List<MeterUsageRow> Data { get; set; }
+
+        /// <summary>
+        /// Timestamp indicating how fresh the data is. Measured in seconds since the Unix epoch.
+        /// </summary>
+        [JsonProperty("data_refreshed_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("data_refreshed_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+        public DateTime DataRefreshedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -32,22 +53,5 @@ namespace Stripe.Billing.Analytics
         [STJS.JsonPropertyName("livemode")]
 #endif
         public bool Livemode { get; set; }
-
-        /// <summary>
-        /// Timestamp indicating how fresh the data is. Measured in seconds since the Unix epoch.
-        /// </summary>
-        [JsonProperty("refreshed_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("refreshed_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
-        public DateTime RefreshedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
-
-        [JsonProperty("rows")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("rows")]
-#endif
-        public StripeList<MeterUsageRow> Rows { get; set; }
     }
 }
