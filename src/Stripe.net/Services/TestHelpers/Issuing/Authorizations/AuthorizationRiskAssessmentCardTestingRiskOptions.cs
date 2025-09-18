@@ -35,8 +35,8 @@ namespace Stripe.TestHelpers.Issuing
         /// <summary>
         /// The likelihood that this authorization is associated with card testing activity. This is
         /// assessed by evaluating decline activity over the last hour.
-        /// One of: <c>elevated</c>, <c>high</c>, <c>highest</c>, <c>normal</c>,
-        /// <c>not_assessed</c>, or <c>unknown</c>.
+        /// One of: <c>elevated</c>, <c>highest</c>, <c>normal</c>, <c>not_assessed</c>, or
+        /// <c>unknown</c>.
         /// </summary>
         [JsonProperty("risk_level")]
 #if NET6_0_OR_GREATER
