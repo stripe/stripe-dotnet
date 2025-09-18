@@ -203,6 +203,12 @@ namespace Stripe
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
 
+        [JsonProperty("source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source")]
+#endif
+        public DiscountSource Source { get; set; }
+
         /// <summary>
         /// Date that the coupon was applied.
         /// </summary>
