@@ -453,6 +453,12 @@ namespace Stripe.Checkout
 #endif
         public string Mode { get; set; }
 
+        [JsonProperty("name_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name_collection")]
+#endif
+        public SessionNameCollection NameCollection { get; set; }
+
         /// <summary>
         /// The optional items presented to the customer at checkout.
         /// </summary>

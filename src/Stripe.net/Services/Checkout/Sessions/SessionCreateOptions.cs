@@ -318,6 +318,21 @@ namespace Stripe.Checkout
         public string Mode { get; set; }
 
         /// <summary>
+        /// Controls name collection settings for the session.
+        ///
+        /// You can configure Checkout to collect your customers' business names, individual names,
+        /// or both. Each name field can be either required or optional.
+        ///
+        /// If a <a href="https://stripe.com/docs/api/customers">Customer</a> is created or
+        /// provided, the names can be saved to the Customer object as well.
+        /// </summary>
+        [JsonProperty("name_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name_collection")]
+#endif
+        public SessionNameCollectionOptions NameCollection { get; set; }
+
+        /// <summary>
         /// A list of optional items the customer can add to their order at checkout. Use this
         /// parameter to pass one-time or recurring <a
         /// href="https://stripe.com/docs/api/prices">Prices</a>.
