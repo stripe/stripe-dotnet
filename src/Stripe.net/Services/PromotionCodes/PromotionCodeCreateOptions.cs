@@ -98,15 +98,6 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The promotion for this promotion code.
-        /// </summary>
-        [JsonProperty("promotion")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("promotion")]
-#endif
-        public PromotionCodePromotionOptions Promotion { get; set; }
-
-        /// <summary>
         /// Settings that restrict the redemption of the promotion code.
         /// </summary>
         [JsonProperty("restrictions")]
