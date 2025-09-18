@@ -61,6 +61,16 @@ namespace Stripe.Checkout
         public string BillingAddressCollection { get; set; }
 
         /// <summary>
+        /// The branding settings for the Checkout Session. This parameter is not allowed if ui_mode
+        /// is <c>custom</c>.
+        /// </summary>
+        [JsonProperty("branding_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("branding_settings")]
+#endif
+        public SessionBrandingSettingsOptions BrandingSettings { get; set; }
+
+        /// <summary>
         /// If set, Checkout displays a back button and customers will be directed to this URL if
         /// they decide to cancel payment and return to your website. This parameter is not allowed
         /// if ui_mode is <c>embedded</c> or <c>custom</c>.

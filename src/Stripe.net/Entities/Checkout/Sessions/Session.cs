@@ -113,6 +113,12 @@ namespace Stripe.Checkout
 #endif
         public string BillingAddressCollection { get; set; }
 
+        [JsonProperty("branding_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("branding_settings")]
+#endif
+        public SessionBrandingSettings BrandingSettings { get; set; }
+
         /// <summary>
         /// If set, Checkout displays a back button and customers will be directed to this URL if
         /// they decide to cancel payment and return to your website.
