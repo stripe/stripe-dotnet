@@ -9,6 +9,15 @@ namespace Stripe
     public class SubscriptionScheduleBillingModeOptions : INestedOptions
     {
         /// <summary>
+        /// Configure behavior for flexible billing mode.
+        /// </summary>
+        [JsonProperty("flexible")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flexible")]
+#endif
+        public SubscriptionScheduleBillingModeFlexibleOptions Flexible { get; set; }
+
+        /// <summary>
         /// Controls the calculation and orchestration of prorations and invoices for subscriptions.
         /// If no value is passed, the default is <c>flexible</c>.
         /// One of: <c>classic</c>, or <c>flexible</c>.
