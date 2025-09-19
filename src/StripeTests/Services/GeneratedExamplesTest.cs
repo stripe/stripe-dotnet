@@ -3911,7 +3911,6 @@ namespace StripeTests
                                 Quantity = 1,
                             },
                         },
-                        Iterations = 12,
                     },
                 },
             };
