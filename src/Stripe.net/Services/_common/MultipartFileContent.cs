@@ -3,11 +3,11 @@ namespace Stripe
     using System.IO;
 
     /// <summary>
-    /// Represents a File to be uploaded with FileService.Create.
+    /// Represents Data and optional Name and Type that will be encoded as multipart form
+    /// data.  Used in e.g. FileService.Create.
     ///
-    /// Name and Type are optional (see comments below).
     /// </summary>
-    public class FileFileOptions
+    public class MultipartFileContent
     {
         /// <summary>
         /// The file data to send.  If this is a FileStream, the SDK will infer

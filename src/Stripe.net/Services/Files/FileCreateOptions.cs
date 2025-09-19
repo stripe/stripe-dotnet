@@ -16,7 +16,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("file")]
 #endif
-        public FileFileOptions File { get; set; }
+        public MultipartFileContent File { get; set; }
 
         /// <summary>
         /// Optional parameters that automatically create a <a

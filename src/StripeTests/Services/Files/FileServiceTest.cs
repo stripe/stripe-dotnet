@@ -31,7 +31,7 @@ namespace StripeTests
             var resourceStream = typeof(FileServiceTest).GetTypeInfo().Assembly.GetManifestResourceStream(FileName);
             this.createOptions = new FileCreateOptions
             {
-                File = new FileFileOptions
+                File = new MultipartFileContent
                 {
                     Data = resourceStream,
                 },
@@ -48,7 +48,7 @@ namespace StripeTests
 
             this.base64Options = new FileCreateOptions
             {
-                File = new FileFileOptions
+                File = new MultipartFileContent
                 {
                     Data = new MemoryStream(Convert.FromBase64String("c3RyaXBlLWRvdG5ldA==")),
                 },

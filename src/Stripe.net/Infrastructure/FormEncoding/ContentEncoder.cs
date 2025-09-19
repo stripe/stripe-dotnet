@@ -145,7 +145,7 @@ namespace Stripe.Infrastructure.FormEncoding
                     flatParams = SingleParam(keyPrefix, s);
                     break;
 
-                case FileFileOptions f:
+                case MultipartFileContent f:
                     flatParams = SingleParam(keyPrefix, f);
                     break;
 

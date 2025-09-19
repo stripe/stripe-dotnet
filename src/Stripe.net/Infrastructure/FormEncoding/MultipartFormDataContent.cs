@@ -41,7 +41,7 @@ namespace Stripe.Infrastructure.FormEncoding
         private static StringContent CreateStringContent(string value)
             => new StringContent(value, System.Text.Encoding.UTF8);
 
-        private static StreamContent CreateStreamContent(FileFileOptions value, string name)
+        private static StreamContent CreateStreamContent(MultipartFileContent value, string name)
         {
             var fileName = value.Name ?? "blob";
             var extension = Path.GetExtension(fileName);
@@ -82,12 +82,12 @@ namespace Stripe.Infrastructure.FormEncoding
                         this.Add(CreateStringContent(s), QuoteString(kvp.Key));
                         break;
 
-                    case FileFileOptions f:
+                    case MultipartFileContent f:
                         this.Add(CreateStreamContent(f, QuoteString(kvp.Key)));
                         break;
 
                     case Stream s:
-                        var fileData = new FileFileOptions
+                        var fileData = new MultipartFileContent
                         {
                             Data = s,
                         };

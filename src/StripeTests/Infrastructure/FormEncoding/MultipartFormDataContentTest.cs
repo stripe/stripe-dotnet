@@ -73,11 +73,11 @@ namespace StripeTests
         }
 
         [Fact]
-        public async Task Ctor_OneFileFileOptionsEntry_Success()
+        public async Task Ctor_OneMultipartFileContentEntry_Success()
         {
             var source = new Dictionary<string, object>
             {
-                { "key", new FileFileOptions { Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")) } },
+                { "key", new MultipartFileContent { Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")) } },
             };
             var content = new MultipartFormDataContent(source, "test-boundary");
 
@@ -93,12 +93,12 @@ namespace StripeTests
         }
 
         [Fact]
-        public async Task Ctor_OneFileFileOptionsWithNameEntry_Success()
+        public async Task Ctor_OneMultipartFileContentWithNameEntry_Success()
         {
             var source = new Dictionary<string, object>
             {
                 {
-                    "key", new FileFileOptions
+                    "key", new MultipartFileContent
                     {
                          Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
                          Name = "file",
@@ -119,12 +119,12 @@ namespace StripeTests
         }
 
         [Fact]
-        public async Task Ctor_OneFileFileOptionsWithNameAndExtEntry_Success()
+        public async Task Ctor_OneMultipartFileContentWithNameAndExtEntry_Success()
         {
             var source = new Dictionary<string, object>
             {
                 {
-                    "key", new FileFileOptions
+                    "key", new MultipartFileContent
                     {
                         Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
                         Name = "file.csv",
@@ -145,12 +145,12 @@ namespace StripeTests
         }
 
         [Fact]
-        public async Task Ctor_OneFileFileOptionsWithNameAndTypeEntry_Success()
+        public async Task Ctor_OneMultipartFileContentWithNameAndTypeEntry_Success()
         {
             var source = new Dictionary<string, object>
             {
                 {
-                    "key", new FileFileOptions
+                    "key", new MultipartFileContent
                     {
                         Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
                         Name = "file",
@@ -172,12 +172,12 @@ namespace StripeTests
         }
 
         [Fact]
-        public async Task Ctor_OneFileFileOptionsWithNameAndExtAndTypeEntry_Success()
+        public async Task Ctor_OneMultipartFileContentWithNameAndExtAndTypeEntry_Success()
         {
             var source = new Dictionary<string, object>
             {
                 {
-                    "key", new FileFileOptions
+                    "key", new MultipartFileContent
                     {
                         Data = new MemoryStream(Encoding.UTF8.GetBytes("Hello World!")),
                         Name = "file.json",
