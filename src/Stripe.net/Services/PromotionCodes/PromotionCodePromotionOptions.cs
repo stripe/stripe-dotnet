@@ -18,7 +18,7 @@ namespace Stripe
         public string Coupon { get; set; }
 
         /// <summary>
-        /// Specifies the type of promotion code. Currently, only coupon is supported.
+        /// Specifies the type of promotion code.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
