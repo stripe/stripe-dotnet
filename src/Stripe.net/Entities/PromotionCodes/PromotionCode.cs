@@ -182,6 +182,12 @@ namespace Stripe
 #endif
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("promotion")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("promotion")]
+#endif
+        public PromotionCodePromotion Promotion { get; set; }
+
         [JsonProperty("restrictions")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("restrictions")]
