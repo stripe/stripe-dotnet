@@ -7700,10 +7700,10 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.AlreadyCanceledException>(
             () =>
             {
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Cancel("id_123");
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.OutboundPayments;
+                Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
+                    .Cancel("id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7721,14 +7721,14 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.AlreadyExistsException>(
             () =>
             {
-            var options = new Stripe.V2.MoneyManagement.FinancialAccountCreateOptions
-            {
-                Type = "storage",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.FinancialAccounts;
-            Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
-                .Create(options);
+                var options = new Stripe.V2.MoneyManagement.FinancialAccountCreateOptions
+                {
+                    Type = "storage",
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.FinancialAccounts;
+                Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
+                    .Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7746,14 +7746,14 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.BlockedByStripeException>(
             () =>
             {
-            var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
-            {
-                AccountNumber = "account_number",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.UsBankAccounts;
-            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
-                options);
+                var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
+                {
+                    AccountNumber = "account_number",
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.Core.Vault.UsBankAccounts;
+                Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
+                    options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7771,10 +7771,10 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.ControlledByDashboardException>(
             () =>
             {
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.UsBankAccounts;
-            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Archive(
-                "id_123");
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.Core.Vault.UsBankAccounts;
+                Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Archive(
+                    "id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7792,14 +7792,14 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.FeatureNotEnabledException>(
             () =>
             {
-            var options = new Stripe.V2.MoneyManagement.FinancialAccountCreateOptions
-            {
-                Type = "storage",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.FinancialAccounts;
-            Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
-                .Create(options);
+                var options = new Stripe.V2.MoneyManagement.FinancialAccountCreateOptions
+                {
+                    Type = "storage",
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.FinancialAccounts;
+                Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
+                    .Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7817,15 +7817,15 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.FinancialAccountNotOpenException>(
             () =>
             {
-            var options = new Stripe.V2.MoneyManagement.FinancialAddressCreateOptions
-            {
-                Currency = "usd",
-                FinancialAccount = "financial_account",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.FinancialAddresses;
-            Stripe.V2.MoneyManagement.FinancialAddress financialAddress = service
-                .Create(options);
+                var options = new Stripe.V2.MoneyManagement.FinancialAddressCreateOptions
+                {
+                    Currency = "usd",
+                    FinancialAccount = "financial_account",
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.FinancialAddresses;
+                Stripe.V2.MoneyManagement.FinancialAddress financialAddress = service
+                    .Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7843,23 +7843,23 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.InsufficientFundsException>(
             () =>
             {
-            var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
-            {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
-                From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
+                var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
                 {
-                    Currency = "usd",
-                    FinancialAccount = "financial_account",
-                },
-                To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
-                {
-                    Recipient = "recipient",
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Create(options);
+                    Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                    From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
+                    {
+                        Currency = "usd",
+                        FinancialAccount = "financial_account",
+                    },
+                    To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
+                    {
+                        Recipient = "recipient",
+                    },
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.OutboundPayments;
+                Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
+                    .Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7877,14 +7877,14 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.InvalidPaymentMethodException>(
             () =>
             {
-            var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
-            {
-                AccountNumber = "account_number",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.UsBankAccounts;
-            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
-                options);
+                var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
+                {
+                    AccountNumber = "account_number",
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.Core.Vault.UsBankAccounts;
+                Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
+                    options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7902,11 +7902,11 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.InvalidPayoutMethodException>(
             () =>
             {
-            var options = new Stripe.V2.MoneyManagement.OutboundSetupIntentCreateOptions();
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundSetupIntents;
-            Stripe.V2.MoneyManagement.OutboundSetupIntent outboundSetupIntent = service
-                .Create(options);
+                var options = new Stripe.V2.MoneyManagement.OutboundSetupIntentCreateOptions();
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.OutboundSetupIntents;
+                Stripe.V2.MoneyManagement.OutboundSetupIntent outboundSetupIntent = service
+                    .Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7924,10 +7924,10 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.NonZeroBalanceException>(
             () =>
             {
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.FinancialAccounts;
-            Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
-                .Close("id_123");
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.FinancialAccounts;
+                Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
+                    .Close("id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7945,10 +7945,10 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.NotCancelableException>(
             () =>
             {
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Cancel("id_123");
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.OutboundPayments;
+                Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
+                    .Cancel("id_123");
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7966,14 +7966,14 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.QuotaExceededException>(
             () =>
             {
-            var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
-            {
-                AccountNumber = "account_number",
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Core.Vault.UsBankAccounts;
-            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
-                options);
+                var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
+                {
+                    AccountNumber = "account_number",
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.Core.Vault.UsBankAccounts;
+                Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Create(
+                    options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -7991,23 +7991,23 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.RecipientNotNotifiableException>(
             () =>
             {
-            var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
-            {
-                Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
-                From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
+                var options = new Stripe.V2.MoneyManagement.OutboundPaymentCreateOptions
                 {
-                    Currency = "usd",
-                    FinancialAccount = "financial_account",
-                },
-                To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
-                {
-                    Recipient = "recipient",
-                },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.MoneyManagement.OutboundPayments;
-            Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
-                .Create(options);
+                    Amount = new Stripe.V2.Amount { Currency = "USD", Value = 96 },
+                    From = new Stripe.V2.MoneyManagement.OutboundPaymentCreateFromOptions
+                    {
+                        Currency = "usd",
+                        FinancialAccount = "financial_account",
+                    },
+                    To = new Stripe.V2.MoneyManagement.OutboundPaymentCreateToOptions
+                    {
+                        Recipient = "recipient",
+                    },
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.OutboundPayments;
+                Stripe.V2.MoneyManagement.OutboundPayment outboundPayment = service
+                    .Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
@@ -8025,9 +8025,9 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.TemporarySessionExpiredException>(
             () =>
             {
-            var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
-            {
-                Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
+                var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
+                {
+                    Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
                 {
                     new Stripe.V2.Billing.MeterEventStreamCreateEventOptions
                     {
@@ -8038,10 +8038,10 @@ namespace StripeTests
                         },
                     },
                 },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.MeterEventStream;
-            service.Create(options);
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.Billing.MeterEventStream;
+                service.Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
