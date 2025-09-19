@@ -268,7 +268,7 @@ namespace Stripe
                 { "v2.billing.service_action", typeof(V2.Billing.ServiceAction) },
                 { "v2.core.account", typeof(V2.Core.Account) },
                 { "v2.core.account_link", typeof(V2.Core.AccountLink) },
-                { "v2.core.account_person", typeof(V2.Core.Person) },
+                { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
                 { "v2.core.claimable_sandbox", typeof(V2.Core.ClaimableSandbox) },
                 { "v2.core.event", typeof(V2.Event) },
                 { "v2.core.event_destination", typeof(V2.EventDestination) },
@@ -322,8 +322,6 @@ namespace Stripe
                     V2.MoneyManagement.TransactionEntry)
                 },
                 { "v2.payments.off_session_payment", typeof(V2.Payments.OffSessionPayment) },
-                { "v2.reporting.report", typeof(V2.Reporting.Report) },
-                { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
                 { "v2.tax.automatic_rule", typeof(V2.Tax.AutomaticRule) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
@@ -344,6 +342,7 @@ namespace Stripe
                 { "v2.billing.cadence.billed", typeof(Events.V2BillingCadenceBilledEvent) },
                 { "v2.billing.cadence.canceled", typeof(Events.V2BillingCadenceCanceledEvent) },
                 { "v2.billing.cadence.created", typeof(Events.V2BillingCadenceCreatedEvent) },
+                { "v2.billing.cadence.errored", typeof(Events.V2BillingCadenceErroredEvent) },
                 {
                     "v2.billing.license_fee.created", typeof(
                     Events.V2BillingLicenseFeeCreatedEvent)
@@ -536,22 +535,6 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.V2CoreAccountPersonUpdatedEvent)
-                },
-                {
-                    "v2.core.claimable_sandbox.claimed", typeof(
-                    Events.V2CoreClaimableSandboxClaimedEvent)
-                },
-                {
-                    "v2.core.claimable_sandbox.expired", typeof(
-                    Events.V2CoreClaimableSandboxExpiredEvent)
-                },
-                {
-                    "v2.core.claimable_sandbox.expiring", typeof(
-                    Events.V2CoreClaimableSandboxExpiringEvent)
-                },
-                {
-                    "v2.core.claimable_sandbox.sandbox_details_owner_account_updated", typeof(
-                    Events.V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
@@ -785,22 +768,6 @@ namespace Stripe
                     "v2.payments.off_session_payment.succeeded", typeof(
                     Events.V2PaymentsOffSessionPaymentSucceededEvent)
                 },
-                {
-                    "v2.reporting.report_run.created", typeof(
-                    Events.V2ReportingReportRunCreatedEvent)
-                },
-                {
-                    "v2.reporting.report_run.failed", typeof(
-                    Events.V2ReportingReportRunFailedEvent)
-                },
-                {
-                    "v2.reporting.report_run.succeeded", typeof(
-                    Events.V2ReportingReportRunSucceededEvent)
-                },
-                {
-                    "v2.reporting.report_run.updated", typeof(
-                    Events.V2ReportingReportRunUpdatedEvent)
-                },
 
                 // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
             });
@@ -828,6 +795,10 @@ namespace Stripe
                 {
                     "v2.billing.cadence.created", typeof(
                     Events.PushedV2BillingCadenceCreatedEvent)
+                },
+                {
+                    "v2.billing.cadence.errored", typeof(
+                    Events.PushedV2BillingCadenceErroredEvent)
                 },
                 {
                     "v2.billing.license_fee.created", typeof(
@@ -1027,22 +998,6 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.PushedV2CoreAccountPersonUpdatedEvent)
-                },
-                {
-                    "v2.core.claimable_sandbox.claimed", typeof(
-                    Events.PushedV2CoreClaimableSandboxClaimedEvent)
-                },
-                {
-                    "v2.core.claimable_sandbox.expired", typeof(
-                    Events.PushedV2CoreClaimableSandboxExpiredEvent)
-                },
-                {
-                    "v2.core.claimable_sandbox.expiring", typeof(
-                    Events.PushedV2CoreClaimableSandboxExpiringEvent)
-                },
-                {
-                    "v2.core.claimable_sandbox.sandbox_details_owner_account_updated", typeof(
-                    Events.PushedV2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
@@ -1275,22 +1230,6 @@ namespace Stripe
                 {
                     "v2.payments.off_session_payment.succeeded", typeof(
                     Events.PushedV2PaymentsOffSessionPaymentSucceededEvent)
-                },
-                {
-                    "v2.reporting.report_run.created", typeof(
-                    Events.PushedV2ReportingReportRunCreatedEvent)
-                },
-                {
-                    "v2.reporting.report_run.failed", typeof(
-                    Events.PushedV2ReportingReportRunFailedEvent)
-                },
-                {
-                    "v2.reporting.report_run.succeeded", typeof(
-                    Events.PushedV2ReportingReportRunSucceededEvent)
-                },
-                {
-                    "v2.reporting.report_run.updated", typeof(
-                    Events.PushedV2ReportingReportRunUpdatedEvent)
                 },
 
                 // PushedTypesToEventTypes: The end of the section generated from our OpenAPI spec

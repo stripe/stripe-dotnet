@@ -16,7 +16,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("posted_at")]
 #endif
-        public DateTime? PostedAt { get; set; }
+        public DateTime PostedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The time at which the Transaction became void. Only present if status == void.
@@ -25,6 +25,6 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("void_at")]
 #endif
-        public DateTime? VoidAt { get; set; }
+        public DateTime VoidAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

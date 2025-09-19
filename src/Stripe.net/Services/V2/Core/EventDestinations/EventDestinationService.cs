@@ -39,17 +39,17 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Delete an event destination.
         /// </summary>
-        public virtual V2.EventDestination Delete(string id, EventDestinationDeleteOptions options = null, RequestOptions requestOptions = null)
+        public virtual V2.DeletedObject Delete(string id, EventDestinationDeleteOptions options = null, RequestOptions requestOptions = null)
         {
-            return this.Request<V2.EventDestination>(BaseAddress.Api, HttpMethod.Delete, $"/v2/core/event_destinations/{WebUtility.UrlEncode(id)}", options, requestOptions);
+            return this.Request<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/core/event_destinations/{WebUtility.UrlEncode(id)}", options, requestOptions);
         }
 
         /// <summary>
         /// Delete an event destination.
         /// </summary>
-        public virtual Task<V2.EventDestination> DeleteAsync(string id, EventDestinationDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        public virtual Task<V2.DeletedObject> DeleteAsync(string id, EventDestinationDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
-            return this.RequestAsync<V2.EventDestination>(BaseAddress.Api, HttpMethod.Delete, $"/v2/core/event_destinations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+            return this.RequestAsync<V2.DeletedObject>(BaseAddress.Api, HttpMethod.Delete, $"/v2/core/event_destinations/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

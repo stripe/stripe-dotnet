@@ -20,15 +20,15 @@ using Stripe.Events;
 [ApiController]
 public class PushedEventWebhookHandler : ControllerBase
 {
-    private readonly StripeClient _client;
-    private readonly string _webhookSecret;
+    private readonly StripeClient client;
+    private readonly string webhookSecret;
 
     public PushedEventWebhookHandler()
     {
         var apiKey = Environment.GetEnvironmentVariable("STRIPE_API_KEY");
-        _client = new StripeClient(apiKey);
+        client = new StripeClient(apiKey);
 
-        _webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET");
+        webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET");
     }
 
     [HttpPost]
@@ -37,7 +37,7 @@ public class PushedEventWebhookHandler : ControllerBase
         var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
         try
         {
-            var pushedEvent = _client.ParseThinEvent__Experimental(json, Request.Headers["Stripe-Signature"], _webhookSecret);
+            var pushedEvent = client.ParseThinEvent__Experimental(json, Request.Headers["Stripe-Signature"], webhookSecret);
             if (pushedEvent is PushedV1BillingMeterErrorReportTriggeredEvent pushedV1BillingEvent)
             {
                 var pulledEvent = await pushedV1BillingEvent.PullAsync();
