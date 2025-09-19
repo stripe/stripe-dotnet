@@ -53,6 +53,9 @@ namespace Stripe
         internal ExpandableField<Coupon> InternalCoupon { get; set; }
         #endregion
 
+        /// <summary>
+        /// The source type of the discount.
+        /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
