@@ -6434,9 +6434,9 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.TemporarySessionExpiredException>(
             () =>
             {
-            var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
-            {
-                Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
+                var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
+                {
+                    Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
                 {
                     new Stripe.V2.Billing.MeterEventStreamCreateEventOptions
                     {
@@ -6447,10 +6447,10 @@ namespace StripeTests
                         },
                     },
                 },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.MeterEventStream;
-            service.Create(options);
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.Billing.MeterEventStream;
+                service.Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
