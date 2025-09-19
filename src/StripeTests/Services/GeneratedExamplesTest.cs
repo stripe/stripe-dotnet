@@ -1330,8 +1330,11 @@ namespace StripeTests
             var options = new FileCreateOptions
             {
                 Purpose = "account_requirement",
-                File = new System.IO.MemoryStream(
-                    System.Text.Encoding.UTF8.GetBytes("File contents")),
+                File = new Stripe.MultipartFileContent
+                {
+                    Data = new System.IO.MemoryStream(
+                        System.Text.Encoding.UTF8.GetBytes("File contents")),
+                },
             };
             var service = new FileService(this.StripeClient);
             File file = service.Create(options);
