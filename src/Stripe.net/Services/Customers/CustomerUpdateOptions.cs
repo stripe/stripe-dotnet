@@ -32,6 +32,15 @@ namespace Stripe
         public long? Balance { get; set; }
 
         /// <summary>
+        /// The customer's business name. This may be up to <em>150 characters</em>.
+        /// </summary>
+        [JsonProperty("business_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("business_name")]
+#endif
+        public string BusinessName { get; set; }
+
+        /// <summary>
         /// Balance information and default balance settings for this customer.
         /// </summary>
         [JsonProperty("cash_balance")]
@@ -77,6 +86,15 @@ namespace Stripe
         [STJS.JsonPropertyName("email")]
 #endif
         public string Email { get; set; }
+
+        /// <summary>
+        /// The customer's full name. This may be up to <em>150 characters</em>.
+        /// </summary>
+        [JsonProperty("individual_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("individual_name")]
+#endif
+        public string IndividualName { get; set; }
 
         /// <summary>
         /// The prefix for the customer used to generate unique invoice numbers. Must be 3–12

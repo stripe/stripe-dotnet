@@ -59,5 +59,15 @@ namespace Stripe
         [STJS.JsonPropertyName("tax_code")]
 #endif
         public string TaxCode { get; set; }
+
+        /// <summary>
+        /// A label that represents units of this product. When set, this will be included in
+        /// customers' receipts, invoices, Checkout, and the customer portal.
+        /// </summary>
+        [JsonProperty("unit_label")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_label")]
+#endif
+        public string UnitLabel { get; set; }
     }
 }

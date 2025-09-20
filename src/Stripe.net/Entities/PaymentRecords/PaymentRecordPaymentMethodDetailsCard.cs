@@ -162,5 +162,14 @@ namespace Stripe
         [STJS.JsonPropertyName("three_d_secure")]
 #endif
         public PaymentRecordPaymentMethodDetailsCardThreeDSecure ThreeDSecure { get; set; }
+
+        /// <summary>
+        /// If this Card is part of a card wallet, this contains the details of the card wallet.
+        /// </summary>
+        [JsonProperty("wallet")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("wallet")]
+#endif
+        public PaymentRecordPaymentMethodDetailsCardWallet Wallet { get; set; }
     }
 }

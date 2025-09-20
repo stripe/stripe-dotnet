@@ -310,6 +310,15 @@ namespace Stripe.Issuing
         public string ReplacementReason { get; set; }
 
         /// <summary>
+        /// Text separate from cardholder name, printed on the card.
+        /// </summary>
+        [JsonProperty("second_line")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("second_line")]
+#endif
+        public string SecondLine { get; set; }
+
+        /// <summary>
         /// Where and how the card will be shipped.
         /// </summary>
         [JsonProperty("shipping")]

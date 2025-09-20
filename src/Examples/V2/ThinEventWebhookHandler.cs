@@ -22,15 +22,15 @@ namespace Examples.V2
     [ApiController]
     public class ThinEventWebhookHandler : ControllerBase
     {
-        private readonly StripeClient _client;
-        private readonly string _webhookSecret;
+        private readonly StripeClient client;
+        private readonly string webhookSecret;
 
         public ThinEventWebhookHandler()
         {
             var apiKey = Environment.GetEnvironmentVariable("STRIPE_API_KEY");
-            _client = new StripeClient(apiKey);
+            client = new StripeClient(apiKey);
 
-            _webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET");
+            webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET");
         }
 
         [HttpPost]
@@ -39,10 +39,10 @@ namespace Examples.V2
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
             try
             {
-                var thinEvent = _client.ParseThinEvent(json, Request.Headers["Stripe-Signature"], _webhookSecret);
+                var thinEvent = client.ParseThinEvent(json, Request.Headers["Stripe-Signature"], webhookSecret);
 
                 // Fetch the event data to understand the failure
-                var baseEvent = await _client.V2.Core.Events.GetAsync(thinEvent.Id);
+                var baseEvent = await client.V2.Core.Events.GetAsync(thinEvent.Id);
                 if (baseEvent is V1BillingMeterErrorReportTriggeredEvent fullEvent)
                 {
                     var meter = await fullEvent.FetchRelatedObjectAsync();

@@ -54,7 +54,7 @@ namespace Stripe
             if (baseAddress != BaseAddress.Api)
             {
                 requestOptions ??= new RequestOptions();
-                requestOptions.BaseUrl = this.GetBaseUrl(baseAddress);
+                requestOptions.InternalBaseUrl = this.GetBaseUrl(baseAddress);
             }
 
             return this.client.RequestAsync<T>(method, path, options, requestOptions, cancellationToken);

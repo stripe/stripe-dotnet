@@ -8,6 +8,10 @@ namespace Stripe
 
     public class PaymentRecordPaymentMethodDetailsCardNetworkToken : StripeEntity<PaymentRecordPaymentMethodDetailsCardNetworkToken>
     {
+        /// <summary>
+        /// Indicates if Stripe used a network token, either user provided or Stripe managed when
+        /// processing the transaction.
+        /// </summary>
         [JsonProperty("used")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("used")]

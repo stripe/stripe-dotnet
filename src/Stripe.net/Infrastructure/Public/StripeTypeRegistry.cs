@@ -29,6 +29,8 @@ namespace Stripe
                 { "bank_account", typeof(BankAccount) },
                 { "billing.alert", typeof(Billing.Alert) },
                 { "billing.alert_triggered", typeof(Billing.AlertTriggered) },
+                { "billing.analytics.meter_usage", typeof(Billing.Analytics.MeterUsage) },
+                { "billing.analytics.meter_usage_row", typeof(Billing.Analytics.MeterUsageRow) },
                 { "billing.credit_balance_summary", typeof(Billing.CreditBalanceSummary) },
                 {
                     "billing.credit_balance_transaction", typeof(
@@ -39,8 +41,6 @@ namespace Stripe
                 { "billing.meter_event", typeof(Billing.MeterEvent) },
                 { "billing.meter_event_adjustment", typeof(Billing.MeterEventAdjustment) },
                 { "billing.meter_event_summary", typeof(Billing.MeterEventSummary) },
-                { "billing.meter_usage", typeof(Billing.MeterUsage) },
-                { "billing.meter_usage_row", typeof(Billing.MeterUsageRow) },
                 { "billing_portal.configuration", typeof(BillingPortal.Configuration) },
                 { "billing_portal.session", typeof(BillingPortal.Session) },
                 { "capability", typeof(Capability) },
@@ -236,7 +236,7 @@ namespace Stripe
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
                 { "v2.core.account", typeof(V2.Core.Account) },
                 { "v2.core.account_link", typeof(V2.Core.AccountLink) },
-                { "v2.core.account_person", typeof(V2.Core.Person) },
+                { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
                 { "v2.core.event", typeof(V2.Event) },
                 { "v2.core.event_destination", typeof(V2.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },

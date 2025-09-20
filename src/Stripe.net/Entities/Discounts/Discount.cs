@@ -52,22 +52,6 @@ namespace Stripe
 #endif
         public string CheckoutSession { get; set; }
 
-        /// <summary>
-        /// A coupon contains information about a percent-off or amount-off discount you might want
-        /// to apply to a customer. Coupons may be applied to <a
-        /// href="https://stripe.com/docs/api#subscriptions">subscriptions</a>, <a
-        /// href="https://stripe.com/docs/api#invoices">invoices</a>, <a
-        /// href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a>, <a
-        /// href="https://stripe.com/docs/api#quotes">quotes</a>, and more. Coupons do not work with
-        /// conventional one-off <a href="https://stripe.com/docs/api#create_charge">charges</a> or
-        /// <a href="https://stripe.com/docs/api/payment_intents">payment intents</a>.
-        /// </summary>
-        [JsonProperty("coupon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-#endif
-        public Coupon Coupon { get; set; }
-
         #region Expandable Customer
 
         /// <summary>
@@ -202,6 +186,12 @@ namespace Stripe
 #endif
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
+
+        [JsonProperty("source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("source")]
+#endif
+        public DiscountSource Source { get; set; }
 
         /// <summary>
         /// Date that the coupon was applied.

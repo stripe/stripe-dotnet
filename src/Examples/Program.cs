@@ -27,7 +27,7 @@
         /// are set before running the example.
         ///
         /// </summary>
-        /// <param name="args">command line args</param>
+        /// <param name="args">command line args.</param>
         /// <returns></returns>
         public static async Task Main(string[] args)
         {

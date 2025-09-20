@@ -21,7 +21,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public long? Amount { get; set; }
+        public long Amount { get; set; }
 
         /// <summary>
         /// The account (if any) that the payment is attributed to for tax reporting, and where

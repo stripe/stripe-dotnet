@@ -9,6 +9,17 @@ namespace Stripe.Tax
     public class SettingsDefaults : StripeEntity<SettingsDefaults>
     {
         /// <summary>
+        /// The tax calculation provider this account uses. Defaults to <c>stripe</c> when not using
+        /// a <a href="https://stripe.com/tax/third-party-apps">third-party provider</a>.
+        /// One of: <c>anrok</c>, <c>avalara</c>, <c>sphere</c>, or <c>stripe</c>.
+        /// </summary>
+        [JsonProperty("provider")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("provider")]
+#endif
+        public string Provider { get; set; }
+
+        /// <summary>
         /// Default <a
         /// href="https://stripe.com/docs/tax/products-prices-tax-categories-tax-behavior#tax-behavior">tax
         /// behavior</a> used to specify whether the price is considered inclusive of taxes or

@@ -9,7 +9,7 @@ namespace Stripe
     public class PaymentIntentAmountDetails : StripeEntity<PaymentIntentAmountDetails>
     {
         /// <summary>
-        /// The amount an item was discounted for.
+        /// The total discount applied on the transaction.
         /// </summary>
         [JsonProperty("discount_amount")]
 #if NET6_0_OR_GREATER

@@ -36,6 +36,15 @@ namespace Stripe
         public InvoiceSubscriptionDetailsBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
+        /// Sets the billing schedules for the subscription.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<InvoiceSubscriptionDetailsBillingScheduleOptions> BillingSchedules { get; set; }
+
+        /// <summary>
         /// A timestamp at which the subscription should cancel. If set to a date before the current
         /// period ends, this will cause a proration if prorations have been enabled using
         /// <c>proration_behavior</c>. If set during a future period, this will always cause a
