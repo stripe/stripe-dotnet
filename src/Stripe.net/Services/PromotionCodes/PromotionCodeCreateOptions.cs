@@ -89,7 +89,7 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The promotion for this promotion code.
+        /// The promotion referenced by this promotion code.
         /// </summary>
         [JsonProperty("promotion")]
 #if NET6_0_OR_GREATER

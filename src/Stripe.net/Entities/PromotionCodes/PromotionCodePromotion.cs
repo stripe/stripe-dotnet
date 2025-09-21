@@ -14,6 +14,10 @@ namespace Stripe
     {
         #region Expandable Coupon
 
+        /// <summary>
+        /// (ID of the Coupon)
+        /// If promotion type is 'coupon', the coupon for this promotion.
+        /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
@@ -24,6 +28,12 @@ namespace Stripe
             set => this.InternalCoupon = SetExpandableFieldId(value, this.InternalCoupon);
         }
 
+        /// <summary>
+        /// (Expanded)
+        /// If promotion type is 'coupon', the coupon for this promotion.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
@@ -43,6 +53,9 @@ namespace Stripe
         internal ExpandableField<Coupon> InternalCoupon { get; set; }
         #endregion
 
+        /// <summary>
+        /// The type of promotion.
+        /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]

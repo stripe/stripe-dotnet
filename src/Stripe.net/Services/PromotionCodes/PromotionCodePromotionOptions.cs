@@ -9,7 +9,7 @@ namespace Stripe
     public class PromotionCodePromotionOptions : INestedOptions
     {
         /// <summary>
-        /// The coupon for this promotion code.
+        /// If the promotion type is 'coupon', the coupon for this promotion code.
         /// </summary>
         [JsonProperty("coupon")]
 #if NET6_0_OR_GREATER

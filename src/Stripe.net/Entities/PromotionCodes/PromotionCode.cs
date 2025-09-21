@@ -10,8 +10,8 @@ namespace Stripe
 #endif
 
     /// <summary>
-    /// A Promotion Code represents a customer-redeemable code for a promotion. You can create
-    /// multiple codes for a single promotion.
+    /// A Promotion Code represents a customer-redeemable code for an underlying promotion. You
+    /// can create multiple codes for a single promotion.
     ///
     /// If you enable promotion codes in your <a
     /// href="https://stripe.com/docs/customer-management/configure-portal">customer portal
