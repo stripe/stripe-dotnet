@@ -315,7 +315,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("net_amount")]
 #endif
-        public long? NetAmount { get; set; }
+        public long NetAmount { get; set; }
 
         /// <summary>
         /// The parent that generated this invoice item.

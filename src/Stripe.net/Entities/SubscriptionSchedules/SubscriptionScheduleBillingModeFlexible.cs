@@ -9,13 +9,13 @@ namespace Stripe
     public class SubscriptionScheduleBillingModeFlexible : StripeEntity<SubscriptionScheduleBillingModeFlexible>
     {
         /// <summary>
-        /// When true, proration line items will show accurate discount amounts and use gross
-        /// amounts, making them consistent with non-proration line items.
+        /// Controls how invoices and invoice items display proration amounts and discount amounts.
+        /// One of: <c>included</c>, or <c>itemized</c>.
         /// </summary>
-        [JsonProperty("consistent_proration_discount_amounts")]
+        [JsonProperty("proration_discounts")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("consistent_proration_discount_amounts")]
+        [STJS.JsonPropertyName("proration_discounts")]
 #endif
-        public bool ConsistentProrationDiscountAmounts { get; set; }
+        public string ProrationDiscounts { get; set; }
     }
 }

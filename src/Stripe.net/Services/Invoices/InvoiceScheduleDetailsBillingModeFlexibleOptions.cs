@@ -9,14 +9,13 @@ namespace Stripe
     public class InvoiceScheduleDetailsBillingModeFlexibleOptions : INestedOptions
     {
         /// <summary>
-        /// Set to <c>true</c> to display gross amounts, net amounts, and discount amounts
-        /// consistently between prorations and non-proration items on invoices, line items, and
-        /// invoice items. Once set to <c>true</c>, you can't change it back to <c>false</c>.
+        /// Controls how invoices and invoice items display proration amounts and discount amounts.
+        /// One of: <c>included</c>, or <c>itemized</c>.
         /// </summary>
-        [JsonProperty("consistent_proration_discount_amounts")]
+        [JsonProperty("proration_discounts")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("consistent_proration_discount_amounts")]
+        [STJS.JsonPropertyName("proration_discounts")]
 #endif
-        public bool? ConsistentProrationDiscountAmounts { get; set; }
+        public string ProrationDiscounts { get; set; }
     }
 }
