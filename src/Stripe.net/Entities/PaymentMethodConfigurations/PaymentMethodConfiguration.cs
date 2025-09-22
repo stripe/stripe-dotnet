@@ -188,12 +188,6 @@ namespace Stripe
 #endif
         public PaymentMethodConfigurationFpx Fpx { get; set; }
 
-        [JsonProperty("fr_meal_voucher_conecs")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("fr_meal_voucher_conecs")]
-#endif
-        public PaymentMethodConfigurationFrMealVoucherConecs FrMealVoucherConecs { get; set; }
-
         [JsonProperty("giropay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("giropay")]
