@@ -3094,16 +3094,6 @@ namespace StripeTests
         [Fact]
         public void TestPromotionCodesPost()
         {
-            var options = new PromotionCodeCreateOptions();
-            options.AddExtraParam("coupon", "Z4OV52SU");
-            var service = new PromotionCodeService(this.StripeClient);
-            PromotionCode promotionCode = service.Create(options);
-            this.AssertRequest(HttpMethod.Post, "/v1/promotion_codes");
-        }
-
-        [Fact]
-        public void TestPromotionCodesPost2()
-        {
             var options = new PromotionCodeUpdateOptions
             {
                 Metadata = new Dictionary<string, string>
