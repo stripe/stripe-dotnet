@@ -231,7 +231,7 @@ namespace Stripe
             }
 
             var uri = StripeRequest.BuildUri(
-                requestOptions?.BaseUrl ?? this.GetBaseUrl(baseAddress),
+                requestOptions?.InternalBaseUrl ?? this.GetBaseUrl(baseAddress),
                 method,
                 path,
                 options,

@@ -78,7 +78,8 @@ namespace Stripe.V2.Billing
         public string LatestVersion { get; set; }
 
         /// <summary>
-        /// The Licensed Item that this License Fee binds to.
+        /// A Licensed Item represents a billable item whose pricing is based on license fees. You
+        /// can use license fees to specify the pricing and create subscriptions to these items.
         /// </summary>
         [JsonProperty("licensed_item")]
 #if NET6_0_OR_GREATER

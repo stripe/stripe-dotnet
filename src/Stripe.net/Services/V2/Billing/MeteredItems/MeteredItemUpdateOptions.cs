@@ -3,14 +3,10 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
     public class MeteredItemUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -23,45 +19,15 @@ namespace Stripe.V2.Billing
 #endif
         public string DisplayName { get; set; }
 
-        [JsonProperty("lookup_key")]
-        [JsonConverter(typeof(EmptyableConverter<string>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("lookup_key")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<string>))]
-#endif
-        internal Emptyable<string> InternalLookupKey { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyLookupKey
-        {
-            get => this.InternalLookupKey?.Empty ?? false;
-            set
-            {
-                this.InternalLookupKey ??= new Emptyable<string>();
-                this.InternalLookupKey.Empty = value;
-            }
-        }
-
         /// <summary>
         /// An internal key you can use to search for a particular billable item. Maximum length of
         /// 200 characters. To remove the lookup_key from the object, set it to null in the request.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("lookup_key")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("lookup_key")]
 #endif
-        public string LookupKey
-        {
-            get => this.InternalLookupKey?.Value;
-            set
-            {
-                this.InternalLookupKey ??= new Emptyable<string>();
-                this.InternalLookupKey.Value = value;
-            }
-        }
+        public string LookupKey { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
@@ -83,28 +49,6 @@ namespace Stripe.V2.Billing
 #endif
         public MeteredItemUpdateTaxDetailsOptions TaxDetails { get; set; }
 
-        [JsonProperty("unit_label")]
-        [JsonConverter(typeof(EmptyableConverter<string>))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_label")]
-        [STJS.JsonConverter(typeof(STJEmptyableConverter<string>))]
-#endif
-        internal Emptyable<string> InternalUnitLabel { get; set; }
-
-        [JsonIgnore]
-#if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
-#endif
-        public bool EmptyUnitLabel
-        {
-            get => this.InternalUnitLabel?.Empty ?? false;
-            set
-            {
-                this.InternalUnitLabel ??= new Emptyable<string>();
-                this.InternalUnitLabel.Empty = value;
-            }
-        }
-
         /// <summary>
         /// The unit to use when displaying prices for this billable item in places like Checkout.
         /// For example, set this field to "CPU-hour" for Checkout to display "(price) per
@@ -112,18 +56,10 @@ namespace Stripe.V2.Billing
         /// length of 100 characters. To remove the unit_label from the object, set it to null in
         /// the request.
         /// </summary>
-        [JsonIgnore]
+        [JsonProperty("unit_label")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonIgnore]
+        [STJS.JsonPropertyName("unit_label")]
 #endif
-        public string UnitLabel
-        {
-            get => this.InternalUnitLabel?.Value;
-            set
-            {
-                this.InternalUnitLabel ??= new Emptyable<string>();
-                this.InternalUnitLabel.Value = value;
-            }
-        }
+        public string UnitLabel { get; set; }
     }
 }

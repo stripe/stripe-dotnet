@@ -17,12 +17,11 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
 #endif
-        public DateTime? Timestamp { get; set; }
+        public DateTime Timestamp { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// When the deactivate action will take effect.
-        /// One of: <c>current_billing_period_end</c>, <c>current_billing_period_start</c>,
-        /// <c>on_reserve</c>, or <c>timestamp</c>.
+        /// One of: <c>current_billing_period_start</c>, <c>on_reserve</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
