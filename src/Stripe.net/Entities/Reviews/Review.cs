@@ -91,8 +91,9 @@ namespace Stripe
         /// The reason the review was closed, or null if it has not yet been closed. One of
         /// <c>approved</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, <c>disputed</c>,
         /// <c>redacted</c>, <c>canceled</c>, <c>payment_never_settled</c>, or <c>acknowledged</c>.
-        /// One of: <c>approved</c>, <c>canceled</c>, <c>disputed</c>, <c>redacted</c>,
-        /// <c>refunded</c>, or <c>refunded_as_fraud</c>.
+        /// One of: <c>acknowledged</c>, <c>approved</c>, <c>canceled</c>, <c>disputed</c>,
+        /// <c>payment_never_settled</c>, <c>redacted</c>, <c>refunded</c>, or
+        /// <c>refunded_as_fraud</c>.
         /// </summary>
         [JsonProperty("closed_reason")]
 #if NET6_0_OR_GREATER

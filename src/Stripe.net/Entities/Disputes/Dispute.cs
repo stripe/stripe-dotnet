@@ -145,6 +145,17 @@ namespace Stripe
         public DisputeEvidenceDetails EvidenceDetails { get; set; }
 
         /// <summary>
+        /// Intended submission method for the dispute.
+        /// One of: <c>manual</c>, <c>prefer_manual</c>, <c>prefer_smart_disputes</c>, or
+        /// <c>smart_disputes</c>.
+        /// </summary>
+        [JsonProperty("intended_submission_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("intended_submission_method")]
+#endif
+        public string IntendedSubmissionMethod { get; set; }
+
+        /// <summary>
         /// If true, it's still possible to refund the disputed payment. After the payment has been
         /// fully refunded, no further funds are withdrawn from your Stripe account as a result of
         /// this dispute.

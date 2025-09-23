@@ -59,6 +59,15 @@ namespace Stripe
         public SubscriptionBillingCycleAnchor BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Sets the billing schedules for the subscription.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<SubscriptionBillingScheduleOptions> BillingSchedules { get; set; }
+
+        /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
         /// new billing period. When updating, pass an empty string to remove previously-defined
         /// thresholds.

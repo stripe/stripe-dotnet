@@ -32,6 +32,12 @@ namespace Stripe.Checkout
 #endif
         public SessionPaymentMethodOptionsAlipay Alipay { get; set; }
 
+        [JsonProperty("alma")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alma")]
+#endif
+        public SessionPaymentMethodOptionsAlma Alma { get; set; }
+
         [JsonProperty("amazon_pay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amazon_pay")]
@@ -55,6 +61,12 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("bancontact")]
 #endif
         public SessionPaymentMethodOptionsBancontact Bancontact { get; set; }
+
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public SessionPaymentMethodOptionsBillie Billie { get; set; }
 
         [JsonProperty("boleto")]
 #if NET6_0_OR_GREATER
@@ -211,6 +223,12 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("samsung_pay")]
 #endif
         public SessionPaymentMethodOptionsSamsungPay SamsungPay { get; set; }
+
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public SessionPaymentMethodOptionsSatispay Satispay { get; set; }
 
         [JsonProperty("sepa_debit")]
 #if NET6_0_OR_GREATER

@@ -53,7 +53,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("estimated_worker_count")]
 #endif
-        public long? EstimatedWorkerCount { get; set; }
+        public long EstimatedWorkerCount { get; set; }
 
         /// <summary>
         /// The provided ID numbers of a business entity.

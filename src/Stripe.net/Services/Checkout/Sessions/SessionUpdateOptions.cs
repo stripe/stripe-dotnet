@@ -10,6 +10,16 @@ namespace Stripe.Checkout
     public class SessionUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Settings for automatic tax lookup for this session and resulting payments, invoices, and
+        /// subscriptions.
+        /// </summary>
+        [JsonProperty("automatic_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("automatic_tax")]
+#endif
+        public SessionAutomaticTaxOptions AutomaticTax { get; set; }
+
+        /// <summary>
         /// Information about the customer collected within the Checkout Session. Can only be set
         /// when updating <c>embedded</c> or <c>custom</c> sessions.
         /// </summary>
@@ -27,6 +37,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("discounts")]
 #endif
         public List<SessionDiscountOptions> Discounts { get; set; }
+
+        /// <summary>
+        /// Generate a post-purchase Invoice for one-time payments.
+        /// </summary>
+        [JsonProperty("invoice_creation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice_creation")]
+#endif
+        public SessionInvoiceCreationOptions InvoiceCreation { get; set; }
 
         /// <summary>
         /// A list of items the customer is purchasing.

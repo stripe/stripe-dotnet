@@ -31,7 +31,7 @@ namespace Stripe
 
         /// <summary>
         /// The status of the redirect, either <c>pending</c> (ready to be used by your customer to
-        /// authenticate the transaction), <c>succeeded</c> (succesful authentication, cannot be
+        /// authenticate the transaction), <c>succeeded</c> (successful authentication, cannot be
         /// reused) or <c>not_required</c> (redirect should not be used) or <c>failed</c> (failed
         /// authentication, cannot be reused).
         /// </summary>

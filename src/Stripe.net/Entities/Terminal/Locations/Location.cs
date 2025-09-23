@@ -39,6 +39,18 @@ namespace Stripe.Terminal
 #endif
         public Address Address { get; set; }
 
+        [JsonProperty("address_kana")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_kana")]
+#endif
+        public LocationAddressKana AddressKana { get; set; }
+
+        [JsonProperty("address_kanji")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("address_kanji")]
+#endif
+        public LocationAddressKanji AddressKanji { get; set; }
+
         /// <summary>
         /// The ID of a configuration that will be used to customize all readers in this location.
         /// </summary>
@@ -68,6 +80,24 @@ namespace Stripe.Terminal
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// The Kana variation of the display name of the location.
+        /// </summary>
+        [JsonProperty("display_name_kana")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_name_kana")]
+#endif
+        public string DisplayNameKana { get; set; }
+
+        /// <summary>
+        /// The Kanji variation of the display name of the location.
+        /// </summary>
+        [JsonProperty("display_name_kanji")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_name_kanji")]
+#endif
+        public string DisplayNameKanji { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -87,5 +117,14 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("metadata")]
 #endif
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The phone number of the location.
+        /// </summary>
+        [JsonProperty("phone")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("phone")]
+#endif
+        public string Phone { get; set; }
     }
 }
