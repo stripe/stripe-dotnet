@@ -227,9 +227,9 @@ namespace Stripe
         /// <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
         /// <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>,
         /// <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER

@@ -288,6 +288,16 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsLinkOptions Link { get; set; }
 
         /// <summary>
+        /// If this is a <c>mb_way</c> PaymentMethod, this sub-hash contains details about the MB
+        /// WAY payment method options.
+        /// </summary>
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public PaymentIntentPaymentMethodOptionsMbWayOptions MbWay { get; set; }
+
+        /// <summary>
         /// If this is a <c>MobilePay</c> PaymentMethod, this sub-hash contains details about the
         /// MobilePay payment method options.
         /// </summary>
@@ -386,6 +396,16 @@ namespace Stripe
         [STJS.JsonPropertyName("paypal")]
 #endif
         public PaymentIntentPaymentMethodOptionsPaypalOptions Paypal { get; set; }
+
+        /// <summary>
+        /// If this is a <c>paypay</c> PaymentMethod, this sub-hash contains details about the
+        /// PayPay payment method options.
+        /// </summary>
+        [JsonProperty("paypay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay")]
+#endif
+        public PaymentIntentPaymentMethodOptionsPaypayOptions Paypay { get; set; }
 
         /// <summary>
         /// If this is a <c>pix</c> PaymentMethod, this sub-hash contains details about the Pix

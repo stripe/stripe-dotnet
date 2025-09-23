@@ -58,5 +58,15 @@ namespace Stripe.BillingPortal
         [STJS.JsonPropertyName("schedule_at_period_end")]
 #endif
         public ConfigurationFeaturesSubscriptionUpdateScheduleAtPeriodEndOptions ScheduleAtPeriodEnd { get; set; }
+
+        /// <summary>
+        /// The behavior when updating a subscription that is trialing.
+        /// One of: <c>continue_trial</c>, or <c>end_trial</c>.
+        /// </summary>
+        [JsonProperty("trial_update_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_update_behavior")]
+#endif
+        public string TrialUpdateBehavior { get; set; }
     }
 }

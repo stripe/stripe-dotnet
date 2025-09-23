@@ -72,6 +72,17 @@ namespace Stripe.TestHelpers.Issuing
         public AuthorizationFleetOptions Fleet { get; set; }
 
         /// <summary>
+        /// Probability that this transaction can be disputed in the event of fraud. Assessed by
+        /// comparing the characteristics of the authorization to card network rules.
+        /// One of: <c>neutral</c>, <c>unknown</c>, <c>very_likely</c>, or <c>very_unlikely</c>.
+        /// </summary>
+        [JsonProperty("fraud_disputability_likelihood")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fraud_disputability_likelihood")]
+#endif
+        public string FraudDisputabilityLikelihood { get; set; }
+
+        /// <summary>
         /// Information about fuel that was purchased with this transaction.
         /// </summary>
         [JsonProperty("fuel")]
@@ -132,6 +143,15 @@ namespace Stripe.TestHelpers.Issuing
         [STJS.JsonPropertyName("network_data")]
 #endif
         public AuthorizationNetworkDataOptions NetworkData { get; set; }
+
+        /// <summary>
+        /// Stripe’s assessment of the fraud risk for this authorization.
+        /// </summary>
+        [JsonProperty("risk_assessment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("risk_assessment")]
+#endif
+        public AuthorizationRiskAssessmentOptions RiskAssessment { get; set; }
 
         /// <summary>
         /// Verifications that Stripe performed on information that the cardholder provided to the

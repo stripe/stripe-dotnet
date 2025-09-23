@@ -293,6 +293,12 @@ namespace Stripe
 #endif
         public bool Livemode { get; set; }
 
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public PaymentMethodMbWay MbWay { get; set; }
+
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
@@ -363,6 +369,12 @@ namespace Stripe
         [STJS.JsonPropertyName("paypal")]
 #endif
         public PaymentMethodPaypal Paypal { get; set; }
+
+        [JsonProperty("paypay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay")]
+#endif
+        public PaymentMethodPaypay Paypay { get; set; }
 
         [JsonProperty("pix")]
 #if NET6_0_OR_GREATER
@@ -439,11 +451,12 @@ namespace Stripe
         /// <c>card_present</c>, <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>,
         /// <c>fpx</c>, <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>interac_present</c>,
         /// <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>link</c>,
-        /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>,
-        /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
-        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
+        /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
+        /// <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
+        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

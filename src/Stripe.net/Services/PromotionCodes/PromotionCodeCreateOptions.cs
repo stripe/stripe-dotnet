@@ -34,15 +34,6 @@ namespace Stripe
         public string Code { get; set; }
 
         /// <summary>
-        /// The coupon for this promotion code.
-        /// </summary>
-        [JsonProperty("coupon")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("coupon")]
-#endif
-        public string Coupon { get; set; }
-
-        /// <summary>
         /// The customer that this promotion code can be used by. If not set, the promotion code can
         /// be used by all customers.
         /// </summary>
@@ -86,6 +77,15 @@ namespace Stripe
         [STJS.JsonPropertyName("metadata")]
 #endif
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The promotion referenced by this promotion code.
+        /// </summary>
+        [JsonProperty("promotion")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("promotion")]
+#endif
+        public PromotionCodePromotionOptions Promotion { get; set; }
 
         /// <summary>
         /// Settings that restrict the redemption of the promotion code.

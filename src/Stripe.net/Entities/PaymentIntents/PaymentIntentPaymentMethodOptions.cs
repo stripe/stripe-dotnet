@@ -176,6 +176,12 @@ namespace Stripe
 #endif
         public PaymentIntentPaymentMethodOptionsLink Link { get; set; }
 
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public PaymentIntentPaymentMethodOptionsMbWay MbWay { get; set; }
+
         [JsonProperty("mobilepay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mobilepay")]
@@ -235,6 +241,12 @@ namespace Stripe
         [STJS.JsonPropertyName("paypal")]
 #endif
         public PaymentIntentPaymentMethodOptionsPaypal Paypal { get; set; }
+
+        [JsonProperty("paypay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay")]
+#endif
+        public PaymentIntentPaymentMethodOptionsPaypay Paypay { get; set; }
 
         [JsonProperty("pix")]
 #if NET6_0_OR_GREATER

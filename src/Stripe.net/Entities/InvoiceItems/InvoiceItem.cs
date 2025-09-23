@@ -258,6 +258,16 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The amount after discounts, but before credits and taxes. This field is <c>null</c> for
+        /// <c>discountable=true</c> items.
+        /// </summary>
+        [JsonProperty("net_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("net_amount")]
+#endif
+        public long NetAmount { get; set; }
+
+        /// <summary>
         /// The parent that generated this invoice item.
         /// </summary>
         [JsonProperty("parent")]
@@ -290,6 +300,12 @@ namespace Stripe
         [STJS.JsonPropertyName("proration")]
 #endif
         public bool Proration { get; set; }
+
+        [JsonProperty("proration_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_details")]
+#endif
+        public InvoiceItemProrationDetails ProrationDetails { get; set; }
 
         /// <summary>
         /// Quantity of units for the invoice item. If the invoice item is a proration, the quantity

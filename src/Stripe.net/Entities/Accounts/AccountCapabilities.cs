@@ -360,6 +360,17 @@ namespace Stripe
         public string LinkPayments { get; set; }
 
         /// <summary>
+        /// The status of the MB WAY payments capability of the account, or whether the account can
+        /// directly process MB WAY charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("mb_way_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way_payments")]
+#endif
+        public string MbWayPayments { get; set; }
+
+        /// <summary>
         /// The status of the MobilePay capability of the account, or whether the account can
         /// directly process MobilePay charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
@@ -468,6 +479,17 @@ namespace Stripe
         [STJS.JsonPropertyName("paynow_payments")]
 #endif
         public string PaynowPayments { get; set; }
+
+        /// <summary>
+        /// The status of the Paypay capability of the account, or whether the account can directly
+        /// process Paypay payments.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("paypay_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay_payments")]
+#endif
+        public string PaypayPayments { get; set; }
 
         /// <summary>
         /// The status of the pix payments capability of the account, or whether the account can
