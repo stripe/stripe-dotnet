@@ -19,8 +19,8 @@ namespace StripeTests
 
             Assert.NotNull(discount);
             Assert.Equal("discount", discount.Object);
-            Assert.NotNull(discount.Coupon);
-            Assert.Equal("coupon", discount.Coupon.Object);
+            Assert.NotNull(discount.Source.Coupon);
+            Assert.Equal("coupon", discount.Source.Coupon.Object);
         }
     }
 }
