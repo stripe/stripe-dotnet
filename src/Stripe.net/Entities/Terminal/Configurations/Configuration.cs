@@ -32,6 +32,12 @@ namespace Stripe.Terminal
 #endif
         public string Object { get; set; }
 
+        [JsonProperty("bbpos_wisepad3")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bbpos_wisepad3")]
+#endif
+        public ConfigurationBbposWisepad3 BbposWisepad3 { get; set; }
+
         [JsonProperty("bbpos_wisepos_e")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bbpos_wisepos_e")]

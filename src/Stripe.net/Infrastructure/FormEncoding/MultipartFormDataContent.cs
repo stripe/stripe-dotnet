@@ -41,26 +41,29 @@ namespace Stripe.Infrastructure.FormEncoding
         private static StringContent CreateStringContent(string value)
             => new StringContent(value, System.Text.Encoding.UTF8);
 
-        private static StreamContent CreateStreamContent(Stream value, string name)
+        private static StreamContent CreateStreamContent(MultipartFileContent value, string name)
         {
-            var fileName = "blob";
-            var extension = string.Empty;
+            var fileName = value.Name ?? "blob";
+            var extension = Path.GetExtension(fileName);
+            var stream = value.Data;
 
-            FileStream fileStream = value as FileStream;
+            FileStream fileStream = stream as FileStream;
             if ((fileStream != null) && (!string.IsNullOrEmpty(fileStream.Name)))
             {
                 fileName = fileStream.Name;
                 extension = Path.GetExtension(fileName);
             }
 
-            var content = new StreamContent(value);
+            var type = value.Type ?? MimeTypes.GetMimeType(extension);
+
+            var content = new StreamContent(stream);
             content.Headers.ContentDisposition = new ContentDispositionHeaderValue("form-data")
             {
                 Name = name,
                 FileName = fileName,
                 FileNameStar = fileName,
             };
-            content.Headers.ContentType = new MediaTypeHeaderValue(MimeTypes.GetMimeType(extension));
+            content.Headers.ContentType = new MediaTypeHeaderValue(type);
             return content;
         }
 
@@ -79,8 +82,16 @@ namespace Stripe.Infrastructure.FormEncoding
                         this.Add(CreateStringContent(s), QuoteString(kvp.Key));
                         break;
 
+                    case MultipartFileContent f:
+                        this.Add(CreateStreamContent(f, QuoteString(kvp.Key)));
+                        break;
+
                     case Stream s:
-                        this.Add(CreateStreamContent(s, QuoteString(kvp.Key)));
+                        var fileData = new MultipartFileContent
+                        {
+                            Data = s,
+                        };
+                        this.Add(CreateStreamContent(fileData, QuoteString(kvp.Key)));
                         break;
 
                     default:

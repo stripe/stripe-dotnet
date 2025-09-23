@@ -45,6 +45,15 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsAlipayOptions Alipay { get; set; }
 
         /// <summary>
+        /// contains details about the Alma payment method options.
+        /// </summary>
+        [JsonProperty("alma")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alma")]
+#endif
+        public SessionPaymentMethodOptionsAlmaOptions Alma { get; set; }
+
+        /// <summary>
         /// contains details about the AmazonPay payment method options.
         /// </summary>
         [JsonProperty("amazon_pay")]
@@ -81,6 +90,15 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsBancontactOptions Bancontact { get; set; }
 
         /// <summary>
+        /// contains details about the Billie payment method options.
+        /// </summary>
+        [JsonProperty("billie")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billie")]
+#endif
+        public SessionPaymentMethodOptionsBillieOptions Billie { get; set; }
+
+        /// <summary>
         /// contains details about the Boleto payment method options.
         /// </summary>
         [JsonProperty("boleto")]
@@ -115,6 +133,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("customer_balance")]
 #endif
         public SessionPaymentMethodOptionsCustomerBalanceOptions CustomerBalance { get; set; }
+
+        /// <summary>
+        /// contains details about the DemoPay payment method options.
+        /// </summary>
+        [JsonProperty("demo_pay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("demo_pay")]
+#endif
+        public SessionPaymentMethodOptionsDemoPayOptions DemoPay { get; set; }
 
         /// <summary>
         /// contains details about the EPS payment method options.
@@ -322,6 +349,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("samsung_pay")]
 #endif
         public SessionPaymentMethodOptionsSamsungPayOptions SamsungPay { get; set; }
+
+        /// <summary>
+        /// contains details about the Satispay payment method options.
+        /// </summary>
+        [JsonProperty("satispay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("satispay")]
+#endif
+        public SessionPaymentMethodOptionsSatispayOptions Satispay { get; set; }
 
         /// <summary>
         /// contains details about the Sepa Debit payment method options.

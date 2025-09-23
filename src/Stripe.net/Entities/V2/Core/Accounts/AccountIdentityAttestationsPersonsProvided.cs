@@ -17,7 +17,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("directors")]
 #endif
-        public bool? Directors { get; set; }
+        public bool Directors { get; set; }
 
         /// <summary>
         /// Whether the company’s executives have been provided. Set this Boolean to true after
@@ -28,7 +28,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("executives")]
 #endif
-        public bool? Executives { get; set; }
+        public bool Executives { get; set; }
 
         /// <summary>
         /// Whether the company’s owners have been provided. Set this Boolean to true after creating
@@ -39,7 +39,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owners")]
 #endif
-        public bool? Owners { get; set; }
+        public bool Owners { get; set; }
 
         /// <summary>
         /// Reason for why the company is exempt from providing ownership information.

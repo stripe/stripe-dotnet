@@ -74,8 +74,8 @@ namespace Stripe
 
         /// <summary>
         /// Mutually exclusive with billing_cycle_anchor and only valid with monthly and yearly
-        /// price intervals. When provided, the billing_cycle_anchor is set to the next occurence of
-        /// the day_of_month at the hour, minute, and second UTC.
+        /// price intervals. When provided, the billing_cycle_anchor is set to the next occurrence
+        /// of the day_of_month at the hour, minute, and second UTC.
         /// </summary>
         [JsonProperty("billing_cycle_anchor_config")]
 #if NET6_0_OR_GREATER
@@ -91,6 +91,15 @@ namespace Stripe
         [STJS.JsonPropertyName("billing_mode")]
 #endif
         public SubscriptionBillingModeOptions BillingMode { get; set; }
+
+        /// <summary>
+        /// Sets the billing schedules for the subscription.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<SubscriptionBillingScheduleOptions> BillingSchedules { get; set; }
 
         /// <summary>
         /// Define thresholds at which an invoice will be sent, and the subscription advanced to a
