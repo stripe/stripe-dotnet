@@ -9,7 +9,6 @@ namespace Stripe.V2
     {
         private V2.Core.AccountService accounts;
         private V2.Core.AccountLinkService accountLinks;
-        private V2.Core.EventService events;
         private V2.Core.EventDestinationService eventDestinations;
         private V2.Core.VaultService vault;
 
