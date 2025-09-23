@@ -16,7 +16,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Coupon)
-        /// If promotion type is 'coupon', the coupon for this promotion.
+        /// If promotion <c>type</c> is <c>coupon</c>, the coupon for this promotion.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -30,7 +30,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// If promotion type is 'coupon', the coupon for this promotion.
+        /// If promotion <c>type</c> is <c>coupon</c>, the coupon for this promotion.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
