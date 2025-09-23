@@ -63,6 +63,15 @@ namespace Stripe
         public long Balance { get; set; }
 
         /// <summary>
+        /// The customer's business name.
+        /// </summary>
+        [JsonProperty("business_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("business_name")]
+#endif
+        public string BusinessName { get; set; }
+
+        /// <summary>
         /// The current funds being held by Stripe on behalf of the customer. You can apply these
         /// funds towards payment intents when the source is "cash_balance". The
         /// <c>settings[reconciliation_mode]</c> field describes if these funds apply to these
@@ -201,6 +210,15 @@ namespace Stripe
         [STJS.JsonPropertyName("email")]
 #endif
         public string Email { get; set; }
+
+        /// <summary>
+        /// The customer's individual name.
+        /// </summary>
+        [JsonProperty("individual_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("individual_name")]
+#endif
+        public string IndividualName { get; set; }
 
         /// <summary>
         /// The current multi-currency balances, if any, that's stored on the customer. If positive

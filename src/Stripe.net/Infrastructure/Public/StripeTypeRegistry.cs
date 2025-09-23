@@ -23,6 +23,7 @@ namespace Stripe
                 { "application_fee", typeof(ApplicationFee) },
                 { "apps.secret", typeof(Apps.Secret) },
                 { "balance", typeof(Balance) },
+                { "balance_settings", typeof(BalanceSettings) },
                 { "balance_transaction", typeof(BalanceTransaction) },
                 { "bank_account", typeof(BankAccount) },
                 { "billing.alert", typeof(Billing.Alert) },

@@ -297,6 +297,15 @@ namespace Stripe
         public AccountCapabilitiesLinkPaymentsOptions LinkPayments { get; set; }
 
         /// <summary>
+        /// The mb_way_payments capability.
+        /// </summary>
+        [JsonProperty("mb_way_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way_payments")]
+#endif
+        public AccountCapabilitiesMbWayPaymentsOptions MbWayPayments { get; set; }
+
+        /// <summary>
         /// The mobilepay_payments capability.
         /// </summary>
         [JsonProperty("mobilepay_payments")]
@@ -385,6 +394,15 @@ namespace Stripe
         [STJS.JsonPropertyName("paynow_payments")]
 #endif
         public AccountCapabilitiesPaynowPaymentsOptions PaynowPayments { get; set; }
+
+        /// <summary>
+        /// The paypay_payments capability.
+        /// </summary>
+        [JsonProperty("paypay_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay_payments")]
+#endif
+        public AccountCapabilitiesPaypayPaymentsOptions PaypayPayments { get; set; }
 
         /// <summary>
         /// The pix_payments capability.

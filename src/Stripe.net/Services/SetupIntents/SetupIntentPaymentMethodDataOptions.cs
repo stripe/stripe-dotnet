@@ -293,6 +293,16 @@ namespace Stripe
         public SetupIntentPaymentMethodDataLinkOptions Link { get; set; }
 
         /// <summary>
+        /// If this is a MB WAY PaymentMethod, this hash contains details about the MB WAY payment
+        /// method.
+        /// </summary>
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public SetupIntentPaymentMethodDataMbWayOptions MbWay { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
@@ -405,6 +415,16 @@ namespace Stripe
         public SetupIntentPaymentMethodDataPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// If this is a <c>paypay</c> PaymentMethod, this hash contains details about the PayPay
+        /// payment method.
+        /// </summary>
+        [JsonProperty("paypay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay")]
+#endif
+        public SetupIntentPaymentMethodDataPaypayOptions Paypay { get; set; }
+
+        /// <summary>
         /// If this is a <c>pix</c> PaymentMethod, this hash contains details about the Pix payment
         /// method.
         /// </summary>
@@ -514,11 +534,12 @@ namespace Stripe
         /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>cashapp</c>,
         /// <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
         /// <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
-        /// <c>kr_card</c>, <c>link</c>, <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>,
-        /// <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>,
-        /// <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
+        /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
+        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
+        /// <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
