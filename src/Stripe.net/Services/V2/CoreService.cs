@@ -32,9 +32,6 @@ namespace Stripe.V2
         public virtual V2.Core.EventDestinationService EventDestinations => this.eventDestinations ??= new V2.Core.EventDestinationService(
             this.Requestor);
 
-        public virtual V2.Core.EventDestinationService EventDestinations => this.eventDestinations ??= new V2.Core.EventDestinationService(
-            this.Requestor);
-
         public virtual V2.Core.VaultService Vault => this.vault ??= new V2.Core.VaultService(
             this.Requestor);
     }
