@@ -1330,8 +1330,11 @@ namespace StripeTests
             var options = new FileCreateOptions
             {
                 Purpose = "account_requirement",
-                File = new System.IO.MemoryStream(
-                    System.Text.Encoding.UTF8.GetBytes("File contents")),
+                File = new Stripe.MultipartFileContent
+                {
+                    Data = new System.IO.MemoryStream(
+                        System.Text.Encoding.UTF8.GetBytes("File contents")),
+                },
             };
             var service = new FileService(this.StripeClient);
             File file = service.Create(options);
@@ -3922,7 +3925,6 @@ namespace StripeTests
                                 Quantity = 1,
                             },
                         },
-                        Iterations = 12,
                     },
                 },
             };
@@ -8016,6 +8018,144 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2CoreEventDestinationGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/event_destinations",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            Stripe.V2.StripeList<Stripe.V2.EventDestination> eventDestinations = service
+                .List();
+            this.AssertRequest(HttpMethod.Get, "/v2/core/event_destinations");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}");
+            var options = new Stripe.V2.Core.EventDestinationCreateOptions
+            {
+                EnabledEvents = new List<string> { "enabled_events" },
+                EventPayload = "thin",
+                Name = "name",
+                Type = "amazon_eventbridge",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            Stripe.V2.EventDestination eventDestination = service.Create(
+                options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/event_destinations");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationDelete()
+        {
+            this.StubRequest(
+                HttpMethod.Delete,
+                "/v2/core/event_destinations/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"abc_123\",\"object\":\"some.object.tag\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            Stripe.V2.DeletedObject deleted = service.Delete("id_123");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v2/core/event_destinations/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/event_destinations/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            Stripe.V2.EventDestination eventDestination = service.Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/event_destinations/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost2()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}");
+            var options = new Stripe.V2.Core.EventDestinationUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            Stripe.V2.EventDestination eventDestination = service.Update(
+                "id_123",
+                options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost3()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/disable",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            Stripe.V2.EventDestination eventDestination = service.Disable(
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/disable");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost4()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/enable",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            Stripe.V2.EventDestination eventDestination = service.Enable(
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/enable");
+        }
+
+        [Fact]
+        public void TestV2CoreEventDestinationPost5()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/ping",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"type\":\"type\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.EventDestinations;
+            Stripe.V2.Event result = service.Ping("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/event_destinations/id_123/ping");
+        }
+
+        [Fact]
         public void TestTemporarySessionExpiredError()
         {
             this.StubRequest(
@@ -8026,9 +8166,9 @@ namespace StripeTests
             var exception = Assert.Throws<Stripe.V2.TemporarySessionExpiredException>(
             () =>
             {
-            var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
-            {
-                Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
+                var options = new Stripe.V2.Billing.MeterEventStreamCreateOptions
+                {
+                    Events = new List<Stripe.V2.Billing.MeterEventStreamCreateEventOptions>
                 {
                     new Stripe.V2.Billing.MeterEventStreamCreateEventOptions
                     {
@@ -8039,10 +8179,10 @@ namespace StripeTests
                         },
                     },
                 },
-            };
-            var client = new StripeClient(this.Requestor);
-            var service = client.V2.Billing.MeterEventStream;
-            service.Create(options);
+                };
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.Billing.MeterEventStream;
+                service.Create(options);
             });
             this.AssertRequest(
                 HttpMethod.Post,
