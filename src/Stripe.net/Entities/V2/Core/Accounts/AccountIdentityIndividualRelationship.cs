@@ -63,7 +63,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_ownership")]
 #endif
-        public decimal PercentOwnership { get; set; }
+        public string PercentOwnership { get; set; }
 
         /// <summary>
         /// Whether the individual is authorized as the primary representative of the Account. This

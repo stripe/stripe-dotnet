@@ -60,7 +60,7 @@ namespace Stripe.V2.Core.Accounts
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_ownership")]
 #endif
-        public decimal? PercentOwnership { get; set; }
+        public string PercentOwnership { get; set; }
 
         /// <summary>
         /// Indicates whether the person is a representative of the associated legal entity.
