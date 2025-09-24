@@ -28,7 +28,7 @@ namespace Stripe.Tax
         public string Country { get; set; }
 
         /// <summary>
-        /// Address line 1 (e.g., street, PO Box, or company name).
+        /// Address line 1, such as the street, PO Box, or company name.
         /// </summary>
         [JsonProperty("line1")]
 #if NET6_0_OR_GREATER
@@ -37,7 +37,7 @@ namespace Stripe.Tax
         public string Line1 { get; set; }
 
         /// <summary>
-        /// Address line 2 (e.g., apartment, suite, unit, or building).
+        /// Address line 2, such as the apartment, suite, unit, or building.
         /// </summary>
         [JsonProperty("line2")]
 #if NET6_0_OR_GREATER
@@ -56,7 +56,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// State/province as an <a href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO 3166-2</a>
-        /// subdivision code, without country prefix. Example: "NY" or "TX".
+        /// subdivision code, without country prefix, such as "NY" or "TX".
         /// </summary>
         [JsonProperty("state")]
 #if NET6_0_OR_GREATER

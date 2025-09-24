@@ -9,6 +9,15 @@ namespace Stripe.Checkout
     public class SessionPaymentMethodOptionsAmazonPay : StripeEntity<SessionPaymentMethodOptionsAmazonPay>
     {
         /// <summary>
+        /// Controls when the funds will be captured from the customer's account.
+        /// </summary>
+        [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
+        public string CaptureMethod { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///

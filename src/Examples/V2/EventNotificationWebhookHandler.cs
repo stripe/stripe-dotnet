@@ -23,15 +23,15 @@ namespace Examples.V2
     [ApiController]
     public class EventNotificationWebhookHandler : ControllerBase
     {
-        private readonly StripeClient _client;
-        private readonly string _webhookSecret;
+        private readonly StripeClient client;
+        private readonly string webhookSecret;
 
         public EventNotificationWebhookHandler()
         {
             var apiKey = Environment.GetEnvironmentVariable("STRIPE_API_KEY");
-            _client = new StripeClient(apiKey);
+            client = new StripeClient(apiKey);
 
-            _webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET");
+            webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET");
         }
 
         [HttpPost]
@@ -40,7 +40,7 @@ namespace Examples.V2
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
             try
             {
-                var eventNotification = _client.ParseEventNotification(json, Request.Headers["Stripe-Signature"], _webhookSecret);
+                var eventNotification = client.ParseEventNotification(json, Request.Headers["Stripe-Signature"], webhookSecret);
 
                 // match on the type of the class to determine what event you have
                 if (eventNotification is V1BillingMeterErrorReportTriggeredEventNotification evt)
