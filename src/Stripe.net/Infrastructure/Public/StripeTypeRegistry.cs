@@ -231,9 +231,18 @@ namespace Stripe
                     "financial_address_generated_microdeposits", typeof(
                     V2.FinancialAddressGeneratedMicrodeposits)
                 },
+                { "v2.billing.bill_setting", typeof(V2.Billing.BillSetting) },
+                { "v2.billing.bill_setting_version", typeof(V2.Billing.BillSettingVersion) },
+                { "v2.billing.cadence", typeof(V2.Billing.Cadence) },
+                { "v2.billing.collection_setting", typeof(V2.Billing.CollectionSetting) },
+                {
+                    "v2.billing.collection_setting_version", typeof(
+                    V2.Billing.CollectionSettingVersion)
+                },
                 { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
                 { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
+                { "v2.billing.profile", typeof(V2.Billing.Profile) },
                 { "v2.core.account", typeof(V2.Core.Account) },
                 { "v2.core.account_link", typeof(V2.Core.AccountLink) },
                 { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
@@ -304,6 +313,10 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
+                },
+                {
+                    "v2.billing.bill_setting.updated", typeof(
+                    Events.V2BillingBillSettingUpdatedEvent)
                 },
                 { "v2.core.account.closed", typeof(Events.V2CoreAccountClosedEvent) },
                 { "v2.core.account.created", typeof(Events.V2CoreAccountCreatedEvent) },

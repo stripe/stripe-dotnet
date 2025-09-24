@@ -19,6 +19,15 @@ namespace Stripe.V2.Payments
         public V2.Amount Amount { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the amount.
+        /// </summary>
+        [JsonProperty("amount_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_details")]
+#endif
+        public OffSessionPaymentCreateAmountDetailsOptions AmountDetails { get; set; }
+
+        /// <summary>
         /// The frequency of the underlying payment.
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
         /// </summary>
@@ -36,6 +45,15 @@ namespace Stripe.V2.Payments
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// This hash contains details about the Mandate to create.
+        /// </summary>
+        [JsonProperty("mandate_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mandate_data")]
+#endif
+        public OffSessionPaymentCreateMandateDataOptions MandateData { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.corp.stripe.com/api/metadata">key-value pairs</a> that you
@@ -67,6 +85,24 @@ namespace Stripe.V2.Payments
         [STJS.JsonPropertyName("payment_method")]
 #endif
         public string PaymentMethod { get; set; }
+
+        /// <summary>
+        /// Payment method options for the off-session payment.
+        /// </summary>
+        [JsonProperty("payment_method_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_options")]
+#endif
+        public OffSessionPaymentCreatePaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
+
+        /// <summary>
+        /// Details about the payments orchestration configuration.
+        /// </summary>
+        [JsonProperty("payments_orchestration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payments_orchestration")]
+#endif
+        public OffSessionPaymentCreatePaymentsOrchestrationOptions PaymentsOrchestration { get; set; }
 
         /// <summary>
         /// Details about the OffSessionPayment retries.

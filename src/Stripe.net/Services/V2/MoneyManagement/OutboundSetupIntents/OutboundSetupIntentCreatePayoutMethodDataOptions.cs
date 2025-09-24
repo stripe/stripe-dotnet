@@ -10,7 +10,7 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Closed Enum. The type of payout method to be created.
-        /// One of: <c>bank_account</c>, or <c>card</c>.
+        /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
