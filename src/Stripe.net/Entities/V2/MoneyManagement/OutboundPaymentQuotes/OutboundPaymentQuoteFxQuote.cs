@@ -12,7 +12,8 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// The duration the exchange rate lock remains valid from creation time. Allowed value is
-        /// five_minutes.
+        /// five_minutes or none.
+        /// One of: <c>five_minutes</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("lock_duration")]
 #if NET6_0_OR_GREATER
@@ -21,7 +22,8 @@ namespace Stripe.V2.MoneyManagement
         public string LockDuration { get; set; }
 
         /// <summary>
-        /// Time at which the rate lock will expire, measured in seconds since the Unix epoch.
+        /// Time at which the rate lock will expire, measured in seconds since the Unix epoch. Null
+        /// when rate locking is not supported.
         /// </summary>
         [JsonProperty("lock_expires_at")]
 #if NET6_0_OR_GREATER
@@ -31,8 +33,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Lock status of the quote. Transitions from active to expired once past the
-        /// lock_expires_at timestamp. Value can be active or expired.
-        /// One of: <c>active</c>, or <c>expired</c>.
+        /// lock_expires_at timestamp. Value can be active, expired or none.
+        /// One of: <c>active</c>, <c>expired</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("lock_status")]
 #if NET6_0_OR_GREATER

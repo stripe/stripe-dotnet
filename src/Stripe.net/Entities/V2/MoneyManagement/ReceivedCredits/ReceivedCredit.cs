@@ -53,7 +53,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// This object stores details about the originating banking transaction that resulted in
-        /// the ReceivedCredit. Present if <c>type</c> field value is <c>external_credit</c>.
+        /// the ReceivedCredit. Present if <c>type</c> field value is <c>bank_transfer</c>.
         /// </summary>
         [JsonProperty("bank_transfer")]
 #if NET6_0_OR_GREATER

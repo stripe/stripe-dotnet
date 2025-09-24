@@ -82,6 +82,15 @@ namespace Stripe.V2.MoneyManagement
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Open Enum. The currency the FinancialAddress settles into the FinancialAccount.
+        /// </summary>
+        [JsonProperty("settlement_currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("settlement_currency")]
+#endif
+        public string SettlementCurrency { get; set; }
+
+        /// <summary>
         /// Closed Enum. An enum representing the status of the FinancialAddress. This indicates
         /// whether or not the FinancialAddress can be used for any money movement flows.
         /// One of: <c>active</c>, <c>archived</c>, <c>failed</c>, or <c>pending</c>.
