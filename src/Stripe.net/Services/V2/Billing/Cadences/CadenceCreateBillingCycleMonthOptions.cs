@@ -21,6 +21,18 @@ namespace Stripe.V2.Billing
         public long? DayOfMonth { get; set; }
 
         /// <summary>
+        /// The month to anchor the billing on for a type="month" billing cycle from 1-12. If not
+        /// provided, this will default to the month the cadence was created. This setting can only
+        /// be used for monthly billing cycles with <c>interval_count</c> of 2, 3, 4 or 6. All
+        /// occurrences will be calculated from month provided.
+        /// </summary>
+        [JsonProperty("month_of_year")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("month_of_year")]
+#endif
+        public long? MonthOfYear { get; set; }
+
+        /// <summary>
         /// The time at which the billing cycle ends. This field is optional, and if not provided,
         /// it will default to the time at which the cadence was created in UTC timezone.
         /// </summary>

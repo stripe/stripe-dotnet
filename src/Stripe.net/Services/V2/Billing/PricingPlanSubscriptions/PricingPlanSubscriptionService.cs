@@ -67,5 +67,21 @@ namespace Stripe.V2.Billing
         {
             return this.ListRequestAutoPagingAsync<PricingPlanSubscription>($"/v2/billing/pricing_plan_subscriptions", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// Update a Pricing Plan Subscription object.
+        /// </summary>
+        public virtual PricingPlanSubscription Update(string id, PricingPlanSubscriptionUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<PricingPlanSubscription>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/pricing_plan_subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Update a Pricing Plan Subscription object.
+        /// </summary>
+        public virtual Task<PricingPlanSubscription> UpdateAsync(string id, PricingPlanSubscriptionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PricingPlanSubscription>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/pricing_plan_subscriptions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
     }
 }

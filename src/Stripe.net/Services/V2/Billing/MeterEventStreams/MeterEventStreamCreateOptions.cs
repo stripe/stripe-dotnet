@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class MeterEventStreamCreateOptions : BaseOptions
     {
         /// <summary>
-        /// List of meter events to include in the request.
+        /// List of meter events to include in the request. Supports up to 100 events per request.
         /// </summary>
         [JsonProperty("events")]
 #if NET6_0_OR_GREATER

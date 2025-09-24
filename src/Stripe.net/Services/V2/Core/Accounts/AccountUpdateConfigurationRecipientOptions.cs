@@ -31,7 +31,9 @@ namespace Stripe.V2.Core
         /// The payout method id to be used as a default outbound destination. This will allow the
         /// PayoutMethod to be omitted on OutboundPayments made through API or sending payouts via
         /// dashboard. Can also be explicitly set to <c>null</c> to clear the existing default
-        /// outbound destination.
+        /// outbound destination. For further details about creating an Outbound Destination, see <a
+        /// href="https://docs.corp.stripe.com/global-payouts-private-preview/quickstart?dashboard-or-api=api#collect-bank-account-details">Collect
+        /// recipient's payment details</a>.
         /// </summary>
         [JsonProperty("default_outbound_destination")]
 #if NET6_0_OR_GREATER

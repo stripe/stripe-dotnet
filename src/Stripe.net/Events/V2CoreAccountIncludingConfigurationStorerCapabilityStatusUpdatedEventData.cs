@@ -11,11 +11,13 @@ namespace Stripe.Events
     {
         /// <summary>
         /// Open Enum. The capability which had its status updated.
-        /// One of: <c>financial_addressses.bank_accounts</c>, <c>holds_currencies.eur</c>,
-        /// <c>holds_currencies.gbp</c>, <c>holds_currencies.usd</c>,
+        /// One of: <c>financial_addressses.bank_accounts</c>,
+        /// <c>financial_addressses.crypto_wallets</c>, <c>holds_currencies.eur</c>,
+        /// <c>holds_currencies.gbp</c>, <c>holds_currencies.usd</c>, <c>holds_currencies.usdc</c>,
         /// <c>inbound_transfers.bank_accounts</c>, <c>outbound_payments.bank_accounts</c>,
-        /// <c>outbound_payments.cards</c>, <c>outbound_payments.financial_accounts</c>,
-        /// <c>outbound_transfers.bank_accounts</c>, or
+        /// <c>outbound_payments.cards</c>, <c>outbound_payments.crypto_wallets</c>,
+        /// <c>outbound_payments.financial_accounts</c>, <c>outbound_transfers.bank_accounts</c>,
+        /// <c>outbound_transfers.crypto_wallets</c>, or
         /// <c>outbound_transfers.financial_accounts</c>.
         /// </summary>
         [JsonProperty("updated_capability")]

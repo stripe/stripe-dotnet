@@ -29,7 +29,7 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// The payout method to be used as a default outbound destination. This will allow the
-        /// PayoutMethod to be omitted on OutboundPayments made through the dashboard.
+        /// PayoutMethod to be omitted on OutboundPayments made through the dashboard or APIs.
         /// </summary>
         [JsonProperty("default_outbound_destination")]
 #if NET6_0_OR_GREATER

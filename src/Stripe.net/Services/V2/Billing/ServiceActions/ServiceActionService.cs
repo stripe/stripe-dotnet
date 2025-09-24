@@ -50,5 +50,21 @@ namespace Stripe.V2.Billing
         {
             return this.RequestAsync<ServiceAction>(BaseAddress.Api, HttpMethod.Get, $"/v2/billing/service_actions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// Update a ServiceAction object.
+        /// </summary>
+        public virtual ServiceAction Update(string id, ServiceActionUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<ServiceAction>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/service_actions/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Update a ServiceAction object.
+        /// </summary>
+        public virtual Task<ServiceAction> UpdateAsync(string id, ServiceActionUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<ServiceAction>(BaseAddress.Api, HttpMethod.Post, $"/v2/billing/service_actions/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
     }
 }

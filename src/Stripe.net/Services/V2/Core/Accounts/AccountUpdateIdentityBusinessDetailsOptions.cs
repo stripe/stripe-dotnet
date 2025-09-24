@@ -37,15 +37,6 @@ namespace Stripe.V2.Core
         public AccountUpdateIdentityBusinessDetailsDocumentsOptions Documents { get; set; }
 
         /// <summary>
-        /// The name which is used by the business.
-        /// </summary>
-        [JsonProperty("doing_business_as")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("doing_business_as")]
-#endif
-        public string DoingBusinessAs { get; set; }
-
-        /// <summary>
         /// An estimated upper bound of employees, contractors, vendors, etc. currently working for
         /// the business.
         /// </summary>
@@ -81,16 +72,6 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("phone")]
 #endif
         public string Phone { get; set; }
-
-        /// <summary>
-        /// Internal-only description of the product sold or service provided by the business. It’s
-        /// used by Stripe for risk and underwriting purposes.
-        /// </summary>
-        [JsonProperty("product_description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("product_description")]
-#endif
-        public string ProductDescription { get; set; }
 
         /// <summary>
         /// The business legal name.
@@ -138,14 +119,5 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("structure")]
 #endif
         public string Structure { get; set; }
-
-        /// <summary>
-        /// The business's publicly available website.
-        /// </summary>
-        [JsonProperty("url")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("url")]
-#endif
-        public string Url { get; set; }
     }
 }

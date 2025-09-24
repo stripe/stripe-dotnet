@@ -39,17 +39,6 @@ namespace Stripe.V2.Billing.RateCards
         public string MeteredItem { get; set; }
 
         /// <summary>
-        /// The ID of the price object to take price information from. The price must have the same
-        /// interval as the rate card. Updates to the Price will not be reflected in the Rate Card
-        /// or its rates.
-        /// </summary>
-        [JsonProperty("price")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("price")]
-#endif
-        public string Price { get; set; }
-
-        /// <summary>
         /// Defines whether the tiered price should be graduated or volume-based. In volume-based
         /// tiering, the maximum quantity within a period determines the per-unit price. In
         /// graduated tiering, the pricing changes as the quantity grows into new tiers. Can only be
