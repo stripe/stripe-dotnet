@@ -6,7 +6,7 @@ namespace Stripe.Infrastructure
     using Newtonsoft.Json.Linq;
 
     /// <summary>
-    /// This converter deserializes Stripe thin events, which are polymorphic and discriminated by the value
+    /// This converter deserializes Stripe's V2 Events, which are polymorphic and discriminated by the value
     /// of a property named "type".
     /// </summary>
     internal class V2EventConverter : JsonConverter
@@ -16,11 +16,6 @@ namespace Stripe.Infrastructure
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
         {
             throw new NotSupportedException("V2EventConverter should only be used while deserializing.");
-        }
-
-        protected virtual Type GetConcreteType(string typeValue)
-        {
-            return StripeTypeRegistry.GetConcreteV2EventType(typeValue) ?? typeof(V2.Event);
         }
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
@@ -36,7 +31,12 @@ namespace Stripe.Infrastructure
             // class to deserialize into.
             var typeValue = (string)jsonObject["type"];
 
-            Type concreteType = this.GetConcreteType(typeValue);
+            Type concreteType = StripeTypeRegistry.GetConcreteV2EventType(typeValue);
+            if (concreteType == null)
+            {
+                // If "type" is unknown by this SDK, default to the generic ThinEvent type.
+                concreteType = typeof(V2.Event);
+            }
 
             using (var subReader = jsonObject.CreateReader())
             {

@@ -12,8 +12,7 @@ namespace Stripe.V2
 #endif
 
     /// <summary>
-    /// A pushed thin event.  Use this the Id with the <see cref="Stripe.V2.Core.EventService"/>
-    /// exposed via <see cref="StripeClient"/> to fetch the full event.
+    /// An EventNotification, which is delivered to an Event Destination to tell you that an Event has happened.
     /// </summary>
     [JsonConverter(typeof(V2EventNotificationConverter))]
 #if NET6_0_OR_GREATER
