@@ -160,12 +160,11 @@ namespace StripeTests.V2
         }
 
         /// <summary>
-        /// Parse a ThinEvent object.  This uses StripeClient.ParseThinEvent to
-        /// parse a BasePushedThinEventNameTBD and then uses the EventService
-        /// to retrieve the ThinEvent.
+        /// Parse a EventNotification payload. This uses StripeClient.ParseEventNotification to
+        /// parse a EventNotification and then uses the method to retrieve the full Event.
         /// </summary>
         /// <param name="payload">The json payload to parse.</param>
-        /// <returns>A ThinEvent derived class.</returns>
+        /// <returns>A V2.Event derived class.</returns>
         private Stripe.V2.Event DoParseSignedEventAndFetch(string payload)
         {
             this.MockHttpClientFixture.MockHandler.Protected()
@@ -185,12 +184,11 @@ namespace StripeTests.V2
         }
 
         /// <summary>
-        /// Parse a ThinEvent object.  This uses StripeClient.ParseThinEvent to
-        /// parse a BasePushedThinEventNameTBD and then uses the EventService
-        /// to retrieve the ThinEvent.
+        /// Parse a EventNotification payload. This uses StripeClient.ParseEventNotification to
+        /// parse a EventNotification and then uses the EventService.
         /// </summary>
         /// <param name="payload">The json payload to parse.</param>
-        /// <returns>A ThinEvent derived class.</returns>
+        /// <returns>An EventNotification derived class.</returns>
         private Stripe.V2.EventNotification DoParseSignedEventNotification(string payload)
         {
             var notif = this.stripeClient.ParseEventNotification(payload, GenerateSigHeader(payload), WebhookSecret);
@@ -213,7 +211,7 @@ namespace StripeTests.V2
         }
 
         [Fact]
-        public void ParseThinEventWithoutRelatedObject()
+        public void ParseEventNotificationWithoutRelatedObject()
         {
             var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventNoRelatedObjectPayload, GenerateSigHeader(v2KnownEventNoRelatedObjectPayload), WebhookSecret);
             Assert.NotNull(eventNotif);
@@ -225,7 +223,7 @@ namespace StripeTests.V2
         }
 
         [Fact]
-        public void ParseThinEventWithRelatedObject()
+        public void ParseEventNotificationWithRelatedObject()
         {
             var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventPayload, GenerateSigHeader(v2KnownEventPayload), WebhookSecret);
             Assert.NotNull(eventNotif);
@@ -255,7 +253,7 @@ namespace StripeTests.V2
         }
 
         [Fact]
-        public void ParseThinEventWithLivemodeFalse()
+        public void ParseEventNotificationWithLivemodeFalse()
         {
             var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventLivemodeFalsePayload, GenerateSigHeader(v2KnownEventLivemodeFalsePayload), WebhookSecret);
             Assert.NotNull(eventNotif);
@@ -267,7 +265,7 @@ namespace StripeTests.V2
         }
 
         [Fact]
-        public void ParseThinEventWithReason()
+        public void ParseEventNotificationWithReason()
         {
             var eventNotif = this.stripeClient.ParseEventNotification(v2KnownEventWithReasonPayload, GenerateSigHeader(v2KnownEventWithReasonPayload), WebhookSecret);
             Assert.NotNull(eventNotif);
@@ -284,7 +282,7 @@ namespace StripeTests.V2
         }
 
         [Fact]
-        public void ParseThinEventWithInvalidSignature()
+        public void ParseEventNotificationWithInvalidSignature()
         {
             var exception = Assert.Throws<StripeException>(() => this.stripeClient.ParseEventNotification(v2UnknownEventPayload, "invalid signature", WebhookSecret));
 
