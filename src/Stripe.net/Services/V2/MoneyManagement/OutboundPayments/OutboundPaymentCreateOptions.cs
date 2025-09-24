@@ -76,6 +76,16 @@ namespace Stripe.V2.MoneyManagement
         public OutboundPaymentCreateRecipientNotificationOptions RecipientNotification { get; set; }
 
         /// <summary>
+        /// The recipient verification id for this OutboundPayment. Only required for countries with
+        /// regulatory mandates to verify recipient names before OutboundPayment creation.
+        /// </summary>
+        [JsonProperty("recipient_verification")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("recipient_verification")]
+#endif
+        public string RecipientVerification { get; set; }
+
+        /// <summary>
         /// To which payout method to send the OutboundPayment.
         /// </summary>
         [JsonProperty("to")]

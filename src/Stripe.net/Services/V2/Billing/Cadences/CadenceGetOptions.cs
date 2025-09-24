@@ -11,6 +11,7 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// Additional resource to include in the response.
+        /// One of: <c>invoice_discount_rules</c>, or <c>settings_data</c>.
         /// </summary>
         [JsonProperty("include")]
 #if NET6_0_OR_GREATER

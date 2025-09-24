@@ -14,7 +14,7 @@ namespace Stripe.V2.Payments
     public class OffSessionPayment : StripeEntity<OffSessionPayment>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
-        /// Unique identifier for the object..
+        /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -31,6 +31,15 @@ namespace Stripe.V2.Payments
         [STJS.JsonPropertyName("object")]
 #endif
         public string Object { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the amount.
+        /// </summary>
+        [JsonProperty("amount_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_details")]
+#endif
+        public OffSessionPaymentAmountDetails AmountDetails { get; set; }
 
         /// <summary>
         /// The “presentment amount” to be collected from the customer.
@@ -81,7 +90,8 @@ namespace Stripe.V2.Payments
 
         /// <summary>
         /// The reason why the OffSessionPayment failed.
-        /// One of: <c>rejected_by_partner</c>, or <c>retries_exhausted</c>.
+        /// One of: <c>authorization_expired</c>, <c>rejected_by_partner</c>, or
+        /// <c>retries_exhausted</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
 #if NET6_0_OR_GREATER
@@ -156,6 +166,15 @@ namespace Stripe.V2.Payments
         [STJS.JsonPropertyName("payment_record")]
 #endif
         public string PaymentRecord { get; set; }
+
+        /// <summary>
+        /// Details about the payments orchestration configuration.
+        /// </summary>
+        [JsonProperty("payments_orchestration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payments_orchestration")]
+#endif
+        public OffSessionPaymentPaymentsOrchestration PaymentsOrchestration { get; set; }
 
         /// <summary>
         /// Details about the OffSessionPayment retries.

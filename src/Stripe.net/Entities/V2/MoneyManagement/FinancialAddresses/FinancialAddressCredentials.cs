@@ -10,7 +10,7 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Open Enum. The type of Credentials that are provisioned for the FinancialAddress.
-        /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
+        /// One of: <c>gb_bank_account</c>, <c>sepa_bank_account</c>, or <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
@@ -27,6 +27,16 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("gb_bank_account")]
 #endif
         public FinancialAddressCredentialsGbBankAccount GbBankAccount { get; set; }
+
+        /// <summary>
+        /// The credentials of the SEPA Bank Account for the FinancialAddress. This contains unique
+        /// banking details such as the IBAN, BIC, etc. of a SEPA bank account.
+        /// </summary>
+        [JsonProperty("sepa_bank_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("sepa_bank_account")]
+#endif
+        public FinancialAddressCredentialsSepaBankAccount SepaBankAccount { get; set; }
 
         /// <summary>
         /// The credentials of the US Bank Account for the FinancialAddress. This contains unique

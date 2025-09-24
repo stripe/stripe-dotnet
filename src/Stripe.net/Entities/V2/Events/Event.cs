@@ -86,5 +86,14 @@ namespace Stripe.V2
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
+
+        /// <summary>
+        /// For interop events, this is the snapshot event ID.
+        /// </summary>
+        [JsonProperty("v1_event_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("v1_event_id")]
+#endif
+        public string V1EventId { get; set; }
     }
 }

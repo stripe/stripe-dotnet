@@ -13,6 +13,16 @@ namespace Stripe.Events
     public class V2BillingCadenceBilledEvent : V2.Event
     {
         /// <summary>
+        /// Data for the v2.billing.cadence.billed event.
+        /// </summary>
+        [JsonProperty("data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("data")]
+#endif
+
+        public V2BillingCadenceBilledEventData Data { get; set; }
+
+        /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]

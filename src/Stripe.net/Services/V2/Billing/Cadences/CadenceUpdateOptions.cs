@@ -11,12 +11,23 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// Additional resource to include in the response.
+        /// One of: <c>invoice_discount_rules</c>, or <c>settings_data</c>.
         /// </summary>
         [JsonProperty("include")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("include")]
 #endif
         public List<string> Include { get; set; }
+
+        /// <summary>
+        /// A lookup key used to retrieve cadences dynamically from a static string. Maximum length
+        /// of 200 characters.
+        /// </summary>
+        [JsonProperty("lookup_key")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lookup_key")]
+#endif
+        public string LookupKey { get; set; }
 
         /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can

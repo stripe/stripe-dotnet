@@ -43,6 +43,15 @@ namespace Stripe.V2.Core
         public List<string> Locales { get; set; }
 
         /// <summary>
+        /// Account profile information.
+        /// </summary>
+        [JsonProperty("profile")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("profile")]
+#endif
+        public AccountDefaultsProfile Profile { get; set; }
+
+        /// <summary>
         /// Default responsibilities held by either Stripe or the platform.
         /// </summary>
         [JsonProperty("responsibilities")]
