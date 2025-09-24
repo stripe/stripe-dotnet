@@ -11,15 +11,6 @@ namespace Stripe.Events
     public class V2CoreHealthApiLatencyResolvedEventData : StripeEntity<V2CoreHealthApiLatencyResolvedEventData>
     {
         /// <summary>
-        /// The alert ID.
-        /// </summary>
-        [JsonProperty("alert_id")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("alert_id")]
-#endif
-        public string AlertId { get; set; }
-
-        /// <summary>
         /// The grouping key for the alert.
         /// </summary>
         [JsonProperty("grouping_key")]

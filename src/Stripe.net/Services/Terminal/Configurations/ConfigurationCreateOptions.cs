@@ -9,6 +9,15 @@ namespace Stripe.Terminal
     public class ConfigurationCreateOptions : BaseOptions
     {
         /// <summary>
+        /// An object containing device type specific settings for BBPOS WisePad 3 readers.
+        /// </summary>
+        [JsonProperty("bbpos_wisepad3")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bbpos_wisepad3")]
+#endif
+        public ConfigurationBbposWisepad3Options BbposWisepad3 { get; set; }
+
+        /// <summary>
         /// An object containing device type specific settings for BBPOS WisePOS E readers.
         /// </summary>
         [JsonProperty("bbpos_wisepos_e")]

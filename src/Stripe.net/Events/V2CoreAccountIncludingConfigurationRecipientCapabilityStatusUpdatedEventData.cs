@@ -12,8 +12,8 @@ namespace Stripe.Events
         /// <summary>
         /// Open Enum. The capability which had its status updated.
         /// One of: <c>bank_accounts.local</c>, <c>bank_accounts.wire</c>, <c>cards</c>,
-        /// <c>stripe_balance.payouts</c>, <c>stripe_balance.stripe_transfers</c>, or
-        /// <c>stripe.transfers</c>.
+        /// <c>crypto_wallets_v2</c>, <c>stripe_balance.payouts</c>,
+        /// <c>stripe_balance.stripe_transfers</c>, or <c>stripe.transfers</c>.
         /// </summary>
         [JsonProperty("updated_capability")]
 #if NET6_0_OR_GREATER

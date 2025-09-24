@@ -145,6 +145,17 @@ namespace Stripe
         public DisputeEvidenceDetails EvidenceDetails { get; set; }
 
         /// <summary>
+        /// Intended submission method for the dispute.
+        /// One of: <c>manual</c>, <c>prefer_manual</c>, <c>prefer_smart_disputes</c>, or
+        /// <c>smart_disputes</c>.
+        /// </summary>
+        [JsonProperty("intended_submission_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("intended_submission_method")]
+#endif
+        public string IntendedSubmissionMethod { get; set; }
+
+        /// <summary>
         /// If true, it's still possible to refund the disputed payment. After the payment has been
         /// fully refunded, no further funds are withdrawn from your Stripe account as a result of
         /// this dispute.
@@ -257,8 +268,9 @@ namespace Stripe
         /// The current status of a dispute. Possible values include:<c>warning_needs_response</c>,
         /// <c>warning_under_review</c>, <c>warning_closed</c>, <c>needs_response</c>,
         /// <c>under_review</c>, <c>won</c>, <c>lost</c>, or <c>prevented</c>.
-        /// One of: <c>lost</c>, <c>needs_response</c>, <c>under_review</c>, <c>warning_closed</c>,
-        /// <c>warning_needs_response</c>, <c>warning_under_review</c>, or <c>won</c>.
+        /// One of: <c>lost</c>, <c>needs_response</c>, <c>prevented</c>, <c>under_review</c>,
+        /// <c>warning_closed</c>, <c>warning_needs_response</c>, <c>warning_under_review</c>, or
+        /// <c>won</c>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER

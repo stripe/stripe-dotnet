@@ -25,6 +25,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_off")]
 #endif
-        public decimal PercentOff { get; set; }
+        public string PercentOff { get; set; }
     }
 }

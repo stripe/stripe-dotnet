@@ -1,0 +1,52 @@
+// File generated from our OpenAPI spec
+namespace Stripe.Events
+{
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
+
+    /// <summary>
+    /// Occurs whenever a customer disputes a charge with their bank.
+    /// </summary>
+    public class PushedV1ChargeDisputeCreatedEvent : V2.PushedEvent
+    {
+        /// <summary>
+        /// Object containing the reference to API resource relevant to the event.
+        /// </summary>
+        [JsonProperty("related_object")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("related_object")]
+#endif
+
+        public V2.EventRelatedObject RelatedObject { get; set; }
+
+        /// <summary>
+        /// Asynchronously retrieves the related object from the API. Make an API request on every
+        /// call.
+        /// </summary>
+        public Task<Dispute> FetchRelatedObjectAsync()
+        {
+            return this.FetchRelatedObjectAsync<Dispute>(this.RelatedObject);
+        }
+
+        /// <summary>
+        /// Retrieves the related object from the API. Make an API request on every call.
+        /// </summary>
+        public Dispute FetchRelatedObject()
+        {
+            return this.FetchRelatedObject<Dispute>(this.RelatedObject);
+        }
+
+        public V1ChargeDisputeCreatedEvent Pull()
+        {
+            return this.PullEvent<V1ChargeDisputeCreatedEvent>();
+        }
+
+        public Task<V1ChargeDisputeCreatedEvent> PullAsync()
+        {
+            return this.PullEventAsync<V1ChargeDisputeCreatedEvent>();
+        }
+    }
+}

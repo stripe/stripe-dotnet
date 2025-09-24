@@ -24,6 +24,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
 #endif
-        public decimal? Value { get; set; }
+        public string Value { get; set; }
     }
 }

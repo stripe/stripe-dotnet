@@ -57,6 +57,16 @@ namespace Stripe.V2.MoneyManagement
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// The recipient verification id for this OutboundTransfer. Only required for countries
+        /// with regulatory mandates to verify recipient names before OutboundTransfer creation.
+        /// </summary>
+        [JsonProperty("recipient_verification")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("recipient_verification")]
+#endif
+        public string RecipientVerification { get; set; }
+
+        /// <summary>
         /// To which payout method to send the OutboundTransfer.
         /// </summary>
         [JsonProperty("to")]

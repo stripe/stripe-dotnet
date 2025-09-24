@@ -20,6 +20,15 @@ namespace Stripe.Checkout
         public Address Address { get; set; }
 
         /// <summary>
+        /// The customer's business name after a completed Checkout Session.
+        /// </summary>
+        [JsonProperty("business_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("business_name")]
+#endif
+        public string BusinessName { get; set; }
+
+        /// <summary>
         /// The email associated with the Customer, if one exists, on the Checkout Session after a
         /// completed Checkout Session or at time of session expiry. Otherwise, if the customer has
         /// consented to promotional content, this value is the most recent valid email provided by
@@ -30,6 +39,15 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("email")]
 #endif
         public string Email { get; set; }
+
+        /// <summary>
+        /// The customer's individual name after a completed Checkout Session.
+        /// </summary>
+        [JsonProperty("individual_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("individual_name")]
+#endif
+        public string IndividualName { get; set; }
 
         /// <summary>
         /// The customer's name after a completed Checkout Session. Note: This property is populated

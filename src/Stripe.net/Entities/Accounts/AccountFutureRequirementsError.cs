@@ -10,7 +10,8 @@ namespace Stripe
     {
         /// <summary>
         /// The code for the type of error.
-        /// One of: <c>information_missing</c>, <c>invalid_address_city_state_postal_code</c>,
+        /// One of: <c>external_request</c>, <c>information_missing</c>,
+        /// <c>invalid_address_city_state_postal_code</c>,
         /// <c>invalid_address_highway_contract_box</c>, <c>invalid_address_private_mailbox</c>,
         /// <c>invalid_business_profile_name</c>, <c>invalid_business_profile_name_denylisted</c>,
         /// <c>invalid_company_name_denylisted</c>, <c>invalid_dob_age_over_maximum</c>,
@@ -38,7 +39,8 @@ namespace Stripe
         /// <c>invalid_url_website_incomplete_terms_and_conditions</c>,
         /// <c>invalid_url_website_incomplete_under_construction</c>,
         /// <c>invalid_url_website_other</c>, <c>invalid_value_other</c>,
-        /// <c>verification_directors_mismatch</c>, <c>verification_document_address_mismatch</c>,
+        /// <c>unsupported_business_type</c>, <c>verification_directors_mismatch</c>,
+        /// <c>verification_document_address_mismatch</c>,
         /// <c>verification_document_address_missing</c>, <c>verification_document_corrupt</c>,
         /// <c>verification_document_country_not_supported</c>,
         /// <c>verification_document_directors_mismatch</c>,

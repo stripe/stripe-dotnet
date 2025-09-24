@@ -19,7 +19,8 @@ namespace Stripe.V2.Core
         public bool? EnableMcpAccess { get; set; }
 
         /// <summary>
-        /// Values that are prefilled when a user claims the sandbox.
+        /// Values that are prefilled when a user claims the sandbox. When a user claims the
+        /// sandbox, they will be able to update these values.
         /// </summary>
         [JsonProperty("prefill")]
 #if NET6_0_OR_GREATER

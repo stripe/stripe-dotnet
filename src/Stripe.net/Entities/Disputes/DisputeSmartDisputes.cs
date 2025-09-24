@@ -16,7 +16,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recommended_evidence")]
 #endif
-        public List<string> RecommendedEvidence { get; set; }
+        public List<List<string>> RecommendedEvidence { get; set; }
 
         /// <summary>
         /// Smart Disputes auto representment packet availability status.

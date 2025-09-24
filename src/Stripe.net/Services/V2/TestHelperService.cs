@@ -8,6 +8,7 @@ namespace Stripe.V2
     public class TestHelperService : Service
     {
         private V2.TestHelpers.FinancialAddressService financialAddresses;
+        private V2.TestHelpers.MoneyManagementService moneyManagement;
 
         internal TestHelperService(ApiRequestor requestor)
             : base(requestor)
@@ -20,6 +21,9 @@ namespace Stripe.V2
         }
 
         public virtual V2.TestHelpers.FinancialAddressService FinancialAddresses => this.financialAddresses ??= new V2.TestHelpers.FinancialAddressService(
+            this.Requestor);
+
+        public virtual V2.TestHelpers.MoneyManagementService MoneyManagement => this.moneyManagement ??= new V2.TestHelpers.MoneyManagementService(
             this.Requestor);
     }
 }

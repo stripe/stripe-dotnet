@@ -27,7 +27,7 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_percentage")]
 #endif
-        public decimal CurrentPercentage { get; set; }
+        public string CurrentPercentage { get; set; }
 
         /// <summary>
         /// Dimensions that describe what subset of payments are impacted.
@@ -64,6 +64,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("previous_percentage")]
 #endif
-        public decimal PreviousPercentage { get; set; }
+        public string PreviousPercentage { get; set; }
     }
 }

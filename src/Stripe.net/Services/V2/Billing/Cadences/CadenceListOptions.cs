@@ -11,6 +11,7 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// Additional resource to include in the response.
+        /// One of: <c>invoice_discount_rules</c>, or <c>settings_data</c>.
         /// </summary>
         [JsonProperty("include")]
 #if NET6_0_OR_GREATER
@@ -19,8 +20,18 @@ namespace Stripe.V2.Billing
         public List<string> Include { get; set; }
 
         /// <summary>
+        /// Only return the cadences with these lookup_keys, if any exist. You can specify up to 10
+        /// lookup_keys. Mutually exclusive with <c>test_clock</c> and <c>payer</c>.
+        /// </summary>
+        [JsonProperty("lookup_keys")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lookup_keys")]
+#endif
+        public List<string> LookupKeys { get; set; }
+
+        /// <summary>
         /// If provided, only cadences that specifically reference the payer will be returned.
-        /// Mutually exclusive with <c>test_clock</c>.
+        /// Mutually exclusive with <c>test_clock</c> and <c>lookup_keys</c>.
         /// </summary>
         [JsonProperty("payer")]
 #if NET6_0_OR_GREATER

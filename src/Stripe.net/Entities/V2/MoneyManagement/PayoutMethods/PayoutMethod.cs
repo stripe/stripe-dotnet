@@ -70,6 +70,15 @@ namespace Stripe.V2.MoneyManagement
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The PayoutMethodCryptoWallet object details.
+        /// </summary>
+        [JsonProperty("crypto_wallet")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto_wallet")]
+#endif
+        public PayoutMethodCryptoWallet CryptoWallet { get; set; }
+
+        /// <summary>
         /// ID of the underlying active OutboundSetupIntent object, if any.
         /// </summary>
         [JsonProperty("latest_outbound_setup_intent")]
@@ -90,7 +99,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Closed Enum. The type of payout method.
-        /// One of: <c>bank_account</c>, or <c>card</c>.
+        /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

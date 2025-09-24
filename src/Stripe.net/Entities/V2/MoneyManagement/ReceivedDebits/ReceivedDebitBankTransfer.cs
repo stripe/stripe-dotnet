@@ -18,6 +18,15 @@ namespace Stripe.V2.MoneyManagement
         public string FinancialAddress { get; set; }
 
         /// <summary>
+        /// Open Enum. Indicates the origin type through which this debit was initiated.
+        /// </summary>
+        [JsonProperty("origin_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("origin_type")]
+#endif
+        public string OriginType { get; set; }
+
+        /// <summary>
         /// Open Enum. The type of the payment method used to originate the debit.
         /// </summary>
         [JsonProperty("payment_method_type")]

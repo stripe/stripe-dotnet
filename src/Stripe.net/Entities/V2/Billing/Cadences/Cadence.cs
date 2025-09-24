@@ -67,6 +67,16 @@ namespace Stripe.V2.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// A lookup key used to retrieve cadences dynamically from a static string. Maximum length
+        /// of 200 characters.
+        /// </summary>
+        [JsonProperty("lookup_key")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lookup_key")]
+#endif
+        public string LookupKey { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
@@ -103,6 +113,15 @@ namespace Stripe.V2.Billing
         [STJS.JsonPropertyName("settings")]
 #endif
         public CadenceSettings Settings { get; set; }
+
+        /// <summary>
+        /// Settings data that contains expanded billing settings configuration with actual values.
+        /// </summary>
+        [JsonProperty("settings_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("settings_data")]
+#endif
+        public CadenceSettingsData SettingsData { get; set; }
 
         /// <summary>
         /// The current status of the cadence.

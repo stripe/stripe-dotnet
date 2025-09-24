@@ -95,6 +95,10 @@ namespace Stripe
                     ret = Stripe.V2.QuotaExceededException.Parse(httpStatusCode, body);
                     break;
 
+                case "rate_limit":
+                    ret = Stripe.V2.RateLimitException.Parse(httpStatusCode, body);
+                    break;
+
                 case "recipient_not_notifiable":
                     ret = Stripe.V2.RecipientNotNotifiableException.Parse(httpStatusCode, body);
                     break;

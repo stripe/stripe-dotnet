@@ -1,22 +1,24 @@
 {
   "object": "discount",
-  "coupon": {
-    "id": "co_123",
-    "object": "coupon",
-    "amount_off": null,
-    "created": 1531316267,
-    "currency": null,
-    "duration": "repeating",
-    "duration_in_months": 3,
-    "livemode": false,
-    "max_redemptions": null,
-    "metadata": {
-    },
-    "name": null,
-    "percent_off": 25,
-    "redeem_by": null,
-    "times_redeemed": 1,
-    "valid": true
+  "source": {
+    "coupon": {
+      "id": "co_123",
+      "object": "coupon",
+      "amount_off": null,
+      "created": 1531316267,
+      "currency": null,
+      "duration": "repeating",
+      "duration_in_months": 3,
+      "livemode": false,
+      "max_redemptions": null,
+      "metadata": {
+      },
+      "name": null,
+      "percent_off": 25,
+      "redeem_by": null,
+      "times_redeemed": 1,
+      "valid": true
+    }
   },
   "customer": "cus_123",
   "end": 1540329091,

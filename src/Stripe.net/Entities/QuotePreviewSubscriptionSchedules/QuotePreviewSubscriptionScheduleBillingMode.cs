@@ -11,6 +11,15 @@ namespace Stripe
     public class QuotePreviewSubscriptionScheduleBillingMode : StripeEntity<QuotePreviewSubscriptionScheduleBillingMode>
     {
         /// <summary>
+        /// Configure behavior for flexible billing mode.
+        /// </summary>
+        [JsonProperty("flexible")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flexible")]
+#endif
+        public QuotePreviewSubscriptionScheduleBillingModeFlexible Flexible { get; set; }
+
+        /// <summary>
         /// Controls how prorations and invoices for subscriptions are calculated and orchestrated.
         /// One of: <c>classic</c>, or <c>flexible</c>.
         /// </summary>

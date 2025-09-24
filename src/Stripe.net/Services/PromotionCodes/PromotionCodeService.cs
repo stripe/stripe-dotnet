@@ -29,8 +29,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>A promotion code points to a coupon. You can optionally restrict the code to a
-        /// specific customer, redemption limit, and expiration date.</p>.
+        /// <p>A promotion code points to an underlying promotion. You can optionally restrict the
+        /// code to a specific customer, redemption limit, and expiration date.</p>.
         /// </summary>
         public virtual PromotionCode Create(PromotionCodeCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -38,8 +38,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>A promotion code points to a coupon. You can optionally restrict the code to a
-        /// specific customer, redemption limit, and expiration date.</p>.
+        /// <p>A promotion code points to an underlying promotion. You can optionally restrict the
+        /// code to a specific customer, redemption limit, and expiration date.</p>.
         /// </summary>
         public virtual Task<PromotionCode> CreateAsync(PromotionCodeCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
