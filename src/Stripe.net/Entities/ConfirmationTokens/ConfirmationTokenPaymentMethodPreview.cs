@@ -326,6 +326,12 @@ namespace Stripe
 #endif
         public ConfirmationTokenPaymentMethodPreviewPaypal Paypal { get; set; }
 
+        [JsonProperty("paypay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay")]
+#endif
+        public ConfirmationTokenPaymentMethodPreviewPaypay Paypay { get; set; }
+
         [JsonProperty("payto")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payto")]
@@ -422,10 +428,11 @@ namespace Stripe
         /// <c>ideal</c>, <c>interac_present</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
         /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
-        /// <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>, <c>swish</c>,
-        /// <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>, <c>pix</c>,
+        /// <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>, <c>revolut_pay</c>, <c>samsung_pay</c>,
+        /// <c>satispay</c>, <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>,
+        /// <c>stripe_balance</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
