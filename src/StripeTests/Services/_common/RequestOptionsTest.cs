@@ -64,5 +64,36 @@ namespace StripeTests
             newOptions = options.WithClientOptions(clientOptions);
             Assert.Equal(options.StripeAccount, newOptions.StripeAccount);
         }
+
+        [Fact]
+        public void SetStripeContextWithStripeContextObject()
+        {
+            var context = StripeContext.Parse("org_123/proj_456");
+            var options = new RequestOptions();
+
+            options.SetStripeContext(context);
+
+            Assert.Equal("org_123/proj_456", options.StripeContext);
+        }
+
+        [Fact]
+        public void SetStripeContextWithNull()
+        {
+            var options = new RequestOptions();
+            options.SetStripeContext(null);
+
+            Assert.Null(options.StripeContext);
+        }
+
+        [Fact]
+        public void SetStripeContextWithEmptyContext()
+        {
+            var context = new StripeContext();
+            var options = new RequestOptions();
+
+            options.SetStripeContext(context);
+
+            Assert.Equal(string.Empty, options.StripeContext);
+        }
     }
 }

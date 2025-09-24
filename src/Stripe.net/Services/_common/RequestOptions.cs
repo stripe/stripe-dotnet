@@ -27,6 +27,23 @@ namespace Stripe
         /// <summary>Gets or sets the value or Stripe-Context request header.</summary>
         public string StripeContext { get; set; }
 
+        /// <summary>
+        /// Sets the Stripe-Context header from a StripeContext object.
+        /// </summary>
+        /// <param name="context">The StripeContext to set.</param>
+        public void SetStripeContext(StripeContext context)
+        {
+            if (context != null)
+            {
+                var contextValue = context.ToString();
+                this.StripeContext = !string.IsNullOrEmpty(contextValue) ? contextValue : null;
+            }
+            else
+            {
+                this.StripeContext = null;
+            }
+        }
+
         /// <summary>Gets the base URL for the request.</summary>
         /// <remarks>
         /// This is an internal property. It is set by services or individual request methods when

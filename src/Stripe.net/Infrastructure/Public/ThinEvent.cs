@@ -64,10 +64,11 @@ namespace Stripe
         /// [Optional] Authentication context needed to fetch the event or related object.
         /// </summary>
         [JsonProperty("context")]
+        [JsonConverter(typeof(Infrastructure.StripeContextConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("context")]
 #endif
-        public string? Context { get; internal set; }
+        public StripeContext? Context { get; internal set; }
 
         /// <summary>
         /// [Optional] Object containing the reference to API resource relevant to the event.

@@ -42,6 +42,23 @@ namespace Stripe
         /// <summary>Gets and sets the Stripe-Context header value for requests made from this client.</summary>
         public string StripeContext { get; set; }
 
+        /// <summary>
+        /// Sets the Stripe-Context header from a StripeContext object.
+        /// </summary>
+        /// <param name="context">The StripeContext to set.</param>
+        public void SetStripeContext(StripeContext context)
+        {
+            if (context != null)
+            {
+                var contextValue = context.ToString();
+                this.StripeContext = !string.IsNullOrEmpty(contextValue) ? contextValue : null;
+            }
+            else
+            {
+                this.StripeContext = null;
+            }
+        }
+
         internal StripeClientOptions Clone()
         {
             return (StripeClientOptions)this.MemberwiseClone();
