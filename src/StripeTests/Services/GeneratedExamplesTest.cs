@@ -6587,7 +6587,7 @@ namespace StripeTests
                                     {
                                         Type = "indefinite",
                                     },
-                                    PercentOff = 991934883.3333334M,
+                                    PercentOff = "percent_off",
                                 },
                             },
                         },
