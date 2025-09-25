@@ -34,24 +34,24 @@ namespace Stripe.V2
             return this.FetchEventAsync<V2.Event>(cancellationToken);
         }
 
-        public IStripeEntity FetchRelatedObject()
+        public StripeEntity FetchRelatedObject()
         {
             if (this.RelatedObject == null)
             {
                 throw new Exception("there's no relatedObject to fetch.");
             }
 
-            return this.FetchRelatedObject<IStripeEntity>(this.RelatedObject);
+            return this.FetchRelatedObject<StripeEntity>(this.RelatedObject);
         }
 
-        public Task<IStripeEntity> FetchRelatedObjectAsync()
+        public Task<StripeEntity> FetchRelatedObjectAsync()
         {
             if (this.RelatedObject == null)
             {
                 throw new Exception("there's no relatedObject to fetch.");
             }
 
-            return this.FetchRelatedObjectAsync<IStripeEntity>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<StripeEntity>(this.RelatedObject);
         }
     }
 }
