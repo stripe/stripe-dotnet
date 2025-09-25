@@ -15,7 +15,7 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public long Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
         /// The AmountType for the mandate. One of <c>fixed</c> or <c>maximum</c>.
