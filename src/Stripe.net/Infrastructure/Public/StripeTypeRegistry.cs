@@ -187,10 +187,10 @@ namespace Stripe
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
 
-        internal static readonly IReadOnlyDictionary<string, Type> V2TypesToEventTypes = new ReadOnlyDictionary<string, Type>(
+        internal static readonly IReadOnlyDictionary<string, Type> V2EventsToTypes = new ReadOnlyDictionary<string, Type>(
             new Dictionary<string, Type>
             {
-                // ThinTypesToEventTypes: The beginning of the section generated from our OpenAPI spec
+                // V2EventsToTypes: The beginning of the section generated from our OpenAPI spec
                 {
                     "v1.billing.meter.error_report_triggered", typeof(
                     Events.V1BillingMeterErrorReportTriggeredEvent)
@@ -204,7 +204,27 @@ namespace Stripe
                     Events.V2CoreEventDestinationPingEvent)
                 },
 
-                // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
+                // V2EventsToTypes: The end of the section generated from our OpenAPI spec
+            });
+
+        internal static readonly IReadOnlyDictionary<string, Type> V2EventNotificationsToTypes = new ReadOnlyDictionary<string, Type>(
+            new Dictionary<string, Type>
+            {
+                // V2EventNotificationsToTypes: The beginning of the section generated from our OpenAPI spec
+                {
+                    "v1.billing.meter.error_report_triggered", typeof(
+                    Events.V1BillingMeterErrorReportTriggeredEventNotification)
+                },
+                {
+                    "v1.billing.meter.no_meter_found", typeof(
+                    Events.V1BillingMeterNoMeterFoundEventNotification)
+                },
+                {
+                    "v2.core.event_destination.ping", typeof(
+                    Events.V2CoreEventDestinationPingEventNotification)
+                },
+
+                // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec
             });
 
         /// <summary>
@@ -238,12 +258,23 @@ namespace Stripe
             return null;
         }
 
-        public static Type GetConcreteThinEventType(string typeValue)
+        public static Type GetConcreteV2EventType(string typeValue)
         {
             Type concreteType = null;
             if (!string.IsNullOrEmpty(typeValue))
             {
-                V2TypesToEventTypes.TryGetValue(typeValue, out concreteType);
+                V2EventsToTypes.TryGetValue(typeValue, out concreteType);
+            }
+
+            return concreteType;
+        }
+
+        public static Type GetConcreteV2EventNotificationType(string typeValue)
+        {
+            Type concreteType = null;
+            if (!string.IsNullOrEmpty(typeValue))
+            {
+                V2EventNotificationsToTypes.TryGetValue(typeValue, out concreteType);
             }
 
             return concreteType;
