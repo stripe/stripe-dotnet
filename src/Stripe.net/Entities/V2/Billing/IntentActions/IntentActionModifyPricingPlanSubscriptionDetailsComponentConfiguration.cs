@@ -15,7 +15,7 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
-        public long Quantity { get; set; }
+        public long? Quantity { get; set; }
 
         /// <summary>
         /// Lookup key for the pricing plan component.

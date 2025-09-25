@@ -44,7 +44,7 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("resolved_at")]
 #endif
-        public DateTime ResolvedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? ResolvedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The time when impact on the user experience was first detected.

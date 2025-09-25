@@ -15,6 +15,6 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("total_tax_amount")]
 #endif
-        public long TotalTaxAmount { get; set; }
+        public long? TotalTaxAmount { get; set; }
     }
 }

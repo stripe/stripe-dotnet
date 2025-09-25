@@ -16,7 +16,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_amount")]
 #endif
-        public long DiscountAmount { get; set; }
+        public long? DiscountAmount { get; set; }
 
         /// <summary>
         /// A list of line items, each containing information about a product in the PaymentIntent.

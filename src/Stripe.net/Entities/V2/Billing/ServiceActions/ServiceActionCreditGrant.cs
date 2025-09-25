@@ -62,6 +62,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("priority")]
 #endif
-        public long Priority { get; set; }
+        public long? Priority { get; set; }
     }
 }
