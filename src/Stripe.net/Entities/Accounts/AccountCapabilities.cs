@@ -481,17 +481,6 @@ namespace Stripe
         public string PaynowPayments { get; set; }
 
         /// <summary>
-        /// The status of the Paypay capability of the account, or whether the account can directly
-        /// process Paypay payments.
-        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
-        /// </summary>
-        [JsonProperty("paypay_payments")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("paypay_payments")]
-#endif
-        public string PaypayPayments { get; set; }
-
-        /// <summary>
         /// The status of the pix payments capability of the account, or whether the account can
         /// directly process pix charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

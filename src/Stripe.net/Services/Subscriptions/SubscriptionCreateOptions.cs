@@ -110,12 +110,12 @@ namespace Stripe
         /// proration for that period.
         /// </summary>
         [JsonProperty("cancel_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [JsonConverter(typeof(AnyOfConverter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cancel_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
-        public DateTime? CancelAt { get; set; }
+        public AnyOf<DateTime?, SubscriptionCancelAt> CancelAt { get; set; }
 
         /// <summary>
         /// Indicate whether this subscription should cancel at the end of the current period
