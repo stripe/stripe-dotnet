@@ -387,4 +387,5 @@ namespace StripeTests.V2
             var v2Event = await v2EventService.GetAsync("evt_234");
             Assert.Equal(this.stripeClient.Requestor, v2Event.Requestor);
         }
+    }
 }
