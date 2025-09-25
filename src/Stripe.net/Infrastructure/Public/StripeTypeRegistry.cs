@@ -302,10 +302,10 @@ namespace Stripe
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
 
-        internal static readonly IReadOnlyDictionary<string, Type> V2TypesToEventTypes = new ReadOnlyDictionary<string, Type>(
+        internal static readonly IReadOnlyDictionary<string, Type> V2EventsToTypes = new ReadOnlyDictionary<string, Type>(
             new Dictionary<string, Type>
             {
-                // ThinTypesToEventTypes: The beginning of the section generated from our OpenAPI spec
+                // V2EventsToTypes: The beginning of the section generated from our OpenAPI spec
                 {
                     "v1.billing.meter.error_report_triggered", typeof(
                     Events.V1BillingMeterErrorReportTriggeredEvent)
@@ -550,7 +550,267 @@ namespace Stripe
                     Events.V2PaymentsOffSessionPaymentSucceededEvent)
                 },
 
-                // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
+                // V2EventsToTypes: The end of the section generated from our OpenAPI spec
+            });
+
+        internal static readonly IReadOnlyDictionary<string, Type> V2EventNotificationsToTypes = new ReadOnlyDictionary<string, Type>(
+            new Dictionary<string, Type>
+            {
+                // V2EventNotificationsToTypes: The beginning of the section generated from our OpenAPI spec
+                {
+                    "v1.billing.meter.error_report_triggered", typeof(
+                    Events.V1BillingMeterErrorReportTriggeredEventNotification)
+                },
+                {
+                    "v1.billing.meter.no_meter_found", typeof(
+                    Events.V1BillingMeterNoMeterFoundEventNotification)
+                },
+                {
+                    "v2.billing.bill_setting.updated", typeof(
+                    Events.V2BillingBillSettingUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account.closed", typeof(
+                    Events.V2CoreAccountClosedEventNotification)
+                },
+                {
+                    "v2.core.account.created", typeof(
+                    Events.V2CoreAccountCreatedEventNotification)
+                },
+                {
+                    "v2.core.account.updated", typeof(
+                    Events.V2CoreAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.customer].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.customer].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.merchant].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.merchant].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.recipient].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.recipient].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.storer].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.storer].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[defaults].updated", typeof(
+                    Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[identity].updated", typeof(
+                    Events.V2CoreAccountIncludingIdentityUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[requirements].updated", typeof(
+                    Events.V2CoreAccountIncludingRequirementsUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account_link.returned", typeof(
+                    Events.V2CoreAccountLinkReturnedEventNotification)
+                },
+                {
+                    "v2.core.account_person.created", typeof(
+                    Events.V2CoreAccountPersonCreatedEventNotification)
+                },
+                {
+                    "v2.core.account_person.deleted", typeof(
+                    Events.V2CoreAccountPersonDeletedEventNotification)
+                },
+                {
+                    "v2.core.account_person.updated", typeof(
+                    Events.V2CoreAccountPersonUpdatedEventNotification)
+                },
+                {
+                    "v2.core.event_destination.ping", typeof(
+                    Events.V2CoreEventDestinationPingEventNotification)
+                },
+                {
+                    "v2.money_management.adjustment.created", typeof(
+                    Events.V2MoneyManagementAdjustmentCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_account.created", typeof(
+                    Events.V2MoneyManagementFinancialAccountCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_account.updated", typeof(
+                    Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_address.activated", typeof(
+                    Events.V2MoneyManagementFinancialAddressActivatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_address.failed", typeof(
+                    Events.V2MoneyManagementFinancialAddressFailedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.available", typeof(
+                    Events.V2MoneyManagementInboundTransferAvailableEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_failed", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_processing", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_queued", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_returned", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_succeeded", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.canceled", typeof(
+                    Events.V2MoneyManagementOutboundPaymentCanceledEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.created", typeof(
+                    Events.V2MoneyManagementOutboundPaymentCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.failed", typeof(
+                    Events.V2MoneyManagementOutboundPaymentFailedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.posted", typeof(
+                    Events.V2MoneyManagementOutboundPaymentPostedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.returned", typeof(
+                    Events.V2MoneyManagementOutboundPaymentReturnedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.updated", typeof(
+                    Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.canceled", typeof(
+                    Events.V2MoneyManagementOutboundTransferCanceledEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.created", typeof(
+                    Events.V2MoneyManagementOutboundTransferCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.failed", typeof(
+                    Events.V2MoneyManagementOutboundTransferFailedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.posted", typeof(
+                    Events.V2MoneyManagementOutboundTransferPostedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.returned", typeof(
+                    Events.V2MoneyManagementOutboundTransferReturnedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.updated", typeof(
+                    Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.payout_method.updated", typeof(
+                    Events.V2MoneyManagementPayoutMethodUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.received_credit.available", typeof(
+                    Events.V2MoneyManagementReceivedCreditAvailableEventNotification)
+                },
+                {
+                    "v2.money_management.received_credit.failed", typeof(
+                    Events.V2MoneyManagementReceivedCreditFailedEventNotification)
+                },
+                {
+                    "v2.money_management.received_credit.returned", typeof(
+                    Events.V2MoneyManagementReceivedCreditReturnedEventNotification)
+                },
+                {
+                    "v2.money_management.received_credit.succeeded", typeof(
+                    Events.V2MoneyManagementReceivedCreditSucceededEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.canceled", typeof(
+                    Events.V2MoneyManagementReceivedDebitCanceledEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.failed", typeof(
+                    Events.V2MoneyManagementReceivedDebitFailedEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.pending", typeof(
+                    Events.V2MoneyManagementReceivedDebitPendingEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.succeeded", typeof(
+                    Events.V2MoneyManagementReceivedDebitSucceededEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.updated", typeof(
+                    Events.V2MoneyManagementReceivedDebitUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.transaction.created", typeof(
+                    Events.V2MoneyManagementTransactionCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.transaction.updated", typeof(
+                    Events.V2MoneyManagementTransactionUpdatedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.authorization_attempt_failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.authorization_attempt_started", typeof(
+                    Events.V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.canceled", typeof(
+                    Events.V2PaymentsOffSessionPaymentCanceledEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.created", typeof(
+                    Events.V2PaymentsOffSessionPaymentCreatedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.succeeded", typeof(
+                    Events.V2PaymentsOffSessionPaymentSucceededEventNotification)
+                },
+
+                // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec
             });
 
         /// <summary>
@@ -584,12 +844,23 @@ namespace Stripe
             return null;
         }
 
-        public static Type GetConcreteThinEventType(string typeValue)
+        public static Type GetConcreteV2EventType(string typeValue)
         {
             Type concreteType = null;
             if (!string.IsNullOrEmpty(typeValue))
             {
-                V2TypesToEventTypes.TryGetValue(typeValue, out concreteType);
+                V2EventsToTypes.TryGetValue(typeValue, out concreteType);
+            }
+
+            return concreteType;
+        }
+
+        public static Type GetConcreteV2EventNotificationType(string typeValue)
+        {
+            Type concreteType = null;
+            if (!string.IsNullOrEmpty(typeValue))
+            {
+                V2EventNotificationsToTypes.TryGetValue(typeValue, out concreteType);
             }
 
             return concreteType;

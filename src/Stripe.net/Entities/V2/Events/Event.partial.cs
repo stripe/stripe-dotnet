@@ -12,7 +12,7 @@ namespace Stripe.V2
     using Stripe.Infrastructure;
 
     /// <summary>
-    /// Manually-maintained convenience methods added to ThinEvent.
+    /// Manually-maintained convenience methods added to V2 Events.
     /// </summary>
     [JsonConverter(typeof(V2EventConverter))]
 #if NET6_0_OR_GREATER
@@ -66,7 +66,7 @@ namespace Stripe.V2
             RequestOptions opts = null;
             if (this.Context != null)
             {
-                opts = new RequestOptions { StripeAccount = this.Context };
+                opts = new RequestOptions { StripeContext = this.Context };
             }
 
             return this.Requestor.RequestAsync<T>(
