@@ -331,10 +331,10 @@ namespace Stripe
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
 
-        internal static readonly IReadOnlyDictionary<string, Type> V2TypesToEventTypes = new ReadOnlyDictionary<string, Type>(
+        internal static readonly IReadOnlyDictionary<string, Type> V2EventsToTypes = new ReadOnlyDictionary<string, Type>(
             new Dictionary<string, Type>
             {
-                // ThinTypesToEventTypes: The beginning of the section generated from our OpenAPI spec
+                // V2EventsToTypes: The beginning of the section generated from our OpenAPI spec
                 { "v1.account.updated", typeof(Events.V1AccountUpdatedEvent) },
                 { "v1.application_fee.created", typeof(Events.V1ApplicationFeeCreatedEvent) },
                 { "v1.application_fee.refunded", typeof(Events.V1ApplicationFeeRefundedEvent) },
@@ -1238,7 +1238,1067 @@ namespace Stripe
                     Events.V2PaymentsOffSessionPaymentSucceededEvent)
                 },
 
-                // ThinTypesToEventTypes: The end of the section generated from our OpenAPI spec
+                // V2EventsToTypes: The end of the section generated from our OpenAPI spec
+            });
+
+        internal static readonly IReadOnlyDictionary<string, Type> V2EventNotificationsToTypes = new ReadOnlyDictionary<string, Type>(
+            new Dictionary<string, Type>
+            {
+                // V2EventNotificationsToTypes: The beginning of the section generated from our OpenAPI spec
+                { "v1.account.updated", typeof(Events.V1AccountUpdatedEventNotification) },
+                {
+                    "v1.application_fee.created", typeof(
+                    Events.V1ApplicationFeeCreatedEventNotification)
+                },
+                {
+                    "v1.application_fee.refunded", typeof(
+                    Events.V1ApplicationFeeRefundedEventNotification)
+                },
+                {
+                    "v1.billing.meter.error_report_triggered", typeof(
+                    Events.V1BillingMeterErrorReportTriggeredEventNotification)
+                },
+                {
+                    "v1.billing.meter.no_meter_found", typeof(
+                    Events.V1BillingMeterNoMeterFoundEventNotification)
+                },
+                {
+                    "v1.billing_portal.configuration.created", typeof(
+                    Events.V1BillingPortalConfigurationCreatedEventNotification)
+                },
+                {
+                    "v1.billing_portal.configuration.updated", typeof(
+                    Events.V1BillingPortalConfigurationUpdatedEventNotification)
+                },
+                { "v1.capability.updated", typeof(Events.V1CapabilityUpdatedEventNotification) },
+                { "v1.charge.captured", typeof(Events.V1ChargeCapturedEventNotification) },
+                {
+                    "v1.charge.dispute.closed", typeof(
+                    Events.V1ChargeDisputeClosedEventNotification)
+                },
+                {
+                    "v1.charge.dispute.created", typeof(
+                    Events.V1ChargeDisputeCreatedEventNotification)
+                },
+                {
+                    "v1.charge.dispute.funds_reinstated", typeof(
+                    Events.V1ChargeDisputeFundsReinstatedEventNotification)
+                },
+                {
+                    "v1.charge.dispute.funds_withdrawn", typeof(
+                    Events.V1ChargeDisputeFundsWithdrawnEventNotification)
+                },
+                {
+                    "v1.charge.dispute.updated", typeof(
+                    Events.V1ChargeDisputeUpdatedEventNotification)
+                },
+                { "v1.charge.expired", typeof(Events.V1ChargeExpiredEventNotification) },
+                { "v1.charge.failed", typeof(Events.V1ChargeFailedEventNotification) },
+                { "v1.charge.pending", typeof(Events.V1ChargePendingEventNotification) },
+                {
+                    "v1.charge.refund.updated", typeof(
+                    Events.V1ChargeRefundUpdatedEventNotification)
+                },
+                { "v1.charge.refunded", typeof(Events.V1ChargeRefundedEventNotification) },
+                { "v1.charge.succeeded", typeof(Events.V1ChargeSucceededEventNotification) },
+                { "v1.charge.updated", typeof(Events.V1ChargeUpdatedEventNotification) },
+                {
+                    "v1.checkout.session.async_payment_failed", typeof(
+                    Events.V1CheckoutSessionAsyncPaymentFailedEventNotification)
+                },
+                {
+                    "v1.checkout.session.async_payment_succeeded", typeof(
+                    Events.V1CheckoutSessionAsyncPaymentSucceededEventNotification)
+                },
+                {
+                    "v1.checkout.session.completed", typeof(
+                    Events.V1CheckoutSessionCompletedEventNotification)
+                },
+                {
+                    "v1.checkout.session.expired", typeof(
+                    Events.V1CheckoutSessionExpiredEventNotification)
+                },
+                {
+                    "v1.climate.order.canceled", typeof(
+                    Events.V1ClimateOrderCanceledEventNotification)
+                },
+                {
+                    "v1.climate.order.created", typeof(
+                    Events.V1ClimateOrderCreatedEventNotification)
+                },
+                {
+                    "v1.climate.order.delayed", typeof(
+                    Events.V1ClimateOrderDelayedEventNotification)
+                },
+                {
+                    "v1.climate.order.delivered", typeof(
+                    Events.V1ClimateOrderDeliveredEventNotification)
+                },
+                {
+                    "v1.climate.order.product_substituted", typeof(
+                    Events.V1ClimateOrderProductSubstitutedEventNotification)
+                },
+                {
+                    "v1.climate.product.created", typeof(
+                    Events.V1ClimateProductCreatedEventNotification)
+                },
+                {
+                    "v1.climate.product.pricing_updated", typeof(
+                    Events.V1ClimateProductPricingUpdatedEventNotification)
+                },
+                { "v1.coupon.created", typeof(Events.V1CouponCreatedEventNotification) },
+                { "v1.coupon.deleted", typeof(Events.V1CouponDeletedEventNotification) },
+                { "v1.coupon.updated", typeof(Events.V1CouponUpdatedEventNotification) },
+                {
+                    "v1.credit_note.created", typeof(
+                    Events.V1CreditNoteCreatedEventNotification)
+                },
+                {
+                    "v1.credit_note.updated", typeof(
+                    Events.V1CreditNoteUpdatedEventNotification)
+                },
+                { "v1.credit_note.voided", typeof(Events.V1CreditNoteVoidedEventNotification) },
+                { "v1.customer.created", typeof(Events.V1CustomerCreatedEventNotification) },
+                { "v1.customer.deleted", typeof(Events.V1CustomerDeletedEventNotification) },
+                {
+                    "v1.customer.discount.created", typeof(
+                    Events.V1CustomerDiscountCreatedEventNotification)
+                },
+                {
+                    "v1.customer.discount.deleted", typeof(
+                    Events.V1CustomerDiscountDeletedEventNotification)
+                },
+                {
+                    "v1.customer.discount.updated", typeof(
+                    Events.V1CustomerDiscountUpdatedEventNotification)
+                },
+                {
+                    "v1.customer.subscription.created", typeof(
+                    Events.V1CustomerSubscriptionCreatedEventNotification)
+                },
+                {
+                    "v1.customer.subscription.deleted", typeof(
+                    Events.V1CustomerSubscriptionDeletedEventNotification)
+                },
+                {
+                    "v1.customer.subscription.paused", typeof(
+                    Events.V1CustomerSubscriptionPausedEventNotification)
+                },
+                {
+                    "v1.customer.subscription.pending_update_applied", typeof(
+                    Events.V1CustomerSubscriptionPendingUpdateAppliedEventNotification)
+                },
+                {
+                    "v1.customer.subscription.pending_update_expired", typeof(
+                    Events.V1CustomerSubscriptionPendingUpdateExpiredEventNotification)
+                },
+                {
+                    "v1.customer.subscription.resumed", typeof(
+                    Events.V1CustomerSubscriptionResumedEventNotification)
+                },
+                {
+                    "v1.customer.subscription.trial_will_end", typeof(
+                    Events.V1CustomerSubscriptionTrialWillEndEventNotification)
+                },
+                {
+                    "v1.customer.subscription.updated", typeof(
+                    Events.V1CustomerSubscriptionUpdatedEventNotification)
+                },
+                {
+                    "v1.customer.tax_id.created", typeof(
+                    Events.V1CustomerTaxIdCreatedEventNotification)
+                },
+                {
+                    "v1.customer.tax_id.deleted", typeof(
+                    Events.V1CustomerTaxIdDeletedEventNotification)
+                },
+                {
+                    "v1.customer.tax_id.updated", typeof(
+                    Events.V1CustomerTaxIdUpdatedEventNotification)
+                },
+                { "v1.customer.updated", typeof(Events.V1CustomerUpdatedEventNotification) },
+                { "v1.file.created", typeof(Events.V1FileCreatedEventNotification) },
+                {
+                    "v1.financial_connections.account.created", typeof(
+                    Events.V1FinancialConnectionsAccountCreatedEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.deactivated", typeof(
+                    Events.V1FinancialConnectionsAccountDeactivatedEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.disconnected", typeof(
+                    Events.V1FinancialConnectionsAccountDisconnectedEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.reactivated", typeof(
+                    Events.V1FinancialConnectionsAccountReactivatedEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.refreshed_balance", typeof(
+                    Events.V1FinancialConnectionsAccountRefreshedBalanceEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.refreshed_ownership", typeof(
+                    Events.V1FinancialConnectionsAccountRefreshedOwnershipEventNotification)
+                },
+                {
+                    "v1.financial_connections.account.refreshed_transactions", typeof(
+                    Events.V1FinancialConnectionsAccountRefreshedTransactionsEventNotification)
+                },
+                {
+                    "v1.identity.verification_session.canceled", typeof(
+                    Events.V1IdentityVerificationSessionCanceledEventNotification)
+                },
+                {
+                    "v1.identity.verification_session.created", typeof(
+                    Events.V1IdentityVerificationSessionCreatedEventNotification)
+                },
+                {
+                    "v1.identity.verification_session.processing", typeof(
+                    Events.V1IdentityVerificationSessionProcessingEventNotification)
+                },
+                {
+                    "v1.identity.verification_session.redacted", typeof(
+                    Events.V1IdentityVerificationSessionRedactedEventNotification)
+                },
+                {
+                    "v1.identity.verification_session.requires_input", typeof(
+                    Events.V1IdentityVerificationSessionRequiresInputEventNotification)
+                },
+                {
+                    "v1.identity.verification_session.verified", typeof(
+                    Events.V1IdentityVerificationSessionVerifiedEventNotification)
+                },
+                { "v1.invoice.created", typeof(Events.V1InvoiceCreatedEventNotification) },
+                { "v1.invoice.deleted", typeof(Events.V1InvoiceDeletedEventNotification) },
+                {
+                    "v1.invoice.finalization_failed", typeof(
+                    Events.V1InvoiceFinalizationFailedEventNotification)
+                },
+                { "v1.invoice.finalized", typeof(Events.V1InvoiceFinalizedEventNotification) },
+                {
+                    "v1.invoice.marked_uncollectible", typeof(
+                    Events.V1InvoiceMarkedUncollectibleEventNotification)
+                },
+                { "v1.invoice.overdue", typeof(Events.V1InvoiceOverdueEventNotification) },
+                { "v1.invoice.overpaid", typeof(Events.V1InvoiceOverpaidEventNotification) },
+                { "v1.invoice.paid", typeof(Events.V1InvoicePaidEventNotification) },
+                {
+                    "v1.invoice.payment_action_required", typeof(
+                    Events.V1InvoicePaymentActionRequiredEventNotification)
+                },
+                {
+                    "v1.invoice.payment_failed", typeof(
+                    Events.V1InvoicePaymentFailedEventNotification)
+                },
+                {
+                    "v1.invoice.payment_succeeded", typeof(
+                    Events.V1InvoicePaymentSucceededEventNotification)
+                },
+                { "v1.invoice.sent", typeof(Events.V1InvoiceSentEventNotification) },
+                { "v1.invoice.upcoming", typeof(Events.V1InvoiceUpcomingEventNotification) },
+                { "v1.invoice.updated", typeof(Events.V1InvoiceUpdatedEventNotification) },
+                { "v1.invoice.voided", typeof(Events.V1InvoiceVoidedEventNotification) },
+                { "v1.invoice.will_be_due", typeof(Events.V1InvoiceWillBeDueEventNotification) },
+                {
+                    "v1.invoice_payment.paid", typeof(
+                    Events.V1InvoicePaymentPaidEventNotification)
+                },
+                {
+                    "v1.invoiceitem.created", typeof(
+                    Events.V1InvoiceitemCreatedEventNotification)
+                },
+                {
+                    "v1.invoiceitem.deleted", typeof(
+                    Events.V1InvoiceitemDeletedEventNotification)
+                },
+                {
+                    "v1.issuing_authorization.created", typeof(
+                    Events.V1IssuingAuthorizationCreatedEventNotification)
+                },
+                {
+                    "v1.issuing_authorization.request", typeof(
+                    Events.V1IssuingAuthorizationRequestEventNotification)
+                },
+                {
+                    "v1.issuing_authorization.updated", typeof(
+                    Events.V1IssuingAuthorizationUpdatedEventNotification)
+                },
+                {
+                    "v1.issuing_card.created", typeof(
+                    Events.V1IssuingCardCreatedEventNotification)
+                },
+                {
+                    "v1.issuing_card.updated", typeof(
+                    Events.V1IssuingCardUpdatedEventNotification)
+                },
+                {
+                    "v1.issuing_cardholder.created", typeof(
+                    Events.V1IssuingCardholderCreatedEventNotification)
+                },
+                {
+                    "v1.issuing_cardholder.updated", typeof(
+                    Events.V1IssuingCardholderUpdatedEventNotification)
+                },
+                {
+                    "v1.issuing_dispute.closed", typeof(
+                    Events.V1IssuingDisputeClosedEventNotification)
+                },
+                {
+                    "v1.issuing_dispute.created", typeof(
+                    Events.V1IssuingDisputeCreatedEventNotification)
+                },
+                {
+                    "v1.issuing_dispute.funds_reinstated", typeof(
+                    Events.V1IssuingDisputeFundsReinstatedEventNotification)
+                },
+                {
+                    "v1.issuing_dispute.funds_rescinded", typeof(
+                    Events.V1IssuingDisputeFundsRescindedEventNotification)
+                },
+                {
+                    "v1.issuing_dispute.submitted", typeof(
+                    Events.V1IssuingDisputeSubmittedEventNotification)
+                },
+                {
+                    "v1.issuing_dispute.updated", typeof(
+                    Events.V1IssuingDisputeUpdatedEventNotification)
+                },
+                {
+                    "v1.issuing_personalization_design.activated", typeof(
+                    Events.V1IssuingPersonalizationDesignActivatedEventNotification)
+                },
+                {
+                    "v1.issuing_personalization_design.deactivated", typeof(
+                    Events.V1IssuingPersonalizationDesignDeactivatedEventNotification)
+                },
+                {
+                    "v1.issuing_personalization_design.rejected", typeof(
+                    Events.V1IssuingPersonalizationDesignRejectedEventNotification)
+                },
+                {
+                    "v1.issuing_personalization_design.updated", typeof(
+                    Events.V1IssuingPersonalizationDesignUpdatedEventNotification)
+                },
+                {
+                    "v1.issuing_token.created", typeof(
+                    Events.V1IssuingTokenCreatedEventNotification)
+                },
+                {
+                    "v1.issuing_token.updated", typeof(
+                    Events.V1IssuingTokenUpdatedEventNotification)
+                },
+                {
+                    "v1.issuing_transaction.created", typeof(
+                    Events.V1IssuingTransactionCreatedEventNotification)
+                },
+                {
+                    "v1.issuing_transaction.purchase_details_receipt_updated", typeof(
+                    Events.V1IssuingTransactionPurchaseDetailsReceiptUpdatedEventNotification)
+                },
+                {
+                    "v1.issuing_transaction.updated", typeof(
+                    Events.V1IssuingTransactionUpdatedEventNotification)
+                },
+                { "v1.mandate.updated", typeof(Events.V1MandateUpdatedEventNotification) },
+                {
+                    "v1.payment_intent.amount_capturable_updated", typeof(
+                    Events.V1PaymentIntentAmountCapturableUpdatedEventNotification)
+                },
+                {
+                    "v1.payment_intent.canceled", typeof(
+                    Events.V1PaymentIntentCanceledEventNotification)
+                },
+                {
+                    "v1.payment_intent.created", typeof(
+                    Events.V1PaymentIntentCreatedEventNotification)
+                },
+                {
+                    "v1.payment_intent.partially_funded", typeof(
+                    Events.V1PaymentIntentPartiallyFundedEventNotification)
+                },
+                {
+                    "v1.payment_intent.payment_failed", typeof(
+                    Events.V1PaymentIntentPaymentFailedEventNotification)
+                },
+                {
+                    "v1.payment_intent.processing", typeof(
+                    Events.V1PaymentIntentProcessingEventNotification)
+                },
+                {
+                    "v1.payment_intent.requires_action", typeof(
+                    Events.V1PaymentIntentRequiresActionEventNotification)
+                },
+                {
+                    "v1.payment_intent.succeeded", typeof(
+                    Events.V1PaymentIntentSucceededEventNotification)
+                },
+                {
+                    "v1.payment_link.created", typeof(
+                    Events.V1PaymentLinkCreatedEventNotification)
+                },
+                {
+                    "v1.payment_link.updated", typeof(
+                    Events.V1PaymentLinkUpdatedEventNotification)
+                },
+                {
+                    "v1.payment_method.attached", typeof(
+                    Events.V1PaymentMethodAttachedEventNotification)
+                },
+                {
+                    "v1.payment_method.automatically_updated", typeof(
+                    Events.V1PaymentMethodAutomaticallyUpdatedEventNotification)
+                },
+                {
+                    "v1.payment_method.detached", typeof(
+                    Events.V1PaymentMethodDetachedEventNotification)
+                },
+                {
+                    "v1.payment_method.updated", typeof(
+                    Events.V1PaymentMethodUpdatedEventNotification)
+                },
+                { "v1.payout.canceled", typeof(Events.V1PayoutCanceledEventNotification) },
+                { "v1.payout.created", typeof(Events.V1PayoutCreatedEventNotification) },
+                { "v1.payout.failed", typeof(Events.V1PayoutFailedEventNotification) },
+                { "v1.payout.paid", typeof(Events.V1PayoutPaidEventNotification) },
+                {
+                    "v1.payout.reconciliation_completed", typeof(
+                    Events.V1PayoutReconciliationCompletedEventNotification)
+                },
+                { "v1.payout.updated", typeof(Events.V1PayoutUpdatedEventNotification) },
+                { "v1.person.created", typeof(Events.V1PersonCreatedEventNotification) },
+                { "v1.person.deleted", typeof(Events.V1PersonDeletedEventNotification) },
+                { "v1.person.updated", typeof(Events.V1PersonUpdatedEventNotification) },
+                { "v1.plan.created", typeof(Events.V1PlanCreatedEventNotification) },
+                { "v1.plan.deleted", typeof(Events.V1PlanDeletedEventNotification) },
+                { "v1.plan.updated", typeof(Events.V1PlanUpdatedEventNotification) },
+                { "v1.price.created", typeof(Events.V1PriceCreatedEventNotification) },
+                { "v1.price.deleted", typeof(Events.V1PriceDeletedEventNotification) },
+                { "v1.price.updated", typeof(Events.V1PriceUpdatedEventNotification) },
+                { "v1.product.created", typeof(Events.V1ProductCreatedEventNotification) },
+                { "v1.product.deleted", typeof(Events.V1ProductDeletedEventNotification) },
+                { "v1.product.updated", typeof(Events.V1ProductUpdatedEventNotification) },
+                {
+                    "v1.promotion_code.created", typeof(
+                    Events.V1PromotionCodeCreatedEventNotification)
+                },
+                {
+                    "v1.promotion_code.updated", typeof(
+                    Events.V1PromotionCodeUpdatedEventNotification)
+                },
+                { "v1.quote.accepted", typeof(Events.V1QuoteAcceptedEventNotification) },
+                { "v1.quote.canceled", typeof(Events.V1QuoteCanceledEventNotification) },
+                { "v1.quote.created", typeof(Events.V1QuoteCreatedEventNotification) },
+                { "v1.quote.finalized", typeof(Events.V1QuoteFinalizedEventNotification) },
+                {
+                    "v1.radar.early_fraud_warning.created", typeof(
+                    Events.V1RadarEarlyFraudWarningCreatedEventNotification)
+                },
+                {
+                    "v1.radar.early_fraud_warning.updated", typeof(
+                    Events.V1RadarEarlyFraudWarningUpdatedEventNotification)
+                },
+                { "v1.refund.created", typeof(Events.V1RefundCreatedEventNotification) },
+                { "v1.refund.failed", typeof(Events.V1RefundFailedEventNotification) },
+                { "v1.refund.updated", typeof(Events.V1RefundUpdatedEventNotification) },
+                { "v1.review.closed", typeof(Events.V1ReviewClosedEventNotification) },
+                { "v1.review.opened", typeof(Events.V1ReviewOpenedEventNotification) },
+                {
+                    "v1.setup_intent.canceled", typeof(
+                    Events.V1SetupIntentCanceledEventNotification)
+                },
+                {
+                    "v1.setup_intent.created", typeof(
+                    Events.V1SetupIntentCreatedEventNotification)
+                },
+                {
+                    "v1.setup_intent.requires_action", typeof(
+                    Events.V1SetupIntentRequiresActionEventNotification)
+                },
+                {
+                    "v1.setup_intent.setup_failed", typeof(
+                    Events.V1SetupIntentSetupFailedEventNotification)
+                },
+                {
+                    "v1.setup_intent.succeeded", typeof(
+                    Events.V1SetupIntentSucceededEventNotification)
+                },
+                {
+                    "v1.sigma.scheduled_query_run.created", typeof(
+                    Events.V1SigmaScheduledQueryRunCreatedEventNotification)
+                },
+                { "v1.source.canceled", typeof(Events.V1SourceCanceledEventNotification) },
+                { "v1.source.chargeable", typeof(Events.V1SourceChargeableEventNotification) },
+                { "v1.source.failed", typeof(Events.V1SourceFailedEventNotification) },
+                {
+                    "v1.source.refund_attributes_required", typeof(
+                    Events.V1SourceRefundAttributesRequiredEventNotification)
+                },
+                {
+                    "v1.subscription_schedule.aborted", typeof(
+                    Events.V1SubscriptionScheduleAbortedEventNotification)
+                },
+                {
+                    "v1.subscription_schedule.canceled", typeof(
+                    Events.V1SubscriptionScheduleCanceledEventNotification)
+                },
+                {
+                    "v1.subscription_schedule.completed", typeof(
+                    Events.V1SubscriptionScheduleCompletedEventNotification)
+                },
+                {
+                    "v1.subscription_schedule.created", typeof(
+                    Events.V1SubscriptionScheduleCreatedEventNotification)
+                },
+                {
+                    "v1.subscription_schedule.expiring", typeof(
+                    Events.V1SubscriptionScheduleExpiringEventNotification)
+                },
+                {
+                    "v1.subscription_schedule.released", typeof(
+                    Events.V1SubscriptionScheduleReleasedEventNotification)
+                },
+                {
+                    "v1.subscription_schedule.updated", typeof(
+                    Events.V1SubscriptionScheduleUpdatedEventNotification)
+                },
+                { "v1.tax_rate.created", typeof(Events.V1TaxRateCreatedEventNotification) },
+                { "v1.tax_rate.updated", typeof(Events.V1TaxRateUpdatedEventNotification) },
+                {
+                    "v1.terminal.reader.action_failed", typeof(
+                    Events.V1TerminalReaderActionFailedEventNotification)
+                },
+                {
+                    "v1.terminal.reader.action_succeeded", typeof(
+                    Events.V1TerminalReaderActionSucceededEventNotification)
+                },
+                {
+                    "v1.terminal.reader.action_updated", typeof(
+                    Events.V1TerminalReaderActionUpdatedEventNotification)
+                },
+                {
+                    "v1.test_helpers.test_clock.advancing", typeof(
+                    Events.V1TestHelpersTestClockAdvancingEventNotification)
+                },
+                {
+                    "v1.test_helpers.test_clock.created", typeof(
+                    Events.V1TestHelpersTestClockCreatedEventNotification)
+                },
+                {
+                    "v1.test_helpers.test_clock.deleted", typeof(
+                    Events.V1TestHelpersTestClockDeletedEventNotification)
+                },
+                {
+                    "v1.test_helpers.test_clock.internal_failure", typeof(
+                    Events.V1TestHelpersTestClockInternalFailureEventNotification)
+                },
+                {
+                    "v1.test_helpers.test_clock.ready", typeof(
+                    Events.V1TestHelpersTestClockReadyEventNotification)
+                },
+                { "v1.topup.canceled", typeof(Events.V1TopupCanceledEventNotification) },
+                { "v1.topup.created", typeof(Events.V1TopupCreatedEventNotification) },
+                { "v1.topup.failed", typeof(Events.V1TopupFailedEventNotification) },
+                { "v1.topup.reversed", typeof(Events.V1TopupReversedEventNotification) },
+                { "v1.topup.succeeded", typeof(Events.V1TopupSucceededEventNotification) },
+                { "v1.transfer.created", typeof(Events.V1TransferCreatedEventNotification) },
+                { "v1.transfer.reversed", typeof(Events.V1TransferReversedEventNotification) },
+                { "v1.transfer.updated", typeof(Events.V1TransferUpdatedEventNotification) },
+                {
+                    "v2.billing.bill_setting.updated", typeof(
+                    Events.V2BillingBillSettingUpdatedEventNotification)
+                },
+                {
+                    "v2.billing.cadence.billed", typeof(
+                    Events.V2BillingCadenceBilledEventNotification)
+                },
+                {
+                    "v2.billing.cadence.canceled", typeof(
+                    Events.V2BillingCadenceCanceledEventNotification)
+                },
+                {
+                    "v2.billing.cadence.created", typeof(
+                    Events.V2BillingCadenceCreatedEventNotification)
+                },
+                {
+                    "v2.billing.license_fee.created", typeof(
+                    Events.V2BillingLicenseFeeCreatedEventNotification)
+                },
+                {
+                    "v2.billing.license_fee.updated", typeof(
+                    Events.V2BillingLicenseFeeUpdatedEventNotification)
+                },
+                {
+                    "v2.billing.license_fee_version.created", typeof(
+                    Events.V2BillingLicenseFeeVersionCreatedEventNotification)
+                },
+                {
+                    "v2.billing.licensed_item.created", typeof(
+                    Events.V2BillingLicensedItemCreatedEventNotification)
+                },
+                {
+                    "v2.billing.licensed_item.updated", typeof(
+                    Events.V2BillingLicensedItemUpdatedEventNotification)
+                },
+                {
+                    "v2.billing.metered_item.created", typeof(
+                    Events.V2BillingMeteredItemCreatedEventNotification)
+                },
+                {
+                    "v2.billing.metered_item.updated", typeof(
+                    Events.V2BillingMeteredItemUpdatedEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan.created", typeof(
+                    Events.V2BillingPricingPlanCreatedEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan.updated", typeof(
+                    Events.V2BillingPricingPlanUpdatedEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_component.created", typeof(
+                    Events.V2BillingPricingPlanComponentCreatedEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_component.updated", typeof(
+                    Events.V2BillingPricingPlanComponentUpdatedEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_awaiting_customer_action", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionAwaitingCustomerActionEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_current", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionCurrentEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_past_due", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionPastDueEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_paused", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionPausedEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.collection_unpaid", typeof(
+                    Events.V2BillingPricingPlanSubscriptionCollectionUnpaidEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.servicing_activated", typeof(
+                    Events.V2BillingPricingPlanSubscriptionServicingActivatedEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.servicing_canceled", typeof(
+                    Events.V2BillingPricingPlanSubscriptionServicingCanceledEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_subscription.servicing_paused", typeof(
+                    Events.V2BillingPricingPlanSubscriptionServicingPausedEventNotification)
+                },
+                {
+                    "v2.billing.pricing_plan_version.created", typeof(
+                    Events.V2BillingPricingPlanVersionCreatedEventNotification)
+                },
+                {
+                    "v2.billing.rate_card.created", typeof(
+                    Events.V2BillingRateCardCreatedEventNotification)
+                },
+                {
+                    "v2.billing.rate_card.updated", typeof(
+                    Events.V2BillingRateCardUpdatedEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_rate.created", typeof(
+                    Events.V2BillingRateCardRateCreatedEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.activated", typeof(
+                    Events.V2BillingRateCardSubscriptionActivatedEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.canceled", typeof(
+                    Events.V2BillingRateCardSubscriptionCanceledEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_awaiting_customer_action", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionAwaitingCustomerActionEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_current", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionCurrentEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_past_due", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionPastDueEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_paused", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionPausedEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.collection_unpaid", typeof(
+                    Events.V2BillingRateCardSubscriptionCollectionUnpaidEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.servicing_activated", typeof(
+                    Events.V2BillingRateCardSubscriptionServicingActivatedEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.servicing_canceled", typeof(
+                    Events.V2BillingRateCardSubscriptionServicingCanceledEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_subscription.servicing_paused", typeof(
+                    Events.V2BillingRateCardSubscriptionServicingPausedEventNotification)
+                },
+                {
+                    "v2.billing.rate_card_version.created", typeof(
+                    Events.V2BillingRateCardVersionCreatedEventNotification)
+                },
+                {
+                    "v2.core.account.closed", typeof(
+                    Events.V2CoreAccountClosedEventNotification)
+                },
+                {
+                    "v2.core.account.created", typeof(
+                    Events.V2CoreAccountCreatedEventNotification)
+                },
+                {
+                    "v2.core.account.updated", typeof(
+                    Events.V2CoreAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.customer].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.customer].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.merchant].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.merchant].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.recipient].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.recipient].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.storer].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.storer].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[defaults].updated", typeof(
+                    Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[identity].updated", typeof(
+                    Events.V2CoreAccountIncludingIdentityUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[requirements].updated", typeof(
+                    Events.V2CoreAccountIncludingRequirementsUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account_link.returned", typeof(
+                    Events.V2CoreAccountLinkReturnedEventNotification)
+                },
+                {
+                    "v2.core.account_person.created", typeof(
+                    Events.V2CoreAccountPersonCreatedEventNotification)
+                },
+                {
+                    "v2.core.account_person.deleted", typeof(
+                    Events.V2CoreAccountPersonDeletedEventNotification)
+                },
+                {
+                    "v2.core.account_person.updated", typeof(
+                    Events.V2CoreAccountPersonUpdatedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.claimed", typeof(
+                    Events.V2CoreClaimableSandboxClaimedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.created", typeof(
+                    Events.V2CoreClaimableSandboxCreatedEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.expired", typeof(
+                    Events.V2CoreClaimableSandboxExpiredEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.expiring", typeof(
+                    Events.V2CoreClaimableSandboxExpiringEventNotification)
+                },
+                {
+                    "v2.core.claimable_sandbox.sandbox_details_owner_account_updated", typeof(
+                    Events.V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.core.event_destination.ping", typeof(
+                    Events.V2CoreEventDestinationPingEventNotification)
+                },
+                {
+                    "v2.core.health.api_error.firing", typeof(
+                    Events.V2CoreHealthApiErrorFiringEventNotification)
+                },
+                {
+                    "v2.core.health.api_error.resolved", typeof(
+                    Events.V2CoreHealthApiErrorResolvedEventNotification)
+                },
+                {
+                    "v2.core.health.api_latency.firing", typeof(
+                    Events.V2CoreHealthApiLatencyFiringEventNotification)
+                },
+                {
+                    "v2.core.health.api_latency.resolved", typeof(
+                    Events.V2CoreHealthApiLatencyResolvedEventNotification)
+                },
+                {
+                    "v2.core.health.authorization_rate_drop.firing", typeof(
+                    Events.V2CoreHealthAuthorizationRateDropFiringEventNotification)
+                },
+                {
+                    "v2.core.health.authorization_rate_drop.resolved", typeof(
+                    Events.V2CoreHealthAuthorizationRateDropResolvedEventNotification)
+                },
+                {
+                    "v2.core.health.event_generation_failure.resolved", typeof(
+                    Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)
+                },
+                {
+                    "v2.core.health.fraud_rate.increased", typeof(
+                    Events.V2CoreHealthFraudRateIncreasedEventNotification)
+                },
+                {
+                    "v2.core.health.issuing_authorization_request_errors.firing", typeof(
+                    Events.V2CoreHealthIssuingAuthorizationRequestErrorsFiringEventNotification)
+                },
+                {
+                    "v2.core.health.issuing_authorization_request_errors.resolved", typeof(
+                    Events.V2CoreHealthIssuingAuthorizationRequestErrorsResolvedEventNotification)
+                },
+                {
+                    "v2.core.health.issuing_authorization_request_timeout.firing", typeof(
+                    Events.V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventNotification)
+                },
+                {
+                    "v2.core.health.issuing_authorization_request_timeout.resolved", typeof(
+                    Events.V2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEventNotification)
+                },
+                {
+                    "v2.core.health.payment_method_error.firing", typeof(
+                    Events.V2CoreHealthPaymentMethodErrorFiringEventNotification)
+                },
+                {
+                    "v2.core.health.payment_method_error.resolved", typeof(
+                    Events.V2CoreHealthPaymentMethodErrorResolvedEventNotification)
+                },
+                {
+                    "v2.core.health.traffic_volume_drop.firing", typeof(
+                    Events.V2CoreHealthTrafficVolumeDropFiringEventNotification)
+                },
+                {
+                    "v2.core.health.traffic_volume_drop.resolved", typeof(
+                    Events.V2CoreHealthTrafficVolumeDropResolvedEventNotification)
+                },
+                {
+                    "v2.core.health.webhook_latency.firing", typeof(
+                    Events.V2CoreHealthWebhookLatencyFiringEventNotification)
+                },
+                {
+                    "v2.core.health.webhook_latency.resolved", typeof(
+                    Events.V2CoreHealthWebhookLatencyResolvedEventNotification)
+                },
+                {
+                    "v2.money_management.adjustment.created", typeof(
+                    Events.V2MoneyManagementAdjustmentCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_account.created", typeof(
+                    Events.V2MoneyManagementFinancialAccountCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_account.updated", typeof(
+                    Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_address.activated", typeof(
+                    Events.V2MoneyManagementFinancialAddressActivatedEventNotification)
+                },
+                {
+                    "v2.money_management.financial_address.failed", typeof(
+                    Events.V2MoneyManagementFinancialAddressFailedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.available", typeof(
+                    Events.V2MoneyManagementInboundTransferAvailableEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_failed", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_processing", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_queued", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_returned", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification)
+                },
+                {
+                    "v2.money_management.inbound_transfer.bank_debit_succeeded", typeof(
+                    Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.canceled", typeof(
+                    Events.V2MoneyManagementOutboundPaymentCanceledEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.created", typeof(
+                    Events.V2MoneyManagementOutboundPaymentCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.failed", typeof(
+                    Events.V2MoneyManagementOutboundPaymentFailedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.posted", typeof(
+                    Events.V2MoneyManagementOutboundPaymentPostedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.returned", typeof(
+                    Events.V2MoneyManagementOutboundPaymentReturnedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_payment.updated", typeof(
+                    Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.canceled", typeof(
+                    Events.V2MoneyManagementOutboundTransferCanceledEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.created", typeof(
+                    Events.V2MoneyManagementOutboundTransferCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.failed", typeof(
+                    Events.V2MoneyManagementOutboundTransferFailedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.posted", typeof(
+                    Events.V2MoneyManagementOutboundTransferPostedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.returned", typeof(
+                    Events.V2MoneyManagementOutboundTransferReturnedEventNotification)
+                },
+                {
+                    "v2.money_management.outbound_transfer.updated", typeof(
+                    Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.payout_method.updated", typeof(
+                    Events.V2MoneyManagementPayoutMethodUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.received_credit.available", typeof(
+                    Events.V2MoneyManagementReceivedCreditAvailableEventNotification)
+                },
+                {
+                    "v2.money_management.received_credit.failed", typeof(
+                    Events.V2MoneyManagementReceivedCreditFailedEventNotification)
+                },
+                {
+                    "v2.money_management.received_credit.returned", typeof(
+                    Events.V2MoneyManagementReceivedCreditReturnedEventNotification)
+                },
+                {
+                    "v2.money_management.received_credit.succeeded", typeof(
+                    Events.V2MoneyManagementReceivedCreditSucceededEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.canceled", typeof(
+                    Events.V2MoneyManagementReceivedDebitCanceledEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.failed", typeof(
+                    Events.V2MoneyManagementReceivedDebitFailedEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.pending", typeof(
+                    Events.V2MoneyManagementReceivedDebitPendingEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.succeeded", typeof(
+                    Events.V2MoneyManagementReceivedDebitSucceededEventNotification)
+                },
+                {
+                    "v2.money_management.received_debit.updated", typeof(
+                    Events.V2MoneyManagementReceivedDebitUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.recipient_verification.created", typeof(
+                    Events.V2MoneyManagementRecipientVerificationCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.recipient_verification.updated", typeof(
+                    Events.V2MoneyManagementRecipientVerificationUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.transaction.created", typeof(
+                    Events.V2MoneyManagementTransactionCreatedEventNotification)
+                },
+                {
+                    "v2.money_management.transaction.updated", typeof(
+                    Events.V2MoneyManagementTransactionUpdatedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.authorization_attempt_failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.authorization_attempt_started", typeof(
+                    Events.V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.canceled", typeof(
+                    Events.V2PaymentsOffSessionPaymentCanceledEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.created", typeof(
+                    Events.V2PaymentsOffSessionPaymentCreatedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.succeeded", typeof(
+                    Events.V2PaymentsOffSessionPaymentSucceededEventNotification)
+                },
+
+                // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec
             });
 
         /// <summary>
@@ -1272,12 +2332,23 @@ namespace Stripe
             return null;
         }
 
-        public static Type GetConcreteThinEventType(string typeValue)
+        public static Type GetConcreteV2EventType(string typeValue)
         {
             Type concreteType = null;
             if (!string.IsNullOrEmpty(typeValue))
             {
-                V2TypesToEventTypes.TryGetValue(typeValue, out concreteType);
+                V2EventsToTypes.TryGetValue(typeValue, out concreteType);
+            }
+
+            return concreteType;
+        }
+
+        public static Type GetConcreteV2EventNotificationType(string typeValue)
+        {
+            Type concreteType = null;
+            if (!string.IsNullOrEmpty(typeValue))
+            {
+                V2EventNotificationsToTypes.TryGetValue(typeValue, out concreteType);
             }
 
             return concreteType;

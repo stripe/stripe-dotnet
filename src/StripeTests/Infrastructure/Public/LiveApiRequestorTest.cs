@@ -537,6 +537,27 @@ namespace StripeTests
         }
 
         [Fact]
+        public void RawRequest_StripeContextIsNull()
+        {
+            var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
+            var response = new StripeResponse(HttpStatusCode.OK, null, content);
+            this.httpClient.Response = response;
+
+            this.apiRequestor.RawRequest(
+                HttpMethod.Post,
+                "/v1/charges",
+                "{\"foo\":\"bar\"}",
+                new RawRequestOptions
+                {
+                    StripeContext = null,
+                });
+
+            var lastRequest = this.httpClient.LastRequest;
+
+            Assert.False(lastRequest.StripeHeaders.ContainsKey("Stripe-Context"));
+        }
+
+        [Fact]
         public async Task RawRequest_GetAsync_Json()
         {
             var content = "{\"id\": \"ch_123\", \"object\": \"charge\"}";
