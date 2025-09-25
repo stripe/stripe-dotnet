@@ -415,16 +415,6 @@ namespace Stripe
         public PaymentIntentPaymentMethodDataPaypalOptions Paypal { get; set; }
 
         /// <summary>
-        /// If this is a <c>paypay</c> PaymentMethod, this hash contains details about the PayPay
-        /// payment method.
-        /// </summary>
-        [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("paypay")]
-#endif
-        public PaymentIntentPaymentMethodDataPaypayOptions Paypay { get; set; }
-
-        /// <summary>
         /// If this is a <c>pix</c> PaymentMethod, this hash contains details about the Pix payment
         /// method.
         /// </summary>
@@ -536,7 +526,7 @@ namespace Stripe
         /// <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
         /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
         /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
         /// <c>zip</c>.
