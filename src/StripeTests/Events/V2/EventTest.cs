@@ -164,8 +164,8 @@ namespace StripeTests.V2
         /// parse a EventNotification and then uses the method to retrieve the full Event.
         /// </summary>
         /// <param name="payload">The json payload to parse.</param>
-        /// <returns>A V2.Event derived class.</returns>
-        private Stripe.V2.Event DoParseSignedEventAndFetch(string payload)
+        /// <returns>A V2.Core.Event derived class.</returns>
+        private Stripe.V2.Core.Event DoParseSignedEventAndFetch(string payload)
         {
             this.MockHttpClientFixture.MockHandler.Protected()
                 .Setup<Task<HttpResponseMessage>>(
@@ -180,7 +180,7 @@ namespace StripeTests.V2
             var bte = this.DoParseSignedEventNotification(payload);
 
             // fetch full event
-            return bte.FetchEvent<Stripe.V2.Event>();
+            return bte.FetchEvent<Stripe.V2.Core.Event>();
         }
 
         /// <summary>
@@ -189,7 +189,7 @@ namespace StripeTests.V2
         /// </summary>
         /// <param name="payload">The json payload to parse.</param>
         /// <returns>An EventNotification derived class.</returns>
-        private Stripe.V2.EventNotification DoParseSignedEventNotification(string payload)
+        private Stripe.V2.Core.EventNotification DoParseSignedEventNotification(string payload)
         {
             var notif = this.stripeClient.ParseEventNotification(payload, GenerateSigHeader(payload), WebhookSecret);
 
@@ -292,7 +292,7 @@ namespace StripeTests.V2
         [Fact]
         public void ParseUnknownEventDirectly()
         {
-            var stripeEvent = JsonUtils.DeserializeObject<Stripe.V2.Event>(v2UnknownEventPayload);
+            var stripeEvent = JsonUtils.DeserializeObject<Stripe.V2.Core.Event>(v2UnknownEventPayload);
             Assert.NotNull(stripeEvent);
             Assert.Equal("evt_234", stripeEvent.Id);
             Assert.Equal("event", stripeEvent.Object);

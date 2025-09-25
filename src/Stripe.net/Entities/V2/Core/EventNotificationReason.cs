@@ -1,12 +1,14 @@
-// File generated from our OpenAPI spec
-namespace Stripe.V2
+namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class EventReason : StripeEntity<EventReason>
+    /// <summary>
+    ///  The non-StripeEntity version of a Reason.
+    /// </summary>
+    public class EventNotificationReason
     {
         /// <summary>
         /// Event reason type.
@@ -24,6 +26,6 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request")]
 #endif
-        public EventReasonRequest Request { get; set; }
+        public EventNotificationReasonRequest Request { get; set; }
     }
 }
