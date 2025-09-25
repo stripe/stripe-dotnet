@@ -15,7 +15,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorizer")]
 #endif
-        public bool Authorizer { get; set; }
+        public bool? Authorizer { get; set; }
 
         /// <summary>
         /// Whether the individual is a director of the Account’s legal entity. Directors are
@@ -26,7 +26,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("director")]
 #endif
-        public bool Director { get; set; }
+        public bool? Director { get; set; }
 
         /// <summary>
         /// Whether the individual has significant responsibility to control, manage, or direct the
@@ -36,7 +36,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("executive")]
 #endif
-        public bool Executive { get; set; }
+        public bool? Executive { get; set; }
 
         /// <summary>
         /// Whether the individual is the legal guardian of the Account’s representative.
@@ -45,7 +45,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("legal_guardian")]
 #endif
-        public bool LegalGuardian { get; set; }
+        public bool? LegalGuardian { get; set; }
 
         /// <summary>
         /// Whether the individual is an owner of the Account’s legal entity.
@@ -54,7 +54,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owner")]
 #endif
-        public bool Owner { get; set; }
+        public bool? Owner { get; set; }
 
         /// <summary>
         /// The percent owned by the individual of the Account’s legal entity.
@@ -76,7 +76,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("representative")]
 #endif
-        public bool Representative { get; set; }
+        public bool? Representative { get; set; }
 
         /// <summary>
         /// The individual's title (e.g., CEO, Support Engineer).
