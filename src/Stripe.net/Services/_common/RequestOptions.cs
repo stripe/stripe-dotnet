@@ -71,10 +71,8 @@ namespace Stripe
                 clone.ApiKey = clientOptions.ApiKey;
             }
 
-            if (string.IsNullOrEmpty(clone.StripeContext))
-            {
-                clone.StripeContext = clientOptions.StripeContext;
-            }
+            // an empty string in the clone means we should _not_ overwrite here
+            clone.StripeContext ??= clientOptions.StripeContext;
 
             if (string.IsNullOrEmpty(clone.StripeAccount))
             {
