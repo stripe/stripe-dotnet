@@ -18,7 +18,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("date")]
 #endif
-        public DateTime Date { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? Date { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The IP address from which the beneficial owner attestation was made.

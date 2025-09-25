@@ -27,7 +27,7 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("month_of_year")]
 #endif
-        public long MonthOfYear { get; set; }
+        public long? MonthOfYear { get; set; }
 
         /// <summary>
         /// The time at which the billing cycle ends.

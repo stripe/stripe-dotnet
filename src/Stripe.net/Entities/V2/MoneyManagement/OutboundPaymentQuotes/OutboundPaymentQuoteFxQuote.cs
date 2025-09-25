@@ -29,7 +29,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lock_expires_at")]
 #endif
-        public DateTime LockExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? LockExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Lock status of the quote. Transitions from active to expired once past the

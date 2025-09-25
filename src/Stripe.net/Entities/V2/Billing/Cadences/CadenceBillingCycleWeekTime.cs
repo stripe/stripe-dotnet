@@ -36,6 +36,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("second")]
 #endif
-        public long Second { get; set; }
+        public long? Second { get; set; }
     }
 }

@@ -15,7 +15,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_amount")]
 #endif
-        public long DiscountAmount { get; set; }
+        public long? DiscountAmount { get; set; }
 
         /// <summary>
         /// Unique identifier of the product. At most 12 characters long.

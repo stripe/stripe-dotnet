@@ -17,7 +17,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("avs_failure")]
 #endif
-        public bool AvsFailure { get; set; }
+        public bool? AvsFailure { get; set; }
 
         /// <summary>
         /// Whether Stripe automatically declines charges with an incorrect CVC. This setting only
@@ -27,6 +27,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cvc_failure")]
 #endif
-        public bool CvcFailure { get; set; }
+        public bool? CvcFailure { get; set; }
     }
 }

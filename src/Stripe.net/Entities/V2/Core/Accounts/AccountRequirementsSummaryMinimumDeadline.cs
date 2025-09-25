@@ -26,6 +26,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("time")]
 #endif
-        public DateTime Time { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? Time { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

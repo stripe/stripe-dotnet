@@ -35,7 +35,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("next_sequence")]
 #endif
-        public long NextSequence { get; set; }
+        public long? NextSequence { get; set; }
 
         /// <summary>
         /// The prefix for the customer used to generate unique invoice numbers. Must be 3–12

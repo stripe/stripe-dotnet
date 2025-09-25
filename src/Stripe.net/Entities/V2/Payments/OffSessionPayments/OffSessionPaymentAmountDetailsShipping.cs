@@ -15,7 +15,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public long Amount { get; set; }
+        public long? Amount { get; set; }
 
         /// <summary>
         /// The postal code that represents the shipping source.
