@@ -11,6 +11,7 @@ namespace StripeTests
     using Moq.Protected;
     using Newtonsoft.Json;
     using Stripe;
+    using Stripe.V2;
     using Xunit;
 
     using static TelemetryTestUtils;
@@ -233,7 +234,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void ConstructThinEvent()
+        public void ConstructEventNotification()
         {
             string payload = @"{
                 ""object"": ""event"",
@@ -245,7 +246,7 @@ namespace StripeTests
                     ""url"": ""/v2/accounts""
                 }
             }";
-            var evt = this.stripeClient.ParseThinEvent(
+            var evt = this.stripeClient.ParseEventNotification(
                 payload,
                 V2.EventTest.GenerateSigHeader(payload),
                 V2.EventTest.WebhookSecret);
