@@ -78,7 +78,10 @@ namespace Stripe.V2
         protected StripeClient? Client { get; set; }
 
         /// <summary>
-        /// Not suitable for production code because it doesn't validate event signature. It's used internally for testing and from StripeClient.
+        /// Helper for constructing an Event Notification. Doesn't perform signature validation, so you
+        /// should use <see cref="StripeClient.ParseEventNotification"/> instead for
+        /// initial handling. This is useful in unit tests and working with EventNotifications that you've
+        /// already validated the authenticity of.
         /// </summary>
         /// <param name="payload">JSON body for an EventNotification.</param>
         /// <param name="client">A StripeClient instance that will be used to make requests.</param>
