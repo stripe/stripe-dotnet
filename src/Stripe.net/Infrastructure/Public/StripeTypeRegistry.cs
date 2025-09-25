@@ -409,18 +409,6 @@ namespace Stripe
                 { "v1.customer.created", typeof(Events.V1CustomerCreatedEvent) },
                 { "v1.customer.deleted", typeof(Events.V1CustomerDeletedEvent) },
                 {
-                    "v1.customer.discount.created", typeof(
-                    Events.V1CustomerDiscountCreatedEvent)
-                },
-                {
-                    "v1.customer.discount.deleted", typeof(
-                    Events.V1CustomerDiscountDeletedEvent)
-                },
-                {
-                    "v1.customer.discount.updated", typeof(
-                    Events.V1CustomerDiscountUpdatedEvent)
-                },
-                {
                     "v1.customer.subscription.created", typeof(
                     Events.V1CustomerSubscriptionCreatedEvent)
                 },
@@ -1360,18 +1348,6 @@ namespace Stripe
                 { "v1.credit_note.voided", typeof(Events.V1CreditNoteVoidedEventNotification) },
                 { "v1.customer.created", typeof(Events.V1CustomerCreatedEventNotification) },
                 { "v1.customer.deleted", typeof(Events.V1CustomerDeletedEventNotification) },
-                {
-                    "v1.customer.discount.created", typeof(
-                    Events.V1CustomerDiscountCreatedEventNotification)
-                },
-                {
-                    "v1.customer.discount.deleted", typeof(
-                    Events.V1CustomerDiscountDeletedEventNotification)
-                },
-                {
-                    "v1.customer.discount.updated", typeof(
-                    Events.V1CustomerDiscountUpdatedEventNotification)
-                },
                 {
                     "v1.customer.subscription.created", typeof(
                     Events.V1CustomerSubscriptionCreatedEventNotification)
