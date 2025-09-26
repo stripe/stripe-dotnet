@@ -362,6 +362,8 @@ namespace StripeTests.V2
             var notif = this.DoParseSignedEventNotification(v2KnownEventPayload);
             var evt = this.AssertAndCast<V1BillingMeterErrorReportTriggeredEventNotification>(notif);
 
+            Assert.IsType<StripeContext>(evt.Context);
+
             var relatedObjectPayload = @"
             {
                 ""id"": ""meter_123"",
