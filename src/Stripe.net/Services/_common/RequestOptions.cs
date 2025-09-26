@@ -72,7 +72,10 @@ namespace Stripe
             }
 
             // an empty string in the clone means we should _not_ overwrite here
-            clone.StripeContext ??= clientOptions.StripeContext;
+            if (clone.StripeContext == null)
+            {
+                clone.StripeContext = clientOptions.StripeContext;
+            }
 
             if (string.IsNullOrEmpty(clone.StripeAccount))
             {
