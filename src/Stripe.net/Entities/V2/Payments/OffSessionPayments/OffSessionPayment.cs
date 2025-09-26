@@ -33,6 +33,15 @@ namespace Stripe.V2.Payments
         public string Object { get; set; }
 
         /// <summary>
+        /// The amount available to be captured.
+        /// </summary>
+        [JsonProperty("amount_capturable")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_capturable")]
+#endif
+        public V2.Amount AmountCapturable { get; set; }
+
+        /// <summary>
         /// Provides industry-specific information about the amount.
         /// </summary>
         [JsonProperty("amount_details")]
@@ -59,6 +68,25 @@ namespace Stripe.V2.Payments
         [STJS.JsonPropertyName("cadence")]
 #endif
         public string Cadence { get; set; }
+
+        /// <summary>
+        /// Details about the capture configuration for the OffSessionPayment.
+        /// </summary>
+        [JsonProperty("capture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture")]
+#endif
+        public OffSessionPaymentCapture Capture { get; set; }
+
+        /// <summary>
+        /// Whether the OffSessionPayment should be captured automatically or manually.
+        /// One of: <c>automatic</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
+        public string CaptureMethod { get; set; }
 
         /// <summary>
         /// ID of the owning compartment.

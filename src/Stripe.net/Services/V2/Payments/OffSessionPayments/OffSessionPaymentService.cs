@@ -37,6 +37,22 @@ namespace Stripe.V2.Payments
         }
 
         /// <summary>
+        /// Captures an OffSessionPayment that has previously been created.
+        /// </summary>
+        public virtual OffSessionPayment Capture(string id, OffSessionPaymentCaptureOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<OffSessionPayment>(BaseAddress.Api, HttpMethod.Post, $"/v2/payments/off_session_payments/{WebUtility.UrlEncode(id)}/capture", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Captures an OffSessionPayment that has previously been created.
+        /// </summary>
+        public virtual Task<OffSessionPayment> CaptureAsync(string id, OffSessionPaymentCaptureOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<OffSessionPayment>(BaseAddress.Api, HttpMethod.Post, $"/v2/payments/off_session_payments/{WebUtility.UrlEncode(id)}/capture", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// Creates an OffSessionPayment object.
         /// </summary>
         public virtual OffSessionPayment Create(OffSessionPaymentCreateOptions options, RequestOptions requestOptions = null)
