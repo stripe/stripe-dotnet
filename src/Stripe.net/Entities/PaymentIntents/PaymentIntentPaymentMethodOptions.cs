@@ -242,12 +242,6 @@ namespace Stripe
 #endif
         public PaymentIntentPaymentMethodOptionsPaypal Paypal { get; set; }
 
-        [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("paypay")]
-#endif
-        public PaymentIntentPaymentMethodOptionsPaypay Paypay { get; set; }
-
         [JsonProperty("pix")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix")]

@@ -514,15 +514,6 @@ namespace Stripe
         public PaymentMethodConfigurationPaypalOptions Paypal { get; set; }
 
         /// <summary>
-        /// Customers can pay with PayPay online or using the PayPay app.
-        /// </summary>
-        [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("paypay")]
-#endif
-        public PaymentMethodConfigurationPaypayOptions Paypay { get; set; }
-
-        /// <summary>
         /// Pix is a payment method popular in Brazil. When paying with Pix, customers authenticate
         /// and approve payments by scanning a QR code in their preferred banking app. Check this <a
         /// href="https://docs.stripe.com/payments/pix">page</a> for more details.
