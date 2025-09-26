@@ -202,6 +202,74 @@ namespace StripeTests
         }
 
         [Fact]
+        public void Ctor_HandlesStringStripeContext()
+        {
+            var requestOptions = new RequestOptions
+            {
+                StripeContext = "ctx_123",
+            };
+            var request = new StripeRequest(
+                this.stripeClient,
+                HttpMethod.Get,
+                "/get",
+                null,
+                requestOptions);
+
+            Assert.Equal("ctx_123", request.StripeHeaders["Stripe-Context"]);
+        }
+
+        [Fact]
+        public void Ctor_HandlesObjStripeContext()
+        {
+            var requestOptions = new RequestOptions
+            {
+                StripeContext = StripeContext.Parse("ctx_123"),
+            };
+            var request = new StripeRequest(
+                this.stripeClient,
+                HttpMethod.Get,
+                "/get",
+                null,
+                requestOptions);
+
+            Assert.Equal("ctx_123", request.StripeHeaders["Stripe-Context"]);
+        }
+
+        [Fact]
+        public void Ctor_HandlesDoesntSetEmptyString()
+        {
+            var requestOptions = new RequestOptions
+            {
+                StripeContext = string.Empty,
+            };
+            var request = new StripeRequest(
+                this.stripeClient,
+                HttpMethod.Get,
+                "/get",
+                null,
+                requestOptions);
+
+            Assert.DoesNotContain("Stripe-Context", request.StripeHeaders);
+        }
+
+        [Fact]
+        public void Ctor_HandlesDoesntSetEmptyContext()
+        {
+            var requestOptions = new RequestOptions
+            {
+                StripeContext = new StripeContext(),
+            };
+            var request = new StripeRequest(
+                this.stripeClient,
+                HttpMethod.Get,
+                "/get",
+                null,
+                requestOptions);
+
+            Assert.DoesNotContain("Stripe-Context", request.StripeHeaders);
+        }
+
+        [Fact]
         public void Ctor_ThrowsIfApiKeyIsNull()
         {
             var client = new StripeClient(apiKey: null);
