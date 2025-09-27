@@ -8,10 +8,10 @@ namespace Stripe.Infrastructure
     using static Stripe.Infrastructure.SerializablePropertyCache;
 
     /// <summary>
-    /// Converts a <see cref="V2.Event"/> to JSON, including any fields
+    /// Converts a <see cref="V2.Core.Event"/> to JSON, including any fields
     /// in derived classes.
     /// </summary>
-    internal class STJV2EventConverter : STJDefaultConverter<V2.Event>
+    internal class STJV2EventConverter : STJDefaultConverter<V2.Core.Event>
     {
         /// <summary>
         /// Reads the JSON representation of the object.
@@ -20,7 +20,7 @@ namespace Stripe.Infrastructure
         /// <param name="typeToConvert">Type of the object.</param>
         /// <param name="options">The calling serializer's options.</param>
         /// <returns>The object value.</returns>
-        public override V2.Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override V2.Core.Event Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             throw new NotSupportedException("STJV2EventConverter should only be used while serializing.");
         }
@@ -34,7 +34,7 @@ namespace Stripe.Infrastructure
         /// </returns>
         public override bool CanConvert(Type objectType)
         {
-            return typeof(Stripe.V2.Event).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
+            return typeof(Stripe.V2.Core.Event).GetTypeInfo().IsAssignableFrom(objectType.GetTypeInfo());
         }
     }
 }

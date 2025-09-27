@@ -35,7 +35,7 @@ namespace StripeTests.Wholesome
                     continue;
                 }
 
-                if (baseType == typeof(Stripe.V2.Event))
+                if (baseType == typeof(Stripe.V2.Core.Event))
                 {
                     continue;
                 }

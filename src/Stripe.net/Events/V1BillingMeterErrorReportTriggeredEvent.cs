@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when a Meter has invalid async usage events.
     /// </summary>
-    public class V1BillingMeterErrorReportTriggeredEvent : V2.Event
+    public class V1BillingMeterErrorReportTriggeredEvent : V2.Core.Event
     {
         /// <summary>
         /// Data for the v1.billing.meter.error_report_triggered event.
@@ -30,7 +30,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

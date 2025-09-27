@@ -28,7 +28,7 @@ namespace Stripe.Infrastructure
         {
             var typeInfo = objectType.GetTypeInfo();
             return (typeInfo.IsInterface && typeInfo.FullName.StartsWith("Stripe")) ||
-                    typeInfo.FullName.Equals("Stripe.V2.Event");
+                    typeInfo.FullName.Equals("Stripe.V2.Core.Event");
         }
 
         public override JsonConverter CreateConverter(

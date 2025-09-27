@@ -1,5 +1,5 @@
 // File generated from our OpenAPI spec
-namespace Stripe.V2
+namespace Stripe.V2.Core
 {
     using System;
     using Newtonsoft.Json;
@@ -8,7 +8,7 @@ namespace Stripe.V2
 #endif
 
     /// <summary>
-    /// Code generated portion of Thin Event.
+    /// Code generated portion of V2 Event resource.
     /// </summary>
     public partial class Event : StripeEntity<Event>, IHasId, IHasObject
     {

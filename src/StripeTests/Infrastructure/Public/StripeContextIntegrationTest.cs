@@ -2,7 +2,7 @@ namespace StripeTests.Infrastructure.Public
 {
     using System;
     using Stripe;
-    using Stripe.V2;
+    using Stripe.V2.Core;
     using Xunit;
 
     public class StripeContextIntegrationTest
