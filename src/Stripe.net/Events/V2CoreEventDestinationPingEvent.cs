@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// A ping event used to test the connection to an EventDestination.
     /// </summary>
-    public class V2CoreEventDestinationPingEvent : V2.Core.Event
+    public class V2CoreEventDestinationPingEvent : V2.Event
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -20,23 +20,23 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.Core.EventRelatedObject RelatedObject { get; set; }
+        public V2.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<V2.Core.EventDestination> FetchRelatedObjectAsync()
+        public Task<V2.EventDestination> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<V2.Core.EventDestination>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<V2.EventDestination>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public V2.Core.EventDestination FetchRelatedObject()
+        public V2.EventDestination FetchRelatedObject()
         {
-            return this.FetchRelatedObject<V2.Core.EventDestination>(this.RelatedObject);
+            return this.FetchRelatedObject<V2.EventDestination>(this.RelatedObject);
         }
     }
 }

@@ -726,7 +726,7 @@ namespace StripeTests
                 "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":{\"type\":\"request\",\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
-            Stripe.V2.Core.Event result = service.Get("ll_123");
+            Stripe.V2.Event result = service.Get("ll_123");
             this.AssertRequest(HttpMethod.Get, "/v2/core/events/ll_123");
         }
 
@@ -6254,7 +6254,7 @@ namespace StripeTests
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
-            Stripe.V2.StripeList<Stripe.V2.Core.Event> events = service.List(
+            Stripe.V2.StripeList<Stripe.V2.Event> events = service.List(
                 options);
             this.AssertRequest(
                 HttpMethod.Get,
@@ -6272,7 +6272,7 @@ namespace StripeTests
                 "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"type\":\"type\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
-            Stripe.V2.Core.Event result = service.Get("id_123");
+            Stripe.V2.Event result = service.Get("id_123");
             this.AssertRequest(HttpMethod.Get, "/v2/core/events/id_123");
         }
 
@@ -6286,7 +6286,7 @@ namespace StripeTests
                 "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.EventDestinations;
-            Stripe.V2.StripeList<Stripe.V2.Core.EventDestination> eventDestinations = service
+            Stripe.V2.StripeList<Stripe.V2.EventDestination> eventDestinations = service
                 .List();
             this.AssertRequest(HttpMethod.Get, "/v2/core/event_destinations");
         }
@@ -6308,7 +6308,7 @@ namespace StripeTests
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.EventDestinations;
-            Stripe.V2.Core.EventDestination eventDestination = service.Create(
+            Stripe.V2.EventDestination eventDestination = service.Create(
                 options);
             this.AssertRequest(HttpMethod.Post, "/v2/core/event_destinations");
         }
@@ -6339,8 +6339,7 @@ namespace StripeTests
                 "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.EventDestinations;
-            Stripe.V2.Core.EventDestination eventDestination = service.Get(
-                "id_123");
+            Stripe.V2.EventDestination eventDestination = service.Get("id_123");
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/core/event_destinations/id_123");
@@ -6357,7 +6356,7 @@ namespace StripeTests
             var options = new Stripe.V2.Core.EventDestinationUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.EventDestinations;
-            Stripe.V2.Core.EventDestination eventDestination = service.Update(
+            Stripe.V2.EventDestination eventDestination = service.Update(
                 "id_123",
                 options);
             this.AssertRequest(
@@ -6375,7 +6374,7 @@ namespace StripeTests
                 "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.EventDestinations;
-            Stripe.V2.Core.EventDestination eventDestination = service.Disable(
+            Stripe.V2.EventDestination eventDestination = service.Disable(
                 "id_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -6392,7 +6391,7 @@ namespace StripeTests
                 "{\"id\":\"obj_123\",\"object\":\"v2.core.event_destination\",\"created\":\"1970-01-12T21:42:34.472Z\",\"description\":\"description\",\"enabled_events\":[\"enabled_events\"],\"event_payload\":\"thin\",\"livemode\":true,\"name\":\"name\",\"status\":\"disabled\",\"type\":\"amazon_eventbridge\",\"updated\":\"1970-01-03T17:07:10.277Z\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.EventDestinations;
-            Stripe.V2.Core.EventDestination eventDestination = service.Enable(
+            Stripe.V2.EventDestination eventDestination = service.Enable(
                 "id_123");
             this.AssertRequest(
                 HttpMethod.Post,
@@ -6409,7 +6408,7 @@ namespace StripeTests
                 "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"type\":\"type\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.EventDestinations;
-            Stripe.V2.Core.Event result = service.Ping("id_123");
+            Stripe.V2.Event result = service.Ping("id_123");
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/core/event_destinations/id_123/ping");

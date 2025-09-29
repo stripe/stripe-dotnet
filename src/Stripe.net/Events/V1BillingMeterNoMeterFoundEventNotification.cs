@@ -7,7 +7,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when a Meter's id is missing or invalid in async usage events.
     /// </summary>
-    public class V1BillingMeterNoMeterFoundEventNotification : V2.Core.EventNotification
+    public class V1BillingMeterNoMeterFoundEventNotification : V2.EventNotification
     {
         public V1BillingMeterNoMeterFoundEvent FetchEvent()
         {
