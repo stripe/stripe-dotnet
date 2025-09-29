@@ -25,7 +25,7 @@ namespace Stripe.Infrastructure
             // class to deserialize into.
             var typeValue = (string)jsonObject["type"];
 
-            Type concreteType = StripeTypeRegistry.GetConcreteV2EventNotificationType(typeValue) ?? typeof(V2.UnknownEventNotification);
+            Type concreteType = StripeTypeRegistry.GetConcreteV2EventNotificationType(typeValue) ?? typeof(Events.UnknownEventNotification);
 
             using var subReader = jsonObject.CreateReader();
             var e = Activator.CreateInstance(concreteType);
@@ -42,7 +42,7 @@ namespace Stripe.Infrastructure
         /// </returns>
         public override bool CanConvert(Type objectType)
         {
-            return objectType.GetTypeInfo() == typeof(V2.EventNotification);
+            return objectType.GetTypeInfo() == typeof(V2.Core.EventNotification);
         }
     }
 }

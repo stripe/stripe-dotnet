@@ -35,12 +35,12 @@ namespace Stripe.Infrastructure
             if (concreteType == null)
             {
                 // If "type" is unknown by this SDK, default to the generic ThinEvent type.
-                concreteType = typeof(V2.Event);
+                concreteType = typeof(V2.Core.Event);
             }
 
             using (var subReader = jsonObject.CreateReader())
             {
-                var e = (V2.Event)Activator.CreateInstance(concreteType);
+                var e = (V2.Core.Event)Activator.CreateInstance(concreteType);
 
                 if (serializer.Context.Context is DeserializationContext context)
                 {
@@ -62,7 +62,7 @@ namespace Stripe.Infrastructure
         /// </returns>
         public override bool CanConvert(Type objectType)
         {
-            return objectType.GetTypeInfo() == typeof(V2.Event);
+            return objectType.GetTypeInfo() == typeof(V2.Core.Event);
         }
     }
 }
