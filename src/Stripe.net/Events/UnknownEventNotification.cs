@@ -1,10 +1,11 @@
-namespace Stripe.V2
+namespace Stripe.Events
 {
     using System;
     using System.Diagnostics.CodeAnalysis;
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
+    using Stripe.V2.Core;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
@@ -12,7 +13,7 @@ namespace Stripe.V2
     /// <summary>
     /// Represents an EventNotification that is valid, but that the SDK doesn't have types for. May have a RelatedObject and can be used to fetch the corresponding full event.
     /// </summary>
-    public class UnknownEventNotification : EventNotification
+    public class UnknownEventNotification : V2.Core.EventNotification
     {
 #nullable enable
         /// <summary>
@@ -24,14 +25,14 @@ namespace Stripe.V2
 #endif
         public EventNotificationRelatedObject? RelatedObject { get; internal set; }
 
-        public V2.Event FetchEvent()
+        public V2.Core.Event FetchEvent()
         {
-            return this.FetchEvent<V2.Event>();
+            return this.FetchEvent<V2.Core.Event>();
         }
 
-        public Task<V2.Event> FetchEventAsync(CancellationToken cancellationToken = default)
+        public Task<V2.Core.Event> FetchEventAsync(CancellationToken cancellationToken = default)
         {
-            return this.FetchEventAsync<V2.Event>(cancellationToken);
+            return this.FetchEventAsync<V2.Core.Event>(cancellationToken);
         }
 
         public StripeEntity FetchRelatedObject()
