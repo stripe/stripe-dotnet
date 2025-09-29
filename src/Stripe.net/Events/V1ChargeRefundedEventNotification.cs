@@ -12,7 +12,7 @@ namespace Stripe.Events
     /// Occurs whenever a charge is refunded, including partial refunds. Listen to
     /// <c>refund.created</c> for information about the refund.
     /// </summary>
-    public class V1ChargeRefundedEventNotification : V2.EventNotification
+    public class V1ChargeRefundedEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -22,7 +22,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventNotificationRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

@@ -270,8 +270,8 @@ namespace Stripe
                 { "v2.core.account_link", typeof(V2.Core.AccountLink) },
                 { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
                 { "v2.core.claimable_sandbox", typeof(V2.Core.ClaimableSandbox) },
-                { "v2.core.event", typeof(V2.Event) },
-                { "v2.core.event_destination", typeof(V2.EventDestination) },
+                { "v2.core.event", typeof(V2.Core.Event) },
+                { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
                 { "v2.money_management.adjustment", typeof(V2.MoneyManagement.Adjustment) },
@@ -1220,6 +1220,10 @@ namespace Stripe
                 {
                     "v2.payments.off_session_payment.failed", typeof(
                     Events.V2PaymentsOffSessionPaymentFailedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.requires_capture", typeof(
+                    Events.V2PaymentsOffSessionPaymentRequiresCaptureEvent)
                 },
                 {
                     "v2.payments.off_session_payment.succeeded", typeof(
@@ -2268,6 +2272,10 @@ namespace Stripe
                 {
                     "v2.payments.off_session_payment.failed", typeof(
                     Events.V2PaymentsOffSessionPaymentFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.requires_capture", typeof(
+                    Events.V2PaymentsOffSessionPaymentRequiresCaptureEventNotification)
                 },
                 {
                     "v2.payments.off_session_payment.succeeded", typeof(

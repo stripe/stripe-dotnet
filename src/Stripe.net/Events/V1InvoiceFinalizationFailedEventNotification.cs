@@ -13,7 +13,7 @@ namespace Stripe.Events
     /// href="https://docs.stripe.com/api/invoices/object#invoice_object-last_finalization_error">last
     /// finalization error</a> for details.
     /// </summary>
-    public class V1InvoiceFinalizationFailedEventNotification : V2.EventNotification
+    public class V1InvoiceFinalizationFailedEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -23,7 +23,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventNotificationRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

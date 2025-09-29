@@ -11,7 +11,7 @@ namespace Stripe.Events
     /// Occurs when a PaymentIntent has failed the attempt to create a payment method or a
     /// payment.
     /// </summary>
-    public class V1PaymentIntentPaymentFailedEvent : V2.Event
+    public class V1PaymentIntentPaymentFailedEvent : V2.Core.Event
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -21,7 +21,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

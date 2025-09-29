@@ -7,7 +7,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when a payment method error alert is resolved.
     /// </summary>
-    public class V2CoreHealthPaymentMethodErrorResolvedEventNotification : V2.EventNotification
+    public class V2CoreHealthPaymentMethodErrorResolvedEventNotification : V2.Core.EventNotification
     {
         public V2CoreHealthPaymentMethodErrorResolvedEvent FetchEvent()
         {

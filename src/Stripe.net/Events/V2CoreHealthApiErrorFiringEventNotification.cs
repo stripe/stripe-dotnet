@@ -7,7 +7,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when an API error alert is firing.
     /// </summary>
-    public class V2CoreHealthApiErrorFiringEventNotification : V2.EventNotification
+    public class V2CoreHealthApiErrorFiringEventNotification : V2.Core.EventNotification
     {
         public V2CoreHealthApiErrorFiringEvent FetchEvent()
         {

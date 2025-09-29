@@ -38,6 +38,25 @@ namespace Stripe.V2.Payments
         public string Cadence { get; set; }
 
         /// <summary>
+        /// Details about the capture configuration for the OffSessionPayment.
+        /// </summary>
+        [JsonProperty("capture")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture")]
+#endif
+        public OffSessionPaymentCreateCaptureOptions Capture { get; set; }
+
+        /// <summary>
+        /// Whether the OffSessionPayment should be captured automatically or manually.
+        /// One of: <c>automatic</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
+        public string CaptureMethod { get; set; }
+
+        /// <summary>
         /// ID of the Customer to which this OffSessionPayment belongs.
         /// </summary>
         [JsonProperty("customer")]
@@ -45,15 +64,6 @@ namespace Stripe.V2.Payments
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
-
-        /// <summary>
-        /// This hash contains details about the Mandate to create.
-        /// </summary>
-        [JsonProperty("mandate_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("mandate_data")]
-#endif
-        public OffSessionPaymentCreateMandateDataOptions MandateData { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.corp.stripe.com/api/metadata">key-value pairs</a> that you

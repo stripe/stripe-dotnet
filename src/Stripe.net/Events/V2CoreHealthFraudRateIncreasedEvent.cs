@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when the fraud rate has increased.
     /// </summary>
-    public class V2CoreHealthFraudRateIncreasedEvent : V2.Event
+    public class V2CoreHealthFraudRateIncreasedEvent : V2.Core.Event
     {
         /// <summary>
         /// Data for the v2.core.health.fraud_rate.increased event.

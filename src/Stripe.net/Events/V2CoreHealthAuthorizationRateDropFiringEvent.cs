@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when an authorization rate drop alert is firing.
     /// </summary>
-    public class V2CoreHealthAuthorizationRateDropFiringEvent : V2.Event
+    public class V2CoreHealthAuthorizationRateDropFiringEvent : V2.Core.Event
     {
         /// <summary>
         /// Data for the v2.core.health.authorization_rate_drop.firing event.

@@ -7,7 +7,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when an API latency alert is resolved.
     /// </summary>
-    public class V2CoreHealthApiLatencyResolvedEventNotification : V2.EventNotification
+    public class V2CoreHealthApiLatencyResolvedEventNotification : V2.Core.EventNotification
     {
         public V2CoreHealthApiLatencyResolvedEvent FetchEvent()
         {

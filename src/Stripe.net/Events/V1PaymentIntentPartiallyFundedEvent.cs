@@ -11,7 +11,7 @@ namespace Stripe.Events
     /// Occurs when funds are applied to a customer_balance PaymentIntent and the
     /// 'amount_remaining' changes.
     /// </summary>
-    public class V1PaymentIntentPartiallyFundedEvent : V2.Event
+    public class V1PaymentIntentPartiallyFundedEvent : V2.Core.Event
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -21,7 +21,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

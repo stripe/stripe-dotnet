@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when the status of an Account's storer configuration capability is updated.
     /// </summary>
-    public class V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent : V2.Event
+    public class V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent : V2.Core.Event
     {
         /// <summary>
         /// Data for the v2.core.account[configuration.storer].capability_status_updated event.
@@ -30,7 +30,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

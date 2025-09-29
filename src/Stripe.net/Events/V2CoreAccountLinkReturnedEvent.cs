@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when the generated AccountLink is completed.
     /// </summary>
-    public class V2CoreAccountLinkReturnedEvent : V2.Event
+    public class V2CoreAccountLinkReturnedEvent : V2.Core.Event
     {
         /// <summary>
         /// Data for the v2.core.account_link.returned event.

@@ -1,4 +1,4 @@
-namespace Stripe.V2
+namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER

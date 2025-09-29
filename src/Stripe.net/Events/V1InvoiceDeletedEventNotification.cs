@@ -12,7 +12,7 @@ namespace Stripe.Events
     /// Occurs whenever a draft invoice is deleted. Note: This event is not sent for <a
     /// href="https://docs.stripe.com/api/invoices/create_preview">invoice previews</a>.
     /// </summary>
-    public class V1InvoiceDeletedEventNotification : V2.EventNotification
+    public class V1InvoiceDeletedEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -22,7 +22,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventNotificationRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

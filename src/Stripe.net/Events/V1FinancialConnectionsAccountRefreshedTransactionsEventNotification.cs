@@ -12,7 +12,7 @@ namespace Stripe.Events
     /// Occurs when an Account’s <c>transaction_refresh</c> status transitions from
     /// <c>pending</c> to either <c>succeeded</c> or <c>failed</c>.
     /// </summary>
-    public class V1FinancialConnectionsAccountRefreshedTransactionsEventNotification : V2.EventNotification
+    public class V1FinancialConnectionsAccountRefreshedTransactionsEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -22,7 +22,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventNotificationRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

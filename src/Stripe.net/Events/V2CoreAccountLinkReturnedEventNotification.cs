@@ -7,7 +7,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when the generated AccountLink is completed.
     /// </summary>
-    public class V2CoreAccountLinkReturnedEventNotification : V2.EventNotification
+    public class V2CoreAccountLinkReturnedEventNotification : V2.Core.EventNotification
     {
         public V2CoreAccountLinkReturnedEvent FetchEvent()
         {

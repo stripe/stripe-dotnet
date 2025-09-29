@@ -7,7 +7,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when a traffic volume drop alert is firing.
     /// </summary>
-    public class V2CoreHealthTrafficVolumeDropFiringEventNotification : V2.EventNotification
+    public class V2CoreHealthTrafficVolumeDropFiringEventNotification : V2.Core.EventNotification
     {
         public V2CoreHealthTrafficVolumeDropFiringEvent FetchEvent()
         {

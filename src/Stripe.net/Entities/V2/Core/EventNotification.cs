@@ -1,4 +1,4 @@
-namespace Stripe.V2
+namespace Stripe.V2.Core
 {
     using System;
     using System.Collections.Generic;
@@ -73,7 +73,7 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("context")]
 #endif
-        public string? Context { get; internal set; }
+        public StripeContext? Context { get; internal set; }
 
         protected StripeClient? Client { get; set; }
 
@@ -96,13 +96,13 @@ namespace Stripe.V2
         }
 
         protected internal T FetchEvent<T>()
-        where T : V2.Event
+        where T : V2.Core.Event
         {
             return this.FetchEventAsync<T>().ConfigureAwait(false).GetAwaiter().GetResult();
         }
 
         protected async Task<T> FetchEventAsync<T>(CancellationToken cancellationToken = default)
-        where T : V2.Event
+        where T : V2.Core.Event
         {
             if (this.Client == null)
             {
