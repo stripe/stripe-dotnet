@@ -356,11 +356,11 @@ namespace StripeTests.Wholesome
             var listType = list.GetType();
             genericTypes.RemoveAll(gt => listType.FullName.StartsWith(gt.FullName));
 
-            // This also tests polymorphic types like V2.Event within
+            // This also tests polymorphic types like V2.Core.Event within
             // the list
-            var v2List = new Stripe.V2.StripeList<Stripe.V2.Event>
+            var v2List = new Stripe.V2.StripeList<Stripe.V2.Core.Event>
             {
-                Data = new List<Stripe.V2.Event>
+                Data = new List<Stripe.V2.Core.Event>
                 {
                     this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
                     this.PopulateWithReasonableDefaults(new V1BillingMeterErrorReportTriggeredEvent(), null, new Dictionary<Type, object>()),
