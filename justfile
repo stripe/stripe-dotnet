@@ -22,6 +22,7 @@ ci-test: (_test "--no-build" "" "Release")
 
 # ⭐ format all files
 format *args:
+    dotnet format whitespace --folder {{args}}
     # This sets TargetFramework because of a race condition in dotnet format when it tries to format to multiple targets at a time, which could lead to code with compiler errors after it completes
     TargetFramework=net5.0 dotnet format src/Stripe.net.sln --severity warn {{args}}
 
