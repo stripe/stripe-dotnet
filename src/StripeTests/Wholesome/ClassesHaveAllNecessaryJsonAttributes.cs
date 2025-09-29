@@ -62,8 +62,8 @@ namespace StripeTests.Wholesome
                     }
                 }
 
-                // Special case for Stripe.V2.Event
-                if (type == typeof(Stripe.V2.Event))
+                // Special case for Stripe.V2.Core.Event
+                if (type == typeof(Stripe.V2.Core.Event))
                 {
                     var converter = type.GetCustomAttribute(typeof(STJS.JsonConverterAttribute), false) as STJS.JsonConverterAttribute;
                     if (converter?.ConverterType != typeof(STJV2EventConverter))

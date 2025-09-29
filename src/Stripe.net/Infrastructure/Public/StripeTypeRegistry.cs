@@ -181,8 +181,8 @@ namespace Stripe
                 { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
                 { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
-                { "v2.core.event", typeof(V2.Event) },
-                { "v2.core.event_destination", typeof(V2.EventDestination) },
+                { "v2.core.event", typeof(V2.Core.Event) },
+                { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
