@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when a traffic volume drop alert is resolved.
     /// </summary>
-    public class V2CoreHealthTrafficVolumeDropResolvedEvent : V2.Event
+    public class V2CoreHealthTrafficVolumeDropResolvedEvent : V2.Core.Event
     {
         /// <summary>
         /// Data for the v2.core.health.traffic_volume_drop.resolved event.

@@ -11,7 +11,7 @@ namespace Stripe.Events
     /// Occurs when a claimable sandbox is activated by the user with the intention to go live
     /// and your Stripe app is installed on the live account.
     /// </summary>
-    public class V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent : V2.Event
+    public class V2CoreClaimableSandboxSandboxDetailsOwnerAccountUpdatedEvent : V2.Core.Event
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -21,7 +21,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

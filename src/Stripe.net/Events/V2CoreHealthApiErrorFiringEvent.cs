@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when an API error alert is firing.
     /// </summary>
-    public class V2CoreHealthApiErrorFiringEvent : V2.Event
+    public class V2CoreHealthApiErrorFiringEvent : V2.Core.Event
     {
         /// <summary>
         /// Data for the v2.core.health.api_error.firing event.

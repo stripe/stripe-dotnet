@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when an issuing authorization request timeout alert is firing.
     /// </summary>
-    public class V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEvent : V2.Event
+    public class V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEvent : V2.Core.Event
     {
         /// <summary>
         /// Data for the v2.core.health.issuing_authorization_request_timeout.firing event.

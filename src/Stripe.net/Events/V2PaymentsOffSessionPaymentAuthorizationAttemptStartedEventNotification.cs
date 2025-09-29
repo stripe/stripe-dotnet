@@ -12,7 +12,7 @@ namespace Stripe.Events
     /// Sent when our internal scheduling system kicks off an attempt at authorization, whether
     /// it's a retry or an initial authorization.
     /// </summary>
-    public class V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification : V2.EventNotification
+    public class V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -22,7 +22,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventNotificationRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

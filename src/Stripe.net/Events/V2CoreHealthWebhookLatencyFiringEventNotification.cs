@@ -7,7 +7,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when a webhook latency alert is firing.
     /// </summary>
-    public class V2CoreHealthWebhookLatencyFiringEventNotification : V2.EventNotification
+    public class V2CoreHealthWebhookLatencyFiringEventNotification : V2.Core.EventNotification
     {
         public V2CoreHealthWebhookLatencyFiringEvent FetchEvent()
         {

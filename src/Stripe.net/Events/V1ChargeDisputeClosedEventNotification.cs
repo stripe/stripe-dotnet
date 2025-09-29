@@ -12,7 +12,7 @@ namespace Stripe.Events
     /// Occurs when a dispute is closed and the dispute status changes to <c>lost</c>,
     /// <c>warning_closed</c>, or <c>won</c>.
     /// </summary>
-    public class V1ChargeDisputeClosedEventNotification : V2.EventNotification
+    public class V1ChargeDisputeClosedEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -22,7 +22,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventNotificationRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

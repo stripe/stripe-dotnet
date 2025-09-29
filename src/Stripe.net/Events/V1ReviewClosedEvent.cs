@@ -12,7 +12,7 @@ namespace Stripe.Events
     /// <c>approved</c>, <c>disputed</c>, <c>refunded</c>, <c>refunded_as_fraud</c>, or
     /// <c>canceled</c>.
     /// </summary>
-    public class V1ReviewClosedEvent : V2.Event
+    public class V1ReviewClosedEvent : V2.Core.Event
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -22,7 +22,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

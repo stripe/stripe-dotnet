@@ -7,7 +7,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when an issuing authorization request errors alert is resolved.
     /// </summary>
-    public class V2CoreHealthIssuingAuthorizationRequestErrorsResolvedEventNotification : V2.EventNotification
+    public class V2CoreHealthIssuingAuthorizationRequestErrorsResolvedEventNotification : V2.Core.EventNotification
     {
         public V2CoreHealthIssuingAuthorizationRequestErrorsResolvedEvent FetchEvent()
         {

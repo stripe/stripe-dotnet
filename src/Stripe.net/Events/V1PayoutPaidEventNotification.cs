@@ -13,7 +13,7 @@ namespace Stripe.Events
     /// account. If the payout fails, a <c>payout.failed</c> notification is also sent, at a
     /// later time.
     /// </summary>
-    public class V1PayoutPaidEventNotification : V2.EventNotification
+    public class V1PayoutPaidEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -23,7 +23,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.EventNotificationRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every

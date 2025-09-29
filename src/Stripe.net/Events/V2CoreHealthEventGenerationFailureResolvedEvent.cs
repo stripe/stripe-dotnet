@@ -10,7 +10,7 @@ namespace Stripe.Events
     /// <summary>
     /// Occurs when an event generation failure alert is resolved.
     /// </summary>
-    public class V2CoreHealthEventGenerationFailureResolvedEvent : V2.Event
+    public class V2CoreHealthEventGenerationFailureResolvedEvent : V2.Core.Event
     {
         /// <summary>
         /// Data for the v2.core.health.event_generation_failure.resolved event.
