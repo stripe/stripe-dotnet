@@ -1,5 +1,73 @@
 # Changelog
 
+## 49.0.0 - 2025-09-30
+This release changes the pinned API version to `2025-09-30.clover` and contains breaking changes (prefixed with ⚠️ below)
+
+* [#3168](https://github.com/stripe/stripe-dotnet/pull/3168) ⚠️ Add strongly typed EventNotifications
+  We've overhauled how V2 Events are handled in the SDK! This approach should provide a lot more information at authoring and compile time, leading to more robust integrations. As part of this process, there are a number of changes to be aware of.
+  - Added matching `EventNotification` classes to every v2 `Event`. For example, there's now a `V1BillingMeterErrorReportTriggeredEventNotification` to match the existing `V1BillingMeterErrorReportTriggeredEvent`. Each notification class defines a `fetchEvent()` method to retrieve its corresponding event. For events with related objects, there's a `fetchRelatedObject()` method that performs the API call and casts the response to the correct type.
+  - ⚠️ Rename function `StripeClient.parseThinEvent` to `StripeClient.parseEventNotification` and remove the `Stripe.ThinEvent` class.
+      - This function now returns a `Stripe.V2.Core.EventNotification` (which is the shared base class that all of the more specific `Stripe..Events.*EventNotification` classes  share) instead of `Stripe.ThinEvent`. When applicable, these event notifications will have the `relatedObject` property and a `fetchRelatedObject()` function. They also have a `fetchEvent()` method to retrieve their corresponding `Stripe.Event.*Event` instance.
+      - If you parse an event the SDK doesn't have types for (e.g. it's newer than the SDK you're using), you'll get an instance of `Stripe.Events.UnknownEventNotification` instead of a more specific type. It has both the `relatedObject` property and the `FetchRelatedObject()` function (but they may be/return `null`)
+* [#3194](https://github.com/stripe/stripe-dotnet/pull/3194) Add `StripeContext` object
+  - Add the `StripeContext` class. Previously, one could only pass a string for `StripeContext` property of the `RequestOptions` class. You can now use the new class as well.
+  - ⚠️ Change `EventNotification` (formerly known as `ThinEvent`)'s `context` property from `string` to `StripeContext`
+* [#3200](https://github.com/stripe/stripe-dotnet/pull/3200) Move `V2.Event` API resources to `V2.Core.Events`
+  - ⚠️ Move all V2 Event-related classes (`Event`, `EventDestination`,`EventReason` etc) from `Stripe.V2` to `Stripe.V2.Core`. They now correctly match their API path and are in line with all other resources. To update your code:
+     - `Stripe.V2.Event` -> `Stripe.V2.Core.Event`
+     - `Stripe.V2.EventDestination` -> `Stripe.V2.Core.EventDestination`
+     - `Stripe.V2.EventReason` -> `Stripe.V2.Core.EventReason`
+     - `Stripe.V2.EventReasonRequest` -> `Stripe.V2.Core.EventReasonRequest`
+     - `Stripe.V2.EventRelatedObject` -> `Stripe.V2.Core.EventRelatedObject`
+* [#3206](https://github.com/stripe/stripe-dotnet/pull/3206) ⚠️ Drop support for .NET Core 3.1 & clarify policy
+  -  Read our new [language version support policy](https://docs.stripe.com/sdks/versioning?server=dotnet#stripe-sdk-language-version-support-policy)
+       - ⚠️ In this release, we drop support for .NET Core 3.1.
+       - Support for .NET Core versions 5 & 7 are deprecated and will be removed in the next major version scheduled for March 2026
+* [#3197](https://github.com/stripe/stripe-dotnet/pull/3197) Remove unused obsolete classes SourceTransactionsListOptions and SourceTransactionsGetOptions
+  * ⚠️ Removed class `SourceTransactionsListOptions` in favor of `SourceTransactionListOptions`
+  * ⚠️ Removed unused class `SourceTransactionsGetOptions`
+* [#3167](https://github.com/stripe/stripe-dotnet/pull/3167) ⚠️ Build SDK w/ V2 OpenAPI spec
+  - ⚠️ The delete methods for v2 APIs (the ones in the `StripeClient.v2` namespace) now return a `V2DeletedObject` which has the id of the object that has been deleted and a string representing the type of the object that has been deleted.
+* [#3171](https://github.com/stripe/stripe-dotnet/pull/3171) Adds ability to specify file name and type when calling FileService.Create
+  * ⚠️ Changes `FileCreateOptions`.`File` from a `Stream` to a `MultipartFileContent` type.  This type lets you optionally specify a `Name` and `Type` to use when creating the file.
+* [#3174](https://github.com/stripe/stripe-dotnet/pull/3174) `just format` formats entire solution
+* [#3172](https://github.com/stripe/stripe-dotnet/pull/3172) Update generated code
+  * ⚠️ Changes type of `UseStripeSdk` in `PaymentIntentNextAction` and `SetupIntentNextAction` to be `Dictionary<string, object>`
+  * ⚠️ Removes `PaymentIntentNextActionUseStripeSdk` and `SetupIntentNextActionUseStripeSdk`
+* [#3170](https://github.com/stripe/stripe-dotnet/pull/3170) Adds public BaseUrl to RawRequestOptions
+  * Adds `BaseUrl` to `RawRequestOptions` for raw request calls to endpoints at hosts other than `api.stripe.com`
+
+
+* [#3175](https://github.com/stripe/stripe-dotnet/pull/3175), [#3190](https://github.com/stripe/stripe-dotnet/pull/3190), [#3205](https://github.com/stripe/stripe-dotnet/pull/3205) Update generated code based on incoming API changes in the `2025-09-30.clover` API version.
+  * ⚠️ Remove support for `BalanceReport` and `PayoutReconciliationReport` on `AccountSession.Components` and `AccountSessionComponentsOptions`
+  * ⚠️ Change type of `InvoiceSubscriptionDetailsOptions.CancelAt`, `SubscriptionCreateOptions.CancelAt` and `SubscriptionUpdateOptions.CancelAt` from `DateTime` to `DateTime | enum('max_period_end'|'min_period_end')`
+  * ⚠️ Remove support for `Coupon` on `Discount`, `PromotionCodeCreateOptions`, and `PromotionCode`. Use `Discount.Source.Coupon`, `PromotionCodeCreateOptions.Promotion.Coupon`, and `PromotionCode.Promotion.Coupon` instead.
+  * ⚠️ Remove support for `Link` and `PayByBank` on `PaymentMethodUpdateOptions`
+  * Add support for new resource `BalanceSettings`
+  * Add support for `Get` and `Update` methods on resource `BalanceSettings`
+  * Add support for `Source` on `Discount`
+  * Add support for `MbWayPayments` on `Account.Capabilities` and `AccountCapabilitiesOptions`
+  * Add support for `TrialUpdateBehavior` on `BillingPortal.Configuration.Features.SubscriptionUpdate` and `BillingPortalConfigurationFeaturesSubscriptionUpdateOptions`
+  * Add support for `MbWay` on `Charge.PaymentMethodDetails`, `ConfirmationToken.PaymentMethodPreview`, `ConfirmationTokenPaymentMethodDataOptions`, `PaymentIntent.PaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentMethodCreateOptions`, `PaymentMethod`, and `SetupIntentPaymentMethodDataOptions`
+  * Add support for `BrandingSettings` and `NameCollection` on `Checkout.SessionCreateOptions` and `Checkout.Session`
+  * Add support for `ExcludedPaymentMethodTypes` on `Checkout.SessionCreateOptions`, `Checkout.Session`, `PaymentIntentConfirmOptions`, and `PaymentIntentUpdateOptions`
+  * Add support for `UnitLabel` on `CheckoutSessionLineItemPriceDataProductDataOptions`, `InvoiceLineItemPriceDataProductDataOptions`, `InvoiceLinePriceDataProductDataOptions`, and `PaymentLinkLineItemPriceDataProductDataOptions`
+  * Add support for `Alma`, `Billie`, and `Satispay` on `Checkout.Session.PaymentMethodOptions` and `CheckoutSessionPaymentMethodOptionsOptions`
+  * Add support for `DemoPay` on `CheckoutSessionPaymentMethodOptionsOptions`
+  * Add support for `CaptureMethod` on `Checkout.Session.PaymentMethodOptions.Affirm`, `Checkout.Session.PaymentMethodOptions.AfterpayClearpay`, `Checkout.Session.PaymentMethodOptions.AmazonPay`, `Checkout.Session.PaymentMethodOptions.Card`, `Checkout.Session.PaymentMethodOptions.Cashapp`, `Checkout.Session.PaymentMethodOptions.Klarna`, `Checkout.Session.PaymentMethodOptions.Link`, `Checkout.Session.PaymentMethodOptions.Mobilepay`, `Checkout.Session.PaymentMethodOptions.RevolutPay`, `CheckoutSessionPaymentMethodOptionsAffirmOptions`, `CheckoutSessionPaymentMethodOptionsAfterpayClearpayOptions`, `CheckoutSessionPaymentMethodOptionsAmazonPayOptions`, `CheckoutSessionPaymentMethodOptionsCardOptions`, `CheckoutSessionPaymentMethodOptionsCashappOptions`, `CheckoutSessionPaymentMethodOptionsKlarnaOptions`, `CheckoutSessionPaymentMethodOptionsLinkOptions`, `CheckoutSessionPaymentMethodOptionsMobilepayOptions`, and `CheckoutSessionPaymentMethodOptionsRevolutPayOptions`
+  * Add support for `Flexible` on `CheckoutSessionSubscriptionDataBillingModeOptions`, `InvoiceScheduleDetailsBillingModeOptions`, `InvoiceSubscriptionDetailsBillingModeOptions`, `Quote.SubscriptionData.BillingMode`, `QuoteSubscriptionDataBillingModeOptions`, `Subscription.BillingMode`, `SubscriptionBillingModeOptions`, `SubscriptionSchedule.BillingMode`, and `SubscriptionScheduleBillingModeOptions`
+  * Add support for `BusinessName` and `IndividualName` on `Checkout.Session.CollectedInformation`, `Checkout.Session.CustomerDetails`, `CustomerCreateOptions`, `CustomerUpdateOptions`, and `Customer`
+  * Add support for `ChargebackLossReasonCode` on `Dispute.PaymentMethodDetails.Klarna`
+  * Add support for `NetAmount` and `ProrationDetails` on `InvoiceItem`
+  * Remove support for `Iterations` on `InvoiceScheduleDetailsPhaseOptions` and `SubscriptionSchedulePhaseOptions`
+  * Add support for `FraudDisputabilityLikelihood` and `RiskAssessment` on `Issuing.TestHelpersAuthorizationCreateOptions`
+  * Add support for `SecondLine` on `Issuing.Card`
+  * Add support for `FrMealVoucherConecs` on `PaymentMethodConfigurationCreateOptions` and `PaymentMethodConfigurationUpdateOptions`
+  * Add support for `Promotion` on `PromotionCodeCreateOptions` and `PromotionCode`
+  * Add support for `Provider` on `Tax.Settings.Defaults`
+  * Add support for `BbposWisepad3` on `Terminal.ConfigurationCreateOptions`, `Terminal.ConfigurationUpdateOptions`, and `Terminal.Configuration`
+  * Add support for `AddressKana`, `AddressKanji`, `DisplayNameKana`, `DisplayNameKanji`, and `Phone` on `Terminal.LocationCreateOptions`, `Terminal.LocationUpdateOptions`, and `Terminal.Location`
+
 ## 48.6.0-beta.1 - 2025-08-27
 This release changes the pinned API version to `2025-08-27.preview`.
 
