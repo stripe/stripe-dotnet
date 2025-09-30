@@ -132,7 +132,7 @@ namespace Stripe
             where T : IStripeEntity
         {
             var apiMode = ApiModeUtils.GetApiMode(url);
-#if NET461
+#if NET462
             if (apiMode == ApiMode.V2)
             {
                 return
@@ -153,7 +153,7 @@ namespace Stripe
 #endif
         }
 
-#if NET461
+#if NET462
         internal IEnumerable<T> V1ListRequestAutoPagingSync<T>(
             string url,
             ListOptions options,
@@ -427,7 +427,7 @@ namespace Stripe
             RequestOptions requestOptions)
             where T : IStripeEntity
         {
-#if NET461
+#if NET462
             return
                 this.SearchRequestAutoPagingSync<T>(url, options, requestOptions);
 #else
@@ -436,7 +436,7 @@ namespace Stripe
 #endif
         }
 
-#if NET461
+#if NET462
         private IEnumerable<T> SearchRequestAutoPagingSync<T>(
             string url,
             SearchOptions options,
