@@ -4,7 +4,7 @@
 [![Build Status](https://github.com/stripe/stripe-dotnet/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/stripe/stripe-dotnet/actions?query=branch%3Amaster)
 [![Coverage Status](https://coveralls.io/repos/github/stripe/stripe-dotnet/badge.svg?branch=master)](https://coveralls.io/github/stripe/stripe-dotnet?branch=master)
 
-The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 3.1+, and .NET Framework 4.6.1+.
+The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 5+, and .NET Framework 4.6.2+.
 
 ## Installation
 
@@ -34,6 +34,12 @@ From within Visual Studio:
 4. Click on the _Browse_ tab and search for "Stripe.net".
 5. Click on the Stripe.net package, select the appropriate version in the
    right-tab and click _Install_.
+
+### Requirements
+
+Per our [Language Version Support Policy](https://docs.stripe.com/sdks/versioning?server=dotnet#stripe-sdk-language-version-support-policy), we currently support **.NET Standard 2.0+, .NET Core 5+, and .NET Framework 4.6.2+.**.
+
+Support for .NET Core versions 5 & 7 are deprecated and will be removed in the next major version. Support for version 6 will be removed in a future version. Read more and see the full schedule in the docs: https://docs.stripe.com/sdks/versioning?server=dotnet#stripe-sdk-language-version-support-policy
 
 ## Documentation
 
