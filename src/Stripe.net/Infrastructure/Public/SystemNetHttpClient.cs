@@ -40,7 +40,7 @@ namespace Stripe
 #elif NET462
             "net462"
 #else
-#error "Unknown target framework"
+#warning "Unknown target framework"
 #endif
             ;
 
