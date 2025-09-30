@@ -37,10 +37,10 @@ namespace Stripe
             "netcoreapp3.1"
 #elif NETSTANDARD2_0
             "netstandard2.0"
-#elif NET461
-            "net461"
+#elif NET462
+            "net462"
 #else
-#error "Unknown target framework"
+#warning "Unknown target framework"
 #endif
             ;
 

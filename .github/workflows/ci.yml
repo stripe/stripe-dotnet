@@ -33,9 +33,10 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
+          # see: https://docs.stripe.com/sdks/versioning?server=dotnet#stripe-sdk-language-version-support-policy
+          # even numbers are LTS
+          # TODO: add 9.0.x; https://go/j/RUN_DEVSDK-1957
           dotnet-version: |
-            2.1.x
-            3.1.x
             5.0.x
             6.0.x
             7.0.404
