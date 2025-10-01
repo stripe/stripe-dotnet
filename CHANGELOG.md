@@ -124,7 +124,7 @@ This release changes the pinned API version to `2025-09-30.clover` and contains 
      - `Stripe.V2.EventReasonRequest` -> `Stripe.V2.Core.EventReasonRequest`
      - `Stripe.V2.EventRelatedObject` -> `Stripe.V2.Core.EventRelatedObject`
 * [#3206](https://github.com/stripe/stripe-dotnet/pull/3206) ⚠️ Drop support for .NET Core 3.1 & clarify policy
-  -  Read our new [language version support policy](https://docs.stripe.com/sdks/versioning?server=dotnet#stripe-sdk-language-version-support-policy)
+  -  Read our new [language version support policy](https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy)
        - ⚠️ In this release, we drop support for .NET Core 3.1.
        - Support for .NET Core versions 5 & 7 are deprecated and will be removed in the next major version scheduled for March 2026
 * [#3197](https://github.com/stripe/stripe-dotnet/pull/3197) Remove unused obsolete classes SourceTransactionsListOptions and SourceTransactionsGetOptions
