@@ -37,9 +37,9 @@ From within Visual Studio:
 
 ### Requirements
 
-Per our [Language Version Support Policy](https://docs.stripe.com/sdks/versioning?server=dotnet#stripe-sdk-language-version-support-policy), we currently support **.NET Standard 2.0+, .NET Core 5+, and .NET Framework 4.6.2+.**.
+Per our [Language Version Support Policy](https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy), we currently support **.NET Standard 2.0+, .NET Core 5+, and .NET Framework 4.6.2+.**.
 
-Support for .NET Core versions 5 & 7 are deprecated and will be removed in the next major version. Support for version 6 will be removed in a future version. Read more and see the full schedule in the docs: https://docs.stripe.com/sdks/versioning?server=dotnet#stripe-sdk-language-version-support-policy
+Support for .NET Core versions 5 & 7 are deprecated and will be removed in the next major version. Support for version 6 will be removed in a future version. Read more and see the full schedule in the docs: https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy
 
 ## Documentation
 
