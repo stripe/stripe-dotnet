@@ -137,6 +137,7 @@ namespace Stripe
                 },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
+                { "payment_method_balance", typeof(PaymentMethodBalance) },
                 { "payment_method_configuration", typeof(PaymentMethodConfiguration) },
                 { "payment_method_domain", typeof(PaymentMethodDomain) },
                 { "payment_record", typeof(PaymentRecord) },

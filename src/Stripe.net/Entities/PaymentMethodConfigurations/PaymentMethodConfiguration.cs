@@ -280,6 +280,12 @@ namespace Stripe
 #endif
         public bool Livemode { get; set; }
 
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public PaymentMethodConfigurationMbWay MbWay { get; set; }
+
         [JsonProperty("mobilepay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mobilepay")]

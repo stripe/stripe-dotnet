@@ -76,6 +76,15 @@ namespace Stripe
         public string ReturnUrl { get; set; }
 
         /// <summary>
+        /// Provides industry-specific information about the SetupIntent.
+        /// </summary>
+        [JsonProperty("setup_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_details")]
+#endif
+        public SetupIntentSetupDetailsOptions SetupDetails { get; set; }
+
+        /// <summary>
         /// Set to <c>true</c> when confirming server-side and using Stripe.js, iOS, or Android
         /// client-side SDKs to handle the next actions.
         /// </summary>
