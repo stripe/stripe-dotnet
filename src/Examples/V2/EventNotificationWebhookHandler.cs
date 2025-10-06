@@ -59,9 +59,10 @@ namespace Examples.V2
                 }
                 else if (eventNotification is UnknownEventNotification unknownEvt)
                 {
-                    // this is a valid event type, but it's newer than this SDK, so there's no
-                    // corresponding class.
-                    // we'll have to match on "type" instead
+                    // Events that were introduced after this SDK version release are
+                    // represented as `UnknownEventNotification`s.
+                    // They're valid, the SDK just doesn't have corresponding classes for them.
+                    // You must match on the "type" property instead.
                     if (unknownEvt.Type == "some.other.event")
                     {
                         // you can still `.fetchEvent()` and `.fetchRelatedObject()`, but the latter may
