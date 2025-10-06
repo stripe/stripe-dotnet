@@ -757,10 +757,6 @@ namespace Stripe
                 { "v1.transfer.created", typeof(Events.V1TransferCreatedEvent) },
                 { "v1.transfer.reversed", typeof(Events.V1TransferReversedEvent) },
                 { "v1.transfer.updated", typeof(Events.V1TransferUpdatedEvent) },
-                {
-                    "v2.billing.bill_setting.updated", typeof(
-                    Events.V2BillingBillSettingUpdatedEvent)
-                },
                 { "v2.billing.cadence.billed", typeof(Events.V2BillingCadenceBilledEvent) },
                 { "v2.billing.cadence.canceled", typeof(Events.V2BillingCadenceCanceledEvent) },
                 { "v2.billing.cadence.created", typeof(Events.V2BillingCadenceCreatedEvent) },
@@ -1785,10 +1781,6 @@ namespace Stripe
                 { "v1.transfer.created", typeof(Events.V1TransferCreatedEventNotification) },
                 { "v1.transfer.reversed", typeof(Events.V1TransferReversedEventNotification) },
                 { "v1.transfer.updated", typeof(Events.V1TransferUpdatedEventNotification) },
-                {
-                    "v2.billing.bill_setting.updated", typeof(
-                    Events.V2BillingBillSettingUpdatedEventNotification)
-                },
                 {
                     "v2.billing.cadence.billed", typeof(
                     Events.V2BillingCadenceBilledEventNotification)
