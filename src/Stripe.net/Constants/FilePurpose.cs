@@ -29,8 +29,6 @@ namespace Stripe
 
         public const string PciDocument = "pci_document";
 
-        public const string PlatformTermsOfService = "platform_terms_of_service";
-
         public const string Selfie = "selfie";
 
         public const string SigmaScheduledQuery = "sigma_scheduled_query";

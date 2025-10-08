@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -96,17 +95,6 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("label")]
 #endif
         public string Label { get; set; }
-
-        /// <summary>
-        /// The last time this reader reported to Stripe backend.
-        /// </summary>
-        [JsonProperty("last_seen_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("last_seen_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
-        public DateTime? LastSeenAt { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

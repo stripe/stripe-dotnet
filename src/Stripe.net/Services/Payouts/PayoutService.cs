@@ -146,9 +146,8 @@ namespace Stripe
 
         /// <summary>
         /// <p>Reverses a payout by debiting the destination bank account. At this time, you can
-        /// only reverse payouts for connected accounts to US and Canadian bank accounts. If the
-        /// payout is manual and in the <c>pending</c> status, use <c>/v1/payouts/:id/cancel</c>
-        /// instead.</p>.
+        /// only reverse payouts for connected accounts to US bank accounts. If the payout is manual
+        /// and in the <c>pending</c> status, use <c>/v1/payouts/:id/cancel</c> instead.</p>.
         ///
         /// <p>By requesting a reversal through <c>/v1/payouts/:id/reverse</c>, you confirm that the
         /// authorized signatory of the selected bank account authorizes the debit on the bank
@@ -161,9 +160,8 @@ namespace Stripe
 
         /// <summary>
         /// <p>Reverses a payout by debiting the destination bank account. At this time, you can
-        /// only reverse payouts for connected accounts to US and Canadian bank accounts. If the
-        /// payout is manual and in the <c>pending</c> status, use <c>/v1/payouts/:id/cancel</c>
-        /// instead.</p>.
+        /// only reverse payouts for connected accounts to US bank accounts. If the payout is manual
+        /// and in the <c>pending</c> status, use <c>/v1/payouts/:id/cancel</c> instead.</p>.
         ///
         /// <p>By requesting a reversal through <c>/v1/payouts/:id/reverse</c>, you confirm that the
         /// authorized signatory of the selected bank account authorizes the debit on the bank

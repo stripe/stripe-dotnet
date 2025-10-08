@@ -413,17 +413,6 @@ namespace Stripe
         public PaymentMethodConfigurationLinkOptions Link { get; set; }
 
         /// <summary>
-        /// MB WAY is the most popular wallet in Portugal. After entering their phone number in your
-        /// checkout, customers approve the payment directly in their MB WAY app. Check this <a
-        /// href="https://stripe.com/docs/payments/mb-way">page</a> for more details.
-        /// </summary>
-        [JsonProperty("mb_way")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("mb_way")]
-#endif
-        public PaymentMethodConfigurationMbWayOptions MbWay { get; set; }
-
-        /// <summary>
         /// MobilePay is a <a
         /// href="https://stripe.com/docs/payments/payment-methods#usage">single-use</a> card wallet
         /// payment method used in Denmark and Finland. It allows customers to <a

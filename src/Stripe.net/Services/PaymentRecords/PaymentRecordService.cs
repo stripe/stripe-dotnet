@@ -147,23 +147,5 @@ namespace Stripe
         {
             return this.RequestAsync<PaymentRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_records/{WebUtility.UrlEncode(id)}/report_payment_attempt_informational", options, requestOptions, cancellationToken);
         }
-
-        /// <summary>
-        /// <p>Report that the most recent payment attempt on the specified Payment Record was
-        /// refunded.</p>.
-        /// </summary>
-        public virtual PaymentRecord ReportRefund(string id, PaymentRecordReportRefundOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<PaymentRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_records/{WebUtility.UrlEncode(id)}/report_refund", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Report that the most recent payment attempt on the specified Payment Record was
-        /// refunded.</p>.
-        /// </summary>
-        public virtual Task<PaymentRecord> ReportRefundAsync(string id, PaymentRecordReportRefundOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<PaymentRecord>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_records/{WebUtility.UrlEncode(id)}/report_refund", options, requestOptions, cancellationToken);
-        }
     }
 }

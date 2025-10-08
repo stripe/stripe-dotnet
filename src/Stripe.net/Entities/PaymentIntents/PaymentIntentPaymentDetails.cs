@@ -8,12 +8,6 @@ namespace Stripe
 
     public class PaymentIntentPaymentDetails : StripeEntity<PaymentIntentPaymentDetails>
     {
-        [JsonProperty("benefit")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("benefit")]
-#endif
-        public PaymentIntentPaymentDetailsBenefit Benefit { get; set; }
-
         [JsonProperty("car_rental")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("car_rental")]
@@ -50,5 +44,11 @@ namespace Stripe
         [STJS.JsonPropertyName("subscription")]
 #endif
         public PaymentIntentPaymentDetailsSubscription Subscription { get; set; }
+
+        [JsonProperty("benefit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("benefit")]
+#endif
+        public PaymentIntentPaymentDetailsBenefit Benefit { get; set; }
     }
 }

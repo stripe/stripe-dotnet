@@ -90,15 +90,6 @@ namespace Stripe.Terminal
         public ConfigurationTippingGbpOptions Gbp { get; set; }
 
         /// <summary>
-        /// Tipping configuration for GIP.
-        /// </summary>
-        [JsonProperty("gip")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("gip")]
-#endif
-        public ConfigurationTippingGipOptions Gip { get; set; }
-
-        /// <summary>
         /// Tipping configuration for HKD.
         /// </summary>
         [JsonProperty("hkd")]
