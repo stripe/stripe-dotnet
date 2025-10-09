@@ -1,5 +1,18 @@
 # Changelog
 
+## 49.1.0-alpha.2 - 2025-10-09
+* [#3218](https://github.com/stripe/stripe-dotnet/pull/3218) Update generated code for private-preview
+  * Add support for new resource `PaymentMethodBalance`
+  * Add support for `CheckBalance` method on resource `PaymentMethod`
+  * Add support for `Benefits` on `Card`, `Charge.PaymentMethodDetails.Card`, `ConfirmationToken.PaymentMethodPreview.Card`, and `PaymentMethod.Card`
+  * Add support for `Benefit` on `PaymentIntent.PaymentDetails` and `PaymentIntentPaymentDetailsOptions`
+  * Add support for `SetupDetails` on `SetupIntentConfirmOptions`, `SetupIntentCreateOptions`, `SetupIntentUpdateOptions`, and `SetupIntent`
+  * Add support for `CardCreator` on `V2.Core.Account.Configuration`, `V2.Core.Account.Identity.Attestations.TermsOfService`, `V2CoreAccountConfigurationOptions`, and `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
+  * Add support for thin events `V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent` and `V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent` with related object `V2.Core.Account`
+  * Remove support for thin events `V1CustomerDiscountCreatedEvent`, `V1CustomerDiscountDeletedEvent`, and `V1CustomerDiscountUpdatedEvent` with related object `Discount`
+* [#3214](https://github.com/stripe/stripe-dotnet/pull/3214) Update generated code for private-preview
+  * Release specs are identical.
+
 ## 49.1.0-alpha.1 - 2025-10-01
 This release changes the pinned API version to `2025-09-30.preview`. It is built on top of SDK version 49.0.0 and 49.1.0-beta.1 which contain breaking changes. Please review the changelog for these versions if upgrading from older SDK versions.
 
