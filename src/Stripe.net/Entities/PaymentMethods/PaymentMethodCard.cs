@@ -178,5 +178,11 @@ namespace Stripe
         [STJS.JsonPropertyName("wallet")]
 #endif
         public PaymentMethodCardWallet Wallet { get; set; }
+
+        [JsonProperty("benefits")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("benefits")]
+#endif
+        public PaymentMethodCardBenefits Benefits { get; set; }
     }
 }

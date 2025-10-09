@@ -9,6 +9,15 @@ namespace Stripe
     public class PaymentIntentPaymentDetailsOptions : INestedOptions
     {
         /// <summary>
+        /// Benefit details for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("benefit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("benefit")]
+#endif
+        public PaymentIntentPaymentDetailsBenefitOptions Benefit { get; set; }
+
+        /// <summary>
         /// Car rental details for this PaymentIntent.
         /// </summary>
         [JsonProperty("car_rental")]

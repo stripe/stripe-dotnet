@@ -9,9 +9,9 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event occurs when a bill setting is updated.
+    /// Occurs when a Card Creator's configuration is updated.
     /// </summary>
-    public class V2BillingBillSettingUpdatedEventNotification : V2.Core.EventNotification
+    public class V2CoreAccountIncludingConfigurationCardCreatorUpdatedEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -27,27 +27,27 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<V2.Billing.BillSetting> FetchRelatedObjectAsync()
+        public Task<V2.Core.Account> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<V2.Billing.BillSetting>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<V2.Core.Account>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public V2.Billing.BillSetting FetchRelatedObject()
+        public V2.Core.Account FetchRelatedObject()
         {
-            return this.FetchRelatedObject<V2.Billing.BillSetting>(this.RelatedObject);
+            return this.FetchRelatedObject<V2.Core.Account>(this.RelatedObject);
         }
 
-        public V2BillingBillSettingUpdatedEvent FetchEvent()
+        public V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent FetchEvent()
         {
-            return this.FetchEvent<V2BillingBillSettingUpdatedEvent>();
+            return this.FetchEvent<V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent>();
         }
 
-        public Task<V2BillingBillSettingUpdatedEvent> FetchEventAsync()
+        public Task<V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent> FetchEventAsync()
         {
-            return this.FetchEventAsync<V2BillingBillSettingUpdatedEvent>();
+            return this.FetchEventAsync<V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent>();
         }
     }
 }

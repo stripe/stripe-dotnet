@@ -77,6 +77,22 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Retrieves a payment method’s balance.</p>.
+        /// </summary>
+        public virtual PaymentMethodBalance CheckBalance(string id, PaymentMethodCheckBalanceOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentMethodBalance>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_methods/{WebUtility.UrlEncode(id)}/check_balance", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Retrieves a payment method’s balance.</p>.
+        /// </summary>
+        public virtual Task<PaymentMethodBalance> CheckBalanceAsync(string id, PaymentMethodCheckBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentMethodBalance>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_methods/{WebUtility.UrlEncode(id)}/check_balance", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Creates a PaymentMethod object. Read the <a
         /// href="https://stripe.com/docs/stripe-js/reference#stripe-create-payment-method">Stripe.js
         /// reference</a> to learn how to create PaymentMethods via Stripe.js.</p>.

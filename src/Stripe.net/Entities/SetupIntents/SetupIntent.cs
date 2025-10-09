@@ -495,6 +495,12 @@ namespace Stripe
 #endif
         public List<string> PaymentMethodTypes { get; set; }
 
+        [JsonProperty("setup_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_details")]
+#endif
+        public SetupIntentSetupDetails SetupDetails { get; set; }
+
         #region Expandable SingleUseMandate
 
         /// <summary>
