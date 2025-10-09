@@ -209,6 +209,17 @@ namespace Stripe
         public PaymentMethodConfigurationCashappOptions Cashapp { get; set; }
 
         /// <summary>
+        /// <a href="https://stripe.com/docs/payments/stablecoin-payments">Stablecoin payments</a>
+        /// enable customers to pay in stablecoins like USDC from 100s of wallets including Phantom
+        /// and Metamask.
+        /// </summary>
+        [JsonProperty("crypto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto")]
+#endif
+        public PaymentMethodConfigurationCryptoOptions Crypto { get; set; }
+
+        /// <summary>
         /// Uses a customer’s <a href="https://stripe.com/docs/payments/customer-balance">cash
         /// balance</a> for the payment. The cash balance can be funded via a bank transfer. Check
         /// this <a href="https://stripe.com/docs/payments/bank-transfers">page</a> for more

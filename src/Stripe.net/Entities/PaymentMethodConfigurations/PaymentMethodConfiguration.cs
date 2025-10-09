@@ -170,6 +170,12 @@ namespace Stripe
 #endif
         public PaymentMethodConfigurationCashapp Cashapp { get; set; }
 
+        [JsonProperty("crypto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto")]
+#endif
+        public PaymentMethodConfigurationCrypto Crypto { get; set; }
+
         [JsonProperty("customer_balance")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_balance")]
