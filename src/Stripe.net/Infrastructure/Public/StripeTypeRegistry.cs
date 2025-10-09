@@ -895,6 +895,14 @@ namespace Stripe
                 { "v2.core.account.created", typeof(Events.V2CoreAccountCreatedEvent) },
                 { "v2.core.account.updated", typeof(Events.V2CoreAccountUpdatedEvent) },
                 {
+                    "v2.core.account[configuration.card_creator].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.card_creator].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent)
+                },
+                {
                     "v2.core.account[configuration.customer].capability_status_updated", typeof(
                     Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent)
                 },
@@ -1941,6 +1949,14 @@ namespace Stripe
                 {
                     "v2.core.account.updated", typeof(
                     Events.V2CoreAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.card_creator].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.card_creator].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCardCreatorUpdatedEventNotification)
                 },
                 {
                     "v2.core.account[configuration.customer].capability_status_updated", typeof(

@@ -9,6 +9,15 @@ namespace Stripe.V2.Core
     public class AccountCreateConfigurationOptions : INestedOptions
     {
         /// <summary>
+        /// The CardCreator Configuration allows the Account to create and issue cards to users.
+        /// </summary>
+        [JsonProperty("card_creator")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_creator")]
+#endif
+        public AccountCreateConfigurationCardCreatorOptions CardCreator { get; set; }
+
+        /// <summary>
         /// The Customer Configuration allows the Account to be used in inbound payment flows.
         /// </summary>
         [JsonProperty("customer")]
