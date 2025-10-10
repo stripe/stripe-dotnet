@@ -8,7 +8,6 @@ namespace Examples.V2
     using Microsoft.AspNetCore.Mvc;
     using Stripe;
     using Stripe.Events;
-    using Stripe.V2;
 
     /// <summary>
     /// Receive and process EventNotifications like the v1.billing.meter.error_report_triggered event.
@@ -18,6 +17,7 @@ namespace Examples.V2
     ///   - call StripeClient.v2.core.events.retrieve to retrieve the full event object
     ///   - if it is a V1BillingMeterErrorReportTriggeredEvent event type, call fetchRelatedObject
     ///     to retrieve the Billing Meter object associated with the event.
+    ///   - handle unknown event types gracefully.
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
@@ -31,7 +31,7 @@ namespace Examples.V2
             var apiKey = Environment.GetEnvironmentVariable("STRIPE_API_KEY");
             client = new StripeClient(apiKey);
 
-            webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET");
+            webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET") ?? string.Empty;
         }
 
         [HttpPost]
@@ -43,26 +43,30 @@ namespace Examples.V2
                 var eventNotification = client.ParseEventNotification(json, Request.Headers["Stripe-Signature"], webhookSecret);
 
                 // match on the type of the class to determine what event you have
-                if (eventNotification is V1BillingMeterErrorReportTriggeredEventNotification evt)
+                if (eventNotification is V1BillingMeterErrorReportTriggeredEventNotification notif)
                 {
-                    // the related object is correctly typed
-                    var meter = evt.FetchRelatedObject();
-                    Console.WriteLine($"Default aggregation: {meter.DefaultAggregation}");
+                    // there's basic info about the related object in the notification
+                    Console.WriteLine(
+                        $"Meter w/ id {notif.RelatedObject.Id} had a problem");
 
-                    // can also fetch the full event to get the event data
-                    var eventObj = evt.FetchEvent();
-                    var eventData = eventObj.Data;
-                    Console.WriteLine($"Err summary: {eventData.DeveloperMessageSummary}");
+                    // or you can fetch the full object form the API for more details
+                    var meter = await notif.FetchRelatedObjectAsync();
+                    Console.WriteLine($"Meter {meter.DisplayName} ({meter.Id}) had a problem");
+
+                    // And you can always fetch the full event:
+                    var evt = await notif.FetchEventAsync();
+                    Console.WriteLine($"More info: {evt.Data.DeveloperMessageSummary}");
                 }
-
-                // check other types the SDK knows about
-                // for event types that were released after this SDK was generated, check type
                 else if (eventNotification is UnknownEventNotification unknownEvt)
                 {
-                    // fall back to checking type
+                    // Events that were introduced after this SDK version release are
+                    // represented as `UnknownEventNotification`s.
+                    // They're valid, the SDK just doesn't have corresponding classes for them.
+                    // You must match on the "type" property instead.
                     if (unknownEvt.Type == "some.other.event")
                     {
-                        // handle the event
+                        // you can still `.fetchEvent()` and `.fetchRelatedObject()`, but the latter may
+                        // return `null` if that event type doesn't have a related object.
                     }
                 }
 

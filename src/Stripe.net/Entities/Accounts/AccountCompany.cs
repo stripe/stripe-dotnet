@@ -178,6 +178,16 @@ namespace Stripe
         public AccountCompanyRegistrationDate RegistrationDate { get; set; }
 
         /// <summary>
+        /// This hash is used to attest that the representative is authorized to act as the
+        /// representative of their legal entity.
+        /// </summary>
+        [JsonProperty("representative_declaration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("representative_declaration")]
+#endif
+        public AccountCompanyRepresentativeDeclaration RepresentativeDeclaration { get; set; }
+
+        /// <summary>
         /// The category identifying the legal structure of the company or legal entity. Also
         /// available for accounts where <a
         /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>

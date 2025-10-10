@@ -314,10 +314,6 @@ namespace Stripe
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
                 },
-                {
-                    "v2.billing.bill_setting.updated", typeof(
-                    Events.V2BillingBillSettingUpdatedEvent)
-                },
                 { "v2.core.account.closed", typeof(Events.V2CoreAccountClosedEvent) },
                 { "v2.core.account.created", typeof(Events.V2CoreAccountCreatedEvent) },
                 { "v2.core.account.updated", typeof(Events.V2CoreAccountUpdatedEvent) },
@@ -568,10 +564,6 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEventNotification)
-                },
-                {
-                    "v2.billing.bill_setting.updated", typeof(
-                    Events.V2BillingBillSettingUpdatedEventNotification)
                 },
                 {
                     "v2.core.account.closed", typeof(
