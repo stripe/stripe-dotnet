@@ -102,6 +102,7 @@ namespace Stripe
                 { "forwarding.request", typeof(Forwarding.Request) },
                 { "funding_instructions", typeof(FundingInstructions) },
                 { "fx_quote", typeof(FxQuote) },
+                { "identity.blocklist_entry", typeof(Identity.BlocklistEntry) },
                 { "identity.verification_report", typeof(Identity.VerificationReport) },
                 { "identity.verification_session", typeof(Identity.VerificationSession) },
                 { "invoice", typeof(Invoice) },

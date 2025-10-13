@@ -11,6 +11,15 @@ namespace Stripe.Identity
     public class VerificationReportListOptions : ListOptions
     {
         /// <summary>
+        /// Only return VerificationReports that were blocked by this BlocklistEntry id.
+        /// </summary>
+        [JsonProperty("blocked_by_entry")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("blocked_by_entry")]
+#endif
+        public string BlockedByEntry { get; set; }
+
+        /// <summary>
         /// A string to reference this user. This can be a customer ID, a session ID, or similar,
         /// and can be used to reconcile this verification with your internal systems.
         /// </summary>
