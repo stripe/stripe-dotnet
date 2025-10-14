@@ -19,26 +19,38 @@ on:
       - feature/**
 
 jobs:
-  prepare-matrix:
+  prepare-dotnet-versions:
     runs-on: ubuntu-latest
     outputs:
-      dotnet-version: ${{ steps.set-matrix.outputs.dotnet_version }}
+      supported-dotnet-versions: ${{ steps.supported-dotnet-versions.outputs.dotnet_versions }}
+      latest-dotnet-versions: ${{ steps.latest-dotnet-version.outputs.latest_dotnet_version }}
     steps:
       - uses: actions/checkout@v4
-      - name: Set matrix data
-        id: set-matrix
+      - name: Get all supported .NET versions
+        id: supported-dotnet-versions
         # dotnet-version is built from the <TargetFrameworks>...</TargetFrameworks> in the Stripe.net.csproj
         run: |
-          echo "dotnet_version<<EOF" >> $GITHUB_OUTPUT
+          echo "dotnet_versions<<EOF" >> $GITHUB_OUTPUT
           sed -n 's/.*<TargetFrameworks>\(.*\)<\/TargetFrameworks>.*/\1/p' src/Stripe.net/Stripe.net.csproj \
             | tr ';' '\n' \
             | sed -n 's/^net\([0-9]\.[^;]*\)$/\1.x/p' \
             | sed '/^$/d' \
             >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
+      - name: Get latest .NET version
+        id: latest-dotnet-version
+        run: |
+          versions=(${{ steps.supported-dotnet-versions.outputs.dotnet_versions }})
+          maxValue=0
+          for i in "${versions[@]}"; do
+            if (( i > maxValue )); then
+              maxValue=$i
+            fi
+          done
+          echo "latest_dotnet_version=$maxValue" >> $GITHUB_OUTPUT
   build:
     name: Build and test
-    needs: prepare-matrix # This job depends on prepare-matrix
+    needs: prepare-dotnet-versions
     # TODO: this step is not compatible with ubuntu 24 LTS, so we pin the version here instead of using ubuntu-latest
     runs-on: ubuntu-22.04
 
@@ -49,7 +61,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ needs.prepare-matrix.outputs.dotnet-version }}
+          dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.supported-dotnet-versions }}
 
       - name: Install tools
         run: |
@@ -118,13 +130,14 @@ jobs:
   compat:
     name: Compat
     if: github.event_name == 'pull_request'
+    needs: prepare-dotnet-versions
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
       - name: Run backcompat check
         run: dotnet pack src/Stripe.net -p:RunBaselineCheck=true
 
