@@ -19,26 +19,9 @@ on:
       - feature/**
 
 jobs:
-  prepare-matrix:
-    runs-on: ubuntu-latest
-    outputs:
-      dotnet-version: ${{ steps.set-matrix.outputs.dotnet_version }}
-    steps:
-      - uses: actions/checkout@v4
-      - name: Set matrix data
-        id: set-matrix
-        # dotnet-version is built from the <TargetFrameworks>...</TargetFrameworks> in the Stripe.net.csproj
-        run: |
-          echo "dotnet_version<<EOF" >> $GITHUB_OUTPUT
-          sed -n 's/.*<TargetFrameworks>\(.*\)<\/TargetFrameworks>.*/\1/p' src/Stripe.net/Stripe.net.csproj \
-            | tr ';' '\n' \
-            | sed -n 's/^net\([0-9]\.[^;]*\)$/\1.x/p' \
-            | sed '/^$/d' \
-            >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
   build:
     name: Build and test
-    needs: prepare-matrix # This job depends on prepare-matrix
+
     # TODO: this step is not compatible with ubuntu 24 LTS, so we pin the version here instead of using ubuntu-latest
     runs-on: ubuntu-22.04
 
@@ -49,17 +32,21 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: ${{ needs.prepare-matrix.outputs.dotnet-version }}
+          # see: https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy
+          # even numbers are LTS
+          # TODO: add 9.0.x; https://go/j/RUN_DEVSDK-1957
+          dotnet-version: |
+            5.0.x
+            6.0.x
+            7.0.404
+            8.0.x
 
       - name: Install tools
         run: |
           dotnet tool restore
 
       - name: Build Release
-        # Also print the dotnet version we're using to build
-        run: |
-          echo "Building using dotnet v"$(dotnet --version)
-          dotnet build src -c Release /p:ContinuousIntegrationBuild=true
+        run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
 
       - name: Determine OpenAPI versions and extract specs
         run: |
