@@ -41,11 +41,13 @@ jobs:
         id: latest-dotnet-version
         run: |
           versions=(${{ steps.supported-dotnet-versions.outputs.dotnet_versions }})
-          max_version=0
+          max_major_version=0
+          max_version=''
           for i in "${versions[@]}"; do
             major_version=$(echo $i | cut -d'.' -f1)
-            if (( major_version > max_version )); then
-              max_version=$major_version
+            if (( major_version > max_major_version )); then
+              max_major_version=$major_version
+              max_version=$i
             fi
           done
           echo "latest_dotnet_version=$max_version" >> $GITHUB_OUTPUT
