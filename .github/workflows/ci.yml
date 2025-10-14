@@ -45,7 +45,7 @@ jobs:
           for i in "${versions[@]}"; do
             major_version=$(echo $i | cut -d'.' -f1)
             if (( major_version > max_version )); then
-              max_version=$i
+              max_version=$major_version
             fi
           done
           echo "latest_dotnet_version=$max_version" >> $GITHUB_OUTPUT
