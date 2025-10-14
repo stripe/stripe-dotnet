@@ -23,7 +23,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       supported-dotnet-versions: ${{ steps.supported-dotnet-versions.outputs.dotnet_versions }}
-      latest-dotnet-versions: ${{ steps.latest-dotnet-version.outputs.latest_dotnet_version }}
+      latest-dotnet-version: ${{ steps.latest-dotnet-version.outputs.latest_dotnet_version }}
     steps:
       - uses: actions/checkout@v4
       - name: Get all supported .NET versions
