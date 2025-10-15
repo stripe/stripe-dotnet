@@ -44,6 +44,14 @@ namespace StripeTests
                 JsonConvert.DeserializeObject<Event>(serialized),
                 Formatting.Indented);
             Assert.Equal(serialized, reserialized);
+
+            json = GetResourceAsString("api_fixtures.customer_with_expansions.json");
+            var customer = JsonConvert.DeserializeObject<Customer>(json);
+            serialized = JsonConvert.SerializeObject(customer, Formatting.Indented);
+            reserialized = JsonConvert.SerializeObject(
+                JsonConvert.DeserializeObject<Customer>(serialized),
+                Formatting.Indented);
+            Assert.Equal(serialized, reserialized);
         }
     }
 }
