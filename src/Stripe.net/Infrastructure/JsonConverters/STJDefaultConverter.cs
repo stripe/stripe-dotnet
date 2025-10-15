@@ -47,22 +47,21 @@ namespace Stripe.Infrastructure
 
                 string propertyName = reader.GetString();
 
-                foreach (var property in allProperties)
-                {
-                    if (property.JsonPropertyName == propertyName)
-                    {
-                        var valueType = property.PropertyInfo.PropertyType;
-                        var valueConverter = property.GetConverter(options);
+                // Advance the reader to the value token
+                reader.Read();
 
-                        // Get the value.
-                        reader.Read();
+                var property = allProperties.Find(p => p.JsonPropertyName == propertyName);
+                if (property != null)
+                {
+                    var valueType = property.PropertyInfo.PropertyType;
+                    var valueConverter = property.GetConverter(options);
+
+                    // Get the value.
 #pragma warning disable SA1009 // Closing parenthesis should be spaced correctly
-                        object value = valueConverter.Read(ref reader, valueType, options)!;
+                    object value = valueConverter.Read(ref reader, valueType, options)!;
 #pragma warning restore SA1009 // Closing parenthesis should be spaced correctly
 
-                        property.Set(newInstance, value);
-                        break;
-                    }
+                    property.Set(newInstance, value);
                 }
             }
 
