@@ -5,6 +5,25 @@ import? '../sdk-codegen/utils.just'
 _default:
     just --list --unsorted
 
+install:
+  #!/usr/bin/env bash
+  if [[ $(mise ls --current | grep -q "dotnet") == "" ]];
+  then
+    echo "Installing dotnet via mise..."
+    mise install dotnet
+  fi
+
+  export -p DOTNET_ROOT="$(mise where dotnet)"
+
+  echo "Ensuring all required versions are installed"
+  just install-sdk 9.0
+  just install-sdk 8.0
+
+  dotnet restore src/Stripe.net.sln
+
+install-sdk tpv:
+  ./scripts/dotnet-install.sh --channel {{ tpv }} --install-dir $DOTNET_ROOT
+
 # base test command that other, more specific commands use
 [no-quiet]
 [no-exit-message]
@@ -12,10 +31,10 @@ _test no_build framework config filter="":
     dotnet test {{no_build}} {{framework}} src/StripeTests/StripeTests.csproj -c {{config}} {{ if filter == "" {""} else {"--filter " + filter} }}
 
 # ⭐ run tests in debug mode
-test: (_test "" "-f net8.0" "Debug")
+test: (_test "" "-f net9.0" "Debug")
 
 # run a test matching a filter
-test-one name: (_test "" "-f net8.0" "Debug" name)
+test-one name: (_test "" "-f net9.0" "Debug" name)
 
 # skip build and don't specify the dotnet framework
 ci-test: (_test "--no-build" "" "Release")
