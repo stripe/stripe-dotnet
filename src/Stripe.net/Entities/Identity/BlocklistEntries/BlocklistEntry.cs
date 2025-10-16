@@ -11,8 +11,8 @@ namespace Stripe.Identity
     /// <summary>
     /// A BlocklistEntry represents an entry in our identity verification blocklist. It helps
     /// prevent fraudulent users from repeatedly attempting verification with similar
-    /// information. When you create a BlocklistEntry, we store data from a previous
-    /// verification attempt, such as document details or facial biometrics. This allows us to
+    /// information. When you create a BlocklistEntry, we store data from a specified
+    /// VerificationReport, such as document details or facial biometrics. This allows us to
     /// compare future verification attempts against these entries. If a match is found, we
     /// categorize the new verification as unverified.
     ///
@@ -85,16 +85,6 @@ namespace Stripe.Identity
         [STJS.JsonPropertyName("livemode")]
 #endif
         public bool Livemode { get; set; }
-
-        /// <summary>
-        /// Redaction status of the BlocklistEntry. If the BlocklistEntry isn't redacted, this field
-        /// is null.
-        /// </summary>
-        [JsonProperty("redaction")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("redaction")]
-#endif
-        public BlocklistEntryRedaction Redaction { get; set; }
 
         /// <summary>
         /// The current status of the BlocklistEntry.

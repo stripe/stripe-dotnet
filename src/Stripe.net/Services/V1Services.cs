@@ -31,6 +31,7 @@ namespace Stripe
         private CreditNoteService creditNotes;
         private CustomerService customers;
         private CustomerSessionService customerSessions;
+        private DelegatedCheckoutService delegatedCheckout;
         private DisputeService disputes;
         private EntitlementsService entitlements;
         private EphemeralKeyService ephemeralKeys;
@@ -168,6 +169,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual CustomerSessionService CustomerSessions => this.customerSessions ??= new CustomerSessionService(
+            this.Requestor);
+
+        public virtual DelegatedCheckoutService DelegatedCheckout => this.delegatedCheckout ??= new DelegatedCheckoutService(
             this.Requestor);
 
         public virtual DisputeService Disputes => this.disputes ??= new DisputeService(
