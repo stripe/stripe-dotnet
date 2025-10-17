@@ -1,5 +1,12 @@
 # Changelog
 
+## 49.1.0-alpha.3 - 2025-10-17
+* [#3220](https://github.com/stripe/stripe-dotnet/pull/3220) Update generated code for private-preview
+  * Add support for new resources `DelegatedCheckout.RequestedSession` and `Identity.BlocklistEntry`
+  * Add support for `Confirm`, `Create`, `Expire`, `Get`, and `Update` methods on resource `DelegatedCheckout.RequestedSession`
+  * Add support for `Create`, `Disable`, `Get`, and `List` methods on resource `Identity.BlocklistEntry`
+  * Add support for `BlockedByEntry` on `Identity.VerificationReport.Document`, `Identity.VerificationReport.Selfie`, and `Identity.VerificationReportListOptions`
+
 ## 49.1.0-alpha.2 - 2025-10-09
 * [#3218](https://github.com/stripe/stripe-dotnet/pull/3218) Update generated code for private-preview
   * Add support for new resource `PaymentMethodBalance`
