@@ -7,6 +7,7 @@ namespace Stripe
 
     public class IdentityService : Service
     {
+        private Identity.BlocklistEntryService blocklistEntries;
         private Identity.VerificationReportService verificationReports;
         private Identity.VerificationSessionService verificationSessions;
 
@@ -19,6 +20,9 @@ namespace Stripe
             : base(client)
         {
         }
+
+        public virtual Identity.BlocklistEntryService BlocklistEntries => this.blocklistEntries ??= new Identity.BlocklistEntryService(
+            this.Requestor);
 
         public virtual Identity.VerificationReportService VerificationReports => this.verificationReports ??= new Identity.VerificationReportService(
             this.Requestor);

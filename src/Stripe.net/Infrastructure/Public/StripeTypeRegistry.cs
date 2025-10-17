@@ -64,6 +64,10 @@ namespace Stripe
                 { "customer_balance_transaction", typeof(CustomerBalanceTransaction) },
                 { "customer_cash_balance_transaction", typeof(CustomerCashBalanceTransaction) },
                 { "customer_session", typeof(CustomerSession) },
+                {
+                    "delegated_checkout.requested_session", typeof(
+                    DelegatedCheckout.RequestedSession)
+                },
                 { "discount", typeof(Discount) },
                 { "dispute", typeof(Dispute) },
                 { "entitlements.active_entitlement", typeof(Entitlements.ActiveEntitlement) },
@@ -102,6 +106,7 @@ namespace Stripe
                 { "forwarding.request", typeof(Forwarding.Request) },
                 { "funding_instructions", typeof(FundingInstructions) },
                 { "fx_quote", typeof(FxQuote) },
+                { "identity.blocklist_entry", typeof(Identity.BlocklistEntry) },
                 { "identity.verification_report", typeof(Identity.VerificationReport) },
                 { "identity.verification_session", typeof(Identity.VerificationSession) },
                 { "invoice", typeof(Invoice) },
