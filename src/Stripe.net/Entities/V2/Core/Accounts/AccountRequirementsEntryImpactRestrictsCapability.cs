@@ -16,10 +16,13 @@ namespace Stripe.V2.Core
         /// <c>bacs_debit_payments</c>, <c>bancontact_payments</c>, <c>bank_accounts.local</c>,
         /// <c>bank_accounts.wire</c>, <c>blik_payments</c>, <c>boleto_payments</c>, <c>cards</c>,
         /// <c>card_payments</c>, <c>cartes_bancaires_payments</c>, <c>cashapp_payments</c>,
-        /// <c>crypto</c>, <c>eps_payments</c>, <c>financial_addresses.bank_accounts</c>,
-        /// <c>fpx_payments</c>, <c>gb_bank_transfer_payments</c>, <c>grabpay_payments</c>,
-        /// <c>holds_currencies.gbp</c>, <c>ideal_payments</c>,
-        /// <c>inbound_transfers.financial_accounts</c>, <c>jcb_payments</c>,
+        /// <c>commercial.celtic.charge_card</c>, <c>commercial.celtic.spend_card</c>,
+        /// <c>commercial.cross_river_bank.charge_card</c>,
+        /// <c>commercial.cross_river_bank.spend_card</c>, <c>commercial.stripe.charge_card</c>,
+        /// <c>commercial.stripe.prepaid_card</c>, <c>crypto</c>, <c>eps_payments</c>,
+        /// <c>financial_addresses.bank_accounts</c>, <c>fpx_payments</c>,
+        /// <c>gb_bank_transfer_payments</c>, <c>grabpay_payments</c>, <c>holds_currencies.gbp</c>,
+        /// <c>ideal_payments</c>, <c>inbound_transfers.financial_accounts</c>, <c>jcb_payments</c>,
         /// <c>jp_bank_transfer_payments</c>, <c>kakao_pay_payments</c>, <c>klarna_payments</c>,
         /// <c>konbini_payments</c>, <c>kr_card_payments</c>, <c>link_payments</c>,
         /// <c>mobilepay_payments</c>, <c>multibanco_payments</c>, <c>mx_bank_transfer_payments</c>,
@@ -42,7 +45,8 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// The configuration which specifies the Capability which will be restricted.
-        /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
+        /// One of: <c>card_creator</c>, <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or
+        /// <c>storer</c>.
         /// </summary>
         [JsonProperty("configuration")]
 #if NET6_0_OR_GREATER

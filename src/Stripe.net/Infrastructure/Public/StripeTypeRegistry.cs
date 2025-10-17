@@ -137,6 +137,7 @@ namespace Stripe
                 },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
+                { "payment_method_balance", typeof(PaymentMethodBalance) },
                 { "payment_method_configuration", typeof(PaymentMethodConfiguration) },
                 { "payment_method_domain", typeof(PaymentMethodDomain) },
                 { "payment_record", typeof(PaymentRecord) },
@@ -757,10 +758,6 @@ namespace Stripe
                 { "v1.transfer.created", typeof(Events.V1TransferCreatedEvent) },
                 { "v1.transfer.reversed", typeof(Events.V1TransferReversedEvent) },
                 { "v1.transfer.updated", typeof(Events.V1TransferUpdatedEvent) },
-                {
-                    "v2.billing.bill_setting.updated", typeof(
-                    Events.V2BillingBillSettingUpdatedEvent)
-                },
                 { "v2.billing.cadence.billed", typeof(Events.V2BillingCadenceBilledEvent) },
                 { "v2.billing.cadence.canceled", typeof(Events.V2BillingCadenceCanceledEvent) },
                 { "v2.billing.cadence.created", typeof(Events.V2BillingCadenceCreatedEvent) },
@@ -897,6 +894,14 @@ namespace Stripe
                 { "v2.core.account.closed", typeof(Events.V2CoreAccountClosedEvent) },
                 { "v2.core.account.created", typeof(Events.V2CoreAccountCreatedEvent) },
                 { "v2.core.account.updated", typeof(Events.V2CoreAccountUpdatedEvent) },
+                {
+                    "v2.core.account[configuration.card_creator].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.card_creator].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent)
+                },
                 {
                     "v2.core.account[configuration.customer].capability_status_updated", typeof(
                     Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent)
@@ -1786,10 +1791,6 @@ namespace Stripe
                 { "v1.transfer.reversed", typeof(Events.V1TransferReversedEventNotification) },
                 { "v1.transfer.updated", typeof(Events.V1TransferUpdatedEventNotification) },
                 {
-                    "v2.billing.bill_setting.updated", typeof(
-                    Events.V2BillingBillSettingUpdatedEventNotification)
-                },
-                {
                     "v2.billing.cadence.billed", typeof(
                     Events.V2BillingCadenceBilledEventNotification)
                 },
@@ -1948,6 +1949,14 @@ namespace Stripe
                 {
                     "v2.core.account.updated", typeof(
                     Events.V2CoreAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.card_creator].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.card_creator].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCardCreatorUpdatedEventNotification)
                 },
                 {
                     "v2.core.account[configuration.customer].capability_status_updated", typeof(

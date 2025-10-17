@@ -8,19 +8,20 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// This event occurs when a bill setting is updated.
+    /// Occurs when the status of an Account's card creator configuration capability is updated.
     /// </summary>
-    public class V2BillingBillSettingUpdatedEvent : V2.Core.Event
+    public class V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent : V2.Core.Event
     {
         /// <summary>
-        /// Data for the v2.billing.bill_setting.updated event.
+        /// Data for the v2.core.account[configuration.card_creator].capability_status_updated
+        /// event.
         /// </summary>
         [JsonProperty("data")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("data")]
 #endif
 
-        public V2BillingBillSettingUpdatedEventData Data { get; set; }
+        public V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEventData Data { get; set; }
 
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -36,17 +37,17 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
-        public Task<V2.Billing.BillSetting> FetchRelatedObjectAsync()
+        public Task<V2.Core.Account> FetchRelatedObjectAsync()
         {
-            return this.FetchRelatedObjectAsync<V2.Billing.BillSetting>(this.RelatedObject);
+            return this.FetchRelatedObjectAsync<V2.Core.Account>(this.RelatedObject);
         }
 
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
-        public V2.Billing.BillSetting FetchRelatedObject()
+        public V2.Core.Account FetchRelatedObject()
         {
-            return this.FetchRelatedObject<V2.Billing.BillSetting>(this.RelatedObject);
+            return this.FetchRelatedObject<V2.Core.Account>(this.RelatedObject);
         }
     }
 }

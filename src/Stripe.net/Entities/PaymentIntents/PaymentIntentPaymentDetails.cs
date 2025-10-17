@@ -44,5 +44,11 @@ namespace Stripe
         [STJS.JsonPropertyName("subscription")]
 #endif
         public PaymentIntentPaymentDetailsSubscription Subscription { get; set; }
+
+        [JsonProperty("benefit")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("benefit")]
+#endif
+        public PaymentIntentPaymentDetailsBenefit Benefit { get; set; }
     }
 }

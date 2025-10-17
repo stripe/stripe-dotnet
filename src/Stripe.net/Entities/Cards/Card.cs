@@ -168,6 +168,12 @@ namespace Stripe
 #endif
         public List<string> AvailablePayoutMethods { get; set; }
 
+        [JsonProperty("benefits")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("benefits")]
+#endif
+        public CardBenefits Benefits { get; set; }
+
         /// <summary>
         /// Card brand. Can be <c>American Express</c>, <c>Cartes Bancaires</c>, <c>Diners Club</c>,
         /// <c>Discover</c>, <c>Eftpos Australia</c>, <c>Girocard</c>, <c>JCB</c>,
