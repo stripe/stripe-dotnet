@@ -10,7 +10,7 @@ namespace Stripe.Terminal
     public class ReaderCollectInputsOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// List of inputs to be collected using the Reader.
+        /// List of inputs to be collected from the customer using the Reader. Maximum 5 inputs.
         /// </summary>
         [JsonProperty("inputs")]
 #if NET6_0_OR_GREATER

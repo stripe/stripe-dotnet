@@ -21,7 +21,7 @@ namespace Stripe.Terminal
         public string AllowRedisplay { get; set; }
 
         /// <summary>
-        /// Configuration overrides.
+        /// Configuration overrides for this setup, such as MOTO and customer cancellation settings.
         /// </summary>
         [JsonProperty("process_config")]
 #if NET6_0_OR_GREATER
@@ -30,7 +30,7 @@ namespace Stripe.Terminal
         public ReaderProcessConfigOptions ProcessConfig { get; set; }
 
         /// <summary>
-        /// SetupIntent ID.
+        /// The ID of the SetupIntent to process on the reader.
         /// </summary>
         [JsonProperty("setup_intent")]
 #if NET6_0_OR_GREATER

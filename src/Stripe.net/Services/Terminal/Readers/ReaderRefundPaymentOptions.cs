@@ -63,7 +63,7 @@ namespace Stripe.Terminal
         public bool? RefundApplicationFee { get; set; }
 
         /// <summary>
-        /// Configuration overrides.
+        /// Configuration overrides for this refund, such as customer cancellation settings.
         /// </summary>
         [JsonProperty("refund_payment_config")]
 #if NET6_0_OR_GREATER

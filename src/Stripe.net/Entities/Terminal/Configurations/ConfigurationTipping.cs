@@ -62,6 +62,12 @@ namespace Stripe.Terminal
 #endif
         public ConfigurationTippingGbp Gbp { get; set; }
 
+        [JsonProperty("gip")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("gip")]
+#endif
+        public ConfigurationTippingGip Gip { get; set; }
+
         [JsonProperty("hkd")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hkd")]
