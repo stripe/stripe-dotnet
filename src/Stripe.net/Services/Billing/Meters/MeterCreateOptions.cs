@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Billing
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -25,6 +26,16 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("default_aggregation")]
 #endif
         public MeterDefaultAggregationOptions DefaultAggregation { get; set; }
+
+        /// <summary>
+        /// Set of keys that will be used to group meter events by. Each key must be present in the
+        /// event payload.
+        /// </summary>
+        [JsonProperty("dimension_payload_keys")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("dimension_payload_keys")]
+#endif
+        public List<string> DimensionPayloadKeys { get; set; }
 
         /// <summary>
         /// The meter’s name. Not visible to the customer.

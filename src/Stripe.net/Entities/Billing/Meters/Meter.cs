@@ -2,6 +2,7 @@
 namespace Stripe.Billing
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
@@ -58,6 +59,15 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("default_aggregation")]
 #endif
         public MeterDefaultAggregation DefaultAggregation { get; set; }
+
+        /// <summary>
+        /// Set of keys that will be used to group meter events by.
+        /// </summary>
+        [JsonProperty("dimension_payload_keys")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("dimension_payload_keys")]
+#endif
+        public List<string> DimensionPayloadKeys { get; set; }
 
         /// <summary>
         /// The meter's name.
