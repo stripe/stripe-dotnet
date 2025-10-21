@@ -31,7 +31,7 @@ jobs:
         id: supported-dotnet-versions
         run: |
           echo "dotnet_versions<<EOF" >> $GITHUB_OUTPUT
-          just print_supported_dotnet_versions
+          just print_supported_dotnet_versions >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
       - name: Get latest .NET version
         id: latest-dotnet-version
