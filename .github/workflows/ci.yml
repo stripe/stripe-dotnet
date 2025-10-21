@@ -28,29 +28,15 @@ jobs:
       - uses: actions/checkout@v4
       - name: Get all supported .NET versions
         id: supported-dotnet-versions
-        # dotnet-version is built from the <TargetFrameworks>...</TargetFrameworks> in the Stripe.net.csproj
         run: |
           echo "dotnet_versions<<EOF" >> $GITHUB_OUTPUT
-          sed -n 's/.*<TargetFrameworks>\(.*\)<\/TargetFrameworks>.*/\1/p' src/Stripe.net/Stripe.net.csproj \
-            | tr ';' '\n' \
-            | sed -n 's/^net\([0-9]\.[^;]*\)$/\1.x/p' \
-            | sed '/^$/d' \
-            >> $GITHUB_OUTPUT
+          just print_supported_dotnet_versions
           echo "EOF" >> $GITHUB_OUTPUT
       - name: Get latest .NET version
         id: latest-dotnet-version
         run: |
-          versions=(${{ steps.supported-dotnet-versions.outputs.dotnet_versions }})
-          max_major_version=0
-          max_version=''
-          for i in "${versions[@]}"; do
-            major_version=$(echo $i | cut -d'.' -f1)
-            if (( major_version > max_major_version )); then
-              max_major_version=$major_version
-              max_version=$i
-            fi
-          done
-          echo "latest_dotnet_version=$max_version" >> $GITHUB_OUTPUT
+          latest_dotnet_version=`just print_latest_supported_dotnet_version`
+          echo "latest_dotnet_version=$latest_dotnet_version" >> $GITHUB_OUTPUT
   build:
     name: Build and test
     needs: prepare-dotnet-versions
