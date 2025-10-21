@@ -9,7 +9,7 @@ namespace Stripe.Terminal
     public class ReaderActionCollectInputsInputSelectionChoice : StripeEntity<ReaderActionCollectInputsInputSelectionChoice>, IHasId
     {
         /// <summary>
-        /// The id to be selected.
+        /// The identifier for the selected choice. Maximum 50 characters.
         /// </summary>
         [JsonProperty("id")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,7 @@ namespace Stripe.Terminal
         public string Id { get; set; }
 
         /// <summary>
-        /// The button style for the choice.
+        /// The button style for the choice. Can be <c>primary</c> or <c>secondary</c>.
         /// One of: <c>primary</c>, or <c>secondary</c>.
         /// </summary>
         [JsonProperty("style")]
@@ -28,7 +28,7 @@ namespace Stripe.Terminal
         public string Style { get; set; }
 
         /// <summary>
-        /// The text to be selected.
+        /// The text to be selected. Maximum 30 characters.
         /// </summary>
         [JsonProperty("text")]
 #if NET6_0_OR_GREATER

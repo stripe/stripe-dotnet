@@ -21,6 +21,15 @@ namespace Stripe
 #endif
         public long AmountRefunded { get; set; }
 
+        /// <summary>
+        /// The PaymentRecord refund details associated with this credit note refund.
+        /// </summary>
+        [JsonProperty("payment_record_refund")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_record_refund")]
+#endif
+        public CreditNoteRefundPaymentRecordRefund PaymentRecordRefund { get; set; }
+
         #region Expandable Refund
 
         /// <summary>
@@ -61,5 +70,15 @@ namespace Stripe
 #endif
         internal ExpandableField<Refund> InternalRefund { get; set; }
         #endregion
+
+        /// <summary>
+        /// Type of the refund, one of <c>refund</c> or <c>payment_record_refund</c>.
+        /// One of: <c>payment_record_refund</c>, or <c>refund</c>.
+        /// </summary>
+        [JsonProperty("type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("type")]
+#endif
+        public string Type { get; set; }
     }
 }

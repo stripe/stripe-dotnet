@@ -209,6 +209,17 @@ namespace Stripe
         public PaymentMethodConfigurationCashappOptions Cashapp { get; set; }
 
         /// <summary>
+        /// <a href="https://stripe.com/docs/payments/stablecoin-payments">Stablecoin payments</a>
+        /// enable customers to pay in stablecoins like USDC from 100s of wallets including Phantom
+        /// and Metamask.
+        /// </summary>
+        [JsonProperty("crypto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto")]
+#endif
+        public PaymentMethodConfigurationCryptoOptions Crypto { get; set; }
+
+        /// <summary>
         /// Uses a customer’s <a href="https://stripe.com/docs/payments/customer-balance">cash
         /// balance</a> for the payment. The cash balance can be funded via a bank transfer. Check
         /// this <a href="https://stripe.com/docs/payments/bank-transfers">page</a> for more
@@ -379,6 +390,17 @@ namespace Stripe
         [STJS.JsonPropertyName("link")]
 #endif
         public PaymentMethodConfigurationLinkOptions Link { get; set; }
+
+        /// <summary>
+        /// MB WAY is the most popular wallet in Portugal. After entering their phone number in your
+        /// checkout, customers approve the payment directly in their MB WAY app. Check this <a
+        /// href="https://stripe.com/docs/payments/mb-way">page</a> for more details.
+        /// </summary>
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public PaymentMethodConfigurationMbWayOptions MbWay { get; set; }
 
         /// <summary>
         /// MobilePay is a <a

@@ -464,6 +464,12 @@ namespace Stripe
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
 
+        [JsonProperty("payment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_details")]
+#endif
+        public PaymentIntentPaymentDetails PaymentDetails { get; set; }
+
         #region Expandable PaymentMethod
 
         /// <summary>
