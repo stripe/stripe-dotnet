@@ -19,9 +19,28 @@ on:
       - feature/**
 
 jobs:
+  prepare-dotnet-versions:
+    runs-on: ubuntu-latest
+    outputs:
+      supported-dotnet-versions: ${{ steps.supported-dotnet-versions.outputs.dotnet_versions }}
+      latest-dotnet-version: ${{ steps.latest-dotnet-version.outputs.latest_dotnet_version }}
+    steps:
+      - uses: extractions/setup-just@v2
+      - uses: actions/checkout@v4
+      - name: Get all supported .NET versions
+        id: supported-dotnet-versions
+        run: |
+          echo "dotnet_versions<<EOF" >> $GITHUB_OUTPUT
+          just print_supported_dotnet_versions >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      - name: Get latest .NET version
+        id: latest-dotnet-version
+        run: |
+          latest_dotnet_version=`just print_latest_supported_dotnet_version`
+          echo "latest_dotnet_version=$latest_dotnet_version" >> $GITHUB_OUTPUT
   build:
     name: Build and test
-
+    needs: prepare-dotnet-versions
     # TODO: this step is not compatible with ubuntu 24 LTS, so we pin the version here instead of using ubuntu-latest
     runs-on: ubuntu-22.04
 
@@ -32,21 +51,17 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          # see: https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy
-          # even numbers are LTS
-          # TODO: add 9.0.x; https://go/j/RUN_DEVSDK-1957
-          dotnet-version: |
-            5.0.x
-            6.0.x
-            7.0.404
-            8.0.x
+          dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.supported-dotnet-versions }}
 
       - name: Install tools
         run: |
           dotnet tool restore
 
       - name: Build Release
-        run: dotnet build src -c Release /p:ContinuousIntegrationBuild=true
+        # Also print the dotnet version we're using to build
+        run: |
+          echo "Building using dotnet v"$(dotnet --version)
+          dotnet build src -c Release /p:ContinuousIntegrationBuild=true
 
       - name: Determine OpenAPI versions and extract specs
         run: |
@@ -105,20 +120,21 @@ jobs:
   compat:
     name: Compat
     if: github.event_name == 'pull_request'
+    needs: prepare-dotnet-versions
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
       - name: Run backcompat check
         run: dotnet pack src/Stripe.net -p:RunBaselineCheck=true
 
   publish:
     name: Publish
     if: (((github.event_name == 'push') || (github.event_name == 'workflow_dispatch')) && startsWith(github.ref, 'refs/tags/v') && endsWith(github.actor, '-stripe'))
-    needs: [build]
+    needs: [build, prepare-dotnet-versions]
     runs-on: ubuntu-latest
     steps:
       - name: Download all workflow run artifacts
@@ -129,7 +145,7 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
-          dotnet-version: 8.0.x
+          dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
       - name: Publish NuGet packages to NuGet
         run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source "nuget.org"
       - uses: stripe/openapi/actions/notify-release@master
