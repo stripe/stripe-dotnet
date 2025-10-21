@@ -25,6 +25,7 @@ jobs:
       supported-dotnet-versions: ${{ steps.supported-dotnet-versions.outputs.dotnet_versions }}
       latest-dotnet-version: ${{ steps.latest-dotnet-version.outputs.latest_dotnet_version }}
     steps:
+      - uses: extractions/setup-just@v2
       - uses: actions/checkout@v4
       - name: Get all supported .NET versions
         id: supported-dotnet-versions
