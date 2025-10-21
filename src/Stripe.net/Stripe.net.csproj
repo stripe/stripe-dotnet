@@ -5,7 +5,11 @@
     <Version>49.1.0-beta.1</Version>
     <LangVersion>8</LangVersion>
     <Authors>Stripe, Jayme Davis</Authors>
-    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;netstandard2.0;net462</TargetFrameworks>
+    <!--
+      see: https://docs.stripe.com/sdks/versioning?server=dotnet#stripe-sdk-language-version-support-policy
+      net* even numbers are LTS
+    -->
+    <TargetFrameworks>net5.0;net6.0;net7.0;net8.0;net9.0;netstandard2.0;net462</TargetFrameworks>
     <PackageTags>stripe;payment;credit;cards;money;gateway;paypal;braintree</PackageTags>
     <PackageIcon>icon.png</PackageIcon>
     <PackageProjectUrl>https://github.com/stripe/stripe-dotnet</PackageProjectUrl>
@@ -55,13 +59,16 @@
   <ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.0" />
   </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net9.0'">
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="9.0.0" />
+  </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" />
     <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
   </ItemGroup>
 
-  <ItemGroup Condition=" '$(TargetFramework)' == 'net462' ">
+  <ItemGroup Condition="'$(TargetFramework)' == 'net462'">
     <PackageReference Include="Microsoft.Bcl.AsyncInterfaces" Version="1.1.0" />
     <PackageReference Include="System.Runtime.InteropServices.RuntimeInformation" Version="4.3.0" />
     <Reference Include="System.Configuration" />
