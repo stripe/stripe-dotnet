@@ -21,7 +21,7 @@ namespace Stripe.Terminal
         public string Currency { get; set; }
 
         /// <summary>
-        /// Array of line items that were purchased.
+        /// Array of line items to display.
         /// </summary>
         [JsonProperty("line_items")]
 #if NET6_0_OR_GREATER
@@ -30,7 +30,8 @@ namespace Stripe.Terminal
         public List<ReaderCartLineItemOptions> LineItems { get; set; }
 
         /// <summary>
-        /// The amount of tax in cents.
+        /// The amount of tax in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("tax")]
 #if NET6_0_OR_GREATER
@@ -39,7 +40,8 @@ namespace Stripe.Terminal
         public long? Tax { get; set; }
 
         /// <summary>
-        /// Total balance of cart due in cents.
+        /// Total balance of cart due in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("total")]
 #if NET6_0_OR_GREATER

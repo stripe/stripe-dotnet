@@ -9,7 +9,7 @@ namespace Stripe.Terminal
     public class ReaderActionSetReaderDisplay : StripeEntity<ReaderActionSetReaderDisplay>
     {
         /// <summary>
-        /// Cart object to be displayed by the reader.
+        /// Cart object to be displayed by the reader, including line items, amounts, and currency.
         /// </summary>
         [JsonProperty("cart")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,8 @@ namespace Stripe.Terminal
         public ReaderActionSetReaderDisplayCart Cart { get; set; }
 
         /// <summary>
-        /// Type of information to be displayed by the reader.
+        /// Type of information to be displayed by the reader. Only <c>cart</c> is currently
+        /// supported.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

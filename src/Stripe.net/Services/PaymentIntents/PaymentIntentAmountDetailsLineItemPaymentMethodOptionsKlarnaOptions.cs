@@ -27,6 +27,16 @@ namespace Stripe
         public string ProductUrl { get; set; }
 
         /// <summary>
+        /// Unique reference for this line item to correlate it with your system’s internal records.
+        /// The field is displayed in the Klarna Consumer App if passed.
+        /// </summary>
+        [JsonProperty("reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference")]
+#endif
+        public string Reference { get; set; }
+
+        /// <summary>
         /// Reference for the subscription this line item is for.
         /// </summary>
         [JsonProperty("subscription_reference")]
