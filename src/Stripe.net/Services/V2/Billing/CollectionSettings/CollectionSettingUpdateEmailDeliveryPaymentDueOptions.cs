@@ -18,7 +18,7 @@ namespace Stripe.V2.Billing
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// If true the payment link to hosted invocie page would be included in email and PDF of
+        /// If true the payment link to hosted invoice page would be included in email and PDF of
         /// the invoice.
         /// </summary>
         [JsonProperty("include_payment_link")]

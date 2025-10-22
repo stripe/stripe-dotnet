@@ -7068,6 +7068,23 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2CoreVaultGbBankAccountGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/vault/gb_bank_accounts",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.vault.gb_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"confirmation_of_payee\":{\"result\":{\"created\":\"1970-01-12T21:42:34.472Z\",\"match_result\":\"unavailable\",\"matched\":{},\"message\":\"message\",\"provided\":{\"business_type\":\"personal\",\"name\":\"name\"}},\"status\":\"awaiting_acknowledgement\"},\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true,\"sort_code\":\"sort_code\"}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Vault.GbBankAccounts;
+            Stripe.V2.StripeList<Stripe.V2.Core.Vault.GbBankAccount> gbBankAccounts = service
+                .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/vault/gb_bank_accounts");
+        }
+
+        [Fact]
         public void TestV2CoreVaultGbBankAccountPost()
         {
             this.StubRequest(
@@ -7090,7 +7107,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2CoreVaultGbBankAccountGet()
+        public void TestV2CoreVaultGbBankAccountGet2()
         {
             this.StubRequest(
                 HttpMethod.Get,
@@ -7158,13 +7175,30 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2CoreVaultUsBankAccountGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/vault/us_bank_accounts",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true,\"verification\":{\"status\":\"verification_failed\"}}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Vault.UsBankAccounts;
+            Stripe.V2.StripeList<Stripe.V2.Core.Vault.UsBankAccount> usBankAccounts = service
+                .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/vault/us_bank_accounts");
+        }
+
+        [Fact]
         public void TestV2CoreVaultUsBankAccountPost()
         {
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true,\"verification\":{\"status\":\"verification_failed\"}}");
             var options = new Stripe.V2.Core.Vault.UsBankAccountCreateOptions
             {
                 AccountNumber = "account_number",
@@ -7179,13 +7213,13 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2CoreVaultUsBankAccountGet()
+        public void TestV2CoreVaultUsBankAccountGet2()
         {
             this.StubRequest(
                 HttpMethod.Get,
                 "/v2/core/vault/us_bank_accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true,\"verification\":{\"status\":\"verification_failed\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Vault.UsBankAccounts;
             Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Get(
@@ -7202,7 +7236,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true,\"verification\":{\"status\":\"verification_failed\"}}");
             var options = new Stripe.V2.Core.Vault.UsBankAccountUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Vault.UsBankAccounts;
@@ -7221,7 +7255,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts/id_123/archive",
                 (HttpStatusCode)200,
-                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true,\"verification\":{\"status\":\"verification_failed\"}}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Vault.UsBankAccounts;
             Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service.Archive(
@@ -7229,6 +7263,40 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts/id_123/archive");
+        }
+
+        [Fact]
+        public void TestV2CoreVaultUsBankAccountPost4()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true,\"verification\":{\"status\":\"verification_failed\"}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Vault.UsBankAccounts;
+            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service
+                .ConfirmMicrodeposits("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts/id_123/confirm_microdeposits");
+        }
+
+        [Fact]
+        public void TestV2CoreVaultUsBankAccountPost5()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts/id_123/send_microdeposits",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.vault.us_bank_account\",\"archived\":true,\"bank_account_type\":\"savings\",\"bank_name\":\"bank_name\",\"created\":\"1970-01-12T21:42:34.472Z\",\"last4\":\"last4\",\"livemode\":true,\"verification\":{\"status\":\"verification_failed\"}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Vault.UsBankAccounts;
+            Stripe.V2.Core.Vault.UsBankAccount usBankAccount = service
+                .SendMicrodeposits("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/vault/us_bank_accounts/id_123/send_microdeposits");
         }
 
         [Fact]
