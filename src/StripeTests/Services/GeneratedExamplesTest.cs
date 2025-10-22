@@ -3094,6 +3094,22 @@ namespace StripeTests
         [Fact]
         public void TestPromotionCodesPost()
         {
+            var options = new PromotionCodeCreateOptions
+            {
+                Promotion = new PromotionCodePromotionOptions
+                {
+                    Type = "coupon",
+                    Coupon = "Z4OV52SU",
+                },
+            };
+            var service = new PromotionCodeService(this.StripeClient);
+            PromotionCode promotionCode = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v1/promotion_codes");
+        }
+
+        [Fact]
+        public void TestPromotionCodesPost2()
+        {
             var options = new PromotionCodeUpdateOptions
             {
                 Metadata = new Dictionary<string, string>
@@ -6246,20 +6262,11 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}",
-                "object_id=object_id");
-            var options = new Stripe.V2.Core.EventListOptions
-            {
-                ObjectId = "object_id",
-            };
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
-            Stripe.V2.StripeList<Stripe.V2.Core.Event> events = service.List(
-                options);
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/core/events",
-                "object_id=object_id");
+            Stripe.V2.StripeList<Stripe.V2.Core.Event> events = service.List();
+            this.AssertRequest(HttpMethod.Get, "/v2/core/events");
         }
 
         [Fact]

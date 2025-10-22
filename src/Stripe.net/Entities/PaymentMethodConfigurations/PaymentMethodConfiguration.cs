@@ -170,6 +170,12 @@ namespace Stripe
 #endif
         public PaymentMethodConfigurationCashapp Cashapp { get; set; }
 
+        [JsonProperty("crypto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto")]
+#endif
+        public PaymentMethodConfigurationCrypto Crypto { get; set; }
+
         [JsonProperty("customer_balance")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_balance")]
@@ -267,6 +273,12 @@ namespace Stripe
         [STJS.JsonPropertyName("livemode")]
 #endif
         public bool Livemode { get; set; }
+
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public PaymentMethodConfigurationMbWay MbWay { get; set; }
 
         [JsonProperty("mobilepay")]
 #if NET6_0_OR_GREATER

@@ -68,6 +68,12 @@ namespace Stripe
 #endif
         public RefundDestinationDetailsCashapp Cashapp { get; set; }
 
+        [JsonProperty("crypto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto")]
+#endif
+        public RefundDestinationDetailsCrypto Crypto { get; set; }
+
         [JsonProperty("customer_cash_balance")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_cash_balance")]

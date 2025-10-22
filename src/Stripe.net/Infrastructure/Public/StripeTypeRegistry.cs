@@ -105,11 +105,17 @@ namespace Stripe
                 { "line_item", typeof(InvoiceLineItem) },
                 { "login_link", typeof(LoginLink) },
                 { "mandate", typeof(Mandate) },
+                { "payment_attempt_record", typeof(PaymentAttemptRecord) },
                 { "payment_intent", typeof(PaymentIntent) },
+                {
+                    "payment_intent_amount_details_line_item", typeof(
+                    PaymentIntentAmountDetailsLineItem)
+                },
                 { "payment_link", typeof(PaymentLink) },
                 { "payment_method", typeof(PaymentMethod) },
                 { "payment_method_configuration", typeof(PaymentMethodConfiguration) },
                 { "payment_method_domain", typeof(PaymentMethodDomain) },
+                { "payment_record", typeof(PaymentRecord) },
                 { "payout", typeof(Payout) },
                 { "person", typeof(Person) },
                 { "plan", typeof(Plan) },

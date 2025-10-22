@@ -37,5 +37,17 @@ namespace Stripe
         [STJS.JsonPropertyName("location")]
 #endif
         public CustomerTaxLocation Location { get; set; }
+
+        /// <summary>
+        /// The tax calculation provider used for location resolution. Defaults to <c>stripe</c>
+        /// when not using a <a href="https://stripe.com/tax/third-party-apps">third-party
+        /// provider</a>.
+        /// One of: <c>anrok</c>, <c>avalara</c>, <c>sphere</c>, or <c>stripe</c>.
+        /// </summary>
+        [JsonProperty("provider")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("provider")]
+#endif
+        public string Provider { get; set; }
     }
 }

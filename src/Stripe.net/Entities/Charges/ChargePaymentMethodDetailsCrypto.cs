@@ -19,7 +19,7 @@ namespace Stripe
 
         /// <summary>
         /// The blockchain network that the transaction was sent on.
-        /// One of: <c>base</c>, <c>ethereum</c>, or <c>polygon</c>.
+        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, or <c>solana</c>.
         /// </summary>
         [JsonProperty("network")]
 #if NET6_0_OR_GREATER

@@ -185,6 +185,16 @@ namespace Stripe
         public string RegistrationNumber { get; set; }
 
         /// <summary>
+        /// This hash is used to attest that the representative is authorized to act as the
+        /// representative of their legal entity.
+        /// </summary>
+        [JsonProperty("representative_declaration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("representative_declaration")]
+#endif
+        public AccountCompanyRepresentativeDeclarationOptions RepresentativeDeclaration { get; set; }
+
+        /// <summary>
         /// The category identifying the legal structure of the company or legal entity. See <a
         /// href="https://stripe.com/connect/identity-verification#business-structure">Business
         /// structure</a> for more details. Pass an empty string to unset this value.

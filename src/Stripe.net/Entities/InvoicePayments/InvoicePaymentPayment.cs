@@ -104,6 +104,49 @@ namespace Stripe
         internal ExpandableField<PaymentIntent> InternalPaymentIntent { get; set; }
         #endregion
 
+        #region Expandable PaymentRecord
+
+        /// <summary>
+        /// (ID of the PaymentRecord)
+        /// ID of the PaymentRecord associated with this payment when <c>type</c> is
+        /// <c>payment_record</c>.
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public string PaymentRecordId
+        {
+            get => this.InternalPaymentRecord?.Id;
+            set => this.InternalPaymentRecord = SetExpandableFieldId(value, this.InternalPaymentRecord);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// ID of the PaymentRecord associated with this payment when <c>type</c> is
+        /// <c>payment_record</c>.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public PaymentRecord PaymentRecord
+        {
+            get => this.InternalPaymentRecord?.ExpandedObject;
+            set => this.InternalPaymentRecord = SetExpandableFieldObject(value, this.InternalPaymentRecord);
+        }
+
+        [JsonProperty("payment_record")]
+        [JsonConverter(typeof(ExpandableFieldConverter<PaymentRecord>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_record")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PaymentRecord>))]
+#endif
+        internal ExpandableField<PaymentRecord> InternalPaymentRecord { get; set; }
+        #endregion
+
         /// <summary>
         /// Type of payment object associated with this invoice payment.
         /// One of: <c>charge</c>, or <c>payment_intent</c>.

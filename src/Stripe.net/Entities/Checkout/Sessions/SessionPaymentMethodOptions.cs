@@ -242,6 +242,12 @@ namespace Stripe.Checkout
 #endif
         public SessionPaymentMethodOptionsSwish Swish { get; set; }
 
+        [JsonProperty("twint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("twint")]
+#endif
+        public SessionPaymentMethodOptionsTwint Twint { get; set; }
+
         [JsonProperty("us_bank_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]

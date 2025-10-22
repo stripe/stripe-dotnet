@@ -10,6 +10,15 @@ namespace Stripe
     public class PaymentIntentConfirmOptions : BaseOptions
     {
         /// <summary>
+        /// Provides industry-specific information about the amount.
+        /// </summary>
+        [JsonProperty("amount_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_details")]
+#endif
+        public PaymentIntentAmountDetailsOptions AmountDetails { get; set; }
+
+        /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// One of: <c>automatic</c>, <c>automatic_async</c>, or <c>manual</c>.
         /// </summary>
@@ -98,6 +107,15 @@ namespace Stripe
         [STJS.JsonPropertyName("off_session")]
 #endif
         public bool? OffSession { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the charge.
+        /// </summary>
+        [JsonProperty("payment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_details")]
+#endif
+        public PaymentIntentPaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a

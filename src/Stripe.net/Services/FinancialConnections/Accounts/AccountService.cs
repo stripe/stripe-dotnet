@@ -115,7 +115,8 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// <p>Subscribes to periodic refreshes of data associated with a Financial Connections
-        /// <c>Account</c>.</p>.
+        /// <c>Account</c>. When the account status is active, data is typically refreshed once a
+        /// day.</p>.
         /// </summary>
         public virtual Account Subscribe(string id, AccountSubscribeOptions options = null, RequestOptions requestOptions = null)
         {
@@ -124,7 +125,8 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// <p>Subscribes to periodic refreshes of data associated with a Financial Connections
-        /// <c>Account</c>.</p>.
+        /// <c>Account</c>. When the account status is active, data is typically refreshed once a
+        /// day.</p>.
         /// </summary>
         public virtual Task<Account> SubscribeAsync(string id, AccountSubscribeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
