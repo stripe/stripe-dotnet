@@ -18,10 +18,10 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// Filters the list by the object <c>type</c> field. Unfiltered, the list returns all
-        /// payment method types except <c>custom</c>. If your integration expects only one type of
-        /// payment method in the response, specify that type value in the request to reduce your
-        /// payload.
+        /// An optional filter on the list, based on the object <c>type</c> field. Without the
+        /// filter, the list includes all current and future payment method types. If your
+        /// integration expects only one type of payment method in the response, make sure to
+        /// provide a type value in the request.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
         /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
