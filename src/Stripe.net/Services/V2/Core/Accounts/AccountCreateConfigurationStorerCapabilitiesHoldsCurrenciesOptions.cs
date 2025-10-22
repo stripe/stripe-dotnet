@@ -16,5 +16,14 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("gbp")]
 #endif
         public AccountCreateConfigurationStorerCapabilitiesHoldsCurrenciesGbpOptions Gbp { get; set; }
+
+        /// <summary>
+        /// Can hold storage-type funds on Stripe in USD.
+        /// </summary>
+        [JsonProperty("usd")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("usd")]
+#endif
+        public AccountCreateConfigurationStorerCapabilitiesHoldsCurrenciesUsdOptions Usd { get; set; }
     }
 }

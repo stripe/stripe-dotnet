@@ -11,7 +11,8 @@ namespace Stripe.V2.Core
         /// <summary>
         /// A value indicating the responsible payer of a bundle of Stripe fees for pricing-control
         /// eligible products on this Account.
-        /// One of: <c>application</c>, or <c>stripe</c>.
+        /// One of: <c>application</c>, <c>application_custom</c>, <c>application_express</c>, or
+        /// <c>stripe</c>.
         /// </summary>
         [JsonProperty("fees_collector")]
 #if NET6_0_OR_GREATER

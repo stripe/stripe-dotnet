@@ -17,5 +17,14 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_reference")]
 #endif
         public string PaymentReference { get; set; }
+
+        /// <summary>
+        /// A reference to the external refund. This field must be unique across all refunds.
+        /// </summary>
+        [JsonProperty("refund_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("refund_reference")]
+#endif
+        public string RefundReference { get; set; }
     }
 }

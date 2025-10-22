@@ -32,7 +32,7 @@ namespace Stripe.Billing
         public CreditGrantApplicabilityConfigOptions ApplicabilityConfig { get; set; }
 
         /// <summary>
-        /// The category of this credit grant.
+        /// The category of this credit grant. It defaults to <c>paid</c> if not specified.
         /// One of: <c>paid</c>, or <c>promotional</c>.
         /// </summary>
         [JsonProperty("category")]

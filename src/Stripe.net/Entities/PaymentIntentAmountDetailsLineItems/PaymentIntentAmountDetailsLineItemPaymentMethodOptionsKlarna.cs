@@ -19,5 +19,17 @@ namespace Stripe
         [STJS.JsonPropertyName("product_url")]
 #endif
         public string ProductUrl { get; set; }
+
+        [JsonProperty("reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference")]
+#endif
+        public string Reference { get; set; }
+
+        [JsonProperty("subscription_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subscription_reference")]
+#endif
+        public string SubscriptionReference { get; set; }
     }
 }

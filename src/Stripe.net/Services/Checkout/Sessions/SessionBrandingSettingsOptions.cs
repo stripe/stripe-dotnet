@@ -39,7 +39,9 @@ namespace Stripe.Checkout
         public string ButtonColor { get; set; }
 
         /// <summary>
-        /// A string to override the business name shown on the Checkout Session.
+        /// A string to override the business name shown on the Checkout Session. This only shows at
+        /// the top of the Checkout page, and your business name still appears in terms, receipts,
+        /// and other places.
         /// </summary>
         [JsonProperty("display_name")]
 #if NET6_0_OR_GREATER
@@ -66,7 +68,7 @@ namespace Stripe.Checkout
         public string FontFamily { get; set; }
 
         /// <summary>
-        /// The icon for the Checkout Session. You cannot set both <c>logo</c> and <c>icon</c>.
+        /// The icon for the Checkout Session. For best results, use a square image.
         /// </summary>
         [JsonProperty("icon")]
 #if NET6_0_OR_GREATER
@@ -75,7 +77,7 @@ namespace Stripe.Checkout
         public SessionBrandingSettingsIconOptions Icon { get; set; }
 
         /// <summary>
-        /// The logo for the Checkout Session. You cannot set both <c>logo</c> and <c>icon</c>.
+        /// The logo for the Checkout Session.
         /// </summary>
         [JsonProperty("logo")]
 #if NET6_0_OR_GREATER

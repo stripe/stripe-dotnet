@@ -13,6 +13,16 @@ namespace Stripe.Events
     public class V2MoneyManagementTransactionCreatedEvent : V2.Core.Event
     {
         /// <summary>
+        /// Data for the v2.money_management.transaction.created event.
+        /// </summary>
+        [JsonProperty("data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("data")]
+#endif
+
+        public V2MoneyManagementTransactionCreatedEventData Data { get; set; }
+
+        /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
         [JsonProperty("related_object")]

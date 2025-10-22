@@ -46,6 +46,15 @@ namespace Stripe.V2.Core
         public List<string> AppliedConfigurations { get; set; }
 
         /// <summary>
+        /// A value indicating if the Account has been closed.
+        /// </summary>
+        [JsonProperty("closed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("closed")]
+#endif
+        public bool? Closed { get; set; }
+
+        /// <summary>
         /// An Account Configuration which allows the Account to take on a key persona across Stripe
         /// products.
         /// </summary>

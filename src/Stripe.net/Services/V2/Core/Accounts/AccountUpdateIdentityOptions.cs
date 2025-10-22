@@ -9,7 +9,8 @@ namespace Stripe.V2.Core
     public class AccountUpdateIdentityOptions : INestedOptions
     {
         /// <summary>
-        /// Attestations from the identity's key people, e.g. owners, executives, directors.
+        /// Attestations from the identity's key people, e.g. owners, executives, directors,
+        /// representatives.
         /// </summary>
         [JsonProperty("attestations")]
 #if NET6_0_OR_GREATER
