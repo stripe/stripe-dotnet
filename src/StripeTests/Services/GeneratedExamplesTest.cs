@@ -6898,20 +6898,11 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}",
-                "object_id=object_id");
-            var options = new Stripe.V2.Core.EventListOptions
-            {
-                ObjectId = "object_id",
-            };
+                "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"type\":\"type\"}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
-            Stripe.V2.StripeList<Stripe.V2.Core.Event> events = service.List(
-                options);
-            this.AssertRequest(
-                HttpMethod.Get,
-                "/v2/core/events",
-                "object_id=object_id");
+            Stripe.V2.StripeList<Stripe.V2.Core.Event> events = service.List();
+            this.AssertRequest(HttpMethod.Get, "/v2/core/events");
         }
 
         [Fact]
@@ -7390,6 +7381,24 @@ namespace StripeTests
 
         [Fact]
         public void TestV2MoneyManagementFinancialAccountPost2()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/financial_accounts/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"balance\":{\"available\":{\"key\":{\"currency\":\"USD\",\"value\":35}},\"inbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":11}},\"outbound_pending\":{\"key\":{\"currency\":\"USD\",\"value\":60}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"status\":\"closed\",\"type\":\"other\"}");
+            var options = new Stripe.V2.MoneyManagement.FinancialAccountUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.MoneyManagement.FinancialAccounts;
+            Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
+                .Update("id_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/financial_accounts/id_123");
+        }
+
+        [Fact]
+        public void TestV2MoneyManagementFinancialAccountPost3()
         {
             this.StubRequest(
                 HttpMethod.Post,
@@ -8293,7 +8302,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/financial_accounts",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"feature_not_enabled\",\"code\":\"recipient_feature_not_active\"}}");
+                "{\"error\":{\"type\":\"feature_not_enabled\",\"code\":\"outbound_flow_from_closed_financial_account_unsupported\"}}");
             var exception = Assert.Throws<Stripe.V2.FeatureNotEnabledException>(
             () =>
             {
