@@ -43,7 +43,8 @@ namespace Stripe.V2.Core
         /// The data source used to identify the customer's tax location - defaults to
         /// 'identity_address'. Will only be used for automatic tax calculation on the customer's
         /// Invoices and Subscriptions.
-        /// One of: <c>identity_address</c>, <c>ip_address</c>, or <c>shipping_address</c>.
+        /// One of: <c>identity_address</c>, <c>ip_address</c>, <c>payment_method</c>, or
+        /// <c>shipping_address</c>.
         /// </summary>
         [JsonProperty("location_source")]
 #if NET6_0_OR_GREATER

@@ -1,7 +1,111 @@
 // File generated from our OpenAPI spec
 namespace Stripe.DelegatedCheckout
 {
-    public class RequestedSessionCreateOptions : BaseOptions
+    using System.Collections.Generic;
+    using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
+
+    public class RequestedSessionCreateOptions : BaseOptions, IHasMetadata
     {
+        /// <summary>
+        /// The currency for this requested session.
+        /// </summary>
+        [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// The customer for this requested session.
+        /// </summary>
+        [JsonProperty("customer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer")]
+#endif
+        public string Customer { get; set; }
+
+        /// <summary>
+        /// The details of the fulfillment.
+        /// </summary>
+        [JsonProperty("fulfillment_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fulfillment_details")]
+#endif
+        public RequestedSessionFulfillmentDetailsOptions FulfillmentDetails { get; set; }
+
+        /// <summary>
+        /// The details of the line items.
+        /// </summary>
+        [JsonProperty("line_item_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_item_details")]
+#endif
+        public List<RequestedSessionLineItemDetailOptions> LineItemDetails { get; set; }
+
+        /// <summary>
+        /// The metadata for this requested session.
+        /// </summary>
+        [JsonProperty("metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("metadata")]
+#endif
+        public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// The payment method for this requested session.
+        /// </summary>
+        [JsonProperty("payment_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method")]
+#endif
+        public string PaymentMethod { get; set; }
+
+        /// <summary>
+        /// The payment method data for this requested session.
+        /// </summary>
+        [JsonProperty("payment_method_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_data")]
+#endif
+        public RequestedSessionPaymentMethodDataOptions PaymentMethodData { get; set; }
+
+        /// <summary>
+        /// The risk details for this requested session.
+        /// </summary>
+        [JsonProperty("risk_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("risk_details")]
+#endif
+        public RequestedSessionRiskDetailsOptions RiskDetails { get; set; }
+
+        /// <summary>
+        /// The details of the seller.
+        /// </summary>
+        [JsonProperty("seller_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("seller_details")]
+#endif
+        public RequestedSessionSellerDetailsOptions SellerDetails { get; set; }
+
+        /// <summary>
+        /// The setup future usage for this requested session.
+        /// </summary>
+        [JsonProperty("setup_future_usage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_future_usage")]
+#endif
+        public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// The shared metadata for this requested session.
+        /// </summary>
+        [JsonProperty("shared_metadata")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shared_metadata")]
+#endif
+        public Dictionary<string, string> SharedMetadata { get; set; }
     }
 }

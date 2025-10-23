@@ -26,7 +26,9 @@ namespace Stripe.V2.Core
             this.Requestor);
 
         /// <summary>
-        /// Removes access to the Account and its associated resources.
+        /// Removes access to the Account and its associated resources. Closed Accounts can no
+        /// longer be operated on, but limited information can still be retrieved through the API in
+        /// order to be able to track their history.
         /// </summary>
         public virtual Account Close(string id, AccountCloseOptions options = null, RequestOptions requestOptions = null)
         {
@@ -34,7 +36,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Removes access to the Account and its associated resources.
+        /// Removes access to the Account and its associated resources. Closed Accounts can no
+        /// longer be operated on, but limited information can still be retrieved through the API in
+        /// order to be able to track their history.
         /// </summary>
         public virtual Task<Account> CloseAsync(string id, AccountCloseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

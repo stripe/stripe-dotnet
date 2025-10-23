@@ -2,6 +2,7 @@
 namespace Stripe.Billing
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
@@ -46,6 +47,15 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("aggregated_value")]
 #endif
         public decimal AggregatedValue { get; set; }
+
+        /// <summary>
+        /// Key-value pairs of dimension values for event summaries with grouping on dimensions.
+        /// </summary>
+        [JsonProperty("dimensions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("dimensions")]
+#endif
+        public Dictionary<string, string> Dimensions { get; set; }
 
         /// <summary>
         /// End timestamp for this event summary (exclusive). Must be aligned with minute

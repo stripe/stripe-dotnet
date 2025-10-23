@@ -18,5 +18,15 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("applied_configurations")]
 #endif
         public List<string> AppliedConfigurations { get; set; }
+
+        /// <summary>
+        /// Filter by whether the account is closed. If omitted, returns only Accounts that are not
+        /// closed.
+        /// </summary>
+        [JsonProperty("closed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("closed")]
+#endif
+        public bool? Closed { get; set; }
     }
 }
