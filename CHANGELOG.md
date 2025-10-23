@@ -1,5 +1,21 @@
 # Changelog
 
+## 49.1.0-alpha.4 - 2025-10-23
+* [#3232](https://github.com/stripe/stripe-dotnet/pull/3232) Update generated code for private-preview
+  * Add support for new resource `V2.Billing.PricingPlanSubscriptionComponents`
+  * Add support for `Get` method on resource `V2.Billing.PricingPlanSubscriptionComponents`
+  * Add support for `DimensionPayloadKeys` on `Billing.MeterCreateOptions` and `Billing.Meter`
+  * Add support for `DimensionFilters` and `DimensionGroupByKeys` on `Billing.BillingMeterMeterEventSummaryListOptions`
+  * Add support for `Dimensions` on `Billing.MeterEventSummary`
+  * Add support for `FulfillmentDetails` and `PaymentMethodData` on `DelegatedCheckout.RequestedSessionCreateOptions` and `DelegatedCheckout.RequestedSessionUpdateOptions`
+  * Add support for `LineItemDetails`, `Metadata`, `PaymentMethod`, and `SharedMetadata` on `DelegatedCheckout.RequestedSessionCreateOptions`, `DelegatedCheckout.RequestedSessionUpdateOptions`, and `DelegatedCheckout.RequestedSession`
+  * Add support for `Currency`, `Customer`, and `RiskDetails` on `DelegatedCheckout.RequestedSessionCreateOptions`
+  * Add support for `SellerDetails` and `SetupFutureUsage` on `DelegatedCheckout.RequestedSessionCreateOptions` and `DelegatedCheckout.RequestedSession`
+  * Add support for `AmountSubtotal`, `AmountTotal`, `CreatedAt`, `ExpiresAt`, `OrderDetails`, `SharedPaymentIssuedToken`, `Status`, `TotalDetails`, and `UpdatedAt` on `DelegatedCheckout.RequestedSession`
+  * Add support for `Address`, `Email`, `FulfillmentOptions`, `Name`, `Phone`, and `SelectedFulfillmentOption` on `DelegatedCheckout.RequestedSession.FulfillmentDetails`
+* [#3231](https://github.com/stripe/stripe-dotnet/pull/3231) Empty commit
+* [#3229](https://github.com/stripe/stripe-dotnet/pull/3229) Merge to private preview
+
 ## 49.1.0-alpha.3 - 2025-10-17
 * [#3220](https://github.com/stripe/stripe-dotnet/pull/3220) Update generated code for private-preview
   * Add support for new resources `DelegatedCheckout.RequestedSession` and `Identity.BlocklistEntry`
