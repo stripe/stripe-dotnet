@@ -2,6 +2,7 @@
 namespace Stripe.V2.Core.Vault
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -40,6 +41,26 @@ namespace Stripe.V2.Core.Vault
         }
 
         /// <summary>
+        /// Confirm microdeposits amounts or descriptor code that you have received from the Send
+        /// Microdeposits request. Once you correctly confirm this, this US Bank Account will be
+        /// verified and eligible to transfer funds with.
+        /// </summary>
+        public virtual UsBankAccount ConfirmMicrodeposits(string id, UsBankAccountConfirmMicrodepositsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<UsBankAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/vault/us_bank_accounts/{WebUtility.UrlEncode(id)}/confirm_microdeposits", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Confirm microdeposits amounts or descriptor code that you have received from the Send
+        /// Microdeposits request. Once you correctly confirm this, this US Bank Account will be
+        /// verified and eligible to transfer funds with.
+        /// </summary>
+        public virtual Task<UsBankAccount> ConfirmMicrodepositsAsync(string id, UsBankAccountConfirmMicrodepositsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<UsBankAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/vault/us_bank_accounts/{WebUtility.UrlEncode(id)}/confirm_microdeposits", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// Create a USBankAccount object.
         /// </summary>
         public virtual UsBankAccount Create(UsBankAccountCreateOptions options, RequestOptions requestOptions = null)
@@ -69,6 +90,58 @@ namespace Stripe.V2.Core.Vault
         public virtual Task<UsBankAccount> GetAsync(string id, UsBankAccountGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<UsBankAccount>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/vault/us_bank_accounts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// List USBankAccount objects. Optionally filter by verification status.
+        /// </summary>
+        public virtual V2.StripeList<UsBankAccount> List(UsBankAccountListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<V2.StripeList<UsBankAccount>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/vault/us_bank_accounts", options, requestOptions);
+        }
+
+        /// <summary>
+        /// List USBankAccount objects. Optionally filter by verification status.
+        /// </summary>
+        public virtual Task<V2.StripeList<UsBankAccount>> ListAsync(UsBankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<V2.StripeList<UsBankAccount>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/vault/us_bank_accounts", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// List USBankAccount objects. Optionally filter by verification status.
+        /// </summary>
+        public virtual IEnumerable<UsBankAccount> ListAutoPaging(UsBankAccountListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<UsBankAccount>($"/v2/core/vault/us_bank_accounts", options, requestOptions);
+        }
+
+        /// <summary>
+        /// List USBankAccount objects. Optionally filter by verification status.
+        /// </summary>
+        public virtual IAsyncEnumerable<UsBankAccount> ListAutoPagingAsync(UsBankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<UsBankAccount>($"/v2/core/vault/us_bank_accounts", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Send microdeposits in order to verify your US Bank Account so it is eligible to transfer
+        /// funds. This will start the verification process and you must Confirm Microdeposits to
+        /// successfully verify your US Bank Account.
+        /// </summary>
+        public virtual UsBankAccount SendMicrodeposits(string id, UsBankAccountSendMicrodepositsOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<UsBankAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/vault/us_bank_accounts/{WebUtility.UrlEncode(id)}/send_microdeposits", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Send microdeposits in order to verify your US Bank Account so it is eligible to transfer
+        /// funds. This will start the verification process and you must Confirm Microdeposits to
+        /// successfully verify your US Bank Account.
+        /// </summary>
+        public virtual Task<UsBankAccount> SendMicrodepositsAsync(string id, UsBankAccountSendMicrodepositsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<UsBankAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/vault/us_bank_accounts/{WebUtility.UrlEncode(id)}/send_microdeposits", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

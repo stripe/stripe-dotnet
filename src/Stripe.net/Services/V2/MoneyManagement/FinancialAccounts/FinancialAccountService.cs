@@ -99,5 +99,21 @@ namespace Stripe.V2.MoneyManagement
         {
             return this.ListRequestAutoPagingAsync<FinancialAccount>($"/v2/money_management/financial_accounts", options, requestOptions, cancellationToken);
         }
+
+        /// <summary>
+        /// Updates an existing FinancialAccount.
+        /// </summary>
+        public virtual FinancialAccount Update(string id, FinancialAccountUpdateOptions options, RequestOptions requestOptions = null)
+        {
+            return this.Request<FinancialAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/financial_accounts/{WebUtility.UrlEncode(id)}", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Updates an existing FinancialAccount.
+        /// </summary>
+        public virtual Task<FinancialAccount> UpdateAsync(string id, FinancialAccountUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<FinancialAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/money_management/financial_accounts/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
     }
 }

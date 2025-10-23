@@ -10,6 +10,8 @@ namespace Stripe.V2.Billing
 
     public class PricingPlanSubscriptionService : Service
     {
+        private V2.Billing.PricingPlanSubscriptions.ComponentService components;
+
         internal PricingPlanSubscriptionService(ApiRequestor requestor)
             : base(requestor)
         {
@@ -19,6 +21,9 @@ namespace Stripe.V2.Billing
             : base(client)
         {
         }
+
+        public virtual V2.Billing.PricingPlanSubscriptions.ComponentService Components => this.components ??= new V2.Billing.PricingPlanSubscriptions.ComponentService(
+            this.Requestor);
 
         /// <summary>
         /// Retrieve a Pricing Plan Subscription object.

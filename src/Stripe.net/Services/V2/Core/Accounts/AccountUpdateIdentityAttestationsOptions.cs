@@ -38,6 +38,16 @@ namespace Stripe.V2.Core
         public AccountUpdateIdentityAttestationsPersonsProvidedOptions PersonsProvided { get; set; }
 
         /// <summary>
+        /// This hash is used to attest that the representative is authorized to act as the
+        /// representative of their legal entity.
+        /// </summary>
+        [JsonProperty("representative_declaration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("representative_declaration")]
+#endif
+        public AccountUpdateIdentityAttestationsRepresentativeDeclarationOptions RepresentativeDeclaration { get; set; }
+
+        /// <summary>
         /// Attestations of accepted terms of service agreements.
         /// </summary>
         [JsonProperty("terms_of_service")]

@@ -265,6 +265,10 @@ namespace Stripe
                     "v2.billing.pricing_plan_subscription", typeof(
                     V2.Billing.PricingPlanSubscription)
                 },
+                {
+                    "v2.billing.pricing_plan_subscription_components", typeof(
+                    V2.Billing.PricingPlanSubscriptionComponents)
+                },
                 { "v2.billing.pricing_plan_version", typeof(V2.Billing.PricingPlanVersion) },
                 { "v2.billing.profile", typeof(V2.Billing.Profile) },
                 { "v2.billing.rate_card", typeof(V2.Billing.RateCard) },
