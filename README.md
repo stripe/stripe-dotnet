@@ -6,6 +6,32 @@
 
 The official [Stripe][stripe] .NET library, supporting .NET Standard 2.0+, .NET Core 5+, and .NET Framework 4.6.2+.
 
+## Table of Contents
+
+- [Installation](#installation)
+- [Documentation](#documentation)
+- [Usage](#usage)
+  - [Using StripeClient](#using-stripeclient)
+  - [Authentication](#authentication)
+  - [Creating a resource](#creating-a-resource)
+  - [Retrieve a resource](#retrieve-a-resource)
+  - [Updating a resource](#updating-a-resource)
+  - [Deleting a resource](#deleting-a-resource)
+  - [Listing a resource](#listing-a-resource)
+  - [Listing a resource with auto-pagination](#listing-a-resource-with-auto-pagination)
+  - [Per-request configuration](#per-request-configuration)
+  - [Using a custom `HttpClient`](#using-a-custom-httpclient)
+  - [Automatic retries](#automatic-retries)
+  - [How to use undocumented parameters and properties](#how-to-use-undocumented-parameters-and-properties)
+  - [Writing a plugin](#writing-a-plugin)
+  - [Telemetry](#telemetry)
+  - [Serializing Stripe resources to JSON](#serializing-stripe-resources-to-json)
+  - [Public Preview SDKs](#public-preview-sdks)
+  - [Private Preview SDKs](#private-preview-sdks)
+  - [Custom requests](#custom-requests)
+- [Support](#support)
+- [Development](#development)
+
 ## Installation
 
 Using the [.NET Core command-line interface (CLI) tools][dotnet-core-cli-tools]:
