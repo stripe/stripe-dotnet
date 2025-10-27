@@ -810,6 +810,15 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsTrOptions Tr { get; set; }
 
         /// <summary>
+        /// Options for the registration in TW.
+        /// </summary>
+        [JsonProperty("tw")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tw")]
+#endif
+        public RegistrationCountryOptionsTwOptions Tw { get; set; }
+
+        /// <summary>
         /// Options for the registration in TZ.
         /// </summary>
         [JsonProperty("tz")]

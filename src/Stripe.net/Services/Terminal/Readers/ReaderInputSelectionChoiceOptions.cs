@@ -18,7 +18,8 @@ namespace Stripe.Terminal
         public string Id { get; set; }
 
         /// <summary>
-        /// The style of the button which will be shown for this choice.
+        /// The style of the button which will be shown for this choice. Can be <c>primary</c> or
+        /// <c>secondary</c>.
         /// One of: <c>primary</c>, or <c>secondary</c>.
         /// </summary>
         [JsonProperty("style")]
