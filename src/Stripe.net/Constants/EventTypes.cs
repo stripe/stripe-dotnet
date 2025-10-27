@@ -55,6 +55,11 @@ namespace Stripe
         public const string ApplicationFeeRefunded = "application_fee.refunded";
 
         /// <summary>
+        /// Occurs whenever a balance settings status or property has changed.
+        /// </summary>
+        public const string BalanceSettingsUpdated = "balance_settings.updated";
+
+        /// <summary>
         /// Occurs whenever your Stripe balance has been updated (e.g., when a charge is available
         /// to be paid out). By default, Stripe automatically transfers funds in your balance to
         /// your bank account on a daily basis. This event is not fired for negative transactions.
@@ -545,6 +550,12 @@ namespace Stripe
         /// Occurs whenever an invoice payment attempt requires further user action to complete.
         /// </summary>
         public const string InvoicePaymentActionRequired = "invoice.payment_action_required";
+
+        /// <summary>
+        /// Occurs when an invoice requires a payment using a payment method that cannot be
+        /// processed by Stripe.
+        /// </summary>
+        public const string InvoicePaymentAttemptRequired = "invoice.payment_attempt_required";
 
         /// <summary>
         /// Occurs whenever an invoice payment attempt fails, due to either a declined payment,

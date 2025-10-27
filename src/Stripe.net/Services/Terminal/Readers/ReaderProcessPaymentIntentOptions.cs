@@ -9,7 +9,7 @@ namespace Stripe.Terminal
     public class ReaderProcessPaymentIntentOptions : BaseOptions
     {
         /// <summary>
-        /// PaymentIntent ID.
+        /// The ID of the PaymentIntent to process on the reader.
         /// </summary>
         [JsonProperty("payment_intent")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,8 @@ namespace Stripe.Terminal
         public string PaymentIntent { get; set; }
 
         /// <summary>
-        /// Configuration overrides.
+        /// Configuration overrides for this transaction, such as tipping and customer cancellation
+        /// settings.
         /// </summary>
         [JsonProperty("process_config")]
 #if NET6_0_OR_GREATER
