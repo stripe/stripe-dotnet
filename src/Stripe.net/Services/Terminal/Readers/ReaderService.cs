@@ -72,7 +72,7 @@ namespace Stripe.Terminal
         /// <summary>
         /// <p>Initiates a payment flow on a Reader and updates the PaymentIntent with card details
         /// before manual confirmation. See <a
-        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&process=inspect#collect-a-paymentmethod">Collecting
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=inspect#collect-a-paymentmethod">Collecting
         /// a Payment method</a> for more details.</p>.
         /// </summary>
         public virtual Reader CollectPaymentMethod(string id, ReaderCollectPaymentMethodOptions options = null, RequestOptions requestOptions = null)
@@ -83,7 +83,7 @@ namespace Stripe.Terminal
         /// <summary>
         /// <p>Initiates a payment flow on a Reader and updates the PaymentIntent with card details
         /// before manual confirmation. See <a
-        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&process=inspect#collect-a-paymentmethod">Collecting
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=inspect#collect-a-paymentmethod">Collecting
         /// a Payment method</a> for more details.</p>.
         /// </summary>
         public virtual Task<Reader> CollectPaymentMethodAsync(string id, ReaderCollectPaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
@@ -93,7 +93,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Finalizes a payment on a Reader. See <a
-        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&process=inspect#confirm-the-paymentintent">Confirming
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=inspect#confirm-the-paymentintent">Confirming
         /// a Payment</a> for more details.</p>.
         /// </summary>
         public virtual Reader ConfirmPaymentIntent(string id, ReaderConfirmPaymentIntentOptions options = null, RequestOptions requestOptions = null)
@@ -103,7 +103,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Finalizes a payment on a Reader. See <a
-        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&process=inspect#confirm-the-paymentintent">Confirming
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=inspect#confirm-the-paymentintent">Confirming
         /// a Payment</a> for more details.</p>.
         /// </summary>
         public virtual Task<Reader> ConfirmPaymentIntentAsync(string id, ReaderConfirmPaymentIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
@@ -193,7 +193,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Initiates a payment flow on a Reader. See <a
-        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&process=immediately#process-payment">process
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=immediately#process-payment">process
         /// the payment</a> for more details.</p>.
         /// </summary>
         public virtual Reader ProcessPaymentIntent(string id, ReaderProcessPaymentIntentOptions options = null, RequestOptions requestOptions = null)
@@ -203,7 +203,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Initiates a payment flow on a Reader. See <a
-        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&process=immediately#process-payment">process
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=immediately#process-payment">process
         /// the payment</a> for more details.</p>.
         /// </summary>
         public virtual Task<Reader> ProcessPaymentIntentAsync(string id, ReaderProcessPaymentIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
