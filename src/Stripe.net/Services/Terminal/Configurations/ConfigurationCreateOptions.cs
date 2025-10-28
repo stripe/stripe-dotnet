@@ -54,7 +54,7 @@ namespace Stripe.Terminal
         public ConfigurationReaderSecurityOptions ReaderSecurity { get; set; }
 
         /// <summary>
-        /// Reboot time settings for readers. that support customized reboot time configuration.
+        /// Reboot time settings for readers that support customized reboot time configuration.
         /// </summary>
         [JsonProperty("reboot_window")]
 #if NET6_0_OR_GREATER
@@ -72,7 +72,7 @@ namespace Stripe.Terminal
         public ConfigurationStripeS700Options StripeS700 { get; set; }
 
         /// <summary>
-        /// Tipping configurations for readers. supporting on-reader tips.
+        /// Tipping configurations for readers supporting on-reader tips.
         /// </summary>
         [JsonProperty("tipping")]
 #if NET6_0_OR_GREATER

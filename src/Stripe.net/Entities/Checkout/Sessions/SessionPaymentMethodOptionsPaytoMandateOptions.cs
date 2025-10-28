@@ -20,7 +20,6 @@ namespace Stripe.Checkout
         /// <summary>
         /// The type of amount that will be collected. The amount charged must be exact or up to the
         /// value of <c>amount</c> param for <c>fixed</c> or <c>maximum</c> type respectively.
-        /// Defaults to <c>maximum</c>.
         /// One of: <c>fixed</c>, or <c>maximum</c>.
         /// </summary>
         [JsonProperty("amount_type")]
@@ -40,7 +39,7 @@ namespace Stripe.Checkout
         public string EndDate { get; set; }
 
         /// <summary>
-        /// The periodicity at which payments will be collected. Defaults to <c>adhoc</c>.
+        /// The periodicity at which payments will be collected.
         /// One of: <c>adhoc</c>, <c>annual</c>, <c>daily</c>, <c>fortnightly</c>, <c>monthly</c>,
         /// <c>quarterly</c>, <c>semi_annual</c>, or <c>weekly</c>.
         /// </summary>
@@ -61,8 +60,7 @@ namespace Stripe.Checkout
         public long? PaymentsPerPeriod { get; set; }
 
         /// <summary>
-        /// The purpose for which payments are made. Has a default value based on your merchant
-        /// category code.
+        /// The purpose for which payments are made. Defaults to retail.
         /// One of: <c>dependant_support</c>, <c>government</c>, <c>loan</c>, <c>mortgage</c>,
         /// <c>other</c>, <c>pension</c>, <c>personal</c>, <c>retail</c>, <c>salary</c>, <c>tax</c>,
         /// or <c>utility</c>.
