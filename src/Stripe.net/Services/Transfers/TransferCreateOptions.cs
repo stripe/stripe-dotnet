@@ -18,12 +18,6 @@ namespace Stripe
 #endif
         public long? Amount { get; set; }
 
-        [JsonProperty("application_fee_amount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("application_fee_amount")]
-#endif
-        public long? ApplicationFeeAmount { get; set; }
-
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO code for
         /// currency</a> in lowercase. Must be a <a

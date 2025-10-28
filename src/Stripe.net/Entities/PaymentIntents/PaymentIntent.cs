@@ -47,15 +47,6 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// Allocated Funds configuration for this PaymentIntent.
-        /// </summary>
-        [JsonProperty("allocated_funds")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("allocated_funds")]
-#endif
-        public PaymentIntentAllocatedFunds AllocatedFunds { get; set; }
-
-        /// <summary>
         /// Amount intended to be collected by this PaymentIntent. A positive integer representing
         /// how much to charge in the <a
         /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g.,

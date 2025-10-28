@@ -64,8 +64,7 @@ namespace Stripe
 
         /// <summary>
         /// The balance that this transaction impacts.
-        /// One of: <c>issuing</c>, <c>payments</c>, <c>refund_and_dispute_prefunding</c>, or
-        /// <c>transit</c>.
+        /// One of: <c>issuing</c>, <c>payments</c>, or <c>refund_and_dispute_prefunding</c>.
         /// </summary>
         [JsonProperty("balance_type")]
 #if NET6_0_OR_GREATER

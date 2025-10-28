@@ -93,11 +93,5 @@ namespace Stripe
         [STJS.JsonPropertyName("refund_and_dispute_prefunding")]
 #endif
         public BalanceRefundAndDisputePrefunding RefundAndDisputePrefunding { get; set; }
-
-        [JsonProperty("transit_balances_total")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transit_balances_total")]
-#endif
-        public BalanceTransitBalancesTotal TransitBalancesTotal { get; set; }
     }
 }

@@ -27,6 +27,15 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationStorerCapabilitiesOutboundPaymentsCardsOptions Cards { get; set; }
 
         /// <summary>
+        /// Can send funds from a FinancialAccount to a crypto wallet owned by someone else.
+        /// </summary>
+        [JsonProperty("crypto_wallets")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto_wallets")]
+#endif
+        public AccountCreateConfigurationStorerCapabilitiesOutboundPaymentsCryptoWalletsOptions CryptoWallets { get; set; }
+
+        /// <summary>
         /// Can send funds from a FinancialAccount to another FinancialAccount owned by someone
         /// else.
         /// </summary>

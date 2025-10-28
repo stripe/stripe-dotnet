@@ -25,5 +25,14 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("usd")]
 #endif
         public AccountCreateConfigurationStorerCapabilitiesHoldsCurrenciesUsdOptions Usd { get; set; }
+
+        /// <summary>
+        /// Can hold storage-type funds on Stripe in USDC.
+        /// </summary>
+        [JsonProperty("usdc")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("usdc")]
+#endif
+        public AccountCreateConfigurationStorerCapabilitiesHoldsCurrenciesUsdcOptions Usdc { get; set; }
     }
 }
