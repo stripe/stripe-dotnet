@@ -18,7 +18,7 @@ namespace Stripe.Terminal
         public string Description { get; set; }
 
         /// <summary>
-        /// The skip button text.
+        /// Custom text for the skip button. Maximum 14 characters.
         /// </summary>
         [JsonProperty("skip_button")]
 #if NET6_0_OR_GREATER
@@ -27,7 +27,7 @@ namespace Stripe.Terminal
         public string SkipButton { get; set; }
 
         /// <summary>
-        /// The submit button text.
+        /// Custom text for the submit button. Maximum 30 characters.
         /// </summary>
         [JsonProperty("submit_button")]
 #if NET6_0_OR_GREATER

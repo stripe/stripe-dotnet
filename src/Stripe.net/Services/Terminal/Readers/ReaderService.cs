@@ -30,7 +30,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Cancels the current reader action.</p>.
+        /// <p>Cancels the current reader action. See <a
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven#programmatic-cancellation">Programmatic
+        /// Cancellation</a> for more details.</p>.
         /// </summary>
         public virtual Reader CancelAction(string id, ReaderCancelActionOptions options = null, RequestOptions requestOptions = null)
         {
@@ -38,7 +40,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Cancels the current reader action.</p>.
+        /// <p>Cancels the current reader action. See <a
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven#programmatic-cancellation">Programmatic
+        /// Cancellation</a> for more details.</p>.
         /// </summary>
         public virtual Task<Reader> CancelActionAsync(string id, ReaderCancelActionOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -46,7 +50,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Initiates an input collection flow on a Reader.</p>.
+        /// <p>Initiates an <a href="https://stripe.com/docs/terminal/features/collect-inputs">input
+        /// collection flow</a> on a Reader to display input forms and collect information from your
+        /// customers.</p>.
         /// </summary>
         public virtual Reader CollectInputs(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null)
         {
@@ -54,7 +60,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Initiates an input collection flow on a Reader.</p>.
+        /// <p>Initiates an <a href="https://stripe.com/docs/terminal/features/collect-inputs">input
+        /// collection flow</a> on a Reader to display input forms and collect information from your
+        /// customers.</p>.
         /// </summary>
         public virtual Task<Reader> CollectInputsAsync(string id, ReaderCollectInputsOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -63,7 +71,9 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Initiates a payment flow on a Reader and updates the PaymentIntent with card details
-        /// before manual confirmation.</p>.
+        /// before manual confirmation. See <a
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=inspect#collect-a-paymentmethod">Collecting
+        /// a Payment method</a> for more details.</p>.
         /// </summary>
         public virtual Reader CollectPaymentMethod(string id, ReaderCollectPaymentMethodOptions options = null, RequestOptions requestOptions = null)
         {
@@ -72,7 +82,9 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// <p>Initiates a payment flow on a Reader and updates the PaymentIntent with card details
-        /// before manual confirmation.</p>.
+        /// before manual confirmation. See <a
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=inspect#collect-a-paymentmethod">Collecting
+        /// a Payment method</a> for more details.</p>.
         /// </summary>
         public virtual Task<Reader> CollectPaymentMethodAsync(string id, ReaderCollectPaymentMethodOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -80,7 +92,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Finalizes a payment on a Reader.</p>.
+        /// <p>Finalizes a payment on a Reader. See <a
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=inspect#confirm-the-paymentintent">Confirming
+        /// a Payment</a> for more details.</p>.
         /// </summary>
         public virtual Reader ConfirmPaymentIntent(string id, ReaderConfirmPaymentIntentOptions options = null, RequestOptions requestOptions = null)
         {
@@ -88,7 +102,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Finalizes a payment on a Reader.</p>.
+        /// <p>Finalizes a payment on a Reader. See <a
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=inspect#confirm-the-paymentintent">Confirming
+        /// a Payment</a> for more details.</p>.
         /// </summary>
         public virtual Task<Reader> ConfirmPaymentIntentAsync(string id, ReaderConfirmPaymentIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -176,7 +192,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Initiates a payment flow on a Reader.</p>.
+        /// <p>Initiates a payment flow on a Reader. See <a
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=immediately#process-payment">process
+        /// the payment</a> for more details.</p>.
         /// </summary>
         public virtual Reader ProcessPaymentIntent(string id, ReaderProcessPaymentIntentOptions options = null, RequestOptions requestOptions = null)
         {
@@ -184,7 +202,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Initiates a payment flow on a Reader.</p>.
+        /// <p>Initiates a payment flow on a Reader. See <a
+        /// href="https://stripe.com/docs/terminal/payments/collect-card-payment?terminal-sdk-platform=server-driven&amp;process=immediately#process-payment">process
+        /// the payment</a> for more details.</p>.
         /// </summary>
         public virtual Task<Reader> ProcessPaymentIntentAsync(string id, ReaderProcessPaymentIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -192,7 +212,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Initiates a setup intent flow on a Reader.</p>.
+        /// <p>Initiates a SetupIntent flow on a Reader. See <a
+        /// href="https://stripe.com/docs/terminal/features/saving-payment-details/save-directly">Save
+        /// directly without charging</a> for more details.</p>.
         /// </summary>
         public virtual Reader ProcessSetupIntent(string id, ReaderProcessSetupIntentOptions options = null, RequestOptions requestOptions = null)
         {
@@ -200,7 +222,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Initiates a setup intent flow on a Reader.</p>.
+        /// <p>Initiates a SetupIntent flow on a Reader. See <a
+        /// href="https://stripe.com/docs/terminal/features/saving-payment-details/save-directly">Save
+        /// directly without charging</a> for more details.</p>.
         /// </summary>
         public virtual Task<Reader> ProcessSetupIntentAsync(string id, ReaderProcessSetupIntentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -208,7 +232,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Initiates a refund on a Reader</p>.
+        /// <p>Initiates an in-person refund on a Reader. See <a
+        /// href="https://stripe.com/docs/terminal/payments/regional?integration-country=CA#refund-an-interac-payment">Refund
+        /// an Interac Payment</a> for more details.</p>.
         /// </summary>
         public virtual Reader RefundPayment(string id, ReaderRefundPaymentOptions options = null, RequestOptions requestOptions = null)
         {
@@ -216,7 +242,9 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Initiates a refund on a Reader</p>.
+        /// <p>Initiates an in-person refund on a Reader. See <a
+        /// href="https://stripe.com/docs/terminal/payments/regional?integration-country=CA#refund-an-interac-payment">Refund
+        /// an Interac Payment</a> for more details.</p>.
         /// </summary>
         public virtual Task<Reader> RefundPaymentAsync(string id, ReaderRefundPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -224,7 +252,8 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Sets reader display to show cart details.</p>.
+        /// <p>Sets the reader display to show <a
+        /// href="https://stripe.com/docs/terminal/features/display">cart details</a>.</p>.
         /// </summary>
         public virtual Reader SetReaderDisplay(string id, ReaderSetReaderDisplayOptions options = null, RequestOptions requestOptions = null)
         {
@@ -232,7 +261,8 @@ namespace Stripe.Terminal
         }
 
         /// <summary>
-        /// <p>Sets reader display to show cart details.</p>.
+        /// <p>Sets the reader display to show <a
+        /// href="https://stripe.com/docs/terminal/features/display">cart details</a>.</p>.
         /// </summary>
         public virtual Task<Reader> SetReaderDisplayAsync(string id, ReaderSetReaderDisplayOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

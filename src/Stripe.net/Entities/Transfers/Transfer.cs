@@ -65,6 +65,43 @@ namespace Stripe
 #endif
         public long AmountReversed { get; set; }
 
+        #region Expandable ApplicationFee
+
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public string ApplicationFeeId
+        {
+            get => this.InternalApplicationFee?.Id;
+            set => this.InternalApplicationFee = SetExpandableFieldId(value, this.InternalApplicationFee);
+        }
+
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public ApplicationFee ApplicationFee
+        {
+            get => this.InternalApplicationFee?.ExpandedObject;
+            set => this.InternalApplicationFee = SetExpandableFieldObject(value, this.InternalApplicationFee);
+        }
+
+        [JsonProperty("application_fee")]
+        [JsonConverter(typeof(ExpandableFieldConverter<ApplicationFee>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<ApplicationFee>))]
+#endif
+        internal ExpandableField<ApplicationFee> InternalApplicationFee { get; set; }
+        #endregion
+
+        [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
+        public long? ApplicationFeeAmount { get; set; }
+
         #region Expandable BalanceTransaction
 
         /// <summary>

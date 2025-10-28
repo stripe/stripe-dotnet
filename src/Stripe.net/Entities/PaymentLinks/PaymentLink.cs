@@ -240,6 +240,12 @@ namespace Stripe
 #endif
         public Dictionary<string, string> Metadata { get; set; }
 
+        [JsonProperty("name_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name_collection")]
+#endif
+        public PaymentLinkNameCollection NameCollection { get; set; }
+
         #region Expandable OnBehalfOf
 
         /// <summary>

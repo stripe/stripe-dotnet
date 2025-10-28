@@ -36,13 +36,13 @@ namespace Stripe.DelegatedCheckout
         public string RemoteIp { get; set; }
 
         /// <summary>
-        /// The time on page in seconds.
+        /// The time on page in milliseconds.
         /// </summary>
-        [JsonProperty("time_on_page")]
+        [JsonProperty("time_on_page_ms")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("time_on_page")]
+        [STJS.JsonPropertyName("time_on_page_ms")]
 #endif
-        public long? TimeOnPage { get; set; }
+        public long? TimeOnPageMs { get; set; }
 
         /// <summary>
         /// The user agent of the client device.
