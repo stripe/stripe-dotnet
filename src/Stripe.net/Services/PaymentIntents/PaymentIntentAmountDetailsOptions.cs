@@ -10,7 +10,12 @@ namespace Stripe
     public class PaymentIntentAmountDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// The total discount applied on the transaction.
+        /// The total discount applied on the transaction represented in the <a
+        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. An
+        /// integer greater than 0.
+        ///
+        /// This field is mutually exclusive with the
+        /// <c>amount_details[line_items][#][discount_amount]</c> field.
         /// </summary>
         [JsonProperty("discount_amount")]
 #if NET6_0_OR_GREATER
