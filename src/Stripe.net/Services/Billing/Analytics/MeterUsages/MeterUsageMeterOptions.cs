@@ -47,5 +47,15 @@ namespace Stripe.Billing.Analytics
         [STJS.JsonPropertyName("tenant_filters")]
 #endif
         public Dictionary<string, string> TenantFilters { get; set; }
+
+        /// <summary>
+        /// List of high cardinality tenant dimension keys to group by. If specified, usage events
+        /// will be grouped by the given tenant dimension key's values.
+        /// </summary>
+        [JsonProperty("tenant_group_by_keys")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tenant_group_by_keys")]
+#endif
+        public List<string> TenantGroupByKeys { get; set; }
     }
 }

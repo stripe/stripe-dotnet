@@ -73,15 +73,6 @@ namespace Stripe.DelegatedCheckout
         public RequestedSessionPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
-        /// The risk details for this requested session.
-        /// </summary>
-        [JsonProperty("risk_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("risk_details")]
-#endif
-        public RequestedSessionRiskDetailsOptions RiskDetails { get; set; }
-
-        /// <summary>
         /// The details of the seller.
         /// </summary>
         [JsonProperty("seller_details")]
