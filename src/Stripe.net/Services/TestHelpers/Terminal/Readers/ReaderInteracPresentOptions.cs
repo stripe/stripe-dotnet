@@ -9,7 +9,7 @@ namespace Stripe.TestHelpers.Terminal
     public class ReaderInteracPresentOptions : INestedOptions
     {
         /// <summary>
-        /// Card Number.
+        /// The Interac card number.
         /// </summary>
         [JsonProperty("number")]
 #if NET6_0_OR_GREATER

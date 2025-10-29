@@ -165,6 +165,15 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Controls settings applied for collecting the customer's name.
+        /// </summary>
+        [JsonProperty("name_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name_collection")]
+#endif
+        public PaymentLinkNameCollectionOptions NameCollection { get; set; }
+
+        /// <summary>
         /// The account on behalf of which to charge.
         /// </summary>
         [JsonProperty("on_behalf_of")]

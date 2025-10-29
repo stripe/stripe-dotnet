@@ -132,6 +132,15 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Controls settings applied for collecting the customer's name.
+        /// </summary>
+        [JsonProperty("name_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name_collection")]
+#endif
+        public PaymentLinkNameCollectionOptions NameCollection { get; set; }
+
+        /// <summary>
         /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
         /// <c>payment</c> mode.
         /// </summary>

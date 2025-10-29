@@ -9,7 +9,8 @@ namespace Stripe.Terminal
     public class ReaderCollectPaymentMethodOptions : BaseOptions
     {
         /// <summary>
-        /// Configuration overrides.
+        /// Configuration overrides for this collection, such as tipping, surcharging, and customer
+        /// cancellation settings.
         /// </summary>
         [JsonProperty("collect_config")]
 #if NET6_0_OR_GREATER
@@ -18,7 +19,7 @@ namespace Stripe.Terminal
         public ReaderCollectConfigOptions CollectConfig { get; set; }
 
         /// <summary>
-        /// PaymentIntent ID.
+        /// The ID of the PaymentIntent to collect a payment method for.
         /// </summary>
         [JsonProperty("payment_intent")]
 #if NET6_0_OR_GREATER

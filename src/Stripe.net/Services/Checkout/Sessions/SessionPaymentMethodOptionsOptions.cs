@@ -387,6 +387,15 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsSwishOptions Swish { get; set; }
 
         /// <summary>
+        /// contains details about the TWINT payment method options.
+        /// </summary>
+        [JsonProperty("twint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("twint")]
+#endif
+        public SessionPaymentMethodOptionsTwintOptions Twint { get; set; }
+
+        /// <summary>
         /// contains details about the Us Bank Account payment method options.
         /// </summary>
         [JsonProperty("us_bank_account")]

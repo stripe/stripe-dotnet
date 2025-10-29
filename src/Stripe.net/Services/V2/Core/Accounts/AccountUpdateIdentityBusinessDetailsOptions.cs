@@ -28,6 +28,16 @@ namespace Stripe.V2.Core
         public AccountUpdateIdentityBusinessDetailsAnnualRevenueOptions AnnualRevenue { get; set; }
 
         /// <summary>
+        /// A detailed description of the business's compliance and anti-money laundering controls
+        /// and practices.
+        /// </summary>
+        [JsonProperty("compliance_screening_description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("compliance_screening_description")]
+#endif
+        public string ComplianceScreeningDescription { get; set; }
+
+        /// <summary>
         /// A document verifying the business.
         /// </summary>
         [JsonProperty("documents")]

@@ -81,6 +81,15 @@ namespace Stripe.V2.MoneyManagement
         public string Description { get; set; }
 
         /// <summary>
+        /// The amount and currency of the original/external credit request.
+        /// </summary>
+        [JsonProperty("external_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_amount")]
+#endif
+        public V2.Amount ExternalAmount { get; set; }
+
+        /// <summary>
         /// Financial Account ID on which funds for ReceivedCredit were received.
         /// </summary>
         [JsonProperty("financial_account")]
