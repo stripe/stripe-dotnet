@@ -1,5 +1,38 @@
 # Changelog
 
+## 49.1.0 - 2025-10-29
+* [#3236](https://github.com/stripe/stripe-dotnet/pull/3236) Update generated code
+  * Improve docs for PaymentIntent related endpoints
+* [#3230](https://github.com/stripe/stripe-dotnet/pull/3230) Update generated code
+  * Add support for new resources `PaymentAttemptRecord`, `PaymentIntentAmountDetailsLineItem`, and `PaymentRecord`
+  * Add support for `Get` and `List` methods on resource `PaymentAttemptRecord`
+  * Add support for `Get`, `ReportPaymentAttemptCanceled`, `ReportPaymentAttemptFailed`, `ReportPaymentAttemptGuaranteed`, `ReportPaymentAttemptInformational`, `ReportPaymentAttempt`, `ReportPayment`, and `ReportRefund` methods on resource `PaymentRecord`
+  * Add support for `List` method on resource `PaymentIntentAmountDetailsLineItem`
+  * Add support for `RepresentativeDeclaration` on `Account.Company`, `AccountCompanyOptions`, and `TokenAccountCompanyOptions`
+  * Add support for `PaymentMethodConfiguration` on `BillingPortalConfigurationFeaturesPaymentMethodUpdateOptions`
+  * Add support for `Twint` on `Checkout.Session.PaymentMethodOptions` and `CheckoutSessionPaymentMethodOptionsOptions`
+  * Add support for `PaymentRecordRefund` and `Type` on `CreditNote.Refund` and `CreditNoteRefundOptions`
+  * Add support for `CustomerSheet` and `MobilePaymentElement` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
+  * Add support for `Provider` on `Customer.Tax`
+  * Add support for `PaymentRecord` on `InvoiceAttachPaymentOptions`, `InvoicePayment.Payment`, and `InvoicePaymentPaymentOptions`
+  * Change type of `InvoicePaymentPaymentOptions.Type` from `literal('payment_intent')` to `enum('payment_intent'|'payment_record')`
+  * Add support for `AmountDetails` on `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentIncrementAuthorizationOptions`, and `PaymentIntentUpdateOptions`
+  * Add support for `PaymentDetails` on `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentIncrementAuthorizationOptions`, `PaymentIntentUpdateOptions`, and `PaymentIntent`
+  * Add support for `DiscountAmount`, `LineItems`, `Shipping`, and `Tax` on `PaymentIntent.AmountDetails`
+  * Add support for `NameCollection` on `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  * Add support for `Crypto` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, and `Refund.DestinationDetails`
+  * Add support for `MbWay` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `Custom` on `PaymentMethodCreateOptions` and `PaymentMethod`
+  * Add support for `ExcludedPaymentMethodTypes` on `SetupIntentCreateOptions`, `SetupIntentUpdateOptions`, and `SetupIntent`
+  * Add support for `Tw` on `Tax.Registration.CountryOptions` and `TaxRegistrationCountryOptionsOptions`
+  * Add support for `Gip` on `Terminal.Configuration.Tipping` and `TerminalConfigurationTippingOptions`
+  * Add support for `LastSeenAt` on `Terminal.Reader`
+  * Add support for `Gt`, `Gte`, `Lt`, `Lte`, and `Types` on `V2.Core.EventListOptions`
+  * Add support for snapshot event `BalanceSettingsUpdated` with resource `BalanceSettings`
+  * Add support for snapshot event `InvoicePaymentAttemptRequired` with resource `Invoice`
+* [#3223](https://github.com/stripe/stripe-dotnet/pull/3223) Fixes STJDefaultConverter to safely ignore unknown properties
+  * Fixes a bug when using System.Text.Json to deserialize JSON that has properties not present in the target object.
+
 ## 49.1.0-beta.1 - 2025-09-30
 This release changes the pinned API version to `2025-09-30.preview`. It is built on top of SDK version 49.0.0 which contains breaking changes. Please review the [changelog for 49.0.0](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md#4900---2025-09-30) if upgrading from older SDK versions.
 
