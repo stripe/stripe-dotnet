@@ -16,5 +16,14 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("payment_method")]
 #endif
         public string PaymentMethod { get; set; }
+
+        /// <summary>
+        /// Risk details/signals associated with the requested session.
+        /// </summary>
+        [JsonProperty("risk_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("risk_details")]
+#endif
+        public RequestedSessionRiskDetailsOptions RiskDetails { get; set; }
     }
 }

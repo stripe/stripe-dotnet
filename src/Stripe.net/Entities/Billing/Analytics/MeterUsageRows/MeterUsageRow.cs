@@ -71,6 +71,15 @@ namespace Stripe.Billing.Analytics
         public DateTime StartsAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// A set of key-value pairs representing the tenants of the meter usage.
+        /// </summary>
+        [JsonProperty("tenants")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tenants")]
+#endif
+        public Dictionary<string, string> Tenants { get; set; }
+
+        /// <summary>
         /// The aggregated meter usage value for the specified bucket.
         /// </summary>
         [JsonProperty("value")]
