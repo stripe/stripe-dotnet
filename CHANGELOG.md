@@ -1,5 +1,27 @@
 # Changelog
 
+## 49.2.0-beta.1 - 2025-10-29
+
+This release changes the pinned API version to `2025-10-29.preview`.
+
+* [#3234](https://github.com/stripe/stripe-dotnet/pull/3234) Update generated code for beta
+  * Add support for `CryptoStorer` on `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
+* [#3211](https://github.com/stripe/stripe-dotnet/pull/3211) Update generated code for beta
+  * Add support for `Update` method on resource `V2.MoneyManagement.FinancialAccount`
+  * Add support for `ConfirmMicrodeposits`, `List`, and `SendMicrodeposits` methods on resource `V2.Core.Vault.UsBankAccount`
+  * Add support for `List` method on resource `V2.Core.Vault.GbBankAccount`
+  * Add support for `PaymentPortalUrl` on `Charge.PaymentMethodDetails.Rechnung`, `PaymentAttemptRecord.PaymentMethodDetails.Rechnung`, and `PaymentRecord.PaymentMethodDetails.Rechnung`
+  * Add support for `TaxIdElement` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
+  * Add support for `StartingAfter` on `PaymentAttemptRecordListOptions`
+  * Add support for `Reference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna` and `PaymentIntentAmountDetailsLineItemsPaymentMethodOptionsKlarnaOptions`
+  * Add support for `SubscriptionReference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna`
+  * Add support for `Closed` on `V2.Core.AccountListOptions` and `V2.Core.Account`
+  * Add support for `Usd` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `RepresentativeDeclaration` on `V2.Core.Account.Identity.Attestations` and `V2CoreAccountIdentityAttestationsOptions`
+  * Add support for `Verification` on `V2.Core.Vault.UsBankAccount`
+  * Add support for `V1Id` on `EventsV2MoneyManagementTransactionCreatedEvent`
+  * Remove support for thin event `V2BillingBillSettingUpdatedEvent` with related object `V2.Billing.BillSetting`
+
 ## 49.1.0 - 2025-10-29
 * [#3236](https://github.com/stripe/stripe-dotnet/pull/3236) Update generated code
   * Improve docs for PaymentIntent related endpoints
