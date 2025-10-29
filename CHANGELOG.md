@@ -1,5 +1,65 @@
 # Changelog
 
+## 49.2.0-alpha.1 - 2025-10-29
+
+* [#3237](https://github.com/stripe/stripe-dotnet/pull/3237) Update generated code for private-preview
+  * Add support for `Tenants` on `Billing.Analytics.MeterUsageRow`
+  * Add support for `Transfer` on `ApplicationFee.FeeSource`
+  * Add support for `TransitBalancesTotal` on `Balance`
+  * Add support for `TenantGroupByKeys` on `BillingAnalyticsMeterUsageMeterOptions`
+  * Remove support for `RiskDetails` on `DelegatedCheckout.RequestedSessionCreateOptions`
+  * Add support for `RiskDetails` on `DelegatedCheckout.RequestedSessionConfirmOptions`
+  * Add support for `AllocatedFunds` on `PaymentIntent`
+  * Add support for `ApplicationFeeAmount` on `TransferCreateOptions` and `Transfer`
+  * Add support for `ApplicationFee` on `Transfer`
+* [#3235](https://github.com/stripe/stripe-dotnet/pull/3235) Update generated code for private-preview
+  * Add support for `ReportRefund` method on resource `PaymentRecord`
+  * Add support for `RepresentativeDeclaration` on `Account.Company`, `AccountCompanyOptions`, and `TokenAccountCompanyOptions`
+  * Add support for `PaymentMethodConfiguration` on `BillingPortalConfigurationFeaturesPaymentMethodUpdateOptions`
+  * Add support for `PaymentPortalUrl` on `Charge.PaymentMethodDetails.Rechnung`, `PaymentAttemptRecord.PaymentMethodDetails.Rechnung`, and `PaymentRecord.PaymentMethodDetails.Rechnung`
+  * Add support for `Twint` on `Checkout.Session.PaymentMethodOptions` and `CheckoutSessionPaymentMethodOptionsOptions`
+  * Add support for `CustomerSheet`, `MobilePaymentElement`, and `TaxIdElement` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
+  * Add support for `Provider` on `Customer.Tax`
+  * Add support for `StartingAfter` on `PaymentAttemptRecordListOptions`
+  * Add support for `Reference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna` and `PaymentIntentAmountDetailsLineItemsPaymentMethodOptionsKlarnaOptions`
+  * Add support for `SubscriptionReference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna`
+  * Add support for `NameCollection` on `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  * Add support for `Crypto` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, and `Refund.DestinationDetails`
+  * Add support for `MbWay` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `Custom` on `PaymentMethodCreateOptions` and `PaymentMethod`
+  * Add support for `ExcludedPaymentMethodTypes` on `SetupIntentCreateOptions`, `SetupIntentUpdateOptions`, and `SetupIntent`
+  * Add support for `Tw` on `Tax.Registration.CountryOptions` and `TaxRegistrationCountryOptionsOptions`
+  * Add support for `Gip` on `Terminal.Configuration.Tipping` and `TerminalConfigurationTippingOptions`
+  * Add support for `LastSeenAt` on `Terminal.Reader`
+  * Add support for `HighRiskActivitiesDescription`, `HighRiskActivities`, `MoneyServicesDescription`, `OperatesInProhibitedCountries`, `ParticipatesInRegulatedActivity`, `PurposeOfFundsDescription`, `PurposeOfFunds`, `RegulatedActivity`, `SourceOfFundsDescription`, and `SourceOfFunds` on `V2.Core.Account.Configuration.Storer` and `V2CoreAccountConfigurationStorerOptions`
+  * Add support for `CryptoWallets` on `V2.Core.Account.Configuration.Storer.Capabilities.FinancialAddresses`, `V2.Core.Account.Configuration.Storer.Capabilities.OutboundPayments`, `V2.Core.Account.Configuration.Storer.Capabilities.OutboundTransfers`, `V2CoreAccountConfigurationStorerCapabilitiesFinancialAddressesOptions`, `V2CoreAccountConfigurationStorerCapabilitiesOutboundPaymentsOptions`, and `V2CoreAccountConfigurationStorerCapabilitiesOutboundTransfersOptions`
+  * Add support for `Usdc` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `CryptoStorer` on `V2.Core.Account.Identity.Attestations.TermsOfService` and `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
+  * Add support for `ComplianceScreeningDescription` on `V2.Core.Account.Identity.BusinessDetails` and `V2CoreAccountIdentityBusinessDetailsOptions`
+  * Add support for `ExternalAmount` on `V2.MoneyManagement.ReceivedCredit` and `V2.MoneyManagement.ReceivedDebit`
+
+## 49.2.0-beta.1 - 2025-10-29
+
+This release changes the pinned API version to `2025-10-29.preview`.
+
+* [#3234](https://github.com/stripe/stripe-dotnet/pull/3234) Update generated code for beta
+  * Add support for `CryptoStorer` on `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
+* [#3211](https://github.com/stripe/stripe-dotnet/pull/3211) Update generated code for beta
+  * Add support for `Update` method on resource `V2.MoneyManagement.FinancialAccount`
+  * Add support for `ConfirmMicrodeposits`, `List`, and `SendMicrodeposits` methods on resource `V2.Core.Vault.UsBankAccount`
+  * Add support for `List` method on resource `V2.Core.Vault.GbBankAccount`
+  * Add support for `PaymentPortalUrl` on `Charge.PaymentMethodDetails.Rechnung`, `PaymentAttemptRecord.PaymentMethodDetails.Rechnung`, and `PaymentRecord.PaymentMethodDetails.Rechnung`
+  * Add support for `TaxIdElement` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
+  * Add support for `StartingAfter` on `PaymentAttemptRecordListOptions`
+  * Add support for `Reference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna` and `PaymentIntentAmountDetailsLineItemsPaymentMethodOptionsKlarnaOptions`
+  * Add support for `SubscriptionReference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna`
+  * Add support for `Closed` on `V2.Core.AccountListOptions` and `V2.Core.Account`
+  * Add support for `Usd` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `RepresentativeDeclaration` on `V2.Core.Account.Identity.Attestations` and `V2CoreAccountIdentityAttestationsOptions`
+  * Add support for `Verification` on `V2.Core.Vault.UsBankAccount`
+  * Add support for `V1Id` on `EventsV2MoneyManagementTransactionCreatedEvent`
+  * Remove support for thin event `V2BillingBillSettingUpdatedEvent` with related object `V2.Billing.BillSetting`
+
 ## 49.1.0 - 2025-10-29
 * [#3236](https://github.com/stripe/stripe-dotnet/pull/3236) Update generated code
   * Improve docs for PaymentIntent related endpoints
