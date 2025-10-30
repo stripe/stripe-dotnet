@@ -35,5 +35,23 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("cross_river_bank")]
 #endif
         public AccountIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBank CrossRiverBank { get; set; }
+
+        /// <summary>
+        /// Terms of service acceptances for Stripe commercial card Global issuing.
+        /// </summary>
+        [JsonProperty("global_account_holder")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("global_account_holder")]
+#endif
+        public AccountIdentityAttestationsTermsOfServiceCardCreatorCommercialGlobalAccountHolder GlobalAccountHolder { get; set; }
+
+        /// <summary>
+        /// Terms of service acceptances for commercial issuing cards with Lead as BIN sponsor.
+        /// </summary>
+        [JsonProperty("lead")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lead")]
+#endif
+        public AccountIdentityAttestationsTermsOfServiceCardCreatorCommercialLead Lead { get; set; }
     }
 }

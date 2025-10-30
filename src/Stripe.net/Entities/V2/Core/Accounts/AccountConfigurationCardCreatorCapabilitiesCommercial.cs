@@ -27,6 +27,15 @@ namespace Stripe.V2.Core
         public AccountConfigurationCardCreatorCapabilitiesCommercialCrossRiverBank CrossRiverBank { get; set; }
 
         /// <summary>
+        /// Can create commercial issuing cards with Lead as a BIN sponsor.
+        /// </summary>
+        [JsonProperty("lead")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lead")]
+#endif
+        public AccountConfigurationCardCreatorCapabilitiesCommercialLead Lead { get; set; }
+
+        /// <summary>
         /// Can create commercial issuing cards with Stripe as a BIN sponsor.
         /// </summary>
         [JsonProperty("stripe")]

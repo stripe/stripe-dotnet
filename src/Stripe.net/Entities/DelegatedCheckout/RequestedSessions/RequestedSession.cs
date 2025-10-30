@@ -149,6 +149,15 @@ namespace Stripe.DelegatedCheckout
 #endif
         public string PaymentMethod { get; set; }
 
+        /// <summary>
+        /// The preview of the payment method to be created when the requested session is confirmed.
+        /// </summary>
+        [JsonProperty("payment_method_preview")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_preview")]
+#endif
+        public RequestedSessionPaymentMethodPreview PaymentMethodPreview { get; set; }
+
         [JsonProperty("seller_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("seller_details")]
