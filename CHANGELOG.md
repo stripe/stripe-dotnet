@@ -1,5 +1,12 @@
 # Changelog
 
+## 49.2.0-alpha.2 - 2025-10-30
+* [#3242](https://github.com/stripe/stripe-dotnet/pull/3242) Update generated code for private-preview
+  * Add support for `PaymentMethodPreview` on `DelegatedCheckout.RequestedSession`
+  * Add support for `OrderId` on `DelegatedCheckout.RequestedSession.OrderDetails`
+  * Add support for `Lead` on `V2.Core.Account.Configuration.CardCreator.Capabilities.Commercial`, `V2.Core.Account.Identity.Attestations.TermsOfService.CardCreator.Commercial`, `V2CoreAccountConfigurationCardCreatorCapabilitiesCommercialOptions`, and `V2CoreAccountIdentityAttestationsTermsOfServiceCardCreatorCommercialOptions`
+  * Add support for `GlobalAccountHolder` on `V2.Core.Account.Identity.Attestations.TermsOfService.CardCreator.Commercial` and `V2CoreAccountIdentityAttestationsTermsOfServiceCardCreatorCommercialOptions`
+
 ## 49.2.0-alpha.1 - 2025-10-29
 
 * [#3237](https://github.com/stripe/stripe-dotnet/pull/3237) Update generated code for private-preview
