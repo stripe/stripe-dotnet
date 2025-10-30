@@ -1,6 +1,9 @@
 # Changelog
 
 ## 49.1.0 - 2025-10-29
+
+This release changes the pinned API version to `2025-10-29.clover`.
+
 * [#3236](https://github.com/stripe/stripe-dotnet/pull/3236) Update generated code
   * Improve docs for PaymentIntent related endpoints
 * [#3230](https://github.com/stripe/stripe-dotnet/pull/3230) Update generated code
