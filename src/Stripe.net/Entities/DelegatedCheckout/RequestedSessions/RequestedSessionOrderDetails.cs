@@ -16,5 +16,14 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("order_status_url")]
 #endif
         public string OrderStatusUrl { get; set; }
+
+        /// <summary>
+        /// The seller's order identifier.
+        /// </summary>
+        [JsonProperty("order_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("order_id")]
+#endif
+        public string OrderId { get; set; }
     }
 }
