@@ -11,6 +11,7 @@ namespace Stripe
         private V2.CoreService core;
         private V2.MoneyManagementService moneyManagement;
         private V2.PaymentService payments;
+        private V2.ReportingService reporting;
         private V2.TaxService tax;
         private V2.TestHelperService testHelpers;
 
@@ -34,6 +35,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual V2.PaymentService Payments => this.payments ??= new V2.PaymentService(
+            this.Requestor);
+
+        public virtual V2.ReportingService Reporting => this.reporting ??= new V2.ReportingService(
             this.Requestor);
 
         public virtual V2.TaxService Tax => this.tax ??= new V2.TaxService(

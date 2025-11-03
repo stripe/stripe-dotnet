@@ -336,6 +336,8 @@ namespace Stripe
                     V2.MoneyManagement.TransactionEntry)
                 },
                 { "v2.payments.off_session_payment", typeof(V2.Payments.OffSessionPayment) },
+                { "v2.reporting.report", typeof(V2.Reporting.Report) },
+                { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
                 { "v2.tax.automatic_rule", typeof(V2.Tax.AutomaticRule) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
@@ -1242,6 +1244,22 @@ namespace Stripe
                 {
                     "v2.payments.off_session_payment.succeeded", typeof(
                     Events.V2PaymentsOffSessionPaymentSucceededEvent)
+                },
+                {
+                    "v2.reporting.report_run.created", typeof(
+                    Events.V2ReportingReportRunCreatedEvent)
+                },
+                {
+                    "v2.reporting.report_run.failed", typeof(
+                    Events.V2ReportingReportRunFailedEvent)
+                },
+                {
+                    "v2.reporting.report_run.succeeded", typeof(
+                    Events.V2ReportingReportRunSucceededEvent)
+                },
+                {
+                    "v2.reporting.report_run.updated", typeof(
+                    Events.V2ReportingReportRunUpdatedEvent)
                 },
 
                 // V2EventsToTypes: The end of the section generated from our OpenAPI spec
@@ -2298,6 +2316,22 @@ namespace Stripe
                 {
                     "v2.payments.off_session_payment.succeeded", typeof(
                     Events.V2PaymentsOffSessionPaymentSucceededEventNotification)
+                },
+                {
+                    "v2.reporting.report_run.created", typeof(
+                    Events.V2ReportingReportRunCreatedEventNotification)
+                },
+                {
+                    "v2.reporting.report_run.failed", typeof(
+                    Events.V2ReportingReportRunFailedEventNotification)
+                },
+                {
+                    "v2.reporting.report_run.succeeded", typeof(
+                    Events.V2ReportingReportRunSucceededEventNotification)
+                },
+                {
+                    "v2.reporting.report_run.updated", typeof(
+                    Events.V2ReportingReportRunUpdatedEventNotification)
                 },
 
                 // V2EventNotificationsToTypes: The end of the section generated from our OpenAPI spec
