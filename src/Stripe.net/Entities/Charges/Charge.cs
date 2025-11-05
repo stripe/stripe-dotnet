@@ -40,6 +40,15 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
+        /// Funds that are in transit and destined for another balance or another connected account.
+        /// </summary>
+        [JsonProperty("allocated_funds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allocated_funds")]
+#endif
+        public TransitBalance AllocatedFunds { get; set; }
+
+        /// <summary>
         /// Amount intended to be collected by this payment. A positive integer representing how
         /// much to charge in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
         /// currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal

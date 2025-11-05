@@ -206,6 +206,7 @@ namespace Stripe
                 { "topup", typeof(Topup) },
                 { "transfer", typeof(Transfer) },
                 { "transfer_reversal", typeof(TransferReversal) },
+                { "transit_balance", typeof(TransitBalance) },
                 { "treasury.credit_reversal", typeof(Treasury.CreditReversal) },
                 { "treasury.debit_reversal", typeof(Treasury.DebitReversal) },
                 { "treasury.financial_account", typeof(Treasury.FinancialAccount) },
