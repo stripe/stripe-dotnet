@@ -1,5 +1,9 @@
 # Changelog
 
+## 49.2.0 - 2025-11-05
+* [#3244](https://github.com/stripe/stripe-dotnet/pull/3244) Update generated code
+  * Add support for `CaptureMethod` on `PaymentIntent.PaymentMethodOptions.CardPresent` and `PaymentIntentPaymentMethodOptionsCardPresentOptions`
+
 ## 49.1.0 - 2025-10-29
 
 This release changes the pinned API version to `2025-10-29.clover`.
