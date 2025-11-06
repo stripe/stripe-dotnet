@@ -1,5 +1,14 @@
 # Changelog
 
+## 49.3.0-alpha.1 - 2025-11-06
+* [#3243](https://github.com/stripe/stripe-dotnet/pull/3243) Update generated code for private-preview
+  * Add support for new resource `TransitBalance`, `V2.Reporting.ReportRun`, `V2.Reporting.Report`
+  * Add support for `Create` and `Get` methods on resource `V2.Reporting.ReportRun`
+  * Add support for `Get` method on resource `V2.Reporting.Report`
+  * Add support for `Create` and `Refill` test helper methods on resource `Capital.FinancingOffer`
+  * Add support for `AllocatedFunds` on `Charge`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, and `PaymentIntentUpdateOptions`
+  * Add support for thin events `V2ReportingReportRunCreatedEvent`, `V2ReportingReportRunFailedEvent`, `V2ReportingReportRunSucceededEvent`, and `V2ReportingReportRunUpdatedEvent` with related object `V2.Reporting.ReportRun`
+
 ## 49.2.0-alpha.2 - 2025-10-30
 * [#3242](https://github.com/stripe/stripe-dotnet/pull/3242) Update generated code for private-preview
   * Add support for `PaymentMethodPreview` on `DelegatedCheckout.RequestedSession`
@@ -242,6 +251,8 @@ This release changes the pinned API version to `2025-09-30.preview`. It is built
   * Add support for thin events `V2MoneyManagementRecipientVerificationCreatedEvent` and `V2MoneyManagementRecipientVerificationUpdatedEvent` with related object `V2.MoneyManagement.RecipientVerification`
 * [#3188](https://github.com/stripe/stripe-dotnet/pull/3188) ParseThinEvent__Experimental is no longer needed
   * ⚠️ Remove the `StripeClient. ParseThinEvent__Experimental` and `PushedEvent` classes. They've been replaced with `StripeClient.ParseEventNotification` and the *`EventNotification` classes respectively.
+* Remove support for resources `V2.Reporting.ReportRun`, `V2.Reporting.Report`
+* Remove support for thin events `V2ReportingReportRunCreatedEvent`, `V2ReportingReportRunFailedEvent`, `V2ReportingReportRunSucceededEvent`, and `V2ReportingReportRunUpdatedEvent` with related object `V2.Reporting.ReportRun`
 
 ## 49.0.0 - 2025-09-30
 This release changes the pinned API version to `2025-09-30.clover` and contains breaking changes (prefixed with ⚠️ below)
