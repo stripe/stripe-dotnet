@@ -214,6 +214,24 @@ namespace Stripe
         public AccountIndividualRelationshipOptions Relationship { get; set; }
 
         /// <summary>
+        /// The credit applicant's self-reported yearly income in minor units.
+        /// </summary>
+        [JsonProperty("self_reported_income")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_income")]
+#endif
+        public AccountIndividualSelfReportedIncomeOptions SelfReportedIncome { get; set; }
+
+        /// <summary>
+        /// The credit applicant's self-reported monthly housing payment in minor units.
+        /// </summary>
+        [JsonProperty("self_reported_monthly_housing_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_monthly_housing_payment")]
+#endif
+        public AccountIndividualSelfReportedMonthlyHousingPaymentOptions SelfReportedMonthlyHousingPayment { get; set; }
+
+        /// <summary>
         /// The last four digits of the individual's Social Security Number (U.S. only).
         /// </summary>
         [JsonProperty("ssn_last_4")]
