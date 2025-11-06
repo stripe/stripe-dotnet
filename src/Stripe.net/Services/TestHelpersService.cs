@@ -7,6 +7,7 @@ namespace Stripe
 
     public class TestHelpersService : Service
     {
+        private TestHelpers.CapitalService capital;
         private TestHelpers.ConfirmationTokenService confirmationTokens;
         private TestHelpers.CustomerService customers;
         private TestHelpers.IssuingService issuing;
@@ -24,6 +25,9 @@ namespace Stripe
             : base(client)
         {
         }
+
+        public virtual TestHelpers.CapitalService Capital => this.capital ??= new TestHelpers.CapitalService(
+            this.Requestor);
 
         public virtual TestHelpers.ConfirmationTokenService ConfirmationTokens => this.confirmationTokens ??= new TestHelpers.ConfirmationTokenService(
             this.Requestor);

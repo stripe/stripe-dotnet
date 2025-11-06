@@ -723,7 +723,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events/ll_123",
                 HttpStatusCode.OK,
-                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"changes\":{\"key\":{}},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":{\"type\":\"request\",\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\",\"v1_event_id\":\"v1_event_id\"}");
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.event\",\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"reason\":{\"type\":\"request\",\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\",\"v1_event_id\":\"v1_event_id\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
             Stripe.V2.Core.Event result = service.Get("ll_123");
@@ -9449,6 +9449,69 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/payments/off_session_payments/id_123/capture");
+        }
+
+        [Fact]
+        public void TestV2ReportingReportGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/reporting/reports/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.reporting.report\",\"livemode\":true,\"name\":\"name\",\"parameters\":{\"key\":{\"description\":\"description\",\"required\":true,\"type\":\"string\"}}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Reporting.Reports;
+            Stripe.V2.Reporting.Report report = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/reporting/reports/id_123");
+        }
+
+        [Fact]
+        public void TestV2ReportingReportRunPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/reporting/report_runs",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.reporting.report_run\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"report\":\"report\",\"report_name\":\"report_name\",\"report_parameters\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"status\":\"failed\",\"status_details\":{\"key\":{}}}");
+            var options = new Stripe.V2.Reporting.ReportRunCreateOptions
+            {
+                Report = "report",
+                ReportParameters = new Dictionary<string, object>
+                {
+                    { "int_key", 123 },
+                    { "string_key", "value" },
+                    { "boolean_key", true },
+                    {
+                        "object_key", new Dictionary<string, object>
+                        {
+                            { "object_int_key", 123 },
+                            { "object_string_key", "value" },
+                            { "object_boolean_key", true },
+                        }
+                    },
+                    { "array_key", new List<object> { 1, 2, 3 } },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Reporting.ReportRuns;
+            Stripe.V2.Reporting.ReportRun reportRun = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/reporting/report_runs");
+        }
+
+        [Fact]
+        public void TestV2ReportingReportRunGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/reporting/report_runs/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.reporting.report_run\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"report\":\"report\",\"report_name\":\"report_name\",\"report_parameters\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"status\":\"failed\",\"status_details\":{\"key\":{}}}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Reporting.ReportRuns;
+            Stripe.V2.Reporting.ReportRun reportRun = service.Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/reporting/report_runs/id_123");
         }
 
         [Fact]

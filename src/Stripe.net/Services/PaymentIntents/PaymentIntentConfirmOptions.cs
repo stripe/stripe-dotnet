@@ -10,6 +10,15 @@ namespace Stripe
     public class PaymentIntentConfirmOptions : BaseOptions
     {
         /// <summary>
+        /// Allocated Funds configuration for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("allocated_funds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allocated_funds")]
+#endif
+        public PaymentIntentAllocatedFundsOptions AllocatedFunds { get; set; }
+
+        /// <summary>
         /// Provides industry-specific information about the amount.
         /// </summary>
         [JsonProperty("amount_details")]
