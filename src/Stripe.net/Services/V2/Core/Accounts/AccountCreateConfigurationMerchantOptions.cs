@@ -46,6 +46,15 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMerchantCardPaymentsOptions CardPayments { get; set; }
 
         /// <summary>
+        /// Settings specific to Konbini payments on the account.
+        /// </summary>
+        [JsonProperty("konbini_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("konbini_payments")]
+#endif
+        public AccountCreateConfigurationMerchantKonbiniPaymentsOptions KonbiniPayments { get; set; }
+
+        /// <summary>
         /// The merchant category code for the Merchant Configuration. MCCs are used to classify
         /// businesses based on the goods or services they provide.
         /// </summary>
@@ -54,6 +63,15 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("mcc")]
 #endif
         public string Mcc { get; set; }
+
+        /// <summary>
+        /// Settings for the default text that appears on statements for language variations.
+        /// </summary>
+        [JsonProperty("script_statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("script_statement_descriptor")]
+#endif
+        public AccountCreateConfigurationMerchantScriptStatementDescriptorOptions ScriptStatementDescriptor { get; set; }
 
         /// <summary>
         /// Statement descriptor.
