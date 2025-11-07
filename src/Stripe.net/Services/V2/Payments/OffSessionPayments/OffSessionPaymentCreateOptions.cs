@@ -19,15 +19,6 @@ namespace Stripe.V2.Payments
         public V2.Amount Amount { get; set; }
 
         /// <summary>
-        /// Provides industry-specific information about the amount.
-        /// </summary>
-        [JsonProperty("amount_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_details")]
-#endif
-        public OffSessionPaymentCreateAmountDetailsOptions AmountDetails { get; set; }
-
-        /// <summary>
         /// The frequency of the underlying payment.
         /// One of: <c>recurring</c>, or <c>unscheduled</c>.
         /// </summary>
@@ -45,16 +36,6 @@ namespace Stripe.V2.Payments
         [STJS.JsonPropertyName("capture")]
 #endif
         public OffSessionPaymentCreateCaptureOptions Capture { get; set; }
-
-        /// <summary>
-        /// Whether the OffSessionPayment should be captured automatically or manually.
-        /// One of: <c>automatic</c>, or <c>manual</c>.
-        /// </summary>
-        [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("capture_method")]
-#endif
-        public string CaptureMethod { get; set; }
 
         /// <summary>
         /// ID of the Customer to which this OffSessionPayment belongs.

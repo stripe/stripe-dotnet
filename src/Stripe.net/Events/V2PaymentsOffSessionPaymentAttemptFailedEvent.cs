@@ -3,17 +3,15 @@ namespace Stripe.Events
 {
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-    using Stripe.V2;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
     /// <summary>
-    /// Sent when our internal scheduling system kicks off an attempt at authorization, whether
-    /// it's a retry or an initial authorization. This event has been renamed this to
-    /// attempt_failed, but we are keeping this around for backwards compatibility.
+    /// Sent after a failed attempt if there are still retries available on the
+    /// OffSessionPayment.
     /// </summary>
-    public class V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification : V2.Core.EventNotification
+    public class V2PaymentsOffSessionPaymentAttemptFailedEvent : V2.Core.Event
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -23,7 +21,7 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("related_object")]
 #endif
 
-        public V2.Core.EventNotificationRelatedObject RelatedObject { get; set; }
+        public V2.Core.EventRelatedObject RelatedObject { get; set; }
 
         /// <summary>
         /// Asynchronously retrieves the related object from the API. Make an API request on every
@@ -40,16 +38,6 @@ namespace Stripe.Events
         public V2.Payments.OffSessionPayment FetchRelatedObject()
         {
             return this.FetchRelatedObject<V2.Payments.OffSessionPayment>(this.RelatedObject);
-        }
-
-        public V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent FetchEvent()
-        {
-            return this.FetchEvent<V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent>();
-        }
-
-        public Task<V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent> FetchEventAsync()
-        {
-            return this.FetchEventAsync<V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent>();
         }
     }
 }

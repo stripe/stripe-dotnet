@@ -9,11 +9,10 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Sent when our internal scheduling system kicks off an attempt at authorization, whether
-    /// it's a retry or an initial authorization. This event has been renamed this to
-    /// attempt_failed, but we are keeping this around for backwards compatibility.
+    /// Sent after a failed attempt if there are still retries available on the
+    /// OffSessionPayment.
     /// </summary>
-    public class V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification : V2.Core.EventNotification
+    public class V2PaymentsOffSessionPaymentAttemptFailedEventNotification : V2.Core.EventNotification
     {
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
@@ -42,14 +41,14 @@ namespace Stripe.Events
             return this.FetchRelatedObject<V2.Payments.OffSessionPayment>(this.RelatedObject);
         }
 
-        public V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent FetchEvent()
+        public V2PaymentsOffSessionPaymentAttemptFailedEvent FetchEvent()
         {
-            return this.FetchEvent<V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent>();
+            return this.FetchEvent<V2PaymentsOffSessionPaymentAttemptFailedEvent>();
         }
 
-        public Task<V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent> FetchEventAsync()
+        public Task<V2PaymentsOffSessionPaymentAttemptFailedEvent> FetchEventAsync()
         {
-            return this.FetchEventAsync<V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent>();
+            return this.FetchEventAsync<V2PaymentsOffSessionPaymentAttemptFailedEvent>();
         }
     }
 }

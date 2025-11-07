@@ -22,15 +22,5 @@ namespace Stripe.V2.Payments
         [STJS.JsonPropertyName("amount")]
 #endif
         public long? Amount { get; set; }
-
-        /// <summary>
-        /// The account (if any) that the payment is attributed to for tax reporting, and where
-        /// funds from the payment are transferred to after payment success.
-        /// </summary>
-        [JsonProperty("destination")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("destination")]
-#endif
-        public string Destination { get; set; }
     }
 }

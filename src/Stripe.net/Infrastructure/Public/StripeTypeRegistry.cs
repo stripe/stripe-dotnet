@@ -522,6 +522,14 @@ namespace Stripe
                     Events.V2MoneyManagementTransactionUpdatedEvent)
                 },
                 {
+                    "v2.payments.off_session_payment.attempt_failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptFailedEvent)
+                },
+                {
+                    "v2.payments.off_session_payment.attempt_started", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptStartedEvent)
+                },
+                {
                     "v2.payments.off_session_payment.authorization_attempt_failed", typeof(
                     Events.V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent)
                 },
@@ -780,6 +788,14 @@ namespace Stripe
                 {
                     "v2.money_management.transaction.updated", typeof(
                     Events.V2MoneyManagementTransactionUpdatedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.attempt_failed", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptFailedEventNotification)
+                },
+                {
+                    "v2.payments.off_session_payment.attempt_started", typeof(
+                    Events.V2PaymentsOffSessionPaymentAttemptStartedEventNotification)
                 },
                 {
                     "v2.payments.off_session_payment.authorization_attempt_failed", typeof(
