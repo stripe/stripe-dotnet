@@ -10,6 +10,7 @@ namespace Stripe
         private Terminal.ConfigurationService configurations;
         private Terminal.ConnectionTokenService connectionTokens;
         private Terminal.LocationService locations;
+        private Terminal.OnboardingLinkService onboardingLinks;
         private Terminal.ReaderService readers;
 
         internal TerminalService(ApiRequestor requestor)
@@ -29,6 +30,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual Terminal.LocationService Locations => this.locations ??= new Terminal.LocationService(
+            this.Requestor);
+
+        public virtual Terminal.OnboardingLinkService OnboardingLinks => this.onboardingLinks ??= new Terminal.OnboardingLinkService(
             this.Requestor);
 
         public virtual Terminal.ReaderService Readers => this.readers ??= new Terminal.ReaderService(
