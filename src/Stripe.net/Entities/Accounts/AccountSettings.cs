@@ -68,6 +68,12 @@ namespace Stripe
 #endif
         public AccountSettingsPayouts Payouts { get; set; }
 
+        [JsonProperty("paypay_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay_payments")]
+#endif
+        public AccountSettingsPaypayPayments PaypayPayments { get; set; }
+
         [JsonProperty("sepa_debit_payments")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit_payments")]

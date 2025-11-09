@@ -18,6 +18,15 @@ namespace Stripe.TestHelpers.Issuing
         public AuthorizationRiskAssessmentCardTestingRiskOptions CardTestingRisk { get; set; }
 
         /// <summary>
+        /// Stripe’s assessment of this authorization’s likelihood to be fraudulent.
+        /// </summary>
+        [JsonProperty("fraud_risk")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fraud_risk")]
+#endif
+        public AuthorizationRiskAssessmentFraudRiskOptions FraudRisk { get; set; }
+
+        /// <summary>
         /// The dispute risk of the merchant (the seller on a purchase) on an authorization based on
         /// all Stripe Issuing activity.
         /// </summary>
