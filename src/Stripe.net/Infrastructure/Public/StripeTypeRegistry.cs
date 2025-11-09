@@ -382,6 +382,10 @@ namespace Stripe
                     Events.V2CoreEventDestinationPingEvent)
                 },
                 {
+                    "v2.core.health.event_generation_failure.resolved", typeof(
+                    Events.V2CoreHealthEventGenerationFailureResolvedEvent)
+                },
+                {
                     "v2.money_management.adjustment.created", typeof(
                     Events.V2MoneyManagementAdjustmentCreatedEvent)
                 },
@@ -648,6 +652,10 @@ namespace Stripe
                 {
                     "v2.core.event_destination.ping", typeof(
                     Events.V2CoreEventDestinationPingEventNotification)
+                },
+                {
+                    "v2.core.health.event_generation_failure.resolved", typeof(
+                    Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)
                 },
                 {
                     "v2.money_management.adjustment.created", typeof(
