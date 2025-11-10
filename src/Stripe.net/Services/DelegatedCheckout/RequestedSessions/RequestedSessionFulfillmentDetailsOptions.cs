@@ -8,6 +8,9 @@ namespace Stripe.DelegatedCheckout
 
     public class RequestedSessionFulfillmentDetailsOptions : INestedOptions
     {
+        /// <summary>
+        /// The customer's address.
+        /// </summary>
         [JsonProperty("address")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
