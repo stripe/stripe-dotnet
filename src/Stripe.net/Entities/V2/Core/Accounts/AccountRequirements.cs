@@ -10,6 +10,16 @@ namespace Stripe.V2.Core
     public class AccountRequirements : StripeEntity<AccountRequirements>
     {
         /// <summary>
+        /// A value indicating responsibility for collecting requirements on this account.
+        /// One of: <c>application</c>, or <c>stripe</c>.
+        /// </summary>
+        [JsonProperty("collector")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("collector")]
+#endif
+        public string Collector { get; set; }
+
+        /// <summary>
         /// A list of requirements for the Account.
         /// </summary>
         [JsonProperty("entries")]

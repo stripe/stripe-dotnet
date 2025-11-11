@@ -10,8 +10,7 @@ namespace Stripe.Events
 
     /// <summary>
     /// Sent when our internal scheduling system kicks off an attempt at authorization, whether
-    /// it's a retry or an initial authorization. This event has been renamed this to
-    /// attempt_failed, but we are keeping this around for backwards compatibility.
+    /// it's a retry or an initial authorization.
     /// </summary>
     public class V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEventNotification : V2.Core.EventNotification
     {

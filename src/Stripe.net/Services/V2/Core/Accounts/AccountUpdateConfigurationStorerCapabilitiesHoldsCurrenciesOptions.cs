@@ -9,15 +9,6 @@ namespace Stripe.V2.Core
     public class AccountUpdateConfigurationStorerCapabilitiesHoldsCurrenciesOptions : INestedOptions
     {
         /// <summary>
-        /// Can hold storage-type funds on Stripe in EUR.
-        /// </summary>
-        [JsonProperty("eur")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("eur")]
-#endif
-        public AccountUpdateConfigurationStorerCapabilitiesHoldsCurrenciesEurOptions Eur { get; set; }
-
-        /// <summary>
         /// Can hold storage-type funds on Stripe in GBP.
         /// </summary>
         [JsonProperty("gbp")]

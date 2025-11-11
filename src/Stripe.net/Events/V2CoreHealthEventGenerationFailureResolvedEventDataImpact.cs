@@ -10,14 +10,14 @@ namespace Stripe.Events
     public class V2CoreHealthEventGenerationFailureResolvedEventDataImpact : StripeEntity<V2CoreHealthEventGenerationFailureResolvedEventDataImpact>
     {
         /// <summary>
-        /// The context the event should have been generated for. Only present when the account is a
-        /// connected account.
+        /// The account id the event should have been generated for. Only present when the account
+        /// is a connected account.
         /// </summary>
-        [JsonProperty("context")]
+        [JsonProperty("account")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("context")]
+        [STJS.JsonPropertyName("account")]
 #endif
-        public string Context { get; set; }
+        public string Account { get; set; }
 
         /// <summary>
         /// The type of event that Stripe failed to generate.
@@ -29,12 +29,30 @@ namespace Stripe.Events
         public string EventType { get; set; }
 
         /// <summary>
-        /// The related object details.
+        /// Indicates if the event was for livemode or not.
         /// </summary>
-        [JsonProperty("related_object")]
+        [JsonProperty("livemode")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("related_object")]
+        [STJS.JsonPropertyName("livemode")]
 #endif
-        public V2CoreHealthEventGenerationFailureResolvedEventDataImpactRelatedObject RelatedObject { get; set; }
+        public bool Livemode { get; set; }
+
+        /// <summary>
+        /// The number of webhooks that Stripe failed to create and deliver.
+        /// </summary>
+        [JsonProperty("missing_delivery_attempts")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("missing_delivery_attempts")]
+#endif
+        public long MissingDeliveryAttempts { get; set; }
+
+        /// <summary>
+        /// The related object id.
+        /// </summary>
+        [JsonProperty("related_object_id")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("related_object_id")]
+#endif
+        public string RelatedObjectId { get; set; }
     }
 }

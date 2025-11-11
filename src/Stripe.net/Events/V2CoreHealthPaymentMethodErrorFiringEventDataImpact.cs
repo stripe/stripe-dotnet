@@ -28,15 +28,6 @@ namespace Stripe.Events
         public long ImpactedRequests { get; set; }
 
         /// <summary>
-        /// The percentage of impacted requests.
-        /// </summary>
-        [JsonProperty("impacted_requests_percentage")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("impacted_requests_percentage")]
-#endif
-        public string ImpactedRequestsPercentage { get; set; }
-
-        /// <summary>
         /// The type of the payment method.
         /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
         /// <c>alma</c>, <c>amazon_pay</c>, <c>apple_pay</c>, <c>au_becs_debit</c>,

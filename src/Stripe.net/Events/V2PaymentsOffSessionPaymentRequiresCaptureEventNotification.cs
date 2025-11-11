@@ -9,7 +9,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Sent when the off-session payment becomes available for capture.
+    /// Off-Session payment requires capture event definition.
     /// </summary>
     public class V2PaymentsOffSessionPaymentRequiresCaptureEventNotification : V2.Core.EventNotification
     {

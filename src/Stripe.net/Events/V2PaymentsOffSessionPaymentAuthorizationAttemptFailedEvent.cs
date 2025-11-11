@@ -9,8 +9,7 @@ namespace Stripe.Events
 
     /// <summary>
     /// Sent after a failed authorization if there are still retries available on the
-    /// OffSessionPayment. This event has been renamed this to attempt_failed, but we are
-    /// keeping this around for backwards compatibility.
+    /// OffSessionPayment.
     /// </summary>
     public class V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent : V2.Core.Event
     {
