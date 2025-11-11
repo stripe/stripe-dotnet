@@ -229,6 +229,11 @@ namespace Stripe
             return EventNotification.FromJson(json, this);
         }
 
+        public StripeEventHandler EventHandler(string webhookSecret)
+        {
+            return new StripeEventHandler(this, webhookSecret);
+        }
+
         internal JsonSerializerSettings GetJsonSerializationSettings()
         {
             return this.jsonSerializerSettings;
