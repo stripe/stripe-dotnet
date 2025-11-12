@@ -25,13 +25,32 @@ namespace Examples.V2
     {
         private readonly StripeClient client;
         private readonly string webhookSecret;
+        private readonly StripeEventHandler eventHandler;
 
         public EventNotificationWebhookHandler()
         {
             var apiKey = Environment.GetEnvironmentVariable("STRIPE_API_KEY");
             client = new StripeClient(apiKey);
-
             webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET") ?? string.Empty;
+            eventHandler = client.EventHandler(webhookSecret);
+
+            eventHandler.V1BillingMeterErrorReportTriggeredEvent += HandleBillingMeterErrorReportTriggeredEventNotification;
+        }
+
+        private void HandleBillingMeterErrorReportTriggeredEventNotification(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
+        {
+            var notif = e.EventNotification;
+            var client = e.Client;
+            client.V1.Accounts.List();
+
+            Console.WriteLine(
+                $"Meter w/ id {notif.RelatedObject.Id} had a problem");
+
+            var meter = notif.FetchRelatedObject();
+            Console.WriteLine($"Meter {meter.DisplayName} ({meter.Id}) had a problem");
+
+            var evt = notif.FetchEvent();
+            Console.WriteLine($"More info: {evt.Data.DeveloperMessageSummary}");
         }
 
         [HttpPost]
