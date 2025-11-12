@@ -11,8 +11,9 @@ namespace Stripe
     {
         private readonly StripeClient client;
         private readonly string webhookSecret;
-        private readonly Dictionary<Type, Delegate> eventHandlers = new Dictionary<Type, Delegate>();
-        private bool hasHandledEvent = false;
+
+        // TODO: override `add` and check this
+        // private bool hasHandledEvent = false;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="StripeEventHandler"/> class.
@@ -25,34 +26,16 @@ namespace Stripe
             this.webhookSecret = webhookSecret ?? throw new ArgumentNullException(nameof(webhookSecret));
         }
 
-        /// <summary>
-        /// Registers an event handler for a specific EventNotification type.
-        /// </summary>
-        /// <typeparam name="TEventNotification">The type of EventNotification to handle.</typeparam>
-        /// <param name="handler">The event handler to invoke when this event type is received.</param>
-        /// <exception cref="ArgumentNullException">Thrown if handler is null.</exception>
-        /// <exception cref="InvalidOperationException">Thrown if a handler is already registered for this type.</exception>
-        public void Register<TEventNotification>(EventHandler<StripeEventNotificationEventArgs<TEventNotification>> handler)
-            where TEventNotification : V2.Core.EventNotification
-        {
-            if (handler == null)
-            {
-                throw new ArgumentNullException(nameof(handler));
-            }
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.UnknownEventNotification>> UnknownEventNotification;
 
-            if (this.hasHandledEvent)
-            {
-                throw new InvalidOperationException("Cannot register handlers after an event has been handled.");
-            }
+        // event-handler-declarations: The beginning of the section generated from our OpenAPI spec
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification>> V1BillingMeterErrorReportTriggeredEvent;
 
-            var eventType = typeof(TEventNotification);
-            if (this.eventHandlers.ContainsKey(eventType))
-            {
-                throw new InvalidOperationException($"A handler for {eventType.Name} is already registered.");
-            }
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterNoMeterFoundEventNotification>> V1BillingMeterNoMeterFoundEvent;
 
-            this.eventHandlers[eventType] = handler;
-        }
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> V2CoreEventDestinationPingEvent;
+
+        // event-handler-declarations: The end of the section generated from our OpenAPI spec
 
         /// <summary>
         /// Handles an incoming webhook by parsing the payload, validating the signature,
@@ -66,8 +49,7 @@ namespace Stripe
             string json,
             string stripeSignatureHeader)
         {
-            this.hasHandledEvent = true;
-
+            // this.hasHandledEvent = true;
             if (json == null)
             {
                 throw new ArgumentNullException(nameof(json));
@@ -87,17 +69,52 @@ namespace Stripe
 
         private void DispatchEvent(V2.Core.EventNotification eventNotification)
         {
-            var eventType = eventNotification.GetType();
-
-            if (this.eventHandlers.TryGetValue(eventType, out var handler))
+            if (eventNotification is Stripe.Events.UnknownEventNotification e)
             {
-                // Use reflection to create the EventArgs and invoke the handler
-                var eventArgsType = typeof(StripeEventNotificationEventArgs<>).MakeGenericType(eventType);
+                if (this.UnknownEventNotification == null)
+                {
+                    throw new Exception("No handler registered for \"UknownEventNotification\"");
+                }
 
-                // TODO: bind stripe-context to client
-                var eventArgs = Activator.CreateInstance(eventArgsType, eventNotification, this.client);
+                this.UnknownEventNotification.Invoke(
+                    this,
+                    new StripeEventNotificationEventArgs<Stripe.Events.UnknownEventNotification>(
+                        (Stripe.Events.UnknownEventNotification)eventNotification, this.client));
+            }
 
-                handler.DynamicInvoke(this, eventArgs);
+            // event-handler-dispatch: The beginning of the section generated from our OpenAPI spec
+            else if (eventNotification is Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification)
+            {
+                if (this.V1BillingMeterErrorReportTriggeredEvent == null)
+                {
+                    throw new Exception("No handler registered for \"V1BillingMeterErrorReportTriggeredEvent\"");
+                }
+
+                this.V1BillingMeterErrorReportTriggeredEvent.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification>((Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification)eventNotification, this.client));
+            }
+            else if (eventNotification is Stripe.Events.V1BillingMeterNoMeterFoundEventNotification)
+            {
+                if (this.V1BillingMeterNoMeterFoundEvent == null)
+                {
+                    throw new Exception("No handler registered for \"V1BillingMeterNoMeterFoundEvent\"");
+                }
+
+                this.V1BillingMeterNoMeterFoundEvent.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterNoMeterFoundEventNotification>((Stripe.Events.V1BillingMeterNoMeterFoundEventNotification)eventNotification, this.client));
+            }
+            else if (eventNotification is Stripe.Events.V2CoreEventDestinationPingEventNotification)
+            {
+                if (this.V2CoreEventDestinationPingEvent == null)
+                {
+                    throw new Exception("No handler registered for \"V2CoreEventDestinationPingEvent\"");
+                }
+
+                this.V2CoreEventDestinationPingEvent.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>((Stripe.Events.V2CoreEventDestinationPingEventNotification)eventNotification, this.client));
+            }
+
+            // event-handler-dispatch: The end of the section generated from our OpenAPI spec
+            else
+            {
+                throw new Exception("No handler registered!");
             }
         }
     }

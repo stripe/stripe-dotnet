@@ -34,7 +34,7 @@ namespace Examples.V2
             webhookSecret = Environment.GetEnvironmentVariable("WEBHOOK_SECRET") ?? string.Empty;
             eventHandler = client.EventHandler(webhookSecret);
 
-            eventHandler.Register<V1BillingMeterErrorReportTriggeredEventNotification>(this.HandleBillingMeterErrorReportTriggeredEventNotification);
+            eventHandler.V1BillingMeterErrorReportTriggeredEvent += HandleBillingMeterErrorReportTriggeredEventNotification;
         }
 
         private void HandleBillingMeterErrorReportTriggeredEventNotification(object sender, StripeEventNotificationEventArgs<V1BillingMeterErrorReportTriggeredEventNotification> e)
