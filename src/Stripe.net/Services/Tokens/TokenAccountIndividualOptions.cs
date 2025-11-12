@@ -230,5 +230,23 @@ namespace Stripe
         [STJS.JsonPropertyName("verification")]
 #endif
         public TokenAccountIndividualVerificationOptions Verification { get; set; }
+
+        /// <summary>
+        /// The credit applicant's self-reported yearly income in minor units.
+        /// </summary>
+        [JsonProperty("self_reported_income")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_income")]
+#endif
+        public TokenAccountIndividualSelfReportedIncomeOptions SelfReportedIncome { get; set; }
+
+        /// <summary>
+        /// The credit applicant's self-reported monthly housing payment in minor units.
+        /// </summary>
+        [JsonProperty("self_reported_monthly_housing_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_monthly_housing_payment")]
+#endif
+        public TokenAccountIndividualSelfReportedMonthlyHousingPaymentOptions SelfReportedMonthlyHousingPayment { get; set; }
     }
 }

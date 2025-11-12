@@ -33,7 +33,8 @@ namespace Stripe
         /// <summary>
         /// Describes how the billing schedule will determine the end date. Either <c>duration</c>
         /// or <c>timestamp</c>.
-        /// One of: <c>duration</c>, or <c>timestamp</c>.
+        /// One of: <c>amendment_end</c>, <c>duration</c>, <c>line_ends_at</c>, <c>schedule_end</c>,
+        /// <c>timestamp</c>, or <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

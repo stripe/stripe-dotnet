@@ -35,5 +35,14 @@ namespace Stripe
         [STJS.JsonPropertyName("key")]
 #endif
         public string Key { get; set; }
+
+        /// <summary>
+        /// Specifies the start of the billing period.
+        /// </summary>
+        [JsonProperty("bill_from")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bill_from")]
+#endif
+        public SubscriptionBillingScheduleBillFrom BillFrom { get; set; }
     }
 }

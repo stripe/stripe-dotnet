@@ -316,6 +316,18 @@ namespace Stripe
 #endif
         public PersonRequirements Requirements { get; set; }
 
+        [JsonProperty("self_reported_income")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_income")]
+#endif
+        public PersonSelfReportedIncome SelfReportedIncome { get; set; }
+
+        [JsonProperty("self_reported_monthly_housing_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_monthly_housing_payment")]
+#endif
+        public PersonSelfReportedMonthlyHousingPayment SelfReportedMonthlyHousingPayment { get; set; }
+
         /// <summary>
         /// Whether the last four digits of the person's Social Security number have been provided
         /// (U.S. only).

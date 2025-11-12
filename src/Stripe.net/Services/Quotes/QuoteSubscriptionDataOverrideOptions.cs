@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -42,6 +43,16 @@ namespace Stripe
         public string BillingBehavior { get; set; }
 
         /// <summary>
+        /// Billing schedules that will be applied to the subscription or subscription schedule
+        /// created when the quote is accepted.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<QuoteSubscriptionDataOverrideBillingScheduleOptions> BillingSchedules { get; set; }
+
+        /// <summary>
         /// The customer the Subscription Data override applies to. This is only relevant when
         /// <c>applies_to.type=new_reference</c>.
         /// </summary>
@@ -71,6 +82,22 @@ namespace Stripe
         [STJS.JsonPropertyName("end_behavior")]
 #endif
         public string EndBehavior { get; set; }
+
+        /// <summary>
+        /// Configures how the subscription schedule handles billing for phase transitions when the
+        /// quote is accepted. Possible values are <c>phase_start</c> (default) or
+        /// <c>billing_period_start</c>. <c>phase_start</c> bills based on the current state of the
+        /// subscription, ignoring changes scheduled in future phases. <c>billing_period_start</c>
+        /// bills predictively for upcoming phase transitions within the current billing cycle,
+        /// including pricing changes and service period adjustments that will occur before the next
+        /// invoice.
+        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        /// </summary>
+        [JsonProperty("phase_effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("phase_effective_at")]
+#endif
+        public string PhaseEffectiveAt { get; set; }
 
         /// <summary>
         /// Determines how to handle <a

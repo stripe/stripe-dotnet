@@ -44,12 +44,31 @@ namespace Stripe
         /// <summary>
         /// Describes how the billing schedule will determine the end date. Either <c>duration</c>
         /// or <c>timestamp</c>.
-        /// One of: <c>duration</c>, or <c>timestamp</c>.
+        /// One of: <c>amendment_end</c>, <c>duration</c>, <c>line_ends_at</c>, <c>schedule_end</c>,
+        /// <c>timestamp</c>, or <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
+
+        /// <summary>
+        /// Use an index to specify the position of an amendment to end prebilling with.
+        /// </summary>
+        [JsonProperty("amendment_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amendment_end")]
+#endif
+        public SubscriptionBillingScheduleBillUntilAmendmentEnd AmendmentEnd { get; set; }
+
+        /// <summary>
+        /// Lets you bill the period ending at a particular Quote line.
+        /// </summary>
+        [JsonProperty("line_ends_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_ends_at")]
+#endif
+        public SubscriptionBillingScheduleBillUntilLineEndsAt LineEndsAt { get; set; }
     }
 }

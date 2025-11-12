@@ -339,7 +339,6 @@ namespace Stripe
                 { "v2.payments.off_session_payment", typeof(V2.Payments.OffSessionPayment) },
                 { "v2.reporting.report", typeof(V2.Reporting.Report) },
                 { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
-                { "v2.tax.automatic_rule", typeof(V2.Tax.AutomaticRule) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });

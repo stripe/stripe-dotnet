@@ -9,6 +9,32 @@
   * Add support for `AllocatedFunds` on `Charge`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, and `PaymentIntentUpdateOptions`
   * Add support for thin events `V2ReportingReportRunCreatedEvent`, `V2ReportingReportRunFailedEvent`, `V2ReportingReportRunSucceededEvent`, and `V2ReportingReportRunUpdatedEvent` with related object `V2.Reporting.ReportRun`
 
+## 49.2.0 - 2025-11-05
+* [#3244](https://github.com/stripe/stripe-dotnet/pull/3244) Update generated code
+  * Add support for `CaptureMethod` on `PaymentIntent.PaymentMethodOptions.CardPresent` and `PaymentIntentPaymentMethodOptionsCardPresentOptions`
+
+## 49.2.0-beta.1 - 2025-10-29
+
+This release changes the pinned API version to `2025-10-29.preview`.
+
+* [#3234](https://github.com/stripe/stripe-dotnet/pull/3234) Update generated code for beta
+  * Add support for `CryptoStorer` on `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
+* [#3211](https://github.com/stripe/stripe-dotnet/pull/3211) Update generated code for beta
+  * Add support for `Update` method on resource `V2.MoneyManagement.FinancialAccount`
+  * Add support for `ConfirmMicrodeposits`, `List`, and `SendMicrodeposits` methods on resource `V2.Core.Vault.UsBankAccount`
+  * Add support for `List` method on resource `V2.Core.Vault.GbBankAccount`
+  * Add support for `PaymentPortalUrl` on `Charge.PaymentMethodDetails.Rechnung`, `PaymentAttemptRecord.PaymentMethodDetails.Rechnung`, and `PaymentRecord.PaymentMethodDetails.Rechnung`
+  * Add support for `TaxIdElement` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
+  * Add support for `StartingAfter` on `PaymentAttemptRecordListOptions`
+  * Add support for `Reference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna` and `PaymentIntentAmountDetailsLineItemsPaymentMethodOptionsKlarnaOptions`
+  * Add support for `SubscriptionReference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna`
+  * Add support for `Closed` on `V2.Core.AccountListOptions` and `V2.Core.Account`
+  * Add support for `Usd` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `RepresentativeDeclaration` on `V2.Core.Account.Identity.Attestations` and `V2CoreAccountIdentityAttestationsOptions`
+  * Add support for `Verification` on `V2.Core.Vault.UsBankAccount`
+  * Add support for `V1Id` on `EventsV2MoneyManagementTransactionCreatedEvent`
+  * Remove support for thin event `V2BillingBillSettingUpdatedEvent` with related object `V2.Billing.BillSetting`
+
 ## 49.2.0-alpha.2 - 2025-10-30
 * [#3242](https://github.com/stripe/stripe-dotnet/pull/3242) Update generated code for private-preview
   * Add support for `PaymentMethodPreview` on `DelegatedCheckout.RequestedSession`
@@ -53,28 +79,6 @@
   * Add support for `CryptoStorer` on `V2.Core.Account.Identity.Attestations.TermsOfService` and `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
   * Add support for `ComplianceScreeningDescription` on `V2.Core.Account.Identity.BusinessDetails` and `V2CoreAccountIdentityBusinessDetailsOptions`
   * Add support for `ExternalAmount` on `V2.MoneyManagement.ReceivedCredit` and `V2.MoneyManagement.ReceivedDebit`
-
-## 49.2.0-beta.1 - 2025-10-29
-
-This release changes the pinned API version to `2025-10-29.preview`.
-
-* [#3234](https://github.com/stripe/stripe-dotnet/pull/3234) Update generated code for beta
-  * Add support for `CryptoStorer` on `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
-* [#3211](https://github.com/stripe/stripe-dotnet/pull/3211) Update generated code for beta
-  * Add support for `Update` method on resource `V2.MoneyManagement.FinancialAccount`
-  * Add support for `ConfirmMicrodeposits`, `List`, and `SendMicrodeposits` methods on resource `V2.Core.Vault.UsBankAccount`
-  * Add support for `List` method on resource `V2.Core.Vault.GbBankAccount`
-  * Add support for `PaymentPortalUrl` on `Charge.PaymentMethodDetails.Rechnung`, `PaymentAttemptRecord.PaymentMethodDetails.Rechnung`, and `PaymentRecord.PaymentMethodDetails.Rechnung`
-  * Add support for `TaxIdElement` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
-  * Add support for `StartingAfter` on `PaymentAttemptRecordListOptions`
-  * Add support for `Reference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna` and `PaymentIntentAmountDetailsLineItemsPaymentMethodOptionsKlarnaOptions`
-  * Add support for `SubscriptionReference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna`
-  * Add support for `Closed` on `V2.Core.AccountListOptions` and `V2.Core.Account`
-  * Add support for `Usd` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
-  * Add support for `RepresentativeDeclaration` on `V2.Core.Account.Identity.Attestations` and `V2CoreAccountIdentityAttestationsOptions`
-  * Add support for `Verification` on `V2.Core.Vault.UsBankAccount`
-  * Add support for `V1Id` on `EventsV2MoneyManagementTransactionCreatedEvent`
-  * Remove support for thin event `V2BillingBillSettingUpdatedEvent` with related object `V2.Billing.BillSetting`
 
 ## 49.1.0 - 2025-10-29
 
