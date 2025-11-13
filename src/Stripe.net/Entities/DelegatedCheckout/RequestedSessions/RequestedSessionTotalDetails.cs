@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.DelegatedCheckout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -34,5 +35,14 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("amount_tax")]
 #endif
         public long? AmountTax { get; set; }
+
+        /// <summary>
+        /// The applicable fees of the total details.
+        /// </summary>
+        [JsonProperty("applicable_fees")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("applicable_fees")]
+#endif
+        public List<RequestedSessionTotalDetailsApplicableFee> ApplicableFees { get; set; }
     }
 }

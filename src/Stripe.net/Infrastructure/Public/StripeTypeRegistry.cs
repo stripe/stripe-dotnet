@@ -125,6 +125,7 @@ namespace Stripe
                 { "issuing.fraud_liability_debit", typeof(Issuing.FraudLiabilityDebit) },
                 { "issuing.personalization_design", typeof(Issuing.PersonalizationDesign) },
                 { "issuing.physical_bundle", typeof(Issuing.PhysicalBundle) },
+                { "issuing.program", typeof(Issuing.Program) },
                 { "issuing.settlement", typeof(Issuing.Settlement) },
                 { "issuing.token", typeof(Issuing.Token) },
                 { "issuing.transaction", typeof(Issuing.Transaction) },
