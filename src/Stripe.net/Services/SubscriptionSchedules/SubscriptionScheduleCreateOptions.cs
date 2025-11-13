@@ -35,6 +35,15 @@ namespace Stripe
         public SubscriptionScheduleBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
+        /// Sets the billing schedules for the subscription schedule.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<SubscriptionScheduleBillingScheduleOptions> BillingSchedules { get; set; }
+
+        /// <summary>
         /// The identifier of the customer to create the subscription schedule for.
         /// </summary>
         [JsonProperty("customer")]
