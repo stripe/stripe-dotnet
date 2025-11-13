@@ -103,6 +103,15 @@ namespace Stripe
         public QuotePreviewSubscriptionScheduleBillingMode BillingMode { get; set; }
 
         /// <summary>
+        /// Billing schedules for this subscription schedule.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<QuotePreviewSubscriptionScheduleBillingSchedule> BillingSchedules { get; set; }
+
+        /// <summary>
         /// Time at which the subscription schedule was canceled. Measured in seconds since the Unix
         /// epoch.
         /// </summary>
@@ -225,6 +234,47 @@ namespace Stripe
         [STJS.JsonPropertyName("last_price_migration_error")]
 #endif
         public QuotePreviewSubscriptionScheduleLastPriceMigrationError LastPriceMigrationError { get; set; }
+
+        #region Expandable LatestInvoice
+
+        /// <summary>
+        /// (ID of the Invoice)
+        /// The most recent invoice this subscription schedule has generated.
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public string LatestInvoiceId
+        {
+            get => this.InternalLatestInvoice?.Id;
+            set => this.InternalLatestInvoice = SetExpandableFieldId(value, this.InternalLatestInvoice);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// The most recent invoice this subscription schedule has generated.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public Invoice LatestInvoice
+        {
+            get => this.InternalLatestInvoice?.ExpandedObject;
+            set => this.InternalLatestInvoice = SetExpandableFieldObject(value, this.InternalLatestInvoice);
+        }
+
+        [JsonProperty("latest_invoice")]
+        [JsonConverter(typeof(ExpandableFieldConverter<Invoice>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("latest_invoice")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Invoice>))]
+#endif
+        internal ExpandableField<Invoice> InternalLatestInvoice { get; set; }
+        #endregion
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
