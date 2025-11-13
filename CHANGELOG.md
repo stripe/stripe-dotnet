@@ -1,5 +1,21 @@
 # Changelog
 
+## 49.3.0-alpha.2 - 2025-11-13
+This release changes the pinned API version to `2025-10-29.preview`.
+
+* [#3251](https://github.com/stripe/stripe-dotnet/pull/3251) Update generated code for private-preview
+  * Add support for new resource `Issuing.Program`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `Issuing.Program`
+  * Add support for `ApplicableFees` on `DelegatedCheckout.RequestedSession.TotalDetails`
+* [#3245](https://github.com/stripe/stripe-dotnet/pull/3245) Update generated code for private-preview
+  * Remove support for resource `V2.Tax.AutomaticRule`
+  * Remove support for `Create`, `Deactivate`, `Find`, `Get`, and `Update` methods on resource `V2.Tax.AutomaticRule`
+  * Add support for `SelfReportedIncome` and `SelfReportedMonthlyHousingPayment` on `AccountIndividualOptions`, `AccountPersonCreateOptions`, `AccountPersonUpdateOptions`, `Person`, `TokenAccountIndividualOptions`, and `TokenPersonOptions`
+  * Add support for `BillingSchedules` and `PhaseEffectiveAt` on `Quote.SubscriptionDataOverrides`, `Quote.SubscriptionData`, `QuoteSubscriptionDataOptions`, `QuoteSubscriptionDataOverrideOptions`, and `QuoteSubscriptionDataOverridesOptions`
+  * Add support for `BillFrom` on `Subscription.BillingSchedule`
+  * Add support for `AmendmentEnd` and `LineEndsAt` on `Subscription.BillingSchedule.BillUntil`
+  * Remove support for `Data` and `RelatedObject` on `V2.Core.Event`
+
 ## 49.3.0-alpha.1 - 2025-11-06
 * [#3243](https://github.com/stripe/stripe-dotnet/pull/3243) Update generated code for private-preview
   * Add support for new resource `TransitBalance`, `V2.Reporting.ReportRun`, `V2.Reporting.Report`
