@@ -30,8 +30,10 @@ namespace Stripe.V2.Core
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// The customer’s identified tax location - uses <c>location_source</c>. Will only be
-        /// rendered if the <c>automatic_indirect_tax</c> feature is requested and <c>active</c>.
+        /// The <a
+        /// href="https://docs.stripe.com/tax/customer-locations#address-hierarchy-other">identified</a>
+        /// tax location of the customer. Will only be rendered if the <c>automatic_indirect_tax</c>
+        /// feature is requested and <c>active</c>.
         /// </summary>
         [JsonProperty("location")]
 #if NET6_0_OR_GREATER
@@ -40,9 +42,8 @@ namespace Stripe.V2.Core
         public AccountConfigurationCustomerAutomaticIndirectTaxLocation Location { get; set; }
 
         /// <summary>
-        /// The data source used to identify the customer's tax location - defaults to
-        /// <c>identity_address</c>. Will only be used for automatic tax calculation on the
-        /// customer's Invoices and Subscriptions.
+        /// The data source used to identify the customer's tax location. Will only be used for
+        /// automatic tax calculation on the customer's Invoices and Subscriptions.
         /// One of: <c>identity_address</c>, <c>ip_address</c>, <c>payment_method</c>, or
         /// <c>shipping_address</c>.
         /// </summary>

@@ -10,7 +10,7 @@ namespace Stripe.V2.MoneyManagement
     {
         /// <summary>
         /// Open Enum. The type of Credentials that are provisioned for the FinancialAddress.
-        /// One of: <c>gb_bank_account</c>, <c>sepa_bank_account</c>, or <c>us_bank_account</c>.
+        /// One of: <c>gb_bank_account</c>, or <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
