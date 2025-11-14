@@ -9,7 +9,7 @@ namespace Stripe.Terminal
     public class ConfigurationStripeS700Options : INestedOptions
     {
         /// <summary>
-        /// A File ID representing an image you would like displayed on the reader.
+        /// A File ID representing an image you want to display on the reader.
         /// </summary>
         [JsonProperty("splashscreen")]
 #if NET6_0_OR_GREATER

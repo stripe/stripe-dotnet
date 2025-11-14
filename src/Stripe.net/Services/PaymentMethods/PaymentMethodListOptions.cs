@@ -9,6 +9,18 @@ namespace Stripe
     public class PaymentMethodListOptions : ListOptions
     {
         /// <summary>
+        /// This field indicates whether this payment method can be shown again to its customer in a
+        /// checkout flow. Stripe products such as Checkout and Elements use this field to determine
+        /// whether a payment method can be shown as a saved payment method in a checkout flow.
+        /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("allow_redisplay")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allow_redisplay")]
+#endif
+        public string AllowRedisplay { get; set; }
+
+        /// <summary>
         /// The ID of the customer whose PaymentMethods will be retrieved.
         /// </summary>
         [JsonProperty("customer")]
@@ -16,6 +28,15 @@ namespace Stripe
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// The ID of the Account whose PaymentMethods will be retrieved.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Filters the list by the object <c>type</c> field. Unfiltered, the list returns all

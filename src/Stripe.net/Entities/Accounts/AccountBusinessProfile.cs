@@ -76,6 +76,16 @@ namespace Stripe
         public string ProductDescription { get; set; }
 
         /// <summary>
+        /// A link to the business's publicly available terms related to the Specified Commercial
+        /// Transaction Act. Only used for accounts in Japan.
+        /// </summary>
+        [JsonProperty("specified_commercial_transactions_act_url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("specified_commercial_transactions_act_url")]
+#endif
+        public string SpecifiedCommercialTransactionsActUrl { get; set; }
+
+        /// <summary>
         /// A publicly available mailing address for sending support issues to.
         /// </summary>
         [JsonProperty("support_address")]

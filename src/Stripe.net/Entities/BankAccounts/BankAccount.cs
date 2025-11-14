@@ -283,21 +283,25 @@ namespace Stripe
 
         /// <summary>
         /// For bank accounts, possible values are <c>new</c>, <c>validated</c>, <c>verified</c>,
-        /// <c>verification_failed</c>, or <c>errored</c>. A bank account that hasn't had any
-        /// activity or validation performed is <c>new</c>. If Stripe can determine that the bank
-        /// account exists, its status will be <c>validated</c>. Note that there often isn’t enough
-        /// information to know (e.g., for smaller credit unions), and the validation is not always
-        /// run. If customer bank account verification has succeeded, the bank account status will
-        /// be <c>verified</c>. If the verification failed for any reason, such as microdeposit
-        /// failure, the status will be <c>verification_failed</c>. If a payout sent to this bank
-        /// account fails, we'll set the status to <c>errored</c> and will not continue to send <a
-        /// href="https://stripe.com/docs/payouts#payout-schedule">scheduled payouts</a> until the
-        /// bank details are updated.
+        /// <c>verification_failed</c>, <c>tokenized_account_number_deactivated</c> or
+        /// <c>errored</c>. A bank account that hasn't had any activity or validation performed is
+        /// <c>new</c>. If Stripe can determine that the bank account exists, its status will be
+        /// <c>validated</c>. Note that there often isn’t enough information to know (e.g., for
+        /// smaller credit unions), and the validation is not always run. If customer bank account
+        /// verification has succeeded, the bank account status will be <c>verified</c>. If the
+        /// verification failed for any reason, such as microdeposit failure, the status will be
+        /// <c>verification_failed</c>. If the status is
+        /// <c>tokenized_account_number_deactivated</c>, the account utilizes a tokenized account
+        /// number which has been deactivated due to expiration or revocation. This account will
+        /// need to be reverified to continue using it for money movement. If a payout sent to this
+        /// bank account fails, we'll set the status to <c>errored</c> and will not continue to send
+        /// <a href="https://stripe.com/docs/payouts#payout-schedule">scheduled payouts</a> until
+        /// the bank details are updated.
         ///
-        /// For external accounts, possible values are <c>new</c>, <c>errored</c> and
-        /// <c>verification_failed</c>. If a payout fails, the status is set to <c>errored</c> and
-        /// scheduled payouts are stopped until account details are updated. In the US and India, if
-        /// we can't <a
+        /// For external accounts, possible values are <c>new</c>, <c>errored</c>,
+        /// <c>verification_failed</c>, and <c>tokenized_account_number_deactivated</c>. If a payout
+        /// fails, the status is set to <c>errored</c> and scheduled payouts are stopped until
+        /// account details are updated. In the US and India, if we can't <a
         /// href="https://support.stripe.com/questions/bank-account-ownership-verification">verify
         /// the owner of the bank account</a>, we'll set the status to <c>verification_failed</c>.
         /// Other validations aren't run against external accounts because they're only used for

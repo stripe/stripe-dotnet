@@ -13,7 +13,7 @@ namespace Stripe.V2.Core
         /// Additional fields to include in the response.
         /// One of: <c>configuration.customer</c>, <c>configuration.merchant</c>,
         /// <c>configuration.recipient</c>, <c>configuration.storer</c>, <c>defaults</c>,
-        /// <c>identity</c>, or <c>requirements</c>.
+        /// <c>future_requirements</c>, <c>identity</c>, or <c>requirements</c>.
         /// </summary>
         [JsonProperty("include")]
 #if NET6_0_OR_GREATER

@@ -506,6 +506,11 @@ namespace Stripe
         public const string FileCreated = "file.created";
 
         /// <summary>
+        /// Occurs when a Financial Connections account's account numbers are updated.
+        /// </summary>
+        public const string FinancialConnectionsAccountAccountNumbersUpdated = "financial_connections.account.account_numbers_updated";
+
+        /// <summary>
         /// Occurs when a new Financial Connections account is created.
         /// </summary>
         public const string FinancialConnectionsAccountCreated = "financial_connections.account.created";
@@ -550,6 +555,11 @@ namespace Stripe
         /// <c>pending</c> to either <c>succeeded</c> or <c>failed</c>.
         /// </summary>
         public const string FinancialConnectionsAccountRefreshedTransactions = "financial_connections.account.refreshed_transactions";
+
+        /// <summary>
+        /// Occurs when an Account’s tokenized account number is about to expire.
+        /// </summary>
+        public const string FinancialConnectionsAccountUpcomingAccountNumberExpiry = "financial_connections.account.upcoming_account_number_expiry";
 
         /// <summary>
         /// Occurs when a Financial Connections Session <c>status</c> transitions from

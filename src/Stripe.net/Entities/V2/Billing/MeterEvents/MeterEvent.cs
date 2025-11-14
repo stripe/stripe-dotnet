@@ -66,7 +66,8 @@ namespace Stripe.V2.Billing
         /// The payload of the event. This must contain the fields corresponding to a meter’s
         /// <c>customer_mapping.event_payload_key</c> (default is <c>stripe_customer_id</c>) and
         /// <c>value_settings.event_payload_key</c> (default is <c>value</c>). Read more about the
-        /// payload.
+        /// <a
+        /// href="https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage#payload-key-overrides">payload</a>..
         /// </summary>
         [JsonProperty("payload")]
 #if NET6_0_OR_GREATER

@@ -91,6 +91,15 @@ namespace Stripe
         public AccountSettingsPayoutsOptions Payouts { get; set; }
 
         /// <summary>
+        /// Settings specific to the PayPay payments method.
+        /// </summary>
+        [JsonProperty("paypay_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("paypay_payments")]
+#endif
+        public AccountSettingsPaypayPaymentsOptions PaypayPayments { get; set; }
+
+        /// <summary>
         /// Settings specific to the account's tax forms.
         /// </summary>
         [JsonProperty("tax_forms")]

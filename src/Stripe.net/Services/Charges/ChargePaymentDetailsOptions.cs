@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -16,6 +17,15 @@ namespace Stripe
         [STJS.JsonPropertyName("car_rental")]
 #endif
         public ChargePaymentDetailsCarRentalOptions CarRental { get; set; }
+
+        /// <summary>
+        /// Car rental data for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("car_rental_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("car_rental_data")]
+#endif
+        public List<ChargePaymentDetailsCarRentalDatumOptions> CarRentalData { get; set; }
 
         /// <summary>
         /// A unique value to identify the customer. This field is available only for card payments.
@@ -48,6 +58,15 @@ namespace Stripe
         public ChargePaymentDetailsFlightOptions Flight { get; set; }
 
         /// <summary>
+        /// Flight data for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("flight_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flight_data")]
+#endif
+        public List<ChargePaymentDetailsFlightDatumOptions> FlightData { get; set; }
+
+        /// <summary>
         /// Lodging reservation details for this PaymentIntent.
         /// </summary>
         [JsonProperty("lodging")]
@@ -55,6 +74,15 @@ namespace Stripe
         [STJS.JsonPropertyName("lodging")]
 #endif
         public ChargePaymentDetailsLodgingOptions Lodging { get; set; }
+
+        /// <summary>
+        /// Lodging data for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("lodging_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lodging_data")]
+#endif
+        public List<ChargePaymentDetailsLodgingDatumOptions> LodgingData { get; set; }
 
         /// <summary>
         /// A unique value assigned by the business to identify the transaction. Required for L2 and

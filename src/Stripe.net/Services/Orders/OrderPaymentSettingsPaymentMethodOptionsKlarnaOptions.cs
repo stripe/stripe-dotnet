@@ -90,5 +90,14 @@ namespace Stripe
         [STJS.JsonPropertyName("subscriptions")]
 #endif
         public List<OrderPaymentSettingsPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions { get; set; }
+
+        /// <summary>
+        /// Supplementary Purchase Data for the corresponding Klarna payment.
+        /// </summary>
+        [JsonProperty("supplementary_purchase_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("supplementary_purchase_data")]
+#endif
+        public OrderPaymentSettingsPaymentMethodOptionsKlarnaSupplementaryPurchaseDataOptions SupplementaryPurchaseData { get; set; }
     }
 }

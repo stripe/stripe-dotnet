@@ -9,6 +9,16 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCardPresent : StripeEntity<PaymentIntentPaymentMethodOptionsCardPresent>
     {
         /// <summary>
+        /// Controls when the funds will be captured from the customer's account.
+        /// One of: <c>manual</c>, or <c>manual_preferred</c>.
+        /// </summary>
+        [JsonProperty("capture_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("capture_method")]
+#endif
+        public string CaptureMethod { get; set; }
+
+        /// <summary>
         /// Request ability to capture this payment beyond the standard <a
         /// href="https://stripe.com/docs/terminal/features/extended-authorizations#authorization-validity">authorization
         /// validity window</a>.

@@ -13,6 +13,7 @@ namespace Stripe
     public class PaymentRecordPaymentMethodDetailsUsBankAccount : StripeEntity<PaymentRecordPaymentMethodDetailsUsBankAccount>
     {
         /// <summary>
+        /// The type of entity that holds the account. This can be either 'individual' or 'company'.
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>
         [JsonProperty("account_holder_type")]
@@ -22,6 +23,7 @@ namespace Stripe
         public string AccountHolderType { get; set; }
 
         /// <summary>
+        /// The type of the bank account. This can be either 'checking' or 'savings'.
         /// One of: <c>checking</c>, or <c>savings</c>.
         /// </summary>
         [JsonProperty("account_type")]
@@ -100,7 +102,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Reference number to locate ACH payments with customer’s bank.
+        /// The ACH payment reference for this transaction.
         /// </summary>
         [JsonProperty("payment_reference")]
 #if NET6_0_OR_GREATER
@@ -109,7 +111,7 @@ namespace Stripe
         public string PaymentReference { get; set; }
 
         /// <summary>
-        /// Routing number of the bank account.
+        /// The routing number for the bank account.
         /// </summary>
         [JsonProperty("routing_number")]
 #if NET6_0_OR_GREATER
