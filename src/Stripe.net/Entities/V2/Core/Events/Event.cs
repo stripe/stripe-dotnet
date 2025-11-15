@@ -2,7 +2,6 @@
 namespace Stripe.V2.Core
 {
     using System;
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -31,15 +30,6 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("object")]
 #endif
         public string Object { get; set; }
-
-        /// <summary>
-        /// Before and after changes for the primary related object.
-        /// </summary>
-        [JsonProperty("changes")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("changes")]
-#endif
-        public Dictionary<string, object> Changes { get; set; }
 
         /// <summary>
         /// Authentication context needed to fetch the event or related object.
