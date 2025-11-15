@@ -42,7 +42,7 @@ namespace Stripe
         /// <c>2025-01-27.acacia</c>, <c>2025-02-24.acacia</c>, <c>2025-03-01.dashboard</c>,
         /// <c>2025-03-31.basil</c>, <c>2025-04-30.basil</c>, <c>2025-05-28.basil</c>,
         /// <c>2025-06-30.basil</c>, <c>2025-07-30.basil</c>, <c>2025-08-27.basil</c>,
-        /// <c>2025-09-30.clover</c>, or <c>2025-10-29.clover</c>.
+        /// <c>2025-09-30.clover</c>, <c>2025-10-29.clover</c>, or <c>2025-11-17.clover</c>.
         /// </summary>
         [JsonProperty("api_version")]
 #if NET6_0_OR_GREATER
@@ -107,6 +107,7 @@ namespace Stripe
         /// <c>customer.tax_id.deleted</c>, <c>customer.tax_id.updated</c>, <c>customer.updated</c>,
         /// <c>customer_cash_balance_transaction.created</c>,
         /// <c>entitlements.active_entitlement_summary.updated</c>, <c>file.created</c>,
+        /// <c>financial_connections.account.account_numbers_updated</c>,
         /// <c>financial_connections.account.created</c>,
         /// <c>financial_connections.account.deactivated</c>,
         /// <c>financial_connections.account.disconnected</c>,
@@ -114,6 +115,7 @@ namespace Stripe
         /// <c>financial_connections.account.refreshed_balance</c>,
         /// <c>financial_connections.account.refreshed_ownership</c>,
         /// <c>financial_connections.account.refreshed_transactions</c>,
+        /// <c>financial_connections.account.upcoming_account_number_expiry</c>,
         /// <c>identity.verification_session.canceled</c>,
         /// <c>identity.verification_session.created</c>,
         /// <c>identity.verification_session.processing</c>,
