@@ -54,7 +54,8 @@ namespace Stripe.Infrastructure.FormEncoding
                 return new FormUrlEncodedContent(new List<KeyValuePair<string, string>>());
             }
 
-            var arrayEncoding = apiMode == ApiMode.V1 ? ArrayEncoding.Indexed : ArrayEncoding.Repetition;
+            // Always use indexed array encoding for all API modes
+            var arrayEncoding = ArrayEncoding.Indexed;
             var flatParams = FlattenParamsValue(options, null, arrayEncoding);
 
             // If all parameters have been encoded as strings, then the content can be represented
@@ -79,7 +80,8 @@ namespace Stripe.Infrastructure.FormEncoding
         /// <returns>The query string.</returns>
         public static string CreateQueryString(BaseOptions options, ApiMode apiMode = ApiMode.V1)
         {
-            var arrayEncoding = apiMode == ApiMode.V1 ? ArrayEncoding.Indexed : ArrayEncoding.Repetition;
+            // Always use indexed array encoding for all API modes
+            var arrayEncoding = ArrayEncoding.Indexed;
             var flatParams = FlattenParamsValue(options, null, arrayEncoding)
                 .Where(kvp => kvp.Value is string)
                 .Select(kvp => new KeyValuePair<string, string>(
