@@ -80,7 +80,17 @@ namespace Stripe.Infrastructure
                 throw new JsonSerializationException(string.Format("Unexpected token parsing date. Expected Integer or String, got {0}.", reader.TokenType));
             }
 
-            if (seconds >= 0)
+            // The maximum allowed value of seconds allowed for DateTime.AddSeconds(double d). If this value is converted (seconds since Unix Epoch Time), it is equivalent to December 31, 9999 23:59:59 UTC.
+            const long maxSecondsForDateTime = 253402300799;
+
+            // Determine if this value is milliseconds after Unix Epoch
+            if (seconds > maxSecondsForDateTime)
+            {
+                // Modify this value to convert it from milliseconds (since the Unix Epoch) to be seconds, by truncating the milliseconds.
+                seconds /= 1000;
+                return DateTimeUtils.UnixEpoch.AddSeconds(seconds);
+            }
+            else if (seconds >= 0)
             {
                 return DateTimeUtils.UnixEpoch.AddSeconds(seconds);
             }
