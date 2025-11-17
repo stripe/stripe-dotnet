@@ -17,6 +17,7 @@ namespace Stripe
         private BalanceService balance;
         private BalanceSettingsService balanceSettings;
         private BalanceTransactionService balanceTransactions;
+        private BalanceTransferService balanceTransfers;
         private BankAccountService bankAccounts;
         private BillingService billing;
         private BillingPortalService billingPortal;
@@ -127,6 +128,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual BalanceTransactionService BalanceTransactions => this.balanceTransactions ??= new BalanceTransactionService(
+            this.Requestor);
+
+        public virtual BalanceTransferService BalanceTransfers => this.balanceTransfers ??= new BalanceTransferService(
             this.Requestor);
 
         public virtual BankAccountService BankAccounts => this.bankAccounts ??= new BankAccountService(

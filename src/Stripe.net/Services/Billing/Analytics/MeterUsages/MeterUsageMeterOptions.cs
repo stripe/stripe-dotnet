@@ -10,14 +10,15 @@ namespace Stripe.Billing.Analytics
     public class MeterUsageMeterOptions : INestedOptions
     {
         /// <summary>
-        /// Key-value pairs used to filter usage events by meter dimension values. If specified,
-        /// usage will be filtered for matching usage events.
+        /// Key-value pairs used to filter usage events by meter dimension values. Each value is an
+        /// array that can include multiple values for the key. If specified, usage is filtered for
+        /// matching usage events.
         /// </summary>
         [JsonProperty("dimension_filters")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dimension_filters")]
 #endif
-        public Dictionary<string, string> DimensionFilters { get; set; }
+        public Dictionary<string, List<string>> DimensionFilters { get; set; }
 
         /// <summary>
         /// List of meter dimension keys to group by. If specified, usage events will be grouped by
@@ -40,13 +41,14 @@ namespace Stripe.Billing.Analytics
 
         /// <summary>
         /// Key-value pairs used to filter usage events by high cardinality tenant dimension values.
-        /// If specified, usage will be filtered for matching usage events.
+        /// Each value is an array that can include multiple values for the key. If specified, usage
+        /// is filtered for matching usage events.
         /// </summary>
         [JsonProperty("tenant_filters")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tenant_filters")]
 #endif
-        public Dictionary<string, string> TenantFilters { get; set; }
+        public Dictionary<string, List<string>> TenantFilters { get; set; }
 
         /// <summary>
         /// List of high cardinality tenant dimension keys to group by. If specified, usage events

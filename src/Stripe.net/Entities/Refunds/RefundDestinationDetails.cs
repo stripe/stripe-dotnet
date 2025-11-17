@@ -128,6 +128,12 @@ namespace Stripe
 #endif
         public RefundDestinationDetailsKlarna Klarna { get; set; }
 
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public RefundDestinationDetailsMbWay MbWay { get; set; }
+
         [JsonProperty("multibanco")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("multibanco")]
@@ -193,6 +199,12 @@ namespace Stripe
         [STJS.JsonPropertyName("th_bank_transfer")]
 #endif
         public RefundDestinationDetailsThBankTransfer ThBankTransfer { get; set; }
+
+        [JsonProperty("twint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("twint")]
+#endif
+        public RefundDestinationDetailsTwint Twint { get; set; }
 
         /// <summary>
         /// The type of transaction-specific details of the payment method used in the refund (e.g.,

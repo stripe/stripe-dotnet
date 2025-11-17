@@ -11,6 +11,15 @@ namespace Stripe
     public class SubscriptionScheduleBillingScheduleBillUntil : StripeEntity<SubscriptionScheduleBillingScheduleBillUntil>
     {
         /// <summary>
+        /// Use an index to specify the position of an amendment to end prebilling with.
+        /// </summary>
+        [JsonProperty("amendment_end")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amendment_end")]
+#endif
+        public SubscriptionScheduleBillingScheduleBillUntilAmendmentEnd AmendmentEnd { get; set; }
+
+        /// <summary>
         /// The timestamp the billing schedule will apply until.
         /// </summary>
         [JsonProperty("computed_timestamp")]
@@ -29,6 +38,15 @@ namespace Stripe
         [STJS.JsonPropertyName("duration")]
 #endif
         public SubscriptionScheduleBillingScheduleBillUntilDuration Duration { get; set; }
+
+        /// <summary>
+        /// Lets you bill the period ending at a particular Quote line.
+        /// </summary>
+        [JsonProperty("line_ends_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_ends_at")]
+#endif
+        public SubscriptionScheduleBillingScheduleBillUntilLineEndsAt LineEndsAt { get; set; }
 
         /// <summary>
         /// If specified, the billing schedule will apply until the specified timestamp.
@@ -52,23 +70,5 @@ namespace Stripe
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
-
-        /// <summary>
-        /// Use an index to specify the position of an amendment to end prebilling with.
-        /// </summary>
-        [JsonProperty("amendment_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amendment_end")]
-#endif
-        public SubscriptionScheduleBillingScheduleBillUntilAmendmentEnd AmendmentEnd { get; set; }
-
-        /// <summary>
-        /// Lets you bill the period ending at a particular Quote line.
-        /// </summary>
-        [JsonProperty("line_ends_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("line_ends_at")]
-#endif
-        public SubscriptionScheduleBillingScheduleBillUntilLineEndsAt LineEndsAt { get; set; }
     }
 }
