@@ -6616,7 +6616,7 @@ namespace StripeTests
                 "/v2/billing/profiles",
                 (HttpStatusCode)200,
                 "{\"data\":[{\"id\":\"obj_123\",\"object\":\"v2.billing.profile\",\"created\":\"1970-01-12T21:42:34.472Z\",\"livemode\":true,\"status\":\"active\"}],\"next_page_url\":null,\"previous_page_url\":null}",
-                "lookup_keys=lookup_keys");
+                "lookup_keys[0]=lookup_keys");
             var options = new Stripe.V2.Billing.ProfileListOptions
             {
                 LookupKeys = new List<string> { "lookup_keys" },
@@ -6628,7 +6628,7 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/billing/profiles",
-                "lookup_keys=lookup_keys");
+                "lookup_keys[0]=lookup_keys");
         }
 
         [Fact]
