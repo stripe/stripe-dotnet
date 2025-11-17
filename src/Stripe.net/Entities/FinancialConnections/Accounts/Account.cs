@@ -46,6 +46,15 @@ namespace Stripe.FinancialConnections
         public AccountAccountHolder AccountHolder { get; set; }
 
         /// <summary>
+        /// Details about the account numbers.
+        /// </summary>
+        [JsonProperty("account_numbers")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_numbers")]
+#endif
+        public List<AccountAccountNumber> AccountNumbers { get; set; }
+
+        /// <summary>
         /// The most recent information about the account's balance.
         /// </summary>
         [JsonProperty("balance")]
