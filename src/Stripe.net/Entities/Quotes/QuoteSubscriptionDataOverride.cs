@@ -39,6 +39,16 @@ namespace Stripe
         public string BillingBehavior { get; set; }
 
         /// <summary>
+        /// Billing schedules that will be applied to the subscription or subscription schedule
+        /// created from this quote.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<QuoteSubscriptionDataOverrideBillingSchedule> BillingSchedules { get; set; }
+
+        /// <summary>
         /// The customer which this quote belongs to. A customer is required before finalizing the
         /// quote. Once specified, it cannot be changed.
         /// </summary>
@@ -70,28 +80,6 @@ namespace Stripe
         public string EndBehavior { get; set; }
 
         /// <summary>
-        /// Determines how to handle <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>
-        /// when the quote is accepted.
-        /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
-        /// </summary>
-        [JsonProperty("proration_behavior")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("proration_behavior")]
-#endif
-        public string ProrationBehavior { get; set; }
-
-        /// <summary>
-        /// Billing schedules that will be applied to the subscription or subscription schedule
-        /// created from this quote.
-        /// </summary>
-        [JsonProperty("billing_schedules")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_schedules")]
-#endif
-        public List<QuoteSubscriptionDataOverrideBillingSchedule> BillingSchedules { get; set; }
-
-        /// <summary>
         /// Configures how the subscription schedule handles billing for phase transitions. Possible
         /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
         /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
@@ -105,5 +93,17 @@ namespace Stripe
         [STJS.JsonPropertyName("phase_effective_at")]
 #endif
         public string PhaseEffectiveAt { get; set; }
+
+        /// <summary>
+        /// Determines how to handle <a
+        /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>
+        /// when the quote is accepted.
+        /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("proration_behavior")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("proration_behavior")]
+#endif
+        public string ProrationBehavior { get; set; }
     }
 }

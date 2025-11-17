@@ -57,6 +57,16 @@ namespace Stripe
         public QuoteSubscriptionDataBillingMode BillingMode { get; set; }
 
         /// <summary>
+        /// Billing schedules that will be applied to the subscription or subscription schedule
+        /// created from this quote.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<QuoteSubscriptionDataBillingSchedule> BillingSchedules { get; set; }
+
+        /// <summary>
         /// The subscription's description, meant to be displayable to the customer. Use this field
         /// to optionally store an explanation of the subscription for rendering in Stripe surfaces
         /// and certain local payment methods UIs.
@@ -147,6 +157,21 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// Configures how the subscription schedule handles billing for phase transitions. Possible
+        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
+        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
+        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
+        /// upcoming phase transitions within the current billing cycle, including pricing changes
+        /// and service period adjustments that will occur before the next invoice.
+        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        /// </summary>
+        [JsonProperty("phase_effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("phase_effective_at")]
+#endif
+        public string PhaseEffectiveAt { get; set; }
+
+        /// <summary>
         /// If specified, the invoicing for the given billing cycle iterations will be processed
         /// when the quote is accepted. Cannot be used with <c>effective_date</c>.
         /// </summary>
@@ -177,30 +202,5 @@ namespace Stripe
         [STJS.JsonPropertyName("trial_period_days")]
 #endif
         public long? TrialPeriodDays { get; set; }
-
-        /// <summary>
-        /// Billing schedules that will be applied to the subscription or subscription schedule
-        /// created from this quote.
-        /// </summary>
-        [JsonProperty("billing_schedules")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_schedules")]
-#endif
-        public List<QuoteSubscriptionDataBillingSchedule> BillingSchedules { get; set; }
-
-        /// <summary>
-        /// Configures how the subscription schedule handles billing for phase transitions. Possible
-        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
-        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
-        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
-        /// upcoming phase transitions within the current billing cycle, including pricing changes
-        /// and service period adjustments that will occur before the next invoice.
-        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
-        /// </summary>
-        [JsonProperty("phase_effective_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("phase_effective_at")]
-#endif
-        public string PhaseEffectiveAt { get; set; }
     }
 }

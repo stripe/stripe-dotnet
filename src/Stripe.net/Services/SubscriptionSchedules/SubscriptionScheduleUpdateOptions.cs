@@ -24,6 +24,15 @@ namespace Stripe
         public string BillingBehavior { get; set; }
 
         /// <summary>
+        /// Sets the billing schedules for the subscription schedule.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<SubscriptionScheduleBillingScheduleOptions> BillingSchedules { get; set; }
+
+        /// <summary>
         /// Object representing the subscription schedule's default settings.
         /// </summary>
         [JsonProperty("default_settings")]

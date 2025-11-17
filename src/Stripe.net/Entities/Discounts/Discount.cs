@@ -187,6 +187,16 @@ namespace Stripe
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
 
+        /// <summary>
+        /// The subscription schedule that this coupon is applied to, if it is applied to a
+        /// particular subscription schedule.
+        /// </summary>
+        [JsonProperty("schedule")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("schedule")]
+#endif
+        public string Schedule { get; set; }
+
         [JsonProperty("source")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source")]

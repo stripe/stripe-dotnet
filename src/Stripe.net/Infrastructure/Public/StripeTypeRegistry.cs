@@ -26,6 +26,7 @@ namespace Stripe
                 { "balance", typeof(Balance) },
                 { "balance_settings", typeof(BalanceSettings) },
                 { "balance_transaction", typeof(BalanceTransaction) },
+                { "balance_transfer", typeof(BalanceTransfer) },
                 { "bank_account", typeof(BankAccount) },
                 { "billing.alert", typeof(Billing.Alert) },
                 { "billing.alert_triggered", typeof(Billing.AlertTriggered) },
@@ -166,6 +167,7 @@ namespace Stripe
                     "quote_preview_subscription_schedule", typeof(
                     QuotePreviewSubscriptionSchedule)
                 },
+                { "radar.account_evaluation", typeof(Radar.AccountEvaluation) },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
                 { "radar.value_list", typeof(Radar.ValueList) },
                 { "radar.value_list_item", typeof(Radar.ValueListItem) },

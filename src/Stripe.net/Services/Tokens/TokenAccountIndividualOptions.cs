@@ -214,24 +214,6 @@ namespace Stripe
         public TokenAccountIndividualRelationshipOptions Relationship { get; set; }
 
         /// <summary>
-        /// The last four digits of the individual's Social Security Number (U.S. only).
-        /// </summary>
-        [JsonProperty("ssn_last_4")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("ssn_last_4")]
-#endif
-        public string SsnLast4 { get; set; }
-
-        /// <summary>
-        /// The individual's verification document information.
-        /// </summary>
-        [JsonProperty("verification")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("verification")]
-#endif
-        public TokenAccountIndividualVerificationOptions Verification { get; set; }
-
-        /// <summary>
         /// The credit applicant's self-reported yearly income in minor units.
         /// </summary>
         [JsonProperty("self_reported_income")]
@@ -248,5 +230,23 @@ namespace Stripe
         [STJS.JsonPropertyName("self_reported_monthly_housing_payment")]
 #endif
         public TokenAccountIndividualSelfReportedMonthlyHousingPaymentOptions SelfReportedMonthlyHousingPayment { get; set; }
+
+        /// <summary>
+        /// The last four digits of the individual's Social Security Number (U.S. only).
+        /// </summary>
+        [JsonProperty("ssn_last_4")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ssn_last_4")]
+#endif
+        public string SsnLast4 { get; set; }
+
+        /// <summary>
+        /// The individual's verification document information.
+        /// </summary>
+        [JsonProperty("verification")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("verification")]
+#endif
+        public TokenAccountIndividualVerificationOptions Verification { get; set; }
     }
 }
