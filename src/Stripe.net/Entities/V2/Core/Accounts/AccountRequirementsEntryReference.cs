@@ -27,9 +27,10 @@ namespace Stripe.V2.Core
         public string Resource { get; set; }
 
         /// <summary>
-        /// The type of the reference. An additional hash is included with a name matching the type.
-        /// It contains additional information specific to the type.
-        /// One of: <c>inquiry</c>, or <c>resource</c>.
+        /// The type of the reference. If the type is "inquiry", the inquiry token can be found in
+        /// the "inquiry" field. Otherwise the type is an API resource, the token for which can be
+        /// found in the "resource" field.
+        /// One of: <c>inquiry</c>, <c>payment_method</c>, or <c>person</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

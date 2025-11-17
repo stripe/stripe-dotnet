@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.Core
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
@@ -11,40 +10,13 @@ namespace Stripe.V2.Core
     public class EventListOptions : V2.ListOptions
     {
         /// <summary>
-        /// Filter for events created after the specified timestamp.
+        /// Set of filters to query events within a range of <c>created</c> timestamps.
         /// </summary>
-        [JsonProperty("gt")]
+        [JsonProperty("created")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("gt")]
+        [STJS.JsonPropertyName("created")]
 #endif
-        public DateTime? Gt { get; set; }
-
-        /// <summary>
-        /// Filter for events created at or after the specified timestamp.
-        /// </summary>
-        [JsonProperty("gte")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("gte")]
-#endif
-        public DateTime? Gte { get; set; }
-
-        /// <summary>
-        /// Filter for events created before the specified timestamp.
-        /// </summary>
-        [JsonProperty("lt")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("lt")]
-#endif
-        public DateTime? Lt { get; set; }
-
-        /// <summary>
-        /// Filter for events created at or before the specified timestamp.
-        /// </summary>
-        [JsonProperty("lte")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("lte")]
-#endif
-        public DateTime? Lte { get; set; }
+        public EventListCreatedOptions Created { get; set; }
 
         /// <summary>
         /// Primary object ID used to retrieve related events.

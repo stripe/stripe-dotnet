@@ -115,6 +115,16 @@ namespace Stripe.V2.Core
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// Information about the future requirements for the Account that will eventually come into
+        /// effect, including what information needs to be collected, and by when.
+        /// </summary>
+        [JsonProperty("future_requirements")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("future_requirements")]
+#endif
+        public AccountFutureRequirements FutureRequirements { get; set; }
+
+        /// <summary>
         /// Information about the company, individual, and business represented by the Account.
         /// </summary>
         [JsonProperty("identity")]
@@ -144,8 +154,8 @@ namespace Stripe.V2.Core
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Information about the requirements for the Account, including what information needs to
-        /// be collected, and by when.
+        /// Information about the active requirements for the Account, including what information
+        /// needs to be collected, and by when.
         /// </summary>
         [JsonProperty("requirements")]
 #if NET6_0_OR_GREATER

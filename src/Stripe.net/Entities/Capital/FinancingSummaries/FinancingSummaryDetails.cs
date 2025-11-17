@@ -9,8 +9,8 @@ namespace Stripe.Capital
     public class FinancingSummaryDetails : StripeEntity<FinancingSummaryDetails>
     {
         /// <summary>
-        /// Amount of financing offered, in minor units. For example, $1,000 USD will be represented
-        /// as 100000.
+        /// Amount of financing offered, in minor units. For example, 1,000 USD is represented as
+        /// 100000.
         /// </summary>
         [JsonProperty("advance_amount")]
 #if NET6_0_OR_GREATER
@@ -47,7 +47,7 @@ namespace Stripe.Capital
         public FinancingSummaryDetailsCurrentRepaymentInterval CurrentRepaymentInterval { get; set; }
 
         /// <summary>
-        /// Fixed fee amount, in minor units. For example, $100 USD will be represented as 10000.
+        /// Fixed fee amount, in minor units. For example, 100 USD is represented as 10000.
         /// </summary>
         [JsonProperty("fee_amount")]
 #if NET6_0_OR_GREATER
@@ -57,7 +57,7 @@ namespace Stripe.Capital
 
         /// <summary>
         /// The amount the Connected account has paid toward the financing debt so far, in minor
-        /// units. For example, $1,000 USD will be represented as 100000.
+        /// units. For example, 1,000 USD is represented as 100000.
         /// </summary>
         [JsonProperty("paid_amount")]
 #if NET6_0_OR_GREATER
@@ -66,8 +66,8 @@ namespace Stripe.Capital
         public long PaidAmount { get; set; }
 
         /// <summary>
-        /// The balance remaining to be paid on the financing, in minor units. For example, $1,000
-        /// USD will be represented as 100000.
+        /// The balance remaining to be paid on the financing, in minor units. For example, 1,000
+        /// USD is represented as 100000.
         /// </summary>
         [JsonProperty("remaining_amount")]
 #if NET6_0_OR_GREATER
@@ -86,7 +86,7 @@ namespace Stripe.Capital
         public decimal? RepaymentsBeginAt { get; set; }
 
         /// <summary>
-        /// Per-transaction rate at which Stripe will withhold funds to repay the financing.
+        /// Per-transaction rate at which Stripe withholds funds to repay the financing.
         /// </summary>
         [JsonProperty("withhold_rate")]
 #if NET6_0_OR_GREATER

@@ -295,8 +295,9 @@ namespace Stripe
         /// <c>subscription_create</c>: A new subscription was created. * <c>subscription_cycle</c>:
         /// A subscription advanced into a new period. * <c>subscription_threshold</c>: A
         /// subscription reached a billing threshold. * <c>subscription_update</c>: A subscription
-        /// was updated. * <c>upcoming</c>: Reserved for simulated invoices, per the upcoming
-        /// invoice endpoint.
+        /// was updated. * <c>upcoming</c>: Reserved for upcoming invoices created through the
+        /// Create Preview Invoice API or when an <c>invoice.upcoming</c> event is generated for an
+        /// upcoming invoice on a subscription.
         /// One of: <c>automatic_pending_invoice_item_invoice</c>, <c>manual</c>,
         /// <c>quote_accept</c>, <c>subscription</c>, <c>subscription_create</c>,
         /// <c>subscription_cycle</c>, <c>subscription_threshold</c>, <c>subscription_update</c>, or

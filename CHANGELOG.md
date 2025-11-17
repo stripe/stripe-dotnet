@@ -1,5 +1,9 @@
 # Changelog
 
+## 49.2.0 - 2025-11-05
+* [#3244](https://github.com/stripe/stripe-dotnet/pull/3244) Update generated code
+  * Add support for `CaptureMethod` on `PaymentIntent.PaymentMethodOptions.CardPresent` and `PaymentIntentPaymentMethodOptionsCardPresentOptions`
+
 ## 49.2.0-beta.1 - 2025-10-29
 
 This release changes the pinned API version to `2025-10-29.preview`.
@@ -23,6 +27,9 @@ This release changes the pinned API version to `2025-10-29.preview`.
   * Remove support for thin event `V2BillingBillSettingUpdatedEvent` with related object `V2.Billing.BillSetting`
 
 ## 49.1.0 - 2025-10-29
+
+This release changes the pinned API version to `2025-10-29.clover`.
+
 * [#3236](https://github.com/stripe/stripe-dotnet/pull/3236) Update generated code
   * Improve docs for PaymentIntent related endpoints
 * [#3230](https://github.com/stripe/stripe-dotnet/pull/3230) Update generated code
