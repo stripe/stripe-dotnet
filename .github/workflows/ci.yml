@@ -146,7 +146,7 @@ jobs:
         with:
           dotnet-version: ${{ needs.prepare-dotnet-versions.outputs.latest-dotnet-version }}
       - name: Publish NuGet packages to NuGet
-        run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source "nuget.org"
+        run: dotnet nuget push nuget/*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source "nuget.org" --timeout 1200
       - uses: stripe/openapi/actions/notify-release@master
         if: always()
         with:
