@@ -23,7 +23,7 @@ This release changes the pinned API version to `2025-11-17.preview`.
   * Add support for `Changes` on `V2.Core.Event`
   * Add support for `AccountToken` on `V2.Core.AccountCreateOptions` and `V2.Core.AccountUpdateOptions`
   * Add support for `PersonToken` on `V2.Core.AccountPersonCreateOptions` and `V2.Core.AccountPersonUpdateOptions`
-  * Add support for `changes` on `V2.Core.Event`
+  * Add support for `Changes` on `V2.Core.Event`
   * Add support for thin event `V2CoreHealthEventGenerationFailureResolvedEvent`
   * Remove support for thin events `V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent`, `V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent`, `V2PaymentsOffSessionPaymentCanceledEvent`, `V2PaymentsOffSessionPaymentCreatedEvent`, `V2PaymentsOffSessionPaymentFailedEvent`, `V2PaymentsOffSessionPaymentRequiresCaptureEvent`, and `V2PaymentsOffSessionPaymentSucceededEvent` with related object `V2.Payments.OffSessionPayment`
 
