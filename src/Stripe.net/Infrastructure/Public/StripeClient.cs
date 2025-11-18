@@ -229,6 +229,8 @@ namespace Stripe
             return EventNotification.FromJson(json, this);
         }
 
+        // public TKTK
+
         internal JsonSerializerSettings GetJsonSerializationSettings()
         {
             return this.jsonSerializerSettings;
