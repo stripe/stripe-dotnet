@@ -229,7 +229,10 @@ namespace Stripe
             return EventNotification.FromJson(json, this);
         }
 
-        // public TKTK
+        public StripeEventRouter Router(string webhookSecret, EventHandler<StripeEventNotificationEventArgs<V2.Core.EventNotification>> unhandledEventHandler)
+        {
+            return new StripeEventRouter(this, webhookSecret, unhandledEventHandler);
+        }
 
         internal JsonSerializerSettings GetJsonSerializationSettings()
         {
