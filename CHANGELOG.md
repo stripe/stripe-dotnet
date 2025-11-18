@@ -1,5 +1,60 @@
 # Changelog
 
+## 50.1.0-alpha.1 - 2025-11-18
+* [#3257](https://github.com/stripe/stripe-dotnet/pull/3257) Update generated code for private-preview
+  * Add support for `BillingSchedulesActions` on `InvoiceScheduleDetailsAmendmentOptions` and `SubscriptionScheduleAmendmentOptions`
+* [#3252](https://github.com/stripe/stripe-dotnet/pull/3252) Update generated code for private-preview
+  * Add support for new resources `BalanceTransfer` and `Radar.AccountEvaluation`
+  * Add support for `Create` method on resource `BalanceTransfer`
+  * Add support for `Create`, `Get`, and `Update` methods on resource `Radar.AccountEvaluation`
+  * Add support for `Schedule` on `Discount`
+  * Add support for `SpecifiedCommercialTransactionsActUrl` on `Account.BusinessProfile` and `AccountBusinessProfileOptions`
+  * Add support for `PaypayPayments` on `Account.Settings` and `AccountSettingsOptions`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.DimensionFilters` from `string` to `array(string)`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.TenantFilters` from `string` to `array(string)`
+  * Add support for `PaymentMethodConfiguration` on `BillingPortal.Configuration.Features.PaymentMethodUpdate`
+  * Add support for `CarRentalData`, `FlightData`, and `LodgingData` on `ChargePaymentDetailsOptions` and `PaymentIntentPaymentDetailsOptions`
+  * Add support for `TransactionId` on `Charge.PaymentMethodDetails.Ideal`, `PaymentAttemptRecord.PaymentMethodDetails.Ideal`, and `PaymentRecord.PaymentMethodDetails.Ideal`
+  * Add support for `Created` on `CustomerCustomerBalanceTransactionListOptions` and `InvoicePaymentListOptions`
+  * Add support for `AccountNumbers` on `FinancialConnections.Account`
+  * Add support for `ScheduleDetails` on `Invoice.Parent`, `InvoiceItem.Parent`, `InvoiceLineItem.Parent`, and `QuotePreviewInvoice.Parent`
+  * Add support for `BillingSchedules` on `InvoiceScheduleDetailsOptions`, `QuotePreviewSubscriptionSchedule`, `SubscriptionScheduleCreateOptions`, `SubscriptionScheduleUpdateOptions`, and `SubscriptionSchedule`
+  * Add support for `FraudRisk` on `IssuingAuthorizationRiskAssessmentOptions`
+  * Add support for `LatestFraudWarning` on `Issuing.Card`
+  * Add support for `SupplementaryPurchaseData` on `OrderPaymentSettingsPaymentMethodOptionsKlarnaOptions` and `PaymentIntentPaymentMethodOptionsKlarnaOptions`
+  * Add support for `CaptureMethod` on `PaymentIntent.PaymentMethodOptions.CardPresent` and `PaymentIntentPaymentMethodOptionsCardPresentOptions`
+  * Add support for `AllowRedisplay` and `CustomerAccount` on `PaymentMethodListOptions`
+  * Add support for `LatestInvoice` on `QuotePreviewSubscriptionSchedule` and `SubscriptionSchedule`
+  * Add support for `PhaseEffectiveAt` on `QuotePreviewSubscriptionSchedule.DefaultSettings`, `SubscriptionSchedule.DefaultSettings`, and `SubscriptionScheduleDefaultSettingsOptions`
+  * Add support for `MbWay` and `Twint` on `Refund.DestinationDetails`
+  * Add support for snapshot events `FinancialConnectionsAccountAccountNumbersUpdated` and `FinancialConnectionsAccountUpcomingAccountNumberExpiry` with resource `FinancialConnections.Account`
+
+## 50.1.0-beta.1 - 2025-11-18
+This release changes the pinned API version to `2025-11-17.preview`.
+
+* [#3241](https://github.com/stripe/stripe-dotnet/pull/3241) Update generated code for beta
+  * Add support for new resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for resource `V2.Payments.OffSessionPayment`
+  * Add support for `Create` and `Get` methods on resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for `Cancel`, `Capture`, `Create`, `Get`, and `List` methods on resource `V2.Payments.OffSessionPayment`
+  * Add support for `SpecifiedCommercialTransactionsActUrl` on `Account.BusinessProfile` and `AccountBusinessProfileOptions`
+  * Add support for `PaypayPayments` on `Account.Settings` and `AccountSettingsOptions`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.DimensionFilters` from `string` to `array(string)`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.TenantFilters` from `string` to `array(string)`
+  * Add support for `CarRentalData`, `FlightData`, and `LodgingData` on `ChargePaymentDetailsOptions` and `PaymentIntentPaymentDetailsOptions`
+  * Add support for `SupplementaryPurchaseData` on `OrderPaymentSettingsPaymentMethodOptionsKlarnaOptions` and `PaymentIntentPaymentMethodOptionsKlarnaOptions`
+  * Add support for `AllowRedisplay` and `CustomerAccount` on `PaymentMethodListOptions`
+  * Add support for `FutureRequirements` on `V2.Core.Account`
+  * Add support for `KonbiniPayments` and `ScriptStatementDescriptor` on `V2.Core.Account.Configuration.Merchant` and `V2CoreAccountConfigurationMerchantOptions`
+  * Add support for `Eur` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `RequirementsCollector` on `V2.Core.Account.Defaults.Responsibilities`
+  * Remove support for `Collector` on `V2.Core.Account.Requirements`
+  * Add support for `Changes` on `V2.Core.Event`
+  * Add support for `AccountToken` on `V2.Core.AccountCreateOptions` and `V2.Core.AccountUpdateOptions`
+  * Add support for `PersonToken` on `V2.Core.AccountPersonCreateOptions` and `V2.Core.AccountPersonUpdateOptions`
+  * Add support for thin event `V2CoreHealthEventGenerationFailureResolvedEvent`
+  * Remove support for thin events `V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent`, `V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent`, `V2PaymentsOffSessionPaymentCanceledEvent`, `V2PaymentsOffSessionPaymentCreatedEvent`, `V2PaymentsOffSessionPaymentFailedEvent`, `V2PaymentsOffSessionPaymentRequiresCaptureEvent`, and `V2PaymentsOffSessionPaymentSucceededEvent` with related object `V2.Payments.OffSessionPayment`
+
 ## 50.0.0 - 2025-11-18
 This release changes the pinned API version to `2025-11-17.clover`.
 
