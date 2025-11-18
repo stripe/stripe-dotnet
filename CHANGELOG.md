@@ -21,7 +21,6 @@ This release changes the pinned API version to `2025-11-17.clover`.
   * Add support for `LatestFraudWarning` on `Issuing.Card`
   * Add support for `Hooks` on `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentIncrementAuthorizationOptions`, `PaymentIntentUpdateOptions`, and `PaymentIntent`
   * Add support for `MbWay` and `Twint` on `Refund.DestinationDetails`
-  * Add support for `Changes` on `V2.Core.Event`
   * Add support for snapshot events `FinancialConnectionsAccountAccountNumbersUpdated` and `FinancialConnectionsAccountUpcomingAccountNumberExpiry` with resource `FinancialConnections.Account`
 
 ## 49.3.0-alpha.2 - 2025-11-13
