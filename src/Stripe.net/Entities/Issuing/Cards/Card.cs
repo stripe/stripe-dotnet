@@ -142,6 +142,16 @@ namespace Stripe.Issuing
         public string Last4 { get; set; }
 
         /// <summary>
+        /// Stripe’s assessment of whether this card’s details have been compromised. If this
+        /// property isn't null, cancel and reissue the card to prevent fraudulent activity risk.
+        /// </summary>
+        [JsonProperty("latest_fraud_warning")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("latest_fraud_warning")]
+#endif
+        public CardLatestFraudWarning LatestFraudWarning { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

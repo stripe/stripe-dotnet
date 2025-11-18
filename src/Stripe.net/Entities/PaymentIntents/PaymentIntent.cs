@@ -331,6 +331,12 @@ namespace Stripe
 #endif
         public List<string> ExcludedPaymentMethodTypes { get; set; }
 
+        [JsonProperty("hooks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hooks")]
+#endif
+        public PaymentIntentHooks Hooks { get; set; }
+
         /// <summary>
         /// The payment error encountered in the previous PaymentIntent confirmation. It will be
         /// cleared if the PaymentIntent is later updated for any reason.
