@@ -116,5 +116,14 @@ namespace Stripe
         [STJS.JsonPropertyName("trial_settings")]
 #endif
         public InvoiceScheduleDetailsAmendmentTrialSettingsOptions TrialSettings { get; set; }
+
+        /// <summary>
+        /// Actions to apply to the billing schedules.
+        /// </summary>
+        [JsonProperty("billing_schedules_actions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules_actions")]
+#endif
+        public List<InvoiceScheduleDetailsAmendmentBillingSchedulesActionOptions> BillingSchedulesActions { get; set; }
     }
 }
