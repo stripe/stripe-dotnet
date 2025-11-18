@@ -7,6 +7,7 @@ namespace Stripe
 
     public class TaxService : Service
     {
+        private Tax.AssociationService associations;
         private Tax.CalculationService calculations;
         private Tax.RegistrationService registrations;
         private Tax.SettingsService settings;
@@ -21,6 +22,9 @@ namespace Stripe
             : base(client)
         {
         }
+
+        public virtual Tax.AssociationService Associations => this.associations ??= new Tax.AssociationService(
+            this.Requestor);
 
         public virtual Tax.CalculationService Calculations => this.calculations ??= new Tax.CalculationService(
             this.Requestor);

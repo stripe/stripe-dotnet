@@ -182,6 +182,15 @@ namespace Stripe
         public List<string> ExcludedPaymentMethodTypes { get; set; }
 
         /// <summary>
+        /// Automations to be run during the PaymentIntent lifecycle.
+        /// </summary>
+        [JsonProperty("hooks")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hooks")]
+#endif
+        public PaymentIntentHooksOptions Hooks { get; set; }
+
+        /// <summary>
         /// ID of the mandate that's used for this payment. This parameter can only be used with <a
         /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-confirm"><c>confirm=true</c></a>.
         /// </summary>
