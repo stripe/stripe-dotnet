@@ -45,7 +45,19 @@ namespace Stripe.Infrastructure
 
             if (seconds >= 0)
             {
-                return DateTimeUtils.UnixEpoch.AddSeconds(seconds);
+                // As of the 2025-10-29.clover release, there is a bug in the Terminal API
+                // where the last_seen_at field is returned as milliseconds rather than seconds.
+                // Since we don't know when/how a fix will be put in to change that behavior,
+                // we make a heuristic guess to determine if a timestamp is in milliseconds or seconds.
+                // This check will work until the year ~5138.
+                if (seconds > 5000000000L)
+                {
+                    return DateTimeUtils.UnixEpoch.AddMilliseconds(seconds);
+                }
+                else
+                {
+                    return DateTimeUtils.UnixEpoch.AddSeconds(seconds);
+                }
             }
             else
             {
