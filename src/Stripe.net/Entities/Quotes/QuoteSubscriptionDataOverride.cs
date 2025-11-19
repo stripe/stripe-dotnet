@@ -80,13 +80,13 @@ namespace Stripe
         public string EndBehavior { get; set; }
 
         /// <summary>
-        /// Configures how the subscription schedule handles billing for phase transitions. Possible
-        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
-        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
-        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
-        /// upcoming phase transitions within the current billing cycle, including pricing changes
-        /// and service period adjustments that will occur before the next invoice.
-        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        /// Configures how the quote handles billing for line transitions. Possible values are
+        /// <c>line_start</c> (default) or <c>billing_period_start</c>. <c>line_start</c> bills
+        /// based on the current state of the line, ignoring changes scheduled for future lines.
+        /// <c>billing_period_start</c> bills predictively for upcoming line transitions within the
+        /// current billing cycle, including pricing changes and service period adjustments that
+        /// will occur before the next invoice.
+        /// One of: <c>billing_period_start</c>, or <c>line_start</c>.
         /// </summary>
         [JsonProperty("phase_effective_at")]
 #if NET6_0_OR_GREATER

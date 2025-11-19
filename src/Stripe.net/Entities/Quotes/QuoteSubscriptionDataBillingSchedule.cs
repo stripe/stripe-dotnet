@@ -27,9 +27,6 @@ namespace Stripe
 #endif
         public QuoteSubscriptionDataBillingScheduleBillFrom BillFrom { get; set; }
 
-        /// <summary>
-        /// Specifies the end of billing period.
-        /// </summary>
         [JsonProperty("bill_until")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bill_until")]

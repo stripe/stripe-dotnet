@@ -11,15 +11,6 @@ namespace Stripe
     public class QuoteSubscriptionDataOverrideBillingScheduleBillUntil : StripeEntity<QuoteSubscriptionDataOverrideBillingScheduleBillUntil>
     {
         /// <summary>
-        /// Use an index to specify the position of an amendment to end prebilling with.
-        /// </summary>
-        [JsonProperty("amendment_end")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amendment_end")]
-#endif
-        public QuoteSubscriptionDataOverrideBillingScheduleBillUntilAmendmentEnd AmendmentEnd { get; set; }
-
-        /// <summary>
         /// The timestamp the billing schedule will apply until.
         /// </summary>
         [JsonProperty("computed_timestamp")]
@@ -28,7 +19,7 @@ namespace Stripe
         [STJS.JsonPropertyName("computed_timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-        public DateTime ComputedTimestamp { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+        public DateTime? ComputedTimestamp { get; set; }
 
         /// <summary>
         /// Specifies the billing period.
@@ -62,8 +53,8 @@ namespace Stripe
         /// <summary>
         /// Describes how the billing schedule will determine the end date. Either <c>duration</c>
         /// or <c>timestamp</c>.
-        /// One of: <c>amendment_end</c>, <c>duration</c>, <c>line_ends_at</c>, <c>schedule_end</c>,
-        /// <c>timestamp</c>, or <c>upcoming_invoice</c>.
+        /// One of: <c>duration</c>, <c>line_ends_at</c>, <c>schedule_end</c>, <c>timestamp</c>, or
+        /// <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
