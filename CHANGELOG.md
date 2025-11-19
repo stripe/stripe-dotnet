@@ -1,5 +1,55 @@
 # Changelog
 
+## 50.1.0-beta.1 - 2025-11-18
+This release changes the pinned API version to `2025-11-17.preview`.
+
+* [#3241](https://github.com/stripe/stripe-dotnet/pull/3241) Update generated code for beta
+  * Add support for new resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for resource `V2.Payments.OffSessionPayment`
+  * Add support for `Create` and `Get` methods on resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for `Cancel`, `Capture`, `Create`, `Get`, and `List` methods on resource `V2.Payments.OffSessionPayment`
+  * Add support for `SpecifiedCommercialTransactionsActUrl` on `Account.BusinessProfile` and `AccountBusinessProfileOptions`
+  * Add support for `PaypayPayments` on `Account.Settings` and `AccountSettingsOptions`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.DimensionFilters` from `string` to `array(string)`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.TenantFilters` from `string` to `array(string)`
+  * Add support for `CarRentalData`, `FlightData`, and `LodgingData` on `ChargePaymentDetailsOptions` and `PaymentIntentPaymentDetailsOptions`
+  * Add support for `SupplementaryPurchaseData` on `OrderPaymentSettingsPaymentMethodOptionsKlarnaOptions` and `PaymentIntentPaymentMethodOptionsKlarnaOptions`
+  * Add support for `AllowRedisplay` and `CustomerAccount` on `PaymentMethodListOptions`
+  * Add support for `FutureRequirements` on `V2.Core.Account`
+  * Add support for `KonbiniPayments` and `ScriptStatementDescriptor` on `V2.Core.Account.Configuration.Merchant` and `V2CoreAccountConfigurationMerchantOptions`
+  * Add support for `Eur` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `RequirementsCollector` on `V2.Core.Account.Defaults.Responsibilities`
+  * Remove support for `Collector` on `V2.Core.Account.Requirements`
+  * Add support for `Changes` on `V2.Core.Event`
+  * Add support for `AccountToken` on `V2.Core.AccountCreateOptions` and `V2.Core.AccountUpdateOptions`
+  * Add support for `PersonToken` on `V2.Core.AccountPersonCreateOptions` and `V2.Core.AccountPersonUpdateOptions`
+  * Add support for thin event `V2CoreHealthEventGenerationFailureResolvedEvent`
+  * Remove support for thin events `V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent`, `V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent`, `V2PaymentsOffSessionPaymentCanceledEvent`, `V2PaymentsOffSessionPaymentCreatedEvent`, `V2PaymentsOffSessionPaymentFailedEvent`, `V2PaymentsOffSessionPaymentRequiresCaptureEvent`, and `V2PaymentsOffSessionPaymentSucceededEvent` with related object `V2.Payments.OffSessionPayment`
+
+## 50.0.0 - 2025-11-18
+This release changes the pinned API version to `2025-11-17.clover`.
+
+* [#3256](https://github.com/stripe/stripe-dotnet/pull/3256) Update generated code
+  * ⚠️ Remove support for `Gt`, `Gte`, `Lt`, and `Lte` on `V2.Core.EventListOptions` in favor of `Created`.
+* [#3254](https://github.com/stripe/stripe-dotnet/pull/3254) Check if a datetime is in millis
+  * Bug fix for [#3253](https://github.com/stripe/stripe-dotnet/issues/3253). UnixDateTimeConverter now handles timestamps in milliseconds. 
+* [#3249](https://github.com/stripe/stripe-dotnet/pull/3249) Update v2 array parameter serialization to use indexed format
+  - `Retrieve` and `List` calls for `/v2` endpoints now use indexed format (e.g., `?include[0]=foo&include[1]=bar`) instead of repeated parameter format (e.g., `?include=foo&include=bar`) when communicating with the Stripe API. This may break any unit tests that expect the latter behavior when setting up a mock server. Instead, they should now expect the former.
+* [#3246](https://github.com/stripe/stripe-dotnet/pull/3246) Update generated code
+  * Add support for new resources `Tax.Association` and `Terminal.OnboardingLink`
+  * Add support for `Find` method on resource `Tax.Association`
+  * Add support for `Create` method on resource `Terminal.OnboardingLink`
+  * Add support for `PaymentMethodConfiguration` on `BillingPortal.Configuration.Features.PaymentMethodUpdate`
+  * Add support for `TransactionId` on `Charge.PaymentMethodDetails.Ideal`, `PaymentAttemptRecord.PaymentMethodDetails.Ideal`, and `PaymentRecord.PaymentMethodDetails.Ideal`
+  * Add support for `Created` on `CustomerCustomerBalanceTransactionListOptions` and `InvoicePaymentListOptions`
+  * Add support for `AccountNumbers` on `FinancialConnections.Account`
+  * Add support for `FraudRisk` on `IssuingAuthorizationRiskAssessmentOptions`
+  * Add support for `LatestFraudWarning` on `Issuing.Card`
+  * Add support for `Hooks` on `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentIncrementAuthorizationOptions`, `PaymentIntentUpdateOptions`, and `PaymentIntent`
+  * Add support for `MbWay` and `Twint` on `Refund.DestinationDetails`
+  * Add support for `Changes` on `V2.Core.Event`
+  * Add support for snapshot events `FinancialConnectionsAccountAccountNumbersUpdated` and `FinancialConnectionsAccountUpcomingAccountNumberExpiry` with resource `FinancialConnections.Account`
+
 ## 49.2.0 - 2025-11-05
 * [#3244](https://github.com/stripe/stripe-dotnet/pull/3244) Update generated code
   * Add support for `CaptureMethod` on `PaymentIntent.PaymentMethodOptions.CardPresent` and `PaymentIntentPaymentMethodOptionsCardPresentOptions`
