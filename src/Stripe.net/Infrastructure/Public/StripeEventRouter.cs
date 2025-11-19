@@ -37,6 +37,7 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonDeletedEventNotification>> v2CoreAccountPersonDeletedEventNotification;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>> v2CoreAccountPersonUpdatedEventNotification;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> v2CoreEventDestinationPingEventNotification;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>> v2CoreHealthEventGenerationFailureResolvedEventNotification;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>> v2MoneyManagementAdjustmentCreatedEventNotification;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> v2MoneyManagementFinancialAccountCreatedEventNotification;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> v2MoneyManagementFinancialAccountUpdatedEventNotification;
@@ -215,6 +216,12 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> V2CoreEventDestinationPingEventNotification
         {
             add { this.AddEventHandler(ref this.v2CoreEventDestinationPingEventNotification, value, "v2.core.event_destination.ping"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>> V2CoreHealthEventGenerationFailureResolvedEventNotification
+        {
+            add { this.AddEventHandler(ref this.v2CoreHealthEventGenerationFailureResolvedEventNotification, value, "v2.core.health.event_generation_failure.resolved"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -629,6 +636,10 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2CoreEventDestinationPingEventNotification)
                 {
                     this.v2CoreEventDestinationPingEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>((Stripe.Events.V2CoreEventDestinationPingEventNotification)eventNotification, this.client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)
+                {
+                    this.v2CoreHealthEventGenerationFailureResolvedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>((Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)eventNotification, this.client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification)
                 {
