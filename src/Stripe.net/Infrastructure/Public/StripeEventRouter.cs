@@ -124,307 +124,307 @@ namespace Stripe
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification>> V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification, value, "V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification, value, "v2.core.account[configuration.customer].capability_status_updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification>> V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification, value, "V2CoreAccountIncludingConfigurationCustomerUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification, value, "v2.core.account[configuration.customer].updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification>> V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification, value, "V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification, value, "v2.core.account[configuration.merchant].capability_status_updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification>> V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification, value, "V2CoreAccountIncludingConfigurationMerchantUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification, value, "v2.core.account[configuration.merchant].updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification>> V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification, value, "V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification, value, "v2.core.account[configuration.recipient].capability_status_updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification>> V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification, value, "V2CoreAccountIncludingConfigurationRecipientUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification, value, "v2.core.account[configuration.recipient].updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification>> V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification, value, "V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification, value, "v2.core.account[configuration.storer].capability_status_updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification>> V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationStorerUpdatedEventNotification, value, "V2CoreAccountIncludingConfigurationStorerUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingConfigurationStorerUpdatedEventNotification, value, "v2.core.account[configuration.storer].updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification>> V2CoreAccountIncludingDefaultsUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingDefaultsUpdatedEventNotification, value, "V2CoreAccountIncludingDefaultsUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingDefaultsUpdatedEventNotification, value, "v2.core.account[defaults].updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingIdentityUpdatedEventNotification>> V2CoreAccountIncludingIdentityUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingIdentityUpdatedEventNotification, value, "V2CoreAccountIncludingIdentityUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingIdentityUpdatedEventNotification, value, "v2.core.account[identity].updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingRequirementsUpdatedEventNotification>> V2CoreAccountIncludingRequirementsUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountIncludingRequirementsUpdatedEventNotification, value, "V2CoreAccountIncludingRequirementsUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountIncludingRequirementsUpdatedEventNotification, value, "v2.core.account[requirements].updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountLinkReturnedEventNotification>> V2CoreAccountLinkReturnedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountLinkReturnedEventNotification, value, "V2CoreAccountLinkReturnedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountLinkReturnedEventNotification, value, "v2.core.account_link.returned"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonCreatedEventNotification>> V2CoreAccountPersonCreatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountPersonCreatedEventNotification, value, "V2CoreAccountPersonCreatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountPersonCreatedEventNotification, value, "v2.core.account_person.created"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonDeletedEventNotification>> V2CoreAccountPersonDeletedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountPersonDeletedEventNotification, value, "V2CoreAccountPersonDeletedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountPersonDeletedEventNotification, value, "v2.core.account_person.deleted"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>> V2CoreAccountPersonUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountPersonUpdatedEventNotification, value, "V2CoreAccountPersonUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountPersonUpdatedEventNotification, value, "v2.core.account_person.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> V2CoreEventDestinationPingEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreEventDestinationPingEventNotification, value, "V2CoreEventDestinationPingEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreEventDestinationPingEventNotification, value, "v2.core.event_destination.ping"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>> V2MoneyManagementAdjustmentCreatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementAdjustmentCreatedEventNotification, value, "V2MoneyManagementAdjustmentCreatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementAdjustmentCreatedEventNotification, value, "v2.money_management.adjustment.created"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>> V2MoneyManagementFinancialAccountCreatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountCreatedEventNotification, value, "V2MoneyManagementFinancialAccountCreatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountCreatedEventNotification, value, "v2.money_management.financial_account.created"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>> V2MoneyManagementFinancialAccountUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountUpdatedEventNotification, value, "V2MoneyManagementFinancialAccountUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAccountUpdatedEventNotification, value, "v2.money_management.financial_account.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification>> V2MoneyManagementFinancialAddressActivatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAddressActivatedEventNotification, value, "V2MoneyManagementFinancialAddressActivatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAddressActivatedEventNotification, value, "v2.money_management.financial_address.activated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification>> V2MoneyManagementFinancialAddressFailedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAddressFailedEventNotification, value, "V2MoneyManagementFinancialAddressFailedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementFinancialAddressFailedEventNotification, value, "v2.money_management.financial_address.failed"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification>> V2MoneyManagementInboundTransferAvailableEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferAvailableEventNotification, value, "V2MoneyManagementInboundTransferAvailableEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferAvailableEventNotification, value, "v2.money_management.inbound_transfer.available"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification>> V2MoneyManagementInboundTransferBankDebitFailedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitFailedEventNotification, value, "V2MoneyManagementInboundTransferBankDebitFailedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitFailedEventNotification, value, "v2.money_management.inbound_transfer.bank_debit_failed"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification>> V2MoneyManagementInboundTransferBankDebitProcessingEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitProcessingEventNotification, value, "V2MoneyManagementInboundTransferBankDebitProcessingEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitProcessingEventNotification, value, "v2.money_management.inbound_transfer.bank_debit_processing"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification>> V2MoneyManagementInboundTransferBankDebitQueuedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitQueuedEventNotification, value, "V2MoneyManagementInboundTransferBankDebitQueuedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitQueuedEventNotification, value, "v2.money_management.inbound_transfer.bank_debit_queued"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification>> V2MoneyManagementInboundTransferBankDebitReturnedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitReturnedEventNotification, value, "V2MoneyManagementInboundTransferBankDebitReturnedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitReturnedEventNotification, value, "v2.money_management.inbound_transfer.bank_debit_returned"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification>> V2MoneyManagementInboundTransferBankDebitSucceededEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitSucceededEventNotification, value, "V2MoneyManagementInboundTransferBankDebitSucceededEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementInboundTransferBankDebitSucceededEventNotification, value, "v2.money_management.inbound_transfer.bank_debit_succeeded"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification>> V2MoneyManagementOutboundPaymentCanceledEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentCanceledEventNotification, value, "V2MoneyManagementOutboundPaymentCanceledEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentCanceledEventNotification, value, "v2.money_management.outbound_payment.canceled"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification>> V2MoneyManagementOutboundPaymentCreatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentCreatedEventNotification, value, "V2MoneyManagementOutboundPaymentCreatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentCreatedEventNotification, value, "v2.money_management.outbound_payment.created"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification>> V2MoneyManagementOutboundPaymentFailedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentFailedEventNotification, value, "V2MoneyManagementOutboundPaymentFailedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentFailedEventNotification, value, "v2.money_management.outbound_payment.failed"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification>> V2MoneyManagementOutboundPaymentPostedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentPostedEventNotification, value, "V2MoneyManagementOutboundPaymentPostedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentPostedEventNotification, value, "v2.money_management.outbound_payment.posted"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification>> V2MoneyManagementOutboundPaymentReturnedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentReturnedEventNotification, value, "V2MoneyManagementOutboundPaymentReturnedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentReturnedEventNotification, value, "v2.money_management.outbound_payment.returned"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification>> V2MoneyManagementOutboundPaymentUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentUpdatedEventNotification, value, "V2MoneyManagementOutboundPaymentUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundPaymentUpdatedEventNotification, value, "v2.money_management.outbound_payment.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferCanceledEventNotification>> V2MoneyManagementOutboundTransferCanceledEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferCanceledEventNotification, value, "V2MoneyManagementOutboundTransferCanceledEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferCanceledEventNotification, value, "v2.money_management.outbound_transfer.canceled"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferCreatedEventNotification>> V2MoneyManagementOutboundTransferCreatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferCreatedEventNotification, value, "V2MoneyManagementOutboundTransferCreatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferCreatedEventNotification, value, "v2.money_management.outbound_transfer.created"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferFailedEventNotification>> V2MoneyManagementOutboundTransferFailedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferFailedEventNotification, value, "V2MoneyManagementOutboundTransferFailedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferFailedEventNotification, value, "v2.money_management.outbound_transfer.failed"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferPostedEventNotification>> V2MoneyManagementOutboundTransferPostedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferPostedEventNotification, value, "V2MoneyManagementOutboundTransferPostedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferPostedEventNotification, value, "v2.money_management.outbound_transfer.posted"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferReturnedEventNotification>> V2MoneyManagementOutboundTransferReturnedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferReturnedEventNotification, value, "V2MoneyManagementOutboundTransferReturnedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferReturnedEventNotification, value, "v2.money_management.outbound_transfer.returned"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferUpdatedEventNotification>> V2MoneyManagementOutboundTransferUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferUpdatedEventNotification, value, "V2MoneyManagementOutboundTransferUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementOutboundTransferUpdatedEventNotification, value, "v2.money_management.outbound_transfer.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification>> V2MoneyManagementPayoutMethodUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutMethodUpdatedEventNotification, value, "V2MoneyManagementPayoutMethodUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementPayoutMethodUpdatedEventNotification, value, "v2.money_management.payout_method.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification>> V2MoneyManagementReceivedCreditAvailableEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditAvailableEventNotification, value, "V2MoneyManagementReceivedCreditAvailableEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditAvailableEventNotification, value, "v2.money_management.received_credit.available"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification>> V2MoneyManagementReceivedCreditFailedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditFailedEventNotification, value, "V2MoneyManagementReceivedCreditFailedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditFailedEventNotification, value, "v2.money_management.received_credit.failed"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification>> V2MoneyManagementReceivedCreditReturnedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditReturnedEventNotification, value, "V2MoneyManagementReceivedCreditReturnedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditReturnedEventNotification, value, "v2.money_management.received_credit.returned"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification>> V2MoneyManagementReceivedCreditSucceededEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditSucceededEventNotification, value, "V2MoneyManagementReceivedCreditSucceededEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedCreditSucceededEventNotification, value, "v2.money_management.received_credit.succeeded"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitCanceledEventNotification>> V2MoneyManagementReceivedDebitCanceledEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitCanceledEventNotification, value, "V2MoneyManagementReceivedDebitCanceledEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitCanceledEventNotification, value, "v2.money_management.received_debit.canceled"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification>> V2MoneyManagementReceivedDebitFailedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitFailedEventNotification, value, "V2MoneyManagementReceivedDebitFailedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitFailedEventNotification, value, "v2.money_management.received_debit.failed"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitPendingEventNotification>> V2MoneyManagementReceivedDebitPendingEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitPendingEventNotification, value, "V2MoneyManagementReceivedDebitPendingEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitPendingEventNotification, value, "v2.money_management.received_debit.pending"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification>> V2MoneyManagementReceivedDebitSucceededEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitSucceededEventNotification, value, "V2MoneyManagementReceivedDebitSucceededEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitSucceededEventNotification, value, "v2.money_management.received_debit.succeeded"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification>> V2MoneyManagementReceivedDebitUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitUpdatedEventNotification, value, "V2MoneyManagementReceivedDebitUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementReceivedDebitUpdatedEventNotification, value, "v2.money_management.received_debit.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>> V2MoneyManagementTransactionCreatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementTransactionCreatedEventNotification, value, "V2MoneyManagementTransactionCreatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementTransactionCreatedEventNotification, value, "v2.money_management.transaction.created"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification>> V2MoneyManagementTransactionUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2MoneyManagementTransactionUpdatedEventNotification, value, "V2MoneyManagementTransactionUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2MoneyManagementTransactionUpdatedEventNotification, value, "v2.money_management.transaction.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
