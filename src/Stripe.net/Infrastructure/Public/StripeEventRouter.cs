@@ -80,14 +80,14 @@ namespace Stripe
         /// <param name="client">The StripeClient instance to use for parsing and API requests.</param>
         /// <param name="webhookSecret">The webhook secret used for signature verification.</param>
         /// <param name="unhandledEventHandler">TODO: ADD UNHANDLED DETAILS.</param>
-        public StripeEventRouter(StripeClient client, string webhookSecret, EventHandler<StripeEventNotificationEventArgs<V2.Core.EventNotification>> unhandledEventHandler)
+        public StripeEventRouter(StripeClient client, string webhookSecret, EventHandler<StripeUnhandledEventNotificationEventArgs> unhandledEventHandler)
         {
             this.client = client ?? throw new ArgumentNullException(nameof(client));
             this.webhookSecret = webhookSecret ?? throw new ArgumentNullException(nameof(webhookSecret));
             this.UnhandledEventHandler += unhandledEventHandler;
         }
 
-        private event EventHandler<StripeEventNotificationEventArgs<V2.Core.EventNotification>> UnhandledEventHandler;
+        private event EventHandler<StripeUnhandledEventNotificationEventArgs> UnhandledEventHandler;
 
         // public facing EventHandler
         // public-event-handlers: The beginning of the section generated from our OpenAPI spec
