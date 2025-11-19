@@ -2,6 +2,7 @@ namespace Stripe
 {
     using System;
     using System.Collections.Generic;
+    using Stripe.Events;
 
     /// <summary>
     /// A handler for Stripe webhook events that uses the .NET event handler pattern.
@@ -93,31 +94,31 @@ namespace Stripe
         // public-event-handlers: The beginning of the section generated from our OpenAPI spec
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification>> V1BillingMeterErrorReportTriggeredEventNotification
         {
-            add { this.AddEventHandler(ref this.v1BillingMeterErrorReportTriggeredEventNotification, value, "V1BillingMeterErrorReportTriggeredEvent"); }
+            add { this.AddEventHandler(ref this.v1BillingMeterErrorReportTriggeredEventNotification, value, "v1.billing.meter.error_report_triggered"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterNoMeterFoundEventNotification>> V1BillingMeterNoMeterFoundEventNotification
         {
-            add { this.AddEventHandler(ref this.v1BillingMeterNoMeterFoundEventNotification, value, "V1BillingMeterNoMeterFoundEvent"); }
+            add { this.AddEventHandler(ref this.v1BillingMeterNoMeterFoundEventNotification, value, "v1.billing.meter.no_meter_found"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountClosedEventNotification>> V2CoreAccountClosedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountClosedEventNotification, value, "V2CoreAccountClosedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountClosedEventNotification, value, "v2.core.account.closed"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountCreatedEventNotification>> V2CoreAccountCreatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountCreatedEventNotification, value, "V2CoreAccountCreatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountCreatedEventNotification, value, "v2.core.account.created"); }
             remove { this.RemoveEventHandler(); }
         }
 
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountUpdatedEventNotification>> V2CoreAccountUpdatedEventNotification
         {
-            add { this.AddEventHandler(ref this.v2CoreAccountUpdatedEventNotification, value, "V2CoreAccountUpdatedEvent"); }
+            add { this.AddEventHandler(ref this.v2CoreAccountUpdatedEventNotification, value, "v2.core.account.updated"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -480,8 +481,8 @@ namespace Stripe
             // Parse and validate the event notification
             var eventNotification = this.client.ParseEventNotification(json, stripeSignatureHeader, this.webhookSecret);
 
-            // Dispatch to the registered handler
-            this.DispatchEvent(eventNotification);
+            // Dispatch to the registered handler with the event's context
+            this.DispatchEventWithContext(eventNotification);
         }
 
         /// <summary>
@@ -493,6 +494,40 @@ namespace Stripe
             var events = new List<string>(this.handledEventTypes);
             events.Sort();
             return events;
+        }
+
+        /// <summary>
+        /// Dispatches the event with the event's StripeContext temporarily set on the client.
+        /// </summary>
+        /// <param name="eventNotification">The event notification to dispatch.</param>
+        private void DispatchEventWithContext(V2.Core.EventNotification eventNotification)
+        {
+            if (eventNotification == null)
+            {
+                throw new ArgumentNullException(nameof(eventNotification));
+            }
+
+            // Get the requestor to manipulate the context
+            var requestor = this.client.Requestor as LiveApiRequestor;
+            if (requestor == null)
+            {
+                // If we can't cast to LiveApiRequestor, just dispatch without context override
+                this.DispatchEvent(eventNotification);
+                return;
+            }
+
+            // Save the original context and temporarily set the event's context
+            var originalContext = requestor.CurrentStripeContext;
+            try
+            {
+                requestor.CurrentStripeContext = eventNotification.Context;
+                this.DispatchEvent(eventNotification);
+            }
+            finally
+            {
+                // Always restore the original context, even if the handler throws
+                requestor.CurrentStripeContext = originalContext;
+            }
         }
 
         private void DispatchEvent(V2.Core.EventNotification eventNotification)
@@ -747,7 +782,7 @@ namespace Stripe
                 // Unknown event type; invoke the unhandled event handler
                 this.UnhandledEventHandler.Invoke(
                     this,
-                    new StripeUnhandledEventNotificationEventArgs(eventNotification, this.client, new UnhandledNotificationDetails(true)));
+                    new StripeUnhandledEventNotificationEventArgs(eventNotification, this.client, new UnhandledNotificationDetails(!(eventNotification is UnknownEventNotification))));
             }
         }
     }
