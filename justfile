@@ -29,7 +29,7 @@ _mise_install_dotnet:
   export DOTNET_ROOT="$(mise where dotnet)"
 
 _dotnet_install tpv:
-  ./scripts/dotnet-install.sh --channel {{ tpv }} --install-dir $DOTNET_ROOT
+  ./scripts/dotnet-install.sh --channel {{ tpv }} --install-dir "$(mise where dotnet)"
 
 _ensure_latest_dotnet:
   #!/usr/bin/env bash
