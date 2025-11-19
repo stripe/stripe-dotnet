@@ -747,8 +747,7 @@ namespace Stripe
                 // Unknown event type; invoke the unhandled event handler
                 this.UnhandledEventHandler.Invoke(
                     this,
-                    new StripeEventNotificationEventArgs<V2.Core.EventNotification>(
-                        eventNotification, this.client));
+                    new StripeUnhandledEventNotificationEventArgs(eventNotification, this.client, new UnhandledNotificationDetails(true)));
             }
         }
     }
