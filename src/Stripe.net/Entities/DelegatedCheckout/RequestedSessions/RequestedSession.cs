@@ -39,7 +39,7 @@ namespace Stripe.DelegatedCheckout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_subtotal")]
 #endif
-        public long AmountSubtotal { get; set; }
+        public long? AmountSubtotal { get; set; }
 
         /// <summary>
         /// The total amount of the requested session.
@@ -48,7 +48,7 @@ namespace Stripe.DelegatedCheckout
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_total")]
 #endif
-        public long AmountTotal { get; set; }
+        public long? AmountTotal { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Measured in seconds since the Unix epoch.
