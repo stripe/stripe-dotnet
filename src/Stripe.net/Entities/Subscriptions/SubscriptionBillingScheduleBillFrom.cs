@@ -11,15 +11,6 @@ namespace Stripe
     public class SubscriptionBillingScheduleBillFrom : StripeEntity<SubscriptionBillingScheduleBillFrom>
     {
         /// <summary>
-        /// Use an index to specify the position of an amendment to start prebilling with.
-        /// </summary>
-        [JsonProperty("amendment_start")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amendment_start")]
-#endif
-        public SubscriptionBillingScheduleBillFromAmendmentStart AmendmentStart { get; set; }
-
-        /// <summary>
         /// The time the billing schedule applies from.
         /// </summary>
         [JsonProperty("computed_timestamp")]
@@ -28,25 +19,7 @@ namespace Stripe
         [STJS.JsonPropertyName("computed_timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-        public DateTime? ComputedTimestamp { get; set; }
-
-        /// <summary>
-        /// Lets you bill the period starting from a particular Quote line.
-        /// </summary>
-        [JsonProperty("line_starts_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("line_starts_at")]
-#endif
-        public SubscriptionBillingScheduleBillFromLineStartsAt LineStartsAt { get; set; }
-
-        /// <summary>
-        /// Timestamp is calculated from the request time.
-        /// </summary>
-        [JsonProperty("relative")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("relative")]
-#endif
-        public SubscriptionBillingScheduleBillFromRelative Relative { get; set; }
+        public DateTime ComputedTimestamp { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Use a precise Unix timestamp for prebilling to start. Must be earlier than
@@ -62,10 +35,6 @@ namespace Stripe
 
         /// <summary>
         /// Describes how the billing schedule determines the start date. Possible values are
-        /// <c>timestamp</c>, <c>relative</c>, <c>amendment_start</c>, <c>now</c>,
-        /// <c>quote_acceptance_date</c>, <c>line_starts_at</c>, or <c>pause_collection_start</c>.
-        /// One of: <c>amendment_start</c>, <c>line_starts_at</c>, <c>now</c>,
-        /// <c>pause_collection_start</c>, <c>quote_acceptance_date</c>, <c>relative</c>, or
         /// <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]

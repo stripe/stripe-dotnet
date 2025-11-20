@@ -92,6 +92,15 @@ namespace Stripe
         public DateTime CurrentPeriodStart { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
+        /// The current trial that is applied to this subscription item.
+        /// </summary>
+        [JsonProperty("current_trial")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_trial")]
+#endif
+        public SubscriptionItemCurrentTrial CurrentTrial { get; set; }
+
+        /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]

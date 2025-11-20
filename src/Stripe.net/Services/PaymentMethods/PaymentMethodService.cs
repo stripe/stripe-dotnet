@@ -77,7 +77,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Retrieves a payment method’s balance.</p>.
+        /// <p>Retrieves a PaymentMethod’s Balance.</p>.
         /// </summary>
         public virtual PaymentMethodBalance CheckBalance(string id, PaymentMethodCheckBalanceOptions options = null, RequestOptions requestOptions = null)
         {
@@ -85,7 +85,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Retrieves a payment method’s balance.</p>.
+        /// <p>Retrieves a PaymentMethod’s Balance.</p>.
         /// </summary>
         public virtual Task<PaymentMethodBalance> CheckBalanceAsync(string id, PaymentMethodCheckBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -11,15 +11,6 @@ namespace Stripe
     public class QuoteSubscriptionDataBillingScheduleBillFrom : StripeEntity<QuoteSubscriptionDataBillingScheduleBillFrom>
     {
         /// <summary>
-        /// Use an index to specify the position of an amendment to start prebilling with.
-        /// </summary>
-        [JsonProperty("amendment_start")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amendment_start")]
-#endif
-        public QuoteSubscriptionDataBillingScheduleBillFromAmendmentStart AmendmentStart { get; set; }
-
-        /// <summary>
         /// The time the billing schedule applies from.
         /// </summary>
         [JsonProperty("computed_timestamp")]
@@ -40,15 +31,6 @@ namespace Stripe
         public QuoteSubscriptionDataBillingScheduleBillFromLineStartsAt LineStartsAt { get; set; }
 
         /// <summary>
-        /// Timestamp is calculated from the request time.
-        /// </summary>
-        [JsonProperty("relative")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("relative")]
-#endif
-        public QuoteSubscriptionDataBillingScheduleBillFromRelative Relative { get; set; }
-
-        /// <summary>
         /// Use a precise Unix timestamp for prebilling to start. Must be earlier than
         /// <c>bill_until</c>.
         /// </summary>
@@ -64,9 +46,8 @@ namespace Stripe
         /// Describes how the billing schedule determines the start date. Possible values are
         /// <c>timestamp</c>, <c>relative</c>, <c>amendment_start</c>, <c>now</c>,
         /// <c>quote_acceptance_date</c>, <c>line_starts_at</c>, or <c>pause_collection_start</c>.
-        /// One of: <c>amendment_start</c>, <c>line_starts_at</c>, <c>now</c>,
-        /// <c>pause_collection_start</c>, <c>quote_acceptance_date</c>, <c>relative</c>, or
-        /// <c>timestamp</c>.
+        /// One of: <c>line_starts_at</c>, <c>pause_collection_start</c>,
+        /// <c>quote_acceptance_date</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

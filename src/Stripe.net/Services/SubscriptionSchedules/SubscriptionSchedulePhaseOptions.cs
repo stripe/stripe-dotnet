@@ -150,6 +150,21 @@ namespace Stripe
         public SubscriptionSchedulePhaseDurationOptions Duration { get; set; }
 
         /// <summary>
+        /// Configures how the subscription schedule handles billing for phase transitions. Possible
+        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
+        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
+        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
+        /// upcoming phase transitions within the current billing cycle, including pricing changes
+        /// and service period adjustments that will occur before the next invoice.
+        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        /// </summary>
+        [JsonProperty("effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
+#endif
+        public string EffectiveAt { get; set; }
+
+        /// <summary>
         /// The date at which this phase of the subscription schedule ends. If set,
         /// <c>iterations</c> must not be set.
         /// </summary>

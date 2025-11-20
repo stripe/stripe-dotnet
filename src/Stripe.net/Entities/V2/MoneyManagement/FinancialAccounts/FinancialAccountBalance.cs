@@ -16,7 +16,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available")]
 #endif
-        public Dictionary<string, V2.Amount> Available { get; set; }
+        public Dictionary<string, FinancialAccountBalanceAvailable> Available { get; set; }
 
         /// <summary>
         /// Balance of inbound funds that will later transition to the <c>available</c> balance.
@@ -25,7 +25,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inbound_pending")]
 #endif
-        public Dictionary<string, V2.Amount> InboundPending { get; set; }
+        public Dictionary<string, FinancialAccountBalanceInboundPending> InboundPending { get; set; }
 
         /// <summary>
         /// Balance of funds that are being used for a pending outbound money movement.
@@ -34,6 +34,6 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_pending")]
 #endif
-        public Dictionary<string, V2.Amount> OutboundPending { get; set; }
+        public Dictionary<string, FinancialAccountBalanceOutboundPending> OutboundPending { get; set; }
     }
 }

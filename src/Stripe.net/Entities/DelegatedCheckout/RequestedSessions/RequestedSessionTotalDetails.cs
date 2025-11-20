@@ -37,6 +37,15 @@ namespace Stripe.DelegatedCheckout
         public long? AmountTax { get; set; }
 
         /// <summary>
+        /// Total of all items after discounts but before taxes are applied.
+        /// </summary>
+        [JsonProperty("amount_subtotal_after_discount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_subtotal_after_discount")]
+#endif
+        public long? AmountSubtotalAfterDiscount { get; set; }
+
+        /// <summary>
         /// The applicable fees of the total details.
         /// </summary>
         [JsonProperty("applicable_fees")]

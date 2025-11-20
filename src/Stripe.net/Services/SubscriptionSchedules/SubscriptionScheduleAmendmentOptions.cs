@@ -125,5 +125,20 @@ namespace Stripe
         [STJS.JsonPropertyName("billing_schedules_actions")]
 #endif
         public List<SubscriptionScheduleAmendmentBillingSchedulesActionOptions> BillingSchedulesActions { get; set; }
+
+        /// <summary>
+        /// Configures how the subscription schedule handles billing for phase transitions. Possible
+        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
+        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
+        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
+        /// upcoming phase transitions within the current billing cycle, including pricing changes
+        /// and service period adjustments that will occur before the next invoice.
+        /// One of: <c>amendment_start</c>, or <c>billing_period_start</c>.
+        /// </summary>
+        [JsonProperty("effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
+#endif
+        public string EffectiveAt { get; set; }
     }
 }

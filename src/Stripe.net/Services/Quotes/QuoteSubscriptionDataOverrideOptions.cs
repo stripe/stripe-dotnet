@@ -91,7 +91,7 @@ namespace Stripe
         /// bills predictively for upcoming phase transitions within the current billing cycle,
         /// including pricing changes and service period adjustments that will occur before the next
         /// invoice.
-        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        /// One of: <c>billing_period_start</c>, or <c>line_start</c>.
         /// </summary>
         [JsonProperty("phase_effective_at")]
 #if NET6_0_OR_GREATER

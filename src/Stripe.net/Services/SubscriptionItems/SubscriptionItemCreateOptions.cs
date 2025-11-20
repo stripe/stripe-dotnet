@@ -22,6 +22,15 @@ namespace Stripe
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
+        /// The trial offer to apply to this subscription item.
+        /// </summary>
+        [JsonProperty("current_trial")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_trial")]
+#endif
+        public SubscriptionItemCurrentTrialOptions CurrentTrial { get; set; }
+
+        /// <summary>
         /// The coupons to redeem into discounts for the subscription item.
         /// </summary>
         [JsonProperty("discounts")]
