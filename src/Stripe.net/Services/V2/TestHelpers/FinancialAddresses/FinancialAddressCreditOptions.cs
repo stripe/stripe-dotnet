@@ -15,7 +15,7 @@ namespace Stripe.V2.TestHelpers
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public FinancialAddressCreditAmountOptions Amount { get; set; }
 
         /// <summary>
         /// Open Enum. The network to use in simulating the funds flow. This will be the reflected
