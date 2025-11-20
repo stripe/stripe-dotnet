@@ -10,8 +10,7 @@ namespace Stripe.V2.Core
     {
         /// <summary>
         /// Machine-readable description of Stripe's reason for collecting the requirement.
-        /// One of: <c>future_requirements</c>, <c>routine_onboarding</c>, or
-        /// <c>routine_verification</c>.
+        /// One of: <c>routine_onboarding</c>, or <c>routine_verification</c>.
         /// </summary>
         [JsonProperty("code")]
 #if NET6_0_OR_GREATER

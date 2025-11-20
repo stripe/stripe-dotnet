@@ -26,7 +26,7 @@ namespace Stripe.V2
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amounts")]
 #endif
-        public List<Amount> Amounts { get; set; }
+        public List<FinancialAddressGeneratedMicrodepositsAmount> Amounts { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

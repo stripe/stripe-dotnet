@@ -16,16 +16,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
-
-        /// <summary>
-        /// Provides industry-specific information about the amount.
-        /// </summary>
-        [JsonProperty("amount_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_details")]
-#endif
-        public OffSessionPaymentCreateAmountDetailsOptions AmountDetails { get; set; }
+        public OffSessionPaymentCreateAmountOptions Amount { get; set; }
 
         /// <summary>
         /// The frequency of the underlying payment.
@@ -47,16 +38,6 @@ namespace Stripe.V2.Payments
         public OffSessionPaymentCreateCaptureOptions Capture { get; set; }
 
         /// <summary>
-        /// Whether the OffSessionPayment should be captured automatically or manually.
-        /// One of: <c>automatic</c>, or <c>manual</c>.
-        /// </summary>
-        [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("capture_method")]
-#endif
-        public string CaptureMethod { get; set; }
-
-        /// <summary>
         /// ID of the Customer to which this OffSessionPayment belongs.
         /// </summary>
         [JsonProperty("customer")]
@@ -66,10 +47,10 @@ namespace Stripe.V2.Payments
         public string Customer { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://docs.corp.stripe.com/api/metadata">key-value pairs</a> that you
-        /// can attach to an object. This can be useful for storing additional information about the
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Learn more about <a
-        /// href="https://docs.corp.stripe.com/payments/payment-intents#storing-information-in-metadata">storing
+        /// href="https://docs.stripe.com/payments/payment-intents#storing-information-in-metadata">storing
         /// information in metadata</a>.
         /// </summary>
         [JsonProperty("metadata")]
@@ -160,7 +141,7 @@ namespace Stripe.V2.Payments
         /// <summary>
         /// The data that automatically creates a Transfer after the payment finalizes. Learn more
         /// about the use case for <a
-        /// href="https://docs.corp.stripe.com/payments/connected-accounts">connected accounts</a>.
+        /// href="https://docs.stripe.com/payments/connected-accounts">connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
 #if NET6_0_OR_GREATER

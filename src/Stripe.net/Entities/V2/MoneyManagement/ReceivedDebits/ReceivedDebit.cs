@@ -38,7 +38,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public ReceivedDebitAmount Amount { get; set; }
 
         /// <summary>
         /// This object stores details about the originating banking transaction that resulted in
@@ -76,7 +76,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("external_amount")]
 #endif
-        public V2.Amount ExternalAmount { get; set; }
+        public ReceivedDebitExternalAmount ExternalAmount { get; set; }
 
         /// <summary>
         /// Financial Account on which funds for ReceivedDebit were debited.

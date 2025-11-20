@@ -16,7 +16,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public OutboundPaymentCreateAmountOptions Amount { get; set; }
 
         /// <summary>
         /// Delivery options to be used to send the OutboundPayment.

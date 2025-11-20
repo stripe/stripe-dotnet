@@ -45,5 +45,14 @@ namespace Stripe.Events
         [STJS.JsonPropertyName("impacted_requests")]
 #endif
         public long ImpactedRequests { get; set; }
+
+        /// <summary>
+        /// The percentage of impacted requests.
+        /// </summary>
+        [JsonProperty("impacted_requests_percentage")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("impacted_requests_percentage")]
+#endif
+        public string ImpactedRequestsPercentage { get; set; }
     }
 }

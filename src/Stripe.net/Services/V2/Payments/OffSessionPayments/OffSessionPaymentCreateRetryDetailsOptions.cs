@@ -19,7 +19,7 @@ namespace Stripe.V2.Payments
 
         /// <summary>
         /// Indicates the strategy for how you want Stripe to retry the payment.
-        /// One of: <c>heuristic</c>, <c>none</c>, <c>scheduled</c>, or <c>smart</c>.
+        /// One of: <c>best_available</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("retry_strategy")]
 #if NET6_0_OR_GREATER
