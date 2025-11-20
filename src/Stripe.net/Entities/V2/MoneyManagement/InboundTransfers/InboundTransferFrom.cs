@@ -15,7 +15,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("debited")]
 #endif
-        public V2.Amount Debited { get; set; }
+        public InboundTransferFromDebited Debited { get; set; }
 
         /// <summary>
         /// The Payment Method object used to create the InboundTransfer.
