@@ -158,6 +158,7 @@ namespace Stripe
                     Privacy.RedactionJobValidationError)
                 },
                 { "product", typeof(Product) },
+                { "product_catalog.trial_offer", typeof(ProductCatalog.TrialOffer) },
                 { "product_feature", typeof(ProductFeature) },
                 { "promotion_code", typeof(PromotionCode) },
                 { "quote", typeof(Quote) },
