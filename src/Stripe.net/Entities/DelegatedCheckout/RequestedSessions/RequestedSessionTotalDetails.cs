@@ -10,15 +10,6 @@ namespace Stripe.DelegatedCheckout
     public class RequestedSessionTotalDetails : StripeEntity<RequestedSessionTotalDetails>
     {
         /// <summary>
-        /// The amount discount of the total details.
-        /// </summary>
-        [JsonProperty("amount_discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_discount")]
-#endif
-        public long? AmountDiscount { get; set; }
-
-        /// <summary>
         /// The amount fulfillment of the total details.
         /// </summary>
         [JsonProperty("amount_fulfillment")]
@@ -37,13 +28,24 @@ namespace Stripe.DelegatedCheckout
         public long? AmountTax { get; set; }
 
         /// <summary>
-        /// Total of all items after discounts but before taxes are applied.
+        /// The amount of order-level discounts applied to the cart. The total discount amount for
+        /// this session can be computed by summing the cart discount and the item discounts.
         /// </summary>
-        [JsonProperty("amount_subtotal_after_discount")]
+        [JsonProperty("amount_cart_discount")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_subtotal_after_discount")]
+        [STJS.JsonPropertyName("amount_cart_discount")]
 #endif
-        public long? AmountSubtotalAfterDiscount { get; set; }
+        public long? AmountCartDiscount { get; set; }
+
+        /// <summary>
+        /// The amount of item-level discounts applied to the cart. The total discount amount for
+        /// this session can be computed by summing the cart discount and the item discounts.
+        /// </summary>
+        [JsonProperty("amount_items_discount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_items_discount")]
+#endif
+        public long? AmountItemsDiscount { get; set; }
 
         /// <summary>
         /// The applicable fees of the total details.

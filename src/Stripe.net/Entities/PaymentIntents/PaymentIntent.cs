@@ -587,6 +587,16 @@ namespace Stripe
 #endif
         public List<string> PaymentMethodTypes { get; set; }
 
+        /// <summary>
+        /// When you enable this parameter, this PaymentIntent will route your payment to processors
+        /// that you configure in the dashboard.
+        /// </summary>
+        [JsonProperty("payments_orchestration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payments_orchestration")]
+#endif
+        public PaymentIntentPaymentsOrchestration PaymentsOrchestration { get; set; }
+
         [JsonProperty("presentment_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("presentment_details")]

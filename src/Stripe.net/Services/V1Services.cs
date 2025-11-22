@@ -64,6 +64,7 @@ namespace Stripe
         private PriceService prices;
         private PrivacyService privacy;
         private ProductService products;
+        private ProductCatalogService productCatalog;
         private PromotionCodeService promotionCodes;
         private QuoteService quotes;
         private RadarService radar;
@@ -269,6 +270,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual ProductService Products => this.products ??= new ProductService(
+            this.Requestor);
+
+        public virtual ProductCatalogService ProductCatalog => this.productCatalog ??= new ProductCatalogService(
             this.Requestor);
 
         public virtual PromotionCodeService PromotionCodes => this.promotionCodes ??= new PromotionCodeService(

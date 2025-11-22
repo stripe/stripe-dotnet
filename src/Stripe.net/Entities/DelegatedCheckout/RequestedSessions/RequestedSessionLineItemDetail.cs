@@ -89,41 +89,5 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("amount_subtotal")]
 #endif
         public long AmountSubtotal { get; set; }
-
-        /// <summary>
-        /// The total after discounts but before taxes are applied.
-        /// </summary>
-        [JsonProperty("amount_subtotal_after_discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_subtotal_after_discount")]
-#endif
-        public long AmountSubtotalAfterDiscount { get; set; }
-
-        /// <summary>
-        /// The total after discounts and taxes.
-        /// </summary>
-        [JsonProperty("amount_total")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_total")]
-#endif
-        public long AmountTotal { get; set; }
-
-        /// <summary>
-        /// The per-unit amount of the item after discounts but before taxes are applied.
-        /// </summary>
-        [JsonProperty("unit_amount_after_discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_amount_after_discount")]
-#endif
-        public long UnitAmountAfterDiscount { get; set; }
-
-        /// <summary>
-        /// The per-unit discount amount. If no discount were applied, defaults to 0.
-        /// </summary>
-        [JsonProperty("unit_discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_discount")]
-#endif
-        public long UnitDiscount { get; set; }
     }
 }
