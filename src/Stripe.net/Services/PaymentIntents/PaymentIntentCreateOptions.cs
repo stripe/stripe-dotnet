@@ -362,6 +362,16 @@ namespace Stripe
         public List<string> PaymentMethodTypes { get; set; }
 
         /// <summary>
+        /// When you enable this parameter, this PaymentIntent will route your payment to processors
+        /// that you configure in the dashboard.
+        /// </summary>
+        [JsonProperty("payments_orchestration")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payments_orchestration")]
+#endif
+        public PaymentIntentPaymentsOrchestrationOptions PaymentsOrchestration { get; set; }
+
+        /// <summary>
         /// Options to configure Radar. Learn more about <a
         /// href="https://stripe.com/docs/radar/radar-session">Radar Sessions</a>.
         /// </summary>
