@@ -55,7 +55,8 @@ namespace Stripe.DelegatedCheckout
         public string PostalCode { get; set; }
 
         /// <summary>
-        /// State, county, province, or region.
+        /// State, county, province, or region (<a
+        /// href="https://en.wikipedia.org/wiki/ISO_3166-2">ISO 3166-2</a>).
         /// </summary>
         [JsonProperty("state")]
 #if NET6_0_OR_GREATER
