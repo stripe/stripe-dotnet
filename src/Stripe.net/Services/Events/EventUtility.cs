@@ -218,7 +218,14 @@ namespace Stripe
             return signatures.Any(key => StringUtils.SecureEquals(key, signature));
         }
 
-        private static string ComputeSignature(string secret, string timestamp, string payload)
+        /// <summary>
+        /// Computes the signature for a given payload.
+        /// </summary>
+        /// <param name="secret">The webhook endpoint's signing secret.</param>
+        /// <param name="timestamp">The timestamp of the payload.</param>
+        /// <param name="payload">The payload to compute the signature for.</param>
+        /// <returns>The computed signature.</returns>
+        public static string ComputeSignature(string secret, string timestamp, string payload)
         {
             var secretBytes = SafeUTF8.GetBytes(secret);
             var payloadBytes = SafeUTF8.GetBytes($"{timestamp}.{payload}");
