@@ -149,8 +149,19 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedCreditStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
+        /// This object stores details about the stripe balance pay refund that resulted in the
+        /// ReceivedCredit. Present if <c>type</c> field value is <c>stripe_balance_payment</c>.
+        /// </summary>
+        [JsonProperty("stripe_balance_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_balance_payment")]
+#endif
+        public ReceivedCreditStripeBalancePayment StripeBalancePayment { get; set; }
+
+        /// <summary>
         /// Open Enum. The type of flow that caused the ReceivedCredit.
-        /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, or <c>external_credit</c>.
+        /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>external_credit</c>, or
+        /// <c>stripe_balance_payment</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

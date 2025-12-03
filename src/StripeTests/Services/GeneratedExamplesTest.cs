@@ -723,7 +723,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events/ll_123",
                 HttpStatusCode.OK,
-                "{\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.event\",\"reason\":{\"type\":\"request\",\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\"}");
+                "{\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.event\",\"reason\":{\"type\":\"request\",\"request\":{\"client\":{\"type\":\"api_key\",\"api_key\":{\"id\":\"obj_123\"},\"dashboard_user\":{\"email\":\"email\",\"ip_address\":\"ip_address\",\"machine_identifier\":\"machine_identifier\"},\"stripe_action\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]}},\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
             Stripe.V2.Core.Event result = service.Get("ll_123");
@@ -9715,7 +9715,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_credits",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"status\":\"returned\",\"type\":\"balance_transfer\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"status\":\"returned\",\"type\":\"external_credit\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedCredits;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.ReceivedCredit> receivedCredits = service
@@ -9732,7 +9732,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_credits/id_123",
                 (HttpStatusCode)200,
-                "{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"status\":\"returned\",\"type\":\"balance_transfer\",\"livemode\":true}");
+                "{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"status\":\"returned\",\"type\":\"external_credit\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedCredits;
             Stripe.V2.MoneyManagement.ReceivedCredit receivedCredit = service
@@ -9749,7 +9749,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_debits",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"status\":\"canceled\",\"type\":\"bank_transfer\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"status\":\"canceled\",\"type\":\"external_debit\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedDebits;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.ReceivedDebit> receivedDebits = service
@@ -9766,7 +9766,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_debits/id_123",
                 (HttpStatusCode)200,
-                "{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"status\":\"canceled\",\"type\":\"bank_transfer\",\"livemode\":true}");
+                "{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"status\":\"canceled\",\"type\":\"external_debit\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedDebits;
             Stripe.V2.MoneyManagement.ReceivedDebit receivedDebit = service.Get(
