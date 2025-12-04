@@ -9,7 +9,7 @@ namespace Stripe
     public class PersonSelfReportedMonthlyHousingPayment : StripeEntity<PersonSelfReportedMonthlyHousingPayment>
     {
         /// <summary>
-        /// Amount in the minor currency unit (e.g., cents for USD).
+        /// The amount in the minor currency unit (for example, cents for USD).
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER

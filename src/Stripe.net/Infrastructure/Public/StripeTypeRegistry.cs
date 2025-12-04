@@ -665,6 +665,18 @@ namespace Stripe
                     "v2.core.health.webhook_latency.resolved", typeof(
                     Events.V2CoreHealthWebhookLatencyResolvedEvent)
                 },
+                { "v2.iam.api_key.created", typeof(Events.V2IamApiKeyCreatedEvent) },
+                {
+                    "v2.iam.api_key.default_secret_revealed", typeof(
+                    Events.V2IamApiKeyDefaultSecretRevealedEvent)
+                },
+                { "v2.iam.api_key.expired", typeof(Events.V2IamApiKeyExpiredEvent) },
+                {
+                    "v2.iam.api_key.permissions_updated", typeof(
+                    Events.V2IamApiKeyPermissionsUpdatedEvent)
+                },
+                { "v2.iam.api_key.rotated", typeof(Events.V2IamApiKeyRotatedEvent) },
+                { "v2.iam.api_key.updated", typeof(Events.V2IamApiKeyUpdatedEvent) },
                 {
                     "v2.money_management.adjustment.created", typeof(
                     Events.V2MoneyManagementAdjustmentCreatedEvent)
@@ -1205,6 +1217,18 @@ namespace Stripe
                     "v2.core.health.webhook_latency.resolved", typeof(
                     Events.V2CoreHealthWebhookLatencyResolvedEventNotification)
                 },
+                { "v2.iam.api_key.created", typeof(Events.V2IamApiKeyCreatedEventNotification) },
+                {
+                    "v2.iam.api_key.default_secret_revealed", typeof(
+                    Events.V2IamApiKeyDefaultSecretRevealedEventNotification)
+                },
+                { "v2.iam.api_key.expired", typeof(Events.V2IamApiKeyExpiredEventNotification) },
+                {
+                    "v2.iam.api_key.permissions_updated", typeof(
+                    Events.V2IamApiKeyPermissionsUpdatedEventNotification)
+                },
+                { "v2.iam.api_key.rotated", typeof(Events.V2IamApiKeyRotatedEventNotification) },
+                { "v2.iam.api_key.updated", typeof(Events.V2IamApiKeyUpdatedEventNotification) },
                 {
                     "v2.money_management.adjustment.created", typeof(
                     Events.V2MoneyManagementAdjustmentCreatedEventNotification)

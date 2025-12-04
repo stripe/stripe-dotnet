@@ -19,6 +19,15 @@ namespace Stripe.V2.Core
         public EventListCreatedOptions Created { get; set; }
 
         /// <summary>
+        /// Additional fields to include in the response.
+        /// </summary>
+        [JsonProperty("include")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("include")]
+#endif
+        public List<string> Include { get; set; }
+
+        /// <summary>
         /// Primary object ID used to retrieve related events.
         /// </summary>
         [JsonProperty("object_id")]
