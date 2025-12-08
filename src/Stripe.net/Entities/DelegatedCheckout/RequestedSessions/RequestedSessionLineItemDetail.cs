@@ -89,5 +89,11 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("amount_subtotal")]
 #endif
         public long AmountSubtotal { get; set; }
+
+        [JsonProperty("product_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("product_details")]
+#endif
+        public RequestedSessionLineItemDetailProductDetails ProductDetails { get; set; }
     }
 }

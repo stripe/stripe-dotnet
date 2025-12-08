@@ -27,5 +27,14 @@ namespace Stripe.Issuing
         [STJS.JsonPropertyName("ineligible_reason")]
 #endif
         public string IneligibleReason { get; set; }
+
+        /// <summary>
+        /// Unique identifier for the card in Apple Pay.
+        /// </summary>
+        [JsonProperty("primary_account_identifier")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("primary_account_identifier")]
+#endif
+        public string PrimaryAccountIdentifier { get; set; }
     }
 }
