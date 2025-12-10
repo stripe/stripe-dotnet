@@ -29,7 +29,7 @@ namespace Stripe
         public OrderPaymentSettingsPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
-        /// The list of <a href="https://stripe.com/docs/payments/payment-methods/overview">payment
+        /// The list of <a href="https://docs.stripe.com/payments/payment-methods/overview">payment
         /// method types</a> to provide to the order's PaymentIntent. Do not include this attribute
         /// if you prefer to manage your payment methods from the <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>.

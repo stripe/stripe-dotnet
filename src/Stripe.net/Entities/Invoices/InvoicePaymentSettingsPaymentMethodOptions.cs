@@ -69,6 +69,16 @@ namespace Stripe
         public InvoicePaymentSettingsPaymentMethodOptionsKonbini Konbini { get; set; }
 
         /// <summary>
+        /// If paying by <c>payto</c>, this sub-hash contains details about the PayTo payment method
+        /// options to pass to the invoice’s PaymentIntent.
+        /// </summary>
+        [JsonProperty("payto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payto")]
+#endif
+        public InvoicePaymentSettingsPaymentMethodOptionsPayto Payto { get; set; }
+
+        /// <summary>
         /// If paying by <c>pix</c>, this sub-hash contains details about the Pix payment method
         /// options to pass to the invoice’s PaymentIntent.
         /// </summary>

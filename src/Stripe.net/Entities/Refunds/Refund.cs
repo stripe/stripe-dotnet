@@ -13,7 +13,7 @@ namespace Stripe
     /// Refund objects allow you to refund a previously created charge that isn't refunded yet.
     /// Funds are refunded to the credit or debit card that's initially charged.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/refunds">Refunds</a>.
+    /// Related guide: <a href="https://docs.stripe.com/refunds">Refunds</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -233,7 +233,7 @@ namespace Stripe
         public string InstructionsEmail { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -375,7 +375,7 @@ namespace Stripe
         /// <summary>
         /// Status of the refund. This can be <c>pending</c>, <c>requires_action</c>,
         /// <c>succeeded</c>, <c>failed</c>, or <c>canceled</c>. Learn more about <a
-        /// href="https://stripe.com/docs/refunds#failed-refunds">failed refunds</a>.
+        /// href="https://docs.stripe.com/refunds#failed-refunds">failed refunds</a>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER

@@ -14,7 +14,7 @@ namespace Stripe
     {
         /// <summary>
         /// An enumerated value providing a more detailed explanation on <a
-        /// href="https://stripe.com/docs/declines#retrying-issuer-declines">how to proceed with an
+        /// href="https://docs.stripe.com/declines#retrying-issuer-declines">how to proceed with an
         /// error</a>.
         /// One of: <c>confirm_card_data</c>, <c>do_not_try_again</c>, or <c>try_again_later</c>.
         /// </summary>
@@ -48,7 +48,7 @@ namespace Stripe
         /// Possible values are <c>approved_by_network</c>, <c>declined_by_network</c>,
         /// <c>not_sent_to_network</c>, and <c>reversed_after_approval</c>. The value
         /// <c>reversed_after_approval</c> indicates the payment was <a
-        /// href="https://stripe.com/docs/declines#blocked-payments">blocked by Stripe</a> after
+        /// href="https://docs.stripe.com/declines#blocked-payments">blocked by Stripe</a> after
         /// bank authorization, and may temporarily appear as "pending" on a cardholder's statement.
         /// </summary>
         [JsonProperty("network_status")]
@@ -64,7 +64,7 @@ namespace Stripe
         /// <c>elevated_risk_level</c>. Charges blocked because the payment is unlikely to be
         /// authorized have the value <c>low_probability_of_authorization</c>. Charges authorized,
         /// blocked, or placed in review by custom rules have the value <c>rule</c>. See <a
-        /// href="https://stripe.com/docs/declines">understanding declines</a> for more details.
+        /// href="https://docs.stripe.com/declines">understanding declines</a> for more details.
         /// </summary>
         [JsonProperty("reason")]
 #if NET6_0_OR_GREATER
@@ -151,8 +151,8 @@ namespace Stripe
         /// <summary>
         /// Possible values are <c>authorized</c>, <c>manual_review</c>, <c>issuer_declined</c>,
         /// <c>blocked</c>, and <c>invalid</c>. See <a
-        /// href="https://stripe.com/docs/declines">understanding declines</a> and <a
-        /// href="https://stripe.com/docs/radar/reviews">Radar reviews</a> for details.
+        /// href="https://docs.stripe.com/declines">understanding declines</a> and <a
+        /// href="https://docs.stripe.com/radar/reviews">Radar reviews</a> for details.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

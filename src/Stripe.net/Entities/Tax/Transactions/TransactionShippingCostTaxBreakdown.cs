@@ -10,7 +10,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// The amount of tax, in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER
@@ -62,7 +62,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount on which tax is calculated, in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("taxable_amount")]
 #if NET6_0_OR_GREATER

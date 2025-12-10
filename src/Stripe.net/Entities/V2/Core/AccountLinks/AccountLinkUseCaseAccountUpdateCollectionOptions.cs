@@ -11,8 +11,7 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Specifies whether the platform collects only currently_due requirements
         /// (<c>currently_due</c>) or both currently_due and eventually_due requirements
-        /// (<c>eventually_due</c>). If you don’t specify collection_options, the default value is
-        /// currently_due.
+        /// (<c>eventually_due</c>). The default value is <c>currently_due</c>.
         /// One of: <c>currently_due</c>, or <c>eventually_due</c>.
         /// </summary>
         [JsonProperty("fields")]

@@ -479,6 +479,10 @@ namespace Stripe
                     Events.V2MoneyManagementOutboundTransferUpdatedEvent)
                 },
                 {
+                    "v2.money_management.payout_method.created", typeof(
+                    Events.V2MoneyManagementPayoutMethodCreatedEvent)
+                },
+                {
                     "v2.money_management.payout_method.updated", typeof(
                     Events.V2MoneyManagementPayoutMethodUpdatedEvent)
                 },
@@ -713,6 +717,10 @@ namespace Stripe
                 {
                     "v2.money_management.outbound_transfer.updated", typeof(
                     Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.payout_method.created", typeof(
+                    Events.V2MoneyManagementPayoutMethodCreatedEventNotification)
                 },
                 {
                     "v2.money_management.payout_method.updated", typeof(

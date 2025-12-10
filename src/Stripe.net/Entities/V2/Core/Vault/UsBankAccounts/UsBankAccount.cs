@@ -80,6 +80,15 @@ namespace Stripe.V2.Core.Vault
         public string FedwireRoutingNumber { get; set; }
 
         /// <summary>
+        /// The ID of the Financial Connections Account used to create the bank account.
+        /// </summary>
+        [JsonProperty("financial_connections_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_connections_account")]
+#endif
+        public string FinancialConnectionsAccount { get; set; }
+
+        /// <summary>
         /// The last 4 digits of the account number.
         /// </summary>
         [JsonProperty("last4")]

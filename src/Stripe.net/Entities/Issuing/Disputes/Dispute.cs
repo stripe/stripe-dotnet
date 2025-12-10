@@ -10,11 +10,11 @@ namespace Stripe.Issuing
 #endif
 
     /// <summary>
-    /// As a <a href="https://stripe.com/docs/issuing">card issuer</a>, you can dispute
+    /// As a <a href="https://docs.stripe.com/issuing">card issuer</a>, you can dispute
     /// transactions that the cardholder does not recognize, suspects to be fraudulent, or has
     /// other issues with.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/disputes">Issuing
+    /// Related guide: <a href="https://docs.stripe.com/issuing/purchases/disputes">Issuing
     /// disputes</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -42,7 +42,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Disputed amount in the card's currency and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// Usually the amount of the <c>transaction</c>, but can differ (usually because of
         /// currency fluctuation).
         /// </summary>
@@ -121,7 +121,7 @@ namespace Stripe.Issuing
         public string LossReason { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -184,7 +184,7 @@ namespace Stripe.Issuing
         #endregion
 
         /// <summary>
-        /// <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this
+        /// <a href="https://docs.stripe.com/api/treasury">Treasury</a> details related to this
         /// dispute if it was created on a [FinancialAccount](/docs/api/treasury/financial_accounts.
         /// </summary>
         [JsonProperty("treasury")]

@@ -50,7 +50,7 @@ namespace Stripe
         /// <summary>
         /// The state of verification for the person. Possible values are <c>unverified</c>,
         /// <c>pending</c>, or <c>verified</c>. Please refer <a
-        /// href="https://stripe.com/docs/connect/handling-api-verification">guide</a> to handle
+        /// href="https://docs.stripe.com/connect/handling-api-verification">guide</a> to handle
         /// verification updates.
         /// </summary>
         [JsonProperty("status")]

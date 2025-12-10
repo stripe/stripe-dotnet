@@ -55,7 +55,7 @@ namespace Stripe
         public string InstructionsEmail { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -88,7 +88,7 @@ namespace Stripe
         /// String indicating the reason for the refund. If set, possible values are
         /// <c>duplicate</c>, <c>fraudulent</c>, and <c>requested_by_customer</c>. If you believe
         /// the charge to be fraudulent, specifying <c>fraudulent</c> as the reason will add the
-        /// associated card and email to your <a href="https://stripe.com/docs/radar/lists">block
+        /// associated card and email to your <a href="https://docs.stripe.com/radar/lists">block
         /// lists</a>, and will also help us improve our fraud detection algorithms.
         /// One of: <c>duplicate</c>, <c>fraudulent</c>, or <c>requested_by_customer</c>.
         /// </summary>

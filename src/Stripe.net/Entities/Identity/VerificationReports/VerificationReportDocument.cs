@@ -46,7 +46,7 @@ namespace Stripe.Identity
         public VerificationReportDocumentExpirationDate ExpirationDate { get; set; }
 
         /// <summary>
-        /// Array of <a href="https://stripe.com/docs/api/files">File</a> ids containing images for
+        /// Array of <a href="https://docs.stripe.com/api/files">File</a> ids containing images for
         /// this document.
         /// </summary>
         [JsonProperty("files")]

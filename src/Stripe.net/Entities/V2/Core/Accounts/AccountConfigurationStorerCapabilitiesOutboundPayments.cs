@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountConfigurationStorerCapabilitiesOutboundPayments : StripeEntity<AccountConfigurationStorerCapabilitiesOutboundPayments>
     {
         /// <summary>
-        /// Can send funds from a FinancialAccount to a bank account, owned by someone else.
+        /// Can send funds from a FinancialAccount to a bank account owned by a different entity.
         /// </summary>
         [JsonProperty("bank_accounts")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,7 @@ namespace Stripe.V2.Core
         public AccountConfigurationStorerCapabilitiesOutboundPaymentsBankAccounts BankAccounts { get; set; }
 
         /// <summary>
-        /// Can send funds from a FinancialAccount to a debit card, owned by someone else.
+        /// Can send funds from a FinancialAccount to a debit card owned by a different entity.
         /// </summary>
         [JsonProperty("cards")]
 #if NET6_0_OR_GREATER
@@ -27,8 +27,8 @@ namespace Stripe.V2.Core
         public AccountConfigurationStorerCapabilitiesOutboundPaymentsCards Cards { get; set; }
 
         /// <summary>
-        /// Can send funds from a FinancialAccount to another FinancialAccount, owned by someone
-        /// else.
+        /// Can send funds from a FinancialAccount to a FinancialAccount owned by a different
+        /// entity.
         /// </summary>
         [JsonProperty("financial_accounts")]
 #if NET6_0_OR_GREATER

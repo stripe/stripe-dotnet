@@ -10,12 +10,12 @@ namespace Stripe.Issuing
 #endif
 
     /// <summary>
-    /// When an <a href="https://stripe.com/docs/issuing">issued card</a> is used to make a
+    /// When an <a href="https://docs.stripe.com/issuing">issued card</a> is used to make a
     /// purchase, an Issuing <c>Authorization</c> object is created. <a
-    /// href="https://stripe.com/docs/issuing/purchases/authorizations">Authorizations</a> must
+    /// href="https://docs.stripe.com/issuing/purchases/authorizations">Authorizations</a> must
     /// be approved for the purchase to be completed successfully.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/authorizations">Issued
+    /// Related guide: <a href="https://docs.stripe.com/issuing/purchases/authorizations">Issued
     /// card authorizations</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -56,7 +56,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// Detailed breakdown of amount components. These amounts are denominated in
         /// <c>currency</c> and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_details")]
 #if NET6_0_OR_GREATER
@@ -94,7 +94,7 @@ namespace Stripe.Issuing
         public List<BalanceTransaction> BalanceTransactions { get; set; }
 
         /// <summary>
-        /// You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a>
+        /// You can <a href="https://docs.stripe.com/issuing">create physical or virtual cards</a>
         /// that are issued to cardholders.
         /// </summary>
         [JsonProperty("card")]
@@ -242,7 +242,7 @@ namespace Stripe.Issuing
         public AuthorizationMerchantData MerchantData { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -298,7 +298,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (ID of the Token)
-        /// <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for
+        /// <a href="https://docs.stripe.com/api/issuing/tokens/object">Token</a> object used for
         /// this authorization. If a network token was not used for this authorization, this field
         /// will be null.
         /// </summary>
@@ -314,7 +314,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (Expanded)
-        /// <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for
+        /// <a href="https://docs.stripe.com/api/issuing/tokens/object">Token</a> object used for
         /// this authorization. If a network token was not used for this authorization, this field
         /// will be null.
         ///
@@ -340,7 +340,7 @@ namespace Stripe.Issuing
         #endregion
 
         /// <summary>
-        /// List of <a href="https://stripe.com/docs/api/issuing/transactions">transactions</a>
+        /// List of <a href="https://docs.stripe.com/api/issuing/transactions">transactions</a>
         /// associated with this authorization.
         /// </summary>
         [JsonProperty("transactions")]
@@ -350,9 +350,9 @@ namespace Stripe.Issuing
         public List<Transaction> Transactions { get; set; }
 
         /// <summary>
-        /// <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this
+        /// <a href="https://docs.stripe.com/api/treasury">Treasury</a> details related to this
         /// authorization if it was created on a <a
-        /// href="https://stripe.com/docs/api/treasury/financial_accounts">FinancialAccount</a>.
+        /// href="https://docs.stripe.com/api/treasury/financial_accounts">FinancialAccount</a>.
         /// </summary>
         [JsonProperty("treasury")]
 #if NET6_0_OR_GREATER

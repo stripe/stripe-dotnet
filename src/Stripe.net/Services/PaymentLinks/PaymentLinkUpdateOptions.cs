@@ -76,9 +76,9 @@ namespace Stripe
         public PaymentLinkCustomTextOptions CustomText { get; set; }
 
         /// <summary>
-        /// Configures whether <a href="https://stripe.com/docs/api/checkout/sessions">checkout
+        /// Configures whether <a href="https://docs.stripe.com/api/checkout/sessions">checkout
         /// sessions</a> created by this payment link create a <a
-        /// href="https://stripe.com/docs/api/customers">Customer</a>.
+        /// href="https://docs.stripe.com/api/customers">Customer</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
         [JsonProperty("customer_creation")]
@@ -117,12 +117,12 @@ namespace Stripe
         public List<PaymentLinkLineItemOptions> LineItems { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>. Metadata
         /// associated with this Payment Link will automatically be copied to <a
-        /// href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a> created by
+        /// href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a> created by
         /// this payment link.
         /// </summary>
         [JsonProperty("metadata")]
@@ -159,7 +159,7 @@ namespace Stripe
         /// Can only be set in <c>subscription</c> mode. Defaults to <c>always</c>.
         ///
         /// If you'd like information on how to collect a payment method outside of Checkout, read
-        /// the guide on <a href="https://stripe.com/docs/payments/checkout/free-trials">configuring
+        /// the guide on <a href="https://docs.stripe.com/payments/checkout/free-trials">configuring
         /// subscriptions with a free trial</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
@@ -223,7 +223,7 @@ namespace Stripe
         /// Describes the type of transaction being performed in order to customize relevant text on
         /// the page, such as the submit button. Changing this value will also affect the hostname
         /// in the <a
-        /// href="https://stripe.com/docs/api/payment_links/payment_links/object#url">url</a>
+        /// href="https://docs.stripe.com/api/payment_links/payment_links/object#url">url</a>
         /// property (example: <c>donate.stripe.com</c>).
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>

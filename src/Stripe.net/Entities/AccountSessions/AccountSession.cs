@@ -17,7 +17,7 @@ namespace Stripe
     /// relatively quickly, and cannot be used more than once.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/connect/get-started-connect-embedded-components">Connect
+    /// href="https://docs.stripe.com/connect/get-started-connect-embedded-components">Connect
     /// embedded components</a>.
     /// </summary>
     public class AccountSession : StripeEntity<AccountSession>, IHasObject
@@ -49,7 +49,7 @@ namespace Stripe
         /// Make sure that you have TLS enabled on any page that includes the client secret.
         ///
         /// Refer to our docs to <a
-        /// href="https://stripe.com/docs/connect/get-started-connect-embedded-components">setup
+        /// href="https://docs.stripe.com/connect/get-started-connect-embedded-components">setup
         /// Connect embedded components</a> and learn about how <c>client_secret</c> should be
         /// handled.
         /// </summary>

@@ -10,7 +10,9 @@ namespace Stripe
     public class InvoiceCustomerDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// The customer's address.
+        /// The customer's address. Learn about <a
+        /// href="https://stripe.com/invoicing/taxes?dashboard-or-api=dashboard#set-up-customer">country-specific
+        /// requirements for calculating tax</a>.
         /// </summary>
         [JsonProperty("address")]
 #if NET6_0_OR_GREATER

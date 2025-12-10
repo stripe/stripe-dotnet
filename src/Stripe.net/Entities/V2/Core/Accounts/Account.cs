@@ -35,8 +35,7 @@ namespace Stripe.V2.Core
         public string Object { get; set; }
 
         /// <summary>
-        /// Filter only accounts that have all of the configurations specified. If omitted, returns
-        /// all accounts regardless of which configurations they have.
+        /// The configurations that have been applied to this account.
         /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
@@ -46,7 +45,7 @@ namespace Stripe.V2.Core
         public List<string> AppliedConfigurations { get; set; }
 
         /// <summary>
-        /// A value indicating if the Account has been closed.
+        /// Indicates whether the account has been closed.
         /// </summary>
         [JsonProperty("closed")]
 #if NET6_0_OR_GREATER
@@ -55,8 +54,10 @@ namespace Stripe.V2.Core
         public bool? Closed { get; set; }
 
         /// <summary>
-        /// An Account Configuration which allows the Account to take on a key persona across Stripe
-        /// products.
+        /// An Account represents a company, individual, or other entity that a user interacts with.
+        /// Accounts store identity information and one or more configurations that enable
+        /// product-specific capabilities. You can assign configurations at creation or add them
+        /// later.
         /// </summary>
         [JsonProperty("configuration")]
 #if NET6_0_OR_GREATER
@@ -96,7 +97,7 @@ namespace Stripe.V2.Core
         public string Dashboard { get; set; }
 
         /// <summary>
-        /// Default values to be used on Account Configurations.
+        /// Default values for settings shared across Account configurations.
         /// </summary>
         [JsonProperty("defaults")]
 #if NET6_0_OR_GREATER

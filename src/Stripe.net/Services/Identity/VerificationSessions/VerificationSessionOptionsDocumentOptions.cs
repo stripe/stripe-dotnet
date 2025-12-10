@@ -23,7 +23,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// Collect an ID number and perform an <a
-        /// href="https://stripe.com/docs/identity/verification-checks?type=id-number">ID number
+        /// href="https://docs.stripe.com/identity/verification-checks?type=id-number">ID number
         /// check</a> with the document’s extracted name and date of birth.
         /// </summary>
         [JsonProperty("require_id_number")]
@@ -44,9 +44,9 @@ namespace Stripe.Identity
 
         /// <summary>
         /// Capture a face image and perform a <a
-        /// href="https://stripe.com/docs/identity/verification-checks?type=selfie">selfie check</a>
+        /// href="https://docs.stripe.com/identity/verification-checks?type=selfie">selfie check</a>
         /// comparing a photo ID and a picture of your user’s face. <a
-        /// href="https://stripe.com/docs/identity/selfie">Learn more</a>.
+        /// href="https://docs.stripe.com/identity/selfie">Learn more</a>.
         /// </summary>
         [JsonProperty("require_matching_selfie")]
 #if NET6_0_OR_GREATER

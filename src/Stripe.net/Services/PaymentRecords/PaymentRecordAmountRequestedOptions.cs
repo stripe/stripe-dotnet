@@ -21,7 +21,7 @@ namespace Stripe
 
         /// <summary>
         /// A positive integer representing the amount in the currency's <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">minor unit</a>. For example,
+        /// href="https://docs.stripe.com/currencies#zero-decimal">minor unit</a>. For example,
         /// <c>100</c> can represent 1 USD or 100 JPY.
         /// </summary>
         [JsonProperty("value")]

@@ -10,8 +10,8 @@ namespace Stripe.Treasury
 
     /// <summary>
     /// ReceivedDebits represent funds pulled from a <a
-    /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>. These are
-    /// not initiated from the FinancialAccount.
+    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a>. These are not
+    /// initiated from the FinancialAccount.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -98,7 +98,7 @@ namespace Stripe.Treasury
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted
+        /// A <a href="https://docs.stripe.com/treasury/moving-money/regulatory-receipts">hosted
         /// transaction receipt</a> URL that is provided when money movement is considered regulated
         /// under Stripe's money transmission licenses.
         /// </summary>

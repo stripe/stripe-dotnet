@@ -13,7 +13,7 @@ namespace Stripe.Radar
     /// be fraudulent.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/disputes/measuring#early-fraud-warnings">Early fraud
+    /// href="https://docs.stripe.com/disputes/measuring#early-fraud-warnings">Early fraud
     /// warnings</a>.
     /// </summary>
 #if NET6_0_OR_GREATER

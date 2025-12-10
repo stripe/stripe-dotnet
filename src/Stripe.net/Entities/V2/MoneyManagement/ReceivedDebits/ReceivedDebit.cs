@@ -127,7 +127,7 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedDebitStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
-        /// Open Enum. The type of the ReceivedDebit.
+        /// Open enum, the type of the received debit.
         /// One of: <c>bank_transfer</c>, or <c>external_debit</c>.
         /// </summary>
         [JsonProperty("type")]

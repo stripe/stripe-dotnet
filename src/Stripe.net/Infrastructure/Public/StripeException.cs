@@ -59,6 +59,10 @@ namespace Stripe
                     ret = Stripe.V2.BlockedByStripeException.Parse(httpStatusCode, body);
                     break;
 
+                case "controlled_by_alternate_resource":
+                    ret = Stripe.V2.ControlledByAlternateResourceException.Parse(httpStatusCode, body);
+                    break;
+
                 case "controlled_by_dashboard":
                     ret = Stripe.V2.ControlledByDashboardException.Parse(httpStatusCode, body);
                     break;
@@ -93,10 +97,6 @@ namespace Stripe
 
                 case "quota_exceeded":
                     ret = Stripe.V2.QuotaExceededException.Parse(httpStatusCode, body);
-                    break;
-
-                case "rate_limit":
-                    ret = Stripe.V2.RateLimitException.Parse(httpStatusCode, body);
                     break;
 
                 case "recipient_not_notifiable":

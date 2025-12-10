@@ -9,7 +9,7 @@ namespace Stripe.Terminal
     /// <summary>
     /// A Connection Token is used by the Stripe Terminal SDK to connect to a reader.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/terminal/fleet/locations">Fleet
+    /// Related guide: <a href="https://docs.stripe.com/terminal/fleet/locations">Fleet
     /// management</a>.
     /// </summary>
     public class ConnectionToken : StripeEntity<ConnectionToken>, IHasObject

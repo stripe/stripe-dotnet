@@ -24,7 +24,7 @@ namespace Stripe
         public List<QuoteLineActionSetItemDiscount> Discounts { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an item. Metadata on this item will update the underlying subscription item's
         /// <c>metadata</c> when the phase is entered.
         /// </summary>

@@ -13,7 +13,7 @@ namespace Stripe
     /// <summary>
     /// Subscriptions allow you to charge a customer on a recurring basis.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/billing/subscriptions/creating">Creating
+    /// Related guide: <a href="https://docs.stripe.com/billing/subscriptions/creating">Creating
     /// subscriptions</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -112,7 +112,7 @@ namespace Stripe
 
         /// <summary>
         /// The reference point that aligns future <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a> dates. It
+        /// href="https://docs.stripe.com/subscriptions/billing-cycle">billing cycle</a> dates. It
         /// sets the day of week for <c>week</c> intervals, the day of month for <c>month</c> and
         /// <c>year</c> intervals, and the month of year for <c>year</c> intervals. The timestamp is
         /// in UTC format.
@@ -284,7 +284,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// ID of the account who owns the subscription.
+        /// ID of the account representing the customer who owns the subscription.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
@@ -310,9 +310,9 @@ namespace Stripe
         /// ID of the default payment method for the subscription. It must belong to the customer
         /// associated with the subscription. This takes precedence over <c>default_source</c>. If
         /// neither are set, invoices will use the customer's <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// or <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-default_source">default_source</a>.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -329,9 +329,9 @@ namespace Stripe
         /// ID of the default payment method for the subscription. It must belong to the customer
         /// associated with the subscription. This takes precedence over <c>default_source</c>. If
         /// neither are set, invoices will use the customer's <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// or <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-default_source">default_source</a>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -362,9 +362,9 @@ namespace Stripe
         /// associated with the subscription and be in a chargeable state. If
         /// <c>default_payment_method</c> is also set, <c>default_payment_method</c> will take
         /// precedence. If neither are set, invoices will use the customer's <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// or <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-default_source">default_source</a>.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -382,9 +382,9 @@ namespace Stripe
         /// associated with the subscription and be in a chargeable state. If
         /// <c>default_payment_method</c> is also set, <c>default_payment_method</c> will take
         /// precedence. If neither are set, invoices will use the customer's <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// or <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-default_source">default_source</a>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -557,7 +557,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -585,7 +585,7 @@ namespace Stripe
         /// (ID of the Account)
         /// The account (if any) the charge was made on behalf of for charges associated with this
         /// subscription. See the <a
-        /// href="https://stripe.com/docs/connect/subscriptions#on-behalf-of">Connect
+        /// href="https://docs.stripe.com/connect/subscriptions#on-behalf-of">Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonIgnore]
@@ -602,7 +602,7 @@ namespace Stripe
         /// (Expanded)
         /// The account (if any) the charge was made on behalf of for charges associated with this
         /// subscription. See the <a
-        /// href="https://stripe.com/docs/connect/subscriptions#on-behalf-of">Connect
+        /// href="https://docs.stripe.com/connect/subscriptions#on-behalf-of">Connect
         /// documentation</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -629,7 +629,7 @@ namespace Stripe
         /// <summary>
         /// If specified, payment collection for this subscription will be paused. Note that the
         /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
-        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// more about <a href="https://docs.stripe.com/billing/subscriptions/pause-payment">pausing
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
@@ -649,7 +649,7 @@ namespace Stripe
 
         /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is
-        /// analogous to calling <a href="https://stripe.com/docs/api#create_invoice">Create an
+        /// analogous to calling <a href="https://docs.stripe.com/api#create_invoice">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
         [JsonProperty("pending_invoice_item_interval")]
@@ -662,11 +662,11 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the SetupIntent)
-        /// You can use this <a href="https://stripe.com/docs/api/setup_intents">SetupIntent</a> to
+        /// You can use this <a href="https://docs.stripe.com/api/setup_intents">SetupIntent</a> to
         /// collect user authentication when creating a subscription without immediate payment or
         /// updating a subscription's payment method, allowing you to optimize for off-session
         /// payments. Learn more in the <a
-        /// href="https://stripe.com/docs/billing/migration/strong-customer-authentication#scenario-2">SCA
+        /// href="https://docs.stripe.com/billing/migration/strong-customer-authentication#scenario-2">SCA
         /// Migration Guide</a>.
         /// </summary>
         [JsonIgnore]
@@ -681,11 +681,11 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// You can use this <a href="https://stripe.com/docs/api/setup_intents">SetupIntent</a> to
+        /// You can use this <a href="https://docs.stripe.com/api/setup_intents">SetupIntent</a> to
         /// collect user authentication when creating a subscription without immediate payment or
         /// updating a subscription's payment method, allowing you to optimize for off-session
         /// payments. Learn more in the <a
-        /// href="https://stripe.com/docs/billing/migration/strong-customer-authentication#scenario-2">SCA
+        /// href="https://docs.stripe.com/billing/migration/strong-customer-authentication#scenario-2">SCA
         /// Migration Guide</a>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -711,7 +711,7 @@ namespace Stripe
 
         /// <summary>
         /// If specified, <a
-        /// href="https://stripe.com/docs/billing/subscriptions/pending-updates">pending updates</a>
+        /// href="https://docs.stripe.com/billing/subscriptions/pending-updates">pending updates</a>
         /// that will be applied to the subscription once the <c>latest_invoice</c> has been paid.
         /// </summary>
         [JsonProperty("pending_update")]
@@ -797,11 +797,11 @@ namespace Stripe
         /// <c>active</c> when the trial period is over.
         ///
         /// A subscription can only enter a <c>paused</c> status <a
-        /// href="https://stripe.com/docs/billing/subscriptions/trials#create-free-trials-without-payment">when
+        /// href="https://docs.stripe.com/billing/subscriptions/trials#create-free-trials-without-payment">when
         /// a trial ends without a payment method</a>. A <c>paused</c> subscription doesn't generate
         /// invoices and can be resumed after your customer adds their payment method. The
         /// <c>paused</c> status is different from <a
-        /// href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// href="https://docs.stripe.com/billing/subscriptions/pause-payment">pausing
         /// collection</a>, which still generates invoices and leaves the subscription's status
         /// unchanged.
         ///

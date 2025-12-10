@@ -161,9 +161,9 @@ namespace Stripe
         public string Iin { get; set; }
 
         /// <summary>
-        /// Whether this <a href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> is
+        /// Whether this <a href="https://docs.stripe.com/api/payment_intents">PaymentIntent</a> is
         /// eligible for incremental authorizations. Request support using <a
-        /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-payment_method_options-card_present-request_incremental_authorization_support">request_incremental_authorization_support</a>.
+        /// href="https://docs.stripe.com/api/payment_intents/create#create_payment_intent-payment_method_options-card_present-request_incremental_authorization_support">request_incremental_authorization_support</a>.
         /// </summary>
         [JsonProperty("incremental_authorization_supported")]
 #if NET6_0_OR_GREATER

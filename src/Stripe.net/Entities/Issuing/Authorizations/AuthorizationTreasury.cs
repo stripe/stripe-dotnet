@@ -11,7 +11,7 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// The array of <a
-        /// href="https://stripe.com/docs/api/treasury/received_credits">ReceivedCredits</a>
+        /// href="https://docs.stripe.com/api/treasury/received_credits">ReceivedCredits</a>
         /// associated with this authorization.
         /// </summary>
         [JsonProperty("received_credits")]
@@ -22,7 +22,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The array of <a
-        /// href="https://stripe.com/docs/api/treasury/received_debits">ReceivedDebits</a>
+        /// href="https://docs.stripe.com/api/treasury/received_debits">ReceivedDebits</a>
         /// associated with this authorization.
         /// </summary>
         [JsonProperty("received_debits")]
@@ -32,7 +32,7 @@ namespace Stripe.Issuing
         public List<string> ReceivedDebits { get; set; }
 
         /// <summary>
-        /// The Treasury <a href="https://stripe.com/docs/api/treasury/transactions">Transaction</a>
+        /// The Treasury <a href="https://docs.stripe.com/api/treasury/transactions">Transaction</a>
         /// associated with this authorization.
         /// </summary>
         [JsonProperty("transaction")]

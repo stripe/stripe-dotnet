@@ -10,12 +10,12 @@ namespace Stripe
 
     /// <summary>
     /// A discount represents the actual application of a <a
-    /// href="https://stripe.com/docs/api#coupons">coupon</a> or <a
-    /// href="https://stripe.com/docs/api#promotion_codes">promotion code</a>. It contains
+    /// href="https://api.stripe.com#coupons">coupon</a> or <a
+    /// href="https://api.stripe.com#promotion_codes">promotion code</a>. It contains
     /// information about when the discount began, when it will end, and what it is applied to.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/billing/subscriptions/discounts">Applying discounts to
+    /// href="https://docs.stripe.com/billing/subscriptions/discounts">Applying discounts to
     /// subscriptions</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -94,7 +94,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The ID of the account associated with this discount.
+        /// The ID of the account representing the customer associated with this discount.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

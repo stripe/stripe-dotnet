@@ -28,8 +28,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set if the ReceivedDebit was created due to an <a
-        /// href="https://stripe.com/docs/api#issuing_authorizations">Issuing Authorization</a>
-        /// object.
+        /// href="https://api.stripe.com#issuing_authorizations">Issuing Authorization</a> object.
         /// </summary>
         [JsonProperty("issuing_authorization")]
 #if NET6_0_OR_GREATER
@@ -39,7 +38,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set if the ReceivedDebit is also viewable as an <a
-        /// href="https://stripe.com/docs/api#issuing_disputes">Issuing Dispute</a> object.
+        /// href="https://api.stripe.com#issuing_disputes">Issuing Dispute</a> object.
         /// </summary>
         [JsonProperty("issuing_transaction")]
 #if NET6_0_OR_GREATER
@@ -49,7 +48,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set if the ReceivedDebit was created due to a <a
-        /// href="https://stripe.com/docs/api#payouts">Payout</a> object.
+        /// href="https://api.stripe.com#payouts">Payout</a> object.
         /// </summary>
         [JsonProperty("payout")]
 #if NET6_0_OR_GREATER

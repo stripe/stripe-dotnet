@@ -14,7 +14,7 @@ namespace Stripe
     /// them for every type of transaction that enters or leaves your Stripe account balance.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/reports/balance-transaction-types">Balance transaction
+    /// href="https://docs.stripe.com/reports/balance-transaction-types">Balance transaction
     /// types</a>.
     /// </summary>
 #if NET6_0_OR_GREATER

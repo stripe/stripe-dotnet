@@ -4,9 +4,9 @@ namespace Stripe.V2
     using System.Net;
     using Newtonsoft.Json.Linq;
 
-    public class RateLimitException : StripeException
+    public class ControlledByAlternateResourceException : StripeException
     {
-        private RateLimitException(
+        private ControlledByAlternateResourceException(
             HttpStatusCode httpStatusCode,
             StripeError stripeError,
             string message)
@@ -14,12 +14,12 @@ namespace Stripe.V2
         {
         }
 
-        internal static RateLimitException Parse(
+        internal static ControlledByAlternateResourceException Parse(
             HttpStatusCode httpStatusCode,
             JToken body)
         {
             var stripeError = StripeError.FromJson<StripeError>(body);
-            return new RateLimitException(httpStatusCode, stripeError, stripeError.Message);
+            return new ControlledByAlternateResourceException(httpStatusCode, stripeError, stripeError.Message);
         }
     }
 }

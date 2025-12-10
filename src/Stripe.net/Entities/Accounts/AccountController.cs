@@ -29,7 +29,7 @@ namespace Stripe
         /// <summary>
         /// <c>true</c> if the Connect application retrieving the resource controls the account and
         /// can therefore exercise <a
-        /// href="https://stripe.com/docs/connect/platform-controls-for-standard-accounts">platform
+        /// href="https://docs.stripe.com/connect/platform-controls-for-standard-accounts">platform
         /// controls</a>. Otherwise, this field is null.
         /// </summary>
         [JsonProperty("is_controller")]

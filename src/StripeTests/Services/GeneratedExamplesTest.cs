@@ -6935,322 +6935,7 @@ namespace StripeTests
                 "/v2/core/account_tokens",
                 (HttpStatusCode)200,
                 "{\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.account_token\",\"used\":true}");
-            var options = new Stripe.V2.Core.AccountTokenCreateOptions
-            {
-                Identity = new Stripe.V2.Core.AccountTokenCreateIdentityOptions
-                {
-                    Attestations = new Stripe.V2.Core.AccountTokenCreateIdentityAttestationsOptions
-                    {
-                        DirectorshipDeclaration = new Stripe.V2.Core.AccountTokenCreateIdentityAttestationsDirectorshipDeclarationOptions
-                        {
-                            Attested = true,
-                        },
-                        OwnershipDeclaration = new Stripe.V2.Core.AccountTokenCreateIdentityAttestationsOwnershipDeclarationOptions
-                        {
-                            Attested = true,
-                        },
-                        PersonsProvided = new Stripe.V2.Core.AccountTokenCreateIdentityAttestationsPersonsProvidedOptions
-                        {
-                            Directors = true,
-                            Executives = true,
-                            Owners = true,
-                            OwnershipExemptionReason = "qualified_entity_exceeds_ownership_threshold",
-                        },
-                        RepresentativeDeclaration = new Stripe.V2.Core.AccountTokenCreateIdentityAttestationsRepresentativeDeclarationOptions
-                        {
-                            Attested = true,
-                        },
-                        TermsOfService = new Stripe.V2.Core.AccountTokenCreateIdentityAttestationsTermsOfServiceOptions
-                        {
-                            Account = new Stripe.V2.Core.AccountTokenCreateIdentityAttestationsTermsOfServiceAccountOptions
-                            {
-                                ShownAndAccepted = true,
-                            },
-                            Storer = new Stripe.V2.Core.AccountTokenCreateIdentityAttestationsTermsOfServiceStorerOptions
-                            {
-                                ShownAndAccepted = true,
-                            },
-                        },
-                    },
-                    BusinessDetails = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsOptions
-                    {
-                        Address = new AddressJapanOptions
-                        {
-                            City = "city",
-                            Country = "country",
-                            Line1 = "line1",
-                            Line2 = "line2",
-                            PostalCode = "postal_code",
-                            State = "state",
-                            Town = "town",
-                        },
-                        AnnualRevenue = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsAnnualRevenueOptions
-                        {
-                            Amount = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsAnnualRevenueAmountOptions
-                            {
-                                Value = 111972721,
-                                Currency = "usd",
-                            },
-                            FiscalYearEnd = "fiscal_year_end",
-                        },
-                        Documents = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsOptions
-                        {
-                            BankAccountOwnershipVerification = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsBankAccountOwnershipVerificationOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            CompanyLicense = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsCompanyLicenseOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            CompanyMemorandumOfAssociation = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsCompanyMemorandumOfAssociationOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            CompanyMinisterialDecree = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsCompanyMinisterialDecreeOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            CompanyRegistrationVerification = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsCompanyRegistrationVerificationOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            CompanyTaxIdVerification = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsCompanyTaxIdVerificationOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            PrimaryVerification = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsPrimaryVerificationOptions
-                            {
-                                FrontBack = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsPrimaryVerificationFrontBackOptions
-                                {
-                                    Back = "back",
-                                    Front = "front",
-                                },
-                                Type = "front_back",
-                            },
-                            ProofOfAddress = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsProofOfAddressOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            ProofOfRegistration = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsProofOfRegistrationOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            ProofOfUltimateBeneficialOwnership = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsDocumentsProofOfUltimateBeneficialOwnershipOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                        },
-                        EstimatedWorkerCount = 884794319,
-                        IdNumbers = new List<Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsIdNumberOptions>
-                        {
-                            new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsIdNumberOptions
-                            {
-                                Registrar = "registrar",
-                                Type = "th_prn",
-                                Value = "value",
-                            },
-                        },
-                        MonthlyEstimatedRevenue = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsMonthlyEstimatedRevenueOptions
-                        {
-                            Amount = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsMonthlyEstimatedRevenueAmountOptions
-                            {
-                                Value = 111972721,
-                                Currency = "usd",
-                            },
-                        },
-                        Phone = "phone",
-                        RegisteredName = "registered_name",
-                        ScriptAddresses = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptAddressesOptions
-                        {
-                            Kana = new AddressJapanOptions
-                            {
-                                City = "city",
-                                Country = "country",
-                                Line1 = "line1",
-                                Line2 = "line2",
-                                PostalCode = "postal_code",
-                                State = "state",
-                                Town = "town",
-                            },
-                            Kanji = new AddressJapanOptions
-                            {
-                                City = "city",
-                                Country = "country",
-                                Line1 = "line1",
-                                Line2 = "line2",
-                                PostalCode = "postal_code",
-                                State = "state",
-                                Town = "town",
-                            },
-                        },
-                        ScriptNames = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptNamesOptions
-                        {
-                            Kana = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptNamesKanaOptions
-                            {
-                                RegisteredName = "registered_name",
-                            },
-                            Kanji = new Stripe.V2.Core.AccountTokenCreateIdentityBusinessDetailsScriptNamesKanjiOptions
-                            {
-                                RegisteredName = "registered_name",
-                            },
-                        },
-                        Structure = "public_listed_corporation",
-                    },
-                    EntityType = "individual",
-                    Individual = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualOptions
-                    {
-                        AdditionalAddresses = new List<Stripe.V2.Core.AccountTokenCreateIdentityIndividualAdditionalAddressOptions>
-                        {
-                            new Stripe.V2.Core.AccountTokenCreateIdentityIndividualAdditionalAddressOptions
-                            {
-                                City = "city",
-                                Country = "country",
-                                Line1 = "line1",
-                                Line2 = "line2",
-                                PostalCode = "postal_code",
-                                Purpose = "registered",
-                                State = "state",
-                                Town = "town",
-                            },
-                        },
-                        AdditionalNames = new List<Stripe.V2.Core.AccountTokenCreateIdentityIndividualAdditionalNameOptions>
-                        {
-                            new Stripe.V2.Core.AccountTokenCreateIdentityIndividualAdditionalNameOptions
-                            {
-                                FullName = "full_name",
-                                GivenName = "given_name",
-                                Purpose = "alias",
-                                Surname = "surname",
-                            },
-                        },
-                        Address = new AddressJapanOptions
-                        {
-                            City = "city",
-                            Country = "country",
-                            Line1 = "line1",
-                            Line2 = "line2",
-                            PostalCode = "postal_code",
-                            State = "state",
-                            Town = "town",
-                        },
-                        DateOfBirth = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualDateOfBirthOptions
-                        {
-                            Day = 99228,
-                            Month = 104080000,
-                            Year = 3704893,
-                        },
-                        Documents = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualDocumentsOptions
-                        {
-                            CompanyAuthorization = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualDocumentsCompanyAuthorizationOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            Passport = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualDocumentsPassportOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                            PrimaryVerification = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualDocumentsPrimaryVerificationOptions
-                            {
-                                FrontBack = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualDocumentsPrimaryVerificationFrontBackOptions
-                                {
-                                    Back = "back",
-                                    Front = "front",
-                                },
-                                Type = "front_back",
-                            },
-                            SecondaryVerification = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualDocumentsSecondaryVerificationOptions
-                            {
-                                FrontBack = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualDocumentsSecondaryVerificationFrontBackOptions
-                                {
-                                    Back = "back",
-                                    Front = "front",
-                                },
-                                Type = "front_back",
-                            },
-                            Visa = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualDocumentsVisaOptions
-                            {
-                                Files = new List<string> { "files" },
-                                Type = "files",
-                            },
-                        },
-                        Email = "email",
-                        GivenName = "given_name",
-                        IdNumbers = new List<Stripe.V2.Core.AccountTokenCreateIdentityIndividualIdNumberOptions>
-                        {
-                            new Stripe.V2.Core.AccountTokenCreateIdentityIndividualIdNumberOptions
-                            {
-                                Type = "th_lc",
-                                Value = "value",
-                            },
-                        },
-                        LegalGender = "male",
-                        Metadata = new Dictionary<string, string>
-                        {
-                            { "key", "metadata" },
-                        },
-                        Nationalities = new List<string> { "nationalities" },
-                        Phone = "phone",
-                        PoliticalExposure = "none",
-                        Relationship = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualRelationshipOptions
-                        {
-                            Director = true,
-                            Executive = true,
-                            Owner = true,
-                            PercentOwnership = "percent_ownership",
-                            Title = "title",
-                        },
-                        ScriptAddresses = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptAddressesOptions
-                        {
-                            Kana = new AddressJapanOptions
-                            {
-                                City = "city",
-                                Country = "country",
-                                Line1 = "line1",
-                                Line2 = "line2",
-                                PostalCode = "postal_code",
-                                State = "state",
-                                Town = "town",
-                            },
-                            Kanji = new AddressJapanOptions
-                            {
-                                City = "city",
-                                Country = "country",
-                                Line1 = "line1",
-                                Line2 = "line2",
-                                PostalCode = "postal_code",
-                                State = "state",
-                                Town = "town",
-                            },
-                        },
-                        ScriptNames = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptNamesOptions
-                        {
-                            Kana = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptNamesKanaOptions
-                            {
-                                GivenName = "given_name",
-                                Surname = "surname",
-                            },
-                            Kanji = new Stripe.V2.Core.AccountTokenCreateIdentityIndividualScriptNamesKanjiOptions
-                            {
-                                GivenName = "given_name",
-                                Surname = "surname",
-                            },
-                        },
-                        Surname = "surname",
-                    },
-                },
-            };
+            var options = new Stripe.V2.Core.AccountTokenCreateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.AccountTokens;
             Stripe.V2.Core.AccountToken accountToken = service.Create(options);
@@ -8573,6 +8258,28 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestControlledByAlternateResourceError()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_setup_intents",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"controlled_by_alternate_resource\",\"code\":\"payout_method_cannot_be_archived\"}}");
+            var exception = Assert.Throws<Stripe.V2.ControlledByAlternateResourceException>(
+            () =>
+            {
+                var options = new Stripe.V2.MoneyManagement.OutboundSetupIntentCreateOptions();
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.MoneyManagement.OutboundSetupIntents;
+                Stripe.V2.MoneyManagement.OutboundSetupIntent outboundSetupIntent = service
+                    .Create(options);
+            });
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/money_management/outbound_setup_intents");
+        }
+
+        [Fact]
         public void TestControlledByDashboardError()
         {
             this.StubRequest(
@@ -8790,24 +8497,6 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts");
-        }
-
-        [Fact]
-        public void TestRateLimitError()
-        {
-            this.StubRequest(
-                HttpMethod.Get,
-                "/v2/core/accounts/id_123",
-                (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"rate_limit\",\"code\":\"account_rate_limit_exceeded\"}}");
-            var exception = Assert.Throws<Stripe.V2.RateLimitException>(
-            () =>
-            {
-                var client = new StripeClient(this.Requestor);
-                var service = client.V2.Core.Accounts;
-                Stripe.V2.Core.Account account = service.Get("id_123");
-            });
-            this.AssertRequest(HttpMethod.Get, "/v2/core/accounts/id_123");
         }
 
         [Fact]

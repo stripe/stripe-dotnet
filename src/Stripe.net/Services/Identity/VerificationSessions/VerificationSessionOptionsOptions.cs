@@ -10,7 +10,7 @@ namespace Stripe.Identity
     {
         /// <summary>
         /// Options that apply to the <a
-        /// href="https://stripe.com/docs/identity/verification-checks?type=document">document
+        /// href="https://docs.stripe.com/identity/verification-checks?type=document">document
         /// check</a>.
         /// </summary>
         [JsonProperty("document")]

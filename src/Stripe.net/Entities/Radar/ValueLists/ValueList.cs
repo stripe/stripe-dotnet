@@ -12,7 +12,7 @@ namespace Stripe.Radar
     /// <summary>
     /// Value lists allow you to group values together which can then be referenced in rules.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/radar/lists#managing-list-items">Default
+    /// Related guide: <a href="https://docs.stripe.com/radar/lists#managing-list-items">Default
     /// Stripe lists</a>.
     /// </summary>
     public class ValueList : StripeEntity<ValueList>, IHasId, IHasMetadata, IHasObject
@@ -109,7 +109,7 @@ namespace Stripe.Radar
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

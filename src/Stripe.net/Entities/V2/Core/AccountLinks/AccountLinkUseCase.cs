@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountLinkUseCase : StripeEntity<AccountLinkUseCase>
     {
         /// <summary>
-        /// Open Enum. The type of AccountLink the user is requesting.
+        /// Open Enum. The type of Account Link the user is requesting.
         /// One of: <c>account_onboarding</c>, or <c>account_update</c>.
         /// </summary>
         [JsonProperty("type")]
@@ -19,7 +19,8 @@ namespace Stripe.V2.Core
         public string Type { get; set; }
 
         /// <summary>
-        /// Indicates that the AccountLink provided should onboard an account.
+        /// Hash containing configuration options for an Account Link object that onboards a new
+        /// account.
         /// </summary>
         [JsonProperty("account_onboarding")]
 #if NET6_0_OR_GREATER
@@ -28,7 +29,8 @@ namespace Stripe.V2.Core
         public AccountLinkUseCaseAccountOnboarding AccountOnboarding { get; set; }
 
         /// <summary>
-        /// Indicates that the AccountLink provided should update a previously onboarded account.
+        /// Hash containing configuration options for an Account Link that updates an existing
+        /// account.
         /// </summary>
         [JsonProperty("account_update")]
 #if NET6_0_OR_GREATER
