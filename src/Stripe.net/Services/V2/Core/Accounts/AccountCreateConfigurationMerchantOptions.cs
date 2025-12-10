@@ -55,7 +55,7 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMerchantKonbiniPaymentsOptions KonbiniPayments { get; set; }
 
         /// <summary>
-        /// The merchant category code for the Merchant Configuration. MCCs are used to classify
+        /// The Merchant Category Code (MCC) for the Merchant Configuration. MCCs classify
         /// businesses based on the goods or services they provide.
         /// </summary>
         [JsonProperty("mcc")]

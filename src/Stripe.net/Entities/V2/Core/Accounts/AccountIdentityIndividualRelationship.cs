@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountIdentityIndividualRelationship : StripeEntity<AccountIdentityIndividualRelationship>
     {
         /// <summary>
-        /// Whether the individual is an authorizer of the Account’s legal entity.
+        /// Whether the individual is an authorizer of the Account's identity.
         /// </summary>
         [JsonProperty("authorizer")]
 #if NET6_0_OR_GREATER
@@ -18,9 +18,9 @@ namespace Stripe.V2.Core
         public bool? Authorizer { get; set; }
 
         /// <summary>
-        /// Whether the individual is a director of the Account’s legal entity. Directors are
-        /// typically members of the governing board of the company, or responsible for ensuring the
-        /// company meets its regulatory obligations.
+        /// Whether the individual is a director of the Account's identity. Directors are typically
+        /// members of the governing board of the company or are responsible for making sure that
+        /// the company meets its regulatory obligations.
         /// </summary>
         [JsonProperty("director")]
 #if NET6_0_OR_GREATER
@@ -39,7 +39,7 @@ namespace Stripe.V2.Core
         public bool? Executive { get; set; }
 
         /// <summary>
-        /// Whether the individual is the legal guardian of the Account’s representative.
+        /// Whether the individual is the legal guardian of the Account's representative.
         /// </summary>
         [JsonProperty("legal_guardian")]
 #if NET6_0_OR_GREATER
@@ -48,7 +48,7 @@ namespace Stripe.V2.Core
         public bool? LegalGuardian { get; set; }
 
         /// <summary>
-        /// Whether the individual is an owner of the Account’s legal entity.
+        /// Whether the individual is an owner of the Account's identity.
         /// </summary>
         [JsonProperty("owner")]
 #if NET6_0_OR_GREATER
@@ -57,7 +57,7 @@ namespace Stripe.V2.Core
         public bool? Owner { get; set; }
 
         /// <summary>
-        /// The percent owned by the individual of the Account’s legal entity.
+        /// The percentage of the Account's identity that the individual owns.
         /// </summary>
         [JsonProperty("percent_ownership")]
 #if NET6_0_OR_GREATER

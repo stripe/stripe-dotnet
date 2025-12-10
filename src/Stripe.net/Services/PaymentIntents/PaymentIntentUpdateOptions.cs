@@ -21,10 +21,10 @@ namespace Stripe
         /// <summary>
         /// Amount intended to be collected by this PaymentIntent. A positive integer representing
         /// how much to charge in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g.,
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> (e.g.,
         /// 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum
         /// amount is $0.50 US or <a
-        /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent
+        /// href="https://docs.stripe.com/currencies#minimum-and-maximum-charge-amounts">equivalent
         /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
@@ -48,7 +48,7 @@ namespace Stripe
         /// payment and transferred to the application owner's Stripe account. The amount of the
         /// application fee collected will be capped at the total amount captured. For more
         /// information, see the PaymentIntents <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// href="https://docs.stripe.com/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
@@ -84,7 +84,7 @@ namespace Stripe
         /// Payment methods attached to other Customers cannot be used with this PaymentIntent.
         ///
         /// If <a
-        /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
         /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
         /// payment method attaches to the Customer after the PaymentIntent has been confirmed and
         /// any required actions from the user are complete. If the payment method is
@@ -99,12 +99,13 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// ID of the Account this PaymentIntent belongs to, if one exists.
+        /// ID of the Account representing the customer that this PaymentIntent belongs to, if one
+        /// exists.
         ///
         /// Payment methods attached to other Accounts cannot be used with this PaymentIntent.
         ///
         /// If <a
-        /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
         /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
         /// payment method attaches to the Account after the PaymentIntent has been confirmed and
         /// any required actions from the user are complete. If the payment method is
@@ -177,7 +178,7 @@ namespace Stripe
         public PaymentIntentMandateDataOptions MandateData { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -205,7 +206,7 @@ namespace Stripe
 
         /// <summary>
         /// The ID of the <a
-        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// href="https://docs.stripe.com/api/payment_method_configurations">payment method
         /// configuration</a> to use with this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
@@ -217,7 +218,7 @@ namespace Stripe
         /// <summary>
         /// If provided, this hash will be used to create a PaymentMethod. The new PaymentMethod
         /// will appear in the <a
-        /// href="https://stripe.com/docs/api/payment_intents/object#payment_intent_object-payment_method">payment_method</a>
+        /// href="https://docs.stripe.com/api/payment_intents/object#payment_intent_object-payment_method">payment_method</a>
         /// property on the PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_data")]
@@ -331,7 +332,7 @@ namespace Stripe
 
         /// <summary>
         /// Use this parameter to automatically create a Transfer when the payment succeeds. Learn
-        /// more about the <a href="https://stripe.com/docs/payments/connected-accounts">use case
+        /// more about the <a href="https://docs.stripe.com/payments/connected-accounts">use case
         /// for connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
@@ -343,7 +344,7 @@ namespace Stripe
         /// <summary>
         /// A string that identifies the resulting payment as part of a group. You can only provide
         /// <c>transfer_group</c> if it hasn't been set. Learn more about the <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// href="https://docs.stripe.com/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
         [JsonProperty("transfer_group")]

@@ -11,9 +11,9 @@ namespace Stripe
     /// <summary>
     /// Login Links are single-use URLs that takes an Express account to the login page for
     /// their Stripe dashboard. A Login Link differs from an <a
-    /// href="https://stripe.com/docs/api/account_links">Account Link</a> in that it takes the
+    /// href="https://docs.stripe.com/api/account_links">Account Link</a> in that it takes the
     /// user directly to their <a
-    /// href="https://stripe.com/docs/connect/integrate-express-dashboard#create-login-link">Express
+    /// href="https://docs.stripe.com/connect/integrate-express-dashboard#create-login-link">Express
     /// dashboard for the specified account</a>.
     /// </summary>
     public class LoginLink : StripeEntity<LoginLink>, IHasObject

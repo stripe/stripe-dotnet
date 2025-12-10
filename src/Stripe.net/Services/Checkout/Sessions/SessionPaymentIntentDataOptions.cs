@@ -14,7 +14,7 @@ namespace Stripe.Checkout
         /// payment and transferred to the application owner's Stripe account. The amount of the
         /// application fee collected will be capped at the total amount captured. For more
         /// information, see the PaymentIntents <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// href="https://docs.stripe.com/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
@@ -43,7 +43,7 @@ namespace Stripe.Checkout
         public string Description { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -79,7 +79,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Indicates that you intend to <a
-        /// href="https://stripe.com/docs/payments/payment-intents#future-usage">make future
+        /// href="https://docs.stripe.com/payments/payment-intents#future-usage">make future
         /// payments</a> with the payment method collected by this Checkout Session.
         ///
         /// When setting this to <c>on_session</c>, Checkout will show a notice to the customer that
@@ -147,7 +147,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// The parameters used to automatically create a Transfer when the payment succeeds. For
         /// more information, see the PaymentIntents <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// href="https://docs.stripe.com/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
@@ -159,7 +159,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// A string that identifies the resulting payment as part of a group. See the
         /// PaymentIntents <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">use case for
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers">use case for
         /// connected accounts</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]

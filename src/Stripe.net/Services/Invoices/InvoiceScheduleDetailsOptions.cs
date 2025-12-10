@@ -42,6 +42,15 @@ namespace Stripe
         public InvoiceScheduleDetailsBillingModeOptions BillingMode { get; set; }
 
         /// <summary>
+        /// Sets the billing schedules for the subscription schedule.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<InvoiceScheduleDetailsBillingScheduleOptions> BillingSchedules { get; set; }
+
+        /// <summary>
         /// Behavior of the subscription schedule and underlying subscription when it ends. Possible
         /// values are <c>release</c> or <c>cancel</c> with the default being <c>release</c>.
         /// <c>release</c> will end the subscription schedule and keep the underlying subscription
@@ -85,14 +94,5 @@ namespace Stripe
         [STJS.JsonPropertyName("proration_behavior")]
 #endif
         public string ProrationBehavior { get; set; }
-
-        /// <summary>
-        /// Sets the billing schedules for the subscription schedule.
-        /// </summary>
-        [JsonProperty("billing_schedules")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_schedules")]
-#endif
-        public List<InvoiceScheduleDetailsBillingScheduleOptions> BillingSchedules { get; set; }
     }
 }

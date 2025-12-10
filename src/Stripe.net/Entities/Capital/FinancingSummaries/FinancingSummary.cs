@@ -7,8 +7,9 @@ namespace Stripe.Capital
 #endif
 
     /// <summary>
-    /// A financing object describes an account's current financing state. Used by Connect
-    /// platforms to read the state of Capital offered to their connected accounts.
+    /// A financing summary object describes a connected account's financing status in real
+    /// time. A financing status is either <c>accepted</c>, <c>delivered</c>, or <c>none</c>.
+    /// You can read the status of your connected accounts.
     /// </summary>
     public class FinancingSummary : StripeEntity<FinancingSummary>, IHasObject
     {
@@ -25,6 +26,8 @@ namespace Stripe.Capital
         /// Additional information about the financing summary. Describes currency, advance amount,
         /// fee amount, withhold rate, remaining amount, paid amount, current repayment interval,
         /// repayment start date, and advance payout date.
+        ///
+        /// Only present for financing offers with the <c>paid_out</c> status.
         /// </summary>
         [JsonProperty("details")]
 #if NET6_0_OR_GREATER
@@ -33,7 +36,8 @@ namespace Stripe.Capital
         public FinancingSummaryDetails Details { get; set; }
 
         /// <summary>
-        /// The Financing Offer ID this Financing Summary corresponds to.
+        /// The unique identifier of the Financing Offer object that corresponds to the Financing
+        /// Summary object.
         /// </summary>
         [JsonProperty("financing_offer")]
 #if NET6_0_OR_GREATER
@@ -42,9 +46,7 @@ namespace Stripe.Capital
         public string FinancingOffer { get; set; }
 
         /// <summary>
-        /// Status of the Connected Account's financing. <a
-        /// href="https://stripe.com/docs/api/capital/financing_summary">/v1/capital/financing_summary</a>
-        /// will only return <c>details</c> for <c>paid_out</c> financing.
+        /// The financing status of the connected account.
         /// One of: <c>accepted</c>, <c>delivered</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("status")]

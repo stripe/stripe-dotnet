@@ -30,9 +30,9 @@ namespace Stripe
         public PaymentLinkSubscriptionDataInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that will
         /// declaratively set metadata on <a
-        /// href="https://stripe.com/docs/api/subscriptions">Subscriptions</a> generated from this
+        /// href="https://docs.stripe.com/api/subscriptions">Subscriptions</a> generated from this
         /// payment link. Unlike object-level metadata, this field is declarative. Updates will
         /// clear prior values.
         /// </summary>

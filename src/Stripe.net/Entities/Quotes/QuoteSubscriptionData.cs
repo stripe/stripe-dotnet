@@ -142,7 +142,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will set
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that will set
         /// metadata on the subscription or subscription schedule when the quote is accepted. If a
         /// recurring price is included in <c>line_items</c>, this field will be passed to the
         /// resulting subscription's <c>metadata</c> field. If
@@ -183,7 +183,7 @@ namespace Stripe
 
         /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>
+        /// href="https://docs.stripe.com/subscriptions/billing-cycle#prorations">prorations</a>
         /// when the quote is accepted.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>

@@ -14,7 +14,7 @@ namespace Stripe
     /// opt to send the notices yourself.
     ///
     /// See the <a
-    /// href="https://stripe.com/docs/issuing/compliance-us/issuing-regulated-customer-notices">guide
+    /// href="https://docs.stripe.com/issuing/compliance-us/issuing-regulated-customer-notices">guide
     /// to send notices</a> to your connected accounts.
     /// </summary>
     public class AccountNotice : StripeEntity<AccountNotice>, IHasId, IHasMetadata, IHasObject
@@ -88,7 +88,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -101,7 +101,7 @@ namespace Stripe
         /// <summary>
         /// Reason the notice is being sent. The reason determines what copy the notice must
         /// contain. See the <a
-        /// href="https://stripe.com/docs/issuing/compliance-us/issuing-regulated-customer-notices">regulated
+        /// href="https://docs.stripe.com/issuing/compliance-us/issuing-regulated-customer-notices">regulated
         /// customer notices</a> guide. All reasons might not apply to your integration, and Stripe
         /// might add new reasons in the future, so we recommend an internal warning when you
         /// receive an unknown reason.

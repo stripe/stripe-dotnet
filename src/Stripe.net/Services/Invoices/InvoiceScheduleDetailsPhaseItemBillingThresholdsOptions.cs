@@ -11,7 +11,7 @@ namespace Stripe
         /// <summary>
         /// Number of units that meets the billing threshold to advance the subscription to a new
         /// billing period (e.g., it takes 10 $5 units to meet a $50 <a
-        /// href="https://stripe.com/docs/api/subscriptions/update#update_subscription-billing_thresholds-amount_gte">monetary
+        /// href="https://docs.stripe.com/api/subscriptions/update#update_subscription-billing_thresholds-amount_gte">monetary
         /// threshold</a>).
         /// </summary>
         [JsonProperty("usage_gte")]

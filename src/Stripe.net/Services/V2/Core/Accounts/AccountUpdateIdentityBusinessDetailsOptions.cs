@@ -47,8 +47,8 @@ namespace Stripe.V2.Core
         public AccountUpdateIdentityBusinessDetailsDocumentsOptions Documents { get; set; }
 
         /// <summary>
-        /// An estimated upper bound of employees, contractors, vendors, etc. currently working for
-        /// the business.
+        /// Estimated maximum number of workers currently engaged by the business (including
+        /// employees, contractors, and vendors).
         /// </summary>
         [JsonProperty("estimated_worker_count")]
 #if NET6_0_OR_GREATER

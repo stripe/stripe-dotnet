@@ -14,7 +14,7 @@ namespace Stripe
     /// methods are shown.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/payments/payment-methods/pmd-registration">Payment method
+    /// href="https://docs.stripe.com/payments/payment-methods/pmd-registration">Payment method
     /// domains</a>.
     /// </summary>
     public class PaymentMethodDomain : StripeEntity<PaymentMethodDomain>, IHasId, IHasObject

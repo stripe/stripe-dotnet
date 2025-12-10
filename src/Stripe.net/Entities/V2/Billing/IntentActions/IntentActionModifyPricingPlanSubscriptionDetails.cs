@@ -37,6 +37,15 @@ namespace Stripe.V2.Billing
         public string NewPricingPlanVersion { get; set; }
 
         /// <summary>
+        /// Allows users to override the partial period behavior.
+        /// </summary>
+        [JsonProperty("overrides")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("overrides")]
+#endif
+        public IntentActionModifyPricingPlanSubscriptionDetailsOverrides Overrides { get; set; }
+
+        /// <summary>
         /// ID of the Pricing Plan Subscription to modify.
         /// </summary>
         [JsonProperty("pricing_plan_subscription")]

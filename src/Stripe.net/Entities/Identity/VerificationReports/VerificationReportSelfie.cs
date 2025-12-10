@@ -56,7 +56,7 @@ namespace Stripe.Identity
         #endregion
 
         /// <summary>
-        /// ID of the <a href="https://stripe.com/docs/api/files">File</a> holding the image of the
+        /// ID of the <a href="https://docs.stripe.com/api/files">File</a> holding the image of the
         /// identity document used in this check.
         /// </summary>
         [JsonProperty("document")]
@@ -75,7 +75,7 @@ namespace Stripe.Identity
         public VerificationReportSelfieError Error { get; set; }
 
         /// <summary>
-        /// ID of the <a href="https://stripe.com/docs/api/files">File</a> holding the image of the
+        /// ID of the <a href="https://docs.stripe.com/api/files">File</a> holding the image of the
         /// selfie used in this check.
         /// </summary>
         [JsonProperty("selfie")]

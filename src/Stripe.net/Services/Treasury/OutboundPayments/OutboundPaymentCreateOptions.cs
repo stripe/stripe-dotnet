@@ -96,7 +96,7 @@ namespace Stripe.Treasury
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -111,7 +111,8 @@ namespace Stripe.Treasury
         /// The description that appears on the receiving end for this OutboundPayment (for example,
         /// bank statement for external bank transfer). Maximum 10 characters for <c>ach</c>
         /// payments, 140 characters for <c>us_domestic_wire</c> payments, or 500 characters for
-        /// <c>stripe</c> network transfers. The default value is "payment".
+        /// <c>stripe</c> network transfers. Can only include -#.$&amp;*, spaces, and alphanumeric
+        /// characters. The default value is "payment".
         /// </summary>
         [JsonProperty("statement_descriptor")]
 #if NET6_0_OR_GREATER

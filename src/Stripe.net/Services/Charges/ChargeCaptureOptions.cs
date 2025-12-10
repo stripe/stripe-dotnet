@@ -93,7 +93,7 @@ namespace Stripe
 
         /// <summary>
         /// An optional dictionary including the account to automatically transfer to as part of a
-        /// destination charge. <a href="https://stripe.com/docs/connect/destination-charges">See
+        /// destination charge. <a href="https://docs.stripe.com/connect/destination-charges">See
         /// the Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_data")]
@@ -105,7 +105,7 @@ namespace Stripe
         /// <summary>
         /// A string that identifies this transaction as part of a group. <c>transfer_group</c> may
         /// only be provided if it has not been set. See the <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Connect
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]

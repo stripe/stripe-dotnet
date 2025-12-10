@@ -9,6 +9,15 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionDeactivatePricingPlanSubscriptionDetailsOptions : INestedOptions
     {
         /// <summary>
+        /// Allows users to override the partial period behavior.
+        /// </summary>
+        [JsonProperty("overrides")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("overrides")]
+#endif
+        public IntentCreateActionDeactivatePricingPlanSubscriptionDetailsOverridesOptions Overrides { get; set; }
+
+        /// <summary>
         /// ID of the pricing plan subscription to deactivate.
         /// </summary>
         [JsonProperty("pricing_plan_subscription")]

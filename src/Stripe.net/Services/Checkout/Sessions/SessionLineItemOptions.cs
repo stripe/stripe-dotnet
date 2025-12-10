@@ -20,7 +20,7 @@ namespace Stripe.Checkout
         public SessionLineItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/api/tax_rates">tax rates</a> that will be applied
+        /// The <a href="https://docs.stripe.com/api/tax_rates">tax rates</a> that will be applied
         /// to this line item depending on the customer's billing/shipping address. We currently
         /// support the following countries: US, GB, AU, and all countries in the EU.
         /// </summary>
@@ -40,7 +40,7 @@ namespace Stripe.Checkout
         public string Id { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -52,8 +52,8 @@ namespace Stripe.Checkout
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> or <a
-        /// href="https://stripe.com/docs/api/plans">Plan</a> object. One of <c>price</c> or
+        /// The ID of the <a href="https://docs.stripe.com/api/prices">Price</a> or <a
+        /// href="https://docs.stripe.com/api/plans">Plan</a> object. One of <c>price</c> or
         /// <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
@@ -63,7 +63,7 @@ namespace Stripe.Checkout
         public string Price { get; set; }
 
         /// <summary>
-        /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
         /// object inline. One of <c>price</c> or <c>price_data</c> is required when creating a new
         /// line item.
         /// </summary>
@@ -84,7 +84,7 @@ namespace Stripe.Checkout
         public long? Quantity { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/api/tax_rates">tax rates</a> which apply to this
+        /// The <a href="https://docs.stripe.com/api/tax_rates">tax rates</a> which apply to this
         /// line item.
         /// </summary>
         [JsonProperty("tax_rates")]

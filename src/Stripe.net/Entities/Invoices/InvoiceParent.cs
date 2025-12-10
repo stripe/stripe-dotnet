@@ -27,6 +27,15 @@ namespace Stripe
         public InvoiceParentQuoteDetails QuoteDetails { get; set; }
 
         /// <summary>
+        /// Details about the schedule that generated this invoice.
+        /// </summary>
+        [JsonProperty("schedule_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("schedule_details")]
+#endif
+        public InvoiceParentScheduleDetails ScheduleDetails { get; set; }
+
+        /// <summary>
         /// Details about the subscription that generated this invoice.
         /// </summary>
         [JsonProperty("subscription_details")]
@@ -45,14 +54,5 @@ namespace Stripe
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
-
-        /// <summary>
-        /// Details about the schedule that generated this invoice.
-        /// </summary>
-        [JsonProperty("schedule_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("schedule_details")]
-#endif
-        public InvoiceParentScheduleDetails ScheduleDetails { get; set; }
     }
 }

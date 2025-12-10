@@ -29,9 +29,9 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that will
         /// declaratively set metadata on <a
-        /// href="https://stripe.com/docs/api/payment_intents">Payment Intents</a> generated from
+        /// href="https://docs.stripe.com/api/payment_intents">Payment Intents</a> generated from
         /// this payment link. Unlike object-level metadata, this field is declarative. Updates will
         /// clear prior values.
         /// </summary>
@@ -43,7 +43,7 @@ namespace Stripe
 
         /// <summary>
         /// Indicates that you intend to <a
-        /// href="https://stripe.com/docs/payments/payment-intents#future-usage">make future
+        /// href="https://docs.stripe.com/payments/payment-intents#future-usage">make future
         /// payments</a> with the payment method collected by this Checkout Session.
         ///
         /// When setting this to <c>on_session</c>, Checkout will show a notice to the customer that
@@ -102,7 +102,7 @@ namespace Stripe
         /// <summary>
         /// A string that identifies the resulting payment as part of a group. See the
         /// PaymentIntents <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">use case for
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers">use case for
         /// connected accounts</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]

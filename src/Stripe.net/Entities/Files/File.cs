@@ -10,12 +10,12 @@ namespace Stripe
 
     /// <summary>
     /// This object represents files hosted on Stripe's servers. You can upload files with the
-    /// <a href="https://stripe.com/docs/api#create_file">create file</a> request (for example,
-    /// when uploading dispute evidence). Stripe also creates files independently (for example,
-    /// the results of a <a href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled
+    /// <a href="https://api.stripe.com#create_file">create file</a> request (for example, when
+    /// uploading dispute evidence). Stripe also creates files independently (for example, the
+    /// results of a <a href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled
     /// query</a>).
     ///
-    /// Related guide: <a href="https://stripe.com/docs/file-upload">File upload guide</a>.
+    /// Related guide: <a href="https://docs.stripe.com/file-upload">File upload guide</a>.
     /// </summary>
     public class File : StripeEntity<File>, IHasId, IHasObject
     {
@@ -69,8 +69,8 @@ namespace Stripe
         public string Filename { get; set; }
 
         /// <summary>
-        /// A list of <a href="https://stripe.com/docs/api#file_links">file links</a> that point at
-        /// this file.
+        /// A list of <a href="https://api.stripe.com#file_links">file links</a> that point at this
+        /// file.
         /// </summary>
         [JsonProperty("links")]
 #if NET6_0_OR_GREATER
@@ -79,7 +79,7 @@ namespace Stripe
         public StripeList<FileLink> Links { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the
+        /// The <a href="https://docs.stripe.com/file-upload#uploading-a-file">purpose</a> of the
         /// uploaded file.
         /// One of: <c>account_requirement</c>, <c>additional_verification</c>,
         /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,

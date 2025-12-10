@@ -20,7 +20,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Array of strings containing <a
-        /// href="https://stripe.com/docs/api#issuing_authorization_object-merchant_data-category">categories</a>
+        /// href="https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category">categories</a>
         /// this limit applies to. Omitting this field will apply the limit to all categories.
         /// One of: <c>ac_refrigeration_repair</c>, <c>accounting_bookkeeping_services</c>,
         /// <c>advertising_services</c>, <c>agricultural_cooperative</c>,

@@ -36,7 +36,7 @@ namespace Stripe
         /// <c>automatic</c> to automatically change it if needed. Cannot be set to
         /// <c>phase_start</c> if this phase specifies a trial. For more information, see the
         /// billing cycle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]

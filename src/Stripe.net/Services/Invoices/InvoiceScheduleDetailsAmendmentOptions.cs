@@ -46,6 +46,15 @@ namespace Stripe
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
+        /// Actions to apply to the billing schedules.
+        /// </summary>
+        [JsonProperty("billing_schedules_actions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules_actions")]
+#endif
+        public List<InvoiceScheduleDetailsAmendmentBillingSchedulesActionOptions> BillingSchedulesActions { get; set; }
+
+        /// <summary>
         /// Changes to the coupons being redeemed or discounts being applied during the amendment
         /// time span.
         /// </summary>
@@ -54,6 +63,21 @@ namespace Stripe
         [STJS.JsonPropertyName("discount_actions")]
 #endif
         public List<InvoiceScheduleDetailsAmendmentDiscountActionOptions> DiscountActions { get; set; }
+
+        /// <summary>
+        /// Configures how the subscription schedule handles billing for phase transitions. Possible
+        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
+        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
+        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
+        /// upcoming phase transitions within the current billing cycle, including pricing changes
+        /// and service period adjustments that will occur before the next invoice.
+        /// One of: <c>amendment_start</c>, or <c>billing_period_start</c>.
+        /// </summary>
+        [JsonProperty("effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
+#endif
+        public string EffectiveAt { get; set; }
 
         /// <summary>
         /// Changes to the subscription items during the amendment time span.
@@ -116,29 +140,5 @@ namespace Stripe
         [STJS.JsonPropertyName("trial_settings")]
 #endif
         public InvoiceScheduleDetailsAmendmentTrialSettingsOptions TrialSettings { get; set; }
-
-        /// <summary>
-        /// Actions to apply to the billing schedules.
-        /// </summary>
-        [JsonProperty("billing_schedules_actions")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_schedules_actions")]
-#endif
-        public List<InvoiceScheduleDetailsAmendmentBillingSchedulesActionOptions> BillingSchedulesActions { get; set; }
-
-        /// <summary>
-        /// Configures how the subscription schedule handles billing for phase transitions. Possible
-        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
-        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
-        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
-        /// upcoming phase transitions within the current billing cycle, including pricing changes
-        /// and service period adjustments that will occur before the next invoice.
-        /// One of: <c>amendment_start</c>, or <c>billing_period_start</c>.
-        /// </summary>
-        [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_at")]
-#endif
-        public string EffectiveAt { get; set; }
     }
 }

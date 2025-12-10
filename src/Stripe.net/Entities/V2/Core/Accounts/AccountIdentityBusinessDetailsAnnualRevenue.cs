@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountIdentityBusinessDetailsAnnualRevenue : StripeEntity<AccountIdentityBusinessDetailsAnnualRevenue>
     {
         /// <summary>
-        /// A non-negative integer representing the amount in the smallest currency unit.
+        /// Annual revenue amount in minor currency units (for example, '123' for 1.23 USD).
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER

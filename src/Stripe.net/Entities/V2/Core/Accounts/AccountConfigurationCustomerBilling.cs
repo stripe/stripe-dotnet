@@ -9,8 +9,8 @@ namespace Stripe.V2.Core
     public class AccountConfigurationCustomerBilling : StripeEntity<AccountConfigurationCustomerBilling>
     {
         /// <summary>
-        /// ID of a payment method that’s attached to the customer, to be used as the customer’s
-        /// default payment method for invoices and subscriptions.
+        /// ID of a PaymentMethod attached to the customer account to use as the default for
+        /// invoices and subscriptions.
         /// </summary>
         [JsonProperty("default_payment_method")]
 #if NET6_0_OR_GREATER
@@ -19,7 +19,7 @@ namespace Stripe.V2.Core
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
-        /// Default settings used on invoices for this customer.
+        /// Default invoice settings for the customer account.
         /// </summary>
         [JsonProperty("invoice")]
 #if NET6_0_OR_GREATER

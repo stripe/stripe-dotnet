@@ -10,7 +10,7 @@ namespace Stripe.Identity
     public class VerificationSessionUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -40,7 +40,7 @@ namespace Stripe.Identity
         public VerificationSessionProvidedDetailsOptions ProvidedDetails { get; set; }
 
         /// <summary>
-        /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
+        /// The type of <a href="https://docs.stripe.com/identity/verification-checks">verification
         /// check</a> to be performed.
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>

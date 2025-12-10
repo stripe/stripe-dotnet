@@ -291,6 +291,7 @@ namespace Stripe
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
                 { "v2.core.vault.us_bank_account", typeof(V2.Core.Vault.UsBankAccount) },
+                { "v2.iam.api_key", typeof(V2.Iam.ApiKey) },
                 { "v2.money_management.adjustment", typeof(V2.MoneyManagement.Adjustment) },
                 {
                     "v2.money_management.currency_conversion", typeof(
@@ -347,8 +348,17 @@ namespace Stripe
                     V2.MoneyManagement.TransactionEntry)
                 },
                 { "v2.payments.off_session_payment", typeof(V2.Payments.OffSessionPayment) },
+                {
+                    "v2.payments.settlement_allocation_intent", typeof(
+                    V2.Payments.SettlementAllocationIntent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent_split", typeof(
+                    V2.Payments.SettlementAllocationIntentSplit)
+                },
                 { "v2.reporting.report", typeof(V2.Reporting.Report) },
                 { "v2.reporting.report_run", typeof(V2.Reporting.ReportRun) },
+                { "v2.tax.manual_rule", typeof(V2.Tax.ManualRule) },
 
                 // V2ObjectsToTypes: The end of the section generated from our OpenAPI spec
             });
@@ -650,6 +660,14 @@ namespace Stripe
                     Events.V2CoreHealthPaymentMethodErrorResolvedEvent)
                 },
                 {
+                    "v2.core.health.sepa_debit_delayed.firing", typeof(
+                    Events.V2CoreHealthSepaDebitDelayedFiringEvent)
+                },
+                {
+                    "v2.core.health.sepa_debit_delayed.resolved", typeof(
+                    Events.V2CoreHealthSepaDebitDelayedResolvedEvent)
+                },
+                {
                     "v2.core.health.traffic_volume_drop.firing", typeof(
                     Events.V2CoreHealthTrafficVolumeDropFiringEvent)
                 },
@@ -770,6 +788,10 @@ namespace Stripe
                     Events.V2MoneyManagementOutboundTransferUpdatedEvent)
                 },
                 {
+                    "v2.money_management.payout_method.created", typeof(
+                    Events.V2MoneyManagementPayoutMethodCreatedEvent)
+                },
+                {
                     "v2.money_management.payout_method.updated", typeof(
                     Events.V2MoneyManagementPayoutMethodUpdatedEvent)
                 },
@@ -860,6 +882,50 @@ namespace Stripe
                 {
                     "v2.payments.off_session_payment.succeeded", typeof(
                     Events.V2PaymentsOffSessionPaymentSucceededEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.canceled", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentCanceledEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.created", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentCreatedEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.errored", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentErroredEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.funds_not_received", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentFundsNotReceivedEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.matched", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentMatchedEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.not_found", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentNotFoundEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.settled", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSettledEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.submitted", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSubmittedEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent_split.canceled", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSplitCanceledEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent_split.created", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSplitCreatedEvent)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent_split.settled", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSplitSettledEvent)
                 },
                 {
                     "v2.reporting.report_run.created", typeof(
@@ -1202,6 +1268,14 @@ namespace Stripe
                     Events.V2CoreHealthPaymentMethodErrorResolvedEventNotification)
                 },
                 {
+                    "v2.core.health.sepa_debit_delayed.firing", typeof(
+                    Events.V2CoreHealthSepaDebitDelayedFiringEventNotification)
+                },
+                {
+                    "v2.core.health.sepa_debit_delayed.resolved", typeof(
+                    Events.V2CoreHealthSepaDebitDelayedResolvedEventNotification)
+                },
+                {
                     "v2.core.health.traffic_volume_drop.firing", typeof(
                     Events.V2CoreHealthTrafficVolumeDropFiringEventNotification)
                 },
@@ -1322,6 +1396,10 @@ namespace Stripe
                     Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)
                 },
                 {
+                    "v2.money_management.payout_method.created", typeof(
+                    Events.V2MoneyManagementPayoutMethodCreatedEventNotification)
+                },
+                {
                     "v2.money_management.payout_method.updated", typeof(
                     Events.V2MoneyManagementPayoutMethodUpdatedEventNotification)
                 },
@@ -1412,6 +1490,50 @@ namespace Stripe
                 {
                     "v2.payments.off_session_payment.succeeded", typeof(
                     Events.V2PaymentsOffSessionPaymentSucceededEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.canceled", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentCanceledEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.created", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentCreatedEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.errored", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentErroredEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.funds_not_received", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentFundsNotReceivedEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.matched", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentMatchedEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.not_found", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentNotFoundEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.settled", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSettledEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent.submitted", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSubmittedEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent_split.canceled", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSplitCanceledEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent_split.created", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSplitCreatedEventNotification)
+                },
+                {
+                    "v2.payments.settlement_allocation_intent_split.settled", typeof(
+                    Events.V2PaymentsSettlementAllocationIntentSplitSettledEventNotification)
                 },
                 {
                     "v2.reporting.report_run.created", typeof(

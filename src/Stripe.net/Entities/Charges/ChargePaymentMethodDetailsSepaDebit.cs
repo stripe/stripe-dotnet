@@ -36,6 +36,15 @@ namespace Stripe
         public string Country { get; set; }
 
         /// <summary>
+        /// Estimated date to debit the customer's bank account. A date string in YYYY-MM-DD format.
+        /// </summary>
+        [JsonProperty("expected_debit_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expected_debit_date")]
+#endif
+        public string ExpectedDebitDate { get; set; }
+
+        /// <summary>
         /// Uniquely identifies this particular bank account. You can use this attribute to check
         /// whether two bank accounts are the same.
         /// </summary>
@@ -56,9 +65,9 @@ namespace Stripe
 
         /// <summary>
         /// Find the ID of the mandate used for this payment under the <a
-        /// href="https://stripe.com/docs/api/charges/object#charge_object-payment_method_details-sepa_debit-mandate">payment_method_details.sepa_debit.mandate</a>
+        /// href="https://docs.stripe.com/api/charges/object#charge_object-payment_method_details-sepa_debit-mandate">payment_method_details.sepa_debit.mandate</a>
         /// property on the Charge. Use this mandate ID to <a
-        /// href="https://stripe.com/docs/api/mandates/retrieve">retrieve the Mandate</a>.
+        /// href="https://docs.stripe.com/api/mandates/retrieve">retrieve the Mandate</a>.
         /// </summary>
         [JsonProperty("mandate")]
 #if NET6_0_OR_GREATER

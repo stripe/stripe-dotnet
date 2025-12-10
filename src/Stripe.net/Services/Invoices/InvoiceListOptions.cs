@@ -51,7 +51,8 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// Only return invoices for the account specified by this account ID.
+        /// Only return invoices for the account representing the customer specified by this account
+        /// ID.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
@@ -70,7 +71,7 @@ namespace Stripe
         /// <summary>
         /// The status of the invoice, one of <c>draft</c>, <c>open</c>, <c>paid</c>,
         /// <c>uncollectible</c>, or <c>void</c>. <a
-        /// href="https://stripe.com/docs/billing/invoices/workflow#workflow-overview">Learn
+        /// href="https://docs.stripe.com/billing/invoices/workflow#workflow-overview">Learn
         /// more</a>.
         /// One of: <c>draft</c>, <c>open</c>, <c>paid</c>, <c>uncollectible</c>, or <c>void</c>.
         /// </summary>

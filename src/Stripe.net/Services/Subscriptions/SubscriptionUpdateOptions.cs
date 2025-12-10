@@ -62,7 +62,7 @@ namespace Stripe
         /// Either <c>now</c> or <c>unchanged</c>. Setting the value to <c>now</c> resets the
         /// subscription's billing cycle anchor to the current time (in UTC). For more information,
         /// see the billing cycle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>now</c>, or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
@@ -152,9 +152,9 @@ namespace Stripe
         /// ID of the default payment method for the subscription. It must belong to the customer
         /// associated with the subscription. This takes precedence over <c>default_source</c>. If
         /// neither are set, invoices will use the customer's <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// or <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-default_source">default_source</a>.
         /// </summary>
         [JsonProperty("default_payment_method")]
 #if NET6_0_OR_GREATER
@@ -167,9 +167,9 @@ namespace Stripe
         /// associated with the subscription and be in a chargeable state. If
         /// <c>default_payment_method</c> is also set, <c>default_payment_method</c> will take
         /// precedence. If neither are set, invoices will use the customer's <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// or <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-default_source">default_source</a>.
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-default_source">default_source</a>.
         /// </summary>
         [JsonProperty("default_source")]
 #if NET6_0_OR_GREATER
@@ -229,7 +229,7 @@ namespace Stripe
         public List<SubscriptionItemOptions> Items { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -262,7 +262,7 @@ namespace Stripe
         /// <summary>
         /// If specified, payment collection for this subscription will be paused. Note that the
         /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
-        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// more about <a href="https://docs.stripe.com/billing/subscriptions/pause-payment">pausing
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
@@ -276,21 +276,21 @@ namespace Stripe
         /// a payment is required but cannot be paid. This allows you to manage scenarios where
         /// additional user actions are needed to pay a subscription's invoice. For example, SCA
         /// regulation may require 3DS authentication to complete payment. See the <a
-        /// href="https://stripe.com/docs/billing/migration/strong-customer-authentication">SCA
+        /// href="https://docs.stripe.com/billing/migration/strong-customer-authentication">SCA
         /// Migration Guide</a> for Billing to learn more. This is the default behavior.
         ///
         /// Use <c>default_incomplete</c> to transition the subscription to <c>status=past_due</c>
         /// when payment is required and await explicit confirmation of the invoice's payment
         /// intent. This allows simpler management of scenarios where additional user actions are
         /// needed to pay a subscription’s invoice. Such as failed payments, <a
-        /// href="https://stripe.com/docs/billing/migration/strong-customer-authentication">SCA
+        /// href="https://docs.stripe.com/billing/migration/strong-customer-authentication">SCA
         /// regulation</a>, or collecting a mandate for a bank debit payment method.
         ///
         /// Use <c>pending_if_incomplete</c> to update the subscription using <a
-        /// href="https://stripe.com/docs/billing/subscriptions/pending-updates">pending
+        /// href="https://docs.stripe.com/billing/subscriptions/pending-updates">pending
         /// updates</a>. When you use <c>pending_if_incomplete</c> you can only pass the parameters
         /// <a
-        /// href="https://stripe.com/docs/billing/pending-updates-reference#supported-attributes">supported
+        /// href="https://docs.stripe.com/billing/pending-updates-reference#supported-attributes">supported
         /// by pending updates</a>.
         ///
         /// Use <c>error_if_incomplete</c> if you want Stripe to return an HTTP 402 status code if a
@@ -319,7 +319,7 @@ namespace Stripe
 
         /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is
-        /// analogous to calling <a href="https://stripe.com/docs/api#create_invoice">Create an
+        /// analogous to calling <a href="https://docs.stripe.com/api#create_invoice">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
         [JsonProperty("pending_invoice_item_interval")]
@@ -340,7 +340,7 @@ namespace Stripe
 
         /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when the
+        /// href="https://docs.stripe.com/billing/subscriptions/prorations">prorations</a> when the
         /// billing cycle changes (e.g., when switching plans, resetting
         /// <c>billing_cycle_anchor=now</c>, or starting a trial), or if an item's <c>quantity</c>
         /// changes. The default value is <c>create_prorations</c>.
@@ -400,7 +400,7 @@ namespace Stripe
         /// Indicates if a plan's <c>trial_period_days</c> should be applied to the subscription.
         /// Setting <c>trial_end</c> per subscription is preferred, and this defaults to
         /// <c>false</c>. Setting this flag to <c>true</c> together with <c>trial_end</c> is not
-        /// allowed. See <a href="https://stripe.com/docs/billing/subscriptions/trials">Using trial
+        /// allowed. See <a href="https://docs.stripe.com/billing/subscriptions/trials">Using trial
         /// periods on subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_from_plan")]

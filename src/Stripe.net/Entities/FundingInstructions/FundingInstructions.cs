@@ -8,11 +8,11 @@ namespace Stripe
 
     /// <summary>
     /// Each customer has a <a
-    /// href="https://stripe.com/docs/api/customers/object#customer_object-balance"><c>balance</c></a>
+    /// href="https://docs.stripe.com/api/customers/object#customer_object-balance"><c>balance</c></a>
     /// that is automatically applied to future invoices and payments using the
     /// <c>customer_balance</c> payment method. Customers can fund this balance by initiating a
     /// bank transfer to any account in the <c>financial_addresses</c> field. Related guide: <a
-    /// href="https://stripe.com/docs/payments/customer-balance/funding-instructions">Customer
+    /// href="https://docs.stripe.com/payments/customer-balance/funding-instructions">Customer
     /// balance funding instructions</a>.
     /// </summary>
     public class FundingInstructions : StripeEntity<FundingInstructions>, IHasObject

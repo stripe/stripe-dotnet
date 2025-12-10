@@ -30,7 +30,7 @@ namespace Stripe.V2.Core
         public string Email { get; set; }
 
         /// <summary>
-        /// Name for the sandbox. If not provided, this will be generated.
+        /// Name for the sandbox.
         /// </summary>
         [JsonProperty("name")]
 #if NET6_0_OR_GREATER

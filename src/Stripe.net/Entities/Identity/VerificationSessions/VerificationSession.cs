@@ -22,7 +22,7 @@ namespace Stripe.Identity
     /// VerificationSession contains the user's verified data after verification checks are
     /// complete.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/identity/verification-sessions">The
+    /// Related guide: <a href="https://docs.stripe.com/identity/verification-sessions">The
     /// Verification Sessions API</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -60,12 +60,12 @@ namespace Stripe.Identity
 
         /// <summary>
         /// The short-lived client secret used by Stripe.js to <a
-        /// href="https://stripe.com/docs/js/identity/modal">show a verification modal</a> inside
+        /// href="https://docs.stripe.com/js/identity/modal">show a verification modal</a> inside
         /// your app. This client secret expires after 24 hours and can only be used once. Don’t
         /// store it, log it, embed it in a URL, or expose it to anyone other than the user. Make
         /// sure that you have TLS enabled on any page that includes the client secret. Refer to our
         /// docs on <a
-        /// href="https://stripe.com/docs/identity/verification-sessions#client-secret">passing the
+        /// href="https://docs.stripe.com/identity/verification-sessions#client-secret">passing the
         /// client secret to the frontend</a> to learn more.
         /// </summary>
         [JsonProperty("client_secret")]
@@ -100,7 +100,7 @@ namespace Stripe.Identity
         /// <summary>
         /// (ID of the VerificationReport)
         /// ID of the most recent VerificationReport. <a
-        /// href="https://stripe.com/docs/identity/verification-sessions#results">Learn more about
+        /// href="https://docs.stripe.com/identity/verification-sessions#results">Learn more about
         /// accessing detailed verification results.</a>.
         /// </summary>
         [JsonIgnore]
@@ -116,7 +116,7 @@ namespace Stripe.Identity
         /// <summary>
         /// (Expanded)
         /// ID of the most recent VerificationReport. <a
-        /// href="https://stripe.com/docs/identity/verification-sessions#results">Learn more about
+        /// href="https://docs.stripe.com/identity/verification-sessions#results">Learn more about
         /// accessing detailed verification results.</a>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -151,7 +151,7 @@ namespace Stripe.Identity
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -199,7 +199,7 @@ namespace Stripe.Identity
         public string RelatedCustomer { get; set; }
 
         /// <summary>
-        /// Token referencing a Customer Account resource.
+        /// The ID of the Account representing a customer.
         /// </summary>
         [JsonProperty("related_customer_account")]
 #if NET6_0_OR_GREATER
@@ -215,7 +215,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// Status of this VerificationSession. <a
-        /// href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle
+        /// href="https://docs.stripe.com/identity/how-sessions-work">Learn more about the lifecycle
         /// of sessions</a>.
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_input</c>, or <c>verified</c>.
         /// </summary>
@@ -226,7 +226,7 @@ namespace Stripe.Identity
         public string Status { get; set; }
 
         /// <summary>
-        /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
+        /// The type of <a href="https://docs.stripe.com/identity/verification-checks">verification
         /// check</a> to be performed.
         /// One of: <c>document</c>, <c>id_number</c>, or <c>verification_flow</c>.
         /// </summary>
@@ -241,7 +241,7 @@ namespace Stripe.Identity
         /// information. This URL expires after 48 hours and can only be used once. Don’t store it,
         /// log it, send it in emails or expose it to anyone other than the user. Refer to our docs
         /// on <a
-        /// href="https://stripe.com/docs/identity/verify-identity-documents?platform=web&amp;type=redirect">verifying
+        /// href="https://docs.stripe.com/identity/verify-identity-documents?platform=web&amp;type=redirect">verifying
         /// identity documents</a> to learn how to redirect users to Stripe.
         /// </summary>
         [JsonProperty("url")]

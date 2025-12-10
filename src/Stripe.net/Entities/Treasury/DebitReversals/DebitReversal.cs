@@ -10,10 +10,9 @@ namespace Stripe.Treasury
 #endif
 
     /// <summary>
-    /// You can reverse some <a
-    /// href="https://stripe.com/docs/api#received_debits">ReceivedDebits</a> depending on their
-    /// network and source flow. Reversing a ReceivedDebit leads to the creation of a new object
-    /// known as a DebitReversal.
+    /// You can reverse some <a href="https://api.stripe.com#received_debits">ReceivedDebits</a>
+    /// depending on their network and source flow. Reversing a ReceivedDebit leads to the
+    /// creation of a new object known as a DebitReversal.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -79,7 +78,7 @@ namespace Stripe.Treasury
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted
+        /// A <a href="https://docs.stripe.com/treasury/moving-money/regulatory-receipts">hosted
         /// transaction receipt</a> URL that is provided when money movement is considered regulated
         /// under Stripe's money transmission licenses.
         /// </summary>
@@ -109,7 +108,7 @@ namespace Stripe.Treasury
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

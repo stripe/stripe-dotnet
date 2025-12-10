@@ -9,6 +9,15 @@ namespace Stripe
     public class ChargePaymentMethodDetailsBacsDebit : StripeEntity<ChargePaymentMethodDetailsBacsDebit>
     {
         /// <summary>
+        /// Estimated date to debit the customer's bank account. A date string in YYYY-MM-DD format.
+        /// </summary>
+        [JsonProperty("expected_debit_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expected_debit_date")]
+#endif
+        public string ExpectedDebitDate { get; set; }
+
+        /// <summary>
         /// Uniquely identifies this particular bank account. You can use this attribute to check
         /// whether two bank accounts are the same.
         /// </summary>

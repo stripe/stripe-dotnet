@@ -46,6 +46,15 @@ namespace Stripe
         public string BranchCode { get; set; }
 
         /// <summary>
+        /// Estimated date to debit the customer's bank account. A date string in YYYY-MM-DD format.
+        /// </summary>
+        [JsonProperty("expected_debit_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("expected_debit_date")]
+#endif
+        public string ExpectedDebitDate { get; set; }
+
+        /// <summary>
         /// Last four digits of the bank account number.
         /// </summary>
         [JsonProperty("last4")]

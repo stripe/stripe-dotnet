@@ -21,5 +21,14 @@ namespace Stripe
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
 #endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
+
+        /// <summary>
+        /// Only return transactions that are related to the specified invoice.
+        /// </summary>
+        [JsonProperty("invoice")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("invoice")]
+#endif
+        public string Invoice { get; set; }
     }
 }

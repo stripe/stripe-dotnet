@@ -11,12 +11,12 @@ namespace Stripe
 
     /// <summary>
     /// PaymentMethod objects represent your customer's payment instruments. You can use them
-    /// with <a href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to
+    /// with <a href="https://docs.stripe.com/payments/payment-intents">PaymentIntents</a> to
     /// collect payments or save them to Customer objects to store instrument details for future
     /// payments.
     ///
-    /// Related guides: <a href="https://stripe.com/docs/payments/payment-methods">Payment
-    /// Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More
+    /// Related guides: <a href="https://docs.stripe.com/payments/payment-methods">Payment
+    /// Methods</a> and <a href="https://docs.stripe.com/payments/more-payment-scenarios">More
     /// Payment Scenarios</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -334,7 +334,7 @@ namespace Stripe
         public PaymentMethodMbWay MbWay { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -436,7 +436,7 @@ namespace Stripe
 
         /// <summary>
         /// Options to configure Radar. See <a
-        /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
+        /// href="https://docs.stripe.com/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
         [JsonProperty("radar_options")]

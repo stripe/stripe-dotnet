@@ -67,7 +67,7 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -99,7 +99,7 @@ namespace Stripe
         public string Price { get; set; }
 
         /// <summary>
-        /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
         /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]
@@ -118,9 +118,9 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         /// <summary>
-        /// A list of <a href="https://stripe.com/docs/api/tax_rates">Tax Rate</a> ids. These Tax
+        /// A list of <a href="https://docs.stripe.com/api/tax_rates">Tax Rate</a> ids. These Tax
         /// Rates will override the <a
-        /// href="https://stripe.com/docs/api/subscriptions/create#create_subscription-default_tax_rates"><c>default_tax_rates</c></a>
+        /// href="https://docs.stripe.com/api/subscriptions/create#create_subscription-default_tax_rates"><c>default_tax_rates</c></a>
         /// on the Subscription. When updating, pass an empty string to remove previously-defined
         /// tax rates.
         /// </summary>

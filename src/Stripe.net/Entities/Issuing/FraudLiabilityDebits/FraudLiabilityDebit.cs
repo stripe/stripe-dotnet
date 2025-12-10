@@ -49,7 +49,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (ID of the BalanceTransaction)
-        /// ID of the <a href="https://stripe.com/docs/api/balance_transactions">balance
+        /// ID of the <a href="https://docs.stripe.com/api/balance_transactions">balance
         /// transaction</a> associated with this debit.
         /// </summary>
         [JsonIgnore]
@@ -64,7 +64,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (Expanded)
-        /// ID of the <a href="https://stripe.com/docs/api/balance_transactions">balance
+        /// ID of the <a href="https://docs.stripe.com/api/balance_transactions">balance
         /// transaction</a> associated with this debit.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.

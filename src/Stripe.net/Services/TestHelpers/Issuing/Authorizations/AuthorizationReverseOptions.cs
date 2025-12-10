@@ -11,7 +11,7 @@ namespace Stripe.TestHelpers.Issuing
         /// <summary>
         /// The amount to reverse from the authorization. If not provided, the full amount of the
         /// authorization will be reversed. This amount is in the authorization currency and in the
-        /// <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("reverse_amount")]
 #if NET6_0_OR_GREATER

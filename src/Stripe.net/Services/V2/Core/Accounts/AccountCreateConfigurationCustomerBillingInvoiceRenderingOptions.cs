@@ -9,10 +9,9 @@ namespace Stripe.V2.Core
     public class AccountCreateConfigurationCustomerBillingInvoiceRenderingOptions : INestedOptions
     {
         /// <summary>
-        /// How line-item prices and amounts will be displayed with respect to tax on invoice PDFs.
-        /// One of exclude_tax or include_inclusive_tax. include_inclusive_tax will include
-        /// inclusive tax (and exclude exclusive tax) in invoice PDF amounts. exclude_tax will
-        /// exclude all tax (inclusive and exclusive alike) from invoice PDF amounts.
+        /// Indicates whether displayed line item prices and amounts on invoice PDFs include
+        /// inclusive tax amounts. Must be either <c>include_inclusive_tax</c> or
+        /// <c>exclude_tax</c>.
         /// One of: <c>exclude_tax</c>, or <c>include_inclusive_tax</c>.
         /// </summary>
         [JsonProperty("amount_tax_display")]

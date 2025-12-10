@@ -18,7 +18,7 @@ namespace Stripe.V2.Core
         public string BusinessUrl { get; set; }
 
         /// <summary>
-        /// The company’s legal name.
+        /// The customer-facing business name.
         /// </summary>
         [JsonProperty("doing_business_as")]
 #if NET6_0_OR_GREATER

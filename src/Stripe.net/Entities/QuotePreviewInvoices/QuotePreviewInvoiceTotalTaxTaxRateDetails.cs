@@ -8,6 +8,9 @@ namespace Stripe
 
     public class QuotePreviewInvoiceTotalTaxTaxRateDetails : StripeEntity<QuotePreviewInvoiceTotalTaxTaxRateDetails>
     {
+        /// <summary>
+        /// ID of the tax rate.
+        /// </summary>
         [JsonProperty("tax_rate")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rate")]

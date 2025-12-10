@@ -60,7 +60,8 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// Only return promotion codes that are restricted to this account.
+        /// Only return promotion codes that are restricted to this account representing the
+        /// customer.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

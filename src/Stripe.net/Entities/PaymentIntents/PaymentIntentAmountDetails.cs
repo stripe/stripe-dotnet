@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// The total discount applied on the transaction represented in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. An
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. An
         /// integer greater than 0.
         ///
         /// This field is mutually exclusive with the

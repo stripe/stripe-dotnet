@@ -9,8 +9,10 @@ namespace Stripe.V2.Core
     public class AccountConfigurationCardCreator : StripeEntity<AccountConfigurationCardCreator>
     {
         /// <summary>
-        /// Represents the state of the configuration, and can be updated to deactivate or re-apply
-        /// a configuration.
+        /// Indicates whether the card_creator configuration is active. You can deactivate or
+        /// reactivate the card_creator configuration by updating this property. Deactivating the
+        /// configuration by setting this value to false will unrequest all capabilities within the
+        /// configuration. It will not delete any of the configuration's other properties.
         /// </summary>
         [JsonProperty("applied")]
 #if NET6_0_OR_GREATER

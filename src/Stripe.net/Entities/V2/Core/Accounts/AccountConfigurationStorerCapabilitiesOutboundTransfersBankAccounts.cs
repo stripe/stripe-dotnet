@@ -10,15 +10,6 @@ namespace Stripe.V2.Core
     public class AccountConfigurationStorerCapabilitiesOutboundTransfersBankAccounts : StripeEntity<AccountConfigurationStorerCapabilitiesOutboundTransfersBankAccounts>
     {
         /// <summary>
-        /// Whether the Capability has been requested.
-        /// </summary>
-        [JsonProperty("requested")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("requested")]
-#endif
-        public bool Requested { get; set; }
-
-        /// <summary>
         /// The status of the Capability.
         /// One of: <c>active</c>, <c>pending</c>, <c>restricted</c>, or <c>unsupported</c>.
         /// </summary>
@@ -29,8 +20,8 @@ namespace Stripe.V2.Core
         public string Status { get; set; }
 
         /// <summary>
-        /// Additional details regarding the status of the Capability. <c>status_details</c> will be
-        /// empty if the Capability's status is <c>active</c>.
+        /// Additional details about the capability's status. This value is empty when <c>status</c>
+        /// is <c>active</c>.
         /// </summary>
         [JsonProperty("status_details")]
 #if NET6_0_OR_GREATER

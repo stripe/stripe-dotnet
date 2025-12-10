@@ -14,14 +14,14 @@ namespace Stripe
     /// Invoices are statements of amounts owed by a customer, and are either generated one-off,
     /// or generated periodically from a subscription.
     ///
-    /// They contain <a href="https://stripe.com/docs/api#invoiceitems">invoice items</a>, and
+    /// They contain <a href="https://api.stripe.com#invoiceitems">invoice items</a>, and
     /// proration adjustments that may be caused by subscription upgrades/downgrades (if
     /// necessary).
     ///
     /// If your invoice is configured to be billed through automatic charges, Stripe
     /// automatically finalizes your invoice and attempts payment. Note that finalizing the
     /// invoice, <a
-    /// href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">when
+    /// href="https://docs.stripe.com/invoicing/integration/automatic-advancement-collection">when
     /// automatic</a>, does not happen immediately as the invoice is created. Stripe waits until
     /// one hour after the last webhook was successfully sent (or the last webhook timed out
     /// after failing). If you (and the platforms you may have connected to) have no webhooks
@@ -40,9 +40,9 @@ namespace Stripe
     /// the amount due to the customer's credit balance which is applied to the next invoice.
     ///
     /// More details on the customer's credit balance are <a
-    /// href="https://stripe.com/docs/billing/customer/balance">here</a>.
+    /// href="https://docs.stripe.com/billing/customer/balance">here</a>.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/billing/invoices/sending">Send invoices
+    /// Related guide: <a href="https://docs.stripe.com/billing/invoices/sending">Send invoices
     /// to customers</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -262,7 +262,7 @@ namespace Stripe
 
         /// <summary>
         /// Controls whether Stripe performs <a
-        /// href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">automatic
+        /// href="https://docs.stripe.com/invoicing/integration/automatic-advancement-collection">automatic
         /// collection</a> of the invoice. If <c>false</c>, the invoice's state doesn't
         /// automatically advance without an explicit action.
         /// </summary>
@@ -373,7 +373,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Customer)
-        /// The ID of the customer who will be billed.
+        /// The ID of the customer to bill.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -387,7 +387,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the customer who will be billed.
+        /// The ID of the customer to bill.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -411,7 +411,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The ID of the account who will be billed.
+        /// The ID of the account representing the customer to bill.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
@@ -745,7 +745,7 @@ namespace Stripe
 
         /// <summary>
         /// Details of the invoice that was cloned. See the <a
-        /// href="https://stripe.com/docs/invoicing/invoice-revisions">revision documentation</a>
+        /// href="https://docs.stripe.com/invoicing/invoice-revisions">revision documentation</a>
         /// for more details.
         /// </summary>
         [JsonProperty("from_invoice")]
@@ -854,7 +854,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -892,7 +892,7 @@ namespace Stripe
         /// (ID of the Account)
         /// The account (if any) for which the funds of the invoice payment are intended. If set,
         /// the invoice will be presented with the branding and support information of the specified
-        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// account. See the <a href="https://docs.stripe.com/billing/invoices/connect">Invoices
         /// with Connect</a> documentation for details.
         /// </summary>
         [JsonIgnore]
@@ -909,7 +909,7 @@ namespace Stripe
         /// (Expanded)
         /// The account (if any) for which the funds of the invoice payment are intended. If set,
         /// the invoice will be presented with the branding and support information of the specified
-        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// account. See the <a href="https://docs.stripe.com/billing/invoices/connect">Invoices
         /// with Connect</a> documentation for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -1065,7 +1065,7 @@ namespace Stripe
         /// <summary>
         /// The status of the invoice, one of <c>draft</c>, <c>open</c>, <c>paid</c>,
         /// <c>uncollectible</c>, or <c>void</c>. <a
-        /// href="https://stripe.com/docs/billing/invoices/workflow#workflow-overview">Learn
+        /// href="https://docs.stripe.com/billing/invoices/workflow#workflow-overview">Learn
         /// more</a>.
         /// One of: <c>draft</c>, <c>open</c>, <c>paid</c>, <c>uncollectible</c>, or <c>void</c>.
         /// </summary>
@@ -1210,7 +1210,7 @@ namespace Stripe
         /// <summary>
         /// Invoices are automatically paid or sent 1 hour after webhooks are delivered, or until
         /// all webhook delivery attempts have <a
-        /// href="https://stripe.com/docs/billing/webhooks#understand">been exhausted</a>. This
+        /// href="https://docs.stripe.com/billing/webhooks#understand">been exhausted</a>. This
         /// field tracks the time when webhooks for this invoice were successfully delivered. If the
         /// invoice had no webhooks to deliver, this will be set while the invoice is being created.
         /// </summary>

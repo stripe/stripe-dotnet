@@ -101,7 +101,7 @@ namespace Stripe
 
         /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>.
+        /// href="https://docs.stripe.com/subscriptions/billing-cycle#prorations">prorations</a>.
         /// When creating a subscription, valid values are <c>create_prorations</c> or <c>none</c>.
         ///
         /// When updating a subscription, valid values are <c>create_prorations</c>, <c>none</c>, or
@@ -109,7 +109,7 @@ namespace Stripe
         ///
         /// Passing <c>create_prorations</c> will cause proration invoice items to be created when
         /// applicable. These proration items will only be invoiced immediately under <a
-        /// href="https://stripe.com/docs/subscriptions/upgrading-downgrading#immediate-payment">certain
+        /// href="https://docs.stripe.com/subscriptions/upgrading-downgrading#immediate-payment">certain
         /// conditions</a>. In order to always invoice immediately for prorations, pass
         /// <c>always_invoice</c>.
         ///

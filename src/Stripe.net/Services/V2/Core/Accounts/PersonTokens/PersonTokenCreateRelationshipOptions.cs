@@ -9,7 +9,7 @@ namespace Stripe.V2.Core.Accounts
     public class PersonTokenCreateRelationshipOptions : INestedOptions
     {
         /// <summary>
-        /// Whether the individual is an authorizer of the Account’s legal entity.
+        /// Whether the individual is an authorizer of the Account's identity.
         /// </summary>
         [JsonProperty("authorizer")]
 #if NET6_0_OR_GREATER
