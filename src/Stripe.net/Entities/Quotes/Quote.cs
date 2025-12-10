@@ -173,8 +173,8 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Customer)
-        /// The customer which this quote belongs to. A customer is required before finalizing the
-        /// quote. Once specified, it cannot be changed.
+        /// The customer who received this quote. A customer is required to finalize the quote. Once
+        /// specified, you can't change it.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -188,8 +188,8 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The customer which this quote belongs to. A customer is required before finalizing the
-        /// quote. Once specified, it cannot be changed.
+        /// The customer who received this quote. A customer is required to finalize the quote. Once
+        /// specified, you can't change it.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -211,6 +211,16 @@ namespace Stripe
 #endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
+
+        /// <summary>
+        /// The account representing the customer who received this quote. A customer or account is
+        /// required to finalize the quote. Once specified, you can't change it.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         #region Expandable DefaultTaxRates
 
@@ -322,7 +332,7 @@ namespace Stripe
 
         /// <summary>
         /// Details of the quote that was cloned. See the <a
-        /// href="https://stripe.com/docs/quotes/clone">cloning documentation</a> for more details.
+        /// href="https://docs.stripe.com/quotes/clone">cloning documentation</a> for more details.
         /// </summary>
         [JsonProperty("from_quote")]
 #if NET6_0_OR_GREATER
@@ -406,7 +416,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -418,7 +428,7 @@ namespace Stripe
 
         /// <summary>
         /// A unique number that identifies this particular quote. This number is assigned once the
-        /// quote is <a href="https://stripe.com/docs/quotes/overview#finalize">finalized</a>.
+        /// quote is <a href="https://docs.stripe.com/quotes/overview#finalize">finalized</a>.
         /// </summary>
         [JsonProperty("number")]
 #if NET6_0_OR_GREATER

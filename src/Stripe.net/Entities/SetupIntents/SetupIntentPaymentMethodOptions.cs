@@ -56,6 +56,12 @@ namespace Stripe
 #endif
         public SetupIntentPaymentMethodOptionsPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payto")]
+#endif
+        public SetupIntentPaymentMethodOptionsPayto Payto { get; set; }
+
         [JsonProperty("sepa_debit")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_debit")]

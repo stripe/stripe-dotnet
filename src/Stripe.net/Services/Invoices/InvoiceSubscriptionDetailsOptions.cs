@@ -13,7 +13,7 @@ namespace Stripe
     {
         /// <summary>
         /// For new subscriptions, a future timestamp to anchor the subscription's <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle">billing cycle</a>. This is
+        /// href="https://docs.stripe.com/subscriptions/billing-cycle">billing cycle</a>. This is
         /// used to determine the date of the first full invoice, and, for plans with <c>month</c>
         /// or <c>year</c> intervals, the day of the month for subsequent invoices. For existing
         /// subscriptions, the value can only be set to <c>now</c> or <c>unchanged</c>.
@@ -90,7 +90,7 @@ namespace Stripe
 
         /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when the
+        /// href="https://docs.stripe.com/billing/subscriptions/prorations">prorations</a> when the
         /// billing cycle changes (e.g., when switching plans, resetting
         /// <c>billing_cycle_anchor=now</c>, or starting a trial), or if an item's <c>quantity</c>
         /// changes. The default value is <c>create_prorations</c>.

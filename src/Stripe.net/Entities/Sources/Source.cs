@@ -16,12 +16,12 @@ namespace Stripe
     /// customers.
     ///
     /// Stripe doesn't recommend using the deprecated <a
-    /// href="https://stripe.com/docs/api/sources">Sources API</a>. We recommend that you adopt
-    /// the <a href="https://stripe.com/docs/api/payment_methods">PaymentMethods API</a>. This
+    /// href="https://docs.stripe.com/api/sources">Sources API</a>. We recommend that you adopt
+    /// the <a href="https://docs.stripe.com/api/payment_methods">PaymentMethods API</a>. This
     /// newer API provides access to our latest features and payment method types.
     ///
-    /// Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a
-    /// href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
+    /// Related guides: <a href="https://docs.stripe.com/sources">Sources API</a> and <a
+    /// href="https://docs.stripe.com/sources/customers">Sources &amp; Customers</a>.
     /// </summary>
     public class Source : StripeEntity<Source>, IHasId, IHasMetadata, IHasObject, IPaymentSource
     {
@@ -208,7 +208,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -310,7 +310,7 @@ namespace Stripe
         /// <c>multibanco</c>, <c>klarna</c>, <c>p24</c>, <c>sepa_debit</c>, <c>sofort</c>,
         /// <c>three_d_secure</c>, or <c>wechat</c>. An additional hash is included on the source
         /// with a name matching this value. It contains additional information specific to the <a
-        /// href="https://stripe.com/docs/sources">payment method</a> used.
+        /// href="https://docs.stripe.com/sources">payment method</a> used.
         /// One of: <c>ach_credit_transfer</c>, <c>ach_debit</c>, <c>acss_debit</c>, <c>alipay</c>,
         /// <c>au_becs_debit</c>, <c>bancontact</c>, <c>card</c>, <c>card_present</c>, <c>eps</c>,
         /// <c>giropay</c>, <c>ideal</c>, <c>klarna</c>, <c>multibanco</c>, <c>p24</c>,

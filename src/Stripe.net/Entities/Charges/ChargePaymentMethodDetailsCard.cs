@@ -149,7 +149,7 @@ namespace Stripe
         /// Installment details for this payment.
         ///
         /// For more information, see the <a
-        /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.
+        /// href="https://docs.stripe.com/payments/installments">installments integration guide</a>.
         /// </summary>
         [JsonProperty("installments")]
 #if NET6_0_OR_GREATER

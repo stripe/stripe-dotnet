@@ -10,7 +10,7 @@ namespace Stripe.Treasury
 
     /// <summary>
     /// Transactions represent changes to a <a
-    /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount's</a> balance.
+    /// href="https://api.stripe.com#financial_accounts">FinancialAccount's</a> balance.
     /// </summary>
     public class Transaction : StripeEntity<Transaction>, IHasId, IHasObject
     {

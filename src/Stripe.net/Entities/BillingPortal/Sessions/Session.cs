@@ -108,8 +108,17 @@ namespace Stripe.BillingPortal
         public string Customer { get; set; }
 
         /// <summary>
+        /// The ID of the account for this session.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Information about a specific flow for the customer to go through. See the <a
-        /// href="https://stripe.com/docs/customer-management/portal-deep-links">docs</a> to learn
+        /// href="https://docs.stripe.com/customer-management/portal-deep-links">docs</a> to learn
         /// more about using customer portal deep links and flows.
         /// </summary>
         [JsonProperty("flow")]
@@ -149,9 +158,9 @@ namespace Stripe.BillingPortal
         /// The account for which the session was created on behalf of. When specified, only
         /// subscriptions and invoices with this <c>on_behalf_of</c> account appear in the portal.
         /// For more information, see the <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#settlement-merchant">docs</a>.
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers#settlement-merchant">docs</a>.
         /// Use the <a
-        /// href="https://stripe.com/docs/api/accounts/object#account_object-settings-branding">Accounts
+        /// href="https://docs.stripe.com/api/accounts/object#account_object-settings-branding">Accounts
         /// API</a> to modify the <c>on_behalf_of</c> account's branding settings, which the portal
         /// displays.
         /// </summary>

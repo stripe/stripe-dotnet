@@ -19,7 +19,7 @@ namespace Stripe.BillingPortal
         public List<SessionFlowSubscriptionUpdateConfirmDiscount> Discounts { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/api/subscription_items">subscription item</a> to be
+        /// The <a href="https://docs.stripe.com/api/subscription_items">subscription item</a> to be
         /// updated through this flow. Currently, only up to one may be specified and subscriptions
         /// with multiple items are not updatable.
         /// </summary>

@@ -18,7 +18,7 @@ namespace Stripe.Checkout
         public string CaptureMethod { get; set; }
 
         /// <summary>
-        /// <a href="https://stripe.com/docs/payments/paypal/supported-locales">Preferred locale</a>
+        /// <a href="https://docs.stripe.com/payments/paypal/supported-locales">Preferred locale</a>
         /// of the PayPal checkout page that the customer is redirected to.
         /// One of: <c>cs-CZ</c>, <c>da-DK</c>, <c>de-AT</c>, <c>de-DE</c>, <c>de-LU</c>,
         /// <c>el-GR</c>, <c>en-GB</c>, <c>en-US</c>, <c>es-ES</c>, <c>fi-FI</c>, <c>fr-BE</c>,

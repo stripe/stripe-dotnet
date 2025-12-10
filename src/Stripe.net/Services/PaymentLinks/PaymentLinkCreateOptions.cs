@@ -109,9 +109,9 @@ namespace Stripe
         public PaymentLinkCustomTextOptions CustomText { get; set; }
 
         /// <summary>
-        /// Configures whether <a href="https://stripe.com/docs/api/checkout/sessions">checkout
+        /// Configures whether <a href="https://docs.stripe.com/api/checkout/sessions">checkout
         /// sessions</a> created by this payment link create a <a
-        /// href="https://stripe.com/docs/api/customers">Customer</a>.
+        /// href="https://docs.stripe.com/api/customers">Customer</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
         [JsonProperty("customer_creation")]
@@ -150,12 +150,12 @@ namespace Stripe
         public List<PaymentLinkLineItemOptions> LineItems { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>. Metadata
         /// associated with this Payment Link will automatically be copied to <a
-        /// href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a> created by
+        /// href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a> created by
         /// this payment link.
         /// </summary>
         [JsonProperty("metadata")]
@@ -185,7 +185,7 @@ namespace Stripe
         /// <summary>
         /// A list of optional items the customer can add to their order at checkout. Use this
         /// parameter to pass one-time or recurring <a
-        /// href="https://stripe.com/docs/api/prices">Prices</a>. There is a maximum of 10 optional
+        /// href="https://docs.stripe.com/api/prices">Prices</a>. There is a maximum of 10 optional
         /// items allowed on a payment link, and the existing limits on the number of line items
         /// allowed on a payment link apply to the combined number of line items and optional items.
         /// There is a maximum of 20 combined line items and optional items.
@@ -215,7 +215,7 @@ namespace Stripe
         /// Can only be set in <c>subscription</c> mode. Defaults to <c>always</c>.
         ///
         /// If you'd like information on how to collect a payment method outside of Checkout, read
-        /// the guide on <a href="https://stripe.com/docs/payments/checkout/free-trials">configuring
+        /// the guide on <a href="https://docs.stripe.com/payments/checkout/free-trials">configuring
         /// subscriptions with a free trial</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
@@ -230,15 +230,15 @@ namespace Stripe
         /// will dynamically show relevant payment methods from your <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">payment method settings</a>
         /// (20+ payment methods <a
-        /// href="https://stripe.com/docs/payments/payment-methods/integration-options#payment-method-product-support">supported</a>).
+        /// href="https://docs.stripe.com/payments/payment-methods/integration-options#payment-method-product-support">supported</a>).
         /// One of: <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>, <c>alma</c>,
         /// <c>au_becs_debit</c>, <c>bacs_debit</c>, <c>bancontact</c>, <c>billie</c>, <c>blik</c>,
         /// <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
         /// <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>, <c>mb_way</c>,
         /// <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER
@@ -277,7 +277,7 @@ namespace Stripe
 
         /// <summary>
         /// The shipping rate options to apply to <a
-        /// href="https://stripe.com/docs/api/checkout/sessions">checkout sessions</a> created by
+        /// href="https://docs.stripe.com/api/checkout/sessions">checkout sessions</a> created by
         /// this payment link.
         /// </summary>
         [JsonProperty("shipping_options")]
@@ -290,7 +290,7 @@ namespace Stripe
         /// Describes the type of transaction being performed in order to customize relevant text on
         /// the page, such as the submit button. Changing this value will also affect the hostname
         /// in the <a
-        /// href="https://stripe.com/docs/api/payment_links/payment_links/object#url">url</a>
+        /// href="https://docs.stripe.com/api/payment_links/payment_links/object#url">url</a>
         /// property (example: <c>donate.stripe.com</c>).
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>

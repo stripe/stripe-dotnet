@@ -9,7 +9,8 @@ namespace Stripe.Checkout
     public class SessionLineItemAdjustableQuantityOptions : INestedOptions
     {
         /// <summary>
-        /// Set to true if the quantity can be adjusted to any non-negative integer.
+        /// Set to true if the quantity can be adjusted to any positive integer. Setting to false
+        /// will remove any previously specified constraints on quantity.
         /// </summary>
         [JsonProperty("enabled")]
 #if NET6_0_OR_GREATER

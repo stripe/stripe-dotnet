@@ -13,7 +13,7 @@ namespace Stripe
     {
         /// <summary>
         /// A positive integer in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>
         /// representing how much of this payment to refund. Can refund only up to the remaining,
         /// unrefunded amount of the payment.
         /// </summary>
@@ -35,7 +35,7 @@ namespace Stripe
         public DateTime? InitiatedAt { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.

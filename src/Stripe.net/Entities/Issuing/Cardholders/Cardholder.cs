@@ -11,10 +11,10 @@ namespace Stripe.Issuing
 
     /// <summary>
     /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is
-    /// <a href="https://stripe.com/docs/issuing">issued</a> cards.
+    /// <a href="https://docs.stripe.com/issuing">issued</a> cards.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/issuing/cards/virtual/issue-cards#create-cardholder">How
+    /// href="https://docs.stripe.com/issuing/cards/virtual/issue-cards#create-cardholder">How
     /// to create a cardholder</a>.
     /// </summary>
     public class Cardholder : StripeEntity<Cardholder>, IHasId, IHasMetadata, IHasObject
@@ -92,7 +92,7 @@ namespace Stripe.Issuing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -114,7 +114,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// The cardholder's phone number. This is required for all cardholders who will be creating
         /// EU cards. See the <a
-        /// href="https://stripe.com/docs/issuing/3d-secure#when-is-3d-secure-applied">3D Secure
+        /// href="https://docs.stripe.com/issuing/3d-secure#when-is-3d-secure-applied">3D Secure
         /// documentation</a> for more details.
         /// </summary>
         [JsonProperty("phone_number")]
@@ -126,7 +126,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// The cardholder’s preferred locales (languages), ordered by preference. Locales can be
         /// <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>. This changes the language of
-        /// the <a href="https://stripe.com/docs/issuing/3d-secure">3D Secure flow</a> and one-time
+        /// the <a href="https://docs.stripe.com/issuing/3d-secure">3D Secure flow</a> and one-time
         /// password messages sent to the cardholder.
         /// One of: <c>de</c>, <c>en</c>, <c>es</c>, <c>fr</c>, or <c>it</c>.
         /// </summary>
@@ -144,7 +144,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Rules that control spending across this cardholder's cards. Refer to our <a
-        /// href="https://stripe.com/docs/issuing/controls/spending-controls">documentation</a> for
+        /// href="https://docs.stripe.com/issuing/controls/spending-controls">documentation</a> for
         /// more details.
         /// </summary>
         [JsonProperty("spending_controls")]
@@ -165,7 +165,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// One of <c>individual</c> or <c>company</c>. See <a
-        /// href="https://stripe.com/docs/issuing/other/choose-cardholder">Choose a cardholder
+        /// href="https://docs.stripe.com/issuing/other/choose-cardholder">Choose a cardholder
         /// type</a> for more details.
         /// One of: <c>company</c>, or <c>individual</c>.
         /// </summary>

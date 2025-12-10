@@ -723,7 +723,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/core/events/ll_123",
                 HttpStatusCode.OK,
-                "{\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.event\",\"reason\":{\"type\":\"request\",\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\"}");
+                "{\"changes\":{\"int_key\":123,\"string_key\":\"value\",\"boolean_key\":true,\"object_key\":{\"object_int_key\":123,\"object_string_key\":\"value\",\"object_boolean_key\":true},\"array_key\":[1,2,3]},\"context\":\"context\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.event\",\"reason\":{\"type\":\"request\",\"request\":{\"id\":\"obj_123\",\"idempotency_key\":\"idempotency_key\"}},\"type\":\"type\"}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Core.Events;
             Stripe.V2.Core.Event result = service.Get("ll_123");
@@ -6253,6 +6253,284 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/billing/meter_event_stream");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"applied_configurations\":[\"recipient\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.account\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts;
+            Stripe.V2.StripeList<Stripe.V2.Core.Account> accounts = service
+                .List();
+            this.AssertRequest(HttpMethod.Get, "/v2/core/accounts");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts",
+                (HttpStatusCode)200,
+                "{\"applied_configurations\":[\"recipient\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.account\",\"livemode\":true}");
+            var options = new Stripe.V2.Core.AccountCreateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts;
+            Stripe.V2.Core.Account account = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/accounts");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts/id_123",
+                (HttpStatusCode)200,
+                "{\"applied_configurations\":[\"recipient\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.account\",\"livemode\":true}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts;
+            Stripe.V2.Core.Account account = service.Get("id_123");
+            this.AssertRequest(HttpMethod.Get, "/v2/core/accounts/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountPost2()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts/id_123",
+                (HttpStatusCode)200,
+                "{\"applied_configurations\":[\"recipient\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.account\",\"livemode\":true}");
+            var options = new Stripe.V2.Core.AccountUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts;
+            Stripe.V2.Core.Account account = service.Update("id_123", options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/accounts/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountPost3()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts/id_123/close",
+                (HttpStatusCode)200,
+                "{\"applied_configurations\":[\"recipient\"],\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.account\",\"livemode\":true}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts;
+            Stripe.V2.Core.Account account = service.Close("id_123");
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts/id_123/close");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountsPersonGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts/account_id_123/persons",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.account_person\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts.Persons;
+            Stripe.V2.StripeList<Stripe.V2.Core.AccountPerson> accountPersons = service
+                .List("account_id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts/account_id_123/persons");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountsPersonPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts/account_id_123/persons",
+                (HttpStatusCode)200,
+                "{\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.account_person\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"livemode\":true}");
+            var options = new Stripe.V2.Core.Accounts.PersonCreateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts.Persons;
+            Stripe.V2.Core.AccountPerson accountPerson = service.Create(
+                "account_id_123",
+                options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts/account_id_123/persons");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountsPersonDelete()
+        {
+            this.StubRequest(
+                HttpMethod.Delete,
+                "/v2/core/accounts/account_id_123/persons/id_123",
+                (HttpStatusCode)200,
+                "{\"id\":\"abc_123\",\"object\":\"some.object.tag\"}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts.Persons;
+            Stripe.V2.DeletedObject deleted = service.Delete(
+                "account_id_123",
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Delete,
+                "/v2/core/accounts/account_id_123/persons/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountsPersonGet2()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts/account_id_123/persons/id_123",
+                (HttpStatusCode)200,
+                "{\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.account_person\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"livemode\":true}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts.Persons;
+            Stripe.V2.Core.AccountPerson accountPerson = service.Get(
+                "account_id_123",
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts/account_id_123/persons/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountsPersonPost2()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts/account_id_123/persons/id_123",
+                (HttpStatusCode)200,
+                "{\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.account_person\",\"updated\":\"1970-01-03T17:07:10.277Z\",\"livemode\":true}");
+            var options = new Stripe.V2.Core.Accounts.PersonUpdateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts.Persons;
+            Stripe.V2.Core.AccountPerson accountPerson = service.Update(
+                "account_id_123",
+                "id_123",
+                options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts/account_id_123/persons/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountsPersonTokenPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts/account_id_123/person_tokens",
+                (HttpStatusCode)200,
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.account_person_token\",\"used\":true}");
+            var options = new Stripe.V2.Core.Accounts.PersonTokenCreateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts.PersonTokens;
+            Stripe.V2.Core.AccountPersonToken accountPersonToken = service
+                .Create("account_id_123", options);
+            this.AssertRequest(
+                HttpMethod.Post,
+                "/v2/core/accounts/account_id_123/person_tokens");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountsPersonTokenGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts/account_id_123/person_tokens/id_123",
+                (HttpStatusCode)200,
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.account_person_token\",\"used\":true}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.Accounts.PersonTokens;
+            Stripe.V2.Core.AccountPersonToken accountPersonToken = service.Get(
+                "account_id_123",
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts/account_id_123/person_tokens/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountLinkPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/account_links",
+                (HttpStatusCode)200,
+                "{\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"object\":\"v2.core.account_link\",\"url\":\"url\",\"use_case\":{\"type\":\"account_onboarding\"},\"livemode\":true}");
+            var options = new Stripe.V2.Core.AccountLinkCreateOptions
+            {
+                Account = "account",
+                UseCase = new Stripe.V2.Core.AccountLinkCreateUseCaseOptions
+                {
+                    Type = "account_onboarding",
+                    AccountOnboarding = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingOptions
+                    {
+                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingCollectionOptionsOptions
+                        {
+                            Fields = "eventually_due",
+                            FutureRequirements = "include",
+                        },
+                        Configurations = new List<string> { "merchant" },
+                        RefreshUrl = "refresh_url",
+                        ReturnUrl = "return_url",
+                    },
+                    AccountUpdate = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountUpdateOptions
+                    {
+                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountUpdateCollectionOptionsOptions
+                        {
+                            Fields = "eventually_due",
+                            FutureRequirements = "include",
+                        },
+                        Configurations = new List<string> { "merchant" },
+                        RefreshUrl = "refresh_url",
+                        ReturnUrl = "return_url",
+                    },
+                },
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.AccountLinks;
+            Stripe.V2.Core.AccountLink accountLink = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/account_links");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountTokenPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/account_tokens",
+                (HttpStatusCode)200,
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.account_token\",\"used\":true}");
+            var options = new Stripe.V2.Core.AccountTokenCreateOptions();
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.AccountTokens;
+            Stripe.V2.Core.AccountToken accountToken = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/account_tokens");
+        }
+
+        [Fact]
+        public void TestV2CoreAccountTokenGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/account_tokens/id_123",
+                (HttpStatusCode)200,
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"id\":\"obj_123\",\"livemode\":true,\"object\":\"v2.core.account_token\",\"used\":true}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.AccountTokens;
+            Stripe.V2.Core.AccountToken accountToken = service.Get("id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/account_tokens/id_123");
         }
 
         [Fact]

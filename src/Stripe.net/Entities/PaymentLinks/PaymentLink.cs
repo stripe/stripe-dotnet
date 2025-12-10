@@ -13,12 +13,12 @@ namespace Stripe
     /// page. A payment link can be shared and used multiple times.
     ///
     /// When a customer opens a payment link it will open a new <a
-    /// href="https://stripe.com/docs/api/checkout/sessions">checkout session</a> to render the
+    /// href="https://docs.stripe.com/api/checkout/sessions">checkout session</a> to render the
     /// payment page. You can use <a
-    /// href="https://stripe.com/docs/api/events/types#event_types-checkout.session.completed">checkout
+    /// href="https://docs.stripe.com/api/events/types#event_types-checkout.session.completed">checkout
     /// session events</a> to track payments through payment links.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/payment-links">Payment Links API</a>.
+    /// Related guide: <a href="https://docs.stripe.com/payment-links">Payment Links API</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -230,7 +230,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -330,9 +330,9 @@ namespace Stripe
         /// <c>boleto</c>, <c>card</c>, <c>cashapp</c>, <c>eps</c>, <c>fpx</c>, <c>giropay</c>,
         /// <c>grabpay</c>, <c>ideal</c>, <c>klarna</c>, <c>konbini</c>, <c>link</c>, <c>mb_way</c>,
         /// <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>, <c>satispay</c>,
-        /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER

@@ -9,7 +9,7 @@ namespace Stripe
     public class TaxIdOwnerOptions : INestedOptions
     {
         /// <summary>
-        /// Account the tax ID belongs to. Required when <c>type=account</c>.
+        /// Connected Account the tax ID belongs to. Required when <c>type=account</c>.
         /// </summary>
         [JsonProperty("account")]
 #if NET6_0_OR_GREATER
@@ -25,6 +25,16 @@ namespace Stripe
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// ID of the Account representing the customer that the tax ID belongs to. Can be used in
+        /// place of <c>customer</c> when <c>type=customer</c>.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Type of owner referenced.

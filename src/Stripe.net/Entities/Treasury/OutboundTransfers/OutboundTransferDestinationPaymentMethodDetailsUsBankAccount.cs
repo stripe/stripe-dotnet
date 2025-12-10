@@ -103,7 +103,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// The network rails used. See the <a
-        /// href="https://stripe.com/docs/treasury/money-movement/timelines">docs</a> to learn more
+        /// href="https://docs.stripe.com/treasury/money-movement/timelines">docs</a> to learn more
         /// about money movement timelines for each network type.
         /// One of: <c>ach</c>, or <c>us_domestic_wire</c>.
         /// </summary>

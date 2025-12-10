@@ -12,7 +12,7 @@ namespace Stripe
     /// Tokenization is the process Stripe uses to collect sensitive card or bank account
     /// details, or personally identifiable information (PII), directly from your customers in a
     /// secure manner. A token representing this information is returned to your server to use.
-    /// Use our <a href="https://stripe.com/docs/payments">recommended payments integrations</a>
+    /// Use our <a href="https://docs.stripe.com/payments">recommended payments integrations</a>
     /// to perform this process on the client-side. This guarantees that no sensitive card data
     /// touches your server, and allows your integration to operate in a PCI-compliant way.
     ///
@@ -23,9 +23,9 @@ namespace Stripe
     /// sent directly to Stripe, so we can't determine how it's handled or stored.
     ///
     /// You can't store or use tokens more than once. To store card or bank account information
-    /// for later use, create <a href="https://stripe.com/docs/api#customers">Customer</a>
+    /// for later use, create <a href="https://docs.stripe.com/api#customers">Customer</a>
     /// objects or <a href="https://stripe.com/api#external_accounts">External accounts</a>. <a
-    /// href="https://stripe.com/docs/radar">Radar</a>, our integrated solution for automatic
+    /// href="https://docs.stripe.com/radar">Radar</a>, our integrated solution for automatic
     /// fraud protection, performs best with integrations that use client-side tokenization.
     /// </summary>
     public class Token : StripeEntity<Token>, IHasId, IHasObject
@@ -69,7 +69,7 @@ namespace Stripe
         /// can also store multiple debit cards on a recipient in order to transfer to those cards
         /// later.
         ///
-        /// Related guide: <a href="https://stripe.com/docs/sources/cards">Card payments with
+        /// Related guide: <a href="https://docs.stripe.com/sources/cards">Card payments with
         /// Sources</a>.
         /// </summary>
         [JsonProperty("card")]

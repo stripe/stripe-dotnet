@@ -303,7 +303,7 @@ namespace Stripe.TestHelpers
         public ConfirmationTokenPaymentMethodDataMbWayOptions MbWay { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -415,6 +415,16 @@ namespace Stripe.TestHelpers
         public ConfirmationTokenPaymentMethodDataPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// If this is a <c>payto</c> PaymentMethod, this hash contains details about the PayTo
+        /// payment method.
+        /// </summary>
+        [JsonProperty("payto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payto")]
+#endif
+        public ConfirmationTokenPaymentMethodDataPaytoOptions Payto { get; set; }
+
+        /// <summary>
         /// If this is a <c>pix</c> PaymentMethod, this hash contains details about the Pix payment
         /// method.
         /// </summary>
@@ -436,7 +446,7 @@ namespace Stripe.TestHelpers
 
         /// <summary>
         /// Options to configure Radar. See <a
-        /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
+        /// href="https://docs.stripe.com/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
         [JsonProperty("radar_options")]
@@ -526,7 +536,7 @@ namespace Stripe.TestHelpers
         /// <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>,
         /// <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
         /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
         /// <c>zip</c>.

@@ -46,7 +46,7 @@ namespace Stripe
         /// billing cycle anchor of the subscription is set to the start of the phase when entering
         /// the phase. If <c>automatic</c> then the billing cycle anchor is automatically modified
         /// as needed when entering the phase. For more information, see the billing cycle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
@@ -197,7 +197,7 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseItem> Items { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to a phase. Metadata on a schedule's phase will update the underlying
         /// subscription's <c>metadata</c> when the phase is entered. Updating the underlying
         /// subscription's <c>metadata</c> directly will not affect the current phase's

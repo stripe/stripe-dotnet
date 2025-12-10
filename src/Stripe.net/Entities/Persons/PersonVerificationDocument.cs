@@ -16,7 +16,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the File)
-        /// The back of an ID returned by a <a href="https://stripe.com/docs/api#create_file">file
+        /// The back of an ID returned by a <a href="https://api.stripe.com#create_file">file
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
@@ -31,7 +31,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The back of an ID returned by a <a href="https://stripe.com/docs/api#create_file">file
+        /// The back of an ID returned by a <a href="https://api.stripe.com#create_file">file
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -87,7 +87,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the File)
-        /// The front of an ID returned by a <a href="https://stripe.com/docs/api#create_file">file
+        /// The front of an ID returned by a <a href="https://api.stripe.com#create_file">file
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
@@ -102,7 +102,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The front of an ID returned by a <a href="https://stripe.com/docs/api#create_file">file
+        /// The front of an ID returned by a <a href="https://api.stripe.com#create_file">file
         /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.

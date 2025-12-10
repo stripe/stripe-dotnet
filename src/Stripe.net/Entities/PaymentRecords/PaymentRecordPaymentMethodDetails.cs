@@ -286,6 +286,12 @@ namespace Stripe
 #endif
         public PaymentRecordPaymentMethodDetailsPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payto")]
+#endif
+        public PaymentRecordPaymentMethodDetailsPayto Payto { get; set; }
+
         [JsonProperty("pix")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix")]
@@ -355,7 +361,7 @@ namespace Stripe
         /// <summary>
         /// The type of transaction-specific details of the payment method used in the payment. See
         /// <a
-        /// href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod.type</a>
+        /// href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-type">PaymentMethod.type</a>
         /// for the full list of possible types. An additional hash is included on
         /// <c>payment_method_details</c> with a name matching this value. It contains information
         /// specific to the payment method.

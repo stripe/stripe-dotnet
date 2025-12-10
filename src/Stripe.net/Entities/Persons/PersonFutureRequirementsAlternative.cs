@@ -10,7 +10,7 @@ namespace Stripe
     public class PersonFutureRequirementsAlternative : StripeEntity<PersonFutureRequirementsAlternative>
     {
         /// <summary>
-        /// Fields that can be provided to satisfy all fields in <c>original_fields_due</c>.
+        /// Fields that can be provided to resolve all fields in <c>original_fields_due</c>.
         /// </summary>
         [JsonProperty("alternative_fields_due")]
 #if NET6_0_OR_GREATER
@@ -19,7 +19,7 @@ namespace Stripe
         public List<string> AlternativeFieldsDue { get; set; }
 
         /// <summary>
-        /// Fields that are due and can be satisfied by providing all fields in
+        /// Fields that are due and can be resolved by providing all fields in
         /// <c>alternative_fields_due</c>.
         /// </summary>
         [JsonProperty("original_fields_due")]

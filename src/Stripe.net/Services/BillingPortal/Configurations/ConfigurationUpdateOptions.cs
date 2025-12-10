@@ -30,7 +30,7 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The default URL to redirect customers to when they click on the portal's link to return
         /// to your website. This can be <a
-        /// href="https://stripe.com/docs/api/customer_portal/sessions/create#create_portal_session-return_url">overriden</a>
+        /// href="https://docs.stripe.com/api/customer_portal/sessions/create#create_portal_session-return_url">overriden</a>
         /// when creating the session.
         /// </summary>
         [JsonProperty("default_return_url")]
@@ -61,7 +61,7 @@ namespace Stripe.BillingPortal
         public ConfigurationLoginPageOptions LoginPage { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.

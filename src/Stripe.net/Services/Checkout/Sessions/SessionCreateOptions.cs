@@ -135,13 +135,13 @@ namespace Stripe.Checkout
         /// recently saved card payment method will be used to prefill the email, name, card
         /// details, and billing address on the Checkout page. In <c>subscription</c> mode, the
         /// customer’s <a
-        /// href="https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method">default
+        /// href="https://docs.stripe.com/api/customers/update#update_customer-invoice_settings-default_payment_method">default
         /// payment method</a> will be used if it’s a card, otherwise the most recently saved card
         /// will be used. A valid billing address, billing name and billing email are required on
         /// the payment method for Checkout to prefill the customer's card details.
         ///
         /// If the Customer already has a valid <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-email">email</a> set,
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-email">email</a> set,
         /// the email will be prefilled and not editable in Checkout. If the Customer does not have
         /// a valid <c>email</c>, Checkout will set the email entered during the session on the
         /// Customer.
@@ -151,7 +151,7 @@ namespace Stripe.Checkout
         /// create a new Customer object based on information provided during the payment flow.
         ///
         /// You can set <a
-        /// href="https://stripe.com/docs/api/checkout/sessions/create#create_checkout_session-payment_intent_data-setup_future_usage"><c>payment_intent_data.setup_future_usage</c></a>
+        /// href="https://docs.stripe.com/api/checkout/sessions/create#create_checkout_session-payment_intent_data-setup_future_usage"><c>payment_intent_data.setup_future_usage</c></a>
         /// to have Checkout automatically attach the payment method to the Customer you pass in for
         /// future reuse.
         /// </summary>
@@ -162,15 +162,24 @@ namespace Stripe.Checkout
         public string Customer { get; set; }
 
         /// <summary>
+        /// ID of an existing Account, if one exists. Has the same behavior as <c>customer</c>.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Configure whether a Checkout Session creates a <a
-        /// href="https://stripe.com/docs/api/customers">Customer</a> during Session confirmation.
+        /// href="https://docs.stripe.com/api/customers">Customer</a> during Session confirmation.
         ///
         /// When a Customer is not created, you can still retrieve email, address, and other
         /// customer data entered in Checkout with <a
-        /// href="https://stripe.com/docs/api/checkout/sessions/object#checkout_session_object-customer_details">customer_details</a>.
+        /// href="https://docs.stripe.com/api/checkout/sessions/object#checkout_session_object-customer_details">customer_details</a>.
         ///
         /// Sessions that don't create Customers instead are grouped by <a
-        /// href="https://stripe.com/docs/payments/checkout/guest-customers">guest customers</a> in
+        /// href="https://docs.stripe.com/payments/checkout/guest-customers">guest customers</a> in
         /// the Dashboard. Promotion codes limited to first time customers will return invalid for
         /// these Sessions.
         ///
@@ -227,7 +236,7 @@ namespace Stripe.Checkout
         /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>kr_card</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
         /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
         /// <c>zip</c>.
@@ -262,7 +271,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// A list of items the customer is purchasing. Use this parameter to pass one-time or
-        /// recurring <a href="https://stripe.com/docs/api/prices">Prices</a>. The parameter is
+        /// recurring <a href="https://docs.stripe.com/api/prices">Prices</a>. The parameter is
         /// required for <c>payment</c> and <c>subscription</c> mode.
         ///
         /// For <c>payment</c> mode, there is a maximum of 100 line items, however it is recommended
@@ -295,7 +304,7 @@ namespace Stripe.Checkout
         public string Locale { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -323,7 +332,7 @@ namespace Stripe.Checkout
         /// You can configure Checkout to collect your customers' business names, individual names,
         /// or both. Each name field can be either required or optional.
         ///
-        /// If a <a href="https://stripe.com/docs/api/customers">Customer</a> is created or
+        /// If a <a href="https://docs.stripe.com/api/customers">Customer</a> is created or
         /// provided, the names can be saved to the Customer object as well.
         /// </summary>
         [JsonProperty("name_collection")]
@@ -335,7 +344,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// A list of optional items the customer can add to their order at checkout. Use this
         /// parameter to pass one-time or recurring <a
-        /// href="https://stripe.com/docs/api/prices">Prices</a>.
+        /// href="https://docs.stripe.com/api/prices">Prices</a>.
         ///
         /// There is a maximum of 10 optional items allowed on a Checkout Session, and the existing
         /// limits on the number of line items allowed on a Checkout Session apply to the combined
@@ -385,7 +394,7 @@ namespace Stripe.Checkout
         ///
         /// If you'd like information on how to collect a payment method outside of Checkout, read
         /// the guide on configuring <a
-        /// href="https://stripe.com/docs/payments/checkout/free-trials">subscriptions with a free
+        /// href="https://docs.stripe.com/payments/checkout/free-trials">subscriptions with a free
         /// trial</a>.
         /// One of: <c>always</c>, or <c>if_required</c>.
         /// </summary>
@@ -430,7 +439,7 @@ namespace Stripe.Checkout
         /// You can omit this attribute to manage your payment methods from the <a
         /// href="https://dashboard.stripe.com/settings/payment_methods">Stripe Dashboard</a>. See
         /// <a
-        /// href="https://stripe.com/docs/payments/payment-methods/integration-options#using-dynamic-payment-methods">Dynamic
+        /// href="https://docs.stripe.com/payments/payment-methods/integration-options#using-dynamic-payment-methods">Dynamic
         /// Payment Methods</a> for more details.
         ///
         /// Read more about the supported payment methods and their requirements in our <a
@@ -447,8 +456,8 @@ namespace Stripe.Checkout
         /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>kr_card</c>, <c>link</c>, <c>mb_way</c>, <c>mobilepay</c>,
         /// <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>,
-        /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>,
-        /// <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
+        /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>,
+        /// <c>pix</c>, <c>promptpay</c>, <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>,
         /// <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
         /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
@@ -477,7 +486,7 @@ namespace Stripe.Checkout
         ///
         /// We recommend that you review your privacy policy and check with your legal contacts
         /// before using this feature. Learn more about <a
-        /// href="https://stripe.com/docs/payments/checkout/phone-numbers">collecting phone numbers
+        /// href="https://docs.stripe.com/payments/checkout/phone-numbers">collecting phone numbers
         /// with Checkout</a>.
         /// </summary>
         [JsonProperty("phone_number_collection")]
@@ -488,7 +497,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// This parameter applies to <c>ui_mode: embedded</c>. Learn more about the <a
-        /// href="https://stripe.com/docs/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
+        /// href="https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
         /// </summary>
@@ -576,7 +585,7 @@ namespace Stripe.Checkout
         /// The URL to which Stripe should send customers when payment or setup is complete. This
         /// parameter is not allowed if ui_mode is <c>embedded</c> or <c>custom</c>. If you'd like
         /// to use information from the successful Checkout Session on your page, read the guide on
-        /// <a href="https://stripe.com/docs/payments/checkout/custom-success-page">customizing your
+        /// <a href="https://docs.stripe.com/payments/checkout/custom-success-page">customizing your
         /// success page</a>.
         /// </summary>
         [JsonProperty("success_url")]

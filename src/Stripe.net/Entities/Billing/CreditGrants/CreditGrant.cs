@@ -116,6 +116,15 @@ namespace Stripe.Billing
         #endregion
 
         /// <summary>
+        /// ID of the account representing the customer receiving the billing credits.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The time when the billing credits become effective-when they're eligible for use.
         /// </summary>
         [JsonProperty("effective_at")]
@@ -149,7 +158,7 @@ namespace Stripe.Billing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

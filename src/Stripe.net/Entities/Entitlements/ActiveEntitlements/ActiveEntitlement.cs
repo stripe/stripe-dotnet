@@ -37,7 +37,7 @@ namespace Stripe.Entitlements
 
         /// <summary>
         /// (ID of the Feature)
-        /// The <a href="https://stripe.com/docs/api/entitlements/feature">Feature</a> that the
+        /// The <a href="https://docs.stripe.com/api/entitlements/feature">Feature</a> that the
         /// customer is entitled to.
         /// </summary>
         [JsonIgnore]
@@ -52,7 +52,7 @@ namespace Stripe.Entitlements
 
         /// <summary>
         /// (Expanded)
-        /// The <a href="https://stripe.com/docs/api/entitlements/feature">Feature</a> that the
+        /// The <a href="https://docs.stripe.com/api/entitlements/feature">Feature</a> that the
         /// customer is entitled to.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.

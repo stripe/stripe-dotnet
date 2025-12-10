@@ -10,11 +10,11 @@ namespace Stripe.Issuing
 #endif
 
     /// <summary>
-    /// Any use of an <a href="https://stripe.com/docs/issuing">issued card</a> that results in
+    /// Any use of an <a href="https://docs.stripe.com/issuing">issued card</a> that results in
     /// funds entering or leaving your Stripe account, such as a completed purchase or refund,
     /// is represented by an Issuing <c>Transaction</c> object.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/issuing/purchases/transactions">Issued
+    /// Related guide: <a href="https://docs.stripe.com/issuing/purchases/transactions">Issued
     /// card transactions</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -42,7 +42,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The transaction amount, which will be reflected in your balance. This amount is in your
-        /// currency and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// currency and in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest
         /// currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
@@ -54,7 +54,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// Detailed breakdown of amount components. These amounts are denominated in
         /// <c>currency</c> and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_details")]
 #if NET6_0_OR_GREATER
@@ -107,7 +107,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (ID of the BalanceTransaction)
-        /// ID of the <a href="https://stripe.com/docs/api/balance_transactions">balance
+        /// ID of the <a href="https://docs.stripe.com/api/balance_transactions">balance
         /// transaction</a> associated with this transaction.
         /// </summary>
         [JsonIgnore]
@@ -122,7 +122,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (Expanded)
-        /// ID of the <a href="https://stripe.com/docs/api/balance_transactions">balance
+        /// ID of the <a href="https://docs.stripe.com/api/balance_transactions">balance
         /// transaction</a> associated with this transaction.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -303,7 +303,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The amount that the merchant will receive, denominated in <c>merchant_currency</c> and
-        /// in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency
+        /// in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency
         /// unit</a>. It will be different from <c>amount</c> if the merchant is taking payment in a
         /// different currency.
         /// </summary>
@@ -329,7 +329,7 @@ namespace Stripe.Issuing
         public AuthorizationMerchantData MerchantData { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -361,7 +361,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (ID of the Token)
-        /// <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for
+        /// <a href="https://docs.stripe.com/api/issuing/tokens/object">Token</a> object used for
         /// this transaction. If a network token was not used for this transaction, this field will
         /// be null.
         /// </summary>
@@ -377,7 +377,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (Expanded)
-        /// <a href="https://stripe.com/docs/api/issuing/tokens/object">Token</a> object used for
+        /// <a href="https://docs.stripe.com/api/issuing/tokens/object">Token</a> object used for
         /// this transaction. If a network token was not used for this transaction, this field will
         /// be null.
         ///
@@ -403,7 +403,7 @@ namespace Stripe.Issuing
         #endregion
 
         /// <summary>
-        /// <a href="https://stripe.com/docs/api/treasury">Treasury</a> details related to this
+        /// <a href="https://docs.stripe.com/api/treasury">Treasury</a> details related to this
         /// transaction if it was created on a
         /// [FinancialAccount](/docs/api/treasury/financial_accounts.
         /// </summary>

@@ -315,6 +315,15 @@ namespace Stripe.Checkout
         public SessionPaymentMethodOptionsPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// contains details about the PayTo payment method options.
+        /// </summary>
+        [JsonProperty("payto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payto")]
+#endif
+        public SessionPaymentMethodOptionsPaytoOptions Payto { get; set; }
+
+        /// <summary>
         /// contains details about the Pix payment method options.
         /// </summary>
         [JsonProperty("pix")]

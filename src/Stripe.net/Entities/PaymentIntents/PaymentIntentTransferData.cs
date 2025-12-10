@@ -17,7 +17,7 @@ namespace Stripe
         /// automatically after the payment succeeds. If no amount is specified, by default the
         /// entire payment amount is transferred to the destination account. The amount must be less
         /// than or equal to the <a
-        /// href="https://stripe.com/docs/api/payment_intents/object#payment_intent_object-amount">amount</a>,
+        /// href="https://docs.stripe.com/api/payment_intents/object#payment_intent_object-amount">amount</a>,
         /// and must be a positive integer representing how much to transfer in the smallest
         /// currency unit (e.g., 100 cents to charge $1.00).
         /// </summary>

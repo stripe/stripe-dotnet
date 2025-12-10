@@ -10,7 +10,7 @@ namespace Stripe.TestHelpers.Issuing
     {
         /// <summary>
         /// The amount to increment the authorization by. This amount is in the authorization
-        /// currency and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// currency and in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest
         /// currency unit</a>.
         /// </summary>
         [JsonProperty("increment_amount")]
@@ -21,7 +21,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// If set <c>true</c>, you may provide <a
-        /// href="https://stripe.com/docs/api/issuing/authorizations/approve#approve_issuing_authorization-amount">amount</a>
+        /// href="https://docs.stripe.com/api/issuing/authorizations/approve#approve_issuing_authorization-amount">amount</a>
         /// to control how much to hold for the authorization.
         /// </summary>
         [JsonProperty("is_amount_controllable")]

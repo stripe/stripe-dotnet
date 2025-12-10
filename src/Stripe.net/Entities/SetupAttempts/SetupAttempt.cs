@@ -42,7 +42,7 @@ namespace Stripe
         /// <summary>
         /// (ID of the Application)
         /// The value of <a
-        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-application">application</a>
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-application">application</a>
         /// on the SetupIntent at the time of this confirmation.
         /// </summary>
         [JsonIgnore]
@@ -58,7 +58,7 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The value of <a
-        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-application">application</a>
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-application">application</a>
         /// on the SetupIntent at the time of this confirmation.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -113,7 +113,7 @@ namespace Stripe
         /// <summary>
         /// (ID of the Customer)
         /// The value of <a
-        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-customer">customer</a>
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-customer">customer</a>
         /// on the SetupIntent at the time of this confirmation.
         /// </summary>
         [JsonIgnore]
@@ -129,7 +129,7 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The value of <a
-        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-customer">customer</a>
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-customer">customer</a>
         /// on the SetupIntent at the time of this confirmation.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -152,6 +152,17 @@ namespace Stripe
 #endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
+
+        /// <summary>
+        /// The value of <a
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-customer_account">customer_account</a>
+        /// on the SetupIntent at the time of this confirmation.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Indicates the directions of money movement for which this payment method is intended to
@@ -184,7 +195,7 @@ namespace Stripe
         /// <summary>
         /// (ID of the Account)
         /// The value of <a
-        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-on_behalf_of">on_behalf_of</a>
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-on_behalf_of">on_behalf_of</a>
         /// on the SetupIntent at the time of this confirmation.
         /// </summary>
         [JsonIgnore]
@@ -200,7 +211,7 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The value of <a
-        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-on_behalf_of">on_behalf_of</a>
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-on_behalf_of">on_behalf_of</a>
         /// on the SetupIntent at the time of this confirmation.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -334,7 +345,7 @@ namespace Stripe
 
         /// <summary>
         /// The value of <a
-        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-usage">usage</a>
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-usage">usage</a>
         /// on the SetupIntent at the time of this confirmation, one of <c>off_session</c> or
         /// <c>on_session</c>.
         /// </summary>

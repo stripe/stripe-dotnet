@@ -13,11 +13,11 @@ namespace Stripe.Treasury
     /// Use <a
     /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">OutboundTransfers</a>
     /// to transfer funds from a <a
-    /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> to a
-    /// PaymentMethod belonging to the same entity. To send funds to a different party, use <a
-    /// href="https://stripe.com/docs/api#outbound_payments">OutboundPayments</a> instead. You
-    /// can send funds over ACH rails or through a domestic wire transfer to a user's own
-    /// external bank account.
+    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> to a PaymentMethod
+    /// belonging to the same entity. To send funds to a different party, use <a
+    /// href="https://api.stripe.com#outbound_payments">OutboundPayments</a> instead. You can
+    /// send funds over ACH rails or through a domestic wire transfer to a user's own external
+    /// bank account.
     ///
     /// Simulate OutboundTransfer state changes with the
     /// <c>/v1/test_helpers/treasury/outbound_transfers</c> endpoints. These methods can only be
@@ -135,7 +135,7 @@ namespace Stripe.Treasury
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted
+        /// A <a href="https://docs.stripe.com/treasury/moving-money/regulatory-receipts">hosted
         /// transaction receipt</a> URL that is provided when money movement is considered regulated
         /// under Stripe's money transmission licenses.
         /// </summary>
@@ -156,7 +156,7 @@ namespace Stripe.Treasury
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

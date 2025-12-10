@@ -14,7 +14,7 @@ namespace Stripe
     /// happens, you have the opportunity to respond to the dispute with evidence that shows
     /// that the charge is legitimate.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/disputes">Disputes and fraud</a>.
+    /// Related guide: <a href="https://docs.stripe.com/disputes">Disputes and fraud</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -166,7 +166,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -239,7 +239,7 @@ namespace Stripe
         /// <c>incorrect_account_details</c>, <c>insufficient_funds</c>, <c>noncompliant</c>,
         /// <c>product_not_received</c>, <c>product_unacceptable</c>, <c>subscription_canceled</c>,
         /// or <c>unrecognized</c>. Learn more about <a
-        /// href="https://stripe.com/docs/disputes/categories">dispute reasons</a>.
+        /// href="https://docs.stripe.com/disputes/categories">dispute reasons</a>.
         /// </summary>
         [JsonProperty("reason")]
 #if NET6_0_OR_GREATER

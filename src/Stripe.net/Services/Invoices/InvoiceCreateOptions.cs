@@ -26,7 +26,7 @@ namespace Stripe
         /// to the application owner's Stripe account. The request must be made with an OAuth key or
         /// the Stripe-Account header in order to take an application fee. For more information, see
         /// the application fees <a
-        /// href="https://stripe.com/docs/billing/invoices/connect#collecting-fees">documentation</a>.
+        /// href="https://docs.stripe.com/billing/invoices/connect#collecting-fees">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
 #if NET6_0_OR_GREATER
@@ -36,7 +36,7 @@ namespace Stripe
 
         /// <summary>
         /// Controls whether Stripe performs <a
-        /// href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">automatic
+        /// href="https://docs.stripe.com/invoicing/integration/automatic-advancement-collection">automatic
         /// collection</a> of the invoice. If <c>false</c>, the invoice's state doesn't
         /// automatically advance without an explicit action. Defaults to false.
         /// </summary>
@@ -100,13 +100,22 @@ namespace Stripe
         public List<InvoiceCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
-        /// The ID of the customer who will be billed.
+        /// The ID of the customer to bill.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// The ID of the account to bill.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// The number of days from when the invoice is created until it is due. Valid only for
@@ -206,7 +215,7 @@ namespace Stripe
 
         /// <summary>
         /// Revise an existing invoice. The new invoice will be created in <c>status=draft</c>. See
-        /// the <a href="https://stripe.com/docs/invoicing/invoice-revisions">revision
+        /// the <a href="https://docs.stripe.com/invoicing/invoice-revisions">revision
         /// documentation</a> for more details.
         /// </summary>
         [JsonProperty("from_invoice")]
@@ -226,7 +235,7 @@ namespace Stripe
         public InvoiceIssuerOptions Issuer { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -254,7 +263,7 @@ namespace Stripe
         /// <summary>
         /// The account (if any) for which the funds of the invoice payment are intended. If set,
         /// the invoice will be presented with the branding and support information of the specified
-        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// account. See the <a href="https://docs.stripe.com/billing/invoices/connect">Invoices
         /// with Connect</a> documentation for details.
         /// </summary>
         [JsonProperty("on_behalf_of")]

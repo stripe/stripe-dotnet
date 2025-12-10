@@ -56,9 +56,9 @@ namespace Stripe
 
         /// <summary>
         /// Find the ID of the mandate used for this payment under the <a
-        /// href="https://stripe.com/docs/api/charges/object#charge_object-payment_method_details-sepa_debit-mandate">payment_method_details.sepa_debit.mandate</a>
+        /// href="https://docs.stripe.com/api/charges/object#charge_object-payment_method_details-sepa_debit-mandate">payment_method_details.sepa_debit.mandate</a>
         /// property on the Charge. Use this mandate ID to <a
-        /// href="https://stripe.com/docs/api/mandates/retrieve">retrieve the Mandate</a>.
+        /// href="https://docs.stripe.com/api/mandates/retrieve">retrieve the Mandate</a>.
         /// </summary>
         [JsonProperty("mandate")]
 #if NET6_0_OR_GREATER
