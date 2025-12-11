@@ -67,6 +67,7 @@ namespace Stripe
         private RadarService radar;
         private RefundService refunds;
         private ReportingService reporting;
+        private ReserveService reserve;
         private ReviewService reviews;
         private SetupAttemptService setupAttempts;
         private SetupIntentService setupIntents;
@@ -276,6 +277,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual ReportingService Reporting => this.reporting ??= new ReportingService(
+            this.Requestor);
+
+        public virtual ReserveService Reserve => this.reserve ??= new ReserveService(
             this.Requestor);
 
         public virtual ReviewService Reviews => this.reviews ??= new ReviewService(

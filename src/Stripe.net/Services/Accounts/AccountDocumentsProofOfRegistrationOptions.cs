@@ -19,6 +19,9 @@ namespace Stripe
 #endif
         public List<string> Files { get; set; }
 
+        /// <summary>
+        /// Information regarding the person signing the document if applicable.
+        /// </summary>
         [JsonProperty("signer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("signer")]

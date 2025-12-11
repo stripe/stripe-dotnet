@@ -24,7 +24,7 @@ namespace Stripe
 
         /// <summary>
         /// A list of line items, each containing information about a product in the PaymentIntent.
-        /// There is a maximum of 100 line items.
+        /// There is a maximum of 200 line items.
         /// </summary>
         [JsonProperty("line_items")]
 #if NET6_0_OR_GREATER
