@@ -82,7 +82,7 @@ namespace Stripe
         /// </summary>
         /// <param name="client">The StripeClient instance to use for parsing and API requests.</param>
         /// <param name="webhookSecret">The webhook secret used for signature verification.</param>
-        /// <param name="fallbackCallback">TODO: ADD UNHANDLED DETAILS.</param>
+        /// <param name="fallbackCallback">The function to call when handing an event for whom there's no callback registered.</param>
         public StripeEventNotificationHandler(StripeClient client, string webhookSecret, Action<object, StripeUnhandledEventNotificationEventArgs> fallbackCallback)
         {
             if (client == null)

@@ -87,12 +87,11 @@ namespace Stripe
         /// <value>The <see cref="IHttpClient"/> used to send HTTP requests.</value>
         public override IHttpClient HttpClient { get; }
 
-        /// <summary>Gets or sets the current StripeContext for this requestor.</summary>
+        /// <summary>Gets the current StripeContext for this requestor; Used in unit tests.</summary>
         /// <value>The current StripeContext.</value>
         internal StripeContext CurrentStripeContext
         {
             get => this.clientOptions.StripeContext;
-            set => this.clientOptions.StripeContext = value;
         }
 
         /// <summary>Sends a request to Stripe's API as an asynchronous operation.</summary>
