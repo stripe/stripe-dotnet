@@ -229,9 +229,15 @@ namespace Stripe
             return EventNotification.FromJson(json, this);
         }
 
-        public StripeEventRouter Router(string webhookSecret, EventHandler<StripeUnhandledEventNotificationEventArgs> unhandledEventHandler)
+        /// <summary>
+        /// Create a new StripeEventNotificationHandler bound to this StripeClient.
+        /// </summary>
+        /// <param name="webhookSecret">The secret for this event destination, e.g. "wh_sec_...".</param>
+        /// <param name="fallbackCallback">The function to call when handing an event for whom there's no callback registered.</param>
+        /// <returns></returns>
+        public StripeEventNotificationHandler NotificationHandler(string webhookSecret, Action<object, StripeUnhandledEventNotificationEventArgs> fallbackCallback)
         {
-            return new StripeEventRouter(this, webhookSecret, unhandledEventHandler);
+            return new StripeEventNotificationHandler(this, webhookSecret, fallbackCallback);
         }
 
         internal JsonSerializerSettings GetJsonSerializationSettings()
