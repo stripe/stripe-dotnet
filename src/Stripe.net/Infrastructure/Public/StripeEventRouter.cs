@@ -13,6 +13,7 @@ namespace Stripe
         private readonly StripeClient client;
         private readonly string webhookSecret;
         private readonly HashSet<string> handledEventTypes = new HashSet<string>();
+        private readonly StripeClientOptions clientOptions;
 
         // A private EventHandler for each EventNotification. We'll route notifications to the correct handler.
         // private-event-handlers: The beginning of the section generated from our OpenAPI spec
@@ -84,9 +85,41 @@ namespace Stripe
         /// <param name="unhandledEventHandler">TODO: ADD UNHANDLED DETAILS.</param>
         public StripeEventRouter(StripeClient client, string webhookSecret, EventHandler<StripeUnhandledEventNotificationEventArgs> unhandledEventHandler)
         {
-            this.client = client ?? throw new ArgumentNullException(nameof(client));
-            this.webhookSecret = webhookSecret ?? throw new ArgumentNullException(nameof(webhookSecret));
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
+            this.client = client;
+
+            if (string.IsNullOrEmpty(webhookSecret))
+            {
+                throw new ArgumentNullException(nameof(webhookSecret));
+            }
+
+            this.webhookSecret = webhookSecret;
+
             this.UnhandledEventHandler += unhandledEventHandler;
+
+            // Capture the client options to reuse configuration when creating new clients
+            var requestor = client.Requestor as LiveApiRequestor;
+            if (requestor == null)
+            {
+                throw new InvalidOperationException("StripeEventRouter requires a StripeClient with a LiveApiRequestor.");
+            }
+
+            this.clientOptions = new StripeClientOptions
+            {
+                ApiKey = requestor.ApiKey,
+                ClientId = requestor.ClientId,
+                HttpClient = requestor.HttpClient,
+                ApiBase = requestor.ApiBase,
+                ConnectBase = requestor.ConnectBase,
+                FilesBase = requestor.FilesBase,
+                MeterEventsBase = requestor.MeterEventsBase,
+                StripeAccount = null, // Don't copy StripeAccount or StripeContext
+                StripeContext = null,
+            };
         }
 
         private event EventHandler<StripeUnhandledEventNotificationEventArgs> UnhandledEventHandler;
@@ -504,7 +537,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// Dispatches the event with the event's StripeContext temporarily set on the client.
+        /// Dispatches the event with the event's StripeContext by creating a new client instance.
         /// </summary>
         /// <param name="eventNotification">The event notification to dispatch.</param>
         private void DispatchEventWithContext(V2.Core.EventNotification eventNotification)
@@ -514,30 +547,21 @@ namespace Stripe
                 throw new ArgumentNullException(nameof(eventNotification));
             }
 
-            // Get the requestor to manipulate the context
-            var requestor = this.client.Requestor as LiveApiRequestor;
-            if (requestor == null)
+            // If client options somehow didn't get created, bail.
+            if (this.clientOptions == null)
             {
-                // If we can't cast to LiveApiRequestor, just dispatch without context override
-                this.DispatchEvent(eventNotification);
-                return;
+                throw new InvalidOperationException("Unable to create client with event context: client options not available.");
             }
 
-            // Save the original context and temporarily set the event's context
-            var originalContext = requestor.CurrentStripeContext;
-            try
-            {
-                requestor.CurrentStripeContext = eventNotification.Context;
-                this.DispatchEvent(eventNotification);
-            }
-            finally
-            {
-                // Always restore the original context, even if the handler throws
-                requestor.CurrentStripeContext = originalContext;
-            }
+            // Create a new client with the event's context
+            var eventClientOptions = this.clientOptions.Clone();
+            eventClientOptions.StripeContext = eventNotification.Context;
+            var eventClient = new StripeClient(eventClientOptions);
+
+            this.DispatchEvent(eventNotification, eventClient);
         }
 
-        private void DispatchEvent(V2.Core.EventNotification eventNotification)
+        private void DispatchEvent(V2.Core.EventNotification eventNotification, StripeClient client)
         {
             if (eventNotification == null)
             {
@@ -549,237 +573,237 @@ namespace Stripe
                 // Known event type; dispatch to the appropriate handler
                 if (false)
                 {
-                    // so all of our handlers can be `else if`s
+                    // so all of our generated handlers can be `else if`s
                 }
 
                 // event-handler-dispatch: The beginning of the section generated from our OpenAPI spec
                 else if (eventNotification is Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification)
                 {
-                    this.v1BillingMeterErrorReportTriggeredEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification>((Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification)eventNotification, this.client));
+                    this.v1BillingMeterErrorReportTriggeredEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification>((Stripe.Events.V1BillingMeterErrorReportTriggeredEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V1BillingMeterNoMeterFoundEventNotification)
                 {
-                    this.v1BillingMeterNoMeterFoundEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterNoMeterFoundEventNotification>((Stripe.Events.V1BillingMeterNoMeterFoundEventNotification)eventNotification, this.client));
+                    this.v1BillingMeterNoMeterFoundEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V1BillingMeterNoMeterFoundEventNotification>((Stripe.Events.V1BillingMeterNoMeterFoundEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountClosedEventNotification)
                 {
-                    this.v2CoreAccountClosedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountClosedEventNotification>((Stripe.Events.V2CoreAccountClosedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountClosedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountClosedEventNotification>((Stripe.Events.V2CoreAccountClosedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountCreatedEventNotification)
                 {
-                    this.v2CoreAccountCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountCreatedEventNotification>((Stripe.Events.V2CoreAccountCreatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountCreatedEventNotification>((Stripe.Events.V2CoreAccountCreatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountUpdatedEventNotification)
                 {
-                    this.v2CoreAccountUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountUpdatedEventNotification>((Stripe.Events.V2CoreAccountUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountUpdatedEventNotification>((Stripe.Events.V2CoreAccountUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationStorerCapabilityStatusUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingConfigurationStorerUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingConfigurationStorerUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingConfigurationStorerUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingDefaultsUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingDefaultsUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingIdentityUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingIdentityUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingIdentityUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingIdentityUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingIdentityUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingIdentityUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingIdentityUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountIncludingRequirementsUpdatedEventNotification)
                 {
-                    this.v2CoreAccountIncludingRequirementsUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingRequirementsUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingRequirementsUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountIncludingRequirementsUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountIncludingRequirementsUpdatedEventNotification>((Stripe.Events.V2CoreAccountIncludingRequirementsUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountLinkReturnedEventNotification)
                 {
-                    this.v2CoreAccountLinkReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountLinkReturnedEventNotification>((Stripe.Events.V2CoreAccountLinkReturnedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountLinkReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountLinkReturnedEventNotification>((Stripe.Events.V2CoreAccountLinkReturnedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountPersonCreatedEventNotification)
                 {
-                    this.v2CoreAccountPersonCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonCreatedEventNotification>((Stripe.Events.V2CoreAccountPersonCreatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountPersonCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonCreatedEventNotification>((Stripe.Events.V2CoreAccountPersonCreatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountPersonDeletedEventNotification)
                 {
-                    this.v2CoreAccountPersonDeletedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonDeletedEventNotification>((Stripe.Events.V2CoreAccountPersonDeletedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountPersonDeletedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonDeletedEventNotification>((Stripe.Events.V2CoreAccountPersonDeletedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreAccountPersonUpdatedEventNotification)
                 {
-                    this.v2CoreAccountPersonUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>((Stripe.Events.V2CoreAccountPersonUpdatedEventNotification)eventNotification, this.client));
+                    this.v2CoreAccountPersonUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>((Stripe.Events.V2CoreAccountPersonUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreEventDestinationPingEventNotification)
                 {
-                    this.v2CoreEventDestinationPingEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>((Stripe.Events.V2CoreEventDestinationPingEventNotification)eventNotification, this.client));
+                    this.v2CoreEventDestinationPingEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>((Stripe.Events.V2CoreEventDestinationPingEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)
                 {
-                    this.v2CoreHealthEventGenerationFailureResolvedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>((Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)eventNotification, this.client));
+                    this.v2CoreHealthEventGenerationFailureResolvedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>((Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification)
                 {
-                    this.v2MoneyManagementAdjustmentCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>((Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementAdjustmentCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>((Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification)
                 {
-                    this.v2MoneyManagementFinancialAccountCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementFinancialAccountCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountCreatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)
                 {
-                    this.v2MoneyManagementFinancialAccountUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementFinancialAccountUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAccountUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification)
                 {
-                    this.v2MoneyManagementFinancialAddressActivatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementFinancialAddressActivatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAddressActivatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification)
                 {
-                    this.v2MoneyManagementFinancialAddressFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementFinancialAddressFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification>((Stripe.Events.V2MoneyManagementFinancialAddressFailedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification)
                 {
-                    this.v2MoneyManagementInboundTransferAvailableEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementInboundTransferAvailableEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferAvailableEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification)
                 {
-                    this.v2MoneyManagementInboundTransferBankDebitFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementInboundTransferBankDebitFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitFailedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification)
                 {
-                    this.v2MoneyManagementInboundTransferBankDebitProcessingEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementInboundTransferBankDebitProcessingEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitProcessingEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification)
                 {
-                    this.v2MoneyManagementInboundTransferBankDebitQueuedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementInboundTransferBankDebitQueuedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitQueuedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification)
                 {
-                    this.v2MoneyManagementInboundTransferBankDebitReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementInboundTransferBankDebitReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitReturnedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)
                 {
-                    this.v2MoneyManagementInboundTransferBankDebitSucceededEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementInboundTransferBankDebitSucceededEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification>((Stripe.Events.V2MoneyManagementInboundTransferBankDebitSucceededEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification)
                 {
-                    this.v2MoneyManagementOutboundPaymentCanceledEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundPaymentCanceledEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentCanceledEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundPaymentCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundPaymentCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentCreatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundPaymentFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundPaymentFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentFailedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundPaymentPostedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundPaymentPostedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentPostedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundPaymentReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundPaymentReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentReturnedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundPaymentUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundPaymentUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundPaymentUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundTransferCanceledEventNotification)
                 {
-                    this.v2MoneyManagementOutboundTransferCanceledEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferCanceledEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferCanceledEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundTransferCanceledEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferCanceledEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferCanceledEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundTransferCreatedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundTransferCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferCreatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferCreatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundTransferCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferCreatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferCreatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundTransferFailedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundTransferFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferFailedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferFailedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundTransferFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferFailedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferFailedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundTransferPostedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundTransferPostedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferPostedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferPostedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundTransferPostedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferPostedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferPostedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundTransferReturnedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundTransferReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferReturnedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferReturnedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundTransferReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferReturnedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferReturnedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)
                 {
-                    this.v2MoneyManagementOutboundTransferUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferUpdatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementOutboundTransferUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementOutboundTransferUpdatedEventNotification>((Stripe.Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification)
                 {
-                    this.v2MoneyManagementPayoutMethodUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification>((Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementPayoutMethodUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification>((Stripe.Events.V2MoneyManagementPayoutMethodUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification)
                 {
-                    this.v2MoneyManagementReceivedCreditAvailableEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementReceivedCreditAvailableEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditAvailableEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification)
                 {
-                    this.v2MoneyManagementReceivedCreditFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementReceivedCreditFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditFailedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification)
                 {
-                    this.v2MoneyManagementReceivedCreditReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementReceivedCreditReturnedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditReturnedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification)
                 {
-                    this.v2MoneyManagementReceivedCreditSucceededEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementReceivedCreditSucceededEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification>((Stripe.Events.V2MoneyManagementReceivedCreditSucceededEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitCanceledEventNotification)
                 {
-                    this.v2MoneyManagementReceivedDebitCanceledEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitCanceledEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitCanceledEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementReceivedDebitCanceledEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitCanceledEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitCanceledEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification)
                 {
-                    this.v2MoneyManagementReceivedDebitFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementReceivedDebitFailedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitFailedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitPendingEventNotification)
                 {
-                    this.v2MoneyManagementReceivedDebitPendingEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitPendingEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitPendingEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementReceivedDebitPendingEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitPendingEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitPendingEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification)
                 {
-                    this.v2MoneyManagementReceivedDebitSucceededEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementReceivedDebitSucceededEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitSucceededEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification)
                 {
-                    this.v2MoneyManagementReceivedDebitUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementReceivedDebitUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification>((Stripe.Events.V2MoneyManagementReceivedDebitUpdatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification)
                 {
-                    this.v2MoneyManagementTransactionCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>((Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementTransactionCreatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification>((Stripe.Events.V2MoneyManagementTransactionCreatedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification)
                 {
-                    this.v2MoneyManagementTransactionUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification>((Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification)eventNotification, this.client));
+                    this.v2MoneyManagementTransactionUpdatedEventNotification.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification>((Stripe.Events.V2MoneyManagementTransactionUpdatedEventNotification)eventNotification, client));
                 }
 
                 // event-handler-dispatch: The end of the section generated from our OpenAPI spec
@@ -793,7 +817,7 @@ namespace Stripe
                 // Unknown event type; invoke the unhandled event handler
                 this.UnhandledEventHandler.Invoke(
                     this,
-                    new StripeUnhandledEventNotificationEventArgs(eventNotification, this.client, new UnhandledNotificationDetails(!(eventNotification is UnknownEventNotification))));
+                    new StripeUnhandledEventNotificationEventArgs(eventNotification, client, new UnhandledNotificationDetails(!(eventNotification is UnknownEventNotification))));
             }
         }
     }

@@ -17,8 +17,19 @@ namespace Stripe
         /// <param name="client">The StripeClient instance.</param>
         public StripeEventNotificationEventArgs(TEventNotification eventNotification, StripeClient client)
         {
-            this.EventNotification = eventNotification ?? throw new ArgumentNullException(nameof(eventNotification));
-            this.Client = client ?? throw new ArgumentNullException(nameof(client));
+            if (eventNotification == null)
+            {
+                throw new ArgumentNullException(nameof(eventNotification));
+            }
+
+            this.EventNotification = eventNotification;
+
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
+            this.Client = client;
         }
 
         /// <summary>
