@@ -12,6 +12,7 @@ namespace Stripe
         private TestHelpers.CustomerService customers;
         private TestHelpers.IssuingService issuing;
         private TestHelpers.RefundService refunds;
+        private TestHelpers.SharedPaymentService sharedPayment;
         private TestHelpers.TerminalService terminal;
         private TestHelpers.TestClockService testClocks;
         private TestHelpers.TreasuryService treasury;
@@ -39,6 +40,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual TestHelpers.RefundService Refunds => this.refunds ??= new TestHelpers.RefundService(
+            this.Requestor);
+
+        public virtual TestHelpers.SharedPaymentService SharedPayment => this.sharedPayment ??= new TestHelpers.SharedPaymentService(
             this.Requestor);
 
         public virtual TestHelpers.TerminalService Terminal => this.terminal ??= new TestHelpers.TerminalService(

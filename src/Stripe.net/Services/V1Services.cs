@@ -73,6 +73,7 @@ namespace Stripe
         private ReviewService reviews;
         private SetupAttemptService setupAttempts;
         private SetupIntentService setupIntents;
+        private SharedPaymentService sharedPayment;
         private ShippingRateService shippingRates;
         private SigmaService sigma;
         private SourceService sources;
@@ -297,6 +298,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual SetupIntentService SetupIntents => this.setupIntents ??= new SetupIntentService(
+            this.Requestor);
+
+        public virtual SharedPaymentService SharedPayment => this.sharedPayment ??= new SharedPaymentService(
             this.Requestor);
 
         public virtual ShippingRateService ShippingRates => this.shippingRates ??= new ShippingRateService(

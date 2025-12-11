@@ -180,6 +180,7 @@ namespace Stripe
                 { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },
                 { "setup_attempt", typeof(SetupAttempt) },
                 { "setup_intent", typeof(SetupIntent) },
+                { "shared_payment.granted_token", typeof(SharedPayment.GrantedToken) },
                 { "shipping_rate", typeof(ShippingRate) },
                 { "source", typeof(Source) },
                 { "source_mandate_notification", typeof(SourceMandateNotification) },
