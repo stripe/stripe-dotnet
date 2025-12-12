@@ -69,5 +69,16 @@ namespace Stripe
         [STJS.JsonPropertyName("unit_label")]
 #endif
         public string UnitLabel { get; set; }
+
+        /// <summary>
+        /// Tax details for this product, including the <a
+        /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
+        /// location.
+        /// </summary>
+        [JsonProperty("tax_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_details")]
+#endif
+        public PaymentLinkLineItemPriceDataProductDataTaxDetailsOptions TaxDetails { get; set; }
     }
 }
