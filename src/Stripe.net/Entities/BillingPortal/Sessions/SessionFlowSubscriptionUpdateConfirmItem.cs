@@ -10,7 +10,7 @@ namespace Stripe.BillingPortal
     {
         /// <summary>
         /// The ID of the <a
-        /// href="https://stripe.com/docs/api/subscriptions/object#subscription_object-items-data-id">subscription
+        /// href="https://docs.stripe.com/api/subscriptions/object#subscription_object-items-data-id">subscription
         /// item</a> to be updated.
         /// </summary>
         [JsonProperty("id")]
@@ -22,7 +22,7 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The price the customer should subscribe to through this flow. The price must also be
         /// included in the configuration's <a
-        /// href="https://stripe.com/docs/api/customer_portal/configuration#portal_configuration_object-features-subscription_update-products"><c>features.subscription_update.products</c></a>.
+        /// href="https://docs.stripe.com/api/customer_portal/configuration#portal_configuration_object-features-subscription_update-products"><c>features.subscription_update.products</c></a>.
         /// </summary>
         [JsonProperty("price")]
 #if NET6_0_OR_GREATER
@@ -31,7 +31,7 @@ namespace Stripe.BillingPortal
         public string Price { get; set; }
 
         /// <summary>
-        /// <a href="https://stripe.com/docs/subscriptions/quantities">Quantity</a> for this item
+        /// <a href="https://docs.stripe.com/subscriptions/quantities">Quantity</a> for this item
         /// that the customer should subscribe to through this flow.
         /// </summary>
         [JsonProperty("quantity")]

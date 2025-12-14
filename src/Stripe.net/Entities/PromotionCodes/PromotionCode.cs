@@ -14,7 +14,7 @@ namespace Stripe
     /// can create multiple codes for a single promotion.
     ///
     /// If you enable promotion codes in your <a
-    /// href="https://stripe.com/docs/customer-management/configure-portal">customer portal
+    /// href="https://docs.stripe.com/customer-management/configure-portal">customer portal
     /// configuration</a>, then customers can redeem a code themselves when updating a
     /// subscription in the portal. Customers can also view the currently active promotion codes
     /// and coupons on each of their subscriptions in the portal.
@@ -78,7 +78,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Customer)
-        /// The customer that this promotion code can be used by.
+        /// The customer who can use this promotion code.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -92,7 +92,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The customer that this promotion code can be used by.
+        /// The customer who can use this promotion code.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -116,7 +116,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The account that this promotion code can be used by.
+        /// The account representing the customer who can use this promotion code.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
@@ -155,7 +155,7 @@ namespace Stripe
         public long? MaxRedemptions { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

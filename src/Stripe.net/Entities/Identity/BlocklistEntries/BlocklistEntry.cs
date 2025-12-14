@@ -17,7 +17,7 @@ namespace Stripe.Identity
     /// categorize the new verification as unverified.
     ///
     /// To learn more, see <a
-    /// href="https://stripe.com/docs/identity/review-tools#block-list">Identity Verification
+    /// href="https://docs.stripe.com/identity/review-tools#block-list">Identity Verification
     /// Blocklist</a>.
     /// </summary>
 #if NET6_0_OR_GREATER

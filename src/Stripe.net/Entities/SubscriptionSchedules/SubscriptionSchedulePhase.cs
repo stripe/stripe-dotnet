@@ -46,7 +46,7 @@ namespace Stripe
         /// billing cycle anchor of the subscription is set to the start of the phase when entering
         /// the phase. If <c>automatic</c> then the billing cycle anchor is automatically modified
         /// as needed when entering the phase. For more information, see the billing cycle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
@@ -167,6 +167,21 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseDiscount> Discounts { get; set; }
 
         /// <summary>
+        /// Configures how the subscription schedule handles billing for phase transitions. Possible
+        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
+        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
+        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
+        /// upcoming phase transitions within the current billing cycle, including pricing changes
+        /// and service period adjustments that will occur before the next invoice.
+        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        /// </summary>
+        [JsonProperty("effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
+#endif
+        public string EffectiveAt { get; set; }
+
+        /// <summary>
         /// The end of this phase of the subscription schedule.
         /// </summary>
         [JsonProperty("end_date")]
@@ -197,7 +212,7 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseItem> Items { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to a phase. Metadata on a schedule's phase will update the underlying
         /// subscription's <c>metadata</c> when the phase is entered. Updating the underlying
         /// subscription's <c>metadata</c> directly will not affect the current phase's
@@ -255,7 +270,7 @@ namespace Stripe
         /// <summary>
         /// If specified, payment collection for this subscription will be paused. Note that the
         /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
-        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// more about <a href="https://docs.stripe.com/billing/subscriptions/pause-payment">pausing
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
@@ -326,20 +341,5 @@ namespace Stripe
         [STJS.JsonPropertyName("trial_settings")]
 #endif
         public SubscriptionSchedulePhaseTrialSettings TrialSettings { get; set; }
-
-        /// <summary>
-        /// Configures how the subscription schedule handles billing for phase transitions. Possible
-        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
-        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
-        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
-        /// upcoming phase transitions within the current billing cycle, including pricing changes
-        /// and service period adjustments that will occur before the next invoice.
-        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
-        /// </summary>
-        [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("effective_at")]
-#endif
-        public string EffectiveAt { get; set; }
     }
 }

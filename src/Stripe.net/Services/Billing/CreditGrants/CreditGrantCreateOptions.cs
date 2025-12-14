@@ -42,7 +42,7 @@ namespace Stripe.Billing
         public string Category { get; set; }
 
         /// <summary>
-        /// ID of the customer to receive the billing credits.
+        /// ID of the customer receiving the billing credits.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
@@ -51,7 +51,7 @@ namespace Stripe.Billing
         public string Customer { get; set; }
 
         /// <summary>
-        /// ID of the account to receive the billing credits.
+        /// ID of the account representing the customer receiving the billing credits.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

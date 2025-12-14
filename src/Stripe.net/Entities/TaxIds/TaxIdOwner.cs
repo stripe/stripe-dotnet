@@ -136,7 +136,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The account being referenced when <c>type</c> is <c>customer</c>.
+        /// The Account representing the customer being referenced when <c>type</c> is
+        /// <c>customer</c>.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

@@ -9,7 +9,7 @@ namespace Stripe.Checkout
     public class SessionDiscountOptions : INestedOptions
     {
         /// <summary>
-        /// The ID of the <a href="https://stripe.com/docs/api/coupons">Coupon</a> to apply to this
+        /// The ID of the <a href="https://docs.stripe.com/api/coupons">Coupon</a> to apply to this
         /// Session. One of <c>coupon</c> or <c>coupon_data</c> is required when updating discounts.
         /// </summary>
         [JsonProperty("coupon")]
@@ -19,7 +19,7 @@ namespace Stripe.Checkout
         public string Coupon { get; set; }
 
         /// <summary>
-        /// Data used to generate a new <a href="https://stripe.com/docs/api/coupon">Coupon</a>
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/coupon">Coupon</a>
         /// object inline. One of <c>coupon</c> or <c>coupon_data</c> is required when updating
         /// discounts.
         /// </summary>

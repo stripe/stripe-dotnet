@@ -19,7 +19,7 @@ namespace Stripe
         public bool? Active { get; set; }
 
         /// <summary>
-        /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
         /// object. This Price will be set as the default price for this product.
         /// </summary>
         [JsonProperty("default_price_data")]
@@ -61,7 +61,7 @@ namespace Stripe
 
         /// <summary>
         /// A list of up to 15 marketing features for this product. These are displayed in <a
-        /// href="https://stripe.com/docs/payments/checkout/pricing-table">pricing tables</a>.
+        /// href="https://docs.stripe.com/payments/checkout/pricing-table">pricing tables</a>.
         /// </summary>
         [JsonProperty("marketing_features")]
 #if NET6_0_OR_GREATER
@@ -70,7 +70,7 @@ namespace Stripe
         public List<ProductMarketingFeatureOptions> MarketingFeatures { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -125,13 +125,24 @@ namespace Stripe
         public string StatementDescriptor { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
+        /// A <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonProperty("tax_code")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_code")]
 #endif
         public string TaxCode { get; set; }
+
+        /// <summary>
+        /// Tax details for this product, including the <a
+        /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
+        /// location.
+        /// </summary>
+        [JsonProperty("tax_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tax_details")]
+#endif
+        public ProductTaxDetailsOptions TaxDetails { get; set; }
 
         /// <summary>
         /// The type of the product. Defaults to <c>service</c> if not explicitly specified,

@@ -33,6 +33,15 @@ namespace Stripe.V2.Core.Vault
         public string Object { get; set; }
 
         /// <summary>
+        /// The alternative reference for this payout method, if it's a projected payout method.
+        /// </summary>
+        [JsonProperty("alternative_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alternative_reference")]
+#endif
+        public UsBankAccountAlternativeReference AlternativeReference { get; set; }
+
+        /// <summary>
         /// Whether this USBankAccount object was archived.
         /// </summary>
         [JsonProperty("archived")]
@@ -78,6 +87,15 @@ namespace Stripe.V2.Core.Vault
         [STJS.JsonPropertyName("fedwire_routing_number")]
 #endif
         public string FedwireRoutingNumber { get; set; }
+
+        /// <summary>
+        /// The ID of the Financial Connections Account used to create the bank account.
+        /// </summary>
+        [JsonProperty("financial_connections_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("financial_connections_account")]
+#endif
+        public string FinancialConnectionsAccount { get; set; }
 
         /// <summary>
         /// The last 4 digits of the account number.

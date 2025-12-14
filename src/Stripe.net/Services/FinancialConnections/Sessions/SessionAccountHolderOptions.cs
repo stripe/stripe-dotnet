@@ -9,7 +9,7 @@ namespace Stripe.FinancialConnections
     public class SessionAccountHolderOptions : INestedOptions
     {
         /// <summary>
-        /// The ID of the Stripe account whose accounts will be retrieved. Should only be present if
+        /// The ID of the Stripe account whose accounts you will retrieve. Only available when
         /// <c>type</c> is <c>account</c>.
         /// </summary>
         [JsonProperty("account")]
@@ -19,8 +19,8 @@ namespace Stripe.FinancialConnections
         public string Account { get; set; }
 
         /// <summary>
-        /// The ID of the Stripe customer whose accounts will be retrieved. Should only be present
-        /// if <c>type</c> is <c>customer</c>.
+        /// The ID of the Stripe customer whose accounts you will retrieve. Only available when
+        /// <c>type</c> is <c>customer</c>.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
@@ -29,8 +29,8 @@ namespace Stripe.FinancialConnections
         public string Customer { get; set; }
 
         /// <summary>
-        /// The ID of the Stripe customer Account whose accounts will be retrieved. Should only be
-        /// present if <c>type</c> is <c>customer</c>.
+        /// The ID of Account representing a customer whose accounts you will retrieve. Only
+        /// available when <c>type</c> is <c>customer</c>.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

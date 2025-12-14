@@ -16,7 +16,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the PaymentIntent)
-        /// The <a href="https://stripe.com/docs/api/payment_intents/object">Payment Intent</a> that
+        /// The <a href="https://docs.stripe.com/api/payment_intents/object">Payment Intent</a> that
         /// funds were unapplied from.
         /// </summary>
         [JsonIgnore]
@@ -31,7 +31,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The <a href="https://stripe.com/docs/api/payment_intents/object">Payment Intent</a> that
+        /// The <a href="https://docs.stripe.com/api/payment_intents/object">Payment Intent</a> that
         /// funds were unapplied from.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.

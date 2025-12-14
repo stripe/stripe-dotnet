@@ -232,7 +232,7 @@ namespace Stripe
 
         /// <summary>
         /// Information about the <a
-        /// href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new
+        /// href="https://docs.stripe.com/connect/custom-accounts/future-requirements">upcoming new
         /// requirements for the bank account</a>, including what information needs to be collected,
         /// and by when.
         /// </summary>
@@ -252,7 +252,7 @@ namespace Stripe
         public string Last4 { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

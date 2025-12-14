@@ -34,7 +34,7 @@ namespace Stripe
         /// billing cycle anchor of the subscription is set to the start of the phase when entering
         /// the phase. If <c>automatic</c> then the billing cycle anchor is automatically modified
         /// as needed when entering the phase. For more information, see the billing cycle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
@@ -171,17 +171,6 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The account (if any) the associated subscription's payments will be attributed to for
-        /// tax reporting, and where funds from each payment will be transferred to for each of the
-        /// subscription's invoices.
-        /// </summary>
-        [JsonProperty("transfer_data")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("transfer_data")]
-#endif
-        public SubscriptionScheduleDefaultSettingsTransferData TransferData { get; set; }
-
-        /// <summary>
         /// Configures how the subscription schedule handles billing for phase transitions. Possible
         /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
         /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
@@ -195,5 +184,16 @@ namespace Stripe
         [STJS.JsonPropertyName("phase_effective_at")]
 #endif
         public string PhaseEffectiveAt { get; set; }
+
+        /// <summary>
+        /// The account (if any) the associated subscription's payments will be attributed to for
+        /// tax reporting, and where funds from each payment will be transferred to for each of the
+        /// subscription's invoices.
+        /// </summary>
+        [JsonProperty("transfer_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer_data")]
+#endif
+        public SubscriptionScheduleDefaultSettingsTransferData TransferData { get; set; }
     }
 }

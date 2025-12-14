@@ -9,9 +9,8 @@ namespace Stripe.V2.Core
     public class AccountUpdateConfigurationCustomerAutomaticIndirectTaxOptions : INestedOptions
     {
         /// <summary>
-        /// Describes the customer's tax exemption status, which is <c>none</c>, <c>exempt</c>, or
-        /// <c>reverse</c>. When set to reverse, invoice and receipt PDFs include the following
-        /// text: “Reverse charge”.
+        /// The customer account's tax exemption status: <c>none</c>, <c>exempt</c>, or
+        /// <c>reverse</c>. When <c>reverse</c>, invoice and receipt PDFs include "Reverse charge".
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
         [JsonProperty("exempt")]
@@ -30,9 +29,8 @@ namespace Stripe.V2.Core
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// The data source used to identify the customer's tax location - defaults to
-        /// <c>identity_address</c>. Will only be used for automatic tax calculation on the
-        /// customer's Invoices and Subscriptions. This behavior is now deprecated for new users.
+        /// Data source used to identify the customer account's tax location. Defaults to
+        /// <c>identity_address</c>. Used for automatic indirect tax calculation.
         /// One of: <c>identity_address</c>, <c>ip_address</c>, <c>payment_method</c>, or
         /// <c>shipping_address</c>.
         /// </summary>
@@ -44,7 +42,7 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// A per-request flag that indicates when Stripe should validate the customer tax location
-        /// - defaults to 'auto'.
+        /// - defaults to <c>auto</c>.
         /// One of: <c>auto</c>, <c>deferred</c>, or <c>immediately</c>.
         /// </summary>
         [JsonProperty("validate_location")]

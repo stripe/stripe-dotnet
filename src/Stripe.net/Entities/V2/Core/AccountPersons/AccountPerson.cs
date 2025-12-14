@@ -9,7 +9,9 @@ namespace Stripe.V2.Core
 #endif
 
     /// <summary>
-    /// Person retrieval response schema.
+    /// A Person represents an individual associated with an Account's identity (for example, an
+    /// owner, director, executive, or representative). Use Persons to provide and update
+    /// identity information for verification and compliance.
     /// </summary>
     public class AccountPerson : StripeEntity<AccountPerson>, IHasId, IHasMetadata, IHasObject
     {

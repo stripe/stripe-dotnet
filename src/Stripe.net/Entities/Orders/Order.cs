@@ -43,7 +43,7 @@ namespace Stripe
         /// <summary>
         /// Order cost before any discounts or taxes are applied. A positive integer representing
         /// the subtotal of the order in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g.,
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> (e.g.,
         /// 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).
         /// </summary>
         [JsonProperty("amount_subtotal")]
@@ -55,10 +55,10 @@ namespace Stripe
         /// <summary>
         /// Total order cost after discounts and taxes are applied. A positive integer representing
         /// the cost of the order in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g.,
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> (e.g.,
         /// 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). To submit an
         /// order, the total must be either 0 or at least $0.50 USD or <a
-        /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent
+        /// href="https://docs.stripe.com/currencies#minimum-and-maximum-charge-amounts">equivalent
         /// in charge currency</a>.
         /// </summary>
         [JsonProperty("amount_total")]
@@ -132,7 +132,7 @@ namespace Stripe
         /// secret.
         ///
         /// Refer to our docs for <a
-        /// href="https://stripe.com/docs/orders-beta/create-and-process">creating and processing an
+        /// href="https://docs.stripe.com/orders-beta/create-and-process">creating and processing an
         /// order</a> to learn about how client_secret should be handled.
         /// </summary>
         [JsonProperty("client_secret")]
@@ -284,7 +284,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

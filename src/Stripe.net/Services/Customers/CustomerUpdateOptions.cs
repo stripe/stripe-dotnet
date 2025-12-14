@@ -11,7 +11,9 @@ namespace Stripe
     public class CustomerUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The customer's address.
+        /// The customer's address. Learn about <a
+        /// href="https://docs.stripe.com/invoicing/taxes?dashboard-or-api=dashboard#set-up-customer">country-specific
+        /// requirements for calculating tax</a>.
         /// </summary>
         [JsonProperty("address")]
 #if NET6_0_OR_GREATER
@@ -51,14 +53,14 @@ namespace Stripe
 
         /// <summary>
         /// If you are using payment methods created via the PaymentMethods API, see the <a
-        /// href="https://stripe.com/docs/api/customers/update#update_customer-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// href="https://docs.stripe.com/api/customers/update#update_customer-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// parameter.
         ///
         /// Provide the ID of a payment source already attached to this customer to make it this
         /// customer's default payment source.
         ///
         /// If you want to add a new payment source and make it the default, see the <a
-        /// href="https://stripe.com/docs/api/customers/update#update_customer-source">source</a>
+        /// href="https://docs.stripe.com/api/customers/update#update_customer-source">source</a>
         /// property.
         /// </summary>
         [JsonProperty("default_source")]
@@ -116,7 +118,7 @@ namespace Stripe
         public CustomerInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.

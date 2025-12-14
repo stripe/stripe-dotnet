@@ -1,0 +1,58 @@
+// File generated from our OpenAPI spec
+namespace Stripe.Events
+{
+    using System;
+    using System.Threading.Tasks;
+    using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
+
+    public class V2CoreHealthSepaDebitDelayedResolvedEventData : StripeEntity<V2CoreHealthSepaDebitDelayedResolvedEventData>
+    {
+        /// <summary>
+        /// The grouping key for the alert.
+        /// </summary>
+        [JsonProperty("grouping_key")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("grouping_key")]
+#endif
+        public string GroupingKey { get; set; }
+
+        /// <summary>
+        /// The user impact.
+        /// </summary>
+        [JsonProperty("impact")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("impact")]
+#endif
+        public V2CoreHealthSepaDebitDelayedResolvedEventDataImpact Impact { get; set; }
+
+        /// <summary>
+        /// The time when the user experience has returned to expected levels.
+        /// </summary>
+        [JsonProperty("resolved_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("resolved_at")]
+#endif
+        public DateTime ResolvedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// The time when impact on the user experience was first detected.
+        /// </summary>
+        [JsonProperty("started_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("started_at")]
+#endif
+        public DateTime StartedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
+
+        /// <summary>
+        /// A short description of the alert.
+        /// </summary>
+        [JsonProperty("summary")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("summary")]
+#endif
+        public string Summary { get; set; }
+    }
+}

@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// Whether the controller is liable for losses on this account. For details, see <a
-        /// href="https://stripe.com/docs/connect/account-balances">Understanding Connect Account
+        /// href="https://docs.stripe.com/connect/account-balances">Understanding Connect Account
         /// Balances</a>.
         /// </summary>
         [JsonProperty("loss_liable")]

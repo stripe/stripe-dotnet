@@ -84,6 +84,17 @@ namespace Stripe.V2.MoneyManagement
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// If this is a managed FinancialAccount, <c>managed_by</c> indicates the product that
+        /// created and manages this FinancialAccount. For managed FinancialAccounts, creation of
+        /// money management resources can only be orchestrated by the managing product.
+        /// </summary>
+        [JsonProperty("managed_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("managed_by")]
+#endif
+        public FinancialAccountManagedBy ManagedBy { get; set; }
+
+        /// <summary>
         /// Metadata associated with the FinancialAccount.
         /// </summary>
         [JsonProperty("metadata")]
@@ -101,6 +112,16 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("other")]
 #endif
         public FinancialAccountOther Other { get; set; }
+
+        /// <summary>
+        /// If this is a <c>payments</c> FinancialAccount, this hash include details specific to
+        /// <c>payments</c> FinancialAccount.
+        /// </summary>
+        [JsonProperty("payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payments")]
+#endif
+        public FinancialAccountPayments Payments { get; set; }
 
         /// <summary>
         /// Closed Enum. An enum representing the status of the FinancialAccount. This indicates
@@ -133,7 +154,7 @@ namespace Stripe.V2.MoneyManagement
         /// Type of the FinancialAccount. An additional hash is included on the FinancialAccount
         /// with a name matching this value. It contains additional information specific to the
         /// FinancialAccount type.
-        /// One of: <c>other</c>, or <c>storage</c>.
+        /// One of: <c>other</c>, <c>payments</c>, or <c>storage</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

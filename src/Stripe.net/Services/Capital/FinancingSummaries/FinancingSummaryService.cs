@@ -24,8 +24,7 @@ namespace Stripe.Capital
         }
 
         /// <summary>
-        /// <p>Retrieve the financing state for the account that was authenticated in the
-        /// request.</p>.
+        /// <p>Retrieve the financing summary object for the account.</p>.
         /// </summary>
         public virtual FinancingSummary Get(RequestOptions requestOptions = null)
         {
@@ -33,8 +32,7 @@ namespace Stripe.Capital
         }
 
         /// <summary>
-        /// <p>Retrieve the financing state for the account that was authenticated in the
-        /// request.</p>.
+        /// <p>Retrieve the financing summary object for the account.</p>.
         /// </summary>
         public virtual Task<FinancingSummary> GetAsync(RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -42,8 +40,7 @@ namespace Stripe.Capital
         }
 
         /// <summary>
-        /// <p>Retrieve the financing state for the account that was authenticated in the
-        /// request.</p>.
+        /// <p>Retrieve the financing summary object for the account.</p>.
         /// </summary>
         public virtual FinancingSummary Get(FinancingSummaryGetOptions options, RequestOptions requestOptions = null)
         {
@@ -51,8 +48,7 @@ namespace Stripe.Capital
         }
 
         /// <summary>
-        /// <p>Retrieve the financing state for the account that was authenticated in the
-        /// request.</p>.
+        /// <p>Retrieve the financing summary object for the account.</p>.
         /// </summary>
         public virtual Task<FinancingSummary> GetAsync(FinancingSummaryGetOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

@@ -9,6 +9,16 @@ namespace Stripe.V2.Core
     public class AccountCreateConfigurationRecipientCapabilitiesBankAccountsOptions : INestedOptions
     {
         /// <summary>
+        /// Enables this Account to receive OutboundPayments to linked bank accounts over real time
+        /// rails.
+        /// </summary>
+        [JsonProperty("instant")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("instant")]
+#endif
+        public AccountCreateConfigurationRecipientCapabilitiesBankAccountsInstantOptions Instant { get; set; }
+
+        /// <summary>
         /// Enables this Account to receive OutboundPayments to linked bank accounts over local
         /// networks.
         /// </summary>

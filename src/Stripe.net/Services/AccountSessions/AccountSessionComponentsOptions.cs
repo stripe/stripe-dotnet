@@ -109,6 +109,17 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/check-scanning/">check
+        /// scanning</a> embedded component.
+        /// </summary>
+        [JsonProperty("check_scanning")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("check_scanning")]
+#endif
+        public AccountSessionComponentsCheckScanningOptions CheckScanning { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/disputes-list/">disputes
         /// list</a> embedded component.
         /// </summary>

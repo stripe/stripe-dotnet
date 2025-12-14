@@ -16,7 +16,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the BalanceTransaction)
-        /// The <a href="https://stripe.com/docs/api/balance_transactions/object">Balance
+        /// The <a href="https://docs.stripe.com/api/balance_transactions/object">Balance
         /// Transaction</a> that corresponds to funds taken out of your Stripe balance.
         /// </summary>
         [JsonIgnore]
@@ -31,7 +31,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The <a href="https://stripe.com/docs/api/balance_transactions/object">Balance
+        /// The <a href="https://docs.stripe.com/api/balance_transactions/object">Balance
         /// Transaction</a> that corresponds to funds taken out of your Stripe balance.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -59,7 +59,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the CustomerCashBalanceTransaction)
-        /// The <a href="https://stripe.com/docs/api/cash_balance_transactions/object">Cash Balance
+        /// The <a href="https://docs.stripe.com/api/cash_balance_transactions/object">Cash Balance
         /// Transaction</a> that brought the customer balance negative, triggering the clawback of
         /// funds.
         /// </summary>
@@ -75,7 +75,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The <a href="https://stripe.com/docs/api/cash_balance_transactions/object">Cash Balance
+        /// The <a href="https://docs.stripe.com/api/cash_balance_transactions/object">Cash Balance
         /// Transaction</a> that brought the customer balance negative, triggering the clawback of
         /// funds.
         ///

@@ -12,22 +12,22 @@ namespace Stripe
 
     /// <summary>
     /// Invoice Items represent the component lines of an <a
-    /// href="https://stripe.com/docs/api/invoices">invoice</a>. When you create an invoice item
+    /// href="https://docs.stripe.com/api/invoices">invoice</a>. When you create an invoice item
     /// with an <c>invoice</c> field, it is attached to the specified invoice and included as <a
-    /// href="https://stripe.com/docs/api/invoices/line_item">an invoice line item</a> within <a
-    /// href="https://stripe.com/docs/api/invoices/object#invoice_object-lines">invoice.lines</a>.
+    /// href="https://docs.stripe.com/api/invoices/line_item">an invoice line item</a> within <a
+    /// href="https://docs.stripe.com/api/invoices/object#invoice_object-lines">invoice.lines</a>.
     ///
     /// Invoice Items can be created before you are ready to actually send the invoice. This can
     /// be particularly useful when combined with a <a
-    /// href="https://stripe.com/docs/api/subscriptions">subscription</a>. Sometimes you want to
+    /// href="https://docs.stripe.com/api/subscriptions">subscription</a>. Sometimes you want to
     /// add a charge or credit to a customer, but actually charge or credit the customer's card
     /// only at the end of a regular billing cycle. This is useful for combining several charges
     /// (to minimize per-transaction fees), or for having Stripe tabulate your usage-based
     /// billing totals.
     ///
-    /// Related guides: <a href="https://stripe.com/docs/invoicing/integration">Integrate with
+    /// Related guides: <a href="https://docs.stripe.com/invoicing/integration">Integrate with
     /// the Invoicing API</a>, <a
-    /// href="https://stripe.com/docs/billing/invoices/subscription#adding-upcoming-invoice-items">Subscription
+    /// href="https://docs.stripe.com/billing/invoices/subscription#adding-upcoming-invoice-items">Subscription
     /// Invoices</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -78,7 +78,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Customer)
-        /// The ID of the customer who will be billed when this invoice item is billed.
+        /// The ID of the customer to bill for this invoice item.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -92,7 +92,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the customer who will be billed when this invoice item is billed.
+        /// The ID of the customer to bill for this invoice item.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -116,7 +116,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// The ID of the account who will be billed when this invoice item is billed.
+        /// The ID of the account to bill for this invoice item.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
@@ -297,7 +297,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

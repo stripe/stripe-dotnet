@@ -31,7 +31,7 @@ namespace Stripe
 
         /// <summary>
         /// Only required if a <a
-        /// href="https://stripe.com/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)">default
+        /// href="https://docs.stripe.com/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)">default
         /// tax behavior</a> was not provided in the Stripe Tax settings. Specifies whether the
         /// price is considered inclusive of taxes or exclusive of taxes. One of <c>inclusive</c>,
         /// <c>exclusive</c>, or <c>unspecified</c>. Once specified as either <c>inclusive</c> or

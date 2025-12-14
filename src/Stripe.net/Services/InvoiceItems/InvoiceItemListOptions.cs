@@ -22,8 +22,8 @@ namespace Stripe
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
-        /// The identifier of the customer whose invoice items to return. If none is provided, all
-        /// invoice items will be returned.
+        /// The identifier of the customer whose invoice items to return. If none is provided,
+        /// returns all invoice items.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
@@ -32,8 +32,8 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// The identifier of the account whose invoice items to return. If none is provided, all
-        /// invoice items will be returned.
+        /// The identifier of the account representing the customer whose invoice items to return.
+        /// If none is provided, returns all invoice items.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

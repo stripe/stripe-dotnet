@@ -11,7 +11,7 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// The credit approved, in the currency of the account and <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER

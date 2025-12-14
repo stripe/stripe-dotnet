@@ -10,6 +10,24 @@ namespace Stripe.DelegatedCheckout
     public class RequestedSessionLineItemDetail : StripeEntity<RequestedSessionLineItemDetail>
     {
         /// <summary>
+        /// The total discount for this line item. If no discount were applied, defaults to 0.
+        /// </summary>
+        [JsonProperty("amount_discount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_discount")]
+#endif
+        public long AmountDiscount { get; set; }
+
+        /// <summary>
+        /// The total before any discounts or taxes are applied.
+        /// </summary>
+        [JsonProperty("amount_subtotal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_subtotal")]
+#endif
+        public long AmountSubtotal { get; set; }
+
+        /// <summary>
         /// The description of the line item.
         /// </summary>
         [JsonProperty("description")]
@@ -45,6 +63,12 @@ namespace Stripe.DelegatedCheckout
 #endif
         public string Name { get; set; }
 
+        [JsonProperty("product_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("product_details")]
+#endif
+        public RequestedSessionLineItemDetailProductDetails ProductDetails { get; set; }
+
         /// <summary>
         /// The quantity of the line item.
         /// </summary>
@@ -71,23 +95,5 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("unit_amount")]
 #endif
         public long UnitAmount { get; set; }
-
-        /// <summary>
-        /// The total discount for this line item. If no discount were applied, defaults to 0.
-        /// </summary>
-        [JsonProperty("amount_discount")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_discount")]
-#endif
-        public long AmountDiscount { get; set; }
-
-        /// <summary>
-        /// The total before any discounts or taxes are applied.
-        /// </summary>
-        [JsonProperty("amount_subtotal")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("amount_subtotal")]
-#endif
-        public long AmountSubtotal { get; set; }
     }
 }

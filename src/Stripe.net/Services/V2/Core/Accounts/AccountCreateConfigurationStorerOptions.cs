@@ -36,7 +36,7 @@ namespace Stripe.V2.Core
         public List<string> HighRiskActivities { get; set; }
 
         /// <summary>
-        /// An explanation of the high risk activities that the business performs.
+        /// Description of the high-risk activities the business offers.
         /// </summary>
         [JsonProperty("high_risk_activities_description")]
 #if NET6_0_OR_GREATER
@@ -54,7 +54,7 @@ namespace Stripe.V2.Core
         public string MoneyServicesDescription { get; set; }
 
         /// <summary>
-        /// Does the business operate in any prohibited countries.
+        /// Indicates whether the business operates in any prohibited countries.
         /// </summary>
         [JsonProperty("operates_in_prohibited_countries")]
 #if NET6_0_OR_GREATER
@@ -63,7 +63,7 @@ namespace Stripe.V2.Core
         public bool? OperatesInProhibitedCountries { get; set; }
 
         /// <summary>
-        /// Does the business participate in any regulated activity.
+        /// Indicates whether the business participates in any regulated activity.
         /// </summary>
         [JsonProperty("participates_in_regulated_activity")]
 #if NET6_0_OR_GREATER

@@ -97,7 +97,7 @@ namespace Stripe
         public List<string> FlowDirections { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -120,7 +120,7 @@ namespace Stripe
 
         /// <summary>
         /// The ID of the <a
-        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// href="https://docs.stripe.com/api/payment_method_configurations">payment method
         /// configuration</a> to use with this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
@@ -131,7 +131,7 @@ namespace Stripe
 
         /// <summary>
         /// When included, this hash creates a PaymentMethod that is set as the <a
-        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-payment_method"><c>payment_method</c></a>
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-payment_method"><c>payment_method</c></a>
         /// value in the SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_data")]

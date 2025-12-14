@@ -31,7 +31,7 @@ namespace Stripe.Treasury
 
         /// <summary>
         /// Set when <c>type</c> is <c>issuing_card</c>. This is an <a
-        /// href="https://stripe.com/docs/api#issuing_cards">Issuing Card</a> ID.
+        /// href="https://api.stripe.com#issuing_cards">Issuing Card</a> ID.
         /// </summary>
         [JsonProperty("issuing_card")]
 #if NET6_0_OR_GREATER

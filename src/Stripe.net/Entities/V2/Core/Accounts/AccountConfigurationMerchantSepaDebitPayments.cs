@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountConfigurationMerchantSepaDebitPayments : StripeEntity<AccountConfigurationMerchantSepaDebitPayments>
     {
         /// <summary>
-        /// Creditor ID for SEPA debit payments.
+        /// Creditor ID for SEPA Direct Debit payments.
         /// </summary>
         [JsonProperty("creditor_id")]
 #if NET6_0_OR_GREATER

@@ -10,9 +10,8 @@ namespace Stripe
     public class AccountExternalAccountDocumentsBankAccountOwnershipVerificationOptions : INestedOptions
     {
         /// <summary>
-        /// One or more document ids returned by a <a
-        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
-        /// value of <c>account_requirement</c>.
+        /// One or more document ids returned by a <a href="https://api.stripe.com#create_file">file
+        /// upload</a> with a <c>purpose</c> value of <c>account_requirement</c>.
         /// </summary>
         [JsonProperty("files")]
 #if NET6_0_OR_GREATER

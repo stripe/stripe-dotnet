@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// Represents the risk control status of charges. Please see <a
-        /// href="https://stripe.com/docs/connect/pausing-payments-or-payouts-on-connected-accounts">this
+        /// href="https://docs.stripe.com/connect/pausing-payments-or-payouts-on-connected-accounts">this
         /// page for more details</a>.
         /// </summary>
         [JsonProperty("charges")]
@@ -21,7 +21,7 @@ namespace Stripe
 
         /// <summary>
         /// Represents the risk control status of payouts. Please see <a
-        /// href="https://stripe.com/docs/connect/pausing-payments-or-payouts-on-connected-accounts">this
+        /// href="https://docs.stripe.com/connect/pausing-payments-or-payouts-on-connected-accounts">this
         /// page for more details</a>.
         /// </summary>
         [JsonProperty("payouts")]

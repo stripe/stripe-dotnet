@@ -45,11 +45,11 @@ namespace Stripe
 
         /// <summary>
         /// Create a token for the customer, which is owned by the application's account. You can
-        /// only use this with an <a href="https://stripe.com/docs/connect/standard-accounts">OAuth
+        /// only use this with an <a href="https://docs.stripe.com/connect/standard-accounts">OAuth
         /// access token</a> or <a
-        /// href="https://stripe.com/docs/connect/authentication">Stripe-Account header</a>. Learn
+        /// href="https://docs.stripe.com/connect/authentication">Stripe-Account header</a>. Learn
         /// more about <a
-        /// href="https://stripe.com/docs/connect/cloning-saved-payment-methods">cloning saved
+        /// href="https://docs.stripe.com/connect/cloning-saved-payment-methods">cloning saved
         /// payment methods</a>.
         /// </summary>
         [JsonProperty("customer")]

@@ -12,7 +12,7 @@ namespace Stripe
     /// <summary>
     /// Issue a credit note to adjust an invoice's amount after the invoice is finalized.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/billing/invoices/credit-notes">Credit
+    /// Related guide: <a href="https://docs.stripe.com/billing/invoices/credit-notes">Credit
     /// notes</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -121,7 +121,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// ID of the account.
+        /// ID of the account representing the customer.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
@@ -272,7 +272,7 @@ namespace Stripe
         public string Memo { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -371,7 +371,7 @@ namespace Stripe
 
         /// <summary>
         /// Status of this credit note, one of <c>issued</c> or <c>void</c>. Learn more about <a
-        /// href="https://stripe.com/docs/billing/invoices/credit-notes#voiding">voiding credit
+        /// href="https://docs.stripe.com/billing/invoices/credit-notes#voiding">voiding credit
         /// notes</a>.
         /// One of: <c>issued</c>, or <c>void</c>.
         /// </summary>

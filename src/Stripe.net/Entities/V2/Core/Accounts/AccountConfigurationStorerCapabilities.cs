@@ -27,7 +27,7 @@ namespace Stripe.V2.Core
         public AccountConfigurationStorerCapabilitiesHoldsCurrencies HoldsCurrencies { get; set; }
 
         /// <summary>
-        /// Can pull funds from an external source, owned by yourself, to a FinancialAccount.
+        /// Hash containing capabilities related to InboundTransfers.
         /// </summary>
         [JsonProperty("inbound_transfers")]
 #if NET6_0_OR_GREATER
@@ -36,7 +36,8 @@ namespace Stripe.V2.Core
         public AccountConfigurationStorerCapabilitiesInboundTransfers InboundTransfers { get; set; }
 
         /// <summary>
-        /// Can send funds from a FinancialAccount to a destination owned by someone else.
+        /// Hash containing capabilities related to <a
+        /// href="https://stripe.com/api/treasury/outbound_payments?api-version=preview">OutboundPayments</a>.
         /// </summary>
         [JsonProperty("outbound_payments")]
 #if NET6_0_OR_GREATER
@@ -45,7 +46,8 @@ namespace Stripe.V2.Core
         public AccountConfigurationStorerCapabilitiesOutboundPayments OutboundPayments { get; set; }
 
         /// <summary>
-        /// Can send funds from a FinancialAccount to a destination owned by yourself.
+        /// Hash containing capabilities related to <a
+        /// href="https://stripe.com/api/treasury/outbound_transfers?api-version=preview">OutboundTransfers</a>.
         /// </summary>
         [JsonProperty("outbound_transfers")]
 #if NET6_0_OR_GREATER

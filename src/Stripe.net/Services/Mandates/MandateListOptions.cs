@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// The Stripe account ID that the mandates are intended for. Learn more about the <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// href="https://docs.stripe.com/payments/connected-accounts">use case for connected
         /// accounts payments</a>.
         /// </summary>
         [JsonProperty("on_behalf_of")]

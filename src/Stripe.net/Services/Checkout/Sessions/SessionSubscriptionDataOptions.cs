@@ -59,7 +59,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// The subscription's description, meant to be displayable to the customer. Use this field
         /// to optionally store an explanation of the subscription for rendering in the <a
-        /// href="https://stripe.com/docs/customer-management">customer portal</a>.
+        /// href="https://docs.stripe.com/customer-management">customer portal</a>.
         /// </summary>
         [JsonProperty("description")]
 #if NET6_0_OR_GREATER
@@ -77,7 +77,7 @@ namespace Stripe.Checkout
         public SessionSubscriptionDataInvoiceSettingsOptions InvoiceSettings { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.

@@ -10,8 +10,8 @@ namespace Stripe.V2.Core
     public class AccountConfigurationStorer : StripeEntity<AccountConfigurationStorer>
     {
         /// <summary>
-        /// Represents the state of the configuration, and can be updated to deactivate or re-apply
-        /// a configuration.
+        /// Indicates whether the storer configuration is active. You cannot deactivate (or
+        /// reactivate) the storer configuration by updating this property.
         /// </summary>
         [JsonProperty("applied")]
 #if NET6_0_OR_GREATER
@@ -46,7 +46,7 @@ namespace Stripe.V2.Core
         public List<string> HighRiskActivities { get; set; }
 
         /// <summary>
-        /// An explanation of the high risk activities that the business performs.
+        /// Description of the high-risk activities the business offers.
         /// </summary>
         [JsonProperty("high_risk_activities_description")]
 #if NET6_0_OR_GREATER
@@ -64,7 +64,7 @@ namespace Stripe.V2.Core
         public string MoneyServicesDescription { get; set; }
 
         /// <summary>
-        /// Does the business operate in any prohibited countries.
+        /// Indicates whether the business operates in any prohibited countries.
         /// </summary>
         [JsonProperty("operates_in_prohibited_countries")]
 #if NET6_0_OR_GREATER

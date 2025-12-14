@@ -69,6 +69,16 @@ namespace Stripe
         public SubscriptionPaymentSettingsPaymentMethodOptionsKonbini Konbini { get; set; }
 
         /// <summary>
+        /// This sub-hash contains details about the PayTo payment method options to pass to
+        /// invoices created by the subscription.
+        /// </summary>
+        [JsonProperty("payto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payto")]
+#endif
+        public SubscriptionPaymentSettingsPaymentMethodOptionsPayto Payto { get; set; }
+
+        /// <summary>
         /// This sub-hash contains details about the Pix payment method options to pass to invoices
         /// created by the subscription.
         /// </summary>

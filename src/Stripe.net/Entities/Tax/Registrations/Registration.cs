@@ -11,13 +11,13 @@ namespace Stripe.Tax
     /// <summary>
     /// A Tax <c>Registration</c> lets us know that your business is registered to collect tax
     /// on payments within a region, enabling you to <a
-    /// href="https://stripe.com/docs/tax">automatically collect tax</a>.
+    /// href="https://docs.stripe.com/tax">automatically collect tax</a>.
     ///
     /// Stripe doesn't register on your behalf with the relevant authorities when you create a
     /// Tax <c>Registration</c> object. For more information on how to register to collect tax,
-    /// see <a href="https://stripe.com/docs/tax/registering">our guide</a>.
+    /// see <a href="https://docs.stripe.com/tax/registering">our guide</a>.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/tax/registrations-api">Using the
+    /// Related guide: <a href="https://docs.stripe.com/tax/registrations-api">Using the
     /// Registrations API</a>.
     /// </summary>
     public class Registration : StripeEntity<Registration>, IHasId, IHasObject

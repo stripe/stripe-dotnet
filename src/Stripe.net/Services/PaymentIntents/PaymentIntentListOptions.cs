@@ -33,7 +33,8 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// Only return PaymentIntents for the account that this ID specifies.
+        /// Only return PaymentIntents for the account representing the customer that this ID
+        /// specifies.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

@@ -47,8 +47,8 @@ namespace Stripe.V2.Core
         public AccountIdentityBusinessDetailsDocuments Documents { get; set; }
 
         /// <summary>
-        /// An estimated upper bound of employees, contractors, vendors, etc. currently working for
-        /// the business.
+        /// Estimated maximum number of workers currently engaged by the business (including
+        /// employees, contractors, and vendors).
         /// </summary>
         [JsonProperty("estimated_worker_count")]
 #if NET6_0_OR_GREATER
@@ -66,7 +66,8 @@ namespace Stripe.V2.Core
         public List<AccountIdentityBusinessDetailsIdNumber> IdNumbers { get; set; }
 
         /// <summary>
-        /// An estimate of the monthly revenue of the business.
+        /// An estimate of the monthly revenue of the business. Only accepted for accounts in Brazil
+        /// and India.
         /// </summary>
         [JsonProperty("monthly_estimated_revenue")]
 #if NET6_0_OR_GREATER
