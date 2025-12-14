@@ -32,7 +32,7 @@ namespace Stripe.V2.Payments
         public string Object { get; set; }
 
         /// <summary>
-        /// The ID of the account that will be used for the debit/credit.
+        /// The account id against which the SettlementAllocationIntentSplit should be settled.
         /// </summary>
         [JsonProperty("account")]
 #if NET6_0_OR_GREATER

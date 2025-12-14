@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Occurs when a settlement allocation intent is matched.
+    /// Occurs when a SettlementAllocationIntent is matched.
     /// </summary>
     public class V2PaymentsSettlementAllocationIntentMatchedEvent : V2.Core.Event
     {

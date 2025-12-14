@@ -9,7 +9,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Occurs when a settlement allocation intent split is canceled.
+    /// Occurs when a SettlementAllocationIntentSplit is canceled.
     /// </summary>
     public class V2PaymentsSettlementAllocationIntentSplitCanceledEventNotification : V2.Core.EventNotification
     {

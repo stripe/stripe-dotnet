@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.MoneyManagement
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -18,5 +19,16 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("status")]
 #endif
         public string Status { get; set; }
+
+        /// <summary>
+        /// Filter for FinancialAccount <c>type</c>. By default, FinancialAccounts of any
+        /// <c>type</c> are returned.
+        /// One of: <c>payments</c>, or <c>storage</c>.
+        /// </summary>
+        [JsonProperty("types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("types")]
+#endif
+        public List<string> Types { get; set; }
     }
 }

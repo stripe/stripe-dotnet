@@ -10,7 +10,7 @@ namespace Stripe.V2.Payments.SettlementAllocationIntents
     public class SplitCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The account to target for this credit/debit.
+        /// The target account for settling the SettlementAllocationIntentSplit.
         /// </summary>
         [JsonProperty("account")]
 #if NET6_0_OR_GREATER

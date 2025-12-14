@@ -42,7 +42,7 @@ namespace Stripe.V2.Payments
         public SettlementAllocationIntentAmount Amount { get; set; }
 
         /// <summary>
-        /// Timestamp at which Settlement Intent was created .
+        /// Timestamp at which SettlementAllocationIntent was created .
         /// </summary>
         [JsonProperty("created")]
 #if NET6_0_OR_GREATER
@@ -51,7 +51,7 @@ namespace Stripe.V2.Payments
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Expected date when we expect to receive the funds.
+        /// Date when we expect to receive the funds.
         /// </summary>
         [JsonProperty("expected_settlement_date")]
 #if NET6_0_OR_GREATER
@@ -60,7 +60,7 @@ namespace Stripe.V2.Payments
         public DateTime ExpectedSettlementDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Financial Account Id where the funds are expected.
+        /// FinancialAccount ID where the funds are expected.
         /// </summary>
         [JsonProperty("financial_account")]
 #if NET6_0_OR_GREATER
@@ -97,8 +97,8 @@ namespace Stripe.V2.Payments
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Reference for the settlement intent . The reference used by PSP to send funds to Stripe
-        /// .
+        /// Reference for the SettlementAllocationIntent. This is the transaction reference used by
+        /// payments processor to send funds to Stripe .
         /// </summary>
         [JsonProperty("reference")]
 #if NET6_0_OR_GREATER
@@ -107,7 +107,7 @@ namespace Stripe.V2.Payments
         public string Reference { get; set; }
 
         /// <summary>
-        /// Settlement Intent status.
+        /// SettlementAllocationIntent status.
         /// One of: <c>canceled</c>, <c>errored</c>, <c>matched</c>, <c>pending</c>, <c>settled</c>,
         /// or <c>submitted</c>.
         /// </summary>
@@ -118,9 +118,7 @@ namespace Stripe.V2.Payments
         public string Status { get; set; }
 
         /// <summary>
-        /// This hash contains detailed information that elaborates on the specific status of the
-        /// SettlementAllocationIntent. e.g the reason behind the error failure if the status is
-        /// marked as <c>errored</c>.
+        /// Status details for a SettlementAllocationIntent in <c>errored</c> state.
         /// </summary>
         [JsonProperty("status_details")]
 #if NET6_0_OR_GREATER

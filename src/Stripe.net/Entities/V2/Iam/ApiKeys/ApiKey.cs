@@ -51,7 +51,8 @@ namespace Stripe.V2.Iam
         public DateTime? ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// List of IP addresses allowed to use this API key.
+        /// List of IP addresses allowed to use this API key. Addresses use IPv4 protocol, and may
+        /// be a CIDR range (e.g., [100.10.38.255, 100.10.38.0/24]).
         /// </summary>
         [JsonProperty("ip_allowlist")]
 #if NET6_0_OR_GREATER
@@ -85,7 +86,7 @@ namespace Stripe.V2.Iam
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_by")]
 #endif
-        public string ManagedBy { get; set; }
+        public ApiKeyManagedBy ManagedBy { get; set; }
 
         /// <summary>
         /// Name of the API key.

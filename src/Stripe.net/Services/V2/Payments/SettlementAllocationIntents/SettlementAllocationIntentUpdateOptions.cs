@@ -9,7 +9,8 @@ namespace Stripe.V2.Payments
     public class SettlementAllocationIntentUpdateOptions : BaseOptions
     {
         /// <summary>
-        /// The new amount for the SettlementAllocationIntent.
+        /// The new amount for the SettlementAllocationIntent. Only amount.value can be updated and
+        /// currency must remain same.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER

@@ -9,7 +9,8 @@ namespace Stripe.V2.Iam
     public class ApiKeyRotateOptions : BaseOptions
     {
         /// <summary>
-        /// Duration in minutes before the current key expires.
+        /// Duration in minutes before the current key expires, with a maximum of 7 days (10080
+        /// minutes). If not provided, the current key expires immediately.
         /// </summary>
         [JsonProperty("expire_current_key_in_minutes")]
 #if NET6_0_OR_GREATER

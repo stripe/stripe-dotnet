@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Occurs when an error occurs in reconciling a settlement allocation intent.
+    /// Occurs when an error occurs in reconciling a SettlementAllocationIntent.
     /// </summary>
     public class V2PaymentsSettlementAllocationIntentErroredEvent : V2.Core.Event
     {

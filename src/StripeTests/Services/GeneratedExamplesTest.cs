@@ -8630,7 +8630,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/iam/api_keys",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"type\":\"publishable_key\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"status\":\"active\",\"type\":\"publishable_key\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ApiKeys;
             Stripe.V2.StripeList<Stripe.V2.Iam.ApiKey> apiKeys = service.List();
@@ -8644,7 +8644,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/iam/api_keys",
                 (HttpStatusCode)200,
-                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"type\":\"publishable_key\",\"livemode\":true}");
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"status\":\"active\",\"type\":\"publishable_key\",\"livemode\":true}");
             var options = new Stripe.V2.Iam.ApiKeyCreateOptions
             {
                 Type = "publishable_key",
@@ -8662,7 +8662,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/iam/api_keys/id_123",
                 (HttpStatusCode)200,
-                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"type\":\"publishable_key\",\"livemode\":true}");
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"status\":\"active\",\"type\":\"publishable_key\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ApiKeys;
             Stripe.V2.Iam.ApiKey apiKey = service.Get("id_123");
@@ -8676,7 +8676,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/iam/api_keys/id_123",
                 (HttpStatusCode)200,
-                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"type\":\"publishable_key\",\"livemode\":true}");
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"status\":\"active\",\"type\":\"publishable_key\",\"livemode\":true}");
             var options = new Stripe.V2.Iam.ApiKeyUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ApiKeys;
@@ -8691,7 +8691,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/iam/api_keys/id_123/expire",
                 (HttpStatusCode)200,
-                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"type\":\"publishable_key\",\"livemode\":true}");
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"status\":\"active\",\"type\":\"publishable_key\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ApiKeys;
             Stripe.V2.Iam.ApiKey apiKey = service.Expire("id_123");
@@ -8707,7 +8707,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/iam/api_keys/id_123/rotate",
                 (HttpStatusCode)200,
-                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"type\":\"publishable_key\",\"livemode\":true}");
+                "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"ip_allowlist\":[\"ip_allowlist\"],\"object\":\"v2.iam.api_key\",\"status\":\"active\",\"type\":\"publishable_key\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Iam.ApiKeys;
             Stripe.V2.Iam.ApiKey apiKey = service.Rotate("id_123");

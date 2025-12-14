@@ -8,7 +8,8 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Occurs when no received credit exists for a settlement allocation intent.
+    /// Occurs when SettlementAllocationIntent's <c>expected_settlement_date</c> is one day away
+    /// and no matching ReceivedCredit exists.
     /// </summary>
     public class V2PaymentsSettlementAllocationIntentFundsNotReceivedEvent : V2.Core.Event
     {

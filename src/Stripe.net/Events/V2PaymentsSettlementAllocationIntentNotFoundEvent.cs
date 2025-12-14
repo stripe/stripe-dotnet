@@ -8,7 +8,7 @@ namespace Stripe.Events
 #endif
 
     /// <summary>
-    /// Occurs when a ReceivedCredit has no settlement intent matching it.
+    /// Occurs when a ReceivedCredit has no SettlementAllocationIntent matching it.
     /// </summary>
     public class V2PaymentsSettlementAllocationIntentNotFoundEvent : V2.Core.Event
     {
