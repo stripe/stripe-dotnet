@@ -74,7 +74,7 @@ namespace StripeTests
             }
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, UnhandledHandler);
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler;
+            handler.V1BillingMeterErrorReportTriggered += Handler;
 
             var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
             handler.Handle(this.V1BillingMeterPayload, sigHeader);
@@ -115,8 +115,8 @@ namespace StripeTests
             }
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, UnhandledHandler);
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += BillingHandler;
-            handler.V1BillingMeterNoMeterFoundEventNotification += NoMeterHandler;
+            handler.V1BillingMeterErrorReportTriggered += BillingHandler;
+            handler.V1BillingMeterNoMeterFound += NoMeterHandler;
 
             var sigHeader1 = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
             handler.Handle(this.V1BillingMeterPayload, sigHeader1);
@@ -150,7 +150,7 @@ namespace StripeTests
             }
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler;
+            handler.V1BillingMeterErrorReportTriggered += Handler;
 
             var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
             handler.Handle(this.V1BillingMeterPayload, sigHeader);
@@ -176,11 +176,11 @@ namespace StripeTests
             }
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler1;
+            handler.V1BillingMeterErrorReportTriggered += Handler1;
 
             var exception = Assert.Throws<InvalidOperationException>(() =>
             {
-                handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler2;
+                handler.V1BillingMeterErrorReportTriggered += Handler2;
             });
 
             Assert.Contains("already registered", exception.Message);
@@ -194,11 +194,11 @@ namespace StripeTests
             }
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler;
+            handler.V1BillingMeterErrorReportTriggered += Handler;
 
             var exception = Assert.Throws<InvalidOperationException>(() =>
             {
-                handler.V1BillingMeterErrorReportTriggeredEventNotification -= Handler;
+                handler.V1BillingMeterErrorReportTriggered -= Handler;
             });
 
             Assert.Contains("not supported", exception.Message);
@@ -235,7 +235,7 @@ namespace StripeTests
             }
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler;
+            handler.V1BillingMeterErrorReportTriggered += Handler;
 
             var types = handler.HandledEventTypes();
 
@@ -253,9 +253,9 @@ namespace StripeTests
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, (s, e) => { });
 
             // Register in non-alphabetical order
-            handler.V2CoreAccountUpdatedEventNotification += Handler;
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler;
-            handler.V2CoreAccountCreatedEventNotification += Handler;
+            handler.V2CoreAccountUpdated += Handler;
+            handler.V1BillingMeterErrorReportTriggered += Handler;
+            handler.V2CoreAccountCreated += Handler;
 
             var types = handler.HandledEventTypes();
 
@@ -346,7 +346,7 @@ namespace StripeTests
             }
 
             var handler = new StripeEventNotificationHandler(this.stripeClient, WebhookSecret, UnhandledHandler);
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler;
+            handler.V1BillingMeterErrorReportTriggered += Handler;
 
             var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
             handler.Handle(this.V1BillingMeterPayload, sigHeader);
@@ -378,7 +378,7 @@ namespace StripeTests
             var requestor = client.Requestor as LiveApiRequestor;
             Assert.Equal("original_context_123", requestor?.CurrentStripeContext?.ToString());
 
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler;
+            handler.V1BillingMeterErrorReportTriggered += Handler;
 
             var sigHeader = StripeTests.V2.EventTest.GenerateSigHeader(this.V1BillingMeterPayload);
             handler.Handle(this.V1BillingMeterPayload, sigHeader);
@@ -409,7 +409,7 @@ namespace StripeTests
             var client = new StripeClient(clientOptions);
             var handler = new StripeEventNotificationHandler(client, WebhookSecret, (s, e) => { });
 
-            handler.V1BillingMeterErrorReportTriggeredEventNotification += Handler;
+            handler.V1BillingMeterErrorReportTriggered += Handler;
 
             var requestor = client.Requestor as LiveApiRequestor;
             Assert.Equal("original_context_123", requestor?.CurrentStripeContext?.ToString());
@@ -444,7 +444,7 @@ namespace StripeTests
             var client = new StripeClient(clientOptions);
             var handler = new StripeEventNotificationHandler(client, WebhookSecret, (s, e) => { });
 
-            handler.V2CoreAccountCreatedEventNotification += Handler;
+            handler.V2CoreAccountCreated += Handler;
 
             var payload = @"{
                 ""id"": ""evt_account_created"",
