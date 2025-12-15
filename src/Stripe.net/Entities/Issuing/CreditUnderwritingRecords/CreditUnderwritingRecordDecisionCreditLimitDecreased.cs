@@ -12,7 +12,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// Credit amount approved after decrease. An approved credit limit is required before you
         /// can set a amount in the <a
-        /// href="https://stripe.com/docs/api/issuing/credit_policy">CreditPolicy API</a>.
+        /// href="https://docs.stripe.com/api/issuing/credit_policy">CreditPolicy API</a>.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER

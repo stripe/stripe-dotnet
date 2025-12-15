@@ -12,8 +12,11 @@ namespace Stripe
     public class CapabilityFutureRequirements : StripeEntity<CapabilityFutureRequirements>
     {
         /// <summary>
-        /// Fields that are due and can be satisfied by providing the corresponding alternative
-        /// fields instead.
+        /// Fields that are due and can be resolved by providing the corresponding alternative
+        /// fields instead. Multiple alternatives can reference the same <c>original_fields_due</c>.
+        /// When this happens, any of these alternatives can serve as a pathway for attempting to
+        /// resolve the fields. Additionally, providing <c>original_fields_due</c> again also serves
+        /// as a pathway for attempting to resolve the fields.
         /// </summary>
         [JsonProperty("alternatives")]
 #if NET6_0_OR_GREATER
@@ -36,7 +39,7 @@ namespace Stripe
         public DateTime? CurrentDeadline { get; set; }
 
         /// <summary>
-        /// Fields that need to be collected to keep the capability enabled. If not collected by
+        /// Fields that need to be resolved to keep the capability enabled. If not resolved by
         /// <c>future_requirements[current_deadline]</c>, these fields will transition to the main
         /// <c>requirements</c> hash.
         /// </summary>
@@ -62,8 +65,8 @@ namespace Stripe
         public string DisabledReason { get; set; }
 
         /// <summary>
-        /// Fields that are <c>currently_due</c> and need to be collected again because validation
-        /// or verification failed.
+        /// Details about validation and verification failures for <c>due</c> requirements that must
+        /// be resolved.
         /// </summary>
         [JsonProperty("errors")]
 #if NET6_0_OR_GREATER
@@ -82,10 +85,9 @@ namespace Stripe
         public List<string> EventuallyDue { get; set; }
 
         /// <summary>
-        /// Fields that weren't collected by <c>requirements.current_deadline</c>. These fields need
-        /// to be collected to enable the capability on the account. New fields will never appear
-        /// here; <c>future_requirements.past_due</c> will always be a subset of
-        /// <c>requirements.past_due</c>.
+        /// Fields that haven't been resolved by <c>requirements.current_deadline</c>. These fields
+        /// need to be resolved to enable the capability on the account.
+        /// <c>future_requirements.past_due</c> is a subset of <c>requirements.past_due</c>.
         /// </summary>
         [JsonProperty("past_due")]
 #if NET6_0_OR_GREATER
@@ -94,12 +96,11 @@ namespace Stripe
         public List<string> PastDue { get; set; }
 
         /// <summary>
-        /// Fields that might become required depending on the results of verification or review.
-        /// It's an empty array unless an asynchronous verification is pending. If verification
-        /// fails, these fields move to <c>eventually_due</c> or <c>currently_due</c>. Fields might
-        /// appear in <c>eventually_due</c> or <c>currently_due</c> and in
-        /// <c>pending_verification</c> if verification fails but another verification is still
-        /// pending.
+        /// Fields that are being reviewed, or might become required depending on the results of a
+        /// review. If the review fails, these fields can move to <c>eventually_due</c>,
+        /// <c>currently_due</c>, <c>past_due</c> or <c>alternatives</c>. Fields might appear in
+        /// <c>eventually_due</c>, <c>currently_due</c>, <c>past_due</c> or <c>alternatives</c> and
+        /// in <c>pending_verification</c> if one verification fails but another is still pending.
         /// </summary>
         [JsonProperty("pending_verification")]
 #if NET6_0_OR_GREATER

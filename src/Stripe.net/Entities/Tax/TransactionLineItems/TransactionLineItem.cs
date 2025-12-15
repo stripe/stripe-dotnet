@@ -29,7 +29,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The line item amount in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. If
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. If
         /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes were
         /// calculated on top of this amount.
         /// </summary>
@@ -41,7 +41,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount of tax calculated for this line item, in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
 #if NET6_0_OR_GREATER
@@ -60,7 +60,7 @@ namespace Stripe.Tax
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Stripe.Tax
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The ID of an existing <a href="https://stripe.com/docs/api/products/object">Product</a>.
+        /// The ID of an existing <a href="https://docs.stripe.com/api/products/object">Product</a>.
         /// </summary>
         [JsonProperty("product")]
 #if NET6_0_OR_GREATER
@@ -119,7 +119,7 @@ namespace Stripe.Tax
         public string TaxBehavior { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID used for this
+        /// The <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID used for this
         /// resource.
         /// </summary>
         [JsonProperty("tax_code")]

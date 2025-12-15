@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// The total amount of tax on the transaction represented in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// Required for L2 rates. An integer greater than or equal to 0.
         ///
         /// This field is mutually exclusive with the

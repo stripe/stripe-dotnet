@@ -165,6 +165,9 @@ namespace Stripe
                 { "refund", typeof(Refund) },
                 { "reporting.report_run", typeof(Reporting.ReportRun) },
                 { "reporting.report_type", typeof(Reporting.ReportType) },
+                { "reserve.hold", typeof(Reserve.Hold) },
+                { "reserve.plan", typeof(Reserve.Plan) },
+                { "reserve.release", typeof(Reserve.Release) },
                 { "reserve_transaction", typeof(ReserveTransaction) },
                 { "review", typeof(Review) },
                 { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },
@@ -479,6 +482,10 @@ namespace Stripe
                     Events.V2MoneyManagementOutboundTransferUpdatedEvent)
                 },
                 {
+                    "v2.money_management.payout_method.created", typeof(
+                    Events.V2MoneyManagementPayoutMethodCreatedEvent)
+                },
+                {
                     "v2.money_management.payout_method.updated", typeof(
                     Events.V2MoneyManagementPayoutMethodUpdatedEvent)
                 },
@@ -713,6 +720,10 @@ namespace Stripe
                 {
                     "v2.money_management.outbound_transfer.updated", typeof(
                     Events.V2MoneyManagementOutboundTransferUpdatedEventNotification)
+                },
+                {
+                    "v2.money_management.payout_method.created", typeof(
+                    Events.V2MoneyManagementPayoutMethodCreatedEventNotification)
                 },
                 {
                     "v2.money_management.payout_method.updated", typeof(

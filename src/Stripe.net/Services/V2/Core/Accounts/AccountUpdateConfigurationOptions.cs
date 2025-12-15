@@ -18,9 +18,11 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationCustomerOptions Customer { get; set; }
 
         /// <summary>
-        /// The Merchant configuration allows the Account to act as a connected account and collect
-        /// payments facilitated by a Connect platform. You can add this configuration to your
-        /// connected accounts only if you’ve completed onboarding as a Connect platform.
+        /// Enables the Account to act as a connected account and collect payments facilitated by a
+        /// Connect platform. You must onboard your platform to Connect before you can add this
+        /// configuration to your connected accounts. Utilize this configuration when the Account
+        /// will be the Merchant of Record, like with Direct charges or Destination Charges with
+        /// on_behalf_of set.
         /// </summary>
         [JsonProperty("merchant")]
 #if NET6_0_OR_GREATER
@@ -29,7 +31,9 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationMerchantOptions Merchant { get; set; }
 
         /// <summary>
-        /// The Recipient Configuration allows the Account to receive funds.
+        /// The Recipient Configuration allows the Account to receive funds. Utilize this
+        /// configuration if the Account will not be the Merchant of Record, like with Separate
+        /// Charges &amp; Transfers, or Destination Charges without on_behalf_of set.
         /// </summary>
         [JsonProperty("recipient")]
 #if NET6_0_OR_GREATER

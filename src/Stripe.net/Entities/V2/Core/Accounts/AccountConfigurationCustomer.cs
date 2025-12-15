@@ -9,8 +9,10 @@ namespace Stripe.V2.Core
     public class AccountConfigurationCustomer : StripeEntity<AccountConfigurationCustomer>
     {
         /// <summary>
-        /// Represents the state of the configuration, and can be updated to deactivate or re-apply
-        /// a configuration.
+        /// Indicates whether the customer configuration is active. You can deactivate or reactivate
+        /// the customer configuration by updating this property. Deactivating the configuration by
+        /// setting this value to false will unrequest all capabilities within the configuration. It
+        /// will not delete any of the configuration's other properties.
         /// </summary>
         [JsonProperty("applied")]
 #if NET6_0_OR_GREATER
@@ -19,9 +21,9 @@ namespace Stripe.V2.Core
         public bool Applied { get; set; }
 
         /// <summary>
-        /// Automatic indirect tax settings to be used when automatic tax calculation is enabled on
-        /// the customer's invoices, subscriptions, checkout sessions, or payment links. Surfaces if
-        /// automatic tax calculation is possible given the current customer location information.
+        /// Settings for automatic indirect tax calculation on the customer's invoices,
+        /// subscriptions, Checkout Sessions, and Payment Links. Available when automatic tax
+        /// calculation is available for the customer account's location.
         /// </summary>
         [JsonProperty("automatic_indirect_tax")]
 #if NET6_0_OR_GREATER
@@ -30,8 +32,7 @@ namespace Stripe.V2.Core
         public AccountConfigurationCustomerAutomaticIndirectTax AutomaticIndirectTax { get; set; }
 
         /// <summary>
-        /// Billing settings - default settings used for this customer in Billing flows such as
-        /// Invoices and Subscriptions.
+        /// Default Billing settings for the customer account, used in Invoices and Subscriptions.
         /// </summary>
         [JsonProperty("billing")]
 #if NET6_0_OR_GREATER

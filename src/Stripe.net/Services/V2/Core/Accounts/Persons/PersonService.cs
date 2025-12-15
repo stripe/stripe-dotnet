@@ -21,7 +21,8 @@ namespace Stripe.V2.Core.Accounts
         }
 
         /// <summary>
-        /// Create a Person associated with an Account.
+        /// Create a Person. Adds an individual to an Account's identity. You can set relationship
+        /// attributes and identity information at creation.
         /// </summary>
         public virtual V2.Core.AccountPerson Create(string id, PersonCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,7 +30,8 @@ namespace Stripe.V2.Core.Accounts
         }
 
         /// <summary>
-        /// Create a Person associated with an Account.
+        /// Create a Person. Adds an individual to an Account's identity. You can set relationship
+        /// attributes and identity information at creation.
         /// </summary>
         public virtual Task<V2.Core.AccountPerson> CreateAsync(string id, PersonCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -69,7 +71,7 @@ namespace Stripe.V2.Core.Accounts
         }
 
         /// <summary>
-        /// Returns a list of Persons associated with an Account.
+        /// Returns a paginated list of Persons associated with an Account.
         /// </summary>
         public virtual V2.StripeList<V2.Core.AccountPerson> List(string id, PersonListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -77,7 +79,7 @@ namespace Stripe.V2.Core.Accounts
         }
 
         /// <summary>
-        /// Returns a list of Persons associated with an Account.
+        /// Returns a paginated list of Persons associated with an Account.
         /// </summary>
         public virtual Task<V2.StripeList<V2.Core.AccountPerson>> ListAsync(string id, PersonListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -85,7 +87,7 @@ namespace Stripe.V2.Core.Accounts
         }
 
         /// <summary>
-        /// Returns a list of Persons associated with an Account.
+        /// Returns a paginated list of Persons associated with an Account.
         /// </summary>
         public virtual IEnumerable<V2.Core.AccountPerson> ListAutoPaging(string id, PersonListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -93,7 +95,7 @@ namespace Stripe.V2.Core.Accounts
         }
 
         /// <summary>
-        /// Returns a list of Persons associated with an Account.
+        /// Returns a paginated list of Persons associated with an Account.
         /// </summary>
         public virtual IAsyncEnumerable<V2.Core.AccountPerson> ListAutoPagingAsync(string id, PersonListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

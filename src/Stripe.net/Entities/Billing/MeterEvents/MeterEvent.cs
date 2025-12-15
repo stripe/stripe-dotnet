@@ -70,7 +70,7 @@ namespace Stripe.Billing
         /// <c>customer_mapping.event_payload_key</c> (default is <c>stripe_customer_id</c>) and
         /// <c>value_settings.event_payload_key</c> (default is <c>value</c>). Read more about the
         /// <a
-        /// href="https://stripe.com/docs/billing/subscriptions/usage-based/recording-usage#payload-key-overrides">payload</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/usage-based/meters/configure#meter-configuration-attributes">payload</a>.
         /// </summary>
         [JsonProperty("payload")]
 #if NET6_0_OR_GREATER

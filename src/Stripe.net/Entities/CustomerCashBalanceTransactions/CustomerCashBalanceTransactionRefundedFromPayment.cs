@@ -16,7 +16,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Refund)
-        /// The <a href="https://stripe.com/docs/api/refunds/object">Refund</a> that moved these
+        /// The <a href="https://docs.stripe.com/api/refunds/object">Refund</a> that moved these
         /// funds into the customer's cash balance.
         /// </summary>
         [JsonIgnore]
@@ -31,7 +31,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The <a href="https://stripe.com/docs/api/refunds/object">Refund</a> that moved these
+        /// The <a href="https://docs.stripe.com/api/refunds/object">Refund</a> that moved these
         /// funds into the customer's cash balance.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.

@@ -38,8 +38,8 @@ namespace Stripe
         public string BillingBehavior { get; set; }
 
         /// <summary>
-        /// The customer which this quote belongs to. A customer is required before finalizing the
-        /// quote. Once specified, it cannot be changed.
+        /// The customer who received this quote. A customer is required to finalize the quote. Once
+        /// specified, you can't change it.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
@@ -70,7 +70,7 @@ namespace Stripe
 
         /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>
+        /// href="https://docs.stripe.com/subscriptions/billing-cycle#prorations">prorations</a>
         /// when the quote is accepted.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>

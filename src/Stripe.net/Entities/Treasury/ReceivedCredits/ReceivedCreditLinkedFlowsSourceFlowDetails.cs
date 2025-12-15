@@ -10,8 +10,8 @@ namespace Stripe.Treasury
     {
         /// <summary>
         /// You can reverse some <a
-        /// href="https://stripe.com/docs/api#received_credits">ReceivedCredits</a> depending on
-        /// their network and source flow. Reversing a ReceivedCredit leads to the creation of a new
+        /// href="https://api.stripe.com#received_credits">ReceivedCredits</a> depending on their
+        /// network and source flow. Reversing a ReceivedCredit leads to the creation of a new
         /// object known as a CreditReversal.
         /// </summary>
         [JsonProperty("credit_reversal")]
@@ -24,9 +24,9 @@ namespace Stripe.Treasury
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a>
         /// to send funds to another party's external bank account or <a
-        /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>. To send
-        /// money to an account belonging to the same user, use an <a
-        /// href="https://stripe.com/docs/api#outbound_transfers">OutboundTransfer</a>.
+        /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a>. To send money to
+        /// an account belonging to the same user, use an <a
+        /// href="https://api.stripe.com#outbound_transfers">OutboundTransfer</a>.
         ///
         /// Simulate OutboundPayment state changes with the
         /// <c>/v1/test_helpers/treasury/outbound_payments</c> endpoints. These methods can only be
@@ -46,11 +46,11 @@ namespace Stripe.Treasury
         /// Use <a
         /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-transfers">OutboundTransfers</a>
         /// to transfer funds from a <a
-        /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> to a
-        /// PaymentMethod belonging to the same entity. To send funds to a different party, use <a
-        /// href="https://stripe.com/docs/api#outbound_payments">OutboundPayments</a> instead. You
-        /// can send funds over ACH rails or through a domestic wire transfer to a user's own
-        /// external bank account.
+        /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> to a PaymentMethod
+        /// belonging to the same entity. To send funds to a different party, use <a
+        /// href="https://api.stripe.com#outbound_payments">OutboundPayments</a> instead. You can
+        /// send funds over ACH rails or through a domestic wire transfer to a user's own external
+        /// bank account.
         ///
         /// Simulate OutboundTransfer state changes with the
         /// <c>/v1/test_helpers/treasury/outbound_transfers</c> endpoints. These methods can only be
@@ -74,7 +74,7 @@ namespace Stripe.Treasury
         /// on <a href="https://stripe.com/docs/connect/manage-payout-schedule">varying
         /// schedules</a>, depending on your country and industry.
         ///
-        /// Related guide: <a href="https://stripe.com/docs/payouts">Receiving payouts</a>.
+        /// Related guide: <a href="https://docs.stripe.com/payouts">Receiving payouts</a>.
         /// </summary>
         [JsonProperty("payout")]
 #if NET6_0_OR_GREATER

@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountConfigurationRecipientCapabilitiesStripeBalance : StripeEntity<AccountConfigurationRecipientCapabilitiesStripeBalance>
     {
         /// <summary>
-        /// Allows the account to do payouts using their Stripe Balance (/v1/balance).
+        /// Enables this Account to complete payouts from their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("payouts")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,7 @@ namespace Stripe.V2.Core
         public AccountConfigurationRecipientCapabilitiesStripeBalancePayouts Payouts { get; set; }
 
         /// <summary>
-        /// Allows the account to receive /v1/transfers into their Stripe Balance (/v1/balance).
+        /// Enables this Account to receive /v1/transfers into their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("stripe_transfers")]
 #if NET6_0_OR_GREATER

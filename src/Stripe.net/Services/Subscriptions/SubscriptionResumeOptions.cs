@@ -14,7 +14,7 @@ namespace Stripe
         /// The billing cycle anchor that applies when the subscription is resumed. Either
         /// <c>now</c> or <c>unchanged</c>. The default is <c>now</c>. For more information, see the
         /// billing cycle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>now</c>, or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
@@ -25,7 +25,7 @@ namespace Stripe
 
         /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> resulting
+        /// href="https://docs.stripe.com/billing/subscriptions/prorations">prorations</a> resulting
         /// from the <c>billing_cycle_anchor</c> being <c>unchanged</c>. When the
         /// <c>billing_cycle_anchor</c> is set to <c>now</c> (default value), no prorations are
         /// generated. If no value is passed, the default is <c>create_prorations</c>.

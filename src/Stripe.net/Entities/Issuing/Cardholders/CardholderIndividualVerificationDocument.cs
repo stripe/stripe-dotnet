@@ -16,9 +16,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (ID of the File)
-        /// The back of a document returned by a <a
-        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
-        /// value of <c>identity_document</c>.
+        /// The back of a document returned by a <a href="https://api.stripe.com#create_file">file
+        /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -32,9 +31,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (Expanded)
-        /// The back of a document returned by a <a
-        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
-        /// value of <c>identity_document</c>.
+        /// The back of a document returned by a <a href="https://api.stripe.com#create_file">file
+        /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -61,9 +59,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (ID of the File)
-        /// The front of a document returned by a <a
-        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
-        /// value of <c>identity_document</c>.
+        /// The front of a document returned by a <a href="https://api.stripe.com#create_file">file
+        /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -77,9 +74,8 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// (Expanded)
-        /// The front of a document returned by a <a
-        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
-        /// value of <c>identity_document</c>.
+        /// The front of a document returned by a <a href="https://api.stripe.com#create_file">file
+        /// upload</a> with a <c>purpose</c> value of <c>identity_document</c>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

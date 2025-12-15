@@ -9,7 +9,7 @@ namespace Stripe.Billing
     public class CreditBalanceSummaryGetOptions : BaseOptions
     {
         /// <summary>
-        /// The customer for which to fetch credit balance summary.
+        /// The customer whose credit balance summary you're retrieving.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,7 @@ namespace Stripe.Billing
         public string Customer { get; set; }
 
         /// <summary>
-        /// The account for which to fetch credit balance summary.
+        /// The account representing the customer whose credit balance summary you're retrieving.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

@@ -11,12 +11,12 @@ namespace Stripe
 
     /// <summary>
     /// Invoice Line Items represent the individual lines within an <a
-    /// href="https://stripe.com/docs/api/invoices">invoice</a> and only exist within the
+    /// href="https://docs.stripe.com/api/invoices">invoice</a> and only exist within the
     /// context of an invoice.
     ///
     /// Each line item is backed by either an <a
-    /// href="https://stripe.com/docs/api/invoiceitems">invoice item</a> or a <a
-    /// href="https://stripe.com/docs/api/subscription_items">subscription item</a>.
+    /// href="https://docs.stripe.com/api/invoiceitems">invoice item</a> or a <a
+    /// href="https://docs.stripe.com/api/subscription_items">subscription item</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -201,7 +201,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Note that for line items with <c>type=subscription</c>,
         /// <c>metadata</c> reflects the current metadata from the subscription associated with the
@@ -287,6 +287,16 @@ namespace Stripe
 #endif
         internal ExpandableField<Subscription> InternalSubscription { get; set; }
         #endregion
+
+        /// <summary>
+        /// The subtotal of the line item, in cents (or local equivalent), before any discounts or
+        /// taxes.
+        /// </summary>
+        [JsonProperty("subtotal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subtotal")]
+#endif
+        public long Subtotal { get; set; }
 
         /// <summary>
         /// The tax calculation identifiers of the line item.

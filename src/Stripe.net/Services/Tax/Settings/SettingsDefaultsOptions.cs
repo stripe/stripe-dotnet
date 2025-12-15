@@ -23,7 +23,7 @@ namespace Stripe.Tax
         public string TaxBehavior { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
+        /// A <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonProperty("tax_code")]
 #if NET6_0_OR_GREATER

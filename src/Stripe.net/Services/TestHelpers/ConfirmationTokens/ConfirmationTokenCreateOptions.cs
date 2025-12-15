@@ -49,7 +49,7 @@ namespace Stripe.TestHelpers
         /// method.
         ///
         /// The presence of this property will <a
-        /// href="https://stripe.com/docs/payments/save-during-payment">attach the payment
+        /// href="https://docs.stripe.com/payments/save-during-payment">attach the payment
         /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
         /// confirmed and any required actions from the user are complete.
         /// One of: <c>off_session</c>, or <c>on_session</c>.

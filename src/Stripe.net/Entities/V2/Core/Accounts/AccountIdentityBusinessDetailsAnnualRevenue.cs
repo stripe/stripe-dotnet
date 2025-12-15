@@ -9,13 +9,13 @@ namespace Stripe.V2.Core
     public class AccountIdentityBusinessDetailsAnnualRevenue : StripeEntity<AccountIdentityBusinessDetailsAnnualRevenue>
     {
         /// <summary>
-        /// A non-negative integer representing the amount in the smallest currency unit.
+        /// Annual revenue amount in minor currency units (for example, '123' for 1.23 USD).
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public AccountIdentityBusinessDetailsAnnualRevenueAmount Amount { get; set; }
 
         /// <summary>
         /// The close-out date of the preceding fiscal year in ISO 8601 format. E.g. 2023-12-31 for

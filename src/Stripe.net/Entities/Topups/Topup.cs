@@ -13,7 +13,7 @@ namespace Stripe
     /// To top up your Stripe balance, you create a top-up object. You can retrieve individual
     /// top-ups, as well as list all top-ups. Top-ups are identified by a unique, random ID.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/connect/top-ups">Topping up your
+    /// Related guide: <a href="https://docs.stripe.com/connect/top-ups">Topping up your
     /// platform account</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -137,7 +137,7 @@ namespace Stripe
 
         /// <summary>
         /// Error code explaining reason for top-up failure if available (see <a
-        /// href="https://stripe.com/docs/api#errors">the errors section</a> for a list of codes).
+        /// href="https://docs.stripe.com/api#errors">the errors section</a> for a list of codes).
         /// </summary>
         [JsonProperty("failure_code")]
 #if NET6_0_OR_GREATER
@@ -165,7 +165,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

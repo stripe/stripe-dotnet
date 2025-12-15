@@ -167,7 +167,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -194,6 +194,16 @@ namespace Stripe
         [STJS.JsonPropertyName("processor_details")]
 #endif
         public PaymentRecordProcessorDetails ProcessorDetails { get; set; }
+
+        /// <summary>
+        /// Indicates who reported the payment.
+        /// One of: <c>self</c>, or <c>stripe</c>.
+        /// </summary>
+        [JsonProperty("reported_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reported_by")]
+#endif
+        public string ReportedBy { get; set; }
 
         /// <summary>
         /// Shipping information for this payment.

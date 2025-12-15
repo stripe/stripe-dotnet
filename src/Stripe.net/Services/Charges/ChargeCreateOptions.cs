@@ -12,10 +12,10 @@ namespace Stripe
     {
         /// <summary>
         /// Amount intended to be collected by this payment. A positive integer representing how
-        /// much to charge in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// much to charge in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest
         /// currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal
         /// currency). The minimum amount is $0.50 US or <a
-        /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent
+        /// href="https://docs.stripe.com/currencies#minimum-and-maximum-charge-amounts">equivalent
         /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
@@ -30,7 +30,7 @@ namespace Stripe
         /// to the application owner's Stripe account. The request must be made with an OAuth key or
         /// the <c>Stripe-Account</c> header in order to take an application fee. For more
         /// information, see the application fees <a
-        /// href="https://stripe.com/docs/connect/direct-charges#collect-fees">documentation</a>.
+        /// href="https://docs.stripe.com/connect/direct-charges#collect-fees">documentation</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
 #if NET6_0_OR_GREATER
@@ -41,9 +41,9 @@ namespace Stripe
         /// <summary>
         /// Whether to immediately capture the charge. Defaults to <c>true</c>. When <c>false</c>,
         /// the charge issues an authorization (or pre-authorization), and will need to be <a
-        /// href="https://stripe.com/docs/api#capture_charge">captured</a> later. Uncaptured charges
+        /// href="https://api.stripe.com#capture_charge">captured</a> later. Uncaptured charges
         /// expire after a set number of days (7 by default). For more information, see the <a
-        /// href="https://stripe.com/docs/charges/placing-a-hold">authorizing charges and settling
+        /// href="https://docs.stripe.com/charges/placing-a-hold">authorizing charges and settling
         /// later</a> documentation.
         /// </summary>
         [JsonProperty("capture")]
@@ -103,7 +103,7 @@ namespace Stripe
         public ChargeLevel3Options Level3 { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -115,9 +115,10 @@ namespace Stripe
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// The Stripe account ID for which these funds are intended. Automatically set if you use
-        /// the <c>destination</c> parameter. For details, see <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#settlement-merchant">Creating
+        /// The Stripe account ID for which these funds are intended. You can specify the business
+        /// of record as the connected account using the <c>on_behalf_of</c> attribute on the
+        /// charge. For details, see <a
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers#settlement-merchant">Creating
         /// Separate Charges and Transfers</a>.
         /// </summary>
         [JsonProperty("on_behalf_of")]
@@ -128,7 +129,7 @@ namespace Stripe
 
         /// <summary>
         /// Options to configure Radar. See <a
-        /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
+        /// href="https://docs.stripe.com/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
         [JsonProperty("radar_options")]
@@ -139,10 +140,10 @@ namespace Stripe
 
         /// <summary>
         /// The email address to which this charge's <a
-        /// href="https://stripe.com/docs/dashboard/receipts">receipt</a> will be sent. The receipt
+        /// href="https://docs.stripe.com/dashboard/receipts">receipt</a> will be sent. The receipt
         /// will not be sent until the charge is paid, and no receipts will be sent for test mode
         /// charges. If this charge is for a <a
-        /// href="https://stripe.com/docs/api/customers/object">Customer</a>, the email address
+        /// href="https://docs.stripe.com/api/customers/object">Customer</a>, the email address
         /// specified here will override the customer's email address. If <c>receipt_email</c> is
         /// specified for a charge in live mode, a receipt will be sent regardless of your <a
         /// href="https://dashboard.stripe.com/account/emails">email settings</a>.
@@ -164,15 +165,15 @@ namespace Stripe
 
         /// <summary>
         /// A payment source to be charged. This can be the ID of a <a
-        /// href="https://stripe.com/docs/api#cards">card</a> (i.e., credit or debit card), a <a
-        /// href="https://stripe.com/docs/api#bank_accounts">bank account</a>, a <a
-        /// href="https://stripe.com/docs/api#sources">source</a>, a <a
-        /// href="https://stripe.com/docs/api#tokens">token</a>, or a <a
-        /// href="https://stripe.com/docs/connect/account-debits#charging-a-connected-account">connected
+        /// href="https://docs.stripe.com/api#cards">card</a> (i.e., credit or debit card), a <a
+        /// href="https://docs.stripe.com/api#bank_accounts">bank account</a>, a <a
+        /// href="https://docs.stripe.com/api#sources">source</a>, a <a
+        /// href="https://docs.stripe.com/api#tokens">token</a>, or a <a
+        /// href="https://docs.stripe.com/connect/account-debits#charging-a-connected-account">connected
         /// account</a>. For certain sources---namely, <a
-        /// href="https://stripe.com/docs/api#cards">cards</a>, <a
-        /// href="https://stripe.com/docs/api#bank_accounts">bank accounts</a>, and attached <a
-        /// href="https://stripe.com/docs/api#sources">sources</a>---you must also pass the ID of
+        /// href="https://docs.stripe.com/api#cards">cards</a>, <a
+        /// href="https://docs.stripe.com/api#bank_accounts">bank accounts</a>, and attached <a
+        /// href="https://docs.stripe.com/api#sources">sources</a>---you must also pass the ID of
         /// the associated customer.
         /// </summary>
         [JsonProperty("source")]
@@ -214,7 +215,7 @@ namespace Stripe
 
         /// <summary>
         /// An optional dictionary including the account to automatically transfer to as part of a
-        /// destination charge. <a href="https://stripe.com/docs/connect/destination-charges">See
+        /// destination charge. <a href="https://docs.stripe.com/connect/destination-charges">See
         /// the Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_data")]
@@ -225,7 +226,7 @@ namespace Stripe
 
         /// <summary>
         /// A string that identifies this transaction as part of a group. For details, see <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Grouping
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers#transfer-options">Grouping
         /// transactions</a>.
         /// </summary>
         [JsonProperty("transfer_group")]

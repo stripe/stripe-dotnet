@@ -38,7 +38,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public ReceivedDebitAmount Amount { get; set; }
 
         /// <summary>
         /// This object stores details about the originating banking transaction that resulted in
@@ -127,7 +127,7 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedDebitStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
-        /// Open Enum. The type of the ReceivedDebit.
+        /// Open enum, the type of the received debit.
         /// One of: <c>bank_transfer</c>, or <c>external_debit</c>.
         /// </summary>
         [JsonProperty("type")]

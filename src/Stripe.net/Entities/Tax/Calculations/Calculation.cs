@@ -12,7 +12,7 @@ namespace Stripe.Tax
     /// <summary>
     /// A Tax Calculation allows you to calculate the tax to collect from your customer.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/tax/custom">Calculate tax in your custom
+    /// Related guide: <a href="https://docs.stripe.com/tax/custom">Calculate tax in your custom
     /// payment flow</a>.
     /// </summary>
     public class Calculation : StripeEntity<Calculation>, IHasId, IHasObject
@@ -37,7 +37,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// Total amount after taxes in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_total")]
 #if NET6_0_OR_GREATER
@@ -58,7 +58,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The ID of an existing <a
-        /// href="https://stripe.com/docs/api/customers/object">Customer</a> used for the resource.
+        /// href="https://docs.stripe.com/api/customers/object">Customer</a> used for the resource.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER

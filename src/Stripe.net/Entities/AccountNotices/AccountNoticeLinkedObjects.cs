@@ -9,7 +9,7 @@ namespace Stripe
     public class AccountNoticeLinkedObjects : StripeEntity<AccountNoticeLinkedObjects>
     {
         /// <summary>
-        /// Associated <a href="https://stripe.com/docs/api/capabilities">Capability</a>.
+        /// Associated <a href="https://docs.stripe.com/api/capabilities">Capability</a>.
         /// </summary>
         [JsonProperty("capability")]
 #if NET6_0_OR_GREATER
@@ -19,7 +19,7 @@ namespace Stripe
 
         /// <summary>
         /// Associated <a
-        /// href="https://stripe.com/docs/api/issuing/credit_underwriting_record">Credit
+        /// href="https://docs.stripe.com/api/issuing/credit_underwriting_record">Credit
         /// Underwriting Record</a>.
         /// </summary>
         [JsonProperty("issuing_credit_underwriting_record")]
@@ -29,7 +29,7 @@ namespace Stripe
         public string IssuingCreditUnderwritingRecord { get; set; }
 
         /// <summary>
-        /// Associated <a href="https://stripe.com/docs/api/issuing/disputes">Issuing Dispute</a>.
+        /// Associated <a href="https://docs.stripe.com/api/issuing/disputes">Issuing Dispute</a>.
         /// </summary>
         [JsonProperty("issuing_dispute")]
 #if NET6_0_OR_GREATER

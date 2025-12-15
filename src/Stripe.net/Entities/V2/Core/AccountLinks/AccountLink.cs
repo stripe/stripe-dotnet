@@ -8,9 +8,8 @@ namespace Stripe.V2.Core
 #endif
 
     /// <summary>
-    /// AccountLinks are the means by which a Merchant grants an Account permission to access
-    /// Stripe-hosted applications, such as Recipient Onboarding. This API is only available for
-    /// users enrolled in the public preview for Accounts v2.
+    /// Account Links let a platform create a temporary, single-use URL that an account can use
+    /// to access a Stripe-hosted flow for collecting or updating required information.
     /// </summary>
     public class AccountLink : StripeEntity<AccountLink>, IHasObject
     {
@@ -25,7 +24,7 @@ namespace Stripe.V2.Core
         public string Object { get; set; }
 
         /// <summary>
-        /// The ID of the Account the link was created for.
+        /// The ID of the connected account this Account Link applies to.
         /// </summary>
         [JsonProperty("account")]
 #if NET6_0_OR_GREATER
@@ -34,7 +33,7 @@ namespace Stripe.V2.Core
         public string Account { get; set; }
 
         /// <summary>
-        /// The timestamp at which this AccountLink was created.
+        /// The timestamp at which this Account Link was created.
         /// </summary>
         [JsonProperty("created")]
 #if NET6_0_OR_GREATER
@@ -43,7 +42,7 @@ namespace Stripe.V2.Core
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// The timestamp at which this AccountLink will expire.
+        /// The timestamp at which this Account Link will expire.
         /// </summary>
         [JsonProperty("expires_at")]
 #if NET6_0_OR_GREATER
@@ -62,7 +61,7 @@ namespace Stripe.V2.Core
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// The URL for the AccountLink.
+        /// The URL at which the account can access the Stripe-hosted flow.
         /// </summary>
         [JsonProperty("url")]
 #if NET6_0_OR_GREATER
@@ -71,7 +70,7 @@ namespace Stripe.V2.Core
         public string Url { get; set; }
 
         /// <summary>
-        /// The use case of AccountLink the user is requesting.
+        /// Hash containing usage options.
         /// </summary>
         [JsonProperty("use_case")]
 #if NET6_0_OR_GREATER

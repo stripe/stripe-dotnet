@@ -14,9 +14,9 @@ namespace Stripe
     /// values present on the ConfirmationToken are written onto the Intent.
     ///
     /// To learn more about how to use ConfirmationToken, visit the related guides: - <a
-    /// href="https://stripe.com/docs/payments/finalize-payments-on-the-server">Finalize
+    /// href="https://docs.stripe.com/payments/finalize-payments-on-the-server">Finalize
     /// payments on the server</a> - <a
-    /// href="https://stripe.com/docs/payments/build-a-two-step-confirmation">Build two-step
+    /// href="https://docs.stripe.com/payments/build-a-two-step-confirmation">Build two-step
     /// confirmation</a>.
     /// </summary>
     public class ConfirmationToken : StripeEntity<ConfirmationToken>, IHasId, IHasObject
@@ -124,7 +124,7 @@ namespace Stripe
         /// method.
         ///
         /// The presence of this property will <a
-        /// href="https://stripe.com/docs/payments/save-during-payment">attach the payment
+        /// href="https://docs.stripe.com/payments/save-during-payment">attach the payment
         /// method</a> to the PaymentIntent's Customer, if present, after the PaymentIntent is
         /// confirmed and any required actions from the user are complete.
         /// One of: <c>off_session</c>, or <c>on_session</c>.

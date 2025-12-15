@@ -9,7 +9,7 @@ namespace Stripe.Tax
     public class AssociationFindOptions : BaseOptions
     {
         /// <summary>
-        /// Valid <a href="https://stripe.com/docs/api/payment_intents/object">PaymentIntent</a> id.
+        /// Valid <a href="https://docs.stripe.com/api/payment_intents/object">PaymentIntent</a> id.
         /// </summary>
         [JsonProperty("payment_intent")]
 #if NET6_0_OR_GREATER

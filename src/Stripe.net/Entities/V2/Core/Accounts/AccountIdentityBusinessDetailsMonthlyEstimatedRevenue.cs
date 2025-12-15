@@ -9,12 +9,13 @@ namespace Stripe.V2.Core
     public class AccountIdentityBusinessDetailsMonthlyEstimatedRevenue : StripeEntity<AccountIdentityBusinessDetailsMonthlyEstimatedRevenue>
     {
         /// <summary>
-        /// A non-negative integer representing the amount in the smallest currency unit.
+        /// Estimated monthly revenue amount in minor currency units (for example, '123' for 1.23
+        /// USD).
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public AccountIdentityBusinessDetailsMonthlyEstimatedRevenueAmount Amount { get; set; }
     }
 }

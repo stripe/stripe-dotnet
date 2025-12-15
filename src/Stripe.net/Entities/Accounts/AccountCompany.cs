@@ -35,7 +35,7 @@ namespace Stripe
         /// <summary>
         /// Whether the company's directors have been provided. This Boolean will be <c>true</c> if
         /// you've manually indicated that all directors are provided via <a
-        /// href="https://stripe.com/docs/api/accounts/update#update_account-company-directors_provided">the
+        /// href="https://docs.stripe.com/api/accounts/update#update_account-company-directors_provided">the
         /// <c>directors_provided</c> parameter</a>.
         /// </summary>
         [JsonProperty("directors_provided")]
@@ -57,7 +57,7 @@ namespace Stripe
         /// <summary>
         /// Whether the company's executives have been provided. This Boolean will be <c>true</c> if
         /// you've manually indicated that all executives are provided via <a
-        /// href="https://stripe.com/docs/api/accounts/update#update_account-company-executives_provided">the
+        /// href="https://docs.stripe.com/api/accounts/update#update_account-company-executives_provided">the
         /// <c>executives_provided</c> parameter</a>, or if Stripe determined that sufficient
         /// executives were provided.
         /// </summary>
@@ -124,7 +124,7 @@ namespace Stripe
         /// <summary>
         /// Whether the company's owners have been provided. This Boolean will be <c>true</c> if
         /// you've manually indicated that all owners are provided via <a
-        /// href="https://stripe.com/docs/api/accounts/update#update_account-company-owners_provided">the
+        /// href="https://docs.stripe.com/api/accounts/update#update_account-company-owners_provided">the
         /// <c>owners_provided</c> parameter</a>, or if Stripe determined that sufficient owners
         /// were provided. Stripe determines ownership requirements using both the number of owners
         /// provided and their total percent ownership (calculated by adding the
@@ -192,7 +192,7 @@ namespace Stripe
         /// available for accounts where <a
         /// href="https://stripe.com/api/accounts/object#account_object-controller-requirement_collection">controller.requirement_collection</a>
         /// is <c>stripe</c>. See <a
-        /// href="https://stripe.com/docs/connect/identity-verification#business-structure">Business
+        /// href="https://docs.stripe.com/connect/identity-verification#business-structure">Business
         /// structure</a> for more details.
         /// One of: <c>free_zone_establishment</c>, <c>free_zone_llc</c>,
         /// <c>government_instrumentality</c>, <c>governmental_unit</c>,

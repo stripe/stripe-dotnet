@@ -11,7 +11,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// The shipping amount in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. If
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. If
         /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes were
         /// calculated on top of this amount.
         /// </summary>
@@ -23,7 +23,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount of tax calculated for shipping, in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
 #if NET6_0_OR_GREATER
@@ -33,7 +33,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The ID of an existing <a
-        /// href="https://stripe.com/docs/api/shipping_rates/object">ShippingRate</a>.
+        /// href="https://docs.stripe.com/api/shipping_rates/object">ShippingRate</a>.
         /// </summary>
         [JsonProperty("shipping_rate")]
 #if NET6_0_OR_GREATER
@@ -63,7 +63,7 @@ namespace Stripe.Tax
         public List<TransactionShippingCostTaxBreakdown> TaxBreakdown { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID used for
+        /// The <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID used for
         /// shipping.
         /// </summary>
         [JsonProperty("tax_code")]

@@ -23,7 +23,7 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// A shareable URL to the hosted portal login page. Your customers will be able to log in
         /// with their <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-email">email</a> and
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-email">email</a> and
         /// receive a link to their customer portal.
         /// </summary>
         [JsonProperty("url")]

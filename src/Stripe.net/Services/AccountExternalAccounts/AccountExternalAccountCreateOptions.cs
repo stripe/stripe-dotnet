@@ -21,7 +21,7 @@ namespace Stripe
         public bool? DefaultForCurrency { get; set; }
 
         /// <summary>
-        /// A token, like the ones returned by <a href="https://stripe.com/docs/js">Stripe.js</a> or
+        /// A token, like the ones returned by <a href="https://docs.stripe.com/js">Stripe.js</a> or
         /// a dictionary containing a user's external account details (with the options shown
         /// below). Please refer to full <a
         /// href="https://stripe.com/docs/api/external_accounts">documentation</a> instead.
@@ -35,7 +35,7 @@ namespace Stripe
         public AnyOf<string, AccountExternalAccountCardOptions, AccountExternalAccountBankAccountOptions, AccountExternalAccountCardTokenOptions> ExternalAccount { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
