@@ -9,7 +9,7 @@ namespace Stripe
     public class ChargePaymentMethodDetailsPaynow : StripeEntity<ChargePaymentMethodDetailsPaynow>
     {
         /// <summary>
-        /// ID of the <a href="https://stripe.com/docs/api/terminal/locations">location</a> that
+        /// ID of the <a href="https://docs.stripe.com/api/terminal/locations">location</a> that
         /// this transaction's reader is assigned to.
         /// </summary>
         [JsonProperty("location")]
@@ -19,7 +19,7 @@ namespace Stripe
         public string Location { get; set; }
 
         /// <summary>
-        /// ID of the <a href="https://stripe.com/docs/api/terminal/readers">reader</a> this
+        /// ID of the <a href="https://docs.stripe.com/api/terminal/readers">reader</a> this
         /// transaction was made on.
         /// </summary>
         [JsonProperty("reader")]

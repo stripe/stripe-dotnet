@@ -101,12 +101,12 @@ namespace Stripe
         /// customers.
         ///
         /// Stripe doesn't recommend using the deprecated <a
-        /// href="https://stripe.com/docs/api/sources">Sources API</a>. We recommend that you adopt
-        /// the <a href="https://stripe.com/docs/api/payment_methods">PaymentMethods API</a>. This
+        /// href="https://docs.stripe.com/api/sources">Sources API</a>. We recommend that you adopt
+        /// the <a href="https://docs.stripe.com/api/payment_methods">PaymentMethods API</a>. This
         /// newer API provides access to our latest features and payment method types.
         ///
-        /// Related guides: <a href="https://stripe.com/docs/sources">Sources API</a> and <a
-        /// href="https://stripe.com/docs/sources/customers">Sources &amp; Customers</a>.
+        /// Related guides: <a href="https://docs.stripe.com/sources">Sources API</a> and <a
+        /// href="https://docs.stripe.com/sources/customers">Sources &amp; Customers</a>.
         /// </summary>
         [JsonProperty("source")]
 #if NET6_0_OR_GREATER

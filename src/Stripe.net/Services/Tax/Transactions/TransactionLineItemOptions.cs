@@ -11,7 +11,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// The amount to reverse, in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> in
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> in
         /// negative.
         /// </summary>
         [JsonProperty("amount")]
@@ -22,7 +22,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount of tax to reverse, in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> in
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> in
         /// negative.
         /// </summary>
         [JsonProperty("amount_tax")]
@@ -32,7 +32,7 @@ namespace Stripe.Tax
         public long? AmountTax { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -52,7 +52,7 @@ namespace Stripe.Tax
         public string OriginalLineItem { get; set; }
 
         /// <summary>
-        /// The quantity reversed. Appears in <a href="https://stripe.com/docs/tax/reports">tax
+        /// The quantity reversed. Appears in <a href="https://docs.stripe.com/tax/reports">tax
         /// exports</a>, but does not affect the amount of tax reversed.
         /// </summary>
         [JsonProperty("quantity")]

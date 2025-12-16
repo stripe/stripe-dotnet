@@ -26,7 +26,7 @@ namespace Stripe
         /// <summary>
         /// A hash of all cash balances available to this customer. You cannot delete a customer
         /// with any cash balances, even if the balance is 0. Amounts are represented in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("available")]
 #if NET6_0_OR_GREATER
@@ -42,6 +42,15 @@ namespace Stripe
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// The ID of an Account representing a customer whose cash balance this object represents.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if

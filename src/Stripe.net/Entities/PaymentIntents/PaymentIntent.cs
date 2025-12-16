@@ -16,11 +16,11 @@ namespace Stripe
     /// history of payment attempts for a particular session.
     ///
     /// A PaymentIntent transitions through <a
-    /// href="https://stripe.com/docs/payments/intents#intent-statuses">multiple statuses</a>
+    /// href="https://stripe.com/payments/paymentintents/lifecycle">multiple statuses</a>
     /// throughout its lifetime as it interfaces with Stripe.js to perform authentication flows
     /// and ultimately creates at most one successful charge.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/payments/payment-intents">Payment
+    /// Related guide: <a href="https://docs.stripe.com/payments/payment-intents">Payment
     /// Intents API</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -49,10 +49,10 @@ namespace Stripe
         /// <summary>
         /// Amount intended to be collected by this PaymentIntent. A positive integer representing
         /// how much to charge in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a> (e.g.,
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> (e.g.,
         /// 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency). The minimum
         /// amount is $0.50 US or <a
-        /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent
+        /// href="https://docs.stripe.com/currencies#minimum-and-maximum-charge-amounts">equivalent
         /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
@@ -132,7 +132,7 @@ namespace Stripe
         /// payment and transferred to the application owner's Stripe account. The amount of the
         /// application fee collected will be capped at the total amount captured. For more
         /// information, see the PaymentIntents <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// href="https://docs.stripe.com/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
@@ -197,7 +197,7 @@ namespace Stripe
         /// TLS enabled on any page that includes the client secret.
         ///
         /// Refer to our docs to <a
-        /// href="https://stripe.com/docs/payments/accept-a-payment?ui=elements">accept a
+        /// href="https://docs.stripe.com/payments/accept-a-payment?ui=elements">accept a
         /// payment</a> and learn about how <c>client_secret</c> should be handled.
         /// </summary>
         [JsonProperty("client_secret")]
@@ -248,7 +248,7 @@ namespace Stripe
         /// Payment methods attached to other Customers cannot be used with this PaymentIntent.
         ///
         /// If <a
-        /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
         /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
         /// payment method attaches to the Customer after the PaymentIntent has been confirmed and
         /// any required actions from the user are complete. If the payment method is
@@ -273,7 +273,7 @@ namespace Stripe
         /// Payment methods attached to other Customers cannot be used with this PaymentIntent.
         ///
         /// If <a
-        /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
         /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
         /// payment method attaches to the Customer after the PaymentIntent has been confirmed and
         /// any required actions from the user are complete. If the payment method is
@@ -303,6 +303,27 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// ID of the Account representing the customer that this PaymentIntent belongs to, if one
+        /// exists.
+        ///
+        /// Payment methods attached to other Accounts cannot be used with this PaymentIntent.
+        ///
+        /// If <a
+        /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
+        /// is set and this PaymentIntent's payment method is not <c>card_present</c>, then the
+        /// payment method attaches to the Account after the PaymentIntent has been confirmed and
+        /// any required actions from the user are complete. If the payment method is
+        /// <c>card_present</c> and isn't a digital wallet, then a <a
+        /// href="https://docs.stripe.com/api/charges/object#charge_object-payment_method_details-card_present-generated_card">generated_card</a>
+        /// payment method representing the card is created and attached to the Account instead.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
@@ -320,7 +341,7 @@ namespace Stripe
         /// <c>giropay</c>, <c>grabpay</c>, <c>ideal</c>, <c>kakao_pay</c>, <c>klarna</c>,
         /// <c>konbini</c>, <c>kr_card</c>, <c>mb_way</c>, <c>mobilepay</c>, <c>multibanco</c>,
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
-        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>pix</c>, <c>promptpay</c>,
+        /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
         /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
         /// <c>zip</c>.
@@ -351,7 +372,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Charge)
-        /// ID of the latest <a href="https://stripe.com/docs/api/charges">Charge object</a> created
+        /// ID of the latest <a href="https://docs.stripe.com/api/charges">Charge object</a> created
         /// by this PaymentIntent. This property is <c>null</c> until PaymentIntent confirmation is
         /// attempted.
         /// </summary>
@@ -367,7 +388,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// ID of the latest <a href="https://stripe.com/docs/api/charges">Charge object</a> created
+        /// ID of the latest <a href="https://docs.stripe.com/api/charges">Charge object</a> created
         /// by this PaymentIntent. This property is <c>null</c> until PaymentIntent confirmation is
         /// attempted.
         ///
@@ -403,10 +424,10 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Learn more about <a
-        /// href="https://stripe.com/docs/payments/payment-intents/creating-payment-intents#storing-information-in-metadata">storing
+        /// href="https://docs.stripe.com/payments/payment-intents/creating-payment-intents#storing-information-in-metadata">storing
         /// information in metadata</a>.
         /// </summary>
         [JsonProperty("metadata")]
@@ -429,9 +450,10 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Account)
-        /// The account (if any) for which the funds of the PaymentIntent are intended. See the
-        /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
-        /// for connected accounts</a> for details.
+        /// You can specify the settlement merchant as the connected account using the
+        /// <c>on_behalf_of</c> attribute on the charge. See the PaymentIntents <a
+        /// href="https://stripe.com/payments/connected-accounts">use case for connected
+        /// accounts</a> for details.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -445,9 +467,10 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The account (if any) for which the funds of the PaymentIntent are intended. See the
-        /// PaymentIntents <a href="https://stripe.com/docs/payments/connected-accounts">use case
-        /// for connected accounts</a> for details.
+        /// You can specify the settlement merchant as the connected account using the
+        /// <c>on_behalf_of</c> attribute on the charge. See the PaymentIntents <a
+        /// href="https://stripe.com/payments/connected-accounts">use case for connected
+        /// accounts</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -519,7 +542,7 @@ namespace Stripe
 
         /// <summary>
         /// Information about the <a
-        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// href="https://docs.stripe.com/api/payment_method_configurations">payment method
         /// configuration</a> used for this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration_details")]
@@ -729,7 +752,7 @@ namespace Stripe
         /// <c>requires_confirmation</c>, <c>requires_action</c>, <c>processing</c>,
         /// <c>requires_capture</c>, <c>canceled</c>, or <c>succeeded</c>. Read more about each
         /// PaymentIntent <a
-        /// href="https://stripe.com/docs/payments/intents#intent-statuses">status</a>.
+        /// href="https://docs.stripe.com/payments/intents#intent-statuses">status</a>.
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_action</c>,
         /// <c>requires_capture</c>, <c>requires_confirmation</c>, <c>requires_payment_method</c>,
         /// or <c>succeeded</c>.
@@ -742,7 +765,7 @@ namespace Stripe
 
         /// <summary>
         /// The data that automatically creates a Transfer after the payment finalizes. Learn more
-        /// about the <a href="https://stripe.com/docs/payments/connected-accounts">use case for
+        /// about the <a href="https://docs.stripe.com/payments/connected-accounts">use case for
         /// connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
@@ -753,7 +776,7 @@ namespace Stripe
 
         /// <summary>
         /// A string that identifies the resulting payment as part of a group. Learn more about the
-        /// <a href="https://stripe.com/docs/connect/separate-charges-and-transfers">use case for
+        /// <a href="https://docs.stripe.com/connect/separate-charges-and-transfers">use case for
         /// connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_group")]

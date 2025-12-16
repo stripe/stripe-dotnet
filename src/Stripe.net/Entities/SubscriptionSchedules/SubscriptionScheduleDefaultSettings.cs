@@ -34,7 +34,7 @@ namespace Stripe
         /// billing cycle anchor of the subscription is set to the start of the phase when entering
         /// the phase. If <c>automatic</c> then the billing cycle anchor is automatically modified
         /// as needed when entering the phase. For more information, see the billing cycle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]

@@ -114,9 +114,19 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The ID of an Account representing a customer whose available cash balance changed as a
+        /// result of this transaction.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The total available cash balance for the specified currency after this transaction was
         /// applied. Represented in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("ending_balance")]
 #if NET6_0_OR_GREATER
@@ -142,7 +152,7 @@ namespace Stripe
 
         /// <summary>
         /// The amount by which the cash balance changed, represented in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>. A
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. A
         /// positive value represents funds being added to the cash balance, a negative value
         /// represents funds being removed from the cash balance.
         /// </summary>
@@ -166,7 +176,7 @@ namespace Stripe
 
         /// <summary>
         /// The type of the cash balance transaction. New types may be added in future. See <a
-        /// href="https://stripe.com/docs/payments/customer-balance#types">Customer Balance</a> to
+        /// href="https://docs.stripe.com/payments/customer-balance#types">Customer Balance</a> to
         /// learn more about these types.
         /// One of: <c>adjusted_for_overdraft</c>, <c>applied_to_payment</c>, <c>funded</c>,
         /// <c>funding_reversed</c>, <c>refunded_from_payment</c>, <c>return_canceled</c>,

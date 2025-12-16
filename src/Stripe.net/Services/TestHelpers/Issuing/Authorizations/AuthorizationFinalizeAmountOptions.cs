@@ -11,7 +11,7 @@ namespace Stripe.TestHelpers.Issuing
         /// <summary>
         /// The final authorization amount that will be captured by the merchant. This amount is in
         /// the authorization currency and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("final_amount")]
 #if NET6_0_OR_GREATER

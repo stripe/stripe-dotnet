@@ -61,7 +61,7 @@ namespace Stripe
 
         /// <summary>
         /// The currency the bank account is in. This must be a country/currency pairing that <a
-        /// href="https://stripe.com/docs/payouts">Stripe supports.</a>.
+        /// href="https://docs.stripe.com/payouts">Stripe supports.</a>.
         /// </summary>
         [JsonProperty("currency")]
 #if NET6_0_OR_GREATER

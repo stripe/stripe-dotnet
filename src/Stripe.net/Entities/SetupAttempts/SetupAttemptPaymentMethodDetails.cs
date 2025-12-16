@@ -110,6 +110,12 @@ namespace Stripe
 #endif
         public SetupAttemptPaymentMethodDetailsPaypal Paypal { get; set; }
 
+        [JsonProperty("payto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payto")]
+#endif
+        public SetupAttemptPaymentMethodDetailsPayto Payto { get; set; }
+
         [JsonProperty("revolut_pay")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("revolut_pay")]

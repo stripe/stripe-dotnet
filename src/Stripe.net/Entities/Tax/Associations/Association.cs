@@ -32,7 +32,7 @@ namespace Stripe.Tax
         public string Object { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/api/tax/calculations/object">Tax Calculation</a>
+        /// The <a href="https://docs.stripe.com/api/tax/calculations/object">Tax Calculation</a>
         /// that was included in PaymentIntent.
         /// </summary>
         [JsonProperty("calculation")]
@@ -42,7 +42,7 @@ namespace Stripe.Tax
         public string Calculation { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/api/payment_intents/object">PaymentIntent</a> that
+        /// The <a href="https://docs.stripe.com/api/payment_intents/object">PaymentIntent</a> that
         /// this Tax Association is tracking.
         /// </summary>
         [JsonProperty("payment_intent")]

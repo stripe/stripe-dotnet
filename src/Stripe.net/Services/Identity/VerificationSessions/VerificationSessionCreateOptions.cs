@@ -20,7 +20,7 @@ namespace Stripe.Identity
         public string ClientReferenceId { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -59,6 +59,15 @@ namespace Stripe.Identity
         public string RelatedCustomer { get; set; }
 
         /// <summary>
+        /// The ID of the Account representing a customer.
+        /// </summary>
+        [JsonProperty("related_customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("related_customer_account")]
+#endif
+        public string RelatedCustomerAccount { get; set; }
+
+        /// <summary>
         /// Tokens referencing a Person resource and it's associated account.
         /// </summary>
         [JsonProperty("related_person")]
@@ -77,7 +86,7 @@ namespace Stripe.Identity
         public string ReturnUrl { get; set; }
 
         /// <summary>
-        /// The type of <a href="https://stripe.com/docs/identity/verification-checks">verification
+        /// The type of <a href="https://docs.stripe.com/identity/verification-checks">verification
         /// check</a> to be performed. You must provide a <c>type</c> if not passing
         /// <c>verification_flow</c>.
         /// One of: <c>document</c>, or <c>id_number</c>.

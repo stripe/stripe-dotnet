@@ -11,7 +11,7 @@ namespace Stripe
     /// <summary>
     /// This is an object representing a capability for a Stripe account.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/connect/account-capabilities">Account
+    /// Related guide: <a href="https://docs.stripe.com/connect/account-capabilities">Account
     /// capabilities</a>.
     /// </summary>
 #if NET6_0_OR_GREATER

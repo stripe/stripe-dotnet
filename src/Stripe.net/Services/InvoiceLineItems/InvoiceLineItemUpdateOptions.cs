@@ -53,11 +53,11 @@ namespace Stripe
         public List<InvoiceLineItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>. For <a
-        /// href="https://stripe.com/docs/api/invoices/line_item#invoice_line_item_object-type">type=subscription</a>
+        /// href="https://docs.stripe.com/api/invoices/line_item#invoice_line_item_object-type">type=subscription</a>
         /// line items, the incoming metadata specified on the request is directly used to set this
         /// value, in contrast to <a
         /// href="api/invoices/line_item#invoice_line_item_object-type">type=invoiceitem</a> line
@@ -72,9 +72,9 @@ namespace Stripe
         /// <summary>
         /// The period associated with this invoice item. When set to different values, the period
         /// will be rendered on the invoice. If you have <a
-        /// href="https://stripe.com/docs/revenue-recognition">Stripe Revenue Recognition</a>
+        /// href="https://docs.stripe.com/revenue-recognition">Stripe Revenue Recognition</a>
         /// enabled, the period will be used to recognize and defer revenue. See the <a
-        /// href="https://stripe.com/docs/revenue-recognition/methodology/subscriptions-and-invoicing">Revenue
+        /// href="https://docs.stripe.com/revenue-recognition/methodology/subscriptions-and-invoicing">Revenue
         /// Recognition documentation</a> for details.
         /// </summary>
         [JsonProperty("period")]
@@ -84,7 +84,7 @@ namespace Stripe
         public InvoiceLineItemPeriodOptions Period { get; set; }
 
         /// <summary>
-        /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
         /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
@@ -115,10 +115,10 @@ namespace Stripe
         /// A list of up to 10 tax amounts for this line item. This can be useful if you calculate
         /// taxes on your own or use a third-party to calculate them. You cannot set tax amounts if
         /// any line item has <a
-        /// href="https://stripe.com/docs/api/invoices/line_item#invoice_line_item_object-tax_rates">tax_rates</a>
+        /// href="https://docs.stripe.com/api/invoices/line_item#invoice_line_item_object-tax_rates">tax_rates</a>
         /// or if the invoice has <a
-        /// href="https://stripe.com/docs/api/invoices/object#invoice_object-default_tax_rates">default_tax_rates</a>
-        /// or uses <a href="https://stripe.com/docs/tax/invoicing">automatic tax</a>. Pass an empty
+        /// href="https://docs.stripe.com/api/invoices/object#invoice_object-default_tax_rates">default_tax_rates</a>
+        /// or uses <a href="https://docs.stripe.com/tax/invoicing">automatic tax</a>. Pass an empty
         /// string to remove previously defined tax amounts.
         /// </summary>
         [JsonProperty("tax_amounts")]

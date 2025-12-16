@@ -10,7 +10,7 @@ namespace Stripe.Issuing
 #endif
 
     /// <summary>
-    /// You can <a href="https://stripe.com/docs/issuing">create physical or virtual cards</a>
+    /// You can <a href="https://docs.stripe.com/issuing">create physical or virtual cards</a>
     /// that are issued to cardholders.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -57,10 +57,10 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// An Issuing <c>Cardholder</c> object represents an individual or business entity who is
-        /// <a href="https://stripe.com/docs/issuing">issued</a> cards.
+        /// <a href="https://docs.stripe.com/issuing">issued</a> cards.
         ///
         /// Related guide: <a
-        /// href="https://stripe.com/docs/issuing/cards/virtual/issue-cards#create-cardholder">How
+        /// href="https://docs.stripe.com/issuing/cards/virtual/issue-cards#create-cardholder">How
         /// to create a cardholder</a>.
         /// </summary>
         [JsonProperty("cardholder")]
@@ -94,9 +94,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// The card's CVC. For security reasons, this is only available for virtual cards, and will
         /// be omitted unless you explicitly request it with <a
-        /// href="https://stripe.com/docs/api/expanding_objects">the <c>expand</c> parameter</a>.
+        /// href="https://docs.stripe.com/api/expanding_objects">the <c>expand</c> parameter</a>.
         /// Additionally, it's only available via the <a
-        /// href="https://stripe.com/docs/api/issuing/cards/retrieve">"Retrieve a card"
+        /// href="https://docs.stripe.com/api/issuing/cards/retrieve">"Retrieve a card"
         /// endpoint</a>, not via "List all cards" or any other endpoint.
         /// </summary>
         [JsonProperty("cvc")]
@@ -162,7 +162,7 @@ namespace Stripe.Issuing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -175,9 +175,9 @@ namespace Stripe.Issuing
         /// <summary>
         /// The full unredacted card number. For security reasons, this is only available for
         /// virtual cards, and will be omitted unless you explicitly request it with <a
-        /// href="https://stripe.com/docs/api/expanding_objects">the <c>expand</c> parameter</a>.
+        /// href="https://docs.stripe.com/api/expanding_objects">the <c>expand</c> parameter</a>.
         /// Additionally, it's only available via the <a
-        /// href="https://stripe.com/docs/api/issuing/cards/retrieve">"Retrieve a card"
+        /// href="https://docs.stripe.com/api/issuing/cards/retrieve">"Retrieve a card"
         /// endpoint</a>, not via "List all cards" or any other endpoint.
         /// </summary>
         [JsonProperty("number")]

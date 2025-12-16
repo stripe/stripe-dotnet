@@ -9,7 +9,7 @@ namespace Stripe
     public class PaymentIntentHooksInputsTax : StripeEntity<PaymentIntentHooksInputsTax>
     {
         /// <summary>
-        /// The <a href="https://stripe.com/docs/api/tax/calculations">TaxCalculation</a> id.
+        /// The <a href="https://docs.stripe.com/api/tax/calculations">TaxCalculation</a> id.
         /// </summary>
         [JsonProperty("calculation")]
 #if NET6_0_OR_GREATER

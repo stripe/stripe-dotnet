@@ -10,7 +10,7 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// A categorization of the seller's type of business. See our <a
-        /// href="https://stripe.com/docs/issuing/merchant-categories">merchant categories guide</a>
+        /// href="https://docs.stripe.com/issuing/merchant-categories">merchant categories guide</a>
         /// for a list of possible values.
         /// </summary>
         [JsonProperty("category")]

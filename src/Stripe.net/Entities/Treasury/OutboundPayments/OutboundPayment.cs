@@ -13,9 +13,9 @@ namespace Stripe.Treasury
     /// Use <a
     /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/out-of/outbound-payments">OutboundPayments</a>
     /// to send funds to another party's external bank account or <a
-    /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a>. To send
-    /// money to an account belonging to the same user, use an <a
-    /// href="https://stripe.com/docs/api#outbound_transfers">OutboundTransfer</a>.
+    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a>. To send money to
+    /// an account belonging to the same user, use an <a
+    /// href="https://api.stripe.com#outbound_transfers">OutboundTransfer</a>.
     ///
     /// Simulate OutboundPayment state changes with the
     /// <c>/v1/test_helpers/treasury/outbound_payments</c> endpoints. These methods can only be
@@ -89,7 +89,7 @@ namespace Stripe.Treasury
         public string Currency { get; set; }
 
         /// <summary>
-        /// ID of the <a href="https://stripe.com/docs/api/customers">customer</a> to whom an
+        /// ID of the <a href="https://docs.stripe.com/api/customers">customer</a> to whom an
         /// OutboundPayment is sent.
         /// </summary>
         [JsonProperty("customer")]
@@ -156,7 +156,7 @@ namespace Stripe.Treasury
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted
+        /// A <a href="https://docs.stripe.com/treasury/moving-money/regulatory-receipts">hosted
         /// transaction receipt</a> URL that is provided when money movement is considered regulated
         /// under Stripe's money transmission licenses.
         /// </summary>
@@ -177,7 +177,7 @@ namespace Stripe.Treasury
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

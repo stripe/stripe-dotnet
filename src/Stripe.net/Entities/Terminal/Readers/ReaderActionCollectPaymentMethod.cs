@@ -64,12 +64,12 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// PaymentMethod objects represent your customer's payment instruments. You can use them
-        /// with <a href="https://stripe.com/docs/payments/payment-intents">PaymentIntents</a> to
+        /// with <a href="https://docs.stripe.com/payments/payment-intents">PaymentIntents</a> to
         /// collect payments or save them to Customer objects to store instrument details for future
         /// payments.
         ///
-        /// Related guides: <a href="https://stripe.com/docs/payments/payment-methods">Payment
-        /// Methods</a> and <a href="https://stripe.com/docs/payments/more-payment-scenarios">More
+        /// Related guides: <a href="https://docs.stripe.com/payments/payment-methods">Payment
+        /// Methods</a> and <a href="https://docs.stripe.com/payments/more-payment-scenarios">More
         /// Payment Scenarios</a>.
         /// </summary>
         [JsonProperty("payment_method")]

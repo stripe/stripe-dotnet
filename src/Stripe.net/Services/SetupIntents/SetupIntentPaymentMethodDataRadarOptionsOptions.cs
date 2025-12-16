@@ -9,7 +9,7 @@ namespace Stripe
     public class SetupIntentPaymentMethodDataRadarOptionsOptions : INestedOptions
     {
         /// <summary>
-        /// A <a href="https://stripe.com/docs/radar/radar-session">Radar Session</a> is a snapshot
+        /// A <a href="https://docs.stripe.com/radar/radar-session">Radar Session</a> is a snapshot
         /// of the browser metadata and device details that help Radar make more accurate
         /// predictions on your payments.
         /// </summary>

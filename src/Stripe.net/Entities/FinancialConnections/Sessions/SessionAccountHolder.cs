@@ -16,7 +16,7 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// (ID of the Account)
-        /// The ID of the Stripe account this account belongs to. Should only be present if
+        /// The ID of the Stripe account that this account belongs to. Only available when
         /// <c>account_holder.type</c> is <c>account</c>.
         /// </summary>
         [JsonIgnore]
@@ -31,7 +31,7 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the Stripe account this account belongs to. Should only be present if
+        /// The ID of the Stripe account that this account belongs to. Only available when
         /// <c>account_holder.type</c> is <c>account</c>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -59,8 +59,8 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// (ID of the Customer)
-        /// ID of the Stripe customer this account belongs to. Present if and only if
-        /// <c>account_holder.type</c> is <c>customer</c>.
+        /// The ID for an Account representing a customer that this account belongs to. Only
+        /// available when <c>account_holder.type</c> is <c>customer</c>.
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -74,8 +74,8 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// (Expanded)
-        /// ID of the Stripe customer this account belongs to. Present if and only if
-        /// <c>account_holder.type</c> is <c>customer</c>.
+        /// The ID for an Account representing a customer that this account belongs to. Only
+        /// available when <c>account_holder.type</c> is <c>customer</c>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
@@ -97,6 +97,12 @@ namespace Stripe.FinancialConnections
 #endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
+
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Type of account holder that this account belongs to.

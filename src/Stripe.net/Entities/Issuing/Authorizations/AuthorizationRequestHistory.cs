@@ -12,7 +12,7 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// The <c>pending_request.amount</c> at the time of the request, presented in your card's
-        /// currency and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// currency and in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest
         /// currency unit</a>. Stripe held this amount from your account to fund the authorization
         /// if the request was approved.
         /// </summary>
@@ -25,7 +25,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// Detailed breakdown of amount components. These amounts are denominated in
         /// <c>currency</c> and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_details")]
 #if NET6_0_OR_GREATER
@@ -80,7 +80,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// The <c>pending_request.merchant_amount</c> at the time of the request, presented in the
         /// <c>merchant_currency</c> and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("merchant_amount")]
 #if NET6_0_OR_GREATER

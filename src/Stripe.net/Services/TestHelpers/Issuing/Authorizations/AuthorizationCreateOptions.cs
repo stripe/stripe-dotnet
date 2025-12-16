@@ -11,7 +11,7 @@ namespace Stripe.TestHelpers.Issuing
         /// <summary>
         /// The total amount to attempt to authorize. This amount is in the provided currency, or
         /// defaults to the card's currency, and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER
@@ -22,7 +22,7 @@ namespace Stripe.TestHelpers.Issuing
         /// <summary>
         /// Detailed breakdown of amount components. These amounts are denominated in
         /// <c>currency</c> and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_details")]
 #if NET6_0_OR_GREATER
@@ -93,7 +93,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// If set <c>true</c>, you may provide <a
-        /// href="https://stripe.com/docs/api/issuing/authorizations/approve#approve_issuing_authorization-amount">amount</a>
+        /// href="https://docs.stripe.com/api/issuing/authorizations/approve#approve_issuing_authorization-amount">amount</a>
         /// to control how much to hold for the authorization.
         /// </summary>
         [JsonProperty("is_amount_controllable")]
@@ -104,7 +104,7 @@ namespace Stripe.TestHelpers.Issuing
 
         /// <summary>
         /// The total amount to attempt to authorize. This amount is in the provided merchant
-        /// currency, and in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// currency, and in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest
         /// currency unit</a>.
         /// </summary>
         [JsonProperty("merchant_amount")]

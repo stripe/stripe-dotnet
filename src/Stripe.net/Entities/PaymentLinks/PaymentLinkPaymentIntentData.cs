@@ -29,8 +29,8 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will set
-        /// metadata on <a href="https://stripe.com/docs/api/payment_intents">Payment Intents</a>
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that will set
+        /// metadata on <a href="https://docs.stripe.com/api/payment_intents">Payment Intents</a>
         /// generated from this payment link.
         /// </summary>
         [JsonProperty("metadata")]
@@ -74,7 +74,7 @@ namespace Stripe
         /// <summary>
         /// A string that identifies the resulting payment as part of a group. See the
         /// PaymentIntents <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">use case for
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers">use case for
         /// connected accounts</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]

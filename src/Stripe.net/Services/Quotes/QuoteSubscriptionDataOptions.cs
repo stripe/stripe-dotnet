@@ -45,7 +45,7 @@ namespace Stripe
         public AnyOf<DateTime?, QuoteSubscriptionDataEffectiveDate> EffectiveDate { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will set
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that will set
         /// metadata on the subscription or subscription schedule when the quote is accepted. If a
         /// recurring price is included in <c>line_items</c>, this field will be passed to the
         /// resulting subscription's <c>metadata</c> field. If

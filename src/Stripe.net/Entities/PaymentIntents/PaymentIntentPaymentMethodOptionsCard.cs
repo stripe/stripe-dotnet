@@ -21,7 +21,7 @@ namespace Stripe
         /// Installment details for this payment.
         ///
         /// For more information, see the <a
-        /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.
+        /// href="https://docs.stripe.com/payments/installments">installments integration guide</a>.
         /// </summary>
         [JsonProperty("installments")]
 #if NET6_0_OR_GREATER
@@ -53,7 +53,7 @@ namespace Stripe
 
         /// <summary>
         /// Request ability to <a
-        /// href="https://stripe.com/docs/payments/extended-authorization">capture beyond the
+        /// href="https://docs.stripe.com/payments/extended-authorization">capture beyond the
         /// standard authorization validity window</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
@@ -65,7 +65,7 @@ namespace Stripe
 
         /// <summary>
         /// Request ability to <a
-        /// href="https://stripe.com/docs/payments/incremental-authorization">increment the
+        /// href="https://docs.stripe.com/payments/incremental-authorization">increment the
         /// authorization</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
@@ -76,7 +76,7 @@ namespace Stripe
         public string RequestIncrementalAuthorization { get; set; }
 
         /// <summary>
-        /// Request ability to make <a href="https://stripe.com/docs/payments/multicapture">multiple
+        /// Request ability to make <a href="https://docs.stripe.com/payments/multicapture">multiple
         /// captures</a> for this PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Stripe
 
         /// <summary>
         /// Request ability to <a
-        /// href="https://stripe.com/docs/payments/overcapture">overcapture</a> for this
+        /// href="https://docs.stripe.com/payments/overcapture">overcapture</a> for this
         /// PaymentIntent.
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
@@ -101,11 +101,11 @@ namespace Stripe
         /// <summary>
         /// We strongly recommend that you rely on our SCA Engine to automatically prompt your
         /// customers for authentication based on risk level and <a
-        /// href="https://stripe.com/docs/strong-customer-authentication">other requirements</a>.
+        /// href="https://docs.stripe.com/strong-customer-authentication">other requirements</a>.
         /// However, if you wish to request 3D Secure based on logic from your own fraud engine,
         /// provide this option. If not provided, this value defaults to <c>automatic</c>. Read our
         /// guide on <a
-        /// href="https://stripe.com/docs/payments/3d-secure/authentication-flow#manual-three-ds">manually
+        /// href="https://docs.stripe.com/payments/3d-secure/authentication-flow#manual-three-ds">manually
         /// requesting 3D Secure</a> for more information on how this configuration interacts with
         /// Radar and our SCA Engine.
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.

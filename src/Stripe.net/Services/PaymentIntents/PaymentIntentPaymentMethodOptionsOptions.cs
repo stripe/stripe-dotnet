@@ -398,6 +398,16 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsPaypalOptions Paypal { get; set; }
 
         /// <summary>
+        /// If this is a <c>payto</c> PaymentMethod, this sub-hash contains details about the PayTo
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("payto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payto")]
+#endif
+        public PaymentIntentPaymentMethodOptionsPaytoOptions Payto { get; set; }
+
+        /// <summary>
         /// If this is a <c>pix</c> PaymentMethod, this sub-hash contains details about the Pix
         /// payment method options.
         /// </summary>

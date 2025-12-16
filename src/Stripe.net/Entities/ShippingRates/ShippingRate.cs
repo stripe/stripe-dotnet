@@ -12,7 +12,7 @@ namespace Stripe
     /// <summary>
     /// Shipping rates describe the price of shipping presented to your customers and applied to
     /// a purchase. For more information, see <a
-    /// href="https://stripe.com/docs/payments/during-payment/charge-shipping">Charge for
+    /// href="https://docs.stripe.com/payments/during-payment/charge-shipping">Charge for
     /// shipping</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -95,7 +95,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -120,7 +120,7 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the TaxCode)
-        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID. The Shipping tax
+        /// A <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID. The Shipping tax
         /// code is <c>txcd_92010001</c>.
         /// </summary>
         [JsonIgnore]
@@ -135,7 +135,7 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID. The Shipping tax
+        /// A <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID. The Shipping tax
         /// code is <c>txcd_92010001</c>.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.

@@ -31,7 +31,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// The amount of tax in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("tax")]
 #if NET6_0_OR_GREATER
@@ -41,7 +41,7 @@ namespace Stripe.Terminal
 
         /// <summary>
         /// Total balance of cart due in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("total")]
 #if NET6_0_OR_GREATER

@@ -11,14 +11,14 @@ namespace Stripe
 
     /// <summary>
     /// Each customer has a <a
-    /// href="https://stripe.com/docs/api/customers/object#customer_object-balance">Balance</a>
+    /// href="https://docs.stripe.com/api/customers/object#customer_object-balance">Balance</a>
     /// value, which denotes a debit or credit that's automatically applied to their next
     /// invoice upon finalization. You may modify the value directly by using the <a
-    /// href="https://stripe.com/docs/api/customers/update">update customer API</a>, or by
+    /// href="https://docs.stripe.com/api/customers/update">update customer API</a>, or by
     /// creating a Customer Balance Transaction, which increments or decrements the customer's
     /// <c>balance</c> by the specified <c>amount</c>.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/billing/customer/balance">Customer
+    /// Related guide: <a href="https://docs.stripe.com/billing/customer/balance">Customer
     /// balance</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -200,6 +200,15 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The ID of an Account representing a customer that the transaction belongs to.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
@@ -271,7 +280,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -287,7 +296,7 @@ namespace Stripe
         /// <c>invoice_too_small</c>, <c>unspent_receiver_credit</c>, <c>unapplied_from_invoice</c>,
         /// <c>checkout_session_subscription_payment</c>, or
         /// <c>checkout_session_subscription_payment_canceled</c>. See the <a
-        /// href="https://stripe.com/docs/billing/customer/balance#types">Customer Balance page</a>
+        /// href="https://docs.stripe.com/billing/customer/balance#types">Customer Balance page</a>
         /// to learn more about transaction types.
         /// One of: <c>adjustment</c>, <c>applied_to_invoice</c>,
         /// <c>checkout_session_subscription_payment</c>,

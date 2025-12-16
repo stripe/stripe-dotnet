@@ -13,11 +13,11 @@ namespace Stripe.Reporting
     /// run parameters. Once the object is created, Stripe begins processing the report. When
     /// the report has finished running, it will give you a reference to a file where you can
     /// retrieve your results. For an overview, see <a
-    /// href="https://stripe.com/docs/reporting/statements/api">API Access to Reports</a>.
+    /// href="https://docs.stripe.com/reporting/statements/api">API Access to Reports</a>.
     ///
     /// Note that certain report types can only be run based on your live-mode data (not
     /// test-mode data), and will error when queried without a <a
-    /// href="https://stripe.com/docs/keys#test-live-modes">live-mode API key</a>.
+    /// href="https://docs.stripe.com/keys#test-live-modes">live-mode API key</a>.
     /// </summary>
     public class ReportRun : StripeEntity<ReportRun>, IHasId, IHasObject
     {
@@ -77,7 +77,7 @@ namespace Stripe.Reporting
         public ReportRunParameters Parameters { get; set; }
 
         /// <summary>
-        /// The ID of the <a href="https://stripe.com/docs/reports/report-types">report type</a> to
+        /// The ID of the <a href="https://docs.stripe.com/reports/report-types">report type</a> to
         /// run, such as <c>"balance.summary.1"</c>.
         /// </summary>
         [JsonProperty("report_type")]

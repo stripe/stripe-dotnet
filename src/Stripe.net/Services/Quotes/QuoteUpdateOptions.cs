@@ -70,6 +70,16 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// The account for which this quote belongs to. A customer or account is required before
+        /// finalizing the quote. Once specified, it cannot be changed.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// The tax rates that will apply to any line item that does not have <c>tax_rates</c> set.
         /// </summary>
         [JsonProperty("default_tax_rates")]
@@ -146,7 +156,7 @@ namespace Stripe
         public List<QuoteLineItemOptions> LineItems { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.

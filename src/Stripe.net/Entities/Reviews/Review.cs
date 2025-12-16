@@ -12,7 +12,7 @@ namespace Stripe
     /// Reviews can be used to supplement automated fraud detection with human expertise.
     ///
     /// Learn more about <a href="https://stripe.com/radar">Radar</a> and reviewing payments <a
-    /// href="https://stripe.com/docs/radar/reviews">here</a>.
+    /// href="https://docs.stripe.com/radar/reviews">here</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]

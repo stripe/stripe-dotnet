@@ -20,7 +20,30 @@ namespace Stripe.Checkout
         public SessionCollectedInformationOptions CollectedInformation { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// A list of items the customer is purchasing.
+        ///
+        /// When updating line items, you must retransmit the entire array of line items.
+        ///
+        /// To retain an existing line item, specify its <c>id</c>.
+        ///
+        /// To update an existing line item, specify its <c>id</c> along with the new values of the
+        /// fields to update.
+        ///
+        /// To add a new line item, specify one of <c>price</c> or <c>price_data</c> and
+        /// <c>quantity</c>.
+        ///
+        /// To remove an existing line item, omit the line item's ID from the retransmitted array.
+        ///
+        /// To reorder a line item, specify it at the desired position in the retransmitted array.
+        /// </summary>
+        [JsonProperty("line_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("line_items")]
+#endif
+        public List<SessionLineItemOptions> LineItems { get; set; }
+
+        /// <summary>
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.

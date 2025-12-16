@@ -9,13 +9,22 @@ namespace Stripe
     public class QuoteListOptions : ListOptions
     {
         /// <summary>
-        /// The ID of the customer whose quotes will be retrieved.
+        /// The ID of the customer whose quotes you're retrieving.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// The ID of the account representing the customer whose quotes you're retrieving.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// The status of the quote.

@@ -31,6 +31,16 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
+        /// Only return credit notes for the account representing the customer specified by this
+        /// account ID.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
+        /// <summary>
         /// Only return credit notes for the invoice specified by this invoice ID.
         /// </summary>
         [JsonProperty("invoice")]

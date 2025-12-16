@@ -189,6 +189,11 @@ namespace Stripe
                 { "v2.billing.meter_event", typeof(V2.Billing.MeterEvent) },
                 { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
+                { "v2.core.account", typeof(V2.Core.Account) },
+                { "v2.core.account_link", typeof(V2.Core.AccountLink) },
+                { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
+                { "v2.core.account_person_token", typeof(V2.Core.AccountPersonToken) },
+                { "v2.core.account_token", typeof(V2.Core.AccountToken) },
                 { "v2.core.event", typeof(V2.Core.Event) },
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
 

@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// Controls whether Stripe performs <a
-        /// href="https://stripe.com/docs/invoicing/integration/automatic-advancement-collection">automatic
+        /// href="https://docs.stripe.com/invoicing/integration/automatic-advancement-collection">automatic
         /// collection</a> of the invoice. If <c>false</c>, the invoice's state doesn't
         /// automatically advance without an explicit action.
         /// </summary>

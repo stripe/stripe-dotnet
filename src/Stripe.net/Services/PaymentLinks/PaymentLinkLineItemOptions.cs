@@ -28,8 +28,8 @@ namespace Stripe
         public string Id { get; set; }
 
         /// <summary>
-        /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> or <a
-        /// href="https://stripe.com/docs/api/plans">Plan</a> object. One of <c>price</c> or
+        /// The ID of the <a href="https://docs.stripe.com/api/prices">Price</a> or <a
+        /// href="https://docs.stripe.com/api/plans">Plan</a> object. One of <c>price</c> or
         /// <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
@@ -39,7 +39,7 @@ namespace Stripe
         public string Price { get; set; }
 
         /// <summary>
-        /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
         /// object inline. One of <c>price</c> or <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price_data")]

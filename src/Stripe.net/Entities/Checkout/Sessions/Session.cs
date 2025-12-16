@@ -12,19 +12,19 @@ namespace Stripe.Checkout
     /// <summary>
     /// A Checkout Session represents your customer's session as they pay for one-time purchases
     /// or subscriptions through <a
-    /// href="https://stripe.com/docs/payments/checkout">Checkout</a> or <a
-    /// href="https://stripe.com/docs/payments/payment-links">Payment Links</a>. We recommend
+    /// href="https://docs.stripe.com/payments/checkout">Checkout</a> or <a
+    /// href="https://docs.stripe.com/payments/payment-links">Payment Links</a>. We recommend
     /// creating a new Session each time your customer attempts to pay.
     ///
     /// Once payment is successful, the Checkout Session will contain a reference to the <a
-    /// href="https://stripe.com/docs/api/customers">Customer</a>, and either the successful <a
-    /// href="https://stripe.com/docs/api/payment_intents">PaymentIntent</a> or an active <a
-    /// href="https://stripe.com/docs/api/subscriptions">Subscription</a>.
+    /// href="https://docs.stripe.com/api/customers">Customer</a>, and either the successful <a
+    /// href="https://docs.stripe.com/api/payment_intents">PaymentIntent</a> or an active <a
+    /// href="https://docs.stripe.com/api/subscriptions">Subscription</a>.
     ///
     /// You can create a Checkout Session on your server and redirect to its URL to begin
     /// Checkout.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/checkout/quickstart">Checkout
+    /// Related guide: <a href="https://docs.stripe.com/checkout/quickstart">Checkout
     /// quickstart</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -144,7 +144,7 @@ namespace Stripe.Checkout
         /// <c>ui_mode: embedded</c> or <c>ui_mode: custom</c>. For <c>ui_mode: embedded</c>, the
         /// client secret is to be used when initializing Stripe.js embedded checkout. For
         /// <c>ui_mode: custom</c>, use the client secret with <a
-        /// href="https://stripe.com/docs/js/custom_checkout/init">initCheckout</a> on your front
+        /// href="https://docs.stripe.com/js/custom_checkout/init">initCheckout</a> on your front
         /// end.
         /// </summary>
         [JsonProperty("client_secret")]
@@ -278,6 +278,15 @@ namespace Stripe.Checkout
 #endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
+
+        /// <summary>
+        /// The ID of the account for this Session.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Configure whether a Checkout Session creates a Customer when the Checkout Session
@@ -430,7 +439,7 @@ namespace Stripe.Checkout
         public string Locale { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -482,7 +491,7 @@ namespace Stripe.Checkout
         /// (ID of the PaymentIntent)
         /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode. You can't
         /// confirm or cancel the PaymentIntent for a Checkout Session. To cancel, <a
-        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// href="https://docs.stripe.com/api/checkout/sessions/expire">expire the Checkout
         /// Session</a> instead.
         /// </summary>
         [JsonIgnore]
@@ -499,7 +508,7 @@ namespace Stripe.Checkout
         /// (Expanded)
         /// The ID of the PaymentIntent for Checkout Sessions in <c>payment</c> mode. You can't
         /// confirm or cancel the PaymentIntent for a Checkout Session. To cancel, <a
-        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// href="https://docs.stripe.com/api/checkout/sessions/expire">expire the Checkout
         /// Session</a> instead.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -653,7 +662,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// This parameter applies to <c>ui_mode: embedded</c>. Learn more about the <a
-        /// href="https://stripe.com/docs/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
+        /// href="https://docs.stripe.com/payments/checkout/custom-success-page?payment-ui=embedded-form">redirect
         /// behavior</a> of embedded sessions. Defaults to <c>always</c>.
         /// One of: <c>always</c>, <c>if_required</c>, or <c>never</c>.
         /// </summary>
@@ -690,7 +699,7 @@ namespace Stripe.Checkout
         /// (ID of the SetupIntent)
         /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode. You can't confirm
         /// or cancel the SetupIntent for a Checkout Session. To cancel, <a
-        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// href="https://docs.stripe.com/api/checkout/sessions/expire">expire the Checkout
         /// Session</a> instead.
         /// </summary>
         [JsonIgnore]
@@ -707,7 +716,7 @@ namespace Stripe.Checkout
         /// (Expanded)
         /// The ID of the SetupIntent for Checkout Sessions in <c>setup</c> mode. You can't confirm
         /// or cancel the SetupIntent for a Checkout Session. To cancel, <a
-        /// href="https://stripe.com/docs/api/checkout/sessions/expire">expire the Checkout
+        /// href="https://docs.stripe.com/api/checkout/sessions/expire">expire the Checkout
         /// Session</a> instead.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -788,7 +797,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (ID of the Subscription)
-        /// The ID of the <a href="https://stripe.com/docs/api/subscriptions">Subscription</a> for
+        /// The ID of the <a href="https://docs.stripe.com/api/subscriptions">Subscription</a> for
         /// Checkout Sessions in <c>subscription</c> mode.
         /// </summary>
         [JsonIgnore]
@@ -803,7 +812,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// (Expanded)
-        /// The ID of the <a href="https://stripe.com/docs/api/subscriptions">Subscription</a> for
+        /// The ID of the <a href="https://docs.stripe.com/api/subscriptions">Subscription</a> for
         /// Checkout Sessions in <c>subscription</c> mode.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -865,7 +874,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// The URL to the Checkout Session. Applies to Checkout Sessions with <c>ui_mode:
         /// hosted</c>. Redirect customers to this URL to take them to Checkout. If you’re using <a
-        /// href="https://stripe.com/docs/payments/checkout/custom-domains">Custom Domains</a>, the
+        /// href="https://docs.stripe.com/payments/checkout/custom-domains">Custom Domains</a>, the
         /// URL will use your subdomain. Otherwise, it’ll use <c>checkout.stripe.com.</c> This value
         /// is only present when the session is active.
         /// </summary>

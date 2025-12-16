@@ -11,8 +11,8 @@ namespace Stripe
 
     /// <summary>
     /// This object represents a customer of your business. Use it to <a
-    /// href="https://stripe.com/docs/invoicing/customer">create recurring charges</a>, <a
-    /// href="https://stripe.com/docs/payments/save-during-payment">save payment</a> and contact
+    /// href="https://docs.stripe.com/invoicing/customer">create recurring charges</a>, <a
+    /// href="https://docs.stripe.com/payments/save-during-payment">save payment</a> and contact
     /// information, and track payments that belong to the same customer.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -54,7 +54,7 @@ namespace Stripe
         /// considers amounts that Stripe hasn't successfully applied to any invoice. It doesn't
         /// reflect unpaid invoices. This balance is only taken into account after invoices
         /// finalize. For multi-currency balances, see <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_credit_balance">invoice_credit_balance</a>.
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_credit_balance">invoice_credit_balance</a>.
         /// </summary>
         [JsonProperty("balance")]
 #if NET6_0_OR_GREATER
@@ -104,6 +104,16 @@ namespace Stripe
 #endif
         public string Currency { get; set; }
 
+        /// <summary>
+        /// The ID of an Account representing a customer. You can use this ID with any v1 API that
+        /// accepts a customer_account parameter.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
+
         #region Expandable DefaultSource
 
         /// <summary>
@@ -111,7 +121,7 @@ namespace Stripe
         /// ID of the default payment source for the customer.
         ///
         /// If you use payment methods created through the PaymentMethods API, see the <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// field instead.
         /// </summary>
         [JsonIgnore]
@@ -129,7 +139,7 @@ namespace Stripe
         /// ID of the default payment source for the customer.
         ///
         /// If you use payment methods created through the PaymentMethods API, see the <a
-        /// href="https://stripe.com/docs/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
+        /// href="https://docs.stripe.com/api/customers/object#customer_object-invoice_settings-default_payment_method">invoice_settings.default_payment_method</a>
         /// field instead.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -170,7 +180,7 @@ namespace Stripe
         /// <c>true</c>.
         ///
         /// If an invoice becomes uncollectible by <a
-        /// href="https://stripe.com/docs/billing/automatic-collection">dunning</a>,
+        /// href="https://docs.stripe.com/billing/automatic-collection">dunning</a>,
         /// <c>delinquent</c> doesn't reset to <c>false</c>.
         ///
         /// If you care whether the customer has paid their most recent subscription invoice, use
@@ -261,7 +271,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

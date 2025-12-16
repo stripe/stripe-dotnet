@@ -42,13 +42,22 @@ namespace Stripe.Billing
         public string Category { get; set; }
 
         /// <summary>
-        /// ID of the customer to receive the billing credits.
+        /// ID of the customer receiving the billing credits.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// ID of the account representing the customer receiving the billing credits.
+        /// </summary>
+        [JsonProperty("customer_account")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("customer_account")]
+#endif
+        public string CustomerAccount { get; set; }
 
         /// <summary>
         /// The time when the billing credits become effective-when they're eligible for use. It

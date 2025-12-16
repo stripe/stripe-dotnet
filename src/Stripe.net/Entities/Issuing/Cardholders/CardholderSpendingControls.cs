@@ -11,7 +11,7 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// Array of strings containing <a
-        /// href="https://stripe.com/docs/api#issuing_authorization_object-merchant_data-category">categories</a>
+        /// href="https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category">categories</a>
         /// of authorizations to allow. All other categories will be blocked. Cannot be set with
         /// <c>blocked_categories</c>.
         /// One of: <c>ac_refrigeration_repair</c>, <c>accounting_bookkeeping_services</c>,
@@ -180,7 +180,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Array of strings containing <a
-        /// href="https://stripe.com/docs/api#issuing_authorization_object-merchant_data-category">categories</a>
+        /// href="https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category">categories</a>
         /// of authorizations to decline. All other categories will be allowed. Cannot be set with
         /// <c>allowed_categories</c>.
         /// One of: <c>ac_refrigeration_repair</c>, <c>accounting_bookkeeping_services</c>,
