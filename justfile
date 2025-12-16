@@ -29,7 +29,8 @@ _mise_install_dotnet:
   export DOTNET_ROOT="$(mise where dotnet)"
 
 _dotnet_install tpv:
-  ./scripts/dotnet-install.sh --channel {{ tpv }} --install-dir $DOTNET_ROOT
+  # ./scripts/dotnet-install.sh --channel {{ tpv }} --install-dir $DOTNET_ROOT
+  ./scripts/dotnet-install.sh --channel {{ tpv }} --install-dir "$(mise which dotnet)"
 
 _ensure_latest_dotnet:
   #!/usr/bin/env bash
@@ -48,7 +49,7 @@ _test no_build framework config filter="":
 
 # ⭐ run tests in debug mode
 # Note that running on a specified dotnet version requires having that version installed
-test: _ensure_latest_dotnet
+test:
   #!/usr/bin/env bash
   dotnet_version=`just print_latest_supported_dotnet_version`
   just _test "" "-f net$dotnet_version" "Debug"
