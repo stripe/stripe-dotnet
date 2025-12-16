@@ -19,7 +19,16 @@ namespace Stripe
         public List<SubscriptionBillingScheduleAppliesTo> AppliesTo { get; set; }
 
         /// <summary>
-        /// Specifies the billing period.
+        /// Specifies the start of the billing period.
+        /// </summary>
+        [JsonProperty("bill_from")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("bill_from")]
+#endif
+        public SubscriptionBillingScheduleBillFrom BillFrom { get; set; }
+
+        /// <summary>
+        /// Specifies the end of billing period.
         /// </summary>
         [JsonProperty("bill_until")]
 #if NET6_0_OR_GREATER

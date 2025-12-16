@@ -19,10 +19,10 @@ namespace Stripe.V2.Payments
         public long? AmountToCapture { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://docs.corp.stripe.com/api/metadata">key-value pairs</a> that you
-        /// can attach to an object. This can be useful for storing additional information about the
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
+        /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Learn more about <a
-        /// href="https://docs.corp.stripe.com/payments/payment-intents#storing-information-in-metadata">storing
+        /// href="https://docs.stripe.com/payments/payment-intents#storing-information-in-metadata">storing
         /// information in metadata</a>.
         /// </summary>
         [JsonProperty("metadata")]
@@ -59,7 +59,7 @@ namespace Stripe.V2.Payments
         /// <summary>
         /// The data that automatically creates a Transfer after the payment finalizes. Learn more
         /// about the use case for <a
-        /// href="https://docs.corp.stripe.com/payments/connected-accounts">connected accounts</a>.
+        /// href="https://docs.stripe.com/payments/connected-accounts">connected accounts</a>.
         /// </summary>
         [JsonProperty("transfer_data")]
 #if NET6_0_OR_GREATER

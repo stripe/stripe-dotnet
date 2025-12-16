@@ -46,6 +46,15 @@ namespace Stripe.FinancialConnections
         public AccountAccountHolder AccountHolder { get; set; }
 
         /// <summary>
+        /// Details about the account numbers.
+        /// </summary>
+        [JsonProperty("account_numbers")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_numbers")]
+#endif
+        public List<AccountAccountNumber> AccountNumbers { get; set; }
+
+        /// <summary>
         /// The most recent information about the account's balance.
         /// </summary>
         [JsonProperty("balance")]
@@ -276,7 +285,7 @@ namespace Stripe.FinancialConnections
 
         /// <summary>
         /// The <a
-        /// href="https://stripe.com/docs/api/payment_methods/object#payment_method_object-type">PaymentMethod
+        /// href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-type">PaymentMethod
         /// type</a>(s) that can be created from this account.
         /// One of: <c>link</c>, or <c>us_bank_account</c>.
         /// </summary>

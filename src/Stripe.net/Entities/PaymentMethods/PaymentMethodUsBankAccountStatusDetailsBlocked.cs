@@ -23,7 +23,8 @@ namespace Stripe
         /// The reason why this PaymentMethod's fingerprint has been blocked.
         /// One of: <c>bank_account_closed</c>, <c>bank_account_frozen</c>,
         /// <c>bank_account_invalid_details</c>, <c>bank_account_restricted</c>,
-        /// <c>bank_account_unusable</c>, or <c>debit_not_authorized</c>.
+        /// <c>bank_account_unusable</c>, <c>debit_not_authorized</c>, or
+        /// <c>tokenized_account_number_deactivated</c>.
         /// </summary>
         [JsonProperty("reason")]
 #if NET6_0_OR_GREATER

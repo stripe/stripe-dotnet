@@ -11,7 +11,7 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// Maximum amount allowed to spend per interval. This amount is in the card's currency and
-        /// in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest currency
+        /// in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest currency
         /// unit</a>.
         /// </summary>
         [JsonProperty("amount")]
@@ -22,7 +22,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// Array of strings containing <a
-        /// href="https://stripe.com/docs/api#issuing_authorization_object-merchant_data-category">categories</a>
+        /// href="https://docs.stripe.com/api#issuing_authorization_object-merchant_data-category">categories</a>
         /// this limit applies to. Omitting this field will apply the limit to all categories.
         /// One of: <c>ac_refrigeration_repair</c>, <c>accounting_bookkeeping_services</c>,
         /// <c>advertising_services</c>, <c>agricultural_cooperative</c>,

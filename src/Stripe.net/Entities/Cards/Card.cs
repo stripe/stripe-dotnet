@@ -13,7 +13,7 @@ namespace Stripe
     /// can also store multiple debit cards on a recipient in order to transfer to those cards
     /// later.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/sources/cards">Card payments with
+    /// Related guide: <a href="https://docs.stripe.com/sources/cards">Card payments with
     /// Sources</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -167,6 +167,12 @@ namespace Stripe
         [STJS.JsonPropertyName("available_payout_methods")]
 #endif
         public List<string> AvailablePayoutMethods { get; set; }
+
+        [JsonProperty("benefits")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("benefits")]
+#endif
+        public CardBenefits Benefits { get; set; }
 
         /// <summary>
         /// Card brand. Can be <c>American Express</c>, <c>Cartes Bancaires</c>, <c>Diners Club</c>,
@@ -388,7 +394,7 @@ namespace Stripe
         public string Last4 { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

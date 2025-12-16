@@ -20,7 +20,7 @@ namespace Stripe
 
         /// <summary>
         /// Optional parameters that automatically create a <a
-        /// href="https://stripe.com/docs/api#file_links">file link</a> for the newly created file.
+        /// href="https://api.stripe.com#file_links">file link</a> for the newly created file.
         /// </summary>
         [JsonProperty("file_link_data")]
 #if NET6_0_OR_GREATER
@@ -29,13 +29,13 @@ namespace Stripe
         public FileFileLinkDataOptions FileLinkData { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the
+        /// The <a href="https://docs.stripe.com/file-upload#uploading-a-file">purpose</a> of the
         /// uploaded file.
         /// One of: <c>account_requirement</c>, <c>additional_verification</c>,
         /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,
         /// <c>dispute_evidence</c>, <c>identity_document</c>, <c>issuing_regulatory_reporting</c>,
-        /// <c>pci_document</c>, <c>tax_document_user_upload</c>, <c>terminal_android_apk</c>, or
-        /// <c>terminal_reader_splashscreen</c>.
+        /// <c>pci_document</c>, <c>platform_terms_of_service</c>, <c>tax_document_user_upload</c>,
+        /// <c>terminal_android_apk</c>, or <c>terminal_reader_splashscreen</c>.
         /// </summary>
         [JsonProperty("purpose")]
 #if NET6_0_OR_GREATER

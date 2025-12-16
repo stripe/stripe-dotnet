@@ -77,6 +77,22 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Retrieves a PaymentMethod’s Balance.</p>.
+        /// </summary>
+        public virtual PaymentMethodBalance CheckBalance(string id, PaymentMethodCheckBalanceOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentMethodBalance>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_methods/{WebUtility.UrlEncode(id)}/check_balance", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Retrieves a PaymentMethod’s Balance.</p>.
+        /// </summary>
+        public virtual Task<PaymentMethodBalance> CheckBalanceAsync(string id, PaymentMethodCheckBalanceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentMethodBalance>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_methods/{WebUtility.UrlEncode(id)}/check_balance", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Creates a PaymentMethod object. Read the <a
         /// href="https://stripe.com/docs/stripe-js/reference#stripe-create-payment-method">Stripe.js
         /// reference</a> to learn how to create PaymentMethods via Stripe.js.</p>.
@@ -149,10 +165,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of PaymentMethods for Treasury flows. If you want to list the
-        /// PaymentMethods attached to a Customer for payments, you should use the <a
-        /// href="https://stripe.com/docs/api/payment_methods/customer_list">List a Customer’s
-        /// PaymentMethods</a> API instead.</p>.
+        /// <p>Returns a list of all PaymentMethods.</p>.
         /// </summary>
         public virtual StripeList<PaymentMethod> List(PaymentMethodListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -160,10 +173,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of PaymentMethods for Treasury flows. If you want to list the
-        /// PaymentMethods attached to a Customer for payments, you should use the <a
-        /// href="https://stripe.com/docs/api/payment_methods/customer_list">List a Customer’s
-        /// PaymentMethods</a> API instead.</p>.
+        /// <p>Returns a list of all PaymentMethods.</p>.
         /// </summary>
         public virtual Task<StripeList<PaymentMethod>> ListAsync(PaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -171,10 +181,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of PaymentMethods for Treasury flows. If you want to list the
-        /// PaymentMethods attached to a Customer for payments, you should use the <a
-        /// href="https://stripe.com/docs/api/payment_methods/customer_list">List a Customer’s
-        /// PaymentMethods</a> API instead.</p>.
+        /// <p>Returns a list of all PaymentMethods.</p>.
         /// </summary>
         public virtual IEnumerable<PaymentMethod> ListAutoPaging(PaymentMethodListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -182,10 +189,7 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Returns a list of PaymentMethods for Treasury flows. If you want to list the
-        /// PaymentMethods attached to a Customer for payments, you should use the <a
-        /// href="https://stripe.com/docs/api/payment_methods/customer_list">List a Customer’s
-        /// PaymentMethods</a> API instead.</p>.
+        /// <p>Returns a list of all PaymentMethods.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<PaymentMethod> ListAutoPagingAsync(PaymentMethodListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

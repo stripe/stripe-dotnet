@@ -20,6 +20,24 @@ namespace Stripe.V2.Core
         public AccountCreateIdentityAttestationsTermsOfServiceAccountOptions Account { get; set; }
 
         /// <summary>
+        /// Details on the Account's acceptance of Issuing-specific terms of service.
+        /// </summary>
+        [JsonProperty("card_creator")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_creator")]
+#endif
+        public AccountCreateIdentityAttestationsTermsOfServiceCardCreatorOptions CardCreator { get; set; }
+
+        /// <summary>
+        /// Details on the Account's acceptance of Crypto-storer-specific terms of service.
+        /// </summary>
+        [JsonProperty("crypto_storer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto_storer")]
+#endif
+        public AccountCreateIdentityAttestationsTermsOfServiceCryptoStorerOptions CryptoStorer { get; set; }
+
+        /// <summary>
         /// Details on the Account's acceptance of Treasury-specific terms of service.
         /// </summary>
         [JsonProperty("storer")]

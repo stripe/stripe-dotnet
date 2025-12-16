@@ -15,7 +15,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available")]
 #endif
-        public V2.Amount Available { get; set; }
+        public TransactionEntryBalanceImpactAvailable Available { get; set; }
 
         /// <summary>
         /// Impact to the inbound_pending balance.
@@ -24,7 +24,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inbound_pending")]
 #endif
-        public V2.Amount InboundPending { get; set; }
+        public TransactionEntryBalanceImpactInboundPending InboundPending { get; set; }
 
         /// <summary>
         /// Impact to the outbound_pending balance.
@@ -33,6 +33,6 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outbound_pending")]
 #endif
-        public V2.Amount OutboundPending { get; set; }
+        public TransactionEntryBalanceImpactOutboundPending OutboundPending { get; set; }
     }
 }

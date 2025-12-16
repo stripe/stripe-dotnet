@@ -24,7 +24,7 @@ namespace Stripe.Apps
     /// different users might have different permissions.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/stripe-apps/store-auth-data-custom-objects">Store data
+    /// href="https://docs.stripe.com/stripe-apps/store-auth-data-custom-objects">Store data
     /// between page reloads</a>.
     /// </summary>
     public class Secret : StripeEntity<Secret>, IHasId, IHasObject

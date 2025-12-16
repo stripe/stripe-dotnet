@@ -33,6 +33,15 @@ namespace Stripe.V2.MoneyManagement
         public string Object { get; set; }
 
         /// <summary>
+        /// The alternative reference for this payout method, if it's a projected payout method.
+        /// </summary>
+        [JsonProperty("alternative_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alternative_reference")]
+#endif
+        public PayoutMethodAlternativeReference AlternativeReference { get; set; }
+
+        /// <summary>
         /// A set of available payout speeds for this payout method.
         /// One of: <c>instant</c>, or <c>standard</c>.
         /// </summary>

@@ -15,7 +15,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("debited")]
 #endif
-        public V2.Amount Debited { get; set; }
+        public OutboundPaymentFromDebited Debited { get; set; }
 
         /// <summary>
         /// The FinancialAccount that funds were pulled from.

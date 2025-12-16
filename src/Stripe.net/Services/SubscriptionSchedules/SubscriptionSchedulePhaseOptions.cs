@@ -49,7 +49,7 @@ namespace Stripe
         /// <c>automatic</c> to automatically change it if needed. Cannot be set to
         /// <c>phase_start</c> if this phase specifies a trial. For more information, see the
         /// billing cycle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
@@ -105,11 +105,11 @@ namespace Stripe
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
-        /// A list of <a href="https://stripe.com/docs/api/tax_rates">Tax Rate</a> ids. These Tax
+        /// A list of <a href="https://docs.stripe.com/api/tax_rates">Tax Rate</a> ids. These Tax
         /// Rates will set the Subscription's <a
-        /// href="https://stripe.com/docs/api/subscriptions/create#create_subscription-default_tax_rates"><c>default_tax_rates</c></a>,
+        /// href="https://docs.stripe.com/api/subscriptions/create#create_subscription-default_tax_rates"><c>default_tax_rates</c></a>,
         /// which means they will be the Invoice's <a
-        /// href="https://stripe.com/docs/api/invoices/create#create_invoice-default_tax_rates"><c>default_tax_rates</c></a>
+        /// href="https://docs.stripe.com/api/invoices/create#create_invoice-default_tax_rates"><c>default_tax_rates</c></a>
         /// for any Invoices issued by the Subscription during this Phase.
         /// </summary>
         [JsonProperty("default_tax_rates")]
@@ -150,8 +150,23 @@ namespace Stripe
         public SubscriptionSchedulePhaseDurationOptions Duration { get; set; }
 
         /// <summary>
-        /// The date at which this phase of the subscription schedule ends. If set,
-        /// <c>iterations</c> must not be set.
+        /// Configures how the subscription schedule handles billing for phase transitions. Possible
+        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
+        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
+        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
+        /// upcoming phase transitions within the current billing cycle, including pricing changes
+        /// and service period adjustments that will occur before the next invoice.
+        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        /// </summary>
+        [JsonProperty("effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
+#endif
+        public string EffectiveAt { get; set; }
+
+        /// <summary>
+        /// The date at which this phase of the subscription schedule ends. If set, <c>duration</c>
+        /// must not be set.
         /// </summary>
         [JsonProperty("end_date")]
         [JsonConverter(typeof(AnyOfConverter))]
@@ -181,7 +196,7 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseItemOptions> Items { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to a phase. Metadata on a schedule's phase will update the underlying
         /// subscription's <c>metadata</c> when the phase is entered, adding new keys and replacing
         /// existing keys in the subscription's <c>metadata</c>. Individual keys in the
@@ -209,7 +224,7 @@ namespace Stripe
         /// <summary>
         /// If specified, payment collection for this subscription will be paused. Note that the
         /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
-        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// more about <a href="https://docs.stripe.com/billing/subscriptions/pause-payment">pausing
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]
@@ -220,10 +235,10 @@ namespace Stripe
 
         /// <summary>
         /// Controls whether the subscription schedule should create <a
-        /// href="https://stripe.com/docs/billing/subscriptions/prorations">prorations</a> when
+        /// href="https://docs.stripe.com/billing/subscriptions/prorations">prorations</a> when
         /// transitioning to this phase if there is a difference in billing configuration. It's
         /// different from the request-level <a
-        /// href="https://stripe.com/docs/api/subscription_schedules/update#update_subscription_schedule-proration_behavior">proration_behavior</a>
+        /// href="https://docs.stripe.com/api/subscription_schedules/update#update_subscription_schedule-proration_behavior">proration_behavior</a>
         /// parameter which controls what happens if the update request affects the billing
         /// configuration (item price, quantity, etc.) of the current phase.
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.

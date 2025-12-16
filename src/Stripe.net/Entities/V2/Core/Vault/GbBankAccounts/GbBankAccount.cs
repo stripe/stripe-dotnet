@@ -32,6 +32,15 @@ namespace Stripe.V2.Core.Vault
         public string Object { get; set; }
 
         /// <summary>
+        /// The alternative reference for this payout method, if it's a projected payout method.
+        /// </summary>
+        [JsonProperty("alternative_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("alternative_reference")]
+#endif
+        public GbBankAccountAlternativeReference AlternativeReference { get; set; }
+
+        /// <summary>
         /// Whether this bank account object was archived. Bank account objects can be archived
         /// through the /archive API, and they will not be automatically archived by Stripe.
         /// Archived bank account objects cannot be used as outbound destinations and will not

@@ -27,6 +27,15 @@ namespace Stripe
         public InvoiceItemParentRateCardSubscriptionDetails RateCardSubscriptionDetails { get; set; }
 
         /// <summary>
+        /// Details about the subscription schedule that generated this invoice item.
+        /// </summary>
+        [JsonProperty("schedule_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("schedule_details")]
+#endif
+        public InvoiceItemParentScheduleDetails ScheduleDetails { get; set; }
+
+        /// <summary>
         /// Details about the subscription that generated this invoice item.
         /// </summary>
         [JsonProperty("subscription_details")]
@@ -38,7 +47,7 @@ namespace Stripe
         /// <summary>
         /// The type of parent that generated this invoice item.
         /// One of: <c>license_fee_subscription_details</c>, <c>rate_card_subscription_details</c>,
-        /// or <c>subscription_details</c>.
+        /// <c>schedule_details</c>, or <c>subscription_details</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

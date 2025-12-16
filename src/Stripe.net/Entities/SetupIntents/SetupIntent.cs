@@ -13,8 +13,8 @@ namespace Stripe
     /// A SetupIntent guides you through the process of setting up and saving a customer's
     /// payment credentials for future payments. For example, you can use a SetupIntent to set
     /// up and save your customer's card without immediately collecting a payment. Later, you
-    /// can use <a href="https://stripe.com/docs/api#payment_intents">PaymentIntents</a> to
-    /// drive the payment flow.
+    /// can use <a href="https://api.stripe.com#payment_intents">PaymentIntents</a> to drive the
+    /// payment flow.
     ///
     /// Create a SetupIntent when you're ready to collect your customer's payment credentials.
     /// Don't maintain long-lived, unconfirmed SetupIntents because they might not be valid. The
@@ -30,10 +30,10 @@ namespace Stripe
     /// Authentication</a> during payment method collection to streamline later <a
     /// href="https://docs.stripe.com/payments/setup-intents">off-session payments</a>. If you
     /// use the SetupIntent with a <a
-    /// href="https://stripe.com/docs/api#setup_intent_object-customer">Customer</a>, it
+    /// href="https://api.stripe.com#setup_intent_object-customer">Customer</a>, it
     /// automatically attaches the resulting payment method to that Customer after successful
     /// setup. We recommend using SetupIntents or <a
-    /// href="https://stripe.com/docs/api#payment_intent_object-setup_future_usage">setup_future_usage</a>
+    /// href="https://api.stripe.com#payment_intent_object-setup_future_usage">setup_future_usage</a>
     /// on PaymentIntents to save payment methods to prevent saving invalid or unoptimized
     /// payment methods.
     ///
@@ -239,6 +239,27 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
+        /// Payment method types that are excluded from this SetupIntent.
+        /// One of: <c>acss_debit</c>, <c>affirm</c>, <c>afterpay_clearpay</c>, <c>alipay</c>,
+        /// <c>alma</c>, <c>amazon_pay</c>, <c>au_becs_debit</c>, <c>bacs_debit</c>,
+        /// <c>bancontact</c>, <c>billie</c>, <c>blik</c>, <c>boleto</c>, <c>card</c>,
+        /// <c>cashapp</c>, <c>crypto</c>, <c>customer_balance</c>, <c>eps</c>, <c>fpx</c>,
+        /// <c>giropay</c>, <c>gopay</c>, <c>grabpay</c>, <c>id_bank_transfer</c>, <c>ideal</c>,
+        /// <c>kakao_pay</c>, <c>klarna</c>, <c>konbini</c>, <c>kr_card</c>, <c>mb_way</c>,
+        /// <c>mobilepay</c>, <c>multibanco</c>, <c>naver_pay</c>, <c>nz_bank_account</c>,
+        /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
+        /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
+        /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
+        /// <c>shopeepay</c>, <c>sofort</c>, <c>stripe_balance</c>, <c>swish</c>, <c>twint</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// </summary>
+        [JsonProperty("excluded_payment_method_types")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("excluded_payment_method_types")]
+#endif
+        public List<string> ExcludedPaymentMethodTypes { get; set; }
+
+        /// <summary>
         /// Indicates the directions of money movement for which this payment method is intended to
         /// be used.
         ///
@@ -356,7 +377,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -466,7 +487,7 @@ namespace Stripe
 
         /// <summary>
         /// Information about the <a
-        /// href="https://stripe.com/docs/api/payment_method_configurations">payment method
+        /// href="https://docs.stripe.com/api/payment_method_configurations">payment method
         /// configuration</a> used for this Setup Intent.
         /// </summary>
         [JsonProperty("payment_method_configuration_details")]
@@ -494,6 +515,12 @@ namespace Stripe
         [STJS.JsonPropertyName("payment_method_types")]
 #endif
         public List<string> PaymentMethodTypes { get; set; }
+
+        [JsonProperty("setup_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_details")]
+#endif
+        public SetupIntentSetupDetails SetupDetails { get; set; }
 
         #region Expandable SingleUseMandate
 
@@ -537,7 +564,7 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// <a href="https://stripe.com/docs/payments/intents#intent-statuses">Status</a> of this
+        /// <a href="https://docs.stripe.com/payments/intents#intent-statuses">Status</a> of this
         /// SetupIntent, one of <c>requires_payment_method</c>, <c>requires_confirmation</c>,
         /// <c>requires_action</c>, <c>processing</c>, <c>canceled</c>, or <c>succeeded</c>.
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_action</c>,

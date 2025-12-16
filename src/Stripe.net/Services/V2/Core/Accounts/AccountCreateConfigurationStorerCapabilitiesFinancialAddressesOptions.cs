@@ -17,5 +17,14 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("bank_accounts")]
 #endif
         public AccountCreateConfigurationStorerCapabilitiesFinancialAddressesBankAccountsOptions BankAccounts { get; set; }
+
+        /// <summary>
+        /// Can provision a crypto wallet like financial address to credit a FinancialAccount.
+        /// </summary>
+        [JsonProperty("crypto_wallets")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto_wallets")]
+#endif
+        public AccountCreateConfigurationStorerCapabilitiesFinancialAddressesCryptoWalletsOptions CryptoWallets { get; set; }
     }
 }

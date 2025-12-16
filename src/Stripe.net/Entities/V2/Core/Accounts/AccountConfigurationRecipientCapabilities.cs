@@ -18,7 +18,7 @@ namespace Stripe.V2.Core
         public AccountConfigurationRecipientCapabilitiesBankAccounts BankAccounts { get; set; }
 
         /// <summary>
-        /// Capability that enable OutboundPayments to a debit card linked to this Account.
+        /// Enables this Account to receive OutboundPayments to a linked debit card.
         /// </summary>
         [JsonProperty("cards")]
 #if NET6_0_OR_GREATER
@@ -27,7 +27,7 @@ namespace Stripe.V2.Core
         public AccountConfigurationRecipientCapabilitiesCards Cards { get; set; }
 
         /// <summary>
-        /// Capability that enable OutboundPayments to a crypto wallet linked to this Account.
+        /// Enables this Account to receive OutboundPayments to a linked crypto wallet.
         /// </summary>
         [JsonProperty("crypto_wallets")]
 #if NET6_0_OR_GREATER

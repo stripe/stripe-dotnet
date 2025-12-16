@@ -15,12 +15,13 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public OutboundPaymentQuoteEstimatedFeeAmount Amount { get; set; }
 
         /// <summary>
         /// The fee type.
         /// One of: <c>cross_border_payout_fee</c>, <c>foreign_exchange_fee</c>,
-        /// <c>instant_payout_fee</c>, <c>standard_payout_fee</c>, or <c>wire_payout_fee</c>.
+        /// <c>instant_payout_fee</c>, <c>real_time_payout_fee</c>, <c>standard_payout_fee</c>, or
+        /// <c>wire_payout_fee</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

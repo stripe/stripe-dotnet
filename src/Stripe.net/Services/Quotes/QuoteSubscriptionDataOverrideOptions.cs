@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -42,6 +43,16 @@ namespace Stripe
         public string BillingBehavior { get; set; }
 
         /// <summary>
+        /// Billing schedules that will be applied to the subscription or subscription schedule
+        /// created when the quote is accepted.
+        /// </summary>
+        [JsonProperty("billing_schedules")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_schedules")]
+#endif
+        public List<QuoteSubscriptionDataOverrideBillingScheduleOptions> BillingSchedules { get; set; }
+
+        /// <summary>
         /// The customer the Subscription Data override applies to. This is only relevant when
         /// <c>applies_to.type=new_reference</c>.
         /// </summary>
@@ -73,8 +84,24 @@ namespace Stripe
         public string EndBehavior { get; set; }
 
         /// <summary>
+        /// Configures how the subscription schedule handles billing for phase transitions when the
+        /// quote is accepted. Possible values are <c>phase_start</c> (default) or
+        /// <c>billing_period_start</c>. <c>phase_start</c> bills based on the current state of the
+        /// subscription, ignoring changes scheduled in future phases. <c>billing_period_start</c>
+        /// bills predictively for upcoming phase transitions within the current billing cycle,
+        /// including pricing changes and service period adjustments that will occur before the next
+        /// invoice.
+        /// One of: <c>billing_period_start</c>, or <c>line_start</c>.
+        /// </summary>
+        [JsonProperty("phase_effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("phase_effective_at")]
+#endif
+        public string PhaseEffectiveAt { get; set; }
+
+        /// <summary>
         /// Determines how to handle <a
-        /// href="https://stripe.com/docs/subscriptions/billing-cycle#prorations">prorations</a>.
+        /// href="https://docs.stripe.com/subscriptions/billing-cycle#prorations">prorations</a>.
         /// When creating a subscription, valid values are <c>create_prorations</c> or <c>none</c>.
         ///
         /// When updating a subscription, valid values are <c>create_prorations</c>, <c>none</c>, or
@@ -82,7 +109,7 @@ namespace Stripe
         ///
         /// Passing <c>create_prorations</c> will cause proration invoice items to be created when
         /// applicable. These proration items will only be invoiced immediately under <a
-        /// href="https://stripe.com/docs/subscriptions/upgrading-downgrading#immediate-payment">certain
+        /// href="https://docs.stripe.com/subscriptions/upgrading-downgrading#immediate-payment">certain
         /// conditions</a>. In order to always invoice immediately for prorations, pass
         /// <c>always_invoice</c>.
         ///

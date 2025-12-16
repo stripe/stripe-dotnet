@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.Terminal
 {
+    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
@@ -12,7 +13,7 @@ namespace Stripe.Terminal
     /// A Reader represents a physical device for accepting payment details.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/terminal/payments/connect-reader">Connecting to a
+    /// href="https://docs.stripe.com/terminal/payments/connect-reader">Connecting to a
     /// reader</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -97,6 +98,19 @@ namespace Stripe.Terminal
         public string Label { get; set; }
 
         /// <summary>
+        /// The last time this reader reported to Stripe backend. Timestamp is measured in
+        /// milliseconds since the Unix epoch. Unlike most other Stripe timestamp fields which use
+        /// seconds, this field uses milliseconds.
+        /// </summary>
+        [JsonProperty("last_seen_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("last_seen_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+        public DateTime? LastSeenAt { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -148,7 +162,7 @@ namespace Stripe.Terminal
         #endregion
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

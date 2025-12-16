@@ -66,7 +66,7 @@ namespace Stripe
         public AnyOf<DateTime?, DateRangeOptions> CurrentPeriodStart { get; set; }
 
         /// <summary>
-        /// The ID of the customer whose subscriptions will be retrieved.
+        /// The ID of the customer whose subscriptions you're retrieving.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
@@ -75,7 +75,7 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// The ID of the account whose subscriptions will be retrieved.
+        /// The ID of the account representing the customer whose subscriptions you're retrieving.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
@@ -106,7 +106,7 @@ namespace Stripe
         /// return all canceled subscriptions, including those belonging to deleted customers. Pass
         /// <c>ended</c> to find subscriptions that are canceled and subscriptions that are expired
         /// due to <a
-        /// href="https://stripe.com/docs/billing/subscriptions/overview#subscription-statuses">incomplete
+        /// href="https://docs.stripe.com/billing/subscriptions/overview#subscription-statuses">incomplete
         /// payment</a>. Passing in a value of <c>all</c> will return subscriptions of all statuses.
         /// If no value is supplied, all subscriptions that have not been canceled are returned.
         /// One of: <c>active</c>, <c>all</c>, <c>canceled</c>, <c>ended</c>, <c>incomplete</c>,

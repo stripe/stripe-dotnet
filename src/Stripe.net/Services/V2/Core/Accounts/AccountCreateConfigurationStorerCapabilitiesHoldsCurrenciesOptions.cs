@@ -9,6 +9,15 @@ namespace Stripe.V2.Core
     public class AccountCreateConfigurationStorerCapabilitiesHoldsCurrenciesOptions : INestedOptions
     {
         /// <summary>
+        /// Can hold storage-type funds on Stripe in EUR.
+        /// </summary>
+        [JsonProperty("eur")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("eur")]
+#endif
+        public AccountCreateConfigurationStorerCapabilitiesHoldsCurrenciesEurOptions Eur { get; set; }
+
+        /// <summary>
         /// Can hold storage-type funds on Stripe in GBP.
         /// </summary>
         [JsonProperty("gbp")]
@@ -16,5 +25,23 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("gbp")]
 #endif
         public AccountCreateConfigurationStorerCapabilitiesHoldsCurrenciesGbpOptions Gbp { get; set; }
+
+        /// <summary>
+        /// Can hold storage-type funds on Stripe in USD.
+        /// </summary>
+        [JsonProperty("usd")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("usd")]
+#endif
+        public AccountCreateConfigurationStorerCapabilitiesHoldsCurrenciesUsdOptions Usd { get; set; }
+
+        /// <summary>
+        /// Can hold storage-type funds on Stripe in USDC.
+        /// </summary>
+        [JsonProperty("usdc")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("usdc")]
+#endif
+        public AccountCreateConfigurationStorerCapabilitiesHoldsCurrenciesUsdcOptions Usdc { get; set; }
     }
 }

@@ -40,6 +40,7 @@ namespace Stripe
         /// <c>billing_portal.configuration.created</c>,
         /// <c>billing_portal.configuration.updated</c>, <c>billing_portal.session.created</c>,
         /// <c>capability.updated</c>, <c>capital.financing_offer.accepted</c>,
+        /// <c>capital.financing_offer.accepted_other_offer</c>,
         /// <c>capital.financing_offer.canceled</c>, <c>capital.financing_offer.created</c>,
         /// <c>capital.financing_offer.expired</c>, <c>capital.financing_offer.fully_repaid</c>,
         /// <c>capital.financing_offer.paid_out</c>, <c>capital.financing_offer.rejected</c>,
@@ -74,6 +75,7 @@ namespace Stripe
         /// <c>customer.tax_id.deleted</c>, <c>customer.tax_id.updated</c>, <c>customer.updated</c>,
         /// <c>customer_cash_balance_transaction.created</c>,
         /// <c>entitlements.active_entitlement_summary.updated</c>, <c>file.created</c>,
+        /// <c>financial_connections.account.account_numbers_updated</c>,
         /// <c>financial_connections.account.created</c>,
         /// <c>financial_connections.account.deactivated</c>,
         /// <c>financial_connections.account.disconnected</c>,
@@ -82,6 +84,7 @@ namespace Stripe
         /// <c>financial_connections.account.refreshed_inferred_balances</c>,
         /// <c>financial_connections.account.refreshed_ownership</c>,
         /// <c>financial_connections.account.refreshed_transactions</c>,
+        /// <c>financial_connections.account.upcoming_account_number_expiry</c>,
         /// <c>financial_connections.session.updated</c>, <c>fx_quote.expired</c>,
         /// <c>identity.verification_session.canceled</c>,
         /// <c>identity.verification_session.created</c>,
@@ -186,7 +189,7 @@ namespace Stripe
         public List<string> EnabledEvents { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.

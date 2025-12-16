@@ -45,7 +45,7 @@ namespace Stripe
 
         /// <summary>
         /// When included, this hash creates a PaymentMethod that is set as the <a
-        /// href="https://stripe.com/docs/api/setup_intents/object#setup_intent_object-payment_method"><c>payment_method</c></a>
+        /// href="https://docs.stripe.com/api/setup_intents/object#setup_intent_object-payment_method"><c>payment_method</c></a>
         /// value in the SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_data")]
@@ -74,6 +74,15 @@ namespace Stripe
         [STJS.JsonPropertyName("return_url")]
 #endif
         public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// Provides industry-specific information about the SetupIntent.
+        /// </summary>
+        [JsonProperty("setup_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("setup_details")]
+#endif
+        public SetupIntentSetupDetailsOptions SetupDetails { get; set; }
 
         /// <summary>
         /// Set to <c>true</c> when confirming server-side and using Stripe.js, iOS, or Android

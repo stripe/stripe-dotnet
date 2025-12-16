@@ -27,7 +27,11 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
-        /// The amount an item was discounted for. Positive integer.
+        /// The discount applied on this line item represented in the <a
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. An
+        /// integer greater than 0.
+        ///
+        /// This field is mutually exclusive with the <c>amount_details[discount_amount]</c> field.
         /// </summary>
         [JsonProperty("discount_amount")]
 #if NET6_0_OR_GREATER
@@ -45,7 +49,8 @@ namespace Stripe
         public PaymentIntentAmountDetailsLineItemPaymentMethodOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
-        /// Unique identifier of the product. At most 12 characters long.
+        /// The product code of the line item, such as an SKU. Required for L3 rates. At most 12
+        /// characters long.
         /// </summary>
         [JsonProperty("product_code")]
 #if NET6_0_OR_GREATER
@@ -54,7 +59,10 @@ namespace Stripe
         public string ProductCode { get; set; }
 
         /// <summary>
-        /// Name of the product. At most 100 characters long.
+        /// The product name of the line item. Required for L3 rates. At most 1024 characters long.
+        ///
+        /// For Cards, this field is truncated to 26 alphanumeric characters before being sent to
+        /// the card networks. For Paypal, this field is truncated to 127 characters.
         /// </summary>
         [JsonProperty("product_name")]
 #if NET6_0_OR_GREATER
@@ -63,7 +71,7 @@ namespace Stripe
         public string ProductName { get; set; }
 
         /// <summary>
-        /// Number of items of the product. Positive integer.
+        /// The quantity of items. Required for L3 rates. An integer greater than 0.
         /// </summary>
         [JsonProperty("quantity")]
 #if NET6_0_OR_GREATER
@@ -81,7 +89,9 @@ namespace Stripe
         public PaymentIntentAmountDetailsLineItemTax Tax { get; set; }
 
         /// <summary>
-        /// Cost of the product. Non-negative integer.
+        /// The unit cost of the line item represented in the <a
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
+        /// Required for L3 rates. An integer greater than or equal to 0.
         /// </summary>
         [JsonProperty("unit_cost")]
 #if NET6_0_OR_GREATER
@@ -90,7 +100,8 @@ namespace Stripe
         public long UnitCost { get; set; }
 
         /// <summary>
-        /// A unit of measure for the line item, such as gallons, feet, meters, etc.
+        /// A unit of measure for the line item, such as gallons, feet, meters, etc. Required for L3
+        /// rates. At most 12 alphanumeric characters long.
         /// </summary>
         [JsonProperty("unit_of_measure")]
 #if NET6_0_OR_GREATER

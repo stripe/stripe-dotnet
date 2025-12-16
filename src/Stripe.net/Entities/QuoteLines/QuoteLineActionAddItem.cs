@@ -24,7 +24,7 @@ namespace Stripe
         public List<QuoteLineActionAddItemDiscount> Discounts { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an item. Metadata on this item will update the underlying subscription item's
         /// <c>metadata</c> when the phase is entered.
         /// </summary>
@@ -102,5 +102,14 @@ namespace Stripe
         [STJS.JsonPropertyName("trial")]
 #endif
         public QuoteLineActionAddItemTrial Trial { get; set; }
+
+        /// <summary>
+        /// The ID of the trial offer to apply to the configuration item.
+        /// </summary>
+        [JsonProperty("trial_offer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_offer")]
+#endif
+        public string TrialOffer { get; set; }
     }
 }

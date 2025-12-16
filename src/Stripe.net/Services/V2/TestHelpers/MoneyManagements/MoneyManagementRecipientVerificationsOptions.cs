@@ -10,7 +10,9 @@ namespace Stripe.V2.TestHelpers
     {
         /// <summary>
         /// Expected match level of the RecipientVerification to be created: <c>match</c>,
-        /// <c>close_match</c>, <c>no_match</c>, <c>unavailable</c>.
+        /// <c>close_match</c>, <c>no_match</c>, <c>unavailable</c>. For <c>close_match</c>, the
+        /// simulated response appends "close_match" to the provided name in
+        /// match_result_details.matched_name.
         /// One of: <c>close_match</c>, <c>match</c>, <c>no_match</c>, or <c>unavailable</c>.
         /// </summary>
         [JsonProperty("match_result")]

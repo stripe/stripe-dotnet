@@ -28,6 +28,16 @@ namespace Stripe.V2.Core
         public AccountCreateIdentityBusinessDetailsAnnualRevenueOptions AnnualRevenue { get; set; }
 
         /// <summary>
+        /// A detailed description of the business's compliance and anti-money laundering controls
+        /// and practices.
+        /// </summary>
+        [JsonProperty("compliance_screening_description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("compliance_screening_description")]
+#endif
+        public string ComplianceScreeningDescription { get; set; }
+
+        /// <summary>
         /// A document verifying the business.
         /// </summary>
         [JsonProperty("documents")]
@@ -37,8 +47,8 @@ namespace Stripe.V2.Core
         public AccountCreateIdentityBusinessDetailsDocumentsOptions Documents { get; set; }
 
         /// <summary>
-        /// An estimated upper bound of employees, contractors, vendors, etc. currently working for
-        /// the business.
+        /// Estimated maximum number of workers currently engaged by the business (including
+        /// employees, contractors, and vendors).
         /// </summary>
         [JsonProperty("estimated_worker_count")]
 #if NET6_0_OR_GREATER

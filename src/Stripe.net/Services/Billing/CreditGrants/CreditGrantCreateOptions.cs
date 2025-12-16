@@ -32,7 +32,7 @@ namespace Stripe.Billing
         public CreditGrantApplicabilityConfigOptions ApplicabilityConfig { get; set; }
 
         /// <summary>
-        /// The category of this credit grant.
+        /// The category of this credit grant. It defaults to <c>paid</c> if not specified.
         /// One of: <c>paid</c>, or <c>promotional</c>.
         /// </summary>
         [JsonProperty("category")]
@@ -42,7 +42,7 @@ namespace Stripe.Billing
         public string Category { get; set; }
 
         /// <summary>
-        /// ID of the customer to receive the billing credits.
+        /// ID of the customer receiving the billing credits.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
@@ -51,7 +51,7 @@ namespace Stripe.Billing
         public string Customer { get; set; }
 
         /// <summary>
-        /// ID of the account to receive the billing credits.
+        /// ID of the account representing the customer receiving the billing credits.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

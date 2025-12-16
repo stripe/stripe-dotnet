@@ -20,7 +20,7 @@ namespace Stripe.V2.Core
         public List<AccountConfigurationCustomerBillingInvoiceCustomField> CustomFields { get; set; }
 
         /// <summary>
-        /// Default footer to be displayed on invoices for this customer.
+        /// Default invoice footer.
         /// </summary>
         [JsonProperty("footer")]
 #if NET6_0_OR_GREATER
@@ -29,7 +29,7 @@ namespace Stripe.V2.Core
         public string Footer { get; set; }
 
         /// <summary>
-        /// The sequence to be used on the customer's next invoice. Defaults to 1.
+        /// Sequence number to use on the customer account's next invoice. Defaults to 1.
         /// </summary>
         [JsonProperty("next_sequence")]
 #if NET6_0_OR_GREATER
@@ -38,8 +38,8 @@ namespace Stripe.V2.Core
         public long? NextSequence { get; set; }
 
         /// <summary>
-        /// The prefix for the customer used to generate unique invoice numbers. Must be 3–12
-        /// uppercase letters or numbers.
+        /// Prefix used to generate unique invoice numbers. Must be 3-12 uppercase letters or
+        /// numbers.
         /// </summary>
         [JsonProperty("prefix")]
 #if NET6_0_OR_GREATER
@@ -48,7 +48,7 @@ namespace Stripe.V2.Core
         public string Prefix { get; set; }
 
         /// <summary>
-        /// Default options for invoice PDF rendering for this customer.
+        /// Default invoice PDF rendering options.
         /// </summary>
         [JsonProperty("rendering")]
 #if NET6_0_OR_GREATER

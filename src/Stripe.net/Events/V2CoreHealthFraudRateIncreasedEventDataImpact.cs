@@ -35,6 +35,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("realized_fraud_amount")]
 #endif
-        public V2.Amount RealizedFraudAmount { get; set; }
+        public V2CoreHealthFraudRateIncreasedEventDataImpactRealizedFraudAmount RealizedFraudAmount { get; set; }
     }
 }

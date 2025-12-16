@@ -10,7 +10,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// A positive integer in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>
         /// representing the shipping charge. If <c>tax_behavior=inclusive</c>, then this amount
         /// includes taxes. Otherwise, taxes are calculated on top of this amount.
         /// </summary>
@@ -21,7 +21,7 @@ namespace Stripe.Tax
         public long? Amount { get; set; }
 
         /// <summary>
-        /// If provided, the <a href="https://stripe.com/docs/api/shipping_rates/object">shipping
+        /// If provided, the <a href="https://docs.stripe.com/api/shipping_rates/object">shipping
         /// rate</a>'s <c>amount</c>, <c>tax_code</c> and <c>tax_behavior</c> are used. If you
         /// provide a shipping rate, then you cannot pass the <c>amount</c>, <c>tax_code</c>, or
         /// <c>tax_behavior</c> parameters.
@@ -44,7 +44,7 @@ namespace Stripe.Tax
         public string TaxBehavior { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> used to calculate
+        /// The <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> used to calculate
         /// tax on shipping. If not provided, the default shipping tax code from your <a
         /// href="https://dashboard.stripe.com/settings/tax">Tax Settings</a> is used.
         /// </summary>

@@ -41,7 +41,7 @@ namespace Stripe
 
         /// <summary>
         /// Default number of trial days when subscribing a customer to this price using <a
-        /// href="https://stripe.com/docs/api#create_subscription-trial_from_plan"><c>trial_from_plan=true</c></a>.
+        /// href="https://docs.stripe.com/api#create_subscription-trial_from_plan"><c>trial_from_plan=true</c></a>.
         /// </summary>
         [JsonProperty("trial_period_days")]
 #if NET6_0_OR_GREATER

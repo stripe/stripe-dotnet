@@ -10,7 +10,7 @@ namespace Stripe.Issuing
     {
         /// <summary>
         /// The Treasury <a
-        /// href="https://stripe.com/docs/api/treasury/debit_reversals">DebitReversal</a>
+        /// href="https://docs.stripe.com/api/treasury/debit_reversals">DebitReversal</a>
         /// representing this Issuing dispute.
         /// </summary>
         [JsonProperty("debit_reversal")]
@@ -21,7 +21,7 @@ namespace Stripe.Issuing
 
         /// <summary>
         /// The Treasury <a
-        /// href="https://stripe.com/docs/api/treasury/received_debits">ReceivedDebit</a> that is
+        /// href="https://docs.stripe.com/api/treasury/received_debits">ReceivedDebit</a> that is
         /// being disputed.
         /// </summary>
         [JsonProperty("received_debit")]

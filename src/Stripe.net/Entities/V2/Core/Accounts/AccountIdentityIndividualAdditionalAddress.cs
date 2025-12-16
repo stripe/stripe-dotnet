@@ -73,7 +73,7 @@ namespace Stripe.V2.Core
         public string State { get; set; }
 
         /// <summary>
-        /// Town or cho-me.
+        /// Town or district.
         /// </summary>
         [JsonProperty("town")]
 #if NET6_0_OR_GREATER

@@ -10,12 +10,12 @@ namespace Stripe
 
     /// <summary>
     /// This object represents files hosted on Stripe's servers. You can upload files with the
-    /// <a href="https://stripe.com/docs/api#create_file">create file</a> request (for example,
-    /// when uploading dispute evidence). Stripe also creates files independently (for example,
-    /// the results of a <a href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled
+    /// <a href="https://api.stripe.com#create_file">create file</a> request (for example, when
+    /// uploading dispute evidence). Stripe also creates files independently (for example, the
+    /// results of a <a href="https://stripe.com/docs/api#scheduled_queries">Sigma scheduled
     /// query</a>).
     ///
-    /// Related guide: <a href="https://stripe.com/docs/file-upload">File upload guide</a>.
+    /// Related guide: <a href="https://docs.stripe.com/file-upload">File upload guide</a>.
     /// </summary>
     public class File : StripeEntity<File>, IHasId, IHasObject
     {
@@ -69,8 +69,8 @@ namespace Stripe
         public string Filename { get; set; }
 
         /// <summary>
-        /// A list of <a href="https://stripe.com/docs/api#file_links">file links</a> that point at
-        /// this file.
+        /// A list of <a href="https://api.stripe.com#file_links">file links</a> that point at this
+        /// file.
         /// </summary>
         [JsonProperty("links")]
 #if NET6_0_OR_GREATER
@@ -79,16 +79,16 @@ namespace Stripe
         public StripeList<FileLink> Links { get; set; }
 
         /// <summary>
-        /// The <a href="https://stripe.com/docs/file-upload#uploading-a-file">purpose</a> of the
+        /// The <a href="https://docs.stripe.com/file-upload#uploading-a-file">purpose</a> of the
         /// uploaded file.
         /// One of: <c>account_requirement</c>, <c>additional_verification</c>,
         /// <c>business_icon</c>, <c>business_logo</c>, <c>customer_signature</c>,
         /// <c>dispute_evidence</c>, <c>document_provider_identity_document</c>,
         /// <c>finance_report_run</c>, <c>financial_account_statement</c>, <c>identity_document</c>,
         /// <c>identity_document_downloadable</c>, <c>issuing_regulatory_reporting</c>,
-        /// <c>pci_document</c>, <c>selfie</c>, <c>sigma_scheduled_query</c>,
-        /// <c>tax_document_user_upload</c>, <c>terminal_android_apk</c>, or
-        /// <c>terminal_reader_splashscreen</c>.
+        /// <c>pci_document</c>, <c>platform_terms_of_service</c>, <c>selfie</c>,
+        /// <c>sigma_scheduled_query</c>, <c>tax_document_user_upload</c>,
+        /// <c>terminal_android_apk</c>, or <c>terminal_reader_splashscreen</c>.
         /// </summary>
         [JsonProperty("purpose")]
 #if NET6_0_OR_GREATER

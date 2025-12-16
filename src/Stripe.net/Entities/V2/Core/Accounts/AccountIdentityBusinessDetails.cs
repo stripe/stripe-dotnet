@@ -28,6 +28,16 @@ namespace Stripe.V2.Core
         public AccountIdentityBusinessDetailsAnnualRevenue AnnualRevenue { get; set; }
 
         /// <summary>
+        /// A detailed description of the business's compliance and anti-money laundering controls
+        /// and practices.
+        /// </summary>
+        [JsonProperty("compliance_screening_description")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("compliance_screening_description")]
+#endif
+        public string ComplianceScreeningDescription { get; set; }
+
+        /// <summary>
         /// Documents that may be submitted to satisfy various informational requests.
         /// </summary>
         [JsonProperty("documents")]
@@ -37,8 +47,8 @@ namespace Stripe.V2.Core
         public AccountIdentityBusinessDetailsDocuments Documents { get; set; }
 
         /// <summary>
-        /// An estimated upper bound of employees, contractors, vendors, etc. currently working for
-        /// the business.
+        /// Estimated maximum number of workers currently engaged by the business (including
+        /// employees, contractors, and vendors).
         /// </summary>
         [JsonProperty("estimated_worker_count")]
 #if NET6_0_OR_GREATER
@@ -56,7 +66,8 @@ namespace Stripe.V2.Core
         public List<AccountIdentityBusinessDetailsIdNumber> IdNumbers { get; set; }
 
         /// <summary>
-        /// An estimate of the monthly revenue of the business.
+        /// An estimate of the monthly revenue of the business. Only accepted for accounts in Brazil
+        /// and India.
         /// </summary>
         [JsonProperty("monthly_estimated_revenue")]
 #if NET6_0_OR_GREATER

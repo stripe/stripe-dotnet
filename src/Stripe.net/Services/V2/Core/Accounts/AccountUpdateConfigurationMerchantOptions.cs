@@ -19,7 +19,7 @@ namespace Stripe.V2.Core
         public bool? Applied { get; set; }
 
         /// <summary>
-        /// Settings used for Bacs debit payments.
+        /// Settings for Bacs Direct Debit payments.
         /// </summary>
         [JsonProperty("bacs_debit_payments")]
 #if NET6_0_OR_GREATER
@@ -56,8 +56,17 @@ namespace Stripe.V2.Core
         public AccountUpdateConfigurationMerchantCardPaymentsOptions CardPayments { get; set; }
 
         /// <summary>
-        /// The merchant category code for the merchant. MCCs are used to classify businesses based
-        /// on the goods or services they provide.
+        /// Settings specific to Konbini payments on the account.
+        /// </summary>
+        [JsonProperty("konbini_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("konbini_payments")]
+#endif
+        public AccountUpdateConfigurationMerchantKonbiniPaymentsOptions KonbiniPayments { get; set; }
+
+        /// <summary>
+        /// The Merchant Category Code (MCC) for the merchant. MCCs classify businesses based on the
+        /// goods or services they provide.
         /// </summary>
         [JsonProperty("mcc")]
 #if NET6_0_OR_GREATER
@@ -66,7 +75,17 @@ namespace Stripe.V2.Core
         public string Mcc { get; set; }
 
         /// <summary>
-        /// Statement descriptor.
+        /// Settings for the default text that appears on statements for language variations.
+        /// </summary>
+        [JsonProperty("script_statement_descriptor")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("script_statement_descriptor")]
+#endif
+        public AccountUpdateConfigurationMerchantScriptStatementDescriptorOptions ScriptStatementDescriptor { get; set; }
+
+        /// <summary>
+        /// Settings for the default <a
+        /// href="https://stripe.com/connect/statement-descriptors">statement descriptor</a> text.
         /// </summary>
         [JsonProperty("statement_descriptor")]
 #if NET6_0_OR_GREATER

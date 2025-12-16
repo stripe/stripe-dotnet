@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountConfigurationMerchantCapabilitiesStripeBalance : StripeEntity<AccountConfigurationMerchantCapabilitiesStripeBalance>
     {
         /// <summary>
-        /// Allows the account to do payouts using their Stripe Balance (/v1/balance).
+        /// Enables this Account to complete payouts from their Stripe Balance (/v1/balance).
         /// </summary>
         [JsonProperty("payouts")]
 #if NET6_0_OR_GREATER

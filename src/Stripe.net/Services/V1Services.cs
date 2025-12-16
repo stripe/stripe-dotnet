@@ -17,6 +17,7 @@ namespace Stripe
         private BalanceService balance;
         private BalanceSettingsService balanceSettings;
         private BalanceTransactionService balanceTransactions;
+        private BalanceTransferService balanceTransfers;
         private BankAccountService bankAccounts;
         private BillingService billing;
         private BillingPortalService billingPortal;
@@ -31,6 +32,7 @@ namespace Stripe
         private CreditNoteService creditNotes;
         private CustomerService customers;
         private CustomerSessionService customerSessions;
+        private DelegatedCheckoutService delegatedCheckout;
         private DisputeService disputes;
         private EntitlementsService entitlements;
         private EphemeralKeyService ephemeralKeys;
@@ -62,6 +64,7 @@ namespace Stripe
         private PriceService prices;
         private PrivacyService privacy;
         private ProductService products;
+        private ProductCatalogService productCatalog;
         private PromotionCodeService promotionCodes;
         private QuoteService quotes;
         private RadarService radar;
@@ -70,6 +73,7 @@ namespace Stripe
         private ReviewService reviews;
         private SetupAttemptService setupAttempts;
         private SetupIntentService setupIntents;
+        private SharedPaymentService sharedPayment;
         private ShippingRateService shippingRates;
         private SigmaService sigma;
         private SourceService sources;
@@ -128,6 +132,9 @@ namespace Stripe
         public virtual BalanceTransactionService BalanceTransactions => this.balanceTransactions ??= new BalanceTransactionService(
             this.Requestor);
 
+        public virtual BalanceTransferService BalanceTransfers => this.balanceTransfers ??= new BalanceTransferService(
+            this.Requestor);
+
         public virtual BankAccountService BankAccounts => this.bankAccounts ??= new BankAccountService(
             this.Requestor);
 
@@ -168,6 +175,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual CustomerSessionService CustomerSessions => this.customerSessions ??= new CustomerSessionService(
+            this.Requestor);
+
+        public virtual DelegatedCheckoutService DelegatedCheckout => this.delegatedCheckout ??= new DelegatedCheckoutService(
             this.Requestor);
 
         public virtual DisputeService Disputes => this.disputes ??= new DisputeService(
@@ -263,6 +273,9 @@ namespace Stripe
         public virtual ProductService Products => this.products ??= new ProductService(
             this.Requestor);
 
+        public virtual ProductCatalogService ProductCatalog => this.productCatalog ??= new ProductCatalogService(
+            this.Requestor);
+
         public virtual PromotionCodeService PromotionCodes => this.promotionCodes ??= new PromotionCodeService(
             this.Requestor);
 
@@ -285,6 +298,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual SetupIntentService SetupIntents => this.setupIntents ??= new SetupIntentService(
+            this.Requestor);
+
+        public virtual SharedPaymentService SharedPayment => this.sharedPayment ??= new SharedPaymentService(
             this.Requestor);
 
         public virtual ShippingRateService ShippingRates => this.shippingRates ??= new ShippingRateService(

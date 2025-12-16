@@ -13,9 +13,9 @@ namespace Stripe
     ///
     /// The top-level <c>available</c> and <c>pending</c> comprise your "payments balance.".
     ///
-    /// Related guide: <a href="https://stripe.com/docs/payments/balances">Balances and
+    /// Related guide: <a href="https://docs.stripe.com/payments/balances">Balances and
     /// settlement time</a>, <a
-    /// href="https://stripe.com/docs/connect/account-balances">Understanding Connect account
+    /// href="https://docs.stripe.com/connect/account-balances">Understanding Connect account
     /// balances</a>.
     /// </summary>
     public class Balance : StripeEntity<Balance>, IHasObject
@@ -31,8 +31,8 @@ namespace Stripe
 
         /// <summary>
         /// Available funds that you can transfer or pay out automatically by Stripe or explicitly
-        /// through the <a href="https://stripe.com/docs/api#transfers">Transfers API</a> or <a
-        /// href="https://stripe.com/docs/api#payouts">Payouts API</a>. You can find the available
+        /// through the <a href="https://api.stripe.com#transfers">Transfers API</a> or <a
+        /// href="https://api.stripe.com#payouts">Payouts API</a>. You can find the available
         /// balance for each currency and payment type in the <c>source_types</c> property.
         /// </summary>
         [JsonProperty("available")]
@@ -93,5 +93,11 @@ namespace Stripe
         [STJS.JsonPropertyName("refund_and_dispute_prefunding")]
 #endif
         public BalanceRefundAndDisputePrefunding RefundAndDisputePrefunding { get; set; }
+
+        [JsonProperty("transit_balances_total")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transit_balances_total")]
+#endif
+        public BalanceTransitBalancesTotal TransitBalancesTotal { get; set; }
     }
 }

@@ -27,8 +27,8 @@ namespace Stripe
         public PaymentLinkSubscriptionDataInvoiceSettings InvoiceSettings { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that will set
-        /// metadata on <a href="https://stripe.com/docs/api/subscriptions">Subscriptions</a>
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that will set
+        /// metadata on <a href="https://docs.stripe.com/api/subscriptions">Subscriptions</a>
         /// generated from this payment link.
         /// </summary>
         [JsonProperty("metadata")]

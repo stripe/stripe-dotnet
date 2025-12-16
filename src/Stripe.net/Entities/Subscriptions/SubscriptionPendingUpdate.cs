@@ -71,7 +71,7 @@ namespace Stripe
         /// Indicates if a plan's <c>trial_period_days</c> should be applied to the subscription.
         /// Setting <c>trial_end</c> per subscription is preferred, and this defaults to
         /// <c>false</c>. Setting this flag to <c>true</c> together with <c>trial_end</c> is not
-        /// allowed. See <a href="https://stripe.com/docs/billing/subscriptions/trials">Using trial
+        /// allowed. See <a href="https://docs.stripe.com/billing/subscriptions/trials">Using trial
         /// periods on subscriptions</a> to learn more.
         /// </summary>
         [JsonProperty("trial_from_plan")]

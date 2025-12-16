@@ -17,5 +17,15 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("bank_account")]
 #endif
         public string BankAccount { get; set; }
+
+        /// <summary>
+        /// Open Enum. Speed of the payout.
+        /// One of: <c>instant</c>, <c>next_business_day</c>, or <c>standard</c>.
+        /// </summary>
+        [JsonProperty("speed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("speed")]
+#endif
+        public string Speed { get; set; }
     }
 }

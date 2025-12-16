@@ -9,14 +9,14 @@ namespace Stripe.V2.Billing
     public class IntentActionSubscribe : StripeEntity<IntentActionSubscribe>
     {
         /// <summary>
-        /// Configuration for the billing details. If not specified, see the default behavior for
-        /// individual attributes.
+        /// Allows users to override the collect at behavior.
+        /// One of: <c>next_billing_date</c>, or <c>on_effective_at</c>.
         /// </summary>
-        [JsonProperty("billing_details")]
+        [JsonProperty("collect_at")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_details")]
+        [STJS.JsonPropertyName("collect_at")]
 #endif
-        public IntentActionSubscribeBillingDetails BillingDetails { get; set; }
+        public string CollectAt { get; set; }
 
         /// <summary>
         /// When the subscribe action will take effect. If not specified, the default behavior is

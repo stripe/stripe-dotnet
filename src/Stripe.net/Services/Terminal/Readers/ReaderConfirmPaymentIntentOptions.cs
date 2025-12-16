@@ -9,7 +9,8 @@ namespace Stripe.Terminal
     public class ReaderConfirmPaymentIntentOptions : BaseOptions
     {
         /// <summary>
-        /// Configuration overrides.
+        /// Configuration overrides for this confirmation, such as surcharge settings and return
+        /// URL.
         /// </summary>
         [JsonProperty("confirm_config")]
 #if NET6_0_OR_GREATER
@@ -18,7 +19,7 @@ namespace Stripe.Terminal
         public ReaderConfirmConfigOptions ConfirmConfig { get; set; }
 
         /// <summary>
-        /// PaymentIntent ID.
+        /// The ID of the PaymentIntent to confirm.
         /// </summary>
         [JsonProperty("payment_intent")]
 #if NET6_0_OR_GREATER

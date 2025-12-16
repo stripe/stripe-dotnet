@@ -11,7 +11,7 @@ namespace Stripe.TestHelpers.Issuing
         /// <summary>
         /// The total amount to attempt to refund. This amount is in the provided currency, or
         /// defaults to the cards currency, and in the <a
-        /// href="https://stripe.com/docs/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("refund_amount")]
 #if NET6_0_OR_GREATER

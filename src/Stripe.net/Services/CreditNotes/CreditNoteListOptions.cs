@@ -31,7 +31,8 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// Only return credit notes for the account specified by this account ID.
+        /// Only return credit notes for the account representing the customer specified by this
+        /// account ID.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

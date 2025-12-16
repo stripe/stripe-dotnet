@@ -22,7 +22,7 @@ namespace Stripe
 
         /// <summary>
         /// Represents the rejected reason of the account. Empty if account is not rejected, or
-        /// rejected by Stripe. Please see <a href="https://stripe.com/docs/connect/">this page for
+        /// rejected by Stripe. Please see <a href="https://docs.stripe.com/connect/">this page for
         /// more details</a>.
         /// One of: <c>credit</c>, <c>fraud</c>, <c>fraud_no_intent_to_fulfill</c>,
         /// <c>fraud_other</c>, <c>fraud_payment_method_casher</c>,

@@ -8,6 +8,7 @@ namespace Stripe.V2
     public class MoneyManagementService : Service
     {
         private V2.MoneyManagement.AdjustmentService adjustments;
+        private V2.MoneyManagement.CurrencyConversionService currencyConversions;
         private V2.MoneyManagement.FinancialAccountService financialAccounts;
         private V2.MoneyManagement.FinancialAddressService financialAddresses;
         private V2.MoneyManagement.InboundTransferService inboundTransfers;
@@ -34,6 +35,9 @@ namespace Stripe.V2
         }
 
         public virtual V2.MoneyManagement.AdjustmentService Adjustments => this.adjustments ??= new V2.MoneyManagement.AdjustmentService(
+            this.Requestor);
+
+        public virtual V2.MoneyManagement.CurrencyConversionService CurrencyConversions => this.currencyConversions ??= new V2.MoneyManagement.CurrencyConversionService(
             this.Requestor);
 
         public virtual V2.MoneyManagement.FinancialAccountService FinancialAccounts => this.financialAccounts ??= new V2.MoneyManagement.FinancialAccountService(

@@ -35,9 +35,9 @@ namespace Stripe.V2.Core
         public string Object { get; set; }
 
         /// <summary>
-        /// Filter only accounts that have all of the configurations specified. If omitted, returns
-        /// all accounts regardless of which configurations they have.
-        /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
+        /// The configurations that have been applied to this account.
+        /// One of: <c>card_creator</c>, <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or
+        /// <c>storer</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
 #if NET6_0_OR_GREATER
@@ -46,8 +46,19 @@ namespace Stripe.V2.Core
         public List<string> AppliedConfigurations { get; set; }
 
         /// <summary>
-        /// An Account Configuration which allows the Account to take on a key persona across Stripe
-        /// products.
+        /// Indicates whether the account has been closed.
+        /// </summary>
+        [JsonProperty("closed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("closed")]
+#endif
+        public bool? Closed { get; set; }
+
+        /// <summary>
+        /// An Account represents a company, individual, or other entity that a user interacts with.
+        /// Accounts store identity information and one or more configurations that enable
+        /// product-specific capabilities. You can assign configurations at creation or add them
+        /// later.
         /// </summary>
         [JsonProperty("configuration")]
 #if NET6_0_OR_GREATER
@@ -87,7 +98,7 @@ namespace Stripe.V2.Core
         public string Dashboard { get; set; }
 
         /// <summary>
-        /// Default values to be used on Account Configurations.
+        /// Default values for settings shared across Account configurations.
         /// </summary>
         [JsonProperty("defaults")]
 #if NET6_0_OR_GREATER
@@ -104,6 +115,16 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("display_name")]
 #endif
         public string DisplayName { get; set; }
+
+        /// <summary>
+        /// Information about the future requirements for the Account that will eventually come into
+        /// effect, including what information needs to be collected, and by when.
+        /// </summary>
+        [JsonProperty("future_requirements")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("future_requirements")]
+#endif
+        public AccountFutureRequirements FutureRequirements { get; set; }
 
         /// <summary>
         /// Information about the company, individual, and business represented by the Account.
@@ -135,8 +156,8 @@ namespace Stripe.V2.Core
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Information about the requirements for the Account, including what information needs to
-        /// be collected, and by when.
+        /// Information about the active requirements for the Account, including what information
+        /// needs to be collected, and by when.
         /// </summary>
         [JsonProperty("requirements")]
 #if NET6_0_OR_GREATER

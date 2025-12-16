@@ -34,7 +34,7 @@ namespace Stripe
         /// billing cycle anchor of the subscription is set to the start of the phase when entering
         /// the phase. If <c>automatic</c> then the billing cycle anchor is automatically modified
         /// as needed when entering the phase. For more information, see the billing cycle <a
-        /// href="https://stripe.com/docs/billing/subscriptions/billing-cycle">documentation</a>.
+        /// href="https://docs.stripe.com/billing/subscriptions/billing-cycle">documentation</a>.
         /// One of: <c>automatic</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
@@ -169,6 +169,21 @@ namespace Stripe
 #endif
         internal ExpandableField<Account> InternalOnBehalfOf { get; set; }
         #endregion
+
+        /// <summary>
+        /// Configures how the subscription schedule handles billing for phase transitions. Possible
+        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
+        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
+        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
+        /// upcoming phase transitions within the current billing cycle, including pricing changes
+        /// and service period adjustments that will occur before the next invoice.
+        /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
+        /// </summary>
+        [JsonProperty("phase_effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("phase_effective_at")]
+#endif
+        public string PhaseEffectiveAt { get; set; }
 
         /// <summary>
         /// The account (if any) the associated subscription's payments will be attributed to for

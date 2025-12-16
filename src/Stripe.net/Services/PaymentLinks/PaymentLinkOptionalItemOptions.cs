@@ -19,8 +19,8 @@ namespace Stripe
         public PaymentLinkOptionalItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
 
         /// <summary>
-        /// The ID of the <a href="https://stripe.com/docs/api/prices">Price</a> or <a
-        /// href="https://stripe.com/docs/api/plans">Plan</a> object.
+        /// The ID of the <a href="https://docs.stripe.com/api/prices">Price</a> or <a
+        /// href="https://docs.stripe.com/api/plans">Plan</a> object.
         /// </summary>
         [JsonProperty("price")]
 #if NET6_0_OR_GREATER

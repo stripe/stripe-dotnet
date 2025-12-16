@@ -13,7 +13,7 @@ namespace Stripe.Treasury
     /// Use <a
     /// href="https://docs.stripe.com/docs/treasury/moving-money/financial-accounts/into/inbound-transfers">InboundTransfers</a>
     /// to add funds to your <a
-    /// href="https://stripe.com/docs/api#financial_accounts">FinancialAccount</a> via a
+    /// href="https://api.stripe.com#financial_accounts">FinancialAccount</a> via a
     /// PaymentMethod that is owned by you. The funds will be transferred via an ACH debit.
     ///
     /// Related guide: <a
@@ -111,7 +111,7 @@ namespace Stripe.Treasury
         public string FinancialAccount { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/treasury/moving-money/regulatory-receipts">hosted
+        /// A <a href="https://docs.stripe.com/treasury/moving-money/regulatory-receipts">hosted
         /// transaction receipt</a> URL that is provided when money movement is considered regulated
         /// under Stripe's money transmission licenses.
         /// </summary>
@@ -138,7 +138,7 @@ namespace Stripe.Treasury
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

@@ -7,7 +7,7 @@ namespace Stripe.V2
 
     public class TaxService : Service
     {
-        private V2.Tax.AutomaticRuleService automaticRules;
+        private V2.Tax.ManualRuleService manualRules;
 
         internal TaxService(ApiRequestor requestor)
             : base(requestor)
@@ -19,7 +19,7 @@ namespace Stripe.V2
         {
         }
 
-        public virtual V2.Tax.AutomaticRuleService AutomaticRules => this.automaticRules ??= new V2.Tax.AutomaticRuleService(
+        public virtual V2.Tax.ManualRuleService ManualRules => this.manualRules ??= new V2.Tax.ManualRuleService(
             this.Requestor);
     }
 }

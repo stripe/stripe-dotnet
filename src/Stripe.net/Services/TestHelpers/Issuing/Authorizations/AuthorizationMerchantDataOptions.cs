@@ -10,7 +10,7 @@ namespace Stripe.TestHelpers.Issuing
     {
         /// <summary>
         /// A categorization of the seller's type of business. See our <a
-        /// href="https://stripe.com/docs/issuing/merchant-categories">merchant categories guide</a>
+        /// href="https://docs.stripe.com/issuing/merchant-categories">merchant categories guide</a>
         /// for a list of possible values.
         /// One of: <c>ac_refrigeration_repair</c>, <c>accounting_bookkeeping_services</c>,
         /// <c>advertising_services</c>, <c>agricultural_cooperative</c>,

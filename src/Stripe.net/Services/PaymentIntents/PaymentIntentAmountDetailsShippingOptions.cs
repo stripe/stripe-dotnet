@@ -9,7 +9,9 @@ namespace Stripe
     public class PaymentIntentAmountDetailsShippingOptions : INestedOptions
     {
         /// <summary>
-        /// Portion of the amount that is for shipping.
+        /// If a physical good is being shipped, the cost of shipping represented in the <a
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. An
+        /// integer greater than or equal to 0.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER
@@ -18,7 +20,8 @@ namespace Stripe
         public long? Amount { get; set; }
 
         /// <summary>
-        /// The postal code that represents the shipping source.
+        /// If a physical good is being shipped, the postal code of where it is being shipped from.
+        /// At most 10 alphanumeric characters long, hyphens are allowed.
         /// </summary>
         [JsonProperty("from_postal_code")]
 #if NET6_0_OR_GREATER
@@ -27,7 +30,8 @@ namespace Stripe
         public string FromPostalCode { get; set; }
 
         /// <summary>
-        /// The postal code that represents the shipping destination.
+        /// If a physical good is being shipped, the postal code of where it is being shipped to. At
+        /// most 10 alphanumeric characters long, hyphens are allowed.
         /// </summary>
         [JsonProperty("to_postal_code")]
 #if NET6_0_OR_GREATER

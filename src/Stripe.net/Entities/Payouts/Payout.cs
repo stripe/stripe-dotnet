@@ -17,7 +17,7 @@ namespace Stripe
     /// on <a href="https://stripe.com/docs/connect/manage-payout-schedule">varying
     /// schedules</a>, depending on your country and industry.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/payouts">Receiving payouts</a>.
+    /// Related guide: <a href="https://docs.stripe.com/payouts">Receiving payouts</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -57,7 +57,7 @@ namespace Stripe
         /// <summary>
         /// (ID of the ApplicationFee)
         /// The application fee (if any) for the payout. <a
-        /// href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the
+        /// href="https://docs.stripe.com/connect/instant-payouts#monetization-and-fees">See the
         /// Connect documentation</a> for details.
         /// </summary>
         [JsonIgnore]
@@ -73,7 +73,7 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The application fee (if any) for the payout. <a
-        /// href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the
+        /// href="https://docs.stripe.com/connect/instant-payouts#monetization-and-fees">See the
         /// Connect documentation</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -99,7 +99,7 @@ namespace Stripe
 
         /// <summary>
         /// The amount of the application fee (if any) requested for the payout. <a
-        /// href="https://stripe.com/docs/connect/instant-payouts#monetization-and-fees">See the
+        /// href="https://docs.stripe.com/connect/instant-payouts#monetization-and-fees">See the
         /// Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("application_fee_amount")]
@@ -122,7 +122,7 @@ namespace Stripe
 
         /// <summary>
         /// Returns <c>true</c> if the payout is created by an <a
-        /// href="https://stripe.com/docs/payouts#payout-schedule">automated payout schedule</a> and
+        /// href="https://docs.stripe.com/payouts#payout-schedule">automated payout schedule</a> and
         /// <c>false</c> if it's <a href="https://stripe.com/docs/payouts#manual-payouts">requested
         /// manually</a>.
         /// </summary>
@@ -294,7 +294,7 @@ namespace Stripe
 
         /// <summary>
         /// Error code that provides a reason for a payout failure, if available. View our <a
-        /// href="https://stripe.com/docs/api#payout_failures">list of failure codes</a>.
+        /// href="https://docs.stripe.com/api#payout_failures">list of failure codes</a>.
         /// </summary>
         [JsonProperty("failure_code")]
 #if NET6_0_OR_GREATER
@@ -322,7 +322,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -397,7 +397,7 @@ namespace Stripe
 
         /// <summary>
         /// If <c>completed</c>, you can use the <a
-        /// href="https://stripe.com/docs/api/balance_transactions/list#balance_transaction_list-payout">Balance
+        /// href="https://docs.stripe.com/api/balance_transactions/list#balance_transaction_list-payout">Balance
         /// Transactions API</a> to list all balance transactions that are paid out in this payout.
         /// One of: <c>completed</c>, <c>in_progress</c>, or <c>not_applicable</c>.
         /// </summary>

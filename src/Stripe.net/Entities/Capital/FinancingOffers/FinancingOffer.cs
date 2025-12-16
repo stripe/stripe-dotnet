@@ -106,7 +106,7 @@ namespace Stripe.Capital
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -169,7 +169,7 @@ namespace Stripe.Capital
 
         /// <summary>
         /// See <a
-        /// href="https://stripe.com/docs/api/capital/connect_financing_object#financing_offer_object-financing_type">financing_type</a>.
+        /// href="https://docs.stripe.com/api/capital/connect_financing_object#financing_offer_object-financing_type">financing_type</a>.
         /// One of: <c>cash_advance</c>, <c>fixed_term_loan</c>, or <c>flex_loan</c>.
         /// </summary>
         [JsonProperty("type")]

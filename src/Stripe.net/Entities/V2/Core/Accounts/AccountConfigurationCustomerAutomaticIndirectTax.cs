@@ -9,9 +9,8 @@ namespace Stripe.V2.Core
     public class AccountConfigurationCustomerAutomaticIndirectTax : StripeEntity<AccountConfigurationCustomerAutomaticIndirectTax>
     {
         /// <summary>
-        /// Describes the customer's tax exemption status, which is <c>none</c>, <c>exempt</c>, or
-        /// <c>reverse</c>. When set to reverse, invoice and receipt PDFs include the following
-        /// text: “Reverse charge”.
+        /// The customer account's tax exemption status: <c>none</c>, <c>exempt</c>, or
+        /// <c>reverse</c>. When <c>reverse</c>, invoice and receipt PDFs include "Reverse charge".
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
         [JsonProperty("exempt")]
@@ -30,8 +29,9 @@ namespace Stripe.V2.Core
         public string IpAddress { get; set; }
 
         /// <summary>
-        /// The customer’s identified tax location - uses <c>location_source</c>. Will only be
-        /// rendered if the <c>automatic_indirect_tax</c> feature is requested and <c>active</c>.
+        /// The customer account's identified tax location, derived from <c>location_source</c>.
+        /// Only rendered if the <c>automatic_indirect_tax</c> feature is requested and
+        /// <c>active</c>.
         /// </summary>
         [JsonProperty("location")]
 #if NET6_0_OR_GREATER
@@ -40,10 +40,10 @@ namespace Stripe.V2.Core
         public AccountConfigurationCustomerAutomaticIndirectTaxLocation Location { get; set; }
 
         /// <summary>
-        /// The data source used to identify the customer's tax location - defaults to
-        /// 'identity_address'. Will only be used for automatic tax calculation on the customer's
-        /// Invoices and Subscriptions.
-        /// One of: <c>identity_address</c>, <c>ip_address</c>, or <c>shipping_address</c>.
+        /// Data source used to identify the customer account's tax location. Defaults to
+        /// <c>identity_address</c>. Used for automatic indirect tax calculation.
+        /// One of: <c>identity_address</c>, <c>ip_address</c>, <c>payment_method</c>, or
+        /// <c>shipping_address</c>.
         /// </summary>
         [JsonProperty("location_source")]
 #if NET6_0_OR_GREATER

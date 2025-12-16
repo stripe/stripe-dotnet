@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountCreateConfigurationCustomerBillingOptions : INestedOptions
     {
         /// <summary>
-        /// Default settings used on invoices for this customer.
+        /// Default invoice settings for the customer account.
         /// </summary>
         [JsonProperty("invoice")]
 #if NET6_0_OR_GREATER

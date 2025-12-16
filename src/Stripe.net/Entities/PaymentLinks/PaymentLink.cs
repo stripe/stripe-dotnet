@@ -13,12 +13,12 @@ namespace Stripe
     /// page. A payment link can be shared and used multiple times.
     ///
     /// When a customer opens a payment link it will open a new <a
-    /// href="https://stripe.com/docs/api/checkout/sessions">checkout session</a> to render the
+    /// href="https://docs.stripe.com/api/checkout/sessions">checkout session</a> to render the
     /// payment page. You can use <a
-    /// href="https://stripe.com/docs/api/events/types#event_types-checkout.session.completed">checkout
+    /// href="https://docs.stripe.com/api/events/types#event_types-checkout.session.completed">checkout
     /// session events</a> to track payments through payment links.
     ///
-    /// Related guide: <a href="https://stripe.com/docs/payment-links">Payment Links API</a>.
+    /// Related guide: <a href="https://docs.stripe.com/payment-links">Payment Links API</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -230,7 +230,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -239,6 +239,12 @@ namespace Stripe
         [STJS.JsonPropertyName("metadata")]
 #endif
         public Dictionary<string, string> Metadata { get; set; }
+
+        [JsonProperty("name_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name_collection")]
+#endif
+        public PaymentLinkNameCollection NameCollection { get; set; }
 
         #region Expandable OnBehalfOf
 

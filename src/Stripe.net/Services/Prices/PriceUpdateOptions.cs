@@ -40,7 +40,7 @@ namespace Stripe
         public string LookupKey { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -72,7 +72,7 @@ namespace Stripe
 
         /// <summary>
         /// Only required if a <a
-        /// href="https://stripe.com/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)">default
+        /// href="https://docs.stripe.com/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)">default
         /// tax behavior</a> was not provided in the Stripe Tax settings. Specifies whether the
         /// price is considered inclusive of taxes or exclusive of taxes. One of <c>inclusive</c>,
         /// <c>exclusive</c>, or <c>unspecified</c>. Once specified as either <c>inclusive</c> or

@@ -81,7 +81,7 @@ namespace Stripe.Billing
 
         /// <summary>
         /// Encapsulates configuration of the alert to monitor usage on a specific <a
-        /// href="https://stripe.com/docs/api/billing/meter">Billing Meter</a>.
+        /// href="https://docs.stripe.com/api/billing/meter">Billing Meter</a>.
         /// </summary>
         [JsonProperty("usage_threshold")]
 #if NET6_0_OR_GREATER

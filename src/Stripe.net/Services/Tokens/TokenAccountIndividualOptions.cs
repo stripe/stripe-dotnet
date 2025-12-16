@@ -163,7 +163,7 @@ namespace Stripe
         public string MaidenName { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -212,6 +212,24 @@ namespace Stripe
         [STJS.JsonPropertyName("relationship")]
 #endif
         public TokenAccountIndividualRelationshipOptions Relationship { get; set; }
+
+        /// <summary>
+        /// The credit applicant's self-reported yearly income in minor units.
+        /// </summary>
+        [JsonProperty("self_reported_income")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_income")]
+#endif
+        public TokenAccountIndividualSelfReportedIncomeOptions SelfReportedIncome { get; set; }
+
+        /// <summary>
+        /// The credit applicant's self-reported monthly housing payment in minor units.
+        /// </summary>
+        [JsonProperty("self_reported_monthly_housing_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_monthly_housing_payment")]
+#endif
+        public TokenAccountIndividualSelfReportedMonthlyHousingPaymentOptions SelfReportedMonthlyHousingPayment { get; set; }
 
         /// <summary>
         /// The last four digits of the individual's Social Security Number (U.S. only).

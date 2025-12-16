@@ -27,8 +27,17 @@ namespace Stripe
         public string Payout { get; set; }
 
         /// <summary>
+        /// Transfer ID that created this application fee.
+        /// </summary>
+        [JsonProperty("transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transfer")]
+#endif
+        public string Transfer { get; set; }
+
+        /// <summary>
         /// Type of object that created the application fee.
-        /// One of: <c>charge</c>, or <c>payout</c>.
+        /// One of: <c>charge</c>, <c>payout</c>, or <c>transfer</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

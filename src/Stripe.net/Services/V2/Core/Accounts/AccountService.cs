@@ -11,6 +11,7 @@ namespace Stripe.V2.Core
     public class AccountService : Service
     {
         private V2.Core.Accounts.PersonService persons;
+        private V2.Core.Accounts.PersonTokenService personTokens;
 
         internal AccountService(ApiRequestor requestor)
             : base(requestor)
@@ -25,8 +26,13 @@ namespace Stripe.V2.Core
         public virtual V2.Core.Accounts.PersonService Persons => this.persons ??= new V2.Core.Accounts.PersonService(
             this.Requestor);
 
+        public virtual V2.Core.Accounts.PersonTokenService PersonTokens => this.personTokens ??= new V2.Core.Accounts.PersonTokenService(
+            this.Requestor);
+
         /// <summary>
-        /// Removes access to the Account and its associated resources.
+        /// Removes access to the Account and its associated resources. Closed Accounts can no
+        /// longer be operated on, but limited information can still be retrieved through the API in
+        /// order to be able to track their history.
         /// </summary>
         public virtual Account Close(string id, AccountCloseOptions options = null, RequestOptions requestOptions = null)
         {
@@ -34,7 +40,9 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Removes access to the Account and its associated resources.
+        /// Removes access to the Account and its associated resources. Closed Accounts can no
+        /// longer be operated on, but limited information can still be retrieved through the API in
+        /// order to be able to track their history.
         /// </summary>
         public virtual Task<Account> CloseAsync(string id, AccountCloseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

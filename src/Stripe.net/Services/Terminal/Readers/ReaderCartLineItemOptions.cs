@@ -9,7 +9,8 @@ namespace Stripe.Terminal
     public class ReaderCartLineItemOptions : INestedOptions
     {
         /// <summary>
-        /// The price of the item in cents.
+        /// The price of the item in the <a
+        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER

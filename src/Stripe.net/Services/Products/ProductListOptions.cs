@@ -34,8 +34,8 @@ namespace Stripe
 
         /// <summary>
         /// Only return products with the given IDs. Cannot be used with <a
-        /// href="https://stripe.com/docs/api#list_products-starting_after">starting_after</a> or <a
-        /// href="https://stripe.com/docs/api#list_products-ending_before">ending_before</a>.
+        /// href="https://api.stripe.com#list_products-starting_after">starting_after</a> or <a
+        /// href="https://api.stripe.com#list_products-ending_before">ending_before</a>.
         /// </summary>
         [JsonProperty("ids")]
 #if NET6_0_OR_GREATER

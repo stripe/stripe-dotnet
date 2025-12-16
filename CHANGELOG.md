@@ -1,8 +1,254 @@
 # Changelog
 
-## 49.1.0-alpha.1 - 2025-10-01
-This release changes the pinned API version to `2025-09-30.preview`. It is built on top of SDK version 49.0.0 and 49.1.0-beta.1 which contain breaking changes. Please review the changelog for these versions if upgrading from older SDK versions.
+## 50.2.0-alpha.1 - 2025-12-14
+* [#3273](https://github.com/stripe/stripe-dotnet/pull/3273) Update generated code for private-preview
+  * Add support for new resources `SharedPayment.GrantedToken`, `V2.Iam.ApiKey`, `V2.Payments.SettlementAllocationIntentSplit`, `V2.Payments.SettlementAllocationIntent`, and `V2.Tax.ManualRule`
+  * Add support for `Get` method on resource `SharedPayment.GrantedToken`
+  * Add support for `Create` and `Update` test helper methods on resource `SharedPayment.GrantedToken`
+  * Add support for `Create`, `Deactivate`, `Get`, `List`, and `Update` methods on resource `V2.Tax.ManualRule`
+  * Add support for `Cancel`, `Create`, `Get`, `Submit`, and `Update` methods on resource `V2.Payments.SettlementAllocationIntent`
+  * Add support for `Cancel`, `Create`, and `Get` methods on resource `V2.Payments.SettlementAllocationIntentSplit`
+  * Add support for `Create`, `Expire`, `Get`, `List`, `Rotate`, and `Update` methods on resource `V2.Iam.ApiKey`
+  * Add support for `CheckScanning` on `AccountSessionComponentsOptions`
+  * Add support for `TaxDetails` on `CheckoutSessionLineItemPriceDataProductDataOptions`, `InvoiceLineItemPriceDataProductDataOptions`, `InvoiceLinePriceDataProductDataOptions`, `PaymentLinkLineItemPriceDataProductDataOptions`, `ProductCreateOptions`, and `ProductUpdateOptions`
+  * Add support for `PaymentMethodData` on `DelegatedCheckout.RequestedSessionConfirmOptions`
+  * Add support for `ProductDetails` on `DelegatedCheckout.RequestedSession.LineItemDetail`
+  * Add support for `Wallets` on `Issuing.CardListOptions`
+  * Add support for `PrimaryAccountIdentifier` on `Issuing.Card.Wallets.ApplePay` and `Issuing.Card.Wallets.GooglePay`
+  * Add support for `SharedPaymentGrantedToken` on `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, and `PaymentIntent`
+  * Add support for `Instant` on `V2.Account.Configuration.RecipientData.Features.BankAccounts`, `V2.Core.Account.Configuration.Recipient.Capabilities.BankAccounts`, `V2AccountConfigurationRecipientDataFeaturesBankAccountsOptions`, and `V2CoreAccountConfigurationRecipientCapabilitiesBankAccountsOptions`
+  * Add support for `CollectAt` on `V2.Billing.IntentAction.Deactivate`, `V2.Billing.IntentAction.Modify`, `V2.Billing.IntentAction.Subscribe`, `V2BillingIntentActionDeactivateOptions`, `V2BillingIntentActionModifyOptions`, and `V2BillingIntentActionSubscribeOptions`
+  * Remove support for `BillingDetails` on `V2.Billing.IntentAction.Deactivate`, `V2.Billing.IntentAction.Modify`, `V2.Billing.IntentAction.Subscribe`, `V2BillingIntentActionDeactivateOptions`, `V2BillingIntentActionModifyOptions`, and `V2BillingIntentActionSubscribeOptions`
+  * Add support for `Overrides` on `V2.Billing.IntentAction.Deactivate.PricingPlanSubscriptionDetails`, `V2.Billing.IntentAction.Modify.PricingPlanSubscriptionDetails`, `V2.Billing.IntentAction.Subscribe.PricingPlanSubscriptionDetails`, `V2BillingIntentActionDeactivatePricingPlanSubscriptionDetailsOptions`, `V2BillingIntentActionModifyPricingPlanSubscriptionDetailsOptions`, and `V2BillingIntentActionSubscribePricingPlanSubscriptionDetailsOptions`
+  * Remove support for `Requested` on `V2.Core.Account.Configuration.CardCreator.Capabilities.Commercial.Celtic.ChargeCard`, `V2.Core.Account.Configuration.CardCreator.Capabilities.Commercial.Celtic.SpendCard`, `V2.Core.Account.Configuration.CardCreator.Capabilities.Commercial.CrossRiverBank.ChargeCard`, `V2.Core.Account.Configuration.CardCreator.Capabilities.Commercial.CrossRiverBank.SpendCard`, `V2.Core.Account.Configuration.CardCreator.Capabilities.Commercial.Lead.PrepaidCard`, `V2.Core.Account.Configuration.CardCreator.Capabilities.Commercial.Stripe.ChargeCard`, `V2.Core.Account.Configuration.CardCreator.Capabilities.Commercial.Stripe.PrepaidCard`, `V2.Core.Account.Configuration.Recipient.Capabilities.CryptoWallets`, `V2.Core.Account.Configuration.Storer.Capabilities.FinancialAddresses.CryptoWallets`, `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies.Usdc`, `V2.Core.Account.Configuration.Storer.Capabilities.OutboundPayments.CryptoWallets`, and `V2.Core.Account.Configuration.Storer.Capabilities.OutboundTransfers.CryptoWallets`
+  * Add support for `AlternativeReference` on `V2.Core.Vault.GbBankAccount`, `V2.Core.Vault.UsBankAccount`, and `V2.MoneyManagement.PayoutMethod`
+  * Add support for `ManagedBy` and `Payments` on `V2.MoneyManagement.FinancialAccount`
+  * Add support for `Speed` on `V2.MoneyManagement.OutboundPayment.DeliveryOptions`, `V2.MoneyManagement.OutboundPaymentQuote.DeliveryOptions`, `V2MoneyManagementOutboundPaymentDeliveryOptionsOptions`, and `V2MoneyManagementOutboundPaymentQuoteDeliveryOptionsOptions`
+  * Add support for `Types` on `V2.MoneyManagement.FinancialAccountListOptions`
+  * Add support for `TopImpactedAccounts` on `EventsV2CoreHealthApiErrorFiringEventImpact`, `EventsV2CoreHealthApiErrorResolvedEventImpact`, `EventsV2CoreHealthApiLatencyFiringEventImpact`, `EventsV2CoreHealthApiLatencyResolvedEventImpact`, `EventsV2CoreHealthPaymentMethodErrorFiringEventImpact`, and `EventsV2CoreHealthPaymentMethodErrorResolvedEventImpact`
+  * Add support for event notifications `V2CoreHealthSepaDebitDelayedFiringEvent`, `V2CoreHealthSepaDebitDelayedResolvedEvent`, and `V2PaymentsSettlementAllocationIntentNotFoundEvent`
+  * Add support for event notifications `V2PaymentsSettlementAllocationIntentCanceledEvent`, `V2PaymentsSettlementAllocationIntentCreatedEvent`, `V2PaymentsSettlementAllocationIntentErroredEvent`, `V2PaymentsSettlementAllocationIntentFundsNotReceivedEvent`, `V2PaymentsSettlementAllocationIntentMatchedEvent`, `V2PaymentsSettlementAllocationIntentSettledEvent`, and `V2PaymentsSettlementAllocationIntentSubmittedEvent` with related object `V2.Payments.SettlementAllocationIntent`
+  * Add support for event notifications `V2PaymentsSettlementAllocationIntentSplitCanceledEvent`, `V2PaymentsSettlementAllocationIntentSplitCreatedEvent`, and `V2PaymentsSettlementAllocationIntentSplitSettledEvent` with related object `V2.Payments.SettlementAllocationIntentSplit`
 
+## 50.1.0-alpha.4 - 2025-12-04
+* [#3272](https://github.com/stripe/stripe-dotnet/pull/3272) Update generated code for private-preview
+  * Add support for `CheckScanning` on `AccountSession.Components`
+  * Add support for `Client` on `V2.Core.Event.Reason.Request`
+  * Add support for `StripeBalancePayment` on `V2.MoneyManagement.ReceivedCredit` and `V2.MoneyManagement.ReceivedDebit`
+  * Add support for `BalanceTransfer` on `V2.MoneyManagement.ReceivedDebit`
+  * Add support for `Include` on `V2.Core.EventGetOptions` and `V2.Core.EventListOptions`
+  * Add support for event notifications `V2IamApiKeyCreatedEvent`, `V2IamApiKeyDefaultSecretRevealedEvent`, `V2IamApiKeyExpiredEvent`, `V2IamApiKeyPermissionsUpdatedEvent`, `V2IamApiKeyRotatedEvent`, and `V2IamApiKeyUpdatedEvent`
+
+## 50.1.0-alpha.3 - 2025-11-24
+* [#3269](https://github.com/stripe/stripe-dotnet/pull/3269) Update generated code for private-preview
+  * Add support for new resource `ProductCatalog.TrialOffer`
+  * Add support for `Create` method on resource `ProductCatalog.TrialOffer`
+  * Remove support for `AmountSubtotalAfterDiscount` on `DelegatedCheckout.RequestedSession.LineItemDetail` and `DelegatedCheckout.RequestedSession.TotalDetails`
+  * Remove support for `AmountTotal`, `UnitAmountAfterDiscount`, and `UnitDiscount` on `DelegatedCheckout.RequestedSession.LineItemDetail`
+  * Add support for `AmountCartDiscount` and `AmountItemsDiscount` on `DelegatedCheckout.RequestedSession.TotalDetails`
+  * Remove support for `AmountDiscount` on `DelegatedCheckout.RequestedSession.TotalDetails`
+  * Add support for `PaymentsOrchestration` on `PaymentIntentCreateOptions` and `PaymentIntent`
+
+## 50.1.0-alpha.2 - 2025-11-20
+This release changes the pinned API version to `2025-11-17.preview`.
+
+* [#3264](https://github.com/stripe/stripe-dotnet/pull/3264) Update generated code for private-preview
+  * Add support for new resources `V2.Core.AccountPersonToken`, `V2.Core.AccountToken`, and `V2.MoneyManagement.CurrencyConversion`
+  * Add support for `Create`, `Get`, and `List` methods on resource `V2.MoneyManagement.CurrencyConversion`
+  * Add support for `Create` and `Get` methods on resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Add support for `EffectiveAt` on `InvoiceScheduleDetailsAmendmentOptions`, `InvoiceScheduleDetailsPhaseOptions`, `QuoteLineOptions`, `QuoteLine`, `QuotePreviewSubscriptionSchedule.Phase`, `SubscriptionSchedule.Phase`, `SubscriptionScheduleAmendmentOptions`, and `SubscriptionSchedulePhaseOptions`
+  * Add support for `TrialOffer` on `InvoiceScheduleDetailsAmendmentItemActionAddOptions`, `InvoiceScheduleDetailsAmendmentItemActionSetOptions`, `InvoiceScheduleDetailsPhaseItemOptions`, `QuoteLine.Action.AddItem`, `QuoteLine.Action.SetItems`, `QuoteLineActionAddItemOptions`, `QuoteLineActionSetItemOptions`, `QuotePreviewSubscriptionSchedule.Phase.Item`, `SubscriptionSchedule.Phase.Item`, `SubscriptionScheduleAmendmentItemActionAddOptions`, `SubscriptionScheduleAmendmentItemActionSetOptions`, and `SubscriptionSchedulePhaseItemOptions`
+  * Change type of `DelegatedCheckout.RequestedSession.AmountSubtotal` from `longInteger` to `nullable(longInteger)`
+  * Change type of `DelegatedCheckout.RequestedSession.AmountTotal` from `longInteger` to `nullable(longInteger)`
+  * Add support for `AmountDiscount`, `AmountSubtotal`, `AmountTotal`, `UnitAmountAfterDiscount`, and `UnitDiscount` on `DelegatedCheckout.RequestedSession.LineItemDetail`
+  * Add support for `AmountSubtotalAfterDiscount` on `DelegatedCheckout.RequestedSession.LineItemDetail` and `DelegatedCheckout.RequestedSession.TotalDetails`
+  * Change type of `InvoiceScheduleDetailsOptions.BillingSchedules` from `array(billing_schedules_update_params)` to `emptyable(array(billing_schedules_update_params))`
+  * Add support for `CurrentTrial` on `InvoiceSubscriptionDetailsItemOptions`, `SubscriptionItemCreateOptions`, `SubscriptionItemOptions`, `SubscriptionItemUpdateOptions`, and `SubscriptionItem`
+  * Change type of `QuoteSubscriptionDataOptions.BillingSchedules` and `QuoteSubscriptionDataOverrideOptions.BillingSchedules` from `emptyable(array(billing_schedules_create_specs))` to `array(billing_schedules_create_specs)`
+  * Change type of `Quote.SubscriptionData.BillingSchedules` and `Quote.SubscriptionDataOverrides.BillingSchedules` from `nullable(array(SubscriptionsResourceBillingSchedules))` to `array(QuotesResourceSubscriptionDataBillingSchedules)`
+  * Change type of `Quote.SubscriptionData.PhaseEffectiveAt` and `Quote.SubscriptionDataOverrides.PhaseEffectiveAt` from `nullable(enum('billing_period_start'|'phase_start'))` to `enum('billing_period_start'|'line_start')`
+  * Change type of `QuotePreviewSubscriptionSchedule.BillingSchedules` and `SubscriptionSchedule.BillingSchedules` from `nullable(array(SubscriptionsResourceBillingSchedules))` to `array(SubscriptionsResourceBillingSchedules)`
+  * Remove support for `AmendmentStart`, `LineStartsAt`, and `Relative` on `Subscription.BillingSchedule.BillFrom`
+  * Change type of `Subscription.BillingSchedule.BillFrom.ComputedTimestamp` from `nullable(DateTime)` to `DateTime`
+  * Change type of `Subscription.BillingSchedule.BillFrom.Type` from `enum` to `literal('timestamp')`
+  * Remove support for `AmendmentEnd` and `LineEndsAt` on `Subscription.BillingSchedule.BillUntil`
+  * Change type of `V2.Billing.ServiceAction.CreditGrant.Amount.Monetary`, `V2.Billing.ServiceAction.CreditGrantPerTenant.Amount.Monetary`, `V2BillingServiceActionCreditGrantAmountOptions.Monetary`, and `V2BillingServiceActionCreditGrantPerTenantAmountOptions.Monetary` from `amount` to `an object`
+  * Add support for `FutureRequirements` on `V2.Core.Account`
+  * Add support for `KonbiniPayments` and `ScriptStatementDescriptor` on `V2.Core.Account.Configuration.Merchant` and `V2CoreAccountConfigurationMerchantOptions`
+  * Add support for `Eur` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `RequirementsCollector` on `V2.Core.Account.Defaults.Responsibilities`
+  * Remove support for `Collector` on `V2.Core.Account.Requirements`
+  * Remove support for `V1EventId` on `V2.Core.Event`
+  * Remove support for `AmountDetails` and `CaptureMethod` on `V2.Payments.OffSessionPaymentCreateOptions` and `V2.Payments.OffSessionPayment`
+  * Change type of `V2.Payments.OffSessionPayment.AmountCapturable` from `amount` to `an object`
+  * Change type of `V2.Payments.OffSessionPayment.AmountRequested` from `amount` to `an object`
+  * Change type of `V2.Payments.OffSessionPaymentCreateOptions.Amount` from `amount` to `an object`
+  * Remove support for `Destination` on `V2PaymentsOffSessionPaymentTransferDataOptions`
+  * Add support for `Created` on `V2.Core.EventListOptions`
+  * Remove support for `Gt`, `Gte`, `Lt`, and `Lte` on `V2.Core.EventListOptions`
+  * Add support for `AccountToken` on `V2.Core.AccountCreateOptions` and `V2.Core.AccountUpdateOptions`
+  * Add support for `PersonToken` on `V2.Core.AccountPersonCreateOptions` and `V2.Core.AccountPersonUpdateOptions`
+  * Add support for `ImpactedRequestsPercentage` on `EventsV2CoreHealthApiErrorFiringEventImpact`, `EventsV2CoreHealthApiErrorResolvedEventImpact`, `EventsV2CoreHealthApiLatencyFiringEventImpact`, `EventsV2CoreHealthApiLatencyResolvedEventImpact`, `EventsV2CoreHealthPaymentMethodErrorFiringEventImpact`, and `EventsV2CoreHealthPaymentMethodErrorResolvedEventImpact`
+  * Add support for `Context` and `RelatedObject` on `EventsV2CoreHealthEventGenerationFailureResolvedEventImpact`
+  * Remove support for `Account`, `Livemode`, `MissingDeliveryAttempts`, and `RelatedObjectId` on `EventsV2CoreHealthEventGenerationFailureResolvedEventImpact`
+  * Change type of `EventsV2CoreHealthFraudRateIncreasedEventImpact.RealizedFraudAmount` from `amount` to `an object`
+  * Change type of `EventsV2CoreHealthIssuingAuthorizationRequestErrorsFiringEventImpact.ApprovedAmount`, `EventsV2CoreHealthIssuingAuthorizationRequestErrorsResolvedEventImpact.ApprovedAmount`, `EventsV2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventImpact.ApprovedAmount`, and `EventsV2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEventImpact.ApprovedAmount` from `amount` to `an object`
+  * Change type of `EventsV2CoreHealthIssuingAuthorizationRequestErrorsFiringEventImpact.DeclinedAmount`, `EventsV2CoreHealthIssuingAuthorizationRequestErrorsResolvedEventImpact.DeclinedAmount`, `EventsV2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventImpact.DeclinedAmount`, and `EventsV2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEventImpact.DeclinedAmount` from `amount` to `an object`
+  * Add support for thin events `V2PaymentsOffSessionPaymentAttemptFailedEvent` and `V2PaymentsOffSessionPaymentAttemptStartedEvent` with related object `V2.Payments.OffSessionPayment`
+  * Remove support for thin event `V1AccountUpdatedEvent` with related object `Account`
+  * Remove support for thin events `V1ApplicationFeeCreatedEvent` and `V1ApplicationFeeRefundedEvent` with related object `ApplicationFee`
+  * Remove support for thin events `V1BillingPortalConfigurationCreatedEvent` and `V1BillingPortalConfigurationUpdatedEvent` with related object `BillingPortal.Configuration`
+  * Remove support for thin event `V1CapabilityUpdatedEvent` with related object `Capability`
+  * Remove support for thin events `V1ChargeCapturedEvent`, `V1ChargeExpiredEvent`, `V1ChargeFailedEvent`, `V1ChargePendingEvent`, `V1ChargeRefundedEvent`, `V1ChargeSucceededEvent`, and `V1ChargeUpdatedEvent` with related object `Charge`
+  * Remove support for thin events `V1ChargeDisputeClosedEvent`, `V1ChargeDisputeCreatedEvent`, `V1ChargeDisputeFundsReinstatedEvent`, `V1ChargeDisputeFundsWithdrawnEvent`, and `V1ChargeDisputeUpdatedEvent` with related object `Dispute`
+  * Remove support for thin events `V1ChargeRefundUpdatedEvent`, `V1RefundCreatedEvent`, `V1RefundFailedEvent`, and `V1RefundUpdatedEvent` with related object `Refund`
+  * Remove support for thin events `V1CheckoutSessionAsyncPaymentFailedEvent`, `V1CheckoutSessionAsyncPaymentSucceededEvent`, `V1CheckoutSessionCompletedEvent`, and `V1CheckoutSessionExpiredEvent` with related object `Checkout.Session`
+  * Remove support for thin events `V1ClimateOrderCanceledEvent`, `V1ClimateOrderCreatedEvent`, `V1ClimateOrderDelayedEvent`, `V1ClimateOrderDeliveredEvent`, and `V1ClimateOrderProductSubstitutedEvent` with related object `Climate.Order`
+  * Remove support for thin events `V1ClimateProductCreatedEvent` and `V1ClimateProductPricingUpdatedEvent` with related object `Climate.Product`
+  * Remove support for thin events `V1CouponCreatedEvent`, `V1CouponDeletedEvent`, and `V1CouponUpdatedEvent` with related object `Coupon`
+  * Remove support for thin events `V1CreditNoteCreatedEvent`, `V1CreditNoteUpdatedEvent`, and `V1CreditNoteVoidedEvent` with related object `CreditNote`
+  * Remove support for thin events `V1CustomerCreatedEvent`, `V1CustomerDeletedEvent`, and `V1CustomerUpdatedEvent` with related object `Customer`
+  * Remove support for thin events `V1CustomerSubscriptionCreatedEvent`, `V1CustomerSubscriptionDeletedEvent`, `V1CustomerSubscriptionPausedEvent`, `V1CustomerSubscriptionPendingUpdateAppliedEvent`, `V1CustomerSubscriptionPendingUpdateExpiredEvent`, `V1CustomerSubscriptionResumedEvent`, `V1CustomerSubscriptionTrialWillEndEvent`, and `V1CustomerSubscriptionUpdatedEvent` with related object `Subscription`
+  * Remove support for thin events `V1CustomerTaxIdCreatedEvent`, `V1CustomerTaxIdDeletedEvent`, and `V1CustomerTaxIdUpdatedEvent` with related object `TaxId`
+  * Remove support for thin event `V1FileCreatedEvent` with related object `File`
+  * Remove support for thin events `V1FinancialConnectionsAccountCreatedEvent`, `V1FinancialConnectionsAccountDeactivatedEvent`, `V1FinancialConnectionsAccountDisconnectedEvent`, `V1FinancialConnectionsAccountReactivatedEvent`, `V1FinancialConnectionsAccountRefreshedBalanceEvent`, `V1FinancialConnectionsAccountRefreshedOwnershipEvent`, and `V1FinancialConnectionsAccountRefreshedTransactionsEvent` with related object `FinancialConnections.Account`
+  * Remove support for thin events `V1IdentityVerificationSessionCanceledEvent`, `V1IdentityVerificationSessionCreatedEvent`, `V1IdentityVerificationSessionProcessingEvent`, `V1IdentityVerificationSessionRedactedEvent`, `V1IdentityVerificationSessionRequiresInputEvent`, and `V1IdentityVerificationSessionVerifiedEvent` with related object `Identity.VerificationSession`
+  * Remove support for thin events `V1InvoiceCreatedEvent`, `V1InvoiceDeletedEvent`, `V1InvoiceFinalizationFailedEvent`, `V1InvoiceFinalizedEvent`, `V1InvoiceMarkedUncollectibleEvent`, `V1InvoiceOverdueEvent`, `V1InvoiceOverpaidEvent`, `V1InvoicePaidEvent`, `V1InvoicePaymentActionRequiredEvent`, `V1InvoicePaymentFailedEvent`, `V1InvoicePaymentSucceededEvent`, `V1InvoiceSentEvent`, `V1InvoiceUpcomingEvent`, `V1InvoiceUpdatedEvent`, `V1InvoiceVoidedEvent`, and `V1InvoiceWillBeDueEvent` with related object `Invoice`
+  * Remove support for thin event `V1InvoicePaymentPaidEvent` with related object `InvoicePayment`
+  * Remove support for thin events `V1InvoiceitemCreatedEvent` and `V1InvoiceitemDeletedEvent` with related object `InvoiceItem`
+  * Remove support for thin events `V1IssuingAuthorizationCreatedEvent`, `V1IssuingAuthorizationRequestEvent`, and `V1IssuingAuthorizationUpdatedEvent` with related object `Issuing.Authorization`
+  * Remove support for thin events `V1IssuingCardCreatedEvent` and `V1IssuingCardUpdatedEvent` with related object `Issuing.Card`
+  * Remove support for thin events `V1IssuingCardholderCreatedEvent` and `V1IssuingCardholderUpdatedEvent` with related object `Issuing.Cardholder`
+  * Remove support for thin events `V1IssuingDisputeClosedEvent`, `V1IssuingDisputeCreatedEvent`, `V1IssuingDisputeFundsReinstatedEvent`, `V1IssuingDisputeFundsRescindedEvent`, `V1IssuingDisputeSubmittedEvent`, and `V1IssuingDisputeUpdatedEvent` with related object `Issuing.Dispute`
+  * Remove support for thin events `V1IssuingPersonalizationDesignActivatedEvent`, `V1IssuingPersonalizationDesignDeactivatedEvent`, `V1IssuingPersonalizationDesignRejectedEvent`, and `V1IssuingPersonalizationDesignUpdatedEvent` with related object `Issuing.PersonalizationDesign`
+  * Remove support for thin events `V1IssuingTokenCreatedEvent` and `V1IssuingTokenUpdatedEvent` with related object `Issuing.Token`
+  * Remove support for thin events `V1IssuingTransactionCreatedEvent`, `V1IssuingTransactionPurchaseDetailsReceiptUpdatedEvent`, and `V1IssuingTransactionUpdatedEvent` with related object `Issuing.Transaction`
+  * Remove support for thin event `V1MandateUpdatedEvent` with related object `Mandate`
+  * Remove support for thin events `V1PaymentIntentAmountCapturableUpdatedEvent`, `V1PaymentIntentCanceledEvent`, `V1PaymentIntentCreatedEvent`, `V1PaymentIntentPartiallyFundedEvent`, `V1PaymentIntentPaymentFailedEvent`, `V1PaymentIntentProcessingEvent`, `V1PaymentIntentRequiresActionEvent`, and `V1PaymentIntentSucceededEvent` with related object `PaymentIntent`
+  * Remove support for thin events `V1PaymentLinkCreatedEvent` and `V1PaymentLinkUpdatedEvent` with related object `PaymentLink`
+  * Remove support for thin events `V1PaymentMethodAttachedEvent`, `V1PaymentMethodAutomaticallyUpdatedEvent`, `V1PaymentMethodDetachedEvent`, and `V1PaymentMethodUpdatedEvent` with related object `PaymentMethod`
+  * Remove support for thin events `V1PayoutCanceledEvent`, `V1PayoutCreatedEvent`, `V1PayoutFailedEvent`, `V1PayoutPaidEvent`, `V1PayoutReconciliationCompletedEvent`, and `V1PayoutUpdatedEvent` with related object `Payout`
+  * Remove support for thin events `V1PersonCreatedEvent`, `V1PersonDeletedEvent`, and `V1PersonUpdatedEvent` with related object `Person`
+  * Remove support for thin events `V1PlanCreatedEvent`, `V1PlanDeletedEvent`, and `V1PlanUpdatedEvent` with related object `Plan`
+  * Remove support for thin events `V1PriceCreatedEvent`, `V1PriceDeletedEvent`, and `V1PriceUpdatedEvent` with related object `Price`
+  * Remove support for thin events `V1ProductCreatedEvent`, `V1ProductDeletedEvent`, and `V1ProductUpdatedEvent` with related object `Product`
+  * Remove support for thin events `V1PromotionCodeCreatedEvent` and `V1PromotionCodeUpdatedEvent` with related object `PromotionCode`
+  * Remove support for thin events `V1QuoteAcceptedEvent`, `V1QuoteCanceledEvent`, `V1QuoteCreatedEvent`, and `V1QuoteFinalizedEvent` with related object `Quote`
+  * Remove support for thin events `V1RadarEarlyFraudWarningCreatedEvent` and `V1RadarEarlyFraudWarningUpdatedEvent` with related object `Radar.EarlyFraudWarning`
+  * Remove support for thin events `V1ReviewClosedEvent` and `V1ReviewOpenedEvent` with related object `Review`
+  * Remove support for thin events `V1SetupIntentCanceledEvent`, `V1SetupIntentCreatedEvent`, `V1SetupIntentRequiresActionEvent`, `V1SetupIntentSetupFailedEvent`, and `V1SetupIntentSucceededEvent` with related object `SetupIntent`
+  * Remove support for thin event `V1SigmaScheduledQueryRunCreatedEvent` with related object `Sigma.ScheduledQueryRun`
+  * Remove support for thin events `V1SourceCanceledEvent`, `V1SourceChargeableEvent`, `V1SourceFailedEvent`, and `V1SourceRefundAttributesRequiredEvent` with related object `Source`
+  * Remove support for thin events `V1SubscriptionScheduleAbortedEvent`, `V1SubscriptionScheduleCanceledEvent`, `V1SubscriptionScheduleCompletedEvent`, `V1SubscriptionScheduleCreatedEvent`, `V1SubscriptionScheduleExpiringEvent`, `V1SubscriptionScheduleReleasedEvent`, and `V1SubscriptionScheduleUpdatedEvent` with related object `SubscriptionSchedule`
+  * Remove support for thin events `V1TaxRateCreatedEvent` and `V1TaxRateUpdatedEvent` with related object `TaxRate`
+  * Remove support for thin events `V1TerminalReaderActionFailedEvent`, `V1TerminalReaderActionSucceededEvent`, and `V1TerminalReaderActionUpdatedEvent` with related object `Terminal.Reader`
+  * Remove support for thin events `V1TestHelpersTestClockAdvancingEvent`, `V1TestHelpersTestClockCreatedEvent`, `V1TestHelpersTestClockDeletedEvent`, `V1TestHelpersTestClockInternalFailureEvent`, and `V1TestHelpersTestClockReadyEvent` with related object `TestHelpers.TestClock`
+  * Remove support for thin events `V1TopupCanceledEvent`, `V1TopupCreatedEvent`, `V1TopupFailedEvent`, `V1TopupReversedEvent`, and `V1TopupSucceededEvent` with related object `Topup`
+  * Remove support for thin events `V1TransferCreatedEvent`, `V1TransferReversedEvent`, and `V1TransferUpdatedEvent` with related object `Transfer`
+* [#3267](https://github.com/stripe/stripe-dotnet/pull/3267) Merge to private-preview
+
+## 50.1.0-alpha.1 - 2025-11-18
+* [#3257](https://github.com/stripe/stripe-dotnet/pull/3257) Update generated code for private-preview
+  * Add support for `BillingSchedulesActions` on `InvoiceScheduleDetailsAmendmentOptions` and `SubscriptionScheduleAmendmentOptions`
+* [#3252](https://github.com/stripe/stripe-dotnet/pull/3252) Update generated code for private-preview
+  * Add support for new resources `BalanceTransfer` and `Radar.AccountEvaluation`
+  * Add support for `Create` method on resource `BalanceTransfer`
+  * Add support for `Create`, `Get`, and `Update` methods on resource `Radar.AccountEvaluation`
+  * Add support for `Schedule` on `Discount`
+  * Add support for `SpecifiedCommercialTransactionsActUrl` on `Account.BusinessProfile` and `AccountBusinessProfileOptions`
+  * Add support for `PaypayPayments` on `Account.Settings` and `AccountSettingsOptions`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.DimensionFilters` from `string` to `array(string)`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.TenantFilters` from `string` to `array(string)`
+  * Add support for `PaymentMethodConfiguration` on `BillingPortal.Configuration.Features.PaymentMethodUpdate`
+  * Add support for `CarRentalData`, `FlightData`, and `LodgingData` on `ChargePaymentDetailsOptions` and `PaymentIntentPaymentDetailsOptions`
+  * Add support for `TransactionId` on `Charge.PaymentMethodDetails.Ideal`, `PaymentAttemptRecord.PaymentMethodDetails.Ideal`, and `PaymentRecord.PaymentMethodDetails.Ideal`
+  * Add support for `Created` on `CustomerCustomerBalanceTransactionListOptions` and `InvoicePaymentListOptions`
+  * Add support for `AccountNumbers` on `FinancialConnections.Account`
+  * Add support for `ScheduleDetails` on `Invoice.Parent`, `InvoiceItem.Parent`, `InvoiceLineItem.Parent`, and `QuotePreviewInvoice.Parent`
+  * Add support for `BillingSchedules` on `InvoiceScheduleDetailsOptions`, `QuotePreviewSubscriptionSchedule`, `SubscriptionScheduleCreateOptions`, `SubscriptionScheduleUpdateOptions`, and `SubscriptionSchedule`
+  * Add support for `FraudRisk` on `IssuingAuthorizationRiskAssessmentOptions`
+  * Add support for `LatestFraudWarning` on `Issuing.Card`
+  * Add support for `SupplementaryPurchaseData` on `OrderPaymentSettingsPaymentMethodOptionsKlarnaOptions` and `PaymentIntentPaymentMethodOptionsKlarnaOptions`
+  * Add support for `CaptureMethod` on `PaymentIntent.PaymentMethodOptions.CardPresent` and `PaymentIntentPaymentMethodOptionsCardPresentOptions`
+  * Add support for `AllowRedisplay` and `CustomerAccount` on `PaymentMethodListOptions`
+  * Add support for `LatestInvoice` on `QuotePreviewSubscriptionSchedule` and `SubscriptionSchedule`
+  * Add support for `PhaseEffectiveAt` on `QuotePreviewSubscriptionSchedule.DefaultSettings`, `SubscriptionSchedule.DefaultSettings`, and `SubscriptionScheduleDefaultSettingsOptions`
+  * Add support for `MbWay` and `Twint` on `Refund.DestinationDetails`
+  * Add support for snapshot events `FinancialConnectionsAccountAccountNumbersUpdated` and `FinancialConnectionsAccountUpcomingAccountNumberExpiry` with resource `FinancialConnections.Account`
+
+## 50.1.0-beta.1 - 2025-11-18
+This release changes the pinned API version to `2025-11-17.preview`.
+
+* [#3241](https://github.com/stripe/stripe-dotnet/pull/3241) Update generated code for beta
+  * Add support for new resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for resource `V2.Payments.OffSessionPayment`
+  * Add support for `Create` and `Get` methods on resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Remove support for `Cancel`, `Capture`, `Create`, `Get`, and `List` methods on resource `V2.Payments.OffSessionPayment`
+  * Add support for `SpecifiedCommercialTransactionsActUrl` on `Account.BusinessProfile` and `AccountBusinessProfileOptions`
+  * Add support for `PaypayPayments` on `Account.Settings` and `AccountSettingsOptions`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.DimensionFilters` from `string` to `array(string)`
+  * Change type of `BillingAnalyticsMeterUsageMeterOptions.TenantFilters` from `string` to `array(string)`
+  * Add support for `CarRentalData`, `FlightData`, and `LodgingData` on `ChargePaymentDetailsOptions` and `PaymentIntentPaymentDetailsOptions`
+  * Add support for `SupplementaryPurchaseData` on `OrderPaymentSettingsPaymentMethodOptionsKlarnaOptions` and `PaymentIntentPaymentMethodOptionsKlarnaOptions`
+  * Add support for `AllowRedisplay` and `CustomerAccount` on `PaymentMethodListOptions`
+  * Add support for `FutureRequirements` on `V2.Core.Account`
+  * Add support for `KonbiniPayments` and `ScriptStatementDescriptor` on `V2.Core.Account.Configuration.Merchant` and `V2CoreAccountConfigurationMerchantOptions`
+  * Add support for `Eur` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `RequirementsCollector` on `V2.Core.Account.Defaults.Responsibilities`
+  * Remove support for `Collector` on `V2.Core.Account.Requirements`
+  * Add support for `Changes` on `V2.Core.Event`
+  * Add support for `AccountToken` on `V2.Core.AccountCreateOptions` and `V2.Core.AccountUpdateOptions`
+  * Add support for `PersonToken` on `V2.Core.AccountPersonCreateOptions` and `V2.Core.AccountPersonUpdateOptions`
+  * Add support for thin event `V2CoreHealthEventGenerationFailureResolvedEvent`
+  * Remove support for thin events `V2PaymentsOffSessionPaymentAuthorizationAttemptFailedEvent`, `V2PaymentsOffSessionPaymentAuthorizationAttemptStartedEvent`, `V2PaymentsOffSessionPaymentCanceledEvent`, `V2PaymentsOffSessionPaymentCreatedEvent`, `V2PaymentsOffSessionPaymentFailedEvent`, `V2PaymentsOffSessionPaymentRequiresCaptureEvent`, and `V2PaymentsOffSessionPaymentSucceededEvent` with related object `V2.Payments.OffSessionPayment`
+
+## 50.0.0 - 2025-11-18
+This release changes the pinned API version to `2025-11-17.clover`.
+
+* [#3256](https://github.com/stripe/stripe-dotnet/pull/3256) Update generated code
+  * ⚠️ Remove support for `Gt`, `Gte`, `Lt`, and `Lte` on `V2.Core.EventListOptions` in favor of `Created`.
+* [#3254](https://github.com/stripe/stripe-dotnet/pull/3254) Check if a datetime is in millis
+  * Bug fix for [#3253](https://github.com/stripe/stripe-dotnet/issues/3253). UnixDateTimeConverter now handles timestamps in milliseconds. 
+* [#3249](https://github.com/stripe/stripe-dotnet/pull/3249) Update v2 array parameter serialization to use indexed format
+  - `Retrieve` and `List` calls for `/v2` endpoints now use indexed format (e.g., `?include[0]=foo&include[1]=bar`) instead of repeated parameter format (e.g., `?include=foo&include=bar`) when communicating with the Stripe API. This may break any unit tests that expect the latter behavior when setting up a mock server. Instead, they should now expect the former.
+* [#3246](https://github.com/stripe/stripe-dotnet/pull/3246) Update generated code
+  * Add support for new resources `Tax.Association` and `Terminal.OnboardingLink`
+  * Add support for `Find` method on resource `Tax.Association`
+  * Add support for `Create` method on resource `Terminal.OnboardingLink`
+  * Add support for `PaymentMethodConfiguration` on `BillingPortal.Configuration.Features.PaymentMethodUpdate`
+  * Add support for `TransactionId` on `Charge.PaymentMethodDetails.Ideal`, `PaymentAttemptRecord.PaymentMethodDetails.Ideal`, and `PaymentRecord.PaymentMethodDetails.Ideal`
+  * Add support for `Created` on `CustomerCustomerBalanceTransactionListOptions` and `InvoicePaymentListOptions`
+  * Add support for `AccountNumbers` on `FinancialConnections.Account`
+  * Add support for `FraudRisk` on `IssuingAuthorizationRiskAssessmentOptions`
+  * Add support for `LatestFraudWarning` on `Issuing.Card`
+  * Add support for `Hooks` on `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentIncrementAuthorizationOptions`, `PaymentIntentUpdateOptions`, and `PaymentIntent`
+  * Add support for `MbWay` and `Twint` on `Refund.DestinationDetails`
+  * Add support for snapshot events `FinancialConnectionsAccountAccountNumbersUpdated` and `FinancialConnectionsAccountUpcomingAccountNumberExpiry` with resource `FinancialConnections.Account`
+
+## 49.3.0-alpha.2 - 2025-11-13
+This release changes the pinned API version to `2025-10-29.preview`.
+
+* [#3251](https://github.com/stripe/stripe-dotnet/pull/3251) Update generated code for private-preview
+  * Add support for new resource `Issuing.Program`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `Issuing.Program`
+  * Add support for `ApplicableFees` on `DelegatedCheckout.RequestedSession.TotalDetails`
+* [#3245](https://github.com/stripe/stripe-dotnet/pull/3245) Update generated code for private-preview
+  * Remove support for resource `V2.Tax.AutomaticRule`
+  * Remove support for `Create`, `Deactivate`, `Find`, `Get`, and `Update` methods on resource `V2.Tax.AutomaticRule`
+  * Add support for `SelfReportedIncome` and `SelfReportedMonthlyHousingPayment` on `AccountIndividualOptions`, `AccountPersonCreateOptions`, `AccountPersonUpdateOptions`, `Person`, `TokenAccountIndividualOptions`, and `TokenPersonOptions`
+  * Add support for `BillingSchedules` and `PhaseEffectiveAt` on `Quote.SubscriptionDataOverrides`, `Quote.SubscriptionData`, `QuoteSubscriptionDataOptions`, `QuoteSubscriptionDataOverrideOptions`, and `QuoteSubscriptionDataOverridesOptions`
+  * Add support for `BillFrom` on `Subscription.BillingSchedule`
+  * Add support for `AmendmentEnd` and `LineEndsAt` on `Subscription.BillingSchedule.BillUntil`
+  * Remove support for `Data` and `RelatedObject` on `V2.Core.Event`
+
+## 49.3.0-alpha.1 - 2025-11-06
+* [#3243](https://github.com/stripe/stripe-dotnet/pull/3243) Update generated code for private-preview
+  * Add support for new resource `TransitBalance`, `V2.Reporting.ReportRun`, `V2.Reporting.Report`
+  * Add support for `Create` and `Get` methods on resource `V2.Reporting.ReportRun`
+  * Add support for `Get` method on resource `V2.Reporting.Report`
+  * Add support for `Create` and `Refill` test helper methods on resource `Capital.FinancingOffer`
+  * Add support for `AllocatedFunds` on `Charge`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, and `PaymentIntentUpdateOptions`
+  * Add support for thin events `V2ReportingReportRunCreatedEvent`, `V2ReportingReportRunFailedEvent`, `V2ReportingReportRunSucceededEvent`, and `V2ReportingReportRunUpdatedEvent` with related object `V2.Reporting.ReportRun`
 * [#3183](https://github.com/stripe/stripe-dotnet/pull/3183) Update generated code for private-preview
   * Add support for `ReportPaymentAttemptInformational` method on resource `PaymentRecord`
   * Add support for `PaypayPayments` on `Account.Capabilities` and `AccountCapabilitiesOptions`
@@ -36,6 +282,113 @@ This release changes the pinned API version to `2025-09-30.preview`. It is built
   * Add support for thin events `V2MoneyManagementRecipientVerificationCreatedEvent` and `V2MoneyManagementRecipientVerificationUpdatedEvent` with related object `V2.MoneyManagement.RecipientVerification`
 * [#3188](https://github.com/stripe/stripe-dotnet/pull/3188) ParseThinEvent__Experimental is no longer needed
   * ⚠️ Remove the `StripeClient. ParseThinEvent__Experimental` and `PushedEvent` classes. They've been replaced with `StripeClient.ParseEventNotification` and the *`EventNotification` classes respectively.
+ 
+## 49.2.0 - 2025-11-05
+* [#3244](https://github.com/stripe/stripe-dotnet/pull/3244) Update generated code
+  * Add support for `CaptureMethod` on `PaymentIntent.PaymentMethodOptions.CardPresent` and `PaymentIntentPaymentMethodOptionsCardPresentOptions`
+
+## 49.2.0-beta.1 - 2025-10-29
+
+This release changes the pinned API version to `2025-10-29.preview`.
+
+* [#3234](https://github.com/stripe/stripe-dotnet/pull/3234) Update generated code for beta
+  * Add support for `CryptoStorer` on `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
+* [#3211](https://github.com/stripe/stripe-dotnet/pull/3211) Update generated code for beta
+  * Add support for `Update` method on resource `V2.MoneyManagement.FinancialAccount`
+  * Add support for `ConfirmMicrodeposits`, `List`, and `SendMicrodeposits` methods on resource `V2.Core.Vault.UsBankAccount`
+  * Add support for `List` method on resource `V2.Core.Vault.GbBankAccount`
+  * Add support for `PaymentPortalUrl` on `Charge.PaymentMethodDetails.Rechnung`, `PaymentAttemptRecord.PaymentMethodDetails.Rechnung`, and `PaymentRecord.PaymentMethodDetails.Rechnung`
+  * Add support for `TaxIdElement` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
+  * Add support for `StartingAfter` on `PaymentAttemptRecordListOptions`
+  * Add support for `Reference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna` and `PaymentIntentAmountDetailsLineItemsPaymentMethodOptionsKlarnaOptions`
+  * Add support for `SubscriptionReference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna`
+  * Add support for `Closed` on `V2.Core.AccountListOptions` and `V2.Core.Account`
+  * Add support for `Usd` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `RepresentativeDeclaration` on `V2.Core.Account.Identity.Attestations` and `V2CoreAccountIdentityAttestationsOptions`
+  * Add support for `Verification` on `V2.Core.Vault.UsBankAccount`
+  * Add support for `V1Id` on `EventsV2MoneyManagementTransactionCreatedEvent`
+  * Remove support for thin event `V2BillingBillSettingUpdatedEvent` with related object `V2.Billing.BillSetting`
+
+## 49.2.0-alpha.2 - 2025-10-30
+* [#3242](https://github.com/stripe/stripe-dotnet/pull/3242) Update generated code for private-preview
+  * Add support for `PaymentMethodPreview` on `DelegatedCheckout.RequestedSession`
+  * Add support for `OrderId` on `DelegatedCheckout.RequestedSession.OrderDetails`
+  * Add support for `Lead` on `V2.Core.Account.Configuration.CardCreator.Capabilities.Commercial`, `V2.Core.Account.Identity.Attestations.TermsOfService.CardCreator.Commercial`, `V2CoreAccountConfigurationCardCreatorCapabilitiesCommercialOptions`, and `V2CoreAccountIdentityAttestationsTermsOfServiceCardCreatorCommercialOptions`
+  * Add support for `GlobalAccountHolder` on `V2.Core.Account.Identity.Attestations.TermsOfService.CardCreator.Commercial` and `V2CoreAccountIdentityAttestationsTermsOfServiceCardCreatorCommercialOptions`
+
+## 49.2.0-alpha.1 - 2025-10-29
+
+* [#3237](https://github.com/stripe/stripe-dotnet/pull/3237) Update generated code for private-preview
+  * Add support for `Tenants` on `Billing.Analytics.MeterUsageRow`
+  * Add support for `Transfer` on `ApplicationFee.FeeSource`
+  * Add support for `TransitBalancesTotal` on `Balance`
+  * Add support for `TenantGroupByKeys` on `BillingAnalyticsMeterUsageMeterOptions`
+  * Remove support for `RiskDetails` on `DelegatedCheckout.RequestedSessionCreateOptions`
+  * Add support for `RiskDetails` on `DelegatedCheckout.RequestedSessionConfirmOptions`
+  * Add support for `AllocatedFunds` on `PaymentIntent`
+  * Add support for `ApplicationFeeAmount` on `TransferCreateOptions` and `Transfer`
+  * Add support for `ApplicationFee` on `Transfer`
+* [#3235](https://github.com/stripe/stripe-dotnet/pull/3235) Update generated code for private-preview
+  * Add support for `ReportRefund` method on resource `PaymentRecord`
+  * Add support for `RepresentativeDeclaration` on `Account.Company`, `AccountCompanyOptions`, and `TokenAccountCompanyOptions`
+  * Add support for `PaymentMethodConfiguration` on `BillingPortalConfigurationFeaturesPaymentMethodUpdateOptions`
+  * Add support for `PaymentPortalUrl` on `Charge.PaymentMethodDetails.Rechnung`, `PaymentAttemptRecord.PaymentMethodDetails.Rechnung`, and `PaymentRecord.PaymentMethodDetails.Rechnung`
+  * Add support for `Twint` on `Checkout.Session.PaymentMethodOptions` and `CheckoutSessionPaymentMethodOptionsOptions`
+  * Add support for `CustomerSheet`, `MobilePaymentElement`, and `TaxIdElement` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
+  * Add support for `Provider` on `Customer.Tax`
+  * Add support for `StartingAfter` on `PaymentAttemptRecordListOptions`
+  * Add support for `Reference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna` and `PaymentIntentAmountDetailsLineItemsPaymentMethodOptionsKlarnaOptions`
+  * Add support for `SubscriptionReference` on `PaymentIntentAmountDetailsLineItem.PaymentMethodOptions.Klarna`
+  * Add support for `NameCollection` on `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  * Add support for `Crypto` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, and `Refund.DestinationDetails`
+  * Add support for `MbWay` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `Custom` on `PaymentMethodCreateOptions` and `PaymentMethod`
+  * Add support for `ExcludedPaymentMethodTypes` on `SetupIntentCreateOptions`, `SetupIntentUpdateOptions`, and `SetupIntent`
+  * Add support for `Tw` on `Tax.Registration.CountryOptions` and `TaxRegistrationCountryOptionsOptions`
+  * Add support for `Gip` on `Terminal.Configuration.Tipping` and `TerminalConfigurationTippingOptions`
+  * Add support for `LastSeenAt` on `Terminal.Reader`
+  * Add support for `HighRiskActivitiesDescription`, `HighRiskActivities`, `MoneyServicesDescription`, `OperatesInProhibitedCountries`, `ParticipatesInRegulatedActivity`, `PurposeOfFundsDescription`, `PurposeOfFunds`, `RegulatedActivity`, `SourceOfFundsDescription`, and `SourceOfFunds` on `V2.Core.Account.Configuration.Storer` and `V2CoreAccountConfigurationStorerOptions`
+  * Add support for `CryptoWallets` on `V2.Core.Account.Configuration.Storer.Capabilities.FinancialAddresses`, `V2.Core.Account.Configuration.Storer.Capabilities.OutboundPayments`, `V2.Core.Account.Configuration.Storer.Capabilities.OutboundTransfers`, `V2CoreAccountConfigurationStorerCapabilitiesFinancialAddressesOptions`, `V2CoreAccountConfigurationStorerCapabilitiesOutboundPaymentsOptions`, and `V2CoreAccountConfigurationStorerCapabilitiesOutboundTransfersOptions`
+  * Add support for `Usdc` on `V2.Core.Account.Configuration.Storer.Capabilities.HoldsCurrencies` and `V2CoreAccountConfigurationStorerCapabilitiesHoldsCurrenciesOptions`
+  * Add support for `CryptoStorer` on `V2.Core.Account.Identity.Attestations.TermsOfService` and `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
+  * Add support for `ComplianceScreeningDescription` on `V2.Core.Account.Identity.BusinessDetails` and `V2CoreAccountIdentityBusinessDetailsOptions`
+  * Add support for `ExternalAmount` on `V2.MoneyManagement.ReceivedCredit` and `V2.MoneyManagement.ReceivedDebit`
+
+## 49.1.0 - 2025-10-29
+
+This release changes the pinned API version to `2025-10-29.clover`.
+
+* [#3236](https://github.com/stripe/stripe-dotnet/pull/3236) Update generated code
+  * Improve docs for PaymentIntent related endpoints
+* [#3230](https://github.com/stripe/stripe-dotnet/pull/3230) Update generated code
+  * Add support for new resources `PaymentAttemptRecord`, `PaymentIntentAmountDetailsLineItem`, and `PaymentRecord`
+  * Add support for `Get` and `List` methods on resource `PaymentAttemptRecord`
+  * Add support for `Get`, `ReportPaymentAttemptCanceled`, `ReportPaymentAttemptFailed`, `ReportPaymentAttemptGuaranteed`, `ReportPaymentAttemptInformational`, `ReportPaymentAttempt`, `ReportPayment`, and `ReportRefund` methods on resource `PaymentRecord`
+  * Add support for `List` method on resource `PaymentIntentAmountDetailsLineItem`
+  * Add support for `RepresentativeDeclaration` on `Account.Company`, `AccountCompanyOptions`, and `TokenAccountCompanyOptions`
+  * Add support for `PaymentMethodConfiguration` on `BillingPortalConfigurationFeaturesPaymentMethodUpdateOptions`
+  * Add support for `Twint` on `Checkout.Session.PaymentMethodOptions` and `CheckoutSessionPaymentMethodOptionsOptions`
+  * Add support for `PaymentRecordRefund` and `Type` on `CreditNote.Refund` and `CreditNoteRefundOptions`
+  * Add support for `CustomerSheet` and `MobilePaymentElement` on `CustomerSession.Components` and `CustomerSessionComponentsOptions`
+  * Add support for `Provider` on `Customer.Tax`
+  * Add support for `PaymentRecord` on `InvoiceAttachPaymentOptions`, `InvoicePayment.Payment`, and `InvoicePaymentPaymentOptions`
+  * Change type of `InvoicePaymentPaymentOptions.Type` from `literal('payment_intent')` to `enum('payment_intent'|'payment_record')`
+  * Add support for `AmountDetails` on `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentIncrementAuthorizationOptions`, and `PaymentIntentUpdateOptions`
+  * Add support for `PaymentDetails` on `PaymentIntentCaptureOptions`, `PaymentIntentConfirmOptions`, `PaymentIntentCreateOptions`, `PaymentIntentIncrementAuthorizationOptions`, `PaymentIntentUpdateOptions`, and `PaymentIntent`
+  * Add support for `DiscountAmount`, `LineItems`, `Shipping`, and `Tax` on `PaymentIntent.AmountDetails`
+  * Add support for `NameCollection` on `PaymentLinkCreateOptions`, `PaymentLinkUpdateOptions`, and `PaymentLink`
+  * Add support for `Crypto` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, and `Refund.DestinationDetails`
+  * Add support for `MbWay` on `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, and `PaymentMethodConfiguration`
+  * Add support for `Custom` on `PaymentMethodCreateOptions` and `PaymentMethod`
+  * Add support for `ExcludedPaymentMethodTypes` on `SetupIntentCreateOptions`, `SetupIntentUpdateOptions`, and `SetupIntent`
+  * Add support for `Tw` on `Tax.Registration.CountryOptions` and `TaxRegistrationCountryOptionsOptions`
+  * Add support for `Gip` on `Terminal.Configuration.Tipping` and `TerminalConfigurationTippingOptions`
+  * Add support for `LastSeenAt` on `Terminal.Reader`
+  * Add support for `Gt`, `Gte`, `Lt`, `Lte`, and `Types` on `V2.Core.EventListOptions`
+  * Add support for snapshot event `BalanceSettingsUpdated` with resource `BalanceSettings`
+  * Add support for snapshot event `InvoicePaymentAttemptRequired` with resource `Invoice`
+* [#3223](https://github.com/stripe/stripe-dotnet/pull/3223) Fixes STJDefaultConverter to safely ignore unknown properties
+  * Fixes a bug when using System.Text.Json to deserialize JSON that has properties not present in the target object.
 
 ## 49.1.0-beta.1 - 2025-09-30
 This release changes the pinned API version to `2025-09-30.preview`. It is built on top of SDK version 49.0.0 which contains breaking changes. Please review the [changelog for 49.0.0](https://github.com/stripe/stripe-dotnet/blob/master/CHANGELOG.md#4900---2025-09-30) if upgrading from older SDK versions.
@@ -108,6 +461,76 @@ This release changes the pinned API version to `2025-09-30.preview`. It is built
   * Add support for `Wallet` on `PaymentAttemptRecord.PaymentMethodDetails.Card` and `PaymentRecord.PaymentMethodDetails.Card`
   * Add support for `Flexible` on `QuotePreviewSubscriptionSchedule.BillingMode`
   * Add support for `BilledUntil` on `SubscriptionItem`
+
+## 49.1.0-alpha.4 - 2025-10-23
+* [#3232](https://github.com/stripe/stripe-dotnet/pull/3232) Update generated code for private-preview
+  * Add support for new resource `V2.Billing.PricingPlanSubscriptionComponents`
+  * Add support for `Get` method on resource `V2.Billing.PricingPlanSubscriptionComponents`
+  * Add support for `DimensionPayloadKeys` on `Billing.MeterCreateOptions` and `Billing.Meter`
+  * Add support for `DimensionFilters` and `DimensionGroupByKeys` on `Billing.BillingMeterMeterEventSummaryListOptions`
+  * Add support for `Dimensions` on `Billing.MeterEventSummary`
+  * Add support for `FulfillmentDetails` and `PaymentMethodData` on `DelegatedCheckout.RequestedSessionCreateOptions` and `DelegatedCheckout.RequestedSessionUpdateOptions`
+  * Add support for `LineItemDetails`, `Metadata`, `PaymentMethod`, and `SharedMetadata` on `DelegatedCheckout.RequestedSessionCreateOptions`, `DelegatedCheckout.RequestedSessionUpdateOptions`, and `DelegatedCheckout.RequestedSession`
+  * Add support for `Currency`, `Customer`, and `RiskDetails` on `DelegatedCheckout.RequestedSessionCreateOptions`
+  * Add support for `SellerDetails` and `SetupFutureUsage` on `DelegatedCheckout.RequestedSessionCreateOptions` and `DelegatedCheckout.RequestedSession`
+  * Add support for `AmountSubtotal`, `AmountTotal`, `CreatedAt`, `ExpiresAt`, `OrderDetails`, `SharedPaymentIssuedToken`, `Status`, `TotalDetails`, and `UpdatedAt` on `DelegatedCheckout.RequestedSession`
+  * Add support for `Address`, `Email`, `FulfillmentOptions`, `Name`, `Phone`, and `SelectedFulfillmentOption` on `DelegatedCheckout.RequestedSession.FulfillmentDetails`
+* [#3231](https://github.com/stripe/stripe-dotnet/pull/3231) Empty commit
+* [#3229](https://github.com/stripe/stripe-dotnet/pull/3229) Merge to private preview
+
+## 49.1.0-alpha.3 - 2025-10-17
+* [#3220](https://github.com/stripe/stripe-dotnet/pull/3220) Update generated code for private-preview
+  * Add support for new resources `DelegatedCheckout.RequestedSession` and `Identity.BlocklistEntry`
+  * Add support for `Confirm`, `Create`, `Expire`, `Get`, and `Update` methods on resource `DelegatedCheckout.RequestedSession`
+  * Add support for `Create`, `Disable`, `Get`, and `List` methods on resource `Identity.BlocklistEntry`
+  * Add support for `BlockedByEntry` on `Identity.VerificationReport.Document`, `Identity.VerificationReport.Selfie`, and `Identity.VerificationReportListOptions`
+
+## 49.1.0-alpha.2 - 2025-10-09
+* [#3218](https://github.com/stripe/stripe-dotnet/pull/3218) Update generated code for private-preview
+  * Add support for new resource `PaymentMethodBalance`
+  * Add support for `CheckBalance` method on resource `PaymentMethod`
+  * Add support for `Benefits` on `Card`, `Charge.PaymentMethodDetails.Card`, `ConfirmationToken.PaymentMethodPreview.Card`, and `PaymentMethod.Card`
+  * Add support for `Benefit` on `PaymentIntent.PaymentDetails` and `PaymentIntentPaymentDetailsOptions`
+  * Add support for `SetupDetails` on `SetupIntentConfirmOptions`, `SetupIntentCreateOptions`, `SetupIntentUpdateOptions`, and `SetupIntent`
+  * Add support for `CardCreator` on `V2.Core.Account.Configuration`, `V2.Core.Account.Identity.Attestations.TermsOfService`, `V2CoreAccountConfigurationOptions`, and `V2CoreAccountIdentityAttestationsTermsOfServiceOptions`
+  * Add support for thin events `V2CoreAccountIncludingConfigurationCardCreatorCapabilityStatusUpdatedEvent` and `V2CoreAccountIncludingConfigurationCardCreatorUpdatedEvent` with related object `V2.Core.Account`
+  * Remove support for thin events `V1CustomerDiscountCreatedEvent`, `V1CustomerDiscountDeletedEvent`, and `V1CustomerDiscountUpdatedEvent` with related object `Discount`
+* [#3214](https://github.com/stripe/stripe-dotnet/pull/3214) Update generated code for private-preview
+  * Release specs are identical.
+
+## 49.1.0-alpha.1 - 2025-10-01
+This release changes the pinned API version to `2025-09-30.preview`. It is built on top of SDK version 49.0.0 and 49.1.0-beta.1 which contain breaking changes. Please review the changelog for these versions if upgrading from older SDK versions.
+
+* [#3183](https://github.com/stripe/stripe-dotnet/pull/3183) Update generated code for private-preview
+  * Add support for new resource `V2.MoneyManagement.RecipientVerification`
+  * Add support for `Acknowledge`, `Create`, `Get`, and `RecipientVerifications` methods on resource `V2.MoneyManagement.RecipientVerification`
+  * Add support for `Update` method on resources `V2.Billing.PricingPlanSubscription` and `V2.Billing.ServiceAction`
+  * Add support for `CryptoWallets` on `V2.Account.Configuration.RecipientData.Features`, `V2.Core.Account.Configuration.Recipient.Capabilities`, `V2AccountConfigurationRecipientDataFeaturesOptions`, and `V2CoreAccountConfigurationRecipientCapabilitiesOptions`
+  * Add support for `LookupKey` on `V2.Billing.CadenceCreateOptions`, `V2.Billing.CadenceUpdateOptions`, and `V2.Billing.Cadence`
+  * Add support for `SettingsData` on `V2.Billing.Cadence`
+  * Add support for `MonthOfYear` on `V2.Billing.Cadence.BillingCycle.Month` and `V2BillingCadenceBillingCycleMonthOptions`
+  * Add support for `ClaimedAt`, `ExpiresAt`, `SandboxDetails`, and `Status` on `V2.Core.ClaimableSandbox`
+  * Remove support for `ApiKeys` on `V2.Core.ClaimableSandbox`
+  * Add support for `V1EventId` on `V2.Event`
+  * Add support for `RecipientVerification` on `V2.MoneyManagement.OutboundPaymentCreateOptions`, `V2.MoneyManagement.OutboundPayment`, `V2.MoneyManagement.OutboundTransferCreateOptions`, and `V2.MoneyManagement.OutboundTransfer`
+  * Add support for `CryptoWallet` on `V2.MoneyManagement.PayoutMethod` and `V2MoneyManagementOutboundSetupIntentPayoutMethodDataOptions`
+  * Add support for `WillActivateAt` and `WillCancelAt` on `V2.Billing.PricingPlanSubscription.ServicingStatusTransitions` and `V2.Billing.RateCardSubscription.ServicingStatusTransitions`
+  * Add support for `CustomPricingUnitDetails` on `V2.Billing.RateCardRate.CustomPricingUnitAmount`, `V2.Billing.ServiceAction.CreditGrant.Amount.CustomPricingUnit`, and `V2.Billing.ServiceAction.CreditGrantPerTenant.Amount.CustomPricingUnit`
+  * Add support for `OriginType` on `V2.MoneyManagement.ReceivedDebit.BankTransfer`
+  * Add support for `SepaBankAccount` on `V2.MoneyManagement.FinancialAddressCreateOptions`
+  * Remove support for `Price` on `V2.Billing.RateCardRateCreateOptions`
+  * Add support for `LookupKeys` on `V2.Billing.CadenceListOptions`
+  * Change type of `V2.Billing.CadenceCancelOptions.Include`, `V2.Billing.CadenceCreateOptions.Include`, `V2.Billing.CadenceGetOptions.Include`, `V2.Billing.CadenceListOptions.Include`, and `V2.Billing.CadenceUpdateOptions.Include` from `literal('invoice_discount_rules')` to `enum('invoice_discount_rules'|'settings_data')`
+  * Remove support for `Customer` and `Type` on `V2BillingCadencePayerOptions`
+  * Remove support for `AlertId` on `EventsV2CoreHealthApiErrorResolvedEvent`, `EventsV2CoreHealthApiLatencyResolvedEvent`, `EventsV2CoreHealthAuthorizationRateDropResolvedEvent`, `EventsV2CoreHealthIssuingAuthorizationRequestTimeoutResolvedEvent`, `EventsV2CoreHealthPaymentMethodErrorResolvedEvent`, `EventsV2CoreHealthTrafficVolumeDropResolvedEvent`, and `EventsV2CoreHealthWebhookLatencyResolvedEvent`
+  * Add support for thin event `V1AccountUpdatedEvent` with related object `V2.Account`
+  * Add support for thin events `V1ApplicationFeeCreatedEvent`, `V1ApplicationFeeRefundedEvent`, `V1BillingPortalConfigurationCreatedEvent`, `V1BillingPortalConfigurationUpdatedEvent`, `V1CapabilityUpdatedEvent`, `V1ChargeCapturedEvent`, `V1ChargeDisputeClosedEvent`, `V1ChargeDisputeCreatedEvent`, `V1ChargeDisputeFundsReinstatedEvent`, `V1ChargeDisputeFundsWithdrawnEvent`, `V1ChargeDisputeUpdatedEvent`, `V1ChargeExpiredEvent`, `V1ChargeFailedEvent`, `V1ChargePendingEvent`, `V1ChargeRefundUpdatedEvent`, `V1ChargeRefundedEvent`, `V1ChargeSucceededEvent`, `V1ChargeUpdatedEvent`, `V1CheckoutSessionAsyncPaymentFailedEvent`, `V1CheckoutSessionAsyncPaymentSucceededEvent`, `V1CheckoutSessionCompletedEvent`, `V1CheckoutSessionExpiredEvent`, `V1ClimateOrderCanceledEvent`, `V1ClimateOrderCreatedEvent`, `V1ClimateOrderDelayedEvent`, `V1ClimateOrderDeliveredEvent`, `V1ClimateOrderProductSubstitutedEvent`, `V1ClimateProductCreatedEvent`, `V1ClimateProductPricingUpdatedEvent`, `V1CouponCreatedEvent`, `V1CouponDeletedEvent`, `V1CouponUpdatedEvent`, `V1CreditNoteCreatedEvent`, `V1CreditNoteUpdatedEvent`, `V1CreditNoteVoidedEvent`, `V1CustomerCreatedEvent`, `V1CustomerDeletedEvent`, `V1CustomerDiscountCreatedEvent`, `V1CustomerDiscountDeletedEvent`, `V1CustomerDiscountUpdatedEvent`, `V1CustomerSubscriptionCreatedEvent`, `V1CustomerSubscriptionDeletedEvent`, `V1CustomerSubscriptionPausedEvent`, `V1CustomerSubscriptionPendingUpdateAppliedEvent`, `V1CustomerSubscriptionPendingUpdateExpiredEvent`, `V1CustomerSubscriptionResumedEvent`, `V1CustomerSubscriptionTrialWillEndEvent`, `V1CustomerSubscriptionUpdatedEvent`, `V1CustomerTaxIdCreatedEvent`, `V1CustomerTaxIdDeletedEvent`, `V1CustomerTaxIdUpdatedEvent`, `V1CustomerUpdatedEvent`, `V1FileCreatedEvent`, `V1FinancialConnectionsAccountCreatedEvent`, `V1FinancialConnectionsAccountDeactivatedEvent`, `V1FinancialConnectionsAccountDisconnectedEvent`, `V1FinancialConnectionsAccountReactivatedEvent`, `V1FinancialConnectionsAccountRefreshedBalanceEvent`, `V1FinancialConnectionsAccountRefreshedOwnershipEvent`, `V1FinancialConnectionsAccountRefreshedTransactionsEvent`, `V1IdentityVerificationSessionCanceledEvent`, `V1IdentityVerificationSessionCreatedEvent`, `V1IdentityVerificationSessionProcessingEvent`, `V1IdentityVerificationSessionRedactedEvent`, `V1IdentityVerificationSessionRequiresInputEvent`, `V1IdentityVerificationSessionVerifiedEvent`, `V1InvoiceCreatedEvent`, `V1InvoiceDeletedEvent`, `V1InvoiceFinalizationFailedEvent`, `V1InvoiceFinalizedEvent`, `V1InvoiceMarkedUncollectibleEvent`, `V1InvoiceOverdueEvent`, `V1InvoiceOverpaidEvent`, `V1InvoicePaidEvent`, `V1InvoicePaymentActionRequiredEvent`, `V1InvoicePaymentFailedEvent`, `V1InvoicePaymentPaidEvent`, `V1InvoicePaymentSucceededEvent`, `V1InvoiceSentEvent`, `V1InvoiceUpcomingEvent`, `V1InvoiceUpdatedEvent`, `V1InvoiceVoidedEvent`, `V1InvoiceWillBeDueEvent`, `V1InvoiceitemCreatedEvent`, `V1InvoiceitemDeletedEvent`, `V1IssuingAuthorizationCreatedEvent`, `V1IssuingAuthorizationRequestEvent`, `V1IssuingAuthorizationUpdatedEvent`, `V1IssuingCardCreatedEvent`, `V1IssuingCardUpdatedEvent`, `V1IssuingCardholderCreatedEvent`, `V1IssuingCardholderUpdatedEvent`, `V1IssuingDisputeClosedEvent`, `V1IssuingDisputeCreatedEvent`, `V1IssuingDisputeFundsReinstatedEvent`, `V1IssuingDisputeFundsRescindedEvent`, `V1IssuingDisputeSubmittedEvent`, `V1IssuingDisputeUpdatedEvent`, `V1IssuingPersonalizationDesignActivatedEvent`, `V1IssuingPersonalizationDesignDeactivatedEvent`, `V1IssuingPersonalizationDesignRejectedEvent`, `V1IssuingPersonalizationDesignUpdatedEvent`, `V1IssuingTokenCreatedEvent`, `V1IssuingTokenUpdatedEvent`, `V1IssuingTransactionCreatedEvent`, `V1IssuingTransactionPurchaseDetailsReceiptUpdatedEvent`, `V1IssuingTransactionUpdatedEvent`, `V1MandateUpdatedEvent`, `V1PaymentIntentAmountCapturableUpdatedEvent`, `V1PaymentIntentCanceledEvent`, `V1PaymentIntentCreatedEvent`, `V1PaymentIntentPartiallyFundedEvent`, `V1PaymentIntentPaymentFailedEvent`, `V1PaymentIntentProcessingEvent`, `V1PaymentIntentRequiresActionEvent`, `V1PaymentIntentSucceededEvent`, `V1PaymentLinkCreatedEvent`, `V1PaymentLinkUpdatedEvent`, `V1PaymentMethodAttachedEvent`, `V1PaymentMethodAutomaticallyUpdatedEvent`, `V1PaymentMethodDetachedEvent`, `V1PaymentMethodUpdatedEvent`, `V1PayoutCanceledEvent`, `V1PayoutCreatedEvent`, `V1PayoutFailedEvent`, `V1PayoutPaidEvent`, `V1PayoutReconciliationCompletedEvent`, `V1PayoutUpdatedEvent`, `V1PersonCreatedEvent`, `V1PersonDeletedEvent`, `V1PersonUpdatedEvent`, `V1PlanCreatedEvent`, `V1PlanDeletedEvent`, `V1PlanUpdatedEvent`, `V1PriceCreatedEvent`, `V1PriceDeletedEvent`, `V1PriceUpdatedEvent`, `V1ProductCreatedEvent`, `V1ProductDeletedEvent`, `V1ProductUpdatedEvent`, `V1PromotionCodeCreatedEvent`, `V1PromotionCodeUpdatedEvent`, `V1QuoteAcceptedEvent`, `V1QuoteCanceledEvent`, `V1QuoteCreatedEvent`, `V1QuoteFinalizedEvent`, `V1RadarEarlyFraudWarningCreatedEvent`, `V1RadarEarlyFraudWarningUpdatedEvent`, `V1RefundCreatedEvent`, `V1RefundFailedEvent`, `V1RefundUpdatedEvent`, `V1ReviewClosedEvent`, `V1ReviewOpenedEvent`, `V1SetupIntentCanceledEvent`, `V1SetupIntentCreatedEvent`, `V1SetupIntentRequiresActionEvent`, `V1SetupIntentSetupFailedEvent`, `V1SetupIntentSucceededEvent`, `V1SigmaScheduledQueryRunCreatedEvent`, `V1SourceCanceledEvent`, `V1SourceChargeableEvent`, `V1SourceFailedEvent`, `V1SourceRefundAttributesRequiredEvent`, `V1SubscriptionScheduleAbortedEvent`, `V1SubscriptionScheduleCanceledEvent`, `V1SubscriptionScheduleCompletedEvent`, `V1SubscriptionScheduleCreatedEvent`, `V1SubscriptionScheduleExpiringEvent`, `V1SubscriptionScheduleReleasedEvent`, `V1SubscriptionScheduleUpdatedEvent`, `V1TaxRateCreatedEvent`, `V1TaxRateUpdatedEvent`, `V1TerminalReaderActionFailedEvent`, `V1TerminalReaderActionSucceededEvent`, `V1TerminalReaderActionUpdatedEvent`, `V1TestHelpersTestClockAdvancingEvent`, `V1TestHelpersTestClockCreatedEvent`, `V1TestHelpersTestClockDeletedEvent`, `V1TestHelpersTestClockInternalFailureEvent`, `V1TestHelpersTestClockReadyEvent`, `V1TopupCanceledEvent`, `V1TopupCreatedEvent`, `V1TopupFailedEvent`, `V1TopupReversedEvent`, `V1TopupSucceededEvent`, `V1TransferCreatedEvent`, `V1TransferReversedEvent`, `V1TransferUpdatedEvent`, `V2CoreHealthIssuingAuthorizationRequestErrorsFiringEvent`, and `V2CoreHealthIssuingAuthorizationRequestErrorsResolvedEvent`
+  * Add support for thin event `V2CoreClaimableSandboxCreatedEvent` with related object `V2.Core.ClaimableSandbox`
+  * Add support for thin events `V2MoneyManagementRecipientVerificationCreatedEvent` and `V2MoneyManagementRecipientVerificationUpdatedEvent` with related object `V2.MoneyManagement.RecipientVerification`
+* [#3188](https://github.com/stripe/stripe-dotnet/pull/3188) ParseThinEvent__Experimental is no longer needed
+  * ⚠️ Remove the `StripeClient. ParseThinEvent__Experimental` and `PushedEvent` classes. They've been replaced with `StripeClient.ParseEventNotification` and the *`EventNotification` classes respectively.
+* Remove support for resources `V2.Reporting.ReportRun`, `V2.Reporting.Report`
+* Remove support for thin events `V2ReportingReportRunCreatedEvent`, `V2ReportingReportRunFailedEvent`, `V2ReportingReportRunSucceededEvent`, and `V2ReportingReportRunUpdatedEvent` with related object `V2.Reporting.ReportRun`
 
 ## 49.0.0 - 2025-09-30
 This release changes the pinned API version to `2025-09-30.clover` and contains breaking changes (prefixed with ⚠️ below)

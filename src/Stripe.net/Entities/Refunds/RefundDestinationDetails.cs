@@ -68,6 +68,12 @@ namespace Stripe
 #endif
         public RefundDestinationDetailsCashapp Cashapp { get; set; }
 
+        [JsonProperty("crypto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto")]
+#endif
+        public RefundDestinationDetailsCrypto Crypto { get; set; }
+
         [JsonProperty("customer_cash_balance")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_cash_balance")]
@@ -121,6 +127,12 @@ namespace Stripe
         [STJS.JsonPropertyName("klarna")]
 #endif
         public RefundDestinationDetailsKlarna Klarna { get; set; }
+
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public RefundDestinationDetailsMbWay MbWay { get; set; }
 
         [JsonProperty("multibanco")]
 #if NET6_0_OR_GREATER
@@ -187,6 +199,12 @@ namespace Stripe
         [STJS.JsonPropertyName("th_bank_transfer")]
 #endif
         public RefundDestinationDetailsThBankTransfer ThBankTransfer { get; set; }
+
+        [JsonProperty("twint")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("twint")]
+#endif
+        public RefundDestinationDetailsTwint Twint { get; set; }
 
         /// <summary>
         /// The type of transaction-specific details of the payment method used in the refund (e.g.,

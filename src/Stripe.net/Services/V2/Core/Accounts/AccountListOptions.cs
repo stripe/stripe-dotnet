@@ -12,11 +12,23 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Filter only accounts that have all of the configurations specified. If omitted, returns
         /// all accounts regardless of which configurations they have.
+        /// One of: <c>card_creator</c>, <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or
+        /// <c>storer</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applied_configurations")]
 #endif
         public List<string> AppliedConfigurations { get; set; }
+
+        /// <summary>
+        /// Filter by whether the account is closed. If omitted, returns only Accounts that are not
+        /// closed.
+        /// </summary>
+        [JsonProperty("closed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("closed")]
+#endif
+        public bool? Closed { get; set; }
     }
 }

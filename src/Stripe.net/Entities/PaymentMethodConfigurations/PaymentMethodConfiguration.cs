@@ -12,7 +12,7 @@ namespace Stripe
     /// configurations with different sets of payment methods for different scenarios.
     ///
     /// There are two types of PaymentMethodConfigurations. Which is used depends on the <a
-    /// href="https://stripe.com/docs/connect/charges">charge type</a>:.
+    /// href="https://docs.stripe.com/connect/charges">charge type</a>:.
     ///
     /// <strong>Direct</strong> configurations apply to payments created on your account,
     /// including Connect destination charges, Connect separate charges and transfers, and
@@ -29,11 +29,11 @@ namespace Stripe
     /// in the dashboard</a> and are not available in this API.
     ///
     /// Related guides: - <a
-    /// href="https://stripe.com/docs/connect/payment-method-configurations">Payment Method
+    /// href="https://docs.stripe.com/connect/payment-method-configurations">Payment Method
     /// Configurations API</a> - <a
-    /// href="https://stripe.com/docs/payments/multiple-payment-method-configs">Multiple
+    /// href="https://docs.stripe.com/payments/multiple-payment-method-configs">Multiple
     /// configurations on dynamic payment methods</a> - <a
-    /// href="https://stripe.com/docs/connect/multiple-payment-method-configurations">Multiple
+    /// href="https://docs.stripe.com/connect/multiple-payment-method-configurations">Multiple
     /// configurations for your Connect accounts</a>.
     /// </summary>
     public class PaymentMethodConfiguration : StripeEntity<PaymentMethodConfiguration>, IHasId, IHasObject
@@ -170,6 +170,12 @@ namespace Stripe
 #endif
         public PaymentMethodConfigurationCashapp Cashapp { get; set; }
 
+        [JsonProperty("crypto")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto")]
+#endif
+        public PaymentMethodConfigurationCrypto Crypto { get; set; }
+
         [JsonProperty("customer_balance")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_balance")]
@@ -279,6 +285,12 @@ namespace Stripe
         [STJS.JsonPropertyName("livemode")]
 #endif
         public bool Livemode { get; set; }
+
+        [JsonProperty("mb_way")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mb_way")]
+#endif
+        public PaymentMethodConfigurationMbWay MbWay { get; set; }
 
         [JsonProperty("mobilepay")]
 #if NET6_0_OR_GREATER

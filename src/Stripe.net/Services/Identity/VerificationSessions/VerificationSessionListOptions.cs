@@ -31,12 +31,18 @@ namespace Stripe.Identity
 #endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
+        /// <summary>
+        /// Customer ID.
+        /// </summary>
         [JsonProperty("related_customer")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_customer")]
 #endif
         public string RelatedCustomer { get; set; }
 
+        /// <summary>
+        /// The ID of the Account representing a customer.
+        /// </summary>
         [JsonProperty("related_customer_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_customer_account")]
@@ -45,7 +51,7 @@ namespace Stripe.Identity
 
         /// <summary>
         /// Only return VerificationSessions with this status. <a
-        /// href="https://stripe.com/docs/identity/how-sessions-work">Learn more about the lifecycle
+        /// href="https://docs.stripe.com/identity/how-sessions-work">Learn more about the lifecycle
         /// of sessions</a>.
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_input</c>, or <c>verified</c>.
         /// </summary>

@@ -10,14 +10,19 @@ namespace Stripe
     public class AccountDocumentsProofOfRegistrationOptions : INestedOptions
     {
         /// <summary>
-        /// One or more document ids returned by a <a
-        /// href="https://stripe.com/docs/api#create_file">file upload</a> with a <c>purpose</c>
-        /// value of <c>account_requirement</c>.
+        /// One or more document ids returned by a <a href="https://api.stripe.com#create_file">file
+        /// upload</a> with a <c>purpose</c> value of <c>account_requirement</c>.
         /// </summary>
         [JsonProperty("files")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("files")]
 #endif
         public List<string> Files { get; set; }
+
+        [JsonProperty("signer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("signer")]
+#endif
+        public AccountDocumentsProofOfRegistrationSignerOptions Signer { get; set; }
     }
 }

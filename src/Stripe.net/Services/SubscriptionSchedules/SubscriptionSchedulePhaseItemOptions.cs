@@ -29,7 +29,7 @@ namespace Stripe
         public List<SubscriptionSchedulePhaseItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to a configuration item. Metadata on a configuration item will update the
         /// underlying subscription item's <c>metadata</c> when the phase is entered, adding new
         /// keys and replacing existing keys. Individual keys in the subscription item's
@@ -64,7 +64,7 @@ namespace Stripe
         public string Price { get; set; }
 
         /// <summary>
-        /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
         /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
@@ -84,9 +84,9 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         /// <summary>
-        /// A list of <a href="https://stripe.com/docs/api/tax_rates">Tax Rate</a> ids. These Tax
+        /// A list of <a href="https://docs.stripe.com/api/tax_rates">Tax Rate</a> ids. These Tax
         /// Rates will override the <a
-        /// href="https://stripe.com/docs/api/subscriptions/create#create_subscription-default_tax_rates"><c>default_tax_rates</c></a>
+        /// href="https://docs.stripe.com/api/subscriptions/create#create_subscription-default_tax_rates"><c>default_tax_rates</c></a>
         /// on the Subscription. When updating, pass an empty string to remove previously-defined
         /// tax rates.
         /// </summary>
@@ -104,5 +104,14 @@ namespace Stripe
         [STJS.JsonPropertyName("trial")]
 #endif
         public SubscriptionSchedulePhaseItemTrialOptions Trial { get; set; }
+
+        /// <summary>
+        /// The ID of the trial offer to apply to the configuration item.
+        /// </summary>
+        [JsonProperty("trial_offer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_offer")]
+#endif
+        public string TrialOffer { get; set; }
     }
 }

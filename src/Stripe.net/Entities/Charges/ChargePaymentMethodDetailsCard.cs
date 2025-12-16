@@ -37,6 +37,12 @@ namespace Stripe
 #endif
         public string AuthorizationCode { get; set; }
 
+        [JsonProperty("benefits")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("benefits")]
+#endif
+        public ChargePaymentMethodDetailsCardBenefits Benefits { get; set; }
+
         /// <summary>
         /// Card brand. Can be <c>amex</c>, <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>,
         /// <c>eftpos_au</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>,
@@ -164,7 +170,7 @@ namespace Stripe
         /// Installment details for this payment.
         ///
         /// For more information, see the <a
-        /// href="https://stripe.com/docs/payments/installments">installments integration guide</a>.
+        /// href="https://docs.stripe.com/payments/installments">installments integration guide</a>.
         /// </summary>
         [JsonProperty("installments")]
 #if NET6_0_OR_GREATER

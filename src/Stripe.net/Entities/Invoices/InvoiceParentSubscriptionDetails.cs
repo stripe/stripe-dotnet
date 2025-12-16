@@ -15,7 +15,7 @@ namespace Stripe
     public class InvoiceParentSubscriptionDetails : StripeEntity<InvoiceParentSubscriptionDetails>, IHasMetadata
     {
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> defined as
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> defined as
         /// subscription metadata when an invoice is created. Becomes an immutable snapshot of the
         /// subscription metadata at the time of invoice finalization. <em>Note: This attribute is
         /// populated only for invoices created on or after June 29, 2023.</em>.
@@ -29,7 +29,7 @@ namespace Stripe
         /// <summary>
         /// If specified, payment collection for this subscription will be paused. Note that the
         /// subscription status will be unchanged and will not be updated to <c>paused</c>. Learn
-        /// more about <a href="https://stripe.com/docs/billing/subscriptions/pause-payment">pausing
+        /// more about <a href="https://docs.stripe.com/billing/subscriptions/pause-payment">pausing
         /// collection</a>.
         /// </summary>
         [JsonProperty("pause_collection")]

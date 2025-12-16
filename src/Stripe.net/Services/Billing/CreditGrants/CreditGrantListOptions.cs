@@ -18,7 +18,7 @@ namespace Stripe.Billing
         public string Customer { get; set; }
 
         /// <summary>
-        /// Only return credit grants for this account.
+        /// Only return credit grants for this account representing the customer.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER

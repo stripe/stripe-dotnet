@@ -9,9 +9,10 @@ namespace Stripe.V2.Core
     public class AccountDefaultsResponsibilities : StripeEntity<AccountDefaultsResponsibilities>
     {
         /// <summary>
-        /// A value indicating the responsible payer of a bundle of Stripe fees for pricing-control
-        /// eligible products on this Account.
-        /// One of: <c>application</c>, or <c>stripe</c>.
+        /// Indicates whether the platform or connected account is responsible for paying Stripe
+        /// fees for pricing-control-eligible products.
+        /// One of: <c>application</c>, <c>application_custom</c>, <c>application_express</c>, or
+        /// <c>stripe</c>.
         /// </summary>
         [JsonProperty("fees_collector")]
 #if NET6_0_OR_GREATER
@@ -20,8 +21,7 @@ namespace Stripe.V2.Core
         public string FeesCollector { get; set; }
 
         /// <summary>
-        /// A value indicating who is responsible for losses when this Account can’t pay back
-        /// negative balances from payments.
+        /// A value indicating responsibility for collecting requirements on this account.
         /// One of: <c>application</c>, or <c>stripe</c>.
         /// </summary>
         [JsonProperty("losses_collector")]
@@ -29,5 +29,15 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("losses_collector")]
 #endif
         public string LossesCollector { get; set; }
+
+        /// <summary>
+        /// A value indicating responsibility for collecting requirements on this account.
+        /// One of: <c>application</c>, or <c>stripe</c>.
+        /// </summary>
+        [JsonProperty("requirements_collector")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("requirements_collector")]
+#endif
+        public string RequirementsCollector { get; set; }
     }
 }

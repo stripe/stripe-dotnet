@@ -10,7 +10,10 @@ namespace Stripe.BillingPortal
 #endif
 
     /// <summary>
-    /// A portal configuration describes the functionality and behavior of a portal session.
+    /// A portal configuration describes the functionality and behavior you embed in a portal
+    /// session. Related guide: <a
+    /// href="https://stripe.com/customer-management/configure-portal">Configure the customer
+    /// portal</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
@@ -105,7 +108,7 @@ namespace Stripe.BillingPortal
         /// <summary>
         /// The default URL to redirect customers to when they click on the portal's link to return
         /// to your website. This can be <a
-        /// href="https://stripe.com/docs/api/customer_portal/sessions/create#create_portal_session-return_url">overriden</a>
+        /// href="https://docs.stripe.com/api/customer_portal/sessions/create#create_portal_session-return_url">overriden</a>
         /// when creating the session.
         /// </summary>
         [JsonProperty("default_return_url")]
@@ -148,7 +151,7 @@ namespace Stripe.BillingPortal
         public ConfigurationLoginPage LoginPage { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>

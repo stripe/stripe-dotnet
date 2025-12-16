@@ -3,10 +3,14 @@ namespace Stripe.Identity
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
+#if NET6_0_OR_GREATER
+    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
+#endif
     public class VerificationReportDocument : StripeEntity<VerificationReportDocument>
     {
         /// <summary>
@@ -17,6 +21,49 @@ namespace Stripe.Identity
         [STJS.JsonPropertyName("address")]
 #endif
         public Address Address { get; set; }
+
+        #region Expandable BlockedByEntry
+
+        /// <summary>
+        /// (ID of the BlocklistEntry)
+        /// If document was not verified due to extracted data being on the blocklist, this is the
+        /// token of the BlocklistEntry that blocked it.
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public string BlockedByEntryId
+        {
+            get => this.InternalBlockedByEntry?.Id;
+            set => this.InternalBlockedByEntry = SetExpandableFieldId(value, this.InternalBlockedByEntry);
+        }
+
+        /// <summary>
+        /// (Expanded)
+        /// If document was not verified due to extracted data being on the blocklist, this is the
+        /// token of the BlocklistEntry that blocked it.
+        ///
+        /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
+        /// </summary>
+        [JsonIgnore]
+#if NET6_0_OR_GREATER
+        [STJS.JsonIgnore]
+#endif
+        public BlocklistEntry BlockedByEntry
+        {
+            get => this.InternalBlockedByEntry?.ExpandedObject;
+            set => this.InternalBlockedByEntry = SetExpandableFieldObject(value, this.InternalBlockedByEntry);
+        }
+
+        [JsonProperty("blocked_by_entry")]
+        [JsonConverter(typeof(ExpandableFieldConverter<BlocklistEntry>))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("blocked_by_entry")]
+        [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BlocklistEntry>))]
+#endif
+        internal ExpandableField<BlocklistEntry> InternalBlockedByEntry { get; set; }
+        #endregion
 
         /// <summary>
         /// Date of birth as it appears in the document.
@@ -46,7 +93,7 @@ namespace Stripe.Identity
         public VerificationReportDocumentExpirationDate ExpirationDate { get; set; }
 
         /// <summary>
-        /// Array of <a href="https://stripe.com/docs/api/files">File</a> ids containing images for
+        /// Array of <a href="https://docs.stripe.com/api/files">File</a> ids containing images for
         /// this document.
         /// </summary>
         [JsonProperty("files")]

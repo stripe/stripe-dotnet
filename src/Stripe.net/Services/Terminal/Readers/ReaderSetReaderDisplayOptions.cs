@@ -9,7 +9,8 @@ namespace Stripe.Terminal
     public class ReaderSetReaderDisplayOptions : BaseOptions
     {
         /// <summary>
-        /// Cart.
+        /// Cart details to display on the reader screen, including line items, amounts, and
+        /// currency.
         /// </summary>
         [JsonProperty("cart")]
 #if NET6_0_OR_GREATER
@@ -18,7 +19,7 @@ namespace Stripe.Terminal
         public ReaderCartOptions Cart { get; set; }
 
         /// <summary>
-        /// Type.
+        /// Type of information to display. Only <c>cart</c> is currently supported.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

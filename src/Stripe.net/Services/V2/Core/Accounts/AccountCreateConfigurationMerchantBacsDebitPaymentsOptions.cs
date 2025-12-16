@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountCreateConfigurationMerchantBacsDebitPaymentsOptions : INestedOptions
     {
         /// <summary>
-        /// Display name for Bacs debit payments.
+        /// Display name for Bacs Direct Debit payments.
         /// </summary>
         [JsonProperty("display_name")]
 #if NET6_0_OR_GREATER

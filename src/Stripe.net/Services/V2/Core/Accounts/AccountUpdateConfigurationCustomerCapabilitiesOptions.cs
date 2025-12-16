@@ -11,8 +11,7 @@ namespace Stripe.V2.Core
         /// <summary>
         /// Generates requirements for enabling automatic indirect tax calculation on this
         /// customer's invoices or subscriptions. Recommended to request this capability if planning
-        /// to enable automatic tax calculation on this customer's invoices or subscriptions. Uses
-        /// the <c>location_source</c> field.
+        /// to enable automatic tax calculation on this customer's invoices or subscriptions.
         /// </summary>
         [JsonProperty("automatic_indirect_tax")]
 #if NET6_0_OR_GREATER

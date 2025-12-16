@@ -58,7 +58,7 @@ namespace Stripe.TestHelpers.Treasury
         /// <summary>
         /// Specifies the network rails to be used. If not set, will default to the PaymentMethod's
         /// preferred network. See the <a
-        /// href="https://stripe.com/docs/treasury/money-movement/timelines">docs</a> to learn more
+        /// href="https://docs.stripe.com/treasury/money-movement/timelines">docs</a> to learn more
         /// about money movement timelines for each network type.
         /// </summary>
         [JsonProperty("network")]

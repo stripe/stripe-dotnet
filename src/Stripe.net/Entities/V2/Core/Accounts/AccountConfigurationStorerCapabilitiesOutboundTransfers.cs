@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountConfigurationStorerCapabilitiesOutboundTransfers : StripeEntity<AccountConfigurationStorerCapabilitiesOutboundTransfers>
     {
         /// <summary>
-        /// Can send funds from a FinancialAccount, to a bank account, owned by yourself.
+        /// Can send funds from a FinancialAccount to a bank account belonging to the same user.
         /// </summary>
         [JsonProperty("bank_accounts")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,17 @@ namespace Stripe.V2.Core
         public AccountConfigurationStorerCapabilitiesOutboundTransfersBankAccounts BankAccounts { get; set; }
 
         /// <summary>
-        /// Can send funds from a FinancialAccount to another FinancialAccount, owned by yourself.
+        /// Can send funds from a FinancialAccount to a crypto wallet belonging to the same user.
+        /// </summary>
+        [JsonProperty("crypto_wallets")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("crypto_wallets")]
+#endif
+        public AccountConfigurationStorerCapabilitiesOutboundTransfersCryptoWallets CryptoWallets { get; set; }
+
+        /// <summary>
+        /// Can send funds from a FinancialAccount to another FinancialAccount belonging to the same
+        /// user.
         /// </summary>
         [JsonProperty("financial_accounts")]
 #if NET6_0_OR_GREATER

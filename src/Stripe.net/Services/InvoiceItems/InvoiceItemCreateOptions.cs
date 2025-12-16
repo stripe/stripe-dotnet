@@ -32,7 +32,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
-        /// The ID of the customer who will be billed when this invoice item is billed.
+        /// The ID of the customer to bill for this invoice item.
         /// </summary>
         [JsonProperty("customer")]
 #if NET6_0_OR_GREATER
@@ -41,7 +41,7 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// The ID of the account who will be billed when this invoice item is billed.
+        /// The ID of the account representing the customer to bill for this invoice item.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
@@ -104,7 +104,7 @@ namespace Stripe
         public List<string> Margins { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -118,9 +118,9 @@ namespace Stripe
         /// <summary>
         /// The period associated with this invoice item. When set to different values, the period
         /// will be rendered on the invoice. If you have <a
-        /// href="https://stripe.com/docs/revenue-recognition">Stripe Revenue Recognition</a>
+        /// href="https://docs.stripe.com/revenue-recognition">Stripe Revenue Recognition</a>
         /// enabled, the period will be used to recognize and defer revenue. See the <a
-        /// href="https://stripe.com/docs/revenue-recognition/methodology/subscriptions-and-invoicing">Revenue
+        /// href="https://docs.stripe.com/revenue-recognition/methodology/subscriptions-and-invoicing">Revenue
         /// Recognition documentation</a> for details.
         /// </summary>
         [JsonProperty("period")]
@@ -130,7 +130,7 @@ namespace Stripe
         public InvoiceItemPeriodOptions Period { get; set; }
 
         /// <summary>
-        /// Data used to generate a new <a href="https://stripe.com/docs/api/prices">Price</a>
+        /// Data used to generate a new <a href="https://docs.stripe.com/api/prices">Price</a>
         /// object inline.
         /// </summary>
         [JsonProperty("price_data")]
@@ -172,7 +172,7 @@ namespace Stripe
 
         /// <summary>
         /// Only required if a <a
-        /// href="https://stripe.com/docs/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)">default
+        /// href="https://docs.stripe.com/tax/products-prices-tax-categories-tax-behavior#setting-a-default-tax-behavior-(recommended)">default
         /// tax behavior</a> was not provided in the Stripe Tax settings. Specifies whether the
         /// price is considered inclusive of taxes or exclusive of taxes. One of <c>inclusive</c>,
         /// <c>exclusive</c>, or <c>unspecified</c>. Once specified as either <c>inclusive</c> or
@@ -186,7 +186,7 @@ namespace Stripe
         public string TaxBehavior { get; set; }
 
         /// <summary>
-        /// A <a href="https://stripe.com/docs/tax/tax-categories">tax code</a> ID.
+        /// A <a href="https://docs.stripe.com/tax/tax-categories">tax code</a> ID.
         /// </summary>
         [JsonProperty("tax_code")]
 #if NET6_0_OR_GREATER

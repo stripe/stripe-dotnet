@@ -39,7 +39,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public ReceivedCreditAmount Amount { get; set; }
 
         /// <summary>
         /// This object stores details about the originating Stripe transaction that resulted in the
@@ -79,6 +79,15 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("description")]
 #endif
         public string Description { get; set; }
+
+        /// <summary>
+        /// The amount and currency of the original/external credit request.
+        /// </summary>
+        [JsonProperty("external_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_amount")]
+#endif
+        public ReceivedCreditExternalAmount ExternalAmount { get; set; }
 
         /// <summary>
         /// Financial Account ID on which funds for ReceivedCredit were received.
@@ -140,8 +149,19 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedCreditStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
+        /// This object stores details about the stripe balance pay refund that resulted in the
+        /// ReceivedCredit. Present if <c>type</c> field value is <c>stripe_balance_payment</c>.
+        /// </summary>
+        [JsonProperty("stripe_balance_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_balance_payment")]
+#endif
+        public ReceivedCreditStripeBalancePayment StripeBalancePayment { get; set; }
+
+        /// <summary>
         /// Open Enum. The type of flow that caused the ReceivedCredit.
-        /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, or <c>external_credit</c>.
+        /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>external_credit</c>, or
+        /// <c>stripe_balance_payment</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

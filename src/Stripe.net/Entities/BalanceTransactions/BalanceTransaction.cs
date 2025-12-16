@@ -14,7 +14,7 @@ namespace Stripe
     /// them for every type of transaction that enters or leaves your Stripe account balance.
     ///
     /// Related guide: <a
-    /// href="https://stripe.com/docs/reports/balance-transaction-types">Balance transaction
+    /// href="https://docs.stripe.com/reports/balance-transaction-types">Balance transaction
     /// types</a>.
     /// </summary>
 #if NET6_0_OR_GREATER
@@ -64,7 +64,8 @@ namespace Stripe
 
         /// <summary>
         /// The balance that this transaction impacts.
-        /// One of: <c>issuing</c>, <c>payments</c>, or <c>refund_and_dispute_prefunding</c>.
+        /// One of: <c>issuing</c>, <c>payments</c>, <c>refund_and_dispute_prefunding</c>, or
+        /// <c>transit</c>.
         /// </summary>
         [JsonProperty("balance_type")]
 #if NET6_0_OR_GREATER

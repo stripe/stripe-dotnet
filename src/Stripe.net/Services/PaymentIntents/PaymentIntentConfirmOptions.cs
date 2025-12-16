@@ -10,6 +10,15 @@ namespace Stripe
     public class PaymentIntentConfirmOptions : BaseOptions
     {
         /// <summary>
+        /// Allocated Funds configuration for this PaymentIntent.
+        /// </summary>
+        [JsonProperty("allocated_funds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allocated_funds")]
+#endif
+        public PaymentIntentAllocatedFundsOptions AllocatedFunds { get; set; }
+
+        /// <summary>
         /// Provides industry-specific information about the amount.
         /// </summary>
         [JsonProperty("amount_details")]
@@ -23,7 +32,7 @@ namespace Stripe
         /// payment and transferred to the application owner's Stripe account. The amount of the
         /// application fee collected will be capped at the total amount captured. For more
         /// information, see the PaymentIntents <a
-        /// href="https://stripe.com/docs/payments/connected-accounts">use case for connected
+        /// href="https://docs.stripe.com/payments/connected-accounts">use case for connected
         /// accounts</a>.
         /// </summary>
         [JsonProperty("application_fee_amount")]
@@ -65,7 +74,7 @@ namespace Stripe
         /// Set to <c>true</c> to fail the payment attempt if the PaymentIntent transitions into
         /// <c>requires_action</c>. This parameter is intended for simpler integrations that do not
         /// handle customer actions, like <a
-        /// href="https://stripe.com/docs/payments/save-card-without-authentication">saving cards
+        /// href="https://docs.stripe.com/payments/save-card-without-authentication">saving cards
         /// without authentication</a>.
         /// </summary>
         [JsonProperty("error_on_requires_action")]
@@ -133,7 +142,7 @@ namespace Stripe
         /// Set to <c>true</c> to indicate that the customer isn't in your checkout flow during this
         /// payment attempt and can't authenticate. Use this parameter in scenarios where you
         /// collect card details and <a
-        /// href="https://stripe.com/docs/payments/cards/charging-saved-cards">charge them
+        /// href="https://docs.stripe.com/payments/cards/charging-saved-cards">charge them
         /// later</a>.
         /// </summary>
         [JsonProperty("off_session")]
@@ -153,11 +162,11 @@ namespace Stripe
 
         /// <summary>
         /// ID of the payment method (a PaymentMethod, Card, or <a
-        /// href="https://stripe.com/docs/payments/payment-methods/transitioning#compatibility">compatible
+        /// href="https://docs.stripe.com/payments/payment-methods/transitioning#compatibility">compatible
         /// Source</a> object) to attach to this PaymentIntent. If the payment method is attached to
         /// a Customer, it must match the <a
-        /// href="https://stripe.com/docs/api#create_payment_intent-customer">customer</a> that is
-        /// set on this PaymentIntent.
+        /// href="https://api.stripe.com#create_payment_intent-customer">customer</a> that is set on
+        /// this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method")]
 #if NET6_0_OR_GREATER
@@ -168,7 +177,7 @@ namespace Stripe
         /// <summary>
         /// If provided, this hash will be used to create a PaymentMethod. The new PaymentMethod
         /// will appear in the <a
-        /// href="https://stripe.com/docs/api/payment_intents/object#payment_intent_object-payment_method">payment_method</a>
+        /// href="https://docs.stripe.com/api/payment_intents/object#payment_intent_object-payment_method">payment_method</a>
         /// property on the PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_data")]
@@ -201,7 +210,7 @@ namespace Stripe
 
         /// <summary>
         /// Options to configure Radar. Learn more about <a
-        /// href="https://stripe.com/docs/radar/radar-session">Radar Sessions</a>.
+        /// href="https://docs.stripe.com/radar/radar-session">Radar Sessions</a>.
         /// </summary>
         [JsonProperty("radar_options")]
 #if NET6_0_OR_GREATER
@@ -263,6 +272,15 @@ namespace Stripe
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
         public string SetupFutureUsage { get; set; }
+
+        /// <summary>
+        /// ID of the SharedPaymentToken used to confirm this PaymentIntent.
+        /// </summary>
+        [JsonProperty("shared_payment_granted_token")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shared_payment_granted_token")]
+#endif
+        public string SharedPaymentGrantedToken { get; set; }
 
         /// <summary>
         /// Shipping information for this PaymentIntent.

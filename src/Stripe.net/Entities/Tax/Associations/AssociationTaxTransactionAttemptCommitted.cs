@@ -9,7 +9,7 @@ namespace Stripe.Tax
     public class AssociationTaxTransactionAttemptCommitted : StripeEntity<AssociationTaxTransactionAttemptCommitted>
     {
         /// <summary>
-        /// The <a href="https://stripe.com/docs/api/tax/transaction/object">Tax Transaction</a>.
+        /// The <a href="https://docs.stripe.com/api/tax/transaction/object">Tax Transaction</a>.
         /// </summary>
         [JsonProperty("transaction")]
 #if NET6_0_OR_GREATER

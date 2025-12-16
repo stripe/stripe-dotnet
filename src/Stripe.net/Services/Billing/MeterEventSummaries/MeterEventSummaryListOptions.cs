@@ -2,6 +2,7 @@
 namespace Stripe.Billing
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
@@ -18,6 +19,26 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("customer")]
 #endif
         public string Customer { get; set; }
+
+        /// <summary>
+        /// Key-value pairs used to filter meter events by dimension values. If specified, event
+        /// summaries will be generated with only matching meter events.
+        /// </summary>
+        [JsonProperty("dimension_filters")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("dimension_filters")]
+#endif
+        public Dictionary<string, string> DimensionFilters { get; set; }
+
+        /// <summary>
+        /// List of dimension payload keys to group by. If specified, event summaries will be
+        /// grouped by the given dimension payload key values.
+        /// </summary>
+        [JsonProperty("dimension_group_by_keys")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("dimension_group_by_keys")]
+#endif
+        public List<string> DimensionGroupByKeys { get; set; }
 
         /// <summary>
         /// The timestamp from when to stop aggregating meter events (exclusive). Must be aligned

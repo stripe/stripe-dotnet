@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountConfigurationMerchantBacsDebitPayments : StripeEntity<AccountConfigurationMerchantBacsDebitPayments>
     {
         /// <summary>
-        /// Display name for Bacs debit payments.
+        /// Display name for Bacs Direct Debit payments.
         /// </summary>
         [JsonProperty("display_name")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,7 @@ namespace Stripe.V2.Core
         public string DisplayName { get; set; }
 
         /// <summary>
-        /// Service user number for Bacs debit payments.
+        /// Service User Number (SUN) for Bacs Direct Debit payments.
         /// </summary>
         [JsonProperty("service_user_number")]
 #if NET6_0_OR_GREATER

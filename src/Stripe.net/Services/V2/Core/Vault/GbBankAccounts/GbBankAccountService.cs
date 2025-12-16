@@ -2,6 +2,7 @@
 namespace Stripe.V2.Core.Vault
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -113,6 +114,42 @@ namespace Stripe.V2.Core.Vault
         public virtual Task<GbBankAccount> InitiateConfirmationOfPayeeAsync(string id, GbBankAccountInitiateConfirmationOfPayeeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<GbBankAccount>(BaseAddress.Api, HttpMethod.Post, $"/v2/core/vault/gb_bank_accounts/{WebUtility.UrlEncode(id)}/initiate_confirmation_of_payee", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// List objects that can be used as destinations for outbound money movement via
+        /// OutboundPayment.
+        /// </summary>
+        public virtual V2.StripeList<GbBankAccount> List(GbBankAccountListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<V2.StripeList<GbBankAccount>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/vault/gb_bank_accounts", options, requestOptions);
+        }
+
+        /// <summary>
+        /// List objects that can be used as destinations for outbound money movement via
+        /// OutboundPayment.
+        /// </summary>
+        public virtual Task<V2.StripeList<GbBankAccount>> ListAsync(GbBankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<V2.StripeList<GbBankAccount>>(BaseAddress.Api, HttpMethod.Get, $"/v2/core/vault/gb_bank_accounts", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// List objects that can be used as destinations for outbound money movement via
+        /// OutboundPayment.
+        /// </summary>
+        public virtual IEnumerable<GbBankAccount> ListAutoPaging(GbBankAccountListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<GbBankAccount>($"/v2/core/vault/gb_bank_accounts", options, requestOptions);
+        }
+
+        /// <summary>
+        /// List objects that can be used as destinations for outbound money movement via
+        /// OutboundPayment.
+        /// </summary>
+        public virtual IAsyncEnumerable<GbBankAccount> ListAutoPagingAsync(GbBankAccountListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<GbBankAccount>($"/v2/core/vault/gb_bank_accounts", options, requestOptions, cancellationToken);
         }
     }
 }

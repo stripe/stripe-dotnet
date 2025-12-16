@@ -20,7 +20,7 @@ namespace Stripe
 
         /// <summary>
         /// The identifier of the billing cadence for which you’d like to retrieve the upcoming
-        /// invoice.Cannot be provided when <c>subscription</c>, <c>schedule</c>,
+        /// invoice. Cannot be provided when <c>subscription</c>, <c>schedule</c>,
         /// <c>subscription_details</c> or <c>schedule_details</c> are provided.
         /// </summary>
         [JsonProperty("billing_cadence")]
@@ -40,7 +40,7 @@ namespace Stripe
         public string Currency { get; set; }
 
         /// <summary>
-        /// The identifier of the customer whose upcoming invoice you'd like to retrieve. If
+        /// The identifier of the customer whose upcoming invoice you're retrieving. If
         /// <c>automatic_tax</c> is enabled then one of <c>customer</c>, <c>customer_details</c>,
         /// <c>subscription</c>, or <c>schedule</c> must be set.
         /// </summary>
@@ -51,9 +51,10 @@ namespace Stripe
         public string Customer { get; set; }
 
         /// <summary>
-        /// The identifier of the account whose upcoming invoice you'd like to retrieve. If
-        /// <c>automatic_tax</c> is enabled then one of <c>customer</c>, <c>customer_account</c>,
-        /// <c>customer_details</c>, <c>subscription</c>, or <c>schedule</c> must be set.
+        /// The identifier of the account representing the customer whose upcoming invoice you're
+        /// retrieving. If <c>automatic_tax</c> is enabled then one of <c>customer</c>,
+        /// <c>customer_account</c>, <c>customer_details</c>, <c>subscription</c>, or
+        /// <c>schedule</c> must be set.
         /// </summary>
         [JsonProperty("customer_account")]
 #if NET6_0_OR_GREATER
@@ -106,7 +107,7 @@ namespace Stripe
         /// <summary>
         /// The account (if any) for which the funds of the invoice payment are intended. If set,
         /// the invoice will be presented with the branding and support information of the specified
-        /// account. See the <a href="https://stripe.com/docs/billing/invoices/connect">Invoices
+        /// account. See the <a href="https://docs.stripe.com/billing/invoices/connect">Invoices
         /// with Connect</a> documentation for details.
         /// </summary>
         [JsonProperty("on_behalf_of")]

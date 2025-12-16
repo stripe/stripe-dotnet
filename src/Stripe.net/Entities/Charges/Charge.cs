@@ -12,7 +12,7 @@ namespace Stripe
     /// <summary>
     /// The <c>Charge</c> object represents a single attempt to move money into your Stripe
     /// account. PaymentIntent confirmation is the most common way to create Charges, but <a
-    /// href="https://stripe.com/docs/connect/account-debits">Account Debits</a> may also create
+    /// href="https://docs.stripe.com/connect/account-debits">Account Debits</a> may also create
     /// Charges. Some legacy payment flows create Charges directly, which is not recommended for
     /// new integrations.
     /// </summary>
@@ -40,11 +40,20 @@ namespace Stripe
         public string Object { get; set; }
 
         /// <summary>
+        /// Funds that are in transit and destined for another balance or another connected account.
+        /// </summary>
+        [JsonProperty("allocated_funds")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("allocated_funds")]
+#endif
+        public TransitBalance AllocatedFunds { get; set; }
+
+        /// <summary>
         /// Amount intended to be collected by this payment. A positive integer representing how
-        /// much to charge in the <a href="https://stripe.com/docs/currencies#zero-decimal">smallest
+        /// much to charge in the <a href="https://docs.stripe.com/currencies#zero-decimal">smallest
         /// currency unit</a> (e.g., 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal
         /// currency). The minimum amount is $0.50 US or <a
-        /// href="https://stripe.com/docs/currencies#minimum-and-maximum-charge-amounts">equivalent
+        /// href="https://docs.stripe.com/currencies#minimum-and-maximum-charge-amounts">equivalent
         /// in charge currency</a>. The amount value supports up to eight digits (e.g., a value of
         /// 99999999 for a USD charge of $999,999.99).
         /// </summary>
@@ -120,7 +129,7 @@ namespace Stripe
         /// <summary>
         /// (ID of the ApplicationFee)
         /// The application fee (if any) for the charge. <a
-        /// href="https://stripe.com/docs/connect/direct-charges#collect-fees">See the Connect
+        /// href="https://docs.stripe.com/connect/direct-charges#collect-fees">See the Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonIgnore]
@@ -136,7 +145,7 @@ namespace Stripe
         /// <summary>
         /// (Expanded)
         /// The application fee (if any) for the charge. <a
-        /// href="https://stripe.com/docs/connect/direct-charges#collect-fees">See the Connect
+        /// href="https://docs.stripe.com/connect/direct-charges#collect-fees">See the Connect
         /// documentation</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -162,7 +171,7 @@ namespace Stripe
 
         /// <summary>
         /// The amount of the application fee (if any) requested for the charge. <a
-        /// href="https://stripe.com/docs/connect/direct-charges#collect-fees">See the Connect
+        /// href="https://docs.stripe.com/connect/direct-charges#collect-fees">See the Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("application_fee_amount")]
@@ -377,7 +386,7 @@ namespace Stripe
 
         /// <summary>
         /// Error code explaining reason for charge failure if available (see <a
-        /// href="https://stripe.com/docs/error-codes">the errors section</a> for a list of codes).
+        /// href="https://docs.stripe.com/error-codes">the errors section</a> for a list of codes).
         /// </summary>
         [JsonProperty("failure_code")]
 #if NET6_0_OR_GREATER
@@ -420,7 +429,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -436,7 +445,7 @@ namespace Stripe
         /// (ID of the Account)
         /// The account (if any) the charge was made on behalf of without triggering an automatic
         /// transfer. See the <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">Connect
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers">Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonIgnore]
@@ -453,7 +462,7 @@ namespace Stripe
         /// (Expanded)
         /// The account (if any) the charge was made on behalf of without triggering an automatic
         /// transfer. See the <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers">Connect
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers">Connect
         /// documentation</a> for details.
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
@@ -479,7 +488,7 @@ namespace Stripe
 
         /// <summary>
         /// Details about whether the payment was accepted, and why. See <a
-        /// href="https://stripe.com/docs/declines">understanding declines</a> for details.
+        /// href="https://docs.stripe.com/declines">understanding declines</a> for details.
         /// </summary>
         [JsonProperty("outcome")]
 #if NET6_0_OR_GREATER
@@ -563,7 +572,7 @@ namespace Stripe
 
         /// <summary>
         /// Options to configure Radar. See <a
-        /// href="https://stripe.com/docs/radar/radar-session">Radar Session</a> for more
+        /// href="https://docs.stripe.com/radar/radar-session">Radar Session</a> for more
         /// information.
         /// </summary>
         [JsonProperty("radar_options")]
@@ -812,7 +821,7 @@ namespace Stripe
 
         /// <summary>
         /// An optional dictionary including the account to automatically transfer to as part of a
-        /// destination charge. <a href="https://stripe.com/docs/connect/destination-charges">See
+        /// destination charge. <a href="https://docs.stripe.com/connect/destination-charges">See
         /// the Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_data")]
@@ -823,7 +832,7 @@ namespace Stripe
 
         /// <summary>
         /// A string that identifies this transaction as part of a group. See the <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Connect
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]

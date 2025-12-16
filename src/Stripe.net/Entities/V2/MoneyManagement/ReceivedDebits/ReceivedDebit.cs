@@ -38,7 +38,17 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public ReceivedDebitAmount Amount { get; set; }
+
+        /// <summary>
+        /// This object stores details about the balance transfer object that resulted in the
+        /// ReceivedDebit.
+        /// </summary>
+        [JsonProperty("balance_transfer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("balance_transfer")]
+#endif
+        public ReceivedDebitBalanceTransfer BalanceTransfer { get; set; }
 
         /// <summary>
         /// This object stores details about the originating banking transaction that resulted in
@@ -68,6 +78,15 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("description")]
 #endif
         public string Description { get; set; }
+
+        /// <summary>
+        /// The amount and currency of the original/external debit request.
+        /// </summary>
+        [JsonProperty("external_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_amount")]
+#endif
+        public ReceivedDebitExternalAmount ExternalAmount { get; set; }
 
         /// <summary>
         /// Financial Account on which funds for ReceivedDebit were debited.
@@ -127,8 +146,19 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedDebitStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
-        /// Open Enum. The type of the ReceivedDebit.
-        /// One of: <c>bank_transfer</c>, or <c>external_debit</c>.
+        /// This object stores details about the Stripe Balance Payment that resulted in the
+        /// ReceivedDebit.
+        /// </summary>
+        [JsonProperty("stripe_balance_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_balance_payment")]
+#endif
+        public ReceivedDebitStripeBalancePayment StripeBalancePayment { get; set; }
+
+        /// <summary>
+        /// Open enum, the type of the received debit.
+        /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>external_debit</c>, or
+        /// <c>stripe_balance_payment</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

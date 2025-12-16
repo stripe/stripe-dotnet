@@ -14,7 +14,7 @@ namespace Stripe
         /// transferred.
         ///
         /// If you intend to collect a fee and you need a more robust reporting experience, using <a
-        /// href="https://stripe.com/docs/api/payment_intents/create#create_payment_intent-application_fee_amount">application_fee_amount</a>
+        /// href="https://docs.stripe.com/api/payment_intents/create#create_payment_intent-application_fee_amount">application_fee_amount</a>
         /// might be a better fit for your integration.
         /// </summary>
         [JsonProperty("amount")]

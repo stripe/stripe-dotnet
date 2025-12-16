@@ -16,7 +16,7 @@ namespace Stripe.Issuing
     /// object on a connected account.
     ///
     /// <a
-    /// href="https://stripe.com/docs/issuing/credit/report-credit-decisions-and-manage-aans">Follow
+    /// href="https://docs.stripe.com/issuing/credit/report-credit-decisions-and-manage-aans">Follow
     /// the guide</a> to learn about your requirements as a platform.
     /// </summary>
     public class CreditUnderwritingRecord : StripeEntity<CreditUnderwritingRecord>, IHasId, IHasMetadata, IHasObject
@@ -118,7 +118,7 @@ namespace Stripe.Issuing
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -131,7 +131,7 @@ namespace Stripe.Issuing
         /// <summary>
         /// File containing regulatory reporting data for the decision. Required if you are subject
         /// to this <a
-        /// href="https://stripe.com/docs/issuing/credit/report-required-regulatory-data-for-credit-decisions">reporting
+        /// href="https://docs.stripe.com/issuing/credit/report-required-regulatory-data-for-credit-decisions">reporting
         /// requirement</a>.
         /// </summary>
         [JsonProperty("regulatory_reporting_file")]

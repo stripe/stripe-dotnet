@@ -19,9 +19,8 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Creates an AccountLink object that includes a single-use Stripe URL that the merchant
-        /// can redirect their user to in order to take them to a Stripe-hosted application such as
-        /// Recipient Onboarding.
+        /// Creates an AccountLink object that includes a single-use URL that an account can use to
+        /// access a Stripe-hosted flow for collecting or updating required information.
         /// </summary>
         public virtual AccountLink Create(AccountLinkCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -29,9 +28,8 @@ namespace Stripe.V2.Core
         }
 
         /// <summary>
-        /// Creates an AccountLink object that includes a single-use Stripe URL that the merchant
-        /// can redirect their user to in order to take them to a Stripe-hosted application such as
-        /// Recipient Onboarding.
+        /// Creates an AccountLink object that includes a single-use URL that an account can use to
+        /// access a Stripe-hosted flow for collecting or updating required information.
         /// </summary>
         public virtual Task<AccountLink> CreateAsync(AccountLinkCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

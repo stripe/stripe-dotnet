@@ -9,7 +9,7 @@ namespace Stripe.V2.Core
     public class AccountConfigurationStorerCapabilitiesInboundTransfers : StripeEntity<AccountConfigurationStorerCapabilitiesInboundTransfers>
     {
         /// <summary>
-        /// Can pull funds from an external bank account, owned by yourself, to a FinancialAccount.
+        /// Can pull funds into a FinancialAccount from an external bank account owned by the user.
         /// </summary>
         [JsonProperty("bank_accounts")]
 #if NET6_0_OR_GREATER

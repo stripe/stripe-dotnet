@@ -170,7 +170,7 @@ namespace Stripe
 
         /// <summary>
         /// Information about the <a
-        /// href="https://stripe.com/docs/connect/custom-accounts/future-requirements">upcoming new
+        /// href="https://docs.stripe.com/connect/custom-accounts/future-requirements">upcoming new
         /// requirements for this person</a>, including what information needs to be collected, and
         /// by when.
         /// </summary>
@@ -254,7 +254,7 @@ namespace Stripe
         public string MaidenName { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.
         /// </summary>
@@ -315,6 +315,18 @@ namespace Stripe
         [STJS.JsonPropertyName("requirements")]
 #endif
         public PersonRequirements Requirements { get; set; }
+
+        [JsonProperty("self_reported_income")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_income")]
+#endif
+        public PersonSelfReportedIncome SelfReportedIncome { get; set; }
+
+        [JsonProperty("self_reported_monthly_housing_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("self_reported_monthly_housing_payment")]
+#endif
+        public PersonSelfReportedMonthlyHousingPayment SelfReportedMonthlyHousingPayment { get; set; }
 
         /// <summary>
         /// Whether the last four digits of the person's Social Security number have been provided

@@ -18,6 +18,12 @@ namespace Stripe
 #endif
         public long? Amount { get; set; }
 
+        [JsonProperty("application_fee_amount")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("application_fee_amount")]
+#endif
+        public long? ApplicationFeeAmount { get; set; }
+
         /// <summary>
         /// Three-letter <a href="https://www.iso.org/iso-4217-currency-codes.html">ISO code for
         /// currency</a> in lowercase. Must be a <a
@@ -60,7 +66,7 @@ namespace Stripe
         public string FxQuote { get; set; }
 
         /// <summary>
-        /// Set of <a href="https://stripe.com/docs/api/metadata">key-value pairs</a> that you can
+        /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Individual keys can be unset by posting an empty value to
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
@@ -75,7 +81,7 @@ namespace Stripe
         /// You can use this parameter to transfer funds from a charge before they are added to your
         /// available balance. A pending balance will transfer immediately but the funds will not
         /// become available until the original charge becomes available. <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-availability">See
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers#transfer-availability">See
         /// the Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("source_transaction")]
@@ -97,7 +103,7 @@ namespace Stripe
 
         /// <summary>
         /// A string that identifies this transaction as part of a group. See the <a
-        /// href="https://stripe.com/docs/connect/separate-charges-and-transfers#transfer-options">Connect
+        /// href="https://docs.stripe.com/connect/separate-charges-and-transfers#transfer-options">Connect
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]

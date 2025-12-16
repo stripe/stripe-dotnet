@@ -16,6 +16,7 @@ namespace Stripe
         private Issuing.FraudLiabilityDebitService fraudLiabilityDebits;
         private Issuing.PersonalizationDesignService personalizationDesigns;
         private Issuing.PhysicalBundleService physicalBundles;
+        private Issuing.ProgramService programs;
         private Issuing.TokenService tokens;
         private Issuing.TransactionService transactions;
 
@@ -54,6 +55,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual Issuing.PhysicalBundleService PhysicalBundles => this.physicalBundles ??= new Issuing.PhysicalBundleService(
+            this.Requestor);
+
+        public virtual Issuing.ProgramService Programs => this.programs ??= new Issuing.ProgramService(
             this.Requestor);
 
         public virtual Issuing.TokenService Tokens => this.tokens ??= new Issuing.TokenService(

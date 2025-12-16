@@ -16,7 +16,7 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("approved_amount")]
 #endif
-        public V2.Amount ApprovedAmount { get; set; }
+        public V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventDataImpactApprovedAmount ApprovedAmount { get; set; }
 
         /// <summary>
         /// The number of approved requests which are impacted.
@@ -34,7 +34,7 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("declined_amount")]
 #endif
-        public V2.Amount DeclinedAmount { get; set; }
+        public V2CoreHealthIssuingAuthorizationRequestTimeoutFiringEventDataImpactDeclinedAmount DeclinedAmount { get; set; }
 
         /// <summary>
         /// The number of declined requests which are impacted.
