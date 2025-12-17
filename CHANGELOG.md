@@ -31,6 +31,32 @@ This release changes the pinned API version to `2025-12-15.preview`.
   * Add support for error type `ControlledByAlternateResourceException`
   * Remove support for error type `RateLimitException`
 
+## 50.1.0 - 2025-12-16
+This release changes the pinned API version to `2025-12-15.clover`.
+
+* [#3271](https://github.com/stripe/stripe-dotnet/pull/3271) Update generated code
+  * Add support for new resources `V2.Core.AccountLink`, `V2.Core.AccountPersonToken`, `V2.Core.AccountPerson`, `V2.Core.AccountToken`, and `V2.Core.Account`
+  * Add support for `Create` and `Get` methods on resources `V2.Core.AccountPersonToken` and `V2.Core.AccountToken`
+  * Add support for `Create` method on resource `V2.Core.AccountLink`
+  * Add support for `Close`, `Create`, `Get`, `List`, and `Update` methods on resource `V2.Core.Account`
+  * Add support for `Create`, `Delete`, `Get`, `List`, and `Update` methods on resource `V2.Core.AccountPerson`
+  * Add support for `CustomerAccount` on `Billing.CreditBalanceSummaryGetOptions`, `Billing.CreditBalanceSummary`, `Billing.CreditBalanceTransactionListOptions`, `Billing.CreditGrantCreateOptions`, `Billing.CreditGrantListOptions`, `Billing.CreditGrant`, `BillingPortal.SessionCreateOptions`, `BillingPortal.Session`, `CashBalance`, `Checkout.SessionCreateOptions`, `Checkout.SessionListOptions`, `Checkout.Session`, `ConfirmationToken.PaymentMethodPreview`, `CreditNoteListOptions`, `CreditNote`, `CustomerBalanceTransaction`, `CustomerCashBalanceTransaction`, `CustomerSessionCreateOptions`, `CustomerSession`, `Customer`, `Discount`, `FinancialConnections.Account.AccountHolder`, `FinancialConnections.Session.AccountHolder`, `FinancialConnectionsAccountAccountHolderOptions`, `FinancialConnectionsSessionAccountHolderOptions`, `InvoiceCreateOptions`, `InvoiceCreatePreviewOptions`, `InvoiceItemCreateOptions`, `InvoiceItemListOptions`, `InvoiceItem`, `InvoiceListOptions`, `Invoice`, `PaymentIntentCreateOptions`, `PaymentIntentListOptions`, `PaymentIntentUpdateOptions`, `PaymentIntent`, `PaymentMethodAttachOptions`, `PaymentMethodListOptions`, `PaymentMethod`, `PromotionCodeCreateOptions`, `PromotionCodeListOptions`, `PromotionCode`, `QuoteCreateOptions`, `QuoteListOptions`, `QuoteUpdateOptions`, `Quote`, `SetupAttempt`, `SetupIntentCreateOptions`, `SetupIntentListOptions`, `SetupIntentUpdateOptions`, `SetupIntent`, `SubscriptionCreateOptions`, `SubscriptionListOptions`, `SubscriptionScheduleCreateOptions`, `SubscriptionScheduleListOptions`, `SubscriptionSchedule`, `Subscription`, `TaxId.Owner`, `TaxIdOwnerOptions`, and `TaxId`
+  * Add support for `Metadata` on `CheckoutSessionLineItemOptions` and `LineItem`
+  * Add support for `PaytoPayments` on `Account.Capabilities` and `AccountCapabilitiesOptions`
+  * Add support for `Signer` on `AccountDocumentsProofOfRegistrationOptions` and `AccountDocumentsProofOfUltimateBeneficialOwnershipOptions`
+  * Add support for `BillingCycleAnchor` on `BillingPortal.Configuration.Features.SubscriptionUpdate` and `BillingPortalConfigurationFeaturesSubscriptionUpdateOptions`
+  * Add support for `Payto` on `Charge.PaymentMethodDetails`, `Checkout.Session.PaymentMethodOptions`, `CheckoutSessionPaymentMethodOptionsOptions`, `ConfirmationToken.PaymentMethodPreview`, `ConfirmationTokenPaymentMethodDataOptions`, `Invoice.PaymentSettings.PaymentMethodOptions`, `InvoicePaymentSettingsPaymentMethodOptionsOptions`, `Mandate.PaymentMethodDetails`, `PaymentAttemptRecord.PaymentMethodDetails`, `PaymentIntent.PaymentMethodOptions`, `PaymentIntentPaymentMethodDataOptions`, `PaymentIntentPaymentMethodOptionsOptions`, `PaymentMethodConfigurationCreateOptions`, `PaymentMethodConfigurationUpdateOptions`, `PaymentMethodConfiguration`, `PaymentMethodCreateOptions`, `PaymentMethodUpdateOptions`, `PaymentMethod`, `PaymentRecord.PaymentMethodDetails`, `SetupAttempt.PaymentMethodDetails`, `SetupIntent.PaymentMethodOptions`, `SetupIntentPaymentMethodDataOptions`, `SetupIntentPaymentMethodOptionsOptions`, `Subscription.PaymentSettings.PaymentMethodOptions`, and `SubscriptionPaymentSettingsPaymentMethodOptionsOptions`
+  * Add support for `ExpectedDebitDate` on `Charge.PaymentMethodDetails.AcssDebit`, `Charge.PaymentMethodDetails.AuBecsDebit`, `Charge.PaymentMethodDetails.BacsDebit`, `Charge.PaymentMethodDetails.NzBankAccount`, `Charge.PaymentMethodDetails.SepaDebit`, `Charge.PaymentMethodDetails.UsBankAccount`, `PaymentAttemptRecord.PaymentMethodDetails.AcssDebit`, `PaymentAttemptRecord.PaymentMethodDetails.AuBecsDebit`, `PaymentAttemptRecord.PaymentMethodDetails.BacsDebit`, `PaymentAttemptRecord.PaymentMethodDetails.NzBankAccount`, `PaymentAttemptRecord.PaymentMethodDetails.SepaDebit`, `PaymentAttemptRecord.PaymentMethodDetails.UsBankAccount`, `PaymentRecord.PaymentMethodDetails.AcssDebit`, `PaymentRecord.PaymentMethodDetails.AuBecsDebit`, `PaymentRecord.PaymentMethodDetails.BacsDebit`, `PaymentRecord.PaymentMethodDetails.NzBankAccount`, `PaymentRecord.PaymentMethodDetails.SepaDebit`, and `PaymentRecord.PaymentMethodDetails.UsBankAccount`
+  * Add support for `LineItems` on `Checkout.SessionUpdateOptions`
+  * Add support for `Invoice` on `CustomerCustomerBalanceTransactionListOptions`
+  * Add support for `RelatedCustomerAccount` on `Identity.VerificationSessionCreateOptions`, `Identity.VerificationSessionListOptions`, and `Identity.VerificationSession`
+  * Add support for `Subtotal` on `InvoiceLineItem`
+  * Add support for `AuthorizationCode`, `Description`, `Iin`, `Installments`, `Issuer`, `NetworkAdviceCode`, `NetworkDeclineCode`, and `StoredCredentialUsage` on `PaymentAttemptRecord.PaymentMethodDetails.Card` and `PaymentRecord.PaymentMethodDetails.Card`
+  * Add support for `AllowRedisplay` on `PaymentMethodListOptions`
+  * Add support for `ReportedBy` on `PaymentRecord`
+  * Add support for `Changes` on `V2.Core.Event`
+* [#3270](https://github.com/stripe/stripe-dotnet/pull/3270) Make `EventUtility.ComputeSignature` public
+
 ## 50.1.0-beta.1 - 2025-11-18
 This release changes the pinned API version to `2025-11-17.preview`.
 
