@@ -51,7 +51,7 @@ namespace Examples.V2
         {
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
             handler.Handle(json, Request.Headers["Stripe-Signature"]);
-            return null;
+            return Ok();
         }
     }
 }
