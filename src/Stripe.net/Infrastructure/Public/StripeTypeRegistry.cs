@@ -192,6 +192,7 @@ namespace Stripe
                 { "tax.calculation", typeof(Tax.Calculation) },
                 { "tax.calculation_line_item", typeof(Tax.CalculationLineItem) },
                 { "tax.form", typeof(Tax.Form) },
+                { "tax.location", typeof(Tax.Location) },
                 { "tax.registration", typeof(Tax.Registration) },
                 { "tax.settings", typeof(Tax.Settings) },
                 { "tax.transaction", typeof(Tax.Transaction) },

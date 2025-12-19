@@ -71,6 +71,20 @@ namespace Stripe.Tax
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// A tax location for a line item that acts as a performance location. This indicates that
+        /// the line item might be taxed at the place where it is being performed at. This is
+        /// helpful for events or other services being performed at non-customer addresses like
+        /// venues or offices. This can be left empty for tax codes that do not require a tax
+        /// location. For tax codes where the location requirement is "optional", this would
+        /// override the customer address in most use cases.
+        /// </summary>
+        [JsonProperty("performance_location")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("performance_location")]
+#endif
+        public string PerformanceLocation { get; set; }
+
+        /// <summary>
         /// The ID of an existing <a href="https://docs.stripe.com/api/products/object">Product</a>.
         /// </summary>
         [JsonProperty("product")]

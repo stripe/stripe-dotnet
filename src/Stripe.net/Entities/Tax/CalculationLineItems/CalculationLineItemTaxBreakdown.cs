@@ -27,7 +27,7 @@ namespace Stripe.Tax
         /// <summary>
         /// Indicates whether the jurisdiction was determined by the origin (merchant's address) or
         /// destination (customer's address).
-        /// One of: <c>destination</c>, or <c>origin</c>.
+        /// One of: <c>destination</c>, <c>origin</c>, or <c>performance</c>.
         /// </summary>
         [JsonProperty("sourcing")]
 #if NET6_0_OR_GREATER
