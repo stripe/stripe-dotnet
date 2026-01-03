@@ -69,6 +69,7 @@ namespace Stripe.Infrastructure
             private static MethodInfo createGetDelegateMethod = typeof(SerializablePropertyInfo).GetMethod("CreateGetDelegate", BindingFlags.Static | BindingFlags.NonPublic);
             private static MethodInfo createSetDelegateMethod = typeof(SerializablePropertyInfo).GetMethod("CreateSetDelegate", BindingFlags.Static | BindingFlags.NonPublic);
             private static MethodInfo getConverterForTypeMethod = typeof(SerializablePropertyInfo).GetMethod("GetConverterForType", BindingFlags.Static | BindingFlags.NonPublic);
+            private static MethodInfo getConverterFromFactoryMethod = typeof(SerializablePropertyInfo).GetMethod("GetConverterFromFactory", BindingFlags.Static | BindingFlags.NonPublic);
             private static MethodInfo getDefaultConverterMethod = typeof(SerializablePropertyInfo).GetMethod("GetDefaultConverter", BindingFlags.Static | BindingFlags.NonPublic);
 
             private Func<object, object> getDelegate = null;
@@ -102,20 +103,28 @@ namespace Stripe.Infrastructure
             {
                 if (this.getConverter == null)
                 {
-                    var customConverter = default(JsonConverter<object>);
+                    Func<JsonSerializerOptions, JsonConverter<object>> customConverter = null;
                     if (this.CustomConverterType != null)
                     {
-                        // this assumes any property-level JsonConverter attribute
-                        // specifies a JsonConverter<> type and not a JsonConverterFactory
-                        // type
                         var baseType = this.CustomConverterType.BaseType;
-                        var cvtGenericMethod = getConverterForTypeMethod.MakeGenericMethod(baseType, baseType.GenericTypeArguments[0]);
-                        customConverter = (JsonConverter<object>)cvtGenericMethod.Invoke(null, new object[] { this.CustomConverterType });
+                        if (baseType == typeof(JsonConverterFactory))
+                        {
+                            // Handle JsonConverterFactory types (fixes issue #3157)
+                            var cvtGenericMethod = getConverterFromFactoryMethod.MakeGenericMethod(this.PropertyInfo.PropertyType);
+                            customConverter = (Func<JsonSerializerOptions, JsonConverter<object>>)cvtGenericMethod.Invoke(null, new object[] { this.CustomConverterType, this.PropertyInfo.PropertyType });
+                        }
+                        else
+                        {
+                            // Handle regular JsonConverter<T> types
+                            var cvtGenericMethod = getConverterForTypeMethod.MakeGenericMethod(baseType, baseType.GenericTypeArguments[0]);
+                            var converter = (JsonConverter<object>)cvtGenericMethod.Invoke(null, new object[] { this.CustomConverterType });
+                            customConverter = _ => converter;
+                        }
                     }
 
                     var defaultCvtGenericMethod = getDefaultConverterMethod.MakeGenericMethod(this.PropertyInfo.PropertyType);
                     var getDefaultConverter = (Func<JsonSerializerOptions, JsonConverter<object>>)defaultCvtGenericMethod.Invoke(null, new object[] { this.PropertyInfo.PropertyType });
-                    this.getConverter = options => customConverter ?? getDefaultConverter(options);
+                    this.getConverter = opts => customConverter != null ? customConverter(opts) : getDefaultConverter(opts);
                 }
 
                 return this.getConverter(options);
@@ -179,6 +188,20 @@ namespace Stripe.Infrastructure
             private static Func<JsonSerializerOptions, JsonConverter<object>> GetDefaultConverter<TV>(Type t)
             {
                 return options => new JsonConverterAdapter<JsonConverter<TV>, TV>((JsonConverter<TV>)options.GetConverter(t));
+            }
+
+            private static Func<JsonSerializerOptions, JsonConverter<object>> GetConverterFromFactory<TV>(Type factoryType, Type propertyType)
+            {
+                return options =>
+                {
+                    var conv = converterCache.GetOrAdd(propertyType, (key) =>
+                    {
+                        var factory = (JsonConverterFactory)Activator.CreateInstance(factoryType);
+                        return factory.CreateConverter(propertyType, options);
+                    });
+
+                    return new JsonConverterAdapter<JsonConverter<TV>, TV>((JsonConverter<TV>)conv);
+                };
             }
 #pragma warning restore IDE0051 // Remove unused private members
 

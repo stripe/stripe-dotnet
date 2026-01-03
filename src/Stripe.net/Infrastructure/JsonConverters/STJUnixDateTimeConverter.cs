@@ -6,6 +6,66 @@ namespace Stripe.Infrastructure
     using System.Text.Json.Serialization;
 
     /// <summary>
+    /// A JsonConverterFactory that handles both DateTime and DateTime? types.
+    /// This factory creates specialized converters for each type to properly handle
+    /// null values for nullable DateTime properties (fixes issue #3157).
+    /// </summary>
+#pragma warning disable SA1649 // File name should match first type name
+    internal class STJUnixDateTimeConverter : JsonConverterFactory
+#pragma warning restore SA1649 // File name should match first type name
+    {
+        /// <inheritdoc/>
+        public override bool CanConvert(Type typeToConvert)
+        {
+            return typeToConvert == typeof(DateTime) || typeToConvert == typeof(DateTime?);
+        }
+
+        /// <inheritdoc/>
+        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (typeToConvert == typeof(DateTime?))
+            {
+                return new STJUnixNullableDateTimeConverter();
+            }
+
+            return new STJUnixDateTimeConverterImpl();
+        }
+    }
+
+    /// <summary>
+    /// Converter for nullable DateTime? that properly handles null JSON values.
+    /// </summary>
+#pragma warning disable SA1402 // File may only contain a single type
+    internal class STJUnixNullableDateTimeConverter : JsonConverter<DateTime?>
+#pragma warning restore SA1402 // File may only contain a single type
+    {
+        private static readonly STJUnixDateTimeConverterImpl BaseConverter = new STJUnixDateTimeConverterImpl();
+
+        /// <inheritdoc/>
+        public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (reader.TokenType == JsonTokenType.Null)
+            {
+                return null;
+            }
+
+            return BaseConverter.Read(ref reader, typeToConvert, options);
+        }
+
+        /// <inheritdoc/>
+        public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
+        {
+            if (value == null)
+            {
+                writer.WriteNullValue();
+                return;
+            }
+
+            BaseConverter.Write(writer, value.Value, options);
+        }
+    }
+
+    /// <summary>
     /// Converts a <see cref="DateTime"/> to and from Unix epoch time.
     /// </summary>
     /// <remarks>
@@ -13,7 +73,9 @@ namespace Stripe.Infrastructure
     /// Newtonsoft.Json 11.0. Once we bump the minimum version of Newtonsoft.Json to 11.0, we can
     /// start using the provided converter and get rid of this class.
     /// </remarks>
-    internal class STJUnixDateTimeConverter : JsonConverter<DateTime>
+#pragma warning disable SA1402 // File may only contain a single type
+    internal class STJUnixDateTimeConverterImpl : JsonConverter<DateTime>
+#pragma warning restore SA1402 // File may only contain a single type
     {
         /// <summary>
         /// Reads the JSON representation of the object.
@@ -24,7 +86,6 @@ namespace Stripe.Infrastructure
         /// <returns>The object value.</returns>
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
-            bool nullable = IsNullable(typeToConvert);
             long seconds;
 
             if (reader.TokenType == JsonTokenType.Number)
@@ -73,16 +134,7 @@ namespace Stripe.Infrastructure
         /// <param name="options">The calling serializer's options.</param>
         public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
         {
-            long seconds;
-
-            if (value is DateTime dateTime)
-            {
-                seconds = (long)(dateTime.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
-            }
-            else
-            {
-                throw new JsonException("Expected date object value.");
-            }
+            long seconds = (long)(value.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
 
             if (seconds < 0)
             {
@@ -90,21 +142,6 @@ namespace Stripe.Infrastructure
             }
 
             writer.WriteNumberValue(seconds);
-        }
-
-        private static bool IsNullable(Type t)
-        {
-            if (t == null)
-            {
-                throw new ArgumentNullException(nameof(t));
-            }
-
-            if (t.IsValueType)
-            {
-                return t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>);
-            }
-
-            return true;
         }
     }
 }
