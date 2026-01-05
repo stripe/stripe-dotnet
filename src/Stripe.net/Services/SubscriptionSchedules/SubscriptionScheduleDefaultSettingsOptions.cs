@@ -111,12 +111,7 @@ namespace Stripe
         public string OnBehalfOf { get; set; }
 
         /// <summary>
-        /// Configures how the subscription schedule handles billing for phase transitions. Possible
-        /// values are <c>phase_start</c> (default) or <c>billing_period_start</c>.
-        /// <c>phase_start</c> bills based on the current state of the subscription, ignoring
-        /// changes scheduled in future phases. <c>billing_period_start</c> bills predictively for
-        /// upcoming phase transitions within the current billing cycle, including pricing changes
-        /// and service period adjustments that will occur before the next invoice.
+        /// Configures how the subscription schedule handles billing for phase transitions.
         /// One of: <c>billing_period_start</c>, or <c>phase_start</c>.
         /// </summary>
         [JsonProperty("phase_effective_at")]

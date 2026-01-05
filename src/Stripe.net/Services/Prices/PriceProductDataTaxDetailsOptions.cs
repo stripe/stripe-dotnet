@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class ProductTaxDetailsOptions : INestedOptions
+    public class PriceProductDataTaxDetailsOptions : INestedOptions
     {
         /// <summary>
         /// A tax location ID. Depending on the <a
