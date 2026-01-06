@@ -129,6 +129,16 @@ namespace Stripe
         public bool? Deleted { get; set; }
 
         /// <summary>
+        /// A custom identifier for this price, such as a SKU number or product code, that can be
+        /// used to reference records from external systems.
+        /// </summary>
+        [JsonProperty("external_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_reference")]
+#endif
+        public string ExternalReference { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>

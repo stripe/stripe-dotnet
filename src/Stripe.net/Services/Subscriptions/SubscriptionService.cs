@@ -222,6 +222,28 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Pauses a subscription by transitioning it to the paused status. A paused subscription
+        /// does not generate invoices and will not advance to new billing periods. The subscription
+        /// can be resumed later using the resume endpoint. Cannot pause subscriptions with attached
+        /// schedules.</p>.
+        /// </summary>
+        public virtual Subscription Pause(string id, SubscriptionPauseOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/pause", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Pauses a subscription by transitioning it to the paused status. A paused subscription
+        /// does not generate invoices and will not advance to new billing periods. The subscription
+        /// can be resumed later using the resume endpoint. Cannot pause subscriptions with attached
+        /// schedules.</p>.
+        /// </summary>
+        public virtual Task<Subscription> PauseAsync(string id, SubscriptionPauseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/pause", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Initiates resumption of a paused subscription, optionally resetting the billing cycle
         /// anchor and creating prorations. If a resumption invoice is generated, it must be paid or
         /// marked uncollectible before the subscription will be unpaused. If payment succeeds the
