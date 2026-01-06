@@ -10467,37 +10467,19 @@ namespace StripeTests
         public void TestRateLimitError()
         {
             this.StubRequest(
-                HttpMethod.Post,
-                "/v2/reporting/report_runs",
+                HttpMethod.Get,
+                "/v2/core/accounts",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"rate_limit\",\"code\":\"report_run_rate_limit_exceeded\"}}");
+                "{\"error\":{\"type\":\"rate_limit\",\"code\":\"account_rate_limit_exceeded\"}}");
             var exception = Assert.Throws<Stripe.V2.RateLimitException>(
             () =>
             {
-                var options = new Stripe.V2.Reporting.ReportRunCreateOptions
-                {
-                    Report = "report",
-                    ReportParameters = new Dictionary<string, object>
-                {
-                    { "int_key", 123 },
-                    { "string_key", "value" },
-                    { "boolean_key", true },
-                    {
-                        "object_key", new Dictionary<string, object>
-                        {
-                            { "object_int_key", 123 },
-                            { "object_string_key", "value" },
-                            { "object_boolean_key", true },
-                        }
-                    },
-                    { "array_key", new List<object> { 1, 2, 3 } },
-                },
-                };
                 var client = new StripeClient(this.Requestor);
-                var service = client.V2.Reporting.ReportRuns;
-                Stripe.V2.Reporting.ReportRun reportRun = service.Create(options);
+                var service = client.V2.Core.Accounts;
+                Stripe.V2.StripeList<Stripe.V2.Core.Account> accounts = service
+                    .List();
             });
-            this.AssertRequest(HttpMethod.Post, "/v2/reporting/report_runs");
+            this.AssertRequest(HttpMethod.Get, "/v2/core/accounts");
         }
 
         [Fact]

@@ -224,5 +224,14 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("trace_id")]
 #endif
         public OutboundPaymentTraceId TraceId { get; set; }
+
+        /// <summary>
+        /// Information to track this OutboundPayment with the recipient bank.
+        /// </summary>
+        [JsonProperty("tracking_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("tracking_details")]
+#endif
+        public OutboundPaymentTrackingDetails TrackingDetails { get; set; }
     }
 }
