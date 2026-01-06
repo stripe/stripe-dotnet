@@ -308,7 +308,7 @@ This release changes the pinned API version to `2025-10-29.preview`.
   * Add support for thin events `V2MoneyManagementRecipientVerificationCreatedEvent` and `V2MoneyManagementRecipientVerificationUpdatedEvent` with related object `V2.MoneyManagement.RecipientVerification`
 * [#3188](https://github.com/stripe/stripe-dotnet/pull/3188) ParseThinEvent__Experimental is no longer needed
   * ⚠️ Remove the `StripeClient. ParseThinEvent__Experimental` and `PushedEvent` classes. They've been replaced with `StripeClient.ParseEventNotification` and the *`EventNotification` classes respectively.
- 
+
 ## 49.2.0 - 2025-11-05
 * [#3244](https://github.com/stripe/stripe-dotnet/pull/3244) Update generated code
   * Add support for `CaptureMethod` on `PaymentIntent.PaymentMethodOptions.CardPresent` and `PaymentIntentPaymentMethodOptionsCardPresentOptions`
@@ -5313,3 +5313,4 @@ List of backwards incompatible changes:
 * [#1019](https://github.com/stripe/stripe-dotnet#1019) Add `StripeChargeCaptureOptions` and use it for charge capture
 * [#1022](https://github.com/stripe/stripe-dotnet#1022) Add support for SKUs
 * [#1025](https://github.com/stripe/stripe-dotnet#1025) Add `Discountable` for `StripeInvoiceLineItem`
+
