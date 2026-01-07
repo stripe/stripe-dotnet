@@ -1,5 +1,25 @@
 # Changelog
 
+## 50.2.0-alpha.2 - 2026-01-07
+* [#3283](https://github.com/stripe/stripe-dotnet/pull/3283) Update generated code for private-preview
+  * Add support for `Pause` method on resource `Subscription`
+  * Add support for `ExternalReference` on `Plan` and `Price`
+  * Add support for `TrackingDetails` on `V2.MoneyManagement.OutboundPayment`
+  * Add support for `PaperCheck` on `V2.MoneyManagement.OutboundPayment.DeliveryOptions` and `V2MoneyManagementOutboundPaymentDeliveryOptionsOptions`
+  * Add support for event notification `V2CoreAccountIncludingFutureRequirementsUpdatedEvent` with related object `V2.Core.Account`
+* [#3274](https://github.com/stripe/stripe-dotnet/pull/3274) Update generated code for private-preview
+  * Add support for new resource `Tax.Location`
+  * Add support for `Create`, `Get`, and `List` methods on resource `Tax.Location`
+  * Add support for `PerformanceLocation` on `CheckoutSessionLineItemPriceDataProductDataTaxDetailsOptions`, `InvoiceLineItemPriceDataProductDataTaxDetailsOptions`, `InvoiceLinePriceDataProductDataTaxDetailsOptions`, `PaymentLinkLineItemPriceDataProductDataTaxDetailsOptions`, `ProductTaxDetailsOptions`, `Tax.CalculationLineItem`, and `TaxCalculationLineItemOptions`
+  * Change type of `DelegatedCheckout.RequestedSessionUpdateOptions.Metadata` from `map(string: string)` to `emptyable(map(string: string))`
+  * Change type of `DelegatedCheckout.RequestedSessionUpdateOptions.PaymentMethodData` from `payment_method_data` to `emptyable(payment_method_data)`
+  * Change type of `DelegatedCheckout.RequestedSessionUpdateOptions.SharedMetadata` from `map(string: string)` to `emptyable(map(string: string))`
+  * Add support for `Subscription` on `Invoice.Parent.ScheduleDetails` and `QuotePreviewInvoice.Parent.ScheduleDetails`
+  * Change type of `PaymentIntentPaymentDetailsBenefitOptions.FrMealVoucher` and `SetupIntentSetupDetailsBenefitOptions.FrMealVoucher` from `payment_details_benefit_fr_meal_voucher` to `emptyable(payment_details_benefit_fr_meal_voucher)`
+  * Add support for `TaxDetails` on `PlanProductOptions` and `PriceProductDataOptions`
+  * Add support for `AdmissionsTax`, `AttendanceTax`, `EntertainmentTax`, `GrossReceiptsTax`, `HospitalityTax`, `LuxuryTax`, `ResortTax`, and `TourismTax` on `Tax.Registration.CountryOptions.Us`
+  * Add support for `Requirements` on `TaxCode`
+
 ## 50.2.0-alpha.1 - 2025-12-14
 * [#3273](https://github.com/stripe/stripe-dotnet/pull/3273) Update generated code for private-preview
   * Add support for new resources `SharedPayment.GrantedToken`, `V2.Iam.ApiKey`, `V2.Payments.SettlementAllocationIntentSplit`, `V2.Payments.SettlementAllocationIntent`, and `V2.Tax.ManualRule`
