@@ -27,6 +27,15 @@ namespace Stripe.ProductCatalog
         public TrialOfferEndBehaviorOptions EndBehavior { get; set; }
 
         /// <summary>
+        /// A brief, user-friendly name for the trial offer-for identification purposes.
+        /// </summary>
+        [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
+        public string Name { get; set; }
+
+        /// <summary>
         /// Price configuration during the trial period (amount, billing scheme, etc).
         /// </summary>
         [JsonProperty("price")]

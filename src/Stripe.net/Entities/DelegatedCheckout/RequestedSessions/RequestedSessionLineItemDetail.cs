@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec
 namespace Stripe.DelegatedCheckout
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -28,24 +27,6 @@ namespace Stripe.DelegatedCheckout
         public long AmountSubtotal { get; set; }
 
         /// <summary>
-        /// The description of the line item.
-        /// </summary>
-        [JsonProperty("description")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("description")]
-#endif
-        public string Description { get; set; }
-
-        /// <summary>
-        /// The images of the line item.
-        /// </summary>
-        [JsonProperty("images")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("images")]
-#endif
-        public List<string> Images { get; set; }
-
-        /// <summary>
         /// The key of the line item.
         /// </summary>
         [JsonProperty("key")]
@@ -53,15 +34,6 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("key")]
 #endif
         public string Key { get; set; }
-
-        /// <summary>
-        /// The name of the line item.
-        /// </summary>
-        [JsonProperty("name")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("name")]
-#endif
-        public string Name { get; set; }
 
         [JsonProperty("product_details")]
 #if NET6_0_OR_GREATER

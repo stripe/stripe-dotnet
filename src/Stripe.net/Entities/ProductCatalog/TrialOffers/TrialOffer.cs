@@ -57,6 +57,15 @@ namespace Stripe.ProductCatalog
 #endif
         public bool Livemode { get; set; }
 
+        /// <summary>
+        /// A brief, user-friendly name for the trial offer-for identification purposes.
+        /// </summary>
+        [JsonProperty("name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("name")]
+#endif
+        public string Name { get; set; }
+
         #region Expandable Price
 
         /// <summary>
