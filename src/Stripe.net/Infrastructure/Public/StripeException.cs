@@ -47,6 +47,10 @@ namespace Stripe
             switch (type)
             {
                 // The beginning of the section generated from our OpenAPI spec
+                case "rate_limit":
+                    ret = Stripe.V2.RateLimitException.Parse(httpStatusCode, body);
+                    break;
+
                 case "temporary_session_expired":
                     ret = Stripe.V2.TemporarySessionExpiredException.Parse(httpStatusCode, body);
                     break;

@@ -212,6 +212,65 @@ namespace Stripe
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEvent)
                 },
+                { "v2.core.account.closed", typeof(Events.V2CoreAccountClosedEvent) },
+                { "v2.core.account.created", typeof(Events.V2CoreAccountCreatedEvent) },
+                { "v2.core.account.updated", typeof(Events.V2CoreAccountUpdatedEvent) },
+                {
+                    "v2.core.account[configuration.customer].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.customer].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.merchant].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.merchant].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.recipient].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent)
+                },
+                {
+                    "v2.core.account[configuration.recipient].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEvent)
+                },
+                {
+                    "v2.core.account[defaults].updated", typeof(
+                    Events.V2CoreAccountIncludingDefaultsUpdatedEvent)
+                },
+                {
+                    "v2.core.account[future_requirements].updated", typeof(
+                    Events.V2CoreAccountIncludingFutureRequirementsUpdatedEvent)
+                },
+                {
+                    "v2.core.account[identity].updated", typeof(
+                    Events.V2CoreAccountIncludingIdentityUpdatedEvent)
+                },
+                {
+                    "v2.core.account[requirements].updated", typeof(
+                    Events.V2CoreAccountIncludingRequirementsUpdatedEvent)
+                },
+                {
+                    "v2.core.account_link.returned", typeof(
+                    Events.V2CoreAccountLinkReturnedEvent)
+                },
+                {
+                    "v2.core.account_person.created", typeof(
+                    Events.V2CoreAccountPersonCreatedEvent)
+                },
+                {
+                    "v2.core.account_person.deleted", typeof(
+                    Events.V2CoreAccountPersonDeletedEvent)
+                },
+                {
+                    "v2.core.account_person.updated", typeof(
+                    Events.V2CoreAccountPersonUpdatedEvent)
+                },
                 {
                     "v2.core.event_destination.ping", typeof(
                     Events.V2CoreEventDestinationPingEvent)
@@ -231,6 +290,74 @@ namespace Stripe
                 {
                     "v1.billing.meter.no_meter_found", typeof(
                     Events.V1BillingMeterNoMeterFoundEventNotification)
+                },
+                {
+                    "v2.core.account.closed", typeof(
+                    Events.V2CoreAccountClosedEventNotification)
+                },
+                {
+                    "v2.core.account.created", typeof(
+                    Events.V2CoreAccountCreatedEventNotification)
+                },
+                {
+                    "v2.core.account.updated", typeof(
+                    Events.V2CoreAccountUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.customer].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.customer].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationCustomerUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.merchant].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.merchant].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationMerchantUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.recipient].capability_status_updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[configuration.recipient].updated", typeof(
+                    Events.V2CoreAccountIncludingConfigurationRecipientUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[defaults].updated", typeof(
+                    Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[future_requirements].updated", typeof(
+                    Events.V2CoreAccountIncludingFutureRequirementsUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[identity].updated", typeof(
+                    Events.V2CoreAccountIncludingIdentityUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[requirements].updated", typeof(
+                    Events.V2CoreAccountIncludingRequirementsUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account_link.returned", typeof(
+                    Events.V2CoreAccountLinkReturnedEventNotification)
+                },
+                {
+                    "v2.core.account_person.created", typeof(
+                    Events.V2CoreAccountPersonCreatedEventNotification)
+                },
+                {
+                    "v2.core.account_person.deleted", typeof(
+                    Events.V2CoreAccountPersonDeletedEventNotification)
+                },
+                {
+                    "v2.core.account_person.updated", typeof(
+                    Events.V2CoreAccountPersonUpdatedEventNotification)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
