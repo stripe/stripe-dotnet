@@ -29,5 +29,23 @@ namespace Stripe.Radar
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
+
+        /// <summary>
+        /// Data about a failed login event.
+        /// </summary>
+        [JsonProperty("login_failed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("login_failed")]
+#endif
+        public AccountEvaluationEventLoginFailed LoginFailed { get; set; }
+
+        /// <summary>
+        /// Data about a failed registration event.
+        /// </summary>
+        [JsonProperty("registration_failed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("registration_failed")]
+#endif
+        public AccountEvaluationEventRegistrationFailed RegistrationFailed { get; set; }
     }
 }
