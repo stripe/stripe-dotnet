@@ -1,5 +1,13 @@
 # Changelog
 
+## 50.2.0-alpha.3 - 2026-01-14
+* [#3290](https://github.com/stripe/stripe-dotnet/pull/3290) Update generated code for private-preview
+  * Add support for `RiskDetails` on `DelegatedCheckout.RequestedSession`
+  * Remove support for `Description`, `Images`, and `Name` on `DelegatedCheckout.RequestedSession.LineItemDetail`
+  * Add support for `Name` on `ProductCatalog.TrialOfferCreateOptions` and `ProductCatalog.TrialOffer`
+  * Add support for `LoginFailed` and `RegistrationFailed` on `Radar.AccountEvaluation.Events` and `Radar.AccountEvaluationUpdateOptions`
+  * Change type of `Radar.AccountEvaluationUpdateOptions.Type` from `literal('registration_succeeded')` to `enum('login_failed'|'login_succeeded'|'registration_failed'|'registration_succeeded')`
+
 ## 50.2.0-alpha.2 - 2026-01-07
 * [#3283](https://github.com/stripe/stripe-dotnet/pull/3283) Update generated code for private-preview
   * Add support for `Pause` method on resource `Subscription`
