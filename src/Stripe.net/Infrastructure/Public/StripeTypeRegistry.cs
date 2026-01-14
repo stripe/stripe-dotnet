@@ -358,6 +358,10 @@ namespace Stripe
                     Events.V2CoreAccountIncludingDefaultsUpdatedEvent)
                 },
                 {
+                    "v2.core.account[future_requirements].updated", typeof(
+                    Events.V2CoreAccountIncludingFutureRequirementsUpdatedEvent)
+                },
+                {
                     "v2.core.account[identity].updated", typeof(
                     Events.V2CoreAccountIncludingIdentityUpdatedEvent)
                 },
@@ -596,6 +600,10 @@ namespace Stripe
                 {
                     "v2.core.account[defaults].updated", typeof(
                     Events.V2CoreAccountIncludingDefaultsUpdatedEventNotification)
+                },
+                {
+                    "v2.core.account[future_requirements].updated", typeof(
+                    Events.V2CoreAccountIncludingFutureRequirementsUpdatedEventNotification)
                 },
                 {
                     "v2.core.account[identity].updated", typeof(

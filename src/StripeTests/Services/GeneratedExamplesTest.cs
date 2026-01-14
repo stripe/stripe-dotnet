@@ -8239,7 +8239,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"blocked_by_stripe\",\"code\":\"blocked_payout_method_bank_account\"}}");
+                "{\"error\":{\"type\":\"blocked_by_stripe\",\"code\":\"blocked_payout_method\"}}");
             var exception = Assert.Throws<Stripe.V2.BlockedByStripeException>(
             () =>
             {
@@ -8497,6 +8497,25 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts");
+        }
+
+        [Fact]
+        public void TestRateLimitError()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/accounts",
+                (HttpStatusCode)400,
+                "{\"error\":{\"type\":\"rate_limit\",\"code\":\"account_rate_limit_exceeded\"}}");
+            var exception = Assert.Throws<Stripe.V2.RateLimitException>(
+            () =>
+            {
+                var client = new StripeClient(this.Requestor);
+                var service = client.V2.Core.Accounts;
+                Stripe.V2.StripeList<Stripe.V2.Core.Account> accounts = service
+                    .List();
+            });
+            this.AssertRequest(HttpMethod.Get, "/v2/core/accounts");
         }
 
         [Fact]
