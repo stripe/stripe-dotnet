@@ -1,5 +1,9 @@
 # Changelog
 
+## 50.3.0-alpha.1 - 2026-01-21
+* [#3295](https://github.com/stripe/stripe-dotnet/pull/3295) Update generated code for private-preview
+  * Remove support for `Pause` method on resource `Subscription`
+
 ## 50.2.0 - 2026-01-16
 * [#3292](https://github.com/stripe/stripe-dotnet/pull/3292) Update generated code
   * Add support for event notifications `V2CoreAccountClosedEvent`, `V2CoreAccountCreatedEvent`, `V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent`, `V2CoreAccountIncludingConfigurationCustomerUpdatedEvent`, `V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent`, `V2CoreAccountIncludingConfigurationMerchantUpdatedEvent`, `V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent`, `V2CoreAccountIncludingConfigurationRecipientUpdatedEvent`, `V2CoreAccountIncludingDefaultsUpdatedEvent`, `V2CoreAccountIncludingFutureRequirementsUpdatedEvent`, `V2CoreAccountIncludingIdentityUpdatedEvent`, `V2CoreAccountIncludingRequirementsUpdatedEvent`, and `V2CoreAccountUpdatedEvent` with related object `V2.Core.Account`
