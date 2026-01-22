@@ -27,15 +27,6 @@ namespace Stripe.Terminal
         public ConfigurationTippingAudOptions Aud { get; set; }
 
         /// <summary>
-        /// Tipping configuration for BGN.
-        /// </summary>
-        [JsonProperty("bgn")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bgn")]
-#endif
-        public ConfigurationTippingBgnOptions Bgn { get; set; }
-
-        /// <summary>
         /// Tipping configuration for CAD.
         /// </summary>
         [JsonProperty("cad")]

@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -13,6 +14,12 @@ namespace Stripe
         [STJS.JsonPropertyName("car_rental")]
 #endif
         public PaymentIntentPaymentDetailsCarRental CarRental { get; set; }
+
+        [JsonProperty("car_rental_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("car_rental_data")]
+#endif
+        public List<PaymentIntentPaymentDetailsCarRentalDatum> CarRentalData { get; set; }
 
         /// <summary>
         /// A unique value to identify the customer. This field is available only for card payments.
@@ -31,6 +38,18 @@ namespace Stripe
         [STJS.JsonPropertyName("event_details")]
 #endif
         public PaymentIntentPaymentDetailsEventDetails EventDetails { get; set; }
+
+        [JsonProperty("flight_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("flight_data")]
+#endif
+        public List<PaymentIntentPaymentDetailsFlightDatum> FlightData { get; set; }
+
+        [JsonProperty("lodging_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lodging_data")]
+#endif
+        public List<PaymentIntentPaymentDetailsLodgingDatum> LodgingData { get; set; }
 
         /// <summary>
         /// A unique value assigned by the business to identify the transaction. Required for L2 and

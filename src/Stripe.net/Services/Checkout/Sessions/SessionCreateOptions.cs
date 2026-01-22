@@ -22,7 +22,8 @@ namespace Stripe.Checkout
         public SessionAdaptivePricingOptions AdaptivePricing { get; set; }
 
         /// <summary>
-        /// Configure actions after a Checkout Session has expired.
+        /// Configure actions after a Checkout Session has expired. You can't set this parameter if
+        /// <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("after_expiration")]
 #if NET6_0_OR_GREATER
@@ -113,7 +114,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Collect additional information from your customer using custom fields. Up to 3 fields
-        /// are supported.
+        /// are supported. You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("custom_fields")]
 #if NET6_0_OR_GREATER
@@ -122,7 +123,8 @@ namespace Stripe.Checkout
         public List<SessionCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
-        /// Display additional text for your customers using custom text.
+        /// Display additional text for your customers using custom text. You can't set this
+        /// parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("custom_text")]
 #if NET6_0_OR_GREATER
@@ -335,6 +337,8 @@ namespace Stripe.Checkout
         ///
         /// If a <a href="https://docs.stripe.com/api/customers">Customer</a> is created or
         /// provided, the names can be saved to the Customer object as well.
+        ///
+        /// You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("name_collection")]
 #if NET6_0_OR_GREATER
@@ -357,6 +361,8 @@ namespace Stripe.Checkout
         ///
         /// For <c>subscription</c> mode, there is a maximum of 20 line items and optional items
         /// with recurring Prices and 20 line items and optional items with one-time Prices.
+        ///
+        /// You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("optional_items")]
 #if NET6_0_OR_GREATER
@@ -366,7 +372,7 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// Where the user is coming from. This informs the optimizations that are applied to the
-        /// session.
+        /// session. You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// One of: <c>mobile_app</c>, or <c>web</c>.
         /// </summary>
         [JsonProperty("origin_context")]
@@ -564,7 +570,8 @@ namespace Stripe.Checkout
         /// Describes the type of transaction being performed by Checkout in order to customize
         /// relevant text on the page, such as the submit button. <c>submit_type</c> can only be
         /// specified on Checkout Sessions in <c>payment</c> or <c>subscription</c> mode. If blank
-        /// or <c>auto</c>, <c>pay</c> is used.
+        /// or <c>auto</c>, <c>pay</c> is used. You can't set this parameter if <c>ui_mode</c> is
+        /// <c>custom</c>.
         /// One of: <c>auto</c>, <c>book</c>, <c>donate</c>, <c>pay</c>, or <c>subscribe</c>.
         /// </summary>
         [JsonProperty("submit_type")]

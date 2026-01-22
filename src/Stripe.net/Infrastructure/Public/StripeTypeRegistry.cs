@@ -91,6 +91,10 @@ namespace Stripe
                     FinancialConnections.AccountOwnership)
                 },
                 {
+                    "financial_connections.authorization", typeof(
+                    FinancialConnections.Authorization)
+                },
+                {
                     "financial_connections.institution", typeof(
                     FinancialConnections.Institution)
                 },
@@ -160,6 +164,7 @@ namespace Stripe
                     QuotePreviewSubscriptionSchedule)
                 },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
+                { "radar.payment_evaluation", typeof(Radar.PaymentEvaluation) },
                 { "radar.value_list", typeof(Radar.ValueList) },
                 { "radar.value_list_item", typeof(Radar.ValueListItem) },
                 { "refund", typeof(Refund) },

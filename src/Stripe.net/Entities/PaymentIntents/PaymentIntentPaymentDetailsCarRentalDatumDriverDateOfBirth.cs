@@ -1,0 +1,38 @@
+// File generated from our OpenAPI spec
+namespace Stripe
+{
+    using Newtonsoft.Json;
+#if NET6_0_OR_GREATER
+    using STJS = System.Text.Json.Serialization;
+#endif
+
+    public class PaymentIntentPaymentDetailsCarRentalDatumDriverDateOfBirth : StripeEntity<PaymentIntentPaymentDetailsCarRentalDatumDriverDateOfBirth>
+    {
+        /// <summary>
+        /// Day of birth.
+        /// </summary>
+        [JsonProperty("day")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("day")]
+#endif
+        public long Day { get; set; }
+
+        /// <summary>
+        /// Month of birth.
+        /// </summary>
+        [JsonProperty("month")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("month")]
+#endif
+        public long Month { get; set; }
+
+        /// <summary>
+        /// Year of birth.
+        /// </summary>
+        [JsonProperty("year")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("year")]
+#endif
+        public long Year { get; set; }
+    }
+}

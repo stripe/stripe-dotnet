@@ -509,7 +509,8 @@ namespace Stripe
 
         /// <summary>
         /// (ID of the Invoice)
-        /// The most recent invoice this subscription has generated.
+        /// The most recent invoice this subscription has generated over its lifecycle (for example,
+        /// when it cycles or is updated).
         /// </summary>
         [JsonIgnore]
 #if NET6_0_OR_GREATER
@@ -523,7 +524,8 @@ namespace Stripe
 
         /// <summary>
         /// (Expanded)
-        /// The most recent invoice this subscription has generated.
+        /// The most recent invoice this subscription has generated over its lifecycle (for example,
+        /// when it cycles or is updated).
         ///
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>

@@ -128,8 +128,9 @@ namespace Stripe
         public decimal? PercentOff { get; set; }
 
         /// <summary>
-        /// Unix timestamp specifying the last time at which the coupon can be redeemed. After the
-        /// redeem_by date, the coupon can no longer be applied to new customers.
+        /// Unix timestamp specifying the last time at which the coupon can be redeemed (cannot be
+        /// set to more than 5 years in the future). After the redeem_by date, the coupon can no
+        /// longer be applied to new customers.
         /// </summary>
         [JsonProperty("redeem_by")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

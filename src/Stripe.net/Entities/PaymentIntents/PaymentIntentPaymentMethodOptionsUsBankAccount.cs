@@ -21,16 +21,6 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsUsBankAccountMandateOptions MandateOptions { get; set; }
 
         /// <summary>
-        /// Preferred transaction settlement speed.
-        /// One of: <c>fastest</c>, or <c>standard</c>.
-        /// </summary>
-        [JsonProperty("preferred_settlement_speed")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("preferred_settlement_speed")]
-#endif
-        public string PreferredSettlementSpeed { get; set; }
-
-        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///
