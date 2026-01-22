@@ -105,6 +105,7 @@ namespace Stripe
                     FinancialConnections.Transaction)
                 },
                 { "forwarding.request", typeof(Forwarding.Request) },
+                { "fr_meal_vouchers_onboarding", typeof(FrMealVouchersOnboarding) },
                 { "funding_instructions", typeof(FundingInstructions) },
                 { "fx_quote", typeof(FxQuote) },
                 { "identity.blocklist_entry", typeof(Identity.BlocklistEntry) },

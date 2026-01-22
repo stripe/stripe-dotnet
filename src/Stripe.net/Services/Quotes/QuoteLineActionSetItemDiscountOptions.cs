@@ -43,5 +43,14 @@ namespace Stripe
         [STJS.JsonPropertyName("promotion_code")]
 #endif
         public string PromotionCode { get; set; }
+
+        /// <summary>
+        /// Settings for discount application including service period anchoring.
+        /// </summary>
+        [JsonProperty("settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("settings")]
+#endif
+        public QuoteLineActionSetItemDiscountSettingsOptions Settings { get; set; }
     }
 }
