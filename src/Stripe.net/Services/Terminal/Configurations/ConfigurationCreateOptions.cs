@@ -63,7 +63,7 @@ namespace Stripe.Terminal
         public ConfigurationStripeS700Options StripeS700 { get; set; }
 
         /// <summary>
-        /// Tipping configurations for readers. supporting on-reader tips.
+        /// Tipping configurations for readers that support on-reader tips.
         /// </summary>
         [JsonProperty("tipping")]
 #if NET6_0_OR_GREATER

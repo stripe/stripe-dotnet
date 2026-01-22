@@ -73,7 +73,7 @@ namespace Stripe
 
         /// <summary>
         /// The version of 3D Secure that was performed.
-        /// One of: <c>1.0.2</c>, <c>2.1.0</c>, or <c>2.2.0</c>.
+        /// One of: <c>1.0.2</c>, <c>2.1.0</c>, <c>2.2.0</c>, <c>2.3.0</c>, or <c>2.3.1</c>.
         /// </summary>
         [JsonProperty("version")]
 #if NET6_0_OR_GREATER

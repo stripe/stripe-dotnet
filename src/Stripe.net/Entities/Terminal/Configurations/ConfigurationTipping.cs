@@ -20,12 +20,6 @@ namespace Stripe.Terminal
 #endif
         public ConfigurationTippingAud Aud { get; set; }
 
-        [JsonProperty("bgn")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("bgn")]
-#endif
-        public ConfigurationTippingBgn Bgn { get; set; }
-
         [JsonProperty("cad")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cad")]

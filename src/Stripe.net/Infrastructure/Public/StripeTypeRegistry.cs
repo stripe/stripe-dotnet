@@ -125,6 +125,7 @@ namespace Stripe
                 { "promotion_code", typeof(PromotionCode) },
                 { "quote", typeof(Quote) },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
+                { "radar.payment_evaluation", typeof(Radar.PaymentEvaluation) },
                 { "radar.value_list", typeof(Radar.ValueList) },
                 { "radar.value_list_item", typeof(Radar.ValueListItem) },
                 { "refund", typeof(Refund) },

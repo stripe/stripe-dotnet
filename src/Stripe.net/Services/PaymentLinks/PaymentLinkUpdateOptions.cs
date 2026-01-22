@@ -58,7 +58,7 @@ namespace Stripe
 
         /// <summary>
         /// Collect additional information from your customer using custom fields. Up to 3 fields
-        /// are supported.
+        /// are supported. You can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("custom_fields")]
 #if NET6_0_OR_GREATER
@@ -67,7 +67,8 @@ namespace Stripe
         public List<PaymentLinkCustomFieldOptions> CustomFields { get; set; }
 
         /// <summary>
-        /// Display additional text for your customers using custom text.
+        /// Display additional text for your customers using custom text. You can't set this
+        /// parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("custom_text")]
 #if NET6_0_OR_GREATER
