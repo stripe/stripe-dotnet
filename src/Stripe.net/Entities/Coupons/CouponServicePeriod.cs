@@ -19,5 +19,11 @@ namespace Stripe
         [STJS.JsonPropertyName("interval_count")]
 #endif
         public long IntervalCount { get; set; }
+
+        [JsonProperty("iterations")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("iterations")]
+#endif
+        public CouponServicePeriodIterations Iterations { get; set; }
     }
 }

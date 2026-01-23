@@ -26,5 +26,14 @@ namespace Stripe
         [STJS.JsonPropertyName("interval_count")]
 #endif
         public long? IntervalCount { get; set; }
+
+        /// <summary>
+        /// Specifies the number of times the coupon is contiguously applied.
+        /// </summary>
+        [JsonProperty("iterations")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("iterations")]
+#endif
+        public CouponServicePeriodIterationsOptions Iterations { get; set; }
     }
 }
