@@ -9,7 +9,8 @@ namespace Stripe.Checkout
     public class SessionPaymentMethodOptionsOptions : INestedOptions
     {
         /// <summary>
-        /// contains details about the ACSS Debit payment method options.
+        /// contains details about the ACSS Debit payment method options. You can't set this
+        /// parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("acss_debit")]
 #if NET6_0_OR_GREATER

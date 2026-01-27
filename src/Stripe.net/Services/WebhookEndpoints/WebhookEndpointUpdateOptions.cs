@@ -45,6 +45,7 @@ namespace Stripe
         /// <c>capital.financing_offer.expired</c>, <c>capital.financing_offer.fully_repaid</c>,
         /// <c>capital.financing_offer.paid_out</c>, <c>capital.financing_offer.rejected</c>,
         /// <c>capital.financing_offer.replacement_created</c>,
+        /// <c>capital.financing_summary.line_of_credit_update</c>,
         /// <c>capital.financing_transaction.created</c>, <c>cash_balance.funds_available</c>,
         /// <c>charge.captured</c>, <c>charge.dispute.closed</c>, <c>charge.dispute.created</c>,
         /// <c>charge.dispute.funds_reinstated</c>, <c>charge.dispute.funds_withdrawn</c>,

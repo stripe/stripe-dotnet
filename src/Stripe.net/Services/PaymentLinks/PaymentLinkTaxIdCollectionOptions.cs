@@ -18,7 +18,8 @@ namespace Stripe
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// Describes whether a tax ID is required during checkout. Defaults to <c>never</c>.
+        /// Describes whether a tax ID is required during checkout. Defaults to <c>never</c>. You
+        /// can't set this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// One of: <c>if_supported</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("required")]

@@ -94,9 +94,8 @@ namespace Stripe
         /// <summary>
         /// <p>This endpoint creates a draft invoice for a given customer. The invoice remains a
         /// draft until you <a href="https://stripe.com/docs/api#finalize_invoice">finalize</a> the
-        /// invoice, which allows you to <a href="https://stripe.com/docs/api#pay_invoice">pay</a>
-        /// or <a href="https://stripe.com/docs/api#send_invoice">send</a> the invoice to your
-        /// customers.</p>.
+        /// invoice, which allows you to <a href="https://stripe.com/api/invoices/pay">pay</a> or <a
+        /// href="https://stripe.com/api/invoices/send">send</a> the invoice to your customers.</p>.
         /// </summary>
         public virtual Invoice Create(InvoiceCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -106,9 +105,8 @@ namespace Stripe
         /// <summary>
         /// <p>This endpoint creates a draft invoice for a given customer. The invoice remains a
         /// draft until you <a href="https://stripe.com/docs/api#finalize_invoice">finalize</a> the
-        /// invoice, which allows you to <a href="https://stripe.com/docs/api#pay_invoice">pay</a>
-        /// or <a href="https://stripe.com/docs/api#send_invoice">send</a> the invoice to your
-        /// customers.</p>.
+        /// invoice, which allows you to <a href="https://stripe.com/api/invoices/pay">pay</a> or <a
+        /// href="https://stripe.com/api/invoices/send">send</a> the invoice to your customers.</p>.
         /// </summary>
         public virtual Task<Invoice> CreateAsync(InvoiceCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -197,6 +195,22 @@ namespace Stripe
         public virtual Task<Invoice> DeleteAsync(string id, InvoiceDeleteOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Delete, $"/v1/invoices/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// <p>Detaches a payment from the invoice, removing it from the list of <c>payments</c></p>.
+        /// </summary>
+        public virtual Invoice DetachPayment(string id, InvoiceDetachPaymentOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/detach_payment", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Detaches a payment from the invoice, removing it from the list of <c>payments</c></p>.
+        /// </summary>
+        public virtual Task<Invoice> DetachPaymentAsync(string id, InvoiceDetachPaymentOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Invoice>(BaseAddress.Api, HttpMethod.Post, $"/v1/invoices/{WebUtility.UrlEncode(id)}/detach_payment", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

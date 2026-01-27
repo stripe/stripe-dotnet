@@ -55,6 +55,15 @@ namespace Stripe.FinancialConnections
         public List<AccountAccountNumber> AccountNumbers { get; set; }
 
         /// <summary>
+        /// The ID of the Financial Connections Authorization this account belongs to.
+        /// </summary>
+        [JsonProperty("authorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("authorization")]
+#endif
+        public string Authorization { get; set; }
+
+        /// <summary>
         /// The most recent information about the account's balance.
         /// </summary>
         [JsonProperty("balance")]
@@ -253,6 +262,12 @@ namespace Stripe.FinancialConnections
         [STJS.JsonPropertyName("status")]
 #endif
         public string Status { get; set; }
+
+        [JsonProperty("status_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("status_details")]
+#endif
+        public AccountStatusDetails StatusDetails { get; set; }
 
         /// <summary>
         /// If <c>category</c> is <c>cash</c>, one of:.

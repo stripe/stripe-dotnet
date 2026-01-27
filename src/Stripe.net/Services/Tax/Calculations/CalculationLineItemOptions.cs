@@ -33,6 +33,17 @@ namespace Stripe.Tax
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
+        /// A tax location ID. Depending on the <a
+        /// href="https://stripe.com/tax/tax-for-tickets/reference/tax-location-performance">tax
+        /// code</a>, this is required, optional, or not supported.
+        /// </summary>
+        [JsonProperty("performance_location")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("performance_location")]
+#endif
+        public string PerformanceLocation { get; set; }
+
+        /// <summary>
         /// If provided, the product's <c>tax_code</c> will be used as the line item's
         /// <c>tax_code</c>.
         /// </summary>
@@ -85,16 +96,5 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("tax_code")]
 #endif
         public string TaxCode { get; set; }
-
-        /// <summary>
-        /// A tax location ID. Depending on the <a
-        /// href="https://stripe.com/tax/tax-for-tickets/reference/tax-location-performance">tax
-        /// code</a>, this is required, optional, or not supported.
-        /// </summary>
-        [JsonProperty("performance_location")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("performance_location")]
-#endif
-        public string PerformanceLocation { get; set; }
     }
 }

@@ -289,6 +289,16 @@ namespace Stripe
         #endregion
 
         /// <summary>
+        /// The subtotal of the line item, in cents (or local equivalent), before any discounts or
+        /// taxes.
+        /// </summary>
+        [JsonProperty("subtotal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("subtotal")]
+#endif
+        public long Subtotal { get; set; }
+
+        /// <summary>
         /// The tax calculation identifiers of the line item.
         /// </summary>
         [JsonProperty("tax_calculation_reference")]
