@@ -30,26 +30,6 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Attach a Billing Cadence to an existing subscription. When attached, the subscription
-        /// is billed by the Billing Cadence, potentially sharing invoices with the other
-        /// subscriptions linked to the Billing Cadence.</p>.
-        /// </summary>
-        public virtual Subscription AttachCadence(string id, SubscriptionAttachCadenceOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/attach_cadence", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Attach a Billing Cadence to an existing subscription. When attached, the subscription
-        /// is billed by the Billing Cadence, potentially sharing invoices with the other
-        /// subscriptions linked to the Billing Cadence.</p>.
-        /// </summary>
-        public virtual Task<Subscription> AttachCadenceAsync(string id, SubscriptionAttachCadenceOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/attach_cadence", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
         /// <p>Cancels a customer’s subscription immediately. The customer won’t be charged again
         /// for the subscription. After it’s canceled, you can no longer update the subscription or
         /// its <a href="https://stripe.com/metadata">metadata</a>.</p>.
@@ -219,28 +199,6 @@ namespace Stripe
         public virtual Task<Subscription> MigrateAsync(string id, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/migrate", options, requestOptions, cancellationToken);
-        }
-
-        /// <summary>
-        /// <p>Pauses a subscription by transitioning it to the paused status. A paused subscription
-        /// does not generate invoices and will not advance to new billing periods. The subscription
-        /// can be resumed later using the resume endpoint. Cannot pause subscriptions with attached
-        /// schedules.</p>.
-        /// </summary>
-        public virtual Subscription Pause(string id, SubscriptionPauseOptions options = null, RequestOptions requestOptions = null)
-        {
-            return this.Request<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/pause", options, requestOptions);
-        }
-
-        /// <summary>
-        /// <p>Pauses a subscription by transitioning it to the paused status. A paused subscription
-        /// does not generate invoices and will not advance to new billing periods. The subscription
-        /// can be resumed later using the resume endpoint. Cannot pause subscriptions with attached
-        /// schedules.</p>.
-        /// </summary>
-        public virtual Task<Subscription> PauseAsync(string id, SubscriptionPauseOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
-        {
-            return this.RequestAsync<Subscription>(BaseAddress.Api, HttpMethod.Post, $"/v1/subscriptions/{WebUtility.UrlEncode(id)}/pause", options, requestOptions, cancellationToken);
         }
 
         /// <summary>
