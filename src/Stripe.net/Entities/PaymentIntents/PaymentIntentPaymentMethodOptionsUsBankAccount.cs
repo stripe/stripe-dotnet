@@ -67,5 +67,15 @@ namespace Stripe
         [STJS.JsonPropertyName("verification_method")]
 #endif
         public string VerificationMethod { get; set; }
+
+        /// <summary>
+        /// Preferred transaction settlement speed.
+        /// One of: <c>fastest</c>, or <c>standard</c>.
+        /// </summary>
+        [JsonProperty("preferred_settlement_speed")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("preferred_settlement_speed")]
+#endif
+        public string PreferredSettlementSpeed { get; set; }
     }
 }
