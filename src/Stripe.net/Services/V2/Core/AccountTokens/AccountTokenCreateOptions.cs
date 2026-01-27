@@ -19,6 +19,15 @@ namespace Stripe.V2.Core
         public string ContactEmail { get; set; }
 
         /// <summary>
+        /// The default contact phone for the Account.
+        /// </summary>
+        [JsonProperty("contact_phone")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("contact_phone")]
+#endif
+        public string ContactPhone { get; set; }
+
+        /// <summary>
         /// A descriptive name for the Account. This name will be surfaced in the Stripe Dashboard
         /// and on any invoices sent to the Account.
         /// </summary>
