@@ -20,6 +20,15 @@ namespace Stripe
         public SubscriptionAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
+        /// Filter for subscriptions that have the specified billing cadence.
+        /// </summary>
+        [JsonProperty("billing_cadence")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("billing_cadence")]
+#endif
+        public string BillingCadence { get; set; }
+
+        /// <summary>
         /// The collection method of the subscriptions to retrieve. Either
         /// <c>charge_automatically</c> or <c>send_invoice</c>.
         /// One of: <c>charge_automatically</c>, or <c>send_invoice</c>.
