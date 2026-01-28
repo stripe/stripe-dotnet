@@ -101,7 +101,7 @@ namespace Stripe
         /// <summary>
         /// One of <c>forever</c>, <c>once</c>, or <c>repeating</c>. Describes how long a customer
         /// who applies this coupon will get the discount.
-        /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
+        /// One of: <c>forever</c>, <c>once</c>, <c>repeating</c>, or <c>service_period</c>.
         /// </summary>
         [JsonProperty("duration")]
 #if NET6_0_OR_GREATER
@@ -191,6 +191,12 @@ namespace Stripe
         [STJS.JsonPropertyName("script")]
 #endif
         public CouponScript Script { get; set; }
+
+        [JsonProperty("service_period")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("service_period")]
+#endif
+        public CouponServicePeriod ServicePeriod { get; set; }
 
         /// <summary>
         /// Number of times this coupon has been applied to a customer.

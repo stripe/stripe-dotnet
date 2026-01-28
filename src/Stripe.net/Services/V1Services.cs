@@ -42,6 +42,7 @@ namespace Stripe
         private FileLinkService fileLinks;
         private FinancialConnectionsService financialConnections;
         private ForwardingService forwarding;
+        private FrMealVouchersOnboardingService frMealVouchersOnboardings;
         private FxQuoteService fxQuotes;
         private IdentityService identity;
         private InvoiceService invoices;
@@ -70,6 +71,7 @@ namespace Stripe
         private RadarService radar;
         private RefundService refunds;
         private ReportingService reporting;
+        private ReserveService reserve;
         private ReviewService reviews;
         private SetupAttemptService setupAttempts;
         private SetupIntentService setupIntents;
@@ -207,6 +209,9 @@ namespace Stripe
         public virtual ForwardingService Forwarding => this.forwarding ??= new ForwardingService(
             this.Requestor);
 
+        public virtual FrMealVouchersOnboardingService FrMealVouchersOnboardings => this.frMealVouchersOnboardings ??= new FrMealVouchersOnboardingService(
+            this.Requestor);
+
         public virtual FxQuoteService FxQuotes => this.fxQuotes ??= new FxQuoteService(
             this.Requestor);
 
@@ -289,6 +294,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual ReportingService Reporting => this.reporting ??= new ReportingService(
+            this.Requestor);
+
+        public virtual ReserveService Reserve => this.reserve ??= new ReserveService(
             this.Requestor);
 
         public virtual ReviewService Reviews => this.reviews ??= new ReviewService(

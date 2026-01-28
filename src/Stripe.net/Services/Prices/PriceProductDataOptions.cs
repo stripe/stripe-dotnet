@@ -74,16 +74,6 @@ namespace Stripe
         public string TaxCode { get; set; }
 
         /// <summary>
-        /// A label that represents units of this product. When set, this will be included in
-        /// customers' receipts, invoices, Checkout, and the customer portal.
-        /// </summary>
-        [JsonProperty("unit_label")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unit_label")]
-#endif
-        public string UnitLabel { get; set; }
-
-        /// <summary>
         /// Tax details for this product, including the <a
         /// href="https://stripe.com/tax/tax-codes">tax code</a> and an optional performance
         /// location.
@@ -93,5 +83,15 @@ namespace Stripe
         [STJS.JsonPropertyName("tax_details")]
 #endif
         public PriceProductDataTaxDetailsOptions TaxDetails { get; set; }
+
+        /// <summary>
+        /// A label that represents units of this product. When set, this will be included in
+        /// customers' receipts, invoices, Checkout, and the customer portal.
+        /// </summary>
+        [JsonProperty("unit_label")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("unit_label")]
+#endif
+        public string UnitLabel { get; set; }
     }
 }

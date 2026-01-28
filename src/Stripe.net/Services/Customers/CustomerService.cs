@@ -215,15 +215,15 @@ namespace Stripe
 
         /// <summary>
         /// <p>Updates the specified customer by setting the values of the parameters passed. Any
-        /// parameters not provided will be left unchanged. For example, if you pass the
-        /// <strong>source</strong> parameter, that becomes the customer’s active source (e.g., a
+        /// parameters not provided are left unchanged. For example, if you pass the
+        /// <strong>source</strong> parameter, that becomes the customer’s active source (such as a
         /// card) to be used for all charges in the future. When you update a customer to a new
         /// valid card source by passing the <strong>source</strong> parameter: for each of the
         /// customer’s current subscriptions, if the subscription bills automatically and is in the
         /// <c>past_due</c> state, then the latest open invoice for the subscription with automatic
-        /// collection enabled will be retried. This retry will not count as an automatic retry, and
-        /// will not affect the next regularly scheduled payment for the invoice. Changing the
-        /// <strong>default_source</strong> for a customer will not trigger this behavior.</p>.
+        /// collection enabled is retried. This retry doesn’t count as an automatic retry, and
+        /// doesn’t affect the next regularly scheduled payment for the invoice. Changing the
+        /// <strong>default_source</strong> for a customer doesn’t trigger this behavior.</p>.
         ///
         /// <p>This request accepts mostly the same arguments as the customer creation call.</p>.
         /// </summary>
@@ -234,15 +234,15 @@ namespace Stripe
 
         /// <summary>
         /// <p>Updates the specified customer by setting the values of the parameters passed. Any
-        /// parameters not provided will be left unchanged. For example, if you pass the
-        /// <strong>source</strong> parameter, that becomes the customer’s active source (e.g., a
+        /// parameters not provided are left unchanged. For example, if you pass the
+        /// <strong>source</strong> parameter, that becomes the customer’s active source (such as a
         /// card) to be used for all charges in the future. When you update a customer to a new
         /// valid card source by passing the <strong>source</strong> parameter: for each of the
         /// customer’s current subscriptions, if the subscription bills automatically and is in the
         /// <c>past_due</c> state, then the latest open invoice for the subscription with automatic
-        /// collection enabled will be retried. This retry will not count as an automatic retry, and
-        /// will not affect the next regularly scheduled payment for the invoice. Changing the
-        /// <strong>default_source</strong> for a customer will not trigger this behavior.</p>.
+        /// collection enabled is retried. This retry doesn’t count as an automatic retry, and
+        /// doesn’t affect the next regularly scheduled payment for the invoice. Changing the
+        /// <strong>default_source</strong> for a customer doesn’t trigger this behavior.</p>.
         ///
         /// <p>This request accepts mostly the same arguments as the customer creation call.</p>.
         /// </summary>

@@ -22,7 +22,8 @@ namespace Stripe.Checkout
         /// <summary>
         /// The <a href="https://docs.stripe.com/api/tax_rates">tax rates</a> that will be applied
         /// to this line item depending on the customer's billing/shipping address. We currently
-        /// support the following countries: US, GB, AU, and all countries in the EU.
+        /// support the following countries: US, GB, AU, and all countries in the EU. You can't set
+        /// this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("dynamic_tax_rates")]
 #if NET6_0_OR_GREATER

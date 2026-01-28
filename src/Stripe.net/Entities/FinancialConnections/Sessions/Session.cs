@@ -108,6 +108,18 @@ namespace Stripe.FinancialConnections
 #endif
         public List<string> Prefetch { get; set; }
 
+        [JsonProperty("relink_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("relink_options")]
+#endif
+        public SessionRelinkOptions RelinkOptions { get; set; }
+
+        [JsonProperty("relink_result")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("relink_result")]
+#endif
+        public SessionRelinkResult RelinkResult { get; set; }
+
         /// <summary>
         /// For webview integrations only. Upon completing OAuth login in the native browser, the
         /// user will be redirected to this URL to return to your app.

@@ -197,6 +197,12 @@ namespace Stripe
 #endif
         public string Schedule { get; set; }
 
+        [JsonProperty("service_period_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("service_period_details")]
+#endif
+        public DiscountServicePeriodDetails ServicePeriodDetails { get; set; }
+
         [JsonProperty("source")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source")]

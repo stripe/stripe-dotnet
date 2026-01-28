@@ -26,12 +26,6 @@ namespace Stripe
 #endif
         public AccountSettingsBranding Branding { get; set; }
 
-        [JsonProperty("capital")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("capital")]
-#endif
-        public AccountSettingsCapital Capital { get; set; }
-
         [JsonProperty("card_issuing")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_issuing")]

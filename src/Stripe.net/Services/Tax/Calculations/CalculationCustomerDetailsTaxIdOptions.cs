@@ -25,12 +25,12 @@ namespace Stripe.Tax
         /// <c>ma_vat</c>, <c>md_vat</c>, <c>me_pib</c>, <c>mk_vat</c>, <c>mr_nif</c>,
         /// <c>mx_rfc</c>, <c>my_frp</c>, <c>my_itn</c>, <c>my_sst</c>, <c>ng_tin</c>,
         /// <c>no_vat</c>, <c>no_voec</c>, <c>np_pan</c>, <c>nz_gst</c>, <c>om_vat</c>,
-        /// <c>pe_ruc</c>, <c>ph_tin</c>, <c>ro_tin</c>, <c>rs_pib</c>, <c>ru_inn</c>,
-        /// <c>ru_kpp</c>, <c>sa_vat</c>, <c>sg_gst</c>, <c>sg_uen</c>, <c>si_tin</c>,
-        /// <c>sn_ninea</c>, <c>sr_fin</c>, <c>sv_nit</c>, <c>th_vat</c>, <c>tj_tin</c>,
-        /// <c>tr_tin</c>, <c>tw_vat</c>, <c>tz_vat</c>, <c>ua_vat</c>, <c>ug_tin</c>,
-        /// <c>us_ein</c>, <c>uy_ruc</c>, <c>uz_tin</c>, <c>uz_vat</c>, <c>ve_rif</c>,
-        /// <c>vn_tin</c>, <c>za_vat</c>, <c>zm_tin</c>, or <c>zw_tin</c>.
+        /// <c>pe_ruc</c>, <c>ph_tin</c>, <c>pl_nip</c>, <c>ro_tin</c>, <c>rs_pib</c>,
+        /// <c>ru_inn</c>, <c>ru_kpp</c>, <c>sa_vat</c>, <c>sg_gst</c>, <c>sg_uen</c>,
+        /// <c>si_tin</c>, <c>sn_ninea</c>, <c>sr_fin</c>, <c>sv_nit</c>, <c>th_vat</c>,
+        /// <c>tj_tin</c>, <c>tr_tin</c>, <c>tw_vat</c>, <c>tz_vat</c>, <c>ua_vat</c>,
+        /// <c>ug_tin</c>, <c>us_ein</c>, <c>uy_ruc</c>, <c>uz_tin</c>, <c>uz_vat</c>,
+        /// <c>ve_rif</c>, <c>vn_tin</c>, <c>za_vat</c>, <c>zm_tin</c>, or <c>zw_tin</c>.
         /// One of: <c>ad_nrt</c>, <c>ae_trn</c>, <c>al_tin</c>, <c>am_tin</c>, <c>ao_tin</c>,
         /// <c>ar_cuit</c>, <c>au_abn</c>, <c>au_arn</c>, <c>aw_tin</c>, <c>az_tin</c>,
         /// <c>ba_tin</c>, <c>bb_tin</c>, <c>bd_bin</c>, <c>bf_ifu</c>, <c>bg_uic</c>,
@@ -47,12 +47,12 @@ namespace Stripe.Tax
         /// <c>md_vat</c>, <c>me_pib</c>, <c>mk_vat</c>, <c>mr_nif</c>, <c>mx_rfc</c>,
         /// <c>my_frp</c>, <c>my_itn</c>, <c>my_sst</c>, <c>ng_tin</c>, <c>no_vat</c>,
         /// <c>no_voec</c>, <c>np_pan</c>, <c>nz_gst</c>, <c>om_vat</c>, <c>pe_ruc</c>,
-        /// <c>ph_tin</c>, <c>ro_tin</c>, <c>rs_pib</c>, <c>ru_inn</c>, <c>ru_kpp</c>,
-        /// <c>sa_vat</c>, <c>sg_gst</c>, <c>sg_uen</c>, <c>si_tin</c>, <c>sn_ninea</c>,
-        /// <c>sr_fin</c>, <c>sv_nit</c>, <c>th_vat</c>, <c>tj_tin</c>, <c>tr_tin</c>,
-        /// <c>tw_vat</c>, <c>tz_vat</c>, <c>ua_vat</c>, <c>ug_tin</c>, <c>us_ein</c>,
-        /// <c>uy_ruc</c>, <c>uz_tin</c>, <c>uz_vat</c>, <c>ve_rif</c>, <c>vn_tin</c>,
-        /// <c>za_vat</c>, <c>zm_tin</c>, or <c>zw_tin</c>.
+        /// <c>ph_tin</c>, <c>pl_nip</c>, <c>ro_tin</c>, <c>rs_pib</c>, <c>ru_inn</c>,
+        /// <c>ru_kpp</c>, <c>sa_vat</c>, <c>sg_gst</c>, <c>sg_uen</c>, <c>si_tin</c>,
+        /// <c>sn_ninea</c>, <c>sr_fin</c>, <c>sv_nit</c>, <c>th_vat</c>, <c>tj_tin</c>,
+        /// <c>tr_tin</c>, <c>tw_vat</c>, <c>tz_vat</c>, <c>ua_vat</c>, <c>ug_tin</c>,
+        /// <c>us_ein</c>, <c>uy_ruc</c>, <c>uz_tin</c>, <c>uz_vat</c>, <c>ve_rif</c>,
+        /// <c>vn_tin</c>, <c>za_vat</c>, <c>zm_tin</c>, or <c>zw_tin</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

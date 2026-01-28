@@ -603,6 +603,11 @@ namespace Stripe
         public const string IdentityVerificationSessionVerified = "identity.verification_session.verified";
 
         /// <summary>
+        /// Occurs when an InvoicePayment is detached from an invoice.
+        /// </summary>
+        public const string InvoicePaymentDetached = "invoice_payment.detached";
+
+        /// <summary>
         /// Occurs when an InvoicePayment is successfully paid.
         /// </summary>
         public const string InvoicePaymentPaid = "invoice_payment.paid";

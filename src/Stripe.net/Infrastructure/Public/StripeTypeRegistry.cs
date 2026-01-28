@@ -96,6 +96,10 @@ namespace Stripe
                     FinancialConnections.AccountOwnership)
                 },
                 {
+                    "financial_connections.authorization", typeof(
+                    FinancialConnections.Authorization)
+                },
+                {
                     "financial_connections.institution", typeof(
                     FinancialConnections.Institution)
                 },
@@ -105,6 +109,7 @@ namespace Stripe
                     FinancialConnections.Transaction)
                 },
                 { "forwarding.request", typeof(Forwarding.Request) },
+                { "fr_meal_vouchers_onboarding", typeof(FrMealVouchersOnboarding) },
                 { "funding_instructions", typeof(FundingInstructions) },
                 { "fx_quote", typeof(FxQuote) },
                 { "identity.blocklist_entry", typeof(Identity.BlocklistEntry) },
@@ -170,11 +175,15 @@ namespace Stripe
                 },
                 { "radar.account_evaluation", typeof(Radar.AccountEvaluation) },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
+                { "radar.payment_evaluation", typeof(Radar.PaymentEvaluation) },
                 { "radar.value_list", typeof(Radar.ValueList) },
                 { "radar.value_list_item", typeof(Radar.ValueListItem) },
                 { "refund", typeof(Refund) },
                 { "reporting.report_run", typeof(Reporting.ReportRun) },
                 { "reporting.report_type", typeof(Reporting.ReportType) },
+                { "reserve.hold", typeof(Reserve.Hold) },
+                { "reserve.plan", typeof(Reserve.Plan) },
+                { "reserve.release", typeof(Reserve.Release) },
                 { "reserve_transaction", typeof(ReserveTransaction) },
                 { "review", typeof(Review) },
                 { "scheduled_query_run", typeof(Sigma.ScheduledQueryRun) },

@@ -42,8 +42,8 @@ namespace Stripe
         /// <c>2025-01-27.acacia</c>, <c>2025-02-24.acacia</c>, <c>2025-03-01.dashboard</c>,
         /// <c>2025-03-31.basil</c>, <c>2025-04-30.basil</c>, <c>2025-05-28.basil</c>,
         /// <c>2025-06-30.basil</c>, <c>2025-07-30.basil</c>, <c>2025-08-27.basil</c>,
-        /// <c>2025-09-30.clover</c>, <c>2025-10-29.clover</c>, <c>2025-11-17.clover</c>, or
-        /// <c>2025-12-15.clover</c>.
+        /// <c>2025-09-30.clover</c>, <c>2025-10-29.clover</c>, <c>2025-11-17.clover</c>,
+        /// <c>2025-12-15.clover</c>, or <c>2026-01-28.clover</c>.
         /// </summary>
         [JsonProperty("api_version")]
 #if NET6_0_OR_GREATER
@@ -88,6 +88,7 @@ namespace Stripe
         /// <c>capital.financing_offer.expired</c>, <c>capital.financing_offer.fully_repaid</c>,
         /// <c>capital.financing_offer.paid_out</c>, <c>capital.financing_offer.rejected</c>,
         /// <c>capital.financing_offer.replacement_created</c>,
+        /// <c>capital.financing_summary.line_of_credit_update</c>,
         /// <c>capital.financing_transaction.created</c>, <c>cash_balance.funds_available</c>,
         /// <c>charge.captured</c>, <c>charge.dispute.closed</c>, <c>charge.dispute.created</c>,
         /// <c>charge.dispute.funds_reinstated</c>, <c>charge.dispute.funds_withdrawn</c>,
@@ -220,10 +221,10 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.tracking_details_updated</c>,
         /// <c>treasury.received_credit.created</c>, <c>treasury.received_credit.failed</c>,
         /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>,
-        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.created</c>,
-        /// <c>billing.credit_grant.updated</c>, <c>billing.meter.created</c>,
-        /// <c>billing.meter.deactivated</c>, <c>billing.meter.reactivated</c>,
-        /// <c>billing.meter.updated</c>, or <c>ping</c>.
+        /// <c>invoice_payment.detached</c>, <c>billing.credit_balance_transaction.created</c>,
+        /// <c>billing.credit_grant.created</c>, <c>billing.credit_grant.updated</c>,
+        /// <c>billing.meter.created</c>, <c>billing.meter.deactivated</c>,
+        /// <c>billing.meter.reactivated</c>, <c>billing.meter.updated</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("enabled_events")]
 #if NET6_0_OR_GREATER

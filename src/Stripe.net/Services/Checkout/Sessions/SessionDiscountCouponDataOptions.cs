@@ -32,7 +32,7 @@ namespace Stripe.Checkout
         /// <summary>
         /// Specifies how long the discount will be in effect if used on a subscription. Defaults to
         /// <c>once</c>.
-        /// One of: <c>forever</c>, <c>once</c>, or <c>repeating</c>.
+        /// One of: <c>forever</c>, <c>once</c>, <c>repeating</c>, or <c>service_period</c>.
         /// </summary>
         [JsonProperty("duration")]
 #if NET6_0_OR_GREATER
