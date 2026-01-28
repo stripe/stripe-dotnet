@@ -1,5 +1,22 @@
 # Changelog
 
+## 50.4.0-alpha.1 - 2026-01-28
+This release changes the pinned API version to `2026-01-28.preview`.
+
+* [#3297](https://github.com/stripe/stripe-dotnet/pull/3297) Update generated code for private-preview
+  * Add support for new resources `FrMealVouchersOnboarding`, `Reserve.Hold`, `Reserve.Plan`, and `Reserve.Release`
+  * Add support for `Create`, `Get`, `List`, and `Update` methods on resource `FrMealVouchersOnboarding`
+  * Add support for `Get` and `List` methods on resources `Reserve.Hold` and `Reserve.Release`
+  * Add support for `Get` method on resource `Reserve.Plan`
+  * Add support for `Pause` method on resource `Subscription`
+  * Add support for `ServicePeriodDetails` on `Discount`
+  * Add support for `AgenticCommerceSettings` on `AccountSession.Components`
+  * Add support for `ServicePeriod` on `CouponCreateOptions` and `Coupon`
+  * Change type of `InvoiceItem.Pricing.PriceDetails.Price` and `InvoiceLineItem.Pricing.PriceDetails.Price` from `string` to `expandable($Price)`
+  * Add support for `Settings` on `InvoiceDiscountsOptions`, `InvoiceScheduleDetailsAmendmentDiscountActionAddOptions`, `InvoiceScheduleDetailsAmendmentDiscountActionSetOptions`, `InvoiceScheduleDetailsAmendmentItemActionAddDiscountOptions`, `InvoiceScheduleDetailsAmendmentItemActionSetDiscountOptions`, `InvoiceScheduleDetailsPhaseDiscountsOptions`, `InvoiceScheduleDetailsPhaseItemDiscountsOptions`, `InvoiceSubscriptionDetailsItemDiscountsOptions`, `QuoteLineActionAddDiscountOptions`, `QuoteLineActionAddItemDiscountOptions`, `QuoteLineActionSetDiscountOptions`, `QuoteLineActionSetItemDiscountOptions`, `SubscriptionDiscountsOptions`, `SubscriptionItemDiscountsOptions`, `SubscriptionScheduleAmendmentDiscountActionAddOptions`, `SubscriptionScheduleAmendmentDiscountActionSetOptions`, `SubscriptionScheduleAmendmentItemActionAddDiscountOptions`, `SubscriptionScheduleAmendmentItemActionSetDiscountOptions`, `SubscriptionSchedulePhaseDiscountsOptions`, and `SubscriptionSchedulePhaseItemDiscountsOptions`
+  * Add support for `Subtotal` on `InvoiceLineItem`
+  * Add support for `BillingCadence` on `SubscriptionListOptions`
+
 ## 50.3.0-alpha.1 - 2026-01-21
 * [#3295](https://github.com/stripe/stripe-dotnet/pull/3295) Update generated code for private-preview
   * Remove support for `Pause` method on resource `Subscription`
