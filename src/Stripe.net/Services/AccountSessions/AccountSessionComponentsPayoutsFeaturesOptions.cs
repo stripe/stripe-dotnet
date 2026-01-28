@@ -45,9 +45,7 @@ namespace Stripe
         public bool? ExternalAccountCollection { get; set; }
 
         /// <summary>
-        /// Whether to allow creation of instant payouts. Defaults to <c>true</c> when
-        /// <c>controller.losses.payments</c> is set to <c>stripe</c> for the account, otherwise
-        /// <c>false</c>.
+        /// Whether instant payouts are enabled for this component.
         /// </summary>
         [JsonProperty("instant_payouts")]
 #if NET6_0_OR_GREATER

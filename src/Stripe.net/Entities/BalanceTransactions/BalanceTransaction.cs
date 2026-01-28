@@ -64,7 +64,8 @@ namespace Stripe
 
         /// <summary>
         /// The balance that this transaction impacts.
-        /// One of: <c>issuing</c>, <c>payments</c>, or <c>refund_and_dispute_prefunding</c>.
+        /// One of: <c>issuing</c>, <c>payments</c>, <c>refund_and_dispute_prefunding</c>, or
+        /// <c>risk_reserved</c>.
         /// </summary>
         [JsonProperty("balance_type")]
 #if NET6_0_OR_GREATER
@@ -224,13 +225,13 @@ namespace Stripe
         /// <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>,
         /// <c>payout_minimum_balance_hold</c>, <c>payout_minimum_balance_release</c>,
         /// <c>refund</c>, <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
-        /// <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>stripe_balance_payment_debit</c>,
-        /// <c>stripe_balance_payment_debit_reversal</c>, <c>tax_fee</c>, <c>topup</c>,
-        /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>,
-        /// or <c>transfer_refund</c>. Learn more about <a
-        /// href="https://stripe.com/docs/reports/balance-transaction-types">balance transaction
-        /// types and what they represent</a>. To classify transactions for accounting purposes,
-        /// consider <c>reporting_category</c> instead.
+        /// <c>reserve_hold</c>, <c>reserve_release</c>, <c>stripe_fee</c>, <c>stripe_fx_fee</c>,
+        /// <c>stripe_balance_payment_debit</c>, <c>stripe_balance_payment_debit_reversal</c>,
+        /// <c>tax_fee</c>, <c>topup</c>, <c>topup_reversal</c>, <c>transfer</c>,
+        /// <c>transfer_cancel</c>, <c>transfer_failure</c>, or <c>transfer_refund</c>. Learn more
+        /// about <a href="https://stripe.com/docs/reports/balance-transaction-types">balance
+        /// transaction types and what they represent</a>. To classify transactions for accounting
+        /// purposes, consider <c>reporting_category</c> instead.
         /// One of: <c>adjustment</c>, <c>advance</c>, <c>advance_funding</c>,
         /// <c>anticipation_repayment</c>, <c>application_fee</c>, <c>application_fee_refund</c>,
         /// <c>charge</c>, <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
@@ -242,11 +243,11 @@ namespace Stripe
         /// <c>payment_refund</c>, <c>payment_reversal</c>, <c>payment_unreconciled</c>,
         /// <c>payout</c>, <c>payout_cancel</c>, <c>payout_failure</c>,
         /// <c>payout_minimum_balance_hold</c>, <c>payout_minimum_balance_release</c>,
-        /// <c>refund</c>, <c>refund_failure</c>, <c>reserve_transaction</c>, <c>reserved_funds</c>,
-        /// <c>stripe_balance_payment_debit</c>, <c>stripe_balance_payment_debit_reversal</c>,
-        /// <c>stripe_fee</c>, <c>stripe_fx_fee</c>, <c>tax_fee</c>, <c>topup</c>,
-        /// <c>topup_reversal</c>, <c>transfer</c>, <c>transfer_cancel</c>, <c>transfer_failure</c>,
-        /// or <c>transfer_refund</c>.
+        /// <c>refund</c>, <c>refund_failure</c>, <c>reserve_hold</c>, <c>reserve_release</c>,
+        /// <c>reserve_transaction</c>, <c>reserved_funds</c>, <c>stripe_balance_payment_debit</c>,
+        /// <c>stripe_balance_payment_debit_reversal</c>, <c>stripe_fee</c>, <c>stripe_fx_fee</c>,
+        /// <c>tax_fee</c>, <c>topup</c>, <c>topup_reversal</c>, <c>transfer</c>,
+        /// <c>transfer_cancel</c>, <c>transfer_failure</c>, or <c>transfer_refund</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

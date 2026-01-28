@@ -34,9 +34,9 @@ namespace Stripe
         public bool ExternalAccountCollection { get; set; }
 
         /// <summary>
-        /// Whether to allow creation of instant payouts. Defaults to <c>true</c> when
-        /// <c>controller.losses.payments</c> is set to <c>stripe</c> for the account, otherwise
-        /// <c>false</c>.
+        /// Whether to allow creation of instant payouts. The default value is <c>enabled</c> when
+        /// Stripe is responsible for negative account balances, and <c>use_dashboard_rules</c>
+        /// otherwise.
         /// </summary>
         [JsonProperty("instant_payouts")]
 #if NET6_0_OR_GREATER

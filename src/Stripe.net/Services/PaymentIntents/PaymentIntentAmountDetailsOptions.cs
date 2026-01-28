@@ -24,6 +24,24 @@ namespace Stripe
         public long? DiscountAmount { get; set; }
 
         /// <summary>
+        /// Set to <c>false</c> to return arithmetic validation errors in the response without
+        /// failing the request. Use this when you want the operation to proceed regardless of
+        /// arithmetic errors in the line item data.
+        ///
+        /// Omit or set to <c>true</c> to immediately return a 400 error when arithmetic validation
+        /// fails. Use this for strict validation that prevents processing with line item data that
+        /// has arithmetic inconsistencies.
+        ///
+        /// For card payments, Stripe doesn't send line item data if there's an arithmetic
+        /// validation error to card networks.
+        /// </summary>
+        [JsonProperty("enforce_arithmetic_validation")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("enforce_arithmetic_validation")]
+#endif
+        public bool? EnforceArithmeticValidation { get; set; }
+
+        /// <summary>
         /// A list of line items, each containing information about a product in the PaymentIntent.
         /// There is a maximum of 200 line items.
         /// </summary>

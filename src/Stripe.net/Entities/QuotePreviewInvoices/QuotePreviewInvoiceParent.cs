@@ -9,15 +9,6 @@ namespace Stripe
     public class QuotePreviewInvoiceParent : StripeEntity<QuotePreviewInvoiceParent>
     {
         /// <summary>
-        /// Details about the billing cadence that generated this invoice.
-        /// </summary>
-        [JsonProperty("billing_cadence_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("billing_cadence_details")]
-#endif
-        public QuotePreviewInvoiceParentBillingCadenceDetails BillingCadenceDetails { get; set; }
-
-        /// <summary>
         /// Details about the quote that generated this invoice.
         /// </summary>
         [JsonProperty("quote_details")]
@@ -37,8 +28,7 @@ namespace Stripe
 
         /// <summary>
         /// The type of parent that generated this invoice.
-        /// One of: <c>billing_cadence_details</c>, <c>quote_details</c>, or
-        /// <c>subscription_details</c>.
+        /// One of: <c>quote_details</c>, or <c>subscription_details</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

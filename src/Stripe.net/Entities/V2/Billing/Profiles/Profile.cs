@@ -8,6 +8,10 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// A Billing Profile is a representation of how a bill is paid, separating payment behavior
+    /// from customer identity.
+    /// </summary>
     public class Profile : StripeEntity<Profile>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
