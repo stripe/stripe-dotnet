@@ -30,6 +30,12 @@ namespace Stripe
 #endif
         public string Object { get; set; }
 
+        [JsonProperty("adjustable_quantity")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("adjustable_quantity")]
+#endif
+        public LineItemAdjustableQuantity AdjustableQuantity { get; set; }
+
         /// <summary>
         /// Total discount amount applied. If no discounts were applied, defaults to 0.
         /// </summary>

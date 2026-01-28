@@ -55,5 +55,15 @@ namespace Stripe.Treasury
         [STJS.JsonPropertyName("payout")]
 #endif
         public string Payout { get; set; }
+
+        /// <summary>
+        /// Set if the ReceivedDebit was created due to a <a
+        /// href="https://api.stripe.com#topups">Topup</a> object.
+        /// </summary>
+        [JsonProperty("topup")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("topup")]
+#endif
+        public string Topup { get; set; }
     }
 }

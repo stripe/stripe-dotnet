@@ -22,6 +22,12 @@ namespace Stripe
 #endif
         public long DiscountAmount { get; set; }
 
+        [JsonProperty("error")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("error")]
+#endif
+        public PaymentIntentAmountDetailsError Error { get; set; }
+
         /// <summary>
         /// A list of line items, each containing information about a product in the PaymentIntent.
         /// There is a maximum of 200 line items.

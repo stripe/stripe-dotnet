@@ -84,6 +84,15 @@ namespace Stripe.V2.Core
         public string RegisteredName { get; set; }
 
         /// <summary>
+        /// When the business was incorporated or registered.
+        /// </summary>
+        [JsonProperty("registration_date")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("registration_date")]
+#endif
+        public AccountIdentityBusinessDetailsRegistrationDate RegistrationDate { get; set; }
+
+        /// <summary>
         /// The business registration address of the business entity in non latin script.
         /// </summary>
         [JsonProperty("script_addresses")]
