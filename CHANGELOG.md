@@ -23,6 +23,20 @@ This release changes the pinned API version to `2026-01-28.preview`.
   * Add support for snapshot event `InvoicePaymentDetached` with resource `InvoicePayment`
 * [#3276](https://github.com/stripe/stripe-dotnet/pull/3276) Add EventNotificationHandler example
 
+## 50.3.0 - 2026-01-28
+This release changes the pinned API version to `2026-01-28.clover`.
+
+* [#3296](https://github.com/stripe/stripe-dotnet/pull/3296) Update generated code
+  * Add support for new resource `Radar.PaymentEvaluation`
+  * Add support for `Create` method on resource `Radar.PaymentEvaluation`
+  * Add support for `AdjustableQuantity` on `LineItem`
+  * Add support for `EnforceArithmeticValidation` on `PaymentIntentAmountDetailsOptions`
+  * Add support for `Error` on `PaymentIntent.AmountDetails`
+  * Remove support for `Bgn` on `Terminal.Configuration.Tipping` and `TerminalConfigurationTippingOptions`
+  * Add support for `Topup` on `Treasury.ReceivedDebit.LinkedFlows`
+  * Add support for `ContactPhone` on `V2.Core.AccountCreateOptions`, `V2.Core.AccountTokenCreateOptions`, `V2.Core.AccountUpdateOptions`, and `V2.Core.Account`
+  * Add support for `RegistrationDate` on `V2.Core.Account.Identity.BusinessDetails`, `V2CoreAccountIdentityBusinessDetailsOptions`, and `V2CoreAccountTokenIdentityBusinessDetailsOptions`
+
 ## 50.2.0 - 2026-01-16
 * [#3292](https://github.com/stripe/stripe-dotnet/pull/3292) Update generated code
   * Add support for event notifications `V2CoreAccountClosedEvent`, `V2CoreAccountCreatedEvent`, `V2CoreAccountIncludingConfigurationCustomerCapabilityStatusUpdatedEvent`, `V2CoreAccountIncludingConfigurationCustomerUpdatedEvent`, `V2CoreAccountIncludingConfigurationMerchantCapabilityStatusUpdatedEvent`, `V2CoreAccountIncludingConfigurationMerchantUpdatedEvent`, `V2CoreAccountIncludingConfigurationRecipientCapabilityStatusUpdatedEvent`, `V2CoreAccountIncludingConfigurationRecipientUpdatedEvent`, `V2CoreAccountIncludingDefaultsUpdatedEvent`, `V2CoreAccountIncludingFutureRequirementsUpdatedEvent`, `V2CoreAccountIncludingIdentityUpdatedEvent`, `V2CoreAccountIncludingRequirementsUpdatedEvent`, and `V2CoreAccountUpdatedEvent` with related object `V2.Core.Account`
