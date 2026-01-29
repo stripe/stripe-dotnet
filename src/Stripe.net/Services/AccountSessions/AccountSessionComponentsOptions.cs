@@ -370,5 +370,27 @@ namespace Stripe
         [STJS.JsonPropertyName("agentic_commerce_settings")]
 #endif
         public AccountSessionComponentsAgenticCommerceSettingsOptions AgenticCommerceSettings { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/terminal-hardware-orders/">Terminal
+        /// hardware orders</a> embedded component.
+        /// </summary>
+        [JsonProperty("terminal_hardware_orders")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("terminal_hardware_orders")]
+#endif
+        public AccountSessionComponentsTerminalHardwareOrdersOptions TerminalHardwareOrders { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/terminal-hardware-shop/">Terminal
+        /// hardware shop</a> embedded component.
+        /// </summary>
+        [JsonProperty("terminal_hardware_shop")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("terminal_hardware_shop")]
+#endif
+        public AccountSessionComponentsTerminalHardwareShopOptions TerminalHardwareShop { get; set; }
     }
 }

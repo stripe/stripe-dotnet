@@ -172,5 +172,27 @@ namespace Stripe
         [STJS.JsonPropertyName("network_cost_passthrough_report")]
 #endif
         public AccountSessionComponentsNetworkCostPassthroughReport NetworkCostPassthroughReport { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/terminal-hardware-orders/">Terminal
+        /// hardware orders</a> embedded component.
+        /// </summary>
+        [JsonProperty("terminal_hardware_orders")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("terminal_hardware_orders")]
+#endif
+        public AccountSessionComponentsTerminalHardwareOrders TerminalHardwareOrders { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/terminal-hardware-shop/">Terminal
+        /// hardware shop</a> embedded component.
+        /// </summary>
+        [JsonProperty("terminal_hardware_shop")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("terminal_hardware_shop")]
+#endif
+        public AccountSessionComponentsTerminalHardwareShop TerminalHardwareShop { get; set; }
     }
 }
