@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// Controls whether to debit for accrued metered usage in the current billing period. The
-        /// default is <c>false</c>.
+        /// default is <c>true</c>.
         /// </summary>
         [JsonProperty("outstanding_usage")]
 #if NET6_0_OR_GREATER
@@ -20,7 +20,7 @@ namespace Stripe
 
         /// <summary>
         /// Controls whether to credit for licensed items in the current billing period. The default
-        /// is <c>false</c>.
+        /// is <c>true</c>.
         /// </summary>
         [JsonProperty("unused_time")]
 #if NET6_0_OR_GREATER
