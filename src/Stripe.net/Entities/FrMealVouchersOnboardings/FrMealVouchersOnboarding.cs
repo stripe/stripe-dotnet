@@ -8,9 +8,18 @@ namespace Stripe
 #endif
 
     /// <summary>
-    /// The French Meal Vouchers Onboarding resource encapsulates the onboarding status and
-    /// other related information for a single restaurant (SIRET number) in the context of the
-    /// French Meal Vouchers program.
+    /// The <c>French Meal Vouchers Onboarding</c> resource encapsulates the onboarding status
+    /// and other related information for a single restaurant (SIRET number) in the context of
+    /// the French Meal Vouchers program.
+    ///
+    /// To onboard a restaurant for the French Meal Vouchers program, you create a <c>French
+    /// Meal Vouchers Onboarding</c> object. You can retrieve individual objects, list all such
+    /// objects, or update objects to correct the postal code of the restaurant. We identify
+    /// <c>French Meal Vouchers Onboarding</c> objects with a unique, random ID.
+    ///
+    /// Related guide: <a
+    /// href="https://docs.stripe.com/payments/meal-vouchers/fr-meal-vouchers/set-up-restaurant">Set
+    /// up a restaurant for titres-restaurant payments</a>.
     /// </summary>
     public class FrMealVouchersOnboarding : StripeEntity<FrMealVouchersOnboarding>, IHasId, IHasMetadata, IHasObject
     {
