@@ -47,6 +47,15 @@ namespace Stripe.V2.Billing
         public string Cadence { get; set; }
 
         /// <summary>
+        /// Data for creating a new Cadence.
+        /// </summary>
+        [JsonProperty("cadence_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cadence_data")]
+#endif
+        public IntentCadenceData CadenceData { get; set; }
+
+        /// <summary>
         /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]

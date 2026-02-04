@@ -77,6 +77,15 @@ namespace Stripe.V2.Core
         public string ContactEmail { get; set; }
 
         /// <summary>
+        /// The default contact phone for the Account.
+        /// </summary>
+        [JsonProperty("contact_phone")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("contact_phone")]
+#endif
+        public string ContactPhone { get; set; }
+
+        /// <summary>
         /// Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC
         /// value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>

@@ -9,6 +9,15 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionDeactivateOptions : INestedOptions
     {
         /// <summary>
+        /// Details about why the cancellation is being requested.
+        /// </summary>
+        [JsonProperty("cancellation_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancellation_details")]
+#endif
+        public IntentCreateActionDeactivateCancellationDetailsOptions CancellationDetails { get; set; }
+
+        /// <summary>
         /// Allows users to override the collect at behavior.
         /// One of: <c>next_billing_date</c>, or <c>on_effective_at</c>.
         /// </summary>

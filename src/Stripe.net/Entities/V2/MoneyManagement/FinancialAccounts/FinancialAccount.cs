@@ -34,6 +34,16 @@ namespace Stripe.V2.MoneyManagement
         public string Object { get; set; }
 
         /// <summary>
+        /// If this is a <c>accrued_fees</c> FinancialAccount, this hash include details specific to
+        /// <c>accrued_fees</c> FinancialAccount.
+        /// </summary>
+        [JsonProperty("accrued_fees")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("accrued_fees")]
+#endif
+        public FinancialAccountAccruedFees AccruedFees { get; set; }
+
+        /// <summary>
         /// Multi-currency balance of this FinancialAccount, split by availability state. Each
         /// balance is represented as a hash where the key is the three-letter ISO currency code, in
         /// lowercase, and the value is the amount for that currency.
@@ -154,7 +164,7 @@ namespace Stripe.V2.MoneyManagement
         /// Type of the FinancialAccount. An additional hash is included on the FinancialAccount
         /// with a name matching this value. It contains additional information specific to the
         /// FinancialAccount type.
-        /// One of: <c>other</c>, <c>payments</c>, or <c>storage</c>.
+        /// One of: <c>accrued_fees</c>, <c>other</c>, <c>payments</c>, or <c>storage</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

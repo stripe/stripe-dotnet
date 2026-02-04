@@ -99,5 +99,14 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("receipt_url")]
 #endif
         public string ReceiptUrl { get; set; }
+
+        /// <summary>
+        /// A reference for the Adjustment that associates it with related records or operations.
+        /// </summary>
+        [JsonProperty("reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reference")]
+#endif
+        public string Reference { get; set; }
     }
 }

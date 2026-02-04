@@ -11,6 +11,7 @@ namespace Stripe.V2
         private V2.Core.AccountLinkService accountLinks;
         private V2.Core.AccountTokenService accountTokens;
         private V2.Core.ClaimableSandboxService claimableSandboxes;
+        private V2.Core.ConnectionSessionService connectionSessions;
         private V2.Core.EventService events;
         private V2.Core.EventDestinationService eventDestinations;
         private V2.Core.VaultService vault;
@@ -35,6 +36,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.Core.ClaimableSandboxService ClaimableSandboxes => this.claimableSandboxes ??= new V2.Core.ClaimableSandboxService(
+            this.Requestor);
+
+        public virtual V2.Core.ConnectionSessionService ConnectionSessions => this.connectionSessions ??= new V2.Core.ConnectionSessionService(
             this.Requestor);
 
         public virtual V2.Core.EventService Events => this.events ??= new V2.Core.EventService(

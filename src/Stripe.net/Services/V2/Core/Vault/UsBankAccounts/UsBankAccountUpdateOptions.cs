@@ -9,7 +9,7 @@ namespace Stripe.V2.Core.Vault
     public class UsBankAccountUpdateOptions : BaseOptions
     {
         /// <summary>
-        /// The bank account's fedwire routing number can be provided for update it was were empty
+        /// The bank account's Fedwire routing number can be provided for update if it was empty
         /// previously.
         /// </summary>
         [JsonProperty("fedwire_routing_number")]

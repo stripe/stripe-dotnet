@@ -39,6 +39,15 @@ namespace Stripe.V2.Core
         public string ContactEmail { get; set; }
 
         /// <summary>
+        /// The default contact phone for the Account.
+        /// </summary>
+        [JsonProperty("contact_phone")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("contact_phone")]
+#endif
+        public string ContactPhone { get; set; }
+
+        /// <summary>
         /// A value indicating the Stripe dashboard this Account has access to. This will depend on
         /// which configurations are enabled for this account.
         /// One of: <c>express</c>, <c>full</c>, or <c>none</c>.

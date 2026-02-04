@@ -62,6 +62,16 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedCreditBankTransfer BankTransfer { get; set; }
 
         /// <summary>
+        /// This object stores details about the originating issuing card spend that resulted in the
+        /// ReceivedCredit. Present if <c>type</c> field value is <c>card_spend</c>.
+        /// </summary>
+        [JsonProperty("card_spend")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_spend")]
+#endif
+        public ReceivedCreditCardSpend CardSpend { get; set; }
+
+        /// <summary>
         /// Time at which the ReceivedCredit was created. Represented as a RFC 3339 date &amp; time
         /// UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
@@ -160,8 +170,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. The type of flow that caused the ReceivedCredit.
-        /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>external_credit</c>, or
-        /// <c>stripe_balance_payment</c>.
+        /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>card_spend</c>,
+        /// <c>external_credit</c>, or <c>stripe_balance_payment</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
