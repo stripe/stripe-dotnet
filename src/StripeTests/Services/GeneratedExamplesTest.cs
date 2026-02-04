@@ -6609,6 +6609,11 @@ namespace StripeTests
                         },
                         Deactivate = new Stripe.V2.Billing.IntentCreateActionDeactivateOptions
                         {
+                            CancellationDetails = new Stripe.V2.Billing.IntentCreateActionDeactivateCancellationDetailsOptions
+                            {
+                                Comment = "comment",
+                                Feedback = "other",
+                            },
                             CollectAt = "next_billing_date",
                             EffectiveAt = new Stripe.V2.Billing.IntentCreateActionDeactivateEffectiveAtOptions
                             {
@@ -7674,7 +7679,10 @@ namespace StripeTests
                 "/v2/billing/rate_cards/rate_card_id_123/rates",
                 (HttpStatusCode)200,
                 "{\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"metered_item\":{\"created\":\"1970-01-12T21:42:34.472Z\",\"display_name\":\"display_name\",\"id\":\"obj_123\",\"invoice_presentation_dimensions\":[\"invoice_presentation_dimensions\"],\"meter\":\"meter\",\"meter_segment_conditions\":[{\"dimension\":\"dimension\",\"value\":\"value\"}],\"object\":\"v2.billing.metered_item\",\"livemode\":true},\"object\":\"v2.billing.rate_card_rate\",\"rate_card\":\"rate_card\",\"rate_card_version\":\"rate_card_version\",\"tiers\":[{}],\"livemode\":true}");
-            var options = new Stripe.V2.Billing.RateCards.RateCreateOptions();
+            var options = new Stripe.V2.Billing.RateCards.RateCreateOptions
+            {
+                MeteredItem = "metered_item",
+            };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Billing.RateCards.Rates;
             Stripe.V2.Billing.RateCardRate rateCardRate = service.Create(
@@ -8222,6 +8230,42 @@ namespace StripeTests
             this.AssertRequest(
                 HttpMethod.Get,
                 "/v2/core/claimable_sandboxes/id_123");
+        }
+
+        [Fact]
+        public void TestV2CoreConnectionSessionPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/connection_sessions",
+                (HttpStatusCode)200,
+                "{\"account\":\"account\",\"client_secret\":\"client_secret\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.connection_session\",\"livemode\":true}");
+            var options = new Stripe.V2.Core.ConnectionSessionCreateOptions
+            {
+                Account = "account",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ConnectionSessions;
+            Stripe.V2.Core.ConnectionSession connectionSession = service.Create(
+                options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/connection_sessions");
+        }
+
+        [Fact]
+        public void TestV2CoreConnectionSessionGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/core/connection_sessions/id_123",
+                (HttpStatusCode)200,
+                "{\"account\":\"account\",\"client_secret\":\"client_secret\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.core.connection_session\",\"livemode\":true}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.ConnectionSessions;
+            Stripe.V2.Core.ConnectionSession connectionSession = service.Get(
+                "id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/core/connection_sessions/id_123");
         }
 
         [Fact]
@@ -8830,7 +8874,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/financial_accounts",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"other\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"payments\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAccounts;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.FinancialAccount> financialAccounts = service
@@ -8847,7 +8891,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/financial_accounts",
                 (HttpStatusCode)200,
-                "{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"other\",\"livemode\":true}");
+                "{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"payments\",\"livemode\":true}");
             var options = new Stripe.V2.MoneyManagement.FinancialAccountCreateOptions
             {
                 Type = "storage",
@@ -8868,7 +8912,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/financial_accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"other\",\"livemode\":true}");
+                "{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"payments\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAccounts;
             Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
@@ -8885,7 +8929,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/financial_accounts/id_123",
                 (HttpStatusCode)200,
-                "{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"other\",\"livemode\":true}");
+                "{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"payments\",\"livemode\":true}");
             var options = new Stripe.V2.MoneyManagement.FinancialAccountUpdateOptions();
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAccounts;
@@ -8903,7 +8947,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/money_management/financial_accounts/id_123/close",
                 (HttpStatusCode)200,
-                "{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"other\",\"livemode\":true}");
+                "{\"balance\":{\"available\":{\"key\":{}},\"inbound_pending\":{\"key\":{}},\"outbound_pending\":{\"key\":{}}},\"country\":\"country\",\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.financial_account\",\"status\":\"closed\",\"type\":\"payments\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.FinancialAccounts;
             Stripe.V2.MoneyManagement.FinancialAccount financialAccount = service
@@ -9446,7 +9490,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_credits",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"status\":\"returned\",\"type\":\"external_credit\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"status\":\"returned\",\"type\":\"balance_transfer\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedCredits;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.ReceivedCredit> receivedCredits = service
@@ -9463,7 +9507,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_credits/id_123",
                 (HttpStatusCode)200,
-                "{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"status\":\"returned\",\"type\":\"external_credit\",\"livemode\":true}");
+                "{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_credit\",\"status\":\"returned\",\"type\":\"balance_transfer\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedCredits;
             Stripe.V2.MoneyManagement.ReceivedCredit receivedCredit = service
@@ -9480,7 +9524,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_debits",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"status\":\"canceled\",\"type\":\"external_debit\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"status\":\"canceled\",\"type\":\"balance_transfer\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedDebits;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.ReceivedDebit> receivedDebits = service
@@ -9497,7 +9541,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/received_debits/id_123",
                 (HttpStatusCode)200,
-                "{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"status\":\"canceled\",\"type\":\"external_debit\",\"livemode\":true}");
+                "{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.received_debit\",\"status\":\"canceled\",\"type\":\"balance_transfer\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.ReceivedDebits;
             Stripe.V2.MoneyManagement.ReceivedDebit receivedDebit = service.Get(
@@ -9569,7 +9613,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transactions",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"amount\":{},\"balance_impact\":{\"available\":{},\"inbound_pending\":{},\"outbound_pending\":{}},\"category\":\"received_debit\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"fee_transaction\"},\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"status\":\"pending\",\"status_transitions\":{},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"amount\":{},\"balance_impact\":{\"available\":{},\"inbound_pending\":{},\"outbound_pending\":{}},\"category\":\"issuing_dispute_provisional_credit_reversal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"adjustment\"},\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"status\":\"pending\",\"status_transitions\":{},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.Transactions;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.Transaction> transactions = service
@@ -9586,7 +9630,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transactions/id_123",
                 (HttpStatusCode)200,
-                "{\"amount\":{},\"balance_impact\":{\"available\":{},\"inbound_pending\":{},\"outbound_pending\":{}},\"category\":\"received_debit\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"fee_transaction\"},\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"status\":\"pending\",\"status_transitions\":{},\"livemode\":true}");
+                "{\"amount\":{},\"balance_impact\":{\"available\":{},\"inbound_pending\":{},\"outbound_pending\":{}},\"category\":\"issuing_dispute_provisional_credit_reversal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"adjustment\"},\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"status\":\"pending\",\"status_transitions\":{},\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.Transactions;
             Stripe.V2.MoneyManagement.Transaction transaction = service.Get(
@@ -9603,7 +9647,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transaction_entries",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"balance_impact\":{\"available\":{},\"inbound_pending\":{},\"outbound_pending\":{}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"received_debit\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"fee_transaction\"}},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"balance_impact\":{\"available\":{},\"inbound_pending\":{},\"outbound_pending\":{}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"issuing_dispute_provisional_credit_reversal\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"adjustment\"}},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.TransactionEntries;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.TransactionEntry> transactionEntries = service
@@ -9620,7 +9664,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transaction_entries/id_123",
                 (HttpStatusCode)200,
-                "{\"balance_impact\":{\"available\":{},\"inbound_pending\":{},\"outbound_pending\":{}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"received_debit\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"fee_transaction\"}},\"livemode\":true}");
+                "{\"balance_impact\":{\"available\":{},\"inbound_pending\":{},\"outbound_pending\":{}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"issuing_dispute_provisional_credit_reversal\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"adjustment\"}},\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.TransactionEntries;
             Stripe.V2.MoneyManagement.TransactionEntry transactionEntry = service
@@ -9738,6 +9782,23 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2PaymentsSettlementAllocationIntentGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/payments/settlement_allocation_intents",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"expected_settlement_date\":\"1970-01-22T14:14:13.629Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"linked_credits\":[\"linked_credits\"],\"object\":\"v2.payments.settlement_allocation_intent\",\"reference\":\"reference\",\"status\":\"canceled\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Payments.SettlementAllocationIntents;
+            Stripe.V2.StripeList<Stripe.V2.Payments.SettlementAllocationIntent> settlementAllocationIntents = service
+                .List();
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/payments/settlement_allocation_intents");
+        }
+
+        [Fact]
         public void TestV2PaymentsSettlementAllocationIntentPost()
         {
             this.StubRequest(
@@ -9768,7 +9829,7 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2PaymentsSettlementAllocationIntentGet()
+        public void TestV2PaymentsSettlementAllocationIntentGet2()
         {
             this.StubRequest(
                 HttpMethod.Get,
@@ -9837,13 +9898,30 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2PaymentsSettlementAllocationIntentsSplitGet()
+        {
+            this.StubRequest(
+                HttpMethod.Get,
+                "/v2/payments/settlement_allocation_intents/settlement_allocation_intent_id_123/splits",
+                (HttpStatusCode)200,
+                "{\"data\":[{\"account\":\"account\",\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.payments.settlement_allocation_intent_split\",\"settlement_allocation_intent\":\"settlement_allocation_intent\",\"status\":\"canceled\",\"type\":\"credit\",\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Payments.SettlementAllocationIntents.Splits;
+            Stripe.V2.StripeList<Stripe.V2.Payments.SettlementAllocationIntentSplit> settlementAllocationIntentSplits = service
+                .List("settlement_allocation_intent_id_123");
+            this.AssertRequest(
+                HttpMethod.Get,
+                "/v2/payments/settlement_allocation_intents/settlement_allocation_intent_id_123/splits");
+        }
+
+        [Fact]
         public void TestV2PaymentsSettlementAllocationIntentsSplitPost()
         {
             this.StubRequest(
                 HttpMethod.Post,
                 "/v2/payments/settlement_allocation_intents/settlement_allocation_intent_id_123/splits",
                 (HttpStatusCode)200,
-                "{\"account\":\"account\",\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"flow\":{\"type\":\"outbound_payment\"},\"id\":\"obj_123\",\"object\":\"v2.payments.settlement_allocation_intent_split\",\"settlement_allocation_intent\":\"settlement_allocation_intent\",\"status\":\"canceled\",\"type\":\"credit\",\"livemode\":true}");
+                "{\"account\":\"account\",\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.payments.settlement_allocation_intent_split\",\"settlement_allocation_intent\":\"settlement_allocation_intent\",\"status\":\"canceled\",\"type\":\"credit\",\"livemode\":true}");
             var options = new Stripe.V2.Payments.SettlementAllocationIntents.SplitCreateOptions
             {
                 Account = "account",
@@ -9864,13 +9942,13 @@ namespace StripeTests
         }
 
         [Fact]
-        public void TestV2PaymentsSettlementAllocationIntentsSplitGet()
+        public void TestV2PaymentsSettlementAllocationIntentsSplitGet2()
         {
             this.StubRequest(
                 HttpMethod.Get,
                 "/v2/payments/settlement_allocation_intents/settlement_allocation_intent_id_123/splits/id_123",
                 (HttpStatusCode)200,
-                "{\"account\":\"account\",\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"flow\":{\"type\":\"outbound_payment\"},\"id\":\"obj_123\",\"object\":\"v2.payments.settlement_allocation_intent_split\",\"settlement_allocation_intent\":\"settlement_allocation_intent\",\"status\":\"canceled\",\"type\":\"credit\",\"livemode\":true}");
+                "{\"account\":\"account\",\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.payments.settlement_allocation_intent_split\",\"settlement_allocation_intent\":\"settlement_allocation_intent\",\"status\":\"canceled\",\"type\":\"credit\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Payments.SettlementAllocationIntents.Splits;
             Stripe.V2.Payments.SettlementAllocationIntentSplit settlementAllocationIntentSplit = service
@@ -9887,7 +9965,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/payments/settlement_allocation_intents/settlement_allocation_intent_id_123/splits/id_123/cancel",
                 (HttpStatusCode)200,
-                "{\"account\":\"account\",\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"flow\":{\"type\":\"outbound_payment\"},\"id\":\"obj_123\",\"object\":\"v2.payments.settlement_allocation_intent_split\",\"settlement_allocation_intent\":\"settlement_allocation_intent\",\"status\":\"canceled\",\"type\":\"credit\",\"livemode\":true}");
+                "{\"account\":\"account\",\"amount\":{},\"created\":\"1970-01-12T21:42:34.472Z\",\"id\":\"obj_123\",\"object\":\"v2.payments.settlement_allocation_intent_split\",\"settlement_allocation_intent\":\"settlement_allocation_intent\",\"status\":\"canceled\",\"type\":\"credit\",\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Payments.SettlementAllocationIntents.Splits;
             Stripe.V2.Payments.SettlementAllocationIntentSplit settlementAllocationIntentSplit = service
@@ -10201,7 +10279,7 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/vault/us_bank_accounts",
                 (HttpStatusCode)400,
-                "{\"error\":{\"type\":\"blocked_by_stripe\",\"code\":\"blocked_payout_method_bank_account\"}}");
+                "{\"error\":{\"type\":\"blocked_by_stripe\",\"code\":\"blocked_payout_method\"}}");
             var exception = Assert.Throws<Stripe.V2.BlockedByStripeException>(
             () =>
             {

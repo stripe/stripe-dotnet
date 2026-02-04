@@ -298,6 +298,7 @@ namespace Stripe
                 { "v2.core.account_person_token", typeof(V2.Core.AccountPersonToken) },
                 { "v2.core.account_token", typeof(V2.Core.AccountToken) },
                 { "v2.core.claimable_sandbox", typeof(V2.Core.ClaimableSandbox) },
+                { "v2.core.connection_session", typeof(V2.Core.ConnectionSession) },
                 { "v2.core.event", typeof(V2.Core.Event) },
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },

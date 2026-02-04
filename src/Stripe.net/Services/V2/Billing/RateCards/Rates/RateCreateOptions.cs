@@ -10,7 +10,8 @@ namespace Stripe.V2.Billing.RateCards
     public class RateCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// The custom pricing unit that this rate binds to.
+        /// The custom pricing unit that this rate binds to. One of <c>unit_amount</c>,
+        /// <c>tiers</c>, or <c>custom_pricing_unit_amount</c> is required.
         /// </summary>
         [JsonProperty("custom_pricing_unit_amount")]
 #if NET6_0_OR_GREATER
@@ -41,8 +42,8 @@ namespace Stripe.V2.Billing.RateCards
         /// <summary>
         /// Defines whether the tiered price should be graduated or volume-based. In volume-based
         /// tiering, the maximum quantity within a period determines the per-unit price. In
-        /// graduated tiering, the pricing changes as the quantity grows into new tiers. Can only be
-        /// set if <c>tiers</c> is set.
+        /// graduated tiering, the pricing changes as the quantity grows into new tiers. One of
+        /// <c>unit_amount</c>, <c>tiers</c>, or <c>custom_pricing_unit_amount</c> is required.
         /// One of: <c>graduated</c>, or <c>volume</c>.
         /// </summary>
         [JsonProperty("tiering_mode")]
@@ -52,7 +53,8 @@ namespace Stripe.V2.Billing.RateCards
         public string TieringMode { get; set; }
 
         /// <summary>
-        /// Each element represents a pricing tier. Cannot be set if <c>unit_amount</c> is provided.
+        /// Each element represents a pricing tier. One of <c>unit_amount</c>, <c>tiers</c>, or
+        /// <c>custom_pricing_unit_amount</c> is required.
         /// </summary>
         [JsonProperty("tiers")]
 #if NET6_0_OR_GREATER
@@ -72,7 +74,8 @@ namespace Stripe.V2.Billing.RateCards
 
         /// <summary>
         /// The per-unit amount to be charged, represented as a decimal string in minor currency
-        /// units with at most 12 decimal places. Cannot be set if <c>tiers</c> is provided.
+        /// units with at most 12 decimal places. One of <c>unit_amount</c>, <c>tiers</c>, or
+        /// <c>custom_pricing_unit_amount</c> is required.
         /// </summary>
         [JsonProperty("unit_amount")]
 #if NET6_0_OR_GREATER

@@ -2,6 +2,7 @@
 namespace Stripe.V2.Payments.SettlementAllocationIntents
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -65,6 +66,38 @@ namespace Stripe.V2.Payments.SettlementAllocationIntents
         public virtual Task<V2.Payments.SettlementAllocationIntentSplit> GetAsync(string parentId, string id, SplitGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<V2.Payments.SettlementAllocationIntentSplit>(BaseAddress.Api, HttpMethod.Get, $"/v2/payments/settlement_allocation_intents/{WebUtility.UrlEncode(parentId)}/splits/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// List SettlementAllocationIntentSplits API.
+        /// </summary>
+        public virtual V2.StripeList<V2.Payments.SettlementAllocationIntentSplit> List(string id, SplitListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<V2.StripeList<V2.Payments.SettlementAllocationIntentSplit>>(BaseAddress.Api, HttpMethod.Get, $"/v2/payments/settlement_allocation_intents/{WebUtility.UrlEncode(id)}/splits", options, requestOptions);
+        }
+
+        /// <summary>
+        /// List SettlementAllocationIntentSplits API.
+        /// </summary>
+        public virtual Task<V2.StripeList<V2.Payments.SettlementAllocationIntentSplit>> ListAsync(string id, SplitListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<V2.StripeList<V2.Payments.SettlementAllocationIntentSplit>>(BaseAddress.Api, HttpMethod.Get, $"/v2/payments/settlement_allocation_intents/{WebUtility.UrlEncode(id)}/splits", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// List SettlementAllocationIntentSplits API.
+        /// </summary>
+        public virtual IEnumerable<V2.Payments.SettlementAllocationIntentSplit> ListAutoPaging(string id, SplitListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<V2.Payments.SettlementAllocationIntentSplit>($"/v2/payments/settlement_allocation_intents/{WebUtility.UrlEncode(id)}/splits", options, requestOptions);
+        }
+
+        /// <summary>
+        /// List SettlementAllocationIntentSplits API.
+        /// </summary>
+        public virtual IAsyncEnumerable<V2.Payments.SettlementAllocationIntentSplit> ListAutoPagingAsync(string id, SplitListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<V2.Payments.SettlementAllocationIntentSplit>($"/v2/payments/settlement_allocation_intents/{WebUtility.UrlEncode(id)}/splits", options, requestOptions, cancellationToken);
         }
     }
 }

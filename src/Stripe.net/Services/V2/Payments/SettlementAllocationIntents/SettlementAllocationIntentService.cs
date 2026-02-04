@@ -2,6 +2,7 @@
 namespace Stripe.V2.Payments
 {
     using System;
+    using System.Collections.Generic;
     using System.Net;
     using System.Net.Http;
     using System.Threading;
@@ -72,6 +73,38 @@ namespace Stripe.V2.Payments
         public virtual Task<SettlementAllocationIntent> GetAsync(string id, SettlementAllocationIntentGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.RequestAsync<SettlementAllocationIntent>(BaseAddress.Api, HttpMethod.Get, $"/v2/payments/settlement_allocation_intents/{WebUtility.UrlEncode(id)}", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Lists all SettlementAllocationIntents.
+        /// </summary>
+        public virtual V2.StripeList<SettlementAllocationIntent> List(SettlementAllocationIntentListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<V2.StripeList<SettlementAllocationIntent>>(BaseAddress.Api, HttpMethod.Get, $"/v2/payments/settlement_allocation_intents", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Lists all SettlementAllocationIntents.
+        /// </summary>
+        public virtual Task<V2.StripeList<SettlementAllocationIntent>> ListAsync(SettlementAllocationIntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<V2.StripeList<SettlementAllocationIntent>>(BaseAddress.Api, HttpMethod.Get, $"/v2/payments/settlement_allocation_intents", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Lists all SettlementAllocationIntents.
+        /// </summary>
+        public virtual IEnumerable<SettlementAllocationIntent> ListAutoPaging(SettlementAllocationIntentListOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.ListRequestAutoPaging<SettlementAllocationIntent>($"/v2/payments/settlement_allocation_intents", options, requestOptions);
+        }
+
+        /// <summary>
+        /// Lists all SettlementAllocationIntents.
+        /// </summary>
+        public virtual IAsyncEnumerable<SettlementAllocationIntent> ListAutoPagingAsync(SettlementAllocationIntentListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.ListRequestAutoPagingAsync<SettlementAllocationIntent>($"/v2/payments/settlement_allocation_intents", options, requestOptions, cancellationToken);
         }
 
         /// <summary>

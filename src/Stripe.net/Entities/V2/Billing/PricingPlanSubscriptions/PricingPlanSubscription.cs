@@ -39,6 +39,16 @@ namespace Stripe.V2.Billing
         public string BillingCadence { get; set; }
 
         /// <summary>
+        /// Details about why the subscription was canceled, if applicable. Includes
+        /// system-generated reason.
+        /// </summary>
+        [JsonProperty("cancellation_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cancellation_details")]
+#endif
+        public PricingPlanSubscriptionCancellationDetails CancellationDetails { get; set; }
+
+        /// <summary>
         /// Current collection status of this subscription.
         /// One of: <c>awaiting_customer_action</c>, <c>current</c>, <c>past_due</c>, <c>paused</c>,
         /// or <c>unpaid</c>.

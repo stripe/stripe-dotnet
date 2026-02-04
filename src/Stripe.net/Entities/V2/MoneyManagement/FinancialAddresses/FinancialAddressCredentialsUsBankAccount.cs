@@ -9,6 +9,24 @@ namespace Stripe.V2.MoneyManagement
     public class FinancialAddressCredentialsUsBankAccount : StripeEntity<FinancialAddressCredentialsUsBankAccount>
     {
         /// <summary>
+        /// The address of the account holder.
+        /// </summary>
+        [JsonProperty("account_holder_address")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_holder_address")]
+#endif
+        public FinancialAddressCredentialsUsBankAccountAccountHolderAddress AccountHolderAddress { get; set; }
+
+        /// <summary>
+        /// The name of the account holder.
+        /// </summary>
+        [JsonProperty("account_holder_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("account_holder_name")]
+#endif
+        public string AccountHolderName { get; set; }
+
+        /// <summary>
         /// The account number of the US Bank Account.
         /// </summary>
         [JsonProperty("account_number")]

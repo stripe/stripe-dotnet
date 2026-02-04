@@ -56,9 +56,25 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open Enum. A descriptive category used to classify the Transaction.
-        /// One of: <c>adjustment</c>, <c>currency_conversion</c>, <c>inbound_transfer</c>,
-        /// <c>outbound_payment</c>, <c>outbound_transfer</c>, <c>received_credit</c>,
-        /// <c>received_debit</c>, <c>return</c>, or <c>stripe_fee</c>.
+        /// One of: <c>adjustment</c>, <c>advance</c>, <c>anticipation_repayment</c>,
+        /// <c>balance_transfer</c>, <c>charge</c>, <c>charge_failure</c>,
+        /// <c>climate_order_purchase</c>, <c>climate_order_refund</c>,
+        /// <c>connect_collection_transfer</c>, <c>connect_reserved_funds</c>, <c>contribution</c>,
+        /// <c>currency_conversion</c>, <c>dispute_reversal</c>, <c>financing_paydown</c>,
+        /// <c>financing_paydown_reversal</c>, <c>inbound_transfer</c>,
+        /// <c>inbound_transfer_reversal</c>, <c>issuing_dispute</c>,
+        /// <c>issuing_dispute_fraud_liability_debit</c>, <c>issuing_dispute_provisional_credit</c>,
+        /// <c>issuing_dispute_provisional_credit_reversal</c>, <c>minimum_balance_hold</c>,
+        /// <c>network_cost</c>, <c>obligation</c>, <c>outbound_payment</c>,
+        /// <c>outbound_payment_reversal</c>, <c>outbound_transfer</c>,
+        /// <c>outbound_transfer_reversal</c>, <c>partial_capture_reversal</c>,
+        /// <c>payment_network_reserved_funds</c>, <c>platform_earning</c>,
+        /// <c>platform_earning_refund</c>, <c>platform_fee</c>, <c>received_credit</c>,
+        /// <c>received_credit_reversal</c>, <c>received_debit</c>, <c>received_debit_reversal</c>,
+        /// <c>refund_failure</c>, <c>return</c>, <c>risk_reserved_funds</c>,
+        /// <c>stripe_balance_payment_debit</c>, <c>stripe_balance_payment_debit_reversal</c>,
+        /// <c>stripe_fee</c>, <c>stripe_fee_tax</c>, <c>transfer_reversal</c>, or
+        /// <c>unreconciled_customer_funds</c>.
         /// </summary>
         [JsonProperty("category")]
 #if NET6_0_OR_GREATER

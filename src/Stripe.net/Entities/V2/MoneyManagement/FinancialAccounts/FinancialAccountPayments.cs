@@ -27,5 +27,14 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("settlement_currencies")]
 #endif
         public List<string> SettlementCurrencies { get; set; }
+
+        /// <summary>
+        /// Describes the available balance when it was projected.
+        /// </summary>
+        [JsonProperty("starting_balance")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("starting_balance")]
+#endif
+        public FinancialAccountPaymentsStartingBalance StartingBalance { get; set; }
     }
 }

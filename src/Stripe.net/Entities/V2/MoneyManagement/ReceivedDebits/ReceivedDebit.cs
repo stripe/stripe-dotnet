@@ -61,6 +61,16 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedDebitBankTransfer BankTransfer { get; set; }
 
         /// <summary>
+        /// This object stores details about the issuing transactions that resulted in the
+        /// ReceivedDebit. Present if <c>type</c> field value is <c>card_spend</c>.
+        /// </summary>
+        [JsonProperty("card_spend")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("card_spend")]
+#endif
+        public ReceivedDebitCardSpend CardSpend { get; set; }
+
+        /// <summary>
         /// The time at which the ReceivedDebit was created. Represented as a RFC 3339 date &amp;
         /// time UTC value in millisecond precision, for example: <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
@@ -157,8 +167,8 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// Open enum, the type of the received debit.
-        /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>external_debit</c>, or
-        /// <c>stripe_balance_payment</c>.
+        /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>card_spend</c>,
+        /// <c>external_debit</c>, or <c>stripe_balance_payment</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

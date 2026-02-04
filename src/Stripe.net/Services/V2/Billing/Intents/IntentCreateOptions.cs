@@ -28,6 +28,15 @@ namespace Stripe.V2.Billing
         public string Cadence { get; set; }
 
         /// <summary>
+        /// Data for creating a new Cadence.
+        /// </summary>
+        [JsonProperty("cadence_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cadence_data")]
+#endif
+        public IntentCreateCadenceDataOptions CadenceData { get; set; }
+
+        /// <summary>
         /// Three-letter ISO currency code, in lowercase. Must be a supported currency.
         /// </summary>
         [JsonProperty("currency")]
