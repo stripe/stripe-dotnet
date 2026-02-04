@@ -319,5 +319,16 @@ namespace Stripe
         [STJS.JsonPropertyName("refunds")]
 #endif
         public StripeList<ApplicationFeeRefund> Refunds { get; set; }
+
+        /// <summary>
+        /// Type of settlement for the application fee. One of <c>net_settled</c> or
+        /// <c>gross_settled</c>.
+        /// One of: <c>gross_settled</c>, or <c>net_settled</c>.
+        /// </summary>
+        [JsonProperty("settlement_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("settlement_type")]
+#endif
+        public string SettlementType { get; set; }
     }
 }
