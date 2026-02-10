@@ -28,7 +28,8 @@ namespace Stripe
 
         /// <summary>
         /// The type of the pricing details.
-        /// One of: <c>license_fee_details</c>, <c>price_details</c>, or
+        /// One of: <c>license_fee_details</c>, <c>price_details</c>,
+        /// <c>rate_card_custom_pricing_unit_overage_rate_details</c>, or
         /// <c>rate_card_rate_details</c>.
         /// </summary>
         [JsonProperty("type")]
@@ -46,5 +47,11 @@ namespace Stripe
         [STJS.JsonPropertyName("unit_amount_decimal")]
 #endif
         public decimal? UnitAmountDecimal { get; set; }
+
+        [JsonProperty("rate_card_custom_pricing_unit_overage_rate_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("rate_card_custom_pricing_unit_overage_rate_details")]
+#endif
+        public InvoiceItemPricingRateCardCustomPricingUnitOverageRateDetails RateCardCustomPricingUnitOverageRateDetails { get; set; }
     }
 }
