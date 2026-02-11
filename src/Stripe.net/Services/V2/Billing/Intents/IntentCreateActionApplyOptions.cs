@@ -9,7 +9,17 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionApplyOptions : INestedOptions
     {
         /// <summary>
+        /// When the apply action will take effect. Defaults to on_reserve if not specified.
+        /// </summary>
+        [JsonProperty("effective_at")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("effective_at")]
+#endif
+        public IntentCreateActionApplyEffectiveAtOptions EffectiveAt { get; set; }
+
+        /// <summary>
         /// Type of the apply action details.
+        /// One of: <c>invoice_discount_rule</c>, or <c>spend_modifier_rule</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
@@ -25,5 +35,14 @@ namespace Stripe.V2.Billing
         [STJS.JsonPropertyName("invoice_discount_rule")]
 #endif
         public IntentCreateActionApplyInvoiceDiscountRuleOptions InvoiceDiscountRule { get; set; }
+
+        /// <summary>
+        /// Details for applying a spend modifier rule. Only present if type is spend_modifier_rule.
+        /// </summary>
+        [JsonProperty("spend_modifier_rule")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("spend_modifier_rule")]
+#endif
+        public IntentCreateActionApplySpendModifierRuleOptions SpendModifierRule { get; set; }
     }
 }

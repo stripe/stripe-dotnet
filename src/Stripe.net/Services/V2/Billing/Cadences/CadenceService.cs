@@ -10,6 +10,8 @@ namespace Stripe.V2.Billing
 
     public class CadenceService : Service
     {
+        private V2.Billing.Cadences.SpendModifierRuleService spendModifierRules;
+
         internal CadenceService(ApiRequestor requestor)
             : base(requestor)
         {
@@ -19,6 +21,9 @@ namespace Stripe.V2.Billing
             : base(client)
         {
         }
+
+        public virtual V2.Billing.Cadences.SpendModifierRuleService SpendModifierRules => this.spendModifierRules ??= new V2.Billing.Cadences.SpendModifierRuleService(
+            this.Requestor);
 
         /// <summary>
         /// Cancel the Billing Cadence.

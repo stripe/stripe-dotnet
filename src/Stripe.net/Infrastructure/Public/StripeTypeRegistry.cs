@@ -256,6 +256,7 @@ namespace Stripe
                 { "v2.billing.bill_setting", typeof(V2.Billing.BillSetting) },
                 { "v2.billing.bill_setting_version", typeof(V2.Billing.BillSettingVersion) },
                 { "v2.billing.cadence", typeof(V2.Billing.Cadence) },
+                { "v2.billing.cadence_spend_modifier", typeof(V2.Billing.CadenceSpendModifier) },
                 { "v2.billing.collection_setting", typeof(V2.Billing.CollectionSetting) },
                 {
                     "v2.billing.collection_setting_version", typeof(
@@ -275,6 +276,7 @@ namespace Stripe
                 { "v2.billing.meter_event_adjustment", typeof(V2.Billing.MeterEventAdjustment) },
                 { "v2.billing.meter_event_session", typeof(V2.Billing.MeterEventSession) },
                 { "v2.billing.metered_item", typeof(V2.Billing.MeteredItem) },
+                { "v2.billing.one_time_item", typeof(V2.Billing.OneTimeItem) },
                 { "v2.billing.pricing_plan", typeof(V2.Billing.PricingPlan) },
                 { "v2.billing.pricing_plan_component", typeof(V2.Billing.PricingPlanComponent) },
                 {
@@ -288,6 +290,10 @@ namespace Stripe
                 { "v2.billing.pricing_plan_version", typeof(V2.Billing.PricingPlanVersion) },
                 { "v2.billing.profile", typeof(V2.Billing.Profile) },
                 { "v2.billing.rate_card", typeof(V2.Billing.RateCard) },
+                {
+                    "v2.billing.rate_card_custom_pricing_unit_overage_rate", typeof(
+                    V2.Billing.RateCardCustomPricingUnitOverageRate)
+                },
                 { "v2.billing.rate_card_rate", typeof(V2.Billing.RateCardRate) },
                 { "v2.billing.rate_card_subscription", typeof(V2.Billing.RateCardSubscription) },
                 { "v2.billing.rate_card_version", typeof(V2.Billing.RateCardVersion) },

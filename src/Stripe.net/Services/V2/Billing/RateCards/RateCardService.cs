@@ -10,6 +10,7 @@ namespace Stripe.V2.Billing
 
     public class RateCardService : Service
     {
+        private V2.Billing.RateCards.CustomPricingUnitOverageRateService customPricingUnitOverageRates;
         private V2.Billing.RateCards.RateService rates;
         private V2.Billing.RateCards.VersionService versions;
 
@@ -22,6 +23,9 @@ namespace Stripe.V2.Billing
             : base(client)
         {
         }
+
+        public virtual V2.Billing.RateCards.CustomPricingUnitOverageRateService CustomPricingUnitOverageRates => this.customPricingUnitOverageRates ??= new V2.Billing.RateCards.CustomPricingUnitOverageRateService(
+            this.Requestor);
 
         public virtual V2.Billing.RateCards.RateService Rates => this.rates ??= new V2.Billing.RateCards.RateService(
             this.Requestor);
