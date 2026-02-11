@@ -28,6 +28,6 @@ namespace Stripe.Events
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
 #endif
-        public long? Value { get; set; }
+        public long Value { get; set; }
     }
 }

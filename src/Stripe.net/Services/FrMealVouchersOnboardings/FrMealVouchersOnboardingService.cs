@@ -29,8 +29,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Creates a French Meal Vouchers Onboarding object that represents a restaurant’s
-        /// onboarding status and starts the onboarding process.</p>.
+        /// <p>Creates a <c>French Meal Vouchers Onboarding</c> object that represents a
+        /// restaurant’s onboarding status and starts the onboarding process.</p>.
         /// </summary>
         public virtual FrMealVouchersOnboarding Create(FrMealVouchersOnboardingCreateOptions options, RequestOptions requestOptions = null)
         {
@@ -38,8 +38,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Creates a French Meal Vouchers Onboarding object that represents a restaurant’s
-        /// onboarding status and starts the onboarding process.</p>.
+        /// <p>Creates a <c>French Meal Vouchers Onboarding</c> object that represents a
+        /// restaurant’s onboarding status and starts the onboarding process.</p>.
         /// </summary>
         public virtual Task<FrMealVouchersOnboarding> CreateAsync(FrMealVouchersOnboardingCreateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -47,7 +47,11 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Retrieves the details of a French Meal Vouchers Onboarding object</p>.
+        /// <p>Retrieves the details of a previously created <c>French Meal Vouchers Onboarding</c>
+        /// object.</p>.
+        ///
+        /// <p>Supply the unique <c>French Meal Vouchers Onboarding</c> ID that was returned from
+        /// your previous request, and Stripe returns the corresponding onboarding information.</p>.
         /// </summary>
         public virtual FrMealVouchersOnboarding Get(string id, FrMealVouchersOnboardingGetOptions options = null, RequestOptions requestOptions = null)
         {
@@ -55,7 +59,11 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Retrieves the details of a French Meal Vouchers Onboarding object</p>.
+        /// <p>Retrieves the details of a previously created <c>French Meal Vouchers Onboarding</c>
+        /// object.</p>.
+        ///
+        /// <p>Supply the unique <c>French Meal Vouchers Onboarding</c> ID that was returned from
+        /// your previous request, and Stripe returns the corresponding onboarding information.</p>.
         /// </summary>
         public virtual Task<FrMealVouchersOnboarding> GetAsync(string id, FrMealVouchersOnboardingGetOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -63,7 +71,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Lists French Meal Vouchers Onboarding objects</p>.
+        /// <p>Lists <c>French Meal Vouchers Onboarding</c> objects. The objects are returned in
+        /// sorted order, with the most recently created objects appearing first.</p>.
         /// </summary>
         public virtual StripeList<FrMealVouchersOnboarding> List(FrMealVouchersOnboardingListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -71,7 +80,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Lists French Meal Vouchers Onboarding objects</p>.
+        /// <p>Lists <c>French Meal Vouchers Onboarding</c> objects. The objects are returned in
+        /// sorted order, with the most recently created objects appearing first.</p>.
         /// </summary>
         public virtual Task<StripeList<FrMealVouchersOnboarding>> ListAsync(FrMealVouchersOnboardingListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -79,7 +89,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Lists French Meal Vouchers Onboarding objects</p>.
+        /// <p>Lists <c>French Meal Vouchers Onboarding</c> objects. The objects are returned in
+        /// sorted order, with the most recently created objects appearing first.</p>.
         /// </summary>
         public virtual IEnumerable<FrMealVouchersOnboarding> ListAutoPaging(FrMealVouchersOnboardingListOptions options = null, RequestOptions requestOptions = null)
         {
@@ -87,7 +98,8 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Lists French Meal Vouchers Onboarding objects</p>.
+        /// <p>Lists <c>French Meal Vouchers Onboarding</c> objects. The objects are returned in
+        /// sorted order, with the most recently created objects appearing first.</p>.
         /// </summary>
         public virtual IAsyncEnumerable<FrMealVouchersOnboarding> ListAutoPagingAsync(FrMealVouchersOnboardingListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
@@ -95,7 +107,13 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Updates the details of a restaurant’s French Meal Vouchers Onboarding object</p>.
+        /// <p>Updates the details of a restaurant’s <c>French Meal Vouchers Onboarding</c> object
+        /// by setting the values of the parameters passed. Any parameters not provided are left
+        /// unchanged. After you update the object, the onboarding process automatically
+        /// restarts.</p>.
+        ///
+        /// <p>You can only update <c>French Meal Vouchers Onboarding</c> objects with the
+        /// <c>postal_code</c> field requirement in <c>past_due</c>.</p>.
         /// </summary>
         public virtual FrMealVouchersOnboarding Update(string id, FrMealVouchersOnboardingUpdateOptions options, RequestOptions requestOptions = null)
         {
@@ -103,7 +121,13 @@ namespace Stripe
         }
 
         /// <summary>
-        /// <p>Updates the details of a restaurant’s French Meal Vouchers Onboarding object</p>.
+        /// <p>Updates the details of a restaurant’s <c>French Meal Vouchers Onboarding</c> object
+        /// by setting the values of the parameters passed. Any parameters not provided are left
+        /// unchanged. After you update the object, the onboarding process automatically
+        /// restarts.</p>.
+        ///
+        /// <p>You can only update <c>French Meal Vouchers Onboarding</c> objects with the
+        /// <c>postal_code</c> field requirement in <c>past_due</c>.</p>.
         /// </summary>
         public virtual Task<FrMealVouchersOnboarding> UpdateAsync(string id, FrMealVouchersOnboardingUpdateOptions options, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {

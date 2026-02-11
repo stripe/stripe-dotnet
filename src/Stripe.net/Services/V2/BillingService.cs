@@ -20,6 +20,7 @@ namespace Stripe.V2
         private V2.Billing.MeterEventSessionService meterEventSession;
         private V2.Billing.MeterEventStreamService meterEventStream;
         private V2.Billing.MeteredItemService meteredItems;
+        private V2.Billing.OneTimeItemService oneTimeItems;
         private V2.Billing.PricingPlanService pricingPlans;
         private V2.Billing.PricingPlanSubscriptionService pricingPlanSubscriptions;
         private V2.Billing.ProfileService profiles;
@@ -74,6 +75,9 @@ namespace Stripe.V2
             this.Requestor);
 
         public virtual V2.Billing.MeteredItemService MeteredItems => this.meteredItems ??= new V2.Billing.MeteredItemService(
+            this.Requestor);
+
+        public virtual V2.Billing.OneTimeItemService OneTimeItems => this.oneTimeItems ??= new V2.Billing.OneTimeItemService(
             this.Requestor);
 
         public virtual V2.Billing.PricingPlanService PricingPlans => this.pricingPlans ??= new V2.Billing.PricingPlanService(

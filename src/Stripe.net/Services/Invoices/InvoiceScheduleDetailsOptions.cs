@@ -94,5 +94,14 @@ namespace Stripe
         [STJS.JsonPropertyName("proration_behavior")]
 #endif
         public string ProrationBehavior { get; set; }
+
+        /// <summary>
+        /// Object representing the subscription schedule's default settings.
+        /// </summary>
+        [JsonProperty("default_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("default_settings")]
+#endif
+        public InvoiceScheduleDetailsDefaultSettingsOptions DefaultSettings { get; set; }
     }
 }
