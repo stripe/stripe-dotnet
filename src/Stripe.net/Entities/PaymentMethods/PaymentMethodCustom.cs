@@ -34,5 +34,14 @@ namespace Stripe
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
+
+        /// <summary>
+        /// A reference to an external payment method, such as a PayPal Billing Agreement ID.
+        /// </summary>
+        [JsonProperty("payment_method_reference")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_reference")]
+#endif
+        public string PaymentMethodReference { get; set; }
     }
 }
