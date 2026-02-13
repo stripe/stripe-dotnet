@@ -24,18 +24,6 @@ namespace Stripe
         public SubscriptionBillingCycleAnchor BillingCycleAnchor { get; set; }
 
         /// <summary>
-        /// Controls when the subscription transitions from <c>paused</c> to <c>active</c>.
-        /// Determines how payment on the invoice affects the resumption process.The default is
-        /// <c>pending_if_incomplete</c>.
-        /// One of: <c>allow_incomplete</c>, or <c>pending_if_incomplete</c>.
-        /// </summary>
-        [JsonProperty("payment_behavior")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("payment_behavior")]
-#endif
-        public string PaymentBehavior { get; set; }
-
-        /// <summary>
         /// Determines how to handle <a
         /// href="https://docs.stripe.com/billing/subscriptions/prorations">prorations</a> resulting
         /// from the <c>billing_cycle_anchor</c> being <c>unchanged</c>. When the

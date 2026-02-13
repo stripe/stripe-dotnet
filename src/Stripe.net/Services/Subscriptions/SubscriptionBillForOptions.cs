@@ -9,23 +9,23 @@ namespace Stripe
     public class SubscriptionBillForOptions : INestedOptions
     {
         /// <summary>
-        /// Controls whether to debit for accrued metered usage in the current billing period. The
-        /// default is <c>true</c>.
+        /// Controls when to bill for metered usage in the current period. Defaults to <c>{ type:
+        /// "now" }</c>.
         /// </summary>
-        [JsonProperty("outstanding_usage")]
+        [JsonProperty("outstanding_usage_through")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("outstanding_usage")]
+        [STJS.JsonPropertyName("outstanding_usage_through")]
 #endif
-        public bool? OutstandingUsage { get; set; }
+        public SubscriptionBillForOutstandingUsageThroughOptions OutstandingUsageThrough { get; set; }
 
         /// <summary>
-        /// Controls whether to credit for licensed items in the current billing period. The default
-        /// is <c>true</c>.
+        /// Controls when to credit for unused time on licensed items. Defaults to <c>{ type: "now"
+        /// }</c>.
         /// </summary>
-        [JsonProperty("unused_time")]
+        [JsonProperty("unused_time_from")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("unused_time")]
+        [STJS.JsonPropertyName("unused_time_from")]
 #endif
-        public bool? UnusedTime { get; set; }
+        public SubscriptionBillForUnusedTimeFromOptions UnusedTimeFrom { get; set; }
     }
 }
