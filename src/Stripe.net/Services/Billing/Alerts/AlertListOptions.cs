@@ -10,7 +10,8 @@ namespace Stripe.Billing
     {
         /// <summary>
         /// Filter results to only include this type of alert.
-        /// One of: <c>credit_balance_threshold</c>, or <c>usage_threshold</c>.
+        /// One of: <c>credit_balance_threshold</c>, <c>spend_threshold</c>, or
+        /// <c>usage_threshold</c>.
         /// </summary>
         [JsonProperty("alert_type")]
 #if NET6_0_OR_GREATER
