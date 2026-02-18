@@ -33,7 +33,8 @@ namespace Stripe.Billing
 
         /// <summary>
         /// Defines the type of the alert.
-        /// One of: <c>credit_balance_threshold</c>, or <c>usage_threshold</c>.
+        /// One of: <c>credit_balance_threshold</c>, <c>spend_threshold</c>, or
+        /// <c>usage_threshold</c>.
         /// </summary>
         [JsonProperty("alert_type")]
 #if NET6_0_OR_GREATER
@@ -59,6 +60,15 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("livemode")]
 #endif
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Encapsulates the alert's configuration to monitor spend on pricing plan subscriptions.
+        /// </summary>
+        [JsonProperty("spend_threshold")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("spend_threshold")]
+#endif
+        public AlertSpendThreshold SpendThreshold { get; set; }
 
         /// <summary>
         /// Status of the alert. This can be active, inactive or archived.
