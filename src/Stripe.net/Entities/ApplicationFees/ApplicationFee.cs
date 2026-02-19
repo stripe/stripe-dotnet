@@ -249,6 +249,16 @@ namespace Stripe
         public ApplicationFeeFeeSource FeeSource { get; set; }
 
         /// <summary>
+        /// Polymorphic funding source of the application fee. Includes the type and details of the
+        /// funding source.
+        /// </summary>
+        [JsonProperty("funding_source")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("funding_source")]
+#endif
+        public ApplicationFeeFundingSource FundingSource { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
