@@ -19,6 +19,7 @@ namespace Stripe
         private AccountExternalAccountService externalAccounts;
         private AccountLoginLinkService loginLinks;
         private AccountPersonService persons;
+        private AccountSignalsService signals;
 
         public AccountService()
         {
@@ -44,6 +45,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual AccountPersonService Persons => this.persons ??= new AccountPersonService(
+            this.Requestor);
+
+        public virtual AccountSignalsService Signals => this.signals ??= new AccountSignalsService(
             this.Requestor);
 
         /// <summary>

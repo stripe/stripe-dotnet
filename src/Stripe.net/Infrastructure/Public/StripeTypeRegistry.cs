@@ -19,6 +19,7 @@ namespace Stripe
                 { "account_link", typeof(AccountLink) },
                 { "account_notice", typeof(AccountNotice) },
                 { "account_session", typeof(AccountSession) },
+                { "account_signals", typeof(AccountSignals) },
                 { "apple_pay_domain", typeof(ApplePayDomain) },
                 { "application", typeof(Application) },
                 { "application_fee", typeof(ApplicationFee) },
