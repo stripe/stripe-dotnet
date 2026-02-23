@@ -31,5 +31,16 @@ namespace Stripe
         [STJS.JsonPropertyName("future_requirements")]
 #endif
         public string FutureRequirements { get; set; }
+
+        /// <summary>
+        /// Specifies whether the platform collects external account information from connected
+        /// accounts during Connect Onboarding. When set to <c>false</c>, external account
+        /// collection is skipped. Defaults to <c>true</c>.
+        /// </summary>
+        [JsonProperty("external_account_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_account_collection")]
+#endif
+        public bool? ExternalAccountCollection { get; set; }
     }
 }

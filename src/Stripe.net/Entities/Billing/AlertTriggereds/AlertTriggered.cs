@@ -20,6 +20,15 @@ namespace Stripe.Billing
         public string Object { get; set; }
 
         /// <summary>
+        /// The aggregation period for which this alert triggered.
+        /// </summary>
+        [JsonProperty("aggregation_period")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("aggregation_period")]
+#endif
+        public AlertTriggeredAggregationPeriod AggregationPeriod { get; set; }
+
+        /// <summary>
         /// A billing alert is a resource that notifies you when a certain usage threshold on a
         /// meter is crossed. For example, you might create a billing alert to notify you when a
         /// certain user made 100 API requests.
@@ -78,6 +87,16 @@ namespace Stripe.Billing
         public string ExternalCustomerId { get; set; }
 
         /// <summary>
+        /// Populated specifically for spend alerts to notify merchants which group_by entity has
+        /// the exceeded spend.
+        /// </summary>
+        [JsonProperty("group_by")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("group_by")]
+#endif
+        public AlertTriggeredGroupBy GroupBy { get; set; }
+
+        /// <summary>
         /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
         /// the object exists in test mode.
         /// </summary>
@@ -86,6 +105,17 @@ namespace Stripe.Billing
         [STJS.JsonPropertyName("livemode")]
 #endif
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Timestamp at which the threshold was crossed.
+        /// </summary>
+        [JsonProperty("triggered_at")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("triggered_at")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+        public DateTime? TriggeredAt { get; set; }
 
         /// <summary>
         /// The value triggering the alert.
