@@ -28,6 +28,15 @@ namespace Stripe.FinancialConnections
         public SessionFiltersOptions Filters { get; set; }
 
         /// <summary>
+        /// Settings for hosted Sessions. Required if <c>ui_mode</c> is <c>hosted</c>.
+        /// </summary>
+        [JsonProperty("hosted")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hosted")]
+#endif
+        public SessionHostedOptions Hosted { get; set; }
+
+        /// <summary>
         /// Settings for configuring Session-specific limits.
         /// </summary>
         [JsonProperty("limits")]
@@ -88,5 +97,15 @@ namespace Stripe.FinancialConnections
         [STJS.JsonPropertyName("return_url")]
 #endif
         public string ReturnUrl { get; set; }
+
+        /// <summary>
+        /// The UI mode of the Session. Defaults to <c>modal</c>.
+        /// One of: <c>hosted</c>, or <c>modal</c>.
+        /// </summary>
+        [JsonProperty("ui_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ui_mode")]
+#endif
+        public string UiMode { get; set; }
     }
 }
