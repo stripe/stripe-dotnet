@@ -139,7 +139,7 @@ namespace Stripe
         /// <c>application_fee.created</c>, <c>application_fee.refund.updated</c>,
         /// <c>application_fee.refunded</c>, <c>balance.available</c>,
         /// <c>balance_settings.updated</c>, <c>billing.alert.triggered</c>,
-        /// <c>billing_portal.configuration.created</c>,
+        /// <c>billing.credit_grant.created</c>, <c>billing_portal.configuration.created</c>,
         /// <c>billing_portal.configuration.updated</c>, <c>billing_portal.session.created</c>,
         /// <c>capability.updated</c>, <c>cash_balance.funds_available</c>, <c>charge.captured</c>,
         /// <c>charge.dispute.closed</c>, <c>charge.dispute.created</c>,
@@ -220,7 +220,10 @@ namespace Stripe
         /// <c>radar.early_fraud_warning.created</c>, <c>radar.early_fraud_warning.updated</c>,
         /// <c>refund.created</c>, <c>refund.failed</c>, <c>refund.updated</c>,
         /// <c>reporting.report_run.failed</c>, <c>reporting.report_run.succeeded</c>,
-        /// <c>reporting.report_type.updated</c>, <c>review.closed</c>, <c>review.opened</c>,
+        /// <c>reporting.report_type.updated</c>, <c>reserve.hold.created</c>,
+        /// <c>reserve.hold.updated</c>, <c>reserve.plan.created</c>, <c>reserve.plan.disabled</c>,
+        /// <c>reserve.plan.expired</c>, <c>reserve.plan.updated</c>,
+        /// <c>reserve.release.created</c>, <c>review.closed</c>, <c>review.opened</c>,
         /// <c>setup_intent.canceled</c>, <c>setup_intent.created</c>,
         /// <c>setup_intent.requires_action</c>, <c>setup_intent.setup_failed</c>,
         /// <c>setup_intent.succeeded</c>, <c>sigma.scheduled_query_run.created</c>,
@@ -257,10 +260,9 @@ namespace Stripe
         /// <c>treasury.outbound_transfer.tracking_details_updated</c>,
         /// <c>treasury.received_credit.created</c>, <c>treasury.received_credit.failed</c>,
         /// <c>treasury.received_credit.succeeded</c>, <c>treasury.received_debit.created</c>,
-        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.created</c>,
-        /// <c>billing.credit_grant.updated</c>, <c>billing.meter.created</c>,
-        /// <c>billing.meter.deactivated</c>, <c>billing.meter.reactivated</c>,
-        /// <c>billing.meter.updated</c>, or <c>ping</c>.
+        /// <c>billing.credit_balance_transaction.created</c>, <c>billing.credit_grant.updated</c>,
+        /// <c>billing.meter.created</c>, <c>billing.meter.deactivated</c>,
+        /// <c>billing.meter.reactivated</c>, <c>billing.meter.updated</c>, or <c>ping</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

@@ -10,7 +10,7 @@ namespace Stripe.BillingPortal
     {
         /// <summary>
         /// The ID of an existing <a
-        /// href="https://docs.stripe.com/api/customer_portal/configuration">configuration</a> to
+        /// href="https://docs.stripe.com/api/customer_portal/configurations">configuration</a> to
         /// use for this session, describing its functionality and features. If not specified, the
         /// session uses the default configuration.
         /// </summary>

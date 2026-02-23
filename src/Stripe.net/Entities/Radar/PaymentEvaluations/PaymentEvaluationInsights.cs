@@ -11,15 +11,6 @@ namespace Stripe.Radar
     public class PaymentEvaluationInsights : StripeEntity<PaymentEvaluationInsights>
     {
         /// <summary>
-        /// Stripe Radar's evaluation of the likelihood of a card issuer decline on this payment.
-        /// </summary>
-        [JsonProperty("card_issuer_decline")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("card_issuer_decline")]
-#endif
-        public PaymentEvaluationInsightsCardIssuerDecline CardIssuerDecline { get; set; }
-
-        /// <summary>
         /// The timestamp when the evaluation was performed.
         /// </summary>
         [JsonProperty("evaluated_at")]

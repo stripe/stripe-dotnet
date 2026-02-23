@@ -10,10 +10,11 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// A <a href="https://www.census.gov/library/reference/code-lists/ansi.html">FIPS code</a>
-        /// representing the local jurisdiction. Supported FIPS codes are: <c>14000</c> (Chicago),
-        /// <c>02154</c> (Arlington Heights), <c>06613</c> (Bloomington), <c>10906</c> (Campton
-        /// Hills), <c>21696</c> (East Dundee), <c>24582</c> (Evanston), <c>45421</c> (Lynwood),
-        /// <c>48892</c> (Midlothian), <c>64343</c> (River Grove), and <c>68081</c> (Schiller Park).
+        /// representing the local jurisdiction. Supported FIPS codes are: <c>02154</c> (Arlington
+        /// Heights), <c>05248</c> (Bensenville), <c>06613</c> (Bloomington), <c>10906</c> (Campton
+        /// Hills), <c>14000</c> (Chicago), <c>21696</c> (East Dundee), <c>24582</c> (Evanston),
+        /// <c>45421</c> (Lynwood), <c>48892</c> (Midlothian), <c>64343</c> (River Grove),
+        /// <c>64421</c> (Riverside), <c>65806</c> (Roselle), and <c>68081</c> (Schiller Park).
         /// </summary>
         [JsonProperty("jurisdiction")]
 #if NET6_0_OR_GREATER

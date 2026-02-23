@@ -9,7 +9,9 @@ namespace Stripe.V2.Billing
 #endif
 
     /// <summary>
-    /// Fix me empty_doc_string.
+    /// A Meter Event is a usage record that captures billable activity for usage-based billing.
+    /// Meter Events contain an event name, timestamp, and payload with customer mapping and
+    /// usage value, enabling accurate usage tracking and billing.
     /// </summary>
     public class MeterEvent : StripeEntity<MeterEvent>, IHasObject
     {
