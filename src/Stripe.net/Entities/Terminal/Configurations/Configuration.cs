@@ -112,6 +112,12 @@ namespace Stripe.Terminal
 #endif
         public ConfigurationStripeS700 StripeS700 { get; set; }
 
+        [JsonProperty("stripe_s710")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_s710")]
+#endif
+        public ConfigurationStripeS710 StripeS710 { get; set; }
+
         [JsonProperty("tipping")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tipping")]
