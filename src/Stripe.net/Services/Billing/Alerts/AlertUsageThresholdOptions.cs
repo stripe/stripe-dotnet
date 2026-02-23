@@ -20,7 +20,7 @@ namespace Stripe.Billing
         public List<AlertUsageThresholdFilterOptions> Filters { get; set; }
 
         /// <summary>
-        /// Defines at which value the alert will fire.
+        /// Defines the threshold value that triggers the alert.
         /// </summary>
         [JsonProperty("gte")]
 #if NET6_0_OR_GREATER

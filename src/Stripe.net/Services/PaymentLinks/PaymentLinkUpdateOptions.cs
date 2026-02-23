@@ -142,6 +142,20 @@ namespace Stripe
         public PaymentLinkNameCollectionOptions NameCollection { get; set; }
 
         /// <summary>
+        /// A list of optional items the customer can add to their order at checkout. Use this
+        /// parameter to pass one-time or recurring <a
+        /// href="https://docs.stripe.com/api/prices">Prices</a>. There is a maximum of 10 optional
+        /// items allowed on a payment link, and the existing limits on the number of line items
+        /// allowed on a payment link apply to the combined number of line items and optional items.
+        /// There is a maximum of 20 combined line items and optional items.
+        /// </summary>
+        [JsonProperty("optional_items")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("optional_items")]
+#endif
+        public List<PaymentLinkOptionalItemOptions> OptionalItems { get; set; }
+
+        /// <summary>
         /// A subset of parameters to be passed to PaymentIntent creation for Checkout Sessions in
         /// <c>payment</c> mode.
         /// </summary>

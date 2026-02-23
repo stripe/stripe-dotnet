@@ -9,6 +9,15 @@ namespace Stripe
     public class MandatePaymentMethodDetailsBacsDebit : StripeEntity<MandatePaymentMethodDetailsBacsDebit>
     {
         /// <summary>
+        /// The display name for the account on this mandate.
+        /// </summary>
+        [JsonProperty("display_name")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("display_name")]
+#endif
+        public string DisplayName { get; set; }
+
+        /// <summary>
         /// The status of the mandate on the Bacs network. Can be one of <c>pending</c>,
         /// <c>revoked</c>, <c>refused</c>, or <c>accepted</c>.
         /// One of: <c>accepted</c>, <c>pending</c>, <c>refused</c>, or <c>revoked</c>.
@@ -39,6 +48,15 @@ namespace Stripe
         [STJS.JsonPropertyName("revocation_reason")]
 #endif
         public string RevocationReason { get; set; }
+
+        /// <summary>
+        /// The service user number for the account on this mandate.
+        /// </summary>
+        [JsonProperty("service_user_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("service_user_number")]
+#endif
+        public string ServiceUserNumber { get; set; }
 
         /// <summary>
         /// The URL that will contain the mandate that the customer has signed.
