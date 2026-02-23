@@ -10,7 +10,7 @@ namespace Stripe.Checkout
     {
         /// <summary>
         /// The desired country code of the bank account information. Permitted values include:
-        /// <c>BE</c>, <c>DE</c>, <c>ES</c>, <c>FR</c>, <c>IE</c>, or <c>NL</c>.
+        /// <c>DE</c>, <c>FR</c>, <c>IE</c>, or <c>NL</c>.
         /// </summary>
         [JsonProperty("country")]
 #if NET6_0_OR_GREATER

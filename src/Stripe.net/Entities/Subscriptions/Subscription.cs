@@ -546,6 +546,17 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Settings for Managed Payments for this Subscription and resulting <a
+        /// href="https://stripe.com/api/invoices/object">Invoices</a> and <a
+        /// href="https://stripe.com/api/payment_intents/object">PaymentIntents</a>.
+        /// </summary>
+        [JsonProperty("managed_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("managed_payments")]
+#endif
+        public SubscriptionManagedPayments ManagedPayments { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format.

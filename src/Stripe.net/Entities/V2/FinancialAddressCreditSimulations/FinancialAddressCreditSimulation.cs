@@ -6,6 +6,10 @@ namespace Stripe.V2
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// Credit Simulations represent simulated credit transactions applied to financial
+    /// addresses for testing purposes.
+    /// </summary>
     public class FinancialAddressCreditSimulation : StripeEntity<FinancialAddressCreditSimulation>, IHasObject
     {
         /// <summary>

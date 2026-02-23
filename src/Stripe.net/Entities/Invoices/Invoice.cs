@@ -949,7 +949,8 @@ namespace Stripe
         public InvoicePaymentSettings PaymentSettings { get; set; }
 
         /// <summary>
-        /// Payments for this invoice.
+        /// Payments for this invoice. Use <a href="https://stripe.com/api/invoice-payment">invoice
+        /// payment</a> to get more details.
         /// </summary>
         [JsonProperty("payments")]
 #if NET6_0_OR_GREATER

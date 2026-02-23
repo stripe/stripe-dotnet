@@ -50,8 +50,9 @@ namespace Stripe
         public long? Quantity { get; set; }
 
         /// <summary>
-        /// A list of up to 10 tax amounts for the credit note line item. Cannot be mixed with
-        /// <c>tax_rates</c>.
+        /// A list of up to 10 tax amounts for the credit note line item. Not valid when
+        /// <c>tax_rates</c> is used or if invoice is set up with
+        /// <c>automatic_tax[enabled]=true</c>.
         /// </summary>
         [JsonProperty("tax_amounts")]
 #if NET6_0_OR_GREATER
@@ -61,7 +62,7 @@ namespace Stripe
 
         /// <summary>
         /// The tax rates which apply to the credit note line item. Only valid when the <c>type</c>
-        /// is <c>custom_line_item</c> and cannot be mixed with <c>tax_amounts</c>.
+        /// is <c>custom_line_item</c> and <c>tax_amounts</c> is not used.
         /// </summary>
         [JsonProperty("tax_rates")]
 #if NET6_0_OR_GREATER
@@ -71,7 +72,8 @@ namespace Stripe
 
         /// <summary>
         /// Type of the credit note line item, one of <c>invoice_line_item</c> or
-        /// <c>custom_line_item</c>.
+        /// <c>custom_line_item</c>. <c>custom_line_item</c> is not valid when the invoice is set up
+        /// with <c>automatic_tax[enabled]=true</c>.
         /// One of: <c>custom_line_item</c>, or <c>invoice_line_item</c>.
         /// </summary>
         [JsonProperty("type")]

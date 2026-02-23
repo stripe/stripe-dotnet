@@ -9,6 +9,17 @@ namespace Stripe
     public class AccountSettingsPaymentsOptions : INestedOptions
     {
         /// <summary>
+        /// When you enable this parameter, the customer of this Account receives an email receipt
+        /// when their payment succeeds. If this parameter isn't set, the default value is
+        /// <c>false</c>.
+        /// </summary>
+        [JsonProperty("email_customers_on_successful_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("email_customers_on_successful_payment")]
+#endif
+        public bool? EmailCustomersOnSuccessfulPayment { get; set; }
+
+        /// <summary>
         /// The default text that appears on statements for non-card charges outside of Japan. For
         /// card charges, if you don't set a <c>statement_descriptor_prefix</c>, this text is also
         /// used as the statement descriptor prefix. In that case, if concatenating the statement

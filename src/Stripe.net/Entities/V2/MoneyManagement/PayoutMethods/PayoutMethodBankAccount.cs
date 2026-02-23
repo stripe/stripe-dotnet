@@ -42,6 +42,15 @@ namespace Stripe.V2.MoneyManagement
         public string BankName { get; set; }
 
         /// <summary>
+        /// The branch number of the bank account, if present.
+        /// </summary>
+        [JsonProperty("branch_number")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("branch_number")]
+#endif
+        public string BranchNumber { get; set; }
+
+        /// <summary>
         /// The country code of the bank account.
         /// </summary>
         [JsonProperty("country")]
@@ -94,5 +103,14 @@ namespace Stripe.V2.MoneyManagement
         [STJS.JsonPropertyName("supported_currencies")]
 #endif
         public List<string> SupportedCurrencies { get; set; }
+
+        /// <summary>
+        /// The swift code of the bank or financial institution.
+        /// </summary>
+        [JsonProperty("swift_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("swift_code")]
+#endif
+        public string SwiftCode { get; set; }
     }
 }

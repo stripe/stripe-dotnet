@@ -440,6 +440,15 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Settings for Managed Payments.
+        /// </summary>
+        [JsonProperty("managed_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("managed_payments")]
+#endif
+        public PaymentIntentManagedPayments ManagedPayments { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Learn more about <a

@@ -94,6 +94,15 @@ namespace Stripe.V2.Core
         public AccountConfigurationMerchantSepaDebitPayments SepaDebitPayments { get; set; }
 
         /// <summary>
+        /// Settings for Smart Disputes automatic response feature.
+        /// </summary>
+        [JsonProperty("smart_disputes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("smart_disputes")]
+#endif
+        public AccountConfigurationMerchantSmartDisputes SmartDisputes { get; set; }
+
+        /// <summary>
         /// Statement descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor")]

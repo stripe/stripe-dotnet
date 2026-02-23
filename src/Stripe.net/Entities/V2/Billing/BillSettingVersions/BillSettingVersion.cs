@@ -7,6 +7,11 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// A Bill Setting Version is a specific configuration of a BillSetting at a point in time.
+    /// Bill Setting Versions enable you to track changes to bill generation and invoice
+    /// settings over time and manage which version is active for new billing operations.
+    /// </summary>
     public class BillSettingVersion : StripeEntity<BillSettingVersion>, IHasId, IHasObject
     {
         /// <summary>

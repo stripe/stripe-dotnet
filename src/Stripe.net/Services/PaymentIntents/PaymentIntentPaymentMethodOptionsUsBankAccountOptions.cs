@@ -88,6 +88,16 @@ namespace Stripe
         public string TargetDate { get; set; }
 
         /// <summary>
+        /// The purpose of the transaction.
+        /// One of: <c>goods</c>, <c>other</c>, <c>services</c>, or <c>unspecified</c>.
+        /// </summary>
+        [JsonProperty("transaction_purpose")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("transaction_purpose")]
+#endif
+        public string TransactionPurpose { get; set; }
+
+        /// <summary>
         /// Bank account verification method.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>

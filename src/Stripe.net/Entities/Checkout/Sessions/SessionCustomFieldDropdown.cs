@@ -10,7 +10,7 @@ namespace Stripe.Checkout
     public class SessionCustomFieldDropdown : StripeEntity<SessionCustomFieldDropdown>
     {
         /// <summary>
-        /// The value that will pre-fill on the payment page.
+        /// The value that pre-fills on the payment page.
         /// </summary>
         [JsonProperty("default_value")]
 #if NET6_0_OR_GREATER

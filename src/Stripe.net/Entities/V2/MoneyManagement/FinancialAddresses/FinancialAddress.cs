@@ -8,8 +8,8 @@ namespace Stripe.V2.MoneyManagement
 #endif
 
     /// <summary>
-    /// A FinancialAddress contains information needed to transfer money to a Financial Account.
-    /// A Financial Account can have more than one Financial Address.
+    /// A Financial Address contains information needed to transfer money to a Financial
+    /// Account. A Financial Account can have more than one Financial Address.
     /// </summary>
     public class FinancialAddress : StripeEntity<FinancialAddress>, IHasId, IHasObject
     {
