@@ -72,6 +72,15 @@ namespace Stripe.Terminal
         public ConfigurationStripeS700Options StripeS700 { get; set; }
 
         /// <summary>
+        /// An object containing device type specific settings for Stripe S710 readers.
+        /// </summary>
+        [JsonProperty("stripe_s710")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_s710")]
+#endif
+        public ConfigurationStripeS710Options StripeS710 { get; set; }
+
+        /// <summary>
         /// Tipping configurations for readers that support on-reader tips.
         /// </summary>
         [JsonProperty("tipping")]

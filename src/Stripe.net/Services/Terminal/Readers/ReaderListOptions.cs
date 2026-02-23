@@ -11,8 +11,9 @@ namespace Stripe.Terminal
         /// <summary>
         /// Filters readers by device type.
         /// One of: <c>bbpos_chipper2x</c>, <c>bbpos_wisepad3</c>, <c>bbpos_wisepos_e</c>,
-        /// <c>mobile_phone_reader</c>, <c>simulated_stripe_s700</c>, <c>simulated_wisepos_e</c>,
-        /// <c>stripe_m2</c>, <c>stripe_s700</c>, or <c>verifone_P400</c>.
+        /// <c>mobile_phone_reader</c>, <c>simulated_stripe_s700</c>, <c>simulated_stripe_s710</c>,
+        /// <c>simulated_wisepos_e</c>, <c>stripe_m2</c>, <c>stripe_s700</c>, <c>stripe_s710</c>, or
+        /// <c>verifone_P400</c>.
         /// </summary>
         [JsonProperty("device_type")]
 #if NET6_0_OR_GREATER
