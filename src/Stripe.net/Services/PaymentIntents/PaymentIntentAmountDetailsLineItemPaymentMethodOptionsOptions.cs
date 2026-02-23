@@ -9,8 +9,8 @@ namespace Stripe
     public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsOptions : INestedOptions
     {
         /// <summary>
-        /// This sub-hash contains line item details that are specific to <c>card</c> payment
-        /// method.".
+        /// This sub-hash contains line item details that are specific to the <c>card</c> payment
+        /// method.
         /// </summary>
         [JsonProperty("card")]
 #if NET6_0_OR_GREATER
@@ -19,8 +19,8 @@ namespace Stripe
         public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardOptions Card { get; set; }
 
         /// <summary>
-        /// This sub-hash contains line item details that are specific to <c>card_present</c>
-        /// payment method.".
+        /// This sub-hash contains line item details that are specific to the <c>card_present</c>
+        /// payment method.
         /// </summary>
         [JsonProperty("card_present")]
 #if NET6_0_OR_GREATER
@@ -29,8 +29,8 @@ namespace Stripe
         public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
-        /// This sub-hash contains line item details that are specific to <c>klarna</c> payment
-        /// method.".
+        /// This sub-hash contains line item details that are specific to the <c>klarna</c> payment
+        /// method.
         /// </summary>
         [JsonProperty("klarna")]
 #if NET6_0_OR_GREATER
@@ -39,8 +39,8 @@ namespace Stripe
         public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsKlarnaOptions Klarna { get; set; }
 
         /// <summary>
-        /// This sub-hash contains line item details that are specific to <c>paypal</c> payment
-        /// method.".
+        /// This sub-hash contains line item details that are specific to the <c>paypal</c> payment
+        /// method.
         /// </summary>
         [JsonProperty("paypal")]
 #if NET6_0_OR_GREATER

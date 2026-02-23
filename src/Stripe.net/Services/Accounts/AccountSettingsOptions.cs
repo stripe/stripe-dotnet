@@ -100,6 +100,15 @@ namespace Stripe
         public AccountSettingsPaypayPaymentsOptions PaypayPayments { get; set; }
 
         /// <summary>
+        /// Settings specific to the account's use of Smart Disputes.
+        /// </summary>
+        [JsonProperty("smart_disputes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("smart_disputes")]
+#endif
+        public AccountSettingsSmartDisputesOptions SmartDisputes { get; set; }
+
+        /// <summary>
         /// Settings specific to the account's tax forms.
         /// </summary>
         [JsonProperty("tax_forms")]

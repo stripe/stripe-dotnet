@@ -74,6 +74,12 @@ namespace Stripe
 #endif
         public AccountSettingsSepaDebitPayments SepaDebitPayments { get; set; }
 
+        [JsonProperty("smart_disputes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("smart_disputes")]
+#endif
+        public AccountSettingsSmartDisputes SmartDisputes { get; set; }
+
         [JsonProperty("tax_forms")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_forms")]

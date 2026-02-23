@@ -10,7 +10,7 @@ namespace Stripe
     {
         /// <summary>
         /// Identifier that categorizes the items being purchased using a standardized commodity
-        /// scheme such as (but not limited to) UNSPSC, NAICS, NAPCS, etc.
+        /// scheme such as (but not limited to) UNSPSC, NAICS, NAPCS, and so on.
         /// </summary>
         [JsonProperty("commodity_code")]
 #if NET6_0_OR_GREATER

@@ -9,7 +9,7 @@ namespace Stripe.Checkout
     public class SessionCustomFieldText : StripeEntity<SessionCustomFieldText>
     {
         /// <summary>
-        /// The value that will pre-fill the field on the payment page.
+        /// The value that pre-fills the field on the payment page.
         /// </summary>
         [JsonProperty("default_value")]
 #if NET6_0_OR_GREATER

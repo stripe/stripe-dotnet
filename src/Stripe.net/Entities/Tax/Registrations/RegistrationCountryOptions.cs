@@ -338,6 +338,12 @@ namespace Stripe.Tax
 #endif
         public RegistrationCountryOptionsLa La { get; set; }
 
+        [JsonProperty("lk")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lk")]
+#endif
+        public RegistrationCountryOptionsLk Lk { get; set; }
+
         [JsonProperty("lt")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lt")]

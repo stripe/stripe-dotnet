@@ -27,6 +27,15 @@ namespace Stripe.Terminal
         public ConfigurationBbposWiseposEOptions BbposWiseposE { get; set; }
 
         /// <summary>
+        /// Configuration for cellular connectivity.
+        /// </summary>
+        [JsonProperty("cellular")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cellular")]
+#endif
+        public ConfigurationCellularOptions Cellular { get; set; }
+
+        /// <summary>
         /// Name of the configuration.
         /// </summary>
         [JsonProperty("name")]

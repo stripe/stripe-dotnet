@@ -44,6 +44,12 @@ namespace Stripe.Terminal
 #endif
         public ConfigurationBbposWiseposE BbposWiseposE { get; set; }
 
+        [JsonProperty("cellular")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cellular")]
+#endif
+        public ConfigurationCellular Cellular { get; set; }
+
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
