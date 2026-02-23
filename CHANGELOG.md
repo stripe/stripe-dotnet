@@ -1,5 +1,16 @@
 # Changelog
 
+## 50.4.0-alpha.4 - 2026-02-19
+* [#3302](https://github.com/stripe/stripe-dotnet/pull/3302) Update generated code for private-preview
+  * Add support for `SpendThreshold` on `Billing.AlertCreateOptions` and `Billing.Alert`
+  * Add support for `InvoiceItem`, `ProrationDetails`, `Proration`, and `Subscription` on `InvoiceLineItem.Parent.ScheduleDetails`
+  * Add support for `Custom` on `PaymentMethodUpdateOptions`
+  * Add support for `PaymentMethodReference` and `Usage` on `PaymentMethod.Custom`
+  * ⚠️ Change type of `QuoteSubscriptionDataOverridesOptions.BillingSchedules` from `emptyable(array(billing_schedules_update_specs))` to `array(billing_schedules_update_specs)`
+  * Add support for `OutstandingUsageThrough` and `UnusedTimeFrom` on `SubscriptionBillForOptions`
+  * ⚠️ Remove support for `OutstandingUsage` and `UnusedTime` on `SubscriptionBillForOptions`
+  * ⚠️ Remove support for `PaymentBehavior` on `SubscriptionResumeOptions`
+
 ## 50.4.0-alpha.3 - 2026-02-11
 * [#3301](https://github.com/stripe/stripe-dotnet/pull/3301) Update generated code for private-preview
   * Add support for new resources `V2.Billing.CadenceSpendModifier`, `V2.Billing.OneTimeItem`, and `V2.Billing.RateCardCustomPricingUnitOverageRate`
