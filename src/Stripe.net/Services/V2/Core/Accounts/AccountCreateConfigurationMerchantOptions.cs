@@ -74,6 +74,15 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationMerchantScriptStatementDescriptorOptions ScriptStatementDescriptor { get; set; }
 
         /// <summary>
+        /// Settings used for Smart Disputes.
+        /// </summary>
+        [JsonProperty("smart_disputes")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("smart_disputes")]
+#endif
+        public AccountCreateConfigurationMerchantSmartDisputesOptions SmartDisputes { get; set; }
+
+        /// <summary>
         /// Statement descriptor.
         /// </summary>
         [JsonProperty("statement_descriptor")]
