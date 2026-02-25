@@ -1,5 +1,18 @@
 # Changelog
 
+## 50.5.0-alpha.1 - 2026-02-25
+This release changes the pinned API version to `2026-02-25.preview`.
+
+* [#3303](https://github.com/stripe/stripe-dotnet/pull/3303) Update generated code for private-preview
+  * Add support for new resource `AccountSignals`
+  * Add support for `Get` method on resource `AccountSignals`
+  * Add support for `AggregationPeriod`, `GroupBy`, and `TriggeredAt` on `Billing.AlertTriggered`
+  * Add support for `ExternalAccountCollection` on `AccountLinkCollectionOptionsOptions`
+  * Add support for `FundingSource` on `ApplicationFee`
+  * Add support for `Hosted` and `UiMode` on `FinancialConnections.SessionCreateOptions` and `FinancialConnections.Session`
+  * Add support for `Url` on `FinancialConnections.Session`
+  * Add support for `BillingCycleAnchor` on `SubscriptionTrialSettingsEndBehaviorOptions`
+
 ## 50.4.0 - 2026-02-25
 This release changes the pinned API version to `2026-02-25.clover`.
 
