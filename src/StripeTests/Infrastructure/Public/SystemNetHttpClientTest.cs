@@ -1,5 +1,6 @@
 namespace StripeTests
 {
+    using System;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
@@ -132,6 +133,67 @@ namespace StripeTests
             Assert.True(client.EnableTelemetry);
         }
 
+        [Fact]
+        public void TestDetectAIAgent()
+        {
+            var result = SystemNetHttpClient.DetectAIAgent(
+                key => key == "CLAUDECODE" ? "1" : null);
+            Assert.Equal("claude_code", result);
+        }
+
+        [Fact]
+        public void TestDetectAIAgentNoEnvVars()
+        {
+            var result = SystemNetHttpClient.DetectAIAgent(key => null);
+            Assert.Equal(string.Empty, result);
+        }
+
+        [Fact]
+        public void TestDetectAIAgentFirstMatchWins()
+        {
+            var result = SystemNetHttpClient.DetectAIAgent(
+                key => key == "CURSOR_AGENT" || key == "OPENCODE" ? "1" : null);
+            Assert.Equal("cursor", result);
+        }
+
+        [Fact]
+        public async Task AIAgentIncludedInHeaders()
+        {
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            responseMessage.Content = new StringContent("Hello world!");
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(responseMessage));
+
+            Environment.SetEnvironmentVariable("CLAUDECODE", "1");
+            try
+            {
+                var client = new SystemNetHttpClient(
+                    httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+                var request = new StripeRequest(
+                    this.StripeClient,
+                    HttpMethod.Post,
+                    "/foo",
+                    null,
+                    null);
+                await client.MakeRequestAsync(request);
+
+                this.MockHttpClientFixture.MockHandler.Protected()
+                    .Verify(
+                        "SendAsync",
+                        Times.Once(),
+                        ItExpr.Is<HttpRequestMessage>(m => this.VerifyAIAgentHeaders(m.Headers)),
+                        ItExpr.IsAny<CancellationToken>());
+            }
+            finally
+            {
+                Environment.SetEnvironmentVariable("CLAUDECODE", null);
+            }
+        }
+
         private bool VerifyHeaders(HttpRequestHeaders headers)
         {
             var userAgent = headers.UserAgent.ToString();
@@ -153,6 +215,17 @@ namespace StripeTests
             Assert.NotEqual("?", userAgentJson.Value<string>("os_version"));
             Assert.NotEmpty(userAgentJson.Value<string>("bindings_version"));
             Assert.NotEmpty(userAgentJson.Value<string>("newtonsoft_json_version"));
+
+            return true;
+        }
+
+        private bool VerifyAIAgentHeaders(HttpRequestHeaders headers)
+        {
+            var userAgent = headers.UserAgent.ToString();
+            var userAgentJson = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
+
+            Assert.Contains("AIAgent/claude_code", userAgent);
+            Assert.Equal("claude_code", userAgentJson.Value<string>("ai_agent"));
 
             return true;
         }
