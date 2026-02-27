@@ -27,6 +27,15 @@ namespace Stripe.Terminal
         public ConfigurationBbposWiseposEOptions BbposWiseposE { get; set; }
 
         /// <summary>
+        /// Configuration for cellular connectivity.
+        /// </summary>
+        [JsonProperty("cellular")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cellular")]
+#endif
+        public ConfigurationCellularOptions Cellular { get; set; }
+
+        /// <summary>
         /// Name of the configuration.
         /// </summary>
         [JsonProperty("name")]
@@ -61,6 +70,15 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("stripe_s700")]
 #endif
         public ConfigurationStripeS700Options StripeS700 { get; set; }
+
+        /// <summary>
+        /// An object containing device type specific settings for Stripe S710 readers.
+        /// </summary>
+        [JsonProperty("stripe_s710")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_s710")]
+#endif
+        public ConfigurationStripeS710Options StripeS710 { get; set; }
 
         /// <summary>
         /// Tipping configurations for readers that support on-reader tips.
