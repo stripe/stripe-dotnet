@@ -294,5 +294,26 @@ namespace Stripe
         [STJS.JsonPropertyName("wallet")]
 #endif
         public ChargePaymentMethodDetailsCardWallet Wallet { get; set; }
+
+        /// <summary>
+        /// Whether the PaymentIntent can be reauthorized or not.
+        /// </summary>
+        [JsonProperty("reauthorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reauthorization")]
+#endif
+        public ChargePaymentMethodDetailsCardReauthorization Reauthorization { get; set; }
+
+        /// <summary>
+        /// The time at which the associated PaymentIntent will transition to a terminal state if it
+        /// is not reauthorized.
+        /// </summary>
+        [JsonProperty("reauthorize_before")]
+        [JsonConverter(typeof(UnixDateTimeConverter))]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reauthorize_before")]
+        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+#endif
+        public DateTime? ReauthorizeBefore { get; set; }
     }
 }

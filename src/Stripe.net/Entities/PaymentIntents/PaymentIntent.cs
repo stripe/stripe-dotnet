@@ -449,6 +449,15 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Settings for Managed Payments.
+        /// </summary>
+        [JsonProperty("managed_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("managed_payments")]
+#endif
+        public PaymentIntentManagedPayments ManagedPayments { get; set; }
+
+        /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
         /// attach to an object. This can be useful for storing additional information about the
         /// object in a structured format. Learn more about <a
@@ -810,7 +819,7 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/intents#intent-statuses">status</a>.
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_action</c>,
         /// <c>requires_capture</c>, <c>requires_confirmation</c>, <c>requires_payment_method</c>,
-        /// or <c>succeeded</c>.
+        /// <c>requires_reauthorization</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
 #if NET6_0_OR_GREATER

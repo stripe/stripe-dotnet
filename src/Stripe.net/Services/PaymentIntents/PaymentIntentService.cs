@@ -411,6 +411,42 @@ namespace Stripe
         }
 
         /// <summary>
+        /// <p>Reauthorize a PaymentIntent to obtain a new valid authorization after the initial
+        /// authorization has expired.</p>.
+        ///
+        /// <p>When a PaymentIntent’s authorization expires and the capture window elapses, the
+        /// PaymentIntent transitions to <c>requires_reauthorization</c> status with
+        /// <c>amount_capturable</c> set to 0. This endpoint brings the PaymentIntent back to
+        /// <c>requires_capture</c> status, allowing you to capture payment.</p>.
+        ///
+        /// <p>This is useful for retail and ecommerce scenarios with delayed shipments where
+        /// authorization validity periods (typically 7 days) expire before the merchant is ready to
+        /// capture payment.</p>.
+        /// </summary>
+        public virtual PaymentIntent Reauthorize(string id, PaymentIntentReauthorizeOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/reauthorize", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Reauthorize a PaymentIntent to obtain a new valid authorization after the initial
+        /// authorization has expired.</p>.
+        ///
+        /// <p>When a PaymentIntent’s authorization expires and the capture window elapses, the
+        /// PaymentIntent transitions to <c>requires_reauthorization</c> status with
+        /// <c>amount_capturable</c> set to 0. This endpoint brings the PaymentIntent back to
+        /// <c>requires_capture</c> status, allowing you to capture payment.</p>.
+        ///
+        /// <p>This is useful for retail and ecommerce scenarios with delayed shipments where
+        /// authorization validity periods (typically 7 days) expire before the merchant is ready to
+        /// capture payment.</p>.
+        /// </summary>
+        public virtual Task<PaymentIntent> ReauthorizeAsync(string id, PaymentIntentReauthorizeOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<PaymentIntent>(BaseAddress.Api, HttpMethod.Post, $"/v1/payment_intents/{WebUtility.UrlEncode(id)}/reauthorize", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Search for PaymentIntents you’ve previously created using Stripe’s <a
         /// href="https://stripe.com/docs/search#search-query-language">Search Query Language</a>.
         /// Don’t use search in read-after-write flows where strict consistency is necessary. Under

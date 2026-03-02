@@ -143,5 +143,11 @@ namespace Stripe
 #endif
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
+
+        [JsonProperty("settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("settings")]
+#endif
+        public QuoteLineActionSetItemDiscountSettings Settings { get; set; }
     }
 }

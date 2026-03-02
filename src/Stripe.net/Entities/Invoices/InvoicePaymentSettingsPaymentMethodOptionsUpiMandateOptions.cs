@@ -42,8 +42,7 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// End date of the mandate or subscription. If not provided, the mandate will be active
-        /// until canceled. If provided, end date should be after start date.
+        /// End date of the mandate or subscription.
         /// </summary>
         [JsonProperty("end_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

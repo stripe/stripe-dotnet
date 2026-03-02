@@ -9,6 +9,16 @@ namespace Stripe
     public class AccountSettingsPayments : StripeEntity<AccountSettingsPayments>
     {
         /// <summary>
+        /// When enabled, the customer of this Account will receive an email receipt when their
+        /// payment is successful. If this parameter is not set, the default value is <c>false</c>.
+        /// </summary>
+        [JsonProperty("email_customers_on_successful_payment")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("email_customers_on_successful_payment")]
+#endif
+        public bool? EmailCustomersOnSuccessfulPayment { get; set; }
+
+        /// <summary>
         /// The default text that appears on credit card statements when a charge is made. This
         /// field prefixes any dynamic <c>statement_descriptor</c> specified on the charge.
         /// </summary>

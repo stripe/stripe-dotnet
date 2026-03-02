@@ -25,5 +25,14 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
+
+        /// <summary>
+        /// The digital fulfillment option.
+        /// </summary>
+        [JsonProperty("digital")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("digital")]
+#endif
+        public RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionDigital Digital { get; set; }
     }
 }

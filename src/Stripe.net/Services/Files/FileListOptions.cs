@@ -31,7 +31,8 @@ namespace Stripe
         /// <c>identity_document_downloadable</c>, <c>issuing_regulatory_reporting</c>,
         /// <c>pci_document</c>, <c>platform_terms_of_service</c>, <c>selfie</c>,
         /// <c>sigma_scheduled_query</c>, <c>tax_document_user_upload</c>,
-        /// <c>terminal_android_apk</c>, or <c>terminal_reader_splashscreen</c>.
+        /// <c>terminal_android_apk</c>, <c>terminal_reader_splashscreen</c>,
+        /// <c>terminal_wifi_certificate</c>, or <c>terminal_wifi_private_key</c>.
         /// </summary>
         [JsonProperty("purpose")]
 #if NET6_0_OR_GREATER

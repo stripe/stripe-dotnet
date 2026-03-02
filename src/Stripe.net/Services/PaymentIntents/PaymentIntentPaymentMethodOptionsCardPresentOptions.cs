@@ -51,6 +51,18 @@ namespace Stripe
         public bool? RequestIncrementalAuthorizationSupport { get; set; }
 
         /// <summary>
+        /// Request ability to <a
+        /// href="https://docs.stripe.com/payments/reauthorization">reauthorize</a> for this
+        /// PaymentIntent.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_reauthorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_reauthorization")]
+#endif
+        public string RequestReauthorization { get; set; }
+
+        /// <summary>
         /// Network routing priority on co-branded EMV cards supporting domestic debit and
         /// international card schemes.
         /// </summary>

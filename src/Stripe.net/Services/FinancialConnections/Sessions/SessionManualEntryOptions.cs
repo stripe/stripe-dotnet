@@ -9,7 +9,7 @@ namespace Stripe.FinancialConnections
     public class SessionManualEntryOptions : INestedOptions
     {
         /// <summary>
-        /// Whether manual entry will be handled by Stripe during the Session.
+        /// How manual entry should be handled.
         /// One of: <c>automatic</c>, or <c>custom</c>.
         /// </summary>
         [JsonProperty("mode")]

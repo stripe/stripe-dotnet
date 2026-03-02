@@ -20,6 +20,12 @@ namespace Stripe
 #endif
         public InvoiceLineItemPricingPriceDetails PriceDetails { get; set; }
 
+        [JsonProperty("rate_card_custom_pricing_unit_overage_rate_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("rate_card_custom_pricing_unit_overage_rate_details")]
+#endif
+        public InvoiceLineItemPricingRateCardCustomPricingUnitOverageRateDetails RateCardCustomPricingUnitOverageRateDetails { get; set; }
+
         [JsonProperty("rate_card_rate_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_rate_details")]
@@ -47,11 +53,5 @@ namespace Stripe
         [STJS.JsonPropertyName("unit_amount_decimal")]
 #endif
         public decimal? UnitAmountDecimal { get; set; }
-
-        [JsonProperty("rate_card_custom_pricing_unit_overage_rate_details")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("rate_card_custom_pricing_unit_overage_rate_details")]
-#endif
-        public InvoiceLineItemPricingRateCardCustomPricingUnitOverageRateDetails RateCardCustomPricingUnitOverageRateDetails { get; set; }
     }
 }

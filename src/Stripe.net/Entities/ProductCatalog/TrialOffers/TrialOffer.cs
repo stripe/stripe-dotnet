@@ -48,8 +48,8 @@ namespace Stripe.ProductCatalog
         public TrialOfferEndBehavior EndBehavior { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
 #if NET6_0_OR_GREATER

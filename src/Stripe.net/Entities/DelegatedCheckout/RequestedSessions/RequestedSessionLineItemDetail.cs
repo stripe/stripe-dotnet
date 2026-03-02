@@ -67,5 +67,14 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("unit_amount")]
 #endif
         public long UnitAmount { get; set; }
+
+        /// <summary>
+        /// The fulfillment type of the line item.
+        /// </summary>
+        [JsonProperty("fulfillment_type")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fulfillment_type")]
+#endif
+        public string FulfillmentType { get; set; }
     }
 }

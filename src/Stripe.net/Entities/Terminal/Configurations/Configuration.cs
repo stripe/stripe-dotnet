@@ -44,6 +44,12 @@ namespace Stripe.Terminal
 #endif
         public ConfigurationBbposWiseposE BbposWiseposE { get; set; }
 
+        [JsonProperty("cellular")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("cellular")]
+#endif
+        public ConfigurationCellular Cellular { get; set; }
+
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
@@ -105,6 +111,12 @@ namespace Stripe.Terminal
         [STJS.JsonPropertyName("stripe_s700")]
 #endif
         public ConfigurationStripeS700 StripeS700 { get; set; }
+
+        [JsonProperty("stripe_s710")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("stripe_s710")]
+#endif
+        public ConfigurationStripeS710 StripeS710 { get; set; }
 
         [JsonProperty("tipping")]
 #if NET6_0_OR_GREATER
