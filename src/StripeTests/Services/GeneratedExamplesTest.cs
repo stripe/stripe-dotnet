@@ -8344,13 +8344,13 @@ namespace StripeTests
                 HttpMethod.Post,
                 "/v2/core/account_links",
                 (HttpStatusCode)200,
-                "{\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"object\":\"v2.core.account_link\",\"url\":\"url\",\"use_case\":{\"type\":\"account_onboarding\"},\"livemode\":true}");
+                "{\"account\":\"account\",\"created\":\"1970-01-12T21:42:34.472Z\",\"expires_at\":\"1970-01-10T15:36:51.170Z\",\"object\":\"v2.core.account_link\",\"url\":\"url\",\"use_case\":{\"type\":\"recipient_onboarding\"},\"livemode\":true}");
             var options = new Stripe.V2.Core.AccountLinkCreateOptions
             {
                 Account = "account",
                 UseCase = new Stripe.V2.Core.AccountLinkCreateUseCaseOptions
                 {
-                    Type = "account_onboarding",
+                    Type = "recipient_onboarding",
                     AccountOnboarding = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingOptions
                     {
                         CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseAccountOnboardingCollectionOptionsOptions
@@ -8370,6 +8370,28 @@ namespace StripeTests
                             FutureRequirements = "include",
                         },
                         Configurations = new List<string> { "storer" },
+                        RefreshUrl = "refresh_url",
+                        ReturnUrl = "return_url",
+                    },
+                    RecipientOnboarding = new Stripe.V2.Core.AccountLinkCreateUseCaseRecipientOnboardingOptions
+                    {
+                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseRecipientOnboardingCollectionOptionsOptions
+                        {
+                            Fields = "eventually_due",
+                            FutureRequirements = "include",
+                        },
+                        Configurations = new List<string> { "recipient" },
+                        RefreshUrl = "refresh_url",
+                        ReturnUrl = "return_url",
+                    },
+                    RecipientUpdate = new Stripe.V2.Core.AccountLinkCreateUseCaseRecipientUpdateOptions
+                    {
+                        CollectionOptions = new Stripe.V2.Core.AccountLinkCreateUseCaseRecipientUpdateCollectionOptionsOptions
+                        {
+                            Fields = "eventually_due",
+                            FutureRequirements = "include",
+                        },
+                        Configurations = new List<string> { "recipient" },
                         RefreshUrl = "refresh_url",
                         ReturnUrl = "return_url",
                     },
@@ -9835,7 +9857,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transactions",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"amount\":{\"value\":111972721,\"currency\":\"usd\"},\"balance_impact\":{\"available\":{\"value\":111972721,\"currency\":\"usd\"},\"inbound_pending\":{\"value\":111972721,\"currency\":\"usd\"},\"outbound_pending\":{\"value\":111972721,\"currency\":\"usd\"}},\"category\":\"issuing_dispute_provisional_credit_reversal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"adjustment\"},\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"status\":\"pending\",\"status_transitions\":{},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"amount\":{\"value\":111972721,\"currency\":\"usd\"},\"balance_impact\":{\"available\":{\"value\":111972721,\"currency\":\"usd\"},\"inbound_pending\":{\"value\":111972721,\"currency\":\"usd\"},\"outbound_pending\":{\"value\":111972721,\"currency\":\"usd\"}},\"category\":\"received_debit_reversal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"status\":\"pending\",\"status_transitions\":{},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.Transactions;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.Transaction> transactions = service
@@ -9852,7 +9874,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transactions/id_123",
                 (HttpStatusCode)200,
-                "{\"amount\":{\"value\":111972721,\"currency\":\"usd\"},\"balance_impact\":{\"available\":{\"value\":111972721,\"currency\":\"usd\"},\"inbound_pending\":{\"value\":111972721,\"currency\":\"usd\"},\"outbound_pending\":{\"value\":111972721,\"currency\":\"usd\"}},\"category\":\"issuing_dispute_provisional_credit_reversal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"adjustment\"},\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"status\":\"pending\",\"status_transitions\":{},\"livemode\":true}");
+                "{\"amount\":{\"value\":111972721,\"currency\":\"usd\"},\"balance_impact\":{\"available\":{\"value\":111972721,\"currency\":\"usd\"},\"inbound_pending\":{\"value\":111972721,\"currency\":\"usd\"},\"outbound_pending\":{\"value\":111972721,\"currency\":\"usd\"}},\"category\":\"received_debit_reversal\",\"created\":\"1970-01-12T21:42:34.472Z\",\"financial_account\":\"financial_account\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction\",\"status\":\"pending\",\"status_transitions\":{},\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.Transactions;
             Stripe.V2.MoneyManagement.Transaction transaction = service.Get(
@@ -9869,7 +9891,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transaction_entries",
                 (HttpStatusCode)200,
-                "{\"data\":[{\"balance_impact\":{\"available\":{\"value\":111972721,\"currency\":\"usd\"},\"inbound_pending\":{\"value\":111972721,\"currency\":\"usd\"},\"outbound_pending\":{\"value\":111972721,\"currency\":\"usd\"}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"issuing_dispute_provisional_credit_reversal\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"adjustment\"}},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
+                "{\"data\":[{\"balance_impact\":{\"available\":{\"value\":111972721,\"currency\":\"usd\"},\"inbound_pending\":{\"value\":111972721,\"currency\":\"usd\"},\"outbound_pending\":{\"value\":111972721,\"currency\":\"usd\"}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"received_debit_reversal\",\"financial_account\":\"financial_account\"},\"livemode\":true}],\"next_page_url\":null,\"previous_page_url\":null}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.TransactionEntries;
             Stripe.V2.StripeList<Stripe.V2.MoneyManagement.TransactionEntry> transactionEntries = service
@@ -9886,7 +9908,7 @@ namespace StripeTests
                 HttpMethod.Get,
                 "/v2/money_management/transaction_entries/id_123",
                 (HttpStatusCode)200,
-                "{\"balance_impact\":{\"available\":{\"value\":111972721,\"currency\":\"usd\"},\"inbound_pending\":{\"value\":111972721,\"currency\":\"usd\"},\"outbound_pending\":{\"value\":111972721,\"currency\":\"usd\"}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"issuing_dispute_provisional_credit_reversal\",\"financial_account\":\"financial_account\",\"flow\":{\"type\":\"adjustment\"}},\"livemode\":true}");
+                "{\"balance_impact\":{\"available\":{\"value\":111972721,\"currency\":\"usd\"},\"inbound_pending\":{\"value\":111972721,\"currency\":\"usd\"},\"outbound_pending\":{\"value\":111972721,\"currency\":\"usd\"}},\"created\":\"1970-01-12T21:42:34.472Z\",\"effective_at\":\"1970-01-03T20:38:28.043Z\",\"id\":\"obj_123\",\"object\":\"v2.money_management.transaction_entry\",\"transaction\":\"transaction\",\"transaction_details\":{\"category\":\"received_debit_reversal\",\"financial_account\":\"financial_account\"},\"livemode\":true}");
             var client = new StripeClient(this.Requestor);
             var service = client.V2.MoneyManagement.TransactionEntries;
             Stripe.V2.MoneyManagement.TransactionEntry transactionEntry = service

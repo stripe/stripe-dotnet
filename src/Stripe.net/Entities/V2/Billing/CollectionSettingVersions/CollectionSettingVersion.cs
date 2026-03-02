@@ -7,6 +7,12 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// A Collection Setting Version is a specific configuration of a CollectionSetting at a
+    /// point in time. Collection Setting Versions enable you to track changes to payment
+    /// collection settings over time and manage which version is active for new billing
+    /// operations.
+    /// </summary>
     public class CollectionSettingVersion : StripeEntity<CollectionSettingVersion>, IHasId, IHasObject
     {
         /// <summary>

@@ -8,6 +8,12 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// A Pricing Plan Subscription represents a customer's active subscription to a Pricing
+    /// Plan. It tracks both the servicing status (whether the customer is receiving service)
+    /// and collection status (whether payments are current). Subscriptions are created through
+    /// Billing Intents and bill according to the associated Billing Cadence.
+    /// </summary>
     public class PricingPlanSubscription : StripeEntity<PricingPlanSubscription>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

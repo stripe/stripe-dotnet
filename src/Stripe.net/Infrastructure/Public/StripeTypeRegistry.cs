@@ -480,6 +480,10 @@ namespace Stripe
                 { "v2.billing.rate_card.created", typeof(Events.V2BillingRateCardCreatedEvent) },
                 { "v2.billing.rate_card.updated", typeof(Events.V2BillingRateCardUpdatedEvent) },
                 {
+                    "v2.billing.rate_card_custom_pricing_unit_overage_rate.created", typeof(
+                    Events.V2BillingRateCardCustomPricingUnitOverageRateCreatedEvent)
+                },
+                {
                     "v2.billing.rate_card_rate.created", typeof(
                     Events.V2BillingRateCardRateCreatedEvent)
                 },
@@ -718,6 +722,30 @@ namespace Stripe
                 },
                 { "v2.iam.api_key.rotated", typeof(Events.V2IamApiKeyRotatedEvent) },
                 { "v2.iam.api_key.updated", typeof(Events.V2IamApiKeyUpdatedEvent) },
+                {
+                    "v2.iam.stripe_access_grant.approved", typeof(
+                    Events.V2IamStripeAccessGrantApprovedEvent)
+                },
+                {
+                    "v2.iam.stripe_access_grant.canceled", typeof(
+                    Events.V2IamStripeAccessGrantCanceledEvent)
+                },
+                {
+                    "v2.iam.stripe_access_grant.denied", typeof(
+                    Events.V2IamStripeAccessGrantDeniedEvent)
+                },
+                {
+                    "v2.iam.stripe_access_grant.removed", typeof(
+                    Events.V2IamStripeAccessGrantRemovedEvent)
+                },
+                {
+                    "v2.iam.stripe_access_grant.requested", typeof(
+                    Events.V2IamStripeAccessGrantRequestedEvent)
+                },
+                {
+                    "v2.iam.stripe_access_grant.updated", typeof(
+                    Events.V2IamStripeAccessGrantUpdatedEvent)
+                },
                 {
                     "v2.money_management.adjustment.created", typeof(
                     Events.V2MoneyManagementAdjustmentCreatedEvent)
@@ -1083,6 +1111,10 @@ namespace Stripe
                     Events.V2BillingRateCardUpdatedEventNotification)
                 },
                 {
+                    "v2.billing.rate_card_custom_pricing_unit_overage_rate.created", typeof(
+                    Events.V2BillingRateCardCustomPricingUnitOverageRateCreatedEventNotification)
+                },
+                {
                     "v2.billing.rate_card_rate.created", typeof(
                     Events.V2BillingRateCardRateCreatedEventNotification)
                 },
@@ -1330,6 +1362,30 @@ namespace Stripe
                 },
                 { "v2.iam.api_key.rotated", typeof(Events.V2IamApiKeyRotatedEventNotification) },
                 { "v2.iam.api_key.updated", typeof(Events.V2IamApiKeyUpdatedEventNotification) },
+                {
+                    "v2.iam.stripe_access_grant.approved", typeof(
+                    Events.V2IamStripeAccessGrantApprovedEventNotification)
+                },
+                {
+                    "v2.iam.stripe_access_grant.canceled", typeof(
+                    Events.V2IamStripeAccessGrantCanceledEventNotification)
+                },
+                {
+                    "v2.iam.stripe_access_grant.denied", typeof(
+                    Events.V2IamStripeAccessGrantDeniedEventNotification)
+                },
+                {
+                    "v2.iam.stripe_access_grant.removed", typeof(
+                    Events.V2IamStripeAccessGrantRemovedEventNotification)
+                },
+                {
+                    "v2.iam.stripe_access_grant.requested", typeof(
+                    Events.V2IamStripeAccessGrantRequestedEventNotification)
+                },
+                {
+                    "v2.iam.stripe_access_grant.updated", typeof(
+                    Events.V2IamStripeAccessGrantUpdatedEventNotification)
+                },
                 {
                     "v2.money_management.adjustment.created", typeof(
                     Events.V2MoneyManagementAdjustmentCreatedEventNotification)

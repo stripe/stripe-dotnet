@@ -10,7 +10,7 @@ namespace Stripe.V2.Billing
     public class IntentActionModifyPricingPlanSubscriptionDetailsOverrides : StripeEntity<IntentActionModifyPricingPlanSubscriptionDetailsOverrides>
     {
         /// <summary>
-        /// Override for the partial period behavior.
+        /// Configurations for behaviors when the action takes effect during the service period.
         /// </summary>
         [JsonProperty("partial_period_behaviors")]
 #if NET6_0_OR_GREATER

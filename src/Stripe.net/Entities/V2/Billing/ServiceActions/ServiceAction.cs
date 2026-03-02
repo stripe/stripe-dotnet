@@ -7,6 +7,10 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// Service Actions represent actions applied during service assessment periods, such as
+    /// granting credits to a customer.
+    /// </summary>
     public class ServiceAction : StripeEntity<ServiceAction>, IHasId, IHasObject
     {
         /// <summary>

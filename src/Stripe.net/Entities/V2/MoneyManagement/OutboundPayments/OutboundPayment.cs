@@ -132,6 +132,15 @@ namespace Stripe.V2.MoneyManagement
         public string OutboundPaymentQuote { get; set; }
 
         /// <summary>
+        /// The purpose of the OutboundPayment.
+        /// </summary>
+        [JsonProperty("purpose")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("purpose")]
+#endif
+        public string Purpose { get; set; }
+
+        /// <summary>
         /// A link to the Stripe-hosted receipt for this OutboundPayment. The receipt link remains
         /// active for 60 days from the OutboundPayment creation date. After this period, the link
         /// will expire and the receipt url value will be null.
@@ -217,7 +226,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// A unique identifier that can be used to track this OutboundPayment with recipient bank.
-        /// Banks might call this a “reference number” or something similar.
+        /// Banks might call this a "reference number" or something similar.
         /// </summary>
         [JsonProperty("trace_id")]
 #if NET6_0_OR_GREATER

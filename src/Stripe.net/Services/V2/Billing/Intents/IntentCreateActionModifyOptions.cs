@@ -9,7 +9,8 @@ namespace Stripe.V2.Billing
     public class IntentCreateActionModifyOptions : INestedOptions
     {
         /// <summary>
-        /// Allows users to override the collect at behavior.
+        /// When the invoice will be collected. If not specified, the default behavior is
+        /// next_billing_date.
         /// One of: <c>next_billing_date</c>, or <c>on_effective_at</c>.
         /// </summary>
         [JsonProperty("collect_at")]

@@ -8,6 +8,13 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// A Rate Card Subscription represents a customer's subscription to a Rate Card's
+    /// usage-based pricing. It tracks the servicing status (whether usage is being measured)
+    /// and collection status (whether payments are current). Subscriptions bill according to
+    /// the service interval defined in the Rate Card and are collected on the associated
+    /// Billing Cadence.
+    /// </summary>
     public class RateCardSubscription : StripeEntity<RateCardSubscription>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

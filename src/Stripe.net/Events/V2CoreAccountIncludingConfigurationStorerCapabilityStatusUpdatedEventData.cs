@@ -11,7 +11,7 @@ namespace Stripe.Events
     {
         /// <summary>
         /// Open Enum. The capability which had its status updated.
-        /// One of: <c>financial_addressses.bank_accounts</c>,
+        /// One of: <c>consumer.holds_currencies.usd</c>, <c>financial_addressses.bank_accounts</c>,
         /// <c>financial_addressses.crypto_wallets</c>, <c>holds_currencies.eur</c>,
         /// <c>holds_currencies.gbp</c>, <c>holds_currencies.usd</c>, <c>holds_currencies.usdc</c>,
         /// <c>inbound_transfers.bank_accounts</c>, <c>outbound_payments.bank_accounts</c>,

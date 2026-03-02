@@ -7,6 +7,12 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// A Billing Intent Action represents a specific operation within a Billing Intent, such as
+    /// subscribing to a Pricing Plan, modifying a subscription's quantity, or deactivating
+    /// service. Each action has a specific type and associated details that define what change
+    /// will be made when the Intent is committed.
+    /// </summary>
     public class IntentAction : StripeEntity<IntentAction>, IHasId, IHasObject
     {
         /// <summary>
