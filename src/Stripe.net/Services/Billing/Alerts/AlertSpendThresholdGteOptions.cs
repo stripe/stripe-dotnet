@@ -9,7 +9,9 @@ namespace Stripe.Billing
     public class AlertSpendThresholdGteOptions : INestedOptions
     {
         /// <summary>
-        /// The monetary amount. Required when type is <c>amount</c>.
+        /// The monetary amount. Required when type is <c>amount</c>. The threshold is the
+        /// total_before_tax, the amount consumed after all credits and discounts are applied, but
+        /// before tax is applied.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER

@@ -92,6 +92,11 @@ namespace Stripe
         public const string BillingPortalSessionCreated = "billing_portal.session.created";
 
         /// <summary>
+        /// Occurs whenever your custom alert threshold is recovered from a previous exceeded state.
+        /// </summary>
+        public const string BillingAlertRecovered = "billing.alert.recovered";
+
+        /// <summary>
         /// Occurs whenever your custom alert threshold is met.
         /// </summary>
         public const string BillingAlertTriggered = "billing.alert.triggered";
@@ -1171,6 +1176,41 @@ namespace Stripe
         /// data has come available).
         /// </summary>
         public const string ReportingReportTypeUpdated = "reporting.report_type.updated";
+
+        /// <summary>
+        /// Occurs when a reserve hold is created.
+        /// </summary>
+        public const string ReserveHoldCreated = "reserve.hold.created";
+
+        /// <summary>
+        /// Occurs when a reserve hold is updated.
+        /// </summary>
+        public const string ReserveHoldUpdated = "reserve.hold.updated";
+
+        /// <summary>
+        /// Occurs when a reserve plan is created.
+        /// </summary>
+        public const string ReservePlanCreated = "reserve.plan.created";
+
+        /// <summary>
+        /// Occurs when a reserve plan is disabled.
+        /// </summary>
+        public const string ReservePlanDisabled = "reserve.plan.disabled";
+
+        /// <summary>
+        /// Occurs when a reserve plan expires.
+        /// </summary>
+        public const string ReservePlanExpired = "reserve.plan.expired";
+
+        /// <summary>
+        /// Occurs when a reserve plan is updated.
+        /// </summary>
+        public const string ReservePlanUpdated = "reserve.plan.updated";
+
+        /// <summary>
+        /// Occurs when a reserve release is created.
+        /// </summary>
+        public const string ReserveReleaseCreated = "reserve.release.created";
 
         /// <summary>
         /// Occurs whenever a review is closed. The review's <c>reason</c> field indicates why:

@@ -504,6 +504,15 @@ namespace Stripe.Tax
         public RegistrationCountryOptionsLaOptions La { get; set; }
 
         /// <summary>
+        /// Options for the registration in LK.
+        /// </summary>
+        [JsonProperty("lk")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("lk")]
+#endif
+        public RegistrationCountryOptionsLkOptions Lk { get; set; }
+
+        /// <summary>
         /// Options for the registration in LT.
         /// </summary>
         [JsonProperty("lt")]

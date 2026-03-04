@@ -9,7 +9,7 @@ namespace Stripe.V2.Billing
     public class IntentActionSubscribePricingPlanSubscriptionDetailsOverridesPartialPeriodBehavior : StripeEntity<IntentActionSubscribePricingPlanSubscriptionDetailsOverridesPartialPeriodBehavior>
     {
         /// <summary>
-        /// Type of the partial period behavior override.
+        /// The type of behavior to override.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,8 @@ namespace Stripe.V2.Billing
         public string Type { get; set; }
 
         /// <summary>
-        /// Override for the license fee.
+        /// Overrides the behavior for license fee components when the action takes effect during
+        /// the service period.
         /// </summary>
         [JsonProperty("license_fee")]
 #if NET6_0_OR_GREATER

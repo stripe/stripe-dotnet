@@ -198,7 +198,7 @@ namespace Stripe.V2.MoneyManagement
 
         /// <summary>
         /// A unique identifier that can be used to track this OutboundTransfer with recipient bank.
-        /// Banks might call this a “reference number” or something similar.
+        /// Banks might call this a "reference number" or something similar.
         /// </summary>
         [JsonProperty("trace_id")]
 #if NET6_0_OR_GREATER

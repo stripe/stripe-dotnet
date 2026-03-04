@@ -30,7 +30,7 @@ namespace Stripe.V2.Billing
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Allows users to override the partial period behavior.
+        /// Configurations for overriding behaviors related to the subscription.
         /// </summary>
         [JsonProperty("overrides")]
 #if NET6_0_OR_GREATER

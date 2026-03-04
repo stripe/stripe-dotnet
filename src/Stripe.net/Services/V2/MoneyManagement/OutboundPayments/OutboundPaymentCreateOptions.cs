@@ -67,6 +67,15 @@ namespace Stripe.V2.MoneyManagement
         public string OutboundPaymentQuote { get; set; }
 
         /// <summary>
+        /// The purpose of the OutboundPayment.
+        /// </summary>
+        [JsonProperty("purpose")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("purpose")]
+#endif
+        public string Purpose { get; set; }
+
+        /// <summary>
         /// Details about the notification settings for the OutboundPayment recipient.
         /// </summary>
         [JsonProperty("recipient_notification")]

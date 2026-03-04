@@ -9,6 +9,15 @@ namespace Stripe.V2.Core
     public class AccountConfigurationStorerCapabilities : StripeEntity<AccountConfigurationStorerCapabilities>
     {
         /// <summary>
+        /// Hash containing capabilities related to consumer financial accounts.
+        /// </summary>
+        [JsonProperty("consumer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("consumer")]
+#endif
+        public AccountConfigurationStorerCapabilitiesConsumer Consumer { get; set; }
+
+        /// <summary>
         /// Can provision a financial address to credit/debit a FinancialAccount.
         /// </summary>
         [JsonProperty("financial_addresses")]

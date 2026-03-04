@@ -18,7 +18,7 @@ namespace Stripe
         public string OrderId { get; set; }
 
         /// <summary>
-        /// Order identifier shown to the merchant in Afterpay’s online portal.
+        /// Order identifier shown to the merchant in Afterpay's online portal.
         /// </summary>
         [JsonProperty("reference")]
 #if NET6_0_OR_GREATER

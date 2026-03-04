@@ -7,6 +7,11 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// A Meter Event Adjustment is used to cancel or modify previously recorded meter events.
+    /// Meter Event Adjustments allow you to correct billing data by canceling individual events
+    /// or event ranges, with tracking of adjustment status and creation time.
+    /// </summary>
     public class MeterEventAdjustment : StripeEntity<MeterEventAdjustment>, IHasId, IHasObject
     {
         /// <summary>

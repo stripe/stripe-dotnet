@@ -7,6 +7,12 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// A Pricing Plan Version represents a specific configuration of a Pricing Plan at a point
+    /// in time. Versions are created automatically when you update a Pricing Plan, allowing you
+    /// to track changes and manage which version is active for new subscriptions. Each version
+    /// has a start date and optionally an end date if it has been superseded.
+    /// </summary>
     public class PricingPlanVersion : StripeEntity<PricingPlanVersion>, IHasId, IHasObject
     {
         /// <summary>

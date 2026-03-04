@@ -145,6 +145,16 @@ namespace Stripe
         public string Last4 { get; set; }
 
         /// <summary>
+        /// ID of the <a href="https://docs.stripe.com/api/terminal/locations">location</a> that
+        /// this transaction's reader is assigned to.
+        /// </summary>
+        [JsonProperty("location")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("location")]
+#endif
+        public string Location { get; set; }
+
+        /// <summary>
         /// Identifies which network this charge was processed on. Can be <c>amex</c>,
         /// <c>cartes_bancaires</c>, <c>diners</c>, <c>discover</c>, <c>eftpos_au</c>,
         /// <c>interac</c>, <c>jcb</c>, <c>link</c>, <c>mastercard</c>, <c>unionpay</c>,
@@ -189,6 +199,16 @@ namespace Stripe
         [STJS.JsonPropertyName("read_method")]
 #endif
         public string ReadMethod { get; set; }
+
+        /// <summary>
+        /// ID of the <a href="https://docs.stripe.com/api/terminal/readers">reader</a> this
+        /// transaction was made on.
+        /// </summary>
+        [JsonProperty("reader")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("reader")]
+#endif
+        public string Reader { get; set; }
 
         /// <summary>
         /// A collection of fields required to be displayed on receipts. Only required for EMV

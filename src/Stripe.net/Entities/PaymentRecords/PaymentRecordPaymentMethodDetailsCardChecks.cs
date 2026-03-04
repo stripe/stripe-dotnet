@@ -9,6 +9,8 @@ namespace Stripe
     public class PaymentRecordPaymentMethodDetailsCardChecks : StripeEntity<PaymentRecordPaymentMethodDetailsCardChecks>
     {
         /// <summary>
+        /// If you provide a value for <c>address.line1</c>, the check result is one of <c>pass</c>,
+        /// <c>fail</c>, <c>unavailable</c>, or <c>unchecked</c>.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
         /// </summary>
         [JsonProperty("address_line1_check")]
@@ -18,6 +20,8 @@ namespace Stripe
         public string AddressLine1Check { get; set; }
 
         /// <summary>
+        /// If you provide a address postal code, the check result is one of <c>pass</c>,
+        /// <c>fail</c>, <c>unavailable</c>, or <c>unchecked</c>.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
         /// </summary>
         [JsonProperty("address_postal_code_check")]
@@ -27,6 +31,8 @@ namespace Stripe
         public string AddressPostalCodeCheck { get; set; }
 
         /// <summary>
+        /// If you provide a CVC, the check results is one of <c>pass</c>, <c>fail</c>,
+        /// <c>unavailable</c>, or <c>unchecked</c>.
         /// One of: <c>fail</c>, <c>pass</c>, <c>unavailable</c>, or <c>unchecked</c>.
         /// </summary>
         [JsonProperty("cvc_check")]

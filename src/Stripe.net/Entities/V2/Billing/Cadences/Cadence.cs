@@ -8,6 +8,10 @@ namespace Stripe.V2.Billing
     using STJS = System.Text.Json.Serialization;
 #endif
 
+    /// <summary>
+    /// A Cadence represents a billing schedule applied to a customer, defining when and how
+    /// often to generate invoices, such as on monthly or annual billing cycle.
+    /// </summary>
     public class Cadence : StripeEntity<Cadence>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>

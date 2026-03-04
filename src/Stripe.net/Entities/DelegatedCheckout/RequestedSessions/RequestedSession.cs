@@ -33,6 +33,15 @@ namespace Stripe.DelegatedCheckout
         public string Object { get; set; }
 
         /// <summary>
+        /// Affiliate attribution data associated with this requested session.
+        /// </summary>
+        [JsonProperty("affiliate_attributions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("affiliate_attributions")]
+#endif
+        public List<RequestedSessionAffiliateAttribution> AffiliateAttributions { get; set; }
+
+        /// <summary>
         /// The subtotal amount of the requested session.
         /// </summary>
         [JsonProperty("amount_subtotal")]
@@ -111,8 +120,8 @@ namespace Stripe.DelegatedCheckout
         public List<RequestedSessionLineItemDetail> LineItemDetails { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
 #if NET6_0_OR_GREATER

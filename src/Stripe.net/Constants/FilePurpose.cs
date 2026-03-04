@@ -40,5 +40,9 @@ namespace Stripe
         public const string TerminalAndroidApk = "terminal_android_apk";
 
         public const string TerminalReaderSplashscreen = "terminal_reader_splashscreen";
+
+        public const string TerminalWifiCertificate = "terminal_wifi_certificate";
+
+        public const string TerminalWifiPrivateKey = "terminal_wifi_private_key";
     }
 }

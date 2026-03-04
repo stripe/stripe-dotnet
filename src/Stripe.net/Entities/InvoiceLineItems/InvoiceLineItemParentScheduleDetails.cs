@@ -9,15 +9,6 @@ namespace Stripe
     public class InvoiceLineItemParentScheduleDetails : StripeEntity<InvoiceLineItemParentScheduleDetails>
     {
         /// <summary>
-        /// The subscription schedule that generated this line item.
-        /// </summary>
-        [JsonProperty("schedule")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("schedule")]
-#endif
-        public string Schedule { get; set; }
-
-        /// <summary>
         /// The invoice item that generated this line item.
         /// </summary>
         [JsonProperty("invoice_item")]
@@ -43,6 +34,15 @@ namespace Stripe
         [STJS.JsonPropertyName("proration_details")]
 #endif
         public InvoiceLineItemParentScheduleDetailsProrationDetails ProrationDetails { get; set; }
+
+        /// <summary>
+        /// The subscription schedule that generated this line item.
+        /// </summary>
+        [JsonProperty("schedule")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("schedule")]
+#endif
+        public string Schedule { get; set; }
 
         /// <summary>
         /// The subscription that the schedule belongs to.

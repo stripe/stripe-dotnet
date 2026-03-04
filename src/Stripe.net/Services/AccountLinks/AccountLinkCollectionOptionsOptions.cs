@@ -9,6 +9,20 @@ namespace Stripe
     public class AccountLinkCollectionOptionsOptions : INestedOptions
     {
         /// <summary>
+        /// Specifies whether the platform collects external account information from connected
+        /// accounts during Connect Onboarding. When set to <c>true</c>, the platform only collects
+        /// external account information if the connected account has capabilities which require it.
+        /// Some capabilities, such as <c>treasury</c>, don't require external account collection.
+        /// When set to <c>false</c>, external account collection is skipped. Defaults to
+        /// <c>true</c>.
+        /// </summary>
+        [JsonProperty("external_account_collection")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("external_account_collection")]
+#endif
+        public bool? ExternalAccountCollection { get; set; }
+
+        /// <summary>
         /// Specifies whether the platform collects only currently_due requirements
         /// (<c>currently_due</c>) or both currently_due and eventually_due requirements
         /// (<c>eventually_due</c>). If you don't specify <c>collection_options</c>, the default
@@ -31,16 +45,5 @@ namespace Stripe
         [STJS.JsonPropertyName("future_requirements")]
 #endif
         public string FutureRequirements { get; set; }
-
-        /// <summary>
-        /// Specifies whether the platform collects external account information from connected
-        /// accounts during Connect Onboarding. When set to <c>false</c>, external account
-        /// collection is skipped. Defaults to <c>true</c>.
-        /// </summary>
-        [JsonProperty("external_account_collection")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("external_account_collection")]
-#endif
-        public bool? ExternalAccountCollection { get; set; }
     }
 }

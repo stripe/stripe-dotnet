@@ -9,7 +9,7 @@ namespace Stripe.V2.Iam
 #endif
 
     /// <summary>
-    /// An API key.
+    /// An API key is used to authenticate API requests.
     /// </summary>
     public class ApiKey : StripeEntity<ApiKey>, IHasId, IHasObject
     {

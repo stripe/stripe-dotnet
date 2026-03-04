@@ -9,7 +9,7 @@ namespace Stripe
     public class SubscriptionTrialSettings : StripeEntity<SubscriptionTrialSettings>
     {
         /// <summary>
-        /// Defines how a subscription behaves when a free trial ends.
+        /// Defines how a subscription behaves when a trial ends.
         /// </summary>
         [JsonProperty("end_behavior")]
 #if NET6_0_OR_GREATER

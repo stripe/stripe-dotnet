@@ -32,8 +32,8 @@ namespace Stripe
         /// fails. Use this for strict validation that prevents processing with line item data that
         /// has arithmetic inconsistencies.
         ///
-        /// For card payments, Stripe doesn't send line item data if there's an arithmetic
-        /// validation error to card networks.
+        /// For card payments, Stripe doesn't send line item data to card networks if there's an
+        /// arithmetic validation error.
         /// </summary>
         [JsonProperty("enforce_arithmetic_validation")]
 #if NET6_0_OR_GREATER

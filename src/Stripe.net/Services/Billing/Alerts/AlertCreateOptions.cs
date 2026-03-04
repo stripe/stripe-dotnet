@@ -29,7 +29,9 @@ namespace Stripe.Billing
         public AlertCreditBalanceThresholdOptions CreditBalanceThreshold { get; set; }
 
         /// <summary>
-        /// The configuration of the spend threshold.
+        /// The configuration of the spend threshold. An event fires when the amount consumed
+        /// exceeds the threshold, after all credits and discounts are applied but before tax is
+        /// applied.
         /// </summary>
         [JsonProperty("spend_threshold")]
 #if NET6_0_OR_GREATER

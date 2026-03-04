@@ -9,7 +9,7 @@ namespace Stripe.Checkout
     public class SessionCustomTextSubmitOptions : INestedOptions
     {
         /// <summary>
-        /// Text may be up to 1200 characters in length.
+        /// Text can be up to 1200 characters in length.
         /// </summary>
         [JsonProperty("message")]
 #if NET6_0_OR_GREATER

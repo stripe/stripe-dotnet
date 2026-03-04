@@ -8,6 +8,9 @@ namespace Stripe
 
     public class PaymentRecordPaymentMethodDetailsCardInstallments : StripeEntity<PaymentRecordPaymentMethodDetailsCardInstallments>
     {
+        /// <summary>
+        /// Installment plan selected for the payment.
+        /// </summary>
         [JsonProperty("plan")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("plan")]

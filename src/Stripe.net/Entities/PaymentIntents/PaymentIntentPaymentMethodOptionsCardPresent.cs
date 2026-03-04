@@ -48,5 +48,17 @@ namespace Stripe
         [STJS.JsonPropertyName("routing")]
 #endif
         public PaymentIntentPaymentMethodOptionsCardPresentRouting Routing { get; set; }
+
+        /// <summary>
+        /// Request ability to <a
+        /// href="https://docs.stripe.com/payments/reauthorization">reauthorize</a> for this
+        /// PaymentIntent.
+        /// One of: <c>if_available</c>, or <c>never</c>.
+        /// </summary>
+        [JsonProperty("request_reauthorization")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("request_reauthorization")]
+#endif
+        public string RequestReauthorization { get; set; }
     }
 }

@@ -10,7 +10,8 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// The proration behavior for the partial servicing period. Defines how we prorate the
-        /// license fee when the user is upgrading.
+        /// license fee when the user modifies the subscription. If not specified, defaults to
+        /// prorated.
         /// One of: <c>none</c>, or <c>prorated</c>.
         /// </summary>
         [JsonProperty("credit_proration_behavior")]
@@ -21,7 +22,8 @@ namespace Stripe.V2.Billing
 
         /// <summary>
         /// The proration behavior for the partial servicing period. Defines how we prorate the
-        /// license fee when the user is downgrading.
+        /// license fee when the user modifies the subscription. If not specified, defaults to
+        /// prorated.
         /// One of: <c>none</c>, or <c>prorated</c>.
         /// </summary>
         [JsonProperty("debit_proration_behavior")]

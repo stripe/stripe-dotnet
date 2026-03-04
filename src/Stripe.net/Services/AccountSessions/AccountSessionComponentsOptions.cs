@@ -32,6 +32,17 @@ namespace Stripe
 
         /// <summary>
         /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/agentic-commerce-settings/">agentic
+        /// commerce settings</a> embedded component.
+        /// </summary>
+        [JsonProperty("agentic_commerce_settings")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("agentic_commerce_settings")]
+#endif
+        public AccountSessionComponentsAgenticCommerceSettingsOptions AgenticCommerceSettings { get; set; }
+
+        /// <summary>
+        /// Configuration for the <a
         /// href="https://stripe.com/connect/supported-embedded-components/app-install/">app
         /// install</a> embedded component.
         /// </summary>
@@ -359,17 +370,6 @@ namespace Stripe
         [STJS.JsonPropertyName("tax_threshold_monitoring")]
 #endif
         public AccountSessionComponentsTaxThresholdMonitoringOptions TaxThresholdMonitoring { get; set; }
-
-        /// <summary>
-        /// Configuration for the <a
-        /// href="https://stripe.com/connect/supported-embedded-components/agentic-commerce-settings/">agentic
-        /// commerce settings</a> embedded component.
-        /// </summary>
-        [JsonProperty("agentic_commerce_settings")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("agentic_commerce_settings")]
-#endif
-        public AccountSessionComponentsAgenticCommerceSettingsOptions AgenticCommerceSettings { get; set; }
 
         /// <summary>
         /// Configuration for the <a

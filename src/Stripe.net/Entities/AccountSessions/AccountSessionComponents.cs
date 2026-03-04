@@ -108,6 +108,17 @@ namespace Stripe
 #endif
         public AccountSessionComponentsIssuingCardsList IssuingCardsList { get; set; }
 
+        /// <summary>
+        /// Configuration for the <a
+        /// href="https://stripe.com/connect/supported-embedded-components/network-cost-passthrough-report/">network
+        /// cost passthrough report</a> embedded component.
+        /// </summary>
+        [JsonProperty("network_cost_passthrough_report")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("network_cost_passthrough_report")]
+#endif
+        public AccountSessionComponentsNetworkCostPassthroughReport NetworkCostPassthroughReport { get; set; }
+
         [JsonProperty("notification_banner")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("notification_banner")]
@@ -161,17 +172,6 @@ namespace Stripe
         [STJS.JsonPropertyName("tax_settings")]
 #endif
         public AccountSessionComponentsTaxSettings TaxSettings { get; set; }
-
-        /// <summary>
-        /// Configuration for the <a
-        /// href="https://stripe.com/connect/supported-embedded-components/network-cost-passthrough-report/">network
-        /// cost passthrough report</a> embedded component.
-        /// </summary>
-        [JsonProperty("network_cost_passthrough_report")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("network_cost_passthrough_report")]
-#endif
-        public AccountSessionComponentsNetworkCostPassthroughReport NetworkCostPassthroughReport { get; set; }
 
         /// <summary>
         /// Configuration for the <a
