@@ -10,6 +10,15 @@ namespace Stripe.DelegatedCheckout
     public class RequestedSessionCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
+        /// Affiliate attribution data associated with this requested session.
+        /// </summary>
+        [JsonProperty("affiliate_attributions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("affiliate_attributions")]
+#endif
+        public List<RequestedSessionAffiliateAttributionOptions> AffiliateAttributions { get; set; }
+
+        /// <summary>
         /// The currency for this requested session.
         /// </summary>
         [JsonProperty("currency")]

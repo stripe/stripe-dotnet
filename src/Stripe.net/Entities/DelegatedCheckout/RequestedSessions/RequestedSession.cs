@@ -33,6 +33,15 @@ namespace Stripe.DelegatedCheckout
         public string Object { get; set; }
 
         /// <summary>
+        /// Affiliate attribution data associated with this requested session.
+        /// </summary>
+        [JsonProperty("affiliate_attributions")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("affiliate_attributions")]
+#endif
+        public List<RequestedSessionAffiliateAttribution> AffiliateAttributions { get; set; }
+
+        /// <summary>
         /// The subtotal amount of the requested session.
         /// </summary>
         [JsonProperty("amount_subtotal")]

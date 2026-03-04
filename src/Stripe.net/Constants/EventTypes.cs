@@ -92,6 +92,11 @@ namespace Stripe
         public const string BillingPortalSessionCreated = "billing_portal.session.created";
 
         /// <summary>
+        /// Occurs whenever your custom alert threshold is recovered from a previous exceeded state.
+        /// </summary>
+        public const string BillingAlertRecovered = "billing.alert.recovered";
+
+        /// <summary>
         /// Occurs whenever your custom alert threshold is met.
         /// </summary>
         public const string BillingAlertTriggered = "billing.alert.triggered";

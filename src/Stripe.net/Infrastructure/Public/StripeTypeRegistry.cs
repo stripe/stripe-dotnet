@@ -30,6 +30,7 @@ namespace Stripe
                 { "balance_transfer", typeof(BalanceTransfer) },
                 { "bank_account", typeof(BankAccount) },
                 { "billing.alert", typeof(Billing.Alert) },
+                { "billing.alert_recovered", typeof(Billing.AlertRecovered) },
                 { "billing.alert_triggered", typeof(Billing.AlertTriggered) },
                 { "billing.analytics.meter_usage", typeof(Billing.Analytics.MeterUsage) },
                 { "billing.analytics.meter_usage_row", typeof(Billing.Analytics.MeterUsageRow) },
