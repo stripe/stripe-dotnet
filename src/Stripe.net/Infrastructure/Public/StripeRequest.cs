@@ -201,6 +201,11 @@ namespace Stripe
                 stripeHeaders.Add("Stripe-Context", requestOptions.StripeContext);
             }
 
+            if (!string.IsNullOrEmpty(requestOptions?.StripeRequestTrigger))
+            {
+                stripeHeaders.Add("Stripe-Request-Trigger", requestOptions.StripeRequestTrigger);
+            }
+
             if (!string.IsNullOrEmpty(requestOptions?.IdempotencyKey))
             {
                 stripeHeaders.Add("Idempotency-Key", requestOptions.IdempotencyKey);

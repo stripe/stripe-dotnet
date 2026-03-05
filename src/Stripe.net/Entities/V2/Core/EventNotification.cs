@@ -115,6 +115,7 @@ namespace Stripe.V2.Core
                 {
                     Usage = new List<string> { "fetch_event" },
                     StripeContext = this.Context,
+                    StripeRequestTrigger = $"event={this.Id}",
                 },
                 cancellationToken: cancellationToken).ConfigureAwait(false);
         }
@@ -140,6 +141,7 @@ namespace Stripe.V2.Core
                 {
                     Usage = new List<string> { "fetch_related_object" },
                     StripeContext = this.Context,
+                    StripeRequestTrigger = $"event={this.Id}",
                 },
                 cancellationToken: cancellationToken)
             .ConfigureAwait(false);
