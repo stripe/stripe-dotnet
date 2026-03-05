@@ -1,6 +1,7 @@
 namespace StripeTests.V2
 {
     using System;
+    using System.Linq;
     using System.Net.Http;
     using System.Security.Cryptography;
     using System.Text;
@@ -383,6 +384,15 @@ namespace StripeTests.V2
 
             Assert.Equal("meter_123", relatedObject.Id);
             Assert.Equal("billing.meter", relatedObject.Object);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    Times.AtLeastOnce(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Headers.Contains("Stripe-Request-Trigger") &&
+                        m.Headers.GetValues("Stripe-Request-Trigger").First() == "event=evt_234"),
+                    ItExpr.IsAny<CancellationToken>());
         }
 
         [Fact]
@@ -420,6 +430,15 @@ namespace StripeTests.V2
             var relatedObject = await stripeEvent.FetchRelatedObjectAsync();
             Assert.Equal("meter_123", relatedObject.Id);
             Assert.Equal("billing.meter", relatedObject.Object);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    Times.AtLeastOnce(),
+                    ItExpr.Is<HttpRequestMessage>(m =>
+                        m.Headers.Contains("Stripe-Request-Trigger") &&
+                        m.Headers.GetValues("Stripe-Request-Trigger").First() == "event=evt_234"),
+                    ItExpr.IsAny<CancellationToken>());
         }
 
         [Fact]
