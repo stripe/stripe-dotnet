@@ -6,6 +6,62 @@ namespace Stripe.Infrastructure
     using System.Text.Json.Serialization;
 
     /// <summary>
+    /// A JsonConverterFactory for use with DateTime and DateTime? implementations
+    /// to ensure we return a correctly typed custom converter.
+    /// </summary>
+#pragma warning disable SA1649 // File name should match first type name
+    internal class STJUnixDateTimeConverter : JsonConverterFactory
+#pragma warning restore SA1649 // File name should match first type name
+    {
+        public override bool CanConvert(Type typeToConvert)
+        {
+            return typeToConvert == typeof(DateTime) || typeToConvert == typeof(DateTime?);
+        }
+
+        public override JsonConverter CreateConverter(
+            Type type,
+            JsonSerializerOptions options)
+        {
+            if (type == typeof(DateTime?))
+            {
+                return new STJUnixNullableDateTimeConverterImpl();
+            }
+            else
+            {
+                return new STJUnixDateTimeConverterImpl();
+            }
+        }
+    }
+
+#pragma warning disable SA1402 // File may only contain a single type
+    internal class STJUnixNullableDateTimeConverterImpl : JsonConverter<DateTime?>
+#pragma warning restore SA1402 // File may only contain a single type
+    {
+        private static readonly STJUnixDateTimeConverterImpl BaseConverter = new STJUnixDateTimeConverterImpl();
+
+        public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (reader.TokenType == JsonTokenType.Null)
+            {
+                return null;
+            }
+
+            return BaseConverter.Read(ref reader, typeToConvert, options);
+        }
+
+        public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
+        {
+            if (value == null)
+            {
+                writer.WriteNullValue();
+                return;
+            }
+
+            BaseConverter.Write(writer, value.Value, options);
+        }
+    }
+
+    /// <summary>
     /// Converts a <see cref="DateTime"/> to and from Unix epoch time.
     /// </summary>
     /// <remarks>
@@ -13,7 +69,9 @@ namespace Stripe.Infrastructure
     /// Newtonsoft.Json 11.0. Once we bump the minimum version of Newtonsoft.Json to 11.0, we can
     /// start using the provided converter and get rid of this class.
     /// </remarks>
-    internal class STJUnixDateTimeConverter : JsonConverter<DateTime>
+#pragma warning disable SA1402 // File may only contain a single type
+    internal class STJUnixDateTimeConverterImpl : JsonConverter<DateTime>
+#pragma warning restore SA1402 // File may only contain a single type
     {
         /// <summary>
         /// Reads the JSON representation of the object.
