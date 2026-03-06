@@ -10,6 +10,10 @@ This release changes the pinned API version to `2026-02-25.preview`.
   * Add support for `Purpose` on `V2.MoneyManagement.OutboundPaymentCreateOptions` and `V2.MoneyManagement.OutboundPayment`
   * Add support for `BranchNumber` and `SwiftCode` on `V2.MoneyManagement.PayoutMethod.BankAccount`
 
+## 50.4.1 - 2026-03-06
+* [#3313](https://github.com/stripe/stripe-dotnet/pull/3313) Add Stripe-Request-Trigger header
+* [#3310](https://github.com/stripe/stripe-dotnet/pull/3310) Add agent information to UserAgent
+
 ## 50.4.0 - 2026-02-25
 This release changes the pinned API version to `2026-02-25.clover`.
 
