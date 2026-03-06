@@ -1,5 +1,9 @@
 # Changelog
 
+## 50.4.1 - 2026-03-06
+* [#3313](https://github.com/stripe/stripe-dotnet/pull/3313) Add Stripe-Request-Trigger header
+* [#3310](https://github.com/stripe/stripe-dotnet/pull/3310) Add agent information to UserAgent
+
 ## 50.4.0 - 2026-02-25
 This release changes the pinned API version to `2026-02-25.clover`.
 
