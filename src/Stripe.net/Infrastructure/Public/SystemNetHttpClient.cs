@@ -298,7 +298,6 @@ namespace Stripe
             {
                 { "bindings_version", StripeConfiguration.StripeNetVersion },
                 { "lang", ".net" },
-                { "publisher", "stripe" },
                 { "stripe_net_target_framework", StripeNetTargetFramework },
             };
 
@@ -315,13 +314,18 @@ namespace Stripe
                 values.Add("lang_version", "(unknown)");
             }
 
-            try
+            if (this.EnableTelemetry)
             {
-                values.Add("os_version", RuntimeInformation.GetOSVersion());
-            }
-            catch (Exception)
-            {
-                values.Add("os_version", "(unknown)");
+                try
+                {
+                    values.Add(
+                        "platform",
+                        $"{Environment.OSVersion} {System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}");
+                }
+                catch (Exception)
+                {
+                    values.Add("platform", "(unknown)");
+                }
             }
 
             try
