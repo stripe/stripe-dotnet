@@ -62,6 +62,23 @@ namespace Stripe
 
         private string stripeClientUserAgentString;
 
+        internal static readonly (string EnvVar, string Slug)[] AIAgents = new (string EnvVar, string Slug)[]
+        {
+            // The beginning of the section generated from our OpenAPI spec
+            ("ANTIGRAVITY_CLI_ALIAS", "antigravity"),
+            ("CLAUDECODE", "claude_code"),
+            ("CLINE_ACTIVE", "cline"),
+            ("CODEX_SANDBOX", "codex_cli"),
+            ("CODEX_THREAD_ID", "codex_cli"),
+            ("CODEX_SANDBOX_NETWORK_DISABLED", "codex_cli"),
+            ("CODEX_CI", "codex_cli"),
+            ("CURSOR_AGENT", "cursor"),
+            ("GEMINI_CLI", "gemini_cli"),
+            ("OPENCODE", "open_code"),
+
+            // The end of the section generated from our OpenAPI spec
+        };
+
         // Deprecated in .NET 9; but tls 1.2 became a default after .NET Framework 4.7
 #if !NET9_0_OR_GREATER
         static SystemNetHttpClient()
@@ -189,6 +206,25 @@ namespace Stripe
             };
         }
 
+        private static string DetectAIAgent()
+        {
+            return DetectAIAgent(System.Environment.GetEnvironmentVariable);
+        }
+
+        internal static string DetectAIAgent(Func<string, string> getEnv)
+        {
+            foreach (var (envVar, slug) in AIAgents)
+            {
+                var val = getEnv(envVar);
+                if (!string.IsNullOrEmpty(val))
+                {
+                    return slug;
+                }
+            }
+
+            return string.Empty;
+        }
+
         private async Task<(HttpResponseMessage responseMessage, int retries)> SendHttpRequest(
             StripeRequest request,
             CancellationToken cancellationToken)
@@ -262,7 +298,6 @@ namespace Stripe
             {
                 { "bindings_version", StripeConfiguration.StripeNetVersion },
                 { "lang", ".net" },
-                { "publisher", "stripe" },
                 { "stripe_net_target_framework", StripeNetTargetFramework },
             };
 
@@ -279,13 +314,18 @@ namespace Stripe
                 values.Add("lang_version", "(unknown)");
             }
 
-            try
+            if (this.EnableTelemetry)
             {
-                values.Add("os_version", RuntimeInformation.GetOSVersion());
-            }
-            catch (Exception)
-            {
-                values.Add("os_version", "(unknown)");
+                try
+                {
+                    values.Add(
+                        "platform",
+                        $"{Environment.OSVersion} {System.Runtime.InteropServices.RuntimeInformation.ProcessArchitecture}");
+                }
+                catch (Exception)
+                {
+                    values.Add("platform", "(unknown)");
+                }
             }
 
             try
@@ -302,6 +342,12 @@ namespace Stripe
                 values.Add("application", this.appInfo);
             }
 
+            var aiAgent = DetectAIAgent();
+            if (!string.IsNullOrEmpty(aiAgent))
+            {
+                values.Add("ai_agent", aiAgent);
+            }
+
             return JsonUtils.SerializeObject(values, Formatting.None);
         }
 
@@ -312,6 +358,12 @@ namespace Stripe
             if (this.appInfo != null)
             {
                 userAgent += " " + this.appInfo.FormatUserAgent();
+            }
+
+            var aiAgent = DetectAIAgent();
+            if (!string.IsNullOrEmpty(aiAgent))
+            {
+                userAgent += $" AIAgent/{aiAgent}";
             }
 
             return userAgent;
