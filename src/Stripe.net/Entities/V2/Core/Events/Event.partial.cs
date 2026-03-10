@@ -66,10 +66,13 @@ namespace Stripe.V2.Core
                 return null;
             }
 
-            RequestOptions opts = null;
+            RequestOptions opts = new RequestOptions
+            {
+                StripeRequestTrigger = $"event={this.Id}",
+            };
             if (this.Context != null)
             {
-                opts = new RequestOptions { StripeContext = this.Context };
+                opts.StripeContext = this.Context;
             }
 
             return this.Requestor.RequestAsync<T>(
