@@ -204,6 +204,17 @@ namespace Stripe
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
+        /// <summary>
+        /// Array of field names that can't be modified. Attempting to update a frozen field returns
+        /// an error.
+        /// One of: <c>pricing</c>, or <c>quantity</c>.
+        /// </summary>
+        [JsonProperty("frozen_fields")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("frozen_fields")]
+#endif
+        public List<string> FrozenFields { get; set; }
+
         #region Expandable Invoice
 
         /// <summary>

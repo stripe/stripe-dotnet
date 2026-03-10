@@ -9,6 +9,7 @@ namespace Stripe
     {
         private Radar.AccountEvaluationService accountEvaluations;
         private Radar.EarlyFraudWarningService earlyFraudWarnings;
+        private Radar.IssuingAuthorizationEvaluationService issuingAuthorizationEvaluations;
         private Radar.PaymentEvaluationService paymentEvaluations;
         private Radar.ValueListService valueLists;
         private Radar.ValueListItemService valueListItems;
@@ -27,6 +28,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual Radar.EarlyFraudWarningService EarlyFraudWarnings => this.earlyFraudWarnings ??= new Radar.EarlyFraudWarningService(
+            this.Requestor);
+
+        public virtual Radar.IssuingAuthorizationEvaluationService IssuingAuthorizationEvaluations => this.issuingAuthorizationEvaluations ??= new Radar.IssuingAuthorizationEvaluationService(
             this.Requestor);
 
         public virtual Radar.PaymentEvaluationService PaymentEvaluations => this.paymentEvaluations ??= new Radar.PaymentEvaluationService(
