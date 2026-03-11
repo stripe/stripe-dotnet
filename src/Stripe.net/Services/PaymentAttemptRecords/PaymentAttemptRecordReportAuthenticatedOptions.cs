@@ -9,31 +9,18 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PaymentRecordReportPaymentAttemptFailedOptions : BaseOptions, IHasMetadata
+    public class PaymentAttemptRecordReportAuthenticatedOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// When the reported payment failed. Measured in seconds since the Unix epoch.
+        /// When the reported payment was authenticated. Measured in seconds since the Unix epoch.
         /// </summary>
-        [JsonProperty("failed_at")]
+        [JsonProperty("authenticated_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("failed_at")]
+        [STJS.JsonPropertyName("authenticated_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
 #endif
-        public DateTime? FailedAt { get; set; }
-
-        /// <summary>
-        /// The failure code for this payment attempt. Must be one of
-        /// <c>payment_method_customer_decline</c> or
-        /// <c>payment_method_provider_unknown_outcome</c>.
-        /// One of: <c>payment_method_customer_decline</c>, or
-        /// <c>payment_method_provider_unknown_outcome</c>.
-        /// </summary>
-        [JsonProperty("failure_code")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("failure_code")]
-#endif
-        public string FailureCode { get; set; }
+        public DateTime? AuthenticatedAt { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

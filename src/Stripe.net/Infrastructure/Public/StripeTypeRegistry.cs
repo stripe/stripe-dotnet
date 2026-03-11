@@ -142,6 +142,7 @@ namespace Stripe
                 { "login_link", typeof(LoginLink) },
                 { "mandate", typeof(Mandate) },
                 { "margin", typeof(Margin) },
+                { "orchestration.payment_attempt", typeof(Orchestration.PaymentAttempt) },
                 { "order", typeof(Order) },
                 { "payment_attempt_record", typeof(PaymentAttemptRecord) },
                 { "payment_intent", typeof(PaymentIntent) },

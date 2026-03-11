@@ -52,6 +52,7 @@ namespace Stripe
         private IssuingService issuing;
         private MandateService mandates;
         private MarginService margins;
+        private OrchestrationService orchestration;
         private OrderService orders;
         private PaymentAttemptRecordService paymentAttemptRecords;
         private PaymentIntentService paymentIntents;
@@ -237,6 +238,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual MarginService Margins => this.margins ??= new MarginService(
+            this.Requestor);
+
+        public virtual OrchestrationService Orchestration => this.orchestration ??= new OrchestrationService(
             this.Requestor);
 
         public virtual OrderService Orders => this.orders ??= new OrderService(

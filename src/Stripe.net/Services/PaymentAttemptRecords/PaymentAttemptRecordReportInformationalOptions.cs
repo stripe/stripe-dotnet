@@ -1,39 +1,31 @@
 // File generated from our OpenAPI spec
 namespace Stripe
 {
-    using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class PaymentRecordReportPaymentAttemptFailedOptions : BaseOptions, IHasMetadata
+    public class PaymentAttemptRecordReportInformationalOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
-        /// When the reported payment failed. Measured in seconds since the Unix epoch.
+        /// Customer information for this payment.
         /// </summary>
-        [JsonProperty("failed_at")]
-        [JsonConverter(typeof(UnixDateTimeConverter))]
+        [JsonProperty("customer_details")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("failed_at")]
-        [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
+        [STJS.JsonPropertyName("customer_details")]
 #endif
-        public DateTime? FailedAt { get; set; }
+        public PaymentAttemptRecordCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
-        /// The failure code for this payment attempt. Must be one of
-        /// <c>payment_method_customer_decline</c> or
-        /// <c>payment_method_provider_unknown_outcome</c>.
-        /// One of: <c>payment_method_customer_decline</c>, or
-        /// <c>payment_method_provider_unknown_outcome</c>.
+        /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
-        [JsonProperty("failure_code")]
+        [JsonProperty("description")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("failure_code")]
+        [STJS.JsonPropertyName("description")]
 #endif
-        public string FailureCode { get; set; }
+        public string Description { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -46,5 +38,14 @@ namespace Stripe
         [STJS.JsonPropertyName("metadata")]
 #endif
         public Dictionary<string, string> Metadata { get; set; }
+
+        /// <summary>
+        /// Shipping information for this payment.
+        /// </summary>
+        [JsonProperty("shipping_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("shipping_details")]
+#endif
+        public PaymentAttemptRecordShippingDetailsOptions ShippingDetails { get; set; }
     }
 }
