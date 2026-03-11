@@ -15,7 +15,7 @@ namespace Stripe.V2.Billing.RateCards
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("divide_by")]
 #endif
-        public long? DivideBy { get; set; }
+        public string DivideBy { get; set; }
 
         /// <summary>
         /// After division, round the result up or down.

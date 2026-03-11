@@ -9956,7 +9956,6 @@ namespace StripeTests
                 {
                     { "key", "metadata" },
                 },
-                PaymentMethod = "payment_method",
             };
             var client = new StripeClient(this.Requestor);
             var service = client.V2.Payments.OffSessionPayments;

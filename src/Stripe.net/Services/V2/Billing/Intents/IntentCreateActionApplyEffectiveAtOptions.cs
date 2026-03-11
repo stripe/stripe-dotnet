@@ -10,7 +10,8 @@ namespace Stripe.V2.Billing
     {
         /// <summary>
         /// When the apply action will take effect.
-        /// One of: <c>current_billing_period_end</c>, or <c>on_reserve</c>.
+        /// One of: <c>current_billing_period_end</c>, <c>next_billing_period_start</c>, or
+        /// <c>on_reserve</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER

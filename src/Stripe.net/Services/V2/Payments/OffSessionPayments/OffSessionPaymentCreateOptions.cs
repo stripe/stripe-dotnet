@@ -78,6 +78,16 @@ namespace Stripe.V2.Payments
         public string PaymentMethod { get; set; }
 
         /// <summary>
+        /// If provided, this hash will be used to create a PaymentMethod. The new PaymentMethod
+        /// will appear in the payment_method property on the OffSessionPayment.
+        /// </summary>
+        [JsonProperty("payment_method_data")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("payment_method_data")]
+#endif
+        public OffSessionPaymentCreatePaymentMethodDataOptions PaymentMethodData { get; set; }
+
+        /// <summary>
         /// Payment method options for the off-session payment.
         /// </summary>
         [JsonProperty("payment_method_options")]

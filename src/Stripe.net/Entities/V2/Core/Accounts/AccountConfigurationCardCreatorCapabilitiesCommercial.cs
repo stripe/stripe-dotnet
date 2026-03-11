@@ -27,6 +27,15 @@ namespace Stripe.V2.Core
         public AccountConfigurationCardCreatorCapabilitiesCommercialCrossRiverBank CrossRiverBank { get; set; }
 
         /// <summary>
+        /// Can create commercial issuing cards with Fifth Third as a BIN sponsor.
+        /// </summary>
+        [JsonProperty("fifth_third")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fifth_third")]
+#endif
+        public AccountConfigurationCardCreatorCapabilitiesCommercialFifthThird FifthThird { get; set; }
+
+        /// <summary>
         /// Can create commercial issuing cards with Lead as a BIN sponsor.
         /// </summary>
         [JsonProperty("lead")]
