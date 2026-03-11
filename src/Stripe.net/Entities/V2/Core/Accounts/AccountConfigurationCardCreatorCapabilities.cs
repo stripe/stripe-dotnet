@@ -16,5 +16,14 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("commercial")]
 #endif
         public AccountConfigurationCardCreatorCapabilitiesCommercial Commercial { get; set; }
+
+        /// <summary>
+        /// Can create cards for consumer issuing use cases.
+        /// </summary>
+        [JsonProperty("consumer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("consumer")]
+#endif
+        public AccountConfigurationCardCreatorCapabilitiesConsumer Consumer { get; set; }
     }
 }

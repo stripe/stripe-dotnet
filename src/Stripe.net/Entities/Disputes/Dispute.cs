@@ -50,6 +50,17 @@ namespace Stripe
         public long Amount { get; set; }
 
         /// <summary>
+        /// The amount you want to contest, in the dispute's currency. Setting this to less than the
+        /// full dispute amount means accepting the loss on the remaining amount. If not specified,
+        /// the entire disputed amount is contested.
+        /// </summary>
+        [JsonProperty("amount_to_counter")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("amount_to_counter")]
+#endif
+        public long AmountToCounter { get; set; }
+
+        /// <summary>
         /// List of zero, one, or two balance transactions that show funds withdrawn and reinstated
         /// to your Stripe account as a result of this dispute.
         /// </summary>

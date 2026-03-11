@@ -12,11 +12,11 @@ namespace Stripe.DelegatedCheckout
         /// <summary>
         /// Affiliate attribution data associated with this requested session.
         /// </summary>
-        [JsonProperty("affiliate_attributions")]
+        [JsonProperty("affiliate_attribution")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("affiliate_attributions")]
+        [STJS.JsonPropertyName("affiliate_attribution")]
 #endif
-        public List<RequestedSessionAffiliateAttributionOptions> AffiliateAttributions { get; set; }
+        public RequestedSessionAffiliateAttributionOptions AffiliateAttribution { get; set; }
 
         /// <summary>
         /// The currency for this requested session.

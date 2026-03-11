@@ -18,6 +18,15 @@ namespace Stripe.V2.Core
         public AccountCreateConfigurationCardCreatorCapabilitiesCommercialCrossRiverBankChargeCardOptions ChargeCard { get; set; }
 
         /// <summary>
+        /// Can create commercial issuing prepaid cards with Cross River Bank as BIN sponsor.
+        /// </summary>
+        [JsonProperty("prepaid_card")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("prepaid_card")]
+#endif
+        public AccountCreateConfigurationCardCreatorCapabilitiesCommercialCrossRiverBankPrepaidCardOptions PrepaidCard { get; set; }
+
+        /// <summary>
         /// Can create commercial issuing spend cards with Cross River Bank as BIN sponsor.
         /// </summary>
         [JsonProperty("spend_card")]

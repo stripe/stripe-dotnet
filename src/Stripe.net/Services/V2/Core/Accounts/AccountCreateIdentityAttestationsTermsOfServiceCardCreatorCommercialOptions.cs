@@ -37,6 +37,16 @@ namespace Stripe.V2.Core
         public AccountCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankOptions CrossRiverBank { get; set; }
 
         /// <summary>
+        /// Terms of service acceptances for commercial issuing cards with Fifth Third as BIN
+        /// sponsor.
+        /// </summary>
+        [JsonProperty("fifth_third")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("fifth_third")]
+#endif
+        public AccountCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialFifthThirdOptions FifthThird { get; set; }
+
+        /// <summary>
         /// Terms of service acceptances for Stripe commercial card Global issuing.
         /// </summary>
         [JsonProperty("global_account_holder")]

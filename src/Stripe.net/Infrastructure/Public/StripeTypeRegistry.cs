@@ -178,6 +178,10 @@ namespace Stripe
                 },
                 { "radar.account_evaluation", typeof(Radar.AccountEvaluation) },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
+                {
+                    "radar.issuing_authorization_evaluation", typeof(
+                    Radar.IssuingAuthorizationEvaluation)
+                },
                 { "radar.payment_evaluation", typeof(Radar.PaymentEvaluation) },
                 { "radar.value_list", typeof(Radar.ValueList) },
                 { "radar.value_list_item", typeof(Radar.ValueListItem) },
