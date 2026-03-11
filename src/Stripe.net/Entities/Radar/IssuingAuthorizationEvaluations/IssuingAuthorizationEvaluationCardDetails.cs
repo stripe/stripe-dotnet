@@ -20,7 +20,7 @@ namespace Stripe.Radar
         public string Bin { get; set; }
 
         /// <summary>
-        /// The country code associated with the card BIN.
+        /// The two-letter country code of the BIN issuer.
         /// </summary>
         [JsonProperty("bin_country")]
 #if NET6_0_OR_GREATER
@@ -29,7 +29,7 @@ namespace Stripe.Radar
         public string BinCountry { get; set; }
 
         /// <summary>
-        /// The type of card (physical or virtual).
+        /// The type of the card.
         /// One of: <c>physical</c>, or <c>virtual</c>.
         /// </summary>
         [JsonProperty("card_type")]
@@ -39,7 +39,7 @@ namespace Stripe.Radar
         public string CardType { get; set; }
 
         /// <summary>
-        /// The time when the card was created.
+        /// The timestamp when the card was created.
         /// </summary>
         [JsonProperty("created_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -59,7 +59,8 @@ namespace Stripe.Radar
         public string Last4 { get; set; }
 
         /// <summary>
-        /// External reference for the card.
+        /// User's specified unique ID of the card for this authorization attempt (e.g., RRN or
+        /// internal reference).
         /// </summary>
         [JsonProperty("reference")]
 #if NET6_0_OR_GREATER

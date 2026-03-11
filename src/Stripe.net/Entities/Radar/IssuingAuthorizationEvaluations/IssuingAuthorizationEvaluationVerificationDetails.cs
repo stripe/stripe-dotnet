@@ -9,7 +9,7 @@ namespace Stripe.Radar
     public class IssuingAuthorizationEvaluationVerificationDetails : StripeEntity<IssuingAuthorizationEvaluationVerificationDetails>
     {
         /// <summary>
-        /// The result of the 3D Secure verification.
+        /// The outcome of the 3D Secure authentication request.
         /// One of: <c>attempt_acknowledged</c>, <c>authenticated</c>, <c>exempted</c>,
         /// <c>failed</c>, or <c>required</c>.
         /// </summary>

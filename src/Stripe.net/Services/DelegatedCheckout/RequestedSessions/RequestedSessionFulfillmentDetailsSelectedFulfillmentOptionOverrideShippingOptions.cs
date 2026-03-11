@@ -6,7 +6,7 @@ namespace Stripe.DelegatedCheckout
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionShippingOptions : INestedOptions
+    public class RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionOverrideShippingOptions : INestedOptions
     {
         /// <summary>
         /// The shipping option identifier.

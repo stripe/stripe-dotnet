@@ -11,7 +11,7 @@ namespace Stripe.Radar
     public class IssuingAuthorizationEvaluationCardholderDetailsOptions : INestedOptions
     {
         /// <summary>
-        /// The time when the cardholder was created (Unix timestamp).
+        /// The timestamp when the cardholder was created.
         /// </summary>
         [JsonProperty("created_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -22,7 +22,8 @@ namespace Stripe.Radar
         public DateTime? CreatedAt { get; set; }
 
         /// <summary>
-        /// External reference for the cardholder.
+        /// User's specified unique ID of the cardholder for this authorization attempt (e.g., RRN
+        /// or internal reference).
         /// </summary>
         [JsonProperty("reference")]
 #if NET6_0_OR_GREATER
