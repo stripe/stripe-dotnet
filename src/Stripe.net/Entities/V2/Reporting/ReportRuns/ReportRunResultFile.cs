@@ -34,6 +34,6 @@ namespace Stripe.V2.Reporting
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("size")]
 #endif
-        public string Size { get; set; }
+        public long Size { get; set; }
     }
 }
