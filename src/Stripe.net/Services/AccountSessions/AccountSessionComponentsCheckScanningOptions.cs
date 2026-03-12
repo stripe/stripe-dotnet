@@ -18,7 +18,7 @@ namespace Stripe
         public bool? Enabled { get; set; }
 
         /// <summary>
-        /// An empty list, because this embedded component has no features.
+        /// The list of features enabled in the embedded component.
         /// </summary>
         [JsonProperty("features")]
 #if NET6_0_OR_GREATER
