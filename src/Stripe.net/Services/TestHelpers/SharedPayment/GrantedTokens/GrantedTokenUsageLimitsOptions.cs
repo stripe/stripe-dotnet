@@ -41,5 +41,16 @@ namespace Stripe.TestHelpers.SharedPayment
         [STJS.JsonPropertyName("max_amount")]
 #endif
         public long? MaxAmount { get; set; }
+
+        /// <summary>
+        /// The recurring interval at which the shared payment token's amount usage restrictions
+        /// reset.
+        /// One of: <c>month</c>, <c>week</c>, or <c>year</c>.
+        /// </summary>
+        [JsonProperty("recurring_interval")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("recurring_interval")]
+#endif
+        public string RecurringInterval { get; set; }
     }
 }
