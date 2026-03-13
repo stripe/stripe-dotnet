@@ -41,6 +41,22 @@ namespace Stripe.Checkout
         public bool? AllowPromotionCodes { get; set; }
 
         /// <summary>
+        /// Determines whether the customer's attempt to pay must be manually approved.
+        ///
+        /// Default is <c>auto</c>, when the customer's attempt to pay is approved automatically
+        /// with no action required on your server.
+        ///
+        /// When set to <c>manual</c>, you must approve the customer's attempt to pay by calling <a
+        /// href="api/checkout/sessions/approve">approve</a> from your server.
+        /// One of: <c>auto</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("approval_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("approval_method")]
+#endif
+        public string ApprovalMethod { get; set; }
+
+        /// <summary>
         /// Settings for automatic tax lookup for this session and resulting payments, invoices, and
         /// subscriptions.
         /// </summary>

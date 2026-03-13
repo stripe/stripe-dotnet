@@ -9,7 +9,7 @@ namespace Stripe.DelegatedCheckout
     public class RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionShippingOptions : INestedOptions
     {
         /// <summary>
-        /// The shipping option identifer.
+        /// The shipping option identifier.
         /// </summary>
         [JsonProperty("shipping_option")]
 #if NET6_0_OR_GREATER

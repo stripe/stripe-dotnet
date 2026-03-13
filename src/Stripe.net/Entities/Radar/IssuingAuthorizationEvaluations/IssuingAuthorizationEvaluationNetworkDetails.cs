@@ -9,7 +9,8 @@ namespace Stripe.Radar
     public class IssuingAuthorizationEvaluationNetworkDetails : StripeEntity<IssuingAuthorizationEvaluationNetworkDetails>
     {
         /// <summary>
-        /// The acquiring institution identifier.
+        /// Identifier assigned to the acquirer by the card network. Sometimes this value is not
+        /// provided by the network; in this case, the value will be null.
         /// </summary>
         [JsonProperty("acquiring_institution_id")]
 #if NET6_0_OR_GREATER
@@ -18,7 +19,7 @@ namespace Stripe.Radar
         public string AcquiringInstitutionId { get; set; }
 
         /// <summary>
-        /// The card network that processed the authorization.
+        /// The card network over which Stripe received the authorization.
         /// One of: <c>cirrus</c>, <c>interlink</c>, <c>maestro</c>, <c>mastercard</c>,
         /// <c>other</c>, <c>plus</c>, or <c>visa</c>.
         /// </summary>

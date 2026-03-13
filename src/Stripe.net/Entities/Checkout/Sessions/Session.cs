@@ -96,6 +96,22 @@ namespace Stripe.Checkout
 #endif
         public long? AmountTotal { get; set; }
 
+        /// <summary>
+        /// Determines whether the customer's attempt to pay must be manually approved.
+        ///
+        /// Default is <c>auto</c>, when the customer's attempt to pay is approved automatically
+        /// with no action required on your server.
+        ///
+        /// When set to <c>manual</c>, you must approve the customer's attempt to pay by calling <a
+        /// href="api/checkout/sessions/approve">approve</a> from your server.
+        /// One of: <c>auto</c>, or <c>manual</c>.
+        /// </summary>
+        [JsonProperty("approval_method")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("approval_method")]
+#endif
+        public string ApprovalMethod { get; set; }
+
         [JsonProperty("automatic_tax")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
@@ -219,6 +235,16 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("currency_conversion")]
 #endif
         public SessionCurrencyConversion CurrencyConversion { get; set; }
+
+        /// <summary>
+        /// The customer's pending attempt to pay that requires your approval. Contains information
+        /// about the customer and their payment details.
+        /// </summary>
+        [JsonProperty("current_attempt")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("current_attempt")]
+#endif
+        public SessionCurrentAttempt CurrentAttempt { get; set; }
 
         /// <summary>
         /// Collect additional information from your customer using custom fields. Up to 3 fields

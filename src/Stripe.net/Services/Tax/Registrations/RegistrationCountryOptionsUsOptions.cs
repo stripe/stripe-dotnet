@@ -48,9 +48,9 @@ namespace Stripe.Tax
         /// <summary>
         /// Type of registration to be created in the US.
         /// One of: <c>admissions_tax</c>, <c>attendance_tax</c>, <c>entertainment_tax</c>,
-        /// <c>gross_receipts_tax</c>, <c>hospitality_tax</c>, <c>local_amusement_tax</c>,
-        /// <c>local_lease_tax</c>, <c>luxury_tax</c>, <c>resort_tax</c>,
-        /// <c>state_communications_tax</c>, <c>state_retail_delivery_fee</c>,
+        /// <c>gross_receipts_tax</c>, <c>home_rule_tax</c>, <c>hospitality_tax</c>,
+        /// <c>local_amusement_tax</c>, <c>local_lease_tax</c>, <c>luxury_tax</c>,
+        /// <c>resort_tax</c>, <c>state_communications_tax</c>, <c>state_retail_delivery_fee</c>,
         /// <c>state_sales_tax</c>, or <c>tourism_tax</c>.
         /// </summary>
         [JsonProperty("type")]
@@ -58,5 +58,14 @@ namespace Stripe.Tax
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
+
+        /// <summary>
+        /// Options for the home rule tax registration.
+        /// </summary>
+        [JsonProperty("home_rule_tax")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("home_rule_tax")]
+#endif
+        public RegistrationCountryOptionsUsHomeRuleTaxOptions HomeRuleTax { get; set; }
     }
 }

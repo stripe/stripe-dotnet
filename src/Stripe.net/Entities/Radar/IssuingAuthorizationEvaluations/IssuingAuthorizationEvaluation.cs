@@ -33,7 +33,7 @@ namespace Stripe.Radar
         public string Object { get; set; }
 
         /// <summary>
-        /// Details about the authorization transaction.
+        /// Details about the authorization.
         /// </summary>
         [JsonProperty("authorization_details")]
 #if NET6_0_OR_GREATER
@@ -70,7 +70,8 @@ namespace Stripe.Radar
         public bool Livemode { get; set; }
 
         /// <summary>
-        /// Details about the merchant where the authorization occurred.
+        /// Details about the seller (grocery store, e-commerce website, etc.) where the card
+        /// authorization happened.
         /// </summary>
         [JsonProperty("merchant_details")]
 #if NET6_0_OR_GREATER
@@ -89,7 +90,7 @@ namespace Stripe.Radar
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
-        /// Details about the card network processing.
+        /// Details about the authorization, such as identifiers, set by the card network.
         /// </summary>
         [JsonProperty("network_details")]
 #if NET6_0_OR_GREATER
@@ -107,7 +108,7 @@ namespace Stripe.Radar
         public IssuingAuthorizationEvaluationSignals Signals { get; set; }
 
         /// <summary>
-        /// Details about the token, if a tokenized payment method was used.
+        /// Details about the token, if a tokenized payment method was used for the authorization.
         /// </summary>
         [JsonProperty("token_details")]
 #if NET6_0_OR_GREATER
@@ -116,7 +117,7 @@ namespace Stripe.Radar
         public IssuingAuthorizationEvaluationTokenDetails TokenDetails { get; set; }
 
         /// <summary>
-        /// Details about verification checks performed.
+        /// Details about verification data for the authorization.
         /// </summary>
         [JsonProperty("verification_details")]
 #if NET6_0_OR_GREATER

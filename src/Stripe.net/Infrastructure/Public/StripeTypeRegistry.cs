@@ -142,6 +142,7 @@ namespace Stripe
                 { "login_link", typeof(LoginLink) },
                 { "mandate", typeof(Mandate) },
                 { "margin", typeof(Margin) },
+                { "orchestration.payment_attempt", typeof(Orchestration.PaymentAttempt) },
                 { "order", typeof(Order) },
                 { "payment_attempt_record", typeof(PaymentAttemptRecord) },
                 { "payment_intent", typeof(PaymentIntent) },
@@ -177,6 +178,7 @@ namespace Stripe
                     QuotePreviewSubscriptionSchedule)
                 },
                 { "radar.account_evaluation", typeof(Radar.AccountEvaluation) },
+                { "radar.customer_evaluation", typeof(Radar.CustomerEvaluation) },
                 { "radar.early_fraud_warning", typeof(Radar.EarlyFraudWarning) },
                 {
                     "radar.issuing_authorization_evaluation", typeof(

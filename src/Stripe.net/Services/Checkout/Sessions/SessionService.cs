@@ -34,6 +34,24 @@ namespace Stripe.Checkout
             this.Requestor);
 
         /// <summary>
+        /// <p>Approves a customer’s attempt to pay for a Checkout Session with
+        /// <c>approval_method</c> set to <c>manual</c>.</p>.
+        /// </summary>
+        public virtual Session Approve(string id, SessionApproveOptions options = null, RequestOptions requestOptions = null)
+        {
+            return this.Request<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/approve", options, requestOptions);
+        }
+
+        /// <summary>
+        /// <p>Approves a customer’s attempt to pay for a Checkout Session with
+        /// <c>approval_method</c> set to <c>manual</c>.</p>.
+        /// </summary>
+        public virtual Task<Session> ApproveAsync(string id, SessionApproveOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
+        {
+            return this.RequestAsync<Session>(BaseAddress.Api, HttpMethod.Post, $"/v1/checkout/sessions/{WebUtility.UrlEncode(id)}/approve", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
         /// <p>Creates a Checkout Session object.</p>.
         /// </summary>
         public virtual Session Create(SessionCreateOptions options, RequestOptions requestOptions = null)
