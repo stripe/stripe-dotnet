@@ -6959,6 +6959,24 @@ namespace StripeTests
         }
 
         [Fact]
+        public void TestV2CoreBatchJobPost()
+        {
+            this.StubRequest(
+                HttpMethod.Post,
+                "/v2/core/batch_jobs",
+                (HttpStatusCode)200,
+                "{\"id\":\"obj_123\",\"object\":\"v2.core.batch_job\",\"url\":\"url\"}");
+            var options = new Stripe.V2.Core.BatchJobCreateOptions
+            {
+                Endpoint = "/v1/subscription_schedules",
+            };
+            var client = new StripeClient(this.Requestor);
+            var service = client.V2.Core.BatchJobs;
+            Stripe.V2.Core.BatchJob batchJob = service.Create(options);
+            this.AssertRequest(HttpMethod.Post, "/v2/core/batch_jobs");
+        }
+
+        [Fact]
         public void TestV2CoreEventGet()
         {
             this.StubRequest(

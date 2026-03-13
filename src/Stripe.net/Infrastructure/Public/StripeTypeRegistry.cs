@@ -256,6 +256,7 @@ namespace Stripe
                 { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
                 { "v2.core.account_person_token", typeof(V2.Core.AccountPersonToken) },
                 { "v2.core.account_token", typeof(V2.Core.AccountToken) },
+                { "v2.core.batch_job", typeof(V2.Core.BatchJob) },
                 { "v2.core.event", typeof(V2.Core.Event) },
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
