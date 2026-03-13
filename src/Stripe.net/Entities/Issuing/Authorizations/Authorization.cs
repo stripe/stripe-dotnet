@@ -339,6 +339,12 @@ namespace Stripe.Issuing
         internal ExpandableField<Token> InternalToken { get; set; }
         #endregion
 
+        [JsonProperty("token_details")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("token_details")]
+#endif
+        public AuthorizationTokenDetails TokenDetails { get; set; }
+
         /// <summary>
         /// List of <a href="https://docs.stripe.com/api/issuing/transactions">transactions</a>
         /// associated with this authorization.
