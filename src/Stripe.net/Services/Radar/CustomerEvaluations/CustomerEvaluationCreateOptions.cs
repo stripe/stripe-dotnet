@@ -20,6 +20,7 @@ namespace Stripe.Radar
 
         /// <summary>
         /// The type of evaluation event.
+        /// One of: <c>login</c>, or <c>registration</c>.
         /// </summary>
         [JsonProperty("event_type")]
 #if NET6_0_OR_GREATER

@@ -2,6 +2,7 @@
 namespace Stripe.Radar
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
@@ -59,6 +60,15 @@ namespace Stripe.Radar
         [STJS.JsonPropertyName("event_type")]
 #endif
         public string EventType { get; set; }
+
+        /// <summary>
+        /// A list of events that have been reported on this customer evaluation.
+        /// </summary>
+        [JsonProperty("events")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("events")]
+#endif
+        public List<CustomerEvaluationEvent> Events { get; set; }
 
         /// <summary>
         /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
