@@ -16,6 +16,6 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public AccountIdentityBusinessDetailsMonthlyEstimatedRevenueAmount Amount { get; set; }
+        public V2.Amount Amount { get; set; }
     }
 }
