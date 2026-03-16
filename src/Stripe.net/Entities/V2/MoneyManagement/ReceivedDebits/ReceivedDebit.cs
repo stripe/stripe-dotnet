@@ -166,7 +166,7 @@ namespace Stripe.V2.MoneyManagement
         public ReceivedDebitStripeBalancePayment StripeBalancePayment { get; set; }
 
         /// <summary>
-        /// Open enum, the type of the received debit.
+        /// Open Enum. The type of the ReceivedDebit.
         /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, <c>card_spend</c>,
         /// <c>external_debit</c>, or <c>stripe_balance_payment</c>.
         /// </summary>
