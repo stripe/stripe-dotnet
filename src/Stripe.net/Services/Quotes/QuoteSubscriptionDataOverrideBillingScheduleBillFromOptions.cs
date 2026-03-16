@@ -32,7 +32,7 @@ namespace Stripe
 
         /// <summary>
         /// The type of method to specify the <c>bill_from</c> time.
-        /// One of: <c>line_starts_at</c>, <c>now</c>, <c>pause_collection_start</c>,
+        /// One of: <c>line_starts_at</c>, <c>pause_collection_start</c>,
         /// <c>quote_acceptance_date</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]

@@ -9,7 +9,7 @@ namespace Stripe.Radar
     public class IssuingAuthorizationEvaluationMerchantDetails : StripeEntity<IssuingAuthorizationEvaluationMerchantDetails>
     {
         /// <summary>
-        /// The merchant category code (MCC).
+        /// The merchant category code for the seller's business.
         /// </summary>
         [JsonProperty("category_code")]
 #if NET6_0_OR_GREATER
@@ -18,7 +18,7 @@ namespace Stripe.Radar
         public string CategoryCode { get; set; }
 
         /// <summary>
-        /// The merchant country code.
+        /// Country where the seller is located.
         /// </summary>
         [JsonProperty("country")]
 #if NET6_0_OR_GREATER
@@ -27,7 +27,7 @@ namespace Stripe.Radar
         public string Country { get; set; }
 
         /// <summary>
-        /// The merchant name.
+        /// Name of the seller.
         /// </summary>
         [JsonProperty("name")]
 #if NET6_0_OR_GREATER
@@ -36,7 +36,8 @@ namespace Stripe.Radar
         public string Name { get; set; }
 
         /// <summary>
-        /// The merchant identifier from the card network.
+        /// Identifier assigned to the seller by the card network. Different card networks may
+        /// assign different network_id fields to the same merchant.
         /// </summary>
         [JsonProperty("network_id")]
 #if NET6_0_OR_GREATER
@@ -45,7 +46,7 @@ namespace Stripe.Radar
         public string NetworkId { get; set; }
 
         /// <summary>
-        /// The terminal identifier.
+        /// An ID assigned by the seller to the location of the sale.
         /// </summary>
         [JsonProperty("terminal_id")]
 #if NET6_0_OR_GREATER

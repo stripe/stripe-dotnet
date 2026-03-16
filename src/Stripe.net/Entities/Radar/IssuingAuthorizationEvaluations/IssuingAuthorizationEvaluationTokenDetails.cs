@@ -11,7 +11,7 @@ namespace Stripe.Radar
     public class IssuingAuthorizationEvaluationTokenDetails : StripeEntity<IssuingAuthorizationEvaluationTokenDetails>
     {
         /// <summary>
-        /// The time when the token was created.
+        /// The timestamp when the network token was created.
         /// </summary>
         [JsonProperty("created_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
@@ -22,7 +22,8 @@ namespace Stripe.Radar
         public DateTime? CreatedAt { get; set; }
 
         /// <summary>
-        /// External reference for the token.
+        /// User's specified unique ID of the card token for this authorization attempt (e.g., RRN
+        /// or internal reference).
         /// </summary>
         [JsonProperty("reference")]
 #if NET6_0_OR_GREATER
@@ -31,7 +32,8 @@ namespace Stripe.Radar
         public string Reference { get; set; }
 
         /// <summary>
-        /// The wallet provider, if applicable.
+        /// The digital wallet used for this transaction. One of <c>apple_pay</c>,
+        /// <c>google_pay</c>, or <c>samsung_pay</c>.
         /// One of: <c>apple_pay</c>, <c>google_pay</c>, or <c>samsung_pay</c>.
         /// </summary>
         [JsonProperty("wallet")]

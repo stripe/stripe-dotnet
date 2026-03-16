@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.DelegatedCheckout
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -52,5 +53,14 @@ namespace Stripe.DelegatedCheckout
         [STJS.JsonPropertyName("selected_fulfillment_option")]
 #endif
         public RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionOptions SelectedFulfillmentOption { get; set; }
+
+        /// <summary>
+        /// The fulfillment option overrides for specific line items.
+        /// </summary>
+        [JsonProperty("selected_fulfillment_option_overrides")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("selected_fulfillment_option_overrides")]
+#endif
+        public List<RequestedSessionFulfillmentDetailsSelectedFulfillmentOptionOverrideOptions> SelectedFulfillmentOptionOverrides { get; set; }
     }
 }

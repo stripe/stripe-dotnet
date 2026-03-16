@@ -6,7 +6,7 @@ namespace Stripe
     using STJS = System.Text.Json.Serialization;
 #endif
 
-    public class InvoiceLineItemParentLicenseFeeSubscriptionDetails : StripeEntity<InvoiceLineItemParentLicenseFeeSubscriptionDetails>
+    public class InvoiceLineItemParentPricingPlanSubscriptionDetails : StripeEntity<InvoiceLineItemParentPricingPlanSubscriptionDetails>
     {
         /// <summary>
         /// The invoice item that generated this line item.
@@ -18,25 +18,7 @@ namespace Stripe
         public string InvoiceItem { get; set; }
 
         /// <summary>
-        /// The license fee subscription that generated this line item.
-        /// </summary>
-        [JsonProperty("license_fee_subscription")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("license_fee_subscription")]
-#endif
-        public string LicenseFeeSubscription { get; set; }
-
-        /// <summary>
-        /// The license fee version at the time this line item was generated.
-        /// </summary>
-        [JsonProperty("license_fee_version")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("license_fee_version")]
-#endif
-        public string LicenseFeeVersion { get; set; }
-
-        /// <summary>
-        /// The pricing plan subscription that manages the license fee subscription.
+        /// The pricing plan subscription that manages this charge.
         /// </summary>
         [JsonProperty("pricing_plan_subscription")]
 #if NET6_0_OR_GREATER
@@ -45,7 +27,7 @@ namespace Stripe
         public string PricingPlanSubscription { get; set; }
 
         /// <summary>
-        /// The pricing plan version at the time this line item was generated.
+        /// The pricing plan version at the time this charge was generated.
         /// </summary>
         [JsonProperty("pricing_plan_version")]
 #if NET6_0_OR_GREATER
