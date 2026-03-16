@@ -15,7 +15,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credited")]
 #endif
-        public OutboundPaymentQuoteToCredited Credited { get; set; }
+        public V2.Amount Credited { get; set; }
 
         /// <summary>
         /// The payout method which the OutboundPayment uses to send payout.
