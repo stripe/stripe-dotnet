@@ -18,7 +18,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public SettlementAllocationIntentCreateAmountOptions Amount { get; set; }
+        public V2.Amount Amount { get; set; }
 
         /// <summary>
         /// Date when we expect to receive the funds. Must be in future .
