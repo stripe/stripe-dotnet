@@ -48,7 +48,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public AdjustmentAmount Amount { get; set; }
 
         /// <summary>
         /// Time at which the object was created. Represented as a RFC 3339 date &amp; time UTC
