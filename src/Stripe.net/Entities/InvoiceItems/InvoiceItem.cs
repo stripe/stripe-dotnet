@@ -207,7 +207,7 @@ namespace Stripe
         /// <summary>
         /// Array of field names that can't be modified. Attempting to update a frozen field returns
         /// an error.
-        /// One of: <c>pricing</c>, or <c>quantity</c>.
+        /// One of: <c>discounts</c>, <c>pricing</c>, or <c>quantity</c>.
         /// </summary>
         [JsonProperty("frozen_fields")]
 #if NET6_0_OR_GREATER
