@@ -39,7 +39,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public SettlementAllocationIntentAmount Amount { get; set; }
 
         /// <summary>
         /// Timestamp at which SettlementAllocationIntent was created .

@@ -15,7 +15,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public CurrencyConversionCreateFromAmountOptions Amount { get; set; }
 
         /// <summary>
         /// A lowercase alpha3 currency code like "usd".

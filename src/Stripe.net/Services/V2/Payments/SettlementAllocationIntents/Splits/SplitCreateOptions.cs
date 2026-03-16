@@ -25,7 +25,7 @@ namespace Stripe.V2.Payments.SettlementAllocationIntents
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public SplitCreateAmountOptions Amount { get; set; }
 
         /// <summary>
         /// Metadata associated with the SettlementAllocationIntentSplit.

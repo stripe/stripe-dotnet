@@ -16,7 +16,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public OffSessionPaymentCreateAmountOptions Amount { get; set; }
 
         /// <summary>
         /// The frequency of the underlying payment.

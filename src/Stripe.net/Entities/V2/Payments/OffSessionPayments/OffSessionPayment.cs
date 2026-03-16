@@ -48,7 +48,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_capturable")]
 #endif
-        public V2.Amount AmountCapturable { get; set; }
+        public OffSessionPaymentAmountCapturable AmountCapturable { get; set; }
 
         /// <summary>
         /// The “presentment amount” to be collected from the customer.
@@ -57,7 +57,7 @@ namespace Stripe.V2.Payments
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_requested")]
 #endif
-        public V2.Amount AmountRequested { get; set; }
+        public OffSessionPaymentAmountRequested AmountRequested { get; set; }
 
         /// <summary>
         /// The frequency of the underlying payment.
