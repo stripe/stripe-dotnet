@@ -15,7 +15,7 @@ namespace Stripe.V2.Core
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public V2.Amount Amount { get; set; }
+        public AccountUpdateIdentityBusinessDetailsAnnualRevenueAmountOptions Amount { get; set; }
 
         /// <summary>
         /// The close-out date of the preceding fiscal year in ISO 8601 format. E.g. 2023-12-31 for
