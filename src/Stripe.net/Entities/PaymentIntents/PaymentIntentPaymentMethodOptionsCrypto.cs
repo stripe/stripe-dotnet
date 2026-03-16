@@ -33,5 +33,21 @@ namespace Stripe
         [STJS.JsonPropertyName("setup_future_usage")]
 #endif
         public string SetupFutureUsage { get; set; }
+
+        [JsonProperty("deposit_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deposit_options")]
+#endif
+        public PaymentIntentPaymentMethodOptionsCryptoDepositOptions DepositOptions { get; set; }
+
+        /// <summary>
+        /// The mode of the crypto payment.
+        /// One of: <c>default</c>, or <c>deposit</c>.
+        /// </summary>
+        [JsonProperty("mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mode")]
+#endif
+        public string Mode { get; set; }
     }
 }

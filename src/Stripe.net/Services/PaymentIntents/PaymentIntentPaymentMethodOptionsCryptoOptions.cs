@@ -9,6 +9,25 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCryptoOptions : INestedOptions
     {
         /// <summary>
+        /// Specific configuration for this PaymentIntent when the mode is <c>deposit</c>.
+        /// </summary>
+        [JsonProperty("deposit_options")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("deposit_options")]
+#endif
+        public PaymentIntentPaymentMethodOptionsCryptoDepositOptionsOptions DepositOptions { get; set; }
+
+        /// <summary>
+        /// The mode of the crypto payment.
+        /// One of: <c>default</c>, or <c>deposit</c>.
+        /// </summary>
+        [JsonProperty("mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("mode")]
+#endif
+        public string Mode { get; set; }
+
+        /// <summary>
         /// Indicates that you intend to make future payments with this PaymentIntent's payment
         /// method.
         ///

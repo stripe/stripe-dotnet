@@ -11,6 +11,7 @@ namespace Stripe
         private TestHelpers.ConfirmationTokenService confirmationTokens;
         private TestHelpers.CustomerService customers;
         private TestHelpers.IssuingService issuing;
+        private TestHelpers.PaymentIntentService paymentIntents;
         private TestHelpers.RefundService refunds;
         private TestHelpers.SharedPaymentService sharedPayment;
         private TestHelpers.TerminalService terminal;
@@ -37,6 +38,9 @@ namespace Stripe
             this.Requestor);
 
         public virtual TestHelpers.IssuingService Issuing => this.issuing ??= new TestHelpers.IssuingService(
+            this.Requestor);
+
+        public virtual TestHelpers.PaymentIntentService PaymentIntents => this.paymentIntents ??= new TestHelpers.PaymentIntentService(
             this.Requestor);
 
         public virtual TestHelpers.RefundService Refunds => this.refunds ??= new TestHelpers.RefundService(
