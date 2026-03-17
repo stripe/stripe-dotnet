@@ -69,7 +69,7 @@ namespace Stripe
         public string TransactionPurpose { get; set; }
 
         /// <summary>
-        /// Bank account verification method.
+        /// Bank account verification method. The default value is <c>automatic</c>.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
         [JsonProperty("verification_method")]
@@ -77,15 +77,5 @@ namespace Stripe
         [STJS.JsonPropertyName("verification_method")]
 #endif
         public string VerificationMethod { get; set; }
-
-        /// <summary>
-        /// Preferred transaction settlement speed.
-        /// One of: <c>fastest</c>, or <c>standard</c>.
-        /// </summary>
-        [JsonProperty("preferred_settlement_speed")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("preferred_settlement_speed")]
-#endif
-        public string PreferredSettlementSpeed { get; set; }
     }
 }

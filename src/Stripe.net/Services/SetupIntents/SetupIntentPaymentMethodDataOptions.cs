@@ -538,14 +538,24 @@ namespace Stripe
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
         /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("type")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
 #endif
         public string Type { get; set; }
+
+        /// <summary>
+        /// If this is a <c>upi</c> PaymentMethod, this hash contains details about the UPI payment
+        /// method.
+        /// </summary>
+        [JsonProperty("upi")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("upi")]
+#endif
+        public SetupIntentPaymentMethodDataUpiOptions Upi { get; set; }
 
         /// <summary>
         /// If this is an <c>us_bank_account</c> PaymentMethod, this hash contains details about the

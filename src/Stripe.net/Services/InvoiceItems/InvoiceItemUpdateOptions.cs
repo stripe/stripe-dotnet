@@ -98,13 +98,25 @@ namespace Stripe
         public InvoiceItemPricingOptions Pricing { get; set; }
 
         /// <summary>
-        /// Non-negative integer. The quantity of units for the invoice item.
+        /// Non-negative integer. The quantity of units for the invoice item. Use
+        /// <c>quantity_decimal</c> instead to provide decimal precision. This field will be
+        /// deprecated in favor of <c>quantity_decimal</c> in a future version.
         /// </summary>
         [JsonProperty("quantity")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
         public long? Quantity { get; set; }
+
+        /// <summary>
+        /// Non-negative decimal with at most 12 decimal places. The quantity of units for the line
+        /// item.
+        /// </summary>
+        [JsonProperty("quantity_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity_decimal")]
+#endif
+        public decimal? QuantityDecimal { get; set; }
 
         /// <summary>
         /// Only required if a <a

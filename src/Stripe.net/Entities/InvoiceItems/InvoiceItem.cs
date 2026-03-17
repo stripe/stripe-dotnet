@@ -246,8 +246,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
 #if NET6_0_OR_GREATER
@@ -317,14 +317,27 @@ namespace Stripe
         public InvoiceItemProrationDetails ProrationDetails { get; set; }
 
         /// <summary>
-        /// Quantity of units for the invoice item. If the invoice item is a proration, the quantity
-        /// of the subscription that the proration was computed for.
+        /// Quantity of units for the invoice item in integer format, with any decimal precision
+        /// truncated. For the item's full-precision decimal quantity, use <c>quantity_decimal</c>.
+        /// This field will be deprecated in favor of <c>quantity_decimal</c> in a future version.
+        /// If the invoice item is a proration, the quantity of the subscription that the proration
+        /// was computed for.
         /// </summary>
         [JsonProperty("quantity")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
 #endif
         public long Quantity { get; set; }
+
+        /// <summary>
+        /// Non-negative decimal with at most 12 decimal places. The quantity of units for the
+        /// invoice item.
+        /// </summary>
+        [JsonProperty("quantity_decimal")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("quantity_decimal")]
+#endif
+        public decimal QuantityDecimal { get; set; }
 
         /// <summary>
         /// The tax rates which apply to the invoice item. When set, the <c>default_tax_rates</c> on

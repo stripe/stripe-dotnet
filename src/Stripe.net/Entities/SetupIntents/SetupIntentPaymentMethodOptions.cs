@@ -68,6 +68,12 @@ namespace Stripe
 #endif
         public SetupIntentPaymentMethodOptionsSepaDebit SepaDebit { get; set; }
 
+        [JsonProperty("upi")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("upi")]
+#endif
+        public SetupIntentPaymentMethodOptionsUpi Upi { get; set; }
+
         [JsonProperty("us_bank_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]

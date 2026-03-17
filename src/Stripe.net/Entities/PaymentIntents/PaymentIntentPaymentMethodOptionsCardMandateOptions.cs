@@ -12,7 +12,7 @@ namespace Stripe
     public class PaymentIntentPaymentMethodOptionsCardMandateOptions : StripeEntity<PaymentIntentPaymentMethodOptionsCardMandateOptions>
     {
         /// <summary>
-        /// Amount to be charged for future payments.
+        /// Amount to be charged for future payments, specified in the presentment currency.
         /// </summary>
         [JsonProperty("amount")]
 #if NET6_0_OR_GREATER

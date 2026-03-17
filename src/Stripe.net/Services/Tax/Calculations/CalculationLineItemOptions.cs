@@ -11,7 +11,7 @@ namespace Stripe.Tax
     {
         /// <summary>
         /// A positive integer representing the line item's total price in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. If
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>. If
         /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes are
         /// calculated on top of this amount.
         /// </summary>
