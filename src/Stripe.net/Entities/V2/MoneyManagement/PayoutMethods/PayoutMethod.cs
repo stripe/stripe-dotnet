@@ -98,6 +98,16 @@ namespace Stripe.V2.MoneyManagement
         public bool Livemode { get; set; }
 
         /// <summary>
+        /// Whether the Payout Method is currently unusable for money movement, despite potentially
+        /// being correctly set up. Please reach out to Stripe Support for more information.
+        /// </summary>
+        [JsonProperty("restricted")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("restricted")]
+#endif
+        public bool Restricted { get; set; }
+
+        /// <summary>
         /// Closed Enum. The type of payout method.
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>crypto_wallet</c>.
         /// </summary>

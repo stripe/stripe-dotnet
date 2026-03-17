@@ -22,7 +22,8 @@ namespace Stripe.V2
         }
 
         /// <summary>
-        /// One of: <c>account_number</c>, <c>fedwire_routing_number</c>, or <c>routing_number</c>.
+        /// One of: <c>account_number</c>, <c>currency</c>, <c>fedwire_routing_number</c>, or
+        /// <c>routing_number</c>.
         /// </summary>
         [JsonProperty("invalid_param")]
 #if NET6_0_OR_GREATER

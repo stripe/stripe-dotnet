@@ -113,6 +113,9 @@ namespace Stripe.V2.MoneyManagement
 #endif
         public string Status { get; set; }
 
+        /// <summary>
+        /// Additional details related to the status of the FinancialAccount.
+        /// </summary>
         [JsonProperty("status_details")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]

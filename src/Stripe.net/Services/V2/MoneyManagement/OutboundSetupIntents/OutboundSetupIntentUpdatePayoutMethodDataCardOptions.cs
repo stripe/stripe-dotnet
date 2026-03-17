@@ -9,6 +9,15 @@ namespace Stripe.V2.MoneyManagement
     public class OutboundSetupIntentUpdatePayoutMethodDataCardOptions : INestedOptions
     {
         /// <summary>
+        /// The currency of the card.
+        /// </summary>
+        [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+        public string Currency { get; set; }
+
+        /// <summary>
         /// The expiration month of the card.
         /// </summary>
         [JsonProperty("exp_month")]

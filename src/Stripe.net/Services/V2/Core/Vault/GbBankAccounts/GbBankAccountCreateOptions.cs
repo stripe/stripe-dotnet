@@ -39,6 +39,24 @@ namespace Stripe.V2.Core.Vault
         public GbBankAccountCreateConfirmationOfPayeeOptions ConfirmationOfPayee { get; set; }
 
         /// <summary>
+        /// The currency of the bank account.
+        /// </summary>
+        [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+        public string Currency { get; set; }
+
+        /// <summary>
+        /// The IBAN of the bank account.
+        /// </summary>
+        [JsonProperty("iban")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("iban")]
+#endif
+        public string Iban { get; set; }
+
+        /// <summary>
         /// The Sort Code of the bank account.
         /// </summary>
         [JsonProperty("sort_code")]

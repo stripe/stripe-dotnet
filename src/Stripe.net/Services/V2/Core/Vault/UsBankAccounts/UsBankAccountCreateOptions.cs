@@ -28,6 +28,15 @@ namespace Stripe.V2.Core.Vault
         public string BankAccountType { get; set; }
 
         /// <summary>
+        /// The currency of the bank account.
+        /// </summary>
+        [JsonProperty("currency")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currency")]
+#endif
+        public string Currency { get; set; }
+
+        /// <summary>
         /// The fedwire routing number of the bank account. Note that certain banks have the same
         /// ACH and wire routing number.
         /// </summary>

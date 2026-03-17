@@ -59,5 +59,15 @@ namespace Stripe.V2.Core
         [STJS.JsonPropertyName("responsibilities")]
 #endif
         public AccountDefaultsResponsibilities Responsibilities { get; set; }
+
+        /// <summary>
+        /// The Account's local timezone. A list of possible time zone values is maintained at the
+        /// <a href="https://www.iana.org/time-zones">IANA Time Zone Database</a>.
+        /// </summary>
+        [JsonProperty("timezone")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("timezone")]
+#endif
+        public string Timezone { get; set; }
     }
 }

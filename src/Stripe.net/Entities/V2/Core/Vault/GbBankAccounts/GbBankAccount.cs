@@ -2,6 +2,7 @@
 namespace Stripe.V2.Core.Vault
 {
     using System;
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -118,5 +119,14 @@ namespace Stripe.V2.Core.Vault
         [STJS.JsonPropertyName("sort_code")]
 #endif
         public string SortCode { get; set; }
+
+        /// <summary>
+        /// The list of currencies supported by this bank account.
+        /// </summary>
+        [JsonProperty("supported_currencies")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("supported_currencies")]
+#endif
+        public List<string> SupportedCurrencies { get; set; }
     }
 }

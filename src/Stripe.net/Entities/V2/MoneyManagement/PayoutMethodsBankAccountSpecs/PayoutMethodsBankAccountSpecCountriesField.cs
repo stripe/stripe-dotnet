@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2.MoneyManagement
 {
+    using System.Collections.Generic;
     using Newtonsoft.Json;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
@@ -8,6 +9,16 @@ namespace Stripe.V2.MoneyManagement
 
     public class PayoutMethodsBankAccountSpecCountriesField : StripeEntity<PayoutMethodsBankAccountSpecCountriesField>
     {
+        /// <summary>
+        /// The currencies supported by the corresponding credentials for bank accounts in the
+        /// specified country.
+        /// </summary>
+        [JsonProperty("currencies")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("currencies")]
+#endif
+        public List<string> Currencies { get; set; }
+
         /// <summary>
         /// The local name of the field.
         /// </summary>
