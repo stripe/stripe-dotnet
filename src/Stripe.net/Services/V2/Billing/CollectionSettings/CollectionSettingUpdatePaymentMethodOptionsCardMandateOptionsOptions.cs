@@ -2,6 +2,7 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
@@ -12,8 +13,10 @@ namespace Stripe.V2.Billing
         /// Amount to be charged for future payments.
         /// </summary>
         [JsonProperty("amount")]
+        [JsonConverter(typeof(StringInt64Converter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
+        [STJS.JsonConverter(typeof(STJStringInt64Converter))]
 #endif
         public long? Amount { get; set; }
 

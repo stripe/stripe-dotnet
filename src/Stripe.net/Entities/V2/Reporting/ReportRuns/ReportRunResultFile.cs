@@ -2,6 +2,7 @@
 namespace Stripe.V2.Reporting
 {
     using Newtonsoft.Json;
+    using Stripe.Infrastructure;
 #if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
 #endif
@@ -31,8 +32,10 @@ namespace Stripe.V2.Reporting
         /// The total size of the file in bytes.
         /// </summary>
         [JsonProperty("size")]
+        [JsonConverter(typeof(StringInt64Converter))]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("size")]
+        [STJS.JsonConverter(typeof(STJStringInt64Converter))]
 #endif
         public long Size { get; set; }
     }
