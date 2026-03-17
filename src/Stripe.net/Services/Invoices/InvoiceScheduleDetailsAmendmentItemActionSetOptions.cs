@@ -76,5 +76,14 @@ namespace Stripe
         [STJS.JsonPropertyName("trial")]
 #endif
         public InvoiceScheduleDetailsAmendmentItemActionSetTrialOptions Trial { get; set; }
+
+        /// <summary>
+        /// The ID of the trial offer to apply to the configuration item.
+        /// </summary>
+        [JsonProperty("trial_offer")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("trial_offer")]
+#endif
+        public string TrialOffer { get; set; }
     }
 }

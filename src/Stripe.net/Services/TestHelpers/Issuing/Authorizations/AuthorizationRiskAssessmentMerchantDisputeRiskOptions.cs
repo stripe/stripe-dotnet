@@ -26,10 +26,10 @@ namespace Stripe.TestHelpers.Issuing
         /// One of: <c>elevated</c>, <c>highest</c>, <c>low</c>, <c>normal</c>, <c>not_assessed</c>,
         /// or <c>unknown</c>.
         /// </summary>
-        [JsonProperty("risk_level")]
+        [JsonProperty("level")]
 #if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("risk_level")]
+        [STJS.JsonPropertyName("level")]
 #endif
-        public string RiskLevel { get; set; }
+        public string Level { get; set; }
     }
 }

@@ -80,7 +80,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_month")]
 #endif
-        public long ExpMonth { get; set; }
+        public long? ExpMonth { get; set; }
 
         /// <summary>
         /// Four-digit number representing the card's expiration year.
@@ -89,7 +89,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_year")]
 #endif
-        public long ExpYear { get; set; }
+        public long? ExpYear { get; set; }
 
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check
@@ -160,7 +160,7 @@ namespace Stripe
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("moto")]
 #endif
-        public bool Moto { get; set; }
+        public bool? Moto { get; set; }
 
         /// <summary>
         /// Identifies which network this charge was processed on. Can be <c>amex</c>,

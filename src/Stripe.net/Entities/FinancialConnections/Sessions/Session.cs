@@ -64,6 +64,15 @@ namespace Stripe.FinancialConnections
 #endif
         public SessionFilters Filters { get; set; }
 
+        /// <summary>
+        /// Settings for the Hosted UI mode.
+        /// </summary>
+        [JsonProperty("hosted")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("hosted")]
+#endif
+        public SessionHosted Hosted { get; set; }
+
         [JsonProperty("limits")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("limits")]
@@ -71,8 +80,8 @@ namespace Stripe.FinancialConnections
         public SessionLimits Limits { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
 #if NET6_0_OR_GREATER
@@ -145,5 +154,26 @@ namespace Stripe.FinancialConnections
         [STJS.JsonPropertyName("status_details")]
 #endif
         public SessionStatusDetails StatusDetails { get; set; }
+
+        /// <summary>
+        /// The UI mode for this session.
+        /// One of: <c>hosted</c>, or <c>modal</c>.
+        /// </summary>
+        [JsonProperty("ui_mode")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("ui_mode")]
+#endif
+        public string UiMode { get; set; }
+
+        /// <summary>
+        /// The hosted URL for this Session. Redirect customers to this URL to take them to the
+        /// hosted authentication flow. This value is only present when the Session is active and
+        /// the <c>ui_mode</c> is <c>hosted</c>.
+        /// </summary>
+        [JsonProperty("url")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("url")]
+#endif
+        public string Url { get; set; }
     }
 }

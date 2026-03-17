@@ -220,14 +220,27 @@ namespace Stripe
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
 #endif
         public bool Livemode { get; set; }
+
+        /// <summary>
+        /// Settings for Managed Payments for this Payment Link and resulting <a
+        /// href="https://stripe.com/api/checkout/sessions/object">CheckoutSessions</a>, <a
+        /// href="https://stripe.com/api/payment_intents/object">PaymentIntents</a>, <a
+        /// href="https://stripe.com/api/invoices/object">Invoices</a>, and <a
+        /// href="https://stripe.com/api/subscriptions/object">Subscriptions</a>.
+        /// </summary>
+        [JsonProperty("managed_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("managed_payments")]
+#endif
+        public PaymentLinkManagedPayments ManagedPayments { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can
@@ -333,7 +346,7 @@ namespace Stripe
         /// <c>pay_by_bank</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>, <c>payto</c>,
         /// <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>, <c>satispay</c>,
         /// <c>sepa_debit</c>, <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
 #if NET6_0_OR_GREATER

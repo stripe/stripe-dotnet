@@ -11,8 +11,7 @@ namespace Stripe
     public class QuotePreviewInvoiceParentSubscriptionDetailsPauseCollection : StripeEntity<QuotePreviewInvoiceParentSubscriptionDetailsPauseCollection>
     {
         /// <summary>
-        /// The payment collection behavior for this subscription while paused. One of
-        /// <c>keep_as_draft</c>, <c>mark_uncollectible</c>, or <c>void</c>.
+        /// The payment collection behavior for this subscription while paused.
         /// One of: <c>keep_as_draft</c>, <c>mark_uncollectible</c>, or <c>void</c>.
         /// </summary>
         [JsonProperty("behavior")]

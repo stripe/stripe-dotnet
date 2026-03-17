@@ -781,6 +781,17 @@ namespace Stripe
         public string TwintPayments { get; set; }
 
         /// <summary>
+        /// The status of the upi payments capability of the account, or whether the account can
+        /// directly process upi charges.
+        /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.
+        /// </summary>
+        [JsonProperty("upi_payments")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("upi_payments")]
+#endif
+        public string UpiPayments { get; set; }
+
+        /// <summary>
         /// The status of the US bank account ACH payments capability of the account, or whether the
         /// account can directly process US bank account charges.
         /// One of: <c>active</c>, <c>inactive</c>, or <c>pending</c>.

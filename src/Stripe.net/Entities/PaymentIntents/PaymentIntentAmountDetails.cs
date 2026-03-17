@@ -44,6 +44,12 @@ namespace Stripe
 #endif
         public PaymentIntentAmountDetailsShipping Shipping { get; set; }
 
+        [JsonProperty("surcharge")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("surcharge")]
+#endif
+        public PaymentIntentAmountDetailsSurcharge Surcharge { get; set; }
+
         [JsonProperty("tax")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax")]

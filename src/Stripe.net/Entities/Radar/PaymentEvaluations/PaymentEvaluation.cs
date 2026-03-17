@@ -76,17 +76,8 @@ namespace Stripe.Radar
         public List<PaymentEvaluationEvent> Events { get; set; }
 
         /// <summary>
-        /// Collection of scores and insights for this payment evaluation.
-        /// </summary>
-        [JsonProperty("insights")]
-#if NET6_0_OR_GREATER
-        [STJS.JsonPropertyName("insights")]
-#endif
-        public PaymentEvaluationInsights Insights { get; set; }
-
-        /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
 #if NET6_0_OR_GREATER
@@ -122,5 +113,25 @@ namespace Stripe.Radar
         [STJS.JsonPropertyName("payment_details")]
 #endif
         public PaymentEvaluationPaymentDetails PaymentDetails { get; set; }
+
+        /// <summary>
+        /// Recommended action based on the score of the fraudulent_payment signal. Possible values
+        /// are <c>block</c> and <c>continue</c>.
+        /// One of: <c>block</c>, or <c>continue</c>.
+        /// </summary>
+        [JsonProperty("recommended_action")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("recommended_action")]
+#endif
+        public string RecommendedAction { get; set; }
+
+        /// <summary>
+        /// Collection of signals for this payment evaluation.
+        /// </summary>
+        [JsonProperty("signals")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("signals")]
+#endif
+        public PaymentEvaluationSignals Signals { get; set; }
     }
 }

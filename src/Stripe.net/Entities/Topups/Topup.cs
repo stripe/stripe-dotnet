@@ -137,7 +137,7 @@ namespace Stripe
 
         /// <summary>
         /// Error code explaining reason for top-up failure if available (see <a
-        /// href="https://docs.stripe.com/api#errors">the errors section</a> for a list of codes).
+        /// href="https://stripe.com/api/errors">the errors section</a> for a list of codes).
         /// </summary>
         [JsonProperty("failure_code")]
 #if NET6_0_OR_GREATER
@@ -155,8 +155,8 @@ namespace Stripe
         public string FailureMessage { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
 #if NET6_0_OR_GREATER

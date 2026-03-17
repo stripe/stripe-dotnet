@@ -19,7 +19,8 @@ namespace Stripe
         public List<string> AdditionalFiles { get; set; }
 
         /// <summary>
-        /// Whether your business sells digital content or not.
+        /// The type of goods your business sells. Use <c>digital_content</c> if you sell digital
+        /// content. Use <c>other</c> for all other types of goods or services.
         /// One of: <c>digital_content</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("goods_type")]

@@ -99,6 +99,17 @@ namespace Stripe.Checkout
         public string OnBehalfOf { get; set; }
 
         /// <summary>
+        /// Specifies an interval for how often to bill for any pending invoice items. It is
+        /// analogous to calling <a href="https://docs.stripe.com/api#create_invoice">Create an
+        /// invoice</a> for the given subscription at the specified interval.
+        /// </summary>
+        [JsonProperty("pending_invoice_item_interval")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("pending_invoice_item_interval")]
+#endif
+        public SessionSubscriptionDataPendingInvoiceItemIntervalOptions PendingInvoiceItemInterval { get; set; }
+
+        /// <summary>
         /// Determines how to handle prorations resulting from the <c>billing_cycle_anchor</c>. If
         /// no value is passed, the default is <c>create_prorations</c>.
         /// One of: <c>create_prorations</c>, or <c>none</c>.

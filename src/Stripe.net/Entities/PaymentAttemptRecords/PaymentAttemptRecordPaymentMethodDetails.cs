@@ -414,6 +414,12 @@ namespace Stripe
 #endif
         public string Type { get; set; }
 
+        [JsonProperty("upi")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("upi")]
+#endif
+        public PaymentAttemptRecordPaymentMethodDetailsUpi Upi { get; set; }
+
         [JsonProperty("us_bank_account")]
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]

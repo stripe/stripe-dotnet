@@ -99,6 +99,12 @@ namespace Stripe
 #endif
         public string Type { get; set; }
 
+        [JsonProperty("upi_handle_redirect_or_display_qr_code")]
+#if NET6_0_OR_GREATER
+        [STJS.JsonPropertyName("upi_handle_redirect_or_display_qr_code")]
+#endif
+        public PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode UpiHandleRedirectOrDisplayQrCode { get; set; }
+
         /// <summary>
         /// When confirming a PaymentIntent with Stripe.js, Stripe.js depends on the contents of
         /// this dictionary to invoke authentication flows. The shape of the contents is subject to
