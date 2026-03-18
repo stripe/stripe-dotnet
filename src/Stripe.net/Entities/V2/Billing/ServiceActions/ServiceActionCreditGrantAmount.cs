@@ -36,6 +36,6 @@ namespace Stripe.V2.Billing
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monetary")]
 #endif
-        public ServiceActionCreditGrantAmountMonetary Monetary { get; set; }
+        public V2.Amount Monetary { get; set; }
     }
 }

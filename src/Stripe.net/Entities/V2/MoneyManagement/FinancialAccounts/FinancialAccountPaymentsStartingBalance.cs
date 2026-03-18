@@ -26,6 +26,6 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available")]
 #endif
-        public Dictionary<string, FinancialAccountPaymentsStartingBalanceAvailable> Available { get; set; }
+        public Dictionary<string, V2.Amount> Available { get; set; }
     }
 }
