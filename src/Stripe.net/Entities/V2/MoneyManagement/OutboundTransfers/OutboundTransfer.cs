@@ -40,7 +40,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public OutboundTransferAmount Amount { get; set; }
+        public V2.Amount Amount { get; set; }
 
         /// <summary>
         /// Returns true if the OutboundTransfer can be canceled, and false otherwise.

@@ -39,7 +39,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public ReceivedCreditAmount Amount { get; set; }
+        public V2.Amount Amount { get; set; }
 
         /// <summary>
         /// This object stores details about the originating Stripe transaction that resulted in the

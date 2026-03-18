@@ -16,7 +16,7 @@ namespace Stripe.V2.MoneyManagement
 #if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
 #endif
-        public InboundTransferCreateAmountOptions Amount { get; set; }
+        public V2.Amount Amount { get; set; }
 
         /// <summary>
         /// An optional, freeform description field intended to store metadata.
