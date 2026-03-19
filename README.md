@@ -40,9 +40,9 @@ From within Visual Studio:
 
 ### Requirements
 
-Per our [Language Version Support Policy](https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy), we currently support **.NET Standard 2.0+, .NET Core 5+, and .NET Framework 4.6.2+.**.
+Per our [Language Version Support Policy](https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy), we currently support **.NET Standard 2.0+, LTS versions of .NET Core 6+, and .NET Framework 4.6.2+.**.
 
-Support for .NET Core versions 5 & 7 are deprecated and will be removed in the next major version. Support for version 6 will be removed in a future version. Read more and see the full schedule in the docs: https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy
+Support for version 6 will be removed in a future version. Read more and see the full schedule in the docs: https://docs.stripe.com/sdks/versioning?lang=dotnet#stripe-sdk-language-version-support-policy
 
 ## Documentation
 
@@ -308,6 +308,7 @@ Some preview features require a name and version to be set in the `Stripe-Versio
 ```csharp
 StripeConfiguration.AddBetaVersion("feature_beta", "v3");
 ```
+
 ### Private Preview SDKs
 
 > This feature is only available from version 46 of this SDK.
