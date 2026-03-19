@@ -111,11 +111,23 @@ namespace Stripe
         public InvoiceLinePricingOptions Pricing { get; set; }
 
         /// <summary>
-        /// Non-negative integer. The quantity of units for the line item.
+        /// Non-negative integer. The quantity of units for the line item. Use
+        /// <c>quantity_decimal</c> instead to provide decimal precision. This field will be
+        /// deprecated in favor of <c>quantity_decimal</c> in a future version.
         /// </summary>
         [JsonProperty("quantity")]
         [STJS.JsonPropertyName("quantity")]
         public long? Quantity { get; set; }
+
+        /// <summary>
+        /// Non-negative decimal with at most 12 decimal places. The quantity of units for the line
+        /// item.
+        /// </summary>
+        [JsonProperty("quantity_decimal")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
+        [STJS.JsonPropertyName("quantity_decimal")]
+        public decimal? QuantityDecimal { get; set; }
 
         /// <summary>
         /// A list of up to 10 tax amounts for this line item. This can be useful if you calculate

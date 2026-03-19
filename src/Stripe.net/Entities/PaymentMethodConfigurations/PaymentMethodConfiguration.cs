@@ -195,8 +195,8 @@ namespace Stripe
         public PaymentMethodConfigurationLink Link { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -299,6 +299,10 @@ namespace Stripe
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public PaymentMethodConfigurationTwint Twint { get; set; }
+
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentMethodConfigurationUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

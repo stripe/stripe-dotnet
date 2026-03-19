@@ -288,7 +288,7 @@ namespace Stripe
 
         /// <summary>
         /// Specifies an interval for how often to bill for any pending invoice items. It is
-        /// analogous to calling <a href="https://docs.stripe.com/api#create_invoice">Create an
+        /// analogous to calling <a href="https://stripe.com/api/invoices/create">Create an
         /// invoice</a> for the given subscription at the specified interval.
         /// </summary>
         [JsonProperty("pending_invoice_item_interval")]

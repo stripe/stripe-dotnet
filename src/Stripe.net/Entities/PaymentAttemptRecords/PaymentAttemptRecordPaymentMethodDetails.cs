@@ -258,6 +258,10 @@ namespace Stripe
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
 
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentAttemptRecordPaymentMethodDetailsUpi Upi { get; set; }
+
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]
         public PaymentAttemptRecordPaymentMethodDetailsUsBankAccount UsBankAccount { get; set; }
