@@ -71,8 +71,8 @@ format *args:
     dotnet format whitespace --folder {{args}}
     # This sets TargetFramework because of a race condition in dotnet format when it tries to format to multiple targets at a time,
     # which could lead to code with compiler errors after it completes
-    # NOTE: this will work on any dotnet version 5.0 or above
-    TargetFramework=net5.0 dotnet format src/Stripe.net.sln --severity warn {{args}}
+    # NOTE: this will work on the target framework version or any version after
+    TargetFramework=net6.0 dotnet format src/Stripe.net.sln --severity warn {{args}}
 
 # verify, but don't modify, the project's formatting
 format-check: (format "--verify-no-changes")
