@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BalanceSettingsPaymentsPayouts : StripeEntity<BalanceSettingsPaymentsPayouts>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe
         /// balances for automatic payouts</a>.
         /// </summary>
         [JsonProperty("minimum_balance_by_currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minimum_balance_by_currency")]
-#endif
         public Dictionary<string, long> MinimumBalanceByCurrency { get; set; }
 
         /// <summary>
@@ -28,9 +26,7 @@ namespace Stripe
         /// and Debit Card Payouts</a> documentation for details.
         /// </summary>
         [JsonProperty("schedule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule")]
-#endif
         public BalanceSettingsPaymentsPayoutsSchedule Schedule { get; set; }
 
         /// <summary>
@@ -38,9 +34,7 @@ namespace Stripe
         /// defaults to the platform's bank descriptor as set in the Dashboard.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -48,9 +42,7 @@ namespace Stripe
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

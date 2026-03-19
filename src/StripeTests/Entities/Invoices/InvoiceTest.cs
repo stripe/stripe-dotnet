@@ -1,7 +1,7 @@
 namespace StripeTests
 {
     using System.Collections.Generic;
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -16,7 +16,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/invoices/in_123");
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             Assert.NotNull(invoice);
             Assert.IsType<Invoice>(invoice);
             Assert.NotNull(invoice.Id);
@@ -36,7 +36,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/invoices/in_123", expansions);
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             Assert.NotNull(invoice);
             Assert.IsType<Invoice>(invoice);
             Assert.NotNull(invoice.Id);
@@ -53,7 +53,7 @@ namespace StripeTests
         public void DeserializeWithDiscountsNull()
         {
             string json = "{\"object\": \"invoice\", \"discounts\": null}";
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             Assert.NotNull(invoice);
             Assert.IsType<Invoice>(invoice);
             Assert.Equal("invoice", invoice.Object);
@@ -67,7 +67,7 @@ namespace StripeTests
         public void DeserializeWithDiscountsEmpty()
         {
             string json = "{\"object\": \"invoice\", \"discounts\": []}";
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             Assert.NotNull(invoice);
             Assert.IsType<Invoice>(invoice);
             Assert.Equal("invoice", invoice.Object);
@@ -83,7 +83,7 @@ namespace StripeTests
         public void DeserializeWithDiscountsUnexpanded()
         {
             string json = "{\"object\": \"invoice\", \"discounts\": [\"di_123\", \"di_456\"]}";
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             Assert.NotNull(invoice);
             Assert.IsType<Invoice>(invoice);
             Assert.Equal("invoice", invoice.Object);
@@ -103,7 +103,7 @@ namespace StripeTests
         public void DeserializeWithDiscountsExpanded()
         {
             string json = "{\"object\": \"invoice\", \"discounts\": [{\"id\": \"di_123\", \"object\": \"discount\"}, {\"id\": \"di_456\", \"object\": \"discount\"}]}";
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             Assert.NotNull(invoice);
             Assert.IsType<Invoice>(invoice);
             Assert.Equal("invoice", invoice.Object);
@@ -127,7 +127,7 @@ namespace StripeTests
         public void SerializeWithDiscountIdsNull()
         {
             string json = this.GetFixture("/v1/invoices/in_123");
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             invoice.DiscountIds = null;
 
             var serialized = invoice.ToJson();
@@ -144,7 +144,7 @@ namespace StripeTests
         public void SerializeWithDiscountsNull()
         {
             string json = this.GetFixture("/v1/invoices/in_123");
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             invoice.Discounts = null;
 
             var serialized = invoice.ToJson();
@@ -161,7 +161,7 @@ namespace StripeTests
         public void SerializeWithDiscountIdsEmpty()
         {
             string json = this.GetFixture("/v1/invoices/in_123");
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             invoice.DiscountIds = new List<string>();
 
             var serialized = invoice.ToJson();
@@ -180,7 +180,7 @@ namespace StripeTests
         public void SerializeWithDiscountsEmpty()
         {
             string json = this.GetFixture("/v1/invoices/in_123");
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             invoice.Discounts = new List<Discount>();
 
             var serialized = invoice.ToJson();
@@ -199,7 +199,7 @@ namespace StripeTests
         public void SerializeWithDiscountIdsNotEmpty()
         {
             string json = this.GetFixture("/v1/invoices/in_123");
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             invoice.DiscountIds = new List<string> { "di_123", "di_456" };
 
             var serialized = invoice.ToJson();
@@ -230,7 +230,7 @@ namespace StripeTests
             discount2.Object = "discount";
 
             string json = this.GetFixture("/v1/invoices/in_123");
-            var invoice = JsonConvert.DeserializeObject<Invoice>(json);
+            var invoice = JsonSerializer.Deserialize<Invoice>(json);
             invoice.Discounts = new List<Discount> { discount1, discount2 };
 
             var serialized = invoice.ToJson();

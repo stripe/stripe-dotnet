@@ -3,19 +3,17 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionPaymentMethodOptionsAcssDebitMandateOptions : StripeEntity<SessionPaymentMethodOptionsAcssDebitMandateOptions>
     {
         /// <summary>
         /// A URL for custom mandate text.
         /// </summary>
         [JsonProperty("custom_mandate_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_mandate_url")]
-#endif
         public string CustomMandateUrl { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Checkout
         /// One of: <c>invoice</c>, or <c>subscription</c>.
         /// </summary>
         [JsonProperty("default_for")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_for")]
-#endif
         public List<string> DefaultFor { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.Checkout
         /// 'interval' or 'combined'.
         /// </summary>
         [JsonProperty("interval_description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_description")]
-#endif
         public string IntervalDescription { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe.Checkout
         /// One of: <c>combined</c>, <c>interval</c>, or <c>sporadic</c>.
         /// </summary>
         [JsonProperty("payment_schedule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_schedule")]
-#endif
         public string PaymentSchedule { get; set; }
 
         /// <summary>
@@ -54,9 +46,7 @@ namespace Stripe.Checkout
         /// One of: <c>business</c>, or <c>personal</c>.
         /// </summary>
         [JsonProperty("transaction_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_type")]
-#endif
         public string TransactionType { get; set; }
     }
 }

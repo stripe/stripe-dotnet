@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSignalsDelinquencyIndicator : StripeEntity<AccountSignalsDelinquencyIndicator>
     {
         /// <summary>
         /// A brief explanation of how this indicator contributed to the delinquency probability.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// <c>strong_increase</c>.
         /// </summary>
         [JsonProperty("impact")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("impact")]
-#endif
         public string Impact { get; set; }
 
         /// <summary>
@@ -37,9 +33,7 @@ namespace Stripe
         /// <c>transfers</c>.
         /// </summary>
         [JsonProperty("indicator")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("indicator")]
-#endif
         public string Indicator { get; set; }
     }
 }

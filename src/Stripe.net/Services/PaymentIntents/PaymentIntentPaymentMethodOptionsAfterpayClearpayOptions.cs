@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsAfterpayClearpayOptions : INestedOptions
     {
         /// <summary>
@@ -19,9 +19,7 @@ namespace Stripe
         /// for this parameter unsets the stored value for this payment method type.
         /// </summary>
         [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
-#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
@@ -30,9 +28,7 @@ namespace Stripe
         /// backslashes, and dashes. This field differs from the statement descriptor and item name.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -60,9 +56,7 @@ namespace Stripe
         /// <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

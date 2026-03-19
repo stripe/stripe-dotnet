@@ -2,19 +2,17 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CreditBalanceSummaryBalanceBalanceUpdateDetails : StripeEntity<CreditBalanceSummaryBalanceBalanceUpdateDetails>
     {
         /// <summary>
         /// The details of the most recent meter event included in the balance update.
         /// </summary>
         [JsonProperty("latest_meter_event")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("latest_meter_event")]
-#endif
         public CreditBalanceSummaryBalanceBalanceUpdateDetailsLatestMeterEvent LatestMeterEvent { get; set; }
     }
 }

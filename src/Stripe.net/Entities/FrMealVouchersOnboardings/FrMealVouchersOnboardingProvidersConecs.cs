@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FrMealVouchersOnboardingProvidersConecs : StripeEntity<FrMealVouchersOnboardingProvidersConecs>
     {
         /// <summary>
         /// This represents information which issuers are available to this restaurant via Conecs.
         /// </summary>
         [JsonProperty("issuers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuers")]
-#endif
         public FrMealVouchersOnboardingProvidersConecsIssuers Issuers { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// onboard to Conecs.
         /// </summary>
         [JsonProperty("requirements")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("requirements")]
-#endif
         public FrMealVouchersOnboardingProvidersConecsRequirements Requirements { get; set; }
 
         /// <summary>
@@ -32,9 +28,7 @@ namespace Stripe
         /// One of: <c>action_required</c>, <c>active</c>, <c>disentitled</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

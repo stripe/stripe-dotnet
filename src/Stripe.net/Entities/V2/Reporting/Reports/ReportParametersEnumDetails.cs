@@ -3,19 +3,17 @@ namespace Stripe.V2.Reporting
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReportParametersEnumDetails : StripeEntity<ReportParametersEnumDetails>
     {
         /// <summary>
         /// Allowed values of the enum.
         /// </summary>
         [JsonProperty("allowed_values")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allowed_values")]
-#endif
         public List<string> AllowedValues { get; set; }
     }
 }

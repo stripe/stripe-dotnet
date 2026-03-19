@@ -3,19 +3,17 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class IntentCreateActionSubscribePricingPlanSubscriptionDetailsOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// Configurations for the components of the pricing plan.
         /// </summary>
         [JsonProperty("component_configurations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("component_configurations")]
-#endif
         public List<IntentCreateActionSubscribePricingPlanSubscriptionDetailsComponentConfigurationOptions> ComponentConfigurations { get; set; }
 
         /// <summary>
@@ -24,36 +22,28 @@ namespace Stripe.V2.Billing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Configurations for overriding behaviors related to the subscription.
         /// </summary>
         [JsonProperty("overrides")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("overrides")]
-#endif
         public IntentCreateActionSubscribePricingPlanSubscriptionDetailsOverridesOptions Overrides { get; set; }
 
         /// <summary>
         /// ID of the Pricing Plan to subscribe to.
         /// </summary>
         [JsonProperty("pricing_plan")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_plan")]
-#endif
         public string PricingPlan { get; set; }
 
         /// <summary>
         /// Version of the Pricing Plan to use.
         /// </summary>
         [JsonProperty("pricing_plan_version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_plan_version")]
-#endif
         public string PricingPlanVersion { get; set; }
     }
 }

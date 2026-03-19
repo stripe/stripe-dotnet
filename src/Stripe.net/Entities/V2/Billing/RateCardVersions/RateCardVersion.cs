@@ -3,9 +3,8 @@ namespace Stripe.V2.Billing
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A Rate Card Version represents a specific configuration of a Rate Card at a point in
@@ -13,15 +12,14 @@ namespace Stripe.V2.Billing
     /// allowing you to track changes and manage which version is active for new subscriptions.
     /// Each version maintains a record of when it was created.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RateCardVersion : StripeEntity<RateCardVersion>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -29,18 +27,14 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Timestamp of when the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -48,18 +42,14 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The ID of the Rate Card that this version belongs to.
         /// </summary>
         [JsonProperty("rate_card_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rate_card_id")]
-#endif
         public string RateCardId { get; set; }
     }
 }

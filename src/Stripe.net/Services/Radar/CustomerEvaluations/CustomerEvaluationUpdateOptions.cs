@@ -2,37 +2,31 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CustomerEvaluationUpdateOptions : BaseOptions
     {
         /// <summary>
         /// Event payload for login_failed.
         /// </summary>
         [JsonProperty("login_failed")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("login_failed")]
-#endif
         public CustomerEvaluationLoginFailedOptions LoginFailed { get; set; }
 
         /// <summary>
         /// Event payload for registration_failed.
         /// </summary>
         [JsonProperty("registration_failed")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("registration_failed")]
-#endif
         public CustomerEvaluationRegistrationFailedOptions RegistrationFailed { get; set; }
 
         /// <summary>
         /// Event payload for registration_success.
         /// </summary>
         [JsonProperty("registration_success")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("registration_success")]
-#endif
         public CustomerEvaluationRegistrationSuccessOptions RegistrationSuccess { get; set; }
 
         /// <summary>
@@ -41,9 +35,7 @@ namespace Stripe.Radar
         /// <c>registration_success</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

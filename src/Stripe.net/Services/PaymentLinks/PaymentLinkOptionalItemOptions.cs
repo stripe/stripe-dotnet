@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentLinkOptionalItemOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// item created when a customer chooses to add this optional item to their order.
         /// </summary>
         [JsonProperty("adjustable_quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("adjustable_quantity")]
-#endif
         public PaymentLinkOptionalItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/plans">Plan</a> object.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe
         /// optional item to their order.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
     }
 }

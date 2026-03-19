@@ -4,23 +4,21 @@ namespace Stripe.V2.MoneyManagement
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A FinancialAccount represents a balance and can be used as the source or destination for
     /// the money management (<c>/v2/money_management</c>) APIs.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancialAccount : StripeEntity<FinancialAccount>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -28,9 +26,7 @@ namespace Stripe.V2.MoneyManagement
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -38,9 +34,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>accrued_fees</c> FinancialAccount.
         /// </summary>
         [JsonProperty("accrued_fees")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("accrued_fees")]
-#endif
         public FinancialAccountAccruedFees AccruedFees { get; set; }
 
         /// <summary>
@@ -49,9 +43,7 @@ namespace Stripe.V2.MoneyManagement
         /// lowercase, and the value is the amount for that currency.
         /// </summary>
         [JsonProperty("balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance")]
-#endif
         public FinancialAccountBalance Balance { get; set; }
 
         /// <summary>
@@ -59,18 +51,14 @@ namespace Stripe.V2.MoneyManagement
         /// associated with the FinancialAccount is based in.
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
         /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -78,9 +66,7 @@ namespace Stripe.V2.MoneyManagement
         /// used in the Stripe Dashboard and embedded components.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -88,9 +74,7 @@ namespace Stripe.V2.MoneyManagement
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -99,18 +83,14 @@ namespace Stripe.V2.MoneyManagement
         /// money management resources can only be orchestrated by the managing product.
         /// </summary>
         [JsonProperty("managed_by")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_by")]
-#endif
         public FinancialAccountManagedBy ManagedBy { get; set; }
 
         /// <summary>
         /// Metadata associated with the FinancialAccount.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -118,9 +98,7 @@ namespace Stripe.V2.MoneyManagement
         /// Upgrade your API version to see it reflected in <c>type</c>.
         /// </summary>
         [JsonProperty("other")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("other")]
-#endif
         public FinancialAccountOther Other { get; set; }
 
         /// <summary>
@@ -128,9 +106,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>payments</c> FinancialAccount.
         /// </summary>
         [JsonProperty("payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payments")]
-#endif
         public FinancialAccountPayments Payments { get; set; }
 
         /// <summary>
@@ -139,15 +115,11 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>closed</c>, <c>open</c>, or <c>pending</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
-#endif
         public FinancialAccountStatusDetails StatusDetails { get; set; }
 
         /// <summary>
@@ -155,9 +127,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>storage</c> FinancialAccounts.
         /// </summary>
         [JsonProperty("storage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("storage")]
-#endif
         public FinancialAccountStorage Storage { get; set; }
 
         /// <summary>
@@ -167,9 +137,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>accrued_fees</c>, <c>other</c>, <c>payments</c>, or <c>storage</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

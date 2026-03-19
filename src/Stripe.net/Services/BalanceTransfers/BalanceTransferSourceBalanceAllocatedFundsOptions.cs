@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class BalanceTransferSourceBalanceAllocatedFundsOptions : INestedOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe
         /// <c>charge</c>.
         /// </summary>
         [JsonProperty("charge")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charge")]
-#endif
         public string Charge { get; set; }
 
         /// <summary>
         /// The type of object that the funds are originally sourced from. One of <c>charge</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

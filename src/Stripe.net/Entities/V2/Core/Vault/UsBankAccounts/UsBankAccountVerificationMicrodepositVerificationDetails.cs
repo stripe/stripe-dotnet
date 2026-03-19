@@ -3,19 +3,17 @@ namespace Stripe.V2.Core.Vault
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class UsBankAccountVerificationMicrodepositVerificationDetails : StripeEntity<UsBankAccountVerificationMicrodepositVerificationDetails>
     {
         /// <summary>
         /// Time when microdeposits will expire and have to be re-sent.
         /// </summary>
         [JsonProperty("expires")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires")]
-#endif
         public DateTime Expires { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -23,18 +21,14 @@ namespace Stripe.V2.Core.Vault
         /// One of: <c>amounts</c>, or <c>descriptor_code</c>.
         /// </summary>
         [JsonProperty("microdeposit_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("microdeposit_type")]
-#endif
         public string MicrodepositType { get; set; }
 
         /// <summary>
         /// Time when microdeposits were sent.
         /// </summary>
         [JsonProperty("sent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sent")]
-#endif
         public DateTime Sent { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

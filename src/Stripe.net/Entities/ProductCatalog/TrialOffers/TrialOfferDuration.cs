@@ -2,16 +2,14 @@
 namespace Stripe.ProductCatalog
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TrialOfferDuration : StripeEntity<TrialOfferDuration>
     {
         [JsonProperty("relative")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("relative")]
-#endif
         public TrialOfferDurationRelative Relative { get; set; }
 
         /// <summary>
@@ -19,9 +17,7 @@ namespace Stripe.ProductCatalog
         /// One of: <c>relative</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

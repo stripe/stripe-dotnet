@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RateCardSubscriptionListPayerOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// subscribed on the Billing Cadences with the specified payer will be returned.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Billing
         /// <c>customer</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

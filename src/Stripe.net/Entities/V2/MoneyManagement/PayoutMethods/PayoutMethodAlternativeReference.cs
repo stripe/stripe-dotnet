@@ -2,19 +2,17 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PayoutMethodAlternativeReference : StripeEntity<PayoutMethodAlternativeReference>, IHasId
     {
         /// <summary>
         /// The ID of the alternative resource being referenced.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>external_account</c>, or <c>payment_method</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

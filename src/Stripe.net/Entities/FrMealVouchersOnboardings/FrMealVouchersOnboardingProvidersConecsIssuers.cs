@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FrMealVouchersOnboardingProvidersConecsIssuers : StripeEntity<FrMealVouchersOnboardingProvidersConecsIssuers>
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// One of: <c>bimpli</c>, <c>edenred</c>, <c>pluxee</c>, or <c>up</c>.
         /// </summary>
         [JsonProperty("available")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("available")]
-#endif
         public List<string> Available { get; set; }
     }
 }

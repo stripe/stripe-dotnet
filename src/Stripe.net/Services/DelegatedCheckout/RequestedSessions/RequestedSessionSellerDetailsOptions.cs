@@ -2,19 +2,17 @@
 namespace Stripe.DelegatedCheckout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RequestedSessionSellerDetailsOptions : INestedOptions
     {
         /// <summary>
         /// The network profile for the seller.
         /// </summary>
         [JsonProperty("network_profile")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_profile")]
-#endif
         public string NetworkProfile { get; set; }
     }
 }

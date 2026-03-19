@@ -2,28 +2,24 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialOptions : INestedOptions
     {
         /// <summary>
         /// Terms of service acceptances for Stripe commercial card issuing.
         /// </summary>
         [JsonProperty("account_holder")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialAccountHolderOptions AccountHolder { get; set; }
 
         /// <summary>
         /// Terms of service acceptances for commercial issuing cards with Celtic as BIN sponsor.
         /// </summary>
         [JsonProperty("celtic")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("celtic")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialCelticOptions Celtic { get; set; }
 
         /// <summary>
@@ -31,9 +27,7 @@ namespace Stripe.V2.Core
         /// sponsor.
         /// </summary>
         [JsonProperty("cross_river_bank")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cross_river_bank")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankOptions CrossRiverBank { get; set; }
 
         /// <summary>
@@ -41,27 +35,21 @@ namespace Stripe.V2.Core
         /// sponsor.
         /// </summary>
         [JsonProperty("fifth_third")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fifth_third")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialFifthThirdOptions FifthThird { get; set; }
 
         /// <summary>
         /// Terms of service acceptances for Stripe commercial card Global issuing.
         /// </summary>
         [JsonProperty("global_account_holder")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("global_account_holder")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialGlobalAccountHolderOptions GlobalAccountHolder { get; set; }
 
         /// <summary>
         /// Terms of service acceptances for commercial issuing cards with Lead as BIN sponsor.
         /// </summary>
         [JsonProperty("lead")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lead")]
-#endif
         public AccountUpdateIdentityAttestationsTermsOfServiceCardCreatorCommercialLeadOptions Lead { get; set; }
     }
 }

@@ -4,23 +4,21 @@ namespace Stripe.V2.Billing
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A Billing Profile is a representation of how a bill is paid, separating payment behavior
     /// from customer identity.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Profile : StripeEntity<Profile>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// The ID of the billing profile object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -28,45 +26,35 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Timestamp of when the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The ID of the customer object.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// The ID of the payment method object.
         /// </summary>
         [JsonProperty("default_payment_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_payment_method")]
-#endif
         public string DefaultPaymentMethod { get; set; }
 
         /// <summary>
         /// A customer-facing name for the billing profile. Maximum length of 250 characters.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -74,9 +62,7 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -84,9 +70,7 @@ namespace Stripe.V2.Billing
         /// of 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -94,9 +78,7 @@ namespace Stripe.V2.Billing
         /// additional information about the object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -104,9 +86,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>active</c>, or <c>inactive</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

@@ -2,19 +2,17 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReceivedCreditStripeBalancePayment : StripeEntity<ReceivedCreditStripeBalancePayment>
     {
         /// <summary>
         /// Statement descriptor for the Stripe Balance Payment.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
     }
 }

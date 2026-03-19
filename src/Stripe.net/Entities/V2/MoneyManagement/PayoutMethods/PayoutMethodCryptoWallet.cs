@@ -2,19 +2,17 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PayoutMethodCryptoWallet : StripeEntity<PayoutMethodCryptoWallet>
     {
         /// <summary>
         /// Destination wallet address.
         /// </summary>
         [JsonProperty("address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("address")]
-#endif
         public string Address { get; set; }
 
         /// <summary>
@@ -23,18 +21,14 @@ namespace Stripe.V2.MoneyManagement
         /// wallets cannot be used as payout method and will not appear in the payout method list.
         /// </summary>
         [JsonProperty("archived")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("archived")]
-#endif
         public bool Archived { get; set; }
 
         /// <summary>
         /// Optional field, required if network supports memos (only "stellar" currently).
         /// </summary>
         [JsonProperty("memo")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("memo")]
-#endif
         public string Memo { get; set; }
 
         /// <summary>
@@ -43,9 +37,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>optimism</c>, <c>polygon</c>, <c>solana</c>, or <c>stellar</c>.
         /// </summary>
         [JsonProperty("network")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
-#endif
         public string Network { get; set; }
     }
 }

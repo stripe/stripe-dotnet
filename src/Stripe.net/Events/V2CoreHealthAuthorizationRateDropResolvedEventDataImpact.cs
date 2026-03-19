@@ -4,9 +4,8 @@ namespace Stripe.Events
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     public class V2CoreHealthAuthorizationRateDropResolvedEventDataImpact : StripeEntity<V2CoreHealthAuthorizationRateDropResolvedEventDataImpact>
     {
@@ -15,27 +14,21 @@ namespace Stripe.Events
         /// One of: <c>money_moving</c>, or <c>validation</c>.
         /// </summary>
         [JsonProperty("charge_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charge_type")]
-#endif
         public string ChargeType { get; set; }
 
         /// <summary>
         /// The current authorization rate percentage.
         /// </summary>
         [JsonProperty("current_percentage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_percentage")]
-#endif
         public string CurrentPercentage { get; set; }
 
         /// <summary>
         /// Dimensions that describe what subset of payments are impacted.
         /// </summary>
         [JsonProperty("dimensions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dimensions")]
-#endif
         public List<V2CoreHealthAuthorizationRateDropResolvedEventDataImpactDimension> Dimensions { get; set; }
 
         /// <summary>
@@ -57,18 +50,14 @@ namespace Stripe.Events
         /// <c>vipps</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_type")]
-#endif
         public string PaymentMethodType { get; set; }
 
         /// <summary>
         /// The previous authorization rate percentage.
         /// </summary>
         [JsonProperty("previous_percentage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("previous_percentage")]
-#endif
         public string PreviousPercentage { get; set; }
     }
 }

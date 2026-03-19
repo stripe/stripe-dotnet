@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPhoneNumberCollectionOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Checkout
         /// Can only be set in <c>payment</c> and <c>subscription</c> mode.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool? Enabled { get; set; }
     }
 }

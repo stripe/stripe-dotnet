@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConfirmationTokenPaymentMethodOptionsCard : StripeEntity<ConfirmationTokenPaymentMethodOptionsCard>
     {
         /// <summary>
         /// The <c>cvc_update</c> Token collected from the Payment Element.
         /// </summary>
         [JsonProperty("cvc_token")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cvc_token")]
-#endif
         public string CvcToken { get; set; }
 
         /// <summary>
         /// Installment configuration for payments.
         /// </summary>
         [JsonProperty("installments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("installments")]
-#endif
         public ConfirmationTokenPaymentMethodOptionsCardInstallments Installments { get; set; }
     }
 }

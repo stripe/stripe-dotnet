@@ -2,16 +2,14 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionCheckoutItemPricingPlanSubscriptionItemComponentConfigurationsLicenseFeeComponentOptions : INestedOptions
     {
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
     }
 }

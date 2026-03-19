@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/customers/cus_123/balance_transactions/cbtxn_123");
-            var transaction = JsonConvert.DeserializeObject<CustomerBalanceTransaction>(json);
+            var transaction = JsonSerializer.Deserialize<CustomerBalanceTransaction>(json);
             Assert.NotNull(transaction);
             Assert.IsType<CustomerBalanceTransaction>(transaction);
             Assert.NotNull(transaction.Id);
@@ -33,7 +33,7 @@ namespace StripeTests
             };
 
             string json = this.GetFixture("/v1/customers/cus_123/balance_transactions/cbtxn_123", expansions);
-            var transaction = JsonConvert.DeserializeObject<CustomerBalanceTransaction>(json);
+            var transaction = JsonSerializer.Deserialize<CustomerBalanceTransaction>(json);
             Assert.NotNull(transaction);
             Assert.IsType<CustomerBalanceTransaction>(transaction);
             Assert.NotNull(transaction.Id);

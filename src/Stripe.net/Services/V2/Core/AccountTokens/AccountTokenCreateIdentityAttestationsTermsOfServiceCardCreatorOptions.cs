@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountTokenCreateIdentityAttestationsTermsOfServiceCardCreatorOptions : INestedOptions
     {
         /// <summary>
         /// Terms of service acceptances to create cards for commercial issuing use cases.
         /// </summary>
         [JsonProperty("commercial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("commercial")]
-#endif
         public AccountTokenCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialOptions Commercial { get; set; }
     }
 }

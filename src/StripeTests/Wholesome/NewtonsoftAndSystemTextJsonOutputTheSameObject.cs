@@ -1,4 +1,3 @@
-#if NET6_0_OR_GREATER
 namespace StripeTests.Wholesome
 {
     using System;
@@ -41,7 +40,8 @@ namespace StripeTests.Wholesome
                 Formatting.None,
                 StripeConfiguration.SerializerSettings);
 
-            var systemTextJson = STJ.JsonSerializer.Serialize(instance);
+            var systemTextJson = STJ.JsonSerializer.Serialize(
+                instance, instance.GetType(), StripeConfiguration.SerializerOptions);
 
             if (jsonNet != systemTextJson)
             {
@@ -50,6 +50,7 @@ namespace StripeTests.Wholesome
                 // will not.  For this test, if a straight comparison fails, lets try
                 // and strip the .0 in the jsonNet string.
                 jsonNet = jsonNet.Replace(".0,", ",").Replace(".0}", "}");
+
                 if (jsonNet != systemTextJson)
                 {
                     results.Add($"{instance.GetType().FullName}");
@@ -73,6 +74,16 @@ namespace StripeTests.Wholesome
 
             var typesWithExpandableFields = new List<Type>();
 
+            // Event and EventData use fundamentally different serialization strategies
+            // between Newtonsoft and STJ: EventData.PreviousAttributes is serialized by
+            // Newtonsoft (via [JsonProperty]) but ignored by STJ (via [JsonIgnore]) because
+            // STJEventConverter handles it separately via SetPreviousAttributesJson.
+            var typesToSkip = new HashSet<Type>
+            {
+                typeof(Event),
+                typeof(EventData),
+            };
+
             foreach (TypeInfo stripeClass in stripeClasses)
             {
                 if (stripeClass.FullName.Contains("Stripe.StripeEntity"))
@@ -81,10 +92,8 @@ namespace StripeTests.Wholesome
                     continue;
                 }
 
-                if (stripeClass.IsAbstract)
+                if (typesToSkip.Contains(stripeClass))
                 {
-                    // Skip abstract classes; we'll check their fields when
-                    // we check their concrete classes
                     continue;
                 }
 
@@ -393,4 +402,3 @@ namespace StripeTests.Wholesome
         }
     }
 }
-#endif

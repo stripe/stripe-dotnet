@@ -1,4 +1,3 @@
-#if NET6_0_OR_GREATER
 namespace StripeTests
 {
     using System.Collections.Generic;
@@ -158,7 +157,7 @@ namespace StripeTests
             public int Bar { get; set; }
         }
 
-        [JsonConverter(typeof(STJMemberSerializationOptIn))]
+        [JsonConverter(typeof(STJStripeEntityConverter))]
         private class TestTopLevelObject : StripeEntity<TestTopLevelObject>
         {
             [JsonIgnore]
@@ -172,7 +171,7 @@ namespace StripeTests
             internal ExpandableField<TestNestedObject> InternalNested { get; set; }
         }
 
-        [JsonConverter(typeof(STJMemberSerializationOptIn))]
+        [JsonConverter(typeof(STJStripeEntityConverter))]
         private class TestTopLevelObjectWithList : StripeEntity<TestTopLevelObjectWithList>
         {
             [JsonIgnore]
@@ -194,4 +193,3 @@ namespace StripeTests
         }
     }
 }
-#endif

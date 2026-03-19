@@ -3,28 +3,23 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     public class EventNotificationRelatedObject
     {
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
+        [STJS.JsonInclude]
         public string Id { get; internal set; }
 
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
+        [STJS.JsonInclude]
         public string Type { get; internal set; }
 
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
-#endif
+        [STJS.JsonInclude]
         public string Url { get; internal set; }
     }
 }

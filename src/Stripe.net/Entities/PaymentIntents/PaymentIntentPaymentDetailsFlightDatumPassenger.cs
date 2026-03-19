@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentDetailsFlightDatumPassenger : StripeEntity<PaymentIntentPaymentDetailsFlightDatumPassenger>
     {
         /// <summary>
         /// Full name of the passenger.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
     }
 }

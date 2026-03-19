@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SubscriptionTrialSettingsEndBehavior : StripeEntity<SubscriptionTrialSettingsEndBehavior>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// One of: <c>now</c>, or <c>unchanged</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-#endif
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe
         /// One of: <c>cancel</c>, <c>create_invoice</c>, or <c>pause</c>.
         /// </summary>
         [JsonProperty("missing_payment_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("missing_payment_method")]
-#endif
         public string MissingPaymentMethod { get; set; }
     }
 }

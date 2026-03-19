@@ -2,19 +2,17 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancialAccountManagedBy : StripeEntity<FinancialAccountManagedBy>
     {
         /// <summary>
         /// Enum describing the Stripe product that is managing this FinancialAccount.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCreateConfigurationMerchantCardPaymentsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// accepted or declined the charge.
         /// </summary>
         [JsonProperty("decline_on")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("decline_on")]
-#endif
         public AccountCreateConfigurationMerchantCardPaymentsDeclineOnOptions DeclineOn { get; set; }
     }
 }

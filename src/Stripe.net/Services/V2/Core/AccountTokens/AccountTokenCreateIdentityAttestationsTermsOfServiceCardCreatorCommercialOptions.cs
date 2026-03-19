@@ -2,28 +2,24 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountTokenCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialOptions : INestedOptions
     {
         /// <summary>
         /// Terms of service acceptances for Stripe commercial card issuing.
         /// </summary>
         [JsonProperty("account_holder")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder")]
-#endif
         public AccountTokenCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialAccountHolderOptions AccountHolder { get; set; }
 
         /// <summary>
         /// Terms of service acceptances for commercial issuing cards with Celtic as BIN sponsor.
         /// </summary>
         [JsonProperty("celtic")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("celtic")]
-#endif
         public AccountTokenCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialCelticOptions Celtic { get; set; }
 
         /// <summary>
@@ -31,9 +27,7 @@ namespace Stripe.V2.Core
         /// sponsor.
         /// </summary>
         [JsonProperty("cross_river_bank")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cross_river_bank")]
-#endif
         public AccountTokenCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankOptions CrossRiverBank { get; set; }
     }
 }

@@ -2,19 +2,17 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentEvaluationEventUserInterventionResolved : StripeEntity<PaymentEvaluationEventUserInterventionResolved>
     {
         /// <summary>
         /// Unique ID of this intervention. Use this to provide the result.
         /// </summary>
         [JsonProperty("key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("key")]
-#endif
         public string Key { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.Radar
         /// One of: <c>abandoned</c>, <c>failed</c>, or <c>passed</c>.
         /// </summary>
         [JsonProperty("outcome")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("outcome")]
-#endif
         public string Outcome { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe.Capital
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancingSummaryDetails : StripeEntity<FinancingSummaryDetails>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Capital
         /// 100000.
         /// </summary>
         [JsonProperty("advance_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("advance_amount")]
-#endif
         public long AdvanceAmount { get; set; }
 
         /// <summary>
@@ -23,36 +21,28 @@ namespace Stripe.Capital
         /// Given in milliseconds since unix epoch.
         /// </summary>
         [JsonProperty("advance_paid_out_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("advance_paid_out_at")]
-#endif
         public decimal? AdvancePaidOutAt { get; set; }
 
         /// <summary>
         /// Currency that the financing offer is transacted in. For example, <c>usd</c>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// The chronologically current repayment interval for the financing offer.
         /// </summary>
         [JsonProperty("current_repayment_interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("current_repayment_interval")]
-#endif
         public FinancingSummaryDetailsCurrentRepaymentInterval CurrentRepaymentInterval { get; set; }
 
         /// <summary>
         /// Fixed fee amount, in minor units. For example, 100 USD is represented as 10000.
         /// </summary>
         [JsonProperty("fee_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fee_amount")]
-#endif
         public long FeeAmount { get; set; }
 
         /// <summary>
@@ -60,9 +50,7 @@ namespace Stripe.Capital
         /// units. For example, 1,000 USD is represented as 100000.
         /// </summary>
         [JsonProperty("paid_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paid_amount")]
-#endif
         public long PaidAmount { get; set; }
 
         /// <summary>
@@ -70,9 +58,7 @@ namespace Stripe.Capital
         /// USD is represented as 100000.
         /// </summary>
         [JsonProperty("remaining_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("remaining_amount")]
-#endif
         public long RemainingAmount { get; set; }
 
         /// <summary>
@@ -80,18 +66,14 @@ namespace Stripe.Capital
         /// unix epoch.
         /// </summary>
         [JsonProperty("repayments_begin_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("repayments_begin_at")]
-#endif
         public decimal? RepaymentsBeginAt { get; set; }
 
         /// <summary>
         /// Per-transaction rate at which Stripe withholds funds to repay the financing.
         /// </summary>
         [JsonProperty("withhold_rate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("withhold_rate")]
-#endif
         public decimal WithholdRate { get; set; }
     }
 }

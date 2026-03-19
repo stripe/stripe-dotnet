@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ChargePaymentMethodDetailsCardOvercapture : StripeEntity<ChargePaymentMethodDetailsCardOvercapture>
     {
         /// <summary>
         /// The maximum amount that can be captured.
         /// </summary>
         [JsonProperty("maximum_amount_capturable")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("maximum_amount_capturable")]
-#endif
         public long MaximumAmountCapturable { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// One of: <c>available</c>, or <c>unavailable</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

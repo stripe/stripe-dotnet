@@ -3,22 +3,20 @@ namespace Stripe.V2.MoneyManagement
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Use the OutboundSetupIntent API to create and setup usable payout methods.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class OutboundSetupIntent : StripeEntity<OutboundSetupIntent>, IHasId, IHasObject
     {
         /// <summary>
         /// ID of the outbound setup intent.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -26,18 +24,14 @@ namespace Stripe.V2.MoneyManagement
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Created timestamp.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -45,27 +39,21 @@ namespace Stripe.V2.MoneyManagement
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// Specifies which actions needs to be taken next to continue setup of the credential.
         /// </summary>
         [JsonProperty("next_action")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("next_action")]
-#endif
         public OutboundSetupIntentNextAction NextAction { get; set; }
 
         /// <summary>
         /// Use the PayoutMethods API to list and interact with PayoutMethod objects.
         /// </summary>
         [JsonProperty("payout_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout_method")]
-#endif
         public PayoutMethod PayoutMethod { get; set; }
 
         /// <summary>
@@ -74,9 +62,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -85,9 +71,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>payment</c>, or <c>transfer</c>.
         /// </summary>
         [JsonProperty("usage_intent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage_intent")]
-#endif
         public string UsageIntent { get; set; }
     }
 }

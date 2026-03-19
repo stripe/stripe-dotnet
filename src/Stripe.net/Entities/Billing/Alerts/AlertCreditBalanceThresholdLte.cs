@@ -2,10 +2,10 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AlertCreditBalanceThresholdLte : StripeEntity<AlertCreditBalanceThresholdLte>
     {
         /// <summary>
@@ -13,27 +13,21 @@ namespace Stripe.Billing
         /// One of: <c>custom_pricing_unit</c>, or <c>monetary</c>.
         /// </summary>
         [JsonProperty("balance_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance_type")]
-#endif
         public string BalanceType { get; set; }
 
         /// <summary>
         /// The custom pricing unit amount.
         /// </summary>
         [JsonProperty("custom_pricing_unit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_pricing_unit")]
-#endif
         public AlertCreditBalanceThresholdLteCustomPricingUnit CustomPricingUnit { get; set; }
 
         /// <summary>
         /// The monetary amount.
         /// </summary>
         [JsonProperty("monetary")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monetary")]
-#endif
         public AlertCreditBalanceThresholdLteMonetary Monetary { get; set; }
     }
 }

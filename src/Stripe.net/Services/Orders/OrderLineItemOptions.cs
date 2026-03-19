@@ -3,37 +3,31 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OrderLineItemOptions : INestedOptions, IHasId
     {
         /// <summary>
         /// The description for the line item. Will default to the name of the associated product.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// The discounts applied to this line item.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         public List<OrderLineItemDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// The ID of an existing line item on the order.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -46,9 +40,7 @@ namespace Stripe
         /// parameter to explicitly specify which one to use.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -64,9 +56,7 @@ namespace Stripe
         /// hidden in both the Dashboard and API lists and cannot be reused.
         /// </summary>
         [JsonProperty("price_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
-#endif
         public OrderLineItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -77,9 +67,7 @@ namespace Stripe
         /// passing the <c>price</c> or <c>price_data</c> parameter.
         /// </summary>
         [JsonProperty("product")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product")]
-#endif
         public string Product { get; set; }
 
         /// <summary>
@@ -96,27 +84,21 @@ namespace Stripe
         /// re-uses it to avoid duplicates.
         /// </summary>
         [JsonProperty("product_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_data")]
-#endif
         public OrderLineItemProductDataOptions ProductData { get; set; }
 
         /// <summary>
         /// The quantity of the line item.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
         /// The tax rates applied to this line item.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
     }
 }

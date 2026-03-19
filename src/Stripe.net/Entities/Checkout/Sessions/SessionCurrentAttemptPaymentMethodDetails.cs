@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionCurrentAttemptPaymentMethodDetails : StripeEntity<SessionCurrentAttemptPaymentMethodDetails>
     {
         /// <summary>
@@ -14,15 +14,11 @@ namespace Stripe.Checkout
         /// One of: <c>always</c>, <c>limited</c>, or <c>unspecified</c>.
         /// </summary>
         [JsonProperty("allow_redisplay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("allow_redisplay")]
-#endif
         public string AllowRedisplay { get; set; }
 
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
-#endif
         public SessionCurrentAttemptPaymentMethodDetailsCard Card { get; set; }
 
         /// <summary>
@@ -31,9 +27,7 @@ namespace Stripe.Checkout
         /// additional information specific to the payment method type.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

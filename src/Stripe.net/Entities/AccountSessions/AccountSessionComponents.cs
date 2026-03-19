@@ -2,22 +2,18 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSessionComponents : StripeEntity<AccountSessionComponents>
     {
         [JsonProperty("account_management")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_management")]
-#endif
         public AccountSessionComponentsAccountManagement AccountManagement { get; set; }
 
         [JsonProperty("account_onboarding")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_onboarding")]
-#endif
         public AccountSessionComponentsAccountOnboarding AccountOnboarding { get; set; }
 
         /// <summary>
@@ -26,33 +22,23 @@ namespace Stripe
         /// commerce settings</a> embedded component.
         /// </summary>
         [JsonProperty("agentic_commerce_settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("agentic_commerce_settings")]
-#endif
         public AccountSessionComponentsAgenticCommerceSettings AgenticCommerceSettings { get; set; }
 
         [JsonProperty("balances")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balances")]
-#endif
         public AccountSessionComponentsBalances Balances { get; set; }
 
         [JsonProperty("capital_financing")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital_financing")]
-#endif
         public AccountSessionComponentsCapitalFinancing CapitalFinancing { get; set; }
 
         [JsonProperty("capital_financing_application")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital_financing_application")]
-#endif
         public AccountSessionComponentsCapitalFinancingApplication CapitalFinancingApplication { get; set; }
 
         [JsonProperty("capital_financing_promotion")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital_financing_promotion")]
-#endif
         public AccountSessionComponentsCapitalFinancingPromotion CapitalFinancingPromotion { get; set; }
 
         /// <summary>
@@ -61,51 +47,35 @@ namespace Stripe
         /// scanning</a> embedded component.
         /// </summary>
         [JsonProperty("check_scanning")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("check_scanning")]
-#endif
         public AccountSessionComponentsCheckScanning CheckScanning { get; set; }
 
         [JsonProperty("disputes_list")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disputes_list")]
-#endif
         public AccountSessionComponentsDisputesList DisputesList { get; set; }
 
         [JsonProperty("documents")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("documents")]
-#endif
         public AccountSessionComponentsDocuments Documents { get; set; }
 
         [JsonProperty("financial_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
-#endif
         public AccountSessionComponentsFinancialAccount FinancialAccount { get; set; }
 
         [JsonProperty("financial_account_transactions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account_transactions")]
-#endif
         public AccountSessionComponentsFinancialAccountTransactions FinancialAccountTransactions { get; set; }
 
         [JsonProperty("instant_payouts_promotion")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("instant_payouts_promotion")]
-#endif
         public AccountSessionComponentsInstantPayoutsPromotion InstantPayoutsPromotion { get; set; }
 
         [JsonProperty("issuing_card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_card")]
-#endif
         public AccountSessionComponentsIssuingCard IssuingCard { get; set; }
 
         [JsonProperty("issuing_cards_list")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuing_cards_list")]
-#endif
         public AccountSessionComponentsIssuingCardsList IssuingCardsList { get; set; }
 
         /// <summary>
@@ -114,63 +84,43 @@ namespace Stripe
         /// cost passthrough report</a> embedded component.
         /// </summary>
         [JsonProperty("network_cost_passthrough_report")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_cost_passthrough_report")]
-#endif
         public AccountSessionComponentsNetworkCostPassthroughReport NetworkCostPassthroughReport { get; set; }
 
         [JsonProperty("notification_banner")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("notification_banner")]
-#endif
         public AccountSessionComponentsNotificationBanner NotificationBanner { get; set; }
 
         [JsonProperty("payment_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_details")]
-#endif
         public AccountSessionComponentsPaymentDetails PaymentDetails { get; set; }
 
         [JsonProperty("payment_disputes")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_disputes")]
-#endif
         public AccountSessionComponentsPaymentDisputes PaymentDisputes { get; set; }
 
         [JsonProperty("payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payments")]
-#endif
         public AccountSessionComponentsPayments Payments { get; set; }
 
         [JsonProperty("payout_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout_details")]
-#endif
         public AccountSessionComponentsPayoutDetails PayoutDetails { get; set; }
 
         [JsonProperty("payouts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payouts")]
-#endif
         public AccountSessionComponentsPayouts Payouts { get; set; }
 
         [JsonProperty("payouts_list")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payouts_list")]
-#endif
         public AccountSessionComponentsPayoutsList PayoutsList { get; set; }
 
         [JsonProperty("tax_registrations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_registrations")]
-#endif
         public AccountSessionComponentsTaxRegistrations TaxRegistrations { get; set; }
 
         [JsonProperty("tax_settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_settings")]
-#endif
         public AccountSessionComponentsTaxSettings TaxSettings { get; set; }
 
         /// <summary>
@@ -179,9 +129,7 @@ namespace Stripe
         /// hardware orders</a> embedded component.
         /// </summary>
         [JsonProperty("terminal_hardware_orders")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terminal_hardware_orders")]
-#endif
         public AccountSessionComponentsTerminalHardwareOrders TerminalHardwareOrders { get; set; }
 
         /// <summary>
@@ -190,9 +138,7 @@ namespace Stripe
         /// hardware shop</a> embedded component.
         /// </summary>
         [JsonProperty("terminal_hardware_shop")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terminal_hardware_shop")]
-#endif
         public AccountSessionComponentsTerminalHardwareShop TerminalHardwareShop { get; set; }
     }
 }

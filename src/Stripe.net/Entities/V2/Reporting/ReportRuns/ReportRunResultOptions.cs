@@ -2,10 +2,10 @@
 namespace Stripe.V2.Reporting
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReportRunResultOptions : StripeEntity<ReportRunResultOptions>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Reporting
         /// for reducing file size and download time for large reports.
         /// </summary>
         [JsonProperty("compress_file")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("compress_file")]
-#endif
         public bool? CompressFile { get; set; }
     }
 }

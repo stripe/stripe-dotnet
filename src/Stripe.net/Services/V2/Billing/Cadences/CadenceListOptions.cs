@@ -3,10 +3,10 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CadenceListOptions : V2.ListOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>invoice_discount_rules</c>, or <c>settings_data</c>.
         /// </summary>
         [JsonProperty("include")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("include")]
-#endif
         public List<string> Include { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Billing
         /// lookup_keys. Mutually exclusive with <c>test_clock</c> and <c>payer</c>.
         /// </summary>
         [JsonProperty("lookup_keys")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_keys")]
-#endif
         public List<string> LookupKeys { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.V2.Billing
         /// Mutually exclusive with <c>test_clock</c> and <c>lookup_keys</c>.
         /// </summary>
         [JsonProperty("payer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payer")]
-#endif
         public CadenceListPayerOptions Payer { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe.V2.Billing
         /// the customer's test clock) will be returned. Mutually exclusive with <c>payer</c>.
         /// </summary>
         [JsonProperty("test_clock")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("test_clock")]
-#endif
         public string TestClock { get; set; }
     }
 }

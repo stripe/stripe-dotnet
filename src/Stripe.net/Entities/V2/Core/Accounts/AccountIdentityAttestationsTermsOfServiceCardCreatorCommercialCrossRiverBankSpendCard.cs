@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankSpendCard : StripeEntity<AccountIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankSpendCard>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// Bank as BIN sponsor.
         /// </summary>
         [JsonProperty("bank_terms")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_terms")]
-#endif
         public AccountIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankSpendCardBankTerms BankTerms { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core
         /// with Cross River Bank as BIN sponsor.
         /// </summary>
         [JsonProperty("financing_disclosures")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financing_disclosures")]
-#endif
         public AccountIdentityAttestationsTermsOfServiceCardCreatorCommercialCrossRiverBankSpendCardFinancingDisclosures FinancingDisclosures { get; set; }
     }
 }

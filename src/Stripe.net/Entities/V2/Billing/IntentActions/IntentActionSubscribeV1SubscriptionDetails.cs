@@ -3,10 +3,10 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentActionSubscribeV1SubscriptionDetails : StripeEntity<IntentActionSubscribeV1SubscriptionDetails>, IHasMetadata
     {
         /// <summary>
@@ -15,18 +15,14 @@ namespace Stripe.V2.Billing
         /// and certain local payment methods UIs.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// A list of up to 20 subscription items, each with an attached price.
         /// </summary>
         [JsonProperty("items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("items")]
-#endif
         public List<IntentActionSubscribeV1SubscriptionDetailsItem> Items { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.V2.Billing
         /// additional information about the object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

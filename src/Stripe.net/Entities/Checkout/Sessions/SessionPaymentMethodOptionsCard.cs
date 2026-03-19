@@ -2,25 +2,21 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionPaymentMethodOptionsCard : StripeEntity<SessionPaymentMethodOptionsCard>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
         [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
-#endif
         public string CaptureMethod { get; set; }
 
         [JsonProperty("installments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("installments")]
-#endif
         public SessionPaymentMethodOptionsCardInstallments Installments { get; set; }
 
         /// <summary>
@@ -29,9 +25,7 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_decremental_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_decremental_authorization")]
-#endif
         public string RequestDecrementalAuthorization { get; set; }
 
         /// <summary>
@@ -40,9 +34,7 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_extended_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_extended_authorization")]
-#endif
         public string RequestExtendedAuthorization { get; set; }
 
         /// <summary>
@@ -52,9 +44,7 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_incremental_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_incremental_authorization")]
-#endif
         public string RequestIncrementalAuthorization { get; set; }
 
         /// <summary>
@@ -63,9 +53,7 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_multicapture")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_multicapture")]
-#endif
         public string RequestMulticapture { get; set; }
 
         /// <summary>
@@ -74,9 +62,7 @@ namespace Stripe.Checkout
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_overcapture")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_overcapture")]
-#endif
         public string RequestOvercapture { get; set; }
 
         /// <summary>
@@ -92,15 +78,11 @@ namespace Stripe.Checkout
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_three_d_secure")]
-#endif
         public string RequestThreeDSecure { get; set; }
 
         [JsonProperty("restrictions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("restrictions")]
-#endif
         public SessionPaymentMethodOptionsCardRestrictions Restrictions { get; set; }
 
         /// <summary>
@@ -125,9 +107,7 @@ namespace Stripe.Checkout
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -138,9 +118,7 @@ namespace Stripe.Checkout
         /// (including separators) will appear truncated to 22 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kana")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix_kana")]
-#endif
         public string StatementDescriptorSuffixKana { get; set; }
 
         /// <summary>
@@ -151,9 +129,7 @@ namespace Stripe.Checkout
         /// (including separators) will appear truncated to 17 characters.
         /// </summary>
         [JsonProperty("statement_descriptor_suffix_kanji")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor_suffix_kanji")]
-#endif
         public string StatementDescriptorSuffixKanji { get; set; }
     }
 }

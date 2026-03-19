@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentActionApplyInvoiceDiscountRule : StripeEntity<IntentActionApplyInvoiceDiscountRule>
     {
         /// <summary>
         /// The entity that the discount rule applies to, for example, the Billing Cadence.
         /// </summary>
         [JsonProperty("applies_to")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applies_to")]
-#endif
         public string AppliesTo { get; set; }
 
         /// <summary>
@@ -22,27 +20,21 @@ namespace Stripe.V2.Billing
         /// committed and the discount rule is created.
         /// </summary>
         [JsonProperty("invoice_discount_rule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_discount_rule")]
-#endif
         public string InvoiceDiscountRule { get; set; }
 
         /// <summary>
         /// Type of the discount rule.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// Configuration for percentage off discount.
         /// </summary>
         [JsonProperty("percent_off")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_off")]
-#endif
         public IntentActionApplyInvoiceDiscountRulePercentOff PercentOff { get; set; }
     }
 }

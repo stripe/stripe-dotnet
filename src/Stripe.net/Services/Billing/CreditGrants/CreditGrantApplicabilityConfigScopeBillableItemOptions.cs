@@ -2,19 +2,17 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CreditGrantApplicabilityConfigScopeBillableItemOptions : INestedOptions, IHasId
     {
         /// <summary>
         /// The billable item ID this credit grant should apply to.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
     }
 }

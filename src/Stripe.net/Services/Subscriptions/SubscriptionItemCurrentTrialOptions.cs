@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionItemCurrentTrialOptions : INestedOptions
     {
         /// <summary>
@@ -17,19 +16,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("trial_end")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_end")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? TrialEnd { get; set; }
 
         /// <summary>
         /// The ID of the trial offer to apply to the subscription item.
         /// </summary>
         [JsonProperty("trial_offer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_offer")]
-#endif
         public string TrialOffer { get; set; }
     }
 }

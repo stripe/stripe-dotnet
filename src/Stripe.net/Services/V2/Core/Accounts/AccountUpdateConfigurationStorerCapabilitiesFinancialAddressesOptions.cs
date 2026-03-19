@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateConfigurationStorerCapabilitiesFinancialAddressesOptions : INestedOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.V2.Core
         /// FinancialAccount.
         /// </summary>
         [JsonProperty("bank_accounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_accounts")]
-#endif
         public AccountUpdateConfigurationStorerCapabilitiesFinancialAddressesBankAccountsOptions BankAccounts { get; set; }
 
         /// <summary>
         /// Can provision a crypto wallet like financial address to credit a FinancialAccount.
         /// </summary>
         [JsonProperty("crypto_wallets")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("crypto_wallets")]
-#endif
         public AccountUpdateConfigurationStorerCapabilitiesFinancialAddressesCryptoWalletsOptions CryptoWallets { get; set; }
     }
 }

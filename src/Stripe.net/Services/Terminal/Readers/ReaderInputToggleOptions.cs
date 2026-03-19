@@ -2,10 +2,10 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReaderInputToggleOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Terminal
         /// One of: <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("default_value")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_value")]
-#endif
         public string DefaultValue { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.Terminal
         /// one of title or description must be provided.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.Terminal
         /// title or description must be provided.
         /// </summary>
         [JsonProperty("title")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("title")]
-#endif
         public string Title { get; set; }
     }
 }

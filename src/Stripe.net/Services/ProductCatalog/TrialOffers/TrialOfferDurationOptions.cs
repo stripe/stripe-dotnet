@@ -2,10 +2,10 @@
 namespace Stripe.ProductCatalog
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TrialOfferDurationOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.ProductCatalog
         /// intervals.
         /// </summary>
         [JsonProperty("relative")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("relative")]
-#endif
         public TrialOfferDurationRelativeOptions Relative { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.ProductCatalog
         /// One of: <c>relative</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

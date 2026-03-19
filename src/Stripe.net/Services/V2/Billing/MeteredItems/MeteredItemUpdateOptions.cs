@@ -3,10 +3,10 @@ namespace Stripe.V2.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class MeteredItemUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Billing
         /// characters.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Billing
         /// 200 characters. To remove the lookup_key from the object, set it to null in the request.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -35,18 +31,14 @@ namespace Stripe.V2.Billing
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// Stripe Tax details.
         /// </summary>
         [JsonProperty("tax_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_details")]
-#endif
         public MeteredItemUpdateTaxDetailsOptions TaxDetails { get; set; }
 
         /// <summary>
@@ -57,9 +49,7 @@ namespace Stripe.V2.Billing
         /// the request.
         /// </summary>
         [JsonProperty("unit_label")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_label")]
-#endif
         public string UnitLabel { get; set; }
     }
 }

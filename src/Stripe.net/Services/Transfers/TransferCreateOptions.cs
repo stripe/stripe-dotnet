@@ -3,25 +3,21 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TransferCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A positive integer in cents (or local equivalent) representing how much to transfer.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         [JsonProperty("application_fee_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_fee_amount")]
-#endif
         public long? ApplicationFeeAmount { get; set; }
 
         /// <summary>
@@ -30,18 +26,14 @@ namespace Stripe
         /// href="https://docs.stripe.com/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -50,9 +42,7 @@ namespace Stripe
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("destination")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("destination")]
-#endif
         public string Destination { get; set; }
 
         /// <summary>
@@ -60,9 +50,7 @@ namespace Stripe
         /// destination currency.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         /// <summary>
@@ -72,9 +60,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -85,9 +71,7 @@ namespace Stripe
         /// the Connect documentation</a> for details.
         /// </summary>
         [JsonProperty("source_transaction")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_transaction")]
-#endif
         public string SourceTransaction { get; set; }
 
         /// <summary>
@@ -96,9 +80,7 @@ namespace Stripe
         /// One of: <c>bank_account</c>, <c>card</c>, or <c>fpx</c>.
         /// </summary>
         [JsonProperty("source_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_type")]
-#endif
         public string SourceType { get; set; }
 
         /// <summary>
@@ -107,9 +89,7 @@ namespace Stripe
         /// documentation</a> for details.
         /// </summary>
         [JsonProperty("transfer_group")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfer_group")]
-#endif
         public string TransferGroup { get; set; }
     }
 }

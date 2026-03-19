@@ -2,28 +2,24 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ServiceActionCreateCreditGrantPerTenantOptions : INestedOptions
     {
         /// <summary>
         /// The amount of the credit grant.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public ServiceActionCreateCreditGrantPerTenantAmountOptions Amount { get; set; }
 
         /// <summary>
         /// Defines the scope where the credit grant is applicable.
         /// </summary>
         [JsonProperty("applicability_config")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applicability_config")]
-#endif
         public ServiceActionCreateCreditGrantPerTenantApplicabilityConfigOptions ApplicabilityConfig { get; set; }
 
         /// <summary>
@@ -31,36 +27,28 @@ namespace Stripe.V2.Billing
         /// One of: <c>paid</c>, or <c>promotional</c>.
         /// </summary>
         [JsonProperty("category")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("category")]
-#endif
         public string Category { get; set; }
 
         /// <summary>
         /// The expiry configuration for the credit grant.
         /// </summary>
         [JsonProperty("expiry_config")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expiry_config")]
-#endif
         public ServiceActionCreateCreditGrantPerTenantExpiryConfigOptions ExpiryConfig { get; set; }
 
         /// <summary>
         /// The grant condition for the credit grant.
         /// </summary>
         [JsonProperty("grant_condition")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("grant_condition")]
-#endif
         public ServiceActionCreateCreditGrantPerTenantGrantConditionOptions GrantCondition { get; set; }
 
         /// <summary>
         /// Customer-facing name for the credit grant.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
 
         /// <summary>
@@ -68,9 +56,7 @@ namespace Stripe.V2.Billing
         /// the default value of 50. The highest priority is 0 and the lowest is 100.
         /// </summary>
         [JsonProperty("priority")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("priority")]
-#endif
         public long? Priority { get; set; }
     }
 }

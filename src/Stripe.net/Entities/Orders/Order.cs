@@ -6,9 +6,7 @@ namespace Stripe
     using System.Linq;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// An Order describes a purchase being made by a customer, including the products &amp;
@@ -17,27 +15,21 @@ namespace Stripe
     ///
     /// Related guide: <a href="https://stripe.com/docs/orders">Orders overview</a>.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class Order : StripeEntity<Order>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -47,9 +39,7 @@ namespace Stripe
         /// 100 cents to charge $1.00 or 100 to charge ¥100, a zero-decimal currency).
         /// </summary>
         [JsonProperty("amount_subtotal")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_subtotal")]
-#endif
         public long AmountSubtotal { get; set; }
 
         /// <summary>
@@ -62,9 +52,7 @@ namespace Stripe
         /// in charge currency</a>.
         /// </summary>
         [JsonProperty("amount_total")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_total")]
-#endif
         public long AmountTotal { get; set; }
 
         #region Expandable Application
@@ -74,9 +62,7 @@ namespace Stripe
         /// ID of the Connect application that created the Order, if any.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string ApplicationId
         {
             get => this.InternalApplication?.Id;
@@ -90,9 +76,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Application Application
         {
             get => this.InternalApplication?.ExpandedObject;
@@ -101,26 +85,20 @@ namespace Stripe
 
         [JsonProperty("application")]
         [JsonConverter(typeof(ExpandableFieldConverter<Application>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Application>))]
-#endif
         internal ExpandableField<Application> InternalApplication { get; set; }
         #endregion
 
         [JsonProperty("automatic_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
-#endif
         public OrderAutomaticTax AutomaticTax { get; set; }
 
         /// <summary>
         /// Customer billing details associated with the order.
         /// </summary>
         [JsonProperty("billing_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_details")]
-#endif
         public OrderBillingDetails BillingDetails { get; set; }
 
         /// <summary>
@@ -136,9 +114,7 @@ namespace Stripe
         /// order</a> to learn about how client_secret should be handled.
         /// </summary>
         [JsonProperty("client_secret")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_secret")]
-#endif
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -146,10 +122,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -158,9 +132,7 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         #region Expandable Customer
@@ -170,9 +142,7 @@ namespace Stripe
         /// The customer which this orders belongs to.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -186,9 +156,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -197,10 +165,8 @@ namespace Stripe
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
-#endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -208,9 +174,7 @@ namespace Stripe
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         #region Expandable Discounts
@@ -221,9 +185,7 @@ namespace Stripe
         /// discount.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<string> DiscountIds
         {
             get => this.InternalDiscounts?.Select((x) => x.Id).ToList();
@@ -238,9 +200,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<Discount> Discounts
         {
             get => this.InternalDiscounts?.Select((x) => x.ExpandedObject).ToList();
@@ -248,9 +208,7 @@ namespace Stripe
         }
 
         [JsonProperty("discounts", ItemConverterType = typeof(ExpandableFieldConverter<Discount>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         internal List<ExpandableField<Discount>> InternalDiscounts { get; set; }
         #endregion
 
@@ -258,9 +216,7 @@ namespace Stripe
         /// A recent IP address of the purchaser used for tax reporting and tax location inference.
         /// </summary>
         [JsonProperty("ip_address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip_address")]
-#endif
         public string IpAddress { get; set; }
 
         /// <summary>
@@ -268,9 +224,7 @@ namespace Stripe
         /// the product, the quantity, and the resulting cost. There is a maximum of 100 line items.
         /// </summary>
         [JsonProperty("line_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
-#endif
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
@@ -278,9 +232,7 @@ namespace Stripe
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -289,15 +241,11 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         [JsonProperty("payment")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment")]
-#endif
         public OrderPayment Payment { get; set; }
 
         /// <summary>
@@ -305,18 +253,14 @@ namespace Stripe
         /// ShippingRate.
         /// </summary>
         [JsonProperty("shipping_cost")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_cost")]
-#endif
         public OrderShippingCost ShippingCost { get; set; }
 
         /// <summary>
         /// Customer shipping information associated with the order.
         /// </summary>
         [JsonProperty("shipping_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_details")]
-#endif
         public OrderShippingDetails ShippingDetails { get; set; }
 
         /// <summary>
@@ -325,21 +269,15 @@ namespace Stripe
         /// <c>submitted</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         [JsonProperty("tax_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_details")]
-#endif
         public OrderTaxDetails TaxDetails { get; set; }
 
         [JsonProperty("total_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("total_details")]
-#endif
         public OrderTotalDetails TotalDetails { get; set; }
     }
 }

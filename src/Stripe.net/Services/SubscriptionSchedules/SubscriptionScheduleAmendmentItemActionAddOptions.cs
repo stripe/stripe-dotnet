@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleAmendmentItemActionAddOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// subscription discounts.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         public List<SubscriptionScheduleAmendmentItemActionAddDiscountOptions> Discounts { get; set; }
 
         /// <summary>
@@ -26,27 +24,21 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The ID of the price object.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
         /// Quantity for this item.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -55,27 +47,21 @@ namespace Stripe
         /// <c>subscription_item</c>.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
 
         /// <summary>
         /// Options that configure the trial on the subscription item.
         /// </summary>
         [JsonProperty("trial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial")]
-#endif
         public SubscriptionScheduleAmendmentItemActionAddTrialOptions Trial { get; set; }
 
         /// <summary>
         /// The ID of the trial offer to apply to the configuration item.
         /// </summary>
         [JsonProperty("trial_offer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_offer")]
-#endif
         public string TrialOffer { get; set; }
     }
 }

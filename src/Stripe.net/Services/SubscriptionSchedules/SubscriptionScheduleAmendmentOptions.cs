@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleAmendmentOptions : INestedOptions
     {
         /// <summary>
@@ -16,18 +16,14 @@ namespace Stripe
         /// supported on the amendment.
         /// </summary>
         [JsonProperty("amendment_end")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amendment_end")]
-#endif
         public SubscriptionScheduleAmendmentAmendmentEndOptions AmendmentEnd { get; set; }
 
         /// <summary>
         /// Details to identify the earliest timestamp where the proposed change should take effect.
         /// </summary>
         [JsonProperty("amendment_start")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amendment_start")]
-#endif
         public SubscriptionScheduleAmendmentAmendmentStartOptions AmendmentStart { get; set; }
 
         /// <summary>
@@ -40,18 +36,14 @@ namespace Stripe
         /// One of: <c>amendment_start</c>, or <c>automatic</c>.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-#endif
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
         /// Actions to apply to the billing schedules.
         /// </summary>
         [JsonProperty("billing_schedules_actions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_schedules_actions")]
-#endif
         public List<SubscriptionScheduleAmendmentBillingSchedulesActionOptions> BillingSchedulesActions { get; set; }
 
         /// <summary>
@@ -59,9 +51,7 @@ namespace Stripe
         /// time span.
         /// </summary>
         [JsonProperty("discount_actions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_actions")]
-#endif
         public List<SubscriptionScheduleAmendmentDiscountActionOptions> DiscountActions { get; set; }
 
         /// <summary>
@@ -69,27 +59,21 @@ namespace Stripe
         /// One of: <c>amendment_start</c>, or <c>billing_period_start</c>.
         /// </summary>
         [JsonProperty("effective_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("effective_at")]
-#endif
         public string EffectiveAt { get; set; }
 
         /// <summary>
         /// Changes to the subscription items during the amendment time span.
         /// </summary>
         [JsonProperty("item_actions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("item_actions")]
-#endif
         public List<SubscriptionScheduleAmendmentItemActionOptions> ItemActions { get; set; }
 
         /// <summary>
         /// Instructions for how to modify phase metadata.
         /// </summary>
         [JsonProperty("metadata_actions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata_actions")]
-#endif
         public List<SubscriptionScheduleAmendmentMetadataActionOptions> MetadataActions { get; set; }
 
         /// <summary>
@@ -101,9 +85,7 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
-#endif
         public string ProrationBehavior { get; set; }
 
         /// <summary>
@@ -111,9 +93,7 @@ namespace Stripe
         /// of the amendment.
         /// </summary>
         [JsonProperty("set_pause_collection")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("set_pause_collection")]
-#endif
         public SubscriptionScheduleAmendmentSetPauseCollectionOptions SetPauseCollection { get; set; }
 
         /// <summary>
@@ -122,18 +102,14 @@ namespace Stripe
         /// One of: <c>amendment_end</c>, or <c>amendment_start</c>.
         /// </summary>
         [JsonProperty("set_schedule_end")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("set_schedule_end")]
-#endif
         public string SetScheduleEnd { get; set; }
 
         /// <summary>
         /// Settings related to subscription trials.
         /// </summary>
         [JsonProperty("trial_settings")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial_settings")]
-#endif
         public SubscriptionScheduleAmendmentTrialSettingsOptions TrialSettings { get; set; }
     }
 }

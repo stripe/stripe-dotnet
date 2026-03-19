@@ -9,7 +9,6 @@ namespace StripeTests
     using System.Threading.Tasks;
     using Moq;
     using Moq.Protected;
-    using Newtonsoft.Json;
     using Stripe;
     using Stripe.V2;
     using Xunit;
@@ -311,12 +310,6 @@ namespace StripeTests
             {
                 throw new System.NotImplementedException();
             }
-        }
-
-        private class Foo : StripeEntity<Foo>
-        {
-            [JsonProperty("bar")]
-            public string Bar { get; set; }
         }
     }
 }

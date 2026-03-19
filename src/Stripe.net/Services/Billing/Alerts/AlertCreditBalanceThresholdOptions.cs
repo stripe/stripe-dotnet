@@ -3,10 +3,10 @@ namespace Stripe.Billing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AlertCreditBalanceThresholdOptions : INestedOptions
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe.Billing
         /// customer filter at this time.
         /// </summary>
         [JsonProperty("filters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("filters")]
-#endif
         public List<AlertCreditBalanceThresholdFilterOptions> Filters { get; set; }
 
         /// <summary>
         /// Defines at which value the alert will fire.
         /// </summary>
         [JsonProperty("lte")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lte")]
-#endif
         public AlertCreditBalanceThresholdLteOptions Lte { get; set; }
     }
 }

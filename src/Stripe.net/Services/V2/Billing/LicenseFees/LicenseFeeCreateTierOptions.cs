@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class LicenseFeeCreateTierOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// at most 12 decimal places.
         /// </summary>
         [JsonProperty("flat_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flat_amount")]
-#endif
         public string FlatAmount { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Billing
         /// currency units with at most 12 decimal places.
         /// </summary>
         [JsonProperty("unit_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit_amount")]
-#endif
         public string UnitAmount { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.V2.Billing
         /// <c>up_to_decimal</c> and <c>up_to_inf</c> may be set.
         /// </summary>
         [JsonProperty("up_to_decimal")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("up_to_decimal")]
-#endif
         public string UpToDecimal { get; set; }
 
         /// <summary>
@@ -43,9 +37,7 @@ namespace Stripe.V2.Billing
         /// be set.
         /// </summary>
         [JsonProperty("up_to_inf")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("up_to_inf")]
-#endif
         public string UpToInf { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// method.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
-#endif
         public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardOptions Card { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// payment method.
         /// </summary>
         [JsonProperty("card_present")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_present")]
-#endif
         public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresentOptions CardPresent { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe
         /// method.
         /// </summary>
         [JsonProperty("klarna")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("klarna")]
-#endif
         public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsKlarnaOptions Klarna { get; set; }
 
         /// <summary>
@@ -43,9 +37,7 @@ namespace Stripe
         /// method.
         /// </summary>
         [JsonProperty("paypal")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypal")]
-#endif
         public PaymentIntentAmountDetailsLineItemPaymentMethodOptionsPaypalOptions Paypal { get; set; }
     }
 }

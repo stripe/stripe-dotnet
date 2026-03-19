@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountIdentityAttestationsTermsOfServiceCardCreatorConsumerCeltic : StripeEntity<AccountIdentityAttestationsTermsOfServiceCardCreatorConsumerCeltic>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// sponsor.
         /// </summary>
         [JsonProperty("apple_pay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("apple_pay")]
-#endif
         public AccountIdentityAttestationsTermsOfServiceCardCreatorConsumerCelticApplePay ApplePay { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core
         /// as BIN sponsor.
         /// </summary>
         [JsonProperty("revolving_credit_card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("revolving_credit_card")]
-#endif
         public AccountIdentityAttestationsTermsOfServiceCardCreatorConsumerCelticRevolvingCreditCard RevolvingCreditCard { get; set; }
     }
 }

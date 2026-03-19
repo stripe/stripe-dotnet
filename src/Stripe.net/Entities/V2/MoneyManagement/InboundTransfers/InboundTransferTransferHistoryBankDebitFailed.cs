@@ -2,10 +2,10 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InboundTransferTransferHistoryBankDebitFailed : StripeEntity<InboundTransferTransferHistoryBankDebitFailed>
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>insufficient_funds</c>.
         /// </summary>
         [JsonProperty("failure_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failure_reason")]
-#endif
         public string FailureReason { get; set; }
     }
 }

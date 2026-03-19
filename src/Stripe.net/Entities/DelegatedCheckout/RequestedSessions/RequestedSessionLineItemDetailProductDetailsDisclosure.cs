@@ -2,19 +2,17 @@
 namespace Stripe.DelegatedCheckout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RequestedSessionLineItemDetailProductDetailsDisclosure : StripeEntity<RequestedSessionLineItemDetailProductDetailsDisclosure>
     {
         /// <summary>
         /// The content of the disclosure.
         /// </summary>
         [JsonProperty("content")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("content")]
-#endif
         public string Content { get; set; }
 
         /// <summary>
@@ -22,18 +20,14 @@ namespace Stripe.DelegatedCheckout
         /// One of: <c>link</c>, <c>markdown</c>, or <c>plain</c>.
         /// </summary>
         [JsonProperty("content_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("content_type")]
-#endif
         public string ContentType { get; set; }
 
         /// <summary>
         /// The type of disclosure.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

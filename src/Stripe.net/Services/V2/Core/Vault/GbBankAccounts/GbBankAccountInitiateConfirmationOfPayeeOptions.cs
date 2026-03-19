@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core.Vault
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class GbBankAccountInitiateConfirmationOfPayeeOptions : BaseOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core.Vault
         /// One of: <c>business</c>, or <c>personal</c>.
         /// </summary>
         [JsonProperty("business_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_type")]
-#endif
         public string BusinessType { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Core.Vault
         /// unspecified.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
     }
 }

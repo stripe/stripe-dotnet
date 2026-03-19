@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationRecipientDefaultOutboundDestination : StripeEntity<AccountConfigurationRecipientDefaultOutboundDestination>, IHasId
     {
         /// <summary>
         /// The payout method ID of the default outbound destination.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -55,9 +53,7 @@ namespace Stripe.V2.Core
         /// <c>uz_bank_account</c>, <c>vn_bank_account</c>, or <c>za_bank_account</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

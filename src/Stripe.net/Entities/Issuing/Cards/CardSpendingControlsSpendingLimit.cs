@@ -3,10 +3,10 @@ namespace Stripe.Issuing
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CardSpendingControlsSpendingLimit : StripeEntity<CardSpendingControlsSpendingLimit>
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.Issuing
         /// unit</a>.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
@@ -171,9 +169,7 @@ namespace Stripe.Issuing
         /// <c>wrecking_and_salvage_yards</c>.
         /// </summary>
         [JsonProperty("categories")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("categories")]
-#endif
         public List<string> Categories { get; set; }
 
         /// <summary>
@@ -182,9 +178,7 @@ namespace Stripe.Issuing
         /// <c>weekly</c>, or <c>yearly</c>.
         /// </summary>
         [JsonProperty("interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
-#endif
         public string Interval { get; set; }
     }
 }

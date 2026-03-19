@@ -2,46 +2,38 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InvoiceParent : StripeEntity<InvoiceParent>
     {
         /// <summary>
         /// Details about the billing cadence that generated this invoice.
         /// </summary>
         [JsonProperty("billing_cadence_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cadence_details")]
-#endif
         public InvoiceParentBillingCadenceDetails BillingCadenceDetails { get; set; }
 
         /// <summary>
         /// Details about the quote that generated this invoice.
         /// </summary>
         [JsonProperty("quote_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quote_details")]
-#endif
         public InvoiceParentQuoteDetails QuoteDetails { get; set; }
 
         /// <summary>
         /// Details about the schedule that generated this invoice.
         /// </summary>
         [JsonProperty("schedule_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule_details")]
-#endif
         public InvoiceParentScheduleDetails ScheduleDetails { get; set; }
 
         /// <summary>
         /// Details about the subscription that generated this invoice.
         /// </summary>
         [JsonProperty("subscription_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_details")]
-#endif
         public InvoiceParentSubscriptionDetails SubscriptionDetails { get; set; }
 
         /// <summary>
@@ -50,9 +42,7 @@ namespace Stripe
         /// or <c>subscription_details</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

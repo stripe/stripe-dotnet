@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsCryptoOptions : INestedOptions
     {
         /// <summary>
         /// Specific configuration for this PaymentIntent when the mode is <c>deposit</c>.
         /// </summary>
         [JsonProperty("deposit_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deposit_options")]
-#endif
         public PaymentIntentPaymentMethodOptionsCryptoDepositOptionsOptions DepositOptions { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// One of: <c>default</c>, or <c>deposit</c>.
         /// </summary>
         [JsonProperty("mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mode")]
-#endif
         public string Mode { get; set; }
 
         /// <summary>
@@ -52,9 +48,7 @@ namespace Stripe
         /// <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

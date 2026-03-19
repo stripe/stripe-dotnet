@@ -3,10 +3,10 @@ namespace Stripe.V2.Billing
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class IntentActionSubscribeEffectiveAt : StripeEntity<IntentActionSubscribeEffectiveAt>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Billing
         /// timestamp.
         /// </summary>
         [JsonProperty("timestamp")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
-#endif
         public DateTime? Timestamp { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>current_billing_period_start</c>, <c>on_reserve</c>, or <c>timestamp</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

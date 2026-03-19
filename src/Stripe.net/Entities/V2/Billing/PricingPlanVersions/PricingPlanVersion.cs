@@ -3,9 +3,8 @@ namespace Stripe.V2.Billing
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A Pricing Plan Version represents a specific configuration of a Pricing Plan at a point
@@ -13,15 +12,14 @@ namespace Stripe.V2.Billing
     /// to track changes and manage which version is active for new subscriptions. Each version
     /// has a start date and optionally an end date if it has been superseded.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PricingPlanVersion : StripeEntity<PricingPlanVersion>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -29,27 +27,21 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Time at which the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The timestamp when this version became inactive. Null if it's the latest version.
         /// </summary>
         [JsonProperty("end_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_date")]
-#endif
         public DateTime? EndDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -57,27 +49,21 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The ID of the PricingPlan this version belongs to.
         /// </summary>
         [JsonProperty("pricing_plan")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pricing_plan")]
-#endif
         public string PricingPlan { get; set; }
 
         /// <summary>
         /// The timestamp when this version became active.
         /// </summary>
         [JsonProperty("start_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("start_date")]
-#endif
         public DateTime StartDate { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

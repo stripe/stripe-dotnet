@@ -2,28 +2,24 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PricingPlanComponentRateCard : StripeEntity<PricingPlanComponentRateCard>, IHasId
     {
         /// <summary>
         /// The ID of the Rate Card.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// The version of the RateCard. Defaults to 'latest', if not specified.
         /// </summary>
         [JsonProperty("version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("version")]
-#endif
         public string Version { get; set; }
     }
 }

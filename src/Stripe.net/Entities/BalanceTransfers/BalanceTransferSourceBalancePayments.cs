@@ -3,13 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BalanceTransferSourceBalancePayments : StripeEntity<BalanceTransferSourceBalancePayments>
     {
         #region Expandable BalanceTransaction
@@ -19,9 +15,7 @@ namespace Stripe
         /// Identifier for the balance_transaction that decreased the source balance.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
@@ -35,9 +29,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
@@ -46,10 +38,8 @@ namespace Stripe
 
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
-#endif
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
@@ -58,9 +48,7 @@ namespace Stripe
         /// <c>card</c>, <c>fpx</c>, or <c>bank_account</c>.
         /// </summary>
         [JsonProperty("source_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_type")]
-#endif
         public string SourceType { get; set; }
     }
 }

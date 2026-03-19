@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing.RateCards
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RateCreateTransformQuantityOptions : INestedOptions
     {
         /// <summary>
         /// Divide usage by this number.
         /// </summary>
         [JsonProperty("divide_by")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("divide_by")]
-#endif
         public long? DivideBy { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.V2.Billing.RateCards
         /// One of: <c>down</c>, or <c>up</c>.
         /// </summary>
         [JsonProperty("round")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("round")]
-#endif
         public string Round { get; set; }
     }
 }

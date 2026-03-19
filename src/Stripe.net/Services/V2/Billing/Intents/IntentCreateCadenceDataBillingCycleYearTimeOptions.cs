@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class IntentCreateCadenceDataBillingCycleYearTimeOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// inclusive. 0 represents midnight, and 23 represents 11 PM.
         /// </summary>
         [JsonProperty("hour")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("hour")]
-#endif
         public long? Hour { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Billing
         /// inclusive.
         /// </summary>
         [JsonProperty("minute")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minute")]
-#endif
         public long? Minute { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.V2.Billing
         /// inclusive.
         /// </summary>
         [JsonProperty("second")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("second")]
-#endif
         public long? Second { get; set; }
     }
 }

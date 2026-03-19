@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// <c>bank_transfer</c>.
         /// </summary>
         [JsonProperty("bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_transfer")]
-#endif
         public InvoicePaymentSettingsPaymentMethodOptionsCustomerBalanceBankTransferOptions BankTransfer { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// balance. Permitted values include: <c>bank_transfer</c>.
         /// </summary>
         [JsonProperty("funding_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("funding_type")]
-#endif
         public string FundingType { get; set; }
     }
 }

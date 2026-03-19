@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CadenceSpendModifierMaxBillingPeriodSpendAmountCustomPricingUnit : StripeEntity<CadenceSpendModifierMaxBillingPeriodSpendAmountCustomPricingUnit>
     {
         /// <summary>
         /// The decimal value of custom pricing units, represented as a string.
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
-#endif
         public string Value { get; set; }
     }
 }

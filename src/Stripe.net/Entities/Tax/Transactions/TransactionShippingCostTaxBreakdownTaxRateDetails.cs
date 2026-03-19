@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionShippingCostTaxBreakdownTaxRateDetails : StripeEntity<TransactionShippingCostTaxBreakdownTaxRateDetails>
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.Tax
         /// "Local Sales and Use Tax", "Value-added tax (VAT)", or "Umsatzsteuer (USt.)".
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
         /// The tax rate percentage as a string. For example, 8.5% is represented as "8.5".
         /// </summary>
         [JsonProperty("percentage_decimal")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percentage_decimal")]
-#endif
         public string PercentageDecimal { get; set; }
 
         /// <summary>
@@ -37,9 +33,7 @@ namespace Stripe.Tax
         /// <c>tourism_tax</c>, or <c>vat</c>.
         /// </summary>
         [JsonProperty("tax_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_type")]
-#endif
         public string TaxType { get; set; }
     }
 }

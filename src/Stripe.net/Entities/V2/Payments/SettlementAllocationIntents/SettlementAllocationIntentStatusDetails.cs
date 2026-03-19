@@ -2,10 +2,10 @@
 namespace Stripe.V2.Payments
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SettlementAllocationIntentStatusDetails : StripeEntity<SettlementAllocationIntentStatusDetails>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Payments
         /// SettlementAllocationIntent status is <c>errored</c>.
         /// </summary>
         [JsonProperty("errored")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("errored")]
-#endif
         public SettlementAllocationIntentStatusDetailsErrored Errored { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundPaymentQuoteCreateDeliveryOptionsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>instant</c>, <c>next_business_day</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("speed")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("speed")]
-#endif
         public string Speed { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>automatic</c>, <c>local</c>, or <c>wire</c>.
         /// </summary>
         [JsonProperty("bank_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_account")]
-#endif
         public string BankAccount { get; set; }
     }
 }

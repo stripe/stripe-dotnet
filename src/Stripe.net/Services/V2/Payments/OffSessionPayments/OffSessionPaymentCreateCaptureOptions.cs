@@ -2,10 +2,10 @@
 namespace Stripe.V2.Payments
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OffSessionPaymentCreateCaptureOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Payments
         /// One of: <c>automatic</c>, or <c>manual</c>.
         /// </summary>
         [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
-#endif
         public string CaptureMethod { get; set; }
     }
 }

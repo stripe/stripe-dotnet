@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CadenceSettingsDataCollection : StripeEntity<CadenceSettingsDataCollection>
     {
         /// <summary>
@@ -16,18 +16,14 @@ namespace Stripe.V2.Billing
         /// One of: <c>automatic</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection_method")]
-#endif
         public string CollectionMethod { get; set; }
 
         /// <summary>
         /// Email delivery settings.
         /// </summary>
         [JsonProperty("email_delivery")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email_delivery")]
-#endif
         public CadenceSettingsDataCollectionEmailDelivery EmailDelivery { get; set; }
 
         /// <summary>
@@ -35,18 +31,14 @@ namespace Stripe.V2.Billing
         /// are displayed to your customers.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_configuration")]
-#endif
         public string PaymentMethodConfiguration { get; set; }
 
         /// <summary>
         /// Payment Method specific configuration stored on the object.
         /// </summary>
         [JsonProperty("payment_method_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
-#endif
         public CadenceSettingsDataCollectionPaymentMethodOptions PaymentMethodOptions { get; set; }
     }
 }

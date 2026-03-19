@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialFifthThirdChargeCardOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// BIN sponsor.
         /// </summary>
         [JsonProperty("bank_terms")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_terms")]
-#endif
         public AccountCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialFifthThirdChargeCardBankTermsOptions BankTerms { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core
         /// with Fifth Third as BIN sponsor.
         /// </summary>
         [JsonProperty("financing_disclosures")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financing_disclosures")]
-#endif
         public AccountCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialFifthThirdChargeCardFinancingDisclosuresOptions FinancingDisclosures { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.V2.Core
         /// Third as BIN sponsor.
         /// </summary>
         [JsonProperty("platform")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("platform")]
-#endif
         public AccountCreateIdentityAttestationsTermsOfServiceCardCreatorCommercialFifthThirdChargeCardPlatformOptions Platform { get; set; }
     }
 }

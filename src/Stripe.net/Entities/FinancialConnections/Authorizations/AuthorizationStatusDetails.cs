@@ -2,16 +2,14 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AuthorizationStatusDetails : StripeEntity<AuthorizationStatusDetails>
     {
         [JsonProperty("inactive")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inactive")]
-#endif
         public AuthorizationStatusDetailsInactive Inactive { get; set; }
     }
 }
