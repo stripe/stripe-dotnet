@@ -2,10 +2,10 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionStatusDetailsCancelled : StripeEntity<SessionStatusDetailsCancelled>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>custom_manual_entry</c>, or <c>other</c>.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
     }
 }

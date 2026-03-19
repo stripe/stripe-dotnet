@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateConfigurationCustomerAutomaticIndirectTaxOptions : INestedOptions
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe.V2.Core
         /// One of: <c>exempt</c>, <c>none</c>, or <c>reverse</c>.
         /// </summary>
         [JsonProperty("exempt")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exempt")]
-#endif
         public string Exempt { get; set; }
 
         /// <summary>
         /// A recent IP address of the customer used for tax reporting and tax location inference.
         /// </summary>
         [JsonProperty("ip_address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip_address")]
-#endif
         public string IpAddress { get; set; }
 
         /// <summary>
@@ -35,9 +31,7 @@ namespace Stripe.V2.Core
         /// <c>shipping_address</c>.
         /// </summary>
         [JsonProperty("location_source")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("location_source")]
-#endif
         public string LocationSource { get; set; }
 
         /// <summary>
@@ -46,9 +40,7 @@ namespace Stripe.V2.Core
         /// One of: <c>auto</c>, <c>deferred</c>, or <c>immediately</c>.
         /// </summary>
         [JsonProperty("validate_location")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("validate_location")]
-#endif
         public string ValidateLocation { get; set; }
     }
 }

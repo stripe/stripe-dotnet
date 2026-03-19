@@ -3,13 +3,13 @@ namespace Stripe.V2.MoneyManagement
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// The PayoutMethodsBankAccountSpec object.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PayoutMethodsBankAccountSpec : StripeEntity<PayoutMethodsBankAccountSpec>, IHasObject
     {
         /// <summary>
@@ -17,18 +17,14 @@ namespace Stripe.V2.MoneyManagement
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The list of specs by country.
         /// </summary>
         [JsonProperty("countries")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("countries")]
-#endif
         public Dictionary<string, PayoutMethodsBankAccountSpecCountries> Countries { get; set; }
 
         /// <summary>
@@ -36,9 +32,7 @@ namespace Stripe.V2.MoneyManagement
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
     }
 }

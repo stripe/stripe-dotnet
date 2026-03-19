@@ -5,19 +5,16 @@ namespace Stripe.Billing.Analytics
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class MeterUsageGetOptions : BaseOptions
     {
         /// <summary>
         /// The customer id to fetch meter usage data for.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -26,10 +23,8 @@ namespace Stripe.Billing.Analytics
         /// </summary>
         [JsonProperty("ends_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ends_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? EndsAt { get; set; }
 
         /// <summary>
@@ -37,9 +32,7 @@ namespace Stripe.Billing.Analytics
         /// not specified, usage across all meters for the customer is included.
         /// </summary>
         [JsonProperty("meters")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("meters")]
-#endif
         public List<MeterUsageMeterOptions> Meters { get; set; }
 
         /// <summary>
@@ -48,10 +41,8 @@ namespace Stripe.Billing.Analytics
         /// </summary>
         [JsonProperty("starts_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("starts_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? StartsAt { get; set; }
 
         /// <summary>
@@ -241,9 +232,7 @@ namespace Stripe.Billing.Analytics
         /// <c>US/Samoa</c>, <c>UTC</c>, <c>Universal</c>, <c>W-SU</c>, <c>WET</c>, or <c>Zulu</c>.
         /// </summary>
         [JsonProperty("timezone")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timezone")]
-#endif
         public string Timezone { get; set; }
 
         /// <summary>
@@ -252,9 +241,7 @@ namespace Stripe.Billing.Analytics
         /// One of: <c>day</c>, <c>hour</c>, <c>month</c>, or <c>week</c>.
         /// </summary>
         [JsonProperty("value_grouping_window")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value_grouping_window")]
-#endif
         public string ValueGroupingWindow { get; set; }
     }
 }

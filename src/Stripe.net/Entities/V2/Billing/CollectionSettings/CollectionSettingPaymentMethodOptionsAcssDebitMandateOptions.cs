@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CollectionSettingPaymentMethodOptionsAcssDebitMandateOptions : StripeEntity<CollectionSettingPaymentMethodOptionsAcssDebitMandateOptions>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>business</c>, or <c>personal</c>.
         /// </summary>
         [JsonProperty("transaction_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_type")]
-#endif
         public string TransactionType { get; set; }
     }
 }

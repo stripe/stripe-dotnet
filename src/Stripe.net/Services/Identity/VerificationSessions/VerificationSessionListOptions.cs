@@ -4,10 +4,9 @@ namespace Stripe.Identity
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class VerificationSessionListOptions : ListOptions
     {
         /// <summary>
@@ -15,9 +14,7 @@ namespace Stripe.Identity
         /// and can be used to reconcile this verification with your internal systems.
         /// </summary>
         [JsonProperty("client_reference_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_reference_id")]
-#endif
         public string ClientReferenceId { get; set; }
 
         /// <summary>
@@ -25,28 +22,22 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// Customer ID.
         /// </summary>
         [JsonProperty("related_customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_customer")]
-#endif
         public string RelatedCustomer { get; set; }
 
         /// <summary>
         /// The ID of the Account representing a customer.
         /// </summary>
         [JsonProperty("related_customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("related_customer_account")]
-#endif
         public string RelatedCustomerAccount { get; set; }
 
         /// <summary>
@@ -56,9 +47,7 @@ namespace Stripe.Identity
         /// One of: <c>canceled</c>, <c>processing</c>, <c>requires_input</c>, or <c>verified</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

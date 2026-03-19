@@ -2,22 +2,18 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountRiskControls : StripeEntity<AccountRiskControls>
     {
         [JsonProperty("charges")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("charges")]
-#endif
         public AccountRiskControlsCharges Charges { get; set; }
 
         [JsonProperty("payouts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payouts")]
-#endif
         public AccountRiskControlsPayouts Payouts { get; set; }
 
         /// <summary>
@@ -29,9 +25,7 @@ namespace Stripe
         /// <c>fraud_payment_method_tester</c>, <c>other</c>, or <c>terms_of_service</c>.
         /// </summary>
         [JsonProperty("rejected_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rejected_reason")]
-#endif
         public string RejectedReason { get; set; }
     }
 }

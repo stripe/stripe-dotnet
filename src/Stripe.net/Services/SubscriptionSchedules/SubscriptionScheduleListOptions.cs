@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleListOptions : ListOptions
     {
         /// <summary>
@@ -15,10 +14,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("canceled_at")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("canceled_at")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> CanceledAt { get; set; }
 
         /// <summary>
@@ -26,10 +23,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("completed_at")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("completed_at")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> CompletedAt { get; set; }
 
         /// <summary>
@@ -37,28 +32,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// Only return subscription schedules for the given customer.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// Only return subscription schedules for the given account.
         /// </summary>
         [JsonProperty("customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
-#endif
         public string CustomerAccount { get; set; }
 
         /// <summary>
@@ -66,19 +55,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("released_at")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("released_at")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> ReleasedAt { get; set; }
 
         /// <summary>
         /// Only return subscription schedules that have not started yet.
         /// </summary>
         [JsonProperty("scheduled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("scheduled")]
-#endif
         public bool? Scheduled { get; set; }
     }
 }

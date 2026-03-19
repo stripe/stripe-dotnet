@@ -4,10 +4,9 @@ namespace Stripe.Radar
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ValueListItemListOptions : ListOptions
     {
         /// <summary>
@@ -15,10 +14,8 @@ namespace Stripe.Radar
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
@@ -26,18 +23,14 @@ namespace Stripe.Radar
         /// an "is like" match).
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
-#endif
         public string Value { get; set; }
 
         /// <summary>
         /// Identifier for the parent value list this item belongs to.
         /// </summary>
         [JsonProperty("value_list")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value_list")]
-#endif
         public string ValueList { get; set; }
     }
 }

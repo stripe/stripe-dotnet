@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionPaymentMethodOptionsPix : StripeEntity<SessionPaymentMethodOptionsPix>
     {
         /// <summary>
@@ -13,24 +13,18 @@ namespace Stripe.Checkout
         /// One of: <c>always</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("amount_includes_iof")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_includes_iof")]
-#endif
         public string AmountIncludesIof { get; set; }
 
         /// <summary>
         /// The number of seconds after which Pix payment will expire.
         /// </summary>
         [JsonProperty("expires_after_seconds")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_after_seconds")]
-#endif
         public long? ExpiresAfterSeconds { get; set; }
 
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public SessionPaymentMethodOptionsPixMandateOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -55,9 +49,7 @@ namespace Stripe.Checkout
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

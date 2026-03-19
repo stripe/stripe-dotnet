@@ -2,10 +2,10 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReaderSetReaderDisplayOptions : BaseOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.Terminal
         /// currency.
         /// </summary>
         [JsonProperty("cart")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cart")]
-#endif
         public ReaderCartOptions Cart { get; set; }
 
         /// <summary>
         /// Type of information to display. Only <c>cart</c> is currently supported.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

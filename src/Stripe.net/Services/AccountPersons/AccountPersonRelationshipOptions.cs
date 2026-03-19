@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountPersonRelationshipOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// the account's representative.
         /// </summary>
         [JsonProperty("authorizer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorizer")]
-#endif
         public bool? Authorizer { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe
         /// meets its regulatory obligations.
         /// </summary>
         [JsonProperty("director")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("director")]
-#endif
         public bool? Director { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe
         /// the account's company.
         /// </summary>
         [JsonProperty("executive")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("executive")]
-#endif
         public bool? Executive { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe
         /// guardians of the account's representative.
         /// </summary>
         [JsonProperty("legal_guardian")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("legal_guardian")]
-#endif
         public bool? LegalGuardian { get; set; }
 
         /// <summary>
@@ -54,18 +46,14 @@ namespace Stripe
         /// account's company.
         /// </summary>
         [JsonProperty("owner")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owner")]
-#endif
         public bool? Owner { get; set; }
 
         /// <summary>
         /// The percent owned by the person of the account's legal entity.
         /// </summary>
         [JsonProperty("percent_ownership")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_ownership")]
-#endif
         public decimal? PercentOwnership { get; set; }
 
         /// <summary>
@@ -76,18 +64,14 @@ namespace Stripe
         /// responsible for opening the account.
         /// </summary>
         [JsonProperty("representative")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("representative")]
-#endif
         public bool? Representative { get; set; }
 
         /// <summary>
         /// The person's title (e.g., CEO, Support Engineer).
         /// </summary>
         [JsonProperty("title")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("title")]
-#endif
         public string Title { get; set; }
     }
 }

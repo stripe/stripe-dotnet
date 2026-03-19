@@ -2,19 +2,17 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReceivedCreditBankTransfer : StripeEntity<ReceivedCreditBankTransfer>
     {
         /// <summary>
         /// Financial Address on which funds for ReceivedCredit were received.
         /// </summary>
         [JsonProperty("financial_address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_address")]
-#endif
         public string FinancialAddress { get; set; }
 
         /// <summary>
@@ -22,18 +20,14 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>gb_bank_account</c>, <c>sepa_bank_account</c>, or <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("origin_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("origin_type")]
-#endif
         public string OriginType { get; set; }
 
         /// <summary>
         /// Freeform string set by originator of the external ReceivedCredit.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
 
         /// <summary>
@@ -41,9 +35,7 @@ namespace Stripe.V2.MoneyManagement
         /// is <c>gb_bank_account</c>.
         /// </summary>
         [JsonProperty("gb_bank_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gb_bank_account")]
-#endif
         public ReceivedCreditBankTransferGbBankAccount GbBankAccount { get; set; }
 
         /// <summary>
@@ -51,9 +43,7 @@ namespace Stripe.V2.MoneyManagement
         /// is <c>sepa_bank_account</c>.
         /// </summary>
         [JsonProperty("sepa_bank_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sepa_bank_account")]
-#endif
         public ReceivedCreditBankTransferSepaBankAccount SepaBankAccount { get; set; }
 
         /// <summary>
@@ -61,9 +51,7 @@ namespace Stripe.V2.MoneyManagement
         /// is <c>us_bank_account</c>.
         /// </summary>
         [JsonProperty("us_bank_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("us_bank_account")]
-#endif
         public ReceivedCreditBankTransferUsBankAccount UsBankAccount { get; set; }
     }
 }

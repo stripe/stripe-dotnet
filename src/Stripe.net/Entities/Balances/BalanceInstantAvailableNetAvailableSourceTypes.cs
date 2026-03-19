@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BalanceInstantAvailableNetAvailableSourceTypes : StripeEntity<BalanceInstantAvailableNetAvailableSourceTypes>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// payments</a>.
         /// </summary>
         [JsonProperty("bank_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_account")]
-#endif
         public long BankAccount { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// href="https://docs.stripe.com/payments/bank-debits">non-legacy bank debits</a>.
         /// </summary>
         [JsonProperty("card")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card")]
-#endif
         public long Card { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe
         /// payment method.
         /// </summary>
         [JsonProperty("fpx")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fpx")]
-#endif
         public long Fpx { get; set; }
     }
 }

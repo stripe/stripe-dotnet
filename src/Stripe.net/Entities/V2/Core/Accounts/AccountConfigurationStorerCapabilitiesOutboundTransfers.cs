@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationStorerCapabilitiesOutboundTransfers : StripeEntity<AccountConfigurationStorerCapabilitiesOutboundTransfers>
     {
         /// <summary>
         /// Can send funds from a FinancialAccount to a bank account belonging to the same user.
         /// </summary>
         [JsonProperty("bank_accounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_accounts")]
-#endif
         public AccountConfigurationStorerCapabilitiesOutboundTransfersBankAccounts BankAccounts { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.V2.Core
         /// user.
         /// </summary>
         [JsonProperty("financial_accounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_accounts")]
-#endif
         public AccountConfigurationStorerCapabilitiesOutboundTransfersFinancialAccounts FinancialAccounts { get; set; }
     }
 }

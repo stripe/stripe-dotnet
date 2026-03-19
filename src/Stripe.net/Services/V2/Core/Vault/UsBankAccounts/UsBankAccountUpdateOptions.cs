@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core.Vault
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class UsBankAccountUpdateOptions : BaseOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core.Vault
         /// previously.
         /// </summary>
         [JsonProperty("fedwire_routing_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fedwire_routing_number")]
-#endif
         public string FedwireRoutingNumber { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core.Vault
         /// previously.
         /// </summary>
         [JsonProperty("routing_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("routing_number")]
-#endif
         public string RoutingNumber { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountSettingsPayoutsOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// Balances</a>.
         /// </summary>
         [JsonProperty("debit_negative_balances")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("debit_negative_balances")]
-#endif
         public bool? DebitNegativeBalances { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe
         /// Debit Card Payouts</a> documentation.
         /// </summary>
         [JsonProperty("schedule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule")]
-#endif
         public AccountSettingsPayoutsScheduleOptions Schedule { get; set; }
 
         /// <summary>
@@ -37,9 +33,7 @@ namespace Stripe
         /// defaults to the platform's bank descriptor as set in the Dashboard.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
     }
 }

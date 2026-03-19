@@ -2,10 +2,10 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundPaymentCreateRecipientNotificationOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>configured</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("setting")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setting")]
-#endif
         public string Setting { get; set; }
     }
 }

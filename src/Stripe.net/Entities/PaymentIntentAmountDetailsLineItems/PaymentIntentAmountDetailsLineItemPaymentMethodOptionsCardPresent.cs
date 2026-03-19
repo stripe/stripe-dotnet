@@ -2,16 +2,14 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresent : StripeEntity<PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresent>
     {
         [JsonProperty("commodity_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("commodity_code")]
-#endif
         public string CommodityCode { get; set; }
     }
 }

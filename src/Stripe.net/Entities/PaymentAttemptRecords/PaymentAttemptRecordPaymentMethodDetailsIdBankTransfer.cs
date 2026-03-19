@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetailsIdBankTransfer : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsIdBankTransfer>
     {
         /// <summary>
         /// Account number of the bank account to transfer funds to.
         /// </summary>
         [JsonProperty("account_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_number")]
-#endif
         public string AccountNumber { get; set; }
 
         /// <summary>
@@ -22,27 +20,21 @@ namespace Stripe
         /// One of: <c>bca</c>, <c>bni</c>, <c>bri</c>, <c>cimb</c>, or <c>permata</c>.
         /// </summary>
         [JsonProperty("bank")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank")]
-#endif
         public string Bank { get; set; }
 
         /// <summary>
         /// Local bank code of the bank.
         /// </summary>
         [JsonProperty("bank_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_code")]
-#endif
         public string BankCode { get; set; }
 
         /// <summary>
         /// Name of the bank associated with the bank account.
         /// </summary>
         [JsonProperty("bank_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_name")]
-#endif
         public string BankName { get; set; }
 
         /// <summary>
@@ -50,9 +42,7 @@ namespace Stripe
         /// merchant when performing the bank transfer.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
     }
 }

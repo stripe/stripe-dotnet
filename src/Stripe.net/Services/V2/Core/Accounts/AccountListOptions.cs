@@ -3,10 +3,10 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountListOptions : V2.ListOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.Core
         /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
         /// </summary>
         [JsonProperty("applied_configurations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applied_configurations")]
-#endif
         public List<string> AppliedConfigurations { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.V2.Core
         /// closed.
         /// </summary>
         [JsonProperty("closed")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("closed")]
-#endif
         public bool? Closed { get; set; }
     }
 }

@@ -4,15 +4,15 @@ namespace Stripe.V2.Billing
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A Meter Event is a usage record that captures billable activity for usage-based billing.
     /// Meter Events contain an event name, timestamp, and payload with customer mapping and
     /// usage value, enabling accurate usage tracking and billing.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class MeterEvent : StripeEntity<MeterEvent>, IHasObject
     {
         /// <summary>
@@ -20,27 +20,21 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The creation time of this meter event.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The name of the meter event. Corresponds with the <c>event_name</c> field on a meter.
         /// </summary>
         [JsonProperty("event_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_name")]
-#endif
         public string EventName { get; set; }
 
         /// <summary>
@@ -49,9 +43,7 @@ namespace Stripe.V2.Billing
         /// 24 hour period.
         /// </summary>
         [JsonProperty("identifier")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("identifier")]
-#endif
         public string Identifier { get; set; }
 
         /// <summary>
@@ -59,9 +51,7 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -72,9 +62,7 @@ namespace Stripe.V2.Billing
         /// href="https://docs.stripe.com/billing/subscriptions/usage-based/recording-usage#payload-key-overrides">payload</a>..
         /// </summary>
         [JsonProperty("payload")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payload")]
-#endif
         public Dictionary<string, string> Payload { get; set; }
 
         /// <summary>
@@ -82,9 +70,7 @@ namespace Stripe.V2.Billing
         /// the future. Defaults to current timestamp if not specified.
         /// </summary>
         [JsonProperty("timestamp")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
-#endif
         public DateTime Timestamp { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

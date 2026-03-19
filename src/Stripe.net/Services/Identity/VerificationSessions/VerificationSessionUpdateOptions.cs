@@ -3,10 +3,10 @@ namespace Stripe.Identity
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class VerificationSessionUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -16,27 +16,21 @@ namespace Stripe.Identity
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A set of options for the session’s verification checks.
         /// </summary>
         [JsonProperty("options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("options")]
-#endif
         public VerificationSessionOptionsOptions Options { get; set; }
 
         /// <summary>
         /// Details provided about the user being verified. These details may be shown to the user.
         /// </summary>
         [JsonProperty("provided_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("provided_details")]
-#endif
         public VerificationSessionProvidedDetailsOptions ProvidedDetails { get; set; }
 
         /// <summary>
@@ -45,9 +39,7 @@ namespace Stripe.Identity
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CollectionSettingVersionPaymentMethodOptionsCard : StripeEntity<CollectionSettingVersionPaymentMethodOptionsCard>
     {
         /// <summary>
         /// Configuration options for setting up an eMandate for cards issued in India.
         /// </summary>
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public CollectionSettingVersionPaymentMethodOptionsCardMandateOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.V2.Billing
         /// card.
         /// </summary>
         [JsonProperty("network")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
-#endif
         public string Network { get; set; }
 
         /// <summary>
@@ -39,9 +35,7 @@ namespace Stripe.V2.Billing
         /// One of: <c>any</c>, <c>automatic</c>, or <c>challenge</c>.
         /// </summary>
         [JsonProperty("request_three_d_secure")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_three_d_secure")]
-#endif
         public string RequestThreeDSecure { get; set; }
     }
 }

@@ -2,19 +2,17 @@
 namespace Stripe.V2
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DeletedObject : StripeEntity<DeletedObject>, IHasId, IHasObject
     {
         /// <summary>
         /// The ID of the object that's being deleted.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.V2
         /// type share the same value of the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
     }
 }

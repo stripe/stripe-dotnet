@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CadenceBillingCycleYear : StripeEntity<CadenceBillingCycleYear>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Billing
         /// the last day of the month.
         /// </summary>
         [JsonProperty("day_of_month")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("day_of_month")]
-#endif
         public long DayOfMonth { get; set; }
 
         /// <summary>
@@ -24,18 +22,14 @@ namespace Stripe.V2.Billing
         /// cadence was created.
         /// </summary>
         [JsonProperty("month_of_year")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("month_of_year")]
-#endif
         public long MonthOfYear { get; set; }
 
         /// <summary>
         /// The time at which the billing cycle ends.
         /// </summary>
         [JsonProperty("time")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("time")]
-#endif
         public CadenceBillingCycleYearTime Time { get; set; }
     }
 }

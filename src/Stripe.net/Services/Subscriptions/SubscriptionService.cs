@@ -7,6 +7,7 @@ namespace Stripe
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
 
     public class SubscriptionService : Service,
         ICreatable<Subscription, SubscriptionCreateOptions>,
@@ -277,6 +278,54 @@ namespace Stripe
         public virtual IAsyncEnumerable<Subscription> SearchAutoPagingAsync(SubscriptionSearchOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.SearchRequestAutoPagingAsync<Subscription>($"/v1/subscriptions/search", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Serializes a Subscription migrate request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchMigrate(string subscription, SubscriptionMigrateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var itemId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var item = new Dictionary<string, object>
+            {
+                { "id", itemId },
+                { "path_params", new Dictionary<string, string> { { "subscription", subscription } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                item["context"] = stripeContext;
+            }
+
+            return JsonConvert.SerializeObject(item, Formatting.None, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+        }
+
+        /// <summary>
+        /// Serializes a Subscription update request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchUpdate(string subscriptionExposedId, SubscriptionUpdateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var itemId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var item = new Dictionary<string, object>
+            {
+                { "id", itemId },
+                { "path_params", new Dictionary<string, string> { { "subscription_exposed_id", subscriptionExposedId } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                item["context"] = stripeContext;
+            }
+
+            return JsonConvert.SerializeObject(item, Formatting.None, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>

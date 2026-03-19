@@ -3,10 +3,10 @@ namespace Stripe.FinancialConnections
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountBalanceCredit : StripeEntity<AccountBalanceCredit>
     {
         /// <summary>
@@ -20,9 +20,7 @@ namespace Stripe.FinancialConnections
         /// holder. A negative amount indicates money owed by the account holder.
         /// </summary>
         [JsonProperty("used")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("used")]
-#endif
         public Dictionary<string, long> Used { get; set; }
     }
 }

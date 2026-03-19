@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionPaymentSettingsPaymentMethodOptionsUsBankAccountFinancialConnectionsFiltersOptions : INestedOptions
     {
         /// <summary>
@@ -15,18 +15,14 @@ namespace Stripe
         /// One of: <c>checking</c>, or <c>savings</c>.
         /// </summary>
         [JsonProperty("account_subcategories")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_subcategories")]
-#endif
         public List<string> AccountSubcategories { get; set; }
 
         /// <summary>
         /// ID of the institution to use to filter for selectable accounts.
         /// </summary>
         [JsonProperty("institution")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("institution")]
-#endif
         public string Institution { get; set; }
     }
 }

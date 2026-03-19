@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OrderPaymentSettingsTransferDataOptions : INestedOptions
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe
         /// prices when using this field.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
         /// ID of the Connected account receiving the transfer.
         /// </summary>
         [JsonProperty("destination")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("destination")]
-#endif
         public string Destination { get; set; }
     }
 }

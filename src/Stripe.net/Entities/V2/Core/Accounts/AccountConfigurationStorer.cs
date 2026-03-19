@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationStorer : StripeEntity<AccountConfigurationStorer>
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.V2.Core
         /// reactivate) the storer configuration by updating this property.
         /// </summary>
         [JsonProperty("applied")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applied")]
-#endif
         public bool Applied { get; set; }
 
         /// <summary>
         /// Capabilities that have been requested on the Storer Configuration.
         /// </summary>
         [JsonProperty("capabilities")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capabilities")]
-#endif
         public AccountConfigurationStorerCapabilities Capabilities { get; set; }
     }
 }

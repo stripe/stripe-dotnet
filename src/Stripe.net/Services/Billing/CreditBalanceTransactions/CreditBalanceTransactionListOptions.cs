@@ -2,28 +2,24 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CreditBalanceTransactionListOptions : ListOptions
     {
         /// <summary>
         /// The credit grant for which to fetch credit balance transactions.
         /// </summary>
         [JsonProperty("credit_grant")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit_grant")]
-#endif
         public string CreditGrant { get; set; }
 
         /// <summary>
         /// The customer whose credit balance transactions you're retrieving.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -31,9 +27,7 @@ namespace Stripe.Billing
         /// retrieving.
         /// </summary>
         [JsonProperty("customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
-#endif
         public string CustomerAccount { get; set; }
     }
 }

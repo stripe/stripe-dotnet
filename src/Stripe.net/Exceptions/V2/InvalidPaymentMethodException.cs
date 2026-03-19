@@ -1,13 +1,11 @@
 // File generated from our OpenAPI spec
 namespace Stripe.V2
 {
-    using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
-
     using System.Net;
-    using Newtonsoft.Json.Linq;
+    using System.Text.Json;
+    using Newtonsoft.Json;
+    using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
 
     public class InvalidPaymentMethodException : StripeException
     {
@@ -22,17 +20,16 @@ namespace Stripe.V2
         }
 
         /// <summary>
-        /// One of: <c>account_number</c>, <c>fedwire_routing_number</c>, or <c>routing_number</c>.
+        /// One of: <c>account_number</c>, <c>currency</c>, <c>fedwire_routing_number</c>, or
+        /// <c>routing_number</c>.
         /// </summary>
         [JsonProperty("invalid_param")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invalid_param")]
-#endif
         public string InvalidParam { get; set; }
 
         internal static InvalidPaymentMethodException Parse(
             HttpStatusCode httpStatusCode,
-            JToken body)
+            JsonElement body)
         {
             var stripeError = InvalidPaymentMethodError.FromJson<InvalidPaymentMethodError>(body);
             return new InvalidPaymentMethodException(httpStatusCode, stripeError, stripeError.Message, stripeError.InvalidParam);

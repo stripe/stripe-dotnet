@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core.Vault
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class UsBankAccountListOptions : V2.ListOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core.Vault
         /// <c>verified</c>, <c>awaiting_verification</c>, and <c>verification_failed</c>.
         /// </summary>
         [JsonProperty("verification_status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_status")]
-#endif
         public string VerificationStatus { get; set; }
     }
 }

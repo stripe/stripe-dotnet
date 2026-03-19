@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentMethodNzBankAccount : StripeEntity<PaymentMethodNzBankAccount>
     {
         /// <summary>
@@ -13,54 +13,42 @@ namespace Stripe
         /// the name of the authorized signatory collected in the PaymentMethod’s billing details.
         /// </summary>
         [JsonProperty("account_holder_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_holder_name")]
-#endif
         public string AccountHolderName { get; set; }
 
         /// <summary>
         /// The numeric code for the bank account's bank.
         /// </summary>
         [JsonProperty("bank_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_code")]
-#endif
         public string BankCode { get; set; }
 
         /// <summary>
         /// The name of the bank.
         /// </summary>
         [JsonProperty("bank_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_name")]
-#endif
         public string BankName { get; set; }
 
         /// <summary>
         /// The numeric code for the bank account's bank branch.
         /// </summary>
         [JsonProperty("branch_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("branch_code")]
-#endif
         public string BranchCode { get; set; }
 
         /// <summary>
         /// Last four digits of the bank account number.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
 
         /// <summary>
         /// The suffix of the bank account number.
         /// </summary>
         [JsonProperty("suffix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("suffix")]
-#endif
         public string Suffix { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReceivedCreditStatusDetails : StripeEntity<ReceivedCreditStatusDetails>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>failed</c>.
         /// </summary>
         [JsonProperty("failed")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failed")]
-#endif
         public ReceivedCreditStatusDetailsFailed Failed { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>returned</c>.
         /// </summary>
         [JsonProperty("returned")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("returned")]
-#endif
         public ReceivedCreditStatusDetailsReturned Returned { get; set; }
     }
 }

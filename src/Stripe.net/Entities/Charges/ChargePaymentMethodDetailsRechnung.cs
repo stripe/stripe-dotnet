@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ChargePaymentMethodDetailsRechnung : StripeEntity<ChargePaymentMethodDetailsRechnung>
     {
         /// <summary>
         /// Payment portal URL.
         /// </summary>
         [JsonProperty("payment_portal_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_portal_url")]
-#endif
         public string PaymentPortalUrl { get; set; }
     }
 }

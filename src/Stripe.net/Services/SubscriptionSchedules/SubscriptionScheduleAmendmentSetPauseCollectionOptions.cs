@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SubscriptionScheduleAmendmentSetPauseCollectionOptions : INestedOptions
     {
         /// <summary>
         /// Details of the pause_collection behavior to apply to the amendment.
         /// </summary>
         [JsonProperty("set")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("set")]
-#endif
         public SubscriptionScheduleAmendmentSetPauseCollectionSetOptions Set { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// One of: <c>remove</c>, or <c>set</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

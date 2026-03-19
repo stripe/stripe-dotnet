@@ -2,19 +2,17 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionNameCollectionIndividual : StripeEntity<SessionNameCollectionIndividual>
     {
         /// <summary>
         /// Indicates whether individual name collection is enabled for the session.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool Enabled { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.Checkout
         /// Session. Defaults to <c>false</c>.
         /// </summary>
         [JsonProperty("optional")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("optional")]
-#endif
         public bool Optional { get; set; }
     }
 }

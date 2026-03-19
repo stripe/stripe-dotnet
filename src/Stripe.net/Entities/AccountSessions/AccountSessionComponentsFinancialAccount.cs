@@ -2,25 +2,21 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSessionComponentsFinancialAccount : StripeEntity<AccountSessionComponentsFinancialAccount>
     {
         /// <summary>
         /// Whether the embedded component is enabled.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool Enabled { get; set; }
 
         [JsonProperty("features")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("features")]
-#endif
         public AccountSessionComponentsFinancialAccountFeatures Features { get; set; }
     }
 }

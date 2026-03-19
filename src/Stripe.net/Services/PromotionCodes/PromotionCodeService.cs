@@ -7,6 +7,7 @@ namespace Stripe
     using System.Net.Http;
     using System.Threading;
     using System.Threading.Tasks;
+    using Newtonsoft.Json;
 
     public class PromotionCodeService : Service,
         ICreatable<PromotionCode, PromotionCodeCreateOptions>,
@@ -98,6 +99,54 @@ namespace Stripe
         public virtual IAsyncEnumerable<PromotionCode> ListAutoPagingAsync(PromotionCodeListOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)
         {
             return this.ListRequestAutoPagingAsync<PromotionCode>($"/v1/promotion_codes", options, requestOptions, cancellationToken);
+        }
+
+        /// <summary>
+        /// Serializes a PromotionCode create request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchCreate(PromotionCodeCreateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var itemId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var item = new Dictionary<string, object>
+            {
+                { "id", itemId },
+                { "path_params", null },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                item["context"] = stripeContext;
+            }
+
+            return JsonConvert.SerializeObject(item, Formatting.None, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
+        }
+
+        /// <summary>
+        /// Serializes a PromotionCode update request into a batch job JSONL line.
+        /// </summary>
+        public virtual string SerializeBatchUpdate(string promotionCode, PromotionCodeUpdateOptions options = null, RequestOptions requestOptions = null)
+        {
+            var itemId = Guid.NewGuid().ToString();
+            var stripeVersion = StripeConfiguration.ApiVersion;
+            var stripeContext = requestOptions?.StripeContext;
+
+            var item = new Dictionary<string, object>
+            {
+                { "id", itemId },
+                { "path_params", new Dictionary<string, string> { { "promotion_code", promotionCode } } },
+                { "params", options },
+                { "stripe_version", stripeVersion },
+            };
+            if (stripeContext != null)
+            {
+                item["context"] = stripeContext;
+            }
+
+            return JsonConvert.SerializeObject(item, Formatting.None, new JsonSerializerSettings { NullValueHandling = NullValueHandling.Ignore });
         }
 
         /// <summary>
