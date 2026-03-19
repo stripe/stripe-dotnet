@@ -311,11 +311,5 @@ namespace StripeTests
                 throw new System.NotImplementedException();
             }
         }
-
-        private class Foo : StripeEntity<Foo>
-        {
-            [JsonProperty("bar")]
-            public string Bar { get; set; }
-        }
     }
 }
