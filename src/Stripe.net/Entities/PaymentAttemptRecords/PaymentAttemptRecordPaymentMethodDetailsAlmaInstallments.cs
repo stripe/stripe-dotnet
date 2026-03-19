@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetailsAlmaInstallments : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsAlmaInstallments>
     {
         /// <summary>
         /// The number of installments.
         /// </summary>
         [JsonProperty("count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("count")]
-#endif
         public long Count { get; set; }
     }
 }

@@ -2,19 +2,17 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BillSettingVersionCalculation : StripeEntity<BillSettingVersionCalculation>
     {
         /// <summary>
         /// Settings for calculating tax.
         /// </summary>
         [JsonProperty("tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax")]
-#endif
         public BillSettingVersionCalculationTax Tax { get; set; }
     }
 }

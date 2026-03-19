@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SettingsDefaults : StripeEntity<SettingsDefaults>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Tax
         /// One of: <c>anrok</c>, <c>avalara</c>, <c>sphere</c>, or <c>stripe</c>.
         /// </summary>
         [JsonProperty("provider")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("provider")]
-#endif
         public string Provider { get; set; }
 
         /// <summary>
@@ -28,9 +26,7 @@ namespace Stripe.Tax
         /// One of: <c>exclusive</c>, <c>inclusive</c>, or <c>inferred_by_currency</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -38,9 +34,7 @@ namespace Stripe.Tax
         /// classify your products and prices.
         /// </summary>
         [JsonProperty("tax_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_code")]
-#endif
         public string TaxCode { get; set; }
     }
 }

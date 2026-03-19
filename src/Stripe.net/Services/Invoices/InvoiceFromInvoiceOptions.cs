@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceFromInvoiceOptions : INestedOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe
         /// 'revision' is permitted.
         /// </summary>
         [JsonProperty("action")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("action")]
-#endif
         public string Action { get; set; }
 
         /// <summary>
         /// The <c>id</c> of the invoice that will be cloned.
         /// </summary>
         [JsonProperty("invoice")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice")]
-#endif
         public string Invoice { get; set; }
     }
 }

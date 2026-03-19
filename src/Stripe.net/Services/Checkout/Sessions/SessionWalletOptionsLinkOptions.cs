@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionWalletOptionsLinkOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.Checkout
         /// One of: <c>auto</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("display")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display")]
-#endif
         public string Display { get; set; }
     }
 }

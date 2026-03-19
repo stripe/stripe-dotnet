@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RegistrationCountryOptionsAtStandard : StripeEntity<RegistrationCountryOptionsAtStandard>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Tax
         /// One of: <c>inbound_goods</c>, <c>small_seller</c>, or <c>standard</c>.
         /// </summary>
         [JsonProperty("place_of_supply_scheme")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("place_of_supply_scheme")]
-#endif
         public string PlaceOfSupplyScheme { get; set; }
     }
 }

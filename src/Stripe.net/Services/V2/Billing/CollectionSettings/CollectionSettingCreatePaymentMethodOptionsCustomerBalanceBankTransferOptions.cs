@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CollectionSettingCreatePaymentMethodOptionsCustomerBalanceBankTransferOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// <c>eu_bank_transfer</c>.
         /// </summary>
         [JsonProperty("eu_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("eu_bank_transfer")]
-#endif
         public CollectionSettingCreatePaymentMethodOptionsCustomerBalanceBankTransferEuBankTransferOptions EuBankTransfer { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Billing
         /// <c>mx_bank_transfer</c>, or <c>us_bank_transfer</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CouponUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency_options")]
-#endif
         public Dictionary<string, CouponCurrencyOptionsOptions> CurrencyOptions { get; set; }
 
         /// <summary>
@@ -28,9 +26,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -38,9 +34,7 @@ namespace Stripe
         /// default the <c>id</c> is shown if <c>name</c> is not set.
         /// </summary>
         [JsonProperty("name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("name")]
-#endif
         public string Name { get; set; }
     }
 }

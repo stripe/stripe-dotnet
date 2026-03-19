@@ -3,10 +3,10 @@ namespace Stripe.V2.MoneyManagement
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FinancialAddressGetOptions : BaseOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>credentials.us_bank_account.account_number</c>.
         /// </summary>
         [JsonProperty("include")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("include")]
-#endif
         public List<string> Include { get; set; }
     }
 }

@@ -3,22 +3,20 @@ namespace Stripe.V2.Billing
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Settings that configure and manage the behavior of collecting payments.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CollectionSetting : StripeEntity<CollectionSetting>, IHasId, IHasObject
     {
         /// <summary>
         /// The ID of the CollectionSetting.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe.V2.Billing
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -39,36 +35,28 @@ namespace Stripe.V2.Billing
         /// One of: <c>automatic</c>, or <c>send_invoice</c>.
         /// </summary>
         [JsonProperty("collection_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection_method")]
-#endif
         public string CollectionMethod { get; set; }
 
         /// <summary>
         /// Timestamp of when the object was created.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// An optional field for adding a display name for the CollectionSetting object.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Email delivery settings.
         /// </summary>
         [JsonProperty("email_delivery")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email_delivery")]
-#endif
         public CollectionSettingEmailDelivery EmailDelivery { get; set; }
 
         /// <summary>
@@ -76,9 +64,7 @@ namespace Stripe.V2.Billing
         /// attribute of the settings is updated.
         /// </summary>
         [JsonProperty("latest_version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("latest_version")]
-#endif
         public string LatestVersion { get; set; }
 
         /// <summary>
@@ -86,9 +72,7 @@ namespace Stripe.V2.Billing
         /// latest_version if settings are updated without setting live_version='latest'.
         /// </summary>
         [JsonProperty("live_version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("live_version")]
-#endif
         public string LiveVersion { get; set; }
 
         /// <summary>
@@ -96,9 +80,7 @@ namespace Stripe.V2.Billing
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -106,9 +88,7 @@ namespace Stripe.V2.Billing
         /// to 200 characters.
         /// </summary>
         [JsonProperty("lookup_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lookup_key")]
-#endif
         public string LookupKey { get; set; }
 
         /// <summary>
@@ -116,18 +96,14 @@ namespace Stripe.V2.Billing
         /// are displayed to your customers.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_configuration")]
-#endif
         public string PaymentMethodConfiguration { get; set; }
 
         /// <summary>
         /// Payment Method specific configuration stored on the object.
         /// </summary>
         [JsonProperty("payment_method_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
-#endif
         public CollectionSettingPaymentMethodOptions PaymentMethodOptions { get; set; }
     }
 }

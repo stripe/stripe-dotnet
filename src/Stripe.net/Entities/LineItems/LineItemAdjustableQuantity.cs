@@ -2,28 +2,22 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class LineItemAdjustableQuantity : StripeEntity<LineItemAdjustableQuantity>
     {
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool Enabled { get; set; }
 
         [JsonProperty("maximum")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("maximum")]
-#endif
         public long? Maximum { get; set; }
 
         [JsonProperty("minimum")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minimum")]
-#endif
         public long? Minimum { get; set; }
     }
 }

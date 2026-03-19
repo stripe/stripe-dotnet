@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class MandateCustomerAcceptanceOnline : StripeEntity<MandateCustomerAcceptanceOnline>
     {
         /// <summary>
         /// The customer accepts the mandate from this IP address.
         /// </summary>
         [JsonProperty("ip_address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ip_address")]
-#endif
         public string IpAddress { get; set; }
 
         /// <summary>
         /// The customer accepts the mandate using the user agent of the browser.
         /// </summary>
         [JsonProperty("user_agent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("user_agent")]
-#endif
         public string UserAgent { get; set; }
     }
 }

@@ -3,10 +3,10 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCreateDefaultsOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.Core
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -37,27 +35,29 @@ namespace Stripe.V2.Core
         /// <c>zh-Hans</c>, <c>zh-Hant-HK</c>, <c>zh-Hant-TW</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locales")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("locales")]
-#endif
         public List<string> Locales { get; set; }
 
         /// <summary>
         /// Account profile information.
         /// </summary>
         [JsonProperty("profile")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("profile")]
-#endif
         public AccountCreateDefaultsProfileOptions Profile { get; set; }
 
         /// <summary>
         /// Default responsibilities held by either Stripe or the platform.
         /// </summary>
         [JsonProperty("responsibilities")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("responsibilities")]
-#endif
         public AccountCreateDefaultsResponsibilitiesOptions Responsibilities { get; set; }
+
+        /// <summary>
+        /// The Account's local timezone. A list of possible time zone values is maintained at the
+        /// <a href="https://www.iana.org/time-zones">IANA Time Zone Database</a>.
+        /// </summary>
+        [JsonProperty("timezone")]
+        [STJS.JsonPropertyName("timezone")]
+        public string Timezone { get; set; }
     }
 }

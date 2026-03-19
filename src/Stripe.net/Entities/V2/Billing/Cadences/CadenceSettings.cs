@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CadenceSettings : StripeEntity<CadenceSettings>
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.V2.Billing
         /// presenting invoices.
         /// </summary>
         [JsonProperty("bill")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bill")]
-#endif
         public CadenceSettingsBill Bill { get; set; }
 
         /// <summary>
         /// Settings that configure and manage the behavior of collecting payments.
         /// </summary>
         [JsonProperty("collection")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection")]
-#endif
         public CadenceSettingsCollection Collection { get; set; }
     }
 }

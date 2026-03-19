@@ -3,10 +3,10 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationCustomerBillingInvoice : StripeEntity<AccountConfigurationCustomerBillingInvoice>
     {
         /// <summary>
@@ -14,27 +14,21 @@ namespace Stripe.V2.Core
         /// When updating, pass an empty string to remove previously-defined fields.
         /// </summary>
         [JsonProperty("custom_fields")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom_fields")]
-#endif
         public List<AccountConfigurationCustomerBillingInvoiceCustomField> CustomFields { get; set; }
 
         /// <summary>
         /// Default invoice footer.
         /// </summary>
         [JsonProperty("footer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("footer")]
-#endif
         public string Footer { get; set; }
 
         /// <summary>
         /// Sequence number to use on the customer account's next invoice. Defaults to 1.
         /// </summary>
         [JsonProperty("next_sequence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("next_sequence")]
-#endif
         public long? NextSequence { get; set; }
 
         /// <summary>
@@ -42,18 +36,14 @@ namespace Stripe.V2.Core
         /// numbers.
         /// </summary>
         [JsonProperty("prefix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prefix")]
-#endif
         public string Prefix { get; set; }
 
         /// <summary>
         /// Default invoice PDF rendering options.
         /// </summary>
         [JsonProperty("rendering")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rendering")]
-#endif
         public AccountConfigurationCustomerBillingInvoiceRendering Rendering { get; set; }
     }
 }

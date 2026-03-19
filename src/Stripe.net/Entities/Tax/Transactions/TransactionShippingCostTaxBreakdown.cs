@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionShippingCostTaxBreakdown : StripeEntity<TransactionShippingCostTaxBreakdown>
     {
         /// <summary>
@@ -13,15 +13,11 @@ namespace Stripe.Tax
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         [JsonProperty("jurisdiction")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("jurisdiction")]
-#endif
         public TransactionShippingCostTaxBreakdownJurisdiction Jurisdiction { get; set; }
 
         /// <summary>
@@ -30,9 +26,7 @@ namespace Stripe.Tax
         /// One of: <c>destination</c>, or <c>origin</c>.
         /// </summary>
         [JsonProperty("sourcing")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sourcing")]
-#endif
         public string Sourcing { get; set; }
 
         /// <summary>
@@ -40,9 +34,7 @@ namespace Stripe.Tax
         /// not imposed, for example if the product is exempt from tax.
         /// </summary>
         [JsonProperty("tax_rate_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rate_details")]
-#endif
         public TransactionShippingCostTaxBreakdownTaxRateDetails TaxRateDetails { get; set; }
 
         /// <summary>
@@ -55,9 +47,7 @@ namespace Stripe.Tax
         /// <c>standard_rated</c>, <c>taxable_basis_reduced</c>, or <c>zero_rated</c>.
         /// </summary>
         [JsonProperty("taxability_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxability_reason")]
-#endif
         public string TaxabilityReason { get; set; }
 
         /// <summary>
@@ -65,9 +55,7 @@ namespace Stripe.Tax
         /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("taxable_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxable_amount")]
-#endif
         public long TaxableAmount { get; set; }
     }
 }

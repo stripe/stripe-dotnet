@@ -2,10 +2,10 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DisputeSettlementDetailNetworkData : StripeEntity<DisputeSettlementDetailNetworkData>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Issuing
         /// transaction to the network.
         /// </summary>
         [JsonProperty("processing_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("processing_date")]
-#endif
         public string ProcessingDate { get; set; }
     }
 }

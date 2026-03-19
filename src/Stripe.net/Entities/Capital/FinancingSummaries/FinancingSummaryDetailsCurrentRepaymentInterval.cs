@@ -2,10 +2,10 @@
 namespace Stripe.Capital
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancingSummaryDetailsCurrentRepaymentInterval : StripeEntity<FinancingSummaryDetailsCurrentRepaymentInterval>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Capital
         /// debited. Given in seconds since unix epoch.
         /// </summary>
         [JsonProperty("due_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("due_at")]
-#endif
         public decimal DueAt { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Capital
         /// For example, 100 USD is represented as 10000.
         /// </summary>
         [JsonProperty("paid_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paid_amount")]
-#endif
         public long? PaidAmount { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.Capital
         /// example, 100 USD is represented as 10000.
         /// </summary>
         [JsonProperty("remaining_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("remaining_amount")]
-#endif
         public long RemainingAmount { get; set; }
     }
 }

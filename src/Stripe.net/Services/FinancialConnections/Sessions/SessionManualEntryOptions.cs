@@ -2,10 +2,10 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionManualEntryOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>automatic</c>, or <c>custom</c>.
         /// </summary>
         [JsonProperty("mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mode")]
-#endif
         public string Mode { get; set; }
     }
 }

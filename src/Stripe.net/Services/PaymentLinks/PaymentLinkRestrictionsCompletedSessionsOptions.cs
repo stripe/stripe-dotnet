@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentLinkRestrictionsCompletedSessionsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// <c>completed_sessions</c> restriction to be met.
         /// </summary>
         [JsonProperty("limit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("limit")]
-#endif
         public long? Limit { get; set; }
     }
 }

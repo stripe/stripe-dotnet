@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentRecordPaymentMethodDetailsCardPresentReceipt : StripeEntity<PaymentRecordPaymentMethodDetailsCardPresentReceipt>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// One of: <c>checking</c>, <c>credit</c>, <c>prepaid</c>, or <c>unknown</c>.
         /// </summary>
         [JsonProperty("account_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account_type")]
-#endif
         public string AccountType { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// transaction with issuers.
         /// </summary>
         [JsonProperty("application_cryptogram")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_cryptogram")]
-#endif
         public string ApplicationCryptogram { get; set; }
 
         /// <summary>
@@ -34,27 +30,21 @@ namespace Stripe
         /// card's chip.
         /// </summary>
         [JsonProperty("application_preferred_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application_preferred_name")]
-#endif
         public string ApplicationPreferredName { get; set; }
 
         /// <summary>
         /// Identifier for this transaction.
         /// </summary>
         [JsonProperty("authorization_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_code")]
-#endif
         public string AuthorizationCode { get; set; }
 
         /// <summary>
         /// EMV tag 8A. A code returned by the card issuer.
         /// </summary>
         [JsonProperty("authorization_response_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization_response_code")]
-#endif
         public string AuthorizationResponseCode { get; set; }
 
         /// <summary>
@@ -63,9 +53,7 @@ namespace Stripe
         /// <c>offline_pin_and_signature</c>, <c>online_pin</c>, or <c>signature</c>.
         /// </summary>
         [JsonProperty("cardholder_verification_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cardholder_verification_method")]
-#endif
         public string CardholderVerificationMethod { get; set; }
 
         /// <summary>
@@ -73,9 +61,7 @@ namespace Stripe
         /// on the card. Referenced from EMV tag 84.
         /// </summary>
         [JsonProperty("dedicated_file_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dedicated_file_name")]
-#endif
         public string DedicatedFileName { get; set; }
 
         /// <summary>
@@ -84,9 +70,7 @@ namespace Stripe
         /// risk tolerance is acceptable. Referenced from EMV Tag 95.
         /// </summary>
         [JsonProperty("terminal_verification_results")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("terminal_verification_results")]
-#endif
         public string TerminalVerificationResults { get; set; }
 
         /// <summary>
@@ -94,9 +78,7 @@ namespace Stripe
         /// from EMV Tag 9B.
         /// </summary>
         [JsonProperty("transaction_status_information")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transaction_status_information")]
-#endif
         public string TransactionStatusInformation { get; set; }
     }
 }

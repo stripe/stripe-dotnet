@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuotePreviewInvoiceConfirmationSecret : StripeEntity<QuotePreviewInvoiceConfirmationSecret>
     {
         /// <summary>
         /// The client_secret of the payment that Stripe creates for the invoice after finalization.
         /// </summary>
         [JsonProperty("client_secret")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_secret")]
-#endif
         public string ClientSecret { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// default payment_intent that Stripe creates during invoice finalization.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

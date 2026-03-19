@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountPersonRelationship : StripeEntity<AccountPersonRelationship>
     {
         /// <summary>
         /// Whether the individual is an authorizer of the Account's identity.
         /// </summary>
         [JsonProperty("authorizer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorizer")]
-#endif
         public bool? Authorizer { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core
         /// the company meets its regulatory obligations.
         /// </summary>
         [JsonProperty("director")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("director")]
-#endif
         public bool? Director { get; set; }
 
         /// <summary>
@@ -33,36 +29,28 @@ namespace Stripe.V2.Core
         /// organization.
         /// </summary>
         [JsonProperty("executive")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("executive")]
-#endif
         public bool? Executive { get; set; }
 
         /// <summary>
         /// Whether the individual is the legal guardian of the Account's representative.
         /// </summary>
         [JsonProperty("legal_guardian")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("legal_guardian")]
-#endif
         public bool? LegalGuardian { get; set; }
 
         /// <summary>
         /// Whether the individual is an owner of the Account's identity.
         /// </summary>
         [JsonProperty("owner")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owner")]
-#endif
         public bool? Owner { get; set; }
 
         /// <summary>
         /// The percentage of the Account's identity that the individual owns.
         /// </summary>
         [JsonProperty("percent_ownership")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("percent_ownership")]
-#endif
         public string PercentOwnership { get; set; }
 
         /// <summary>
@@ -73,18 +61,14 @@ namespace Stripe.V2.Core
         /// responsible for opening the account.
         /// </summary>
         [JsonProperty("representative")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("representative")]
-#endif
         public bool? Representative { get; set; }
 
         /// <summary>
         /// The individual's title (e.g., CEO, Support Engineer).
         /// </summary>
         [JsonProperty("title")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("title")]
-#endif
         public string Title { get; set; }
     }
 }

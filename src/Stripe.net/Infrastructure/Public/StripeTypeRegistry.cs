@@ -256,6 +256,7 @@ namespace Stripe
                 { "v2.core.account_person", typeof(V2.Core.AccountPerson) },
                 { "v2.core.account_person_token", typeof(V2.Core.AccountPersonToken) },
                 { "v2.core.account_token", typeof(V2.Core.AccountToken) },
+                { "v2.core.batch_job", typeof(V2.Core.BatchJob) },
                 { "v2.core.event", typeof(V2.Core.Event) },
                 { "v2.core.event_destination", typeof(V2.Core.EventDestination) },
                 { "v2.core.vault.gb_bank_account", typeof(V2.Core.Vault.GbBankAccount) },
@@ -389,6 +390,28 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.V2CoreAccountPersonUpdatedEvent)
+                },
+                {
+                    "v2.core.batch_job.batch_failed", typeof(
+                    Events.V2CoreBatchJobBatchFailedEvent)
+                },
+                { "v2.core.batch_job.canceled", typeof(Events.V2CoreBatchJobCanceledEvent) },
+                { "v2.core.batch_job.completed", typeof(Events.V2CoreBatchJobCompletedEvent) },
+                { "v2.core.batch_job.created", typeof(Events.V2CoreBatchJobCreatedEvent) },
+                {
+                    "v2.core.batch_job.ready_for_upload", typeof(
+                    Events.V2CoreBatchJobReadyForUploadEvent)
+                },
+                { "v2.core.batch_job.timeout", typeof(Events.V2CoreBatchJobTimeoutEvent) },
+                { "v2.core.batch_job.updated", typeof(Events.V2CoreBatchJobUpdatedEvent) },
+                {
+                    "v2.core.batch_job.upload_timeout", typeof(
+                    Events.V2CoreBatchJobUploadTimeoutEvent)
+                },
+                { "v2.core.batch_job.validating", typeof(Events.V2CoreBatchJobValidatingEvent) },
+                {
+                    "v2.core.batch_job.validation_failed", typeof(
+                    Events.V2CoreBatchJobValidationFailedEvent)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(
@@ -633,6 +656,46 @@ namespace Stripe
                 {
                     "v2.core.account_person.updated", typeof(
                     Events.V2CoreAccountPersonUpdatedEventNotification)
+                },
+                {
+                    "v2.core.batch_job.batch_failed", typeof(
+                    Events.V2CoreBatchJobBatchFailedEventNotification)
+                },
+                {
+                    "v2.core.batch_job.canceled", typeof(
+                    Events.V2CoreBatchJobCanceledEventNotification)
+                },
+                {
+                    "v2.core.batch_job.completed", typeof(
+                    Events.V2CoreBatchJobCompletedEventNotification)
+                },
+                {
+                    "v2.core.batch_job.created", typeof(
+                    Events.V2CoreBatchJobCreatedEventNotification)
+                },
+                {
+                    "v2.core.batch_job.ready_for_upload", typeof(
+                    Events.V2CoreBatchJobReadyForUploadEventNotification)
+                },
+                {
+                    "v2.core.batch_job.timeout", typeof(
+                    Events.V2CoreBatchJobTimeoutEventNotification)
+                },
+                {
+                    "v2.core.batch_job.updated", typeof(
+                    Events.V2CoreBatchJobUpdatedEventNotification)
+                },
+                {
+                    "v2.core.batch_job.upload_timeout", typeof(
+                    Events.V2CoreBatchJobUploadTimeoutEventNotification)
+                },
+                {
+                    "v2.core.batch_job.validating", typeof(
+                    Events.V2CoreBatchJobValidatingEventNotification)
+                },
+                {
+                    "v2.core.batch_job.validation_failed", typeof(
+                    Events.V2CoreBatchJobValidationFailedEventNotification)
                 },
                 {
                     "v2.core.event_destination.ping", typeof(

@@ -3,13 +3,9 @@ namespace Stripe
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SubscriptionScheduleDefaultSettingsAutomaticTaxLiability : StripeEntity<SubscriptionScheduleDefaultSettingsAutomaticTaxLiability>
     {
         #region Expandable Account
@@ -19,9 +15,7 @@ namespace Stripe
         /// The connected account being referenced when <c>type</c> is <c>account</c>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string AccountId
         {
             get => this.InternalAccount?.Id;
@@ -35,9 +29,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Account Account
         {
             get => this.InternalAccount?.ExpandedObject;
@@ -46,10 +38,8 @@ namespace Stripe
 
         [JsonProperty("account")]
         [JsonConverter(typeof(ExpandableFieldConverter<Account>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Account>))]
-#endif
         internal ExpandableField<Account> InternalAccount { get; set; }
         #endregion
 
@@ -58,9 +48,7 @@ namespace Stripe
         /// One of: <c>account</c>, or <c>self</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

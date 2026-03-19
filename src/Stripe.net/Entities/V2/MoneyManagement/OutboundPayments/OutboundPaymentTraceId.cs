@@ -2,10 +2,10 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class OutboundPaymentTraceId : StripeEntity<OutboundPaymentTraceId>
     {
         /// <summary>
@@ -17,18 +17,14 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>pending</c>, <c>supported</c>, or <c>unsupported</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
         /// The trace ID value if <c>trace_id.status</c> is <c>supported</c>, otherwise empty.
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
-#endif
         public string Value { get; set; }
     }
 }

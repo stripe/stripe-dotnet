@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class RefundDestinationDetailsThBankTransfer : StripeEntity<RefundDestinationDetailsThBankTransfer>
     {
         /// <summary>
         /// The reference assigned to the refund.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// <c>unavailable</c>.
         /// </summary>
         [JsonProperty("reference_status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference_status")]
-#endif
         public string ReferenceStatus { get; set; }
     }
 }

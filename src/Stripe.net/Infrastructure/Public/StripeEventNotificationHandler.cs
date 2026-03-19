@@ -38,6 +38,16 @@ namespace Stripe
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonCreatedEventNotification>> v2CoreAccountPersonCreated;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonDeletedEventNotification>> v2CoreAccountPersonDeleted;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>> v2CoreAccountPersonUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobBatchFailedEventNotification>> v2CoreBatchJobBatchFailed;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCanceledEventNotification>> v2CoreBatchJobCanceled;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCompletedEventNotification>> v2CoreBatchJobCompleted;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCreatedEventNotification>> v2CoreBatchJobCreated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobReadyForUploadEventNotification>> v2CoreBatchJobReadyForUpload;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobTimeoutEventNotification>> v2CoreBatchJobTimeout;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobUpdatedEventNotification>> v2CoreBatchJobUpdated;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobUploadTimeoutEventNotification>> v2CoreBatchJobUploadTimeout;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidatingEventNotification>> v2CoreBatchJobValidating;
+        private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidationFailedEventNotification>> v2CoreBatchJobValidationFailed;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreEventDestinationPingEventNotification>> v2CoreEventDestinationPing;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreHealthEventGenerationFailureResolvedEventNotification>> v2CoreHealthEventGenerationFailureResolved;
         private EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2MoneyManagementAdjustmentCreatedEventNotification>> v2MoneyManagementAdjustmentCreated;
@@ -251,6 +261,66 @@ namespace Stripe
         public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>> V2CoreAccountPersonUpdated
         {
             add { this.AddEventHandler(ref this.v2CoreAccountPersonUpdated, value, "v2.core.account_person.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobBatchFailedEventNotification>> V2CoreBatchJobBatchFailed
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobBatchFailed, value, "v2.core.batch_job.batch_failed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCanceledEventNotification>> V2CoreBatchJobCanceled
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobCanceled, value, "v2.core.batch_job.canceled"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCompletedEventNotification>> V2CoreBatchJobCompleted
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobCompleted, value, "v2.core.batch_job.completed"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCreatedEventNotification>> V2CoreBatchJobCreated
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobCreated, value, "v2.core.batch_job.created"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobReadyForUploadEventNotification>> V2CoreBatchJobReadyForUpload
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobReadyForUpload, value, "v2.core.batch_job.ready_for_upload"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobTimeoutEventNotification>> V2CoreBatchJobTimeout
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobTimeout, value, "v2.core.batch_job.timeout"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobUpdatedEventNotification>> V2CoreBatchJobUpdated
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobUpdated, value, "v2.core.batch_job.updated"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobUploadTimeoutEventNotification>> V2CoreBatchJobUploadTimeout
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobUploadTimeout, value, "v2.core.batch_job.upload_timeout"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidatingEventNotification>> V2CoreBatchJobValidating
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobValidating, value, "v2.core.batch_job.validating"); }
+            remove { this.RemoveEventHandler(); }
+        }
+
+        public event EventHandler<StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidationFailedEventNotification>> V2CoreBatchJobValidationFailed
+        {
+            add { this.AddEventHandler(ref this.v2CoreBatchJobValidationFailed, value, "v2.core.batch_job.validation_failed"); }
             remove { this.RemoveEventHandler(); }
         }
 
@@ -674,6 +744,46 @@ namespace Stripe
                 else if (eventNotification is Stripe.Events.V2CoreAccountPersonUpdatedEventNotification)
                 {
                     this.v2CoreAccountPersonUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreAccountPersonUpdatedEventNotification>((Stripe.Events.V2CoreAccountPersonUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobBatchFailedEventNotification)
+                {
+                    this.v2CoreBatchJobBatchFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobBatchFailedEventNotification>((Stripe.Events.V2CoreBatchJobBatchFailedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobCanceledEventNotification)
+                {
+                    this.v2CoreBatchJobCanceled.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCanceledEventNotification>((Stripe.Events.V2CoreBatchJobCanceledEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobCompletedEventNotification)
+                {
+                    this.v2CoreBatchJobCompleted.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCompletedEventNotification>((Stripe.Events.V2CoreBatchJobCompletedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobCreatedEventNotification)
+                {
+                    this.v2CoreBatchJobCreated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobCreatedEventNotification>((Stripe.Events.V2CoreBatchJobCreatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobReadyForUploadEventNotification)
+                {
+                    this.v2CoreBatchJobReadyForUpload.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobReadyForUploadEventNotification>((Stripe.Events.V2CoreBatchJobReadyForUploadEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobTimeoutEventNotification)
+                {
+                    this.v2CoreBatchJobTimeout.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobTimeoutEventNotification>((Stripe.Events.V2CoreBatchJobTimeoutEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobUpdatedEventNotification)
+                {
+                    this.v2CoreBatchJobUpdated.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobUpdatedEventNotification>((Stripe.Events.V2CoreBatchJobUpdatedEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobUploadTimeoutEventNotification)
+                {
+                    this.v2CoreBatchJobUploadTimeout.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobUploadTimeoutEventNotification>((Stripe.Events.V2CoreBatchJobUploadTimeoutEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobValidatingEventNotification)
+                {
+                    this.v2CoreBatchJobValidating.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidatingEventNotification>((Stripe.Events.V2CoreBatchJobValidatingEventNotification)eventNotification, client));
+                }
+                else if (eventNotification is Stripe.Events.V2CoreBatchJobValidationFailedEventNotification)
+                {
+                    this.v2CoreBatchJobValidationFailed.Invoke(this, new StripeEventNotificationEventArgs<Stripe.Events.V2CoreBatchJobValidationFailedEventNotification>((Stripe.Events.V2CoreBatchJobValidationFailedEventNotification)eventNotification, client));
                 }
                 else if (eventNotification is Stripe.Events.V2CoreEventDestinationPingEventNotification)
                 {

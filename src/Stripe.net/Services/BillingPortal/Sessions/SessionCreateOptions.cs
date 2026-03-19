@@ -2,10 +2,10 @@
 namespace Stripe.BillingPortal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionCreateOptions : BaseOptions
     {
         /// <summary>
@@ -15,27 +15,21 @@ namespace Stripe.BillingPortal
         /// session uses the default configuration.
         /// </summary>
         [JsonProperty("configuration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("configuration")]
-#endif
         public string Configuration { get; set; }
 
         /// <summary>
         /// The ID of an existing customer.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
         /// The ID of an existing account.
         /// </summary>
         [JsonProperty("customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
-#endif
         public string CustomerAccount { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe.BillingPortal
         /// more about using customer portal deep links and flows.
         /// </summary>
         [JsonProperty("flow_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flow_data")]
-#endif
         public SessionFlowDataOptions FlowData { get; set; }
 
         /// <summary>
@@ -61,9 +53,7 @@ namespace Stripe.BillingPortal
         /// <c>tr</c>, <c>vi</c>, <c>zh</c>, <c>zh-HK</c>, or <c>zh-TW</c>.
         /// </summary>
         [JsonProperty("locale")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("locale")]
-#endif
         public string Locale { get; set; }
 
         /// <summary>
@@ -77,9 +67,7 @@ namespace Stripe.BillingPortal
         /// displays.
         /// </summary>
         [JsonProperty("on_behalf_of")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
-#endif
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -87,9 +75,7 @@ namespace Stripe.BillingPortal
         /// to your website.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
     }
 }

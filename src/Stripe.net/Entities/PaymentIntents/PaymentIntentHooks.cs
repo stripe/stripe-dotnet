@@ -2,16 +2,14 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentHooks : StripeEntity<PaymentIntentHooks>
     {
         [JsonProperty("inputs")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inputs")]
-#endif
         public PaymentIntentHooksInputs Inputs { get; set; }
     }
 }

@@ -3,13 +3,9 @@ namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionDiscount : StripeEntity<SessionDiscount>
     {
         #region Expandable Coupon
@@ -19,9 +15,7 @@ namespace Stripe.Checkout
         /// Coupon attached to the Checkout Session.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string CouponId
         {
             get => this.InternalCoupon?.Id;
@@ -35,9 +29,7 @@ namespace Stripe.Checkout
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Coupon Coupon
         {
             get => this.InternalCoupon?.ExpandedObject;
@@ -46,10 +38,8 @@ namespace Stripe.Checkout
 
         [JsonProperty("coupon")]
         [JsonConverter(typeof(ExpandableFieldConverter<Coupon>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("coupon")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Coupon>))]
-#endif
         internal ExpandableField<Coupon> InternalCoupon { get; set; }
         #endregion
 
@@ -60,9 +50,7 @@ namespace Stripe.Checkout
         /// Promotion code attached to the Checkout Session.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string PromotionCodeId
         {
             get => this.InternalPromotionCode?.Id;
@@ -76,9 +64,7 @@ namespace Stripe.Checkout
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public PromotionCode PromotionCode
         {
             get => this.InternalPromotionCode?.ExpandedObject;
@@ -87,10 +73,8 @@ namespace Stripe.Checkout
 
         [JsonProperty("promotion_code")]
         [JsonConverter(typeof(ExpandableFieldConverter<PromotionCode>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("promotion_code")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<PromotionCode>))]
-#endif
         internal ExpandableField<PromotionCode> InternalPromotionCode { get; set; }
         #endregion
     }

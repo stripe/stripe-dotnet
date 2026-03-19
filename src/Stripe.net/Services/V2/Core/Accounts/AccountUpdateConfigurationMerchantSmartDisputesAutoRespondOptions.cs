@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateConfigurationMerchantSmartDisputesAutoRespondOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// One of: <c>inherit</c>, <c>off</c>, or <c>on</c>.
         /// </summary>
         [JsonProperty("preference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preference")]
-#endif
         public string Preference { get; set; }
     }
 }

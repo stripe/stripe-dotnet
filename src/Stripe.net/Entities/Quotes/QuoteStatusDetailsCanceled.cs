@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteStatusDetailsCanceled : StripeEntity<QuoteStatusDetailsCanceled>
     {
         /// <summary>
@@ -16,9 +15,7 @@ namespace Stripe
         /// <c>quote_superseded</c>, or <c>subscription_canceled</c>.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
 
         /// <summary>
@@ -27,10 +24,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("transitioned_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transitioned_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? TransitionedAt { get; set; }
     }
 }

@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentDetailsFlightDatumTotalOptions : INestedOptions
     {
         /// <summary>
         /// Total flight amount.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -25,45 +23,35 @@ namespace Stripe
         /// <c>ticket_and_ancillary_cancellation</c>, or <c>ticket_cancellation</c>.
         /// </summary>
         [JsonProperty("credit_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("credit_reason")]
-#endif
         public string CreditReason { get; set; }
 
         /// <summary>
         /// Total currency.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Discount details.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         public PaymentIntentPaymentDetailsFlightDatumTotalDiscountsOptions Discounts { get; set; }
 
         /// <summary>
         /// Additional charges.
         /// </summary>
         [JsonProperty("extra_charges")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("extra_charges")]
-#endif
         public List<PaymentIntentPaymentDetailsFlightDatumTotalExtraChargeOptions> ExtraCharges { get; set; }
 
         /// <summary>
         /// Tax breakdown.
         /// </summary>
         [JsonProperty("tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax")]
-#endif
         public PaymentIntentPaymentDetailsFlightDatumTotalTaxOptions Tax { get; set; }
     }
 }
