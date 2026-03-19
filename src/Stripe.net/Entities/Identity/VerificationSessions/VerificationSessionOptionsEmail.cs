@@ -2,19 +2,17 @@
 namespace Stripe.Identity
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class VerificationSessionOptionsEmail : StripeEntity<VerificationSessionOptionsEmail>
     {
         /// <summary>
         /// Request one time password verification of <c>provided_details.email</c>.
         /// </summary>
         [JsonProperty("require_verification")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("require_verification")]
-#endif
         public bool RequireVerification { get; set; }
     }
 }

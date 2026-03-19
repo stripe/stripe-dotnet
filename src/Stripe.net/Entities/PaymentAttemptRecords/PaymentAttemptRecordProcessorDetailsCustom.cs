@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordProcessorDetailsCustom : StripeEntity<PaymentAttemptRecordProcessorDetailsCustom>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// or a payment processor ID.
         /// </summary>
         [JsonProperty("payment_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_reference")]
-#endif
         public string PaymentReference { get; set; }
     }
 }

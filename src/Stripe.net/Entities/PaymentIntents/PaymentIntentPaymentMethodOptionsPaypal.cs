@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodOptionsPaypal : StripeEntity<PaymentIntentPaymentMethodOptionsPaypal>
     {
         /// <summary>
         /// Controls when the funds will be captured from the customer's account.
         /// </summary>
         [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
-#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
         /// Preferred locale of the PayPal checkout page that the customer is redirected to.
         /// </summary>
         [JsonProperty("preferred_locale")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferred_locale")]
-#endif
         public string PreferredLocale { get; set; }
 
         /// <summary>
@@ -32,9 +28,7 @@ namespace Stripe
         /// settings to block multiple payments per invoice ID.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -59,9 +53,7 @@ namespace Stripe
         /// One of: <c>none</c>, or <c>off_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsKlarnaOptions : INestedOptions
     {
         /// <summary>
@@ -20,18 +20,14 @@ namespace Stripe
         /// for this parameter unsets the stored value for this payment method type.
         /// </summary>
         [JsonProperty("capture_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capture_method")]
-#endif
         public string CaptureMethod { get; set; }
 
         /// <summary>
         /// On-demand details if setting up or charging an on-demand payment.
         /// </summary>
         [JsonProperty("on_demand")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_demand")]
-#endif
         public PaymentIntentPaymentMethodOptionsKlarnaOnDemandOptions OnDemand { get; set; }
 
         /// <summary>
@@ -46,9 +42,7 @@ namespace Stripe
         /// <c>pl-PL</c>, <c>pt-PT</c>, <c>ro-RO</c>, <c>sv-FI</c>, or <c>sv-SE</c>.
         /// </summary>
         [JsonProperty("preferred_locale")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferred_locale")]
-#endif
         public string PreferredLocale { get; set; }
 
         /// <summary>
@@ -77,18 +71,14 @@ namespace Stripe
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
         /// Subscription details if setting up or charging a subscription.
         /// </summary>
         [JsonProperty("subscriptions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscriptions")]
-#endif
         public List<PaymentIntentPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions { get; set; }
     }
 }

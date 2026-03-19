@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CreditNoteRefundPaymentRecordRefundOptions : INestedOptions
     {
         /// <summary>
         /// The ID of the PaymentRecord with the refund to link to this credit note.
         /// </summary>
         [JsonProperty("payment_record")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_record")]
-#endif
         public string PaymentRecord { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// field provided when reporting the refund on the PaymentRecord.
         /// </summary>
         [JsonProperty("refund_group")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_group")]
-#endif
         public string RefundGroup { get; set; }
     }
 }

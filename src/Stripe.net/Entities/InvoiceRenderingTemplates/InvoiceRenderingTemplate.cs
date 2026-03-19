@@ -5,33 +5,28 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Invoice Rendering Templates are used to configure how invoices are rendered on surfaces
     /// like the PDF. Invoice Rendering Templates can be created from within the Dashboard, and
     /// they can be used over the API when creating invoices.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InvoiceRenderingTemplate : StripeEntity<InvoiceRenderingTemplate>, IHasId, IHasMetadata, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -39,10 +34,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -50,9 +43,7 @@ namespace Stripe
         /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -61,18 +52,14 @@ namespace Stripe
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// A brief description of the template, hidden from customers.
         /// </summary>
         [JsonProperty("nickname")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("nickname")]
-#endif
         public string Nickname { get; set; }
 
         /// <summary>
@@ -80,9 +67,7 @@ namespace Stripe
         /// One of: <c>active</c>, or <c>archived</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -90,9 +75,7 @@ namespace Stripe
         /// changes any field that controls invoice rendering.
         /// </summary>
         [JsonProperty("version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("version")]
-#endif
         public long Version { get; set; }
     }
 }

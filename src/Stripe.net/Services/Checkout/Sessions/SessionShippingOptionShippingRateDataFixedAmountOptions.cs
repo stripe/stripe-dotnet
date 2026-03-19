@@ -3,19 +3,17 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionShippingOptionShippingRateDataFixedAmountOptions : INestedOptions
     {
         /// <summary>
         /// A non-negative integer in cents representing how much to charge.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Checkout
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -35,9 +31,7 @@ namespace Stripe.Checkout
         /// code</a> and a <a href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency_options")]
-#endif
         public Dictionary<string, SessionShippingOptionShippingRateDataFixedAmountCurrencyOptionsOptions> CurrencyOptions { get; set; }
     }
 }

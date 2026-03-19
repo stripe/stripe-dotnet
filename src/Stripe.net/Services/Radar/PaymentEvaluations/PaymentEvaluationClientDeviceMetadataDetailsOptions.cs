@@ -2,10 +2,10 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentEvaluationClientDeviceMetadataDetailsOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.Radar
         /// on your payments.
         /// </summary>
         [JsonProperty("radar_session")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("radar_session")]
-#endif
         public string RadarSession { get; set; }
     }
 }

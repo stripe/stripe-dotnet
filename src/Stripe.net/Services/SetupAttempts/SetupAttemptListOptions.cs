@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupAttemptListOptions : ListOptions
     {
         /// <summary>
@@ -17,19 +16,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
         /// Only return SetupAttempts created by the SetupIntent specified by this ID.
         /// </summary>
         [JsonProperty("setup_intent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_intent")]
-#endif
         public string SetupIntent { get; set; }
     }
 }

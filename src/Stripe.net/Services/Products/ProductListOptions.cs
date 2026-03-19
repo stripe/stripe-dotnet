@@ -5,10 +5,9 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ProductListOptions : ListOptions
     {
         /// <summary>
@@ -16,9 +15,7 @@ namespace Stripe
         /// inactive products).
         /// </summary>
         [JsonProperty("active")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
-#endif
         public bool? Active { get; set; }
 
         /// <summary>
@@ -26,10 +23,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
@@ -38,18 +33,14 @@ namespace Stripe
         /// href="https://api.stripe.com#list_products-ending_before">ending_before</a>.
         /// </summary>
         [JsonProperty("ids")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("ids")]
-#endif
         public List<string> Ids { get; set; }
 
         /// <summary>
         /// Only return products that can be shipped (i.e., physical, not digital products).
         /// </summary>
         [JsonProperty("shippable")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shippable")]
-#endif
         public bool? Shippable { get; set; }
 
         /// <summary>
@@ -57,18 +48,14 @@ namespace Stripe
         /// One of: <c>good</c>, or <c>service</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// Only return products with the given url.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

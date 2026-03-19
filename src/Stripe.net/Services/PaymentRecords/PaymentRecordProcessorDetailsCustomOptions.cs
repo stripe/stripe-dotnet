@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentRecordProcessorDetailsCustomOptions : INestedOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe
         /// or a payment processor ID.
         /// </summary>
         [JsonProperty("payment_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_reference")]
-#endif
         public string PaymentReference { get; set; }
 
         /// <summary>
         /// A reference to the external refund. This field must be unique across all refunds.
         /// </summary>
         [JsonProperty("refund_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_reference")]
-#endif
         public string RefundReference { get; set; }
     }
 }

@@ -4,10 +4,9 @@ namespace Stripe.Identity
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class VerificationReportListOptions : ListOptions
     {
         /// <summary>
@@ -15,9 +14,7 @@ namespace Stripe.Identity
         /// and can be used to reconcile this verification with your internal systems.
         /// </summary>
         [JsonProperty("client_reference_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client_reference_id")]
-#endif
         public string ClientReferenceId { get; set; }
 
         /// <summary>
@@ -25,10 +22,8 @@ namespace Stripe.Identity
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
@@ -36,9 +31,7 @@ namespace Stripe.Identity
         /// One of: <c>document</c>, or <c>id_number</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -46,9 +39,7 @@ namespace Stripe.Identity
         /// provide a VerificationIntent ID.
         /// </summary>
         [JsonProperty("verification_session")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification_session")]
-#endif
         public string VerificationSession { get; set; }
     }
 }

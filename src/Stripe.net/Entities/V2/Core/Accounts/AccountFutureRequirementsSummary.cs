@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountFutureRequirementsSummary : StripeEntity<AccountFutureRequirementsSummary>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// example: <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("minimum_deadline")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minimum_deadline")]
-#endif
         public AccountFutureRequirementsSummaryMinimumDeadline MinimumDeadline { get; set; }
     }
 }

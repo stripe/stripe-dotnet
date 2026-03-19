@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConfirmationTokenPaymentMethodPreviewKlarna : StripeEntity<ConfirmationTokenPaymentMethodPreviewKlarna>
     {
         /// <summary>
         /// The customer's date of birth, if provided.
         /// </summary>
         [JsonProperty("dob")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dob")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewKlarnaDob Dob { get; set; }
     }
 }

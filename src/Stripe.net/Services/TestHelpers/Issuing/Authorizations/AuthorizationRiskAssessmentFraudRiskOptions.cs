@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AuthorizationRiskAssessmentFraudRiskOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.TestHelpers.Issuing
         /// or <c>unknown</c>.
         /// </summary>
         [JsonProperty("level")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("level")]
-#endif
         public string Level { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.TestHelpers.Issuing
         /// considered high risk.
         /// </summary>
         [JsonProperty("score")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("score")]
-#endif
         public decimal? Score { get; set; }
     }
 }

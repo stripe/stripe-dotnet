@@ -5,19 +5,16 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentPaymentMethodOptionsCardMandateOptionsOptions : INestedOptions
     {
         /// <summary>
         /// Amount to be charged for future payments, specified in the presentment currency.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -27,9 +24,7 @@ namespace Stripe
         /// One of: <c>fixed</c>, or <c>maximum</c>.
         /// </summary>
         [JsonProperty("amount_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_type")]
-#endif
         public string AmountType { get; set; }
 
         /// <summary>
@@ -39,9 +34,7 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -49,9 +42,7 @@ namespace Stripe
         /// customer.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -60,10 +51,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("end_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? EndDate { get; set; }
 
         /// <summary>
@@ -72,9 +61,7 @@ namespace Stripe
         /// One of: <c>day</c>, <c>month</c>, <c>sporadic</c>, <c>week</c>, or <c>year</c>.
         /// </summary>
         [JsonProperty("interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
-#endif
         public string Interval { get; set; }
 
         /// <summary>
@@ -84,18 +71,14 @@ namespace Stripe
         /// <c>interval=sporadic</c>.
         /// </summary>
         [JsonProperty("interval_count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval_count")]
-#endif
         public long? IntervalCount { get; set; }
 
         /// <summary>
         /// Unique identifier for the mandate or subscription.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -104,19 +87,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("start_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("start_date")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? StartDate { get; set; }
 
         /// <summary>
         /// Specifies the type of mandates supported. Possible values are <c>india</c>.
         /// </summary>
         [JsonProperty("supported_types")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_types")]
-#endif
         public List<string> SupportedTypes { get; set; }
     }
 }

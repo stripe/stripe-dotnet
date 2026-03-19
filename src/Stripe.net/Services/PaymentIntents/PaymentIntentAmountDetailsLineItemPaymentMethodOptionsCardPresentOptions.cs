@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentAmountDetailsLineItemPaymentMethodOptionsCardPresentOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// scheme such as (but not limited to) UNSPSC, NAICS, NAPCS, and so on.
         /// </summary>
         [JsonProperty("commodity_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("commodity_code")]
-#endif
         public string CommodityCode { get; set; }
     }
 }

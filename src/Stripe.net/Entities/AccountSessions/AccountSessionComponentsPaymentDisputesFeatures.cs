@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSessionComponentsPaymentDisputesFeatures : StripeEntity<AccountSessionComponentsPaymentDisputesFeatures>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// them. This is <c>false</c> by default.
         /// </summary>
         [JsonProperty("destination_on_behalf_of_charge_management")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("destination_on_behalf_of_charge_management")]
-#endif
         public bool DestinationOnBehalfOfChargeManagement { get; set; }
 
         /// <summary>
@@ -23,18 +21,14 @@ namespace Stripe
         /// disputes. This is <c>true</c> by default.
         /// </summary>
         [JsonProperty("dispute_management")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dispute_management")]
-#endif
         public bool DisputeManagement { get; set; }
 
         /// <summary>
         /// Whether sending refunds is enabled. This is <c>true</c> by default.
         /// </summary>
         [JsonProperty("refund_management")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refund_management")]
-#endif
         public bool RefundManagement { get; set; }
     }
 }

@@ -4,10 +4,9 @@ namespace Stripe.TestHelpers
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TestClockStatusDetailsAdvancing : StripeEntity<TestClockStatusDetailsAdvancing>
     {
         /// <summary>
@@ -15,10 +14,8 @@ namespace Stripe.TestHelpers
         /// </summary>
         [JsonProperty("target_frozen_time")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("target_frozen_time")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime TargetFrozenTime { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

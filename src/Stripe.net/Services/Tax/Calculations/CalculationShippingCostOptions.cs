@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CalculationShippingCostOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.Tax
         /// includes taxes. Otherwise, taxes are calculated on top of this amount.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe.Tax
         /// <c>tax_behavior</c> parameters.
         /// </summary>
         [JsonProperty("shipping_rate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_rate")]
-#endif
         public string ShippingRate { get; set; }
 
         /// <summary>
@@ -38,9 +34,7 @@ namespace Stripe.Tax
         /// One of: <c>exclusive</c>, or <c>inclusive</c>.
         /// </summary>
         [JsonProperty("tax_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_behavior")]
-#endif
         public string TaxBehavior { get; set; }
 
         /// <summary>
@@ -49,9 +43,7 @@ namespace Stripe.Tax
         /// href="https://dashboard.stripe.com/settings/tax">Tax Settings</a> is used.
         /// </summary>
         [JsonProperty("tax_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_code")]
-#endif
         public string TaxCode { get; set; }
     }
 }

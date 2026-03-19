@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationMerchantStatementDescriptor : StripeEntity<AccountConfigurationMerchantStatementDescriptor>
     {
         /// <summary>
@@ -18,9 +18,7 @@ namespace Stripe.V2.Core
         /// Configuration settings documentation.
         /// </summary>
         [JsonProperty("descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("descriptor")]
-#endif
         public string Descriptor { get; set; }
 
         /// <summary>
@@ -32,9 +30,7 @@ namespace Stripe.V2.Core
         /// documentation.
         /// </summary>
         [JsonProperty("prefix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prefix")]
-#endif
         public string Prefix { get; set; }
     }
 }

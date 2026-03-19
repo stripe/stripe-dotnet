@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountIdentity : StripeEntity<AccountIdentity>
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.V2.Core
         /// representatives.
         /// </summary>
         [JsonProperty("attestations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("attestations")]
-#endif
         public AccountIdentityAttestations Attestations { get; set; }
 
         /// <summary>
         /// Information about the company or business.
         /// </summary>
         [JsonProperty("business_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("business_details")]
-#endif
         public AccountIdentityBusinessDetails BusinessDetails { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.V2.Core
         /// code.
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -45,9 +39,7 @@ namespace Stripe.V2.Core
         /// <c>non_profit</c>.
         /// </summary>
         [JsonProperty("entity_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("entity_type")]
-#endif
         public string EntityType { get; set; }
 
         /// <summary>
@@ -55,9 +47,7 @@ namespace Stripe.V2.Core
         /// <c>null</c> unless <c>entity_type</c> is set to <c>individual</c>.
         /// </summary>
         [JsonProperty("individual")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("individual")]
-#endif
         public AccountIdentityIndividual Individual { get; set; }
     }
 }

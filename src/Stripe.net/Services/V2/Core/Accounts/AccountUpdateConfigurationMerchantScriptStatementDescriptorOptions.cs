@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateConfigurationMerchantScriptStatementDescriptorOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.Core
         /// requirements</a>.
         /// </summary>
         [JsonProperty("kana")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kana")]
-#endif
         public AccountUpdateConfigurationMerchantScriptStatementDescriptorKanaOptions Kana { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe.V2.Core
         /// requirements</a>.
         /// </summary>
         [JsonProperty("kanji")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("kanji")]
-#endif
         public AccountUpdateConfigurationMerchantScriptStatementDescriptorKanjiOptions Kanji { get; set; }
     }
 }

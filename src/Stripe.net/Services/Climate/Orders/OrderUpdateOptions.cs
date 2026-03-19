@@ -3,10 +3,10 @@ namespace Stripe.Climate
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OrderUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Climate
         /// Stripe account if not set.
         /// </summary>
         [JsonProperty("beneficiary")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("beneficiary")]
-#endif
         public OrderBeneficiaryOptions Beneficiary { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe.Climate
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

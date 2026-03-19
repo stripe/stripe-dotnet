@@ -2,10 +2,10 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CardLifecycleControlsCancelAfter : StripeEntity<CardLifecycleControlsCancelAfter>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Issuing
         /// include non-payment actions, such as authorization advice.
         /// </summary>
         [JsonProperty("payment_count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_count")]
-#endif
         public long PaymentCount { get; set; }
     }
 }

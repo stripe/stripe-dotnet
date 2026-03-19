@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodOptionsKonbini : StripeEntity<PaymentIntentPaymentMethodOptionsKonbini>
     {
         /// <summary>
@@ -15,9 +14,7 @@ namespace Stripe
         /// applicable convenience stores.
         /// </summary>
         [JsonProperty("confirmation_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("confirmation_number")]
-#endif
         public string ConfirmationNumber { get; set; }
 
         /// <summary>
@@ -27,9 +24,7 @@ namespace Stripe
         /// Wednesday 23:59:59 JST.
         /// </summary>
         [JsonProperty("expires_after_days")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_after_days")]
-#endif
         public long? ExpiresAfterDays { get; set; }
 
         /// <summary>
@@ -38,10 +33,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
@@ -49,9 +42,7 @@ namespace Stripe
         /// convenience store.
         /// </summary>
         [JsonProperty("product_description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("product_description")]
-#endif
         public string ProductDescription { get; set; }
 
         /// <summary>
@@ -75,9 +66,7 @@ namespace Stripe
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

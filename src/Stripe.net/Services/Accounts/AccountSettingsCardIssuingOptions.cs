@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountSettingsCardIssuingOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// Disclosures</a>.
         /// </summary>
         [JsonProperty("tos_acceptance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tos_acceptance")]
-#endif
         public AccountSettingsCardIssuingTosAcceptanceOptions TosAcceptance { get; set; }
     }
 }

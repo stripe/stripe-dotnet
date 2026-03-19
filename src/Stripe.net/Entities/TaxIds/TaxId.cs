@@ -4,9 +4,7 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// You can add one or multiple tax IDs to a <a
@@ -17,36 +15,28 @@ namespace Stripe
     /// identification numbers</a>, <a
     /// href="https://docs.stripe.com/invoicing/connect#account-tax-ids">Account tax IDs</a>.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TaxId : StripeEntity<TaxId>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// Two-letter ISO code representing the country of the tax ID.
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -54,10 +44,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         #region Expandable Customer
@@ -67,9 +55,7 @@ namespace Stripe
         /// ID of the customer.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string CustomerId
         {
             get => this.InternalCustomer?.Id;
@@ -83,9 +69,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Customer Customer
         {
             get => this.InternalCustomer?.ExpandedObject;
@@ -94,10 +78,8 @@ namespace Stripe
 
         [JsonProperty("customer")]
         [JsonConverter(typeof(ExpandableFieldConverter<Customer>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Customer>))]
-#endif
         internal ExpandableField<Customer> InternalCustomer { get; set; }
         #endregion
 
@@ -105,19 +87,15 @@ namespace Stripe
         /// ID of the Account representing the customer.
         /// </summary>
         [JsonProperty("customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
-#endif
         public string CustomerAccount { get; set; }
 
         /// <summary>
         /// Whether this object is deleted or not.
         /// </summary>
         [JsonProperty("deleted", NullValueHandling = NullValueHandling.Ignore)]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("deleted")]
         [STJS.JsonIgnore(Condition = STJS.JsonIgnoreCondition.WhenWritingNull)]
-#endif
         public bool? Deleted { get; set; }
 
         /// <summary>
@@ -125,18 +103,14 @@ namespace Stripe
         /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The account or customer the tax ID belongs to.
         /// </summary>
         [JsonProperty("owner")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("owner")]
-#endif
         public TaxIdOwner Owner { get; set; }
 
         /// <summary>
@@ -188,27 +162,21 @@ namespace Stripe
         /// <c>zw_tin</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// Value of the tax ID.
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
-#endif
         public string Value { get; set; }
 
         /// <summary>
         /// Tax ID verification information.
         /// </summary>
         [JsonProperty("verification")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verification")]
-#endif
         public TaxIdVerification Verification { get; set; }
     }
 }
