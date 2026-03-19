@@ -8,6 +8,7 @@ namespace StripeTests
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
+    using STJS = System.Text.Json.Serialization;
 
     public class StripeEntityTest : BaseStripeTest
     {
@@ -197,18 +198,23 @@ namespace StripeTests
                 subscription.RawJObject["items"]["data"][0]["id"]);
         }
 
+        [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
         private class TestEntity : StripeEntity<TestEntity>, IHasMetadata
         {
             [JsonProperty("integer")]
+            [STJS.JsonPropertyName("integer")]
             public int Integer { get; set; }
 
             [JsonProperty("string")]
+            [STJS.JsonPropertyName("string")]
             public string String { get; set; }
 
             [JsonProperty("metadata")]
+            [STJS.JsonPropertyName("metadata")]
             public Dictionary<string, string> Metadata { get; set; }
 
             [JsonIgnore]
+            [STJS.JsonIgnore]
             public string NestedId
             {
                 get => this.InternalNested?.Id;
@@ -216,6 +222,7 @@ namespace StripeTests
             }
 
             [JsonIgnore]
+            [STJS.JsonIgnore]
             public TestNestedEntity Nested
             {
                 get => this.InternalNested?.ExpandedObject;
@@ -224,21 +231,26 @@ namespace StripeTests
 
             [JsonProperty("nested")]
             [JsonConverter(typeof(ExpandableFieldConverter<TestNestedEntity>))]
+            [STJS.JsonPropertyName("nested")]
+            [STJS.JsonConverter(typeof(STJExpandableFieldConverter<TestNestedEntity>))]
             internal ExpandableField<TestNestedEntity> InternalNested { get; set; }
         }
 
         private class V2TestEntity : StripeEntity<TestEntity>
         {
             [JsonProperty("v2_datetime")]
+            [STJS.JsonPropertyName("v2_datetime")]
             public DateTime? V2DateTime { get; set; }
         }
 
         private class TestNestedEntity : StripeEntity<TestNestedEntity>, IHasId
         {
             [JsonProperty("id")]
+            [STJS.JsonPropertyName("id")]
             public string Id { get; set; }
 
             [JsonProperty("bar")]
+            [STJS.JsonPropertyName("bar")]
             public int Bar { get; set; }
         }
     }

@@ -5,28 +5,21 @@ namespace Stripe.V2.Core
     using System.Threading;
     using System.Threading.Tasks;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
-    using STJS = System.Text.Json.Serialization;
-#endif
-
     using Stripe.Infrastructure;
+    using STJS = System.Text.Json.Serialization;
 
     /// <summary>
     /// Manually-maintained convenience methods added to V2 Events.
     /// </summary>
     [JsonConverter(typeof(V2EventConverter))]
-#if NET6_0_OR_GREATER
     [STJS.JsonConverter(typeof(STJV2EventConverter))]
-#endif
     public partial class Event : StripeEntity<Event>, IHasId, IHasObject
     {
         /// <summary>
         /// Used for .FetchObject and .FetchData helpers.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
 
         internal ApiRequestor Requestor { get; set; }
 
@@ -63,10 +56,13 @@ namespace Stripe.V2.Core
                 return null;
             }
 
-            RequestOptions opts = null;
+            RequestOptions opts = new RequestOptions
+            {
+                StripeRequestTrigger = $"event={this.Id}",
+            };
             if (this.Context != null)
             {
-                opts = new RequestOptions { StripeContext = this.Context };
+                opts.StripeContext = this.Context;
             }
 
             return this.Requestor.RequestAsync<T>(

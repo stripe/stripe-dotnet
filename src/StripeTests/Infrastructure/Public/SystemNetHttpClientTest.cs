@@ -1,9 +1,11 @@
 namespace StripeTests
 {
+    using System;
     using System.Linq;
     using System.Net;
     using System.Net.Http;
     using System.Net.Http.Headers;
+    using System.Text.Json;
     using System.Threading;
     using System.Threading.Tasks;
     using Moq;
@@ -132,27 +134,141 @@ namespace StripeTests
             Assert.True(client.EnableTelemetry);
         }
 
+        [Fact]
+        public void TestDetectAIAgent()
+        {
+            var result = SystemNetHttpClient.DetectAIAgent(
+                key => key == "CLAUDECODE" ? "1" : null);
+            Assert.Equal("claude_code", result);
+        }
+
+        [Fact]
+        public void TestDetectAIAgentNoEnvVars()
+        {
+            var result = SystemNetHttpClient.DetectAIAgent(key => null);
+            Assert.Equal(string.Empty, result);
+        }
+
+        [Fact]
+        public void TestDetectAIAgentFirstMatchWins()
+        {
+            var result = SystemNetHttpClient.DetectAIAgent(
+                key => key == "CURSOR_AGENT" || key == "OPENCODE" ? "1" : null);
+            Assert.Equal("cursor", result);
+        }
+
+        [Fact]
+        public async Task AIAgentIncludedInHeaders()
+        {
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            responseMessage.Content = new StringContent("Hello world!");
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(responseMessage));
+
+            Environment.SetEnvironmentVariable("CLAUDECODE", "1");
+            try
+            {
+                var client = new SystemNetHttpClient(
+                    httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object));
+                var request = new StripeRequest(
+                    this.StripeClient,
+                    HttpMethod.Post,
+                    "/foo",
+                    null,
+                    null);
+                await client.MakeRequestAsync(request);
+
+                this.MockHttpClientFixture.MockHandler.Protected()
+                    .Verify(
+                        "SendAsync",
+                        Times.Once(),
+                        ItExpr.Is<HttpRequestMessage>(m => this.VerifyAIAgentHeaders(m.Headers)),
+                        ItExpr.IsAny<CancellationToken>());
+            }
+            finally
+            {
+                Environment.SetEnvironmentVariable("CLAUDECODE", null);
+            }
+        }
+
+        [Fact]
+        public async Task UserAgentOmitsPlatformWhenTelemetryDisabled()
+        {
+            var responseMessage = new HttpResponseMessage(HttpStatusCode.OK);
+            responseMessage.Content = new StringContent("Hello world!");
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Setup<Task<HttpResponseMessage>>(
+                    "SendAsync",
+                    ItExpr.IsAny<HttpRequestMessage>(),
+                    ItExpr.IsAny<CancellationToken>())
+                .Returns(Task.FromResult(responseMessage));
+
+            var client = new SystemNetHttpClient(
+                httpClient: new HttpClient(this.MockHttpClientFixture.MockHandler.Object),
+                enableTelemetry: false);
+            var request = new StripeRequest(
+                this.StripeClient,
+                HttpMethod.Post,
+                "/foo",
+                null,
+                null);
+            await client.MakeRequestAsync(request);
+
+            this.MockHttpClientFixture.MockHandler.Protected()
+                .Verify(
+                    "SendAsync",
+                    Times.Once(),
+                    ItExpr.Is<HttpRequestMessage>(m => this.VerifyNoPlatformHeaders(m.Headers)),
+                    ItExpr.IsAny<CancellationToken>());
+        }
+
+        private bool VerifyNoPlatformHeaders(HttpRequestHeaders headers)
+        {
+            var userAgentJson = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
+
+            Assert.Equal(".net", userAgentJson.Value<string>("lang"));
+            Assert.Null(userAgentJson["platform"]);
+
+            return true;
+        }
+
         private bool VerifyHeaders(HttpRequestHeaders headers)
         {
             var userAgent = headers.UserAgent.ToString();
-            var userAgentJson = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
-            var appInfo = userAgentJson["application"];
+            using var doc = JsonDocument.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
+            var root = doc.RootElement;
+            var appInfo = root.GetProperty("application");
 
+            var userAgentJson = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
             Assert.Contains("MyAwesomeApp/1.2.34 (https://myawesomeapp.info)", userAgent);
 
-            Assert.Equal("MyAwesomeApp", appInfo.Value<string>("name"));
-            Assert.Equal("pp_123", appInfo.Value<string>("partner_id"));
-            Assert.Equal("1.2.34", appInfo.Value<string>("version"));
-            Assert.Equal("https://myawesomeapp.info", appInfo.Value<string>("url"));
+            Assert.Equal("MyAwesomeApp", appInfo.GetProperty("name").GetString());
+            Assert.Equal("pp_123", appInfo.GetProperty("partner_id").GetString());
+            Assert.Equal("1.2.34", appInfo.GetProperty("version").GetString());
+            Assert.Equal("https://myawesomeapp.info", appInfo.GetProperty("url").GetString());
 
             Assert.Equal(".net", userAgentJson.Value<string>("lang"));
-            Assert.Equal("stripe", userAgentJson.Value<string>("publisher"));
             Assert.NotEqual("?", userAgentJson.Value<string>("lang_version"));
             Assert.NotEqual("(unknown)", userAgentJson.Value<string>("lang_version"));
             Assert.NotEqual("unknown", userAgentJson.Value<string>("stripe_net_target_framework"));
-            Assert.NotEqual("?", userAgentJson.Value<string>("os_version"));
+            Assert.NotEqual("?", userAgentJson.Value<string>("platform"));
             Assert.NotEmpty(userAgentJson.Value<string>("bindings_version"));
             Assert.NotEmpty(userAgentJson.Value<string>("newtonsoft_json_version"));
+
+            return true;
+        }
+
+        private bool VerifyAIAgentHeaders(HttpRequestHeaders headers)
+        {
+            var userAgent = headers.UserAgent.ToString();
+            var userAgentJson = JObject.Parse(headers.GetValues("X-Stripe-Client-User-Agent").First());
+
+            Assert.Contains("AIAgent/claude_code", userAgent);
+            Assert.Equal("claude_code", userAgentJson.Value<string>("ai_agent"));
 
             return true;
         }

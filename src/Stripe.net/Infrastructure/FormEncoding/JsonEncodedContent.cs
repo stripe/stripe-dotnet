@@ -3,8 +3,8 @@ namespace Stripe.Infrastructure.FormEncoding
     using System;
     using System.Net.Http;
     using System.Net.Http.Headers;
-    using System.Text;
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using STJS = System.Text.Json.Serialization;
 
     /// <summary>
     /// A container for name/value tuples encoded using <c>application/json</c>
@@ -12,7 +12,7 @@ namespace Stripe.Infrastructure.FormEncoding
     /// </summary>
     internal class JsonEncodedContent : ByteArrayContent
     {
-        private static readonly JsonSerializerSettings SerializerSettings = new JsonSerializerSettings() { NullValueHandling = NullValueHandling.Ignore };
+        private static readonly JsonSerializerOptions SerializerOptions = CreateOptions();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="JsonEncodedContent"/> class.
@@ -25,6 +25,13 @@ namespace Stripe.Infrastructure.FormEncoding
             this.Headers.ContentType.CharSet = "utf-8";
         }
 
+        private static JsonSerializerOptions CreateOptions()
+        {
+            var opts = StripeConfiguration.DefaultStjSerializerOptions();
+            opts.DefaultIgnoreCondition = STJS.JsonIgnoreCondition.WhenWritingNull;
+            return opts;
+        }
+
         private static byte[] CreateContentByteArray(
             BaseOptions options)
         {
@@ -33,7 +40,7 @@ namespace Stripe.Infrastructure.FormEncoding
                 throw new ArgumentNullException(nameof(options));
             }
 
-            return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(options, Formatting.None, SerializerSettings));
+            return JsonSerializer.SerializeToUtf8Bytes(options, options.GetType(), SerializerOptions);
         }
     }
 }

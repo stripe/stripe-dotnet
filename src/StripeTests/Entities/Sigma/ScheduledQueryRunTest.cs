@@ -1,6 +1,6 @@
 namespace StripeTests.Sigma
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe.Sigma;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests.Sigma
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/sigma/scheduled_query_runs/sqr_123");
-            var run = JsonConvert.DeserializeObject<ScheduledQueryRun>(json);
+            var run = JsonSerializer.Deserialize<ScheduledQueryRun>(json);
             Assert.NotNull(run);
             Assert.IsType<ScheduledQueryRun>(run);
             Assert.NotNull(run.Id);

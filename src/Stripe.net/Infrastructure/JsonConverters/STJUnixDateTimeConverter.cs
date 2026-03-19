@@ -1,7 +1,7 @@
-#if NET6_0_OR_GREATER
 namespace Stripe.Infrastructure
 {
     using System;
+    using System.Reflection;
     using System.Text.Json;
     using System.Text.Json.Serialization;
 
@@ -13,99 +13,194 @@ namespace Stripe.Infrastructure
     /// Newtonsoft.Json 11.0. Once we bump the minimum version of Newtonsoft.Json to 11.0, we can
     /// start using the provided converter and get rid of this class.
     /// </remarks>
-    internal class STJUnixDateTimeConverter : JsonConverter<DateTime>
+    internal class STJUnixDateTimeConverter : JsonConverterFactory
     {
-        /// <summary>
-        /// Reads the JSON representation of the object.
-        /// </summary>
-        /// <param name="reader">The <see cref="Utf8JsonReader"/> to read from.</param>
-        /// <param name="typeToConvert">Type of the object.</param>
-        /// <param name="options">The calling serializer's options.</param>
-        /// <returns>The object value.</returns>
-        public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
+        public override bool CanConvert(Type typeToConvert)
         {
-            bool nullable = IsNullable(typeToConvert);
-            long seconds;
+            return typeToConvert == typeof(DateTime) ||
+                   typeToConvert == typeof(DateTime?);
+        }
 
-            if (reader.TokenType == JsonTokenType.Number)
+        public override JsonConverter CreateConverter(Type typeToConvert, JsonSerializerOptions options)
+        {
+            if (typeToConvert == typeof(DateTime?))
             {
-                seconds = reader.GetInt64();
-            }
-            else if (reader.TokenType == JsonTokenType.String)
-            {
-                if (!long.TryParse(reader.GetString(), out seconds))
-                {
-                    throw new JsonException(string.Format("Cannot convert invalid value to {0}.", typeToConvert));
-                }
+                return (JsonConverter)Activator.CreateInstance(
+                    typeof(NullableDateTimeConverterInner),
+                    BindingFlags.Instance | BindingFlags.Public,
+                    binder: null,
+                    args: null,
+                    culture: null);
             }
             else
             {
-                throw new JsonException(string.Format("Unexpected token parsing date. Expected Integer or String, got {0}.", reader.TokenType));
+                return (JsonConverter)Activator.CreateInstance(
+                    typeof(DateTimeConverterInner),
+                    BindingFlags.Instance | BindingFlags.Public,
+                    binder: null,
+                    args: null,
+                    culture: null);
             }
+        }
 
-            if (seconds >= 0)
+        internal class DateTimeConverterInner : JsonConverter<DateTime>
+        {
+            /// <summary>
+            /// Reads the JSON representation of the object.
+            /// </summary>
+            /// <param name="reader">The <see cref="Utf8JsonReader"/> to read from.</param>
+            /// <param name="typeToConvert">Type of the object.</param>
+            /// <param name="options">The calling serializer's options.</param>
+            /// <returns>The object value.</returns>
+            public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                // As of the 2025-10-29.clover release, there is a bug in the Terminal API
-                // where the last_seen_at field is returned as milliseconds rather than seconds.
-                // Since we don't know when/how a fix will be put in to change that behavior,
-                // we make a heuristic guess to determine if a timestamp is in milliseconds or seconds.
-                // This check will work until the year ~5138.
-                if (seconds > 5000000000L)
+                long seconds;
+
+                if (reader.TokenType == JsonTokenType.Number)
                 {
-                    return DateTimeUtils.UnixEpoch.AddMilliseconds(seconds);
+                    seconds = reader.GetInt64();
+                }
+                else if (reader.TokenType == JsonTokenType.String)
+                {
+                    if (!long.TryParse(reader.GetString(), out seconds))
+                    {
+                        throw new JsonException(string.Format("Cannot convert invalid value to {0}.", typeToConvert));
+                    }
                 }
                 else
                 {
-                    return DateTimeUtils.UnixEpoch.AddSeconds(seconds);
+                    throw new JsonException(string.Format("Unexpected token parsing date. Expected Integer or String, got {0}.", reader.TokenType));
+                }
+
+                if (seconds >= 0)
+                {
+                    // As of the 2025-10-29.clover release, there is a bug in the Terminal API
+                    // where the last_seen_at field is returned as milliseconds rather than seconds.
+                    // Since we don't know when/how a fix will be put in to change that behavior,
+                    // we make a heuristic guess to determine if a timestamp is in milliseconds or seconds.
+                    // This check will work until the year ~5138.
+                    if (seconds > 5000000000L)
+                    {
+                        return DateTimeUtils.UnixEpoch.AddMilliseconds(seconds);
+                    }
+                    else
+                    {
+                        return DateTimeUtils.UnixEpoch.AddSeconds(seconds);
+                    }
+                }
+                else
+                {
+                    throw new JsonException(string.Format("Cannot convert value that is before Unix epoch of 00:00:00 UTC on 1 January 1970 to {0}.", typeToConvert));
                 }
             }
-            else
+
+            /// <summary>
+            /// Writes the JSON representation of the object.
+            /// </summary>
+            /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
+            /// <param name="value">The value.</param>
+            /// <param name="options">The calling serializer's options.</param>
+            public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
             {
-                throw new JsonException(string.Format("Cannot convert value that is before Unix epoch of 00:00:00 UTC on 1 January 1970 to {0}.", typeToConvert));
+                long seconds;
+
+                if (value is DateTime dateTime)
+                {
+                    seconds = (long)(dateTime.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
+                }
+                else
+                {
+                    throw new JsonException("Expected date object value.");
+                }
+
+                if (seconds < 0)
+                {
+                    throw new JsonException("Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970.");
+                }
+
+                writer.WriteNumberValue(seconds);
             }
         }
 
-        /// <summary>
-        /// Writes the JSON representation of the object.
-        /// </summary>
-        /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
-        /// <param name="value">The value.</param>
-        /// <param name="options">The calling serializer's options.</param>
-        public override void Write(Utf8JsonWriter writer, DateTime value, JsonSerializerOptions options)
+        internal class NullableDateTimeConverterInner : JsonConverter<DateTime?>
         {
-            long seconds;
-
-            if (value is DateTime dateTime)
+            /// <summary>
+            /// Reads the JSON representation of the object.
+            /// </summary>
+            /// <param name="reader">The <see cref="Utf8JsonReader"/> to read from.</param>
+            /// <param name="typeToConvert">Type of the object.</param>
+            /// <param name="options">The calling serializer's options.</param>
+            /// <returns>The object value.</returns>
+            public override DateTime? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
             {
-                seconds = (long)(dateTime.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
+                if (reader.TokenType == JsonTokenType.Null)
+                {
+                    return null;
+                }
+
+                long seconds;
+
+                if (reader.TokenType == JsonTokenType.Number)
+                {
+                    seconds = reader.GetInt64();
+                }
+                else if (reader.TokenType == JsonTokenType.String)
+                {
+                    if (!long.TryParse(reader.GetString(), out seconds))
+                    {
+                        throw new JsonException(string.Format("Cannot convert invalid value to {0}.", typeToConvert));
+                    }
+                }
+                else
+                {
+                    throw new JsonException(string.Format("Unexpected token parsing date. Expected Integer, String, or Null, got {0}.", reader.TokenType));
+                }
+
+                if (seconds >= 0)
+                {
+                    // As of the 2025-10-29.clover release, there is a bug in the Terminal API
+                    // where the last_seen_at field is returned as milliseconds rather than seconds.
+                    // Since we don't know when/how a fix will be put in to change that behavior,
+                    // we make a heuristic guess to determine if a timestamp is in milliseconds or seconds.
+                    // This check will work until the year ~5138.
+                    if (seconds > 5000000000L)
+                    {
+                        return DateTimeUtils.UnixEpoch.AddMilliseconds(seconds);
+                    }
+                    else
+                    {
+                        return DateTimeUtils.UnixEpoch.AddSeconds(seconds);
+                    }
+                }
+                else
+                {
+                    throw new JsonException(string.Format("Cannot convert value that is before Unix epoch of 00:00:00 UTC on 1 January 1970 to {0}.", typeToConvert));
+                }
             }
-            else
+
+            /// <summary>
+            /// Writes the JSON representation of the object.
+            /// </summary>
+            /// <param name="writer">The <see cref="Utf8JsonWriter"/> to write to.</param>
+            /// <param name="value">The value.</param>
+            /// <param name="options">The calling serializer's options.</param>
+            public override void Write(Utf8JsonWriter writer, DateTime? value, JsonSerializerOptions options)
             {
-                throw new JsonException("Expected date object value.");
+                if (value == null)
+                {
+                    writer.WriteNullValue();
+                    return;
+                }
+
+                long seconds = (long)(value.Value.ToUniversalTime() - DateTimeUtils.UnixEpoch).TotalSeconds;
+
+                if (seconds < 0)
+                {
+                    throw new JsonException("Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970.");
+                }
+
+                writer.WriteNumberValue(seconds);
             }
-
-            if (seconds < 0)
-            {
-                throw new JsonException("Cannot convert date value that is before Unix epoch of 00:00:00 UTC on 1 January 1970.");
-            }
-
-            writer.WriteNumberValue(seconds);
-        }
-
-        private static bool IsNullable(Type t)
-        {
-            if (t == null)
-            {
-                throw new ArgumentNullException(nameof(t));
-            }
-
-            if (t.IsValueType)
-            {
-                return t.IsGenericType && t.GetGenericTypeDefinition() == typeof(Nullable<>);
-            }
-
-            return true;
         }
     }
 }
-#endif

@@ -1,6 +1,6 @@
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
     using Stripe;
     using Xunit;
 
@@ -15,7 +15,7 @@ namespace StripeTests
         public void Deserialize()
         {
             string json = this.GetFixture("/v1/coupons/co_123");
-            var coupon = JsonConvert.DeserializeObject<Coupon>(json);
+            var coupon = JsonSerializer.Deserialize<Coupon>(json);
             Assert.NotNull(coupon);
             Assert.IsType<Coupon>(coupon);
             Assert.NotNull(coupon.Id);

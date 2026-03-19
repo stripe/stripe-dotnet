@@ -27,6 +27,9 @@ namespace Stripe
         /// <summary>Gets or sets the value or Stripe-Context request header.</summary>
         public string StripeContext { get; set; }
 
+        /// <summary>Gets or sets the value of the Stripe-Request-Trigger request header.</summary>
+        public string StripeRequestTrigger { get; set; }
+
         /// <summary>Gets the base URL for the request.</summary>
         /// <remarks>
         /// This is an internal property. It is set by services or individual request methods when
