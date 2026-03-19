@@ -47,9 +47,7 @@ namespace Stripe
         /// Configuration for the Tax ID Element.
         /// </summary>
         [JsonProperty("tax_id_element")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_id_element")]
-#endif
         public CustomerSessionComponentsTaxIdElementOptions TaxIdElement { get; set; }
     }
 }

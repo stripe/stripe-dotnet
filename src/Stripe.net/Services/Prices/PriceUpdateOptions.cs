@@ -48,9 +48,7 @@ namespace Stripe
         /// price.
         /// </summary>
         [JsonProperty("migrate_to")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("migrate_to")]
-#endif
         public PriceMigrateToOptions MigrateTo { get; set; }
 
         /// <summary>

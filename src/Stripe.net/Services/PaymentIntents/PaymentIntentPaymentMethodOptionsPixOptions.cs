@@ -40,9 +40,7 @@ namespace Stripe
         /// <c>setup_future_usage=off_session</c>.
         /// </summary>
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public PaymentIntentPaymentMethodOptionsPixMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>

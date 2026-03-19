@@ -28,9 +28,7 @@ namespace Stripe.Checkout
         /// Additional fields for mandate creation.
         /// </summary>
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public SessionPaymentMethodOptionsPixMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>

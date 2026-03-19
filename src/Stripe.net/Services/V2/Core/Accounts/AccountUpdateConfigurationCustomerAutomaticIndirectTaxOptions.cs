@@ -31,9 +31,7 @@ namespace Stripe.V2.Core
         /// <c>shipping_address</c>.
         /// </summary>
         [JsonProperty("location_source")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("location_source")]
-#endif
         public string LocationSource { get; set; }
 
         /// <summary>

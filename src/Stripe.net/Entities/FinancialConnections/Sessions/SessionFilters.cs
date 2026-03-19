@@ -31,9 +31,7 @@ namespace Stripe.FinancialConnections
         /// Stripe ID of the institution with which the customer should be directed to log in.
         /// </summary>
         [JsonProperty("institution")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("institution")]
-#endif
         public string Institution { get; set; }
     }
 }

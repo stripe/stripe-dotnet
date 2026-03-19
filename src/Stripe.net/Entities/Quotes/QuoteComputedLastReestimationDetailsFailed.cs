@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteComputedLastReestimationDetailsFailed : StripeEntity<QuoteComputedLastReestimationDetailsFailed>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe
         /// the error <c>message</c> field.
         /// </summary>
         [JsonProperty("failure_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failure_code")]
-#endif
         public string FailureCode { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe
         /// error as a human-readable English string. For example, "margin ID is not a valid ID".
         /// </summary>
         [JsonProperty("message")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("message")]
-#endif
         public string Message { get; set; }
 
         /// <summary>
@@ -36,9 +32,7 @@ namespace Stripe
         /// One of: <c>automation_failure</c>, or <c>internal_error</c>.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
     }
 }

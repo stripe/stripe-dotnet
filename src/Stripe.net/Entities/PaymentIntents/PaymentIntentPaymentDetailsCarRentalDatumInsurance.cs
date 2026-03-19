@@ -2,37 +2,31 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentDetailsCarRentalDatumInsurance : StripeEntity<PaymentIntentPaymentDetailsCarRentalDatumInsurance>
     {
         /// <summary>
         /// Amount of the insurance.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         /// <summary>
         /// Currency for the insurance price.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Name of the insurance company.
         /// </summary>
         [JsonProperty("insurance_company_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("insurance_company_name")]
-#endif
         public string InsuranceCompanyName { get; set; }
 
         /// <summary>
@@ -41,9 +35,7 @@ namespace Stripe
         /// <c>partial_damage_waiver</c>, <c>personal_accident</c>, or <c>personal_effects</c>.
         /// </summary>
         [JsonProperty("insurance_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("insurance_type")]
-#endif
         public string InsuranceType { get; set; }
     }
 }

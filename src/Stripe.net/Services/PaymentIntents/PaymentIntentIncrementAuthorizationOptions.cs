@@ -71,9 +71,7 @@ namespace Stripe
         /// Payment method-specific configuration for this PaymentIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
-#endif
         public PaymentIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>

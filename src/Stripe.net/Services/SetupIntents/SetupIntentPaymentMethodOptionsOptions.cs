@@ -84,9 +84,7 @@ namespace Stripe
         /// payment method options.
         /// </summary>
         [JsonProperty("pix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix")]
-#endif
         public SetupIntentPaymentMethodOptionsPixOptions Pix { get; set; }
 
         /// <summary>

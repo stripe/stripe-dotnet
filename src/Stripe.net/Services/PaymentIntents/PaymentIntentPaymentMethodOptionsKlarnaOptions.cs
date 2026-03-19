@@ -85,9 +85,7 @@ namespace Stripe
         /// Supplementary Purchase Data for the corresponding Klarna payment.
         /// </summary>
         [JsonProperty("supplementary_purchase_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supplementary_purchase_data")]
-#endif
         public PaymentIntentPaymentMethodOptionsKlarnaSupplementaryPurchaseDataOptions SupplementaryPurchaseData { get; set; }
     }
 }

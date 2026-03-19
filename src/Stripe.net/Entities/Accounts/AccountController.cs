@@ -9,15 +9,11 @@ namespace Stripe
     public class AccountController : StripeEntity<AccountController>
     {
         [JsonProperty("application")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application")]
-#endif
         public AccountControllerApplication Application { get; set; }
 
         [JsonProperty("dashboard")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dashboard")]
-#endif
         public AccountControllerDashboard Dashboard { get; set; }
 
         [JsonProperty("fees")]

@@ -110,9 +110,7 @@ namespace Stripe
         /// Billing schedules for this subscription.
         /// </summary>
         [JsonProperty("billing_schedules")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_schedules")]
-#endif
         public List<SubscriptionBillingSchedule> BillingSchedules { get; set; }
 
         /// <summary>
@@ -409,9 +407,7 @@ namespace Stripe
         /// Details of the most recent price migration that failed for the subscription.
         /// </summary>
         [JsonProperty("last_price_migration_error")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_price_migration_error")]
-#endif
         public SubscriptionLastPriceMigrationError LastPriceMigrationError { get; set; }
 
         #region Expandable LatestInvoice
@@ -465,9 +461,7 @@ namespace Stripe
         /// href="https://stripe.com/api/payment_intents/object">PaymentIntents</a>.
         /// </summary>
         [JsonProperty("managed_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_payments")]
-#endif
         public SubscriptionManagedPayments ManagedPayments { get; set; }
 
         /// <summary>
@@ -614,9 +608,7 @@ namespace Stripe
         /// Time period and invoice for a Subscription billed in advance.
         /// </summary>
         [JsonProperty("prebilling")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling")]
-#endif
         public SubscriptionPrebilling Prebilling { get; set; }
 
         #region Expandable Schedule

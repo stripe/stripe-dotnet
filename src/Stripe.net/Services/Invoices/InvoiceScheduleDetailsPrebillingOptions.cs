@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsPrebillingOptions : INestedOptions
     {
         /// <summary>
         /// The end of the prebilled time period.
         /// </summary>
         [JsonProperty("bill_until")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bill_until")]
-#endif
         public InvoiceScheduleDetailsPrebillingBillUntilOptions BillUntil { get; set; }
 
         /// <summary>
         /// This is used to determine the number of billing cycles to prebill.
         /// </summary>
         [JsonProperty("iterations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("iterations")]
-#endif
         public long? Iterations { get; set; }
     }
 }

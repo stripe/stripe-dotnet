@@ -49,9 +49,7 @@ namespace Stripe
         /// <c>default_margins</c> on the invoice do not apply to this invoice item.
         /// </summary>
         [JsonProperty("margins")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("margins")]
-#endif
         public List<string> Margins { get; set; }
 
         /// <summary>

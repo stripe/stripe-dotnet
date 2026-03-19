@@ -14,9 +14,7 @@ namespace Stripe
         /// <c>false</c>.
         /// </summary>
         [JsonProperty("email_customers_on_successful_payment")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("email_customers_on_successful_payment")]
-#endif
         public bool? EmailCustomersOnSuccessfulPayment { get; set; }
 
         /// <summary>

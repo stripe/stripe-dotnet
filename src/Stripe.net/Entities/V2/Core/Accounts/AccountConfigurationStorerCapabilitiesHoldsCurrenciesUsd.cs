@@ -3,10 +3,10 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationStorerCapabilitiesHoldsCurrenciesUsd : StripeEntity<AccountConfigurationStorerCapabilitiesHoldsCurrenciesUsd>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// One of: <c>active</c>, <c>pending</c>, <c>restricted</c>, or <c>unsupported</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Core
         /// is <c>active</c>.
         /// </summary>
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
-#endif
         public List<AccountConfigurationStorerCapabilitiesHoldsCurrenciesUsdStatusDetail> StatusDetails { get; set; }
     }
 }

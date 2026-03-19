@@ -14,9 +14,7 @@ namespace Stripe
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsFilters Filters { get; set; }
 
         [JsonProperty("manual_entry")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("manual_entry")]
-#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsManualEntry ManualEntry { get; set; }
 
         /// <summary>

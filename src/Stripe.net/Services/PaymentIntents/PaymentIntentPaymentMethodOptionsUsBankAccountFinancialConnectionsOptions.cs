@@ -21,9 +21,7 @@ namespace Stripe
         /// Customize manual entry behavior.
         /// </summary>
         [JsonProperty("manual_entry")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("manual_entry")]
-#endif
         public PaymentIntentPaymentMethodOptionsUsBankAccountFinancialConnectionsManualEntryOptions ManualEntry { get; set; }
 
         /// <summary>

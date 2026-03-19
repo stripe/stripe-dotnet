@@ -75,9 +75,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_decremental_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_decremental_authorization")]
-#endif
         public string RequestDecrementalAuthorization { get; set; }
 
         /// <summary>
@@ -124,9 +122,7 @@ namespace Stripe
         /// One of: <c>if_available</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("request_partial_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("request_partial_authorization")]
-#endif
         public string RequestPartialAuthorization { get; set; }
 
         /// <summary>
@@ -209,9 +205,7 @@ namespace Stripe
         /// details shown on your customers' statements.
         /// </summary>
         [JsonProperty("statement_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_details")]
-#endif
         public PaymentIntentPaymentMethodOptionsCardStatementDetailsOptions StatementDetails { get; set; }
 
         /// <summary>

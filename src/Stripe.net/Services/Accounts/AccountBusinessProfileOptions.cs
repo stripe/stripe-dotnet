@@ -70,9 +70,7 @@ namespace Stripe
         /// Transaction Act. Used by the Checkout product and for Japanese payment methods.
         /// </summary>
         [JsonProperty("specified_commercial_transactions_act_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("specified_commercial_transactions_act_url")]
-#endif
         public string SpecifiedCommercialTransactionsActUrl { get; set; }
 
         /// <summary>

@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuotePreviewSubscriptionSchedulePhaseAutomaticTax : StripeEntity<QuotePreviewSubscriptionSchedulePhaseAutomaticTax>
     {
         /// <summary>
         /// If Stripe disabled automatic tax, this enum describes why.
         /// </summary>
         [JsonProperty("disabled_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("disabled_reason")]
-#endif
         public string DisabledReason { get; set; }
 
         /// <summary>
         /// Whether Stripe automatically computes tax on invoices created during this phase.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool Enabled { get; set; }
 
         /// <summary>
@@ -32,9 +28,7 @@ namespace Stripe
         /// transaction is returned in the report of the connected account.
         /// </summary>
         [JsonProperty("liability")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("liability")]
-#endif
         public QuotePreviewSubscriptionSchedulePhaseAutomaticTaxLiability Liability { get; set; }
     }
 }

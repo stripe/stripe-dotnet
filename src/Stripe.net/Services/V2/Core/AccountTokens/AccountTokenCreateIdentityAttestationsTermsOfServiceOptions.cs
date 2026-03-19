@@ -21,9 +21,7 @@ namespace Stripe.V2.Core
         /// User Agent are expanded by Stripe.
         /// </summary>
         [JsonProperty("storer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("storer")]
-#endif
         public AccountTokenCreateIdentityAttestationsTermsOfServiceStorerOptions Storer { get; set; }
     }
 }

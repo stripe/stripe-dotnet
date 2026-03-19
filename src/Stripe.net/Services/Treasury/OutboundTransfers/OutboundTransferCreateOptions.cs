@@ -75,9 +75,7 @@ namespace Stripe.Treasury
         /// Details about the network used for the OutboundTransfer.
         /// </summary>
         [JsonProperty("network_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_details")]
-#endif
         public OutboundTransferNetworkDetailsOptions NetworkDetails { get; set; }
 
         /// <summary>

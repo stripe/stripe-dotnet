@@ -118,9 +118,7 @@ namespace Stripe
         public long? ApplicationFeeAmount { get; set; }
 
         [JsonProperty("async_workflows")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("async_workflows")]
-#endif
         public PaymentIntentAsyncWorkflows AsyncWorkflows { get; set; }
 
         /// <summary>
@@ -311,9 +309,7 @@ namespace Stripe
         /// The FX Quote used for the PaymentIntent.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         [JsonProperty("hooks")]
@@ -379,9 +375,7 @@ namespace Stripe
         /// Settings for Managed Payments.
         /// </summary>
         [JsonProperty("managed_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_payments")]
-#endif
         public PaymentIntentManagedPayments ManagedPayments { get; set; }
 
         /// <summary>
@@ -570,9 +564,7 @@ namespace Stripe
         /// One of: <c>optional</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("secret_key_confirmation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("secret_key_confirmation")]
-#endif
         public string SecretKeyConfirmation { get; set; }
 
         /// <summary>

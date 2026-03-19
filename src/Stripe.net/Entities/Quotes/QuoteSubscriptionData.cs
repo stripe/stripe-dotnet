@@ -7,18 +7,14 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteSubscriptionData : StripeEntity<QuoteSubscriptionData>, IHasMetadata
     {
         /// <summary>
         /// Describes the period to bill for upon accepting the quote.
         /// </summary>
         [JsonProperty("bill_on_acceptance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bill_on_acceptance")]
-#endif
         public QuoteSubscriptionDataBillOnAcceptance BillOnAcceptance { get; set; }
 
         /// <summary>
@@ -30,9 +26,7 @@ namespace Stripe
         /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
         /// </summary>
         [JsonProperty("billing_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_behavior")]
-#endif
         public string BillingBehavior { get; set; }
 
         /// <summary>
@@ -40,9 +34,7 @@ namespace Stripe
         /// accepted.
         /// </summary>
         [JsonProperty("billing_cycle_anchor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_cycle_anchor")]
-#endif
         public string BillingCycleAnchor { get; set; }
 
         /// <summary>
@@ -77,9 +69,7 @@ namespace Stripe
         /// One of: <c>cancel</c>, or <c>release</c>.
         /// </summary>
         [JsonProperty("end_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_behavior")]
-#endif
         public string EndBehavior { get; set; }
 
         #region Expandable FromSubscription
@@ -89,9 +79,7 @@ namespace Stripe
         /// The id of the subscription that will be updated when the quote is accepted.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string FromSubscriptionId
         {
             get => this.InternalFromSubscription?.Id;
@@ -105,9 +93,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Subscription FromSubscription
         {
             get => this.InternalFromSubscription?.ExpandedObject;
@@ -116,10 +102,8 @@ namespace Stripe
 
         [JsonProperty("from_subscription")]
         [JsonConverter(typeof(ExpandableFieldConverter<Subscription>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("from_subscription")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Subscription>))]
-#endif
         internal ExpandableField<Subscription> InternalFromSubscription { get; set; }
         #endregion
 
@@ -141,9 +125,7 @@ namespace Stripe
         /// when the quote is accepted. Cannot be used with <c>effective_date</c>.
         /// </summary>
         [JsonProperty("prebilling")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling")]
-#endif
         public QuoteSubscriptionDataPrebilling Prebilling { get; set; }
 
         /// <summary>
@@ -153,9 +135,7 @@ namespace Stripe
         /// One of: <c>always_invoice</c>, <c>create_prorations</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("proration_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("proration_behavior")]
-#endif
         public string ProrationBehavior { get; set; }
 
         /// <summary>

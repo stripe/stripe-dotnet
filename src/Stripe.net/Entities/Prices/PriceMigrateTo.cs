@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PriceMigrateTo : StripeEntity<PriceMigrateTo>
     {
         /// <summary>
@@ -15,9 +14,7 @@ namespace Stripe
         /// price.
         /// </summary>
         [JsonProperty("behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("behavior")]
-#endif
         public string Behavior { get; set; }
 
         /// <summary>
@@ -25,19 +22,15 @@ namespace Stripe
         /// </summary>
         [JsonProperty("effective_after")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("effective_after")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime EffectiveAfter { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The id of the price being migrated to.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
     }
 }

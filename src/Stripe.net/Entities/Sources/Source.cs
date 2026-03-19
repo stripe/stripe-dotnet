@@ -186,9 +186,7 @@ namespace Stripe
         public SourceP24 P24 { get; set; }
 
         [JsonProperty("paypal")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypal")]
-#endif
         public SourcePaypal Paypal { get; set; }
 
         [JsonProperty("receiver")]

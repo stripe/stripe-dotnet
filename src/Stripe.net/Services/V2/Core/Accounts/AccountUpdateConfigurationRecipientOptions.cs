@@ -32,9 +32,7 @@ namespace Stripe.V2.Core
         /// recipient's payment details</a>.
         /// </summary>
         [JsonProperty("default_outbound_destination")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_outbound_destination")]
-#endif
         public string DefaultOutboundDestination { get; set; }
     }
 }

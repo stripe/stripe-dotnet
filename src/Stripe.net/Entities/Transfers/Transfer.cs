@@ -189,9 +189,7 @@ namespace Stripe
         /// The FX Quote used for the transfer.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         /// <summary>

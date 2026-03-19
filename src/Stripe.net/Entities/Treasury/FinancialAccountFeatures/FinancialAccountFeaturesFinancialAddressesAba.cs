@@ -14,9 +14,7 @@ namespace Stripe.Treasury
         /// One of: <c>evolve</c>, <c>fifth_third</c>, or <c>goldman_sachs</c>.
         /// </summary>
         [JsonProperty("bank")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank")]
-#endif
         public string Bank { get; set; }
 
         /// <summary>

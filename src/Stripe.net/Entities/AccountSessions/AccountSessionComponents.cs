@@ -21,21 +21,15 @@ namespace Stripe
         public AccountSessionComponentsBalances Balances { get; set; }
 
         [JsonProperty("capital_financing")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital_financing")]
-#endif
         public AccountSessionComponentsCapitalFinancing CapitalFinancing { get; set; }
 
         [JsonProperty("capital_financing_application")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital_financing_application")]
-#endif
         public AccountSessionComponentsCapitalFinancingApplication CapitalFinancingApplication { get; set; }
 
         [JsonProperty("capital_financing_promotion")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capital_financing_promotion")]
-#endif
         public AccountSessionComponentsCapitalFinancingPromotion CapitalFinancingPromotion { get; set; }
 
         [JsonProperty("disputes_list")]

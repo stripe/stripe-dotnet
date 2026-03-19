@@ -105,9 +105,7 @@ namespace Stripe
         /// href="https://docs.stripe.com/billing/automations">Automation</a> action.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public EventReason Reason { get; set; }
 
         /// <summary>

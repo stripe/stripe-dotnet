@@ -2,37 +2,31 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentDetailsCarRentalDatumVehicle : StripeEntity<PaymentIntentPaymentDetailsCarRentalDatumVehicle>
     {
         /// <summary>
         /// Make of the vehicle.
         /// </summary>
         [JsonProperty("make")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("make")]
-#endif
         public string Make { get; set; }
 
         /// <summary>
         /// Model of the vehicle.
         /// </summary>
         [JsonProperty("model")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("model")]
-#endif
         public string Model { get; set; }
 
         /// <summary>
         /// Odometer reading.
         /// </summary>
         [JsonProperty("odometer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("odometer")]
-#endif
         public long Odometer { get; set; }
 
         /// <summary>
@@ -48,9 +42,7 @@ namespace Stripe
         /// <c>twenty_six_foot_truck</c>, or <c>unique</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
@@ -58,18 +50,14 @@ namespace Stripe
         /// One of: <c>business</c>, <c>economy</c>, <c>first_class</c>, or <c>premium_economy</c>.
         /// </summary>
         [JsonProperty("vehicle_class")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("vehicle_class")]
-#endif
         public string VehicleClass { get; set; }
 
         /// <summary>
         /// Vehicle identification number.
         /// </summary>
         [JsonProperty("vehicle_identification_number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("vehicle_identification_number")]
-#endif
         public string VehicleIdentificationNumber { get; set; }
     }
 }

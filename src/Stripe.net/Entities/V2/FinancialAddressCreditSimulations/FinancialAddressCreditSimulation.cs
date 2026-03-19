@@ -2,14 +2,14 @@
 namespace Stripe.V2
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Credit Simulations represent simulated credit transactions applied to financial
     /// addresses for testing purposes.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancialAddressCreditSimulation : StripeEntity<FinancialAddressCreditSimulation>, IHasObject
     {
         /// <summary>
@@ -17,9 +17,7 @@ namespace Stripe.V2
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -27,18 +25,14 @@ namespace Stripe.V2
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The status of the request, signifying whether a simulated credit was initiated.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

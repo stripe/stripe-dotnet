@@ -55,9 +55,7 @@ namespace Stripe
         /// confirmed.
         /// </summary>
         [JsonProperty("shipping")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping")]
-#endif
         public Address Shipping { get; set; }
 
         /// <summary>
@@ -74,9 +72,7 @@ namespace Stripe
         /// confirmed.
         /// </summary>
         [JsonProperty("verified_address")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verified_address")]
-#endif
         public Address VerifiedAddress { get; set; }
 
         /// <summary>
@@ -84,9 +80,7 @@ namespace Stripe
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
         [JsonProperty("verified_email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verified_email")]
-#endif
         public string VerifiedEmail { get; set; }
 
         /// <summary>
@@ -94,9 +88,7 @@ namespace Stripe
         /// supported) at the time of authorization or settlement. They cannot be set or mutated.
         /// </summary>
         [JsonProperty("verified_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verified_name")]
-#endif
         public string VerifiedName { get; set; }
     }
 }

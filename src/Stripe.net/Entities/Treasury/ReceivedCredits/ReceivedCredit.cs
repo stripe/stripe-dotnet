@@ -114,9 +114,7 @@ namespace Stripe.Treasury
         /// Details specific to the money movement rails.
         /// </summary>
         [JsonProperty("network_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_details")]
-#endif
         public ReceivedCreditNetworkDetails NetworkDetails { get; set; }
 
         /// <summary>

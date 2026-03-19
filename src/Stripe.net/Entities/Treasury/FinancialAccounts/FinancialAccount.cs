@@ -71,9 +71,7 @@ namespace Stripe.Treasury
         /// <c>display_name</c> is not internal metadata and will be exposed to connected accounts.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>

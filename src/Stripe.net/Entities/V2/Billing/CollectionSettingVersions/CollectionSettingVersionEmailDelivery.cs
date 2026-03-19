@@ -2,10 +2,10 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CollectionSettingVersionEmailDelivery : StripeEntity<CollectionSettingVersionEmailDelivery>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Billing
         /// and transitions to Open state.
         /// </summary>
         [JsonProperty("payment_due")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_due")]
-#endif
         public CollectionSettingVersionEmailDeliveryPaymentDue PaymentDue { get; set; }
     }
 }

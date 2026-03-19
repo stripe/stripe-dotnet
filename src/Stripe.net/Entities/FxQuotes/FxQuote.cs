@@ -5,9 +5,7 @@ namespace Stripe
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// The FX Quotes API provides three functions: - View Stripe's current exchange rate for
@@ -19,24 +17,21 @@ namespace Stripe
     /// <a href="https://stripe.com/payments/currencies/localize-prices/fx-quotes-api">View the
     /// docs</a>.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FxQuote : StripeEntity<FxQuote>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -44,10 +39,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -57,9 +50,7 @@ namespace Stripe
         /// One of: <c>day</c>, <c>five_minutes</c>, <c>hour</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("lock_duration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lock_duration")]
-#endif
         public string LockDuration { get; set; }
 
         /// <summary>
@@ -69,10 +60,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("lock_expires_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lock_expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? LockExpiresAt { get; set; }
 
         /// <summary>
@@ -83,18 +72,14 @@ namespace Stripe
         /// One of: <c>active</c>, <c>expired</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("lock_status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lock_status")]
-#endif
         public string LockStatus { get; set; }
 
         /// <summary>
         /// Information about the rates.
         /// </summary>
         [JsonProperty("rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rates")]
-#endif
         public Dictionary<string, FxQuoteRates> Rates { get; set; }
 
         /// <summary>
@@ -103,15 +88,11 @@ namespace Stripe
         /// currency.
         /// </summary>
         [JsonProperty("to_currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("to_currency")]
-#endif
         public string ToCurrency { get; set; }
 
         [JsonProperty("usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage")]
-#endif
         public FxQuoteUsage Usage { get; set; }
     }
 }

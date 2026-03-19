@@ -121,9 +121,7 @@ namespace Stripe
         /// calculate the discount.
         /// </summary>
         [JsonProperty("script")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("script")]
-#endif
         public CouponScriptOptions Script { get; set; }
     }
 }

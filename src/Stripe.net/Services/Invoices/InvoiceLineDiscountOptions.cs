@@ -26,9 +26,7 @@ namespace Stripe
         /// Details to determine how long the discount should be applied for.
         /// </summary>
         [JsonProperty("discount_end")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_end")]
-#endif
         public InvoiceLineDiscountDiscountEndOptions DiscountEnd { get; set; }
 
         /// <summary>

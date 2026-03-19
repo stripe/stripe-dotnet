@@ -265,9 +265,7 @@ namespace Stripe
         /// to the Gojek app to confirm payment.
         /// </summary>
         [JsonProperty("gopay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gopay")]
-#endif
         public PaymentMethodConfigurationGopayOptions Gopay { get; set; }
 
         /// <summary>
@@ -285,9 +283,7 @@ namespace Stripe
         /// transfers are a popular B2C and B2B payment method in Indonesia.
         /// </summary>
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public PaymentMethodConfigurationIdBankTransferOptions IdBankTransfer { get; set; }
 
         /// <summary>
@@ -472,9 +468,7 @@ namespace Stripe
         /// Customers can pay with PayPay online or using the PayPay app.
         /// </summary>
         [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay")]
-#endif
         public PaymentMethodConfigurationPaypayOptions Paypay { get; set; }
 
         /// <summary>
@@ -511,9 +505,7 @@ namespace Stripe
         /// payments by scanning a QR code in their preferred digital wallet app.
         /// </summary>
         [JsonProperty("qris")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qris")]
-#endif
         public PaymentMethodConfigurationQrisOptions Qris { get; set; }
 
         /// <summary>
@@ -568,9 +560,7 @@ namespace Stripe
         /// to the Shopee app to confirm payment.
         /// </summary>
         [JsonProperty("shopeepay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shopeepay")]
-#endif
         public PaymentMethodConfigurationShopeepayOptions Shopeepay { get; set; }
 
         /// <summary>

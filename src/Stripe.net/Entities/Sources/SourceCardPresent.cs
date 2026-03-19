@@ -29,9 +29,7 @@ namespace Stripe
         public string Brand { get; set; }
 
         [JsonProperty("brand_product")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand_product")]
-#endif
         public string BrandProduct { get; set; }
 
         [JsonProperty("country")]

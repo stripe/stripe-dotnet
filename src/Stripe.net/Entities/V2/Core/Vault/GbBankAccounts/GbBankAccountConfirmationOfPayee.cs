@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core.Vault
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class GbBankAccountConfirmationOfPayee : StripeEntity<GbBankAccountConfirmationOfPayee>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core.Vault
         /// enum.
         /// </summary>
         [JsonProperty("result")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result")]
-#endif
         public GbBankAccountConfirmationOfPayeeResult Result { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core.Vault
         /// One of: <c>awaiting_acknowledgement</c>, <c>confirmed</c>, or <c>uninitiated</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

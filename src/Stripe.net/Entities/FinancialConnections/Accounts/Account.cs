@@ -46,9 +46,7 @@ namespace Stripe.FinancialConnections
         /// The ID of the Financial Connections Authorization this account belongs to.
         /// </summary>
         [JsonProperty("authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authorization")]
-#endif
         public string Authorization { get; set; }
 
         /// <summary>
@@ -94,9 +92,7 @@ namespace Stripe.FinancialConnections
         /// The state of the most recent attempt to refresh the account's inferred balance history.
         /// </summary>
         [JsonProperty("inferred_balances_refresh")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inferred_balances_refresh")]
-#endif
         public AccountInferredBalancesRefresh InferredBalancesRefresh { get; set; }
 
         #region Expandable Institution
@@ -107,9 +103,7 @@ namespace Stripe.FinancialConnections
         /// relationship may sometimes change in rare circumstances (e.g. institution mergers).
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string InstitutionId
         {
             get => this.InternalInstitution?.Id;
@@ -124,9 +118,7 @@ namespace Stripe.FinancialConnections
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public Institution Institution
         {
             get => this.InternalInstitution?.ExpandedObject;
@@ -135,10 +127,8 @@ namespace Stripe.FinancialConnections
 
         [JsonProperty("institution")]
         [JsonConverter(typeof(ExpandableFieldConverter<Institution>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("institution")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<Institution>))]
-#endif
         internal ExpandableField<Institution> InternalInstitution { get; set; }
         #endregion
 
@@ -224,9 +214,7 @@ namespace Stripe.FinancialConnections
         public string Status { get; set; }
 
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
-#endif
         public AccountStatusDetails StatusDetails { get; set; }
 
         /// <summary>

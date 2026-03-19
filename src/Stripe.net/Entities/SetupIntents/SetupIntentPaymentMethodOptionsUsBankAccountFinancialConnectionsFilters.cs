@@ -22,9 +22,7 @@ namespace Stripe
         /// The institution to use to filter for possible accounts to link.
         /// </summary>
         [JsonProperty("institution")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("institution")]
-#endif
         public string Institution { get; set; }
     }
 }

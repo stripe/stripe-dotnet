@@ -17,6 +17,13 @@ namespace Stripe.V2.Core
         public EventDestinationCreateAmazonEventbridgeOptions AmazonEventbridge { get; set; }
 
         /// <summary>
+        /// Azure Event Grid configuration.
+        /// </summary>
+        [JsonProperty("azure_event_grid")]
+        [STJS.JsonPropertyName("azure_event_grid")]
+        public EventDestinationCreateAzureEventGridOptions AzureEventGrid { get; set; }
+
+        /// <summary>
         /// An optional description of what the event destination is used for.
         /// </summary>
         [JsonProperty("description")]
@@ -81,7 +88,7 @@ namespace Stripe.V2.Core
 
         /// <summary>
         /// Event destination type.
-        /// One of: <c>amazon_eventbridge</c>, or <c>webhook_endpoint</c>.
+        /// One of: <c>amazon_eventbridge</c>, <c>azure_event_grid</c>, or <c>webhook_endpoint</c>.
         /// </summary>
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]

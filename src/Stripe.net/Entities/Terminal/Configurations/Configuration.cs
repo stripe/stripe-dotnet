@@ -75,9 +75,7 @@ namespace Stripe.Terminal
         public ConfigurationOffline Offline { get; set; }
 
         [JsonProperty("reader_security")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reader_security")]
-#endif
         public ConfigurationReaderSecurity ReaderSecurity { get; set; }
 
         [JsonProperty("reboot_window")]

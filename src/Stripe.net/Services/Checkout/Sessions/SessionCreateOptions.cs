@@ -266,9 +266,7 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/api/subscriptions/object">Subscriptions</a>.
         /// </summary>
         [JsonProperty("managed_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_payments")]
-#endif
         public SessionManagedPaymentsOptions ManagedPayments { get; set; }
 
         /// <summary>

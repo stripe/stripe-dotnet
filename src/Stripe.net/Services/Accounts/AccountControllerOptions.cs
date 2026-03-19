@@ -12,18 +12,14 @@ namespace Stripe
         /// A hash of configuration describing the Connect application that controls the account.
         /// </summary>
         [JsonProperty("application")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("application")]
-#endif
         public AccountControllerApplicationOptions Application { get; set; }
 
         /// <summary>
         /// Properties of the account's dashboard.
         /// </summary>
         [JsonProperty("dashboard")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dashboard")]
-#endif
         public AccountControllerDashboardOptions Dashboard { get; set; }
 
         /// <summary>

@@ -71,9 +71,7 @@ namespace Stripe.V2.Core
         /// Settings for Smart Disputes automatic response feature.
         /// </summary>
         [JsonProperty("smart_disputes")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("smart_disputes")]
-#endif
         public AccountUpdateConfigurationMerchantSmartDisputesOptions SmartDisputes { get; set; }
 
         /// <summary>

@@ -45,9 +45,7 @@ namespace Stripe
         /// to pass to invoices created by the subscription.
         /// </summary>
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsIdBankTransfer IdBankTransfer { get; set; }
 
         /// <summary>
@@ -71,9 +69,7 @@ namespace Stripe
         /// created by the subscription.
         /// </summary>
         [JsonProperty("pix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsPix Pix { get; set; }
 
         /// <summary>
@@ -89,9 +85,7 @@ namespace Stripe
         /// created by the subscription.
         /// </summary>
         [JsonProperty("upi")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("upi")]
-#endif
         public SubscriptionPaymentSettingsPaymentMethodOptionsUpi Upi { get; set; }
 
         /// <summary>

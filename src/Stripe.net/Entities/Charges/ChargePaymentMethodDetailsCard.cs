@@ -20,9 +20,7 @@ namespace Stripe
         /// The latest amount intended to be authorized by this charge.
         /// </summary>
         [JsonProperty("amount_requested")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_requested")]
-#endif
         public long? AmountRequested { get; set; }
 
         /// <summary>
@@ -67,9 +65,7 @@ namespace Stripe
         public string Country { get; set; }
 
         [JsonProperty("decremental_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("decremental_authorization")]
-#endif
         public ChargePaymentMethodDetailsCardDecrementalAuthorization DecrementalAuthorization { get; set; }
 
         /// <summary>
@@ -207,9 +203,7 @@ namespace Stripe
         public ChargePaymentMethodDetailsCardOvercapture Overcapture { get; set; }
 
         [JsonProperty("partial_authorization")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("partial_authorization")]
-#endif
         public ChargePaymentMethodDetailsCardPartialAuthorization PartialAuthorization { get; set; }
 
         /// <summary>

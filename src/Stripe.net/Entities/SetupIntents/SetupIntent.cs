@@ -288,9 +288,7 @@ namespace Stripe
         public bool Livemode { get; set; }
 
         [JsonProperty("managed_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("managed_payments")]
-#endif
         public SetupIntentManagedPayments ManagedPayments { get; set; }
 
         #region Expandable Mandate

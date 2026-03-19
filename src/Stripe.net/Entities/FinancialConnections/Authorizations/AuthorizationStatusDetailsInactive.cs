@@ -2,10 +2,10 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AuthorizationStatusDetailsInactive : StripeEntity<AuthorizationStatusDetailsInactive>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.FinancialConnections
         /// One of: <c>none</c>, or <c>relink_required</c>.
         /// </summary>
         [JsonProperty("action")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("action")]
-#endif
         public string Action { get; set; }
     }
 }

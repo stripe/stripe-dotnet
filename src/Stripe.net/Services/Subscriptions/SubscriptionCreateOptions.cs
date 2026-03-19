@@ -81,9 +81,7 @@ namespace Stripe
         /// Sets the billing schedules for the subscription.
         /// </summary>
         [JsonProperty("billing_schedules")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_schedules")]
-#endif
         public List<SubscriptionBillingScheduleOptions> BillingSchedules { get; set; }
 
         /// <summary>
@@ -309,9 +307,7 @@ namespace Stripe
         /// now.
         /// </summary>
         [JsonProperty("prebilling")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling")]
-#endif
         public SubscriptionPrebillingOptions Prebilling { get; set; }
 
         /// <summary>

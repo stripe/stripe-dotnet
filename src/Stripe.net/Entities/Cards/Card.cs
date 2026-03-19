@@ -149,9 +149,7 @@ namespace Stripe
         /// only and not typically available in standard API requests.).
         /// </summary>
         [JsonProperty("brand_product")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("brand_product")]
-#endif
         public string BrandProduct { get; set; }
 
         /// <summary>

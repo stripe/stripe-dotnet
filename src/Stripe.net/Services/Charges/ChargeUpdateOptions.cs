@@ -58,9 +58,7 @@ namespace Stripe
         /// Provides industry-specific information about the charge.
         /// </summary>
         [JsonProperty("payment_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_details")]
-#endif
         public ChargePaymentDetailsOptions PaymentDetails { get; set; }
 
         /// <summary>

@@ -40,9 +40,7 @@ namespace Stripe.V2.Core
         /// FinancialAccounts.
         /// </summary>
         [JsonProperty("storer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("storer")]
-#endif
         public AccountCreateConfigurationStorerOptions Storer { get; set; }
     }
 }

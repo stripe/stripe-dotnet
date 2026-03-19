@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OrderPaymentSettingsPaymentMethodOptionsKlarnaSupplementaryPurchaseDataRoundTripReservationDetailInsuranceOptions : INestedOptions
     {
         /// <summary>
         /// Insurance currency.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Name of the company providing the insurance.
         /// </summary>
         [JsonProperty("insurance_company_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("insurance_company_name")]
-#endif
         public string InsuranceCompanyName { get; set; }
 
         /// <summary>
@@ -32,18 +28,14 @@ namespace Stripe
         /// <c>medical</c>.
         /// </summary>
         [JsonProperty("insurance_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("insurance_type")]
-#endif
         public string InsuranceType { get; set; }
 
         /// <summary>
         /// Price of insurance in cents.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public long? Price { get; set; }
     }
 }

@@ -153,9 +153,7 @@ namespace Stripe
         /// page for more details</a>.
         /// </summary>
         [JsonProperty("risk_controls")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("risk_controls")]
-#endif
         public AccountRiskControlsOptions RiskControls { get; set; }
 
         /// <summary>

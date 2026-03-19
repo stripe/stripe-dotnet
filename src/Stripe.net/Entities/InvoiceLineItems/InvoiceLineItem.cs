@@ -124,9 +124,7 @@ namespace Stripe
         /// The amount of margin calculated per margin for this line item.
         /// </summary>
         [JsonProperty("margin_amounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("margin_amounts")]
-#endif
         public List<InvoiceLineItemMarginAmount> MarginAmounts { get; set; }
 
         #region Expandable Margins
@@ -138,9 +136,7 @@ namespace Stripe
         /// margin.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<string> MarginIds
         {
             get => this.InternalMargins?.Select((x) => x.Id).ToList();
@@ -156,9 +152,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<Margin> Margins
         {
             get => this.InternalMargins?.Select((x) => x.ExpandedObject).ToList();
@@ -166,9 +160,7 @@ namespace Stripe
         }
 
         [JsonProperty("margins", ItemConverterType = typeof(ExpandableFieldConverter<Margin>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("margins")]
-#endif
         internal List<ExpandableField<Margin>> InternalMargins { get; set; }
         #endregion
 
@@ -254,9 +246,7 @@ namespace Stripe
         /// The tax calculation identifiers of the line item.
         /// </summary>
         [JsonProperty("tax_calculation_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_calculation_reference")]
-#endif
         public InvoiceLineItemTaxCalculationReference TaxCalculationReference { get; set; }
 
         /// <summary>

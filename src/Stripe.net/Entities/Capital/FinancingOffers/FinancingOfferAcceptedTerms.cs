@@ -2,10 +2,10 @@
 namespace Stripe.Capital
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FinancingOfferAcceptedTerms : StripeEntity<FinancingOfferAcceptedTerms>
     {
         /// <summary>
@@ -13,27 +13,21 @@ namespace Stripe.Capital
         /// 100000.
         /// </summary>
         [JsonProperty("advance_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("advance_amount")]
-#endif
         public long AdvanceAmount { get; set; }
 
         /// <summary>
         /// Currency that the financing offer is transacted in. For example, <c>usd</c>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// Fixed fee amount, in minor units. For example, 100 USD is represented as 10000.
         /// </summary>
         [JsonProperty("fee_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fee_amount")]
-#endif
         public long FeeAmount { get; set; }
 
         /// <summary>
@@ -42,18 +36,14 @@ namespace Stripe.Capital
         /// time.
         /// </summary>
         [JsonProperty("previous_financing_fee_discount_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("previous_financing_fee_discount_amount")]
-#endif
         public long? PreviousFinancingFeeDiscountAmount { get; set; }
 
         /// <summary>
         /// Per-transaction rate at which Stripe withholds funds to repay the financing.
         /// </summary>
         [JsonProperty("withhold_rate")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("withhold_rate")]
-#endif
         public decimal WithholdRate { get; set; }
     }
 }

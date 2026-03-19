@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core.Vault
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class UsBankAccountVerification : StripeEntity<UsBankAccountVerification>
     {
         /// <summary>
         /// The microdeposit verification details if the status is awaiting verification.
         /// </summary>
         [JsonProperty("microdeposit_verification_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("microdeposit_verification_details")]
-#endif
         public UsBankAccountVerificationMicrodepositVerificationDetails MicrodepositVerificationDetails { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core.Vault
         /// <c>verified</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

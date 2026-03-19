@@ -177,9 +177,7 @@ namespace Stripe
         /// method.
         /// </summary>
         [JsonProperty("gopay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gopay")]
-#endif
         public PaymentIntentPaymentMethodDataGopayOptions Gopay { get; set; }
 
         /// <summary>
@@ -195,9 +193,7 @@ namespace Stripe
         /// IdBankTransfer payment method.
         /// </summary>
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public PaymentIntentPaymentMethodDataIdBankTransferOptions IdBankTransfer { get; set; }
 
         /// <summary>
@@ -359,9 +355,7 @@ namespace Stripe
         /// payment method.
         /// </summary>
         [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay")]
-#endif
         public PaymentIntentPaymentMethodDataPaypayOptions Paypay { get; set; }
 
         /// <summary>
@@ -393,9 +387,7 @@ namespace Stripe
         /// payment method.
         /// </summary>
         [JsonProperty("qris")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qris")]
-#endif
         public PaymentIntentPaymentMethodDataQrisOptions Qris { get; set; }
 
         /// <summary>
@@ -412,9 +404,7 @@ namespace Stripe
         /// Rechnung payment method.
         /// </summary>
         [JsonProperty("rechnung")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rechnung")]
-#endif
         public PaymentIntentPaymentMethodDataRechnungOptions Rechnung { get; set; }
 
         /// <summary>
@@ -454,9 +444,7 @@ namespace Stripe
         /// payment method.
         /// </summary>
         [JsonProperty("shopeepay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shopeepay")]
-#endif
         public PaymentIntentPaymentMethodDataShopeepayOptions Shopeepay { get; set; }
 
         /// <summary>
@@ -471,9 +459,7 @@ namespace Stripe
         /// This hash contains details about the Stripe balance payment method.
         /// </summary>
         [JsonProperty("stripe_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_balance")]
-#endif
         public PaymentIntentPaymentMethodDataStripeBalanceOptions StripeBalance { get; set; }
 
         /// <summary>

@@ -180,9 +180,7 @@ namespace Stripe
         /// settlement amount.
         /// </summary>
         [JsonProperty("fx_quote")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fx_quote")]
-#endif
         public string FxQuote { get; set; }
 
         /// <summary>
@@ -335,9 +333,7 @@ namespace Stripe
         /// One of: <c>optional</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("secret_key_confirmation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("secret_key_confirmation")]
-#endif
         public string SecretKeyConfirmation { get; set; }
 
         /// <summary>

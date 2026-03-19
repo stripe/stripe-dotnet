@@ -144,9 +144,7 @@ namespace Stripe
         /// Options that configure the trial on the subscription item.
         /// </summary>
         [JsonProperty("trial")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("trial")]
-#endif
         public SubscriptionItemTrialOptions Trial { get; set; }
     }
 }

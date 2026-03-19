@@ -135,9 +135,7 @@ namespace Stripe
         /// Subscriptions using this price will be migrated to use the new referenced price.
         /// </summary>
         [JsonProperty("migrate_to")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("migrate_to")]
-#endif
         public PriceMigrateTo MigrateTo { get; set; }
 
         /// <summary>

@@ -4,19 +4,16 @@ namespace Stripe.Capital
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FinancingOfferListOptions : ListOptions
     {
         /// <summary>
         /// limit list to offers belonging to given connected account.
         /// </summary>
         [JsonProperty("connected_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("connected_account")]
-#endif
         public string ConnectedAccount { get; set; }
 
         /// <summary>
@@ -24,10 +21,8 @@ namespace Stripe.Capital
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(AnyOfConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJAnyOfConverter))]
-#endif
         public AnyOf<DateTime?, DateRangeOptions> Created { get; set; }
 
         /// <summary>
@@ -37,9 +32,7 @@ namespace Stripe.Capital
         /// or <c>undelivered</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

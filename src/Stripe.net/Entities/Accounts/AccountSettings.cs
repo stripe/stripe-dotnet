@@ -13,9 +13,7 @@ namespace Stripe
         public AccountSettingsBacsDebitPayments BacsDebitPayments { get; set; }
 
         [JsonProperty("bank_bca_onboarding")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_bca_onboarding")]
-#endif
         public AccountSettingsBankBcaOnboarding BankBcaOnboarding { get; set; }
 
         [JsonProperty("branding")]
@@ -47,9 +45,7 @@ namespace Stripe
         public AccountSettingsPayouts Payouts { get; set; }
 
         [JsonProperty("paypay_payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay_payments")]
-#endif
         public AccountSettingsPaypayPayments PaypayPayments { get; set; }
 
         [JsonProperty("sepa_debit_payments")]
@@ -57,15 +53,11 @@ namespace Stripe
         public AccountSettingsSepaDebitPayments SepaDebitPayments { get; set; }
 
         [JsonProperty("smart_disputes")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("smart_disputes")]
-#endif
         public AccountSettingsSmartDisputes SmartDisputes { get; set; }
 
         [JsonProperty("tax_forms")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_forms")]
-#endif
         public AccountSettingsTaxForms TaxForms { get; set; }
 
         [JsonProperty("treasury")]

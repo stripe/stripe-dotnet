@@ -4,10 +4,9 @@ namespace Stripe
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteSubscriptionDataBillOnAcceptanceBillUntil : StripeEntity<QuoteSubscriptionDataBillOnAcceptanceBillUntil>
     {
         /// <summary>
@@ -15,28 +14,22 @@ namespace Stripe
         /// </summary>
         [JsonProperty("computed")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("computed")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? Computed { get; set; }
 
         /// <summary>
         /// Time span for the quote line starting from the <c>starts_at</c> date.
         /// </summary>
         [JsonProperty("duration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("duration")]
-#endif
         public QuoteSubscriptionDataBillOnAcceptanceBillUntilDuration Duration { get; set; }
 
         /// <summary>
         /// The timestamp the given line ends at.
         /// </summary>
         [JsonProperty("line_ends_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_ends_at")]
-#endif
         public QuoteSubscriptionDataBillOnAcceptanceBillUntilLineEndsAt LineEndsAt { get; set; }
 
         /// <summary>
@@ -44,10 +37,8 @@ namespace Stripe
         /// </summary>
         [JsonProperty("timestamp")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("timestamp")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? Timestamp { get; set; }
 
         /// <summary>
@@ -56,9 +47,7 @@ namespace Stripe
         /// <c>upcoming_invoice</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

@@ -53,8 +53,9 @@ namespace Stripe.Billing
         /// The value triggering the alert.
         /// </summary>
         [JsonProperty("value")]
+        [JsonConverter(typeof(DecimalStringConverter))]
+        [STJS.JsonNumberHandling(STJS.JsonNumberHandling.AllowReadingFromString | STJS.JsonNumberHandling.WriteAsString)]
         [STJS.JsonPropertyName("value")]
-#endif
         public decimal Value { get; set; }
     }
 }

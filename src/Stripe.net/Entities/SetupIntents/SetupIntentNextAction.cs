@@ -14,9 +14,7 @@ namespace Stripe
         public SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode CashappHandleRedirectOrDisplayQrCode { get; set; }
 
         [JsonProperty("pix_display_qr_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix_display_qr_code")]
-#endif
         public SetupIntentNextActionPixDisplayQrCode PixDisplayQrCode { get; set; }
 
         [JsonProperty("redirect_to_url")]

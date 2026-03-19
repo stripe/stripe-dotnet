@@ -10,15 +10,11 @@ namespace Stripe
     public class PaymentIntentPaymentDetails : StripeEntity<PaymentIntentPaymentDetails>
     {
         [JsonProperty("car_rental")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("car_rental")]
-#endif
         public PaymentIntentPaymentDetailsCarRental CarRental { get; set; }
 
         [JsonProperty("car_rental_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("car_rental_data")]
-#endif
         public List<PaymentIntentPaymentDetailsCarRentalDatum> CarRentalData { get; set; }
 
         /// <summary>
@@ -32,21 +28,15 @@ namespace Stripe
         public string CustomerReference { get; set; }
 
         [JsonProperty("event_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_details")]
-#endif
         public PaymentIntentPaymentDetailsEventDetails EventDetails { get; set; }
 
         [JsonProperty("flight_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flight_data")]
-#endif
         public List<PaymentIntentPaymentDetailsFlightDatum> FlightData { get; set; }
 
         [JsonProperty("lodging_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lodging_data")]
-#endif
         public List<PaymentIntentPaymentDetailsLodgingDatum> LodgingData { get; set; }
 
         /// <summary>
@@ -66,9 +56,7 @@ namespace Stripe
         public string OrderReference { get; set; }
 
         [JsonProperty("subscription")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
-#endif
         public PaymentIntentPaymentDetailsSubscription Subscription { get; set; }
     }
 }

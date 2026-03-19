@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ChargePaymentDetailsCarRentalDistanceOptions : INestedOptions
     {
         /// <summary>
         /// Distance traveled.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// One of: <c>kilometers</c>, or <c>miles</c>.
         /// </summary>
         [JsonProperty("unit")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("unit")]
-#endif
         public string Unit { get; set; }
     }
 }

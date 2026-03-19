@@ -26,9 +26,7 @@ namespace Stripe
         /// The subscription which the quote updates.
         /// </summary>
         [JsonProperty("from_subscription")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("from_subscription")]
-#endif
         public string FromSubscription { get; set; }
 
         /// <summary>

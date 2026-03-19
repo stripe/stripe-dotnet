@@ -59,9 +59,7 @@ namespace Stripe.TestHelpers.Treasury
         /// Details about the network used for the ReceivedDebit.
         /// </summary>
         [JsonProperty("network_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network_details")]
-#endif
         public ReceivedDebitNetworkDetailsOptions NetworkDetails { get; set; }
     }
 }

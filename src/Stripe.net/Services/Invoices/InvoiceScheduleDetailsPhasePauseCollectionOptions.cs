@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsPhasePauseCollectionOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// One of: <c>keep_as_draft</c>, <c>mark_uncollectible</c>, or <c>void</c>.
         /// </summary>
         [JsonProperty("behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("behavior")]
-#endif
         public string Behavior { get; set; }
     }
 }

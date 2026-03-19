@@ -76,9 +76,7 @@ namespace Stripe
         /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
         /// </summary>
         [JsonProperty("billing_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_behavior")]
-#endif
         public string BillingBehavior { get; set; }
 
         /// <summary>
@@ -187,9 +185,7 @@ namespace Stripe
         /// Details of the most recent price migration that failed for the subscription schedule.
         /// </summary>
         [JsonProperty("last_price_migration_error")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last_price_migration_error")]
-#endif
         public SubscriptionScheduleLastPriceMigrationError LastPriceMigrationError { get; set; }
 
         /// <summary>
@@ -220,9 +216,7 @@ namespace Stripe
         /// Time period and invoice for a Subscription billed in advance.
         /// </summary>
         [JsonProperty("prebilling")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling")]
-#endif
         public SubscriptionSchedulePrebilling Prebilling { get; set; }
 
         /// <summary>

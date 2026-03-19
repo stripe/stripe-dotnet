@@ -116,9 +116,7 @@ namespace Stripe
         public PaymentRecordPaymentMethodDetailsGiropay Giropay { get; set; }
 
         [JsonProperty("gopay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("gopay")]
-#endif
         public PaymentRecordPaymentMethodDetailsGopay Gopay { get; set; }
 
         [JsonProperty("grabpay")]
@@ -126,9 +124,7 @@ namespace Stripe
         public PaymentRecordPaymentMethodDetailsGrabpay Grabpay { get; set; }
 
         [JsonProperty("id_bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id_bank_transfer")]
-#endif
         public PaymentRecordPaymentMethodDetailsIdBankTransfer IdBankTransfer { get; set; }
 
         [JsonProperty("ideal")]
@@ -211,9 +207,7 @@ namespace Stripe
         public PaymentRecordPaymentMethodDetailsPaypal Paypal { get; set; }
 
         [JsonProperty("paypay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("paypay")]
-#endif
         public PaymentRecordPaymentMethodDetailsPaypay Paypay { get; set; }
 
         [JsonProperty("payto")]
@@ -229,15 +223,11 @@ namespace Stripe
         public PaymentRecordPaymentMethodDetailsPromptpay Promptpay { get; set; }
 
         [JsonProperty("qris")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("qris")]
-#endif
         public PaymentRecordPaymentMethodDetailsQris Qris { get; set; }
 
         [JsonProperty("rechnung")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("rechnung")]
-#endif
         public PaymentRecordPaymentMethodDetailsRechnung Rechnung { get; set; }
 
         [JsonProperty("revolut_pay")]
@@ -261,9 +251,7 @@ namespace Stripe
         public PaymentRecordPaymentMethodDetailsSepaDebit SepaDebit { get; set; }
 
         [JsonProperty("shopeepay")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shopeepay")]
-#endif
         public PaymentRecordPaymentMethodDetailsShopeepay Shopeepay { get; set; }
 
         [JsonProperty("sofort")]
@@ -275,9 +263,7 @@ namespace Stripe
         public PaymentRecordPaymentMethodDetailsStripeAccount StripeAccount { get; set; }
 
         [JsonProperty("stripe_balance")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("stripe_balance")]
-#endif
         public PaymentRecordPaymentMethodDetailsStripeBalance StripeBalance { get; set; }
 
         [JsonProperty("swish")]

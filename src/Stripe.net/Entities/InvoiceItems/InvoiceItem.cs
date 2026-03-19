@@ -221,9 +221,7 @@ namespace Stripe
         /// invoice do not apply to this invoice item.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<string> MarginIds
         {
             get => this.InternalMargins?.Select((x) => x.Id).ToList();
@@ -238,9 +236,7 @@ namespace Stripe
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public List<Margin> Margins
         {
             get => this.InternalMargins?.Select((x) => x.ExpandedObject).ToList();
@@ -248,9 +244,7 @@ namespace Stripe
         }
 
         [JsonProperty("margins", ItemConverterType = typeof(ExpandableFieldConverter<Margin>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("margins")]
-#endif
         internal List<ExpandableField<Margin>> InternalMargins { get; set; }
         #endregion
 

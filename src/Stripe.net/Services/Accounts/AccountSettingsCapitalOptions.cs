@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountSettingsCapitalOptions : INestedOptions
     {
         /// <summary>
         /// Per-currency mapping of user-selected destination accounts used to pay out loans.
         /// </summary>
         [JsonProperty("payout_destination")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout_destination")]
-#endif
         public Dictionary<string, string> PayoutDestination { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// payouts.
         /// </summary>
         [JsonProperty("payout_destination_selector")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payout_destination_selector")]
-#endif
         public Dictionary<string, List<string>> PayoutDestinationSelector { get; set; }
     }
 }

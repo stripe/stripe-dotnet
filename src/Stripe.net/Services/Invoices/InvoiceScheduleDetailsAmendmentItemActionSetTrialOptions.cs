@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceScheduleDetailsAmendmentItemActionSetTrialOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// constitute opting-in to the paid trial. Currently only supports at most 1 price ID.
         /// </summary>
         [JsonProperty("converts_to")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("converts_to")]
-#endif
         public List<string> ConvertsTo { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe
         /// One of: <c>free</c>, or <c>paid</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

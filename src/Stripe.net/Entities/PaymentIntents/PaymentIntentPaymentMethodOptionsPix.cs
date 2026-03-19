@@ -34,9 +34,7 @@ namespace Stripe
         public DateTime? ExpiresAt { get; set; }
 
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public PaymentIntentPaymentMethodOptionsPixMandateOptions MandateOptions { get; set; }
 
         /// <summary>

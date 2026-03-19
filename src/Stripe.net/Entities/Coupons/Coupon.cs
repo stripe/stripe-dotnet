@@ -154,9 +154,7 @@ namespace Stripe
         /// calculate the discount.
         /// </summary>
         [JsonProperty("script")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("script")]
-#endif
         public CouponScript Script { get; set; }
 
         /// <summary>
@@ -172,9 +170,7 @@ namespace Stripe
         /// One of: <c>amount_off</c>, <c>percent_off</c>, or <c>script</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>

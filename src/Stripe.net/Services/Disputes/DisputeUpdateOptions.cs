@@ -24,9 +24,7 @@ namespace Stripe
         /// <c>smart_disputes</c>.
         /// </summary>
         [JsonProperty("intended_submission_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("intended_submission_method")]
-#endif
         public string IntendedSubmissionMethod { get; set; }
 
         /// <summary>

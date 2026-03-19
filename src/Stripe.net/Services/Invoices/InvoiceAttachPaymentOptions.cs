@@ -13,9 +13,7 @@ namespace Stripe
         /// this invoice. It defaults to the entire amount.
         /// </summary>
         [JsonProperty("amount_requested")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_requested")]
-#endif
         public long? AmountRequested { get; set; }
 
         /// <summary>
@@ -36,9 +34,7 @@ namespace Stripe
         /// The PaymentRecord data for attaching an out of band payment to the invoice.
         /// </summary>
         [JsonProperty("payment_record_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_record_data")]
-#endif
         public InvoicePaymentRecordDataOptions PaymentRecordData { get; set; }
     }
 }

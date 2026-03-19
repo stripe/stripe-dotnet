@@ -13,9 +13,7 @@ namespace Stripe
         /// Changes to apply to the phases of the subscription schedule, in the order provided.
         /// </summary>
         [JsonProperty("amendments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amendments")]
-#endif
         public List<InvoiceScheduleDetailsAmendmentOptions> Amendments { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe
         /// One of: <c>prorate_on_next_phase</c>, or <c>prorate_up_front</c>.
         /// </summary>
         [JsonProperty("billing_behavior")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_behavior")]
-#endif
         public string BillingBehavior { get; set; }
 
         /// <summary>
@@ -64,9 +60,7 @@ namespace Stripe
         /// Provide any time periods to bill in advance.
         /// </summary>
         [JsonProperty("prebilling")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("prebilling")]
-#endif
         public List<InvoiceScheduleDetailsPrebillingOptions> Prebilling { get; set; }
 
         /// <summary>

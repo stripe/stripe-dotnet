@@ -12,9 +12,7 @@ namespace Stripe.Checkout
         /// Permissions for updating the Checkout Session.
         /// </summary>
         [JsonProperty("update")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("update")]
-#endif
         public SessionPermissionsUpdate Update { get; set; }
 
         /// <summary>
@@ -30,9 +28,7 @@ namespace Stripe.Checkout
         /// One of: <c>client_only</c>, or <c>server_only</c>.
         /// </summary>
         [JsonProperty("update_line_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("update_line_items")]
-#endif
         public string UpdateLineItems { get; set; }
 
         /// <summary>
