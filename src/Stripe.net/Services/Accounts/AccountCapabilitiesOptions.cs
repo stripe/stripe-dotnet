@@ -415,6 +415,13 @@ namespace Stripe
         public AccountCapabilitiesTwintPaymentsOptions TwintPayments { get; set; }
 
         /// <summary>
+        /// The upi_payments capability.
+        /// </summary>
+        [JsonProperty("upi_payments")]
+        [STJS.JsonPropertyName("upi_payments")]
+        public AccountCapabilitiesUpiPaymentsOptions UpiPayments { get; set; }
+
+        /// <summary>
         /// The us_bank_account_ach_payments capability.
         /// </summary>
         [JsonProperty("us_bank_account_ach_payments")]
