@@ -2,19 +2,17 @@
 namespace Stripe.Radar
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentEvaluationSignals : StripeEntity<PaymentEvaluationSignals>
     {
         /// <summary>
         /// A payment evaluation signal with evaluated_at, risk_level, and score fields.
         /// </summary>
         [JsonProperty("fraudulent_payment")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fraudulent_payment")]
-#endif
         public PaymentEvaluationSignalsFraudulentPayment FraudulentPayment { get; set; }
     }
 }

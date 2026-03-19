@@ -5,19 +5,16 @@ namespace Stripe.Tax
     using System.Collections.Generic;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TransactionCreateFromCalculationOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// Tax Calculation ID to be used as input when creating the transaction.
         /// </summary>
         [JsonProperty("calculation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("calculation")]
-#endif
         public string Calculation { get; set; }
 
         /// <summary>
@@ -27,9 +24,7 @@ namespace Stripe.Tax
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -40,10 +35,8 @@ namespace Stripe.Tax
         /// </summary>
         [JsonProperty("posted_at")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("posted_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime? PostedAt { get; set; }
 
         /// <summary>
@@ -51,9 +44,7 @@ namespace Stripe.Tax
         /// transactions, including reversals.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
     }
 }

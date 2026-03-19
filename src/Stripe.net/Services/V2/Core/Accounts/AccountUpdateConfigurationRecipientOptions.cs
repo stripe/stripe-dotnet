@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateConfigurationRecipientOptions : INestedOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.V2.Core
         /// a configuration.
         /// </summary>
         [JsonProperty("applied")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("applied")]
-#endif
         public bool? Applied { get; set; }
 
         /// <summary>
         /// Capabilities to request on the Recipient Configuration.
         /// </summary>
         [JsonProperty("capabilities")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("capabilities")]
-#endif
         public AccountUpdateConfigurationRecipientCapabilitiesOptions Capabilities { get; set; }
 
         /// <summary>
@@ -36,9 +32,7 @@ namespace Stripe.V2.Core
         /// recipient's payment details</a>.
         /// </summary>
         [JsonProperty("default_outbound_destination")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("default_outbound_destination")]
-#endif
         public string DefaultOutboundDestination { get; set; }
     }
 }

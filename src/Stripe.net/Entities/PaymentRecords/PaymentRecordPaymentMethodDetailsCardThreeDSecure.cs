@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentRecordPaymentMethodDetailsCardThreeDSecure : StripeEntity<PaymentRecordPaymentMethodDetailsCardThreeDSecure>
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe
         /// One of: <c>challenge</c>, or <c>frictionless</c>.
         /// </summary>
         [JsonProperty("authentication_flow")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("authentication_flow")]
-#endif
         public string AuthenticationFlow { get; set; }
 
         /// <summary>
         /// The 3D Secure cryptogram, also known as the "authentication value" (AAV, CAVV or AEVV).
         /// </summary>
         [JsonProperty("cryptogram")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cryptogram")]
-#endif
         public string Cryptogram { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe
         /// One of: <c>01</c>, <c>02</c>, <c>03</c>, <c>04</c>, <c>05</c>, <c>06</c>, or <c>07</c>.
         /// </summary>
         [JsonProperty("electronic_commerce_indicator")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("electronic_commerce_indicator")]
-#endif
         public string ElectronicCommerceIndicator { get; set; }
 
         /// <summary>
@@ -44,9 +38,7 @@ namespace Stripe
         /// One of: <c>low_risk</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("exemption_indicator")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exemption_indicator")]
-#endif
         public string ExemptionIndicator { get; set; }
 
         /// <summary>
@@ -54,9 +46,7 @@ namespace Stripe
         /// This will depend on the outcome of Stripe's internal risk assessment.
         /// </summary>
         [JsonProperty("exemption_indicator_applied")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exemption_indicator_applied")]
-#endif
         public bool? ExemptionIndicatorApplied { get; set; }
 
         /// <summary>
@@ -65,9 +55,7 @@ namespace Stripe
         /// <c>failed</c>, <c>not_supported</c>, or <c>processing_error</c>.
         /// </summary>
         [JsonProperty("result")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result")]
-#endif
         public string Result { get; set; }
 
         /// <summary>
@@ -77,9 +65,7 @@ namespace Stripe
         /// <c>network_not_supported</c>, <c>protocol_error</c>, or <c>rejected</c>.
         /// </summary>
         [JsonProperty("result_reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("result_reason")]
-#endif
         public string ResultReason { get; set; }
 
         /// <summary>
@@ -87,9 +73,7 @@ namespace Stripe
         /// One of: <c>1.0.2</c>, <c>2.1.0</c>, or <c>2.2.0</c>.
         /// </summary>
         [JsonProperty("version")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("version")]
-#endif
         public string Version { get; set; }
     }
 }

@@ -3,10 +3,10 @@ namespace Stripe.V2.MoneyManagement
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PayoutMethodCard : StripeEntity<PayoutMethodCard>
     {
         /// <summary>
@@ -16,27 +16,21 @@ namespace Stripe.V2.MoneyManagement
         /// appear in the payout method list.
         /// </summary>
         [JsonProperty("archived")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("archived")]
-#endif
         public bool Archived { get; set; }
 
         /// <summary>
         /// The month the card expires.
         /// </summary>
         [JsonProperty("exp_month")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_month")]
-#endif
         public string ExpMonth { get; set; }
 
         /// <summary>
         /// The year the card expires.
         /// </summary>
         [JsonProperty("exp_year")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("exp_year")]
-#endif
         public string ExpYear { get; set; }
 
         /// <summary>
@@ -45,27 +39,21 @@ namespace Stripe.V2.MoneyManagement
         /// example.
         /// </summary>
         [JsonProperty("fingerprint")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fingerprint")]
-#endif
         public string Fingerprint { get; set; }
 
         /// <summary>
         /// The last 4 digits of the card number.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
 
         /// <summary>
         /// The list of currencies supported by this bank account.
         /// </summary>
         [JsonProperty("supported_currencies")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_currencies")]
-#endif
         public List<string> SupportedCurrencies { get; set; }
     }
 }

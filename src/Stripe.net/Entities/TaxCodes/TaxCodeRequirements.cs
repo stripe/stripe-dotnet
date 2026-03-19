@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TaxCodeRequirements : StripeEntity<TaxCodeRequirements>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// One of: <c>optional</c>, or <c>required</c>.
         /// </summary>
         [JsonProperty("performance_location")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("performance_location")]
-#endif
         public string PerformanceLocation { get; set; }
     }
 }

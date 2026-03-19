@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountIdentityIndividualIdNumber : StripeEntity<AccountIdentityIndividualIdNumber>
     {
         /// <summary>
@@ -27,9 +27,7 @@ namespace Stripe.V2.Core
         /// <c>us_ssn</c>, <c>us_ssn_last_4</c>, <c>uy_dni</c>, or <c>za_id</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

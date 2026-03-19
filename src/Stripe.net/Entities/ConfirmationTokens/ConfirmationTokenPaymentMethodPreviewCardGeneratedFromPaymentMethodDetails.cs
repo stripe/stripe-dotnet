@@ -2,16 +2,14 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ConfirmationTokenPaymentMethodPreviewCardGeneratedFromPaymentMethodDetails : StripeEntity<ConfirmationTokenPaymentMethodPreviewCardGeneratedFromPaymentMethodDetails>
     {
         [JsonProperty("card_present")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_present")]
-#endif
         public ConfirmationTokenPaymentMethodPreviewCardGeneratedFromPaymentMethodDetailsCardPresent CardPresent { get; set; }
 
         /// <summary>
@@ -19,9 +17,7 @@ namespace Stripe
         /// generated this <c>card</c> payment method. Always <c>card_present</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

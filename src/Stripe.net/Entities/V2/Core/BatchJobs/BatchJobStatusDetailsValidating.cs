@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BatchJobStatusDetailsValidating : StripeEntity<BatchJobStatusDetailsValidating>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.V2.Core
         /// once we have any validation failures we give up.
         /// </summary>
         [JsonProperty("validated_count")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("validated_count")]
-#endif
         public long ValidatedCount { get; set; }
     }
 }

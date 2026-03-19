@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class InvoiceCreatePreviewOptions : BaseOptions
     {
         /// <summary>
         /// Settings for automatic tax lookup for this invoice preview.
         /// </summary>
         [JsonProperty("automatic_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
-#endif
         public InvoiceAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// specified.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe
         /// <c>subscription</c>, or <c>schedule</c> must be set.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -46,9 +40,7 @@ namespace Stripe
         /// <c>schedule</c> must be set.
         /// </summary>
         [JsonProperty("customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
-#endif
         public string CustomerAccount { get; set; }
 
         /// <summary>
@@ -57,9 +49,7 @@ namespace Stripe
         /// <c>subscription</c>, or <c>schedule</c> must be set.
         /// </summary>
         [JsonProperty("customer_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_details")]
-#endif
         public InvoiceCustomerDetailsOptions CustomerDetails { get; set; }
 
         /// <summary>
@@ -69,18 +59,14 @@ namespace Stripe
         /// avoid inheriting any discounts.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         public List<InvoiceDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// List of invoice items to add or update in the upcoming invoice preview (up to 250).
         /// </summary>
         [JsonProperty("invoice_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_items")]
-#endif
         public List<InvoiceUpcomingInvoiceItemOptions> InvoiceItems { get; set; }
 
         /// <summary>
@@ -88,9 +74,7 @@ namespace Stripe
         /// branding and support information of the specified account.
         /// </summary>
         [JsonProperty("issuer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("issuer")]
-#endif
         public InvoiceIssuerOptions Issuer { get; set; }
 
         /// <summary>
@@ -100,9 +84,7 @@ namespace Stripe
         /// with Connect</a> documentation for details.
         /// </summary>
         [JsonProperty("on_behalf_of")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_behalf_of")]
-#endif
         public string OnBehalfOf { get; set; }
 
         /// <summary>
@@ -111,9 +93,7 @@ namespace Stripe
         /// One of: <c>next</c>, or <c>recurring</c>.
         /// </summary>
         [JsonProperty("preview_mode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preview_mode")]
-#endif
         public string PreviewMode { get; set; }
 
         /// <summary>
@@ -121,9 +101,7 @@ namespace Stripe
         /// used with subscription or subscription fields.
         /// </summary>
         [JsonProperty("schedule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule")]
-#endif
         public string Schedule { get; set; }
 
         /// <summary>
@@ -131,9 +109,7 @@ namespace Stripe
         /// <c>subscription</c> or <c>subscription_</c> prefixed fields.
         /// </summary>
         [JsonProperty("schedule_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("schedule_details")]
-#endif
         public InvoiceScheduleDetailsOptions ScheduleDetails { get; set; }
 
         /// <summary>
@@ -144,9 +120,7 @@ namespace Stripe
         /// invoice from among the customer's subscriptions.
         /// </summary>
         [JsonProperty("subscription")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
-#endif
         public string Subscription { get; set; }
 
         /// <summary>
@@ -154,9 +128,7 @@ namespace Stripe
         /// with <c>schedule</c> or <c>schedule_details</c> fields.
         /// </summary>
         [JsonProperty("subscription_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_details")]
-#endif
         public InvoiceSubscriptionDetailsOptions SubscriptionDetails { get; set; }
     }
 }

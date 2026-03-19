@@ -2,19 +2,17 @@
 namespace Stripe.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class MeterValueSettings : StripeEntity<MeterValueSettings>
     {
         /// <summary>
         /// The key in the meter event payload to use as the value for this meter.
         /// </summary>
         [JsonProperty("event_payload_key")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_payload_key")]
-#endif
         public string EventPayloadKey { get; set; }
     }
 }

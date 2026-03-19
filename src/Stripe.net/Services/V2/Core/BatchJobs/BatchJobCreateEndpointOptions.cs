@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class BatchJobCreateEndpointOptions : INestedOptions
     {
         /// <summary>
         /// The HTTP method to use when calling the endpoint.
         /// </summary>
         [JsonProperty("http_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("http_method")]
-#endif
         public string HttpMethod { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.Core
         /// <c>/v1/subscriptions/:id/migrate</c>.
         /// </summary>
         [JsonProperty("path")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("path")]
-#endif
         public string Path { get; set; }
     }
 }

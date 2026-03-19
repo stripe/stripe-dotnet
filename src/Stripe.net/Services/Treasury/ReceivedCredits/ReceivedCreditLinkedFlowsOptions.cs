@@ -2,10 +2,10 @@
 namespace Stripe.Treasury
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReceivedCreditLinkedFlowsOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Treasury
         /// <c>outbound_transfer</c>, or <c>payout</c>.
         /// </summary>
         [JsonProperty("source_flow_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("source_flow_type")]
-#endif
         public string SourceFlowType { get; set; }
     }
 }

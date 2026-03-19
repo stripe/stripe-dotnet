@@ -2,10 +2,10 @@
 namespace Stripe.BillingPortal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ConfigurationListOptions : ListOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.BillingPortal
         /// list active configurations).
         /// </summary>
         [JsonProperty("active")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("active")]
-#endif
         public bool? Active { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.BillingPortal
         /// list the default configuration).
         /// </summary>
         [JsonProperty("is_default")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("is_default")]
-#endif
         public bool? IsDefault { get; set; }
     }
 }

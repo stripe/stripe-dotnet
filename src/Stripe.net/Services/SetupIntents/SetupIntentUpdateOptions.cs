@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -19,9 +19,7 @@ namespace Stripe
         /// Customer.
         /// </summary>
         [JsonProperty("attach_to_self")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("attach_to_self")]
-#endif
         public bool? AttachToSelf { get; set; }
 
         /// <summary>
@@ -32,9 +30,7 @@ namespace Stripe
         /// SetupIntent.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -45,18 +41,14 @@ namespace Stripe
         /// SetupIntent.
         /// </summary>
         [JsonProperty("customer_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_account")]
-#endif
         public string CustomerAccount { get; set; }
 
         /// <summary>
         /// An arbitrary string attached to the object. Often useful for displaying to users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
@@ -75,9 +67,7 @@ namespace Stripe
         /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("excluded_payment_method_types")]
-#endif
         public List<string> ExcludedPaymentMethodTypes { get; set; }
 
         /// <summary>
@@ -91,9 +81,7 @@ namespace Stripe
         /// One of: <c>inbound</c>, or <c>outbound</c>.
         /// </summary>
         [JsonProperty("flow_directions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flow_directions")]
-#endif
         public List<string> FlowDirections { get; set; }
 
         /// <summary>
@@ -103,9 +91,7 @@ namespace Stripe
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -113,9 +99,7 @@ namespace Stripe
         /// this SetupIntent. To unset this field to null, pass in an empty string.
         /// </summary>
         [JsonProperty("payment_method")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method")]
-#endif
         public string PaymentMethod { get; set; }
 
         /// <summary>
@@ -124,9 +108,7 @@ namespace Stripe
         /// configuration</a> to use with this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_configuration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_configuration")]
-#endif
         public string PaymentMethodConfiguration { get; set; }
 
         /// <summary>
@@ -135,18 +117,14 @@ namespace Stripe
         /// value in the SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_data")]
-#endif
         public SetupIntentPaymentMethodDataOptions PaymentMethodData { get; set; }
 
         /// <summary>
         /// Payment method-specific configuration for this SetupIntent.
         /// </summary>
         [JsonProperty("payment_method_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_options")]
-#endif
         public SetupIntentPaymentMethodOptionsOptions PaymentMethodOptions { get; set; }
 
         /// <summary>
@@ -157,9 +135,7 @@ namespace Stripe
         /// href="https://docs.stripe.com/api/payment_methods/object#payment_method_object-type">here</a>.
         /// </summary>
         [JsonProperty("payment_method_types")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_method_types")]
-#endif
         public List<string> PaymentMethodTypes { get; set; }
     }
 }

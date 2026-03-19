@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FxQuoteCreateOptions : BaseOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe
         /// href="https://stripe.com/docs/currencies">supported currencies</a>.
         /// </summary>
         [JsonProperty("from_currencies")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("from_currencies")]
-#endif
         public List<string> FromCurrencies { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe
         /// One of: <c>day</c>, <c>five_minutes</c>, <c>hour</c>, or <c>none</c>.
         /// </summary>
         [JsonProperty("lock_duration")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lock_duration")]
-#endif
         public string LockDuration { get; set; }
 
         /// <summary>
@@ -37,18 +33,14 @@ namespace Stripe
         /// currency</a>.
         /// </summary>
         [JsonProperty("to_currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("to_currency")]
-#endif
         public string ToCurrency { get; set; }
 
         /// <summary>
         /// The usage specific information for the quote.
         /// </summary>
         [JsonProperty("usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("usage")]
-#endif
         public FxQuoteUsageOptions Usage { get; set; }
     }
 }

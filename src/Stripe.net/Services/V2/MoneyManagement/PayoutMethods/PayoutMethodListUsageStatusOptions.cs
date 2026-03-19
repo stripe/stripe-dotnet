@@ -3,10 +3,10 @@ namespace Stripe.V2.MoneyManagement
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PayoutMethodListUsageStatusOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>eligible</c>, <c>invalid</c>, or <c>requires_action</c>.
         /// </summary>
         [JsonProperty("payments")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payments")]
-#endif
         public List<string> Payments { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>eligible</c>, <c>invalid</c>, or <c>requires_action</c>.
         /// </summary>
         [JsonProperty("transfers")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("transfers")]
-#endif
         public List<string> Transfers { get; set; }
     }
 }

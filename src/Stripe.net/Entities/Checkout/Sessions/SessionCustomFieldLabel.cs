@@ -2,28 +2,24 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionCustomFieldLabel : StripeEntity<SessionCustomFieldLabel>
     {
         /// <summary>
         /// Custom text for the label, displayed to the customer. Up to 50 characters.
         /// </summary>
         [JsonProperty("custom")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("custom")]
-#endif
         public string Custom { get; set; }
 
         /// <summary>
         /// The type of the label.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

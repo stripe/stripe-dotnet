@@ -2,10 +2,10 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class OutboundPaymentStatusDetailsReturned : StripeEntity<OutboundPaymentStatusDetailsReturned>
     {
         /// <summary>
@@ -18,9 +18,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>payout_method_restricted</c>, <c>recalled</c>, or <c>unknown_failure</c>.
         /// </summary>
         [JsonProperty("reason")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reason")]
-#endif
         public string Reason { get; set; }
     }
 }

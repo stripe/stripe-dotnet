@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SetupIntentPaymentMethodOptionsBacsDebitMandateOptions : StripeEntity<SetupIntentPaymentMethodOptionsBacsDebitMandateOptions>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// '/', '_', '-', '&amp;', '.'. Cannot begin with 'DDIC' or 'STRIPE'.
         /// </summary>
         [JsonProperty("reference_prefix")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference_prefix")]
-#endif
         public string ReferencePrefix { get; set; }
     }
 }

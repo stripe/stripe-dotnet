@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountTokenCreateOptions : BaseOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.V2.Core
         /// as a merchant or recipient.
         /// </summary>
         [JsonProperty("contact_email")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("contact_email")]
-#endif
         public string ContactEmail { get; set; }
 
         /// <summary>
         /// The default contact phone for the Account.
         /// </summary>
         [JsonProperty("contact_phone")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("contact_phone")]
-#endif
         public string ContactPhone { get; set; }
 
         /// <summary>
@@ -32,18 +28,14 @@ namespace Stripe.V2.Core
         /// and on any invoices sent to the Account.
         /// </summary>
         [JsonProperty("display_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("display_name")]
-#endif
         public string DisplayName { get; set; }
 
         /// <summary>
         /// Information about the company, individual, and business represented by the Account.
         /// </summary>
         [JsonProperty("identity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("identity")]
-#endif
         public AccountTokenCreateIdentityOptions Identity { get; set; }
     }
 }

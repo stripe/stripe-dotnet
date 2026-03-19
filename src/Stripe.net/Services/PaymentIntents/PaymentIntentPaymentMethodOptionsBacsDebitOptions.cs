@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentPaymentMethodOptionsBacsDebitOptions : INestedOptions
     {
         /// <summary>
         /// Additional fields for Mandate creation.
         /// </summary>
         [JsonProperty("mandate_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("mandate_options")]
-#endif
         public PaymentIntentPaymentMethodOptionsBacsDebitMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
@@ -43,9 +41,7 @@ namespace Stripe
         /// One of: <c>none</c>, <c>off_session</c>, or <c>on_session</c>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
 
         /// <summary>
@@ -54,9 +50,7 @@ namespace Stripe
         /// and 15 calendar days from now.
         /// </summary>
         [JsonProperty("target_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("target_date")]
-#endif
         public string TargetDate { get; set; }
     }
 }

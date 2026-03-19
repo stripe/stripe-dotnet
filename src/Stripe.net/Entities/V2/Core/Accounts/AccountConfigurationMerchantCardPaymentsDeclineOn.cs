@@ -2,10 +2,10 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountConfigurationMerchantCardPaymentsDeclineOn : StripeEntity<AccountConfigurationMerchantCardPaymentsDeclineOn>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// verification.
         /// </summary>
         [JsonProperty("avs_failure")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("avs_failure")]
-#endif
         public bool? AvsFailure { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.V2.Core
         /// applies when a CVC is provided and it fails bank verification.
         /// </summary>
         [JsonProperty("cvc_failure")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cvc_failure")]
-#endif
         public bool? CvcFailure { get; set; }
     }
 }

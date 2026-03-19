@@ -3,10 +3,10 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionLineItemOptions : INestedOptions, IHasMetadata, IHasId
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Checkout
         /// during Checkout.
         /// </summary>
         [JsonProperty("adjustable_quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("adjustable_quantity")]
-#endif
         public SessionLineItemAdjustableQuantityOptions AdjustableQuantity { get; set; }
 
         /// <summary>
@@ -26,18 +24,14 @@ namespace Stripe.Checkout
         /// this parameter if <c>ui_mode</c> is <c>custom</c>.
         /// </summary>
         [JsonProperty("dynamic_tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dynamic_tax_rates")]
-#endif
         public List<string> DynamicTaxRates { get; set; }
 
         /// <summary>
         /// ID of an existing line item.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -47,9 +41,7 @@ namespace Stripe.Checkout
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
@@ -58,9 +50,7 @@ namespace Stripe.Checkout
         /// <c>price_data</c> is required.
         /// </summary>
         [JsonProperty("price")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price")]
-#endif
         public string Price { get; set; }
 
         /// <summary>
@@ -69,9 +59,7 @@ namespace Stripe.Checkout
         /// line item.
         /// </summary>
         [JsonProperty("price_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("price_data")]
-#endif
         public SessionLineItemPriceDataOptions PriceData { get; set; }
 
         /// <summary>
@@ -79,9 +67,7 @@ namespace Stripe.Checkout
         /// <c>recurring.usage_type=metered</c>.
         /// </summary>
         [JsonProperty("quantity")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("quantity")]
-#endif
         public long? Quantity { get; set; }
 
         /// <summary>
@@ -89,9 +75,7 @@ namespace Stripe.Checkout
         /// line item.
         /// </summary>
         [JsonProperty("tax_rates")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax_rates")]
-#endif
         public List<string> TaxRates { get; set; }
     }
 }

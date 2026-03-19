@@ -2,10 +2,10 @@
 namespace Stripe.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class DisputeEvidenceFraudulentOptions : INestedOptions
     {
         /// <summary>
@@ -13,18 +13,14 @@ namespace Stripe.Issuing
         /// Additional documentation supporting the dispute.
         /// </summary>
         [JsonProperty("additional_documentation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("additional_documentation")]
-#endif
         public string AdditionalDocumentation { get; set; }
 
         /// <summary>
         /// Explanation of why the cardholder is disputing this transaction.
         /// </summary>
         [JsonProperty("explanation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("explanation")]
-#endif
         public string Explanation { get; set; }
     }
 }

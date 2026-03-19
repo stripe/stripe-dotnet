@@ -2,10 +2,10 @@
 namespace Stripe.TestHelpers.Issuing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AuthorizationRiskAssessmentCardTestingRiskOptions : INestedOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.TestHelpers.Issuing
         /// guess a correct one. Takes on values between 0 and 100.
         /// </summary>
         [JsonProperty("invalid_account_number_decline_rate_past_hour")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invalid_account_number_decline_rate_past_hour")]
-#endif
         public long? InvalidAccountNumberDeclineRatePastHour { get; set; }
 
         /// <summary>
@@ -27,9 +25,7 @@ namespace Stripe.TestHelpers.Issuing
         /// verification requirements. Takes on values between 0 and 100.
         /// </summary>
         [JsonProperty("invalid_credentials_decline_rate_past_hour")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invalid_credentials_decline_rate_past_hour")]
-#endif
         public long? InvalidCredentialsDeclineRatePastHour { get; set; }
 
         /// <summary>
@@ -39,9 +35,7 @@ namespace Stripe.TestHelpers.Issuing
         /// or <c>unknown</c>.
         /// </summary>
         [JsonProperty("level")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("level")]
-#endif
         public string Level { get; set; }
     }
 }

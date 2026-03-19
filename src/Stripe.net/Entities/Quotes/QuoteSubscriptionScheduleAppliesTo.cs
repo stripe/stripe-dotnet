@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class QuoteSubscriptionScheduleAppliesTo : StripeEntity<QuoteSubscriptionScheduleAppliesTo>
     {
         /// <summary>
@@ -14,18 +14,14 @@ namespace Stripe
         /// the creation of a new subscription schedule.
         /// </summary>
         [JsonProperty("new_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("new_reference")]
-#endif
         public string NewReference { get; set; }
 
         /// <summary>
         /// The ID of the schedule the line applies to.
         /// </summary>
         [JsonProperty("subscription_schedule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_schedule")]
-#endif
         public string SubscriptionSchedule { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe
         /// One of: <c>new_reference</c>, or <c>subscription_schedule</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

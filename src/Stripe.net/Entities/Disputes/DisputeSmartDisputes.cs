@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DisputeSmartDisputes : StripeEntity<DisputeSmartDisputes>
     {
         /// <summary>
         /// Evidence that could be provided to improve the SmartDisputes packet.
         /// </summary>
         [JsonProperty("recommended_evidence")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("recommended_evidence")]
-#endif
         public List<List<string>> RecommendedEvidence { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe
         /// <c>unavailable</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
     }
 }

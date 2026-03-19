@@ -2,19 +2,17 @@
 namespace Stripe.FinancialConnections
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class InstitutionFeaturesBalances : StripeEntity<InstitutionFeaturesBalances>
     {
         /// <summary>
         /// Whether the given feature is supported by this institution.
         /// </summary>
         [JsonProperty("supported")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported")]
-#endif
         public bool Supported { get; set; }
     }
 }

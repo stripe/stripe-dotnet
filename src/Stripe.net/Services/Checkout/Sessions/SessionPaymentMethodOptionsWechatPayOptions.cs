@@ -2,19 +2,17 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPaymentMethodOptionsWechatPayOptions : INestedOptions
     {
         /// <summary>
         /// The app ID registered with WeChat Pay. Only required when client is ios or android.
         /// </summary>
         [JsonProperty("app_id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("app_id")]
-#endif
         public string AppId { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe.Checkout
         /// One of: <c>android</c>, <c>ios</c>, or <c>web</c>.
         /// </summary>
         [JsonProperty("client")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("client")]
-#endif
         public string Client { get; set; }
 
         /// <summary>
@@ -48,9 +44,7 @@ namespace Stripe.Checkout
         /// href="https://stripe.com/strong-customer-authentication">SCA</a>.
         /// </summary>
         [JsonProperty("setup_future_usage")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("setup_future_usage")]
-#endif
         public string SetupFutureUsage { get; set; }
     }
 }

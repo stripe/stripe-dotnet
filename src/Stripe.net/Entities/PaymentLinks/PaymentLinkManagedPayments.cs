@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentLinkManagedPayments : StripeEntity<PaymentLinkManagedPayments>
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe
         /// merchant of record solution, for this session.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool Enabled { get; set; }
     }
 }

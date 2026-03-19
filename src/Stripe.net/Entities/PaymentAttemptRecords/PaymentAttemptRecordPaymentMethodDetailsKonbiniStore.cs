@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetailsKonbiniStore : StripeEntity<PaymentAttemptRecordPaymentMethodDetailsKonbiniStore>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe
         /// One of: <c>familymart</c>, <c>lawson</c>, <c>ministop</c>, or <c>seicomart</c>.
         /// </summary>
         [JsonProperty("chain")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("chain")]
-#endif
         public string Chain { get; set; }
     }
 }

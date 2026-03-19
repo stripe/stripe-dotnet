@@ -4,35 +4,27 @@ namespace Stripe.Issuing
     using System;
     using Newtonsoft.Json;
     using Stripe.Infrastructure;
-#if NET6_0_OR_GREATER
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// A fraud liability debit occurs when Stripe debits a platform's account for fraud losses
     /// on Issuing transactions.
     /// </summary>
-#if NET6_0_OR_GREATER
-    [STJS.JsonConverter(typeof(STJMemberSerializationOptIn))]
-#endif
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FraudLiabilityDebit : StripeEntity<FraudLiabilityDebit>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// String representing the object's type. Objects of the same type share the same value.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
@@ -40,9 +32,7 @@ namespace Stripe.Issuing
         /// and in the smallest currency unit.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long Amount { get; set; }
 
         #region Expandable BalanceTransaction
@@ -53,9 +43,7 @@ namespace Stripe.Issuing
         /// transaction</a> associated with this debit.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public string BalanceTransactionId
         {
             get => this.InternalBalanceTransaction?.Id;
@@ -70,9 +58,7 @@ namespace Stripe.Issuing
         /// For more information, see the <a href="https://stripe.com/docs/expand">expand documentation</a>.
         /// </summary>
         [JsonIgnore]
-#if NET6_0_OR_GREATER
         [STJS.JsonIgnore]
-#endif
         public BalanceTransaction BalanceTransaction
         {
             get => this.InternalBalanceTransaction?.ExpandedObject;
@@ -81,10 +67,8 @@ namespace Stripe.Issuing
 
         [JsonProperty("balance_transaction")]
         [JsonConverter(typeof(ExpandableFieldConverter<BalanceTransaction>))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance_transaction")]
         [STJS.JsonConverter(typeof(STJExpandableFieldConverter<BalanceTransaction>))]
-#endif
         internal ExpandableField<BalanceTransaction> InternalBalanceTransaction { get; set; }
         #endregion
 
@@ -93,10 +77,8 @@ namespace Stripe.Issuing
         /// </summary>
         [JsonProperty("created")]
         [JsonConverter(typeof(UnixDateTimeConverter))]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -106,18 +88,14 @@ namespace Stripe.Issuing
         /// currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// The ID of the linked dispute.
         /// </summary>
         [JsonProperty("dispute")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("dispute")]
-#endif
         public string Dispute { get; set; }
 
         /// <summary>
@@ -125,9 +103,7 @@ namespace Stripe.Issuing
         /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
     }
 }

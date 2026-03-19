@@ -3,10 +3,10 @@ namespace Stripe.Checkout
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionUpdateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.Checkout
         /// subscriptions.
         /// </summary>
         [JsonProperty("automatic_tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("automatic_tax")]
-#endif
         public SessionAutomaticTaxOptions AutomaticTax { get; set; }
 
         /// <summary>
@@ -24,27 +22,21 @@ namespace Stripe.Checkout
         /// when updating <c>embedded</c> or <c>custom</c> sessions.
         /// </summary>
         [JsonProperty("collected_information")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collected_information")]
-#endif
         public SessionCollectedInformationOptions CollectedInformation { get; set; }
 
         /// <summary>
         /// List of coupons and promotion codes attached to the Checkout Session.
         /// </summary>
         [JsonProperty("discounts")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discounts")]
-#endif
         public List<SessionDiscountOptions> Discounts { get; set; }
 
         /// <summary>
         /// Generate a post-purchase Invoice for one-time payments.
         /// </summary>
         [JsonProperty("invoice_creation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invoice_creation")]
-#endif
         public SessionInvoiceCreationOptions InvoiceCreation { get; set; }
 
         /// <summary>
@@ -65,9 +57,7 @@ namespace Stripe.Checkout
         /// To reorder a line item, specify it at the desired position in the retransmitted array.
         /// </summary>
         [JsonProperty("line_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
-#endif
         public List<SessionLineItemOptions> LineItems { get; set; }
 
         /// <summary>
@@ -77,18 +67,14 @@ namespace Stripe.Checkout
         /// them. All keys can be unset by posting an empty value to <c>metadata</c>.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// The shipping rate options to apply to this Session. Up to a maximum of 5.
         /// </summary>
         [JsonProperty("shipping_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping_options")]
-#endif
         public List<SessionShippingOptionOptions> ShippingOptions { get; set; }
 
         /// <summary>
@@ -96,9 +82,7 @@ namespace Stripe.Checkout
         /// <c>subscription</c> mode.
         /// </summary>
         [JsonProperty("subscription_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription_data")]
-#endif
         public SessionSubscriptionDataOptions SubscriptionData { get; set; }
     }
 }

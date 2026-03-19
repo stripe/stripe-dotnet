@@ -2,19 +2,17 @@
 namespace Stripe.TestHelpers.Terminal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReaderCardPresentOptions : INestedOptions
     {
         /// <summary>
         /// The card number, as a string without any separators.
         /// </summary>
         [JsonProperty("number")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("number")]
-#endif
         public string Number { get; set; }
     }
 }

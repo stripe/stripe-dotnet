@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class AccountSettingsPayoutsSchedule : StripeEntity<AccountSettingsPayoutsSchedule>
     {
         /// <summary>
         /// The number of days charges for the account will be held before being paid out.
         /// </summary>
         [JsonProperty("delay_days")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delay_days")]
-#endif
         public long DelayDays { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe
         /// API call), <c>daily</c>, <c>weekly</c>, or <c>monthly</c>.
         /// </summary>
         [JsonProperty("interval")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("interval")]
-#endif
         public string Interval { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe
         /// shorter months.
         /// </summary>
         [JsonProperty("monthly_anchor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monthly_anchor")]
-#endif
         public long MonthlyAnchor { get; set; }
 
         /// <summary>
@@ -45,9 +39,7 @@ namespace Stripe
         /// shorter months.
         /// </summary>
         [JsonProperty("monthly_payout_days")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("monthly_payout_days")]
-#endif
         public List<long> MonthlyPayoutDays { get; set; }
 
         /// <summary>
@@ -55,9 +47,7 @@ namespace Stripe
         /// shown if <c>interval</c> is weekly.
         /// </summary>
         [JsonProperty("weekly_anchor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("weekly_anchor")]
-#endif
         public string WeeklyAnchor { get; set; }
 
         /// <summary>
@@ -67,9 +57,7 @@ namespace Stripe
         /// <c>wednesday</c>.
         /// </summary>
         [JsonProperty("weekly_payout_days")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("weekly_payout_days")]
-#endif
         public List<string> WeeklyPayoutDays { get; set; }
     }
 }

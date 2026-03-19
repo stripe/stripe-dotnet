@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentLinkLineItemAdjustableQuantityOptions : INestedOptions
     {
         /// <summary>
         /// Set to true if the quantity can be adjusted to any non-negative Integer.
         /// </summary>
         [JsonProperty("enabled")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enabled")]
-#endif
         public bool? Enabled { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// specify a value up to 999999.
         /// </summary>
         [JsonProperty("maximum")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("maximum")]
-#endif
         public long? Maximum { get; set; }
 
         /// <summary>
@@ -32,9 +28,7 @@ namespace Stripe
         /// only one item in the cart then that item's quantity cannot go down to 0.
         /// </summary>
         [JsonProperty("minimum")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("minimum")]
-#endif
         public long? Minimum { get; set; }
     }
 }

@@ -3,28 +3,24 @@ namespace Stripe.V2.Core
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class BatchJobStatusDetailsValidationFailedOutputFileDownloadUrl : StripeEntity<BatchJobStatusDetailsValidationFailedOutputFileDownloadUrl>
     {
         /// <summary>
         /// The time that the URL expires.
         /// </summary>
         [JsonProperty("expires_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("expires_at")]
-#endif
         public DateTime? ExpiresAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The URL that can be used for accessing the file.
         /// </summary>
         [JsonProperty("url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("url")]
-#endif
         public string Url { get; set; }
     }
 }

@@ -2,28 +2,24 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodConfigurationDetails : StripeEntity<PaymentIntentPaymentMethodConfigurationDetails>, IHasId
     {
         /// <summary>
         /// ID of the payment method configuration used.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
         /// ID of the parent payment method configuration used.
         /// </summary>
         [JsonProperty("parent")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("parent")]
-#endif
         public string Parent { get; set; }
     }
 }

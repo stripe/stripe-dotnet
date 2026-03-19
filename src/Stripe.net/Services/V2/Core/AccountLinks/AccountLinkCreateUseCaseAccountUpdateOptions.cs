@@ -3,10 +3,10 @@ namespace Stripe.V2.Core
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountLinkCreateUseCaseAccountUpdateOptions : INestedOptions
     {
         /// <summary>
@@ -14,9 +14,7 @@ namespace Stripe.V2.Core
         /// flow.
         /// </summary>
         [JsonProperty("collection_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("collection_options")]
-#endif
         public AccountLinkCreateUseCaseAccountUpdateCollectionOptionsOptions CollectionOptions { get; set; }
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe.V2.Core
         /// One of: <c>customer</c>, <c>merchant</c>, <c>recipient</c>, or <c>storer</c>.
         /// </summary>
         [JsonProperty("configurations")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("configurations")]
-#endif
         public List<string> Configurations { get; set; }
 
         /// <summary>
@@ -41,18 +37,14 @@ namespace Stripe.V2.Core
         /// you should display a useful error to the user.
         /// </summary>
         [JsonProperty("refresh_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("refresh_url")]
-#endif
         public string RefreshUrl { get; set; }
 
         /// <summary>
         /// The URL that the user will be redirected to upon completing the linked flow.
         /// </summary>
         [JsonProperty("return_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("return_url")]
-#endif
         public string ReturnUrl { get; set; }
     }
 }

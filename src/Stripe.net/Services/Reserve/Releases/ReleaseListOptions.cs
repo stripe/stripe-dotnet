@@ -2,10 +2,10 @@
 namespace Stripe.Reserve
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ReleaseListOptions : ListOptions
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.Reserve
         /// href="https://stripe.com/docs/currencies">supported currency</a>.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -25,9 +23,7 @@ namespace Stripe.Reserve
         /// ReserveHold ID.
         /// </summary>
         [JsonProperty("reserve_hold")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reserve_hold")]
-#endif
         public string ReserveHold { get; set; }
 
         /// <summary>
@@ -35,9 +31,7 @@ namespace Stripe.Reserve
         /// ReservePlan ID.
         /// </summary>
         [JsonProperty("reserve_plan")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reserve_plan")]
-#endif
         public string ReservePlan { get; set; }
     }
 }

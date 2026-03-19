@@ -4,22 +4,20 @@ namespace Stripe.V2.Core.Vault
     using System;
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Use the GBBankAccounts API to create and manage GB bank account objects.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class GbBankAccount : StripeEntity<GbBankAccount>, IHasId, IHasObject
     {
         /// <summary>
         /// The ID of the GBBankAccount object.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -27,18 +25,14 @@ namespace Stripe.V2.Core.Vault
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The alternative reference for this payout method, if it's a projected payout method.
         /// </summary>
         [JsonProperty("alternative_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("alternative_reference")]
-#endif
         public GbBankAccountAlternativeReference AlternativeReference { get; set; }
 
         /// <summary>
@@ -48,9 +42,7 @@ namespace Stripe.V2.Core.Vault
         /// appear in the outbound destination list.
         /// </summary>
         [JsonProperty("archived")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("archived")]
-#endif
         public bool Archived { get; set; }
 
         /// <summary>
@@ -58,18 +50,14 @@ namespace Stripe.V2.Core.Vault
         /// One of: <c>checking</c>, or <c>savings</c>.
         /// </summary>
         [JsonProperty("bank_account_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_account_type")]
-#endif
         public string BankAccountType { get; set; }
 
         /// <summary>
         /// The name of the bank.
         /// </summary>
         [JsonProperty("bank_name")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_name")]
-#endif
         public string BankName { get; set; }
 
         /// <summary>
@@ -78,27 +66,21 @@ namespace Stripe.V2.Core.Vault
         /// making OutboundPayments in the UK.
         /// </summary>
         [JsonProperty("confirmation_of_payee")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("confirmation_of_payee")]
-#endif
         public GbBankAccountConfirmationOfPayee ConfirmationOfPayee { get; set; }
 
         /// <summary>
         /// Creation time.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// The last 4 digits of the account number or IBAN.
         /// </summary>
         [JsonProperty("last4")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("last4")]
-#endif
         public string Last4 { get; set; }
 
         /// <summary>
@@ -106,27 +88,21 @@ namespace Stripe.V2.Core.Vault
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
         /// The Sort Code of the bank account.
         /// </summary>
         [JsonProperty("sort_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("sort_code")]
-#endif
         public string SortCode { get; set; }
 
         /// <summary>
         /// The list of currencies supported by this bank account.
         /// </summary>
         [JsonProperty("supported_currencies")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("supported_currencies")]
-#endif
         public List<string> SupportedCurrencies { get; set; }
     }
 }

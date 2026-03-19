@@ -3,10 +3,10 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentAmountDetailsOptions : INestedOptions
     {
         /// <summary>
@@ -18,9 +18,7 @@ namespace Stripe
         /// <c>amount_details[line_items][#][discount_amount]</c> field.
         /// </summary>
         [JsonProperty("discount_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_amount")]
-#endif
         public long? DiscountAmount { get; set; }
 
         /// <summary>
@@ -36,9 +34,7 @@ namespace Stripe
         /// arithmetic validation error.
         /// </summary>
         [JsonProperty("enforce_arithmetic_validation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enforce_arithmetic_validation")]
-#endif
         public bool? EnforceArithmeticValidation { get; set; }
 
         /// <summary>
@@ -46,36 +42,28 @@ namespace Stripe
         /// There is a maximum of 200 line items.
         /// </summary>
         [JsonProperty("line_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
-#endif
         public List<PaymentIntentAmountDetailsLineItemOptions> LineItems { get; set; }
 
         /// <summary>
         /// Contains information about the shipping portion of the amount.
         /// </summary>
         [JsonProperty("shipping")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping")]
-#endif
         public PaymentIntentAmountDetailsShippingOptions Shipping { get; set; }
 
         /// <summary>
         /// Contains information about the surcharge portion of the amount.
         /// </summary>
         [JsonProperty("surcharge")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("surcharge")]
-#endif
         public PaymentIntentAmountDetailsSurchargeOptions Surcharge { get; set; }
 
         /// <summary>
         /// Contains information about the tax portion of the amount.
         /// </summary>
         [JsonProperty("tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax")]
-#endif
         public PaymentIntentAmountDetailsTaxOptions Tax { get; set; }
     }
 }

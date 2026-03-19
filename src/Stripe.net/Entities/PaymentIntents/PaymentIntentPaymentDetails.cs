@@ -3,22 +3,18 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentDetails : StripeEntity<PaymentIntentPaymentDetails>
     {
         [JsonProperty("car_rental")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("car_rental")]
-#endif
         public PaymentIntentPaymentDetailsCarRental CarRental { get; set; }
 
         [JsonProperty("car_rental_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("car_rental_data")]
-#endif
         public List<PaymentIntentPaymentDetailsCarRentalDatum> CarRentalData { get; set; }
 
         /// <summary>
@@ -28,27 +24,19 @@ namespace Stripe
         /// sent to card networks.
         /// </summary>
         [JsonProperty("customer_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer_reference")]
-#endif
         public string CustomerReference { get; set; }
 
         [JsonProperty("event_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("event_details")]
-#endif
         public PaymentIntentPaymentDetailsEventDetails EventDetails { get; set; }
 
         [JsonProperty("flight_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("flight_data")]
-#endif
         public List<PaymentIntentPaymentDetailsFlightDatum> FlightData { get; set; }
 
         [JsonProperty("lodging_data")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("lodging_data")]
-#endif
         public List<PaymentIntentPaymentDetailsLodgingDatum> LodgingData { get; set; }
 
         /// <summary>
@@ -64,15 +52,11 @@ namespace Stripe
         /// characters and is visible to customers when they view the order in the Klarna app.
         /// </summary>
         [JsonProperty("order_reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("order_reference")]
-#endif
         public string OrderReference { get; set; }
 
         [JsonProperty("subscription")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscription")]
-#endif
         public PaymentIntentPaymentDetailsSubscription Subscription { get; set; }
     }
 }

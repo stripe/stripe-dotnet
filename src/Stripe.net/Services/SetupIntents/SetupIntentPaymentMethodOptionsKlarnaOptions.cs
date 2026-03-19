@@ -3,28 +3,24 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentPaymentMethodOptionsKlarnaOptions : INestedOptions
     {
         /// <summary>
         /// The currency of the SetupIntent. Three letter ISO currency code.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
         /// On-demand details if setting up a payment method for on-demand payments.
         /// </summary>
         [JsonProperty("on_demand")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("on_demand")]
-#endif
         public SetupIntentPaymentMethodOptionsKlarnaOnDemandOptions OnDemand { get; set; }
 
         /// <summary>
@@ -39,18 +35,14 @@ namespace Stripe
         /// <c>pl-PL</c>, <c>pt-PT</c>, <c>ro-RO</c>, <c>sv-FI</c>, or <c>sv-SE</c>.
         /// </summary>
         [JsonProperty("preferred_locale")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("preferred_locale")]
-#endif
         public string PreferredLocale { get; set; }
 
         /// <summary>
         /// Subscription details if setting up or charging a subscription.
         /// </summary>
         [JsonProperty("subscriptions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("subscriptions")]
-#endif
         public List<SetupIntentPaymentMethodOptionsKlarnaSubscriptionOptions> Subscriptions { get; set; }
     }
 }

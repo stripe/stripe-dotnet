@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class DisputeEvidenceEnhancedEvidenceVisaCompliance : StripeEntity<DisputeEvidenceEnhancedEvidenceVisaCompliance>
     {
         /// <summary>
@@ -16,9 +16,7 @@ namespace Stripe
         /// the dispute.
         /// </summary>
         [JsonProperty("fee_acknowledged")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("fee_acknowledged")]
-#endif
         public bool FeeAcknowledged { get; set; }
     }
 }

@@ -3,10 +3,10 @@ namespace Stripe.V2.MoneyManagement
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReceivedDebitStatusTransitions : StripeEntity<ReceivedDebitStatusTransitions>
     {
         /// <summary>
@@ -15,9 +15,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("canceled_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("canceled_at")]
-#endif
         public DateTime? CanceledAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -26,9 +24,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("failed_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("failed_at")]
-#endif
         public DateTime? FailedAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
@@ -37,9 +33,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>2022-09-18T13:22:18.123Z</c>.
         /// </summary>
         [JsonProperty("succeeded_at")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("succeeded_at")]
-#endif
         public DateTime? SucceededAt { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
     }
 }

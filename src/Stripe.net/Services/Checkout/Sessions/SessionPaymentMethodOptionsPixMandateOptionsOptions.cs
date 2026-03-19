@@ -2,10 +2,10 @@
 namespace Stripe.Checkout
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPaymentMethodOptionsPixMandateOptionsOptions : INestedOptions
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Checkout
         /// provided for <c>amount_type=maximum</c>, defaults to 40000.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.Checkout
         /// One of: <c>always</c>, or <c>never</c>.
         /// </summary>
         [JsonProperty("amount_includes_iof")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_includes_iof")]
-#endif
         public string AmountIncludesIof { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.Checkout
         /// One of: <c>fixed</c>, or <c>maximum</c>.
         /// </summary>
         [JsonProperty("amount_type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount_type")]
-#endif
         public string AmountType { get; set; }
 
         /// <summary>
@@ -43,9 +37,7 @@ namespace Stripe.Checkout
         /// code</a>, in lowercase. Only <c>brl</c> is supported currently.
         /// </summary>
         [JsonProperty("currency")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("currency")]
-#endif
         public string Currency { get; set; }
 
         /// <summary>
@@ -54,9 +46,7 @@ namespace Stripe.Checkout
         /// provided, end date should be after start date.
         /// </summary>
         [JsonProperty("end_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("end_date")]
-#endif
         public string EndDate { get; set; }
 
         /// <summary>
@@ -65,9 +55,7 @@ namespace Stripe.Checkout
         /// <c>yearly</c>.
         /// </summary>
         [JsonProperty("payment_schedule")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("payment_schedule")]
-#endif
         public string PaymentSchedule { get; set; }
 
         /// <summary>
@@ -75,9 +63,7 @@ namespace Stripe.Checkout
         /// business name.
         /// </summary>
         [JsonProperty("reference")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("reference")]
-#endif
         public string Reference { get; set; }
 
         /// <summary>
@@ -85,9 +71,7 @@ namespace Stripe.Checkout
         /// the future. Defaults to 3 days after the current date.
         /// </summary>
         [JsonProperty("start_date")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("start_date")]
-#endif
         public string StartDate { get; set; }
     }
 }

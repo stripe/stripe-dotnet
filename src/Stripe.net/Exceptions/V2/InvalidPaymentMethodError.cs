@@ -2,9 +2,8 @@
 namespace Stripe.V2
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     public class InvalidPaymentMethodError : StripeError
     {
@@ -13,9 +12,7 @@ namespace Stripe.V2
         /// <c>routing_number</c>.
         /// </summary>
         [JsonProperty("invalid_param")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("invalid_param")]
-#endif
         public string InvalidParam { get; set; }
     }
 }

@@ -2,10 +2,10 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class FormFilingStatusJurisdiction : StripeEntity<FormFilingStatusJurisdiction>
     {
         /// <summary>
@@ -13,9 +13,7 @@ namespace Stripe.Tax
         /// 3166-1 alpha-2</a>).
         /// </summary>
         [JsonProperty("country")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("country")]
-#endif
         public string Country { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.Tax
         /// One of: <c>country</c>, or <c>state</c>.
         /// </summary>
         [JsonProperty("level")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("level")]
-#endif
         public string Level { get; set; }
 
         /// <summary>
@@ -34,9 +30,7 @@ namespace Stripe.Tax
         /// non-U.S. forms.
         /// </summary>
         [JsonProperty("state")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("state")]
-#endif
         public string State { get; set; }
     }
 }

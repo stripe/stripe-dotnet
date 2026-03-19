@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountSessionComponentsFinancialAccountTransactionsFeaturesOptions : INestedOptions
     {
         /// <summary>
         /// Whether to allow card spend dispute management features.
         /// </summary>
         [JsonProperty("card_spend_dispute_management")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("card_spend_dispute_management")]
-#endif
         public bool? CardSpendDisputeManagement { get; set; }
     }
 }

@@ -3,28 +3,22 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SetupIntentNextAction : StripeEntity<SetupIntentNextAction>
     {
         [JsonProperty("cashapp_handle_redirect_or_display_qr_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("cashapp_handle_redirect_or_display_qr_code")]
-#endif
         public SetupIntentNextActionCashappHandleRedirectOrDisplayQrCode CashappHandleRedirectOrDisplayQrCode { get; set; }
 
         [JsonProperty("pix_display_qr_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("pix_display_qr_code")]
-#endif
         public SetupIntentNextActionPixDisplayQrCode PixDisplayQrCode { get; set; }
 
         [JsonProperty("redirect_to_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("redirect_to_url")]
-#endif
         public SetupIntentNextActionRedirectToUrl RedirectToUrl { get; set; }
 
         /// <summary>
@@ -34,15 +28,11 @@ namespace Stripe
         /// <c>verify_with_microdeposits</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         [JsonProperty("upi_handle_redirect_or_display_qr_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("upi_handle_redirect_or_display_qr_code")]
-#endif
         public SetupIntentNextActionUpiHandleRedirectOrDisplayQrCode UpiHandleRedirectOrDisplayQrCode { get; set; }
 
         /// <summary>
@@ -51,15 +41,11 @@ namespace Stripe
         /// change and is only intended to be used by Stripe.js.
         /// </summary>
         [JsonProperty("use_stripe_sdk")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("use_stripe_sdk")]
-#endif
         public Dictionary<string, object> UseStripeSdk { get; set; }
 
         [JsonProperty("verify_with_microdeposits")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("verify_with_microdeposits")]
-#endif
         public SetupIntentNextActionVerifyWithMicrodeposits VerifyWithMicrodeposits { get; set; }
     }
 }

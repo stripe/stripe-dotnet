@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentMethodStripeBalanceOptions : INestedOptions
     {
         /// <summary>
         /// The connected account ID whose Stripe balance to use as the source of payment.
         /// </summary>
         [JsonProperty("account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("account")]
-#endif
         public string Account { get; set; }
     }
 }

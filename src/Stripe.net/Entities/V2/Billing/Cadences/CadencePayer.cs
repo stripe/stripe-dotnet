@@ -2,28 +2,24 @@
 namespace Stripe.V2.Billing
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CadencePayer : StripeEntity<CadencePayer>
     {
         /// <summary>
         /// The ID of the Billing Profile object which determines how a bill will be paid.
         /// </summary>
         [JsonProperty("billing_profile")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("billing_profile")]
-#endif
         public string BillingProfile { get; set; }
 
         /// <summary>
         /// The ID of the Customer object.
         /// </summary>
         [JsonProperty("customer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("customer")]
-#endif
         public string Customer { get; set; }
 
         /// <summary>
@@ -31,9 +27,7 @@ namespace Stripe.V2.Billing
         /// <c>customer</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

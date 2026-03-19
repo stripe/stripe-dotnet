@@ -3,19 +3,17 @@ namespace Stripe.Terminal
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReaderActionCollectInputs : StripeEntity<ReaderActionCollectInputs>, IHasMetadata
     {
         /// <summary>
         /// List of inputs to be collected.
         /// </summary>
         [JsonProperty("inputs")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("inputs")]
-#endif
         public List<ReaderActionCollectInputsInput> Inputs { get; set; }
 
         /// <summary>
@@ -24,9 +22,7 @@ namespace Stripe.Terminal
         /// object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
     }
 }

@@ -3,28 +3,24 @@ namespace Stripe.V2.MoneyManagement
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class OutboundTransferCreateOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// The "presentment amount" for the OutboundPayment.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public V2.Amount Amount { get; set; }
 
         /// <summary>
         /// Delivery options to be used to send the OutboundTransfer.
         /// </summary>
         [JsonProperty("delivery_options")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("delivery_options")]
-#endif
         public OutboundTransferCreateDeliveryOptionsOptions DeliveryOptions { get; set; }
 
         /// <summary>
@@ -32,18 +28,14 @@ namespace Stripe.V2.MoneyManagement
         /// users.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// The FinancialAccount to pull funds from.
         /// </summary>
         [JsonProperty("from")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("from")]
-#endif
         public OutboundTransferCreateFromOptions From { get; set; }
 
         /// <summary>
@@ -51,18 +43,14 @@ namespace Stripe.V2.MoneyManagement
         /// additional information about the object in a structured format.
         /// </summary>
         [JsonProperty("metadata")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("metadata")]
-#endif
         public Dictionary<string, string> Metadata { get; set; }
 
         /// <summary>
         /// To which payout method to send the OutboundTransfer.
         /// </summary>
         [JsonProperty("to")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("to")]
-#endif
         public OutboundTransferCreateToOptions To { get; set; }
     }
 }

@@ -3,19 +3,17 @@ namespace Stripe
 {
     using System.Collections.Generic;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentDetailsFlightDatumTotalTax : StripeEntity<PaymentIntentPaymentDetailsFlightDatumTotalTax>
     {
         /// <summary>
         /// Tax details.
         /// </summary>
         [JsonProperty("taxes")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("taxes")]
-#endif
         public List<PaymentIntentPaymentDetailsFlightDatumTotalTaxTax> Taxes { get; set; }
     }
 }

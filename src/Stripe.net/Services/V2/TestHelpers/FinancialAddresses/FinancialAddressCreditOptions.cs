@@ -2,19 +2,17 @@
 namespace Stripe.V2.TestHelpers
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class FinancialAddressCreditOptions : BaseOptions
     {
         /// <summary>
         /// Object containing the amount value and currency to credit.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public V2.Amount Amount { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.TestHelpers
         /// One of: <c>ach</c>, <c>fps</c>, <c>rtp</c>, or <c>wire</c>.
         /// </summary>
         [JsonProperty("network")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("network")]
-#endif
         public string Network { get; set; }
 
         /// <summary>
@@ -33,9 +29,7 @@ namespace Stripe.V2.TestHelpers
         /// ReceivedCredit created as an eventual result of this simulation.
         /// </summary>
         [JsonProperty("statement_descriptor")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("statement_descriptor")]
-#endif
         public string StatementDescriptor { get; set; }
     }
 }

@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentIntentAmountDetailsSurchargeOptions : INestedOptions
     {
         /// <summary>
         /// Portion of the amount that corresponds to a surcharge.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public long? Amount { get; set; }
 
         /// <summary>
@@ -22,9 +20,7 @@ namespace Stripe
         /// One of: <c>automatic</c>, <c>disabled</c>, or <c>enabled</c>.
         /// </summary>
         [JsonProperty("enforce_validation")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("enforce_validation")]
-#endif
         public string EnforceValidation { get; set; }
     }
 }

@@ -2,19 +2,17 @@
 namespace Stripe.V2.MoneyManagement
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class OutboundPaymentQuoteEstimatedFee : StripeEntity<OutboundPaymentQuoteEstimatedFee>
     {
         /// <summary>
         /// The fee amount for corresponding fee type.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public V2.Amount Amount { get; set; }
 
         /// <summary>
@@ -23,9 +21,7 @@ namespace Stripe.V2.MoneyManagement
         /// <c>instant_payout_fee</c>, <c>standard_payout_fee</c>, or <c>wire_payout_fee</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

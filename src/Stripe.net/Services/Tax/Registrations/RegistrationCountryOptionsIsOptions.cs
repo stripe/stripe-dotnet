@@ -2,28 +2,24 @@
 namespace Stripe.Tax
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class RegistrationCountryOptionsIsOptions : INestedOptions
     {
         /// <summary>
         /// Options for the standard registration.
         /// </summary>
         [JsonProperty("standard")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("standard")]
-#endif
         public RegistrationCountryOptionsIsStandardOptions Standard { get; set; }
 
         /// <summary>
         /// Type of registration to be created in <c>country</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

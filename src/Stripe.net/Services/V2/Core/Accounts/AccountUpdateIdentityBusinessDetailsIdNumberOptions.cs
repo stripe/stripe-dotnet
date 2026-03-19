@@ -2,19 +2,17 @@
 namespace Stripe.V2.Core
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountUpdateIdentityBusinessDetailsIdNumberOptions : INestedOptions
     {
         /// <summary>
         /// The registrar of the ID number (Only valid for DE ID number types).
         /// </summary>
         [JsonProperty("registrar")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("registrar")]
-#endif
         public string Registrar { get; set; }
 
         /// <summary>
@@ -43,18 +41,14 @@ namespace Stripe.V2.Core
         /// <c>sk_vat</c>, <c>th_crn</c>, <c>th_prn</c>, <c>th_tin</c>, or <c>us_ein</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
 
         /// <summary>
         /// The value of the ID number.
         /// </summary>
         [JsonProperty("value")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("value")]
-#endif
         public string Value { get; set; }
     }
 }

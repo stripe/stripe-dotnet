@@ -2,19 +2,17 @@
 namespace Stripe.Terminal
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class ConfigurationReaderSecurityOptions : INestedOptions
     {
         /// <summary>
         /// Passcode used to access a reader's admin menu.
         /// </summary>
         [JsonProperty("admin_menu_passcode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("admin_menu_passcode")]
-#endif
         public string AdminMenuPasscode { get; set; }
     }
 }

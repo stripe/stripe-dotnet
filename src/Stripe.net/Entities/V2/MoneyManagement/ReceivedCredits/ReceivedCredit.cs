@@ -3,23 +3,21 @@ namespace Stripe.V2.MoneyManagement
 {
     using System;
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
     /// <summary>
     /// Use ReceivedCredits API to retrieve information on when, where, and how funds are sent
     /// into your FinancialAccount.
     /// </summary>
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ReceivedCredit : StripeEntity<ReceivedCredit>, IHasId, IHasObject
     {
         /// <summary>
         /// Unique identifier for the ReceivedCredit.
         /// </summary>
         [JsonProperty("id")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("id")]
-#endif
         public string Id { get; set; }
 
         /// <summary>
@@ -27,18 +25,14 @@ namespace Stripe.V2.MoneyManagement
         /// the object field.
         /// </summary>
         [JsonProperty("object")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("object")]
-#endif
         public string Object { get; set; }
 
         /// <summary>
         /// The amount and currency of the ReceivedCredit.
         /// </summary>
         [JsonProperty("amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("amount")]
-#endif
         public V2.Amount Amount { get; set; }
 
         /// <summary>
@@ -46,9 +40,7 @@ namespace Stripe.V2.MoneyManagement
         /// ReceivedCredit. Present if <c>type</c> field value is <c>balance_transfer</c>.
         /// </summary>
         [JsonProperty("balance_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("balance_transfer")]
-#endif
         public ReceivedCreditBalanceTransfer BalanceTransfer { get; set; }
 
         /// <summary>
@@ -56,9 +48,7 @@ namespace Stripe.V2.MoneyManagement
         /// the ReceivedCredit. Present if <c>type</c> field value is <c>bank_transfer</c>.
         /// </summary>
         [JsonProperty("bank_transfer")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("bank_transfer")]
-#endif
         public ReceivedCreditBankTransfer BankTransfer { get; set; }
 
         /// <summary>
@@ -66,27 +56,21 @@ namespace Stripe.V2.MoneyManagement
         /// UTC value in millisecond precision, for example: 2022-09-18T13:22:18.123Z.
         /// </summary>
         [JsonProperty("created")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("created")]
-#endif
         public DateTime Created { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
         /// Freeform string set by originator of the ReceivedCredit.
         /// </summary>
         [JsonProperty("description")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("description")]
-#endif
         public string Description { get; set; }
 
         /// <summary>
         /// Financial Account ID on which funds for ReceivedCredit were received.
         /// </summary>
         [JsonProperty("financial_account")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("financial_account")]
-#endif
         public string FinancialAccount { get; set; }
 
         /// <summary>
@@ -94,9 +78,7 @@ namespace Stripe.V2.MoneyManagement
         /// the object exists in test mode.
         /// </summary>
         [JsonProperty("livemode")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("livemode")]
-#endif
         public bool Livemode { get; set; }
 
         /// <summary>
@@ -104,9 +86,7 @@ namespace Stripe.V2.MoneyManagement
         /// regulated under Stripe’s money transmission licenses.
         /// </summary>
         [JsonProperty("receipt_url")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("receipt_url")]
-#endif
         public string ReceiptUrl { get; set; }
 
         /// <summary>
@@ -114,9 +94,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>failed</c>, <c>pending</c>, <c>returned</c>, or <c>succeeded</c>.
         /// </summary>
         [JsonProperty("status")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status")]
-#endif
         public string Status { get; set; }
 
         /// <summary>
@@ -125,18 +103,14 @@ namespace Stripe.V2.MoneyManagement
         /// <c>failed</c>.
         /// </summary>
         [JsonProperty("status_details")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_details")]
-#endif
         public ReceivedCreditStatusDetails StatusDetails { get; set; }
 
         /// <summary>
         /// Hash containing timestamps of when the object transitioned to a particular status.
         /// </summary>
         [JsonProperty("status_transitions")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("status_transitions")]
-#endif
         public ReceivedCreditStatusTransitions StatusTransitions { get; set; }
 
         /// <summary>
@@ -144,9 +118,7 @@ namespace Stripe.V2.MoneyManagement
         /// One of: <c>balance_transfer</c>, <c>bank_transfer</c>, or <c>external_credit</c>.
         /// </summary>
         [JsonProperty("type")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("type")]
-#endif
         public string Type { get; set; }
     }
 }

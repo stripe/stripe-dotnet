@@ -2,10 +2,10 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentAmountDetails : StripeEntity<PaymentIntentAmountDetails>
     {
         /// <summary>
@@ -17,15 +17,11 @@ namespace Stripe
         /// <c>amount_details[line_items][#][discount_amount]</c> field.
         /// </summary>
         [JsonProperty("discount_amount")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("discount_amount")]
-#endif
         public long DiscountAmount { get; set; }
 
         [JsonProperty("error")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("error")]
-#endif
         public PaymentIntentAmountDetailsError Error { get; set; }
 
         /// <summary>
@@ -33,33 +29,23 @@ namespace Stripe
         /// There is a maximum of 200 line items.
         /// </summary>
         [JsonProperty("line_items")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("line_items")]
-#endif
         public StripeList<PaymentIntentAmountDetailsLineItem> LineItems { get; set; }
 
         [JsonProperty("shipping")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("shipping")]
-#endif
         public PaymentIntentAmountDetailsShipping Shipping { get; set; }
 
         [JsonProperty("surcharge")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("surcharge")]
-#endif
         public PaymentIntentAmountDetailsSurcharge Surcharge { get; set; }
 
         [JsonProperty("tax")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tax")]
-#endif
         public PaymentIntentAmountDetailsTax Tax { get; set; }
 
         [JsonProperty("tip")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("tip")]
-#endif
         public PaymentIntentAmountDetailsTip Tip { get; set; }
     }
 }

@@ -2,19 +2,17 @@
 namespace Stripe
 {
     using Newtonsoft.Json;
-#if NET6_0_OR_GREATER
+    using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
-#endif
 
+    [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentDetailsFlightDatumTotalDiscounts : StripeEntity<PaymentIntentPaymentDetailsFlightDatumTotalDiscounts>
     {
         /// <summary>
         /// Corporate client discount code.
         /// </summary>
         [JsonProperty("corporate_client_code")]
-#if NET6_0_OR_GREATER
         [STJS.JsonPropertyName("corporate_client_code")]
-#endif
         public string CorporateClientCode { get; set; }
     }
 }
