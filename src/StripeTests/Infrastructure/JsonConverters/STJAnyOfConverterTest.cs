@@ -1,7 +1,7 @@
-#if NET6_0_OR_GREATER
 namespace StripeTests
 {
-    using Newtonsoft.Json;
+    using System.Text.Json;
+    using System.Text.Json.Serialization;
     using Stripe;
     using Stripe.Infrastructure;
     using Xunit;
@@ -12,7 +12,7 @@ namespace StripeTests
         public void DeserializeFirstType()
         {
             var json = "{\n  \"any_of\": \"String!\"\n}";
-            var obj = JsonConvert.DeserializeObject<TestObject>(json);
+            var obj = JsonSerializer.Deserialize<TestObject>(json);
 
             Assert.NotNull(obj.AnyOf);
             Assert.Equal("String!", obj.AnyOf);
@@ -22,7 +22,7 @@ namespace StripeTests
         public void DeserializeSecondType()
         {
             var json = "{\n  \"any_of\": {\n    \"id\": \"id_123\",\n    \"bar\": 42\n  }\n}";
-            var obj = JsonConvert.DeserializeObject<TestObject>(json);
+            var obj = JsonSerializer.Deserialize<TestObject>(json);
 
             Assert.NotNull(obj.AnyOf);
             Assert.Equal("id_123", ((TestSubObject)obj.AnyOf).Id);
@@ -33,7 +33,7 @@ namespace StripeTests
         public void DeserializeNull()
         {
             var json = "{\n  \"any_of\": null\n}";
-            var obj = JsonConvert.DeserializeObject<TestObject>(json);
+            var obj = JsonSerializer.Deserialize<TestObject>(json);
 
             Assert.Null(obj.AnyOf);
         }
@@ -43,8 +43,8 @@ namespace StripeTests
         {
             var json = "{\n  \"any_of\": []\n}";
 
-            var exception = Assert.Throws<JsonSerializationException>(() =>
-                JsonConvert.DeserializeObject<TestObject>(json));
+            var exception = Assert.Throws<JsonException>(() =>
+                JsonSerializer.Deserialize<TestObject>(json));
 
             Assert.Contains(
                 "Cannot deserialize the current JSON object into any of the expected types",
@@ -92,21 +92,22 @@ namespace StripeTests
             Assert.Equal(expected, obj.ToJson().Replace("\r\n", "\n"));
         }
 
+        [JsonConverter(typeof(STJStripeEntityConverter))]
         private class TestSubObject : StripeEntity<TestSubObject>, IHasId
         {
-            [JsonProperty("id")]
+            [JsonPropertyName("id")]
             public string Id { get; set; }
 
-            [JsonProperty("bar")]
+            [JsonPropertyName("bar")]
             public int Bar { get; set; }
         }
 
+        [JsonConverter(typeof(STJStripeEntityConverter))]
         private class TestObject : StripeEntity<TestObject>
         {
-            [JsonProperty("any_of")]
-            [JsonConverter(typeof(AnyOfConverter))]
+            [JsonPropertyName("any_of")]
+            [JsonConverter(typeof(STJAnyOfConverter))]
             internal AnyOf<string, TestSubObject> AnyOf { get; set; }
         }
     }
 }
-#endif
