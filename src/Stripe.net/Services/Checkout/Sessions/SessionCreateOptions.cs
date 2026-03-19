@@ -204,8 +204,8 @@ namespace Stripe.Checkout
         /// <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>paypay</c>,
         /// <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
-        /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -221,6 +221,14 @@ namespace Stripe.Checkout
         [STJS.JsonPropertyName("expires_at")]
         [STJS.JsonConverter(typeof(STJUnixDateTimeConverter))]
         public DateTime? ExpiresAt { get; set; }
+
+        /// <summary>
+        /// The integration identifier for this Checkout Session. Multiple Checkout Sessions can
+        /// have the same integration identifier.
+        /// </summary>
+        [JsonProperty("integration_identifier")]
+        [STJS.JsonPropertyName("integration_identifier")]
+        public string IntegrationIdentifier { get; set; }
 
         /// <summary>
         /// Generate a post-purchase Invoice for one-time payments.
@@ -409,8 +417,8 @@ namespace Stripe.Checkout
         /// <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>, <c>payco</c>, <c>paynow</c>, <c>paypal</c>,
         /// <c>paypay</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>, <c>qris</c>, <c>rechnung</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
-        /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>,
-        /// <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>shopeepay</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>,
+        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]
@@ -531,7 +539,8 @@ namespace Stripe.Checkout
 
         /// <summary>
         /// The UI mode of the Session. Defaults to <c>hosted</c>.
-        /// One of: <c>custom</c>, <c>embedded</c>, or <c>hosted</c>.
+        /// One of: <c>custom</c>, <c>elements</c>, <c>embedded</c>, <c>embedded_page</c>,
+        /// <c>form</c>, <c>hosted</c>, or <c>hosted_page</c>.
         /// </summary>
         [JsonProperty("ui_mode")]
         [STJS.JsonPropertyName("ui_mode")]

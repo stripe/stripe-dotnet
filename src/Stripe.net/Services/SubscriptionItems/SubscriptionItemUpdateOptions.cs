@@ -19,6 +19,13 @@ namespace Stripe
         public SubscriptionItemBillingThresholdsOptions BillingThresholds { get; set; }
 
         /// <summary>
+        /// The trial offer to apply to this subscription item.
+        /// </summary>
+        [JsonProperty("current_trial")]
+        [STJS.JsonPropertyName("current_trial")]
+        public SubscriptionItemCurrentTrialOptions CurrentTrial { get; set; }
+
+        /// <summary>
         /// The coupons to redeem into discounts for the subscription item.
         /// </summary>
         [JsonProperty("discounts")]
@@ -117,7 +124,7 @@ namespace Stripe
         /// <summary>
         /// If set, the proration will be calculated as though the subscription was updated at the
         /// given time. This can be used to apply the same proration that was previewed with the <a
-        /// href="https://api.stripe.com#retrieve_customer_invoice">upcoming invoice</a> endpoint.
+        /// href="https://stripe.com/api/invoices/create_preview">upcoming invoice</a> endpoint.
         /// </summary>
         [JsonProperty("proration_date")]
         [JsonConverter(typeof(UnixDateTimeConverter))]

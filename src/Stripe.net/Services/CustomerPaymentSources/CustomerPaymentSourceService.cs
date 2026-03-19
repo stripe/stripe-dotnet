@@ -35,7 +35,7 @@ namespace Stripe
         ///
         /// <p>If the card’s owner has no default card, then the new card will become the default.
         /// However, if the owner already has a default, then it will not change. To change the
-        /// default, you should <a href="https://stripe.com/docs/api#update_customer">update the
+        /// default, you should <a href="https://stripe.com/api/customers/update">update the
         /// customer</a> to have a new <c>default_source</c>.</p>.
         /// </summary>
         public virtual IPaymentSource Create(string parentId, CustomerPaymentSourceCreateOptions options = null, RequestOptions requestOptions = null)
@@ -49,7 +49,7 @@ namespace Stripe
         ///
         /// <p>If the card’s owner has no default card, then the new card will become the default.
         /// However, if the owner already has a default, then it will not change. To change the
-        /// default, you should <a href="https://stripe.com/docs/api#update_customer">update the
+        /// default, you should <a href="https://stripe.com/api/customers/update">update the
         /// customer</a> to have a new <c>default_source</c>.</p>.
         /// </summary>
         public virtual Task<IPaymentSource> CreateAsync(string parentId, CustomerPaymentSourceCreateOptions options = null, RequestOptions requestOptions = null, CancellationToken cancellationToken = default)

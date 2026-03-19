@@ -595,6 +595,14 @@ namespace Stripe
         public PaymentMethodConfigurationTwintOptions Twint { get; set; }
 
         /// <summary>
+        /// Unified Payment Interface (UPI) is India's leading payment method with exponential
+        /// growth since it launched in 2016.
+        /// </summary>
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentMethodConfigurationUpiOptions Upi { get; set; }
+
+        /// <summary>
         /// Stripe users in the United States can accept ACH direct debit payments from customers
         /// with a US bank account using the Automated Clearing House (ACH) payments system operated
         /// by Nacha. Check this <a

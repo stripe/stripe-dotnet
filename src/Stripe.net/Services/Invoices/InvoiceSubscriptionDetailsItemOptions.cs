@@ -27,6 +27,13 @@ namespace Stripe
         public bool? ClearUsage { get; set; }
 
         /// <summary>
+        /// The trial offer to apply to this subscription item.
+        /// </summary>
+        [JsonProperty("current_trial")]
+        [STJS.JsonPropertyName("current_trial")]
+        public InvoiceSubscriptionDetailsItemCurrentTrialOptions CurrentTrial { get; set; }
+
+        /// <summary>
         /// A flag that, if set to <c>true</c>, will delete the specified item.
         /// </summary>
         [JsonProperty("deleted")]
