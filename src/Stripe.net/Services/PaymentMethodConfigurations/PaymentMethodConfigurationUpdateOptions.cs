@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class PaymentMethodConfigurationUpdateOptions : BaseOptions
     {
@@ -547,6 +548,14 @@ namespace Stripe
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public PaymentMethodConfigurationTwintOptions Twint { get; set; }
+
+        /// <summary>
+        /// Unified Payment Interface (UPI) is India's leading payment method with exponential
+        /// growth since it launched in 2016.
+        /// </summary>
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentMethodConfigurationUpiOptions Upi { get; set; }
 
         /// <summary>
         /// Stripe users in the United States can accept ACH direct debit payments from customers

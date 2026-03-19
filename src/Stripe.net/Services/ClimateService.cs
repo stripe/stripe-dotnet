@@ -23,10 +23,8 @@ namespace Stripe
 
         public virtual Climate.OrderService Orders => this.orders ??= new Climate.OrderService(
             this.Requestor);
-
         public virtual Climate.ProductService Products => this.products ??= new Climate.ProductService(
             this.Requestor);
-
         public virtual Climate.SupplierService Suppliers => this.suppliers ??= new Climate.SupplierService(
             this.Requestor);
     }

@@ -6,6 +6,7 @@ namespace Stripe.FinancialConnections
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Financial Connections Session is the secure way to programmatically launch the
     /// client-side Stripe.js modal that lets your users link their accounts.
@@ -53,8 +54,8 @@ namespace Stripe.FinancialConnections
         public SessionFilters Filters { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

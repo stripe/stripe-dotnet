@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentPaymentMethodOptions : StripeEntity<PaymentIntentPaymentMethodOptions>
     {
@@ -203,6 +204,10 @@ namespace Stripe
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public PaymentIntentPaymentMethodOptionsTwint Twint { get; set; }
+
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentIntentPaymentMethodOptionsUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

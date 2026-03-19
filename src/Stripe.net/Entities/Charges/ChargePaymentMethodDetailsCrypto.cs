@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class ChargePaymentMethodDetailsCrypto : StripeEntity<ChargePaymentMethodDetailsCrypto>
     {
@@ -17,7 +18,7 @@ namespace Stripe
 
         /// <summary>
         /// The blockchain network that the transaction was sent on.
-        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, or <c>solana</c>.
+        /// One of: <c>base</c>, <c>ethereum</c>, <c>polygon</c>, <c>solana</c>, or <c>tempo</c>.
         /// </summary>
         [JsonProperty("network")]
         [STJS.JsonPropertyName("network")]

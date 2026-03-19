@@ -5,6 +5,7 @@ namespace Stripe.Events
     using Newtonsoft.Json;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Occurs when a Meter has invalid async usage events.
     /// </summary>
@@ -13,14 +14,20 @@ namespace Stripe.Events
         /// <summary>
         /// Data for the v1.billing.meter.error_report_triggered event.
         /// </summary>
+
+
         [JsonProperty("data")]
         [STJS.JsonPropertyName("data")]
 
         public V1BillingMeterErrorReportTriggeredEventData Data { get; set; }
 
+
+
         /// <summary>
         /// Object containing the reference to API resource relevant to the event.
         /// </summary>
+
+
         [JsonProperty("related_object")]
         [STJS.JsonPropertyName("related_object")]
 
@@ -30,6 +37,8 @@ namespace Stripe.Events
         /// Asynchronously retrieves the related object from the API. Make an API request on every
         /// call.
         /// </summary>
+
+
         public Task<Billing.Meter> FetchRelatedObjectAsync()
         {
             return this.FetchRelatedObjectAsync<Billing.Meter>(this.RelatedObject);
@@ -38,6 +47,8 @@ namespace Stripe.Events
         /// <summary>
         /// Retrieves the related object from the API. Make an API request on every call.
         /// </summary>
+
+
         public Billing.Meter FetchRelatedObject()
         {
             return this.FetchRelatedObject<Billing.Meter>(this.RelatedObject);

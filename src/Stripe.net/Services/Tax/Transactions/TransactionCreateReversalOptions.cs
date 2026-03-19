@@ -6,12 +6,13 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TransactionCreateReversalOptions : BaseOptions, IHasMetadata
     {
         /// <summary>
         /// A flat amount to reverse across the entire transaction, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> in
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a> in
         /// negative. This value represents the total amount to refund from the transaction,
         /// including taxes.
         /// </summary>

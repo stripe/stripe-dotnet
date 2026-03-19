@@ -6,6 +6,7 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionLineItem : StripeEntity<TransactionLineItem>, IHasId, IHasMetadata, IHasObject
     {
@@ -25,7 +26,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The line item amount in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. If
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>. If
         /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes were
         /// calculated on top of this amount.
         /// </summary>
@@ -35,15 +36,15 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount of tax calculated for this line item, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
         [STJS.JsonPropertyName("amount_tax")]
         public long AmountTax { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

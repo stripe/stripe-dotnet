@@ -36,13 +36,10 @@ namespace Stripe
 
         public virtual AccountCapabilityService Capabilities => this.capabilities ??= new AccountCapabilityService(
             this.Requestor);
-
         public virtual AccountExternalAccountService ExternalAccounts => this.externalAccounts ??= new AccountExternalAccountService(
             this.Requestor);
-
         public virtual AccountLoginLinkService LoginLinks => this.loginLinks ??= new AccountLoginLinkService(
             this.Requestor);
-
         public virtual AccountPersonService Persons => this.persons ??= new AccountPersonService(
             this.Requestor);
 

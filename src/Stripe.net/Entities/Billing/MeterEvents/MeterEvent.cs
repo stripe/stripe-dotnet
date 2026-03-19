@@ -7,6 +7,7 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Meter events represent actions that customers take in your system. You can use meter
     /// events to bill a customer based on their usage. Meter events are associated with billing
@@ -47,8 +48,8 @@ namespace Stripe.Billing
         public string Identifier { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

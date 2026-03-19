@@ -7,6 +7,7 @@ namespace Stripe.Reserve
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// ReservePlans are used to automatically place holds on a merchant's funds until the plan
     /// expires. It takes a portion of each incoming Charge (including those resulting from a
@@ -69,8 +70,8 @@ namespace Stripe.Reserve
         public PlanFixedRelease FixedRelease { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

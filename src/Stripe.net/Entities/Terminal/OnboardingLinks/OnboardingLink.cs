@@ -5,6 +5,7 @@ namespace Stripe.Terminal
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Returns redirect links used for onboarding onto Tap to Pay on iPhone.
     /// </summary>

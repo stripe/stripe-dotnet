@@ -7,6 +7,7 @@ namespace Stripe.V2.Core
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Set up an event destination to receive events from Stripe across multiple destination
     /// types, including <a href="https://docs.stripe.com/webhooks">webhook endpoints</a> and <a

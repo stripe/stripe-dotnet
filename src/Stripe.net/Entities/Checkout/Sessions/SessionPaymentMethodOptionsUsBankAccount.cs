@@ -5,6 +5,7 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionPaymentMethodOptionsUsBankAccount : StripeEntity<SessionPaymentMethodOptionsUsBankAccount>
     {
@@ -47,7 +48,7 @@ namespace Stripe.Checkout
         public string TargetDate { get; set; }
 
         /// <summary>
-        /// Bank account verification method.
+        /// Bank account verification method. The default value is <c>automatic</c>.
         /// One of: <c>automatic</c>, or <c>instant</c>.
         /// </summary>
         [JsonProperty("verification_method")]

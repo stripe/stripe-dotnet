@@ -6,6 +6,7 @@ namespace Stripe.V2.Core
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Person Tokens are single-use tokens which tokenize person information, and are used for
     /// creating or updating a Person.

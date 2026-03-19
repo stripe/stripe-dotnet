@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Customers with certain payments enabled have a cash balance, representing funds that
     /// were paid by the customer to a merchant, but have not yet been allocated to a payment.
@@ -113,8 +114,8 @@ namespace Stripe
         public CustomerCashBalanceTransactionFunded Funded { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

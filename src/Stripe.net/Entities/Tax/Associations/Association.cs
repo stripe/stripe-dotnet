@@ -6,6 +6,7 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Tax Association exposes the Tax Transactions that Stripe attempted to create on your
     /// behalf based on the PaymentIntent input.

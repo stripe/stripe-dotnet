@@ -22,7 +22,6 @@ namespace Stripe
 
         public virtual Entitlements.ActiveEntitlementService ActiveEntitlements => this.activeEntitlements ??= new Entitlements.ActiveEntitlementService(
             this.Requestor);
-
         public virtual Entitlements.FeatureService Features => this.features ??= new Entitlements.FeatureService(
             this.Requestor);
     }

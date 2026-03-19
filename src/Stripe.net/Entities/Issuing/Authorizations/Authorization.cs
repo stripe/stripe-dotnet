@@ -7,6 +7,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// When an <a href="https://docs.stripe.com/issuing">issued card</a> is used to make a
     /// purchase, an Issuing <c>Authorization</c> object is created. <a
@@ -163,8 +164,8 @@ namespace Stripe.Issuing
         public AuthorizationFuel Fuel { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

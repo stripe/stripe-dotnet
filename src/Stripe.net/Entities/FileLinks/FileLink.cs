@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// To share the contents of a <c>File</c> object with non-Stripe users, you can create a
     /// <c>FileLink</c>. <c>FileLink</c>s contain a URL that you can use to retrieve the
@@ -90,8 +91,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

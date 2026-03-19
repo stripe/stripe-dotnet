@@ -7,6 +7,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// You can <a href="https://docs.stripe.com/issuing">create physical or virtual cards</a>
     /// that are issued to cardholders.
@@ -122,8 +123,17 @@ namespace Stripe.Issuing
         public CardLatestFraudWarning LatestFraudWarning { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// Rules that control the lifecycle of this card, such as automatic cancellation. Refer to
+        /// our <a href="https://stripe.com/issuing/controls/lifecycle-controls">documentation</a>
+        /// for more details.
+        /// </summary>
+        [JsonProperty("lifecycle_controls")]
+        [STJS.JsonPropertyName("lifecycle_controls")]
+        public CardLifecycleControls LifecycleControls { get; set; }
+
+        /// <summary>
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

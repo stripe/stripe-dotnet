@@ -5,6 +5,7 @@ namespace Stripe.TestHelpers.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AuthorizationRiskAssessmentCardTestingRiskOptions : INestedOptions
     {
@@ -34,8 +35,8 @@ namespace Stripe.TestHelpers.Issuing
         /// One of: <c>elevated</c>, <c>highest</c>, <c>low</c>, <c>normal</c>, <c>not_assessed</c>,
         /// or <c>unknown</c>.
         /// </summary>
-        [JsonProperty("risk_level")]
-        [STJS.JsonPropertyName("risk_level")]
-        public string RiskLevel { get; set; }
+        [JsonProperty("level")]
+        [STJS.JsonPropertyName("level")]
+        public string Level { get; set; }
     }
 }

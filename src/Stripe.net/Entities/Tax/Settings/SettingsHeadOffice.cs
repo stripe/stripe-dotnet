@@ -5,6 +5,7 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SettingsHeadOffice : StripeEntity<SettingsHeadOffice>
     {

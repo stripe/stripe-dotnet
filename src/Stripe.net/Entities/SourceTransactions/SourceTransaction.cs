@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Some payment methods have no required amount that a customer must send. Customers can be
     /// instructed to send any amount, and it can be made up of multiple transactions. As such,
@@ -68,8 +69,8 @@ namespace Stripe
         public SourceTransactionGbpCreditTransfer GbpCreditTransfer { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

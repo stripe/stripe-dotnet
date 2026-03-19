@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class AccountCapabilitiesOptions : INestedOptions
     {
@@ -413,6 +414,13 @@ namespace Stripe
         [JsonProperty("twint_payments")]
         [STJS.JsonPropertyName("twint_payments")]
         public AccountCapabilitiesTwintPaymentsOptions TwintPayments { get; set; }
+
+        /// <summary>
+        /// The upi_payments capability.
+        /// </summary>
+        [JsonProperty("upi_payments")]
+        [STJS.JsonPropertyName("upi_payments")]
+        public AccountCapabilitiesUpiPaymentsOptions UpiPayments { get; set; }
 
         /// <summary>
         /// The us_bank_account_ach_payments capability.

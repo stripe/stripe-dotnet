@@ -6,6 +6,7 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// TransactionEntries represent individual units of money movements within a single <a
     /// href="https://api.stripe.com#transactions">Transaction</a>.
@@ -93,8 +94,8 @@ namespace Stripe.Treasury
         public string FlowType { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

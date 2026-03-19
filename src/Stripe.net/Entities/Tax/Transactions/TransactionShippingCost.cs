@@ -6,12 +6,13 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class TransactionShippingCost : StripeEntity<TransactionShippingCost>
     {
         /// <summary>
         /// The shipping amount in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>. If
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>. If
         /// <c>tax_behavior=inclusive</c>, then this amount includes taxes. Otherwise, taxes were
         /// calculated on top of this amount.
         /// </summary>
@@ -21,7 +22,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount of tax calculated for shipping, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount_tax")]
         [STJS.JsonPropertyName("amount_tax")]

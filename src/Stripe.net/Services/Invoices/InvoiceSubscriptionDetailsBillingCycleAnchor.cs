@@ -6,9 +6,6 @@ namespace Stripe
         public static readonly InvoiceSubscriptionDetailsBillingCycleAnchor Now = new InvoiceSubscriptionDetailsBillingCycleAnchor("now");
         public static readonly InvoiceSubscriptionDetailsBillingCycleAnchor Unchanged = new InvoiceSubscriptionDetailsBillingCycleAnchor("unchanged");
 
-        private InvoiceSubscriptionDetailsBillingCycleAnchor(string value)
-            : base(value)
-        {
-        }
+        private InvoiceSubscriptionDetailsBillingCycleAnchor(string value) : base(value) { }
     }
 }

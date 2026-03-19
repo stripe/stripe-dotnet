@@ -6,6 +6,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class CardCreateOptions : BaseOptions, IHasMetadata
     {
@@ -49,6 +50,15 @@ namespace Stripe.Issuing
         [JsonProperty("financial_account")]
         [STJS.JsonPropertyName("financial_account")]
         public string FinancialAccount { get; set; }
+
+        /// <summary>
+        /// Rules that control the lifecycle of this card, such as automatic cancellation. Refer to
+        /// our <a href="https://stripe.com/issuing/controls/lifecycle-controls">documentation</a>
+        /// for more details.
+        /// </summary>
+        [JsonProperty("lifecycle_controls")]
+        [STJS.JsonPropertyName("lifecycle_controls")]
+        public CardLifecycleControlsOptions LifecycleControls { get; set; }
 
         /// <summary>
         /// Set of <a href="https://docs.stripe.com/api/metadata">key-value pairs</a> that you can

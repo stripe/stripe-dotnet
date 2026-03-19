@@ -5,12 +5,13 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class CalculationTaxBreakdown : StripeEntity<CalculationTaxBreakdown>
     {
         /// <summary>
         /// The amount of tax, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]
@@ -42,7 +43,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount on which tax is calculated, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a>.
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a>.
         /// </summary>
         [JsonProperty("taxable_amount")]
         [STJS.JsonPropertyName("taxable_amount")]

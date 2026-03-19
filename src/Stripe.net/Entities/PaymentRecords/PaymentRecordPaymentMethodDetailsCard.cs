@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentRecordPaymentMethodDetailsCard : StripeEntity<PaymentRecordPaymentMethodDetailsCard>
     {
@@ -65,14 +66,14 @@ namespace Stripe
         /// </summary>
         [JsonProperty("exp_month")]
         [STJS.JsonPropertyName("exp_month")]
-        public long ExpMonth { get; set; }
+        public long? ExpMonth { get; set; }
 
         /// <summary>
         /// Four-digit number representing the card's expiration year.
         /// </summary>
         [JsonProperty("exp_year")]
         [STJS.JsonPropertyName("exp_year")]
-        public long ExpYear { get; set; }
+        public long? ExpYear { get; set; }
 
         /// <summary>
         /// Uniquely identifies this particular card number. You can use this attribute to check
@@ -129,7 +130,7 @@ namespace Stripe
         /// </summary>
         [JsonProperty("moto")]
         [STJS.JsonPropertyName("moto")]
-        public bool Moto { get; set; }
+        public bool? Moto { get; set; }
 
         /// <summary>
         /// Identifies which network this charge was processed on. Can be <c>amex</c>,

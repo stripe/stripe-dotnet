@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentAttemptRecordPaymentMethodDetails : StripeEntity<PaymentAttemptRecordPaymentMethodDetails>
     {
@@ -257,6 +258,10 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public PaymentAttemptRecordPaymentMethodDetailsUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

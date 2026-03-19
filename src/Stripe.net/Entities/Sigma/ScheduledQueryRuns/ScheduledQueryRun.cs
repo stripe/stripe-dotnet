@@ -6,6 +6,7 @@ namespace Stripe.Sigma
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// If you have <a href="https://docs.stripe.com/sigma/scheduled-queries">scheduled a Sigma
     /// query</a>, you'll receive a <c>sigma.scheduled_query_run.created</c> webhook each time
@@ -59,8 +60,8 @@ namespace Stripe.Sigma
         public File File { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

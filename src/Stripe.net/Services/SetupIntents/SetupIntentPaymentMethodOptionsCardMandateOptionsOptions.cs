@@ -7,11 +7,12 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentPaymentMethodOptionsCardMandateOptionsOptions : INestedOptions
     {
         /// <summary>
-        /// Amount to be charged for future payments.
+        /// Amount to be charged for future payments, specified in the presentment currency.
         /// </summary>
         [JsonProperty("amount")]
         [STJS.JsonPropertyName("amount")]

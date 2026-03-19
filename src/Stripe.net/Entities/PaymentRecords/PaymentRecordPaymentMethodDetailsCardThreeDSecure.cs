@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentRecordPaymentMethodDetailsCardThreeDSecure : StripeEntity<PaymentRecordPaymentMethodDetailsCardThreeDSecure>
     {
@@ -16,6 +17,38 @@ namespace Stripe
         [JsonProperty("authentication_flow")]
         [STJS.JsonPropertyName("authentication_flow")]
         public string AuthenticationFlow { get; set; }
+
+        /// <summary>
+        /// The 3D Secure cryptogram, also known as the "authentication value" (AAV, CAVV or AEVV).
+        /// </summary>
+        [JsonProperty("cryptogram")]
+        [STJS.JsonPropertyName("cryptogram")]
+        public string Cryptogram { get; set; }
+
+        /// <summary>
+        /// The Electronic Commerce Indicator (ECI). A protocol-level field indicating what degree
+        /// of authentication was performed.
+        /// One of: <c>01</c>, <c>02</c>, <c>03</c>, <c>04</c>, <c>05</c>, <c>06</c>, or <c>07</c>.
+        /// </summary>
+        [JsonProperty("electronic_commerce_indicator")]
+        [STJS.JsonPropertyName("electronic_commerce_indicator")]
+        public string ElectronicCommerceIndicator { get; set; }
+
+        /// <summary>
+        /// The exemption requested via 3DS and accepted by the issuer at authentication time.
+        /// One of: <c>low_risk</c>, or <c>none</c>.
+        /// </summary>
+        [JsonProperty("exemption_indicator")]
+        [STJS.JsonPropertyName("exemption_indicator")]
+        public string ExemptionIndicator { get; set; }
+
+        /// <summary>
+        /// Whether Stripe requested the value of <c>exemption_indicator</c> in the transaction.
+        /// This will depend on the outcome of Stripe's internal risk assessment.
+        /// </summary>
+        [JsonProperty("exemption_indicator_applied")]
+        [STJS.JsonPropertyName("exemption_indicator_applied")]
+        public bool? ExemptionIndicatorApplied { get; set; }
 
         /// <summary>
         /// Indicates the outcome of 3D Secure authentication.

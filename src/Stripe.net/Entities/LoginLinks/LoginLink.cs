@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Login Links are single-use URLs that takes an Express account to the login page for
     /// their Stripe dashboard. A Login Link differs from an <a

@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Payment Attempt Record represents an individual attempt at making a payment, on or off
     /// Stripe. Each payment attempt tries to collect a fixed amount of money from a fixed
@@ -118,8 +119,8 @@ namespace Stripe
         public string Description { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

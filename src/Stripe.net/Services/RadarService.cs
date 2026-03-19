@@ -24,13 +24,10 @@ namespace Stripe
 
         public virtual Radar.EarlyFraudWarningService EarlyFraudWarnings => this.earlyFraudWarnings ??= new Radar.EarlyFraudWarningService(
             this.Requestor);
-
         public virtual Radar.PaymentEvaluationService PaymentEvaluations => this.paymentEvaluations ??= new Radar.PaymentEvaluationService(
             this.Requestor);
-
         public virtual Radar.ValueListService ValueLists => this.valueLists ??= new Radar.ValueListService(
             this.Requestor);
-
         public virtual Radar.ValueListItemService ValueListItems => this.valueListItems ??= new Radar.ValueListItemService(
             this.Requestor);
     }

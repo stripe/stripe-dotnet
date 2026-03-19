@@ -6,6 +6,7 @@ namespace Stripe.Radar
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// An early fraud warning indicates that the card issuer has notified us that a charge may
     /// be fraudulent.
@@ -95,8 +96,8 @@ namespace Stripe.Radar
         public string FraudType { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

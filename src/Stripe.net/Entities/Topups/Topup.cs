@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// To top up your Stripe balance, you create a top-up object. You can retrieve individual
     /// top-ups, as well as list all top-ups. Top-ups are identified by a unique, random ID.
@@ -113,7 +114,7 @@ namespace Stripe
 
         /// <summary>
         /// Error code explaining reason for top-up failure if available (see <a
-        /// href="https://docs.stripe.com/api#errors">the errors section</a> for a list of codes).
+        /// href="https://stripe.com/api/errors">the errors section</a> for a list of codes).
         /// </summary>
         [JsonProperty("failure_code")]
         [STJS.JsonPropertyName("failure_code")]
@@ -127,8 +128,8 @@ namespace Stripe
         public string FailureMessage { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

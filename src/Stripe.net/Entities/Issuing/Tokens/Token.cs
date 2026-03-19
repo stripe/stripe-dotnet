@@ -6,6 +6,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// An issuing token object is created when an issued card is added to a digital wallet. As
     /// a <a href="https://docs.stripe.com/issuing">card issuer</a>, you can <a
@@ -89,8 +90,8 @@ namespace Stripe.Issuing
         public string Last4 { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

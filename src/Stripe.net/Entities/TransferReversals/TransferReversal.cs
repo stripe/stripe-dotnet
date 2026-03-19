@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// <a href="https://docs.stripe.com/connect">Stripe Connect</a> platforms can reverse
     /// transfers made to a connected account, either entirely or partially, and can also

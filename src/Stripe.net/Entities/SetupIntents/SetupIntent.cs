@@ -7,6 +7,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A SetupIntent guides you through the process of setting up and saving a customer's
     /// payment credentials for future payments. For example, you can use a SetupIntent to set
@@ -215,8 +216,8 @@ namespace Stripe
         /// <c>naver_pay</c>, <c>nz_bank_account</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
         /// <c>payco</c>, <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>revolut_pay</c>, <c>samsung_pay</c>, <c>satispay</c>, <c>sepa_debit</c>,
-        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or
-        /// <c>zip</c>.
+        /// <c>sofort</c>, <c>swish</c>, <c>twint</c>, <c>upi</c>, <c>us_bank_account</c>,
+        /// <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("excluded_payment_method_types")]
         [STJS.JsonPropertyName("excluded_payment_method_types")]
@@ -279,8 +280,8 @@ namespace Stripe
         #endregion
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

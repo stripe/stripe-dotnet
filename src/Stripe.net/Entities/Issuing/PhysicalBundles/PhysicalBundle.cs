@@ -5,6 +5,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Physical Bundle represents the bundle of physical items - card stock, carrier letter,
     /// and envelope - that is shipped to a cardholder when you create a physical card.
@@ -31,8 +32,8 @@ namespace Stripe.Issuing
         public PhysicalBundleFeatures Features { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

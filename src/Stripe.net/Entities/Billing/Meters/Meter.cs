@@ -6,6 +6,7 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Meters specify how to aggregate meter events over a billing period. Meter events
     /// represent the actions that customers take in your system. Meters attach to prices and
@@ -72,8 +73,8 @@ namespace Stripe.Billing
         public string EventTimeWindow { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

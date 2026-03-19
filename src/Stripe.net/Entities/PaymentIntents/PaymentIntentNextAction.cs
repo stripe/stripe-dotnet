@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class PaymentIntentNextAction : StripeEntity<PaymentIntentNextAction>
     {
@@ -70,6 +71,10 @@ namespace Stripe
         [JsonProperty("type")]
         [STJS.JsonPropertyName("type")]
         public string Type { get; set; }
+
+        [JsonProperty("upi_handle_redirect_or_display_qr_code")]
+        [STJS.JsonPropertyName("upi_handle_redirect_or_display_qr_code")]
+        public PaymentIntentNextActionUpiHandleRedirectOrDisplayQrCode UpiHandleRedirectOrDisplayQrCode { get; set; }
 
         /// <summary>
         /// When confirming a PaymentIntent with Stripe.js, Stripe.js depends on the contents of

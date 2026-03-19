@@ -5,6 +5,7 @@ namespace Stripe.Climate
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SupplierLocation : StripeEntity<SupplierLocation>
     {

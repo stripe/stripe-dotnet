@@ -8,6 +8,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Subscription items allow you to create customer subscriptions with more than one plan,
     /// making it easy to represent complex billing relationships.

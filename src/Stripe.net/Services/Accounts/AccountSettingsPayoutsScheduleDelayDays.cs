@@ -5,9 +5,6 @@ namespace Stripe
     {
         public static readonly AccountSettingsPayoutsScheduleDelayDays Minimum = new AccountSettingsPayoutsScheduleDelayDays("minimum");
 
-        private AccountSettingsPayoutsScheduleDelayDays(string value)
-            : base(value)
-        {
-        }
+        private AccountSettingsPayoutsScheduleDelayDays(string value) : base(value) { }
     }
 }

@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SubscriptionCancellationDetails : StripeEntity<SubscriptionCancellationDetails>
     {
@@ -29,8 +30,8 @@ namespace Stripe
 
         /// <summary>
         /// Why this subscription was canceled.
-        /// One of: <c>cancellation_requested</c>, <c>payment_disputed</c>, or
-        /// <c>payment_failed</c>.
+        /// One of: <c>canceled_by_retention_policy</c>, <c>cancellation_requested</c>,
+        /// <c>payment_disputed</c>, or <c>payment_failed</c>.
         /// </summary>
         [JsonProperty("reason")]
         [STJS.JsonPropertyName("reason")]

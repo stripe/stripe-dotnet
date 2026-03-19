@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentPaymentMethodOptionsOptions : INestedOptions
     {
@@ -86,6 +87,14 @@ namespace Stripe
         [JsonProperty("sepa_debit")]
         [STJS.JsonPropertyName("sepa_debit")]
         public SetupIntentPaymentMethodOptionsSepaDebitOptions SepaDebit { get; set; }
+
+        /// <summary>
+        /// If this is a <c>upi</c> SetupIntent, this sub-hash contains details about the UPI
+        /// payment method options.
+        /// </summary>
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public SetupIntentPaymentMethodOptionsUpiOptions Upi { get; set; }
 
         /// <summary>
         /// If this is a <c>us_bank_account</c> SetupIntent, this sub-hash contains details about

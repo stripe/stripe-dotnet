@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A payment link is a shareable URL that will take your customers to a hosted payment
     /// page. A payment link can be shared and used multiple times.
@@ -176,8 +177,8 @@ namespace Stripe
         public StripeList<LineItem> LineItems { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
@@ -270,7 +271,7 @@ namespace Stripe
         /// <c>mobilepay</c>, <c>multibanco</c>, <c>oxxo</c>, <c>p24</c>, <c>pay_by_bank</c>,
         /// <c>paynow</c>, <c>paypal</c>, <c>payto</c>, <c>pix</c>, <c>promptpay</c>,
         /// <c>satispay</c>, <c>sepa_debit</c>, <c>sofort</c>, <c>swish</c>, <c>twint</c>,
-        /// <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
+        /// <c>upi</c>, <c>us_bank_account</c>, <c>wechat_pay</c>, or <c>zip</c>.
         /// </summary>
         [JsonProperty("payment_method_types")]
         [STJS.JsonPropertyName("payment_method_types")]

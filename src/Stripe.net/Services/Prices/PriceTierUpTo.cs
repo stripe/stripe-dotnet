@@ -5,9 +5,6 @@ namespace Stripe
     {
         public static readonly PriceTierUpTo Inf = new PriceTierUpTo("inf");
 
-        private PriceTierUpTo(string value)
-            : base(value)
-        {
-        }
+        private PriceTierUpTo(string value) : base(value) { }
     }
 }

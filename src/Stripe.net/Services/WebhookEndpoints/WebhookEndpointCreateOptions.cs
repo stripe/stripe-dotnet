@@ -6,6 +6,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class WebhookEndpointCreateOptions : BaseOptions, IHasMetadata
     {
@@ -43,7 +44,8 @@ namespace Stripe
         /// <c>2025-03-31.basil</c>, <c>2025-04-30.basil</c>, <c>2025-05-28.basil</c>,
         /// <c>2025-06-30.basil</c>, <c>2025-07-30.basil</c>, <c>2025-08-27.basil</c>,
         /// <c>2025-09-30.clover</c>, <c>2025-10-29.clover</c>, <c>2025-11-17.clover</c>,
-        /// <c>2025-12-15.clover</c>, <c>2026-01-28.clover</c>, or <c>2026-02-25.clover</c>.
+        /// <c>2025-12-15.clover</c>, <c>2026-01-28.clover</c>, <c>2026-02-25.clover</c>, or
+        /// <c>2026-03-25.dahlia</c>.
         /// </summary>
         [JsonProperty("api_version")]
         [STJS.JsonPropertyName("api_version")]

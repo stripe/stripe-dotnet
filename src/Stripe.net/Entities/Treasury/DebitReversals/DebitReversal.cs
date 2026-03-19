@@ -7,6 +7,7 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// You can reverse some <a href="https://api.stripe.com#received_debits">ReceivedDebits</a>
     /// depending on their network and source flow. Reversing a ReceivedDebit leads to the
@@ -78,8 +79,8 @@ namespace Stripe.Treasury
         public DebitReversalLinkedFlows LinkedFlows { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

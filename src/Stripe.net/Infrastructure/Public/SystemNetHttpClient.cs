@@ -71,7 +71,6 @@ namespace Stripe
             ("CURSOR_AGENT", "cursor"),
             ("GEMINI_CLI", "gemini_cli"),
             ("OPENCODE", "open_code"),
-
             // The end of the section generated from our OpenAPI spec
         };
 

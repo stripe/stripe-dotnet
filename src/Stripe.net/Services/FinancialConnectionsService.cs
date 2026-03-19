@@ -23,10 +23,8 @@ namespace Stripe
 
         public virtual FinancialConnections.AccountService Accounts => this.accounts ??= new FinancialConnections.AccountService(
             this.Requestor);
-
         public virtual FinancialConnections.SessionService Sessions => this.sessions ??= new FinancialConnections.SessionService(
             this.Requestor);
-
         public virtual FinancialConnections.TransactionService Transactions => this.transactions ??= new FinancialConnections.TransactionService(
             this.Requestor);
     }

@@ -6,6 +6,7 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A Tax <c>Registration</c> lets us know that your business is registered to collect tax
     /// on payments within a region, enabling you to <a
@@ -76,8 +77,8 @@ namespace Stripe.Tax
         public DateTime? ExpiresAt { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

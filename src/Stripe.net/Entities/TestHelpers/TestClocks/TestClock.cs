@@ -6,6 +6,7 @@ namespace Stripe.TestHelpers
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A test clock enables deterministic control over objects in testmode. With a test clock,
     /// you can create objects at a frozen time in the past or future, and advance to a specific
@@ -67,8 +68,8 @@ namespace Stripe.TestHelpers
         public DateTime FrozenTime { get; set; } = Stripe.Infrastructure.DateTimeUtils.UnixEpoch;
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

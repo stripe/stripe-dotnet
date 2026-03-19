@@ -5,6 +5,7 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeEntityConverter))]
     public class SessionPaymentMethodOptions : StripeEntity<SessionPaymentMethodOptions>
     {
@@ -171,6 +172,10 @@ namespace Stripe.Checkout
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public SessionPaymentMethodOptionsTwint Twint { get; set; }
+
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public SessionPaymentMethodOptionsUpi Upi { get; set; }
 
         [JsonProperty("us_bank_account")]
         [STJS.JsonPropertyName("us_bank_account")]

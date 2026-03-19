@@ -5,6 +5,7 @@ namespace Stripe.Checkout
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SessionPaymentMethodOptionsOptions : INestedOptions
     {
@@ -99,6 +100,13 @@ namespace Stripe.Checkout
         [JsonProperty("cashapp")]
         [STJS.JsonPropertyName("cashapp")]
         public SessionPaymentMethodOptionsCashappOptions Cashapp { get; set; }
+
+        /// <summary>
+        /// contains details about the Crypto payment method options.
+        /// </summary>
+        [JsonProperty("crypto")]
+        [STJS.JsonPropertyName("crypto")]
+        public SessionPaymentMethodOptionsCryptoOptions Crypto { get; set; }
 
         /// <summary>
         /// contains details about the Customer Balance payment method options.
@@ -309,6 +317,13 @@ namespace Stripe.Checkout
         [JsonProperty("twint")]
         [STJS.JsonPropertyName("twint")]
         public SessionPaymentMethodOptionsTwintOptions Twint { get; set; }
+
+        /// <summary>
+        /// contains details about the UPI payment method options.
+        /// </summary>
+        [JsonProperty("upi")]
+        [STJS.JsonPropertyName("upi")]
+        public SessionPaymentMethodOptionsUpiOptions Upi { get; set; }
 
         /// <summary>
         /// contains details about the Us Bank Account payment method options.

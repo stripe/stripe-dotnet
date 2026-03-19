@@ -6,12 +6,13 @@ namespace Stripe.Tax
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class TransactionLineItemOptions : INestedOptions, IHasMetadata
     {
         /// <summary>
         /// The amount to reverse, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> in
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a> in
         /// negative.
         /// </summary>
         [JsonProperty("amount")]
@@ -20,7 +21,7 @@ namespace Stripe.Tax
 
         /// <summary>
         /// The amount of tax to reverse, in the <a
-        /// href="https://docs.stripe.com/currencies#zero-decimal">smallest currency unit</a> in
+        /// href="https://docs.stripe.com/currencies#minor-units">smallest currency unit</a> in
         /// negative.
         /// </summary>
         [JsonProperty("amount_tax")]

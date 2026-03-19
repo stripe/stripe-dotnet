@@ -7,6 +7,7 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Stripe Treasury provides users with a container for money called a FinancialAccount that
     /// is separate from their Payments balance. FinancialAccounts serve as the source and
@@ -86,8 +87,8 @@ namespace Stripe.Treasury
         public bool IsDefault { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

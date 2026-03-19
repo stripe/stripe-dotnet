@@ -5,6 +5,7 @@ namespace Stripe
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     [STJS.JsonConverter(typeof(STJStripeOptionsConverter))]
     public class SetupIntentPaymentMethodOptionsAcssDebitOptions : INestedOptions
     {
@@ -26,7 +27,7 @@ namespace Stripe
         public SetupIntentPaymentMethodOptionsAcssDebitMandateOptionsOptions MandateOptions { get; set; }
 
         /// <summary>
-        /// Bank account verification method.
+        /// Bank account verification method. The default value is <c>automatic</c>.
         /// One of: <c>automatic</c>, <c>instant</c>, or <c>microdeposits</c>.
         /// </summary>
         [JsonProperty("verification_method")]

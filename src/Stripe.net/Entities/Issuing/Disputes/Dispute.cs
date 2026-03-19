@@ -7,6 +7,7 @@ namespace Stripe.Issuing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// As a <a href="https://docs.stripe.com/issuing">card issuer</a>, you can dispute
     /// transactions that the cardholder does not recognize, suspects to be fraudulent, or has
@@ -70,8 +71,8 @@ namespace Stripe.Issuing
         public DisputeEvidence Evidence { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

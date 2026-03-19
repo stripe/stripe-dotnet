@@ -6,6 +6,7 @@ namespace Stripe.Climate
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A supplier of carbon removal.
     /// </summary>
@@ -57,8 +58,8 @@ namespace Stripe.Climate
 
         /// <summary>
         /// The scientific pathway used for carbon removal.
-        /// One of: <c>biomass_carbon_removal_and_storage</c>, <c>direct_air_capture</c>, or
-        /// <c>enhanced_weathering</c>.
+        /// One of: <c>biomass_carbon_removal_and_storage</c>, <c>direct_air_capture</c>,
+        /// <c>enhanced_weathering</c>, or <c>marine_carbon_removal</c>.
         /// </summary>
         [JsonProperty("removal_pathway")]
         [STJS.JsonPropertyName("removal_pathway")]

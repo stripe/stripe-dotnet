@@ -5,6 +5,7 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// Encodes whether a FinancialAccount has access to a particular Feature, with a
     /// <c>status</c> enum and associated <c>status_details</c>. Stripe or the platform can

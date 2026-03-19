@@ -22,7 +22,6 @@ namespace Stripe
 
         public virtual V2.BillingService Billing => this.billing ??= new V2.BillingService(
             this.Requestor);
-
         public virtual V2.CoreService Core => this.core ??= new V2.CoreService(
             this.Requestor);
     }

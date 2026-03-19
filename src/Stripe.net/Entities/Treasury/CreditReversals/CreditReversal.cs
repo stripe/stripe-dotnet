@@ -7,6 +7,7 @@ namespace Stripe.Treasury
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// You can reverse some <a
     /// href="https://api.stripe.com#received_credits">ReceivedCredits</a> depending on their
@@ -72,8 +73,8 @@ namespace Stripe.Treasury
         public string HostedRegulatoryReceiptUrl { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]

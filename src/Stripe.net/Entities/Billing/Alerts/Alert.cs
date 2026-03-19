@@ -5,6 +5,7 @@ namespace Stripe.Billing
     using Stripe.Infrastructure;
     using STJS = System.Text.Json.Serialization;
 
+
     /// <summary>
     /// A billing alert is a resource that notifies you when a certain usage threshold on a
     /// meter is crossed. For example, you might create a billing alert to notify you when a
@@ -35,8 +36,8 @@ namespace Stripe.Billing
         public string AlertType { get; set; }
 
         /// <summary>
-        /// Has the value <c>true</c> if the object exists in live mode or the value <c>false</c> if
-        /// the object exists in test mode.
+        /// If the object exists in live mode, the value is <c>true</c>. If the object exists in
+        /// test mode, the value is <c>false</c>.
         /// </summary>
         [JsonProperty("livemode")]
         [STJS.JsonPropertyName("livemode")]
